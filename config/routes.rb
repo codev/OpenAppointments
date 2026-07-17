@@ -67,4 +67,11 @@ Rails.application.routes.draw do
   get "account" => "account#index"
   post "account/save" => "account#save"
   post "account/validate_username" => "account#validate_username"
+
+  # Google Calendar OAuth + sync management
+  get "google/oauth/:provider_id" => "google#oauth"
+  get "google/oauth_callback" => "google#oauth_callback", as: :google_oauth_callback
+  post "google/get_google_calendars" => "google#get_google_calendars"
+  post "google/select_google_calendar" => "google#select_google_calendar"
+  post "google/disable_provider_sync" => "google#disable_provider_sync"
 end
