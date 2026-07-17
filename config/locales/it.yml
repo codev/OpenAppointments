@@ -1,6 +1,8 @@
 ---
 it:
   ea:
+    phone_or_email_required: Indica un numero di telefono o un indirizzo email.
+    require_phone_or_email_label: Richiedi telefono o email (ne basta uno)
     booking_display_mode: Modalità di visualizzazione della prenotazione
     display_as_dropdown: Elenco a discesa
     display_as_cards: Schede

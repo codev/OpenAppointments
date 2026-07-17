@@ -840,6 +840,14 @@ App.Pages.Booking = (function () {
             return false;
         }
 
+        // Phone-or-email mode: at least one of the two contact fields is needed.
+        if (Boolean(Number(vars('require_phone_or_email'))) && !$email.val() && !$phoneNumber.val()) {
+            $email.addClass('is-invalid');
+            $phoneNumber.addClass('is-invalid');
+            $('#form-message').text(lang('phone_or_email_required'));
+            return false;
+        }
+
         // Validate email address.
         if ($email.val() && !App.Utils.Validation.email($email.val())) {
             $email.addClass('is-invalid');

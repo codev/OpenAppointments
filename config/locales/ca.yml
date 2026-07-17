@@ -1,6 +1,8 @@
 ---
 ca:
   ea:
+    phone_or_email_required: Introduïu un número de telèfon o una adreça electrònica.
+    require_phone_or_email_label: Requereix telèfon o correu electrònic (amb un n'hi ha prou)
     booking_display_mode: Mode de visualització de la reserva
     display_as_dropdown: Llista desplegable
     display_as_cards: Targetes

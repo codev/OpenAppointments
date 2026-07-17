@@ -1,6 +1,8 @@
 ---
 et:
   ea:
+    phone_or_email_required: Palun sisestage telefoninumber või e-posti aadress.
+    require_phone_or_email_label: Nõua telefoninumbrit või e-posti (ühest piisab)
     booking_display_mode: Broneeringu kuvamisviis
     display_as_dropdown: Rippmenüü
     display_as_cards: Kaardid

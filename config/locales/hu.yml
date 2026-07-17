@@ -1,6 +1,8 @@
 ---
 hu:
   ea:
+    phone_or_email_required: Adjon meg egy telefonszámot vagy egy e-mail-címet.
+    require_phone_or_email_label: Telefonszám vagy e-mail megkövetelése (az egyik elég)
     booking_display_mode: Foglalás megjelenítési módja
     display_as_dropdown: Legördülő lista
     display_as_cards: Kártyák

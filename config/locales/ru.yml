@@ -1,6 +1,8 @@
 ---
 ru:
   ea:
+    phone_or_email_required: Укажите номер телефона или адрес электронной почты.
+    require_phone_or_email_label: Требовать телефон или email (достаточно одного)
     booking_display_mode: Режим отображения записи
     display_as_dropdown: Выпадающий список
     display_as_cards: Карточки

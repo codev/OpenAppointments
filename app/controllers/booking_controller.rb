@@ -81,6 +81,7 @@ class BookingController < ApplicationController
     script_vars(
       first_step: first_step,
       display_mode: display_mode,
+      require_phone_or_email: Setting.get("require_phone_or_email", "1"),
       manage_mode: manage_mode,
       available_services: available_services,
       available_providers: available_providers,
@@ -161,6 +162,11 @@ class BookingController < ApplicationController
 
     customer_params = customer_params.slice(*ALLOWED_CUSTOMER_FIELDS)
     appointment_params = appointment_params.slice(*ALLOWED_APPOINTMENT_FIELDS)
+
+    if Setting.get("require_phone_or_email", "1") == "1" &&
+       customer_params["email"].blank? && customer_params["phone_number"].blank?
+      raise ArgumentError, helpers.lang("phone_or_email_required")
+    end
 
     %w[address city zip_code notes phone_number].each { |field| customer_params[field] ||= "" }
 
@@ -400,11 +406,18 @@ class BookingController < ApplicationController
   end
 
   # The single name field is always shown and required; only these are optional.
+  # When phone-or-email mode is on, the OR rule replaces the two individual
+  # require flags (the fields stay displayed, neither is required on its own).
   def field_display_vars
     fields = %w[email phone_number address city zip_code notes]
-    fields.flat_map { |field|
+    vars = fields.flat_map { |field|
       [ [ "display_#{field}".to_sym, Setting.get("display_#{field}") ],
        [ "require_#{field}".to_sym, Setting.get("require_#{field}") ] ]
     }.to_h
+    if Setting.get("require_phone_or_email", "1") == "1"
+      vars[:require_email] = "0"
+      vars[:require_phone_number] = "0"
+    end
+    vars
   end
 end

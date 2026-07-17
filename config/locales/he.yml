@@ -1,6 +1,8 @@
 ---
 he:
   ea:
+    phone_or_email_required: נא לספק מספר טלפון או כתובת אימייל.
+    require_phone_or_email_label: דרוש טלפון או אימייל (אחד מהם מספיק)
     booking_display_mode: מצב תצוגת ההזמנה
     display_as_dropdown: רשימה נפתחת
     display_as_cards: כרטיסים

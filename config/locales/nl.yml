@@ -1,6 +1,8 @@
 ---
 nl:
   ea:
+    phone_or_email_required: Geef een telefoonnummer of e-mailadres op.
+    require_phone_or_email_label: Vereis een telefoonnummer of e-mail (een van beide volstaat)
     booking_display_mode: Weergavemodus van de boeking
     display_as_dropdown: Keuzelijst
     display_as_cards: Kaarten

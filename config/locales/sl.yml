@@ -1,6 +1,8 @@
 ---
 sl:
   ea:
+    phone_or_email_required: Vnesite telefonsko številko ali e-poštni naslov.
+    require_phone_or_email_label: Zahtevaj telefon ali e-pošto (eno zadostuje)
     booking_display_mode: Nacin prikaza rezervacije
     display_as_dropdown: Spustni seznam
     display_as_cards: Kartice

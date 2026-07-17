@@ -1,6 +1,8 @@
 ---
 mr:
   ea:
+    phone_or_email_required: कृपया फोन नंबर किंवा ईमेल पत्ता द्या.
+    require_phone_or_email_label: फोन नंबर किंवा ईमेल आवश्यक (एक पुरेसे आहे)
     booking_display_mode: बुकिंग प्रदर्शन मोड
     display_as_dropdown: ड्रॉपडाउन यादी
     display_as_cards: कार्ड

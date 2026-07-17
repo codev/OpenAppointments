@@ -1,6 +1,8 @@
 ---
 tr:
   ea:
+    phone_or_email_required: Lütfen bir telefon numarası veya e-posta adresi girin.
+    require_phone_or_email_label: Telefon veya e-posta zorunlu olsun (biri yeterli)
     booking_display_mode: Rezervasyon görünüm modu
     display_as_dropdown: Açılır liste
     display_as_cards: Kartlar

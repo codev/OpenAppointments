@@ -1,6 +1,8 @@
 ---
 lt:
   ea:
+    phone_or_email_required: Nurodykite telefono numerį arba el. pašto adresą.
+    require_phone_or_email_label: Reikalauti telefono arba el. pašto (užtenka vieno)
     booking_display_mode: Rezervacijos rodymo režimas
     display_as_dropdown: Išskleidžiamasis sąrašas
     display_as_cards: Kortelės

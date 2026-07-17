@@ -1,6 +1,8 @@
 ---
 zh:
   ea:
+    phone_or_email_required: 请提供电话号码或电子邮箱。
+    require_phone_or_email_label: 要求提供电话或邮箱 (二者其一即可)
     booking_display_mode: 预约显示模式
     display_as_dropdown: 下拉列表
     display_as_cards: 卡片

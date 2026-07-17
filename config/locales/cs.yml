@@ -1,6 +1,8 @@
 ---
 cs:
   ea:
+    phone_or_email_required: Zadejte telefonní číslo nebo e-mailovou adresu.
+    require_phone_or_email_label: Vyžadovat telefon nebo e-mail (stačí jedno)
     booking_display_mode: Zobrazení rezervace
     display_as_dropdown: Rozbalovací seznam
     display_as_cards: Karty

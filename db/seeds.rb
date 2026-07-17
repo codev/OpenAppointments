@@ -44,6 +44,7 @@ settings = {
   "future_booking_limit" => "90",
   "display_any_provider" => "1",
   "booking_display_mode" => "dropdown",
+  "require_phone_or_email" => "1",
   "disable_booking" => "0",
   "disable_booking_message" => disable_booking_message,
   "first_weekday" => "sunday",

@@ -1,6 +1,8 @@
 ---
 uk:
   ea:
+    phone_or_email_required: Вкажіть номер телефону або адресу електронної пошти.
+    require_phone_or_email_label: Вимагати телефон або email (достатньо одного)
     booking_display_mode: Режим відображення бронювання
     display_as_dropdown: Випадаючий список
     display_as_cards: Картки

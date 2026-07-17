@@ -1,6 +1,8 @@
 ---
 bs:
   ea:
+    phone_or_email_required: Unesite broj telefona ili email adresu.
+    require_phone_or_email_label: Zahtijevaj broj telefona ili email (dovoljno je jedno)
     booking_display_mode: Nacin prikaza rezervacije
     display_as_dropdown: Padajuca lista
     display_as_cards: Kartice

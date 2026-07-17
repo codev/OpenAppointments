@@ -1,6 +1,8 @@
 ---
 ja:
   ea:
+    phone_or_email_required: 電話番号またはメールアドレスを入力してください。
+    require_phone_or_email_label: 電話番号またはメールを必須にする (どちらか一方で可)
     booking_display_mode: 予約の表示モード
     display_as_dropdown: ドロップダウンリスト
     display_as_cards: カード

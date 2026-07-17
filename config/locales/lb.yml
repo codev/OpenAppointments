@@ -1,6 +1,8 @@
 ---
 lb:
   ea:
+    phone_or_email_required: Gitt w.e.g. eng Telefonsnummer oder eng E-Mail-Adress un.
+    require_phone_or_email_label: Telefon oder E-Mail verlaangen (eent duergeet)
     booking_display_mode: Umeldungsusiicht
     display_as_dropdown: Dropdown-Lëscht
     display_as_cards: Kaarten

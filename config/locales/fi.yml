@@ -1,6 +1,8 @@
 ---
 fi:
   ea:
+    phone_or_email_required: Anna puhelinnumero tai sähköpostiosoite.
+    require_phone_or_email_label: Vaadi puhelinnumero tai sähköposti (toinen riittää)
     booking_display_mode: Varauksen näyttötapa
     display_as_dropdown: Pudotusvalikko
     display_as_cards: Kortit

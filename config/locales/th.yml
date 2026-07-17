@@ -1,6 +1,8 @@
 ---
 th:
   ea:
+    phone_or_email_required: กรุณาระบุหมายเลขโทรศัพท์หรืออีเมล
+    require_phone_or_email_label: ต้องมีหมายเลขโทรศัพท์หรืออีเมล (อย่างใดอย่างหนึ่ง)
     booking_display_mode: รูปแบบการแสดงการจอง
     display_as_dropdown: รายการแบบเลื่อนลง
     display_as_cards: การ์ด

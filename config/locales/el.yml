@@ -1,6 +1,8 @@
 ---
 el:
   ea:
+    phone_or_email_required: Δώστε έναν αριθμό τηλεφώνου ή μια διεύθυνση email.
+    require_phone_or_email_label: Απαίτηση τηλεφώνου ή email (αρκεί το ένα)
     booking_display_mode: Τρόπος εμφάνισης κράτησης
     display_as_dropdown: Αναπτυσσόμενη λίστα
     display_as_cards: Κάρτες

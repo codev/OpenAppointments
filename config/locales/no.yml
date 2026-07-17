@@ -1,6 +1,8 @@
 ---
 'no':
   ea:
+    phone_or_email_required: Oppgi et telefonnummer eller en e-postadresse.
+    require_phone_or_email_label: Krev telefonnummer eller e-post (ett av dem holder)
     booking_display_mode: Visningsmodus for booking
     display_as_dropdown: Nedtrekksliste
     display_as_cards: Kort

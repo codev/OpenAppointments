@@ -1,6 +1,8 @@
 ---
 fa:
   ea:
+    phone_or_email_required: لطفا یک شماره تلفن یا ایمیل وارد کنید.
+    require_phone_or_email_label: الزام شماره تلفن یا ایمیل (یکی کافی است)
     booking_display_mode: حالت نمایش رزرو
     display_as_dropdown: فهرست کشویی
     display_as_cards: کارت‌ها

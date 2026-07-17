@@ -1,6 +1,8 @@
 ---
 sq:
   ea:
+    phone_or_email_required: Jepni një numër telefoni ose një adresë email.
+    require_phone_or_email_label: Kërko telefon ose email (mjafton njëra)
     booking_display_mode: Mënyra e shfaqjes së rezervimit
     display_as_dropdown: Listë rënëse
     display_as_cards: Karta

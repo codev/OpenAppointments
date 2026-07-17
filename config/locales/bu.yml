@@ -1,6 +1,8 @@
 ---
 bu:
   ea:
+    phone_or_email_required: Моля, въведете телефонен номер или имейл адрес.
+    require_phone_or_email_label: Изисквай телефон или имейл (достатъчно е едното)
     booking_display_mode: Режим на показване на резервацията
     display_as_dropdown: Падащ списък
     display_as_cards: Карти

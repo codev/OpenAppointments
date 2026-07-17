@@ -1,6 +1,8 @@
 ---
 ro:
   ea:
+    phone_or_email_required: Introduceți un număr de telefon sau o adresă de email.
+    require_phone_or_email_label: Solicită telefon sau email (unul este suficient)
     booking_display_mode: Modul de afișare a rezervării
     display_as_dropdown: Listă derulantă
     display_as_cards: Carduri

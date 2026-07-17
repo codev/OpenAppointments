@@ -1,6 +1,8 @@
 ---
 pl:
   ea:
+    phone_or_email_required: Podaj numer telefonu lub adres e-mail.
+    require_phone_or_email_label: Wymagaj telefonu lub e-maila (wystarczy jedno)
     booking_display_mode: Tryb wyświetlania rezerwacji
     display_as_dropdown: Lista rozwijana
     display_as_cards: Karty
