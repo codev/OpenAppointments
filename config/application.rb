@@ -42,5 +42,8 @@ module OpenAppointments
     # timezone. Never pass a TimeWithZone into a query.
     config.active_record.time_zone_aware_attributes = false
     config.active_record.default_timezone = :local
+
+    # EA reuses one CSRF token across many AJAX calls; per-form tokens would break that.
+    config.action_controller.per_form_csrf_tokens = false
   end
 end

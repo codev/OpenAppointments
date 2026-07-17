@@ -1,0 +1,9 @@
+<%# Placeholder until P2 ports the EA login page markup and JS. %>
+<h1>Log In</h1>
+<form id="login-form" data-dest-url="<%= @dest_url %>">
+  <input type="hidden" name="csrf_token" value="<%= form_authenticity_token %>">
+  <label>Username <input type="text" name="username" id="username"></label>
+  <label>Password <input type="password" name="password" id="password"></label>
+  <button type="submit" id="login">Login</button>
+  <a href="<%= recovery_path %>">Forgot your password?</a>
+</form>
