@@ -20,23 +20,25 @@ REGI=registry.<your-domain>
 BUILD=build.<your-domain>
 DEST=appointments.<your-domain>
 
-
-cloudron build --set-build-service $BUILD \
-               --set-repository $REGI/openappointments
+# One-time per machine: prompts for a build service access token
+cloudron build --build-service-url $BUILD login
 
 git tag v$VER && git push origin v$VER
-cloudron build --tag $VER # Build on server and push to registry
+# Build on server and push to registry; the repository is stored for future builds
+cloudron build --tag $VER --repository $REGI/openappointments
 
-cloudron install --image containerlist.codev.uk/openappointments:$VER \
+cloudron install --image $REGI/openappointments:$VER \
   --location $DEST
 ```
 
 #### Subsequent releases
+
+A git-ignored `deploy.sh` in the repo root holds our real values for these steps.
+
 ```bash
 # Variables
 VER=1.0.0
 REGI=registry.<your-domain>
-BUILD=build.<your-domain>
 DEST=appointments.<your-domain>
 
 git tag v$VER && git push origin v$VER
