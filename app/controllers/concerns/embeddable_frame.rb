@@ -14,6 +14,6 @@ module EmbeddableFrame
     return unless Embedding.enabled?
 
     response.headers.delete("X-Frame-Options")
-    response.headers["Content-Security-Policy"] = Embedding.frame_ancestors.then { |value| "frame-ancestors #{value}" }
+    response.headers["Content-Security-Policy"] = "frame-ancestors #{Embedding.frame_ancestors}"
   end
 end
