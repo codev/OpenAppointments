@@ -33,9 +33,9 @@ class CalendarTest < ActionDispatch::IntegrationTest
     appointment = body["appointments"].first
     assert_equal "2026-07-20 10:00:00", appointment["start_datetime"]
     assert_equal "abc123def456", appointment["hash"]
-    assert_equal "Jane", appointment["provider"]["first_name"]
+    assert_equal "Jane Doe", appointment["provider"]["name"]
     assert_equal "Trim Cut", appointment["service"]["name"]
-    assert_equal "James", appointment["customer"]["first_name"]
+    assert_equal "James Doe", appointment["customer"]["name"]
     assert appointment["provider"]["settings"].key?("working_plan")
     assert_not appointment["provider"]["settings"].key?("password")
     assert_equal 1, body["unavailabilities"].length
@@ -76,7 +76,7 @@ class CalendarTest < ActionDispatch::IntegrationTest
     login_admin
     assert_difference [ "Appointment.appointments.count", "User.customers.count" ], 1 do
       post "/calendar/save_appointment", params: {
-        customer_data: { first_name: "Cal", last_name: "Endar", email: "cal@example.org",
+        customer_data: { name: "Cal Endar", email: "cal@example.org",
                          phone_number: "+447700900999" },
         appointment_data: { start_datetime: "2026-07-21 09:00:00", end_datetime: "2026-07-21 09:30:00",
                             id_users_provider: users(:jane).id, id_services: services(:haircut).id,

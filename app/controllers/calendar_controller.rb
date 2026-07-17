@@ -74,7 +74,7 @@ class CalendarController < ApplicationController
       available_services: available_services,
       secretary_providers: secretary_provider_ids,
       appointment_status_options: JSON.parse(Setting.get("appointment_status_options", "[]")),
-      **%w[first_name last_name email phone_number address city zip_code notes]
+      **%w[name email phone_number address city zip_code notes]
         .index_with { |field| Setting.get("require_#{field}") }
         .transform_keys { |field| "require_#{field}".to_sym }
     )
@@ -107,7 +107,6 @@ class CalendarController < ApplicationController
                    User.customers.find_by(email: customer_params["email"])
       customer = existing || User.new(role: Role.find_by!(slug: Role::CUSTOMER))
       customer.assign_attributes(customer_params.except("id"))
-      customer.last_name = customer.first_name if customer.last_name.blank?
       customer.save!
       customer_id = customer.id
     end
@@ -324,7 +323,7 @@ class CalendarController < ApplicationController
 
   def visible_providers
     providers = User.providers.joins(:provider_service_links).distinct
-                    .order(:first_name, :last_name, :email).includes(:services, :settings)
+                    .order(:name, :email).includes(:services, :settings)
     case session[:role_slug]
     when Role::PROVIDER
       providers.where(id: session[:user_id])

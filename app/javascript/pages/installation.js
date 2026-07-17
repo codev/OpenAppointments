@@ -21,8 +21,7 @@ App.Pages.Installation = (function () {
     const $install = $('#install');
     const $alert = $('.alert');
     const $loading = $('#loading');
-    const $firstName = $('#first-name');
-    const $lastName = $('#last-name');
+    const $name = $('#name');
     const $email = $('#email');
     const $username = $('#username');
     const $password = $('#password');
@@ -122,7 +121,7 @@ App.Pages.Installation = (function () {
             }
 
             // Validate name fields (do not allow HTML tags, mirror server-side strip_tags + trim).
-            [$firstName, $lastName, $companyName].forEach(($field) => {
+            [$name, $companyName].forEach(($field) => {
                 if ($field.val().trim() === '') {
                     $field.addClass('is-invalid');
                     throw new Error(lang('fields_are_required'));
@@ -187,8 +186,7 @@ App.Pages.Installation = (function () {
      */
     function getAdminData() {
         return {
-            first_name: $firstName.val(),
-            last_name: $lastName.val(),
+            name: $name.val(),
             email: $email.val(),
             username: $username.val(),
             password: $password.val(),

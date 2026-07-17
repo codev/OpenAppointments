@@ -21,7 +21,7 @@ default_working_plan = %w[monday tuesday wednesday thursday friday saturday sund
 }.to_json
 
 ldap_field_mapping = {
-  "first_name" => "givenname", "last_name" => "sn", "email" => "mail",
+  "name" => "displayname", "email" => "mail",
   "phone_number" => "telephonenumber", "username" => "cn"
 }.to_json
 
@@ -43,14 +43,19 @@ settings = {
   "book_advance_timeout" => "30",
   "future_booking_limit" => "90",
   "display_any_provider" => "1",
+  "booking_display_mode" => "dropdown",
+  "require_phone_or_email" => "1",
+  "captcha_provider" => "altcha",
+  "turnstile_site_key" => "",
+  "turnstile_secret_key" => "",
+  "allow_iframe_embedding" => "0",
+  "iframe_embed_origin" => "",
   "disable_booking" => "0",
   "disable_booking_message" => disable_booking_message,
   "first_weekday" => "sunday",
   "appointment_status_options" => '["Booked", "Confirmed", "Rescheduled", "Cancelled", "Draft"]',
 
   # Booking form fields
-  "display_first_name" => "1", "require_first_name" => "1",
-  "display_last_name" => "1", "require_last_name" => "1",
   "display_email" => "1", "require_email" => "1",
   "display_phone_number" => "1", "require_phone_number" => "1",
   "display_address" => "1", "require_address" => "0",

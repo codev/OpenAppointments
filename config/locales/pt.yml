@@ -1,6 +1,43 @@
 ---
 pt:
   ea:
+    embedding: Incorporação
+    allow_iframe_embedding: Permitir incorporação num iframe
+    iframe_embed_origin: Site que irá incorporar a página de marcações
+    embed_code: Código de incorporação
+    embed_hint: Cole este código na página do seu site que deve mostrar o formulário de marcação; a moldura ajusta-se sozinha.
+    copy: Copiar
+    import_data: Importar dados
+    import_hint: Carregue um CSV exportado do 10to8, analise-o primeiro e depois importe os tipos de registos selecionados.
+    import_phases: Tipos de registos
+    analyze: Analisar
+    start_import: Iniciar importação
+    create_providers: Criar prestadores em falta
+    days_back: Dias para trás
+    days_forward: Dias para a frente
+    import_running: Importação em curso...
+    import_complete: Importação concluída.
+    created: criados
+    matched: correspondidos
+    skipped: ignorados
+    no_file_selected: Nenhum ficheiro selecionado.
+    reset_database: Repor base de dados
+    reset_database_warning: Isto elimina permanentemente todas as marcações, clientes, prestadores, secretários, serviços e categorias. As contas de administrador e as definições mantêm-se. Irreversível.
+    reset_confirmation_hint: Escreva RESET para ativar o botão.
+    reset_database_done: A base de dados foi reposta.
+    captcha_provider: Fornecedor de captcha
+    turnstile_site_key: Chave do site Turnstile
+    turnstile_secret_key: Chave secreta Turnstile
+    turnstile_verification_failed: A verificação do captcha falhou, tente novamente.
+    phone_or_email_required: Indique um número de telefone ou um endereço de email.
+    require_phone_or_email_label: Exigir telefone ou email (basta um)
+    booking_display_mode: Modo de apresentação da marcação
+    display_as_dropdown: Lista pendente
+    display_as_cards: Cartões
+    picture: Imagem
+    remove_picture: Remover imagem
+    select_provider_first: Selecionar primeiro o prestador
+    select_service_first: Selecionar primeiro o serviço
     page_title: Livro de Apontamentos
     service_and_provider: Selecione o serviço e o fornecedor
     select_service: Selecione o serviço

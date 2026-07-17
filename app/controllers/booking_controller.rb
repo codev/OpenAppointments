@@ -1,14 +1,15 @@
 # Public booking wizard, port of EA's Booking controller.
 class BookingController < ApplicationController
+  include EmbeddableFrame
   layout "booking"
 
-  ALLOWED_CUSTOMER_FIELDS = %w[id first_name last_name email phone_number address city state
+  ALLOWED_CUSTOMER_FIELDS = %w[id name email phone_number address city state
                                zip_code timezone language custom_field_1 custom_field_2
                                custom_field_3 custom_field_4 custom_field_5].freeze
   ALLOWED_APPOINTMENT_FIELDS = %w[id start_datetime end_datetime location meeting_link notes
                                   color status is_unavailability id_users_provider
                                   id_users_customer id_services].freeze
-  THEMES = %w[cosmo darkly default flatly litera lumen materia minty sketchy zephyr].freeze
+  THEMES = %w[cosmo darkly default flatly litera lumen materia minty outline sketchy zephyr].freeze
 
   # Distinct name: per limit - unnamed limits in one controller share a cache key,
   # so the wizard's own availability polling would eat the register budget.
@@ -59,7 +60,7 @@ class BookingController < ApplicationController
       manage_mode = true
       appointment = appointment_payload(record)
       provider_payload = {
-        "id" => provider.id, "first_name" => provider.first_name, "last_name" => provider.last_name,
+        "id" => provider.id, "name" => provider.name,
         "services" => provider.services.map(&:id), "timezone" => provider.timezone
       }
       customer_payload = customer_fields(record.customer)
@@ -73,7 +74,15 @@ class BookingController < ApplicationController
 
     company_color = Setting.get("company_color")
 
+    first_step = params[:first] == "provider" ? "provider" : "service"
+
+    display_mode = Setting.get("booking_display_mode", "dropdown")
+    display_mode = "dropdown" unless %w[dropdown cards].include?(display_mode)
+
     script_vars(
+      first_step: first_step,
+      display_mode: display_mode,
+      require_phone_or_email: Setting.get("require_phone_or_email", "1"),
       manage_mode: manage_mode,
       available_services: available_services,
       available_providers: available_providers,
@@ -92,6 +101,9 @@ class BookingController < ApplicationController
     )
 
     html_vars(
+      first_step: first_step,
+      display_mode: display_mode,
+      available_categories: display_mode == "cards" ? BookingPayloads.available_categories : [],
       available_services: available_services,
       available_providers: available_providers,
       theme: theme,
@@ -152,6 +164,11 @@ class BookingController < ApplicationController
     customer_params = customer_params.slice(*ALLOWED_CUSTOMER_FIELDS)
     appointment_params = appointment_params.slice(*ALLOWED_APPOINTMENT_FIELDS)
 
+    if Setting.get("require_phone_or_email", "1") == "1" &&
+       customer_params["email"].blank? && customer_params["phone_number"].blank?
+      raise ArgumentError, helpers.lang("phone_or_email_required")
+    end
+
     %w[address city zip_code notes phone_number].each { |field| customer_params[field] ||= "" }
 
     provider_id = check_datetime_availability(appointment_params, manage_mode)
@@ -163,6 +180,10 @@ class BookingController < ApplicationController
 
     if AltchaChallenge.enabled? && !AltchaChallenge.verify(params[:altcha_payload])
       return render json: { altcha_verification: false }
+    end
+
+    if TurnstileChallenge.enabled? && !TurnstileChallenge.verify(params[:cf_turnstile_response], request.remote_ip)
+      return render json: { turnstile_verification: false }
     end
 
     existing_customer = User.customers.find_by(email: customer_params["email"]) if customer_params["email"].present?
@@ -180,7 +201,6 @@ class BookingController < ApplicationController
     customer.assign_attributes(customer_params.except("id", "timezone", "language")
                                               .merge("timezone" => customer_params["timezone"].presence || "UTC"))
     customer.language = session[:language] || Setting.get("default_language", "english")
-    customer.last_name = customer.first_name if customer.last_name.blank?
     customer.save!
 
     appointment = manage_mode ? Appointment.find(appointment_params["id"]) : Appointment.new
@@ -351,8 +371,7 @@ class BookingController < ApplicationController
 
   def save_consents(customer_params)
     consent = {
-      first_name: customer_params["first_name"] || "-",
-      last_name: customer_params["last_name"] || "-",
+      name: customer_params["name"] || "-",
       email: customer_params["email"] || "-",
       ip: request.remote_ip
     }
@@ -391,11 +410,19 @@ class BookingController < ApplicationController
     BookingController::ALLOWED_CUSTOMER_FIELDS.index_with { |field| customer.public_send(field) }
   end
 
+  # The single name field is always shown and required; only these are optional.
+  # When phone-or-email mode is on, the OR rule replaces the two individual
+  # require flags (the fields stay displayed, neither is required on its own).
   def field_display_vars
-    fields = %w[first_name last_name email phone_number address city zip_code notes]
-    fields.flat_map { |field|
+    fields = %w[email phone_number address city zip_code notes]
+    vars = fields.flat_map { |field|
       [ [ "display_#{field}".to_sym, Setting.get("display_#{field}") ],
        [ "require_#{field}".to_sym, Setting.get("require_#{field}") ] ]
     }.to_h
+    if Setting.get("require_phone_or_email", "1") == "1"
+      vars[:require_email] = "0"
+      vars[:require_phone_number] = "0"
+    end
+    vars
   end
 end

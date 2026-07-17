@@ -1,6 +1,43 @@
 ---
 sk:
   ea:
+    embedding: Vloženie do webu
+    allow_iframe_embedding: Povoliť vloženie do iframe
+    iframe_embed_origin: Web, ktorý vloží rezervačnú stránku
+    embed_code: Kód na vloženie
+    embed_hint: Vložte tento kód na stránku vášho webu, kde sa má zobraziť rezervačný formulár; rám sa sám prispôsobí.
+    copy: Kopírovať
+    import_data: Import údajov
+    import_hint: Nahrajte CSV export z 10to8, najprv ho analyzujte a potom importujte vybrané typy záznamov.
+    import_phases: Typy záznamov
+    analyze: Analyzovať
+    start_import: Spustiť import
+    create_providers: Vytvoriť chýbajúcich poskytovateľov
+    days_back: Dní dozadu
+    days_forward: Dní dopredu
+    import_running: Import beží...
+    import_complete: Import dokončený.
+    created: vytvorené
+    matched: spárované
+    skipped: preskočené
+    no_file_selected: Nie je vybraný žiadny súbor.
+    reset_database: Resetovať databázu
+    reset_database_warning: Týmto natrvalo vymažete všetky termíny, zákazníkov, poskytovateľov, sekretárov, služby a kategórie. Administrátorské účty a nastavenia zostanú. Nedá sa vrátiť späť.
+    reset_confirmation_hint: Napíšte RESET na aktiváciu tlačidla.
+    reset_database_done: Databáza bola resetovaná.
+    captcha_provider: Poskytovateľ captcha
+    turnstile_site_key: Kľúč webu Turnstile
+    turnstile_secret_key: Tajný kľúč Turnstile
+    turnstile_verification_failed: Overenie captcha zlyhalo, skúste to znova.
+    phone_or_email_required: Zadajte telefónne číslo alebo e-mailovú adresu.
+    require_phone_or_email_label: Vyžadovať telefón alebo e-mail (stačí jedno)
+    booking_display_mode: Zobrazenie rezervácie
+    display_as_dropdown: Rozbaľovací zoznam
+    display_as_cards: Karty
+    picture: Obrázok
+    remove_picture: Odstrániť obrázok
+    select_provider_first: Najprv vyberte poskytovateľa
+    select_service_first: Najprv vyberte službu
     page_title: Rezervácie
     service_and_provider: Vyberte si službu a pracovníka
     select_service: Vyberte si službu

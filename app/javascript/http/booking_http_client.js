@@ -170,11 +170,25 @@ App.Http.Booking = (function () {
         
         if ($altchaPayload.length > 0 && $altchaPayload.val() === '') {
             $altchaHint.text(lang('altcha_verification_failed')).fadeTo(400, 1);
-            
+
             setTimeout(() => {
                 $altchaHint.fadeTo(400, 0);
             }, 3000);
-            
+
+            return;
+        }
+
+        // Turnstile widget: require a solved token before submitting.
+        const $turnstileResponse = $('.cf-turnstile [name="cf-turnstile-response"]');
+        const $turnstileHint = $('#turnstile-hint');
+
+        if ($turnstileResponse.length > 0 && !$turnstileResponse.val()) {
+            $turnstileHint.text(lang('turnstile_verification_failed')).fadeTo(400, 1);
+
+            setTimeout(() => {
+                $turnstileHint.fadeTo(400, 0);
+            }, 3000);
+
             return;
         }
 
@@ -191,6 +205,10 @@ App.Http.Booking = (function () {
         
         if ($altchaPayload.length > 0 && $altchaPayload.val()) {
             data.altcha_payload = $altchaPayload.val();
+        }
+
+        if ($turnstileResponse.length > 0 && $turnstileResponse.val()) {
+            data.cf_turnstile_response = $turnstileResponse.val();
         }
 
         if (vars('manage_mode')) {
@@ -239,10 +257,24 @@ App.Http.Booking = (function () {
                     setTimeout(() => {
                         $altchaHint.fadeTo(400, 0);
                     }, 3000);
-                    
+
                     // Reset ALTCHA widget
                     if (App.Utils.Altcha) {
                         App.Utils.Altcha.reset('altcha-widget');
+                    }
+
+                    return false;
+                }
+
+                if (response.turnstile_verification === false) {
+                    $turnstileHint.text(lang('turnstile_verification_failed')).fadeTo(400, 1);
+
+                    setTimeout(() => {
+                        $turnstileHint.fadeTo(400, 0);
+                    }, 3000);
+
+                    if (window.turnstile) {
+                        window.turnstile.reset();
                     }
 
                     return false;

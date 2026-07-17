@@ -1,6 +1,43 @@
 ---
 cs:
   ea:
+    embedding: Vložení do webu
+    allow_iframe_embedding: Povolit vložení do iframe
+    iframe_embed_origin: Web, který vloží rezervační stránku
+    embed_code: Kód pro vložení
+    embed_hint: Vložte tento kód na stránku vašeho webu, kde se má zobrazit rezervační formulář; rám se sám přizpůsobí.
+    copy: Kopírovat
+    import_data: Import dat
+    import_hint: Nahrajte CSV export z 10to8, nejprve jej analyzujte a poté importujte vybrané typy záznamů.
+    import_phases: Typy záznamů
+    analyze: Analyzovat
+    start_import: Spustit import
+    create_providers: Vytvořit chybějící poskytovatele
+    days_back: Dnů zpět
+    days_forward: Dnů dopředu
+    import_running: Import běží...
+    import_complete: Import dokončen.
+    created: vytvořeno
+    matched: spárováno
+    skipped: přeskočeno
+    no_file_selected: Není vybrán žádný soubor.
+    reset_database: Resetovat databázi
+    reset_database_warning: Tímto trvale smažete všechny schůzky, zákazníky, poskytovatele, sekretáře, služby a kategorie. Administrátorské účty a nastavení zůstanou. Nelze vrátit zpět.
+    reset_confirmation_hint: Napište RESET pro aktivaci tlačítka.
+    reset_database_done: Databáze byla resetována.
+    captcha_provider: Poskytovatel captcha
+    turnstile_site_key: Klíč webu Turnstile
+    turnstile_secret_key: Tajný klíč Turnstile
+    turnstile_verification_failed: Ověření captcha se nezdařilo, zkuste to znovu.
+    phone_or_email_required: Zadejte telefonní číslo nebo e-mailovou adresu.
+    require_phone_or_email_label: Vyžadovat telefon nebo e-mail (stačí jedno)
+    booking_display_mode: Zobrazení rezervace
+    display_as_dropdown: Rozbalovací seznam
+    display_as_cards: Karty
+    picture: Obrázek
+    remove_picture: Odebrat obrázek
+    select_provider_first: Nejprve vybrat poskytovatele
+    select_service_first: Nejprve vybrat službu
     page_title: Rezervace schůzky s
     service_and_provider: Výběr služby a poskytovatele
     select_service: Vyberte službu

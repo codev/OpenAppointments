@@ -16,8 +16,7 @@
  */
 App.Pages.Account = (function () {
     const $userId = $('#user-id');
-    const $firstName = $('#first-name');
-    const $lastName = $('#last-name');
+    const $name = $('#name');
     const $email = $('#email');
     const $mobileNumber = $('#mobile-number');
     const $phoneNumber = $('#phone-number');
@@ -97,8 +96,7 @@ App.Pages.Account = (function () {
      */
     function deserialize(account) {
         $userId.val(account.id);
-        $firstName.val(account.first_name);
-        $lastName.val(account.last_name);
+        $name.val(account.name);
         $email.val(account.email);
         $mobileNumber.val(account.mobile_number);
         $phoneNumber.val(account.phone_number);
@@ -124,8 +122,7 @@ App.Pages.Account = (function () {
     function serialize() {
         return {
             id: $userId.val(),
-            first_name: $firstName.val(),
-            last_name: $lastName.val(),
+            name: $name.val(),
             email: $email.val(),
             mobile_number: $mobileNumber.val(),
             phone_number: $phoneNumber.val(),
@@ -160,7 +157,7 @@ App.Pages.Account = (function () {
         App.Http.Account.save(account).done(() => {
             App.Layouts.Backend.displayNotification(lang('settings_saved'));
 
-            $footerUserDisplayName.text('Hello, ' + $firstName.val() + ' ' + $lastName.val() + '!');
+            $footerUserDisplayName.text('Hello, ' + $name.val() + '!');
         });
     }
 

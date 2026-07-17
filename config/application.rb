@@ -46,6 +46,14 @@ module OpenAppointments
     # EA reuses one CSRF token across many AJAX calls; per-form tokens would break that.
     config.action_controller.per_form_csrf_tokens = false
 
+    # Embedded booking iframe: cross-site POSTs need the session cookie, so the
+    # public flow gets SameSite=None when embedding is enabled (see Embedding).
+    config.action_dispatch.cookies_same_site_protection = lambda do |request|
+      Embedding.same_site_for(request.path)
+    rescue StandardError
+      :lax
+    end
+
     # i18n: 41 EA languages under config/locales (ISO-ish codes). Fall back to English
     # for any missing key so a partial translation never renders a blank string.
     config.i18n.available_locales = %i[

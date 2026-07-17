@@ -6,8 +6,6 @@ module Api
     class UserSerializer < BaseSerializer
       MAP = {
         "id" => "id",
-        "firstName" => "first_name",
-        "lastName" => "last_name",
         "email" => "email",
         "mobile" => "mobile_number",
         "phone" => "phone_number",
@@ -22,11 +20,15 @@ module Api
         "roleId" => "id_roles"
       }.freeze
 
-      SEARCH_COLUMNS = %w[first_name last_name email phone_number mobile_number address city zip_code notes].freeze
+      SEARCH_COLUMNS = %w[users.name email phone_number mobile_number address city zip_code notes].freeze
 
       class << self
+        # EA compat shim: the db has one name column but the API keeps the EA v1
+        # firstName/lastName keys (firstName carries the full name, lastName is "").
         def encode(record)
           payload = super
+          payload["firstName"] = record.name
+          payload["lastName"] = ""
           payload["settings"] = settings_encode(record.settings) if record.settings
           payload
         end
@@ -42,8 +44,18 @@ module Api
 
         def decode(params, base = {})
           attrs = super
+          if params.key?("firstName") || params.key?("lastName")
+            attrs["name"] = [ params["firstName"], params["lastName"] ].map(&:to_s).map(&:strip).compact_blank.join(" ")
+          end
           attrs["settings"] = settings_decode(params["settings"]) if params.key?("settings")
           attrs
+        end
+
+        # sort=firstName/lastName still works against the single column.
+        def db_field(api_field)
+          return "users.name" if %w[firstName lastName].include?(api_field)
+
+          super
         end
 
         def settings_decode(settings)

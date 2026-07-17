@@ -7,6 +7,7 @@ module BookingPayloads
   # EA get_available_services(true): non-private services with >=1 provider, category joined.
   def available_services
     Service.available.joins(:provider_links).distinct
+           .with_attached_picture
            .left_joins(:category)
            .order(:name)
            .select("services.*", "service_categories.name AS service_category_name",
@@ -23,20 +24,32 @@ module BookingPayloads
       "attendants_number" => service.attendants_number, "is_private" => service.is_private,
       "id_service_categories" => service.id_service_categories,
       "service_category_name" => service.try(:service_category_name),
-      "service_category_id" => service.try(:service_category_id)
+      "service_category_id" => service.try(:service_category_id),
+      "picture_url" => EaRows.picture_url(service)
     }
+  end
+
+  # Categories of the available services (cards display mode), EA order.
+  def available_categories
+    category_ids = Service.available.joins(:provider_links).distinct.pluck(:id_service_categories).compact
+    ServiceCategory.where(id: category_ids).with_attached_picture.order(:name).map do |category|
+      { "id" => category.id, "name" => category.name, "description" => category.description,
+        "picture_url" => EaRows.picture_url(category) }
+    end
   end
 
   # EA get_available_providers(true) reduced to allowed_provider_fields.
   def available_providers
     User.providers.where(is_private: false)
         .joins(:provider_service_links).distinct
-        .order(:first_name, :last_name, :email)
+        .order(:name, :email)
+        .with_attached_picture
         .includes(:services)
         .map do |provider|
       {
-        "id" => provider.id, "first_name" => provider.first_name, "last_name" => provider.last_name,
-        "services" => provider.services.map(&:id), "timezone" => provider.timezone
+        "id" => provider.id, "name" => provider.name,
+        "services" => provider.services.map(&:id), "timezone" => provider.timezone,
+        "picture_url" => EaRows.picture_url(provider)
       }
     end
   end
@@ -46,7 +59,7 @@ module BookingPayloads
     User.providers.where(is_private: false)
         .joins(:provider_service_links)
         .where(services_providers: { id_services: service_id })
-        .order(:first_name, :last_name, :email)
+        .order(:name, :email)
         .distinct
   end
 end

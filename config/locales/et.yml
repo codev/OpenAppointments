@@ -1,6 +1,43 @@
 ---
 et:
   ea:
+    embedding: Manustamine
+    allow_iframe_embedding: Luba manustamine iframe'i
+    iframe_embed_origin: Veebisait, mis manustab broneerimislehe
+    embed_code: Manustamiskood
+    embed_hint: Kleepige see kood oma veebisaidi lehele, kus broneerimisvorm peab kuvatama; raam kohandab oma kõrgust ise.
+    copy: Kopeeri
+    import_data: Andmete import
+    import_hint: Laadige üles 10to8 CSV eksport, analüüsige seda esmalt ja seejärel importige valitud kirjetüübid.
+    import_phases: Kirjetüübid
+    analyze: Analüüsi
+    start_import: Alusta importi
+    create_providers: Loo puuduvad teenusepakkujad
+    days_back: Päevi tagasi
+    days_forward: Päevi edasi
+    import_running: Import käib...
+    import_complete: Import on lõpetatud.
+    created: loodud
+    matched: sobitatud
+    skipped: vahele jäetud
+    no_file_selected: Faili pole valitud.
+    reset_database: Lähtesta andmebaas
+    reset_database_warning: See kustutab jäädavalt kõik broneeringud, kliendid, teenusepakkujad, sekretärid, teenused ja kategooriad. Administraatori kontod ja seaded säilivad. Seda ei saa tagasi võtta.
+    reset_confirmation_hint: Nupu lubamiseks sisestage RESET.
+    reset_database_done: Andmebaas on lähtestatud.
+    captcha_provider: Captcha pakkuja
+    turnstile_site_key: Turnstile'i saidi võti
+    turnstile_secret_key: Turnstile'i salajane võti
+    turnstile_verification_failed: Captcha kontroll ebaõnnestus, proovige uuesti.
+    phone_or_email_required: Palun sisestage telefoninumber või e-posti aadress.
+    require_phone_or_email_label: Nõua telefoninumbrit või e-posti (ühest piisab)
+    booking_display_mode: Broneeringu kuvamisviis
+    display_as_dropdown: Rippmenüü
+    display_as_cards: Kaardid
+    picture: Pilt
+    remove_picture: Eemalda pilt
+    select_provider_first: Vali kõigepealt teenusepakkuja
+    select_service_first: Vali kõigepealt teenus
     page_title: Broneeri aeg
     service_and_provider: Vali teenus ja isik
     select_service: Vali teenus

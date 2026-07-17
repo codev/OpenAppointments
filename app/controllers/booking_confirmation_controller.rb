@@ -1,5 +1,6 @@
 # Booking success page, port of EA's Booking_confirmation controller.
 class BookingConfirmationController < ApplicationController
+  include EmbeddableFrame
   layout "message"
 
   # GET /booking_confirmation/of/:appointment_hash

@@ -1,6 +1,43 @@
 ---
 ar:
   ea:
+    embedding: التضمين
+    allow_iframe_embedding: السماح بالتضمين داخل iframe
+    iframe_embed_origin: الموقع الذي سيضمن صفحة الحجز
+    embed_code: كود التضمين
+    embed_hint: الصق هذا الكود في صفحة موقعك التي ستعرض نموذج الحجز؛ يتغير حجم الإطار تلقائيا.
+    copy: نسخ
+    import_data: استيراد البيانات
+    import_hint: ارفع ملف CSV مصدرا من 10to8، حلله أولا ثم استورد أنواع السجلات المحددة.
+    import_phases: أنواع السجلات
+    analyze: تحليل
+    start_import: بدء الاستيراد
+    create_providers: إنشاء مقدمي الخدمة الناقصين
+    days_back: أيام للخلف
+    days_forward: أيام للأمام
+    import_running: الاستيراد جار...
+    import_complete: اكتمل الاستيراد.
+    created: أنشئ
+    matched: مطابق
+    skipped: متخطى
+    no_file_selected: لم يتم اختيار ملف.
+    reset_database: إعادة تعيين قاعدة البيانات
+    reset_database_warning: سيحذف هذا نهائيا جميع المواعيد والعملاء ومقدمي الخدمة والسكرتارية والخدمات والفئات. تبقى حسابات المديرين والإعدادات. لا يمكن التراجع عن هذا.
+    reset_confirmation_hint: اكتب RESET لتفعيل الزر.
+    reset_database_done: تمت إعادة تعيين قاعدة البيانات.
+    captcha_provider: مزود الكابتشا
+    turnstile_site_key: مفتاح الموقع Turnstile
+    turnstile_secret_key: المفتاح السري Turnstile
+    turnstile_verification_failed: فشل التحقق من الكابتشا، حاول مرة أخرى.
+    phone_or_email_required: يرجى إدخال رقم هاتف أو بريد إلكتروني.
+    require_phone_or_email_label: طلب رقم هاتف أو بريد إلكتروني (يكفي أحدهما)
+    booking_display_mode: طريقة عرض الحجز
+    display_as_dropdown: قائمة منسدلة
+    display_as_cards: بطاقات
+    picture: صورة
+    remove_picture: إزالة الصورة
+    select_provider_first: اختيار مقدم الخدمة أولا
+    select_service_first: اختيار الخدمة أولا
     page_title: احجز موعد مع
     service_and_provider: اختر الخدمة والمزود
     select_service: اختر الخدمة

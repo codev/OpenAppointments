@@ -3,8 +3,6 @@ module Api
     class CustomerSerializer < BaseSerializer
       MAP = {
         "id" => "id",
-        "firstName" => "first_name",
-        "lastName" => "last_name",
         "email" => "email",
         "phone" => "phone_number",
         "address" => "address",
@@ -21,7 +19,28 @@ module Api
         "ldapDn" => "ldap_dn"
       }.freeze
 
-      SEARCH_COLUMNS = %w[first_name last_name email phone_number mobile_number address city zip_code notes].freeze
+      SEARCH_COLUMNS = %w[users.name email phone_number mobile_number address city zip_code notes].freeze
+
+      class << self
+        # EA compat shim: single name column behind the EA v1 firstName/lastName keys.
+        def encode(record)
+          super.merge("firstName" => record.name, "lastName" => "")
+        end
+
+        def decode(params, base = {})
+          attrs = super
+          if params.key?("firstName") || params.key?("lastName")
+            attrs["name"] = [ params["firstName"], params["lastName"] ].map(&:to_s).map(&:strip).compact_blank.join(" ")
+          end
+          attrs
+        end
+
+        def db_field(api_field)
+          return "users.name" if %w[firstName lastName].include?(api_field)
+
+          super
+        end
+      end
     end
   end
 end

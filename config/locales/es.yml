@@ -1,6 +1,43 @@
 ---
 es:
   ea:
+    embedding: Incrustación
+    allow_iframe_embedding: Permitir incrustar en un iframe
+    iframe_embed_origin: Sitio web que incrustará la página de reservas
+    embed_code: Código de incrustación
+    embed_hint: Pegue este código en la página de su sitio web que mostrará el formulario de reservas; el marco se ajusta solo.
+    copy: Copiar
+    import_data: Importar datos
+    import_hint: Suba un CSV exportado de 10to8, analícelo primero y luego importe los tipos de registros seleccionados.
+    import_phases: Tipos de registros
+    analyze: Analizar
+    start_import: Iniciar importación
+    create_providers: Crear proveedores que falten
+    days_back: Días hacia atrás
+    days_forward: Días hacia adelante
+    import_running: Importación en curso...
+    import_complete: Importación completada.
+    created: creados
+    matched: coincidentes
+    skipped: omitidos
+    no_file_selected: Ningún archivo seleccionado.
+    reset_database: Restablecer base de datos
+    reset_database_warning: Esto elimina permanentemente todas las citas, clientes, proveedores, secretarios, servicios y categorías. Las cuentas de administrador y la configuración se conservan. No se puede deshacer.
+    reset_confirmation_hint: Escriba RESET para habilitar el botón.
+    reset_database_done: La base de datos se ha restablecido.
+    captcha_provider: Proveedor de captcha
+    turnstile_site_key: Clave del sitio de Turnstile
+    turnstile_secret_key: Clave secreta de Turnstile
+    turnstile_verification_failed: La verificación del captcha ha fallado, inténtelo de nuevo.
+    phone_or_email_required: Indique un número de teléfono o una dirección de correo electrónico.
+    require_phone_or_email_label: Requerir teléfono o correo electrónico (basta con uno)
+    booking_display_mode: Modo de visualización de la reserva
+    display_as_dropdown: Lista desplegable
+    display_as_cards: Tarjetas
+    picture: Imagen
+    remove_picture: Eliminar imagen
+    select_provider_first: Seleccionar primero el proveedor
+    select_service_first: Seleccionar primero el servicio
     page_title: Agendar una cita con
     service_and_provider: Seleccione Servicio y Proveedor
     select_service: Seleccione Servicio

@@ -29,7 +29,9 @@ module ScriptVars
       index_page: "",
       csrf_token: form_authenticity_token,
       language: language,
-      language_code: Localization.code_for(language)
+      language_code: Localization.code_for(language),
+      # The layouts' language popover reads this on every page (EA global config var).
+      available_languages: Localization.available_languages
     }
   end
 end

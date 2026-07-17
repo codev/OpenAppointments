@@ -1,6 +1,43 @@
 ---
 'no':
   ea:
+    embedding: Innbygging
+    allow_iframe_embedding: Tillat innbygging i en iframe
+    iframe_embed_origin: Nettsted som skal bygge inn bookingsiden
+    embed_code: Innbyggingskode
+    embed_hint: Lim inn denne koden på siden på nettstedet ditt som skal vise bookingskjemaet; rammen tilpasser høyden selv.
+    copy: Kopier
+    import_data: Importer data
+    import_hint: Last opp en 10to8 CSV-eksport, analyser den først, og importer deretter de valgte posttypene.
+    import_phases: Posttyper
+    analyze: Analyser
+    start_import: Start import
+    create_providers: Opprett manglende tilbydere
+    days_back: Dager tilbake
+    days_forward: Dager fremover
+    import_running: Import pågår...
+    import_complete: Import fullført.
+    created: opprettet
+    matched: matchet
+    skipped: hoppet over
+    no_file_selected: Ingen fil valgt.
+    reset_database: Tilbakestill database
+    reset_database_warning: Dette sletter permanent alle avtaler, kunder, tilbydere, sekretærer, tjenester og kategorier. Administratorkontoer og innstillinger beholdes. Kan ikke angres.
+    reset_confirmation_hint: Skriv RESET for å aktivere knappen.
+    reset_database_done: Databasen er tilbakestilt.
+    captcha_provider: Captcha-leverandør
+    turnstile_site_key: Turnstile-nettstedsnøkkel
+    turnstile_secret_key: Turnstile-hemmelig nøkkel
+    turnstile_verification_failed: Captcha-verifiseringen mislyktes, prøv igjen.
+    phone_or_email_required: Oppgi et telefonnummer eller en e-postadresse.
+    require_phone_or_email_label: Krev telefonnummer eller e-post (ett av dem holder)
+    booking_display_mode: Visningsmodus for booking
+    display_as_dropdown: Nedtrekksliste
+    display_as_cards: Kort
+    picture: Bilde
+    remove_picture: Fjern bilde
+    select_provider_first: Velg tilbyder først
+    select_service_first: Velg tjeneste først
     page_title: Bestill avtale med
     service_and_provider: Tjeneste & Leverandør
     select_service: Velg Tjeneste

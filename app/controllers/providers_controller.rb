@@ -1,12 +1,13 @@
 # Providers admin CRUD, port of EA's Providers controller.
 class ProvidersController < ApplicationController
   include BackendPage
+  include PictureUpload
   include UserCrud
 
   layout "backend"
 
   # EA allowed_provider_fields (mobile_number is not allowed, matching EA).
-  ALLOWED_FIELDS = %w[id first_name last_name email alt_number phone_number address city state
+  ALLOWED_FIELDS = %w[id name email alt_number phone_number address city state
                       zip_code notes timezone language is_private ldap_dn id_roles settings
                       services].freeze
   ALLOWED_SETTING_FIELDS = %w[username password working_plan working_plan_exceptions
@@ -130,4 +131,8 @@ class ProvidersController < ApplicationController
       ServiceProviderLink.create!(id_users: provider.id, id_services: service_id)
     end
   end
+
+  def picture_record = User.providers.find(params[:id])
+
+  def picture_permission_resource = :users
 end

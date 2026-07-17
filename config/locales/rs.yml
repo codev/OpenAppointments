@@ -1,6 +1,43 @@
 ---
 rs:
   ea:
+    embedding: Ugradnja
+    allow_iframe_embedding: Dozvoli ugradnju u iframe
+    iframe_embed_origin: Sajt koji ce ugraditi stranicu za rezervacije
+    embed_code: Kod za ugradnju
+    embed_hint: Nalepite ovaj kod na stranicu vaseg sajta koja treba da prikaze obrazac za rezervacije; okvir se sam prilagodava.
+    copy: Kopiraj
+    import_data: Uvoz podataka
+    import_hint: Otpremite 10to8 CSV izvoz, prvo ga analizirajte pa uvezite izabrane vrste zapisa.
+    import_phases: Vrste zapisa
+    analyze: Analiziraj
+    start_import: Pokreni uvoz
+    create_providers: Kreiraj nedostajuce pruzaoce
+    days_back: Dana unazad
+    days_forward: Dana unapred
+    import_running: Uvoz u toku...
+    import_complete: Uvoz zavrsen.
+    created: kreirano
+    matched: uparen
+    skipped: preskoceno
+    no_file_selected: Nije izabran fajl.
+    reset_database: Resetuj bazu podataka
+    reset_database_warning: Ovo trajno brise sve termine, klijente, pruzaoce, sekretare, usluge i kategorije. Administratorski nalozi i podesavanja ostaju. Nepovratno.
+    reset_confirmation_hint: Upisite RESET da omogucite dugme.
+    reset_database_done: Baza podataka je resetovana.
+    captcha_provider: Pružalac captche
+    turnstile_site_key: Turnstile ključ sajta
+    turnstile_secret_key: Turnstile tajni ključ
+    turnstile_verification_failed: Captcha provera nije uspela, pokušajte ponovo.
+    phone_or_email_required: Unesite broj telefona ili email adresu.
+    require_phone_or_email_label: Zahtevaj broj telefona ili email (dovoljno je jedno)
+    booking_display_mode: Nacin prikaza rezervacije
+    display_as_dropdown: Padajuca lista
+    display_as_cards: Kartice
+    picture: Slika
+    remove_picture: Ukloni sliku
+    select_provider_first: Prvo izaberite pružaoca
+    select_service_first: Prvo izaberite uslugu
     page_title: Zakažite posetu
     service_and_provider: Usluga i pružalac
     select_service: Izaberite uslugu

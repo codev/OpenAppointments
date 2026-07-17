@@ -34,6 +34,10 @@ time_format:
   name: time_format
   value: regular
 
+first_weekday:
+  name: first_weekday
+  value: sunday
+
 company_working_plan:
   name: company_working_plan
   value: '{"monday":{"start":"09:00","end":"18:00","breaks":[{"start":"14:30","end":"15:00"}]},"tuesday":{"start":"09:00","end":"18:00","breaks":[]},"wednesday":{"start":"09:00","end":"18:00","breaks":[]},"thursday":{"start":"09:00","end":"18:00","breaks":[]},"friday":{"start":"09:00","end":"18:00","breaks":[]},"saturday":null,"sunday":null}'

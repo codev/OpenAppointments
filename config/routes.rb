@@ -37,6 +37,18 @@ Rails.application.routes.draw do
     post "#{resource}/destroy" => "#{resource}#destroy"
   end
 
+  # 10to8 import page
+  get "import" => "import#index"
+  post "import/analyze" => "import#analyze"
+  post "import/start" => "import#start"
+  get "import/status" => "import#status"
+  post "import/reset" => "import#reset"
+
+  # Record pictures (cards display mode)
+  %w[providers secretaries admins services service_categories].each do |resource|
+    post "#{resource}/:id/picture" => "#{resource}#save_picture"
+  end
+
   # Public booking wizard
   root "booking#index"
   get "booking" => "booking#index"
@@ -54,7 +66,7 @@ Rails.application.routes.draw do
 
   # Settings pages
   %w[general_settings business_settings booking_settings legal_settings api_settings
-     altcha_settings google_calendar_settings google_analytics_settings
+     altcha_settings embed_settings google_calendar_settings google_analytics_settings
      matomo_analytics_settings jitsi_settings ldap_settings].each do |resource|
     get resource => "#{resource}#index"
     post "#{resource}/save" => "#{resource}#save"

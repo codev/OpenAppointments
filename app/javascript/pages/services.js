@@ -308,6 +308,7 @@ App.Pages.Services = (function () {
      * Resets the service tab form back to its initial state.
      */
     function resetForm() {
+        App.Utils.PictureUpload.reset();
         $filterServices.find('.selected').removeClass('selected');
         $filterServices.find('button').prop('disabled', false);
         $filterServices.find('.results').css('color', '');
@@ -338,6 +339,7 @@ App.Pages.Services = (function () {
      * @param {Object} service Contains the service record data.
      */
     function display(service) {
+        App.Utils.PictureUpload.setRecord('services', service.id, service.picture_url);
         $id.val(service.id);
         $name.val(service.name);
         $duration.val(service.duration);

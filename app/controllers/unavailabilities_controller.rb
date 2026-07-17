@@ -126,8 +126,8 @@ class UnavailabilitiesController < ApplicationController
          .where(<<~SQL.squish, pattern: pattern)
            appointments.start_datetime LIKE :pattern OR appointments.end_datetime LIKE :pattern
            OR appointments.location LIKE :pattern OR appointments.booking_hash LIKE :pattern
-           OR appointments.notes LIKE :pattern OR providers.first_name LIKE :pattern
-           OR providers.last_name LIKE :pattern OR providers.email LIKE :pattern
+           OR appointments.notes LIKE :pattern OR providers.name LIKE :pattern
+           OR providers.email LIKE :pattern
            OR providers.phone_number LIKE :pattern
          SQL
   end

@@ -88,6 +88,13 @@
                         </a>
                     <% end %>
 
+                    <% if can?(:edit, :system_settings) %>
+                        <a class="dropdown-item" href="/import">
+                            <i class="fas fa-file-import me-2"></i>
+                            <%= lang('import_data') %>
+                        </a>
+                    <% end %>
+
                     <a class="dropdown-item" href="/account">
                         <i class="fas fa-user me-2"></i>
                         <%= lang('account') %>

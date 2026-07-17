@@ -1,5 +1,6 @@
 # Session language switcher, port of EA's Localization controller.
 class LocalizationController < ApplicationController
+  include EmbeddableFrame
   # POST /localization/change_language
   def change_language
     language = params[:language].to_s

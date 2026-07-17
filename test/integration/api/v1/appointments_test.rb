@@ -30,14 +30,14 @@ module Api
 
       test "with embeds raw service, provider and customer rows after fields projection" do
         api_get "/api/v1/appointments/#{appointments(:upcoming).id}", fields: "id", with: "customer,service"
-        assert_equal "James", json["customer"]["first_name"]
+        assert_equal "James Doe", json["customer"]["name"]
         assert_equal "Trim Cut", json["service"]["name"]
         assert_not json.key?("provider")
         assert_not json.key?("start")
 
         api_get "/api/v1/appointments", with: "provider"
         appointment = json.find { |a| a["id"] == appointments(:upcoming).id }
-        assert_equal "Jane", appointment["provider"]["first_name"]
+        assert_equal "Jane Doe", appointment["provider"]["name"]
       end
 
       test "unknown with relation returns the EA json error" do

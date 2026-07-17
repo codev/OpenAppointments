@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-    <meta name="theme-color" content="#35A768">
+    <meta name="theme-color" content="#39824f">
     <meta name="google" content="notranslate">
 
     <meta property="og:title" content="<%= lang('page_title') %> <%= vars(:company_name) %> | OpenAppointments"/>
@@ -18,7 +18,8 @@
 
     <title><%= lang('page_title') %> <%= vars(:company_name) %> | OpenAppointments</title>
 
-    <link rel="icon" type="image/x-icon" href="<%= image_path('favicon.ico') %>">
+    <link rel="icon" type="image/svg+xml" href="<%= image_path("logo.svg") %>">
+    <link rel="icon" type="image/x-icon" href="<%= image_path("favicon.ico") %>">
     <link rel="icon" sizes="192x192" href="<%= image_path('logo.png') %>">
 
     <%= stylesheet_link_tag "vendor/cookieconsent/cookieconsent.min", "vendor/flatpickr/flatpickr.min",
@@ -71,6 +72,31 @@
           "utils/string", "utils/url", "utils/validation" %>
 <% if setting("altcha_enabled") == "1" %>
     <%= ea_js "utils/altcha" %>
+<% end %>
+<% if TurnstileChallenge.enabled? %>
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+<% end %>
+<% if Embedding.enabled? %>
+    <%# Embedded in an iframe: report the document height so the parent can resize it. %>
+    <script>
+        (function () {
+            if (window.self === window.top) return;
+            var target = <%= Embedding.origin.presence.to_json %> || '*';
+            var post = function () {
+                window.parent.postMessage(
+                    {type: 'openappointments:height', height: document.documentElement.scrollHeight},
+                    target,
+                );
+            };
+            window.addEventListener('load', post);
+            window.addEventListener('resize', post);
+            new MutationObserver(post).observe(document.documentElement, {
+                subtree: true,
+                childList: true,
+                attributes: true,
+            });
+        })();
+    </script>
 <% end %>
 <%= ea_js "layouts/booking_layout", "http/localization_http_client" %>
 

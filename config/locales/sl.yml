@@ -1,6 +1,43 @@
 ---
 sl:
   ea:
+    embedding: Vdelava
+    allow_iframe_embedding: Dovoli vdelavo v iframe
+    iframe_embed_origin: Spletno mesto, ki bo vdelalo stran za rezervacije
+    embed_code: Koda za vdelavo
+    embed_hint: Prilepite to kodo na stran svojega spletnega mesta, kjer naj se prikaze obrazec za rezervacije; okvir se sam prilagodi.
+    copy: Kopiraj
+    import_data: Uvoz podatkov
+    import_hint: Nalozite 10to8 CSV izvoz, najprej ga analizirajte in nato uvozite izbrane vrste zapisov.
+    import_phases: Vrste zapisov
+    analyze: Analiziraj
+    start_import: Zazeni uvoz
+    create_providers: Ustvari manjkajoce izvajalce
+    days_back: Dni nazaj
+    days_forward: Dni naprej
+    import_running: Uvoz poteka...
+    import_complete: Uvoz koncan.
+    created: ustvarjeno
+    matched: ujemanje
+    skipped: preskoceno
+    no_file_selected: Nobena datoteka ni izbrana.
+    reset_database: Ponastavi bazo podatkov
+    reset_database_warning: To trajno izbrise vse termine, stranke, izvajalce, tajnike, storitve in kategorije. Skrbniski racuni in nastavitve ostanejo. Nepovratno.
+    reset_confirmation_hint: Vpisite RESET, da omogocite gumb.
+    reset_database_done: Baza podatkov je ponastavljena.
+    captcha_provider: Ponudnik captche
+    turnstile_site_key: Turnstile ključ strani
+    turnstile_secret_key: Turnstile skrivni ključ
+    turnstile_verification_failed: Preverjanje captcha ni uspelo, poskusite znova.
+    phone_or_email_required: Vnesite telefonsko številko ali e-poštni naslov.
+    require_phone_or_email_label: Zahtevaj telefon ali e-pošto (eno zadostuje)
+    booking_display_mode: Nacin prikaza rezervacije
+    display_as_dropdown: Spustni seznam
+    display_as_cards: Kartice
+    picture: Slika
+    remove_picture: Odstrani sliko
+    select_provider_first: Najprej izberite izvajalca
+    select_service_first: Najprej izberite storitev
     page_title: Rezerviraj termin z
     service_and_provider: Storitev in ponudnik
     select_service: Izberi storitev
