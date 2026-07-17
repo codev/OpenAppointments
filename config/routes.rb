@@ -15,6 +15,18 @@ Rails.application.routes.draw do
   # Backend (placeholder until P5)
   get "calendar" => "calendar#index", as: :calendar
 
-  # EA's default controller is booking; placeholder until P4.
-  root "login#index"
+  # Public booking wizard
+  root "booking#index"
+  get "booking" => "booking#index"
+  get "booking/reschedule/:appointment_hash" => "booking#reschedule"
+  post "booking/get_available_hours" => "booking#get_available_hours"
+  get "booking/get_unavailable_dates" => "booking#get_unavailable_dates"
+  post "booking/register" => "booking#register"
+  get "booking_confirmation/of/:appointment_hash" => "booking_confirmation#of", as: :booking_confirmation
+  # EA has no GET cancellation page: the frame form POSTs and non-POST/empty-reason requests get 403.
+  post "booking_cancellation/of/:appointment_hash" => "booking_cancellation#of"
+  get "captcha/altcha_challenge" => "captcha#altcha_challenge"
+  post "consents/save" => "consents#save"
+  post "privacy/delete_personal_information" => "privacy#delete_personal_information"
+  post "localization/change_language" => "localization#change_language"
 end
