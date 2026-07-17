@@ -15,11 +15,11 @@
     "scheduler": {
       "sync": {
         "schedule": "*/15 * * * *",
-        "command": "cd /app/code && bin/rails openappointments:sync"
+        "command": "bash -c 'set -a; source /app/data/env; set +a; cd /app/code && HOME=/tmp bin/rails openappointments:sync'"
       },
       "cleanup": {
         "schedule": "0 3 * * *",
-        "command": "cd /app/code && bin/rails openappointments:cleanup"
+        "command": "bash -c 'set -a; source /app/data/env; set +a; cd /app/code && HOME=/tmp bin/rails openappointments:cleanup'"
       }
     }
   },
