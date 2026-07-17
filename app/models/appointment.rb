@@ -37,6 +37,13 @@ class Appointment < ApplicationRecord
       .where.not(id_services: service_id).where.not(id_services: nil).count
   end
 
+  # EA has_provider_conflict: (existing_start < new_end) AND (existing_end > new_start).
+  def self.provider_conflict?(provider_id, start_datetime, end_datetime, exclude_appointment_id = nil)
+    relation = where(id_users_provider: provider_id).overlapping(start_datetime, end_datetime)
+    relation = relation.where.not(id: exclude_appointment_id) if exclude_appointment_id
+    relation.exists?
+  end
+
   before_create :generate_booking_hash
 
   validates :start_datetime, :end_datetime, presence: true

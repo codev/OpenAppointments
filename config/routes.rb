@@ -12,8 +12,30 @@ Rails.application.routes.draw do
   get "recovery/reset" => "recovery#reset", as: :recovery_reset
   post "recovery/complete" => "recovery#complete"
 
-  # Backend (placeholder until P5)
+  # Backend calendar
   get "calendar" => "calendar#index", as: :calendar
+  get "calendar/reschedule/:appointment_hash" => "calendar#reschedule"
+  post "calendar/get_calendar_appointments" => "calendar#get_calendar_appointments"
+  post "calendar/get_calendar_appointments_for_table_view" => "calendar#get_calendar_appointments_for_table_view"
+  post "calendar/save_appointment" => "calendar#save_appointment"
+  post "calendar/delete_appointment" => "calendar#delete_appointment"
+  post "calendar/save_unavailability" => "calendar#save_unavailability"
+  post "calendar/delete_unavailability" => "calendar#delete_unavailability"
+  post "calendar/save_working_plan_exception" => "calendar#save_working_plan_exception"
+  post "calendar/delete_working_plan_exception" => "calendar#delete_working_plan_exception"
+
+  # Backend CRUD pages (EA pattern: page GET + find/search/store/update/destroy).
+  # EA declares find as GET but the ported JS clients $.post it, so find takes both.
+  # Unavailabilities has no page in EA, only the JSON endpoints.
+  %w[customers services service_categories providers secretaries admins
+     unavailabilities blocked_periods webhooks].each do |resource|
+    get resource => "#{resource}#index" unless resource == "unavailabilities"
+    match "#{resource}/find" => "#{resource}#find", via: [ :get, :post ]
+    post "#{resource}/search" => "#{resource}#search"
+    post "#{resource}/store" => "#{resource}#store"
+    post "#{resource}/update" => "#{resource}#update"
+    post "#{resource}/destroy" => "#{resource}#destroy"
+  end
 
   # Public booking wizard
   root "booking#index"
@@ -29,4 +51,20 @@ Rails.application.routes.draw do
   post "consents/save" => "consents#save"
   post "privacy/delete_personal_information" => "privacy#delete_personal_information"
   post "localization/change_language" => "localization#change_language"
+
+  # Settings pages
+  %w[general_settings business_settings booking_settings legal_settings api_settings
+     altcha_settings google_calendar_settings google_analytics_settings
+     matomo_analytics_settings jitsi_settings ldap_settings].each do |resource|
+    get resource => "#{resource}#index"
+    post "#{resource}/save" => "#{resource}#save"
+  end
+  post "business_settings/apply_global_working_plan" => "business_settings#apply_global_working_plan"
+  post "altcha_settings/generate_key" => "altcha_settings#generate_key"
+  post "ldap_settings/search" => "ldap_settings#search"
+  get "integrations" => "integrations#index"
+  get "about" => "about#index"
+  get "account" => "account#index"
+  post "account/save" => "account#save"
+  post "account/validate_username" => "account#validate_username"
 end

@@ -26,6 +26,11 @@ module EaHelper
     raw ERB::Util.json_escape(payload.to_json) # rubocop:disable Rails/OutputSafety
   end
 
+  # EA Timezones::to_array equivalent: flat {identifier => label}.
+  def timezones
+    @timezones ||= grouped_timezones.values.reduce({}, :merge)
+  end
+
   # EA Timezones::to_grouped_array equivalent: {continent => {identifier => label}},
   # UTC first, generated from ActiveSupport::TimeZone with IANA identifiers.
   def grouped_timezones

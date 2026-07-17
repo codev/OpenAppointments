@@ -10,4 +10,16 @@ module Synchronization
   def appointment_deleted(appointment, provider)
     # P8
   end
+
+  def unavailability_saved(unavailability, provider)
+    # P8
+  end
+
+  def unavailability_deleted(unavailability, provider)
+    # P8
+  end
+
+  def remove_appointment_on_provider_change(appointment_id)
+    # P8
+  end
 end
