@@ -1,0 +1,17 @@
+haircut:
+  name: Trim Cut
+  duration: 30
+  price: 0.00
+  currency: GBP
+  slot_interval: 15
+  attendants_number: 1
+  category: hair
+
+group_session:
+  name: Group Session
+  duration: 60
+  price: 0.00
+  currency: GBP
+  slot_interval: 30
+  attendants_number: 3
+  category: hair

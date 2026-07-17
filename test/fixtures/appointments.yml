@@ -1,0 +1,17 @@
+# Datetimes quoted: unquoted YAML timestamps parse as UTC Time objects and get shifted.
+upcoming:
+  book_datetime: "2026-07-01 10:00:00"
+  start_datetime: "2026-07-20 10:00:00"
+  end_datetime: "2026-07-20 10:30:00"
+  provider: jane
+  customer: james
+  service: haircut
+  booking_hash: abc123def456
+  status: Booked
+
+lunch_block:
+  start_datetime: "2026-07-20 12:00:00"
+  end_datetime: "2026-07-20 13:00:00"
+  provider: jane
+  is_unavailability: true
+  booking_hash: unavail00001

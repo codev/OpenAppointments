@@ -1,0 +1,11 @@
+book_advance_timeout:
+  name: book_advance_timeout
+  value: "30"
+
+future_booking_limit:
+  name: future_booking_limit
+  value: "90"
+
+company_name:
+  name: company_name
+  value: Test Company

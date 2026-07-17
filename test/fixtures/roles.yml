@@ -1,0 +1,51 @@
+admin:
+  name: Administrator
+  slug: admin
+  is_admin: true
+  appointments: 15
+  customers: 15
+  services: 15
+  users: 15
+  system_settings: 15
+  user_settings: 15
+  webhooks: 15
+  blocked_periods: 15
+
+provider:
+  name: Provider
+  slug: provider
+  is_admin: false
+  appointments: 15
+  customers: 15
+  services: 0
+  users: 0
+  system_settings: 0
+  user_settings: 15
+  webhooks: 0
+  blocked_periods: 0
+
+secretary:
+  name: Secretary
+  slug: secretary
+  is_admin: false
+  appointments: 15
+  customers: 15
+  services: 0
+  users: 0
+  system_settings: 0
+  user_settings: 15
+  webhooks: 0
+  blocked_periods: 0
+
+customer:
+  name: Customer
+  slug: customer
+  is_admin: false
+  appointments: 0
+  customers: 0
+  services: 0
+  users: 0
+  system_settings: 0
+  user_settings: 0
+  webhooks: 0
+  blocked_periods: 0
