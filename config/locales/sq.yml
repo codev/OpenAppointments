@@ -174,22 +174,22 @@ sq:
     hidden: I Fshehur
     business_logic: Logjika e Biznesit
     current_user: Përdoruesi Aktual
-    about_app: Rreth Easy!Appointments
+    about_app: Rreth OpenAppointments
     edit_working_plan_hint: Shënoni më poshtë ditët dhe orët kur kompania juaj do të pranojë takime. Ju do të jeni në gjendje të rregulloni takime në orët e papunuara, por klientët nuk do të jenë në gjendje të rezervojnë takime vetë në periudhat e papunuara. Ky plan pune do të jetë parazgjedhje për çdo rekord të ri ofruesi, por ju do të jeni në gjendje të ndryshoni planin e çdo ofruesi veç e veç duke redaktuar regjistrimin e tij. Pas kësaj, mund të shtoni periudha pushimi.
     edit_breaks_hint: Shtoni pauzat e punës gjatë çdo dite. Këto pauza do të aplikohen për të gjithë ofruesit e rinj.
     book_advance_timeout: Koha e Rezervimit në Avancë
     book_advance_timeout_hint: Përcaktoni kohën (në minuta) përpara se klientët të mund të rezervojnë ose riorganizojnë takime me kompaninë.
     timeout_minutes: Koha e Skadimit (Minuta)
-    about_app_info: Easy!Appointments është një aplikacion web i personalizueshëm që lejon klientët tuaj të rezervojnë takime me ju nëpërmjet internetit. Për më tepër, ofron mundësinë për të sinkronizuar të dhënat tuaja me Google Calendar, në mënyrë që t'i përdorni me shërbime të tjera.
+    about_app_info: OpenAppointments është një aplikacion web i personalizueshëm që lejon klientët tuaj të rezervojnë takime me ju nëpërmjet internetit. Për më tepër, ofron mundësinë për të sinkronizuar të dhënat tuaja me Google Calendar, në mënyrë që t'i përdorni me shërbime të tjera.
     current_version: Versioni Aktual
     support: Mbështetje
-    about_app_support: Nëse hasni ndonjë problem gjatë përdorimit të Easy!Appointments, mund të kërkoni në grupin zyrtar të Google për përgjigje. Ju gjithashtu mund të krijoni një çështje të re në faqen e Google Code për të ndihmuar progresin e zhvillimit.
+    about_app_support: Nëse hasni probleme gjatë përdorimit të OpenAppointments, mund të kërkoni përgjigje te issues e projektit në GitHub. Mund të hapni gjithashtu një issue të ri për të ndihmuar zhvillimin.
     official_website: Faqja Zyrtare
     google_plus_community: Komuniteti në Google+
     support_group: Grupi i Mbështetjes
     project_issues: Çështjet e Projektit
     license: Licenca
-    about_app_license: 'Easy!Appointments është i licencuar nën licencën GPLv3. Duke përdorur kodin e Easy!Appointments në çfarëdo mënyre, ju po pranoni kushtet e përshkruara në URL-në e mëposhtme:'
+    about_app_license: 'OpenAppointments është i licencuar nën licencën GPLv3. Duke përdorur kodin e OpenAppointments në çfarëdo mënyre, ju po pranoni kushtet e përshkruara në URL-në e mëposhtme:'
     logout_success: Ju u keni dalë me sukses! Klikoni në një nga butonat e mëposhtëm për të lundruar në një faqe tjetër.
     book_appointment_title: Rezervo Takim
     backend_section: Seksioni i Backend
@@ -270,7 +270,7 @@ sq:
     select_sync_calendar_prompt: Zgjidh kalendarin me të cilin dëshironi të sinkronizoni takimet tuaja.
     sync_calendar_selected: Kalendar i sinkronizimit u zgjodh me sukses.
     oops_something_went_wrong: Oops! Diçka Shkoi Keq.
-    ea_update_success: Easy!Appointments u përditësua me sukses.
+    ea_update_success: OpenAppointments u përditësua me sukses.
     require_captcha: Kërko CAPTCHA
     require_captcha_hint: Kur aktivizohet, klientët do të duhet të shkruajnë një string CAPTCHA të gjeneruar rastësisht përpara se të rezervojnë/ndryshojnë një takim.
     captcha_is_wrong: Verifikimi CAPTCHA dështoi, ju lutemi provoni përsëri.
@@ -319,7 +319,7 @@ sq:
     require_phone_number: Kërko numrin e telefonit
     require_phone_number_hint: Kur aktivizohet, klientët dhe përdoruesit do të duhet të vendosin numrin e telefonit të klientit kur rezervojnë një takim
     check_spam_folder: Ju lutemi kontrolloni dosjen tuaj të spam-it nëse email-i nuk arrin brenda disa minutave.
-    api_token_hint: Vendosni një token sekret për të aktivizuar autentikimin me bazë token të API-së së Easy!Appointments.
+    api_token_hint: Vendosni një token sekret për të aktivizuar autentikimin me bazë token të API-së së OpenAppointments.
     timezone: Zona Kohore
     overwrite_existing_working_plans: Kjo do të mbishkruajë planet ekzistuese të punës së ofruesit, a jeni të sigurt që dëshironi të vazhdoni?
     working_plans_got_updated: Të gjitha planet e punës u përditësuan.
@@ -395,7 +395,7 @@ sq:
     matomo_analytics: Matomo Analytics
     matomo_analytics_info: Matomo Analytics ju lejon të shtoni automatikisht kodin e gjurmimit dhe shënimin HTML në faqen publike dhe të gjurmoni të gjitha seancat publike të rezervimit.
     api: API
-    api_info: API ju lejon të ndërveproni me të gjitha të dhënat e Easy!Appointments nëpërmjet protokollit HTTP dhe pikave të disponueshme të API-së dhe të krijoni integrimet tuaja.
+    api_info: API ju lejon të ndërveproni me të gjitha të dhënat e OpenAppointments nëpërmjet protokollit HTTP dhe pikave të disponueshme të API-së dhe të krijoni integrimet tuaja.
     google_analytics_code: Kodi i Google Analytics
     matomo_analytics_url: URL-ja e Matomo Analytics
     future_booking_limit: Limiti i Rezervimit në të Ardhmen
@@ -464,7 +464,7 @@ sq:
     caldav_connection_info_prompt: Ju lutemi futni informacionin e lidhjes së Kalendarit CalDAV të synuar.
     connect: Lidhu
     ldap: LDAP
-    ldap_info: Ky integrim ju lejon të lidheni me një server ekzistues LDAP dhe të importoni automatikisht përdoruesit në Easy!Appointments dhe t'i lejoni ata të identifikohen me fjalëkalimin e tyre të drejtorisë (emri i përdoruesit duhet të përputhet).
+    ldap_info: Ky integrim ju lejon të lidheni me një server ekzistues LDAP dhe të importoni automatikisht përdoruesit në OpenAppointments dhe t'i lejoni ata të identifikohen me fjalëkalimin e tyre të drejtorisë (emri i përdoruesit duhet të përputhet).
     host: Hosti
     port: Porti
     user_dn: DN e Përdoruesit

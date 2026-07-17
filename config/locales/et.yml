@@ -180,16 +180,16 @@ et:
     book_advance_timeout: Broneeringu tegemise viimane hetk
     book_advance_timeout_hint: Määratle, kui palju varem on võimalik broneeringuid teha.
     timeout_minutes: Mitu minutit enne soovitavat broneeringuaega on võimalik veel broneeringut teha.
-    about_app_info: Easy!Appointments on veebirakendus mille abil on võimalik klientidel teenuste aegu broneerida. Broneeringuid saab sünkroniseerida Google'i kalendriga.
+    about_app_info: OpenAppointments on veebirakendus mille abil on võimalik klientidel teenuste aegu broneerida. Broneeringuid saab sünkroniseerida Google'i kalendriga.
     current_version: Versioon
     support: Abi
-    about_app_support: Probleemide korral võib abi otsida rakenduse ametlikust Google'i grupist. Githubi kaudu saab ka rakenduse arendamisega kursis olla.
+    about_app_support: Kui OpenAppointments kasutamisel tekib probleeme, saate vastuseid otsida projekti GitHubi teemadest. Arenduse toetamiseks võite avada ka uue teema.
     official_website: Ametlik veebilehekülg
     google_plus_community: Google+ grupp
     support_group: Tugigrupp
     project_issues: Projekti bugid
     license: Litsents
-    about_app_license: 'Easy!Appointments on GPLv3 litsentsiga. Kasutades enda töös Easy!Appointmentsi nõustud lingis olevate litsentsitingimustega:'
+    about_app_license: 'OpenAppointments on GPLv3 litsentsiga. Kasutades enda töös OpenAppointmentsi nõustud lingis olevate litsentsitingimustega:'
     logout_success: Välja logitud! Vajuta mõnda järgnevatest nuppudest, et siirduda järgmisele lehele.
     book_appointment_title: Tee broneering
     backend_section: Haldusrarakendus
@@ -270,7 +270,7 @@ et:
     select_sync_calendar_prompt: Vali kalender kuhu broneeringud sünkroniseeristakse. Kui kalendrit ei vali, siis kasutatakse vaikimisi kalendrit.
     sync_calendar_selected: Google'i kalender valitud.
     oops_something_went_wrong: Ohhhoo! Midagi läks untsu.
-    ea_update_success: Easy!Appointments uuendus õnnestus.
+    ea_update_success: OpenAppointments uuendus õnnestus.
     require_captcha: Nõua CAPTCHA-t
     require_captcha_hint: Kui see on sisse lülitatud, siis nõutakse kasutajalt CAPTCHA-t enne broneeringu lisamist/muutmist.
     captcha_is_wrong: CAPTCHA kinnitus ebaõnnestus. Proovi uuesti.
@@ -319,7 +319,7 @@ et:
     require_phone_number: Nõua telefoninumbrit
     require_phone_number_hint: Kui see on sisse lülitatud, siis klient peab broneerimisel sisestama ka enda telefoninumbri.
     check_spam_folder: Kui e-maili mõne minuti jooksul ei saabu, siis palun kontrolli enda meili rämpspostikausta.
-    api_token_hint: Sea sisse juurdepääsuluba et võimaldada pääsuloaga autentimine Easy!Appointments API kasutamiseks.
+    api_token_hint: Sea sisse juurdepääsuluba et võimaldada pääsuloaga autentimine OpenAppointments API kasutamiseks.
     timezone: Ajavöönd
     overwrite_existing_working_plans: See kirjutab eksisteerivad tööplaanid üle. Oled kindel, et soovid jätkata?
     working_plans_got_updated: Kõik tööplaanid uuendatud.
@@ -395,7 +395,7 @@ et:
     matomo_analytics: Matomo Analytics
     matomo_analytics_info: Matomo Analytics võimaldab automaatselt lisada jälgimiskoodi ja HTML-märgendit avalikule lehele ning jälgida kõiki avalikke broneeringu sessioone.
     api: API
-    api_info: API võimaldab teil suhelda kõigi Easy!Appointments andmetega HTTP-protokolli ja saadaval olevate API-lõpp-punktide kaudu ning luua oma integratsioone.
+    api_info: API võimaldab teil suhelda kõigi OpenAppointments andmetega HTTP-protokolli ja saadaval olevate API-lõpp-punktide kaudu ning luua oma integratsioone.
     google_analytics_code: Google Analytics Kood
     matomo_analytics_url: Matomo Analytics URL
     future_booking_limit: Tulevikus Broneerimise Limiit
@@ -464,7 +464,7 @@ et:
     caldav_connection_info_prompt: Palun sisestage sihitud CalDAV kalendri ühenduse info.
     connect: Ühenda
     ldap: LDAP
-    ldap_info: See integratsioon võimaldab teil ühenduda olemasoleva LDAP serveriga ja importida kasutajaid automaatselt Easy!Appointments rakendusse ning lasta neil SSO kaudu sisse logida oma kataloogiparooliga (kasutajanimi peab kattuma).
+    ldap_info: See integratsioon võimaldab teil ühenduda olemasoleva LDAP serveriga ja importida kasutajaid automaatselt OpenAppointments rakendusse ning lasta neil SSO kaudu sisse logida oma kataloogiparooliga (kasutajanimi peab kattuma).
     host: Host
     port: Port
     user_dn: Kasutaja DN

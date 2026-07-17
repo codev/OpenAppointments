@@ -174,22 +174,22 @@ it:
     hidden: Nascosto
     business_logic: Logiche di business
     current_user: Utente corrente
-    about_app: Info su Easy!Appointments
+    about_app: Info su OpenAppointments
     edit_working_plan_hint: Marca i giorni e le ore sottostanti durante le quali la tua azienda accetterà appuntamenti. Tu sarai in grado di arrangiare gli appuntamenti negli orari non lavorativi, ma i clienti sono saranno in grado di prenotare appuntamenti nei periodi di indisponibilità. Questo piano di lavoro sarà predefinito per ogni nuovo fornitore, ma potrai cambiare la pianificazione di ogni fornitore separatamente modificando le sue impostazioni. Successivamente puoi aggiungere periodi di pausa.
     edit_breaks_hint: Aggiungi le pause di lavoro ogni giorno. Queste pause saranno applicate per tutti i nuovi fornitori.
     book_advance_timeout: Tempo limite prenotazione
     book_advance_timeout_hint: Definisci il tempo limite (in minuti) entro cui i clienti posso prenotare o modificare gli appuntamento con l'azienda.
     timeout_minutes: Tempo limite (Minuti)
-    about_app_info: Easy!Appointments è un'applicazione web estremamente personalizzabile che permette ai tuoi clienti di prenotare appuntamenti con te attraverso il web. Inoltre, fornisce la possibilità di sincronizzare i tuoi dati con Google Calendar in modo da poterli usare in altri servizi.
+    about_app_info: OpenAppointments è un'applicazione web estremamente personalizzabile che permette ai tuoi clienti di prenotare appuntamenti con te attraverso il web. Inoltre, fornisce la possibilità di sincronizzare i tuoi dati con Google Calendar in modo da poterli usare in altri servizi.
     current_version: Versione corrente
     support: Supporto
-    about_app_support: Se incontri un problema quando utilizzi Easy!Appointments puoi cercare sul Gruppo Google ufficiale per le risposte. Potresti anche aver bisogno di creare una nuova segnalazione sulla pagina Google Code al fine di aiutarci negli sviluppi futuri.
+    about_app_support: Se riscontri problemi nell'uso di OpenAppointments, puoi cercare risposte tra le issue del progetto su GitHub. Puoi anche aprire una nuova issue per aiutare lo sviluppo.
     official_website: Sito ufficiale
     google_plus_community: Comunità Google+
     support_group: Gruppo di supporto
     project_issues: Problemi progetto
     license: Licenza
-    about_app_license: 'Easy!Appointments è distributo sotto licenza GPLv3. Usando il codice di Easy!Appointments stai accettando i termini e le condizioni descritte al seguente URL:'
+    about_app_license: 'OpenAppointments è distributo sotto licenza GPLv3. Usando il codice di OpenAppointments stai accettando i termini e le condizioni descritte al seguente URL:'
     logout_success: Logout effettuato correttamente! Clicca su uno dei seguenti bottoni per navigare su una pagina differente.
     book_appointment_title: Prenota appuntamento
     backend_section: Sezione Backend
@@ -270,7 +270,7 @@ it:
     select_sync_calendar_prompt: Seleziona il calendario con cui vuoi sincronizzare i tuoi appuntamenti. Se non vuoi selezionare un calendario specifico, sarà usato quello predefinito.
     sync_calendar_selected: Il calendario Google è stato selezionato con successo.
     oops_something_went_wrong: Oops! Qualcosa è andato storto.
-    ea_update_success: Easy!Appointments è stato aggiornato con successo.
+    ea_update_success: OpenAppointments è stato aggiornato con successo.
     require_captcha: Richiedi CAPTCHA
     require_captcha_hint: Quando abilitato, i clienti dovranno digitare il codice CAPTCHA prima di prenotare/aggiornare un appuntamento.
     captcha_is_wrong: Verifica del CAPTCHA fallita, prova di nuovo.
@@ -319,7 +319,7 @@ it:
     require_phone_number: Richiedi numero di telefono
     require_phone_number_hint: Quando abilitato i clienti e gli utenti necessitano di inserire il numero di telefono quando prenotano un appuntamento
     check_spam_folder: Controlla la cartella SPAM se non ricevi l'email di conferma entro pochi minuti.
-    api_token_hint: Imposta un token segreto per abilitare l'autenticazione basata su token nelle API di Easy!Appointments.
+    api_token_hint: Imposta un token segreto per abilitare l'autenticazione basata su token nelle API di OpenAppointments.
     timezone: Fuso Orario
     overwrite_existing_working_plans: Questa operazione sovrascrive il Piano di Lavoro del fornitore esistente, sei sicuro di voler continuare?
     working_plans_got_updated: Tutti i Piani di Lavoro sono stati aggiornati.
@@ -395,7 +395,7 @@ it:
     matomo_analytics: Matomo Analytics
     matomo_analytics_info: Matomo Analytics ti permette di aggiungere automaticamente il codice di tracciamento e il markup HTML alla pagina pubblica e tracciare tutte le sessioni di prenotazione pubbliche.
     api: API
-    api_info: Le API ti permettono di interagire con tutti i dati di Easy!Appointments tramite il protocollo HTTP e gli endpoint API disponibili e creare le tue integrazioni.
+    api_info: Le API ti permettono di interagire con tutti i dati di OpenAppointments tramite il protocollo HTTP e gli endpoint API disponibili e creare le tue integrazioni.
     google_analytics_code: Codice Google Analytics
     matomo_analytics_url: URL Matomo Analytics
     future_booking_limit: Limite Prenotazioni Future
@@ -464,7 +464,7 @@ it:
     caldav_connection_info_prompt: Inserisci le informazioni di connessione del calendario CalDAV di destinazione.
     connect: Connetti
     ldap: LDAP
-    ldap_info: Questa integrazione ti consente di connetterti a un server LDAP esistente e importare automaticamente gli utenti in Easy!Appointments e di consentire loro l'SSO con la loro password di directory (il nome utente deve corrispondere).
+    ldap_info: Questa integrazione ti consente di connetterti a un server LDAP esistente e importare automaticamente gli utenti in OpenAppointments e di consentire loro l'SSO con la loro password di directory (il nome utente deve corrispondere).
     host: Host
     port: Porta
     user_dn: DN Utente

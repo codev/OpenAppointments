@@ -174,22 +174,22 @@ cs:
     hidden: Skrytý
     business_logic: Business logika
     current_user: Přihlášený uživatel
-    about_app: O aplikaci Easy!Appointments
+    about_app: O aplikaci OpenAppointments
     edit_working_plan_hint: Zde označte dny a hodiny, kdy bude vaše společnost přijímat rezervace schůzek. Budete mít možnost přizpůsobit schůzky mimo pracovní dobu, zákazníci se ale mimo pracovní dobu objednat nemohou. Tato pracovní doba bude výchozí pro každého nově založeného poskytovatele, přičemž ji bude možné změnit u každého jednotlivého poskytovatele v rámci editace. Poté můžete přidat období přestávek.
     edit_breaks_hint: Zadejte přestávky v rámci každého dne. Definované přestávky budou použity pro všechny nově založené poskytovatele.
     book_advance_timeout: Časový limit rezervace
     book_advance_timeout_hint: Definujte časový limit (v minutách), před jehož uplynutím budou moci zákazníci zadat nebo změnit rezervaci schůzky se společností.
     timeout_minutes: Časový limit (minuty)
-    about_app_info: Easy!Appointments je vysoce přizpůsobitelná webová aplikace, která vašim zákazníkům umožňuje rezervovat si s vámi schůzky prostřednictvím webu. Navíc poskytuje možnost synchronizovat vaše data s Kalendářem Google, takže je můžete využívat v rámci dalších služeb.
+    about_app_info: OpenAppointments je vysoce přizpůsobitelná webová aplikace, která vašim zákazníkům umožňuje rezervovat si s vámi schůzky prostřednictvím webu. Navíc poskytuje možnost synchronizovat vaše data s Kalendářem Google, takže je můžete využívat v rámci dalších služeb.
     current_version: Aktuální verze
     support: Podpora
-    about_app_support: Pokud při používání Easy!Appointments narazíte na jakékoli problémy, můžete odpovědi hledat v oficiální skupině Google. Také můžete založit nový incident na stránce Google Code za účelem podpory dalšího vývoje.
+    about_app_support: Pokud při používání OpenAppointments narazíte na jakékoli problémy, můžete hledat odpovědi v issues projektu na GitHubu. Můžete také otevřít nové issue a pomoci tak vývoji.
     official_website: Oficiální stránky
     google_plus_community: Komunita Google+
     support_group: Skupina podpory
     project_issues: Incidenty projektu
     license: Licence
-    about_app_license: 'Easy!Appointments je licencováno pod licencí GPLv3. Používáním kódu Easy!Appointments v jakékoli formě souhlasíte s podmínkami popsanými v dokumentu na následující adrese:'
+    about_app_license: 'OpenAppointments je licencováno pod licencí GPLv3. Používáním kódu OpenAppointments v jakékoli formě souhlasíte s podmínkami popsanými v dokumentu na následující adrese:'
     logout_success: Byli jste úspěšně odhlášeni! Pro přesměrování na jinou stránku klikněte na některé z následujících tlačítek.
     book_appointment_title: Rezervace schůzky
     backend_section: Administrace
@@ -270,7 +270,7 @@ cs:
     select_sync_calendar_prompt: Výberte kalendář, do kterého chcete synchronizovat vaše schůzky. Jestliže nechcete vybrat konkrétní kalendář, bude použit výchozí.
     sync_calendar_selected: Kalendář Google byl úspěšně vybrán.
     oops_something_went_wrong: Oops! Něco se pokazilo.
-    ea_update_success: Aplikace Easy!Appointments byla úspěšně aktualizována.
+    ea_update_success: Aplikace OpenAppointments byla úspěšně aktualizována.
     require_captcha: Vyžadovat CAPTCHA
     require_captcha_hint: Pokud bude povolena, zákazníci budou muset před vytvořením/editací schůzky zadat náhodně vygenerovaný řetězec CAPTCHA.
     captcha_is_wrong: Ověření CAPTCHA selhalo, prosím opakujte akci.
@@ -319,7 +319,7 @@ cs:
     require_phone_number: Vyžadovat telefonní číslo
     require_phone_number_hint: Pokud je zapnuto, uživatelé a zákazníci musí vyplnit své telefonní číslo při sjednávání schůzky.
     check_spam_folder: Zkontrolujte prosím svou SPAM schránku, pokud email v několika minutách nedorazí.
-    api_token_hint: Nastavte bezpečnostní token, abyste povolili autentizaci tokenem v API Easy!Appointments.
+    api_token_hint: Nastavte bezpečnostní token, abyste povolili autentizaci tokenem v API OpenAppointments.
     timezone: Časová zóna
     overwrite_existing_working_plans: Tímto nahradíte současné pracovní plány. Opravdu jste si jisti, že chcete pokračovat?
     working_plans_got_updated: Všechny pracovní plány byly aktualizovány.
@@ -395,7 +395,7 @@ cs:
     matomo_analytics: Matomo Analytics
     matomo_analytics_info: Matomo Analytics umožňují automaticky vkládat měřící kód a HTML markup do veřejné stránky a sledovat všechny veřejné rezervační události.
     api: API
-    api_info: API umožňuje komunikovat s daty v Easy!Appointments prostřednictvím HTTP protokolu a dostupných API endpointů a vytvářet vaše vlastní integrace.
+    api_info: API umožňuje komunikovat s daty v OpenAppointments prostřednictvím HTTP protokolu a dostupných API endpointů a vytvářet vaše vlastní integrace.
     google_analytics_code: Google Analytics ID
     matomo_analytics_url: URL Matomo Analytics
     future_booking_limit: Omezení rezervací v budoucnosti
@@ -464,7 +464,7 @@ cs:
     caldav_connection_info_prompt: Vložte prosím připojovací údaje pro cílový CalDAV kalendář.
     connect: Připojit
     ldap: LDAP
-    ldap_info: Tato integrace umožňuje připojovat se k existujícímu LDAP serveru, automaticky importovat uživatele do Easy!Appointments a poskytuje možnost přihlašovat se přes SSO pomocí jednotného hesla (uživatelské jméno musí odpovídat).
+    ldap_info: Tato integrace umožňuje připojovat se k existujícímu LDAP serveru, automaticky importovat uživatele do OpenAppointments a poskytuje možnost přihlašovat se přes SSO pomocí jednotného hesla (uživatelské jméno musí odpovídat).
     host: Hostitel
     port: Port
     user_dn: User DN

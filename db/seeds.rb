@@ -36,7 +36,7 @@ settings = {
   "company_email" => "info@example.org",
   "company_link" => "https://example.org",
   "company_logo" => "",
-  "company_color" => "#ffffff",
+  "company_color" => "#39824f",
   "company_working_plan" => default_working_plan,
 
   # Booking / scheduling

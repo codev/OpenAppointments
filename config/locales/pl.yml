@@ -174,22 +174,22 @@ pl:
     hidden: Ukryty
     business_logic: Podział Firmy
     current_user: Bieżący Użytkownik
-    about_app: O Easy!Appointments
+    about_app: O OpenAppointments
     edit_working_plan_hint: Zaznacz poniżej dni i godziny w których Twoja firma akceptuje wizyty. Będziesz w stanie dostosować w stosunku do godziny pracujących i nie pracujących. Ten plan będzie domyślny dla każdego nowego personelu. Dla każdego nowego personelu można utworzyć oddzielny plan poprzez edycję planu.
     edit_breaks_hint: Dodaj przerwy w pracy w ciągu dnia. Te przerwy będą dotyczyć również dla nowych pacjentów.
     book_advance_timeout: Czas bookowania  minął
     book_advance_timeout_hint: Zdefiniuj w minutach czas w którym klient ponownie może zabookować wizytę.
     timeout_minutes: Czas out
-    about_app_info: Easy!Appointments jest aplikacją webową wysoce przystosowywalną do potrzeb klienta. Co więcej pozwala na synchronizację z Kalendarzem Google.
+    about_app_info: OpenAppointments jest aplikacją webową wysoce przystosowywalną do potrzeb klienta. Co więcej pozwala na synchronizację z Kalendarzem Google.
     current_version: Aktualna Wersja
     support: Pomoc
-    about_app_support: Jeśli masz problem z Easy!Appointmants możesz spytać grupę Google.
+    about_app_support: Jeśli napotkasz problemy podczas korzystania z OpenAppointments, możesz poszukać odpowiedzi w zgłoszeniach projektu na GitHubie. Możesz też otworzyć nowe zgłoszenie, aby pomóc w rozwoju.
     official_website: Oficjalna strona
     google_plus_community: Google+ Społeczność
     support_group: Grupa Wsparcia
     project_issues: Błędy projektu
     license: Licencja
-    about_app_license: 'Easy!Appointments posiada licencję GPLv3. Używaj zgodnie z warunkami opisanymi tu:'
+    about_app_license: 'OpenAppointments posiada licencję GPLv3. Używaj zgodnie z warunkami opisanymi tu:'
     logout_success: Wylogowałeś się Naciśnij przycisk aby nawigować do innej strony.
     book_appointment_title: Zamów wizytę
     backend_section: Sekcja funkcjonalna
@@ -319,7 +319,7 @@ pl:
     require_phone_number: Wymagaj numeru telefonu
     require_phone_number_hint: Po włączeniu klienci i użytkownicy będą musieli podać numer telefonu klienta podczas rezerwacji wizyty.
     check_spam_folder: Proszę sprawdzić folder spam, jeśli e-mail nie dotrze w ciągu kilku minut.
-    api_token_hint: Ustaw tajny token, aby włączyć uwierzytelnianie oparte na tokenie w API Easy!Appointments.
+    api_token_hint: Ustaw tajny token, aby włączyć uwierzytelnianie oparte na tokenie w API OpenAppointments.
     timezone: Strefa czasowa
     overwrite_existing_working_plans: To nadpisze istniejące plany pracy dostawców, czy na pewno chcesz kontynuować?
     working_plans_got_updated: Wszystkie plany pracy zostały zaktualizowane.
@@ -395,7 +395,7 @@ pl:
     matomo_analytics: Matomo Analytics
     matomo_analytics_info: Matomo Analytics umożliwia automatyczne dodanie kodu śledzenia i znaczników HTML na stronie publicznej oraz śledzenie wszystkich publicznych sesji rezerwacji.
     api: API
-    api_info: API umożliwia interakcję ze wszystkimi danymi Easy!Appointments za pomocą protokołu HTTP oraz dostępnych punktów końcowych API i tworzenie własnych integracji.
+    api_info: API umożliwia interakcję ze wszystkimi danymi OpenAppointments za pomocą protokołu HTTP oraz dostępnych punktów końcowych API i tworzenie własnych integracji.
     google_analytics_code: Kod Google Analytics
     matomo_analytics_url: URL Matomo Analytics
     future_booking_limit: Limit przyszłych rezerwacji
@@ -464,7 +464,7 @@ pl:
     caldav_connection_info_prompt: Proszę wprowadzić informacje o połączeniu z docelowym kalendarzem CalDAV.
     connect: Połącz
     ldap: LDAP
-    ldap_info: Ta integracja umożliwia połączenie z istniejącym serwerem LDAP i automatyczne importowanie użytkowników do Easy!Appointments oraz umożliwienie im logowania się za pomocą hasła z katalogu (nazwa użytkownika musi się zgadzać).
+    ldap_info: Ta integracja umożliwia połączenie z istniejącym serwerem LDAP i automatyczne importowanie użytkowników do OpenAppointments oraz umożliwienie im logowania się za pomocą hasła z katalogu (nazwa użytkownika musi się zgadzać).
     host: Host
     port: Port
     user_dn: User DN

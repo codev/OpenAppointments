@@ -174,7 +174,7 @@ nl:
     hidden: Verborgen
     business_logic: Bedrijfsinstellingen
     current_user: Huidige gebruiker
-    about_app: Over Easy!Appointments
+    about_app: Over OpenAppointments
     edit_working_plan_hint: Geef hier de dagen en uren in waarop klanten afspraken kunnen plannen (bijv. openingstijden). U kunt afspraken aanpassen naar tijden die normaal niet kunnen worden gekozen, maar klanten kunnen dit niet via het normale formulier. Deze tijden worden standaard gebruikt voor alle medewerkers, maar deze instellingen kunnen ook per medewerker worden gewijzigd bij de persoonlijke gegevens. Daarna kunnen ook pauzes worden gekozen.
     edit_breaks_hint: Voeg voor elke dag pauzes toe. Deze pauzes worden standaard gebruikt voor alle medewerkers.
     book_advance_timeout: Voor-boek-tijd vooruitboeken
@@ -183,7 +183,7 @@ nl:
     about_app_info: Easy! Afspraken is een zeer flexibele web applicatie waarmee klanten afspraken met u kunnen boeken via het web. Bovendien biedt het de mogelijkheid om uw gegevens te synchroniseren met Google Agenda, zodat u ze kunt gebruiken met andere diensten.
     current_version: Huidige versie
     support: Ondersteuning
-    about_app_support: Als u problemen ondervindt bij het gebruik van Easy! Afspraken kunt u zoeken in de officiële Google-discussiegroep voor antwoorden. U moet misschien ook een nieuw onderwerp op de pagina Google Code creëren om de ontwikkeling van de applicatie te helpen.
+    about_app_support: Als u problemen ondervindt bij het gebruik van OpenAppointments, kunt u naar antwoorden zoeken in de issues van het project op GitHub. U kunt ook een nieuw issue openen om de ontwikkeling te helpen.
     official_website: Officiële Website
     google_plus_community: Google+ Community
     support_group: Ondersteuningsgroep
@@ -270,7 +270,7 @@ nl:
     select_sync_calendar_prompt: Selecteer de agenda waarme uw afspraken wilt synchroniseren. Als u geen specifieke kalender selecteert zal de standaard worden gebruikt.
     sync_calendar_selected: Google Agenda is met succes geselecteerd.
     oops_something_went_wrong: Oeps! Er is iets misgegaan.
-    ea_update_success: Easy!Appointments is succesvol bijgewerkt.
+    ea_update_success: OpenAppointments is succesvol bijgewerkt.
     require_captcha: CAPTCHA vereist.
     require_captcha_hint: Indien ingeschakeld moeten de klanten een willekeurige tekenreeks invullen om een afspraak te bevestigen.
     captcha_is_wrong: CAPTCHA verificatie is mislukt, probeer het a.u.b.nogmaals.
@@ -319,7 +319,7 @@ nl:
     require_phone_number: Telefoonnummer Vereisen
     require_phone_number_hint: Wanneer ingeschakeld, moeten klanten en gebruikers het telefoonnummer van de klant invoeren bij het maken van een afspraak.
     check_spam_folder: Controleer je spammap als de e-mail niet binnen een paar minuten arriveert.
-    api_token_hint: Stel een geheim token in om token-gebaseerde authenticatie van de Easy!Appointments API in te schakelen.
+    api_token_hint: Stel een geheim token in om token-gebaseerde authenticatie van de OpenAppointments API in te schakelen.
     timezone: Tijdzone
     overwrite_existing_working_plans: Dit zal de bestaande werkroosters van de provider overschrijven, weet je zeker dat je wilt doorgaan?
     working_plans_got_updated: Alle werkroosters zijn bijgewerkt.
@@ -395,7 +395,7 @@ nl:
     matomo_analytics: Matomo Analytics
     matomo_analytics_info: Matomo Analytics stelt je in staat om automatisch de trackingcode en HTML-markup aan de openbare pagina toe te voegen en alle openbare boekingssessies te volgen.
     api: API
-    api_info: API stelt je in staat om via het HTTP-protocol met alle Easy!Appointments-gegevens te communiceren en je eigen integraties te maken met de beschikbare API-eindpunten.
+    api_info: API stelt je in staat om via het HTTP-protocol met alle OpenAppointments-gegevens te communiceren en je eigen integraties te maken met de beschikbare API-eindpunten.
     google_analytics_code: Google Analytics-code
     matomo_analytics_url: Matomo Analytics-URL
     future_booking_limit: Toekomstige Boekingslimiet
@@ -464,7 +464,7 @@ nl:
     caldav_connection_info_prompt: Voer de verbindingsgegevens in van de doel CalDAV-agenda.
     connect: Verbinden
     ldap: LDAP
-    ldap_info: Met deze integratie kunt u verbinding maken met een bestaande LDAP-server en automatisch gebruikers importeren in Easy!Appointments en hen SSO laten gebruiken met hun directorywachtwoord (gebruikersnaam moet overeenkomen).
+    ldap_info: Met deze integratie kunt u verbinding maken met een bestaande LDAP-server en automatisch gebruikers importeren in OpenAppointments en hen SSO laten gebruiken met hun directorywachtwoord (gebruikersnaam moet overeenkomen).
     host: Host
     port: Poort
     user_dn: Gebruiker DN

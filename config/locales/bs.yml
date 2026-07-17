@@ -183,13 +183,13 @@ bs:
     about_app_info: Easy! Sastanci su veoma prilagodljiva web aplikacija koja omogućava vašim klijentima da zakažu sastanke s vama putem weba. Štaviše, pruža mogućnost sinhronizacije vaših podataka sa Google kalendarom, tako da ih možete koristiti sa drugim uslugama.
     current_version: Trenutna verzija
     support: Podrška
-    about_app_support: Ako naiđete na bilo kakve probleme kada koristite Easy!Appointments, možete pretražiti zvaničnu Google grupu za odgovore. Možda ćete također morati kreirati novi problem na stranici Google Code kako biste pomogli u razvoju.
+    about_app_support: Ako naiđete na bilo kakve probleme pri korištenju OpenAppointments, odgovore možete potražiti među prijavljenim problemima projekta na GitHubu. Možda ćete također trebati otvoriti novu prijavu kako biste pomogli razvoju.
     official_website: Službena web stranica
     google_plus_community: Google+ zajednica
     support_group: Grupa za podršku
     project_issues: Problemi projekta
     license: Licenca
-    about_app_license: 'Easy! Sastanci su licencirani pod GPLv3 licencom. Korištenjem koda Easy!Appointments na bilo koji način pristajete na uslove opisane na sljedećem URL-u:'
+    about_app_license: 'Easy! Sastanci su licencirani pod GPLv3 licencom. Korištenjem koda OpenAppointments na bilo koji način pristajete na uslove opisane na sljedećem URL-u:'
     logout_success: Uspješno ste odjavljeni! Kliknite na jedno od sljedećih dugmadi za navigaciju na drugu stranicu.
     book_appointment_title: Zakažite termin
     backend_section: Pozadinska sekcija
@@ -319,7 +319,7 @@ bs:
     require_phone_number: Zahteva se broj telefona
     require_phone_number_hint: Kada je omogućeno, kupci i korisnici će morati da unesu broj telefona klijenta kada rezervišu termin
     check_spam_folder: Provjerite svoju spam folder ako email ne stigne u roku od nekoliko minuta.
-    api_token_hint: Postavite tajni token da biste omogućili autentifikaciju baziranu na tokenu za Easy!Appointments API.
+    api_token_hint: Postavite tajni token da biste omogućili autentifikaciju baziranu na tokenu za OpenAppointments API.
     timezone: Vremenska zona
     overwrite_existing_working_plans: Ovo će zameniti postojeće radne planove provajdera, jeste li sigurni da želite da nastavite?
     working_plans_got_updated: Svi radni planovi su ažurirani.
@@ -395,7 +395,7 @@ bs:
     matomo_analytics: Matomo Analytics
     matomo_analytics_info: Matomo Analytics vam omogućava da automatski dodate kod za praćenje i HTML oznake na javnu stranicu i pratite sve javne sesije rezervacije.
     api: API
-    api_info: API vam omogućava da komunicirate sa svim podacima Easy!Appointments putem HTTP protokola i dostupnih API krajnjih tačaka i kreirate sopstvene integracije.
+    api_info: API vam omogućava da komunicirate sa svim podacima OpenAppointments putem HTTP protokola i dostupnih API krajnjih tačaka i kreirate sopstvene integracije.
     google_analytics_code: Google Analytics kod
     matomo_analytics_url: Matomo Analytics URL
     future_booking_limit: Ograničenje buduće rezervacije
@@ -464,7 +464,7 @@ bs:
     caldav_connection_info_prompt: Molimo unesite informacije o vezi ciljnog CalDAV kalendara.
     connect: Poveži se
     ldap: LDAP
-    ldap_info: Ova integracija vam omogućava da se povežete na postojeći LDAP server i automatski uvezete korisnike u Easy!Appointments i dozvolite im da SSO sa svojom lozinkom direktorijuma (korisničko ime mora da se podudara).
+    ldap_info: Ova integracija vam omogućava da se povežete na postojeći LDAP server i automatski uvezete korisnike u OpenAppointments i dozvolite im da SSO sa svojom lozinkom direktorijuma (korisničko ime mora da se podudara).
     host: Host
     port: Port
     user_dn: Korisnički DN

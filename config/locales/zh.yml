@@ -183,7 +183,7 @@ zh:
     about_app_info: 网上预约系统，可以通过网页形式高度定制满足您的需求.同样可以连接您的谷歌账户，同步日历功能.
     current_version: 版本号
     support: 技术支持
-    about_app_support: 如果您与盗任何问题，请联系我们.
+    about_app_support: 如果您在使用 OpenAppointments 时遇到任何问题，可以在 GitHub 上搜索项目的 issue 寻找答案。您也可以新建一个 issue 来帮助项目发展。
     official_website: 官方网站
     google_plus_community: 谷歌社区
     support_group: 技术支持团队
@@ -319,7 +319,7 @@ zh:
     require_phone_number: 需要电话号码
     require_phone_number_hint: 启用时，客户和用户在预约时需要输入客户的电话号码。
     check_spam_folder: 如果电子邮件在几分钟内未到达，请检查您的垃圾邮件文件夹。
-    api_token_hint: 设置一个秘密令牌，以启用基于令牌的 Easy!Appointments API 认证。
+    api_token_hint: 设置一个秘密令牌，以启用基于令牌的 OpenAppointments API 认证。
     timezone: 时区
     overwrite_existing_working_plans: 这将覆盖现有的服务提供者工作计划，您确定要继续吗？
     working_plans_got_updated: 所有工作计划已更新。
@@ -395,7 +395,7 @@ zh:
     matomo_analytics: Matomo 分析
     matomo_analytics_info: Matomo Analytics 使您能够自动将跟踪代码和 HTML 标记添加到公共页面，并跟踪所有公共预订会话。
     api: API
-    api_info: API 使您能够通过 HTTP 协议和可用的 API 端点与所有 Easy!Appointments 数据进行交互，并创建您自己的集成。
+    api_info: API 使您能够通过 HTTP 协议和可用的 API 端点与所有 OpenAppointments 数据进行交互，并创建您自己的集成。
     google_analytics_code: Google Analytics 代码
     matomo_analytics_url: Matomo 分析 URL
     future_booking_limit: 未来预约限制
@@ -464,7 +464,7 @@ zh:
     caldav_connection_info_prompt: 请输入目标 CalDAV 日历的连接信息。
     connect: 连接
     ldap: LDAP
-    ldap_info: 此集成允许您连接到现有的 LDAP 服务器，并自动将用户导入 Easy!Appointments，并允许他们使用目录密码进行单点登录（用户名必须匹配）。
+    ldap_info: 此集成允许您连接到现有的 LDAP 服务器，并自动将用户导入 OpenAppointments，并允许他们使用目录密码进行单点登录（用户名必须匹配）。
     host: 主机
     port: 端口
     user_dn: 用户 DN

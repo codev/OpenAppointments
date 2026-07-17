@@ -180,16 +180,16 @@ sl:
     book_advance_timeout: Časovna omejitev pred knjigo vnaprej
     book_advance_timeout_hint: Določite časovno omejitev (v minutah), preden lahko stranke rezervirajo ali se ponovno dogovorijo za sestanke s podjetjem.
     timeout_minutes: Časovna omejitev (minute)
-    about_app_info: Easy!Appointments je zelo prilagodljiva spletna aplikacija, ki vašim strankam omogoča, da rezervirajo sestanke pri vas prek spleta. Poleg tega ponuja možnost sinhronizacije vaših podatkov z Google Koledarjem, tako da jih lahko uporabljate z drugimi storitvami.
+    about_app_info: OpenAppointments je zelo prilagodljiva spletna aplikacija, ki vašim strankam omogoča, da rezervirajo sestanke pri vas prek spleta. Poleg tega ponuja možnost sinhronizacije vaših podatkov z Google Koledarjem, tako da jih lahko uporabljate z drugimi storitvami.
     current_version: Trenutna različica
     support: Podpora
-    about_app_support: Če naletite na težave pri uporabi Easy!Appointments, lahko poiščete odgovore v uradni Googlovi skupini. Morda boste morali ustvariti tudi novo številko na strani Google Code, da bi pomagali pri napredovanju razvoja.
+    about_app_support: Če pri uporabi OpenAppointments naletite na težave, lahko odgovore poiščete med issue prijavami projekta na GitHubu. Lahko tudi odprete novo prijavo in s tem pomagate razvoju.
     official_website: Uradna spletna stran
     google_plus_community: Skupnost Google+
     support_group: Skupina za podporo
     project_issues: Projektne težave
     license: Licenca
-    about_app_license: 'Easy!Appointments je licenciran pod licenco GPLv3. Z uporabo kode Easy!Appointments na kakršen koli način soglašate s pogoji, opisanimi na naslednjem url-ju:'
+    about_app_license: 'OpenAppointments je licenciran pod licenco GPLv3. Z uporabo kode OpenAppointments na kakršen koli način soglašate s pogoji, opisanimi na naslednjem url-ju:'
     logout_success: Uspešno ste bili odjavljeni! Za navigacijo na drugo stran kliknite enega od naslednjih gumbov.
     book_appointment_title: Rezerviraj termin
     backend_section: Zaledni razdelek
@@ -270,7 +270,7 @@ sl:
     select_sync_calendar_prompt: Izberite koledar, s katerim želite sinhronizirati svoje sestanke.
     sync_calendar_selected: Koledar za sinhronizacijo je bil uspešno izbran.
     oops_something_went_wrong: Ojoj! Nekaj je šlo narobe.
-    ea_update_success: Easy!Appointments je bil uspešno posodobljen.
+    ea_update_success: OpenAppointments je bil uspešno posodobljen.
     require_captcha: Zahtevaj CAPTCHA
     require_captcha_hint: Ko je omogočeno, bodo morale stranke pred rezervacijo/posodabljanjem termina vnesti naključno ustvarjen niz CAPTCHA.
     captcha_is_wrong: CAPTCHA preverjanje ni uspelo, poskusite znova.
@@ -319,7 +319,7 @@ sl:
     require_phone_number: Zahtevaj telefonsko številko
     require_phone_number_hint: Ko je omogočeno, bodo stranke in uporabniki morali vnesti telefonsko številko stranke pri rezervaciji termina
     check_spam_folder: Prosimo, preverite mapo z vsiljeno pošto, če e-pošta ne prispe v nekaj minutah.
-    api_token_hint: Nastavite skrivni žeton, da omogočite avtentikacijo Easy!Appointments API na podlagi žetonov.
+    api_token_hint: Nastavite skrivni žeton, da omogočite avtentikacijo OpenAppointments API na podlagi žetonov.
     timezone: Časovni pas
     overwrite_existing_working_plans: To bo prepisalo obstoječe delovne načrte ponudnika. Ali ste prepričani, da želite nadaljevati?
     working_plans_got_updated: Vsi delovni načrti so bili posodobljeni.
@@ -395,7 +395,7 @@ sl:
     matomo_analytics: Matomo Analytics
     matomo_analytics_info: Matomo Analytics vam omogoča samodejno dodajanje kode za sledenje in oznake HTML na javno stran ter sledenje vsem javnim rezervacijskim sejam.
     api: API
-    api_info: API vam omogoča interakcijo z vsemi podatki Easy!Appointments prek protokola HTTP in razpoložljivih končnih točk API ter ustvarjanje lastnih integracij.
+    api_info: API vam omogoča interakcijo z vsemi podatki OpenAppointments prek protokola HTTP in razpoložljivih končnih točk API ter ustvarjanje lastnih integracij.
     google_analytics_code: Koda Google Analytics
     matomo_analytics_url: URL Matomo Analytics
     future_booking_limit: Prihodnja omejitev rezervacij
@@ -464,7 +464,7 @@ sl:
     caldav_connection_info_prompt: Prosimo, vnesite podatke o povezavi ciljnega koledarja CalDAV.
     connect: Poveži
     ldap: LDAP
-    ldap_info: Ta integracija vam omogoča, da se povežete z obstoječim strežnikom LDAP in samodejno uvozite uporabnike v Easy!Appointments ter jim omogočite SSO z njihovim geslom imenika (uporabniško ime se mora ujemati).
+    ldap_info: Ta integracija vam omogoča, da se povežete z obstoječim strežnikom LDAP in samodejno uvozite uporabnike v OpenAppointments ter jim omogočite SSO z njihovim geslom imenika (uporabniško ime se mora ujemati).
     host: Gostitelj
     port: Vrata
     user_dn: Uporabniško DN

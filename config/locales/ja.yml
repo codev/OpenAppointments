@@ -174,22 +174,22 @@ ja:
     hidden: 目に見えません
     business_logic: 勤務時間設定
     current_user: 現在のユーザー
-    about_app: Easy!Appointmentsとは。
+    about_app: OpenAppointmentsとは。
     edit_working_plan_hint: 会社で予約を受け付ける曜日と勤務時間を設定してください。時間外の予約にも調整できまうが、お客様は 時間外への予約はできません。この勤務時間は新しい担当者の初期設定となりますが、担当者ごとに変更できます。
     edit_breaks_hint: 各曜日の休憩時間の設定をしてください。この休憩時間の設定は、担当者の初期設定となります。
     book_advance_timeout: 予約待機時間
     book_advance_timeout_hint: この待機時間 以上前の予約もしくは予約変更しか受け付けることはできません。時間寸前の予約ができないときなどに使用。
     timeout_minutes: 時間 (分)
-    about_app_info: Easy!Appointmentsは、カスタマイズ可能な予約受付ウエッブアップリケーションです。さら、Googleカレンダーとの連携ができるので、このシステムのスケジュールを他のシステムのスケジュールとまとめてみることができます。
+    about_app_info: OpenAppointmentsは、カスタマイズ可能な予約受付ウエッブアップリケーションです。さら、Googleカレンダーとの連携ができるので、このシステムのスケジュールを他のシステムのスケジュールとまとめてみることができます。
     current_version: バージョン番号
     support: サポート
-    about_app_support: " Easy!Appointments を利用する上で もし何か 問題がありましたら 、是非　公式 Google Groupを検索して 解決方法を見つけてください。もしかしたら 開発をさらに良いものにするために 新しい課題を Google Code に 登録することもできます。"
+    about_app_support: OpenAppointments の利用中に問題が発生した場合は、GitHub のプロジェクトの issue から回答を検索できます。開発を支援するために新しい issue を作成することもできます。
     official_website: 公式サイト
     google_plus_community: Google+ コミュニティ
     support_group: サポートグループ
     project_issues: プロジェクト対応一覧
     license: ライセンス
-    about_app_license: 'Easy!Appointments は　GPLv3 ライセンス に従います。 Easy!Appointments　のプログラムコードを使用するということは、あるあらゆる面で 次のURLのサイトにある条件に同意したこととなります。:'
+    about_app_license: 'OpenAppointments は　GPLv3 ライセンス に従います。 OpenAppointments　のプログラムコードを使用するということは、あるあらゆる面で 次のURLのサイトにある条件に同意したこととなります。:'
     logout_success: ログアウトが完了しました。どちらかのボタンを押して ページを移動することができます。
     book_appointment_title: 予約受付
     backend_section: 管理画面
@@ -270,7 +270,7 @@ ja:
     select_sync_calendar_prompt: あなたの予約と同期したい Googleカレンダーを選択してください。.特定のカレンダーを指定したくない場合には、デフォルトのカレンダーが使われます。
     sync_calendar_selected: Googleカレンダーが 選択されました。
     oops_something_went_wrong: おっと、なにか が うまく 行ってません。
-    ea_update_success: Easy!Appointments の　アップデートが成功しました。
+    ea_update_success: OpenAppointments の　アップデートが成功しました。
     require_captcha: CAPTCHAを要求
     require_captcha_hint: 有効にすると、顧客は予約/更新の前にランダムに生成されたCAPTCHA文字列を入力する必要があります。
     captcha_is_wrong: CAPTCHA認証に失敗しました。もう一度お試しください。
@@ -319,7 +319,7 @@ ja:
     require_phone_number: 電話番号を要求
     require_phone_number_hint: 有効にすると、予約時に顧客の電話番号を入力する必要があります。
     check_spam_folder: メールが数分以内に届かない場合は、迷惑メールフォルダーを確認してください。
-    api_token_hint: Easy!Appointments APIのトークンベースの認証を有効にするために、秘密のトークンを設定します。
+    api_token_hint: OpenAppointments APIのトークンベースの認証を有効にするために、秘密のトークンを設定します。
     timezone: タイムゾーン
     overwrite_existing_working_plans: これにより、既存のプロバイダーの作業計画が上書きされます。続行してもよろしいですか？
     working_plans_got_updated: すべての作業計画が更新されました。
@@ -395,7 +395,7 @@ ja:
     matomo_analytics: Matomo アナリティクス
     matomo_analytics_info: Matomo Analyticsを使用すると、トラッキングコードとHTMLマークアップを自動的にパブリックページに追加し、すべてのパブリック予約セッションを追跡できます。
     api: API
-    api_info: APIを使用すると、HTTPプロトコルおよび利用可能なAPIエンドポイントを介してすべてのEasy!Appointmentsデータと対話し、独自の統合を作成できます。
+    api_info: APIを使用すると、HTTPプロトコルおよび利用可能なAPIエンドポイントを介してすべてのOpenAppointmentsデータと対話し、独自の統合を作成できます。
     google_analytics_code: Google Analytics コード
     matomo_analytics_url: Matomo アナリティクス URL
     future_booking_limit: 将来の予約制限
@@ -464,7 +464,7 @@ ja:
     caldav_connection_info_prompt: ターゲットのCalDAVカレンダーの接続情報を入力してください。
     connect: 接続
     ldap: LDAP
-    ldap_info: この統合により、既存のLDAPサーバーに接続してユーザーを自動的にEasy!Appointmentsにインポートし、ディレクトリパスワードでSSOできます（ユーザー名は一致する必要があります）。
+    ldap_info: この統合により、既存のLDAPサーバーに接続してユーザーを自動的にOpenAppointmentsにインポートし、ディレクトリパスワードでSSOできます（ユーザー名は一致する必要があります）。
     host: ホスト
     port: ポート
     user_dn: ユーザーDN

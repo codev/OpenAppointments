@@ -180,16 +180,16 @@ ar:
     book_advance_timeout: حجز مهلة مسبقا
     book_advance_timeout_hint: تعريف المهلة (بالدقائق) قبل أن يحجز الزبائن الموعد او يقومون باعادة ترتيب حجزهم
     timeout_minutes: المهلة (الدقائق)
-    about_app_info: Easy!Appointments هو تطبيق ويب قابل للتخصيص بدرجة كبيرة ويسمح لعملائك بحجز المواعيد معك عبر الويب. علاوة على ذلك، فهو يوفر القدرة على مزامنة بياناتك مع تقويم Google حتى تتمكن من استخدامها مع الخدمات الأخرى.
+    about_app_info: OpenAppointments هو تطبيق ويب قابل للتخصيص بدرجة كبيرة ويسمح لعملائك بحجز المواعيد معك عبر الويب. علاوة على ذلك، فهو يوفر القدرة على مزامنة بياناتك مع تقويم Google حتى تتمكن من استخدامها مع الخدمات الأخرى.
     current_version: النسخة الحالية
     support: الدعم
-    about_app_support: إذا واجهت أي مشاكل عند استخدام Easy!Appointments، يمكنك البحث في مجموعة Google الرسمية للحصول على إجابات. قد تحتاج أيضًا إلى إنشاء مشكلة جديدة في صفحة Google Code للمساعدة في تقدم عملية التطوير.
+    about_app_support: إذا واجهت أي مشاكل عند استخدام OpenAppointments يمكنك البحث في مشاكل المشروع على GitHub عن إجابات. وقد تحتاج أيضا إلى فتح مشكلة جديدة للمساعدة في تقدم التطوير.
     official_website: الموقع الرسمي
     google_plus_community: Google+ مجتمع
     support_group: مجموعة الدعم
     project_issues: مشاكل المشروع
     license: الرخصة
-    about_app_license: Easy!Appointments مرخص بموجب ترخيص GPLv3. باستخدامك لرمز Easy!Appointments بأي شكل من الأشكال فإنك توافق على الشروط الموضحة في عنوان URL التالي
+    about_app_license: OpenAppointments مرخص بموجب ترخيص GPLv3. باستخدامك لرمز OpenAppointments بأي شكل من الأشكال فإنك توافق على الشروط الموضحة في عنوان URL التالي
     logout_success: تم تسجيل الخروج بنجاح
     book_appointment_title: احجز موعد
     backend_section: صفحة الدخول للبرنامج
@@ -319,7 +319,7 @@ ar:
     require_phone_number: يتطلب رقم الهاتف
     require_phone_number_hint: عند التمكين، سيحتاج العملاء والمستخدمون إلى إدخال رقم هاتف العميل عند حجز موعد
     check_spam_folder: يرجى التحقق من مجلد الرسائل غير المرغوب فيها إذا لم تصل رسالة البريد الإلكتروني خلال بضع دقائق.
-    api_token_hint: قم بتعيين رمز مميز سري لتمكين المصادقة المستندة إلى الرمز المميز لـ Easy!Appointments API.
+    api_token_hint: قم بتعيين رمز مميز سري لتمكين المصادقة المستندة إلى الرمز المميز لـ OpenAppointments API.
     timezone: المنطقة الزمنية
     overwrite_existing_working_plans: سيؤدي هذا إلى استبدال خطط عمل المزود الحالية، هل أنت متأكد من رغبتك في الاستمرار؟
     working_plans_got_updated: تم تحديث كافة خطط العمل.
@@ -395,7 +395,7 @@ ar:
     matomo_analytics: تحليلات Matomo
     matomo_analytics_info: يمكّنك Matomo Analytics من إضافة شفرة التتبع وترميز HTML تلقائيًا إلى الصفحة العامة وتتبع جميع جلسات الحجز العامة
     api: API
-    api_info: تُمكِّنك واجهة برمجة التطبيقات من التفاعل مع جميع بيانات Easy!Appointments عبر بروتوكول HTTP ونقاط نهاية واجهة برمجة التطبيقات المتاحة وإنشاء عمليات التكامل الخاصة بك.
+    api_info: تُمكِّنك واجهة برمجة التطبيقات من التفاعل مع جميع بيانات OpenAppointments عبر بروتوكول HTTP ونقاط نهاية واجهة برمجة التطبيقات المتاحة وإنشاء عمليات التكامل الخاصة بك.
     google_analytics_code: رمز Google Analytics
     matomo_analytics_url: رابط Matomo Analytics
     future_booking_limit: حد الحجز المستقبلي
@@ -464,7 +464,7 @@ ar:
     caldav_connection_info_prompt: الرجاء إدخال معلومات الاتصال الخاصة بتقويم CalDAV الهدف
     connect: الاتصال
     ldap: LDAP
-    ldap_info: يمكّنك هذا التكامل من الاتصال بخادم LDAP موجود واستيراد المستخدمين تلقائيًا إلى Easy!Appointments والسماح لهم بإدخال كلمة مرور الدليل الخاصة بهم (يجب أن يتطابق اسم المستخدم)
+    ldap_info: يمكّنك هذا التكامل من الاتصال بخادم LDAP موجود واستيراد المستخدمين تلقائيًا إلى OpenAppointments والسماح لهم بإدخال كلمة مرور الدليل الخاصة بهم (يجب أن يتطابق اسم المستخدم)
     host: المضيف
     port: الميناء
     user_dn: المستخدم DN

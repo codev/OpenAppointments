@@ -174,22 +174,22 @@ lv:
     hidden: Slēpts
     business_logic: Biznesa loģika
     current_user: Pašreizējais lietotājs
-    about_app: Par Easy!Appointments
+    about_app: Par OpenAppointments
     edit_working_plan_hint: Zemāk atzīmējiet dienas un stundas, kad jūsu uzņēmums pieņems tikšanās. Jūs varēsiet pielāgot tikšanās reizes ne darba laikā, bet klienti nevarēs paši rezervēt tikšanās reizes ne darba laikā. Šis darba plāns būs noklusējuma iestatījums katram jaunam pakalpojumu sniedzēja ierakstam, bet jūs varēsiet mainīt katra pakalpojumu sniedzēja plānu atsevišķi, rediģējot viņa ierakstu. Pēc tam varēsiet pievienot pārtraukuma periodus.
     edit_breaks_hint: Pievienojiet darba pārtraukumus katras dienas laikā. Šie pārtraukumi tiks piemēroti visiem jaunajiem pakalpojumu sniedzējiem.
     book_advance_timeout: Grāmatu iepriekšēja rezervējuma laika ierobežojums
     book_advance_timeout_hint: Nosakiet laika ierobežojumu (minūtēs), pirms klienti var rezervēt vai pārplānot tikšanās ar uzņēmumu.
     timeout_minutes: Laika limits (minūtes)
-    about_app_info: Easy!Appointments ir ļoti pielāgojama tīmekļa lietojumprogramma, kas ļauj jūsu klientiem rezervēt tikšanās ar jums, izmantojot tīmekli. Turklāt tā nodrošina iespēju sinhronizēt datus ar Google kalendāru, lai jūs tos varētu izmantot ar citiem pakalpojumiem.
+    about_app_info: OpenAppointments ir ļoti pielāgojama tīmekļa lietojumprogramma, kas ļauj jūsu klientiem rezervēt tikšanās ar jums, izmantojot tīmekli. Turklāt tā nodrošina iespēju sinhronizēt datus ar Google kalendāru, lai jūs tos varētu izmantot ar citiem pakalpojumiem.
     current_version: Pašreizējā versija
     support: Atbalsts
-    about_app_support: Ja, izmantojot Easy!Appointments, jums rodas problēmas, varat meklēt atbildes oficiālajā Google grupā. Iespējams, ka jums būs nepieciešams arī izveidot jaunu jautājumu Google Code lapā, lai palīdzētu virzīt izstrādi.
+    about_app_support: Ja, lietojot OpenAppointments, rodas problēmas, atbildes varat meklēt projekta GitHub problēmu sarakstā. Varat arī izveidot jaunu problēmu, lai palīdzētu attīstībai.
     official_website: Oficiālā vietne
     google_plus_community: Google+ kopiena
     support_group: Atbalsta grupa
     project_issues: Projekta jautājumi
     license: Licence
-    about_app_license: 'Easy!Appointments ir licencēta ar GPLv3 licenci. Jebkurā veidā izmantojot Easy!Appointments kodu, jūs piekrītat noteikumiem, kas aprakstīti šajā url:'
+    about_app_license: 'OpenAppointments ir licencēta ar GPLv3 licenci. Jebkurā veidā izmantojot OpenAppointments kodu, jūs piekrītat noteikumiem, kas aprakstīti šajā url:'
     logout_success: Jūs esat veiksmīgi izrakstījies! Noklikšķiniet uz kādas no šīm pogām, lai pārietu uz citu lapu.
     book_appointment_title: Rezervēt tikšanos
     backend_section: Administrācijas sadaļa
@@ -270,7 +270,7 @@ lv:
     select_sync_calendar_prompt: Izvēlieties kalendāru, ar kuru vēlaties sinhronizēt savas tikšanās.
     sync_calendar_selected: Sinhronizācijas kalendārs ir veiksmīgi izvēlēts.
     oops_something_went_wrong: Oops! Kaut kas notika nepareizi.
-    ea_update_success: Easy!Appointments ir veiksmīgi atjaunināts.
+    ea_update_success: OpenAppointments ir veiksmīgi atjaunināts.
     require_captcha: Pieprasīt CAPTCHA
     require_captcha_hint: Ja šī funkcija ir iespējota, klientiem pirms tikšanās rezervēšanas/atjaunināšanas būs jāievada nejauši ģenerēta CAPTCHA virkne.
     captcha_is_wrong: CAPTCHA verifikācija neizdevās, mēģiniet vēlreiz.
@@ -319,7 +319,7 @@ lv:
     require_phone_number: Pieprasīt tālruņa numuru
     require_phone_number_hint: Ja šī funkcija ir iespējota, klientiem un lietotājiem, rezervējot tikšanos, būs jāievada klienta tālruņa numurs
     check_spam_folder: Lūdzu, pārbaudiet surogātpasta mapi, ja e-pasta vēstule nav saņemta dažu minūšu laikā.
-    api_token_hint: Iestatiet slepeno žetonu, lai iespējotu uz žetonu balstītu autentifikāciju Easy!Appointments API.
+    api_token_hint: Iestatiet slepeno žetonu, lai iespējotu uz žetonu balstītu autentifikāciju OpenAppointments API.
     timezone: Laika josla
     overwrite_existing_working_plans: Tas pārrakstīs esošos pakalpojumu sniedzēja darba plānus, vai esat pārliecināts, ka vēlaties turpināt?
     working_plans_got_updated: Visi darba plāni ir atjaunināti.
@@ -395,7 +395,7 @@ lv:
     matomo_analytics: Matomo Analytics
     matomo_analytics_info: Matomo Analytics ļauj automātiski pievienot izsekošanas kodu un HTML iezīmējumu publiskajā lapā un izsekot visas publiskās rezervācijas sesijas.
     api: API
-    api_info: API ļauj jums mijiedarboties ar visiem Easy!Appointments datiem, izmantojot HTTP protokolu un pieejamos API galapunktus, kā arī izveidot savu integrāciju.
+    api_info: API ļauj jums mijiedarboties ar visiem OpenAppointments datiem, izmantojot HTTP protokolu un pieejamos API galapunktus, kā arī izveidot savu integrāciju.
     google_analytics_code: Google Analytics kods
     matomo_analytics_url: Matomo Analytics URL
     future_booking_limit: Nākotnes rezervācijas limits
@@ -464,7 +464,7 @@ lv:
     caldav_connection_info_prompt: Lūdzu, ievadiet mērķa CalDAV kalendāra savienojuma informāciju.
     connect: Savienot
     ldap: LDAP
-    ldap_info: Šī integrācija ļauj izveidot savienojumu ar esošo LDAP serveri un automātiski importēt lietotājus programmā Easy!Appointments, kā arī ļaut viņiem veikt SSO ar direktorija paroli (lietotājvārdam jābūt vienādam).
+    ldap_info: Šī integrācija ļauj izveidot savienojumu ar esošo LDAP serveri un automātiski importēt lietotājus programmā OpenAppointments, kā arī ļaut viņiem veikt SSO ar direktorija paroli (lietotājvārdam jābūt vienādam).
     host: Resursdators
     port: Ports
     user_dn: Lietotāja DN

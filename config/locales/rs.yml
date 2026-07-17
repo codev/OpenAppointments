@@ -174,22 +174,22 @@ rs:
     hidden: Skriveno
     business_logic: Poslovna logika
     current_user: Trenutni korisnik
-    about_app: O Easy!Appointments
+    about_app: O OpenAppointments
     edit_working_plan_hint: Označite ispod dane i vreme koje će firma prihvatiti kao termine. Moći ćete prilagoditi termin u vreme kada je zatvoreno, ali korisnici usluga neće moći sami da rezervišu termin u vreme kada je zatvoreno. Ovaj plan rada biće automatski snimljen za svakog novog korisnika, ali Vi ćete moći izmeniti plan svakog novog korisnika ponaosob uređenjem njegovog zapisa. Nakon toga možete dodati vreme pauza.
     edit_breaks_hint: Dodajte svakodnevne pauze. Ove pauze će važiti za sve nove korisnike.
     book_advance_timeout: Rezervišite trajanje neaktivnosti unapred
     book_advance_timeout_hint: Odredite trajanje neaktivnosti (u minutima) pre nego što korisnik može rezervisati ili promeniti termin.
     timeout_minutes: Vreme neaktivnosti (minuti)
-    about_app_info: Easy!Appointments je veoma prilagodljiva veb-aplikacija koja omogućava Vašim korisnicima da zakazuju termine, a Vama da njima upravljate. Uz to, omogućava istovremenu povezanost Vaših podataka sa Google kalendarom koje možete onda koristiti na ostalim servisima.
+    about_app_info: OpenAppointments je veoma prilagodljiva veb-aplikacija koja omogućava Vašim korisnicima da zakazuju termine, a Vama da njima upravljate. Uz to, omogućava istovremenu povezanost Vaših podataka sa Google kalendarom koje možete onda koristiti na ostalim servisima.
     current_version: Trenutna verzija
     support: Podrška
-    about_app_support: Ako imate bilo kakvih problema u radu sa aplikacijom Easy!Appointments, odgovore možete potražiti na službenoj stranici Google Group. Možete osmisliti i novu verziju aplikacije na Google Code stranici u svrhu razvoja aplikacije.
+    about_app_support: Ako naiđete na probleme pri korišćenju OpenAppointments, odgovore možete potražiti među issue prijavama projekta na GitHub-u. Možete i otvoriti novi issue kako biste pomogli razvoju.
     official_website: Službena veb-stranica
     google_plus_community: Google+ zajednica
     support_group: Grupa za podršku
     project_issues: Problemi u vezi sa projektom
     license: Licenca
-    about_app_license: 'Easy!Appointments aplikacija je licencirana pod GPLv3 licencom. Koristeći Easy!Appointments na bilo koji način, slažete se sa uslovima korištenja koji su dati na sledećoj adresi:'
+    about_app_license: 'OpenAppointments aplikacija je licencirana pod GPLv3 licencom. Koristeći OpenAppointments na bilo koji način, slažete se sa uslovima korištenja koji su dati na sledećoj adresi:'
     logout_success: Uspešno ste se odjavili! Pritiskom na jednu od ponuđenih opcija napustićete stranicu.
     book_appointment_title: Rezervišite posetu
     backend_section: Administracija sistema
@@ -270,7 +270,7 @@ rs:
     select_sync_calendar_prompt: Izaberite kalendar sa kojim želite usaglasiti Vaš termin. Ako ne želite izabrati poseban kalendar, koristiće se uobičajeni.
     sync_calendar_selected: Google kalendar je uspešno odabran!
     oops_something_went_wrong: Oops! Nešto nije u redu!
-    ea_update_success: Easy!Appointments je uspešno ažuriran!
+    ea_update_success: OpenAppointments je uspešno ažuriran!
     require_captcha: Zahtevajte CAPTCHA-u
     require_captcha_hint: Ako je moguće, korisnik treba da unese slučajno generisan CAPTCHA niz znakova pre zakazivanja ili menjanja termina.
     captcha_is_wrong: CAPTCHA potvrđivanje nije uspelo, molimo Vas da pokušate ponovo.
@@ -319,7 +319,7 @@ rs:
     require_phone_number: Obavezno broj telefona
     require_phone_number_hint: Kada je omogućeno, klijenti i korisnici treba da upišu broj telefona kada zakazuju svoj termin
     check_spam_folder: Proverite svoju neželjenu poštu (spam) ako E-mail nije stigao u roku od nekoliko minuta.
-    api_token_hint: Postavite tajni token kako biste omogućili pristup Easy!Appointments API.
+    api_token_hint: Postavite tajni token kako biste omogućili pristup OpenAppointments API.
     timezone: Vremenska zona
     overwrite_existing_working_plans: Ovo će prepisati postojeći plan rada izvršioca, da li ste sigurni da želite da nastavite?
     working_plans_got_updated: Svi planovi rada su aktualizovani.
@@ -395,7 +395,7 @@ rs:
     matomo_analytics: Matomo Аналитика
     matomo_analytics_info: Matomo Analytics vam omogućavaju da automatski dodate kod za praćenje i HTML oznaku na javnoj stranici i pratite sve javne sesije rezervacija.
     api: API
-    api_info: API vam omogućavaju da komunicirate sa svim podacima Easy!Appointments putem HTTP protokola i dostupnih API krajnjih tačaka i kreirate svoje integracije.
+    api_info: API vam omogućavaju da komunicirate sa svim podacima OpenAppointments putem HTTP protokola i dostupnih API krajnjih tačaka i kreirate svoje integracije.
     google_analytics_code: Google Analytics Kod
     matomo_analytics_url: Matomo Analytics URL
     future_booking_limit: Ograničenje Budućih Rezervacija
@@ -464,7 +464,7 @@ rs:
     caldav_connection_info_prompt: Molimo unesite informacije o konekciji za ciljni CalDAV kalendar.
     connect: Poveži
     ldap: LDAP
-    ldap_info: Ova integracija vam omogućava da se povežete sa postojećim LDAP serverom i automatski uvezete korisnike u Easy!Appointments i omogućite im SSO sa njihovom lozinkom iz direktorijuma (korisničko ime mora odgovarati).
+    ldap_info: Ova integracija vam omogućava da se povežete sa postojećim LDAP serverom i automatski uvezete korisnike u OpenAppointments i omogućite im SSO sa njihovom lozinkom iz direktorijuma (korisničko ime mora odgovarati).
     host: Host
     port: Port
     user_dn: User DN

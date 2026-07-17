@@ -174,22 +174,22 @@ tr:
     hidden: Gizli
     business_logic: İş Mantığı
     current_user: Mevcut Kullanıcı
-    about_app: Easy!Appointments Hakkında
+    about_app: OpenAppointments Hakkında
     edit_working_plan_hint: Aağıda şirketinizin kabul edeceği günleri ve saatleri işaretleyin. Çalışma saatleri dışında randevuları ayarlayabilirsiniz, ancak bu saatlere müşterilerin kendileri randevu kaydedemeyecektir. Bu çalışma planı tüm sağlayıcılar için varsayılan değer olup, daha sonra her biri için ayrıca özel plan da girebilir ve araları ekleyebilirsiniz.
     edit_breaks_hint: Gün içindeki çalışma aralarını ekleyin. Bu aralar tüm yeni hizmet sağlayıcılar için geçerli olacaktır.
     book_advance_timeout: Erken Randevu Zamanaşımı Değeri
     book_advance_timeout_hint: Müşterilerin en az ne kadar önceden randevu alması veya randevu düzenlemesi gerektiğini girin (dakika cinsinden).
     timeout_minutes: Zamanaşımı (Dakika)
-    about_app_info: 'Easy!Appointments yüksek ölçüde özelleştirilebilen, müşterilerinizin web üzerinden randevu almasını sağlayan bir uygulamadır. Ayrıca, bilgilerinizi Google Takvim ile eşitleyerek diğer uygulamalarla da entegre olmasını sağlar. '
+    about_app_info: 'OpenAppointments yüksek ölçüde özelleştirilebilen, müşterilerinizin web üzerinden randevu almasını sağlayan bir uygulamadır. Ayrıca, bilgilerinizi Google Takvim ile eşitleyerek diğer uygulamalarla da entegre olmasını sağlar. '
     current_version: Mevcut Versiyon
     support: Destek
-    about_app_support: Easy!Appointments kullanımı sırasında sorun yaşamanız halinde resmi Google Group üzerinde arama yapabilirsiniz. Ayrıca geliştirmeye destek olmak için Google Code sayfasında yeni sorun girişi de yapabilirsiniz.
+    about_app_support: OpenAppointments kullanırken herhangi bir sorunla karşılaşırsanız, yanıtlar için projenin GitHub üzerindeki issue kayıtlarını arayabilirsiniz. Gelişime yardımcı olmak için yeni bir issue da açabilirsiniz.
     official_website: Resmi Web Sitesi
     google_plus_community: Google+ Çevresi
     support_group: Destek Grubu
     project_issues: Proje Sorunları
     license: Lisans
-    about_app_license: 'Easy!Appointments GPLv3 kapsamında lisanslıdır. Bu yazılımı herhangi bir biçimde kullanarak aşağıdaki adreste belirtilen koşulları kabul etmiş olursunuz:'
+    about_app_license: 'OpenAppointments GPLv3 kapsamında lisanslıdır. Bu yazılımı herhangi bir biçimde kullanarak aşağıdaki adreste belirtilen koşulları kabul etmiş olursunuz:'
     logout_success: Başarı ile sistemden çıkış yaptınız! Aşağıdaki butonlara tıklayarak diğer sayfalara geçebilirsiniz.
     book_appointment_title: Randevu Al
     backend_section: Yönetim Paneli
@@ -270,7 +270,7 @@ tr:
     select_sync_calendar_prompt: Randevularınızı eşitlemek istediğiniz takvimi seçin. Eğer spesifik bir takvim seçmezseniz varsayılan takvim kullanılacaktır.
     sync_calendar_selected: Google Takvimi başarıyla seçildi.
     oops_something_went_wrong: Oops! Bir Sorun Oluştu.
-    ea_update_success: Easy!Appointments başarı ile güncellendi.
+    ea_update_success: OpenAppointments başarı ile güncellendi.
     require_captcha: CAPTCHA gereklidir
     require_captcha_hint: Etkinleştirildiğinde, müşterilerin bir randevu rezervasyonu/güncellemesi yapmadan önce rastgele oluşturulmuş bir CAPTCHA dizesini yazmaları gerekecektir.
     captcha_is_wrong: CAPTCHA doğrulaması başarısız oldu, lütfen tekrar deneyin.
@@ -319,7 +319,7 @@ tr:
     require_phone_number: Telefon num. gerekli
     require_phone_number_hint: Etkinleştirildiğinde, müşterilerin ve kullanıcıların randevu alırken müşterinin telefon numarasını girmeleri gerekir.
     check_spam_folder: E-posta birkaç dakika içinde gelmezse lütfen spam klasörünüzü kontrol edin.
-    api_token_hint: Easy!Appointments Api sinin belirteç tabanlı kimlik doğrulamasını etkinleştirmek için gizli bir belirteç ayarlayın.
+    api_token_hint: OpenAppointments Api sinin belirteç tabanlı kimlik doğrulamasını etkinleştirmek için gizli bir belirteç ayarlayın.
     timezone: Saat Dilimi
     overwrite_existing_working_plans: Bu mevcut sağlayıcı çalışma planlarını üstlenecek, devam etmek istediğinizden emin misiniz?
     working_plans_got_updated: Tüm çalışma planları güncellendi.
@@ -395,7 +395,7 @@ tr:
     matomo_analytics: Matomo Analytics
     matomo_analytics_info: Matomo Analytics, izleme kodunu ve HTML işaretlemesini otomatik olarak eklemenizi ve tüm halka açık rezervasyon oturumlarını takip etmenizi sağlar.
     api: API
-    api_info: API’ler, HTTP protokolü ve mevcut API uç noktaları aracılığıyla tüm Easy!Appointments verileriyle etkileşime geçmenizi sağlar ve kendi entegrasyonlarınızı oluşturmanıza olanak tanır.
+    api_info: API’ler, HTTP protokolü ve mevcut API uç noktaları aracılığıyla tüm OpenAppointments verileriyle etkileşime geçmenizi sağlar ve kendi entegrasyonlarınızı oluşturmanıza olanak tanır.
     google_analytics_code: Google Analytics Kodu
     matomo_analytics_url: Matomo Analytics URL’si
     future_booking_limit: Gelecek Rezervasyon Limiti
@@ -464,7 +464,7 @@ tr:
     caldav_connection_info_prompt: Hedef CalDAV Takvimi için bağlantı bilgilerini girin.
     connect: Bağlan
     ldap: LDAP
-    ldap_info: Bu entegrasyon, mevcut bir LDAP sunucusuna bağlanmanızı ve kullanıcıları Easy!Appointments’a otomatik olarak aktarmanızı sağlar ve onları dizin parolalarıyla SSO yapmalarına izin verir (kullanıcı adı eşleşmelidir).
+    ldap_info: Bu entegrasyon, mevcut bir LDAP sunucusuna bağlanmanızı ve kullanıcıları OpenAppointments’a otomatik olarak aktarmanızı sağlar ve onları dizin parolalarıyla SSO yapmalarına izin verir (kullanıcı adı eşleşmelidir).
     host: Ana Bilgisayar
     port: Port
     user_dn: Kullanıcı DN

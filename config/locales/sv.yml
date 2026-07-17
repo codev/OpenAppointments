@@ -174,22 +174,22 @@ sv:
     hidden: Dold
     business_logic: Bokningsregler
     current_user: Nuvarande användare
-    about_app: Om Easy!Appointments
+    about_app: Om OpenAppointments
     edit_working_plan_hint: Markera de dagar och tider som är tillgängliga för bokning. Som administratör kan du justera bokningar utanför dessa tider, men kunder kan bara boka inom det angivna schemat. Detta är standardschemat för alla utförare, men det går att ändra individuellt. Efteråt kan du även lägga till raster.
     edit_breaks_hint: Lägg till dagliga raster. Dessa läggs till i standardschemat för samtliga utförare.
     book_advance_timeout: Framförhållning för bokning
     book_advance_timeout_hint: Ange hur många minuter i förväg en bokning eller ändring senast måste göras.
     timeout_minutes: Paus (minuter)
-    about_app_info: Easy!Appointments är ett bokningssystem som låter dina kunder boka tider online. Bokningarna kan synkas med personalens Google-kalendrar så att de även syns i andra tjänster.
+    about_app_info: OpenAppointments är ett bokningssystem som låter dina kunder boka tider online. Bokningarna kan synkas med personalens Google-kalendrar så att de även syns i andra tjänster.
     current_version: Version
     support: Support
-    about_app_support: Om du stöter på problem när du använder Easy!Appointments kan du söka i den officiella Google-gruppen för support. Du kan även underlätta för utvecklarna genom att registrera ett ärende på GitHub-sidan.
+    about_app_support: Om du stöter på problem med OpenAppointments kan du söka efter svar bland projektets issues på GitHub. Du kan också skapa ett nytt issue för att hjälpa utvecklingen.
     official_website: Officiell hemsida
     google_plus_community: Google+ grupp
     support_group: Support grupp
     project_issues: Felrapporter
     license: Licens
-    about_app_license: Easy!Appointments är licensierat under GPLv3. Genom att använda koden på något sätt godkänner du villkoren på följande länk.
+    about_app_license: OpenAppointments är licensierat under GPLv3. Genom att använda koden på något sätt godkänner du villkoren på följande länk.
     logout_success: Du är nu utloggad. Välj ett alternativ nedan för att gå vidare.
     book_appointment_title: Boka tid
     backend_section: Administration
@@ -270,7 +270,7 @@ sv:
     select_sync_calendar_prompt: Välj vilken kalender du vill synkronisera med. Om du inte väljer någon används din standardkalender.
     sync_calendar_selected: Google-kalender vald.
     oops_something_went_wrong: Oops! Något gick fel.
-    ea_update_success: Easy!Appointments är uppdaterad.
+    ea_update_success: OpenAppointments är uppdaterad.
     require_captcha: Kräv CAPTCHA
     require_captcha_hint: När detta är aktiverat måste kunder ange en säkerhetskod (CAPTCHA) för att kunna boka eller ändra tider.
     captcha_is_wrong: CAPTCHA-verifieringen misslyckades, försök igen.
@@ -319,7 +319,7 @@ sv:
     require_phone_number: Kräv telefonnummer.
     require_phone_number_hint: När detta är aktiverat är telefonnummer obligatoriskt för att kunna göra en bokning.
     check_spam_folder: Kontrollera skräpposten om du inte har fått mejlet inom några minuter.
-    api_token_hint: Ställ in en säkerhets-token för att ge åtkomst till Easy!Appointments API via token-autentisering.
+    api_token_hint: Ställ in en säkerhets-token för att ge åtkomst till OpenAppointments API via token-autentisering.
     timezone: Tidszon
     overwrite_existing_working_plans: Detta kommer att ersätta befintliga utförarescheman. Är du säker på att du vill fortsätta?
     working_plans_got_updated: Alla scheman uppdaterades.
@@ -464,7 +464,7 @@ sv:
     caldav_connection_info_prompt: Vänligen ange anslutningsinformationen för målkalendern.
     connect: Anslut
     ldap: LDAP
-    ldap_info: Denna integration gör att du kan ansluta till en befintlig LDAP-server och automatiskt importera användare till Easy!Appointments och låta dem använda SSO med sitt kataloglösenord (användarnamn måste matcha).
+    ldap_info: Denna integration gör att du kan ansluta till en befintlig LDAP-server och automatiskt importera användare till OpenAppointments och låta dem använda SSO med sitt kataloglösenord (användarnamn måste matcha).
     host: Värd
     port: Port
     user_dn: Användar DN
