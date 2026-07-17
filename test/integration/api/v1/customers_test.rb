@@ -7,7 +7,7 @@ module Api
         api_get "/api/v1/customers"
         assert_response :success
         customer = json.find { |c| c["id"] == users(:james).id }
-        assert_equal "James", customer["firstName"]
+        assert_equal "James Doe", customer["firstName"]
         assert_equal "james@example.org", customer["email"]
         assert_equal "+447700900000", customer["phone"]
         assert customer.key?("zip")
@@ -16,7 +16,7 @@ module Api
 
       test "keyword search filters by name" do
         api_get "/api/v1/customers", q: "James"
-        assert(json.any? { |c| c["firstName"] == "James" })
+        assert(json.any? { |c| c["firstName"] == "James Doe" })
         api_get "/api/v1/customers", q: "zzzznomatch"
         assert_empty json
       end
@@ -27,7 +27,7 @@ module Api
       end
 
       test "sort maps camelCase field and direction" do
-        User.customers.create!(first_name: "Aaron", last_name: "Zed", email: "aaron@example.org",
+        User.customers.create!(name: "Aaron Zed", email: "aaron@example.org",
                                role: Role.find_by(slug: "customer"))
         api_get "/api/v1/customers", sort: "firstName"
         names = json.map { |c| c["firstName"] }
@@ -49,7 +49,7 @@ module Api
 
       test "show returns one or 404" do
         api_get "/api/v1/customers/#{users(:james).id}"
-        assert_equal "James", json["firstName"]
+        assert_equal "James Doe", json["firstName"]
         api_get "/api/v1/customers/999999"
         assert_response :not_found
       end
@@ -60,7 +60,7 @@ module Api
                                           phone: "+447700900222" }
         end
         assert_response :created
-        assert_equal "New", json["firstName"]
+        assert_equal "New Person", json["firstName"]
         assert User.customers.exists?(email: "np@example.org")
       end
 

@@ -17,8 +17,7 @@
 App.Pages.Admins = (function () {
     const $admins = $('#admins');
     const $id = $('#id');
-    const $firstName = $('#first-name');
-    const $lastName = $('#last-name');
+    const $name = $('#name');
     const $email = $('#email');
     const $mobileNumber = $('#mobile-number');
     const $phoneNumber = $('#phone-number');
@@ -189,8 +188,7 @@ App.Pages.Admins = (function () {
          */
         $admins.on('click', '#save-admin', () => {
             const admin = {
-                first_name: $firstName.val(),
-                last_name: $lastName.val(),
+                name: $name.val(),
                 email: $email.val(),
                 mobile_number: $mobileNumber.val(),
                 phone_number: $phoneNumber.val(),
@@ -371,8 +369,7 @@ App.Pages.Admins = (function () {
      */
     function display(admin) {
         $id.val(admin.id);
-        $firstName.val(admin.first_name);
-        $lastName.val(admin.last_name);
+        $name.val(admin.name);
         $email.val(admin.email);
         $mobileNumber.val(admin.mobile_number);
         $phoneNumber.val(admin.phone_number);
@@ -441,7 +438,7 @@ App.Pages.Admins = (function () {
      * @return {String} The html code that represents the record on the filter results list.
      */
     function getFilterHtml(admin) {
-        const name = admin.first_name + ' ' + admin.last_name;
+        const name = admin.name;
 
         let info = admin.email;
 

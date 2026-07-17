@@ -2,7 +2,7 @@
 class ConsentsController < ApplicationController
   # POST /consents/save
   def save
-    consent = params.require(:consent).permit(:first_name, :last_name, :email, :type, :id_users).to_h
+    consent = params.require(:consent).permit(:name, :email, :type, :id_users).to_h
     consent["ip"] = request.remote_ip
 
     # EA throttles per IP: skip creation when a consent was stored in the last 24 hours.

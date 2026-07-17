@@ -11,8 +11,7 @@ class LdapSettingsController < ApplicationController
     "(&(objectClass=*)(|(cn={{KEYWORD}})(sn={{KEYWORD}})(mail={{KEYWORD}})" \
     "(givenName={{KEYWORD}})(uid={{KEYWORD}})))".freeze
   LDAP_DEFAULT_FIELD_MAPPING = {
-    "first_name" => "givenname",
-    "last_name" => "sn",
+    "name" => "displayname",
     "email" => "mail",
     "phone_number" => "telephonenumber",
     "username" => "cn"

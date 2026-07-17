@@ -18,8 +18,7 @@ App.Pages.Customers = (function () {
     const $customers = $('#customers');
     const $filterCustomers = $('#filter-customers');
     const $id = $('#customer-id');
-    const $firstName = $('#first-name');
-    const $lastName = $('#last-name');
+    const $name = $('#name');
     const $email = $('#email');
     const $phoneNumber = $('#phone-number');
     const $address = $('#address');
@@ -138,8 +137,7 @@ App.Pages.Customers = (function () {
          */
         $customers.on('click', '#save-customer', () => {
             const customer = {
-                first_name: $firstName.val(),
-                last_name: $lastName.val(),
+                name: $name.val(),
                 email: $email.val(),
                 phone_number: $phoneNumber.val(),
                 address: $address.val(),
@@ -296,8 +294,7 @@ App.Pages.Customers = (function () {
      */
     function display(customer) {
         $id.val(customer.id);
-        $firstName.val(customer.first_name);
-        $lastName.val(customer.last_name);
+        $name.val(customer.name);
         $email.val(customer.email);
         $phoneNumber.val(customer.phone_number);
         $address.val(customer.address);
@@ -366,9 +363,7 @@ App.Pages.Customers = (function () {
                                 'text':
                                     appointment.service.name +
                                     ' - ' +
-                                    appointment.provider.first_name +
-                                    ' ' +
-                                    appointment.provider.last_name,
+                                    appointment.provider.name,
                             }),
                             $('<br/>'),
                         ],
@@ -448,7 +443,7 @@ App.Pages.Customers = (function () {
      * @return {String} Returns the record HTML code.
      */
     function getFilterHtml(customer) {
-        const name = (customer.first_name || '[No First Name]') + ' ' + (customer.last_name || '[No Last Name]');
+        const name = (customer.name || '[No Name]');
 
         let info = customer.email || '[No Email]';
 

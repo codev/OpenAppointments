@@ -161,8 +161,7 @@ App.Utils.CalendarDefaultView = (function () {
 
         // Customer fields
         $appointmentsModal.find('#customer-id').val(appointment.id_users_customer);
-        $appointmentsModal.find('#first-name').val(customer.first_name);
-        $appointmentsModal.find('#last-name').val(customer.last_name);
+        $appointmentsModal.find('#name').val(customer.name);
         $appointmentsModal.find('#email').val(customer.email);
         $appointmentsModal.find('#phone-number').val(customer.phone_number);
         $appointmentsModal.find('#address').val(customer.address);
@@ -902,14 +901,12 @@ App.Utils.CalendarDefaultView = (function () {
      */
     function createAppointmentEvents(appointments) {
         return appointments.map((appointment) => {
-            const customerName = [appointment.customer.first_name, appointment.customer.last_name]
-                .filter(Boolean)
-                .join(' ');
+            const customerName = appointment.customer.name;
 
             const type =
                 getSelectedFilterType() !== FILTER_TYPE_SERVICE
                     ? appointment.service.name
-                    : [appointment.provider.first_name, appointment.provider.last_name].filter(Boolean).join(' ');
+                    : appointment.provider.name;
 
             const title = customerName ? customerName + ' - ' + type : appointment.service.name;
 
@@ -1276,7 +1273,7 @@ App.Utils.CalendarDefaultView = (function () {
                         type: FILTER_TYPE_PROVIDER,
                         'google-sync': provider.settings.google_sync,
                         'caldav-sync': provider.settings.caldav_sync,
-                        text: provider.first_name + ' ' + provider.last_name,
+                        text: provider.name,
                     }),
                 ),
             }).appendTo($selectFilterItem);

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_07_18_000001) do
+ActiveRecord::Schema[8.1].define(version: 2026_07_18_000002) do
   create_table "appointments", force: :cascade do |t|
     t.datetime "book_datetime"
     t.string "booking_hash"
@@ -49,10 +49,9 @@ ActiveRecord::Schema[8.1].define(version: 2026_07_18_000001) do
   create_table "consents", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.string "email"
-    t.string "first_name"
     t.integer "id_users"
     t.string "ip"
-    t.string "last_name"
+    t.string "name"
     t.string "type"
     t.datetime "updated_at", null: false
   end
@@ -152,13 +151,12 @@ ActiveRecord::Schema[8.1].define(version: 2026_07_18_000001) do
     t.text "custom_field_4"
     t.text "custom_field_5"
     t.string "email"
-    t.string "first_name"
     t.integer "id_roles", null: false
     t.boolean "is_private", default: false
     t.string "language", default: "english"
-    t.string "last_name"
     t.text "ldap_dn"
     t.string "mobile_number"
+    t.string "name"
     t.text "notes"
     t.string "phone_number"
     t.string "state"

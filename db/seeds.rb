@@ -21,7 +21,7 @@ default_working_plan = %w[monday tuesday wednesday thursday friday saturday sund
 }.to_json
 
 ldap_field_mapping = {
-  "first_name" => "givenname", "last_name" => "sn", "email" => "mail",
+  "name" => "displayname", "email" => "mail",
   "phone_number" => "telephonenumber", "username" => "cn"
 }.to_json
 
@@ -49,8 +49,6 @@ settings = {
   "appointment_status_options" => '["Booked", "Confirmed", "Rescheduled", "Cancelled", "Draft"]',
 
   # Booking form fields
-  "display_first_name" => "1", "require_first_name" => "1",
-  "display_last_name" => "1", "require_last_name" => "1",
   "display_email" => "1", "require_email" => "1",
   "display_phone_number" => "1", "require_phone_number" => "1",
   "display_address" => "1", "require_address" => "0",

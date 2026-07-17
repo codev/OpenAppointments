@@ -82,8 +82,7 @@ module UserCrud
 
     pattern = "%#{User.sanitize_sql_like(keyword)}%"
     scope.where(<<~SQL.squish, pattern: pattern)
-      first_name LIKE :pattern OR last_name LIKE :pattern
-      OR (first_name || ' ' || last_name) LIKE :pattern OR email LIKE :pattern
+      users.name LIKE :pattern OR email LIKE :pattern
       OR phone_number LIKE :pattern OR mobile_number LIKE :pattern OR address LIKE :pattern
       OR city LIKE :pattern OR state LIKE :pattern OR zip_code LIKE :pattern OR notes LIKE :pattern
     SQL

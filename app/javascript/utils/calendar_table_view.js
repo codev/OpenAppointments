@@ -197,8 +197,7 @@ App.Utils.CalendarTableView = (function () {
         // Customer fields
 
         $appointmentsModal.find('#customer-id').val(appointment.id_users_customer);
-        $appointmentsModal.find('#first-name').val(customer.first_name);
-        $appointmentsModal.find('#last-name').val(customer.last_name);
+        $appointmentsModal.find('#name').val(customer.name);
         $appointmentsModal.find('#email').val(customer.email);
         $appointmentsModal.find('#phone-number').val(customer.phone_number);
         $appointmentsModal.find('#address').val(customer.address);
@@ -869,9 +868,7 @@ App.Utils.CalendarTableView = (function () {
                 return !filterServiceIds.length || filterServiceIds.includes(appointment.id_services);
             })
             .map((appointment) => {
-                const customerName = [appointment.customer.first_name, appointment.customer.last_name]
-                    .filter(Boolean)
-                    .join(' ');
+                const customerName = appointment.customer.name;
 
                 const title = customerName ? customerName + ' - ' + appointment.service.name : appointment.service.name;
 
@@ -1248,12 +1245,12 @@ App.Utils.CalendarTableView = (function () {
 
         if (vars('role_slug') !== App.Layouts.Backend.DB_SLUG_PROVIDER) {
             providers.forEach((provider) => {
-                $filterProvider.append(new Option(provider.first_name + ' ' + provider.last_name, provider.id));
+                $filterProvider.append(new Option(provider.name, provider.id));
             });
         } else {
             providers.forEach((provider) => {
                 if (Number(provider.id) === Number(vars('user_id'))) {
-                    $filterProvider.append(new Option(provider.first_name + ' ' + provider.last_name, provider.id));
+                    $filterProvider.append(new Option(provider.name, provider.id));
                 }
             });
         }
@@ -1476,7 +1473,7 @@ App.Utils.CalendarTableView = (function () {
         fullCalendar.render();
         $wrapper.data('fullCalendar', fullCalendar);
         fullCalendar.gotoDate(goToDate);
-        $('<h6/>', {text: provider.first_name + ' ' + provider.last_name}).prependTo($providerColumn);
+        $('<h6/>', {text: provider.name}).prependTo($providerColumn);
     }
 
     /**

@@ -40,7 +40,6 @@ class UserTest < ActiveSupport::TestCase
   test "requires first and last name" do
     user = User.new(role: roles(:customer), email: "x@example.org")
     assert_not user.valid?
-    assert user.errors[:first_name].any?
-    assert user.errors[:last_name].any?
+    assert user.errors[:name].any?
   end
 end

@@ -21,8 +21,7 @@ App.Pages.Booking = (function () {
     const $selectService = $('#select-service');
     const $selectProvider = $('#select-provider');
     const $selectTimezone = $('#select-timezone');
-    const $firstName = $('#first-name');
-    const $lastName = $('#last-name');
+    const $name = $('#name');
     const $email = $('#email');
     const $phoneNumber = $('#phone-number');
     const $address = $('#address');
@@ -260,8 +259,7 @@ App.Pages.Booking = (function () {
                     .fadeIn();
             }
 
-            prefillFromQueryParam('#first-name', 'first_name');
-            prefillFromQueryParam('#last-name', 'last_name');
+            prefillFromQueryParam('#name', 'name');
             prefillFromQueryParam('#email', 'email');
             prefillFromQueryParam('#phone-number', 'phone');
             prefillFromQueryParam('#address', 'address');
@@ -373,7 +371,7 @@ App.Pages.Booking = (function () {
                         .length > 0;
 
                 if (canServeService) {
-                    $selectProvider.append(new Option(provider.first_name + ' ' + provider.last_name, provider.id));
+                    $selectProvider.append(new Option(provider.name, provider.id));
 
                     if (String(provider.id) === String(previousProviderId)) {
                         previousProviderCanServe = true;
@@ -757,9 +755,7 @@ App.Pages.Booking = (function () {
 
         // Render the customer information
 
-        const firstName = App.Utils.String.escapeHtml($firstName.val());
-        const lastName = App.Utils.String.escapeHtml($lastName.val());
-        const fullName = `${firstName} ${lastName}`.trim();
+        const fullName = App.Utils.String.escapeHtml($name.val());
         const email = App.Utils.String.escapeHtml($email.val());
         const phoneNumber = App.Utils.String.escapeHtml($phoneNumber.val());
         const address = App.Utils.String.escapeHtml($address.val());
@@ -804,8 +800,7 @@ App.Pages.Booking = (function () {
         const data = {};
 
         data.customer = {
-            last_name: $lastName.val(),
-            first_name: $firstName.val(),
+            name: $name.val(),
             email: $email.val(),
             phone_number: $phoneNumber.val(),
             address: $address.val(),
@@ -905,8 +900,7 @@ App.Pages.Booking = (function () {
             );
 
             // Apply Customer's Data
-            $lastName.val(customer.last_name);
-            $firstName.val(customer.first_name);
+            $name.val(customer.name);
             $email.val(customer.email);
             $phoneNumber.val(customer.phone_number);
             $address.val(customer.address);
@@ -998,8 +992,7 @@ App.Pages.Booking = (function () {
      */
     function saveCustomerInfo() {
         const customerInfo = {
-            firstName: $firstName.val(),
-            lastName: $lastName.val(),
+            name: $name.val(),
             email: $email.val(),
             phoneNumber: $phoneNumber.val(),
             address: $address.val(),
@@ -1043,11 +1036,8 @@ App.Pages.Booking = (function () {
             const urlParams = new URLSearchParams(window.location.search);
 
             // Only populate fields that don't have GET params and are empty
-            if (!urlParams.has('first_name') && !$firstName.val()) {
-                $firstName.val(customerInfo.firstName || '');
-            }
-            if (!urlParams.has('last_name') && !$lastName.val()) {
-                $lastName.val(customerInfo.lastName || '');
+            if (!urlParams.has('name') && !$name.val()) {
+                $name.val(customerInfo.name || '');
             }
             if (!urlParams.has('email') && !$email.val()) {
                 $email.val(customerInfo.email || '');

@@ -203,7 +203,7 @@ App.Utils.CalendarEventPopover = (function () {
         }
         return $('<div/>', {
             html: [
-                ...createPopoverRow('provider', provider.first_name + ' ' + provider.last_name),
+                ...createPopoverRow('provider', provider.name),
                 ...createPopoverRow('start', formatDateTime(startDateTime)),
                 ...createPopoverRow('end', formatDateTime(endDateTime)),
                 ...createPopoverRow('notes', getEventNotes(info.event)),
@@ -241,7 +241,7 @@ App.Utils.CalendarEventPopover = (function () {
 
         return $('<div/>', {
             html: [
-                ...createPopoverRow('provider', provider.first_name + ' ' + provider.last_name),
+                ...createPopoverRow('provider', provider.name),
                 ...createPopoverRow('start', formatTimeOrDash(startTime)),
                 ...createPopoverRow('end', formatTimeOrDash(endTime)),
                 ...createPopoverRow('timezone', startTime ? vars('timezones')[provider.timezone] : '-'),
@@ -265,7 +265,7 @@ App.Utils.CalendarEventPopover = (function () {
         const data = info.event.extendedProps.data;
         const customer = data.customer;
         const provider = data.provider;
-        const customerName = [customer.first_name, customer.last_name].filter(Boolean).join(' ') || '-';
+        const customerName = customer.name || '-';
         const meetingLinkElements = data.meeting_link
             ? [
                   $('<strong/>', {class: 'd-inline-block me-2', text: lang('meeting_link')}),
@@ -282,7 +282,7 @@ App.Utils.CalendarEventPopover = (function () {
                 ...createPopoverRow('service', data.service.name),
                 $('<strong/>', {class: 'd-inline-block me-2', text: lang('provider')}),
                 renderMapIcon(provider),
-                $('<span/>', {text: provider.first_name + ' ' + provider.last_name}),
+                $('<span/>', {text: provider.name}),
                 $('<br/>'),
                 $('<strong/>', {class: 'd-inline-block me-2', text: lang('customer')}),
                 renderMapIcon(customer),

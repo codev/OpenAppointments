@@ -31,7 +31,7 @@ module EaRows
 
   def user_row(user)
     {
-      "id" => user.id, "first_name" => user.first_name, "last_name" => user.last_name,
+      "id" => user.id, "name" => user.name,
       "email" => user.email, "mobile_number" => user.mobile_number,
       "phone_number" => user.phone_number, "address" => user.address, "city" => user.city,
       "state" => user.state, "zip_code" => user.zip_code, "notes" => user.notes,

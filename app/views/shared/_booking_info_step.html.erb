@@ -6,31 +6,13 @@
 
         <div class="row frame-content">
             <div class="col-12 col-lg-6 field-col mx-auto">
-                <% if display_first_name == "1" %>
-                    <div class="mb-3">
-                        <label for="first-name" class="form-label">
-                            <%= lang('first_name') %>
-                            <% if require_first_name == "1" %>
-                                <span class="text-danger">*</span>
-                            <% end %>
-                        </label>
-                        <input type="text" id="first-name"
-                               class="<%= require_first_name == "1" ? 'required' : '' %> form-control" maxlength="100"/>
-                    </div>
-                <% end %>
-
-                <% if display_last_name == "1" %>
-                    <div class="mb-3">
-                        <label for="last-name" class="form-label">
-                            <%= lang('last_name') %>
-                            <% if require_last_name == "1" %>
-                                <span class="text-danger">*</span>
-                            <% end %>
-                        </label>
-                        <input type="text" id="last-name"
-                               class="<%= require_last_name == "1" ? 'required' : '' %> form-control" maxlength="120"/>
-                    </div>
-                <% end %>
+                <div class="mb-3">
+                    <label for="name" class="form-label">
+                        <%= lang('name') %>
+                        <span class="text-danger">*</span>
+                    </label>
+                    <input type="text" id="name" class="required form-control" maxlength="220"/>
+                </div>
 
                 <% if display_email == "1" %>
                     <div class="mb-3">

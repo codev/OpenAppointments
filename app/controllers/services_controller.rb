@@ -12,7 +12,7 @@ class ServicesController < ApplicationController
   def index
     return unless require_backend_page!(:services)
 
-    providers = User.providers.order(:first_name, :last_name).includes(:services, :settings)
+    providers = User.providers.order(:name).includes(:services, :settings)
                     .map { |provider| EaRows.provider_row(provider) }
 
     backend_page_vars(page_title: helpers.lang("services"), active_menu: "services")

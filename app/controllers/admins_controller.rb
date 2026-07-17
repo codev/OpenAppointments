@@ -5,7 +5,7 @@ class AdminsController < ApplicationController
 
   layout "backend"
 
-  ALLOWED_FIELDS = %w[id first_name last_name email mobile_number phone_number address city state
+  ALLOWED_FIELDS = %w[id name email mobile_number phone_number address city state
                       zip_code notes timezone language ldap_dn settings].freeze
   ALLOWED_SETTING_FIELDS = %w[username password notifications calendar_view].freeze
 

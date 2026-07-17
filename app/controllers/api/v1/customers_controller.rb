@@ -14,7 +14,6 @@ module Api
       end
 
       def persist!(record)
-        record.last_name = record.first_name if record.last_name.blank?
         record.save!
       end
     end

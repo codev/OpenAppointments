@@ -17,8 +17,7 @@
 App.Pages.Secretaries = (function () {
     const $secretaries = $('#secretaries');
     const $id = $('#id');
-    const $firstName = $('#first-name');
-    const $lastName = $('#last-name');
+    const $name = $('#name');
     const $email = $('#email');
     const $mobileNumber = $('#mobile-number');
     const $phoneNumber = $('#phone-number');
@@ -197,8 +196,7 @@ App.Pages.Secretaries = (function () {
          */
         $secretaries.on('click', '#save-secretary', () => {
             const secretary = {
-                first_name: $firstName.val(),
-                last_name: $lastName.val(),
+                name: $name.val(),
                 email: $email.val(),
                 mobile_number: $mobileNumber.val(),
                 phone_number: $phoneNumber.val(),
@@ -400,8 +398,7 @@ App.Pages.Secretaries = (function () {
      */
     function display(secretary) {
         $id.val(secretary.id);
-        $firstName.val(secretary.first_name);
-        $lastName.val(secretary.last_name);
+        $name.val(secretary.name);
         $email.val(secretary.email);
         $mobileNumber.val(secretary.mobile_number);
         $phoneNumber.val(secretary.phone_number);
@@ -484,7 +481,7 @@ App.Pages.Secretaries = (function () {
      * @return {String} The html code that represents the record on the filter results list.
      */
     function getFilterHtml(secretary) {
-        const name = secretary.first_name + ' ' + secretary.last_name;
+        const name = secretary.name;
 
         let info = secretary.email;
 
@@ -558,7 +555,7 @@ App.Pages.Secretaries = (function () {
                             }),
                             $('<label/>', {
                                 'class': 'form-check-label',
-                                'text': provider.first_name + ' ' + provider.last_name,
+                                'text': provider.name,
                                 'for': checkboxId,
                             }),
                         ],

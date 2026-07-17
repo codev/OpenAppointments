@@ -21,14 +21,12 @@ module Api
 
         @decoded = serializer_class.decode(attrs)
         user = User.new(user_columns(@decoded).merge(role: Role.find_by!(slug: role_slug)))
-        user.last_name = user.first_name if user.last_name.blank?
         user
       end
 
       def apply_update(record, attrs)
         @decoded = serializer_class.decode(attrs)
         record.assign_attributes(user_columns(@decoded))
-        record.last_name = record.first_name if record.last_name.blank?
       end
 
       def persist!(record)

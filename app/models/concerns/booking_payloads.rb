@@ -31,11 +31,11 @@ module BookingPayloads
   def available_providers
     User.providers.where(is_private: false)
         .joins(:provider_service_links).distinct
-        .order(:first_name, :last_name, :email)
+        .order(:name, :email)
         .includes(:services)
         .map do |provider|
       {
-        "id" => provider.id, "first_name" => provider.first_name, "last_name" => provider.last_name,
+        "id" => provider.id, "name" => provider.name,
         "services" => provider.services.map(&:id), "timezone" => provider.timezone
       }
     end
@@ -46,7 +46,7 @@ module BookingPayloads
     User.providers.where(is_private: false)
         .joins(:provider_service_links)
         .where(services_providers: { id_services: service_id })
-        .order(:first_name, :last_name, :email)
+        .order(:name, :email)
         .distinct
   end
 end

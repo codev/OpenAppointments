@@ -6,7 +6,7 @@ class CustomersController < ApplicationController
 
   layout "backend"
 
-  ALLOWED_FIELDS = %w[id first_name last_name email phone_number address city state zip_code
+  ALLOWED_FIELDS = %w[id name email phone_number address city state zip_code
                       notes timezone language custom_field_1 custom_field_2 custom_field_3
                       custom_field_4 custom_field_5 ldap_dn].freeze
 
@@ -19,7 +19,7 @@ class CustomersController < ApplicationController
     script_vars(secretary_providers: secretary_provider_ids)
     html_vars(
       available_languages: Localization.available_languages,
-      **%w[first_name last_name email phone_number address city zip_code]
+      **%w[name email phone_number address city zip_code]
         .index_with { |field| Setting.get("require_#{field}") }
         .transform_keys { |field| "require_#{field}".to_sym }
     )
@@ -121,7 +121,6 @@ class CustomersController < ApplicationController
   def save_customer(customer)
     customer_params = permitted_customer
     customer.assign_attributes(customer_params.except("id"))
-    customer.last_name = customer.first_name if customer.last_name.blank?
     customer.save!
     Webhooks.trigger(Webhooks::CUSTOMER_SAVE, EaRows.customer_row(customer))
     render json: { success: true, id: customer.id }
@@ -133,7 +132,7 @@ class CustomersController < ApplicationController
 
     pattern = "%#{User.sanitize_sql_like(keyword)}%"
     scope.where(<<~SQL.squish, pattern: pattern)
-      first_name LIKE :pattern OR last_name LIKE :pattern OR email LIKE :pattern
+      users.name LIKE :pattern OR email LIKE :pattern
       OR phone_number LIKE :pattern OR address LIKE :pattern OR city LIKE :pattern
       OR zip_code LIKE :pattern OR notes LIKE :pattern
     SQL
