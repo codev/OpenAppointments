@@ -19,17 +19,12 @@ $border-radius: 0.5rem !default;
 
 @import 'bootstrap';
 
-// Buttons: every solid variant becomes its outline counterpart.
+// Buttons: every solid variant (including dark) becomes its outline counterpart.
 @each $color, $value in $theme-colors {
     .btn-#{$color} {
         @include button-outline-variant($value);
         background-color: transparent;
     }
-}
-
-.btn-dark {
-    @include button-outline-variant($dark);
-    background-color: transparent;
 }
 
 // Badges: transparent with a coloured border.
