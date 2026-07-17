@@ -1,0 +1,575 @@
+---
+uk:
+  ea:
+    page_title: Запис на прийом з
+    service_and_provider: Послуга та Провайдер
+    select_service: Виберіть послугу
+    select_provider: Виберіть провайдера
+    duration: Тривалість
+    minutes: Хвилини
+    price: Ціна
+    back: Назад
+    appointment_date_and_time: Дата та час прийому
+    no_available_hours: Немає доступних годин для обраної дати. Будь ласка, виберіть іншу дату.
+    appointment_hour_missing: Будь ласка, виберіть час прийому перед продовженням.
+    customer_information: Інформація про клієнта
+    first_name: Ім'я
+    last_name: Прізвище
+    email: Ел. пошта
+    phone_number: Номер телефону
+    phone: Телефон
+    address: Адреса
+    city: Місто
+    zip_code: Поштовий індекс
+    notes: Примітки
+    language: Мова
+    no_language: Немає мови
+    fields_are_required: Поля з * є обов'язковими для заповнення.
+    appointment_confirmation: Підтвердження запису
+    confirm: Підтвердити
+    update: Оновити
+    cancel_appointment_hint: Натисніть кнопку "Скасувати", щоб видалити запис з розкладу компанії.
+    cancel: Скасувати
+    appointment_registered: Ваш запис успішно зареєстровано!
+    cancel_appointment_title: Скасувати запис
+    appointment_cancelled: Ваш запис успішно скасовано.
+    appointment_cancelled_title: Запис скасовано
+    reason: Причина
+    appointment_removed_from_schedule: Наступний запис був видалений з розкладу компанії.
+    appointment_details_was_sent_to_you: На вашу електронну пошту надіслано лист з деталями запису.
+    add_to_google_calendar: Додати в Google Календар
+    appointment_booked: Ваш запис успішно заброньовано
+    thank_you_for_appointment: Дякуємо, що записались на прийом до нас. Нижче ви можете побачити деталі запису. Зміни можна внести, натиснувши на посилання запису.
+    appointment_details_title: Деталі запису
+    customer_details_title: Деталі клієнта
+    service: Послуга
+    provider: Провайдер
+    customer: Клієнт
+    start: Початок
+    end: Кінець
+    name: Ім'я
+    appointment_link_title: Посилання на запис
+    success: Успішно
+    appointment_added_to_your_plan: Новий запис був доданий до вашого плану.
+    appointment_link_description: Ви можете внести зміни, натиснувши на посилання запису нижче.
+    appointment_locked: Модифікація неможлива!
+    appointment_locked_message: Запис не можна змінити менш ніж за {$limit} годин до прийому.
+    appointment_not_found: Запис не знайдено
+    appointment_does_not_exist_in_db: Запис, який ви запросили, більше не існує в системній базі даних.
+    display_calendar: Показати календар
+    calendar: Календар
+    users: Користувачі
+    settings: Налаштування
+    log_out: Вийти
+    synchronize: Синхронізувати
+    enable_sync: Увімкнути синхронізацію
+    disable_sync: Вимкнути синхронізацію
+    disable_sync_prompt: Ви впевнені, що хочете вимкнути синхронізацію календаря?
+    reload: Перезавантажити
+    appointment: Запис
+    unavailability: Невідповідність
+    week: Тиждень
+    month: Місяць
+    today: Сьогодні
+    not_working: Не працює
+    break: Перерва
+    add: Додати
+    edit: Редагувати
+    hello: Привіт
+    all_day: Увесь день
+    manage_appointment_record_hint: Керуйте усіма записами про прийом доступних провайдерів та послуг.
+    select_filter_item_hint: Виберіть провайдера або послугу та перегляньте записи на календарі.
+    enable_appointment_sync_hint: Увімкніть синхронізацію записів з зовнішнім календарем.
+    manage_customers_hint: Керуйте зареєстрованими клієнтами та переглядайте їх історію бронювання.
+    manage_services_hint: Керуйте доступними послугами та категоріями системи.
+    manage_users_hint: Керуйте користувачами бекенду (адміністратори, провайдери, секретарі).
+    settings_hint: Налаштуйте параметри системи та користувачів.
+    log_out_hint: Вийти з системи.
+    unavailability_periods_hint: Під час періодів невідповідності провайдер не буде приймати нові записи.
+    new_appointment_hint: Створіть новий запис і збережіть його в базі даних.
+    reload_appointments_hint: Перезавантажте записи в календарі.
+    trigger_sync_hint: Запустіть процес синхронізації календаря.
+    appointment_updated: Запис успішно оновлено.
+    undo: Скасувати
+    appointment_details_changed: Деталі запису змінено
+    appointment_changes_saved: Зміни в записі успішно збережено.
+    save: Зберегти
+    new: Новий
+    select: Вибрати
+    hide: Сховати
+    type_to_filter_customers: Введіть для фільтрації клієнтів.
+    clear_fields_add_existing_customer_hint: Очистіть поля і введіть нового клієнта.
+    pick_existing_customer_hint: Виберіть існуючого клієнта.
+    new_appointment_title: Новий запис
+    edit_appointment_title: Редагувати запис
+    delete_appointment_title: Видалити запис
+    write_appointment_removal_reason: 'Будь ласка, витратьте хвилину, щоб написати причину видалення запису:'
+    appointment_saved: Запис успішно збережено.
+    new_unavailability_title: Нова невідповідність
+    edit_unavailability_title: Редагувати невідповідність
+    unavailability_saved: Невідповідність успішно збережено.
+    start_date_before_end_error: Дата початку пізніша за дату закінчення.
+    invalid_duration: Невірна тривалість.
+    invalid_email: Невірна адреса електронної пошти.
+    customers: Клієнти
+    details: Деталі
+    no_records_found: Записів не знайдено...
+    services: Послуги
+    duration_minutes: Тривалість (хвилини)
+    currency: Валюта
+    category: Категорія
+    no_category: Без категорії
+    description: Опис
+    categories: Категорії
+    admins: Адміністратори
+    providers: Провайдери
+    secretaries: Секретарі
+    mobile_number: Мобільний номер
+    mobile: Мобільний
+    state: Штат
+    username: Ім’я користувача
+    password: Пароль
+    retype_password: Повторіть пароль
+    receive_notifications: Отримувати сповіщення
+    passwords_mismatch: Паролі не співпадають.
+    admin_saved: Адміністратор успішно збережений.
+    provider_saved: Провайдер успішно збережений.
+    secretary_saved: Секретар успішно збережений.
+    admin_deleted: Адміністратор успішно видалений.
+    provider_deleted: Провайдер успішно видалений.
+    secretary_deleted: Секретар успішно видалений.
+    service_saved: Послуга успішно збережена.
+    service_category_saved: Категорія послуги успішно збережена.
+    service_deleted: Послуга успішно видалена.
+    service_category_deleted: Категорія послуги успішно видалена.
+    customer_saved: Клієнт успішно збережений.
+    customer_deleted: Клієнт успішно видалений.
+    current_view: Поточний перегляд
+    working_plan: Робочий графік
+    reset_plan: Скинути план
+    monday: Понеділок
+    tuesday: Вівторок
+    wednesday: Середа
+    thursday: Четвер
+    friday: П'ятниця
+    saturday: Субота
+    sunday: Неділя
+    breaks: Перерви
+    add_breaks_during_each_day: Додайте робочі перерви протягом кожного дня. Під час перерв провайдер не буде приймати жодних записів.
+    day: День
+    days: Дні
+    actions: Дії
+    reset_working_plan_hint: Скинути робочий графік до значень за замовчуванням.
+    company_name: Назва компанії
+    company_name_hint: Назва компанії буде відображатися на всіх сторінках системи (обов'язково).
+    company_email: Електронна пошта компанії
+    company_email_hint: Це буде електронна пошта компанії. Вона буде використовуватися як адреса відправника і відповіді для системних листів (обов'язково).
+    company_link: Посилання на компанію
+    company_link_hint: Посилання на компанію повинно вказувати на офіційний вебсайт компанії (обов'язково).
+    go_to_booking_page: Перейти на сторінку запису
+    settings_saved: Налаштування успішно збережено.
+    general: Загальні
+    booking: Бронювання
+    visible: Видимий
+    hidden: Прихований
+    business_logic: Бізнес-логіка
+    current_user: Поточний користувач
+    about_app: Про Easy!Appointments
+    edit_working_plan_hint: Позначте дні та години, коли ваша компанія буде приймати записи. Ви зможете налаштувати записи в неробочі години, але клієнти не зможуть забронювати запис самостійно в неробочі періоди. Цей робочий план буде стандартним для кожного нового запису провайдера, але ви зможете змінювати план кожного провайдера окремо, редагуючи його запис. Після цього ви зможете додавати перерви.
+    edit_breaks_hint: Додайте робочі перерви протягом кожного дня. Ці перерви будуть застосовуватися для всіх нових провайдерів.
+    book_advance_timeout: Тайм-аут попереднього запису
+    book_advance_timeout_hint: Визначте тайм-аут (в хвилинах) перед тим, як клієнти зможуть забронювати або перенести записи в компанії.
+    timeout_minutes: Тайм-аут (хвилини)
+    about_app_info: Easy!Appointments - це високо настроюваний веб-додаток, який дозволяє вашим клієнтам записуватися до вас через Інтернет. Крім того, він надає можливість синхронізувати дані з Google Календарем, щоб ви могли використовувати їх з іншими сервісами.
+    current_version: Поточна версія
+    support: Підтримка
+    about_app_support: Якщо ви зіткнулися з проблемами при використанні Easy!Appointments, ви можете шукати відповіді на офіційному Google Групі. Можливо, вам також потрібно створити нову проблему на сторінці Google Code, щоб допомогти розвитку проекту.
+    official_website: Офіційний вебсайт
+    google_plus_community: Google+ Спільнота
+    support_group: Група підтримки
+    project_issues: Проблеми проекту
+    license: Ліцензія
+    about_app_license: 'Easy!Appointments ліцензовано за ліцензією GPLv3. Використовуючи код Easy!Appointments будь-яким чином, ви погоджуєтеся з умовами, описаними за цим посиланням:'
+    logout_success: Ви успішно вийшли з системи! Натисніть одну з наступних кнопок, щоб перейти на іншу сторінку.
+    book_appointment_title: Запис на прийом
+    backend_section: Розділ адміністрування
+    you_need_to_login: Вітаємо! Для перегляду сторінок адміністрування вам потрібно увійти в систему.
+    enter_username_here: Введіть своє ім'я користувача тут...
+    enter_password_here: Введіть пароль тут ...
+    login: Увійти
+    forgot_your_password: Забули пароль?
+    login_failed: Не вдалося увійти, будь ласка, введіть правильні дані та спробуйте ще раз.
+    type_username_and_email_for_new_password: Введіть своє ім'я користувача та адресу електронної пошти, щоб отримати новий пароль.
+    enter_email_here: Введіть свою електронну пошту тут ...
+    regenerate_password: Відновити пароль
+    go_to_login: Повернутися до сторінки входу
+    new_password_sent_with_email: Ваш новий пароль надіслано вам електронною поштою.
+    new_account_password: Новий пароль для облікового запису
+    new_password_is: 'Ваш новий пароль для облікового запису: $password. Будь ласка, збережіть цей електронний лист, щоб мати можливість відновити пароль при необхідності. Ви також можете змінити цей пароль на новий на сторінці налаштувань.'
+    delete_record_prompt: Ви впевнені, що хочете видалити цей запис? Цю дію неможливо скасувати.
+    delete_admin: Видалити адміністратора
+    delete_customer: Видалити клієнта
+    delete_service: Видалити послугу
+    delete_service_category: Видалити категорію послуг
+    delete_provider: Видалити провайдера
+    delete_secretary: Видалити секретаря
+    delete_appointment: Видалити запис
+    delete_unavailability: Видалити період недоступності
+    delete: Видалити
+    unexpected_issues: Несподівані проблеми
+    unexpected_issues_message: Операцію не вдалося завершити.
+    close: Закрити
+    page_not_found: Сторінка не знайдена
+    page_not_found_message: На жаль, сторінка, яку ви запитуєте, не існує. Перевірте URL у вашому браузері або перейдіть в інше місце, використовуючи кнопки нижче.
+    error: Помилка
+    no_privileges: Немає прав
+    no_privileges_message: У вас немає необхідних прав для перегляду цієї сторінки. Перейдіть в інший розділ.
+    backend_calendar: Календар адміністратора
+    start_date_time: Дата / Час початку
+    end_date_time: Дата / Час завершення
+    licensed_under: Ліцензовано за
+    unexpected_issues_occurred: Сталася несподівана проблема.
+    service_communication_error: Сталася помилка при комунікації з сервером, будь ласка, спробуйте ще раз.
+    no_privileges_edit_appointments: У вас немає необхідних прав для редагування записів.
+    unavailability_updated: Період недоступності успішно оновлено.
+    appointments: Записи
+    unexpected_warnings: Несподівані попередження
+    unexpected_warnings_message: Операція завершена, але з'явилися деякі попередження.
+    filter: Фільтр
+    clear: Очистити
+    uncategorized: Без категорії
+    username_already_exists: Ім'я користувача вже існує.
+    password_length_notice: Пароль повинен містити не менше $number символів.
+    general_settings: Загальні налаштування
+    personal_information: Особиста інформація
+    system_login: Вхід в систему
+    user_settings_are_invalid: Налаштування користувача некоректні! Будь ласка, перевірте налаштування та спробуйте знову.
+    add_break: Додати перерву
+    january: Січень
+    february: Лютий
+    march: Березень
+    april: Квітень
+    may: Травень
+    june: Червень
+    july: Липень
+    august: Серпень
+    september: Вересень
+    october: Жовтень
+    november: Листопад
+    december: Грудень
+    previous: Попередній
+    next: Наступний
+    now: Зараз
+    select_time: Вибрати час
+    time: Час
+    hour: Година
+    minute: Хвилина
+    calendar_sync_completed: Синхронізація календаря успішно завершена.
+    calendar_sync_failed: 'Не вдалося здійснити синхронізацію календаря: не вдалося встановити з''єднання з сервером.'
+    select_sync_calendar: Вибрати календар
+    select_sync_calendar_prompt: Виберіть календар, з яким ви хочете синхронізувати ваші записи.
+    sync_calendar_selected: Календар для синхронізації успішно вибрано.
+    oops_something_went_wrong: Ой! Щось пішло не так.
+    ea_update_success: Easy!Appointments успішно оновлено.
+    require_captcha: Вимагати CAPTCHA
+    require_captcha_hint: Коли ввімкнено, клієнти повинні будуть ввести випадково згенерований CAPTCHA код перед бронюванням/оновленням запису.
+    captcha_is_wrong: Перевірка CAPTCHA не вдалася, будь ласка, спробуйте ще раз.
+    enter_captcha_here: Введіть CAPTCHA тут...
+    any_provider: Будь-який провайдер
+    requested_hour_is_unavailable: Запитуваний запис, на жаль, недоступний. Будь ласка, виберіть інший час для вашого запису.
+    customer_notifications: Сповіщення для клієнтів
+    customer_notifications_hint: Визначає, чи буде клієнт отримувати сповіщення на електронну пошту при зміні графіка його записів.
+    date_format: Формат дати
+    date_format_hint: Змініть формат відображення дати (D - День, M - Місяць, Y - Рік).
+    time_format: Формат часу
+    time_format_hint: Змініть формат відображення часу (H - Години, M - Хвилини).
+    first_weekday: Перший день тижня
+    first_weekday_hint: Встановіть перший день календарного тижня.
+    google_analytics_code_hint: Додайте код Google Analytics, щоб увімкнути відстеження через Google Analytics на сторінках бронювання.
+    availabilities_type: Тип доступності
+    flexible: Гнучкий
+    fixed: Фіксований
+    attendants_number: Кількість учасників
+    reset_working_plan: Скинути робочий план до значень за замовчуванням.
+    legal_contents: Юридичні документи
+    cookie_notice: Повідомлення про файли cookie
+    display_cookie_notice: Відображати повідомлення про файли cookie
+    cookie_notice_content: Вміст повідомлення про файли cookie
+    terms_and_conditions: Умови
+    display_terms_and_conditions: Відображати умови
+    terms_and_conditions_content: Вміст умов
+    privacy_policy: Політика конфіденційності
+    display_privacy_policy: Відображати політику конфіденційності
+    privacy_policy_content: Вміст політики конфіденційності
+    website_using_cookies_to_ensure_best_experience: Цей вебсайт використовує файли cookie для забезпечення найкращого досвіду користування.
+    read_and_agree_to_terms_and_conditions: Я прочитав і погоджуюсь з {$link}Умовами{/$link}.
+    read_and_agree_to_privacy_policy: Я прочитав і погоджуюсь з {$link}Політикою конфіденційності{/$link}.
+    delete_personal_information_hint: Видалити всі ваші записи та особисту інформацію з системи.
+    delete_personal_information: Видалити особисту інформацію
+    delete_personal_information_prompt: Ви впевнені, що хочете видалити вашу особисту інформацію? Цю дію неможливо скасувати.
+    location: Місцезнаходження
+    working_plan_exception: Виключення з робочого плану
+    working_plan_exceptions: Виключення з робочого плану
+    working_plan_exceptions_hint: Додати день виключення з робочого плану, поза графіком роботи.
+    new_working_plan_exception_title: Нове виключення з робочого плану
+    working_plan_exception_saved: Виключення з робочого плану успішно збережено.
+    working_plan_exception_deleted: Виключення з робочого плану успішно видалено.
+    add_working_plan_exceptions_during_each_day: Додати виключення з робочого плану для кожного дня.
+    add_working_plan_exception: Додати виключення з робочого плану
+    require_phone_number: Вимагати номер телефону
+    require_phone_number_hint: Коли увімкнено, клієнти та користувачі повинні будуть вказати номер телефону клієнта при бронюванні запису.
+    check_spam_folder: Будь ласка, перевірте папку зі спамом, якщо електронна пошта не надійшла протягом кількох хвилин.
+    api_token_hint: Встановіть секретний токен, щоб увімкнути автентифікацію на основі токенів для API Easy!Appointments.
+    timezone: Часовий пояс
+    overwrite_existing_working_plans: Це перезапише існуючі робочі плани провайдерів, ви впевнені, що хочете продовжити?
+    working_plans_got_updated: Всі робочі плани були оновлені.
+    apply_to_all_providers: Застосувати до всіх провайдерів
+    display_any_provider: Відображати опцію будь-якого провайдера
+    display_any_provider_hint: На сторінці бронювання з'явиться додаткова опція, що дозволить клієнтам бронювати без зазначення провайдера.
+    load_more: Завантажити більше
+    list: Список
+    default: За замовчуванням
+    table: Таблиця
+    date: Дата
+    about: Про нас
+    booking_settings: Налаштування бронювання
+    display: Відображення
+    require: Вимагати
+    color: Колір
+    matomo_analytics_url_hint: Додайте URL вашої установки Matomo, щоб увімкнути відстеження Matomo на сторінках бронювання.
+    invalid_phone: Невірний номер телефону.
+    legal: Юридичні
+    business: Бізнес
+    account: Обліковий запис
+    disable_booking: Вимкнути бронювання
+    disable_booking_hint: Сторінка бронювання буде вимкнена, поки ця опція активна, і клієнти не зможуть реєструвати нові записи.
+    display_message: Відображати повідомлення
+    booking_is_disabled: Бронювання вимкнене!
+    appearance: Зовнішній вигляд
+    company_logo: Логотип компанії
+    company_logo_hint: Логотип компанії буде відображатися в багатьох місцях додатку, включаючи сторінку бронювання та сповіщення на електронну пошту (файл зображення, макс. 2 МБ).
+    company_color: Колір компанії
+    company_color_hint: Колір компанії буде застосовано по всьому додатку, щоб додаток використовував вашу фірмову стилістику.
+    localization: Локалізація
+    integrations: Інтеграції
+    company: Компанія
+    remove: Видалити
+    login_button: Кнопка входу
+    display_login_button_hint: Визначає, чи буде кнопка входу відображатися на сторінці бронювання.
+    private: Приватний
+    private_hint: Приватні записи не будуть відображатися або оброблятися на публічних сторінках, таких як сторінка бронювання.
+    reset: Скинути
+    all: Усі
+    booking_link: Посилання на бронювання
+    add_new_event: Додати нову подію
+    what_kind_of_event: Яку подію ви хочете додати?
+    theme: Тема
+    limit_customer_access: Обмежити доступ клієнтів
+    limit_customer_access_hint: Якщо увімкнено, провайдери та секретарі зможуть отримати доступ лише до клієнтів, з якими у них є запис.
+    url: URL
+    secret_token: Секретний токен
+    verify_ssl: Перевірити SSL
+    appointment_save: Зберегти запис
+    appointment_delete: Видалити запис
+    unavailability_save: Зберегти недоступність
+    unavailability_delete: Видалити недоступність
+    customer_save: Зберегти клієнта
+    customer_delete: Видалити клієнта
+    service_save: Зберегти послугу
+    service_delete: Видалити послугу
+    service_category_save: Зберегти категорію послуг
+    service_category_delete: Видалити категорію послуг
+    provider_save: Зберегти провайдера
+    provider_delete: Видалити провайдера
+    secretary_save: Зберегти секретаря
+    secretary_delete: Видалити секретаря
+    admin_save: Зберегти адміністратора
+    admin_delete: Видалити адміністратора
+    options: Опції
+    webhooks: Вебхуки
+    webhooks_info: Вебхуки дозволяють відправляти HTTP сповіщення до зовнішніх веб-додатків у відповідь на різні події в додатку, такі як створення запису або видалення клієнта.
+    integrations_info: Інтеграції дозволяють здійснювати підключення до зовнішніх додатків та API сторонніх розробників.
+    configure: Налаштувати
+    google_analytics: Google Аналітика
+    google_analytics_info: Google Analytics дозволяє автоматично додавати код відстеження та HTML-розмітку на публічну сторінку та відстежувати всі публічні сесії бронювання.
+    matomo_analytics: Matomo Аналітика
+    matomo_analytics_info: Matomo Analytics дозволяє автоматично додавати код відстеження та HTML-розмітку на публічну сторінку та відстежувати всі публічні сесії бронювання.
+    api: API
+    api_info: API дозволяє взаємодіяти з усіма даними Easy!Appointments через HTTP-протокол та доступні кінцеві точки API, а також створювати власні інтеграції.
+    google_analytics_code: Код Google Analytics
+    matomo_analytics_url: URL Matomo Analytics
+    future_booking_limit: Обмеження на майбутнє бронювання
+    limit_days: Обмеження (дні)
+    future_booking_limit_hint: Встановіть обмеження на кількість днів, за які клієнти можуть бронювати записи через публічну сторінку бронювання.
+    api_token: API Токен
+    allow_rescheduling_cancellation_before: Дозволити перенесення/відміну до
+    at_least_one_field: Має бути відображено хоча б одне поле на сторінці бронювання.
+    status: Статус
+    appointment_status_options: Опції статусу запису
+    appointment_status_options_info: Визначте список доступних опцій статусу запису, які можуть бути використані на сторінці календаря (перша опція автоматично стане значенням за замовчуванням).
+    sunday_short: Нд
+    monday_short: Пн
+    tuesday_short: Вт
+    wednesday_short: Ср
+    thursday_short: Чт
+    friday_short: Пт
+    saturday_short: Сб
+    january_short: Січ
+    february_short: Лют
+    march_short: Бер
+    april_short: Квіт
+    may_short: Трав
+    june_short: Черв
+    july_short: Лип
+    august_short: Серп
+    september_short: Вер
+    october_short: Жовт
+    november_short: Лист
+    december_short: Груд
+    am: AM
+    pm: PM
+    to: до
+    click_to_toggle: Натисніть для перемикання
+    week_short: Тижд.
+    scroll_to_increment: Прокручуйте для збільшення
+    year: Рік
+    make_non_working_day: Цей провайдер не буде доступний для роботи в обраний день.
+    no_breaks: Без перерв
+    service_categories: Категорії послуг
+    service_category: Категорія послуг
+    blocked_period_saved: Переблокований період успішно збережений.
+    blocked_period_deleted: Переблокований період успішно видалений.
+    delete_blocked_period: Видалити переблокований період
+    blocked_period: Переблокований період
+    blocked_periods: Переблоковані періоди
+    blocked_period_save: Зберегти переблокований період
+    blocked_period_delete: Видалити переблокований період
+    blocked_periods_hint: Визначте періоди часу, коли публічне бронювання буде відключено для всіх провайдерів (наприклад, вихідні дати, свята тощо).
+    custom_field: Користувацьке поле
+    custom_fields: Користувацькі поля
+    label: Мітка
+    webhook_saved: Webhook успішно збережений.
+    webhook_deleted: Webhook успішно видалений.
+    delete_webhook: Видалити Webhook
+    contact_info: Контактна інформація
+    hide_from_public: Сховати від публіки
+    matomo_analytics_site_id: Matomo Analytics Site ID
+    matomo_analytics_site_id_hint: Встановіть ID сайту, який буде відстежуватися в Matomo (за замовчуванням сайт має ID "1").
+    default_timezone: Часовий пояс за замовчуванням
+    default_timezone_hint: Встановіть значення часового поясу, яке буде використовуватися для нових записів.
+    default_language: Мова за замовчуванням
+    default_language_hint: Встановіть значення мови, яке буде використовуватися для нових записів.
+    sync_method_prompt: Який метод синхронізації ви хочете використовувати?
+    caldav_server: CalDAV сервер
+    caldav_connection_info_prompt: Будь ласка, введіть інформацію для підключення до цільового календаря CalDAV.
+    connect: Підключити
+    ldap: LDAP
+    ldap_info: Ця інтеграція дозволяє підключатися до існуючого LDAP сервера та автоматично імпортувати користувачів у Easy!Appointments, дозволяючи їм здійснювати SSO з їх паролем каталогу (ім’я користувача має збігатися).
+    host: Хост
+    port: Порт
+    user_dn: User DN
+    base_dn: Base DN
+    keyword: Ключове слово
+    ldap_search_hint: Надайте ключове слово для пошуку користувачів у каталозі LDAP, які відповідають критеріям фільтрації.
+    ldap_extension_not_loaded: Розширення LDAP PHP не завантажено, але воно необхідне для роботи цієї інтеграції.
+    field_mapping: Маппінг полів
+    content: Контент
+    active: Активний
+    user_imported: Запис користувача успішно імпортовано.
+    import: Імпортувати
+    ldap_dn: LDAP DN
+    role: Роль
+    at_least_one_field_required: Принаймні одне поле повинно бути встановлено як обов’язкове на сторінці бронювання.
+    customer_is_already_booked: Цей клієнт вже має запис на обраний період бронювання.
+    fields: Поля
+    invalid_credentials_provided: Невірні облікові дані, будь ласка, спробуйте ще раз.
+    calendar_url: URL календаря
+    please_select: Будь ласка, виберіть
+    secret_header: Секретний заголовок
+    search: Пошук
+    slot_interval: Інтервал слотів (хвилини)
+    jitsi: Jitsi
+    jitsi_info: Увімкнути автоматичне створення посилань на конференції Jitsi для записів. При увімкненні для кожного запису буде створено унікальне посилання на відеодзвінок Jitsi.
+    altcha: ALTCHA
+    altcha_info: ALTCHA — це орієнтована на конфіденційність альтернатива CAPTCHA з відкритим вихідним кодом, яка використовує proof-of-work для перевірки користувачів без відстеження.
+    altcha_enabled_hint: При увімкненні ALTCHA використовуватиметься замість традиційної графічної CAPTCHA для перевірки форм.
+    altcha_hmac_key: Ключ HMAC
+    altcha_hmac_key_hint: Секретний ключ, який використовується для підпису та перевірки викликів ALTCHA. Натисніть «Згенерувати» для створення нового безпечного ключа.
+    altcha_max_number: Максимальне число
+    altcha_max_number_hint: 'Максимальне число для завдання proof-of-work. Вищі значення збільшують складність (за замовчуванням: 100000).'
+    altcha_expires: Термін дії (секунди)
+    altcha_expires_hint: 'Тривалість дії виклику в секундах (за замовчуванням: 300).'
+    altcha_key_generated: Новий ключ HMAC успішно згенеровано.
+    altcha_enabled: Увімкнути ALTCHA
+    altcha_captcha_not_active_warning: Налаштування CAPTCHA наразі не активне. ALTCHA не буде використовуватися, доки CAPTCHA не буде увімкнено в
+    generate: Згенерувати
+    meeting_link: Посилання на зустріч
+    google_calendar: Google Календар
+    google_calendar_info: Увімкніть синхронізацію з Google Calendar для синхронізації записів з обліковими записами Google Calendar постачальників.
+    google_client_id: Client ID
+    google_client_id_info: Client ID з вашого проєкту Google Cloud Console.
+    google_client_secret: Client Secret
+    google_client_secret_info: Client Secret з вашого проєкту Google Cloud Console.
+    google_calendar_setup_info: 'Для увімкнення синхронізації з Google Calendar необхідно створити проєкт у Google Cloud Console, увімкнути Google Calendar API та створити облікові дані OAuth 2.0. Перейдіть за посиланням:'
+    google_meet_link_generation: Генерація посилань Google Meet
+    google_meet_link_generation_info: Автоматично створювати посилання на відеоконференцію Google Meet для синхронізованих записів. Посилання на зустріч буде збережено у полі посилання на зустріч запису.
+    display_add_to_google_calendar: Показати кнопку "Додати до Google Calendar"
+    display_add_to_google_calendar_info: Показувати кнопку "Додати до Google Calendar" на сторінці підтвердження бронювання, дозволяючи клієнтам легко додати запис до свого особистого Google Calendar.
+    select_all: Вибрати все
+    select_none: Зняти виділення
+    appointment_update: Оновлення запису
+    notify_users_on_update_question: Бажаєте надіслати сповіщення про цю зміну?
+    'yes': Так
+    'no': Ні
+    latest_blog_posts: Останні записи в блозі
+    loading: Завантаження
+    blog_posts_load_error: Не вдалося завантажити записи блогу. Відвідайте офіційний сайт для оновлень.
+    provider_has_conflicting_appointment: У вибраного постачальника вже є інша зустріч у цей час. Будь ласка, виберіть інший час або постачальника.
+    would_you_like_to_proceed: Бажаєте продовжити?
+    proceed: Продовжити
+    no_available_service_providers: Немає доступних послуг
+    no_available_service_providers_message: Наразі немає доступних послуг або постачальників для бронювання. Будь ласка, перевірте пізніше або зв'яжіться з нами для отримання допомоги.
+    reset_password: Скинути пароль
+    new_password: Новий пароль
+    enter_new_password: Введіть свій новий пароль нижче.
+    password_reset_request: Запит на скидання пароля
+    password_reset_email_message: Ви запросили скидання пароля. Натисніть кнопку нижче, щоб встановити новий пароль для вашого облікового запису.
+    password_reset_link_expires: Це посилання закінчиться через 1 годину.
+    password_reset_ignore_message: Якщо ви не запитували скидання пароля, будь ласка, проігноруйте цей лист.
+    invalid_reset_token: Посилання для скидання пароля недійсне.
+    invalid_or_expired_token: Посилання для скидання пароля недійсне або застаріло. Будь ласка, запросіть нове.
+    password_reset_success: Ваш пароль успішно скинуто. Вас буде перенаправлено на сторінку входу.
+    password_reset_failed: Не вдалося скинути пароль. Будь ласка, спробуйте ще раз.
+    no_password_provided: Будь ласка, введіть пароль.
+    type_username_and_email_for_reset_link: Введіть своє ім'я користувача та адресу електронної пошти, щоб отримати посилання для скидання пароля.
+    send_reset_link: Надіслати посилання для скидання
+    reset_link_sent_with_email: Якщо обліковий запис з наданими обліковими даними існує, посилання для скидання пароля було надіслано на вашу електронну пошту.
+    working_plan_validation_failed: Виявлено недійсну конфігурацію робочого плану.
+    start_date: Дата початку
+    end_date: Дата закінчення
+    remember_me: Запам'ятати мої дані
+    remember_me_hint: Зберегти ваші дані для швидшого бронювання наступного разу.
+    legal_notice: Правова інформація
+    legal_notice_url: URL правової інформації
+    legal_notice_url_hint: Введіть URL сторінки правової інформації.
+    imprint: Імпресум
+    imprint_url: URL імпресуму
+    imprint_url_hint: Введіть URL сторінки імпресуму.
+    data_retention: Зберігання даних
+    data_retention_days: Термін зберігання даних (дні)
+    data_retention_days_hint: Встановіть кількість днів, після яких дані клієнтів будуть автоматично видалені. Встановіть 0 для вимкнення автоматичного видалення.
+    manage_privacy: Керування конфіденційністю
+    manage_privacy_hint: Натисніть на посилання нижче, щоб переглянути, оновити або видалити вашу особисту інформацію.
+    personal_information_updated: Вашу особисту інформацію було успішно оновлено.
+    verify: Підтвердити
+    verifying: Перевірка
+    verified: Підтверджено
+    verification_complete: Перевірку завершено
+    verification_failed: Перевірка не вдалася. Натисніть, щоб повторити.
+    click_to_verify: Натисніть для підтвердження, що ви людина
+    altcha_verification_failed: Перевірка ALTCHA не вдалася. Будь ласка, спробуйте ще раз.
+    premium: Premium
+    about_app_premium: Ми пропонуємо комплексні послуги для самостійно розміщеного програмного забезпечення, включаючи індивідуальну розробку, керований хостинг, контракти на підтримку, ребрендинг та постійні вдосконалення — щоб ви могли зосередитися на своєму бізнесі, поки ми подбаємо про все інше.
+    go_premium: Перейти на Premium
+    notify_users_on_create_question: Бажаєте повідомити клієнта про цей новий запис?
+    notify_users_on_delete_question: Бажаєте повідомити клієнта про скасування запису?

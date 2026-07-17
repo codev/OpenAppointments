@@ -1,0 +1,575 @@
+---
+hu:
+  ea:
+    page_title: Foglalj időpontot a ...
+    service_and_provider: Válassz szolgáltatást és szolgáltatót
+    select_service: Válassz szolgáltatást
+    select_provider: Válassz szolgáltatót
+    duration: Időtartam
+    minutes: Perc
+    price: Ár
+    back: Vissza
+    appointment_date_and_time: Válaszd ki az időpont dátumát és idejét
+    no_available_hours: A kiválasztott napon nincsen szabad időpont. Kérlek válassz másik dátumot.
+    appointment_hour_missing: Válassz egy időpontot mielőtt folytatnád.
+    customer_information: Töltsd ki az adataidat.
+    first_name: Keresztnév
+    last_name: Vezetéknév
+    email: E-mail
+    phone_number: Telefon
+    phone: Telefon
+    address: Cím
+    city: Város
+    zip_code: Irányítószám
+    notes: Megjegyzés
+    language: Nyelv
+    no_language: Nincs nyelv
+    fields_are_required: A *-gal jelöltek kitöltése kötelező.
+    appointment_confirmation: Az időpont jóváhagyása
+    confirm: Jóváhagyás
+    update: Frissít
+    cancel_appointment_hint: Nyomd meg a "Mégse" gombot az időpont cégből való eltávolításához
+    cancel: Mégse
+    appointment_registered: Az időpontodat sikeresen lefoglaltuk.
+    cancel_appointment_title: Időpont eltávolítása
+    appointment_cancelled: Az időpontot sikeresen lemondtad.
+    appointment_cancelled_title: Időpont lemondva
+    reason: Ok
+    appointment_removed_from_schedule: A következő időpont el lett távolítva a cég beosztásából
+    appointment_details_was_sent_to_you: Egy emailt küldtünk a foglalás részleteivel.
+    add_to_google_calendar: Az időpont Google naptárba való felvétele
+    appointment_booked: Az időpontod sikeresen lefoglalva.
+    thank_you_for_appointment: Köszönjük, hogy nálunk foglaltál időpontot. Lent a foglalás részleteit látod. Változtatni az időpont linkjére kattintva tudsz.
+    appointment_details_title: Az időpont részletei
+    customer_details_title: Vendég részletei
+    service: Szolgáltatás
+    provider: Szolgáltató
+    customer: Vásárló
+    start: Kezdés
+    end: Vég
+    name: Név
+    appointment_link_title: Link a foglaláshoz
+    success: Sikerült.
+    appointment_added_to_your_plan: Egy új időpont került a naptáradba.
+    appointment_link_description: Változtatni az időpont linkjére kattintva tudsz.
+    appointment_locked: Modification impossible.
+    appointment_locked_message: Az időpont nem módosítható kevesebb mint {$limit} órával előre.
+    appointment_not_found: Nincs meg az időpont.
+    appointment_does_not_exist_in_db: 'A keresett időpont nincs az adatbázisban. '
+    display_calendar: Naptár megjelenítése
+    calendar: Naptár
+    users: Felhasználók
+    settings: Beállítások
+    log_out: Kijelentkezés
+    synchronize: Szinkronizálás
+    enable_sync: Szinkronizálás engedélyezése
+    disable_sync: Szinkronizálás tiltása
+    disable_sync_prompt: Biztosan le szeretné tiltani a naptár-szinkronizálást?
+    reload: Frissít
+    appointment: Időpont
+    unavailability: Nem áll rendelkezésre
+    week: Hét
+    month: Hónap
+    today: Ma
+    not_working: Nem dolgozik
+    break: Szünet
+    add: Hozzáad
+    edit: Szerkeszt
+    hello: Szia
+    all_day: Egész nap
+    manage_appointment_record_hint: Az összes szolgáltatóhoz és szolgáltatáshoz tartozó időpont szerkesztése.
+    select_filter_item_hint: Egy szolgáltatáshoz vagy szolgáltatóhoz tartozó időpontok naptárban való megtekintése.
+    enable_appointment_sync_hint: Az időpontok szinkronizálásának engedélyezése a szolgáltató Google naptárával.
+    manage_customers_hint: A regisztrált vendégek kezelése és foglalási előzményeik megtekintése.
+    manage_services_hint: A rendszerben rendelkezésre álló szolgáltatások és kategóriák kezelése.
+    manage_users_hint: Felhasználók kezelése (adminisztrátorok, szolgáltatók, titkárok).
+    settings_hint: Rendszer és felhasználói beállítások.
+    log_out_hint: Kijelentkezés
+    unavailability_periods_hint: Az foglalt időpontokban a szolgáltató nem fogad új bejelentkezéseket.
+    new_appointment_hint: Új időpont készítése és adatbázisba történő mentése.
+    reload_appointments_hint: Az időpontok újra töltése.
+    trigger_sync_hint: Google naptárral való szinkronizálás indítása.
+    appointment_updated: Az időpont sikeresen frissítve.
+    undo: Visszavonás
+    appointment_details_changed: A foglalás részletei megváltoztak.
+    appointment_changes_saved: A változtatások sikeresen elmentve.
+    save: Mentés
+    new: Új
+    select: Kiválaszt
+    hide: Elrejt
+    type_to_filter_customers: A vendégek szűrése.
+    clear_fields_add_existing_customer_hint: Törölje a mezőket, és adjon meg egy új ügyfél.
+    pick_existing_customer_hint: Válasszon egy meglévő ügyfél.
+    new_appointment_title: Új időpont
+    edit_appointment_title: Időpont szerkesztése
+    delete_appointment_title: Időpont törlése
+    write_appointment_removal_reason: Az időpont törlésének az oka?
+    appointment_saved: Az időpont sikeresen mentve.
+    new_unavailability_title: 'Új nem foglalható időpont '
+    edit_unavailability_title: Nem foglalható időpont szerkesztése
+    unavailability_saved: A nem foglalható időpont sikeresen mentve.
+    start_date_before_end_error: A kezdeti időpont későbbre esik, mint vég időpont.
+    invalid_duration: Érvénytelen időtartam.
+    invalid_email: Érvénytelen email cím.
+    customers: Vendégek
+    details: Részletek
+    no_records_found: Nincs ilyen adat...
+    services: Szolgáltatások
+    duration_minutes: Időtartam (perc)
+    currency: Pénznem
+    category: Kategória
+    no_category: Nincs kategorizálva
+    description: Leírás
+    categories: Kategóriák
+    admins: Adminok
+    providers: Szolgáltatók
+    secretaries: Titkárok
+    mobile_number: Mobil szám
+    mobile: Mobil
+    state: Állam
+    username: Felhasználó név
+    password: Jelszó
+    retype_password: Jelszó újra
+    receive_notifications: Értesítések kérése
+    passwords_mismatch: A jelszavak nem egyeznek.
+    admin_saved: Admin sikeresen mentve.
+    provider_saved: Szolgáltató sikeresen mentve.
+    secretary_saved: Titkár sikeresen mentve.
+    admin_deleted: Admin törölve.
+    provider_deleted: Szolgáltató törölve.
+    secretary_deleted: Titkár törölve.
+    service_saved: Szolgáltatás sikeresen mentve.
+    service_category_saved: Kategória sikeresen mentve.
+    service_deleted: Szolgáltatás törölve.
+    service_category_deleted: Kategória törölve.
+    customer_saved: Vendég sikeresen mentve.
+    customer_deleted: Vendég törölve.
+    current_view: Jelenlegi nézet
+    working_plan: Munkarend
+    reset_plan: Munkarend visszaállítása
+    monday: Hétfő
+    tuesday: Kedd
+    wednesday: Szerda
+    thursday: Csütörtök
+    friday: Péntek
+    saturday: Szombat
+    sunday: Vasárnap
+    breaks: Szünetek
+    add_breaks_during_each_day: Állítsd be a szünet időket. Ezen időszak alatt a szolgáltatónál nem lehet időpontot foglalni.
+    day: Nap
+    days: Napok
+    actions: Teendők
+    reset_working_plan_hint: A munkarend visszaállítása az alap értékekre.
+    company_name: Vállalkozás neve
+    company_name_hint: A vállalkozás neve lesz látható a rendszerben mindenhol (kötelező).
+    company_email: Vállalkozás email címe
+    company_email_hint: Ez lesz a vállalkozás email címe. A rendszer erről az email címről küld értesítéseket és ez lesz a válasz cím is (kötelező).
+    company_link: Vállalkozás linkje
+    company_link_hint: A vállalkozás linkje a cég hivatalos weblapjára mutasson (kötelező).
+    go_to_booking_page: Ugrás a foglalási oldalra
+    settings_saved: Beállítások sikeresen mentve.
+    general: Általános
+    booking: Foglalás
+    visible: Látható
+    hidden: Rejtett
+    business_logic: Üzleti logika
+    current_user: Jelenlegi felhasználó
+    about_app: Easy!Appointments-ról
+    edit_working_plan_hint: Jelöld be alul azokat a napokat és órákat amikor a céged fogad bejelentkezéseket. A nem foglalható órákba az ügyfelek nem tudnak időpontokat kérni, de te tudsz beírni oda is. Ez a munkarend lesz az alapértelmezett minden újonnan felvitt szolgáltatónál, de minden egyes szolgáltató munkarendje külön szabályozható marad. Ezután hozzáadhatsz szüneteket.
+    edit_breaks_hint: Add hozzá a napi szüneteket. Ezek a szünetek lesznek az alapártelmezettek minden új szolgáltatónál.
+    book_advance_timeout: Időkorlát beállítása
+    book_advance_timeout_hint: Add meg azt az időkorlátot (percekben) amennyivel az adott időpont előtt a vendég foglalhat vagy módosíthat egy bejelentkezést.
+    timeout_minutes: Időkorlát (Percben)
+    about_app_info: Easy!Appointments egy könnyen testreszabható webes alkalmazás mely lehetővé teszi, hogy ügyfelek weben keresztül időpontokat foglalhassanak. Ezen felül lehetővé teszi, hogy szinkronizáljuk a foglalások adatait a Google naptárunkkal, így más szolgáltatásokkal is használható.
+    current_version: Jelenlegi verzió
+    support: Támogatás
+    about_app_support: Amennyiben problémákba ütközöl az Easy!Appointments használata közben, úgy a hivatalos Google Group-ban tudsz válaszokat keresni. Előfordulhat, hogy egy új lapot kell nyitnod a Google Code-on, hogy segítsd a további fejlesztést.
+    official_website: Hivatalos Honlap
+    google_plus_community: Google+ Közösség
+    support_group: Támogatás
+    project_issues: Project Témák
+    license: Licensz
+    about_app_license: 'Easy!Appointments a GPLv3 licensz alatt áll. Az Easy!Appointments forráskódját bármilyen módon használva beleegyezel az alábbi linken található felhasználási feltételekbe:'
+    logout_success: Sikeresen kijelentkeztél! Kattints az alábbi gombok egyikére, hogy egy másik oldalra navigálj.
+    book_appointment_title: Időpont foglalás
+    backend_section: Felhasználói felület
+    you_need_to_login: Üdv! Be kell jelentkezned, hogy a felhasználói felületet használhasd.
+    enter_username_here: Add meg a felhasználó neved ...
+    enter_password_here: Írja be a jelszót ide ...
+    login: Bejelentkezés
+    forgot_your_password: Elfelejtetted a jelszavad?
+    login_failed: A bejelntkezés sikertelen, add meg a helyes adatokat és próbálkozz újra.
+    type_username_and_email_for_new_password: Add meg a felhasználóneved és az email címed, hogy jelszót kaphass.
+    enter_email_here: Add meg az email címed ...
+    regenerate_password: Új jelszó kérése
+    go_to_login: Vissza a bejelentkezéshez
+    new_password_sent_with_email: Az új jelszavadat elküldtük egy emailben.
+    new_account_password: Új felhasználó jelszó
+    new_password_is: Az új felhasználói jelszavad $password. Őrizd meg ezt az email-t, hogy később is meg legyen a jelszavad. Természetesen megváltoztathatod a jelszavad a beállítások oldalon.
+    delete_record_prompt: Biztos vagy benne, hogy törölni akarod ezt a rekordot? A törlés végleges lesz.
+    delete_admin: Admin törlése
+    delete_customer: Ügyfél törlése
+    delete_service: Szolgáltatás törlése
+    delete_service_category: Szolgáltatás kategória törlése
+    delete_provider: Szolgáltató törlése
+    delete_secretary: Titkár törlése
+    delete_appointment: Időpont törlése
+    delete_unavailability: Nem foglalható időpont törlése
+    delete: Törlés
+    unexpected_issues: Váratlan események
+    unexpected_issues_message: A művelet nem fejeződött be.
+    close: Bezár
+    page_not_found: 'Nincs ilyen oldal. '
+    page_not_found_message: Sajnos a keresett oldal nem létezik. Ellenőrizd a beírt URL-t vagy navigálj egy másik oldalra az alábbi gombok segítségével.
+    error: Hiba
+    no_privileges: 'Nincs jogosultságod. '
+    no_privileges_message: Az oldal megtekintéséhez nincs megfelelő jogosultságod. Navigálj egy másik oldalra.
+    backend_calendar: Backend Naptár
+    start_date_time: Kezdés dátuma / ideje
+    end_date_time: Befejezés dátuma / ideje
+    licensed_under: Licenszelve
+    unexpected_issues_occurred: Nem várt esemény történt.
+    service_communication_error: Kommunikációs hiba volt a szerverrel, próbálkozz később.
+    no_privileges_edit_appointments: Nincs megfelelő jogosultságod az időpont szerkesztéséhez.
+    unavailability_updated: Nem foglalható időpont sikeresen frissítve.
+    appointments: 'Időpontok '
+    unexpected_warnings: Nem várt hiba
+    unexpected_warnings_message: A művelet be fejeződött, de felmerült néhány hiba.
+    filter: Szűrés
+    clear: Töröl
+    uncategorized: Nem kategorizált
+    username_already_exists: A felhasználónév már létezik.
+    password_length_notice: A jelszónak legalább $number karakter hosszú kell legyen.
+    general_settings: Általános beállítások
+    personal_information: Személyes adatok
+    system_login: Bejelentkezés a rendszerbe
+    user_settings_are_invalid: A felhasználói beállítások érvénytelenek! Kérlek nézd át a beállításokat és próbáld újra.
+    add_break: 'Szünet hozzáadása '
+    january: Január
+    february: Február
+    march: 'Március '
+    april: 'Április '
+    may: Május
+    june: Június
+    july: Július
+    august: Augusztus
+    september: Szeptember
+    october: Október
+    november: November
+    december: December
+    previous: Előző
+    next: Következő
+    now: Most
+    select_time: Válassz időpontot.
+    time: Idő
+    hour: Idő
+    minute: Perc
+    calendar_sync_completed: A Google szinkronizálás sikerült.
+    calendar_sync_failed: 'A Google szinkronizálás nem sikerült: nem jött létre a kapcsolat a szerverrel.'
+    select_sync_calendar: Válassz Google naptárat.
+    select_sync_calendar_prompt: Válaszd ki az időpontokkal szinkronizálni kívánt naptárat. Amennyiben nem kívánsz naptárat választani úgy az alapértelmezett lesz használva.
+    sync_calendar_selected: A Google naptár sikeresen kiválasztva.
+    oops_something_went_wrong: Hoppá! Valami balul sült el.
+    ea_update_success: Foglalj időpontot a ...
+    require_captcha: CAPTCHA Kötelező
+    require_captcha_hint: Ha engedélyezve van, az ügyfeleknek egy véletlenszerűen generált CAPTCHA karakterláncot kell megadniuk, mielőtt foglalnának/módosítanának egy időpontot.
+    captcha_is_wrong: A CAPTCHA ellenőrzés sikertelen, kérjük próbálja újra.
+    enter_captcha_here: Írja be a CAPTCHA-t ide...
+    any_provider: Bármely Szolgáltató
+    requested_hour_is_unavailable: A kért időpont sajnos nem elérhető. Kérjük válasszon egy másik időpontot.
+    customer_notifications: Ügyfél Értesítések
+    customer_notifications_hint: Meghatározza, hogy az ügyfél kap-e e-mail értesítést, ha valamelyik időpontján változás történik.
+    date_format: Dátum Formátum
+    date_format_hint: Módosítsa a dátum megjelenítési formátumát (D - Nap, M - Hónap, Y - Év).
+    time_format: Idő Formátum
+    time_format_hint: Módosítsa az idő megjelenítési formátumát (H - Óra, M - Perc).
+    first_weekday: A hét első napja
+    first_weekday_hint: Állítsa be a naptár hetének első napját.
+    google_analytics_code_hint: Adja meg a Google Analytics azonosítóját, amely bekerül a foglalási oldalba.
+    availabilities_type: Elérhetőségek Típusa
+    flexible: Rugalmas
+    fixed: Fix
+    attendants_number: Résztvevők Száma
+    reset_working_plan: Munkaterv visszaállítása az alapértelmezett értékekre.
+    legal_contents: Jogi Tartalmak
+    cookie_notice: Cookie Értesítés
+    display_cookie_notice: Cookie Értesítés Megjelenítése
+    cookie_notice_content: Cookie Értesítés Tartalma
+    terms_and_conditions: Felhasználási Feltételek
+    display_terms_and_conditions: Felhasználási Feltételek Megjelenítése
+    terms_and_conditions_content: Felhasználási Feltételek Tartalma
+    privacy_policy: Adatvédelmi Irányelvek
+    display_privacy_policy: Adatvédelmi Irányelvek Megjelenítése
+    privacy_policy_content: Adatvédelmi Irányelvek Tartalma
+    website_using_cookies_to_ensure_best_experience: Ez a weboldal cookie-kat használ, hogy a legjobb élményt nyújtsa az oldal használata során.
+    read_and_agree_to_terms_and_conditions: Elolvastam és egyetértek a {$link}Felhasználási Feltételekkel{/$link}.
+    read_and_agree_to_privacy_policy: Elolvastam és egyetértek az {$link}Adatvédelmi Irányelvekkel{/$link}.
+    delete_personal_information_hint: Törölje az összes időpontját és személyes adatait a rendszerből.
+    delete_personal_information: Személyes Adatok Törlése
+    delete_personal_information_prompt: Biztos benne, hogy törölni szeretné személyes adatait? Ez a művelet nem visszavonható.
+    location: Helyszín
+    working_plan_exception: Munkaterv Kivétel
+    working_plan_exceptions: Munkaterv Kivételek
+    working_plan_exceptions_hint: Adjon hozzá egy munkaterv kivételi napot, amely a munkaterven kívül esik.
+    new_working_plan_exception_title: Új Munkaterv Kivétel
+    working_plan_exception_saved: A munkaterv kivétel sikeresen mentve.
+    working_plan_exception_deleted: A munkaterv kivétel sikeresen törölve.
+    add_working_plan_exceptions_during_each_day: Adjon hozzá munkaterv kivételeket, a munkaterven kívül.
+    add_working_plan_exception: Munkaterv Kivétel Hozzáadása
+    require_phone_number: Telefonszám Kötelező
+    require_phone_number_hint: Ha engedélyezve van, az ügyfeleknek és felhasználóknak meg kell adniuk az ügyfél telefonszámát a foglaláskor.
+    check_spam_folder: Kérjük, ellenőrizze a spam mappáját, ha az e-mail néhány percen belül nem érkezik meg.
+    api_token_hint: Állítson be egy titkos tokent az Easy!Appointments API token alapú hitelesítésének engedélyezéséhez.
+    timezone: Időzóna
+    overwrite_existing_working_plans: Ez felülírja a meglévő szolgáltatói munkatervet, biztosan folytatni szeretné?
+    working_plans_got_updated: Minden munkaterv frissítve lett.
+    apply_to_all_providers: Alkalmazás Minden Szolgáltatóra
+    display_any_provider: Bármely Szolgáltató Opció Megjelenítése
+    display_any_provider_hint: A foglalási oldal egy további lehetőséget kap, amely lehetővé teszi az ügyfelek számára, hogy szolgáltató megadása nélkül foglaljanak.
+    load_more: Továbbiak Betöltése
+    list: Lista
+    default: Alapértelmezett
+    table: Táblázat
+    date: Dátum
+    about: Névjegy
+    booking_settings: Foglalási Beállítások
+    display: Megjelenítés
+    require: Kötelező
+    color: Szín
+    matomo_analytics_url_hint: Adja meg a saját Matomo telepítésének URL-jét a Matomo nyomkövetés engedélyezéséhez a foglalási oldalakon.
+    invalid_phone: Érvénytelen telefonszám.
+    legal: Jogi
+    business: Üzlet
+    account: Fiók
+    disable_booking: Foglalás Letiltása
+    disable_booking_hint: A foglalási oldal le lesz tiltva, amíg ez a beállítás aktív, és az ügyfelek nem tudnak új időpontot foglalni.
+    display_message: Üzenet Megjelenítése
+    booking_is_disabled: A Foglalás Letiltva!
+    appearance: Megjelenés
+    company_logo: Céglogó
+    company_logo_hint: A céglogó az alkalmazás több helyén megjelenik, beleértve a foglalási oldalt és az értesítő e-maileket is (képfájl, max. 2MB).
+    company_color: Cég Színe
+    company_color_hint: A cég színe az alkalmazásban lesz alkalmazva, hogy az alkalmazás a márkáját tükrözze.
+    localization: Helyi Beállítások
+    integrations: Integrációk
+    company: Cég
+    remove: Eltávolítás
+    login_button: Bejelentkezés Gomb
+    display_login_button_hint: Meghatározza, hogy a bejelentkezés gomb megjelenik-e a foglalási oldalon.
+    private: Privát
+    private_hint: A privát rekordok nem lesznek megjelenítve vagy feldolgozva a nyilvános oldalakon, például a foglalási oldalon.
+    reset: Visszaállítás
+    all: Összes
+    booking_link: Foglalási Link
+    add_new_event: Új Esemény Hozzáadása
+    what_kind_of_event: Milyen típusú eseményt szeretne hozzáadni?
+    theme: Téma
+    limit_customer_access: Ügyfél hozzáférés korlátozása
+    limit_customer_access_hint: Ha engedélyezve van, a szolgáltatók és titkárok csak azokhoz az ügyfelekhez férhetnek hozzá, akikkel időpontjuk van.
+    url: URL
+    secret_token: Titkos Token
+    verify_ssl: SSL ellenőrzése
+    appointment_save: Időpont mentése
+    appointment_delete: Időpont törlése
+    unavailability_save: Elérhetetlenség mentése
+    unavailability_delete: Elérhetetlenség törlése
+    customer_save: Ügyfél mentése
+    customer_delete: Ügyfél törlése
+    service_save: Szolgáltatás mentése
+    service_delete: Szolgáltatás törlése
+    service_category_save: Kategória mentése
+    service_category_delete: Kategória törlése
+    provider_save: Szolgáltató mentése
+    provider_delete: Szolgáltató törlése
+    secretary_save: Titkár mentése
+    secretary_delete: Titkár törlése
+    admin_save: Admin mentése
+    admin_delete: Admin törlése
+    options: Beállítások
+    webhooks: Webhookok
+    webhooks_info: A webhorgok lehetővé teszik HTTP értesítések küldését külső webalkalmazásoknak különféle alkalmazási eseményekre, például időpont létrehozására vagy ügyfél eltávolítására.
+    integrations_info: Az integrációk lehetővé teszik harmadik féltől származó kapcsolatok létrehozását külső alkalmazásokkal és API-kkal.
+    configure: Beállítás
+    google_analytics: Google Analytics
+    google_analytics_info: A Google Analytics lehetővé teszi, hogy automatikusan hozzáadja a nyomkövető kódot és a HTML markupot a nyilvános oldalhoz, és nyomon kövesse az összes nyilvános foglalási munkamenetet.
+    matomo_analytics: Matomo Analytics
+    matomo_analytics_info: A Matomo Analytics lehetővé teszi, hogy automatikusan hozzáadja a nyomkövető kódot és a HTML markupot a nyilvános oldalhoz, és nyomon kövesse az összes nyilvános foglalási munkamenetet.
+    api: API
+    api_info: Az API lehetővé teszi, hogy HTTP protokollon keresztül és az elérhető API végpontokon keresztül kapcsolatba lépjen az Easy!Appointments összes adatával és saját integrációkat hozzon létre.
+    google_analytics_code: Google Analytics Kód
+    matomo_analytics_url: Matomo Analytics URL
+    future_booking_limit: Jövőbeli foglalási korlát
+    limit_days: Korlát (napok)
+    future_booking_limit_hint: Állítsa be a jövőbeli foglalási korlátot napokban, amelyeken belül az ügyfelek foglalhatnak időpontokat a nyilvános foglalási oldalon.
+    api_token: API Token
+    allow_rescheduling_cancellation_before: Újratervezés / lemondás engedélyezése előtte
+    at_least_one_field: Legalább egy mezőt meg kell jeleníteni a foglalási oldalon.
+    status: Állapot
+    appointment_status_options: Időpont állapot opciók
+    appointment_status_options_info: Határozza meg a rendelkezésre álló időpont állapot opciók listáját, amelyeket a naptár oldalon lehet használni (az első automatikusan alapértelmezett értékké válik).
+    sunday_short: V
+    monday_short: H
+    tuesday_short: K
+    wednesday_short: Sze
+    thursday_short: Cs
+    friday_short: P
+    saturday_short: Szo
+    january_short: Jan
+    february_short: Feb
+    march_short: Már
+    april_short: Ápr
+    may_short: Máj
+    june_short: Jún
+    july_short: Júl
+    august_short: Aug
+    september_short: Szep
+    october_short: Okt
+    november_short: Nov
+    december_short: Dec
+    am: de
+    pm: du
+    to: tól
+    click_to_toggle: Kattintson a váltáshoz
+    week_short: Hét
+    scroll_to_increment: Görgessen a növeléshez
+    year: Év
+    make_non_working_day: Ez a szolgáltató nem lesz elérhető a kiválasztott napon.
+    no_breaks: Nincsenek szünetek
+    service_categories: Szolgáltatási Kategóriák
+    service_category: Szolgáltatási Kategória
+    blocked_period_saved: A blokkolt időszak sikeresen mentve.
+    blocked_period_deleted: A blokkolt időszak sikeresen törölve.
+    delete_blocked_period: Blokkolt időszak törlése
+    blocked_period: Blokkolt Időszak
+    blocked_periods: Blokkolt Időszakok
+    blocked_period_save: Blokkolt Időszak Mentése
+    blocked_period_delete: Blokkolt Időszak Törlése
+    blocked_periods_hint: Határozzon meg időszakokat, amikor a nyilvános foglalások le lesznek tiltva minden szolgáltató számára (pl. zárási napok, ünnepek stb.).
+    custom_field: Egyedi Mező
+    custom_fields: Egyedi Mezők
+    label: Címke
+    webhook_saved: Webhook sikeresen mentve.
+    webhook_deleted: Webhook sikeresen törölve.
+    delete_webhook: Webhook törlése
+    contact_info: Kapcsolati Információ
+    hide_from_public: Elrejtés a nyilvánosság elől
+    matomo_analytics_site_id: Matomo Analytics Webhelyazonosító
+    matomo_analytics_site_id_hint: Állítsa be a webhelyazonosítót, amelyet a Matomo követni fog (az alapértelmezett webhely az "1" azonosítóval rendelkezik).
+    default_timezone: Alapértelmezett időzóna
+    default_timezone_hint: Állítsa be az alapértelmezett időzóna értékét, amelyet az új rekordokhoz használnak.
+    default_language: Alapértelmezett Nyelv
+    default_language_hint: Állítsa be az alapértelmezett nyelvet, amelyet az új rekordokhoz használnak.
+    sync_method_prompt: Melyik szinkronizálási módszert szeretné használni?
+    caldav_server: CalDAV Szerver
+    caldav_connection_info_prompt: Kérjük, adja meg a cél CalDAV Naptár kapcsolati információit.
+    connect: Csatlakozás
+    ldap: LDAP
+    ldap_info: Ez az integráció lehetővé teszi egy meglévő LDAP szerverhez való csatlakozást és automatikus felhasználó importálást az Easy!Appointments rendszerbe, valamint a felhasználók SSO-t a könyvtári jelszavukkal (a felhasználónévnek egyeznie kell).
+    host: Hoszt
+    port: Port
+    user_dn: Felhasználó DN
+    base_dn: Alap DN
+    keyword: Kulcsszó
+    ldap_search_hint: Adjon meg egy kulcsszót az LDAP könyvtárban történő kereséshez a szűrési feltételeknek megfelelő felhasználók megtalálásához.
+    ldap_extension_not_loaded: Az LDAP PHP kiterjesztés nincs betöltve, de szükséges ehhez az integrációhoz.
+    field_mapping: Mezők leképezése
+    content: Tartalom
+    active: Aktív
+    user_imported: A felhasználó rekord sikeresen importálva.
+    import: Importálás
+    ldap_dn: LDAP DN
+    role: Szerep
+    at_least_one_field_required: Legalább egy mezőt meg kell adni kötelezőként a foglalási oldalon.
+    customer_is_already_booked: Ez az ügyfél már rendelkezik időponttal a kért foglalási időszakban.
+    fields: Mezők
+    invalid_credentials_provided: Érvénytelen hitelesítő adatok lettek megadva, kérem próbálja újra.
+    calendar_url: Naptár URL
+    please_select: Kérem válasszon
+    secret_header: Titkos fejléc
+    search: Keresés
+    slot_interval: Időrés intervallum (perc)
+    jitsi: Jitsi
+    jitsi_info: Automatikus Jitsi találkozó link generálás engedélyezése az időpontokhoz. Ha engedélyezve van, egyedi Jitsi videohívás link jön létre és tárolódik találkozó linkként.
+    altcha: ALTCHA
+    altcha_info: Az ALTCHA egy adatvédelmi fókuszú, nyílt forráskódú CAPTCHA alternatíva, amely munka-bizonyítékot használ az emberi felhasználók hitelesítésére nyomkövetés nélkül.
+    altcha_enabled_hint: Ha engedélyezve van, az ALTCHA lesz használva a hagyományos képes CAPTCHA helyett az űrlap-ellenőrzéshez.
+    altcha_hmac_key: HMAC kulcs
+    altcha_hmac_key_hint: Titkos kulcs az ALTCHA kihívások aláírásához és ellenőrzéséhez. Kattintson a Generálás gombra egy új biztonságos kulcs létrehozásához.
+    altcha_max_number: Maximális szám
+    altcha_max_number_hint: 'A munka-bizonyíték kihívás maximális száma. A magasabb értékek növelik a nehézséget (alapértelmezett: 100000).'
+    altcha_expires: Lejárat (másodperc)
+    altcha_expires_hint: 'Mennyi ideig marad érvényes egy kihívás másodpercben (alapértelmezett: 300).'
+    altcha_key_generated: Az új HMAC kulcs sikeresen létrehozva.
+    altcha_enabled: ALTCHA engedélyezése
+    altcha_captcha_not_active_warning: A CAPTCHA beállítás jelenleg nem aktív. Az ALTCHA nem kerül használatra, hacsak a CAPTCHA nincs engedélyezve a
+    generate: Generálás
+    meeting_link: Találkozó linkje
+    google_calendar: Google Naptár
+    google_calendar_info: A Google Calendar szinkronizáció engedélyezése az időpontok szinkronizálásához a szolgáltatók Google Calendar fiókjaival.
+    google_client_id: Ügyfél-azonosító
+    google_client_id_info: Az Ügyfél-azonosító a Google Cloud Console projektjéből.
+    google_client_secret: Ügyféltitek
+    google_client_secret_info: Az Ügyféltitek a Google Cloud Console projektjéből.
+    google_calendar_setup_info: 'A Google Calendar szinkronizáció engedélyezéséhez létre kell hoznia egy projektet a Google Cloud Console-ban, engedélyeznie kell a Google Calendar API-t, és OAuth 2.0 hitelesítő adatokat kell létrehoznia. Látogasson el:'
+    google_meet_link_generation: Google Meet linkek generálása
+    google_meet_link_generation_info: Automatikusan hozzon létre Google Meet videokonferencia linket a szinkronizált időpontokhoz. A találkozó link az időpont találkozó link mezőjében lesz tárolva.
+    display_add_to_google_calendar: '"Hozzáadás a Google Calendar-hoz" gomb megjelenítése'
+    display_add_to_google_calendar_info: Jelenítse meg a "Hozzáadás a Google Calendar-hoz" gombot a foglalás megerősítő oldalon, lehetővé téve az ügyfeleknek, hogy egyszerűen hozzáadják időpontjukat személyes Google Calendar-jukhoz.
+    select_all: Összes kijelölése
+    select_none: Kijelölés megszüntetése
+    appointment_update: Időpont frissítése
+    notify_users_on_update_question: Szeretne értesítést küldeni erről a változásról?
+    'yes': Igen
+    'no': Nem
+    latest_blog_posts: Legújabb blogbejegyzések
+    loading: Betöltés
+    blog_posts_load_error: Nem sikerült betölteni a blogbejegyzéseket. Kérjük, látogassa meg a hivatalos weboldalt a frissítésekért.
+    provider_has_conflicting_appointment: A kiválasztott szolgáltatónak már van másik időpontja abban az időben. Kérjük, válasszon másik időpontot vagy szolgáltatót.
+    would_you_like_to_proceed: Szeretné mindenképpen folytatni?
+    proceed: Tovább
+    no_available_service_providers: Nincs elérhető szolgáltatás
+    no_available_service_providers_message: Jelenleg nincs elérhető szolgáltatás vagy szolgáltató foglaláshoz. Kérjük, nézzen vissza később, vagy lépjen kapcsolatba velünk segítségért.
+    reset_password: Jelszó visszaállítása
+    new_password: Új jelszó
+    enter_new_password: Adja meg új jelszavát alább.
+    password_reset_request: Jelszó-visszaállítási kérelem
+    password_reset_email_message: Ön kérte a jelszava visszaállítását. Kattintson az alábbi gombra, hogy új jelszót állítson be a fiókjához.
+    password_reset_link_expires: Ez a link 1 óra múlva lejár.
+    password_reset_ignore_message: Ha nem kért jelszó-visszaállítást, kérjük, hagyja figyelmen kívül ezt az e-mailt.
+    invalid_reset_token: A jelszó-visszaállító link érvénytelen.
+    invalid_or_expired_token: A jelszó-visszaállító link érvénytelen vagy lejárt. Kérjen újat.
+    password_reset_success: A jelszava sikeresen visszaállítva. Átirányítjuk a bejelentkezési oldalra.
+    password_reset_failed: A jelszó visszaállítása sikertelen. Kérjük, próbálja újra.
+    no_password_provided: Kérjük, adjon meg egy jelszót.
+    type_username_and_email_for_reset_link: Írja be felhasználónevét és e-mail címét a jelszó-visszaállító link fogadásához.
+    send_reset_link: Visszaállító link küldése
+    reset_link_sent_with_email: Ha létezik fiók a megadott adatokkal, a jelszó-visszaállító link elküldésre került az e-mail címére.
+    working_plan_validation_failed: Érvénytelen munkaterv-konfiguráció található.
+    start_date: Kezdő dátum
+    end_date: Záró dátum
+    remember_me: Adataim megjegyzése
+    remember_me_hint: Mentse el adatait a gyorsabb foglaláshoz legközelebb.
+    legal_notice: Jogi nyilatkozat
+    legal_notice_url: Jogi nyilatkozat URL
+    legal_notice_url_hint: Adja meg a jogi nyilatkozat oldalának URL-jét.
+    imprint: Impresszum
+    imprint_url: Impresszum URL
+    imprint_url_hint: Adja meg az impresszum oldalának URL-jét.
+    data_retention: Adatmegőrzés
+    data_retention_days: Adatmegőrzési napok
+    data_retention_days_hint: Állítsa be, hány nap elteltével törlődjenek automatikusan az ügyféladatok. Állítsa 0-ra az automatikus törlés letiltásához.
+    manage_privacy: Adatvédelem kezelése
+    manage_privacy_hint: Kattintson az alábbi linkre személyes adatai megtekintéséhez, frissítéséhez vagy törléséhez.
+    personal_information_updated: Személyes adatai sikeresen frissültek.
+    verify: Ellenőrzés
+    verifying: Ellenőrzés folyamatban
+    verified: Ellenőrizve
+    verification_complete: Ellenőrzés kész
+    verification_failed: Az ellenőrzés sikertelen. Kattintson az újrapróbálkozáshoz.
+    click_to_verify: Kattintson az igazoláshoz, hogy Ön ember
+    altcha_verification_failed: Az ALTCHA ellenőrzés sikertelen. Kérjük, próbálja újra.
+    premium: Premium
+    about_app_premium: Átfogó szolgáltatásokat kínálunk saját üzemeltetésű szoftverekhez, beleértve az egyedi fejlesztést, felügyelt tárhelyet, támogatási szerződéseket, márkaváltást és folyamatos fejlesztéseket — így Ön a vállalkozására koncentrálhat, míg mi a többiről gondoskodunk.
+    go_premium: Premium verzió
+    notify_users_on_create_question: Szeretné értesíteni az ügyfelet erről az új időpontról?
+    notify_users_on_delete_question: Szeretné értesíteni az ügyfelet az időpont törléséről?

@@ -1,0 +1,575 @@
+---
+sk:
+  ea:
+    page_title: Rezervácie
+    service_and_provider: Vyberte si službu a pracovníka
+    select_service: Vyberte si službu
+    select_provider: Vyberte si pracovníka
+    duration: Trvanie
+    minutes: Minút
+    price: Cena
+    back: Späť
+    appointment_date_and_time: Zvoľte si dátum a čas rezervácie
+    no_available_hours: Čas pre vybraný dátum nieje k dispozícii. Prosím, vyberte si iný termín.
+    appointment_hour_missing: Prosím, vyberte si hodinu pred pokračovaním.
+    customer_information: Vyplňte svoje údaje
+    first_name: Meno
+    last_name: Priezvisko
+    email: E-mail
+    phone_number: Telefónne číslo
+    phone: Telefón
+    address: Adresa
+    city: Mesto
+    zip_code: PSČ
+    notes: Poznámka
+    language: Jazyk
+    no_language: Žiadny jazyk
+    fields_are_required: Polia označené s * sú povinné.
+    appointment_confirmation: Potvrďte rezerváciu
+    confirm: Potvrdiť
+    update: Aktualizovať
+    cancel_appointment_hint: Stlačte tlačidlo "Zrušiť" pre odstránenie Vašej rezervácie.
+    cancel: Zrušiť
+    appointment_registered: Vaša rezervácia bola zaregistrovaná.
+    cancel_appointment_title: Zrušiť rezerváciu
+    appointment_cancelled: Vaša rezervácia bola zrušená.
+    appointment_cancelled_title: Rezervácia zrušená
+    reason: Dôvod
+    appointment_removed_from_schedule: Rezervácia bola odstránená z nášho kalendára.
+    appointment_details_was_sent_to_you: E-mail s podrobnosťami Vašej rezervácie Vám bol odoslaný na email, ktorý ste zadali pri rezervácií.
+    add_to_google_calendar: Pridať do Google Calendar
+    appointment_booked: Váš termín bol úspešne rezervovaný.
+    thank_you_for_appointment: Ďakujeme Vám za Vašu rezerváciu našich služieb. Nižšie si môžete prezrieť podrobnosti.  Zmeny vykonajte kliknutím na odkaz.
+    appointment_details_title: Deteily rezervácie
+    customer_details_title: Detail zákazníka
+    service: Služba
+    provider: Pracovník
+    customer: Zákazník
+    start: Začiatok
+    end: Koniec
+    name: Meno
+    appointment_link_title: Link na rezerváciu
+    success: Úspech.
+    appointment_added_to_your_plan: Nová rezervácia bola pridaná do vášho kalendára.
+    appointment_link_description: Môžete vykonať zmeny v rezervácií kliknutím na odkaz nižšie.
+    appointment_locked: Modification impossible.
+    appointment_locked_message: Rezerváciu nie je možné zmeniť menej ako {$limit} hodín vopred.
+    appointment_not_found: Rezervácia nebola nájdená.
+    appointment_does_not_exist_in_db: Rezervácia, ktorú hľadáte v systéme neexistuje.
+    display_calendar: Zobrazenie kalendára
+    calendar: Kalendár
+    users: Užívatelia
+    settings: Nastavenia
+    log_out: Odhlasiť sa
+    synchronize: Synchronizovať
+    enable_sync: Povoliť synchronizáciu
+    disable_sync: Zakázať synchronizáciu
+    disable_sync_prompt: Ste si istí, že chcete vypnúť synchronizáciu kalendára?
+    reload: Obnoviť
+    appointment: Rezervácie
+    unavailability: Nedostupné
+    week: Týždeň
+    month: Mesiac
+    today: Dnes
+    not_working: Zatvorené
+    break: Prestávka
+    add: Pridať
+    edit: Upraviť
+    hello: Ahoj
+    all_day: Celý deň
+    manage_appointment_record_hint: Spravovať všetky záznamy rezervácií, pracovníkov a služieb.
+    select_filter_item_hint: Vyberte pracovníka, alebo službu a zobrazte rezervácie v kalendári.
+    enable_appointment_sync_hint: Povoliť synchronizáciu rezervácií s poskytovateľom's s kontom Google Kalendár.
+    manage_customers_hint: Správa registrovaných zákazníkov a histórie rezervácií.
+    manage_services_hint: Správa dostupných služieb a kategórií systému.
+    manage_users_hint: Správa užívateľov administrácie (Administrátori, pracovníci, sekretárky...).
+    settings_hint: Nastavenia systému a nastavenia užívateľov.
+    log_out_hint: Odhlásiť sa zo systému.
+    unavailability_periods_hint: Počas nedostupnosti (otváracia doba) nebudú akceptované nové rezervácie.
+    new_appointment_hint: Vytvorte novú rezerváciu a uložte ju do databázy.
+    reload_appointments_hint: Obnoviť rezervácie v kalendári.
+    trigger_sync_hint: Trigger proces synchronizácie kalendára Google.
+    appointment_updated: Rezervácia úspešne aktualizovaná.
+    undo: Odvolať akciu
+    appointment_details_changed: Podrobnosti rezervácie boli zmenené
+    appointment_changes_saved: Zmeny rezervácie boli úspešne uložené.
+    save: Uložiť
+    new: Nová
+    select: Vybrať
+    hide: Skriť
+    type_to_filter_customers: Zadajte filter pre zákazníkov.
+    clear_fields_add_existing_customer_hint: Zrušte pole a zadajte nového zákazníka.
+    pick_existing_customer_hint: Vyberte si z existujúcich zákazníkov.
+    new_appointment_title: Nová rezervácia
+    edit_appointment_title: Upraviť rezerváciu
+    delete_appointment_title: Odstrániť rezerváciu
+    write_appointment_removal_reason: 'Venujte prosím chvíľu a napíšte nám dôvod, prečo ste zrušili Vašu rezerváciu:'
+    appointment_saved: Rezervácia bola úspešne uložená.
+    new_unavailability_title: Nové nedostupné obdobie
+    edit_unavailability_title: Upraviť nedostupné obdobie
+    unavailability_saved: Nedostupné obdobie úspešne uložené.
+    start_date_before_end_error: Dátum začatia je väčší ako dátum konca.
+    invalid_duration: Neplatné trvanie.
+    invalid_email: Neplatné emailová adresa.
+    customers: Zákazníci
+    details: Podrobnosti
+    no_records_found: Neboli nájdené žiadne záznamy...
+    services: Služby
+    duration_minutes: Dĺžka (minúty)
+    currency: Mena
+    category: Kategória
+    no_category: Žiadne kategórie
+    description: Popis
+    categories: Kategórie
+    admins: Administrátori
+    providers: Pracovníci
+    secretaries: Sekretárky
+    mobile_number: Mobilné číslo
+    mobile: Mobil
+    state: Štát
+    username: Užívateľské meno
+    password: Heslo
+    retype_password: Heslo znova
+    receive_notifications: Dostávať oznámenia
+    passwords_mismatch: Heslá sa nezhodujú.
+    admin_saved: Admin úspešne uložený.
+    provider_saved: Pracovník úspešne uložený.
+    secretary_saved: Sekretárka úspešne uložená.
+    admin_deleted: Admin úspešne vymazaný.
+    provider_deleted: Pracovník úspešne vymazaný.
+    secretary_deleted: Sekretárka úspešne vymazaná.
+    service_saved: Služba úspešne uložená.
+    service_category_saved: Kategórie služieb úspešne uložené.
+    service_deleted: Služba  úspešne vymazaná.
+    service_category_deleted: Kategória služieb  úspešne vymazaná.
+    customer_saved: Zákazník úspešne uložený.
+    customer_deleted: Zákazník úspešne vymazaná.
+    current_view: Aktuálny náhľad
+    working_plan: Otváracie hodiny
+    reset_plan: Vymazať otváracie hodiny
+    monday: Pondelok
+    tuesday: Utorok
+    wednesday: Streda
+    thursday: Štvrtok
+    friday: Piatok
+    saturday: Sobota
+    sunday: Nedeľa
+    breaks: Prestávky
+    add_breaks_during_each_day: Pridajte pracovné prestávky počas každého dňa. Počas prestávok pracovník nebude prijímať žiadne rezervácie.
+    day: Deň
+    days: Dni
+    actions: Akcia
+    reset_working_plan_hint: Obnoviť pracovnú dobu späť na predvolené hodnoty.
+    company_name: Názov spoločnosti
+    company_name_hint: Názov firmy bude zobrazený v celom systéme (povinné).
+    company_email: Firemný Email
+    company_email_hint: Toto bude e-mailová adresa spoločnosti. Tá bude slúžiť na prijímanie a  odosielanie systémových e-mailov (povinné).
+    company_link: Link (webová stránka) firmy
+    company_link_hint: Link firmy by mal odkazovať na oficiálnu stránku spoločnosti (povinné).
+    go_to_booking_page: Prejsť na stránku rezervácií
+    settings_saved: Nastavenie úspešne uložené.
+    general: Všeobecný
+    booking: Rezervácia
+    visible: Viditeľný
+    hidden: Skrytý
+    business_logic: Firemné údaje
+    current_user: Prihlásený užívateľ
+    about_app: O Easy!Appointments
+    edit_working_plan_hint: Tu si môžete upraviť nastavenia kedy je možné spraviť rezervácie. Nastavte si časy a dni podľa potreby. Ak si nastavíte prestávku, tak v danom čase nebude možné spraviť rezerváciu. To sité platí aj pre otváracie hodiny. Tento pracovný plán bude následne predvolený, pre každého nového pracovníka, ale budete ho môcť veľmi jednoducho upraviť podľa potreby každému pracovníkovi osobitne. V prípade nejasností neváhajte kontaktovať helpdesk.
+    edit_breaks_hint: Pridajte pracovné prestávky počas každého dňa. Tieto prestávky budú použité pre všetkých nových pracovníkov, ktorých zadáte do systému.
+    book_advance_timeout: Časové limity rezervácií
+    book_advance_timeout_hint: Definujte časový limit (v minútach) kedy najneskôr môžu zákazníci spraviť rezeváciu, alebo rezerváciu naopak zmeniť.
+    timeout_minutes: Časový limit (v minútach)
+    about_app_info: Easy!Appointments je vysoko prispôsobiteľná webová aplikácia, ktorá umožňuje svojim zákazníkom, aby si rezervácie u Vás online prostredníctvom webu. Navyše poskytuje možnosť synchronizovať vaše dáta s Google Calendárom, ktorý využíva množstvo ľudí, takže ich môžete použiť aj s inými službami.
+    current_version: Aktuálna verzia
+    support: Podpora
+    about_app_support: Ak narazíte na nejaké problémy pri používaní Easy!Appointments môžete vyhľadať oficiálnu pomoc u poskytovateľa služby.
+    official_website: Officiálna Webstránka poskytovateľa
+    google_plus_community: Google+ Komunita
+    support_group: Podpora
+    project_issues: Problémy a riešenia
+    license: Licencia
+    about_app_license: 'Manipulácia ako aj šírenie tohoto systému je zakázaná! Viac na:'
+    logout_success: Boli ste úspešne odhlásený! Kliknite na jedno tlačidlo nižšie, podľa Vášho výberu.
+    book_appointment_title: Rezervácie
+    backend_section: Administrácia
+    you_need_to_login: Vitajte! Budete sa musieť prihlásiť, aby sa Vám zobrazila administrácia.
+    enter_username_here: Zadajte svoje používateľské meno tu ...
+    enter_password_here: Zadajte heslo tu ...
+    login: Prihlásiť sa
+    forgot_your_password: Zabudli ste Vaše heslo?
+    login_failed: Prihlásenie sa nepodarilo, prosím, zadajte správne údaje a skúste to znova.
+    type_username_and_email_for_new_password: Zadajte svoje užívateľské meno a vašu e-mailovú adresu, na získanie nového hesla.
+    enter_email_here: Sem vložte Váš email ...
+    regenerate_password: Zmeniť heslo
+    go_to_login: Späť na prihlasovaciu stránku
+    new_password_sent_with_email: Vaše nové heslo Vám bolo zaslané e-mailom.
+    new_account_password: Nové heslo
+    new_password_is: Vaše nové heslo účet je  $password. Prosím, uložte si tento e-mail, aby bolo možné v prípade potreby obnoviť heslo. Môžete tiež zmeniť toto heslo priamo na stránke v prípade že ho zas zabudnete.
+    delete_record_prompt: Ste si istí, že chcete zmazať tento záznam? Túto akciu nie je možné vrátiť späť.
+    delete_admin: Zmazať administrátora
+    delete_customer: Zmazať zákazníka
+    delete_service: Zmazať službu
+    delete_service_category: Zmazať službu kategórie
+    delete_provider: Zmazať pracovníka
+    delete_secretary: Zmazať sekretárku
+    delete_appointment: Zmazať rezerváciu
+    delete_unavailability: Zmazať nedostupnú dobu
+    delete: Zmazať
+    unexpected_issues: Neočakávaný problém
+    unexpected_issues_message: Operáciu sa nepodarilo dokončiť.
+    close: Zatvoriť
+    page_not_found: Stránka nenájdená
+    page_not_found_message: Žiaľ Vami požadovaná stránka neexistuje. Prosím skontrolujte adresu URL prehliadača, alebo zmeňte umiestnenie pomocou tlačidiel nižšie.
+    error: Chyba
+    no_privileges: Nemáte oprávnenie
+    no_privileges_message: Nemáte požadované oprávnenie na zobrazenie tejto stránky. Prejdite do inej sekcie.
+    backend_calendar: Administrácia - kalendár
+    start_date_time: Dátum začatia / čas
+    end_date_time: Dátum konca / čas
+    licensed_under: Licencované pod
+    unexpected_issues_occurred: Došlo k neočakávanej chybe
+    service_communication_error: Pri komunikácií so serverom došlo k chybe, skúste to prosím znova.
+    no_privileges_edit_appointments: Nemáte požadované povolenia k úpravám rezervácie.
+    unavailability_updated: Nedostupná doba úspešne aktualizované.
+    appointments: Rezervácie
+    unexpected_warnings: Neočakávané Varovanie
+    unexpected_warnings_message: Dokončenie operácie, ale niektoré varovania sa objavili.
+    filter: Filter
+    clear: Vyčistiť
+    uncategorized: Nezaradené
+    username_already_exists: Užívateľské meno už existuje.
+    password_length_notice: Heslo musí mať minimálne $number znakov.
+    general_settings: Všeobecné Nastavenie
+    personal_information: Osobné údaje
+    system_login: Prihlásenie sa do systému
+    user_settings_are_invalid: Užívateľské nastavenia sú neplatné! Skontrolujte prosím nastavenie a skúste to znova.
+    add_break: Pridať prestávku
+    january: Január
+    february: Február
+    march: Marec
+    april: Apríl
+    may: Máj
+    june: Jún
+    july: Júl
+    august: August
+    september: September
+    october: Október
+    november: November
+    december: December
+    previous: Predchádzajúci
+    next: Následujúci
+    now: Teraz
+    select_time: Vybetre čas
+    time: Čas
+    hour: Hodina
+    minute: Minúta
+    calendar_sync_completed: Synchronizácia s Google úspešne dokončená.
+    calendar_sync_failed: 'Synchronizácia Google zlyhala: Nemožno vytvoriť pripojenie k serveru.'
+    select_sync_calendar: Vybrať Google Calendar
+    select_sync_calendar_prompt: Vyberte kalendár, s ktorým chcete synchronizovať svoje stretnutia. Ak si nechcete vybrať konkrétny kalendár bude použitý predvolený.
+    sync_calendar_selected: Kalendár Google bol úspešne zvolený.
+    oops_something_went_wrong: Úups! Niečo sa pokazilo.
+    ea_update_success: Easy!Appointments bolo úspešne aktualizované.
+    require_captcha: Vyžadovať CAPTCHA
+    require_captcha_hint: Po zapnutí budú zákazníci musieť pred rezerváciou / aktualizáciou schôdzky napísať náhodne vygenerovaný reťazec CAPTCHA.
+    captcha_is_wrong: CAPTCHA overovanie zlyhalo. Skúste to znova.
+    enter_captcha_here: Zadajte CAPTCHA tu...
+    any_provider: Akýkoľvek poskytovateľ
+    requested_hour_is_unavailable: Požadovaná schôdzka nie je vôbec k dispozícii. Vyberte prosím inú hodinu pre Vašu schôdzku.
+    customer_notifications: Upozornenia zákazníka
+    customer_notifications_hint: Určuje, či zákazník dostane e-mailové upozornenia vždy, keď nastane zmena plánu na jednej z jeho rezervácií.
+    date_format: Formát dátumu
+    date_format_hint: Zmeňte formát zobrazenia dátumu (D - Dátum, M - Mesiac, Y - Rok).
+    time_format: ''
+    time_format_hint: Zmeniť formát zobrazenia času (H - Hodiny, M - Minúty).
+    first_weekday: Prvý deň v týždni
+    first_weekday_hint: Nastavte prvý deň kalendárneho týždňa.
+    google_analytics_code_hint: Pridajte svoje ID služby Google Analytics, aby ste bola zahrnutá do stránky rezervácie.
+    availabilities_type: Typ dostupnosti
+    flexible: Flexibilný
+    fixed: Fixný
+    attendants_number: Počet účastníkov
+    reset_working_plan: Obnovte pracovný plán späť na predvolené hodnoty.
+    legal_contents: Právny obsah
+    cookie_notice: Oznámenie o súboroch cookie
+    display_cookie_notice: Zobraziť oznámenie o súboroch cookie
+    cookie_notice_content: Obsah oznámenia o súboroch cookie
+    terms_and_conditions: Zmluvné podmienky
+    display_terms_and_conditions: Zobraziť zmluvné podmienky
+    terms_and_conditions_content: Obsah zmluvných podmienok
+    privacy_policy: Zásady ochrany osobných údajov
+    display_privacy_policy: Zobraziť Zásady ochrany osobných údajov
+    privacy_policy_content: Obsah Zásad ochrany osobných údajov
+    website_using_cookies_to_ensure_best_experience: Táto webová stránka používa súbory cookie, aby sme vám zabezpečili čo najlepší zážitok z našej webovej stránky.
+    read_and_agree_to_terms_and_conditions: Súhlasím so {$link}spracovaním osobných údajov{/$link}.
+    read_and_agree_to_privacy_policy: Súhlasím so {$link}spracovaním osobných údajov{/$link}.
+    delete_personal_information_hint: Odstráňte všetky svoje stretnutia a osobné informácie zo systému.
+    delete_personal_information: Vymazať osobné údaje
+    delete_personal_information_prompt: Ste si istý, že chcete vymazať svoje osobné údaje? Túto akciu nie je možné vrátiť späť.
+    location: Miesto
+    working_plan_exception: Výnimka pracovného plánu
+    working_plan_exceptions: Výnimky pracovného plánu
+    working_plan_exceptions_hint: Pridajte deň výnimky pracovného plánu mimo pracovného plánu.
+    new_working_plan_exception_title: Výnimka nového pracovného plánu
+    working_plan_exception_saved: Výnimka pracovného plánu bola úspešne uložená.
+    working_plan_exception_deleted: Výnimka pracovného plánu bola úspešne odstránená.
+    add_working_plan_exceptions_during_each_day: Pridajte výnimky pracovného plánu mimo pracovného plánu.
+    add_working_plan_exception: Pridať výnimku pracovného plánu
+    require_phone_number: Pridať výnimku pracovného plánu
+    require_phone_number_hint: Keď je táto možnosť povolená, zákazníci a používatelia budú musieť pri rezervácii stretnutia zadať telefónne číslo zákazníka
+    check_spam_folder: Ak e-mail nepríde do niekoľkých minút, skontrolujte priečinok so spamom.
+    api_token_hint: Nastavte tajný token, aby ste povolili autentifikáciu na základe tokenov rozhrania Easy!Appointments API.
+    timezone: Časové pásmo
+    overwrite_existing_working_plans: Týmto sa prepíšu existujúce pracovné plány poskytovateľa. Ste si istý, že chcete pokračovať?
+    working_plans_got_updated: Všetky pracovné plány boli aktualizované.
+    apply_to_all_providers: Použiť pre všetkých poskytovateľov
+    display_any_provider: Zobraziť možnosť ľubovoľného poskytovateľa
+    display_any_provider_hint: Rezervačná stránka získa dodatočnú možnosť, ktorá umožňuje zákazníkom rezervovať bez uvedenia poskytovateľa.
+    load_more: Zobraziť viac
+    list: Zoznam
+    default: Prevolené
+    table: Tabuľka
+    date: Dátum
+    about: O programe
+    booking_settings: Nastavenia rezervácie
+    display: Zobraziť
+    require: Vyžadovať
+    color: Farba
+    matomo_analytics_url_hint: Zadajte URL svojej vlastnej inštalácie Matomo, aby ste povolili sledovanie Matomo na rezervačných stránkach.
+    invalid_phone: Neplatné telefónne číslo.
+    legal: Právne
+    business: Obchod
+    account: Účet
+    disable_booking: Zakázať rezerváciu
+    disable_booking_hint: Rezervačná stránka bude zakázaná, kým bude toto nastavenie aktívne a zákazníci nebudú môcť registrovať nové stretnutia.
+    display_message: Zobraziť správu
+    booking_is_disabled: Rezervácia je zakázaná!
+    appearance: Vzhľad
+    company_logo: Logo spoločnosti
+    company_logo_hint: Logo spoločnosti bude zobrazené na mnohých miestach aplikácie, vrátane rezervačnej stránky a e-mailov s upozornením (súbor s obrázkom, max 2 MB).
+    company_color: Farba spoločnosti
+    company_color_hint: Farba spoločnosti bude použitá v celej aplikácii, aby aplikácia používala vašu značku.
+    localization: Lokalizácia
+    integrations: Integrácie
+    company: Spoločnosť
+    remove: Odstrániť
+    login_button: Tlačidlo na prihlásenie
+    display_login_button_hint: Definuje, či sa prihlasovacie tlačidlo zobrazuje na stránke rezervácie.
+    private: Súkromné
+    private_hint: Súkromné záznamy nebudú zobrazené ani spracované na verejných stránkach, ako je napríklad stránka rezervácie.
+    reset: Resetovať
+    all: Všetko
+    booking_link: Odkaz na rezerváciu
+    add_new_event: Pridať novú udalosť
+    what_kind_of_event: Aký druh udalosti by ste chceli pridať?
+    theme: Téma
+    limit_customer_access: Obmedziť zákaznícky prístup
+    limit_customer_access_hint: Ak je povolené, poskytovatelia a sekretárky budú mať prístup len k zákazníkom, s ktorými majú stretnutie.
+    url: URL
+    secret_token: Tajný token
+    verify_ssl: Overiť SSL
+    appointment_save: Uloženie stretnutia
+    appointment_delete: Vymazanie schôdzky
+    unavailability_save: Uložiť pre nedostupnosť
+    unavailability_delete: Vymazanie nedostupnosti
+    customer_save: Uložiť zákazníka
+    customer_delete: Vymazanie zákazníka
+    service_save: Uloženie služby
+    service_delete: Vymazanie služby
+    service_category_save: Uložiť kategóriu
+    service_category_delete: Vymazanie kategórie
+    provider_save: Uložiť poskytovateľa
+    provider_delete: Vymazať poskytovateľa
+    secretary_save: Uložiť sekretárku
+    secretary_delete: Vymazanie sekretárky
+    admin_save: Uloženie správcu
+    admin_delete: Odstrániť správcu
+    options: Možnosti
+    webhooks: Webhooky
+    webhooks_info: Webhooky vám umožňujú odosielať upozornenia HTTP externým webovým aplikáciám v reakcii na rôzne udalosti aplikácie, ako je vytvorenie stretnutia alebo odstránenie zákazníka.
+    integrations_info: Integrácie vám umožňujú vytvárať spojenia tretích strán s externými aplikáciami a API.
+    configure: Konfigurovať
+    google_analytics: Google Analytics
+    google_analytics_info: Google Analytics vám umožňuje automaticky pridať sledovací kód a označenie HTML na verejnú stránku a sledovať všetky relácie verejnej rezervácie.
+    matomo_analytics: Matomo Analytics
+    matomo_analytics_info: Matomo Analytics vám umožňuje automaticky pridať sledovací kód a označenie HTML na verejnú stránku a sledovať všetky relácie verejnej rezervácie.
+    api: API
+    api_info: API umožňuje interakciu so všetkými údajmi Easy!Appointments cez protokol HTTP a dostupné koncové body API a vytváranie vlastných integrácií.
+    google_analytics_code: Kód Google Analytics
+    matomo_analytics_url: Adresa URL Matomo Analytics
+    future_booking_limit: Budúci limit rezervácie
+    limit_days: Limit (dni)
+    future_booking_limit_hint: Nastavte budúci limit v dňoch, kedy si zákazníci môžu dohodnúť schôdzky cez verejnú rezervačnú stránku.
+    api_token: Token API
+    allow_rescheduling_cancellation_before: Povoliť preplánovanie/zrušenie skôr
+    at_least_one_field: Na rezervačnej stránke musí byť zobrazené aspoň jedno pole.
+    status: Stav
+    appointment_status_options: Možnosti stavu stretnutia
+    appointment_status_options_info: Definujte zoznam dostupných možností stavu stretnutia, ktoré možno použiť na stránke kalendára (prvá sa automaticky stane predvolenou hodnotou).
+    sunday_short: Ned
+    monday_short: Pon
+    tuesday_short: Ut
+    wednesday_short: Str
+    thursday_short: Št
+    friday_short: Pia
+    saturday_short: So
+    january_short: Jan
+    february_short: Feb
+    march_short: Mar
+    april_short: Apr
+    may_short: Máj
+    june_short: Jún
+    july_short: Júl
+    august_short: Aug
+    september_short: Sept
+    october_short: Oct
+    november_short: Nov
+    december_short: Dec
+    am: am
+    pm: pm
+    to: do
+    click_to_toggle: Prepnite kliknutím
+    week_short: Týž.
+    scroll_to_increment: Posunúť sa na prírastok
+    year: Rok
+    make_non_working_day: Tento poskytovateľ nebude vo vybratý deň k dispozícii pre prácu.
+    no_breaks: Žiadne prestávky
+    service_categories: Kategórie služieb
+    service_category: Kategória služieb
+    blocked_period_saved: Blokované obdobie bolo úspešne uložené.
+    blocked_period_deleted: Blokované obdobie bolo úspešne odstránené.
+    delete_blocked_period: Odstrániť blokované obdobie
+    blocked_period: Blokované obdobie
+    blocked_periods: Blokované obdobia
+    blocked_period_save: Uloženie zablokovaného obdobia
+    blocked_period_delete: Vymazanie blokovaného obdobia
+    blocked_periods_hint: Definujte časové obdobia, počas ktorých budú verejné rezervácie pre všetkých poskytovateľov zakázané (napr. dátumy zatvorenia, sviatky atď.).
+    custom_field: Vlastné pole
+    custom_fields: Vlastné polia
+    label: Štítok
+    webhook_saved: Webhook bol úspešne uložený.
+    webhook_deleted: Webhook bol úspešne odstránený.
+    delete_webhook: Odstrániť webhook
+    contact_info: Kontaktné informácie
+    hide_from_public: Skryť pred verejnosťou
+    matomo_analytics_site_id: Matomo Analytics Site ID
+    matomo_analytics_site_id_hint: Nastavte ID stránky, ktorá bude sledovaná Matomo (predvolená stránka má ID "1").
+    default_timezone: Predvolené časové pásmo
+    default_timezone_hint: Nastavte predvolené časové pásmo, ktoré bude použité pre nové záznamy.
+    default_language: Predvolený jazyk
+    default_language_hint: Nastavte predvolený jazyk, ktorý bude použitý pre nové záznamy.
+    sync_method_prompt: Ktorú metódu synchronizácie by ste chceli použiť?
+    caldav_server: CalDAV Server
+    caldav_connection_info_prompt: Zadajte informačné údaje o pripojení k cieľovému CalDAV kalendáru.
+    connect: Pripojiť
+    ldap: LDAP
+    ldap_info: Táto integrácia vám umožňuje pripojiť sa k existujúcemu LDAP serveru a automaticky importovať používateľov do Easy!Appointments a umožniť im SSO s ich adresárskym heslom (užívateľské meno musí súhlasiť).
+    host: Hostiteľ
+    port: Port
+    user_dn: User DN
+    base_dn: Base DN
+    keyword: Kľúčové slovo
+    ldap_search_hint: Zadajte kľúčové slovo na vyhľadanie používateľov v LDAP adresári, ktorí zodpovedajú filtrovaným kritériám.
+    ldap_extension_not_loaded: LDAP PHP rozšírenie nie je načítané, ale je potrebné na fungovanie tejto integrácie.
+    field_mapping: Mapovanie polí
+    content: Obsah
+    active: Aktívny
+    user_imported: Záznam používateľa bol úspešne importovaný.
+    import: Importovať
+    ldap_dn: LDAP DN
+    role: Rola
+    at_least_one_field_required: Aspoň jedno pole musí byť nastavené ako povinné na stránke rezervácie.
+    customer_is_already_booked: Tento zákazník už má naplánovaný termín počas požadovaného obdobia rezervácie.
+    fields: Polia
+    invalid_credentials_provided: Poskytnuté údaje sú neplatné, skúste to prosím znova.
+    calendar_url: URL kalendára
+    please_select: Vyberte prosím
+    secret_header: Tajná hlavička
+    search: Hľadať
+    slot_interval: Interval slotov (minúty)
+    jitsi: Jitsi
+    jitsi_info: Povoliť automatické generovanie odkazov na stretnutia Jitsi pre rezervácie. Po povolení bude pre každú rezerváciu vytvorený jedinečný odkaz na videohovor Jitsi.
+    altcha: ALTCHA
+    altcha_info: ALTCHA je alternatíva CAPTCHA zameraná na súkromie s otvoreným zdrojovým kódom, ktorá používa proof-of-work na overenie používateľov bez sledovania.
+    altcha_enabled_hint: Po povolení bude ALTCHA použitá namiesto tradičnej obrázkkovej CAPTCHA na overenie formulárov.
+    altcha_hmac_key: Kľúč HMAC
+    altcha_hmac_key_hint: Tajný kľúč používaný na podpisovanie a overovanie výziev ALTCHA. Kliknite na Generovať pre vytvorenie nového bezpečného kľúča.
+    altcha_max_number: Maximálne číslo
+    altcha_max_number_hint: 'Maximálne číslo pre výzvu proof-of-work. Vyššie hodnoty zvyšujú obtiažnosť (predvolené: 100000).'
+    altcha_expires: Platnosť (sekundy)
+    altcha_expires_hint: 'Doba platnosti výzvy v sekundách (predvolené: 300).'
+    altcha_key_generated: Nový kľúč HMAC bol úspešne vygenerovaný.
+    altcha_enabled: Povoliť ALTCHA
+    altcha_captcha_not_active_warning: Nastavenie CAPTCHA nie je momentálne aktívne. ALTCHA sa nepoužije, pokiaľ nie je CAPTCHA povolená v
+    generate: Generovať
+    meeting_link: Odkaz na stretnutie
+    google_calendar: Kalendár Google
+    google_calendar_info: Povoliť synchronizáciu s Google Calendar pre synchronizáciu rezervácií s účtami Google Calendar poskytovateľov.
+    google_client_id: Client ID
+    google_client_id_info: Client ID z vášho projektu Google Cloud Console.
+    google_client_secret: Client Secret
+    google_client_secret_info: Client Secret z vášho projektu Google Cloud Console.
+    google_calendar_setup_info: 'Pre povolenie synchronizácie s Google Calendar musíte vytvoriť projekt v Google Cloud Console, povoliť Google Calendar API a vytvoriť prihlasovacie údaje OAuth 2.0. Navštívte:'
+    google_meet_link_generation: Generovať odkazy Google Meet
+    google_meet_link_generation_info: Automaticky vytvoriť odkaz na videokonferenciu Google Meet pre synchronizované rezervácie. Odkaz na stretnutie bude uložený v poli odkazu na stretnutie rezervácie.
+    display_add_to_google_calendar: Zobraziť tlačidlo "Pridať do Google Calendar"
+    display_add_to_google_calendar_info: Zobraziť tlačidlo "Pridať do Google Calendar" na stránke potvrdenia rezervácie, ktoré zákazníkom umožní jednoducho pridať rezerváciu do ich osobného Google Calendar.
+    select_all: Vybrať všetko
+    select_none: Zrušiť výber
+    appointment_update: Aktualizácia stretnutia
+    notify_users_on_update_question: Chcete odoslať upozornenie o tejto zmene?
+    'yes': Áno
+    'no': Nie
+    latest_blog_posts: Najnovšie príspevky na blogu
+    loading: Načítava sa
+    blog_posts_load_error: Nepodarilo sa načítať príspevky blogu. Navštívte oficiálnu stránku pre aktualizácie.
+    provider_has_conflicting_appointment: Vybraný poskytovateľ už má v danom čase inú schôdzku. Vyberte prosím iný čas alebo poskytovateľa.
+    would_you_like_to_proceed: Chcete napriek tomu pokračovať?
+    proceed: Pokračovať
+    no_available_service_providers: Žiadne dostupné služby
+    no_available_service_providers_message: V súčasnosti nie sú k dispozícii žiadne služby ani poskytovatelia na rezerváciu. Skontrolujte neskôr alebo nás kontaktujte pre pomoc.
+    reset_password: Obnoviť heslo
+    new_password: Nové heslo
+    enter_new_password: Nižšie zadajte svoje nové heslo.
+    password_reset_request: Žiadosť o obnovenie hesla
+    password_reset_email_message: Požiadali ste o obnovenie hesla. Kliknutím na tlačidlo nižšie nastavíte nové heslo pre svoj účet.
+    password_reset_link_expires: Tento odkaz vyprší o 1 hodinu.
+    password_reset_ignore_message: Ak ste nepožiadali o obnovenie hesla, prosím, ignorujte tento e-mail.
+    invalid_reset_token: Odkaz na obnovenie hesla je neplatný.
+    invalid_or_expired_token: Odkaz na obnovenie hesla je neplatný alebo vypršal. Požiadajte prosím o nový.
+    password_reset_success: Vaše heslo bolo úspešne obnovené. Budete presmerovaní na prihlasovaciu stránku.
+    password_reset_failed: Obnovenie hesla zlyhalo. Skúste to prosím znova.
+    no_password_provided: Prosím, zadajte heslo.
+    type_username_and_email_for_reset_link: Zadajte svoje používateľské meno a e-mailovú adresu pre získanie odkazu na obnovenie hesla.
+    send_reset_link: Odoslať odkaz na obnovenie
+    reset_link_sent_with_email: Ak existuje účet s poskytnutými údajmi, odkaz na obnovenie hesla bol odoslaný na váš e-mail.
+    working_plan_validation_failed: Nájdená neplatná konfigurácia pracovného plánu.
+    start_date: Dátum začiatku
+    end_date: Dátum konca
+    remember_me: Zapamätať si moje údaje
+    remember_me_hint: Uložiť vaše údaje pre rýchlejšiu rezerváciu nabudúce.
+    legal_notice: Právne upozornenie
+    legal_notice_url: URL právneho upozornenia
+    legal_notice_url_hint: Zadajte URL stránky s právnym upozornením.
+    imprint: Impressum
+    imprint_url: URL impressum
+    imprint_url_hint: Zadajte URL stránky s impressum.
+    data_retention: Uchovávanie údajov
+    data_retention_days: Doba uchovávania údajov (dni)
+    data_retention_days_hint: Nastavte počet dní, po ktorých budú údaje zákazníkov automaticky vymazané. Nastavte 0 pre vypnutie automatického mazania.
+    manage_privacy: Správa súkromia
+    manage_privacy_hint: Kliknite na odkaz nižšie pre zobrazenie, aktualizáciu alebo vymazanie vašich osobných údajov.
+    personal_information_updated: Vaše osobné údaje boli úspešne aktualizované.
+    verify: Overiť
+    verifying: Overovanie
+    verified: Overené
+    verification_complete: Overenie dokončené
+    verification_failed: Overenie zlyhalo. Kliknite pre zopakovanie.
+    click_to_verify: Kliknite pre overenie, že ste človek
+    altcha_verification_failed: Overenie ALTCHA zlyhalo. Skúste to prosím znova.
+    premium: Premium
+    about_app_premium: Ponúkame komplexné služby pre self-hosted softvér, vrátane vlastného vývoja, spravovaného hostingu, servisných zmlúv, rebrandingu a priebežných vylepšení — aby ste sa mohli sústrediť na svoje podnikanie, zatiaľ čo my sa postaráme o zvyšok.
+    go_premium: Prejsť na Premium
+    notify_users_on_create_question: Chcete zákazníka informovať o tomto novom termíne?
+    notify_users_on_delete_question: Chcete zákazníka informovať o zrušení termínu?

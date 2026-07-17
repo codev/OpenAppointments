@@ -1,0 +1,575 @@
+---
+sq:
+  ea:
+    page_title: Rezervoni Takim Me
+    service_and_provider: Shërbimi & Ofruesi
+    select_service: Zgjidh Shërbimin
+    select_provider: Zgjidh Ofruesin
+    duration: Kohëzgjatja
+    minutes: Minuta
+    price: Çmimi
+    back: Kthehu
+    appointment_date_and_time: Data dhe Ora e Takimit
+    no_available_hours: Nuk ka orare të disponueshme për datën e zgjedhur. Ju lutemi zgjidhni një datë tjetër.
+    appointment_hour_missing: Ju lutemi zgjidhni një orar takimi përpara se të vazhdoni.
+    customer_information: Informacioni i Klientit
+    first_name: Emri
+    last_name: Mbiemri
+    email: Email
+    phone_number: Numri i Telefonit
+    phone: Telefon
+    address: Adresa
+    city: Qyteti
+    zip_code: Kodi Postal
+    notes: Shënime
+    language: Gjuha
+    no_language: Pa gjuhë
+    fields_are_required: Fushat me * janë të detyrueshme.
+    appointment_confirmation: Konfirmimi i Takimit
+    confirm: Konfirmo
+    update: Përditëso
+    cancel_appointment_hint: Shtypni butonin "Anulo" për të hequr takimin nga orari i kompanisë.
+    cancel: Anulo
+    appointment_registered: Takimi juaj u regjistrua me sukses!
+    cancel_appointment_title: Anulo Takimin
+    appointment_cancelled: Takimi juaj u anulua me sukses.
+    appointment_cancelled_title: Takimi i Anuluar
+    reason: Arsyeja
+    appointment_removed_from_schedule: Takimi i mëposhtëm u hoq nga orari i kompanisë.
+    appointment_details_was_sent_to_you: Një email me detajet e takimit ju është dërguar.
+    add_to_google_calendar: Shto në Google Calendar
+    appointment_booked: Takimi juaj u rezervua me sukses
+    thank_you_for_appointment: Faleminderit që rezervuat një takim me ne. Më poshtë mund të shihni detajet e takimit. Bëni ndryshime duke klikuar lidhjen e takimit.
+    appointment_details_title: Detajet e Takimit
+    customer_details_title: Detajet e Klientit
+    service: Shërbimi
+    provider: Ofruesi
+    customer: Klienti
+    start: Fillimi
+    end: Mbarimi
+    name: Emri
+    appointment_link_title: Lidhja e Takimit
+    success: Sukses
+    appointment_added_to_your_plan: Një takim i ri u shtua në planin tuaj.
+    appointment_link_description: Ju mund të bëni ndryshime duke klikuar lidhjen e takimit më poshtë.
+    appointment_locked: Ndryshimi i pamundur!
+    appointment_locked_message: Takimi nuk mund të ndryshohet më pak se {$limit} orë përpara.
+    appointment_not_found: Takimi Nuk U Gjet
+    appointment_does_not_exist_in_db: Takimi që kërkuat nuk ekziston më në bazën e të dhënave të sistemit.
+    display_calendar: Shfaq Kalendarin
+    calendar: Kalendari
+    users: Përdoruesit
+    settings: Cilësimet
+    log_out: Dilni
+    synchronize: Sinkronizo
+    enable_sync: Aktivizo Sinkronizimin
+    disable_sync: Çaktivizo Sinkronizimin
+    disable_sync_prompt: A jeni të sigurt që dëshironi të çaktivizoni sinkronizimin e kalendarit?
+    reload: Rifresko
+    appointment: Takimi
+    unavailability: Pamundësia
+    week: Java
+    month: Muaji
+    today: Sot
+    not_working: Nuk Punon
+    break: Pauzë
+    add: Shto
+    edit: Ndrysho
+    hello: Përshëndetje
+    all_day: Gjithë Ditën
+    manage_appointment_record_hint: Menaxhoni të gjitha regjistrimet e takimeve të ofruesve dhe shërbimeve të disponueshme.
+    select_filter_item_hint: Zgjidhni një ofrues ose një shërbim dhe shikoni takimet në kalendar.
+    enable_appointment_sync_hint: Aktivizo sinkronizimin e takimeve me një kalendar të jashtëm.
+    manage_customers_hint: Menaxhoni klientët e regjistruar dhe shikoni historinë e rezervimeve të tyre.
+    manage_services_hint: Menaxhoni shërbimet dhe kategoritë e disponueshme të sistemit.
+    manage_users_hint: Menaxhoni përdoruesit e backend (administratorë, ofrues, sekretarë).
+    settings_hint: Vendosni cilësimet e sistemit dhe përdoruesit.
+    log_out_hint: Dilni nga sistemi.
+    unavailability_periods_hint: Gjatë periudhave të pamundësisë, ofruesi nuk do të pranojë takime të reja.
+    new_appointment_hint: Krijoni një takim të ri dhe ruajeni atë në bazën e të dhënave.
+    reload_appointments_hint: Rifresko takimet në kalendar.
+    trigger_sync_hint: Nxisni procesin e sinkronizimit të kalendarit.
+    appointment_updated: Takimi u përditësua me sukses.
+    undo: Anulo
+    appointment_details_changed: Detajet e takimit kanë ndryshuar
+    appointment_changes_saved: Ndryshimet e takimit u ruajtën me sukses.
+    save: Ruaj
+    new: I Ri
+    select: Zgjidh
+    hide: Fshih
+    type_to_filter_customers: Shkruani për të filtruar klientët.
+    clear_fields_add_existing_customer_hint: Pastro fushat dhe fut një klient të ri.
+    pick_existing_customer_hint: Zgjidh një klient ekzistues.
+    new_appointment_title: Takim i Ri
+    edit_appointment_title: Ndrysho Takimin
+    delete_appointment_title: Fshi Takimin
+    write_appointment_removal_reason: 'Ju lutemi shkruani arsyen pse po fshini takimin:'
+    appointment_saved: Takimi u ruajt me sukses.
+    new_unavailability_title: Pamundësi e Re
+    edit_unavailability_title: Ndrysho Pamundësinë
+    unavailability_saved: Pamundësia u ruajt me sukses.
+    start_date_before_end_error: Data e fillimit është pas datës së mbarimit.
+    invalid_duration: Kohëzgjatje e pavlefshme.
+    invalid_email: Adresa e email-it është e pavlefshme.
+    customers: Klientët
+    details: Detajet
+    no_records_found: Nuk u gjetën regjistrime...
+    services: Shërbimet
+    duration_minutes: Kohëzgjatja (Minuta)
+    currency: Monedha
+    category: Kategoria
+    no_category: Pa Kategori
+    description: Përshkrimi
+    categories: Kategoritë
+    admins: Administratorët
+    providers: Ofruesit
+    secretaries: Sekretarët
+    mobile_number: Numri i Celularit
+    mobile: Celular
+    state: Shteti
+    username: Emri i Përdoruesit
+    password: Fjalëkalimi
+    retype_password: Shkruaj Fjalëkalimin Përsëri
+    receive_notifications: Merrni Njoftime
+    passwords_mismatch: Fjalëkalimet nuk përputhen.
+    admin_saved: Administratori u ruajt me sukses.
+    provider_saved: Ofruesi u ruajt me sukses.
+    secretary_saved: Sekretari u ruajt me sukses.
+    admin_deleted: Administratori u fshi me sukses.
+    provider_deleted: Ofruesi u fshi me sukses.
+    secretary_deleted: Sekretari u fshi me sukses.
+    service_saved: Shërbimi u ruajt me sukses.
+    service_category_saved: Kategoria e shërbimit u ruajt me sukses.
+    service_deleted: Shërbimi u fshi me sukses.
+    service_category_deleted: Kategoria e shërbimit u fshi me sukses.
+    customer_saved: Klienti u ruajt me sukses.
+    customer_deleted: Klienti u fshi me sukses.
+    current_view: Pamja Aktual
+    working_plan: Plani i Punës
+    reset_plan: Rivendos Planin
+    monday: E Hënë
+    tuesday: E Martë
+    wednesday: E Mërkurë
+    thursday: E Enjte
+    friday: E Premte
+    saturday: E Shtunë
+    sunday: E Diel
+    breaks: Pauzat
+    add_breaks_during_each_day: Shtoni pauzat e punës gjatë çdo dite. Gjatë pauzave, ofruesi nuk do të pranojë asnjë takim.
+    day: Dita
+    days: Ditët
+    actions: Veprimet
+    reset_working_plan_hint: Rivendos planin e punës në vlerat e parazgjedhura.
+    company_name: Emri i Kompanisë
+    company_name_hint: Emri i kompanisë do të shfaqet kudo në sistem (e detyrueshme).
+    company_email: Email-i i Kompanisë
+    company_email_hint: Kjo do të jetë adresa e email-it të kompanisë. Do të përdoret si dërgues dhe adresë përgjigjeje e emaileve të sistemit (e detyrueshme).
+    company_link: Lidhja e Kompanisë
+    company_link_hint: Lidhja e kompanisë duhet të drejtojë në faqen zyrtare të kompanisë (e detyrueshme).
+    go_to_booking_page: Shko te Faqja e Rezervimit
+    settings_saved: Cilësimet u ruajtën me sukses.
+    general: Gjenerale
+    booking: Rezervim
+    visible: I Dukshëm
+    hidden: I Fshehur
+    business_logic: Logjika e Biznesit
+    current_user: Përdoruesi Aktual
+    about_app: Rreth Easy!Appointments
+    edit_working_plan_hint: Shënoni më poshtë ditët dhe orët kur kompania juaj do të pranojë takime. Ju do të jeni në gjendje të rregulloni takime në orët e papunuara, por klientët nuk do të jenë në gjendje të rezervojnë takime vetë në periudhat e papunuara. Ky plan pune do të jetë parazgjedhje për çdo rekord të ri ofruesi, por ju do të jeni në gjendje të ndryshoni planin e çdo ofruesi veç e veç duke redaktuar regjistrimin e tij. Pas kësaj, mund të shtoni periudha pushimi.
+    edit_breaks_hint: Shtoni pauzat e punës gjatë çdo dite. Këto pauza do të aplikohen për të gjithë ofruesit e rinj.
+    book_advance_timeout: Koha e Rezervimit në Avancë
+    book_advance_timeout_hint: Përcaktoni kohën (në minuta) përpara se klientët të mund të rezervojnë ose riorganizojnë takime me kompaninë.
+    timeout_minutes: Koha e Skadimit (Minuta)
+    about_app_info: Easy!Appointments është një aplikacion web i personalizueshëm që lejon klientët tuaj të rezervojnë takime me ju nëpërmjet internetit. Për më tepër, ofron mundësinë për të sinkronizuar të dhënat tuaja me Google Calendar, në mënyrë që t'i përdorni me shërbime të tjera.
+    current_version: Versioni Aktual
+    support: Mbështetje
+    about_app_support: Nëse hasni ndonjë problem gjatë përdorimit të Easy!Appointments, mund të kërkoni në grupin zyrtar të Google për përgjigje. Ju gjithashtu mund të krijoni një çështje të re në faqen e Google Code për të ndihmuar progresin e zhvillimit.
+    official_website: Faqja Zyrtare
+    google_plus_community: Komuniteti në Google+
+    support_group: Grupi i Mbështetjes
+    project_issues: Çështjet e Projektit
+    license: Licenca
+    about_app_license: 'Easy!Appointments është i licencuar nën licencën GPLv3. Duke përdorur kodin e Easy!Appointments në çfarëdo mënyre, ju po pranoni kushtet e përshkruara në URL-në e mëposhtme:'
+    logout_success: Ju u keni dalë me sukses! Klikoni në një nga butonat e mëposhtëm për të lundruar në një faqe tjetër.
+    book_appointment_title: Rezervo Takim
+    backend_section: Seksioni i Backend
+    you_need_to_login: Mirë se vini! Ju do të duhet të identifikoheni për të parë faqet e backend.
+    enter_username_here: Shkruani emrin tuaj të përdoruesit këtu...
+    enter_password_here: Shkruani fjalëkalimin këtu ...
+    login: Identifikohu
+    forgot_your_password: Keni Harruar Fjalëkalimin?
+    login_failed: Identifikimi dështoi, ju lutemi vendosni kredencialet e sakta dhe provoni përsëri.
+    type_username_and_email_for_new_password: Shkruani emrin e përdoruesit dhe adresën tuaj të email-it për të marrë fjalëkalimin e ri.
+    enter_email_here: Shkruani email-in tuaj këtu...
+    regenerate_password: Rigjenero Fjalëkalimin
+    go_to_login: Kthehu te Faqja e Identifikimit
+    new_password_sent_with_email: Fjalëkalimi juaj i ri ju është dërguar me email.
+    new_account_password: Fjalëkalimi i Ri i Llogarisë
+    new_password_is: Fjalëkalimi i ri i llogarisë suaj është $password. Ju lutemi ruani këtë email për të qenë në gjendje të rimerrni fjalëkalimin tuaj nëse është e nevojshme. Ju gjithashtu mund ta ndryshoni këtë fjalëkalim me një të ri në faqen e cilësimeve.
+    delete_record_prompt: A jeni të sigurt që dëshironi të fshini këtë regjistrim? Kjo veprim nuk mund të kthehet mbrapsht.
+    delete_admin: Fshi Administratorin
+    delete_customer: Fshi Klientin
+    delete_service: Fshi Shërbimin
+    delete_service_category: Fshi Kategorinë e Shërbimit
+    delete_provider: Fshi Ofruesin
+    delete_secretary: Fshi Sekretarin
+    delete_appointment: Fshi Takimin
+    delete_unavailability: Fshi Pamundësinë
+    delete: Fshi
+    unexpected_issues: Çështje të Papritura
+    unexpected_issues_message: Veprimi nuk mund të përfundonte.
+    close: Mbyll
+    page_not_found: Faqja Nuk U Gjet
+    page_not_found_message: Për fat të keq, faqja që kërkuat nuk ekziston. Ju lutemi kontrolloni URL-në e shfletuesit tuaj ose shkoni në një vendndodhje tjetër duke përdorur butonat më poshtë.
+    error: Gabim
+    no_privileges: Pa Privilegje
+    no_privileges_message: Ju nuk keni privilegjet e nevojshme për të parë këtë faqe. Ju lutemi lundroni në një seksion tjetër.
+    backend_calendar: Kalendari i Backend
+    start_date_time: Data / Ora e Fillimit
+    end_date_time: Data / Ora e Mbarimit
+    licensed_under: I Licencuar Nën
+    unexpected_issues_occurred: Ndodhën çështje të papritura.
+    service_communication_error: Ndodhi një gabim në komunikimin me serverin, ju lutemi provoni përsëri.
+    no_privileges_edit_appointments: Ju nuk keni privilegjet e nevojshme për të ndryshuar takimet.
+    unavailability_updated: Pamundësia u përditësua me sukses.
+    appointments: Takimet
+    unexpected_warnings: Paralajmërime të Papritura
+    unexpected_warnings_message: Veprimi u përfundua, por disa paralajmërime u shfaqën.
+    filter: Filtro
+    clear: Pastro
+    uncategorized: Pa Kategori
+    username_already_exists: Emri i përdoruesit tashmë ekziston.
+    password_length_notice: Fjalëkalimi duhet të jetë të paktën $number karaktere i gjatë.
+    general_settings: Cilësimet e Përgjithshme
+    personal_information: Të Dhëna Personale
+    system_login: Identifikimi në Sistem
+    user_settings_are_invalid: Cilësimet e përdoruesit janë të pavlefshme! Ju lutemi rishikoni cilësimet tuaja dhe provoni përsëri.
+    add_break: Shto Pauzë
+    january: Janar
+    february: Shkurt
+    march: Mars
+    april: Prill
+    may: Maj
+    june: Qershor
+    july: Korrik
+    august: Gusht
+    september: Shtator
+    october: Tetor
+    november: Nëntor
+    december: Dhjetor
+    previous: I Mëparshmi
+    next: Vazhdo
+    now: Tani
+    select_time: Zgjidh Kohën
+    time: Koha
+    hour: Ora
+    minute: Minuta
+    calendar_sync_completed: Sinkronizimi i kalendarit u përfundua me sukses.
+    calendar_sync_failed: 'Sinkronizimi i kalendarit dështoi: Nuk u mundësua lidhja me serverin.'
+    select_sync_calendar: Zgjidh Kalendarin
+    select_sync_calendar_prompt: Zgjidh kalendarin me të cilin dëshironi të sinkronizoni takimet tuaja.
+    sync_calendar_selected: Kalendar i sinkronizimit u zgjodh me sukses.
+    oops_something_went_wrong: Oops! Diçka Shkoi Keq.
+    ea_update_success: Easy!Appointments u përditësua me sukses.
+    require_captcha: Kërko CAPTCHA
+    require_captcha_hint: Kur aktivizohet, klientët do të duhet të shkruajnë një string CAPTCHA të gjeneruar rastësisht përpara se të rezervojnë/ndryshojnë një takim.
+    captcha_is_wrong: Verifikimi CAPTCHA dështoi, ju lutemi provoni përsëri.
+    enter_captcha_here: Shkruani CAPTCHA këtu...
+    any_provider: Çdo Ofrues
+    requested_hour_is_unavailable: Ora e kërkuar për takimin nuk është e disponueshme. Ju lutemi zgjidhni një orë tjetër për takimin tuaj.
+    customer_notifications: Njoftimet e Klientit
+    customer_notifications_hint: Përcakton nëse klienti do të marrë njoftime me email sa herë që ka një ndryshim orari në një nga takimet e tij.
+    date_format: Formati i Datës
+    date_format_hint: Ndrysho formatin e shfaqjes së datës (D - Data, M - Muaji, Y - Viti).
+    time_format: Formati i Kohës
+    time_format_hint: Ndrysho formatin e shfaqjes së kohës (H - Orët, M - Minutat).
+    first_weekday: Dita e Parë e Javës
+    first_weekday_hint: Vendosni ditën e parë të javës në kalendar.
+    google_analytics_code_hint: Shtoni Kodin tuaj të Google Analytics për të aktivizuar gjurmimin e Google Analytics në faqet e rezervimit.
+    availabilities_type: Lloji i Disponueshmërisë
+    flexible: Fleksibël
+    fixed: Fiks
+    attendants_number: Numri i Pjesëmarrësve
+    reset_working_plan: Rivendos planin e punës në vlerat e paracaktuara.
+    legal_contents: Përmbajtjet Ligjore
+    cookie_notice: Njoftimi për Cookie
+    display_cookie_notice: Shfaq Njoftimin për Cookie
+    cookie_notice_content: Përmbajtja e Njoftimit për Cookie
+    terms_and_conditions: Termat & Kushtet
+    display_terms_and_conditions: Shfaq Termat & Kushtet
+    terms_and_conditions_content: Përmbajtja e Termave & Kushteve
+    privacy_policy: Politika e Privatësisë
+    display_privacy_policy: Shfaq Politikën e Privatësisë
+    privacy_policy_content: Përmbajtja e Politikës së Privatësisë
+    website_using_cookies_to_ensure_best_experience: Kjo faqe përdor cookie për të siguruar përvojën më të mirë në faqen tonë.
+    read_and_agree_to_terms_and_conditions: Kam lexuar dhe pranoj {$link}Termat & Kushtet{/$link}.
+    read_and_agree_to_privacy_policy: Kam lexuar dhe pranoj {$link}Politikën e Privatësisë{/$link}.
+    delete_personal_information_hint: Hiqni të gjitha takimet dhe informacionin tuaj personal nga sistemi.
+    delete_personal_information: Fshi Informacionin Personal
+    delete_personal_information_prompt: A jeni të sigurt që dëshironi të fshini informacionin tuaj personal? Kjo veprim nuk mund të kthehet mbrapsht.
+    location: Vendndodhja
+    working_plan_exception: Përjashtim i Planit të Punës
+    working_plan_exceptions: Përjashtimet e Planit të Punës
+    working_plan_exceptions_hint: Shtoni një ditë përjashtim të planit të punës, jashtë planit të punës.
+    new_working_plan_exception_title: Përjashtim i Ri i Planit të Punës
+    working_plan_exception_saved: Përjashtimi i planit të punës u ruajt me sukses.
+    working_plan_exception_deleted: Përjashtimi i planit të punës u fshi me sukses.
+    add_working_plan_exceptions_during_each_day: Shtoni përjashtime të planit të punës, jashtë planit të punës.
+    add_working_plan_exception: Shto Përjashtim të Planit të Punës
+    require_phone_number: Kërko numrin e telefonit
+    require_phone_number_hint: Kur aktivizohet, klientët dhe përdoruesit do të duhet të vendosin numrin e telefonit të klientit kur rezervojnë një takim
+    check_spam_folder: Ju lutemi kontrolloni dosjen tuaj të spam-it nëse email-i nuk arrin brenda disa minutave.
+    api_token_hint: Vendosni një token sekret për të aktivizuar autentikimin me bazë token të API-së së Easy!Appointments.
+    timezone: Zona Kohore
+    overwrite_existing_working_plans: Kjo do të mbishkruajë planet ekzistuese të punës së ofruesit, a jeni të sigurt që dëshironi të vazhdoni?
+    working_plans_got_updated: Të gjitha planet e punës u përditësuan.
+    apply_to_all_providers: Apliko te të Gjithë Ofruesit
+    display_any_provider: Shfaq Opsionin "Çdo Ofrues"
+    display_any_provider_hint: Faqja e rezervimit do të marrë një opsion shtesë që lejon klientët të rezervojnë pa specifikuar një ofrues.
+    load_more: Shkarko Më Shumë
+    list: Lista
+    default: Parazgjedhja
+    table: Tabela
+    date: Data
+    about: Rreth
+    booking_settings: Cilësimet e Rezervimit
+    display: Shfaq
+    require: E detyrueshme
+    color: Ngjyra
+    matomo_analytics_url_hint: Shtoni URL-në në instalimin tuaj të Matomo për të aktivizuar gjurmimin e Matomo në faqet e rezervimit.
+    invalid_phone: Numri i telefonit është i pavlefshëm.
+    legal: Ligjore
+    business: Biznesi
+    account: Llogaria
+    disable_booking: Çaktivizo Rezervimin
+    disable_booking_hint: Faqja e rezervimit do të çaktivizohet për sa kohë që kjo cilësim është aktiv dhe klientët nuk do të jenë në gjendje të regjistrojnë takime të reja.
+    display_message: Shfaq Mesazhin
+    booking_is_disabled: Rezervimi Është Çaktivizuar!
+    appearance: Pamja
+    company_logo: Logo e Kompanisë
+    company_logo_hint: Logoja e kompanisë do të shfaqet në shumë vende të aplikacionit, duke përfshirë faqen e rezervimit dhe emailet e njoftimeve (skedari i imazhit, max 2MB).
+    company_color: Ngjyra e Kompanisë
+    company_color_hint: Ngjyra e kompanisë do të aplikohet në të gjithë aplikacionin në mënyrë që aplikacioni të përdorë markën tuaj.
+    localization: Lokalizimi
+    integrations: Integrimet
+    company: Kompania
+    remove: Hiq
+    login_button: Butoni i Identifikimit
+    display_login_button_hint: Përcakton nëse butoni i identifikimit shfaqet në faqen e rezervimit.
+    private: Privat
+    private_hint: Regjistrimet private nuk do të shfaqen ose përpunohen në faqet publike si faqja e rezervimit.
+    reset: Rivendos
+    all: Të Gjitha
+    booking_link: Lidhja e Rezervimit
+    add_new_event: Shto Ngjarje të Re
+    what_kind_of_event: Çfarë lloj ngjarjeje dëshironi të shtoni?
+    theme: Tema
+    limit_customer_access: Kufizo Qasjen e Klientit
+    limit_customer_access_hint: Nëse aktivizohet, ofruesit dhe sekretarët do të jenë në gjendje të kenë qasje vetëm te klientët me të cilët kanë një takim.
+    url: URL
+    secret_token: Token Sekret
+    verify_ssl: Verifiko SSL
+    appointment_save: Ruajtja e Takimit
+    appointment_delete: Fshirja e Takimit
+    unavailability_save: Ruajtja e Pamundësisë
+    unavailability_delete: Fshirja e Pamundësisë
+    customer_save: Ruajtja e Klientit
+    customer_delete: Fshirja e Klientit
+    service_save: Ruajtja e Shërbimit
+    service_delete: Fshirja e Shërbimit
+    service_category_save: Ruajtja e Kategorisë së Shërbimit
+    service_category_delete: Fshirja e Kategorisë së Shërbimit
+    provider_save: Ruajtja e Ofruesit
+    provider_delete: Fshirja e Ofruesit
+    secretary_save: Ruajtja e Sekretarit
+    secretary_delete: Fshirja e Sekretarit
+    admin_save: Ruajtja e Administratorit
+    admin_delete: Fshirja e Administratorit
+    options: Opsionet
+    webhooks: Webhooks
+    webhooks_info: Webhook-et ju lejojnë të dërgoni njoftime HTTP në aplikacione web të jashtme si përgjigje ndaj ngjarjeve të ndryshme të aplikacionit, si krijimi i një takimi ose heqja e një klienti.
+    integrations_info: Integrimet ju lejojnë të bëni lidhje me palë të treta me aplikacione dhe API të jashtme.
+    configure: Konfiguro
+    google_analytics: Google Analytics
+    google_analytics_info: Google Analytics ju lejon të shtoni automatikisht kodin e gjurmimit dhe shënimin HTML në faqen publike dhe të gjurmoni të gjitha seancat publike të rezervimit.
+    matomo_analytics: Matomo Analytics
+    matomo_analytics_info: Matomo Analytics ju lejon të shtoni automatikisht kodin e gjurmimit dhe shënimin HTML në faqen publike dhe të gjurmoni të gjitha seancat publike të rezervimit.
+    api: API
+    api_info: API ju lejon të ndërveproni me të gjitha të dhënat e Easy!Appointments nëpërmjet protokollit HTTP dhe pikave të disponueshme të API-së dhe të krijoni integrimet tuaja.
+    google_analytics_code: Kodi i Google Analytics
+    matomo_analytics_url: URL-ja e Matomo Analytics
+    future_booking_limit: Limiti i Rezervimit në të Ardhmen
+    limit_days: Limiti (Ditë)
+    future_booking_limit_hint: Vendosni limitin në ditë që klientët mund të bëjnë takime nëpërmjet faqes publike të rezervimit.
+    api_token: Token i API-së
+    allow_rescheduling_cancellation_before: Lejo Riorganizimin/Anulimin Para
+    at_least_one_field: Të paktën një fushë duhet të shfaqet në faqen e rezervimit.
+    status: Statusi
+    appointment_status_options: Opsionet e Statusit të Takimit
+    appointment_status_options_info: Përcaktoni një listë të opsioneve të disponueshme të statusit të takimit që mund të përdoren në faqen e kalendarit (e para do të bëhet automatikisht vlera e parazgjedhur).
+    sunday_short: Die
+    monday_short: Hën
+    tuesday_short: Mar
+    wednesday_short: Mër
+    thursday_short: Enj
+    friday_short: Pre
+    saturday_short: Sht
+    january_short: Jan
+    february_short: Shk
+    march_short: Mar
+    april_short: Pri
+    may_short: Maj
+    june_short: Qer
+    july_short: Kor
+    august_short: Gus
+    september_short: Sht
+    october_short: Tet
+    november_short: Nën
+    december_short: Dhj
+    am: am
+    pm: pm
+    to: deri
+    click_to_toggle: Kliko për të Ndryshuar
+    week_short: Java
+    scroll_to_increment: Lëviz për të Rritur
+    year: Viti
+    make_non_working_day: Ky ofrues nuk do të jetë i disponueshëm për punë në ditën e zgjedhur.
+    no_breaks: Pa Pauza
+    service_categories: Kategoritë e Shërbimeve
+    service_category: Kategoria e Shërbimit
+    blocked_period_saved: Periudha e bllokuar u ruajt me sukses.
+    blocked_period_deleted: Periudha e bllokuar u fshi me sukses.
+    delete_blocked_period: Fshi Periudhën e Bllokuar
+    blocked_period: Periudha e Bllokuar
+    blocked_periods: Periudhat e Bllokuara
+    blocked_period_save: Ruajtja e Periudhës së Bllokuar
+    blocked_period_delete: Fshirja e Periudhës së Bllokuar
+    blocked_periods_hint: Përcaktoni periudha kohe ku rezervimet publike do të çaktivizohen për të gjithë ofruesit (p.sh. datat e mbyllura, pushimet etj.).
+    custom_field: Fusha e Personalizuar
+    custom_fields: Fushat e Personalizuara
+    label: Etiketa
+    webhook_saved: Webhook u ruajt me sukses.
+    webhook_deleted: Webhook u fshi me sukses.
+    delete_webhook: Fshi Webhook-un
+    contact_info: Informacioni i Kontaktit
+    hide_from_public: Fshih nga Publiku
+    matomo_analytics_site_id: ID-ja e Faqes së Matomo Analytics
+    matomo_analytics_site_id_hint: Vendosni ID-në e faqes që do të gjurmohet nga Matomo (faqja e parazgjedhur ka ID-në "1").
+    default_timezone: Zona Kohore e Parazgjedhur
+    default_timezone_hint: Vendosni vlerën e zonës kohore të parazgjedhur që do të përdoret për regjistrimet e reja.
+    default_language: Gjuha e Parazgjedhur
+    default_language_hint: Vendosni vlerën e gjuhës së parazgjedhur që do të përdoret për regjistrimet e reja.
+    sync_method_prompt: Cilin metodë sinkronizimi dëshironi të përdorni?
+    caldav_server: Serveri CalDAV
+    caldav_connection_info_prompt: Ju lutemi futni informacionin e lidhjes së Kalendarit CalDAV të synuar.
+    connect: Lidhu
+    ldap: LDAP
+    ldap_info: Ky integrim ju lejon të lidheni me një server ekzistues LDAP dhe të importoni automatikisht përdoruesit në Easy!Appointments dhe t'i lejoni ata të identifikohen me fjalëkalimin e tyre të drejtorisë (emri i përdoruesit duhet të përputhet).
+    host: Hosti
+    port: Porti
+    user_dn: DN e Përdoruesit
+    base_dn: DN Bazë
+    keyword: Fjala Kyçe
+    ldap_search_hint: Ofroni një fjalë kyçe për të kërkuar nëpër drejtorinë LDAP për përdorues që përputhen me kriteret e filtrit.
+    ldap_extension_not_loaded: Zgjatimi LDAP PHP nuk është ngarkuar, por është i nevojshëm që ky integrim të funksionojë.
+    field_mapping: Hartëzimi i Fushave
+    content: Përmbajtja
+    active: Aktiv
+    user_imported: Regjistrimi i përdoruesit u importua me sukses.
+    import: Importo
+    ldap_dn: LDAP DN
+    role: Roli
+    at_least_one_field_required: Të paktën një fushë duhet të vendoset si e detyrueshme në faqen e rezervimit.
+    customer_is_already_booked: Ky klient tashmë ka një takim gjatë periudhës së kërkuar të rezervimit.
+    fields: Fushat
+    invalid_credentials_provided: Kredencialet e dhëna janë të pavlefshme, ju lutemi provoni përsëri.
+    calendar_url: URL-ja e Kalendarit
+    please_select: Zgjidhni
+    secret_header: Header-i Sekret
+    search: Kërko
+    slot_interval: Intervali i Orarit (Minuta)
+    jitsi: Jitsi
+    jitsi_info: Aktivizoni gjenerimin automatik të lidhjeve të takimeve Jitsi për takimet. Kur aktivizohet, një lidhje unike e videothirrjes Jitsi do të gjenerohet dhe ruhet si lidhja e takimit.
+    altcha: ALTCHA
+    altcha_info: ALTCHA është një alternativë CAPTCHA me burim të hapur dhe e fokusuar në privatësi që përdor provën e punës për të verifikuar përdoruesit njerëzorë pa gjurmim.
+    altcha_enabled_hint: Kur aktivizohet, ALTCHA do të përdoret në vend të CAPTCHA tradicionale me imazhe për verifikimin e formularëve.
+    altcha_hmac_key: Çelësi HMAC
+    altcha_hmac_key_hint: Një çelës sekret i përdorur për të nënshkruar dhe verifikuar sfidat ALTCHA. Klikoni Gjenero për të krijuar një çelës të ri të sigurt.
+    altcha_max_number: Numri Maksimal
+    altcha_max_number_hint: 'Numri maksimal për sfidën e provës së punës. Vlerat më të larta rrisin vështirësinë (parazgjedhur: 100000).'
+    altcha_expires: Skadon (Sekonda)
+    altcha_expires_hint: 'Sa kohë mbetet e vlefshme një sfidë në sekonda (parazgjedhur: 300).'
+    altcha_key_generated: Çelësi i ri HMAC u gjenerua me sukses.
+    altcha_enabled: Aktivizo ALTCHA
+    altcha_captcha_not_active_warning: Cilësimi CAPTCHA nuk është aktiv aktualisht. ALTCHA nuk do të përdoret nëse CAPTCHA nuk aktivizohet në
+    generate: Gjenero
+    meeting_link: Lidhja e Takimit
+    google_calendar: Google Calendar
+    google_calendar_info: Aktivizoni sinkronizimin me Google Calendar për të sinkronizuar takimet me llogaritë Google Calendar të ofruesve.
+    google_client_id: ID e Klientit
+    google_client_id_info: ID e Klientit nga projekti juaj në Google Cloud Console.
+    google_client_secret: Sekreti i Klientit
+    google_client_secret_info: Sekreti i Klientit nga projekti juaj në Google Cloud Console.
+    google_calendar_setup_info: 'Për të aktivizuar sinkronizimin me Google Calendar, duhet të krijoni një projekt në Google Cloud Console, të aktivizoni API-n e Google Calendar dhe të krijoni kredencialet OAuth 2.0. Vizitoni:'
+    google_meet_link_generation: Gjenero Lidhje Google Meet
+    google_meet_link_generation_info: Krijoni automatikisht një lidhje videokonference Google Meet për takimet e sinkronizuara. Lidhja e takimit do të ruhet në fushën e lidhjes së takimit.
+    display_add_to_google_calendar: Shfaq Butonin "Shto në Google Calendar"
+    display_add_to_google_calendar_info: Shfaqni butonin "Shto në Google Calendar" në faqen e konfirmimit të rezervimit, duke i lejuar klientët të shtojnë lehtësisht takimin në Google Calendar-in e tyre personal.
+    select_all: Zgjidh të Gjitha
+    select_none: Mos Zgjidh Asnjë
+    appointment_update: Përditësim Takimi
+    notify_users_on_update_question: Dëshironi të dërgoni një njoftim për këtë ndryshim?
+    'yes': Po
+    'no': Jo
+    latest_blog_posts: Postimet e Fundit të Blogut
+    loading: Duke ngarkuar
+    blog_posts_load_error: Nuk mund të ngarkohen postimet e blogut. Ju lutemi vizitoni faqen zyrtare për përditësime.
+    provider_has_conflicting_appointment: Ofruesi i zgjedhur tashmë ka një takim tjetër në atë kohë. Ju lutemi zgjidhni një kohë ose ofrues tjetër.
+    would_you_like_to_proceed: Dëshironi të vazhdoni gjithsesi?
+    proceed: Vazhdo
+    no_available_service_providers: Nuk ka Shërbime të Disponueshme
+    no_available_service_providers_message: Aktualisht nuk ka shërbime ose ofrues të disponueshëm për rezervim. Ju lutemi kontrolloni më vonë ose na kontaktoni për ndihmë.
+    reset_password: Rivendos Fjalëkalimin
+    new_password: Fjalëkalim i Ri
+    enter_new_password: Shkruani fjalëkalimin tuaj të ri më poshtë.
+    password_reset_request: Kërkesë për Rivendosje Fjalëkalimi
+    password_reset_email_message: Ju keni kërkuar të rivendosni fjalëkalimin tuaj. Klikoni butonin më poshtë për të vendosur një fjalëkalim të ri për llogarinë tuaj.
+    password_reset_link_expires: Kjo lidhje do të skadojë në 1 orë.
+    password_reset_ignore_message: Nëse nuk keni kërkuar rivendosje fjalëkalimi, ju lutemi injoroni këtë email.
+    invalid_reset_token: Lidhja e rivendosjes së fjalëkalimit është e pavlefshme.
+    invalid_or_expired_token: Lidhja e rivendosjes së fjalëkalimit është e pavlefshme ose ka skaduar. Ju lutemi kërkoni një të re.
+    password_reset_success: Fjalëkalimi juaj është rivendosur me sukses. Do të ridrejtoheni në faqen e hyrjes.
+    password_reset_failed: Rivendosja e fjalëkalimit dështoi. Ju lutemi provoni përsëri.
+    no_password_provided: Ju lutemi shkruani një fjalëkalim.
+    type_username_and_email_for_reset_link: Shkruani emrin e përdoruesit dhe adresën e emailit tuaj për të marrë një lidhje rivendosjeje fjalëkalimi.
+    send_reset_link: Dërgo Lidhjen e Rivendosjes
+    reset_link_sent_with_email: Nëse ekziston një llogari me kredencialet e dhëna, një lidhje rivendosjeje fjalëkalimi është dërguar në emailin tuaj.
+    working_plan_validation_failed: U gjet konfigurim i pavlefshëm i planit të punës.
+    start_date: Data e Fillimit
+    end_date: Data e Mbarimit
+    remember_me: Mbaj mend informacionet e mia
+    remember_me_hint: Ruani të dhënat tuaja për rezervim më të shpejtë herën tjetër.
+    legal_notice: Njoftim Ligjor
+    legal_notice_url: URL e Njoftimit Ligjor
+    legal_notice_url_hint: Shkruani URL-në e faqes suaj të njoftimit ligjor.
+    imprint: Imprint
+    imprint_url: URL e Imprint-it
+    imprint_url_hint: Shkruani URL-në e faqes suaj të imprint-it.
+    data_retention: Ruajtja e të Dhënave
+    data_retention_days: Ditët e Ruajtjes së të Dhënave
+    data_retention_days_hint: Vendosni numrin e ditëve pas të cilave të dhënat e klientit do të fshihen automatikisht. Vendosni 0 për të çaktivizuar fshirjen automatike.
+    manage_privacy: Menaxho Privatësinë
+    manage_privacy_hint: Klikoni lidhjen më poshtë për të parë, përditësuar ose fshirë informacionet tuaja personale.
+    personal_information_updated: Informacionet tuaja personale u përditësuan me sukses.
+    verify: Verifiko
+    verifying: Duke verifikuar
+    verified: I verifikuar
+    verification_complete: Verifikimi i plotë
+    verification_failed: Verifikimi dështoi. Klikoni për të provuar përsëri.
+    click_to_verify: Klikoni për të verifikuar që jeni njeri
+    altcha_verification_failed: Verifikimi ALTCHA dështoi. Ju lutemi provoni përsëri.
+    premium: Premium
+    about_app_premium: Ofrojmë shërbime të plota për softuer të vetë-strehuar, duke përfshirë zhvillim të personalizuar, strehim të menaxhuar, kontrata mbështetjeje, ri-brendim dhe përmirësime të vazhdueshme — në mënyrë që ju të fokusoheni në biznesin tuaj ndërsa ne kujdesemi për pjesën tjetër.
+    go_premium: Kaloni në Premium
+    notify_users_on_create_question: Dëshironi të njoftoni klientin për këtë takim të ri?
+    notify_users_on_delete_question: Dëshironi të njoftoni klientin për anulimin e takimit?

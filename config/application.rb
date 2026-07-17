@@ -45,5 +45,14 @@ module OpenAppointments
 
     # EA reuses one CSRF token across many AJAX calls; per-form tokens would break that.
     config.action_controller.per_form_csrf_tokens = false
+
+    # i18n: 41 EA languages under config/locales (ISO-ish codes). Fall back to English
+    # for any missing key so a partial translation never renders a blank string.
+    config.i18n.available_locales = %i[
+      ar bs bu ca cs da de el en es et fa fi fr he hi hr hu it ja lb lt lv mr nl no
+      pl pt pt-br ro rs ru sk sl sq sv th tr uk zh zh-tw
+    ]
+    config.i18n.default_locale = :en
+    config.i18n.fallbacks = [ :en ]
   end
 end
