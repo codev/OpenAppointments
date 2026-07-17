@@ -1,0 +1,28 @@
+{
+  "id": "com.openappointments.cloudronapp",
+  "title": "OpenAppointments",
+  "author": "Open Out",
+  "description": "Appointment scheduler, a Rails port of Easy!Appointments.",
+  "tagline": "Appointment scheduling",
+  "version": "0.1.0",
+  "healthCheckPath": "/up",
+  "httpPort": 3000,
+  "manifestVersion": 2,
+  "memoryLimit": 786432000,
+  "addons": {
+    "localstorage": {},
+    "sendmail": {},
+    "scheduler": {
+      "sync": {
+        "schedule": "*/15 * * * *",
+        "command": "cd /app/code && bin/rails openappointments:sync"
+      },
+      "cleanup": {
+        "schedule": "0 3 * * *",
+        "command": "cd /app/code && bin/rails openappointments:cleanup"
+      }
+    }
+  },
+  "tags": ["appointments", "scheduling", "booking"],
+  "postInstallMessage": "Run 'cloudron exec' and 'bin/rails openappointments:install' output is in the app logs: the initial admin username is 'administrator' and the generated password is printed on first start."
+}

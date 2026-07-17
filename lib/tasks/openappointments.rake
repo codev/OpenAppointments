@@ -25,6 +25,16 @@ namespace :openappointments do
     end
   end
 
+  desc "Sync provider calendars with Google/CalDAV (no-op until P8 lands)"
+  task sync: :environment do
+    puts "Calendar sync is not implemented yet (arrives with the sync phase)."
+  end
+
+  desc "GDPR data retention cleanup (no-op until the hardening phase lands)"
+  task cleanup: :environment do
+    puts "Data retention cleanup is not implemented yet (arrives with the hardening phase)."
+  end
+
   desc "Back up the SQLite databases to storage/backups or the given path"
   task :backup, [ :path ] => :environment do |_t, args|
     path = args[:path] || Rails.root.join("storage/backups").to_s
