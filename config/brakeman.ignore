@@ -1,0 +1,15 @@
+{
+  "ignored_warnings": [
+    {
+      "warning_type": "File Access",
+      "warning_code": 16,
+      "fingerprint": "2cc4a6f458366a831d5ed74086986aa7dbd35fd504839001efee07609883b791",
+      "check_name": "FileAccess",
+      "message": "Model attribute used in file name",
+      "file": "app/jobs/webhook_delivery_job.rb",
+      "line": 17,
+      "note": "Webhook URLs are admin-configured outbound endpoints; posting to them is the feature (as in Easy!Appointments). Scheme is restricted to http/https in the job."
+    }
+  ],
+  "brakeman_version": "7.1.1"
+}

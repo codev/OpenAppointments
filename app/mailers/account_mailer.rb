@@ -1,7 +1,9 @@
-# Account emails. Plain placeholders until P6 ports the EA HTML templates.
+# Account emails (EA Email_messages::send_password_reset_link / send_password).
 class AccountMailer < ApplicationMailer
   def password_reset_link(email, reset_link)
     @reset_link = reset_link
-    mail(to: email, subject: "Password Reset - #{Setting.get('company_name')}")
+    @subject = I18n.t("ea.reset_password")
+    mail(to: email, from: company_from, reply_to: company_reply_to,
+         subject: "#{@subject} - #{Setting.get('company_name')}")
   end
 end
