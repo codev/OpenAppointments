@@ -12,12 +12,14 @@ git tag v0.1.0
 git push origin v0.1.0
 
 # 3. Build and push the image (from the repo root).
-docker build -f Dockerfile.cloudron -t <registry>/openappointments:0.1.0 .
-docker push <registry>/openappointments:0.1.0
+REGI=registry.<your-domain>
+docker build -f Dockerfile.cloudron -t $REGI/openappointments:0.1.0 .
+docker login $REGI
+docker push $REGI/openappointments:0.1.0
 
 # 4. First install / update.
-cloudron install --image <registry>/openappointments:0.1.0 --location appointments
-cloudron update --app appointments.openouthair.com --image <registry>/openappointments:0.1.0
+cloudron install --image $REGI/openappointments:0.1.0 --location appointments
+cloudron update --app appointments.openouthair.com --image $REGI/openappointments:0.1.0
 ```
 
 `cloudron build` can replace the docker build/push pair if a build service is configured.
