@@ -1,8 +1,17 @@
 class RecoveryController < ApplicationController
+  layout "account"
+
   rate_limit to: 5, within: 5.minutes, only: [ :perform, :complete ],
              with: -> { render json: { success: false, message: "Too many attempts. Please try again in a few minutes." }, status: :too_many_requests }
 
   def index
+    html_vars(
+      page_title: helpers.lang("forgot_your_password"),
+      dest_url: session[:dest_url] || calendar_url,
+      company_name: Setting.get("company_name"),
+      require_captcha: Setting.get("require_captcha"),
+      altcha_enabled: Setting.get("altcha_enabled")
+    )
   end
 
   # POST /recovery/perform. Always responds {success: true} to prevent enumeration.
@@ -21,17 +30,26 @@ class RecoveryController < ApplicationController
     json_response({ success: true })
   end
 
-  # GET /recovery/reset?token=...
+  # GET /recovery/reset?token=... EA branches: malformed token -> invalid_reset_token,
+  # unknown/expired token -> invalid_or_expired_token, valid token -> the reset form.
   def reset
     token = params[:token].to_s
     return redirect_to recovery_path if token.blank?
 
-    if !token.match?(/\A[a-f0-9]{64}\z/) || Accounts.validate_reset_token(token).nil?
-      @token_valid = false
-      @error_message = "The password reset link is invalid or has expired."
+    html_vars(page_title: helpers.lang("reset_password"))
+
+    if !token.match?(/\A[a-f0-9]{64}\z/)
+      html_vars(token_valid: false, error_message: helpers.lang("invalid_reset_token"))
+    elsif Accounts.validate_reset_token(token).nil?
+      html_vars(token_valid: false, error_message: helpers.lang("invalid_or_expired_token"))
     else
-      @token_valid = true
-      @token = token
+      html_vars(
+        token_valid: true,
+        token: token,
+        company_name: Setting.get("company_name"),
+        require_captcha: Setting.get("require_captcha"),
+        altcha_enabled: Setting.get("altcha_enabled")
+      )
     end
     render :reset
   end

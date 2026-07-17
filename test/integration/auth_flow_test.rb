@@ -72,9 +72,10 @@ class AuthFlowTest < ActionDispatch::IntegrationTest
   end
 
   test "reset page rejects malformed and unknown tokens" do
+    # EA's invalid_reset_token wording for malformed tokens.
     get "/recovery/reset", params: { token: "zzz" }
     assert_response :success
-    assert_match(/invalid or has expired/, response.body)
+    assert_match(/reset link is invalid/, response.body)
 
     get "/recovery/reset", params: { token: "a" * 64 }
     assert_match(/invalid or has expired/, response.body)

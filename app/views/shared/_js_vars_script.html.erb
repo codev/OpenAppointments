@@ -1,0 +1,13 @@
+<script>
+    window.vars = (function () {
+        const vars = <%= inline_json(script_vars) %>;
+
+        return (key) => {
+            if (!key) {
+                return vars;
+            }
+
+            return vars[key] || undefined;
+        };
+    })();
+</script>

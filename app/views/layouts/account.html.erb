@@ -1,0 +1,60 @@
+<%# Port of EA layouts/account_layout.php. %>
+<!doctype html>
+<html lang="<%= script_vars[:language_code] %>">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="theme-color" content="#35A768">
+    <meta name="google" content="notranslate">
+
+    <%= yield :meta %>
+
+    <title><%= vars(:page_title) || lang('account') %> | Easy!Appointments</title>
+
+    <link rel="icon" type="image/x-icon" href="<%= image_path('favicon.ico') %>">
+    <link rel="icon" sizes="192x192" href="<%= image_path('logo.png') %>">
+
+    <%= stylesheet_link_tag "themes/#{setting('theme', 'default').presence || 'default'}", "general" %>
+
+    <%= yield :styles %>
+</head>
+<body>
+
+<div class="d-flex align-items-center justify-content-center min-vh-100">
+
+    <div class="card w-100 shadow-sm min-vh-mobile" style="max-width: 500px;">
+        <div class="card-body p-5">
+            <%= yield %>
+        </div>
+
+        <div class="card-footer text-center py-3">
+            <small>
+                Powered by
+                <a href="https://easyappointments.org">Easy!Appointments</a>
+            </small>
+        </div>
+    </div>
+
+</div>
+
+<%= javascript_include_tag "vendor/jquery/jquery.min", "vendor/@popperjs-core/popper.min",
+                           "vendor/bootstrap/bootstrap.min", "vendor/moment/moment.min",
+                           "vendor/moment-timezone/moment-timezone-with-data.min",
+                           "vendor/@fortawesome-fontawesome-free/fontawesome.min",
+                           "vendor/@fortawesome-fontawesome-free/solid.min" %>
+
+<%= ea_js "app", "utils/date", "utils/file", "utils/http", "utils/lang", "utils/message",
+          "utils/string", "utils/url", "utils/validation" %>
+<% if setting("altcha_enabled") == "1" %>
+    <%= ea_js "utils/altcha" %>
+<% end %>
+<%= ea_js "layouts/account_layout", "http/account_http_client", "http/localization_http_client" %>
+
+<%= render "shared/js_vars_script" %>
+<%= render "shared/js_lang_script" %>
+
+<%= yield :scripts %>
+
+</body>
+</html>

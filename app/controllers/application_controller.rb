@@ -1,6 +1,9 @@
 class ApplicationController < ActionController::Base
   include Authentication
   include Authorization
+  include ScriptVars
+
+  before_action { script_vars(default_script_vars) }
 
   # EA JS posts the CSRF token as a `csrf_token` body param (double-submit port).
   self.request_forgery_protection_token = :csrf_token

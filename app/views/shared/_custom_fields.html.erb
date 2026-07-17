@@ -1,0 +1,17 @@
+<%# Port of EA components/custom_fields.php. Locals: disabled (default false). %>
+<% disabled = local_assigns.fetch(:disabled, false) %>
+<% (1..5).each do |i| %>
+    <% if setting("display_custom_field_#{i}").to_s == "1" %>
+        <div class="mb-3">
+            <label for="custom-field-<%= i %>" class="form-label">
+                <%= setting("label_custom_field_#{i}").presence || lang('custom_field') + ' #' + i.to_s %>
+                <% if setting("require_custom_field_#{i}").to_s == "1" %>
+                    <span class="text-danger" <%= "hidden" if disabled %>>*</span>
+                <% end %>
+            </label>
+            <input type="text" id="custom-field-<%= i %>"
+                   class="<%= setting("require_custom_field_#{i}").to_s == "1" ? "required" : "" %> form-control"
+                   maxlength="120" <%= "disabled" if disabled %>/>
+        </div>
+    <% end %>
+<% end %>
