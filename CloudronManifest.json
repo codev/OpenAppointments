@@ -4,7 +4,7 @@
   "author": "Open Out",
   "description": "Appointment scheduler, a Rails port of Easy!Appointments.",
   "tagline": "Appointment scheduling",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "healthCheckPath": "/up",
   "httpPort": 3000,
   "manifestVersion": 2,
