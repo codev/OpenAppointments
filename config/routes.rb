@@ -68,6 +68,12 @@ Rails.application.routes.draw do
   post "account/save" => "account#save"
   post "account/validate_username" => "account#validate_username"
 
+  # Google Calendar OAuth + sync management
+  get "google/oauth/:provider_id" => "google#oauth"
+  get "google/oauth_callback" => "google#oauth_callback", as: :google_oauth_callback
+  post "google/get_google_calendars" => "google#get_google_calendars"
+  post "google/select_google_calendar" => "google#select_google_calendar"
+  post "google/disable_provider_sync" => "google#disable_provider_sync"
   # REST API v1 (EA route_api_resource pattern: GET, GET/:id, POST, PUT/:id, DELETE/:id).
   namespace :api do
     namespace :v1 do

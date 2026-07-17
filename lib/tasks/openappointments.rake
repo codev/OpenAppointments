@@ -25,9 +25,11 @@ namespace :openappointments do
     end
   end
 
-  desc "Sync provider calendars with Google/CalDAV (no-op until P8 lands)"
+  desc "Pull remote Google Calendar changes for providers with sync enabled (cron target)"
   task sync: :environment do
-    puts "Calendar sync is not implemented yet (arrives with the sync phase)."
+    result = CalendarPull.run
+    puts "Calendar sync: #{result[:providers]} providers, " \
+         "#{result[:imported]} imported, #{result[:removed]} removed."
   end
 
   desc "GDPR data retention cleanup: purge customers past data_retention_days (cron target)"
