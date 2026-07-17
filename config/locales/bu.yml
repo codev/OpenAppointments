@@ -1,6 +1,10 @@
 ---
 bu:
   ea:
+    captcha_provider: Доставчик на captcha
+    turnstile_site_key: Turnstile ключ на сайта
+    turnstile_secret_key: Turnstile таен ключ
+    turnstile_verification_failed: Проверката на captcha не успя, опитайте отново.
     phone_or_email_required: Моля, въведете телефонен номер или имейл адрес.
     require_phone_or_email_label: Изисквай телефон или имейл (достатъчно е едното)
     booking_display_mode: Режим на показване на резервацията

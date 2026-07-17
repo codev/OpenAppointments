@@ -1,6 +1,10 @@
 ---
 zh-tw:
   ea:
+    captcha_provider: 驗證碼提供者
+    turnstile_site_key: Turnstile 網站金鑰
+    turnstile_secret_key: Turnstile 私密金鑰
+    turnstile_verification_failed: 驗證碼驗證失敗，請再試一次。
     phone_or_email_required: 請提供電話號碼或電子郵件。
     require_phone_or_email_label: 要求提供電話或電子郵件 (擇一即可)
     booking_display_mode: 預約顯示模式

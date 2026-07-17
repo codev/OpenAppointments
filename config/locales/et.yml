@@ -1,6 +1,10 @@
 ---
 et:
   ea:
+    captcha_provider: Captcha pakkuja
+    turnstile_site_key: Turnstile'i saidi võti
+    turnstile_secret_key: Turnstile'i salajane võti
+    turnstile_verification_failed: Captcha kontroll ebaõnnestus, proovige uuesti.
     phone_or_email_required: Palun sisestage telefoninumber või e-posti aadress.
     require_phone_or_email_label: Nõua telefoninumbrit või e-posti (ühest piisab)
     booking_display_mode: Broneeringu kuvamisviis

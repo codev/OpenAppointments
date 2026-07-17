@@ -1,6 +1,10 @@
 ---
 uk:
   ea:
+    captcha_provider: Провайдер капчі
+    turnstile_site_key: Ключ сайту Turnstile
+    turnstile_secret_key: Секретний ключ Turnstile
+    turnstile_verification_failed: Перевірка капчі не вдалася, спробуйте ще раз.
     phone_or_email_required: Вкажіть номер телефону або адресу електронної пошти.
     require_phone_or_email_label: Вимагати телефон або email (достатньо одного)
     booking_display_mode: Режим відображення бронювання

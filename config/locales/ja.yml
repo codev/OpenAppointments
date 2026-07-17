@@ -1,6 +1,10 @@
 ---
 ja:
   ea:
+    captcha_provider: キャプチャプロバイダー
+    turnstile_site_key: Turnstile サイトキー
+    turnstile_secret_key: Turnstile シークレットキー
+    turnstile_verification_failed: キャプチャの検証に失敗しました。もう一度お試しください。
     phone_or_email_required: 電話番号またはメールアドレスを入力してください。
     require_phone_or_email_label: 電話番号またはメールを必須にする (どちらか一方で可)
     booking_display_mode: 予約の表示モード

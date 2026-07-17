@@ -1,6 +1,10 @@
 ---
 tr:
   ea:
+    captcha_provider: Captcha sağlayıcısı
+    turnstile_site_key: Turnstile site anahtarı
+    turnstile_secret_key: Turnstile gizli anahtarı
+    turnstile_verification_failed: Captcha doğrulaması başarısız oldu, lütfen tekrar deneyin.
     phone_or_email_required: Lütfen bir telefon numarası veya e-posta adresi girin.
     require_phone_or_email_label: Telefon veya e-posta zorunlu olsun (biri yeterli)
     booking_display_mode: Rezervasyon görünüm modu

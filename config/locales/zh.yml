@@ -1,6 +1,10 @@
 ---
 zh:
   ea:
+    captcha_provider: 验证码提供方
+    turnstile_site_key: Turnstile 站点密钥
+    turnstile_secret_key: Turnstile 私密密钥
+    turnstile_verification_failed: 验证码校验失败，请重试。
     phone_or_email_required: 请提供电话号码或电子邮箱。
     require_phone_or_email_label: 要求提供电话或邮箱 (二者其一即可)
     booking_display_mode: 预约显示模式

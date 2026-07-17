@@ -1,6 +1,10 @@
 ---
 fa:
   ea:
+    captcha_provider: ارائه‌دهنده کپچا
+    turnstile_site_key: کلید سایت Turnstile
+    turnstile_secret_key: کلید مخفی Turnstile
+    turnstile_verification_failed: تأیید کپچا ناموفق بود، دوباره تلاش کنید.
     phone_or_email_required: لطفا یک شماره تلفن یا ایمیل وارد کنید.
     require_phone_or_email_label: الزام شماره تلفن یا ایمیل (یکی کافی است)
     booking_display_mode: حالت نمایش رزرو

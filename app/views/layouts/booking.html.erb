@@ -72,6 +72,9 @@
 <% if setting("altcha_enabled") == "1" %>
     <%= ea_js "utils/altcha" %>
 <% end %>
+<% if TurnstileChallenge.enabled? %>
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+<% end %>
 <%= ea_js "layouts/booking_layout", "http/localization_http_client" %>
 
 <%= render "shared/js_vars_script" %>

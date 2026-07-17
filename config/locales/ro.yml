@@ -1,6 +1,10 @@
 ---
 ro:
   ea:
+    captcha_provider: Furnizor captcha
+    turnstile_site_key: Cheia site-ului Turnstile
+    turnstile_secret_key: Cheia secretă Turnstile
+    turnstile_verification_failed: Verificarea captcha a eșuat, încercați din nou.
     phone_or_email_required: Introduceți un număr de telefon sau o adresă de email.
     require_phone_or_email_label: Solicită telefon sau email (unul este suficient)
     booking_display_mode: Modul de afișare a rezervării

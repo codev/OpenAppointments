@@ -1,6 +1,10 @@
 ---
 mr:
   ea:
+    captcha_provider: कॅप्चा प्रदाता
+    turnstile_site_key: Turnstile साइट की
+    turnstile_secret_key: Turnstile गुप्त की
+    turnstile_verification_failed: कॅप्चा पडताळणी अयशस्वी झाली, पुन्हा प्रयत्न करा.
     phone_or_email_required: कृपया फोन नंबर किंवा ईमेल पत्ता द्या.
     require_phone_or_email_label: फोन नंबर किंवा ईमेल आवश्यक (एक पुरेसे आहे)
     booking_display_mode: बुकिंग प्रदर्शन मोड

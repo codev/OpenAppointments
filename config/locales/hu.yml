@@ -1,6 +1,10 @@
 ---
 hu:
   ea:
+    captcha_provider: Captcha szolgáltató
+    turnstile_site_key: Turnstile webhelykulcs
+    turnstile_secret_key: Turnstile titkos kulcs
+    turnstile_verification_failed: A captcha ellenőrzése sikertelen, próbálja újra.
     phone_or_email_required: Adjon meg egy telefonszámot vagy egy e-mail-címet.
     require_phone_or_email_label: Telefonszám vagy e-mail megkövetelése (az egyik elég)
     booking_display_mode: Foglalás megjelenítési módja

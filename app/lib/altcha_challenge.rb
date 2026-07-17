@@ -3,7 +3,8 @@ module AltchaChallenge
   module_function
 
   def enabled?
-    Setting.get("require_captcha") == "1" && Setting.get("altcha_enabled") == "1"
+    Setting.get("require_captcha") == "1" && Setting.get("altcha_enabled") == "1" &&
+      Setting.get("captcha_provider", "altcha") == "altcha"
   end
 
   def hmac_key

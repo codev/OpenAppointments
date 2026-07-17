@@ -1,6 +1,10 @@
 ---
 he:
   ea:
+    captcha_provider: ספק captcha
+    turnstile_site_key: מפתח אתר Turnstile
+    turnstile_secret_key: מפתח סודי Turnstile
+    turnstile_verification_failed: אימות ה-captcha נכשל, נסה שוב.
     phone_or_email_required: נא לספק מספר טלפון או כתובת אימייל.
     require_phone_or_email_label: דרוש טלפון או אימייל (אחד מהם מספיק)
     booking_display_mode: מצב תצוגת ההזמנה

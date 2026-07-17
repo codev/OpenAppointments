@@ -1,6 +1,10 @@
 ---
 lv:
   ea:
+    captcha_provider: Captcha nodrošinātājs
+    turnstile_site_key: Turnstile vietnes atslēga
+    turnstile_secret_key: Turnstile slepenā atslēga
+    turnstile_verification_failed: Captcha pārbaude neizdevās, mēģiniet vēlreiz.
     phone_or_email_required: Lūdzu, norādiet tālruņa numuru vai e-pasta adresi.
     require_phone_or_email_label: Pieprasīt tālruni vai e-pastu (pietiek ar vienu)
     booking_display_mode: Rezervācijas attēlošanas režīms

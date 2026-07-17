@@ -1,6 +1,10 @@
 ---
 sk:
   ea:
+    captcha_provider: Poskytovateľ captcha
+    turnstile_site_key: Kľúč webu Turnstile
+    turnstile_secret_key: Tajný kľúč Turnstile
+    turnstile_verification_failed: Overenie captcha zlyhalo, skúste to znova.
     phone_or_email_required: Zadajte telefónne číslo alebo e-mailovú adresu.
     require_phone_or_email_label: Vyžadovať telefón alebo e-mail (stačí jedno)
     booking_display_mode: Zobrazenie rezervácie

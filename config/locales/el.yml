@@ -1,6 +1,10 @@
 ---
 el:
   ea:
+    captcha_provider: Πάροχος captcha
+    turnstile_site_key: Κλειδί ιστότοπου Turnstile
+    turnstile_secret_key: Μυστικό κλειδί Turnstile
+    turnstile_verification_failed: Η επαλήθευση captcha απέτυχε, δοκιμάστε ξανά.
     phone_or_email_required: Δώστε έναν αριθμό τηλεφώνου ή μια διεύθυνση email.
     require_phone_or_email_label: Απαίτηση τηλεφώνου ή email (αρκεί το ένα)
     booking_display_mode: Τρόπος εμφάνισης κράτησης

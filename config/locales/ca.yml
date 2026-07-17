@@ -1,6 +1,10 @@
 ---
 ca:
   ea:
+    captcha_provider: Proveïdor de captcha
+    turnstile_site_key: Clau del lloc de Turnstile
+    turnstile_secret_key: Clau secreta de Turnstile
+    turnstile_verification_failed: La verificació del captcha ha fallat, torneu-ho a provar.
     phone_or_email_required: Introduïu un número de telèfon o una adreça electrònica.
     require_phone_or_email_label: Requereix telèfon o correu electrònic (amb un n'hi ha prou)
     booking_display_mode: Mode de visualització de la reserva

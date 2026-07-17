@@ -1,6 +1,10 @@
 ---
 'no':
   ea:
+    captcha_provider: Captcha-leverandør
+    turnstile_site_key: Turnstile-nettstedsnøkkel
+    turnstile_secret_key: Turnstile-hemmelig nøkkel
+    turnstile_verification_failed: Captcha-verifiseringen mislyktes, prøv igjen.
     phone_or_email_required: Oppgi et telefonnummer eller en e-postadresse.
     require_phone_or_email_label: Krev telefonnummer eller e-post (ett av dem holder)
     booking_display_mode: Visningsmodus for booking

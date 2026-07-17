@@ -1,6 +1,10 @@
 ---
 sv:
   ea:
+    captcha_provider: Captcha-leverantör
+    turnstile_site_key: Turnstile-webbplatsnyckel
+    turnstile_secret_key: Turnstile-hemlig nyckel
+    turnstile_verification_failed: Captcha-verifieringen misslyckades, försök igen.
     phone_or_email_required: Ange ett telefonnummer eller en e-postadress.
     require_phone_or_email_label: Kräv telefonnummer eller e-post (ett av dem räcker)
     booking_display_mode: Visningsläge för bokning

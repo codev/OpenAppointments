@@ -1,6 +1,10 @@
 ---
 cs:
   ea:
+    captcha_provider: Poskytovatel captcha
+    turnstile_site_key: Klíč webu Turnstile
+    turnstile_secret_key: Tajný klíč Turnstile
+    turnstile_verification_failed: Ověření captcha se nezdařilo, zkuste to znovu.
     phone_or_email_required: Zadejte telefonní číslo nebo e-mailovou adresu.
     require_phone_or_email_label: Vyžadovat telefon nebo e-mail (stačí jedno)
     booking_display_mode: Zobrazení rezervace

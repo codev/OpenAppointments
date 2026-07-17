@@ -1,6 +1,10 @@
 ---
 fr:
   ea:
+    captcha_provider: Fournisseur de captcha
+    turnstile_site_key: Clé de site Turnstile
+    turnstile_secret_key: Clé secrète Turnstile
+    turnstile_verification_failed: La vérification du captcha a échoué, veuillez réessayer.
     phone_or_email_required: Veuillez indiquer un numéro de téléphone ou une adresse e-mail.
     require_phone_or_email_label: Exiger un téléphone ou un e-mail (un seul suffit)
     booking_display_mode: Mode d'affichage de la réservation

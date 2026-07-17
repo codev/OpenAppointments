@@ -16,7 +16,14 @@
         </div>
 
         <% if setting('require_captcha') == "1" %>
-            <% if setting('altcha_enabled') == "1" %>
+            <% if TurnstileChallenge.enabled? %>
+                <div class="row frame-content m-auto" style="max-width: 630px;">
+                    <div class="col text-center">
+                        <div class="cf-turnstile mb-2 d-inline-block" data-sitekey="<%= TurnstileChallenge.site_key %>"></div>
+                        <span id="turnstile-hint" class="help-block text-danger small d-block" style="opacity:0">&nbsp;</span>
+                    </div>
+                </div>
+            <% elsif setting('altcha_enabled') == "1" %>
                 <div class="row frame-content m-auto" style="max-width: 630px;">
                     <div class="col">
                         <div id="altcha-widget" class="altcha-widget mb-2"></div>

@@ -1,6 +1,10 @@
 ---
 nl:
   ea:
+    captcha_provider: Captcha-aanbieder
+    turnstile_site_key: Turnstile-sitesleutel
+    turnstile_secret_key: Turnstile-geheime sleutel
+    turnstile_verification_failed: Captcha-verificatie mislukt, probeer het opnieuw.
     phone_or_email_required: Geef een telefoonnummer of e-mailadres op.
     require_phone_or_email_label: Vereis een telefoonnummer of e-mail (een van beide volstaat)
     booking_display_mode: Weergavemodus van de boeking

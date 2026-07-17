@@ -1,6 +1,10 @@
 ---
 rs:
   ea:
+    captcha_provider: Pružalac captche
+    turnstile_site_key: Turnstile ključ sajta
+    turnstile_secret_key: Turnstile tajni ključ
+    turnstile_verification_failed: Captcha provera nije uspela, pokušajte ponovo.
     phone_or_email_required: Unesite broj telefona ili email adresu.
     require_phone_or_email_label: Zahtevaj broj telefona ili email (dovoljno je jedno)
     booking_display_mode: Nacin prikaza rezervacije

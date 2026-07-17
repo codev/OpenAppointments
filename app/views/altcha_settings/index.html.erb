@@ -46,6 +46,32 @@
                             <% end %>
 
                             <div class="mb-3">
+                                <label class="form-label" for="captcha-provider">
+                                    <%= lang('captcha_provider') %>
+                                </label>
+                                <select id="captcha-provider" class="form-select" data-field="captcha_provider">
+                                    <option value="altcha">ALTCHA</option>
+                                    <option value="turnstile">Cloudflare Turnstile</option>
+                                </select>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label" for="turnstile-site-key">
+                                    <%= lang('turnstile_site_key') %>
+                                </label>
+                                <input type="text" id="turnstile-site-key" class="form-control"
+                                       data-field="turnstile_site_key" maxlength="256">
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label" for="turnstile-secret-key">
+                                    <%= lang('turnstile_secret_key') %>
+                                </label>
+                                <input type="password" id="turnstile-secret-key" class="form-control"
+                                       data-field="turnstile_secret_key" maxlength="256" autocomplete="new-password">
+                            </div>
+
+                            <div class="mb-3">
                                 <div class="form-check form-switch">
                                     <input class="form-check-input" type="checkbox" id="altcha-enabled"
                                            data-field="altcha_enabled">

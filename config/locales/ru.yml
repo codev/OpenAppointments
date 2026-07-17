@@ -1,6 +1,10 @@
 ---
 ru:
   ea:
+    captcha_provider: Провайдер капчи
+    turnstile_site_key: Ключ сайта Turnstile
+    turnstile_secret_key: Секретный ключ Turnstile
+    turnstile_verification_failed: Проверка капчи не пройдена, попробуйте еще раз.
     phone_or_email_required: Укажите номер телефона или адрес электронной почты.
     require_phone_or_email_label: Требовать телефон или email (достаточно одного)
     booking_display_mode: Режим отображения записи

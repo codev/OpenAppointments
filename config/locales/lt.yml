@@ -1,6 +1,10 @@
 ---
 lt:
   ea:
+    captcha_provider: Captcha teikėjas
+    turnstile_site_key: Turnstile svetainės raktas
+    turnstile_secret_key: Turnstile slaptas raktas
+    turnstile_verification_failed: Captcha patikra nepavyko, bandykite dar kartą.
     phone_or_email_required: Nurodykite telefono numerį arba el. pašto adresą.
     require_phone_or_email_label: Reikalauti telefono arba el. pašto (užtenka vieno)
     booking_display_mode: Rezervacijos rodymo režimas

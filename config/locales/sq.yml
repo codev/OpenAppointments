@@ -1,6 +1,10 @@
 ---
 sq:
   ea:
+    captcha_provider: Ofruesi i captcha
+    turnstile_site_key: Çelësi i faqes Turnstile
+    turnstile_secret_key: Çelësi sekret Turnstile
+    turnstile_verification_failed: Verifikimi i captcha dështoi, provoni përsëri.
     phone_or_email_required: Jepni një numër telefoni ose një adresë email.
     require_phone_or_email_label: Kërko telefon ose email (mjafton njëra)
     booking_display_mode: Mënyra e shfaqjes së rezervimit

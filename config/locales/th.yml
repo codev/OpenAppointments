@@ -1,6 +1,10 @@
 ---
 th:
   ea:
+    captcha_provider: ผู้ให้บริการ captcha
+    turnstile_site_key: คีย์ไซต์ Turnstile
+    turnstile_secret_key: คีย์ลับ Turnstile
+    turnstile_verification_failed: การยืนยัน captcha ล้มเหลว กรุณาลองอีกครั้ง
     phone_or_email_required: กรุณาระบุหมายเลขโทรศัพท์หรืออีเมล
     require_phone_or_email_label: ต้องมีหมายเลขโทรศัพท์หรืออีเมล (อย่างใดอย่างหนึ่ง)
     booking_display_mode: รูปแบบการแสดงการจอง

@@ -181,6 +181,10 @@ class BookingController < ApplicationController
       return render json: { altcha_verification: false }
     end
 
+    if TurnstileChallenge.enabled? && !TurnstileChallenge.verify(params[:cf_turnstile_response], request.remote_ip)
+      return render json: { turnstile_verification: false }
+    end
+
     existing_customer = User.customers.find_by(email: customer_params["email"]) if customer_params["email"].present?
     if existing_customer
       conflict = Appointment.where(id_users_customer: existing_customer.id)
