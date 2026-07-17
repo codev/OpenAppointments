@@ -10,6 +10,10 @@ Versions are semver and must match in two places: the git tag and CloudronManife
 Before you do this:
 - set the variables below
 - Ensure Cloudron config is correct - System -> Docker with registry auth
+- Give the build service push access to the registry: on the Docker Builder app, edit
+  `/app/data/docker.json` with `{"<registry-host>": {"username": "...", "password": "..."}}`
+  (same credentials as `docker login <registry-host>`), then restart the builder app.
+  Without this the build succeeds but the push fails right after "Preparing".
 - Bump version in CloudronManifest.json to match VER below via PR and merge to main
 - Start in the repo root
 
