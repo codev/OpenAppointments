@@ -1,6 +1,24 @@
 ---
 tr:
   ea:
+    import_data: Veri içe aktar
+    import_hint: Bir 10to8 CSV dışa aktarımı yükleyin, önce analiz edin, sonra seçilen kayıt türlerini içe aktarın.
+    import_phases: Kayıt türleri
+    analyze: Analiz et
+    start_import: İçe aktarmayı başlat
+    create_providers: Eksik hizmet verenleri oluştur
+    days_back: Geriye gün
+    days_forward: İleriye gün
+    import_running: İçe aktarma sürüyor...
+    import_complete: İçe aktarma tamamlandı.
+    created: oluşturuldu
+    matched: eşleşti
+    skipped: atlandı
+    no_file_selected: Dosya seçilmedi.
+    reset_database: Veritabanını sıfırla
+    reset_database_warning: Bu işlem tüm randevuları, müşterileri, hizmet verenleri, sekreterleri, hizmetleri ve kategorileri kalıcı olarak siler. Yönetici hesapları ve ayarlar korunur. Geri alınamaz.
+    reset_confirmation_hint: Düğmeyi etkinleştirmek için RESET yazın.
+    reset_database_done: Veritabanı sıfırlandı.
     captcha_provider: Captcha sağlayıcısı
     turnstile_site_key: Turnstile site anahtarı
     turnstile_secret_key: Turnstile gizli anahtarı

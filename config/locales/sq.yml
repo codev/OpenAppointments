@@ -1,6 +1,24 @@
 ---
 sq:
   ea:
+    import_data: Importo të dhëna
+    import_hint: Ngarkoni një CSV eksporti nga 10to8, analizojeni fillimisht dhe pastaj importoni llojet e zgjedhura të regjistrimeve.
+    import_phases: Llojet e regjistrimeve
+    analyze: Analizo
+    start_import: Nis importin
+    create_providers: Krijo ofruesit që mungojnë
+    days_back: Ditë prapa
+    days_forward: Ditë përpara
+    import_running: Importi po ekzekutohet...
+    import_complete: Importi përfundoi.
+    created: krijuar
+    matched: përputhur
+    skipped: anashkaluar
+    no_file_selected: Asnjë skedar i zgjedhur.
+    reset_database: Rivendos bazën e të dhënave
+    reset_database_warning: Kjo fshin përgjithmonë të gjitha takimet, klientët, ofruesit, sekretarët, shërbimet dhe kategoritë. Llogaritë e administratorëve dhe cilësimet ruhen. E pakthyeshme.
+    reset_confirmation_hint: Shkruani RESET për të aktivizuar butonin.
+    reset_database_done: Baza e të dhënave u rivendos.
     captcha_provider: Ofruesi i captcha
     turnstile_site_key: Çelësi i faqes Turnstile
     turnstile_secret_key: Çelësi sekret Turnstile

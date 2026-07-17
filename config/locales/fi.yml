@@ -1,6 +1,24 @@
 ---
 fi:
   ea:
+    import_data: Tuo tiedot
+    import_hint: Lataa 10to8 CSV-vienti, analysoi se ensin ja tuo sitten valitut tietuetyypit.
+    import_phases: Tietuetyypit
+    analyze: Analysoi
+    start_import: Aloita tuonti
+    create_providers: Luo puuttuvat palveluntarjoajat
+    days_back: Päivää taaksepäin
+    days_forward: Päivää eteenpäin
+    import_running: Tuonti käynnissä...
+    import_complete: Tuonti valmis.
+    created: luotu
+    matched: täsmätty
+    skipped: ohitettu
+    no_file_selected: Tiedostoa ei ole valittu.
+    reset_database: Nollaa tietokanta
+    reset_database_warning: Tämä poistaa pysyvästi kaikki varaukset, asiakkaat, palveluntarjoajat, sihteerit, palvelut ja kategoriat. Ylläpitäjätilit ja asetukset säilyvät. Ei voi perua.
+    reset_confirmation_hint: Kirjoita RESET aktivoidaksesi painikkeen.
+    reset_database_done: Tietokanta on nollattu.
     captcha_provider: Captcha-palvelu
     turnstile_site_key: Turnstile-sivustoavain
     turnstile_secret_key: Turnstile-salausavain

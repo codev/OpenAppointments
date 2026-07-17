@@ -1,6 +1,24 @@
 ---
 'no':
   ea:
+    import_data: Importer data
+    import_hint: Last opp en 10to8 CSV-eksport, analyser den først, og importer deretter de valgte posttypene.
+    import_phases: Posttyper
+    analyze: Analyser
+    start_import: Start import
+    create_providers: Opprett manglende tilbydere
+    days_back: Dager tilbake
+    days_forward: Dager fremover
+    import_running: Import pågår...
+    import_complete: Import fullført.
+    created: opprettet
+    matched: matchet
+    skipped: hoppet over
+    no_file_selected: Ingen fil valgt.
+    reset_database: Tilbakestill database
+    reset_database_warning: Dette sletter permanent alle avtaler, kunder, tilbydere, sekretærer, tjenester og kategorier. Administratorkontoer og innstillinger beholdes. Kan ikke angres.
+    reset_confirmation_hint: Skriv RESET for å aktivere knappen.
+    reset_database_done: Databasen er tilbakestilt.
     captcha_provider: Captcha-leverandør
     turnstile_site_key: Turnstile-nettstedsnøkkel
     turnstile_secret_key: Turnstile-hemmelig nøkkel

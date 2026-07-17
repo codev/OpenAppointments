@@ -1,6 +1,24 @@
 ---
 he:
   ea:
+    import_data: ייבוא נתונים
+    import_hint: העלה קובץ CSV מיוצא מ-10to8, נתח אותו תחילה ואז ייבא את סוגי הרשומות שנבחרו.
+    import_phases: סוגי רשומות
+    analyze: ניתוח
+    start_import: התחל ייבוא
+    create_providers: צור נותני שירות חסרים
+    days_back: ימים אחורה
+    days_forward: ימים קדימה
+    import_running: הייבוא פועל...
+    import_complete: הייבוא הושלם.
+    created: נוצרו
+    matched: הותאמו
+    skipped: דולגו
+    no_file_selected: לא נבחר קובץ.
+    reset_database: איפוס מסד הנתונים
+    reset_database_warning: פעולה זו מוחקת לצמיתות את כל התורים, הלקוחות, נותני השירות, המזכירים, השירותים והקטגוריות. חשבונות מנהלים והגדרות נשמרים. לא ניתן לבטל.
+    reset_confirmation_hint: הקלד RESET כדי להפעיל את הכפתור.
+    reset_database_done: מסד הנתונים אופס.
     captcha_provider: ספק captcha
     turnstile_site_key: מפתח אתר Turnstile
     turnstile_secret_key: מפתח סודי Turnstile

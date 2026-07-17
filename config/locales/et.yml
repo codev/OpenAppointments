@@ -1,6 +1,24 @@
 ---
 et:
   ea:
+    import_data: Andmete import
+    import_hint: Laadige üles 10to8 CSV eksport, analüüsige seda esmalt ja seejärel importige valitud kirjetüübid.
+    import_phases: Kirjetüübid
+    analyze: Analüüsi
+    start_import: Alusta importi
+    create_providers: Loo puuduvad teenusepakkujad
+    days_back: Päevi tagasi
+    days_forward: Päevi edasi
+    import_running: Import käib...
+    import_complete: Import on lõpetatud.
+    created: loodud
+    matched: sobitatud
+    skipped: vahele jäetud
+    no_file_selected: Faili pole valitud.
+    reset_database: Lähtesta andmebaas
+    reset_database_warning: See kustutab jäädavalt kõik broneeringud, kliendid, teenusepakkujad, sekretärid, teenused ja kategooriad. Administraatori kontod ja seaded säilivad. Seda ei saa tagasi võtta.
+    reset_confirmation_hint: Nupu lubamiseks sisestage RESET.
+    reset_database_done: Andmebaas on lähtestatud.
     captcha_provider: Captcha pakkuja
     turnstile_site_key: Turnstile'i saidi võti
     turnstile_secret_key: Turnstile'i salajane võti

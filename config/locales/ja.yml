@@ -1,6 +1,24 @@
 ---
 ja:
   ea:
+    import_data: データのインポート
+    import_hint: 10to8 のエクスポート CSV をアップロードし、まず分析してから選択したレコード種別をインポートします。
+    import_phases: レコード種別
+    analyze: 分析
+    start_import: インポート開始
+    create_providers: 存在しない担当者を作成
+    days_back: さかのぼる日数
+    days_forward: 先の日数
+    import_running: インポート実行中...
+    import_complete: インポート完了。
+    created: 作成
+    matched: 一致
+    skipped: スキップ
+    no_file_selected: ファイルが選択されていません。
+    reset_database: データベースのリセット
+    reset_database_warning: すべての予約、顧客、担当者、秘書、サービス、カテゴリーを完全に削除します。管理者アカウントと設定は保持されます。元に戻せません。
+    reset_confirmation_hint: ボタンを有効にするには RESET と入力してください。
+    reset_database_done: データベースをリセットしました。
     captcha_provider: キャプチャプロバイダー
     turnstile_site_key: Turnstile サイトキー
     turnstile_secret_key: Turnstile シークレットキー

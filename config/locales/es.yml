@@ -1,6 +1,24 @@
 ---
 es:
   ea:
+    import_data: Importar datos
+    import_hint: Suba un CSV exportado de 10to8, analícelo primero y luego importe los tipos de registros seleccionados.
+    import_phases: Tipos de registros
+    analyze: Analizar
+    start_import: Iniciar importación
+    create_providers: Crear proveedores que falten
+    days_back: Días hacia atrás
+    days_forward: Días hacia adelante
+    import_running: Importación en curso...
+    import_complete: Importación completada.
+    created: creados
+    matched: coincidentes
+    skipped: omitidos
+    no_file_selected: Ningún archivo seleccionado.
+    reset_database: Restablecer base de datos
+    reset_database_warning: Esto elimina permanentemente todas las citas, clientes, proveedores, secretarios, servicios y categorías. Las cuentas de administrador y la configuración se conservan. No se puede deshacer.
+    reset_confirmation_hint: Escriba RESET para habilitar el botón.
+    reset_database_done: La base de datos se ha restablecido.
     captcha_provider: Proveedor de captcha
     turnstile_site_key: Clave del sitio de Turnstile
     turnstile_secret_key: Clave secreta de Turnstile

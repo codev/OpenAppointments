@@ -57,6 +57,7 @@ end
 gem "dartsass-rails", "~> 0.5.1"
 gem "bcrypt", "~> 3.1"
 gem "icalendar", "~> 2.12"
+gem "csv" # 10to8 import (no longer a default gem in Ruby 3.4)
 gem "altcha", "~> 2.0"
 gem "google-apis-calendar_v3", "~> 0.56.0"
 gem "googleauth", "~> 1.17"

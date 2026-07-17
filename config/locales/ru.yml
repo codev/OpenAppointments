@@ -1,6 +1,24 @@
 ---
 ru:
   ea:
+    import_data: Импорт данных
+    import_hint: Загрузите CSV-экспорт из 10to8, сначала проанализируйте его, затем импортируйте выбранные типы записей.
+    import_phases: Типы записей
+    analyze: Анализ
+    start_import: Начать импорт
+    create_providers: Создать отсутствующих специалистов
+    days_back: Дней назад
+    days_forward: Дней вперед
+    import_running: Импорт выполняется...
+    import_complete: Импорт завершен.
+    created: создано
+    matched: сопоставлено
+    skipped: пропущено
+    no_file_selected: Файл не выбран.
+    reset_database: Сбросить базу данных
+    reset_database_warning: Это навсегда удалит все записи, клиентов, специалистов, секретарей, услуги и категории. Учетные записи администраторов и настройки сохранятся. Отменить нельзя.
+    reset_confirmation_hint: Введите RESET, чтобы активировать кнопку.
+    reset_database_done: База данных сброшена.
     captcha_provider: Провайдер капчи
     turnstile_site_key: Ключ сайта Turnstile
     turnstile_secret_key: Секретный ключ Turnstile

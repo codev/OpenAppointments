@@ -1,6 +1,24 @@
 ---
 lb:
   ea:
+    import_data: Daten importéieren
+    import_hint: Luet en 10to8 CSV-Export erop, analyséiert en fir d'éischt an importéiert dann déi ausgewielten Datentypen.
+    import_phases: Datentypen
+    analyze: Analyséieren
+    start_import: Import starten
+    create_providers: Feelend Ubidder uleeën
+    days_back: Deeg zréck
+    days_forward: Deeg viraus
+    import_running: Import leeft...
+    import_complete: Import ofgeschloss.
+    created: ugeluecht
+    matched: zougeuerdnet
+    skipped: iwwersprongen
+    no_file_selected: Kee Fichier ausgewielt.
+    reset_database: Datebank zrécksetzen
+    reset_database_warning: Dëst läscht permanent all Rendez-vousen, Clienten, Ubidder, Sekretariater, Servicer a Kategorien. Administrateur-Konten an Astellunge bleiwen. Net réckgängeg ze maachen.
+    reset_confirmation_hint: Gitt RESET an fir de Knäppchen z'aktivéieren.
+    reset_database_done: D'Datebank gouf zréckgesat.
     captcha_provider: Captcha-Ubidder
     turnstile_site_key: Turnstile-Site-Schlëssel
     turnstile_secret_key: Turnstile-Geheimschlëssel

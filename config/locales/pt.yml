@@ -1,6 +1,24 @@
 ---
 pt:
   ea:
+    import_data: Importar dados
+    import_hint: Carregue um CSV exportado do 10to8, analise-o primeiro e depois importe os tipos de registos selecionados.
+    import_phases: Tipos de registos
+    analyze: Analisar
+    start_import: Iniciar importação
+    create_providers: Criar prestadores em falta
+    days_back: Dias para trás
+    days_forward: Dias para a frente
+    import_running: Importação em curso...
+    import_complete: Importação concluída.
+    created: criados
+    matched: correspondidos
+    skipped: ignorados
+    no_file_selected: Nenhum ficheiro selecionado.
+    reset_database: Repor base de dados
+    reset_database_warning: Isto elimina permanentemente todas as marcações, clientes, prestadores, secretários, serviços e categorias. As contas de administrador e as definições mantêm-se. Irreversível.
+    reset_confirmation_hint: Escreva RESET para ativar o botão.
+    reset_database_done: A base de dados foi reposta.
     captcha_provider: Fornecedor de captcha
     turnstile_site_key: Chave do site Turnstile
     turnstile_secret_key: Chave secreta Turnstile

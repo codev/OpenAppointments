@@ -1,6 +1,24 @@
 ---
 sv:
   ea:
+    import_data: Importera data
+    import_hint: Ladda upp en 10to8 CSV-export, analysera den först och importera sedan de valda posttyperna.
+    import_phases: Posttyper
+    analyze: Analysera
+    start_import: Starta import
+    create_providers: Skapa saknade utförare
+    days_back: Dagar bakåt
+    days_forward: Dagar framåt
+    import_running: Import pågår...
+    import_complete: Import klar.
+    created: skapade
+    matched: matchade
+    skipped: överhoppade
+    no_file_selected: Ingen fil vald.
+    reset_database: Återställ databasen
+    reset_database_warning: Detta raderar permanent alla bokningar, kunder, utförare, sekreterare, tjänster och kategorier. Administratörskonton och inställningar behålls. Kan inte ångras.
+    reset_confirmation_hint: Skriv RESET för att aktivera knappen.
+    reset_database_done: Databasen har återställts.
     captcha_provider: Captcha-leverantör
     turnstile_site_key: Turnstile-webbplatsnyckel
     turnstile_secret_key: Turnstile-hemlig nyckel

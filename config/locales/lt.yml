@@ -1,6 +1,24 @@
 ---
 lt:
   ea:
+    import_data: Importuoti duomenis
+    import_hint: Ikelkite 10to8 CSV eksportą, pirmiausia jį išanalizuokite, tada importuokite pasirinktus įrašų tipus.
+    import_phases: Įrašų tipai
+    analyze: Analizuoti
+    start_import: Pradėti importą
+    create_providers: Sukurti trūkstamus specialistus
+    days_back: Dienų atgal
+    days_forward: Dienų į priekį
+    import_running: Importas vykdomas...
+    import_complete: Importas baigtas.
+    created: sukurta
+    matched: sutapo
+    skipped: praleista
+    no_file_selected: Failas nepasirinktas.
+    reset_database: Atstatyti duomenų bazę
+    reset_database_warning: Tai visam laikui ištrina visus vizitus, klientus, specialistus, sekretorius, paslaugas ir kategorijas. Administratorių paskyros ir nustatymai išlieka. Neatšaukiama.
+    reset_confirmation_hint: Įveskite RESET, kad įjungtumėte mygtuką.
+    reset_database_done: Duomenų bazė atstatyta.
     captcha_provider: Captcha teikėjas
     turnstile_site_key: Turnstile svetainės raktas
     turnstile_secret_key: Turnstile slaptas raktas

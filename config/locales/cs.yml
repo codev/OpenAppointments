@@ -1,6 +1,24 @@
 ---
 cs:
   ea:
+    import_data: Import dat
+    import_hint: Nahrajte CSV export z 10to8, nejprve jej analyzujte a poté importujte vybrané typy záznamů.
+    import_phases: Typy záznamů
+    analyze: Analyzovat
+    start_import: Spustit import
+    create_providers: Vytvořit chybějící poskytovatele
+    days_back: Dnů zpět
+    days_forward: Dnů dopředu
+    import_running: Import běží...
+    import_complete: Import dokončen.
+    created: vytvořeno
+    matched: spárováno
+    skipped: přeskočeno
+    no_file_selected: Není vybrán žádný soubor.
+    reset_database: Resetovat databázi
+    reset_database_warning: Tímto trvale smažete všechny schůzky, zákazníky, poskytovatele, sekretáře, služby a kategorie. Administrátorské účty a nastavení zůstanou. Nelze vrátit zpět.
+    reset_confirmation_hint: Napište RESET pro aktivaci tlačítka.
+    reset_database_done: Databáze byla resetována.
     captcha_provider: Poskytovatel captcha
     turnstile_site_key: Klíč webu Turnstile
     turnstile_secret_key: Tajný klíč Turnstile

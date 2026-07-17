@@ -1,6 +1,24 @@
 ---
 hr:
   ea:
+    import_data: Uvoz podataka
+    import_hint: Ucitajte 10to8 CSV izvoz, prvo ga analizirajte pa uvezite odabrane vrste zapisa.
+    import_phases: Vrste zapisa
+    analyze: Analiziraj
+    start_import: Pokreni uvoz
+    create_providers: Stvori nedostajuce pruzatelje
+    days_back: Dana unatrag
+    days_forward: Dana unaprijed
+    import_running: Uvoz u tijeku...
+    import_complete: Uvoz dovrsen.
+    created: stvoreno
+    matched: uparen
+    skipped: preskoceno
+    no_file_selected: Nije odabrana datoteka.
+    reset_database: Resetiraj bazu podataka
+    reset_database_warning: Ovo trajno brise sve termine, klijente, pruzatelje, tajnike, usluge i kategorije. Administratorski racuni i postavke ostaju. Nepovratno.
+    reset_confirmation_hint: Upisite RESET za omogucavanje gumba.
+    reset_database_done: Baza podataka je resetirana.
     captcha_provider: Pružatelj captche
     turnstile_site_key: Turnstile ključ stranice
     turnstile_secret_key: Turnstile tajni ključ

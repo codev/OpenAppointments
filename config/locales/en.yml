@@ -1,6 +1,24 @@
 ---
 en:
   ea:
+    import_data: Import data
+    import_hint: Upload a 10to8 export CSV, analyze it first, then import the selected record types.
+    import_phases: Record types
+    analyze: Analyze
+    start_import: Start import
+    create_providers: Create missing providers
+    days_back: Days back
+    days_forward: Days forward
+    import_running: Import running...
+    import_complete: Import complete.
+    created: created
+    matched: matched
+    skipped: skipped
+    no_file_selected: No file selected.
+    reset_database: Reset database
+    reset_database_warning: This permanently deletes all appointments, customers, providers, secretaries, services and categories. Administrator accounts and settings are kept. This cannot be undone.
+    reset_confirmation_hint: Type RESET to enable the button.
+    reset_database_done: The database has been reset.
     captcha_provider: Captcha provider
     turnstile_site_key: Turnstile site key
     turnstile_secret_key: Turnstile secret key

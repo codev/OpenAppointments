@@ -1,6 +1,24 @@
 ---
 ro:
   ea:
+    import_data: Import date
+    import_hint: Încărcați un export CSV din 10to8, analizați-l mai întâi, apoi importați tipurile de înregistrări selectate.
+    import_phases: Tipuri de înregistrări
+    analyze: Analizează
+    start_import: Pornește importul
+    create_providers: Creează furnizorii lipsă
+    days_back: Zile în urmă
+    days_forward: Zile înainte
+    import_running: Importul rulează...
+    import_complete: Import finalizat.
+    created: create
+    matched: potrivite
+    skipped: omise
+    no_file_selected: Niciun fișier selectat.
+    reset_database: Resetează baza de date
+    reset_database_warning: Aceasta șterge definitiv toate programările, clienții, furnizorii, secretarii, serviciile și categoriile. Conturile de administrator și setările rămân. Ireversibil.
+    reset_confirmation_hint: Tastați RESET pentru a activa butonul.
+    reset_database_done: Baza de date a fost resetată.
     captcha_provider: Furnizor captcha
     turnstile_site_key: Cheia site-ului Turnstile
     turnstile_secret_key: Cheia secretă Turnstile

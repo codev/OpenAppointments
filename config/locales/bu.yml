@@ -1,6 +1,24 @@
 ---
 bu:
   ea:
+    import_data: Импорт на данни
+    import_hint: Качете CSV експорт от 10to8, първо го анализирайте, после импортирайте избраните типове записи.
+    import_phases: Типове записи
+    analyze: Анализ
+    start_import: Старт на импорта
+    create_providers: Създай липсващите изпълнители
+    days_back: Дни назад
+    days_forward: Дни напред
+    import_running: Импортът тече...
+    import_complete: Импортът завърши.
+    created: създадени
+    matched: съвпаднали
+    skipped: пропуснати
+    no_file_selected: Няма избран файл.
+    reset_database: Нулиране на базата данни
+    reset_database_warning: Това изтрива завинаги всички часове, клиенти, изпълнители, секретари, услуги и категории. Администраторските акаунти и настройките се запазват. Не може да бъде отменено.
+    reset_confirmation_hint: Въведете RESET, за да активирате бутона.
+    reset_database_done: Базата данни е нулирана.
     captcha_provider: Доставчик на captcha
     turnstile_site_key: Turnstile ключ на сайта
     turnstile_secret_key: Turnstile таен ключ

@@ -1,6 +1,24 @@
 ---
 de:
   ea:
+    import_data: Daten importieren
+    import_hint: Laden Sie einen 10to8-CSV-Export hoch, analysieren Sie ihn zuerst und importieren Sie dann die ausgewählten Datentypen.
+    import_phases: Datentypen
+    analyze: Analysieren
+    start_import: Import starten
+    create_providers: Fehlende Anbieter anlegen
+    days_back: Tage zurück
+    days_forward: Tage voraus
+    import_running: Import läuft...
+    import_complete: Import abgeschlossen.
+    created: erstellt
+    matched: zugeordnet
+    skipped: übersprungen
+    no_file_selected: Keine Datei ausgewählt.
+    reset_database: Datenbank zurücksetzen
+    reset_database_warning: Dies löscht dauerhaft alle Termine, Kunden, Anbieter, Sekretariate, Dienstleistungen und Kategorien. Administratorkonten und Einstellungen bleiben erhalten. Kann nicht rückgängig gemacht werden.
+    reset_confirmation_hint: Geben Sie RESET ein, um die Schaltfläche zu aktivieren.
+    reset_database_done: Die Datenbank wurde zurückgesetzt.
     captcha_provider: Captcha-Anbieter
     turnstile_site_key: Turnstile-Site-Schlüssel
     turnstile_secret_key: Turnstile-Geheimschlüssel

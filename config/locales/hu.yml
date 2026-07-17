@@ -1,6 +1,24 @@
 ---
 hu:
   ea:
+    import_data: Adatok importálása
+    import_hint: Töltsön fel egy 10to8 CSV exportot, először elemezze, majd importálja a kiválasztott rekordtípusokat.
+    import_phases: Rekordtípusok
+    analyze: Elemzés
+    start_import: Import indítása
+    create_providers: Hiányzó szolgáltatók létrehozása
+    days_back: Nap visszafelé
+    days_forward: Nap előre
+    import_running: Az import fut...
+    import_complete: Az import kész.
+    created: létrehozva
+    matched: párosítva
+    skipped: kihagyva
+    no_file_selected: Nincs kiválasztott fájl.
+    reset_database: Adatbázis visszaállítása
+    reset_database_warning: Ez véglegesen töröl minden időpontot, ügyfelet, szolgáltatót, titkárt, szolgáltatást és kategóriát. Az adminisztrátori fiókok és a beállítások megmaradnak. Nem vonható vissza.
+    reset_confirmation_hint: Írja be a RESET szót a gomb engedélyezéséhez.
+    reset_database_done: Az adatbázis visszaállítva.
     captcha_provider: Captcha szolgáltató
     turnstile_site_key: Turnstile webhelykulcs
     turnstile_secret_key: Turnstile titkos kulcs

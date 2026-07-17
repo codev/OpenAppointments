@@ -37,6 +37,13 @@ Rails.application.routes.draw do
     post "#{resource}/destroy" => "#{resource}#destroy"
   end
 
+  # 10to8 import page
+  get "import" => "import#index"
+  post "import/analyze" => "import#analyze"
+  post "import/start" => "import#start"
+  get "import/status" => "import#status"
+  post "import/reset" => "import#reset"
+
   # Record pictures (cards display mode)
   %w[providers secretaries admins services service_categories].each do |resource|
     post "#{resource}/:id/picture" => "#{resource}#save_picture"

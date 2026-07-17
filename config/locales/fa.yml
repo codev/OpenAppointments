@@ -1,6 +1,24 @@
 ---
 fa:
   ea:
+    import_data: وارد کردن داده‌ها
+    import_hint: یک فایل CSV خروجی 10to8 را بارگذاری کنید، ابتدا آن را تحلیل و سپس انواع رکوردهای انتخابی را وارد کنید.
+    import_phases: انواع رکوردها
+    analyze: تحلیل
+    start_import: شروع واردات
+    create_providers: ایجاد ارائه‌دهندگان غایب
+    days_back: روز به عقب
+    days_forward: روز به جلو
+    import_running: واردات در حال اجرا...
+    import_complete: واردات کامل شد.
+    created: ایجاد شد
+    matched: تطبیق یافت
+    skipped: رد شد
+    no_file_selected: فایلی انتخاب نشده است.
+    reset_database: بازنشانی پایگاه داده
+    reset_database_warning: این کار همه قرارها، مشتریان، ارائه‌دهندگان، منشی‌ها، خدمات و دسته‌ها را برای همیشه حذف می‌کند. حساب‌های مدیر و تنظیمات حفظ می‌شوند. قابل بازگشت نیست.
+    reset_confirmation_hint: برای فعال شدن دکمه RESET را تایپ کنید.
+    reset_database_done: پایگاه داده بازنشانی شد.
     captcha_provider: ارائه‌دهنده کپچا
     turnstile_site_key: کلید سایت Turnstile
     turnstile_secret_key: کلید مخفی Turnstile

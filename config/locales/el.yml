@@ -1,6 +1,24 @@
 ---
 el:
   ea:
+    import_data: Εισαγωγή δεδομένων
+    import_hint: Ανεβάστε ένα CSV εξαγωγής 10to8, αναλύστε το πρώτα και μετά εισαγάγετε τους επιλεγμένους τύπους εγγραφών.
+    import_phases: Τύποι εγγραφών
+    analyze: Ανάλυση
+    start_import: Έναρξη εισαγωγής
+    create_providers: Δημιουργία παρόχων που λείπουν
+    days_back: Ημέρες πίσω
+    days_forward: Ημέρες μπροστά
+    import_running: Η εισαγωγή εκτελείται...
+    import_complete: Η εισαγωγή ολοκληρώθηκε.
+    created: δημιουργήθηκαν
+    matched: αντιστοιχίστηκαν
+    skipped: παραλείφθηκαν
+    no_file_selected: Δεν επιλέχθηκε αρχείο.
+    reset_database: Επαναφορά βάσης δεδομένων
+    reset_database_warning: Αυτό διαγράφει οριστικά όλα τα ραντεβού, πελάτες, παρόχους, γραμματείς, υπηρεσίες και κατηγορίες. Οι λογαριασμοί διαχειριστών και οι ρυθμίσεις διατηρούνται. Δεν αναιρείται.
+    reset_confirmation_hint: Πληκτρολογήστε RESET για να ενεργοποιήσετε το κουμπί.
+    reset_database_done: Η βάση δεδομένων επαναφέρθηκε.
     captcha_provider: Πάροχος captcha
     turnstile_site_key: Κλειδί ιστότοπου Turnstile
     turnstile_secret_key: Μυστικό κλειδί Turnstile

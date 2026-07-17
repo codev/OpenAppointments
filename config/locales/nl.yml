@@ -1,6 +1,24 @@
 ---
 nl:
   ea:
+    import_data: Gegevens importeren
+    import_hint: Upload een 10to8 CSV-export, analyseer die eerst en importeer daarna de geselecteerde recordtypen.
+    import_phases: Recordtypen
+    analyze: Analyseren
+    start_import: Import starten
+    create_providers: Ontbrekende aanbieders aanmaken
+    days_back: Dagen terug
+    days_forward: Dagen vooruit
+    import_running: Import bezig...
+    import_complete: Import voltooid.
+    created: aangemaakt
+    matched: gekoppeld
+    skipped: overgeslagen
+    no_file_selected: Geen bestand geselecteerd.
+    reset_database: Database resetten
+    reset_database_warning: Dit verwijdert permanent alle afspraken, klanten, aanbieders, secretariaten, diensten en categorieën. Beheerdersaccounts en instellingen blijven behouden. Onomkeerbaar.
+    reset_confirmation_hint: Typ RESET om de knop te activeren.
+    reset_database_done: De database is gereset.
     captcha_provider: Captcha-aanbieder
     turnstile_site_key: Turnstile-sitesleutel
     turnstile_secret_key: Turnstile-geheime sleutel

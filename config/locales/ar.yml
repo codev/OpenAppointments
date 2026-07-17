@@ -1,6 +1,24 @@
 ---
 ar:
   ea:
+    import_data: استيراد البيانات
+    import_hint: ارفع ملف CSV مصدرا من 10to8، حلله أولا ثم استورد أنواع السجلات المحددة.
+    import_phases: أنواع السجلات
+    analyze: تحليل
+    start_import: بدء الاستيراد
+    create_providers: إنشاء مقدمي الخدمة الناقصين
+    days_back: أيام للخلف
+    days_forward: أيام للأمام
+    import_running: الاستيراد جار...
+    import_complete: اكتمل الاستيراد.
+    created: أنشئ
+    matched: مطابق
+    skipped: متخطى
+    no_file_selected: لم يتم اختيار ملف.
+    reset_database: إعادة تعيين قاعدة البيانات
+    reset_database_warning: سيحذف هذا نهائيا جميع المواعيد والعملاء ومقدمي الخدمة والسكرتارية والخدمات والفئات. تبقى حسابات المديرين والإعدادات. لا يمكن التراجع عن هذا.
+    reset_confirmation_hint: اكتب RESET لتفعيل الزر.
+    reset_database_done: تمت إعادة تعيين قاعدة البيانات.
     captcha_provider: مزود الكابتشا
     turnstile_site_key: مفتاح الموقع Turnstile
     turnstile_secret_key: المفتاح السري Turnstile

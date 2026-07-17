@@ -1,6 +1,24 @@
 ---
 lv:
   ea:
+    import_data: Importēt datus
+    import_hint: Augšupielādējiet 10to8 CSV eksportu, vispirms to analizējiet un pēc tam importējiet izvēlētos ierakstu tipus.
+    import_phases: Ierakstu tipi
+    analyze: Analizēt
+    start_import: Sākt importu
+    create_providers: Izveidot trūkstošos pakalpojumu sniedzējus
+    days_back: Dienas atpakaļ
+    days_forward: Dienas uz priekšu
+    import_running: Imports darbojas...
+    import_complete: Imports pabeigts.
+    created: izveidoti
+    matched: sakrita
+    skipped: izlaisti
+    no_file_selected: Nav izvēlēts fails.
+    reset_database: Atiestatīt datubāzi
+    reset_database_warning: Tas neatgriezeniski dzēš visus pierakstus, klientus, pakalpojumu sniedzējus, sekretārus, pakalpojumus un kategorijas. Administratoru konti un iestatījumi saglabājas. Nevar atsaukt.
+    reset_confirmation_hint: Ierakstiet RESET, lai iespējotu pogu.
+    reset_database_done: Datubāze ir atiestatīta.
     captcha_provider: Captcha nodrošinātājs
     turnstile_site_key: Turnstile vietnes atslēga
     turnstile_secret_key: Turnstile slepenā atslēga

@@ -1,6 +1,24 @@
 ---
 zh:
   ea:
+    import_data: 导入数据
+    import_hint: 上传 10to8 导出的 CSV 文件，先分析，然后导入所选的记录类型。
+    import_phases: 记录类型
+    analyze: 分析
+    start_import: 开始导入
+    create_providers: 创建缺失的服务人员
+    days_back: 向前天数
+    days_forward: 向后天数
+    import_running: 导入进行中...
+    import_complete: 导入完成。
+    created: 已创建
+    matched: 已匹配
+    skipped: 已跳过
+    no_file_selected: 未选择文件。
+    reset_database: 重置数据库
+    reset_database_warning: 这将永久删除所有预约、客户、服务人员、秘书、服务和类别。管理员账户和设置将保留。此操作不可撤销。
+    reset_confirmation_hint: 输入 RESET 以启用按钮。
+    reset_database_done: 数据库已重置。
     captcha_provider: 验证码提供方
     turnstile_site_key: Turnstile 站点密钥
     turnstile_secret_key: Turnstile 私密密钥

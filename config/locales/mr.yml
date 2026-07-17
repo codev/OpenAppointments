@@ -1,6 +1,24 @@
 ---
 mr:
   ea:
+    import_data: डेटा आयात करा
+    import_hint: 10to8 निर्यात CSV अपलोड करा, आधी विश्लेषण करा, मग निवडलेले रेकॉर्ड प्रकार आयात करा.
+    import_phases: रेकॉर्ड प्रकार
+    analyze: विश्लेषण
+    start_import: आयात सुरू करा
+    create_providers: गहाळ प्रदाते तयार करा
+    days_back: दिवस मागे
+    days_forward: दिवस पुढे
+    import_running: आयात सुरू आहे...
+    import_complete: आयात पूर्ण.
+    created: तयार केले
+    matched: जुळले
+    skipped: वगळले
+    no_file_selected: कोणतीही फाइल निवडलेली नाही.
+    reset_database: डेटाबेस रीसेट करा
+    reset_database_warning: हे सर्व अपॉइंटमेंट, ग्राहक, प्रदाते, सचिव, सेवा आणि श्रेणी कायमचे हटवते. प्रशासक खाती आणि सेटिंग्ज राहतात. हे पूर्ववत करता येत नाही.
+    reset_confirmation_hint: बटण सक्षम करण्यासाठी RESET टाइप करा.
+    reset_database_done: डेटाबेस रीसेट झाला आहे.
     captcha_provider: कॅप्चा प्रदाता
     turnstile_site_key: Turnstile साइट की
     turnstile_secret_key: Turnstile गुप्त की
