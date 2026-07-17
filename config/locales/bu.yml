@@ -1,6 +1,43 @@
 ---
 bu:
   ea:
+    embedding: Вграждане
+    allow_iframe_embedding: Разреши вграждане в iframe
+    iframe_embed_origin: Сайтът, който ще вгради страницата за резервации
+    embed_code: Код за вграждане
+    embed_hint: Поставете този код в страницата на сайта ви, която ще показва формата за резервации; рамката се преоразмерява сама.
+    copy: Копирай
+    import_data: Импорт на данни
+    import_hint: Качете CSV експорт от 10to8, първо го анализирайте, после импортирайте избраните типове записи.
+    import_phases: Типове записи
+    analyze: Анализ
+    start_import: Старт на импорта
+    create_providers: Създай липсващите изпълнители
+    days_back: Дни назад
+    days_forward: Дни напред
+    import_running: Импортът тече...
+    import_complete: Импортът завърши.
+    created: създадени
+    matched: съвпаднали
+    skipped: пропуснати
+    no_file_selected: Няма избран файл.
+    reset_database: Нулиране на базата данни
+    reset_database_warning: Това изтрива завинаги всички часове, клиенти, изпълнители, секретари, услуги и категории. Администраторските акаунти и настройките се запазват. Не може да бъде отменено.
+    reset_confirmation_hint: Въведете RESET, за да активирате бутона.
+    reset_database_done: Базата данни е нулирана.
+    captcha_provider: Доставчик на captcha
+    turnstile_site_key: Turnstile ключ на сайта
+    turnstile_secret_key: Turnstile таен ключ
+    turnstile_verification_failed: Проверката на captcha не успя, опитайте отново.
+    phone_or_email_required: Моля, въведете телефонен номер или имейл адрес.
+    require_phone_or_email_label: Изисквай телефон или имейл (достатъчно е едното)
+    booking_display_mode: Режим на показване на резервацията
+    display_as_dropdown: Падащ списък
+    display_as_cards: Карти
+    picture: Снимка
+    remove_picture: Премахни снимката
+    select_provider_first: Първо изберете изпълнител
+    select_service_first: Първо изберете услуга
     page_title: Запазете час с ...
     service_and_provider: Изберете Услуга и Изпълнител
     select_service: Изберете Услуга

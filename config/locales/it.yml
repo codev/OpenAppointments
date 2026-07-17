@@ -1,6 +1,43 @@
 ---
 it:
   ea:
+    embedding: Incorporamento
+    allow_iframe_embedding: Consenti l'incorporamento in un iframe
+    iframe_embed_origin: Sito web che incorporerà la pagina di prenotazione
+    embed_code: Codice di incorporamento
+    embed_hint: Incolla questo codice nella pagina del tuo sito che deve mostrare il modulo di prenotazione; il riquadro si ridimensiona da solo.
+    copy: Copia
+    import_data: Importa dati
+    import_hint: Carica un CSV esportato da 10to8, analizzalo prima e poi importa i tipi di record selezionati.
+    import_phases: Tipi di record
+    analyze: Analizza
+    start_import: Avvia importazione
+    create_providers: Crea i fornitori mancanti
+    days_back: Giorni indietro
+    days_forward: Giorni avanti
+    import_running: Importazione in corso...
+    import_complete: Importazione completata.
+    created: creati
+    matched: abbinati
+    skipped: saltati
+    no_file_selected: Nessun file selezionato.
+    reset_database: Reimposta database
+    reset_database_warning: Questo elimina definitivamente tutti gli appuntamenti, clienti, fornitori, segretari, servizi e categorie. Gli account amministratore e le impostazioni restano. Irreversibile.
+    reset_confirmation_hint: Digita RESET per abilitare il pulsante.
+    reset_database_done: Il database è stato reimpostato.
+    captcha_provider: Fornitore captcha
+    turnstile_site_key: Chiave del sito Turnstile
+    turnstile_secret_key: Chiave segreta Turnstile
+    turnstile_verification_failed: Verifica captcha non riuscita, riprova.
+    phone_or_email_required: Indica un numero di telefono o un indirizzo email.
+    require_phone_or_email_label: Richiedi telefono o email (ne basta uno)
+    booking_display_mode: Modalità di visualizzazione della prenotazione
+    display_as_dropdown: Elenco a discesa
+    display_as_cards: Schede
+    picture: Immagine
+    remove_picture: Rimuovi immagine
+    select_provider_first: Seleziona prima il fornitore
+    select_service_first: Seleziona prima il servizio
     page_title: Prenota un appuntamento con
     service_and_provider: Seleziona servizio & fornitore
     select_service: Seleziona un servizio

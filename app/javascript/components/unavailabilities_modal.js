@@ -204,7 +204,7 @@ App.Components.UnavailabilitiesModal = (function () {
         for (const index in vars('available_providers')) {
             const provider = vars('available_providers')[index];
 
-            $selectProvider.append(new Option(provider.first_name + ' ' + provider.last_name, provider.id));
+            $selectProvider.append(new Option(provider.name, provider.id));
         }
 
         addEventListeners();

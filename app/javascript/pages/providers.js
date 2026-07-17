@@ -17,8 +17,7 @@
 App.Pages.Providers = (function () {
     const $providers = $('#providers');
     const $id = $('#id');
-    const $firstName = $('#first-name');
-    const $lastName = $('#last-name');
+    const $name = $('#name');
     const $email = $('#email');
     const $mobileNumber = $('#mobile-number');
     const $phoneNumber = $('#phone-number');
@@ -187,8 +186,7 @@ App.Pages.Providers = (function () {
             }
 
             const provider = {
-                first_name: $firstName.val(),
-                last_name: $lastName.val(),
+                name: $name.val(),
                 email: $email.val(),
                 mobile_number: $mobileNumber.val(),
                 phone_number: $phoneNumber.val(),
@@ -380,6 +378,7 @@ App.Pages.Providers = (function () {
      * Resets the provider tab form back to its initial state.
      */
     function resetForm() {
+        App.Utils.PictureUpload.reset();
         $filterProviders.find('.selected').removeClass('selected');
         $filterProviders.find('button').prop('disabled', false);
         $filterProviders.find('.results').css('color', '');
@@ -421,9 +420,9 @@ App.Pages.Providers = (function () {
      * @param {Object} provider Contains the provider record data.
      */
     function display(provider) {
+        App.Utils.PictureUpload.setRecord('providers', provider.id, provider.picture_url);
         $id.val(provider.id);
-        $firstName.val(provider.first_name);
-        $lastName.val(provider.last_name);
+        $name.val(provider.name);
         $email.val(provider.email);
         $mobileNumber.val(provider.mobile_number);
         $phoneNumber.val(provider.phone_number);
@@ -556,7 +555,7 @@ App.Pages.Providers = (function () {
      * @return {String} The html code that represents the record on the filter results list.
      */
     function getFilterHtml(provider) {
-        const name = provider.first_name + ' ' + provider.last_name;
+        const name = provider.name;
 
         let info = provider.email;
 

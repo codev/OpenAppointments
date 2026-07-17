@@ -1,6 +1,43 @@
 ---
 da:
   ea:
+    embedding: Indlejring
+    allow_iframe_embedding: Tillad indlejring i en iframe
+    iframe_embed_origin: Websted der skal indlejre bookingsiden
+    embed_code: Indlejringskode
+    embed_hint: Indsæt denne kode på den side på dit websted, der skal vise bookingformularen; rammen tilpasser selv sin højde.
+    copy: Kopier
+    import_data: Importer data
+    import_hint: Upload en 10to8 CSV-eksport, analyser den først, og importer derefter de valgte posttyper.
+    import_phases: Posttyper
+    analyze: Analyser
+    start_import: Start import
+    create_providers: Opret manglende udbydere
+    days_back: Dage tilbage
+    days_forward: Dage frem
+    import_running: Import kører...
+    import_complete: Import fuldført.
+    created: oprettet
+    matched: matchet
+    skipped: sprunget over
+    no_file_selected: Ingen fil valgt.
+    reset_database: Nulstil database
+    reset_database_warning: Dette sletter permanent alle aftaler, kunder, udbydere, sekretærer, ydelser og kategorier. Administratorkonti og indstillinger bevares. Kan ikke fortrydes.
+    reset_confirmation_hint: Skriv RESET for at aktivere knappen.
+    reset_database_done: Databasen er nulstillet.
+    captcha_provider: Captcha-udbyder
+    turnstile_site_key: Turnstile-webstedsnøgle
+    turnstile_secret_key: Turnstile-hemmelig nøgle
+    turnstile_verification_failed: Captcha-bekræftelsen mislykkedes, prøv igen.
+    phone_or_email_required: Angiv venligst et telefonnummer eller en e-mailadresse.
+    require_phone_or_email_label: Kræv telefonnummer eller e-mail (én af delene er nok)
+    booking_display_mode: Visning af booking
+    display_as_dropdown: Rulleliste
+    display_as_cards: Kort
+    picture: Billede
+    remove_picture: Fjern billede
+    select_provider_first: Vælg udbyder først
+    select_service_first: Vælg ydelse først
     page_title: Book tid ved ...
     service_and_provider: Vælg tjeneste og leverandør
     select_service: Vælg tjeneste

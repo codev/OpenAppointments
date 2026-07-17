@@ -12,10 +12,13 @@ class AltchaSettingsController < ApplicationController
     backend_page_vars(page_title: helpers.lang("settings"), active_menu: "system_settings")
     script_vars(
       altcha_settings: [
+        { "name" => "captcha_provider", "value" => Setting.get("captcha_provider", "altcha") },
         { "name" => "altcha_enabled", "value" => Setting.get("altcha_enabled", "0") },
         { "name" => "altcha_hmac_key", "value" => Setting.get("altcha_hmac_key", "") },
         { "name" => "altcha_max_number", "value" => Setting.get("altcha_max_number", "100000") },
-        { "name" => "altcha_expires", "value" => Setting.get("altcha_expires", "300") }
+        { "name" => "altcha_expires", "value" => Setting.get("altcha_expires", "300") },
+        { "name" => "turnstile_site_key", "value" => Setting.get("turnstile_site_key", "") },
+        { "name" => "turnstile_secret_key", "value" => Setting.get("turnstile_secret_key", "") }
       ]
     )
     html_vars(require_captcha: Setting.get("require_captcha", "0"))

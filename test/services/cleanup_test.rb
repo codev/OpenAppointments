@@ -4,7 +4,7 @@ class CleanupTest < ActiveSupport::TestCase
   setup { Setting.set("data_retention_days", "365") }
 
   def make_customer(created_at:)
-    User.create!(first_name: "Old", last_name: "Customer", email: "old#{created_at.to_i}@example.org",
+    User.create!(name: "Old Customer", email: "old#{created_at.to_i}@example.org",
                  role: Role.find_by(slug: "customer"), created_at: created_at)
   end
 

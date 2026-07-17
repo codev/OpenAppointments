@@ -4,7 +4,7 @@ module SettingsPage
   extend ActiveSupport::Concern
 
   # EA filter_sensitive_settings.
-  SENSITIVE_SETTING_NAMES = %w[api_token google_client_secret ldap_password].freeze
+  SENSITIVE_SETTING_NAMES = %w[api_token google_client_secret ldap_password turnstile_secret_key].freeze
 
   private
 

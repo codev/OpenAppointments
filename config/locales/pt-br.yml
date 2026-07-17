@@ -1,6 +1,43 @@
 ---
 pt-br:
   ea:
+    embedding: Incorporação
+    allow_iframe_embedding: Permitir incorporação em um iframe
+    iframe_embed_origin: Site que incorporará a página de reservas
+    embed_code: Código de incorporação
+    embed_hint: Cole este código na página do seu site que deve mostrar o formulário de reserva; o quadro se ajusta sozinho.
+    copy: Copiar
+    import_data: Importar dados
+    import_hint: Envie um CSV exportado do 10to8, analise-o primeiro e depois importe os tipos de registros selecionados.
+    import_phases: Tipos de registros
+    analyze: Analisar
+    start_import: Iniciar importação
+    create_providers: Criar prestadores ausentes
+    days_back: Dias para trás
+    days_forward: Dias para frente
+    import_running: Importação em andamento...
+    import_complete: Importação concluída.
+    created: criados
+    matched: correspondidos
+    skipped: ignorados
+    no_file_selected: Nenhum arquivo selecionado.
+    reset_database: Redefinir banco de dados
+    reset_database_warning: Isso exclui permanentemente todos os agendamentos, clientes, prestadores, secretários, serviços e categorias. As contas de administrador e as configurações são mantidas. Irreversível.
+    reset_confirmation_hint: Digite RESET para habilitar o botão.
+    reset_database_done: O banco de dados foi redefinido.
+    captcha_provider: Provedor de captcha
+    turnstile_site_key: Chave do site Turnstile
+    turnstile_secret_key: Chave secreta Turnstile
+    turnstile_verification_failed: A verificação do captcha falhou, tente novamente.
+    phone_or_email_required: Informe um número de telefone ou um endereço de email.
+    require_phone_or_email_label: Exigir telefone ou email (basta um)
+    booking_display_mode: Modo de exibição da reserva
+    display_as_dropdown: Lista suspensa
+    display_as_cards: Cartões
+    picture: Imagem
+    remove_picture: Remover imagem
+    select_provider_first: Selecionar primeiro o prestador
+    select_service_first: Selecionar primeiro o serviço
     page_title: Agendar horário
     service_and_provider: Selecione o serviço e o atendente
     select_service: Selecione o serviço

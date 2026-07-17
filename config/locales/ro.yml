@@ -1,6 +1,43 @@
 ---
 ro:
   ea:
+    embedding: Încorporare
+    allow_iframe_embedding: Permite încorporarea într-un iframe
+    iframe_embed_origin: Site-ul care va încorpora pagina de rezervări
+    embed_code: Cod de încorporare
+    embed_hint: Lipiți acest cod în pagina site-ului dvs. care trebuie să afișeze formularul de rezervare; cadrul se redimensionează singur.
+    copy: Copiază
+    import_data: Import date
+    import_hint: Încărcați un export CSV din 10to8, analizați-l mai întâi, apoi importați tipurile de înregistrări selectate.
+    import_phases: Tipuri de înregistrări
+    analyze: Analizează
+    start_import: Pornește importul
+    create_providers: Creează furnizorii lipsă
+    days_back: Zile în urmă
+    days_forward: Zile înainte
+    import_running: Importul rulează...
+    import_complete: Import finalizat.
+    created: create
+    matched: potrivite
+    skipped: omise
+    no_file_selected: Niciun fișier selectat.
+    reset_database: Resetează baza de date
+    reset_database_warning: Aceasta șterge definitiv toate programările, clienții, furnizorii, secretarii, serviciile și categoriile. Conturile de administrator și setările rămân. Ireversibil.
+    reset_confirmation_hint: Tastați RESET pentru a activa butonul.
+    reset_database_done: Baza de date a fost resetată.
+    captcha_provider: Furnizor captcha
+    turnstile_site_key: Cheia site-ului Turnstile
+    turnstile_secret_key: Cheia secretă Turnstile
+    turnstile_verification_failed: Verificarea captcha a eșuat, încercați din nou.
+    phone_or_email_required: Introduceți un număr de telefon sau o adresă de email.
+    require_phone_or_email_label: Solicită telefon sau email (unul este suficient)
+    booking_display_mode: Modul de afișare a rezervării
+    display_as_dropdown: Listă derulantă
+    display_as_cards: Carduri
+    picture: Imagine
+    remove_picture: Elimină imaginea
+    select_provider_first: Selectați mai întâi furnizorul
+    select_service_first: Selectați mai întâi serviciul
     page_title: Programeaza întâlniri cu
     service_and_provider: Selecteaza Serviciul si Furnizorul
     select_service: Selecteaza Serviciul

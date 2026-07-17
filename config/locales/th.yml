@@ -1,6 +1,43 @@
 ---
 th:
   ea:
+    embedding: การฝังหน้า
+    allow_iframe_embedding: อนุญาตให้ฝังใน iframe
+    iframe_embed_origin: เว็บไซต์ที่จะฝังหน้าการจอง
+    embed_code: โค้ดสำหรับฝัง
+    embed_hint: วางโค้ดนี้ในหน้าเว็บไซต์ของคุณที่ต้องการแสดงแบบฟอร์มการจอง เฟรมจะปรับขนาดเอง
+    copy: คัดลอก
+    import_data: นำเข้าข้อมูล
+    import_hint: อัปโหลดไฟล์ CSV ที่ส่งออกจาก 10to8 วิเคราะห์ก่อน แล้วจึงนำเข้าประเภทข้อมูลที่เลือก
+    import_phases: ประเภทข้อมูล
+    analyze: วิเคราะห์
+    start_import: เริ่มนำเข้า
+    create_providers: สร้างผู้ให้บริการที่ขาดหาย
+    days_back: วันย้อนหลัง
+    days_forward: วันล่วงหน้า
+    import_running: กำลังนำเข้า...
+    import_complete: นำเข้าเสร็จสมบูรณ์
+    created: สร้างแล้ว
+    matched: จับคู่แล้ว
+    skipped: ข้ามแล้ว
+    no_file_selected: ยังไม่ได้เลือกไฟล์
+    reset_database: รีเซ็ตฐานข้อมูล
+    reset_database_warning: การดำเนินการนี้จะลบการนัดหมาย ลูกค้า ผู้ให้บริการ เลขานุการ บริการ และหมวดหมู่ทั้งหมดอย่างถาวร บัญชีผู้ดูแลระบบและการตั้งค่าจะยังคงอยู่ ไม่สามารถย้อนกลับได้
+    reset_confirmation_hint: พิมพ์ RESET เพื่อเปิดใช้งานปุ่ม
+    reset_database_done: รีเซ็ตฐานข้อมูลแล้ว
+    captcha_provider: ผู้ให้บริการ captcha
+    turnstile_site_key: คีย์ไซต์ Turnstile
+    turnstile_secret_key: คีย์ลับ Turnstile
+    turnstile_verification_failed: การยืนยัน captcha ล้มเหลว กรุณาลองอีกครั้ง
+    phone_or_email_required: กรุณาระบุหมายเลขโทรศัพท์หรืออีเมล
+    require_phone_or_email_label: ต้องมีหมายเลขโทรศัพท์หรืออีเมล (อย่างใดอย่างหนึ่ง)
+    booking_display_mode: รูปแบบการแสดงการจอง
+    display_as_dropdown: รายการแบบเลื่อนลง
+    display_as_cards: การ์ด
+    picture: รูปภาพ
+    remove_picture: ลบรูปภาพ
+    select_provider_first: เลือกผู้ให้บริการก่อน
+    select_service_first: เลือกบริการก่อน
     page_title: จองการนัดหมายกับ
     service_and_provider: บริการและผู้ให้บริการ
     select_service: เลือก บริการ

@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   belongs_to :role, foreign_key: :id_roles
+  has_one_attached :picture
   has_one :settings, class_name: "UserSetting", foreign_key: :id_users,
                      inverse_of: :user, dependent: :destroy, autosave: true
 
@@ -21,8 +22,7 @@ class User < ApplicationRecord
                                       inverse_of: :secretary, dependent: :delete_all
   has_many :providers, through: :secretary_provider_links
 
-  validates :first_name, presence: true
-  validates :last_name, presence: true
+  validates :name, presence: true
   validates :email, presence: true, unless: -> { role&.slug == Role::CUSTOMER && email.blank? }
 
   scope :admins, -> { joins(:role).where(roles: { slug: Role::ADMIN }) }
@@ -35,7 +35,7 @@ class User < ApplicationRecord
   def secretary? = role.slug == Role::SECRETARY
   def customer? = role.slug == Role::CUSTOMER
 
-  def full_name = [ first_name, last_name ].compact_blank.join(" ")
+  def full_name = name
 
   def working_plan
     raw = settings&.working_plan

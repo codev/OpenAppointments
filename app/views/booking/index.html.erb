@@ -12,9 +12,18 @@
                appointment_data: vars(:appointment_data),
                display_delete_personal_information: vars(:display_delete_personal_information) %>
 
-    <!-- Select Service & Provider -->
+    <!-- Select Service & Provider (order per ?first=, default service first) -->
 
-    <%= render "shared/booking_type_step", available_services: vars(:available_services) %>
+    <% swap_link = !vars(:manage_mode) %>
+    <% if vars(:first_step) == "provider" %>
+        <%= render "shared/booking_provider_step", frame_index: 1, swap_link: swap_link %>
+        <%= render "shared/booking_service_step", available_services: vars(:available_services),
+                                                  frame_index: 2, swap_link: false %>
+    <% else %>
+        <%= render "shared/booking_service_step", available_services: vars(:available_services),
+                                                  frame_index: 1, swap_link: swap_link %>
+        <%= render "shared/booking_provider_step", frame_index: 2, swap_link: false %>
+    <% end %>
 
     <!-- Pick An Appointment Date -->
 
@@ -23,10 +32,6 @@
     <!-- Enter Customer Information -->
 
     <%= render "shared/booking_info_step",
-               display_first_name: vars(:display_first_name),
-               require_first_name: vars(:require_first_name),
-               display_last_name: vars(:display_last_name),
-               require_last_name: vars(:require_last_name),
                display_email: vars(:display_email),
                require_email: vars(:require_email),
                display_phone_number: vars(:display_phone_number),

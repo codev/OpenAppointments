@@ -1,12 +1,13 @@
 # Secretaries admin CRUD, port of EA's Secretaries controller.
 class SecretariesController < ApplicationController
   include BackendPage
+  include PictureUpload
   include UserCrud
 
   layout "backend"
 
   # EA allowed_secretary_fields (mobile_number is not allowed, matching EA).
-  ALLOWED_FIELDS = %w[id first_name last_name email alt_number phone_number address city state
+  ALLOWED_FIELDS = %w[id name email alt_number phone_number address city state
                       zip_code notes timezone language is_private ldap_dn id_roles settings
                       providers].freeze
   ALLOWED_SETTING_FIELDS = %w[username password notifications calendar_view].freeze
@@ -16,8 +17,8 @@ class SecretariesController < ApplicationController
   def index
     return unless require_backend_page!(:users)
 
-    providers = User.providers.order(:first_name, :last_name).map do |provider|
-      { "id" => provider.id, "first_name" => provider.first_name, "last_name" => provider.last_name }
+    providers = User.providers.order(:name).map do |provider|
+      { "id" => provider.id, "name" => provider.name }
     end
 
     backend_page_vars(page_title: helpers.lang("secretaries"), active_menu: "users")
@@ -125,4 +126,8 @@ class SecretariesController < ApplicationController
       SecretaryProviderLink.create!(id_users_secretary: secretary.id, id_users_provider: provider_id)
     end
   end
+
+  def picture_record = User.secretaries.find(params[:id])
+
+  def picture_permission_resource = :users
 end

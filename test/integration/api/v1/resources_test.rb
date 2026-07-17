@@ -32,7 +32,7 @@ module Api
       test "providers index encodes settings and services" do
         api_get "/api/v1/providers"
         provider = json.find { |p| p["id"] == users(:jane).id }
-        assert_equal "Jane", provider["firstName"]
+        assert_equal "Jane Doe", provider["firstName"]
         assert_equal "janedoe", provider["settings"]["username"]
         assert provider["settings"].key?("workingPlan")
         assert provider["settings"].key?("syncFutureDays")

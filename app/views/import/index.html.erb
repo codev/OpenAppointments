@@ -1,0 +1,80 @@
+<%# 10to8 CSV import + business-data reset (admin only). %>
+<div class="container backend-page py-3" id="import-page">
+    <div class="col-lg-8 offset-lg-2">
+        <h4 class="mb-3 fw-light"><%= lang('import_data') %></h4>
+
+        <p class="text-muted small"><%= lang('import_hint') %></p>
+
+        <div class="card card-body mb-4">
+            <div class="mb-3">
+                <input type="file" id="import-file" class="form-control" accept=".csv,text/csv">
+            </div>
+
+            <div class="row mb-3">
+                <div class="col-12 col-md-6">
+                    <label class="form-label"><%= lang('import_phases') %></label>
+                    <% TenToEight::Load::PHASES.each do |phase| %>
+                        <div class="form-check">
+                            <input class="form-check-input import-phase" type="checkbox"
+                                   id="phase-<%= phase %>" value="<%= phase %>" checked>
+                            <label class="form-check-label" for="phase-<%= phase %>">
+                                <%= lang(phase) %>
+                            </label>
+                        </div>
+                    <% end %>
+
+                    <div class="form-check mt-2">
+                        <input class="form-check-input" type="checkbox" id="create-providers">
+                        <label class="form-check-label" for="create-providers">
+                            <%= lang('create_providers') %>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="col-6 col-md-3">
+                    <label class="form-label" for="days-back"><%= lang('days_back') %></label>
+                    <input type="number" id="days-back" class="form-control" value="21" min="0" max="3650">
+                </div>
+                <div class="col-6 col-md-3">
+                    <label class="form-label" for="days-forward"><%= lang('days_forward') %></label>
+                    <input type="number" id="days-forward" class="form-control" value="21" min="0" max="3650">
+                </div>
+            </div>
+
+            <div class="d-flex gap-2">
+                <button type="button" id="analyze-import" class="btn btn-outline-secondary">
+                    <%= lang('analyze') %>
+                </button>
+                <button type="button" id="start-import" class="btn btn-primary">
+                    <%= lang('start_import') %>
+                </button>
+            </div>
+
+            <div id="import-results" class="alert alert-info mt-3 mb-0 d-none" style="white-space: pre-line;"></div>
+        </div>
+
+        <h4 class="mb-3 fw-light text-danger"><%= lang('reset_database') %></h4>
+
+        <div class="card card-body border-danger">
+            <div class="alert alert-danger">
+                <i class="fas fa-exclamation-triangle me-2"></i>
+                <%= lang('reset_database_warning') %>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label" for="reset-confirmation"><%= lang('reset_confirmation_hint') %></label>
+                <input type="text" id="reset-confirmation" class="form-control" autocomplete="off">
+            </div>
+
+            <div>
+                <button type="button" id="reset-database" class="btn btn-danger" disabled>
+                    <%= lang('reset_database') %>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<% content_for :scripts do %>
+    <%= ea_js "pages/import" %>
+<% end %>

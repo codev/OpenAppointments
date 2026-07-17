@@ -69,7 +69,7 @@ class BookingFlowTest < ActionDispatch::IntegrationTest
     assert_equal "Booked", appointment.status
     assert_equal services(:haircut).color, appointment.color
     customer = appointment.customer
-    assert_equal "New", customer.first_name
+    assert_equal "New Customer", customer.name
     assert_equal "english", customer.language
   end
 
@@ -180,7 +180,7 @@ class BookingFlowTest < ActionDispatch::IntegrationTest
           "id_users_provider" => provider
         }.merge(extra_appointment),
         customer: {
-          "first_name" => "New", "last_name" => "Customer", "email" => email,
+          "name" => "New Customer", "email" => email,
           "phone_number" => "+447700900123", "timezone" => "Europe/London"
         },
         manage_mode: manage_mode

@@ -22,8 +22,7 @@ App.Components.AppointmentsModal = (function () {
     const $endDatetime = $('#end-datetime');
     const $filterExistingCustomers = $('#filter-existing-customers');
     const $customerId = $('#customer-id');
-    const $firstName = $('#first-name');
-    const $lastName = $('#last-name');
+    const $name = $('#name');
     const $email = $('#email');
     const $phoneNumber = $('#phone-number');
     const $address = $('#address');
@@ -113,8 +112,7 @@ App.Components.AppointmentsModal = (function () {
             }
 
             const customer = {
-                first_name: $firstName.val(),
-                last_name: $lastName.val(),
+                name: $name.val(),
                 email: $email.val(),
                 phone_number: $phoneNumber.val(),
                 address: $address.val(),
@@ -301,7 +299,7 @@ App.Components.AppointmentsModal = (function () {
                     $('<div/>', {
                         'data-id': customer.id,
                         'text':
-                            (customer.first_name || '[No First Name]') + ' ' + (customer.last_name || '[No Last Name]'),
+                            (customer.name || '[No Name]'),
                     }).appendTo($existingCustomersList);
                 });
             } else {
@@ -323,8 +321,7 @@ App.Components.AppointmentsModal = (function () {
 
             if (customer) {
                 $customerId.val(customer.id);
-                $firstName.val(customer.first_name);
-                $lastName.val(customer.last_name);
+                $name.val(customer.name);
                 $email.val(customer.email);
                 $phoneNumber.val(customer.phone_number);
                 $address.val(customer.address);
@@ -368,9 +365,7 @@ App.Components.AppointmentsModal = (function () {
                             $('<div/>', {
                                 'data-id': customer.id,
                                 'text':
-                                    (customer.first_name || '[No First Name]') +
-                                    ' ' +
-                                    (customer.last_name || '[No Last Name]'),
+                                    (customer.name || '[No Name]'),
                             }).appendTo($existingCustomersList);
 
                             // Verify if this customer is on the old customer list.
@@ -390,8 +385,7 @@ App.Components.AppointmentsModal = (function () {
 
                         vars('customers').forEach((customer) => {
                             if (
-                                customer.first_name.toLowerCase().indexOf(keyword) !== -1 ||
-                                customer.last_name.toLowerCase().indexOf(keyword) !== -1 ||
+                                customer.name.toLowerCase().indexOf(keyword) !== -1 ||
                                 customer.email.toLowerCase().indexOf(keyword) !== -1 ||
                                 customer.phone_number.toLowerCase().indexOf(keyword) !== -1 ||
                                 customer.address.toLowerCase().indexOf(keyword) !== -1 ||
@@ -402,9 +396,7 @@ App.Components.AppointmentsModal = (function () {
                                 $('<div/>', {
                                     'data-id': customer.id,
                                     'text':
-                                        (customer.first_name || '[No First Name]') +
-                                        ' ' +
-                                        (customer.last_name || '[No Last Name]'),
+                                        (customer.name || '[No Name]'),
                                 }).appendTo($existingCustomersList);
                             }
                         });
@@ -463,7 +455,7 @@ App.Components.AppointmentsModal = (function () {
 
                     // If the current provider is able to provide the selected service, add him to the list box.
                     if (Number(providerServiceId) === Number(serviceId)) {
-                        $selectProvider.append(new Option(provider.first_name + ' ' + provider.last_name, provider.id));
+                        $selectProvider.append(new Option(provider.name, provider.id));
                     }
                 });
 
@@ -485,8 +477,7 @@ App.Components.AppointmentsModal = (function () {
          */
         $newCustomer.on('click', () => {
             $customerId.val('');
-            $firstName.val('');
-            $lastName.val('');
+            $name.val('');
             $email.val('');
             $phoneNumber.val('');
             $address.val('');
@@ -540,7 +531,7 @@ App.Components.AppointmentsModal = (function () {
 
             if (canProvideService) {
                 // Add the provider to the list box.
-                $selectProvider.append(new Option(provider.first_name + ' ' + provider.last_name, provider.id));
+                $selectProvider.append(new Option(provider.name, provider.id));
             }
         });
 

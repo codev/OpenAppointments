@@ -1,6 +1,43 @@
 ---
 ru:
   ea:
+    embedding: Встраивание
+    allow_iframe_embedding: Разрешить встраивание в iframe
+    iframe_embed_origin: Сайт, который встроит страницу записи
+    embed_code: Код для встраивания
+    embed_hint: Вставьте этот код на страницу вашего сайта, где должна отображаться форма записи; рамка сама подстраивает высоту.
+    copy: Копировать
+    import_data: Импорт данных
+    import_hint: Загрузите CSV-экспорт из 10to8, сначала проанализируйте его, затем импортируйте выбранные типы записей.
+    import_phases: Типы записей
+    analyze: Анализ
+    start_import: Начать импорт
+    create_providers: Создать отсутствующих специалистов
+    days_back: Дней назад
+    days_forward: Дней вперед
+    import_running: Импорт выполняется...
+    import_complete: Импорт завершен.
+    created: создано
+    matched: сопоставлено
+    skipped: пропущено
+    no_file_selected: Файл не выбран.
+    reset_database: Сбросить базу данных
+    reset_database_warning: Это навсегда удалит все записи, клиентов, специалистов, секретарей, услуги и категории. Учетные записи администраторов и настройки сохранятся. Отменить нельзя.
+    reset_confirmation_hint: Введите RESET, чтобы активировать кнопку.
+    reset_database_done: База данных сброшена.
+    captcha_provider: Провайдер капчи
+    turnstile_site_key: Ключ сайта Turnstile
+    turnstile_secret_key: Секретный ключ Turnstile
+    turnstile_verification_failed: Проверка капчи не пройдена, попробуйте еще раз.
+    phone_or_email_required: Укажите номер телефона или адрес электронной почты.
+    require_phone_or_email_label: Требовать телефон или email (достаточно одного)
+    booking_display_mode: Режим отображения записи
+    display_as_dropdown: Выпадающий список
+    display_as_cards: Карточки
+    picture: Изображение
+    remove_picture: Удалить изображение
+    select_provider_first: Сначала выберите специалиста
+    select_service_first: Сначала выберите услугу
     page_title: Заказ оформлен с
     service_and_provider: Выберите услугу и поставщика
     select_service: Выберите услугу

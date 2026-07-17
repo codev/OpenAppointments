@@ -1,6 +1,43 @@
 ---
 sv:
   ea:
+    embedding: Inbäddning
+    allow_iframe_embedding: Tillåt inbäddning i en iframe
+    iframe_embed_origin: Webbplats som ska bädda in bokningssidan
+    embed_code: Inbäddningskod
+    embed_hint: Klistra in den här koden på sidan på din webbplats som ska visa bokningsformuläret; ramen anpassar höjden själv.
+    copy: Kopiera
+    import_data: Importera data
+    import_hint: Ladda upp en 10to8 CSV-export, analysera den först och importera sedan de valda posttyperna.
+    import_phases: Posttyper
+    analyze: Analysera
+    start_import: Starta import
+    create_providers: Skapa saknade utförare
+    days_back: Dagar bakåt
+    days_forward: Dagar framåt
+    import_running: Import pågår...
+    import_complete: Import klar.
+    created: skapade
+    matched: matchade
+    skipped: överhoppade
+    no_file_selected: Ingen fil vald.
+    reset_database: Återställ databasen
+    reset_database_warning: Detta raderar permanent alla bokningar, kunder, utförare, sekreterare, tjänster och kategorier. Administratörskonton och inställningar behålls. Kan inte ångras.
+    reset_confirmation_hint: Skriv RESET för att aktivera knappen.
+    reset_database_done: Databasen har återställts.
+    captcha_provider: Captcha-leverantör
+    turnstile_site_key: Turnstile-webbplatsnyckel
+    turnstile_secret_key: Turnstile-hemlig nyckel
+    turnstile_verification_failed: Captcha-verifieringen misslyckades, försök igen.
+    phone_or_email_required: Ange ett telefonnummer eller en e-postadress.
+    require_phone_or_email_label: Kräv telefonnummer eller e-post (ett av dem räcker)
+    booking_display_mode: Visningsläge för bokning
+    display_as_dropdown: Rullgardinslista
+    display_as_cards: Kort
+    picture: Bild
+    remove_picture: Ta bort bild
+    select_provider_first: Välj utförare först
+    select_service_first: Välj tjänst först
     page_title: Boka tid med ...
     service_and_provider: Välj tjänst och utförare
     select_service: Välj tjänst

@@ -1,6 +1,43 @@
 ---
 lt:
   ea:
+    embedding: Įterpimas
+    allow_iframe_embedding: Leisti įterpti į iframe
+    iframe_embed_origin: Svetainė, kuri įterps rezervacijos puslapį
+    embed_code: Įterpimo kodas
+    embed_hint: Įklijuokite šį kodą į savo svetainės puslapį, kuriame turi būti rodoma rezervacijos forma; rėmelis pats prisitaiko.
+    copy: Kopijuoti
+    import_data: Importuoti duomenis
+    import_hint: Ikelkite 10to8 CSV eksportą, pirmiausia jį išanalizuokite, tada importuokite pasirinktus įrašų tipus.
+    import_phases: Įrašų tipai
+    analyze: Analizuoti
+    start_import: Pradėti importą
+    create_providers: Sukurti trūkstamus specialistus
+    days_back: Dienų atgal
+    days_forward: Dienų į priekį
+    import_running: Importas vykdomas...
+    import_complete: Importas baigtas.
+    created: sukurta
+    matched: sutapo
+    skipped: praleista
+    no_file_selected: Failas nepasirinktas.
+    reset_database: Atstatyti duomenų bazę
+    reset_database_warning: Tai visam laikui ištrina visus vizitus, klientus, specialistus, sekretorius, paslaugas ir kategorijas. Administratorių paskyros ir nustatymai išlieka. Neatšaukiama.
+    reset_confirmation_hint: Įveskite RESET, kad įjungtumėte mygtuką.
+    reset_database_done: Duomenų bazė atstatyta.
+    captcha_provider: Captcha teikėjas
+    turnstile_site_key: Turnstile svetainės raktas
+    turnstile_secret_key: Turnstile slaptas raktas
+    turnstile_verification_failed: Captcha patikra nepavyko, bandykite dar kartą.
+    phone_or_email_required: Nurodykite telefono numerį arba el. pašto adresą.
+    require_phone_or_email_label: Reikalauti telefono arba el. pašto (užtenka vieno)
+    booking_display_mode: Rezervacijos rodymo režimas
+    display_as_dropdown: Išskleidžiamasis sąrašas
+    display_as_cards: Kortelės
+    picture: Paveikslėlis
+    remove_picture: Pašalinti paveikslėlį
+    select_provider_first: Pirmiausia pasirinkite specialistą
+    select_service_first: Pirmiausia pasirinkite paslaugą
     page_title: 'Registravimasis vizitui – '
     service_and_provider: Paslauga ir paslaugos teikėjas
     select_service: Pasirinkite paslaugą

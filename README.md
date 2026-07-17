@@ -44,6 +44,26 @@ bin/rails openappointments:backup   # VACUUM INTO a timestamped SQLite copy
   Permissions-Policy) are set on every response, matching EA. See
   config/initializers/security_headers.rb.
 
+## Icons
+
+The app icon source is `openout-booking-icon-outline.svg` (workspace root, copied into the
+repo as `app/assets/images/logo.svg` and `public/icon.svg`). All raster variants are rendered
+from it (inkscape for PNGs, ImageMagick for the ico/social card). Everywhere it is used:
+
+- `app/assets/images/logo.svg` - SVG favicon link in the backend/booking/message/account layouts.
+- `app/assets/images/logo.png` (192px) - login/logout/recovery/about pages, backend header and
+  footer, booking header fallback when no company logo is set, 192x192 icon link in the layouts,
+  and the inline CID logo in every mail (`app/mailers/application_mailer.rb`; mail clients need PNG).
+- `app/assets/images/logo-16x16.png` - backend footer.
+- `app/assets/images/favicon.ico` (16/32/48) - legacy favicon in the layouts.
+- `app/assets/images/social-card.png` (1200x630) - og:image on the booking page.
+- `public/icon.png` (512px) + `public/icon.svg` - application layout and the PWA manifest
+  (`app/views/pwa/manifest.json.erb`).
+- `icon.png` (256px, repo root) - Cloudron dashboard icon (`CloudronManifest.json`).
+
+To regenerate after changing the SVG: render the sizes above with inkscape and rebuild
+`favicon.ico` from the 16/32/48 PNGs with ImageMagick.
+
 ## Deployment
 
 Cloudron packaging (manifest, Dockerfile, start.sh) and the release process are documented

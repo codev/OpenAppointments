@@ -240,6 +240,7 @@ App.Pages.ServiceCategories = (function () {
      * @param {Object} serviceCategory Contains the service-category data.
      */
     function display(serviceCategory) {
+        App.Utils.PictureUpload.setRecord('service_categories', serviceCategory.id, serviceCategory.picture_url);
         $id.val(serviceCategory.id);
         $name.val(serviceCategory.name);
         $description.val(serviceCategory.description);
@@ -279,6 +280,7 @@ App.Pages.ServiceCategories = (function () {
      * Bring the service-category form back to its initial state.
      */
     function resetForm() {
+        App.Utils.PictureUpload.reset();
         $filterServiceCategories.find('.selected').removeClass('selected');
         $filterServiceCategories.find('button').prop('disabled', false);
         $filterServiceCategories.find('.results').css('color', '');

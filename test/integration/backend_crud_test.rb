@@ -89,7 +89,7 @@ class BackendCrudTest < ActionDispatch::IntegrationTest
 
     post "/providers/store", params: {
       provider: {
-        first_name: "Pat", last_name: "Stylist", email: "pat@example.org",
+        name: "Pat Stylist", email: "pat@example.org",
         services: [ services(:haircut).id ],
         settings: {
           username: "patstylist", password: "patstylist1", notifications: "1",
@@ -113,7 +113,7 @@ class BackendCrudTest < ActionDispatch::IntegrationTest
 
     # New providers without a password are rejected, as in EA.
     post "/providers/store", params: {
-      provider: { first_name: "No", last_name: "Password", email: "nopass@example.org",
+      provider: { name: "No Password", email: "nopass@example.org",
                   settings: { username: "nopassword" } }
     }
     assert_equal false, response.parsed_body["success"]

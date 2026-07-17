@@ -1,6 +1,43 @@
 ---
 sq:
   ea:
+    embedding: Ngulitja
+    allow_iframe_embedding: Lejo ngulitjen në një iframe
+    iframe_embed_origin: Faqja që do të ngulisë faqen e rezervimeve
+    embed_code: Kodi i ngulitjes
+    embed_hint: Ngjisni këtë kod në faqen e sajtit tuaj që duhet të shfaqë formularin e rezervimit; korniza përshtatet vetë.
+    copy: Kopjo
+    import_data: Importo të dhëna
+    import_hint: Ngarkoni një CSV eksporti nga 10to8, analizojeni fillimisht dhe pastaj importoni llojet e zgjedhura të regjistrimeve.
+    import_phases: Llojet e regjistrimeve
+    analyze: Analizo
+    start_import: Nis importin
+    create_providers: Krijo ofruesit që mungojnë
+    days_back: Ditë prapa
+    days_forward: Ditë përpara
+    import_running: Importi po ekzekutohet...
+    import_complete: Importi përfundoi.
+    created: krijuar
+    matched: përputhur
+    skipped: anashkaluar
+    no_file_selected: Asnjë skedar i zgjedhur.
+    reset_database: Rivendos bazën e të dhënave
+    reset_database_warning: Kjo fshin përgjithmonë të gjitha takimet, klientët, ofruesit, sekretarët, shërbimet dhe kategoritë. Llogaritë e administratorëve dhe cilësimet ruhen. E pakthyeshme.
+    reset_confirmation_hint: Shkruani RESET për të aktivizuar butonin.
+    reset_database_done: Baza e të dhënave u rivendos.
+    captcha_provider: Ofruesi i captcha
+    turnstile_site_key: Çelësi i faqes Turnstile
+    turnstile_secret_key: Çelësi sekret Turnstile
+    turnstile_verification_failed: Verifikimi i captcha dështoi, provoni përsëri.
+    phone_or_email_required: Jepni një numër telefoni ose një adresë email.
+    require_phone_or_email_label: Kërko telefon ose email (mjafton njëra)
+    booking_display_mode: Mënyra e shfaqjes së rezervimit
+    display_as_dropdown: Listë rënëse
+    display_as_cards: Karta
+    picture: Foto
+    remove_picture: Hiq foton
+    select_provider_first: Zgjidhni fillimisht ofruesin
+    select_service_first: Zgjidhni fillimisht shërbimin
     page_title: Rezervoni Takim Me
     service_and_provider: Shërbimi & Ofruesi
     select_service: Zgjidh Shërbimin

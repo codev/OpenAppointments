@@ -1,6 +1,43 @@
 ---
 ca:
   ea:
+    embedding: Incrustació
+    allow_iframe_embedding: Permet incrustar en un iframe
+    iframe_embed_origin: Web que incrustarà la pàgina de reserves
+    embed_code: Codi d'incrustació
+    embed_hint: Enganxeu aquest codi a la pàgina del vostre web que ha de mostrar el formulari de reserves; el marc s'ajusta sol.
+    copy: Copia
+    import_data: Importa dades
+    import_hint: Pugeu un CSV exportat de 10to8, analitzeu-lo primer i després importeu els tipus de registres seleccionats.
+    import_phases: Tipus de registres
+    analyze: Analitza
+    start_import: Inicia la importació
+    create_providers: Crea els proveïdors que faltin
+    days_back: Dies enrere
+    days_forward: Dies endavant
+    import_running: Importació en curs...
+    import_complete: Importació completada.
+    created: creats
+    matched: coincidents
+    skipped: omesos
+    no_file_selected: No s'ha seleccionat cap fitxer.
+    reset_database: Restableix la base de dades
+    reset_database_warning: Això elimina permanentment totes les cites, clients, proveïdors, secretaris, serveis i categories. Els comptes d'administrador i la configuració es conserven. No es pot desfer.
+    reset_confirmation_hint: Escriviu RESET per activar el botó.
+    reset_database_done: La base de dades s'ha restablert.
+    captcha_provider: Proveïdor de captcha
+    turnstile_site_key: Clau del lloc de Turnstile
+    turnstile_secret_key: Clau secreta de Turnstile
+    turnstile_verification_failed: La verificació del captcha ha fallat, torneu-ho a provar.
+    phone_or_email_required: Introduïu un número de telèfon o una adreça electrònica.
+    require_phone_or_email_label: Requereix telèfon o correu electrònic (amb un n'hi ha prou)
+    booking_display_mode: Mode de visualització de la reserva
+    display_as_dropdown: Llista desplegable
+    display_as_cards: Targetes
+    picture: Imatge
+    remove_picture: Elimina la imatge
+    select_provider_first: Selecciona primer el proveïdor
+    select_service_first: Selecciona primer el servei
     page_title: Reserva una cita amb
     service_and_provider: Selecció del servei i el proveïdor
     select_service: Seleccioneu el servei

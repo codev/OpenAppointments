@@ -1,6 +1,7 @@
 # Services admin CRUD, port of EA's Services controller.
 class ServicesController < ApplicationController
   include BackendPage
+  include PictureUpload
 
   layout "backend"
 
@@ -12,7 +13,7 @@ class ServicesController < ApplicationController
   def index
     return unless require_backend_page!(:services)
 
-    providers = User.providers.order(:first_name, :last_name).includes(:services, :settings)
+    providers = User.providers.order(:name).includes(:services, :settings)
                     .map { |provider| EaRows.provider_row(provider) }
 
     backend_page_vars(page_title: helpers.lang("services"), active_menu: "services")
@@ -116,4 +117,8 @@ class ServicesController < ApplicationController
     pattern = "%#{Service.sanitize_sql_like(keyword)}%"
     scope.where("name LIKE :pattern OR description LIKE :pattern", pattern: pattern)
   end
+
+  def picture_record = Service.find(params[:id])
+
+  def picture_permission_resource = :services
 end

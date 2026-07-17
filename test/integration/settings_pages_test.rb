@@ -80,14 +80,14 @@ class SettingsPagesTest < ActionDispatch::IntegrationTest
     provider = users(:jane)
     post "/account/save", params: {
       account: {
-        first_name: "Janet", last_name: "Doe", email: "jane@example.org",
+        name: "Janet Doe", email: "jane@example.org",
         timezone: "Europe/London", language: "english",
         settings: { username: "janedoe", calendar_view: "default", notifications: 1 }
       }
     }
     assert_response :success
     assert_equal true, response.parsed_body["success"]
-    assert_equal "Janet", provider.reload.first_name
+    assert_equal "Janet Doe", provider.reload.name
   end
 
   test "account validate_username reports duplicates" do
