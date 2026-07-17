@@ -127,7 +127,7 @@ class CustomersController < ApplicationController
   end
 
   def search_customers(keyword, limit, offset)
-    scope = User.customers.order(updated_at: :desc).limit(limit).offset(offset)
+    scope = User.customers.with_attached_picture.order(updated_at: :desc).limit(limit).offset(offset)
     return scope if keyword.blank?
 
     pattern = "%#{User.sanitize_sql_like(keyword)}%"
