@@ -1,5 +1,6 @@
 # Public booking wizard, port of EA's Booking controller.
 class BookingController < ApplicationController
+  include EmbeddableFrame
   layout "booking"
 
   ALLOWED_CUSTOMER_FIELDS = %w[id name email phone_number address city state

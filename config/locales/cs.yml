@@ -1,6 +1,12 @@
 ---
 cs:
   ea:
+    embedding: Vložení do webu
+    allow_iframe_embedding: Povolit vložení do iframe
+    iframe_embed_origin: Web, který vloží rezervační stránku
+    embed_code: Kód pro vložení
+    embed_hint: Vložte tento kód na stránku vašeho webu, kde se má zobrazit rezervační formulář; rám se sám přizpůsobí.
+    copy: Kopírovat
     import_data: Import dat
     import_hint: Nahrajte CSV export z 10to8, nejprve jej analyzujte a poté importujte vybrané typy záznamů.
     import_phases: Typy záznamů

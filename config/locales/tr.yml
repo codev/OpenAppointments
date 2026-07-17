@@ -1,6 +1,12 @@
 ---
 tr:
   ea:
+    embedding: Gömme
+    allow_iframe_embedding: iframe içine gömmeye izin ver
+    iframe_embed_origin: Rezervasyon sayfasını gömecek web sitesi
+    embed_code: Gömme kodu
+    embed_hint: Bu kodu web sitenizde rezervasyon formunun görüneceği sayfaya yapıştırın; çerçeve boyutunu kendisi ayarlar.
+    copy: Kopyala
     import_data: Veri içe aktar
     import_hint: Bir 10to8 CSV dışa aktarımı yükleyin, önce analiz edin, sonra seçilen kayıt türlerini içe aktarın.
     import_phases: Kayıt türleri

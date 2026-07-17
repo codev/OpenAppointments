@@ -1,6 +1,12 @@
 ---
 da:
   ea:
+    embedding: Indlejring
+    allow_iframe_embedding: Tillad indlejring i en iframe
+    iframe_embed_origin: Websted der skal indlejre bookingsiden
+    embed_code: Indlejringskode
+    embed_hint: Indsæt denne kode på den side på dit websted, der skal vise bookingformularen; rammen tilpasser selv sin højde.
+    copy: Kopier
     import_data: Importer data
     import_hint: Upload en 10to8 CSV-eksport, analyser den først, og importer derefter de valgte posttyper.
     import_phases: Posttyper

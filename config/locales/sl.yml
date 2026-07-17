@@ -1,6 +1,12 @@
 ---
 sl:
   ea:
+    embedding: Vdelava
+    allow_iframe_embedding: Dovoli vdelavo v iframe
+    iframe_embed_origin: Spletno mesto, ki bo vdelalo stran za rezervacije
+    embed_code: Koda za vdelavo
+    embed_hint: Prilepite to kodo na stran svojega spletnega mesta, kjer naj se prikaze obrazec za rezervacije; okvir se sam prilagodi.
+    copy: Kopiraj
     import_data: Uvoz podatkov
     import_hint: Nalozite 10to8 CSV izvoz, najprej ga analizirajte in nato uvozite izbrane vrste zapisov.
     import_phases: Vrste zapisov

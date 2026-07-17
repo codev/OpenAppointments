@@ -1,6 +1,12 @@
 ---
 en:
   ea:
+    embedding: Embedding
+    allow_iframe_embedding: Allow embedding in an iframe
+    iframe_embed_origin: Website that will embed the booking page
+    embed_code: Embed code
+    embed_hint: Paste this code into the page of your website that should show the booking form; the frame resizes itself to fit.
+    copy: Copy
     import_data: Import data
     import_hint: Upload a 10to8 export CSV, analyze it first, then import the selected record types.
     import_phases: Record types

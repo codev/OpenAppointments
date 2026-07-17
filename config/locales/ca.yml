@@ -1,6 +1,12 @@
 ---
 ca:
   ea:
+    embedding: Incrustació
+    allow_iframe_embedding: Permet incrustar en un iframe
+    iframe_embed_origin: Web que incrustarà la pàgina de reserves
+    embed_code: Codi d'incrustació
+    embed_hint: Enganxeu aquest codi a la pàgina del vostre web que ha de mostrar el formulari de reserves; el marc s'ajusta sol.
+    copy: Copia
     import_data: Importa dades
     import_hint: Pugeu un CSV exportat de 10to8, analitzeu-lo primer i després importeu els tipus de registres seleccionats.
     import_phases: Tipus de registres

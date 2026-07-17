@@ -1,6 +1,12 @@
 ---
 hu:
   ea:
+    embedding: Beágyazás
+    allow_iframe_embedding: Beágyazás engedélyezése iframe-be
+    iframe_embed_origin: A weboldal, amely beágyazza a foglalási oldalt
+    embed_code: Beágyazási kód
+    embed_hint: Illessze be ezt a kódot webhelye azon oldalára, ahol a foglalási űrlapnak meg kell jelennie; a keret magassága automatikusan igazodik.
+    copy: Másolás
     import_data: Adatok importálása
     import_hint: Töltsön fel egy 10to8 CSV exportot, először elemezze, majd importálja a kiválasztott rekordtípusokat.
     import_phases: Rekordtípusok

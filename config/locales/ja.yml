@@ -1,6 +1,12 @@
 ---
 ja:
   ea:
+    embedding: 埋め込み
+    allow_iframe_embedding: iframe への埋め込みを許可
+    iframe_embed_origin: 予約ページを埋め込むウェブサイト
+    embed_code: 埋め込みコード
+    embed_hint: このコードを予約フォームを表示したいサイトのページに貼り付けてください。フレームは自動でサイズ調整されます。
+    copy: コピー
     import_data: データのインポート
     import_hint: 10to8 のエクスポート CSV をアップロードし、まず分析してから選択したレコード種別をインポートします。
     import_phases: レコード種別

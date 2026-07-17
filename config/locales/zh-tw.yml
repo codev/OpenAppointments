@@ -1,6 +1,12 @@
 ---
 zh-tw:
   ea:
+    embedding: 嵌入
+    allow_iframe_embedding: 允許嵌入 iframe
+    iframe_embed_origin: 將嵌入預約頁面的網站
+    embed_code: 嵌入程式碼
+    embed_hint: 將此程式碼貼到您網站上要顯示預約表單的頁面；框架會自動調整大小。
+    copy: 複製
     import_data: 匯入資料
     import_hint: 上傳 10to8 匯出的 CSV 檔案，先分析，然後匯入所選的記錄類型。
     import_phases: 記錄類型

@@ -75,6 +75,28 @@
 <% if TurnstileChallenge.enabled? %>
     <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 <% end %>
+<% if Embedding.enabled? %>
+    <%# Embedded in an iframe: report the document height so the parent can resize it. %>
+    <script>
+        (function () {
+            if (window.self === window.top) return;
+            var target = <%= Embedding.origin.presence.to_json %> || '*';
+            var post = function () {
+                window.parent.postMessage(
+                    {type: 'openappointments:height', height: document.documentElement.scrollHeight},
+                    target,
+                );
+            };
+            window.addEventListener('load', post);
+            window.addEventListener('resize', post);
+            new MutationObserver(post).observe(document.documentElement, {
+                subtree: true,
+                childList: true,
+                attributes: true,
+            });
+        })();
+    </script>
+<% end %>
 <%= ea_js "layouts/booking_layout", "http/localization_http_client" %>
 
 <%= render "shared/js_vars_script" %>

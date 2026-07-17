@@ -1,6 +1,12 @@
 ---
 sv:
   ea:
+    embedding: Inbäddning
+    allow_iframe_embedding: Tillåt inbäddning i en iframe
+    iframe_embed_origin: Webbplats som ska bädda in bokningssidan
+    embed_code: Inbäddningskod
+    embed_hint: Klistra in den här koden på sidan på din webbplats som ska visa bokningsformuläret; ramen anpassar höjden själv.
+    copy: Kopiera
     import_data: Importera data
     import_hint: Ladda upp en 10to8 CSV-export, analysera den först och importera sedan de valda posttyperna.
     import_phases: Posttyper

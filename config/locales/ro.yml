@@ -1,6 +1,12 @@
 ---
 ro:
   ea:
+    embedding: Încorporare
+    allow_iframe_embedding: Permite încorporarea într-un iframe
+    iframe_embed_origin: Site-ul care va încorpora pagina de rezervări
+    embed_code: Cod de încorporare
+    embed_hint: Lipiți acest cod în pagina site-ului dvs. care trebuie să afișeze formularul de rezervare; cadrul se redimensionează singur.
+    copy: Copiază
     import_data: Import date
     import_hint: Încărcați un export CSV din 10to8, analizați-l mai întâi, apoi importați tipurile de înregistrări selectate.
     import_phases: Tipuri de înregistrări

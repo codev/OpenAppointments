@@ -1,6 +1,12 @@
 ---
 ar:
   ea:
+    embedding: التضمين
+    allow_iframe_embedding: السماح بالتضمين داخل iframe
+    iframe_embed_origin: الموقع الذي سيضمن صفحة الحجز
+    embed_code: كود التضمين
+    embed_hint: الصق هذا الكود في صفحة موقعك التي ستعرض نموذج الحجز؛ يتغير حجم الإطار تلقائيا.
+    copy: نسخ
     import_data: استيراد البيانات
     import_hint: ارفع ملف CSV مصدرا من 10to8، حلله أولا ثم استورد أنواع السجلات المحددة.
     import_phases: أنواع السجلات

@@ -1,6 +1,12 @@
 ---
 et:
   ea:
+    embedding: Manustamine
+    allow_iframe_embedding: Luba manustamine iframe'i
+    iframe_embed_origin: Veebisait, mis manustab broneerimislehe
+    embed_code: Manustamiskood
+    embed_hint: Kleepige see kood oma veebisaidi lehele, kus broneerimisvorm peab kuvatama; raam kohandab oma kõrgust ise.
+    copy: Kopeeri
     import_data: Andmete import
     import_hint: Laadige üles 10to8 CSV eksport, analüüsige seda esmalt ja seejärel importige valitud kirjetüübid.
     import_phases: Kirjetüübid

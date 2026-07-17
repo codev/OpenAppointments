@@ -1,5 +1,6 @@
 # GDPR personal data removal, port of EA's Privacy controller.
 class PrivacyController < ApplicationController
+  include EmbeddableFrame
   rate_limit to: 3, within: 15.minutes, only: :delete_personal_information,
              with: -> {
                render json: { success: false, message: "Too many deletion attempts. Please try again later." },

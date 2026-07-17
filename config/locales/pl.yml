@@ -1,6 +1,12 @@
 ---
 pl:
   ea:
+    embedding: Osadzanie
+    allow_iframe_embedding: Zezwól na osadzanie w iframe
+    iframe_embed_origin: Witryna, która osadzi stronę rezerwacji
+    embed_code: Kod do osadzenia
+    embed_hint: Wklej ten kod na stronę swojej witryny, która ma pokazywać formularz rezerwacji; ramka sama dopasowuje wysokość.
+    copy: Kopiuj
     import_data: Import danych
     import_hint: Prześlij eksport CSV z 10to8, najpierw go przeanalizuj, a potem zaimportuj wybrane typy rekordów.
     import_phases: Typy rekordów

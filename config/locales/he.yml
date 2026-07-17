@@ -1,6 +1,12 @@
 ---
 he:
   ea:
+    embedding: הטמעה
+    allow_iframe_embedding: אפשר הטמעה ב-iframe
+    iframe_embed_origin: האתר שיטמיע את עמוד ההזמנות
+    embed_code: קוד הטמעה
+    embed_hint: הדבק קוד זה בעמוד באתר שלך שאמור להציג את טופס ההזמנה; המסגרת מתאימה את גובהה אוטומטית.
+    copy: העתק
     import_data: ייבוא נתונים
     import_hint: העלה קובץ CSV מיוצא מ-10to8, נתח אותו תחילה ואז ייבא את סוגי הרשומות שנבחרו.
     import_phases: סוגי רשומות

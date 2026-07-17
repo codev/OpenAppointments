@@ -1,6 +1,12 @@
 ---
 fr:
   ea:
+    embedding: Intégration
+    allow_iframe_embedding: Autoriser l'intégration dans une iframe
+    iframe_embed_origin: Site web qui intégrera la page de réservation
+    embed_code: Code d'intégration
+    embed_hint: Collez ce code dans la page de votre site qui doit afficher le formulaire de réservation ; le cadre s'ajuste automatiquement.
+    copy: Copier
     import_data: Importer des données
     import_hint: Chargez un export CSV 10to8, analysez-le d'abord, puis importez les types d'enregistrements sélectionnés.
     import_phases: Types d'enregistrements

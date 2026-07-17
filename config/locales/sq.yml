@@ -1,6 +1,12 @@
 ---
 sq:
   ea:
+    embedding: Ngulitja
+    allow_iframe_embedding: Lejo ngulitjen në një iframe
+    iframe_embed_origin: Faqja që do të ngulisë faqen e rezervimeve
+    embed_code: Kodi i ngulitjes
+    embed_hint: Ngjisni këtë kod në faqen e sajtit tuaj që duhet të shfaqë formularin e rezervimit; korniza përshtatet vetë.
+    copy: Kopjo
     import_data: Importo të dhëna
     import_hint: Ngarkoni një CSV eksporti nga 10to8, analizojeni fillimisht dhe pastaj importoni llojet e zgjedhura të regjistrimeve.
     import_phases: Llojet e regjistrimeve

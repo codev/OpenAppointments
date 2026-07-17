@@ -1,6 +1,12 @@
 ---
 de:
   ea:
+    embedding: Einbettung
+    allow_iframe_embedding: Einbettung in einen iframe erlauben
+    iframe_embed_origin: Website, die die Buchungsseite einbettet
+    embed_code: Einbettungscode
+    embed_hint: Fügen Sie diesen Code in die Seite Ihrer Website ein, die das Buchungsformular zeigen soll; der Rahmen passt seine Größe selbst an.
+    copy: Kopieren
     import_data: Daten importieren
     import_hint: Laden Sie einen 10to8-CSV-Export hoch, analysieren Sie ihn zuerst und importieren Sie dann die ausgewählten Datentypen.
     import_phases: Datentypen

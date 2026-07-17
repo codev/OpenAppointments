@@ -1,6 +1,12 @@
 ---
 nl:
   ea:
+    embedding: Insluiten
+    allow_iframe_embedding: Insluiten in een iframe toestaan
+    iframe_embed_origin: Website die de boekingspagina insluit
+    embed_code: Insluitcode
+    embed_hint: Plak deze code op de pagina van uw website waar het boekingsformulier moet verschijnen; het frame past zijn hoogte zelf aan.
+    copy: Kopiëren
     import_data: Gegevens importeren
     import_hint: Upload een 10to8 CSV-export, analyseer die eerst en importeer daarna de geselecteerde recordtypen.
     import_phases: Recordtypen

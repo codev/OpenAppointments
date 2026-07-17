@@ -1,6 +1,7 @@
 # Serves ALTCHA challenges for the booking/auth forms (utils/altcha.js fetches
 # captcha/altcha_challenge). The legacy image captcha is not ported.
 class CaptchaController < ApplicationController
+  include EmbeddableFrame
   def altcha_challenge
     challenge = AltchaChallenge.create_challenge
     render json: {

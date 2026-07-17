@@ -1,5 +1,6 @@
 # Public appointment cancellation, port of EA's Booking_cancellation controller.
 class BookingCancellationController < ApplicationController
+  include EmbeddableFrame
   layout "message"
 
   # EA excludes booking_cancellation/* from CSRF: the cancellation form posts

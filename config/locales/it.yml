@@ -1,6 +1,12 @@
 ---
 it:
   ea:
+    embedding: Incorporamento
+    allow_iframe_embedding: Consenti l'incorporamento in un iframe
+    iframe_embed_origin: Sito web che incorporerà la pagina di prenotazione
+    embed_code: Codice di incorporamento
+    embed_hint: Incolla questo codice nella pagina del tuo sito che deve mostrare il modulo di prenotazione; il riquadro si ridimensiona da solo.
+    copy: Copia
     import_data: Importa dati
     import_hint: Carica un CSV esportato da 10to8, analizzalo prima e poi importa i tipi di record selezionati.
     import_phases: Tipi di record

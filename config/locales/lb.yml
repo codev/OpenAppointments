@@ -1,6 +1,12 @@
 ---
 lb:
   ea:
+    embedding: Abannen
+    allow_iframe_embedding: Abanne an en iframe erlaben
+    iframe_embed_origin: Websäit déi d'Buchungssäit abënnt
+    embed_code: Abannungscode
+    embed_hint: Setzt dëse Code op d'Säit vun Ärer Websäit déi de Buchungsformulaire weise soll; de Frame passt seng Gréisst selwer un.
+    copy: Kopéieren
     import_data: Daten importéieren
     import_hint: Luet en 10to8 CSV-Export erop, analyséiert en fir d'éischt an importéiert dann déi ausgewielten Datentypen.
     import_phases: Datentypen

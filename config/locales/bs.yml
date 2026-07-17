@@ -1,6 +1,12 @@
 ---
 bs:
   ea:
+    embedding: Ugradnja
+    allow_iframe_embedding: Dozvoli ugradnju u iframe
+    iframe_embed_origin: Web stranica koja ce ugraditi stranicu za rezervacije
+    embed_code: Kod za ugradnju
+    embed_hint: Zalijepite ovaj kod na stranicu vase web stranice koja treba prikazati obrazac za rezervacije; okvir se sam prilagodava.
+    copy: Kopiraj
     import_data: Uvoz podataka
     import_hint: Ucitajte 10to8 CSV izvoz, prvo ga analizirajte pa uvezite odabrane vrste zapisa.
     import_phases: Vrste zapisa

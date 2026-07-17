@@ -1,6 +1,12 @@
 ---
 pt-br:
   ea:
+    embedding: Incorporação
+    allow_iframe_embedding: Permitir incorporação em um iframe
+    iframe_embed_origin: Site que incorporará a página de reservas
+    embed_code: Código de incorporação
+    embed_hint: Cole este código na página do seu site que deve mostrar o formulário de reserva; o quadro se ajusta sozinho.
+    copy: Copiar
     import_data: Importar dados
     import_hint: Envie um CSV exportado do 10to8, analise-o primeiro e depois importe os tipos de registros selecionados.
     import_phases: Tipos de registros

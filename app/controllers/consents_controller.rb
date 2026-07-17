@@ -1,5 +1,6 @@
 # Consent log endpoint, port of EA's Consents controller.
 class ConsentsController < ApplicationController
+  include EmbeddableFrame
   # POST /consents/save
   def save
     consent = params.require(:consent).permit(:name, :email, :type, :id_users).to_h

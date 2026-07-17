@@ -1,6 +1,12 @@
 ---
 pt:
   ea:
+    embedding: Incorporação
+    allow_iframe_embedding: Permitir incorporação num iframe
+    iframe_embed_origin: Site que irá incorporar a página de marcações
+    embed_code: Código de incorporação
+    embed_hint: Cole este código na página do seu site que deve mostrar o formulário de marcação; a moldura ajusta-se sozinha.
+    copy: Copiar
     import_data: Importar dados
     import_hint: Carregue um CSV exportado do 10to8, analise-o primeiro e depois importe os tipos de registos selecionados.
     import_phases: Tipos de registos
