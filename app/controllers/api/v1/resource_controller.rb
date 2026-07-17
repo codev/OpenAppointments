@@ -8,16 +8,17 @@ module Api
 
       def index
         records = filtered_scope(base_scope)
-        records = records.order(Arel.sql(api_order(serializer_class))) if api_order(serializer_class)
+        order = api_order(serializer_class)
+        records = records.order(Arel.sql(order)) if order
         records = records.limit(api_length).offset(api_offset)
-        render json: records.map { |record| project_fields(encode(record)) }
+        render json: records.map { |record| present(record) }
       end
 
       def show
         record = base_scope.find_by(id: params[:id])
         return head :not_found unless record
 
-        render_one(encode(record))
+        render json: present(record)
       end
 
       def store
@@ -66,7 +67,39 @@ module Api
 
       def extra_filters(scope) = scope
 
+      # {api name => loader} for the "with" param; resources without relations keep {}.
+      def with_loaders = {}
+
       # Shared machinery ---------------------------------------------------------
+
+      # fields projection first, then with-embeds on top (EA order: only() then load()).
+      def present(record)
+        payload = project_fields(encode(record))
+        embed_relations(record, payload)
+      end
+
+      # EA model->load: embeds the RAW db row(s), not the api-encoded resource. Unknown
+      # names raise on resources that support relations and are ignored on those that
+      # do not (their load() is empty), matching EA exactly.
+      def embed_relations(record, payload)
+        relations = api_with
+        return payload unless relations
+
+        loaders = with_loaders
+        relations.each do |name|
+          loader = loaders[name]
+          if loader
+            payload[name] = loader.call(record)
+          elsif loaders.any?
+            raise ArgumentError, "The requested relation is not supported: #{name}"
+          end
+        end
+        payload
+      end
+
+      def raw_row(record)
+        record&.attributes&.transform_values { |value| BaseSerializer.format_value(value) }
+      end
 
       def filtered_scope(scope)
         scope = keyword_filter(scope)

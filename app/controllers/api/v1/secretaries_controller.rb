@@ -9,6 +9,10 @@ module Api
 
       def role_slug = Role::SECRETARY
 
+      def with_loaders
+        { "providers" => ->(record) { record.providers.map { |provider| raw_row(provider) } } }
+      end
+
       def build_record(attrs)
         raise ArgumentError, "No providers property provided." unless attrs.key?("providers")
 

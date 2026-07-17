@@ -40,6 +40,24 @@ module Api
         assert_kind_of Array, provider["services"]
       end
 
+      test "providers with=services embeds raw service rows" do
+        api_get "/api/v1/providers", with: "services"
+        provider = json.find { |p| p["id"] == users(:jane).id }
+        assert_includes provider["services"].map { |s| s["name"] }, "Trim Cut"
+        assert provider["services"].first.key?("slot_interval")
+      end
+
+      test "services with=category embeds the raw category row" do
+        api_get "/api/v1/services/#{services(:haircut).id}", with: "category"
+        assert_equal service_categories(:hair).name, json["category"]["name"]
+      end
+
+      test "with is silently ignored on resources without relations" do
+        api_get "/api/v1/customers", with: "anything"
+        assert_response :success
+        assert_not json.first.key?("anything")
+      end
+
       test "providers store requires services and settings" do
         api_post "/api/v1/providers", { firstName: "P", lastName: "Q", email: "pq@example.org" }
         assert_response :internal_server_error

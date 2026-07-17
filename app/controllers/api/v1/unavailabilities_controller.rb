@@ -10,6 +10,10 @@ module Api
 
       def base_scope = Appointment.unavailabilities
 
+      def with_loaders
+        { "provider" => ->(record) { raw_row(record.provider) } }
+      end
+
       def build_record(attrs)
         record = Appointment.new(serializer_class.decode(attrs))
         record.is_unavailability = true

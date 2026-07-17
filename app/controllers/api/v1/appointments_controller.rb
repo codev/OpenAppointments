@@ -66,7 +66,19 @@ module Api
         Webhooks.trigger(Webhooks::APPOINTMENT_SAVE, appointment)
       end
 
+      def with_loaders
+        {
+          "service" => ->(record) { raw_row(record.service) },
+          "provider" => ->(record) { raw_row(record.provider) },
+          "customer" => ->(record) { raw_row(record.customer) }
+        }
+      end
+
       def extra_filters(scope)
+        # EA quirk: a keyword search replaces the where filters entirely
+        # (model->search is called instead of model->get).
+        return scope if api_keyword
+
         scope = scope.where("DATE(start_datetime) = ?", params[:date]) if params[:date].present?
         scope = scope.where("DATE(start_datetime) >= ?", params[:from]) if params[:from].present?
         scope = scope.where("DATE(end_datetime) <= ?", params[:till]) if params[:till].present?

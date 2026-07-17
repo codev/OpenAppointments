@@ -28,6 +28,29 @@ module Api
         assert_equal 1, json.length
       end
 
+      test "with embeds raw service, provider and customer rows after fields projection" do
+        api_get "/api/v1/appointments/#{appointments(:upcoming).id}", fields: "id", with: "customer,service"
+        assert_equal "James", json["customer"]["first_name"]
+        assert_equal "Trim Cut", json["service"]["name"]
+        assert_not json.key?("provider")
+        assert_not json.key?("start")
+
+        api_get "/api/v1/appointments", with: "provider"
+        appointment = json.find { |a| a["id"] == appointments(:upcoming).id }
+        assert_equal "Jane", appointment["provider"]["first_name"]
+      end
+
+      test "unknown with relation returns the EA json error" do
+        api_get "/api/v1/appointments", with: "bogus"
+        assert_response :internal_server_error
+        assert_equal false, json["success"]
+      end
+
+      test "keyword search replaces the where filters (EA quirk)" do
+        api_get "/api/v1/appointments", q: "abc123", date: "1999-01-01"
+        assert(json.any? { |a| a["id"] == appointments(:upcoming).id })
+      end
+
       test "store creates appointment, computes end from service duration, fires side effects" do
         Webhook.create!(name: "hook", url: "https://example.org/h", actions: "appointment_save")
         assert_enqueued_emails 3 do

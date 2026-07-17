@@ -9,6 +9,10 @@ module Api
 
       def role_slug = Role::PROVIDER
 
+      def with_loaders
+        { "services" => ->(record) { record.services.map { |service| raw_row(service) } } }
+      end
+
       def build_record(attrs)
         raise ArgumentError, "No services property provided." unless attrs.key?("services")
 
