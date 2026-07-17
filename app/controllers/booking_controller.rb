@@ -12,6 +12,9 @@ class BookingController < ApplicationController
 
   rate_limit to: 15, within: 1.minute, only: :register,
              with: -> { render json: { success: false, message: "Too many requests." }, status: :too_many_requests }
+  # The availability lookups are unauthenticated and cheap to script; cap per-IP bursts.
+  rate_limit to: 60, within: 1.minute, only: [ :get_available_hours, :get_unavailable_dates ],
+             with: -> { render json: { success: false, message: "Too many requests." }, status: :too_many_requests }
 
   def reschedule
     html_vars(appointment_hash: params[:appointment_hash])
