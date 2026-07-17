@@ -5,13 +5,13 @@ class BrandingTest < ActionDispatch::IntegrationTest
     get "/"
     assert_response :success
     assert_match "OpenAppointments", response.body
-    assert_no_match(/Easy!Appointments/, response.body)
+    assert_no_match(/easy!appointments/i, response.body)
   end
 
   test "login page carries no old brand" do
     get "/login"
     assert_response :success
-    assert_no_match(/Easy!Appointments/, response.body)
+    assert_no_match(/easy!appointments/i, response.body)
   end
 
   test "about page shows the new name" do
@@ -19,13 +19,13 @@ class BrandingTest < ActionDispatch::IntegrationTest
     get "/about"
     assert_response :success
     assert_match "OpenAppointments", response.body
-    assert_no_match(/Easy!Appointments/, response.body)
+    assert_no_match(/easy!appointments/i, response.body)
   end
 
   test "no locale contains the old brand name" do
     I18n.available_locales.each do |locale|
       payload = I18n.t("ea", locale: locale, default: {}).values.grep(String).join(" ")
-      assert_no_match(/Easy!Appointments/, payload, "old brand present in locale #{locale}")
+      assert_no_match(/easy!appointments/i, payload, "old brand present in locale #{locale}")
     end
   end
 
@@ -43,7 +43,7 @@ class BrandingTest < ActionDispatch::IntegrationTest
       link_path: "/booking/reschedule/#{appointment.booking_hash}", role: :customer
     )
     body = mail.html_part.body.decoded
-    assert_no_match(/Easy!Appointments/, body)
+    assert_no_match(/easy!appointments/i, body)
     assert_match "OpenAppointments", body
   end
 end
