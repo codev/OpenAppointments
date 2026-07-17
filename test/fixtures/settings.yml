@@ -9,3 +9,27 @@ future_booking_limit:
 company_name:
   name: company_name
   value: Test Company
+
+appointment_status_options:
+  name: appointment_status_options
+  value: '["Booked", "Confirmed", "Rescheduled", "Cancelled", "Draft"]'
+
+disable_booking_message:
+  name: disable_booking_message
+  value: '<p style="text-align: center;">Thanks for stopping by!</p><p style="text-align: center;">We are not accepting new appointments at the moment, please check back again later.</p>'
+
+customer_notifications:
+  name: customer_notifications
+  value: "1"
+
+company_email:
+  name: company_email
+  value: info@testcompany.org
+
+date_format:
+  name: date_format
+  value: DMY
+
+time_format:
+  name: time_format
+  value: regular

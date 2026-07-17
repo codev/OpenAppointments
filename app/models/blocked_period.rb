@@ -2,12 +2,21 @@ class BlockedPeriod < ApplicationRecord
   validates :name, :start_datetime, :end_datetime, presence: true
   validate :end_after_start
 
-  scope :for_period, ->(start_dt, end_dt) { where("start_datetime < ? AND end_datetime > ?", end_dt, start_dt) }
+  # EA get_for_period: any date-level overlap with [start_date, end_date].
+  scope :for_period, lambda { |start_date, end_date|
+    where(<<~SQL.squish, s: start_date, e: end_date)
+      (DATE(start_datetime) <= :s AND DATE(end_datetime) >= :e)
+      OR (DATE(start_datetime) >= :s AND DATE(end_datetime) <= :e)
+      OR (DATE(end_datetime) > :s AND DATE(end_datetime) < :e)
+      OR (DATE(start_datetime) > :s AND DATE(start_datetime) < :e)
+    SQL
+  }
 
+  scope :covering_date, ->(date) { where("DATE(start_datetime) <= ? AND DATE(end_datetime) >= ?", date, date) }
+
+  # EA quirk (is_entire_date_blocked): blocked only when MORE THAN ONE period covers the date.
   def self.entire_date_blocked?(date)
-    day_start = date.to_time
-    day_end = day_start + 1.day
-    where("start_datetime <= ? AND end_datetime >= ?", day_start, day_end).exists?
+    covering_date(date).count > 1
   end
 
   private

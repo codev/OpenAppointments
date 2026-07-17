@@ -9,14 +9,19 @@ class BlockedPeriodTest < ActiveSupport::TestCase
     )
   end
 
-  test "for_period finds overlaps" do
-    assert_includes BlockedPeriod.for_period(Time.new(2026, 8, 3), Time.new(2026, 8, 4)), @period
-    assert_empty BlockedPeriod.for_period(Time.new(2026, 8, 9), Time.new(2026, 8, 10))
+  test "for_period finds date-level overlaps like EA" do
+    assert_includes BlockedPeriod.for_period("2026-08-03", "2026-08-04"), @period
+    assert_includes BlockedPeriod.for_period("2026-07-30", "2026-08-02"), @period
+    assert_empty BlockedPeriod.for_period("2026-08-09", "2026-08-10")
   end
 
-  test "entire_date_blocked?" do
-    assert BlockedPeriod.entire_date_blocked?(Date.new(2026, 8, 3))
-    assert_not BlockedPeriod.entire_date_blocked?(Date.new(2026, 8, 9))
+  test "EA quirk: entire_date_blocked? needs more than one covering period" do
+    assert_not BlockedPeriod.entire_date_blocked?("2026-08-03")
+
+    BlockedPeriod.create!(name: "Second", start_datetime: Time.new(2026, 8, 2, 0, 0, 0),
+                          end_datetime: Time.new(2026, 8, 5, 0, 0, 0))
+    assert BlockedPeriod.entire_date_blocked?("2026-08-03")
+    assert_not BlockedPeriod.entire_date_blocked?("2026-08-07")
   end
 
   test "requires end after start" do

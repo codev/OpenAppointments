@@ -1,12 +1,22 @@
 class LoginController < ApplicationController
+  layout "account"
+
   rate_limit to: 5, within: 5.minutes, only: :validate,
              with: -> { render json: { success: false, message: "Too many login attempts. Please try again in a few minutes." }, status: :too_many_requests }
 
   def index
     redirect_to calendar_path and return if logged_in?
 
-    @dest_url = session[:dest_url] || calendar_path
-    render :index
+    dest_url = session[:dest_url] || calendar_url
+    script_vars(dest_url: dest_url)
+    html_vars(
+      page_title: helpers.lang("login"),
+      base_url: request.base_url,
+      dest_url: dest_url,
+      company_name: Setting.get("company_name"),
+      require_captcha: Setting.get("require_captcha"),
+      altcha_enabled: Setting.get("altcha_enabled")
+    )
   end
 
   # POST /login/validate. EA contract: {success: true} or {success: false, message:}.

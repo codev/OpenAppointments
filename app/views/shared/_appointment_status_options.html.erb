@@ -1,0 +1,15 @@
+<%# Port of EA components/appointment_status_options.php. Locals: attributes (raw attribute string). %>
+<div class="appointment-status-options" <%= attributes.html_safe %>>
+    <ul class="list-group">
+        <!-- JS -->
+    </ul>
+
+    <button type="button" class="btn btn-outline-primary btn-sm add-appointment-status-option">
+        <i class="fas fa-plus-square me-2"></i>
+        <%= lang('add') %>
+    </button>
+</div>
+
+<% content_for :scripts do %>
+    <%= ea_js "components/appointment_status_options" %>
+<% end %>

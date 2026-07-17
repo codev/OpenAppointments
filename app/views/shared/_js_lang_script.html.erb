@@ -1,0 +1,18 @@
+<script>
+    window.lang = (function () {
+        const lang = <%= inline_json(Localization.translations(script_vars[:language] || "english")) %>;
+
+        return (key) => {
+            if (!key) {
+                return lang;
+            }
+
+            if (!lang[key]) {
+                console.error(`Cannot find translation for requested key: "${key}"`);
+                return key;
+            }
+
+            return lang[key];
+        };
+    })();
+</script>

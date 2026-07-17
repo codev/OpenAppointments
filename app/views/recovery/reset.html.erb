@@ -1,14 +1,87 @@
-<%# Placeholder until P2 ports the EA password reset page markup and JS. %>
-<h1>Reset Password</h1>
-<% if @token_valid %>
-  <form id="password-reset-form">
-    <input type="hidden" name="csrf_token" value="<%= form_authenticity_token %>">
-    <input type="hidden" name="token" value="<%= @token %>">
-    <label>New Password <input type="password" name="password" id="password"></label>
-    <label>Confirm Password <input type="password" name="password_confirm" id="password-confirm"></label>
-    <button type="submit" id="reset-password">Reset Password</button>
-  </form>
+<%# Port of EA pages/password_reset.php. The legacy image captcha branch is dropped; only ALTCHA remains. %>
+<div class="text-center mb-4">
+    <img src="<%= image_path("logo.png") %>" alt="Easy!Appointments"
+         class="shadow mb-3" width="72" height="72">
+
+    <h4 class="text-primary fw-semibold mb-1"><%= lang('reset_password') %></h4>
+
+    <% if vars(:token_valid) %>
+        <p class="small mb-0">
+            <%= lang('enter_new_password') %>
+        </p>
+    <% end %>
+</div>
+
+<div class="alert d-none"></div>
+
+<% if vars(:token_valid) %>
+
+    <!-- Password Reset Form -->
+
+    <form id="password-reset-form">
+        <input type="hidden" id="token" value="<%= vars(:token) %>">
+
+        <div class="mb-3">
+            <label for="password" class="form-label fw-medium">
+                <%= lang('new_password') %>
+            </label>
+            <div class="input-group">
+                <span class="input-group-text bg-light border-end-0">
+                    <i class="fas fa-lock"></i>
+                </span>
+                <input type="password" id="password"
+                       placeholder="<%= lang('enter_password_here') %>" class="form-control border-start-0 ps-2"/>
+            </div>
+            <small class="text-muted">
+                <%= lang('password_length_notice').sub('$number', Passwords::MIN_LENGTH.to_s) %>
+            </small>
+        </div>
+
+        <div class="mb-4">
+            <label for="password-confirm" class="form-label fw-medium">
+                <%= lang('retype_password') %>
+            </label>
+            <div class="input-group">
+                <span class="input-group-text bg-light border-end-0">
+                    <i class="fas fa-lock"></i>
+                </span>
+                <input type="password" id="password-confirm"
+                       placeholder="<%= lang('enter_password_here') %>" class="form-control border-start-0 ps-2"/>
+            </div>
+        </div>
+
+        <% if vars(:require_captcha).to_s == "1" && vars(:altcha_enabled).to_s == "1" %>
+            <div class="mb-4">
+                <div id="altcha-widget" class="altcha-widget"></div>
+                <input type="hidden" id="altcha-payload" value="">
+                <span id="altcha-hint" class="help-block text-danger small" style="opacity:0">&nbsp;</span>
+            </div>
+        <% end %>
+
+        <div class="d-grid gap-2 mb-3">
+            <button type="submit" id="reset-password" class="btn btn-primary">
+                <i class="fas fa-key me-2"></i>
+                <%= lang('reset_password') %>
+            </button>
+        </div>
+
+    </form>
+
 <% else %>
-  <p><%= @error_message %></p>
-  <a href="<%= recovery_path %>">Request a new reset link</a>
+    <!-- Invalid or Expired Token Message -->
+    <div class="alert alert-danger">
+        <i class="fas fa-exclamation-triangle me-2"></i>
+        <%= vars(:error_message) || lang('invalid_or_expired_token') %>
+    </div>
+<% end %>
+
+<div class="text-center">
+    <a href="/login" class="text-decoration-none small">
+        <i class="fas fa-arrow-left me-1"></i>
+        <%= lang('go_to_login') %>
+    </a>
+</div>
+
+<% content_for :scripts do %>
+    <%= ea_js "http/password_reset_http_client", "pages/password_reset" %>
 <% end %>
