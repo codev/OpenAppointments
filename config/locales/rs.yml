@@ -1,6 +1,8 @@
 ---
 rs:
   ea:
+    select_provider_first: Prvo izaberite pružaoca
+    select_service_first: Prvo izaberite uslugu
     page_title: Zakažite posetu
     service_and_provider: Usluga i pružalac
     select_service: Izaberite uslugu

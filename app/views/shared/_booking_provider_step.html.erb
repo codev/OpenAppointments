@@ -1,0 +1,52 @@
+<%# Provider selection page. Locals: frame_index, swap_link.
+    Split out of EA's single service+provider step; can be page 1 or 2 (?first=provider).
+    Options are populated by pages/booking.js from vars('available_providers'). %>
+<div id="wizard-frame-<%= frame_index %>" class="wizard-frame p-3 p-md-4"
+     style="<%= frame_index == 1 ? 'visibility: hidden;' : 'display:none;' %>">
+    <div class="frame-container py-3" style="min-height: 500px;">
+        <h2 class="frame-title fw-light text-center mb-4 text-muted mt-md-5"><%= lang('select_provider') %></h2>
+
+        <div class="row frame-content">
+            <div class="col col-lg-8 offset-md-2">
+                <div class="mb-3">
+                    <label for="select-provider" class="fs-5 mb-2">
+                        <strong><%= lang('provider') %></strong>
+                    </label>
+
+                    <select id="select-provider" class="form-select mb-4">
+                        <option value="">
+                            <%= lang('please_select') %>
+                        </option>
+                    </select>
+                </div>
+
+                <% if swap_link %>
+                    <div class="text-center mt-4">
+                        <a class="swap-first-step small"
+                           href="<%= url_for(request.query_parameters.merge("first" => "service")) %>">
+                            <%= lang('select_service_first') %>
+                        </a>
+                    </div>
+                <% end %>
+            </div>
+        </div>
+    </div>
+
+    <div class="command-buttons text-center my-3 mx-auto d-md-flex justify-content-md-between">
+        <% if frame_index == 1 %>
+            <span>&nbsp;</span>
+        <% else %>
+            <button type="button" id="button-back-2" class="btn button-back btn-outline-secondary" style="min-width: 120px; margin-right: 10px;"
+                    data-step_index="2">
+                <i class="fas fa-chevron-left me-2"></i>
+                <%= lang('back') %>
+            </button>
+        <% end %>
+
+        <button type="button" id="button-next-<%= frame_index %>" class="btn button-next btn-dark" style="min-width: 120px; margin-right: 10px;"
+                data-step_index="<%= frame_index %>">
+            <%= lang('next') %>
+            <i class="fas fa-chevron-right ms-2"></i>
+        </button>
+    </div>
+</div>

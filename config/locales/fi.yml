@@ -1,6 +1,8 @@
 ---
 fi:
   ea:
+    select_provider_first: Valitse ensin palveluntarjoaja
+    select_service_first: Valitse ensin palvelu
     page_title: Varaa aika
     service_and_provider: Valitse palvelu ja henkilö
     select_service: Valitse palvelupaketti

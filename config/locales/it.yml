@@ -1,6 +1,8 @@
 ---
 it:
   ea:
+    select_provider_first: Seleziona prima il fornitore
+    select_service_first: Seleziona prima il servizio
     page_title: Prenota un appuntamento con
     service_and_provider: Seleziona servizio & fornitore
     select_service: Seleziona un servizio

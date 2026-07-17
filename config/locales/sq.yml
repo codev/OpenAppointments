@@ -1,6 +1,8 @@
 ---
 sq:
   ea:
+    select_provider_first: Zgjidhni fillimisht ofruesin
+    select_service_first: Zgjidhni fillimisht shërbimin
     page_title: Rezervoni Takim Me
     service_and_provider: Shërbimi & Ofruesi
     select_service: Zgjidh Shërbimin

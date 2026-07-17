@@ -1,6 +1,8 @@
 ---
 uk:
   ea:
+    select_provider_first: Спочатку виберіть спеціаліста
+    select_service_first: Спочатку виберіть послугу
     page_title: Запис на прийом з
     service_and_provider: Послуга та Провайдер
     select_service: Виберіть послугу

@@ -1,6 +1,8 @@
 ---
 zh:
   ea:
+    select_provider_first: 先选择服务人员
+    select_service_first: 先选择服务
     page_title: 准备预约
     service_and_provider: 选择服务人员以及服务项目
     select_service: 选择您需要的服务项目

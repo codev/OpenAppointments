@@ -1,6 +1,8 @@
 ---
 et:
   ea:
+    select_provider_first: Vali kõigepealt teenusepakkuja
+    select_service_first: Vali kõigepealt teenus
     page_title: Broneeri aeg
     service_and_provider: Vali teenus ja isik
     select_service: Vali teenus

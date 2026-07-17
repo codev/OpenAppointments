@@ -1,6 +1,8 @@
 ---
 ru:
   ea:
+    select_provider_first: Сначала выберите специалиста
+    select_service_first: Сначала выберите услугу
     page_title: Заказ оформлен с
     service_and_provider: Выберите услугу и поставщика
     select_service: Выберите услугу

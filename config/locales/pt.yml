@@ -1,6 +1,8 @@
 ---
 pt:
   ea:
+    select_provider_first: Selecionar primeiro o prestador
+    select_service_first: Selecionar primeiro o serviço
     page_title: Livro de Apontamentos
     service_and_provider: Selecione o serviço e o fornecedor
     select_service: Selecione o serviço

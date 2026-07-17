@@ -1,6 +1,8 @@
 ---
 tr:
   ea:
+    select_provider_first: Önce hizmet vereni seçin
+    select_service_first: Önce hizmeti seçin
     page_title: Randevu Alınacak Kişi
     service_and_provider: Hizmet ve Hizmet Sağlayıcıyı Seçin
     select_service: Hizmeti Seçin

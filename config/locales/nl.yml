@@ -1,6 +1,8 @@
 ---
 nl:
   ea:
+    select_provider_first: Kies eerst de aanbieder
+    select_service_first: Kies eerst de dienst
     page_title: Boek afspraak met
     service_and_provider: Kies een dienst en een medewerker
     select_service: Kies een dienst

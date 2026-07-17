@@ -1,6 +1,8 @@
 ---
 hr:
   ea:
+    select_provider_first: Prvo odaberite pružatelja
+    select_service_first: Prvo odaberite uslugu
     page_title: Zakažite sastanak s
     service_and_provider: Usluga & Pružatelj
     select_service: Odaberite uslugu

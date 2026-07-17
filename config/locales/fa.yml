@@ -1,6 +1,8 @@
 ---
 fa:
   ea:
+    select_provider_first: ابتدا ارائه‌دهنده را انتخاب کنید
+    select_service_first: ابتدا خدمت را انتخاب کنید
     page_title: ثبت قرار ملاقات با
     service_and_provider: خدمات و ارائه دهنده
     select_service: انتخاب خدمت

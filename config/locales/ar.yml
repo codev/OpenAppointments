@@ -1,6 +1,8 @@
 ---
 ar:
   ea:
+    select_provider_first: اختيار مقدم الخدمة أولا
+    select_service_first: اختيار الخدمة أولا
     page_title: احجز موعد مع
     service_and_provider: اختر الخدمة والمزود
     select_service: اختر الخدمة

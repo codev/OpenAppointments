@@ -1,6 +1,8 @@
 ---
 sl:
   ea:
+    select_provider_first: Najprej izberite izvajalca
+    select_service_first: Najprej izberite storitev
     page_title: Rezerviraj termin z
     service_and_provider: Storitev in ponudnik
     select_service: Izberi storitev

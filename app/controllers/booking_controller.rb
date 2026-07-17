@@ -73,7 +73,10 @@ class BookingController < ApplicationController
 
     company_color = Setting.get("company_color")
 
+    first_step = params[:first] == "provider" ? "provider" : "service"
+
     script_vars(
+      first_step: first_step,
       manage_mode: manage_mode,
       available_services: available_services,
       available_providers: available_providers,
@@ -92,6 +95,7 @@ class BookingController < ApplicationController
     )
 
     html_vars(
+      first_step: first_step,
       available_services: available_services,
       available_providers: available_providers,
       theme: theme,

@@ -1,6 +1,8 @@
 ---
 mr:
   ea:
+    select_provider_first: आधी सेवा प्रदाता निवडा
+    select_service_first: आधी सेवा निवडा
     page_title: अपॉईंटमेंट बुक करा
     service_and_provider: प्रदाता आणि सेवा निवडा
     select_service: सेवा निवडा

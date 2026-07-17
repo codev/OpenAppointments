@@ -1,6 +1,8 @@
 ---
 he:
   ea:
+    select_provider_first: בחר קודם נותן שירות
+    select_service_first: בחר קודם שירות
     page_title: קבע פגישה עם
     service_and_provider: בחירת שירות וספק
     select_service: בחירת שירות

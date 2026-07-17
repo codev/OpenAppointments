@@ -1,6 +1,8 @@
 ---
 fr:
   ea:
+    select_provider_first: Choisir d'abord le prestataire
+    select_service_first: Choisir d'abord le service
     page_title: Prendre rendez-vous avec...
     service_and_provider: Choisissez une prestation et un exécutant
     select_service: Choisissez une prestation

@@ -1,6 +1,8 @@
 ---
 th:
   ea:
+    select_provider_first: เลือกผู้ให้บริการก่อน
+    select_service_first: เลือกบริการก่อน
     page_title: จองการนัดหมายกับ
     service_and_provider: บริการและผู้ให้บริการ
     select_service: เลือก บริการ

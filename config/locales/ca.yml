@@ -1,6 +1,8 @@
 ---
 ca:
   ea:
+    select_provider_first: Selecciona primer el proveïdor
+    select_service_first: Selecciona primer el servei
     page_title: Reserva una cita amb
     service_and_provider: Selecció del servei i el proveïdor
     select_service: Seleccioneu el servei

@@ -1,6 +1,8 @@
 ---
 en:
   ea:
+    select_provider_first: Select Provider First
+    select_service_first: Select Service First
     page_title: Book Appointment With
     service_and_provider: Service & Provider
     select_service: Select Service

@@ -1,6 +1,8 @@
 ---
 zh-tw:
   ea:
+    select_provider_first: 先選擇服務人員
+    select_service_first: 先選擇服務
     page_title: 預約
     service_and_provider: 服務與提供者
     select_service: 選擇服務

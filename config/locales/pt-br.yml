@@ -1,6 +1,8 @@
 ---
 pt-br:
   ea:
+    select_provider_first: Selecionar primeiro o prestador
+    select_service_first: Selecionar primeiro o serviço
     page_title: Agendar horário
     service_and_provider: Selecione o serviço e o atendente
     select_service: Selecione o serviço

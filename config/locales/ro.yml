@@ -1,6 +1,8 @@
 ---
 ro:
   ea:
+    select_provider_first: Selectați mai întâi furnizorul
+    select_service_first: Selectați mai întâi serviciul
     page_title: Programeaza întâlniri cu
     service_and_provider: Selecteaza Serviciul si Furnizorul
     select_service: Selecteaza Serviciul

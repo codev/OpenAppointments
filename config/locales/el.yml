@@ -1,6 +1,8 @@
 ---
 el:
   ea:
+    select_provider_first: Επιλογή παρόχου πρώτα
+    select_service_first: Επιλογή υπηρεσίας πρώτα
     page_title: Κράτηση Ραντεβού Με
     service_and_provider: Υπηρεσία & Πάροχος
     select_service: Επιλογή Υπηρεσίας

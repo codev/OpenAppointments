@@ -1,6 +1,8 @@
 ---
 pl:
   ea:
+    select_provider_first: Najpierw wybierz usługodawcę
+    select_service_first: Najpierw wybierz usługę
     page_title: Zamów wizytę
     service_and_provider: Wybierz Zabieg i Personel
     select_service: 'Wybierz zabieg:'

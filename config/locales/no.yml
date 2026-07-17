@@ -1,6 +1,8 @@
 ---
 'no':
   ea:
+    select_provider_first: Velg tilbyder først
+    select_service_first: Velg tjeneste først
     page_title: Bestill avtale med
     service_and_provider: Tjeneste & Leverandør
     select_service: Velg Tjeneste

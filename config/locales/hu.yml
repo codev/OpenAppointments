@@ -1,6 +1,8 @@
 ---
 hu:
   ea:
+    select_provider_first: Először a szolgáltatót válassza ki
+    select_service_first: Először a szolgáltatást válassza ki
     page_title: Foglalj időpontot a ...
     service_and_provider: Válassz szolgáltatást és szolgáltatót
     select_service: Válassz szolgáltatást

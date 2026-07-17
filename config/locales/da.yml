@@ -1,6 +1,8 @@
 ---
 da:
   ea:
+    select_provider_first: Vælg udbyder først
+    select_service_first: Vælg ydelse først
     page_title: Book tid ved ...
     service_and_provider: Vælg tjeneste og leverandør
     select_service: Vælg tjeneste

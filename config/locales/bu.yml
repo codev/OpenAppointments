@@ -1,6 +1,8 @@
 ---
 bu:
   ea:
+    select_provider_first: Първо изберете изпълнител
+    select_service_first: Първо изберете услуга
     page_title: Запазете час с ...
     service_and_provider: Изберете Услуга и Изпълнител
     select_service: Изберете Услуга

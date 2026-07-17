@@ -1,6 +1,8 @@
 ---
 de:
   ea:
+    select_provider_first: Zuerst Anbieter wählen
+    select_service_first: Zuerst Dienstleistung wählen
     page_title: Vereinbaren Sie einen Termin mit
     service_and_provider: Dienstleistung & Anbieter
     select_service: Auswahl der Dienstleistung

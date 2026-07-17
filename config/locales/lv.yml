@@ -1,6 +1,8 @@
 ---
 lv:
   ea:
+    select_provider_first: Vispirms izvēlieties pakalpojuma sniedzēju
+    select_service_first: Vispirms izvēlieties pakalpojumu
     page_title: Aizsirašyti satikšanu ar
     service_and_provider: Pakalpoja ir piegādātājs
     select_service: Pasirinkti pakalpojumu

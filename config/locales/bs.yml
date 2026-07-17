@@ -1,6 +1,8 @@
 ---
 bs:
   ea:
+    select_provider_first: Prvo odaberite pružatelja
+    select_service_first: Prvo odaberite uslugu
     page_title: Zakažite termin sa
     service_and_provider: Usluga i dobavljač
     select_service: Izaberite uslugu

@@ -1,6 +1,8 @@
 ---
 sk:
   ea:
+    select_provider_first: Najprv vyberte poskytovateľa
+    select_service_first: Najprv vyberte službu
     page_title: Rezervácie
     service_and_provider: Vyberte si službu a pracovníka
     select_service: Vyberte si službu

@@ -1,6 +1,8 @@
 ---
 lb:
   ea:
+    select_provider_first: Fir d'éischt de Prestataire wielen
+    select_service_first: Fir d'éischt de Service wielen
     page_title: Huelt ee Termäin mat
     service_and_provider: Auswiel vun der Dingschtleeschtung an dem Mataarbechter
     select_service: Auswiel vun der Dingschtleeschtung

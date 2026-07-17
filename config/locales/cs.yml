@@ -1,6 +1,8 @@
 ---
 cs:
   ea:
+    select_provider_first: Nejprve vybrat poskytovatele
+    select_service_first: Nejprve vybrat službu
     page_title: Rezervace schůzky s
     service_and_provider: Výběr služby a poskytovatele
     select_service: Vyberte službu

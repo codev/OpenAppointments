@@ -52,6 +52,13 @@ App.Pages.Booking = (function () {
     let manageMode = vars('manage_mode') || false;
 
     /**
+     * Which selection page comes first: 'service' (default) or 'provider' (?first=provider).
+     *
+     * @type {String}
+     */
+    const firstStep = vars('first_step') || 'service';
+
+    /**
      * Detect the month step.
      *
      * @param previousDateTimeMoment
@@ -234,16 +241,25 @@ App.Pages.Booking = (function () {
                     $selectProvider.val(vars('available_providers')[0].id).trigger('change');
                 }
 
+                // Both selections are known: skip the two selection pages and open the time step.
                 $('.active-step').removeClass('active-step');
-                $('#step-2').addClass('active-step');
-                $('#wizard-frame-1').hide();
-                $('#wizard-frame-2').fadeIn();
+                $('#step-3').addClass('active-step');
+                $('#wizard-frame-1').css('visibility', 'visible').hide();
+                $('#wizard-frame-2').hide();
 
-                $selectService.closest('.wizard-frame').find('.button-next').trigger('click');
+                const todayMoment = moment();
+                App.Utils.UI.setDateTimePickerValue($selectDate, todayMoment.toDate());
+                App.Http.Booking.getUnavailableDates(
+                    $selectProvider.val(),
+                    $selectService.val(),
+                    todayMoment.format('YYYY-MM-DD'),
+                );
 
-                $('#step-1').hide().removeClass('d-inline-block');
+                $('#wizard-frame-3').fadeIn();
 
-                $(document).find('.button-back:first').css('visibility', 'hidden');
+                $('#step-1, #step-2').hide().removeClass('d-inline-block');
+
+                $('#button-back-3').css('visibility', 'hidden');
 
                 $('#steps .book-step:visible').each((index, bookStepEl) =>
                     $(bookStepEl)
@@ -282,14 +298,102 @@ App.Pages.Booking = (function () {
     }
 
     /**
+     * Rebuild the provider select. With a service id only its providers are listed;
+     * without one (provider-first page, or nothing chosen yet) all providers are.
+     *
+     * @param {String} serviceId
+     */
+    function populateProviders(serviceId) {
+        const previousProviderId = $selectProvider.val();
+
+        $selectProvider.empty();
+
+        $selectProvider.append(new Option(lang('please_select'), ''));
+
+        let previousProviderCanServe = false;
+
+        vars('available_providers').forEach((provider) => {
+            const canServeService =
+                !serviceId ||
+                provider.services.filter((providerServiceId) => Number(providerServiceId) === Number(serviceId))
+                    .length > 0;
+
+            if (canServeService) {
+                $selectProvider.append(new Option(provider.name, provider.id));
+
+                if (String(provider.id) === String(previousProviderId)) {
+                    previousProviderCanServe = true;
+                }
+            }
+        });
+
+        const providerOptionCount = $selectProvider.find('option').length;
+
+        // Remove the "Please Select" option, if there is only one provider available
+
+        if (providerOptionCount === 2) {
+            $selectProvider.find('option[value=""]').remove();
+        }
+
+        // Add the "Any Provider" entry
+
+        const anyProviderAvailable = providerOptionCount > 2 && Boolean(Number(vars('display_any_provider')));
+
+        if (anyProviderAvailable) {
+            $(new Option(lang('any_provider'), 'any-provider')).insertAfter($selectProvider.find('option:first'));
+        }
+
+        // Restore the previous provider selection if they can serve the new service
+
+        if (previousProviderId && previousProviderCanServe) {
+            $selectProvider.val(previousProviderId);
+        } else if (previousProviderId === 'any-provider' && anyProviderAvailable) {
+            $selectProvider.val('any-provider');
+        }
+    }
+
+    /**
+     * Provider-first mode: only offer the services the chosen provider can serve.
+     */
+    function filterServicesByProvider() {
+        const providerId = $selectProvider.val();
+        const provider = vars('available_providers').find((entry) => String(entry.id) === String(providerId));
+        const showAll = !providerId || providerId === 'any-provider' || !provider;
+
+        $selectService.find('option').each((index, optionEl) => {
+            const $option = $(optionEl);
+
+            if (!$option.attr('value')) {
+                return; // Keep the "Please Select" placeholder.
+            }
+
+            const offered =
+                showAll ||
+                provider.services.some((providerServiceId) => String(providerServiceId) === String($option.attr('value')));
+
+            $option.prop('disabled', !offered).prop('hidden', !offered);
+        });
+
+        const currentServiceId = $selectService.val();
+
+        if (
+            currentServiceId &&
+            !showAll &&
+            !provider.services.some((providerServiceId) => String(providerServiceId) === String(currentServiceId))
+        ) {
+            $selectService.val('').trigger('change');
+        }
+    }
+
+    /**
      * Remove empty columns and center elements if needed.
      */
     function optimizeContactInfoDisplay() {
         // If a column has only one control shown then move the control to the other column.
 
-        const $firstCol = $('#wizard-frame-3 .field-col:first');
+        const $firstCol = $('#wizard-frame-4 .field-col:first');
         const $firstColControls = $firstCol.find('.form-control');
-        const $secondCol = $('#wizard-frame-3 .field-col:last');
+        const $secondCol = $('#wizard-frame-4 .field-col:last');
         const $secondColControls = $secondCol.find('.form-control');
 
         if ($firstColControls.length === 1 && $secondColControls.length > 1) {
@@ -306,7 +410,7 @@ App.Pages.Booking = (function () {
 
         // Hide columns that do not have any controls displayed.
 
-        const $fieldCols = $(document).find('#wizard-frame-3 .field-col');
+        const $fieldCols = $(document).find('#wizard-frame-4 .field-col');
 
         $fieldCols.each((index, fieldColEl) => {
             const $fieldCol = $(fieldColEl);
@@ -339,66 +443,27 @@ App.Pages.Booking = (function () {
         /**
          * Event: Selected Provider "Changed"
          *
-         * Whenever the provider changes the available appointment date - time periods must be updated.
+         * In provider-first mode the service list is narrowed down to the provider's
+         * services; the confirmation details are refreshed either way.
          */
         $selectProvider.on('change', () => {
+            if (firstStep === 'provider') {
+                filterServicesByProvider();
+            }
+
             App.Pages.Booking.updateConfirmFrame();
         });
 
         /**
          * Event: Selected Service "Changed"
          *
-         * When the user clicks on a service, its available providers should
-         * become visible.
+         * When the user picks a service, the provider list is rebuilt with the
+         * providers that can serve it (all providers while no service is chosen).
          */
-        $selectService.on('change', (event) => {
-            const $target = $(event.target);
+        $selectService.on('change', () => {
             const serviceId = $selectService.val();
-            const previousProviderId = $selectProvider.val();
 
-            $selectProvider.parent().prop('hidden', !Boolean(serviceId));
-
-            $selectProvider.empty();
-
-            $selectProvider.append(new Option(lang('please_select'), ''));
-
-            let previousProviderCanServe = false;
-
-            vars('available_providers').forEach((provider) => {
-                // If the current provider is able to provide the selected service, add him to the list box.
-                const canServeService =
-                    provider.services.filter((providerServiceId) => Number(providerServiceId) === Number(serviceId))
-                        .length > 0;
-
-                if (canServeService) {
-                    $selectProvider.append(new Option(provider.name, provider.id));
-
-                    if (String(provider.id) === String(previousProviderId)) {
-                        previousProviderCanServe = true;
-                    }
-                }
-            });
-
-            const providerOptionCount = $selectProvider.find('option').length;
-
-            // Remove the "Please Select" option, if there is only one provider available
-
-            if (providerOptionCount === 2) {
-                $selectProvider.find('option[value=""]').remove();
-            }
-
-            // Add the "Any Provider" entry
-
-            if (providerOptionCount > 2 && Boolean(Number(vars('display_any_provider')))) {
-                $(new Option(lang('any_provider'), 'any-provider')).insertAfter($selectProvider.find('option:first'));
-            }
-
-            // Restore previous provider selection if they can serve the new service
-            if (previousProviderId && previousProviderCanServe) {
-                $selectProvider.val(previousProviderId);
-            } else if (previousProviderId === 'any-provider' && providerOptionCount > 2 && Boolean(Number(vars('display_any_provider')))) {
-                $selectProvider.val('any-provider');
-            }
+            populateProviders(serviceId);
 
             App.Pages.Booking.updateConfirmFrame();
 
@@ -414,13 +479,21 @@ App.Pages.Booking = (function () {
         $('.button-next').on('click', (event) => {
             const $target = $(event.currentTarget);
 
-            // If we are on the first step and there is no provider selected do not continue with the next step.
-            if ($target.attr('data-step_index') === '1' && !$selectProvider.val()) {
-                return;
+            // Page 1: the selection shown first (service or provider) must be made.
+            if ($target.attr('data-step_index') === '1') {
+                const firstPageValue = firstStep === 'provider' ? $selectProvider.val() : $selectService.val();
+
+                if (!firstPageValue) {
+                    return;
+                }
             }
 
-            // If we are on the first step, fetch unavailable dates and available hours for step 2.
-            if ($target.attr('data-step_index') === '1') {
+            // Page 2: both selections must be made; fetch the dates for the time step.
+            if ($target.attr('data-step_index') === '2') {
+                if (!$selectProvider.val() || !$selectService.val()) {
+                    return;
+                }
+
                 const todayMoment = moment();
 
                 App.Utils.UI.setDateTimePickerValue($selectDate, todayMoment.toDate());
@@ -432,8 +505,8 @@ App.Pages.Booking = (function () {
                 );
             }
 
-            // If we are on the 2nd tab then the user should have an appointment hour selected.
-            if ($target.attr('data-step_index') === '2') {
+            // Time step: the user should have an appointment hour selected.
+            if ($target.attr('data-step_index') === '3') {
                 if (!$('.selected-hour').length) {
                     if (!$('#select-hour-prompt').length) {
                         $('<div/>', {
@@ -446,14 +519,13 @@ App.Pages.Booking = (function () {
                 }
             }
 
-            // If we are on the 3rd tab then we will need to validate the user's input before proceeding to the next
-            // step.
-            if ($target.attr('data-step_index') === '3') {
+            // Customer information step: validate the user's input before proceeding.
+            if ($target.attr('data-step_index') === '4') {
                 if (!App.Pages.Booking.validateCustomerForm()) {
                     return; // Validation failed, do not continue.
                 } else {
                     App.Pages.Booking.updateConfirmFrame();
-                    
+
                     // Initialize ALTCHA widget if present
                     if ($('#altcha-widget').length && App.Utils.Altcha) {
                         App.Utils.Altcha.initialize('altcha-widget');
@@ -642,8 +714,8 @@ App.Pages.Booking = (function () {
      * @return {Boolean} Returns the validation result.
      */
     function validateCustomerForm() {
-        $('#wizard-frame-3 .is-invalid').removeClass('is-invalid');
-        $('#wizard-frame-3 label.text-danger').removeClass('text-danger');
+        $('#wizard-frame-4 .is-invalid').removeClass('is-invalid');
+        $('#wizard-frame-4 label.text-danger').removeClass('text-danger');
 
         // Validate required fields.
         let missingRequiredField = false;

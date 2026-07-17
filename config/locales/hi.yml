@@ -1,6 +1,8 @@
 ---
 hi:
   ea:
+    select_provider_first: पहले प्रदाता चुनें
+    select_service_first: पहले सेवा चुनें
     page_title: नअपॉइंटमेंट बुक करें
     service_and_provider: प्रदान करनेवाला और सेवा का चयन करें
     select_service: सेवा का चयन करें
