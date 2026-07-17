@@ -1,0 +1,575 @@
+---
+sv:
+  ea:
+    page_title: Boka tid med ...
+    service_and_provider: Välj tjänst och utförare
+    select_service: Välj tjänst
+    select_provider: Välj utförare
+    duration: Längd
+    minutes: Minuter
+    price: Pris
+    back: Tillbaka
+    appointment_date_and_time: Välj datum och tid
+    no_available_hours: Det finns inga lediga tider det här datumet
+    appointment_hour_missing: Välj en tid för att fortsätta
+    customer_information: Fyll i din information
+    first_name: Förnamn
+    last_name: Efternamn
+    email: E-post
+    phone_number: Telefonnummer
+    phone: Telefon
+    address: Adress
+    city: Stad
+    zip_code: Postnummer
+    notes: Noteringar
+    language: Språk
+    no_language: Inget språk
+    fields_are_required: Fält markerade med * måste fyllas i
+    appointment_confirmation: Bekräfta bokningen
+    confirm: Bekräfta
+    update: Uppdatera
+    cancel_appointment_hint: Tryck på "Avbryt" för att ta bort bokningen
+    cancel: Avbryt
+    appointment_registered: Din bokning är sparad
+    cancel_appointment_title: Avboka tid
+    appointment_cancelled: Din tid är nu avbokad
+    appointment_cancelled_title: Tiden är avbokad
+    reason: Anledning
+    appointment_removed_from_schedule: Följande tid är avbokad
+    appointment_details_was_sent_to_you: Du kommer få ett mejl med din bokningsbekräftelse
+    add_to_google_calendar: Lägg till i Google-kalendern
+    appointment_booked: Din tid är nu bokad
+    thank_you_for_appointment: Tack för din bokning hos oss. Här nedan kan du se information om bokningen. Klicka på länken till bokningen för att göra ändringar.
+    appointment_details_title: Information om din bokning
+    customer_details_title: Kunduppgifter
+    service: Tjänst
+    provider: Utförare
+    customer: Kund
+    start: Start
+    end: Slut
+    name: Namn
+    appointment_link_title: Länk till bokning
+    success: Lyckades
+    appointment_added_to_your_plan: En ny bokning har lagts till i ditt schema
+    appointment_link_description: Klicka på länken nedan för att göra ändringar
+    appointment_locked: Låst för ändringar
+    appointment_locked_message: Bokningen kan inte ändras mindre än {$limit} timmar i förväg
+    appointment_not_found: Hittade ingen bokning
+    appointment_does_not_exist_in_db: Kunde inte hitta bokningen i systemet
+    display_calendar: Visa kalender
+    calendar: Kalender
+    users: Användare
+    settings: Inställningar
+    log_out: Logga ut
+    synchronize: Synkronisera
+    enable_sync: Aktivera
+    disable_sync: Deaktivera
+    disable_sync_prompt: Är du säker på att du vill sluta synka kalendern?
+    reload: Uppdatera
+    appointment: Bokning
+    unavailability: Inte tillgänglig
+    week: Vecka
+    month: Månad
+    today: I dag
+    not_working: Inte bokningsbar
+    break: Inte bokningsbar
+    add: Lägg till
+    edit: Redigera
+    hello: Hej
+    all_day: Hela dagen
+    manage_appointment_record_hint: Hantera alla bokningar för tillgängliga tjänster och utförare
+    select_filter_item_hint: Välj en tjänst eller utförare för att se bokningarna i kalendern
+    enable_appointment_sync_hint: Aktivera bokningarna och synka mot utförarens Google-kalender
+    manage_customers_hint: Hantera kunder och se deras historik
+    manage_services_hint: Hantera tillgängliga tjänster och kategorier
+    manage_users_hint: Hantera systemanvändare (admin, utförare, assistenter)
+    settings_hint: System- och användarinställningar
+    log_out_hint: Logga ut ur systemet
+    unavailability_periods_hint: Utföraren är inte bokningsbar under låsta perioder.
+    new_appointment_hint: Skapa en ny bokning och spara den i databasen
+    reload_appointments_hint: Uppdatera kalendern
+    trigger_sync_hint: Starta synken med Google Kalender
+    appointment_updated: Bokningen är uppdaterad
+    undo: Ångra
+    appointment_details_changed: Bokningen har ändrats
+    appointment_changes_saved: Ändringarna på bokningen har sparats
+    save: Spara
+    new: Ny
+    select: Välj
+    hide: Dölj
+    type_to_filter_customers: Filtrera kunder...
+    clear_fields_add_existing_customer_hint: Töm fält och lägg till ny kund
+    pick_existing_customer_hint: Välj en befintlig kund
+    new_appointment_title: Ny bokning
+    edit_appointment_title: Ändra bokning
+    delete_appointment_title: Ta bort bokning
+    write_appointment_removal_reason: Ange anledning till avbokningen
+    appointment_saved: Bokningen är sparad
+    new_unavailability_title: Ny låst period
+    edit_unavailability_title: Ändra låst period
+    unavailability_saved: Låst period sparad.
+    start_date_before_end_error: Startdatum är efter slutdatum
+    invalid_duration: Felaktig längd på bokningen
+    invalid_email: Ogiltig epostadress
+    customers: Kunder
+    details: Detaljer
+    no_records_found: Hittade inga poster...
+    services: Tjänster
+    duration_minutes: Längd (minuter)
+    currency: Valuta
+    category: Kategori
+    no_category: Ingen kategori
+    description: Beskrivning
+    categories: Kategorier
+    admins: Administratörer
+    providers: Utförare
+    secretaries: Assistenter
+    mobile_number: Mobilnummer
+    mobile: Mobil
+    state: Land
+    username: Användarnamn
+    password: Lösenord
+    retype_password: Repetera lösenord
+    receive_notifications: Acceptera notiser
+    passwords_mismatch: Lösenordet stämmer inte.
+    admin_saved: Administratören är sparad
+    provider_saved: Utföraren är sparad
+    secretary_saved: Assistenten är sparad
+    admin_deleted: Administratören är borttagen
+    provider_deleted: Utföraren är borttagen
+    secretary_deleted: Assistenten är borttagen
+    service_saved: Tjänsten är sparad
+    service_category_saved: Tjänstekategorin är sparad
+    service_deleted: Tjänsten är borttagen
+    service_category_deleted: Tjänstekategorin är borttagen
+    customer_saved: Kunden är sparad
+    customer_deleted: Kunden är borttagen
+    current_view: Nu visas
+    working_plan: Schema
+    reset_plan: Återställ schema
+    monday: Måndag
+    tuesday: Tisdag
+    wednesday: Onsdag
+    thursday: Torsdag
+    friday: Fredag
+    saturday: Lördag
+    sunday: Söndag
+    breaks: Rast
+    add_breaks_during_each_day: Lägg till dagliga raster. Inga bokningar kan göras under rasttid.
+    day: Dag
+    days: Dagar
+    actions: Aktivera
+    reset_working_plan_hint: Återställ schemat till standardinställningar
+    company_name: Företagets namn
+    company_name_hint: Företagsnamnet visas i hela systemet (obligatoriskt).
+    company_email: Företagets e-postadress
+    company_email_hint: Ange företagets e-postadress. Den används för alla utskick och meddelanden från systemet (obligatoriskt)
+    company_link: Webbsida
+    company_link_hint: Länk till företagets webbsida. (obligatorisk)
+    go_to_booking_page: Gå till bokningssidan
+    settings_saved: Inställningarna sparades
+    general: Generellt
+    booking: Bokning
+    visible: Synlig
+    hidden: Dold
+    business_logic: Bokningsregler
+    current_user: Nuvarande användare
+    about_app: Om Easy!Appointments
+    edit_working_plan_hint: Markera de dagar och tider som är tillgängliga för bokning. Som administratör kan du justera bokningar utanför dessa tider, men kunder kan bara boka inom det angivna schemat. Detta är standardschemat för alla utförare, men det går att ändra individuellt. Efteråt kan du även lägga till raster.
+    edit_breaks_hint: Lägg till dagliga raster. Dessa läggs till i standardschemat för samtliga utförare.
+    book_advance_timeout: Framförhållning för bokning
+    book_advance_timeout_hint: Ange hur många minuter i förväg en bokning eller ändring senast måste göras.
+    timeout_minutes: Paus (minuter)
+    about_app_info: Easy!Appointments är ett bokningssystem som låter dina kunder boka tider online. Bokningarna kan synkas med personalens Google-kalendrar så att de även syns i andra tjänster.
+    current_version: Version
+    support: Support
+    about_app_support: Om du stöter på problem när du använder Easy!Appointments kan du söka i den officiella Google-gruppen för support. Du kan även underlätta för utvecklarna genom att registrera ett ärende på GitHub-sidan.
+    official_website: Officiell hemsida
+    google_plus_community: Google+ grupp
+    support_group: Support grupp
+    project_issues: Felrapporter
+    license: Licens
+    about_app_license: Easy!Appointments är licensierat under GPLv3. Genom att använda koden på något sätt godkänner du villkoren på följande länk.
+    logout_success: Du är nu utloggad. Välj ett alternativ nedan för att gå vidare.
+    book_appointment_title: Boka tid
+    backend_section: Administration
+    you_need_to_login: Välkommen! Logga in för att komma till administratörssidan.
+    enter_username_here: Fyll i användarnamn
+    enter_password_here: Ange lösenord...
+    login: Logga in
+    forgot_your_password: Glömt ditt lösenord?
+    login_failed: Inloggningen misslyckades. Kontrollera användarnamn och lösenord och försök igen.
+    type_username_and_email_for_new_password: Ange ditt användarnamn och din e-postadress för att få ett nytt lösenord.
+    enter_email_here: Fyll i din e-postadress
+    regenerate_password: Skapa nytt lösenord
+    go_to_login: Gå tillbaka till inloggningen
+    new_password_sent_with_email: Ett nytt lösenord har skickats till din e-postadress.
+    new_account_password: Nytt lösenord
+    new_password_is: 'Ditt nya lösenord är: $password . Spara det på ett säkert ställe. Du kan när som helst byta lösenord under inställningarna.'
+    delete_record_prompt: Är du säker på att du vill ta bort posten? Åtgärden kan inte ångras.
+    delete_admin: Ta bort administratör
+    delete_customer: Ta bort kund
+    delete_service: Ta bort tjänst
+    delete_service_category: Ta bort tjänstekategori
+    delete_provider: Ta bort utförare
+    delete_secretary: Ta bort assistent
+    delete_appointment: Ta bort bokning
+    delete_unavailability: Ta bort låst period
+    delete: Ta bort
+    unexpected_issues: Oväntat fel
+    unexpected_issues_message: Något gick fel och åtgärden kunde inte utföras.
+    close: Stäng
+    page_not_found: Sidan hittdes inte
+    page_not_found_message: Sidan kunde inte hittas. Kontrollera adressen i webbläsaren eller använd knapparna nedan för att navigera vidare.
+    error: Fel
+    no_privileges: Du saknar behörighet
+    no_privileges_message: Du saknar behörighet för den här sidan. Välj ett annat alternativ i menyn för att gå vidare.
+    backend_calendar: Administratörskalender
+    start_date_time: Startdatum / Tid
+    end_date_time: Slutdatum / Tid
+    licensed_under: Licensierad under
+    unexpected_issues_occurred: Ett oväntat fel uppstod
+    service_communication_error: Kunde inte kommunicera med servern. Försök igen.
+    no_privileges_edit_appointments: 'Du är inte behörig att ändra bokningen. '
+    unavailability_updated: Den låsta perioden har uppdaterats.
+    appointments: Tidsbokningar
+    unexpected_warnings: Oväntade varningar
+    unexpected_warnings_message: Åtgärden slutfördes, men med varningar.
+    filter: Filter
+    clear: Rensa
+    uncategorized: Okategoriserad
+    username_already_exists: Användarnamnet finns redan
+    password_length_notice: Lösenordet måste vara minst $number tecken långt.
+    general_settings: Allmänna inställningar
+    personal_information: Personlig information
+    system_login: System login
+    user_settings_are_invalid: Inställningarna är ogiltiga. Kontrollera uppgifterna och försök igen.
+    add_break: Lägg till raster
+    january: Januari
+    february: Februari
+    march: Mars
+    april: April
+    may: Maj
+    june: Juni
+    july: Juli
+    august: Augusti
+    september: September
+    october: Oktober
+    november: November
+    december: December
+    previous: Föregående
+    next: Nästa
+    now: Nu
+    select_time: Välj tid
+    time: Tid
+    hour: Timme
+    minute: Minuter
+    calendar_sync_completed: Synkroniseringen med Google är slutförd.
+    calendar_sync_failed: Synkroniseringen med Google misslyckades. Kunde inte ansluta till servern.
+    select_sync_calendar: Välj en Google-kalender
+    select_sync_calendar_prompt: Välj vilken kalender du vill synkronisera med. Om du inte väljer någon används din standardkalender.
+    sync_calendar_selected: Google-kalender vald.
+    oops_something_went_wrong: Oops! Något gick fel.
+    ea_update_success: Easy!Appointments är uppdaterad.
+    require_captcha: Kräv CAPTCHA
+    require_captcha_hint: När detta är aktiverat måste kunder ange en säkerhetskod (CAPTCHA) för att kunna boka eller ändra tider.
+    captcha_is_wrong: CAPTCHA-verifieringen misslyckades, försök igen.
+    enter_captcha_here: Ange CAPTCHA här...
+    any_provider: Alla utförare
+    requested_hour_is_unavailable: Den begärda tiden är tyvärr inte tillgänglig. Vänligen välj en annan tid för din bokning.
+    customer_notifications: Kundaviseringar
+    customer_notifications_hint: Anger om kunder ska få aviseringar vid ändringar i sina bokningar.
+    date_format: Datumformat
+    date_format_hint: Byt datumformat (D - Dag, M - Månad, Y - År).
+    time_format: Tidsformat
+    time_format_hint: Byt tidsformat (H - Timme, M - Minut).
+    first_weekday: Första dagen i veckan
+    first_weekday_hint: Ange första dagen i en kalendervecka.
+    google_analytics_code_hint: Lägg till ditt Google Analytics ID till bokningssidan.
+    availabilities_type: Tillgänglighet
+    flexible: Flexibel
+    fixed: Fast
+    attendants_number: Max antal deltagare
+    reset_working_plan: Återställ schemat till standardvärden.
+    legal_contents: Juridisk information
+    cookie_notice: Information om cookies
+    display_cookie_notice: Visa information om cookies
+    cookie_notice_content: Cookie-meddelande
+    terms_and_conditions: Användarvillkor
+    display_terms_and_conditions: Visa användarvillkor
+    terms_and_conditions_content: Innehåll för allmänna villkor
+    privacy_policy: Integritetspolicy
+    display_privacy_policy: Visa integritetspolicy
+    privacy_policy_content: Innehåll för integritetspolicy
+    website_using_cookies_to_ensure_best_experience: Denna webbplats använder cookies för att förbättra din användarupplevelse.
+    read_and_agree_to_terms_and_conditions: Jag har läst och godkänner {$link}användarvillkoren{/$link}.
+    read_and_agree_to_privacy_policy: Jag har läst och godkänner {$link}sekretesspolicyn{/$link}.
+    delete_personal_information_hint: Ta bort alla dina personuppgifter från systemet.
+    delete_personal_information: Ta bort din personliga information
+    delete_personal_information_prompt: Är du säker på att du vill ta bort all din information från systemet? Denna åtgärd går inte att ångra.
+    location: Plats
+    working_plan_exception: Extra arbetsdag
+    working_plan_exceptions: Extra arbetsdagar
+    working_plan_exceptions_hint: Lägg till en arbetsdag utanför schemat.
+    new_working_plan_exception_title: Ny arbetsdag
+    working_plan_exception_saved: Den nya arbetsdagen är sparad.
+    working_plan_exception_deleted: Undantag från arbetsplan har tagits bort.
+    add_working_plan_exceptions_during_each_day: Lägg till arbetsdagar utanför schemat.
+    add_working_plan_exception: Lägg till en arbetsdag.
+    require_phone_number: Kräv telefonnummer.
+    require_phone_number_hint: När detta är aktiverat är telefonnummer obligatoriskt för att kunna göra en bokning.
+    check_spam_folder: Kontrollera skräpposten om du inte har fått mejlet inom några minuter.
+    api_token_hint: Ställ in en säkerhets-token för att ge åtkomst till Easy!Appointments API via token-autentisering.
+    timezone: Tidszon
+    overwrite_existing_working_plans: Detta kommer att ersätta befintliga utförarescheman. Är du säker på att du vill fortsätta?
+    working_plans_got_updated: Alla scheman uppdaterades.
+    apply_to_all_providers: Använd för alla utförare
+    display_any_provider: Visa alternativ för valfri utförare
+    display_any_provider_hint: Aktivera detta för att ge kunden möjlighet att boka en tid hos valfri ledig utförare.
+    load_more: Ladda mer
+    list: Lista
+    default: Standard
+    table: Tabell
+    date: Datum
+    about: Om
+    booking_settings: Inställningar för bokningar
+    display: Visa
+    require: Kräv
+    color: Färg
+    matomo_analytics_url_hint: Ange adressen till din egen Matomo-installation för att aktivera spårning på bokningssidan.
+    invalid_phone: Ogiltigt telefonnummer.
+    legal: Juridik
+    business: Företag
+    account: Konto
+    disable_booking: Stäng av bokningsfunktionen
+    disable_booking_hint: Inaktiverar bokningssidan så kunder kan inte boka nya tider.
+    display_message: Visa meddelande
+    booking_is_disabled: Bokningsfunktionen är inaktiverad
+    appearance: Utseende
+    company_logo: Företagets logotyp
+    company_logo_hint: Företagslogotypen visas på flera ställen, inklusive bokningssidan och i e-postmeddelanden (bildfil, max 2 MB).
+    company_color: Profilfärg
+    company_color_hint: Profilfärgen tillämpas i hela appen för att följa din grafiska profil..
+    localization: Lokalisering
+    integrations: Integrationer
+    company: Företag
+    remove: Ta bort
+    login_button: Knapp för inloggning
+    display_login_button_hint: Välj om inloggningsknappen till admin-delen ska visas på bokningssidan.
+    private: Privat innehåll
+    private_hint: Privat innehåll kommer inte att publiceras eller vara tillgängligt på bokningssidan.
+    reset: Återställ
+    all: Alla
+    booking_link: Bokningslänk
+    add_new_event: Skapa nytt evenemang
+    what_kind_of_event: Vilken typ av evenemang vill du lägga till?
+    theme: Tema
+    limit_customer_access: Begränsa kundåtkomst
+    limit_customer_access_hint: Begränsar åtkomsten så att personalen bara ser kunder som de faktiskt har bokat in.
+    url: URL
+    secret_token: Säkerhetstoken
+    verify_ssl: Verifiera SSL
+    appointment_save: Spara bokning
+    appointment_delete: Ta bort bokning
+    unavailability_save: Spara otillgänglighet
+    unavailability_delete: Ta bort otillgänglighet
+    customer_save: Spara kund
+    customer_delete: Ta bort kund
+    service_save: Spara tjänst
+    service_delete: Ta bort tjänst
+    service_category_save: Spara tjänstekategori
+    service_category_delete: Ta bort tjänstekategori
+    provider_save: Spara utförare
+    provider_delete: Ta bort utförare
+    secretary_save: Spara assistent
+    secretary_delete: Ta bort assistent
+    admin_save: Spara administratör
+    admin_delete: Ta bort administratör
+    options: Alternativ
+    webhooks: Webhooks
+    webhooks_info: Med webhooks kan du skicka automatiska anrop till externa lösningar vid händelser som nya bokningar eller raderade kunder.
+    integrations_info: Integrationer gör att du kan ansluta till externa applikationer och API:er.
+    configure: Konfigurera
+    google_analytics: Google Analytics
+    google_analytics_info: Google Analytics lägger automatiskt till spårningskod och taggar på din bokningssida så att du kan följa alla besök och bokningar.
+    matomo_analytics: Matomo Analytics
+    matomo_analytics_info: Matomo Analytics lägger automatiskt till spårningskod och taggar på din bokningssida så att du kan följa alla besök och bokningar.
+    api: API
+    api_info: API:et ger dig åtkomst till all data via HTTP, vilket gör det möjligt att bygga egna integrationer och lösningar.
+    google_analytics_code: Google Analytics Spårnings-ID
+    matomo_analytics_url: URL till Matomo-installation
+    future_booking_limit: Maximal framförhållning på bokningar
+    limit_days: Tidsgräns (dagar)
+    future_booking_limit_hint: Ange hur många dagar framåt i tiden som kunder kan boka via bokningssidan.
+    api_token: API-token
+    allow_rescheduling_cancellation_before: Tillåt ombokning/avbokning fram till
+    at_least_one_field: Minst ett fält måste vara synligt...
+    status: Status
+    appointment_status_options: Statusalternativ för bokningar
+    appointment_status_options_info: Skapa en lista över statusar som kan användas i kalendern. (Den översta i listan används som standard)
+    sunday_short: Sön
+    monday_short: Mån
+    tuesday_short: Tis
+    wednesday_short: Ons
+    thursday_short: Tor
+    friday_short: Fre
+    saturday_short: Lör
+    january_short: Jan
+    february_short: Feb
+    march_short: Mar
+    april_short: Apr
+    may_short: Maj
+    june_short: Jun
+    july_short: Jul
+    august_short: Aug
+    september_short: Sep
+    october_short: Okt
+    november_short: Nov
+    december_short: Dec
+    am: fm
+    pm: em
+    to: till
+    click_to_toggle: Klicka för att ändra
+    week_short: V.
+    scroll_to_increment: Scrolla för att höja
+    year: År
+    make_non_working_day: Markera som ledig dag för utföraren
+    no_breaks: Inga raster
+    service_categories: Tjänstekategorier
+    service_category: Tjänstekategori
+    blocked_period_saved: Den blockerade perioden har sparats
+    blocked_period_deleted: Den blockerade perioden har tagits bort
+    delete_blocked_period: Ta bort blockerad period
+    blocked_period: Blockerad tid
+    blocked_periods: Blockerade tider
+    blocked_period_save: Spara blockering
+    blocked_period_delete: Ta bort blockering
+    blocked_periods_hint: Ställ in tidsperioder då bokningssidan ska vara stängd för alla utförare (t.ex. vid helgdagar eller semester)
+    custom_field: Eget fält
+    custom_fields: Egna fält
+    label: Etikett
+    webhook_saved: Webhooken har sparats
+    webhook_deleted: Webhooken har tagits bort
+    delete_webhook: Ta bort webhook
+    contact_info: Kontaktinformation
+    hide_from_public: Dölj från bokningssidan
+    matomo_analytics_site_id: Matomo Analytics Webbplats-ID
+    matomo_analytics_site_id_hint: Ställ in det webbplats-ID som ska spåras av Matomo (standardwebbplatsen har ID "1").
+    default_timezone: Standardtidszon
+    default_timezone_hint: Ställ in den tidszon som ska användas som standard för nya bokningar
+    default_language: Standardspråk
+    default_language_hint: Ställ in det språk som ska användas som standard för nya bokningar
+    sync_method_prompt: Vilken synkroniseringsmetod vill du använda?
+    caldav_server: CalDAV-server
+    caldav_connection_info_prompt: Vänligen ange anslutningsinformationen för målkalendern.
+    connect: Anslut
+    ldap: LDAP
+    ldap_info: Denna integration gör att du kan ansluta till en befintlig LDAP-server och automatiskt importera användare till Easy!Appointments och låta dem använda SSO med sitt kataloglösenord (användarnamn måste matcha).
+    host: Värd
+    port: Port
+    user_dn: Användar DN
+    base_dn: Bas DN
+    keyword: Sökord
+    ldap_search_hint: Ange ett sökord för att leta i LDAP-katalogen efter användare som matchar dina filter.
+    ldap_extension_not_loaded: PHP-tillägget för LDAP saknas. Du måste aktivera det för att kunna använda denna integration.
+    field_mapping: Koppling av fält
+    content: Innehåll
+    active: Aktiv
+    user_imported: Importen av användaren lyckades
+    import: Importera
+    ldap_dn: LDAP DN
+    role: Roll
+    at_least_one_field_required: Minst ett fält måste vara obligatoriskt på bokningssidan.
+    customer_is_already_booked: Kunden har redan en bokning på den valda tiden.
+    fields: Fält
+    invalid_credentials_provided: Felaktiga uppgifter angivna, försök igen.
+    calendar_url: Kalender-URL
+    please_select: Vänligen välj
+    secret_header: Säkerhetsheader
+    search: Sök
+    slot_interval: Längd på tidsluckor (minuter)
+    jitsi: Jitsi
+    jitsi_info: Skapa Jitsi-möteslänkar automatiskt för bokningar. När detta är aktiverat genereras en unik länk för videosamtal som sparas i bokningen.
+    altcha: ALTCHA
+    altcha_info: ALTCHA är ett integritetsfokuserat CAPTCHA-alternativ med öppen källkod som använder proof-of-work för att verifiera mänskliga användare utan spårning.
+    altcha_enabled_hint: När aktiverat kommer ALTCHA att användas istället för den traditionella bild-CAPTCHA för formulärverifiering.
+    altcha_hmac_key: HMAC Key
+    altcha_hmac_key_hint: En hemlig nyckel som används för att signera och verifiera ALTCHA-utmaningar. Klicka på Generera för att skapa en ny säker nyckel.
+    altcha_max_number: Max antal
+    altcha_max_number_hint: 'Det maximala antalet för proof-of-work-utmaningen. Högre värden ökar svårighetsgraden (standard: 100000).'
+    altcha_expires: Löper ut (Sekunder)
+    altcha_expires_hint: 'Hur länge en utmaning förblir giltig i sekunder (standard: 300).'
+    altcha_key_generated: Ny HMAC-nyckel har genererats.
+    altcha_enabled: Aktivera ALTCHA
+    altcha_captcha_not_active_warning: CAPTCHA-inställningen är inte aktiv för tillfället. ALTCHA kommer inte att användas om inte CAPTCHA är aktiverat i
+    generate: Generera
+    meeting_link: Möteslänk
+    google_calendar: Google Kalender
+    google_calendar_info: Aktivera synkronisering för att koppla bokningar till personalens Google-kalendrar
+    google_client_id: Klient-ID
+    google_client_id_info: Client ID från ditt projekt i Google Cloud Console
+    google_client_secret: Klienthemlighet
+    google_client_secret_info: Client Secret från ditt projekt i Google Cloud Console
+    google_calendar_setup_info: 'För att aktivera synkronisering med Google Kalender behöver du skapa ett projekt i Google Cloud Console, aktivera Google Calendar API och skapa OAuth 2.0-uppgifter. Besök:'
+    google_meet_link_generation: Skapa Google Meet-länkar
+    google_meet_link_generation_info: Skapa en möteslänk i Google Meet automatiskt för synkade bokningar. Länken sparas i bokningens fält för möteslänkar
+    display_add_to_google_calendar: Visa knappen "Lägg till i Google-kalendern"
+    display_add_to_google_calendar_info: Visa knappen "Lägg till i Google-kalendern" på bokningsbekräftelsen, så att kunden enkelt kan spara bokningen i sin egen kalender
+    select_all: Välj alla
+    select_none: Avmarkera alla
+    appointment_update: Uppdatering av bokning
+    notify_users_on_update_question: Vill du skicka ut en avisering om denna ändring?
+    'yes': Ja
+    'no': Nej
+    latest_blog_posts: Senaste blogginlägg
+    loading: Laddar
+    blog_posts_load_error: Kunde inte ladda blogginlägg. Besök vår hemsida för senaste nytt.
+    provider_has_conflicting_appointment: Den valda utföraren är redan bokad vid den här tiden. Vänligen välj en annan tid eller en annan person.
+    would_you_like_to_proceed: Vill du fortsätta ändå?
+    proceed: Fortsätt
+    no_available_service_providers: Inga tillgängliga tjänster eller utförare
+    no_available_service_providers_message: Det finns för närvarande inga lediga tider eller personal tillgängliga för bokning. Försök igen senare eller kontakta oss för hjälp.
+    reset_password: Återställ lösenord
+    new_password: Nytt lösenord
+    enter_new_password: Ange ett nytt lösenord nedan
+    password_reset_request: Återställ ditt lösenord
+    password_reset_email_message: Vi har tagit emot en förfrågan om att återställa ditt lösenord. Klicka på knappen nedan för att välja ett nytt.
+    password_reset_link_expires: Denna länk upphör att gälla om 1 timme.
+    password_reset_ignore_message: Om du inte har begärt en lösenordsåterställning kan du helt bortse från det här mejlet.
+    invalid_reset_token: Länken för lösenordsåterställning är ogiltig eller har gått ut.
+    invalid_or_expired_token: Länken för att återställa lösenordet är ogiltig eller har gått ut. Gör en ny förfrågan för att få en ny länk.
+    password_reset_success: Ditt lösenord har återställts. Du skickas nu vidare till inloggningen.
+    password_reset_failed: Det gick inte att återställa lösenordet. Försök igen.
+    no_password_provided: Du måste ange ett lösenord.
+    type_username_and_email_for_reset_link: Ange ditt användarnamn och e-post för att återställa ditt lösenord.
+    send_reset_link: Skicka återställningslänk
+    reset_link_sent_with_email: Om det finns ett konto kopplat till dessa uppgifter har vi skickat en återställningslänk till din e-post.
+    working_plan_validation_failed: Ogiltig arbetsplanskonfiguration hittades.
+    start_date: Startdatum
+    end_date: Slutdatum
+    remember_me: Kom ihåg mina uppgifter
+    remember_me_hint: Spara dina uppgifter för snabbare bokning nästa gång.
+    legal_notice: Juridiskt meddelande
+    legal_notice_url: URL för juridiskt meddelande
+    legal_notice_url_hint: Ange URL:en till din sida med juridiskt meddelande.
+    imprint: Impressum
+    imprint_url: Impressum-URL
+    imprint_url_hint: Ange URL:en till din impressumsida.
+    data_retention: Datalagring
+    data_retention_days: Dagar för datalagring
+    data_retention_days_hint: Ange antalet dagar efter vilka kunddata automatiskt raderas. Sätt till 0 för att inaktivera automatisk radering.
+    manage_privacy: Hantera integritet
+    manage_privacy_hint: Klicka på länken nedan för att visa, uppdatera eller radera din personliga information.
+    personal_information_updated: Din personliga information har uppdaterats.
+    verify: Verifiera
+    verifying: Verifierar
+    verified: Verifierad
+    verification_complete: Verifiering slutförd
+    verification_failed: Verifiering misslyckades. Klicka för att försöka igen.
+    click_to_verify: Klicka för att verifiera att du är en människa
+    altcha_verification_failed: ALTCHA-verifiering misslyckades. Vänligen försök igen.
+    premium: Premium
+    about_app_premium: Vi erbjuder heltäckande tjänster för egen-hostad programvara, inklusive skräddarsydd utveckling, hanterad hosting, supportavtal, varumärkesanpassning och löpande förbättringar — så att du kan fokusera på din verksamhet medan vi tar hand om resten.
+    go_premium: Bli Premium
+    notify_users_on_create_question: Vill du skicka en avisering om det nya mötet till kunden?
+    notify_users_on_delete_question: Vill du skicka en avisering om avbokningen till kunden?

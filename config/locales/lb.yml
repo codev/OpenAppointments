@@ -1,0 +1,575 @@
+---
+lb:
+  ea:
+    page_title: Huelt ee Termäin mat
+    service_and_provider: Auswiel vun der Dingschtleeschtung an dem Mataarbechter
+    select_service: Auswiel vun der Dingschtleeschtung
+    select_provider: Auswiel vum Mataarbechter
+    duration: Dauer
+    minutes: Minutten
+    price: Präis
+    back: Zeréck
+    appointment_date_and_time: Auswiel vum Datum an der Auerzäit vum Termäin
+    no_available_hours: Et gëtt leider kee fräie Termäin méi fir deen ausgewielten Dag. Wielt w.e.g. en aner Dag aus.
+    appointment_hour_missing: Wielt w.e.g. ee Termäin iert Der weider maacht.
+    customer_information: Gitt w.e.g. Är perséinlech Donnéeën an
+    first_name: Virnumm
+    last_name: Familljennumm
+    email: E-Mail
+    phone_number: Telefonsnummer
+    phone: Telefon
+    address: Adresse
+    city: Duerf
+    zip_code: Postleitzuel
+    notes: Bemierkungen
+    language: Sprooch
+    no_language: Keng Sprooch
+    fields_are_required: D'Felder mat * sinn obligatoresch.
+    appointment_confirmation: Bestätegt w.e.g. Är Auswiel vum Termäin
+    confirm: Bestätegung
+    update: Aktualiséierung
+    cancel_appointment_hint: Klickt w.e.g. "Ofbriechen" fir de Termäin aus dem Kalenner ze läschen.
+    cancel: Ofbriechen
+    appointment_registered: Äre Termäin ass erfollegräich gespäichert ginn.
+    cancel_appointment_title: Termäin ofsoen
+    appointment_cancelled: Äre Termäin ass erfollegräich ofgesot ginn.
+    appointment_cancelled_title: Termäin ofsoen
+    reason: Grond
+    appointment_removed_from_schedule: Folgende Termäin ass erfollegräich an eisem Kalenner geläscht ginn.
+    appointment_details_was_sent_to_you: Eng E-Mail mat den Donnéeën ass un Iech geschéckt ginn.
+    add_to_google_calendar: Am Google Kalenner bäisetzen
+    appointment_booked: Äre Termäin ass erfollegräich gebucht ginn.
+    thank_you_for_appointment: Merci dass der Äre Termäin mat eis gewielt hutt. Méi wäit ënne fannt der är Termäin Donnéeën. Ännerungen kënnt Der duerch d'Klicken op de Termäin Link duerchféieren.
+    appointment_details_title: Donnéeën vum Termäin
+    customer_details_title: Clientsdonnéeën
+    service: Dingschtleeschtung
+    provider: Mataarbechter
+    customer: Client
+    start: Ufank
+    end: Enn
+    name: Numm
+    appointment_link_title: Termäin Link
+    success: Erfolleg.
+    appointment_added_to_your_plan: Een neie Termäin ass an Ärem Planning bäigesat ginn.
+    appointment_link_description: Dir kënnt Ännerungen duerch klicken op de Termäin Link duerchféieren.
+    appointment_locked: Modification impossible.
+    appointment_locked_message: Den Termin kann net manner wéi {$limit} Stonnen am Viraus geännert ginn.
+    appointment_not_found: Termäin konnt net fonnt ginn.
+    appointment_does_not_exist_in_db: Dee vun Iech gefrote Termäin gëtt et net an eiser Datebank.
+    display_calendar: Kalenner uweisen
+    calendar: Kalenner
+    users: Benotzer
+    settings: Astellungen
+    log_out: Ofmellen
+    synchronize: Synchroniséieren
+    enable_sync: Sync aschalten
+    disable_sync: Sync ausschalten
+    disable_sync_prompt: Sidd Dir sécher, datt Dir d'Kalenner-Synchronisatioun desaktivéiere wëllt?
+    reload: Nei lueden
+    appointment: Termäin
+    unavailability: Net méiglech
+    week: Woch
+    month: Mount
+    today: Haut
+    not_working: Sonndeg a Feierdeeg
+    break: Paus
+    add: Bäisetzen
+    edit: Änneren
+    hello: Moien
+    all_day: Dee ganzen Dag
+    manage_appointment_record_hint: Verwalt all Termäiner vun den disponibele Mataarbechter an Dingschtleeschtungen.
+    select_filter_item_hint: Wielt ee Mataarbechter oder eng Dingschtleeschtung a kuckt Iech deem seng Termäiner am Kalenner un.
+    enable_appointment_sync_hint: Fänkt d'Synchronisatioun vun de Termäiner mam Google Kalenner vum Dingschtleeschter un.
+    manage_customers_hint: Verwalt déi ageschriwwe Clienten an kuckt Iech déi läscht Buchungen un.
+    manage_services_hint: Verwalt déi méiglech Dingschtleeschtungen a Kategorie vum System.
+    manage_users_hint: Verwalt d'Endbenotzer (Admins, Mataarbechter, Büropersonal).
+    settings_hint: System- a Benotzerastellungen setzen.
+    log_out_hint: Meld Iech vum System of.
+    unavailability_periods_hint: Während der Indisponibilitéitsperiod gi keng Termäiner ugeholl.
+    new_appointment_hint: Wielt een neie Termäin a späichert en an der Datebank.
+    reload_appointments_hint: Terminkalenner nei lueden.
+    trigger_sync_hint: Start de Synchronisatiounsprozess vum Google Kalenner.
+    appointment_updated: D'Termäiner sinn erfollegräich erneiert ginn.
+    undo: Schrëtt zeréck
+    appointment_details_changed: D'Detailer vum Termäin si geännert ginn.
+    appointment_changes_saved: D'Detailer vum Termäin sinn erfollegräich gespäichert ginn.
+    save: Späicheren
+    new: Nei
+    select: Auswiel
+    hide: Verstoppen
+    type_to_filter_customers: Hei tippe fir d'Clienten ze filteren.
+    clear_fields_add_existing_customer_hint: Maacht d'Felder eidel a gitt een neie Client an.
+    pick_existing_customer_hint: Wielt een bestoende Client.
+    new_appointment_title: Neie Termäin
+    edit_appointment_title: Termäin änneren
+    delete_appointment_title: Termäin läschen
+    write_appointment_removal_reason: 'Huelt Iech w.e.g. kuerz Zäit fir eis matzedeele wisou Dir dee Termäin ofsot.:'
+    appointment_saved: Termäin erfollegräich gespäichert.
+    new_unavailability_title: Neien Zäitraum deen net zur Verfügung steet
+    edit_unavailability_title: Zäitraum, deen net zur Verfügung steet, änneren
+    unavailability_saved: Zäitraum, deen net zur Verfügung steet erfollegräich gespäichert.
+    start_date_before_end_error: Den Ufanksdatum ass méi héich wéi de Schlussdatum.
+    invalid_duration: Ongëlteg Dauer.
+    invalid_email: Déi E-Mail-Adresse ass ongülteg.
+    customers: Clienten
+    details: Detailer
+    no_records_found: Keng Androunge fonnt ...
+    services: Dingschtleeschtungen
+    duration_minutes: Dauer (Minutten)
+    currency: Währung
+    category: Kategorie
+    no_category: Keng Kategorie
+    description: Beschreiwung
+    categories: Kategorien
+    admins: Administrator
+    providers: Mataarbechter
+    secretaries: Büropersonal
+    mobile_number: Handynummer
+    mobile: Mobil
+    state: Regioun / Land
+    username: Benotzernumm
+    password: Passwuert
+    retype_password: Passwuert nei aginn
+    receive_notifications: Noriichte kréien
+    passwords_mismatch: Passwuert ongülteg.
+    admin_saved: Administrator erfollegräich gespäichert.
+    provider_saved: Mataarbechter erfollegräich gespäichert.
+    secretary_saved: Büropersonal erfollegräich gespäichert.
+    admin_deleted: Administrator erfollegräich geläscht.
+    provider_deleted: Mataarbechter erfollegräich geläscht.
+    secretary_deleted: Büropersonal erfollegräich geläscht.
+    service_saved: Dingschtleeschtung erfollegräich gespäichert.
+    service_category_saved: Dingschtleeschtungskategorie erfollegräich gespäichert.
+    service_deleted: Dingschtleeschtung erfollegräich geläscht.
+    service_category_deleted: Dingschtleeschtungskategorie erfollegräich geläscht.
+    customer_saved: Client erfollegräich gespäichert.
+    customer_deleted: Client erfollegräich geläscht.
+    current_view: Aktuell Usicht
+    working_plan: Aarbechtsplang
+    reset_plan: Planning op 0 setzen
+    monday: Méindeg
+    tuesday: Dënschdeg
+    wednesday: Mëttwoch
+    thursday: Donneschdeg
+    friday: Freideg
+    saturday: Samschdeg
+    sunday: Sonndeg
+    breaks: Pausen
+    add_breaks_during_each_day: Setzt d'Aarbechtspausen fir all Dag bäi. Während de Pause kënne keng Termäiner ugeholl ginn.
+    day: Dag
+    days: Deeg
+    actions: Aktiounen
+    reset_working_plan_hint: Setzt den Aarbechtsplang op Standardwerter zeréck.
+    company_name: Numm vun der Firma
+    company_name_hint: De Firmennumm gëtt iwwerall am System benotzt (néideg).
+    company_email: Email vun der Firma
+    company_email_hint: Dëst ass d'E-Mail-Adresse vun der Firma. Se gëtt als Adresse vum Ofsender fir d'E-Maile vum System (néideg).
+    company_link: Weblink vun der Firma
+    company_link_hint: De Firmelink sollt op déi offiziell Websäit vun der Firma weisen (néideg).
+    go_to_booking_page: Gitt op d'Buchungssäit
+    settings_saved: Astellungen erfollegräich gespäichert.
+    general: Allgemenges
+    booking: Reservatioun
+    visible: Fir siichtbar
+    hidden: Verstoppen
+    business_logic: Business Logik
+    current_user: Ugemellte Benotzer
+    about_app: Iwwert Easy!Appointments
+    edit_working_plan_hint: Gitt w.e.g hei ënnen drënner d'Deeg an d'Auerzäiten un, fir déi d'Firma Termäiner ubitt. Dir kënnt d'Termäiner och fir Feierdeeg festleeën awer d'Cliente kënne op deenen Deeg keng Buchungen duerchféieren. Dësen Aarbechtsplang ass fir all nei Aschreiwung vun Dingschtleeschter vir agestallt awer dir hutt d'Méichlechkeet den Aarbechtsplang fir all Mataarbechter separat ze änneren an deems der d'Aschreiwung beaarbecht. Dono setzt der Zäitreim a Pause bäi.
+    edit_breaks_hint: Ännert d'Aarbechtspausen pro Dag. Des gi fir all neie Mataarbechter iwwerholl.
+    book_advance_timeout: Zäitlimit fir eng Buchung
+    book_advance_timeout_hint: Leet eng Zäitlimit fir eng Reservatioun (a Minutten) fest iert d'Clienten ee Rendez-vous aginn oder ännere kënnen.
+    timeout_minutes: Zäitlimit (Minutten)
+    about_app_info: Easy!Appointments ass eng extrem upassungsfäeg Internet-Applikatioun déi et äre Clienten erméiglecht, een Termäin bei Iech iwwert Internet ze huelen. Doriwwer eraus gëtt en Iech d'Méiglechkeet Är Donnéeën mam Google Kalenner ze synchroniséieren, sou dass Der des mat anere Programmer notze kënnt.
+    current_version: Aktuell Versioun
+    support: Ënnerstëtzung
+    about_app_support: 'Falls Dir iergendeen Problem beim Benotze vun Easy!Appointments hätt, kënnt der déi offiziell Google Grupp no Léisungen duerchsichen. Dir kënnt och een neit Thema am Google Code ufänke fir bei der Sich no Léisungen ze hëllefen. '
+    official_website: Offiziell Websäit
+    google_plus_community: Google+ Gemeinschaft
+    support_group: Gruppenënnerstëtzung
+    project_issues: Projektthemen
+    license: Notzungslizenz
+    about_app_license: 'Easy!Appointment ass ënnert der GPLv3-Lizenz lizenséiert. Duerch d''Benotze vum Code vun Easy!Appointments op iergendeng Aart a Weis stëmmt Der den Lizenzbedingungen, wéi se ënnert folgender URL opgefouert sinn, zou:'
+    logout_success: Dir hutt Iech erfollegräich ofgemellt! Klickt op folgend Tasten fir op eng aner Säit ze kommen.
+    book_appointment_title: Termäinbuchung
+    backend_section: Backend Sektioun
+    you_need_to_login: Wëllkommen! Dir musst Iech umellen fir d'Backend-Säiten ze gesinn.
+    enter_username_here: Gitt hei Äre Benotzernumm an ...
+    enter_password_here: Passwuert hei aginn ...
+    login: Umellen
+    forgot_your_password: Passwuert vergiess?
+    login_failed: D'Umeldung ass schif gaang. Gitt w.e.g. déi richteg Donnéeën an a probéiert e op en Neits.
+    type_username_and_email_for_new_password: Gitt Äre Benotzernumn an Är Email-Adresse an fir een neit Passwuert ze kréien.
+    enter_email_here: Gitt Är Mail-Adresse hei an ...
+    regenerate_password: Passwuert generéieren
+    go_to_login: Gitt w.e.g. zeréck op d'Umeldungs-Säit
+    new_password_sent_with_email: Ärt neit Passwuert ass Iech per E-Mail zougeschéckt ginn.
+    new_account_password: Neit Kontopasswuert
+    new_password_is: Ärt neit Passwuert ass $password. Späichert des Email w.e.g. of, fir dass der se jidderzäit noliese kënnt wann néideg. Dir kënnt dëst Passwuert op der Säit Astellungen och mat engem neien austauschen.
+    delete_record_prompt: Sidd Dir sécher, dass Dir des Androung läsche wällt? Dëse Virgang kann nët réckgängeg gemaach ginn.
+    delete_admin: Administrator läschen
+    delete_customer: Client läschen
+    delete_service: Dienstleistung läschen
+    delete_service_category: Servicekategorie läschen
+    delete_provider: Zäitraum läschen
+    delete_secretary: Beaarbechter läschen
+    delete_appointment: Termäin läschen
+    delete_unavailability: Blockéierten Zäitraum läschen
+    delete: Läschen
+    unexpected_issues: Onvirhärgesinne Virfäll
+    unexpected_issues_message: D'Operatioun konnt net ofgeschloss ginn.
+    close: Zoumaachen
+    page_not_found: Säit konnt net fonnt ginn
+    page_not_found_message: Leider gëtt et déi vun Iech ugefuedert Säit net. Kontrolléiert w.e.g. Är Browser-URL oder navigéiert op eng aner Plaz.
+    error: Fehler
+    no_privileges: Net déi néideg Rechter
+    no_privileges_message: Dir hutt net déi néideg Rechter fir dës Säit ze gesinn. Wisselt w.e.g. op eng aner Usicht.
+    backend_calendar: Backend Kalenner
+    start_date_time: Ufanksdatum / Zäit
+    end_date_time: Schlussdatum / Zäit
+    licensed_under: Lizenzéiert ënnert
+    unexpected_issues_occurred: Onertwaarte Problemer sinn opgetrueden.
+    service_communication_error: Während der Kommunikatioun mam Server ass ee Fehler opgetrueden, probéiert et w.e.g. nach ee Mol.
+    no_privileges_edit_appointments: Dir hutt net déi néideg Rechter fir Termäiner ze änneren.
+    unavailability_updated: Blockéiert Zäitreim sinn erfollegräich erneiert ginn.
+    appointments: Termäiner
+    unexpected_warnings: Onerwaarte Warnung
+    unexpected_warnings_message: De Virgang mat Warnungen ofgeschloss.
+    filter: Filteren
+    clear: Deaktivéieren
+    uncategorized: Net Zougeuerdnet
+    username_already_exists: Dee Benotzernumm gëtt et ewell.
+    password_length_notice: D'Passwuert muss mindestens $number Zeeche laang sinn.
+    general_settings: Allgemeng Astellungen
+    personal_information: Perséinlech Informatiounen
+    system_login: System Login
+    user_settings_are_invalid: Benotzerastellungen sinn ongülteg! W.e.g. iwwerpréift Är Astellungen a widderhuelt de Virgang.
+    add_break: Interval bäisetzen
+    january: Januar
+    february: Februar
+    march: Mäerz
+    april: Abrëll
+    may: Mee
+    june: Juni
+    july: Juli
+    august: August
+    september: September
+    october: Oktober
+    november: November
+    december: Dezember
+    previous: Virdrunn
+    next: Nächsten
+    now: Elo
+    select_time: Zäit auswielen
+    time: Zäit
+    hour: Auer
+    minute: Minutt
+    calendar_sync_completed: Google Synchronisation erfollegräich ofgeschloss.
+    calendar_sync_failed: 'Google Synchronisatioun schifgaang: D''Verbindung mam Server konnt net hiergestallt ginn.'
+    select_sync_calendar: Wielt ee Google Kalenner
+    select_sync_calendar_prompt: Wielt dee Kalenner, mat deem der Är Termäiner synchroniséiere wëllt. Wann der kee bestëmmte Kalenner auswiele wëllt, gëtt de Standard benotzt.
+    sync_calendar_selected: Auswiele vum Google Kalenner erfollegräich.
+    oops_something_went_wrong: Oops! Et ass eppes schif gaang.
+    ea_update_success: Easy!Appointments gouf erfollegräich aktualiséiert.
+    require_captcha: CAPTCHA erfuerderen
+    require_captcha_hint: Wann aktivéiert, mussen d'Clienten eng zoufälleg generéiert CAPTCHA-Zeichenkette aginn, ier si en Rendez-vous buchen/aktualiséieren.
+    captcha_is_wrong: CAPTCHA Verifikatioun ass gescheitert, probéiert w.e.g. nach eng Kéier.
+    enter_captcha_here: CAPTCHA hei aginn...
+    any_provider: All Provider
+    requested_hour_is_unavailable: Den ugefrote Rendez-vous ass leider net verfügbar. Wielt w.e.g. eng aner Zäit fir Äre Rendez-vous.
+    customer_notifications: Client Benotzungsmeldungen
+    customer_notifications_hint: Definéiert ob de Client E-Mail Notifikatioune kritt wann et eng Ännerung vum Zäitplang bei engem vu senge Rendez-vousen gëtt.
+    date_format: Datumformat
+    date_format_hint: Ännert de Format vun der Datumsauswäisung (D - Datum, M - Mount, Y - Joer).
+    time_format: Zäitformat
+    time_format_hint: Ännert de Format vun der Zeitauswäisung (H - Stonnen, M - Minutten).
+    first_weekday: Éischten Dag vun der Woch
+    first_weekday_hint: Setzt den éischten Dag vun der Kalennerwoch.
+    google_analytics_code_hint: Füügt Är Google Analytics ID derbäi, fir um Buchungssäit integréiert ze ginn.
+    availabilities_type: Typ vun Disponibilitéiten
+    flexible: Flexibel
+    fixed: Fixéiert
+    attendants_number: Zuel vun den Assistenter
+    reset_working_plan: Setzt de Schaffplang zréck op d'Standardwäerter.
+    legal_contents: Legal Inhalt
+    cookie_notice: Cookie-Meldung
+    display_cookie_notice: Cookie-Meldung weisen
+    cookie_notice_content: Cookie-Meldungsinhalt
+    terms_and_conditions: Konditiounen & Bedingungen
+    display_terms_and_conditions: Konditiounen & Bedingungen weisen
+    terms_and_conditions_content: Konditiounen & Bedingungen Inhalt
+    privacy_policy: Dateschutzpolitik
+    display_privacy_policy: Dateschutzpolitik weisen
+    privacy_policy_content: Inhalt vun der Dateschutzpolitik
+    website_using_cookies_to_ensure_best_experience: Dës Websäit benotzt Cookien fir Iech déi bescht Erfahrung ze bidden.
+    read_and_agree_to_terms_and_conditions: Ech hunn d'{$link}Konditiounen & Bedingungen{/$link} gelies a stëmmen zou.
+    read_and_agree_to_privacy_policy: Ech hunn d'{$link}Dateschutzpolitik{/$link} gelies a stëmmen zou.
+    delete_personal_information_hint: Läscht all Är Rendez-vousen an perséinlech Informatioun aus dem System.
+    delete_personal_information: Perséinlech Informatioun läschen
+    delete_personal_information_prompt: Sidd Dir sécher, datt Dir Är perséinlech Informatioun läsche wëllt? Dës Aktioun kann net réckgängeg gemaach ginn.
+    location: Standuert
+    working_plan_exception: Ausnam am Schaffplang
+    working_plan_exceptions: Ausnamen am Schaffplang
+    working_plan_exceptions_hint: Füügt en Ausnahmsdag bäi, deen ausserhalb vum Schaffplang ass.
+    new_working_plan_exception_title: Nei Ausnam am Schaffplang
+    working_plan_exception_saved: Ausnam am Schaffplang erfollegräich gespäichert.
+    working_plan_exception_deleted: Ausnam am Schaffplang erfollegräich geläscht.
+    add_working_plan_exceptions_during_each_day: Füügt Ausnamen an de Schaffplang bäi, déi ausserhalb vum normale Schaffplang sinn.
+    add_working_plan_exception: Ausnam am Schaffplang derbäisetzen
+    require_phone_number: Telefonsnummer erfuerderen
+    require_phone_number_hint: Wann aktivéiert, mussen d'Clienten an d'Benotzer d'Telefonsnummer vum Client aginn wann si en Rendez-vous buchen.
+    check_spam_folder: Kuckt w.e.g. an Äre Spam-Dossier wann d'E-Mail net bannent e puer Minutten ukënnt.
+    api_token_hint: Setzt e geheimen Token fir déi token-baséiert Authentifikatioun vun der Easy!Appointments API z'erméiglechen.
+    timezone: Zäitzon
+    overwrite_existing_working_plans: Dëst wäert déi bestehend Schaffpläng vun de Provideren iwwerschreiwen, sidd Dir sécher datt Dir weiderfuere wëllt?
+    working_plans_got_updated: All Aarbechtsplang goufen aktualiséiert.
+    apply_to_all_providers: Gëllt fir all Provideren
+    display_any_provider: D'Optioun "All Provider" weisen
+    display_any_provider_hint: D'Buchungssäit kritt eng zousätzlech Optioun, déi et de Clienten erlaabt ze buchen ouni e spezifesche Provider ze wielen.
+    load_more: Méi lueden
+    list: Lëscht
+    default: Standard
+    table: Tabell
+    date: Datum
+    about: Iwwer
+    booking_settings: Buchungsastellungen
+    display: Weisen
+    require: Erfuerderen
+    color: Faarf
+    matomo_analytics_url_hint: Füügt d'URL vun Ärer eegener Matomo Installatioun derbäi fir Matomo Tracking op den Buchungssäiten z'erméiglechen.
+    invalid_phone: Ongëlteg Telefonsnummer.
+    legal: Rechtleches
+    business: Geschäft
+    account: Kont
+    disable_booking: Buchung deaktivéieren
+    disable_booking_hint: D'Buchungssäit gëtt desaktivéiert soulaang dës Astellung aktiv ass, an d'Clienten kënne keng nei Rendez-vousen registréieren.
+    display_message: Meldung weisen
+    booking_is_disabled: Buchung ass desaktivéiert!
+    appearance: Erscheinung
+    company_logo: Firmenlogo
+    company_logo_hint: D'Firmenlogo gëtt op ville Plaze vun der App ugewise, inklusiv der Buchungssäit an den Notifikatiouns-E-Maile (Bilddatei, max. 2MB).
+    company_color: Firmenfaarf
+    company_color_hint: D'Firmenfaarf gëtt iwwerall an der App ugewannt, fir datt d'App Är Branding huet.
+    localization: Lokalisatioun
+    integrations: Integratiounen
+    company: Firma
+    remove: Ewechhuelen
+    login_button: Login Knäppchen
+    display_login_button_hint: Definéiert ob de Login Knäppchen op der Buchungssäit ugewise gëtt.
+    private: Privat
+    private_hint: Privat Opzeechnungen ginn net op ëffentleche Säiten, wéi der Buchungssäit, ugewisen oder verschafft.
+    reset: Zrécksetzen
+    all: All
+    booking_link: Buchungslink
+    add_new_event: Neien Event bäisetzen
+    what_kind_of_event: Wéi een Event wëllt Dir derbäisetzen?
+    theme: Thema
+    limit_customer_access: Clientenzougang limitéieren
+    limit_customer_access_hint: Wann aktivéiert, kënnen d'Provideren an d'Sekretärinnen nëmmen op Clienten zougräifen, mat deenen si en Rendez-vous hunn.
+    url: URL
+    secret_token: Geheimen Token
+    verify_ssl: SSL verifizéieren
+    appointment_save: Rendez-vous späicheren
+    appointment_delete: Rendez-vous läschen
+    unavailability_save: Onverfügbarkeet späicheren
+    unavailability_delete: Onverfügbarkeet läschen
+    customer_save: Client späicheren
+    customer_delete: Client läschen
+    service_save: Service späicheren
+    service_delete: Service läschen
+    service_category_save: Kategorie späicheren
+    service_category_delete: Kategorie läschen
+    provider_save: Provider späicheren
+    provider_delete: Provider läschen
+    secretary_save: Sekretär späicheren
+    secretary_delete: Sekretär läschen
+    admin_save: Admin späicheren
+    admin_delete: Admin läschen
+    options: Optiounen
+    webhooks: Webhooks
+    webhooks_info: Webhooks erlaben Iech HTTP Notifikatiounen un extern Webapplikatiounen ze schécken als Äntwert op verschidde Applikatiounsevenementer, wéi z.B. d'Erstellung vun engem Rendez-vous oder d'Läsche vun engem Client.
+    integrations_info: Integratiounen erlaben Iech fir Drëttubidder Verbindungen mat externe Applikatiounen an APIs ze maachen.
+    configure: Konfiguréieren
+    google_analytics: Google Analytics
+    google_analytics_info: Google Analytics erméiglecht Iech automatesch de Tracking Code an HTML Markup op der ëffentlecher Säit derbäizesetzen an all ëffentlech Buchungssitzungen ze verfollegen.
+    matomo_analytics: Matomo Analytics
+    matomo_analytics_info: Matomo Analytics erméiglecht Iech automatesch de Tracking Code an HTML Markup op der ëffentlecher Säit derbäizesetzen an all ëffentlech Buchungssitzungen ze verfollegen.
+    api: API
+    api_info: API erméiglecht Iech, mat allen Daten vun Easy!Appointments via den HTTP Protokoll an déi verfügbar API Endpunkten ze interagéieren an Är eege Integratiounen ze schafen.
+    google_analytics_code: Google Analytics Code
+    matomo_analytics_url: Matomo Analytics URL
+    future_booking_limit: Limit fir zukünfteg Buchungen
+    limit_days: Limit (Deeg)
+    future_booking_limit_hint: Setzt d'Limit an Deeg, wéi wäit an d'Zukunft Clienten via der ëffentlecher Buchungssäit Rendez-vousen maache kënnen.
+    api_token: API Token
+    allow_rescheduling_cancellation_before: Erlaabt d'Rescheduling/Annulatioun virum
+    at_least_one_field: Op d'mannst ee Feld muss op der Buchungssäit ugewisen ginn.
+    status: Status
+    appointment_status_options: Optiounen fir de Rendez-vous Status
+    appointment_status_options_info: Definéiert eng Lëscht vun den verfügbare Rendez-vous Statusoptiounen, déi op der Kalenner Säit benotzt kënne ginn (déi éischt gëtt automatesch als Standardwäert gesat).
+    sunday_short: Son
+    monday_short: Méi
+    tuesday_short: Dën
+    wednesday_short: Mët
+    thursday_short: Don
+    friday_short: Fre
+    saturday_short: Sam
+    january_short: Jan
+    february_short: Feb
+    march_short: Mäe
+    april_short: Abr
+    may_short: Mee
+    june_short: Jun
+    july_short: Jul
+    august_short: Aug
+    september_short: Sep
+    october_short: Okt
+    november_short: Nov
+    december_short: Dez
+    am: moies
+    pm: nomëttes
+    to: bis
+    click_to_toggle: Klickt fir un-/auszeschalten
+    week_short: Woch
+    scroll_to_increment: Scrollen fir z'erhéijen
+    year: Joer
+    make_non_working_day: Dëse Provider ass um gewielten Dag net fir d'Aarbecht verfügbar.
+    no_breaks: Keng Pausen
+    service_categories: Servicekategorien
+    service_category: Servicekategorie
+    blocked_period_saved: Blockéierten Zäitraum erfollegräich gespäichert.
+    blocked_period_deleted: Blockéierten Zäitraum erfollegräich geläscht.
+    delete_blocked_period: Blockéierten Zäitraum läschen
+    blocked_period: Blockéierten Zäitraum
+    blocked_periods: Blockéiert Zäiträim
+    blocked_period_save: Blockéierten Zäitraum späicheren
+    blocked_period_delete: Blockéierten Zäitraum läschen
+    blocked_periods_hint: Definéiert Zäitperioden, an deenen ëffentlech Buchungen fir all Provider desaktivéiert ginn (z.B. gespaarten Datumen, Feierdeeg, asw.).
+    custom_field: Personaliséiert Feld
+    custom_fields: Personaliséiert Felder
+    label: Etikett
+    webhook_saved: Webhook erfollegräich gespäichert.
+    webhook_deleted: Webhook erfollegräich geläscht.
+    delete_webhook: Webhook läschen
+    contact_info: Kontaktinformatiounen
+    hide_from_public: Vum Public verstoppen
+    matomo_analytics_site_id: Matomo Analytics Site ID
+    matomo_analytics_site_id_hint: Setzt d'Site ID, déi vu Matomo iwwerwaacht gëtt (d'Standardsite huet d'ID "1").
+    default_timezone: Standard Zäitzon
+    default_timezone_hint: Setzt de Standard Zäitzonwäert, deen fir nei Opzeechnungen benotzt gëtt.
+    default_language: Standardsprooch
+    default_language_hint: Setzt de Standardsproochwäert, deen fir nei Opzeechnungen benotzt gëtt.
+    sync_method_prompt: Wéi eng Synchronisatiounsmethod wëllt Dir benotzen?
+    caldav_server: CalDAV Server
+    caldav_connection_info_prompt: Gitt w.e.g. d'Verbindungsinformatioune vum zilorientéierte CalDAV Kalenner an.
+    connect: Verbannen
+    ldap: LDAP
+    ldap_info: Dës Integratioun erméiglecht Iech eng Verbindung zu engem existente LDAP Server opzebauen an automatesch Benotzer an Easy!Appointments z'importéieren an hinnen Single Sign-On (SSO) mat hirem Verzechnispasswuert (Benotzernumm muss passen) z'erméiglechen.
+    host: Host
+    port: Port
+    user_dn: Benotzer DN
+    base_dn: Basis DN
+    keyword: Schlësselwuert
+    ldap_search_hint: Gitt e Schlësselwuert un fir am LDAP Verzeechnis no Benotzer ze sichen, déi den Filterkriterien entspriechen.
+    ldap_extension_not_loaded: D'LDAP PHP Erweiderung ass net gelueden, ass awer fir dës Integratioun erfuerderlech.
+    field_mapping: Feld Mapping
+    content: Inhalt
+    active: Aktiv
+    user_imported: D'Benotzeropzeechnung gouf erfollegräich importéiert.
+    import: Importéieren
+    ldap_dn: LDAP DN
+    role: Roll
+    at_least_one_field_required: Op d'mannst ee Feld muss als erfuerderlech op der Buchungssäit gesat ginn.
+    customer_is_already_booked: Dëse Client huet schonn e Rendez-vous während der ugefrote Reservéierungsperiod.
+    fields: Felder
+    invalid_credentials_provided: Onvalabel Benotzerdaten, probéiert w.e.g. nach eng Kéier.
+    calendar_url: Kalenner URL
+    please_select: Wielt w.e.g.
+    secret_header: Geheimen Header
+    search: Sichen
+    slot_interval: Slot Intervall (Minutten)
+    jitsi: Jitsi
+    jitsi_info: Aktivéiert automatesch Jitsi Meeting-Link Generéierung fir Terminnen. Wann aktivéiert, gëtt en eenzegaartege Jitsi Videocall-Link generéiert an als Meeting-Link gespäichert.
+    altcha: ALTCHA
+    altcha_info: ALTCHA ass eng privatsphärorientéiert, Open-Source CAPTCHA Alternativ, déi Proof-of-Work benotzt fir mënschlech Benotzer ouni Tracking ze verifizéieren.
+    altcha_enabled_hint: Wann aktivéiert, gëtt ALTCHA amplaz vum traditionelle Bild-CAPTCHA fir Formulairverifizéierung benotzt.
+    altcha_hmac_key: HMAC Key
+    altcha_hmac_key_hint: E geheime Schlëssel dee benotzt gëtt fir ALTCHA Erausfuerderungen ze ënnerschreiwen an ze verifizéieren. Klickt op Generéieren fir en neie séchere Schlëssel ze erstellen.
+    altcha_max_number: Maximal Zuel
+    altcha_max_number_hint: 'Déi maximal Zuel fir d''Proof-of-Work Erausfuerderung. Méi héich Wäerter erhéijen d''Schwieregkeet (Standard: 100000).'
+    altcha_expires: Leeft of (Sekonnen)
+    altcha_expires_hint: 'Wéi laang eng Erausfuerderung a Sekonnen gëlteg ass (Standard: 300).'
+    altcha_key_generated: Neien HMAC Schlëssel gouf erfollegräich generéiert.
+    altcha_enabled: ALTCHA aktivéieren
+    altcha_captcha_not_active_warning: D'CAPTCHA-Astellung ass momentan net aktiv. ALTCHA gëtt net benotzt, ausser CAPTCHA ass aktivéiert an den
+    generate: Generéieren
+    meeting_link: Meeting-Link
+    google_calendar: Google Kalenner
+    google_calendar_info: Aktivéiert Google Calendar Synchronisatioun fir Terminnen mat den Google Calendar Konte vun de Provider ze synchroniséieren.
+    google_client_id: Client ID
+    google_client_id_info: D'Client ID vun Ärem Google Cloud Console Projet.
+    google_client_secret: Client Secret
+    google_client_secret_info: D'Client Secret vun Ärem Google Cloud Console Projet.
+    google_calendar_setup_info: 'Fir Google Calendar Synchronisatioun z''aktivéieren, musst Dir e Projet an der Google Cloud Console erstellen, d''Google Calendar API aktivéieren an OAuth 2.0 Umeldungsdaten erstellen. Besicht:'
+    google_meet_link_generation: Google Meet Linken generéieren
+    google_meet_link_generation_info: Erstellt automatesch e Google Meet Videokonferenz-Link fir synchroniséiert Terminnen. De Meeting-Link gëtt am Meeting-Link Feld vum Termin gespäichert.
+    display_add_to_google_calendar: '"Add to Google Calendar" Knäppchen uweisen'
+    display_add_to_google_calendar_info: Weist den "Add to Google Calendar" Knäppchen op der Buchungsbestätegungssäit, sou datt Clienten hiren Termin einfach an hire perséinleche Google Calendar derbäisetze kënnen.
+    select_all: Alles auswielen
+    select_none: Keen auswielen
+    appointment_update: Rendez-vous Aktualiséierung
+    notify_users_on_update_question: Wëllt Dir eng Notifikatioun iwwer dës Ännerung erausschécken?
+    'yes': Jo
+    'no': Nee
+    latest_blog_posts: Neist Blogbeiträg
+    loading: Lueden
+    blog_posts_load_error: Blogbeiträg konnten net gelueden ginn. Besicht w.e.g. déi offiziell Websäit fir Updates.
+    provider_has_conflicting_appointment: De gewielten Ubidder huet schonn en aneren Rendez-vous zu där Zäit. Wielt w.e.g. eng aner Zäit oder en aneren Ubidder.
+    would_you_like_to_proceed: Wëllt Dir trotzdem weiderfueren?
+    proceed: Weiderfueren
+    no_available_service_providers: Keng verfügbar Servicer
+    no_available_service_providers_message: Momentan sinn keng Servicer oder Ubidder fir Reservatiounen verfügbar. Kuckt w.e.g. méi spéit oder kontaktéiert eis fir Hëllef.
+    reset_password: Passwuert zrécksetzen
+    new_password: Neit Passwuert
+    enter_new_password: Gitt Äert neit Passwuert hei drënner an.
+    password_reset_request: Ufro fir Passwuert zréckzesetzen
+    password_reset_email_message: Dir hutt gefrot, Äert Passwuert zréckzesetzen. Klickt op de Knäppchen hei drënner, fir en neit Passwuert fir Äre Kont festzeleeën.
+    password_reset_link_expires: Dëse Link leeft an 1 Stonn of.
+    password_reset_ignore_message: Wann Dir keng Passwuert-Zrécksetzen ugefrot hutt, ignoréiert dësen E-Mail w.e.g.
+    invalid_reset_token: De Link fir d'Passwuert zréckzesetzen ass ongëlteg.
+    invalid_or_expired_token: De Link fir d'Passwuert zréckzesetzen ass ongëlteg oder ofgelaf. Frot w.e.g. en neien un.
+    password_reset_success: Äert Passwuert gouf erfollegräich zréckgesat. Dir gitt op d'Login-Säit weidergeleitet.
+    password_reset_failed: D'Zrécksetze vum Passwuert ass gescheitert. Probéiert w.e.g. nach eng Kéier.
+    no_password_provided: Gitt w.e.g. e Passwuert an.
+    type_username_and_email_for_reset_link: Gitt Äre Benotzernumm an Är E-Mail-Adress an, fir e Link fir d'Passwuert zréckzesetzen ze kréien.
+    send_reset_link: Zrécksetze-Link schécken
+    reset_link_sent_with_email: Wann e Kont mat de gegebenen Donnéeën existéiert, gouf e Link fir d'Passwuert zréckzesetzen un Är E-Mail geschéckt.
+    working_plan_validation_failed: Ongëlteg Aarbechtsplang Konfiguratioun fonnt.
+    start_date: Startdatum
+    end_date: Enddatum
+    remember_me: Meng Informatiounen erënneren
+    remember_me_hint: Späichert Är Detailer fir eng méi séier Buchung déi nächst Kéier.
+    legal_notice: Rechtlechen Hanweis
+    legal_notice_url: Rechtlechen Hanweis URL
+    legal_notice_url_hint: Gitt d'URL vun Ärer rechtlecher Hanweis-Säit an.
+    imprint: Impressum
+    imprint_url: Impressum URL
+    imprint_url_hint: Gitt d'URL vun Ärer Impressum-Säit an.
+    data_retention: Datespäicherung
+    data_retention_days: Datespäicherung Deeg
+    data_retention_days_hint: Setzt d'Zuel vun Deeg no deenen d'Clientsdaten automatesch geläscht ginn. Setzt op 0 fir automatesch Läschung ze desaktivéieren.
+    manage_privacy: Privatsphär verwalten
+    manage_privacy_hint: Klickt op de Link hei drënner fir Är perséinlech Informatiounen ze gesinn, z'aktualiséieren oder ze läschen.
+    personal_information_updated: Är perséinlech Informatiounen goufen erfollegräich aktualiséiert.
+    verify: Verifizéieren
+    verifying: Verifizéierung...
+    verified: Verifizéiert
+    verification_complete: Verifizéierung ofgeschloss
+    verification_failed: Verifizéierung fehlgeschloen. Klickt fir nach eng Kéier ze probéieren.
+    click_to_verify: Klickt fir ze beweisen datt Dir e Mënsch sidd
+    altcha_verification_failed: ALTCHA Verifizéierung fehlgeschloen. Probéiert w.e.g. nach eng Kéier.
+    premium: Premium
+    about_app_premium: Mir bidden End-to-End Servicer fir selbst-gehost Software, inklusiv personaliséiert Entwécklung, geréiert Hosting, Support-Kontrakter, Rebranding an kontinuéierlech Verbesserungen — sou datt Dir Iech op Äert Geschäft konzentréiere kënnt, während mir de Rescht iwwerhuelen.
+    go_premium: Go Premium
+    notify_users_on_create_question: Wëllt Dir de Client iwwer dësen neien Rendez-vous informéieren?
+    notify_users_on_delete_question: Wëllt Dir de Client iwwer d'Annulléierung vum Rendez-vous informéieren?

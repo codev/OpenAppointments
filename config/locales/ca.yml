@@ -1,0 +1,575 @@
+---
+ca:
+  ea:
+    page_title: Reserva una cita amb
+    service_and_provider: Selecció del servei i el proveïdor
+    select_service: Seleccioneu el servei
+    select_provider: Seleccioneu el proveïdor
+    duration: Durada
+    minutes: minuts
+    price: Preu
+    back: Enrere
+    appointment_date_and_time: Selecció de la data i l'hora de la cita
+    no_available_hours: No hi ha hores disponibles per a la data seleccionada. Seleccioneu una altra data.
+    appointment_hour_missing: Seleccioneu-ne una altra abans de continuar.
+    customer_information: Introducció de dades personals
+    first_name: Nom
+    last_name: Cognoms
+    email: Correu electrònic
+    phone_number: Número de telèfon
+    phone: Telèfon
+    address: Adreça
+    city: Ciutat
+    zip_code: Codi postal
+    notes: Notes
+    language: Idioma
+    no_language: Sense idioma
+    fields_are_required: Els camps amb un * són obligatoris.
+    appointment_confirmation: Confirmació de la cita
+    confirm: Confirma
+    update: Actualitza
+    cancel_appointment_hint: Premeu el botó "Cancel·la" per eliminar la cita del calendari de l'organització.
+    cancel: Cancel·la
+    appointment_registered: La vostra cita s'ha desat correctament!.
+    cancel_appointment_title: Cancel·lació de la cita
+    appointment_cancelled: La vostra cita s'ha cancel·lat correctament.
+    appointment_cancelled_title: Cita cancel·lada
+    reason: Motiu
+    appointment_removed_from_schedule: La cita següent ha estat eliminada de la planificació de l'organització.
+    appointment_details_was_sent_to_you: Se us ha enviat un correu electrònic amb els detalls de la cita on també podreu modificar-la o anul·lar-la.
+    add_to_google_calendar: Afegeix al Google Calendar
+    appointment_booked: La vostra cita s'ha reservat correctament.
+    thank_you_for_appointment: Gràcies per reservar una cita amb nosaltres. A sota, podeu veure els detalls de la cita. Podeu fer canvis clicant a l'enllaç de la cita.
+    appointment_details_title: Detalls de la cita
+    customer_details_title: Detalls del client
+    service: Servei
+    provider: Proveïdor
+    customer: Client
+    start: Inici
+    end: Fi
+    name: Nom
+    appointment_link_title: Enllaç a la cita
+    success: Correcte.
+    appointment_added_to_your_plan: S'ha afegit una nova cita a la vostra planificació.
+    appointment_link_description: Podeu fer canvis clicant a l'enllaç de la cita de sota.
+    appointment_locked: La modificació no és possible.
+    appointment_locked_message: La cita no es pot es pot canviar quan falten menys de {$limit} hores.
+    appointment_not_found: No s'ha trobat la cita.
+    appointment_does_not_exist_in_db: La cita que heu demanat ja no existeix a la base de dades del sistema.
+    display_calendar: Mostra el calendari
+    calendar: Calendari
+    users: Usuaris
+    settings: Configuracions
+    log_out: Sortida
+    synchronize: Sincronitza
+    enable_sync: Permet Sync
+    disable_sync: No permetis Sync
+    disable_sync_prompt: Esteu segur que voleu desactivar la sincronització del calendari?
+    reload: Recarrega
+    appointment: Cita
+    unavailability: No disponible
+    week: Setmana
+    month: Mes
+    today: Avui
+    not_working: No laborable
+    break: Descans
+    add: Afegeix
+    edit: Edita
+    hello: Hola
+    all_day: Tot el dia
+    manage_appointment_record_hint: Gestiona totes les cites enregistrades de proveïdors i serveis disponibles.
+    select_filter_item_hint: Selecciona un proveïdor o un servei i visualitza les cites al calendari.
+    enable_appointment_sync_hint: Permet la sincronització de cites amb el compte de Google Calendar del proveïdor.
+    manage_customers_hint: Gestiona els clients registrats i mostra el seu historial de reserves.
+    manage_services_hint: Gestiona els serveis disponibles i les categories del sistema.
+    manage_users_hint: Gestiona els usuaris gestors (administradors, proveïdors, secretaris).
+    settings_hint: Configura les opcions del sistema i dels usuaris.
+    log_out_hint: Surt del sistema.
+    unavailability_periods_hint: Durant els períodes de no disponibilitat el proveïdor no acceptarà noves cites.
+    new_appointment_hint: Crea una nova cita i emmagatzema-la a la base de dades.
+    reload_appointments_hint: Recarrega el calendari de cites
+    trigger_sync_hint: Dispara el procés de sincronització amb el Google Calendar.
+    appointment_updated: La cita s'ha actualitzat correctament.
+    undo: Desfés
+    appointment_details_changed: Els detalls de la cita han canviat.
+    appointment_changes_saved: Els canvis de la cita s'han desat correctament.
+    save: Desa
+    new: Nou
+    select: Selecciona
+    hide: Amaga
+    type_to_filter_customers: Tecleja per filtrar els clients.
+    clear_fields_add_existing_customer_hint: Buida els camps i entra un nou client.
+    pick_existing_customer_hint: Escull un client existent.
+    new_appointment_title: Nova cita
+    edit_appointment_title: Edita la cita
+    delete_appointment_title: Elimina la cita
+    write_appointment_removal_reason: 'Escriviu el motiu pel qual elimineu la cita:'
+    appointment_saved: La cita s'ha desat correctament.
+    new_unavailability_title: Nou període de no disponibilitat
+    edit_unavailability_title: Edita el període de no disponibilitat
+    unavailability_saved: El període de no disponibilitat s'ha desat correctament.
+    start_date_before_end_error: La data d'inici és posterior de la de fi.
+    invalid_duration: Durada no vàlida.
+    invalid_email: L'adreça de correu electrònic no és vàlida.
+    customers: Clients
+    details: Detalls
+    no_records_found: No s'han trobat registres...
+    services: Serveis
+    duration_minutes: Durada (minuts)
+    currency: Moneda
+    category: Categoria
+    no_category: Sense categoria
+    description: Descripció
+    categories: Categories
+    admins: Administradors
+    providers: Proveïdors
+    secretaries: Secretaris
+    mobile_number: Número de telefon mòbil
+    mobile: Mòbil
+    state: Província
+    username: Usuari
+    password: Contrasenya
+    retype_password: Torna a introduir la contrasenya
+    receive_notifications: Rep les notificacions
+    passwords_mismatch: Les contrasenyes no coincideixen.
+    admin_saved: Admin desat correctament.
+    provider_saved: Proveïdor desat correctament.
+    secretary_saved: Secretari desat correctament.
+    admin_deleted: Admin eliminat correctament.
+    provider_deleted: Proveïdor eliminat correctament.
+    secretary_deleted: Secretari eliminat correctament.
+    service_saved: Servei desat correctament.
+    service_category_saved: Categoria de servei desada correctament.
+    service_deleted: Servei eliminat correctament.
+    service_category_deleted: Categoria de servei eliminada correctament.
+    customer_saved: Client desat correctament.
+    customer_deleted: Client eliminat correctament.
+    current_view: Vista actual
+    working_plan: Planificació de treball
+    reset_plan: Reinicia la planificació
+    monday: Dilluns
+    tuesday: Dimarts
+    wednesday: Dimecres
+    thursday: Dijous
+    friday: Divendres
+    saturday: Dissabte
+    sunday: Diumenge
+    breaks: Pauses
+    add_breaks_during_each_day: Afegeix pauses. Durant les pauses, el proveïdor no acceptarà cites.
+    day: Dia
+    days: Dies
+    actions: Accions
+    reset_working_plan_hint: Reinicia la planificació de treball als valors per defecte.
+    company_name: Nom de l'organització
+    company_name_hint: El nom de l'organització es mostrarà arreu del sistema (necessari).
+    company_email: Correu de l'organització
+    company_email_hint: Aquest serà l'adreça de correu electrònic de l'organització. S'utilitzarà com a remitent i adreça de resposta dels correus del sistema (necessari).
+    company_link: Enllaç a l'organització
+    company_link_hint: L'enllaç a l'organització hauria d'enllaçar el seu lloc web oficial (necessari).
+    go_to_booking_page: Ves a la pàgina de reserves
+    settings_saved: Les configuracions s'han desat correctament.
+    general: General
+    booking: Reserva
+    visible: Visible
+    hidden: Amagat
+    business_logic: Lògica de negoci
+    current_user: Usuari actual
+    about_app: Quant a Easy!Appointments
+    edit_working_plan_hint: Marqueu a sota els dies i les hores en que la vostra organització acceptarà cites. Podreu ajustar les cites a les hores no laborables, però els clients no podran reservar cites en aquests períodes. Aquesta planificació de treball serà utilitzada per defecte per cada nou proveïdor, però podreu canviar cadascuna de les planificacions dels proveïdors de forma separada. Finalment, podeu afegir períodes de pausa.
+    edit_breaks_hint: Afegiu pauses per a cadascun dels dies. Aquestes pauses s'aplicaran a tots els nous proveïdors.
+    book_advance_timeout: Temps límit de modificació/cancel·lació
+    book_advance_timeout_hint: Defineix el temps límit (en minuts) a partir del qual els clients no poden reservar una hora o modificar una cita.
+    timeout_minutes: Temps límit de reserva (minuts)
+    about_app_info: Easy!Appointments és una aplicació web molt ajustable que permet als vostres clients reservar cites amb vosaltres a través del web. A més, us permet sincronitzar amb Google Calendar de manera que ho podeu usar amb altres serveis.
+    current_version: Versió actual
+    support: Suport
+    about_app_support: Si trobeu qualsevol problema fent servir Easy!Appointments, podeu consultar el Google Group per a trobar respostes. També podeu crear noves incidències a la pàgina de Google Code per ajudar al desenvolupament.
+    official_website: Lloc web oficial
+    google_plus_community: Comunitat Google+
+    support_group: Grup de suport
+    project_issues: Incidències del projecte
+    license: Llicència
+    about_app_license: 'Easy!Appointments es distribueix amb una llicència GPLv3. Usant el codi d''Easy!Appointments de qualsevol forma, esteu consentint els termes descrits en la següent URL:'
+    logout_success: Heu sortit correctament! Cliqueu en un dels següents botons per navegar a una altra pàgina.
+    book_appointment_title: Reserva una cita
+    backend_section: Administració
+    you_need_to_login: Heu d'iniciar la sessió per veure les pàgines d'administració.
+    enter_username_here: Introduïu el vostre nom d'usuari...
+    enter_password_here: Introduïu la contrasenya aquí ...
+    login: Entra
+    forgot_your_password: Heu oblidat la contrasenya?
+    login_failed: Entrada fallida, introduïu les credencials correctes i proveu-ho un altre cop.
+    type_username_and_email_for_new_password: Teclegeu el vostre nom d'usuari i la vostra adreça de correu per obtenir una nova contrasenya.
+    enter_email_here: Introdueix el teu correu aquí...
+    regenerate_password: Regenera la contrasenya
+    go_to_login: Torna a la pàgina d'entrada
+    new_password_sent_with_email: La vostra nova contrasenya se us ha enviat per correu electrònic.
+    new_account_password: Nova contrasenya
+    new_password_is: La vostra nova contrasenya és $password. Deseu aquest correu per tal de poder recuperar la contrasenya si és necessari. Podeu canviar aquesta contrasenya a la pàgina de configuracions.
+    delete_record_prompt: Esteu segurs que voleu eliminar aquest registre? Aquesta acció no es pot desfer.
+    delete_admin: Elimina un administrador
+    delete_customer: Elimina un client
+    delete_service: Elimina un servei
+    delete_service_category: Elimina una categoria de servei
+    delete_provider: Elimina un proveïdor
+    delete_secretary: Elimina un secretari
+    delete_appointment: Elimina una cita
+    delete_unavailability: Elimina un període de no disponibilitat
+    delete: Elimina
+    unexpected_issues: Problemes inesperats
+    unexpected_issues_message: L'operació no s'ha pogut completar.
+    close: Tanca
+    page_not_found: No s'ha trobat la pàgina
+    page_not_found_message: La pàgina que heu demanat no existeix. Comproveu la URL del vostre navegador o dirigiu-vos a un altre lloc clicant els botons de sota.
+    error: Error
+    no_privileges: Permisos insuficients
+    no_privileges_message: No teniu el permisos requerits per veure aquesta pàgina. Navegueu a una altra secció.
+    backend_calendar: Calendari de gestió
+    start_date_time: Data/Hora d'inici
+    end_date_time: Data/Hora de fi
+    licensed_under: Amb llicència
+    unexpected_issues_occurred: Hi han hagut alguns problemes.
+    service_communication_error: Hi hagut un problema de comunicació amb el servidor, intenteu-ho una altra vegada.
+    no_privileges_edit_appointments: No teniu els permissos necessaris per editar les cites.
+    unavailability_updated: El període de temps de no disponibilitat s'ha actualitzat correctament.
+    appointments: Cites
+    unexpected_warnings: Errors inesperats
+    unexpected_warnings_message: L'operació s'ha completat, però hi ha diversos avisos.
+    filter: Filtra
+    clear: Neteja
+    uncategorized: Sense categoritzar
+    username_already_exists: El nom d'usuari ja existeix.
+    password_length_notice: La contrasenya ha de tenir almenys $number caràcters de longitud.
+    general_settings: Configuracions generals
+    personal_information: Informació personal
+    system_login: Entrada al sistema
+    user_settings_are_invalid: Les configuració d'usuari no User settings are invalid! Please review your settings and try again.
+    add_break: Afegeix una pausa
+    january: Gener
+    february: Febrer
+    march: Març
+    april: Abril
+    may: Maig
+    june: Juny
+    july: Juliol
+    august: Agost
+    september: Setembre
+    october: Octubre
+    november: Novembre
+    december: Desembre
+    previous: Anterior
+    next: Següent
+    now: Ara
+    select_time: Selecciona l'hora
+    time: Hora
+    hour: Hora
+    minute: Minut
+    calendar_sync_completed: La sincronització amb Google s'ha completat correctament.
+    calendar_sync_failed: 'La sincronització amb Google ha fallat: no s''ha pogut establir la connexió amb el servidor.'
+    select_sync_calendar: Selecciona un Google Calendar
+    select_sync_calendar_prompt: Seleccioneu el calendari que voleu sincronitzar amb les vostres cites. Si no seleccioneu un calendari específic, s'usarà el calendari per defecte.
+    sync_calendar_selected: El Google calendar s'ha seleccionat correctament.
+    oops_something_went_wrong: Ups! Alguna cosa no ha funcionat bé.
+    ea_update_success: Easy!Appointments s'ha actualitzat correctament.
+    require_captcha: Requereix un CAPTCHA
+    require_captcha_hint: Quan s'habilita, els clients hauran de teclejar una cadena CAPTCHA generada aleatòriament abans de reservar o actualitzar una cita.
+    captcha_is_wrong: La verificació del CAPTCHA ha fallat, torneu-ho a intentar.
+    enter_captcha_here: Introdueix el CAPTCHA aquí...
+    any_provider: Qualsevol proveïdor
+    requested_hour_is_unavailable: La cita que demaneu no està disponible. Seleccioneu una hora diferent per a la vostra cita.
+    customer_notifications: Notificacions als clients
+    customer_notifications_hint: Defineix si el client rebrà notificacions per correu electrònic quan hi hagi un canvi en la planificació de les seves cites.
+    date_format: Format de data
+    date_format_hint: Canvia el format de visualització de la data (D - Dia, M - Mes, Y - Any).
+    time_format: Format d'hora
+    time_format_hint: Canvia el format de visualització de l'hora (H - Hores, M - Minuts).
+    first_weekday: Primer dia de la setmana
+    first_weekday_hint: Estableix el primer dia de la setmana als calendaris.
+    google_analytics_code_hint: Afegiu el vostre ID de Google Analytics per afegir-lo a la pàgina de reserves.
+    availabilities_type: Tipus de disponibilitat
+    flexible: Flexible
+    fixed: Fixat
+    attendants_number: Nombre d'assistents
+    reset_working_plan: Reinicieu la planificació de treball als valors per defecte.
+    legal_contents: Continguts legals
+    cookie_notice: Avís de cookies
+    display_cookie_notice: Mostra l'avís de cookies
+    cookie_notice_content: Contingut de l'avís de cookies
+    terms_and_conditions: Termes i condicions
+    display_terms_and_conditions: Mostra els termes i condicions
+    terms_and_conditions_content: Contingut dels termes i condicions
+    privacy_policy: Política de privacitat
+    display_privacy_policy: Mostra la política de privacitat
+    privacy_policy_content: Contingut de la política de privacitat
+    website_using_cookies_to_ensure_best_experience: Aquest lloc web usa cookies per assegurar-se que obteniu la millor experiència navegant pel nostre web.
+    read_and_agree_to_terms_and_conditions: He llegit i estic d'acord amb els {$link}Termes i condicions{/$link}.
+    read_and_agree_to_privacy_policy: He llegit i estic d'acord amb la {$link}Política de privacitat{/$link}.
+    delete_personal_information_hint: Elimineu les vostres dades del sistema (i les cites associades).
+    delete_personal_information: Eliminació de dades personals
+    delete_personal_information_prompt: Esteu segur que voleu eliminar la vostra informació personal? Aquesta acció no es pot desfer.
+    location: Ubicació
+    working_plan_exception: Excepció del pla de treball
+    working_plan_exceptions: Excepcions del pla de treball
+    working_plan_exceptions_hint: Afegeix un dia d'excepció del pla de treball, fora del pla de treball.
+    new_working_plan_exception_title: Nova excepció al pla de treball
+    working_plan_exception_saved: L'excepció del pla de treball s'ha desat correctament.
+    working_plan_exception_deleted: L'excepció del pla de treball s'ha suprimit correctament.
+    add_working_plan_exceptions_during_each_day: Afegeix excepcions al pla de treball, fora del pla de treball.
+    add_working_plan_exception: Afegeix una excepció al pla de treball
+    require_phone_number: Requereix el número de telèfon
+    require_phone_number_hint: Quan està activat, els clients i els usuaris hauran d'introduir el número de telèfon al reservar una cita
+    check_spam_folder: Comproveu la vostra carpeta de correu brossa si el correu no arriba en uns minuts.
+    api_token_hint: Establiu un token secret per permetre l'autenticació basada en tokens de l'API d'Easy!Appointments.
+    timezone: Zona horària
+    overwrite_existing_working_plans: Això sobreescriurà els plans de treball existents del proveïdor, esteu segur que voleu continuar?
+    working_plans_got_updated: S'han actualitzat tots els plans de treball.
+    apply_to_all_providers: Aplica-ho a tots els proveïdors
+    display_any_provider: Mostra l'opció de Qualsevol proveïdor
+    display_any_provider_hint: La pàgina de reserva mostrarà una opció addicional que permet als clients reservar sense especificar un proveïdor.
+    load_more: Carrega'n més
+    list: Llista
+    default: Per defecte
+    table: Taula
+    date: Data
+    about: Quant a
+    booking_settings: Paràmetres de reserva
+    display: Mostra
+    require: Fes obligatori
+    color: Color
+    matomo_analytics_url_hint: Afegiu la URL de la vostra instal·lació de Matomo per permetre el seguiment de Matomo de les pàgines de reserves.
+    invalid_phone: Número de telèfon no vàlid.
+    legal: Legal
+    business: Negoci
+    account: Compte
+    disable_booking: Desactiva les cites
+    disable_booking_hint: La pàgina de reserva de cites es desactivarà mentre aquest paràmetre estigui actiu i els clients no podran realitzar noves cites.
+    display_message: Mostra el missatge
+    booking_is_disabled: La reserva està deshabilitada!
+    appearance: Aparença
+    company_logo: Logotip de l'empresa
+    company_logo_hint: El logotip de la companyia es mostrarà en molts llocs de l'aplicació, incloent les pàgines de reserva i als correus de notificació (mida màxima del fitxer 2 MB).
+    company_color: Color d'empresa
+    company_color_hint: El color d'empresa es farà servir arreu del sistema per poder-lo adaptar a la vostra imatge d'empresa.
+    localization: Localització
+    integrations: Integracions
+    company: Empresa
+    remove: Elimina
+    login_button: Botó d'entrada
+    display_login_button_hint: Defineix si el botó d'entrada es mostra a la pàgina de reserves.
+    private: Privat
+    private_hint: Els registres privats no es mostraran i no es processaran en pàgines públiques com la pàgina de reserves.
+    reset: Reinicia
+    all: Tot
+    booking_link: Enllaç de reserva
+    add_new_event: Afegeix un nou esdeveniment
+    what_kind_of_event: Quin tipus d'esdeveniment voleu afegir?
+    theme: Tema
+    limit_customer_access: Limita l'accés als clients
+    limit_customer_access_hint: Si s'activa, els proveïdors i els secretaris només tindran accés als clients amb els que tenen cites.
+    url: URL
+    secret_token: Token secret
+    verify_ssl: Verifica l'SSL
+    appointment_save: Desa la cita
+    appointment_delete: Elimina la cita
+    unavailability_save: Desa la no disponibilitat
+    unavailability_delete: Elimina la no disponibilitat
+    customer_save: Desa el client
+    customer_delete: Elimina el client
+    service_save: Desa el servei
+    service_delete: Elimina el servei
+    service_category_save: Desa la categoria
+    service_category_delete: Elimina la categoria
+    provider_save: Desa el proveïdor
+    provider_delete: Elimina el proveïdor
+    secretary_save: Desa el secretari
+    secretary_delete: Elimina el secretari
+    admin_save: Desa l'administrador
+    admin_delete: Elimina l'administrador
+    options: Opcions
+    webhooks: Webhooks
+    webhooks_info: Els Webhooks us permeten enviar notificacions HTTP a aplicacions web externes com a resposta a diversos esdeveniments com la creació d'una cita o l'eliminació d'un client.
+    integrations_info: Les Integrations us permeten connexions amb tercers com aplicacions externes i APIs.
+    configure: Configura
+    google_analytics: Google Analytics
+    google_analytics_info: Google Analytics us permet afegir automàticament el codi de seguiment i el codi HTML a la pàgina de reserves i fer el seguiment de totes les reserves.
+    matomo_analytics: Matomo Analytics
+    matomo_analytics_info: Matomo Analytics us permet afegir automàticament el codi de seguiment i el codi HTML a la pàgina de reserves i fer el seguiment de totes les reserves.
+    api: API
+    api_info: L'API us permet interaccionar amb totes les dades Easy!Appointments via el protocol HTTP i els API endpoint disponibles i crear les vostres pròpies integracions.
+    google_analytics_code: Codi de Google Analytics
+    matomo_analytics_url: URL de Matomo Analytics
+    future_booking_limit: Límit de reserves futures
+    limit_days: Límit (dies)
+    future_booking_limit_hint: Estableix el límit en dies per avançat en el que es permet als clients demanar cites..
+    api_token: Token d'API
+    allow_rescheduling_cancellation_before: Permet la reprogramació/cancel·lació abans
+    at_least_one_field: Com a mínim un camp s'ha de mostrar a la pàgina de reserves.
+    status: Estat
+    appointment_status_options: Opcions de l'estat de la cita
+    appointment_status_options_info: Defineix una llista d'estats disponibles per a una cita que es poden usar a la pàgina del calendari (el primer estat serà el que s'usi per defecte).
+    sunday_short: Dg.
+    monday_short: Dl.
+    tuesday_short: Dm.
+    wednesday_short: Dc.
+    thursday_short: Dj.
+    friday_short: Dv.
+    saturday_short: Ds.
+    january_short: Gen
+    february_short: Feb
+    march_short: Mar
+    april_short: Abr
+    may_short: Mai
+    june_short: Jun
+    july_short: Jul
+    august_short: Ago
+    september_short: Set
+    october_short: Oct
+    november_short: Nov
+    december_short: Des
+    am: am
+    pm: pm
+    to: fins a
+    click_to_toggle: Clica per commutar
+    week_short: Set.
+    scroll_to_increment: Desplaça per incrementar
+    year: Any
+    make_non_working_day: Aquest proveïdor no estarà disponible en el dia seleccionat.
+    no_breaks: Sense pauses
+    service_categories: Categories de serveis
+    service_category: Categoria de servei
+    blocked_period_saved: El Període bloquejat s'ha desat correctament.
+    blocked_period_deleted: El Període bloquejat s'ha eliminat correctament.
+    delete_blocked_period: Elimina el Període bloquejat
+    blocked_period: Període bloquejat
+    blocked_periods: Períodes bloquejats
+    blocked_period_save: Desa el Període bloquejat
+    blocked_period_delete: Elimina el Període bloquejat
+    blocked_periods_hint: Defineix períodes de temps en els que les reserves públiques estaran deshabilitades en tots els proveïdors (p.e. dies de tancament, vacances, etc.).
+    custom_field: Camp a mida
+    custom_fields: Camps a mida
+    label: Etiqueta
+    webhook_saved: Webhook desat correctament.
+    webhook_deleted: Webhook eliminat correctament.
+    delete_webhook: Elimina el Webhook
+    contact_info: Informació de contacte
+    hide_from_public: Amaga del públic
+    matomo_analytics_site_id: ID de lloc de Matomo Analytics
+    matomo_analytics_site_id_hint: Estableix l'ID de lloc que seguirà Matomo (el lloc per defecte té l'ID "1").
+    default_timezone: Zona horària per defecte
+    default_timezone_hint: Estableix el valor de la zona horària que per defecte es farà servir a partir d'ara.
+    default_language: Idioma per defecte
+    default_language_hint: Estableix l'idioma per defecte que es farà servir a partir d'ara.
+    sync_method_prompt: Quin mètode de sincronització voldries utilitzar?
+    caldav_server: Servidor CalDAV
+    caldav_connection_info_prompt: Si us plau, introdueix la informació de connexió del Calendari CalDAV de destinació.
+    connect: Connecta
+    ldap: LDAP
+    ldap_info: Aquesta integració us permet connectar amb un servidor LDAP i automàticament importar els usuaris a Easy!Appointments. A més, permet que els usuaris facin SSO amb la contrasenya LDAP (el nom d'usuari ha de coincidir).
+    host: Servidor
+    port: Port
+    user_dn: Usuari DN
+    base_dn: DN base
+    keyword: Paraula clau
+    ldap_search_hint: Estableix una paraula clau per cercar usuaris al directori LDAP que coincideixin amb el criteri del filtre.
+    ldap_extension_not_loaded: L'extensió de PHP LDAP no està carregada i és indispensable perquè la integració funcioni.
+    field_mapping: Mapejat de camps
+    content: Contingut
+    active: Actiu
+    user_imported: El registre d'usuari s'ha importat correctament.
+    import: Importa
+    ldap_dn: DN de LDAP
+    role: Rol
+    at_least_one_field_required: Com a mínim un camp s'ha de marcar com a obligatori a la pàgina de reserva.
+    customer_is_already_booked: Aquest client ja té una cita en el període de reserva sol·licitat.
+    fields: Camps
+    invalid_credentials_provided: Les credencials no són vàlides, torneu-ho a provar un altre cop.
+    calendar_url: URL del calendari
+    please_select: Si us plau, seleccioneu
+    secret_header: Capçalera secreta
+    search: Cerca
+    slot_interval: Interval de ranura (minuts)
+    jitsi: Jitsi
+    jitsi_info: Permet la generació automàtica d'enllaços a reunions de Jitsi per les cites. Quan s'habilita, es genera un enllaç únic de vídeotrucada Jitsi i es desa com a enllaç de la reunió.
+    altcha: ALTCHA
+    altcha_info: ALTCHA és un CAPTCHA alternatiu, de codi obert i centrat en la privacitat que fa servir proves de treball (PoW) per verificar usuaris humans sense fer-ne seguiment.
+    altcha_enabled_hint: Quan s'habilita, s'usa ALTCHA enlloc de la tradicional imatge CAPTCHA per verificar els formularis.
+    altcha_hmac_key: Clau HMAC
+    altcha_hmac_key_hint: Una clau secreta usada per signar i verificar els reptes ALTCHA. Cliqueu a Genera per crear una nova clau segura.
+    altcha_max_number: Nombre màxim
+    altcha_max_number_hint: 'El nombre màxim per al repte de prova de treball. Valors més alts incrementen la dificulatat (per defecte: 100000).'
+    altcha_expires: Caducitat (segons)
+    altcha_expires_hint: 'Durant quant de temps (en segons), un repte es manté vàlid (per defecte: 300).'
+    altcha_key_generated: La clau HMAC s'ha generat correctament.
+    altcha_enabled: Habilita ALTCHA
+    altcha_captcha_not_active_warning: La configuració CAPTCHA no està activa actualment. ALTCHA no s'utilitzarà si CAPTCHA no està habilitada a
+    generate: Genera
+    meeting_link: Enllaç de la reunió
+    google_calendar: Google Calendar
+    google_calendar_info: Habilita la sincronització amb Google Calendar per sincronitzar amb el proveïdor dels comptes de Google Calendar.
+    google_client_id: ID del client
+    google_client_id_info: L'ID del client del teu projecte de Google Cloud Console.
+    google_client_secret: Secret de client
+    google_client_secret_info: El secret de client del vostre projecte a la Google Cloud Console.
+    google_calendar_setup_info: 'Per habilitar la sincronització de Google Calendar, heu de crear un projecte a Google Cloud Console, habiliteu l''API de Google Calendar i creeu unes credencials de OAuth 2.0. Vegeu:'
+    google_meet_link_generation: Genera enllaços de Google Meet
+    google_meet_link_generation_info: Crea automàticament un enllaç a una vídeo-conferència de Google Meet per a les cites sincronitzades. L'enllaça ala reunió es desarà en el camp enllaç a la reunió de la cita.
+    display_add_to_google_calendar: Mostra el botó "Afegeix al Google Calendar"
+    display_add_to_google_calendar_info: Mostra el botó "Afegeix al Google Calendar" a la pàgina de confirmació de la cita, permetent fàcilment als clients que afegeixin les seves cites al seu Google Calendar personal.
+    select_all: Selecciona tot
+    select_none: No seleccionis cap
+    appointment_update: Actualització de cita
+    notify_users_on_update_question: Voleu enviar una notificació sobre aquest canvi?
+    'yes': Sí
+    'no': 'No'
+    latest_blog_posts: Últimes entrades del blog
+    loading: Carregant
+    blog_posts_load_error: No es poden carregar les entrades del blog. Visiteu el lloc web oficial per a actualitzacions.
+    provider_has_conflicting_appointment: El proveïdor seleccionat ja té una altra cita en aquest horari. Si us plau, seleccioneu un altre horari o proveïdor.
+    would_you_like_to_proceed: Voleu continuar igualment?
+    proceed: Continua
+    no_available_service_providers: No hi ha serveis disponibles
+    no_available_service_providers_message: Actualment no hi ha serveis ni proveïdors disponibles per a la reserva. Si us plau, torneu més tard o contacteu-nos per obtenir ajuda.
+    reset_password: Restablir Contrasenya
+    new_password: Nova Contrasenya
+    enter_new_password: Introduïu la vostra nova contrasenya a continuació.
+    password_reset_request: Sol·licitud de restabliment de contrasenya
+    password_reset_email_message: Heu sol·licitat restablir la vostra contrasenya. Feu clic al botó següent per establir una nova contrasenya per al vostre compte.
+    password_reset_link_expires: Aquest enllaç caducarà en 1 hora.
+    password_reset_ignore_message: Si no heu sol·licitat restablir la contrasenya, ignoreu aquest correu electrònic.
+    invalid_reset_token: L'enllaç de restabliment de contrasenya no és vàlid.
+    invalid_or_expired_token: L'enllaç de restabliment de contrasenya no és vàlid o ha caducat. Si us plau, sol·liciteu-ne un de nou.
+    password_reset_success: La vostra contrasenya s'ha restablert correctament. Sereu redirigit a la pàgina d'inici de sessió.
+    password_reset_failed: Ha fallat el restabliment de la contrasenya. Si us plau, torneu-ho a provar.
+    no_password_provided: Si us plau, introduïu una contrasenya.
+    type_username_and_email_for_reset_link: Escriviu el vostre nom d'usuari i adreça de correu electrònic per rebre un enllaç de restabliment de contrasenya.
+    send_reset_link: Envia l'enllaç de restabliment
+    reset_link_sent_with_email: Si existeix un compte amb les credencials proporcionades, s'ha enviat un enllaç de restabliment de contrasenya al vostre correu electrònic.
+    working_plan_validation_failed: S'ha trobat una configuració del Pla de Treball que no és vàlida.
+    start_date: Data d'inici
+    end_date: Data de fi
+    remember_me: Recorda la meva informació
+    remember_me_hint: Desa la teva informació per reservar més ràpid la propera vegada.
+    legal_notice: Avís legal
+    legal_notice_url: URL de l'avís legal
+    legal_notice_url_hint: Introduïu la URL de la vostra pàgina d'avís lega o deixeu en blanc i no es mostrarà l'enllaç.
+    imprint: Contacte
+    imprint_url: URL de contacte
+    imprint_url_hint: Introduïu la URL de la vostra pàgina de contacte o deixeu en blanc i no es mostrarà l'enllaç.
+    data_retention: Retenció de dades
+    data_retention_days: Dies de retenció de dades
+    data_retention_days_hint: Estableix el nombre de dies després dels quals les dades del client s'eliminaran automàticament. Poseu a 0 per desactivar l'eliminació automàtica.
+    manage_privacy: Gestió de la privacitat
+    manage_privacy_hint: Cliqueu a l'enlla de sota per veure, actualitzar o eliminar la vostra informació personal.
+    personal_information_updated: La vostra informació personal ha estat actualitzada correctament.
+    verify: Verifica
+    verifying: Verificant
+    verified: Verificat
+    verification_complete: Verificació completada
+    verification_failed: La verificació ha fallat. Cliqueu per tornar-ho a intentar.
+    click_to_verify: Clica per verificar que ets humà.
+    altcha_verification_failed: La verificació ALTCHA ha fallat. Proveu-ho un altre cop.
+    premium: Premium
+    about_app_premium: Oferim serveis d'extrem a extrem per a programari autoallotjat, incloent desenvolupament a mida, gestió d'allotjaments, contractes de suport, imatge de marca personalitzat i millores en curs, perquè us pogueu centrar en el vostre negoci mentre nosaltres ens encarreguem de la resta.
+    go_premium: Passa't a Premium
+    notify_users_on_create_question: Voleu notificar el client sobre aquesta nova cita?
+    notify_users_on_delete_question: Voleu notificar el client sobre la cancel·lació de la cita?

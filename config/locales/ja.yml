@@ -1,0 +1,575 @@
+---
+ja:
+  ea:
+    page_title: '予約システム - '
+    service_and_provider: 'メニューと担当者の選択:'
+    select_service: メニュー
+    select_provider: 担当者
+    duration: 所要時間
+    minutes: 分
+    price: 料金
+    back: 戻る
+    appointment_date_and_time: 日時の選択
+    no_available_hours: 選択された日に空席がありません。別の日を選択してください。
+    appointment_hour_missing: 次に行く前に予約時間を選択してください。
+    customer_information: お客様のご連絡先
+    first_name: 名前
+    last_name: 名字
+    email: メール
+    phone_number: 電話番号
+    phone: 電話
+    address: 住所
+    city: 市
+    zip_code: 郵便番号
+    notes: 連絡事項
+    language: 言語
+    no_language: 言語なし
+    fields_are_required: "* のある項目は必須です。"
+    appointment_confirmation: 予約の確認
+    confirm: 確認ＯＫ
+    update: 更新
+    cancel_appointment_hint: 会社のスケジュールから予約を削除するにはキャンセルボタンを押してください。
+    cancel: キャンセル
+    appointment_registered: お客様の予約が完了しました。
+    cancel_appointment_title: 予約のキャンセル
+    appointment_cancelled: お客様の予約のキャンセルが完了しました。
+    appointment_cancelled_title: 予約がキャンセルされました。
+    reason: 理由
+    appointment_removed_from_schedule: 以下の予約が会社のスケジュールから削除されました。
+    appointment_details_was_sent_to_you: 予約の詳細についてもメールが送信されました。
+    add_to_google_calendar: グーグルカレンダーへの予約の登録
+    appointment_booked: お客様の予約が登録完了しました。
+    thank_you_for_appointment: 予約の登録まことにありがとうございました。下記が予約の詳細となります。予約リンクをクリックすると変更が可能です。
+    appointment_details_title: 予約詳細
+    customer_details_title: お客様詳細
+    service: メニュー
+    provider: 担当者
+    customer: お客様
+    start: 開始
+    end: 終了
+    name: 名前
+    appointment_link_title: 予約へのリンク
+    success: 成功
+    appointment_added_to_your_plan: あなたへの新しい予約が追加されました。
+    appointment_link_description: 予約リンクをクリックすると変更が可能です。
+    appointment_locked: 変更不可
+    appointment_locked_message: この予約は{$limit}時間以内には変更できません。
+    appointment_not_found: 予約情報が見つかりません。
+    appointment_does_not_exist_in_db: データベースに 該当の予約がみつかりません。削除された可能性があります。.
+    display_calendar: カレンダー表示
+    calendar: カレンダー
+    users: ユーザー
+    settings: 設定
+    log_out: ログアウト
+    synchronize: 同期
+    enable_sync: 同期有効化
+    disable_sync: 同期無効化
+    disable_sync_prompt: カレンダーの同期を無効にしてもよろしいですか？
+    reload: 再読込
+    appointment: 予約
+    unavailability: 空き無し
+    week: 週
+    month: 月
+    today: 今日
+    not_working: 時間外
+    break: 休憩時間
+    add: 追加
+    edit: 編集
+    hello: こんにちは
+    all_day: 全日
+    manage_appointment_record_hint: 担当者とサービスメニューのスケジュールを管理できます。
+    select_filter_item_hint: 担当者もしくはサービスメニューで絞込ができます。
+    enable_appointment_sync_hint: 担当者のGoogleカレンダーとの同期を有効にします。
+    manage_customers_hint: 予約登録をしたお客様とその予約履歴を管理できます。
+    manage_services_hint: サービスメニューとサービスカテゴリーの管理ができます。
+    manage_users_hint: 会社ユーザーの管理ができます。(管理者,担当者,予約管理者).
+    settings_hint: システムとユーザーの設定
+    log_out_hint: ログアウト
+    unavailability_periods_hint: 都合が悪い期間は、担当者は新しい予約を受けられません。During unavailability periods the provider won't accept new appointments.
+    new_appointment_hint: 新しい予約を作成してデータベースへ追加します。
+    reload_appointments_hint: カレンダーを再読み込みします。
+    trigger_sync_hint: Googleカレンダーとの同期を開始します。
+    appointment_updated: 予約情報が更新されました。
+    undo: やり直し
+    appointment_details_changed: 予約情報が変更されました。
+    appointment_changes_saved: 予約の変更が保存されました。
+    save: 保存
+    new: 新規
+    select: 選択
+    hide: 隠す
+    type_to_filter_customers: お客様の絞込条件を入力
+    clear_fields_add_existing_customer_hint: 項目をクリアし新規登録する。
+    pick_existing_customer_hint: 既存のお客様を選択してください。
+    new_appointment_title: 新規予約
+    edit_appointment_title: 予約の編集
+    delete_appointment_title: 予約の削除
+    write_appointment_removal_reason: 恐縮ですが、予約キャンセルの理由を頂けませんでしょうか。
+    appointment_saved: 予約の保存が成功しました。
+    new_unavailability_title: 新規の都合悪い時間
+    edit_unavailability_title: 都合悪い時間の編集
+    unavailability_saved: 都合の悪い時間の保存が完了しました。
+    start_date_before_end_error: 開始時間が終了時間よりも後になっています。
+    invalid_duration: 無効な期間です。
+    invalid_email: Emailアドレスのフォーマットエラー
+    customers: お客様
+    details: 詳細
+    no_records_found: データが見つかりません...
+    services: サービスメニュー
+    duration_minutes: 所要時間 (分)
+    currency: 通貨
+    category: カテゴリー
+    no_category: カテゴリーなし
+    description: 説明
+    categories: カテゴリー
+    admins: 管理者
+    providers: 担当者
+    secretaries: 予約管理者
+    mobile_number: 携帯番号
+    mobile: 携帯電話
+    state: 都道府県
+    username: ユーザー名
+    password: パスワード
+    retype_password: "（再）パスワード"
+    receive_notifications: 通知の受信をする
+    passwords_mismatch: パスワードが違います
+    admin_saved: 管理者情報が保存されました。
+    provider_saved: 担当者情報が保存されました。
+    secretary_saved: 予約管理者情報が保存されました。
+    admin_deleted: 管理者情報が削除されました。
+    provider_deleted: 担当者情報が削除されました。
+    secretary_deleted: 予約管理者情報が削除されました。
+    service_saved: サービスメニューが保存されました。
+    service_category_saved: サービスカテゴリーが保存されました。
+    service_deleted: サービスメニューが削除されました
+    service_category_deleted: サービスカテゴリーが削除されました。
+    customer_saved: お客様情報が保存されました。
+    customer_deleted: お客様情報が削除されました。
+    current_view: 現在の表示
+    working_plan: 勤務時間
+    reset_plan: 予定リセット
+    monday: 月曜
+    tuesday: 火曜
+    wednesday: 水曜
+    thursday: 木曜
+    friday: 金曜
+    saturday: 土曜
+    sunday: 日曜
+    breaks: 休憩時間
+    add_breaks_during_each_day: 各曜日に休憩時間を入れてください。休憩時間は、予約を受け付けません。
+    day: 日
+    days: 日
+    actions: 編集方法
+    reset_working_plan_hint: デフォルトの勤務時間にリセットします。
+    company_name: 会社名
+    company_name_hint: 会社名は、サイトのあらゆるところに表示されます。必須項目です。
+    company_email: 会社のメールアドレス
+    company_email_hint: 会社のメールアドレスは、システムから送信される送信アドレスと返信アドレスとして使われます。必須項目。
+    company_link: 会社のホームページリンク
+    company_link_hint: 会社のウェブサイトへのリンクを設定してください。必須項目
+    go_to_booking_page: 予約ページへ
+    settings_saved: 設定は保存されました。
+    general: 一般
+    booking: 予約
+    visible: 目に見える
+    hidden: 目に見えません
+    business_logic: 勤務時間設定
+    current_user: 現在のユーザー
+    about_app: Easy!Appointmentsとは。
+    edit_working_plan_hint: 会社で予約を受け付ける曜日と勤務時間を設定してください。時間外の予約にも調整できまうが、お客様は 時間外への予約はできません。この勤務時間は新しい担当者の初期設定となりますが、担当者ごとに変更できます。
+    edit_breaks_hint: 各曜日の休憩時間の設定をしてください。この休憩時間の設定は、担当者の初期設定となります。
+    book_advance_timeout: 予約待機時間
+    book_advance_timeout_hint: この待機時間 以上前の予約もしくは予約変更しか受け付けることはできません。時間寸前の予約ができないときなどに使用。
+    timeout_minutes: 時間 (分)
+    about_app_info: Easy!Appointmentsは、カスタマイズ可能な予約受付ウエッブアップリケーションです。さら、Googleカレンダーとの連携ができるので、このシステムのスケジュールを他のシステムのスケジュールとまとめてみることができます。
+    current_version: バージョン番号
+    support: サポート
+    about_app_support: " Easy!Appointments を利用する上で もし何か 問題がありましたら 、是非　公式 Google Groupを検索して 解決方法を見つけてください。もしかしたら 開発をさらに良いものにするために 新しい課題を Google Code に 登録することもできます。"
+    official_website: 公式サイト
+    google_plus_community: Google+ コミュニティ
+    support_group: サポートグループ
+    project_issues: プロジェクト対応一覧
+    license: ライセンス
+    about_app_license: 'Easy!Appointments は　GPLv3 ライセンス に従います。 Easy!Appointments　のプログラムコードを使用するということは、あるあらゆる面で 次のURLのサイトにある条件に同意したこととなります。:'
+    logout_success: ログアウトが完了しました。どちらかのボタンを押して ページを移動することができます。
+    book_appointment_title: 予約受付
+    backend_section: 管理画面
+    you_need_to_login: ようこそ、管理画面を見るためには、ログインをしてください。
+    enter_username_here: ユーザー名を入力してください ...
+    enter_password_here: ここにパスワードを入力 ...
+    login: ログイン
+    forgot_your_password: パスワードを忘れた場合
+    login_failed: ログインが失敗しました。もう確認してユーザー名とパスワードを入力してください。
+    type_username_and_email_for_new_password: ユーザー名とメールアドレスを入力して 新しいパスワードを取得してください。
+    enter_email_here: メールアドレスを入力してください ...
+    regenerate_password: パスワードの再発行
+    go_to_login: ログインページへ戻る
+    new_password_sent_with_email: 新しいパスワードがメールで送信されました。
+    new_account_password: 新しいパスワード
+    new_password_is: あなたの新しいパスワードは $password　です。またパスワードを取得するためにこのメールは残しておいてください。設定ページでは、新しいパスワードへ変更できます。
+    delete_record_prompt: 本当にこのデータを削除しますか？データを戻すことはできません。
+    delete_admin: 管理者の削除
+    delete_customer: お客様の削除
+    delete_service: サービスメニューの削除
+    delete_service_category: サービスカテゴリーの削除
+    delete_provider: 担当者の削除
+    delete_secretary: 予約管理者の削除
+    delete_appointment: 予約の削除
+    delete_unavailability: 都合の悪い時間の削除
+    delete: 削除
+    unexpected_issues: 予期せぬ問題
+    unexpected_issues_message: 操作を完了できませんでした。
+    close: 閉じる
+    page_not_found: ページが見つかりません
+    page_not_found_message: 要求されたページが見つかりませんでした。ブラウザーのURLを確認するか下のボタンで 別のページへ移動してください。
+    error: エラー
+    no_privileges: 権限がありません
+    no_privileges_message: 該当のページを見るための権限がありません。別のページへ移動してください。
+    backend_calendar: 管理カレンダー
+    start_date_time: 開始日/時間
+    end_date_time: 終了日/時間
+    licensed_under: ライセンス：
+    unexpected_issues_occurred: 予期せぬ問題が発生しました。
+    service_communication_error: サーバー接続エラーが発生しました。しばらくしてから再度操作してください。
+    no_privileges_edit_appointments: 予約を編集する権限がありません。
+    unavailability_updated: 都合の悪い時間データが更新されました。
+    appointments: 予約
+    unexpected_warnings: 予期せぬ警告
+    unexpected_warnings_message: 処理は完了しましたが、警告が発生しました。
+    filter: 絞込
+    clear: クリア
+    uncategorized: カテゴリー無い
+    username_already_exists: そのユーザー名はすでに使用されています。
+    password_length_notice: パスワードは 少なくとも $number 文字にしてください。
+    general_settings: 一般設定
+    personal_information: 個人情報
+    system_login: システム ログイン
+    user_settings_are_invalid: ユーザー設定にエラーがあります。設定を見直して、再度操作してください。Please review your settings and try again.
+    add_break: 休憩の追加
+    january: １月
+    february: ２月
+    march: ３月
+    april: ４月
+    may: ５月
+    june: ６月
+    july: ７月
+    august: ８月
+    september: ９月
+    october: １０月
+    november: １１月
+    december: １２月
+    previous: 前
+    next: 次
+    now: 今
+    select_time: 時間設定
+    time: 時刻
+    hour: 時間
+    minute: 分
+    calendar_sync_completed: Googleカレンダーとの同期が 正しく完了しました。
+    calendar_sync_failed: 'Googleカレンダーとの同期が失敗しました。: サーバーとの接続ができませんでした。'
+    select_sync_calendar: Googleカレンダーの選択
+    select_sync_calendar_prompt: あなたの予約と同期したい Googleカレンダーを選択してください。.特定のカレンダーを指定したくない場合には、デフォルトのカレンダーが使われます。
+    sync_calendar_selected: Googleカレンダーが 選択されました。
+    oops_something_went_wrong: おっと、なにか が うまく 行ってません。
+    ea_update_success: Easy!Appointments の　アップデートが成功しました。
+    require_captcha: CAPTCHAを要求
+    require_captcha_hint: 有効にすると、顧客は予約/更新の前にランダムに生成されたCAPTCHA文字列を入力する必要があります。
+    captcha_is_wrong: CAPTCHA認証に失敗しました。もう一度お試しください。
+    enter_captcha_here: ここに CAPTCHA を入力...
+    any_provider: 任意のプロバイダー
+    requested_hour_is_unavailable: 申し訳ありませんが、リクエストされた予約時間は利用できません。他の時間を選択してください。
+    customer_notifications: 顧客通知
+    customer_notifications_hint: 顧客が予約のスケジュール変更を受け取るかどうかを定義します。
+    date_format: 日付フォーマット
+    date_format_hint: 日付の表示フォーマットを変更します（D - 日、M - 月、Y - 年）。
+    time_format: 時間フォーマット
+    time_format_hint: 時間の表示フォーマットを変更します（H - 時、M - 分）。
+    first_weekday: 週の初日
+    first_weekday_hint: カレンダーの週の初日を設定します。
+    google_analytics_code_hint: 予約ページにGoogle Analytics IDを追加します。
+    availabilities_type: 空き状況の種類
+    flexible: フレキシブル
+    fixed: 固定
+    attendants_number: 出席者数
+    reset_working_plan: 作業計画をデフォルト値にリセットします。
+    legal_contents: 法的コンテンツ
+    cookie_notice: クッキー通知
+    display_cookie_notice: クッキー通知を表示
+    cookie_notice_content: クッキー通知内容
+    terms_and_conditions: 利用規約
+    display_terms_and_conditions: 利用規約を表示
+    terms_and_conditions_content: 利用規約内容
+    privacy_policy: プライバシーポリシー
+    display_privacy_policy: プライバシーポリシーを表示
+    privacy_policy_content: プライバシーポリシー内容
+    website_using_cookies_to_ensure_best_experience: このウェブサイトは、最良の体験を提供するためにクッキーを使用しています。
+    read_and_agree_to_terms_and_conditions: 私は利用規約を読み、同意します。
+    read_and_agree_to_privacy_policy: 私はプライバシーポリシーを読み、同意します。
+    delete_personal_information_hint: システムからすべての予約と個人情報を削除します。
+    delete_personal_information: 個人情報を削除
+    delete_personal_information_prompt: 本当に個人情報を削除しますか？この操作は元に戻せません。
+    location: 場所
+    working_plan_exception: 作業計画の例外
+    working_plan_exceptions: 作業計画の例外
+    working_plan_exceptions_hint: 作業計画の例外日を追加します。
+    new_working_plan_exception_title: 新しい作業計画の例外
+    working_plan_exception_saved: 作業計画の例外が正常に保存されました。
+    working_plan_exception_deleted: 作業計画の例外が正常に削除されました。
+    add_working_plan_exceptions_during_each_day: 作業計画外の作業計画の例外を追加します。
+    add_working_plan_exception: 作業計画の例外を追加
+    require_phone_number: 電話番号を要求
+    require_phone_number_hint: 有効にすると、予約時に顧客の電話番号を入力する必要があります。
+    check_spam_folder: メールが数分以内に届かない場合は、迷惑メールフォルダーを確認してください。
+    api_token_hint: Easy!Appointments APIのトークンベースの認証を有効にするために、秘密のトークンを設定します。
+    timezone: タイムゾーン
+    overwrite_existing_working_plans: これにより、既存のプロバイダーの作業計画が上書きされます。続行してもよろしいですか？
+    working_plans_got_updated: すべての作業計画が更新されました。
+    apply_to_all_providers: すべてのプロバイダーに適用
+    display_any_provider: 任意のプロバイダーオプションを表示
+    display_any_provider_hint: 予約ページに、プロバイダーを指定せずに予約できる追加のオプションが表示されます。
+    load_more: もっと読み込む
+    list: リスト
+    default: デフォルト
+    table: テーブル
+    date: 日付
+    about: 概要
+    booking_settings: 予約設定
+    display: 表示
+    require: 要求
+    color: 色
+    matomo_analytics_url_hint: 予約ページでMatomoの追跡を有効にするために、自分のMatomoインストールのURLを追加します。
+    invalid_phone: 無効な電話番号。
+    legal: 法的
+    business: ビジネス
+    account: アカウント
+    disable_booking: 予約を無効にする
+    disable_booking_hint: この設定が有効な間、予約ページが無効になり、顧客は新しい予約を登録できません。
+    display_message: メッセージを表示
+    booking_is_disabled: 予約が無効です！
+    appearance: 外観
+    company_logo: 会社のロゴ
+    company_logo_hint: 会社のロゴは、予約ページや通知メールなど、アプリの多くの場所に表示されます（画像ファイル、最大2MB）。
+    company_color: 会社の色
+    company_color_hint: アプリ全体に会社の色が適用され、ブランドが反映されます。
+    localization: ローカライゼーション
+    integrations: 統合
+    company: 会社
+    remove: 削除
+    login_button: ログインボタン
+    display_login_button_hint: 予約ページにログインボタンを表示するかどうかを定義します。
+    private: 非公開
+    private_hint: 非公開のレコードは、予約ページなどの公開ページに表示または処理されません。
+    reset: リセット
+    all: すべて
+    booking_link: 予約リンク
+    add_new_event: 新しいイベントを追加
+    what_kind_of_event: どの種類のイベントを追加しますか？
+    theme: テーマ
+    limit_customer_access: 顧客アクセスを制限
+    limit_customer_access_hint: 有効にすると、プロバイダーと秘書は、予約がある顧客にのみアクセスできます。
+    url: URL
+    secret_token: シークレットトークン
+    verify_ssl: SSLの確認
+    appointment_save: 予約の保存
+    appointment_delete: 予約の削除
+    unavailability_save: 利用不可の保存
+    unavailability_delete: 利用不可の削除
+    customer_save: 顧客の保存
+    customer_delete: 顧客の削除
+    service_save: サービスの保存
+    service_delete: サービスの削除
+    service_category_save: カテゴリーの保存
+    service_category_delete: カテゴリーの削除
+    provider_save: プロバイダーの保存
+    provider_delete: プロバイダーの削除
+    secretary_save: 秘書の保存
+    secretary_delete: 秘書の削除
+    admin_save: 管理者の保存
+    admin_delete: 管理者の削除
+    options: オプション
+    webhooks: Webhook
+    webhooks_info: Webhooksは、予約の作成や顧客の削除などのさまざまなアプリケーションイベントに応じて、外部のWebアプリケーションにHTTP通知を送信できます。
+    integrations_info: 統合により、外部アプリケーションやAPIとサードパーティの接続を作成できます。
+    configure: 設定
+    google_analytics: Google アナリティクス
+    google_analytics_info: Google Analyticsを使用すると、トラッキングコードとHTMLマークアップを自動的にパブリックページに追加し、すべてのパブリック予約セッションを追跡できます。
+    matomo_analytics: Matomo アナリティクス
+    matomo_analytics_info: Matomo Analyticsを使用すると、トラッキングコードとHTMLマークアップを自動的にパブリックページに追加し、すべてのパブリック予約セッションを追跡できます。
+    api: API
+    api_info: APIを使用すると、HTTPプロトコルおよび利用可能なAPIエンドポイントを介してすべてのEasy!Appointmentsデータと対話し、独自の統合を作成できます。
+    google_analytics_code: Google Analytics コード
+    matomo_analytics_url: Matomo アナリティクス URL
+    future_booking_limit: 将来の予約制限
+    limit_days: 制限（日数）
+    future_booking_limit_hint: 公開予約ページを介して顧客が予約できる将来の日数を設定します。
+    api_token: APIトークン
+    allow_rescheduling_cancellation_before: リスケジュール/キャンセルを許可する期限
+    at_least_one_field: 予約ページに少なくとも1つのフィールドを表示する必要があります。
+    status: ステータス
+    appointment_status_options: 予約ステータスオプション
+    appointment_status_options_info: カレンダーページで使用できる予約ステータスオプションのリストを定義します（最初のものが自動的にデフォルト値になります）。
+    sunday_short: 日
+    monday_short: 月
+    tuesday_short: 火
+    wednesday_short: 水
+    thursday_short: 木
+    friday_short: 金
+    saturday_short: 土
+    january_short: 1月
+    february_short: 2月
+    march_short: 3月
+    april_short: 4月
+    may_short: 5月
+    june_short: 6月
+    july_short: 7月
+    august_short: 8月
+    september_short: 9月
+    october_short: 10月
+    november_short: 11月
+    december_short: 12月
+    am: 午前
+    pm: 午後
+    to: から
+    click_to_toggle: クリックして切り替え
+    week_short: 週
+    scroll_to_increment: スクロールして増加
+    year: 年
+    make_non_working_day: このプロバイダーは、選択した日には作業できません。
+    no_breaks: 休憩なし
+    service_categories: サービスカテゴリー
+    service_category: サービスカテゴリー
+    blocked_period_saved: ブロックされた期間が正常に保存されました。
+    blocked_period_deleted: ブロックされた期間が正常に削除されました。
+    delete_blocked_period: ブロックされた期間を削除
+    blocked_period: ブロックされた期間
+    blocked_periods: ブロックされた期間
+    blocked_period_save: ブロックされた期間の保存
+    blocked_period_delete: ブロックされた期間の削除
+    blocked_periods_hint: '公開予約がすべてのプロバイダーに対して無効になる期間を定義します（例: 休業日、祝日など）。'
+    custom_field: カスタムフィールド
+    custom_fields: カスタムフィールド
+    label: ラベル
+    webhook_saved: Webhookが正常に保存されました。
+    webhook_deleted: Webhookが正常に削除されました。
+    delete_webhook: Webhookを削除
+    contact_info: 連絡先情報
+    hide_from_public: 公開から隠す
+    matomo_analytics_site_id: Matomo AnalyticsサイトID
+    matomo_analytics_site_id_hint: Matomoによって追跡されるサイトIDを設定します（デフォルトのサイトIDは「1」です）。
+    default_timezone: デフォルトタイムゾーン
+    default_timezone_hint: 新しいレコードに使用されるデフォルトのタイムゾーン値を設定します。
+    default_language: デフォルト言語
+    default_language_hint: 新しいレコードに使用されるデフォルトの言語値を設定します。
+    sync_method_prompt: どの同期方法を使用しますか？
+    caldav_server: CalDAVサーバー
+    caldav_connection_info_prompt: ターゲットのCalDAVカレンダーの接続情報を入力してください。
+    connect: 接続
+    ldap: LDAP
+    ldap_info: この統合により、既存のLDAPサーバーに接続してユーザーを自動的にEasy!Appointmentsにインポートし、ディレクトリパスワードでSSOできます（ユーザー名は一致する必要があります）。
+    host: ホスト
+    port: ポート
+    user_dn: ユーザーDN
+    base_dn: ベースDN
+    keyword: キーワード
+    ldap_search_hint: LDAPディレクトリ内でフィルター条件に一致するユーザーを検索するためのキーワードを提供します。
+    ldap_extension_not_loaded: LDAP PHP拡張がロードされていません。この統合が機能するには必要です。
+    field_mapping: フィールドマッピング
+    content: コンテンツ
+    active: アクティブ
+    user_imported: ユーザーのレコードが正常にインポートされました。
+    import: インポート
+    ldap_dn: LDAP DN
+    role: 役割
+    at_least_one_field_required: 予約ページに少なくとも1つのフィールドが必須として設定されている必要があります。
+    customer_is_already_booked: この顧客はリクエストされた予約期間中にすでに予約があります。
+    fields: フィールド
+    invalid_credentials_provided: 無効な認証情報が提供されました。もう一度お試しください。
+    calendar_url: カレンダーURL
+    please_select: 選択してください
+    secret_header: シークレットヘッダー
+    search: 検索
+    slot_interval: スロット間隔（分）
+    jitsi: Jitsi
+    jitsi_info: 予約に対する Jitsi ミーティングリンクの自動生成を有効にします。有効にすると、固有の Jitsi ビデオ通話リンクが生成され、ミーティングリンクとして保存されます。
+    altcha: ALTCHA
+    altcha_info: ALTCHA はプライバシー重視のオープンソース CAPTCHA 代替手段で、トラッキングなしにプルーフ・オブ・ワークを使用して人間のユーザーを検証します。
+    altcha_enabled_hint: 有効にすると、フォーム検証に従来の画像 CAPTCHA の代わりに ALTCHA が使用されます。
+    altcha_hmac_key: HMAC キー
+    altcha_hmac_key_hint: ALTCHA チャレンジの署名と検証に使用される秘密キーです。生成をクリックして新しいセキュアキーを作成します。
+    altcha_max_number: 最大数
+    altcha_max_number_hint: プルーフ・オブ・ワークチャレンジの最大数。値が大きいほど難易度が上がります（デフォルト：100000）。
+    altcha_expires: 有効期限（秒）
+    altcha_expires_hint: チャレンジが有効な秒数（デフォルト：300）。
+    altcha_key_generated: 新しい HMAC キーが正常に生成されました。
+    altcha_enabled: ALTCHA を有効にする
+    altcha_captcha_not_active_warning: CAPTCHA設定は現在アクティブではありません。CAPTCHAが有効になっていない限り、ALTCHAは使用されません。
+    generate: 生成
+    meeting_link: ミーティングリンク
+    google_calendar: Google カレンダー
+    google_calendar_info: Google Calendar 同期を有効にして、予約をプロバイダーの Google Calendar アカウントと同期します。
+    google_client_id: クライアント ID
+    google_client_id_info: Google Cloud Console プロジェクトのクライアント ID。
+    google_client_secret: クライアントシークレット
+    google_client_secret_info: Google Cloud Console プロジェクトのクライアントシークレット。
+    google_calendar_setup_info: Google Calendar 同期を有効にするには、Google Cloud Console でプロジェクトを作成し、Google Calendar API を有効にし、OAuth 2.0 認証情報を作成する必要があります。以下にアクセスしてください：
+    google_meet_link_generation: Google Meet リンクを生成
+    google_meet_link_generation_info: 同期された予約に対して Google Meet ビデオ会議リンクを自動作成します。ミーティングリンクは予約のミーティングリンクフィールドに保存されます。
+    display_add_to_google_calendar: '"Google Calendar に追加"ボタンを表示'
+    display_add_to_google_calendar_info: 予約確認ページに"Google Calendar に追加"ボタンを表示し、顧客が個人の Google Calendar に予約を簡単に追加できるようにします。
+    select_all: すべて選択
+    select_none: 選択解除
+    appointment_update: 予約の更新
+    notify_users_on_update_question: この変更について通知を送信しますか？
+    'yes': はい
+    'no': いいえ
+    latest_blog_posts: 最新のブログ投稿
+    loading: 読み込み中
+    blog_posts_load_error: ブログ投稿を読み込めません。更新については公式ウェブサイトをご覧ください。
+    provider_has_conflicting_appointment: 選択されたプロバイダーはその時間に既に別の予約があります。別の時間またはプロバイダーを選択してください。
+    would_you_like_to_proceed: 続行してもよろしいですか？
+    proceed: 続行
+    no_available_service_providers: 利用可能なサービスがありません
+    no_available_service_providers_message: 現在、予約可能なサービスまたはプロバイダーはありません。後で確認するか、サポートまでお問い合わせください。
+    reset_password: パスワードをリセット
+    new_password: 新しいパスワード
+    enter_new_password: 以下に新しいパスワードを入力してください。
+    password_reset_request: パスワードリセットリクエスト
+    password_reset_email_message: パスワードのリセットをリクエストしました。下のボタンをクリックして、アカウントの新しいパスワードを設定してください。
+    password_reset_link_expires: このリンクは1時間で期限切れになります。
+    password_reset_ignore_message: パスワードのリセットをリクエストしていない場合は、このメールを無視してください。
+    invalid_reset_token: パスワードリセットリンクが無効です。
+    invalid_or_expired_token: パスワードリセットリンクが無効または期限切れです。新しいリンクをリクエストしてください。
+    password_reset_success: パスワードが正常にリセットされました。ログインページにリダイレクトされます。
+    password_reset_failed: パスワードのリセットに失敗しました。もう一度お試しください。
+    no_password_provided: パスワードを入力してください。
+    type_username_and_email_for_reset_link: パスワードリセットリンクを受け取るには、ユーザー名とメールアドレスを入力してください。
+    send_reset_link: リセットリンクを送信
+    reset_link_sent_with_email: 提供された認証情報でアカウントが存在する場合、パスワードリセットリンクがメールに送信されました。
+    working_plan_validation_failed: 無効なワーキングプラン設定が見つかりました。
+    start_date: 開始日
+    end_date: 終了日
+    remember_me: 情報を記憶する
+    remember_me_hint: 次回の予約を素早くするために情報を保存します。
+    legal_notice: 法的通知
+    legal_notice_url: 法的通知 URL
+    legal_notice_url_hint: 法的通知ページの URL を入力してください。
+    imprint: インプリント
+    imprint_url: インプリント URL
+    imprint_url_hint: インプリントページの URL を入力してください。
+    data_retention: データ保持
+    data_retention_days: データ保持日数
+    data_retention_days_hint: 顧客データが自動的に削除されるまでの日数を設定します。自動削除を無効にするには 0 に設定してください。
+    manage_privacy: プライバシー管理
+    manage_privacy_hint: 以下のリンクをクリックして、個人情報の閲覧、更新、または削除を行ってください。
+    personal_information_updated: 個人情報が正常に更新されました。
+    verify: 検証
+    verifying: 検証中
+    verified: 検証済み
+    verification_complete: 検証完了
+    verification_failed: 検証に失敗しました。クリックして再試行してください。
+    click_to_verify: クリックして人間であることを確認
+    altcha_verification_failed: ALTCHA 検証に失敗しました。もう一度お試しください。
+    premium: Premium
+    about_app_premium: セルフホスティングソフトウェア向けにカスタム開発、マネージドホスティング、サポート契約、リブランディング、継続的な機能強化を含むエンドツーエンドのサービスを提供しています。お客様はビジネスに集中でき、残りは私たちにお任せください。
+    go_premium: Premium にアップグレード
+    notify_users_on_create_question: この新しい予約についてお客様に通知しますか？
+    notify_users_on_delete_question: 予約のキャンセルについてお客様に通知しますか？

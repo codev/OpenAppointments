@@ -1,0 +1,575 @@
+---
+et:
+  ea:
+    page_title: Broneeri aeg
+    service_and_provider: Vali teenus ja isik
+    select_service: Vali teenus
+    select_provider: Vali isik
+    duration: Kestvus
+    minutes: Minutit
+    price: Hind
+    back: Tagasi
+    appointment_date_and_time: Vali päev ja aeg
+    no_available_hours: Valitud päev ja aeg pole saadaval
+    appointment_hour_missing: Enne jätkamist, vali aeg
+    customer_information: Sisesta andmed
+    first_name: Eesnimi
+    last_name: Perekonnanimi
+    email: E-post
+    phone_number: Tel number
+    phone: Telefon
+    address: Aadress
+    city: Linn
+    zip_code: Postiindeks
+    notes: Lisainfo
+    language: Keel
+    no_language: Keel puudub
+    fields_are_required: "(*) märgitud väljad on kohustuslikud"
+    appointment_confirmation: Kinnita aja broneering
+    confirm: Kinnita
+    update: Uuenda
+    cancel_appointment_hint: Vajuta "Tühista" nuppu broneeringu tühistamiseks.
+    cancel: Tühista
+    appointment_registered: Broneeringu kinnitamine õnnestus..
+    cancel_appointment_title: Tühista broneering
+    appointment_cancelled: Broneeringu tühistamine õnnestus.
+    appointment_cancelled_title: Broneering tühistatud
+    reason: Põhjus
+    appointment_removed_from_schedule: Broneering on kalendrist eemaldatud.
+    appointment_details_was_sent_to_you: Broneeringu detailid saadeti ka e-postiga.
+    add_to_google_calendar: Lisa Google'i kalendrisse
+    appointment_booked: Aja broneerimine õnnestus.
+    thank_you_for_appointment: Suur tänu aja broneerimise eest. Broneeringu info on toodud allpool. Muutusi saab teha vajutades broneeringu nupule.
+    appointment_details_title: Broneeringu detailid
+    customer_details_title: Kliendi andmed
+    service: Teenus
+    provider: Teenusepakkuja
+    customer: Klient
+    start: Algusaeg
+    end: Lõpuaeg
+    name: Nimi
+    appointment_link_title: Broneeringu link
+    success: Õnnestus.
+    appointment_added_to_your_plan: Kalendrisse on lisatud broneering.
+    appointment_link_description: Muudatusi saad teha klõpsates allolevat broneeringu linki.
+    appointment_locked: Muudatusi ei saa teha.
+    appointment_locked_message: Enne {$limit} tunni möödumist ei saa muuta.
+    appointment_not_found: Broneeringut ei leitud.
+    appointment_does_not_exist_in_db: Broneering puudub andmebaasist.
+    display_calendar: Näita kalendrit
+    calendar: Kalender
+    users: Kasutajad
+    settings: Seaded
+    log_out: Logi välja
+    synchronize: Sünkrooni
+    enable_sync: Luba sünkroniseerimine
+    disable_sync: Eemalda sünkroniseerimine
+    disable_sync_prompt: Oled kalendri sünkroniseerimise lõpetamises kindel?
+    reload: Lae uuesti
+    appointment: Broneering
+    unavailability: Ei ole saadaval
+    week: Nädal
+    month: Kuu
+    today: Täna
+    not_working: Vaba
+    break: Paus
+    add: Lisa
+    edit: Muuda
+    hello: Tere
+    all_day: Terve päev
+    manage_appointment_record_hint: Halda kõiki broneeringuid.
+    select_filter_item_hint: Vali teenus või teenuse osutaja ja näita broneeringute kalendrit.
+    enable_appointment_sync_hint: Aktiveeri aegade sünkroniseerimine teenuse osutaja Google'i kalendrisse.
+    manage_customers_hint: Halda registreerunud kliente ja näita nende broneeringute ajalugu.
+    manage_services_hint: Halda teenuseid ja nende kategooriaid.
+    manage_users_hint: Halda süsteemi kasutajaid (adminid, teenusepakkujad, sekretärid).
+    settings_hint: Halda süsteemi- ja kasutajakohaseid seadeid.
+    log_out_hint: Logi süsteemist välja.
+    unavailability_periods_hint: Teenusepakkuja äraolekujale ei saa broneeringuid teha.
+    new_appointment_hint: Loo uus broneering ja salvesta see kalendrisse.
+    reload_appointments_hint: Värskenda broneeringute kalendri vaadet.
+    trigger_sync_hint: Sünkroniseeri Google'iga.
+    appointment_updated: Broneeringu muutmine õnnestus.
+    undo: Võta tagasi
+    appointment_details_changed: Broneeringu detailid on muutunud.
+    appointment_changes_saved: Broneeringu muutused salvestatud.
+    save: Salvesta
+    new: Uus
+    select: Vali
+    hide: Peida
+    type_to_filter_customers: Filtreerimiseks alusta kirjutamist.
+    clear_fields_add_existing_customer_hint: Tühjenda väljad ja alusta uuesti.
+    pick_existing_customer_hint: Vali olemasolev klient.
+    new_appointment_title: Uus broneering
+    edit_appointment_title: Muuda broneeringut
+    delete_appointment_title: Kustuta broneering
+    write_appointment_removal_reason: 'Kirjuta broneeringu eemaldamise põhjus:'
+    appointment_saved: Broneeringu salvestamine õnnestus.
+    new_unavailability_title: Uus äraoleku aeg
+    edit_unavailability_title: Muuda äraoleku aegasid
+    unavailability_saved: Äraoleku aeg salvestatud.
+    start_date_before_end_error: Alguspäev on lõppkuupäevast hilisem.
+    invalid_duration: Kehtetu kestvus.
+    invalid_email: Vigane e-posti aadress.
+    customers: Kliendid
+    details: Lisaandmed
+    no_records_found: Andmeid pole...
+    services: Teenused
+    duration_minutes: Kestvus (minutites)
+    currency: Raha vääring
+    category: Kategooria
+    no_category: Ilma kategooriata
+    description: Kirjeldus
+    categories: Kategooriad
+    admins: Administraatorid
+    providers: Teenusepakkujad
+    secretaries: Sekretärid
+    mobile_number: Mobiili number
+    mobile: Mobiil
+    state: Riik
+    username: Kasutajanimi
+    password: Salasõna
+    retype_password: Salasõna veel kord
+    receive_notifications: Võta vastu e-posti teavitusi.
+    passwords_mismatch: Salasõnad ei klapi.
+    admin_saved: Administraator salvestatud.
+    provider_saved: Teenusepakkuja salvestatud.
+    secretary_saved: Sekretär salvestatud.
+    admin_deleted: Administraator kustutatud.
+    provider_deleted: Teenusepakkuja kustutatud.
+    secretary_deleted: Sekretär kustutatud.
+    service_saved: Teenus salvestatud.
+    service_category_saved: Teenuse kategooria salvestatud.
+    service_deleted: Teenus kustutatud.
+    service_category_deleted: Teenuse kategooria kustutatud.
+    customer_saved: Klient salvestatud.
+    customer_deleted: Klient kustutatud.
+    current_view: Hetkevaade
+    working_plan: Tööplaan
+    reset_plan: Tühjenda plaan
+    monday: Esmaspäev
+    tuesday: Teisipäev
+    wednesday: Kolmapäev
+    thursday: Neljapäev
+    friday: Reede
+    saturday: Laupäev
+    sunday: Pühapäev
+    breaks: Vahepausid
+    add_breaks_during_each_day: Lisa igasse päeva vahepausid. Vahepauside ajaks ei saa broneeringuid teha
+    day: Päev
+    days: Päevi
+    actions: Tegegused
+    reset_working_plan_hint: Taasta tööplaani vaikeseaded.
+    company_name: Asutuse nimi
+    company_name_hint: Asutuse nimi on nähtav kõikjal rakenduses (kohustuslik)
+    company_email: Asutuse e-post
+    company_email_hint: Sellelt e-posti aadressilt saadetakse välja kõik broneeringusüsteemi kirjad.
+    company_link: Asutuse kodulehe aadress
+    company_link_hint: Kodulehe link on kohustuslik. Viitab asutuse kodulehele.
+    go_to_booking_page: Tagasi broneeringute vaatesse.
+    settings_saved: Seaded salvestatud.
+    general: Üldine
+    booking: Broneering
+    visible: Nähtav
+    hidden: Peidetud
+    business_logic: Töötajad
+    current_user: Praegune kasutaja
+    about_app: Info rakenduse kohta
+    edit_working_plan_hint: Märgi päevad ja tunnid, mil on klientidel võimalik broneeringuid teha. Haldur saab broneeringuid ka väljaspool neid aegu määrata. See tööplaan on on vaikimisi ees kõigil teenusepakkujatel.
+    edit_breaks_hint: Lisa pausid. Uued teenusepakkujad saavad endalde vaikimisi need pausid.
+    book_advance_timeout: Broneeringu tegemise viimane hetk
+    book_advance_timeout_hint: Määratle, kui palju varem on võimalik broneeringuid teha.
+    timeout_minutes: Mitu minutit enne soovitavat broneeringuaega on võimalik veel broneeringut teha.
+    about_app_info: Easy!Appointments on veebirakendus mille abil on võimalik klientidel teenuste aegu broneerida. Broneeringuid saab sünkroniseerida Google'i kalendriga.
+    current_version: Versioon
+    support: Abi
+    about_app_support: Probleemide korral võib abi otsida rakenduse ametlikust Google'i grupist. Githubi kaudu saab ka rakenduse arendamisega kursis olla.
+    official_website: Ametlik veebilehekülg
+    google_plus_community: Google+ grupp
+    support_group: Tugigrupp
+    project_issues: Projekti bugid
+    license: Litsents
+    about_app_license: 'Easy!Appointments on GPLv3 litsentsiga. Kasutades enda töös Easy!Appointmentsi nõustud lingis olevate litsentsitingimustega:'
+    logout_success: Välja logitud! Vajuta mõnda järgnevatest nuppudest, et siirduda järgmisele lehele.
+    book_appointment_title: Tee broneering
+    backend_section: Haldusrarakendus
+    you_need_to_login: Tere tulemast! Haldamiseks pead sisse logima.
+    enter_username_here: Kasutajanimi
+    enter_password_here: Sisestage parool siia ...
+    login: Logi sisse
+    forgot_your_password: Unustasid salasõna?
+    login_failed: Sisselogimine ebaõnnestus. Kontrolli andmeid ja proovi juuesti.
+    type_username_and_email_for_new_password: Sisesta kasutajanimi ja e-mail uue parooli saamiseks.
+    enter_email_here: 'Sisesta e-mail '
+    regenerate_password: Loo uus salasõna
+    go_to_login: Tagasi sisselogimislehele
+    new_password_sent_with_email: Uus salasõna saadeti e-mailiga
+    new_account_password: Uus salasõna
+    new_password_is: Salasõnaks on $password . Kui salasõna tundub keeruline, jäta käesolev kiri alles või vaheta salasõna meeldejäävama vastu.
+    delete_record_prompt: Kustutan kirje? Toimingut ei saa tagasi võtta.
+    delete_admin: Kustuta administraator
+    delete_customer: Kustuta klient
+    delete_service: Kustuta teenus
+    delete_service_category: Kustuta kategooria
+    delete_provider: Kustuta teenuseosutaja
+    delete_secretary: Kustuta sekretär
+    delete_appointment: Kustuta broneering
+    delete_unavailability: Kustuta eemalolek
+    delete: Kustuta
+    unexpected_issues: Oootamatu probleem
+    unexpected_issues_message: Toimingut ei saanud lõpule viia.
+    close: Sulge
+    page_not_found: Lehte ei leitud
+    page_not_found_message: Kahjuks lehte ei leitud. Täpsusta aadressi.
+    error: Viga
+    no_privileges: Õigusi ei ole
+    no_privileges_message: Lehe nägemiseks puuduvad õigused.
+    backend_calendar: Taustakalender
+    start_date_time: Alguskuupäev ja aeg
+    end_date_time: Lõpukuupäev ja aeg
+    licensed_under: 'Litsentseeritud '
+    unexpected_issues_occurred: Tekkisid ootamatud probleemid.
+    service_communication_error: Ühendus serveriga katkes. Proovi uuesti.
+    no_privileges_edit_appointments: Broneeringu muutmiseks puuduvad õigused.
+    unavailability_updated: Eemalolekuaeg uuendatud.
+    appointments: Broneeringud
+    unexpected_warnings: Ootamatud hoiatused
+    unexpected_warnings_message: Toiming sooritati, kuid esines mõningaid hoiatusi.
+    filter: Filtreeri
+    clear: Tühjenda
+    uncategorized: Liigitamata
+    username_already_exists: Kasutajanimi on juba kasutusel.
+    password_length_notice: Salasõna pikkus on minimaalselt $number märki.
+    general_settings: Üldseaded
+    personal_information: Isikuandmed
+    system_login: Sisselogimine
+    user_settings_are_invalid: Kasutaja seaded on vigased. Täpsusta seadeid ja proovi uuesti.
+    add_break: Lisa paus
+    january: Jaanuar
+    february: Veebruar
+    march: Märts
+    april: Aprill
+    may: Mai
+    june: Juuni
+    july: Juuli
+    august: August
+    september: September
+    october: Oktoober
+    november: November
+    december: Detsember
+    previous: Eelmine
+    next: Järgmine
+    now: Nüüd
+    select_time: Vali aeg
+    time: Aeg
+    hour: Tund
+    minute: Minut
+    calendar_sync_completed: Google'iga sünkroniseerimine õnnestus.
+    calendar_sync_failed: Google'iga sünkroniseerimine ebaõnnestus. Serveriga ei saadud ühendust.
+    select_sync_calendar: Vali Google'i kalender
+    select_sync_calendar_prompt: Vali kalender kuhu broneeringud sünkroniseeristakse. Kui kalendrit ei vali, siis kasutatakse vaikimisi kalendrit.
+    sync_calendar_selected: Google'i kalender valitud.
+    oops_something_went_wrong: Ohhhoo! Midagi läks untsu.
+    ea_update_success: Easy!Appointments uuendus õnnestus.
+    require_captcha: Nõua CAPTCHA-t
+    require_captcha_hint: Kui see on sisse lülitatud, siis nõutakse kasutajalt CAPTCHA-t enne broneeringu lisamist/muutmist.
+    captcha_is_wrong: CAPTCHA kinnitus ebaõnnestus. Proovi uuesti.
+    enter_captcha_here: Sisestage CAPTCHA siia...
+    any_provider: Suvaline teenusepakkuja
+    requested_hour_is_unavailable: Soovitud aeg ei ole enam saadaval. Palun vali uus aeg.
+    customer_notifications: Kliendi teavitused
+    customer_notifications_hint: Kui see on sisse lülitatud, siis klient saab teate, kui broneeringut on muudetud.
+    date_format: Kuupäeva vorming
+    date_format_hint: Muuda kuupäeva esitusvormingut (D - Päev, M - Kuu, Y - Aasta).
+    time_format: Kellaaja vorming
+    time_format_hint: Muuda kellaaja esitusvormingut (H - Tunnid, M - Minutid).
+    first_weekday: Nädala alguspäev
+    first_weekday_hint: Määra nädala alguspäev kalendris.
+    google_analytics_code_hint: Lisa broneeringulehele Google Analytics ID.
+    availabilities_type: Saadaolevate aegade seaded
+    flexible: Paindlik
+    fixed: Fikseeritud
+    attendants_number: Üheagesete broneeringute arv
+    reset_working_plan: Lähtesta tööplaan vaikimisi väärtustega.
+    legal_contents: Juriidiline teave
+    cookie_notice: Küpsiste teadaanne
+    display_cookie_notice: Näita küpsiste teadaannet
+    cookie_notice_content: Küpsiste teadaande sisu
+    terms_and_conditions: Tingimused
+    display_terms_and_conditions: Näita tingimusi
+    terms_and_conditions_content: Tingimuste sisu
+    privacy_policy: Privaatsuspoliitika
+    display_privacy_policy: Näita privaatsuspoliitikat
+    privacy_policy_content: Privaatsuspoliitika sisu
+    website_using_cookies_to_ensure_best_experience: See veebisait kasutab küpsiseid parema kasutajakogemuse tarvis.
+    read_and_agree_to_terms_and_conditions: Olen lugenud ja nõustun {$link}tingimustega{/$link}.
+    read_and_agree_to_privacy_policy: Olen lugenud ja nõustun {$link}privaatsuspoliitikaga{/$link}.
+    delete_personal_information_hint: Eemalda süsteemist kõik minu broneeringud ja isikuandmed.
+    delete_personal_information: Kustuta isikuandmed
+    delete_personal_information_prompt: Oled kindel, et soovid enda isikuandmeid kustutada. Seda tegevust ei saa tagasi võtta.
+    location: Asukoht
+    working_plan_exception: Tööplaani erand
+    working_plan_exceptions: Tööplaani erandid
+    working_plan_exceptions_hint: Lisa tööplaani erandpäev (väljapoole tavalist tööplaani).
+    new_working_plan_exception_title: Uus tööplaani erand
+    working_plan_exception_saved: Tööplaani erand salvestatud.
+    working_plan_exception_deleted: Tööplaani erand kustutatud.
+    add_working_plan_exceptions_during_each_day: Lisa tööplaani erand (väljapoole tavalist tööplaani).
+    add_working_plan_exception: Lisa tööplaani erand
+    require_phone_number: Nõua telefoninumbrit
+    require_phone_number_hint: Kui see on sisse lülitatud, siis klient peab broneerimisel sisestama ka enda telefoninumbri.
+    check_spam_folder: Kui e-maili mõne minuti jooksul ei saabu, siis palun kontrolli enda meili rämpspostikausta.
+    api_token_hint: Sea sisse juurdepääsuluba et võimaldada pääsuloaga autentimine Easy!Appointments API kasutamiseks.
+    timezone: Ajavöönd
+    overwrite_existing_working_plans: See kirjutab eksisteerivad tööplaanid üle. Oled kindel, et soovid jätkata?
+    working_plans_got_updated: Kõik tööplaanid uuendatud.
+    apply_to_all_providers: Rakenda kõikidele teenusepakkujatele
+    display_any_provider: Näita Suvalise Teenusepakkuja varianti
+    display_any_provider_hint: Broneeringu lehel tekib võimalus teha ajabroneering ilma kindlat teenusepakkujat valimata.
+    load_more: Lae veel
+    list: Nimekiri
+    default: Vaikimisi
+    table: Tabel
+    date: Kuupäev
+    about: Teave
+    booking_settings: Broneeringu seaded
+    display: Kuva
+    require: Nõutud
+    color: Värvid
+    matomo_analytics_url_hint: Lisage oma Matomo paigalduse URL, et võimaldada Matomo jälgimist broneerimislehtedel.
+    invalid_phone: Kehtetu telefoninumber.
+    legal: Juriidilist
+    business: Äriloogika
+    account: Konto
+    disable_booking: Keela broneeringud
+    disable_booking_hint: Broneeringute tegemine on keelatud kuni see seade on aktiivne.
+    display_message: Teadaanne
+    booking_is_disabled: Broneeringud keelatud!
+    appearance: Välimus
+    company_logo: Asutuse logo
+    company_logo_hint: Asutuse logo kuvatakse mitmel pool rakenduses ning ka teavitus-e-mailides. (pildifail maks. 2MB).
+    company_color: Asutuse värvid
+    company_color_hint: Värvid on kasutusel igal pool rakenduses nii et see vastaks asutuse brändingule.
+    localization: Lokaliseerimine
+    integrations: Integratsioon
+    company: Asutus
+    remove: Eemalda
+    login_button: Sisselogimisnupp
+    display_login_button_hint: Määra, kas broneeringulehel näidatakse sisselogimisnuppu.
+    private: Privaatne
+    private_hint: Privaatseid kirjeid avalikus vaates ei näidata.
+    reset: Lähtesta
+    all: Kõik
+    booking_link: Broneeringu link
+    add_new_event: Lisa uus sündmus
+    what_kind_of_event: Mis laadi sündmust soovid lisada?
+    theme: Teema
+    limit_customer_access: Piira Kliendi Ligipääs
+    limit_customer_access_hint: Kui lubatud, saavad pakkujad ja sekretärid juurde pääseda ainult klientidele, kellel on nendega kohtumine.
+    url: URL
+    secret_token: Salajane Token
+    verify_ssl: Kontrolli SSL-i
+    appointment_save: Kohtumise Salvestamine
+    appointment_delete: Kohtumise Kustutamine
+    unavailability_save: Kohalolekuta Salvestamine
+    unavailability_delete: Kohalolekuta Kustutamine
+    customer_save: Kliendi Salvestamine
+    customer_delete: Kliendi Kustutamine
+    service_save: Teenuse Salvestamine
+    service_delete: Teenuse Kustutamine
+    service_category_save: Kategooria Salvestamine
+    service_category_delete: Kategooria Kustutamine
+    provider_save: Pakkuja Salvestamine
+    provider_delete: Pakkuja Kustutamine
+    secretary_save: Sekretäri Salvestamine
+    secretary_delete: Sekretäri Kustutamine
+    admin_save: Administraatori Salvestamine
+    admin_delete: Administraatori Kustutamine
+    options: Valikud
+    webhooks: Veebikonksud
+    webhooks_info: Webhooks võimaldavad saata HTTP-teateid välistele veebirakendustele vastusena erinevatele rakenduse sündmustele, nagu kohtumise loomine või kliendi eemaldamine.
+    integrations_info: Integratsioonid võimaldavad luua kolmanda osapoole ühendusi väliste rakenduste ja API-dega.
+    configure: Konfigureeri
+    google_analytics: Google Analytics
+    google_analytics_info: Google Analytics võimaldab automaatselt lisada jälgimiskoodi ja HTML-märgendit avalikule lehele ning jälgida kõiki avalikke broneeringu sessioone.
+    matomo_analytics: Matomo Analytics
+    matomo_analytics_info: Matomo Analytics võimaldab automaatselt lisada jälgimiskoodi ja HTML-märgendit avalikule lehele ning jälgida kõiki avalikke broneeringu sessioone.
+    api: API
+    api_info: API võimaldab teil suhelda kõigi Easy!Appointments andmetega HTTP-protokolli ja saadaval olevate API-lõpp-punktide kaudu ning luua oma integratsioone.
+    google_analytics_code: Google Analytics Kood
+    matomo_analytics_url: Matomo Analytics URL
+    future_booking_limit: Tulevikus Broneerimise Limiit
+    limit_days: Limiteeri (Päevad)
+    future_booking_limit_hint: Seadke tulevikus piirang päevade arvule, mille jooksul kliendid saavad avaliku broneeringu lehe kaudu kohtumisi teha.
+    api_token: API Token
+    allow_rescheduling_cancellation_before: Luba Ümberplaneerimine/Ärajätmine Enne
+    at_least_one_field: Küljend peab olema broneerimislehe kuvamiseks.
+    status: Olek
+    appointment_status_options: Kohtumise Olekute Valikud
+    appointment_status_options_info: Määrake saadaval olevate kohtumise olekute nimekiri, mida saab kasutada kalendri lehe peal (esimene saab automaatselt vaikimisi väärtuseks).
+    sunday_short: Püh
+    monday_short: Esm
+    tuesday_short: Tei
+    wednesday_short: Kol
+    thursday_short: Nelj
+    friday_short: Ree
+    saturday_short: Lau
+    january_short: Jaan
+    february_short: Veebr
+    march_short: Märts
+    april_short: Apr
+    may_short: Mai
+    june_short: Juuni
+    july_short: Juuli
+    august_short: Aug
+    september_short: Sept
+    october_short: Okt
+    november_short: Nov
+    december_short: Dets
+    am: h
+    pm: p
+    to: kuni
+    click_to_toggle: Klõpsa, et Vahetada
+    week_short: Näd
+    scroll_to_increment: Kerige, et Suurendada
+    year: Aasta
+    make_non_working_day: See pakkuja ei ole valitud päeval töökõlblik.
+    no_breaks: Pole Pausi
+    service_categories: Teenuse Kategooriad
+    service_category: Teenuse Kategooria
+    blocked_period_saved: Blokeeritud periood salvestati edukalt.
+    blocked_period_deleted: Blokeeritud periood kustutati edukalt.
+    delete_blocked_period: Kustuta Blokeeritud Periood
+    blocked_period: Blokeeritud Periood
+    blocked_periods: Blokeeritud Perioodid
+    blocked_period_save: Blokeeritud Perioodi Salvestamine
+    blocked_period_delete: Blokeeritud Perioodi Kustutamine
+    blocked_periods_hint: Määrake ajavahemikud, mille jooksul avalikud broneeringud on kõikidele pakkujatele keelatud (nt suletud kuupäevad, puhkus jne).
+    custom_field: Kohandatud Väli
+    custom_fields: Kohandatud Väljad
+    label: Silt
+    webhook_saved: Webhook salvestati edukalt.
+    webhook_deleted: Webhook kustutati edukalt.
+    delete_webhook: Kustuta Webhook
+    contact_info: Kontaktinfo
+    hide_from_public: Peida Avalikkuse Eest
+    matomo_analytics_site_id: Matomo Analytics saidi ID
+    matomo_analytics_site_id_hint: Määrake saidi ID, mida Matomo jälgib (vaikimisi sait on ID-ga "1").
+    default_timezone: Vaikimisi Ajakohand
+    default_timezone_hint: Määrake vaikimisi ajakohand, mida kasutatakse uute rekordite jaoks.
+    default_language: Vaikimisi Keel
+    default_language_hint: Määrake vaikimisi keel, mida kasutatakse uute rekordite jaoks.
+    sync_method_prompt: Millist sünkroonimismeetodit soovite kasutada?
+    caldav_server: CalDAV server
+    caldav_connection_info_prompt: Palun sisestage sihitud CalDAV kalendri ühenduse info.
+    connect: Ühenda
+    ldap: LDAP
+    ldap_info: See integratsioon võimaldab teil ühenduda olemasoleva LDAP serveriga ja importida kasutajaid automaatselt Easy!Appointments rakendusse ning lasta neil SSO kaudu sisse logida oma kataloogiparooliga (kasutajanimi peab kattuma).
+    host: Host
+    port: Port
+    user_dn: Kasutaja DN
+    base_dn: Põhijuur DN
+    keyword: Märksõna
+    ldap_search_hint: Esitage märksõna, et otsida LDAP kataloogist kasutajaid, kes vastavad filtrikriteeriumidele.
+    ldap_extension_not_loaded: LDAP PHP laiendust ei ole laaditud, kuid see on vajalik selle integratsiooni toimimiseks.
+    field_mapping: Väljade Kaardistamine
+    content: Sisu
+    active: Aktiivne
+    user_imported: Kasutaja andmed imporditi edukalt.
+    import: Impordi
+    ldap_dn: LDAP DN
+    role: Roll
+    at_least_one_field_required: Broneerimislehel peab olema vähemalt üks väli, mis on määratud kohustuslikuks.
+    customer_is_already_booked: Kliendil on juba kohtumine soovitud broneerimisperioodi ajal.
+    fields: Väljad
+    invalid_credentials_provided: Esitatud andmed on vigased, palun proovige uuesti.
+    calendar_url: Kalendri URL
+    please_select: Palun Valige
+    secret_header: Salajane päis
+    search: Otsi
+    slot_interval: Ajavahemik (minutit)
+    jitsi: Jitsi
+    jitsi_info: Luba automaatne Jitsi koosoleku lingi loomine kohtumistele. Kui lubatud, luuakse iga kohtumise jaoks unikaalne Jitsi videokõne link ja salvestatakse see koosoleku lingina.
+    altcha: ALTCHA
+    altcha_info: ALTCHA on privaatsusele keskendunud avatud lähtekoodiga CAPTCHA alternatiiv, mis kasutab tööjõu tõestust inimkasutajate kontrollimiseks ilma jälgimiseta.
+    altcha_enabled_hint: Kui lubatud, kasutatakse ALTCHA-d vormi kontrollimiseks traditsioonilise pildi-CAPTCHA asemel.
+    altcha_hmac_key: HMAC Key
+    altcha_hmac_key_hint: Salajane võti, mida kasutatakse ALTCHA väljakutsete allkirjastamiseks ja kontrollimiseks. Klõpsake Genereeri, et luua uus turvaline võti.
+    altcha_max_number: Maksimaalne arv
+    altcha_max_number_hint: 'Tööjõu tõestuse väljakutse maksimaalne arv. Suuremad väärtused suurendavad raskust (vaikimisi: 100000).'
+    altcha_expires: Aegub (sekundid)
+    altcha_expires_hint: 'Kui kaua väljakutse kehtib sekundites (vaikimisi: 300).'
+    altcha_key_generated: Uus HMAC võti edukalt genereeritud.
+    altcha_enabled: Luba ALTCHA
+    altcha_captcha_not_active_warning: CAPTCHA seade ei ole hetkel aktiivne. ALTCHA-t ei kasutata, kui CAPTCHA pole lubatud
+    generate: Genereeri
+    meeting_link: Koosoleku link
+    google_calendar: Google kalender
+    google_calendar_info: Luba Google Calendar sünkroniseerimine, et sünkroniseerida kohtumised teenusepakkujate Google Calendar kontodega.
+    google_client_id: Client ID
+    google_client_id_info: Client ID teie Google Cloud Console projektist.
+    google_client_secret: Client Secret
+    google_client_secret_info: Client Secret teie Google Cloud Console projektist.
+    google_calendar_setup_info: 'Google Calendar sünkroniseerimise lubamiseks peate looma projekti Google Cloud Console''is, lubama Google Calendar API ja looma OAuth 2.0 mandaadid. Külastage:'
+    google_meet_link_generation: Genereeri Google Meet lingid
+    google_meet_link_generation_info: Loo automaatselt Google Meet videokonverentsi link sünkroniseeritud kohtumistele. Koosoleku link salvestatakse kohtumise koosoleku lingi väljale.
+    display_add_to_google_calendar: Kuva "Add to Google Calendar" nupp
+    display_add_to_google_calendar_info: Kuva "Add to Google Calendar" nupp broneeringu kinnituse lehel, et kliendid saaksid hõlpsalt lisada oma kohtumise isiklikku Google Calendar kalendrisse.
+    select_all: Vali kõik
+    select_none: Tühista valik
+    appointment_update: Kohtumise uuendamine
+    notify_users_on_update_question: Kas soovite selle muudatuse kohta teavituse saata?
+    'yes': Jah
+    'no': Ei
+    latest_blog_posts: Viimased blogipostitused
+    loading: Laadimine
+    blog_posts_load_error: Blogipostitusi ei saa laadida. Uuenduste saamiseks külastage ametlikku veebisaiti.
+    provider_has_conflicting_appointment: Valitud teenusepakkujal on sel ajal juba teine kohtumine. Palun valige teine aeg või teenusepakkuja.
+    would_you_like_to_proceed: Kas soovite siiski jätkata?
+    proceed: Jätka
+    no_available_service_providers: Teenused pole saadaval
+    no_available_service_providers_message: Hetkel pole broneerimiseks saadaval teenuseid ega teenusepakkujaid. Palun kontrollige hiljem või võtke meiega ühendust.
+    reset_password: Lähtesta parool
+    new_password: Uus parool
+    enter_new_password: Sisestage oma uus parool allpool.
+    password_reset_request: Parooli lähtestamise taotlus
+    password_reset_email_message: Olete taotlenud parooli lähtestamist. Klõpsake alloleval nupul, et seada oma kontole uus parool.
+    password_reset_link_expires: See link aegub 1 tunni pärast.
+    password_reset_ignore_message: Kui te ei ole taotlenud parooli lähtestamist, palun eirake seda e-kirja.
+    invalid_reset_token: Parooli lähtestamise link on kehtetu.
+    invalid_or_expired_token: Parooli lähtestamise link on kehtetu või aegunud. Palun taotlege uus.
+    password_reset_success: Teie parool on edukalt lähtestatud. Teid suunatakse sisselogimislehele.
+    password_reset_failed: Parooli lähtestamine ebaõnnestus. Palun proovige uuesti.
+    no_password_provided: Palun sisestage parool.
+    type_username_and_email_for_reset_link: Sisestage oma kasutajanimi ja e-posti aadress, et saada parooli lähtestamise link.
+    send_reset_link: Saada lähtestamislink
+    reset_link_sent_with_email: Kui antud andmetega konto on olemas, on parooli lähtestamise link saadetud teie e-postile.
+    working_plan_validation_failed: Leiti kehtetu tööplaani konfiguratsioon.
+    start_date: Alguskuupäev
+    end_date: Lõppkuupäev
+    remember_me: Jäta mu andmed meelde
+    remember_me_hint: Salvesta oma andmed kiiremaks broneerimiseks järgmisel korral.
+    legal_notice: Õigusteade
+    legal_notice_url: Õigusteate URL
+    legal_notice_url_hint: Sisestage oma õigusteate lehe URL.
+    imprint: Impressum
+    imprint_url: Impressum URL
+    imprint_url_hint: Sisestage oma impressumi lehe URL.
+    data_retention: Andmete säilitamine
+    data_retention_days: Andmete säilitamise päevad
+    data_retention_days_hint: Määrake päevade arv, mille järel kliendiandmed automaatselt kustutatakse. Määrake 0, et keelata automaatne kustutamine.
+    manage_privacy: Halda privaatsust
+    manage_privacy_hint: Klõpsake alloleval lingil, et vaadata, uuendada või kustutada oma isikuandmeid.
+    personal_information_updated: Teie isikuandmed on edukalt uuendatud.
+    verify: Kontrolli
+    verifying: Kontrollimine
+    verified: Kontrollitud
+    verification_complete: Kontrollimine lõpetatud
+    verification_failed: Kontrollimine ebaõnnestus. Klõpsake uuesti proovimiseks.
+    click_to_verify: Klõpsake, et kinnitada, et olete inimene
+    altcha_verification_failed: ALTCHA kontrollimine ebaõnnestus. Palun proovige uuesti.
+    premium: Premium
+    about_app_premium: Pakume täisteenust ise majutatud tarkvarale, sealhulgas kohandatud arendust, hallatud hostingut, tugilepinguid, ümberkujundamist ja pidevaid täiustusi — nii et saate keskenduda oma ärile, samal ajal kui meie hoolitseme ülejäänu eest.
+    go_premium: Go Premium
+    notify_users_on_create_question: Kas soovite klienti sellest uuest kohtumisest teavitada?
+    notify_users_on_delete_question: Kas soovite klienti kohtumise tühistamisest teavitada?

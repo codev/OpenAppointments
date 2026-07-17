@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
   include Authentication
   include Authorization
   include ScriptVars
+  include LocaleSelection
 
   before_action { script_vars(default_script_vars) }
 

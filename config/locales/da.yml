@@ -1,0 +1,575 @@
+---
+da:
+  ea:
+    page_title: Book tid ved ...
+    service_and_provider: Vælg tjeneste og leverandør
+    select_service: Vælg tjeneste
+    select_provider: Vælg leverandør
+    duration: 'Varighed:'
+    minutes: 'Minutter:'
+    price: 'Pris:'
+    back: Tilbage
+    appointment_date_and_time: Vælg dato og tid
+    no_available_hours: Der er ingen ledig tid på den valgte dato.
+    appointment_hour_missing: Vælg en tid før du kan fortsætte.
+    customer_information: Udfyld informationer
+    first_name: Fornavn
+    last_name: Efternavn
+    email: E-mail
+    phone_number: Telefonnummer
+    phone: Telefon
+    address: Adresse
+    city: By
+    zip_code: Postnummer
+    notes: Bemærkning
+    language: Sprog
+    no_language: Ingen sprog
+    fields_are_required: Felter mærkeret med * skal udfyldes
+    appointment_confirmation: Bekræft aftale
+    confirm: Bekræft
+    update: Opdater
+    cancel_appointment_hint: Tryk "annuller" for at aflyse aftalen
+    cancel: Annuller
+    appointment_registered: Din tidbestilling er registret
+    cancel_appointment_title: Slet tid
+    appointment_cancelled: Din tid er nu slettet
+    appointment_cancelled_title: Tiden er slettet
+    reason: Grund
+    appointment_removed_from_schedule: 'Din følgende tid er slettet '
+    appointment_details_was_sent_to_you: Du vil modtage en email med oplysninger om din tidsbestilling.
+    add_to_google_calendar: Tilføj til google kalenderen
+    appointment_booked: Din tid er nu booket
+    thank_you_for_appointment: Tak for din tidsbetilling hos os. Nedenfor kan du se oplysninger om aftalen. For at ændre i tids bestillingen tryk på linket.
+    appointment_details_title: Oplysninger om aftale
+    customer_details_title: Kunde oplysninger
+    service: Betjening
+    provider: Leverandør
+    customer: Kunde
+    start: Start
+    end: Slut
+    name: Navn
+    appointment_link_title: Link til aftale.
+    success: Gennemført.
+    appointment_added_to_your_plan: En ny aftale er blevet tilføjet til din plan.
+    appointment_link_description: Du kan lave ændringer ved at trykke på linket nedenfor
+    appointment_locked: Ændring ikke mulig.
+    appointment_locked_message: Aftalen kan ikke ændre senere en {$limit} timer før.
+    appointment_not_found: Kunne ikke finde aftale.
+    appointment_does_not_exist_in_db: Den tid du efterspørger eksistere ikke i systemet mere.
+    display_calendar: Vis kalender.
+    calendar: Kalender
+    users: Bruger
+    settings: Indstillinger
+    log_out: Log ud
+    synchronize: Synkroniser
+    enable_sync: Aktivere
+    disable_sync: Deaktivere
+    disable_sync_prompt: Er du sikker på du ønsker at afbryde kalender synkronisering?
+    reload: Opdater
+    appointment: Aftale
+    unavailability: Ikke tilgængelig
+    week: Uge
+    month: Måned
+    today: I dag
+    not_working: Arbejder ikke
+    break: Pause
+    add: Tilføj
+    edit: Redigere
+    hello: Hej
+    all_day: Hele dagen
+    manage_appointment_record_hint: Administrer alle tidsbestillings på de tilgængelige leverandører og tjenester.
+    select_filter_item_hint: Vælg en leverandør eller service og se aftalen i kalenderen.
+    enable_appointment_sync_hint: Aktivere aftalen og synkroniser den med leverandørens Google kalender konto.
+    manage_customers_hint: Behandle de registrede kunder og se deres bookings historie.
+    manage_services_hint: Administrer de tilgængelige tjenester og kategorier fra systemet.
+    manage_users_hint: Administrere den tilbagevende bruger (admin, leverandører, sekretærer)
+    settings_hint: System- og brugerindstillinger.
+    log_out_hint: Log ud af systemet
+    unavailability_periods_hint: I ikke tilgængelig periode kan leverandøren ikke accepertere nye aftaler.
+    new_appointment_hint: Tilføj en ny aftale ller konto i databasen.
+    reload_appointments_hint: Opdater kalender.
+    trigger_sync_hint: Start kalendersynkroniseringsprocessen.
+    appointment_updated: Tiden er opdateret.
+    undo: Fortryd
+    appointment_details_changed: Tidens oplysninger er ændret.
+    appointment_changes_saved: Aftalens ændring er blevet gemt
+    save: Gem
+    new: Ny
+    select: Vælg
+    hide: Skjul
+    type_to_filter_customers: Type filter til kunderne
+    clear_fields_add_existing_customer_hint: Ryd flettet og tilføj ny kunde
+    pick_existing_customer_hint: vælg en eksisterende kunde
+    new_appointment_title: Ny aftale
+    edit_appointment_title: Redigere aftale
+    delete_appointment_title: Slet aftale
+    write_appointment_removal_reason: Være venlig at skrive hvorfor du sletter din aftale
+    appointment_saved: Aftalen er gemt
+    new_unavailability_title: Ny ikke tilgængelig periode
+    edit_unavailability_title: Redigere ikke tilgængelig periode
+    unavailability_saved: Ikke tilgængelig periode er gemt.
+    start_date_before_end_error: Start dato er større end slut dato
+    invalid_duration: Ugyldig periode.
+    invalid_email: Ugyldig email adresse
+    customers: Kunderne
+    details: Detaljer
+    no_records_found: Ingen registering fundet
+    services: Tjenester
+    duration_minutes: Varighed.
+    currency: Valuta
+    category: Kategori
+    no_category: Ingen kategori
+    description: Beskrivelse
+    categories: Kategorier
+    admins: Administratore
+    providers: Leverandører
+    secretaries: Sekretærer
+    mobile_number: Mobilnummer
+    mobile: Mobil
+    state: Land
+    username: Brugernavn
+    password: Adgangskode
+    retype_password: Gentag password
+    receive_notifications: Modtag notifikationer
+    passwords_mismatch: Password passer ikke med brugernavnet
+    admin_saved: Administration gemt
+    provider_saved: Leverandør gemt
+    secretary_saved: Sekretær gemt
+    admin_deleted: Administration slettet
+    provider_deleted: Leverandør slettet
+    secretary_deleted: Sekræter slettet
+    service_saved: Tjenesten er gemt
+    service_category_saved: Tjeneste kategori gemt
+    service_deleted: Tjeneste slettet
+    service_category_deleted: Tjeneste kategori slettet
+    customer_saved: Kunde gemt
+    customer_deleted: Kunde slettet
+    current_view: Nu vises
+    working_plan: Arbejdsplan
+    reset_plan: Nulstil plan
+    monday: Mandag
+    tuesday: Tirsdag
+    wednesday: Onsdag
+    thursday: Torsdag
+    friday: Fredag
+    saturday: Lørdag
+    sunday: Søndag
+    breaks: Pause
+    add_breaks_during_each_day: Tilføj pause hver dag. I pausen acceptere leverandøren ikke nogen tids bestilling
+    day: Dag
+    days: Dage
+    actions: Aktivere
+    reset_working_plan_hint: Gendan arbejdsplanen tilbage til normalen.
+    company_name: Firmanavn
+    company_name_hint: Firmanavnet vil blive vist på hele systemet (krævet).
+    company_email: Firma email
+    company_email_hint: Dette vil være firmaets email adresse. Den vil blive brugt som afsender og modtager adresse af systemets email (Obligatorisk)
+    company_link: Firma link
+    company_link_hint: Firma linket skal gå ind på den officielle webside til firmaet (påkrævet)
+    go_to_booking_page: Gå til booking siden
+    settings_saved: Indstillingerne er gemt
+    general: Generelt
+    booking: Booking
+    visible: Synlig
+    hidden: Skjult
+    business_logic: Forretningslogik
+    current_user: Nuværende bruger
+    about_app: Om Easy!Appointments
+    edit_working_plan_hint: Marker under de dage og timer, som din virksomhed vil acceptere aftaler. Du vil være i stand til at justere udnævnelser i ikke arbejdstid, men kunderne vil ikke være i stand til at bestille tid af sig selv i ikke arbejdsperioder. Denne arbejdsplan vil være standard for hver ny udbyder rekord, men du vil være i stand til at ændre de enkelte udbyders plan separat ved at redigere hans rekord. Efter at du kan tilføje pauser.
+    edit_breaks_hint: Tilføj pausen hver dag. Disse pauser vil være tilgængelige for alle leverandøre.
+    book_advance_timeout: Book forudgående pause
+    book_advance_timeout_hint: Definere pausen (i minutter) før kunderne kan booke eller redigere tidsbestillingen hos firmaet.
+    timeout_minutes: Pause (minutter)
+    about_app_info: Easy!Appointments er et specielfremstillet internet applikation som giver mulighed for kunderne at booke bestillinger med dig via internettet. Endvidere leverandørens evne til at synkronisere dine data med Google kalender, så du kan bruge dem med andre tjenester.
+    current_version: Nuværende version
+    support: Support
+    about_app_support: Hvis du støder på nogen problemer når du bruger Easy!Appointments kan du søge i officiel Google gruppe for svar. Du må også lave en levering i google kode side for at hjælpe opstående proces.
+    official_website: Officiel Webside
+    google_plus_community: Google+ fælleskab
+    support_group: Support gruppe
+    project_issues: Projekt levering
+    license: Licens
+    about_app_license: Easy!Appointments er autoriseret til GPLv3 lisens. Ved at bruge koden Easy!Appointments i hvert fald, du giver samtykke til periodens beskrivelse i det følgende url.
+    logout_success: Du er blevet logget ud! Klik på en af de følgende knapper for at komme til en anden side.
+    book_appointment_title: Book aftale
+    backend_section: Administrationsside
+    you_need_to_login: Velkommen! Du skal logge ind for at se administrationssiden.
+    enter_username_here: Indtast dit brugernavn her
+    enter_password_here: Indtast adgangskode her ...
+    login: Log ind
+    forgot_your_password: Glemt dit password?
+    login_failed: Fejl ved login, indtast de rigtige oplysninger og prøv igen.
+    type_username_and_email_for_new_password: Skriv dit brugernavn og email adresse for at få et nyt password.
+    enter_email_here: Indtast din email her.
+    regenerate_password: Forny password
+    go_to_login: Gå tilbage til login siden
+    new_password_sent_with_email: Dit nye password er blevet sendt til din email.
+    new_account_password: Nyt konto password
+    new_password_is: 'Dit nye password er $password. Gem denne email for at hente dit password igen, hvis det bliver nødvendigt. Du kan også ændre dit password i indstillingerne '
+    delete_record_prompt: Er du sikker på du vil slette dette dokument, det kan ikke gendannes igen.
+    delete_admin: Slet admin.
+    delete_customer: Slet kunde
+    delete_service: Slet tjeneste
+    delete_service_category: Slet tjeneste kategori
+    delete_provider: Slet leverandør
+    delete_secretary: Slet sekræter
+    delete_appointment: Slet aftale
+    delete_unavailability: Slet ikke tilgængelig periode
+    delete: Slet
+    unexpected_issues: Uforklarligt problem
+    unexpected_issues_message: Handlingen kunne ikke fuldføres.
+    close: luk
+    page_not_found: Siden ikke fundet
+    page_not_found_message: 'Desværre, den side du søger eksistere ikke. Tjek din browser URL eller gå til en andet sted ved at bruge knappen nedenunder. '
+    error: Fejl
+    no_privileges: Ingen rettigheder
+    no_privileges_message: Du har ikke rettigheder til at bruge denne side. Vælg en anden gruppe.
+    backend_calendar: Backend Kalender
+    start_date_time: Start dato / Tid
+    end_date_time: Slet dato / Tid
+    licensed_under: Autoriseret ifølge
+    unexpected_issues_occurred: Uventede problemer opstod.
+    service_communication_error: Der skete en fejl i kommunikatinen med serveren. Prøv igen.
+    no_privileges_edit_appointments: 'Du har ikke tilladelse til at ændre bestillingen. '
+    unavailability_updated: ikke tilgængelig tids periode er opdateret.
+    appointments: Aftale
+    unexpected_warnings: Uventede advarsler
+    unexpected_warnings_message: Betjeningen fuldført, men nogle advarsler dukkede op.
+    filter: Filter
+    clear: Ryd
+    uncategorized: 'ikke kategoriseret '
+    username_already_exists: Brugernavnet eksisterer allerede
+    password_length_notice: Password skal være på mindst $number karakter langt.
+    general_settings: Generelle indstillinger
+    personal_information: Personlige oplysninger
+    system_login: System login
+    user_settings_are_invalid: Bruger indstillingerne er ugyldige! Prøv igen.
+    add_break: 'Tilføj pause '
+    january: Januar
+    february: Februar
+    march: Marts
+    april: April
+    may: Maj
+    june: Juni
+    july: Juli
+    august: August
+    september: September
+    october: Oktober
+    november: November
+    december: December
+    previous: Forrige
+    next: Næste
+    now: Nu
+    select_time: Vælg tid
+    time: Tid
+    hour: Time
+    minute: Minutter
+    calendar_sync_completed: Google synkroniseringen gennemført.
+    calendar_sync_failed: Google synkroniseringen fejlede, kunne ikke oprette forbindelse til serveren.
+    select_sync_calendar: Vælg Google kalender
+    select_sync_calendar_prompt: vælg kalenderen du vile synkronisere med din bestilling. Hvis du ikke vil vælge en specifik kalender den normale vil blive brugt.
+    sync_calendar_selected: Google kalender er blevet valgt.
+    oops_something_went_wrong: Oops! Noget gik galt.
+    ea_update_success: Easy!Appointments er blevet opdateret.
+    require_captcha: Kræv CAPTCHA
+    require_captcha_hint: Når det er aktiveret, skal kunderne indtaste en tilfældigt genereret CAPTCHA-streng, før de kan booke/opdatere en aftale.
+    captcha_is_wrong: CAPTCHA-verifikation fejlede, prøv venligst igen.
+    enter_captcha_here: Indtast CAPTCHA her...
+    any_provider: Alle udbydere
+    requested_hour_is_unavailable: Den ønskede tid er desværre ikke tilgængelig. Vælg venligst et andet tidspunkt for din aftale.
+    customer_notifications: Kundebeskeder
+    customer_notifications_hint: Definerer om kunden vil modtage e-mailnotifikationer, når der er en ændring i en af deres aftaler.
+    date_format: Datoformat
+    date_format_hint: Ændr det viste datoformat (D - Dato, M - Måned, Y - År).
+    time_format: Tidsformat
+    time_format_hint: Ændr det viste tidsformat (H - Time, M - Minut).
+    first_weekday: Første ugedag
+    first_weekday_hint: Indstil den første dag i kalenderugen.
+    google_analytics_code_hint: Tilføj din Google Analytics ID for at inkludere den på booking-siden.
+    availabilities_type: Tilgængelighed (fast - afhængig af varighed, fleksibel - hvert kvarter)
+    flexible: Fleksibel
+    fixed: Fast
+    attendants_number: Max deltagere/samtidige reservationer
+    reset_working_plan: Nulstil arbejdsplanen tilbage til standardværdierne.
+    legal_contents: Juridiske indhold
+    cookie_notice: Cookie-meddelelse
+    display_cookie_notice: Vis cookie-meddelelse
+    cookie_notice_content: Cookie-meddelelsens indhold
+    terms_and_conditions: Vilkår og betingelser
+    display_terms_and_conditions: Vis vilkår og betingelser
+    terms_and_conditions_content: Vilkår og betingelser indhold
+    privacy_policy: Privatlivspolitik
+    display_privacy_policy: Vis privatlivspolitik
+    privacy_policy_content: Privatlivspolitik indhold
+    website_using_cookies_to_ensure_best_experience: Denne hjemmeside bruger cookies for at sikre, at du får den bedste oplevelse på vores hjemmeside.
+    read_and_agree_to_terms_and_conditions: Jeg har læst og accepterer {$link}Vilkår og betingelser{/$link}.
+    read_and_agree_to_privacy_policy: Jeg har læst og accepterer {$link}Privatlivspolitik{/$link}.
+    delete_personal_information_hint: Slet alle dine personlige oplysninger fra systemet
+    delete_personal_information: Slet personlige oplysninger
+    delete_personal_information_prompt: Er du sikker på, at du vil slette dine personlige oplysninger? De kan ikke gendannes!
+    location: Placering
+    working_plan_exception: Arbejdsplan-undtagelse
+    working_plan_exceptions: Arbejdsplan-undtagelser
+    working_plan_exceptions_hint: Tilføj en arbejdsplan-undtagelsesdag, uden for arbejdsplanen.
+    new_working_plan_exception_title: Ny arbejdsplan-undtagelse
+    working_plan_exception_saved: Arbejdsplan-undtagelse gemt med succes.
+    working_plan_exception_deleted: Arbejdsplan-undtagelse slettet med succes.
+    add_working_plan_exceptions_during_each_day: Tilføj arbejdsplan-undtagelser, uden for arbejdsplanen.
+    add_working_plan_exception: Tilføj arbejdsplan-undtagelse
+    require_phone_number: Kræver telefonnummer
+    require_phone_number_hint: Når det er aktiveret, skal kunder og brugere indtaste kundens telefonnummer, når de booker en aftale
+    check_spam_folder: Tjek venligst din uønskede e-mail (spam) mappe, hvis du ikke har modtaget e-mailen inden for et par minutter.
+    api_token_hint: Indstil en hemmelig token for at aktivere tokenbaseret autentificering af Easy!Appointments API.
+    timezone: Tidszone
+    overwrite_existing_working_plans: Dette vil overskrive de eksisterende udbyder arbejdsplaner, er du sikker på, at du vil fortsætte?
+    working_plans_got_updated: Alle arbejdsplaner er blevet opdateret.
+    apply_to_all_providers: Anvend på alle udbydere
+    display_any_provider: Vis enhver udbyder mulighed
+    display_any_provider_hint: Booking-siden får en ekstra mulighed, der giver kunderne mulighed for at booke uden at specificere en udbyder.
+    load_more: Indlæs flere
+    list: Liste
+    default: Standard
+    table: Tabel
+    date: Dato
+    about: Om
+    booking_settings: Bookingindstillinger
+    display: Vis
+    require: Kræv
+    color: Farve
+    matomo_analytics_url_hint: Tilføj URL'en til din egen Matomo-installation for at aktivere Matomo-sporing på bookingsiderne.
+    invalid_phone: Ugyldigt telefonnummer.
+    legal: Juridisk
+    business: Virksomhed
+    account: Konto
+    disable_booking: Deaktiver booking
+    disable_booking_hint: Booking-siden vil være deaktiveret, så længe denne indstilling er aktiv, og kunderne vil ikke være i stand til at registrere nye aftaler.
+    display_message: Vis besked
+    booking_is_disabled: Booking er deaktiveret!
+    appearance: Udseende
+    company_logo: Firma logo
+    company_logo_hint: Firmaets logo vil blive vist mange steder i appen, herunder booking-siden og notifikations-e-mails (billede, maks. 2 MB).
+    company_color: Firma farve
+    company_color_hint: Firmaets farve vil blive anvendt overalt i appen, så den bruger dit brand.
+    localization: Lokalisering
+    integrations: Integrationer
+    company: Firma
+    remove: Fjern
+    login_button: Login-knap
+    display_login_button_hint: Definerer, om login-knappen vises på booking-siden.
+    private: Privat
+    private_hint: Private optegnelser vil ikke blive vist eller behandlet på offentlige sider som booking-siden.
+    reset: Nulstil
+    all: Alle
+    booking_link: Booking-link
+    add_new_event: Tilføj ny begivenhed
+    what_kind_of_event: Hvilken type begivenhed vil du tilføje?
+    theme: Tema
+    limit_customer_access: Begræns kundetilgang
+    limit_customer_access_hint: Hvis aktiveret, vil udbydere og sekretærer kun kunne få adgang til kunder, de har en aftale med.
+    url: URL
+    secret_token: Hemmelig Token
+    verify_ssl: Bekræft SSL
+    appointment_save: Gem Aftale
+    appointment_delete: Slet Aftale
+    unavailability_save: Gem Utilgængelighed
+    unavailability_delete: Slet Utilgængelighed
+    customer_save: Gem Kunde
+    customer_delete: Slet Kunde
+    service_save: Gem Service
+    service_delete: Slet Service
+    service_category_save: Gem Servicekategori
+    service_category_delete: Slet Servicekategori
+    provider_save: Gem Udbyder
+    provider_delete: Slet Udbyder
+    secretary_save: Gem Sekretær
+    secretary_delete: Slet Sekretær
+    admin_save: Gem Administrator
+    admin_delete: Slet Administrator
+    options: Indstillinger
+    webhooks: Webhooks
+    webhooks_info: Webhooks giver dig mulighed for at sende HTTP-notifikationer til eksterne webapplikationer som svar på forskellige applikationsevents, såsom oprettelsen af en aftale eller fjernelsen af en kunde.
+    integrations_info: Integrationer giver dig mulighed for at oprette tredjepartsforbindelser med eksterne applikationer og API'er.
+    configure: Konfigurer
+    google_analytics: Google Analytics
+    google_analytics_info: Google Analytics giver dig mulighed for automatisk at tilføje sporingskoden og HTML-markup til den offentlige side og spore alle de offentlige bookingsessioner.
+    matomo_analytics: Matomo Analytics
+    matomo_analytics_info: Matomo Analytics giver dig mulighed for automatisk at tilføje sporingskoden og HTML-markup til den offentlige side og spore alle de offentlige bookingsessioner.
+    api: API
+    api_info: API giver dig mulighed for at interagere med alle Easy!Appointments-data via HTTP-protokollen og de tilgængelige API-endepunkter og oprette dine egne integrationer.
+    google_analytics_code: Google Analytics Kode
+    matomo_analytics_url: Matomo Analytics-URL
+    future_booking_limit: Fremtidig Bookinggrænse
+    limit_days: Grænse (Dage)
+    future_booking_limit_hint: Indstil fremtidig grænse i dage, som kunder kan booke via den offentlige booking-side.
+    api_token: API Token
+    allow_rescheduling_cancellation_before: Tillad Omplanlægning/Aflysning Før
+    at_least_one_field: Mindst ét felt skal vises på booking-siden.
+    status: Status
+    appointment_status_options: Aftalestatusindstillinger
+    appointment_status_options_info: Definer en liste over tilgængelige aftalestatusindstillinger, der kan bruges på kalender-siden (den første vil automatisk blive standardværdien).
+    sunday_short: Søn
+    monday_short: Man
+    tuesday_short: Tir
+    wednesday_short: Ons
+    thursday_short: Tor
+    friday_short: Fre
+    saturday_short: Lør
+    january_short: Jan
+    february_short: Feb
+    march_short: Mar
+    april_short: Apr
+    may_short: Maj
+    june_short: Jun
+    july_short: Jul
+    august_short: Aug
+    september_short: Sep
+    october_short: Okt
+    november_short: Nov
+    december_short: Dec
+    am: am
+    pm: pm
+    to: til
+    click_to_toggle: Klik for at skifte
+    week_short: Uge
+    scroll_to_increment: Rul for at øge
+    year: År
+    make_non_working_day: Denne udbyder vil ikke være tilgængelig for arbejde på den valgte dag.
+    no_breaks: Ingen Pauser
+    service_categories: Servicekategorier
+    service_category: Servicekategori
+    blocked_period_saved: Blokeret periode gemt med succes.
+    blocked_period_deleted: Blokeret periode slettet med succes.
+    delete_blocked_period: Slet Blokeret Periode
+    blocked_period: Blokeret Periode
+    blocked_periods: Blokerede Perioder
+    blocked_period_save: Gem Blokeret Periode
+    blocked_period_delete: Slet Blokeret Periode
+    blocked_periods_hint: Definer tidsperioder, hvor offentlige bookinger vil være deaktiveret for alle udbydere (f.eks. lukkedage, helligdage osv.).
+    custom_field: Brugerdefineret Felt
+    custom_fields: Brugerdefinerede Felter
+    label: Etiket
+    webhook_saved: Webhook gemt med succes.
+    webhook_deleted: Webhook slettet med succes.
+    delete_webhook: Slet Webhook
+    contact_info: Kontaktinformation
+    hide_from_public: Skjul For Offentligheden
+    matomo_analytics_site_id: Matomo Analytics Site-ID
+    matomo_analytics_site_id_hint: Indstil site ID, som vil blive sporet af Matomo (standard site har ID "1").
+    default_timezone: Standard Tidszone
+    default_timezone_hint: Indstil standard tidszoneværdi, der vil blive brugt for nye poster.
+    default_language: Standard Sprog
+    default_language_hint: Indstil standard sprogværdi, der vil blive brugt for nye poster.
+    sync_method_prompt: Hvilken synkroniseringsmetode vil du bruge?
+    caldav_server: CalDAV-server
+    caldav_connection_info_prompt: Indtast venligst forbindelsesoplysningerne til det ønskede CalDAV-kalender.
+    connect: Forbind
+    ldap: LDAP
+    ldap_info: Denne integration giver dig mulighed for at oprette forbindelse til en eksisterende LDAP-server og automatisk importere brugere til Easy!Appointments og lade dem SSO med deres katalogadgangskode (brugernavnet skal matche).
+    host: Vært
+    port: Port
+    user_dn: Bruger DN
+    base_dn: Base DN
+    keyword: Søgeord
+    ldap_search_hint: Angiv et søgeord for at søge gennem LDAP-kataloget efter brugere, der matcher filterkriterierne.
+    ldap_extension_not_loaded: LDAP PHP-udvidelsen er ikke indlæst, men kræves for at denne integration kan fungere.
+    field_mapping: Feltkortlægning
+    content: Indhold
+    active: Aktiv
+    user_imported: Brugerposten blev importeret med succes.
+    import: Importér
+    ldap_dn: LDAP DN
+    role: Rolle
+    at_least_one_field_required: Mindst ét felt skal være sat som obligatorisk på booking-siden.
+    customer_is_already_booked: Denne kunde har allerede en aftale i den ønskede reservationsperiode.
+    fields: Felter
+    invalid_credentials_provided: Ugyldige legitimationsoplysninger angivet, prøv igen.
+    calendar_url: Kalender URL
+    please_select: Vælg venligst
+    secret_header: Hemmelig header
+    search: Søg
+    slot_interval: Tidsinterval (Minutter)
+    jitsi: Jitsi
+    jitsi_info: Aktivér automatisk generering af Jitsi-mødelinks til aftaler. Når aktiveret, genereres et unikt Jitsi-videoopkaldslink og gemmes som mødelink.
+    altcha: ALTCHA
+    altcha_info: ALTCHA er et privatlivsfokuseret, open source CAPTCHA-alternativ, der bruger proof-of-work til at verificere menneskelige brugere uden sporing.
+    altcha_enabled_hint: Når aktiveret, vil ALTCHA blive brugt i stedet for den traditionelle billed-CAPTCHA til formularverificering.
+    altcha_hmac_key: HMAC Key
+    altcha_hmac_key_hint: En hemmelig nøgle, der bruges til at signere og verificere ALTCHA-udfordringer. Klik på Generér for at oprette en ny sikker nøgle.
+    altcha_max_number: Maks. antal
+    altcha_max_number_hint: 'Det maksimale antal for proof-of-work-udfordringen. Højere værdier øger sværhedsgraden (standard: 100000).'
+    altcha_expires: Udløber (Sekunder)
+    altcha_expires_hint: 'Hvor længe en udfordring forbliver gyldig i sekunder (standard: 300).'
+    altcha_key_generated: Ny HMAC-nøgle genereret.
+    altcha_enabled: Aktivér ALTCHA
+    altcha_captcha_not_active_warning: CAPTCHA-indstillingen er ikke aktiv i øjeblikket. ALTCHA vil ikke blive brugt, medmindre CAPTCHA er aktiveret i
+    generate: Generér
+    meeting_link: Mødelink
+    google_calendar: Google Kalender
+    google_calendar_info: Aktivér Google Calendar-synkronisering for at synkronisere aftaler med udbydernes Google Calendar-konti.
+    google_client_id: Klient-ID
+    google_client_id_info: Klient-ID'en fra dit Google Cloud Console-projekt.
+    google_client_secret: Klienthemmelighed
+    google_client_secret_info: Klienthemmeligheden fra dit Google Cloud Console-projekt.
+    google_calendar_setup_info: 'For at aktivere Google Calendar-synkronisering skal du oprette et projekt i Google Cloud Console, aktivere Google Calendar API''en og oprette OAuth 2.0-legitimationsoplysninger. Besøg:'
+    google_meet_link_generation: Generér Google Meet-links
+    google_meet_link_generation_info: Opret automatisk et Google Meet-videokonferencelink til synkroniserede aftaler. Mødelinket gemmes i aftalens mødelinkfelt.
+    display_add_to_google_calendar: Vis "Tilføj til Google Calendar"-knap
+    display_add_to_google_calendar_info: Vis "Tilføj til Google Calendar"-knappen på bookingbekræftelsessiden, så kunder nemt kan tilføje deres aftale til deres personlige Google Calendar.
+    select_all: Vælg alle
+    select_none: Fravælg alle
+    appointment_update: Opdatering af aftale
+    notify_users_on_update_question: Vil du sende en notifikation om denne ændring?
+    'yes': Ja
+    'no': Nej
+    latest_blog_posts: Seneste blogindlæg
+    loading: Indlæser
+    blog_posts_load_error: Kan ikke indlæse blogindlæg. Besøg venligst den officielle hjemmeside for opdateringer.
+    provider_has_conflicting_appointment: Den valgte udbyder har allerede en anden aftale på det tidspunkt. Vælg venligst et andet tidspunkt eller en anden udbyder.
+    would_you_like_to_proceed: Vil du fortsætte alligevel?
+    proceed: Fortsæt
+    no_available_service_providers: Ingen tilgængelige tjenester
+    no_available_service_providers_message: Der er i øjeblikket ingen tjenester eller udbydere tilgængelige for booking. Tjek venligst igen senere eller kontakt os for hjælp.
+    reset_password: Nulstil adgangskode
+    new_password: Ny adgangskode
+    enter_new_password: Indtast din nye adgangskode nedenfor.
+    password_reset_request: Anmodning om nulstilling af adgangskode
+    password_reset_email_message: Du har anmodet om at nulstille din adgangskode. Klik på knappen nedenfor for at indstille en ny adgangskode til din konto.
+    password_reset_link_expires: Dette link udløber om 1 time.
+    password_reset_ignore_message: Hvis du ikke har anmodet om nulstilling af adgangskode, bedes du ignorere denne e-mail.
+    invalid_reset_token: Linket til nulstilling af adgangskode er ugyldigt.
+    invalid_or_expired_token: Linket til nulstilling af adgangskode er ugyldigt eller udløbet. Anmod venligst om et nyt.
+    password_reset_success: Din adgangskode er blevet nulstillet. Du vil blive omdirigeret til login-siden.
+    password_reset_failed: Nulstilling af adgangskode mislykkedes. Prøv venligst igen.
+    no_password_provided: Indtast venligst en adgangskode.
+    type_username_and_email_for_reset_link: Indtast dit brugernavn og e-mailadresse for at modtage et link til nulstilling af adgangskode.
+    send_reset_link: Send nulstillingslink
+    reset_link_sent_with_email: Hvis der findes en konto med de angivne oplysninger, er et link til nulstilling af adgangskode sendt til din e-mail.
+    working_plan_validation_failed: Ugyldig arbejdsplankonfiguration fundet.
+    start_date: Startdato
+    end_date: Slutdato
+    remember_me: Husk mine oplysninger
+    remember_me_hint: Gem dine oplysninger for hurtigere booking næste gang.
+    legal_notice: Juridisk meddelelse
+    legal_notice_url: URL til juridisk meddelelse
+    legal_notice_url_hint: Indtast URL'en til din side med juridisk meddelelse.
+    imprint: Kolofon
+    imprint_url: Kolofon-URL
+    imprint_url_hint: Indtast URL'en til din kolofonside.
+    data_retention: Dataopbevaring
+    data_retention_days: Dage for dataopbevaring
+    data_retention_days_hint: Angiv antallet af dage, hvorefter kundedata automatisk slettes. Sæt til 0 for at deaktivere automatisk sletning.
+    manage_privacy: Administrér privatliv
+    manage_privacy_hint: Klik på linket nedenfor for at se, opdatere eller slette dine personlige oplysninger.
+    personal_information_updated: Dine personlige oplysninger er blevet opdateret.
+    verify: Verificér
+    verifying: Verificerer
+    verified: Verificeret
+    verification_complete: Verificering fuldført
+    verification_failed: Verificering mislykkedes. Klik for at prøve igen.
+    click_to_verify: Klik for at verificere, at du er et menneske
+    altcha_verification_failed: ALTCHA-verificering mislykkedes. Prøv venligst igen.
+    premium: Premium
+    about_app_premium: Vi tilbyder helhedstjenester for selvhostet software, herunder tilpasset udvikling, administreret hosting, supportkontrakter, rebranding og løbende forbedringer — så du kan fokusere på din virksomhed, mens vi tager os af resten.
+    go_premium: Bliv Premium
+    notify_users_on_create_question: Vil du give kunden besked om denne nye aftale?
+    notify_users_on_delete_question: Vil du give kunden besked om aflysningen af aftalen?

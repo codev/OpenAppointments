@@ -1,0 +1,575 @@
+---
+pt-br:
+  ea:
+    page_title: Agendar horário
+    service_and_provider: Selecione o serviço e o atendente
+    select_service: Selecione o serviço
+    select_provider: Selecione o atendente
+    duration: Duração
+    minutes: Minutos
+    price: Valor
+    back: Voltar
+    appointment_date_and_time: Selecione a data e a hora do agendamento
+    no_available_hours: Não existem horários disponíveis para a data selecionada. Por favor, selecione outra data.
+    appointment_hour_missing: Por favor, selecione um horário antes de continuar.
+    customer_information: Preencha as suas informações
+    first_name: Primeiro nome
+    last_name: Ultimo nome
+    email: E-mail
+    phone_number: Telefone
+    phone: Telefone
+    address: Endereço
+    city: Cidade
+    zip_code: CEP
+    notes: Observações.
+    language: Idioma
+    no_language: Sem idioma
+    fields_are_required: "* campos obrigatórios"
+    appointment_confirmation: Confirmar agendamento
+    confirm: Confirmar
+    update: Atualizar
+    cancel_appointment_hint: Pressione o botão "cancelar" para cancelar o agendamento.
+    cancel: Cancelar
+    appointment_registered: O agendamento foi registrado com sucesso.
+    cancel_appointment_title: Cancelar agendamento
+    appointment_cancelled: Agendamento cancelado com sucesso.
+    appointment_cancelled_title: Agendamento cancelado
+    reason: Razão
+    appointment_removed_from_schedule: O seu agendamento foi removido.
+    appointment_details_was_sent_to_you: Email enviado com os destalhes do agendamento.
+    add_to_google_calendar: Adicionar ao calendario do google
+    appointment_booked: O seu horário foi reservado com sucesso.
+    thank_you_for_appointment: Obriagado por agendar um horário conosco. Abaixo segue os detalhes. Para alterações, abrir o link.
+    appointment_details_title: Detalhes do agendamento
+    customer_details_title: Detalhes do cliente
+    service: Serviço
+    provider: Atendente
+    customer: Cliente
+    start: Inicio
+    end: Fim
+    name: Nome
+    appointment_link_title: Link de agendamentos
+    success: Sucesso.
+    appointment_added_to_your_plan: Um novo evento foi adicionado ao seu plano.
+    appointment_link_description: Para fazer alterações click no link.
+    appointment_locked: Modificação impossível.
+    appointment_locked_message: O compromisso não pode ser alterado com menos de {$limit} horas de antecedência.
+    appointment_not_found: Agendamento não encontrado.
+    appointment_does_not_exist_in_db: O agendamento não existe na base de dados.
+    display_calendar: Mostrar Calendário
+    calendar: Calendário
+    users: Usuários
+    settings: Definições
+    log_out: Sair
+    synchronize: Sincronizar
+    enable_sync: Habilitar sincronização
+    disable_sync: Desabiltar sincronização
+    disable_sync_prompt: Tem certeza de que deseja desativar a sincronização do calendário?
+    reload: Atualizar
+    appointment: Agenda
+    unavailability: Indisponível
+    week: Semana
+    month: Mês
+    today: Hoje
+    not_working: Fechado
+    break: Pausa
+    add: Adicionar
+    edit: Editar
+    hello: Olá
+    all_day: Todo o dia
+    manage_appointment_record_hint: Gerenciar todos os eventos dos fornecedores e dos serviços disponíveis.
+    select_filter_item_hint: Selecione o fornecedor ou o serviço e veja os eventos no calendário.
+    enable_appointment_sync_hint: Ativar a sincronização de eventos atráves de uma conta do Google Calendar.
+    manage_customers_hint: Gerenciar os clientes e visualizar o seu histórico.
+    manage_services_hint: Gerenciar os serviços e as categorias do sistema.
+    manage_users_hint: Gerenciar os usuários de backend (administradores, fornecedores, secretárias).
+    settings_hint: Definir as configurações do sistema e do usuario.
+    log_out_hint: Sair do sistema.
+    unavailability_periods_hint: Durante os periodos indisponíveis o fornecedor não aceitar novos agendamentos.
+    new_appointment_hint: Criar um novo agendamento e salvar na base de dados.
+    reload_appointments_hint: atualizar os agentamentos do calendario.
+    trigger_sync_hint: Disparar o processo de sincronização do Google Calendar.
+    appointment_updated: Atualizado com sucesso.
+    undo: Desfazer
+    appointment_details_changed: Detalhes do agendamento foram alterados.
+    appointment_changes_saved: Detalhes do agendamento foram guardados com sucesso.
+    save: Salvar
+    new: Novo
+    select: Selecionar
+    hide: Esconder
+    type_to_filter_customers: Filtrar clientes
+    clear_fields_add_existing_customer_hint: Limpar os campos e inserir um novo cliente.
+    pick_existing_customer_hint: Escolha um cliente existente.
+    new_appointment_title: Novo agendamento
+    edit_appointment_title: Editar agendamento
+    delete_appointment_title: Apagar agendamento
+    write_appointment_removal_reason: 'Por favor, dedique alguns minutos para escrever a razão que você está apagando o agendamento:'
+    appointment_saved: Agendamento salvo com sucesso.
+    new_unavailability_title: Novo período indisponível
+    edit_unavailability_title: Edite período indisponível
+    unavailability_saved: Período Indisponível salvo com sucesso.
+    start_date_before_end_error: A data início é superior ao valor da data fim.
+    invalid_duration: Duração inválida.
+    invalid_email: Email inválido.
+    customers: Clientes
+    details: Detalhes
+    no_records_found: Não foram encontrados registos...
+    services: Serviços
+    duration_minutes: Duração (minutos)
+    currency: Moeda
+    category: Categoria
+    no_category: Sem categoria
+    description: Descrição
+    categories: Categorias
+    admins: Administradores
+    providers: Atendentes
+    secretaries: Secretários
+    mobile_number: 'Celular '
+    mobile: Celular
+    state: Estado
+    username: Nome de usuário
+    password: Senha
+    retype_password: Repetir senha
+    receive_notifications: Receber notificações
+    passwords_mismatch: Senha inválida.
+    admin_saved: Administrador salvo com sucesso.
+    provider_saved: Atendende salvo com sucesso.
+    secretary_saved: Assistente salvo com sucesso.
+    admin_deleted: Administrador excluído com sucesso.
+    provider_deleted: Atendente excluído com sucesso.
+    secretary_deleted: Assistente excluído com sucesso.
+    service_saved: Serviço salvo com sucesso.
+    service_category_saved: Categoria de serviço salvo com sucesso.
+    service_deleted: Serviço excluído com sucesso.
+    service_category_deleted: Categoria de serviço excluída com sucesso.
+    customer_saved: Cliente salvo com sucesso.
+    customer_deleted: Cliente excluído com sucesso.
+    current_view: Vista atual
+    working_plan: Plano de trabalhos
+    reset_plan: Limpar plano
+    monday: Segunda-feira
+    tuesday: Terça-feira
+    wednesday: Quarta-feira
+    thursday: Quinta-feira
+    friday: Sexta-feira
+    saturday: Sábado
+    sunday: Domingo
+    breaks: Pausas
+    add_breaks_during_each_day: Adicionar as pausas de trabalho durante cada dia. Durante os intervalos o atendente não aceitará quaisquer compromissos.
+    day: Dia
+    days: Dias
+    actions: Ações
+    reset_working_plan_hint: Repor o plano de trabalho para os valores padrões.
+    company_name: Nome da empresa
+    company_name_hint: Nome da empresa será exibido em todos os lugares no sistema (obrigatório).
+    company_email: Email da empresa
+    company_email_hint: Este será o endereço de email da empresa. Ele será usado como o remetente e o endereço de resposta dos emails do sistema (obrigatório).
+    company_link: Endereço web da empresa
+    company_link_hint: Endereço da empresa deve apontar para o site oficial da empresa (obrigatório).
+    go_to_booking_page: Ir para a página de reserva
+    settings_saved: Definições salvas com sucesso.
+    general: Geral
+    booking: Agendamento
+    visible: Visível
+    hidden: Escondido
+    business_logic: Lógica de negócio
+    current_user: Usuário Atual
+    about_app: Sobre o Easy!Appointments
+    edit_working_plan_hint: Marque os dias e as horas a que a sua empresa aceita agendamentos. Assim será possível agendamentos em horário de atendimento, evitando que os clientes marquem agendamento fora do horário de atendimento. Este plano de trabalho será o padrão para cada novo registo de atendente, mas é possível mudar o plano de cada fornecedor separadamente editando o atendente. Depois disso, pode adicionar períodos de descanso.
+    edit_breaks_hint: Adicione as pausas de trabalho durante cada dia. Estas pausas serão aplicadas para todos os novos atendentes de serviços.
+    book_advance_timeout: Tempo esgotado...
+    book_advance_timeout_hint: Definir o limite de tempo (em minutos) antes que os clientes possam reservar ou reorganizar agendamentos com a empresa.
+    timeout_minutes: O tempo acaba (minutos)
+    about_app_info: Easy! Appointmentes é uma aplicação web altamente personalizável que permite que os clientes marquem eventos através da internet. Além disso, oferece a possibilidade de sincronizar seus dados com o Google Calendar para que possa usá-los com outros serviços.
+    current_version: Versão atual
+    support: Suporte
+    about_app_support: Se  encontrar algum problema ao usar o Easy!Appointments pode procurar o Grupo oficial do Google para obter respostas. Se precisar, pode iniciar um novo tópico na página do Google Code, a fim de ajudar o progresso do desenvolvimento.
+    official_website: Site Oficial
+    google_plus_community: Comunidade Google +
+    support_group: Groupo de Suporte
+    project_issues: Questões do projeto
+    license: Licença
+    about_app_license: 'Easy!Appointments está licenciado sob a licença GPLv3. Ao utilizar o código de Easy!Appointments de qualquer forma concorda com os termos descritos na seguinte url:'
+    logout_success: Saiu com sucesso! Clique num dos seguintes botões para navegar para uma página diferente.
+    book_appointment_title: Agenda
+    backend_section: Seção de backend
+    you_need_to_login: Bem-Vindo! Precisa entrar para visualizar todo o conteúdo
+    enter_username_here: Insira o seu nome de usuário...
+    enter_password_here: Digite a senha aqui ...
+    login: Entrar
+    forgot_your_password: Esqueceu a senha?
+    login_failed: Falha no login, por favor inserir os seus dados de acesso e tentar novamente.
+    type_username_and_email_for_new_password: Digite o seu nome de usuário e email para ser gerado uma nova senha.
+    enter_email_here: Insira o seu email...
+    regenerate_password: Alterar senha
+    go_to_login: Voltar à página de Login
+    new_password_sent_with_email: A nova senha foi enviada para o seu email.
+    new_account_password: Senha para nova conta
+    new_password_is: A nova senha da conta é $password Por favor, guarde este email para ser possível recuperar, se necessário. Pode alterar a senha na página de configurações.
+    delete_record_prompt: Tem certeza que pretende excluir o registo? Não será possível recuperá-lo.
+    delete_admin: Excluir Administrador
+    delete_customer: Excluir cliente
+    delete_service: Excluir serviço
+    delete_service_category: Excluir categoria de serviço
+    delete_provider: Excluir atendente
+    delete_secretary: Excluir assistente
+    delete_appointment: Excluir agendamento
+    delete_unavailability: Excluir período indisponível
+    delete: Excluir
+    unexpected_issues: Problemas inesperados
+    unexpected_issues_message: Não foi possível concluir a operação.
+    close: Fechar
+    page_not_found: Página não encontrada ou página não existente
+    page_not_found_message: Infelizmente a pagina solicitada não existe. Por favor verifique a URL ou siga outro local usando os botões abaixo.
+    error: Erro
+    no_privileges: Não tem permissão
+    no_privileges_message: Não tem permissões para visualizar esta página. Por favor, selecione outra página.
+    backend_calendar: Backend calendário
+    start_date_time: Data / hora inicial
+    end_date_time: Data / hora final
+    licensed_under: 'Licenciado sob:'
+    unexpected_issues_occurred: Ocorreram problemas inesperados.
+    service_communication_error: Erro de conexão com o servidor.
+    no_privileges_edit_appointments: Não tem permissões para editar agendamentos.
+    unavailability_updated: Período indisponível, atualizado com sucesso.
+    appointments: Agendamentos
+    unexpected_warnings: Avisos inesperados
+    unexpected_warnings_message: A operação foi concluida, contudo existem avisos.
+    filter: Filtrar
+    clear: Limpar
+    uncategorized: Sem categoria
+    username_already_exists: O Nome de usuário já existe.
+    password_length_notice: A senha deve ter pelo menos $number caracteres.
+    general_settings: Definições Gerais
+    personal_information: Informações Pessoais
+    system_login: Sistema de Acesso
+    user_settings_are_invalid: Configurações inválidas. Por favor corrija e tente novamente.
+    add_break: Adicionar parada ou pausa
+    january: Janeiro
+    february: Fevereiro
+    march: Março
+    april: Abril
+    may: Maio
+    june: Junho
+    july: Julho
+    august: Agosto
+    september: Setembro
+    october: Outubro
+    november: Novembro
+    december: Dezembro
+    previous: Anterior
+    next: Seguinte
+    now: Agora
+    select_time: Selecionar tempo
+    time: Tempo
+    hour: Hora
+    minute: Minuto
+    calendar_sync_completed: Sincronização com a Google efetuada com sucesso.
+    calendar_sync_failed: 'Falha na sincronização com o Google: não foi possível conectar ao servidor.'
+    select_sync_calendar: Selecione o seu Calendário Google
+    select_sync_calendar_prompt: Selecione o calendário para sincronizar os seus compromissos. Será selecionado o calendario padrão, caso não queira especificar um.
+    sync_calendar_selected: Calendario do google foi selecionado com sucesso.
+    oops_something_went_wrong: Ops! Algo deu errado.
+    ea_update_success: Easy!Appointments foi atualizado com sucesso.
+    require_captcha: Requer CAPTCHA
+    require_captcha_hint: Quando habilitado, os clientes terão que digitar um código CAPTCHA gerado randomicamente antes de cadastrar/atualizar um agendamento.
+    captcha_is_wrong: Verificação do CAPTCHA falhou, favor tente novamente.
+    enter_captcha_here: Digite o CAPTCHA aqui...
+    any_provider: Qualquer atendente
+    requested_hour_is_unavailable: Infelizmente, o agendamento solicitado não está disponível. Por favor selecione um horário diferente para o seu agendamento.
+    customer_notifications: Notificações de clientes
+    customer_notifications_hint: Define se o cliente receberá ou não, notificações por email sempre que um de seus agendamentos sejam alterados de horário.
+    date_format: Formato da data
+    date_format_hint: Altera o formato de visualização da Data (D - Data, M - Mes, Y - Ano).
+    time_format: Formato da hora
+    time_format_hint: Altera o formato em que a hora é apresentada (H - Horas, M - Minutos).
+    first_weekday: Primeiro dia da semana
+    first_weekday_hint: Defina o primeiro dia da semana do calendário.
+    google_analytics_code_hint: Adicione o seu ID do Google Analytics para ser incluido na pagina de agendamentos.
+    availabilities_type: Tipo de disponibilidade
+    flexible: Flexível
+    fixed: Fixa
+    attendants_number: Número de participantes
+    reset_working_plan: Redefina o plano de trabalho de volta para os valores padrões
+    legal_contents: Conteúdos legais
+    cookie_notice: Notificação de cookie
+    display_cookie_notice: Mostrar notificação de cookie
+    cookie_notice_content: Conteúdo da notificação de cookie
+    terms_and_conditions: Termos e condições
+    display_terms_and_conditions: Mostrar termos e condições
+    terms_and_conditions_content: Conteúdo dos termos e condições
+    privacy_policy: Políticas de privacidade
+    display_privacy_policy: Mostrar políticas de privacidade
+    privacy_policy_content: Conteúdo das políticas de privacidade
+    website_using_cookies_to_ensure_best_experience: Este website utiliza cookies para garantir que você tenha uma melhor experiência no nosso website.
+    read_and_agree_to_terms_and_conditions: Eu li e aceito os {$link}Termos e Condições{/$link}.
+    read_and_agree_to_privacy_policy: Eu li e aceito as {$link}Políticas de Privacidade{/$link}.
+    delete_personal_information_hint: Deletar toda informação pessoal do sistema.
+    delete_personal_information: Deletar informação pessoal
+    delete_personal_information_prompt: Tem certeza que deja deletar suas informações pessoais? Essa ação não pode ser desfeita.
+    location: Local
+    working_plan_exception: Exceção do plano de trabalho
+    working_plan_exceptions: Exceções do plano de trabalho
+    working_plan_exceptions_hint: Adicione um dia de exceção do plano de trabalho, fora do plano de trabalho.
+    new_working_plan_exception_title: Nova exceção de plano de trabalho
+    working_plan_exception_saved: Exceção do plano de trabalho salva com sucesso.
+    working_plan_exception_deleted: Exceção do plano de trabalho excluída com sucesso.
+    add_working_plan_exceptions_during_each_day: Adicione exceções ao plano de trabalho, fora do plano de trabalho.
+    add_working_plan_exception: Adicionar exceção de plano de trabalho
+    require_phone_number: Requer número de telefone
+    require_phone_number_hint: Quando ativado, os clientes e usuários precisarão inserir o número de telefone do cliente ao reservar um compromisso
+    check_spam_folder: Verifique sua pasta de spam se o e-mail não chegar em alguns minutos.
+    api_token_hint: Defina um token secreto para habilitar a autenticação baseada em token da API Easy!Appointments.
+    timezone: Fuso horário
+    overwrite_existing_working_plans: Isso substituirá os planos de trabalho dos fornecedores existentes. Tem certeza de que deseja continuar?
+    working_plans_got_updated: Todos os planos de trabalho foram atualizados.
+    apply_to_all_providers: Aplicar a todos os fornecedores
+    display_any_provider: Exibir qualquer opção de fornecedor
+    display_any_provider_hint: A página de reserva terá uma opção adicional que permite aos clientes fazerem a reserva sem especificar um fornecedor.
+    load_more: Carregar mais
+    list: Lista
+    default: Padrão
+    table: Tabela
+    date: Data
+    about: Sobre
+    booking_settings: Configurações de Reserva
+    display: Exibir
+    require: Requerer
+    color: Cor
+    matomo_analytics_url_hint: Adicione a URL da sua própria instalação do Matomo para ativar o rastreamento do Matomo nas páginas de reserva.
+    invalid_phone: Número de telefone inválido.
+    legal: Jurídico
+    business: Negócio
+    account: Conta
+    disable_booking: Desativar Reserva
+    disable_booking_hint: A página de reservas será desativada enquanto esta configuração estiver ativa e os clientes não poderão agendar novos compromissos.
+    display_message: Exibir Mensagem
+    booking_is_disabled: Reserva Está Desativada!
+    appearance: Aparência
+    company_logo: Logotipo da Empresa
+    company_logo_hint: O logotipo da empresa será exibido em vários locais do aplicativo, incluindo a página de reserva e os e-mails de notificação (arquivo de imagem, máx. 2MB).
+    company_color: Cor da Empresa
+    company_color_hint: A cor da empresa será aplicada em todo o aplicativo para que ele use sua marca.
+    localization: Localização
+    integrations: Integrações
+    company: Empresa
+    remove: Remover
+    login_button: Botão de Login
+    display_login_button_hint: Define se o botão de login está sendo exibido na página de reserva.
+    private: Privado
+    private_hint: Registros privados não serão exibidos ou processados em páginas públicas, como a página de reserva.
+    reset: Redefinir
+    all: Todos
+    booking_link: Link de Reserva
+    add_new_event: Adicionar Novo Evento
+    what_kind_of_event: Que tipo de evento você gostaria de adicionar?
+    theme: Tema
+    limit_customer_access: Limitar Acesso ao Cliente
+    limit_customer_access_hint: Se ativado, provedores e secretárias só poderão acessar clientes com os quais tenham um compromisso.
+    url: URL
+    secret_token: Token Secreto
+    verify_ssl: Verificar SSL
+    appointment_save: Salvar Compromisso
+    appointment_delete: Excluir Compromisso
+    unavailability_save: Salvar Indisponibilidade
+    unavailability_delete: Excluir Indisponibilidade
+    customer_save: Salvar Cliente
+    customer_delete: Excluir Cliente
+    service_save: Salvar Serviço
+    service_delete: Excluir Serviço
+    service_category_save: Salvar Categoria
+    service_category_delete: Excluir Categoria
+    provider_save: Salvar Provedor
+    provider_delete: Excluir Provedor
+    secretary_save: Salvar Secretária
+    secretary_delete: Excluir Secretária
+    admin_save: Salvar Admin
+    admin_delete: Excluir Admin
+    options: Opções
+    webhooks: Webhooks
+    webhooks_info: Os Webhooks permitem enviar notificações HTTP para aplicativos externos em resposta a vários eventos do aplicativo, como a criação de um compromisso ou a remoção de um cliente.
+    integrations_info: As Integrações permitem fazer conexões com aplicativos e APIs externas.
+    configure: Configurar
+    google_analytics: Google Analytics
+    google_analytics_info: O Google Analytics permite adicionar automaticamente o código de rastreamento e a marcação HTML à página pública e rastrear todas as sessões públicas de reserva.
+    matomo_analytics: Matomo Analytics
+    matomo_analytics_info: O Matomo Analytics permite adicionar automaticamente o código de rastreamento e a marcação HTML à página pública e rastrear todas as sessões públicas de reserva.
+    api: API
+    api_info: A API permite interagir com todos os dados do Easy!Appointments via protocolo HTTP e os endpoints da API disponíveis e criar suas próprias integrações.
+    google_analytics_code: Código do Google Analytics
+    matomo_analytics_url: URL do Matomo Analytics
+    future_booking_limit: Limite de Reserva Futuro
+    limit_days: Limite (Dias)
+    future_booking_limit_hint: Defina o limite futuro em dias que os clientes podem fazer reservas via a página pública de reservas.
+    api_token: Token da API
+    allow_rescheduling_cancellation_before: Permitir Reagendamento/Cancelamento Antes
+    at_least_one_field: Pelo menos um campo deve ser exibido na página de reserva.
+    status: Status
+    appointment_status_options: Opções de Status de Compromisso
+    appointment_status_options_info: Defina uma lista de opções de status de compromisso disponíveis que podem ser usadas na página do calendário (a primeira se tornará automaticamente o valor padrão).
+    sunday_short: Dom
+    monday_short: Seg
+    tuesday_short: Ter
+    wednesday_short: Qua
+    thursday_short: Qui
+    friday_short: Sex
+    saturday_short: Sáb
+    january_short: Jan
+    february_short: Fev
+    march_short: Mar
+    april_short: Abr
+    may_short: Mai
+    june_short: Jun
+    july_short: Jul
+    august_short: Ago
+    september_short: Set
+    october_short: Out
+    november_short: Nov
+    december_short: Dez
+    am: am
+    pm: pm
+    to: para
+    click_to_toggle: Clique para Alternar
+    week_short: Sem
+    scroll_to_increment: Role para Incrementar
+    year: Ano
+    make_non_working_day: Este provedor não estará disponível para trabalho no dia selecionado.
+    no_breaks: Sem Intervalos
+    service_categories: Categorias de Serviço
+    service_category: Categoria de Serviço
+    blocked_period_saved: Período bloqueado salvo com sucesso.
+    blocked_period_deleted: Período bloqueado excluído com sucesso.
+    delete_blocked_period: Excluir Período Bloqueado
+    blocked_period: Período Bloqueado
+    blocked_periods: Períodos Bloqueados
+    blocked_period_save: Salvar Período Bloqueado
+    blocked_period_delete: Excluir Período Bloqueado
+    blocked_periods_hint: Defina períodos de tempo onde as reservas públicas serão desativadas para todos os provedores (por exemplo, datas fechadas, feriados etc.).
+    custom_field: Campo Personalizado
+    custom_fields: Campos Personalizados
+    label: Rótulo
+    webhook_saved: Webhook salvo com sucesso.
+    webhook_deleted: Webhook excluído com sucesso.
+    delete_webhook: Excluir Webhook
+    contact_info: Informações de Contato
+    hide_from_public: Ocultar do Público
+    matomo_analytics_site_id: ID do Site do Matomo Analytics
+    matomo_analytics_site_id_hint: Defina o ID do site que será rastreado pelo Matomo (o site padrão tem o ID "1").
+    default_timezone: Fuso Horário Padrão
+    default_timezone_hint: Defina o valor padrão do fuso horário que será usado para novos registros.
+    default_language: Idioma Padrão
+    default_language_hint: Defina o valor padrão do idioma que será usado para novos registros.
+    sync_method_prompt: Qual método de sincronização você gostaria de usar?
+    caldav_server: Servidor CalDAV
+    caldav_connection_info_prompt: Por favor, insira as informações de conexão do Calendário CalDAV de destino.
+    connect: Conectar
+    ldap: LDAP
+    ldap_info: Esta integração permite conectar-se a um servidor LDAP existente e importar automaticamente usuários para o Easy!Appointments, permitindo que eles façam SSO com sua senha do diretório (o nome de usuário deve corresponder).
+    host: Host
+    port: Porta
+    user_dn: DN do Usuário
+    base_dn: Base DN
+    keyword: Palavra-chave
+    ldap_search_hint: Forneça uma palavra-chave para pesquisar no diretório LDAP usuários que correspondam aos critérios de filtro.
+    ldap_extension_not_loaded: A extensão PHP LDAP não está carregada, mas é necessária para que esta integração funcione.
+    field_mapping: Mapeamento de Campos
+    content: Conteúdo
+    active: Ativo
+    user_imported: O registro do usuário foi importado com sucesso.
+    import: Importar
+    ldap_dn: LDAP DN
+    role: Função
+    at_least_one_field_required: Pelo menos um campo deve ser definido como obrigatório na página de reserva.
+    customer_is_already_booked: Este cliente já tem um compromisso durante o período de reserva solicitado.
+    fields: Campos
+    invalid_credentials_provided: Credenciais inválidas fornecidas, por favor, tente novamente.
+    calendar_url: URL do Calendário
+    please_select: Por Favor, Selecione
+    secret_header: Cabeçalho Secreto
+    search: Pesquisar
+    slot_interval: Intervalo de Horário (Minutos)
+    jitsi: Jitsi
+    jitsi_info: Ativar a geração automática de links de reunião Jitsi para agendamentos. Quando ativado, um link exclusivo de videochamada Jitsi será gerado e armazenado como o link da reunião.
+    altcha: ALTCHA
+    altcha_info: ALTCHA é uma alternativa ao CAPTCHA focada em privacidade e de código aberto que usa prova de trabalho para verificar usuários humanos sem rastreamento.
+    altcha_enabled_hint: Quando ativado, o ALTCHA será usado no lugar do CAPTCHA de imagem tradicional para verificação de formulários.
+    altcha_hmac_key: Chave HMAC
+    altcha_hmac_key_hint: Uma chave secreta usada para assinar e verificar desafios ALTCHA. Clique em Gerar para criar uma nova chave segura.
+    altcha_max_number: Número Máximo
+    altcha_max_number_hint: 'O número máximo para o desafio de prova de trabalho. Valores mais altos aumentam a dificuldade (padrão: 100000).'
+    altcha_expires: Expira (Segundos)
+    altcha_expires_hint: 'Por quanto tempo um desafio permanece válido em segundos (padrão: 300).'
+    altcha_key_generated: Nova chave HMAC gerada com sucesso.
+    altcha_enabled: Ativar ALTCHA
+    altcha_captcha_not_active_warning: A configuração CAPTCHA não está ativa no momento. O ALTCHA não será utilizado a menos que o CAPTCHA esteja ativado nas
+    generate: Gerar
+    meeting_link: Link da reunião
+    google_calendar: Google Agenda
+    google_calendar_info: Ativar a sincronização com o Google Calendar para sincronizar agendamentos com as contas do Google Calendar dos prestadores.
+    google_client_id: ID do Cliente
+    google_client_id_info: O ID do Cliente do seu projeto no Google Cloud Console.
+    google_client_secret: Segredo do Cliente
+    google_client_secret_info: O Segredo do Cliente do seu projeto no Google Cloud Console.
+    google_calendar_setup_info: 'Para ativar a sincronização com o Google Calendar, você precisa criar um projeto no Google Cloud Console, ativar a API do Google Calendar e criar credenciais OAuth 2.0. Visite:'
+    google_meet_link_generation: Gerar Links do Google Meet
+    google_meet_link_generation_info: Criar automaticamente um link de videoconferência Google Meet para agendamentos sincronizados. O link da reunião será armazenado no campo de link de reunião do agendamento.
+    display_add_to_google_calendar: Exibir Botão "Adicionar ao Google Calendar"
+    display_add_to_google_calendar_info: Mostrar o botão "Adicionar ao Google Calendar" na página de confirmação da reserva, permitindo que os clientes adicionem facilmente o agendamento ao seu Google Calendar pessoal.
+    select_all: Selecionar tudo
+    select_none: Desmarcar tudo
+    appointment_update: Atualização de agendamento
+    notify_users_on_update_question: Gostaria de enviar uma notificação sobre esta alteração?
+    'yes': Sim
+    'no': Não
+    latest_blog_posts: Últimas postagens do blog
+    loading: Carregando
+    blog_posts_load_error: Não foi possível carregar as postagens do blog. Visite o site oficial para atualizações.
+    provider_has_conflicting_appointment: O prestador selecionado já tem outro agendamento nesse horário. Por favor, selecione um horário ou prestador diferente.
+    would_you_like_to_proceed: Deseja continuar mesmo assim?
+    proceed: Continuar
+    no_available_service_providers: Nenhum serviço disponível
+    no_available_service_providers_message: Atualmente não há serviços ou prestadores disponíveis para agendamento. Por favor, verifique mais tarde ou entre em contato conosco para obter ajuda.
+    reset_password: Redefinir senha
+    new_password: Nova senha
+    enter_new_password: Digite sua nova senha abaixo.
+    password_reset_request: Solicitação de redefinição de senha
+    password_reset_email_message: Você solicitou a redefinição da sua senha. Clique no botão abaixo para definir uma nova senha para sua conta.
+    password_reset_link_expires: Este link expirará em 1 hora.
+    password_reset_ignore_message: Se você não solicitou a redefinição de senha, ignore este e-mail.
+    invalid_reset_token: O link de redefinição de senha é inválido.
+    invalid_or_expired_token: O link de redefinição de senha é inválido ou expirou. Por favor, solicite um novo.
+    password_reset_success: Sua senha foi redefinida com sucesso. Você será redirecionado para a página de login.
+    password_reset_failed: Falha ao redefinir a senha. Por favor, tente novamente.
+    no_password_provided: Por favor, digite uma senha.
+    type_username_and_email_for_reset_link: Digite seu nome de usuário e endereço de e-mail para receber um link de redefinição de senha.
+    send_reset_link: Enviar link de redefinição
+    reset_link_sent_with_email: Se existir uma conta com as credenciais fornecidas, um link de redefinição de senha foi enviado para seu e-mail.
+    working_plan_validation_failed: Configuração inválida do plano de trabalho encontrada.
+    start_date: Data de Início
+    end_date: Data de Término
+    remember_me: Lembrar minhas informações
+    remember_me_hint: Salvar seus dados para uma reserva mais rápida na próxima vez.
+    legal_notice: Aviso Legal
+    legal_notice_url: URL do Aviso Legal
+    legal_notice_url_hint: Insira a URL da sua página de aviso legal.
+    imprint: Expediente
+    imprint_url: URL do Expediente
+    imprint_url_hint: Insira a URL da sua página de expediente.
+    data_retention: Retenção de Dados
+    data_retention_days: Dias de Retenção de Dados
+    data_retention_days_hint: Defina o número de dias após os quais os dados do cliente serão excluídos automaticamente. Defina como 0 para desativar a exclusão automática.
+    manage_privacy: Gerenciar Privacidade
+    manage_privacy_hint: Clique no link abaixo para visualizar, atualizar ou excluir suas informações pessoais.
+    personal_information_updated: Suas informações pessoais foram atualizadas com sucesso.
+    verify: Verificar
+    verifying: Verificando
+    verified: Verificado
+    verification_complete: Verificação concluída
+    verification_failed: Verificação falhou. Clique para tentar novamente.
+    click_to_verify: Clique para verificar que você é humano
+    altcha_verification_failed: Verificação ALTCHA falhou. Por favor, tente novamente.
+    premium: Premium
+    about_app_premium: Oferecemos serviços completos para software auto-hospedado, incluindo desenvolvimento personalizado, hospedagem gerenciada, contratos de suporte, personalização de marca e melhorias contínuas — para que você possa focar no seu negócio enquanto nós cuidamos do resto.
+    go_premium: Seja Premium
+    notify_users_on_create_question: Gostaria de notificar o cliente sobre este novo agendamento?
+    notify_users_on_delete_question: Gostaria de notificar o cliente sobre o cancelamento do agendamento?

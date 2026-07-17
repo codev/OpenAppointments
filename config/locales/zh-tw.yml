@@ -1,0 +1,575 @@
+---
+zh-tw:
+  ea:
+    page_title: 預約
+    service_and_provider: 服務與提供者
+    select_service: 選擇服務
+    select_provider: 選擇提供者
+    duration: 時長
+    minutes: 分鐘
+    price: 價格
+    back: 返回
+    appointment_date_and_time: 預約日期與時間
+    no_available_hours: 所選日期沒有可用的預約時間。請選擇其他日期。
+    appointment_hour_missing: 請選擇預約時間後再繼續。
+    customer_information: 顧客資訊
+    first_name: 名字
+    last_name: 姓氏
+    email: 電子郵件
+    phone_number: 電話號碼
+    phone: 電話
+    address: 地址
+    city: 城市
+    zip_code: 郵遞區號
+    notes: 備註
+    language: 語言
+    no_language: 無語言
+    fields_are_required: 標有 * 的欄位為必填。
+    appointment_confirmation: 預約確認
+    confirm: 確認
+    update: 更新
+    cancel_appointment_hint: 按下「取消」按鈕將預約從公司行程中移除。
+    cancel: 取消
+    appointment_registered: 您的預約已成功登記！
+    cancel_appointment_title: 取消預約
+    appointment_cancelled: 您的預約已成功取消。
+    appointment_cancelled_title: 預約已取消
+    reason: 原因
+    appointment_removed_from_schedule: 以下預約已從公司行程中移除。
+    appointment_details_was_sent_to_you: 預約詳細資訊已透過電子郵件傳送給您。
+    add_to_google_calendar: 新增至 Google 日曆
+    appointment_booked: 您的預約已成功預訂！
+    thank_you_for_appointment: 感謝您與我們安排預約。您可以在下方檢視預約詳細資訊。如需更改，請點選預約連結。
+    appointment_details_title: 預約詳細資訊
+    customer_details_title: 顧客詳細資訊
+    service: 服務
+    provider: 提供者
+    customer: 顧客
+    start: 開始
+    end: 結束
+    name: 姓名
+    appointment_link_title: 預約連結
+    success: 成功
+    appointment_added_to_your_plan: 新預約已新增至您的行程。
+    appointment_link_description: 您可以點選下方的預約連結進行更改。
+    appointment_locked: 無法修改！
+    appointment_locked_message: 預約無法在少於 {$limit} 小時前更改。
+    appointment_not_found: 找不到預約
+    appointment_does_not_exist_in_db: 您請求的預約已不存在於系統資料庫中。
+    display_calendar: 顯示日曆
+    calendar: 日曆
+    users: 使用者
+    settings: 設定
+    log_out: 登出
+    synchronize: 同步
+    enable_sync: 啟用同步
+    disable_sync: 停用同步
+    disable_sync_prompt: 您確定要停用日曆同步嗎？
+    reload: 重新載入
+    appointment: 預約
+    unavailability: 不可用時段
+    week: 週
+    month: 月
+    today: 今天
+    not_working: 不工作
+    break: 休息
+    add: 新增
+    edit: 編輯
+    hello: 您好
+    all_day: 全天
+    manage_appointment_record_hint: 管理所有可用提供者和服務的預約記錄。
+    select_filter_item_hint: 選擇提供者或服務並在日曆上檢視預約。
+    enable_appointment_sync_hint: 啟用與外部日曆的預約同步。
+    manage_customers_hint: 管理已註冊的顧客並檢視他們的預約歷史。
+    manage_services_hint: 管理系統中的可用服務和類別。
+    manage_users_hint: 管理後臺使用者（管理員、提供者、秘書）。
+    settings_hint: 設定系統和使用者設定。
+    log_out_hint: 登出系統。
+    unavailability_periods_hint: 在不可用時段內，提供者將不接受新預約。
+    new_appointment_hint: 建立新預約並儲存至資料庫。
+    reload_appointments_hint: 重新載入日曆預約。
+    trigger_sync_hint: 觸發日曆同步程序。
+    appointment_updated: 預約已成功更新。
+    undo: 復原
+    appointment_details_changed: 預約詳細資訊已更改。
+    appointment_changes_saved: 預約更改已成功儲存。
+    save: 儲存
+    new: 新增
+    select: 選擇
+    hide: 隱藏
+    type_to_filter_customers: 輸入以篩選顧客。
+    clear_fields_add_existing_customer_hint: 清除欄位並輸入新顧客。
+    pick_existing_customer_hint: 選擇現有顧客。
+    new_appointment_title: 新增預約
+    edit_appointment_title: 編輯預約
+    delete_appointment_title: 刪除預約
+    write_appointment_removal_reason: 請花一分鐘寫下您刪除預約的原因：
+    appointment_saved: 預約已成功儲存。
+    new_unavailability_title: 新增不可用時段
+    edit_unavailability_title: 編輯不可用時段
+    unavailability_saved: 不可用時段已成功儲存。
+    start_date_before_end_error: 開始日期晚於結束日期。
+    invalid_duration: 無效的時長。
+    invalid_email: 無效的電子郵件地址。
+    customers: 顧客
+    details: 詳細資訊
+    no_records_found: 找不到記錄...
+    services: 服務
+    duration_minutes: 時長（分鐘）
+    currency: 貨幣
+    category: 類別
+    no_category: 無類別
+    description: 描述
+    categories: 類別
+    admins: 管理員
+    providers: 提供者
+    secretaries: 秘書
+    mobile_number: 手機號碼
+    mobile: 手機
+    state: 州/省
+    username: 使用者名稱
+    password: 密碼
+    retype_password: 重新輸入密碼
+    receive_notifications: 接收通知
+    passwords_mismatch: 密碼不符。
+    admin_saved: 管理員已成功儲存。
+    provider_saved: 提供者已成功儲存。
+    secretary_saved: 秘書已成功儲存。
+    admin_deleted: 管理員已成功刪除。
+    provider_deleted: 提供者已成功刪除。
+    secretary_deleted: 秘書已成功刪除。
+    service_saved: 服務已成功儲存。
+    service_category_saved: 服務類別已成功儲存。
+    service_deleted: 服務已成功刪除。
+    service_category_deleted: 服務類別已成功刪除。
+    customer_saved: 顧客已成功儲存。
+    customer_deleted: 顧客已成功刪除。
+    current_view: 目前檢視
+    working_plan: 工作計劃
+    reset_plan: 重置計劃
+    monday: 星期一
+    tuesday: 星期二
+    wednesday: 星期三
+    thursday: 星期四
+    friday: 星期五
+    saturday: 星期六
+    sunday: 星期日
+    breaks: 休息時間
+    add_breaks_during_each_day: 在每天新增工作休息時間。在休息期間，提供者將不接受任何預約。
+    day: 日
+    days: 天數
+    actions: 操作
+    reset_working_plan_hint: 將工作計劃重置為預設值。
+    company_name: 公司名稱
+    company_name_hint: 公司名稱將顯示在系統的各個地方（必填）。
+    company_email: 公司電子郵件
+    company_email_hint: 這將是公司的電子郵件地址。它將用作系統電子郵件的發件人和回覆地址（必填）。
+    company_link: 公司網站
+    company_link_hint: 公司網站應指向公司的官方網站（必填）。
+    go_to_booking_page: 前往預約頁面
+    settings_saved: 設定已成功儲存。
+    general: 一般
+    booking: 預約
+    visible: 可見
+    hidden: 隱藏
+    business_logic: 業務邏輯
+    current_user: 目前使用者
+    about_app: 關於 Easy!Appointments
+    edit_working_plan_hint: 在下方標記您的公司將接受預約的日子和時間。您將能夠在非工作時間調整預約，但顧客將無法在非工作時段自行預約。此工作計劃將是每個新提供者記錄的預設值，但您可以透過編輯其記錄來個別更改每個提供者的計劃。之後您可以新增休息時段。
+    edit_breaks_hint: 在每天新增工作休息時間。這些休息時間將適用於所有新提供者。
+    book_advance_timeout: 預約提前超時
+    book_advance_timeout_hint: 定義顧客可以在公司預約或重新安排預約前的超時時間（以分鐘為單位）。
+    timeout_minutes: 超時（分鐘）
+    about_app_info: Easy!Appointments 是一個高度可客製化的網頁應用程式，允許您的顧客透過網路與您預約。此外，它還提供與 Google 日曆同步的功能，讓您可以與其他服務一起使用。
+    current_version: 目前版本
+    support: 支援
+    about_app_support: 如果您在使用 Easy!Appointments 時遇到任何問題，您可以在官方 Google 群組中搜尋答案。您可能還需要在 Google Code 頁面上建立一個新問題，以幫助開發進展。
+    official_website: 官方網站
+    google_plus_community: Google+ 社群
+    support_group: 支援群組
+    project_issues: 專案問題
+    license: 授權
+    about_app_license: Easy!Appointments 授權於 GPLv3 許可證下。以任何方式使用 Easy!Appointments 的程式碼，即表示您同意以下網址中描述的條款：
+    logout_success: 您已成功登出！點選以下按鈕之一以導航到不同的頁面。
+    book_appointment_title: 預約
+    backend_section: 後臺區域
+    you_need_to_login: 歡迎！您需要登入才能檢視後臺頁面。
+    enter_username_here: 在此輸入您的使用者名稱...
+    enter_password_here: 在此輸入密碼 ...
+    login: 登入
+    forgot_your_password: 忘記密碼？
+    login_failed: 登入失敗，請輸入正確的憑證並重試。
+    type_username_and_email_for_new_password: 輸入您的使用者名稱和電子郵件地址以取得新密碼。
+    enter_email_here: 在此輸入您的電子郵件...
+    regenerate_password: 重新產生密碼
+    go_to_login: 返回登入頁面
+    new_password_sent_with_email: 您的新密碼已透過電子郵件傳送給您。
+    new_account_password: 新帳戶密碼
+    new_password_is: 您的新帳戶密碼是 $password。請儲存此電子郵件以便在必要時檢索您的密碼。您也可以在設定頁面中更改此密碼。
+    delete_record_prompt: 您確定要刪除此記錄嗎？此操作無法復原。
+    delete_admin: 刪除管理員
+    delete_customer: 刪除顧客
+    delete_service: 刪除服務
+    delete_service_category: 刪除服務類別
+    delete_provider: 刪除提供者
+    delete_secretary: 刪除秘書
+    delete_appointment: 刪除預約
+    delete_unavailability: 刪除不可用時段
+    delete: 刪除
+    unexpected_issues: 意外問題
+    unexpected_issues_message: 操作無法完成。
+    close: 關閉
+    page_not_found: 找不到頁面
+    page_not_found_message: 很抱歉，您請求的頁面不存在。請檢查您的瀏覽器 URL 或使用下方按鈕前往其他位置。
+    error: 錯誤
+    no_privileges: 無權限
+    no_privileges_message: 您沒有檢視此頁面的必要權限。請導航到不同的區域。
+    backend_calendar: 後臺日曆
+    start_date_time: 開始日期 / 時間
+    end_date_time: 結束日期 / 時間
+    licensed_under: 授權於
+    unexpected_issues_occurred: 發生意外問題。
+    service_communication_error: 發生伺服器通訊錯誤，請重試。
+    no_privileges_edit_appointments: 您沒有編輯預約的必要權限。
+    unavailability_updated: 不可用時段已成功更新。
+    appointments: 預約
+    unexpected_warnings: 意外警告
+    unexpected_warnings_message: 操作已完成，但出現了一些警告。
+    filter: 篩選
+    clear: 清除
+    uncategorized: 未分類
+    username_already_exists: 使用者名稱已存在。
+    password_length_notice: 密碼必須至少 $number 個字元長。
+    general_settings: 一般設定
+    personal_information: 個人資訊
+    system_login: 系統登入
+    user_settings_are_invalid: 使用者設定無效！請檢查您的設定並重試。
+    add_break: 新增休息
+    january: 一月
+    february: 二月
+    march: 三月
+    april: 四月
+    may: 五月
+    june: 六月
+    july: 七月
+    august: 八月
+    september: 九月
+    october: 十月
+    november: 十一月
+    december: 十二月
+    previous: 上一頁
+    next: 下一頁
+    now: 現在
+    select_time: 選擇時間
+    time: 時間
+    hour: 小時
+    minute: 分鐘
+    calendar_sync_completed: 日曆同步已成功完成。
+    calendar_sync_failed: 日曆同步失敗：無法建立伺服器連線。
+    select_sync_calendar: 選擇同步日曆
+    select_sync_calendar_prompt: 選擇您要同步預約的日曆。
+    sync_calendar_selected: 同步日曆已成功選擇。
+    oops_something_went_wrong: 哎呀！出了點問題。
+    ea_update_success: Easy!Appointments 已成功更新。
+    require_captcha: 需要驗證碼
+    require_captcha_hint: 啟用後，顧客在預約/更新預約前需要輸入隨機產生的驗證碼字串。
+    captcha_is_wrong: 驗證碼驗證失敗，請重試。
+    enter_captcha_here: 在此輸入 CAPTCHA...
+    any_provider: 任何提供者
+    requested_hour_is_unavailable: 很抱歉，所請求的預約時間不可用。請選擇其他時間進行預約。
+    customer_notifications: 顧客通知
+    customer_notifications_hint: 定義顧客在其預約有行程變更時是否會收到電子郵件通知。
+    date_format: 日期格式
+    date_format_hint: 更改日期顯示格式（D - 日期，M - 月份，Y - 年份）。
+    time_format: 時間格式
+    time_format_hint: 更改時間顯示格式（H - 小時，M - 分鐘）。
+    first_weekday: 一週的第一天
+    first_weekday_hint: 設定日曆週的第一天。
+    google_analytics_code_hint: 新增您的 Google Analytics 代碼以啟用預約頁面的 Google Analytics 追蹤。
+    availabilities_type: 可用性類型
+    flexible: 彈性
+    fixed: 固定
+    attendants_number: 參加人數
+    reset_working_plan: 將工作計劃重置為預設值。
+    legal_contents: 法律內容
+    cookie_notice: Cookie 通知
+    display_cookie_notice: 顯示 Cookie 通知
+    cookie_notice_content: Cookie 通知內容
+    terms_and_conditions: 條款與條件
+    display_terms_and_conditions: 顯示條款與條件
+    terms_and_conditions_content: 條款與條件內容
+    privacy_policy: 隱私政策
+    display_privacy_policy: 顯示隱私政策
+    privacy_policy_content: 隱私政策內容
+    website_using_cookies_to_ensure_best_experience: 本網站使用 Cookie 以確保您在我們的網站上獲得最佳體驗。
+    read_and_agree_to_terms_and_conditions: 我已閱讀並同意 {$link}條款與條件{/$link}。
+    read_and_agree_to_privacy_policy: 我已閱讀並同意 {$link}隱私政策{/$link}。
+    delete_personal_information_hint: 從系統中移除您的所有預約和個人資訊。
+    delete_personal_information: 刪除個人資訊
+    delete_personal_information_prompt: 您確定要刪除您的個人資訊嗎？此操作無法復原。
+    location: 地點
+    working_plan_exception: 工作計劃例外
+    working_plan_exceptions: 工作計劃例外
+    working_plan_exceptions_hint: 新增工作計劃例外日，超出工作計劃。
+    new_working_plan_exception_title: 新增工作計劃例外
+    working_plan_exception_saved: 工作計劃例外已成功儲存。
+    working_plan_exception_deleted: 工作計劃例外已成功刪除。
+    add_working_plan_exceptions_during_each_day: 新增工作計劃例外，超出工作計劃。
+    add_working_plan_exception: 新增工作計劃例外
+    require_phone_number: 需要電話號碼
+    require_phone_number_hint: 啟用後，顧客和使用者在預約時需要輸入顧客的電話號碼
+    check_spam_folder: 如果電子郵件在幾分鐘內未送達，請檢查您的垃圾郵件夾。
+    api_token_hint: 設定一個金鑰以啟用 Easy!Appointments API 的權杖式驗證。
+    timezone: 時區
+    overwrite_existing_working_plans: 這將覆蓋現有的提供者工作計劃，您確定要繼續嗎？
+    working_plans_got_updated: 所有工作計劃已更新。
+    apply_to_all_providers: 套用至所有提供者
+    display_any_provider: 顯示任何提供者選項
+    display_any_provider_hint: 預約頁面將獲得一個額外選項，允許顧客在不指定提供者的情況下進行預約。
+    load_more: 載入更多
+    list: 列表
+    default: 預設
+    table: 表格
+    date: 日期
+    about: 關於
+    booking_settings: 預約設定
+    display: 顯示
+    require: 需要
+    color: 顏色
+    matomo_analytics_url_hint: 新增您的 Matomo 安裝網址以啟用預約頁面的 Matomo 追蹤。
+    invalid_phone: 無效的電話號碼。
+    legal: 法律
+    business: 業務
+    account: 帳戶
+    disable_booking: 停用預約
+    disable_booking_hint: 預約頁面將在此設定啟用期間停用，顧客將無法註冊新預約。
+    display_message: 顯示訊息
+    booking_is_disabled: 預約功能已停用！
+    appearance: 外觀
+    company_logo: 公司標誌
+    company_logo_hint: 公司標誌將顯示在應用程式的多個地方，包括預約頁面和通知電子郵件（圖片檔案，最大 2MB）。
+    company_color: 公司顏色
+    company_color_hint: 公司顏色將套用於整個應用程式，以便應用程式使用您的品牌形象。
+    localization: 在地化
+    integrations: 整合
+    company: 公司
+    remove: 移除
+    login_button: 登入按鈕
+    display_login_button_hint: 定義是否在預約頁面顯示登入按鈕。
+    private: 私人
+    private_hint: 私人記錄將不會顯示或處理於公開頁面，如預約頁面。
+    reset: 重設
+    all: 全部
+    booking_link: 預約連結
+    add_new_event: 新增事件
+    what_kind_of_event: 您想新增什麼類型的事件？
+    theme: 主題
+    limit_customer_access: 限制顧客存取
+    limit_customer_access_hint: 如果啟用，提供者和秘書將只能存取與他們有預約的顧客。
+    url: 網址
+    secret_token: 金鑰
+    verify_ssl: 驗證 SSL
+    appointment_save: 預約儲存
+    appointment_delete: 預約刪除
+    unavailability_save: 不可用時段儲存
+    unavailability_delete: 不可用時段刪除
+    customer_save: 顧客儲存
+    customer_delete: 顧客刪除
+    service_save: 服務儲存
+    service_delete: 服務刪除
+    service_category_save: 服務類別儲存
+    service_category_delete: 服務類別刪除
+    provider_save: 提供者儲存
+    provider_delete: 提供者刪除
+    secretary_save: 秘書儲存
+    secretary_delete: 秘書刪除
+    admin_save: 管理員儲存
+    admin_delete: 管理員刪除
+    options: 選項
+    webhooks: Webhooks
+    webhooks_info: Webhooks 允許您在各種應用程式事件（如預約建立或顧客刪除）發生時，向外部網頁應用程式傳送 HTTP 通知。
+    integrations_info: 整合允許您與外部應用程式和 API 建立第三方連線。
+    configure: 設定
+    google_analytics: Google 分析
+    google_analytics_info: Google Analytics 允許您自動將追蹤程式碼和 HTML 標記新增到公開頁面，並追蹤所有公開預約工作階段。
+    matomo_analytics: Matomo 分析
+    matomo_analytics_info: Matomo Analytics 允許您自動將追蹤程式碼和 HTML 標記新增到公開頁面，並追蹤所有公開預約工作階段。
+    api: API
+    api_info: API 允許您透過 HTTP 協議和可用的 API 端點與所有 Easy!Appointments 資料進行互動，並建立您自己的整合。
+    google_analytics_code: Google Analytics 程式碼
+    matomo_analytics_url: Matomo Analytics 網址
+    future_booking_limit: 未來預約限制
+    limit_days: 限制（天數）
+    future_booking_limit_hint: 設定顧客可以透過公開預約頁面進行預約的未來限制天數。
+    api_token: API 權杖
+    allow_rescheduling_cancellation_before: 允許重新安排/取消前
+    at_least_one_field: 預約頁面上必須顯示至少一個欄位。
+    status: 狀態
+    appointment_status_options: 預約狀態選項
+    appointment_status_options_info: 定義可在日曆頁面中使用的可用預約狀態選項列表（第一個將自動成為預設值）。
+    sunday_short: 週日
+    monday_short: 週一
+    tuesday_short: 週二
+    wednesday_short: 週三
+    thursday_short: 週四
+    friday_short: 週五
+    saturday_short: 週六
+    january_short: 一月
+    february_short: 二月
+    march_short: 三月
+    april_short: 四月
+    may_short: 五月
+    june_short: 六月
+    july_short: 七月
+    august_short: 八月
+    september_short: 九月
+    october_short: 十月
+    november_short: 十一月
+    december_short: 十二月
+    am: 上午
+    pm: 下午
+    to: 至
+    click_to_toggle: 點選切換
+    week_short: 週
+    scroll_to_increment: 捲動以增加
+    year: 年
+    make_non_working_day: 此提供者在選定日期將無法工作。
+    no_breaks: 無休息
+    service_categories: 服務類別
+    service_category: 服務類別
+    blocked_period_saved: 保留時段已成功儲存。
+    blocked_period_deleted: 保留時段已成功刪除。
+    delete_blocked_period: 刪除保留時段
+    blocked_period: 保留時段
+    blocked_periods: 保留時段
+    blocked_period_save: 保留時段儲存
+    blocked_period_delete: 保留時段刪除
+    blocked_periods_hint: 定義所有提供者的公開預約將被停用的時段（例如，關閉日期、假期等）。
+    custom_field: 自訂欄位
+    custom_fields: 自訂欄位
+    label: 標籤
+    webhook_saved: Webhook 已成功儲存。
+    webhook_deleted: Webhook 已成功刪除。
+    delete_webhook: 刪除 Webhook
+    contact_info: 聯絡資訊
+    hide_from_public: 從公開頁面隱藏
+    matomo_analytics_site_id: Matomo Analytics 網站 ID
+    matomo_analytics_site_id_hint: 設定將由 Matomo 追蹤的網站 ID（預設網站的 ID 為 "1"）。
+    default_timezone: 預設時區
+    default_timezone_hint: 設定將用於新記錄的預設時區。
+    default_language: 預設語言
+    default_language_hint: 設定將用於新記錄的預設語言。
+    sync_method_prompt: 您想使用哪種同步方法？
+    caldav_server: CalDAV 伺服器
+    caldav_connection_info_prompt: 請輸入目標 CalDAV 日曆的連線資訊。
+    connect: 連線
+    ldap: LDAP
+    ldap_info: 此整合允許您連線到現有的 LDAP 伺服器，並自動將使用者匯入 Easy!Appointments，並讓他們使用目錄密碼進行單一登入（使用者名稱必須相符）。
+    host: 主機
+    port: 連接埠
+    user_dn: 使用者 DN
+    base_dn: 基礎 DN
+    keyword: 關鍵字
+    ldap_search_hint: 提供一個關鍵字以透過 LDAP 目錄搜尋符合篩選條件的使用者。
+    ldap_extension_not_loaded: 未載入 LDAP PHP 擴充功能，但此整合需要它才能運作。
+    field_mapping: 欄位對映
+    content: 內容
+    active: 啟用
+    user_imported: 使用者記錄已成功匯入。
+    import: 匯入
+    ldap_dn: LDAP DN
+    role: 角色
+    at_least_one_field_required: 預約頁面上必須至少有一個欄位設為必填。
+    customer_is_already_booked: 此顧客在請求的預約時段內已經有預約。
+    fields: 欄位
+    invalid_credentials_provided: 提供的憑證無效，請重試。
+    calendar_url: 日曆網址
+    please_select: 請選擇
+    secret_header: 密鑰標頭
+    search: 搜尋
+    slot_interval: 時段間隔（分鐘）
+    jitsi: Jitsi
+    jitsi_info: 啟用自動產生 Jitsi 會議連結功能。啟用後，系統將自動產生唯一的 Jitsi 視訊通話連結並儲存為會議連結。
+    altcha: ALTCHA
+    altcha_info: ALTCHA 是一個注重隱私的開源 CAPTCHA 替代方案，使用工作量證明來驗證真實使用者，無需追蹤。
+    altcha_enabled_hint: 啟用後，將使用 ALTCHA 替代傳統的圖片 CAPTCHA 進行表單驗證。
+    altcha_hmac_key: HMAC 金鑰
+    altcha_hmac_key_hint: 用於簽署和驗證 ALTCHA 挑戰的密鑰。點擊產生以建立新的安全金鑰。
+    altcha_max_number: 最大數字
+    altcha_max_number_hint: 工作量證明挑戰的最大數字。數值越高難度越大（預設值：100000）。
+    altcha_expires: 過期時間（秒）
+    altcha_expires_hint: 挑戰保持有效的秒數（預設值：300）。
+    altcha_key_generated: 新的 HMAC 金鑰已成功產生。
+    altcha_enabled: 啟用 ALTCHA
+    altcha_captcha_not_active_warning: CAPTCHA 設定目前未啟用。除非在以下位置啟用 CAPTCHA，否則 ALTCHA 將不會被使用：
+    generate: 產生
+    meeting_link: 會議連結
+    google_calendar: Google 日曆
+    google_calendar_info: 啟用 Google Calendar 同步，將預約與服務提供者的 Google Calendar 帳戶同步。
+    google_client_id: 用戶端 ID
+    google_client_id_info: 來自您的 Google Cloud Console 專案的用戶端 ID。
+    google_client_secret: 用戶端密鑰
+    google_client_secret_info: 來自您的 Google Cloud Console 專案的用戶端密鑰。
+    google_calendar_setup_info: 要啟用 Google Calendar 同步，您需要在 Google Cloud Console 中建立專案、啟用 Google Calendar API 並建立 OAuth 2.0 憑證。請造訪：
+    google_meet_link_generation: 產生 Google Meet 連結
+    google_meet_link_generation_info: 自動為同步的預約建立 Google Meet 視訊會議連結。會議連結將儲存在預約的會議連結欄位中。
+    display_add_to_google_calendar: 顯示"加入 Google Calendar"按鈕
+    display_add_to_google_calendar_info: 在預約確認頁面顯示"加入 Google Calendar"按鈕，方便顧客將預約輕鬆加入個人 Google Calendar。
+    select_all: 全選
+    select_none: 取消全選
+    appointment_update: 預約更新
+    notify_users_on_update_question: 您想發送關於此更改的通知嗎？
+    'yes': 是
+    'no': 否
+    latest_blog_posts: 最新部落格文章
+    loading: 載入中
+    blog_posts_load_error: 無法載入部落格文章。請訪問官方網站獲取更新。
+    provider_has_conflicting_appointment: 所選服務提供者在該時間已有其他預約。請選擇其他時間或服務提供者。
+    would_you_like_to_proceed: 您確定要繼續嗎？
+    proceed: 繼續
+    no_available_service_providers: 沒有可用的服務
+    no_available_service_providers_message: 目前沒有可供預約的服務或服務提供者。請稍後再查看或聯繫我們獲取幫助。
+    reset_password: 重置密碼
+    new_password: 新密碼
+    enter_new_password: 在下方輸入您的新密碼。
+    password_reset_request: 密碼重置請求
+    password_reset_email_message: 您已請求重置密碼。點擊下面的按鈕為您的帳戶設置新密碼。
+    password_reset_link_expires: 此連結將在1小時後過期。
+    password_reset_ignore_message: 如果您沒有請求重置密碼，請忽略此電子郵件。
+    invalid_reset_token: 密碼重置連結無效。
+    invalid_or_expired_token: 密碼重置連結無效或已過期。請重新申請。
+    password_reset_success: 您的密碼已成功重置。您將被重定向到登入頁面。
+    password_reset_failed: 密碼重置失敗。請重試。
+    no_password_provided: 請輸入密碼。
+    type_username_and_email_for_reset_link: 輸入您的使用者名稱和電子郵件地址以接收密碼重置連結。
+    send_reset_link: 發送重置連結
+    reset_link_sent_with_email: 如果存在與所提供憑據匹配的帳戶，密碼重置連結已發送到您的電子郵件。
+    working_plan_validation_failed: 發現無效的工作計畫配置。
+    start_date: 開始日期
+    end_date: 結束日期
+    remember_me: 記住我的資訊
+    remember_me_hint: 儲存您的資料以便下次更快預約。
+    legal_notice: 法律聲明
+    legal_notice_url: 法律聲明 URL
+    legal_notice_url_hint: 輸入您的法律聲明頁面的 URL。
+    imprint: 出版資訊
+    imprint_url: 出版資訊 URL
+    imprint_url_hint: 輸入您的出版資訊頁面的 URL。
+    data_retention: 資料保留
+    data_retention_days: 資料保留天數
+    data_retention_days_hint: 設定客戶資料自動刪除的天數。設定為 0 可停用自動刪除。
+    manage_privacy: 管理隱私
+    manage_privacy_hint: 點擊以下連結查看、更新或刪除您的個人資訊。
+    personal_information_updated: 您的個人資訊已成功更新。
+    verify: 驗證
+    verifying: 驗證中
+    verified: 已驗證
+    verification_complete: 驗證完成
+    verification_failed: 驗證失敗。點擊重試。
+    click_to_verify: 點擊驗證您是真人
+    altcha_verification_failed: ALTCHA 驗證失敗。請重試。
+    premium: Premium
+    about_app_premium: 我們為自架軟體提供端到端服務，包括客製開發、託管主機、支援合約、品牌客製化和持續增強——讓您專注於業務，其餘交給我們。
+    go_premium: 升級 Premium
+    notify_users_on_create_question: 您想通知客戶這個新預約嗎？
+    notify_users_on_delete_question: 您想通知客戶預約取消嗎？

@@ -1,0 +1,575 @@
+---
+es:
+  ea:
+    page_title: Agendar una cita con
+    service_and_provider: Seleccione Servicio y Proveedor
+    select_service: Seleccione Servicio
+    select_provider: Seleccione Proveedor
+    duration: Duración
+    minutes: Minutos
+    price: Precio
+    back: Atrás
+    appointment_date_and_time: Seleccione fecha y hora de cita
+    no_available_hours: No hay horarios disponibles para una cita en la fecha seleccionada. Por favor, elija otra fecha.
+    appointment_hour_missing: Por favor, seleccione un horario para la cita antes de continuar.
+    customer_information: Ingrese su información
+    first_name: Nombre
+    last_name: Apellido
+    email: Correo electrónico
+    phone_number: Número de teléfono
+    phone: Teléfono
+    address: Domicilio
+    city: Ciudad
+    zip_code: Código postal
+    notes: Notas
+    language: Idioma
+    no_language: Sin idioma
+    fields_are_required: Los campos con * son obligatorios
+    appointment_confirmation: Confirme la cita
+    confirm: Confirmar
+    update: Actualizar
+    cancel_appointment_hint: Presione el botón "Cancelar" para eliminar la cita de la agenda de la empresa.
+    cancel: Cancelar
+    appointment_registered: Su cita ha sido registrada exitosamente
+    cancel_appointment_title: Cancelar cita
+    appointment_cancelled: Su cita ha sido cancelada exitosamente
+    appointment_cancelled_title: Cita cancelada
+    reason: Razón
+    appointment_removed_from_schedule: Se eliminó esta cita de la agenda de la empresa.
+    appointment_details_was_sent_to_you: Se le ha enviado un correo electrónico con los detalles de la cita.
+    add_to_google_calendar: Agregar a Google Calendar
+    appointment_booked: Su cita ha sido agendada exitosamente
+    thank_you_for_appointment: Gracias por utilizar nuestro servicio para agendar su cita.  Debajo encontrará los detalles de su cita. Haga clic en la cita para realizar cambios.
+    appointment_details_title: Detalles de la cita
+    customer_details_title: Detalles del cliente
+    service: Servicio
+    provider: Proveedor
+    customer: Cliente
+    start: Inicio
+    end: Final
+    name: Nombre
+    appointment_link_title: Enlace a la cita
+    success: "¡Cita completada."
+    appointment_added_to_your_plan: Se ha agendado una nueva cita en su calendario.
+    appointment_link_description: Haga clic en la cita para realizar cambios.
+    appointment_locked: No es posible modificar la cita.
+    appointment_locked_message: La cita no se puede agendar con menos de {$limit} horas.
+    appointment_not_found: No se encontró la cita
+    appointment_does_not_exist_in_db: La cita que usted busca ya no se encuentra en la base de datos del sistema.
+    display_calendar: Mostrar Calendario
+    calendar: Calendario
+    users: Usuarios
+    settings: Configuración
+    log_out: Cerrar sesión
+    synchronize: Sincronizar
+    enable_sync: Habilitar sincronización
+    disable_sync: Deshabilitar sincronización
+    disable_sync_prompt: "¿Estás seguro de que quieres deshabilitar la sincronización de calendario?"
+    reload: Recargar
+    appointment: Cita
+    unavailability: No disponible
+    week: Semana
+    month: Mes
+    today: Hoy
+    not_working: Fuera de la oficina
+    break: Pausa
+    add: Agregar
+    edit: Editar
+    hello: Hola
+    all_day: Todo el día
+    manage_appointment_record_hint: Gestionar todas las citas agendadas de los proveedores y servicios disponibles.
+    select_filter_item_hint: Seleccionar un proveedor o un servicio y ver las citas en el calendario.
+    enable_appointment_sync_hint: Habilitar la sincronización de la cita con la cuenta de Google Calendar del proveedor.
+    manage_customers_hint: Gestionar los clientes registrados y ver su historial de citas agendadas.
+    manage_services_hint: Gestionar los servicios y las categorías disponibles del sistema.
+    manage_users_hint: Gestionar usuarios internos (administradores, proveedores, asistentes).
+    settings_hint: Establecer configuración de sistema y usuario.
+    log_out_hint: Cerrar sesión del sistema.
+    unavailability_periods_hint: El proveedor no podrá aceptar nuevas citas cuando se encuentre como No disponible.
+    new_appointment_hint: Crear una nueva cita y guardarla en la base de datos.
+    reload_appointments_hint: Cargar nuevamente citas del calendario.
+    trigger_sync_hint: Iniciar el proceso de sincronización del calendario.
+    appointment_updated: Cita actualizada exitosamente
+    undo: Deshacer
+    appointment_details_changed: Se han modificado los detalles de la cita.
+    appointment_changes_saved: Se han guardado exitosamente los cambios en la cita
+    save: Guardar
+    new: Nuevo
+    select: Seleccionar
+    hide: Ocultar
+    type_to_filter_customers: Tipee para filtrar clientes.
+    clear_fields_add_existing_customer_hint: Limpiar los campos e ingresar un nuevo cliente.
+    pick_existing_customer_hint: Elegir un cliente existente.
+    new_appointment_title: Nueva cita
+    edit_appointment_title: Editar cita
+    delete_appointment_title: Eliminar cita
+    write_appointment_removal_reason: 'Por favor, ingrese una razón para borrar la cita:'
+    appointment_saved: Cita guardado exitosamente
+    new_unavailability_title: Nuevo periodo No disponible
+    edit_unavailability_title: Editar periodo No disponible
+    unavailability_saved: Periodo No disponible guardado exitosamente
+    start_date_before_end_error: La fecha del inicio es posterior a la fecha del final
+    invalid_duration: Duración inválida.
+    invalid_email: Dirección de E-mail inválida
+    customers: Clientes
+    details: Detalles
+    no_records_found: No se encontraron resultados...
+    services: Servicios
+    duration_minutes: Duración (en minutos)
+    currency: Moneda
+    category: Categoría
+    no_category: Sin categoría
+    description: Descripción
+    categories: Categorías
+    admins: Administradores
+    providers: Proveedores
+    secretaries: Secretarios/as
+    mobile_number: Número de teléfono móvil
+    mobile: Móvil
+    state: Estado
+    username: Nombre de usuario
+    password: Contraseña
+    retype_password: Reingrese su contraseña
+    receive_notifications: Recibir notificaciones
+    passwords_mismatch: Las contraseñas no coinciden
+    admin_saved: Administrador guardado exitosamente
+    provider_saved: Proveedor guardado exitosamente
+    secretary_saved: Asistente guardado exitosamente
+    admin_deleted: Administador eliminado exitosamente
+    provider_deleted: Proveedor eliminado exitosamente
+    secretary_deleted: Asistente eliminado exitosamente
+    service_saved: Servicio guardado exitosamente
+    service_category_saved: Categoría de servicio guardada exitosamente
+    service_deleted: Servicio eliminado exitosamente
+    service_category_deleted: Categoría de servicio eliminada exitosamente
+    customer_saved: Cliente guardado exitosamente
+    customer_deleted: Cliente eliminado exitosamente
+    current_view: Vista actual
+    working_plan: Esquema del horario laboral
+    reset_plan: Restaurar el esquema del horario laboral
+    monday: Lunes
+    tuesday: Martes
+    wednesday: Miércoles
+    thursday: Jueves
+    friday: Viernes
+    saturday: Sábado
+    sunday: Domingo
+    breaks: Periodos de descanso
+    add_breaks_during_each_day: Agregar periodos de descanso para cada día. Durante los periodos de descanso los proveedores no podrán aceptar ninguna cita.
+    day: Día
+    days: Días
+    actions: Acciones
+    reset_working_plan_hint: Restaurar el esquema del horario laboral a los valores por defecto.
+    company_name: Nombre de la empresa
+    company_name_hint: El nombre de la empresa aparecerá en todo el sistema (obligatorio).
+    company_email: Dirección de E-mail de la empresa
+    company_email_hint: Esta será la dirección de E-mail de la empresa. Será utilizada como la dirección para enviar E-mails del sistema y recibir respuestas (obligatorio).
+    company_link: Enlace de la empresa
+    company_link_hint: El enlace de la empresa debe dirigir al sitio web oficial de la empresa (obligatorio).
+    go_to_booking_page: Ir a la página para agendar
+    settings_saved: Configuración guardada exitosamente
+    general: General
+    booking: Reserva
+    visible: Visible
+    hidden: Oculto
+    business_logic: Lógica del negocio
+    current_user: Usuario actual
+    about_app: Acerca de Easy!Appointments
+    edit_working_plan_hint: Marque abajo los días y horarios en que su empresa aceptará citas. Será posible agendar citas fuera del horario de trabajo, pero los clientes no podrán agendar citas ellos mismos en esos horarios.  Este será el esquema del horario laboral por defecto para todos los nuevos proveedores registrados, pero podrá cambiar el esquema de cada proveedor editando su registro. Luego se podrá agregar periodos de descanso.
+    edit_breaks_hint: Agrgar los periodos de descanso de trabajo en cada día. Se aplicarán estos periodos de descanso para todos los nuevos proveedores.
+    book_advance_timeout: Agendar tiempos muertos
+    book_advance_timeout_hint: Defina el tiempo muerto (en minutos) antes que de los clientes puedan agendar o reorganizar citas con la empresa.
+    timeout_minutes: Tiempo muerto (en minutos)
+    about_app_info: Easy!Appointments es un aplicativo web completamente personalizable que le permitirá a sus clientes agendar citas con Usted a través internet. Además, le permitirá sincronizar sus datos con Google Calendar, para poder utilizarlos con otros servicios.
+    current_version: Versión actual
+    support: Soporte
+    about_app_support: El grupo oficial de respuestas de Google Groups se encuentra a su disposición, en caso de que encuentre algún inconveniente con Easy!Appointments.  También podrá informar incidentes en la página de Google Code y así ayudar en el proceso de desarrollo de la herramienta.
+    official_website: Sitio web oficial
+    google_plus_community: Comunidad en Google+
+    support_group: Grupo de soporte
+    project_issues: Incidentes del proyecto
+    license: Licencia
+    about_app_license: 'Easy!Appointments se encuentra bajo licencia GPLv3. Todo tipo de uso del código de Easy!Appointments presume la aceptación de los términos desciptos en la siguiente dirección web:'
+    logout_success: Usted ha cerrado su sesión exitosamente. Haga clic en uno de los siguientes botones para navegar hacia otra página.
+    book_appointment_title: Agendar cita
+    backend_section: Sección de gestión interna
+    you_need_to_login: "¡Bienvenido! Usted deberá iniciar sesión para ver las páginas de gestión interna."
+    enter_username_here: Ingrese su nombre de usuario aquí...
+    enter_password_here: Introduzca la contraseña aquí ...
+    login: Iniciar sesión
+    forgot_your_password: "¿Olvidó su contraseña?"
+    login_failed: El inicio de sesión falló. Por favor, ingrese las credenciales correctas e inténtelo nuevamente.
+    type_username_and_email_for_new_password: Ingrese su nombre de usuario y su dirección de E-mail para obtener una nueva contraseña.
+    enter_email_here: Ingrese su dirección de E-mail aquí...
+    regenerate_password: Regenerar contraseña
+    go_to_login: Regresar a la página de inicio de sesión
+    new_password_sent_with_email: Se le ha enviado un correo electrónico con su nueva contraseña.
+    new_account_password: Nueva contraseña para iniciar sesión
+    new_password_is: Su nueva contraseña para iniciar sesión es $password. Por favor, guarde este correo electrónico en caso de que necesite recuperar su contraseña nuevamente. También puede reemplazar esta contraseña por una de su preferncia en la página de Configuración
+    delete_record_prompt: "¿Está seguro de que quiere eliminar este registro? Esta acción no se podrá deshacer."
+    delete_admin: Eliminar Administrador
+    delete_customer: Eliminar Cliente
+    delete_service: Eliminar Servicio
+    delete_service_category: Eliminar Categoría de servicio
+    delete_provider: Eliminar Proveedor
+    delete_secretary: Eliminar Asistente
+    delete_appointment: Eliminar cita
+    delete_unavailability: Eliminar periodo No disponible
+    delete: Eliminar
+    unexpected_issues: Problema inesperado
+    unexpected_issues_message: La operación no pudo completarse.
+    close: Cerrar
+    page_not_found: No se encontró la página
+    page_not_found_message: Lamentablemente, la página que usted solicitó no existe. Por favor, verifique la dirección web de su navegador o utilice los botones de abajo para navegar hacia otra ubicación.
+    error: Error
+    no_privileges: Sin permisos
+    no_privileges_message: Usted no posee los permisos necesarios para ver esta página. Por favor, navegue hacia otra sección.
+    backend_calendar: Calendario de gestión interna
+    start_date_time: Fecha y hora de inicio
+    end_date_time: Fecha y hora final
+    licensed_under: Bajo licencia de
+    unexpected_issues_occurred: Se encontraron problemas inesperados.
+    service_communication_error: Ha ocurrido un error de comunicación con el servidor, por favor, inténtelo nuevamente.
+    no_privileges_edit_appointments: Usted no posee los permisos necesarios para editar citas.
+    unavailability_updated: Periodo No disponible actualizado exitosamente
+    appointments: Citas
+    unexpected_warnings: Advertencia inesperada
+    unexpected_warnings_message: Se ha completado la operación, pero surgieron algunas advertencias.
+    filter: Filtro
+    clear: Limpiar
+    uncategorized: Sin categoría
+    username_already_exists: El nombre de usuario ya está en uso.
+    password_length_notice: La contraseña debe tener al menos $number caracteres de largo.
+    general_settings: Configuración general
+    personal_information: Información personal
+    system_login: Iniciar sesión en el sistema
+    user_settings_are_invalid: La configuración de usuario es inválida. Por favor, verifique la configuración e inténtelo nuevamente.
+    add_break: Agregar un período de descanso
+    january: Enero
+    february: Febrero
+    march: Marzo
+    april: Abril
+    may: Mayo
+    june: Junio
+    july: Julio
+    august: Agosto
+    september: Septiembre
+    october: Octubre
+    november: Noviembre
+    december: Diciembre
+    previous: Atrás
+    next: Siguiente
+    now: Ahora
+    select_time: Seleccionar hora
+    time: Hora
+    hour: Hora
+    minute: Minuto
+    calendar_sync_completed: Se completó la sincronización con Google exitosamente
+    calendar_sync_failed: 'La sincronización con Google falló: No se pudo establecer una conexión con el servidor.'
+    select_sync_calendar: Seleccionar un calendario de Google Calendar
+    select_sync_calendar_prompt: Seleccione el calendario con el que desea sincronizar sus citas. Si no desea seleccionar un calendario en particular, se utilizará el calendario por defecto.
+    sync_calendar_selected: Se ha seleccionado el calendario de Google Calendar exitosamente
+    oops_something_went_wrong: "¡Ups! ¡Algo ha salido mal."
+    ea_update_success: Easy!Appointments ha sido actualizado exitosamente
+    require_captcha: Requiere CAPTCHA
+    require_captcha_hint: Cuando se habilita, el cliente tendrá que escribir el código CAPTCHA antes de reservar/actualizar una cita.
+    captcha_is_wrong: Verificación de CAPTCHA fallida, por favor intentelo nuevamente.
+    enter_captcha_here: Introduzca el CAPTCHA aquí...
+    any_provider: Cualquier Proveedor
+    requested_hour_is_unavailable: La cita requerida desafortunadamente no está disponible. Por favor seleccione una hora diferente para su cita.
+    customer_notifications: Notificaciones de Clientes
+    customer_notifications_hint: Define si su cliente recibirá notificaciones de correo cada vez que una agenda cambia o alguna de sus citas.
+    date_format: Formato de Fecha
+    date_format_hint: Cambia el formato de fecha para mostrar (D - Día, M - Mes, Y - Año).
+    time_format: ''
+    time_format_hint: Cambiar el formato de visualización de la hora (H - Horas, M - Minutos).
+    first_weekday: Primer día de la semana
+    first_weekday_hint: Defina el primer día de la semana en el calendario.
+    google_analytics_code_hint: Agrega tu ID de Google Analytics para ser incluido en la página de reservas.
+    availabilities_type: Tipos disponibles
+    flexible: Flexible
+    fixed: Fijo
+    attendants_number: Número de Asistentes
+    reset_working_plan: Reinicia el plan de trabajo a los valores por defecto.
+    legal_contents: Contenidos legales
+    cookie_notice: Aviso de Cookies
+    display_cookie_notice: Mostrar Aviso de Cookies
+    cookie_notice_content: Contenido de Aviso de Cokkies
+    terms_and_conditions: Términos y Condiciones
+    display_terms_and_conditions: Mostrar Términos y Condiciones
+    terms_and_conditions_content: Contenido de Términos y Condiciones
+    privacy_policy: Política de Privacidad
+    display_privacy_policy: Mostrar Política de Privacidad
+    privacy_policy_content: Contenido de Política de Privacidad
+    website_using_cookies_to_ensure_best_experience: Esta web utiliza cookies para asegurarte una mejor experiencia.
+    read_and_agree_to_terms_and_conditions: He leido y estoy de acuerdo con {$link}Términos y Condiciones{/$link}.
+    read_and_agree_to_privacy_policy: He leido y estoy de acuerdo con {$link}Política de Privacidad{/$link}.
+    delete_personal_information_hint: Borrar toda la información personal del sistema.
+    delete_personal_information: Borrar información personal
+    delete_personal_information_prompt: "¿Estás seguro que quieres borrar tu información personal? Esta acción no se puede deshacer."
+    location: Ubicación
+    working_plan_exception: Excepción al plan de trabajo
+    working_plan_exceptions: Excepciones al plan de trabajo
+    working_plan_exceptions_hint: Agregar un día de excepción al plan de trabajo, fuera del plan de trabajo.
+    new_working_plan_exception_title: Nueva excepción al plan de trabajo.
+    working_plan_exception_saved: Plan de trabajo eliminado exitosamente.
+    working_plan_exception_deleted: Plan de trabajo eliminado exitosamente.
+    add_working_plan_exceptions_during_each_day: Agregar excepciones al plan de trabajo, fuera del plan de trabajo.
+    add_working_plan_exception: Agregar excepción al plan de trabajo
+    require_phone_number: Requerir número de teléfono
+    require_phone_number_hint: Cuando está habilitado, clientes y usuarios deberán ingresar el número de teléfono del cliente al registrar una cita.
+    check_spam_folder: Por favor, verifique su carpeta de correo no deseado si el correo no llega dentro de unos minutos.
+    api_token_hint: Defina un token secreto para habilitar la autentificación por token mediante la API de Easy!Appointments.
+    timezone: Zona horaria
+    overwrite_existing_working_plans: Esto sobreescribirá los planes de trabajo existentes del proveedor. ¿Seguro que desea continuar?
+    working_plans_got_updated: Todos los planes de trabajo fueron actualizados.
+    apply_to_all_providers: Aplicar a todos los proveedores
+    display_any_provider: Opción de mostrar cualquier proveedor
+    display_any_provider_hint: La página de reserva tendrá una opción adicional que permitirá que los clientes se anoten sin específicar un proveedor.
+    load_more: Cargar más
+    list: Lista
+    default: Predeterminado
+    table: Tabla
+    date: Fecha
+    about: Acerca de
+    booking_settings: Configuración de las citas
+    display: Mostar
+    require: Requerido
+    color: Color
+    matomo_analytics_url_hint: Añade el enlace a tu propia instalación de Matomo para activar el siguimiento de las páginas de reserva.
+    invalid_phone: Número de teléfono no válido.
+    legal: Legal
+    business: Negocio
+    account: Cuenta
+    disable_booking: Deshabilitar reservas
+    disable_booking_hint: La página de reservas se deshabilitará por tanto tiempo como este ajuste esté activo, los clientes no serán capaces de agendar nuevas citas.
+    display_message: Mensaje en pantalla
+    booking_is_disabled: Las reservas están deshabilitadas.
+    appearance: Apariencia
+    company_logo: Logotipo de la empresa
+    company_logo_hint: El logotipo de la empresa se mostrará en muchos lugares de la aplicación, incluyendo la página de reservas y las notificaciones en correos electrónicos (archivo de imagen, máx. 2MB).
+    company_color: Color corporativo
+    company_color_hint: El color corporativo se usará en múltiples sitios de toda la aplicación, así que elige el que más se adecúe a tu marca.
+    localization: Ubicación
+    integrations: Integraciones
+    company: Empresa
+    remove: Eliminar
+    login_button: Botón de inicio de sesión
+    display_login_button_hint: Define si el botón de inicio de sesión debe ser mostrado en la página de reservas.
+    private: Privado
+    private_hint: Los registros privados no se mostrarán o procesarán en páginas públicas como en la página de reservas.
+    reset: Restaurar
+    all: Todo
+    booking_link: Enlace para reservar
+    add_new_event: Añadir un nuevo evento
+    what_kind_of_event: "¿Qué tipo de evento te gustaría añadir?"
+    theme: Tema
+    limit_customer_access: Limitar el acceso a los clientes
+    limit_customer_access_hint: Si está activado, los proveedores y los secretarios solo podrán acceder a los clientes con los que tengan alguna cita.
+    url: URL
+    secret_token: Token Secreto
+    verify_ssl: Verificar SSL
+    appointment_save: Guardar cita
+    appointment_delete: Eliminar cita
+    unavailability_save: Guardar indisponibilidad
+    unavailability_delete: Eliminar indisponibilidad
+    customer_save: Guardar cliente
+    customer_delete: Eliminar cliente
+    service_save: Guardar servicio
+    service_delete: Eliminar servicio
+    service_category_save: Guardar categoría
+    service_category_delete: Eliminar categoría
+    provider_save: Guardar proveedor
+    provider_delete: Eliminar proveedor
+    secretary_save: Guardar secretario
+    secretary_delete: Eliminar secretario
+    admin_save: Guardar administrador
+    admin_delete: Eliminar administrador
+    options: Opciones
+    webhooks: Webhooks
+    webhooks_info: Webhooks permiten enviar notificaciones HTTP a aplicaciones webs externas en respuestas de eventos de tu aplicación, como la creación de una cita o la eliminación de un cliente.
+    integrations_info: Las integraciones permiten conectar con aplicaciones externas y APIs de terceros.
+    configure: Configurar
+    google_analytics: Google Analytics
+    google_analytics_info: Google Analytics permite añadir de forma automática un código de seguimiento y marcas HTML a las páginas públicas para rastrear todas las sesiones de la página pública de reservas.
+    matomo_analytics: Matomo Analytics
+    matomo_analytics_info: Matomo Analytics le permite agregar automáticamente el código de seguimiento y el marcado HTML a la página pública y rastrear todas las sesiones de reservas públicas.
+    api: API
+    api_info: La API permite interactuar con todos los datos de Easy!Appointments mediante el protocolo HTTP, así como con los API Endpoints y crear tus propias integraciones.
+    google_analytics_code: Código de Google Analytics
+    matomo_analytics_url: URL de Matomo Analytics
+    future_booking_limit: Límite de reservas futuras
+    limit_days: Límite (días)
+    future_booking_limit_hint: Establece el límite de días en los que los clientes pueden hacer reservas mediante la página pública de reservas.
+    api_token: Token de API
+    allow_rescheduling_cancellation_before: Permitir reagendar/cancelar antes
+    at_least_one_field: Al menos un campo debe ser mostrado en la página de reservas.
+    status: Estado
+    appointment_status_options: Opciones de estado de citas
+    appointment_status_options_info: Define una lista de los estados de disponibilidad de citas que pueden usarse en la página de calendario (la primera se convertirá en el valor por defecto).
+    sunday_short: Dom
+    monday_short: Lun
+    tuesday_short: Mar
+    wednesday_short: Mié
+    thursday_short: Jue
+    friday_short: Vie
+    saturday_short: Sáb
+    january_short: Ene
+    february_short: Feb
+    march_short: Mar
+    april_short: Abr
+    may_short: May
+    june_short: Jun
+    july_short: Jul
+    august_short: Ago
+    september_short: Sep
+    october_short: Oct
+    november_short: Nov
+    december_short: Dic
+    am: am
+    pm: pm
+    to: hasta
+    click_to_toggle: Haga clic para alternar
+    week_short: semana
+    scroll_to_increment: Desplazarse para incrementar
+    year: Año
+    make_non_working_day: Este proveedor no está disponible en el día seleccionado.
+    no_breaks: Sin descansos
+    service_categories: Categorías de servicios
+    service_category: Categoría de servicio
+    blocked_period_saved: El período bloqueado se guardó satisfactoriamente.
+    blocked_period_deleted: El período bloqueado se eliminó correctamente.
+    delete_blocked_period: Elimina el período bloqueado
+    blocked_period: Período bloqueado
+    blocked_periods: Períodos bloqueados
+    blocked_period_save: Guardar período bloqueado
+    blocked_period_delete: Eliminar período bloqueado
+    blocked_periods_hint: Define períodos de tiempo donde las reservas estarán deshabilitadas para todos los proveedores (p. ej. fechas de cierre, vacaciones, etc.).
+    custom_field: Campo personalizado
+    custom_fields: Campos personalizados
+    label: Etiqueta
+    webhook_saved: Webhook guardado exitosamente.
+    webhook_deleted: Webhook eliminado exitosamente.
+    delete_webhook: Eliminar Webhook
+    contact_info: Información de contacto
+    hide_from_public: Ocultar del Público
+    matomo_analytics_site_id: ID de Sitio de Matomo Analytics
+    matomo_analytics_site_id_hint: Establezca el ID de sitio que será rastreado por Matomo (el sitio predeterminado tiene el ID "1").
+    default_timezone: Zona Horaria Predeterminada
+    default_timezone_hint: Establezca el valor de zona horaria predeterminada que se utilizará para nuevos registros.
+    default_language: Idioma Predeterminado
+    default_language_hint: Establezca el valor de idioma predeterminado que se utilizará para nuevos registros.
+    sync_method_prompt: "¿Qué método de sincronización le gustaría utilizar?"
+    caldav_server: Servidor CalDAV
+    caldav_connection_info_prompt: Por favor, introduzca la información de conexión del Calendario CalDAV de destino.
+    connect: Conectar
+    ldap: LDAP
+    ldap_info: Esta integración le permite conectar con un servidor LDAP existente e importar automáticamente usuarios a Easy!Appointments y permitirles el SSO con su contraseña de directorio (el nombre de usuario debe coincidir).
+    host: Host
+    port: Puerto
+    user_dn: DN de usuario
+    base_dn: DN base
+    keyword: Palabra Clave
+    ldap_search_hint: Proporcione una palabra clave para buscar en el directorio LDAP usuarios que coincidan con los criterios de filtro.
+    ldap_extension_not_loaded: La extensión LDAP de PHP no está cargada, pero es necesaria para que esta integración funcione.
+    field_mapping: Mapeo de Campos
+    content: Contenido
+    active: Activo
+    user_imported: El registro del usuario se importó con éxito.
+    import: Importar
+    ldap_dn: DN de LDAP
+    role: Rol
+    at_least_one_field_required: Al menos un campo debe estar establecido como obligatorio en la página de reservas.
+    customer_is_already_booked: Este cliente ya tiene una cita durante el período de reserva solicitado.
+    fields: Campos
+    invalid_credentials_provided: Credenciales inválidas proporcionadas, por favor intente nuevamente.
+    calendar_url: URL del Calendario
+    please_select: Por Favor Seleccione
+    secret_header: Encabezado secreto
+    search: Buscar
+    slot_interval: Intervalo de franja (Minutos)
+    jitsi: Jitsi
+    jitsi_info: Habilitar la generación automática de enlaces de reunión Jitsi para las citas. Cuando está habilitado, se generará un enlace único de videollamada Jitsi y se almacenará como enlace de reunión.
+    altcha: ALTCHA
+    altcha_info: ALTCHA es una alternativa CAPTCHA de código abierto centrada en la privacidad que utiliza prueba de trabajo para verificar usuarios humanos sin rastreo.
+    altcha_enabled_hint: Cuando está habilitado, ALTCHA se utilizará en lugar del CAPTCHA de imagen tradicional para la verificación de formularios.
+    altcha_hmac_key: Clave HMAC
+    altcha_hmac_key_hint: Una clave secreta utilizada para firmar y verificar los desafíos ALTCHA. Haga clic en Generar para crear una nueva clave segura.
+    altcha_max_number: Número máximo
+    altcha_max_number_hint: 'El número máximo para el desafío de prueba de trabajo. Valores más altos aumentan la dificultad (por defecto: 100000).'
+    altcha_expires: Expiración (Segundos)
+    altcha_expires_hint: 'Tiempo de validez de un desafío en segundos (por defecto: 300).'
+    altcha_key_generated: Nueva clave HMAC generada exitosamente.
+    altcha_enabled: Habilitar ALTCHA
+    altcha_captcha_not_active_warning: La configuración CAPTCHA no está activa actualmente. ALTCHA no se utilizará a menos que CAPTCHA esté habilitado en la
+    generate: Generar
+    meeting_link: Enlace de reunión
+    google_calendar: Google Calendar
+    google_calendar_info: Habilitar la sincronización con Google Calendar para sincronizar las citas con las cuentas de Google Calendar de los proveedores.
+    google_client_id: ID de cliente
+    google_client_id_info: El ID de cliente de su proyecto en Google Cloud Console.
+    google_client_secret: Secreto de cliente
+    google_client_secret_info: El secreto de cliente de su proyecto en Google Cloud Console.
+    google_calendar_setup_info: 'Para habilitar la sincronización con Google Calendar, necesita crear un proyecto en Google Cloud Console, habilitar la API de Google Calendar y crear credenciales OAuth 2.0. Visite:'
+    google_meet_link_generation: Generar enlaces de Google Meet
+    google_meet_link_generation_info: Crear automáticamente un enlace de videoconferencia Google Meet para las citas sincronizadas. El enlace de reunión se almacenará en el campo de enlace de reunión de la cita.
+    display_add_to_google_calendar: Mostrar el botón "Agregar a Google Calendar"
+    display_add_to_google_calendar_info: Mostrar el botón "Agregar a Google Calendar" en la página de confirmación de reserva, permitiendo a los clientes agregar fácilmente su cita a su Google Calendar personal.
+    select_all: Seleccionar todo
+    select_none: Deseleccionar todo
+    appointment_update: Actualización de cita
+    notify_users_on_update_question: "¿Desea enviar una notificación sobre este cambio?"
+    'yes': Sí
+    'no': 'No'
+    latest_blog_posts: Últimas entradas del blog
+    loading: Cargando
+    blog_posts_load_error: No se pueden cargar las entradas del blog. Visite el sitio web oficial para actualizaciones.
+    provider_has_conflicting_appointment: El proveedor seleccionado ya tiene otra cita en ese horario. Por favor, seleccione un horario o proveedor diferente.
+    would_you_like_to_proceed: "¿Desea continuar de todos modos?"
+    proceed: Continuar
+    no_available_service_providers: No hay servicios disponibles
+    no_available_service_providers_message: Actualmente no hay servicios ni proveedores disponibles para reservar. Por favor, vuelva más tarde o contáctenos para obtener ayuda.
+    reset_password: Restablecer contraseña
+    new_password: Nueva contraseña
+    enter_new_password: Introduzca su nueva contraseña a continuación.
+    password_reset_request: Solicitud de restablecimiento de contraseña
+    password_reset_email_message: Ha solicitado restablecer su contraseña. Haga clic en el botón de abajo para establecer una nueva contraseña para su cuenta.
+    password_reset_link_expires: Este enlace caducará en 1 hora.
+    password_reset_ignore_message: Si no ha solicitado restablecer la contraseña, ignore este correo electrónico.
+    invalid_reset_token: El enlace de restablecimiento de contraseña no es válido.
+    invalid_or_expired_token: El enlace de restablecimiento de contraseña no es válido o ha caducado. Por favor, solicite uno nuevo.
+    password_reset_success: Su contraseña ha sido restablecida correctamente. Será redirigido a la página de inicio de sesión.
+    password_reset_failed: Error al restablecer la contraseña. Por favor, inténtelo de nuevo.
+    no_password_provided: Por favor, introduzca una contraseña.
+    type_username_and_email_for_reset_link: Escriba su nombre de usuario y dirección de correo electrónico para recibir un enlace de restablecimiento de contraseña.
+    send_reset_link: Enviar enlace de restablecimiento
+    reset_link_sent_with_email: Si existe una cuenta con las credenciales proporcionadas, se ha enviado un enlace de restablecimiento de contraseña a su correo electrónico.
+    working_plan_validation_failed: Se encontró una configuración de plan de trabajo inválida.
+    start_date: Fecha de inicio
+    end_date: Fecha de fin
+    remember_me: Recordar mi información
+    remember_me_hint: Guarde sus datos para una reserva más rápida la próxima vez.
+    legal_notice: Aviso legal
+    legal_notice_url: URL del aviso legal
+    legal_notice_url_hint: Introduzca la URL de su página de aviso legal.
+    imprint: Pie de imprenta
+    imprint_url: URL del pie de imprenta
+    imprint_url_hint: Introduzca la URL de su página de pie de imprenta.
+    data_retention: Retención de datos
+    data_retention_days: Días de retención de datos
+    data_retention_days_hint: Establezca el número de días tras los cuales los datos de los clientes se eliminarán automáticamente. Establezca 0 para desactivar la eliminación automática.
+    manage_privacy: Gestionar privacidad
+    manage_privacy_hint: Haga clic en el enlace a continuación para ver, actualizar o eliminar su información personal.
+    personal_information_updated: Su información personal ha sido actualizada exitosamente.
+    verify: Verificar
+    verifying: Verificando
+    verified: Verificado
+    verification_complete: Verificación completada
+    verification_failed: La verificación falló. Haga clic para reintentar.
+    click_to_verify: Haga clic para verificar que es humano
+    altcha_verification_failed: La verificación ALTCHA falló. Por favor, inténtelo de nuevo.
+    premium: Premium
+    about_app_premium: Ofrecemos servicios integrales para software autoalojado, incluyendo desarrollo personalizado, alojamiento gestionado, contratos de soporte, cambio de marca y mejoras continuas — para que pueda concentrarse en su negocio mientras nosotros nos encargamos del resto.
+    go_premium: Obtener Premium
+    notify_users_on_create_question: "¿Desea notificar al cliente sobre esta nueva cita?"
+    notify_users_on_delete_question: "¿Desea notificar al cliente sobre la cancelación de la cita?"
