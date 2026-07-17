@@ -31,6 +31,18 @@ class CalendarPullTest < ActiveSupport::TestCase
     assert_equal "Dentist", imported.notes
   end
 
+  test "converts event instants to the provider timezone before storing" do
+    # 08:00 UTC in July is 09:00 wall-clock for a Europe/London provider.
+    event = FakeEvent.new("ext-utc", "confirmed", "Remote",
+                          EventDT.new("2026-07-25T08:00:00Z"), EventDT.new("2026-07-25T09:00:00Z"))
+    pull = CalendarPull.new(gateway: FakeGateway.new([ event ]))
+
+    pull.sync_provider(@provider)
+    imported = Appointment.find_by(id_google_calendar: "ext-utc")
+    assert_equal "2026-07-25 09:00:00", imported.start_datetime.strftime("%Y-%m-%d %H:%M:%S")
+    assert_equal "2026-07-25 10:00:00", imported.end_datetime.strftime("%Y-%m-%d %H:%M:%S")
+  end
+
   test "does not re-import an already synced event" do
     @provider.provider_appointments.create!(is_unavailability: true, id_google_calendar: "ext-2",
                                             start_datetime: "2026-07-25 09:00:00", end_datetime: "2026-07-25 10:00:00")

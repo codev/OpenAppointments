@@ -8,12 +8,13 @@ class CalendarPull
   end
 
   def self.run
+    pull = new
     result = { providers: 0, imported: 0, removed: 0 }
     User.providers.includes(:settings).find_each do |provider|
       next unless provider.settings&.google_sync
 
       result[:providers] += 1
-      counts = new.sync_provider(provider)
+      counts = pull.sync_provider(provider)
       result[:imported] += counts[:imported]
       result[:removed] += counts[:removed]
     rescue GoogleCalendarGateway::AuthError => e
@@ -34,7 +35,7 @@ class CalendarPull
     @gateway.sync_events(provider, calendar_id, from, to).each do |event|
       if event.status == "cancelled"
         removed += 1 if remove_local(provider, event.id)
-      elsif import_external(provider, event)
+      elsif import_external(provider, event, zone)
         imported += 1
       end
     end
@@ -54,14 +55,14 @@ class CalendarPull
 
   # Import an event that originated in Google (no local record) as an unavailability.
   # Returns true if a new record was created.
-  def import_external(provider, event)
+  def import_external(provider, event, zone)
     return false if provider.provider_appointments.exists?(id_google_calendar: event.id)
     return false unless event.start&.date_time && event.end&.date_time
 
     provider.provider_appointments.create!(
       is_unavailability: true,
-      start_datetime: naive(event.start.date_time),
-      end_datetime: naive(event.end.date_time),
+      start_datetime: naive(event.start.date_time, zone),
+      end_datetime: naive(event.end.date_time, zone),
       notes: event.summary,
       id_google_calendar: event.id,
       book_datetime: Time.now
@@ -69,8 +70,9 @@ class CalendarPull
     true
   end
 
-  # Google returns RFC3339 instants; store the provider-local wall-clock component.
-  def naive(datetime)
-    Time.parse(datetime.to_s).strftime("%Y-%m-%d %H:%M:%S")
+  # Google returns RFC3339 instants in the calendar's offset; convert to the
+  # provider's timezone before taking the wall-clock component (EA setTimezone).
+  def naive(datetime, zone)
+    Time.parse(datetime.to_s).in_time_zone(zone).strftime("%Y-%m-%d %H:%M:%S")
   end
 end
