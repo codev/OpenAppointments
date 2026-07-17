@@ -1,6 +1,11 @@
 ---
 sv:
   ea:
+    booking_display_mode: Visningsläge för bokning
+    display_as_dropdown: Rullgardinslista
+    display_as_cards: Kort
+    picture: Bild
+    remove_picture: Ta bort bild
     select_provider_first: Välj utförare först
     select_service_first: Välj tjänst först
     page_title: Boka tid med ...

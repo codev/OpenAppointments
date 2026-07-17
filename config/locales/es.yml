@@ -1,6 +1,11 @@
 ---
 es:
   ea:
+    booking_display_mode: Modo de visualización de la reserva
+    display_as_dropdown: Lista desplegable
+    display_as_cards: Tarjetas
+    picture: Imagen
+    remove_picture: Eliminar imagen
     select_provider_first: Seleccionar primero el proveedor
     select_service_first: Seleccionar primero el servicio
     page_title: Agendar una cita con

@@ -37,6 +37,11 @@ Rails.application.routes.draw do
     post "#{resource}/destroy" => "#{resource}#destroy"
   end
 
+  # Record pictures (cards display mode)
+  %w[providers secretaries admins services service_categories].each do |resource|
+    post "#{resource}/:id/picture" => "#{resource}#save_picture"
+  end
+
   # Public booking wizard
   root "booking#index"
   get "booking" => "booking#index"

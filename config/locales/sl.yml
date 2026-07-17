@@ -1,6 +1,11 @@
 ---
 sl:
   ea:
+    booking_display_mode: Nacin prikaza rezervacije
+    display_as_dropdown: Spustni seznam
+    display_as_cards: Kartice
+    picture: Slika
+    remove_picture: Odstrani sliko
     select_provider_first: Najprej izberite izvajalca
     select_service_first: Najprej izberite storitev
     page_title: Rezerviraj termin z

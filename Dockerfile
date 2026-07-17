@@ -38,6 +38,7 @@ ENV PATH=/opt/mise/installs/ruby/3.4/bin:$PATH \
     RAILS_ENV=production \
     RAILS_LOG_TO_STDOUT=1 \
     RAILS_DB_DIR=/app/data/db \
+    RAILS_STORAGE_DIR=/app/data/storage \
     SOLID_QUEUE_IN_PUMA=true \
     BUNDLE_DEPLOYMENT=true \
     BUNDLE_WITHOUT="development test"

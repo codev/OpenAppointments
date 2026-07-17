@@ -68,6 +68,16 @@
                 <input id="name" class="form-control required" maxlength="128" disabled>
             </div>
 
+            <div class="mb-3 record-picture">
+                <label class="form-label d-block"><%= lang('picture') %></label>
+                <img id="picture-preview" class="img-thumbnail mb-2 d-none" style="max-height: 120px;" alt="">
+                <input type="file" id="picture-input" class="form-control mb-2"
+                       accept="image/png,image/jpeg,image/gif,image/webp" disabled>
+                <button type="button" id="picture-remove" class="btn btn-outline-danger btn-sm d-none">
+                    <%= lang('remove_picture') %>
+                </button>
+            </div>
+
             <div class="mb-3">
                 <label class="form-label" for="duration">
                     <%= lang('duration_minutes') %>
@@ -188,5 +198,5 @@
 </div>
 
 <% content_for :scripts do %>
-    <%= ea_js "http/services_http_client", "http/service_categories_http_client", "pages/services" %>
+    <%= ea_js "utils/picture_upload", "http/services_http_client", "http/service_categories_http_client", "pages/services" %>
 <% end %>

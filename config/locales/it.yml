@@ -1,6 +1,11 @@
 ---
 it:
   ea:
+    booking_display_mode: Modalità di visualizzazione della prenotazione
+    display_as_dropdown: Elenco a discesa
+    display_as_cards: Schede
+    picture: Immagine
+    remove_picture: Rimuovi immagine
     select_provider_first: Seleziona prima il fornitore
     select_service_first: Seleziona prima il servizio
     page_title: Prenota un appuntamento con

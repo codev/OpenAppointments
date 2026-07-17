@@ -1,6 +1,11 @@
 ---
 el:
   ea:
+    booking_display_mode: Τρόπος εμφάνισης κράτησης
+    display_as_dropdown: Αναπτυσσόμενη λίστα
+    display_as_cards: Κάρτες
+    picture: Εικόνα
+    remove_picture: Αφαίρεση εικόνας
     select_provider_first: Επιλογή παρόχου πρώτα
     select_service_first: Επιλογή υπηρεσίας πρώτα
     page_title: Κράτηση Ραντεβού Με

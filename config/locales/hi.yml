@@ -1,6 +1,11 @@
 ---
 hi:
   ea:
+    booking_display_mode: बुकिंग प्रदर्शन मोड
+    display_as_dropdown: ड्रॉपडाउन सूची
+    display_as_cards: कार्ड
+    picture: चित्र
+    remove_picture: चित्र हटाएं
     select_provider_first: पहले प्रदाता चुनें
     select_service_first: पहले सेवा चुनें
     page_title: नअपॉइंटमेंट बुक करें

@@ -5,14 +5,15 @@
     <div class="frame-container py-3" style="min-height: 500px;">
         <h2 class="frame-title fw-light text-center mb-4 text-muted mt-md-5"><%= lang('select_service') %></h2>
 
+        <% cards_mode = vars(:display_mode) == "cards" %>
         <div class="row frame-content">
             <div class="col col-lg-8 offset-md-2">
                 <div class="mb-3">
-                    <label for="select-service" class="fs-5 mb-2">
+                    <label for="select-service" class="fs-5 mb-2 <%= 'd-none' if cards_mode %>">
                         <strong><%= lang('service') %></strong>
                     </label>
 
-                    <select id="select-service" class="form-select mb-4">
+                    <select id="select-service" class="form-select mb-4 <%= 'd-none' if cards_mode %>">
                         <option value="">
                             <%= lang('please_select') %>
                         </option>
@@ -39,6 +40,65 @@
                         <% end %>
                     </select>
                 </div>
+
+                <% if cards_mode %>
+                    <%
+                      categories = vars(:available_categories)
+                      uncategorized = available_services.select { |service| service["service_category_id"].nil? }
+                      service_groups = available_services.group_by { |service| service["service_category_id"] }
+                    %>
+                    <% if categories.any? %>
+                        <div id="category-cards" class="booking-cards row g-3 mb-4">
+                            <% categories.each do |category| %>
+                                <div class="col-6 col-md-4">
+                                    <div class="booking-card card h-100 text-center" role="button" tabindex="0"
+                                         data-category-id="<%= category["id"] %>">
+                                        <% if category["picture_url"].present? %>
+                                            <img src="<%= category["picture_url"] %>" class="card-img-top booking-card-picture" alt="">
+                                        <% end %>
+                                        <div class="card-body p-2">
+                                            <h5 class="card-title fs-6 mb-0"><%= category["name"] %></h5>
+                                        </div>
+                                    </div>
+                                </div>
+                            <% end %>
+                            <% if uncategorized.any? %>
+                                <div class="col-6 col-md-4">
+                                    <div class="booking-card card h-100 text-center" role="button" tabindex="0"
+                                         data-category-id="">
+                                        <div class="card-body p-2">
+                                            <h5 class="card-title fs-6 mb-0">Uncategorized</h5>
+                                        </div>
+                                    </div>
+                                </div>
+                            <% end %>
+                        </div>
+                    <% end %>
+                    <% service_groups.each do |category_id, services| %>
+                        <div class="service-cards booking-cards row g-3 mb-4 <%= 'd-none' if categories.any? %>"
+                             data-category-id="<%= category_id %>">
+                            <% services.each do |service| %>
+                                <div class="col-6 col-md-4">
+                                    <div class="booking-card card h-100 text-center" role="button" tabindex="0"
+                                         data-service-id="<%= service["id"] %>">
+                                        <% if service["picture_url"].present? %>
+                                            <img src="<%= service["picture_url"] %>" class="card-img-top booking-card-picture" alt="">
+                                        <% end %>
+                                        <div class="card-body p-2">
+                                            <h5 class="card-title fs-6 mb-1"><%= service["name"] %></h5>
+                                            <div class="small text-muted">
+                                                <%= service["duration"] %> <%= lang('minutes') %>
+                                                <% if service["price"].to_f.positive? %>
+                                                    | <%= service["price"] %> <%= service["currency"] %>
+                                                <% end %>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            <% end %>
+                        </div>
+                    <% end %>
+                <% end %>
 
                 <div id="service-description" class="small overflow-auto shadow-none" style="max-height: 153px;">
                     <!-- JS -->

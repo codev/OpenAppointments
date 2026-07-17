@@ -1,6 +1,11 @@
 ---
 nl:
   ea:
+    booking_display_mode: Weergavemodus van de boeking
+    display_as_dropdown: Keuzelijst
+    display_as_cards: Kaarten
+    picture: Afbeelding
+    remove_picture: Afbeelding verwijderen
     select_provider_first: Kies eerst de aanbieder
     select_service_first: Kies eerst de dienst
     page_title: Boek afspraak met

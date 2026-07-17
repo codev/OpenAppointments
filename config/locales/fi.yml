@@ -1,6 +1,11 @@
 ---
 fi:
   ea:
+    booking_display_mode: Varauksen näyttötapa
+    display_as_dropdown: Pudotusvalikko
+    display_as_cards: Kortit
+    picture: Kuva
+    remove_picture: Poista kuva
     select_provider_first: Valitse ensin palveluntarjoaja
     select_service_first: Valitse ensin palvelu
     page_title: Varaa aika

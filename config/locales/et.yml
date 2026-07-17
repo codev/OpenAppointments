@@ -1,6 +1,11 @@
 ---
 et:
   ea:
+    booking_display_mode: Broneeringu kuvamisviis
+    display_as_dropdown: Rippmenüü
+    display_as_cards: Kaardid
+    picture: Pilt
+    remove_picture: Eemalda pilt
     select_provider_first: Vali kõigepealt teenusepakkuja
     select_service_first: Vali kõigepealt teenus
     page_title: Broneeri aeg

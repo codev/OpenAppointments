@@ -6,19 +6,25 @@
     <div class="frame-container py-3" style="min-height: 500px;">
         <h2 class="frame-title fw-light text-center mb-4 text-muted mt-md-5"><%= lang('select_provider') %></h2>
 
+        <% cards_mode = vars(:display_mode) == "cards" %>
         <div class="row frame-content">
             <div class="col col-lg-8 offset-md-2">
                 <div class="mb-3">
-                    <label for="select-provider" class="fs-5 mb-2">
+                    <label for="select-provider" class="fs-5 mb-2 <%= 'd-none' if cards_mode %>">
                         <strong><%= lang('provider') %></strong>
                     </label>
 
-                    <select id="select-provider" class="form-select mb-4">
+                    <select id="select-provider" class="form-select mb-4 <%= 'd-none' if cards_mode %>">
                         <option value="">
                             <%= lang('please_select') %>
                         </option>
                     </select>
                 </div>
+
+                <% if cards_mode %>
+                    <%# Populated by pages/booking.js from the provider select options. %>
+                    <div id="provider-cards" class="booking-cards row g-3 mb-4"></div>
+                <% end %>
 
                 <% if swap_link %>
                     <div class="text-center mt-4">

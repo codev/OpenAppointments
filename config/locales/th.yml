@@ -1,6 +1,11 @@
 ---
 th:
   ea:
+    booking_display_mode: รูปแบบการแสดงการจอง
+    display_as_dropdown: รายการแบบเลื่อนลง
+    display_as_cards: การ์ด
+    picture: รูปภาพ
+    remove_picture: ลบรูปภาพ
     select_provider_first: เลือกผู้ให้บริการก่อน
     select_service_first: เลือกบริการก่อน
     page_title: จองการนัดหมายกับ

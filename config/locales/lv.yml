@@ -1,6 +1,11 @@
 ---
 lv:
   ea:
+    booking_display_mode: Rezervācijas attēlošanas režīms
+    display_as_dropdown: Nolaižamais saraksts
+    display_as_cards: Kartītes
+    picture: Attēls
+    remove_picture: Noņemt attēlu
     select_provider_first: Vispirms izvēlieties pakalpojuma sniedzēju
     select_service_first: Vispirms izvēlieties pakalpojumu
     page_title: Aizsirašyti satikšanu ar

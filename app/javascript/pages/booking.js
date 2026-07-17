@@ -59,6 +59,13 @@ App.Pages.Booking = (function () {
     const firstStep = vars('first_step') || 'service';
 
     /**
+     * How the service/provider pages present the choices: 'dropdown' (EA) or 'cards'.
+     *
+     * @type {String}
+     */
+    const displayMode = vars('display_mode') || 'dropdown';
+
+    /**
      * Detect the month step.
      *
      * @param previousDateTimeMoment
@@ -350,6 +357,56 @@ App.Pages.Booking = (function () {
         } else if (previousProviderId === 'any-provider' && anyProviderAvailable) {
             $selectProvider.val('any-provider');
         }
+
+        if (displayMode === 'cards') {
+            renderProviderCards();
+        }
+    }
+
+    /**
+     * Cards mode: mirror the provider select options as clickable cards.
+     */
+    function renderProviderCards() {
+        const $providerCards = $('#provider-cards');
+
+        if (!$providerCards.length) {
+            return;
+        }
+
+        $providerCards.empty();
+
+        $selectProvider.find('option').each((index, optionEl) => {
+            const providerId = $(optionEl).attr('value');
+
+            if (!providerId) {
+                return; // Skip the "Please Select" placeholder.
+            }
+
+            const provider = vars('available_providers').find((entry) => String(entry.id) === String(providerId));
+
+            const $card = $('<div/>', {
+                'class': 'booking-card card h-100 text-center',
+                'role': 'button',
+                'tabindex': 0,
+                'data-provider-id': providerId,
+            });
+
+            if (provider && provider.picture_url) {
+                $card.append($('<img/>', {'src': provider.picture_url, 'class': 'card-img-top booking-card-picture', 'alt': ''}));
+            }
+
+            $card.append(
+                $('<div/>', {'class': 'card-body p-2'}).append(
+                    $('<h5/>', {'class': 'card-title fs-6 mb-0', 'text': $(optionEl).text()}),
+                ),
+            );
+
+            if (String($selectProvider.val()) === String(providerId)) {
+                $card.addClass('selected');
+            }
+
+            $providerCards.append($('<div/>', {'class': 'col-6 col-md-4'}).append($card));
+        });
     }
 
     /**
@@ -372,6 +429,10 @@ App.Pages.Booking = (function () {
                 provider.services.some((providerServiceId) => String(providerServiceId) === String($option.attr('value')));
 
             $option.prop('disabled', !offered).prop('hidden', !offered);
+
+            $('.service-cards .booking-card[data-service-id="' + $option.attr('value') + '"]')
+                .closest('.col-6')
+                .toggleClass('d-none', !offered);
         });
 
         const currentServiceId = $selectService.val();
@@ -469,6 +530,46 @@ App.Pages.Booking = (function () {
 
             App.Pages.Booking.updateServiceDescription(serviceId);
         });
+
+        /**
+         * Cards mode: category cards reveal that category's service cards; service and
+         * provider cards drive the underlying selects, so the wizard logic is unchanged.
+         */
+        if (displayMode === 'cards') {
+            $(document).on('click keypress', '#category-cards .booking-card', (event) => {
+                if (event.type === 'keypress' && event.key !== 'Enter') {
+                    return;
+                }
+
+                const $card = $(event.currentTarget);
+                $('#category-cards .booking-card').removeClass('selected');
+                $card.addClass('selected');
+                $('.service-cards').addClass('d-none');
+                $('.service-cards[data-category-id="' + ($card.attr('data-category-id') || '') + '"]').removeClass('d-none');
+            });
+
+            $(document).on('click keypress', '.service-cards .booking-card', (event) => {
+                if (event.type === 'keypress' && event.key !== 'Enter') {
+                    return;
+                }
+
+                const $card = $(event.currentTarget);
+                $('.service-cards .booking-card').removeClass('selected');
+                $card.addClass('selected');
+                $selectService.val($card.attr('data-service-id')).trigger('change');
+            });
+
+            $(document).on('click keypress', '#provider-cards .booking-card', (event) => {
+                if (event.type === 'keypress' && event.key !== 'Enter') {
+                    return;
+                }
+
+                const $card = $(event.currentTarget);
+                $('#provider-cards .booking-card').removeClass('selected');
+                $card.addClass('selected');
+                $selectProvider.val($card.attr('data-provider-id')).trigger('change');
+            });
+        }
 
         /**
          * Event: Next Step Button "Clicked"

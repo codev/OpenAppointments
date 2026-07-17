@@ -1,6 +1,7 @@
 # Providers admin CRUD, port of EA's Providers controller.
 class ProvidersController < ApplicationController
   include BackendPage
+  include PictureUpload
   include UserCrud
 
   layout "backend"
@@ -130,4 +131,8 @@ class ProvidersController < ApplicationController
       ServiceProviderLink.create!(id_users: provider.id, id_services: service_id)
     end
   end
+
+  def picture_record = User.providers.find(params[:id])
+
+  def picture_permission_resource = :users
 end

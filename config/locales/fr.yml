@@ -1,6 +1,11 @@
 ---
 fr:
   ea:
+    booking_display_mode: Mode d'affichage de la réservation
+    display_as_dropdown: Liste déroulante
+    display_as_cards: Cartes
+    picture: Image
+    remove_picture: Supprimer l'image
     select_provider_first: Choisir d'abord le prestataire
     select_service_first: Choisir d'abord le service
     page_title: Prendre rendez-vous avec...

@@ -1,6 +1,11 @@
 ---
 ru:
   ea:
+    booking_display_mode: Режим отображения записи
+    display_as_dropdown: Выпадающий список
+    display_as_cards: Карточки
+    picture: Изображение
+    remove_picture: Удалить изображение
     select_provider_first: Сначала выберите специалиста
     select_service_first: Сначала выберите услугу
     page_title: Заказ оформлен с

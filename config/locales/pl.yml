@@ -1,6 +1,11 @@
 ---
 pl:
   ea:
+    booking_display_mode: Tryb wyświetlania rezerwacji
+    display_as_dropdown: Lista rozwijana
+    display_as_cards: Karty
+    picture: Zdjęcie
+    remove_picture: Usuń zdjęcie
     select_provider_first: Najpierw wybierz usługodawcę
     select_service_first: Najpierw wybierz usługę
     page_title: Zamów wizytę

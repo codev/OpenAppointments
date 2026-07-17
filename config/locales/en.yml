@@ -1,6 +1,11 @@
 ---
 en:
   ea:
+    booking_display_mode: Booking display mode
+    display_as_dropdown: Dropdown list
+    display_as_cards: Cards
+    picture: Picture
+    remove_picture: Remove picture
     select_provider_first: Select Provider First
     select_service_first: Select Service First
     page_title: Book Appointment With

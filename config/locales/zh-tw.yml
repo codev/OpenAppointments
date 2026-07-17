@@ -1,6 +1,11 @@
 ---
 zh-tw:
   ea:
+    booking_display_mode: 預約顯示模式
+    display_as_dropdown: 下拉選單
+    display_as_cards: 卡片
+    picture: 圖片
+    remove_picture: 移除圖片
     select_provider_first: 先選擇服務人員
     select_service_first: 先選擇服務
     page_title: 預約

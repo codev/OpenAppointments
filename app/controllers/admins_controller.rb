@@ -1,6 +1,7 @@
 # Admins admin CRUD, port of EA's Admins controller.
 class AdminsController < ApplicationController
   include BackendPage
+  include PictureUpload
   include UserCrud
 
   layout "backend"
@@ -107,4 +108,8 @@ class AdminsController < ApplicationController
     Webhooks.trigger(Webhooks::ADMIN_SAVE, EaRows.admin_row(admin))
     render json: { success: true, id: admin.id }
   end
+
+  def picture_record = User.admins.find(params[:id])
+
+  def picture_permission_resource = :users
 end

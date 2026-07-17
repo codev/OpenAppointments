@@ -1,6 +1,11 @@
 ---
 mr:
   ea:
+    booking_display_mode: बुकिंग प्रदर्शन मोड
+    display_as_dropdown: ड्रॉपडाउन यादी
+    display_as_cards: कार्ड
+    picture: चित्र
+    remove_picture: चित्र काढा
     select_provider_first: आधी सेवा प्रदाता निवडा
     select_service_first: आधी सेवा निवडा
     page_title: अपॉईंटमेंट बुक करा

@@ -344,6 +344,7 @@ App.Pages.Admins = (function () {
      * Resets the admin form back to its initial state.
      */
     function resetForm() {
+        App.Utils.PictureUpload.reset();
         $('#filter-admins .selected').removeClass('selected');
         $('#filter-admins button').prop('disabled', false);
         $('#filter-admins .results').css('color', '');
@@ -368,6 +369,7 @@ App.Pages.Admins = (function () {
      * @param {Object} admin Contains the admin record data.
      */
     function display(admin) {
+        App.Utils.PictureUpload.setRecord('admins', admin.id, admin.picture_url);
         $id.val(admin.id);
         $name.val(admin.name);
         $email.val(admin.email);

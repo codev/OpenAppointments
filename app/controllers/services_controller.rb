@@ -1,6 +1,7 @@
 # Services admin CRUD, port of EA's Services controller.
 class ServicesController < ApplicationController
   include BackendPage
+  include PictureUpload
 
   layout "backend"
 
@@ -116,4 +117,8 @@ class ServicesController < ApplicationController
     pattern = "%#{Service.sanitize_sql_like(keyword)}%"
     scope.where("name LIKE :pattern OR description LIKE :pattern", pattern: pattern)
   end
+
+  def picture_record = Service.find(params[:id])
+
+  def picture_permission_resource = :services
 end

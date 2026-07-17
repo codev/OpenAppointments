@@ -1,6 +1,11 @@
 ---
 bu:
   ea:
+    booking_display_mode: Режим на показване на резервацията
+    display_as_dropdown: Падащ списък
+    display_as_cards: Карти
+    picture: Снимка
+    remove_picture: Премахни снимката
     select_provider_first: Първо изберете изпълнител
     select_service_first: Първо изберете услуга
     page_title: Запазете час с ...

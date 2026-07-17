@@ -1,6 +1,11 @@
 ---
 lt:
   ea:
+    booking_display_mode: Rezervacijos rodymo režimas
+    display_as_dropdown: Išskleidžiamasis sąrašas
+    display_as_cards: Kortelės
+    picture: Paveikslėlis
+    remove_picture: Pašalinti paveikslėlį
     select_provider_first: Pirmiausia pasirinkite specialistą
     select_service_first: Pirmiausia pasirinkite paslaugą
     page_title: 'Registravimasis vizitui – '

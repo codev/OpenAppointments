@@ -1,6 +1,11 @@
 ---
 tr:
   ea:
+    booking_display_mode: Rezervasyon görünüm modu
+    display_as_dropdown: Açılır liste
+    display_as_cards: Kartlar
+    picture: Resim
+    remove_picture: Resmi kaldır
     select_provider_first: Önce hizmet vereni seçin
     select_service_first: Önce hizmeti seçin
     page_title: Randevu Alınacak Kişi

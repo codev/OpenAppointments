@@ -1,6 +1,11 @@
 ---
 da:
   ea:
+    booking_display_mode: Visning af booking
+    display_as_dropdown: Rulleliste
+    display_as_cards: Kort
+    picture: Billede
+    remove_picture: Fjern billede
     select_provider_first: Vælg udbyder først
     select_service_first: Vælg ydelse først
     page_title: Book tid ved ...

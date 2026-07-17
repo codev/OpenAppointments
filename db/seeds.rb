@@ -43,6 +43,7 @@ settings = {
   "book_advance_timeout" => "30",
   "future_booking_limit" => "90",
   "display_any_provider" => "1",
+  "booking_display_mode" => "dropdown",
   "disable_booking" => "0",
   "disable_booking_message" => disable_booking_message,
   "first_weekday" => "sunday",

@@ -1,6 +1,11 @@
 ---
 ar:
   ea:
+    booking_display_mode: طريقة عرض الحجز
+    display_as_dropdown: قائمة منسدلة
+    display_as_cards: بطاقات
+    picture: صورة
+    remove_picture: إزالة الصورة
     select_provider_first: اختيار مقدم الخدمة أولا
     select_service_first: اختيار الخدمة أولا
     page_title: احجز موعد مع

@@ -313,6 +313,17 @@
                                     </div>
 
                                     <div class="mb-3">
+                                        <label class="form-label" for="booking-display-mode">
+                                            <%= lang('booking_display_mode') %>
+                                        </label>
+                                        <select id="booking-display-mode" class="form-select"
+                                                data-field="booking_display_mode">
+                                            <option value="dropdown"><%= lang('display_as_dropdown') %></option>
+                                            <option value="cards"><%= lang('display_as_cards') %></option>
+                                        </select>
+                                    </div>
+
+                                    <div class="mb-3">
                                         <div class="form-check form-switch">
                                             <input class="form-check-input" type="checkbox" id="display-login-button"
                                                    data-field="display_login_button">

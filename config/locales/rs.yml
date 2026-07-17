@@ -1,6 +1,11 @@
 ---
 rs:
   ea:
+    booking_display_mode: Nacin prikaza rezervacije
+    display_as_dropdown: Padajuca lista
+    display_as_cards: Kartice
+    picture: Slika
+    remove_picture: Ukloni sliku
     select_provider_first: Prvo izaberite pružaoca
     select_service_first: Prvo izaberite uslugu
     page_title: Zakažite posetu

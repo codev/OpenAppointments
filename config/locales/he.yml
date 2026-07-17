@@ -1,6 +1,11 @@
 ---
 he:
   ea:
+    booking_display_mode: מצב תצוגת ההזמנה
+    display_as_dropdown: רשימה נפתחת
+    display_as_cards: כרטיסים
+    picture: תמונה
+    remove_picture: הסר תמונה
     select_provider_first: בחר קודם נותן שירות
     select_service_first: בחר קודם שירות
     page_title: קבע פגישה עם

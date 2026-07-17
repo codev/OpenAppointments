@@ -1,6 +1,11 @@
 ---
 pt-br:
   ea:
+    booking_display_mode: Modo de exibição da reserva
+    display_as_dropdown: Lista suspensa
+    display_as_cards: Cartões
+    picture: Imagem
+    remove_picture: Remover imagem
     select_provider_first: Selecionar primeiro o prestador
     select_service_first: Selecionar primeiro o serviço
     page_title: Agendar horário

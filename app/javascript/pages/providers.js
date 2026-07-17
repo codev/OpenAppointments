@@ -378,6 +378,7 @@ App.Pages.Providers = (function () {
      * Resets the provider tab form back to its initial state.
      */
     function resetForm() {
+        App.Utils.PictureUpload.reset();
         $filterProviders.find('.selected').removeClass('selected');
         $filterProviders.find('button').prop('disabled', false);
         $filterProviders.find('.results').css('color', '');
@@ -419,6 +420,7 @@ App.Pages.Providers = (function () {
      * @param {Object} provider Contains the provider record data.
      */
     function display(provider) {
+        App.Utils.PictureUpload.setRecord('providers', provider.id, provider.picture_url);
         $id.val(provider.id);
         $name.val(provider.name);
         $email.val(provider.email);

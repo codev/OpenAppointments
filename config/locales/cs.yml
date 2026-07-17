@@ -1,6 +1,11 @@
 ---
 cs:
   ea:
+    booking_display_mode: Zobrazení rezervace
+    display_as_dropdown: Rozbalovací seznam
+    display_as_cards: Karty
+    picture: Obrázek
+    remove_picture: Odebrat obrázek
     select_provider_first: Nejprve vybrat poskytovatele
     select_service_first: Nejprve vybrat službu
     page_title: Rezervace schůzky s

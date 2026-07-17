@@ -1,6 +1,11 @@
 ---
 sq:
   ea:
+    booking_display_mode: Mënyra e shfaqjes së rezervimit
+    display_as_dropdown: Listë rënëse
+    display_as_cards: Karta
+    picture: Foto
+    remove_picture: Hiq foton
     select_provider_first: Zgjidhni fillimisht ofruesin
     select_service_first: Zgjidhni fillimisht shërbimin
     page_title: Rezervoni Takim Me

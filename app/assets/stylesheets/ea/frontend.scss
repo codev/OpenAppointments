@@ -80,3 +80,22 @@
 #book-appointment-wizard .flatpickr-calendar.inline {
     margin: auto; 
 }
+
+/* Cards display mode (booking_display_mode = cards) */
+.booking-card {
+    cursor: pointer;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.booking-card:hover {
+    box-shadow: 0 0 0 2px rgba(var(--bs-primary-rgb), 0.35);
+}
+
+.booking-card.selected {
+    border: 2px solid var(--bs-primary);
+}
+
+.booking-card-picture {
+    max-height: 140px;
+    object-fit: cover;
+}

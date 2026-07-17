@@ -23,8 +23,18 @@ module BookingPayloads
       "attendants_number" => service.attendants_number, "is_private" => service.is_private,
       "id_service_categories" => service.id_service_categories,
       "service_category_name" => service.try(:service_category_name),
-      "service_category_id" => service.try(:service_category_id)
+      "service_category_id" => service.try(:service_category_id),
+      "picture_url" => EaRows.picture_url(service)
     }
+  end
+
+  # Categories of the available services (cards display mode), EA order.
+  def available_categories
+    category_ids = Service.available.joins(:provider_links).distinct.pluck(:id_service_categories).compact
+    ServiceCategory.where(id: category_ids).order(:name).map do |category|
+      { "id" => category.id, "name" => category.name, "description" => category.description,
+        "picture_url" => EaRows.picture_url(category) }
+    end
   end
 
   # EA get_available_providers(true) reduced to allowed_provider_fields.
@@ -36,7 +46,8 @@ module BookingPayloads
         .map do |provider|
       {
         "id" => provider.id, "name" => provider.name,
-        "services" => provider.services.map(&:id), "timezone" => provider.timezone
+        "services" => provider.services.map(&:id), "timezone" => provider.timezone,
+        "picture_url" => EaRows.picture_url(provider)
       }
     end
   end

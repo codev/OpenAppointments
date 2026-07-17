@@ -1,6 +1,11 @@
 ---
 de:
   ea:
+    booking_display_mode: Darstellung der Buchung
+    display_as_dropdown: Auswahlliste
+    display_as_cards: Karten
+    picture: Bild
+    remove_picture: Bild entfernen
     select_provider_first: Zuerst Anbieter wählen
     select_service_first: Zuerst Dienstleistung wählen
     page_title: Vereinbaren Sie einen Termin mit

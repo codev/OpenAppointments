@@ -373,6 +373,7 @@ App.Pages.Secretaries = (function () {
      * Resets the secretary tab form back to its initial state.
      */
     function resetForm() {
+        App.Utils.PictureUpload.reset();
         $filterSecretaries.find('.selected').removeClass('selected');
         $filterSecretaries.find('button').prop('disabled', false);
         $filterSecretaries.find('.results').css('color', '');
@@ -397,6 +398,7 @@ App.Pages.Secretaries = (function () {
      * @param {Object} secretary Contains the secretary record data.
      */
     function display(secretary) {
+        App.Utils.PictureUpload.setRecord('secretaries', secretary.id, secretary.picture_url);
         $id.val(secretary.id);
         $name.val(secretary.name);
         $email.val(secretary.email);

@@ -1,6 +1,11 @@
 ---
 lb:
   ea:
+    booking_display_mode: Umeldungsusiicht
+    display_as_dropdown: Dropdown-Lëscht
+    display_as_cards: Kaarten
+    picture: Bild
+    remove_picture: Bild ewechhuelen
     select_provider_first: Fir d'éischt de Prestataire wielen
     select_service_first: Fir d'éischt de Service wielen
     page_title: Huelt ee Termäin mat

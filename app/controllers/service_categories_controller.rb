@@ -1,6 +1,7 @@
 # Service categories admin CRUD, port of EA's Service_categories controller.
 class ServiceCategoriesController < ApplicationController
   include BackendPage
+  include PictureUpload
 
   layout "backend"
 
@@ -96,4 +97,8 @@ class ServiceCategoriesController < ApplicationController
     pattern = "%#{ServiceCategory.sanitize_sql_like(keyword)}%"
     scope.where("name LIKE :pattern OR description LIKE :pattern", pattern: pattern)
   end
+
+  def picture_record = ServiceCategory.find(params[:id])
+
+  def picture_permission_resource = :services
 end

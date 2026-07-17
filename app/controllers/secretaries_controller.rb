@@ -1,6 +1,7 @@
 # Secretaries admin CRUD, port of EA's Secretaries controller.
 class SecretariesController < ApplicationController
   include BackendPage
+  include PictureUpload
   include UserCrud
 
   layout "backend"
@@ -125,4 +126,8 @@ class SecretariesController < ApplicationController
       SecretaryProviderLink.create!(id_users_secretary: secretary.id, id_users_provider: provider_id)
     end
   end
+
+  def picture_record = User.secretaries.find(params[:id])
+
+  def picture_permission_resource = :users
 end

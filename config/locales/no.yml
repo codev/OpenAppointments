@@ -1,6 +1,11 @@
 ---
 'no':
   ea:
+    booking_display_mode: Visningsmodus for booking
+    display_as_dropdown: Nedtrekksliste
+    display_as_cards: Kort
+    picture: Bilde
+    remove_picture: Fjern bilde
     select_provider_first: Velg tilbyder først
     select_service_first: Velg tjeneste først
     page_title: Bestill avtale med

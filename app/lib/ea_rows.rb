@@ -7,6 +7,13 @@ module EaRows
 
   module_function
 
+  # Blob path for a record's picture, nil when none is attached.
+  def picture_url(record)
+    return nil unless record.picture.attached?
+
+    Rails.application.routes.url_helpers.rails_blob_path(record.picture, only_path: true)
+  end
+
   def dt(value)
     value&.strftime("%Y-%m-%d %H:%M:%S")
   end
@@ -39,7 +46,8 @@ module EaRows
       "is_private" => user.is_private, "ldap_dn" => user.ldap_dn,
       "custom_field_1" => user.custom_field_1, "custom_field_2" => user.custom_field_2,
       "custom_field_3" => user.custom_field_3, "custom_field_4" => user.custom_field_4,
-      "custom_field_5" => user.custom_field_5, "id_roles" => user.id_roles
+      "custom_field_5" => user.custom_field_5, "id_roles" => user.id_roles,
+      "picture_url" => picture_url(user)
     }
   end
 
@@ -104,12 +112,14 @@ module EaRows
       "description" => service.description, "location" => service.location,
       "color" => service.color, "slot_interval" => service.slot_interval,
       "attendants_number" => service.attendants_number, "is_private" => service.is_private,
-      "id_service_categories" => service.id_service_categories
+      "id_service_categories" => service.id_service_categories,
+      "picture_url" => picture_url(service)
     }
   end
 
   def service_category_row(category)
-    { "id" => category.id, "name" => category.name, "description" => category.description }
+    { "id" => category.id, "name" => category.name, "description" => category.description,
+      "picture_url" => picture_url(category) }
   end
 
   def webhook_row(webhook)

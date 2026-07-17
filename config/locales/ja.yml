@@ -1,6 +1,11 @@
 ---
 ja:
   ea:
+    booking_display_mode: 予約の表示モード
+    display_as_dropdown: ドロップダウンリスト
+    display_as_cards: カード
+    picture: 画像
+    remove_picture: 画像を削除
     select_provider_first: 先に担当者を選択
     select_service_first: 先にサービスを選択
     page_title: '予約システム - '

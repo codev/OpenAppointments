@@ -1,6 +1,11 @@
 ---
 sk:
   ea:
+    booking_display_mode: Zobrazenie rezervácie
+    display_as_dropdown: Rozbaľovací zoznam
+    display_as_cards: Karty
+    picture: Obrázok
+    remove_picture: Odstrániť obrázok
     select_provider_first: Najprv vyberte poskytovateľa
     select_service_first: Najprv vyberte službu
     page_title: Rezervácie

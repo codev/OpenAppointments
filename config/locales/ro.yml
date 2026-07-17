@@ -1,6 +1,11 @@
 ---
 ro:
   ea:
+    booking_display_mode: Modul de afișare a rezervării
+    display_as_dropdown: Listă derulantă
+    display_as_cards: Carduri
+    picture: Imagine
+    remove_picture: Elimină imaginea
     select_provider_first: Selectați mai întâi furnizorul
     select_service_first: Selectați mai întâi serviciul
     page_title: Programeaza întâlniri cu

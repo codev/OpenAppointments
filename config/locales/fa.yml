@@ -1,6 +1,11 @@
 ---
 fa:
   ea:
+    booking_display_mode: حالت نمایش رزرو
+    display_as_dropdown: فهرست کشویی
+    display_as_cards: کارت‌ها
+    picture: تصویر
+    remove_picture: حذف تصویر
     select_provider_first: ابتدا ارائه‌دهنده را انتخاب کنید
     select_service_first: ابتدا خدمت را انتخاب کنید
     page_title: ثبت قرار ملاقات با

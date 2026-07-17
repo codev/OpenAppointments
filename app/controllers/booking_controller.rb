@@ -75,8 +75,12 @@ class BookingController < ApplicationController
 
     first_step = params[:first] == "provider" ? "provider" : "service"
 
+    display_mode = Setting.get("booking_display_mode", "dropdown")
+    display_mode = "dropdown" unless %w[dropdown cards].include?(display_mode)
+
     script_vars(
       first_step: first_step,
+      display_mode: display_mode,
       manage_mode: manage_mode,
       available_services: available_services,
       available_providers: available_providers,
@@ -96,6 +100,8 @@ class BookingController < ApplicationController
 
     html_vars(
       first_step: first_step,
+      display_mode: display_mode,
+      available_categories: display_mode == "cards" ? BookingPayloads.available_categories : [],
       available_services: available_services,
       available_providers: available_providers,
       theme: theme,

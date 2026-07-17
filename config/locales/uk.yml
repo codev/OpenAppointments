@@ -1,6 +1,11 @@
 ---
 uk:
   ea:
+    booking_display_mode: Режим відображення бронювання
+    display_as_dropdown: Випадаючий список
+    display_as_cards: Картки
+    picture: Зображення
+    remove_picture: Видалити зображення
     select_provider_first: Спочатку виберіть спеціаліста
     select_service_first: Спочатку виберіть послугу
     page_title: Запис на прийом з

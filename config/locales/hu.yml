@@ -1,6 +1,11 @@
 ---
 hu:
   ea:
+    booking_display_mode: Foglalás megjelenítési módja
+    display_as_dropdown: Legördülő lista
+    display_as_cards: Kártyák
+    picture: Kép
+    remove_picture: Kép eltávolítása
     select_provider_first: Először a szolgáltatót válassza ki
     select_service_first: Először a szolgáltatást válassza ki
     page_title: Foglalj időpontot a ...
