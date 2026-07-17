@@ -1,0 +1,117 @@
+/* ----------------------------------------------------------------------------
+ * OpenAppointments outline theme: coloured borders instead of solid fills.
+ * ---------------------------------------------------------------------------- */
+
+$theme: 'outline' !default;
+
+$primary: #39824f !default;
+$secondary: #6c757d !default;
+$success: #198754 !default;
+$info: #0d6efd !default;
+$warning: #b8860b !default;
+$danger: #b02a37 !default;
+
+$body-bg: #fff !default;
+$border-width: 2px !default;
+$btn-border-width: 2px !default;
+$card-border-width: 2px !default;
+$border-radius: 0.5rem !default;
+
+@import 'bootstrap';
+
+// Buttons: every solid variant becomes its outline counterpart.
+@each $color, $value in $theme-colors {
+    .btn-#{$color} {
+        @include button-outline-variant($value);
+        background-color: transparent;
+    }
+}
+
+.btn-dark {
+    @include button-outline-variant($dark);
+    background-color: transparent;
+}
+
+// Badges: transparent with a coloured border.
+.badge {
+    border: $border-width solid currentColor;
+
+    @each $color, $value in $theme-colors {
+        &.bg-#{$color} {
+            background-color: transparent !important;
+            color: $value !important;
+            border-color: $value;
+        }
+    }
+}
+
+// Alerts: keep the tint out, keep the border.
+.alert {
+    background-color: transparent;
+    border-width: $border-width;
+}
+
+// Cards and list groups sit on the page with a coloured edge, not a fill.
+.card {
+    background-color: transparent;
+    border-color: $gray-400;
+
+    .card-header {
+        background-color: transparent;
+        border-bottom: $border-width solid $gray-400;
+    }
+}
+
+// Booking header: white with a primary border instead of a solid primary block.
+#header {
+    background: $body-bg !important;
+    border-bottom: 3px solid var(--bs-primary, #{$primary});
+
+    #company-name,
+    #company-name span,
+    .display-booking-selection {
+        color: $body-color !important;
+    }
+
+    #steps .book-step {
+        background: transparent !important;
+        border: $border-width solid $gray-400;
+
+        strong {
+            color: $gray-600 !important;
+        }
+    }
+
+    #steps .active-step {
+        border-color: var(--bs-primary, #{$primary});
+
+        strong {
+            color: var(--bs-primary, #{$primary}) !important;
+        }
+    }
+}
+
+// Booking cards mode and available hours follow the same outline language.
+.booking-card {
+    background-color: transparent;
+
+    &.selected {
+        border-color: var(--bs-primary, #{$primary});
+    }
+}
+
+#available-hours .available-hour {
+    border: $border-width solid $gray-400;
+    border-radius: $border-radius;
+
+    &.selected-hour {
+        background: transparent !important;
+        border-color: var(--bs-primary, #{$primary});
+        color: var(--bs-primary, #{$primary}) !important;
+    }
+}
+
+// Frame footer keeps its top border, just heavier.
+#frame-footer {
+    border-top-width: $border-width !important;
+}

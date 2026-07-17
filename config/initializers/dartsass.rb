@@ -1,7 +1,7 @@
 # EA stylesheet builds: general/frontend/backend plus 10 themes, mirroring the
 # gulp styles task. Bootstrap SCSS source lives in vendor/stylesheets/bootstrap
 # (themes @import 'bootstrap' via the load path).
-themes = %w[cosmo darkly default flatly litera lumen materia minty sketchy zephyr]
+themes = %w[cosmo darkly default flatly litera lumen materia minty outline sketchy zephyr]
 
 Rails.application.config.dartsass.builds = {
   "application.scss" => "application.css",

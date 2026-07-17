@@ -8,7 +8,7 @@ class BookingController < ApplicationController
   ALLOWED_APPOINTMENT_FIELDS = %w[id start_datetime end_datetime location meeting_link notes
                                   color status is_unavailability id_users_provider
                                   id_users_customer id_services].freeze
-  THEMES = %w[cosmo darkly default flatly litera lumen materia minty sketchy zephyr].freeze
+  THEMES = %w[cosmo darkly default flatly litera lumen materia minty outline sketchy zephyr].freeze
 
   # Distinct name: per limit - unnamed limits in one controller share a cache key,
   # so the wizard's own availability polling would eat the register budget.
