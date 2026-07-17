@@ -1,0 +1,575 @@
+---
+sl:
+  ea:
+    page_title: Rezerviraj termin z
+    service_and_provider: Storitev in ponudnik
+    select_service: Izberi storitev
+    select_provider: Izberite ponudnika
+    duration: Trajanje
+    minutes: Minute
+    price: Cena
+    back: Nazaj
+    appointment_date_and_time: Datum in ura sestanka
+    no_available_hours: Za izbrani datum ni prostih ur za sestanke. Prosimo izberite drug datum.
+    appointment_hour_missing: Prosimo, izberite uro sestanka, preden nadaljujete.
+    customer_information: Podatki o stranki
+    first_name: Ime
+    last_name: Priimek
+    email: E-pošta
+    phone_number: Telefonska številka
+    phone: Telefon
+    address: Naslov
+    city: Mesto
+    zip_code: Poštna številka
+    notes: Opombe
+    language: Jezik
+    no_language: Ni jezika
+    fields_are_required: Polja z * so obvezna.
+    appointment_confirmation: Potrditev termina
+    confirm: Potrdi
+    update: Posodobi
+    cancel_appointment_hint: Pritisnite gumb "Prekliči", da odstranite sestanek iz urnika podjetja.
+    cancel: Prekliči
+    appointment_registered: Vaš termin je bil uspešno registriran!
+    cancel_appointment_title: Prekliči sestanek
+    appointment_cancelled: Vaš termin je bil uspešno preklican.
+    appointment_cancelled_title: Sestanek odpovedan
+    reason: Razlog
+    appointment_removed_from_schedule: 'Naslednji sestanek je bil odstranjen iz urnika podjetja . '
+    appointment_details_was_sent_to_you: E-poštno sporočilo s podrobnostmi o sestanku vam je bilo poslano.
+    add_to_google_calendar: Dodaj v Google Koledar
+    appointment_booked: Vaš termin je bil uspešno rezerviran
+    thank_you_for_appointment: Hvala, ker ste se dogovorili za sestanek z nami. Spodaj si lahko ogledate podrobnosti termina. Izvedite spremembe s klikom na povezavo za termin.
+    appointment_details_title: Podrobnosti o terminu
+    customer_details_title: Podrobnosti o stranki
+    service: Storitev
+    provider: Ponudnik
+    customer: Stranka
+    start: Začetek
+    end: Konec
+    name: Ime
+    appointment_link_title: Povezava do termina
+    success: Uspeh
+    appointment_added_to_your_plan: V vaš načrt je bil dodan nov termin.
+    appointment_link_description: Spremenite lahko s klikom na spodnjo povezavo za sestanek.
+    appointment_locked: Spreminjanje ni mogoče!
+    appointment_locked_message: Sestanka ni mogoče spremeniti manj kot {$limit} ur vnaprej.
+    appointment_not_found: Sestanka ni bilo mogoče najti
+    appointment_does_not_exist_in_db: Sestanek, ki ste ga zahtevali, ne obstaja več v sistemski bazi podatkov.
+    display_calendar: Prikaži koledar
+    calendar: Koledar
+    users: Uporabniki
+    settings: Nastavitve
+    log_out: Odjava
+    synchronize: Sinhroniziraj
+    enable_sync: Omogoči sinhronizacijo
+    disable_sync: Onemogoči sinhronizacijo
+    disable_sync_prompt: Ali ste prepričani, da želite onemogočiti sinhronizacijo koledarja?
+    reload: Ponovno naloži
+    appointment: Sestanek
+    unavailability: Nerazpoložljivost
+    week: Teden
+    month: Mesec
+    today: Danes
+    not_working: Ne deluje
+    break: Prekinitev
+    add: Dodaj
+    edit: Uredi
+    hello: Pozdravljeni
+    all_day: Ves dan
+    manage_appointment_record_hint: Upravljaj vse zapise o sestankih razpoložljivih ponudnikov in storitev.
+    select_filter_item_hint: Izberite ponudnika ali storitev in si oglejte termine na koledarju.
+    enable_appointment_sync_hint: Omogoči sinhronizacijo sestankov z zunanjim koledarjem.
+    manage_customers_hint: Upravljajte registrirane stranke in si oglejte zgodovino njihovih rezervacij.
+    manage_services_hint: Upravljanje razpoložljivih storitev in kategorij sistema.
+    manage_users_hint: Upravljanje zalednih uporabnikov (skrbniki, ponudniki, tajniki).
+    settings_hint: Nastavi sistemske in uporabniške nastavitve.
+    log_out_hint: Odjava iz sistema.
+    unavailability_periods_hint: Med obdobji nedosegljivosti ponudnik ne sprejema novih terminov.
+    new_appointment_hint: Ustvarite nov termin in ga shranite v bazo podatkov.
+    reload_appointments_hint: Ponovno naloži sestanke v koledarju.
+    trigger_sync_hint: Sproži postopek sinhronizacije koledarja.
+    appointment_updated: Sestanek je bil uspešno posodobljen.
+    undo: Razveljavi
+    appointment_details_changed: Podrobnosti o terminu so spremenjene
+    appointment_changes_saved: Spremembe termina so bile uspešno shranjene.
+    save: Shrani
+    new: Novo
+    select: Izberi
+    hide: Skrij
+    type_to_filter_customers: Vnesite za filtriranje strank.
+    clear_fields_add_existing_customer_hint: Počistite polja in vnesite novo stranko.
+    pick_existing_customer_hint: Izberi obstoječo stranko.
+    new_appointment_title: Nov termin
+    edit_appointment_title: Uredi termin
+    delete_appointment_title: Izbriši sestanek
+    write_appointment_removal_reason: 'Prosimo, vzemite si minuto in napišite razlog, zakaj brišete sestanek:'
+    appointment_saved: Sestanek je uspešno shranjen.
+    new_unavailability_title: Nova nedostopnost
+    edit_unavailability_title: Uredi nerazpoložljivost
+    unavailability_saved: Nerazpoložljivost je bila uspešno shranjena.
+    start_date_before_end_error: Vrednost začetnega datuma je poznejša od končnega datuma.
+    invalid_duration: Neveljavno trajanje.
+    invalid_email: Neveljaven e-poštni naslov.
+    customers: Stranke
+    details: Podrobnosti
+    no_records_found: Ni najdenih zapisov ...
+    services: Storitve
+    duration_minutes: Trajanje (minute)
+    currency: Valuta
+    category: Kategorija
+    no_category: Brez kategorije
+    description: Opis
+    categories: Kategorije
+    admins: Skrbniki
+    providers: Ponudniki
+    secretaries: Tajnice
+    mobile_number: Mobilna številka
+    mobile: Mobilni
+    state: Stanje
+    username: Uporabniško ime
+    password: Geslo
+    retype_password: Znova vnesite geslo
+    receive_notifications: Prejemanje obvestil
+    passwords_mismatch: Gesla se ne ujemajo.
+    admin_saved: Skrbnik je uspešno shranjen.
+    provider_saved: Ponudnik je uspešno shranjen.
+    secretary_saved: Tajnik je uspešno shranjen.
+    admin_deleted: Skrbnik uspešno izbrisan.
+    provider_deleted: Ponudnik je bil uspešno izbrisan.
+    secretary_deleted: Tajnik je bil uspešno izbrisan.
+    service_saved: Storitev je uspešno shranjena.
+    service_category_saved: Kategorija storitve je uspešno shranjena.
+    service_deleted: Storitev je bila uspešno izbrisana.
+    service_category_deleted: Kategorija storitve je bila uspešno izbrisana.
+    customer_saved: Stranka je uspešno shranjena.
+    customer_deleted: Stranka je bila uspešno izbrisana.
+    current_view: Trenutni pogled
+    working_plan: Delovni načrt
+    reset_plan: Ponastavi načrt
+    monday: ponedeljek
+    tuesday: torek
+    wednesday: sreda
+    thursday: četrtek
+    friday: petek
+    saturday: sobota
+    sunday: nedelja
+    breaks: Prekini
+    add_breaks_during_each_day: Dodaj delovne odmore med vsakim dnem. Med odmori izvajalec ne sprejema terminov.
+    day: Dan
+    days: Dnevi
+    actions: Dejanja
+    reset_working_plan_hint: 'Ponastavi delovni načrt nazaj na privzete vrednosti . '
+    company_name: Ime podjetja
+    company_name_hint: 'Ime podjetja bo prikazano povsod v sistemu(obvezno) . '
+    company_email: E - pošta podjetja
+    company_email_hint: 'To bo e - poštni naslov podjetja . Uporabljen bo kot pošiljatelj in naslov za odgovor sistemske e - pošte(obvezno) . '
+    company_link: Povezava do podjetja
+    company_link_hint: 'Povezava podjetja mora kazati na uradno spletno stran podjetja(obvezno) . '
+    go_to_booking_page: Pojdi na stran za rezervacije
+    settings_saved: 'Nastavitve so uspešno shranjene . '
+    general: Splošno
+    booking: Rezervacija
+    visible: Viden
+    hidden: Skrito
+    business_logic: Poslovna logika
+    current_user: Trenutni uporabnik
+    about_app: O Easy! Appointments
+    edit_working_plan_hint: 'Spodaj označite dneve in ure, ko bo vaše podjetje sprejelo sestanke . Termine v izven delovnem času boste lahko prilagajali, v prostem času pa stranke ne bodo mogle same rezervirati terminov . Ta delovni načrt bo privzet za vsak nov zapis ponudnika, vendar boste lahko spreminjali načrt vsakega ponudnika posebej z urejanjem njegovega zapisa . Po tem lahko dodate obdobja odmora . '
+    edit_breaks_hint: 'Dodaj delovne odmore za vsak dan . Te prekinitve bodo veljale za vse nove ponudnike . '
+    book_advance_timeout: Časovna omejitev pred knjigo vnaprej
+    book_advance_timeout_hint: Določite časovno omejitev (v minutah), preden lahko stranke rezervirajo ali se ponovno dogovorijo za sestanke s podjetjem.
+    timeout_minutes: Časovna omejitev (minute)
+    about_app_info: Easy!Appointments je zelo prilagodljiva spletna aplikacija, ki vašim strankam omogoča, da rezervirajo sestanke pri vas prek spleta. Poleg tega ponuja možnost sinhronizacije vaših podatkov z Google Koledarjem, tako da jih lahko uporabljate z drugimi storitvami.
+    current_version: Trenutna različica
+    support: Podpora
+    about_app_support: Če naletite na težave pri uporabi Easy!Appointments, lahko poiščete odgovore v uradni Googlovi skupini. Morda boste morali ustvariti tudi novo številko na strani Google Code, da bi pomagali pri napredovanju razvoja.
+    official_website: Uradna spletna stran
+    google_plus_community: Skupnost Google+
+    support_group: Skupina za podporo
+    project_issues: Projektne težave
+    license: Licenca
+    about_app_license: 'Easy!Appointments je licenciran pod licenco GPLv3. Z uporabo kode Easy!Appointments na kakršen koli način soglašate s pogoji, opisanimi na naslednjem url-ju:'
+    logout_success: Uspešno ste bili odjavljeni! Za navigacijo na drugo stran kliknite enega od naslednjih gumbov.
+    book_appointment_title: Rezerviraj termin
+    backend_section: Zaledni razdelek
+    you_need_to_login: Dobrodošli! Za ogled zalednih strani se boste morali prijaviti.
+    enter_username_here: Sem vnesite svoje uporabniško ime ...
+    enter_password_here: Vnesite geslo tukaj ...
+    login: Prijava
+    forgot_your_password: Ste pozabili geslo?
+    login_failed: Prijava ni uspela, vnesite pravilne poverilnice in poskusite znova.
+    type_username_and_email_for_new_password: Vnesite vaše uporabniško ime in vaš e-poštni naslov, da dobite novo geslo.
+    enter_email_here: Tukaj vnesite svoj e-poštni naslov ...
+    regenerate_password: Ponovno ustvari geslo
+    go_to_login: Nazaj na prijavno stran
+    new_password_sent_with_email: Vaše novo geslo vam je bilo poslano z e-pošto.
+    new_account_password: Novo geslo za račun
+    new_password_is: Vaše novo geslo za račun je $password. Prosimo, shranite to e-pošto, da boste lahko po potrebi pridobili svoje geslo. To geslo lahko tudi spremenite z novim na strani z nastavitvami.
+    delete_record_prompt: Ali ste prepričani, da želite izbrisati ta zapis? Tega dejanja ni mogoče razveljaviti.
+    delete_admin: Izbriši skrbnika
+    delete_customer: Izbriši stranko
+    delete_service: Izbriši storitev
+    delete_service_category: Izbriši kategorijo storitve
+    delete_provider: Izbriši ponudnika
+    delete_secretary: Izbriši tajnika
+    delete_appointment: Izbriši sestanek
+    delete_unavailability: Izbriši nedostopnost
+    delete: Izbriši
+    unexpected_issues: Nepričakovane težave
+    unexpected_issues_message: Operacije ni bilo mogoče dokončati.
+    close: Zapri
+    page_not_found: Strani ni bilo mogoče najti
+    page_not_found_message: Stran, ki ste jo zahtevali, žal ne obstaja. Preverite URL svojega brskalnika ali se pomaknite na drugo lokacijo s spodnjimi gumbi.
+    error: Napaka
+    no_privileges: Brez privilegijev
+    no_privileges_message: Nimate potrebnih privilegijev za ogled te strani. Pomaknite se do drugega razdelka.
+    backend_calendar: Zaledni koledar
+    start_date_time: Začetni datum/čas
+    end_date_time: Končni datum/čas
+    licensed_under: Licencirano pod
+    unexpected_issues_occurred: Prišlo je do nepričakovanih težav.
+    service_communication_error: Prišlo je do napake v komunikaciji strežnika, poskusite znova.
+    no_privileges_edit_appointments: Nimate potrebnih pravic za urejanje sestankov.
+    unavailability_updated: Nerazpoložljivost je bila uspešno posodobljena.
+    appointments: Sestanki
+    unexpected_warnings: Nepričakovana opozorila
+    unexpected_warnings_message: Operacija je bila končana, vendar se je pojavilo nekaj opozoril.
+    filter: Filter
+    clear: Počisti
+    uncategorized: Nekategorizirano
+    username_already_exists: Uporabniško ime že obstaja.
+    password_length_notice: Geslo mora vsebovati najmanj $number znakov.
+    general_settings: Splošne nastavitve
+    personal_information: Osebni podatki
+    system_login: Prijava v sistem
+    user_settings_are_invalid: Uporabniške nastavitve so neveljavne! Preverite svoje nastavitve in poskusite znova.
+    add_break: Dodaj prelom
+    january: Januar
+    february: februar
+    march: marec
+    april: april
+    may: Maj
+    june: Junij
+    july: julij
+    august: Avgust
+    september: september
+    october: oktober
+    november: november
+    december: december
+    previous: Prejšnji
+    next: Naprej
+    now: Zdaj
+    select_time: Izberi čas
+    time: Čas
+    hour: Ura
+    minute: Minuta
+    calendar_sync_completed: Sinhronizacija koledarja je bila uspešno zaključena.
+    calendar_sync_failed: 'Sinhronizacija koledarja ni uspela: povezave s strežnikom ni bilo mogoče vzpostaviti.'
+    select_sync_calendar: Izberi koledar
+    select_sync_calendar_prompt: Izberite koledar, s katerim želite sinhronizirati svoje sestanke.
+    sync_calendar_selected: Koledar za sinhronizacijo je bil uspešno izbran.
+    oops_something_went_wrong: Ojoj! Nekaj je šlo narobe.
+    ea_update_success: Easy!Appointments je bil uspešno posodobljen.
+    require_captcha: Zahtevaj CAPTCHA
+    require_captcha_hint: Ko je omogočeno, bodo morale stranke pred rezervacijo/posodabljanjem termina vnesti naključno ustvarjen niz CAPTCHA.
+    captcha_is_wrong: CAPTCHA preverjanje ni uspelo, poskusite znova.
+    enter_captcha_here: Tukaj vnesite CAPTCHA...
+    any_provider: Kateri koli ponudnik
+    requested_hour_is_unavailable: Zahtevani termin žal ni na voljo. Prosimo izberite drugo uro za vaš termin.
+    customer_notifications: Obvestila strank
+    customer_notifications_hint: Določi, ali bo stranka prejela e-poštna obvestila vsakič, ko pride do spremembe urnika enega od njegovih terminov.
+    date_format: Oblika datuma
+    date_format_hint: Spremeni obliko prikaza datuma (D - datum, M - mesec, Y - leto).
+    time_format: Časovna oblika
+    time_format_hint: Spremeni obliko prikaza časa (H - ure, M - minute).
+    first_weekday: Prvi dan v tednu
+    first_weekday_hint: Nastavi prvi dan koledarskega tedna.
+    google_analytics_code_hint: Dodajte kodo Google Analytics, da omogočite sledenje Google Analytics na straneh za rezervacije.
+    availabilities_type: Vrsta razpoložljivosti
+    flexible: Prilagodljiv
+    fixed: Fiksno
+    attendants_number: Številka spremljevalcev
+    reset_working_plan: Ponastavi delovni načrt nazaj na privzete vrednosti.
+    legal_contents: Pravna vsebina
+    cookie_notice: Obvestilo o piškotkih
+    display_cookie_notice: Prikaži obvestilo o piškotkih
+    cookie_notice_content: Vsebina obvestila o piškotkih
+    terms_and_conditions: Določila in pogoji
+    display_terms_and_conditions: Prikaži določila in pogoje
+    terms_and_conditions_content: Vsebina določil in pogojev
+    privacy_policy: Politika zasebnosti
+    display_privacy_policy: Prikaži pravilnik o zasebnosti
+    privacy_policy_content: Vsebina pravilnika o zasebnosti
+    website_using_cookies_to_ensure_best_experience: To spletno mesto uporablja piškotke, da vam zagotovi najboljšo izkušnjo na našem spletnem mestu.
+    read_and_agree_to_terms_and_conditions: Prebral sem {$link}pogoje in določila{/$link} in se strinjam z njimi.
+    read_and_agree_to_privacy_policy: Prebral sem in se strinjam s {$link}pravilnikom o zasebnosti{/$link}.
+    delete_personal_information_hint: Odstrani vse svoje sestanke in osebne podatke iz sistema.
+    delete_personal_information: Izbriši osebne podatke
+    delete_personal_information_prompt: Ali ste prepričani, da želite izbrisati svoje osebne podatke? Tega dejanja ni mogoče razveljaviti.
+    location: Lokacija
+    working_plan_exception: Izjema delovnega načrta
+    working_plan_exceptions: Izjeme delovnega načrta
+    working_plan_exceptions_hint: Dodaj dan izjeme delovnega načrta, zunaj delovnega načrta.
+    new_working_plan_exception_title: Nova izjema delovnega načrta
+    working_plan_exception_saved: Izjema delovnega načrta je uspešno shranjena.
+    working_plan_exception_deleted: Izjema delovnega načrta je bila uspešno izbrisana.
+    add_working_plan_exceptions_during_each_day: Dodaj izjeme delovnega načrta zunaj delovnega načrta.
+    add_working_plan_exception: Dodaj izjemo delovnega načrta
+    require_phone_number: Zahtevaj telefonsko številko
+    require_phone_number_hint: Ko je omogočeno, bodo stranke in uporabniki morali vnesti telefonsko številko stranke pri rezervaciji termina
+    check_spam_folder: Prosimo, preverite mapo z vsiljeno pošto, če e-pošta ne prispe v nekaj minutah.
+    api_token_hint: Nastavite skrivni žeton, da omogočite avtentikacijo Easy!Appointments API na podlagi žetonov.
+    timezone: Časovni pas
+    overwrite_existing_working_plans: To bo prepisalo obstoječe delovne načrte ponudnika. Ali ste prepričani, da želite nadaljevati?
+    working_plans_got_updated: Vsi delovni načrti so bili posodobljeni.
+    apply_to_all_providers: Uporabi za vse ponudnike
+    display_any_provider: Prikaži katero koli možnost ponudnika
+    display_any_provider_hint: Stran za rezervacije bo dobila dodatno možnost, ki strankam omogoča rezervacijo brez navedbe ponudnika.
+    load_more: Naloži več
+    list: Seznam
+    default: Privzeto
+    table: Tabela
+    date: Datum
+    about: O
+    booking_settings: Nastavitve rezervacije
+    display: Prikaz
+    require: Zahtevaj
+    color: Barva
+    matomo_analytics_url_hint: Dodajte URL svoji lastni namestitvi Matomo, da omogočite sledenje Matomo na straneh za rezervacije.
+    invalid_phone: Neveljavna telefonska številka.
+    legal: Pravno
+    business: Posel
+    account: Račun
+    disable_booking: Onemogoči rezervacijo
+    disable_booking_hint: Stran za rezervacije bo onemogočena, dokler je ta nastavitev aktivna in stranke ne bodo mogle registrirati novih terminov.
+    display_message: Prikaži sporočilo
+    booking_is_disabled: Rezervacija je onemogočena!
+    appearance: Videz
+    company_logo: Logotip podjetja
+    company_logo_hint: Logotip podjetja bo prikazan na mnogih mestih v aplikaciji, vključno s stranjo za rezervacije in e-poštnimi obvestili (slikovna datoteka, največ 2 MB).
+    company_color: Barva podjetja
+    company_color_hint: Barva podjetja bo uporabljena v celotni aplikaciji, tako da aplikacija uporablja vašo blagovno znamko.
+    localization: Lokalizacija
+    integrations: Integracije
+    company: Podjetje
+    remove: Odstrani
+    login_button: Gumb za prijavo
+    display_login_button_hint: Določi, ali je gumb za prijavo prikazan na strani za rezervacije.
+    private: Zasebno
+    private_hint: Zasebni zapisi ne bodo prikazani ali obdelani na javnih straneh, kot je stran za rezervacije.
+    reset: Ponastavi
+    all: Vse
+    booking_link: Povezava za rezervacijo
+    add_new_event: Dodaj nov dogodek
+    what_kind_of_event: Kakšno vrsto dogodka želite dodati?
+    theme: Tema
+    limit_customer_access: Omeji dostop strank
+    limit_customer_access_hint: Če je omogočeno, bodo ponudniki in tajniki lahko dostopali le do strank, s katerimi so dogovorjeni za sestanek.
+    url: URL
+    secret_token: Skrivni žeton
+    verify_ssl: Preveri SSL
+    appointment_save: Shranjevanje termina
+    appointment_delete: Brisanje termina
+    unavailability_save: Shrani zaradi nerazpoložljivosti
+    unavailability_delete: Brisanje nerazpoložljivosti
+    customer_save: Shrani stranko
+    customer_delete: Izbris stranke
+    service_save: Shranjevanje storitve
+    service_delete: Brisanje storitve
+    service_category_save: Shrani kategorijo storitve
+    service_category_delete: Brisanje kategorije storitve
+    provider_save: Shranjevanje ponudnika
+    provider_delete: Izbris ponudnika
+    secretary_save: Tajniško shranjevanje
+    secretary_delete: Izbriši tajnika
+    admin_save: Skrbniško shranjevanje
+    admin_delete: Skrbniško brisanje
+    options: Možnosti
+    webhooks: Spletne kljuke
+    webhooks_info: Webhooks vam omogočajo pošiljanje obvestil HTTP zunanjim spletnim aplikacijam kot odgovor na različne dogodke aplikacije, kot je ustvarjanje sestanka ali odstranitev stranke.
+    integrations_info: Integracije vam omogočajo vzpostavljanje povezav tretjih oseb z zunanjimi aplikacijami in API-ji.
+    configure: Konfiguriraj
+    google_analytics: Google Analytics
+    google_analytics_info: Google Analytics vam omogoča samodejno dodajanje kode za sledenje in oznake HTML na javno stran ter sledenje vsem javnim rezervacijskim sejam.
+    matomo_analytics: Matomo Analytics
+    matomo_analytics_info: Matomo Analytics vam omogoča samodejno dodajanje kode za sledenje in oznake HTML na javno stran ter sledenje vsem javnim rezervacijskim sejam.
+    api: API
+    api_info: API vam omogoča interakcijo z vsemi podatki Easy!Appointments prek protokola HTTP in razpoložljivih končnih točk API ter ustvarjanje lastnih integracij.
+    google_analytics_code: Koda Google Analytics
+    matomo_analytics_url: URL Matomo Analytics
+    future_booking_limit: Prihodnja omejitev rezervacij
+    limit_days: Omejitev (dnevi)
+    future_booking_limit_hint: Nastavite prihodnjo omejitev v dneh, ko se lahko stranke naročijo prek javne strani za rezervacije.
+    api_token: API žeton
+    allow_rescheduling_cancellation_before: Dovoli prestavitev/preklic pred
+    at_least_one_field: Vsaj eno polje mora biti prikazano na strani za rezervacije.
+    status: Stanje
+    appointment_status_options: Možnosti statusa sestanka
+    appointment_status_options_info: Določite seznam razpoložljivih možnosti statusa sestanka, ki jih je mogoče uporabiti na strani koledarja (prva bo samodejno postala privzeta vrednost).
+    sunday_short: Sonce
+    monday_short: pon
+    tuesday_short: tor
+    wednesday_short: Sre
+    thursday_short: čet
+    friday_short: pet
+    saturday_short: sob
+    january_short: Januar
+    february_short: februar
+    march_short: mar
+    april_short: Apr
+    may_short: Maj
+    june_short: junij
+    july_short: Jul
+    august_short: avgust
+    september_short: september
+    october_short: Okt
+    november_short: nov
+    december_short: dec
+    am: am
+    pm: pm
+    to: to
+    click_to_toggle: Kliknite za preklop
+    week_short: Ted
+    scroll_to_increment: Pomakni se za povečanje
+    year: Leto
+    make_non_working_day: Ta ponudnik ne bo na voljo za delo na izbrani dan.
+    no_breaks: Brez prekinitev
+    service_categories: Kategorije storitev
+    service_category: Kategorija storitve
+    blocked_period_saved: Blokirano obdobje je uspešno shranjeno.
+    blocked_period_deleted: Blokirano obdobje je bilo uspešno izbrisano.
+    delete_blocked_period: Izbriši blokirano obdobje
+    blocked_period: Blokirano obdobje
+    blocked_periods: Blokirana obdobja
+    blocked_period_save: Shranjevanje blokiranega obdobja
+    blocked_period_delete: Brisanje blokiranega obdobja
+    blocked_periods_hint: Določite časovna obdobja, v katerih bodo javne rezervacije onemogočene za vse ponudnike (npr. zaprti datumi, prazniki itd.).
+    custom_field: Polje po meri
+    custom_fields: Polja po meri
+    label: Oznaka
+    webhook_saved: Webhook je uspešno shranjen.
+    webhook_deleted: Webhook je bil uspešno izbrisan.
+    delete_webhook: Izbriši Webhook
+    contact_info: Podatki za stik
+    hide_from_public: Skrij pred javnostjo
+    matomo_analytics_site_id: ID spletnega mesta Matomo Analytics
+    matomo_analytics_site_id_hint: Nastavite ID mesta, ki mu bo sledil Matomo (privzeto mesto ima ID »1«).
+    default_timezone: Privzeti časovni pas
+    default_timezone_hint: Nastavite privzeto vrednost časovnega pasu, ki bo uporabljena za nove zapise.
+    default_language: Privzeti jezik
+    default_language_hint: Nastavite privzeto jezikovno vrednost, ki bo uporabljena za nove zapise.
+    sync_method_prompt: Katero metodo sinhronizacije želite uporabiti?
+    caldav_server: Strežnik CalDAV
+    caldav_connection_info_prompt: Prosimo, vnesite podatke o povezavi ciljnega koledarja CalDAV.
+    connect: Poveži
+    ldap: LDAP
+    ldap_info: Ta integracija vam omogoča, da se povežete z obstoječim strežnikom LDAP in samodejno uvozite uporabnike v Easy!Appointments ter jim omogočite SSO z njihovim geslom imenika (uporabniško ime se mora ujemati).
+    host: Gostitelj
+    port: Vrata
+    user_dn: Uporabniško DN
+    base_dn: Osnovni DN
+    keyword: Ključna beseda
+    ldap_search_hint: Vnesite ključno besedo za iskanje po imeniku LDAP za uporabnike, ki ustrezajo kriterijem filtra.
+    ldap_extension_not_loaded: Razširitev LDAP PHP ni naložena, vendar je potrebna za delovanje te integracije.
+    field_mapping: Preslikava polj
+    content: Vsebina
+    active: Aktivno
+    user_imported: Uporabniški zapis je bil uspešno uvožen.
+    import: Uvoz
+    ldap_dn: LDAP DN
+    role: Vloga
+    at_least_one_field_required: Vsaj eno polje mora biti nastavljeno kot zahtevano na strani za rezervacije.
+    customer_is_already_booked: Ta stranka že ima termin v zahtevanem obdobju rezervacije.
+    fields: Polja
+    invalid_credentials_provided: Navedene neveljavne poverilnice, poskusite znova.
+    calendar_url: URL koledarja
+    please_select: Prosim izberite
+    secret_header: Skrivno zaglavje
+    search: Iskanje
+    slot_interval: Interval terminov (minute)
+    jitsi: Jitsi
+    jitsi_info: Omogočite samodejno ustvarjanje povezav za sestanke Jitsi za termine. Ko je omogočeno, bo ustvarjena edinstvena povezava za Jitsi video klic in shranjena kot povezava za sestanek.
+    altcha: ALTCHA
+    altcha_info: ALTCHA je alternativa CAPTCHA, osredotočena na zasebnost, odprtokodna, ki za preverjanje človeških uporabnikov uporablja dokaz o delu brez sledenja.
+    altcha_enabled_hint: Ko je omogočeno, bo ALTCHA uporabljena namesto tradicionalne slikovne CAPTCHA za preverjanje obrazcev.
+    altcha_hmac_key: HMAC ključ
+    altcha_hmac_key_hint: Skrivni ključ za podpisovanje in preverjanje izzivov ALTCHA. Kliknite Ustvari za ustvarjanje novega varnega ključa.
+    altcha_max_number: Največje število
+    altcha_max_number_hint: 'Največje število za izziv dokaza o delu. Višje vrednosti povečajo težavnost (privzeto: 100000).'
+    altcha_expires: Poteče (sekunde)
+    altcha_expires_hint: 'Kako dolgo izziv ostane veljaven v sekundah (privzeto: 300).'
+    altcha_key_generated: Nov HMAC ključ je bil uspešno ustvarjen.
+    altcha_enabled: Omogoči ALTCHA
+    altcha_captcha_not_active_warning: Nastavitev CAPTCHA trenutno ni aktivna. ALTCHA ne bo uporabljena, razen če je CAPTCHA omogočena v
+    generate: Ustvari
+    meeting_link: Povezava do sestanka
+    google_calendar: Google Koledar
+    google_calendar_info: Omogočite sinhronizacijo z Google Calendar za sinhronizacijo terminov z Google Calendar računi ponudnikov.
+    google_client_id: ID odjemalca
+    google_client_id_info: ID odjemalca iz vašega projekta v Google Cloud Console.
+    google_client_secret: Skrivnost odjemalca
+    google_client_secret_info: Skrivnost odjemalca iz vašega projekta v Google Cloud Console.
+    google_calendar_setup_info: 'Za omogočanje sinhronizacije z Google Calendar morate ustvariti projekt v Google Cloud Console, omogočiti Google Calendar API in ustvariti OAuth 2.0 poverilnice. Obiščite:'
+    google_meet_link_generation: Ustvarjanje povezav Google Meet
+    google_meet_link_generation_info: Samodejno ustvarite povezavo za videokonferenco Google Meet za sinhronizirane termine. Povezava za sestanek bo shranjena v polju za povezavo sestanka termina.
+    display_add_to_google_calendar: Prikaži gumb "Dodaj v Google Calendar"
+    display_add_to_google_calendar_info: Prikažite gumb "Dodaj v Google Calendar" na strani potrditve rezervacije, kar strankam omogoča enostavno dodajanje termina v njihov osebni Google Calendar.
+    select_all: Izberi vse
+    select_none: Počisti izbor
+    appointment_update: Posodobitev termina
+    notify_users_on_update_question: Ali želite poslati obvestilo o tej spremembi?
+    'yes': Da
+    'no': Ne
+    latest_blog_posts: Najnovejši blog prispevki
+    loading: Nalaganje
+    blog_posts_load_error: Ni mogoče naložiti blog prispevkov. Obiščite uradno spletno stran za posodobitve.
+    provider_has_conflicting_appointment: Izbrani ponudnik ima v tem času že drug termin. Prosimo, izberite drug čas ali ponudnika.
+    would_you_like_to_proceed: Ali želite vseeno nadaljevati?
+    proceed: Nadaljuj
+    no_available_service_providers: Ni razpoložljivih storitev
+    no_available_service_providers_message: Trenutno ni na voljo storitev ali ponudnikov za rezervacijo. Prosimo, preverite pozneje ali nas kontaktirajte za pomoč.
+    reset_password: Ponastavi geslo
+    new_password: Novo geslo
+    enter_new_password: Spodaj vnesite svoje novo geslo.
+    password_reset_request: Zahteva za ponastavitev gesla
+    password_reset_email_message: Zahtevali ste ponastavitev gesla. Kliknite spodnji gumb, da nastavite novo geslo za svoj račun.
+    password_reset_link_expires: Ta povezava bo potekla čez 1 uro.
+    password_reset_ignore_message: Če niste zahtevali ponastavitve gesla, prezrite to e-pošto.
+    invalid_reset_token: Povezava za ponastavitev gesla je neveljavna.
+    invalid_or_expired_token: Povezava za ponastavitev gesla je neveljavna ali je potekla. Prosimo, zahtevajte novo.
+    password_reset_success: Vaše geslo je bilo uspešno ponastavljeno. Preusmerjeni boste na stran za prijavo.
+    password_reset_failed: Ponastavitev gesla ni uspela. Prosimo, poskusite znova.
+    no_password_provided: Prosimo, vnesite geslo.
+    type_username_and_email_for_reset_link: Vnesite svoje uporabniško ime in e-poštni naslov za prejem povezave za ponastavitev gesla.
+    send_reset_link: Pošlji povezavo za ponastavitev
+    reset_link_sent_with_email: Če obstaja račun z navedenimi podatki, je bila povezava za ponastavitev gesla poslana na vaš e-poštni naslov.
+    working_plan_validation_failed: Najdena je neveljavna konfiguracija delovnega načrta.
+    start_date: Začetni datum
+    end_date: Končni datum
+    remember_me: Zapomni si moje podatke
+    remember_me_hint: Shranite svoje podatke za hitrejše rezervacije naslednjič.
+    legal_notice: Pravno obvestilo
+    legal_notice_url: URL pravnega obvestila
+    legal_notice_url_hint: Vnesite URL do vaše strani s pravnim obvestilom.
+    imprint: Impressum
+    imprint_url: URL impressuma
+    imprint_url_hint: Vnesite URL do vaše strani z impressumom.
+    data_retention: Hramba podatkov
+    data_retention_days: Dnevi hrambe podatkov
+    data_retention_days_hint: Nastavite število dni, po katerih bodo podatki strank samodejno izbrisani. Nastavite na 0 za onemogočanje samodejnega brisanja.
+    manage_privacy: Upravljanje zasebnosti
+    manage_privacy_hint: Kliknite spodnjo povezavo za ogled, posodobitev ali izbris vaših osebnih podatkov.
+    personal_information_updated: Vaši osebni podatki so bili uspešno posodobljeni.
+    verify: Preveri
+    verifying: Preverjanje
+    verified: Preverjeno
+    verification_complete: Preverjanje končano
+    verification_failed: Preverjanje ni uspelo. Kliknite za ponovni poskus.
+    click_to_verify: Kliknite za preverjanje, da ste človek
+    altcha_verification_failed: Preverjanje ALTCHA ni uspelo. Prosimo, poskusite znova.
+    premium: Premium
+    about_app_premium: Ponujamo celovite storitve za samo-gostovano programsko opremo, vključno z razvojem po meri, upravljanim gostovanjem, pogodbami o podpori, preoblikovanjem blagovne znamke in stalnimi izboljšavami — da se lahko osredotočite na svoje poslovanje, medtem ko mi poskrbimo za ostalo.
+    go_premium: Nadgradi na Premium
+    notify_users_on_create_question: Ali želite stranko obvestiti o tem novem terminu?
+    notify_users_on_delete_question: Ali želite stranko obvestiti o preklicu termina?

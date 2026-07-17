@@ -1,0 +1,575 @@
+---
+lt:
+  ea:
+    page_title: 'Registravimasis vizitui – '
+    service_and_provider: Paslauga ir paslaugos teikėjas
+    select_service: Pasirinkite paslaugą
+    select_provider: Pasirinkite teikėją
+    duration: Trukmė
+    minutes: min.
+    price: kaina
+    back: Atgal
+    appointment_date_and_time: Vizito data ir laikas
+    no_available_hours: Pasirinktą dieną nėra laisvų vizitų laikų. Pasirinkite kitą dieną.
+    appointment_hour_missing: Prieš tęsdami pasirinkite vizito laiką.
+    customer_information: Kliento duomenys
+    first_name: Vardas
+    last_name: Pavardė
+    email: El. paštas
+    phone_number: Telefono numeris
+    phone: Telefonas
+    address: Adresas
+    city: Miestas
+    zip_code: Pašto kodas
+    notes: Pastabos
+    language: Kalba
+    no_language: Nėra kalbos
+    fields_are_required: Žvaigždute * pažymėti laukai yra privalomi.
+    appointment_confirmation: Vizito patvirtinimas
+    confirm: Patvirtinti
+    update: Atnaujinti
+    cancel_appointment_hint: Jei norite atšaukti vizitą, spustelėkite „Atšaukti“.
+    cancel: Atšaukti
+    appointment_registered: Jūsų vizitas sėkmingai užregistruotas!
+    cancel_appointment_title: Vizito atšaukimas
+    appointment_cancelled: Jūsų vizitas sėkmingai atšauktas.
+    appointment_cancelled_title: Vizitas atšauktas
+    reason: Priežastis
+    appointment_removed_from_schedule: Vizitas pašalintas iš įmonės tvarkaraščio.
+    appointment_details_was_sent_to_you: Jums išsiųstas el. laiškas su vizito informacija.
+    add_to_google_calendar: Įtraukti į „Google“ kalendorių
+    appointment_booked: Jūsų vizitas sėkmingai užregistruotas
+    thank_you_for_appointment: Dėkojame, kad užsiregistravote vizitui pas mus. Žemiau galite pamatyti informaciją apie vizitą. Pakeitimus galite atlikti, spustelėję vizito nuorodą.
+    appointment_details_title: Informacija apie vizitą
+    customer_details_title: Kliento duomenys
+    service: Paslauga
+    provider: Teikėjas
+    customer: Klientas
+    start: Pradžia
+    end: Pabaiga
+    name: Vardas
+    appointment_link_title: Vizito nuoroda
+    success: Atlikta
+    appointment_added_to_your_plan: Į jūsų planą įtrauktas naujas vizitas.
+    appointment_link_description: Spustelėję žemiau esančią vizito nuorodą, galite atlikti pakeitimus.
+    appointment_locked: Pakeitimai negalimi!
+    appointment_locked_message: Vizito negalima keisti iki jo likus mažiau nei {$limit} val.
+    appointment_not_found: Vizitas nerastas
+    appointment_does_not_exist_in_db: Nurodyto vizito nebėra sistemos duomenų bazėje.
+    display_calendar: Rodyti kalendorių
+    calendar: Kalendorius
+    users: Naudotojai
+    settings: Nuostatos
+    log_out: Atsijungti
+    synchronize: Sinchronizuoti
+    enable_sync: Įjungti sinchronizavimą
+    disable_sync: Išjungti sinchronizavimą
+    disable_sync_prompt: Ar tikrai norite išjungti kalendoriaus sinchronizavimą?
+    reload: Įkelti iš naujo
+    appointment: Vizitas
+    unavailability: Užimtas laikas
+    week: Savaitė
+    month: Mėnuo
+    today: Šiandien
+    not_working: Ne darbo laikas
+    break: Pertrauka
+    add: Pridėti
+    edit: Redaguoti
+    hello: Sveiki
+    all_day: Visa diena
+    manage_appointment_record_hint: Tvarkyti visus turimų paslaugų teikėjų ir paslaugų vizitų įrašus.
+    select_filter_item_hint: Pasirinkite paslaugų teikėją ar paslaugą ir peržiūrėkite vizitus kalendoriuje.
+    enable_appointment_sync_hint: Įjungti vizitų sinchronizavimą su išoriniu kalendoriumi.
+    manage_customers_hint: Tvarkyti registruotus klientus ir peržiūrėti jų užsakymų istoriją.
+    manage_services_hint: Tvarkyti galimas paslaugas ir paslaugų kategorijas.
+    manage_users_hint: Tvarkyti sistemos naudotojus (administratorius, paslaugų teikėjus, sekretorius).
+    settings_hint: Keisti sistemos ir naudotojo nuostatas.
+    log_out_hint: Atsijungti nuo sistemos.
+    unavailability_periods_hint: Laiko intervalams, kai paslaugų teikėjas užimtas, naujų vizitų pas jį registruoti neleidžiama.
+    new_appointment_hint: Sukurti naują vizitą ir įrašyti jį į duomenų bazę.
+    reload_appointments_hint: Iš naujo įkelti kalendoriaus turinį.
+    trigger_sync_hint: Atlikti kalendoriaus sinchronizavimą.
+    appointment_updated: Vizitas sėkmingai atnaujintas.
+    undo: Atšaukti
+    appointment_details_changed: Vizito duomenys pakeisti
+    appointment_changes_saved: Vizito pakeitimai sėkmingai įrašyti.
+    save: Įrašyti
+    new: Naujas
+    select: Rinktis
+    hide: Nerodyti
+    type_to_filter_customers: Pradėkite rašyti klientų filtravimui.
+    clear_fields_add_existing_customer_hint: Išvalyti laukus ir įvesti naują klientą.
+    pick_existing_customer_hint: Rinktis esamą klientą.
+    new_appointment_title: Naujas vizitas
+    edit_appointment_title: Vizito redagavimas
+    delete_appointment_title: Vizito šalinimas
+    write_appointment_removal_reason: 'Būsime dėkingi, jei nurodysite, kodėl atšaukiate vizitą:'
+    appointment_saved: Vizitas įrašytas.
+    new_unavailability_title: Naujas užimtas laikas
+    edit_unavailability_title: Užimto laiko redagavimas
+    unavailability_saved: Užimtas laikas įrašytas.
+    start_date_before_end_error: Būsime dėkingi, jei parašysite, kodėl atšaukiate vizitą.
+    invalid_duration: Negalima trukmė.
+    invalid_email: Netinkamas el. pašto adresas.
+    customers: Klientai
+    details: Duomenys
+    no_records_found: Įrašų nerasta…
+    services: Paslaugos
+    duration_minutes: Trukmė (minutėmis)
+    currency: Valiuta
+    category: Kategorija
+    no_category: Nėra kategorijos
+    description: Aprašymas
+    categories: Kategorijos
+    admins: Administratoriai
+    providers: Paslaugų teikėjai
+    secretaries: Sekretoriai
+    mobile_number: Mobilusis telefonas
+    mobile: Mobilusis
+    state: Valstija
+    username: Naudotojo vardas
+    password: Slaptažodis
+    retype_password: Pakartokite slaptažodį
+    receive_notifications: Siųsti pranešimus
+    passwords_mismatch: Slaptažodžiai nesutampa.
+    admin_saved: Administratorius įrašytas.
+    provider_saved: Paslaugų teikėjas įrašytas.
+    secretary_saved: Sekretorius įrašytas.
+    admin_deleted: Administratorius pašalintas.
+    provider_deleted: Paslaugų teikėjas pašalintas.
+    secretary_deleted: Sekretorius pašalintas.
+    service_saved: Paslauga įrašyta.
+    service_category_saved: Paslaugų kategorija įrašyta.
+    service_deleted: Paslauga pašalinta.
+    service_category_deleted: Paslaugų kategorija pašalinta.
+    customer_saved: Klientas įrašytas.
+    customer_deleted: Klientas pašalintas.
+    current_view: Esamasis rodinys
+    working_plan: Darbo grafikas
+    reset_plan: Iš naujo nustatyti planą
+    monday: Pirmadienis
+    tuesday: Antradienis
+    wednesday: Trečiadienis
+    thursday: Ketvirtadienis
+    friday: Penktadienis
+    saturday: Šeštadienis
+    sunday: Sekmadienis
+    breaks: Pertraukos
+    add_breaks_during_each_day: Įveskite darbo pertraukas. Pertraukų metu paslaugų teikėjas nepriims jokių vizitų.
+    day: Diena
+    days: Dienos
+    actions: Veiksmai
+    reset_working_plan_hint: Atstatyti numatytąjį darbo grafiką.
+    company_name: Įmonės pavadinimas
+    company_name_hint: Įmonės pavadinimas bus rodomas visur sistemoje (laukas privalomas).
+    company_email: Įmonės el. paštas
+    company_email_hint: Čia įveskite įmonės el. pašto adresą. Jis bus naudojamas kaip sistemos el. laiškų siuntėjo adresas ir adresas atsakymams (laukas privalomas).
+    company_link: Įmonės URL adresas
+    company_link_hint: Įmonės URL adresas turėtų nukreipti į oficialią įmonės svetainę (laukas privalomas).
+    go_to_booking_page: Eiti į registravimosi tinklalapį
+    settings_saved: Nuostatos įrašytos.
+    general: Bendrosios
+    booking: Rezervacija
+    visible: Rodomas
+    hidden: Nerodomas
+    business_logic: Verslo logika
+    current_user: Esamasis naudotojas
+    about_app: Apie „Easy!Appointments“
+    edit_working_plan_hint: Žemiau nurodykite savaitės dienas ir valandas, kuriomis jūsų įmonė priima vizitus. Kurdami ar koreguodami vizitus, jūs galėsite nurodyti bet kokį laiką, net jei jis nebus darbo metu, tačiau jūsų klientai negalės patys rezervuotis vizitų ne darbo valandomis. Šis darbo grafikas bus numatytasis visiems naujiems paslaugų teikėjams, tačiau kiekvienam iš jų galėsite darbo grafiką keisti atskirai, o taip pat nurodyti pertraukų laikus, redaguodami atitinkamo paslaugų teikėjo įrašą.
+    edit_breaks_hint: Įveskite numatytasias darbo pertraukas. Šios pertraukos bus taikomos visiems naujiems paslaugų teikėjams.
+    book_advance_timeout: Minimalus laukimo laikas
+    book_advance_timeout_hint: Nurodykite, kiek mažiausiai minučių turi praeiti nuo vizito registracijos ar perkėlimo momento iki jo numatomos pradžios, kai vizitui registruojasi ar jį perkelti nori klientas.
+    timeout_minutes: Minimalus laukimo laikas (minutėmis)
+    about_app_info: "„Easy!Appointments“ – tai labai lengvai pritaikoma saityno programa, suteikianti galimybę jūsų klientams internetu registruotis vizitams pas jus. Be to, ji geba sinchronizuoti duomenis su „Google“ kalendoriumi, todėl galite ją naudoti su kitomis paslaugomis."
+    current_version: Naudojama versija
+    support: Pagalba
+    about_app_support: Jei, naudodamiesi „Easy!Appointments“, susidurtumėte su kokiomis nors problemomis, atsakymų galite ieškoti oficialioje „Google“ grupėje. Taip pat galbūt norėsite užregistruoti problemą „GitHub“ svetainėje, tokiu būdu prisidėdami prie programos vystymo.
+    official_website: Oficiali svetainė
+    google_plus_community: "„Google+“ bendruomenė"
+    support_group: Pagalbos grupė
+    project_issues: Problemų registras
+    license: Licencija
+    about_app_license: "„Easy!Appointments“ yra platinama pagal GPLv3 licenciją. Bet kokiu būdu naudodamiesi „Easy!Appointments“ kodu, jūs sutinkate su šios licensijos sąlygomis:"
+    logout_success: Jūs sėkmingai atsijungėte! Jei norite pereiti į kitą tinklalapį, spustelėkite vieną iš toliau pateiktų mygtukų.
+    book_appointment_title: Registravimasis vizitui
+    backend_section: Sistemos valdymo skydelis
+    you_need_to_login: Sveiki! Jeigu norite prieiti prie sistemos valdymo skydelio, turite prisijungti.
+    enter_username_here: Čia įveskite savo naudotojo vardą…
+    enter_password_here: Įveskite slaptažodį čia ...
+    login: Prisijungti
+    forgot_your_password: Pamiršote slaptažodį?
+    login_failed: Prisijungti nepavyko, įveskite teisingus duomenis ir bandykite dar kartą.
+    type_username_and_email_for_new_password: Kad gautumėte naują slaptažodį, įveskite savo naudotojo vardą ir el. pašto adresą.
+    enter_email_here: Čia įveskite savo el. pašto adresą…
+    regenerate_password: Atkurti slaptažodį
+    go_to_login: Grįžti į prisijungimo tinklalapį
+    new_password_sent_with_email: Naujasis slaptažodis jums išsiųstas el. paštu.
+    new_account_password: Naujas paskyros slaptažodis
+    new_password_is: Naujas jūsų paskyros slaptažodis yra $password. Šį slaptažodį galite pakeisti nauju  savo paskyros nuostatose.
+    delete_record_prompt: Ar tikrai norite pašalinti šį įrašą? Šio veiksmo atšaukti negalima.
+    delete_admin: Administratoriaus šalinimas
+    delete_customer: Kliento šalinimas
+    delete_service: Paslaugos šalinimas
+    delete_service_category: Paslaugų kategorijos šalinimas
+    delete_provider: Tiekėjo šalinimas
+    delete_secretary: Sekretoriaus šalinimas
+    delete_appointment: Vizito šalinimas
+    delete_unavailability: Užimto laiko šalinimas
+    delete: Šalinti
+    unexpected_issues: Netikėtos problemos
+    unexpected_issues_message: Veiksmo nepavyko užbaigti.
+    close: Užverti
+    page_not_found: Tinklalapis nerastas
+    page_not_found_message: Deja, prašomas tinklalapis neegzistuoja. Patikrinkite įvestą URL arba pereikite kitur naudodamiesi toliau pateiktais mygtukais.
+    error: Klaida
+    no_privileges: Trūksta teisių
+    no_privileges_message: Jūs neturite reikiamų teisių šiam tinklalapiui peržiūrėti.
+    backend_calendar: Kalendoriaus valdymo skydelis
+    start_date_time: Pradžios data / laikas
+    end_date_time: Pabaigos data / laikas
+    licensed_under: Licencijuojama pagal
+    unexpected_issues_occurred: Susidurta su netikėtomis problemomis.
+    service_communication_error: Įvyko serverio ryšio klaida, bandykite dar kartą.
+    no_privileges_edit_appointments: Jūs neturite reikiamų teisių vizitams redaguoti.
+    unavailability_updated: Užimtas laikas atnaujintas.
+    appointments: Vizitai
+    unexpected_warnings: Netikėti įspėjimai
+    unexpected_warnings_message: Operacija baigta, tačiau gauta keletas pranešimų.
+    filter: Filtruoti
+    clear: Valyti
+    uncategorized: Be kategorijos
+    username_already_exists: Toks naudotojo vardas jau naudojamas.
+    password_length_notice: Slaptažodis turi būti bent $number simbolių ilgio.
+    general_settings: Bendrosios nuostatos
+    personal_information: Asmeninė informacija
+    system_login: Sistemos prisijungimas
+    user_settings_are_invalid: Naudotojo nuostatos negalimos! Peržiūrėkite savo nuostatas ir bandykite dar kartą.
+    add_break: Pridėti pertrauką
+    january: Sausis
+    february: Vasaris
+    march: Kovas
+    april: Balandis
+    may: Gegužė
+    june: Birželis
+    july: Liepa
+    august: Rugpjūtis
+    september: Rugsėjis
+    october: Spalis
+    november: Lapkritis
+    december: Gruodis
+    previous: Ankstesnis
+    next: Kitas
+    now: Dabar
+    select_time: Pasirinkite laiką
+    time: Laikas
+    hour: Valanda
+    minute: Minutė
+    calendar_sync_completed: Kalendorius sėkmingai sinchronizuotas.
+    calendar_sync_failed: 'Kalendoriaus sinchronizavimas nepavyko: nepavyko užmegzti ryšio su serveriu.'
+    select_sync_calendar: Pasirinkite kalendorių
+    select_sync_calendar_prompt: Pasirinkite kalendorių, su kuriuo norite sinchronizuoti vizitus.
+    sync_calendar_selected: Sėkmingai pasirinktas kalendorius sinchronizavimui.
+    oops_something_went_wrong: Oi! Kažkas nepavyko.
+    ea_update_success: "„Easy!Appointments“ sėkmingai atnaujinta."
+    require_captcha: Reikalauti „CAPTCHA“ saugos kodo
+    require_captcha_hint: Kai ši parinktis įjungta, prieš užsakydami/atnaujindami vizitą klientai turės įvesti atsitiktinai sugeneruotą saugos kodą.
+    captcha_is_wrong: Saugos kodo patikra nepavyko, bandykite dar kartą.
+    enter_captcha_here: Įveskite CAPTCHA čia...
+    any_provider: Bet kuris teikėjas
+    requested_hour_is_unavailable: Deja, norimas vizito laikas neleistinas. Pasirinkite kitą vizito laiką.
+    customer_notifications: Pranešimai klientams
+    customer_notifications_hint: Nurodo, ar klientai gaus pranešimus el. paštu, pasikeitus jų vizitų laikui.
+    date_format: Datos formatas
+    date_format_hint: Pasirinkite pageidaujamą datos formatą (D - diena, M - mėnuo, Y - metai).
+    time_format: Laiko formatas
+    time_format_hint: Pasirinkite pageidaujamą laiko formatą (H - valandos, M - minutės).
+    first_weekday: Pirmoji savaitės diena
+    first_weekday_hint: Pasirinkite pirmąją kalendorinės savaitės dieną.
+    google_analytics_code_hint: Įveskite „Google Analytics“ kodą, jei norite įjungti „Google Analytics“ stebėjimą tinklalapiuose.
+    availabilities_type: Tvarkaraščio tipas
+    flexible: Lankstus
+    fixed: Fiksuotas
+    attendants_number: Dalyvių skaičius
+    reset_working_plan: Atstatyti darbo grafiko numatytąsias reikšmes.
+    legal_contents: Teisinė informacija
+    cookie_notice: Pranešimas apie slapukus
+    display_cookie_notice: Rodyti pranešimą apie slapukus
+    cookie_notice_content: Pranešimo apie slapukus turinys
+    terms_and_conditions: Terminai ir sąlygos
+    display_terms_and_conditions: Rodyti terminus ir sąlygas
+    terms_and_conditions_content: Terminų ir sąlygų turinys
+    privacy_policy: Privatumo politika
+    display_privacy_policy: Rodyti privatumo politiką
+    privacy_policy_content: Privatumo politikos turinys
+    website_using_cookies_to_ensure_best_experience: Šioje svetainėje naudojami slapukai, kad užtikrintume geriausią patirtį mūsų svetainėje.
+    read_and_agree_to_terms_and_conditions: Aš perskaičiau ir sutinku su {$link}Terminais ir sąlygomis{/$link}.
+    read_and_agree_to_privacy_policy: Aš perskaičiau ir sutinku su {$link}Privatumo politika{/$link}.
+    delete_personal_information_hint: Pašalinti iš sistemos visus jūsų vizitus ir asmeninę informaciją.
+    delete_personal_information: Pašalinti asmeninę informaciją
+    delete_personal_information_prompt: Ar tikrai norite pašalinti savo asmeninę informaciją? Šio veiksmo atšaukti negalima.
+    location: Vieta
+    working_plan_exception: Darbo grafiko išimtis
+    working_plan_exceptions: Darbo grafiko išimtys
+    working_plan_exceptions_hint: Įveskite išimtines datas, kuriomis šio paslaugų teikėjo darbo grafikas skirsis nuo įprastinio.
+    new_working_plan_exception_title: Nauja darbo grafiko išimtis
+    working_plan_exception_saved: Darbo grafiko išimtis įrašyta.
+    working_plan_exception_deleted: Darbo grafiko išimtis pašalinta.
+    add_working_plan_exceptions_during_each_day: Įveskite išimtines datas, kuriomis šio paslaugų teikėjo darbo grafikas skirsis nuo įprastinio.
+    add_working_plan_exception: Pridėti darbo grafiko išimtį
+    require_phone_number: Reikalauti telefono numerio
+    require_phone_number_hint: Kai ši parinktis įjungta, rezervuodami laiką vizitui, klientai ir naudotojai turės įvesti kliento telefono numerį
+    check_spam_folder: Jei laiško negausite per kelias minutes, patikrinkite nepageidaujamų laiškų aplanką.
+    api_token_hint: Nustatykite slaptą prieigos raktą, kad įjungtumėte „Easy!Appointments“ API autentifikavimą pagal prieigos raktą.
+    timezone: Laiko juosta
+    overwrite_existing_working_plans: Visi esami paslaugų teikėjų darbo grafikai bus perrašyti. Ar tikrai norite tęsti?
+    working_plans_got_updated: Visi darbo grafikai atnaujinti.
+    apply_to_all_providers: Taikyti visiems paslaugų teikėjams
+    display_any_provider: Rodyti bet kurio teikėjo parinktį
+    display_any_provider_hint: Užsakymo tinklalapyje atsiras papildoma parinktis, leidžianti klientams užsisakyti vizitą, nenurodant konkretaus paslaugų teikėjo.
+    load_more: Įkelti daugiau
+    list: Sąrašas
+    default: Numatytasis
+    table: Lentelė
+    date: Data
+    about: Apie
+    booking_settings: Registravimosi vizitams nuostatos
+    display: Rodyti
+    require: Reikalauti
+    color: Spalva
+    matomo_analytics_url_hint: Pridėkite savo „Matomo“ įdiegties URL adresą, jeigu norite įjungti „Matomo“ stebėjimą užsakymo tinklalapiuose.
+    invalid_phone: Netinkamas telefono numeris.
+    legal: Teisinė informacija
+    business: Verslas
+    account: Paskyra
+    disable_booking: Išjungti registravimąsi vizitams
+    disable_booking_hint: Kol ši parinktis aktyvi, registravimosi vizitams tinklalapis bus išjungtas ir klientai negalės registruotis naujiems vizitams.
+    display_message: Rodyti pranešimą
+    booking_is_disabled: Registravimasis vizitams išjungtos!
+    appearance: Išvaizda
+    company_logo: Įmonės logotipas
+    company_logo_hint: Įmonės logotipas bus rodomas daugelyje programos vietų, įskaitant registravimosi vizitui tinklalapį ir siunčiamus el. laiškus (įkelkite ne didesnį kaip 2 MB dydžio paveikslo failą).
+    company_color: Įmonės spalva
+    company_color_hint: Įmonės spalva bus taikoma visoje programoje, kad ši labiau atitiktų jūsų prekės ženklą.
+    localization: Lokalizacija
+    integrations: Integracijos
+    company: Įmonė
+    remove: Šalinti
+    login_button: Prisijungimo mygtukas
+    display_login_button_hint: Nurodo, ar registravimosi vizitui tinklalapyje bus rodomas prisijungimo mygtukas.
+    private: Privatus
+    private_hint: Privatūs įrašai nebus rodomi ir apdorojami viešuose tinklalapiuose, kaip antai registravimosi vizitui tinklalapyje.
+    reset: Atkurti
+    all: Visi
+    booking_link: Registravimosi nuoroda
+    add_new_event: Naujo įrašo kūrimas
+    what_kind_of_event: Kokio pobūdžio įrašą norėtumėte pridėti?
+    theme: Grafinis apvalkalas
+    limit_customer_access: Riboti klientų matomumą
+    limit_customer_access_hint: Jei ši parinktis aktyvi, paslaugų teikėjai ir sekretoriai galės matyti tik tuos klientus, kurie turi registruotų vizitų pas atitinkamą paslaugų teikėją.
+    url: URL adresas
+    secret_token: Slaptas prieigos raktas
+    verify_ssl: Patikrinti SSL
+    appointment_save: Vizitas įrašytas
+    appointment_delete: Vizitas pašalintas
+    unavailability_save: Užimtas laikas įrašytas
+    unavailability_delete: Užimtas laikas pašalintas
+    customer_save: Klientas įrašytas
+    customer_delete: Klientas pašalintas
+    service_save: Paslauga įrašyta
+    service_delete: Paslauga pašalinta
+    service_category_save: Paslaugų kategorija įrašyta
+    service_category_delete: Paslaugų kategorija pašalinta
+    provider_save: Paslaugų teikėjas įrašytas
+    provider_delete: Paslaugų teikėjas pašalintas
+    secretary_save: Sekretorius įrašytas
+    secretary_delete: Sekretorius pašalintas
+    admin_save: Administratorius įrašytas
+    admin_delete: Administratorius pašalintas
+    options: Parinktys
+    webhooks: Webhook'ai
+    webhooks_info: "„Webhooks“ mechanizmas suteikia galimybę siųsti HTTP užklausas išorinėms saityno programoms, reaguojant į įvairius programos įvykius, pvz., vizito sukūrimą ar kliento pašalinimą."
+    integrations_info: Integracijos įgalina užmegzti ryšius su išorinėmis programomis ir API sąsajomis.
+    configure: Konfigūruoti
+    google_analytics: Google Analytics
+    google_analytics_info: "„Google Analytics“ suteikia galimybę automatiškai pridėti stebėjimo kodą ir reikiamą HTML kodą į viešąjį tinklalapį ir sekti visas viešąsias registravimosi vizitams sesijas."
+    matomo_analytics: Matomo Analytics
+    matomo_analytics_info: "„Matomo Analytics“ suteikia galimybę automatiškai pridėti stebėjimo kodą ir reikiamą HTML kodą į viešąjį tinklalapį ir sekti visas viešąsias registravimosi vizitams sesijas."
+    api: API
+    api_info: API suteikia galimybę operuoti visais „Easy!Appointments“ duomenimis HTTP protokolu per leidžiamus API galinius taškus bei kurti savo integracijas.
+    google_analytics_code: "„Google Analytics“ kodas"
+    matomo_analytics_url: "„Matomo Analytics“ URL"
+    future_booking_limit: Ateities plano trukmė
+    limit_days: Plano trukmė (dienomis)
+    future_booking_limit_hint: Nurodykite, kelioms dienoms į priekį klientams leidžiama registruotis vizitams.
+    api_token: API prieigos raktas
+    allow_rescheduling_cancellation_before: Galutinis terminas registracijai vizitui perkelti / atšaukti
+    at_least_one_field: Užsakymo tinklalapyje turi būti rodomas bent vienas laukas.
+    status: Būsena
+    appointment_status_options: Galimos vizitų būsenos
+    appointment_status_options_info: Nurodykite vizitų būsenas, kurias bus leidžiama naudoti kalendoriaus tinklalapyje (pirmoji būsena bus automatiškai laikoma numatytąja).
+    sunday_short: Sk
+    monday_short: Pr
+    tuesday_short: An
+    wednesday_short: Tr
+    thursday_short: Kt
+    friday_short: Pn
+    saturday_short: Št
+    january_short: Sau
+    february_short: Vas
+    march_short: Kov
+    april_short: Bal
+    may_short: Geg
+    june_short: Bir
+    july_short: Lie
+    august_short: Rgp
+    september_short: Rgs
+    october_short: Spa
+    november_short: Lap
+    december_short: Grd
+    am: priešpiet
+    pm: popiet
+    to: iki
+    click_to_toggle: Spustelėkite, kad perjungtumėte
+    week_short: Sav.
+    scroll_to_increment: Slinkite padidinimui
+    year: Metai
+    make_non_working_day: Šis paslaugų teikėjas pasirinktą dieną nedirbs.
+    no_breaks: Be pertraukų
+    service_categories: Paslaugų kategorijos
+    service_category: Paslaugų kategorija
+    blocked_period_saved: Blokuojamas laikotarpis įrašytas.
+    blocked_period_deleted: Blokuojamas laikotarpis pašalintas.
+    delete_blocked_period: Blokuojamo laikotarpio šalinimas
+    blocked_period: Blokuojamas laikotarpis
+    blocked_periods: Blokuojami laikotarpiai
+    blocked_period_save: Blokuojamo laikotarpio įrašymas
+    blocked_period_delete: Blokuojamo laikotarpio šalinimas
+    blocked_periods_hint: Įveskite laikotarpius, kai viešos rezervacijos nebus leidžiamos visiems paslaugų teikėjams (pvz., sanitarinės dienos, šventės ir pan.).
+    custom_field: Tinkintas laukas
+    custom_fields: Tinkinti laukai
+    label: Etiketė
+    webhook_saved: "„Webhook“ įrašytas."
+    webhook_deleted: "„Webhook“ pašalintas."
+    delete_webhook: "„Webhook“ šalinimas"
+    contact_info: Kontaktiniai duomenys
+    hide_from_public: Nerodyti viešai
+    matomo_analytics_site_id: "„Matomo Analytics“ svetainės ID"
+    matomo_analytics_site_id_hint: Nurodykite „Matomo“ stebimos svetainės ID (numatytosios svetainės ID yra 1).
+    default_timezone: Numatytoji laiko juosta
+    default_timezone_hint: Pasirinkite numatytąją laiko juostą, kuri bus naudojama naujiems įrašams.
+    default_language: Numatytoji kalba
+    default_language_hint: Pasirinkite numatytąją kalbą, kuri bus naudojama naujiems įrašams.
+    sync_method_prompt: Kurį sinchronizavimo metodą norite naudoti?
+    caldav_server: "„CalDAV“ serveris"
+    caldav_connection_info_prompt: Įveskite paskirties „CalDAV“ kalendoriaus serverio duomenis.
+    connect: Jungtis
+    ldap: LDAP
+    ldap_info: Ši integracija suteikia galimybę prisijungti prie esamo LDAP serverio, automatiškai importuoti naudotojus į „Easy!Appointments“ ir leisti jiems jungtis prie sistemos naudojantis savo LDAP slaptažodžiu (naudotojo vardas turi sutapti).
+    host: Serveris
+    port: Prievadas
+    user_dn: Naudotojo DN
+    base_dn: Bazinis DN
+    keyword: Reikšminis žodis
+    ldap_search_hint: Įveskite reikšminį žodį, pagal kurį LDAP kataloge bus ieškoma naudotojų, atitinkančių filtro kriterijus.
+    ldap_extension_not_loaded: Neįkeltas PHP LDAP papildinys, tačiau jis būtinas, kad ši integracija veiktų.
+    field_mapping: Laukų atitiktys (atvaizdis)
+    content: Turinys
+    active: Aktyvus
+    user_imported: Naudotojo įrašas importuotas.
+    import: Importuoti
+    ldap_dn: LDAP DN
+    role: Vaidmuo
+    at_least_one_field_required: Užsakymo tinklalapyje turi būti nustatytas bent vienas privalomas laukas.
+    customer_is_already_booked: Šis klientas jau turi suplanuotą vizitą prašomu rezervuoti laikotarpiu.
+    fields: Laukai
+    invalid_credentials_provided: Pateikti negaliojantys duomenys, bandykite dar kartą.
+    calendar_url: Kalendoriaus URL
+    please_select: Pasirinkite
+    secret_header: Slapta antraštė
+    search: Ieškoti
+    slot_interval: Laiko intervalas (minutės)
+    jitsi: Jitsi
+    jitsi_info: Įjunkite automatinį Jitsi susitikimo nuorodos generavimą vizitams. Kai įjungta, kiekvienam vizitui bus sukurta unikali Jitsi vaizdo skambučio nuoroda ir išsaugota kaip susitikimo nuoroda.
+    altcha: ALTCHA
+    altcha_info: ALTCHA yra į privatumą orientuota, atvirojo kodo CAPTCHA alternatyva, kuri naudoja darbo įrodymą žmonių naudotojams patvirtinti be sekimo.
+    altcha_enabled_hint: Kai įjungta, ALTCHA bus naudojama vietoj tradicinės vaizdo CAPTCHA formų patvirtinimui.
+    altcha_hmac_key: HMAC Key
+    altcha_hmac_key_hint: Slaptas raktas, naudojamas ALTCHA iššūkiams pasirašyti ir patvirtinti. Spustelėkite Generuoti, kad sukurtumėte naują saugų raktą.
+    altcha_max_number: Didžiausias skaičius
+    altcha_max_number_hint: 'Didžiausias darbo įrodymo iššūkio skaičius. Didesnės reikšmės padidina sudėtingumą (numatytoji: 100000).'
+    altcha_expires: Galioja (sekundės)
+    altcha_expires_hint: 'Kiek laiko iššūkis galioja sekundėmis (numatytoji: 300).'
+    altcha_key_generated: Naujas HMAC raktas sėkmingai sugeneruotas.
+    altcha_enabled: Įjungti ALTCHA
+    altcha_captcha_not_active_warning: CAPTCHA nustatymas šiuo metu neaktyvus. ALTCHA nebus naudojama, nebent CAPTCHA bus įjungta
+    generate: Generuoti
+    meeting_link: Susitikimo nuoroda
+    google_calendar: Google kalendorius
+    google_calendar_info: Įjunkite Google Calendar sinchronizavimą, kad sinchronizuotumėte vizitus su paslaugų teikėjų Google Calendar paskyromis.
+    google_client_id: Client ID
+    google_client_id_info: Client ID iš jūsų Google Cloud Console projekto.
+    google_client_secret: Client Secret
+    google_client_secret_info: Client Secret iš jūsų Google Cloud Console projekto.
+    google_calendar_setup_info: 'Norėdami įjungti Google Calendar sinchronizavimą, turite sukurti projektą Google Cloud Console, įjungti Google Calendar API ir sukurti OAuth 2.0 kredencialus. Apsilankykite:'
+    google_meet_link_generation: Generuoti Google Meet nuorodas
+    google_meet_link_generation_info: Automatiškai sukurkite Google Meet vaizdo konferencijos nuorodą sinchronizuotiems vizitams. Susitikimo nuoroda bus išsaugota vizito susitikimo nuorodos lauke.
+    display_add_to_google_calendar: Rodyti "Add to Google Calendar" mygtuką
+    display_add_to_google_calendar_info: Rodyti "Add to Google Calendar" mygtuką užsakymo patvirtinimo puslapyje, kad klientai galėtų lengvai pridėti savo vizitą prie asmeninio Google Calendar kalendoriaus.
+    select_all: Pasirinkti viską
+    select_none: Atšaukti pasirinkimą
+    appointment_update: Susitikimo atnaujinimas
+    notify_users_on_update_question: Ar norite išsiųsti pranešimą apie šį pakeitimą?
+    'yes': Taip
+    'no': Ne
+    latest_blog_posts: Naujausi tinklaraščio įrašai
+    loading: Kraunama
+    blog_posts_load_error: Nepavyko įkelti tinklaraščio įrašų. Aplankykite oficialią svetainę naujienoms.
+    provider_has_conflicting_appointment: Pasirinktas teikėjas jau turi kitą susitikimą tuo metu. Prašome pasirinkti kitą laiką arba teikėją.
+    would_you_like_to_proceed: Ar norite tęsti?
+    proceed: Tęsti
+    no_available_service_providers: Nėra galimų paslaugų
+    no_available_service_providers_message: Šiuo metu nėra galimų paslaugų ar teikėjų rezervacijai. Patikrinkite vėliau arba susisiekite su mumis pagalbos.
+    reset_password: Atkurti slaptažodį
+    new_password: Naujas slaptažodis
+    enter_new_password: Įveskite savo naują slaptažodį žemiau.
+    password_reset_request: Slaptažodžio atkūrimo užklausa
+    password_reset_email_message: Jūs paprašėte atkurti slaptažodį. Spustelėkite žemiau esantį mygtuką, kad nustatytumėte naują slaptažodį savo paskyrai.
+    password_reset_link_expires: Ši nuoroda nustos galioti po 1 valandos.
+    password_reset_ignore_message: Jei neprašėte slaptažodžio atkūrimo, prašome ignoruoti šį el. laišką.
+    invalid_reset_token: Slaptažodžio atkūrimo nuoroda negalioja.
+    invalid_or_expired_token: Slaptažodžio atkūrimo nuoroda negalioja arba pasibaigė jos galiojimo laikas. Prašome paprašyti naujos.
+    password_reset_success: Jūsų slaptažodis sėkmingai atkurtas. Būsite nukreipti į prisijungimo puslapį.
+    password_reset_failed: Slaptažodžio atkūrimas nepavyko. Prašome bandyti dar kartą.
+    no_password_provided: Prašome įvesti slaptažodį.
+    type_username_and_email_for_reset_link: Įveskite savo vartotojo vardą ir el. pašto adresą, kad gautumėte slaptažodžio atkūrimo nuorodą.
+    send_reset_link: Siųsti atkūrimo nuorodą
+    reset_link_sent_with_email: Jei egzistuoja paskyra su pateiktais duomenimis, slaptažodžio atkūrimo nuoroda išsiųsta į jūsų el. paštą.
+    working_plan_validation_failed: Rasta neteisinga darbo plano konfigūracija.
+    start_date: Pradžios data
+    end_date: Pabaigos data
+    remember_me: Prisiminti mano informaciją
+    remember_me_hint: Išsaugokite savo duomenis greitesniam užsakymui kitą kartą.
+    legal_notice: Teisinis pranešimas
+    legal_notice_url: Teisinio pranešimo URL
+    legal_notice_url_hint: Įveskite savo teisinio pranešimo puslapio URL.
+    imprint: Svetainės informacija
+    imprint_url: Svetainės informacijos URL
+    imprint_url_hint: Įveskite savo svetainės informacijos puslapio URL.
+    data_retention: Duomenų saugojimas
+    data_retention_days: Duomenų saugojimo dienos
+    data_retention_days_hint: Nustatykite dienų skaičių, po kurio klientų duomenys bus automatiškai ištrinti. Nustatykite 0, kad išjungtumėte automatinį trynimą.
+    manage_privacy: Valdyti privatumą
+    manage_privacy_hint: Spustelėkite žemiau esančią nuorodą, kad peržiūrėtumėte, atnaujintumėte arba ištrintumėte savo asmeninę informaciją.
+    personal_information_updated: Jūsų asmeninė informacija sėkmingai atnaujinta.
+    verify: Patvirtinti
+    verifying: Tikrinama
+    verified: Patvirtinta
+    verification_complete: Patvirtinimas baigtas
+    verification_failed: Patvirtinimas nepavyko. Spustelėkite, kad bandytumėte dar kartą.
+    click_to_verify: Spustelėkite, kad patvirtintumėte, jog esate žmogus
+    altcha_verification_failed: ALTCHA patvirtinimas nepavyko. Bandykite dar kartą.
+    premium: Premium
+    about_app_premium: Siūlome visapusiškus sprendimus savarankiškai talpinamai programinei įrangai, įskaitant individualų kūrimą, valdomą prieglobą, palaikymo sutartis, prekės ženklo keitimą ir nuolatinius patobulinimus — kad galėtumėte susitelkti ties savo verslu, o mes pasirūpinsime likusiais dalykais.
+    go_premium: Go Premium
+    notify_users_on_create_question: Ar norite pranešti klientui apie šį naują susitikimą?
+    notify_users_on_delete_question: Ar norite pranešti klientui apie susitikimo atšaukimą?

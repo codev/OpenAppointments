@@ -10,7 +10,12 @@ class BookingController < ApplicationController
                                   id_users_customer id_services].freeze
   THEMES = %w[cosmo darkly default flatly litera lumen materia minty sketchy zephyr].freeze
 
-  rate_limit to: 15, within: 1.minute, only: :register,
+  # Distinct name: per limit - unnamed limits in one controller share a cache key,
+  # so the wizard's own availability polling would eat the register budget.
+  rate_limit to: 15, within: 1.minute, only: :register, name: "register",
+             with: -> { render json: { success: false, message: "Too many requests." }, status: :too_many_requests }
+  # The availability lookups are unauthenticated and cheap to script; cap per-IP bursts.
+  rate_limit to: 60, within: 1.minute, only: [ :get_available_hours, :get_unavailable_dates ], name: "availability",
              with: -> { render json: { success: false, message: "Too many requests." }, status: :too_many_requests }
 
   def reschedule

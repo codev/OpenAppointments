@@ -74,4 +74,23 @@ Rails.application.routes.draw do
   post "google/get_google_calendars" => "google#get_google_calendars"
   post "google/select_google_calendar" => "google#select_google_calendar"
   post "google/disable_provider_sync" => "google#disable_provider_sync"
+  # REST API v1 (EA route_api_resource pattern: GET, GET/:id, POST, PUT/:id, DELETE/:id).
+  namespace :api do
+    namespace :v1 do
+      %w[appointments unavailabilities customers admins providers secretaries
+         services service_categories webhooks blocked_periods working_plan_exceptions].each do |resource|
+        get resource => "#{resource}#index"
+        get "#{resource}/:id" => "#{resource}#show"
+        post resource => "#{resource}#store"
+        put "#{resource}/:id" => "#{resource}#update"
+        delete "#{resource}/:id" => "#{resource}#destroy"
+      end
+
+      get "settings" => "settings#index"
+      get "settings/:name" => "settings#show", constraints: { name: /[^\/]+/ }
+      put "settings/:name" => "settings#update", constraints: { name: /[^\/]+/ }
+
+      get "availabilities" => "availabilities#get"
+    end
+  end
 end

@@ -1,0 +1,575 @@
+---
+tr:
+  ea:
+    page_title: Randevu Alınacak Kişi
+    service_and_provider: Hizmet ve Hizmet Sağlayıcıyı Seçin
+    select_service: Hizmeti Seçin
+    select_provider: Hizmet Sağlayıcıyı Seçin
+    duration: Süre
+    minutes: Dakika
+    price: Ücret
+    back: Önceki
+    appointment_date_and_time: Randevu Tarihini ve Zamanını Seçin
+    no_available_hours: 'Seçilen tarih için uygun saat bulunmuyor. Lütfen başka bir tarih seçin. '
+    appointment_hour_missing: Lütfen devam etmeden önce bir randevu saati seçin.
+    customer_information: Bilgilerinizi Girin
+    first_name: Ad
+    last_name: Soyad
+    email: E-posta
+    phone_number: Telefon No
+    phone: Telefon
+    address: Adres
+    city: Şehir
+    zip_code: Posta Kodu
+    notes: Notlar
+    language: Dil
+    no_language: Dil yok
+    fields_are_required: "* Zorunlu sahalardır."
+    appointment_confirmation: Randevuyu Onaylayın
+    confirm: Onayla
+    update: Güncelle
+    cancel_appointment_hint: Randevuyu şirket takviminden çıkarmak için lütfen "İptal" butonuna tıklayın.
+    cancel: İptal
+    appointment_registered: Randevunuz başarı ile kaydedildi.
+    cancel_appointment_title: Randevuyu İptal Et
+    appointment_cancelled: Randevunuz başarı ile iptal edildi.
+    appointment_cancelled_title: Randevu İptal Edildi
+    reason: Sebep
+    appointment_removed_from_schedule: Aşağıdaki randevu şirket programından çıkarıldı.
+    appointment_details_was_sent_to_you: 'Randevu detaylarını içeren bir eposta adresinize gönderildi. '
+    add_to_google_calendar: Google Takvim'e Ekle
+    appointment_booked: Randevunuz başarı ile kaydedildi.
+    thank_you_for_appointment: Bizden randevu aldığınız için teşekkür ederiz. Randevu detaylarını aşağıda görebilirsiniz. Değişiklik yapmak için randevu linkine tıklayın.
+    appointment_details_title: Randevu Detayları
+    customer_details_title: Müşteri Detayları
+    service: Hizmet
+    provider: Hizmet Sağlayıcı
+    customer: Müşteri
+    start: Başlangıç
+    end: Bitiş
+    name: Ad
+    appointment_link_title: Randevunun Bağlantısı
+    success: Başarılı.
+    appointment_added_to_your_plan: Planınıza yeni bir randevu eklendi.
+    appointment_link_description: Değişiklik yapmak için aşağıdaki randevu linkine tıklayabilirsiniz.
+    appointment_locked: Modification impossible.
+    appointment_locked_message: Randevu, başlangıcından {$limit} saatten kısa bir süre önce değiştirilemez.
+    appointment_not_found: Randevu Bulunamadı.
+    appointment_does_not_exist_in_db: Talep ettiğiniz randevu artık sistem veri tabanında yer almıyor.
+    display_calendar: Takvimi Görüntüle
+    calendar: Takvim
+    users: Kullanıcılar
+    settings: Ayarlar
+    log_out: Çıkış
+    synchronize: Eşitle
+    enable_sync: Eşitlemeyi Aç
+    disable_sync: Eşitlemeyi Kapat
+    disable_sync_prompt: Takvim senkronizasyonunu devre dışı bırakmak istediğinizden emin misiniz?
+    reload: Tekrar Yükle
+    appointment: Randevu
+    unavailability: Uygun Değil
+    week: Hafta
+    month: Ay
+    today: Bugün
+    not_working: Çalışmıyor
+    break: Ara
+    add: Ekle
+    edit: Düzenle
+    hello: Merhaba
+    all_day: Tüm Gün
+    manage_appointment_record_hint: Mevcut hizmetlerin ve sağlayıcıların tüm randevu kayıtlarını yönetir.
+    select_filter_item_hint: Bir hizmet sağlayıcı veya hizmet seçerek randevuları takvimde görüntüler.
+    enable_appointment_sync_hint: Hizmet sağlayıcının Google Takvimi ile eşitlemeyi başlatın.
+    manage_customers_hint: Kayıtlı müşterileri ve randevu geçmişlerini yönetin.
+    manage_services_hint: Sistemdeki uygun hizmetleri ve kategorileri yönetin.
+    manage_users_hint: Arkayüz kullanıcılarını (yöneticiler, hizmet sağlayıcılar, sekreterler) yönetin.
+    settings_hint: Sistem ve kullanıcı ayarlarını yapın.
+    log_out_hint: Sistemden çıkış.
+    unavailability_periods_hint: Uygun olmayan zaman aralıklarında hizmet sağlayıcı yeni randevu kabul etmeyecektir.
+    new_appointment_hint: Yeni bir randevu yaratarak veri tabanına kaydet.
+    reload_appointments_hint: Takvim randevularını tekrar yükle.
+    trigger_sync_hint: Google Takvim eşitlemeyi başlat.
+    appointment_updated: Randevu başarıyla güncellendi.
+    undo: Geri al
+    appointment_details_changed: Randevu detayları değiştirildi.
+    appointment_changes_saved: Randevu değişiklikleri başarıyla kaydedildi.
+    save: Kaydet
+    new: Yeni
+    select: Seç
+    hide: Gizle
+    type_to_filter_customers: Müşterileri filtrelemek için yazın.
+    clear_fields_add_existing_customer_hint: Sahaları temizle ve yeni bir müşteri gir.
+    pick_existing_customer_hint: Mevcut bir müşteriyi seçin.
+    new_appointment_title: Yeni Randevu
+    edit_appointment_title: Randevuyu Düzenle
+    delete_appointment_title: Randevu Sil
+    write_appointment_removal_reason: 'Lütfen randevuyu iptal etme nedeninizi yazar mısınız? :'
+    appointment_saved: Randevu başarıyla kaydedildi.
+    new_unavailability_title: Yeni Uygun Olmayan Zaman Aralığı
+    edit_unavailability_title: Uygun Olmayan Zaman Aralığı Düzenle
+    unavailability_saved: Uygun Olmayan Zaman Aralığı Başarıyla Kaydedildi.
+    start_date_before_end_error: Başlangıç tarihi bitiş tarihinden büyük olamaz.
+    invalid_duration: Geçersiz süre.
+    invalid_email: Hatalı eposta adresi.
+    customers: Müşteriler
+    details: Detaylar
+    no_records_found: Kayıt bulunamadı ...
+    services: Hizmetler
+    duration_minutes: Süre (Dakika)
+    currency: Para Birimi
+    category: Kategori
+    no_category: Kategorisiz
+    description: Açıklama
+    categories: Kategoriler
+    admins: Yöneticiler
+    providers: Hizmet Sağlayıcılar
+    secretaries: Sekreterler
+    mobile_number: Mobil No
+    mobile: Cep Telefonu
+    state: Eyalet
+    username: Kullanıcı Adı
+    password: Şifre
+    retype_password: Şifre Tekrar
+    receive_notifications: Bilgilendirme Al
+    passwords_mismatch: Şifreler aynı değil.
+    admin_saved: Yönetici başarıyla kaydedildi.
+    provider_saved: Hizmet sağlayıcı kaydedildi.
+    secretary_saved: Sekreter başarıyla kaydedildi.
+    admin_deleted: Yönetici başarıyla silindi.
+    provider_deleted: Hizmet sağlayıcı başarıyla silindi.
+    secretary_deleted: Sekreter başarıyla silindi.
+    service_saved: Hizmet başarıyla kaydedildi.
+    service_category_saved: Hizmet kategorisi başarıyla kaydedildi.
+    service_deleted: Hizmet başarıyla silindi.
+    service_category_deleted: Hizmet kategorisi başarıyla silindi.
+    customer_saved: Müşteri başarıyla kaydedildi.
+    customer_deleted: Müşteri başarıyla silindi.
+    current_view: Mevcut Görünüm
+    working_plan: Çalışma Planı
+    reset_plan: Planı Sıfırla
+    monday: Pazartesi
+    tuesday: Salı
+    wednesday: Çarşamba
+    thursday: Perşembe
+    friday: Cuma
+    saturday: Cumartesi
+    sunday: Pazar
+    breaks: Aralar
+    add_breaks_during_each_day: Her gün için çalışma aralarını ekleyin. Aralarda hizmet sağlayıcı randevu kabul etmeyecektir.
+    day: Gün
+    days: Gün
+    actions: Eylemler
+    reset_working_plan_hint: Çalışma planını varsayılan değerlere sıfırlar.
+    company_name: Şirket Adı
+    company_name_hint: Şirket adı sistemde heryerde gösterilecek (gerekli saha).
+    company_email: Şirket Eposta
+    company_email_hint: Şirket eposta adresini giriniz. Sistemden gönderilen ve cevap verilen epostalar bu adresi kullanacak (gerekli saha).
+    company_link: Şirket Web Adresi
+    company_link_hint: Şirket web sitesi, şirketin resmi web sitesine yönlenmelidir (gerekli saha).
+    go_to_booking_page: Rezervasyon Sayfasına Git
+    settings_saved: Ayarlar başarıyla kaydedildi.
+    general: Genel
+    booking: Rezervasyon
+    visible: Gözle görülür
+    hidden: Gizli
+    business_logic: İş Mantığı
+    current_user: Mevcut Kullanıcı
+    about_app: Easy!Appointments Hakkında
+    edit_working_plan_hint: Aağıda şirketinizin kabul edeceği günleri ve saatleri işaretleyin. Çalışma saatleri dışında randevuları ayarlayabilirsiniz, ancak bu saatlere müşterilerin kendileri randevu kaydedemeyecektir. Bu çalışma planı tüm sağlayıcılar için varsayılan değer olup, daha sonra her biri için ayrıca özel plan da girebilir ve araları ekleyebilirsiniz.
+    edit_breaks_hint: Gün içindeki çalışma aralarını ekleyin. Bu aralar tüm yeni hizmet sağlayıcılar için geçerli olacaktır.
+    book_advance_timeout: Erken Randevu Zamanaşımı Değeri
+    book_advance_timeout_hint: Müşterilerin en az ne kadar önceden randevu alması veya randevu düzenlemesi gerektiğini girin (dakika cinsinden).
+    timeout_minutes: Zamanaşımı (Dakika)
+    about_app_info: 'Easy!Appointments yüksek ölçüde özelleştirilebilen, müşterilerinizin web üzerinden randevu almasını sağlayan bir uygulamadır. Ayrıca, bilgilerinizi Google Takvim ile eşitleyerek diğer uygulamalarla da entegre olmasını sağlar. '
+    current_version: Mevcut Versiyon
+    support: Destek
+    about_app_support: Easy!Appointments kullanımı sırasında sorun yaşamanız halinde resmi Google Group üzerinde arama yapabilirsiniz. Ayrıca geliştirmeye destek olmak için Google Code sayfasında yeni sorun girişi de yapabilirsiniz.
+    official_website: Resmi Web Sitesi
+    google_plus_community: Google+ Çevresi
+    support_group: Destek Grubu
+    project_issues: Proje Sorunları
+    license: Lisans
+    about_app_license: 'Easy!Appointments GPLv3 kapsamında lisanslıdır. Bu yazılımı herhangi bir biçimde kullanarak aşağıdaki adreste belirtilen koşulları kabul etmiş olursunuz:'
+    logout_success: Başarı ile sistemden çıkış yaptınız! Aşağıdaki butonlara tıklayarak diğer sayfalara geçebilirsiniz.
+    book_appointment_title: Randevu Al
+    backend_section: Yönetim Paneli
+    you_need_to_login: Hoşgeldiniz! Yönetim sayfalarına erişebilmek için giriş yapmalısınız.
+    enter_username_here: Kullanıcı adını buraya girin ...
+    enter_password_here: Şifreyi buraya girin ...
+    login: Giriş
+    forgot_your_password: Şifrenizi mi unuttunuz?
+    login_failed: Giriş başarısız, lütfen doğru bilgiler ile tekrar deneyin.
+    type_username_and_email_for_new_password: Yeni şifrenizi almak için kullanıcı adınızı ve eposta adresinizi girin.
+    enter_email_here: Epostanızı buraya girin ...
+    regenerate_password: Şifre Üret
+    go_to_login: Giriş Sayfasına Geri Dön
+    new_password_sent_with_email: Yeni şifreniz eposta adresinize gönderildi.
+    new_account_password: Yeni Hesap Şifresi
+    new_password_is: 'Hesabınızın yeni şifresi $password Lütfen ihtiyaç duyduğunuzda tekrar başvurmak için bu epostayı saklayınız. Ayrıca ayarlar sayfasından kendinize yeni bir şifre de belirleyebilirsiniz. '
+    delete_record_prompt: 'Bu kaydı silmek istediğinizden emin misiniz? Bu işlem geri alınamaz. '
+    delete_admin: Yönetici Sil
+    delete_customer: Müşteri Sil
+    delete_service: Hizmeti Sil
+    delete_service_category: Hizmet Kategorisi Sil
+    delete_provider: Hizmet Sağlayıcı Sil
+    delete_secretary: Sekreter Sil
+    delete_appointment: 'Randevu Sil '
+    delete_unavailability: Uygun Olmayan Zaman Aralığı Sil
+    delete: Sil
+    unexpected_issues: Beklenmeyen Sorunlar
+    unexpected_issues_message: İşlem tamamlanamadı.
+    close: Kapat
+    page_not_found: Sayfa Bulunamadı
+    page_not_found_message: Maalesef istediğiniz sayfa mevcut değil. Lütfen tarayıcı URL'nizi kontrol edin veya aşağıdaki düğmeleri kullanarak başka bir konuma gidin.
+    error: Hata
+    no_privileges: Yetki Yok
+    no_privileges_message: Bu sayfayı görmek için gereken yetkiye sahip değilsiniz. Lütfen başka bir bölüme geçin.
+    backend_calendar: Arka uç Takvim
+    start_date_time: Başlangıç Tarih / Zaman
+    end_date_time: 'Bitiş Tarih / Zaman '
+    licensed_under: 'Lisanslıdır '
+    unexpected_issues_occurred: Beklenmeyen sorunlar oldu.
+    service_communication_error: Sunucu iletişim hatası, lütfen tekrar deneyin.
+    no_privileges_edit_appointments: Randevuları güncellemek için gereken yetkiye sahip değilsiniz.
+    unavailability_updated: Uygun olmayan zaman aralığı başarıyla güncellendi.
+    appointments: Randevular
+    unexpected_warnings: Beklenmeyen Uyarılar
+    unexpected_warnings_message: İşlem tamamlandı ancak bazı uyarılar var.
+    filter: Filtrele
+    clear: Temizle
+    uncategorized: Kategorisiz
+    username_already_exists: Kullanıcı zaten var.
+    password_length_notice: Şifre en az $number karakter uzunluğunda olmalı.
+    general_settings: Genel Ayarlar
+    personal_information: Kişisel Bilgiler
+    system_login: Sistem Girişi
+    user_settings_are_invalid: Kullanıcı ayarları geçerli değil! Lütfen ayarları kontrol edip tekrar deneyin.
+    add_break: Ara Ver
+    january: Ocak
+    february: Şubat
+    march: Mart
+    april: Nisan
+    may: Mayıs
+    june: Haziran
+    july: Temmuz
+    august: Ağustos
+    september: Eylül
+    october: 'Ekim '
+    november: Kasım
+    december: Aralık
+    previous: Önceki
+    next: Sonraki
+    now: Şimdi
+    select_time: Zamanı Seç
+    time: Zaman
+    hour: Saat
+    minute: Dakika
+    calendar_sync_completed: Google eşitlemesi başarıyla tamamlandı.
+    calendar_sync_failed: 'Google eşitlemesi başarısız: Sunucu ile bağlantı kurulamadı.'
+    select_sync_calendar: Google Takvimini seçin.
+    select_sync_calendar_prompt: Randevularınızı eşitlemek istediğiniz takvimi seçin. Eğer spesifik bir takvim seçmezseniz varsayılan takvim kullanılacaktır.
+    sync_calendar_selected: Google Takvimi başarıyla seçildi.
+    oops_something_went_wrong: Oops! Bir Sorun Oluştu.
+    ea_update_success: Easy!Appointments başarı ile güncellendi.
+    require_captcha: CAPTCHA gereklidir
+    require_captcha_hint: Etkinleştirildiğinde, müşterilerin bir randevu rezervasyonu/güncellemesi yapmadan önce rastgele oluşturulmuş bir CAPTCHA dizesini yazmaları gerekecektir.
+    captcha_is_wrong: CAPTCHA doğrulaması başarısız oldu, lütfen tekrar deneyin.
+    enter_captcha_here: CAPTCHA kodunu buraya girin...
+    any_provider: Herhangi Bir Sağlayıcı
+    requested_hour_is_unavailable: İstenen randevu maalesef mevcut değil. Lütfen randevunuz için farklı bir saat seçiniz.
+    customer_notifications: Müşteri Bildirimleri
+    customer_notifications_hint: Müşterinin, randevularından birinde program değişikliği olduğunda e-posta bildirimleri alıp almayacağını tanımlar.
+    date_format: Zaman Formatı
+    date_format_hint: Tarih görüntüleme biçimini değiştirin (D - Gün, M - Ay, Y - Yıl).
+    time_format: Zaman Formatı
+    time_format_hint: Saat görüntüleme biçimini değiştirin (H - Saat, M - Dakika).
+    first_weekday: Haftanın ilk günü
+    first_weekday_hint: Haftanın ilk gününü ayarlayınız.
+    google_analytics_code_hint: Rezervasyon sayfalarında Google Analytics izlemeyi etkinleştirmek için Google Analytics Kodunuzu ekleyin.
+    availabilities_type: Müsaitlik Türü
+    flexible: Esnek
+    fixed: Sabit
+    attendants_number: Refakatçi Sayısı
+    reset_working_plan: Çalışma planını varsayılan ayarlara döndür.
+    legal_contents: Yasal İçerikler
+    cookie_notice: Çerezler
+    display_cookie_notice: Çerezleri Göster
+    cookie_notice_content: Çerezler İçeriği
+    terms_and_conditions: Şartlar & Koşullar
+    display_terms_and_conditions: Şartlar & Koşulları görüntüle
+    terms_and_conditions_content: Şartlar & Koşullar İçeriği
+    privacy_policy: Gizlilik Politikası
+    display_privacy_policy: Gizlilik Politikasını Görüntüle
+    privacy_policy_content: Gizlilik Politikası İçeriği
+    website_using_cookies_to_ensure_best_experience: Bu web sitesi, web sitemizde en iyi deneyimi elde etmenizi sağlamak için çerezler kullanır.
+    read_and_agree_to_terms_and_conditions: "{$link}Kullanım Şartları{/$link}'nı okudum ve kabul ediyorum."
+    read_and_agree_to_privacy_policy: "{$link}Gizlilik Politikası{/$link}'nı okudum ve kabul ediyorum."
+    delete_personal_information_hint: Tüm randevularınızı ve kişisel bilgilerinizi sistemden kaldırın.
+    delete_personal_information: Kişisel Bilgileri Sil
+    delete_personal_information_prompt: Kişisel bilgilerinizi silmek istediğinizden emin misiniz? Bu işlem geri alınamaz.
+    location: Konum
+    working_plan_exception: Çalışma Planı İstisnası
+    working_plan_exceptions: Çalışma Planı İstisnaları
+    working_plan_exceptions_hint: Çalışma planı dışında bir çalışma planı istisna günü ekleyin.
+    new_working_plan_exception_title: Yeni Çalışma Planı İstisnası
+    working_plan_exception_saved: Çalışma planı istisnası başarıyla kaydedildi.
+    working_plan_exception_deleted: Çalışma planı istisnası başarıyla silindi.
+    add_working_plan_exceptions_during_each_day: Çalışma planı dışında çalışma planı istisnaları ekleyin.
+    add_working_plan_exception: İstisna ekle
+    require_phone_number: Telefon num. gerekli
+    require_phone_number_hint: Etkinleştirildiğinde, müşterilerin ve kullanıcıların randevu alırken müşterinin telefon numarasını girmeleri gerekir.
+    check_spam_folder: E-posta birkaç dakika içinde gelmezse lütfen spam klasörünüzü kontrol edin.
+    api_token_hint: Easy!Appointments Api sinin belirteç tabanlı kimlik doğrulamasını etkinleştirmek için gizli bir belirteç ayarlayın.
+    timezone: Saat Dilimi
+    overwrite_existing_working_plans: Bu mevcut sağlayıcı çalışma planlarını üstlenecek, devam etmek istediğinizden emin misiniz?
+    working_plans_got_updated: Tüm çalışma planları güncellendi.
+    apply_to_all_providers: Tüm H.Sağlayıcılara Uygula
+    display_any_provider: Herhangi Bir Sağlayıcı Seçeneğini Görüntüle
+    display_any_provider_hint: Rezervasyon sayfası, müşterilerin bir sağlayıcı belirtmeden rezervasyon yapmasına olanak tanıyan ek bir seçenek alacaktır.
+    load_more: Daha fazla
+    list: Liste
+    default: Varsayılan
+    table: Tablo
+    date: Tarih
+    about: Hakkında
+    booking_settings: Rezervasyon Ayarları
+    display: Görüntüle
+    require: Gerekli
+    color: Renk
+    matomo_analytics_url_hint: Matomo izlemeyi etkinleştirmek için kendi Matomo yüklemenizin URL’sini ekleyin.
+    invalid_phone: Geçersiz telefon numarası.
+    legal: Yasal
+    business: İş
+    account: Hesap
+    disable_booking: Rezervasyonu Devre Dışı Bırak
+    disable_booking_hint: Bu ayar aktif olduğunda rezervasyon sayfası devre dışı bırakılacak ve müşteriler yeni randevular oluşturamayacaktır.
+    display_message: Mesajı Göster
+    booking_is_disabled: Rezervasyon Devre Dışı!
+    appearance: Görünüm
+    company_logo: Şirket Logosu
+    company_logo_hint: Şirket logosu, uygulamanın birçok yerinde, rezervasyon sayfasında ve bildirim e-postalarında görüntülenecektir (resim dosyası, max 2MB).
+    company_color: Şirket Rengi
+    company_color_hint: Şirket rengi, uygulamanın genelinde kullanılacak ve uygulama markanızı yansıtacaktır.
+    localization: Yerelleştirme
+    integrations: Entegrasyonlar
+    company: Şirket
+    remove: Kaldır
+    login_button: Giriş Butonu
+    display_login_button_hint: Giriş butonunun rezervasyon sayfasında görüntülenip görüntülenmeyeceğini tanımlar.
+    private: Özel
+    private_hint: Özel kayıtlar, rezervasyon sayfası gibi halka açık sayfalarda görüntülenmeyecek veya işleme alınmayacaktır.
+    reset: Sıfırla
+    all: Tümü
+    booking_link: Rezervasyon Bağlantısı
+    add_new_event: Yeni Etkinlik Ekle
+    what_kind_of_event: Hangi tür etkinlik eklemek istersiniz?
+    theme: Tema
+    limit_customer_access: Müşteri Erişimini Sınırla
+    limit_customer_access_hint: Etkinleştirilirse, sağlayıcılar ve sekreterler sadece randevu aldıkları müşterilere erişebilecektir.
+    url: URL
+    secret_token: Gizli Jeton
+    verify_ssl: SSL’yi Doğrula
+    appointment_save: Randevu Kaydet
+    appointment_delete: Randevu Sil
+    unavailability_save: Uygun Olmama Kaydet
+    unavailability_delete: Uygun Olmama Sil
+    customer_save: Müşteri Kaydet
+    customer_delete: Müşteri Sil
+    service_save: Hizmet Kaydet
+    service_delete: Hizmet Sil
+    service_category_save: Kategori Kaydet
+    service_category_delete: Kategori Sil
+    provider_save: Sağlayıcı Kaydet
+    provider_delete: Sağlayıcı Sil
+    secretary_save: Sekreter Kaydet
+    secretary_delete: Sekreter Sil
+    admin_save: Yönetici Kaydet
+    admin_delete: Yönetici Sil
+    options: Seçenekler
+    webhooks: Webhooklar
+    webhooks_info: Webhooks, çeşitli uygulama olaylarına yanıt olarak dış web uygulamalarına HTTP bildirimleri göndermenizi sağlar, örneğin bir randevu oluşturulması veya bir müşterinin kaldırılması gibi.
+    integrations_info: Entegrasyonlar, üçüncü taraf uygulamalar ve API’lerle bağlantılar kurmanıza olanak tanır.
+    configure: Yapılandır
+    google_analytics: Google Analytics
+    google_analytics_info: Google Analytics, izleme kodunu ve HTML işaretlemesini otomatik olarak eklemenizi ve tüm halka açık rezervasyon oturumlarını takip etmenizi sağlar.
+    matomo_analytics: Matomo Analytics
+    matomo_analytics_info: Matomo Analytics, izleme kodunu ve HTML işaretlemesini otomatik olarak eklemenizi ve tüm halka açık rezervasyon oturumlarını takip etmenizi sağlar.
+    api: API
+    api_info: API’ler, HTTP protokolü ve mevcut API uç noktaları aracılığıyla tüm Easy!Appointments verileriyle etkileşime geçmenizi sağlar ve kendi entegrasyonlarınızı oluşturmanıza olanak tanır.
+    google_analytics_code: Google Analytics Kodu
+    matomo_analytics_url: Matomo Analytics URL’si
+    future_booking_limit: Gelecek Rezervasyon Limiti
+    limit_days: Sınır (Günler)
+    future_booking_limit_hint: Müşterilerin genel rezervasyon sayfası aracılığıyla randevu oluşturabileceği gelecekteki gün sınırını belirleyin.
+    api_token: API Jetonu
+    allow_rescheduling_cancellation_before: Yeniden Planlama / İptal İçin İzin Ver
+    at_least_one_field: Rezervasyon sayfasında en az bir alan görüntülenmelidir.
+    status: Durum
+    appointment_status_options: Randevu Durum Seçenekleri
+    appointment_status_options_info: Takvim sayfasında kullanılabilecek randevu durum seçeneklerinin bir listesini tanımlayın (ilk seçenek otomatik olarak varsayılan değer olarak ayarlanacaktır).
+    sunday_short: Pz
+    monday_short: Pzt
+    tuesday_short: Sal
+    wednesday_short: Çrş
+    thursday_short: Per
+    friday_short: Cmt
+    saturday_short: Paz
+    january_short: Oca
+    february_short: Şub
+    march_short: Mar
+    april_short: Nis
+    may_short: May
+    june_short: Haz
+    july_short: Tem
+    august_short: Ağu
+    september_short: Eyl
+    october_short: Eki
+    november_short: Kas
+    december_short: Ara
+    am: ö
+    pm: ss
+    to: "–"
+    click_to_toggle: Değiştirmek İçin Tıklayın
+    week_short: Hf
+    scroll_to_increment: Artırmak İçin Kaydır
+    year: Yıl
+    make_non_working_day: Bu sağlayıcı, seçilen günlerde çalışmayacak.
+    no_breaks: Ara Yok
+    service_categories: Hizmet Kategorileri
+    service_category: Hizmet Kategorisi
+    blocked_period_saved: Engellenmiş dönem başarıyla kaydedildi.
+    blocked_period_deleted: Engellenmiş dönem başarıyla silindi.
+    delete_blocked_period: Engellenmiş Dönemi Sil
+    blocked_period: Engellenmiş Dönem
+    blocked_periods: Engellenmiş Dönemler
+    blocked_period_save: Engellenmiş Dönem Kaydet
+    blocked_period_delete: Engellenmiş Dönem Sil
+    blocked_periods_hint: Tüm sağlayıcılar için genel rezervasyonların devre dışı bırakılacağı zaman dilimlerini tanımlayın (örneğin, kapalı tarihler, tatiller vb.).
+    custom_field: Özel Alan
+    custom_fields: Özel Alanlar
+    label: Etiket
+    webhook_saved: Webhook başarıyla kaydedildi.
+    webhook_deleted: Webhook başarıyla silindi.
+    delete_webhook: Webhook Sil
+    contact_info: İletişim Bilgileri
+    hide_from_public: Halka Açık Olmaktan Gizle
+    matomo_analytics_site_id: Matomo Analytics Site Kimliği
+    matomo_analytics_site_id_hint: Matomo tarafından izlenecek site ID’sini ayarlayın (varsayılan site ID "1"’dir).
+    default_timezone: Varsayılan Saat Dilimi
+    default_timezone_hint: Yeni kayıtlar için kullanılacak varsayılan saat dilimi değerini ayarlayın.
+    default_language: Varsayılan Dil
+    default_language_hint: Yeni kayıtlar için kullanılacak varsayılan dil değerini ayarlayın.
+    sync_method_prompt: Hangi senkronizasyon yöntemini kullanmak istersiniz?
+    caldav_server: CalDAV Sunucusu
+    caldav_connection_info_prompt: Hedef CalDAV Takvimi için bağlantı bilgilerini girin.
+    connect: Bağlan
+    ldap: LDAP
+    ldap_info: Bu entegrasyon, mevcut bir LDAP sunucusuna bağlanmanızı ve kullanıcıları Easy!Appointments’a otomatik olarak aktarmanızı sağlar ve onları dizin parolalarıyla SSO yapmalarına izin verir (kullanıcı adı eşleşmelidir).
+    host: Ana Bilgisayar
+    port: Port
+    user_dn: Kullanıcı DN
+    base_dn: Temel DN
+    keyword: Anahtar Kelime
+    ldap_search_hint: LDAP dizininde, filtre kriterlerine uyan kullanıcıları aramak için bir anahtar kelime sağlayın.
+    ldap_extension_not_loaded: LDAP PHP uzantısı yüklenmemiş, ancak bu entegrasyonun çalışması için gereklidir.
+    field_mapping: Alan Eşleme
+    content: İçerik
+    active: Aktif
+    user_imported: Kullanıcı kaydı başarıyla içe aktarıldı.
+    import: İçe Aktar
+    ldap_dn: LDAP DN
+    role: Rol
+    at_least_one_field_required: Rezervasyon sayfasında en az bir alan zorunlu olarak ayarlanmalıdır.
+    customer_is_already_booked: Bu müşteri, talep edilen rezervasyon döneminde zaten bir randevuya sahip.
+    fields: Alanlar
+    invalid_credentials_provided: Geçersiz kimlik bilgileri sağlandı, lütfen tekrar deneyin.
+    calendar_url: Takvim URL
+    please_select: Lütfen Seçin
+    secret_header: Gizli Başlık
+    search: Ara
+    slot_interval: Zaman Aralığı (Dakika)
+    jitsi: Jitsi
+    jitsi_info: Randevular için otomatik Jitsi toplantı bağlantısı oluşturmayı etkinleştirin. Etkinleştirildiğinde, benzersiz bir Jitsi görüntülü görüşme bağlantısı oluşturulacak ve toplantı bağlantısı olarak kaydedilecektir.
+    altcha: ALTCHA
+    altcha_info: ALTCHA, izleme yapmadan insan kullanıcıları doğrulamak için iş ispatı kullanan, gizlilik odaklı, açık kaynaklı bir CAPTCHA alternatifidir.
+    altcha_enabled_hint: Etkinleştirildiğinde, form doğrulaması için geleneksel resim CAPTCHA yerine ALTCHA kullanılacaktır.
+    altcha_hmac_key: HMAC Anahtarı
+    altcha_hmac_key_hint: ALTCHA meydan okumalarını imzalamak ve doğrulamak için kullanılan gizli bir anahtar. Yeni güvenli bir anahtar oluşturmak için Oluştur'a tıklayın.
+    altcha_max_number: Maksimum Sayı
+    altcha_max_number_hint: 'İş ispatı meydan okuması için maksimum sayı. Daha yüksek değerler zorluğu artırır (varsayılan: 100000).'
+    altcha_expires: Süre Dolumu (Saniye)
+    altcha_expires_hint: 'Bir meydan okumanın saniye cinsinden ne kadar süre geçerli kalacağı (varsayılan: 300).'
+    altcha_key_generated: Yeni HMAC anahtarı başarıyla oluşturuldu.
+    altcha_enabled: ALTCHA'yı Etkinleştir
+    altcha_captcha_not_active_warning: CAPTCHA ayarı şu anda aktif değil. CAPTCHA etkinleştirilmedikçe ALTCHA kullanılmayacaktır.
+    generate: Oluştur
+    meeting_link: Toplantı Bağlantısı
+    google_calendar: Google Takvim
+    google_calendar_info: Randevuları sağlayıcı Google Calendar hesaplarıyla senkronize etmek için Google Calendar senkronizasyonunu etkinleştirin.
+    google_client_id: İstemci Kimliği
+    google_client_id_info: Google Cloud Console projenizden alınan İstemci Kimliği.
+    google_client_secret: İstemci Gizli Anahtarı
+    google_client_secret_info: Google Cloud Console projenizden alınan İstemci Gizli Anahtarı.
+    google_calendar_setup_info: 'Google Calendar senkronizasyonunu etkinleştirmek için Google Cloud Console''da bir proje oluşturmanız, Google Calendar API''sini etkinleştirmeniz ve OAuth 2.0 kimlik bilgileri oluşturmanız gerekir. Ziyaret edin:'
+    google_meet_link_generation: Google Meet Bağlantıları Oluştur
+    google_meet_link_generation_info: Senkronize edilmiş randevular için otomatik olarak bir Google Meet görüntülü konferans bağlantısı oluşturun. Toplantı bağlantısı, randevunun toplantı bağlantısı alanında saklanacaktır.
+    display_add_to_google_calendar: '"Google Calendar''a Ekle" Düğmesini Göster'
+    display_add_to_google_calendar_info: Rezervasyon onay sayfasında "Google Calendar'a Ekle" düğmesini göstererek müşterilerin randevularını kolayca kişisel Google Calendar'larına eklemelerine olanak tanıyın.
+    select_all: Tümünü Seç
+    select_none: Hiçbirini Seçme
+    appointment_update: Randevu Güncelleme
+    notify_users_on_update_question: Bu değişiklik hakkında bir bildirim göndermek ister misiniz?
+    'yes': Evet
+    'no': Hayır
+    latest_blog_posts: Son Blog Yazıları
+    loading: Yükleniyor
+    blog_posts_load_error: Blog yazıları yüklenemiyor. Güncellemeler için lütfen resmi web sitesini ziyaret edin.
+    provider_has_conflicting_appointment: Seçilen sağlayıcının o saatte zaten başka bir randevusu var. Lütfen farklı bir saat veya sağlayıcı seçin.
+    would_you_like_to_proceed: Yine de devam etmek ister misiniz?
+    proceed: Devam Et
+    no_available_service_providers: Kullanılabilir Hizmet Yok
+    no_available_service_providers_message: Şu anda rezervasyon için mevcut hizmet veya sağlayıcı bulunmamaktadır. Lütfen daha sonra kontrol edin veya yardım için bizimle iletişime geçin.
+    reset_password: Şifreyi Sıfırla
+    new_password: Yeni Şifre
+    enter_new_password: Yeni şifrenizi aşağıya girin.
+    password_reset_request: Şifre Sıfırlama İsteği
+    password_reset_email_message: Şifrenizi sıfırlamak istediniz. Hesabınız için yeni bir şifre belirlemek için aşağıdaki düğmeye tıklayın.
+    password_reset_link_expires: Bu bağlantı 1 saat içinde sona erecek.
+    password_reset_ignore_message: Şifre sıfırlama talebinde bulunmadıysanız, lütfen bu e-postayı dikkate almayın.
+    invalid_reset_token: Şifre sıfırlama bağlantısı geçersiz.
+    invalid_or_expired_token: Şifre sıfırlama bağlantısı geçersiz veya süresi dolmuş. Lütfen yeni bir tane isteyin.
+    password_reset_success: Şifreniz başarıyla sıfırlandı. Giriş sayfasına yönlendirileceksiniz.
+    password_reset_failed: Şifre sıfırlama başarısız oldu. Lütfen tekrar deneyin.
+    no_password_provided: Lütfen bir şifre girin.
+    type_username_and_email_for_reset_link: Şifre sıfırlama bağlantısı almak için kullanıcı adınızı ve e-posta adresinizi yazın.
+    send_reset_link: Sıfırlama Bağlantısı Gönder
+    reset_link_sent_with_email: Sağlanan bilgilerle bir hesap varsa, şifre sıfırlama bağlantısı e-postanıza gönderilmiştir.
+    working_plan_validation_failed: Geçersiz çalışma planı yapılandırması bulundu.
+    start_date: Başlangıç Tarihi
+    end_date: Bitiş Tarihi
+    remember_me: Bilgilerimi hatırla
+    remember_me_hint: Bir sonraki rezervasyonunuz için bilgilerinizi kaydedin.
+    legal_notice: Yasal Uyarı
+    legal_notice_url: Yasal Uyarı URL
+    legal_notice_url_hint: Yasal uyarı sayfanızın URL adresini girin.
+    imprint: Künye
+    imprint_url: Künye URL
+    imprint_url_hint: Künye sayfanızın URL adresini girin.
+    data_retention: Veri Saklama
+    data_retention_days: Veri Saklama Günleri
+    data_retention_days_hint: Müşteri verilerinin otomatik olarak silineceği gün sayısını ayarlayın. Otomatik silmeyi devre dışı bırakmak için 0 olarak ayarlayın.
+    manage_privacy: Gizliliği Yönet
+    manage_privacy_hint: Kişisel bilgilerinizi görüntülemek, güncellemek veya silmek için aşağıdaki bağlantıya tıklayın.
+    personal_information_updated: Kişisel bilgileriniz başarıyla güncellendi.
+    verify: Doğrula
+    verifying: Doğrulanıyor
+    verified: Doğrulandı
+    verification_complete: Doğrulama tamamlandı
+    verification_failed: Doğrulama başarısız oldu. Tekrar denemek için tıklayın.
+    click_to_verify: İnsan olduğunuzu doğrulamak için tıklayın
+    altcha_verification_failed: ALTCHA doğrulaması başarısız oldu. Lütfen tekrar deneyin.
+    premium: Premium
+    about_app_premium: Kendi sunucunuzda barındırılan yazılımlar için özel geliştirme, yönetilen barındırma, destek sözleşmeleri, yeniden markalama ve sürekli iyileştirmeler dahil uçtan uca hizmetler sunuyoruz — siz işinize odaklanırken gerisini biz halledelim.
+    go_premium: Premium'a Geç
+    notify_users_on_create_question: Bu yeni randevu hakkında müşteriyi bilgilendirmek ister misiniz?
+    notify_users_on_delete_question: Randevu iptali hakkında müşteriyi bilgilendirmek ister misiniz?

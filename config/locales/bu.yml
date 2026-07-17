@@ -1,0 +1,575 @@
+---
+bu:
+  ea:
+    page_title: Запазете час с ...
+    service_and_provider: Изберете Услуга и Изпълнител
+    select_service: Изберете Услуга
+    select_provider: Изберете Изпълнител
+    duration: Продължителност
+    minutes: Минути
+    price: Цена
+    back: Обратно
+    appointment_date_and_time: Изберете дата и час
+    no_available_hours: Не са налични свободни часове за избраната дата. Моля изберете друга дата.
+    appointment_hour_missing: Моля изберете час преди да продължите.
+    customer_information: Моля попълнете Вашите данни
+    first_name: Име
+    last_name: Фамилия
+    email: Имейл
+    phone_number: Телефонен номер
+    phone: Телефон
+    address: Адрес
+    city: Град
+    zip_code: Пощенски Код
+    notes: Записки
+    language: Език
+    no_language: Без език
+    fields_are_required: Полетата обозначени с * са задължителни.
+    appointment_confirmation: Потвърдете часът
+    confirm: Потвърждение
+    update: Актуализиране
+    cancel_appointment_hint: Натиснете бутон "отказ" за да отстраните часът си от графика.
+    cancel: Отказ
+    appointment_registered: Часът Ви бе успешно регистриран.
+    cancel_appointment_title: Отказ на Час
+    appointment_cancelled: Часът Ви бе успешно анулиран.
+    appointment_cancelled_title: Часът анулиран.
+    reason: Причина
+    appointment_removed_from_schedule: Следният час бе отстранен от графика.
+    appointment_details_was_sent_to_you: Електронно писмо с информация за часа Ви бе изпратено.
+    add_to_google_calendar: Добавяне в Google Calendar
+    appointment_booked: Часът Ви бе успешно запазен.
+    thank_you_for_appointment: Благодарим Ви , че запазихте час при нас. Можете да намерите подробна информация за часът си по-долу. Можете да направите промени като използвате линкът на часът.
+    appointment_details_title: 'Данни за часът '
+    customer_details_title: Клиентски данни
+    service: Услуга
+    provider: Изпълнител
+    customer: Клиент
+    start: Начало
+    end: Край
+    name: Име
+    appointment_link_title: Линк на часа
+    success: Успех.
+    appointment_added_to_your_plan: Нов час бе добавен към Вашият график.
+    appointment_link_description: Можете да нанесете промени на часа като използвате линкът по-долу.
+    appointment_locked: Modification impossible.
+    appointment_locked_message: Часът не може да бъде променен по-малко от {$limit} часа предварително.
+    appointment_not_found: Часът не е намерен.
+    appointment_does_not_exist_in_db: Часът, заявен от Вас вече не съществува в базата данни на системата.
+    display_calendar: Показ на календар
+    calendar: Календар
+    users: Потребители
+    settings: Настройки
+    log_out: Изход
+    synchronize: синхронизиране
+    enable_sync: Активиране на синхронизиране
+    disable_sync: Изключване на синхронизиране
+    disable_sync_prompt: Сигурни ли сте, че искате да деактивирате синхронизацията на календара?
+    reload: Презареждане
+    appointment: Час
+    unavailability: не е на лице
+    week: Седмица
+    month: Месец
+    today: Днес
+    not_working: Не работен
+    break: Почивка
+    add: Добавяне
+    edit: редактиране
+    hello: Здравейте
+    all_day: Цял ден
+    manage_appointment_record_hint: Управление на всички записи за часове на достъпните изпълнители и услуги.
+    select_filter_item_hint: Избор на изпълнител или услуга и преглед на часовете в календара.
+    enable_appointment_sync_hint: Включване на синхронизиране на часове с  Google Calendar  профила на изпълнителя.
+    manage_customers_hint: Управление на регистрирани клиенти и преглед на исторически данни за часовете им.
+    manage_services_hint: Управление на наличните услуги и категории на системата.
+    manage_users_hint: Управление на административните потребители (администратори, изпълнители и секретари).
+    settings_hint: Задаване на системни и потребителски настройки.
+    log_out_hint: Изход от системата.
+    unavailability_periods_hint: По време на периоди, в които изпълнителя не е на разположение, същият няма да приема нови часове.
+    new_appointment_hint: Създаване на нов час и запазването му в базата данни.
+    reload_appointments_hint: Презареждане на календарни часове.
+    trigger_sync_hint: Изпълнение на процес по синхронизация с Google Calendar.
+    appointment_updated: Часът е актуализиран успешно.
+    undo: Отмяна
+    appointment_details_changed: Информацията относно часът е променена.
+    appointment_changes_saved: Промените на часът са успешно запазени.
+    save: Запис
+    new: Нов
+    select: Избор
+    hide: Скриване
+    type_to_filter_customers: Текст за филтриране на клиентите.
+    clear_fields_add_existing_customer_hint: Изчистване на полетата и въвеждане на нов клиент.
+    pick_existing_customer_hint: 'Избор на съществуващ клиент. '
+    new_appointment_title: Нов час.
+    edit_appointment_title: Промяна на час.
+    delete_appointment_title: Отказ на час.
+    write_appointment_removal_reason: 'Моля отделете минута за да споделите причината за отказ на часа:'
+    appointment_saved: Часът запазен успешно.
+    new_unavailability_title: Нов неработен период
+    edit_unavailability_title: Промяна на неработен период
+    unavailability_saved: Неработен период запазен успешно.
+    start_date_before_end_error: Стартовият период е по-дълъг от крайната дата.
+    invalid_duration: Невалидна продължителност.
+    invalid_email: Невалиден адрес на електронна поща.
+    customers: Клиенти
+    details: Детайли
+    no_records_found: Не са намерени записи…
+    services: Услуги
+    duration_minutes: Продължителност (минути)
+    currency: Валута
+    category: Категория
+    no_category: Без категория
+    description: Описание
+    categories: Категории
+    admins: Администратори
+    providers: Изпълнители
+    secretaries: Секретари
+    mobile_number: Мобилен телефонен номер
+    mobile: Мобилен
+    state: Държава
+    username: Потребителско име
+    password: Парола
+    retype_password: Повторете паролата
+    receive_notifications: Получаване на уведомления
+    passwords_mismatch: Паролите не съвпадат.
+    admin_saved: Администратор записан успешно.
+    provider_saved: Изпълнител записан успешно.
+    secretary_saved: Секретар записан успешно.
+    admin_deleted: Администратор заличен успешно.
+    provider_deleted: Изпълнител заличен успешно.
+    secretary_deleted: Секретар заличен успешно.
+    service_saved: Услуга записана успешно.
+    service_category_saved: Категория на услуги записана успешно.
+    service_deleted: Услугата заличена успешно.
+    service_category_deleted: Категория на услуги заличена успешно.
+    customer_saved: Клиент записан успешно.
+    customer_deleted: Клиент заличен успешно.
+    current_view: Текущ изглед
+    working_plan: Работен график
+    reset_plan: Нулиране на график
+    monday: Понеделник
+    tuesday: Вторник
+    wednesday: Сряда
+    thursday: Четвъртък
+    friday: Петък
+    saturday: Събота
+    sunday: Неделя
+    breaks: Почивки
+    add_breaks_during_each_day: Нанесете почивките за всеки ден. По време на почивките изпълнителя няма да приема часове.
+    day: Ден
+    days: Дни
+    actions: Действия
+    reset_working_plan_hint: Връщане на работния график към стойности по подразбиране.
+    company_name: Име на Организацията
+    company_name_hint: Името на организацията ще бъде показвано навсякъде в системата (задължително).
+    company_email: Електронна поща на организацията
+    company_email_hint: Това ще е електронната поща на организацията. Ще бъде използван като изпращач и получател за системните електронни писма (задължително).
+    company_link: Препратка на организацията
+    company_link_hint: Препратката на организацията би трябвало да сочи към официалната страница на същата (задължително).
+    go_to_booking_page: Към страница за запазване.
+    settings_saved: Настройките записани успешно.
+    general: Общи
+    booking: Резервация
+    visible: видим
+    hidden: Скрит
+    business_logic: Бизнес логика
+    current_user: Текущ потребител
+    about_app: Относно
+    edit_working_plan_hint: Моля задайте дните и часовете през, които вашата организация ще приема часове по-долу. Ще ви бъде възможно да редактирате часове в неработни периоди , но клиентите няма да могат да запазват часове в неработни периоди. Този работен график ще бъде избран по подразбиране за всеки нов изпълнител , но Вие можете да променяте графика на всеки изпълнител отделно. След това можете да нанесете почивките.
+    edit_breaks_hint: Нанасяне на работни почивки за всеки ден. Същите ще се прилагат за всички нови изпълнители.
+    book_advance_timeout: Запазване на предварителна пауза
+    book_advance_timeout_hint: Дефиниране на пауза (в минути) преди клиентите да могат да запазват или разместват часовете си с организацията.
+    timeout_minutes: Пауза (в минути)
+    about_app_info: Това  е интернет система с висока гъвкавост позволяваща на клиентите Ви да запазват часовете си чрез интернет пространството. Като добавка , позволява синхронизация с Google Calendar  за да може да използвате и други услуги.
+    current_version: Текуща версия
+    support: Поддръжка.
+    about_app_support: Ако срещнете затруднения с Easy!Appointments, можете да претърсите официалната гугъл група за отговори и потенциални решения. Възможно е да се наложи да създадете нов запис за проблем в страницата за кодът, за да подпомогнете разработчиците.
+    official_website: Официална интернет страница.
+    google_plus_community: Google+ общност
+    support_group: Група за поддръжка
+    project_issues: Проектни проблеми
+    license: 'Лиценз '
+    about_app_license: 'тази система е лицензирана спрямо GPLv3 лиценз. Чрез използването на системата по какъвто и да е начин, Вие се съгласявате и приемате условията за изложение на следния интернет адрес: '
+    logout_success: Излязохте успешно! Използвайте следните бутони за да навигирате към различна страница.
+    book_appointment_title: Запазване на час
+    backend_section: Административна секция
+    you_need_to_login: Здравейте! Нужно е да влезете в потребителския си профил за да достъпите административната секция.
+    enter_username_here: Въведете потребителското си име тук…
+    enter_password_here: Въведете паролата тук ...
+    login: Вход
+    forgot_your_password: Забравена парола ?
+    login_failed: Неуспешно влизане, моля въведете правилните данни и опитайте отново.
+    type_username_and_email_for_new_password: Въведете потребителското си име и адрес на електронна поща за да получите новата си парола.
+    enter_email_here: Въведете адресът на електронната Ви поща тук…
+    regenerate_password: Генериране на парола
+    go_to_login: Назад към страница за вход.
+    new_password_sent_with_email: Вашата нова парола Ви бе изпратена чрез електронна поща.
+    new_account_password: Нова парола на потребителски профил
+    new_password_is: Новата парола за потребителския профил $password Моля запазете това електронно писмо за да може да намерите паролата си при нужда. Можете да промените паролата си в секцията за настройки на Вашия профил.
+    delete_record_prompt: Сигурни ли Сте, че искате да заличите този запис? Това действие е необратимо
+    delete_admin: Заличаване на администратор
+    delete_customer: Заличаване на клиент
+    delete_service: Заличаване на услуга
+    delete_service_category: Заличаване на категория на услуги
+    delete_provider: Заличаване на изпълнител
+    delete_secretary: Заличаване на секретар
+    delete_appointment: Заличаване на час
+    delete_unavailability: Заличаване на неработен период
+    delete: Заличаване
+    unexpected_issues: Неочаквани проблеми
+    unexpected_issues_message: Операцията не можа да бъде завършена.
+    close: Край
+    page_not_found: Страницата не е намерена.
+    page_not_found_message: За съжаление търсената от Вас страница не съществува. Моля проверете интернет адреса или посетете друг сегмент като използвате бутоните по-долу.
+    error: Грешка
+    no_privileges: Без привилегии
+    no_privileges_message: Не притежавате нужните привилегии за да достъпите тази страница. Моля посетете друг сегмент.
+    backend_calendar: Административен календар
+    start_date_time: Начало  Дата / Час
+    end_date_time: Край  Дата / Час
+    licensed_under: Лиценз
+    unexpected_issues_occurred: Възникнаха неочаквани проблеми.
+    service_communication_error: 'Възникна грешка със сървърната комуникация, моля опитайте отново. '
+    no_privileges_edit_appointments: Вие не притежавате нужните привилегии за да редактирате часове.
+    unavailability_updated: Неработен период обновен успешно.
+    appointments: Часове
+    unexpected_warnings: Непредвидени предупреждения
+    unexpected_warnings_message: Действието бе изпълнено, но са налични известни предупреждения.
+    filter: Филтър
+    clear: Изчистване
+    uncategorized: Некатегоризирани
+    username_already_exists: Потребителското име вече е заето.
+    password_length_notice: Паролата трябва да бъде с минимална дължина от $number символа.
+    general_settings: Общи настройки
+    personal_information: Лична информация
+    system_login: Вход в системата
+    user_settings_are_invalid: Потребителските настройки са невалидни! Моля прегледайте настройките си и опитайте отново.
+    add_break: Добавяне на почивка
+    january: Януари
+    february: Февруари
+    march: Март
+    april: Април
+    may: Май
+    june: Юни
+    july: Чли
+    august: Август
+    september: Септември
+    october: Октомври
+    november: Ноември
+    december: Декември
+    previous: Предишен
+    next: Следващ
+    now: Сега
+    select_time: Избор на време
+    time: Време
+    hour: Час
+    minute: Минута
+    calendar_sync_completed: Google синхронизацията приключи успешно.
+    calendar_sync_failed: 'Google синхронизацията неуспешна: не бе възможно да се осъществи връзка.'
+    select_sync_calendar: Избор на Google Calendar
+    select_sync_calendar_prompt: Изберете календарът, който искате да синхронизирате за часовете си. Ако не желаете да изберете специфичен календар, календар по подразбиране ще бъде използван.
+    sync_calendar_selected: Google Calendar бе успешно избран.
+    oops_something_went_wrong: Опааа! Нещо се обърка!Опааа! Нещо се обърка.
+    ea_update_success: Системата Обновена успешно
+    require_captcha: Изискване на CAPTCHA
+    require_captcha_hint: Когато е активно, потребителя , ще трябва да въведе произволно генерирани символи за да запише или промени час.
+    captcha_is_wrong: Неуспешна CAPTCHA верификация, моля опитайте отново.
+    enter_captcha_here: Въведете CAPTCHA тук...
+    any_provider: Произволен Изпълнител
+    requested_hour_is_unavailable: Заявеният от Вас час не е наличен. Моля изберете друг час.
+    customer_notifications: Клиентски Известия
+    customer_notifications_hint: Дефинира дали клиентът ще получава известия посредством електронна поща, когато има промяна в графика, съдържащ негов запазен час.
+    date_format: Формат на Дата
+    date_format_hint: Промяна на дормат за показ на дата (D - дата, M - месец, Y - година).
+    time_format: Формат на времето
+    time_format_hint: Променете формата за показване на времето (H - Часове, M - Минути).
+    first_weekday: Първи ден от седмицата
+    first_weekday_hint: Задайте първия ден от календарната седмица.
+    google_analytics_code_hint: Добавете Google Analytics ID за да бъде включена статистика в страницата за запазване на час.
+    availabilities_type: Типове на работен период.
+    flexible: Гъвкав
+    fixed: Фиксиран
+    attendants_number: Брой Посетители
+    reset_working_plan: Възстановяване на работния план до стойностите по подразбиране.
+    legal_contents: Правно съдържание
+    cookie_notice: Показване на Cookie Notice
+    display_cookie_notice: 'Известие '
+    cookie_notice_content: Съдържание на съобщението за бисквитките
+    terms_and_conditions: Правила и условия
+    display_terms_and_conditions: Правила и условия за показване
+    terms_and_conditions_content: Съдържание на правилата и условията
+    privacy_policy: Политика за поверителност
+    display_privacy_policy: Политика за поверителност на дисплея
+    privacy_policy_content: Съдържание на политиката за поверителност
+    website_using_cookies_to_ensure_best_experience: Този уебсайт използва Cookie, за да ви осигури най-доброто преживяване на нашия уебсайт.
+    read_and_agree_to_terms_and_conditions: Прочетох и съм съгласен с {$link}Термините и условията{/$link}.
+    read_and_agree_to_privacy_policy: Прочетох и съм съгласен с {$link}Политиката за поверителност{/$link}.
+    delete_personal_information_hint: Изтрийте цялата лична информация от системата.
+    delete_personal_information: Изтриване на лична информация
+    delete_personal_information_prompt: Сигурни ли сте, че искате да изтриете личната си информация? Това действие не може да бъде отменено.
+    location: Местоположение
+    working_plan_exception: Изключение от работния план
+    working_plan_exceptions: Изключения от работния план
+    working_plan_exceptions_hint: Добавяне на ден за изключение от работния план, извън работния план.
+    new_working_plan_exception_title: Ново изключение от работния план
+    working_plan_exception_saved: Изключението от работния план е записано успешно.
+    working_plan_exception_deleted: Изключението от работния план е успешно изтрито.
+    add_working_plan_exceptions_during_each_day: Добавяне на изключения от работния план, извън работния план.
+    add_working_plan_exception: Добавяне на изключения от работния план
+    require_phone_number: Изисква се телефонен номер
+    require_phone_number_hint: Когато е разрешено, клиентите и потребителите ще трябва да въведат телефонния номер на клиента, когато резервират среща
+    check_spam_folder: Моля, проверете папката си за спам, ако имейлът не пристигне в рамките на няколко минути.
+    api_token_hint: Задайте таен токен, за да активирате удостоверяването на API на Easy!Appointments на базата на токен.
+    timezone: Часови пояс
+    overwrite_existing_working_plans: Това ще презапише съществуващите работни планове на доставчика, сигурни ли сте, че искате да продължите?
+    working_plans_got_updated: Всички работни планове са актуализирани.
+    apply_to_all_providers: Прилага се за всички доставчици
+    display_any_provider: Показвам всяка опция за доставчик
+    display_any_provider_hint: Страницата за резервации ще получи допълнителна опция, която позволява на клиентите да резервират, без да посочват доставчик.
+    load_more: Зареждане на повече
+    list: Списък
+    default: По подразбиране
+    table: таблица
+    date: Дата
+    about: За
+    booking_settings: Настройки за резервиране
+    display: Дисплей
+    require: Изискване
+    color: Цвят
+    matomo_analytics_url_hint: Добавете URL адреса към собствената си инсталация на Matomo, за да активирате проследяването на Matomo на страниците за резервации.
+    invalid_phone: Невалиден телефонен номер.
+    legal: Юридически
+    business: Бизнес
+    account: Сметка
+    disable_booking: Деактивиране на резервациите
+    disable_booking_hint: Страницата за резервации ще бъде деактивирана, докато тази настройка е активна, и клиентите няма да могат да регистрират нови срещи.
+    display_message: Съобщение на дисплея
+    booking_is_disabled: Резервациите са изключени!
+    appearance: Външен вид
+    company_logo: Лого на компанията
+    company_logo_hint: Логото на компанията ще се показва на много места в приложението, включително на страницата за резервации и в имейлите с известия (файл с изображение, максимум 2 MB).
+    company_color: Цвят на компанията
+    company_color_hint: Цветът на компанията ще бъде приложен в цялото приложение, така че то да използва вашата марка.
+    localization: Локализация
+    integrations: Интеграции
+    company: Компания
+    remove: Премахване на
+    login_button: Бутон за влизане
+    display_login_button_hint: Определя дали бутонът за влизане се показва на страницата за резервации.
+    private: Частна
+    private_hint: Частните записи няма да се показват или обработват в публичните страници, като например страницата за резервации.
+    reset: Нулиране
+    all: Всички
+    booking_link: Връзка за резервация
+    add_new_event: Добавяне на ново събитие
+    what_kind_of_event: Какъв вид събитие искате да добавите?
+    theme: Тема
+    limit_customer_access: Ограничаване на достъпа на клиенти
+    limit_customer_access_hint: Ако е разрешено, доставчиците и секретарките ще имат достъп само до клиентите, с които имат уговорена среща.
+    url: URL
+    secret_token: Секретен токен
+    verify_ssl: Проверка на SSL
+    appointment_save: Запазване на среща
+    appointment_delete: Изтриване на среща
+    unavailability_save: Запазване на недостъпност
+    unavailability_delete: Изтриване на недостъпност
+    customer_save: Запазване на клиент
+    customer_delete: Изтриване на клиент
+    service_save: Запазване на услуга
+    service_delete: Изтриване на услуга
+    service_category_save: Запазване на категория
+    service_category_delete: Изтриване на категория
+    provider_save: Запазване на доставчик
+    provider_delete: Изтриване на доставчик
+    secretary_save: Запазване на секретар
+    secretary_delete: Изтриване на секретар
+    admin_save: Запазване на администратор
+    admin_delete: Изтриване на администратор
+    options: Опции
+    webhooks: Уебхукове
+    webhooks_info: Webhooks ви позволява да изпращате HTTP известия към външни уеб приложения в отговор на различни събития в приложението, като създаване на среща или премахване на клиент.
+    integrations_info: Интеграциите ви позволяват да осъществявате връзки с външни приложения и API.
+    configure: Конфигуриране
+    google_analytics: Google Анализи
+    google_analytics_info: Google Analytics ви позволява автоматично да добавите код за проследяване и HTML маркери към публичната страница и да следите всички сесии за резервация.
+    matomo_analytics: Matomo Анализи
+    matomo_analytics_info: Matomo Analytics ви позволява автоматично да добавите код за проследяване и HTML маркери към публичната страница и да следите всички сесии за резервация.
+    api: API
+    api_info: API ви позволява да взаимодействате с всички данни на Easy!Appointments чрез HTTP протокола и наличните API крайни точки, за да създадете собствени интеграции.
+    google_analytics_code: Код на Google Analytics
+    matomo_analytics_url: URL на Matomo Analytics
+    future_booking_limit: Ограничение за бъдещи резервации
+    limit_days: Ограничение (дни)
+    future_booking_limit_hint: Задайте ограничението за бъдещи дни, в които клиентите могат да правят резервации чрез публичната страница за резервации.
+    api_token: API Токен
+    allow_rescheduling_cancellation_before: Позволяване на презасичане/отмяна преди
+    at_least_one_field: Поне едно поле трябва да бъде показано на страницата за резервации.
+    status: Статус
+    appointment_status_options: Опции за статус на среща
+    appointment_status_options_info: Определете списък с налични опции за статус на среща, които могат да се използват на страницата с календара (първата автоматично ще стане стойността по подразбиране).
+    sunday_short: Нед
+    monday_short: Пон
+    tuesday_short: Вто
+    wednesday_short: Сря
+    thursday_short: Чет
+    friday_short: Пет
+    saturday_short: Съб
+    january_short: Ян
+    february_short: Фев
+    march_short: Март
+    april_short: Апр
+    may_short: Май
+    june_short: Юни
+    july_short: Юли
+    august_short: Авг
+    september_short: Сеп
+    october_short: Окт
+    november_short: Ное
+    december_short: Дек
+    am: сутрин
+    pm: следобед
+    to: до
+    click_to_toggle: Кликнете за превключване
+    week_short: Седм
+    scroll_to_increment: Превъртете за увеличаване
+    year: Година
+    make_non_working_day: Този доставчик няма да бъде наличен за работа в избрания ден.
+    no_breaks: Няма почивки
+    service_categories: Категории услуги
+    service_category: Категория услуга
+    blocked_period_saved: Периодът на блокиране е запазен успешно.
+    blocked_period_deleted: Периодът на блокиране е изтрит успешно.
+    delete_blocked_period: Изтриване на блокиран период
+    blocked_period: Блокиран период
+    blocked_periods: Блокирани периоди
+    blocked_period_save: Запазване на блокиран период
+    blocked_period_delete: Изтриване на блокиран период
+    blocked_periods_hint: Определете периоди от време, когато публичните резервации ще бъдат забранени за всички доставчици (напр. затворени дати, празници и т.н.).
+    custom_field: Персонализирано поле
+    custom_fields: Персонализирани полета
+    label: Етикет
+    webhook_saved: Webhook е запазен успешно.
+    webhook_deleted: Webhook е изтрит успешно.
+    delete_webhook: Изтриване на Webhook
+    contact_info: Контактна информация
+    hide_from_public: Скрий от публичността
+    matomo_analytics_site_id: Matomo Analytics ID на сайта
+    matomo_analytics_site_id_hint: Задайте ID на сайта, който ще бъде проследяван от Matomo (по подразбиране сайтът има ID "1").
+    default_timezone: Часова зона по подразбиране
+    default_timezone_hint: Задайте часовата зона по подразбиране, която ще се използва за нови записи.
+    default_language: Език по подразбиране
+    default_language_hint: Задайте езика по подразбиране, който ще се използва за нови записи.
+    sync_method_prompt: Кой метод за синхронизиране бихте искали да използвате?
+    caldav_server: CalDAV сървър
+    caldav_connection_info_prompt: Моля, въведете информация за връзка с целевия CalDAV календар.
+    connect: Свързване
+    ldap: LDAP
+    ldap_info: Тази интеграция ви позволява да се свържете с LDAP сървър и автоматично да импортирате потребители в Easy!Appointments и да им позволите SSO с тяхната парола от директорията (потребителското име трябва да съвпада).
+    host: Хост
+    port: Порт
+    user_dn: Потребител DN
+    base_dn: Base DN
+    keyword: Ключова дума
+    ldap_search_hint: Въведете ключова дума, за да търсите в LDAP директорията потребители, които съответстват на критериите на филтъра.
+    ldap_extension_not_loaded: LDAP PHP разширението не е заредено, но е необходимо за работата на тази интеграция.
+    field_mapping: Полета за съпоставяне
+    content: Съдържание
+    active: Активен
+    user_imported: Потребителят е импортиран успешно.
+    import: Импортиране
+    ldap_dn: LDAP DN
+    role: Роля
+    at_least_one_field_required: Поне едно поле трябва да бъде зададено като задължително на страницата за резервации.
+    customer_is_already_booked: Този клиент вече има час по време на заявения период за резервация.
+    fields: Полета
+    invalid_credentials_provided: Предоставени са невалидни идентификационни данни, моля, опитайте отново.
+    calendar_url: URL на календара
+    please_select: Моля Изберете
+    secret_header: Секретно заглавие
+    search: Търсене
+    slot_interval: Интервал на слотове (минути)
+    jitsi: Jitsi
+    jitsi_info: Активирайте автоматичното генериране на линкове за срещи в Jitsi за часовете. Когато е активирано, ще бъде генериран уникален линк за Jitsi видео разговор и съхранен като линк за срещата.
+    altcha: ALTCHA
+    altcha_info: ALTCHA е фокусирана върху поверителността, с отворен код алтернатива на CAPTCHA, която използва доказателство за работа за верификация на потребители без проследяване.
+    altcha_enabled_hint: Когато е активирано, ALTCHA ще се използва вместо традиционната CAPTCHA с изображение за верификация на формуляри.
+    altcha_hmac_key: HMAC ключ
+    altcha_hmac_key_hint: Секретен ключ за подписване и верификация на ALTCHA предизвикателства. Кликнете Генериране за създаване на нов сигурен ключ.
+    altcha_max_number: Максимален брой
+    altcha_max_number_hint: 'Максималният брой за предизвикателството за доказателство за работа. По-високите стойности увеличават трудността (по подразбиране: 100000).'
+    altcha_expires: Изтича (секунди)
+    altcha_expires_hint: 'Колко дълго предизвикателството остава валидно в секунди (по подразбиране: 300).'
+    altcha_key_generated: Нов HMAC ключ е генериран успешно.
+    altcha_enabled: Активиране на ALTCHA
+    altcha_captcha_not_active_warning: Настройката CAPTCHA в момента не е активна. ALTCHA няма да се използва, освен ако CAPTCHA не е активирана в
+    generate: Генериране
+    meeting_link: Връзка за среща
+    google_calendar: Google Календар
+    google_calendar_info: Активирайте синхронизацията с Google Calendar за синхронизиране на часовете с Google Calendar акаунтите на доставчиците.
+    google_client_id: Клиентски ID
+    google_client_id_info: Клиентският ID от вашия проект в Google Cloud Console.
+    google_client_secret: Клиентска тайна
+    google_client_secret_info: Клиентската тайна от вашия проект в Google Cloud Console.
+    google_calendar_setup_info: 'За да активирате синхронизацията с Google Calendar, трябва да създадете проект в Google Cloud Console, да активирате Google Calendar API и да създадете OAuth 2.0 удостоверения. Посетете:'
+    google_meet_link_generation: Генериране на линкове за Google Meet
+    google_meet_link_generation_info: Автоматично създаване на линк за видеоконференция Google Meet за синхронизираните часове. Линкът за срещата ще бъде съхранен в полето за линк на срещата.
+    display_add_to_google_calendar: Показване на бутон "Добавяне в Google Calendar"
+    display_add_to_google_calendar_info: Показване на бутона "Добавяне в Google Calendar" на страницата за потвърждение на резервацията, позволявайки на клиентите лесно да добавят часа си в личния си Google Calendar.
+    select_all: Избери всички
+    select_none: Премахни избора
+    appointment_update: Актуализация на среща
+    notify_users_on_update_question: Желаете ли да изпратите известие за тази промяна?
+    'yes': Да
+    'no': Не
+    latest_blog_posts: Последни публикации в блога
+    loading: Зареждане
+    blog_posts_load_error: Неуспешно зареждане на публикациите в блога. Моля, посетете официалния уебсайт за актуализации.
+    provider_has_conflicting_appointment: Избраният доставчик вече има друга среща по това време. Моля, изберете друго време или доставчик.
+    would_you_like_to_proceed: Искате ли да продължите въпреки това?
+    proceed: Продължи
+    no_available_service_providers: Няма налични услуги
+    no_available_service_providers_message: В момента няма налични услуги или доставчици за резервация. Моля, проверете по-късно или се свържете с нас за помощ.
+    reset_password: Нулиране на паролата
+    new_password: Нова парола
+    enter_new_password: Въведете новата си парола по-долу.
+    password_reset_request: Заявка за нулиране на парола
+    password_reset_email_message: Поискахте да нулирате паролата си. Кликнете върху бутона по-долу, за да зададете нова парола за вашия акаунт.
+    password_reset_link_expires: Тази връзка ще изтече след 1 час.
+    password_reset_ignore_message: Ако не сте поискали нулиране на парола, моля игнорирайте този имейл.
+    invalid_reset_token: Връзката за нулиране на паролата е невалидна.
+    invalid_or_expired_token: Връзката за нулиране на паролата е невалидна или е изтекла. Моля, заявете нова.
+    password_reset_success: Вашата парола е успешно нулирана. Ще бъдете пренасочени към страницата за вход.
+    password_reset_failed: Неуспешно нулиране на паролата. Моля, опитайте отново.
+    no_password_provided: Моля, въведете парола.
+    type_username_and_email_for_reset_link: Въведете потребителското си име и имейл адрес, за да получите връзка за нулиране на паролата.
+    send_reset_link: Изпращане на връзка за нулиране
+    reset_link_sent_with_email: Ако съществува акаунт с предоставените данни, на имейла ви е изпратена връзка за нулиране на паролата.
+    working_plan_validation_failed: Открита е невалидна конфигурация на работния план.
+    start_date: Начална дата
+    end_date: Крайна дата
+    remember_me: Запомни моята информация
+    remember_me_hint: Запазете данните си за по-бързо резервиране следващия път.
+    legal_notice: Правно известие
+    legal_notice_url: URL на правното известие
+    legal_notice_url_hint: Въведете URL адреса на страницата с правното известие.
+    imprint: Импресум
+    imprint_url: URL на импресума
+    imprint_url_hint: Въведете URL адреса на страницата с импресума.
+    data_retention: Съхранение на данни
+    data_retention_days: Дни за съхранение на данни
+    data_retention_days_hint: Задайте броя дни, след които данните на клиентите ще бъдат автоматично изтрити. Задайте 0 за деактивиране на автоматичното изтриване.
+    manage_privacy: Управление на поверителността
+    manage_privacy_hint: Кликнете върху линка по-долу, за да прегледате, актуализирате или изтриете личната си информация.
+    personal_information_updated: Вашата лична информация беше успешно актуализирана.
+    verify: Верифициране
+    verifying: Верифициране
+    verified: Верифицирано
+    verification_complete: Верификацията е завършена
+    verification_failed: Верификацията е неуспешна. Кликнете за повторен опит.
+    click_to_verify: Кликнете, за да потвърдите, че сте човек
+    altcha_verification_failed: ALTCHA верификацията е неуспешна. Моля, опитайте отново.
+    premium: Premium
+    about_app_premium: Предлагаме цялостни услуги за самостоятелно хостван софтуер, включително персонализирана разработка, управляван хостинг, договори за поддръжка, ребрандиране и постоянни подобрения — за да можете да се фокусирате върху бизнеса си, докато ние се грижим за останалото.
+    go_premium: Към Premium
+    notify_users_on_create_question: Желаете ли да уведомите клиента за тази нова среща?
+    notify_users_on_delete_question: Желаете ли да уведомите клиента за отмяната на срещата?

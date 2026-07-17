@@ -20,14 +20,16 @@ module ScriptVars
     @html_vars
   end
 
-  # Vars every page needs, mirroring EA's config/layout defaults.
+  # Vars every page needs, mirroring EA's config/layout defaults. The language comes
+  # from LocaleSelection so the injected window.lang payload matches I18n.locale.
   def default_script_vars
+    language = respond_to?(:current_language, true) ? current_language : Setting.get("default_language", "english")
     {
       base_url: request.base_url,
       index_page: "",
       csrf_token: form_authenticity_token,
-      language: session[:language] || Setting.get("default_language", "english"),
-      language_code: Localization.code_for(session[:language] || Setting.get("default_language", "english"))
+      language: language,
+      language_code: Localization.code_for(language)
     }
   end
 end

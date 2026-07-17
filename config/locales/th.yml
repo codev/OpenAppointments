@@ -1,0 +1,575 @@
+---
+th:
+  ea:
+    page_title: จองการนัดหมายกับ
+    service_and_provider: บริการและผู้ให้บริการ
+    select_service: เลือก บริการ
+    select_provider: เลือก ผู้ให้บริการ
+    duration: ระยะเวลา
+    minutes: นาที
+    price: ราคา
+    back: ย้อนกลับ
+    appointment_date_and_time: วันที่และเวลานัดหมาย
+    no_available_hours: ไม่มีเวลานัดหมายสำหรับวันที่เลือก โปรดเลือกวันอื่น
+    appointment_hour_missing: โปรดเลือกเวลานัดหมายก่อนดำเนินการต่อ
+    customer_information: ข้อมูลลูกค้า
+    first_name: ชื่อจริง
+    last_name: นามสกุล
+    email: อีเมล
+    phone_number: หมายเลขโทรศัพท์
+    phone: โทรศัพท์
+    address: ที่อยู่
+    city: เมือง
+    zip_code: รหัสไปรษณีย์
+    notes: หมายเหตุ
+    language: ภาษา
+    no_language: ไม่มีภาษา
+    fields_are_required: ช่องที่มีเครื่องหมาย * จำเป็นต้องกรอก
+    appointment_confirmation: ยืนยันการนัดหมาย
+    confirm: ยืนยัน
+    update: อัปเดต
+    cancel_appointment_hint: กดปุ่ม "ยกเลิก" เพื่อลบการนัดหมายออกจากกำหนดการของบริษัท
+    cancel: ยกเลิก
+    appointment_registered: การนัดหมายของคุณได้รับการลงทะเบียนเรียบร้อยแล้ว
+    cancel_appointment_title: ยกเลิกการนัดหมาย
+    appointment_cancelled: การนัดหมายของคุณถูกยกเลิกเรียบร้อยแล้ว
+    appointment_cancelled_title: การนัดหมายถูกยกเลิก
+    reason: เหตุผล
+    appointment_removed_from_schedule: การนัดหมายต่อไปนี้ถูกลบออกจากกำหนดการของบริษัท
+    appointment_details_was_sent_to_you: อีเมลพร้อมรายละเอียดการนัดหมายได้ถูกส่งไปยังคุณแล้ว
+    add_to_google_calendar: เพิ่มลงใน Google ปฏิทิน
+    appointment_booked: การนัดหมายของคุณได้รับการจองเรียบร้อยแล้ว
+    thank_you_for_appointment: ขอบคุณที่จัดการการนัดหมายกับเรา คุณสามารถดูรายละเอียดการนัดหมายได้ที่ด้านล่างนี้ คลิกลิงก์การนัดหมายเพื่อทำการเปลี่ยนแปลง
+    appointment_details_title: รายละเอียดการนัดหมาย
+    customer_details_title: รายละเอียดลูกค้า
+    service: บริการ
+    provider: ผู้ให้บริการ
+    customer: ลูกค้า
+    start: เริ่ม
+    end: เสร็จสิ้น
+    name: ชื่อ
+    appointment_link_title: ลิงค์นัดหมาย
+    success: เสร็จสมบูรณ์
+    appointment_added_to_your_plan: เพิ่มการนัดหมายใหม่ลงในแผนของคุณแล้ว
+    appointment_link_description: คุณสามารถเปลี่ยนแปลงได้โดยคลิกลิงก์การนัดหมายด้านล่าง
+    appointment_locked: ไม่สามารถทำการปรับเปลี่ยนได้
+    appointment_locked_message: ไม่สามารถเปลี่ยนแปลงการนัดหมายล่วงหน้าได้น้อยกว่า {$limit} ชั่วโมง
+    appointment_not_found: ไม่พบการนัดหมาย
+    appointment_does_not_exist_in_db: การนัดหมายที่คุณร้องขอไม่มีอยู่ในฐานข้อมูลระบบอีกต่อไป
+    display_calendar: แสดงปฏิทิน
+    calendar: ปฏิทิน
+    users: ผู้ใช้
+    settings: การตั้งค่า
+    log_out: ออกจากระบบ
+    synchronize: ซิงโครไนซ์
+    enable_sync: เปิดใช้งานการซิงค์
+    disable_sync: ปิดใช้งานการซิงค์
+    disable_sync_prompt: คุณแน่ใจหรือไม่ว่าต้องการปิดใช้งานการซิงโครไนซ์ปฏิทิน
+    reload: โหลดซ้ำ
+    appointment: การนัดหมาย
+    unavailability: ช่วงเวลาที่ไม่ว่าง
+    week: สัปดาห์
+    month: เดือน
+    today: วันนี้
+    not_working: ไม่ทำงาน
+    break: หยุด
+    add: เพิ่ม
+    edit: แก้ไข
+    hello: สวัสดี
+    all_day: ตลอดวัน
+    manage_appointment_record_hint: จัดการบันทึกการนัดหมายทั้งหมดของผู้ให้บริการและบริการที่มีอยู่
+    select_filter_item_hint: เลือกผู้ให้บริการหรือบริการและดูการนัดหมายในปฏิทิน
+    enable_appointment_sync_hint: เปิดใช้งานการซิงโครไนซ์การนัดหมายกับบัญชี Google ปฏิทินของผู้ให้บริการ
+    manage_customers_hint: จัดการลูกค้าที่ลงทะเบียนและดูประวัติการจองของพวกเขา
+    manage_services_hint: จัดการบริการและหมวดหมู่ที่มีอยู่ของระบบ
+    manage_users_hint: จัดการผู้ใช้แบ็กเอนด์ (ผู้ดูแลระบบ ผู้ให้บริการ โปรเซสเซอร์)
+    settings_hint: ตั้งค่าระบบและการตั้งค่าผู้ใช้
+    log_out_hint: ออกจากระบบ
+    unavailability_periods_hint: During unavailability periods the provider won\\'t accept new appointments.
+    new_appointment_hint: สร้างการนัดหมายใหม่และจัดเก็บไว้ในฐานข้อมูล
+    reload_appointments_hint: โหลดการนัดหมายในปฏิทินซ้ำ
+    trigger_sync_hint: เรียกใช้กระบวนการซิงโครไนซ์ปฏิทิน
+    appointment_updated: อัปเดตการนัดหมายสำเร็จแล้ว
+    undo: เลิกทำ
+    appointment_details_changed: รายละเอียดการนัดหมายมีการเปลี่ยนแปลง
+    appointment_changes_saved: บันทึกการเปลี่ยนแปลงการนัดหมายเรียบร้อยแล้ว
+    save: บันทึก
+    new: ใหม่
+    select: เลือก
+    hide: ซ่อน
+    type_to_filter_customers: พิมพ์เพื่อกรองลูกค้า
+    clear_fields_add_existing_customer_hint: เคลียร์พื้นที่และป้อนลูกค้าใหม่
+    pick_existing_customer_hint: เลือกลูกค้าที่มีอยู่
+    new_appointment_title: การนัดหมายใหม่
+    edit_appointment_title: แก้ไขการนัดหมาย
+    delete_appointment_title: ลบการนัดหมาย
+    write_appointment_removal_reason: 'โปรดสละเวลาสักครู่เพื่อเขียนเหตุผลที่คุณลบการนัดหมาย:'
+    appointment_saved: บันทึกการนัดหมายเรียบร้อยแล้ว
+    new_unavailability_title: เพิ่มช่วงเวลาที่ไม่ว่าง
+    edit_unavailability_title: แก้ไขช่วงเวลาที่ไม่ว่าง
+    unavailability_saved: บันทึกช่วงเวลาที่ไม่ว่างเรียบร้อยแล้ว
+    start_date_before_end_error: ค่าวันที่เริ่มต้นอยู่หลังวันที่สิ้นสุด
+    invalid_duration: ระยะเวลาไม่ถูกต้อง
+    invalid_email: ที่อยู่อีเมลที่ไม่ถูกต้อง.
+    customers: ลูกค้า
+    details: รายละเอียด
+    no_records_found: ไม่พบบันทึก...
+    services: บริการ
+    duration_minutes: ระยะเวลา (นาที)
+    currency: สกุลเงิน
+    category: หมวดหมู่
+    no_category: ไม่มีหมวดหมู่
+    description: คำอธิบาย
+    categories: หมวดหมู่
+    admins: ผู้ดูแลระบบ
+    providers: ผู้ให้บริการ
+    secretaries: โปรเซสเซอร์
+    mobile_number: เบอร์มือถือ
+    mobile: มือถือ
+    state: เมือง/รัฐ
+    username: ชื่อผู้ใช้
+    password: รหัสผ่าน
+    retype_password: พิมพ์รหัสผ่านอีกครั้ง
+    receive_notifications: รับการแจ้งเตือน
+    passwords_mismatch: รหัสผ่านไม่ตรงกัน
+    admin_saved: บันทึกผู้ดูแลระบบเรียบร้อยแล้ว
+    provider_saved: บันทึกผู้ให้บริการเรียบร้อยแล้ว
+    secretary_saved: บันทึกเลขานุการเรียบร้อยแล้ว
+    admin_deleted: ลบผู้ดูแลระบบเรียบร้อยแล้ว
+    provider_deleted: ลบผู้ให้บริการเรียบร้อยแล้ว
+    secretary_deleted: ลบโปรเซสเซอร์สำเร็จแล้ว
+    service_saved: บันทึกบริการเรียบร้อยแล้ว
+    service_category_saved: บันทึกหมวดหมู่บริการเรียบร้อยแล้ว
+    service_deleted: ลบบริการเรียบร้อยแล้ว
+    service_category_deleted: ลบหมวดหมู่บริการเรียบร้อยแล้ว
+    customer_saved: บันทึกลูกค้าเรียบร้อยแล้ว
+    customer_deleted: ลบลูกค้าเรียบร้อยแล้ว
+    current_view: หน้าปัจจุบัน
+    working_plan: แผนการทำงาน
+    reset_plan: รีเซ็ตแผน
+    monday: วันจันทร์
+    tuesday: วันอังคาร
+    wednesday: วันพุธ
+    thursday: วันพฤหัสบดี
+    friday: วันศุกร์
+    saturday: วันเสาร์
+    sunday: วันอาทิตย์
+    breaks: พัก
+    add_breaks_during_each_day: เพิ่มช่วงพักการทำงานในแต่ละวัน ในช่วงพัก ผู้ให้บริการจะไม่รับการนัดหมายใดๆ
+    day: วัน
+    days: วัน
+    actions: การดำเนินการ
+    reset_working_plan_hint: รีเซ็ตแผนการทำงานกลับเป็นค่าเริ่มต้น
+    company_name: ชื่อ บริษัท
+    company_name_hint: ชื่อบริษัทจะแสดงทุกที่ในระบบ (จำเป็น)
+    company_email: อีเมล์บริษัท
+    company_email_hint: นี่จะเป็นที่อยู่อีเมลของบริษัท โดยจะใช้เป็นผู้ส่งและที่อยู่ตอบกลับของอีเมลระบบ (จำเป็น)
+    company_link: ลิงค์บริษัท
+    company_link_hint: ลิงค์บริษัทควรชี้ไปยังเว็บไซต์อย่างเป็นทางการของบริษัท (จำเป็น)
+    go_to_booking_page: ไปที่หน้าการจอง
+    settings_saved: บันทึกการตั้งค่าเรียบร้อยแล้ว
+    general: ทั่วไป
+    booking: การจอง
+    visible: มองเห็นได้
+    hidden: ซ่อน
+    business_logic: ตรรกะทางธุรกิจ
+    current_user: ผู้ใช้ปัจจุบัน
+    about_app: เกี่ยวกับ Easy!Appointments
+    edit_working_plan_hint: ทำเครื่องหมายวันและเวลาที่บริษัทของคุณจะยอมรับการนัดหมายด้านล่าง คุณจะสามารถปรับการนัดหมายนอกเวลางานได้ แต่ลูกค้าจะไม่สามารถจองการนัดหมายด้วยตนเองในช่วงนอกเวลางานได้ แผนการทำงานนี้จะเป็นค่าเริ่มต้นสำหรับบันทึกของผู้ให้บริการใหม่ทุกราย แต่คุณสามารถเปลี่ยนแผนของผู้ให้บริการแต่ละรายแยกกันได้โดยการแก้ไขบันทึกของเขา หลังจากนั้นคุณสามารถเพิ่มช่วงพักได้
+    edit_breaks_hint: เพิ่มช่วงพักการทำงานในแต่ละวัน การพักเหล่านี้จะนำไปใช้กับผู้ให้บริการรายใหม่ทั้งหมด
+    book_advance_timeout: การจองล่วงหน้าหมดเวลา
+    book_advance_timeout_hint: ระบุการหมดเวลา (เป็นนาที) ก่อนที่ลูกค้าจะสามารถจองหรือนัดหมายใหม่กับบริษัทได้
+    timeout_minutes: หมดเวลา (นาที)
+    about_app_info: Easy!Appointments เป็นเว็บแอปพลิเคชั่นที่ปรับแต่งได้สูง ซึ่งช่วยให้ลูกค้าของคุณสามารถจองการนัดหมายกับคุณผ่านทางเว็บได้ นอกจากนี้ยังให้ความสามารถในการซิงค์ข้อมูลของคุณกับ Google ปฏิทินเพื่อให้คุณสามารถใช้กับบริการอื่นๆ ได้
+    current_version: เวอร์ชันปัจจุบัน
+    support: สนับสนุน
+    about_app_support: หากคุณพบปัญหาใดๆ เมื่อใช้ Easy!Appointments คุณสามารถค้นหาคำตอบได้ใน Google Group อย่างเป็นทางการ คุณอาจต้องสร้างประเด็นใหม่ในหน้า Google Code เพื่อช่วยในการพัฒนาระบบต่อไป
+    official_website: เว็บไซต์อย่างเป็นทางการ
+    google_plus_community: ชุมชน Google+
+    support_group: กลุ่มสนับสนุน
+    project_issues: ปัญหาที่เกิดขึ้น
+    license: ใบอนุญาต
+    about_app_license: 'Easy!Appointments ได้รับอนุญาตภายใต้ใบอนุญาต GPLv3 โดยใช้รหัส Easy!Appointments ในทางใดทางหนึ่งถือว่าคุณยอมรับเงื่อนไขที่อธิบายไว้ใน URL ต่อไปนี้:'
+    logout_success: คุณออกจากระบบสำเร็จแล้ว! คลิกที่ปุ่มใดปุ่มหนึ่งต่อไปนี้เพื่อไปยังหน้าอื่น
+    book_appointment_title: จองการนัดหมาย
+    backend_section: ส่วนแบ็กเอนด์
+    you_need_to_login: ยินดีต้อนรับ! คุณจะต้องเข้าสู่ระบบเพื่อดูหน้าแบ็กเอนด์
+    enter_username_here: ป้อนชื่อผู้ใช้ของคุณที่นี่ ...
+    enter_password_here: ป้อนรหัสผ่านที่นี่ ...
+    login: เข้าสู่ระบบ
+    forgot_your_password: ลืมรหัสผ่านใช่หรือไม่
+    login_failed: การเข้าสู่ระบบล้มเหลว โปรดป้อนข้อมูลรับรองที่ถูกต้องแล้วลองอีกครั้ง
+    type_username_and_email_for_new_password: พิมพ์ชื่อผู้ใช้และที่อยู่อีเมลของคุณเพื่อรับรหัสผ่านใหม่
+    enter_email_here: ใส่อีเมล์ของคุณที่นี่...
+    regenerate_password: สร้างรหัสผ่านใหม่
+    go_to_login: กลับไปที่หน้าเข้าสู่ระบบ
+    new_password_sent_with_email: รหัสผ่านใหม่ของคุณถูกส่งไปยังอีเมลของคุณแล้ว
+    new_account_password: รหัสผ่านบัญชีใหม่
+    new_password_is: รหัสผ่านบัญชีใหม่ของคุณคือ $password โปรดเก็บอีเมลนี้เพื่อให้สามารถเรียกรหัสผ่านของคุณได้หากจำเป็น คุณยังสามารถเปลี่ยนรหัสผ่านนี้ด้วยรหัสผ่านใหม่ได้ในหน้าการตั้งค่า
+    delete_record_prompt: คุณแน่ใจหรือไม่ว่าต้องการลบบันทึกนี้? การดำเนินการนี้ไม่สามารถยกเลิกได้
+    delete_admin: ลบผู้ดูแลระบบ
+    delete_customer: ลบลูกค้า
+    delete_service: ลบบริการ
+    delete_service_category: ลบหมวดหมู่บริการ
+    delete_provider: ลบผู้ให้บริการ
+    delete_secretary: ลบโปรเซสเซอร์
+    delete_appointment: ลบการนัดหมาย
+    delete_unavailability: ลบช่วงเวลาที่ไม่ว่าง
+    delete: ลบ
+    unexpected_issues: ปัญหาที่ไม่คาดคิด
+    unexpected_issues_message: ไม่สามารถดำเนินการให้เสร็จสิ้นได้
+    close: ปิด
+    page_not_found: ไม่พบหน้านี้
+    page_not_found_message: ขออภัย หน้าเว็บที่คุณร้องขอไม่มีอยู่ โปรดตรวจสอบ URL เบราว์เซอร์ของคุณหรือไปที่ตำแหน่งอื่นโดยใช้ปุ่มด้านล่าง
+    error: ข้อผิดพลาด
+    no_privileges: ไม่มีสิทธิพิเศษ
+    no_privileges_message: คุณไม่มีสิทธิพิเศษในการดูหน้านี้ โปรดนำทางไปยังส่วนอื่น
+    backend_calendar: ปฏิทินแบ็กเอนด์
+    start_date_time: วันที่/เวลาที่เริ่มต้น
+    end_date_time: วันที่ / เวลาที่สิ้นสุด
+    licensed_under: ได้รับอนุญาตภายใต้
+    unexpected_issues_occurred: เกิดปัญหาที่ไม่คาดคิด
+    service_communication_error: เกิดข้อผิดพลาดในการสื่อสารของเซิร์ฟเวอร์ โปรดลองอีกครั้ง
+    no_privileges_edit_appointments: คุณไม่มีสิทธิพิเศษในการแก้ไขการนัดหมาย
+    unavailability_updated: อัปเดตช่วงเวลาที่ไม่ว่างเรียบร้อยแล้ว
+    appointments: การนัดหมาย
+    unexpected_warnings: คำเตือนที่ไม่คาดคิด
+    unexpected_warnings_message: การดำเนินการเสร็จสิ้น แต่มีคำเตือนบางอย่างปรากฏขึ้น
+    filter: ตัวกรอง
+    clear: เคลียร์
+    uncategorized: ไม่มีหมวดหมู่
+    username_already_exists: มีชื่อผู้ใช้อยู่แล้ว.
+    password_length_notice: รหัสผ่านต้องมีความยาวอย่างน้อย $number ตัวอักษร
+    general_settings: การตั้งค่าทั่วไป
+    personal_information: ข้อมูลส่วนบุคคล
+    system_login: เข้าสู่ระบบ
+    user_settings_are_invalid: การตั้งค่าผู้ใช้ไม่ถูกต้อง! โปรดตรวจสอบการตั้งค่าของคุณแล้วลองอีกครั้ง
+    add_break: เพิ่มเวลาพัก
+    january: มกราคม
+    february: กุมภาพันธ์
+    march: มีนาคม
+    april: เมษายน
+    may: พฤษภาคม
+    june: มิถุนายน
+    july: กรกฎาคม
+    august: สิงหาคม
+    september: กันยายน
+    october: ตุลาคม
+    november: พฤศจิกายน
+    december: ธันวาคม
+    previous: ก่อนหน้า
+    next: ถัดไป
+    now: ตอนนี้
+    select_time: เลือก เวลา
+    time: เวลา
+    hour: ชั่วโมง
+    minute: นาที
+    calendar_sync_completed: ซิงโครไนซ์ปฏิทินเสร็จสมบูรณ์
+    calendar_sync_failed: 'การซิงโครไนซ์ปฏิทินล้มเหลว: ไม่สามารถเชื่อมต่อกับเซิร์ฟเวอร์ได้'
+    select_sync_calendar: เลือกปฏิทิน
+    select_sync_calendar_prompt: เลือกปฏิทินที่คุณต้องการซิงโครไนซ์นัดหมาย
+    sync_calendar_selected: เลือกปฏิทินซิงโครไนซ์เรียบร้อยแล้ว
+    oops_something_went_wrong: อ๊ะ! มีบางอย่างผิดพลาด.
+    ea_update_success: Easy!Appointments อัปเดตเรียบร้อยแล้ว
+    require_captcha: ต้องมี CAPTCHA
+    require_captcha_hint: เมื่อเปิดใช้งาน ลูกค้าจะต้องพิมพ์ CAPTCHA ที่สร้างแบบสุ่มก่อนจอง/อัปเดตการนัดหมาย
+    captcha_is_wrong: การยืนยัน CAPTCHA ล้มเหลว โปรดลองอีกครั้ง
+    enter_captcha_here: ป้อน CAPTCHA ที่นี่...
+    any_provider: ผู้ให้บริการใดๆ
+    requested_hour_is_unavailable: น่าเสียดาย ไม่สามารถนัดหมายที่ร้องขอได้ โปรดเลือกเวลาอื่นสำหรับการนัดหมายของคุณ
+    customer_notifications: การแจ้งเตือนลูกค้า
+    customer_notifications_hint: ลูกค้าจะได้รับการแจ้งเตือนทางอีเมลทุกครั้งที่มีการเปลี่ยนแปลงกำหนดการในการนัดหมาย
+    date_format: รูปแบบวันที่
+    date_format_hint: เปลี่ยนรูปแบบการแสดงวันที่ (D - วันที่, M - เดือน, Y - ปี)
+    time_format: รูปแบบเวลา
+    time_format_hint: เปลี่ยนรูปแบบการแสดงเวลา (H - ชั่วโมง, M - นาที)
+    first_weekday: วันแรกของสัปดาห์
+    first_weekday_hint: ตั้งค่าวันแรกของสัปดาห์ตามปฏิทิน
+    google_analytics_code_hint: เพิ่มรหัส Google Analytics ของคุณเพื่อรวมไว้ในหน้าการจอง คุณสามารถใช้รหัสติดตามหรือรหัสการวัดได้
+    availabilities_type: ประเภทความพร้อมใช้งาน
+    flexible: แบบยืดหยุ่น
+    fixed: แบบตายตัว
+    attendants_number: หมายเลขผู้เข้าร่วม
+    reset_working_plan: รีเซ็ตแผนการทำงานกลับเป็นค่าเริ่มต้น
+    legal_contents: เนื้อหาทางกฎหมาย
+    cookie_notice: ประกาศเกี่ยวกับคุกกี้
+    display_cookie_notice: แสดงประกาศเกี่ยวกับคุกกี้
+    cookie_notice_content: เนื้อหาประกาศเกี่ยวกับคุกกี้
+    terms_and_conditions: ข้อกำหนดและเงื่อนไข
+    display_terms_and_conditions: แสดงข้อกำหนดและเงื่อนไข
+    terms_and_conditions_content: รายละเอียดข้อกำหนดและเงื่อนไข
+    privacy_policy: นโยบายความเป็นส่วนตัว
+    display_privacy_policy: แสดงนโยบายความเป็นส่วนตัว
+    privacy_policy_content: รายละเอียดนโยบายความเป็นส่วนตัว
+    website_using_cookies_to_ensure_best_experience: เว็บไซต์นี้ใช้คุกกี้เพื่อให้แน่ใจว่าคุณได้รับประสบการณ์ที่ดีที่สุดบนเว็บไซต์ของเรา
+    read_and_agree_to_terms_and_conditions: ฉันได้อ่านและยอมรับ{$link}ข้อกำหนดและเงื่อนไข{/$link}แล้ว
+    read_and_agree_to_privacy_policy: ฉันได้อ่านและยอมรับ{$link}นโยบายความเป็นส่วนตัว{/$link}
+    delete_personal_information_hint: ลบการนัดหมายและข้อมูลส่วนบุคคลทั้งหมดของคุณออกจากระบบ
+    delete_personal_information: ลบข้อมูลส่วนบุคคล
+    delete_personal_information_prompt: คุณแน่ใจหรือไม่ว่าต้องการลบข้อมูลส่วนบุคคลของคุณ การดำเนินการนี้ไม่สามารถยกเลิกได้
+    location: ที่ตั้ง
+    working_plan_exception: ข้อยกเว้นแผนการทำงาน
+    working_plan_exceptions: ข้อยกเว้นแผนการทำงาน
+    working_plan_exceptions_hint: เพิ่มวันยกเว้นแผนการทำงานนอกแผนการทำงาน
+    new_working_plan_exception_title: ข้อยกเว้นแผนการทำงานใหม่
+    working_plan_exception_saved: บันทึกข้อยกเว้นแผนการทำงานเรียบร้อยแล้ว
+    working_plan_exception_deleted: ลบข้อยกเว้นแผนการทำงานเรียบร้อยแล้ว
+    add_working_plan_exceptions_during_each_day: เพิ่มข้อยกเว้นแผนการทำงานนอกแผนการทำงาน
+    add_working_plan_exception: เพิ่มข้อยกเว้นแผนการทำงาน
+    require_phone_number: ต้องการหมายเลขโทรศัพท์
+    require_phone_number_hint: เมื่อเปิดใช้งาน ลูกค้าและผู้ใช้จะต้องป้อนหมายเลขโทรศัพท์ของลูกค้าเมื่อจองการนัดหมาย
+    check_spam_folder: โปรดตรวจสอบโฟลเดอร์สแปมของคุณ หากคุณไม่ได้รับอีเมลภายในไม่กี่นาที
+    api_token_hint: ตั้งค่าโทเค็นลับเพื่อเปิดใช้งานการตรวจสอบสิทธิ์โดยใช้โทเค็นของ Easy!Appointments API
+    timezone: เขตเวลา
+    overwrite_existing_working_plans: การดำเนินการนี้จะเขียนทับแผนการทำงานของผู้ให้บริการที่มีอยู่ คุณแน่ใจหรือไม่ว่าต้องการดำเนินการต่อ
+    working_plans_got_updated: แผนการทำงานทั้งหมดได้รับการปรับปรุง
+    apply_to_all_providers: นำไปใช้กับผู้ให้บริการทั้งหมด
+    display_any_provider: แสดงตัวเลือกผู้ให้บริการ
+    display_any_provider_hint: หน้าการจองจะได้รับตัวเลือกเพิ่มเติมที่ให้ลูกค้าจองได้โดยไม่ต้องระบุผู้ให้บริการ
+    load_more: โหลดเพิ่มเติม
+    list: รายการ
+    default: ค่าเริ่มต้น
+    table: ตาราง
+    date: วันที่
+    about: เกี่ยวกับ
+    booking_settings: การตั้งค่าการจอง
+    display: แสดง
+    require: จำเป็นต้อง
+    color: สี
+    matomo_analytics_url_hint: เพิ่ม URL ลงในการติดตั้ง Matomo ของคุณเองเพื่อเปิดใช้งานการติดตาม Matomo บนหน้าการจอง
+    invalid_phone: หมายเลขโทรศัพท์ไม่ถูกต้อง
+    legal: ถูกกฎหมาย
+    business: ธุรกิจ
+    account: บัญชี
+    disable_booking: ปิดการใช้งานการจอง
+    disable_booking_hint: หน้าการจองจะถูกปิดใช้งานตราบใดที่การตั้งค่านี้ทำงานอยู่ และลูกค้าจะไม่สามารถลงทะเบียนการนัดหมายใหม่ได้
+    display_message: แสดงข้อความ
+    booking_is_disabled: การจองถูกปิดใช้งาน!
+    appearance: รูปร่าง
+    company_logo: โลโก้บริษัท
+    company_logo_hint: โลโก้บริษัทจะแสดงอยู่ในหลายๆ ที่ของแอป รวมถึงหน้าการจองและอีเมลแจ้งเตือน (ไฟล์รูปภาพ ขนาดสูงสุด 2MB)
+    company_color: สีของบริษัท
+    company_color_hint: สีของบริษัทจะถูกนำไปใช้ทั่วทั้งแอป เพื่อให้แอปใช้ตราสินค้าของคุณ
+    localization: รองรับหลายภาษา
+    integrations: บูรณาการ
+    company: บริษัท
+    remove: ลบ
+    login_button: ปุ่มเข้าสู่ระบบ
+    display_login_button_hint: กำหนดว่าปุ่มเข้าสู่ระบบจะแสดงในหน้าการจองหรือไม่
+    private: ส่วนตัว
+    private_hint: บันทึกส่วนตัวจะไม่แสดงหรือประมวลผลในหน้าสาธารณะ เช่น หน้าการจอง
+    reset: รีเซ็ต
+    all: ทั้งหมด
+    booking_link: ลิงค์จอง
+    add_new_event: เพิ่มกิจกรรมใหม่
+    what_kind_of_event: คุณต้องการเพิ่มกิจกรรมประเภทใด
+    theme: ธีม
+    limit_customer_access: จำกัดการเข้าถึงของลูกค้า
+    limit_customer_access_hint: หากเปิดใช้งาน ผู้ให้บริการและเลขานุการจะสามารถเข้าถึงเฉพาะลูกค้าที่มีการนัดหมายเท่านั้น
+    url: URL
+    secret_token: โทเค็นลับ
+    verify_ssl: ตรวจสอบ SSL
+    appointment_save: บันทึกการนัดหมาย
+    appointment_delete: การนัดหมาย ลบ
+    unavailability_save: บันทึกความไม่พร้อมใช้งาน
+    unavailability_delete: ไม่พร้อมใช้งาน ลบ
+    customer_save: บันทึกลูกค้า
+    customer_delete: ลบลูกค้า
+    service_save: บันทึกการบริการ
+    service_delete: บริการลบ
+    service_category_save: บันทึกประเภทบริการ
+    service_category_delete: ลบประเภทบริการ
+    provider_save: บันทึกของผู้ให้บริการ
+    provider_delete: ผู้ให้บริการลบ
+    secretary_save: เลขานุการบันทึก
+    secretary_delete: เลขา ลบ
+    admin_save: ผู้ดูแลระบบบันทึก
+    admin_delete: แอดมินลบ
+    options: ตัวเลือก
+    webhooks: Webhooks
+    webhooks_info: Webhooks ช่วยให้คุณสามารถส่งการแจ้งเตือน HTTP ไปยังเว็บแอปพลิเคชันภายนอกเพื่อตอบสนองต่อเหตุการณ์ต่างๆ ของแอปพลิเคชัน เช่น การสร้างการนัดหมายหรือการลบลูกค้าออก
+    integrations_info: การผสานรวมทำให้คุณสามารถสร้างการเชื่อมต่อของบริษัทอื่นกับแอปพลิเคชันและ API ภายนอกได้
+    configure: กำหนดค่า
+    google_analytics: Google Analytics
+    google_analytics_info: Google Analytics ช่วยให้คุณสามารถเพิ่มโค้ดติดตามและมาร์กอัป HTML ลงในหน้าสาธารณะได้โดยอัตโนมัติ และติดตามเซสชันการจองสาธารณะทั้งหมด
+    matomo_analytics: Matomo Analytics
+    matomo_analytics_info: Matomo Analytics ช่วยให้คุณสามารถเพิ่มโค้ดติดตามและมาร์กอัป HTML ลงในหน้าสาธารณะได้โดยอัตโนมัติ และติดตามเซสชันการจองสาธารณะทั้งหมด
+    api: เอพีไอ
+    api_info: API ช่วยให้คุณสามารถโต้ตอบกับข้อมูล Easy! Appointments ทั้งหมดผ่านโปรโตคอล HTTP และจุดสิ้นสุด API ที่มีอยู่ และสร้างการผสานรวมของคุณเอง
+    google_analytics_code: รหัส Google Analytics
+    matomo_analytics_url: URL การวิเคราะห์ Matomo
+    future_booking_limit: วงเงินการจองในอนาคต
+    limit_days: ขีดจำกัด (วัน)
+    future_booking_limit_hint: กำหนดขีดจำกัดในอนาคตเป็นจำนวนวันที่ลูกค้าสามารถนัดหมายได้ผ่านหน้าการจองสาธารณะ
+    api_token: โทเค็น API
+    allow_rescheduling_cancellation_before: อนุญาตให้มีการจัดกำหนดการใหม่/ยกเลิกก่อน
+    at_least_one_field: ต้องแสดงอย่างน้อยหนึ่งช่องในหน้าการจอง
+    status: สถานะ
+    appointment_status_options: ตัวเลือกสถานะการนัดหมาย
+    appointment_status_options_info: กำหนดรายการตัวเลือกสถานะการนัดหมายที่สามารถใช้ได้ในหน้าปฏิทิน (ตัวเลือกแรกจะกลายเป็นค่าเริ่มต้นโดยอัตโนมัติ)
+    sunday_short: ดวงอาทิตย์
+    monday_short: จันทร์
+    tuesday_short: อ
+    wednesday_short: พุธ
+    thursday_short: พฤ
+    friday_short: ศุกร์
+    saturday_short: นั่ง
+    january_short: ม.ค
+    february_short: ก.พ
+    march_short: มี.ค
+    april_short: เม.ย
+    may_short: อาจ
+    june_short: มิ.ย
+    july_short: ก.ค
+    august_short: ส.ค
+    september_short: ก.ย
+    october_short: ต.ค
+    november_short: พ.ย
+    december_short: ธ.ค
+    am: เช้า
+    pm: น
+    to: ถึง
+    click_to_toggle: คลิกเพื่อสลับ
+    week_short: สัปดาห์
+    scroll_to_increment: เลื่อนเพื่อเพิ่ม
+    year: ปี
+    make_non_working_day: ผู้ให้บริการรายนี้จะไม่พร้อมทำงานในวันที่เลือก
+    no_breaks: ไม่มีการหยุดพัก
+    service_categories: หมวดหมู่บริการ
+    service_category: หมวดบริการ
+    blocked_period_saved: บันทึกช่วงเวลาที่บล็อกสำเร็จแล้ว
+    blocked_period_deleted: ลบช่วงเวลาที่บล็อกสำเร็จแล้ว
+    delete_blocked_period: ลบระยะเวลาที่ถูกบล็อก
+    blocked_period: ระยะเวลาที่ถูกบล็อค
+    blocked_periods: ระยะเวลาที่ถูกบล็อก
+    blocked_period_save: บันทึกช่วงเวลาที่ถูกบล็อก
+    blocked_period_delete: ลบระยะเวลาที่ถูกบล็อก
+    blocked_periods_hint: กำหนดระยะเวลาที่การจองสาธารณะจะถูกปิดใช้งานสำหรับผู้ให้บริการทั้งหมด (เช่น วันที่ปิด วันหยุด ฯลฯ)
+    custom_field: ฟิลด์ที่กำหนดเอง
+    custom_fields: ฟิลด์ที่กำหนดเอง
+    label: ฉลาก
+    webhook_saved: บันทึก Webhook เรียบร้อยแล้ว
+    webhook_deleted: ลบ Webhook สำเร็จแล้ว
+    delete_webhook: ลบเว็บฮุค
+    contact_info: ข้อมูลติดต่อ
+    hide_from_public: ซ่อนจากสาธารณะ
+    matomo_analytics_site_id: รหัสเว็บไซต์ Matomo Analytics
+    matomo_analytics_site_id_hint: กำหนดรหัสเว็บไซต์ที่จะถูกติดตามโดย Matomo (เว็บไซต์เริ่มต้นมีรหัส "1")
+    default_timezone: เขตเวลาเริ่มต้น
+    default_timezone_hint: กำหนดค่าพื้นฐานเขตเวลาที่จะใช้สำหรับบันทึกใหม่
+    default_language: ภาษาพื้นฐาน
+    default_language_hint: กำหนดค่าภาษาเริ่มต้นที่จะใช้สำหรับบันทึกใหม่
+    sync_method_prompt: คุณต้องการใช้วิธีซิงค์แบบใด
+    caldav_server: เซิร์ฟเวอร์ CalDAV
+    caldav_connection_info_prompt: โปรดป้อนข้อมูลการเชื่อมต่อของเซิร์ฟเวอร์ CalDAV เป้าหมาย
+    connect: เชื่อมต่อ
+    ldap: LDAP
+    ldap_info: การรวมนี้ช่วยให้คุณเชื่อมต่อกับเซิร์ฟเวอร์ LDAP ที่มีอยู่และนำเข้าผู้ใช้ไปยัง Easy!Appointments อัตโนมัติ และให้พวกเขาเข้าสู่ระบบด้วยรหัสผ่านไดเร็กทอรีของพวกเขา (ชื่อผู้ใช้ต้องตรงกัน)
+    host: โฮสต์
+    port: พอร์ต
+    user_dn: User DN
+    base_dn: Base DN
+    keyword: คีย์เวิร์ด
+    ldap_search_hint: ระบุคีย์เวิร์ดเพื่อค้นหาผู้ใช้ในไดเร็กทอรี LDAP ที่ตรงตามเกณฑ์การกรอง
+    ldap_extension_not_loaded: ส่วนขยาย LDAP PHP ยังไม่ได้โหลด แต่จำเป็นสำหรับการรวมนี้
+    field_mapping: การแมพฟิลด์
+    content: เนื้อหา
+    active: ใช้งานอยู่
+    user_imported: บันทึกผู้ใช้ถูกนำเข้าสำเร็จ
+    import: นำเข้า
+    ldap_dn: LDAP DN
+    role: บทบาท
+    at_least_one_field_required: ต้องมีฟิลด์อย่างน้อยหนึ่งฟิลด์ที่ตั้งเป็นฟิลด์ที่จำเป็นในหน้าการจอง
+    customer_is_already_booked: ลูกค้ารายนี้มีการนัดหมายแล้วในช่วงเวลาการจองที่ร้องขอ
+    fields: ฟิลด์
+    invalid_credentials_provided: ข้อมูลรับรองไม่ถูกต้อง กรุณาลองอีกครั้ง
+    calendar_url: URL ปฏิทิน
+    please_select: กรุณาเลือก
+    secret_header: ส่วนหัวความลับ
+    search: ค้นหา
+    slot_interval: ช่วงเวลาสล็อต (นาที)
+    jitsi: Jitsi
+    jitsi_info: เปิดใช้งานการสร้างลิงก์ประชุม Jitsi อัตโนมัติสำหรับนัดหมาย เมื่อเปิดใช้งาน ระบบจะสร้างลิงก์วิดีโอคอล Jitsi เฉพาะและจัดเก็บเป็นลิงก์การประชุม
+    altcha: ALTCHA
+    altcha_info: ALTCHA เป็นทางเลือก CAPTCHA แบบโอเพนซอร์สที่เน้นความเป็นส่วนตัว ใช้การพิสูจน์การทำงานเพื่อยืนยันผู้ใช้ที่เป็นมนุษย์โดยไม่ต้องติดตาม
+    altcha_enabled_hint: เมื่อเปิดใช้งาน ALTCHA จะถูกใช้แทน CAPTCHA แบบรูปภาพดั้งเดิมสำหรับการตรวจสอบแบบฟอร์ม
+    altcha_hmac_key: คีย์ HMAC
+    altcha_hmac_key_hint: คีย์ลับที่ใช้ลงนามและตรวจสอบการท้าทาย ALTCHA คลิกสร้างเพื่อสร้างคีย์ความปลอดภัยใหม่
+    altcha_max_number: จำนวนสูงสุด
+    altcha_max_number_hint: 'จำนวนสูงสุดสำหรับการท้าทายการพิสูจน์การทำงาน ค่าที่สูงขึ้นจะเพิ่มความยาก (ค่าเริ่มต้น: 100000)'
+    altcha_expires: หมดอายุ (วินาที)
+    altcha_expires_hint: 'ระยะเวลาที่การท้าทายมีผลเป็นวินาที (ค่าเริ่มต้น: 300)'
+    altcha_key_generated: สร้างคีย์ HMAC ใหม่เรียบร้อยแล้ว
+    altcha_enabled: เปิดใช้งาน ALTCHA
+    altcha_captcha_not_active_warning: การตั้งค่า CAPTCHA ไม่ได้ใช้งานอยู่ในขณะนี้ ALTCHA จะไม่ถูกใช้งานจนกว่าจะเปิดใช้งาน CAPTCHA ใน
+    generate: สร้าง
+    meeting_link: ลิงก์การประชุม
+    google_calendar: Google ปฏิทิน
+    google_calendar_info: เปิดใช้งานการซิงโครไนซ์ Google Calendar เพื่อซิงค์นัดหมายกับบัญชี Google Calendar ของผู้ให้บริการ
+    google_client_id: Client ID
+    google_client_id_info: Client ID จากโปรเจกต์ Google Cloud Console ของคุณ
+    google_client_secret: Client Secret
+    google_client_secret_info: Client Secret จากโปรเจกต์ Google Cloud Console ของคุณ
+    google_calendar_setup_info: 'หากต้องการเปิดใช้งานการซิงค์ Google Calendar คุณต้องสร้างโปรเจกต์ใน Google Cloud Console เปิดใช้งาน Google Calendar API และสร้างข้อมูลรับรอง OAuth 2.0 ไปที่:'
+    google_meet_link_generation: สร้างลิงก์ Google Meet
+    google_meet_link_generation_info: สร้างลิงก์วิดีโอคอนเฟอเรนซ์ Google Meet โดยอัตโนมัติสำหรับนัดหมายที่ซิงค์ ลิงก์การประชุมจะถูกจัดเก็บในฟิลด์ลิงก์การประชุมของนัดหมาย
+    display_add_to_google_calendar: แสดงปุ่ม"เพิ่มไปยัง Google Calendar"
+    display_add_to_google_calendar_info: แสดงปุ่ม"เพิ่มไปยัง Google Calendar"ในหน้ายืนยันการจอง เพื่อให้ลูกค้าสามารถเพิ่มนัดหมายไปยัง Google Calendar ส่วนตัวได้อย่างง่ายดาย
+    select_all: เลือกทั้งหมด
+    select_none: ยกเลิกการเลือกทั้งหมด
+    appointment_update: อัปเดตการนัดหมาย
+    notify_users_on_update_question: คุณต้องการส่งการแจ้งเตือนเกี่ยวกับการเปลี่ยนแปลงนี้หรือไม่?
+    'yes': ใช่
+    'no': ไม่
+    latest_blog_posts: โพสต์บล็อกล่าสุด
+    loading: กำลังโหลด
+    blog_posts_load_error: ไม่สามารถโหลดโพสต์บล็อกได้ กรุณาเยี่ยมชมเว็บไซต์ทางการเพื่อรับการอัปเดต
+    provider_has_conflicting_appointment: ผู้ให้บริการที่เลือกมีนัดหมายอื่นในเวลานั้นแล้ว กรุณาเลือกเวลาหรือผู้ให้บริการอื่น
+    would_you_like_to_proceed: คุณต้องการดำเนินการต่อหรือไม่?
+    proceed: ดำเนินการ
+    no_available_service_providers: ไม่มีบริการที่พร้อมให้บริการ
+    no_available_service_providers_message: ขณะนี้ไม่มีบริการหรือผู้ให้บริการสำหรับการจอง กรุณาตรวจสอบในภายหลังหรือติดต่อเราเพื่อขอความช่วยเหลือ
+    reset_password: รีเซ็ตรหัสผ่าน
+    new_password: รหัสผ่านใหม่
+    enter_new_password: ป้อนรหัสผ่านใหม่ของคุณด้านล่าง
+    password_reset_request: คำขอรีเซ็ตรหัสผ่าน
+    password_reset_email_message: คุณได้ขอรีเซ็ตรหัสผ่าน คลิกปุ่มด้านล่างเพื่อตั้งรหัสผ่านใหม่สำหรับบัญชีของคุณ
+    password_reset_link_expires: ลิงก์นี้จะหมดอายุใน 1 ชั่วโมง
+    password_reset_ignore_message: หากคุณไม่ได้ขอรีเซ็ตรหัสผ่าน กรุณาเพิกเฉยต่ออีเมลนี้
+    invalid_reset_token: ลิงก์รีเซ็ตรหัสผ่านไม่ถูกต้อง
+    invalid_or_expired_token: ลิงก์รีเซ็ตรหัสผ่านไม่ถูกต้องหรือหมดอายุแล้ว กรุณาขอลิงก์ใหม่
+    password_reset_success: รีเซ็ตรหัสผ่านของคุณเรียบร้อยแล้ว คุณจะถูกเปลี่ยนเส้นทางไปยังหน้าเข้าสู่ระบบ
+    password_reset_failed: การรีเซ็ตรหัสผ่านล้มเหลว กรุณาลองอีกครั้ง
+    no_password_provided: กรุณากรอกรหัสผ่าน
+    type_username_and_email_for_reset_link: พิมพ์ชื่อผู้ใช้และที่อยู่อีเมลของคุณเพื่อรับลิงก์รีเซ็ตรหัสผ่าน
+    send_reset_link: ส่งลิงก์รีเซ็ต
+    reset_link_sent_with_email: หากมีบัญชีที่มีข้อมูลประจำตัวที่ให้ไว้ ลิงก์รีเซ็ตรหัสผ่านจะถูกส่งไปยังอีเมลของคุณ
+    working_plan_validation_failed: พบการกำหนดค่าแผนการทำงานที่ไม่ถูกต้อง
+    start_date: วันที่เริ่มต้น
+    end_date: วันที่สิ้นสุด
+    remember_me: จดจำข้อมูลของฉัน
+    remember_me_hint: บันทึกข้อมูลของคุณเพื่อการจองที่รวดเร็วขึ้นในครั้งถัดไป
+    legal_notice: ประกาศทางกฎหมาย
+    legal_notice_url: URL ประกาศทางกฎหมาย
+    legal_notice_url_hint: ป้อน URL ของหน้าประกาศทางกฎหมายของคุณ
+    imprint: ข้อมูลผู้จัดทำ
+    imprint_url: URL ข้อมูลผู้จัดทำ
+    imprint_url_hint: ป้อน URL ของหน้าข้อมูลผู้จัดทำของคุณ
+    data_retention: การเก็บรักษาข้อมูล
+    data_retention_days: จำนวนวันเก็บรักษาข้อมูล
+    data_retention_days_hint: กำหนดจำนวนวันที่ข้อมูลลูกค้าจะถูกลบโดยอัตโนมัติ ตั้งค่าเป็น 0 เพื่อปิดใช้งานการลบอัตโนมัติ
+    manage_privacy: จัดการความเป็นส่วนตัว
+    manage_privacy_hint: คลิกลิงก์ด้านล่างเพื่อดู อัปเดต หรือลบข้อมูลส่วนบุคคลของคุณ
+    personal_information_updated: อัปเดตข้อมูลส่วนบุคคลของคุณเรียบร้อยแล้ว
+    verify: ยืนยัน
+    verifying: กำลังยืนยัน
+    verified: ยืนยันแล้ว
+    verification_complete: การยืนยันเสร็จสมบูรณ์
+    verification_failed: การยืนยันล้มเหลว คลิกเพื่อลองอีกครั้ง
+    click_to_verify: คลิกเพื่อยืนยันว่าคุณเป็นมนุษย์
+    altcha_verification_failed: การยืนยัน ALTCHA ล้มเหลว กรุณาลองอีกครั้ง
+    premium: Premium
+    about_app_premium: เรามีบริการครบวงจรสำหรับซอฟต์แวร์ที่โฮสต์เอง รวมถึงการพัฒนาเฉพาะทาง การโฮสต์แบบมีการจัดการ สัญญาสนับสนุน การรีแบรนด์ และการปรับปรุงอย่างต่อเนื่อง — เพื่อให้คุณมุ่งเน้นธุรกิจของคุณ ส่วนที่เหลือให้เราดูแล
+    go_premium: อัปเกรด Premium
+    notify_users_on_create_question: คุณต้องการแจ้งลูกค้าเกี่ยวกับการนัดหมายใหม่นี้หรือไม่?
+    notify_users_on_delete_question: คุณต้องการแจ้งลูกค้าเกี่ยวกับการยกเลิกนัดหมายนี้หรือไม่?

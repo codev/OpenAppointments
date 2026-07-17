@@ -1,0 +1,575 @@
+---
+ro:
+  ea:
+    page_title: Programeaza întâlniri cu
+    service_and_provider: Selecteaza Serviciul si Furnizorul
+    select_service: Selecteaza Serviciul
+    select_provider: Selecteaza Furnizor
+    duration: Durata
+    minutes: Minute
+    price: Pret
+    back: Anteriorul
+    appointment_date_and_time: Selecteaza data si ora întâlnirii
+    no_available_hours: Nu este timp disponibil pentru data selectata. Va rugam sa selectati alta data.
+    appointment_hour_missing: Va rugam selectati ora întâlnirii înainte de a continua.
+    customer_information: Informatii despre dumneavoastra
+    first_name: Prenume
+    last_name: Nume
+    email: E-mail
+    phone_number: Numar de telefon
+    phone: Telefon
+    address: Adresa
+    city: Orasul
+    zip_code: Cod postal
+    notes: Note
+    language: Limbă
+    no_language: Fără limbă
+    fields_are_required: Câmpurile cu * sunt necesare.
+    appointment_confirmation: Confirmati întâlnirea
+    confirm: Confirmati
+    update: Actualizare
+    cancel_appointment_hint: Apasati butonul Anulare ca sa stergeti întâlnirea din calendarul companiei.
+    cancel: Anulare
+    appointment_registered: Cererea dumneavoastra a fost înregistrata.
+    cancel_appointment_title: Anulare întâlnire
+    appointment_cancelled: Întâlnirea a fost anulata.
+    appointment_cancelled_title: Întâlnire Anulata
+    reason: Motiv
+    appointment_removed_from_schedule: Urmatoarea întâlnire a fost stearsa din calendarul companiei.
+    appointment_details_was_sent_to_you: Un email cu detaliile întâlnirii v-a fost trimis.
+    add_to_google_calendar: Adaugati în Calendarul Google
+    appointment_booked: Întâlnirea a fost programata.
+    thank_you_for_appointment: Va multumim pentru ca ati programat o întâlnire cu noi. Dedesubt puteti vedea detaliile întâlnirii. Puteti face modificari apasând pe linkul întâlnirii.
+    appointment_details_title: Detaliile întâlnirii
+    customer_details_title: Detalii client
+    service: Serviciu
+    provider: Furnizor
+    customer: Client
+    start: Început
+    end: Sfârsit
+    name: Nume
+    appointment_link_title: Linkul întâlnirii
+    success: Succes.
+    appointment_added_to_your_plan: O noua întâlnire a fost adaugata în planul dumneavoastra.
+    appointment_link_description: Puteti face modificari  apasând pe linkul întâlnirii de dedesubt.
+    appointment_locked: Modification impossible.
+    appointment_locked_message: Programarea nu poate fi modificată cu mai puțin de {$limit} ore înainte.
+    appointment_not_found: Întâlnire negasita.
+    appointment_does_not_exist_in_db: Întâlnirea pe care o cautati nu mai exista în baza de date.
+    display_calendar: Afiseaza Calendar
+    calendar: Calendar
+    users: Utilizatori
+    settings: Setari
+    log_out: Iesire
+    synchronize: Sincronizare
+    enable_sync: Activeaza Sincronizare
+    disable_sync: Dezactiveaza Sincronizare
+    disable_sync_prompt: Ești sigur că vrei să dezactivezi sincronizarea calendarului?
+    reload: Reîncarcare
+    appointment: Întâlnire
+    unavailability: Indisponibil
+    week: Saptamâna
+    month: Luna
+    today: Azi
+    not_working: Nu lucreaza
+    break: Pauza
+    add: Adauga
+    edit: Editare
+    hello: Buna
+    all_day: Toata ziua
+    manage_appointment_record_hint: Gestioneaza toate înregistrarile furnizorilor si serviciilor disponibile.
+    select_filter_item_hint: Selecteaza un furnizor sau un serviciu si vizualizeaza întâlnirile în calendar.
+    enable_appointment_sync_hint: Activeaza sincronizarea întâlnirilor cu calendarul furnizorului.
+    manage_customers_hint: Gestioneaza clientii înregistrati si vizualizeaza istoricul întâlnirilor lor.
+    manage_services_hint: Gestioneaza serviciile disponibile si categoriile din sistem.
+    manage_users_hint: Gestioneaza utilizatorii de backend (administrator, furnizori, secretari).
+    settings_hint: Setarile sistemului si utilizatorilor.
+    log_out_hint: Iesire din sistem.
+    unavailability_periods_hint: În timpul perioadei de indisponibilitate, furnizorul nu va accepta întâlniri noi.
+    new_appointment_hint: Creeaza întâlnire noua si înregistreaza în baza de date.
+    reload_appointments_hint: Reîncarca întâlnirile din calendar.
+    trigger_sync_hint: Porneste procesul de sincronizare cu Calendarul Google.
+    appointment_updated: Întâlnire actualizata cu succes.
+    undo: Înapoi
+    appointment_details_changed: Detaliile întâlnirii au fost modificate.
+    appointment_changes_saved: Modificarile întâlnirii au fost salvate cu succes.
+    save: Salvare
+    new: Nou
+    select: Selecteaza
+    hide: Ascunde
+    type_to_filter_customers: Tasteaza pentru a filtra clientii.
+    clear_fields_add_existing_customer_hint: Sterge câmpurile pentru a adauga un nou client.
+    pick_existing_customer_hint: Alege client deja existent.
+    new_appointment_title: Întâlnire noua
+    edit_appointment_title: Editeaza Întâlnire
+    delete_appointment_title: Sterge Întâlnire
+    write_appointment_removal_reason: 'Va rugam sa ne scrieti un motiv pentru care anulati întâlnirea:'
+    appointment_saved: Întâlnire salvata.
+    new_unavailability_title: Perioada de indisponibilitate noua
+    edit_unavailability_title: Editeaza perioada de indisponibilitate
+    unavailability_saved: Perioada de indisponibilitate a fost salvata.
+    start_date_before_end_error: Data de început se afla dupa data de sfârsit.
+    invalid_duration: Durată invalidă.
+    invalid_email: Adresa de email este invalida.
+    customers: Clienti
+    details: Detalii
+    no_records_found: Nu s-au gasit înregistrari...
+    services: Servicii
+    duration_minutes: Durata (Minute)
+    currency: Moneda
+    category: Categorie
+    no_category: Fara Categorie
+    description: Descriere
+    categories: Categorii
+    admins: Administratori
+    providers: Furnizori
+    secretaries: Secretari
+    mobile_number: Numar de mobil
+    mobile: Mobil
+    state: Stare
+    username: Utilizator
+    password: Parola
+    retype_password: Reintroduceti parola
+    receive_notifications: Primeste Notificari
+    passwords_mismatch: Parola nu se potriveste.
+    admin_saved: Administrator salvat.
+    provider_saved: Furnizor salvat.
+    secretary_saved: Secretar salvat.
+    admin_deleted: Administrator sters.
+    provider_deleted: Furnizor sters.
+    secretary_deleted: Secretar sters.
+    service_saved: Serviciu salvat.
+    service_category_saved: Categorie de servicii salvata.
+    service_deleted: Serviciu sters.
+    service_category_deleted: Categorie de servicii stearsa.
+    customer_saved: Client salvat.
+    customer_deleted: Client sters.
+    current_view: Fereastra curenta
+    working_plan: Planul de lucru
+    reset_plan: Reseteaza Plan
+    monday: Luni
+    tuesday: Marti
+    wednesday: Miercuri
+    thursday: Joi
+    friday: Vineri
+    saturday: Sâmbata
+    sunday: Duminica
+    breaks: Pauze
+    add_breaks_during_each_day: Adauga pauzele de lucru în fiecare zi. În pauze furnizorul nu va accepta nici o întâlnire.
+    day: Zi
+    days: Zile
+    actions: Actiuni
+    reset_working_plan_hint: Reseteaza planul de lucru la valorile initiale.
+    company_name: Numele Companiei
+    company_name_hint: Numele companiei va fi afisat peste tot în sistem (necesar).
+    company_email: Email-ul companiei
+    company_email_hint: Aceasta va fi email-ul companiei.Va fi folosit pentru a trimite si raspunde la mesaje (necesar).
+    company_link: Link-ul Companiei
+    company_link_hint: Linkul trebuie sa indice website-ul oficial al companiei(necesar).
+    go_to_booking_page: La pagina de înregistrari
+    settings_saved: Setari salvate.
+    general: General
+    booking: Rezervare
+    visible: Vizibil
+    hidden: Ascuns
+    business_logic: Logica afacerii
+    current_user: Utilizator curent
+    about_app: Despre Easy!Appointments
+    edit_working_plan_hint: Selectati zilele si orele când compania va accepta întâlniri. Veti putea ajusta întâlnirile în orele nelucratoare dar clientul nu va putea programa întâlnirile în aceste perioade. Acest plan de lucru va fi implicit pentru fiecare noua înregistrare dar veti putea schimba separat planul de lucru al fiecarui distribuitor editandu-i înregistrarea. Puteti adauga ulterior pauzele.
+    edit_breaks_hint: Adaugati pauzele de lucru în fiecare zi. Aceste pauze vor fi aplicate pentru toti furnizorii.
+    book_advance_timeout: Programeaza timp liber avansat
+    book_advance_timeout_hint: Defineste timpul liber (în minute) înainte ca si clientul sa poata programa sau reprograma o întâlnire cu compania.
+    timeout_minutes: Timeout (Minute)
+    about_app_info: Easy!Appointments este o aplicatie web usor personalizabila care permite clientilor sa programeze întâlniri cu dumneavoastra de pe internet. Mai mult, are abilitatea de a sincroniza datele dumneavoastra cu Calendarul Google pentru a-l putea folosi împreuna cu alte servicii.
+    current_version: Versiunea Curenta
+    support: Suport
+    about_app_support: Daca întâmpinati orice problema utilizând Easy!Appointments puteti cauta grupul oficial Google pentru raspunsuri. Deasemenea va trebui sa creati o noua întrebare acolo pe pagina Google Code pentru a ajuta la dezvoltarea aplicatiei.
+    official_website: Site-ul Oficial
+    google_plus_community: Comunitatea Google+
+    support_group: Grup Suport
+    project_issues: Probleme proiect
+    license: Licenta
+    about_app_license: 'Easy!Appointments este sub licenta GPLv3. folosind codul Easy!Appointments în orice fel aduce cu sine acceptarea conditiilor descrise in urmatorul url:'
+    logout_success: Ati iesit din program! Apasati pe unul din butoanele urmatoare ca sa navigati spre o alta pagina.
+    book_appointment_title: Programeaza întâlnire
+    backend_section: Sectiunea Backend
+    you_need_to_login: Bine a-ti venit! Va trebui sa va logati pentru a vedea paginile backend.
+    enter_username_here: Introduceti nume utilizator aici ...
+    enter_password_here: Introduceți parola aici ...
+    login: Autentificare
+    forgot_your_password: Ati uitat parola?
+    login_failed: Login neautorizat. Introduceti datele corect.
+    type_username_and_email_for_new_password: Introduceti nume utilizator si email-ul pentru a primi noua parola.
+    enter_email_here: Introduceti email aici ...
+    regenerate_password: Regenereaza parola
+    go_to_login: Înapoi la pagina de login
+    new_password_sent_with_email: Noua parola a fost trimisa în email.
+    new_account_password: Noua parola
+    new_password_is: Noua parola e $password. Va rugam sa pastrati acest email pentru a putea recupera parola daca e necesar. Puteti deasemenea sa o schimbati cu o noua parola in pagina de setari.
+    delete_record_prompt: Sunteti sigur ca doriti stergerea acestei înregistrari? Aceasa actiune nu poate fi revocata
+    delete_admin: Sterge Administrator
+    delete_customer: Sterge Client
+    delete_service: Sterge serviciu
+    delete_service_category: Sterge Categorie de servicii
+    delete_provider: Sterge Furnizor
+    delete_secretary: Sterge Secretar
+    delete_appointment: Sterge întâlnire
+    delete_unavailability: Sterge perioada nelucratoare
+    delete: Sterge
+    unexpected_issues: Probleme neasteptate
+    unexpected_issues_message: Operațiunea nu a putut fi finalizată.
+    close: Închide
+    page_not_found: Pagina negasita
+    page_not_found_message: Din pacate pagina pe care ati cerut-o nu exista. Va rugam verificati adresa sau introduceti alta locatie folosind butoanele de mai jos.
+    error: Eroare
+    no_privileges: Fara drepturi
+    no_privileges_message: Nu aveti drepturile necesare pentru a vizualiza aceasta pagina. Va rugam navigati spre alta sectiune.
+    backend_calendar: Calendar backend
+    start_date_time: Start Data / Ora
+    end_date_time: Sfarsit Data / Ora
+    licensed_under: Licenta sub
+    unexpected_issues_occurred: Au intervenit probleme neasteptate.
+    service_communication_error: Eroare în comunicarea cu serverul. Va rugam încercati din nou.
+    no_privileges_edit_appointments: Nu aveti drepturile necesare sa editati întâlniri
+    unavailability_updated: Perioada de timp nedisponibila a fost actualizata.
+    appointments: Întâlniri
+    unexpected_warnings: Avertizari neasteptate
+    unexpected_warnings_message: Operatiune finalizata dar au aparut niste avertizari.
+    filter: Filtru
+    clear: Elimina
+    uncategorized: Necategorizat
+    username_already_exists: Numele utilizator exista deja.
+    password_length_notice: Parola trebuie sa aibe $number caractere.
+    general_settings: Setari generale
+    personal_information: Informații Personale
+    system_login: Login în sistem
+    user_settings_are_invalid: Setarile utilizatorului sunt invalide! Va rugam revizuiti setarile si încercati din nou.
+    add_break: Adauga pauza
+    january: Ianuarie
+    february: Februarie
+    march: Martie
+    april: Aprilie
+    may: Mai
+    june: Iunie
+    july: Iulie
+    august: August
+    september: Septembrie
+    october: Octombrie
+    november: Noiembrie
+    december: Decembrie
+    previous: Anterior
+    next: Urmator
+    now: Acum
+    select_time: Selecteaza Ora
+    time: Ora
+    hour: Ora
+    minute: Minut
+    calendar_sync_completed: Sincronizarea cu Google a reusit.
+    calendar_sync_failed: 'Sincronizarea cu Google a esuat: nu s-a putut stabili conexiunea cu serverul.'
+    select_sync_calendar: Selecteaza Calendarul Google
+    select_sync_calendar_prompt: Selecteaza calendarul în care doriti sa sincronizati întâlnirile. Daca nu doriti sa selectati un anume calendar va fi folosit cel implicit.
+    sync_calendar_selected: Calendarul Google a fost selectat.
+    oops_something_went_wrong: Oops! Ceva nu a funtionat corect.
+    ea_update_success: Easy!Appointments a fost actualizat.
+    require_captcha: Necesar CAPTCHA
+    require_captcha_hint: Când este activat, clienții vor trebui să tasteze un cod CAPTCHA generat aleator înainte de a rezerva/actualiza o programare.
+    captcha_is_wrong: Verificarea CAPTCHA a eșuat, vă rugăm să încercați din nou.
+    enter_captcha_here: Introduceți CAPTCHA aici...
+    any_provider: Orice Provider
+    requested_hour_is_unavailable: Programarea solicitată nu este disponibilă. Vă rugăm să selectați o oră diferită pentru programare.
+    customer_notifications: Notificări Client
+    customer_notifications_hint: Definește dacă clientul va primi notificări prin email de fiecare dată când există o modificare în programul unei programări.
+    date_format: Format Data
+    date_format_hint: Schimbați formatul de afișare a datei (D - Dată, M - Lună, Y - An).
+    time_format: Format Timp
+    time_format_hint: Schimbați formatul de afișare a timpului (H - Ore, M - Minute).
+    first_weekday: Prima zi a săptămânii
+    first_weekday_hint: Setați prima zi a săptămânii în calendar.
+    google_analytics_code_hint: Adăugați ID-ul dvs. Google Analytics pentru a fi inclus în pagina de rezervări.
+    availabilities_type: Tip Disponibilități
+    flexible: Flexibil
+    fixed: Fix
+    attendants_number: Număr Asistenți
+    reset_working_plan: Resetați planul de lucru la valorile implicite.
+    legal_contents: Conținuturi Legale
+    cookie_notice: Notificare Cookie
+    display_cookie_notice: Afișați Notificare Cookie
+    cookie_notice_content: Conținut Notificare Cookie
+    terms_and_conditions: Termeni și Condiții
+    display_terms_and_conditions: Afișați Termeni și Condiții
+    terms_and_conditions_content: Conținut Termeni și Condiții
+    privacy_policy: Politica de Confidențialitate
+    display_privacy_policy: Afișați Politica de Confidențialitate
+    privacy_policy_content: Conținut Politica de Confidențialitate
+    website_using_cookies_to_ensure_best_experience: Acest site folosește cookie-uri pentru a vă asigura că aveți cea mai bună experiență pe site-ul nostru.
+    read_and_agree_to_terms_and_conditions: Am citit și sunt de acord cu {$link}Termenii și Condițiile{/$link}.
+    read_and_agree_to_privacy_policy: Am citit și sunt de acord cu {$link}Politica de Confidențialitate{/$link}.
+    delete_personal_information_hint: Eliminați toate programările și informațiile personale din sistem.
+    delete_personal_information: Ștergeți Informațiile Personale
+    delete_personal_information_prompt: Sunteți sigur că doriți să ștergeți informațiile personale? Această acțiune nu poate fi anulată.
+    location: Locație
+    working_plan_exception: Excepție Plan de Lucru
+    working_plan_exceptions: Excepții Plan de Lucru
+    working_plan_exceptions_hint: Adăugați o zi de excepție în planul de lucru, în afara planului de lucru.
+    new_working_plan_exception_title: Nouă Excepție Plan de Lucru
+    working_plan_exception_saved: Excepția planului de lucru a fost salvată cu succes.
+    working_plan_exception_deleted: Excepția planului de lucru a fost ștearsă cu succes.
+    add_working_plan_exceptions_during_each_day: Adăugați excepții ale planului de lucru, în afara planului de lucru.
+    add_working_plan_exception: Adăugați Excepție Plan de Lucru
+    require_phone_number: Necesar Număr de Telefon
+    require_phone_number_hint: Când este activat, clienții și utilizatorii vor trebui să introducă numărul de telefon al clientului atunci când rezervă o programare.
+    check_spam_folder: Vă rugăm să verificați folderul de spam dacă emailul nu sosește în câteva minute.
+    api_token_hint: Setați un token secret pentru a activa autentificarea bazată pe token a API-ului Easy!Appointments.
+    timezone: Fus Orar
+    overwrite_existing_working_plans: Aceasta va suprascrie planurile de lucru existente ale providerilor, sunteți sigur că doriți să continuați?
+    working_plans_got_updated: Toate planurile de lucru au fost actualizate.
+    apply_to_all_providers: Aplică La Toți Providerii
+    display_any_provider: Afișați Opțiunea Oricărui Provider
+    display_any_provider_hint: Pagina de rezervări va avea o opțiune suplimentară care permite clienților să rezerve fără a specifica un provider.
+    load_more: Încărcați Mai Multe
+    list: Listă
+    default: Implicit
+    table: Tabel
+    date: Dată
+    about: Despre
+    booking_settings: Setări Rezervări
+    display: Afișare
+    require: Necesar
+    color: Culoare
+    matomo_analytics_url_hint: Adăugați URL-ul instalării proprii Matomo pentru a activa urmărirea Matomo pe paginile de rezervare.
+    invalid_phone: Număr de telefon invalid.
+    legal: Jurídic
+    business: Afaceră
+    account: Cont
+    disable_booking: Dezactivează Rezervarea
+    disable_booking_hint: Pagina de rezervare va fi dezactivată atât timp cât această setare este activă și clienții nu vor putea face noi programări.
+    display_message: Afișează Mesaj
+    booking_is_disabled: Rezervarea Este Dezactivată!
+    appearance: Aspect
+    company_logo: Logo-ul Companiei
+    company_logo_hint: Logo-ul companiei va fi afișat în multe locuri ale aplicației, inclusiv pe pagina de rezervare și în e-mailurile de notificare (fișier imagine, max 2MB).
+    company_color: Culoarea Companiei
+    company_color_hint: Culoarea companiei va fi aplicată în toată aplicația pentru a reflecta brandingul vostru.
+    localization: Localizare
+    integrations: Integrări
+    company: Companie
+    remove: Elimină
+    login_button: Buton Autentificare
+    display_login_button_hint: Defineste dacă butonul de autentificare este afișat pe pagina de rezervare.
+    private: Privat
+    private_hint: Înregistrările private nu vor fi afișate sau procesate pe paginile publice, cum ar fi pagina de rezervare.
+    reset: Resetare
+    all: Toate
+    booking_link: Link Rezervare
+    add_new_event: Adaugă Eveniment Nou
+    what_kind_of_event: Ce tip de eveniment doriți să adăugați?
+    theme: Temă
+    limit_customer_access: Limitează Accesul Clienților
+    limit_customer_access_hint: Dacă este activat, furnizorii și secretarii vor putea accesa doar clienții cu care au o programare.
+    url: URL
+    secret_token: Token Secret
+    verify_ssl: Verifică SSL
+    appointment_save: Salvează Programarea
+    appointment_delete: Șterge Programarea
+    unavailability_save: Salvează Nepotențialitatea
+    unavailability_delete: Șterge Nepotențialitatea
+    customer_save: Salvează Clientul
+    customer_delete: Șterge Clientul
+    service_save: Salvează Serviciul
+    service_delete: Șterge Serviciul
+    service_category_save: Salvează Categoria
+    service_category_delete: Șterge Categoria
+    provider_save: Salvează Furnizorul
+    provider_delete: Șterge Furnizorul
+    secretary_save: Salvează Secretarul
+    secretary_delete: Șterge Secretarul
+    admin_save: Salvează Adminul
+    admin_delete: Șterge Adminul
+    options: Opțiuni
+    webhooks: Webhook-uri
+    webhooks_info: Webhooks vă permit să trimiteți notificări HTTP către aplicații web externe ca răspuns la diferite evenimente ale aplicației, cum ar fi crearea unei programări sau eliminarea unui client.
+    integrations_info: Integrările vă permit să faceți conexiuni cu aplicații externe și API-uri.
+    configure: Configurează
+    google_analytics: Google Analytics
+    google_analytics_info: Google Analytics vă permite să adăugați automat codul de urmărire și marcajul HTML pe pagina publică și să urmăriți toate sesiunile de rezervare publice.
+    matomo_analytics: Matomo Analytics
+    matomo_analytics_info: Matomo Analytics vă permite să adăugați automat codul de urmărire și marcajul HTML pe pagina publică și să urmăriți toate sesiunile de rezervare publice.
+    api: API
+    api_info: API vă permite să interacționați cu toate datele Easy!Appointments prin protocolul HTTP și punctele de acces API disponibile și să creați propriile integrări.
+    google_analytics_code: Cod Google Analytics
+    matomo_analytics_url: URL Matomo Analytics
+    future_booking_limit: Limită Rezervări Viitoare
+    limit_days: Limită (Zile)
+    future_booking_limit_hint: Stabiliți limita de zile pentru care clienții pot face programări prin pagina de rezervare publică.
+    api_token: Token API
+    allow_rescheduling_cancellation_before: Permite Reprogramarea/Anularea Înainte de
+    at_least_one_field: Cel puțin un câmp trebuie să fie afișat pe pagina de rezervare.
+    status: Stare
+    appointment_status_options: Opțiuni Stare Programare
+    appointment_status_options_info: Definiți o listă de opțiuni de stare a programării care pot fi utilizate pe pagina calendarului (prima va deveni automat valoarea implicită).
+    sunday_short: Dum
+    monday_short: Lun
+    tuesday_short: Mar
+    wednesday_short: Mie
+    thursday_short: Joi
+    friday_short: Vin
+    saturday_short: Sâm
+    january_short: Ian
+    february_short: Feb
+    march_short: Mar
+    april_short: Apr
+    may_short: Mai
+    june_short: Iun
+    july_short: Iul
+    august_short: Aug
+    september_short: Sep
+    october_short: Oct
+    november_short: Noi
+    december_short: Dec
+    am: am
+    pm: pm
+    to: la
+    click_to_toggle: Click pentru a Comuta
+    week_short: Săpt
+    scroll_to_increment: Derulează pentru a Incrementa
+    year: An
+    make_non_working_day: Acest furnizor nu va fi disponibil pentru muncă în ziua selectată.
+    no_breaks: Fără Pauze
+    service_categories: Categorii de Servicii
+    service_category: Categorie Serviciu
+    blocked_period_saved: Perioada blocată a fost salvată cu succes.
+    blocked_period_deleted: Perioada blocată a fost ștearsă cu succes.
+    delete_blocked_period: Șterge Perioada Blocată
+    blocked_period: Perioadă Blocată
+    blocked_periods: Perioade Blocate
+    blocked_period_save: Salvează Perioada Blocată
+    blocked_period_delete: Șterge Perioada Blocată
+    blocked_periods_hint: Definiți perioadele de timp în care rezervările publice vor fi dezactivate pentru toți furnizorii (de exemplu, date închise, sărbători etc.).
+    custom_field: Câmp Personalizat
+    custom_fields: Câmpuri Personalizate
+    label: Etichetă
+    webhook_saved: Webhook salvat cu succes.
+    webhook_deleted: Webhook șters cu succes.
+    delete_webhook: Șterge Webhook
+    contact_info: Informații de Contact
+    hide_from_public: Ascunde de la Public
+    matomo_analytics_site_id: ID Site Matomo Analytics
+    matomo_analytics_site_id_hint: Stabiliți ID-ul site-ului care va fi urmărit de Matomo (site-ul implicit are ID-ul "1").
+    default_timezone: Fus Orar Implicit
+    default_timezone_hint: Stabiliți valoarea fusului orar implicit care va fi utilizată pentru noile înregistrări.
+    default_language: Limba Implicită
+    default_language_hint: Stabiliți valoarea limbii implicite care va fi utilizată pentru noile înregistrări.
+    sync_method_prompt: Ce metodă de sincronizare doriți să folosiți?
+    caldav_server: Server CalDAV
+    caldav_connection_info_prompt: Vă rugăm să introduceți informațiile de conectare la calendarul CalDAV țintă.
+    connect: Conectare
+    ldap: LDAP
+    ldap_info: Această integrare vă permite să vă conectați la un server LDAP existent și să importați automat utilizatorii în Easy!Appointments, permițându-le să se autentifice cu parola din director (numele de utilizator trebuie să se potrivească).
+    host: Gazdă
+    port: Port
+    user_dn: DN Utilizator
+    base_dn: Base DN
+    keyword: Cuvânt cheie
+    ldap_search_hint: Furnizați un cuvânt cheie pentru a căuta în directorul LDAP utilizatorii care se potrivesc cu criteriile de filtrare.
+    ldap_extension_not_loaded: Extensia LDAP pentru PHP nu este încărcată, dar este necesară pentru ca această integrare să funcționeze.
+    field_mapping: Mapare Câmpuri
+    content: Conținut
+    active: Activ
+    user_imported: Înregistrarea utilizatorului a fost importată cu succes.
+    import: Import
+    ldap_dn: LDAP DN
+    role: Rol
+    at_least_one_field_required: Cel puțin un câmp trebuie să fie marcat ca obligatoriu pe pagina de rezervare.
+    customer_is_already_booked: Acest client are deja o programare în perioada solicitată pentru rezervare.
+    fields: Câmpuri
+    invalid_credentials_provided: Credențiale invalide furnizate, vă rugăm să încercați din nou.
+    calendar_url: URL Calendar
+    please_select: Vă Rugăm să Selectați
+    secret_header: Antet Secret
+    search: Căutare
+    slot_interval: Interval Programare (Minute)
+    jitsi: Jitsi
+    jitsi_info: Activați generarea automată a linkurilor de întâlnire Jitsi pentru programări. Când este activat, un link unic de apel video Jitsi va fi generat și stocat ca link de întâlnire.
+    altcha: ALTCHA
+    altcha_info: ALTCHA este o alternativă CAPTCHA cu sursă deschisă, orientată spre confidențialitate, care folosește dovada de lucru pentru a verifica utilizatorii umani fără urmărire.
+    altcha_enabled_hint: Când este activat, ALTCHA va fi folosit în locul CAPTCHA tradițional cu imagini pentru verificarea formularelor.
+    altcha_hmac_key: Cheie HMAC
+    altcha_hmac_key_hint: O cheie secretă folosită pentru a semna și verifica provocările ALTCHA. Faceți clic pe Generare pentru a crea o nouă cheie securizată.
+    altcha_max_number: Număr Maxim
+    altcha_max_number_hint: 'Numărul maxim pentru provocarea de dovadă a lucrului. Valorile mai mari cresc dificultatea (implicit: 100000).'
+    altcha_expires: Expiră (Secunde)
+    altcha_expires_hint: 'Cât timp rămâne valabilă o provocare în secunde (implicit: 300).'
+    altcha_key_generated: Noua cheie HMAC a fost generată cu succes.
+    altcha_enabled: Activare ALTCHA
+    altcha_captcha_not_active_warning: Setarea CAPTCHA nu este activă în prezent. ALTCHA nu va fi utilizat decât dacă CAPTCHA este activat în
+    generate: Generare
+    meeting_link: Link întâlnire
+    google_calendar: Google Calendar
+    google_calendar_info: Activați sincronizarea Google Calendar pentru a sincroniza programările cu conturile Google Calendar ale furnizorilor.
+    google_client_id: ID Client
+    google_client_id_info: ID-ul de Client din proiectul dvs. Google Cloud Console.
+    google_client_secret: Secret Client
+    google_client_secret_info: Secretul de Client din proiectul dvs. Google Cloud Console.
+    google_calendar_setup_info: 'Pentru a activa sincronizarea Google Calendar, trebuie să creați un proiect în Google Cloud Console, să activați API-ul Google Calendar și să creați credențiale OAuth 2.0. Vizitați:'
+    google_meet_link_generation: Generare Linkuri Google Meet
+    google_meet_link_generation_info: Creați automat un link de videoconferință Google Meet pentru programările sincronizate. Linkul întâlnirii va fi stocat în câmpul de link al programării.
+    display_add_to_google_calendar: Afișare Buton "Adaugă în Google Calendar"
+    display_add_to_google_calendar_info: Afișați butonul "Adaugă în Google Calendar" pe pagina de confirmare a rezervării, permițând clienților să adauge cu ușurință programarea în Google Calendar-ul personal.
+    select_all: Selectează tot
+    select_none: Deselectează tot
+    appointment_update: Actualizare programare
+    notify_users_on_update_question: Doriți să trimiteți o notificare despre această modificare?
+    'yes': Da
+    'no': Nu
+    latest_blog_posts: Ultimele postări pe blog
+    loading: Se încarcă
+    blog_posts_load_error: Nu s-au putut încărca postările de pe blog. Vă rugăm să vizitați site-ul oficial pentru actualizări.
+    provider_has_conflicting_appointment: Furnizorul selectat are deja o altă programare la acea oră. Vă rugăm să selectați o altă oră sau un alt furnizor.
+    would_you_like_to_proceed: Doriți să continuați oricum?
+    proceed: Continuare
+    no_available_service_providers: Nu există servicii disponibile
+    no_available_service_providers_message: În prezent nu există servicii sau furnizori disponibili pentru rezervare. Vă rugăm să verificați mai târziu sau să ne contactați pentru asistență.
+    reset_password: Resetare parolă
+    new_password: Parolă nouă
+    enter_new_password: Introduceți noua parolă mai jos.
+    password_reset_request: Cerere de resetare a parolei
+    password_reset_email_message: Ați solicitat resetarea parolei. Faceți clic pe butonul de mai jos pentru a seta o nouă parolă pentru contul dvs.
+    password_reset_link_expires: Acest link va expira în 1 oră.
+    password_reset_ignore_message: Dacă nu ați solicitat resetarea parolei, vă rugăm să ignorați acest email.
+    invalid_reset_token: Linkul de resetare a parolei este invalid.
+    invalid_or_expired_token: Linkul de resetare a parolei este invalid sau a expirat. Vă rugăm să solicitați unul nou.
+    password_reset_success: Parola dumneavoastră a fost resetată cu succes. Veți fi redirecționat către pagina de autentificare.
+    password_reset_failed: Resetarea parolei a eșuat. Vă rugăm să încercați din nou.
+    no_password_provided: Vă rugăm să introduceți o parolă.
+    type_username_and_email_for_reset_link: Introduceți numele de utilizator și adresa de email pentru a primi un link de resetare a parolei.
+    send_reset_link: Trimite link de resetare
+    reset_link_sent_with_email: Dacă există un cont cu datele furnizate, un link de resetare a parolei a fost trimis la adresa dvs. de email.
+    working_plan_validation_failed: Configurație invalidă a planului de lucru găsită.
+    start_date: Data de Început
+    end_date: Data de Sfârșit
+    remember_me: Reține informațiile mele
+    remember_me_hint: Salvați detaliile pentru o rezervare mai rapidă data viitoare.
+    legal_notice: Notificare Legală
+    legal_notice_url: URL Notificare Legală
+    legal_notice_url_hint: Introduceți URL-ul paginii dvs. de notificare legală.
+    imprint: Imprint
+    imprint_url: URL Imprint
+    imprint_url_hint: Introduceți URL-ul paginii dvs. de imprint.
+    data_retention: Retenția Datelor
+    data_retention_days: Zile de Retenție a Datelor
+    data_retention_days_hint: Setați numărul de zile după care datele clienților vor fi șterse automat. Setați la 0 pentru a dezactiva ștergerea automată.
+    manage_privacy: Gestionare Confidențialitate
+    manage_privacy_hint: Faceți clic pe linkul de mai jos pentru a vizualiza, actualiza sau șterge informațiile dvs. personale.
+    personal_information_updated: Informațiile dvs. personale au fost actualizate cu succes.
+    verify: Verificare
+    verifying: Se verifică
+    verified: Verificat
+    verification_complete: Verificare completă
+    verification_failed: Verificarea a eșuat. Faceți clic pentru a reîncerca.
+    click_to_verify: Faceți clic pentru a verifica că sunteți om
+    altcha_verification_failed: Verificarea ALTCHA a eșuat. Vă rugăm să încercați din nou.
+    premium: Premium
+    about_app_premium: Oferim servicii complete pentru software auto-găzduit, inclusiv dezvoltare personalizată, găzduire gestionată, contracte de suport, rebrandare și îmbunătățiri continue — astfel încât să vă puteți concentra pe afacerea dvs. în timp ce noi ne ocupăm de restul.
+    go_premium: Treceți la Premium
+    notify_users_on_create_question: Doriți să notificați clientul despre această nouă programare?
+    notify_users_on_delete_question: Doriți să notificați clientul despre anularea programării?

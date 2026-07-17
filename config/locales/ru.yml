@@ -1,0 +1,575 @@
+---
+ru:
+  ea:
+    page_title: Заказ оформлен с
+    service_and_provider: Выберите услугу и поставщика
+    select_service: Выберите услугу
+    select_provider: Выберите поставщика
+    duration: Длительность
+    minutes: Минут
+    price: Цена
+    back: Предыдущий
+    appointment_date_and_time: Выбор даты и времени заказа
+    no_available_hours: Нет доступного времени назначения на выбранной дате. Пожвлуйста выберите другую дату.
+    appointment_hour_missing: Пожалуйста выберите час назначения и продолжите.
+    customer_information: Заполните информацию о себе
+    first_name: Имя
+    last_name: Фамилия
+    email: Эл. почта
+    phone_number: Номер телефона
+    phone: Телефон
+    address: Адрес
+    city: Город
+    zip_code: Индекс
+    notes: Заметки
+    language: Язык
+    no_language: Язык не выбран
+    fields_are_required: Поля помеченные (*) заполнить.
+    appointment_confirmation: Подтверждение записи
+    confirm: Подтверждено
+    update: Обновить
+    cancel_appointment_hint: Нажмите кнопку "Отмена" для удаления назначения из расписания компании.
+    cancel: Отменить
+    appointment_registered: Ваше назначение благополучно зарегистрировано.
+    cancel_appointment_title: Отмена назначения
+    appointment_cancelled: Ваше назначение успешно отменено.
+    appointment_cancelled_title: Назначение отменено
+    reason: Причина
+    appointment_removed_from_schedule: Следующее назначение было удалено из расписания компании.
+    appointment_details_was_sent_to_you: Письмо с деталями заказа уже вам отправлено.
+    add_to_google_calendar: Добавить в Google-календарь
+    appointment_booked: Ваше назначение успешно внесено в заказ.
+    thank_you_for_appointment: Благодарим за оформление встречи с нами. Ниже вы сможете увидеть сведения о встречах. Можете делать изменения, нажав на ссылку назначения.
+    appointment_details_title: Детали назначения
+    customer_details_title: Детали заказчика
+    service: Услуга
+    provider: Исполнитель
+    customer: Заказчик
+    start: Начало
+    end: Окончание
+    name: Имя
+    appointment_link_title: Ссылка на назначение
+    success: Готово.
+    appointment_added_to_your_plan: Новое назначение было добавлено в ваш план.
+    appointment_link_description: Вы можете внести изменения кликнув на ссылку назначения ниже.
+    appointment_locked: Модификация невозможна.
+    appointment_locked_message: Назначенную встречу нельзя изменить менее чем за {$limit} часов.
+    appointment_not_found: Назначение не найдено.
+    appointment_does_not_exist_in_db: Назначение которое вы запросили в нашей базе данных вообще-то отсутствует.
+    display_calendar: Отобразить календарь
+    calendar: Календарь
+    users: Пользователи
+    settings: Настройки
+    log_out: Выйти
+    synchronize: Синхронизация
+    enable_sync: Включить синхронизацию
+    disable_sync: Отключить синхронизацию
+    disable_sync_prompt: Вы уверены, что хотите отключить синхронизацию календаря?
+    reload: Перегрузить
+    appointment: Назначение
+    unavailability: Недоступно
+    week: Неделя
+    month: Месяц
+    today: Сегодня
+    not_working: Не работает
+    break: Перерыв
+    add: Добавить
+    edit: Редактировать
+    hello: Здравствуйте
+    all_day: Весь день
+    manage_appointment_record_hint: Управление назначениями которые доступны поставщикам и заказчикам.
+    select_filter_item_hint: Выберите поставщика или услугу и просматривайте соответствующее назначения в календаре.
+    enable_appointment_sync_hint: Включить синхронизацию назначений с Google-календарями поставщиков.
+    manage_customers_hint: Управление зарегистрированными заказчиками и просмотр их истории заказов.
+    manage_services_hint: Управление доступными категориями и услугами компании.
+    manage_users_hint: Управление пользователей компании (администраторами, исполнителями, секретарями).
+    settings_hint: Перейти к настройкам пользователя.
+    log_out_hint: Выйти из кабинета.
+    unavailability_periods_hint: На протяжении недоступного периода исполнитель не будет принимать новые назначения.
+    new_appointment_hint: Создать новое назначение и сохранить его в базе данных.
+    reload_appointments_hint: Перезагрузить календарь назначений.
+    trigger_sync_hint: Инициировать процесс синхронизации Google-календаря.
+    appointment_updated: Назначение успешно обновлено.
+    undo: Вернуть
+    appointment_details_changed: Детали назначения изменены.
+    appointment_changes_saved: Назначение успешно изменено и сохранено.
+    save: Сохранить
+    new: Новый
+    select: Выбрать
+    hide: Скрыть
+    type_to_filter_customers: Тип фильтрации заказчиков.
+    clear_fields_add_existing_customer_hint: Очистить поля и ввести нового заказчика.
+    pick_existing_customer_hint: Выберите существующего заказчика.
+    new_appointment_title: Новое назначение
+    edit_appointment_title: Редактировать назначение
+    delete_appointment_title: Удалить назначение
+    write_appointment_removal_reason: 'Пожалуйста не пожалейте минутки и напишите причину удаления назначения:'
+    appointment_saved: Назначение успешно сохранено.
+    new_unavailability_title: Новый недоступный период
+    edit_unavailability_title: Редактировать недоступный период
+    unavailability_saved: Недоступный период успешно сохранен.
+    start_date_before_end_error: Начальная дата больше чем конечная.
+    invalid_duration: Неверная продолжительность.
+    invalid_email: Недействительный e-mail адрес.
+    customers: Заказчики
+    details: Детали
+    no_records_found: Нет записей...
+    services: Услуги
+    duration_minutes: Длительность (минут)
+    currency: Валюта
+    category: Категории
+    no_category: Нет категорий
+    description: Описание
+    categories: Категории
+    admins: Администраторы
+    providers: Поставщики
+    secretaries: Секретари
+    mobile_number: Мобильный
+    mobile: Мобильный
+    state: Область
+    username: Логин
+    password: Пароль
+    retype_password: Повтор пароля
+    receive_notifications: Принимать уведомления
+    passwords_mismatch: Несоответвие паролей.
+    admin_saved: Администратор успешно сохранён.
+    provider_saved: Исполнитель успешно сохранён.
+    secretary_saved: Секретарь успешно сохранён.
+    admin_deleted: Администратор успешно удалён.
+    provider_deleted: Исполнитель успешно удалён.
+    secretary_deleted: Секретарь успешно удален.
+    service_saved: Услуга успешно сохранена.
+    service_category_saved: Категория услуги успешно сохранена.
+    service_deleted: Услуга успешно удалена.
+    service_category_deleted: Категория услуги успешно удалена.
+    customer_saved: Заказчик успешно сохранён.
+    customer_deleted: Заказчик успешно удалён.
+    current_view: Текущий вид
+    working_plan: Рабочий план
+    reset_plan: Очистить план
+    monday: Понедельник
+    tuesday: Вторник
+    wednesday: Среда
+    thursday: Четверг
+    friday: Пятница
+    saturday: Суббота
+    sunday: Воскресенье
+    breaks: Перерывы
+    add_breaks_during_each_day: Добавить рабочий перерыв для каждого рабочего дня.Во время перерывов исполнитель не сможет принимать какие-либо назначения.
+    day: День
+    days: Дней
+    actions: События
+    reset_working_plan_hint: Очистить рабочий план к значениям по умолчанию.
+    company_name: Компания
+    company_name_hint: Имя компании будет отображатся на всех страницах приложения (написать обязательно).
+    company_email: Официальный Email
+    company_email_hint: Здесь должен быть e-mail компании. Он будет использован для отправки ответов адресам (написать обязательно).
+    company_link: Сайт
+    company_link_hint: Сайт компании должен указывать на официальную страницу в интернете (написать обязательно).
+    go_to_booking_page: Перейти на страницу заказов
+    settings_saved: Настройки сохранены.
+    general: Основные
+    booking: Бронирование
+    visible: Видимый
+    hidden: Скрытый
+    business_logic: Бизнес-логика
+    current_user: Текущий пользователь
+    about_app: О приложении Easy!Appointments
+    edit_working_plan_hint: Пометьте дни и часы в которые ваша компания будет принимать заявки. Вы сможете настроить назначения в нерабочее время, но клиенты не смогут забронировать назначений для себя в нерабочие периоды. Этот рабочий план должен быть по умолчанию для каждого исполнителя но вы сможете изменить каждый план исполнителя отдельно редактируя его план. После этого можно добавлять время для перерывов в вашем рабочем времени.
+    edit_breaks_hint: Укажите рабочие перерывы на каждый день. Эти перерывы не применяются для всех новых исполнителей.
+    book_advance_timeout: Время ожидания перед заказом
+    book_advance_timeout_hint: Определить перерыв (в минутах) до того как заказчик сделает заказ или переназначит назначение в компании.
+    timeout_minutes: Время вышло (минут)
+    about_app_info: Easy!Appointments хорошо настраиваемое веб приложение которое позволяет вашим заказчикам оформлять время предоставления услуг через интернет. Кроме того, имеется возможность синхронизации с вашими Google-календарями так что вы сможете использовать план заказанных мероприятий.
+    current_version: Текущая версия
+    support: Поддержка
+    about_app_support: Если произошли проблемы с использованием Easy!Appointments вы можете использовать официальную Google группу для поиска ответа. Вы можете также создать новый запрос на странице проекта в Google Code вопрос на странице Google Code для того, чтобы помочь проекту развиватся.
+    official_website: Оффициальный сайт
+    google_plus_community: Google+ сообщество
+    support_group: Группа техподдержка
+    project_issues: Вопросы по проекту
+    license: Лицензия
+    about_app_license: 'Easy!Appointments обладает лицензией GPLv3. При использовании кода приложения в любом случае вы соглашаетесь с условиями, описанными в следующей URL:'
+    logout_success: Вы успешно вышли из кабинета! Выберите если хотите интересующий вас раздел.
+    book_appointment_title: Предзаказы
+    backend_section: Интерфейс управления
+    you_need_to_login: Добро пожаловать! Вам необходимо войти для управлениям вашими заказами.
+    enter_username_here: Введите ваш логин здесь ...
+    enter_password_here: Введите пароль здесь ...
+    login: Войти
+    forgot_your_password: Напоминание пароля
+    login_failed: Логин недействителен. Пожалуйста введите правильные учетные данные и попробуйте еще раз.
+    type_username_and_email_for_new_password: Введите ваш логин или E-mail адрес и мы отправим на вашу почту ваш пароль.
+    enter_email_here: Введите здесь ваш e-mail ...
+    regenerate_password: Генерировать пароль заново
+    go_to_login: Вернутся на страницу входа
+    new_password_sent_with_email: Ваш новый пароль был отправлен на указанный вами e-mail.
+    new_account_password: Новый пароль для пользователя
+    new_password_is: 'Ваш новый пароль: $password. Пожалуйста сохраните его чтобы  если будет необходимо его вспомнить. Вы можете сменить его в кабинете на странице настроек.'
+    delete_record_prompt: Вы уверены что хотите удалить эту запись? Это действие не возможно будет отменить.
+    delete_admin: Удалить администратора
+    delete_customer: Удалить заказчика
+    delete_service: Удалить услугу
+    delete_service_category: Удалить категорию услуги
+    delete_provider: Удалить исполнителя
+    delete_secretary: Удалисть секретаря
+    delete_appointment: Удалить назначение
+    delete_unavailability: Удалить недоступный период
+    delete: Удалить
+    unexpected_issues: Возникшие вопросы
+    unexpected_issues_message: Операция не могла быть завершена.
+    close: Закрыть
+    page_not_found: Страница не найдена
+    page_not_found_message: К сожалению страница, которую вы запросили, не существует. Пожалуйста проверьте запрос в строке браузера или перейдите по ссылке используя меню и кнопки сайта.
+    error: Ошибка
+    no_privileges: Отсутствуют необходимые привилегии
+    no_privileges_message: Вы не имеете необходимых разрешений на просмотр этой страницы. Пожалуйста используйте другие разделы.
+    backend_calendar: бэкэнд Календарь
+    start_date_time: Начало дата/время
+    end_date_time: Окончание дата/время
+    licensed_under: Лицензировано под
+    unexpected_issues_occurred: Произошла неожиданная ошибка.
+    service_communication_error: Произошла ошибка связи с сервером, пожалуйста повторите снова.
+    no_privileges_edit_appointments: Вы не имеете необходимых привилегий для редактирования назначения.
+    unavailability_updated: Недоступный временной период успешно обновлён
+    appointments: Назначения
+    unexpected_warnings: Неожиданные предупреждения
+    unexpected_warnings_message: Действие завершено но появлялись некоторые ошибки.
+    filter: Фильтр
+    clear: Очистить
+    uncategorized: Несортировано
+    username_already_exists: Такой логин уже зарегистрирован.
+    password_length_notice: Пароль должен состоять не менее чем из $number символов.
+    general_settings: Общие настройки
+    personal_information: Личная информация
+    system_login: Системный логин
+    user_settings_are_invalid: Настройки пользователя недействительны! Пожалуйста проверьте настройки и повторите заново.
+    add_break: Добавить перерыв
+    january: Январь
+    february: Февраль
+    march: Март
+    april: Апрель
+    may: Май
+    june: Июнь
+    july: Июль
+    august: Август
+    september: Сентябрь
+    october: Октябрь
+    november: Ноябрь
+    december: Декабрь
+    previous: Предыдущий
+    next: Следующий
+    now: Сейчас
+    select_time: Выберите время
+    time: Время
+    hour: Часов
+    minute: Минут
+    calendar_sync_completed: Google синхронизация выполнена успешно.
+    calendar_sync_failed: 'Google синхронизация не удалась: сервер не доступен.'
+    select_sync_calendar: Выберите Google-календарь
+    select_sync_calendar_prompt: Выберите календарь который вы хотите синхронизировать с вашими назначениями. Если вы не выберите будет использован ваш Google-календарь по умолчанию.
+    sync_calendar_selected: Google-календарь был успешно выбран.
+    oops_something_went_wrong: Сорри! Возникла неопределённая ошибка.
+    ea_update_success: Готово! Успешно обновлено.
+    require_captcha: Требуется CAPTCHA
+    require_captcha_hint: Если эта функция включена - клиенты должны будут ввести случайно сгенерированную строку CAPTCHA перед бронированием/обновлением записи на прием.
+    captcha_is_wrong: Проверка CAPTCHA не прошла, пожалуйста, попробуйте еще раз.
+    enter_captcha_here: Введите CAPTCHA здесь...
+    any_provider: Любой поставщик
+    requested_hour_is_unavailable: Запрашиваемая встреча, к сожалению, недоступна. Пожалуйста, выберите другой час для приема.
+    customer_notifications: Уведомления клиентов
+    customer_notifications_hint: Определяет, будет ли клиент получать уведомления по электронной почте при изменении расписания одной из его встреч.
+    date_format: Формат даты
+    date_format_hint: Изменение формата отображения даты (D - день, M - месяц, Y - год).
+    time_format: Формат времени
+    time_format_hint: Изменение формата отображения времени (H - часы, M - минуты).
+    first_weekday: Первый день недели
+    first_weekday_hint: Установите первый день календарной недели.
+    google_analytics_code_hint: Добавьте свой идентификатор ID Google Аналитики для включения в страницу бронирования.
+    availabilities_type: Тип доступности
+    flexible: Гибкий
+    fixed: Фиксированный
+    attendants_number: Количество обслуживающего персонала
+    reset_working_plan: Вернуть рабочий план к значениям по умолчанию.
+    legal_contents: Правовое наполнение
+    cookie_notice: Уведомление о cookie-файлах
+    display_cookie_notice: Отобразить уведомление о cookie-файлах
+    cookie_notice_content: Содержимое уведомления о cookie-файлах
+    terms_and_conditions: Условия и положения
+    display_terms_and_conditions: Отобразить условия и положения
+    terms_and_conditions_content: Содержимое условия и положения
+    privacy_policy: Политика приватности
+    display_privacy_policy: Отобразить политику приватности
+    privacy_policy_content: Содержимое политики приватности
+    website_using_cookies_to_ensure_best_experience: Этот сайт использует файлы cookie, чтобы обеспечить вам наилучшие впечатления от использования нашего сайта.
+    read_and_agree_to_terms_and_conditions: Я прочитал и согласен с {$link}Условиями и положениями{/$link}.
+    read_and_agree_to_privacy_policy: Я прочитал и согласен с {$link}Политикой приватности{/$link}.
+    delete_personal_information_hint: Удалить из системы все свои встречи и личную информацию.
+    delete_personal_information: Удалить персональную информацию
+    delete_personal_information_prompt: Вы уверены, что хотите удалить свою личную информацию? Это действие нельзя отменить.
+    location: Местонахождение
+    working_plan_exception: Исключение из рабочего плана
+    working_plan_exceptions: Исключения из рабочего плана
+    working_plan_exceptions_hint: Добавить день исключения из рабочего плана, вне рабочего плана.
+    new_working_plan_exception_title: Нновое исключение рабочего плана
+    working_plan_exception_saved: Исключение из рабочего плана успешно сохранено.
+    working_plan_exception_deleted: Исключение из рабочего плана успешно удалено.
+    add_working_plan_exceptions_during_each_day: Добавить исключения из рабочего плана, вне рабочего плана.
+    add_working_plan_exception: Добавить исключение рабочего плана
+    require_phone_number: Требуется номер телефона
+    require_phone_number_hint: Когда эта функция включена, клиентам и пользователям необходимо будет ввести номер телефона клиента при бронировании встречи
+    check_spam_folder: Пожалуйста, проверьте папку спама, если письмо не пришло в течение нескольких минут.
+    api_token_hint: Установите секретный токен, чтобы включить аутентификацию на основе токена в Easy!Appointments API.
+    timezone: Часовой пояс
+    overwrite_existing_working_plans: Это перезапишет существующие рабочие планы поставщика - Вы уверены что хотите продолжить?
+    working_plans_got_updated: Все рабочие планы были обновлены.
+    apply_to_all_providers: Применяется ко всем поставщикам услуг
+    display_any_provider: Отображать параметры любого поставщика
+    display_any_provider_hint: На странице бронирования появится дополнительная опция, позволяющая клиентам бронировать без указания поставщика услуг.
+    load_more: Загрузить еще
+    list: Список
+    default: По-умолчанию
+    table: Таблица
+    date: Данные
+    about: О программе
+    booking_settings: Параметры бронирования
+    display: Показать
+    require: Запросить
+    color: Цвет
+    matomo_analytics_url_hint: Добавьте URL в собственную установку Matomo, чтобы включить отслеживание Matomo на страницах бронирования.
+    invalid_phone: Неверный номер телефона.
+    legal: Юридический
+    business: Бизнес
+    account: Учетная запись
+    disable_booking: Отключить бронирование
+    disable_booking_hint: Пока эта настройка активна, страница бронирования будет отключена, и клиенты не смогут регистрировать новые встречи.
+    display_message: Показать сообщение
+    booking_is_disabled: Бронирование отключено!
+    appearance: Внешний вид
+    company_logo: Логотип компании
+    company_logo_hint: Логотип компании будет отображаться во многих местах приложения, включая страницу бронирования и электронные письма с уведомлениями (файл изображения, не более 2 МБ).
+    company_color: Цвет компании
+    company_color_hint: Фирменный цвет будет использоваться во всем приложении, чтобы оно использовало ваш брендинг.
+    localization: Локализация
+    integrations: Интеграции
+    company: Компания
+    remove: Удаление
+    login_button: Кнопка входа в систему
+    display_login_button_hint: Определяет, отображается ли кнопка входа в систему на странице бронирования.
+    private: Частный
+    private_hint: Частные записи не будут отображаться или обрабатываться на публичных страницах, таких как страница бронирования.
+    reset: Сброс
+    all: Все
+    booking_link: Ссылка для бронирования
+    add_new_event: Добавить новое событие
+    what_kind_of_event: Какое событие вы хотели бы добавить?
+    theme: Тема
+    limit_customer_access: Ограничить доступ клиентов
+    limit_customer_access_hint: Если эта функция включена, поставщики и секретари смогут получить доступ только к тем клиентам, с которыми у них назначена встреча.
+    url: URL
+    secret_token: Секретный токен
+    verify_ssl: Проверка SSL
+    appointment_save: Сохранить назначение
+    appointment_delete: Удалить назначение
+    unavailability_save: Сохранить недоступность
+    unavailability_delete: Удалить недоступность
+    customer_save: Сохранить клиента
+    customer_delete: Удалить клиента
+    service_save: Сохранить услугу
+    service_delete: Удалить услугу
+    service_category_save: Сохранить категорию
+    service_category_delete: Удалить категорию
+    provider_save: Сохранить поставщика
+    provider_delete: Удалить поставщика
+    secretary_save: Сохранить секретаря
+    secretary_delete: Удалить секретаря
+    admin_save: Сохранить админа
+    admin_delete: Удалить админа
+    options: Параметры
+    webhooks: Вебхуки
+    webhooks_info: Webhooks позволяют отправлять HTTP-уведомления внешним веб-приложениям в ответ на различные события приложения, такие как создание записи на прием или удаление клиента.
+    integrations_info: Интеграции позволяют вам устанавливать соединения с внешними приложениями и API.
+    configure: Настроить
+    google_analytics: Google Аналитика
+    google_analytics_info: Google Аналитика позволяет автоматически добавлять код отслеживания и HTML-разметку на публичную страницу и отслеживать все публичные сеансы бронирования.
+    matomo_analytics: Matomo Аналитика
+    matomo_analytics_info: Matomo Аналитика позволяет автоматически добавлять код отслеживания и HTML-разметку на публичную страницу и отслеживать все публичные сеансы бронирования.
+    api: API
+    api_info: API позволяют вам взаимодействовать со всеми данными Easy!Appointments через протокол HTTP и доступные конечные точки API и создавать собственные интеграции.
+    google_analytics_code: Код Google Аналитики
+    matomo_analytics_url: URL Matomo Аналитики
+    future_booking_limit: Лимит будущего бронирования
+    limit_days: Лимит (Дней)
+    future_booking_limit_hint: Установите будущее ограничение в днях, в течение которых клиенты могут назначать встречи через публичную страницу бронирования.
+    api_token: Токен API
+    allow_rescheduling_cancellation_before: Разрешить изменение расписания/отмену до
+    at_least_one_field: На странице бронирования должно отображаться хотя бы одно поле.
+    status: Состояние
+    appointment_status_options: Опции статуса назначения
+    appointment_status_options_info: Определите список доступных вариантов статуса встречи, которые могут быть использованы на странице календаря (первый из них автоматически станет значением по умолчанию).
+    sunday_short: Вос
+    monday_short: Пон
+    tuesday_short: Втр
+    wednesday_short: Сре
+    thursday_short: Чет
+    friday_short: Пят
+    saturday_short: Суб
+    january_short: Янв
+    february_short: Фев
+    march_short: Мар
+    april_short: Апр
+    may_short: Май
+    june_short: Июн
+    july_short: Июл
+    august_short: Авг
+    september_short: Сен
+    october_short: Окт
+    november_short: Ноя
+    december_short: Дек
+    am: дп
+    pm: пп
+    to: к
+    click_to_toggle: Нажмите для переключения
+    week_short: Нед
+    scroll_to_increment: Прокрутка для увеличения
+    year: Год
+    make_non_working_day: Этот сотрудник не будет доступен для работы в выбранный день.
+    no_breaks: Без Перерывов
+    service_categories: Категории Услуг
+    service_category: Категория Услуги
+    blocked_period_saved: Заблокированный период успешно сохранен.
+    blocked_period_deleted: Заблокированный период успешно удален.
+    delete_blocked_period: Удалить Заблокированный Период
+    blocked_period: Заблокированный Период
+    blocked_periods: Заблокированные Периоды
+    blocked_period_save: Сохранить Заблокированный Период
+    blocked_period_delete: Удалить Заблокированный Период
+    blocked_periods_hint: Определите периоды времени, когда общие бронирования будут отключены для всех сотрудников (например, закрытые даты, праздники и т. д.).
+    custom_field: Пользовательское Поле
+    custom_fields: Пользовательские Поля
+    label: Метка
+    webhook_saved: Вебхук успешно сохранен.
+    webhook_deleted: Вебхук успешно удален.
+    delete_webhook: Удалить Вебхук
+    contact_info: Контактная Информация
+    hide_from_public: Скрыть от Публики
+    matomo_analytics_site_id: ID Сайта Matomo Analytics
+    matomo_analytics_site_id_hint: Установите ID сайта, который будет отслеживаться Matomo (по умолчанию ID сайта "1").
+    default_timezone: Часовой Пояс по Умолчанию
+    default_timezone_hint: Установите значение часового пояса по умолчанию, которое будет использоваться для новых записей.
+    default_language: Язык по Умолчанию
+    default_language_hint: Установите значение языка по умолчанию, которое будет использоваться для новых записей.
+    sync_method_prompt: Какой метод синхронизации вы хотели бы использовать?
+    caldav_server: Сервер CalDAV
+    caldav_connection_info_prompt: Пожалуйста, введите информацию о подключении к целевому календарю CalDAV.
+    connect: Подключить
+    ldap: LDAP
+    ldap_info: Эта интеграция позволяет вам подключиться к существующему серверу LDAP и автоматически импортировать пользователей в Easy!Appointments и предоставить им возможность входа через SSO с их паролем из каталога (имя пользователя должно совпадать).
+    host: Хост
+    port: Порт
+    user_dn: DN Пользователя
+    base_dn: Основной DN
+    keyword: Ключевое слово
+    ldap_search_hint: Укажите ключевое слово для поиска в каталоге LDAP пользователей, соответствующих критериям фильтра.
+    ldap_extension_not_loaded: Расширение LDAP для PHP не загружено, но оно требуется для работы этой интеграции.
+    field_mapping: Сопоставление Полей
+    content: Содержание
+    active: Активный
+    user_imported: Запись пользователя была успешно импортирована.
+    import: Импорт
+    ldap_dn: LDAP DN
+    role: Роль
+    at_least_one_field_required: Хотя бы одно поле должно быть установлено как обязательное на странице бронирования.
+    customer_is_already_booked: Этот клиент уже имеет запись на время, запрашиваемое для бронирования.
+    fields: Поля
+    invalid_credentials_provided: Предоставлены неверные учетные данные, пожалуйста, попробуйте снова.
+    calendar_url: URL Календаря
+    please_select: Пожалуйста, выберите
+    secret_header: Секретный заголовок
+    search: Поиск
+    slot_interval: Интервал слотов (минуты)
+    jitsi: Jitsi
+    jitsi_info: Включить автоматическое создание ссылок на конференции Jitsi для записей. При включении для каждой записи будет создана уникальная ссылка на видеозвонок Jitsi.
+    altcha: ALTCHA
+    altcha_info: ALTCHA — это ориентированная на конфиденциальность альтернатива CAPTCHA с открытым исходным кодом, которая использует proof-of-work для проверки пользователей без отслеживания.
+    altcha_enabled_hint: При включении ALTCHA будет использоваться вместо традиционной графической CAPTCHA для проверки форм.
+    altcha_hmac_key: Ключ HMAC
+    altcha_hmac_key_hint: Секретный ключ, используемый для подписи и проверки вызовов ALTCHA. Нажмите «Сгенерировать» для создания нового безопасного ключа.
+    altcha_max_number: Максимальное число
+    altcha_max_number_hint: 'Максимальное число для задачи proof-of-work. Более высокие значения увеличивают сложность (по умолчанию: 100000).'
+    altcha_expires: Срок действия (секунды)
+    altcha_expires_hint: 'Время действия вызова в секундах (по умолчанию: 300).'
+    altcha_key_generated: Новый ключ HMAC успешно сгенерирован.
+    altcha_enabled: Включить ALTCHA
+    altcha_captcha_not_active_warning: Настройка CAPTCHA в данный момент не активна. ALTCHA не будет использоваться, пока CAPTCHA не будет включена в
+    generate: Сгенерировать
+    meeting_link: Ссылка на встречу
+    google_calendar: Google Календарь
+    google_calendar_info: Включите синхронизацию с Google Calendar для синхронизации записей с аккаунтами Google Calendar специалистов.
+    google_client_id: Client ID
+    google_client_id_info: Client ID из вашего проекта Google Cloud Console.
+    google_client_secret: Client Secret
+    google_client_secret_info: Client Secret из вашего проекта Google Cloud Console.
+    google_calendar_setup_info: 'Для включения синхронизации с Google Calendar необходимо создать проект в Google Cloud Console, включить Google Calendar API и создать учётные данные OAuth 2.0. Перейдите по ссылке:'
+    google_meet_link_generation: Генерация ссылок Google Meet
+    google_meet_link_generation_info: Автоматически создавать ссылку на видеоконференцию Google Meet для синхронизированных записей. Ссылка на встречу будет сохранена в поле ссылки на встречу записи.
+    display_add_to_google_calendar: Показать кнопку "Добавить в Google Calendar"
+    display_add_to_google_calendar_info: Показывать кнопку "Добавить в Google Calendar" на странице подтверждения бронирования, позволяя клиентам легко добавить запись в свой личный Google Calendar.
+    select_all: Выбрать все
+    select_none: Снять выделение
+    appointment_update: Обновление записи
+    notify_users_on_update_question: Хотите отправить уведомление об этом изменении?
+    'yes': Да
+    'no': Нет
+    latest_blog_posts: Последние записи в блоге
+    loading: Загрузка
+    blog_posts_load_error: Не удалось загрузить записи блога. Посетите официальный сайт для получения обновлений.
+    provider_has_conflicting_appointment: У выбранного поставщика уже есть другая запись на это время. Пожалуйста, выберите другое время или поставщика.
+    would_you_like_to_proceed: Вы хотите продолжить?
+    proceed: Продолжить
+    no_available_service_providers: Нет доступных услуг
+    no_available_service_providers_message: В настоящее время нет доступных услуг или поставщиков для бронирования. Пожалуйста, проверьте позже или свяжитесь с нами для получения помощи.
+    reset_password: Сбросить пароль
+    new_password: Новый пароль
+    enter_new_password: Введите новый пароль ниже.
+    password_reset_request: Запрос на сброс пароля
+    password_reset_email_message: Вы запросили сброс пароля. Нажмите кнопку ниже, чтобы установить новый пароль для вашей учетной записи.
+    password_reset_link_expires: Эта ссылка истечет через 1 час.
+    password_reset_ignore_message: Если вы не запрашивали сброс пароля, пожалуйста, проигнорируйте это письмо.
+    invalid_reset_token: Ссылка для сброса пароля недействительна.
+    invalid_or_expired_token: Ссылка для сброса пароля недействительна или устарела. Пожалуйста, запросите новую.
+    password_reset_success: Ваш пароль успешно сброшен. Вы будете перенаправлены на страницу входа.
+    password_reset_failed: Сброс пароля не удался. Пожалуйста, попробуйте снова.
+    no_password_provided: Пожалуйста, введите пароль.
+    type_username_and_email_for_reset_link: Введите имя пользователя и адрес электронной почты, чтобы получить ссылку для сброса пароля.
+    send_reset_link: Отправить ссылку для сброса
+    reset_link_sent_with_email: Если аккаунт с указанными данными существует, ссылка для сброса пароля была отправлена на вашу электронную почту.
+    working_plan_validation_failed: Обнаружена недопустимая конфигурация рабочего плана.
+    start_date: Дата начала
+    end_date: Дата окончания
+    remember_me: Запомнить мои данные
+    remember_me_hint: Сохранить ваши данные для более быстрого бронирования в следующий раз.
+    legal_notice: Правовая информация
+    legal_notice_url: URL правовой информации
+    legal_notice_url_hint: Введите URL страницы правовой информации.
+    imprint: Импрессум
+    imprint_url: URL импрессума
+    imprint_url_hint: Введите URL страницы импрессума.
+    data_retention: Хранение данных
+    data_retention_days: Срок хранения данных (дни)
+    data_retention_days_hint: Укажите количество дней, после которых данные клиентов будут автоматически удалены. Установите 0 для отключения автоматического удаления.
+    manage_privacy: Управление конфиденциальностью
+    manage_privacy_hint: Нажмите на ссылку ниже, чтобы просмотреть, обновить или удалить вашу личную информацию.
+    personal_information_updated: Ваша личная информация была успешно обновлена.
+    verify: Подтвердить
+    verifying: Проверка
+    verified: Подтверждено
+    verification_complete: Проверка завершена
+    verification_failed: Проверка не удалась. Нажмите, чтобы повторить.
+    click_to_verify: Нажмите для подтверждения, что вы человек
+    altcha_verification_failed: Проверка ALTCHA не удалась. Пожалуйста, попробуйте снова.
+    premium: Premium
+    about_app_premium: Мы предлагаем комплексные услуги для самостоятельно размещаемого программного обеспечения, включая индивидуальную разработку, управляемый хостинг, контракты на поддержку, ребрендинг и постоянные улучшения — чтобы вы могли сосредоточиться на своём бизнесе, пока мы позаботимся обо всём остальном.
+    go_premium: Перейти на Premium
+    notify_users_on_create_question: Хотите уведомить клиента о новой записи?
+    notify_users_on_delete_question: Хотите уведомить клиента об отмене записи?

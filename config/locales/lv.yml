@@ -1,0 +1,575 @@
+---
+lv:
+  ea:
+    page_title: Aizsirašyti satikšanu ar
+    service_and_provider: Pakalpoja ir piegādātājs
+    select_service: Pasirinkti pakalpojumu
+    select_provider: Pasirinkti tiekėją
+    duration: Ilgums
+    minutes: Minutės
+    price: Kaina
+    back: Atgal
+    appointment_date_and_time: Tikšanās datums un laiks
+    no_available_hours: Pasirinktai datai nav brīvas tikšanās stundas. Prašām izvēlēties citu datumu.
+    appointment_hour_missing: Prašām izvēlēties tikšanās stundu pirms tęsiant.
+    customer_information: Kliento informācija
+    first_name: Vardas
+    last_name: Pavardė
+    email: E-pasts
+    phone_number: Telefona numurs
+    phone: Tālrunis
+    address: Adresas
+    city: Miestas
+    zip_code: Pašto kods
+    notes: Pastabos
+    language: Kalba
+    no_language: Nav valodas
+    fields_are_required: Laukeliai ar * ir obligāti.
+    appointment_confirmation: Susitikimo apstiprināšana
+    confirm: Patvirtinti
+    update: Atnaujināt
+    cancel_appointment_hint: Paspauskite "Atšaukti", lai pašalintumėte tikšanos no uzņēmuma tvarkaraščio.
+    cancel: Atšaukti
+    appointment_registered: Jūsu apmeklējums bija veiksmīgi reģistrēts!
+    cancel_appointment_title: Atšaukti tikšanos
+    appointment_cancelled: Jūsu tikšanās bija veiksmīgi atšauktas.
+    appointment_cancelled_title: Susitikimas atšauktas
+    reason: Priežastis
+    appointment_removed_from_schedule: Toliau pateiktas tikšanās bija pašalintas no uzņēmuma tvarkaraščio.
+    appointment_details_was_sent_to_you: El. laiškas su susitikimo informācija tika nosūtīta jums.
+    add_to_google_calendar: Pievienoties pie "Google" kalendāra
+    appointment_booked: Jūsu tikšanās bija veiksmīgi pasūtīta
+    thank_you_for_appointment: Dėkojame, ka nolīgėte tikšanos ar mums. Žemiau varat redzēt tikšanās detaļas. Atlikite pakeitimus paspaudę susitikimo ieteikumu.
+    appointment_details_title: Tikšanās detaļas
+    customer_details_title: Kliento detaļas
+    service: Paslauga
+    provider: Tiekējs
+    customer: Klients
+    start: Pradžia
+    end: Pabaiga
+    name: Vardas
+    appointment_link_title: Sazinieties ar ieteikumiem
+    success: Sėkme
+    appointment_added_to_your_plan: Naujas tikšanās tika pievienots pie jūsu plāna.
+    appointment_link_description: Pakeitimus varat veikt paspaudę zemāk esošu norādījumu.
+    appointment_locked: Pakeitimai neįmanomi!
+    appointment_locked_message: Susitikimo nevar mainīt likus mazāk nei {$limit} stundām.
+    appointment_not_found: Susitikimas nerastas
+    appointment_does_not_exist_in_db: Susitikimas, kura lūdzėte, sistēmas datu bazē nebeegzistē.
+    display_calendar: Rodyti kalendorių
+    calendar: Kalendārs
+    users: Vartotāji
+    settings: Nustatījumi
+    log_out: Atsijungti
+    synchronize: Sinhronizēt
+    enable_sync: Ieslēgt sinhronizēšanu
+    disable_sync: Izjungti sinhronizēšanu
+    disable_sync_prompt: Vai tiešām vēlaties izslēgt kalendoriaus sinhronizēšanu?
+    reload: Perkrauti
+    appointment: Pieraksts
+    unavailability: Nepieejamība
+    week: Savaitė
+    month: Mēnesis
+    today: Šodien
+    not_working: Nedirbama
+    break: Pertrauka
+    add: Pridēt
+    edit: Redaguoti
+    hello: Sveiki
+    all_day: Visą dienu
+    manage_appointment_record_hint: Tvarkykite visus galimų tiekēju un pakalpojumu saņemšanas ierakstus.
+    select_filter_item_hint: Izvēlieties tiekėją jeb paslaugu un pārskatiniet tikimus kalendoriuje.
+    enable_appointment_sync_hint: Ieslēdziet tikšanās sinhronizēšanu ar ārējo kalendoru.
+    manage_customers_hint: Tvarkykite reģistrētos klientus un pārskatiet viņu pasūtījumu vēsturi.
+    manage_services_hint: Tvarkykite galimas sistēmas pakalpojumus un kategorijas.
+    manage_users_hint: Tvarkykite jaupakalinės sistēmas lietotāju (administratoru, lietotāju, sekretāru).
+    settings_hint: Nustatykite sistēmas un lietotojo nustatymus.
+    log_out_hint: Atsijunk no sistēmas.
+    unavailability_periods_hint: Nepasiekiamumo periodiem piegādātājiem nepieims jaunu tikšanās veidu.
+    new_appointment_hint: Sukurkite jaunu tikšanos un ierakstykite viņu uz datu bāzes.
+    reload_appointments_hint: Atnaujiniet kalendoriaus susitikimus.
+    trigger_sync_hint: Paleiskite kalendoriaus sinhronizēšanas procesu.
+    appointment_updated: Susitikimas veiksmīgi atjaunināts.
+    undo: Atsaukt
+    appointment_details_changed: Susitikimo detaļas tika mainītas
+    appointment_changes_saved: Susitikimo pakeitimai bija veiksmīgi saglabāti.
+    save: Saglabāt
+    new: Naujas
+    select: Pasirinkti
+    hide: Paslēpti
+    type_to_filter_customers: Iestatiet, lai filtrētu klientus.
+    clear_fields_add_existing_customer_hint: Izvalykite laukelius un ievedkite jaunu klientu.
+    pick_existing_customer_hint: Izvēlieties esošo klientu.
+    new_appointment_title: Naujas tikšanās
+    edit_appointment_title: Redaguoti tikšanos
+    delete_appointment_title: Ištrinti tikšanos
+    write_appointment_removal_reason: 'Skirkite minūti un parašykite iemeslu, kāpēc ištrinate susitikimą:'
+    appointment_saved: Susitikimas sėkmingai saglabāts.
+    new_unavailability_title: Naujas nepasiņemiamumas
+    edit_unavailability_title: Redaguoti nepasiėmiamumu
+    unavailability_saved: Nepasiėmiamumas sėkmingai saglabāts.
+    start_date_before_end_error: Pradžios dati ir vēlāk nekā beigās dati.
+    invalid_duration: Neteisinga ilgums.
+    invalid_email: Neteisingas el. pasta adrese.
+    customers: Klientai
+    details: Detalės
+    no_records_found: Iestājos nerasta...
+    services: Paslaugos
+    duration_minutes: Trukmė (minūtēm)
+    currency: Valūta
+    category: Kategorija
+    no_category: Nav kategorijas
+    description: Apraksts
+    categories: Kategorijas
+    admins: Administratori
+    providers: Pakalpojumu sniedzēji
+    secretaries: Sekretāri
+    mobile_number: Mobilais numurs
+    mobile: Mobilais
+    state: Valsts
+    username: Lietotājvārds
+    password: Parole
+    retype_password: Atkārtojiet paroli
+    receive_notifications: Saņemt paziņojumus
+    passwords_mismatch: Paroles neatbilst.
+    admin_saved: Administrators veiksmīgi saglabāts.
+    provider_saved: Nodrošinātājs veiksmīgi saglabāts.
+    secretary_saved: Sekretāre veiksmīgi saglabāta.
+    admin_deleted: Administrators veiksmīgi izdzēsts.
+    provider_deleted: Nodrošinātājs veiksmīgi izdzēsts.
+    secretary_deleted: Sekretāre veiksmīgi izdzēsta.
+    service_saved: Pakalpojums veiksmīgi saglabāts.
+    service_category_saved: Pakalpojumu kategorija veiksmīgi saglabāta.
+    service_deleted: Pakalpojums veiksmīgi izdzēsts.
+    service_category_deleted: Pakalpojumu kategorija veiksmīgi dzēsta.
+    customer_saved: Klients veiksmīgi saglabāts.
+    customer_deleted: Klients veiksmīgi dzēsts.
+    current_view: Pašreizējais skats
+    working_plan: Darba plāns
+    reset_plan: Atjaunot plānu
+    monday: pirmdiena
+    tuesday: otrdiena
+    wednesday: Trešdiena
+    thursday: ceturtdiena
+    friday: piektdiena
+    saturday: sestdiena
+    sunday: svētdiena
+    breaks: Pārtraukumi
+    add_breaks_during_each_day: Pievienot darba pārtraukumus katras dienas laikā. Pārtraukumu laikā pakalpojumu sniedzējs nepieņems nevienu tikšanos.
+    day: Diena
+    days: Dienas
+    actions: Darbības
+    reset_working_plan_hint: Atjaunot darba plāna noklusējuma vērtības.
+    company_name: Uzņēmuma nosaukums
+    company_name_hint: Uzņēmuma nosaukums tiks parādīts visur sistēmā (obligāts).
+    company_email: Uzņēmuma e-pasts
+    company_email_hint: Šī būs uzņēmuma e-pasta adrese. Tā tiks izmantota kā sistēmas e-pasta vēstuļu sūtītāja un atbildes adrese (obligāti).
+    company_link: Uzņēmuma saite
+    company_link_hint: Uzņēmuma saitei jānorāda uz uzņēmuma oficiālo tīmekļa vietni (obligāti).
+    go_to_booking_page: Iet uz rezervēšanas lapu
+    settings_saved: Iestatījumi veiksmīgi saglabāti.
+    general: Vispārīgi
+    booking: Rezervācija
+    visible: Redzams
+    hidden: Slēpts
+    business_logic: Biznesa loģika
+    current_user: Pašreizējais lietotājs
+    about_app: Par Easy!Appointments
+    edit_working_plan_hint: Zemāk atzīmējiet dienas un stundas, kad jūsu uzņēmums pieņems tikšanās. Jūs varēsiet pielāgot tikšanās reizes ne darba laikā, bet klienti nevarēs paši rezervēt tikšanās reizes ne darba laikā. Šis darba plāns būs noklusējuma iestatījums katram jaunam pakalpojumu sniedzēja ierakstam, bet jūs varēsiet mainīt katra pakalpojumu sniedzēja plānu atsevišķi, rediģējot viņa ierakstu. Pēc tam varēsiet pievienot pārtraukuma periodus.
+    edit_breaks_hint: Pievienojiet darba pārtraukumus katras dienas laikā. Šie pārtraukumi tiks piemēroti visiem jaunajiem pakalpojumu sniedzējiem.
+    book_advance_timeout: Grāmatu iepriekšēja rezervējuma laika ierobežojums
+    book_advance_timeout_hint: Nosakiet laika ierobežojumu (minūtēs), pirms klienti var rezervēt vai pārplānot tikšanās ar uzņēmumu.
+    timeout_minutes: Laika limits (minūtes)
+    about_app_info: Easy!Appointments ir ļoti pielāgojama tīmekļa lietojumprogramma, kas ļauj jūsu klientiem rezervēt tikšanās ar jums, izmantojot tīmekli. Turklāt tā nodrošina iespēju sinhronizēt datus ar Google kalendāru, lai jūs tos varētu izmantot ar citiem pakalpojumiem.
+    current_version: Pašreizējā versija
+    support: Atbalsts
+    about_app_support: Ja, izmantojot Easy!Appointments, jums rodas problēmas, varat meklēt atbildes oficiālajā Google grupā. Iespējams, ka jums būs nepieciešams arī izveidot jaunu jautājumu Google Code lapā, lai palīdzētu virzīt izstrādi.
+    official_website: Oficiālā vietne
+    google_plus_community: Google+ kopiena
+    support_group: Atbalsta grupa
+    project_issues: Projekta jautājumi
+    license: Licence
+    about_app_license: 'Easy!Appointments ir licencēta ar GPLv3 licenci. Jebkurā veidā izmantojot Easy!Appointments kodu, jūs piekrītat noteikumiem, kas aprakstīti šajā url:'
+    logout_success: Jūs esat veiksmīgi izrakstījies! Noklikšķiniet uz kādas no šīm pogām, lai pārietu uz citu lapu.
+    book_appointment_title: Rezervēt tikšanos
+    backend_section: Administrācijas sadaļa
+    you_need_to_login: Laipni lūdzam! Jums būs nepieciešams pieteikties, lai apskatītu aizmugurējās lapas.
+    enter_username_here: Ievadiet savu lietotājvārdu šeit ...
+    enter_password_here: Ievadiet paroli šeit ...
+    login: Pieteikšanās
+    forgot_your_password: Aizmirsāt paroli?
+    login_failed: Pieteikšanās neizdevās, lūdzu, ievadiet pareizos akreditācijas datus un mēģiniet vēlreiz.
+    type_username_and_email_for_new_password: Ierakstiet savu lietotājvārdu un e-pasta adresi, lai iegūtu savu jauno paroli.
+    enter_email_here: Ievadiet savu e-pastu šeit ...
+    regenerate_password: Ģenerēt paroli no jauna
+    go_to_login: Atgriezties pie pieteikšanās lapas
+    new_password_sent_with_email: Jūsu jaunā parole ir nosūtīta kopā ar e-pastu.
+    new_account_password: Jaunā konta parole
+    new_password_is: Jūsu jaunā konta parole ir $password. Lūdzu, saglabājiet šo e-pastu, lai vajadzības gadījumā varētu atgūt paroli. Šo paroli var arī nomainīt pret jaunu paroli iestatījumu lapā.
+    delete_record_prompt: Vai esat pārliecināts, ka vēlaties dzēst šo ierakstu? Šo darbību nevar atsaukt.
+    delete_admin: Dzēst admin
+    delete_customer: Dzēst klientu
+    delete_service: Dzēst pakalpojumu
+    delete_service_category: Dzēst pakalpojumu kategoriju
+    delete_provider: Dzēst pakalpojumu sniedzēju
+    delete_secretary: Dzēst sekretāru
+    delete_appointment: Dzēst pierakstu
+    delete_unavailability: Dzēst nepieejamību
+    delete: Dzēst
+    unexpected_issues: Negaidīti jautājumi
+    unexpected_issues_message: Operāciju nevar pabeigt.
+    close: Aizvērt
+    page_not_found: Lapa nav atrasta
+    page_not_found_message: Diemžēl jūsu pieprasītā lapa neeksistē. Lūdzu, pārbaudiet pārlūkprogrammas URL vai dodieties uz citu vietu, izmantojot zemāk redzamās pogas.
+    error: Kļūda
+    no_privileges: Nav tiesību
+    no_privileges_message: Jums nav nepieciešamo tiesību, lai skatītu šo lapu. Lūdzu, pārejiet uz citu sadaļu.
+    backend_calendar: Administrācijas kalendārs
+    start_date_time: Sākums datums / laiks
+    end_date_time: Beigu datums / laiks
+    licensed_under: Licencēts saskaņā
+    unexpected_issues_occurred: Radās neparedzēti jautājumi.
+    service_communication_error: Lūdzu, mēģiniet vēlreiz.
+    no_privileges_edit_appointments: Jums nav vajadzīgo tiesību rediģēt tikšanās.
+    unavailability_updated: Pieejamība veiksmīgi atjaunināta.
+    appointments: Pieraksti
+    unexpected_warnings: Negaidīti brīdinājumi
+    unexpected_warnings_message: Operācija pabeigta, bet parādījās daži brīdinājumi.
+    filter: Filtrs
+    clear: Notīrīt
+    uncategorized: Nekategorizēts
+    username_already_exists: Lietotājvārds jau pastāv.
+    password_length_notice: Parolei jābūt vismaz $number rakstzīmju garai.
+    general_settings: Vispārīgie iestatījumi
+    personal_information: Personiskā informācija
+    system_login: Sistēmas pieteikšanās
+    user_settings_are_invalid: Lietotāja iestatījumi ir nederīgi! Lūdzu, pārskatiet savus iestatījumus un mēģiniet vēlreiz.
+    add_break: Pievienot pārtraukumu
+    january: janvāris
+    february: februāris
+    march: Marts
+    april: aprīlis
+    may: May
+    june: jūnijs
+    july: jūlijs
+    august: Augusts
+    september: septembris
+    october: oktobris
+    november: novembris
+    december: decembris
+    previous: Iepriekšējais
+    next: Nākamais
+    now: Tagad
+    select_time: Izvēlieties laiku
+    time: Laiks
+    hour: Stunda
+    minute: Minūte
+    calendar_sync_completed: Kalendāra sinhronizācija veiksmīgi pabeigta.
+    calendar_sync_failed: 'Kalendāra sinhronizācija neizdevās: Nevarēja izveidot servera savienojumu.'
+    select_sync_calendar: Izvēlieties kalendāru
+    select_sync_calendar_prompt: Izvēlieties kalendāru, ar kuru vēlaties sinhronizēt savas tikšanās.
+    sync_calendar_selected: Sinhronizācijas kalendārs ir veiksmīgi izvēlēts.
+    oops_something_went_wrong: Oops! Kaut kas notika nepareizi.
+    ea_update_success: Easy!Appointments ir veiksmīgi atjaunināts.
+    require_captcha: Pieprasīt CAPTCHA
+    require_captcha_hint: Ja šī funkcija ir iespējota, klientiem pirms tikšanās rezervēšanas/atjaunināšanas būs jāievada nejauši ģenerēta CAPTCHA virkne.
+    captcha_is_wrong: CAPTCHA verifikācija neizdevās, mēģiniet vēlreiz.
+    enter_captcha_here: Ievadiet CAPTCHA šeit...
+    any_provider: Jebkurš pakalpojumu sniedzējs
+    requested_hour_is_unavailable: Pieprasītā tikšanās diemžēl nav pieejama. Lūdzu, izvēlieties citu tikšanās stundu.
+    customer_notifications: Klientu paziņojumi
+    customer_notifications_hint: Nosaka, vai klients saņems e-pasta paziņojumus ikreiz, kad tiks mainīts kāds no viņa apmeklējumu grafikiem.
+    date_format: Datuma formāts
+    date_format_hint: Mainīt datuma attēlošanas formātu (D - datums, M - mēnesis, Y - gads).
+    time_format: Laika formāts
+    time_format_hint: Mainīt laika rādīšanas formātu (H - stundas, M - minūtes).
+    first_weekday: Nedēļas pirmā diena
+    first_weekday_hint: Iestatiet kalendārās nedēļas pirmo dienu.
+    google_analytics_code_hint: Pievienojiet savu Google Analytics kodu, lai rezervēšanas lapās iespējotu Google Analytics izsekošanu.
+    availabilities_type: Pieejamības tips
+    flexible: Elastīgs
+    fixed: Fiksēts
+    attendants_number: Apmeklētāju numurs
+    reset_working_plan: Atjaunot darba plāna noklusējuma vērtības.
+    legal_contents: Juridiskais saturs
+    cookie_notice: Paziņojums par sīkdatnēm
+    display_cookie_notice: Rādīt sīkdatņu paziņojumu
+    cookie_notice_content: Paziņojuma par sīkdatnēm saturs
+    terms_and_conditions: Noteikumi un nosacījumi
+    display_terms_and_conditions: Rādīt noteikumus un nosacījumus
+    terms_and_conditions_content: Noteikumu un nosacījumu saturs
+    privacy_policy: Privātuma politika
+    display_privacy_policy: Privātuma politika
+    privacy_policy_content: Privātuma politikas saturs
+    website_using_cookies_to_ensure_best_experience: Šajā tīmekļa vietnē tiek izmantotas sīkdatnes, lai nodrošinātu vislabāko pieredzi mūsu tīmekļa vietnē.
+    read_and_agree_to_terms_and_conditions: Esmu iepazinies un piekrītu {$link}Terms & Conditions{/$link}.
+    read_and_agree_to_privacy_policy: Esmu izlasījis un piekrītu {$link}Privātuma politikai{/$link}.
+    delete_personal_information_hint: Noņemiet no sistēmas visas savas tikšanās un personisko informāciju.
+    delete_personal_information: Dzēst personisko informāciju
+    delete_personal_information_prompt: Vai esat pārliecināts, ka vēlaties dzēst savu personisko informāciju? Šo darbību nevar atcelt.
+    location: Atrašanās vieta
+    working_plan_exception: Darba plāna izņēmums
+    working_plan_exceptions: Darba plāna izņēmumi
+    working_plan_exceptions_hint: Pievienot darba plāna izņēmuma dienu ārpus darba plāna.
+    new_working_plan_exception_title: Jauna darba plāna izņēmums
+    working_plan_exception_saved: Darba plāna izņēmums veiksmīgi saglabāts.
+    working_plan_exception_deleted: Darba plāna izņēmums veiksmīgi dzēsts.
+    add_working_plan_exceptions_during_each_day: Pievienot darba plāna izņēmumus ārpus darba plāna.
+    add_working_plan_exception: Pievienot darba plāna izņēmumu
+    require_phone_number: Pieprasīt tālruņa numuru
+    require_phone_number_hint: Ja šī funkcija ir iespējota, klientiem un lietotājiem, rezervējot tikšanos, būs jāievada klienta tālruņa numurs
+    check_spam_folder: Lūdzu, pārbaudiet surogātpasta mapi, ja e-pasta vēstule nav saņemta dažu minūšu laikā.
+    api_token_hint: Iestatiet slepeno žetonu, lai iespējotu uz žetonu balstītu autentifikāciju Easy!Appointments API.
+    timezone: Laika josla
+    overwrite_existing_working_plans: Tas pārrakstīs esošos pakalpojumu sniedzēja darba plānus, vai esat pārliecināts, ka vēlaties turpināt?
+    working_plans_got_updated: Visi darba plāni ir atjaunināti.
+    apply_to_all_providers: Piemērot visiem pakalpojumu sniedzējiem
+    display_any_provider: Rādīt jebkuru pakalpojumu sniedzēja opciju
+    display_any_provider_hint: Rezervācijas lapā tiks pievienota papildu opcija, kas ļaus klientiem veikt rezervāciju, nenorādot pakalpojuma sniedzēju.
+    load_more: Ielādēt vairāk
+    list: Saraksts
+    default: Noklusējuma
+    table: Tabula
+    date: Datums
+    about: Par
+    booking_settings: Rezervēšanas iestatījumi
+    display: Attēlot
+    require: Pieprasīt
+    color: Krāsa
+    matomo_analytics_url_hint: Pievienojiet URL savam Matomo uzstādījumam, lai iespējotu Matomo izsekošanu rezervācijas lapās.
+    invalid_phone: Nederīgs tālruņa numurs.
+    legal: Juridiskā informācija
+    business: Uzņēmējdarbība
+    account: Konts
+    disable_booking: Atslēgt rezervēšanu
+    disable_booking_hint: Kamēr šis iestatījums ir aktīvs, rezervēšanas lapa būs atspējota, un klienti nevarēs reģistrēt jaunas tikšanās.
+    display_message: Displeja ziņojums
+    booking_is_disabled: Rezervācija ir atspējota!
+    appearance: Izskats
+    company_logo: Uzņēmuma logotips
+    company_logo_hint: Uzņēmuma logotips tiks parādīts daudzās lietotnes vietās, tostarp rezervēšanas lapā un paziņojumu e-pasta ziņojumos (attēla fails, maksimālais izmērs 2 MB).
+    company_color: Uzņēmuma krāsa
+    company_color_hint: Uzņēmuma krāsa tiks izmantota visā lietotnē, lai lietotne izmantotu jūsu zīmolu.
+    localization: Lokalizācija
+    integrations: Integrācijas
+    company: Uzņēmums
+    remove: Noņemt
+    login_button: Pieteikšanās poga
+    display_login_button_hint: Nosaka, vai rezervēšanas lapā tiek rādīta pieteikšanās poga.
+    private: Privāts
+    private_hint: Privātie ieraksti netiks rādīti vai apstrādāti publiskajās lapās, piemēram, rezervēšanas lapā.
+    reset: Atiestatīt
+    all: All
+    booking_link: Rezervēšanas saite
+    add_new_event: Pievienot jaunu notikumu
+    what_kind_of_event: Kādu notikumu vēlaties pievienot?
+    theme: Tēma
+    limit_customer_access: Ierobežot klientu piekļuvi
+    limit_customer_access_hint: Ja šī funkcija ir iespējota, pakalpojumu sniedzēji un sekretāri varēs piekļūt tikai tiem klientiem, ar kuriem viņiem ir norunāta tikšanās.
+    url: URL
+    secret_token: Slepenais tokens
+    verify_ssl: Verificēt SSL
+    appointment_save: Pieraksta saglabāšana
+    appointment_delete: Pieraksta dzēšana
+    unavailability_save: Nepieejamības saglabāšana
+    unavailability_delete: Nepieejamība dzēst
+    customer_save: Klienta saglabāšana
+    customer_delete: Klienta dzēšana
+    service_save: Pakalpojuma saglabāšana
+    service_delete: Pakalpojuma dzēšana
+    service_category_save: Pakalpojumu kategorijas saglabāšana
+    service_category_delete: Pakalpojumu kategorijas dzēšana
+    provider_save: Pakalpojumu sniedzēja saglabāšana
+    provider_delete: Pakalpojumu sniedzēja dzēšana
+    secretary_save: Sekretāra saglabāt
+    secretary_delete: Sekretāra dzēšana
+    admin_save: Administratora saglabāšana
+    admin_delete: Administratora dzēšana
+    options: Opcijas
+    webhooks: Tīmekļa āķi
+    webhooks_info: Webhooks ļauj sūtīt HTTP paziņojumus ārējām tīmekļa lietojumprogrammām, reaģējot uz dažādiem lietojumprogrammas notikumiem, piemēram, tikšanās izveidošanu vai klienta atsaukšanu.
+    integrations_info: Integrācijas ļauj veidot savienojumus ar trešo pušu lietojumprogrammām un API.
+    configure: Konfigurēt
+    google_analytics: Google Analytics
+    google_analytics_info: Google Analytics ļauj automātiski pievienot izsekošanas kodu un HTML iezīmējumu publiskajā lapā un izsekot visas publiskās rezervācijas sesijas.
+    matomo_analytics: Matomo Analytics
+    matomo_analytics_info: Matomo Analytics ļauj automātiski pievienot izsekošanas kodu un HTML iezīmējumu publiskajā lapā un izsekot visas publiskās rezervācijas sesijas.
+    api: API
+    api_info: API ļauj jums mijiedarboties ar visiem Easy!Appointments datiem, izmantojot HTTP protokolu un pieejamos API galapunktus, kā arī izveidot savu integrāciju.
+    google_analytics_code: Google Analytics kods
+    matomo_analytics_url: Matomo Analytics URL
+    future_booking_limit: Nākotnes rezervācijas limits
+    limit_days: Ierobežojums (dienas)
+    future_booking_limit_hint: Iestatiet nākotnes ierobežojumu dienās, līdz kuram klienti var veikt tikšanās, izmantojot publisko rezervēšanas lapu.
+    api_token: API žetons
+    allow_rescheduling_cancellation_before: Atļaut pārplānošanu/atcelšanu pirms
+    at_least_one_field: Rezervācijas lapā jānorāda vismaz viens lauks.
+    status: Statuss
+    appointment_status_options: Tikšanās statusa opcijas
+    appointment_status_options_info: Noteikt sarakstu ar pieejamām tikšanās statusa opcijām, ko var izmantot kalendāra lapā (pirmā automātiski kļūst par noklusējuma vērtību).
+    sunday_short: Sun
+    monday_short: Mon
+    tuesday_short: Tue
+    wednesday_short: Wed
+    thursday_short: Thu
+    friday_short: Fri
+    saturday_short: Sat
+    january_short: Jan
+    february_short: Feb
+    march_short: Mar
+    april_short: Apr
+    may_short: May
+    june_short: Jun
+    july_short: Jul
+    august_short: Aug
+    september_short: Sep
+    october_short: Oct
+    november_short: Nov
+    december_short: Dec
+    am: am
+    pm: pm
+    to: līdz
+    click_to_toggle: Noklikšķiniet, lai pārslēgtu
+    week_short: Wk
+    scroll_to_increment: Ritināt, lai palielinātu
+    year: Gads
+    make_non_working_day: Šis pakalpojumu sniedzējs nebūs pieejams darbam izvēlētajā dienā.
+    no_breaks: Nav pārtraukumu
+    service_categories: Pakalpojumu kategorijas
+    service_category: Pakalpojumu kategorija
+    blocked_period_saved: Bloķētais periods veiksmīgi saglabāts.
+    blocked_period_deleted: Bloķētais periods veiksmīgi dzēsts.
+    delete_blocked_period: Dzēst bloķēto periodu
+    blocked_period: Bloķētais periods
+    blocked_periods: Bloķētie periodi
+    blocked_period_save: Bloķētā perioda saglabāšana
+    blocked_period_delete: Bloķētā perioda dzēšana
+    blocked_periods_hint: Noteikt laika periodus, kad publiski rezervējumi visiem pakalpojumu sniedzējiem būs atspējoti (piemēram, slēgšanas datumi, brīvdienas u. c.).
+    custom_field: Pielāgotais lauks
+    custom_fields: Pielāgotie lauki
+    label: Etiķete
+    webhook_saved: Webhook ir veiksmīgi saglabāts.
+    webhook_deleted: Webhook veiksmīgi izdzēsts.
+    delete_webhook: Dzēst webhook
+    contact_info: Kontaktinformācija
+    hide_from_public: Paslēpt no sabiedrības
+    matomo_analytics_site_id: Matomo Analytics vietnes ID
+    matomo_analytics_site_id_hint: Iestatiet vietnes ID, ko Matomo uzraudzīs (pēc noklusējuma vietnei ir ID "1").
+    default_timezone: Noklusējuma laika zona
+    default_timezone_hint: Iestatiet noklusējuma laika zonas vērtību, kas tiks izmantota jauniem ierakstiem.
+    default_language: Noklusējuma valoda
+    default_language_hint: Iestatiet noklusējuma valodas vērtību, kas tiks izmantota jauniem ierakstiem.
+    sync_method_prompt: Kuru sinhronizācijas metodi vēlaties izmantot?
+    caldav_server: CalDAV serveris
+    caldav_connection_info_prompt: Lūdzu, ievadiet mērķa CalDAV kalendāra savienojuma informāciju.
+    connect: Savienot
+    ldap: LDAP
+    ldap_info: Šī integrācija ļauj izveidot savienojumu ar esošo LDAP serveri un automātiski importēt lietotājus programmā Easy!Appointments, kā arī ļaut viņiem veikt SSO ar direktorija paroli (lietotājvārdam jābūt vienādam).
+    host: Resursdators
+    port: Ports
+    user_dn: Lietotāja DN
+    base_dn: Bāzes DN
+    keyword: Atslēgvārds
+    ldap_search_hint: Norādiet atslēgvārdu, lai LDAP direktorijā meklētu lietotājus, kas atbilst filtra kritērijiem.
+    ldap_extension_not_loaded: LDAP PHP paplašinājums nav ielādēts, bet ir nepieciešams, lai šī integrācija darbotos.
+    field_mapping: Lauku kartēšana
+    content: Saturs
+    active: Aktīvs
+    user_imported: Lietotāja ieraksts tika veiksmīgi importēts.
+    import: Importēt
+    ldap_dn: LDAP DN
+    role: Loma
+    at_least_one_field_required: Rezervācijas lapā vismaz vienam laukam jābūt iestatītam kā obligātam.
+    customer_is_already_booked: Šim klientam jau ir norunāta tikšanās pieprasītā rezervācijas perioda laikā.
+    fields: Lauki
+    invalid_credentials_provided: Sniegti nepareizi akreditācijas dati, lūdzu, mēģiniet vēlreiz.
+    calendar_url: Kalendāra URL
+    please_select: Lūdzu, izvēlieties
+    secret_header: Slepenā galvene
+    search: Meklēt
+    slot_interval: Laika intervāls (minūtes)
+    jitsi: Jitsi
+    jitsi_info: Iespējojiet automātisku Jitsi sapulces saites ģenerēšanu pierakstiem. Kad iespējots, katram pierakstam tiks ģenerēta unikāla Jitsi videozvana saite un saglabāta kā sapulces saite.
+    altcha: ALTCHA
+    altcha_info: ALTCHA ir uz privātumu orientēta, atvērtā koda CAPTCHA alternatīva, kas izmanto darba pierādījumu, lai verificētu cilvēkus bez izsekošanas.
+    altcha_enabled_hint: Kad iespējots, ALTCHA tiks izmantota tradicionālā attēla CAPTCHA vietā formu verifikācijai.
+    altcha_hmac_key: HMAC Key
+    altcha_hmac_key_hint: Slepenā atslēga, ko izmanto ALTCHA izaicinājumu parakstīšanai un verificēšanai. Noklikšķiniet uz Ģenerēt, lai izveidotu jaunu drošu atslēgu.
+    altcha_max_number: Maksimālais skaitlis
+    altcha_max_number_hint: 'Darba pierādījuma izaicinājuma maksimālais skaitlis. Lielākas vērtības palielina grūtības pakāpi (noklusējums: 100000).'
+    altcha_expires: Derīguma termiņš (sekundes)
+    altcha_expires_hint: 'Cik ilgi izaicinājums ir derīgs sekundēs (noklusējums: 300).'
+    altcha_key_generated: Jauna HMAC atslēga veiksmīgi ģenerēta.
+    altcha_enabled: Iespējot ALTCHA
+    altcha_captcha_not_active_warning: CAPTCHA iestatījums pašlaik nav aktīvs. ALTCHA netiks izmantota, ja vien CAPTCHA nav iespējota
+    generate: Ģenerēt
+    meeting_link: Sapulces saite
+    google_calendar: Google kalendārs
+    google_calendar_info: Iespējojiet Google Calendar sinhronizāciju, lai sinhronizētu pierakstus ar pakalpojumu sniedzēju Google Calendar kontiem.
+    google_client_id: Client ID
+    google_client_id_info: Client ID no jūsu Google Cloud Console projekta.
+    google_client_secret: Client Secret
+    google_client_secret_info: Client Secret no jūsu Google Cloud Console projekta.
+    google_calendar_setup_info: 'Lai iespējotu Google Calendar sinhronizāciju, jums jāizveido projekts Google Cloud Console, jāiespējo Google Calendar API un jāizveido OAuth 2.0 akreditācijas dati. Apmeklējiet:'
+    google_meet_link_generation: Ģenerēt Google Meet saites
+    google_meet_link_generation_info: Automātiski izveidojiet Google Meet videokonferences saiti sinhronizētiem pierakstiem. Sapulces saite tiks saglabāta pieraksta sapulces saites laukā.
+    display_add_to_google_calendar: Attēlot "Add to Google Calendar" pogu
+    display_add_to_google_calendar_info: Rādīt "Add to Google Calendar" pogu rezervācijas apstiprinājuma lapā, lai klienti varētu viegli pievienot savu pierakstu personīgajam Google Calendar kalendāram.
+    select_all: Atlasīt visu
+    select_none: Noņemt atlasi
+    appointment_update: Tikšanās atjauninājums
+    notify_users_on_update_question: Vai vēlaties nosūtīt paziņojumu par šīm izmaiņām?
+    'yes': Jā
+    'no': Nē
+    latest_blog_posts: Jaunākās bloga ziņas
+    loading: Ielādē
+    blog_posts_load_error: Nevar ielādēt bloga ziņas. Lūdzu, apmeklējiet oficiālo vietni, lai iegūtu jaunumus.
+    provider_has_conflicting_appointment: Izvēlētajam pakalpojumu sniedzējam jau ir cita tikšanās šajā laikā. Lūdzu, izvēlieties citu laiku vai pakalpojumu sniedzēju.
+    would_you_like_to_proceed: Vai vēlaties turpināt?
+    proceed: Turpināt
+    no_available_service_providers: Nav pieejamu pakalpojumu
+    no_available_service_providers_message: Šobrīd nav pieejamu pakalpojumu vai pakalpojumu sniedzēju rezervācijai. Lūdzu, pārbaudiet vēlāk vai sazinieties ar mums.
+    reset_password: Atiestatīt paroli
+    new_password: Jauna parole
+    enter_new_password: Zemāk ievadiet savu jauno paroli.
+    password_reset_request: Paroles atiestatīšanas pieprasījums
+    password_reset_email_message: Jūs pieprasījāt atiestatīt savu paroli. Noklikšķiniet uz pogas zemāk, lai iestatītu jaunu paroli savam kontam.
+    password_reset_link_expires: Šī saite būs derīga 1 stundu.
+    password_reset_ignore_message: Ja neesat pieprasījis paroles atiestatīšanu, lūdzu, ignorējiet šo e-pastu.
+    invalid_reset_token: Paroles atiestatīšanas saite ir nederīga.
+    invalid_or_expired_token: Paroles atiestatīšanas saite ir nederīga vai tās derīguma termiņš ir beidzies. Lūdzu, pieprasiet jaunu.
+    password_reset_success: Jūsu parole ir veiksmīgi atiestatīta. Jūs tiksiet novirzīts uz pieteikšanās lapu.
+    password_reset_failed: Paroles atiestatīšana neizdevās. Lūdzu, mēģiniet vēlreiz.
+    no_password_provided: Lūdzu, ievadiet paroli.
+    type_username_and_email_for_reset_link: Ievadiet savu lietotājvārdu un e-pasta adresi, lai saņemtu paroles atiestatīšanas saiti.
+    send_reset_link: Nosūtīt atiestatīšanas saiti
+    reset_link_sent_with_email: Ja konts ar norādītajiem datiem pastāv, paroles atiestatīšanas saite ir nosūtīta uz jūsu e-pastu.
+    working_plan_validation_failed: Atrasta nederīga darba plāna konfigurācija.
+    start_date: Sākuma datums
+    end_date: Beigu datums
+    remember_me: Atcerēties manu informāciju
+    remember_me_hint: Saglabājiet savus datus ātrākai rezervēšanai nākamreiz.
+    legal_notice: Juridisks paziņojums
+    legal_notice_url: Juridiskā paziņojuma URL
+    legal_notice_url_hint: Ievadiet sava juridiskā paziņojuma lapas URL.
+    imprint: Izdevēja informācija
+    imprint_url: Izdevēja informācijas URL
+    imprint_url_hint: Ievadiet savas izdevēja informācijas lapas URL.
+    data_retention: Datu saglabāšana
+    data_retention_days: Datu saglabāšanas dienas
+    data_retention_days_hint: Iestatiet dienu skaitu, pēc kura klientu dati tiks automātiski dzēsti. Iestatiet 0, lai atspējotu automātisko dzēšanu.
+    manage_privacy: Pārvaldīt privātumu
+    manage_privacy_hint: Noklikšķiniet uz zemāk esošās saites, lai apskatītu, atjauninātu vai dzēstu savu personisko informāciju.
+    personal_information_updated: Jūsu personiskā informācija ir veiksmīgi atjaunināta.
+    verify: Verificēt
+    verifying: Verificēšana
+    verified: Verificēts
+    verification_complete: Verifikācija pabeigta
+    verification_failed: Verifikācija neizdevās. Noklikšķiniet, lai mēģinātu vēlreiz.
+    click_to_verify: Noklikšķiniet, lai apliecinātu, ka esat cilvēks
+    altcha_verification_failed: ALTCHA verifikācija neizdevās. Lūdzu, mēģiniet vēlreiz.
+    premium: Premium
+    about_app_premium: Mēs piedāvājam pilna cikla pakalpojumus pašmitinātai programmatūrai, tostarp pielāgotu izstrādi, pārvaldītu hostingu, atbalsta līgumus, pārzīmošanu un pastāvīgus uzlabojumus — lai jūs varētu koncentrēties uz savu biznesu, kamēr mēs rūpējamies par pārējo.
+    go_premium: Go Premium
+    notify_users_on_create_question: Vai vēlaties informēt klientu par šo jauno tikšanos?
+    notify_users_on_delete_question: Vai vēlaties informēt klientu par tikšanās atcelšanu?

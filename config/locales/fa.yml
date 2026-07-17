@@ -1,0 +1,575 @@
+---
+fa:
+  ea:
+    page_title: ثبت قرار ملاقات با
+    service_and_provider: خدمات و ارائه دهنده
+    select_service: انتخاب خدمت
+    select_provider: انتخاب ارائه دهنده
+    duration: مدت زمان
+    minutes: دقیقه
+    price: هزینه
+    back: برگشت
+    appointment_date_and_time: تاریخ و زمان ملاقات
+    no_available_hours: برای تاریخ انتخاب شده، زمان خالی برای ملاقات وجود ندارد. لطفا تاریخ دیگری را انتخاب کنید
+    appointment_hour_missing: لطفا قبل از ادامه، ساعتی برای ملاقات انتخاب کنید
+    customer_information: اطلاعات مشتری
+    first_name: نام
+    last_name: نام خانوادگی
+    email: ایمیل
+    phone_number: شماره تلفن
+    phone: تلفن
+    address: آدرس
+    city: شهر
+    zip_code: کد پستی
+    notes: توضیحات
+    language: زبان
+    no_language: بدون زبان
+    fields_are_required: فیلدهای ستاره دار اجباری هستند
+    appointment_confirmation: تایید ملاقات
+    confirm: تایید
+    update: به روز رسانی
+    cancel_appointment_hint: برای حذف قرار ملاقات از برنامه شرکت، دکمه لغو را بفشارید
+    cancel: لغو
+    appointment_registered: قرار ملاقات شما با موفقیت ثبت گردید
+    cancel_appointment_title: لغو قرار ملاقات
+    appointment_cancelled: قرار ملاقات شما با موفقیت لغو گردید
+    appointment_cancelled_title: لغو ملاقات
+    reason: دلیل
+    appointment_removed_from_schedule: این قرار از برنامه شرکت حذف شده است
+    appointment_details_was_sent_to_you: جزئیات قرار ملاقات به پست الکترونیکی شما ارسال گردید
+    add_to_google_calendar: افزودن به تقویم گوگل
+    appointment_booked: قرار ملاقات با موفقیت ثبت شد
+    thank_you_for_appointment: از اینکه قرار ملاقاتی با ما ثبت کردید، متشکریم. در قسمت زیر می توانید جزئیات قرار را مشاهده کنید و در صورت لزوم با کلیک بر لینک، تغییراتی اعمال نمایید
+    appointment_details_title: جزئیات قرار
+    customer_details_title: جزئیات مشتری
+    service: خدمات
+    provider: ارائه دهنده
+    customer: مشتری
+    start: شروع
+    end: پایان
+    name: نام
+    appointment_link_title: لینک قرار
+    success: موفق
+    appointment_added_to_your_plan: قرار جدیدی به برنامه شما اضافه گردید
+    appointment_link_description: با کلیک بر لینک قرار، می توانید تغییراتی اعمال کنید
+    appointment_locked: تغییر امکانپذیر نمی باشد
+    appointment_locked_message: تغییر تا {$limit} ساعت آینده امکانپذیر نیست
+    appointment_not_found: قرار ملاقات یافت نشد
+    appointment_does_not_exist_in_db: قرار ملاقاتی که درخواست داده بودید، دیگر در بانک اطلاعاتی وجود ندارد
+    display_calendar: نمایش تقویم
+    calendar: تقویم
+    users: کاربران
+    settings: تنظیمات
+    log_out: خروج
+    synchronize: همگام سازی
+    enable_sync: فعال کردن همگام سازی
+    disable_sync: غیرفعال کردن همگام سازی
+    disable_sync_prompt: از غیرفعال کردن همگام سازی تقویم اطمینان دارید؟
+    reload: بارگذاری مجدد
+    appointment: قرار
+    unavailability: تعطیل
+    week: هفته
+    month: ماه
+    today: امروز
+    not_working: تعطیل است
+    break: وقفه
+    add: افزودن
+    edit: ویرایش
+    hello: سلام
+    all_day: کل روز
+    manage_appointment_record_hint: مدیریت کل قرارهای ارئه دهندگان و خدمات در دسترس
+    select_filter_item_hint: یک ارائه دهنده یا خدمت انتخاب کنید و قرارهای مرتبط را روی تقویم ببینید
+    enable_appointment_sync_hint: فعال کردن همگام سازی قرارها بر روی تقویم ارائه دهنده
+    manage_customers_hint: مدیریت کاربران ثبت شده و نوبت های آن ها
+    manage_services_hint: مدیریت خدمات و دسته بندی های سیستم
+    manage_users_hint: مدیریت کاربران (مدیران، منشی ها، ارائه دهندگان)
+    settings_hint: تنظیمات سیستم و کاربران
+    log_out_hint: خروج از سیستم
+    unavailability_periods_hint: در طول زمان در دسترس نبودن، ارائه دهنده قرار جدیدی را نمی پذیرد
+    new_appointment_hint: ایجاد قرار جدید و ذخیره آن در بانک اطلاعاتی
+    reload_appointments_hint: بارگذاری مجدد ملاقات ها
+    trigger_sync_hint: همین حالا با تقویم گوگل همگام سازی انجام بده
+    appointment_updated: قرار با موفقیت به روزرسانی شد
+    undo: بازگشت
+    appointment_details_changed: جزئیات قرار با موفقیت تغییر کرد
+    appointment_changes_saved: تغییرات قرار ملاقات با موفقیت ذخیره شد
+    save: ذخیره
+    new: جدید
+    select: انتخاب
+    hide: مخفی کردن
+    type_to_filter_customers: برای فیلتر مشتریان تایپ کنید
+    clear_fields_add_existing_customer_hint: پاکسازی فیلدها و افزودن مشتری جدید
+    pick_existing_customer_hint: انتخاب یک مشتری ثبت شده
+    new_appointment_title: قرار جدید
+    edit_appointment_title: ویرایش قرار
+    delete_appointment_title: حذف قرار
+    write_appointment_removal_reason: لطفا یک دقیقه زمان اختصاص دهید و دلیل حذف قرار ملاقاتتان را بیان کنید
+    appointment_saved: قرار با موفقیت ذخیره شد
+    new_unavailability_title: دوران تعطیلی جدید
+    edit_unavailability_title: ویرایش دوره تعطیلی
+    unavailability_saved: دوره تعطیلی با موفقیت ذخیره شد
+    start_date_before_end_error: تاریخ شروع بعد از تاریخ پایان است
+    invalid_duration: مدت زمان نامعتبر است.
+    invalid_email: آدرس پست الکترونیکی صحیح نیست
+    customers: مشتریان
+    details: جزئیات
+    no_records_found: رکوردی یافت نشد...
+    services: خدمات
+    duration_minutes: مدت زمان (دقیقه)
+    currency: واحد پول
+    category: دسته بندی
+    no_category: بدون دسته بندی
+    description: توضیحات
+    categories: دسته بنده ها
+    admins: مدیران
+    providers: ارائه دهندگان
+    secretaries: منشی ها
+    mobile_number: شماره موبایل
+    mobile: موبایل
+    state: ایالت
+    username: نام کاربری
+    password: رمز عبور
+    retype_password: تکرار رمز
+    receive_notifications: دریافت اطلاعیه
+    passwords_mismatch: رمزهای عبور با هم مطابقت ندارند
+    admin_saved: مدیر با موفقیت ذخیره شد
+    provider_saved: ارائه دهنده با موفقیت ذخیره شد
+    secretary_saved: منشی با موفقیت ذخیره شد
+    admin_deleted: مدیر با موفقیت حذف شد
+    provider_deleted: ارائه دهنده با موفقیت حذف شد
+    secretary_deleted: منشی با موفقیت حذف شد
+    service_saved: خدمت با موفقیت ذخیره شد.
+    service_category_saved: دستنه بندی خدمت با موفقیت ذخیره شد
+    service_deleted: خدمت با موفقیت حذف شد
+    service_category_deleted: دسته بندی خدمت با موفقیت حذف شد
+    customer_saved: مشتری با موفقیت ذخیره شد
+    customer_deleted: مشتری با موفقیت حذف شد
+    current_view: نمای جاری
+    working_plan: برنامه کاری
+    reset_plan: بازنشانی برنامه
+    monday: دوشنبه
+    tuesday: سه شنبه
+    wednesday: چهارشنبه
+    thursday: پنجشنبه
+    friday: جمعه
+    saturday: شنبه
+    sunday: یکشنبه
+    breaks: وقفه های کاری
+    add_breaks_during_each_day: وقفه های کاری بین روز را مشخص کنید. در این زمان ها، قراری برای ارائه دهنده ثبت نمی شود
+    day: روز
+    days: روز
+    actions: عملیات
+    reset_working_plan_hint: بازنشانی برنامه کاری به حالت پیش فرض
+    company_name: نام شرکت
+    company_name_hint: نام شرکت در همه جای سیستم نشان داده می شود (الزامی)
+    company_email: پست الکترونیک شرکت
+    company_email_hint: این پست الکترونیک شرکت خواهد بود و بعنوان آدرس ارسال کننده و دریافت کننده جواب برای ایمیل های سیستم استفاده خواهد شد (الزامی)
+    company_link: لینک شرکت
+    company_link_hint: لینک شرکت باید حاوی آدرس وب سایت شرکت باشد (الزامی)
+    go_to_booking_page: برو به صفحه ثبت ملاقات
+    settings_saved: تنظیمات با موفقیت ذخیره شد
+    general: عمومی
+    booking: رزرو
+    visible: قابل رویت
+    hidden: پنهان
+    business_logic: منطق تجارت
+    current_user: کاربر جاری
+    about_app: درباره Easy!Appointments
+    edit_working_plan_hint: در زیر روزها و ساعاتی را که شرکت شما قرار ملاقات ها را می پذیرد ، علامت گذاری کنید. شما می توانید قرارها را در ساعات غیر کاری تنظیم کنید اما مشتریان نمی توانند در دوره های غیر کاری قرار ملاقات ها را رزرو کنند. این برنامه کاری برای هر رکورد ارائه دهنده بصورت پیش فرض تنظیم خواهد شد ، هر چند برنامه کاری هر ارائه دهنده بصورت جداگانه قابل تنظیم است. بعد از آن می توانید وقفه های کاری را اضافه کنید.
+    edit_breaks_hint: وقفه های کاری را در هر روز اضافه کنید. این وقفه ها برای همه ارائه دهندگان جدید اعمال می شود.
+    book_advance_timeout: آخرین مهلت ثبت قرار
+    book_advance_timeout_hint: تعیین کنید که تا چند دقیقه قبل از جلسه، کاربر می تواند قرار ملاقات تنظیم کند
+    timeout_minutes: زمان (دقیقه)
+    about_app_info: Easy!Appointments یک نرم افزار تحت وب با قابلیت سفارشی سازی بسیار بالاست که به مشتریان شما امکان می دهد از طریق وب قرار ملاقات با شما را رزرو کنند. علاوه بر این ، توانایی همگام سازی داده های شما با Google Calendar را فراهم می کند ، بنابراین می توانید از آنها در سایر سرویس ها استفاده کنید.
+    current_version: نسخه فعلی
+    support: پشتیبانی
+    about_app_support: اگر هنگام استفاده از Easy!Appointments با مشکلی روبرو شدید می توانید در گروه رسمی Google برای یافتن پاسخ جستجو کنید. همچنین برای کمک به پیشرفت در این زمینه ممکن است لازم باشد یک Issue جدید در صفحه Google Code ایجاد کنید.
+    official_website: وبسایت رسمی
+    google_plus_community: " انجمنGoogle+"
+    support_group: گروه پشتیبانی
+    project_issues: مسائل پروژه
+    license: مجوز
+    about_app_license: 'Easy!Appointments تحت مجوز GPLv3 منتشر شده است. با استفاده از کد این نرم افزار به هر شکل، شما با قوانین موجود در لینک زیر موافقت می کنید '
+    logout_success: شما با موفقیت از سیستم خارج شدید! برای رفتن به صفحه دیگری ، روی یکی از دکمه های زیر کلیک کنید.
+    book_appointment_title: ثبت قرار ملاقات
+    backend_section: بخش مدیریت
+    you_need_to_login: خوش آمدید! برای دسترسی به پنل مدیریت نیاز به ورود دارید
+    enter_username_here: نام کاربری را اینجا وارد کنید...
+    enter_password_here: رمز عبور را اینجا وارد کنید ...
+    login: ورود
+    forgot_your_password: رمزتان را فراموش کرده اید؟
+    login_failed: ورود ناموفق بود ، لطفاً نام کاربری و رمز صحیح را وارد کنید و دوباره امتحان کنید.
+    type_username_and_email_for_new_password: برای دریافت رمز عبور جدید، نام کاربری و آدرس پست الکترونیکی خود را وارد کنید
+    enter_email_here: پست الکترونیک خود را اینجا وارد کنید ...
+    regenerate_password: بازسازی رمز عبور
+    go_to_login: بازگشت به صفحه ورود
+    new_password_sent_with_email: رمز ورود جدید شما با ایمیل برای شما ارسال شده است.
+    new_account_password: رمز جدید حساب کاربری
+    new_password_is: رمز ورود حساب جدید شما $password است. لطفاً این ایمیل را ذخیره کنید تا در صورت لزوم رمزعبور خود را بازیابی کنید. همچنین می توانید این رمز عبور را با یک رمز ورود جدید در صفحه تنظیمات تغییر دهید.
+    delete_record_prompt: آیا از حذف این مورد اطمینان دارید؟ این عمل برگشت پذیر نیست!
+    delete_admin: حذف مدیر
+    delete_customer: حذف مشتری
+    delete_service: حذف خدمت
+    delete_service_category: حذف دسته بندی خدمت
+    delete_provider: حذف ارائه دهنده
+    delete_secretary: حذف منشی
+    delete_appointment: حذف قرار
+    delete_unavailability: حذف دوره در دسترس نبودن
+    delete: حذف
+    unexpected_issues: مشکلات غیرمنتظره
+    unexpected_issues_message: عملیات کامل نشد.
+    close: بستن
+    page_not_found: صفحه پیدا نشد
+    page_not_found_message: متأسفانه صفحه ای که شما درخواست کرده اید وجود ندارد. لطفاً URL مرورگر خود را بررسی کنید یا با استفاده از دکمه های زیر به مکان دیگری بروید.
+    error: خطا
+    no_privileges: مجوز وجود ندارد
+    no_privileges_message: شما برای مشاهده این صفحه مجوز لازم را ندارید. لطفا به بخش دیگری بروید.
+    backend_calendar: Backend تقویم
+    start_date_time: تاریخ و زمان شروع
+    end_date_time: تاریخ و زمان پایان
+    licensed_under: تحت مجوز
+    unexpected_issues_occurred: خطای پیش بینی نشده رخ داد
+    service_communication_error: خطایی در ارتباط با سرور به وجود آمد. لطفا مجددا سعی کنید
+    no_privileges_edit_appointments: شما اجازه ویرایش این قرار ملاقات را ندارید
+    unavailability_updated: زمان تعطیلی با موفقیت ذخیره شد
+    appointments: قرارهای ملاقات
+    unexpected_warnings: هشدارهای غیرمنتظره
+    unexpected_warnings_message: عملیات انجام شد ولی هشدارهایی دریافت شد
+    filter: فیلتر
+    clear: پاک کردن
+    uncategorized: دسته بندی نشده
+    username_already_exists: نام کاربری از قبل انتخاب شده
+    password_length_notice: طول رمز عبور حداقل باید $number حرف باشد
+    general_settings: تنظیمات عمومی
+    personal_information: اطلاعات شخصی
+    system_login: ورود به سیستم
+    user_settings_are_invalid: تنظیمات کاربر اشتباه است. لطفا تنظیمات را بررسی کرده و مجددا سعی کنید
+    add_break: افزودن وقفه کاری
+    january: ژانویه
+    february: فوریه
+    march: مارس
+    april: آوریل
+    may: May
+    june: ژوئن
+    july: جولای
+    august: اوت
+    september: سپتامبر
+    october: اکتبر
+    november: نوامبر
+    december: دسامبر
+    previous: قبلی
+    next: بعدی
+    now: اکنون
+    select_time: انتخاب زمان
+    time: زمان
+    hour: ساعت
+    minute: دقیقه
+    calendar_sync_completed: همگام سازی با تقویم گوگل با موفقیت انجام شد
+    calendar_sync_failed: همگام سازی با تقویم گوگل با شکست مواجه شد. سرور در دسترس نیست
+    select_sync_calendar: انتخاب تقویم گوگل
+    select_sync_calendar_prompt: تقویمی که می خواهید قرارها روی آن ذخیره شوند را انتخاب کنید. در صورتیکه که تقویم خاصی را انتخاب نکید، بصورت اتوماتیک روی تقویم پیش فرض ذخیره می شود
+    sync_calendar_selected: تقویم گوگل با موفقیت انتخاب شد
+    oops_something_went_wrong: اوه. مشکلی پیش آمد!
+    ea_update_success: Easy!Appointments با موفقیت به روز رسانی شد
+    require_captcha: کد امنیتی لازم است
+    require_captcha_hint: بعد از فعال کردن این گزینه، کاربران قبل از ایجاد یا تغییر یک قرار ملاقات، باید یک کد امنیتی شامل حروف تصادفی را تشخیص دهند.
+    captcha_is_wrong: کد امنیتی صحیح نمی باشد. لطفا مجددا سعی کنید
+    enter_captcha_here: کد CAPTCHA را اینجا وارد کنید...
+    any_provider: هر ارائه‌دهنده‌ای
+    requested_hour_is_unavailable: متاسفانه ملاقات در زمان درخواستی امکانپذیر نمی باشد. لطفا ساعتی دیگر برای قرار خود انتخاب کنید
+    customer_notifications: اطلاعیه های مشتریان
+    customer_notifications_hint: تعیین کنید که در صورت تغییری در قرار ملاقات، به مشتری توسط پست الکترونیکی اطلاع داده شود
+    date_format: قالب تاریخ
+    date_format_hint: قالب نمایش تاریخ را تغییر دهید (D - Date, M - Month, Y - Year).
+    time_format: قالب زمان
+    time_format_hint: قالب نمایش زمان را تغییر دهید (H - Hours, M - Minutes).
+    first_weekday: اولین روز هفته
+    first_weekday_hint: اولین روز هفته را انتخاب کنید
+    google_analytics_code_hint: " کد Google Analytics را در اینجا وارد کنید تا در صفحه ثبت ملاقات قرارداده شود"
+    availabilities_type: وضعیت دسترسی پذیری
+    flexible: منعطف
+    fixed: دقیق
+    attendants_number: تعداد حاضران
+    reset_working_plan: بازگردانی برنامه کاری به حالت پیش فرض
+    legal_contents: مطالب قانونی
+    cookie_notice: اعلامیه کوکی
+    display_cookie_notice: نمایش اعلامیه کوکی
+    cookie_notice_content: اعلامیه کوکی
+    terms_and_conditions: شرایط و ضوابط
+    display_terms_and_conditions: نمایش شرایط و ضوابط
+    terms_and_conditions_content: شرایط و ضوابط
+    privacy_policy: سیاست حفظ حریم خصوصی
+    display_privacy_policy: نمایش سیاست حفظ حریم خصوصی
+    privacy_policy_content: سیاست حفظ حریم خصوصی
+    website_using_cookies_to_ensure_best_experience: این وب سایت برای اطمینان از اینکه شما بهترین تجربه را در وب سایت ما دارید ، از کوکی ها استفاده می کند.
+    read_and_agree_to_terms_and_conditions: من مطالبی که در صفحه {$link}شرایط و ضوابط {/$link} نوشته شده را خواندم و آن ها را می پذیرم.
+    read_and_agree_to_privacy_policy: من مطالبی که در صفحه {$link}سیاست حفظ حریم خصوصی{/$link} نوشته شده را خواندم و آن ها را می پذیرم.
+    delete_personal_information_hint: حذف تمامی قرارها و اطلاعات شخصی از سیستم
+    delete_personal_information: حذف اطلاعات شخصی
+    delete_personal_information_prompt: از حذف اطلاعات شخصیتان اطمینان دارید؟ این عمل برگشت پذیر نیست
+    location: محل
+    working_plan_exception: استثنا برنامه کاری
+    working_plan_exceptions: استثنائات برنامه کاری
+    working_plan_exceptions_hint: یک روز کاری خارج از روال همیشگی اضافه کنید
+    new_working_plan_exception_title: اضافه کردن یک روز کاری خارج از برنامه
+    working_plan_exception_saved: روز کاری خارج از برنامه با موفقیت ثبت شد
+    working_plan_exception_deleted: روز کاری خارج از برنامه با موفقیت حذف شد.
+    add_working_plan_exceptions_during_each_day: یک روز کاری خارج از برنامه اضافه کنید
+    add_working_plan_exception: افزودن روز کاری خارج از برنامه
+    require_phone_number: اجباری کردن شماره تلفن
+    require_phone_number_hint: در صورت فعال بودن ، هنگام رزرو قرار ملاقات ، مشتریان و کاربران باید شماره تلفن مشتری را وارد کنند
+    check_spam_folder: اگر تا دقایقی دیگر ایمیل را دریافت نکردید ، لطفاً پوشه هرزنامه خود را بررسی کنید.
+    api_token_hint: برای فعال سازی احراز هویت مبتنی بر token برای دسترسی به API برنامه، یک رمز مخفی تنظیم کنید.
+    timezone: منطقه زمانی
+    overwrite_existing_working_plans: این کار باعث بازنویسی  برنامه های کاری موجود می شود. آیا از این کار اطمینان دارید؟
+    working_plans_got_updated: تمامی برنامه های کاری به روز رسانی شدند
+    apply_to_all_providers: اعمال کردن به همه ارائه دهنده ها
+    display_any_provider: نمایش گزینه هر ارائه دهنده ای
+    display_any_provider_hint: صفحه رزرو گزینه دیگری را در اختیار شما قرار می دهد که به مشتریان امکان می دهد بدون مشخص کردن ارائه دهنده ، رزرو کنند.
+    load_more: بارگذاری موارد بیشتر
+    list: لیست
+    default: پیش فرض
+    table: جدول
+    date: تاریخ
+    about: درباره
+    booking_settings: تنظیمات رزرو
+    display: نمایش
+    require: نیاز
+    color: رنگ
+    matomo_analytics_url_hint: آدرس URL نصب Matomo خود را اضافه کنید تا ردیابی Matomo در صفحات رزرو فعال شود.
+    invalid_phone: شماره تلفن نامعتبر.
+    legal: قانونی
+    business: کسب و کار
+    account: حساب
+    disable_booking: غیرفعال کردن رزرو
+    disable_booking_hint: صفحه رزرو تا زمانی که این تنظیم فعال باشد غیرفعال خواهد شد و مشتریان قادر به ثبت رزروهای جدید نخواهند بود.
+    display_message: نمایش پیام
+    booking_is_disabled: رزرو غیرفعال است!
+    appearance: ظاهر
+    company_logo: آرم شرکت
+    company_logo_hint: آرم شرکت در بسیاری از مکان‌های اپلیکیشن، از جمله صفحه رزرو و ایمیل‌های اطلاع‌رسانی نمایش داده خواهد شد (فایل تصویر، حداکثر 2MB).
+    company_color: رنگ شرکت
+    company_color_hint: رنگ شرکت در سراسر اپلیکیشن اعمال خواهد شد تا اپلیکیشن از برندینگ شما استفاده کند.
+    localization: محلی‌سازی
+    integrations: ادغام‌ها
+    company: شرکت
+    remove: حذف
+    login_button: دکمه ورود
+    display_login_button_hint: مشخص می‌کند که آیا دکمه ورود در صفحه رزرو نمایش داده می‌شود یا خیر.
+    private: خصوصی
+    private_hint: سوابق خصوصی در صفحات عمومی مانند صفحه رزرو نمایش داده یا پردازش نخواهند شد.
+    reset: بازنشانی
+    all: همه
+    booking_link: لینک رزرو
+    add_new_event: افزودن رویداد جدید
+    what_kind_of_event: چه نوع رویدادی می‌خواهید اضافه کنید؟
+    theme: تم
+    limit_customer_access: محدود کردن دسترسی مشتری
+    limit_customer_access_hint: اگر فعال شود، ارائه‌دهندگان و منشی‌ها فقط قادر خواهند بود به مشتریانی که با آنها قرار ملاقات دارند دسترسی پیدا کنند.
+    url: آدرس URL
+    secret_token: توکن مخفی
+    verify_ssl: تأیید SSL
+    appointment_save: ذخیره قرار ملاقات
+    appointment_delete: حذف قرار ملاقات
+    unavailability_save: ذخیره عدم دسترسی
+    unavailability_delete: حذف عدم دسترسی
+    customer_save: ذخیره مشتری
+    customer_delete: حذف مشتری
+    service_save: ذخیره خدمات
+    service_delete: حذف خدمات
+    service_category_save: ذخیره دسته‌بندی
+    service_category_delete: حذف دسته‌بندی
+    provider_save: ذخیره ارائه‌دهنده
+    provider_delete: حذف ارائه‌دهنده
+    secretary_save: ذخیره منشی
+    secretary_delete: حذف منشی
+    admin_save: ذخیره مدیر
+    admin_delete: حذف مدیر
+    options: گزینه‌ها
+    webhooks: وب‌هوک‌ها
+    webhooks_info: وب‌هوک‌ها به شما امکان می‌دهند تا اطلاع‌رسانی‌های HTTP را به برنامه‌های وب خارجی ارسال کنید در پاسخ به رویدادهای مختلف برنامه، مانند ایجاد قرار ملاقات یا حذف مشتری.
+    integrations_info: ادغام‌ها به شما امکان می‌دهند تا ارتباطات شخص ثالث با برنامه‌ها و API‌های خارجی برقرار کنید.
+    configure: پیکربندی
+    google_analytics: گوگل آنالیتیکس
+    google_analytics_info: گوگل آنالیتیکس به شما امکان می‌دهد تا کد ردیابی و نشانه‌گذاری HTML را به صفحه عمومی اضافه کنید و تمام جلسات رزرو عمومی را ردیابی کنید.
+    matomo_analytics: ماتومو آنالیتیکس
+    matomo_analytics_info: Matomo Analytics به شما امکان می‌دهد تا کد ردیابی و نشانه‌گذاری HTML را به صفحه عمومی اضافه کنید و تمام جلسات رزرو عمومی را ردیابی کنید.
+    api: API
+    api_info: API به شما امکان می‌دهد تا با تمام داده‌های Easy!Appointments از طریق پروتکل HTTP و نقاط پایانی API موجود تعامل کنید و ادغام‌های خود را ایجاد کنید.
+    google_analytics_code: کد گوگل آنالیتیکس
+    matomo_analytics_url: آدرس URL Matomo Analytics
+    future_booking_limit: محدودیت رزرو آینده
+    limit_days: محدودیت (روزها)
+    future_booking_limit_hint: محدودیت آینده به روزها را تنظیم کنید که مشتریان می‌توانند از طریق صفحه رزرو عمومی قرار ملاقات‌ها را ثبت کنند.
+    api_token: توکن API
+    allow_rescheduling_cancellation_before: اجازه به تغییر زمان/لغو قبل از
+    at_least_one_field: حداقل یک فیلد باید در صفحه رزرو نمایش داده شود.
+    status: وضعیت
+    appointment_status_options: گزینه‌های وضعیت قرار ملاقات
+    appointment_status_options_info: فهرستی از گزینه‌های وضعیت قرار ملاقات موجود را تعریف کنید که می‌توان از آنها در صفحه تقویم استفاده کرد (اولین گزینه به طور خودکار به عنوان مقدار پیش‌فرض انتخاب خواهد شد).
+    sunday_short: ی
+    monday_short: ش
+    tuesday_short: د
+    wednesday_short: س
+    thursday_short: چ
+    friday_short: ج
+    saturday_short: ش
+    january_short: ژان
+    february_short: فبر
+    march_short: مار
+    april_short: آپر
+    may_short: مه
+    june_short: ژوئن
+    july_short: ژو
+    august_short: اگست
+    september_short: سپتام
+    october_short: اکتبر
+    november_short: نوام
+    december_short: دسام
+    am: ق.ظ
+    pm: ب.ظ
+    to: تا
+    click_to_toggle: کلیک کنید برای تغییر وضعیت
+    week_short: هفته
+    scroll_to_increment: برای افزایش پیمایش کنید
+    year: سال
+    make_non_working_day: این ارائه‌دهنده در روز انتخاب شده برای کار در دسترس نخواهد بود.
+    no_breaks: بدون استراحت
+    service_categories: دسته‌بندی‌های خدمات
+    service_category: دسته‌بندی خدمات
+    blocked_period_saved: دوره مسدود شده با موفقیت ذخیره شد.
+    blocked_period_deleted: دوره مسدود شده با موفقیت حذف شد.
+    delete_blocked_period: حذف دوره مسدود شده
+    blocked_period: دوره مسدود شده
+    blocked_periods: دوره‌های مسدود شده
+    blocked_period_save: ذخیره دوره مسدود شده
+    blocked_period_delete: حذف دوره مسدود شده
+    blocked_periods_hint: دوره‌های زمانی را تعریف کنید که در آن‌ها رزروهای عمومی برای همه ارائه‌دهندگان غیرفعال خواهد شد (مثلاً تاریخ‌های بسته، تعطیلات و غیره).
+    custom_field: فیلد سفارشی
+    custom_fields: فیلدهای سفارشی
+    label: برچسب
+    webhook_saved: وب‌هوک با موفقیت ذخیره شد.
+    webhook_deleted: وب‌هوک با موفقیت حذف شد.
+    delete_webhook: حذف وب‌هوک
+    contact_info: اطلاعات تماس
+    hide_from_public: پنهان از عموم
+    matomo_analytics_site_id: شناسه سایت Matomo Analytics
+    matomo_analytics_site_id_hint: شناسه سایت را که توسط Matomo پیگیری خواهد شد تنظیم کنید (سایت پیش‌فرض دارای شناسه "1" است).
+    default_timezone: منطقه زمانی پیش‌فرض
+    default_timezone_hint: مقدار منطقه زمانی پیش‌فرض را که برای رکوردهای جدید استفاده خواهد شد تنظیم کنید.
+    default_language: زبان پیش‌فرض
+    default_language_hint: مقدار زبان پیش‌فرض را که برای رکوردهای جدید استفاده خواهد شد تنظیم کنید.
+    sync_method_prompt: کدام روش همگام‌سازی را می‌خواهید استفاده کنید؟
+    caldav_server: سرور CalDAV
+    caldav_connection_info_prompt: لطفاً اطلاعات اتصال تقویم هدف CalDAV را وارد کنید.
+    connect: اتصال
+    ldap: LDAP
+    ldap_info: این ادغام به شما امکان می‌دهد به یک سرور LDAP موجود متصل شوید و به‌طور خودکار کاربران را به Easy!Appointments وارد کنید و به آن‌ها اجازه دهید با رمز عبور دایرکتوری خود SSO کنند (نام کاربری باید مطابقت داشته باشد).
+    host: میزبان
+    port: پورت
+    user_dn: User DN
+    base_dn: Base DN
+    keyword: کلیدواژه
+    ldap_search_hint: یک کلیدواژه ارائه دهید تا از طریق دایرکتوری LDAP برای کاربران مطابق با معیارهای فیلتر جستجو کنید.
+    ldap_extension_not_loaded: افزونه LDAP PHP بارگذاری نشده است، اما برای عملکرد این ادغام ضروری است.
+    field_mapping: نقشه‌برداری فیلد
+    content: محتوا
+    active: فعال
+    user_imported: رکورد کاربر با موفقیت وارد شد.
+    import: وارد کردن
+    ldap_dn: LDAP DN
+    role: نقش
+    at_least_one_field_required: حداقل یک فیلد باید به‌عنوان فیلد مورد نیاز در صفحه رزرو تنظیم شود.
+    customer_is_already_booked: این مشتری در دوره رزرو درخواستی قبلاً یک قرار ملاقات دارد.
+    fields: فیلدها
+    invalid_credentials_provided: اعتبارنامه‌های نامعتبر ارائه شده است، لطفاً دوباره تلاش کنید.
+    calendar_url: URL تقویم
+    please_select: لطفاً انتخاب کنید
+    secret_header: سرآیند محرمانه
+    search: جستجو
+    slot_interval: فاصله زمانی (دقیقه)
+    jitsi: جیتسی
+    jitsi_info: ایجاد خودکار لینک جلسه Jitsi را برای نوبت‌ها فعال کنید. در صورت فعال‌سازی، یک لینک تماس تصویری Jitsi منحصر به فرد ایجاد و به عنوان لینک جلسه ذخیره می‌شود.
+    altcha: ALTCHA
+    altcha_info: ALTCHA یک جایگزین CAPTCHA متن‌باز و متمرکز بر حریم خصوصی است که از اثبات کار برای تأیید کاربران انسانی بدون ردیابی استفاده می‌کند.
+    altcha_enabled_hint: در صورت فعال‌سازی، ALTCHA به جای CAPTCHA تصویری سنتی برای تأیید فرم استفاده خواهد شد.
+    altcha_hmac_key: کلید HMAC
+    altcha_hmac_key_hint: یک کلید محرمانه که برای امضا و تأیید چالش‌های ALTCHA استفاده می‌شود. برای ایجاد کلید امن جدید روی ایجاد کلیک کنید.
+    altcha_max_number: حداکثر عدد
+    altcha_max_number_hint: 'حداکثر عدد برای چالش اثبات کار. مقادیر بالاتر سختی را افزایش می‌دهند (پیش‌فرض: 100000).'
+    altcha_expires: انقضا (ثانیه)
+    altcha_expires_hint: 'مدت زمانی که یک چالش به ثانیه معتبر باقی می‌ماند (پیش‌فرض: 300).'
+    altcha_key_generated: کلید HMAC جدید با موفقیت ایجاد شد.
+    altcha_enabled: فعال‌سازی ALTCHA
+    altcha_captcha_not_active_warning: تنظیم CAPTCHA در حال حاضر فعال نیست. ALTCHA استفاده نخواهد شد مگر اینکه CAPTCHA در تنظیمات فعال شود
+    generate: ایجاد
+    meeting_link: لینک جلسه
+    google_calendar: تقویم گوگل
+    google_calendar_info: همگام‌سازی Google Calendar را برای همگام‌سازی نوبت‌ها با حساب‌های Google Calendar ارائه‌دهندگان فعال کنید.
+    google_client_id: شناسه کلاینت
+    google_client_id_info: شناسه کلاینت از پروژه Google Cloud Console شما.
+    google_client_secret: رمز کلاینت
+    google_client_secret_info: رمز کلاینت از پروژه Google Cloud Console شما.
+    google_calendar_setup_info: 'برای فعال‌سازی همگام‌سازی Google Calendar، باید یک پروژه در Google Cloud Console ایجاد کنید، Google Calendar API را فعال کنید و اعتبارنامه‌های OAuth 2.0 بسازید. مراجعه کنید:'
+    google_meet_link_generation: ایجاد لینک‌های Google Meet
+    google_meet_link_generation_info: به‌طور خودکار یک لینک ویدئو کنفرانس Google Meet برای نوبت‌های همگام‌شده ایجاد کنید. لینک جلسه در فیلد لینک جلسه نوبت ذخیره خواهد شد.
+    display_add_to_google_calendar: نمایش دکمه "افزودن به Google Calendar"
+    display_add_to_google_calendar_info: دکمه "افزودن به Google Calendar" را در صفحه تأیید رزرو نمایش دهید تا مشتریان بتوانند به‌راحتی نوبت خود را به تقویم شخصی Google Calendar خود اضافه کنند.
+    select_all: انتخاب همه
+    select_none: لغو انتخاب همه
+    appointment_update: به‌روزرسانی قرار ملاقات
+    notify_users_on_update_question: آیا می‌خواهید درباره این تغییر اطلاع‌رسانی ارسال کنید؟
+    'yes': بله
+    'no': خیر
+    latest_blog_posts: آخرین پست‌های وبلاگ
+    loading: در حال بارگذاری
+    blog_posts_load_error: امکان بارگذاری پست‌های وبلاگ وجود ندارد. لطفاً برای به‌روزرسانی‌ها به وب‌سایت رسمی مراجعه کنید.
+    provider_has_conflicting_appointment: ارائه‌دهنده انتخاب شده در آن زمان قرار ملاقات دیگری دارد. لطفاً زمان یا ارائه‌دهنده دیگری انتخاب کنید.
+    would_you_like_to_proceed: آیا می‌خواهید ادامه دهید؟
+    proceed: ادامه
+    no_available_service_providers: هیچ خدماتی در دسترس نیست
+    no_available_service_providers_message: در حال حاضر هیچ خدمات یا ارائه‌دهنده‌ای برای رزرو در دسترس نیست. لطفاً بعداً بررسی کنید یا برای کمک با ما تماس بگیرید.
+    reset_password: بازنشانی رمز عبور
+    new_password: رمز عبور جدید
+    enter_new_password: رمز عبور جدید خود را در زیر وارد کنید.
+    password_reset_request: درخواست بازنشانی رمز عبور
+    password_reset_email_message: شما درخواست بازنشانی رمز عبور خود را داده‌اید. برای تنظیم رمز عبور جدید برای حساب خود روی دکمه زیر کلیک کنید.
+    password_reset_link_expires: این لینک تا 1 ساعت دیگر منقضی می‌شود.
+    password_reset_ignore_message: اگر درخواست بازنشانی رمز عبور نداده‌اید، لطفاً این ایمیل را نادیده بگیرید.
+    invalid_reset_token: لینک بازنشانی رمز عبور نامعتبر است.
+    invalid_or_expired_token: لینک بازیابی رمز عبور نامعتبر است یا منقضی شده است. لطفاً درخواست جدید ارسال کنید.
+    password_reset_success: رمز عبور شما با موفقیت بازنشانی شد. به صفحه ورود هدایت خواهید شد.
+    password_reset_failed: بازنشانی رمز عبور ناموفق بود. لطفاً دوباره تلاش کنید.
+    no_password_provided: لطفاً یک رمز عبور وارد کنید.
+    type_username_and_email_for_reset_link: نام کاربری و آدرس ایمیل خود را وارد کنید تا لینک بازیابی رمز عبور دریافت کنید.
+    send_reset_link: ارسال لینک بازنشانی
+    reset_link_sent_with_email: اگر حسابی با اطلاعات ارائه شده وجود داشته باشد، لینک بازنشانی رمز عبور به ایمیل شما ارسال شده است.
+    working_plan_validation_failed: پیکربندی برنامه کاری نامعتبر یافت شد.
+    start_date: تاریخ شروع
+    end_date: تاریخ پایان
+    remember_me: اطلاعات من را به خاطر بسپار
+    remember_me_hint: اطلاعات خود را برای رزرو سریع‌تر در دفعه بعد ذخیره کنید.
+    legal_notice: اطلاعیه حقوقی
+    legal_notice_url: آدرس اطلاعیه حقوقی
+    legal_notice_url_hint: آدرس صفحه اطلاعیه حقوقی خود را وارد کنید.
+    imprint: مشخصات ناشر
+    imprint_url: آدرس مشخصات ناشر
+    imprint_url_hint: آدرس صفحه مشخصات ناشر خود را وارد کنید.
+    data_retention: نگهداری داده‌ها
+    data_retention_days: روزهای نگهداری داده‌ها
+    data_retention_days_hint: تعداد روزهایی را تعیین کنید که پس از آن داده‌های مشتری به‌طور خودکار حذف خواهند شد. برای غیرفعال کردن حذف خودکار روی 0 تنظیم کنید.
+    manage_privacy: مدیریت حریم خصوصی
+    manage_privacy_hint: برای مشاهده، به‌روزرسانی یا حذف اطلاعات شخصی خود روی لینک زیر کلیک کنید.
+    personal_information_updated: اطلاعات شخصی شما با موفقیت به‌روزرسانی شد.
+    verify: تأیید
+    verifying: در حال تأیید
+    verified: تأیید شد
+    verification_complete: تأیید کامل شد
+    verification_failed: تأیید ناموفق بود. برای تلاش مجدد کلیک کنید.
+    click_to_verify: برای تأیید اینکه انسان هستید کلیک کنید
+    altcha_verification_failed: تأیید ALTCHA ناموفق بود. لطفاً دوباره تلاش کنید.
+    premium: Premium
+    about_app_premium: ما خدمات جامع برای نرم‌افزارهای خودمیزبان ارائه می‌دهیم، از جمله توسعه سفارشی، میزبانی مدیریت‌شده، قراردادهای پشتیبانی، تغییر برند و بهبودهای مداوم — تا شما بتوانید روی کسب‌وکار خود تمرکز کنید در حالی که ما بقیه کارها را انجام می‌دهیم.
+    go_premium: دریافت Premium
+    notify_users_on_create_question: آیا می‌خواهید مشتری را از این نوبت جدید مطلع کنید؟
+    notify_users_on_delete_question: آیا می‌خواهید مشتری را از لغو نوبت مطلع کنید؟

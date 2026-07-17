@@ -32,9 +32,14 @@ namespace :openappointments do
          "#{result[:imported]} imported, #{result[:removed]} removed."
   end
 
-  desc "GDPR data retention cleanup (no-op until the hardening phase lands)"
+  desc "GDPR data retention cleanup: purge customers past data_retention_days (cron target)"
   task cleanup: :environment do
-    puts "Data retention cleanup is not implemented yet (arrives with the hardening phase)."
+    result = Cleanup.run
+    if result[:enabled]
+      puts "Data retention cleanup: deleted #{result[:deleted]} customer(s)."
+    else
+      puts "Data retention is disabled (data_retention_days = 0)."
+    end
   end
 
   desc "Back up the SQLite databases to storage/backups or the given path"

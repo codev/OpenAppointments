@@ -1,0 +1,575 @@
+---
+el:
+  ea:
+    page_title: Κράτηση Ραντεβού Με
+    service_and_provider: Υπηρεσία & Πάροχος
+    select_service: Επιλογή Υπηρεσίας
+    select_provider: Επιλογή Παρόχου
+    duration: Διάρκεια
+    minutes: Λεπτά
+    price: Τιμή
+    back: Πίσω
+    appointment_date_and_time: Ημερομηνία & Ώρα Ραντεβού
+    no_available_hours: Δεν υπάρχουν διαθέσιμες ώρες ραντεβού για την επιλεγμένη ημερομηνία. Παρακαλώ επιλέξτε άλλη ημερομηνία.
+    appointment_hour_missing: Παρακαλώ επιλέξτε μια ημερομηνία ραντεβού πριν συνεχίσετε.
+    customer_information: Πληροφορίες Πελάτη
+    first_name: Όνομα
+    last_name: Επώνυμο
+    email: Email
+    phone_number: Τηλέφωνο
+    phone: Τηλέφωνο
+    address: Διεύθυνση
+    city: Πόλη
+    zip_code: Ταχυδρομικός Κώδικας
+    notes: Σημειώσεις
+    language: Γλώσσα
+    no_language: Χωρίς γλώσσα
+    fields_are_required: Τα πεδία με * είναι υποχρεωτικά.
+    appointment_confirmation: Επιβεβαίωση Ραντεβού
+    confirm: Επιβεβαίωση
+    update: Ενημέρωση
+    cancel_appointment_hint: Πιέστε το κουμπί "Ακύρωση" για να διαγράψετε το ραντεβού από το πλάνο της εταιρείας.
+    cancel: Άκυρο
+    appointment_registered: Το ραντεβού σας καταχωρήθηκε επιτυχώς.
+    cancel_appointment_title: Ακύρωση Ραντεβού
+    appointment_cancelled: Το ραντεβού σας ακυρώθηκε επιτυχώς.
+    appointment_cancelled_title: Το Ραντεβού Ακυρώθηκε
+    reason: Αιτία
+    appointment_removed_from_schedule: Αυτό το ραντεβού διαγράφηκε από το πλάνο της εταιρείας.
+    appointment_details_was_sent_to_you: Ένα email με τις λεπτομέρειες του ραντεβού έχει σταλεί σε εσάς.
+    add_to_google_calendar: Προσθήκη στο Google Calendar
+    appointment_booked: Το ραντεβού σας κρατήθηκε επιτυχώς.
+    thank_you_for_appointment: Ευχαριστούμε για την κράτηση ραντεβού με εμάς. Παρακάτω μπορείτε να δείτε τις λεπτομέρειες του ραντεβού. Πραγματοποιείστε αλλαγές ακολουθώντας τον σύνδεσμο του ραντεβού.
+    appointment_details_title: Λεπτομέρειες Ραντεβού
+    customer_details_title: Λεπτομέρειες Πελάτη
+    service: Υπηρεσία
+    provider: Πάροχος
+    customer: Πελάτης
+    start: Έναρξη
+    end: Λήξη
+    name: Όνομα
+    appointment_link_title: Σύνδεσμος Ραντεβού
+    success: Επιτυχία.
+    appointment_added_to_your_plan: Ένα νέο ραντεβού έχει προστεθεί στο πλάνο σας.
+    appointment_link_description: Μπορείτε να πραγματοποιήσετε αλλαγές πατώντας στον σύνδεσμο του ραντεβού.
+    appointment_locked: Αδύνατη η τροποποίηση.
+    appointment_locked_message: Το ραντεβού δεν μπορεί να αλλάξει σε διάστημα λιγότερο πριν από {$limit} ώρες.
+    appointment_not_found: Το Ραντεβού Δεν Βρέθηκε.
+    appointment_does_not_exist_in_db: Το ραντεβού που ζητήσατε δεν υπάρχει πλέον στην βάση δεδομένων του συστήματος.
+    display_calendar: Προβολή Ημερολογίου
+    calendar: Ημερολόγιο
+    users: Χρήστες
+    settings: Ρυθμίσεις
+    log_out: Αποσύνδεση
+    synchronize: Συγχρονισμός
+    enable_sync: Ενεργοποίηση Συγχρ.
+    disable_sync: Απενεργοποίηση Συγχρ.
+    disable_sync_prompt: Είστε σίγουροι ότι επιθυμείτε την απενεργοποίηση συγχρονισμού του ημερολογίου;
+    reload: Επαναφόρτωση
+    appointment: Ραντεβού
+    unavailability: Μη Διαθέσιμος
+    week: Εβδομάδα
+    month: Μήνας
+    today: Σήμερα
+    not_working: Μη Εργάσιμη
+    break: Διάλειμμα
+    add: Προσθήκη
+    edit: Επεξεργασία
+    hello: Χαίρετε
+    all_day: Ολοήμερο
+    manage_appointment_record_hint: Διαχειριστείτε όλες τις εγγραφές ραντεβού των διαθέσιμων παρόχων και υπηρεσιών.
+    select_filter_item_hint: Επιλέξτε τον πάροχο ή την υπηρεσία και δείτε τα ραντεβού στο ημερολόγιο.
+    enable_appointment_sync_hint: Ενεργοποιείστε τον συγχρονισμό ραντεβού με τον λογαριασμό Google Calendar του παρόχου.
+    manage_customers_hint: Διαχειριστείτε τους καταχωρημένους πελάτες και δείτε το ιστορικό των κρατήσεών τους.
+    manage_services_hint: Διαχειριστείτε όλες τις διαθέσιμες υπηρεσίες και κατηγορίες του συστήματος.
+    manage_users_hint: Διαχειριστείτε τους χρήστες του backend (διαχειριστές, πάροχοι, γραμματείς).
+    settings_hint: Επεξεργαστείτε τις ρυθμίσεις του συστήματος ή του τρέχοντος χρήστη.
+    log_out_hint: Αποσυνδεθείτε από το σύστημα.
+    unavailability_periods_hint: Κατά την διάρκεια των μη διαθέσιμων διαστημάτων οι πάροχοι δε θα δέχονται νέα ραντεβού.
+    new_appointment_hint: Δημιουργείστε ένα νέο ραντεβού και αποθηκεύστε το στην βάση δεδομένων.
+    reload_appointments_hint: Επαναφορτώστε τα ραντεβού του ημερολογίου.
+    trigger_sync_hint: Εκκινήστε την διαδικασία συγχρονισμού με το Google Calendar.
+    appointment_updated: Το ραντεβού ενημερώθηκε επιτυχώς.
+    undo: Αναίρεση
+    appointment_details_changed: Τα στοιχεία του ραντεβού έχουν αλλάξει.
+    appointment_changes_saved: Οι αλλαγές του ραντεβού αποθηκεύτηκαν επιτυχώς.
+    save: Αποθήκευση
+    new: Νέο
+    select: Επιλογή
+    hide: Απόκρυψη
+    type_to_filter_customers: Πληκτρολογήστε για να φιλτράρετε τους πελάτες.
+    clear_fields_add_existing_customer_hint: Καθαρισμός των πεδίων και εισαγωγή νέου πελάτη.
+    pick_existing_customer_hint: Επιλογή ενός υπάρχοντος πελάτη.
+    new_appointment_title: Νέο Ραντεβού
+    edit_appointment_title: Επεξεργασία Ραντεβού
+    delete_appointment_title: Διαγραφή Ραντεβού
+    write_appointment_removal_reason: Παρακαλώ πάρτε λίγο χρόνο για να γράψετε τον λόγο για τον οποίο διαγράφετε το ραντεβού.
+    appointment_saved: Το ραντεβού αποθηκεύτηκε επιτυχώς.
+    new_unavailability_title: Νέα Μη Διαθέσιμη Περίοδος
+    edit_unavailability_title: Επεξεργασία Μη Διαθέσιμης Περιόδου
+    unavailability_saved: Η μη διαθέσιμη περίοδος αποθηκεύτηκε επιτυχώς.
+    start_date_before_end_error: Η ημερομηνία εκκίνησης είναι μεγαλύτερα από την ημερομηνία λήξης.
+    invalid_duration: Μη έγκυρη διάρκεια.
+    invalid_email: Λανθασμένη διεύθυνση email.
+    customers: Πελάτες
+    details: Λεπτομέρειες
+    no_records_found: Δεν βρέθηκαν εγγραφές ...
+    services: Υπηρεσίες
+    duration_minutes: Διάρκεια (Λεπτά)
+    currency: Νομισματική Μονάδα
+    category: Κατηγορία
+    no_category: Καμία Κατηγορία
+    description: Περιγραφή
+    categories: Κατηγορίες
+    admins: Διαχειριστές
+    providers: Πάροχοι
+    secretaries: Γραμματείς
+    mobile_number: Κινητό
+    mobile: Κινητό
+    state: Πολιτεία
+    username: Όνομα Χρήστη
+    password: Κωδικός Πρόσβασης
+    retype_password: Πληκτρολογήστε Ξανά τον Κωδικό
+    receive_notifications: Λήψη Ειδοποιήσεων
+    passwords_mismatch: Οι κωδικοί δεν ταιριάζουν.
+    admin_saved: Ο διαχειριστής αποθηκεύτηκε επιτυχώς.
+    provider_saved: Ο πάροχος αποθηκεύτηκε επιτυχώς.
+    secretary_saved: Ο γραμματέας αποθηκεύτηκε επιτυχώς.
+    admin_deleted: Ο διαχειριστής διαγράφηκε επιτυχώς.
+    provider_deleted: Ο πάροχος διαγράφηκε επιτυχώς.
+    secretary_deleted: Ο γραμματέας διαγράφηκε επιτυχώς.
+    service_saved: Η υπηρεσία αποθηκεύτηκε επιτυχώς.
+    service_category_saved: Η κατηγορία αποθηκεύτηκε επιτυχώς.
+    service_deleted: Η υπηρεσία διαγράφηκε επιτυχώς.
+    service_category_deleted: Η κατηγορία διαγράφηκε επιτυχώς.
+    customer_saved: Ο πελάτης αποθηκεύτηκε επιτυχώς.
+    customer_deleted: Ο πελάτης διαγράφηκε επιτυχώς.
+    current_view: Τρέχουσα Προβολή
+    working_plan: Πλάνο Εργασίας
+    reset_plan: Επαναφορά Πλάνου
+    monday: Δευτέρα
+    tuesday: Τρίτη
+    wednesday: Τετάρτη
+    thursday: Πέμπτη
+    friday: Παρασκευή
+    saturday: Σάββατο
+    sunday: Κυριακή
+    breaks: Διαλείμματα
+    add_breaks_during_each_day: Προσθέστε τα εργασιακά διαλείμματα στην ημέρα που αντιστοιχούν. Κατά την διάρκεια των διαλειμμάτων οι πάροχοι δεν θα αποδέχονται ραντεβού.
+    day: Ημέρα
+    days: Ημέρες
+    actions: Ενέργειες
+    reset_working_plan_hint: Επαναφορά του πλάνου εργασίας πίσω στις προεπιλεγμένες τιμές.
+    company_name: Όνομα Εταιρείας
+    company_name_hint: Το όνομα της εταιρείας θα εμφανίζεται παντού στο σύστημα (απαιτείται).
+    company_email: Email Εταιρείας
+    company_email_hint: Αυτή θα είναι η ηλεκτρονική διεύθυνση της εταιρείας. Θα χρησιμοποιείται ως η διεύθυνση του αποστολέα για τα email του συστήματος (απαιτείται).
+    company_link: Σύνδεσμος Εταιρείας
+    company_link_hint: Ο σύνδεσμος εταιρείας θα πρέπει να δείχνει στην επίσημη ιστοσελίδα της εταιρείας (απαιτείται).
+    go_to_booking_page: Πλοήγηση Στην Σελίδα Κράτησης
+    settings_saved: Οι ρυθμίσεις αποθηκεύτηκαν επιτυχώς.
+    general: Γενικά
+    booking: Κράτηση
+    visible: Ορατός
+    hidden: Κρυμμένος
+    business_logic: Επιχειρηματική Λογική
+    current_user: Τρέχων Χρήστης
+    about_app: Σχετικά με το Easy!Appointments
+    edit_working_plan_hint: Σημειώστε παρακάτω τις μέρες και ώρες στις οποίες η εταιρεία θα δέχεται τα ραντεβού. Θα είστε σε θέση να τοποθετήσετε ραντεβού σε μη εργάσιμες ώρες αλλά οι πελάτες δεν θα μπορούν από μόνοι τους να κάνουν κράτηση σε μη εργάσιμες χρονικές περιόδους. Αυτό το πλάνο εργασίας θα είναι η προεπιλεγμένη ρύθμιση για όλες τις νέες εγγραφές παρόχων υπηρεσιών αλλά θα είστε σε θέση να αλλάξετε το πλάνο του κάθε παρόχου ξεχωριστά, επεξεργάζοντας την εγγραφή του. Μετά από αυτήν την διαδικασία προσθέστε τα διαστήματα τα οποία αντιστοιχούν στα διαλείμματα.
+    edit_breaks_hint: Προσθέστε τα εργασιακά διαλείμματα στην ημέρα που αντιστοιχούν. Αυτά τα διαλείμματα θα εφαρμόζονται σε όλους τους νέους παρόχους.
+    book_advance_timeout: Χρονικό Όριο Πριν Από Κράτηση
+    book_advance_timeout_hint: Ορίστε το χρονικό περιθώριο (σε λεπτά) πριν οι πελάτες να μπορέσουν να κρατήσουν ή να τροποποιήσουν τα ραντεβού με την εταιρεία.
+    timeout_minutes: Χρονικό Όριο (Λεπτά)
+    about_app_info: Το Easy!Appointments είναι μια εξαιρετικά προσαρμόσιμη διαδικτυακή εφαρμογή η οποία επιτρέπει στους πελάτες σας να κλείνουν ραντεβού με εσάς μέσω του διαδικτύου. Επιπλέον παρέχει την δυνατότητα να συγχρονίσετε τα δεδομένα σας με το Google Calendar έτσι ώστε να μπορέσετε να τα χρησιμοποιήσετε με άλλες υπηρεσίες.
+    current_version: Τρέχουσα Έκδοση
+    support: Υποστήριξη
+    about_app_support: Αν αντιμετωπίσετε προβλήματα κατά την χρήση του Easy!Appointments μπορείτε να ψάξετε το επίσημο Google Group για απαντήσεις. Μπορείτε επίσης να δημιουργήσετε ένα νέο θέμα στην σελίδα Google Code έτσι ώστε να βοηθήσετε την πρόοδο της ανάπτυξης.
+    official_website: Επίσημη Ιστοσελίδα
+    google_plus_community: Google+ Κοινότητα
+    support_group: Group Υποστήριξης
+    project_issues: Ζητήματα Έργου
+    license: Άδεια Χρήσης
+    about_app_license: 'Το Easy!Appointments έχει αδειοδοτηθεί υπό την άδεια χρήσης GPLv3. Χρησιμοποιώντας τον κώδικα του Easy!Appointents με οποιονδήποτε τρόπο συμφωνείτε με τους όρους που περιγράφονται στον ακόλουθο σύνδεσμο:'
+    logout_success: Έχετε αποσυνδεθεί επιτυχώς! Πατήστε σε κάποιο από τα ακόλουθα κουμπιά για να πλοηγηθείτε σε άλλη σελίδα.
+    book_appointment_title: Κράτηση Ραντεβού
+    backend_section: Τμήμα Backend
+    you_need_to_login: Καλώς ήρθατε! Θα χρειαστεί να συνδεθείτε για να δείτε τις σελίδες του backend.
+    enter_username_here: Εισάγετε το όνομα χρήστη σας εδώ ...
+    enter_password_here: Εισάγετε τον κωδικό εδώ ...
+    login: Σύνδεση
+    forgot_your_password: Ξεχάσατε τον κωδικό σας;
+    login_failed: Η σύνδεση απέτυχε, παρακαλώ εισάγετε τα σωστά στοιχεία σύνδεσης και δοκιμάστε ξανά.
+    type_username_and_email_for_new_password: Εισάγετε το όνομα χρήστη και την διεύθυνση email για να λάβετε τον καινούργιο κωδικό πρόσβασης.
+    enter_email_here: Εισάγετε το email σας εδώ ...
+    regenerate_password: Παραγωγή Κωδικού
+    go_to_login: Πλοήγηση Πίσω Στην Σελίδα Σύνδεσης
+    new_password_sent_with_email: Ο νέος σας κωδικός έχει αποσταλεί με email.
+    new_account_password: Νέος Κωδικός Λογαριασμού
+    new_password_is: Ο νέος κωδικός του λογαριασμού σας είναι $password. Παρακαλώ αποθηκεύστε αυτό το email για να μπορείτε να ξαναβρείτε τον κωδικό αν είναι απαραίτητο. Μπορείτε επίσης να αλλάξετε αυτόν τον κωδικό με έναν καινούργιο στην σελίδα των ρυθμίσεων.
+    delete_record_prompt: Είστε σίγουρος ότι θέλετε να διαγράψετε αυτήν την εγγραφή; Αυτή η ενέργεια δεν μπορεί να αναιρεθεί.
+    delete_admin: Διαγραφή Διαχειριστή
+    delete_customer: Διαγραφή Πελάτη
+    delete_service: Διαγραφή Υπηρεσίας
+    delete_service_category: Διαγραφή Κατηγορίας
+    delete_provider: Διαγραφή Παρόχου
+    delete_secretary: Διαγραφή Γραμματέα
+    delete_appointment: Διαγραφή Ραντεβού
+    delete_unavailability: Διαγραφή Μη Διαθέσιμης Περιόδου
+    delete: Διαγραφή
+    unexpected_issues: Απροσδόκητα Ζητήματα
+    unexpected_issues_message: Η λειτουργία δεν ολοκληρώθηκε.
+    close: Κλείσιμο
+    page_not_found: Η Σελίδα Δεν Βρέθηκε
+    page_not_found_message: Δυστυχώς η σελίδα που ζητήσατε δεν υπάρχει. Παρακαλώ ελέγξτε την διεύθυνση του περιηγητή σας ή πηγαίνετε σε κάποια από τις παρακάτω τοποθεσίες.
+    error: Σφάλμα
+    no_privileges: Ανεπαρκή Δικαιώματα
+    no_privileges_message: Δεν έχετε τα απαραίτητα δικαιώματα για να δείτε αυτήν την σελίδα. Παρακαλώ πλοηγηθείτε σε κάποιο άλλο τμήμα.
+    backend_calendar: Ημερολόγιο Backend
+    start_date_time: Ημ. / Ώρα Έναρξης
+    end_date_time: Ημ. / Ώρα Λήξης
+    licensed_under: Σύμφωνα Με Την Άδεια
+    unexpected_issues_occurred: Παρουσιάστηκαν απροσδόκητα προβλήματα.
+    service_communication_error: Παρουσιάστηκε σφάλμα κατά την επικοινωνία με τον διακομιστή, παρακαλώ προσπαθήστε ξανά.
+    no_privileges_edit_appointments: Δεν έχετε τα απαραίτητα δικαιώματα για να επεξεργαστείτε ραντεβού.
+    unavailability_updated: Η μη διαθέσιμη περίοδος ενημερώθηκε επιτυχώς.
+    appointments: Ραντεβού
+    unexpected_warnings: Απροσδόκητες Προειδοποιήσεις
+    unexpected_warnings_message: Η διαδικασία ολοκληρώθηκε αλλά εμφανίστηκαν κάποιες προειδοποιήσειες.
+    filter: Φιλτράρισμα
+    clear: Καθαρισμός
+    uncategorized: Χωρίς Κατηγορία
+    username_already_exists: Το όνομα χρήστη υπάρχει ήδη.
+    password_length_notice: Ο κωδικός θα πρέπει να είναι τουλάχιστον $number χαρακτήρες.
+    general_settings: Γενικές Ρυθμίσεις
+    personal_information: Προσωπικές πληροφορίες
+    system_login: Σύνδεση Στο Σύστημα
+    user_settings_are_invalid: Οι ρυθμίσεις του χρήστη δεν είναι έγκυρες. Παρακαλώ ελέγξτε τις ρυθμίσεις και προσπαθήστε ξανά.
+    add_break: Προσθήκη Διαλείμματος
+    january: Ιανουάριος
+    february: Φεβρουάριος
+    march: Μάρτιος
+    april: Απρίλιος
+    may: Μάιος
+    june: Ιούνιος
+    july: Ιούλιος
+    august: Αύγουστος
+    september: Σεπτέμβριος
+    october: Οκτώβριος
+    november: Νοέμβριος
+    december: Δεκέμβριος
+    previous: Προηγούμενο
+    next: Επόμενο
+    now: Τώρα
+    select_time: Επιλέξτε Ώρα
+    time: Χρόνος
+    hour: Ώρα
+    minute: Λεπτά
+    calendar_sync_completed: Ο συγχρονισμός με την Google ολοκληρώθηκε επιτυχώς.
+    calendar_sync_failed: 'Ο συγχρονισμός με την Google απέτυχε: Δεν μπόρεσε να πραγματοποιηθεί σύνδεση με τον server.'
+    select_sync_calendar: Επιλογή Ημερολογίου της Google
+    select_sync_calendar_prompt: Επιλέξτε το ημερολόγιο στο οποίο θέλετε να συγχρονίζεται τα ραντεβού σας. Εάν δεν θελήσετε να επιλέξετε ένα συγκεκριμένο ημερολόγιο θα χρησιμοποιηθεί το προεπιλεγμένο.
+    sync_calendar_selected: Το ημερολόγιο της Google επιλέχθηκε επιτυχώς.
+    oops_something_went_wrong: Ώχ! Κάτι πήγε στραβά.
+    ea_update_success: Το Easy!Appointments ενημερώθηκε με επιτυχία.
+    require_captcha: Απαίτηση CAPTCHA
+    require_captcha_hint: Όταν είναι ενεργοποιημένο, οι πελάτες θα χρειαστεί να πληκτρολογήσουν μια τυχαία παραγόμενη συμβολοσειρά CAPTCHA πριν κλείσουν/αποθηκεύσουν ένα ραντεβού.
+    captcha_is_wrong: Η επαλήθευση του CAPTCHA απέτυχε, παρακαλώ δοκιμάστε πάλι.
+    enter_captcha_here: Εισάγετε CAPTCHA εδώ...
+    any_provider: Οποιοσδήποτε Πάροχος
+    requested_hour_is_unavailable: Το απαιτούμενο ραντεβού δεν είναι δυστυχώς διαθέσιμο. Παρακαλώ επιλέξτε κάποια άλλη ώρα για το ραντεβού σας.
+    customer_notifications: Ειδοποιήσεις Πελατών
+    customer_notifications_hint: Ορίζει αν οι πελάτες θα λαμβάνουν ειδοποιήσεις μέσω email κάθε φορά που θα υπαχει μια αλλαγή σε κάποιο από τα ραντεβού τους.
+    date_format: Μορφή Ημερομηνίας
+    date_format_hint: Αλλάξτε την μορφή ημερομηνίας (D - Ημέρα, M - Μήνας, Y - Χρόνος).
+    time_format: Μορφή Ώρας
+    time_format_hint: Αλλάξτε την μορφή ώρας (H - Ώρα, M - Λεπτά).
+    first_weekday: Πρώτη ημέρα της εβδομάδας
+    first_weekday_hint: Καθορίστε την πρώτη ημέρα της εβδομάδας στο ημερολόγιο.
+    google_analytics_code_hint: Προσθέστε τον Google Analytics Code σας για να ενεργοποιήσετε το Google Analytics tracking στις σελίδες κράτησης.
+    availabilities_type: Τύπος Διαθεσιμοτήτων
+    flexible: Ευέλικτος
+    fixed: Σταθερός
+    attendants_number: Αριθμός Παραστατών (Ταυτόχρονες κρατήσεις)
+    reset_working_plan: Επαναρυθμήστε το πλάνο εργασίας στις αρχικές του τιμές.
+    legal_contents: Νομικά Περιεχόμενα
+    cookie_notice: Ειδοποίηση Cookie
+    display_cookie_notice: Εμφάνιση Cookie Ειδοποίησης
+    cookie_notice_content: Περιεχόμενο Cookie Ειδοποίησης
+    terms_and_conditions: Όροι & Προϋποθέσεις
+    display_terms_and_conditions: Εμφάνιση Όρων & Προϋποθέσεων
+    terms_and_conditions_content: Περιεχόμενο Όρων & Προϋποθέσεων
+    privacy_policy: Πολιτική Απορρήτου
+    display_privacy_policy: Εμφάνιση Πολιτική Απορρήτου
+    privacy_policy_content: Περιεχόμενο Πολιτικής Απορρήτου
+    website_using_cookies_to_ensure_best_experience: Αυτή η ιστοσελίδα χρησιμοποιεί cookies για την παροχή της καλύτερης δυνατής εμπειρίας χρήστη.
+    read_and_agree_to_terms_and_conditions: Διάβασα και αποδέχομαι τους {$link}Όρους & Προϋποθέσεις{/$link}.
+    read_and_agree_to_privacy_policy: Διάβασα και αποδέχομαι την {$link}Πολιτική Απορρήτου{/$link}.
+    delete_personal_information_hint: Κατάργηση όλων των ραντεβού σας και των προσωπικών σας πληροφοριών από το σύστημα.
+    delete_personal_information: Διαγραφή Προσωπικών Πληροφοριών
+    delete_personal_information_prompt: Είστε σίγουρος ότι θέλετε να διαγράψετε τις προσωπικές σας πληροφορίες; Αυτή η ενέργεια δεν μπορεί να αναιρεθεί.
+    location: Τοποθεσία
+    working_plan_exception: Εξαιρέση Πλάνου Εργασίας
+    working_plan_exceptions: Εξαιρέσεις Πλάνου Εργασίας
+    working_plan_exceptions_hint: Προσθέστε μια εξαίρεση πλάνου εργασίας, εκτός του κανονικού πλάνου εργασίας.
+    new_working_plan_exception_title: Νέα Εξαίρεση Πλάνου Εργασίας
+    working_plan_exception_saved: Η εξαίρεση πλάνου εργασίας αποθηκεύτηκε επιτυχώς.
+    working_plan_exception_deleted: Η εξαίρεση πλάνου εργασίας διαγράφηκε επιτυχώς.
+    add_working_plan_exceptions_during_each_day: Προσθέστε μια εξαίρεση πλάνου εργασίας, εκτός του κανικού πλάνου εργασίας.
+    add_working_plan_exception: Προσθήκη Εξαίρεσης Πλάνου Εργασίας
+    require_phone_number: Απαίτηση Αριθμού Τηλεφώνου
+    require_phone_number_hint: Όταν ενεργοποιημένο, οι πελάτες και οι χρήστες θα χρειαστούν να καταχωρήσουν τον τηλεφωνικό αριθμό του πελάτη κατα την διάρκεια της κράτησης ραντεβού.
+    check_spam_folder: Παρακαλώ ελέγξτε τον φάκελο spam εφόσον το ηλεκτρονικό μήνυμα δεν έχει ληφθεί.
+    api_token_hint: Καταχωρήστε εναν μυστικό κωδικό για να μπορέσετε να ενεργοποιήσετε την token-based πιστοποίηση του Easy!Appointments API.
+    timezone: Ζώνη Ώρας
+    overwrite_existing_working_plans: Αυτό θα αντικαταστήσει το υπάρχον πλάνο εργασίας του παρόχου, είστε σίγουρος ότι θέλετε να συνεχίσετε;
+    working_plans_got_updated: Όλα τα πλάνα εργασίας έχουν ενημερωθεί.
+    apply_to_all_providers: Εφαρμογή σε όλους τος παρόχους
+    display_any_provider: Προβολή Οποιοδήποτε Παρόχου
+    display_any_provider_hint: Η σελίδα κράτησης θα εμφανίσει μια επιπλέον επιλογή η οποία θα επιτρέπει στους πελάτης να κάνουν κρατήσεις, χωρίς να επιλέξουν κάποιο πάροχο.
+    load_more: Φόρτωση Περισσότερων
+    list: Λίστα
+    default: Προεπιλεγμένο
+    table: Πίνακας
+    date: Ημερομηνία
+    about: Σχετικά με το
+    booking_settings: Ρυθμίσεις κράτησης
+    display: Εμφάνιση
+    require: Απαιτείται
+    color: Χρώμα
+    matomo_analytics_url_hint: Προσθέστε τη διεύθυνση URL στη δική σας εγκατάσταση Matomo για να ενεργοποιήσετε την παρακολούθηση Matomo στις σελίδες κρατήσεων.
+    invalid_phone: Μη έγκυρος αριθμός τηλεφώνου.
+    legal: Νομικό
+    business: Επιχείρηση
+    account: Λογαριασμός
+    disable_booking: Απενεργοποίηση κράτησης
+    disable_booking_hint: Η σελίδα κρατήσεων θα είναι απενεργοποιημένη για όσο διάστημα είναι ενεργή αυτή η ρύθμιση και οι πελάτες δεν θα μπορούν να καταχωρούν νέα ραντεβού.
+    display_message: Εμφάνιση μηνύματος
+    booking_is_disabled: Η κράτηση είναι απενεργοποιημένη!
+    appearance: Εμφάνιση
+    company_logo: Λογότυπο της εταιρείας
+    company_logo_hint: Το λογότυπο της εταιρείας θα εμφανίζεται σε πολλά σημεία της εφαρμογής, συμπεριλαμβανομένης της σελίδας κρατήσεων και των μηνυμάτων ηλεκτρονικού ταχυδρομείου ειδοποίησης (αρχείο εικόνας, μέγιστο μέγεθος 2MB).
+    company_color: Χρώμα εταιρείας
+    company_color_hint: Το χρώμα της εταιρείας θα εφαρμοστεί σε όλη την εφαρμογή, ώστε η εφαρμογή να χρησιμοποιεί το branding σας.
+    localization: Εντοπισμός
+    integrations: Ενσωματώσεις
+    company: Εταιρεία
+    remove: Αφαίρεση
+    login_button: Κουμπί σύνδεσης
+    display_login_button_hint: Καθορίζει εάν το κουμπί σύνδεσης εμφανίζεται στη σελίδα κράτησης.
+    private: Ιδιωτικό
+    private_hint: Οι ιδιωτικές εγγραφές δεν θα εμφανίζονται ούτε θα υποβάλλονται σε επεξεργασία σε δημόσιες σελίδες, όπως η σελίδα κρατήσεων.
+    reset: Επαναφορά
+    all: Όλα
+    booking_link: Σύνδεσμος κράτησης
+    add_new_event: Προσθήκη νέου συμβάν
+    what_kind_of_event: Τι είδους συμβάν θέλετε να προσθέσετε;
+    theme: Θέμα
+    limit_customer_access: Περιορισμός πρόσβασης πελατών
+    limit_customer_access_hint: Εάν είναι ενεργοποιημένο, οι πάροχοι και οι γραμματείς θα μπορούν να έχουν πρόσβαση μόνο στους πελάτες με τους οποίους έχουν ραντεβού.
+    url: URL
+    secret_token: Συνθηματικό Token
+    verify_ssl: Επαλήθευση SSL
+    appointment_save: Αποθήκευση ραντεβού
+    appointment_delete: Διαγραφή ραντεβού
+    unavailability_save: Μη διαθεσιμότητα Αποθήκευση
+    unavailability_delete: Μη διαθεσιμότητα Διαγραφή
+    customer_save: Αποθήκευση πελάτη
+    customer_delete: Διαγραφή πελάτη
+    service_save: Υπηρεσία Αποθήκευση
+    service_delete: Διαγραφή υπηρεσίας
+    service_category_save: Κατηγορία Αποθήκευση
+    service_category_delete: Κατηγορία Delete
+    provider_save: Πάροχος Αποθήκευση
+    provider_delete: Πάροχος Διαγραφή
+    secretary_save: Γραμματέας Αποθήκευση
+    secretary_delete: Γραμματέας Διαγραφή
+    admin_save: Διαχειριστής Αποθήκευση
+    admin_delete: Διαχειριστής Διαγραφή
+    options: Επιλογές
+    webhooks: Webhooks
+    webhooks_info: Τα Webhooks σάς επιτρέπουν να στέλνετε ειδοποιήσεις HTTP σε εξωτερικές εφαρμογές ιστού ως απόκριση σε διάφορα συμβάντα της εφαρμογής, όπως η δημιουργία ενός ραντεβού ή η διαγραφή ενός πελάτη.
+    integrations_info: Οι ενσωματώσεις σας επιτρέπουν να πραγματοποιείτε συνδέσεις τρίτων με εξωτερικές εφαρμογές και API.
+    configure: Ρύθμιση παραμέτρων
+    google_analytics: Google Analytics
+    google_analytics_info: Το Google Analytics σας επιτρέπει να προσθέσετε αυτόματα τον κώδικα παρακολούθησης και τη σήμανση HTML στη δημόσια σελίδα και να παρακολουθείτε όλες τις δημόσιες συνεδρίες κρατήσεων.
+    matomo_analytics: Matomo Analytics
+    matomo_analytics_info: Τα Matomo Analytics σας επιτρέπουν να προσθέσετε αυτόματα τον κώδικα παρακολούθησης και τη σήμανση HTML στη δημόσια σελίδα και να παρακολουθείτε όλες τις δημόσιες συνεδρίες κρατήσεων.
+    api: API
+    api_info: Το API σας επιτρέπει να αλληλεπιδράτε με όλα τα δεδομένα του Easy!Appointments μέσω του πρωτοκόλλου HTTP και των διαθέσιμων σημείων τερματισμού API και να δημιουργείτε τις δικές σας ενσωματώσεις.
+    google_analytics_code: Κώδικας Google Analytics
+    matomo_analytics_url: Διεύθυνση URL του Matomo Analytics
+    future_booking_limit: Μελλοντικό όριο κρατήσεων
+    limit_days: Όριο (ημέρες)
+    future_booking_limit_hint: Ορίστε το μελλοντικό όριο σε ημέρες που οι πελάτες μπορούν να κλείνουν ραντεβού μέσω της δημόσιας σελίδας κρατήσεων.
+    api_token: Token API
+    allow_rescheduling_cancellation_before: Να επιτρέπεται η αναπρογραμματισμός/ακύρωση πριν από
+    at_least_one_field: Τουλάχιστον ένα πεδίο πρέπει να εμφανίζεται στη σελίδα κράτησης.
+    status: Κατάσταση
+    appointment_status_options: Επιλογές κατάστασης ραντεβού
+    appointment_status_options_info: Ορίστε μια λίστα με τις διαθέσιμες επιλογές κατάστασης ραντεβού που μπορούν να χρησιμοποιηθούν στη σελίδα του ημερολογίου (η πρώτη θα γίνει αυτόματα η προεπιλεγμένη τιμή).
+    sunday_short: Κυρ
+    monday_short: Δευ
+    tuesday_short: Τρι
+    wednesday_short: Τετ
+    thursday_short: Πέμ
+    friday_short: Παρ
+    saturday_short: Σάβ
+    january_short: Ιαν
+    february_short: Φεβ
+    march_short: Μαρ
+    april_short: Απρ
+    may_short: Μαι
+    june_short: Ιου
+    july_short: Ιου
+    august_short: Αυγ
+    september_short: Σεπ
+    october_short: Οκτ
+    november_short: Νοε
+    december_short: Δεκ
+    am: π.μ.
+    pm: μ.μ.
+    to: στο
+    click_to_toggle: Κάντε κλικ για εναλλαγή
+    week_short: Εβδ
+    scroll_to_increment: Μετακινηθείτε για να αυξήσετε
+    year: Έτος
+    make_non_working_day: Αυτός ο πάροχος δεν θα είναι διαθέσιμος για εργασία την επιλεγμένη ημέρα.
+    no_breaks: Δεν υπάρχουν διαλείμματα
+    service_categories: Κατηγορίες υπηρεσιών
+    service_category: Κατηγορία υπηρεσίας
+    blocked_period_saved: Η περίοδος αποκλεισμού αποθηκεύτηκε με επιτυχία.
+    blocked_period_deleted: Η περίοδος αποκλεισμού διαγράφηκε επιτυχώς.
+    delete_blocked_period: Διαγραφή μπλοκαρισμένης περιόδου
+    blocked_period: Αποκλεισμένη περίοδος
+    blocked_periods: Αποκλεισμένες περίοδοι
+    blocked_period_save: Αποθήκευση μπλοκαρισμένης περιόδου
+    blocked_period_delete: Διαγραφή μπλοκαρισμένης περιόδου
+    blocked_periods_hint: Ορίστε χρονικές περιόδους κατά τις οποίες οι δημόσιες κρατήσεις θα είναι απενεργοποιημένες για όλους τους παρόχους (π.χ. κλειστές ημερομηνίες, αργίες κ.λπ.).
+    custom_field: Προσαρμοσμένο πεδίο
+    custom_fields: Προσαρμοσμένα πεδία
+    label: Ετικέτα
+    webhook_saved: Το Webhook αποθηκεύτηκε με επιτυχία.
+    webhook_deleted: Webhook διαγράφηκε με επιτυχία.
+    delete_webhook: Διαγραφή Webhook
+    contact_info: Στοιχεία επικοινωνίας
+    hide_from_public: Απόκρυψη από το κοινό
+    matomo_analytics_site_id: Αναγνωριστικό ιστότοπου Matomo Analytics
+    matomo_analytics_site_id_hint: Ορίστε το αναγνωριστικό ιστότοπου που θα παρακολουθείται από το Matomo (ο προεπιλεγμένος ιστότοπος έχει το αναγνωριστικό «1»).
+    default_timezone: Προεπιλεγμένη ζώνη ώρας
+    default_timezone_hint: Ορίστε την προεπιλεγμένη τιμή της ζώνης ώρας που θα χρησιμοποιείται για τις νέες εγγραφές.
+    default_language: Προεπιλεγμένη γλώσσα
+    default_language_hint: Ορίστε την προεπιλεγμένη τιμή γλώσσας που θα χρησιμοποιείται για νέες εγγραφές.
+    sync_method_prompt: Ποια μέθοδο συγχρονισμού θα θέλατε να χρησιμοποιήσετε;
+    caldav_server: Διακομιστής CalDAV
+    caldav_connection_info_prompt: Εισάγετε τις πληροφορίες σύνδεσης του διακομιστή CalDAV του στόχου.
+    connect: Σύνδεση
+    ldap: LDAP
+    ldap_info: Αυτή η ενσωμάτωση σας επιτρέπει να συνδεθείτε σε έναν υπάρχοντα διακομιστή LDAP και να εισάγετε αυτόματα τους χρήστες στο Easy!Appointments και να τους επιτρέπετε να κάνουν SSO με τον κωδικό πρόσβασης του καταλόγου τους (το όνομα χρήστη πρέπει να ταιριάζει).
+    host: Διακομιστής
+    port: Θύρα
+    user_dn: User DN
+    base_dn: Base DN
+    keyword: Λέξη κλειδί
+    ldap_search_hint: Δώστε μια λέξη-κλειδί για την αναζήτηση στον κατάλογο LDAP για χρήστες που ταιριάζουν με τα κριτήρια του φίλτρου.
+    ldap_extension_not_loaded: Η επέκταση LDAP PHP δεν φορτώνεται, αλλά απαιτείται για να λειτουργήσει αυτή η ενσωμάτωση.
+    field_mapping: Αντιστοίχιση πεδίων
+    content: Περιεχόμενο
+    active: Ενεργό
+    user_imported: Η εγγραφή χρήστη εισήχθη με επιτυχία.
+    import: Εισαγωγή
+    ldap_dn: LDAP DN
+    role: Ρόλος
+    at_least_one_field_required: Τουλάχιστον ένα πεδίο πρέπει να έχει οριστεί ως υποχρεωτικό στη σελίδα κράτησης.
+    customer_is_already_booked: Αυτός ο πελάτης έχει ήδη ραντεβού κατά τη ζητούμενη περίοδο κράτησης.
+    fields: Πεδία
+    invalid_credentials_provided: Μη έγκυρα διαπιστευτήρια, παρακαλώ δοκιμάστε ξανά.
+    calendar_url: URL ημερολογίου
+    please_select: Παρακαλώ Επιλέξτε
+    secret_header: Μυστική κεφαλίδα
+    search: Αναζήτηση
+    slot_interval: Διάστημα χρονοθυρίδας (λεπτά)
+    jitsi: Jitsi
+    jitsi_info: Ενεργοποιήστε την αυτόματη δημιουργία συνδέσμων συνάντησης Jitsi για τα ραντεβού. Όταν είναι ενεργοποιημένο, θα δημιουργείται ένας μοναδικός σύνδεσμος βιντεοκλήσης Jitsi και θα αποθηκεύεται ως σύνδεσμος συνάντησης.
+    altcha: ALTCHA
+    altcha_info: Το ALTCHA είναι μια εναλλακτική λύση CAPTCHA εστιασμένη στην ιδιωτικότητα, ανοιχτού κώδικα, που χρησιμοποιεί απόδειξη εργασίας για την επαλήθευση ανθρώπινων χρηστών χωρίς παρακολούθηση.
+    altcha_enabled_hint: Όταν είναι ενεργοποιημένο, το ALTCHA θα χρησιμοποιείται αντί του παραδοσιακού CAPTCHA εικόνας για την επαλήθευση φορμών.
+    altcha_hmac_key: Κλειδί HMAC
+    altcha_hmac_key_hint: Ένα μυστικό κλειδί για την υπογραφή και επαλήθευση προκλήσεων ALTCHA. Κάντε κλικ στο Δημιουργία για να δημιουργήσετε ένα νέο ασφαλές κλειδί.
+    altcha_max_number: Μέγιστος αριθμός
+    altcha_max_number_hint: 'Ο μέγιστος αριθμός για την πρόκληση απόδειξης εργασίας. Υψηλότερες τιμές αυξάνουν τη δυσκολία (προεπιλογή: 100000).'
+    altcha_expires: Λήξη (δευτερόλεπτα)
+    altcha_expires_hint: 'Πόσο χρόνο παραμένει έγκυρη μια πρόκληση σε δευτερόλεπτα (προεπιλογή: 300).'
+    altcha_key_generated: Νέο κλειδί HMAC δημιουργήθηκε επιτυχώς.
+    altcha_enabled: Ενεργοποίηση ALTCHA
+    altcha_captcha_not_active_warning: Η ρύθμιση CAPTCHA δεν είναι ενεργή αυτή τη στιγμή. Το ALTCHA δεν θα χρησιμοποιηθεί εκτός εάν ενεργοποιηθεί το CAPTCHA στις
+    generate: Δημιουργία
+    meeting_link: Σύνδεσμος συνάντησης
+    google_calendar: Ημερολόγιο Google
+    google_calendar_info: Ενεργοποιήστε τον συγχρονισμό Google Calendar για να συγχρονίσετε τα ραντεβού με τους λογαριασμούς Google Calendar των παρόχων.
+    google_client_id: Αναγνωριστικό πελάτη
+    google_client_id_info: Το Αναγνωριστικό πελάτη από το έργο σας στο Google Cloud Console.
+    google_client_secret: Μυστικό πελάτη
+    google_client_secret_info: Το Μυστικό πελάτη από το έργο σας στο Google Cloud Console.
+    google_calendar_setup_info: 'Για να ενεργοποιήσετε τον συγχρονισμό Google Calendar, πρέπει να δημιουργήσετε ένα έργο στο Google Cloud Console, να ενεργοποιήσετε το Google Calendar API και να δημιουργήσετε διαπιστευτήρια OAuth 2.0. Επισκεφθείτε:'
+    google_meet_link_generation: Δημιουργία συνδέσμων Google Meet
+    google_meet_link_generation_info: Αυτόματη δημιουργία συνδέσμου βιντεοδιάσκεψης Google Meet για συγχρονισμένα ραντεβού. Ο σύνδεσμος συνάντησης θα αποθηκευτεί στο πεδίο συνδέσμου συνάντησης του ραντεβού.
+    display_add_to_google_calendar: Εμφάνιση κουμπιού "Προσθήκη στο Google Calendar"
+    display_add_to_google_calendar_info: Εμφανίστε το κουμπί "Προσθήκη στο Google Calendar" στη σελίδα επιβεβαίωσης κράτησης, επιτρέποντας στους πελάτες να προσθέσουν εύκολα το ραντεβού τους στο προσωπικό τους Google Calendar.
+    select_all: Επιλογή όλων
+    select_none: Αποεπιλογή όλων
+    appointment_update: Ενημέρωση ραντεβού
+    notify_users_on_update_question: Θέλετε να στείλετε μια ειδοποίηση για αυτή την αλλαγή;
+    'yes': Ναι
+    'no': Όχι
+    latest_blog_posts: Τελευταίες αναρτήσεις ιστολογίου
+    loading: Φόρτωση
+    blog_posts_load_error: Δεν είναι δυνατή η φόρτωση των αναρτήσεων του ιστολογίου. Επισκεφθείτε την επίσημη ιστοσελίδα για ενημερώσεις.
+    provider_has_conflicting_appointment: Ο επιλεγμένος πάροχος έχει ήδη άλλο ραντεβού εκείνη την ώρα. Παρακαλώ επιλέξτε διαφορετική ώρα ή πάροχο.
+    would_you_like_to_proceed: Θέλετε να συνεχίσετε παρόλα αυτά;
+    proceed: Συνέχεια
+    no_available_service_providers: Δεν υπάρχουν διαθέσιμες υπηρεσίες
+    no_available_service_providers_message: Δεν υπάρχουν διαθέσιμες υπηρεσίες ή πάροχοι για κράτηση αυτή τη στιγμή. Ελέγξτε αργότερα ή επικοινωνήστε μαζί μας για βοήθεια.
+    reset_password: Επαναφορά κωδικού
+    new_password: Νέος κωδικός
+    enter_new_password: Εισάγετε τον νέο σας κωδικό παρακάτω.
+    password_reset_request: Αίτημα επαναφοράς κωδικού
+    password_reset_email_message: Ζητήσατε να επαναφέρετε τον κωδικό πρόσβασής σας. Κάντε κλικ στο παρακάτω κουμπί για να ορίσετε νέο κωδικό για τον λογαριασμό σας.
+    password_reset_link_expires: Αυτός ο σύνδεσμος θα λήξει σε 1 ώρα.
+    password_reset_ignore_message: Αν δεν ζητήσατε επαναφορά κωδικού, παρακαλώ αγνοήστε αυτό το email.
+    invalid_reset_token: Ο σύνδεσμος επαναφοράς κωδικού πρόσβασης είναι άκυρος.
+    invalid_or_expired_token: Ο σύνδεσμος επαναφοράς κωδικού πρόσβασης είναι άκυρος ή έχει λήξει. Παρακαλώ ζητήστε νέο.
+    password_reset_success: Ο κωδικός πρόσβασής σας επαναφέρθηκε με επιτυχία. Θα ανακατευθυνθείτε στη σελίδα σύνδεσης.
+    password_reset_failed: Η επαναφορά κωδικού πρόσβασης απέτυχε. Παρακαλώ δοκιμάστε ξανά.
+    no_password_provided: Παρακαλώ εισάγετε έναν κωδικό πρόσβασης.
+    type_username_and_email_for_reset_link: Πληκτρολογήστε το όνομα χρήστη και τη διεύθυνση email σας για να λάβετε σύνδεσμο επαναφοράς κωδικού.
+    send_reset_link: Αποστολή συνδέσμου επαναφοράς
+    reset_link_sent_with_email: Εάν υπάρχει λογαριασμός με τα παρεχόμενα στοιχεία, ένας σύνδεσμος επαναφοράς κωδικού έχει σταλεί στο email σας.
+    working_plan_validation_failed: Βρέθηκε μη έγκυρη διαμόρφωση προγράμματος εργασίας.
+    start_date: Ημερομηνία έναρξης
+    end_date: Ημερομηνία λήξης
+    remember_me: Απομνημόνευση στοιχείων μου
+    remember_me_hint: Αποθηκεύστε τα στοιχεία σας για ταχύτερη κράτηση την επόμενη φορά.
+    legal_notice: Νομική ειδοποίηση
+    legal_notice_url: URL νομικής ειδοποίησης
+    legal_notice_url_hint: Εισάγετε το URL της σελίδας νομικής ειδοποίησης.
+    imprint: Αποτύπωμα
+    imprint_url: URL αποτυπώματος
+    imprint_url_hint: Εισάγετε το URL της σελίδας αποτυπώματος.
+    data_retention: Διατήρηση δεδομένων
+    data_retention_days: Ημέρες διατήρησης δεδομένων
+    data_retention_days_hint: Ορίστε τον αριθμό ημερών μετά τις οποίες τα δεδομένα πελατών θα διαγράφονται αυτόματα. Ορίστε 0 για απενεργοποίηση της αυτόματης διαγραφής.
+    manage_privacy: Διαχείριση απορρήτου
+    manage_privacy_hint: Κάντε κλικ στον παρακάτω σύνδεσμο για να δείτε, ενημερώσετε ή διαγράψετε τα προσωπικά σας στοιχεία.
+    personal_information_updated: Τα προσωπικά σας στοιχεία ενημερώθηκαν επιτυχώς.
+    verify: Επαλήθευση
+    verifying: Γίνεται επαλήθευση
+    verified: Επαληθεύτηκε
+    verification_complete: Η επαλήθευση ολοκληρώθηκε
+    verification_failed: Η επαλήθευση απέτυχε. Κάντε κλικ για επανάληψη.
+    click_to_verify: Κάντε κλικ για να επαληθεύσετε ότι είστε άνθρωπος
+    altcha_verification_failed: Η επαλήθευση ALTCHA απέτυχε. Παρακαλώ δοκιμάστε ξανά.
+    premium: Premium
+    about_app_premium: Προσφέρουμε ολοκληρωμένες υπηρεσίες για αυτο-φιλοξενούμενο λογισμικό, συμπεριλαμβανομένης προσαρμοσμένης ανάπτυξης, διαχειριζόμενης φιλοξενίας, συμβάσεων υποστήριξης, αλλαγής επωνυμίας και συνεχών βελτιώσεων — ώστε να μπορείτε να εστιάσετε στην επιχείρησή σας ενώ εμείς φροντίζουμε τα υπόλοιπα.
+    go_premium: Αναβάθμιση σε Premium
+    notify_users_on_create_question: Θέλετε να ειδοποιήσετε τον πελάτη για αυτό το νέο ραντεβού;
+    notify_users_on_delete_question: Θέλετε να ειδοποιήσετε τον πελάτη για την ακύρωση του ραντεβού;
