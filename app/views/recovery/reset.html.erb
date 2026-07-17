@@ -1,0 +1,14 @@
+<%# Placeholder until P2 ports the EA password reset page markup and JS. %>
+<h1>Reset Password</h1>
+<% if @token_valid %>
+  <form id="password-reset-form">
+    <input type="hidden" name="csrf_token" value="<%= form_authenticity_token %>">
+    <input type="hidden" name="token" value="<%= @token %>">
+    <label>New Password <input type="password" name="password" id="password"></label>
+    <label>Confirm Password <input type="password" name="password_confirm" id="password-confirm"></label>
+    <button type="submit" id="reset-password">Reset Password</button>
+  </form>
+<% else %>
+  <p><%= @error_message %></p>
+  <a href="<%= recovery_path %>">Request a new reset link</a>
+<% end %>

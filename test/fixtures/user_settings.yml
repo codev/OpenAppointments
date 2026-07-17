@@ -1,14 +1,14 @@
 admin:
   user: admin
   username: administrator
-  password: placeholder-hash
+  password: <%= BCrypt::Password.create("administrator1", cost: 4) %>
   calendar_view: default
   notifications: true
 
 jane:
   user: jane
   username: janedoe
-  password: placeholder-hash
+  password: <%= BCrypt::Password.create("janedoe1", cost: 4) %>
   calendar_view: default
   notifications: true
   working_plan: '{"monday":{"start":"09:00","end":"18:00","breaks":[{"start":"14:30","end":"15:00"}]},"tuesday":{"start":"09:00","end":"18:00","breaks":[]},"wednesday":null,"thursday":{"start":"09:00","end":"18:00","breaks":[]},"friday":{"start":"09:00","end":"18:00","breaks":[]},"saturday":null,"sunday":null}'
