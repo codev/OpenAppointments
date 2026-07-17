@@ -1,0 +1,28 @@
+admin:
+  first_name: John
+  last_name: Doe
+  email: john@example.org
+  role: admin
+  timezone: UTC
+
+jane:
+  first_name: Jane
+  last_name: Doe
+  email: jane@example.org
+  role: provider
+  timezone: Europe/London
+
+sam:
+  first_name: Sam
+  last_name: Smith
+  email: sam@example.org
+  role: secretary
+  timezone: UTC
+
+james:
+  first_name: James
+  last_name: Doe
+  email: james@example.org
+  phone_number: "+447700900000"
+  role: customer
+  timezone: UTC
