@@ -174,22 +174,22 @@ lt:
     hidden: Nerodomas
     business_logic: Verslo logika
     current_user: Esamasis naudotojas
-    about_app: Apie „Easy!Appointments“
+    about_app: Apie „OpenAppointments“
     edit_working_plan_hint: Žemiau nurodykite savaitės dienas ir valandas, kuriomis jūsų įmonė priima vizitus. Kurdami ar koreguodami vizitus, jūs galėsite nurodyti bet kokį laiką, net jei jis nebus darbo metu, tačiau jūsų klientai negalės patys rezervuotis vizitų ne darbo valandomis. Šis darbo grafikas bus numatytasis visiems naujiems paslaugų teikėjams, tačiau kiekvienam iš jų galėsite darbo grafiką keisti atskirai, o taip pat nurodyti pertraukų laikus, redaguodami atitinkamo paslaugų teikėjo įrašą.
     edit_breaks_hint: Įveskite numatytasias darbo pertraukas. Šios pertraukos bus taikomos visiems naujiems paslaugų teikėjams.
     book_advance_timeout: Minimalus laukimo laikas
     book_advance_timeout_hint: Nurodykite, kiek mažiausiai minučių turi praeiti nuo vizito registracijos ar perkėlimo momento iki jo numatomos pradžios, kai vizitui registruojasi ar jį perkelti nori klientas.
     timeout_minutes: Minimalus laukimo laikas (minutėmis)
-    about_app_info: "„Easy!Appointments“ – tai labai lengvai pritaikoma saityno programa, suteikianti galimybę jūsų klientams internetu registruotis vizitams pas jus. Be to, ji geba sinchronizuoti duomenis su „Google“ kalendoriumi, todėl galite ją naudoti su kitomis paslaugomis."
+    about_app_info: "„OpenAppointments“ – tai labai lengvai pritaikoma saityno programa, suteikianti galimybę jūsų klientams internetu registruotis vizitams pas jus. Be to, ji geba sinchronizuoti duomenis su „Google“ kalendoriumi, todėl galite ją naudoti su kitomis paslaugomis."
     current_version: Naudojama versija
     support: Pagalba
-    about_app_support: Jei, naudodamiesi „Easy!Appointments“, susidurtumėte su kokiomis nors problemomis, atsakymų galite ieškoti oficialioje „Google“ grupėje. Taip pat galbūt norėsite užregistruoti problemą „GitHub“ svetainėje, tokiu būdu prisidėdami prie programos vystymo.
+    about_app_support: Jei naudodamiesi OpenAppointments susidursite su problemomis, atsakymų galite ieškoti projekto GitHub problemų sąraše. Taip pat galite sukurti naują problemą, kad padėtumėte tobulinti sistemą.
     official_website: Oficiali svetainė
     google_plus_community: "„Google+“ bendruomenė"
     support_group: Pagalbos grupė
     project_issues: Problemų registras
     license: Licencija
-    about_app_license: "„Easy!Appointments“ yra platinama pagal GPLv3 licenciją. Bet kokiu būdu naudodamiesi „Easy!Appointments“ kodu, jūs sutinkate su šios licensijos sąlygomis:"
+    about_app_license: "„OpenAppointments“ yra platinama pagal GPLv3 licenciją. Bet kokiu būdu naudodamiesi „OpenAppointments“ kodu, jūs sutinkate su šios licensijos sąlygomis:"
     logout_success: Jūs sėkmingai atsijungėte! Jei norite pereiti į kitą tinklalapį, spustelėkite vieną iš toliau pateiktų mygtukų.
     book_appointment_title: Registravimasis vizitui
     backend_section: Sistemos valdymo skydelis
@@ -270,7 +270,7 @@ lt:
     select_sync_calendar_prompt: Pasirinkite kalendorių, su kuriuo norite sinchronizuoti vizitus.
     sync_calendar_selected: Sėkmingai pasirinktas kalendorius sinchronizavimui.
     oops_something_went_wrong: Oi! Kažkas nepavyko.
-    ea_update_success: "„Easy!Appointments“ sėkmingai atnaujinta."
+    ea_update_success: "„OpenAppointments“ sėkmingai atnaujinta."
     require_captcha: Reikalauti „CAPTCHA“ saugos kodo
     require_captcha_hint: Kai ši parinktis įjungta, prieš užsakydami/atnaujindami vizitą klientai turės įvesti atsitiktinai sugeneruotą saugos kodą.
     captcha_is_wrong: Saugos kodo patikra nepavyko, bandykite dar kartą.
@@ -319,7 +319,7 @@ lt:
     require_phone_number: Reikalauti telefono numerio
     require_phone_number_hint: Kai ši parinktis įjungta, rezervuodami laiką vizitui, klientai ir naudotojai turės įvesti kliento telefono numerį
     check_spam_folder: Jei laiško negausite per kelias minutes, patikrinkite nepageidaujamų laiškų aplanką.
-    api_token_hint: Nustatykite slaptą prieigos raktą, kad įjungtumėte „Easy!Appointments“ API autentifikavimą pagal prieigos raktą.
+    api_token_hint: Nustatykite slaptą prieigos raktą, kad įjungtumėte „OpenAppointments“ API autentifikavimą pagal prieigos raktą.
     timezone: Laiko juosta
     overwrite_existing_working_plans: Visi esami paslaugų teikėjų darbo grafikai bus perrašyti. Ar tikrai norite tęsti?
     working_plans_got_updated: Visi darbo grafikai atnaujinti.
@@ -395,7 +395,7 @@ lt:
     matomo_analytics: Matomo Analytics
     matomo_analytics_info: "„Matomo Analytics“ suteikia galimybę automatiškai pridėti stebėjimo kodą ir reikiamą HTML kodą į viešąjį tinklalapį ir sekti visas viešąsias registravimosi vizitams sesijas."
     api: API
-    api_info: API suteikia galimybę operuoti visais „Easy!Appointments“ duomenimis HTTP protokolu per leidžiamus API galinius taškus bei kurti savo integracijas.
+    api_info: API suteikia galimybę operuoti visais „OpenAppointments“ duomenimis HTTP protokolu per leidžiamus API galinius taškus bei kurti savo integracijas.
     google_analytics_code: "„Google Analytics“ kodas"
     matomo_analytics_url: "„Matomo Analytics“ URL"
     future_booking_limit: Ateities plano trukmė
@@ -464,7 +464,7 @@ lt:
     caldav_connection_info_prompt: Įveskite paskirties „CalDAV“ kalendoriaus serverio duomenis.
     connect: Jungtis
     ldap: LDAP
-    ldap_info: Ši integracija suteikia galimybę prisijungti prie esamo LDAP serverio, automatiškai importuoti naudotojus į „Easy!Appointments“ ir leisti jiems jungtis prie sistemos naudojantis savo LDAP slaptažodžiu (naudotojo vardas turi sutapti).
+    ldap_info: Ši integracija suteikia galimybę prisijungti prie esamo LDAP serverio, automatiškai importuoti naudotojus į „OpenAppointments“ ir leisti jiems jungtis prie sistemos naudojantis savo LDAP slaptažodžiu (naudotojo vardas turi sutapti).
     host: Serveris
     port: Prievadas
     user_dn: Naudotojo DN

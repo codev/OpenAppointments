@@ -174,22 +174,22 @@ hu:
     hidden: Rejtett
     business_logic: Üzleti logika
     current_user: Jelenlegi felhasználó
-    about_app: Easy!Appointments-ról
+    about_app: OpenAppointments-ról
     edit_working_plan_hint: Jelöld be alul azokat a napokat és órákat amikor a céged fogad bejelentkezéseket. A nem foglalható órákba az ügyfelek nem tudnak időpontokat kérni, de te tudsz beírni oda is. Ez a munkarend lesz az alapértelmezett minden újonnan felvitt szolgáltatónál, de minden egyes szolgáltató munkarendje külön szabályozható marad. Ezután hozzáadhatsz szüneteket.
     edit_breaks_hint: Add hozzá a napi szüneteket. Ezek a szünetek lesznek az alapártelmezettek minden új szolgáltatónál.
     book_advance_timeout: Időkorlát beállítása
     book_advance_timeout_hint: Add meg azt az időkorlátot (percekben) amennyivel az adott időpont előtt a vendég foglalhat vagy módosíthat egy bejelentkezést.
     timeout_minutes: Időkorlát (Percben)
-    about_app_info: Easy!Appointments egy könnyen testreszabható webes alkalmazás mely lehetővé teszi, hogy ügyfelek weben keresztül időpontokat foglalhassanak. Ezen felül lehetővé teszi, hogy szinkronizáljuk a foglalások adatait a Google naptárunkkal, így más szolgáltatásokkal is használható.
+    about_app_info: OpenAppointments egy könnyen testreszabható webes alkalmazás mely lehetővé teszi, hogy ügyfelek weben keresztül időpontokat foglalhassanak. Ezen felül lehetővé teszi, hogy szinkronizáljuk a foglalások adatait a Google naptárunkkal, így más szolgáltatásokkal is használható.
     current_version: Jelenlegi verzió
     support: Támogatás
-    about_app_support: Amennyiben problémákba ütközöl az Easy!Appointments használata közben, úgy a hivatalos Google Group-ban tudsz válaszokat keresni. Előfordulhat, hogy egy új lapot kell nyitnod a Google Code-on, hogy segítsd a további fejlesztést.
+    about_app_support: Ha bármilyen problémába ütközik az OpenAppointments használata során, válaszokért keresgélhet a projekt GitHub issue-i között. Új issue-t is nyithat, hogy segítse a fejlesztést.
     official_website: Hivatalos Honlap
     google_plus_community: Google+ Közösség
     support_group: Támogatás
     project_issues: Project Témák
     license: Licensz
-    about_app_license: 'Easy!Appointments a GPLv3 licensz alatt áll. Az Easy!Appointments forráskódját bármilyen módon használva beleegyezel az alábbi linken található felhasználási feltételekbe:'
+    about_app_license: 'OpenAppointments a GPLv3 licensz alatt áll. Az OpenAppointments forráskódját bármilyen módon használva beleegyezel az alábbi linken található felhasználási feltételekbe:'
     logout_success: Sikeresen kijelentkeztél! Kattints az alábbi gombok egyikére, hogy egy másik oldalra navigálj.
     book_appointment_title: Időpont foglalás
     backend_section: Felhasználói felület
@@ -319,7 +319,7 @@ hu:
     require_phone_number: Telefonszám Kötelező
     require_phone_number_hint: Ha engedélyezve van, az ügyfeleknek és felhasználóknak meg kell adniuk az ügyfél telefonszámát a foglaláskor.
     check_spam_folder: Kérjük, ellenőrizze a spam mappáját, ha az e-mail néhány percen belül nem érkezik meg.
-    api_token_hint: Állítson be egy titkos tokent az Easy!Appointments API token alapú hitelesítésének engedélyezéséhez.
+    api_token_hint: Állítson be egy titkos tokent az OpenAppointments API token alapú hitelesítésének engedélyezéséhez.
     timezone: Időzóna
     overwrite_existing_working_plans: Ez felülírja a meglévő szolgáltatói munkatervet, biztosan folytatni szeretné?
     working_plans_got_updated: Minden munkaterv frissítve lett.
@@ -395,7 +395,7 @@ hu:
     matomo_analytics: Matomo Analytics
     matomo_analytics_info: A Matomo Analytics lehetővé teszi, hogy automatikusan hozzáadja a nyomkövető kódot és a HTML markupot a nyilvános oldalhoz, és nyomon kövesse az összes nyilvános foglalási munkamenetet.
     api: API
-    api_info: Az API lehetővé teszi, hogy HTTP protokollon keresztül és az elérhető API végpontokon keresztül kapcsolatba lépjen az Easy!Appointments összes adatával és saját integrációkat hozzon létre.
+    api_info: Az API lehetővé teszi, hogy HTTP protokollon keresztül és az elérhető API végpontokon keresztül kapcsolatba lépjen az OpenAppointments összes adatával és saját integrációkat hozzon létre.
     google_analytics_code: Google Analytics Kód
     matomo_analytics_url: Matomo Analytics URL
     future_booking_limit: Jövőbeli foglalási korlát
@@ -464,7 +464,7 @@ hu:
     caldav_connection_info_prompt: Kérjük, adja meg a cél CalDAV Naptár kapcsolati információit.
     connect: Csatlakozás
     ldap: LDAP
-    ldap_info: Ez az integráció lehetővé teszi egy meglévő LDAP szerverhez való csatlakozást és automatikus felhasználó importálást az Easy!Appointments rendszerbe, valamint a felhasználók SSO-t a könyvtári jelszavukkal (a felhasználónévnek egyeznie kell).
+    ldap_info: Ez az integráció lehetővé teszi egy meglévő LDAP szerverhez való csatlakozást és automatikus felhasználó importálást az OpenAppointments rendszerbe, valamint a felhasználók SSO-t a könyvtári jelszavukkal (a felhasználónévnek egyeznie kell).
     host: Hoszt
     port: Port
     user_dn: Felhasználó DN

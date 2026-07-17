@@ -174,22 +174,22 @@ da:
     hidden: Skjult
     business_logic: Forretningslogik
     current_user: Nuværende bruger
-    about_app: Om Easy!Appointments
+    about_app: Om OpenAppointments
     edit_working_plan_hint: Marker under de dage og timer, som din virksomhed vil acceptere aftaler. Du vil være i stand til at justere udnævnelser i ikke arbejdstid, men kunderne vil ikke være i stand til at bestille tid af sig selv i ikke arbejdsperioder. Denne arbejdsplan vil være standard for hver ny udbyder rekord, men du vil være i stand til at ændre de enkelte udbyders plan separat ved at redigere hans rekord. Efter at du kan tilføje pauser.
     edit_breaks_hint: Tilføj pausen hver dag. Disse pauser vil være tilgængelige for alle leverandøre.
     book_advance_timeout: Book forudgående pause
     book_advance_timeout_hint: Definere pausen (i minutter) før kunderne kan booke eller redigere tidsbestillingen hos firmaet.
     timeout_minutes: Pause (minutter)
-    about_app_info: Easy!Appointments er et specielfremstillet internet applikation som giver mulighed for kunderne at booke bestillinger med dig via internettet. Endvidere leverandørens evne til at synkronisere dine data med Google kalender, så du kan bruge dem med andre tjenester.
+    about_app_info: OpenAppointments er et specielfremstillet internet applikation som giver mulighed for kunderne at booke bestillinger med dig via internettet. Endvidere leverandørens evne til at synkronisere dine data med Google kalender, så du kan bruge dem med andre tjenester.
     current_version: Nuværende version
     support: Support
-    about_app_support: Hvis du støder på nogen problemer når du bruger Easy!Appointments kan du søge i officiel Google gruppe for svar. Du må også lave en levering i google kode side for at hjælpe opstående proces.
+    about_app_support: Hvis du støder på problemer med OpenAppointments, kan du søge efter svar i projektets issues på GitHub. Du kan også oprette et nyt issue for at hjælpe udviklingen videre.
     official_website: Officiel Webside
     google_plus_community: Google+ fælleskab
     support_group: Support gruppe
     project_issues: Projekt levering
     license: Licens
-    about_app_license: Easy!Appointments er autoriseret til GPLv3 lisens. Ved at bruge koden Easy!Appointments i hvert fald, du giver samtykke til periodens beskrivelse i det følgende url.
+    about_app_license: OpenAppointments er autoriseret til GPLv3 lisens. Ved at bruge koden OpenAppointments i hvert fald, du giver samtykke til periodens beskrivelse i det følgende url.
     logout_success: Du er blevet logget ud! Klik på en af de følgende knapper for at komme til en anden side.
     book_appointment_title: Book aftale
     backend_section: Administrationsside
@@ -270,7 +270,7 @@ da:
     select_sync_calendar_prompt: vælg kalenderen du vile synkronisere med din bestilling. Hvis du ikke vil vælge en specifik kalender den normale vil blive brugt.
     sync_calendar_selected: Google kalender er blevet valgt.
     oops_something_went_wrong: Oops! Noget gik galt.
-    ea_update_success: Easy!Appointments er blevet opdateret.
+    ea_update_success: OpenAppointments er blevet opdateret.
     require_captcha: Kræv CAPTCHA
     require_captcha_hint: Når det er aktiveret, skal kunderne indtaste en tilfældigt genereret CAPTCHA-streng, før de kan booke/opdatere en aftale.
     captcha_is_wrong: CAPTCHA-verifikation fejlede, prøv venligst igen.
@@ -319,7 +319,7 @@ da:
     require_phone_number: Kræver telefonnummer
     require_phone_number_hint: Når det er aktiveret, skal kunder og brugere indtaste kundens telefonnummer, når de booker en aftale
     check_spam_folder: Tjek venligst din uønskede e-mail (spam) mappe, hvis du ikke har modtaget e-mailen inden for et par minutter.
-    api_token_hint: Indstil en hemmelig token for at aktivere tokenbaseret autentificering af Easy!Appointments API.
+    api_token_hint: Indstil en hemmelig token for at aktivere tokenbaseret autentificering af OpenAppointments API.
     timezone: Tidszone
     overwrite_existing_working_plans: Dette vil overskrive de eksisterende udbyder arbejdsplaner, er du sikker på, at du vil fortsætte?
     working_plans_got_updated: Alle arbejdsplaner er blevet opdateret.
@@ -395,7 +395,7 @@ da:
     matomo_analytics: Matomo Analytics
     matomo_analytics_info: Matomo Analytics giver dig mulighed for automatisk at tilføje sporingskoden og HTML-markup til den offentlige side og spore alle de offentlige bookingsessioner.
     api: API
-    api_info: API giver dig mulighed for at interagere med alle Easy!Appointments-data via HTTP-protokollen og de tilgængelige API-endepunkter og oprette dine egne integrationer.
+    api_info: API giver dig mulighed for at interagere med alle OpenAppointments-data via HTTP-protokollen og de tilgængelige API-endepunkter og oprette dine egne integrationer.
     google_analytics_code: Google Analytics Kode
     matomo_analytics_url: Matomo Analytics-URL
     future_booking_limit: Fremtidig Bookinggrænse
@@ -464,7 +464,7 @@ da:
     caldav_connection_info_prompt: Indtast venligst forbindelsesoplysningerne til det ønskede CalDAV-kalender.
     connect: Forbind
     ldap: LDAP
-    ldap_info: Denne integration giver dig mulighed for at oprette forbindelse til en eksisterende LDAP-server og automatisk importere brugere til Easy!Appointments og lade dem SSO med deres katalogadgangskode (brugernavnet skal matche).
+    ldap_info: Denne integration giver dig mulighed for at oprette forbindelse til en eksisterende LDAP-server og automatisk importere brugere til OpenAppointments og lade dem SSO med deres katalogadgangskode (brugernavnet skal matche).
     host: Vært
     port: Port
     user_dn: Bruger DN

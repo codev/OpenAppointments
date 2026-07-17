@@ -174,22 +174,22 @@ ca:
     hidden: Amagat
     business_logic: Lògica de negoci
     current_user: Usuari actual
-    about_app: Quant a Easy!Appointments
+    about_app: Quant a OpenAppointments
     edit_working_plan_hint: Marqueu a sota els dies i les hores en que la vostra organització acceptarà cites. Podreu ajustar les cites a les hores no laborables, però els clients no podran reservar cites en aquests períodes. Aquesta planificació de treball serà utilitzada per defecte per cada nou proveïdor, però podreu canviar cadascuna de les planificacions dels proveïdors de forma separada. Finalment, podeu afegir períodes de pausa.
     edit_breaks_hint: Afegiu pauses per a cadascun dels dies. Aquestes pauses s'aplicaran a tots els nous proveïdors.
     book_advance_timeout: Temps límit de modificació/cancel·lació
     book_advance_timeout_hint: Defineix el temps límit (en minuts) a partir del qual els clients no poden reservar una hora o modificar una cita.
     timeout_minutes: Temps límit de reserva (minuts)
-    about_app_info: Easy!Appointments és una aplicació web molt ajustable que permet als vostres clients reservar cites amb vosaltres a través del web. A més, us permet sincronitzar amb Google Calendar de manera que ho podeu usar amb altres serveis.
+    about_app_info: OpenAppointments és una aplicació web molt ajustable que permet als vostres clients reservar cites amb vosaltres a través del web. A més, us permet sincronitzar amb Google Calendar de manera que ho podeu usar amb altres serveis.
     current_version: Versió actual
     support: Suport
-    about_app_support: Si trobeu qualsevol problema fent servir Easy!Appointments, podeu consultar el Google Group per a trobar respostes. També podeu crear noves incidències a la pàgina de Google Code per ajudar al desenvolupament.
+    about_app_support: Si trobeu cap problema en utilitzar OpenAppointments, podeu cercar respostes entre les incidències del projecte a GitHub. També podeu obrir una incidència nova per ajudar al desenvolupament.
     official_website: Lloc web oficial
     google_plus_community: Comunitat Google+
     support_group: Grup de suport
     project_issues: Incidències del projecte
     license: Llicència
-    about_app_license: 'Easy!Appointments es distribueix amb una llicència GPLv3. Usant el codi d''Easy!Appointments de qualsevol forma, esteu consentint els termes descrits en la següent URL:'
+    about_app_license: 'OpenAppointments es distribueix amb una llicència GPLv3. Usant el codi d''OpenAppointments de qualsevol forma, esteu consentint els termes descrits en la següent URL:'
     logout_success: Heu sortit correctament! Cliqueu en un dels següents botons per navegar a una altra pàgina.
     book_appointment_title: Reserva una cita
     backend_section: Administració
@@ -270,7 +270,7 @@ ca:
     select_sync_calendar_prompt: Seleccioneu el calendari que voleu sincronitzar amb les vostres cites. Si no seleccioneu un calendari específic, s'usarà el calendari per defecte.
     sync_calendar_selected: El Google calendar s'ha seleccionat correctament.
     oops_something_went_wrong: Ups! Alguna cosa no ha funcionat bé.
-    ea_update_success: Easy!Appointments s'ha actualitzat correctament.
+    ea_update_success: OpenAppointments s'ha actualitzat correctament.
     require_captcha: Requereix un CAPTCHA
     require_captcha_hint: Quan s'habilita, els clients hauran de teclejar una cadena CAPTCHA generada aleatòriament abans de reservar o actualitzar una cita.
     captcha_is_wrong: La verificació del CAPTCHA ha fallat, torneu-ho a intentar.
@@ -319,7 +319,7 @@ ca:
     require_phone_number: Requereix el número de telèfon
     require_phone_number_hint: Quan està activat, els clients i els usuaris hauran d'introduir el número de telèfon al reservar una cita
     check_spam_folder: Comproveu la vostra carpeta de correu brossa si el correu no arriba en uns minuts.
-    api_token_hint: Establiu un token secret per permetre l'autenticació basada en tokens de l'API d'Easy!Appointments.
+    api_token_hint: Establiu un token secret per permetre l'autenticació basada en tokens de l'API d'OpenAppointments.
     timezone: Zona horària
     overwrite_existing_working_plans: Això sobreescriurà els plans de treball existents del proveïdor, esteu segur que voleu continuar?
     working_plans_got_updated: S'han actualitzat tots els plans de treball.
@@ -395,7 +395,7 @@ ca:
     matomo_analytics: Matomo Analytics
     matomo_analytics_info: Matomo Analytics us permet afegir automàticament el codi de seguiment i el codi HTML a la pàgina de reserves i fer el seguiment de totes les reserves.
     api: API
-    api_info: L'API us permet interaccionar amb totes les dades Easy!Appointments via el protocol HTTP i els API endpoint disponibles i crear les vostres pròpies integracions.
+    api_info: L'API us permet interaccionar amb totes les dades OpenAppointments via el protocol HTTP i els API endpoint disponibles i crear les vostres pròpies integracions.
     google_analytics_code: Codi de Google Analytics
     matomo_analytics_url: URL de Matomo Analytics
     future_booking_limit: Límit de reserves futures
@@ -464,7 +464,7 @@ ca:
     caldav_connection_info_prompt: Si us plau, introdueix la informació de connexió del Calendari CalDAV de destinació.
     connect: Connecta
     ldap: LDAP
-    ldap_info: Aquesta integració us permet connectar amb un servidor LDAP i automàticament importar els usuaris a Easy!Appointments. A més, permet que els usuaris facin SSO amb la contrasenya LDAP (el nom d'usuari ha de coincidir).
+    ldap_info: Aquesta integració us permet connectar amb un servidor LDAP i automàticament importar els usuaris a OpenAppointments. A més, permet que els usuaris facin SSO amb la contrasenya LDAP (el nom d'usuari ha de coincidir).
     host: Servidor
     port: Port
     user_dn: Usuari DN

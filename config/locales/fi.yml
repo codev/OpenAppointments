@@ -174,22 +174,22 @@ fi:
     hidden: Piilotettu
     business_logic: Työajat
     current_user: Nykyinen käyttäjä
-    about_app: Tietoja Easy!Appointments:sta
+    about_app: Tietoja OpenAppointments:sta
     edit_working_plan_hint: Merkitse päivät ja tunnit jolloin yritys vastaanottaa varauksia. Voit itse asettaa varauksia näiden aikojen ulkopuolelle, mutta asiakkaat eivät voi varata niitä itsenäisesti. Tämä työsuunnitelma on oletussuunnitelma kaikille työntekijöille.
     edit_breaks_hint: Lisää työskentelytauot. Uudet työntekijäprofiilit saavat nämä tauot oletuksena.
     book_advance_timeout: 'Ajanvaraus viimeistään (minuutteja) ennen:'
     book_advance_timeout_hint: Määrittele aika jota ennen uudet varaukset ja varauksenmuutokset on tehtävä.
     timeout_minutes: Ennakkoaika (minuuteissa)
-    about_app_info: Easy!Appointments on web-sovellus jonka avulla asiakkaasi voivat varata aikoja netissä. Lisäominaisuutena on mahdollisuus synkronoida tapaamiset Google-kalenteriin, jolloin varaustietojen käyttö muissa palveluissa on helppoa.
+    about_app_info: OpenAppointments on web-sovellus jonka avulla asiakkaasi voivat varata aikoja netissä. Lisäominaisuutena on mahdollisuus synkronoida tapaamiset Google-kalenteriin, jolloin varaustietojen käyttö muissa palveluissa on helppoa.
     current_version: Tämänhetkinen versio
     support: Tuki
-    about_app_support: Jos kohtaat ongelmia Easy!Appointmentsin käytössä voit etsiä tietoa virallisesta Google-ryhmästä. Myös GitHub sivuston kautta voit olla mukana kehityksessä.
+    about_app_support: Jos kohtaat ongelmia OpenAppointmentsin käytössä, voit etsiä vastauksia projektin GitHub-issueista. Voit myös avata uuden issuen auttaaksesi kehitystä.
     official_website: Virallinen sivusto
     google_plus_community: Google+ yhteisö
     support_group: Tukiryhmä
     project_issues: Projektin asialista
     license: Lisenssi
-    about_app_license: 'Easy!Appointments on GPLv3 lisensoitu. Käyttämällä Easy!Appointmentsia palvelutuotannossa tai muilla lisenssissä mainituilla tavoilla suostut linkissä oleviin lisenssiehtoihin:'
+    about_app_license: 'OpenAppointments on GPLv3 lisensoitu. Käyttämällä OpenAppointmentsia palvelutuotannossa tai muilla lisenssissä mainituilla tavoilla suostut linkissä oleviin lisenssiehtoihin:'
     logout_success: Sinut on kirjattu ulos! Paina jotakin seuraavista painikkeista siirtyäksesi toiselle sivulle.
     book_appointment_title: Tee varaus
     backend_section: Taustajärjestelmä
@@ -270,7 +270,7 @@ fi:
     select_sync_calendar_prompt: Valitse kalenteri johon varauksesi synkronoidaan. Jos et valitse kalenteria, käytetään oletuskalenteria.
     sync_calendar_selected: Google-kalenteri valittiin onnistuneesti.
     oops_something_went_wrong: Oho! Jotain meni pieleen.
-    ea_update_success: Easy!Appointments päivitettiin onnistuneesti.
+    ea_update_success: OpenAppointments päivitettiin onnistuneesti.
     require_captcha: Vaadi CAPTCHA
     require_captcha_hint: Jos aktivoitu, asiakkaan pitää kirjoittaa satunnainen CAPTCHA varmennus ennen varauksen lisäämistä/päivittämistä.
     captcha_is_wrong: CAPTCHA varmennus epäonnistui, ole hyvä ja yritä uudelleen.
@@ -319,7 +319,7 @@ fi:
     require_phone_number: Vaadi puhelinnumero
     require_phone_number_hint: Jos valittu, asiakkaiden ja käyttäjien on annettava asiakkaan puhelinnumero varauksen yhteydessä
     check_spam_folder: Tarkista roskapostikansio mikäli viestiä ei näy muutaman minuutin kuluessa.
-    api_token_hint: Aseta secret token aktivoidaksesi token-pohjaisen autentikoinnin Easy!Appointments API:lle.
+    api_token_hint: Aseta secret token aktivoidaksesi token-pohjaisen autentikoinnin OpenAppointments API:lle.
     timezone: Aikavyöhyke
     overwrite_existing_working_plans: Tämä korvaa aiemmat työsuunnitelmat, haluatko varmasti jatkaa?
     working_plans_got_updated: Kaikki työsuunnitelmat päivitettiin.
@@ -395,7 +395,7 @@ fi:
     matomo_analytics: Matomo Analytics
     matomo_analytics_info: Tämä mahdollistaa julkisen sivun ja julkisen varaustoiminnan analytiikan Matomo Analytics:ssä.
     api: API
-    api_info: Tämä mahdollistaa kaiken Easy!Appointments -datan käsittelyn HTTP-protokollan ja API-rajapinnan kautta. Tällä voit luoda omia integraatioita järjestelmään.
+    api_info: Tämä mahdollistaa kaiken OpenAppointments -datan käsittelyn HTTP-protokollan ja API-rajapinnan kautta. Tällä voit luoda omia integraatioita järjestelmään.
     google_analytics_code: Google Analytics -koodi
     matomo_analytics_url: Matomo Analytics URL
     future_booking_limit: Tulevien varausten raja
@@ -464,7 +464,7 @@ fi:
     caldav_connection_info_prompt: Määritä CalDAV-palvelimen yhteysasetukset.
     connect: Yhdistä
     ldap: LDAP
-    ldap_info: Tämä integrointi mahdollistaa käyttäjien yhdistämisen olemassa olevaan LDAP-palvelimeen. Käyttäjät tuodaan automaattisesti Easy!Appointments:iin, jolloin he voivat kirjautua AD-tunnuksillaan (käyttäjänimen tulee olla sama).
+    ldap_info: Tämä integrointi mahdollistaa käyttäjien yhdistämisen olemassa olevaan LDAP-palvelimeen. Käyttäjät tuodaan automaattisesti OpenAppointments:iin, jolloin he voivat kirjautua AD-tunnuksillaan (käyttäjänimen tulee olla sama).
     host: Isäntä
     port: Portti
     user_dn: Käyttäjä DN

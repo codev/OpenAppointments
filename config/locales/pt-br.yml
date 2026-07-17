@@ -174,7 +174,7 @@ pt-br:
     hidden: Escondido
     business_logic: Lógica de negócio
     current_user: Usuário Atual
-    about_app: Sobre o Easy!Appointments
+    about_app: Sobre o OpenAppointments
     edit_working_plan_hint: Marque os dias e as horas a que a sua empresa aceita agendamentos. Assim será possível agendamentos em horário de atendimento, evitando que os clientes marquem agendamento fora do horário de atendimento. Este plano de trabalho será o padrão para cada novo registo de atendente, mas é possível mudar o plano de cada fornecedor separadamente editando o atendente. Depois disso, pode adicionar períodos de descanso.
     edit_breaks_hint: Adicione as pausas de trabalho durante cada dia. Estas pausas serão aplicadas para todos os novos atendentes de serviços.
     book_advance_timeout: Tempo esgotado...
@@ -183,13 +183,13 @@ pt-br:
     about_app_info: Easy! Appointmentes é uma aplicação web altamente personalizável que permite que os clientes marquem eventos através da internet. Além disso, oferece a possibilidade de sincronizar seus dados com o Google Calendar para que possa usá-los com outros serviços.
     current_version: Versão atual
     support: Suporte
-    about_app_support: Se  encontrar algum problema ao usar o Easy!Appointments pode procurar o Grupo oficial do Google para obter respostas. Se precisar, pode iniciar um novo tópico na página do Google Code, a fim de ajudar o progresso do desenvolvimento.
+    about_app_support: Se você encontrar algum problema ao usar o OpenAppointments, pode procurar respostas nas issues do projeto no GitHub. Você também pode abrir uma nova issue para ajudar no desenvolvimento.
     official_website: Site Oficial
     google_plus_community: Comunidade Google +
     support_group: Groupo de Suporte
     project_issues: Questões do projeto
     license: Licença
-    about_app_license: 'Easy!Appointments está licenciado sob a licença GPLv3. Ao utilizar o código de Easy!Appointments de qualquer forma concorda com os termos descritos na seguinte url:'
+    about_app_license: 'OpenAppointments está licenciado sob a licença GPLv3. Ao utilizar o código de OpenAppointments de qualquer forma concorda com os termos descritos na seguinte url:'
     logout_success: Saiu com sucesso! Clique num dos seguintes botões para navegar para uma página diferente.
     book_appointment_title: Agenda
     backend_section: Seção de backend
@@ -270,7 +270,7 @@ pt-br:
     select_sync_calendar_prompt: Selecione o calendário para sincronizar os seus compromissos. Será selecionado o calendario padrão, caso não queira especificar um.
     sync_calendar_selected: Calendario do google foi selecionado com sucesso.
     oops_something_went_wrong: Ops! Algo deu errado.
-    ea_update_success: Easy!Appointments foi atualizado com sucesso.
+    ea_update_success: OpenAppointments foi atualizado com sucesso.
     require_captcha: Requer CAPTCHA
     require_captcha_hint: Quando habilitado, os clientes terão que digitar um código CAPTCHA gerado randomicamente antes de cadastrar/atualizar um agendamento.
     captcha_is_wrong: Verificação do CAPTCHA falhou, favor tente novamente.
@@ -319,7 +319,7 @@ pt-br:
     require_phone_number: Requer número de telefone
     require_phone_number_hint: Quando ativado, os clientes e usuários precisarão inserir o número de telefone do cliente ao reservar um compromisso
     check_spam_folder: Verifique sua pasta de spam se o e-mail não chegar em alguns minutos.
-    api_token_hint: Defina um token secreto para habilitar a autenticação baseada em token da API Easy!Appointments.
+    api_token_hint: Defina um token secreto para habilitar a autenticação baseada em token da API OpenAppointments.
     timezone: Fuso horário
     overwrite_existing_working_plans: Isso substituirá os planos de trabalho dos fornecedores existentes. Tem certeza de que deseja continuar?
     working_plans_got_updated: Todos os planos de trabalho foram atualizados.
@@ -395,7 +395,7 @@ pt-br:
     matomo_analytics: Matomo Analytics
     matomo_analytics_info: O Matomo Analytics permite adicionar automaticamente o código de rastreamento e a marcação HTML à página pública e rastrear todas as sessões públicas de reserva.
     api: API
-    api_info: A API permite interagir com todos os dados do Easy!Appointments via protocolo HTTP e os endpoints da API disponíveis e criar suas próprias integrações.
+    api_info: A API permite interagir com todos os dados do OpenAppointments via protocolo HTTP e os endpoints da API disponíveis e criar suas próprias integrações.
     google_analytics_code: Código do Google Analytics
     matomo_analytics_url: URL do Matomo Analytics
     future_booking_limit: Limite de Reserva Futuro
@@ -464,7 +464,7 @@ pt-br:
     caldav_connection_info_prompt: Por favor, insira as informações de conexão do Calendário CalDAV de destino.
     connect: Conectar
     ldap: LDAP
-    ldap_info: Esta integração permite conectar-se a um servidor LDAP existente e importar automaticamente usuários para o Easy!Appointments, permitindo que eles façam SSO com sua senha do diretório (o nome de usuário deve corresponder).
+    ldap_info: Esta integração permite conectar-se a um servidor LDAP existente e importar automaticamente usuários para o OpenAppointments, permitindo que eles façam SSO com sua senha do diretório (o nome de usuário deve corresponder).
     host: Host
     port: Porta
     user_dn: DN do Usuário

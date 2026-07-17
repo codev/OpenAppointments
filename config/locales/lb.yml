@@ -174,22 +174,22 @@ lb:
     hidden: Verstoppen
     business_logic: Business Logik
     current_user: Ugemellte Benotzer
-    about_app: Iwwert Easy!Appointments
+    about_app: Iwwert OpenAppointments
     edit_working_plan_hint: Gitt w.e.g hei ënnen drënner d'Deeg an d'Auerzäiten un, fir déi d'Firma Termäiner ubitt. Dir kënnt d'Termäiner och fir Feierdeeg festleeën awer d'Cliente kënne op deenen Deeg keng Buchungen duerchféieren. Dësen Aarbechtsplang ass fir all nei Aschreiwung vun Dingschtleeschter vir agestallt awer dir hutt d'Méichlechkeet den Aarbechtsplang fir all Mataarbechter separat ze änneren an deems der d'Aschreiwung beaarbecht. Dono setzt der Zäitreim a Pause bäi.
     edit_breaks_hint: Ännert d'Aarbechtspausen pro Dag. Des gi fir all neie Mataarbechter iwwerholl.
     book_advance_timeout: Zäitlimit fir eng Buchung
     book_advance_timeout_hint: Leet eng Zäitlimit fir eng Reservatioun (a Minutten) fest iert d'Clienten ee Rendez-vous aginn oder ännere kënnen.
     timeout_minutes: Zäitlimit (Minutten)
-    about_app_info: Easy!Appointments ass eng extrem upassungsfäeg Internet-Applikatioun déi et äre Clienten erméiglecht, een Termäin bei Iech iwwert Internet ze huelen. Doriwwer eraus gëtt en Iech d'Méiglechkeet Är Donnéeën mam Google Kalenner ze synchroniséieren, sou dass Der des mat anere Programmer notze kënnt.
+    about_app_info: OpenAppointments ass eng extrem upassungsfäeg Internet-Applikatioun déi et äre Clienten erméiglecht, een Termäin bei Iech iwwert Internet ze huelen. Doriwwer eraus gëtt en Iech d'Méiglechkeet Är Donnéeën mam Google Kalenner ze synchroniséieren, sou dass Der des mat anere Programmer notze kënnt.
     current_version: Aktuell Versioun
     support: Ënnerstëtzung
-    about_app_support: 'Falls Dir iergendeen Problem beim Benotze vun Easy!Appointments hätt, kënnt der déi offiziell Google Grupp no Léisungen duerchsichen. Dir kënnt och een neit Thema am Google Code ufänke fir bei der Sich no Léisungen ze hëllefen. '
+    about_app_support: Wann Dir Problemer mat OpenAppointments hutt, kënnt Dir an den Issues vum Projet op GitHub no Äntwerte sichen. Dir kënnt och en neien Issue opmaachen, fir bei der Entwécklung ze hëllefen.
     official_website: Offiziell Websäit
     google_plus_community: Google+ Gemeinschaft
     support_group: Gruppenënnerstëtzung
     project_issues: Projektthemen
     license: Notzungslizenz
-    about_app_license: 'Easy!Appointment ass ënnert der GPLv3-Lizenz lizenséiert. Duerch d''Benotze vum Code vun Easy!Appointments op iergendeng Aart a Weis stëmmt Der den Lizenzbedingungen, wéi se ënnert folgender URL opgefouert sinn, zou:'
+    about_app_license: 'Easy!Appointment ass ënnert der GPLv3-Lizenz lizenséiert. Duerch d''Benotze vum Code vun OpenAppointments op iergendeng Aart a Weis stëmmt Der den Lizenzbedingungen, wéi se ënnert folgender URL opgefouert sinn, zou:'
     logout_success: Dir hutt Iech erfollegräich ofgemellt! Klickt op folgend Tasten fir op eng aner Säit ze kommen.
     book_appointment_title: Termäinbuchung
     backend_section: Backend Sektioun
@@ -270,7 +270,7 @@ lb:
     select_sync_calendar_prompt: Wielt dee Kalenner, mat deem der Är Termäiner synchroniséiere wëllt. Wann der kee bestëmmte Kalenner auswiele wëllt, gëtt de Standard benotzt.
     sync_calendar_selected: Auswiele vum Google Kalenner erfollegräich.
     oops_something_went_wrong: Oops! Et ass eppes schif gaang.
-    ea_update_success: Easy!Appointments gouf erfollegräich aktualiséiert.
+    ea_update_success: OpenAppointments gouf erfollegräich aktualiséiert.
     require_captcha: CAPTCHA erfuerderen
     require_captcha_hint: Wann aktivéiert, mussen d'Clienten eng zoufälleg generéiert CAPTCHA-Zeichenkette aginn, ier si en Rendez-vous buchen/aktualiséieren.
     captcha_is_wrong: CAPTCHA Verifikatioun ass gescheitert, probéiert w.e.g. nach eng Kéier.
@@ -319,7 +319,7 @@ lb:
     require_phone_number: Telefonsnummer erfuerderen
     require_phone_number_hint: Wann aktivéiert, mussen d'Clienten an d'Benotzer d'Telefonsnummer vum Client aginn wann si en Rendez-vous buchen.
     check_spam_folder: Kuckt w.e.g. an Äre Spam-Dossier wann d'E-Mail net bannent e puer Minutten ukënnt.
-    api_token_hint: Setzt e geheimen Token fir déi token-baséiert Authentifikatioun vun der Easy!Appointments API z'erméiglechen.
+    api_token_hint: Setzt e geheimen Token fir déi token-baséiert Authentifikatioun vun der OpenAppointments API z'erméiglechen.
     timezone: Zäitzon
     overwrite_existing_working_plans: Dëst wäert déi bestehend Schaffpläng vun de Provideren iwwerschreiwen, sidd Dir sécher datt Dir weiderfuere wëllt?
     working_plans_got_updated: All Aarbechtsplang goufen aktualiséiert.
@@ -395,7 +395,7 @@ lb:
     matomo_analytics: Matomo Analytics
     matomo_analytics_info: Matomo Analytics erméiglecht Iech automatesch de Tracking Code an HTML Markup op der ëffentlecher Säit derbäizesetzen an all ëffentlech Buchungssitzungen ze verfollegen.
     api: API
-    api_info: API erméiglecht Iech, mat allen Daten vun Easy!Appointments via den HTTP Protokoll an déi verfügbar API Endpunkten ze interagéieren an Är eege Integratiounen ze schafen.
+    api_info: API erméiglecht Iech, mat allen Daten vun OpenAppointments via den HTTP Protokoll an déi verfügbar API Endpunkten ze interagéieren an Är eege Integratiounen ze schafen.
     google_analytics_code: Google Analytics Code
     matomo_analytics_url: Matomo Analytics URL
     future_booking_limit: Limit fir zukünfteg Buchungen
@@ -464,7 +464,7 @@ lb:
     caldav_connection_info_prompt: Gitt w.e.g. d'Verbindungsinformatioune vum zilorientéierte CalDAV Kalenner an.
     connect: Verbannen
     ldap: LDAP
-    ldap_info: Dës Integratioun erméiglecht Iech eng Verbindung zu engem existente LDAP Server opzebauen an automatesch Benotzer an Easy!Appointments z'importéieren an hinnen Single Sign-On (SSO) mat hirem Verzechnispasswuert (Benotzernumm muss passen) z'erméiglechen.
+    ldap_info: Dës Integratioun erméiglecht Iech eng Verbindung zu engem existente LDAP Server opzebauen an automatesch Benotzer an OpenAppointments z'importéieren an hinnen Single Sign-On (SSO) mat hirem Verzechnispasswuert (Benotzernumm muss passen) z'erméiglechen.
     host: Host
     port: Port
     user_dn: Benotzer DN

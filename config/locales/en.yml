@@ -174,22 +174,22 @@ en:
     hidden: Hidden
     business_logic: Business Logic
     current_user: Current User
-    about_app: About Easy!Appointments
+    about_app: About OpenAppointments
     edit_working_plan_hint: Mark below the days and hours that your company will accept appointments. You will be able to adjust appointments in non-working hours but the customers will not be able to book appointments by themselves in non-working periods. This working plan will be the default for every new provider record, but you will be able to change each provider's plan separately by editing his record. After that you can add break periods.
     edit_breaks_hint: Add the working breaks during each day. These breaks will be applied for all new providers.
     book_advance_timeout: Book Advance Timeout
     book_advance_timeout_hint: Define the timeout (in minutes) before the customers can book or re-arrange appointments with the company.
     timeout_minutes: Timeout (Minutes)
-    about_app_info: Easy!Appointments is a highly customizable web application that allows your customers to book appointments with you via the web. Moreover, it provides the ability to sync your data with Google Calendar, so you can use them with other services.
+    about_app_info: OpenAppointments is a highly customizable web application that allows your customers to book appointments with you via the web. Moreover, it provides the ability to sync your data with Google Calendar, so you can use them with other services.
     current_version: Current Version
     support: Support
-    about_app_support: If you encounter any problems when using Easy!Appointments you can search the official Google Group for answers. You might also need to create a new issue on the Google Code page in order to help the development progress.
+    about_app_support: If you encounter any problems when using OpenAppointments you can search the project issues on GitHub for answers. You might also need to open a new issue in order to help the development progress.
     official_website: Official Website
     google_plus_community: Google+ Community
     support_group: Support Group
     project_issues: Project Issues
     license: License
-    about_app_license: 'Easy!Appointments is licensed under the GPLv3 license. By using the code of Easy!Appointments in any way you are agreeing to the terms described in the following url:'
+    about_app_license: 'OpenAppointments is licensed under the GPLv3 license. By using the code of OpenAppointments in any way you are agreeing to the terms described in the following url:'
     logout_success: You have been successfully logged out! Click on one of the following buttons to navigate to a different page.
     book_appointment_title: Book Appointment
     backend_section: Backend Section
@@ -270,7 +270,7 @@ en:
     select_sync_calendar_prompt: Select the calendar that you want to sync your appointments with.
     sync_calendar_selected: Sync calendar has been successfully selected.
     oops_something_went_wrong: Oops! Something Went Wrong.
-    ea_update_success: Easy!Appointments has been successfully updated.
+    ea_update_success: OpenAppointments has been successfully updated.
     require_captcha: Require CAPTCHA
     require_captcha_hint: When enabled, the customers will have to type a random generated CAPTCHA string before booking/updating an appointment.
     captcha_is_wrong: CAPTCHA verification failed, please try again.
@@ -319,7 +319,7 @@ en:
     require_phone_number: Require phone number
     require_phone_number_hint: When enabled, customers and users will need to enter the customer's phone number when booking an appointment
     check_spam_folder: Please check your spam folder if the email does not arrive within a few minutes.
-    api_token_hint: Set a secret token in order to enable the token based authentication of the Easy!Appointments API.
+    api_token_hint: Set a secret token in order to enable the token based authentication of the OpenAppointments API.
     timezone: Timezone
     overwrite_existing_working_plans: This will overwrite the existing provider working plans, are you sure that you want to continue?
     working_plans_got_updated: All the working plans got updated.
@@ -395,7 +395,7 @@ en:
     matomo_analytics: Matomo Analytics
     matomo_analytics_info: Matomo Analytics enable you to automatically add the tracking code and HTML markup to the public page and track all the public booking sessions.
     api: API
-    api_info: API enable you to interact with all the Easy!Appointments data via the HTTP protocol and the available API endpoints and create your own integrations.
+    api_info: API enable you to interact with all the OpenAppointments data via the HTTP protocol and the available API endpoints and create your own integrations.
     google_analytics_code: Google Analytics Code
     matomo_analytics_url: Matomo Analytics URL
     future_booking_limit: Future Booking Limit
@@ -464,7 +464,7 @@ en:
     caldav_connection_info_prompt: Please enter the connection information of the target CalDAV Calendar.
     connect: Connect
     ldap: LDAP
-    ldap_info: This integration enables you to connect to an existing LDAP server and automatically import users into Easy!Appointments and let them SSO with their directory password (username must match).
+    ldap_info: This integration enables you to connect to an existing LDAP server and automatically import users into OpenAppointments and let them SSO with their directory password (username must match).
     host: Host
     port: Port
     user_dn: User DN
