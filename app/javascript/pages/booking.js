@@ -512,6 +512,13 @@ App.Pages.Booking = (function () {
                 filterServicesByProvider();
             }
 
+            if (displayMode === 'cards') {
+                $('#provider-cards .booking-card')
+                    .removeClass('selected')
+                    .filter('[data-provider-id="' + $selectProvider.val() + '"]')
+                    .addClass('selected');
+            }
+
             App.Pages.Booking.updateConfirmFrame();
         });
 

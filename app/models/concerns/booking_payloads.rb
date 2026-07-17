@@ -7,6 +7,7 @@ module BookingPayloads
   # EA get_available_services(true): non-private services with >=1 provider, category joined.
   def available_services
     Service.available.joins(:provider_links).distinct
+           .with_attached_picture
            .left_joins(:category)
            .order(:name)
            .select("services.*", "service_categories.name AS service_category_name",
@@ -31,7 +32,7 @@ module BookingPayloads
   # Categories of the available services (cards display mode), EA order.
   def available_categories
     category_ids = Service.available.joins(:provider_links).distinct.pluck(:id_service_categories).compact
-    ServiceCategory.where(id: category_ids).order(:name).map do |category|
+    ServiceCategory.where(id: category_ids).with_attached_picture.order(:name).map do |category|
       { "id" => category.id, "name" => category.name, "description" => category.description,
         "picture_url" => EaRows.picture_url(category) }
     end
@@ -42,6 +43,7 @@ module BookingPayloads
     User.providers.where(is_private: false)
         .joins(:provider_service_links).distinct
         .order(:name, :email)
+        .with_attached_picture
         .includes(:services)
         .map do |provider|
       {

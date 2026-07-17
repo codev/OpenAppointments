@@ -77,7 +77,7 @@ module UserCrud
 
   # EA user model search: LIKE across the common user columns.
   def search_users(scope, keyword, limit, offset)
-    scope = scope.order(updated_at: :desc).limit(limit).offset(offset)
+    scope = scope.with_attached_picture.order(updated_at: :desc).limit(limit).offset(offset)
     return scope if keyword.blank?
 
     pattern = "%#{User.sanitize_sql_like(keyword)}%"
