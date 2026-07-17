@@ -5,24 +5,54 @@ Versions are semver and must match in two places: the git tag and CloudronManife
 
 ## Release
 
+### First time
+
+Before you do this:
+- set the variables below
+- Ensure Cloudron config is correct - System -> Docker with registry auth
+- Bump version in CloudronManifest.json to match VER below via PR and merge to main
+- Start in the repo root
+
 ```bash
-# 1. Bump version in CloudronManifest.json, commit via PR.
-# 2. Tag and push.
-git tag v0.1.0
-git push origin v0.1.0
-
-# 3. Build and push the image (from the repo root).
+# Variables
+VER=0.1.0
 REGI=registry.<your-domain>
-docker build -f Dockerfile.cloudron -t $REGI/openappointments:0.1.0 .
-docker login $REGI
-docker push $REGI/openappointments:0.1.0
+BUILD=build.<your-domain>
+DEST=appointments.<your-domain>
 
-# 4. First install / update.
-cloudron install --image $REGI/openappointments:0.1.0 --location appointments
-cloudron update --app appointments.openouthair.com --image $REGI/openappointments:0.1.0
+
+cloudron build --set-build-service $BUILD \
+               --set-repository $REGI/openappointments
+
+git tag v$VER && git push origin v$VER
+cloudron build --tag $VER # Build on server and push to registry
+
+cloudron install --image containerlist.codev.uk/openappointments:$VER \
+  --location $DEST
 ```
 
-`cloudron build` can replace the docker build/push pair if a build service is configured.
+#### Subsequent releases
+```bash
+# Variables
+VER=1.0.0
+REGI=registry.<your-domain>
+BUILD=build.<your-domain>
+DEST=appointments.<your-domain>
+
+git tag v$VER && git push origin v$VER
+cloudron build --tag $VER # Build on server and push to registry
+
+cloudron update --app $DEST --image $REGI/openappointments:$VER
+```
+
+### Alternatively you can build it on your machine instead of a build server
+
+```bash
+docker build -t $REGI/openappointments:$VER .
+docker login $REGI
+docker push $REGI/openappointments:$VER
+
+```
 
 ## Update safety
 
