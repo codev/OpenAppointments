@@ -1,5 +1,5 @@
-# Webhook fan-out (EA Webhooks_client). Body shape {action:, payload:} is the contract.
-# Seam only until P6 adds WebhookDeliveryJob.
+# Webhook fan-out (EA Webhooks_client::trigger). Body shape {action:, payload:} is the
+# contract. Delivery happens on Solid Queue via WebhookDeliveryJob.
 module Webhooks
   APPOINTMENT_SAVE = "appointment_save".freeze
   APPOINTMENT_DELETE = "appointment_delete".freeze
@@ -22,7 +22,24 @@ module Webhooks
 
   module_function
 
+  # payload: an EaRows hash or an AR record (serialized to its EA row).
   def trigger(action, payload)
-    # P6: enqueue WebhookDeliveryJob for each webhook whose actions include this action.
+    payload = to_row(payload)
+
+    Webhook.find_each do |webhook|
+      WebhookDeliveryJob.perform_later(webhook.id, action, payload) if webhook.handles?(action)
+    end
+  end
+
+  def to_row(payload)
+    case payload
+    when Appointment then EaRows.appointment_row(payload)
+    when Service then EaRows.service_row(payload)
+    when ServiceCategory then EaRows.service_category_row(payload)
+    when BlockedPeriod then EaRows.blocked_period_row(payload)
+    when Webhook then EaRows.webhook_row(payload)
+    when User then EaRows.user_row(payload)
+    else payload
+    end
   end
 end
