@@ -24,6 +24,14 @@ class BrandingTest < ActionDispatch::IntegrationTest
     assert_equal 1, response.body.scan(/easy!appointments/i).length
   end
 
+  test "backend footer credits Codev and links the AGPL license" do
+    post "/login/validate", params: { username: "administrator", password: "administrator1" }
+    get "/about"
+    assert_select "#footer a[href='https://codev.uk/']", text: "Codev"
+    assert_select "#footer a[href*='agpl-3.0']", text: /AGPL-3.0/
+    assert_select "#footer #select-language"
+  end
+
   test "no locale contains the old brand name" do
     I18n.available_locales.each do |locale|
       payload = I18n.t("ea", locale: locale, default: {}).values.grep(String).join(" ")
