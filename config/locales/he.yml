@@ -1,6 +1,8 @@
 ---
 he:
   ea:
+    secondary_color: "צבע משני"
+    background_color: "צבע רקע"
     import_providers_caution: "זהירות: סימון נותני שירות ייצור חשבונות משתמש ויאפשר התחברות עם האימייל שלהם"
     manage_data: "ניהול נתונים"
     export_data: "ייצוא נתונים"

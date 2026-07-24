@@ -1,6 +1,8 @@
 ---
 sq:
   ea:
+    secondary_color: "Ngjyra dytësore"
+    background_color: "Ngjyra e sfondit"
     import_providers_caution: "Kujdes: shënimi i ofruesve do të krijojë llogari përdoruesish dhe do të lejojë hyrjen me emailin e tyre"
     manage_data: "Menaxho të dhënat"
     export_data: "Eksporto të dhënat"

@@ -1,6 +1,8 @@
 ---
 sk:
   ea:
+    secondary_color: "Sekundárna farba"
+    background_color: "Farba pozadia"
     import_providers_caution: "Pozor: zaškrtnutie poskytovateľov vytvorí používateľské účty a umožní prihlásenie ich e-mailom"
     manage_data: "Správa dát"
     export_data: "Exportovať dáta"

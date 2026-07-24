@@ -1,6 +1,8 @@
 ---
 sv:
   ea:
+    secondary_color: "Sekundär färg"
+    background_color: "Bakgrundsfärg"
     import_providers_caution: "Varning: att bocka i utförare skapar användarkonton och tillåter inloggning med deras e-post"
     manage_data: "Hantera data"
     export_data: "Exportera data"

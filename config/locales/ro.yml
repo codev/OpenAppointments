@@ -1,6 +1,8 @@
 ---
 ro:
   ea:
+    secondary_color: "Culoare secundară"
+    background_color: "Culoare de fundal"
     import_providers_caution: "Atenție: bifarea furnizorilor va crea conturi de utilizator și va permite autentificarea cu emailul lor"
     manage_data: "Gestionare date"
     export_data: "Exportă datele"

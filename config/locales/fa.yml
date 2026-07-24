@@ -1,6 +1,8 @@
 ---
 fa:
   ea:
+    secondary_color: "رنگ ثانویه"
+    background_color: "رنگ پس‌زمینه"
     import_providers_caution: "احتیاط: انتخاب ارائه‌دهندگان حساب‌های کاربری ایجاد می‌کند و ورود با ایمیل آنها را ممکن می‌سازد"
     manage_data: "مدیریت داده‌ها"
     export_data: "خروجی گرفتن از داده‌ها"

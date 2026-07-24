@@ -1,6 +1,8 @@
 ---
 rs:
   ea:
+    secondary_color: "Sekundarna boja"
+    background_color: "Boja pozadine"
     import_providers_caution: "Oprez: označavanje pružalaca usluga kreiraće korisničke naloge i omogućiti prijavu njihovim emailom"
     manage_data: "Upravljanje podacima"
     export_data: "Izvezi podatke"

@@ -1,6 +1,8 @@
 ---
 lv:
   ea:
+    secondary_color: "Sekundārā krāsa"
+    background_color: "Fona krāsa"
     import_providers_caution: "Uzmanību: atzīmējot speciālistus, tiks izveidoti lietotāju konti un atļauta pieteikšanās ar viņu e-pastu"
     manage_data: "Datu pārvaldība"
     export_data: "Eksportēt datus"

@@ -1,6 +1,8 @@
 ---
 tr:
   ea:
+    secondary_color: "İkincil renk"
+    background_color: "Arka plan rengi"
     import_providers_caution: "Dikkat: sağlayıcıları işaretlemek kullanıcı hesapları oluşturur ve e-postalarıyla girişe izin verir"
     manage_data: "Verileri yönet"
     export_data: "Verileri dışa aktar"

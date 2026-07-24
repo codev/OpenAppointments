@@ -37,6 +37,8 @@ settings = {
   "company_link" => "https://example.org",
   "company_logo" => "",
   "company_color" => "#39824f",
+  "company_secondary_color" => "#dd2a5c",
+  "company_background_color" => "#f2f6fa",
   "company_working_plan" => default_working_plan,
 
   # Booking / scheduling

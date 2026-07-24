@@ -1,6 +1,8 @@
 ---
 it:
   ea:
+    secondary_color: "Colore secondario"
+    background_color: "Colore di sfondo"
     import_providers_caution: "Attenzione: selezionare i fornitori creerà account utente e consentirà l'accesso con la loro email"
     manage_data: "Gestione dati"
     export_data: "Esporta dati"

@@ -1,6 +1,8 @@
 ---
 lt:
   ea:
+    secondary_color: "Antrinė spalva"
+    background_color: "Fono spalva"
     import_providers_caution: "Dėmesio: pažymėjus specialistus bus sukurtos naudotojų paskyros ir leista prisijungti jų el. paštu"
     manage_data: "Duomenų valdymas"
     export_data: "Eksportuoti duomenis"

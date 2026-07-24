@@ -1,6 +1,8 @@
 ---
 hu:
   ea:
+    secondary_color: "Másodlagos szín"
+    background_color: "Háttérszín"
     import_providers_caution: "Figyelem: a szolgáltatók bejelölése felhasználói fiókokat hoz létre, és lehetővé teszi a bejelentkezést az e-mail-címükkel"
     manage_data: "Adatok kezelése"
     export_data: "Adatok exportálása"

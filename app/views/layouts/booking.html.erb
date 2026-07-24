@@ -26,7 +26,7 @@
                             "vendor/flatpickr/material_green.min" %>
     <%= stylesheet_link_tag "themes/#{vars(:theme).presence || 'default'}", "general", "frontend" %>
 
-    <%= render "shared/company_color_style", company_color: vars(:company_color) %>
+    <%= render "shared/brand_style" %>
 
     <%= yield :styles %>
 </head>

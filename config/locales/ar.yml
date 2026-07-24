@@ -1,6 +1,8 @@
 ---
 ar:
   ea:
+    secondary_color: "اللون الثانوي"
+    background_color: "لون الخلفية"
     import_providers_caution: "تحذير: تحديد مقدمي الخدمة سينشئ حسابات مستخدمين ويسمح بتسجيل الدخول ببريدهم الإلكتروني"
     manage_data: "إدارة البيانات"
     export_data: "تصدير البيانات"

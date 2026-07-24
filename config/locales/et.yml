@@ -1,6 +1,8 @@
 ---
 et:
   ea:
+    secondary_color: "Teisene värv"
+    background_color: "Taustavärv"
     import_providers_caution: "Ettevaatust: teenusepakkujate märkimine loob kasutajakontod ja lubab nende e-postiga sisse logida"
     manage_data: "Halda andmeid"
     export_data: "Ekspordi andmed"

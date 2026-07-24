@@ -1,6 +1,8 @@
 ---
 cs:
   ea:
+    secondary_color: "Sekundární barva"
+    background_color: "Barva pozadí"
     import_providers_caution: "Pozor: zaškrtnutí poskytovatelů vytvoří uživatelské účty a umožní přihlášení jejich e-mailem"
     manage_data: "Správa dat"
     export_data: "Exportovat data"

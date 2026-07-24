@@ -1,6 +1,8 @@
 ---
 th:
   ea:
+    secondary_color: "สีรอง"
+    background_color: "สีพื้นหลัง"
     import_providers_caution: "ข้อควรระวัง: การเลือกผู้ให้บริการจะสร้างบัญชีผู้ใช้และอนุญาตให้เข้าสู่ระบบด้วยอีเมลของพวกเขา"
     manage_data: "จัดการข้อมูล"
     export_data: "ส่งออกข้อมูล"

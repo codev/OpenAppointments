@@ -1,6 +1,8 @@
 ---
 ru:
   ea:
+    secondary_color: "Дополнительный цвет"
+    background_color: "Цвет фона"
     import_providers_caution: "Внимание: отметка специалистов создаст учётные записи и позволит входить по их email"
     manage_data: "Управление данными"
     export_data: "Экспорт данных"

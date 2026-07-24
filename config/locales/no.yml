@@ -1,6 +1,8 @@
 ---
 'no':
   ea:
+    secondary_color: "Sekundærfarge"
+    background_color: "Bakgrunnsfarge"
     import_providers_caution: "Advarsel: å krysse av for behandlere oppretter brukerkontoer og tillater innlogging med deres e-post"
     manage_data: "Administrer data"
     export_data: "Eksporter data"

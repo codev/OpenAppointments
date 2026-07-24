@@ -1,6 +1,8 @@
 ---
 da:
   ea:
+    secondary_color: "Sekundær farve"
+    background_color: "Baggrundsfarve"
     import_providers_caution: "Advarsel: at markere behandlere opretter brugerkonti og tillader login med deres e-mail"
     manage_data: "Administrer data"
     export_data: "Eksporter data"

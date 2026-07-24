@@ -1,6 +1,8 @@
 ---
 uk:
   ea:
+    secondary_color: "Додатковий колір"
+    background_color: "Колір тла"
     import_providers_caution: "Увага: позначення спеціалістів створить облікові записи та дозволить вхід за їхнім email"
     manage_data: "Керування даними"
     export_data: "Експорт даних"

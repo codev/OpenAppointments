@@ -1,6 +1,8 @@
 ---
 hi:
   ea:
+    secondary_color: "द्वितीयक रंग"
+    background_color: "पृष्ठभूमि रंग"
     import_providers_caution: "सावधानी: प्रदाताओं को टिक करने से उपयोगकर्ता खाते बनेंगे और उनके ईमेल से लॉग इन संभव होगा"
     manage_data: "डेटा प्रबंधन"
     export_data: "डेटा निर्यात करें"

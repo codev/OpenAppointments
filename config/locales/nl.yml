@@ -1,6 +1,8 @@
 ---
 nl:
   ea:
+    secondary_color: "Secundaire kleur"
+    background_color: "Achtergrondkleur"
     import_providers_caution: "Let op: het aanvinken van medewerkers maakt gebruikersaccounts aan en staat inloggen met hun e-mail toe"
     manage_data: "Gegevens beheren"
     export_data: "Gegevens exporteren"

@@ -1,6 +1,8 @@
 ---
 zh-tw:
   ea:
+    secondary_color: "輔助顏色"
+    background_color: "背景顏色"
     import_providers_caution: "注意：勾選服務人員將建立使用者帳戶並允許使用他們的電子郵件登入"
     manage_data: "資料管理"
     export_data: "匯出資料"

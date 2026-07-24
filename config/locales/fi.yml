@@ -1,6 +1,8 @@
 ---
 fi:
   ea:
+    secondary_color: "Toissijainen väri"
+    background_color: "Taustaväri"
     import_providers_caution: "Varoitus: palveluntarjoajien valinta luo käyttäjätilit ja sallii kirjautumisen heidän sähköpostillaan"
     manage_data: "Hallitse tietoja"
     export_data: "Vie tiedot"

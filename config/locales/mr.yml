@@ -1,6 +1,8 @@
 ---
 mr:
   ea:
+    secondary_color: "दुय्यम रंग"
+    background_color: "पार्श्वभूमी रंग"
     import_providers_caution: "सावधान: प्रदाते निवडल्यास वापरकर्ता खाती तयार होतील आणि त्यांच्या ईमेलने लॉग इन करता येईल"
     manage_data: "डेटा व्यवस्थापन"
     export_data: "डेटा निर्यात करा"

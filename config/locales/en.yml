@@ -1,6 +1,8 @@
 ---
 en:
   ea:
+    secondary_color: "Secondary Color"
+    background_color: "Background Color"
     import_providers_caution: "Caution: ticking Providers will create user accounts and allow log in with their email"
     manage_data: "Manage data"
     export_data: "Export data"

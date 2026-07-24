@@ -1,6 +1,8 @@
 ---
 pl:
   ea:
+    secondary_color: "Kolor dodatkowy"
+    background_color: "Kolor tła"
     import_providers_caution: "Uwaga: zaznaczenie specjalistów utworzy konta użytkowników i umożliwi logowanie ich e-mailem"
     manage_data: "Zarządzanie danymi"
     export_data: "Eksportuj dane"

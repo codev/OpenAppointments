@@ -1,6 +1,8 @@
 ---
 sl:
   ea:
+    secondary_color: "Sekundarna barva"
+    background_color: "Barva ozadja"
     import_providers_caution: "Pozor: označitev izvajalcev bo ustvarila uporabniške račune in omogočila prijavo z njihovo e-pošto"
     manage_data: "Upravljanje podatkov"
     export_data: "Izvozi podatke"

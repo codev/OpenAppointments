@@ -1,6 +1,8 @@
 ---
 es:
   ea:
+    secondary_color: "Color secundario"
+    background_color: "Color de fondo"
     import_providers_caution: "Precaución: marcar proveedores creará cuentas de usuario y permitirá iniciar sesión con su correo"
     manage_data: "Gestionar datos"
     export_data: "Exportar datos"

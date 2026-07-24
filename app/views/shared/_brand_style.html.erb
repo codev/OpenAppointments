@@ -1,0 +1,151 @@
+<%# Brand colour variables consumed by every theme: primary (company_color),
+    secondary and background, with derived shades. Color math in CompanyColorHelper. %>
+<%
+  primary = setting("company_color").presence || "#39824f"
+  primary = "#39824f" if primary == CompanyColorHelper::DEFAULT_COMPANY_COLOR
+  secondary = setting("company_secondary_color").presence || "#dd2a5c"
+  background = setting("company_background_color").presence || "#f2f6fa"
+
+  rgb = hex_to_rgb(primary)
+  hover = adjust_brightness(primary, 15)
+  active = adjust_brightness(primary, -10)
+  dark = adjust_brightness(primary, -25)
+  darker = adjust_brightness(primary, -40)
+  subtle = adjust_brightness(primary, 80)
+  border_subtle = adjust_brightness(primary, 40)
+
+  secondary_rgb = hex_to_rgb(secondary)
+  secondary_hover = adjust_brightness(secondary, 15)
+  secondary_active = adjust_brightness(secondary, -10)
+
+  background_rgb = hex_to_rgb(background)
+%>
+<style>
+    :root,
+    [data-bs-theme="light"],
+    [data-bs-theme="dark"] {
+        /* Brand colours (settings-driven, consumed by the themes) */
+        --oa-primary: <%= primary %>;
+        --oa-primary-rgb: <%= rgb %>;
+        --oa-primary-hover: <%= hover %>;
+        --oa-primary-active: <%= active %>;
+        --oa-primary-dark: <%= dark %>;
+        --oa-primary-darker: <%= darker %>;
+        --oa-primary-subtle: <%= subtle %>;
+        --oa-secondary: <%= secondary %>;
+        --oa-secondary-rgb: <%= secondary_rgb %>;
+        --oa-secondary-hover: <%= secondary_hover %>;
+        --oa-secondary-active: <%= secondary_active %>;
+        --oa-background: <%= background %>;
+        --oa-background-rgb: <%= background_rgb %>;
+
+        /* Bootstrap variable bridge */
+        --bs-primary: var(--oa-primary);
+        --bs-primary-rgb: <%= rgb %>;
+        --bs-primary-bg-subtle: <%= subtle %>;
+        --bs-primary-border-subtle: <%= border_subtle %>;
+        --bs-primary-text-emphasis: <%= darker %>;
+        --bs-secondary: var(--oa-secondary);
+        --bs-secondary-rgb: <%= secondary_rgb %>;
+        --bs-body-bg: var(--oa-background);
+        --bs-body-bg-rgb: <%= background_rgb %>;
+        --bs-link-color: <%= primary %>;
+        --bs-link-color-rgb: <%= rgb %>;
+        --bs-link-hover-color: <%= hover %>;
+        --bs-link-hover-color-rgb: <%= hex_to_rgb(hover) %>;
+        --bs-focus-ring-color: rgba(<%= rgb %>, 0.25);
+
+        /* Legacy aliases used by the ported component css */
+        --ea-primary-hover: <%= hover %>;
+        --ea-primary-active: <%= active %>;
+        --ea-primary-dark: <%= dark %>;
+        --ea-primary-darker: <%= darker %>;
+        --ea-primary-subtle: <%= subtle %>;
+    }
+
+    .btn-primary {
+        --bs-btn-bg: var(--oa-primary);
+        --bs-btn-border-color: var(--oa-primary);
+        --bs-btn-hover-bg: var(--oa-primary-hover);
+        --bs-btn-hover-border-color: var(--oa-primary-hover);
+        --bs-btn-active-bg: var(--oa-primary-active);
+        --bs-btn-active-border-color: var(--oa-primary-active);
+        --bs-btn-disabled-bg: var(--oa-primary);
+        --bs-btn-disabled-border-color: var(--oa-primary);
+    }
+
+    .btn-outline-primary {
+        --bs-btn-color: var(--oa-primary);
+        --bs-btn-border-color: var(--oa-primary);
+        --bs-btn-hover-color: var(--bs-white, #fff);
+        --bs-btn-hover-bg: var(--oa-primary);
+        --bs-btn-hover-border-color: var(--oa-primary);
+        --bs-btn-active-color: var(--bs-white, #fff);
+        --bs-btn-active-bg: var(--oa-primary-active);
+        --bs-btn-active-border-color: var(--oa-primary-active);
+        --bs-btn-disabled-color: var(--oa-primary);
+        --bs-btn-disabled-border-color: var(--oa-primary);
+    }
+
+    .btn-secondary {
+        --bs-btn-bg: var(--oa-secondary);
+        --bs-btn-border-color: var(--oa-secondary);
+        --bs-btn-hover-bg: var(--oa-secondary-hover);
+        --bs-btn-hover-border-color: var(--oa-secondary-hover);
+        --bs-btn-active-bg: var(--oa-secondary-active);
+        --bs-btn-active-border-color: var(--oa-secondary-active);
+        --bs-btn-disabled-bg: var(--oa-secondary);
+        --bs-btn-disabled-border-color: var(--oa-secondary);
+    }
+
+    .btn-outline-secondary {
+        --bs-btn-hover-bg: var(--oa-secondary);
+        --bs-btn-hover-border-color: var(--oa-secondary);
+        --bs-btn-hover-color: var(--bs-white, #fff);
+    }
+
+    .nav-link {
+        --bs-nav-link-color: var(--oa-primary);
+        --bs-nav-link-hover-color: var(--oa-primary-hover);
+    }
+
+    .nav-pills {
+        --bs-nav-pills-link-active-bg: var(--oa-primary);
+    }
+
+    .dropdown-menu {
+        --bs-dropdown-link-active-bg: var(--oa-primary);
+    }
+
+    .pagination {
+        --bs-pagination-active-bg: var(--oa-primary);
+        --bs-pagination-active-border-color: var(--oa-primary);
+    }
+
+    .progress {
+        --bs-progress-bar-bg: var(--oa-primary);
+    }
+
+    .list-group {
+        --bs-list-group-active-bg: var(--oa-primary);
+        --bs-list-group-active-border-color: var(--oa-primary);
+    }
+
+    .accordion {
+        --bs-accordion-active-color: var(--oa-primary);
+        --bs-accordion-btn-focus-box-shadow: 0 0 0 0.25rem rgba(var(--oa-primary-rgb), 0.25);
+    }
+
+    .form-check-input:checked {
+        background-color: var(--oa-primary);
+        border-color: var(--oa-primary);
+    }
+
+    ::selection {
+        background: rgba(var(--oa-primary-rgb), 0.2);
+    }
+
+    body {
+        background-color: var(--oa-background);
+    }
+</style>

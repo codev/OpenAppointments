@@ -1,6 +1,8 @@
 ---
 pt-br:
   ea:
+    secondary_color: "Cor secundária"
+    background_color: "Cor de fundo"
     import_providers_caution: "Atenção: marcar profissionais criará contas de usuário e permitirá login com o email deles"
     manage_data: "Gerenciar dados"
     export_data: "Exportar dados"
