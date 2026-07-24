@@ -419,7 +419,8 @@ class BookingController < ApplicationController
       [ [ "display_#{field}".to_sym, Setting.get("display_#{field}") ],
        [ "require_#{field}".to_sym, Setting.get("require_#{field}") ] ]
     }.to_h
-    if Setting.get("require_phone_or_email", "1") == "1"
+    vars[:require_phone_or_email] = Setting.get("require_phone_or_email", "1")
+    if vars[:require_phone_or_email] == "1"
       vars[:require_email] = "0"
       vars[:require_phone_number] = "0"
     end

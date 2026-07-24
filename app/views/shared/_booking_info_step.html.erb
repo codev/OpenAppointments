@@ -19,6 +19,9 @@
                         <%= lang('email') %>
                         <% if require_email == "1" %>
                             <span class="text-danger">*</span>
+                        <% elsif require_phone_or_email == "1" %>
+                            <span class="required-either" title="<%= lang('phone_or_email_required') %>">*</span>
+                            <span class="visually-hidden"><%= lang('phone_or_email_required') %></span>
                         <% end %>
                     </label>
                     <input type="text" id="email"
@@ -32,6 +35,9 @@
                         <%= lang('phone_number') %>
                         <% if require_phone_number == "1" %>
                             <span class="text-danger">*</span>
+                        <% elsif require_phone_or_email == "1" %>
+                            <span class="required-either" title="<%= lang('phone_or_email_required') %>">*</span>
+                            <span class="visually-hidden"><%= lang('phone_or_email_required') %></span>
                         <% end %>
                     </label>
                     <input type="text" id="phone-number" maxlength="60"

@@ -73,6 +73,20 @@ class PhoneOrEmailTest < ActionDispatch::IntegrationTest
     assert_select "#phone-number.required"
   end
 
+  test "booking page marks email and phone with the half asterisk when either is enough" do
+    Setting.set("display_email", "1")
+    Setting.set("display_phone_number", "1")
+
+    get "/"
+    assert_select "label[for=email] .required-either", text: "*"
+    assert_select "label[for=phone-number] .required-either", text: "*"
+    assert_select "label[for=email] .visually-hidden", text: I18n.t("ea.phone_or_email_required")
+
+    Setting.set("require_phone_or_email", "0")
+    get "/"
+    assert_select ".required-either", false
+  end
+
   test "no customer email means no customer mail and no crash" do
     Setting.set("customer_notifications", "1")
     UserSetting.update_all(notifications: false)

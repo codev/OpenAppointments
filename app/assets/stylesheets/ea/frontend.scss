@@ -174,3 +174,16 @@
 #frame-footer .backend-link {
     min-width: 120px;
 }
+
+// Half-coloured asterisk marking the email/phone pair when either one is
+// enough (require_phone_or_email); falls back to a plain danger asterisk.
+.required-either {
+    color: var(--bs-danger);
+
+    @supports (background-clip: text) or (-webkit-background-clip: text) {
+        background: linear-gradient(90deg, var(--bs-danger) 50%, #adb5bd 50%);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+    }
+}
