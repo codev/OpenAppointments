@@ -1,0 +1,17 @@
+<div id="unknown-inbox-page" class="container backend-page py-3">
+    <div class="row">
+        <div class="col-12">
+            <h4 class="border-bottom py-3 mb-3 fw-light">
+                <%= lang('unknown_inbox') %>
+            </h4>
+
+            <p class="form-text text-muted mb-4">
+                <%= lang('unknown_inbox_info') %>
+            </p>
+
+            <%= render "shared/messages_log_table",
+                       messages: vars(:inbox_messages), page: vars(:inbox_page),
+                       last_page: vars(:inbox_last_page), base_path: "/unknown_inbox" %>
+        </div>
+    </div>
+</div>

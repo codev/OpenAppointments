@@ -1,0 +1,73 @@
+<div id="messages-providers-page" class="container backend-page py-3">
+    <div class="row">
+        <div class="col-sm-3">
+            <%= render "shared/messages_nav" %>
+        </div>
+        <div id="messages-providers" class="col-sm-9">
+            <h4 class="border-bottom py-3 mb-3 fw-light">
+                <%= lang('messages_providers') %>
+            </h4>
+
+            <p class="form-text text-muted mb-4">
+                <%= lang('messages_providers_info') %>
+            </p>
+
+            <div class="row">
+                <% vars(:provider_cards).each do |card| %>
+                    <div class="col-sm-6 mb-4">
+                        <div class="card h-100">
+                            <div class="card-header d-flex justify-content-between align-items-center">
+                                <h5 class="fw-light mb-0">
+                                    <%= card[:label] %>
+                                </h5>
+                                <% if !card[:enabled] %>
+                                    <span class="badge bg-secondary"><%= lang('messages_provider_disabled') %></span>
+                                <% elsif card[:incoming] %>
+                                    <span class="badge bg-success"><%= lang('messages_provider_incoming_outgoing') %></span>
+                                <% else %>
+                                    <span class="badge bg-primary"><%= lang('messages_provider_outgoing') %></span>
+                                <% end %>
+                            </div>
+                            <div class="card-body">
+                                <div class="mb-3 integration-info">
+                                    <small>
+                                        <%= lang("messages_provider_#{card[:key]}_info") %>
+                                    </small>
+                                </div>
+                            </div>
+                            <div class="card-footer border-0">
+                                <a href="<%= card[:settings_path] %>" class="btn btn-outline-primary w-100">
+                                    <i class="fas fa-cogs me-2"></i>
+                                    <%= lang('configure') %>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                <% end %>
+
+                <div class="col-sm-6 mb-4">
+                    <div class="card h-100">
+                        <div class="card-header d-flex justify-content-between align-items-center">
+                            <h5 class="fw-light mb-0">
+                                <%= lang('messages_provider_sms_gateway') %>
+                            </h5>
+                            <span class="badge bg-secondary"><%= lang('coming_soon') %></span>
+                        </div>
+                        <div class="card-body">
+                            <div class="mb-3 integration-info">
+                                <small>
+                                    <%= lang('messages_provider_sms_gateway_info') %>
+                                </small>
+                            </div>
+                        </div>
+                        <div class="card-footer border-0">
+                            <button type="button" class="btn btn-outline-secondary w-100" disabled>
+                                <%= lang('coming_soon') %>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,85 @@
+<%# Locals: messages, page, last_page, base_path. %>
+<% format_settings = { date_format: setting("date_format"), time_format: setting("time_format") } %>
+<div class="table-responsive">
+    <table class="table table-sm align-middle">
+        <thead>
+            <tr>
+                <th><%= lang('date') %></th>
+                <th></th>
+                <th><%= lang('messages_provider') %></th>
+                <th><%= lang('notification') %></th>
+                <th><%= lang('customer') %></th>
+                <th><%= lang('messages_address') %></th>
+                <th><%= lang('status') %></th>
+            </tr>
+        </thead>
+        <tbody>
+            <% messages.each do |message| %>
+                <tr>
+                    <td class="text-nowrap"><%= format_appointment_datetime(message.created_at, format_settings) %></td>
+                    <td>
+                        <% if message.direction == "incoming" %>
+                            <i class="fas fa-arrow-down text-success" title="<%= lang('messages_incoming_label') %>"></i>
+                        <% else %>
+                            <i class="fas fa-arrow-up text-primary" title="<%= lang('messages_outgoing_label') %>"></i>
+                        <% end %>
+                    </td>
+                    <td>
+                        <span class="badge bg-secondary"><%= Messaging.channel(message.channel)&.label || message.channel %></span>
+                    </td>
+                    <td>
+                        <% if message.notification %>
+                            <%= message.notification.title %>
+                        <% elsif message.direction == "incoming" %>
+                            <%= lang('messages_incoming_label') %>
+                        <% else %>
+                            <%= lang('messages_manual_label') %>
+                        <% end %>
+                    </td>
+                    <td>
+                        <% if message.customer %>
+                            <a href="/customers?customer_id=<%= message.customer.id %>">
+                                <%= message.customer.name %>
+                            </a>
+                        <% elsif message.direction == "incoming" %>
+                            <span class="text-muted"><%= lang('messages_unknown_sender') %></span>
+                        <% else %>
+                            <span class="text-muted"><%= message.audience %></span>
+                        <% end %>
+                    </td>
+                    <td class="text-break">
+                        <%= message.direction == "incoming" ? message.from_address : message.to_address %>
+                    </td>
+                    <td>
+                        <% badge = { "sent" => "bg-success", "received" => "bg-success",
+                                     "failed" => "bg-danger", "queued" => "bg-secondary" }[message.status] %>
+                        <span class="badge <%= badge %>"
+                              <% if message.error.present? %>title="<%= message.error %>"<% end %>>
+                            <%= lang("messages_status_#{message.status}") %>
+                        </span>
+                    </td>
+                </tr>
+            <% end %>
+            <% if messages.empty? %>
+                <tr>
+                    <td colspan="7" class="text-muted text-center py-4"><%= lang('no_records_found') %></td>
+                </tr>
+            <% end %>
+        </tbody>
+    </table>
+</div>
+
+<div class="d-flex justify-content-between">
+    <% if page > 1 %>
+        <a class="btn btn-outline-secondary" href="<%= base_path %>?page=<%= page - 1 %>">
+            <i class="fas fa-chevron-left me-2"></i><%= lang('previous') %>
+        </a>
+    <% else %>
+        <span></span>
+    <% end %>
+    <% unless last_page %>
+        <a class="btn btn-outline-secondary" href="<%= base_path %>?page=<%= page + 1 %>">
+            <%= lang('next') %><i class="fas fa-chevron-right ms-2"></i>
+        </a>
+    <% end %>
+</div>

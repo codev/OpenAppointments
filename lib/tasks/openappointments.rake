@@ -27,6 +27,19 @@ namespace :openappointments do
     else
       puts "Data retention is disabled (data_retention_days = 0)."
     end
+    puts "Message retention: deleted #{result[:messages_deleted]} message(s)."
+  end
+
+  desc "Send due coming-up notifications (cron target)"
+  task reminders: :environment do
+    Notifications.scan_coming_up
+    puts "Reminder scan complete."
+  end
+
+  desc "Fetch unread incoming email over IMAP into Action Mailbox (cron target)"
+  task fetch_mail: :environment do
+    FetchImapEmailsJob.perform_now
+    puts "Mail fetch complete."
   end
 
   desc "Back up the SQLite databases to storage/backups or the given path"

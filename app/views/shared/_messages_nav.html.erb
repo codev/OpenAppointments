@@ -1,0 +1,30 @@
+<%# Left menu of the Messages panel (same shape as settings_nav). %>
+<h4 class="py-3 mb-3 fw-light">
+    <%= lang('messages') %>
+</h4>
+
+<ul id="messages-nav" class="nav flex-column">
+    <li class="nav-item mb-3">
+        <a class="nav-link px-0 py-2" href="/messages_settings">
+            <%= lang('settings') %>
+        </a>
+    </li>
+
+    <li class="nav-item mb-3">
+        <a class="nav-link px-0 py-2" href="/messages_providers">
+            <%= lang('messages_providers') %>
+        </a>
+    </li>
+
+    <li class="nav-item mb-3">
+        <a class="nav-link px-0 py-2" href="/messages_notifications">
+            <%= lang('notifications') %>
+        </a>
+    </li>
+
+    <li class="nav-item mb-3">
+        <a class="nav-link px-0 py-2" href="/messages_logs">
+            <%= lang('messages_logs') %>
+        </a>
+    </li>
+</ul>

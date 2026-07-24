@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_07_24_000002) do
+ActiveRecord::Schema[8.1].define(version: 2026_07_24_100002) do
+  create_table "action_mailbox_inbound_emails", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.string "message_checksum", null: false
+    t.string "message_id", null: false
+    t.integer "status", default: 0, null: false
+    t.datetime "updated_at", null: false
+    t.index ["message_id", "message_checksum"], name: "index_action_mailbox_inbound_emails_uniqueness", unique: true
+  end
+
   create_table "active_storage_attachments", force: :cascade do |t|
     t.bigint "blob_id", null: false
     t.datetime "created_at", null: false
@@ -81,6 +90,53 @@ ActiveRecord::Schema[8.1].define(version: 2026_07_24_000002) do
     t.string "ip"
     t.string "name"
     t.string "type"
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.integer "appointment_id"
+    t.string "audience"
+    t.text "body"
+    t.string "channel", null: false
+    t.datetime "created_at", null: false
+    t.integer "customer_id"
+    t.string "direction", null: false
+    t.string "error"
+    t.string "from_address"
+    t.integer "notification_id"
+    t.datetime "read_at"
+    t.integer "sent_by_id"
+    t.string "status", default: "queued"
+    t.string "subject"
+    t.string "to_address"
+    t.datetime "updated_at", null: false
+    t.index ["created_at"], name: "index_messages_on_created_at"
+    t.index ["customer_id"], name: "index_messages_on_customer_id"
+    t.index ["direction", "read_at"], name: "index_messages_on_direction_and_read_at"
+  end
+
+  create_table "notification_dispatches", force: :cascade do |t|
+    t.integer "appointment_id", null: false
+    t.datetime "created_at", null: false
+    t.string "dedupe_key", null: false
+    t.integer "notification_id", null: false
+    t.datetime "updated_at", null: false
+    t.index ["dedupe_key"], name: "index_notification_dispatches_on_dedupe_key", unique: true
+  end
+
+  create_table "notifications", force: :cascade do |t|
+    t.text "audiences", default: "[\"customer\"]"
+    t.text "channels", default: "[]"
+    t.datetime "created_at", null: false
+    t.string "description"
+    t.string "event", null: false
+    t.integer "lead_days", default: 0
+    t.integer "lead_hours", default: 1
+    t.string "lead_mode", default: "before"
+    t.text "long_text"
+    t.string "send_time", default: "08:00"
+    t.string "short_text"
+    t.string "title", null: false
     t.datetime "updated_at", null: false
   end
 

@@ -1,0 +1,10 @@
+<%= render "shared/messages_sms_settings",
+           title: "Plivo",
+           prefix: "plivo",
+           fields: [
+             { name: "messages_plivo_auth_id", label: lang("messages_plivo_auth_id") },
+             { name: "messages_plivo_auth_token", label: lang("messages_plivo_auth_token"), type: "password" },
+             { name: "messages_plivo_from", label: lang("messages_from_number") }
+           ],
+           console_url: "https://console.plivo.com/",
+           console_label: "Plivo Console" %>

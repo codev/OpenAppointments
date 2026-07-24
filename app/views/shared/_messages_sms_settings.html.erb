@@ -1,0 +1,75 @@
+<%# Locals: title, prefix (twilio|plivo|textanywhere), fields [{name:, label:, type:}],
+    console_url, console_label. %>
+<div id="messages-<%= prefix %>-settings-page" class="container backend-page py-3">
+    <div class="row">
+        <div class="col-sm-3">
+            <%= render "shared/messages_nav" %>
+        </div>
+        <div id="messages-<%= prefix %>-settings" class="col-sm-9">
+            <form>
+                <fieldset>
+                    <%= render "shared/messages_provider_header", title: title %>
+
+                    <div class="row">
+                        <div class="col-12 col-md-8">
+                            <div class="form-check form-switch mb-3">
+                                <input type="checkbox" class="form-check-input" id="<%= prefix %>-enabled"
+                                       data-field="messages_<%= prefix %>_enabled">
+                                <label class="form-check-label" for="<%= prefix %>-enabled">
+                                    <%= lang('active') %>
+                                </label>
+                            </div>
+
+                            <div class="form-check form-switch mb-4">
+                                <input type="checkbox" class="form-check-input" id="<%= prefix %>-incoming"
+                                       data-field="messages_<%= prefix %>_incoming">
+                                <label class="form-check-label" for="<%= prefix %>-incoming">
+                                    <%= lang('messages_incoming') %>
+                                </label>
+                                <div class="form-text text-muted">
+                                    <small>
+                                        <%= lang('messages_incoming_hint') %>
+                                    </small>
+                                </div>
+                            </div>
+
+                            <% fields.each do |field| %>
+                                <div class="mb-3">
+                                    <label class="form-label" for="<%= field[:name].dasherize %>">
+                                        <%= field[:label] %>
+                                    </label>
+                                    <input type="<%= field[:type] || 'text' %>" id="<%= field[:name].dasherize %>"
+                                           class="form-control" autocomplete="off"
+                                           data-field="<%= field[:name] %>">
+                                </div>
+                            <% end %>
+
+                            <div data-visible-when="messages_<%= prefix %>_incoming=1">
+                                <div class="mb-3">
+                                    <label class="form-label"><%= lang('messages_inbound_webhook') %></label>
+                                    <input type="text" class="form-control" readonly value="<%= vars(:inbound_url) %>">
+                                    <div class="form-text text-muted">
+                                        <small>
+                                            <%= lang('messages_inbound_webhook_hint') %>
+                                        </small>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-text text-muted mb-3">
+                                <small>
+                                    <%= lang('messages_sms_credentials_hint') %>
+                                    <a href="<%= console_url %>" target="_blank" rel="noopener"><%= console_label %></a>
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+</div>
+
+<% content_for :scripts do %>
+    <%= ea_js "http/messages_settings_http_client", "pages/messages_provider_settings" %>
+<% end %>

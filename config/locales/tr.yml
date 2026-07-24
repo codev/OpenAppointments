@@ -621,3 +621,97 @@ tr:
     go_premium: Premium'a Geç
     notify_users_on_create_question: Bu yeni randevu hakkında müşteriyi bilgilendirmek ister misiniz?
     notify_users_on_delete_question: Randevu iptali hakkında müşteriyi bilgilendirmek ister misiniz?
+    messages: Messages
+    messages_hint: Manage notifications, providers and message logs
+    unknown_inbox: Unknown Inbox
+    unknown_inbox_info: Incoming messages from senders that do not match any customer. These messages also appear in the main log.
+    messages_providers: Providers
+    messages_provider: Provider
+    messages_logs: Logs
+    notifications: Notifications
+    notification: Notification
+    title: Title
+    hours: Hours
+    messages_enabled: Enable notifications
+    messages_enabled_hint: Globally turn all notifications on or off. Password reset emails will still be sent.
+    messages_retention_days: Delete messages older than (days)
+    messages_retention_days_hint: Messages older than this many days are deleted automatically. Set 0 to keep all messages.
+    messages_email_subject: Outgoing Email Subject Line
+    messages_email_subject_hint: Used for emails without their own Short Text, and for messages sent from the customer page.
+    messages_providers_info: Notification providers deliver your notifications by email or SMS. Configure at least one provider and tick it inside each notification template.
+    messages_provider_disabled: Disabled
+    messages_provider_outgoing: Outgoing
+    messages_provider_incoming_outgoing: Incoming and outgoing
+    messages_provider_email_info: Send notifications by email through the server or SMTP, and receive replies through the server or IMAP.
+    messages_provider_twilio_info: Send and receive SMS with a Twilio account and phone number.
+    messages_provider_plivo_info: Send and receive SMS with a Plivo account and phone number.
+    messages_provider_textanywhere_info: Send and receive SMS with a TextAnywhere account.
+    messages_provider_sms_gateway: Android SMS Gateway
+    messages_provider_sms_gateway_info: Send and receive SMS through an Android phone with your own number.
+    coming_soon: Coming soon
+    messages_incoming: Incoming
+    messages_incoming_hint: Customer can reply to support incoming messages as well as outgoing ones.
+    messages_email_outgoing: Outgoing email
+    messages_email_mode: Sending method
+    messages_email_mode_server: Send email through server
+    messages_email_mode_smtp: Send email with SMTP
+    messages_smtp_host: SMTP host
+    messages_smtp_port: SMTP port
+    messages_smtp_tls: Use TLS
+    messages_email_incoming_section: Incoming email
+    messages_email_incoming_mode: Receiving method
+    messages_email_incoming_server: Receive email through server
+    messages_email_incoming_imap: Receive email with IMAP
+    messages_email_incoming_server_hint: Receiving through the server uses the mailbox configured by the hosting platform (for example the Cloudron mail addon).
+    messages_imap_host: IMAP host
+    messages_imap_port: IMAP port
+    messages_email_credentials_hint: "Need an email delivery service? Get SMTP credentials from"
+    messages_sms_credentials_hint: "Get your credentials from the provider console:"
+    messages_inbound_webhook: Incoming webhook URL
+    messages_inbound_webhook_hint: Paste this URL into the provider console so incoming messages reach the app. Keep it secret.
+    messages_twilio_account_sid: Account SID
+    messages_twilio_auth_token: Auth token
+    messages_from_number: From phone number
+    messages_plivo_auth_id: Auth ID
+    messages_plivo_auth_token: Auth token
+    messages_textanywhere_api_key: API key
+    messages_from_name: Sender name
+    notification_description_hint: Short description so you can remember what this notification does
+    notification_event: Event
+    notification_event_coming_up: Appointment Coming Up
+    notification_event_created: Appointment Created
+    notification_event_created_or_updated: Appointment Created or Updated
+    notification_event_updated: Appointment Updated
+    notification_event_cancelled: Appointment Canceled
+    notification_event_missed: Appointment Missed
+    notification_lead_before: Send this long before the appointment
+    notification_lead_day_at: Send a number of days before, at a set time
+    notification_days_before: Days before
+    notification_send_time: Time
+    notification_send_to: Send to
+    notification_audience_customer: Customer
+    notification_audience_provider: Provider
+    notification_audience_admins: Admins and secretaries
+    notification_no_providers: No providers are enabled. Enable one on the Providers page first.
+    notification_short_text: Short Text (Email Subject or SMS)
+    notification_long_text: Long Text (for providers that support it, e.g. Email Body)
+    notification_tokens_hint: "Template fields you can use:"
+    notification_untitled: Untitled notification
+    notification_saved: Notification saved.
+    delete_notification: Delete Notification
+    open_all_notification_templates: Open all notification templates
+    close_all_notification_templates: Close all notification templates
+    messages_address: Address
+    messages_incoming_label: Incoming
+    messages_outgoing_label: Outgoing
+    messages_manual_label: Manual
+    messages_unknown_sender: Unknown sender
+    messages_status_sent: Sent
+    messages_status_failed: Failed
+    messages_status_queued: Queued
+    messages_status_received: Received
+    customer_messages: Messages
+    send_message: Send
+    select_one: Select One
+    all_providers: All Providers
+    message_sent: Message sent.
