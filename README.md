@@ -11,6 +11,13 @@ bin/rails openappointments:install   # db:prepare + seeds + initial admin (passw
 bin/dev
 ```
 
+## Admin login
+
+Username: administrator
+Password: let!me!in
+
+Change the password on first login.
+
 ## Tests
 
 ```bash
