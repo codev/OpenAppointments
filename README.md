@@ -5,10 +5,16 @@ Appointment scheduler, a Rails 8.1 port of Easy!Appointments 1.6.0.
 ## Setup
 
 ```bash
-mise install                     # ruby per mise.toml
+mise install
 bundle install
-bin/rails openappointments:install   # db:prepare + seeds + initial admin (password printed)
+bin/rails openappointments:install
 bin/dev
+```
+
+Reset the database with:
+
+```
+bin/rails db:reset openappointments:install
 ```
 
 ## Admin login
@@ -34,17 +40,44 @@ Datetimes are stored as provider-local wall-clock, not UTC. See config/applicati
 
 ## New features
 
-New features since the fork from Easy!Appointments 1.6.0 - many of these are opinionated features, the Easy!Appointment choices weren't wrong, they just weren't what I needed:
+New features since the fork from Easy!Appointments 1.6.0 - many of these are opinionated features:
 
-- Name field (replaces first and last name fields)
-- Service page and provider divided into two pages. Service page is first by default but you can pass a parameter to the URL - `?first=provider`) - to swap them
-- Card display mode - option instead of dropdowns, also includes optional uploadable pictures for each service and provider
-- Option to require phone OR email as well as the existing options to require either of them
-- Cloudflare Turnstile captcha option
-- Admin import page (supporting Sign In App/10to8 CSV)
-- Database reset option
-- Outline theme
-- Iframe embedding support to embed the booking widget on a website + embed code page
+### Name field replaces first name and last name
+
+There is now a single `Name` field instead of First/Last names. The REST API is still EA compatible: firstName carries the full name and lastName is accepted and merged when passed on write.
+
+### Service and provider divided into two pages
+
+There are now 5 pages - the booking page asks for the service first then the provider. The user can click "Select Provider First" link to swap the order or append `?first=provider` to the URL to swap the order.
+
+### Card display mode
+
+Set Settings - Booking - Display mode - cards. This shows categories, services and providers as cards instead of a dropdown. Pictures can be uploaded on each category, service and provider edit page.
+
+### Phone OR Email
+
+New "Required phone or email" in booking settings, by default on, to require a customer to enter either a phone number or an email address. You can still turn requiring them separately.
+
+
+### Cloudflare Turnstile captcha option
+
+Captcha providers now include Cloudflare Turnstile as well as Altcha. Pick the provider on the captcha settings page and paste in the site key and secret key from your Cloudflare dashboard to verify each booking is coming from a human before accepting it.
+
+### Import page
+
+An admin-only Import page can import data , it initially supports Sign In App/10to8 CSV files. Re-running is safe: existing records are matched by name, email or phone instead of being duplicated.
+
+### Database reset option
+
+The admin-only Import page has a database reset that wipes business data but keeps admin account and settings.
+
+### Outline theme
+
+New theme rendering with outlined boxes instead of solid fills.
+
+### Iframe embedding
+
+Under Settings - Embedding - enter the website you want to embed the booking widget on and copy the code to your website.
 
 
 ## Operations
