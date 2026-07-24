@@ -26,12 +26,17 @@ $font-size-base: 0.875rem;
     --oa-surface-border: #d0d7de;
     --oa-shadow: 0 1px 0 rgba(31, 35, 40, 0.04);
     --oa-shadow-raised: 0 3px 6px rgba(140, 149, 159, 0.15);
-    --oa-header-bg: #f6f8fa;
+    --oa-header-bg: var(--oa-background);
     --oa-header-fg: #1f2328;
     --oa-step-bg: #f6f8fa;
     --oa-step-fg: #59636e;
     --oa-step-active-bg: var(--oa-primary);
     --oa-step-active-fg: #fff;
+}
+
+// The background colour paints the top bar only; the page stays white.
+body {
+    background-color: #fff;
 }
 
 #header {

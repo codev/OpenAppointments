@@ -114,12 +114,10 @@ App.Pages.GeneralSettings = (function () {
         const generalSettings = serialize();
 
         App.Http.GeneralSettings.save(generalSettings).done(() => {
-            App.Layouts.Backend.displayNotification(lang('settings_saved'), [
-                {
-                    label: lang('reload'), // Reload Page
-                    function: () => window.location.reload(),
-                },
-            ]);
+            App.Layouts.Backend.displayNotification(lang('settings_saved'));
+
+            // Reload so the saved theme and colours take effect immediately.
+            setTimeout(() => window.location.reload(), 700);
         });
     }
 
@@ -210,11 +208,13 @@ App.Pages.GeneralSettings = (function () {
     }
 
     /**
-     * Fill the three colour fields from the selected theme's suggested palette.
+     * Fill the three colour fields from one of the selected theme's two
+     * suggested palettes (buttons carry data-palette 0/1).
      */
-    function onApplySuggestedColorsClick() {
+    function onApplySuggestedColorsClick(event) {
         const suggestions = vars('theme_suggestions') || {};
-        const suggestion = suggestions[$theme.val()];
+        const palettes = suggestions[$theme.val()] || [];
+        const suggestion = palettes[Number($(event.currentTarget).data('palette')) || 0];
 
         if (!suggestion) {
             return;
@@ -245,7 +245,7 @@ App.Pages.GeneralSettings = (function () {
 
         deserialize(generalSettings);
 
-        $('#apply-suggested-colors').on('click', onApplySuggestedColorsClick);
+        $('.apply-suggested-colors').on('click', onApplySuggestedColorsClick);
 
         $companyColor.add($secondaryColor).add($backgroundColor).on('input change', evaluateColorAccessibility);
 

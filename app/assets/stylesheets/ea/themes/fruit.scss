@@ -27,14 +27,22 @@ $headings-font-weight: 600;
     --oa-surface-border: #e8e8ed;
     --oa-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
     --oa-shadow-raised: 0 11px 34px rgba(0, 0, 0, 0.12);
-    --oa-header-fg: #fff;
-    --oa-step-bg: #f5f5f7;
+    --oa-header-bg: var(--oa-background);
+    --oa-header-fg: #1d1d1f;
+    --oa-step-bg: #e8e8ed;
     --oa-step-fg: #6e6e73;
+    --oa-step-active-bg: var(--oa-primary);
+    --oa-step-active-fg: #fff;
+}
+
+// The background colour paints the top bar only; the page stays white.
+body {
+    background-color: #fff;
 }
 
 // Translucent blurred header like apple.com's nav.
 #header {
-    background: rgba(var(--oa-primary-rgb), 0.85) !important;
+    background: rgba(var(--oa-background-rgb), 0.85) !important;
     -webkit-backdrop-filter: saturate(180%) blur(20px);
     backdrop-filter: saturate(180%) blur(20px);
 }

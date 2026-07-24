@@ -37,17 +37,27 @@ body {
     box-shadow: var(--oa-shadow);
 }
 
-// Header (booking and backend).
+// Header (booking and backend). Everything in the top bar reads in
+// --oa-header-fg so light-header themes stay legible.
 #header {
     background: var(--oa-header-bg) !important;
     border-color: var(--oa-header-bg) !important;
+    --bs-navbar-color: var(--oa-header-fg);
+    --bs-navbar-hover-color: var(--oa-header-fg);
+    --bs-navbar-active-color: var(--oa-header-fg);
 
     #company-name,
     #company-name span,
     #header-logo h6,
     #header-logo small,
-    .display-booking-selection {
+    .display-booking-selection,
+    .navbar-nav .nav-link,
+    .navbar-toggler {
         color: var(--oa-header-fg) !important;
+    }
+
+    .navbar-toggler {
+        border-color: var(--oa-header-fg);
     }
 }
 

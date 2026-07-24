@@ -46,8 +46,10 @@ class BrandColorsTest < ActionDispatch::IntegrationTest
     post "/login/validate", params: { username: "administrator", password: "administrator1" }
     get "/general_settings"
     assert_select "#color-accessibility"
-    assert_select "#apply-suggested-colors"
+    assert_select "button.apply-suggested-colors", 2
     assert_match "theme_suggestions", response.body
+    # Theme and colours come before the company fields.
+    assert response.body.index('id="theme"') < response.body.index('id="company-name"')
   end
 
   test "the colour labels exist in every locale" do
