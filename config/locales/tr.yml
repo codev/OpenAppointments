@@ -1,6 +1,12 @@
 ---
 tr:
   ea:
+    import_providers_caution: "Dikkat: sağlayıcıları işaretlemek kullanıcı hesapları oluşturur ve e-posta ile girişe izin verir"
+    manage_data: "Verileri yönet"
+    export_data: "Verileri dışa aktar"
+    import_type: "İçe aktarma türü"
+    full_reset_label: "Tam sıfırlama, yöneticileri sil ve ayarları sıfırla"
+    delete_personal_information_setting_hint: "Müşterilerin tüm randevularını ve kişisel bilgilerini tek bir düğmeyle sistemden kaldırmasına izin verin."
     captcha: "Captcha"
     captcha_info: "Rezervasyondan önce ziyaretçinin insan olduğunu doğrulamak için captcha ayarları"
     captcha_enabled_hint: "Etkinleştirildiğinde, form doğrulaması için geleneksel resimli captcha yerine seçilen captcha sağlayıcısı kullanılır."
@@ -13,7 +19,7 @@ tr:
     embed_hint: Bu kodu web sitenizde rezervasyon formunun görüneceği sayfaya yapıştırın; çerçeve boyutunu kendisi ayarlar.
     copy: Kopyala
     import_data: Veri içe aktar
-    import_hint: Bir 10to8 CSV dışa aktarımı yükleyin, önce analiz edin, sonra seçilen kayıt türlerini içe aktarın.
+    import_hint: "Bir yedek yükleyin, önce analiz edin, ardından seçilen kayıt türlerini içe aktarın."
     import_phases: Kayıt türleri
     analyze: Analiz et
     start_import: İçe aktarmayı başlat
@@ -28,7 +34,7 @@ tr:
     no_file_selected: Dosya seçilmedi.
     reset_database: Veritabanını sıfırla
     reset_database_warning: Bu işlem tüm randevuları, müşterileri, hizmet verenleri, sekreterleri, hizmetleri ve kategorileri kalıcı olarak siler. Yönetici hesapları ve ayarlar korunur. Geri alınamaz.
-    reset_confirmation_hint: Düğmeyi etkinleştirmek için RESET yazın.
+    reset_confirmation_hint: "Düğmeyi etkinleştirmek için I KNOW WHAT I AM DOING yazın."
     reset_database_done: Veritabanı sıfırlandı.
     captcha_provider: Captcha sağlayıcısı
     turnstile_site_key: Turnstile site anahtarı

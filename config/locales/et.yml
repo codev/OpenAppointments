@@ -1,6 +1,12 @@
 ---
 et:
   ea:
+    import_providers_caution: "Ettevaatust: teenusepakkujate märkimine loob kasutajakontod ja lubab e-postiga sisse logida"
+    manage_data: "Halda andmeid"
+    export_data: "Ekspordi andmed"
+    import_type: "Impordi tüüp"
+    full_reset_label: "Täielik lähtestamine, kustuta administraatorid ja lähtesta seaded"
+    delete_personal_information_setting_hint: "Luba klientidel ühe nupuvajutusega eemaldada süsteemist kõik oma broneeringud ja isikuandmed."
     captcha: "Captcha"
     captcha_info: "Captcha seaded, millega enne broneerimist kontrollitakse, et külastaja on inimene"
     captcha_enabled_hint: "Kui see on lubatud, kasutatakse vormide kontrollimiseks valitud captcha teenusepakkujat traditsioonilise pildi-captcha asemel."
@@ -13,7 +19,7 @@ et:
     embed_hint: Kleepige see kood oma veebisaidi lehele, kus broneerimisvorm peab kuvatama; raam kohandab oma kõrgust ise.
     copy: Kopeeri
     import_data: Andmete import
-    import_hint: Laadige üles 10to8 CSV eksport, analüüsige seda esmalt ja seejärel importige valitud kirjetüübid.
+    import_hint: "Laadige üles varukoopia, analüüsige seda kõigepealt ja seejärel importige valitud kirjetüübid."
     import_phases: Kirjetüübid
     analyze: Analüüsi
     start_import: Alusta importi
@@ -28,7 +34,7 @@ et:
     no_file_selected: Faili pole valitud.
     reset_database: Lähtesta andmebaas
     reset_database_warning: See kustutab jäädavalt kõik broneeringud, kliendid, teenusepakkujad, sekretärid, teenused ja kategooriad. Administraatori kontod ja seaded säilivad. Seda ei saa tagasi võtta.
-    reset_confirmation_hint: Nupu lubamiseks sisestage RESET.
+    reset_confirmation_hint: "Nupu lubamiseks sisestage I KNOW WHAT I AM DOING."
     reset_database_done: Andmebaas on lähtestatud.
     captcha_provider: Captcha pakkuja
     turnstile_site_key: Turnstile'i saidi võti

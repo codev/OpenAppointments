@@ -1,6 +1,12 @@
 ---
 nl:
   ea:
+    import_providers_caution: "Let op: het aanvinken van medewerkers maakt gebruikersaccounts aan en staat inloggen met e-mail toe"
+    manage_data: "Gegevens beheren"
+    export_data: "Gegevens exporteren"
+    import_type: "Importtype"
+    full_reset_label: "Volledige reset, verwijder beheerders en herstel instellingen"
+    delete_personal_information_setting_hint: "Sta klanten toe om met een knop al hun afspraken en persoonlijke gegevens uit het systeem te verwijderen."
     captcha: "Captcha"
     captcha_info: "Captcha-instellingen om te controleren of de bezoeker een mens is voor het boeken"
     captcha_enabled_hint: "Indien ingeschakeld wordt de geselecteerde captcha-provider gebruikt in plaats van de traditionele afbeeldingscaptcha voor formulierverificatie."
@@ -13,7 +19,7 @@ nl:
     embed_hint: Plak deze code op de pagina van uw website waar het boekingsformulier moet verschijnen; het frame past zijn hoogte zelf aan.
     copy: Kopiëren
     import_data: Gegevens importeren
-    import_hint: Upload een 10to8 CSV-export, analyseer die eerst en importeer daarna de geselecteerde recordtypen.
+    import_hint: "Upload een back-up, analyseer deze eerst en importeer daarna de geselecteerde recordtypen."
     import_phases: Recordtypen
     analyze: Analyseren
     start_import: Import starten
@@ -28,7 +34,7 @@ nl:
     no_file_selected: Geen bestand geselecteerd.
     reset_database: Database resetten
     reset_database_warning: Dit verwijdert permanent alle afspraken, klanten, aanbieders, secretariaten, diensten en categorieën. Beheerdersaccounts en instellingen blijven behouden. Onomkeerbaar.
-    reset_confirmation_hint: Typ RESET om de knop te activeren.
+    reset_confirmation_hint: "Typ I KNOW WHAT I AM DOING om de knop in te schakelen."
     reset_database_done: De database is gereset.
     captcha_provider: Captcha-aanbieder
     turnstile_site_key: Turnstile-sitesleutel

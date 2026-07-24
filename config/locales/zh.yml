@@ -1,6 +1,12 @@
 ---
 zh:
   ea:
+    import_providers_caution: "注意：勾选服务人员将创建用户账户并允许使用邮箱登录"
+    manage_data: "数据管理"
+    export_data: "导出数据"
+    import_type: "导入类型"
+    full_reset_label: "完全重置，删除管理员并重置设置"
+    delete_personal_information_setting_hint: "允许客户通过一个按钮从系统中删除他们的所有预约和个人信息。"
     captcha: "Captcha"
     captcha_info: "用于在预约前验证访客是真人的验证码设置"
     captcha_enabled_hint: "启用后，表单验证将使用所选的验证码提供方，替代传统的图片验证码。"
@@ -13,7 +19,7 @@ zh:
     embed_hint: 将此代码粘贴到您网站上要显示预约表单的页面；框架会自动调整大小。
     copy: 复制
     import_data: 导入数据
-    import_hint: 上传 10to8 导出的 CSV 文件，先分析，然后导入所选的记录类型。
+    import_hint: "上传备份文件，先进行分析，然后导入所选的记录类型。"
     import_phases: 记录类型
     analyze: 分析
     start_import: 开始导入
@@ -28,7 +34,7 @@ zh:
     no_file_selected: 未选择文件。
     reset_database: 重置数据库
     reset_database_warning: 这将永久删除所有预约、客户、服务人员、秘书、服务和类别。管理员账户和设置将保留。此操作不可撤销。
-    reset_confirmation_hint: 输入 RESET 以启用按钮。
+    reset_confirmation_hint: "输入 I KNOW WHAT I AM DOING 以启用该按钮。"
     reset_database_done: 数据库已重置。
     captcha_provider: 验证码提供方
     turnstile_site_key: Turnstile 站点密钥

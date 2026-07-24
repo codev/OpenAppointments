@@ -1,6 +1,12 @@
 ---
 pl:
   ea:
+    import_providers_caution: "Uwaga: zaznaczenie specjalistów utworzy konta użytkowników i umożliwi logowanie e-mailem"
+    manage_data: "Zarządzanie danymi"
+    export_data: "Eksportuj dane"
+    import_type: "Typ importu"
+    full_reset_label: "Pełny reset, usuń administratorów i zresetuj ustawienia"
+    delete_personal_information_setting_hint: "Pozwól klientom jednym przyciskiem usunąć z systemu wszystkie swoje wizyty i dane osobowe."
     captcha: "Captcha"
     captcha_info: "Ustawienia captcha weryfikujące, że odwiedzający jest człowiekiem przed rezerwacją"
     captcha_enabled_hint: "Po włączeniu wybrany dostawca captcha będzie używany zamiast tradycyjnej obrazkowej captchy do weryfikacji formularzy."
@@ -13,7 +19,7 @@ pl:
     embed_hint: Wklej ten kod na stronę swojej witryny, która ma pokazywać formularz rezerwacji; ramka sama dopasowuje wysokość.
     copy: Kopiuj
     import_data: Import danych
-    import_hint: Prześlij eksport CSV z 10to8, najpierw go przeanalizuj, a potem zaimportuj wybrane typy rekordów.
+    import_hint: "Prześlij kopię zapasową, najpierw ją przeanalizuj, a następnie zaimportuj wybrane typy rekordów."
     import_phases: Typy rekordów
     analyze: Analizuj
     start_import: Rozpocznij import
@@ -28,7 +34,7 @@ pl:
     no_file_selected: Nie wybrano pliku.
     reset_database: Zresetuj bazę danych
     reset_database_warning: To trwale usuwa wszystkie wizyty, klientów, usługodawców, sekretarzy, usługi i kategorie. Konta administratorów i ustawienia pozostają. Nieodwracalne.
-    reset_confirmation_hint: Wpisz RESET, aby włączyć przycisk.
+    reset_confirmation_hint: "Wpisz I KNOW WHAT I AM DOING, aby włączyć przycisk."
     reset_database_done: Baza danych została zresetowana.
     captcha_provider: Dostawca captcha
     turnstile_site_key: Klucz witryny Turnstile

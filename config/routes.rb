@@ -39,6 +39,7 @@ Rails.application.routes.draw do
 
   # 10to8 import page
   get "import" => "import#index"
+  get "import/export" => "import#export"
   post "import/analyze" => "import#analyze"
   post "import/start" => "import#start"
   get "import/status" => "import#status"

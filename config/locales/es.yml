@@ -1,6 +1,12 @@
 ---
 es:
   ea:
+    import_providers_caution: "Precaución: marcar proveedores creará cuentas de usuario y permitirá iniciar sesión con el correo"
+    manage_data: "Gestionar datos"
+    export_data: "Exportar datos"
+    import_type: "Tipo de importación"
+    full_reset_label: "Restablecimiento completo, eliminar administradores y restablecer ajustes"
+    delete_personal_information_setting_hint: "Permitir a los clientes eliminar todas sus citas e información personal del sistema con un botón."
     captcha: "Captcha"
     captcha_info: "Configuración del captcha para verificar que el visitante es humano antes de reservar"
     captcha_enabled_hint: "Cuando está activado, el proveedor de captcha seleccionado se usará en lugar del captcha de imagen tradicional para verificar formularios."
@@ -13,7 +19,7 @@ es:
     embed_hint: Pegue este código en la página de su sitio web que mostrará el formulario de reservas; el marco se ajusta solo.
     copy: Copiar
     import_data: Importar datos
-    import_hint: Suba un CSV exportado de 10to8, analícelo primero y luego importe los tipos de registros seleccionados.
+    import_hint: "Suba una copia de seguridad, analícela primero y luego importe los tipos de registro seleccionados."
     import_phases: Tipos de registros
     analyze: Analizar
     start_import: Iniciar importación
@@ -28,7 +34,7 @@ es:
     no_file_selected: Ningún archivo seleccionado.
     reset_database: Restablecer base de datos
     reset_database_warning: Esto elimina permanentemente todas las citas, clientes, proveedores, secretarios, servicios y categorías. Las cuentas de administrador y la configuración se conservan. No se puede deshacer.
-    reset_confirmation_hint: Escriba RESET para habilitar el botón.
+    reset_confirmation_hint: "Escriba I KNOW WHAT I AM DOING para habilitar el botón."
     reset_database_done: La base de datos se ha restablecido.
     captcha_provider: Proveedor de captcha
     turnstile_site_key: Clave del sitio de Turnstile

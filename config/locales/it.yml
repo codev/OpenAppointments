@@ -1,6 +1,12 @@
 ---
 it:
   ea:
+    import_providers_caution: "Attenzione: selezionare i fornitori creerà account utente e consentirà l'accesso con l'email"
+    manage_data: "Gestione dati"
+    export_data: "Esporta dati"
+    import_type: "Tipo di importazione"
+    full_reset_label: "Reset completo, elimina gli amministratori e ripristina le impostazioni"
+    delete_personal_information_setting_hint: "Consenti ai clienti di rimuovere tutti i loro appuntamenti e le informazioni personali dal sistema con un pulsante."
     captcha: "Captcha"
     captcha_info: "Impostazioni del captcha per verificare che il visitatore sia umano prima della prenotazione"
     captcha_enabled_hint: "Quando abilitato, il provider di captcha selezionato verrà usato al posto del tradizionale captcha con immagine per la verifica dei moduli."
@@ -13,7 +19,7 @@ it:
     embed_hint: Incolla questo codice nella pagina del tuo sito che deve mostrare il modulo di prenotazione; il riquadro si ridimensiona da solo.
     copy: Copia
     import_data: Importa dati
-    import_hint: Carica un CSV esportato da 10to8, analizzalo prima e poi importa i tipi di record selezionati.
+    import_hint: "Carica un backup, analizzalo prima e poi importa i tipi di record selezionati."
     import_phases: Tipi di record
     analyze: Analizza
     start_import: Avvia importazione
@@ -28,7 +34,7 @@ it:
     no_file_selected: Nessun file selezionato.
     reset_database: Reimposta database
     reset_database_warning: Questo elimina definitivamente tutti gli appuntamenti, clienti, fornitori, segretari, servizi e categorie. Gli account amministratore e le impostazioni restano. Irreversibile.
-    reset_confirmation_hint: Digita RESET per abilitare il pulsante.
+    reset_confirmation_hint: "Digita I KNOW WHAT I AM DOING per abilitare il pulsante."
     reset_database_done: Il database è stato reimpostato.
     captcha_provider: Fornitore captcha
     turnstile_site_key: Chiave del sito Turnstile

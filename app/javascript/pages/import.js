@@ -1,8 +1,8 @@
 /**
- * Import page.
+ * Manage data page.
  *
- * 10to8 CSV import (analyze dry run, background import with polling) and the
- * business-data reset.
+ * ODS export, imports (OpenAppointments ODS or 10to8 CSV; analyze dry run,
+ * background import with polling) and the database reset.
  */
 App.Pages.Import = (function () {
     const $file = $('#import-file');
@@ -13,10 +13,11 @@ App.Pages.Import = (function () {
         const data = new FormData();
         data.append('csrf_token', vars('csrf_token'));
         data.append('file', $file[0].files[0]);
+        data.append('import_type', $('#import-type').val());
         data.append('days_back', $('#days-back').val());
         data.append('days_forward', $('#days-forward').val());
         $('.import-phase:checked').each((index, el) => data.append('phases[]', $(el).val()));
-        data.append('create_providers', $('#create-providers').prop('checked') ? '1' : '0');
+        data.append('create_providers', $('#phase-providers').prop('checked') ? '1' : '0');
         return data;
     }
 
@@ -91,17 +92,23 @@ App.Pages.Import = (function () {
         });
 
         $('#reset-confirmation').on('input', (event) => {
-            $('#reset-database').prop('disabled', $(event.target).val() !== 'RESET');
+            $('#reset-database').prop('disabled', $(event.target).val() !== 'I KNOW WHAT I AM DOING');
         });
 
         $('#reset-database').on('click', () => {
             $.post(App.Utils.Url.siteUrl('import/reset'), {
                 csrf_token: vars('csrf_token'),
                 confirmation: $('#reset-confirmation').val(),
+                full: $('#full-reset').prop('checked') ? '1' : '0',
             })
-                .done(() => {
+                .done((response) => {
                     show(lang('reset_database_done'), 'success');
                     $('#reset-confirmation').val('').trigger('input');
+
+                    if (response.full) {
+                        // The session admin is gone; back to the login page.
+                        setTimeout(() => (window.location.href = App.Utils.Url.siteUrl('login')), 2000);
+                    }
                 })
                 .fail((jqXHR) => show((jqXHR.responseJSON || {}).message || 'Error', 'danger'));
         });

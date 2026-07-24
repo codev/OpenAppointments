@@ -1,6 +1,12 @@
 ---
 pt-br:
   ea:
+    import_providers_caution: "Atenção: marcar profissionais criará contas de usuário e permitirá login com email"
+    manage_data: "Gerenciar dados"
+    export_data: "Exportar dados"
+    import_type: "Tipo de importação"
+    full_reset_label: "Redefinição completa, excluir administradores e redefinir configurações"
+    delete_personal_information_setting_hint: "Permitir que os clientes removam todos os seus agendamentos e informações pessoais do sistema com um botão."
     captcha: "Captcha"
     captcha_info: "Configurações do captcha para verificar se o visitante é humano antes de agendar"
     captcha_enabled_hint: "Quando ativado, o provedor de captcha selecionado será usado no lugar do captcha de imagem tradicional para verificação de formulários."
@@ -13,7 +19,7 @@ pt-br:
     embed_hint: Cole este código na página do seu site que deve mostrar o formulário de reserva; o quadro se ajusta sozinho.
     copy: Copiar
     import_data: Importar dados
-    import_hint: Envie um CSV exportado do 10to8, analise-o primeiro e depois importe os tipos de registros selecionados.
+    import_hint: "Envie um backup, analise-o primeiro e depois importe os tipos de registro selecionados."
     import_phases: Tipos de registros
     analyze: Analisar
     start_import: Iniciar importação
@@ -28,7 +34,7 @@ pt-br:
     no_file_selected: Nenhum arquivo selecionado.
     reset_database: Redefinir banco de dados
     reset_database_warning: Isso exclui permanentemente todos os agendamentos, clientes, prestadores, secretários, serviços e categorias. As contas de administrador e as configurações são mantidas. Irreversível.
-    reset_confirmation_hint: Digite RESET para habilitar o botão.
+    reset_confirmation_hint: "Digite I KNOW WHAT I AM DOING para habilitar o botão."
     reset_database_done: O banco de dados foi redefinido.
     captcha_provider: Provedor de captcha
     turnstile_site_key: Chave do site Turnstile

@@ -1,6 +1,12 @@
 ---
 ca:
   ea:
+    import_providers_caution: "Precaució: marcar proveïdors crearà comptes d'usuari i permetrà iniciar sessió amb el correu"
+    manage_data: "Gestiona les dades"
+    export_data: "Exporta les dades"
+    import_type: "Tipus d'importació"
+    full_reset_label: "Restabliment complet, elimina els administradors i restableix la configuració"
+    delete_personal_information_setting_hint: "Permet als clients eliminar totes les seves cites i informació personal del sistema amb un botó."
     captcha: "Captcha"
     captcha_info: "Configuració del captcha per verificar que el visitant és humà abans de reservar"
     captcha_enabled_hint: "Quan està activat, el proveïdor de captcha seleccionat s'utilitzarà en lloc del captcha d'imatge tradicional per verificar formularis."
@@ -13,7 +19,7 @@ ca:
     embed_hint: Enganxeu aquest codi a la pàgina del vostre web que ha de mostrar el formulari de reserves; el marc s'ajusta sol.
     copy: Copia
     import_data: Importa dades
-    import_hint: Pugeu un CSV exportat de 10to8, analitzeu-lo primer i després importeu els tipus de registres seleccionats.
+    import_hint: "Pugeu una còpia de seguretat, analitzeu-la primer i després importeu els tipus de registre seleccionats."
     import_phases: Tipus de registres
     analyze: Analitza
     start_import: Inicia la importació
@@ -28,7 +34,7 @@ ca:
     no_file_selected: No s'ha seleccionat cap fitxer.
     reset_database: Restableix la base de dades
     reset_database_warning: Això elimina permanentment totes les cites, clients, proveïdors, secretaris, serveis i categories. Els comptes d'administrador i la configuració es conserven. No es pot desfer.
-    reset_confirmation_hint: Escriviu RESET per activar el botó.
+    reset_confirmation_hint: "Escriviu I KNOW WHAT I AM DOING per activar el botó."
     reset_database_done: La base de dades s'ha restablert.
     captcha_provider: Proveïdor de captcha
     turnstile_site_key: Clau del lloc de Turnstile

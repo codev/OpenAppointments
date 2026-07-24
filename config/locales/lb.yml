@@ -1,6 +1,12 @@
 ---
 lb:
   ea:
+    import_providers_caution: "Opgepasst: wann Dir Déngschtleeschter ukräizt, gi Benotzerkonten erstallt an d'Umeldung per E-Mail gëtt méiglech"
+    manage_data: "Donnéeë verwalten"
+    export_data: "Donnéeën exportéieren"
+    import_type: "Importtyp"
+    full_reset_label: "Komplette Reset, Administrateure läschen an Astellungen zerécksetzen"
+    delete_personal_information_setting_hint: "Erlaabt Clienten all hir Rendez-vousen a perséinlech Donnéeë mat engem Knäppchen aus dem System ze läschen."
     captcha: "Captcha"
     captcha_info: "Captcha-Astellungen fir ze préiwen, datt de Besucher e Mënsch ass, ier gebucht gëtt"
     captcha_enabled_hint: "Wann aktivéiert, gëtt de gewielte Captcha-Provider amplaz vun der traditioneller Bild-Captcha fir d'Formularverifikatioun benotzt."
@@ -13,7 +19,7 @@ lb:
     embed_hint: Setzt dëse Code op d'Säit vun Ärer Websäit déi de Buchungsformulaire weise soll; de Frame passt seng Gréisst selwer un.
     copy: Kopéieren
     import_data: Daten importéieren
-    import_hint: Luet en 10to8 CSV-Export erop, analyséiert en fir d'éischt an importéiert dann déi ausgewielten Datentypen.
+    import_hint: "Luet e Backup erop, analyséiert en fir d'éischt, an importéiert dann déi gewielten Zorte vun Datesätz."
     import_phases: Datentypen
     analyze: Analyséieren
     start_import: Import starten
@@ -28,7 +34,7 @@ lb:
     no_file_selected: Kee Fichier ausgewielt.
     reset_database: Datebank zrécksetzen
     reset_database_warning: Dëst läscht permanent all Rendez-vousen, Clienten, Ubidder, Sekretariater, Servicer a Kategorien. Administrateur-Konten an Astellunge bleiwen. Net réckgängeg ze maachen.
-    reset_confirmation_hint: Gitt RESET an fir de Knäppchen z'aktivéieren.
+    reset_confirmation_hint: "Gitt I KNOW WHAT I AM DOING an fir de Knäppchen z'aktivéieren."
     reset_database_done: D'Datebank gouf zréckgesat.
     captcha_provider: Captcha-Ubidder
     turnstile_site_key: Turnstile-Site-Schlëssel

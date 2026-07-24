@@ -1,6 +1,12 @@
 ---
 ja:
   ea:
+    import_providers_caution: "注意: 担当者にチェックを入れるとユーザーアカウントが作成され、メールでのログインが可能になります"
+    manage_data: "データ管理"
+    export_data: "データをエクスポート"
+    import_type: "インポートの種類"
+    full_reset_label: "完全リセット、管理者を削除し設定をリセットします"
+    delete_personal_information_setting_hint: "顧客がボタンひとつで自分の予約と個人情報をすべてシステムから削除できるようにします。"
     captcha: "Captcha"
     captcha_info: "予約前に訪問者が人間であることを確認するためのCaptcha設定"
     captcha_enabled_hint: "有効にすると、フォーム検証に従来の画像キャプチャの代わりに選択したCaptchaプロバイダーが使用されます。"
@@ -13,7 +19,7 @@ ja:
     embed_hint: このコードを予約フォームを表示したいサイトのページに貼り付けてください。フレームは自動でサイズ調整されます。
     copy: コピー
     import_data: データのインポート
-    import_hint: 10to8 のエクスポート CSV をアップロードし、まず分析してから選択したレコード種別をインポートします。
+    import_hint: "バックアップをアップロードし、まず分析してから、選択したレコード種別をインポートします。"
     import_phases: レコード種別
     analyze: 分析
     start_import: インポート開始
@@ -28,7 +34,7 @@ ja:
     no_file_selected: ファイルが選択されていません。
     reset_database: データベースのリセット
     reset_database_warning: すべての予約、顧客、担当者、秘書、サービス、カテゴリーを完全に削除します。管理者アカウントと設定は保持されます。元に戻せません。
-    reset_confirmation_hint: ボタンを有効にするには RESET と入力してください。
+    reset_confirmation_hint: "ボタンを有効にするには I KNOW WHAT I AM DOING と入力してください。"
     reset_database_done: データベースをリセットしました。
     captcha_provider: キャプチャプロバイダー
     turnstile_site_key: Turnstile サイトキー

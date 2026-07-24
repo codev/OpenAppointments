@@ -63,3 +63,5 @@ gem "google-apis-calendar_v3", "~> 0.56.0"
 gem "googleauth", "~> 1.17"
 
 gem "webmock", "~> 3.26", group: :test
+
+gem "roo", "~> 3.0"

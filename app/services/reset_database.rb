@@ -1,11 +1,12 @@
-# Business-data reset for the import page: removes appointments, customers,
-# providers, secretaries, services, categories, consents, blocked periods and
-# working plan exceptions. Admin accounts and settings survive; seeds re-run to
-# restore any missing defaults.
+# Database reset for the manage-data page. The default reset removes business
+# data (appointments, customers, providers, secretaries, services, categories,
+# consents, blocked periods, working plan exceptions) and keeps admin accounts
+# and settings. A full reset also deletes admins, webhooks and all settings,
+# reseeds the defaults and recreates the fresh-install administrator.
 module ResetDatabase
   module_function
 
-  def run
+  def run(full: false)
     ActiveRecord::Base.transaction do
       Appointment.delete_all
       Consent.delete_all
@@ -18,8 +19,15 @@ module ResetDatabase
       [ User.customers, User.providers, User.secretaries ].each do |scope|
         scope.find_each(&:destroy!)
       end
+
+      if full
+        Webhook.delete_all
+        User.admins.find_each(&:destroy!)
+        Setting.delete_all
+      end
     end
     Rails.application.load_seed
+    InstallAdmin.create if full
     true
   end
 end

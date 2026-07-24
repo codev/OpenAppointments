@@ -1,6 +1,12 @@
 ---
 ro:
   ea:
+    import_providers_caution: "Atenție: bifarea furnizorilor va crea conturi de utilizator și va permite autentificarea cu emailul"
+    manage_data: "Gestionare date"
+    export_data: "Exportă datele"
+    import_type: "Tip de import"
+    full_reset_label: "Resetare completă, șterge administratorii și resetează setările"
+    delete_personal_information_setting_hint: "Permiteți clienților să își elimine toate programările și informațiile personale din sistem cu un buton."
     captcha: "Captcha"
     captcha_info: "Setări captcha pentru a verifica dacă vizitatorul este om înainte de rezervare"
     captcha_enabled_hint: "Când este activat, furnizorul de captcha selectat va fi folosit în locul captcha-ului tradițional cu imagine pentru verificarea formularelor."
@@ -13,7 +19,7 @@ ro:
     embed_hint: Lipiți acest cod în pagina site-ului dvs. care trebuie să afișeze formularul de rezervare; cadrul se redimensionează singur.
     copy: Copiază
     import_data: Import date
-    import_hint: Încărcați un export CSV din 10to8, analizați-l mai întâi, apoi importați tipurile de înregistrări selectate.
+    import_hint: "Încărcați o copie de rezervă, analizați-o mai întâi, apoi importați tipurile de înregistrări selectate."
     import_phases: Tipuri de înregistrări
     analyze: Analizează
     start_import: Pornește importul
@@ -28,7 +34,7 @@ ro:
     no_file_selected: Niciun fișier selectat.
     reset_database: Resetează baza de date
     reset_database_warning: Aceasta șterge definitiv toate programările, clienții, furnizorii, secretarii, serviciile și categoriile. Conturile de administrator și setările rămân. Ireversibil.
-    reset_confirmation_hint: Tastați RESET pentru a activa butonul.
+    reset_confirmation_hint: "Tastați I KNOW WHAT I AM DOING pentru a activa butonul."
     reset_database_done: Baza de date a fost resetată.
     captcha_provider: Furnizor captcha
     turnstile_site_key: Cheia site-ului Turnstile

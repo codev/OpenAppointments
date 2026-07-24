@@ -63,13 +63,21 @@ New "Required phone or email" in booking settings, by default on, to require a c
 
 Captcha providers now include Cloudflare Turnstile as well as Altcha. Pick the provider on the captcha settings page and paste in the site key and secret key from your Cloudflare dashboard to verify each booking is coming from a human before accepting it.
 
-### Import page
+### Manage data page
 
-An admin-only Import page can import data , it initially supports Sign In App/10to8 CSV files. Re-running is safe: existing records are matched by name, email or phone instead of being duplicated.
+An admin-only Manage data page exports the whole database as a dated ODS backup
+(one sheet per record type) and imports OpenAppointments ODS backups or Sign In
+App/10to8 CSV exports, with selectable record types and an appointment date
+window. Re-running is safe: existing records are matched by name, email or phone
+instead of being duplicated. Ticking providers creates login-capable user
+accounts, so it is off by default.
 
 ### Database reset option
 
-The admin-only Import page has a database reset that wipes business data but keeps admin account and settings.
+The Manage data page has a database reset behind a typed confirmation that wipes
+business data but keeps admin accounts and settings. A full reset also deletes
+administrators and settings, reseeds the defaults and recreates the install
+admin with the default password.
 
 ### Outline theme
 
@@ -85,7 +93,7 @@ Each provider can sync their calendar - outbound sync works for CalDAV and Googl
 
 ### Minor fixes
 
-Better layout of customer fields; Any Provider is the default in the provider dropdown instead of Please Select; Pagination in the admin views; customers page and appointments modal respect the booking field display/require settings; booking form validation messages now display; the install task's admin is redirected to the account page with a banner until the default password is changed
+Better layout of customer fields; Captcha and Google Calendar first on the Integrations page; per-provider captcha settings sections; Any Provider is the default in the provider dropdown instead of Please Select; Pagination in the admin views; customers page and appointments modal respect the booking field display/require settings; booking form validation messages now display; the install task's admin is redirected to the account page with a banner until the default password is changed
 
 
 ## Operations

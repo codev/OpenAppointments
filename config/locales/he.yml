@@ -1,6 +1,12 @@
 ---
 he:
   ea:
+    import_providers_caution: "זהירות: סימון נותני שירות ייצור חשבונות משתמש ויאפשר התחברות עם אימייל"
+    manage_data: "ניהול נתונים"
+    export_data: "ייצוא נתונים"
+    import_type: "סוג ייבוא"
+    full_reset_label: "איפוס מלא, מחיקת מנהלים ואיפוס הגדרות"
+    delete_personal_information_setting_hint: "אפשרו ללקוחות להסיר את כל התורים והמידע האישי שלהם מהמערכת בלחיצת כפתור."
     captcha: "Captcha"
     captcha_info: "הגדרות קאפצ'ה לאימות שהמבקר אנושי לפני ההזמנה"
     captcha_enabled_hint: "כאשר מופעל, ספק הקאפצ'ה שנבחר ישמש במקום קאפצ'ת התמונה המסורתית לאימות טפסים."
@@ -13,7 +19,7 @@ he:
     embed_hint: הדבק קוד זה בעמוד באתר שלך שאמור להציג את טופס ההזמנה; המסגרת מתאימה את גובהה אוטומטית.
     copy: העתק
     import_data: ייבוא נתונים
-    import_hint: העלה קובץ CSV מיוצא מ-10to8, נתח אותו תחילה ואז ייבא את סוגי הרשומות שנבחרו.
+    import_hint: "העלו גיבוי, נתחו אותו תחילה ואז ייבאו את סוגי הרשומות שנבחרו."
     import_phases: סוגי רשומות
     analyze: ניתוח
     start_import: התחל ייבוא
@@ -28,7 +34,7 @@ he:
     no_file_selected: לא נבחר קובץ.
     reset_database: איפוס מסד הנתונים
     reset_database_warning: פעולה זו מוחקת לצמיתות את כל התורים, הלקוחות, נותני השירות, המזכירים, השירותים והקטגוריות. חשבונות מנהלים והגדרות נשמרים. לא ניתן לבטל.
-    reset_confirmation_hint: הקלד RESET כדי להפעיל את הכפתור.
+    reset_confirmation_hint: "הקלידו I KNOW WHAT I AM DOING כדי להפעיל את הכפתור."
     reset_database_done: מסד הנתונים אופס.
     captcha_provider: ספק captcha
     turnstile_site_key: מפתח אתר Turnstile

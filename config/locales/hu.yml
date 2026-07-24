@@ -1,6 +1,12 @@
 ---
 hu:
   ea:
+    import_providers_caution: "Figyelem: a szolgáltatók bejelölése felhasználói fiókokat hoz létre, és lehetővé teszi az e-mailes bejelentkezést"
+    manage_data: "Adatok kezelése"
+    export_data: "Adatok exportálása"
+    import_type: "Importálás típusa"
+    full_reset_label: "Teljes visszaállítás, adminisztrátorok törlése és beállítások visszaállítása"
+    delete_personal_information_setting_hint: "Engedélyezze az ügyfeleknek, hogy egy gombbal eltávolítsák összes időpontjukat és személyes adataikat a rendszerből."
     captcha: "Captcha"
     captcha_info: "Captcha beállítások annak ellenőrzésére, hogy a látogató ember-e a foglalás előtt"
     captcha_enabled_hint: "Ha engedélyezve van, az űrlapok ellenőrzéséhez a hagyományos képes captcha helyett a kiválasztott captcha szolgáltató lesz használva."
@@ -13,7 +19,7 @@ hu:
     embed_hint: Illessze be ezt a kódot webhelye azon oldalára, ahol a foglalási űrlapnak meg kell jelennie; a keret magassága automatikusan igazodik.
     copy: Másolás
     import_data: Adatok importálása
-    import_hint: Töltsön fel egy 10to8 CSV exportot, először elemezze, majd importálja a kiválasztott rekordtípusokat.
+    import_hint: "Töltsön fel egy biztonsági mentést, először elemezze, majd importálja a kiválasztott rekordtípusokat."
     import_phases: Rekordtípusok
     analyze: Elemzés
     start_import: Import indítása
@@ -28,7 +34,7 @@ hu:
     no_file_selected: Nincs kiválasztott fájl.
     reset_database: Adatbázis visszaállítása
     reset_database_warning: Ez véglegesen töröl minden időpontot, ügyfelet, szolgáltatót, titkárt, szolgáltatást és kategóriát. Az adminisztrátori fiókok és a beállítások megmaradnak. Nem vonható vissza.
-    reset_confirmation_hint: Írja be a RESET szót a gomb engedélyezéséhez.
+    reset_confirmation_hint: "Írja be: I KNOW WHAT I AM DOING a gomb engedélyezéséhez."
     reset_database_done: Az adatbázis visszaállítva.
     captcha_provider: Captcha szolgáltató
     turnstile_site_key: Turnstile webhelykulcs

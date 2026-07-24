@@ -1,6 +1,12 @@
 ---
 fr:
   ea:
+    import_providers_caution: "Attention : cocher les intervenants créera des comptes utilisateurs et permettra la connexion par e-mail"
+    manage_data: "Gérer les données"
+    export_data: "Exporter les données"
+    import_type: "Type d'importation"
+    full_reset_label: "Réinitialisation complète, supprimer les administrateurs et réinitialiser les paramètres"
+    delete_personal_information_setting_hint: "Permettre aux clients de supprimer tous leurs rendez-vous et informations personnelles du système avec un bouton."
     captcha: "Captcha"
     captcha_info: "Paramètres du captcha pour vérifier que le visiteur est humain avant la réservation"
     captcha_enabled_hint: "Lorsqu'il est activé, le fournisseur de captcha sélectionné sera utilisé à la place du captcha image traditionnel pour la vérification des formulaires."
@@ -13,7 +19,7 @@ fr:
     embed_hint: Collez ce code dans la page de votre site qui doit afficher le formulaire de réservation ; le cadre s'ajuste automatiquement.
     copy: Copier
     import_data: Importer des données
-    import_hint: Chargez un export CSV 10to8, analysez-le d'abord, puis importez les types d'enregistrements sélectionnés.
+    import_hint: "Téléversez une sauvegarde, analysez-la d'abord, puis importez les types d'enregistrements sélectionnés."
     import_phases: Types d'enregistrements
     analyze: Analyser
     start_import: Démarrer l'import
@@ -28,7 +34,7 @@ fr:
     no_file_selected: Aucun fichier sélectionné.
     reset_database: Réinitialiser la base de données
     reset_database_warning: Ceci supprime définitivement tous les rendez-vous, clients, prestataires, secrétaires, services et catégories. Les comptes administrateurs et les réglages sont conservés. Irréversible.
-    reset_confirmation_hint: Tapez RESET pour activer le bouton.
+    reset_confirmation_hint: "Saisissez I KNOW WHAT I AM DOING pour activer le bouton."
     reset_database_done: La base de données a été réinitialisée.
     captcha_provider: Fournisseur de captcha
     turnstile_site_key: Clé de site Turnstile

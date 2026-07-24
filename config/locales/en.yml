@@ -1,6 +1,12 @@
 ---
 en:
   ea:
+    import_providers_caution: "Caution: ticking providers will create user accounts and allow log in with email"
+    manage_data: "Manage data"
+    export_data: "Export data"
+    import_type: "Import type"
+    full_reset_label: "Full reset, delete administrators and reset settings"
+    delete_personal_information_setting_hint: "Allow customers to remove all their appointments and personal information from the system with a button."
     captcha: "Captcha"
     captcha_info: "Captcha settings to verify the visitor is human before booking"
     captcha_enabled_hint: "When enabled the selected captcha provider will be used instead of the traditional image captcha for form verification."
@@ -13,7 +19,7 @@ en:
     embed_hint: Paste this code into the page of your website that should show the booking form; the frame resizes itself to fit.
     copy: Copy
     import_data: Import data
-    import_hint: Upload a 10to8 export CSV, analyze it first, then import the selected record types.
+    import_hint: "Upload a backup, analyze it first, then import the selected record types."
     import_phases: Record types
     analyze: Analyze
     start_import: Start import
@@ -28,7 +34,7 @@ en:
     no_file_selected: No file selected.
     reset_database: Reset database
     reset_database_warning: This permanently deletes all appointments, customers, providers, secretaries, services and categories. Administrator accounts and settings are kept. This cannot be undone.
-    reset_confirmation_hint: Type RESET to enable the button.
+    reset_confirmation_hint: "Type I KNOW WHAT I AM DOING to enable the button."
     reset_database_done: The database has been reset.
     captcha_provider: Captcha provider
     turnstile_site_key: Turnstile site key

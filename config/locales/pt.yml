@@ -1,6 +1,12 @@
 ---
 pt:
   ea:
+    import_providers_caution: "Atenção: marcar profissionais criará contas de utilizador e permitirá iniciar sessão com email"
+    manage_data: "Gerir dados"
+    export_data: "Exportar dados"
+    import_type: "Tipo de importação"
+    full_reset_label: "Reposição completa, eliminar administradores e repor definições"
+    delete_personal_information_setting_hint: "Permitir que os clientes removam todas as suas marcações e informações pessoais do sistema com um botão."
     captcha: "Captcha"
     captcha_info: "Definições do captcha para verificar que o visitante é humano antes de marcar"
     captcha_enabled_hint: "Quando ativado, o fornecedor de captcha selecionado será usado em vez do captcha de imagem tradicional para verificação de formulários."
@@ -13,7 +19,7 @@ pt:
     embed_hint: Cole este código na página do seu site que deve mostrar o formulário de marcação; a moldura ajusta-se sozinha.
     copy: Copiar
     import_data: Importar dados
-    import_hint: Carregue um CSV exportado do 10to8, analise-o primeiro e depois importe os tipos de registos selecionados.
+    import_hint: "Carregue uma cópia de segurança, analise-a primeiro e depois importe os tipos de registo selecionados."
     import_phases: Tipos de registos
     analyze: Analisar
     start_import: Iniciar importação
@@ -28,7 +34,7 @@ pt:
     no_file_selected: Nenhum ficheiro selecionado.
     reset_database: Repor base de dados
     reset_database_warning: Isto elimina permanentemente todas as marcações, clientes, prestadores, secretários, serviços e categorias. As contas de administrador e as definições mantêm-se. Irreversível.
-    reset_confirmation_hint: Escreva RESET para ativar o botão.
+    reset_confirmation_hint: "Escreva I KNOW WHAT I AM DOING para ativar o botão."
     reset_database_done: A base de dados foi reposta.
     captcha_provider: Fornecedor de captcha
     turnstile_site_key: Chave do site Turnstile

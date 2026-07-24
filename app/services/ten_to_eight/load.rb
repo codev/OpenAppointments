@@ -60,8 +60,10 @@ module TenToEight
           counts[:matched] += 1
         else
           service = Service.create!(
-            name: row[:name], duration: row[:duration] || 30, price: 0, currency: "GBP",
-            attendants_number: 1,
+            name: row[:name], duration: row[:duration] || 30,
+            price: row[:price] || 0, currency: row[:currency].presence || "GBP",
+            description: row[:description], color: row[:color],
+            attendants_number: row[:attendants_number] || 1, is_private: row[:is_private] || false,
             id_service_categories: @category_ids[row[:category]]
           )
           counts[:created] += 1
@@ -87,7 +89,7 @@ module TenToEight
             timezone: "Europe/London", role: role
           )
           provider.create_settings!(
-            username: row[:email].split("@").first,
+            username: row[:username].presence || row[:email].split("@").first,
             password: Passwords.hash(SecureRandom.base58(12)),
             notifications: false,
             working_plan: row[:working_plan].to_json
@@ -135,8 +137,11 @@ module TenToEight
         notes = "#{DO_NOT_CONTACT_PREFIX} #{notes}".strip if row[:do_not_contact]
         customer = User.create!(
           name: row[:name], email: row[:email], phone_number: row[:phone],
-          address: row[:address], notes: notes,
-          custom_field_1: row[:pronoun], custom_field_2: row[:access], role: role
+          address: row[:address], city: row[:city], zip_code: row[:zip], notes: notes,
+          custom_field_1: row[:pronoun], custom_field_2: row[:access],
+          custom_field_3: row[:custom_field_3], custom_field_4: row[:custom_field_4],
+          custom_field_5: row[:custom_field_5], language: row[:language],
+          timezone: row[:timezone], role: role
         )
         counts[:created] += 1
         @customer_ids[row[:ext_id]] = customer.id
