@@ -37,6 +37,13 @@ module Messaging
       post!(uri, request)
     end
 
+    # Twilio request validation: HMAC-SHA1 over URL + sorted POST params.
+    def valid_signature?(signature, url, post_params)
+      data = url + post_params.sort.map { |key, value| "#{key}#{value}" }.join
+      digest = OpenSSL::HMAC.digest("sha1", auth_token, data)
+      ActiveSupport::SecurityUtils.secure_compare(Base64.strict_encode64(digest), signature.to_s)
+    end
+
     def post!(uri, request)
       http = Net::HTTP.new(uri.host, uri.port)
       http.use_ssl = true

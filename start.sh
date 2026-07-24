@@ -21,6 +21,16 @@ export SMTP_USERNAME="${CLOUDRON_MAIL_SMTP_USERNAME:-}"
 export SMTP_PASSWORD="${CLOUDRON_MAIL_SMTP_PASSWORD:-}"
 export SMTP_FROM="${CLOUDRON_MAIL_FROM:-}"
 
+# Recvmail addon -> IMAP env for "Receive email through server" (Messages > Providers > Email).
+export IMAP_HOST="${CLOUDRON_MAIL_IMAP_SERVER:-}"
+export IMAP_PORT="${CLOUDRON_MAIL_IMAP_PORT:-993}"
+export IMAP_USERNAME="${CLOUDRON_MAIL_IMAP_USERNAME:-${CLOUDRON_MAIL_SMTP_USERNAME:-}}"
+export IMAP_PASSWORD="${CLOUDRON_MAIL_IMAP_PASSWORD:-${CLOUDRON_MAIL_SMTP_PASSWORD:-}}"
+
+# Run Solid Queue inside Puma: delivers queued mail/SMS and the recurring
+# reminder scan + IMAP fetch (config/recurring.yml).
+export SOLID_QUEUE_IN_PUMA=1
+
 cd /app/code
 
 # Old container is stopped before update, SQLite is single-writer: safe to migrate on boot.

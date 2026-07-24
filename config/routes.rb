@@ -81,6 +81,9 @@ Rails.application.routes.draw do
   post "account/save" => "account#save"
   post "account/validate_username" => "account#validate_username"
 
+  # Inbound SMS webhooks (public; token in URL)
+  post "messages/inbound/:channel/:token" => "inbound_messages#receive"
+
   # Google Calendar OAuth + sync management
   get "google/oauth/:provider_id" => "google#oauth"
   get "google/oauth_callback" => "google#oauth_callback", as: :google_oauth_callback
