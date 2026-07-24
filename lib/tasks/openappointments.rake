@@ -7,8 +7,7 @@ namespace :openappointments do
     if User.admins.none?
       password = SecureRandom.alphanumeric(12)
       admin = User.create!(
-        first_name: "John",
-        last_name: "Doe",
+        name: "John Doe",
         email: "john@example.org",
         phone_number: "+10000000000",
         role: Role.find_by!(slug: Role::ADMIN)
