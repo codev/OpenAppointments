@@ -95,6 +95,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_07_24_100002) do
 
   create_table "messages", force: :cascade do |t|
     t.integer "appointment_id"
+    t.string "audience"
     t.text "body"
     t.string "channel", null: false
     t.datetime "created_at", null: false

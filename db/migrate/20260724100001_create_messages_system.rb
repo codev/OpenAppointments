@@ -21,6 +21,7 @@ class CreateMessagesSystem < ActiveRecord::Migration[8.1]
     create_table :messages do |t|
       t.string :direction, null: false # outgoing | incoming
       t.string :channel, null: false # email | twilio | plivo | textanywhere
+      t.string :audience # outgoing: customer | provider | admins
       t.string :to_address
       t.string :from_address
       t.integer :customer_id

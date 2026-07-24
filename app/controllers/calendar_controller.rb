@@ -125,6 +125,7 @@ class CalendarController < ApplicationController
     end
 
     appointment = manage_mode ? Appointment.find(appointment_data["id"]) : Appointment.new
+    previous_status = appointment.status
     appointment.assign_attributes(
       appointment_data.slice(*BookingController::ALLOWED_APPOINTMENT_FIELDS).except("id")
     )
@@ -139,7 +140,7 @@ class CalendarController < ApplicationController
     Synchronization.appointment_saved(appointment, service, provider, customer, settings)
     if notify_users
       Notifications.appointment_saved(appointment, service, provider, customer, settings,
-                                      manage_mode: manage_mode)
+                                      manage_mode: manage_mode, previous_status: manage_mode ? previous_status : nil)
     end
     Webhooks.trigger(Webhooks::APPOINTMENT_SAVE, appointment)
 
