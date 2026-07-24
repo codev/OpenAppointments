@@ -1,6 +1,7 @@
 ---
 it:
   ea:
+    first_login_update_details: Inserisci una nuova password e aggiorna i tuoi dati
     embedding: Incorporamento
     allow_iframe_embedding: Consenti l'incorporamento in un iframe
     iframe_embed_origin: Sito web che incorporerà la pagina di prenotazione

@@ -19,6 +19,12 @@ module BackendPage
       return false
     end
 
+    # A fresh install's default password must be changed before using the backend.
+    if resource != :user_settings && current_user&.settings&.require_password_change
+      redirect_to "/account"
+      return false
+    end
+
     true
   end
 

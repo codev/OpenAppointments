@@ -1,6 +1,7 @@
 ---
 ja:
   ea:
+    first_login_update_details: 新しいパスワードを入力し、情報を更新してください
     embedding: 埋め込み
     allow_iframe_embedding: iframe への埋め込みを許可
     iframe_embed_origin: 予約ページを埋め込むウェブサイト

@@ -1,6 +1,7 @@
 ---
 uk:
   ea:
+    first_login_update_details: Будь ласка, введіть новий пароль і оновіть свої дані
     embedding: Вбудовування
     allow_iframe_embedding: Дозволити вбудовування в iframe
     iframe_embed_origin: Сайт, який вбудує сторінку бронювання

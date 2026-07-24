@@ -39,3 +39,4 @@
 
 # Local release helper with real server names (see RELEASING.md)
 /deploy.sh
+.#*

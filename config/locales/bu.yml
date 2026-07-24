@@ -1,6 +1,7 @@
 ---
 bu:
   ea:
+    first_login_update_details: Моля, въведете нова парола и актуализирайте данните си
     embedding: Вграждане
     allow_iframe_embedding: Разреши вграждане в iframe
     iframe_embed_origin: Сайтът, който ще вгради страницата за резервации

@@ -1,6 +1,7 @@
 ---
 ar:
   ea:
+    first_login_update_details: يرجى إدخال كلمة مرور جديدة وتحديث بياناتك
     embedding: التضمين
     allow_iframe_embedding: السماح بالتضمين داخل iframe
     iframe_embed_origin: الموقع الذي سيضمن صفحة الحجز

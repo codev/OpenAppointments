@@ -85,7 +85,7 @@ Each provider can sync their calendar - outbound sync works for CalDAV and Googl
 
 ### Minor fixes
 
-Better layout of customer fields; Any Provider is the default in the provider dropdown instead of Please Select; Pagination in the admin views; customers page and appointments modal respect the booking field display/require settings; booking form validation messages now display
+Better layout of customer fields; Any Provider is the default in the provider dropdown instead of Please Select; Pagination in the admin views; customers page and appointments modal respect the booking field display/require settings; booking form validation messages now display; the install task's admin is redirected to the account page with a banner until the default password is changed
 
 
 ## Operations

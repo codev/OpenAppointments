@@ -1,6 +1,7 @@
 ---
 fi:
   ea:
+    first_login_update_details: Anna uusi salasana ja päivitä tietosi
     embedding: Upotus
     allow_iframe_embedding: Salli upotus iframeen
     iframe_embed_origin: Sivusto joka upottaa varaussivun

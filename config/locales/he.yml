@@ -1,6 +1,7 @@
 ---
 he:
   ea:
+    first_login_update_details: אנא הזינו סיסמה חדשה ועדכנו את הפרטים שלכם
     embedding: הטמעה
     allow_iframe_embedding: אפשר הטמעה ב-iframe
     iframe_embed_origin: האתר שיטמיע את עמוד ההזמנות

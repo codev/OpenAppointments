@@ -1,6 +1,7 @@
 ---
 th:
   ea:
+    first_login_update_details: กรุณาตั้งรหัสผ่านใหม่และอัปเดตข้อมูลของคุณ
     embedding: การฝังหน้า
     allow_iframe_embedding: อนุญาตให้ฝังใน iframe
     iframe_embed_origin: เว็บไซต์ที่จะฝังหน้าการจอง

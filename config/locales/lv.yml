@@ -1,6 +1,7 @@
 ---
 lv:
   ea:
+    first_login_update_details: Lūdzu, ievadiet jaunu paroli un atjauniniet savus datus
     embedding: Iegulšana
     allow_iframe_embedding: Atļaut iegult iframe
     iframe_embed_origin: Vietne, kas iegults rezervāciju lapu

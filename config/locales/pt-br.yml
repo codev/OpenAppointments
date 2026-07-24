@@ -1,6 +1,7 @@
 ---
 pt-br:
   ea:
+    first_login_update_details: Digite uma nova senha e atualize seus dados
     embedding: Incorporação
     allow_iframe_embedding: Permitir incorporação em um iframe
     iframe_embed_origin: Site que incorporará a página de reservas

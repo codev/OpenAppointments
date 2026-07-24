@@ -1,6 +1,7 @@
 ---
 es:
   ea:
+    first_login_update_details: Introduzca una nueva contraseña y actualice sus datos
     embedding: Incrustación
     allow_iframe_embedding: Permitir incrustar en un iframe
     iframe_embed_origin: Sitio web que incrustará la página de reservas

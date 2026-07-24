@@ -1,6 +1,7 @@
 ---
 et:
   ea:
+    first_login_update_details: Palun sisestage uus parool ja uuendage oma andmeid
     embedding: Manustamine
     allow_iframe_embedding: Luba manustamine iframe'i
     iframe_embed_origin: Veebisait, mis manustab broneerimislehe

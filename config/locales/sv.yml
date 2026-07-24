@@ -1,6 +1,7 @@
 ---
 sv:
   ea:
+    first_login_update_details: Ange ett nytt lösenord och uppdatera dina uppgifter
     embedding: Inbäddning
     allow_iframe_embedding: Tillåt inbäddning i en iframe
     iframe_embed_origin: Webbplats som ska bädda in bokningssidan

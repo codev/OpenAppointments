@@ -1,6 +1,7 @@
 ---
 'no':
   ea:
+    first_login_update_details: Angi et nytt passord og oppdater opplysningene dine
     embedding: Innbygging
     allow_iframe_embedding: Tillat innbygging i en iframe
     iframe_embed_origin: Nettsted som skal bygge inn bookingsiden

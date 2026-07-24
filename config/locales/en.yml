@@ -1,6 +1,7 @@
 ---
 en:
   ea:
+    first_login_update_details: Please enter a new password and update your details
     embedding: Embedding
     allow_iframe_embedding: Allow embedding in an iframe
     iframe_embed_origin: Website that will embed the booking page

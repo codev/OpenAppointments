@@ -3,6 +3,11 @@
     <div id="account">
         <div class="row">
             <div class="col-lg-8 offset-lg-2">
+                <% if vars(:require_password_change) %>
+                    <div id="password-change-banner" class="alert alert-warning">
+                        <%= lang('first_login_update_details') %>
+                    </div>
+                <% end %>
                 <form>
                     <fieldset>
                         <div class="d-flex justify-content-between align-items-center border-bottom mb-4 py-2">

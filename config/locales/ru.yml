@@ -1,6 +1,7 @@
 ---
 ru:
   ea:
+    first_login_update_details: Пожалуйста, введите новый пароль и обновите свои данные
     embedding: Встраивание
     allow_iframe_embedding: Разрешить встраивание в iframe
     iframe_embed_origin: Сайт, который встроит страницу записи

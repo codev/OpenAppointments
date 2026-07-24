@@ -1,6 +1,7 @@
 ---
 ro:
   ea:
+    first_login_update_details: Introduceți o parolă nouă și actualizați-vă datele
     embedding: Încorporare
     allow_iframe_embedding: Permite încorporarea într-un iframe
     iframe_embed_origin: Site-ul care va încorpora pagina de rezervări

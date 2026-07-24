@@ -1,6 +1,7 @@
 ---
 da:
   ea:
+    first_login_update_details: Indtast en ny adgangskode og opdater dine oplysninger
     embedding: Indlejring
     allow_iframe_embedding: Tillad indlejring i en iframe
     iframe_embed_origin: Websted der skal indlejre bookingsiden

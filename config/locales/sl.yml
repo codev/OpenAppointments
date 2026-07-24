@@ -1,6 +1,7 @@
 ---
 sl:
   ea:
+    first_login_update_details: Vnesite novo geslo in posodobite svoje podatke
     embedding: Vdelava
     allow_iframe_embedding: Dovoli vdelavo v iframe
     iframe_embed_origin: Spletno mesto, ki bo vdelalo stran za rezervacije

@@ -1,6 +1,7 @@
 ---
 rs:
   ea:
+    first_login_update_details: Unesite novu lozinku i ažurirajte svoje podatke
     embedding: Ugradnja
     allow_iframe_embedding: Dozvoli ugradnju u iframe
     iframe_embed_origin: Sajt koji ce ugraditi stranicu za rezervacije

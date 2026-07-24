@@ -1,6 +1,7 @@
 ---
 tr:
   ea:
+    first_login_update_details: Lütfen yeni bir şifre girin ve bilgilerinizi güncelleyin
     embedding: Gömme
     allow_iframe_embedding: iframe içine gömmeye izin ver
     iframe_embed_origin: Rezervasyon sayfasını gömecek web sitesi

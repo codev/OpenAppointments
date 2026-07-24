@@ -1,6 +1,7 @@
 ---
 nl:
   ea:
+    first_login_update_details: Voer een nieuw wachtwoord in en werk uw gegevens bij
     embedding: Insluiten
     allow_iframe_embedding: Insluiten in een iframe toestaan
     iframe_embed_origin: Website die de boekingspagina insluit

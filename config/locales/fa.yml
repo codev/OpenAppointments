@@ -1,6 +1,7 @@
 ---
 fa:
   ea:
+    first_login_update_details: لطفاً رمز عبور جدیدی وارد کنید و اطلاعات خود را به‌روزرسانی کنید
     embedding: جاسازی
     allow_iframe_embedding: اجازه جاسازی در iframe
     iframe_embed_origin: وب‌سایتی که صفحه رزرو را جاسازی می‌کند

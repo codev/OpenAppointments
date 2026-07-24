@@ -1,6 +1,7 @@
 ---
 de:
   ea:
+    first_login_update_details: Bitte geben Sie ein neues Passwort ein und aktualisieren Sie Ihre Daten
     embedding: Einbettung
     allow_iframe_embedding: Einbettung in einen iframe erlauben
     iframe_embed_origin: Website, die die Buchungsseite einbettet

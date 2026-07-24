@@ -18,7 +18,8 @@ namespace :openappointments do
         username: "administrator",
         password: BCrypt::Password.create(password, cost: 12),
         notifications: true,
-        calendar_view: "default"
+        calendar_view: "default",
+        require_password_change: true
       )
       puts "Admin account created. Change password on first login. Username: administrator  Password: #{password}"
     else

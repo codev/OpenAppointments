@@ -1,6 +1,7 @@
 ---
 lt:
   ea:
+    first_login_update_details: Įveskite naują slaptažodį ir atnaujinkite savo duomenis
     embedding: Įterpimas
     allow_iframe_embedding: Leisti įterpti į iframe
     iframe_embed_origin: Svetainė, kuri įterps rezervacijos puslapį

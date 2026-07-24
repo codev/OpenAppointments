@@ -1,6 +1,7 @@
 ---
 hi:
   ea:
+    first_login_update_details: कृपया नया पासवर्ड दर्ज करें और अपनी जानकारी अपडेट करें
     embedding: एम्बेडिंग
     allow_iframe_embedding: iframe में एम्बेड करने की अनुमति दें
     iframe_embed_origin: वह वेबसाइट जो बुकिंग पेज एम्बेड करेगी

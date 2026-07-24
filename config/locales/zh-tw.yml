@@ -1,6 +1,7 @@
 ---
 zh-tw:
   ea:
+    first_login_update_details: 請輸入新密碼並更新您的資料
     embedding: 嵌入
     allow_iframe_embedding: 允許嵌入 iframe
     iframe_embed_origin: 將嵌入預約頁面的網站

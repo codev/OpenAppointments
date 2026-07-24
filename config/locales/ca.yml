@@ -1,6 +1,7 @@
 ---
 ca:
   ea:
+    first_login_update_details: Introduïu una contrasenya nova i actualitzeu les vostres dades
     embedding: Incrustació
     allow_iframe_embedding: Permet incrustar en un iframe
     iframe_embed_origin: Web que incrustarà la pàgina de reserves

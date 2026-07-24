@@ -1,6 +1,7 @@
 ---
 pt:
   ea:
+    first_login_update_details: Introduza uma nova palavra-passe e atualize os seus dados
     embedding: Incorporação
     allow_iframe_embedding: Permitir incorporação num iframe
     iframe_embed_origin: Site que irá incorporar a página de marcações

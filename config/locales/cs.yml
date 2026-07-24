@@ -1,6 +1,7 @@
 ---
 cs:
   ea:
+    first_login_update_details: Zadejte nové heslo a aktualizujte své údaje
     embedding: Vložení do webu
     allow_iframe_embedding: Povolit vložení do iframe
     iframe_embed_origin: Web, který vloží rezervační stránku

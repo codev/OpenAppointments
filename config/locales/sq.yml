@@ -1,6 +1,7 @@
 ---
 sq:
   ea:
+    first_login_update_details: Ju lutemi vendosni një fjalëkalim të ri dhe përditësoni të dhënat tuaja
     embedding: Ngulitja
     allow_iframe_embedding: Lejo ngulitjen në një iframe
     iframe_embed_origin: Faqja që do të ngulisë faqen e rezervimeve

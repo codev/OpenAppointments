@@ -1,6 +1,7 @@
 ---
 el:
   ea:
+    first_login_update_details: Παρακαλώ εισαγάγετε νέο κωδικό πρόσβασης και ενημερώστε τα στοιχεία σας
     embedding: Ενσωμάτωση
     allow_iframe_embedding: Να επιτρέπεται η ενσωμάτωση σε iframe
     iframe_embed_origin: Ιστότοπος που θα ενσωματώσει τη σελίδα κρατήσεων

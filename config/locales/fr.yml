@@ -1,6 +1,7 @@
 ---
 fr:
   ea:
+    first_login_update_details: Veuillez saisir un nouveau mot de passe et mettre à jour vos informations
     embedding: Intégration
     allow_iframe_embedding: Autoriser l'intégration dans une iframe
     iframe_embed_origin: Site web qui intégrera la page de réservation

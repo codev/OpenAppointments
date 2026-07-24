@@ -1,6 +1,7 @@
 ---
 hu:
   ea:
+    first_login_update_details: Adjon meg új jelszót, és frissítse adatait
     embedding: Beágyazás
     allow_iframe_embedding: Beágyazás engedélyezése iframe-be
     iframe_embed_origin: A weboldal, amely beágyazza a foglalási oldalt

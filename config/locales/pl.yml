@@ -1,6 +1,7 @@
 ---
 pl:
   ea:
+    first_login_update_details: Wprowadź nowe hasło i zaktualizuj swoje dane
     embedding: Osadzanie
     allow_iframe_embedding: Zezwól na osadzanie w iframe
     iframe_embed_origin: Witryna, która osadzi stronę rezerwacji
