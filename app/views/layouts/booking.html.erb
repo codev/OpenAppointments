@@ -24,9 +24,9 @@
 
     <%= stylesheet_link_tag "vendor/cookieconsent/cookieconsent.min", "vendor/flatpickr/flatpickr.min",
                             "vendor/flatpickr/material_green.min" %>
-    <%= stylesheet_link_tag "themes/#{vars(:theme).presence || 'default'}", "general", "frontend" %>
+    <%= stylesheet_link_tag "themes/#{active_theme(vars(:theme))}", "general", "frontend" %>
 
-    <%= render "shared/company_color_style", company_color: vars(:company_color) %>
+    <%= render "shared/brand_style" %>
 
     <%= yield :styles %>
 </head>

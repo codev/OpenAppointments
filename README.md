@@ -79,9 +79,30 @@ business data but keeps admin accounts and settings. A full reset also deletes
 administrators and settings, reseeds the defaults and recreates the install
 admin with the default password.
 
-### Outline theme
+### Themes
 
-New theme rendering with outlined boxes instead of solid fills.
+Seven themes replace the stock set. Themes are structural: the company,
+secondary and background colours from General Settings flow into every theme as
+CSS variables, and each theme offers two one-click suggested palettes. All
+themes use system font stacks only (no remote fonts). General Settings shows
+live WCAG AA contrast warnings with fix suggestions; every suggested palette
+passes AA, guarded by test. On Coder and Fruit the background colour paints the
+top bar only and the page stays white.
+
+- Nice (default): refined modern forms with quiet fills, an accent bottom edge
+  on inputs and soft depth. Friendly and neutral; works with almost any colours.
+- Material: Google's Material 3 language - pill buttons, filled text fields with
+  a strong active indicator, tonal surfaces and gentle elevation.
+- Coder: GitHub's interface style - quiet greys, crisp 1px borders, 6px corners
+  and monospace accents on step numbers and badges.
+- Fruit: Apple's website look - large friendly type, generous rounding, airy
+  neutral surfaces and a translucent blurred top bar.
+- Neo Brutalism: monospace type, hard 2px black borders, offset block shadows
+  and bold flat colour; buttons shift and cast shadows on hover.
+- Outline: transparent surfaces with coloured borders instead of fills; the top
+  bar is white with a primary rule under it.
+- Solid: confident filled colour blocks, geometric type, soft corners and a
+  gradient-tinted page.
 
 ### Iframe embedding
 

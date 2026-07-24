@@ -1,6 +1,14 @@
 ---
 ja:
   ea:
+    apply_suggested_colors: "提案されたカラーを適用"
+    color_contrast_ok: "選択したカラーはWCAG AAのコントラスト基準を満たしています。"
+    contrast_warning_button_text: "会社カラーの上では白いボタン文字が読みにくいです。より濃い会社カラーを選んでください。"
+    contrast_warning_primary_background: "背景色の上では会社カラーが読みにくいです。より濃い会社カラーか、より明るい背景色を選んでください。"
+    contrast_warning_secondary: "セカンダリカラーの上では白い文字が読みにくいです。より濃いセカンダリカラーを選んでください。"
+    contrast_warning_body_background: "背景色の上では文字が読みにくいです。より明るい背景色を選んでください。"
+    secondary_color: "セカンダリカラー"
+    background_color: "背景色"
     import_providers_caution: "注意: 担当者にチェックを入れるとユーザーアカウントが作成され、担当者のメールアドレスでログインできるようになります"
     manage_data: "データ管理"
     export_data: "データをエクスポート"

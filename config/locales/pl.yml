@@ -1,6 +1,14 @@
 ---
 pl:
   ea:
+    apply_suggested_colors: "Zastosuj sugerowane kolory"
+    color_contrast_ok: "Wybrane kolory spełniają kontrast WCAG AA."
+    contrast_warning_button_text: "Biały tekst przycisków jest słabo czytelny na kolorze firmowym - wybierz ciemniejszy kolor firmowy."
+    contrast_warning_primary_background: "Kolor firmowy jest słabo czytelny na kolorze tła - wybierz ciemniejszy kolor firmowy lub jaśniejsze tło."
+    contrast_warning_secondary: "Biały tekst jest słabo czytelny na kolorze dodatkowym - wybierz ciemniejszy kolor dodatkowy."
+    contrast_warning_body_background: "Tekst jest słabo czytelny na kolorze tła - wybierz jaśniejszy kolor tła."
+    secondary_color: "Kolor dodatkowy"
+    background_color: "Kolor tła"
     import_providers_caution: "Uwaga: zaznaczenie specjalistów utworzy konta użytkowników i umożliwi logowanie ich e-mailem"
     manage_data: "Zarządzanie danymi"
     export_data: "Eksportuj dane"

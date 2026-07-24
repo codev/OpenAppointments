@@ -1,6 +1,14 @@
 ---
 rs:
   ea:
+    apply_suggested_colors: "Primeni predložene boje"
+    color_contrast_ok: "Izabrane boje zadovoljavaju WCAG AA kontrast."
+    contrast_warning_button_text: "Beli tekst dugmadi teško je čitljiv na boji kompanije - izaberite tamniju boju kompanije."
+    contrast_warning_primary_background: "Boja kompanije je teško čitljiva na boji pozadine - izaberite tamniju boju kompanije ili svetliju pozadinu."
+    contrast_warning_secondary: "Beli tekst je teško čitljiv na sekundarnoj boji - izaberite tamniju sekundarnu boju."
+    contrast_warning_body_background: "Tekst je teško čitljiv na boji pozadine - izaberite svetliju boju pozadine."
+    secondary_color: "Sekundarna boja"
+    background_color: "Boja pozadine"
     import_providers_caution: "Oprez: označavanje pružalaca usluga kreiraće korisničke naloge i omogućiti prijavu njihovim emailom"
     manage_data: "Upravljanje podacima"
     export_data: "Izvezi podatke"

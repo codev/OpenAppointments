@@ -1,6 +1,14 @@
 ---
 lv:
   ea:
+    apply_suggested_colors: "Lietot ieteiktās krāsas"
+    color_contrast_ok: "Izvēlētās krāsas atbilst WCAG AA kontrastam."
+    contrast_warning_button_text: "Balts pogu teksts ir grūti salasāms uz uzņēmuma krāsas - izvēlieties tumšāku uzņēmuma krāsu."
+    contrast_warning_primary_background: "Uzņēmuma krāsa ir grūti salasāma uz fona krāsas - izvēlieties tumšāku uzņēmuma krāsu vai gaišāku fonu."
+    contrast_warning_secondary: "Balts teksts ir grūti salasāms uz sekundārās krāsas - izvēlieties tumšāku sekundāro krāsu."
+    contrast_warning_body_background: "Teksts ir grūti salasāms uz fona krāsas - izvēlieties gaišāku fona krāsu."
+    secondary_color: "Sekundārā krāsa"
+    background_color: "Fona krāsa"
     import_providers_caution: "Uzmanību: atzīmējot speciālistus, tiks izveidoti lietotāju konti un atļauta pieteikšanās ar viņu e-pastu"
     manage_data: "Datu pārvaldība"
     export_data: "Eksportēt datus"

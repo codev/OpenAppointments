@@ -1,6 +1,14 @@
 ---
 tr:
   ea:
+    apply_suggested_colors: "Önerilen renkleri uygula"
+    color_contrast_ok: "Seçilen renkler WCAG AA kontrastını karşılıyor."
+    contrast_warning_button_text: "Beyaz düğme metni şirket renginde zor okunuyor - daha koyu bir şirket rengi seçin."
+    contrast_warning_primary_background: "Şirket rengi arka plan renginde zor okunuyor - daha koyu bir şirket rengi veya daha açık bir arka plan seçin."
+    contrast_warning_secondary: "Beyaz metin ikincil renkte zor okunuyor - daha koyu bir ikincil renk seçin."
+    contrast_warning_body_background: "Metin arka plan renginde zor okunuyor - daha açık bir arka plan rengi seçin."
+    secondary_color: "İkincil renk"
+    background_color: "Arka plan rengi"
     import_providers_caution: "Dikkat: sağlayıcıları işaretlemek kullanıcı hesapları oluşturur ve e-postalarıyla girişe izin verir"
     manage_data: "Verileri yönet"
     export_data: "Verileri dışa aktar"

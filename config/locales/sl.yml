@@ -1,6 +1,14 @@
 ---
 sl:
   ea:
+    apply_suggested_colors: "Uporabi predlagane barve"
+    color_contrast_ok: "Izbrane barve izpolnjujejo kontrast WCAG AA."
+    contrast_warning_button_text: "Belo besedilo gumbov je težko berljivo na barvi podjetja - izberite temnejšo barvo podjetja."
+    contrast_warning_primary_background: "Barva podjetja je težko berljiva na barvi ozadja - izberite temnejšo barvo podjetja ali svetlejše ozadje."
+    contrast_warning_secondary: "Belo besedilo je težko berljivo na sekundarni barvi - izberite temnejšo sekundarno barvo."
+    contrast_warning_body_background: "Besedilo je težko berljivo na barvi ozadja - izberite svetlejšo barvo ozadja."
+    secondary_color: "Sekundarna barva"
+    background_color: "Barva ozadja"
     import_providers_caution: "Pozor: označitev izvajalcev bo ustvarila uporabniške račune in omogočila prijavo z njihovo e-pošto"
     manage_data: "Upravljanje podatkov"
     export_data: "Izvozi podatke"

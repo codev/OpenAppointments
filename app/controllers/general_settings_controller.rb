@@ -7,6 +7,7 @@ class GeneralSettingsController < ApplicationController
 
   ALLOWED_SETTINGS = %w[
     company_name company_email company_link company_logo company_color
+    company_secondary_color company_background_color
     company_working_plan book_advance_timeout default_timezone default_language
     theme date_format time_format first_weekday require_phone_number
     display_cookie_notice cookie_notice_content display_terms_and_conditions
@@ -17,7 +18,7 @@ class GeneralSettingsController < ApplicationController
     return unless require_backend_page!(:system_settings)
 
     backend_page_vars(page_title: helpers.lang("settings"), active_menu: "system_settings")
-    script_vars(general_settings: settings_rows)
+    script_vars(general_settings: settings_rows, theme_suggestions: Themes::SUGGESTED)
     html_vars(
       available_languages: Localization.available_languages,
       available_themes: available_themes

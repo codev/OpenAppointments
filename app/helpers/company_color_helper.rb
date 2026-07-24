@@ -1,5 +1,5 @@
-# Color math for shared/_company_color_style, mirroring the PHP functions in
-# EA's components/company_color_style.php.
+# Color math for shared/_brand_style (hex_to_rgb, adjust_brightness), plus the
+# WCAG contrast helpers used by the settings accessibility checks.
 module CompanyColorHelper
   DEFAULT_COMPANY_COLOR = "#ffffff"
 

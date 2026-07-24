@@ -1,6 +1,14 @@
 ---
 ar:
   ea:
+    apply_suggested_colors: "تطبيق الألوان المقترحة"
+    color_contrast_ok: "الألوان المحددة تحقق تباين WCAG AA."
+    contrast_warning_button_text: "نص الأزرار الأبيض صعب القراءة على لون الشركة - اختر لون شركة أغمق."
+    contrast_warning_primary_background: "لون الشركة صعب القراءة على لون الخلفية - اختر لون شركة أغمق أو خلفية أفتح."
+    contrast_warning_secondary: "النص الأبيض صعب القراءة على اللون الثانوي - اختر لوناً ثانوياً أغمق."
+    contrast_warning_body_background: "النص صعب القراءة على لون الخلفية - اختر لون خلفية أفتح."
+    secondary_color: "اللون الثانوي"
+    background_color: "لون الخلفية"
     import_providers_caution: "تحذير: تحديد مقدمي الخدمة سينشئ حسابات مستخدمين ويسمح بتسجيل الدخول ببريدهم الإلكتروني"
     manage_data: "إدارة البيانات"
     export_data: "تصدير البيانات"

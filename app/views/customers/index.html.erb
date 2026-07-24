@@ -24,7 +24,7 @@
                 <%= lang('customers') %>
             </h4>
 
-            <div class="results overflow-auto" style="max-height: 650px;">
+            <div class="results overflow-auto">
                 <!-- JS -->
             </div>
         </div>
@@ -62,7 +62,7 @@
             <input id="customer-id" type="hidden">
 
             <div class="row">
-                <div class="col-12 col-lg-6" style="margin-left: 0;">
+                <div class="col-12 col-lg-6">
                     <h4 class="mb-3 fw-light">
                         <%= lang('details') %>
                     </h4>
@@ -200,11 +200,11 @@
                         <%= lang('customer_messages') %>
                     </h4>
 
-                    <div id="customer-messages" class="card border p-3 overflow-auto mb-3" style="min-height: 200px; max-height: 400px; max-width: 330px; width: 100%;"></div>
+                    <div id="customer-messages" class="card border p-3 overflow-auto mb-3"></div>
 
                     <% if script_vars[:message_channels].any? %>
-                        <div class="input-group mb-4" style="max-width: 330px;">
-                            <select id="message-channel" class="form-select" style="max-width: 130px;" disabled>
+                        <div id="customer-message-composer" class="input-group mb-4">
+                            <select id="message-channel" class="form-select" disabled>
                                 <option value=""><%= lang('select_one') %></option>
                                 <% script_vars[:message_channels].each do |channel| %>
                                     <option value="<%= channel[:key] %>"><%= channel[:label] %></option>

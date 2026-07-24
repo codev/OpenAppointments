@@ -1,6 +1,14 @@
 ---
 fr:
   ea:
+    apply_suggested_colors: "Appliquer les couleurs suggérées"
+    color_contrast_ok: "Les couleurs sélectionnées respectent le contraste WCAG AA."
+    contrast_warning_button_text: "Le texte blanc des boutons est difficile à lire sur la couleur de l'entreprise - choisissez une couleur d'entreprise plus foncée."
+    contrast_warning_primary_background: "La couleur de l'entreprise est difficile à lire sur la couleur de fond - choisissez une couleur d'entreprise plus foncée ou un fond plus clair."
+    contrast_warning_secondary: "Le texte blanc est difficile à lire sur la couleur secondaire - choisissez une couleur secondaire plus foncée."
+    contrast_warning_body_background: "Le texte est difficile à lire sur la couleur de fond - choisissez une couleur de fond plus claire."
+    secondary_color: "Couleur secondaire"
+    background_color: "Couleur de fond"
     import_providers_caution: "Attention : cocher les intervenants créera des comptes utilisateurs et permettra la connexion avec leur e-mail"
     manage_data: "Gérer les données"
     export_data: "Exporter les données"

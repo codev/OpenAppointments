@@ -1,6 +1,14 @@
 ---
 th:
   ea:
+    apply_suggested_colors: "ใช้สีที่แนะนำ"
+    color_contrast_ok: "สีที่เลือกผ่านเกณฑ์คอนทราสต์ WCAG AA"
+    contrast_warning_button_text: "ข้อความปุ่มสีขาวอ่านยากบนสีองค์กร - เลือกสีองค์กรที่เข้มขึ้น"
+    contrast_warning_primary_background: "สีองค์กรอ่านยากบนสีพื้นหลัง - เลือกสีองค์กรที่เข้มขึ้นหรือพื้นหลังที่สว่างขึ้น"
+    contrast_warning_secondary: "ข้อความสีขาวอ่านยากบนสีรอง - เลือกสีรองที่เข้มขึ้น"
+    contrast_warning_body_background: "ข้อความอ่านยากบนสีพื้นหลัง - เลือกสีพื้นหลังที่สว่างขึ้น"
+    secondary_color: "สีรอง"
+    background_color: "สีพื้นหลัง"
     import_providers_caution: "ข้อควรระวัง: การเลือกผู้ให้บริการจะสร้างบัญชีผู้ใช้และอนุญาตให้เข้าสู่ระบบด้วยอีเมลของพวกเขา"
     manage_data: "จัดการข้อมูล"
     export_data: "ส่งออกข้อมูล"

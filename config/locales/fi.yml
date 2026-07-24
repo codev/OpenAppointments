@@ -1,6 +1,14 @@
 ---
 fi:
   ea:
+    apply_suggested_colors: "Käytä ehdotettuja värejä"
+    color_contrast_ok: "Valitut värit täyttävät WCAG AA -kontrastin."
+    contrast_warning_button_text: "Valkoinen painiketeksti on vaikealukuinen yrityksen värillä - valitse tummempi yrityksen väri."
+    contrast_warning_primary_background: "Yrityksen väri on vaikealukuinen taustavärillä - valitse tummempi yrityksen väri tai vaaleampi tausta."
+    contrast_warning_secondary: "Valkoinen teksti on vaikealukuinen toissijaisella värillä - valitse tummempi toissijainen väri."
+    contrast_warning_body_background: "Teksti on vaikealukuinen taustavärillä - valitse vaaleampi taustaväri."
+    secondary_color: "Toissijainen väri"
+    background_color: "Taustaväri"
     import_providers_caution: "Varoitus: palveluntarjoajien valinta luo käyttäjätilit ja sallii kirjautumisen heidän sähköpostillaan"
     manage_data: "Hallitse tietoja"
     export_data: "Vie tiedot"
