@@ -5,6 +5,7 @@ class MigrateThemeToNice < ActiveRecord::Migration[8.1]
   def up
     placeholders = NEW_THEMES.map { |theme| connection.quote(theme) }.join(", ")
     execute("UPDATE settings SET value = 'nice' WHERE name = 'theme' AND value NOT IN (#{placeholders})")
+    Rails.cache.delete("setting/theme")
   end
 
   def down; end

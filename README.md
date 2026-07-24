@@ -79,9 +79,17 @@ business data but keeps admin accounts and settings. A full reset also deletes
 administrators and settings, reseeds the defaults and recreates the install
 admin with the default password.
 
-### Outline theme
+### Themes and brand colours
 
-New theme rendering with outlined boxes instead of solid fills.
+Seven themes replace the stock set: Nice (default), Material (Google's Material
+3 look), Coder (GitHub's interface language), Fruit (Apple's website design),
+Neo Brutalism, Outline and Solid. Themes are structural: the company, secondary
+and background colours from General Settings flow into every theme as CSS
+variables, and each theme ships a suggested palette applied with one click. All
+themes use system font stacks only (no remote fonts). General Settings shows
+live WCAG AA contrast warnings with fix suggestions (pick a darker company
+colour, a lighter background, and so on); every suggested palette passes AA,
+guarded by test.
 
 ### Iframe embedding
 

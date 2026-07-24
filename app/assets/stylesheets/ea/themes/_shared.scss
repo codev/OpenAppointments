@@ -19,8 +19,8 @@
     --oa-header-fg: #fff;
     --oa-step-bg: var(--oa-primary-dark);
     --oa-step-fg: var(--oa-primary-subtle);
-    --oa-step-active-bg: var(--oa-secondary);
-    --oa-step-active-fg: #fff;
+    --oa-step-active-bg: #fff;
+    --oa-step-active-fg: var(--oa-primary);
 }
 
 body {

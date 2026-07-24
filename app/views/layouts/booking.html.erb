@@ -24,7 +24,7 @@
 
     <%= stylesheet_link_tag "vendor/cookieconsent/cookieconsent.min", "vendor/flatpickr/flatpickr.min",
                             "vendor/flatpickr/material_green.min" %>
-    <%= stylesheet_link_tag "themes/#{vars(:theme).presence || 'nice'}", "general", "frontend" %>
+    <%= stylesheet_link_tag "themes/#{active_theme(vars(:theme))}", "general", "frontend" %>
 
     <%= render "shared/brand_style" %>
 

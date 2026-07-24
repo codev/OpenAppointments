@@ -6,6 +6,8 @@ class RelaxContactRequireFlags < ActiveRecord::Migration[8.1]
     return if or_rule == "0"
 
     execute("UPDATE settings SET value = '0' WHERE name IN ('require_email', 'require_phone_number')")
+    Rails.cache.delete("setting/require_email")
+    Rails.cache.delete("setting/require_phone_number")
   end
 
   def down; end
