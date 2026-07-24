@@ -44,7 +44,7 @@ New features since the fork from Easy!Appointments 1.6.0 - many of these are opi
 
 ### Name field replaces first name and last name
 
-There is now a single `Name` field instead of First/Last names. The REST API is still EA compatible: firstName carries the full name and lastName is accepted and merged when passed on write.
+There is now a single `Name` field instead of First/Last names. The REST API is still EA compatible: firstName carries the full name and lastName is accepted and merged when passed on write. `name` is also emitted and accepted as an alias for firstName and takes precedence when both are sent.
 
 ### Service and provider divided into two pages
 

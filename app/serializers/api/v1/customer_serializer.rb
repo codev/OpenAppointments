@@ -23,8 +23,9 @@ module Api
 
       class << self
         # EA compat shim: single name column behind the EA v1 firstName/lastName keys.
+        # "name" is also emitted and accepted as an alias; it wins when both are sent.
         def encode(record)
-          super.merge("firstName" => record.name, "lastName" => "")
+          super.merge("name" => record.name, "firstName" => record.name, "lastName" => "")
         end
 
         def decode(params, base = {})
@@ -32,11 +33,12 @@ module Api
           if params.key?("firstName") || params.key?("lastName")
             attrs["name"] = [ params["firstName"], params["lastName"] ].map(&:to_s).map(&:strip).compact_blank.join(" ")
           end
+          attrs["name"] = params["name"].to_s.strip if params.key?("name")
           attrs
         end
 
         def db_field(api_field)
-          return "users.name" if %w[firstName lastName].include?(api_field)
+          return "users.name" if %w[name firstName lastName].include?(api_field)
 
           super
         end

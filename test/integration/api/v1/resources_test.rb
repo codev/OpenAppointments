@@ -40,6 +40,16 @@ module Api
         assert_kind_of Array, provider["services"]
       end
 
+      test "providers emit and accept name as a firstName alias" do
+        api_get "/api/v1/providers/#{users(:zane).id}"
+        assert_equal "Zane", json["name"]
+        assert_equal json["firstName"], json["name"]
+
+        api_put "/api/v1/providers/#{users(:zane).id}", { name: "Zane Renamed" }
+        assert_response :success
+        assert_equal "Zane Renamed", users(:zane).reload.name
+      end
+
       test "providers with=services embeds raw service rows" do
         api_get "/api/v1/providers", with: "services"
         provider = json.find { |p| p["id"] == users(:zane).id }

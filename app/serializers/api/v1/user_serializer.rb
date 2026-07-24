@@ -25,8 +25,10 @@ module Api
       class << self
         # EA compat shim: the db has one name column but the API keeps the EA v1
         # firstName/lastName keys (firstName carries the full name, lastName is "").
+        # "name" is also emitted and accepted as an alias; it wins when both are sent.
         def encode(record)
           payload = super
+          payload["name"] = record.name
           payload["firstName"] = record.name
           payload["lastName"] = ""
           payload["settings"] = settings_encode(record.settings) if record.settings
@@ -47,13 +49,14 @@ module Api
           if params.key?("firstName") || params.key?("lastName")
             attrs["name"] = [ params["firstName"], params["lastName"] ].map(&:to_s).map(&:strip).compact_blank.join(" ")
           end
+          attrs["name"] = params["name"].to_s.strip if params.key?("name")
           attrs["settings"] = settings_decode(params["settings"]) if params.key?("settings")
           attrs
         end
 
-        # sort=firstName/lastName still works against the single column.
+        # sort=name/firstName/lastName all work against the single column.
         def db_field(api_field)
-          return "users.name" if %w[firstName lastName].include?(api_field)
+          return "users.name" if %w[name firstName lastName].include?(api_field)
 
           super
         end
