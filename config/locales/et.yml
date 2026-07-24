@@ -1,6 +1,8 @@
 ---
 et:
   ea:
+    embed_wordpress: "Manustamine WordPressi"
+    embed_wordpress_hint: "Kleepige HTML plokki Custom HTML ning lisage CSS ja JavaScript teema kohandatud koodi valikute või snipetite pluginaga."
     apply_suggested_colors: "Rakenda soovitatud värvid"
     color_contrast_ok: "Valitud värvid vastavad WCAG AA kontrastile."
     contrast_warning_button_text: "Valge nuputekst on ettevõtte värvil raskesti loetav - valige tumedam ettevõtte värv."

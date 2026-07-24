@@ -1,6 +1,8 @@
 ---
 nl:
   ea:
+    embed_wordpress: "Insluiten in WordPress"
+    embed_wordpress_hint: "Plak de HTML in een Custom HTML-blok en voeg de CSS en JavaScript toe via de eigen code-opties van je thema of een snippets-plugin."
     apply_suggested_colors: "Voorgestelde kleuren toepassen"
     color_contrast_ok: "De geselecteerde kleuren voldoen aan WCAG AA-contrast."
     contrast_warning_button_text: "Witte knoptekst is moeilijk leesbaar op de bedrijfskleur - kies een donkerdere bedrijfskleur."

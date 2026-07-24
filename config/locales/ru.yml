@@ -1,6 +1,8 @@
 ---
 ru:
   ea:
+    embed_wordpress: "Встраивание в WordPress"
+    embed_wordpress_hint: "Вставьте HTML в блок Custom HTML, а CSS и JavaScript добавьте через настройки пользовательского кода темы или плагин сниппетов."
     apply_suggested_colors: "Применить предложенные цвета"
     color_contrast_ok: "Выбранные цвета соответствуют контрасту WCAG AA."
     contrast_warning_button_text: "Белый текст кнопок плохо читается на фирменном цвете - выберите более тёмный фирменный цвет."

@@ -1,6 +1,8 @@
 ---
 cs:
   ea:
+    embed_wordpress: "Vložení do WordPressu"
+    embed_wordpress_hint: "Vložte HTML do bloku Custom HTML a CSS a JavaScript přidejte přes vlastní kód motivu nebo plugin pro snippety."
     apply_suggested_colors: "Použít navržené barvy"
     color_contrast_ok: "Vybrané barvy splňují kontrast WCAG AA."
     contrast_warning_button_text: "Bílý text tlačítek je na firemní barvě špatně čitelný - zvolte tmavší firemní barvu."

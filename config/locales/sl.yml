@@ -1,6 +1,8 @@
 ---
 sl:
   ea:
+    embed_wordpress: "Vdelava v WordPress"
+    embed_wordpress_hint: "Prilepite HTML v blok Custom HTML, CSS in JavaScript pa dodajte z možnostmi lastne kode teme ali vtičnikom za izseke."
     apply_suggested_colors: "Uporabi predlagane barve"
     color_contrast_ok: "Izbrane barve izpolnjujejo kontrast WCAG AA."
     contrast_warning_button_text: "Belo besedilo gumbov je težko berljivo na barvi podjetja - izberite temnejšo barvo podjetja."

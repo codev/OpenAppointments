@@ -1,6 +1,8 @@
 ---
 lb:
   ea:
+    embed_wordpress: "An WordPress abauen"
+    embed_wordpress_hint: "Setzt den HTML an e Custom-HTML-Block an, a fügt CSS a JavaScript iwwer d'Code-Optioune vum Theme oder e Snippet-Plugin derbäi."
     apply_suggested_colors: "Proposéiert Faarwen uwenden"
     color_contrast_ok: "Déi gewielte Faarwen erfëllen de WCAG AA Kontrast."
     contrast_warning_button_text: "Wäissen Text op de Knäppercher ass schwéier ze liesen op der Firmefaarf - wielt eng méi donkel Firmefaarf."

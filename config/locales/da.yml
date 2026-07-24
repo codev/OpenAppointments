@@ -1,6 +1,8 @@
 ---
 da:
   ea:
+    embed_wordpress: "Indlejring i WordPress"
+    embed_wordpress_hint: "Indsæt HTML'en i en Custom HTML-blok, og tilføj CSS og JavaScript via temaets egne kodeindstillinger eller et snippet-plugin."
     apply_suggested_colors: "Anvend foreslåede farver"
     color_contrast_ok: "De valgte farver opfylder WCAG AA-kontrast."
     contrast_warning_button_text: "Hvid knaptekst er svær at læse på virksomhedsfarven - vælg en mørkere virksomhedsfarve."

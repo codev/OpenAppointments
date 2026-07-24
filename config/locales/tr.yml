@@ -1,6 +1,8 @@
 ---
 tr:
   ea:
+    embed_wordpress: "WordPress'e gömme"
+    embed_wordpress_hint: "HTML'yi bir Custom HTML bloğuna yapıştırın, CSS ve JavaScript'i temanızın özel kod seçenekleri veya bir snippet eklentisiyle ekleyin."
     apply_suggested_colors: "Önerilen renkleri uygula"
     color_contrast_ok: "Seçilen renkler WCAG AA kontrastını karşılıyor."
     contrast_warning_button_text: "Beyaz düğme metni şirket renginde zor okunuyor - daha koyu bir şirket rengi seçin."

@@ -1,6 +1,8 @@
 ---
 hi:
   ea:
+    embed_wordpress: "WordPress में एम्बेड करें"
+    embed_wordpress_hint: "HTML को Custom HTML ब्लॉक में पेस्ट करें, फिर CSS और JavaScript को थीम के कस्टम कोड विकल्पों या स्निपेट प्लगइन से जोड़ें।"
     apply_suggested_colors: "सुझाए गए रंग लागू करें"
     color_contrast_ok: "चयनित रंग WCAG AA कंट्रास्ट को पूरा करते हैं।"
     contrast_warning_button_text: "कंपनी रंग पर सफेद बटन टेक्स्ट पढ़ना कठिन है - गहरा कंपनी रंग चुनें।"

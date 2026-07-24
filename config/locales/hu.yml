@@ -1,6 +1,8 @@
 ---
 hu:
   ea:
+    embed_wordpress: "Beágyazás WordPressbe"
+    embed_wordpress_hint: "Illessze be a HTML-t egy Custom HTML blokkba, majd adja hozzá a CSS-t és a JavaScriptet a téma egyedi kód beállításaival vagy egy snippet bővítménnyel."
     apply_suggested_colors: "Javasolt színek alkalmazása"
     color_contrast_ok: "A kiválasztott színek megfelelnek a WCAG AA kontrasztnak."
     contrast_warning_button_text: "A fehér gombfelirat nehezen olvasható a cégszínen - válasszon sötétebb cégszínt."

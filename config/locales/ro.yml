@@ -1,6 +1,8 @@
 ---
 ro:
   ea:
+    embed_wordpress: "Încorporare în WordPress"
+    embed_wordpress_hint: "Lipiți HTML-ul într-un bloc Custom HTML, apoi adăugați CSS-ul și JavaScript-ul prin opțiunile de cod personalizat ale temei sau un plugin de snippeturi."
     apply_suggested_colors: "Aplică culorile sugerate"
     color_contrast_ok: "Culorile selectate respectă contrastul WCAG AA."
     contrast_warning_button_text: "Textul alb al butoanelor se citește greu pe culoarea companiei - alegeți o culoare a companiei mai închisă."

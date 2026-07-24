@@ -1,6 +1,8 @@
 ---
 'no':
   ea:
+    embed_wordpress: "Bygg inn i WordPress"
+    embed_wordpress_hint: "Lim inn HTML-en i en Custom HTML-blokk, og legg til CSS og JavaScript via temaets egne kodealternativer eller en snippet-utvidelse."
     apply_suggested_colors: "Bruk foreslåtte farger"
     color_contrast_ok: "De valgte fargene oppfyller WCAG AA-kontrast."
     contrast_warning_button_text: "Hvit knappetekst er vanskelig å lese på firmafargen - velg en mørkere firmafarge."

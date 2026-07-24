@@ -1,6 +1,8 @@
 ---
 ca:
   ea:
+    embed_wordpress: "Incrusta a WordPress"
+    embed_wordpress_hint: "Enganxeu l'HTML en un bloc Custom HTML i afegiu el CSS i el JavaScript amb les opcions de codi personalitzat del tema o un connector de fragments."
     apply_suggested_colors: "Aplica els colors suggerits"
     color_contrast_ok: "Els colors seleccionats compleixen el contrast WCAG AA."
     contrast_warning_button_text: "El text blanc dels botons és difícil de llegir sobre el color de l'empresa - trieu un color d'empresa més fosc."

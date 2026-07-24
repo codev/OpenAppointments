@@ -1,6 +1,8 @@
 ---
 sq:
   ea:
+    embed_wordpress: "Vendosja në WordPress"
+    embed_wordpress_hint: "Ngjiteni HTML-në në një bllok Custom HTML dhe shtoni CSS-në dhe JavaScript-in me opsionet e kodit të personalizuar të temës ose një shtesë snippet-esh."
     apply_suggested_colors: "Apliko ngjyrat e sugjeruara"
     color_contrast_ok: "Ngjyrat e zgjedhura plotësojnë kontrastin WCAG AA."
     contrast_warning_button_text: "Teksti i bardhë i butonave lexohet me vështirësi mbi ngjyrën e kompanisë - zgjidhni një ngjyrë kompanie më të errët."

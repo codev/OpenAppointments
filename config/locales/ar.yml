@@ -1,6 +1,8 @@
 ---
 ar:
   ea:
+    embed_wordpress: "التضمين في WordPress"
+    embed_wordpress_hint: "الصق كود HTML في مكوّن Custom HTML، ثم أضف CSS و JavaScript عبر خيارات الكود المخصص في القالب أو إضافة مقتطفات."
     apply_suggested_colors: "تطبيق الألوان المقترحة"
     color_contrast_ok: "الألوان المحددة تحقق تباين WCAG AA."
     contrast_warning_button_text: "نص الأزرار الأبيض صعب القراءة على لون الشركة - اختر لون شركة أغمق."

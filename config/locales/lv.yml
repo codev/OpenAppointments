@@ -1,6 +1,8 @@
 ---
 lv:
   ea:
+    embed_wordpress: "Iegult WordPress"
+    embed_wordpress_hint: "Ielīmējiet HTML blokā Custom HTML un pievienojiet CSS un JavaScript ar tēmas pielāgotā koda opcijām vai fragmentu spraudni."
     apply_suggested_colors: "Lietot ieteiktās krāsas"
     color_contrast_ok: "Izvēlētās krāsas atbilst WCAG AA kontrastam."
     contrast_warning_button_text: "Balts pogu teksts ir grūti salasāms uz uzņēmuma krāsas - izvēlieties tumšāku uzņēmuma krāsu."

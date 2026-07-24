@@ -43,8 +43,8 @@ App.Pages.EmbedSettings = (function () {
             });
         });
 
-        $('#copy-embed-code').on('click', () => {
-            const $code = $('#embed-code');
+        $('.copy-embed-target').on('click', (event) => {
+            const $code = $($(event.currentTarget).data('target'));
             $code.trigger('select');
             navigator.clipboard.writeText($code.val());
         });

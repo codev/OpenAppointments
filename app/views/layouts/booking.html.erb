@@ -83,8 +83,10 @@
             if (window.self === window.top) return;
             var target = <%= Embedding.origin.presence.to_json %> || '*';
             var post = function () {
+                // Measure the laid-out body height, not scrollHeight: scrollHeight is
+                // clamped to the viewport (the iframe), so it could only ever grow.
                 window.parent.postMessage(
-                    {type: 'openappointments:height', height: document.documentElement.scrollHeight},
+                    {type: 'openappointments:height', height: Math.ceil(document.body.getBoundingClientRect().height)},
                     target,
                 );
             };

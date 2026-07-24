@@ -1,6 +1,8 @@
 ---
 hr:
   ea:
+    embed_wordpress: "Ugradnja u WordPress"
+    embed_wordpress_hint: "Zalijepite HTML u Custom HTML blok, a CSS i JavaScript dodajte kroz opcije prilagođenog koda teme ili dodatak za snippete."
     apply_suggested_colors: "Primijeni predložene boje"
     color_contrast_ok: "Odabrane boje zadovoljavaju WCAG AA kontrast."
     contrast_warning_button_text: "Bijeli tekst gumba teško je čitljiv na boji tvrtke - odaberite tamniju boju tvrtke."

@@ -1,6 +1,8 @@
 ---
 sv:
   ea:
+    embed_wordpress: "Bädda in i WordPress"
+    embed_wordpress_hint: "Klistra in HTML-koden i ett Custom HTML-block och lägg till CSS och JavaScript via temats egna kodinställningar eller ett snippet-tillägg."
     apply_suggested_colors: "Använd föreslagna färger"
     color_contrast_ok: "De valda färgerna uppfyller WCAG AA-kontrast."
     contrast_warning_button_text: "Vit knapptext är svårläst på företagsfärgen - välj en mörkare företagsfärg."

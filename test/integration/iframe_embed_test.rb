@@ -71,6 +71,31 @@ class IframeEmbedTest < ActionDispatch::IntegrationTest
     assert_equal "https://example.org", Setting.get("iframe_embed_origin")
   end
 
+  test "embed settings page offers the WordPress boxes" do
+    login_admin
+    get "/embed_settings"
+    assert_response :success
+
+    assert_match I18n.t("ea.embed_wordpress"), response.body
+    html_box = css_select("#embed-wordpress-html").first.text
+    assert_match(/\A\s*<iframe/, html_box)
+    assert_no_match(/<script/, html_box)
+    assert_equal "", css_select("#embed-wordpress-css").first.text.strip
+    js_box = css_select("#embed-wordpress-js").first.text
+    assert_match(/openappointments:height/, js_box)
+    assert_no_match(/<script/, js_box)
+    assert_select "button.copy-embed-target", 4
+  end
+
+  test "the WordPress embed keys exist in every locale" do
+    I18n.available_locales.each do |locale|
+      %w[embed_wordpress embed_wordpress_hint].each do |key|
+        assert I18n.t("ea.#{key}", locale: locale, fallback: false, default: nil).present?,
+               "missing ea.#{key} in #{locale}"
+      end
+    end
+  end
+
   test "embed settings need the system settings privilege" do
     post "/login/validate", params: { username: "janedoe", password: "janedoe1" }
     get "/embed_settings"

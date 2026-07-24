@@ -1,6 +1,8 @@
 ---
 en:
   ea:
+    embed_wordpress: "Embed into WordPress"
+    embed_wordpress_hint: "Paste the HTML into a Custom HTML block, then add the CSS and JavaScript with your theme's custom code options or a snippets plugin."
     apply_suggested_colors: "Apply suggested colors"
     color_contrast_ok: "The selected colors meet WCAG AA contrast."
     contrast_warning_button_text: "White button text is hard to read on the company color - pick a darker company color."

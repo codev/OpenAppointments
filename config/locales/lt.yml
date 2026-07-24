@@ -1,6 +1,8 @@
 ---
 lt:
   ea:
+    embed_wordpress: "Įdėjimas į WordPress"
+    embed_wordpress_hint: "Įkelkite HTML į Custom HTML bloką, o CSS ir JavaScript pridėkite per temos pasirinktinio kodo nustatymus arba snippetų įskiepį."
     apply_suggested_colors: "Taikyti siūlomas spalvas"
     color_contrast_ok: "Pasirinktos spalvos atitinka WCAG AA kontrastą."
     contrast_warning_button_text: "Baltas mygtukų tekstas sunkiai įskaitomas ant įmonės spalvos - pasirinkite tamsesnę įmonės spalvą."
