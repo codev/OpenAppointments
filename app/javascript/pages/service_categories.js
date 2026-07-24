@@ -21,7 +21,9 @@ App.Pages.ServiceCategories = (function () {
     const $name = $('#name');
     const $description = $('#description');
     let filterResults = {};
-    let filterLimit = 20;
+    const filterLimit = 20;
+
+    let filterPage = 1;
 
     /**
      * Add the page event listeners.
@@ -36,6 +38,7 @@ App.Pages.ServiceCategories = (function () {
             event.preventDefault();
             const key = $('#filter-service-categories .key').val();
             $('.selected').removeClass('selected');
+            filterPage = 1;
             App.Pages.ServiceCategories.resetForm();
             App.Pages.ServiceCategories.filter(key);
         });
@@ -170,7 +173,7 @@ App.Pages.ServiceCategories = (function () {
      * @param {Boolean} show Optional (false), if true then the selected record will be displayed on the form.
      */
     function filter(keyword, selectId = null, show = false) {
-        App.Http.ServiceCategories.search(keyword, filterLimit).then((response) => {
+        App.Http.ServiceCategories.search(keyword, filterLimit, (filterPage - 1) * filterLimit).then((response, textStatus, jqXHR) => {
             filterResults = response;
 
             $('#filter-service-categories .results').empty();
@@ -187,17 +190,18 @@ App.Pages.ServiceCategories = (function () {
                         'text': lang('no_records_found'),
                     }),
                 );
-            } else if (response.length === filterLimit) {
-                $('<button/>', {
-                    'type': 'button',
-                    'class': 'btn btn-outline-secondary w-100 load-more text-center',
-                    'text': lang('load_more'),
-                    'click': () => {
-                        filterLimit += 20;
-                        App.Pages.ServiceCategories.filter(keyword, selectId, show);
-                    },
-                }).appendTo('#filter-service-categories .results');
             }
+
+            App.Utils.Pagination.render(
+                $('#filter-service-categories .results'),
+                Number(jqXHR.getResponseHeader('X-Total-Count')) || response.length,
+                filterPage,
+                filterLimit,
+                (page) => {
+                    filterPage = page;
+                    App.Pages.ServiceCategories.filter(keyword, selectId, show);
+                },
+            );
 
             if (selectId) {
                 select(selectId, show);

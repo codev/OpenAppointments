@@ -25,7 +25,9 @@ App.Pages.BlockedPeriods = (function () {
     const moment = window.moment;
 
     let filterResults = {};
-    let filterLimit = 20;
+    const filterLimit = 20;
+
+    let filterPage = 1;
     let backupStartDateTimeObject = undefined;
 
     /**
@@ -41,6 +43,7 @@ App.Pages.BlockedPeriods = (function () {
             event.preventDefault();
             const key = $('#filter-blocked-periods .key').val();
             $('.selected').removeClass('selected');
+            filterPage = 1;
             App.Pages.BlockedPeriods.resetForm();
             App.Pages.BlockedPeriods.filter(key);
         });
@@ -206,7 +209,7 @@ App.Pages.BlockedPeriods = (function () {
      * @param {Boolean} show Optional (false), if true then the selected record will be displayed on the form.
      */
     function filter(keyword, selectId = null, show = false) {
-        App.Http.BlockedPeriods.search(keyword, filterLimit).then((response) => {
+        App.Http.BlockedPeriods.search(keyword, filterLimit, (filterPage - 1) * filterLimit).then((response, textStatus, jqXHR) => {
             filterResults = response;
 
             $('#filter-blocked-periods .results').empty();
@@ -223,17 +226,18 @@ App.Pages.BlockedPeriods = (function () {
                         'text': lang('no_records_found'),
                     }),
                 );
-            } else if (response.length === filterLimit) {
-                $('<button/>', {
-                    'type': 'button',
-                    'class': 'btn btn-outline-secondary w-100 load-more text-center',
-                    'text': lang('load_more'),
-                    'click': () => {
-                        filterLimit += 20;
-                        App.Pages.BlockedPeriods.filter(keyword, selectId, show);
-                    },
-                }).appendTo('#filter-blocked-periods .results');
             }
+
+            App.Utils.Pagination.render(
+                $('#filter-blocked-periods .results'),
+                Number(jqXHR.getResponseHeader('X-Total-Count')) || response.length,
+                filterPage,
+                filterLimit,
+                (page) => {
+                    filterPage = page;
+                    App.Pages.BlockedPeriods.filter(keyword, selectId, show);
+                },
+            );
 
             if (selectId) {
                 App.Pages.BlockedPeriods.select(selectId, show);
