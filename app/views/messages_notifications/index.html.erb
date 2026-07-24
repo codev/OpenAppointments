@@ -1,0 +1,175 @@
+<div id="messages-notifications-page" class="container backend-page py-3">
+    <div class="row">
+        <div class="col-sm-3">
+            <%= render "shared/messages_nav" %>
+        </div>
+        <div id="messages-notifications" class="col-sm-9">
+            <div class="d-flex justify-content-between align-items-center border-bottom mb-4 py-2">
+                <h4 class="mb-0 fw-light">
+                    <%= lang('notifications') %>
+                </h4>
+
+                <% if can?(:edit, :system_settings) %>
+                    <button type="button" id="add-notification" class="btn btn-primary">
+                        <i class="fas fa-plus-square me-2"></i>
+                        <%= lang('add') %>
+                    </button>
+                <% end %>
+            </div>
+
+            <div id="notifications-list"></div>
+
+            <div class="text-center my-4">
+                <button type="button" id="toggle-all-notifications" class="btn btn-outline-secondary"
+                        data-open-text="<%= lang('open_all_notification_templates') %>"
+                        data-close-text="<%= lang('close_all_notification_templates') %>">
+                    <%= lang('open_all_notification_templates') %>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<template id="notification-panel-template">
+    <div class="card mb-3 notification-panel">
+        <div class="card-header d-flex justify-content-between align-items-center notification-header" role="button">
+            <span class="notification-title-display fw-light"></span>
+            <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="card-body notification-body" style="display: none;">
+            <div class="mb-3">
+                <label class="form-label"><%= lang('title') %></label>
+                <input type="text" class="form-control n-field" data-name="title" maxlength="220">
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label"><%= lang('description') %></label>
+                <input type="text" class="form-control n-field" data-name="description" maxlength="500">
+                <div class="form-text text-muted">
+                    <small><%= lang('notification_description_hint') %></small>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label"><%= lang('notification_event') %></label>
+                <select class="form-select n-field" data-name="event">
+                    <% Notification::EVENTS.each do |event| %>
+                        <option value="<%= event %>"><%= lang("notification_event_#{event}") %></option>
+                    <% end %>
+                </select>
+            </div>
+
+            <div class="coming-up-block border rounded p-3 mb-3" style="display: none;">
+                <div class="mb-3">
+                    <select class="form-select n-field" data-name="lead_mode">
+                        <option value="before"><%= lang('notification_lead_before') %></option>
+                        <option value="day_at"><%= lang('notification_lead_day_at') %></option>
+                    </select>
+                </div>
+
+                <div class="lead-before-block row">
+                    <div class="col-6">
+                        <label class="form-label"><%= lang('days') %></label>
+                        <select class="form-select n-field" data-name="lead_days">
+                            <% (0..30).each do |day| %>
+                                <option value="<%= day %>"><%= day %></option>
+                            <% end %>
+                        </select>
+                    </div>
+                    <div class="col-6">
+                        <label class="form-label"><%= lang('hours') %></label>
+                        <select class="form-select n-field" data-name="lead_hours">
+                            <% (0..23).each do |hour| %>
+                                <option value="<%= hour %>"><%= hour %></option>
+                            <% end %>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="lead-day-at-block row" style="display: none;">
+                    <div class="col-6">
+                        <label class="form-label"><%= lang('notification_days_before') %></label>
+                        <select class="form-select day-at-days">
+                            <% (0..30).each do |day| %>
+                                <option value="<%= day %>"><%= day %></option>
+                            <% end %>
+                        </select>
+                    </div>
+                    <div class="col-6">
+                        <label class="form-label"><%= lang('notification_send_time') %></label>
+                        <select class="form-select n-field" data-name="send_time">
+                            <% (0..23).each do |hour| %>
+                                <% value = format("%02d:00", hour) %>
+                                <option value="<%= value %>"><%= value %></option>
+                            <% end %>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label d-block"><%= lang('notification_send_to') %></label>
+                <% Notification::AUDIENCES.each do |audience| %>
+                    <div class="form-check form-check-inline">
+                        <input type="checkbox" class="form-check-input n-audience" value="<%= audience %>"
+                               id="audience-<%= audience %>-__INDEX__">
+                        <label class="form-check-label" for="audience-<%= audience %>-__INDEX__">
+                            <%= lang("notification_audience_#{audience}") %>
+                        </label>
+                    </div>
+                <% end %>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label d-block"><%= lang('messages_providers') %></label>
+                <% script_vars[:message_channels].each do |channel| %>
+                    <div class="form-check form-check-inline">
+                        <input type="checkbox" class="form-check-input n-channel" value="<%= channel[:key] %>"
+                               id="channel-<%= channel[:key] %>-__INDEX__">
+                        <label class="form-check-label" for="channel-<%= channel[:key] %>-__INDEX__">
+                            <%= channel[:label] %>
+                        </label>
+                    </div>
+                <% end %>
+                <% if script_vars[:message_channels].empty? %>
+                    <div class="form-text text-muted">
+                        <small><%= lang('notification_no_providers') %></small>
+                    </div>
+                <% end %>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label"><%= lang('notification_short_text') %></label>
+                <input type="text" class="form-control n-field" data-name="short_text" maxlength="500">
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label"><%= lang('notification_long_text') %></label>
+                <textarea class="form-control n-field" data-name="long_text" rows="7"></textarea>
+                <div class="form-text text-muted">
+                    <small>
+                        <%= lang('notification_tokens_hint') %>
+                        <%= Messaging::Template::TOKENS.map { |token| "{{#{token}}}" }.join(", ") %>
+                    </small>
+                </div>
+            </div>
+
+            <% if can?(:edit, :system_settings) %>
+                <div class="d-flex justify-content-between border-top pt-3">
+                    <button type="button" class="btn btn-primary save-notification">
+                        <i class="fas fa-check-square me-2"></i>
+                        <%= lang('save') %>
+                    </button>
+                    <button type="button" class="btn btn-outline-danger delete-notification">
+                        <i class="fas fa-trash-alt me-2"></i>
+                        <%= lang('delete') %>
+                    </button>
+                </div>
+            <% end %>
+        </div>
+    </div>
+</template>
+
+<% content_for :scripts do %>
+    <%= ea_js "http/messages_notifications_http_client", "pages/messages_notifications" %>
+<% end %>

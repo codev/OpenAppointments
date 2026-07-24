@@ -16,7 +16,10 @@ class CustomersController < ApplicationController
     return unless require_backend_page!(:customers)
 
     backend_page_vars(page_title: helpers.lang("customers"), active_menu: "customers")
-    script_vars(secretary_providers: secretary_provider_ids)
+    script_vars(
+      secretary_providers: secretary_provider_ids,
+      message_channels: Messaging.enabled_channels.map { |channel| { key: channel.key, label: channel.label } }
+    )
     html_vars(
       available_languages: Localization.available_languages,
       **field_display_flags
@@ -44,12 +47,15 @@ class CustomersController < ApplicationController
     customers = search_customers(params[:keyword].to_s, params.fetch(:limit, 1000).to_i,
                                  params.fetch(:offset, 0).to_i)
 
+    unread_counts = Message.unread_counts_for(customers.map(&:id))
+
     payload = customers.filter_map do |customer|
       next unless customer_access?(customer.id)
 
       appointments = Appointment.appointments.where(id_users_customer: customer.id)
       appointments = filter_appointments_by_role(appointments)
       row = EaRows.customer_row(customer)
+      row["unread_messages"] = unread_counts[customer.id] || 0
       row["appointments"] = appointments.includes(:service, :provider).map do |appointment|
         EaRows.appointment_row(appointment).merge(
           "service" => appointment.service && EaRows.service_row(appointment.service),

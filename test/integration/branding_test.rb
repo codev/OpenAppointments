@@ -39,21 +39,15 @@ class BrandingTest < ActionDispatch::IntegrationTest
     end
   end
 
-  test "appointment mail is branded OpenAppointments" do
-    appointment = appointments(:upcoming)
-    settings = { company_name: "Test Company", company_link: "https://example.org",
-                 company_email: "info@example.org", company_color: nil,
-                 date_format: "DMY", time_format: "regular" }
-    mail = AppointmentMailer.saved(
-      appointment: appointment, service: appointment.service, provider: appointment.provider,
-      customer: appointment.customer, settings: settings,
-      recipient_email: appointment.customer.email, recipient_language: "english",
-      recipient_timezone: "UTC", manage_mode: false,
-      ics: IcsFile.stream(appointment, appointment.service, appointment.provider, appointment.customer),
-      link_path: "/booking/reschedule/#{appointment.booking_hash}", role: :customer
-    )
+  test "built-in mail templates carry no old brand" do
+    mail = AccountMailer.password_reset_link("someone@example.org", "https://example.org/reset")
     body = mail.html_part.body.decoded
     assert_no_match(/easy!appointments/i, body)
     assert_match "OpenAppointments", body
+
+    message = Message.create!(direction: "outgoing", channel: "email", audience: "customer",
+                              to_address: "someone@example.org", subject: "Hello", body: "Hi there")
+    outgoing = MessagesMailer.outgoing(message)
+    assert_no_match(/easy!appointments/i, outgoing.html_part.body.decoded)
   end
 end

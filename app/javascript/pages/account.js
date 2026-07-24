@@ -31,7 +31,6 @@ App.Pages.Account = (function () {
     const $password = $('#password');
     const $retypePassword = $('#retype-password');
     const $calendarView = $('#calendar-view');
-    const notifications = $('#notifications');
     const $saveSettings = $('#save-settings');
 
     /**
@@ -110,7 +109,6 @@ App.Pages.Account = (function () {
         $password.val('');
         $retypePassword.val('');
         $calendarView.val(account.settings.calendar_view);
-        notifications.prop('checked', Boolean(Number(account.settings.notifications)));
     }
 
     /**
@@ -136,7 +134,6 @@ App.Pages.Account = (function () {
                 username: $username.val(),
                 password: $password.val() || undefined,
                 calendar_view: $calendarView.val(),
-                notifications: Number(notifications.prop('checked')),
             },
         };
     }

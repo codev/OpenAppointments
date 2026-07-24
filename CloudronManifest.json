@@ -13,6 +13,7 @@
   "addons": {
     "localstorage": {},
     "sendmail": {},
+    "recvmail": {},
     "scheduler": {
       "sync": {
         "schedule": "*/15 * * * *",

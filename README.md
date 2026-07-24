@@ -117,19 +117,41 @@ Each provider can sync their calendar - outbound sync works for CalDAV and Googl
 Better layout of customer fields; Captcha and Google Calendar first on the Integrations page; per-provider captcha settings sections; Any Provider is the default in the provider dropdown instead of Please Select; Pagination in the admin views; customers page and appointments modal respect the booking field display/require settings; booking form validation messages now display; the install task's admin is redirected to the account page with a banner until the default password is changed
 
 
+## Messages
+
+Admin > Messages manages all notifications:
+
+- Settings: global on/off switch (password resets always send), message retention,
+  outgoing email subject line.
+- Providers: Email (server or SMTP out, server or IMAP in), Twilio, Plivo,
+  TextAnywhere, each with an Incoming switch; Android SMS Gateway is coming soon.
+- Notifications: template panels with event (including Appointment Coming Up
+  reminders), audiences, providers and {{Token}} texts. Defaults replicate the old
+  hardcoded emails plus an 8am same-day reminder.
+- Logs: every message sent/received; unknown senders land in the Unknown Inbox
+  (user menu). The customer page shows each customer's thread, unread badges and a
+  manual send box.
+
 ## Operations
 
 Scheduled tasks (driven by the Cloudron scheduler addon in production, see CloudronManifest.json):
 
 ```bash
-bin/rails openappointments:sync     # pull provider Google Calendar changes
-bin/rails openappointments:cleanup  # GDPR retention: purge stale customers
-bin/rails openappointments:backup   # VACUUM INTO a timestamped SQLite copy
+bin/rails openappointments:sync       # pull provider Google Calendar changes
+bin/rails openappointments:cleanup    # GDPR retention: purge stale customers + old messages
+bin/rails openappointments:backup     # VACUUM INTO a timestamped SQLite copy
+bin/rails openappointments:reminders  # send due coming-up notifications
+bin/rails openappointments:fetch_mail # pull unread IMAP mail into Action Mailbox
 ```
+
+In production Solid Queue runs inside Puma (start.sh sets SOLID_QUEUE_IN_PUMA) and
+config/recurring.yml already runs the reminder scan and mail fetch every 5 minutes;
+the rake targets are for manual runs or an external cron.
 
 - Data retention: set the `data_retention_days` setting (0 disables). Cleanup deletes
   customers created before the cutoff with no appointment ending on or after it;
   deletion cascades their appointments.
+- Message retention: Messages > Settings > delete messages older than N days (0 keeps all).
 - Rate limits: login, recovery, booking register, and the public availability lookups
   are per-IP rate limited (Rails 8 `rate_limit`, backed by Solid Cache).
 - Security headers (X-Frame-Options SAMEORIGIN, X-Content-Type-Options, Referrer-Policy,

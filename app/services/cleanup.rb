@@ -5,13 +5,24 @@ module Cleanup
   module_function
 
   def run
+    result = purge_messages
     days = Setting.get("data_retention_days").to_i
-    return { enabled: false, deleted: 0 } if days <= 0
+    return result.merge(enabled: false, deleted: 0) if days <= 0
 
     cutoff = Time.now - days.days
     customers = stale_customers(cutoff)
     customers.each(&:destroy!)
-    { enabled: true, deleted: customers.size }
+    result.merge(enabled: true, deleted: customers.size)
+  end
+
+  # Messages > Settings retention: delete messages older than N days (0 keeps all).
+  def purge_messages
+    days = Setting.get("messages_retention_days").to_i
+    return { messages_deleted: 0 } if days <= 0
+
+    cutoff = Time.now - days.days
+    NotificationDispatch.where(created_at: ...cutoff).delete_all
+    { messages_deleted: Message.where(created_at: ...cutoff).delete_all }
   end
 
   def stale_customers(cutoff)

@@ -33,6 +33,16 @@
                 </a>
             </li>
 
+            <% hidden = can?(:view, :system_settings) ? "" : "d-none" %>
+            <% active = active_menu == "messages" ? "active" : "" %>
+            <li class="nav-item text-center <%= active + hidden %>" style="min-width: 100px;">
+                <a href="/messages_settings" class="nav-link text-white fw-light py-3 px-3"
+                   data-tippy-content="<%= lang('messages_hint') %>">
+                    <i class="fas fa-envelope me-2"></i>
+                    <%= lang('messages') %>
+                </a>
+            </li>
+
             <% hidden = can?(:view, :services) ? "" : "d-none" %>
             <% active = active_menu == "services" ? "active" : "" %>
             <li class="nav-item dropdown text-center <%= active + hidden %>">
@@ -99,6 +109,17 @@
                         <i class="fas fa-user me-2"></i>
                         <%= lang('account') %>
                     </a>
+
+                    <% if [ Role::ADMIN, Role::SECRETARY ].include?(session[:role_slug]) %>
+                        <% unknown_unread = Message.unread.unknown_sender.count %>
+                        <a class="dropdown-item" href="/unknown_inbox">
+                            <i class="fas fa-inbox me-2"></i>
+                            <%= lang('unknown_inbox') %>
+                            <% if unknown_unread.positive? %>
+                                <span class="badge bg-danger ms-1"><%= unknown_unread %></span>
+                            <% end %>
+                        </a>
+                    <% end %>
                     <a class="dropdown-item" href="/about">
                         <i class="fas fa-info-circle me-2"></i>
                         <%= lang('about') %>

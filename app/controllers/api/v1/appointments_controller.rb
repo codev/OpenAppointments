@@ -39,8 +39,9 @@ module Api
 
       def persist!(record)
         manage_mode = record.persisted?
+        previous_status = manage_mode ? record.status_was : nil
         record.save!
-        run_side_effects(record, manage_mode: manage_mode)
+        run_side_effects(record, manage_mode: manage_mode, previous_status: previous_status)
       end
 
       def trigger_save_webhook(record); end # fired inside run_side_effects
@@ -55,14 +56,15 @@ module Api
         appointment.end_datetime = appointment.start_datetime + service.duration.to_i * 60
       end
 
-      def run_side_effects(appointment, manage_mode:)
+      def run_side_effects(appointment, manage_mode:, previous_status: nil)
         service = appointment.service
         provider = appointment.provider
         customer = appointment.customer
         settings = notification_settings
 
         Synchronization.appointment_saved(appointment, service, provider, customer, settings)
-        Notifications.appointment_saved(appointment, service, provider, customer, settings, manage_mode: manage_mode)
+        Notifications.appointment_saved(appointment, service, provider, customer, settings,
+                                        manage_mode: manage_mode, previous_status: previous_status)
         Webhooks.trigger(Webhooks::APPOINTMENT_SAVE, appointment)
       end
 
