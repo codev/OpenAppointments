@@ -1,6 +1,7 @@
 ---
 da:
   ea:
+    services_description: "Beskrivelse af de udbudte ydelser"
     go_to_company: "Gå til %{company}"
     download_ics: "Download ics-fil"
     regenerate_link: "Regenerer link"

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_07_24_100002) do
+ActiveRecord::Schema[8.1].define(version: 2026_07_24_110000) do
   create_table "action_mailbox_inbound_emails", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.string "message_checksum", null: false
@@ -229,6 +229,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_07_24_100002) do
   end
 
   create_table "users", force: :cascade do |t|
+    t.text "about"
     t.string "address"
     t.string "booking_slug"
     t.string "city"
@@ -247,6 +248,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_07_24_100002) do
     t.string "name"
     t.text "notes"
     t.string "phone_number"
+    t.text "services_description"
     t.string "state"
     t.string "timezone", default: "UTC"
     t.datetime "updated_at", null: false

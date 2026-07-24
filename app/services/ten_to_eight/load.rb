@@ -7,11 +7,12 @@ module TenToEight
     PHASES = %w[categories services providers customers appointments].freeze
     DO_NOT_CONTACT_PREFIX = "[DO NOT CONTACT - consent not granted]".freeze
 
-    def initialize(data, phases:, create_providers: false, progress: nil)
+    def initialize(data, phases:, create_providers: false, progress: nil, images_dir: nil)
       @data = data
       @phases = Array(phases) & PHASES
       @create_providers = create_providers
       @progress = progress
+      @images_dir = images_dir
       @counts = {}
       @errors = []
     end
@@ -45,20 +46,41 @@ module TenToEight
       nil
     end
 
+    # Attach a picture referenced by filename from the import bundle's images
+    # directory. Existing pictures are kept.
+    def attach_picture(record, filename)
+      return if @images_dir.blank? || filename.blank? || record.picture.attached?
+
+      path = File.join(@images_dir, File.basename(filename.to_s))
+      return unless File.exist?(path)
+
+      record.picture.attach(io: File.open(path), filename: File.basename(path))
+    end
+
     def load_categories
       counts = track("categories")
-      names = @data[:services].map { |service| service[:category] }.uniq
+      extras = Array(@data[:categories])
+      extra_by_name = extras.index_by { |row| row[:name] }
+      names = (@data[:services].map { |service| service[:category] } +
+               extras.map { |row| row[:name] }).compact.uniq
       @category_ids = {}
       names.each do |name|
+        extra = extra_by_name[name] || {}
         category = ServiceCategory.find_by(name: name)
         if category
           counts[:matched] += 1
+          if category.description.blank? && extra[:description].present?
+            category.update(description: extra[:description])
+          end
         else
-          category = guard("categories", counts, name) { ServiceCategory.create!(name: name) }
+          category = guard("categories", counts, name) do
+            ServiceCategory.create!(name: name, description: extra[:description])
+          end
           next unless category
 
           counts[:created] += 1
         end
+        attach_picture(category, extra[:picture])
         @category_ids[name] = category.id
       end
     end
@@ -71,6 +93,9 @@ module TenToEight
         service = Service.find_by(name: row[:name])
         if service
           counts[:matched] += 1
+          if service.description.blank? && row[:description].present?
+            service.update(description: row[:description])
+          end
         else
           service = guard("services", counts, row[:name]) do
             Service.create!(
@@ -85,6 +110,7 @@ module TenToEight
 
           counts[:created] += 1
         end
+        attach_picture(service, row[:picture])
         @service_ids[row[:name]] = service.id
       end
     end
@@ -100,10 +126,17 @@ module TenToEight
         provider = existing[row[:email].downcase] if row[:email].present?
         if provider
           counts[:matched] += 1
+          updates = {}
+          updates[:about] = row[:about] if provider.about.blank? && row[:about].present?
+          if provider.services_description.blank? && row[:services_description].present?
+            updates[:services_description] = row[:services_description]
+          end
+          provider.update(updates) if updates.any?
         elsif @create_providers && row[:email].present?
           provider = guard("providers", counts, row[:name].presence || row[:email]) do
             user = User.create!(
               name: row[:name], email: row[:email], phone_number: row[:phone],
+              about: row[:about], services_description: row[:services_description],
               timezone: "Europe/London", role: role
             )
             user.create_settings!(
@@ -127,6 +160,7 @@ module TenToEight
             ServiceProviderLink.find_or_create_by!(id_users: provider.id, id_services: service_id)
           end
         end
+        attach_picture(provider, row[:picture])
         @provider_ids[row[:name]] = provider.id
       end
     end

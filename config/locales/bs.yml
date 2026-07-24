@@ -1,6 +1,7 @@
 ---
 bs:
   ea:
+    services_description: "Opis pruženih usluga"
     go_to_company: "Idi na %{company}"
     download_ics: "Preuzmi ics datoteku"
     regenerate_link: "Regeneriši link"

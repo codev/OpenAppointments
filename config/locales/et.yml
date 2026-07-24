@@ -1,6 +1,7 @@
 ---
 et:
   ea:
+    services_description: "Pakutavate teenuste kirjeldus"
     go_to_company: "Mine %{company}"
     download_ics: "Laadi alla ics-fail"
     regenerate_link: "Genereeri link uuesti"

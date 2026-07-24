@@ -1,6 +1,7 @@
 ---
 ja:
   ea:
+    services_description: "提供サービスの説明"
     go_to_company: "%{company} へ移動"
     download_ics: "ics ファイルをダウンロード"
     regenerate_link: "リンクを再生成"

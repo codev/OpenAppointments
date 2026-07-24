@@ -150,6 +150,16 @@
     flex-shrink: 0;
 }
 
+/* Pictures under the service/provider dropdowns stay heavily constrained. */
+#service-description .selection-picture,
+#provider-description .selection-picture {
+    max-width: min(100%, 400px);
+    max-height: 400px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+}
+
 #steps .book-step {
     transition: all 0.3s linear;
 }

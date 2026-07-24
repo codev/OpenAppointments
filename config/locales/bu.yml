@@ -1,6 +1,7 @@
 ---
 bu:
   ea:
+    services_description: "ပေးသော ဝန်ဆောင်မှုများ၏ ဖော်ပြချက်"
     go_to_company: "%{company} သို့သွားရန်"
     download_ics: "ics ဖိုင် ဒေါင်းလုဒ်လုပ်ရန်"
     regenerate_link: "လင့်ခ် ပြန်လည်ထုတ်ရန်"

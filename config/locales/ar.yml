@@ -1,6 +1,7 @@
 ---
 ar:
   ea:
+    services_description: "وصف الخدمات المقدمة"
     go_to_company: "الانتقال إلى %{company}"
     download_ics: "تنزيل ملف ics"
     regenerate_link: "إعادة إنشاء الرابط"

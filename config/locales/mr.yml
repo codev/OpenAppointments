@@ -1,6 +1,7 @@
 ---
 mr:
   ea:
+    services_description: "पुरवलेल्या सेवांचे वर्णन"
     go_to_company: "%{company} वर जा"
     download_ics: "ics फाईल डाउनलोड करा"
     regenerate_link: "लिंक पुन्हा तयार करा"

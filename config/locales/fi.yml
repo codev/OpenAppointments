@@ -1,6 +1,7 @@
 ---
 fi:
   ea:
+    services_description: "Kuvaus tarjotuista palveluista"
     go_to_company: "Siirry kohteeseen %{company}"
     download_ics: "Lataa ics-tiedosto"
     regenerate_link: "Luo linkki uudelleen"

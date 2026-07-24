@@ -27,8 +27,15 @@ class ImportController < ApplicationController
 
   # POST /import/analyze - dry run: parse the upload and return the counts.
   def analyze
+    path = uploaded_file_path
+    if extractor_type == "ods" && OdsBundle.bundle?(path)
+      @analyze_bundle_dir = Rails.root.join("tmp", "manage-data-analyze-#{SecureRandom.hex(6)}").to_s
+      path = OdsBundle.unpack(path, @analyze_bundle_dir)
+      raise ArgumentError, "No ODS file found in the zip." unless path
+    end
+
     data = extractor_class.new(
-      uploaded_file_path, days_back: params[:days_back] || 21, days_forward: params[:days_forward] || 21
+      path, days_back: params[:days_back] || 21, days_forward: params[:days_forward] || 21
     ).call
     render json: {
       success: true,
@@ -41,6 +48,7 @@ class ImportController < ApplicationController
   rescue ArgumentError, CSV::MalformedCSVError => e
     json_exception(e)
   ensure
+    FileUtils.rm_rf(@analyze_bundle_dir) if @analyze_bundle_dir
     cleanup_upload
   end
 

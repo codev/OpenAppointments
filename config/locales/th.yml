@@ -1,6 +1,7 @@
 ---
 th:
   ea:
+    services_description: "คำอธิบายบริการที่ให้"
     go_to_company: "ไปที่ %{company}"
     download_ics: "ดาวน์โหลดไฟล์ ics"
     regenerate_link: "สร้างลิงก์ใหม่"

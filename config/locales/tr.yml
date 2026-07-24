@@ -1,6 +1,7 @@
 ---
 tr:
   ea:
+    services_description: "Sunulan hizmetlerin açıklaması"
     go_to_company: "%{company} adresine git"
     download_ics: "ics dosyasını indir"
     regenerate_link: "Bağlantıyı yeniden oluştur"

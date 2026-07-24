@@ -1,6 +1,7 @@
 ---
 sq:
   ea:
+    services_description: "Përshkrimi i shërbimeve të ofruara"
     go_to_company: "Shko te %{company}"
     download_ics: "Shkarko skedarin ics"
     regenerate_link: "Rigjenero lidhjen"

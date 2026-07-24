@@ -22,7 +22,7 @@ class DataExportTest < ActiveSupport::TestCase
 
   test "sheets carry headers plus one row per record" do
     sheets = DataExport.sheets
-    assert_equal %w[name description], sheets["Service Categories"].first
+    assert_equal %w[name description picture], sheets["Service Categories"].first
     assert_equal User.customers.count, sheets["Customers"].length - 1
     assert_equal Appointment.count, sheets["Appointments"].length - 1
     assert_equal Setting.count, sheets["Settings"].length - 1

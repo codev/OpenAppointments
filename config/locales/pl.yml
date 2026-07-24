@@ -1,6 +1,7 @@
 ---
 pl:
   ea:
+    services_description: "Opis świadczonych usług"
     go_to_company: "Przejdź do %{company}"
     download_ics: "Pobierz plik ics"
     regenerate_link: "Wygeneruj link ponownie"

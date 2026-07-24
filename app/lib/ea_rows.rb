@@ -48,6 +48,7 @@ module EaRows
       "custom_field_3" => user.custom_field_3, "custom_field_4" => user.custom_field_4,
       "custom_field_5" => user.custom_field_5, "id_roles" => user.id_roles,
       "booking_slug" => user.booking_slug,
+      "about" => user.about, "services_description" => user.services_description,
       "picture_url" => picture_url(user)
     }
   end

@@ -1,6 +1,7 @@
 ---
 lb:
   ea:
+    services_description: "Beschreiwung vun den ugebuedene Servicer"
     go_to_company: "Op %{company} goen"
     download_ics: "ics-Fichier eroflueden"
     regenerate_link: "Link nei generéieren"

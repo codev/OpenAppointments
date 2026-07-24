@@ -1,6 +1,7 @@
 ---
 zh:
   ea:
+    services_description: "所提供服务的说明"
     go_to_company: "前往 %{company}"
     download_ics: "下载 ics 文件"
     regenerate_link: "重新生成链接"

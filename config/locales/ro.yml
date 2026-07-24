@@ -1,6 +1,7 @@
 ---
 ro:
   ea:
+    services_description: "Descrierea serviciilor oferite"
     go_to_company: "Mergi la %{company}"
     download_ics: "Descarcă fișierul ics"
     regenerate_link: "Regenerează linkul"

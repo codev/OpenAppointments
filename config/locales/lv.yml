@@ -1,6 +1,7 @@
 ---
 lv:
   ea:
+    services_description: "Sniegto pakalpojumu apraksts"
     go_to_company: "Doties uz %{company}"
     download_ics: "Lejupielādēt ics failu"
     regenerate_link: "Ģenerēt saiti no jauna"

@@ -1,6 +1,7 @@
 ---
 sk:
   ea:
+    services_description: "Popis poskytovaných služieb"
     go_to_company: "Prejsť na %{company}"
     download_ics: "Stiahnuť súbor ics"
     regenerate_link: "Pregenerovať odkaz"

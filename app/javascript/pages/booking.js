@@ -565,6 +565,8 @@ App.Pages.Booking = (function () {
             }
 
             App.Pages.Booking.updateConfirmFrame();
+
+            App.Pages.Booking.updateProviderDescription($selectProvider.val());
         });
 
         /**
@@ -1196,6 +1198,16 @@ App.Pages.Booking = (function () {
             return; // Service not found
         }
 
+        // Render the service picture (constrained by the selection-details styles).
+
+        if (service.picture_url) {
+            $('<img/>', {
+                'src': service.picture_url,
+                'alt': service.name,
+                'class': 'selection-picture d-block rounded mb-2',
+            }).appendTo($serviceDescription);
+        }
+
         // Render the additional service information
 
         const additionalInfoParts = [];
@@ -1233,6 +1245,48 @@ App.Pages.Booking = (function () {
                 </div>
             `).appendTo($serviceDescription);
         }
+    }
+
+    /**
+     * Update the provider description under the provider dropdown: picture,
+     * about text and the description of services provided.
+     *
+     * @param {Number} providerId The selected provider record id.
+     */
+    function updateProviderDescription(providerId) {
+        const $providerDescription = $('#provider-description');
+
+        $providerDescription.empty();
+
+        const provider = vars('available_providers').find(
+            (availableProvider) => Number(availableProvider.id) === Number(providerId),
+        );
+
+        if (!provider) {
+            return; // "Any provider" or nothing selected.
+        }
+
+        if (provider.picture_url) {
+            $('<img/>', {
+                'src': provider.picture_url,
+                'alt': provider.name,
+                'class': 'selection-picture d-block rounded mb-2',
+            }).appendTo($providerDescription);
+        }
+
+        [provider.about, provider.services_description].forEach((text) => {
+            if (!text?.length) {
+                return;
+            }
+
+            const escaped = App.Utils.String.escapeHtml(text).replaceAll('\n', '<br/>');
+
+            $(`
+                <div class="text-muted mb-2">
+                    ${escaped}
+                </div>
+            `).appendTo($providerDescription);
+        });
     }
 
     /**
@@ -1368,6 +1422,7 @@ App.Pages.Booking = (function () {
         manageMode,
         updateConfirmFrame,
         updateServiceDescription,
+        updateProviderDescription,
         validateCustomerForm,
     };
 })();

@@ -1,6 +1,7 @@
 ---
 hu:
   ea:
+    services_description: "A nyújtott szolgáltatások leírása"
     go_to_company: "Tovább: %{company}"
     download_ics: "ics fájl letöltése"
     regenerate_link: "Link újragenerálása"
