@@ -71,6 +71,15 @@ class IframeEmbedTest < ActionDispatch::IntegrationTest
     assert_equal "https://example.org", Setting.get("iframe_embed_origin")
   end
 
+  test "the frame-detection script for hiding the login button ships only when enabled" do
+    get "/"
+    assert_no_match(/is-embedded/, response.body)
+
+    enable_embedding
+    get "/"
+    assert_match(/is-embedded/, response.body)
+  end
+
   test "embed settings page offers the WordPress boxes" do
     login_admin
     get "/embed_settings"

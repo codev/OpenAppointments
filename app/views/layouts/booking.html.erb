@@ -28,6 +28,13 @@
 
     <%= render "shared/brand_style" %>
 
+    <% if Embedding.enabled? %>
+        <%# Runs before first paint so embedded-only styling (e.g. no login button) never flashes. %>
+        <script>
+            if (window.self !== window.top) document.documentElement.classList.add('is-embedded');
+        </script>
+    <% end %>
+
     <%= yield :styles %>
 </head>
 

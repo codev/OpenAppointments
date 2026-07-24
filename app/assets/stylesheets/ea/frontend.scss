@@ -205,6 +205,12 @@
     min-width: 120px;
 }
 
+/* Inside an embedding iframe (html.is-embedded, stamped before first paint)
+   the backend login button is never shown. */
+.is-embedded #frame-footer .backend-link {
+    display: none !important;
+}
+
 // Half-coloured asterisk marking the email/phone pair when either one is
 // enough (require_phone_or_email); falls back to a plain danger asterisk.
 .required-either {
