@@ -657,10 +657,36 @@ body .modal.full-screen .modal-push {
     font-size: 12px;
 }
 
+/* The tagline collides with the nav on mid-width screens. */
+@media (max-width: 1199.98px) {
+    #header-logo small {
+        display: none !important;
+    }
+}
+
 #header .navbar-nav .nav-item {
-    min-width: 100px;
+    min-width: 90px;
+}
+
+#header-logo {
+    margin-right: 1rem;
 }
 
 .filter-records .results {
     max-height: 650px;
+}
+
+#customer-messages {
+    min-height: 200px;
+    max-height: 400px;
+    max-width: 330px;
+    width: 100%;
+}
+
+#customer-message-composer {
+    max-width: 330px;
+}
+
+#customer-message-composer #message-channel {
+    max-width: 130px;
 }
