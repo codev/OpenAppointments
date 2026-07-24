@@ -1,6 +1,8 @@
 ---
 sv:
   ea:
+    failed: "misslyckades"
+    import_failures: "Misslyckade poster"
     booking_provider_first: "Utförare först i stället för tjänst"
     display_order_switch: "Visa länken för att byta ordning tjänst/utförare"
     display_powered_by: "Visa Powered by OpenAppointments"

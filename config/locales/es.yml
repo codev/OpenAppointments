@@ -1,6 +1,8 @@
 ---
 es:
   ea:
+    failed: "fallidos"
+    import_failures: "Registros fallidos"
     booking_provider_first: "Primero el proveedor en lugar del servicio"
     display_order_switch: "Mostrar el enlace para cambiar el orden servicio/proveedor"
     display_powered_by: "Mostrar Powered by OpenAppointments"

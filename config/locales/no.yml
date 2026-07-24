@@ -1,6 +1,8 @@
 ---
 'no':
   ea:
+    failed: "mislyktes"
+    import_failures: "Mislykkede poster"
     booking_provider_first: "Tilbyder først i stedet for tjeneste"
     display_order_switch: "Vis lenken for å bytte rekkefølge tjeneste/tilbyder"
     display_powered_by: "Vis Powered by OpenAppointments"

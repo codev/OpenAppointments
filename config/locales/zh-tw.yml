@@ -1,6 +1,8 @@
 ---
 zh-tw:
   ea:
+    failed: "失敗"
+    import_failures: "失敗的記錄"
     booking_provider_first: "先顯示服務人員而非服務"
     display_order_switch: "顯示切換服務/服務人員順序的連結"
     display_powered_by: "顯示 Powered by OpenAppointments"

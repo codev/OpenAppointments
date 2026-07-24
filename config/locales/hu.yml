@@ -1,6 +1,8 @@
 ---
 hu:
   ea:
+    failed: "sikertelen"
+    import_failures: "Sikertelen rekordok"
     booking_provider_first: "Először a szolgáltató a szolgáltatás helyett"
     display_order_switch: "A szolgáltatás/szolgáltató sorrendváltó link megjelenítése"
     display_powered_by: "A Powered by OpenAppointments megjelenítése"

@@ -44,7 +44,7 @@ class TenToEightTest < ActiveSupport::TestCase
 
   test "load creates the catalogue, providers, customers and appointments" do
     data = extract
-    counts = TenToEight::Load.new(data, phases: TenToEight::Load::PHASES, create_providers: true).call
+    counts = TenToEight::Load.new(data, phases: TenToEight::Load::PHASES, create_providers: true).call[:counts]
 
     assert_equal 3, counts[:categories][:created]
     assert_equal 3, counts[:services][:created]
@@ -71,7 +71,7 @@ class TenToEightTest < ActiveSupport::TestCase
   test "load is idempotent and matches existing records by email" do
     data = extract
     TenToEight::Load.new(data, phases: TenToEight::Load::PHASES, create_providers: true).call
-    second = TenToEight::Load.new(data, phases: TenToEight::Load::PHASES, create_providers: true).call
+    second = TenToEight::Load.new(data, phases: TenToEight::Load::PHASES, create_providers: true).call[:counts]
 
     assert_equal 0, second[:customers][:created]
     assert_equal 0, second[:services][:created]
@@ -81,10 +81,30 @@ class TenToEightTest < ActiveSupport::TestCase
 
   test "load respects the phase selection" do
     data = extract
-    counts = TenToEight::Load.new(data, phases: %w[categories services]).call
+    counts = TenToEight::Load.new(data, phases: %w[categories services]).call[:counts]
     assert_equal 3, counts[:services][:created]
     assert_nil counts[:customers]
     assert_equal 0, User.customers.where(email: "bella@example.org").count
+  end
+
+  test "record failures are collected and do not abort the run" do
+    data = { services: [ { name: nil, duration: 30 }, { name: "Good Service", duration: 30 } ] }
+    result = TenToEight::Load.new(data, phases: %w[services]).call
+
+    assert_equal 1, result[:counts][:services][:failed]
+    assert_equal 1, result[:counts][:services][:created]
+    assert Service.exists?(name: "Good Service")
+    error = result[:errors].first
+    assert_equal "services", error[:phase]
+    assert error[:message].present?
+  end
+
+  test "short service durations are clamped to the five minute minimum" do
+    data = { services: [ { name: "Quick Fringe", duration: 2 } ] }
+    result = TenToEight::Load.new(data, phases: %w[services]).call
+
+    assert_empty result[:errors]
+    assert_equal 5, Service.find_by(name: "Quick Fringe").duration
   end
 
   test "phases run as separate imports still link and resolve via the database" do
@@ -93,7 +113,7 @@ class TenToEightTest < ActiveSupport::TestCase
     TenToEight::Load.new(data, phases: %w[services]).call
     TenToEight::Load.new(data, phases: %w[providers], create_providers: true).call
     TenToEight::Load.new(data, phases: %w[customers]).call
-    counts = TenToEight::Load.new(data, phases: %w[appointments]).call
+    counts = TenToEight::Load.new(data, phases: %w[appointments]).call[:counts]
 
     assert_equal 3, counts[:appointments][:created]
     imported = Service.where(name: data[:services].map { |s| s[:name] })

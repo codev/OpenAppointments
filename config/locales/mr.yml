@@ -1,6 +1,8 @@
 ---
 mr:
   ea:
+    failed: "अयशस्वी"
+    import_failures: "अयशस्वी नोंदी"
     booking_provider_first: "सेवेऐवजी आधी प्रदाता"
     display_order_switch: "सेवा/प्रदाता क्रम बदलण्याची लिंक दाखवा"
     display_powered_by: "Powered by OpenAppointments दाखवा"

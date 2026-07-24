@@ -1,6 +1,8 @@
 ---
 el:
   ea:
+    failed: "απέτυχαν"
+    import_failures: "Αποτυχημένες εγγραφές"
     booking_provider_first: "Πρώτα ο πάροχος αντί για την υπηρεσία"
     display_order_switch: "Εμφάνιση του συνδέσμου εναλλαγής σειράς υπηρεσίας/παρόχου"
     display_powered_by: "Εμφάνιση Powered by OpenAppointments"

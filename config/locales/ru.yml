@@ -1,6 +1,8 @@
 ---
 ru:
   ea:
+    failed: "с ошибкой"
+    import_failures: "Записи с ошибками"
     booking_provider_first: "Сначала специалист, а не услуга"
     display_order_switch: "Показывать ссылку смены порядка услуга/специалист"
     display_powered_by: "Показывать Powered by OpenAppointments"

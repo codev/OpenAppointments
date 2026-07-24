@@ -1,6 +1,8 @@
 ---
 lt:
   ea:
+    failed: "nepavyko"
+    import_failures: "Nepavykę įrašai"
     booking_provider_first: "Pirmiausia teikėjas, o ne paslauga"
     display_order_switch: "Rodyti paslaugos/teikėjo tvarkos keitimo nuorodą"
     display_powered_by: "Rodyti Powered by OpenAppointments"

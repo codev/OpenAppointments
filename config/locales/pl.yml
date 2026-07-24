@@ -1,6 +1,8 @@
 ---
 pl:
   ea:
+    failed: "nieudane"
+    import_failures: "Nieudane rekordy"
     booking_provider_first: "Najpierw wykonawca zamiast usługi"
     display_order_switch: "Pokaż link do zmiany kolejności usługa/wykonawca"
     display_powered_by: "Pokaż Powered by OpenAppointments"

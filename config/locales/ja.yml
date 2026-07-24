@@ -1,6 +1,8 @@
 ---
 ja:
   ea:
+    failed: "失敗"
+    import_failures: "失敗したレコード"
     booking_provider_first: "サービスより先に担当者を表示"
     display_order_switch: "サービス/担当者の順序を切り替えるリンクを表示"
     display_powered_by: "Powered by OpenAppointments を表示"

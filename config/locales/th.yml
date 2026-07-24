@@ -1,6 +1,8 @@
 ---
 th:
   ea:
+    failed: "ล้มเหลว"
+    import_failures: "รายการที่ล้มเหลว"
     booking_provider_first: "แสดงผู้ให้บริการก่อนแทนบริการ"
     display_order_switch: "แสดงลิงก์สลับลำดับบริการ/ผู้ให้บริการ"
     display_powered_by: "แสดง Powered by OpenAppointments"

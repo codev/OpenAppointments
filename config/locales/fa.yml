@@ -1,6 +1,8 @@
 ---
 fa:
   ea:
+    failed: "ناموفق"
+    import_failures: "رکوردهای ناموفق"
     booking_provider_first: "ابتدا ارائه‌دهنده به جای خدمت"
     display_order_switch: "نمایش پیوند تغییر ترتیب خدمت/ارائه‌دهنده"
     display_powered_by: "نمایش Powered by OpenAppointments"

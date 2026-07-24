@@ -1,6 +1,8 @@
 ---
 ca:
   ea:
+    failed: "fallits"
+    import_failures: "Registres fallits"
     booking_provider_first: "Primer el proveïdor en lloc del servei"
     display_order_switch: "Mostra l'enllaç per canviar l'ordre servei/proveïdor"
     display_powered_by: "Mostra Powered by OpenAppointments"

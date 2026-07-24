@@ -1,6 +1,8 @@
 ---
 et:
   ea:
+    failed: "ebaõnnestunud"
+    import_failures: "Ebaõnnestunud kirjed"
     booking_provider_first: "Kõigepealt teenusepakkuja, mitte teenus"
     display_order_switch: "Näita teenuse/teenusepakkuja järjekorra vahetamise linki"
     display_powered_by: "Näita Powered by OpenAppointments"

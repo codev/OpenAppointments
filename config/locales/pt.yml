@@ -1,6 +1,8 @@
 ---
 pt:
   ea:
+    failed: "falharam"
+    import_failures: "Registos falhados"
     booking_provider_first: "Profissional primeiro em vez do serviço"
     display_order_switch: "Mostrar a ligação para trocar a ordem serviço/profissional"
     display_powered_by: "Mostrar Powered by OpenAppointments"

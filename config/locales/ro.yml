@@ -1,6 +1,8 @@
 ---
 ro:
   ea:
+    failed: "eșuate"
+    import_failures: "Înregistrări eșuate"
     booking_provider_first: "Mai întâi furnizorul în loc de serviciu"
     display_order_switch: "Afișează linkul de schimbare a ordinii serviciu/furnizor"
     display_powered_by: "Afișează Powered by OpenAppointments"

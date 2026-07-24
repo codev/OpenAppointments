@@ -29,12 +29,12 @@ class TenToEightImportJob < ApplicationJob
       days_back: days_back, days_forward: days_forward
     ).call
 
-    counts = TenToEight::Load.new(
+    result = TenToEight::Load.new(
       data, phases: phases, create_providers: create_providers,
       progress: ->(phase) { write_status(import_id, state: "running", phase: phase) }
     ).call
 
-    write_status(import_id, state: "completed", counts: counts)
+    write_status(import_id, state: "completed", counts: result[:counts], errors: result[:errors])
   rescue StandardError => e
     write_status(import_id, state: "failed", error: e.message)
     raise

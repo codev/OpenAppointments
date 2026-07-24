@@ -1,6 +1,8 @@
 ---
 he:
   ea:
+    failed: "נכשלו"
+    import_failures: "רשומות שנכשלו"
     booking_provider_first: "ספק תחילה במקום שירות"
     display_order_switch: "הצגת הקישור להחלפת סדר שירות/ספק"
     display_powered_by: "הצגת Powered by OpenAppointments"

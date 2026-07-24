@@ -1,6 +1,8 @@
 ---
 bu:
   ea:
+    failed: "မအောင်မြင်ပါ"
+    import_failures: "မအောင်မြင်သော မှတ်တမ်းများ"
     booking_provider_first: "ဝန်ဆောင်မှုအစား ဝန်ဆောင်မှုပေးသူကို အရင်ပြရန်"
     display_order_switch: "ဝန်ဆောင်မှု သို့မဟုတ် ဝန်ဆောင်မှုပေးသူ အရင်ရွေးရန် လင့်ခ်ကို ပြရန်"
     display_powered_by: "Powered by OpenAppointments ကို ပြရန်"

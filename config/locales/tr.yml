@@ -1,6 +1,8 @@
 ---
 tr:
   ea:
+    failed: "başarısız"
+    import_failures: "Başarısız kayıtlar"
     booking_provider_first: "Hizmet yerine önce sağlayıcı"
     display_order_switch: "Hizmet/sağlayıcı sırasını değiştirme bağlantısını göster"
     display_powered_by: "Powered by OpenAppointments'ı göster"

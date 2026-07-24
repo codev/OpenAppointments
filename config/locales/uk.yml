@@ -1,6 +1,8 @@
 ---
 uk:
   ea:
+    failed: "з помилкою"
+    import_failures: "Записи з помилками"
     booking_provider_first: "Спочатку фахівець, а не послуга"
     display_order_switch: "Показувати посилання зміни порядку послуга/фахівець"
     display_powered_by: "Показувати Powered by OpenAppointments"

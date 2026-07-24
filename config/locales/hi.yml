@@ -1,6 +1,8 @@
 ---
 hi:
   ea:
+    failed: "विफल"
+    import_failures: "विफल रिकॉर्ड"
     booking_provider_first: "सेवा के बजाय पहले प्रदाता"
     display_order_switch: "सेवा/प्रदाता क्रम बदलने का लिंक दिखाएं"
     display_powered_by: "Powered by OpenAppointments दिखाएं"

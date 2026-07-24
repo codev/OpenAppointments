@@ -1,6 +1,8 @@
 ---
 fi:
   ea:
+    failed: "epäonnistui"
+    import_failures: "Epäonnistuneet tietueet"
     booking_provider_first: "Palveluntarjoaja ensin palvelun sijaan"
     display_order_switch: "Näytä linkki palvelun/tarjoajan järjestyksen vaihtoon"
     display_powered_by: "Näytä Powered by OpenAppointments"

@@ -1,6 +1,8 @@
 ---
 lv:
   ea:
+    failed: "neizdevās"
+    import_failures: "Neizdevušies ieraksti"
     booking_provider_first: "Vispirms sniedzējs, nevis pakalpojums"
     display_order_switch: "Rādīt saiti pakalpojuma/sniedzēja secības maiņai"
     display_powered_by: "Rādīt Powered by OpenAppointments"

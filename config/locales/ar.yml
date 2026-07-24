@@ -1,6 +1,8 @@
 ---
 ar:
   ea:
+    failed: "فشل"
+    import_failures: "السجلات الفاشلة"
     booking_provider_first: "عرض مقدم الخدمة أولاً بدلاً من الخدمة"
     display_order_switch: "عرض رابط التبديل بين اختيار الخدمة أو مقدم الخدمة أولاً"
     display_powered_by: "عرض Powered by OpenAppointments"

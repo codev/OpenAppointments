@@ -1,6 +1,8 @@
 ---
 da:
   ea:
+    failed: "fejlede"
+    import_failures: "Fejlede poster"
     booking_provider_first: "Udbyder først i stedet for ydelse"
     display_order_switch: "Vis linket til at skifte rækkefølgen ydelse/udbyder"
     display_powered_by: "Vis Powered by OpenAppointments"

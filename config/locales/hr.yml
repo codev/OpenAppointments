@@ -1,6 +1,8 @@
 ---
 hr:
   ea:
+    failed: "neuspješno"
+    import_failures: "Neuspješni zapisi"
     booking_provider_first: "Prvo pružatelj umjesto usluge"
     display_order_switch: "Prikaži poveznicu za promjenu redoslijeda usluga/pružatelj"
     display_powered_by: "Prikaži Powered by OpenAppointments"

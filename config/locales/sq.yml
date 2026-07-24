@@ -1,6 +1,8 @@
 ---
 sq:
   ea:
+    failed: "dështuan"
+    import_failures: "Regjistrime të dështuara"
     booking_provider_first: "Fillimisht ofruesi në vend të shërbimit"
     display_order_switch: "Shfaq lidhjen për ndërrimin e radhës shërbim/ofrues"
     display_powered_by: "Shfaq Powered by OpenAppointments"

@@ -1,6 +1,8 @@
 ---
 nl:
   ea:
+    failed: "mislukt"
+    import_failures: "Mislukte records"
     booking_provider_first: "Eerst aanbieder in plaats van dienst"
     display_order_switch: "Toon de link om de volgorde dienst/aanbieder te wisselen"
     display_powered_by: "Toon Powered by OpenAppointments"

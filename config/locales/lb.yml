@@ -1,6 +1,8 @@
 ---
 lb:
   ea:
+    failed: "feelgeschloen"
+    import_failures: "Feelgeschloen Datesätz"
     booking_provider_first: "Fir d'éischt de Provider amplaz vum Service"
     display_order_switch: "De Link fir d'Reiefolleg Service/Provider ze wiesselen uweisen"
     display_powered_by: "Powered by OpenAppointments uweisen"

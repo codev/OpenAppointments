@@ -1,6 +1,8 @@
 ---
 de:
   ea:
+    failed: "fehlgeschlagen"
+    import_failures: "Fehlgeschlagene Datensätze"
     booking_provider_first: "Zuerst Anbieter statt Dienstleistung"
     display_order_switch: "Link zum Wechseln der Reihenfolge Dienstleistung/Anbieter anzeigen"
     display_powered_by: "Powered by OpenAppointments anzeigen"
