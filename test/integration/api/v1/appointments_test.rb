@@ -53,7 +53,10 @@ module Api
 
       test "store creates appointment, computes end from service duration, fires side effects" do
         Webhook.create!(name: "hook", url: "https://example.org/h", actions: "appointment_save")
-        assert_enqueued_emails 3 do
+        Notification.create!(title: "Saved", event: "created_or_updated",
+                             audiences: %w[customer provider admins], channels: %w[email],
+                             short_text: "Saved", long_text: "Saved")
+        assert_enqueued_jobs 3, only: MessageDeliveryJob do
           assert_enqueued_with(job: WebhookDeliveryJob) do
             api_post "/api/v1/appointments", {
               start: "2026-07-21 09:00:00", serviceId: services(:haircut).id,
@@ -68,7 +71,10 @@ module Api
       end
 
       test "update merges and notifies" do
-        assert_enqueued_emails 3 do
+        Notification.create!(title: "Saved", event: "created_or_updated",
+                             audiences: %w[customer provider admins], channels: %w[email],
+                             short_text: "Saved", long_text: "Saved")
+        assert_enqueued_jobs 3, only: MessageDeliveryJob do
           api_put "/api/v1/appointments/#{appointments(:upcoming).id}", { notes: "Updated via API" }
         end
         assert_response :success

@@ -27,18 +27,9 @@ class AppIconTest < ActionDispatch::IntegrationTest
   end
 
   test "mail still inlines a png logo" do
-    appointment = appointments(:upcoming)
-    settings = { company_name: "Test Company", company_link: "https://example.org",
-                 company_email: "info@example.org", company_color: nil,
-                 date_format: "DMY", time_format: "regular" }
-    mail = AppointmentMailer.saved(
-      appointment: appointment, service: appointment.service, provider: appointment.provider,
-      customer: appointment.customer, settings: settings,
-      recipient_email: appointment.customer.email, recipient_language: "english",
-      recipient_timezone: "UTC", manage_mode: false,
-      ics: IcsFile.stream(appointment, appointment.service, appointment.provider, appointment.customer),
-      link_path: "/booking/reschedule/#{appointment.booking_hash}", role: :customer
-    )
+    message = Message.create!(direction: "outgoing", channel: "email", audience: "customer",
+                              to_address: "someone@example.org", subject: "Hello", body: "Hi there")
+    mail = MessagesMailer.outgoing(message)
     logo = mail.attachments.inline["logo.png"]
     assert_not_nil logo
     assert_equal "image/png", logo.mime_type
