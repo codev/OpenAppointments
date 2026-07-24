@@ -5,11 +5,24 @@ Appointment scheduler, a Rails 8.1 port of Easy!Appointments 1.6.0.
 ## Setup
 
 ```bash
-mise install                     # ruby per mise.toml
+mise install
 bundle install
-bin/rails openappointments:install   # db:prepare + seeds + initial admin (password printed)
+bin/rails openappointments:install
 bin/dev
 ```
+
+Reset the database with:
+
+```
+bin/rails db:reset openappointments:install
+```
+
+## Admin login
+
+Username: administrator
+Password: let!me!in
+
+Change the password on first login.
 
 ## Tests
 
@@ -24,6 +37,64 @@ Rails 8.1, SQLite (all environments), Solid Queue/Cache/Cable, Propshaft, dartsa
 Frontend is the Easy!Appointments jQuery UI ported as-is.
 
 Datetimes are stored as provider-local wall-clock, not UTC. See config/application.rb.
+
+## New features
+
+New features since the fork from Easy!Appointments 1.6.0 - many of these are opinionated features:
+
+### Name field replaces first name and last name
+
+There is now a single `Name` field instead of First/Last names. The REST API is still EA compatible: firstName carries the full name and lastName is accepted and merged when passed on write.
+
+### Service and provider divided into two pages
+
+There are now 5 pages - the booking page asks for the service first then the provider. The user can click "Select Provider First" link to swap the order or append `?first=provider` to the URL to swap the order.
+
+### Card display mode
+
+Set Settings - Booking - Display mode - cards. This shows categories, services and providers as cards instead of a dropdown. Pictures can be uploaded on each category, service and provider edit page.
+
+### Phone OR Email
+
+New "Required phone or email" in booking settings, by default on, to require a customer to enter either a phone number or an email address. You can still turn requiring them separately.
+
+
+### Cloudflare Turnstile captcha option
+
+Captcha providers now include Cloudflare Turnstile as well as Altcha. Pick the provider on the captcha settings page and paste in the site key and secret key from your Cloudflare dashboard to verify each booking is coming from a human before accepting it.
+
+### Manage data page
+
+An admin-only Manage data page exports the whole database as a dated ODS backup
+(one sheet per record type) and imports OpenAppointments ODS backups or Sign In
+App/10to8 CSV exports, with selectable record types and an appointment date
+window. Re-running is safe: existing records are matched by name, email or phone
+instead of being duplicated. Ticking providers creates login-capable user
+accounts, so it is off by default.
+
+### Database reset option
+
+The Manage data page has a database reset behind a typed confirmation that wipes
+business data but keeps admin accounts and settings. A full reset also deletes
+administrators and settings, reseeds the defaults and recreates the install
+admin with the default password.
+
+### Outline theme
+
+New theme rendering with outlined boxes instead of solid fills.
+
+### Iframe embedding
+
+Under Settings - Embedding - enter the website you want to embed the booking widget on and copy the code to your website.
+
+### Calendar sync
+
+Each provider can sync their calendar - outbound sync works for CalDAV and Google Calendar. Google Calendar also supports inbound sync so events created in Google prevent booking those times as unavailable and events that are removed are canceled. Still todo: All-day event support.
+
+### Minor fixes
+
+Better layout of customer fields; Captcha and Google Calendar first on the Integrations page; per-provider captcha settings sections; Any Provider is the default in the provider dropdown instead of Please Select; Pagination in the admin views; customers page and appointments modal respect the booking field display/require settings; booking form validation messages now display; the install task's admin is redirected to the account page with a banner until the default password is changed
+
 
 ## Operations
 
@@ -46,9 +117,9 @@ bin/rails openappointments:backup   # VACUUM INTO a timestamped SQLite copy
 
 ## Icons
 
-The app icon source is `openout-booking-icon-outline.svg` (workspace root, copied into the
-repo as `app/assets/images/logo.svg` and `public/icon.svg`). All raster variants are rendered
-from it (inkscape for PNGs, ImageMagick for the ico/social card). Everywhere it is used:
+The app icon  `app/assets/images/logo.svg` and is duplicated at`public/icon.svg
+
+All other variants are rendered from it:
 
 - `app/assets/images/logo.svg` - SVG favicon link in the backend/booking/message/account layouts.
 - `app/assets/images/logo.png` (192px) - login/logout/recovery/about pages, backend header and

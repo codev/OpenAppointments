@@ -1,6 +1,17 @@
 ---
 fa:
   ea:
+    import_providers_caution: "احتیاط: انتخاب ارائه‌دهندگان حساب‌های کاربری ایجاد می‌کند و ورود با ایمیل آنها را ممکن می‌سازد"
+    manage_data: "مدیریت داده‌ها"
+    export_data: "خروجی گرفتن از داده‌ها"
+    import_type: "نوع واردکردن"
+    full_reset_label: "بازنشانی کامل، حذف مدیران و بازنشانی تنظیمات"
+    delete_personal_information_setting_hint: "به مشتریان اجازه دهید با یک دکمه همه نوبت‌ها و اطلاعات شخصی خود را از سیستم حذف کنند."
+    captcha: "Captcha"
+    captcha_info: "تنظیمات کپچا برای تأیید انسان بودن بازدیدکننده پیش از رزرو"
+    captcha_enabled_hint: "در صورت فعال بودن، ارائه‌دهنده کپچای انتخاب‌شده به جای کپچای تصویری سنتی برای تأیید فرم‌ها استفاده می‌شود."
+    turnstile_keys_hint: "یک جفت کلید (site و secret) از داشبورد Cloudflare دریافت کنید:"
+    first_login_update_details: لطفاً رمز عبور جدیدی وارد کنید و اطلاعات خود را به‌روزرسانی کنید
     embedding: جاسازی
     allow_iframe_embedding: اجازه جاسازی در iframe
     iframe_embed_origin: وب‌سایتی که صفحه رزرو را جاسازی می‌کند
@@ -8,7 +19,7 @@ fa:
     embed_hint: این کد را در صفحه‌ای از وب‌سایت خود که فرم رزرو باید نمایش داده شود بچسبانید؛ قاب به‌طور خودکار اندازه می‌گیرد.
     copy: کپی
     import_data: وارد کردن داده‌ها
-    import_hint: یک فایل CSV خروجی 10to8 را بارگذاری کنید، ابتدا آن را تحلیل و سپس انواع رکوردهای انتخابی را وارد کنید.
+    import_hint: "یک نسخه پشتیبان بارگذاری کنید، ابتدا آن را تحلیل کنید و سپس انواع رکورد انتخاب‌شده را وارد کنید. تنظیمات وارد نمی‌شوند، لطفاً پس از واردکردن دوباره آنها را پیکربندی کنید."
     import_phases: انواع رکوردها
     analyze: تحلیل
     start_import: شروع واردات
@@ -23,14 +34,14 @@ fa:
     no_file_selected: فایلی انتخاب نشده است.
     reset_database: بازنشانی پایگاه داده
     reset_database_warning: این کار همه قرارها، مشتریان، ارائه‌دهندگان، منشی‌ها، خدمات و دسته‌ها را برای همیشه حذف می‌کند. حساب‌های مدیر و تنظیمات حفظ می‌شوند. قابل بازگشت نیست.
-    reset_confirmation_hint: برای فعال شدن دکمه RESET را تایپ کنید.
+    reset_confirmation_hint: "برای فعال کردن دکمه I KNOW WHAT I AM DOING را تایپ کنید."
     reset_database_done: پایگاه داده بازنشانی شد.
     captcha_provider: ارائه‌دهنده کپچا
     turnstile_site_key: کلید سایت Turnstile
     turnstile_secret_key: کلید مخفی Turnstile
     turnstile_verification_failed: تأیید کپچا ناموفق بود، دوباره تلاش کنید.
-    phone_or_email_required: لطفا یک شماره تلفن یا ایمیل وارد کنید.
-    require_phone_or_email_label: الزام شماره تلفن یا ایمیل (یکی کافی است)
+    phone_or_email_required: ایمیل یا شماره تلفن الزامی است
+    require_phone_or_email_label: الزام شماره تلفن یا ایمیل
     booking_display_mode: حالت نمایش رزرو
     display_as_dropdown: فهرست کشویی
     display_as_cards: کارت‌ها

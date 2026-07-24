@@ -1,6 +1,17 @@
 ---
 uk:
   ea:
+    import_providers_caution: "Увага: позначення спеціалістів створить облікові записи та дозволить вхід за їхнім email"
+    manage_data: "Керування даними"
+    export_data: "Експорт даних"
+    import_type: "Тип імпорту"
+    full_reset_label: "Повне скидання, видалити адміністраторів і скинути налаштування"
+    delete_personal_information_setting_hint: "Дозволити клієнтам однією кнопкою видалити всі свої записи та особисті дані з системи."
+    captcha: "Captcha"
+    captcha_info: "Налаштування капчі для перевірки, що відвідувач людина, перед бронюванням"
+    captcha_enabled_hint: "Якщо увімкнено, для перевірки форм замість традиційної капчі із зображенням використовуватиметься вибраний провайдер капчі."
+    turnstile_keys_hint: "Отримайте пару ключів (site і secret) у панелі Cloudflare:"
+    first_login_update_details: Будь ласка, введіть новий пароль і оновіть свої дані
     embedding: Вбудовування
     allow_iframe_embedding: Дозволити вбудовування в iframe
     iframe_embed_origin: Сайт, який вбудує сторінку бронювання
@@ -8,7 +19,7 @@ uk:
     embed_hint: Вставте цей код на сторінку вашого сайту, де має відображатися форма бронювання; рамка сама підлаштовує висоту.
     copy: Копіювати
     import_data: Імпорт даних
-    import_hint: Завантажте CSV-експорт з 10to8, спочатку проаналізуйте його, потім імпортуйте вибрані типи записів.
+    import_hint: "Завантажте резервну копію, спочатку проаналізуйте її, потім імпортуйте вибрані типи записів. Налаштування не імпортуються, будь ласка, налаштуйте їх заново після імпорту."
     import_phases: Типи записів
     analyze: Аналіз
     start_import: Почати імпорт
@@ -23,14 +34,14 @@ uk:
     no_file_selected: Файл не вибрано.
     reset_database: Скинути базу даних
     reset_database_warning: Це назавжди видалить усі записи, клієнтів, спеціалістів, секретарів, послуги та категорії. Облікові записи адміністраторів і налаштування збережуться. Незворотно.
-    reset_confirmation_hint: Введіть RESET, щоб активувати кнопку.
+    reset_confirmation_hint: "Введіть I KNOW WHAT I AM DOING, щоб увімкнути кнопку."
     reset_database_done: Базу даних скинуто.
     captcha_provider: Провайдер капчі
     turnstile_site_key: Ключ сайту Turnstile
     turnstile_secret_key: Секретний ключ Turnstile
     turnstile_verification_failed: Перевірка капчі не вдалася, спробуйте ще раз.
-    phone_or_email_required: Вкажіть номер телефону або адресу електронної пошти.
-    require_phone_or_email_label: Вимагати телефон або email (достатньо одного)
+    phone_or_email_required: Потрібен email або номер телефону
+    require_phone_or_email_label: Вимагати телефон АБО email
     booking_display_mode: Режим відображення бронювання
     display_as_dropdown: Випадаючий список
     display_as_cards: Картки

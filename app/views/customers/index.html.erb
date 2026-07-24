@@ -77,63 +77,73 @@
                         <input type="text" id="name" class="required form-control" maxlength="220" disabled/>
                     </div>
 
-                    <div class="mb-3">
-                        <label for="email" class="form-label">
-                            <%= lang('email') %>
-                            <% if vars(:require_email) %>
-                                <span class="text-danger" hidden>*</span>
-                            <% end %>
-                        </label>
-                        <input type="text" id="email"
-                               class="<%= vars(:require_email) ? 'required' : '' %> form-control" maxlength="120"
-                               disabled/>
-                    </div>
+<% if vars(:display_email) %>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">
+                                <%= lang('email') %>
+                                <% if vars(:require_email) %>
+                                    <span class="text-danger" hidden>*</span>
+                                <% end %>
+                            </label>
+                            <input type="text" id="email"
+                                   class="<%= vars(:require_email) ? 'required' : '' %> form-control" maxlength="120"
+                                   disabled/>
+                        </div>
+                    <% end %>
 
-                    <div class="mb-3">
-                        <label for="phone-number" class="form-label">
-                            <%= lang('phone_number') %>
-                            <% if vars(:require_phone_number) %>
-                                <span class="text-danger" hidden>*</span>
-                            <% end %>
-                        </label>
-                        <input type="text" id="phone-number" maxlength="60"
-                               class="<%= vars(:require_phone_number) ? 'required' : '' %> form-control" disabled/>
-                    </div>
+<% if vars(:display_phone_number) %>
+                        <div class="mb-3">
+                            <label for="phone-number" class="form-label">
+                                <%= lang('phone_number') %>
+                                <% if vars(:require_phone_number) %>
+                                    <span class="text-danger" hidden>*</span>
+                                <% end %>
+                            </label>
+                            <input type="text" id="phone-number" maxlength="60"
+                                   class="<%= vars(:require_phone_number) ? 'required' : '' %> form-control" disabled/>
+                        </div>
+                    <% end %>
 
-                    <div class="mb-3">
-                        <label for="address" class="form-label">
-                            <%= lang('address') %>
-                            <% if vars(:require_address) %>
-                                <span class="text-danger" hidden>*</span>
-                            <% end %>
-                        </label>
-                        <input type="text" id="address"
-                               class="<%= vars(:require_address) ? 'required' : '' %> form-control"
-                               maxlength="120" disabled/>
-                    </div>
+<% if vars(:display_address) %>
+                        <div class="mb-3">
+                            <label for="address" class="form-label">
+                                <%= lang('address') %>
+                                <% if vars(:require_address) %>
+                                    <span class="text-danger" hidden>*</span>
+                                <% end %>
+                            </label>
+                            <input type="text" id="address"
+                                   class="<%= vars(:require_address) ? 'required' : '' %> form-control"
+                                   maxlength="120" disabled/>
+                        </div>
+                    <% end %>
 
-                    <div class="mb-3">
-                        <label for="city" class="form-label">
-                            <%= lang('city') %>
-                            <% if vars(:require_city) %>
-                                <span class="text-danger" hidden>*</span>
-                            <% end %>
-                        </label>
-                        <input type="text" id="city" class="<%= vars(:require_city) ? 'required' : '' %> form-control"
-                               maxlength="120" disabled/>
-                    </div>
+<% if vars(:display_city) %>
+                        <div class="mb-3">
+                            <label for="city" class="form-label">
+                                <%= lang('city') %>
+                                <% if vars(:require_city) %>
+                                    <span class="text-danger" hidden>*</span>
+                                <% end %>
+                            </label>
+                            <input type="text" id="city" class="<%= vars(:require_city) ? 'required' : '' %> form-control"
+                                   maxlength="120" disabled/>
+                        </div>
+                    <% end %>
 
-                    <div class="mb-3">
-                        <label for="zip-code" class="form-label">
-                            <%= lang('zip_code') %>
-                            <% if vars(:require_zip_code) %>
-                                <span class="text-danger" hidden>*</span>
-                            <% end %>
-                        </label>
-                        <input type="text" id="zip-code"
-                               class="<%= vars(:require_zip_code) ? 'required' : '' %> form-control"
-                               maxlength="120" disabled/>
-                    </div>
+<% if vars(:display_zip_code) %>
+                        <div class="mb-3">
+                            <label for="zip-code" class="form-label">
+                                <%= lang('zip_code') %>
+                                <% if vars(:require_zip_code) %>
+                                    <span class="text-danger" hidden>*</span>
+                                <% end %>
+                            </label>
+                            <input type="text" id="zip-code"
+                                   class="<%= vars(:require_zip_code) ? 'required' : '' %> form-control"
+                                   maxlength="120" disabled/>
+                        </div>
+                    <% end %>
 
                     <div class="mb-3">
                         <label class="form-label" for="language">
@@ -170,7 +180,7 @@
 
                     <%= render "shared/custom_fields", disabled: true %>
 
-                    <div class="mb-3">
+<div class="mb-3">
                         <label class="form-label" for="notes">
                             <%= lang('notes') %>
                         </label>

@@ -3,7 +3,7 @@ require "webmock/minitest"
 
 class SyncJobsTest < ActiveJob::TestCase
   setup do
-    @provider = users(:jane)
+    @provider = users(:zane)
     @appointment = appointments(:upcoming)
   end
 

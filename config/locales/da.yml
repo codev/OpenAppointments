@@ -1,6 +1,17 @@
 ---
 da:
   ea:
+    import_providers_caution: "Advarsel: at markere behandlere opretter brugerkonti og tillader login med deres e-mail"
+    manage_data: "Administrer data"
+    export_data: "Eksporter data"
+    import_type: "Importtype"
+    full_reset_label: "Fuld nulstilling, slet administratorer og nulstil indstillinger"
+    delete_personal_information_setting_hint: "Lad kunder fjerne alle deres aftaler og personlige oplysninger fra systemet med en knap."
+    captcha: "Captcha"
+    captcha_info: "Captcha-indstillinger til at bekræfte, at besøgende er et menneske, før der bookes"
+    captcha_enabled_hint: "Når aktiveret bruges den valgte captcha-udbyder i stedet for den traditionelle billed-captcha til formularbekræftelse."
+    turnstile_keys_hint: "Hent et par bestående af site key og secret key fra Cloudflare-panelet:"
+    first_login_update_details: Indtast en ny adgangskode og opdater dine oplysninger
     embedding: Indlejring
     allow_iframe_embedding: Tillad indlejring i en iframe
     iframe_embed_origin: Websted der skal indlejre bookingsiden
@@ -8,7 +19,7 @@ da:
     embed_hint: Indsæt denne kode på den side på dit websted, der skal vise bookingformularen; rammen tilpasser selv sin højde.
     copy: Kopier
     import_data: Importer data
-    import_hint: Upload en 10to8 CSV-eksport, analyser den først, og importer derefter de valgte posttyper.
+    import_hint: "Upload en sikkerhedskopi, analyser den først, og importer derefter de valgte posttyper. Indstillinger importeres ikke, konfigurer dem venligst igen efter importen."
     import_phases: Posttyper
     analyze: Analyser
     start_import: Start import
@@ -23,14 +34,14 @@ da:
     no_file_selected: Ingen fil valgt.
     reset_database: Nulstil database
     reset_database_warning: Dette sletter permanent alle aftaler, kunder, udbydere, sekretærer, ydelser og kategorier. Administratorkonti og indstillinger bevares. Kan ikke fortrydes.
-    reset_confirmation_hint: Skriv RESET for at aktivere knappen.
+    reset_confirmation_hint: "Skriv I KNOW WHAT I AM DOING for at aktivere knappen."
     reset_database_done: Databasen er nulstillet.
     captcha_provider: Captcha-udbyder
     turnstile_site_key: Turnstile-webstedsnøgle
     turnstile_secret_key: Turnstile-hemmelig nøgle
     turnstile_verification_failed: Captcha-bekræftelsen mislykkedes, prøv igen.
-    phone_or_email_required: Angiv venligst et telefonnummer eller en e-mailadresse.
-    require_phone_or_email_label: Kræv telefonnummer eller e-mail (én af delene er nok)
+    phone_or_email_required: E-mail eller telefonnummer er påkrævet
+    require_phone_or_email_label: Kræv telefonnummer ELLER e-mail
     booking_display_mode: Visning af booking
     display_as_dropdown: Rulleliste
     display_as_cards: Kort

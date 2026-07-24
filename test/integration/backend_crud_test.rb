@@ -10,7 +10,7 @@ class BackendCrudTest < ActionDispatch::IntegrationTest
   end
 
   def login_customer
-    customer = users(:james)
+    customer = users(:jx)
     customer.create_settings!(username: "jamesdoe", password: Passwords.hash("customer1"))
     post "/login/validate", params: { username: "jamesdoe", password: "customer1" }
     assert_equal({ "success" => true }, response.parsed_body)
@@ -45,21 +45,21 @@ class BackendCrudTest < ActionDispatch::IntegrationTest
 
     post "/services/store", params: {
       service: { name: "Colour Consult", duration: 45, price: 0, currency: "GBP",
-                 providers: [ users(:jane).id ] }
+                 providers: [ users(:zane).id ] }
     }
     assert_response :success
     body = response.parsed_body
     assert_equal true, body["success"]
     service_id = body["id"]
     assert service_id.present?
-    assert_equal [ users(:jane).id ], Service.find(service_id).provider_links.map(&:id_users)
+    assert_equal [ users(:zane).id ], Service.find(service_id).provider_links.map(&:id_users)
 
     post "/services/search", params: { keyword: "Colour Consult" }
     assert_response :success
     rows = response.parsed_body
     assert_equal 1, rows.length
     assert_equal "Colour Consult", rows.first["name"]
-    assert_equal [ users(:jane).id ], rows.first["providers"]
+    assert_equal [ users(:zane).id ], rows.first["providers"]
   end
 
   test "blocked periods store and search round trip" do
@@ -134,7 +134,7 @@ class BackendCrudTest < ActionDispatch::IntegrationTest
 
     post "/unavailabilities/store", params: {
       unavailability: { start_datetime: "2026-07-21 09:00:00", end_datetime: "2026-07-21 11:00:00",
-                        notes: "Dentist", id_users_provider: users(:jane).id }
+                        notes: "Dentist", id_users_provider: users(:zane).id }
     }
     assert_response :success
     body = response.parsed_body

@@ -28,7 +28,7 @@ class CleanupTest < ActiveSupport::TestCase
 
   test "keeps a stale customer who has a recent appointment" do
     stale = make_customer(created_at: 2.years.ago)
-    Appointment.create!(provider: users(:jane), customer: stale, service: services(:haircut),
+    Appointment.create!(provider: users(:zane), customer: stale, service: services(:haircut),
                         start_datetime: 1.day.from_now.strftime("%Y-%m-%d %H:%M:%S"),
                         end_datetime: (1.day.from_now + 30.minutes).strftime("%Y-%m-%d %H:%M:%S"))
     assert_no_difference "User.customers.count" do
@@ -45,7 +45,7 @@ class CleanupTest < ActiveSupport::TestCase
 
   test "deleting cascades the customer's appointments" do
     stale = make_customer(created_at: 2.years.ago)
-    Appointment.create!(provider: users(:jane), customer: stale, service: services(:haircut),
+    Appointment.create!(provider: users(:zane), customer: stale, service: services(:haircut),
                         start_datetime: "2020-01-01 09:00:00", end_datetime: "2020-01-01 09:30:00")
     assert_difference "Appointment.count", -1 do
       Cleanup.run

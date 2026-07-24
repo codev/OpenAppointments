@@ -30,8 +30,12 @@ App.Pages.AltchaSettings = (function () {
 
             const $altchaEnabled = $('#altcha-enabled');
 
-            // If enabled, HMAC key is required
-            if ($altchaEnabled.prop('checked') && !$altchaHmacKey.val().trim()) {
+            // If enabled with the ALTCHA provider, HMAC key is required
+            if (
+                $altchaEnabled.prop('checked') &&
+                $('#captcha-provider').val() === 'altcha' &&
+                !$altchaHmacKey.val().trim()
+            ) {
                 $altchaHmacKey.addClass('is-invalid');
                 throw new Error(lang('fields_are_required'));
             }
@@ -105,15 +109,28 @@ App.Pages.AltchaSettings = (function () {
     }
 
     /**
+     * Show only the selected provider's settings.
+     */
+    function toggleProviderSections() {
+        const provider = $('#captcha-provider').val();
+
+        $('#altcha-provider-settings').toggleClass('d-none', provider !== 'altcha');
+        $('#turnstile-provider-settings').toggleClass('d-none', provider !== 'turnstile');
+    }
+
+    /**
      * Initialize the module.
      */
     function initialize() {
         $saveSettings.on('click', onSaveSettingsClick);
         $generateHmacKey.on('click', onGenerateHmacKeyClick);
+        $('#captcha-provider').on('change', toggleProviderSections);
 
         const altchaSettings = vars('altcha_settings');
 
         deserialize(altchaSettings);
+
+        toggleProviderSections();
     }
 
     document.addEventListener('DOMContentLoaded', initialize);

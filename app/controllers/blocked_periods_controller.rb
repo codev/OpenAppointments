@@ -91,10 +91,11 @@ class BlockedPeriodsController < ApplicationController
   end
 
   def search_blocked_periods(keyword, limit, offset)
-    scope = BlockedPeriod.order(updated_at: :desc).limit(limit).offset(offset)
-    return scope if keyword.blank?
-
-    pattern = "%#{BlockedPeriod.sanitize_sql_like(keyword)}%"
-    scope.where("name LIKE :pattern OR notes LIKE :pattern", pattern: pattern)
+    scope = BlockedPeriod.order(updated_at: :desc)
+    if keyword.present?
+      pattern = "%#{BlockedPeriod.sanitize_sql_like(keyword)}%"
+      scope = scope.where("name LIKE :pattern OR notes LIKE :pattern", pattern: pattern)
+    end
+    paginate_search(scope, limit, offset)
   end
 end

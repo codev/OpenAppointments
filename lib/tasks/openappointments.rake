@@ -4,22 +4,9 @@ namespace :openappointments do
     Rake::Task["db:prepare"].invoke
     Rake::Task["db:seed"].invoke
 
-    if User.admins.none?
-      password = SecureRandom.alphanumeric(12)
-      admin = User.create!(
-        first_name: "John",
-        last_name: "Doe",
-        email: "john@example.org",
-        phone_number: "+10000000000",
-        role: Role.find_by!(slug: Role::ADMIN)
-      )
-      admin.create_settings!(
-        username: "administrator",
-        password: BCrypt::Password.create(password, cost: 12),
-        notifications: true,
-        calendar_view: "default"
-      )
-      puts "Admin account created. Username: administrator  Password: #{password}"
+    if InstallAdmin.create
+      puts "Admin account created. Change password on first login. " \
+           "Username: administrator  Password: #{InstallAdmin::DEFAULT_PASSWORD}"
     else
       puts "Admin account already exists, skipping."
     end

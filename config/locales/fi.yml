@@ -1,6 +1,17 @@
 ---
 fi:
   ea:
+    import_providers_caution: "Varoitus: palveluntarjoajien valinta luo käyttäjätilit ja sallii kirjautumisen heidän sähköpostillaan"
+    manage_data: "Hallitse tietoja"
+    export_data: "Vie tiedot"
+    import_type: "Tuontityyppi"
+    full_reset_label: "Täysi nollaus, poista järjestelmänvalvojat ja palauta asetukset"
+    delete_personal_information_setting_hint: "Salli asiakkaiden poistaa kaikki varauksensa ja henkilötietonsa järjestelmästä painikkeella."
+    captcha: "Captcha"
+    captcha_info: "Captcha-asetukset, joilla varmistetaan ennen varausta, että kävijä on ihminen"
+    captcha_enabled_hint: "Kun käytössä, valittua captcha-palvelua käytetään perinteisen kuva-captchan sijaan lomakkeiden varmistamiseen."
+    turnstile_keys_hint: "Hanki site key- ja secret key -avainpari Cloudflaren hallintapaneelista:"
+    first_login_update_details: Anna uusi salasana ja päivitä tietosi
     embedding: Upotus
     allow_iframe_embedding: Salli upotus iframeen
     iframe_embed_origin: Sivusto joka upottaa varaussivun
@@ -8,7 +19,7 @@ fi:
     embed_hint: Liitä tämä koodi verkkosivusi sivulle, jolla varauslomake näytetään; kehys sovittaa korkeutensa itse.
     copy: Kopioi
     import_data: Tuo tiedot
-    import_hint: Lataa 10to8 CSV-vienti, analysoi se ensin ja tuo sitten valitut tietuetyypit.
+    import_hint: "Lataa varmuuskopio, analysoi se ensin ja tuo sitten valitut tietuetyypit. Asetuksia ei tuoda, määritä ne uudelleen tuonnin jälkeen."
     import_phases: Tietuetyypit
     analyze: Analysoi
     start_import: Aloita tuonti
@@ -23,14 +34,14 @@ fi:
     no_file_selected: Tiedostoa ei ole valittu.
     reset_database: Nollaa tietokanta
     reset_database_warning: Tämä poistaa pysyvästi kaikki varaukset, asiakkaat, palveluntarjoajat, sihteerit, palvelut ja kategoriat. Ylläpitäjätilit ja asetukset säilyvät. Ei voi perua.
-    reset_confirmation_hint: Kirjoita RESET aktivoidaksesi painikkeen.
+    reset_confirmation_hint: "Kirjoita I KNOW WHAT I AM DOING ottaaksesi painikkeen käyttöön."
     reset_database_done: Tietokanta on nollattu.
     captcha_provider: Captcha-palvelu
     turnstile_site_key: Turnstile-sivustoavain
     turnstile_secret_key: Turnstile-salausavain
     turnstile_verification_failed: Captcha-vahvistus epäonnistui, yritä uudelleen.
-    phone_or_email_required: Anna puhelinnumero tai sähköpostiosoite.
-    require_phone_or_email_label: Vaadi puhelinnumero tai sähköposti (toinen riittää)
+    phone_or_email_required: Sähköposti tai puhelinnumero vaaditaan
+    require_phone_or_email_label: Vaadi puhelinnumero TAI sähköposti
     booking_display_mode: Varauksen näyttötapa
     display_as_dropdown: Pudotusvalikko
     display_as_cards: Kortit

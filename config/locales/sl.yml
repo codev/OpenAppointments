@@ -1,6 +1,17 @@
 ---
 sl:
   ea:
+    import_providers_caution: "Pozor: označitev izvajalcev bo ustvarila uporabniške račune in omogočila prijavo z njihovo e-pošto"
+    manage_data: "Upravljanje podatkov"
+    export_data: "Izvozi podatke"
+    import_type: "Vrsta uvoza"
+    full_reset_label: "Popolna ponastavitev, izbriši skrbnike in ponastavi nastavitve"
+    delete_personal_information_setting_hint: "Strankam omogočite, da z gumbom odstranijo vse svoje termine in osebne podatke iz sistema."
+    captcha: "Captcha"
+    captcha_info: "Nastavitve captcha za preverjanje, da je obiskovalec človek, pred rezervacijo"
+    captcha_enabled_hint: "Ko je omogočeno, se za preverjanje obrazcev namesto tradicionalne slikovne captche uporablja izbrani ponudnik captcha."
+    turnstile_keys_hint: "Pridobite par ključev (site in secret) na nadzorni plošči Cloudflare:"
+    first_login_update_details: Vnesite novo geslo in posodobite svoje podatke
     embedding: Vdelava
     allow_iframe_embedding: Dovoli vdelavo v iframe
     iframe_embed_origin: Spletno mesto, ki bo vdelalo stran za rezervacije
@@ -8,7 +19,7 @@ sl:
     embed_hint: Prilepite to kodo na stran svojega spletnega mesta, kjer naj se prikaze obrazec za rezervacije; okvir se sam prilagodi.
     copy: Kopiraj
     import_data: Uvoz podatkov
-    import_hint: Nalozite 10to8 CSV izvoz, najprej ga analizirajte in nato uvozite izbrane vrste zapisov.
+    import_hint: "Naložite varnostno kopijo, jo najprej analizirajte in nato uvozite izbrane vrste zapisov. Nastavitve ne bodo uvožene, po uvozu jih ponovno nastavite."
     import_phases: Vrste zapisov
     analyze: Analiziraj
     start_import: Zazeni uvoz
@@ -23,14 +34,14 @@ sl:
     no_file_selected: Nobena datoteka ni izbrana.
     reset_database: Ponastavi bazo podatkov
     reset_database_warning: To trajno izbrise vse termine, stranke, izvajalce, tajnike, storitve in kategorije. Skrbniski racuni in nastavitve ostanejo. Nepovratno.
-    reset_confirmation_hint: Vpisite RESET, da omogocite gumb.
+    reset_confirmation_hint: "Vnesite I KNOW WHAT I AM DOING, da omogočite gumb."
     reset_database_done: Baza podatkov je ponastavljena.
     captcha_provider: Ponudnik captche
     turnstile_site_key: Turnstile ključ strani
     turnstile_secret_key: Turnstile skrivni ključ
     turnstile_verification_failed: Preverjanje captcha ni uspelo, poskusite znova.
-    phone_or_email_required: Vnesite telefonsko številko ali e-poštni naslov.
-    require_phone_or_email_label: Zahtevaj telefon ali e-pošto (eno zadostuje)
+    phone_or_email_required: Zahtevan je e-poštni naslov ali telefonska številka
+    require_phone_or_email_label: Zahtevaj telefon ALI e-pošto
     booking_display_mode: Nacin prikaza rezervacije
     display_as_dropdown: Spustni seznam
     display_as_cards: Kartice

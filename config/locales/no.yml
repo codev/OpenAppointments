@@ -1,6 +1,17 @@
 ---
 'no':
   ea:
+    import_providers_caution: "Advarsel: å krysse av for behandlere oppretter brukerkontoer og tillater innlogging med deres e-post"
+    manage_data: "Administrer data"
+    export_data: "Eksporter data"
+    import_type: "Importtype"
+    full_reset_label: "Full tilbakestilling, slett administratorer og tilbakestill innstillinger"
+    delete_personal_information_setting_hint: "La kunder fjerne alle sine avtaler og personlige opplysninger fra systemet med en knapp."
+    captcha: "Captcha"
+    captcha_info: "Captcha-innstillinger for å bekrefte at besøkende er et menneske før booking"
+    captcha_enabled_hint: "Når aktivert brukes den valgte captcha-leverandøren i stedet for den tradisjonelle bilde-captchaen til skjemabekreftelse."
+    turnstile_keys_hint: "Hent et nøkkelpar (site og secret) fra Cloudflare-panelet:"
+    first_login_update_details: Angi et nytt passord og oppdater opplysningene dine
     embedding: Innbygging
     allow_iframe_embedding: Tillat innbygging i en iframe
     iframe_embed_origin: Nettsted som skal bygge inn bookingsiden
@@ -8,7 +19,7 @@
     embed_hint: Lim inn denne koden på siden på nettstedet ditt som skal vise bookingskjemaet; rammen tilpasser høyden selv.
     copy: Kopier
     import_data: Importer data
-    import_hint: Last opp en 10to8 CSV-eksport, analyser den først, og importer deretter de valgte posttypene.
+    import_hint: "Last opp en sikkerhetskopi, analyser den først, og importer deretter de valgte posttypene. Innstillinger importeres ikke, konfigurer dem på nytt etter importen."
     import_phases: Posttyper
     analyze: Analyser
     start_import: Start import
@@ -23,14 +34,14 @@
     no_file_selected: Ingen fil valgt.
     reset_database: Tilbakestill database
     reset_database_warning: Dette sletter permanent alle avtaler, kunder, tilbydere, sekretærer, tjenester og kategorier. Administratorkontoer og innstillinger beholdes. Kan ikke angres.
-    reset_confirmation_hint: Skriv RESET for å aktivere knappen.
+    reset_confirmation_hint: "Skriv I KNOW WHAT I AM DOING for å aktivere knappen."
     reset_database_done: Databasen er tilbakestilt.
     captcha_provider: Captcha-leverandør
     turnstile_site_key: Turnstile-nettstedsnøkkel
     turnstile_secret_key: Turnstile-hemmelig nøkkel
     turnstile_verification_failed: Captcha-verifiseringen mislyktes, prøv igjen.
-    phone_or_email_required: Oppgi et telefonnummer eller en e-postadresse.
-    require_phone_or_email_label: Krev telefonnummer eller e-post (ett av dem holder)
+    phone_or_email_required: E-post eller telefonnummer er påkrevd
+    require_phone_or_email_label: Krev telefonnummer ELLER e-post
     booking_display_mode: Visningsmodus for booking
     display_as_dropdown: Nedtrekksliste
     display_as_cards: Kort

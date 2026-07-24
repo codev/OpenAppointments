@@ -1,6 +1,17 @@
 ---
 th:
   ea:
+    import_providers_caution: "ข้อควรระวัง: การเลือกผู้ให้บริการจะสร้างบัญชีผู้ใช้และอนุญาตให้เข้าสู่ระบบด้วยอีเมลของพวกเขา"
+    manage_data: "จัดการข้อมูล"
+    export_data: "ส่งออกข้อมูล"
+    import_type: "ประเภทการนำเข้า"
+    full_reset_label: "รีเซ็ตทั้งหมด ลบผู้ดูแลระบบและรีเซ็ตการตั้งค่า"
+    delete_personal_information_setting_hint: "อนุญาตให้ลูกค้าลบการนัดหมายและข้อมูลส่วนตัวทั้งหมดออกจากระบบด้วยปุ่มเดียว"
+    captcha: "Captcha"
+    captcha_info: "การตั้งค่า Captcha เพื่อยืนยันว่าผู้เยี่ยมชมเป็นมนุษย์ก่อนการจอง"
+    captcha_enabled_hint: "เมื่อเปิดใช้งาน ผู้ให้บริการ Captcha ที่เลือกจะถูกใช้แทน Captcha รูปภาพแบบดั้งเดิมในการตรวจสอบแบบฟอร์ม"
+    turnstile_keys_hint: "รับคู่กุญแจ (site key และ secret key) จากแดชบอร์ดของ Cloudflare:"
+    first_login_update_details: กรุณาตั้งรหัสผ่านใหม่และอัปเดตข้อมูลของคุณ
     embedding: การฝังหน้า
     allow_iframe_embedding: อนุญาตให้ฝังใน iframe
     iframe_embed_origin: เว็บไซต์ที่จะฝังหน้าการจอง
@@ -8,7 +19,7 @@ th:
     embed_hint: วางโค้ดนี้ในหน้าเว็บไซต์ของคุณที่ต้องการแสดงแบบฟอร์มการจอง เฟรมจะปรับขนาดเอง
     copy: คัดลอก
     import_data: นำเข้าข้อมูล
-    import_hint: อัปโหลดไฟล์ CSV ที่ส่งออกจาก 10to8 วิเคราะห์ก่อน แล้วจึงนำเข้าประเภทข้อมูลที่เลือก
+    import_hint: "อัปโหลดไฟล์สำรอง วิเคราะห์ก่อน จากนั้นนำเข้าประเภทข้อมูลที่เลือก การตั้งค่าจะไม่ถูกนำเข้า กรุณาตั้งค่าใหม่หลังการนำเข้า"
     import_phases: ประเภทข้อมูล
     analyze: วิเคราะห์
     start_import: เริ่มนำเข้า
@@ -23,14 +34,14 @@ th:
     no_file_selected: ยังไม่ได้เลือกไฟล์
     reset_database: รีเซ็ตฐานข้อมูล
     reset_database_warning: การดำเนินการนี้จะลบการนัดหมาย ลูกค้า ผู้ให้บริการ เลขานุการ บริการ และหมวดหมู่ทั้งหมดอย่างถาวร บัญชีผู้ดูแลระบบและการตั้งค่าจะยังคงอยู่ ไม่สามารถย้อนกลับได้
-    reset_confirmation_hint: พิมพ์ RESET เพื่อเปิดใช้งานปุ่ม
+    reset_confirmation_hint: "พิมพ์ I KNOW WHAT I AM DOING เพื่อเปิดใช้งานปุ่ม"
     reset_database_done: รีเซ็ตฐานข้อมูลแล้ว
     captcha_provider: ผู้ให้บริการ captcha
     turnstile_site_key: คีย์ไซต์ Turnstile
     turnstile_secret_key: คีย์ลับ Turnstile
     turnstile_verification_failed: การยืนยัน captcha ล้มเหลว กรุณาลองอีกครั้ง
-    phone_or_email_required: กรุณาระบุหมายเลขโทรศัพท์หรืออีเมล
-    require_phone_or_email_label: ต้องมีหมายเลขโทรศัพท์หรืออีเมล (อย่างใดอย่างหนึ่ง)
+    phone_or_email_required: ต้องระบุอีเมลหรือหมายเลขโทรศัพท์
+    require_phone_or_email_label: ต้องมีหมายเลขโทรศัพท์หรืออีเมล
     booking_display_mode: รูปแบบการแสดงการจอง
     display_as_dropdown: รายการแบบเลื่อนลง
     display_as_cards: การ์ด

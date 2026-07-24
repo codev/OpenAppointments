@@ -36,7 +36,9 @@ App.Pages.Secretaries = (function () {
     const $calendarView = $('#calendar-view');
     const $filterSecretaries = $('#filter-secretaries');
     let filterResults = {};
-    let filterLimit = 20;
+    const filterLimit = 20;
+
+    let filterPage = 1;
 
     /**
      * Add the page event listeners.
@@ -92,6 +94,7 @@ App.Pages.Secretaries = (function () {
             event.preventDefault();
             const key = $('#filter-secretaries .key').val();
             $filterSecretaries.find('.selected').removeClass('selected');
+            filterPage = 1;
             App.Pages.Secretaries.resetForm();
             App.Pages.Secretaries.filter(key);
         });
@@ -439,7 +442,7 @@ App.Pages.Secretaries = (function () {
      * @param {Boolean} show Optional (false).
      */
     function filter(keyword, selectId = null, show = false) {
-        App.Http.Secretaries.search(keyword, filterLimit).done((response) => {
+        App.Http.Secretaries.search(keyword, filterLimit, (filterPage - 1) * filterLimit).done((response, textStatus, jqXHR) => {
             filterResults = response;
 
             $filterSecretaries.find('.results').empty();
@@ -457,17 +460,18 @@ App.Pages.Secretaries = (function () {
                         'text': lang('no_records_found'),
                     }),
                 );
-            } else if (response.length === filterLimit) {
-                $('<button/>', {
-                    'type': 'button',
-                    'class': 'btn btn-outline-secondary w-100 load-more text-center',
-                    'text': lang('load_more'),
-                    'click': () => {
-                        filterLimit += 20;
-                        App.Pages.Secretaries.filter(keyword, selectId, show);
-                    },
-                }).appendTo('#filter-secretaries .results');
             }
+
+            App.Utils.Pagination.render(
+                $('#filter-secretaries .results'),
+                Number(jqXHR.getResponseHeader('X-Total-Count')) || response.length,
+                filterPage,
+                filterLimit,
+                (page) => {
+                    filterPage = page;
+                    App.Pages.Secretaries.filter(keyword, selectId, show);
+                },
+            );
 
             if (selectId) {
                 select(selectId, show);

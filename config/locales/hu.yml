@@ -1,6 +1,17 @@
 ---
 hu:
   ea:
+    import_providers_caution: "Figyelem: a szolgáltatók bejelölése felhasználói fiókokat hoz létre, és lehetővé teszi a bejelentkezést az e-mail-címükkel"
+    manage_data: "Adatok kezelése"
+    export_data: "Adatok exportálása"
+    import_type: "Importálás típusa"
+    full_reset_label: "Teljes visszaállítás, adminisztrátorok törlése és beállítások visszaállítása"
+    delete_personal_information_setting_hint: "Engedélyezze az ügyfeleknek, hogy egy gombbal eltávolítsák összes időpontjukat és személyes adataikat a rendszerből."
+    captcha: "Captcha"
+    captcha_info: "Captcha beállítások annak ellenőrzésére, hogy a látogató ember-e a foglalás előtt"
+    captcha_enabled_hint: "Ha engedélyezve van, az űrlapok ellenőrzéséhez a hagyományos képes captcha helyett a kiválasztott captcha szolgáltató lesz használva."
+    turnstile_keys_hint: "Szerezzen egy kulcspárt (site és secret) a Cloudflare vezérlőpultján:"
+    first_login_update_details: Adjon meg új jelszót, és frissítse adatait
     embedding: Beágyazás
     allow_iframe_embedding: Beágyazás engedélyezése iframe-be
     iframe_embed_origin: A weboldal, amely beágyazza a foglalási oldalt
@@ -8,7 +19,7 @@ hu:
     embed_hint: Illessze be ezt a kódot webhelye azon oldalára, ahol a foglalási űrlapnak meg kell jelennie; a keret magassága automatikusan igazodik.
     copy: Másolás
     import_data: Adatok importálása
-    import_hint: Töltsön fel egy 10to8 CSV exportot, először elemezze, majd importálja a kiválasztott rekordtípusokat.
+    import_hint: "Töltsön fel egy biztonsági mentést, először elemezze, majd importálja a kiválasztott rekordtípusokat. A beállítások nem kerülnek importálásra, importálás után állítsa be őket újra."
     import_phases: Rekordtípusok
     analyze: Elemzés
     start_import: Import indítása
@@ -23,14 +34,14 @@ hu:
     no_file_selected: Nincs kiválasztott fájl.
     reset_database: Adatbázis visszaállítása
     reset_database_warning: Ez véglegesen töröl minden időpontot, ügyfelet, szolgáltatót, titkárt, szolgáltatást és kategóriát. Az adminisztrátori fiókok és a beállítások megmaradnak. Nem vonható vissza.
-    reset_confirmation_hint: Írja be a RESET szót a gomb engedélyezéséhez.
+    reset_confirmation_hint: "Írja be: I KNOW WHAT I AM DOING a gomb engedélyezéséhez."
     reset_database_done: Az adatbázis visszaállítva.
     captcha_provider: Captcha szolgáltató
     turnstile_site_key: Turnstile webhelykulcs
     turnstile_secret_key: Turnstile titkos kulcs
     turnstile_verification_failed: A captcha ellenőrzése sikertelen, próbálja újra.
-    phone_or_email_required: Adjon meg egy telefonszámot vagy egy e-mail-címet.
-    require_phone_or_email_label: Telefonszám vagy e-mail megkövetelése (az egyik elég)
+    phone_or_email_required: E-mail vagy telefonszám megadása kötelező
+    require_phone_or_email_label: Telefonszám VAGY e-mail megkövetelése
     booking_display_mode: Foglalás megjelenítési módja
     display_as_dropdown: Legördülő lista
     display_as_cards: Kártyák

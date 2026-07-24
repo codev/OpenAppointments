@@ -37,7 +37,9 @@ App.Pages.Providers = (function () {
     const $calendarView = $('#calendar-view');
     const $filterProviders = $('#filter-providers');
     let filterResults = {};
-    let filterLimit = 20;
+    const filterLimit = 20;
+
+    let filterPage = 1;
     let workingPlanManager;
 
     /**
@@ -55,6 +57,7 @@ App.Pages.Providers = (function () {
             event.preventDefault();
             const key = $('#filter-providers .key').val();
             $('.selected').removeClass('selected');
+            filterPage = 1;
             App.Pages.Providers.resetForm();
             App.Pages.Providers.filter(key);
         });
@@ -515,7 +518,7 @@ App.Pages.Providers = (function () {
      * @param {bool} show Optional (false), if true the selected record will be also displayed.
      */
     function filter(keyword, selectId = null, show = false) {
-        App.Http.Providers.search(keyword, filterLimit).then((response) => {
+        App.Http.Providers.search(keyword, filterLimit, (filterPage - 1) * filterLimit).then((response, textStatus, jqXHR) => {
             filterResults = response;
 
             $filterProviders.find('.results').empty();
@@ -529,17 +532,18 @@ App.Pages.Providers = (function () {
                         'text': lang('no_records_found'),
                     }),
                 );
-            } else if (response.length === filterLimit) {
-                $('<button/>', {
-                    'type': 'button',
-                    'class': 'btn btn-outline-secondary w-100 load-more text-center',
-                    'text': lang('load_more'),
-                    'click': () => {
-                        filterLimit += 20;
-                        App.Pages.Providers.filter(keyword, selectId, show);
-                    },
-                }).appendTo('#filter-providers .results');
             }
+
+            App.Utils.Pagination.render(
+                $('#filter-providers .results'),
+                Number(jqXHR.getResponseHeader('X-Total-Count')) || response.length,
+                filterPage,
+                filterLimit,
+                (page) => {
+                    filterPage = page;
+                    App.Pages.Providers.filter(keyword, selectId, show);
+                },
+            );
 
             if (selectId) {
                 App.Pages.Providers.select(selectId, show);

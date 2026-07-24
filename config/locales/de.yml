@@ -1,6 +1,17 @@
 ---
 de:
   ea:
+    import_providers_caution: "Achtung: Das Ankreuzen von Dienstleistern erstellt Benutzerkonten und ermöglicht die Anmeldung mit deren E-Mail"
+    manage_data: "Daten verwalten"
+    export_data: "Daten exportieren"
+    import_type: "Importtyp"
+    full_reset_label: "Vollständiger Reset, Administratoren löschen und Einstellungen zurücksetzen"
+    delete_personal_information_setting_hint: "Kunden können mit einem Button alle ihre Termine und persönlichen Daten aus dem System entfernen."
+    captcha: "Captcha"
+    captcha_info: "Captcha-Einstellungen, um vor der Buchung zu prüfen, dass der Besucher ein Mensch ist"
+    captcha_enabled_hint: "Wenn aktiviert, wird der ausgewählte Captcha-Anbieter anstelle des traditionellen Bild-Captchas zur Formularprüfung verwendet."
+    turnstile_keys_hint: "Ein Schlüsselpaar (Site-Key und Secret-Key) erhalten Sie im Cloudflare-Dashboard:"
+    first_login_update_details: Bitte geben Sie ein neues Passwort ein und aktualisieren Sie Ihre Daten
     embedding: Einbettung
     allow_iframe_embedding: Einbettung in einen iframe erlauben
     iframe_embed_origin: Website, die die Buchungsseite einbettet
@@ -8,7 +19,7 @@ de:
     embed_hint: Fügen Sie diesen Code in die Seite Ihrer Website ein, die das Buchungsformular zeigen soll; der Rahmen passt seine Größe selbst an.
     copy: Kopieren
     import_data: Daten importieren
-    import_hint: Laden Sie einen 10to8-CSV-Export hoch, analysieren Sie ihn zuerst und importieren Sie dann die ausgewählten Datentypen.
+    import_hint: "Laden Sie ein Backup hoch, analysieren Sie es zuerst und importieren Sie dann die ausgewählten Datensatztypen. Einstellungen werden nicht importiert, bitte nach dem Import neu konfigurieren."
     import_phases: Datentypen
     analyze: Analysieren
     start_import: Import starten
@@ -23,14 +34,14 @@ de:
     no_file_selected: Keine Datei ausgewählt.
     reset_database: Datenbank zurücksetzen
     reset_database_warning: Dies löscht dauerhaft alle Termine, Kunden, Anbieter, Sekretariate, Dienstleistungen und Kategorien. Administratorkonten und Einstellungen bleiben erhalten. Kann nicht rückgängig gemacht werden.
-    reset_confirmation_hint: Geben Sie RESET ein, um die Schaltfläche zu aktivieren.
+    reset_confirmation_hint: "Geben Sie I KNOW WHAT I AM DOING ein, um die Schaltfläche zu aktivieren."
     reset_database_done: Die Datenbank wurde zurückgesetzt.
     captcha_provider: Captcha-Anbieter
     turnstile_site_key: Turnstile-Site-Schlüssel
     turnstile_secret_key: Turnstile-Geheimschlüssel
     turnstile_verification_failed: Captcha-Prüfung fehlgeschlagen, bitte erneut versuchen.
-    phone_or_email_required: Bitte geben Sie eine Telefonnummer oder eine E-Mail-Adresse an.
-    require_phone_or_email_label: Telefonnummer oder E-Mail verlangen (eines genügt)
+    phone_or_email_required: E-Mail oder Telefonnummer ist erforderlich
+    require_phone_or_email_label: Telefonnummer ODER E-Mail verlangen
     booking_display_mode: Darstellung der Buchung
     display_as_dropdown: Auswahlliste
     display_as_cards: Karten

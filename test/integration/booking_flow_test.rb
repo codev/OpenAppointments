@@ -15,7 +15,7 @@ class BookingFlowTest < ActionDispatch::IntegrationTest
   test "get_available_hours returns EA hour strings" do
     travel_to Time.new(2026, 7, 1, 12, 0, 0) do
       post "/booking/get_available_hours", params: {
-        service_id: services(:haircut).id, provider_id: users(:jane).id,
+        service_id: services(:haircut).id, provider_id: users(:zane).id,
         selected_date: DATE, service_duration: 30, manage_mode: 0, appointment_id: ""
       }
     end
@@ -44,7 +44,7 @@ class BookingFlowTest < ActionDispatch::IntegrationTest
   test "get_unavailable_dates marks past and dayoff dates" do
     travel_to Time.new(2026, 7, 10, 12, 0, 0) do
       get "/booking/get_unavailable_dates", params: {
-        provider_id: users(:jane).id, service_id: services(:haircut).id,
+        provider_id: users(:zane).id, service_id: services(:haircut).id,
         selected_date: DATE, manage_mode: 0
       }
     end
@@ -88,16 +88,16 @@ class BookingFlowTest < ActionDispatch::IntegrationTest
     travel_to Time.new(2026, 7, 10, 12, 0, 0) do
       assert_no_difference "User.customers.count" do
         post "/booking/register", params: register_params(start: "#{DATE} 09:00:00",
-                                                          email: users(:james).email)
+                                                          email: users(:jx).email)
       end
     end
-    assert_equal users(:james).id, Appointment.order(:id).last.id_users_customer
+    assert_equal users(:jx).id, Appointment.order(:id).last.id_users_customer
   end
 
   test "register blocks a customer already booked in a containing slot" do
     travel_to Time.new(2026, 7, 10, 12, 0, 0) do
       post "/booking/register", params: register_params(start: "#{DATE} 10:00:00",
-                                                        email: users(:james).email)
+                                                        email: users(:jx).email)
     end
     body = response.parsed_body
     assert_equal false, body["success"]
@@ -108,7 +108,7 @@ class BookingFlowTest < ActionDispatch::IntegrationTest
       post "/booking/register", params: register_params(start: "#{DATE} 09:00:00", provider: "any-provider")
     end
     assert_response :success
-    assert_equal users(:jane).id, Appointment.order(:id).last.id_users_provider
+    assert_equal users(:zane).id, Appointment.order(:id).last.id_users_provider
   end
 
   test "consents are recorded when legal documents are displayed" do
@@ -141,7 +141,7 @@ class BookingFlowTest < ActionDispatch::IntegrationTest
     travel_to Time.new(2026, 7, 10, 12, 0, 0) do
       assert_no_difference "Appointment.count" do
         post "/booking/register", params: register_params(
-          start: "#{DATE} 11:00:00", email: users(:james).email,
+          start: "#{DATE} 11:00:00", email: users(:jx).email,
           extra_appointment: { "id" => appointment.id }, manage_mode: true
         )
       end
@@ -170,7 +170,7 @@ class BookingFlowTest < ActionDispatch::IntegrationTest
 
   private
 
-  def register_params(start:, provider: users(:jane).id, email: "new@example.org",
+  def register_params(start:, provider: users(:zane).id, email: "new@example.org",
                       extra_appointment: {}, manage_mode: false)
     {
       post_data: {

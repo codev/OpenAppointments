@@ -1,6 +1,17 @@
 ---
 cs:
   ea:
+    import_providers_caution: "Pozor: zaškrtnutí poskytovatelů vytvoří uživatelské účty a umožní přihlášení jejich e-mailem"
+    manage_data: "Správa dat"
+    export_data: "Exportovat data"
+    import_type: "Typ importu"
+    full_reset_label: "Úplný reset, smazat administrátory a obnovit nastavení"
+    delete_personal_information_setting_hint: "Umožněte zákazníkům jedním tlačítkem odstranit ze systému všechny jejich schůzky a osobní údaje."
+    captcha: "Captcha"
+    captcha_info: "Nastavení captcha pro ověření, že návštěvník je člověk, před rezervací"
+    captcha_enabled_hint: "Pokud je povoleno, pro ověření formulářů se místo tradiční obrázkové captcha použije vybraný poskytovatel captcha."
+    turnstile_keys_hint: "Získejte pár klíčů (site a secret) v panelu Cloudflare:"
+    first_login_update_details: Zadejte nové heslo a aktualizujte své údaje
     embedding: Vložení do webu
     allow_iframe_embedding: Povolit vložení do iframe
     iframe_embed_origin: Web, který vloží rezervační stránku
@@ -8,7 +19,7 @@ cs:
     embed_hint: Vložte tento kód na stránku vašeho webu, kde se má zobrazit rezervační formulář; rám se sám přizpůsobí.
     copy: Kopírovat
     import_data: Import dat
-    import_hint: Nahrajte CSV export z 10to8, nejprve jej analyzujte a poté importujte vybrané typy záznamů.
+    import_hint: "Nahrajte zálohu, nejprve ji analyzujte a poté importujte vybrané typy záznamů. Nastavení se neimportují, po importu je prosím znovu nastavte."
     import_phases: Typy záznamů
     analyze: Analyzovat
     start_import: Spustit import
@@ -23,14 +34,14 @@ cs:
     no_file_selected: Není vybrán žádný soubor.
     reset_database: Resetovat databázi
     reset_database_warning: Tímto trvale smažete všechny schůzky, zákazníky, poskytovatele, sekretáře, služby a kategorie. Administrátorské účty a nastavení zůstanou. Nelze vrátit zpět.
-    reset_confirmation_hint: Napište RESET pro aktivaci tlačítka.
+    reset_confirmation_hint: "Pro povolení tlačítka napište I KNOW WHAT I AM DOING."
     reset_database_done: Databáze byla resetována.
     captcha_provider: Poskytovatel captcha
     turnstile_site_key: Klíč webu Turnstile
     turnstile_secret_key: Tajný klíč Turnstile
     turnstile_verification_failed: Ověření captcha se nezdařilo, zkuste to znovu.
-    phone_or_email_required: Zadejte telefonní číslo nebo e-mailovou adresu.
-    require_phone_or_email_label: Vyžadovat telefon nebo e-mail (stačí jedno)
+    phone_or_email_required: Je vyžadován e-mail nebo telefonní číslo
+    require_phone_or_email_label: Vyžadovat telefon NEBO e-mail
     booking_display_mode: Zobrazení rezervace
     display_as_dropdown: Rozbalovací seznam
     display_as_cards: Karty

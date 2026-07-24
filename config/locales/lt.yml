@@ -1,6 +1,17 @@
 ---
 lt:
   ea:
+    import_providers_caution: "Dėmesio: pažymėjus specialistus bus sukurtos naudotojų paskyros ir leista prisijungti jų el. paštu"
+    manage_data: "Duomenų valdymas"
+    export_data: "Eksportuoti duomenis"
+    import_type: "Importo tipas"
+    full_reset_label: "Visiškas atstatymas, ištrinti administratorius ir atstatyti nustatymus"
+    delete_personal_information_setting_hint: "Leisti klientams vienu mygtuku pašalinti visus savo vizitus ir asmeninę informaciją iš sistemos."
+    captcha: "Captcha"
+    captcha_info: "Captcha nustatymai, patikrinantys, ar lankytojas yra žmogus, prieš rezervaciją"
+    captcha_enabled_hint: "Įjungus, formų patikrai vietoj tradicinės paveikslėlio captcha bus naudojamas pasirinktas captcha teikėjas."
+    turnstile_keys_hint: "Gaukite raktų porą (site ir secret) Cloudflare valdymo skydelyje:"
+    first_login_update_details: Įveskite naują slaptažodį ir atnaujinkite savo duomenis
     embedding: Įterpimas
     allow_iframe_embedding: Leisti įterpti į iframe
     iframe_embed_origin: Svetainė, kuri įterps rezervacijos puslapį
@@ -8,7 +19,7 @@ lt:
     embed_hint: Įklijuokite šį kodą į savo svetainės puslapį, kuriame turi būti rodoma rezervacijos forma; rėmelis pats prisitaiko.
     copy: Kopijuoti
     import_data: Importuoti duomenis
-    import_hint: Ikelkite 10to8 CSV eksportą, pirmiausia jį išanalizuokite, tada importuokite pasirinktus įrašų tipus.
+    import_hint: "Įkelkite atsarginę kopiją, pirmiausia ją išanalizuokite, tada importuokite pasirinktus įrašų tipus. Nustatymai nebus importuoti, po importo sukonfigūruokite juos iš naujo."
     import_phases: Įrašų tipai
     analyze: Analizuoti
     start_import: Pradėti importą
@@ -23,14 +34,14 @@ lt:
     no_file_selected: Failas nepasirinktas.
     reset_database: Atstatyti duomenų bazę
     reset_database_warning: Tai visam laikui ištrina visus vizitus, klientus, specialistus, sekretorius, paslaugas ir kategorijas. Administratorių paskyros ir nustatymai išlieka. Neatšaukiama.
-    reset_confirmation_hint: Įveskite RESET, kad įjungtumėte mygtuką.
+    reset_confirmation_hint: "Įveskite I KNOW WHAT I AM DOING, kad įjungtumėte mygtuką."
     reset_database_done: Duomenų bazė atstatyta.
     captcha_provider: Captcha teikėjas
     turnstile_site_key: Turnstile svetainės raktas
     turnstile_secret_key: Turnstile slaptas raktas
     turnstile_verification_failed: Captcha patikra nepavyko, bandykite dar kartą.
-    phone_or_email_required: Nurodykite telefono numerį arba el. pašto adresą.
-    require_phone_or_email_label: Reikalauti telefono arba el. pašto (užtenka vieno)
+    phone_or_email_required: Būtinas el. paštas arba telefono numeris
+    require_phone_or_email_label: Reikalauti telefono ARBA el. pašto
     booking_display_mode: Rezervacijos rodymo režimas
     display_as_dropdown: Išskleidžiamasis sąrašas
     display_as_cards: Kortelės

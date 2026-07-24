@@ -15,7 +15,8 @@ class AccountController < ApplicationController
 
     backend_page_vars(page_title: helpers.lang("settings"), active_menu: "system_settings")
     script_vars(account: account_payload(current_user))
-    html_vars(available_languages: Localization.available_languages)
+    html_vars(available_languages: Localization.available_languages,
+              require_password_change: current_user&.settings&.require_password_change == true)
     render :index
   end
 
@@ -31,7 +32,10 @@ class AccountController < ApplicationController
     settings_attributes = account.fetch(:settings, {}).permit(*ALLOWED_USER_SETTING_FIELDS).to_h
     password = settings_attributes.delete("password")
     settings.assign_attributes(settings_attributes)
-    settings.password = Passwords.hash(password) if password.present?
+    if password.present?
+      settings.password = Passwords.hash(password)
+      settings.require_password_change = false
+    end
 
     user.save!
     settings.save!

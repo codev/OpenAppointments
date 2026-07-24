@@ -6,14 +6,14 @@ class DefaultCompanyColorTest < ActiveSupport::TestCase
   test "migration turns the old white sentinel into the new default green" do
     require MIGRATION
     Setting.set("company_color", "#ffffff")
-    DefaultCompanyColor.new.up
+    ActiveRecord::Migration.suppress_messages { DefaultCompanyColor.new.up }
     assert_equal "#39824f", Setting.get("company_color")
   end
 
   test "migration leaves a custom colour alone" do
     require MIGRATION
     Setting.set("company_color", "#123456")
-    DefaultCompanyColor.new.up
+    ActiveRecord::Migration.suppress_messages { DefaultCompanyColor.new.up }
     assert_equal "#123456", Setting.get("company_color")
   end
 

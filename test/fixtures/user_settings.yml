@@ -5,8 +5,8 @@ admin:
   calendar_view: default
   notifications: true
 
-jane:
-  user: jane
+zane:
+  user: zane
   username: janedoe
   password: <%= BCrypt::Password.create("janedoe1", cost: 4) %>
   calendar_view: default

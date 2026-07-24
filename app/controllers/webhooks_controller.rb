@@ -99,10 +99,11 @@ class WebhooksController < ApplicationController
   end
 
   def search_webhooks(keyword, limit, offset)
-    scope = Webhook.order(updated_at: :desc).limit(limit).offset(offset)
-    return scope if keyword.blank?
-
-    pattern = "%#{Webhook.sanitize_sql_like(keyword)}%"
-    scope.where("name LIKE :pattern OR url LIKE :pattern OR actions LIKE :pattern", pattern: pattern)
+    scope = Webhook.order(updated_at: :desc)
+    if keyword.present?
+      pattern = "%#{Webhook.sanitize_sql_like(keyword)}%"
+      scope = scope.where("name LIKE :pattern OR url LIKE :pattern OR actions LIKE :pattern", pattern: pattern)
+    end
+    paginate_search(scope, limit, offset)
   end
 end

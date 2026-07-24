@@ -4,7 +4,7 @@ class WorkingPlanExceptionTest < ActiveSupport::TestCase
   test "covering scope matches date range inclusively" do
     exception = WorkingPlanException.create!(
       start_date: Date.new(2026, 7, 21), end_date: Date.new(2026, 7, 23),
-      start_time: "10:00", end_time: "14:00", provider: users(:jane)
+      start_time: "10:00", end_time: "14:00", provider: users(:zane)
     )
     assert_includes WorkingPlanException.covering(Date.new(2026, 7, 21)), exception
     assert_includes WorkingPlanException.covering(Date.new(2026, 7, 23)), exception

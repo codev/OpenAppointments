@@ -26,7 +26,9 @@ App.Pages.Webhooks = (function () {
     const $notes = $('#notes');
     const $filterWebhooks = $('#filter-webhooks');
     let filterResults = {};
-    let filterLimit = 20;
+    const filterLimit = 20;
+
+    let filterPage = 1;
 
     /**
      * Add page event listeners.
@@ -41,6 +43,7 @@ App.Pages.Webhooks = (function () {
             event.preventDefault();
             const key = $filterWebhooks.find('.key').val();
             $filterWebhooks.find('.selected').removeClass('selected');
+            filterPage = 1;
             App.Pages.Webhooks.resetForm();
             App.Pages.Webhooks.filter(key);
         });
@@ -294,7 +297,7 @@ App.Pages.Webhooks = (function () {
      * @param {Boolean} show Optional (false), if true then the selected record will be displayed on the form.
      */
     function filter(keyword, selectId = null, show = false) {
-        App.Http.Webhooks.search(keyword, filterLimit).then((response) => {
+        App.Http.Webhooks.search(keyword, filterLimit, (filterPage - 1) * filterLimit).then((response, textStatus, jqXHR) => {
             filterResults = response;
 
             $filterWebhooks.find('.results').empty();
@@ -309,17 +312,18 @@ App.Pages.Webhooks = (function () {
                         'text': lang('no_records_found'),
                     }),
                 );
-            } else if (response.length === filterLimit) {
-                $('<button/>', {
-                    'type': 'button',
-                    'class': 'btn btn-outline-secondary w-100 load-more text-center',
-                    'text': lang('load_more'),
-                    'click': () => {
-                        filterLimit += 20;
-                        App.Pages.Webhooks.filter(keyword, selectId, show);
-                    },
-                }).appendTo('#filter-webhooks .results');
             }
+
+            App.Utils.Pagination.render(
+                $('#filter-webhooks .results'),
+                Number(jqXHR.getResponseHeader('X-Total-Count')) || response.length,
+                filterPage,
+                filterLimit,
+                (page) => {
+                    filterPage = page;
+                    App.Pages.Webhooks.filter(keyword, selectId, show);
+                },
+            );
 
             if (selectId) {
                 App.Pages.Webhooks.select(selectId, show);

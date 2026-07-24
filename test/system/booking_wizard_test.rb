@@ -10,7 +10,7 @@ class BookingWizardTest < ApplicationSystemTestCase
     find("#button-next-1").click
 
     assert_selector "#wizard-frame-2", visible: :visible, wait: 5
-    select users(:jane).name, from: "select-provider"
+    select users(:zane).name, from: "select-provider"
     find("#button-next-2").click
 
     assert_selector "#wizard-frame-3", visible: :visible, wait: 5
@@ -26,7 +26,7 @@ class BookingWizardTest < ApplicationSystemTestCase
     assert_selector "#wizard-frame-1", visible: :visible, wait: 5
     assert_selector "#select-provider", visible: :visible
 
-    select users(:jane).name, from: "select-provider"
+    select users(:zane).name, from: "select-provider"
     find("#button-next-1").click
 
     assert_selector "#wizard-frame-2", visible: :visible, wait: 5
@@ -47,7 +47,7 @@ class BookingWizardTest < ApplicationSystemTestCase
 
     assert_selector "#wizard-frame-2", visible: :visible, wait: 5
     assert_selector "#provider-cards .booking-card", wait: 5
-    find("#provider-cards .booking-card[data-provider-id='#{users(:jane).id}']").click
+    find("#provider-cards .booking-card[data-provider-id='#{users(:zane).id}']").click
     find("#button-next-2").click
 
     assert_selector "#wizard-frame-3", visible: :visible, wait: 5

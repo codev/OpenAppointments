@@ -1,6 +1,17 @@
 ---
 et:
   ea:
+    import_providers_caution: "Ettevaatust: teenusepakkujate märkimine loob kasutajakontod ja lubab nende e-postiga sisse logida"
+    manage_data: "Halda andmeid"
+    export_data: "Ekspordi andmed"
+    import_type: "Impordi tüüp"
+    full_reset_label: "Täielik lähtestamine, kustuta administraatorid ja lähtesta seaded"
+    delete_personal_information_setting_hint: "Luba klientidel ühe nupuvajutusega eemaldada süsteemist kõik oma broneeringud ja isikuandmed."
+    captcha: "Captcha"
+    captcha_info: "Captcha seaded, millega enne broneerimist kontrollitakse, et külastaja on inimene"
+    captcha_enabled_hint: "Kui see on lubatud, kasutatakse vormide kontrollimiseks valitud captcha teenusepakkujat traditsioonilise pildi-captcha asemel."
+    turnstile_keys_hint: "Hankige site key ja secret key paar Cloudflare'i töölaualt:"
+    first_login_update_details: Palun sisestage uus parool ja uuendage oma andmeid
     embedding: Manustamine
     allow_iframe_embedding: Luba manustamine iframe'i
     iframe_embed_origin: Veebisait, mis manustab broneerimislehe
@@ -8,7 +19,7 @@ et:
     embed_hint: Kleepige see kood oma veebisaidi lehele, kus broneerimisvorm peab kuvatama; raam kohandab oma kõrgust ise.
     copy: Kopeeri
     import_data: Andmete import
-    import_hint: Laadige üles 10to8 CSV eksport, analüüsige seda esmalt ja seejärel importige valitud kirjetüübid.
+    import_hint: "Laadige üles varukoopia, analüüsige seda kõigepealt ja seejärel importige valitud kirjetüübid. Seadeid ei impordita, palun seadistage need pärast importi uuesti."
     import_phases: Kirjetüübid
     analyze: Analüüsi
     start_import: Alusta importi
@@ -23,14 +34,14 @@ et:
     no_file_selected: Faili pole valitud.
     reset_database: Lähtesta andmebaas
     reset_database_warning: See kustutab jäädavalt kõik broneeringud, kliendid, teenusepakkujad, sekretärid, teenused ja kategooriad. Administraatori kontod ja seaded säilivad. Seda ei saa tagasi võtta.
-    reset_confirmation_hint: Nupu lubamiseks sisestage RESET.
+    reset_confirmation_hint: "Nupu lubamiseks sisestage I KNOW WHAT I AM DOING."
     reset_database_done: Andmebaas on lähtestatud.
     captcha_provider: Captcha pakkuja
     turnstile_site_key: Turnstile'i saidi võti
     turnstile_secret_key: Turnstile'i salajane võti
     turnstile_verification_failed: Captcha kontroll ebaõnnestus, proovige uuesti.
-    phone_or_email_required: Palun sisestage telefoninumber või e-posti aadress.
-    require_phone_or_email_label: Nõua telefoninumbrit või e-posti (ühest piisab)
+    phone_or_email_required: E-post või telefoninumber on nõutav
+    require_phone_or_email_label: Nõua telefoninumbrit VÕI e-posti
     booking_display_mode: Broneeringu kuvamisviis
     display_as_dropdown: Rippmenüü
     display_as_cards: Kaardid

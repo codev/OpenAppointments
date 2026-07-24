@@ -77,15 +77,16 @@ module UserCrud
 
   # EA user model search: LIKE across the common user columns.
   def search_users(scope, keyword, limit, offset)
-    scope = scope.with_attached_picture.order(updated_at: :desc).limit(limit).offset(offset)
-    return scope if keyword.blank?
-
-    pattern = "%#{User.sanitize_sql_like(keyword)}%"
-    scope.where(<<~SQL.squish, pattern: pattern)
-      users.name LIKE :pattern OR email LIKE :pattern
-      OR phone_number LIKE :pattern OR mobile_number LIKE :pattern OR address LIKE :pattern
-      OR city LIKE :pattern OR state LIKE :pattern OR zip_code LIKE :pattern OR notes LIKE :pattern
-    SQL
+    scope = scope.with_attached_picture.order(updated_at: :desc)
+    if keyword.present?
+      pattern = "%#{User.sanitize_sql_like(keyword)}%"
+      scope = scope.where(<<~SQL.squish, pattern: pattern)
+        users.name LIKE :pattern OR email LIKE :pattern
+        OR phone_number LIKE :pattern OR mobile_number LIKE :pattern OR address LIKE :pattern
+        OR city LIKE :pattern OR state LIKE :pattern OR zip_code LIKE :pattern OR notes LIKE :pattern
+      SQL
+    end
+    paginate_search(scope, limit, offset)
   end
 
   def positive_id!(value, label)

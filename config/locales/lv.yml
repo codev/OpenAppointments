@@ -1,6 +1,17 @@
 ---
 lv:
   ea:
+    import_providers_caution: "Uzmanību: atzīmējot speciālistus, tiks izveidoti lietotāju konti un atļauta pieteikšanās ar viņu e-pastu"
+    manage_data: "Datu pārvaldība"
+    export_data: "Eksportēt datus"
+    import_type: "Importa veids"
+    full_reset_label: "Pilnīga atiestatīšana, dzēst administratorus un atiestatīt iestatījumus"
+    delete_personal_information_setting_hint: "Ļaut klientiem ar vienu pogu noņemt no sistēmas visas savas rezervācijas un personas datus."
+    captcha: "Captcha"
+    captcha_info: "Captcha iestatījumi, lai pirms rezervācijas pārbaudītu, ka apmeklētājs ir cilvēks"
+    captcha_enabled_hint: "Ja iespējots, veidlapu pārbaudei tradicionālās attēla captcha vietā tiks izmantots izvēlētais captcha pakalpojumu sniedzējs."
+    turnstile_keys_hint: "Iegūstiet atslēgu pāri (site un secret) Cloudflare panelī:"
+    first_login_update_details: Lūdzu, ievadiet jaunu paroli un atjauniniet savus datus
     embedding: Iegulšana
     allow_iframe_embedding: Atļaut iegult iframe
     iframe_embed_origin: Vietne, kas iegults rezervāciju lapu
@@ -8,7 +19,7 @@ lv:
     embed_hint: Ielīmējiet šo kodu savas vietnes lapā, kurā jārāda rezervācijas forma; rāmis pats pielāgo augstumu.
     copy: Kopēt
     import_data: Importēt datus
-    import_hint: Augšupielādējiet 10to8 CSV eksportu, vispirms to analizējiet un pēc tam importējiet izvēlētos ierakstu tipus.
+    import_hint: "Augšupielādējiet dublējumu, vispirms to analizējiet, pēc tam importējiet atlasītos ierakstu veidus. Iestatījumi netiks importēti, lūdzu, konfigurējiet tos vēlreiz pēc importēšanas."
     import_phases: Ierakstu tipi
     analyze: Analizēt
     start_import: Sākt importu
@@ -23,14 +34,14 @@ lv:
     no_file_selected: Nav izvēlēts fails.
     reset_database: Atiestatīt datubāzi
     reset_database_warning: Tas neatgriezeniski dzēš visus pierakstus, klientus, pakalpojumu sniedzējus, sekretārus, pakalpojumus un kategorijas. Administratoru konti un iestatījumi saglabājas. Nevar atsaukt.
-    reset_confirmation_hint: Ierakstiet RESET, lai iespējotu pogu.
+    reset_confirmation_hint: "Ievadiet I KNOW WHAT I AM DOING, lai iespējotu pogu."
     reset_database_done: Datubāze ir atiestatīta.
     captcha_provider: Captcha nodrošinātājs
     turnstile_site_key: Turnstile vietnes atslēga
     turnstile_secret_key: Turnstile slepenā atslēga
     turnstile_verification_failed: Captcha pārbaude neizdevās, mēģiniet vēlreiz.
-    phone_or_email_required: Lūdzu, norādiet tālruņa numuru vai e-pasta adresi.
-    require_phone_or_email_label: Pieprasīt tālruni vai e-pastu (pietiek ar vienu)
+    phone_or_email_required: Nepieciešams e-pasts vai tālruņa numurs
+    require_phone_or_email_label: Pieprasīt tālruni VAI e-pastu
     booking_display_mode: Rezervācijas attēlošanas režīms
     display_as_dropdown: Nolaižamais saraksts
     display_as_cards: Kartītes

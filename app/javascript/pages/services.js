@@ -30,7 +30,9 @@ App.Pages.Services = (function () {
     const $filterServices = $('#filter-services');
     const $color = $('#color');
     let filterResults = {};
-    let filterLimit = 20;
+    const filterLimit = 20;
+
+    let filterPage = 1;
 
     /**
      * Add page event listeners.
@@ -45,6 +47,7 @@ App.Pages.Services = (function () {
             event.preventDefault();
             const key = $filterServices.find('.key').val();
             $filterServices.find('.selected').removeClass('selected');
+            filterPage = 1;
             App.Pages.Services.resetForm();
             App.Pages.Services.filter(key);
         });
@@ -402,7 +405,7 @@ App.Pages.Services = (function () {
      * @param {Boolean} show Optional (false), if true then the selected record will be displayed on the form.
      */
     function filter(keyword, selectId = null, show = false) {
-        App.Http.Services.search(keyword, filterLimit).then((response) => {
+        App.Http.Services.search(keyword, filterLimit, (filterPage - 1) * filterLimit).then((response, textStatus, jqXHR) => {
             filterResults = response;
 
             $filterServices.find('.results').empty();
@@ -417,17 +420,18 @@ App.Pages.Services = (function () {
                         'text': lang('no_records_found'),
                     }),
                 );
-            } else if (response.length === filterLimit) {
-                $('<button/>', {
-                    'type': 'button',
-                    'class': 'btn btn-outline-secondary w-100 load-more text-center',
-                    'text': lang('load_more'),
-                    'click': () => {
-                        filterLimit += 20;
-                        App.Pages.Services.filter(keyword, selectId, show);
-                    },
-                }).appendTo('#filter-services .results');
             }
+
+            App.Utils.Pagination.render(
+                $('#filter-services .results'),
+                Number(jqXHR.getResponseHeader('X-Total-Count')) || response.length,
+                filterPage,
+                filterLimit,
+                (page) => {
+                    filterPage = page;
+                    App.Pages.Services.filter(keyword, selectId, show);
+                },
+            );
 
             if (selectId) {
                 App.Pages.Services.select(selectId, show);

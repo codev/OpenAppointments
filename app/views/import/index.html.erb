@@ -1,13 +1,33 @@
-<%# 10to8 CSV import + business-data reset (admin only). %>
+<%# Manage data: ODS export, ODS/10to8 import, database reset (admin only). %>
 <div class="container backend-page py-3" id="import-page">
     <div class="col-lg-8 offset-lg-2">
-        <h4 class="mb-3 fw-light"><%= lang('import_data') %></h4>
+        <h4 class="mb-3 fw-light"><%= lang('manage_data') %></h4>
+
+        <div class="card card-body mb-4">
+            <a href="/import/export" class="btn btn-outline-primary" id="export-data">
+                <i class="fas fa-download me-2"></i>
+                <%= lang('export_data') %>
+            </a>
+        </div>
 
         <p class="text-muted small"><%= lang('import_hint') %></p>
 
         <div class="card card-body mb-4">
             <div class="mb-3">
-                <input type="file" id="import-file" class="form-control" accept=".csv,text/csv">
+                <label class="form-label" for="import-type"><%= lang('import_type') %></label>
+                <select id="import-type" class="form-select">
+                    <option value="ods">OpenAppointments ODS</option>
+                    <option value="ten_to_eight">Sign In App / 10to8 CSV</option>
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <input type="file" id="import-file" class="form-control"
+                       accept=".ods,.csv,application/vnd.oasis.opendocument.spreadsheet,text/csv">
+            </div>
+
+            <div class="alert alert-warning py-2 small mb-3">
+                <%= lang('import_providers_caution') %>
             </div>
 
             <div class="row mb-3">
@@ -16,19 +36,13 @@
                     <% TenToEight::Load::PHASES.each do |phase| %>
                         <div class="form-check">
                             <input class="form-check-input import-phase" type="checkbox"
-                                   id="phase-<%= phase %>" value="<%= phase %>" checked>
+                                   id="phase-<%= phase %>" value="<%= phase %>"
+                                   <%= "checked" unless phase == "providers" %>>
                             <label class="form-check-label" for="phase-<%= phase %>">
                                 <%= lang(phase) %>
                             </label>
                         </div>
                     <% end %>
-
-                    <div class="form-check mt-2">
-                        <input class="form-check-input" type="checkbox" id="create-providers">
-                        <label class="form-check-label" for="create-providers">
-                            <%= lang('create_providers') %>
-                        </label>
-                    </div>
                 </div>
 
                 <div class="col-6 col-md-3">
@@ -59,6 +73,13 @@
             <div class="alert alert-danger">
                 <i class="fas fa-exclamation-triangle me-2"></i>
                 <%= lang('reset_database_warning') %>
+            </div>
+
+            <div class="form-check mb-3">
+                <input class="form-check-input" type="checkbox" id="full-reset">
+                <label class="form-check-label" for="full-reset">
+                    <%= lang('full_reset_label') %>
+                </label>
             </div>
 
             <div class="mb-3">

@@ -2,7 +2,7 @@ require "test_helper"
 
 class SynchronizationTest < ActiveJob::TestCase
   setup do
-    @provider = users(:jane)
+    @provider = users(:zane)
     @appointment = appointments(:upcoming)
     @provider.settings.update!(google_sync: false, caldav_sync: false)
   end

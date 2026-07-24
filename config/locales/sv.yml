@@ -1,6 +1,17 @@
 ---
 sv:
   ea:
+    import_providers_caution: "Varning: att bocka i utförare skapar användarkonton och tillåter inloggning med deras e-post"
+    manage_data: "Hantera data"
+    export_data: "Exportera data"
+    import_type: "Importtyp"
+    full_reset_label: "Fullständig återställning, ta bort administratörer och återställ inställningar"
+    delete_personal_information_setting_hint: "Låt kunder ta bort alla sina bokningar och personuppgifter från systemet med en knapp."
+    captcha: "Captcha"
+    captcha_info: "Captcha-inställningar för att verifiera att besökaren är en människa före bokning"
+    captcha_enabled_hint: "När det är aktiverat används den valda captcha-leverantören i stället för den traditionella bild-captchan för formulärverifiering."
+    turnstile_keys_hint: "Hämta ett nyckelpar (site och secret) från Cloudflare-panelen:"
+    first_login_update_details: Ange ett nytt lösenord och uppdatera dina uppgifter
     embedding: Inbäddning
     allow_iframe_embedding: Tillåt inbäddning i en iframe
     iframe_embed_origin: Webbplats som ska bädda in bokningssidan
@@ -8,7 +19,7 @@ sv:
     embed_hint: Klistra in den här koden på sidan på din webbplats som ska visa bokningsformuläret; ramen anpassar höjden själv.
     copy: Kopiera
     import_data: Importera data
-    import_hint: Ladda upp en 10to8 CSV-export, analysera den först och importera sedan de valda posttyperna.
+    import_hint: "Ladda upp en säkerhetskopia, analysera den först och importera sedan de valda posttyperna. Inställningar importeras inte, konfigurera om dem efter importen."
     import_phases: Posttyper
     analyze: Analysera
     start_import: Starta import
@@ -23,14 +34,14 @@ sv:
     no_file_selected: Ingen fil vald.
     reset_database: Återställ databasen
     reset_database_warning: Detta raderar permanent alla bokningar, kunder, utförare, sekreterare, tjänster och kategorier. Administratörskonton och inställningar behålls. Kan inte ångras.
-    reset_confirmation_hint: Skriv RESET för att aktivera knappen.
+    reset_confirmation_hint: "Skriv I KNOW WHAT I AM DOING för att aktivera knappen."
     reset_database_done: Databasen har återställts.
     captcha_provider: Captcha-leverantör
     turnstile_site_key: Turnstile-webbplatsnyckel
     turnstile_secret_key: Turnstile-hemlig nyckel
     turnstile_verification_failed: Captcha-verifieringen misslyckades, försök igen.
-    phone_or_email_required: Ange ett telefonnummer eller en e-postadress.
-    require_phone_or_email_label: Kräv telefonnummer eller e-post (ett av dem räcker)
+    phone_or_email_required: E-post eller telefonnummer krävs
+    require_phone_or_email_label: Kräv telefonnummer ELLER e-post
     booking_display_mode: Visningsläge för bokning
     display_as_dropdown: Rullgardinslista
     display_as_cards: Kort

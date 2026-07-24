@@ -56,8 +56,8 @@ settings = {
   "appointment_status_options" => '["Booked", "Confirmed", "Rescheduled", "Cancelled", "Draft"]',
 
   # Booking form fields
-  "display_email" => "1", "require_email" => "1",
-  "display_phone_number" => "1", "require_phone_number" => "1",
+  "display_email" => "1", "require_email" => "0",
+  "display_phone_number" => "1", "require_phone_number" => "0",
   "display_address" => "1", "require_address" => "0",
   "display_city" => "1", "require_city" => "0",
   "display_zip_code" => "1", "require_zip_code" => "0",

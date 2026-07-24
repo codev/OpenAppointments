@@ -33,7 +33,6 @@ App.Pages.Account = (function () {
     const $calendarView = $('#calendar-view');
     const notifications = $('#notifications');
     const $saveSettings = $('#save-settings');
-    const $footerUserDisplayName = $('#footer-user-display-name');
 
     /**
      * Check if the form has invalid values.
@@ -153,11 +152,15 @@ App.Pages.Account = (function () {
         }
 
         const account = serialize();
+        const passwordChanged = Boolean($password.val());
 
         App.Http.Account.save(account).done(() => {
             App.Layouts.Backend.displayNotification(lang('settings_saved'));
 
-            $footerUserDisplayName.text('Hello, ' + $name.val() + '!');
+            if (passwordChanged) {
+                // The forced-password-change banner no longer applies.
+                $('#password-change-banner').slideUp();
+            }
         });
     }
 

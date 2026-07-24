@@ -24,7 +24,7 @@ class CalendarTest < ActionDispatch::IntegrationTest
   test "get_calendar_appointments with provider filter returns EA shape" do
     login_admin
     post "/calendar/get_calendar_appointments", params: {
-      record_id: users(:jane).id, filter_type: "provider",
+      record_id: users(:zane).id, filter_type: "provider",
       start_date: "2026-07-19", end_date: "2026-07-21"
     }
     assert_response :success
@@ -33,9 +33,9 @@ class CalendarTest < ActionDispatch::IntegrationTest
     appointment = body["appointments"].first
     assert_equal "2026-07-20 10:00:00", appointment["start_datetime"]
     assert_equal "abc123def456", appointment["hash"]
-    assert_equal "Jane Doe", appointment["provider"]["name"]
+    assert_equal "Zane", appointment["provider"]["name"]
     assert_equal "Trim Cut", appointment["service"]["name"]
-    assert_equal "James Doe", appointment["customer"]["name"]
+    assert_equal "JX", appointment["customer"]["name"]
     assert appointment["provider"]["settings"].key?("working_plan")
     assert_not appointment["provider"]["settings"].key?("password")
     assert_equal 1, body["unavailabilities"].length
@@ -79,7 +79,7 @@ class CalendarTest < ActionDispatch::IntegrationTest
         customer_data: { name: "Cal Endar", email: "cal@example.org",
                          phone_number: "+447700900999" },
         appointment_data: { start_datetime: "2026-07-21 09:00:00", end_datetime: "2026-07-21 09:30:00",
-                            id_users_provider: users(:jane).id, id_services: services(:haircut).id,
+                            id_users_provider: users(:zane).id, id_services: services(:haircut).id,
                             status: "Booked" }
       }
     end
@@ -89,8 +89,8 @@ class CalendarTest < ActionDispatch::IntegrationTest
   test "save_appointment reports conflicts unless forced" do
     login_admin
     conflicting = { start_datetime: "2026-07-20 10:15:00", end_datetime: "2026-07-20 10:45:00",
-                    id_users_provider: users(:jane).id, id_services: services(:haircut).id,
-                    id_users_customer: users(:james).id }
+                    id_users_provider: users(:zane).id, id_services: services(:haircut).id,
+                    id_users_customer: users(:jx).id }
 
     post "/calendar/save_appointment", params: { appointment_data: conflicting }
     body = response.parsed_body
@@ -117,7 +117,7 @@ class CalendarTest < ActionDispatch::IntegrationTest
     login_admin
     post "/calendar/save_unavailability", params: {
       unavailability: { start_datetime: "2026-07-21 12:00:00", end_datetime: "2026-07-21 13:00:00",
-                        id_users_provider: users(:jane).id, notes: "Lunch" }
+                        id_users_provider: users(:zane).id, notes: "Lunch" }
     }
     assert_equal true, response.parsed_body["success"]
 
@@ -132,7 +132,7 @@ class CalendarTest < ActionDispatch::IntegrationTest
   test "working plan exception save requires users edit privilege" do
     login_provider
     post "/calendar/save_working_plan_exception", params: {
-      provider_id: users(:jane).id,
+      provider_id: users(:zane).id,
       working_plan_exception: { startDate: "2026-07-25", endDate: "2026-07-25",
                                 startTime: "10:00", endTime: "14:00", breaks: [] }
     }
@@ -141,7 +141,7 @@ class CalendarTest < ActionDispatch::IntegrationTest
     login_admin
     assert_difference "WorkingPlanException.count", 1 do
       post "/calendar/save_working_plan_exception", params: {
-        provider_id: users(:jane).id,
+        provider_id: users(:zane).id,
         working_plan_exception: { startDate: "2026-07-25", endDate: "2026-07-25",
                                   startTime: "10:00", endTime: "14:00", breaks: [] }
       }
@@ -149,7 +149,7 @@ class CalendarTest < ActionDispatch::IntegrationTest
     body = response.parsed_body
     assert_equal true, body["success"]
 
-    post "/calendar/delete_working_plan_exception", params: { exception_id: body["id"], provider_id: users(:jane).id }
+    post "/calendar/delete_working_plan_exception", params: { exception_id: body["id"], provider_id: users(:zane).id }
     assert_equal({ "success" => true }, response.parsed_body)
   end
 
@@ -168,6 +168,6 @@ class CalendarTest < ActionDispatch::IntegrationTest
       record_id: "all", start_date: "2026-07-19", end_date: "2026-07-21"
     }
     body = response.parsed_body
-    assert body["appointments"].all? { |a| a["id_users_provider"] == users(:jane).id }
+    assert body["appointments"].all? { |a| a["id_users_provider"] == users(:zane).id }
   end
 end

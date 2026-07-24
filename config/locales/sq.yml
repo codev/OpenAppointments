@@ -1,6 +1,17 @@
 ---
 sq:
   ea:
+    import_providers_caution: "Kujdes: shënimi i ofruesve do të krijojë llogari përdoruesish dhe do të lejojë hyrjen me emailin e tyre"
+    manage_data: "Menaxho të dhënat"
+    export_data: "Eksporto të dhënat"
+    import_type: "Lloji i importit"
+    full_reset_label: "Rivendosje e plotë, fshi administratorët dhe rivendos cilësimet"
+    delete_personal_information_setting_hint: "Lejo klientët të heqin të gjitha takimet dhe të dhënat e tyre personale nga sistemi me një buton."
+    captcha: "Captcha"
+    captcha_info: "Cilësimet e captcha-s për të verifikuar që vizitori është njeri para rezervimit"
+    captcha_enabled_hint: "Kur aktivizohet, ofruesi i zgjedhur i captcha-s do të përdoret në vend të captcha-s tradicionale me imazh për verifikimin e formularëve."
+    turnstile_keys_hint: "Merrni një çift çelësash (site dhe secret) nga paneli i Cloudflare:"
+    first_login_update_details: Ju lutemi vendosni një fjalëkalim të ri dhe përditësoni të dhënat tuaja
     embedding: Ngulitja
     allow_iframe_embedding: Lejo ngulitjen në një iframe
     iframe_embed_origin: Faqja që do të ngulisë faqen e rezervimeve
@@ -8,7 +19,7 @@ sq:
     embed_hint: Ngjisni këtë kod në faqen e sajtit tuaj që duhet të shfaqë formularin e rezervimit; korniza përshtatet vetë.
     copy: Kopjo
     import_data: Importo të dhëna
-    import_hint: Ngarkoni një CSV eksporti nga 10to8, analizojeni fillimisht dhe pastaj importoni llojet e zgjedhura të regjistrimeve.
+    import_hint: "Ngarkoni një kopje rezervë, analizojeni fillimisht, pastaj importoni llojet e zgjedhura të regjistrimeve. Cilësimet nuk do të importohen, ju lutemi rikonfiguroni ato pas importit."
     import_phases: Llojet e regjistrimeve
     analyze: Analizo
     start_import: Nis importin
@@ -23,14 +34,14 @@ sq:
     no_file_selected: Asnjë skedar i zgjedhur.
     reset_database: Rivendos bazën e të dhënave
     reset_database_warning: Kjo fshin përgjithmonë të gjitha takimet, klientët, ofruesit, sekretarët, shërbimet dhe kategoritë. Llogaritë e administratorëve dhe cilësimet ruhen. E pakthyeshme.
-    reset_confirmation_hint: Shkruani RESET për të aktivizuar butonin.
+    reset_confirmation_hint: "Shkruani I KNOW WHAT I AM DOING për të aktivizuar butonin."
     reset_database_done: Baza e të dhënave u rivendos.
     captcha_provider: Ofruesi i captcha
     turnstile_site_key: Çelësi i faqes Turnstile
     turnstile_secret_key: Çelësi sekret Turnstile
     turnstile_verification_failed: Verifikimi i captcha dështoi, provoni përsëri.
-    phone_or_email_required: Jepni një numër telefoni ose një adresë email.
-    require_phone_or_email_label: Kërko telefon ose email (mjafton njëra)
+    phone_or_email_required: Kërkohet email ose numër telefoni
+    require_phone_or_email_label: Kërko telefon OSE email
     booking_display_mode: Mënyra e shfaqjes së rezervimit
     display_as_dropdown: Listë rënëse
     display_as_cards: Karta

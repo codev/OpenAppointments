@@ -9,25 +9,14 @@
     </div>
 
     <div class="mb-3 me-lg-5 mb-lg-0">
-        <img class="me-1" src="<%= image_path("alextselegidis-logo-16x16.png") %>" alt="Alex Tselegidis Logo">
-
-        <a href="https://alextselegidis.com" target="_blank">Alex Tselegidis</a>
-
-        &copy; <%= Time.current.year %> - Software Development
+        By <a href="https://codev.uk/" target="_blank">Codev</a> - Based on Easy!Appointments by <a href="https://alextselegidis.com" target="_blank">Alex Tselegidis</a>
     </div>
 
     <div class="mb-3 me-lg-5 mb-lg-0">
         <%= lang('licensed_under') %>
-        <a href="https://www.gnu.org/licenses/gpl-3.0.en.html" target="_blank">
-            GPL-3.0
+        <a href="https://www.gnu.org/licenses/agpl-3.0.en.html" target="_blank">
+            AGPL-3.0
         </a>
-    </div>
-
-    <div class="mb-3 me-lg-5 mb-lg-0">
-        <span id="select-language" class="badge bg-dark">
-            <i class="fas fa-language me-2"></i>
-            <%= script_vars[:language].to_s.upcase_first %>
-        </span>
     </div>
 
     <div class="mb-3 me-lg-5 mb-lg-0">
@@ -37,8 +26,9 @@
     </div>
 
     <div class="ms-lg-auto">
-        <strong id="footer-user-display-name">
-            <%= lang('hello') + ', ' + user_display_name.to_s %>!
-        </strong>
+      <span id="select-language" class="badge bg-dark">
+        <i class="fas fa-language me-2"></i>
+        <%= script_vars[:language].to_s.upcase_first %>
+      </span>
     </div>
 </div>

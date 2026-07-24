@@ -1,6 +1,17 @@
 ---
 sk:
   ea:
+    import_providers_caution: "Pozor: zaškrtnutie poskytovateľov vytvorí používateľské účty a umožní prihlásenie ich e-mailom"
+    manage_data: "Správa dát"
+    export_data: "Exportovať dáta"
+    import_type: "Typ importu"
+    full_reset_label: "Úplný reset, vymazať administrátorov a obnoviť nastavenia"
+    delete_personal_information_setting_hint: "Umožnite zákazníkom jedným tlačidlom odstrániť zo systému všetky ich termíny a osobné údaje."
+    captcha: "Captcha"
+    captcha_info: "Nastavenia captcha na overenie, že návštevník je človek, pred rezerváciou"
+    captcha_enabled_hint: "Ak je povolené, na overenie formulárov sa namiesto tradičnej obrázkovej captcha použije vybraný poskytovateľ captcha."
+    turnstile_keys_hint: "Získajte pár kľúčov (site a secret) v paneli Cloudflare:"
+    first_login_update_details: Zadajte nové heslo a aktualizujte svoje údaje
     embedding: Vloženie do webu
     allow_iframe_embedding: Povoliť vloženie do iframe
     iframe_embed_origin: Web, ktorý vloží rezervačnú stránku
@@ -8,7 +19,7 @@ sk:
     embed_hint: Vložte tento kód na stránku vášho webu, kde sa má zobraziť rezervačný formulár; rám sa sám prispôsobí.
     copy: Kopírovať
     import_data: Import údajov
-    import_hint: Nahrajte CSV export z 10to8, najprv ho analyzujte a potom importujte vybrané typy záznamov.
+    import_hint: "Nahrajte zálohu, najprv ju analyzujte a potom importujte vybrané typy záznamov. Nastavenia sa neimportujú, po importe ich prosím znova nastavte."
     import_phases: Typy záznamov
     analyze: Analyzovať
     start_import: Spustiť import
@@ -23,14 +34,14 @@ sk:
     no_file_selected: Nie je vybraný žiadny súbor.
     reset_database: Resetovať databázu
     reset_database_warning: Týmto natrvalo vymažete všetky termíny, zákazníkov, poskytovateľov, sekretárov, služby a kategórie. Administrátorské účty a nastavenia zostanú. Nedá sa vrátiť späť.
-    reset_confirmation_hint: Napíšte RESET na aktiváciu tlačidla.
+    reset_confirmation_hint: "Pre povolenie tlačidla napíšte I KNOW WHAT I AM DOING."
     reset_database_done: Databáza bola resetovaná.
     captcha_provider: Poskytovateľ captcha
     turnstile_site_key: Kľúč webu Turnstile
     turnstile_secret_key: Tajný kľúč Turnstile
     turnstile_verification_failed: Overenie captcha zlyhalo, skúste to znova.
-    phone_or_email_required: Zadajte telefónne číslo alebo e-mailovú adresu.
-    require_phone_or_email_label: Vyžadovať telefón alebo e-mail (stačí jedno)
+    phone_or_email_required: Vyžaduje sa e-mail alebo telefónne číslo
+    require_phone_or_email_label: Vyžadovať telefón ALEBO e-mail
     booking_display_mode: Zobrazenie rezervácie
     display_as_dropdown: Rozbaľovací zoznam
     display_as_cards: Karty

@@ -1,6 +1,17 @@
 ---
 hi:
   ea:
+    import_providers_caution: "सावधानी: प्रदाताओं को टिक करने से उपयोगकर्ता खाते बनेंगे और उनके ईमेल से लॉग इन संभव होगा"
+    manage_data: "डेटा प्रबंधन"
+    export_data: "डेटा निर्यात करें"
+    import_type: "आयात प्रकार"
+    full_reset_label: "पूर्ण रीसेट, प्रशासकों को हटाएं और सेटिंग्स रीसेट करें"
+    delete_personal_information_setting_hint: "ग्राहकों को एक बटन से सिस्टम से उनकी सभी अपॉइंटमेंट और व्यक्तिगत जानकारी हटाने की अनुमति दें।"
+    captcha: "Captcha"
+    captcha_info: "बुकिंग से पहले आगंतुक के मानव होने की पुष्टि के लिए कैप्चा सेटिंग्स"
+    captcha_enabled_hint: "सक्षम होने पर फॉर्म सत्यापन के लिए पारंपरिक इमेज कैप्चा के बजाय चयनित कैप्चा प्रदाता का उपयोग किया जाएगा।"
+    turnstile_keys_hint: "Cloudflare डैशबोर्ड से साइट की और सीक्रेट की की जोड़ी प्राप्त करें:"
+    first_login_update_details: कृपया नया पासवर्ड दर्ज करें और अपनी जानकारी अपडेट करें
     embedding: एम्बेडिंग
     allow_iframe_embedding: iframe में एम्बेड करने की अनुमति दें
     iframe_embed_origin: वह वेबसाइट जो बुकिंग पेज एम्बेड करेगी
@@ -8,7 +19,7 @@ hi:
     embed_hint: इस कोड को अपनी वेबसाइट के उस पेज में चिपकाएं जहां बुकिंग फॉर्म दिखना चाहिए; फ्रेम अपना आकार खुद समायोजित करता है।
     copy: कॉपी करें
     import_data: डेटा आयात करें
-    import_hint: 10to8 निर्यात CSV अपलोड करें, पहले उसका विश्लेषण करें, फिर चुने गए रिकॉर्ड प्रकार आयात करें।
+    import_hint: "बैकअप अपलोड करें, पहले उसका विश्लेषण करें, फिर चयनित रिकॉर्ड प्रकार आयात करें। सेटिंग्स आयात नहीं होंगी, कृपया आयात के बाद उन्हें फिर से कॉन्फ़िगर करें।"
     import_phases: रिकॉर्ड प्रकार
     analyze: विश्लेषण
     start_import: आयात शुरू करें
@@ -23,14 +34,14 @@ hi:
     no_file_selected: कोई फ़ाइल चयनित नहीं।
     reset_database: डेटाबेस रीसेट करें
     reset_database_warning: यह सभी अपॉइंटमेंट, ग्राहक, प्रदाता, सचिव, सेवाएं और श्रेणियां स्थायी रूप से हटा देता है। प्रशासक खाते और सेटिंग्स बनी रहती हैं। इसे पूर्ववत नहीं किया जा सकता।
-    reset_confirmation_hint: बटन सक्षम करने के लिए RESET लिखें।
+    reset_confirmation_hint: "बटन सक्षम करने के लिए I KNOW WHAT I AM DOING टाइप करें।"
     reset_database_done: डेटाबेस रीसेट हो गया है।
     captcha_provider: कैप्चा प्रदाता
     turnstile_site_key: Turnstile साइट कुंजी
     turnstile_secret_key: Turnstile गुप्त कुंजी
     turnstile_verification_failed: कैप्चा सत्यापन विफल रहा, पुनः प्रयास करें।
-    phone_or_email_required: कृपया फोन नंबर या ईमेल पता दें।
-    require_phone_or_email_label: फोन नंबर या ईमेल आवश्यक (कोई एक पर्याप्त है)
+    phone_or_email_required: ईमेल या फोन नंबर आवश्यक है
+    require_phone_or_email_label: फोन नंबर या ईमेल आवश्यक
     booking_display_mode: बुकिंग प्रदर्शन मोड
     display_as_dropdown: ड्रॉपडाउन सूची
     display_as_cards: कार्ड

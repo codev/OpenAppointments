@@ -1,10 +1,10 @@
 _fixture:
   model_class: ServiceProviderLink
 
-jane_haircut:
-  provider: jane
+zane_haircut:
+  provider: zane
   service: haircut
 
-jane_group:
-  provider: jane
+zane_group:
+  provider: zane
   service: group_session

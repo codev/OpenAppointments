@@ -1,6 +1,17 @@
 ---
 it:
   ea:
+    import_providers_caution: "Attenzione: selezionare i fornitori creerà account utente e consentirà l'accesso con la loro email"
+    manage_data: "Gestione dati"
+    export_data: "Esporta dati"
+    import_type: "Tipo di importazione"
+    full_reset_label: "Reset completo, elimina gli amministratori e ripristina le impostazioni"
+    delete_personal_information_setting_hint: "Consenti ai clienti di rimuovere tutti i loro appuntamenti e le informazioni personali dal sistema con un pulsante."
+    captcha: "Captcha"
+    captcha_info: "Impostazioni del captcha per verificare che il visitatore sia umano prima della prenotazione"
+    captcha_enabled_hint: "Quando abilitato, il provider di captcha selezionato verrà usato al posto del tradizionale captcha con immagine per la verifica dei moduli."
+    turnstile_keys_hint: "Ottieni una coppia di chiavi (site e secret) dalla dashboard di Cloudflare:"
+    first_login_update_details: Inserisci una nuova password e aggiorna i tuoi dati
     embedding: Incorporamento
     allow_iframe_embedding: Consenti l'incorporamento in un iframe
     iframe_embed_origin: Sito web che incorporerà la pagina di prenotazione
@@ -8,7 +19,7 @@ it:
     embed_hint: Incolla questo codice nella pagina del tuo sito che deve mostrare il modulo di prenotazione; il riquadro si ridimensiona da solo.
     copy: Copia
     import_data: Importa dati
-    import_hint: Carica un CSV esportato da 10to8, analizzalo prima e poi importa i tipi di record selezionati.
+    import_hint: "Carica un backup, analizzalo prima e poi importa i tipi di record selezionati. Le impostazioni non verranno importate, riconfigurale dopo l'importazione."
     import_phases: Tipi di record
     analyze: Analizza
     start_import: Avvia importazione
@@ -23,14 +34,14 @@ it:
     no_file_selected: Nessun file selezionato.
     reset_database: Reimposta database
     reset_database_warning: Questo elimina definitivamente tutti gli appuntamenti, clienti, fornitori, segretari, servizi e categorie. Gli account amministratore e le impostazioni restano. Irreversibile.
-    reset_confirmation_hint: Digita RESET per abilitare il pulsante.
+    reset_confirmation_hint: "Digita I KNOW WHAT I AM DOING per abilitare il pulsante."
     reset_database_done: Il database è stato reimpostato.
     captcha_provider: Fornitore captcha
     turnstile_site_key: Chiave del sito Turnstile
     turnstile_secret_key: Chiave segreta Turnstile
     turnstile_verification_failed: Verifica captcha non riuscita, riprova.
-    phone_or_email_required: Indica un numero di telefono o un indirizzo email.
-    require_phone_or_email_label: Richiedi telefono o email (ne basta uno)
+    phone_or_email_required: È richiesta l'email o il numero di telefono
+    require_phone_or_email_label: Richiedi telefono O email
     booking_display_mode: Modalità di visualizzazione della prenotazione
     display_as_dropdown: Elenco a discesa
     display_as_cards: Schede

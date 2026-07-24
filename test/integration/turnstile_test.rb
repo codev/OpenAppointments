@@ -6,6 +6,7 @@ class TurnstileTest < ActionDispatch::IntegrationTest
 
   def enable_turnstile
     Setting.set("require_captcha", "1")
+    Setting.set("altcha_enabled", "1")
     Setting.set("captcha_provider", "turnstile")
     Setting.set("turnstile_site_key", "sitekey")
     Setting.set("turnstile_secret_key", "secretkey")
@@ -16,7 +17,7 @@ class TurnstileTest < ActionDispatch::IntegrationTest
       post_data: {
         appointment: {
           "start_datetime" => "2026-07-20 11:00:00",
-          "id_services" => services(:haircut).id, "id_users_provider" => users(:jane).id
+          "id_services" => services(:haircut).id, "id_users_provider" => users(:zane).id
         },
         customer: { "name" => "Captcha Booker", "email" => "captcha@example.org" },
         manage_mode: false
@@ -28,11 +29,15 @@ class TurnstileTest < ActionDispatch::IntegrationTest
     end
   end
 
-  test "enabled only with captcha on, provider turnstile and both keys" do
+  test "enabled only with captcha on, active, provider turnstile and both keys" do
     assert_not TurnstileChallenge.enabled?
     enable_turnstile
     assert TurnstileChallenge.enabled?
     Setting.set("turnstile_secret_key", "")
+    assert_not TurnstileChallenge.enabled?
+
+    Setting.set("turnstile_secret_key", "secretkey")
+    Setting.set("altcha_enabled", "0")
     assert_not TurnstileChallenge.enabled?
   end
 
@@ -106,9 +111,27 @@ class TurnstileTest < ActionDispatch::IntegrationTest
     assert_equal "sec", Setting.get("turnstile_secret_key")
   end
 
+  test "captcha settings page names the providers' sections and links Cloudflare" do
+    post "/login/validate", params: { username: "administrator", password: "administrator1" }
+    get "/altcha_settings"
+    assert_response :success
+    assert_select "h4", text: /#{I18n.t('ea.captcha')}/
+    assert_select "#altcha-provider-settings #altcha-hmac-key"
+    assert_select "#turnstile-provider-settings #turnstile-site-key"
+    assert_select "#turnstile-provider-settings a[href*='cloudflare.com']"
+  end
+
+  test "integrations page shows the captcha tile" do
+    post "/login/validate", params: { username: "administrator", password: "administrator1" }
+    get "/integrations"
+    assert_select "h5", text: /^\s*#{I18n.t('ea.captcha')}\s*$/
+    assert_match I18n.t("ea.captcha_info"), response.body
+  end
+
   test "the new strings exist in every locale" do
     I18n.available_locales.each do |locale|
-      %w[captcha_provider turnstile_site_key turnstile_secret_key turnstile_verification_failed].each do |key|
+      %w[captcha_provider turnstile_site_key turnstile_secret_key turnstile_verification_failed
+         captcha captcha_info captcha_enabled_hint turnstile_keys_hint].each do |key|
         assert I18n.t("ea.#{key}", locale: locale, fallback: false, default: nil).present?,
                "missing ea.#{key} in #{locale}"
       end

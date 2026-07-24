@@ -342,12 +342,14 @@ App.Pages.Booking = (function () {
             $selectProvider.find('option[value=""]').remove();
         }
 
-        // Add the "Any Provider" entry
+        // Add the "Any Provider" entry as the default, replacing "Please Select"
 
         const anyProviderAvailable = providerOptionCount > 2 && Boolean(Number(vars('display_any_provider')));
 
         if (anyProviderAvailable) {
-            $(new Option(lang('any_provider'), 'any-provider')).insertAfter($selectProvider.find('option:first'));
+            $selectProvider.find('option[value=""]').remove();
+            $(new Option(lang('any_provider'), 'any-provider')).prependTo($selectProvider);
+            $selectProvider.val('any-provider');
         }
 
         // Restore the previous provider selection if they can serve the new service
@@ -824,6 +826,7 @@ App.Pages.Booking = (function () {
     function validateCustomerForm() {
         $('#wizard-frame-4 .is-invalid').removeClass('is-invalid');
         $('#wizard-frame-4 label.text-danger').removeClass('text-danger');
+        $('#form-message').hide();
 
         // Validate required fields.
         let missingRequiredField = false;
@@ -836,7 +839,7 @@ App.Pages.Booking = (function () {
         });
 
         if (missingRequiredField) {
-            $('#form-message').text(lang('fields_are_required'));
+            $('#form-message').text(lang('fields_are_required')).show();
             return false;
         }
 
@@ -844,14 +847,14 @@ App.Pages.Booking = (function () {
         if (Boolean(Number(vars('require_phone_or_email'))) && !$email.val() && !$phoneNumber.val()) {
             $email.addClass('is-invalid');
             $phoneNumber.addClass('is-invalid');
-            $('#form-message').text(lang('phone_or_email_required'));
+            $('#form-message').text(lang('phone_or_email_required')).show();
             return false;
         }
 
         // Validate email address.
         if ($email.val() && !App.Utils.Validation.email($email.val())) {
             $email.addClass('is-invalid');
-            $('#form-message').text(lang('invalid_email'));
+            $('#form-message').text(lang('invalid_email')).show();
             return false;
         }
 
@@ -860,7 +863,7 @@ App.Pages.Booking = (function () {
 
         if (phoneNumber && !App.Utils.Validation.phone(phoneNumber)) {
             $phoneNumber.addClass('is-invalid');
-            $('#form-message').text(lang('invalid_phone'));
+            $('#form-message').text(lang('invalid_phone')).show();
             return false;
         }
 

@@ -30,14 +30,14 @@ class SingleNameTest < ActionDispatch::IntegrationTest
   end
 
   test "API emits the compat shim shape" do
-    get "/api/v1/customers/#{users(:james).id}", headers: auth
-    assert_equal users(:james).name, response.parsed_body["firstName"]
+    get "/api/v1/customers/#{users(:jx).id}", headers: auth
+    assert_equal users(:jx).name, response.parsed_body["firstName"]
     assert_equal "", response.parsed_body["lastName"]
   end
 
   test "API keyword search matches the name column" do
-    get "/api/v1/customers", headers: auth, params: { q: users(:james).name.split.first }
-    assert(response.parsed_body.any? { |c| c["id"] == users(:james).id })
+    get "/api/v1/customers", headers: auth, params: { q: users(:jx).name.split.first }
+    assert(response.parsed_body.any? { |c| c["id"] == users(:jx).id })
   end
 
   test "booking register accepts a single name field" do
@@ -45,7 +45,7 @@ class SingleNameTest < ActionDispatch::IntegrationTest
       post_data: {
         appointment: {
           "start_datetime" => "2026-07-20 11:00:00",
-          "id_services" => services(:haircut).id, "id_users_provider" => users(:jane).id
+          "id_services" => services(:haircut).id, "id_users_provider" => users(:zane).id
         },
         customer: { "name" => "Solo Booker", "email" => "solo@example.org",
                     "phone_number" => "+447700900333" },
@@ -62,8 +62,8 @@ class SingleNameTest < ActionDispatch::IntegrationTest
   end
 
   test "EaRows user rows carry name only" do
-    row = EaRows.user_row(users(:james))
-    assert_equal users(:james).name, row["name"]
+    row = EaRows.user_row(users(:jx))
+    assert_equal users(:jx).name, row["name"]
     assert_not row.key?("first_name")
     assert_not row.key?("last_name")
   end

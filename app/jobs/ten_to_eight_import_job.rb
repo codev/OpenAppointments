@@ -5,6 +5,8 @@ class TenToEightImportJob < ApplicationJob
 
   CACHE_TTL = 1.hour
 
+  EXTRACTORS = { "ods" => OdsExtract, "ten_to_eight" => TenToEight::Extract }.freeze
+
   # Injectable for tests (the test env cache is a null store).
   class_attribute :status_store, default: nil
 
@@ -18,10 +20,11 @@ class TenToEightImportJob < ApplicationJob
     store.write(status_key(import_id), payload, expires_in: CACHE_TTL)
   end
 
-  def perform(import_id:, file_path:, phases:, days_back:, days_forward:, create_providers:, today: nil)
+  def perform(import_id:, file_path:, phases:, days_back:, days_forward:, create_providers:,
+              import_type: "ten_to_eight", today: nil)
     write_status(import_id, state: "running", phase: "extract")
 
-    data = TenToEight::Extract.new(
+    data = EXTRACTORS.fetch(import_type).new(
       file_path, today: today ? Date.parse(today) : Date.current,
       days_back: days_back, days_forward: days_forward
     ).call

@@ -19,6 +19,12 @@ module BackendPage
       return false
     end
 
+    # A fresh install's default password must be changed before using the backend.
+    if resource != :user_settings && current_user&.settings&.require_password_change
+      redirect_to "/account"
+      return false
+    end
+
     true
   end
 
@@ -39,6 +45,16 @@ module BackendPage
       default_language: Setting.get("default_language"),
       default_timezone: Setting.get("default_timezone")
     )
+  end
+
+  # Booking-form field visibility as booleans, for backend pages that render the
+  # customer fields (customers page, appointments modal).
+  def field_display_flags
+    %w[email phone_number address city zip_code notes].flat_map { |field|
+      %w[display require].map do |kind|
+        [ :"#{kind}_#{field}", Setting.get("#{kind}_#{field}").to_s == "1" ]
+      end
+    }.to_h
   end
 
   def secretary_provider_ids

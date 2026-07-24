@@ -1,6 +1,17 @@
 ---
 fr:
   ea:
+    import_providers_caution: "Attention : cocher les intervenants créera des comptes utilisateurs et permettra la connexion avec leur e-mail"
+    manage_data: "Gérer les données"
+    export_data: "Exporter les données"
+    import_type: "Type d'importation"
+    full_reset_label: "Réinitialisation complète, supprimer les administrateurs et réinitialiser les paramètres"
+    delete_personal_information_setting_hint: "Permettre aux clients de supprimer tous leurs rendez-vous et informations personnelles du système avec un bouton."
+    captcha: "Captcha"
+    captcha_info: "Paramètres du captcha pour vérifier que le visiteur est humain avant la réservation"
+    captcha_enabled_hint: "Lorsqu'il est activé, le fournisseur de captcha sélectionné sera utilisé à la place du captcha image traditionnel pour la vérification des formulaires."
+    turnstile_keys_hint: "Obtenez une paire de clés (site et secret) depuis le tableau de bord Cloudflare :"
+    first_login_update_details: Veuillez saisir un nouveau mot de passe et mettre à jour vos informations
     embedding: Intégration
     allow_iframe_embedding: Autoriser l'intégration dans une iframe
     iframe_embed_origin: Site web qui intégrera la page de réservation
@@ -8,7 +19,7 @@ fr:
     embed_hint: Collez ce code dans la page de votre site qui doit afficher le formulaire de réservation ; le cadre s'ajuste automatiquement.
     copy: Copier
     import_data: Importer des données
-    import_hint: Chargez un export CSV 10to8, analysez-le d'abord, puis importez les types d'enregistrements sélectionnés.
+    import_hint: "Téléversez une sauvegarde, analysez-la d'abord, puis importez les types d'enregistrements sélectionnés. Les paramètres ne seront pas importés, veuillez les reconfigurer après l'importation."
     import_phases: Types d'enregistrements
     analyze: Analyser
     start_import: Démarrer l'import
@@ -23,14 +34,14 @@ fr:
     no_file_selected: Aucun fichier sélectionné.
     reset_database: Réinitialiser la base de données
     reset_database_warning: Ceci supprime définitivement tous les rendez-vous, clients, prestataires, secrétaires, services et catégories. Les comptes administrateurs et les réglages sont conservés. Irréversible.
-    reset_confirmation_hint: Tapez RESET pour activer le bouton.
+    reset_confirmation_hint: "Saisissez I KNOW WHAT I AM DOING pour activer le bouton."
     reset_database_done: La base de données a été réinitialisée.
     captcha_provider: Fournisseur de captcha
     turnstile_site_key: Clé de site Turnstile
     turnstile_secret_key: Clé secrète Turnstile
     turnstile_verification_failed: La vérification du captcha a échoué, veuillez réessayer.
-    phone_or_email_required: Veuillez indiquer un numéro de téléphone ou une adresse e-mail.
-    require_phone_or_email_label: Exiger un téléphone ou un e-mail (un seul suffit)
+    phone_or_email_required: L'e-mail ou le numéro de téléphone est requis
+    require_phone_or_email_label: Exiger un téléphone OU un e-mail
     booking_display_mode: Mode d'affichage de la réservation
     display_as_dropdown: Liste déroulante
     display_as_cards: Cartes

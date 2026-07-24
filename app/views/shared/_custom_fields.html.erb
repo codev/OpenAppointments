@@ -1,8 +1,9 @@
-<%# Port of EA components/custom_fields.php. Locals: disabled (default false). %>
+<%# Port of EA components/custom_fields.php. Locals: disabled (default false), col_class (extra classes per field). %>
 <% disabled = local_assigns.fetch(:disabled, false) %>
+<% col_class = local_assigns.fetch(:col_class, "") %>
 <% (1..5).each do |i| %>
     <% if setting("display_custom_field_#{i}").to_s == "1" %>
-        <div class="mb-3">
+        <div class="mb-3 <%= col_class %>">
             <label for="custom-field-<%= i %>" class="form-label">
                 <%= setting("label_custom_field_#{i}").presence || lang('custom_field') + ' #' + i.to_s %>
                 <% if setting("require_custom_field_#{i}").to_s == "1" %>

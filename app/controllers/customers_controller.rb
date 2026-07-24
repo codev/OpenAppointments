@@ -19,9 +19,7 @@ class CustomersController < ApplicationController
     script_vars(secretary_providers: secretary_provider_ids)
     html_vars(
       available_languages: Localization.available_languages,
-      **%w[name email phone_number address city zip_code]
-        .index_with { |field| Setting.get("require_#{field}") }
-        .transform_keys { |field| "require_#{field}".to_sym }
+      **field_display_flags
     )
     render :index
   end
@@ -127,15 +125,16 @@ class CustomersController < ApplicationController
   end
 
   def search_customers(keyword, limit, offset)
-    scope = User.customers.with_attached_picture.order(updated_at: :desc).limit(limit).offset(offset)
-    return scope if keyword.blank?
-
-    pattern = "%#{User.sanitize_sql_like(keyword)}%"
-    scope.where(<<~SQL.squish, pattern: pattern)
-      users.name LIKE :pattern OR email LIKE :pattern
-      OR phone_number LIKE :pattern OR address LIKE :pattern OR city LIKE :pattern
-      OR zip_code LIKE :pattern OR notes LIKE :pattern
-    SQL
+    scope = User.customers.with_attached_picture.order(updated_at: :desc)
+    if keyword.present?
+      pattern = "%#{User.sanitize_sql_like(keyword)}%"
+      scope = scope.where(<<~SQL.squish, pattern: pattern)
+        users.name LIKE :pattern OR email LIKE :pattern
+        OR phone_number LIKE :pattern OR address LIKE :pattern OR city LIKE :pattern
+        OR zip_code LIKE :pattern OR notes LIKE :pattern
+      SQL
+    end
+    paginate_search(scope, limit, offset)
   end
 
   def filter_appointments_by_role(appointments)

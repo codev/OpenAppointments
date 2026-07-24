@@ -6,17 +6,17 @@ module Api
       test "index returns camelCase customer resources" do
         api_get "/api/v1/customers"
         assert_response :success
-        customer = json.find { |c| c["id"] == users(:james).id }
-        assert_equal "James Doe", customer["firstName"]
-        assert_equal "james@example.org", customer["email"]
-        assert_equal "+447700900000", customer["phone"]
+        customer = json.find { |c| c["id"] == users(:jx).id }
+        assert_equal "JX", customer["firstName"]
+        assert_equal "j@example.org", customer["email"]
+        assert_equal "+447700900321", customer["phone"]
         assert customer.key?("zip")
         assert_not customer.key?("phone_number")
       end
 
       test "keyword search filters by name" do
-        api_get "/api/v1/customers", q: "James"
-        assert(json.any? { |c| c["firstName"] == "James Doe" })
+        api_get "/api/v1/customers", q: "JX"
+        assert(json.any? { |c| c["firstName"] == "JX" })
         api_get "/api/v1/customers", q: "zzzznomatch"
         assert_empty json
       end
@@ -48,8 +48,8 @@ module Api
       end
 
       test "show returns one or 404" do
-        api_get "/api/v1/customers/#{users(:james).id}"
-        assert_equal "James Doe", json["firstName"]
+        api_get "/api/v1/customers/#{users(:jx).id}"
+        assert_equal "JX", json["firstName"]
         api_get "/api/v1/customers/999999"
         assert_response :not_found
       end
@@ -65,16 +65,16 @@ module Api
       end
 
       test "update modifies and returns encoded record" do
-        api_put "/api/v1/customers/#{users(:james).id}", { city: "London" }
+        api_put "/api/v1/customers/#{users(:jx).id}", { city: "London" }
         assert_response :success
         assert_equal "London", json["city"]
-        assert_equal "London", users(:james).reload.city
+        assert_equal "London", users(:jx).reload.city
       end
 
       test "destroy removes and 204 then 404" do
-        api_delete "/api/v1/customers/#{users(:james).id}"
+        api_delete "/api/v1/customers/#{users(:jx).id}"
         assert_response :no_content
-        api_delete "/api/v1/customers/#{users(:james).id}"
+        api_delete "/api/v1/customers/#{users(:jx).id}"
         assert_response :not_found
       end
 

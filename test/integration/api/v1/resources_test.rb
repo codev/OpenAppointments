@@ -31,8 +31,8 @@ module Api
 
       test "providers index encodes settings and services" do
         api_get "/api/v1/providers"
-        provider = json.find { |p| p["id"] == users(:jane).id }
-        assert_equal "Jane Doe", provider["firstName"]
+        provider = json.find { |p| p["id"] == users(:zane).id }
+        assert_equal "Zane", provider["firstName"]
         assert_equal "janedoe", provider["settings"]["username"]
         assert provider["settings"].key?("workingPlan")
         assert provider["settings"].key?("syncFutureDays")
@@ -42,7 +42,7 @@ module Api
 
       test "providers with=services embeds raw service rows" do
         api_get "/api/v1/providers", with: "services"
-        provider = json.find { |p| p["id"] == users(:jane).id }
+        provider = json.find { |p| p["id"] == users(:zane).id }
         assert_includes provider["services"].map { |s| s["name"] }, "Trim Cut"
         assert provider["services"].first.key?("slot_interval")
       end
@@ -81,12 +81,12 @@ module Api
         assert_difference "User.secretaries.count", 1 do
           api_post "/api/v1/secretaries", {
             firstName: "Sec", lastName: "Retary", email: "sec@example.org",
-            providers: [ users(:jane).id ],
+            providers: [ users(:zane).id ],
             settings: { username: "secretary2", password: "secpass12", notifications: true }
           }
         end
         assert_response :created
-        assert_equal [ users(:jane).id ], User.secretaries.find(json["id"]).providers.map(&:id)
+        assert_equal [ users(:zane).id ], User.secretaries.find(json["id"]).providers.map(&:id)
       end
 
       test "admins store persists settings" do
@@ -121,7 +121,7 @@ module Api
       test "working plan exceptions expose breaks as array" do
         api_post "/api/v1/working_plan_exceptions", {
           startDate: "2026-08-05", endDate: "2026-08-05", startTime: "10:00", endTime: "14:00",
-          breaks: [ { "start" => "12:00", "end" => "12:30" } ], providerId: users(:jane).id
+          breaks: [ { "start" => "12:00", "end" => "12:30" } ], providerId: users(:zane).id
         }
         assert_response :created
         assert_equal [ { "start" => "12:00", "end" => "12:30" } ], json["breaks"]
@@ -133,7 +133,7 @@ module Api
         assert_no_enqueued_emails do
           assert_enqueued_with(job: WebhookDeliveryJob) do
             api_post "/api/v1/unavailabilities", {
-              start: "2026-07-22 12:00:00", end: "2026-07-22 13:00:00", providerId: users(:jane).id
+              start: "2026-07-22 12:00:00", end: "2026-07-22 13:00:00", providerId: users(:zane).id
             }
           end
         end
@@ -158,7 +158,7 @@ module Api
 
       test "availabilities returns the hour array" do
         travel_to Time.new(2026, 7, 1, 12, 0, 0) do
-          api_get "/api/v1/availabilities", providerId: users(:jane).id,
+          api_get "/api/v1/availabilities", providerId: users(:zane).id,
                                             serviceId: services(:haircut).id, date: "2026-07-20"
         end
         assert_response :success

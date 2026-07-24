@@ -1,24 +1,24 @@
 admin:
-  name: John Doe
-  email: john@example.org
+  name: Edson Mori
+  email: edson.mori@example.org
   role: admin
   timezone: UTC
 
-jane:
-  name: Jane Doe
-  email: jane@example.org
+zane:
+  name: Zane
+  email: zane@example.org
   role: provider
   timezone: Europe/London
 
 sam:
-  name: Sam Smith
+  name: Sam I Wonder
   email: sam@example.org
   role: secretary
   timezone: UTC
 
-james:
-  name: James Doe
-  email: james@example.org
-  phone_number: "+447700900000"
+jx:
+  name: JX
+  email: j@example.org
+  phone_number: "+447700900321"
   role: customer
   timezone: UTC

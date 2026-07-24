@@ -1,6 +1,17 @@
 ---
 ru:
   ea:
+    import_providers_caution: "Внимание: отметка специалистов создаст учётные записи и позволит входить по их email"
+    manage_data: "Управление данными"
+    export_data: "Экспорт данных"
+    import_type: "Тип импорта"
+    full_reset_label: "Полный сброс, удалить администраторов и сбросить настройки"
+    delete_personal_information_setting_hint: "Разрешить клиентам одной кнопкой удалить все свои записи и личные данные из системы."
+    captcha: "Captcha"
+    captcha_info: "Настройки капчи для проверки, что посетитель человек, перед бронированием"
+    captcha_enabled_hint: "Если включено, для проверки форм вместо традиционной капчи с изображением будет использоваться выбранный провайдер капчи."
+    turnstile_keys_hint: "Получите пару ключей (site и secret) в панели Cloudflare:"
+    first_login_update_details: Пожалуйста, введите новый пароль и обновите свои данные
     embedding: Встраивание
     allow_iframe_embedding: Разрешить встраивание в iframe
     iframe_embed_origin: Сайт, который встроит страницу записи
@@ -8,7 +19,7 @@ ru:
     embed_hint: Вставьте этот код на страницу вашего сайта, где должна отображаться форма записи; рамка сама подстраивает высоту.
     copy: Копировать
     import_data: Импорт данных
-    import_hint: Загрузите CSV-экспорт из 10to8, сначала проанализируйте его, затем импортируйте выбранные типы записей.
+    import_hint: "Загрузите резервную копию, сначала проанализируйте её, затем импортируйте выбранные типы записей. Настройки не импортируются, пожалуйста, настройте их заново после импорта."
     import_phases: Типы записей
     analyze: Анализ
     start_import: Начать импорт
@@ -23,14 +34,14 @@ ru:
     no_file_selected: Файл не выбран.
     reset_database: Сбросить базу данных
     reset_database_warning: Это навсегда удалит все записи, клиентов, специалистов, секретарей, услуги и категории. Учетные записи администраторов и настройки сохранятся. Отменить нельзя.
-    reset_confirmation_hint: Введите RESET, чтобы активировать кнопку.
+    reset_confirmation_hint: "Введите I KNOW WHAT I AM DOING, чтобы активировать кнопку."
     reset_database_done: База данных сброшена.
     captcha_provider: Провайдер капчи
     turnstile_site_key: Ключ сайта Turnstile
     turnstile_secret_key: Секретный ключ Turnstile
     turnstile_verification_failed: Проверка капчи не пройдена, попробуйте еще раз.
-    phone_or_email_required: Укажите номер телефона или адрес электронной почты.
-    require_phone_or_email_label: Требовать телефон или email (достаточно одного)
+    phone_or_email_required: Требуется email или номер телефона
+    require_phone_or_email_label: Требовать телефон ИЛИ email
     booking_display_mode: Режим отображения записи
     display_as_dropdown: Выпадающий список
     display_as_cards: Карточки

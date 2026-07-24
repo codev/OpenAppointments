@@ -86,4 +86,20 @@ class TenToEightTest < ActiveSupport::TestCase
     assert_nil counts[:customers]
     assert_equal 0, User.customers.where(email: "bella@example.org").count
   end
+
+  test "phases run as separate imports still link and resolve via the database" do
+    data = extract
+    TenToEight::Load.new(data, phases: %w[categories]).call
+    TenToEight::Load.new(data, phases: %w[services]).call
+    TenToEight::Load.new(data, phases: %w[providers], create_providers: true).call
+    TenToEight::Load.new(data, phases: %w[customers]).call
+    counts = TenToEight::Load.new(data, phases: %w[appointments]).call
+
+    assert_equal 3, counts[:appointments][:created]
+    imported = Service.where(name: data[:services].map { |s| s[:name] })
+    assert_equal 3, imported.count
+    assert imported.all? { |s| s.id_service_categories.present? }
+    alice = User.providers.find_by(email: "alice@example.org")
+    assert_includes alice.services.map(&:name), "TS Short trim"
+  end
 end

@@ -1,6 +1,17 @@
 ---
 nl:
   ea:
+    import_providers_caution: "Let op: het aanvinken van medewerkers maakt gebruikersaccounts aan en staat inloggen met hun e-mail toe"
+    manage_data: "Gegevens beheren"
+    export_data: "Gegevens exporteren"
+    import_type: "Importtype"
+    full_reset_label: "Volledige reset, verwijder beheerders en herstel instellingen"
+    delete_personal_information_setting_hint: "Sta klanten toe om met een knop al hun afspraken en persoonlijke gegevens uit het systeem te verwijderen."
+    captcha: "Captcha"
+    captcha_info: "Captcha-instellingen om te controleren of de bezoeker een mens is voor het boeken"
+    captcha_enabled_hint: "Indien ingeschakeld wordt de geselecteerde captcha-provider gebruikt in plaats van de traditionele afbeeldingscaptcha voor formulierverificatie."
+    turnstile_keys_hint: "Haal een sleutelpaar (site en secret) op in het Cloudflare-dashboard:"
+    first_login_update_details: Voer een nieuw wachtwoord in en werk uw gegevens bij
     embedding: Insluiten
     allow_iframe_embedding: Insluiten in een iframe toestaan
     iframe_embed_origin: Website die de boekingspagina insluit
@@ -8,7 +19,7 @@ nl:
     embed_hint: Plak deze code op de pagina van uw website waar het boekingsformulier moet verschijnen; het frame past zijn hoogte zelf aan.
     copy: Kopiëren
     import_data: Gegevens importeren
-    import_hint: Upload een 10to8 CSV-export, analyseer die eerst en importeer daarna de geselecteerde recordtypen.
+    import_hint: "Upload een back-up, analyseer deze eerst en importeer daarna de geselecteerde recordtypen. Instellingen worden niet geïmporteerd, configureer ze opnieuw na de import."
     import_phases: Recordtypen
     analyze: Analyseren
     start_import: Import starten
@@ -23,14 +34,14 @@ nl:
     no_file_selected: Geen bestand geselecteerd.
     reset_database: Database resetten
     reset_database_warning: Dit verwijdert permanent alle afspraken, klanten, aanbieders, secretariaten, diensten en categorieën. Beheerdersaccounts en instellingen blijven behouden. Onomkeerbaar.
-    reset_confirmation_hint: Typ RESET om de knop te activeren.
+    reset_confirmation_hint: "Typ I KNOW WHAT I AM DOING om de knop in te schakelen."
     reset_database_done: De database is gereset.
     captcha_provider: Captcha-aanbieder
     turnstile_site_key: Turnstile-sitesleutel
     turnstile_secret_key: Turnstile-geheime sleutel
     turnstile_verification_failed: Captcha-verificatie mislukt, probeer het opnieuw.
-    phone_or_email_required: Geef een telefoonnummer of e-mailadres op.
-    require_phone_or_email_label: Vereis een telefoonnummer of e-mail (een van beide volstaat)
+    phone_or_email_required: E-mail of telefoonnummer is verplicht
+    require_phone_or_email_label: Vereis een telefoonnummer OF e-mail
     booking_display_mode: Weergavemodus van de boeking
     display_as_dropdown: Keuzelijst
     display_as_cards: Kaarten

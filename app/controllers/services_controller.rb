@@ -111,11 +111,12 @@ class ServicesController < ApplicationController
   end
 
   def search_services(keyword, limit, offset)
-    scope = Service.order(updated_at: :desc).limit(limit).offset(offset)
-    return scope if keyword.blank?
-
-    pattern = "%#{Service.sanitize_sql_like(keyword)}%"
-    scope.where("name LIKE :pattern OR description LIKE :pattern", pattern: pattern)
+    scope = Service.order(updated_at: :desc)
+    if keyword.present?
+      pattern = "%#{Service.sanitize_sql_like(keyword)}%"
+      scope = scope.where("name LIKE :pattern OR description LIKE :pattern", pattern: pattern)
+    end
+    paginate_search(scope, limit, offset)
   end
 
   def picture_record = Service.find(params[:id])
