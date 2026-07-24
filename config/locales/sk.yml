@@ -29,8 +29,8 @@ sk:
     turnstile_site_key: Kľúč webu Turnstile
     turnstile_secret_key: Tajný kľúč Turnstile
     turnstile_verification_failed: Overenie captcha zlyhalo, skúste to znova.
-    phone_or_email_required: Zadajte telefónne číslo alebo e-mailovú adresu.
-    require_phone_or_email_label: Vyžadovať telefón alebo e-mail (stačí jedno)
+    phone_or_email_required: Vyžaduje sa e-mail alebo telefónne číslo
+    require_phone_or_email_label: Vyžadovať telefón ALEBO e-mail
     booking_display_mode: Zobrazenie rezervácie
     display_as_dropdown: Rozbaľovací zoznam
     display_as_cards: Karty

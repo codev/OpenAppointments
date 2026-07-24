@@ -27,7 +27,19 @@ class BookingSettingsController < ApplicationController
         value
       end
     end
+    reconcile_contact_requirements
   rescue ArgumentError => e
     json_exception(e)
+  end
+
+  private
+
+  # The phone-or-email rule and the individual email/phone require flags are
+  # mutually exclusive; the rule wins over conflicting input.
+  def reconcile_contact_requirements
+    if Setting.get("require_phone_or_email", "1").to_s == "1"
+      Setting.set("require_email", "0")
+      Setting.set("require_phone_number", "0")
+    end
   end
 end

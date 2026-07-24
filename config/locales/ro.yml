@@ -29,8 +29,8 @@ ro:
     turnstile_site_key: Cheia site-ului Turnstile
     turnstile_secret_key: Cheia secretă Turnstile
     turnstile_verification_failed: Verificarea captcha a eșuat, încercați din nou.
-    phone_or_email_required: Introduceți un număr de telefon sau o adresă de email.
-    require_phone_or_email_label: Solicită telefon sau email (unul este suficient)
+    phone_or_email_required: Este necesar emailul sau numărul de telefon
+    require_phone_or_email_label: Solicită telefon SAU email
     booking_display_mode: Modul de afișare a rezervării
     display_as_dropdown: Listă derulantă
     display_as_cards: Carduri

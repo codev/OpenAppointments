@@ -824,6 +824,7 @@ App.Pages.Booking = (function () {
     function validateCustomerForm() {
         $('#wizard-frame-4 .is-invalid').removeClass('is-invalid');
         $('#wizard-frame-4 label.text-danger').removeClass('text-danger');
+        $('#form-message').hide();
 
         // Validate required fields.
         let missingRequiredField = false;
@@ -836,7 +837,7 @@ App.Pages.Booking = (function () {
         });
 
         if (missingRequiredField) {
-            $('#form-message').text(lang('fields_are_required'));
+            $('#form-message').text(lang('fields_are_required')).show();
             return false;
         }
 
@@ -844,14 +845,14 @@ App.Pages.Booking = (function () {
         if (Boolean(Number(vars('require_phone_or_email'))) && !$email.val() && !$phoneNumber.val()) {
             $email.addClass('is-invalid');
             $phoneNumber.addClass('is-invalid');
-            $('#form-message').text(lang('phone_or_email_required'));
+            $('#form-message').text(lang('phone_or_email_required')).show();
             return false;
         }
 
         // Validate email address.
         if ($email.val() && !App.Utils.Validation.email($email.val())) {
             $email.addClass('is-invalid');
-            $('#form-message').text(lang('invalid_email'));
+            $('#form-message').text(lang('invalid_email')).show();
             return false;
         }
 
@@ -860,7 +861,7 @@ App.Pages.Booking = (function () {
 
         if (phoneNumber && !App.Utils.Validation.phone(phoneNumber)) {
             $phoneNumber.addClass('is-invalid');
-            $('#form-message').text(lang('invalid_phone'));
+            $('#form-message').text(lang('invalid_phone')).show();
             return false;
         }
 

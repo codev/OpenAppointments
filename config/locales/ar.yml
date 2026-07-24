@@ -29,8 +29,8 @@ ar:
     turnstile_site_key: مفتاح الموقع Turnstile
     turnstile_secret_key: المفتاح السري Turnstile
     turnstile_verification_failed: فشل التحقق من الكابتشا، حاول مرة أخرى.
-    phone_or_email_required: يرجى إدخال رقم هاتف أو بريد إلكتروني.
-    require_phone_or_email_label: طلب رقم هاتف أو بريد إلكتروني (يكفي أحدهما)
+    phone_or_email_required: البريد الإلكتروني أو رقم الهاتف مطلوب
+    require_phone_or_email_label: طلب رقم هاتف أو بريد إلكتروني
     booking_display_mode: طريقة عرض الحجز
     display_as_dropdown: قائمة منسدلة
     display_as_cards: بطاقات

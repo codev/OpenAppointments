@@ -29,8 +29,8 @@ lt:
     turnstile_site_key: Turnstile svetainės raktas
     turnstile_secret_key: Turnstile slaptas raktas
     turnstile_verification_failed: Captcha patikra nepavyko, bandykite dar kartą.
-    phone_or_email_required: Nurodykite telefono numerį arba el. pašto adresą.
-    require_phone_or_email_label: Reikalauti telefono arba el. pašto (užtenka vieno)
+    phone_or_email_required: Būtinas el. paštas arba telefono numeris
+    require_phone_or_email_label: Reikalauti telefono ARBA el. pašto
     booking_display_mode: Rezervacijos rodymo režimas
     display_as_dropdown: Išskleidžiamasis sąrašas
     display_as_cards: Kortelės

@@ -19,6 +19,7 @@ App.Pages.BookingSettings = (function () {
     const $saveSettings = $('#save-settings');
     const $disableBooking = $('#disable-booking');
     const $disableBookingMessage = $('#disable-booking-message');
+    const $requirePhoneOrEmail = $('#require-phone-or-email');
 
     /**
      * Check if the form has invalid values.
@@ -52,9 +53,9 @@ App.Pages.BookingSettings = (function () {
                 throw new Error(lang('at_least_one_field'));
             }
 
-            // Ensure there is at least one field required.
+            // Ensure there is at least one field required (the phone-or-email rule counts).
 
-            if (!$('.require-switch:checked').length) {
+            if (!$('.require-switch:checked').length && !$requirePhoneOrEmail.prop('checked')) {
                 throw new Error(lang('at_least_one_field_required'));
             }
 
@@ -146,6 +147,42 @@ App.Pages.BookingSettings = (function () {
     }
 
     /**
+     * Uncheck a switch with a flash animation, so the automatic change is visible.
+     *
+     * @param {jQuery} $switch
+     */
+    function uncheckWithFlash($switch) {
+        if (!$switch.prop('checked')) {
+            return;
+        }
+
+        $switch.prop('checked', false);
+
+        const $formCheck = $switch.closest('.form-check');
+
+        $formCheck.addClass('switch-flash');
+
+        $switch.one('animationend', () => $formCheck.removeClass('switch-flash'));
+    }
+
+    /**
+     * Requiring email or phone individually is mutually exclusive with the
+     * phone-or-email rule: turning one side on turns the other off.
+     */
+    function reconcileContactRequirements($origin) {
+        if ($origin.is($requirePhoneOrEmail)) {
+            if ($requirePhoneOrEmail.prop('checked')) {
+                $('#require-email, #require-phone-number').each((index, el) => {
+                    uncheckWithFlash($(el));
+                    updateRequireSwitch($(el));
+                });
+            }
+        } else if ($origin.prop('checked')) {
+            uncheckWithFlash($requirePhoneOrEmail);
+        }
+    }
+
+    /**
      * Update the UI based on the initial values.
      */
     function applyInitialState() {
@@ -199,6 +236,10 @@ App.Pages.BookingSettings = (function () {
         const $requireSwitch = $(event.target);
 
         updateRequireSwitch($requireSwitch);
+
+        if ($requireSwitch.is('#require-email, #require-phone-number')) {
+            reconcileContactRequirements($requireSwitch);
+        }
     }
 
     /**
@@ -221,6 +262,8 @@ App.Pages.BookingSettings = (function () {
         $bookingSettings
             .on('click', '.display-switch', onDisplaySwitchClick)
             .on('click', '.require-switch', onRequireSwitchClick);
+
+        $requirePhoneOrEmail.on('click', () => reconcileContactRequirements($requirePhoneOrEmail));
 
         $disableBookingMessage.trumbowyg();
 

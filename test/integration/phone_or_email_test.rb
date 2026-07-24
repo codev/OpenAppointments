@@ -82,6 +82,57 @@ class PhoneOrEmailTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
+  test "booking page has the validation message container" do
+    get "/"
+    assert_select "#wizard-frame-4 #form-message.alert-danger"
+  end
+
+  test "seeds do not require email or phone individually" do
+    seeds = Rails.root.join("db/seeds.rb").read
+    assert_match(/"require_email" => "0"/, seeds)
+    assert_match(/"require_phone_number" => "0"/, seeds)
+  end
+
+  test "settings save clears individual require flags while the OR rule is on" do
+    post "/login/validate", params: { username: "administrator", password: "administrator1" }
+    post "/booking_settings/save", params: {
+      booking_settings: [
+        { name: "require_phone_or_email", value: "1" },
+        { name: "require_email", value: "1" },
+        { name: "require_phone_number", value: "1" }
+      ]
+    }
+    assert_response :success
+    assert_equal "0", Setting.get("require_email")
+    assert_equal "0", Setting.get("require_phone_number")
+  end
+
+  test "settings save keeps require flags when the OR rule is off" do
+    post "/login/validate", params: { username: "administrator", password: "administrator1" }
+    post "/booking_settings/save", params: {
+      booking_settings: [
+        { name: "require_phone_or_email", value: "0" },
+        { name: "require_email", value: "1" }
+      ]
+    }
+    assert_response :success
+    assert_equal "1", Setting.get("require_email")
+  end
+
+  test "migration clears stored require flags where the OR rule is on" do
+    migration = Rails.root.glob("db/migrate/*_relax_contact_require_flags.rb").first
+    require migration
+    Setting.set("require_email", "1")
+    Setting.set("require_phone_number", "1")
+    ActiveRecord::Migration.suppress_messages { RelaxContactRequireFlags.new.up }
+    assert_equal "0", Setting.get("require_email")
+
+    Setting.set("require_phone_or_email", "0")
+    Setting.set("require_email", "1")
+    ActiveRecord::Migration.suppress_messages { RelaxContactRequireFlags.new.up }
+    assert_equal "1", Setting.get("require_email")
+  end
+
   test "the new strings exist in every locale" do
     I18n.available_locales.each do |locale|
       %w[phone_or_email_required require_phone_or_email_label].each do |key|

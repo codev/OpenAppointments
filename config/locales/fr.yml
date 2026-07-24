@@ -29,8 +29,8 @@ fr:
     turnstile_site_key: Clé de site Turnstile
     turnstile_secret_key: Clé secrète Turnstile
     turnstile_verification_failed: La vérification du captcha a échoué, veuillez réessayer.
-    phone_or_email_required: Veuillez indiquer un numéro de téléphone ou une adresse e-mail.
-    require_phone_or_email_label: Exiger un téléphone ou un e-mail (un seul suffit)
+    phone_or_email_required: L'e-mail ou le numéro de téléphone est requis
+    require_phone_or_email_label: Exiger un téléphone OU un e-mail
     booking_display_mode: Mode d'affichage de la réservation
     display_as_dropdown: Liste déroulante
     display_as_cards: Cartes

@@ -29,8 +29,8 @@ es:
     turnstile_site_key: Clave del sitio de Turnstile
     turnstile_secret_key: Clave secreta de Turnstile
     turnstile_verification_failed: La verificación del captcha ha fallado, inténtelo de nuevo.
-    phone_or_email_required: Indique un número de teléfono o una dirección de correo electrónico.
-    require_phone_or_email_label: Requerir teléfono o correo electrónico (basta con uno)
+    phone_or_email_required: Se requiere correo electrónico o teléfono
+    require_phone_or_email_label: Requerir teléfono O correo electrónico
     booking_display_mode: Modo de visualización de la reserva
     display_as_dropdown: Lista desplegable
     display_as_cards: Tarjetas

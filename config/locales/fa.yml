@@ -29,8 +29,8 @@ fa:
     turnstile_site_key: کلید سایت Turnstile
     turnstile_secret_key: کلید مخفی Turnstile
     turnstile_verification_failed: تأیید کپچا ناموفق بود، دوباره تلاش کنید.
-    phone_or_email_required: لطفا یک شماره تلفن یا ایمیل وارد کنید.
-    require_phone_or_email_label: الزام شماره تلفن یا ایمیل (یکی کافی است)
+    phone_or_email_required: ایمیل یا شماره تلفن الزامی است
+    require_phone_or_email_label: الزام شماره تلفن یا ایمیل
     booking_display_mode: حالت نمایش رزرو
     display_as_dropdown: فهرست کشویی
     display_as_cards: کارت‌ها

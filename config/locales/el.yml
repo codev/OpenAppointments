@@ -29,8 +29,8 @@ el:
     turnstile_site_key: Κλειδί ιστότοπου Turnstile
     turnstile_secret_key: Μυστικό κλειδί Turnstile
     turnstile_verification_failed: Η επαλήθευση captcha απέτυχε, δοκιμάστε ξανά.
-    phone_or_email_required: Δώστε έναν αριθμό τηλεφώνου ή μια διεύθυνση email.
-    require_phone_or_email_label: Απαίτηση τηλεφώνου ή email (αρκεί το ένα)
+    phone_or_email_required: Απαιτείται email ή αριθμός τηλεφώνου
+    require_phone_or_email_label: Απαίτηση τηλεφώνου Ή email
     booking_display_mode: Τρόπος εμφάνισης κράτησης
     display_as_dropdown: Αναπτυσσόμενη λίστα
     display_as_cards: Κάρτες

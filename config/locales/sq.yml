@@ -29,8 +29,8 @@ sq:
     turnstile_site_key: Çelësi i faqes Turnstile
     turnstile_secret_key: Çelësi sekret Turnstile
     turnstile_verification_failed: Verifikimi i captcha dështoi, provoni përsëri.
-    phone_or_email_required: Jepni një numër telefoni ose një adresë email.
-    require_phone_or_email_label: Kërko telefon ose email (mjafton njëra)
+    phone_or_email_required: Kërkohet email ose numër telefoni
+    require_phone_or_email_label: Kërko telefon OSE email
     booking_display_mode: Mënyra e shfaqjes së rezervimit
     display_as_dropdown: Listë rënëse
     display_as_cards: Karta

@@ -29,8 +29,8 @@ et:
     turnstile_site_key: Turnstile'i saidi võti
     turnstile_secret_key: Turnstile'i salajane võti
     turnstile_verification_failed: Captcha kontroll ebaõnnestus, proovige uuesti.
-    phone_or_email_required: Palun sisestage telefoninumber või e-posti aadress.
-    require_phone_or_email_label: Nõua telefoninumbrit või e-posti (ühest piisab)
+    phone_or_email_required: E-post või telefoninumber on nõutav
+    require_phone_or_email_label: Nõua telefoninumbrit VÕI e-posti
     booking_display_mode: Broneeringu kuvamisviis
     display_as_dropdown: Rippmenüü
     display_as_cards: Kaardid

@@ -29,8 +29,8 @@ bs:
     turnstile_site_key: Turnstile ključ stranice
     turnstile_secret_key: Turnstile tajni ključ
     turnstile_verification_failed: Captcha provjera nije uspjela, pokušajte ponovo.
-    phone_or_email_required: Unesite broj telefona ili email adresu.
-    require_phone_or_email_label: Zahtijevaj broj telefona ili email (dovoljno je jedno)
+    phone_or_email_required: Potreban je email ili broj telefona
+    require_phone_or_email_label: Zahtijevaj broj telefona ILI email
     booking_display_mode: Nacin prikaza rezervacije
     display_as_dropdown: Padajuca lista
     display_as_cards: Kartice

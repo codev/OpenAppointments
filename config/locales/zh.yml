@@ -29,8 +29,8 @@ zh:
     turnstile_site_key: Turnstile 站点密钥
     turnstile_secret_key: Turnstile 私密密钥
     turnstile_verification_failed: 验证码校验失败，请重试。
-    phone_or_email_required: 请提供电话号码或电子邮箱。
-    require_phone_or_email_label: 要求提供电话或邮箱 (二者其一即可)
+    phone_or_email_required: 需要提供邮箱或电话号码
+    require_phone_or_email_label: 要求提供电话或邮箱
     booking_display_mode: 预约显示模式
     display_as_dropdown: 下拉列表
     display_as_cards: 卡片

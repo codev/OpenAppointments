@@ -29,8 +29,8 @@ ru:
     turnstile_site_key: Ключ сайта Turnstile
     turnstile_secret_key: Секретный ключ Turnstile
     turnstile_verification_failed: Проверка капчи не пройдена, попробуйте еще раз.
-    phone_or_email_required: Укажите номер телефона или адрес электронной почты.
-    require_phone_or_email_label: Требовать телефон или email (достаточно одного)
+    phone_or_email_required: Требуется email или номер телефона
+    require_phone_or_email_label: Требовать телефон ИЛИ email
     booking_display_mode: Режим отображения записи
     display_as_dropdown: Выпадающий список
     display_as_cards: Карточки

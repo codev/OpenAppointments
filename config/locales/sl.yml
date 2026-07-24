@@ -29,8 +29,8 @@ sl:
     turnstile_site_key: Turnstile ključ strani
     turnstile_secret_key: Turnstile skrivni ključ
     turnstile_verification_failed: Preverjanje captcha ni uspelo, poskusite znova.
-    phone_or_email_required: Vnesite telefonsko številko ali e-poštni naslov.
-    require_phone_or_email_label: Zahtevaj telefon ali e-pošto (eno zadostuje)
+    phone_or_email_required: Zahtevan je e-poštni naslov ali telefonska številka
+    require_phone_or_email_label: Zahtevaj telefon ALI e-pošto
     booking_display_mode: Nacin prikaza rezervacije
     display_as_dropdown: Spustni seznam
     display_as_cards: Kartice

@@ -29,8 +29,8 @@ bu:
     turnstile_site_key: Turnstile ключ на сайта
     turnstile_secret_key: Turnstile таен ключ
     turnstile_verification_failed: Проверката на captcha не успя, опитайте отново.
-    phone_or_email_required: Моля, въведете телефонен номер или имейл адрес.
-    require_phone_or_email_label: Изисквай телефон или имейл (достатъчно е едното)
+    phone_or_email_required: Изисква се имейл или телефонен номер
+    require_phone_or_email_label: Изисквай телефон ИЛИ имейл
     booking_display_mode: Режим на показване на резервацията
     display_as_dropdown: Падащ списък
     display_as_cards: Карти

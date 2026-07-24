@@ -29,8 +29,8 @@ fi:
     turnstile_site_key: Turnstile-sivustoavain
     turnstile_secret_key: Turnstile-salausavain
     turnstile_verification_failed: Captcha-vahvistus epäonnistui, yritä uudelleen.
-    phone_or_email_required: Anna puhelinnumero tai sähköpostiosoite.
-    require_phone_or_email_label: Vaadi puhelinnumero tai sähköposti (toinen riittää)
+    phone_or_email_required: Sähköposti tai puhelinnumero vaaditaan
+    require_phone_or_email_label: Vaadi puhelinnumero TAI sähköposti
     booking_display_mode: Varauksen näyttötapa
     display_as_dropdown: Pudotusvalikko
     display_as_cards: Kortit

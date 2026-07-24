@@ -29,8 +29,8 @@ hu:
     turnstile_site_key: Turnstile webhelykulcs
     turnstile_secret_key: Turnstile titkos kulcs
     turnstile_verification_failed: A captcha ellenőrzése sikertelen, próbálja újra.
-    phone_or_email_required: Adjon meg egy telefonszámot vagy egy e-mail-címet.
-    require_phone_or_email_label: Telefonszám vagy e-mail megkövetelése (az egyik elég)
+    phone_or_email_required: E-mail vagy telefonszám megadása kötelező
+    require_phone_or_email_label: Telefonszám VAGY e-mail megkövetelése
     booking_display_mode: Foglalás megjelenítési módja
     display_as_dropdown: Legördülő lista
     display_as_cards: Kártyák

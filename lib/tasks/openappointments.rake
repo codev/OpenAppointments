@@ -6,7 +6,7 @@ namespace :openappointments do
 
     if User.admins.none?
       # Using a default password which should be changed on first login
-      password = 'let!me!in' # SecureRandom.alphanumeric(12)
+      password = "let!me!in" # SecureRandom.alphanumeric(12)
       admin = User.create!(
         name: "Edson Mori",
         email: "edson.mori@example.org",

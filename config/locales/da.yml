@@ -29,8 +29,8 @@ da:
     turnstile_site_key: Turnstile-webstedsnøgle
     turnstile_secret_key: Turnstile-hemmelig nøgle
     turnstile_verification_failed: Captcha-bekræftelsen mislykkedes, prøv igen.
-    phone_or_email_required: Angiv venligst et telefonnummer eller en e-mailadresse.
-    require_phone_or_email_label: Kræv telefonnummer eller e-mail (én af delene er nok)
+    phone_or_email_required: E-mail eller telefonnummer er påkrævet
+    require_phone_or_email_label: Kræv telefonnummer ELLER e-mail
     booking_display_mode: Visning af booking
     display_as_dropdown: Rulleliste
     display_as_cards: Kort

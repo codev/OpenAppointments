@@ -29,8 +29,8 @@ lb:
     turnstile_site_key: Turnstile-Site-Schlëssel
     turnstile_secret_key: Turnstile-Geheimschlëssel
     turnstile_verification_failed: Captcha-Verifikatioun feelgeschloen, probéiert w.e.g. nach eng Kéier.
-    phone_or_email_required: Gitt w.e.g. eng Telefonsnummer oder eng E-Mail-Adress un.
-    require_phone_or_email_label: Telefon oder E-Mail verlaangen (eent duergeet)
+    phone_or_email_required: E-Mail oder Telefonsnummer ass néideg
+    require_phone_or_email_label: Telefon ODER E-Mail verlaangen
     booking_display_mode: Umeldungsusiicht
     display_as_dropdown: Dropdown-Lëscht
     display_as_cards: Kaarten

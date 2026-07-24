@@ -29,8 +29,8 @@ nl:
     turnstile_site_key: Turnstile-sitesleutel
     turnstile_secret_key: Turnstile-geheime sleutel
     turnstile_verification_failed: Captcha-verificatie mislukt, probeer het opnieuw.
-    phone_or_email_required: Geef een telefoonnummer of e-mailadres op.
-    require_phone_or_email_label: Vereis een telefoonnummer of e-mail (een van beide volstaat)
+    phone_or_email_required: E-mail of telefoonnummer is verplicht
+    require_phone_or_email_label: Vereis een telefoonnummer OF e-mail
     booking_display_mode: Weergavemodus van de boeking
     display_as_dropdown: Keuzelijst
     display_as_cards: Kaarten

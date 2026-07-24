@@ -29,8 +29,8 @@ sv:
     turnstile_site_key: Turnstile-webbplatsnyckel
     turnstile_secret_key: Turnstile-hemlig nyckel
     turnstile_verification_failed: Captcha-verifieringen misslyckades, försök igen.
-    phone_or_email_required: Ange ett telefonnummer eller en e-postadress.
-    require_phone_or_email_label: Kräv telefonnummer eller e-post (ett av dem räcker)
+    phone_or_email_required: E-post eller telefonnummer krävs
+    require_phone_or_email_label: Kräv telefonnummer ELLER e-post
     booking_display_mode: Visningsläge för bokning
     display_as_dropdown: Rullgardinslista
     display_as_cards: Kort
