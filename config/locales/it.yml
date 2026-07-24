@@ -1,6 +1,7 @@
 ---
 it:
   ea:
+    turnstile_keys_hint_after: "registrando un account e andando poi su Application Security > Turnstile"
     failed: "falliti"
     import_failures: "Record falliti"
     booking_provider_first: "Prima il fornitore invece del servizio"
@@ -336,7 +337,7 @@ it:
     oops_something_went_wrong: Oops! Qualcosa è andato storto.
     ea_update_success: OpenAppointments è stato aggiornato con successo.
     require_captcha: Richiedi CAPTCHA
-    require_captcha_hint: Quando abilitato, i clienti dovranno digitare il codice CAPTCHA prima di prenotare/aggiornare un appuntamento.
+    require_captcha_hint: "Quando abilitato, i clienti dovranno digitare il codice CAPTCHA prima di prenotare/aggiornare un appuntamento. - vai su Integrazioni per scegliere un tipo di Captcha più avanzato"
     captcha_is_wrong: Verifica del CAPTCHA fallita, prova di nuovo.
     enter_captcha_here: Inserisci il CAPTCHA qui...
     any_provider: Qualsiasi provider

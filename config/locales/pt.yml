@@ -1,6 +1,7 @@
 ---
 pt:
   ea:
+    turnstile_keys_hint_after: "criando uma conta e indo depois a Application Security > Turnstile"
     failed: "falharam"
     import_failures: "Registos falhados"
     booking_provider_first: "Profissional primeiro em vez do serviço"
@@ -336,7 +337,7 @@ pt:
     oops_something_went_wrong: Ops! Algo deu errado.
     ea_update_success: Nomeações fáceis! Foi atualizado com sucesso.
     require_captcha: Requer CAPTCHA
-    require_captcha_hint: Quando ativado, os clientes terão que digitar uma string CAPTCHA gerada aleatoriamente antes de agendar/atualizar um compromisso.
+    require_captcha_hint: "Quando ativado, os clientes terão que digitar uma string CAPTCHA gerada aleatoriamente antes de agendar/atualizar um compromisso. - vá a Integrações para escolher um tipo de Captcha mais avançado"
     captcha_is_wrong: A verificação do CAPTCHA falhou, por favor tente novamente.
     enter_captcha_here: Introduza o CAPTCHA aqui...
     any_provider: Qualquer Fornecedor

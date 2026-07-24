@@ -1,6 +1,7 @@
 ---
 en:
   ea:
+    turnstile_keys_hint_after: "by signing up for an account then going to Application Security > Turnstile"
     failed: "failed"
     import_failures: "Failed records"
     booking_provider_first: "Provider first instead of service"
@@ -336,7 +337,7 @@ en:
     oops_something_went_wrong: Oops! Something Went Wrong.
     ea_update_success: OpenAppointments has been successfully updated.
     require_captcha: Require CAPTCHA
-    require_captcha_hint: When enabled, the customers will have to type a random generated CAPTCHA string before booking/updating an appointment.
+    require_captcha_hint: "When enabled, the customers will have to type a random generated CAPTCHA string before booking/updating an appointment. - go to Integrations to pick a more advanced Captcha type"
     captcha_is_wrong: CAPTCHA verification failed, please try again.
     enter_captcha_here: Enter CAPTCHA here...
     any_provider: Any Provider

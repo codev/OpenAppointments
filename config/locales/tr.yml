@@ -1,6 +1,7 @@
 ---
 tr:
   ea:
+    turnstile_keys_hint_after: "bir hesap açıp ardından Application Security > Turnstile bölümüne giderek"
     failed: "başarısız"
     import_failures: "Başarısız kayıtlar"
     booking_provider_first: "Hizmet yerine önce sağlayıcı"
@@ -336,7 +337,7 @@ tr:
     oops_something_went_wrong: Oops! Bir Sorun Oluştu.
     ea_update_success: OpenAppointments başarı ile güncellendi.
     require_captcha: CAPTCHA gereklidir
-    require_captcha_hint: Etkinleştirildiğinde, müşterilerin bir randevu rezervasyonu/güncellemesi yapmadan önce rastgele oluşturulmuş bir CAPTCHA dizesini yazmaları gerekecektir.
+    require_captcha_hint: "Etkinleştirildiğinde, müşterilerin bir randevu rezervasyonu/güncellemesi yapmadan önce rastgele oluşturulmuş bir CAPTCHA dizesini yazmaları gerekecektir. - daha gelişmiş bir Captcha türü seçmek için Entegrasyonlar'a gidin"
     captcha_is_wrong: CAPTCHA doğrulaması başarısız oldu, lütfen tekrar deneyin.
     enter_captcha_here: CAPTCHA kodunu buraya girin...
     any_provider: Herhangi Bir Sağlayıcı

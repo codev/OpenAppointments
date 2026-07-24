@@ -1,6 +1,7 @@
 ---
 de:
   ea:
+    turnstile_keys_hint_after: "indem Sie ein Konto anlegen und dann zu Application Security > Turnstile gehen"
     failed: "fehlgeschlagen"
     import_failures: "Fehlgeschlagene Datensätze"
     booking_provider_first: "Zuerst Anbieter statt Dienstleistung"
@@ -336,7 +337,7 @@ de:
     oops_something_went_wrong: Oops! Etwas ist schiefgelaufen.
     ea_update_success: OpenAppointments wurde erfolgreich aktualisiert.
     require_captcha: CAPTCHA erfordern
-    require_captcha_hint: Wenn aktiv, werden die Kunden aufgefordert, eine zufällig generierte Zeichenfolge (CAPTCHA) einzutippen bevor Sie einen Termin buchen oder speichern können.
+    require_captcha_hint: "Wenn aktiv, werden die Kunden aufgefordert, eine zufällig generierte Zeichenfolge (CAPTCHA) einzutippen bevor Sie einen Termin buchen oder speichern können. - unter Integrationen können Sie einen fortschrittlicheren Captcha-Typ wählen"
     captcha_is_wrong: CAPTCHA-Überprüfung fehlgeschlagen, bitte versuchen Sie es erneut.
     enter_captcha_here: CAPTCHA hier eingeben...
     any_provider: Jeder Anbieter

@@ -1,6 +1,7 @@
 ---
 bu:
   ea:
+    turnstile_keys_hint_after: "အကောင့်ဖွင့်ပြီးနောက် Application Security > Turnstile သို့သွားပါ"
     failed: "မအောင်မြင်ပါ"
     import_failures: "မအောင်မြင်သော မှတ်တမ်းများ"
     booking_provider_first: "ဝန်ဆောင်မှုအစား ဝန်ဆောင်မှုပေးသူကို အရင်ပြရန်"
@@ -336,7 +337,7 @@ bu:
     oops_something_went_wrong: Опааа! Нещо се обърка!Опааа! Нещо се обърка.
     ea_update_success: Системата Обновена успешно
     require_captcha: Изискване на CAPTCHA
-    require_captcha_hint: Когато е активно, потребителя , ще трябва да въведе произволно генерирани символи за да запише или промени час.
+    require_captcha_hint: "Когато е активно, потребителя , ще трябва да въведе произволно генерирани символи за да запише или промени час. - ပိုမိုအဆင့်မြင့်သော Captcha အမျိုးအစားရွေးရန် Integrations သို့သွားပါ"
     captcha_is_wrong: Неуспешна CAPTCHA верификация, моля опитайте отново.
     enter_captcha_here: Въведете CAPTCHA тук...
     any_provider: Произволен Изпълнител

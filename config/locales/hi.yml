@@ -1,6 +1,7 @@
 ---
 hi:
   ea:
+    turnstile_keys_hint_after: "खाता बनाकर फिर Application Security > Turnstile पर जाकर"
     failed: "विफल"
     import_failures: "विफल रिकॉर्ड"
     booking_provider_first: "सेवा के बजाय पहले प्रदाता"
@@ -336,7 +337,7 @@ hi:
     oops_something_went_wrong: उफ़! कुछ गलत हो गया
     ea_update_success: आसान! अपॉइंटमेंट सफलतापूर्वक अद्यतन किया गया है.
     require_captcha: CAPTCHA आवश्यक है
-    require_captcha_hint: जब सक्षम किया गया है, तो ग्राहकों को अपॉइंटमेंट बुकिंग/अपडेट करने से पहले एक यादृच्छिक जनरेटेड CAPTCHA स्ट्रिंग टाइप करनी होगी।
+    require_captcha_hint: "जब सक्षम किया गया है, तो ग्राहकों को अपॉइंटमेंट बुकिंग/अपडेट करने से पहले एक यादृच्छिक जनरेटेड CAPTCHA स्ट्रिंग टाइप करनी होगी। - अधिक उन्नत Captcha प्रकार चुनने के लिए Integrations पर जाएं"
     captcha_is_wrong: CAPTCHA सत्यापन विफल हो गया है, कृपया पुनः प्रयास करें।
     enter_captcha_here: यहाँ CAPTCHA दर्ज करें...
     any_provider: कोई भी प्रदाता

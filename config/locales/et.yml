@@ -1,6 +1,7 @@
 ---
 et:
   ea:
+    turnstile_keys_hint_after: "luues konto ja minnes seejärel Application Security > Turnstile alla"
     failed: "ebaõnnestunud"
     import_failures: "Ebaõnnestunud kirjed"
     booking_provider_first: "Kõigepealt teenusepakkuja, mitte teenus"
@@ -336,7 +337,7 @@ et:
     oops_something_went_wrong: Ohhhoo! Midagi läks untsu.
     ea_update_success: OpenAppointments uuendus õnnestus.
     require_captcha: Nõua CAPTCHA-t
-    require_captcha_hint: Kui see on sisse lülitatud, siis nõutakse kasutajalt CAPTCHA-t enne broneeringu lisamist/muutmist.
+    require_captcha_hint: "Kui see on sisse lülitatud, siis nõutakse kasutajalt CAPTCHA-t enne broneeringu lisamist/muutmist. - minge Integratsioonide alla, et valida täiustatum Captcha tüüp"
     captcha_is_wrong: CAPTCHA kinnitus ebaõnnestus. Proovi uuesti.
     enter_captcha_here: Sisestage CAPTCHA siia...
     any_provider: Suvaline teenusepakkuja

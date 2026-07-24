@@ -1,6 +1,7 @@
 ---
 mr:
   ea:
+    turnstile_keys_hint_after: "खाते नोंदवून नंतर Application Security > Turnstile वर जाऊन"
     failed: "अयशस्वी"
     import_failures: "अयशस्वी नोंदी"
     booking_provider_first: "सेवेऐवजी आधी प्रदाता"
@@ -336,7 +337,7 @@ mr:
     oops_something_went_wrong: अरेरे! काहीतरी चूक झाली
     ea_update_success: OpenAppointments यशस्वीरित्या अद्यतनित केली गेली आहे.
     require_captcha: कॅप्चा आवश्यक आहे
-    require_captcha_hint: सक्षम केल्यावर, ग्राहकांना अपॉइंटमेंट बुक करण्यासाठी / अद्यतनित करण्यापूर्वी यादृच्छिक व्युत्पन्न कॅप्चा स्ट्रिंग टाईप करावी लागेल.
+    require_captcha_hint: "सक्षम केल्यावर, ग्राहकांना अपॉइंटमेंट बुक करण्यासाठी / अद्यतनित करण्यापूर्वी यादृच्छिक व्युत्पन्न कॅप्चा स्ट्रिंग टाईप करावी लागेल. - अधिक प्रगत Captcha प्रकार निवडण्यासाठी Integrations वर जा"
     captcha_is_wrong: कॅप्चा सत्यापन अयशस्वी, कृपया पुन्हा प्रयत्न करा.
     enter_captcha_here: येथे CAPTCHA प्रविष्ट करा...
     any_provider: कोणताही प्रदाता

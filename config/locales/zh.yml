@@ -1,6 +1,7 @@
 ---
 zh:
   ea:
+    turnstile_keys_hint_after: "注册账号后前往 Application Security > Turnstile"
     failed: "失败"
     import_failures: "失败的记录"
     booking_provider_first: "先显示服务人员而非服务"
@@ -336,7 +337,7 @@ zh:
     oops_something_went_wrong: 不好！出了一些问题.
     ea_update_success: 预约系统已经成功更新.
     require_captcha: 需要验证码
-    require_captcha_hint: 启用时，客户在预约/更新预约之前必须输入一个随机生成的验证码字符串。
+    require_captcha_hint: "启用时，客户在预约/更新预约之前必须输入一个随机生成的验证码字符串。 - 前往集成页面选择更高级的 Captcha 类型"
     captcha_is_wrong: 验证码验证失败，请重试。
     enter_captcha_here: 在此输入 CAPTCHA...
     any_provider: 任何服务提供者

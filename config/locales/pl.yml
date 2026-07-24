@@ -1,6 +1,7 @@
 ---
 pl:
   ea:
+    turnstile_keys_hint_after: "rejestrując konto, a następnie przechodząc do Application Security > Turnstile"
     failed: "nieudane"
     import_failures: "Nieudane rekordy"
     booking_provider_first: "Najpierw wykonawca zamiast usługi"
@@ -336,7 +337,7 @@ pl:
     oops_something_went_wrong: Ojj! Coś poszło nie tak.
     ea_update_success: OpenAppointments zaktualizowany pomyślnie
     require_captcha: Wymagaj CAPTCHA
-    require_captcha_hint: Po włączeniu klienci będą musieli wpisać losowo wygenerowany ciąg CAPTCHA przed rezerwacją/aktualizacją wizyty.
+    require_captcha_hint: "Po włączeniu klienci będą musieli wpisać losowo wygenerowany ciąg CAPTCHA przed rezerwacją/aktualizacją wizyty. - przejdź do Integracji, aby wybrać bardziej zaawansowany typ Captcha"
     captcha_is_wrong: Weryfikacja CAPTCHA nie powiodła się, spróbuj ponownie.
     enter_captcha_here: Wprowadź CAPTCHA tutaj...
     any_provider: Dowolny dostawca

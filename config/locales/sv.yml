@@ -1,6 +1,7 @@
 ---
 sv:
   ea:
+    turnstile_keys_hint_after: "genom att registrera ett konto och sedan gå till Application Security > Turnstile"
     failed: "misslyckades"
     import_failures: "Misslyckade poster"
     booking_provider_first: "Utförare först i stället för tjänst"
@@ -336,7 +337,7 @@ sv:
     oops_something_went_wrong: Oops! Något gick fel.
     ea_update_success: OpenAppointments är uppdaterad.
     require_captcha: Kräv CAPTCHA
-    require_captcha_hint: När detta är aktiverat måste kunder ange en säkerhetskod (CAPTCHA) för att kunna boka eller ändra tider.
+    require_captcha_hint: "När detta är aktiverat måste kunder ange en säkerhetskod (CAPTCHA) för att kunna boka eller ändra tider. - gå till Integrationer för att välja en mer avancerad Captcha-typ"
     captcha_is_wrong: CAPTCHA-verifieringen misslyckades, försök igen.
     enter_captcha_here: Ange CAPTCHA här...
     any_provider: Alla utförare

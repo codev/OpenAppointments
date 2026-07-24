@@ -1,6 +1,7 @@
 ---
 pt-br:
   ea:
+    turnstile_keys_hint_after: "criando uma conta e indo depois em Application Security > Turnstile"
     failed: "falharam"
     import_failures: "Registros com falha"
     booking_provider_first: "Profissional primeiro em vez do serviço"
@@ -336,7 +337,7 @@ pt-br:
     oops_something_went_wrong: Ops! Algo deu errado.
     ea_update_success: OpenAppointments foi atualizado com sucesso.
     require_captcha: Requer CAPTCHA
-    require_captcha_hint: Quando habilitado, os clientes terão que digitar um código CAPTCHA gerado randomicamente antes de cadastrar/atualizar um agendamento.
+    require_captcha_hint: "Quando habilitado, os clientes terão que digitar um código CAPTCHA gerado randomicamente antes de cadastrar/atualizar um agendamento. - vá em Integrações para escolher um tipo de Captcha mais avançado"
     captcha_is_wrong: Verificação do CAPTCHA falhou, favor tente novamente.
     enter_captcha_here: Digite o CAPTCHA aqui...
     any_provider: Qualquer atendente

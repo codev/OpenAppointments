@@ -1,6 +1,7 @@
 ---
 cs:
   ea:
+    turnstile_keys_hint_after: "registrací účtu a přechodem do Application Security > Turnstile"
     failed: "selhalo"
     import_failures: "Neúspěšné záznamy"
     booking_provider_first: "Nejprve poskytovatel místo služby"
@@ -336,7 +337,7 @@ cs:
     oops_something_went_wrong: Oops! Něco se pokazilo.
     ea_update_success: Aplikace OpenAppointments byla úspěšně aktualizována.
     require_captcha: Vyžadovat CAPTCHA
-    require_captcha_hint: Pokud bude povolena, zákazníci budou muset před vytvořením/editací schůzky zadat náhodně vygenerovaný řetězec CAPTCHA.
+    require_captcha_hint: "Pokud bude povolena, zákazníci budou muset před vytvořením/editací schůzky zadat náhodně vygenerovaný řetězec CAPTCHA. - přejděte do Integrací a zvolte pokročilejší typ Captcha"
     captcha_is_wrong: Ověření CAPTCHA selhalo, prosím opakujte akci.
     enter_captcha_here: Zadejte CAPTCHA zde...
     any_provider: Jakýkoli poskytovatel

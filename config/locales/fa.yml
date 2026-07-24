@@ -1,6 +1,7 @@
 ---
 fa:
   ea:
+    turnstile_keys_hint_after: "با ثبت‌نام یک حساب و سپس رفتن به Application Security > Turnstile"
     failed: "ناموفق"
     import_failures: "رکوردهای ناموفق"
     booking_provider_first: "ابتدا ارائه‌دهنده به جای خدمت"
@@ -336,7 +337,7 @@ fa:
     oops_something_went_wrong: اوه. مشکلی پیش آمد!
     ea_update_success: OpenAppointments با موفقیت به روز رسانی شد
     require_captcha: کد امنیتی لازم است
-    require_captcha_hint: بعد از فعال کردن این گزینه، کاربران قبل از ایجاد یا تغییر یک قرار ملاقات، باید یک کد امنیتی شامل حروف تصادفی را تشخیص دهند.
+    require_captcha_hint: "بعد از فعال کردن این گزینه، کاربران قبل از ایجاد یا تغییر یک قرار ملاقات، باید یک کد امنیتی شامل حروف تصادفی را تشخیص دهند. - برای انتخاب نوع Captcha پیشرفته‌تر به بخش یکپارچه‌سازی‌ها بروید"
     captcha_is_wrong: کد امنیتی صحیح نمی باشد. لطفا مجددا سعی کنید
     enter_captcha_here: کد CAPTCHA را اینجا وارد کنید...
     any_provider: هر ارائه‌دهنده‌ای

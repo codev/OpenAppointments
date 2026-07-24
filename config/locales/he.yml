@@ -1,6 +1,7 @@
 ---
 he:
   ea:
+    turnstile_keys_hint_after: "על ידי הרשמה לחשבון ומעבר אל Application Security > Turnstile"
     failed: "נכשלו"
     import_failures: "רשומות שנכשלו"
     booking_provider_first: "ספק תחילה במקום שירות"
@@ -336,7 +337,7 @@ he:
     oops_something_went_wrong: אופס! משהו השתבש!
     ea_update_success: OpenAppointments עודכן בהצלחה!
     require_captcha: דרוש CAPTCHA
-    require_captcha_hint: כאשר אפשרות זו מופעלת, הלקוחות יצטרכו להקליד מחרוזת CAPTCHA אקראית לפני שהם מזמינים / מעדכנים פגישה.
+    require_captcha_hint: "כאשר אפשרות זו מופעלת, הלקוחות יצטרכו להקליד מחרוזת CAPTCHA אקראית לפני שהם מזמינים / מעדכנים פגישה. - עברו אל אינטגרציות כדי לבחור סוג Captcha מתקדם יותר"
     captcha_is_wrong: אימות CAPTCHA נכשל, נסה שוב.
     enter_captcha_here: הזן CAPTCHA כאן...
     any_provider: כל ספק

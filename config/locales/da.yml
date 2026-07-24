@@ -1,6 +1,7 @@
 ---
 da:
   ea:
+    turnstile_keys_hint_after: "ved at oprette en konto og derefter gå til Application Security > Turnstile"
     failed: "fejlede"
     import_failures: "Fejlede poster"
     booking_provider_first: "Udbyder først i stedet for ydelse"
@@ -336,7 +337,7 @@ da:
     oops_something_went_wrong: Oops! Noget gik galt.
     ea_update_success: OpenAppointments er blevet opdateret.
     require_captcha: Kræv CAPTCHA
-    require_captcha_hint: Når det er aktiveret, skal kunderne indtaste en tilfældigt genereret CAPTCHA-streng, før de kan booke/opdatere en aftale.
+    require_captcha_hint: "Når det er aktiveret, skal kunderne indtaste en tilfældigt genereret CAPTCHA-streng, før de kan booke/opdatere en aftale. - gå til Integrationer for at vælge en mere avanceret Captcha-type"
     captcha_is_wrong: CAPTCHA-verifikation fejlede, prøv venligst igen.
     enter_captcha_here: Indtast CAPTCHA her...
     any_provider: Alle udbydere

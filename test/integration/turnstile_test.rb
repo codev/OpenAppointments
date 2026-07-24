@@ -131,7 +131,8 @@ class TurnstileTest < ActionDispatch::IntegrationTest
   test "the new strings exist in every locale" do
     I18n.available_locales.each do |locale|
       %w[captcha_provider turnstile_site_key turnstile_secret_key turnstile_verification_failed
-         captcha captcha_info captcha_enabled_hint turnstile_keys_hint].each do |key|
+         captcha captcha_info captcha_enabled_hint turnstile_keys_hint
+         turnstile_keys_hint_after].each do |key|
         assert I18n.t("ea.#{key}", locale: locale, fallback: false, default: nil).present?,
                "missing ea.#{key} in #{locale}"
       end

@@ -1,6 +1,7 @@
 ---
 lt:
   ea:
+    turnstile_keys_hint_after: "užsiregistravę paskyrą ir nuėję į Application Security > Turnstile"
     failed: "nepavyko"
     import_failures: "Nepavykę įrašai"
     booking_provider_first: "Pirmiausia teikėjas, o ne paslauga"
@@ -336,7 +337,7 @@ lt:
     oops_something_went_wrong: Oi! Kažkas nepavyko.
     ea_update_success: "„OpenAppointments“ sėkmingai atnaujinta."
     require_captcha: Reikalauti „CAPTCHA“ saugos kodo
-    require_captcha_hint: Kai ši parinktis įjungta, prieš užsakydami/atnaujindami vizitą klientai turės įvesti atsitiktinai sugeneruotą saugos kodą.
+    require_captcha_hint: "Kai ši parinktis įjungta, prieš užsakydami/atnaujindami vizitą klientai turės įvesti atsitiktinai sugeneruotą saugos kodą. - eikite į Integracijas ir pasirinkite pažangesnį Captcha tipą"
     captcha_is_wrong: Saugos kodo patikra nepavyko, bandykite dar kartą.
     enter_captcha_here: Įveskite CAPTCHA čia...
     any_provider: Bet kuris teikėjas

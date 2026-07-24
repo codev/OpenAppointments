@@ -1,6 +1,7 @@
 ---
 fr:
   ea:
+    turnstile_keys_hint_after: "en créant un compte puis en allant dans Application Security > Turnstile"
     failed: "échoués"
     import_failures: "Enregistrements en échec"
     booking_provider_first: "Prestataire d'abord au lieu du service"
@@ -336,7 +337,7 @@ fr:
     oops_something_went_wrong: Oups ! Une erreur s’est produite.
     ea_update_success: OpenAppointments à été mis à jour avec succès.
     require_captcha: CAPTCHA obligatoire
-    require_captcha_hint: Lorsque l’option est activée, les clients doivent taper un code de vérification CAPTCHA avant de pouvoir réserver ou mettre à jour un rendez-vous.
+    require_captcha_hint: "Lorsque l’option est activée, les clients doivent taper un code de vérification CAPTCHA avant de pouvoir réserver ou mettre à jour un rendez-vous. - rendez-vous dans Intégrations pour choisir un type de Captcha plus avancé"
     captcha_is_wrong: Le code de vérification CAPTCHA est erroné, merci de réessayer.
     enter_captcha_here: Entrez le CAPTCHA ici...
     any_provider: Toute personne disponible

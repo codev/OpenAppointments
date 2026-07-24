@@ -1,6 +1,7 @@
 ---
 nl:
   ea:
+    turnstile_keys_hint_after: "door een account aan te maken en dan naar Application Security > Turnstile te gaan"
     failed: "mislukt"
     import_failures: "Mislukte records"
     booking_provider_first: "Eerst aanbieder in plaats van dienst"
@@ -336,7 +337,7 @@ nl:
     oops_something_went_wrong: Oeps! Er is iets misgegaan.
     ea_update_success: OpenAppointments is succesvol bijgewerkt.
     require_captcha: CAPTCHA vereist.
-    require_captcha_hint: Indien ingeschakeld moeten de klanten een willekeurige tekenreeks invullen om een afspraak te bevestigen.
+    require_captcha_hint: "Indien ingeschakeld moeten de klanten een willekeurige tekenreeks invullen om een afspraak te bevestigen. - ga naar Integraties om een geavanceerder Captcha-type te kiezen"
     captcha_is_wrong: CAPTCHA verificatie is mislukt, probeer het a.u.b.nogmaals.
     enter_captcha_here: Voer CAPTCHA hier in...
     any_provider: Maakt mij niet uit.

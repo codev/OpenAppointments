@@ -1,6 +1,7 @@
 ---
 sl:
   ea:
+    turnstile_keys_hint_after: "z registracijo računa in obiskom Application Security > Turnstile"
     failed: "neuspešno"
     import_failures: "Neuspešni zapisi"
     booking_provider_first: "Najprej ponudnik namesto storitve"
@@ -336,7 +337,7 @@ sl:
     oops_something_went_wrong: Ojoj! Nekaj je šlo narobe.
     ea_update_success: OpenAppointments je bil uspešno posodobljen.
     require_captcha: Zahtevaj CAPTCHA
-    require_captcha_hint: Ko je omogočeno, bodo morale stranke pred rezervacijo/posodabljanjem termina vnesti naključno ustvarjen niz CAPTCHA.
+    require_captcha_hint: "Ko je omogočeno, bodo morale stranke pred rezervacijo/posodabljanjem termina vnesti naključno ustvarjen niz CAPTCHA. - pojdite na Integracije in izberite naprednejši tip Captcha"
     captcha_is_wrong: CAPTCHA preverjanje ni uspelo, poskusite znova.
     enter_captcha_here: Tukaj vnesite CAPTCHA...
     any_provider: Kateri koli ponudnik

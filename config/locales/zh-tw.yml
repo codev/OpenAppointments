@@ -1,6 +1,7 @@
 ---
 zh-tw:
   ea:
+    turnstile_keys_hint_after: "註冊帳號後前往 Application Security > Turnstile"
     failed: "失敗"
     import_failures: "失敗的記錄"
     booking_provider_first: "先顯示服務人員而非服務"
@@ -336,7 +337,7 @@ zh-tw:
     oops_something_went_wrong: 哎呀！出了點問題。
     ea_update_success: OpenAppointments 已成功更新。
     require_captcha: 需要驗證碼
-    require_captcha_hint: 啟用後，顧客在預約/更新預約前需要輸入隨機產生的驗證碼字串。
+    require_captcha_hint: "啟用後，顧客在預約/更新預約前需要輸入隨機產生的驗證碼字串。 - 前往整合頁面選擇更進階的 Captcha 類型"
     captcha_is_wrong: 驗證碼驗證失敗，請重試。
     enter_captcha_here: 在此輸入 CAPTCHA...
     any_provider: 任何提供者

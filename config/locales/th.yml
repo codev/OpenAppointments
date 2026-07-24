@@ -1,6 +1,7 @@
 ---
 th:
   ea:
+    turnstile_keys_hint_after: "โดยสมัครบัญชีแล้วไปที่ Application Security > Turnstile"
     failed: "ล้มเหลว"
     import_failures: "รายการที่ล้มเหลว"
     booking_provider_first: "แสดงผู้ให้บริการก่อนแทนบริการ"
@@ -336,7 +337,7 @@ th:
     oops_something_went_wrong: อ๊ะ! มีบางอย่างผิดพลาด.
     ea_update_success: OpenAppointments อัปเดตเรียบร้อยแล้ว
     require_captcha: ต้องมี CAPTCHA
-    require_captcha_hint: เมื่อเปิดใช้งาน ลูกค้าจะต้องพิมพ์ CAPTCHA ที่สร้างแบบสุ่มก่อนจอง/อัปเดตการนัดหมาย
+    require_captcha_hint: "เมื่อเปิดใช้งาน ลูกค้าจะต้องพิมพ์ CAPTCHA ที่สร้างแบบสุ่มก่อนจอง/อัปเดตการนัดหมาย - ไปที่ Integrations เพื่อเลือกประเภท Captcha ขั้นสูงกว่า"
     captcha_is_wrong: การยืนยัน CAPTCHA ล้มเหลว โปรดลองอีกครั้ง
     enter_captcha_here: ป้อน CAPTCHA ที่นี่...
     any_provider: ผู้ให้บริการใดๆ

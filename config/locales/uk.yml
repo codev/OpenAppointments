@@ -1,6 +1,7 @@
 ---
 uk:
   ea:
+    turnstile_keys_hint_after: "зареєструвавши обліковий запис і перейшовши до Application Security > Turnstile"
     failed: "з помилкою"
     import_failures: "Записи з помилками"
     booking_provider_first: "Спочатку фахівець, а не послуга"
@@ -336,7 +337,7 @@ uk:
     oops_something_went_wrong: Ой! Щось пішло не так.
     ea_update_success: OpenAppointments успішно оновлено.
     require_captcha: Вимагати CAPTCHA
-    require_captcha_hint: Коли ввімкнено, клієнти повинні будуть ввести випадково згенерований CAPTCHA код перед бронюванням/оновленням запису.
+    require_captcha_hint: "Коли ввімкнено, клієнти повинні будуть ввести випадково згенерований CAPTCHA код перед бронюванням/оновленням запису. - перейдіть до Інтеграцій, щоб вибрати досконаліший тип Captcha"
     captcha_is_wrong: Перевірка CAPTCHA не вдалася, будь ласка, спробуйте ще раз.
     enter_captcha_here: Введіть CAPTCHA тут...
     any_provider: Будь-який провайдер

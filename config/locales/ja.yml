@@ -1,6 +1,7 @@
 ---
 ja:
   ea:
+    turnstile_keys_hint_after: "アカウントを登録し、Application Security > Turnstile に進んでください"
     failed: "失敗"
     import_failures: "失敗したレコード"
     booking_provider_first: "サービスより先に担当者を表示"
@@ -336,7 +337,7 @@ ja:
     oops_something_went_wrong: おっと、なにか が うまく 行ってません。
     ea_update_success: OpenAppointments の　アップデートが成功しました。
     require_captcha: CAPTCHAを要求
-    require_captcha_hint: 有効にすると、顧客は予約/更新の前にランダムに生成されたCAPTCHA文字列を入力する必要があります。
+    require_captcha_hint: "有効にすると、顧客は予約/更新の前にランダムに生成されたCAPTCHA文字列を入力する必要があります。 - より高度な Captcha の種類は連携ページで選択できます"
     captcha_is_wrong: CAPTCHA認証に失敗しました。もう一度お試しください。
     enter_captcha_here: ここに CAPTCHA を入力...
     any_provider: 任意のプロバイダー

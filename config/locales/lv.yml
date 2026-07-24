@@ -1,6 +1,7 @@
 ---
 lv:
   ea:
+    turnstile_keys_hint_after: "reģistrējot kontu un pēc tam dodoties uz Application Security > Turnstile"
     failed: "neizdevās"
     import_failures: "Neizdevušies ieraksti"
     booking_provider_first: "Vispirms sniedzējs, nevis pakalpojums"
@@ -336,7 +337,7 @@ lv:
     oops_something_went_wrong: Oops! Kaut kas notika nepareizi.
     ea_update_success: OpenAppointments ir veiksmīgi atjaunināts.
     require_captcha: Pieprasīt CAPTCHA
-    require_captcha_hint: Ja šī funkcija ir iespējota, klientiem pirms tikšanās rezervēšanas/atjaunināšanas būs jāievada nejauši ģenerēta CAPTCHA virkne.
+    require_captcha_hint: "Ja šī funkcija ir iespējota, klientiem pirms tikšanās rezervēšanas/atjaunināšanas būs jāievada nejauši ģenerēta CAPTCHA virkne. - dodieties uz Integrācijām, lai izvēlētos progresīvāku Captcha veidu"
     captcha_is_wrong: CAPTCHA verifikācija neizdevās, mēģiniet vēlreiz.
     enter_captcha_here: Ievadiet CAPTCHA šeit...
     any_provider: Jebkurš pakalpojumu sniedzējs

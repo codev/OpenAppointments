@@ -1,6 +1,7 @@
 ---
 ru:
   ea:
+    turnstile_keys_hint_after: "зарегистрировав аккаунт и перейдя в Application Security > Turnstile"
     failed: "с ошибкой"
     import_failures: "Записи с ошибками"
     booking_provider_first: "Сначала специалист, а не услуга"
@@ -336,7 +337,7 @@ ru:
     oops_something_went_wrong: Сорри! Возникла неопределённая ошибка.
     ea_update_success: Готово! Успешно обновлено.
     require_captcha: Требуется CAPTCHA
-    require_captcha_hint: Если эта функция включена - клиенты должны будут ввести случайно сгенерированную строку CAPTCHA перед бронированием/обновлением записи на прием.
+    require_captcha_hint: "Если эта функция включена - клиенты должны будут ввести случайно сгенерированную строку CAPTCHA перед бронированием/обновлением записи на прием. - перейдите в Интеграции, чтобы выбрать более продвинутый тип Captcha"
     captcha_is_wrong: Проверка CAPTCHA не прошла, пожалуйста, попробуйте еще раз.
     enter_captcha_here: Введите CAPTCHA здесь...
     any_provider: Любой поставщик

@@ -1,6 +1,7 @@
 ---
 lb:
   ea:
+    turnstile_keys_hint_after: "andeems Dir e Kont uleet an dann op Application Security > Turnstile gitt"
     failed: "feelgeschloen"
     import_failures: "Feelgeschloen Datesätz"
     booking_provider_first: "Fir d'éischt de Provider amplaz vum Service"
@@ -336,7 +337,7 @@ lb:
     oops_something_went_wrong: Oops! Et ass eppes schif gaang.
     ea_update_success: OpenAppointments gouf erfollegräich aktualiséiert.
     require_captcha: CAPTCHA erfuerderen
-    require_captcha_hint: Wann aktivéiert, mussen d'Clienten eng zoufälleg generéiert CAPTCHA-Zeichenkette aginn, ier si en Rendez-vous buchen/aktualiséieren.
+    require_captcha_hint: "Wann aktivéiert, mussen d'Clienten eng zoufälleg generéiert CAPTCHA-Zeichenkette aginn, ier si en Rendez-vous buchen/aktualiséieren. - gitt op Integratiounen fir e méi fortgeschrattene Captcha-Typ ze wielen"
     captcha_is_wrong: CAPTCHA Verifikatioun ass gescheitert, probéiert w.e.g. nach eng Kéier.
     enter_captcha_here: CAPTCHA hei aginn...
     any_provider: All Provider

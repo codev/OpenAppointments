@@ -1,6 +1,7 @@
 ---
 sq:
   ea:
+    turnstile_keys_hint_after: "duke u regjistruar për një llogari dhe duke shkuar te Application Security > Turnstile"
     failed: "dështuan"
     import_failures: "Regjistrime të dështuara"
     booking_provider_first: "Fillimisht ofruesi në vend të shërbimit"
@@ -336,7 +337,7 @@ sq:
     oops_something_went_wrong: Oops! Diçka Shkoi Keq.
     ea_update_success: OpenAppointments u përditësua me sukses.
     require_captcha: Kërko CAPTCHA
-    require_captcha_hint: Kur aktivizohet, klientët do të duhet të shkruajnë një string CAPTCHA të gjeneruar rastësisht përpara se të rezervojnë/ndryshojnë një takim.
+    require_captcha_hint: "Kur aktivizohet, klientët do të duhet të shkruajnë një string CAPTCHA të gjeneruar rastësisht përpara se të rezervojnë/ndryshojnë një takim. - shkoni te Integrimet për të zgjedhur një lloj Captcha më të avancuar"
     captcha_is_wrong: Verifikimi CAPTCHA dështoi, ju lutemi provoni përsëri.
     enter_captcha_here: Shkruani CAPTCHA këtu...
     any_provider: Çdo Ofrues

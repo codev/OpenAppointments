@@ -1,6 +1,7 @@
 ---
 'no':
   ea:
+    turnstile_keys_hint_after: "ved å registrere en konto og deretter gå til Application Security > Turnstile"
     failed: "mislyktes"
     import_failures: "Mislykkede poster"
     booking_provider_first: "Tilbyder først i stedet for tjeneste"
@@ -336,7 +337,7 @@
     oops_something_went_wrong: Oops! Noe gikk galt.
     ea_update_success: OpenAppointments har blitt oppdatert.
     require_captcha: Krev CAPTCHA
-    require_captcha_hint: Når dette er aktivert, må kundene skrive inn en tilfeldig generert CAPTCHA-streng før de bestiller/oppdaterer en avtale.
+    require_captcha_hint: "Når dette er aktivert, må kundene skrive inn en tilfeldig generert CAPTCHA-streng før de bestiller/oppdaterer en avtale. - gå til Integrasjoner for å velge en mer avansert Captcha-type"
     captcha_is_wrong: CAPTCHA-bekreftelse mislyktes, vennligst prøv igjen.
     enter_captcha_here: Skriv inn CAPTCHA her...
     any_provider: Enhver leverandør

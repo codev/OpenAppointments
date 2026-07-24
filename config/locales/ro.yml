@@ -1,6 +1,7 @@
 ---
 ro:
   ea:
+    turnstile_keys_hint_after: "creând un cont și mergând apoi la Application Security > Turnstile"
     failed: "eșuate"
     import_failures: "Înregistrări eșuate"
     booking_provider_first: "Mai întâi furnizorul în loc de serviciu"
@@ -336,7 +337,7 @@ ro:
     oops_something_went_wrong: Oops! Ceva nu a funtionat corect.
     ea_update_success: OpenAppointments a fost actualizat.
     require_captcha: Necesar CAPTCHA
-    require_captcha_hint: Când este activat, clienții vor trebui să tasteze un cod CAPTCHA generat aleator înainte de a rezerva/actualiza o programare.
+    require_captcha_hint: "Când este activat, clienții vor trebui să tasteze un cod CAPTCHA generat aleator înainte de a rezerva/actualiza o programare. - mergeți la Integrări pentru a alege un tip de Captcha mai avansat"
     captcha_is_wrong: Verificarea CAPTCHA a eșuat, vă rugăm să încercați din nou.
     enter_captcha_here: Introduceți CAPTCHA aici...
     any_provider: Orice Provider
