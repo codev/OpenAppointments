@@ -342,12 +342,14 @@ App.Pages.Booking = (function () {
             $selectProvider.find('option[value=""]').remove();
         }
 
-        // Add the "Any Provider" entry
+        // Add the "Any Provider" entry as the default, replacing "Please Select"
 
         const anyProviderAvailable = providerOptionCount > 2 && Boolean(Number(vars('display_any_provider')));
 
         if (anyProviderAvailable) {
-            $(new Option(lang('any_provider'), 'any-provider')).insertAfter($selectProvider.find('option:first'));
+            $selectProvider.find('option[value=""]').remove();
+            $(new Option(lang('any_provider'), 'any-provider')).prependTo($selectProvider);
+            $selectProvider.val('any-provider');
         }
 
         // Restore the previous provider selection if they can serve the new service
