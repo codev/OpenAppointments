@@ -19,7 +19,7 @@ ca:
     embed_hint: Enganxeu aquest codi a la pàgina del vostre web que ha de mostrar el formulari de reserves; el marc s'ajusta sol.
     copy: Copia
     import_data: Importa dades
-    import_hint: "Pugeu una còpia de seguretat, analitzeu-la primer i després importeu els tipus de registre seleccionats."
+    import_hint: "Pugeu una còpia de seguretat, analitzeu-la primer i després importeu els tipus de registre seleccionats. La configuració no s'importarà, torneu a configurar-la després de la importació."
     import_phases: Tipus de registres
     analyze: Analitza
     start_import: Inicia la importació

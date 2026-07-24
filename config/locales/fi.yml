@@ -19,7 +19,7 @@ fi:
     embed_hint: Liitä tämä koodi verkkosivusi sivulle, jolla varauslomake näytetään; kehys sovittaa korkeutensa itse.
     copy: Kopioi
     import_data: Tuo tiedot
-    import_hint: "Lataa varmuuskopio, analysoi se ensin ja tuo sitten valitut tietuetyypit."
+    import_hint: "Lataa varmuuskopio, analysoi se ensin ja tuo sitten valitut tietuetyypit. Asetuksia ei tuoda, määritä ne uudelleen tuonnin jälkeen."
     import_phases: Tietuetyypit
     analyze: Analysoi
     start_import: Aloita tuonti

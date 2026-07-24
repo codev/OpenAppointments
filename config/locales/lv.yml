@@ -19,7 +19,7 @@ lv:
     embed_hint: Ielīmējiet šo kodu savas vietnes lapā, kurā jārāda rezervācijas forma; rāmis pats pielāgo augstumu.
     copy: Kopēt
     import_data: Importēt datus
-    import_hint: "Augšupielādējiet dublējumu, vispirms to analizējiet, pēc tam importējiet atlasītos ierakstu veidus."
+    import_hint: "Augšupielādējiet dublējumu, vispirms to analizējiet, pēc tam importējiet atlasītos ierakstu veidus. Iestatījumi netiks importēti, lūdzu, konfigurējiet tos vēlreiz pēc importēšanas."
     import_phases: Ierakstu tipi
     analyze: Analizēt
     start_import: Sākt importu

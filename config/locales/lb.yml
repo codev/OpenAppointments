@@ -19,7 +19,7 @@ lb:
     embed_hint: Setzt dëse Code op d'Säit vun Ärer Websäit déi de Buchungsformulaire weise soll; de Frame passt seng Gréisst selwer un.
     copy: Kopéieren
     import_data: Daten importéieren
-    import_hint: "Luet e Backup erop, analyséiert en fir d'éischt, an importéiert dann déi gewielten Zorte vun Datesätz."
+    import_hint: "Luet e Backup erop, analyséiert en fir d'éischt, an importéiert dann déi gewielten Zorte vun Datesätz. Astellunge ginn net importéiert, riicht se w.e.g. nom Import nees an."
     import_phases: Datentypen
     analyze: Analyséieren
     start_import: Import starten

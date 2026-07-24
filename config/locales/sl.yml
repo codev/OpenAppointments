@@ -19,7 +19,7 @@ sl:
     embed_hint: Prilepite to kodo na stran svojega spletnega mesta, kjer naj se prikaze obrazec za rezervacije; okvir se sam prilagodi.
     copy: Kopiraj
     import_data: Uvoz podatkov
-    import_hint: "Naložite varnostno kopijo, jo najprej analizirajte in nato uvozite izbrane vrste zapisov."
+    import_hint: "Naložite varnostno kopijo, jo najprej analizirajte in nato uvozite izbrane vrste zapisov. Nastavitve ne bodo uvožene, po uvozu jih ponovno nastavite."
     import_phases: Vrste zapisov
     analyze: Analiziraj
     start_import: Zazeni uvoz

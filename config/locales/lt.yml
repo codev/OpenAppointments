@@ -19,7 +19,7 @@ lt:
     embed_hint: Įklijuokite šį kodą į savo svetainės puslapį, kuriame turi būti rodoma rezervacijos forma; rėmelis pats prisitaiko.
     copy: Kopijuoti
     import_data: Importuoti duomenis
-    import_hint: "Įkelkite atsarginę kopiją, pirmiausia ją išanalizuokite, tada importuokite pasirinktus įrašų tipus."
+    import_hint: "Įkelkite atsarginę kopiją, pirmiausia ją išanalizuokite, tada importuokite pasirinktus įrašų tipus. Nustatymai nebus importuoti, po importo sukonfigūruokite juos iš naujo."
     import_phases: Įrašų tipai
     analyze: Analizuoti
     start_import: Pradėti importą

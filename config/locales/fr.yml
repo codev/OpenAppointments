@@ -19,7 +19,7 @@ fr:
     embed_hint: Collez ce code dans la page de votre site qui doit afficher le formulaire de réservation ; le cadre s'ajuste automatiquement.
     copy: Copier
     import_data: Importer des données
-    import_hint: "Téléversez une sauvegarde, analysez-la d'abord, puis importez les types d'enregistrements sélectionnés."
+    import_hint: "Téléversez une sauvegarde, analysez-la d'abord, puis importez les types d'enregistrements sélectionnés. Les paramètres ne seront pas importés, veuillez les reconfigurer après l'importation."
     import_phases: Types d'enregistrements
     analyze: Analyser
     start_import: Démarrer l'import

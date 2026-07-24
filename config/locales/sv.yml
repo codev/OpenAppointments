@@ -19,7 +19,7 @@ sv:
     embed_hint: Klistra in den här koden på sidan på din webbplats som ska visa bokningsformuläret; ramen anpassar höjden själv.
     copy: Kopiera
     import_data: Importera data
-    import_hint: "Ladda upp en säkerhetskopia, analysera den först och importera sedan de valda posttyperna."
+    import_hint: "Ladda upp en säkerhetskopia, analysera den först och importera sedan de valda posttyperna. Inställningar importeras inte, konfigurera om dem efter importen."
     import_phases: Posttyper
     analyze: Analysera
     start_import: Starta import

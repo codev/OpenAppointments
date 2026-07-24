@@ -19,7 +19,7 @@ bs:
     embed_hint: Zalijepite ovaj kod na stranicu vase web stranice koja treba prikazati obrazac za rezervacije; okvir se sam prilagodava.
     copy: Kopiraj
     import_data: Uvoz podataka
-    import_hint: "Učitajte sigurnosnu kopiju, prvo je analizirajte, zatim uvezite odabrane vrste zapisa."
+    import_hint: "Učitajte sigurnosnu kopiju, prvo je analizirajte, zatim uvezite odabrane vrste zapisa. Postavke se neće uvesti, ponovo ih podesite nakon uvoza."
     import_phases: Vrste zapisa
     analyze: Analiziraj
     start_import: Pokreni uvoz

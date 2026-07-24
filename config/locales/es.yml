@@ -19,7 +19,7 @@ es:
     embed_hint: Pegue este código en la página de su sitio web que mostrará el formulario de reservas; el marco se ajusta solo.
     copy: Copiar
     import_data: Importar datos
-    import_hint: "Suba una copia de seguridad, analícela primero y luego importe los tipos de registro seleccionados."
+    import_hint: "Suba una copia de seguridad, analícela primero y luego importe los tipos de registro seleccionados. La configuración no se importará, vuelva a configurarla después de la importación."
     import_phases: Tipos de registros
     analyze: Analizar
     start_import: Iniciar importación

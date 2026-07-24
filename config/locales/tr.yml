@@ -19,7 +19,7 @@ tr:
     embed_hint: Bu kodu web sitenizde rezervasyon formunun görüneceği sayfaya yapıştırın; çerçeve boyutunu kendisi ayarlar.
     copy: Kopyala
     import_data: Veri içe aktar
-    import_hint: "Bir yedek yükleyin, önce analiz edin, ardından seçilen kayıt türlerini içe aktarın."
+    import_hint: "Bir yedek yükleyin, önce analiz edin, ardından seçilen kayıt türlerini içe aktarın. Ayarlar içe aktarılmaz, lütfen içe aktarmadan sonra yeniden yapılandırın."
     import_phases: Kayıt türleri
     analyze: Analiz et
     start_import: İçe aktarmayı başlat

@@ -19,7 +19,7 @@ et:
     embed_hint: Kleepige see kood oma veebisaidi lehele, kus broneerimisvorm peab kuvatama; raam kohandab oma kõrgust ise.
     copy: Kopeeri
     import_data: Andmete import
-    import_hint: "Laadige üles varukoopia, analüüsige seda kõigepealt ja seejärel importige valitud kirjetüübid."
+    import_hint: "Laadige üles varukoopia, analüüsige seda kõigepealt ja seejärel importige valitud kirjetüübid. Seadeid ei impordita, palun seadistage need pärast importi uuesti."
     import_phases: Kirjetüübid
     analyze: Analüüsi
     start_import: Alusta importi

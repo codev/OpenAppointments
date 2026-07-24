@@ -19,7 +19,7 @@ cs:
     embed_hint: Vložte tento kód na stránku vašeho webu, kde se má zobrazit rezervační formulář; rám se sám přizpůsobí.
     copy: Kopírovat
     import_data: Import dat
-    import_hint: "Nahrajte zálohu, nejprve ji analyzujte a poté importujte vybrané typy záznamů."
+    import_hint: "Nahrajte zálohu, nejprve ji analyzujte a poté importujte vybrané typy záznamů. Nastavení se neimportují, po importu je prosím znovu nastavte."
     import_phases: Typy záznamů
     analyze: Analyzovat
     start_import: Spustit import

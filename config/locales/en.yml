@@ -19,7 +19,7 @@ en:
     embed_hint: Paste this code into the page of your website that should show the booking form; the frame resizes itself to fit.
     copy: Copy
     import_data: Import data
-    import_hint: "Upload a backup, analyze it first, then import the selected record types."
+    import_hint: "Upload a backup, analyze it first, then import the selected record types. Settings will not be imported, please reconfigure them after import."
     import_phases: Record types
     analyze: Analyze
     start_import: Start import

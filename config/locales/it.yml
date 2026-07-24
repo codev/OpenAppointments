@@ -19,7 +19,7 @@ it:
     embed_hint: Incolla questo codice nella pagina del tuo sito che deve mostrare il modulo di prenotazione; il riquadro si ridimensiona da solo.
     copy: Copia
     import_data: Importa dati
-    import_hint: "Carica un backup, analizzalo prima e poi importa i tipi di record selezionati."
+    import_hint: "Carica un backup, analizzalo prima e poi importa i tipi di record selezionati. Le impostazioni non verranno importate, riconfigurale dopo l'importazione."
     import_phases: Tipi di record
     analyze: Analizza
     start_import: Avvia importazione

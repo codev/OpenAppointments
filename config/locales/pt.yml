@@ -19,7 +19,7 @@ pt:
     embed_hint: Cole este código na página do seu site que deve mostrar o formulário de marcação; a moldura ajusta-se sozinha.
     copy: Copiar
     import_data: Importar dados
-    import_hint: "Carregue uma cópia de segurança, analise-a primeiro e depois importe os tipos de registo selecionados."
+    import_hint: "Carregue uma cópia de segurança, analise-a primeiro e depois importe os tipos de registo selecionados. As definições não serão importadas, reconfigure-as após a importação."
     import_phases: Tipos de registos
     analyze: Analisar
     start_import: Iniciar importação

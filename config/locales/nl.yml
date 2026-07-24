@@ -19,7 +19,7 @@ nl:
     embed_hint: Plak deze code op de pagina van uw website waar het boekingsformulier moet verschijnen; het frame past zijn hoogte zelf aan.
     copy: Kopiëren
     import_data: Gegevens importeren
-    import_hint: "Upload een back-up, analyseer deze eerst en importeer daarna de geselecteerde recordtypen."
+    import_hint: "Upload een back-up, analyseer deze eerst en importeer daarna de geselecteerde recordtypen. Instellingen worden niet geïmporteerd, configureer ze opnieuw na de import."
     import_phases: Recordtypen
     analyze: Analyseren
     start_import: Import starten

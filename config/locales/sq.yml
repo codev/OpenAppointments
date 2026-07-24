@@ -19,7 +19,7 @@ sq:
     embed_hint: Ngjisni këtë kod në faqen e sajtit tuaj që duhet të shfaqë formularin e rezervimit; korniza përshtatet vetë.
     copy: Kopjo
     import_data: Importo të dhëna
-    import_hint: "Ngarkoni një kopje rezervë, analizojeni fillimisht, pastaj importoni llojet e zgjedhura të regjistrimeve."
+    import_hint: "Ngarkoni një kopje rezervë, analizojeni fillimisht, pastaj importoni llojet e zgjedhura të regjistrimeve. Cilësimet nuk do të importohen, ju lutemi rikonfiguroni ato pas importit."
     import_phases: Llojet e regjistrimeve
     analyze: Analizo
     start_import: Nis importin

@@ -19,7 +19,7 @@ zh-tw:
     embed_hint: 將此程式碼貼到您網站上要顯示預約表單的頁面；框架會自動調整大小。
     copy: 複製
     import_data: 匯入資料
-    import_hint: "上傳備份檔案，先進行分析，然後匯入所選的記錄類型。"
+    import_hint: "上傳備份檔案，先進行分析，然後匯入所選的記錄類型。 設定不會被匯入，請在匯入後重新設定。"
     import_phases: 記錄類型
     analyze: 分析
     start_import: 開始匯入

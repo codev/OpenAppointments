@@ -19,7 +19,7 @@ da:
     embed_hint: Indsæt denne kode på den side på dit websted, der skal vise bookingformularen; rammen tilpasser selv sin højde.
     copy: Kopier
     import_data: Importer data
-    import_hint: "Upload en sikkerhedskopi, analyser den først, og importer derefter de valgte posttyper."
+    import_hint: "Upload en sikkerhedskopi, analyser den først, og importer derefter de valgte posttyper. Indstillinger importeres ikke, konfigurer dem venligst igen efter importen."
     import_phases: Posttyper
     analyze: Analyser
     start_import: Start import

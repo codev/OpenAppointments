@@ -19,7 +19,7 @@ de:
     embed_hint: Fügen Sie diesen Code in die Seite Ihrer Website ein, die das Buchungsformular zeigen soll; der Rahmen passt seine Größe selbst an.
     copy: Kopieren
     import_data: Daten importieren
-    import_hint: "Laden Sie ein Backup hoch, analysieren Sie es zuerst und importieren Sie dann die ausgewählten Datensatztypen."
+    import_hint: "Laden Sie ein Backup hoch, analysieren Sie es zuerst und importieren Sie dann die ausgewählten Datensatztypen. Einstellungen werden nicht importiert, bitte nach dem Import neu konfigurieren."
     import_phases: Datentypen
     analyze: Analysieren
     start_import: Import starten

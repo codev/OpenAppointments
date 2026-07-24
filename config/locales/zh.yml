@@ -19,7 +19,7 @@ zh:
     embed_hint: 将此代码粘贴到您网站上要显示预约表单的页面；框架会自动调整大小。
     copy: 复制
     import_data: 导入数据
-    import_hint: "上传备份文件，先进行分析，然后导入所选的记录类型。"
+    import_hint: "上传备份文件，先进行分析，然后导入所选的记录类型。 设置不会被导入，请在导入后重新配置。"
     import_phases: 记录类型
     analyze: 分析
     start_import: 开始导入

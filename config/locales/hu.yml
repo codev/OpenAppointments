@@ -19,7 +19,7 @@ hu:
     embed_hint: Illessze be ezt a kódot webhelye azon oldalára, ahol a foglalási űrlapnak meg kell jelennie; a keret magassága automatikusan igazodik.
     copy: Másolás
     import_data: Adatok importálása
-    import_hint: "Töltsön fel egy biztonsági mentést, először elemezze, majd importálja a kiválasztott rekordtípusokat."
+    import_hint: "Töltsön fel egy biztonsági mentést, először elemezze, majd importálja a kiválasztott rekordtípusokat. A beállítások nem kerülnek importálásra, importálás után állítsa be őket újra."
     import_phases: Rekordtípusok
     analyze: Elemzés
     start_import: Import indítása
