@@ -31,7 +31,7 @@ class MessagesNotificationsController < ApplicationController
     notification.channels = Array(data[:channels]).map(&:to_s)
     notification.save!
     render json: { success: true, id: notification.id }
-  rescue ArgumentError, ActiveRecord::RecordInvalid => e
+  rescue ArgumentError, ActiveRecord::RecordInvalid, ActiveRecord::RecordNotFound => e
     json_exception(e, status: :ok)
   end
 
@@ -40,7 +40,7 @@ class MessagesNotificationsController < ApplicationController
     require_system_settings_edit!
     Notification.find(params.require(:notification_id)).destroy!
     render json: { success: true }
-  rescue ArgumentError => e
+  rescue ArgumentError, ActiveRecord::RecordNotFound => e
     json_exception(e, status: :ok)
   end
 

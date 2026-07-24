@@ -20,7 +20,7 @@ class MessagesProvidersController < ApplicationController
       {
         key: channel.key,
         label: channel.label,
-        settings_path: "/messages_#{channel.key == 'email' ? 'email' : channel.key}_settings",
+        settings_path: "/messages_#{channel.key}_settings",
         enabled: channel.enabled?,
         incoming: channel.enabled? && channel.incoming?
       }
