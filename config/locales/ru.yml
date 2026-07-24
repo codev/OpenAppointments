@@ -245,7 +245,7 @@ ru:
     support_group: Группа техподдержка
     project_issues: Вопросы по проекту
     license: Лицензия
-    about_app_license: 'OpenAppointments обладает лицензией GPLv3. При использовании кода приложения в любом случае вы соглашаетесь с условиями, описанными в следующей URL:'
+    about_app_license: "OpenAppointments распространяется по лицензии AGPL-3.0. Используя код OpenAppointments любым способом, вы соглашаетесь с условиями, описанными по следующей ссылке:"
     logout_success: Вы успешно вышли из кабинета! Выберите если хотите интересующий вас раздел.
     book_appointment_title: Предзаказы
     backend_section: Интерфейс управления

@@ -245,7 +245,7 @@ lt:
     support_group: Pagalbos grupė
     project_issues: Problemų registras
     license: Licencija
-    about_app_license: "„OpenAppointments“ yra platinama pagal GPLv3 licenciją. Bet kokiu būdu naudodamiesi „OpenAppointments“ kodu, jūs sutinkate su šios licensijos sąlygomis:"
+    about_app_license: "OpenAppointments licencijuota pagal AGPL-3.0 licencija. Bet kokiu budu naudodami OpenAppointments koda sutinkate su salygomis, aprasytomis siuo adresu:"
     logout_success: Jūs sėkmingai atsijungėte! Jei norite pereiti į kitą tinklalapį, spustelėkite vieną iš toliau pateiktų mygtukų.
     book_appointment_title: Registravimasis vizitui
     backend_section: Sistemos valdymo skydelis

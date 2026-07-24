@@ -245,7 +245,7 @@ tr:
     support_group: Destek Grubu
     project_issues: Proje Sorunları
     license: Lisans
-    about_app_license: 'OpenAppointments GPLv3 kapsamında lisanslıdır. Bu yazılımı herhangi bir biçimde kullanarak aşağıdaki adreste belirtilen koşulları kabul etmiş olursunuz:'
+    about_app_license: "OpenAppointments, AGPL-3.0 lisansi altinda lisanslanmistir. OpenAppointments kodunu herhangi bir sekilde kullanarak asagidaki adreste aciklanan kosullari kabul etmis olursunuz:"
     logout_success: Başarı ile sistemden çıkış yaptınız! Aşağıdaki butonlara tıklayarak diğer sayfalara geçebilirsiniz.
     book_appointment_title: Randevu Al
     backend_section: Yönetim Paneli

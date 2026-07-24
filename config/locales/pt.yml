@@ -236,7 +236,7 @@ pt:
     book_advance_timeout: Tempo esgotado / o tempo acaba
     book_advance_timeout_hint: Definir o limite de tempo (em minutos) antes que os clientes possam reservar ou reorganizar eventos com a empresa.
     timeout_minutes: O tempo acaba (minutos)
-    about_app_info: Easy!Appointmentes é uma aplicação web altamente personalizável que permite que os clientes marquem eventos através da internet. Além disso, oferece a possibilidade de sincronizar seus dados com o Google Calendar para que possa usá-los com outros serviços.
+    about_app_info: OpenAppointments é uma aplicação web altamente personalizável que permite que os clientes marquem eventos através da internet. Além disso, oferece a possibilidade de sincronizar seus dados com o Google Calendar para que possa usá-los com outros serviços.
     current_version: Versão Corrente
     support: Suporte
     about_app_support: Se encontrar algum problema ao usar o OpenAppointments, pode procurar respostas nas issues do projeto no GitHub. Pode também abrir uma nova issue para ajudar o desenvolvimento.
@@ -245,7 +245,7 @@ pt:
     support_group: Groupo de Suporte
     project_issues: Questões do projeto
     license: Licença
-    about_app_license: 'OpenAppointments está licenciado sob a licença GPLv3. Ao utilizar o código de OpenAppointments de qualquer forma concorda com os termos descritos na seguinte url:'
+    about_app_license: "O OpenAppointments esta licenciado sob a licenca AGPL-3.0. Ao utilizar o codigo do OpenAppointments de qualquer forma, esta a concordar com os termos descritos no seguinte url:"
     logout_success: Ligação fechada com sucesso! Clique num dos seguintes botões para navegar para uma página diferente.
     book_appointment_title: Agenda
     backend_section: Seção de backend

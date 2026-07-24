@@ -1,7 +1,8 @@
 # Releasing to Cloudron
 
-Versions are semver and must match in two places: the git tag and CloudronManifest.json
-`version`. Cloudron compares manifest versions to detect updates.
+Versions are semver. CloudronManifest.json `version` is the single source of truth:
+the app reads it at boot (`EaHelper::VERSION`, shown on the about page and footer),
+and Cloudron compares manifest versions to detect updates. The git tag must match it.
 
 ## Release
 

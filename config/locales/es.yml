@@ -245,7 +245,7 @@ es:
     support_group: Grupo de soporte
     project_issues: Incidentes del proyecto
     license: Licencia
-    about_app_license: 'OpenAppointments se encuentra bajo licencia GPLv3. Todo tipo de uso del código de OpenAppointments presume la aceptación de los términos desciptos en la siguiente dirección web:'
+    about_app_license: "OpenAppointments esta licenciado bajo la licencia AGPL-3.0. Al usar el codigo de OpenAppointments de cualquier manera, acepta los terminos descritos en la siguiente url:"
     logout_success: Usted ha cerrado su sesión exitosamente. Haga clic en uno de los siguientes botones para navegar hacia otra página.
     book_appointment_title: Agendar cita
     backend_section: Sección de gestión interna

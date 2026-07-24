@@ -230,7 +230,7 @@ sl:
     hidden: Skrito
     business_logic: Poslovna logika
     current_user: Trenutni uporabnik
-    about_app: O Easy! Appointments
+    about_app: O OpenAppointments
     edit_working_plan_hint: 'Spodaj označite dneve in ure, ko bo vaše podjetje sprejelo sestanke . Termine v izven delovnem času boste lahko prilagajali, v prostem času pa stranke ne bodo mogle same rezervirati terminov . Ta delovni načrt bo privzet za vsak nov zapis ponudnika, vendar boste lahko spreminjali načrt vsakega ponudnika posebej z urejanjem njegovega zapisa . Po tem lahko dodate obdobja odmora . '
     edit_breaks_hint: 'Dodaj delovne odmore za vsak dan . Te prekinitve bodo veljale za vse nove ponudnike . '
     book_advance_timeout: Časovna omejitev pred knjigo vnaprej
@@ -245,7 +245,7 @@ sl:
     support_group: Skupina za podporo
     project_issues: Projektne težave
     license: Licenca
-    about_app_license: 'OpenAppointments je licenciran pod licenco GPLv3. Z uporabo kode OpenAppointments na kakršen koli način soglašate s pogoji, opisanimi na naslednjem url-ju:'
+    about_app_license: "OpenAppointments je licenciran pod licenco AGPL-3.0. Z uporabo kode OpenAppointments na kakrsen koli nacin se strinjate s pogoji, opisanimi na naslednji povezavi:"
     logout_success: Uspešno ste bili odjavljeni! Za navigacijo na drugo stran kliknite enega od naslednjih gumbov.
     book_appointment_title: Rezerviraj termin
     backend_section: Zaledni razdelek

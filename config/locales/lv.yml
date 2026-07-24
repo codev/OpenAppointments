@@ -245,7 +245,7 @@ lv:
     support_group: Atbalsta grupa
     project_issues: Projekta jautājumi
     license: Licence
-    about_app_license: 'OpenAppointments ir licencēta ar GPLv3 licenci. Jebkurā veidā izmantojot OpenAppointments kodu, jūs piekrītat noteikumiem, kas aprakstīti šajā url:'
+    about_app_license: "OpenAppointments ir licencets saskana ar AGPL-3.0 licenci. Jebkada veida izmantojot OpenAppointments kodu, jus piekritat noteikumiem, kas aprakstiti saja saite:"
     logout_success: Jūs esat veiksmīgi izrakstījies! Noklikšķiniet uz kādas no šīm pogām, lai pārietu uz citu lapu.
     book_appointment_title: Rezervēt tikšanos
     backend_section: Administrācijas sadaļa

@@ -1,7 +1,8 @@
 # View helpers mirroring EA's template helper functions (lang, vars, setting).
 module EaHelper
-  # EA's config('version') (application/config/app.php).
-  VERSION = "1.6.0"
+  # App version. Single source of truth is CloudronManifest.json "version"
+  # (Cloudron needs it there to detect updates); everything else reads it here.
+  VERSION = JSON.parse(Rails.root.join("CloudronManifest.json").read)["version"].freeze
 
   def lang(key)
     t("ea.#{key}", default: key)

@@ -245,7 +245,7 @@ ro:
     support_group: Grup Suport
     project_issues: Probleme proiect
     license: Licenta
-    about_app_license: 'OpenAppointments este sub licenta GPLv3. folosind codul OpenAppointments în orice fel aduce cu sine acceptarea conditiilor descrise in urmatorul url:'
+    about_app_license: "OpenAppointments este licentiat sub licenta AGPL-3.0. Folosind codul OpenAppointments in orice mod, sunteti de acord cu termenii descrisi la urmatoarea adresa:"
     logout_success: Ati iesit din program! Apasati pe unul din butoanele urmatoare ca sa navigati spre o alta pagina.
     book_appointment_title: Programeaza întâlnire
     backend_section: Sectiunea Backend

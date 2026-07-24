@@ -245,7 +245,7 @@ ar:
     support_group: مجموعة الدعم
     project_issues: مشاكل المشروع
     license: الرخصة
-    about_app_license: OpenAppointments مرخص بموجب ترخيص GPLv3. باستخدامك لرمز OpenAppointments بأي شكل من الأشكال فإنك توافق على الشروط الموضحة في عنوان URL التالي
+    about_app_license: "OpenAppointments مرخص بموجب ترخيص AGPL-3.0. باستخدامك لكود OpenAppointments بأي شكل فأنت توافق على الشروط الموضحة في الرابط التالي:"
     logout_success: تم تسجيل الخروج بنجاح
     book_appointment_title: احجز موعد
     backend_section: صفحة الدخول للبرنامج

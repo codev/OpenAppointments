@@ -245,7 +245,7 @@ zh:
     support_group: 技术支持团队
     project_issues: 项目问题
     license: 许可
-    about_app_license: '需要了解更多关于使用许可。请点击查看以下连接:'
+    about_app_license: "OpenAppointments 基于 AGPL-3.0 许可证授权。以任何方式使用 OpenAppointments 的代码即表示您同意以下链接中描述的条款:"
     logout_success: 您已经成功注销！点击后面的按钮去向其他页面.
     book_appointment_title: 预定预约
     backend_section: 后台界面

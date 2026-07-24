@@ -245,7 +245,7 @@ he:
     support_group: קבוצת תמיכה
     project_issues: בעיות בפרויקט
     license: רישיון
-    about_app_license: 'OpenAppointments מורשה תחת רישיון GPLv3. בשימוש בקוד של OpenAppointments בכל דרך שהיא, אתה מסכים לתנאים המתוארים בכתובת הבאה:'
+    about_app_license: "OpenAppointments מופץ תחת רישיון AGPL-3.0. שימוש בקוד של OpenAppointments בכל דרך מהווה הסכמה לתנאים המתוארים בקישור הבא:"
     logout_success: נותקת בהצלחה! לחץ על אחד מהכפתורים הבאים בכדי לנווט לדף אחר.
     book_appointment_title: קיבעו פגישה
     backend_section: ממשק הניהול
@@ -375,7 +375,7 @@ he:
     require_phone_number: נדרש מספר טלפון
     require_phone_number_hint: כאשר אפשרות זו מופעלת, לקוחות ומשתמשים יצטרכו להזין את מספר הטלפון בעת הזמנת פגישה
     check_spam_folder: אם הדוא"ל אינו מגיע תוך מספר דקות יש לבדוק את תיקיית הספאם שלך .
-    api_token_hint: הגדר טוקן סודי על מנת לאפשר אימות מבוסס טוקן בממשק ה- API של Easy! Appointments.
+    api_token_hint: הגדר טוקן סודי על מנת לאפשר אימות מבוסס טוקן בממשק ה- API של OpenAppointments.
     timezone: אזור זמן
     overwrite_existing_working_plans: פעולה זו תחליף את כל תוכניות העבודה של הספקים הקיימים, האם את/ה בטוח/ה שברצונך להמשיך?
     working_plans_got_updated: כל תוכניות העבודה עודכנו.

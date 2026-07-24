@@ -245,7 +245,7 @@ cs:
     support_group: Skupina podpory
     project_issues: Incidenty projektu
     license: Licence
-    about_app_license: 'OpenAppointments je licencováno pod licencí GPLv3. Používáním kódu OpenAppointments v jakékoli formě souhlasíte s podmínkami popsanými v dokumentu na následující adrese:'
+    about_app_license: "OpenAppointments je licencovan pod licenci AGPL-3.0. Pouzivanim kodu OpenAppointments jakymkoli zpusobem souhlasite s podminkami popsanymi na nasledujici adrese:"
     logout_success: Byli jste úspěšně odhlášeni! Pro přesměrování na jinou stránku klikněte na některé z následujících tlačítek.
     book_appointment_title: Rezervace schůzky
     backend_section: Administrace

@@ -236,7 +236,7 @@ nl:
     book_advance_timeout: Voor-boek-tijd vooruitboeken
     book_advance_timeout_hint: Definieer de tijd (in minuten) voordat klanten afspraken met het bedrijf kunnen boeken of herindelen.
     timeout_minutes: Voor-boek-tijd (minuten)
-    about_app_info: Easy! Afspraken is een zeer flexibele web applicatie waarmee klanten afspraken met u kunnen boeken via het web. Bovendien biedt het de mogelijkheid om uw gegevens te synchroniseren met Google Agenda, zodat u ze kunt gebruiken met andere diensten.
+    about_app_info: OpenAppointments is een zeer flexibele web applicatie waarmee klanten afspraken met u kunnen boeken via het web. Bovendien biedt het de mogelijkheid om uw gegevens te synchroniseren met Google Agenda, zodat u ze kunt gebruiken met andere diensten.
     current_version: Huidige versie
     support: Ondersteuning
     about_app_support: Als u problemen ondervindt bij het gebruik van OpenAppointments, kunt u naar antwoorden zoeken in de issues van het project op GitHub. U kunt ook een nieuw issue openen om de ontwikkeling te helpen.
@@ -245,7 +245,7 @@ nl:
     support_group: Ondersteuningsgroep
     project_issues: Project issues
     license: Licentie
-    about_app_license: 'Easy! Afspraken is gelicenseerd onder de gplv3 licentie. Door het gebruik van de code van Easy Afspraken op welke manier dan ook gaat u akkoord met de in de volgende url beschreven voorwaarden:'
+    about_app_license: "OpenAppointments is gelicenseerd onder de AGPL-3.0-licentie. Door de code van OpenAppointments op welke manier dan ook te gebruiken, gaat u akkoord met de voorwaarden beschreven op de volgende url:"
     logout_success: U bent succesvol uitgelogd! Gebruik een van de volgende knoppen om te navigeren naar een andere pagina.
     book_appointment_title: Boek afspraak
     backend_section: Beheerdersysteem (backend)

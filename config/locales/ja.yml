@@ -245,7 +245,7 @@ ja:
     support_group: サポートグループ
     project_issues: プロジェクト対応一覧
     license: ライセンス
-    about_app_license: 'OpenAppointments は　GPLv3 ライセンス に従います。 OpenAppointments　のプログラムコードを使用するということは、あるあらゆる面で 次のURLのサイトにある条件に同意したこととなります。:'
+    about_app_license: "OpenAppointments は AGPL-3.0 ライセンスの下で提供されています。OpenAppointments のコードを何らかの形で使用することにより、次の URL に記載された条件に同意したことになります:"
     logout_success: ログアウトが完了しました。どちらかのボタンを押して ページを移動することができます。
     book_appointment_title: 予約受付
     backend_section: 管理画面

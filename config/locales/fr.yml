@@ -245,7 +245,7 @@ fr:
     support_group: Groupe de soutien
     project_issues: Questions sur le projet
     license: Licence
-    about_app_license: 'OpenAppointments est fourni sous licence GPLv3. En utilisant le code d’OpenAppointments, quelqu’en soit l’usage, vous êtes tenu d’accepter les termes décrits dans l’URL suivante :'
+    about_app_license: "OpenAppointments est fourni sous licence AGPL-3.0. En utilisant le code d'OpenAppointments de quelque maniere que ce soit, vous acceptez les conditions decrites a l'adresse suivante :"
     logout_success: Vous avez bien été déconnecté ! Cliquez sur l’un des boutons suivants pour naviguer dans les différentes pages
     book_appointment_title: Carnet de rendez-vous
     backend_section: Administration

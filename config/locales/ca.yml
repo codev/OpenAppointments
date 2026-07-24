@@ -245,7 +245,7 @@ ca:
     support_group: Grup de suport
     project_issues: Incidències del projecte
     license: Llicència
-    about_app_license: 'OpenAppointments es distribueix amb una llicència GPLv3. Usant el codi d''OpenAppointments de qualsevol forma, esteu consentint els termes descrits en la següent URL:'
+    about_app_license: "OpenAppointments esta llicenciat sota la llicencia AGPL-3.0. En utilitzar el codi d'OpenAppointments de qualsevol manera, accepteu els termes descrits al seguent enllac:"
     logout_success: Heu sortit correctament! Cliqueu en un dels següents botons per navegar a una altra pàgina.
     book_appointment_title: Reserva una cita
     backend_section: Administració
