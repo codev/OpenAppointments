@@ -8,7 +8,7 @@ class PhoneOrEmailTest < ActionDispatch::IntegrationTest
       post_data: {
         appointment: {
           "start_datetime" => "#{DATE} 11:00:00",
-          "id_services" => services(:haircut).id, "id_users_provider" => users(:jane).id
+          "id_services" => services(:haircut).id, "id_users_provider" => users(:zane).id
         },
         customer: customer,
         manage_mode: false

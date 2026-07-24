@@ -20,7 +20,7 @@ class SettingsPagesTest < ActionDispatch::IntegrationTest
   end
 
   def login_customer
-    customer = users(:james)
+    customer = users(:jx)
     customer.create_settings!(username: "jamesdoe", password: Passwords.hash("customer1"))
     post "/login/validate", params: { username: "jamesdoe", password: "customer1" }
   end
@@ -77,10 +77,10 @@ class SettingsPagesTest < ActionDispatch::IntegrationTest
 
   test "account save persists the display name change" do
     login_provider
-    provider = users(:jane)
+    provider = users(:zane)
     post "/account/save", params: {
       account: {
-        name: "Janet Doe", email: "jane@example.org",
+        name: "Janet Doe", email: "zane@example.org",
         timezone: "Europe/London", language: "english",
         settings: { username: "janedoe", calendar_view: "default", notifications: 1 }
       }
@@ -92,10 +92,10 @@ class SettingsPagesTest < ActionDispatch::IntegrationTest
 
   test "account validate_username reports duplicates" do
     login_provider
-    post "/account/validate_username", params: { username: "administrator", user_id: users(:jane).id }
+    post "/account/validate_username", params: { username: "administrator", user_id: users(:zane).id }
     assert_equal false, response.parsed_body["is_valid"]
 
-    post "/account/validate_username", params: { username: "janedoe", user_id: users(:jane).id }
+    post "/account/validate_username", params: { username: "janedoe", user_id: users(:zane).id }
     assert_equal true, response.parsed_body["is_valid"]
   end
 end

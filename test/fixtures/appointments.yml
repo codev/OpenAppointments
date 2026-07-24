@@ -3,8 +3,8 @@ upcoming:
   book_datetime: "2026-07-01 10:00:00"
   start_datetime: "2026-07-20 10:00:00"
   end_datetime: "2026-07-20 10:30:00"
-  provider: jane
-  customer: james
+  provider: zane
+  customer: jx
   service: haircut
   booking_hash: abc123def456
   status: Booked
@@ -12,6 +12,6 @@ upcoming:
 lunch_block:
   start_datetime: "2026-07-20 12:00:00"
   end_datetime: "2026-07-20 13:00:00"
-  provider: jane
+  provider: zane
   is_unavailability: true
   booking_hash: unavail00001

@@ -9,17 +9,17 @@ class PicturesTest < ActionDispatch::IntegrationTest
 
   test "provider picture upload, payload url and removal" do
     login_admin
-    jane = users(:jane)
+    zane = users(:zane)
 
-    post "/providers/#{jane.id}/picture", params: { picture: png }
+    post "/providers/#{zane.id}/picture", params: { picture: png }
     assert_response :success
     assert response.parsed_body["picture_url"].present?
-    assert jane.reload.picture.attached?
+    assert zane.reload.picture.attached?
 
-    post "/providers/#{jane.id}/picture", params: { remove: "1" }
+    post "/providers/#{zane.id}/picture", params: { remove: "1" }
     assert_response :success
     assert_nil response.parsed_body["picture_url"]
-    assert_not jane.reload.picture.attached?
+    assert_not zane.reload.picture.attached?
   end
 
   test "service and category picture upload" do
@@ -36,20 +36,20 @@ class PicturesTest < ActionDispatch::IntegrationTest
   test "non-image uploads are rejected" do
     login_admin
     file = Rack::Test::UploadedFile.new(StringIO.new("plain"), "text/plain", original_filename: "x.txt")
-    post "/providers/#{users(:jane).id}/picture", params: { picture: file }
+    post "/providers/#{users(:zane).id}/picture", params: { picture: file }
     assert_response :internal_server_error
     assert_equal false, response.parsed_body["success"]
-    assert_not users(:jane).reload.picture.attached?
+    assert_not users(:zane).reload.picture.attached?
   end
 
   test "picture upload requires a permitted session" do
-    post "/providers/#{users(:jane).id}/picture", params: { picture: png }
+    post "/providers/#{users(:zane).id}/picture", params: { picture: png }
     assert_response :redirect
   end
 
   test "backend row payloads carry picture_url" do
-    users(:jane).picture.attach(png)
-    row = EaRows.user_row(users(:jane))
+    users(:zane).picture.attach(png)
+    row = EaRows.user_row(users(:zane))
     assert row["picture_url"].present?
 
     services(:haircut).picture.attach(png)
@@ -57,11 +57,11 @@ class PicturesTest < ActionDispatch::IntegrationTest
   end
 
   test "booking payloads carry picture urls" do
-    users(:jane).picture.attach(png)
+    users(:zane).picture.attach(png)
     services(:haircut).picture.attach(png)
     service_categories(:hair).picture.attach(png)
 
-    provider = BookingPayloads.available_providers.find { |p| p["id"] == users(:jane).id }
+    provider = BookingPayloads.available_providers.find { |p| p["id"] == users(:zane).id }
     assert provider["picture_url"].present?
 
     service = BookingPayloads.available_services.find { |s| s["id"] == services(:haircut).id }

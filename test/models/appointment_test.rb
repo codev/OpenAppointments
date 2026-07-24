@@ -5,7 +5,7 @@ class AppointmentTest < ActiveSupport::TestCase
     appointment = Appointment.create!(
       start_datetime: Time.new(2026, 7, 21, 10, 0, 0),
       end_datetime: Time.new(2026, 7, 21, 10, 30, 0),
-      provider: users(:jane), customer: users(:james), service: services(:haircut)
+      provider: users(:zane), customer: users(:jx), service: services(:haircut)
     )
     assert_match(/\A[A-Za-z0-9]{12}\z/, appointment.booking_hash)
   end
@@ -18,7 +18,7 @@ class AppointmentTest < ActiveSupport::TestCase
     appointment = Appointment.new(
       start_datetime: Time.new(2026, 7, 21, 10, 0, 0),
       end_datetime: Time.new(2026, 7, 21, 10, 30, 0),
-      provider: users(:jane)
+      provider: users(:zane)
     )
     assert_not appointment.valid?
     assert appointment.errors[:id_users_customer].any?
@@ -32,7 +32,7 @@ class AppointmentTest < ActiveSupport::TestCase
     appointment = Appointment.new(
       start_datetime: Time.new(2026, 7, 21, 10, 0, 0),
       end_datetime: Time.new(2026, 7, 21, 10, 4, 0),
-      provider: users(:jane), is_unavailability: true
+      provider: users(:zane), is_unavailability: true
     )
     assert_not appointment.valid?
   end
@@ -41,7 +41,7 @@ class AppointmentTest < ActiveSupport::TestCase
     appointment = Appointment.new(
       start_datetime: Time.new(2026, 7, 21, 10, 0, 0),
       end_datetime: Time.new(2026, 7, 21, 9, 0, 0),
-      provider: users(:jane), is_unavailability: true
+      provider: users(:zane), is_unavailability: true
     )
     assert_not appointment.valid?
   end
@@ -68,7 +68,7 @@ class AppointmentTest < ActiveSupport::TestCase
 
   test "cascade: deleting customer removes their appointments" do
     assert_difference "Appointment.count", -1 do
-      users(:james).destroy
+      users(:jx).destroy
     end
   end
 end

@@ -11,7 +11,7 @@ class CalendarPullTest < ActiveSupport::TestCase
   end
 
   setup do
-    @provider = users(:jane)
+    @provider = users(:zane)
     @provider.settings.update!(google_sync: true, google_calendar: "primary",
                                sync_past_days: 30, sync_future_days: 90)
   end
@@ -56,7 +56,7 @@ class CalendarPullTest < ActiveSupport::TestCase
   end
 
   test "removes a local record whose remote event was cancelled" do
-    owned = @provider.provider_appointments.create!(customer: users(:james), service: services(:haircut),
+    owned = @provider.provider_appointments.create!(customer: users(:jx), service: services(:haircut),
                                                     start_datetime: "2026-07-25 11:00:00",
                                                     end_datetime: "2026-07-25 11:30:00", id_google_calendar: "own-1")
     event = FakeEvent.new("own-1", "cancelled", nil, nil, nil)

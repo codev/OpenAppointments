@@ -9,7 +9,7 @@ module Api
         assert_equal "2026-07-20 10:00:00", appointment["start"]
         assert_equal "2026-07-20 10:30:00", appointment["end"]
         assert_equal "abc123def456", appointment["hash"]
-        assert_equal users(:jane).id, appointment["providerId"]
+        assert_equal users(:zane).id, appointment["providerId"]
         assert_equal services(:haircut).id, appointment["serviceId"]
         assert_not appointment.key?("start_datetime")
       end
@@ -20,7 +20,7 @@ module Api
       end
 
       test "date and provider filters" do
-        api_get "/api/v1/appointments", date: "2026-07-20", providerId: users(:jane).id
+        api_get "/api/v1/appointments", date: "2026-07-20", providerId: users(:zane).id
         assert_equal 1, json.length
         api_get "/api/v1/appointments", date: "2026-07-19"
         assert_empty json
@@ -30,14 +30,14 @@ module Api
 
       test "with embeds raw service, provider and customer rows after fields projection" do
         api_get "/api/v1/appointments/#{appointments(:upcoming).id}", fields: "id", with: "customer,service"
-        assert_equal "James Doe", json["customer"]["name"]
+        assert_equal "JX", json["customer"]["name"]
         assert_equal "Trim Cut", json["service"]["name"]
         assert_not json.key?("provider")
         assert_not json.key?("start")
 
         api_get "/api/v1/appointments", with: "provider"
         appointment = json.find { |a| a["id"] == appointments(:upcoming).id }
-        assert_equal "Jane Doe", appointment["provider"]["name"]
+        assert_equal "Zane", appointment["provider"]["name"]
       end
 
       test "unknown with relation returns the EA json error" do
@@ -57,7 +57,7 @@ module Api
           assert_enqueued_with(job: WebhookDeliveryJob) do
             api_post "/api/v1/appointments", {
               start: "2026-07-21 09:00:00", serviceId: services(:haircut).id,
-              providerId: users(:jane).id, customerId: users(:james).id
+              providerId: users(:zane).id, customerId: users(:jx).id
             }
           end
         end
@@ -78,7 +78,7 @@ module Api
       test "invalid references return a JSON error, not an HTML 500" do
         api_post "/api/v1/appointments", {
           start: "2026-07-21 09:00:00", serviceId: services(:haircut).id,
-          providerId: users(:jane).id, customerId: 999_999
+          providerId: users(:zane).id, customerId: 999_999
         }
         assert_response :internal_server_error
         assert_equal false, json["success"]

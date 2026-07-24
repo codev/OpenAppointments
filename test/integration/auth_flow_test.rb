@@ -24,7 +24,7 @@ class AuthFlowTest < ActionDispatch::IntegrationTest
   end
 
   test "permission check forbids customer role" do
-    customer = users(:james)
+    customer = users(:jx)
     customer.create_settings!(username: "jamesdoe", password: Passwords.hash("customer1"))
     post "/login/validate", params: { username: "jamesdoe", password: "customer1" }
     assert_equal({ "success" => true }, response.parsed_body)
@@ -43,7 +43,7 @@ class AuthFlowTest < ActionDispatch::IntegrationTest
 
   test "recovery perform always succeeds and sends email only for real users" do
     assert_enqueued_emails 1 do
-      post "/recovery/perform", params: { username: "janedoe", email: "jane@example.org" }
+      post "/recovery/perform", params: { username: "janedoe", email: "zane@example.org" }
     end
     assert_equal({ "success" => true }, response.parsed_body)
 
@@ -54,11 +54,11 @@ class AuthFlowTest < ActionDispatch::IntegrationTest
   end
 
   test "full password reset flow" do
-    post "/recovery/perform", params: { username: "janedoe", email: "jane@example.org" }
-    token = user_settings(:jane).reload.password_reset_token
+    post "/recovery/perform", params: { username: "janedoe", email: "zane@example.org" }
+    token = user_settings(:zane).reload.password_reset_token
     assert token.present?
 
-    plain_token = Accounts.generate_reset_token("janedoe", "jane@example.org")[:token]
+    plain_token = Accounts.generate_reset_token("janedoe", "zane@example.org")[:token]
 
     get "/recovery/reset", params: { token: plain_token }
     assert_response :success
@@ -85,7 +85,7 @@ class AuthFlowTest < ActionDispatch::IntegrationTest
   end
 
   test "mismatched reset passwords rejected" do
-    plain_token = Accounts.generate_reset_token("janedoe", "jane@example.org")[:token]
+    plain_token = Accounts.generate_reset_token("janedoe", "zane@example.org")[:token]
     post "/recovery/complete", params: { token: plain_token, password: "brandnew77", password_confirm: "different77" }
     body = response.parsed_body
     assert_equal false, body["success"]

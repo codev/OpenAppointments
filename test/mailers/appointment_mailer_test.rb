@@ -4,8 +4,8 @@ class AppointmentMailerTest < ActionMailer::TestCase
   setup do
     @appointment = appointments(:upcoming)
     @service = services(:haircut)
-    @provider = users(:jane)
-    @customer = users(:james)
+    @provider = users(:zane)
+    @customer = users(:jx)
     @settings = { company_name: "Test Company", company_link: "https://example.org",
                   company_email: "info@example.org", company_color: nil,
                   date_format: "DMY", time_format: "regular" }

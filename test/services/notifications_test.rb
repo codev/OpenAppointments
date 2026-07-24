@@ -6,15 +6,15 @@ class NotificationsTest < ActiveSupport::TestCase
   setup do
     @appointment = appointments(:upcoming)
     @service = services(:haircut)
-    @provider = users(:jane)
-    @customer = users(:james)
+    @provider = users(:zane)
+    @customer = users(:jx)
     @settings = { company_name: "Test Company", company_link: "https://example.org",
                   company_email: "info@example.org", company_color: nil,
                   date_format: "DMY", time_format: "regular" }
   end
 
   test "saved notifies customer, provider and admin" do
-    # customer (james, has email + customer_notifications=1), provider (jane,
+    # customer (jx, has email + customer_notifications=1), provider (zane,
     # notifications on), admin (administrator, notifications on) = 3 emails.
     assert_enqueued_emails 3 do
       Notifications.appointment_saved(@appointment, @service, @provider, @customer, @settings)
@@ -31,7 +31,7 @@ class NotificationsTest < ActiveSupport::TestCase
   end
 
   test "provider notifications flag honored" do
-    user_settings(:jane).update!(notifications: false)
+    user_settings(:zane).update!(notifications: false)
     assert_enqueued_emails 2 do
       Notifications.appointment_saved(@appointment, @service, @provider, @customer, @settings)
     end

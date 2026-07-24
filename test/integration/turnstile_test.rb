@@ -16,7 +16,7 @@ class TurnstileTest < ActionDispatch::IntegrationTest
       post_data: {
         appointment: {
           "start_datetime" => "2026-07-20 11:00:00",
-          "id_services" => services(:haircut).id, "id_users_provider" => users(:jane).id
+          "id_services" => services(:haircut).id, "id_users_provider" => users(:zane).id
         },
         customer: { "name" => "Captcha Booker", "email" => "captcha@example.org" },
         manage_mode: false
