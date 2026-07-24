@@ -52,6 +52,7 @@ module TenToEight
 
     def load_services
       counts = track("services")
+      @category_ids ||= ServiceCategory.pluck(:name, :id).to_h
       @service_ids = {}
       @data[:services].each do |row|
         service = Service.find_by(name: row[:name])
@@ -61,7 +62,7 @@ module TenToEight
           service = Service.create!(
             name: row[:name], duration: row[:duration] || 30, price: 0, currency: "GBP",
             attendants_number: 1,
-            id_service_categories: @category_ids&.fetch(row[:category], nil)
+            id_service_categories: @category_ids[row[:category]]
           )
           counts[:created] += 1
         end
@@ -72,6 +73,7 @@ module TenToEight
     def load_providers
       counts = track("providers")
       role = Role.find_by!(slug: Role::PROVIDER)
+      @service_ids ||= Service.pluck(:name, :id).to_h
       @provider_ids = {}
       existing = User.providers.to_a.index_by { |user| user.email.to_s.downcase }
 
@@ -96,7 +98,7 @@ module TenToEight
           next
         end
 
-        service_ids = row[:services].filter_map { |name| @service_ids&.fetch(name, nil) }
+        service_ids = row[:services].filter_map { |name| @service_ids[name] }
         service_ids.each do |service_id|
           ServiceProviderLink.find_or_create_by!(id_users: provider.id, id_services: service_id)
         end
@@ -147,7 +149,7 @@ module TenToEight
       counts = track("appointments")
       provider_ids = @provider_ids || User.providers.to_a.to_h { |user| [ user.name, user.id ] }
       service_ids = @service_ids || Service.pluck(:name, :id).to_h
-      customer_ids = @customer_ids || {}
+      customer_ids = @customer_ids || match_existing_customers
 
       @data[:appointments].each do |row|
         provider_id = provider_ids[row[:staff]]
@@ -170,6 +172,22 @@ module TenToEight
           notes: row[:note], location: "", book_datetime: Time.now, status: row[:status]
         )
         counts[:created] += 1
+      end
+    end
+
+    # Ext-id map for an appointments run without the customers phase: match the
+    # export's customers against the DB the same way load_customers does.
+    def match_existing_customers
+      by_email = {}
+      by_name_phone = {}
+      User.customers.find_each do |user|
+        by_email[user.email.to_s.downcase] = user.id if user.email.present?
+        by_name_phone["#{user.name.to_s.downcase}|#{user.phone_number}"] = user.id
+      end
+      @data[:customers].each_with_object({}) do |row, map|
+        id = row[:email].present? ? by_email[row[:email].downcase] : nil
+        id ||= by_name_phone["#{row[:name].to_s.downcase}|#{row[:phone]}"]
+        map[row[:ext_id]] = id if id
       end
     end
   end
