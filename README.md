@@ -79,6 +79,10 @@ New theme rendering with outlined boxes instead of solid fills.
 
 Under Settings - Embedding - enter the website you want to embed the booking widget on and copy the code to your website.
 
+### Calendar sync
+
+Each provider can sync their calendar - outbound sync works for CalDAV and Google Calendar. Google Calendar also supports inbound sync so events created in Google prevent booking those times as unavailable and events that are removed are canceled. Still todo: All-day event support.
+
 
 ## Operations
 
