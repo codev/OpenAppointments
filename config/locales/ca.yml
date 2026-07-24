@@ -1,6 +1,7 @@
 ---
 ca:
   ea:
+    release_notes: "Notes de la versió"
     services_description: "Descripció dels serveis oferts"
     go_to_company: "Vés a %{company}"
     download_ics: "Baixa el fitxer ics"

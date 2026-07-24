@@ -1,6 +1,7 @@
 ---
 bu:
   ea:
+    release_notes: "ထုတ်ဝေမှုမှတ်စုများ"
     services_description: "ပေးသော ဝန်ဆောင်မှုများ၏ ဖော်ပြချက်"
     go_to_company: "%{company} သို့သွားရန်"
     download_ics: "ics ဖိုင် ဒေါင်းလုဒ်လုပ်ရန်"

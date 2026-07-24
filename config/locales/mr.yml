@@ -1,6 +1,7 @@
 ---
 mr:
   ea:
+    release_notes: "प्रकाशन टिपा"
     services_description: "पुरवलेल्या सेवांचे वर्णन"
     go_to_company: "%{company} वर जा"
     download_ics: "ics फाईल डाउनलोड करा"

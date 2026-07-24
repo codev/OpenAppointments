@@ -1,6 +1,7 @@
 ---
 sv:
   ea:
+    release_notes: "Versionsinformation"
     services_description: "Beskrivning av erbjudna tjänster"
     go_to_company: "Gå till %{company}"
     download_ics: "Ladda ner ics-fil"

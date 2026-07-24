@@ -1,6 +1,7 @@
 ---
 he:
   ea:
+    release_notes: "הערות גרסה"
     services_description: "תיאור השירותים הניתנים"
     go_to_company: "מעבר אל %{company}"
     download_ics: "הורדת קובץ ics"

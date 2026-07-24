@@ -1,6 +1,7 @@
 ---
 uk:
   ea:
+    release_notes: "Примітки до випуску"
     services_description: "Опис послуг, що надаються"
     go_to_company: "Перейти на %{company}"
     download_ics: "Завантажити файл ics"

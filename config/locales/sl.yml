@@ -1,6 +1,7 @@
 ---
 sl:
   ea:
+    release_notes: "Opombe ob izdaji"
     services_description: "Opis ponujenih storitev"
     go_to_company: "Pojdi na %{company}"
     download_ics: "Prenesi datoteko ics"

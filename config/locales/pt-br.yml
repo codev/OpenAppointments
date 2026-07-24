@@ -1,6 +1,7 @@
 ---
 pt-br:
   ea:
+    release_notes: "Notas da versão"
     services_description: "Descrição dos serviços prestados"
     go_to_company: "Ir para %{company}"
     download_ics: "Baixar arquivo ics"

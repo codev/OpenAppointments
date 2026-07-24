@@ -1,6 +1,7 @@
 ---
 ro:
   ea:
+    release_notes: "Note de lansare"
     services_description: "Descrierea serviciilor oferite"
     go_to_company: "Mergi la %{company}"
     download_ics: "Descarcă fișierul ics"

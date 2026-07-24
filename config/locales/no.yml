@@ -1,6 +1,7 @@
 ---
 'no':
   ea:
+    release_notes: "Utgivelsesnotater"
     services_description: "Beskrivelse av tjenestene som tilbys"
     go_to_company: "Gå til %{company}"
     download_ics: "Last ned ics-fil"

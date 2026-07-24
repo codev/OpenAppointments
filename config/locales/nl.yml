@@ -1,6 +1,7 @@
 ---
 nl:
   ea:
+    release_notes: "Release-opmerkingen"
     services_description: "Beschrijving van de aangeboden diensten"
     go_to_company: "Ga naar %{company}"
     download_ics: "ics-bestand downloaden"

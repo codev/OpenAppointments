@@ -1,6 +1,7 @@
 ---
 hi:
   ea:
+    release_notes: "रिलीज़ नोट्स"
     services_description: "प्रदान की गई सेवाओं का विवरण"
     go_to_company: "%{company} पर जाएं"
     download_ics: "ics फ़ाइल डाउनलोड करें"

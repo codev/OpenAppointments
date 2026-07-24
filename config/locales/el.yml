@@ -1,6 +1,7 @@
 ---
 el:
   ea:
+    release_notes: "Σημειώσεις έκδοσης"
     services_description: "Περιγραφή των παρεχόμενων υπηρεσιών"
     go_to_company: "Μετάβαση στο %{company}"
     download_ics: "Λήψη αρχείου ics"

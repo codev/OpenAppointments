@@ -1,6 +1,7 @@
 ---
 cs:
   ea:
+    release_notes: "Poznámky k vydání"
     services_description: "Popis poskytovaných služeb"
     go_to_company: "Přejít na %{company}"
     download_ics: "Stáhnout soubor ics"

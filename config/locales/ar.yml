@@ -1,6 +1,7 @@
 ---
 ar:
   ea:
+    release_notes: "ملاحظات الإصدار"
     services_description: "وصف الخدمات المقدمة"
     go_to_company: "الانتقال إلى %{company}"
     download_ics: "تنزيل ملف ics"

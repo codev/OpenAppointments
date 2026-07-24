@@ -1,6 +1,7 @@
 ---
 fa:
   ea:
+    release_notes: "یادداشت‌های انتشار"
     services_description: "شرح خدمات ارائه‌شده"
     go_to_company: "رفتن به %{company}"
     download_ics: "دانلود فایل ics"

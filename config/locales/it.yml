@@ -1,6 +1,7 @@
 ---
 it:
   ea:
+    release_notes: "Note di rilascio"
     services_description: "Descrizione dei servizi offerti"
     go_to_company: "Vai a %{company}"
     download_ics: "Scarica file ics"

@@ -1,6 +1,7 @@
 ---
 lt:
   ea:
+    release_notes: "Laidos pastabos"
     services_description: "Teikiamų paslaugų aprašymas"
     go_to_company: "Eiti į %{company}"
     download_ics: "Atsisiųsti ics failą"

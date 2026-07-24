@@ -1,6 +1,7 @@
 ---
 et:
   ea:
+    release_notes: "Väljalaskemärkmed"
     services_description: "Pakutavate teenuste kirjeldus"
     go_to_company: "Mine %{company}"
     download_ics: "Laadi alla ics-fail"

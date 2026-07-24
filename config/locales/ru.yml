@@ -1,6 +1,7 @@
 ---
 ru:
   ea:
+    release_notes: "Примечания к выпуску"
     services_description: "Описание предоставляемых услуг"
     go_to_company: "Перейти на %{company}"
     download_ics: "Скачать файл ics"
