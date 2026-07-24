@@ -146,6 +146,8 @@
     margin: 0;
     padding: 0;
     width: 240px;
+    /* Never let the company name squeeze the step boxes in the row layout. */
+    flex-shrink: 0;
 }
 
 #steps .book-step {
