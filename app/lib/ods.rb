@@ -29,7 +29,8 @@ module Ods
           []
         end
     end
-  rescue Zip::Error, ArgumentError => e
+  rescue StandardError => e
+    # rubyzip is loaded lazily by roo, so Zip::Error cannot be referenced here.
     raise ArgumentError, "Not an ODS spreadsheet: #{e.message}"
   end
 
