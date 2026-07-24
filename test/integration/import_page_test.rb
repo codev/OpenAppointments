@@ -168,6 +168,14 @@ class ImportPageTest < ActionDispatch::IntegrationTest
     FileUtils.rm_f(upload_path) if upload_path
   end
 
+  test "analyzing a csv as an ODS returns a clean error message" do
+    login_admin
+    post "/import/analyze", params: { file: upload, import_type: "ods",
+                                      days_back: 21, days_forward: 21 }
+    assert_response :internal_server_error
+    assert_match(/Not an ODS spreadsheet/, response.parsed_body["message"])
+  end
+
   test "the import strings exist in every locale" do
     I18n.available_locales.each do |locale|
       %w[import_data import_hint analyze start_import create_providers days_back days_forward
