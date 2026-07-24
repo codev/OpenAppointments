@@ -1,6 +1,8 @@
 ---
 ar:
   ea:
+    go_to_company: "الانتقال إلى %{company}"
+    download_ics: "تنزيل ملف ics"
     regenerate_link: "إعادة إنشاء الرابط"
     regenerate_link_warning_service: "تحذير: الروابط الحالية لهذه الخدمة على الويب ستصبح غير صالحة"
     regenerate_link_warning_provider: "تحذير: الروابط الحالية لمقدم الخدمة هذا على الويب ستصبح غير صالحة"

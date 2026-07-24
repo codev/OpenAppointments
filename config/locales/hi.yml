@@ -1,6 +1,8 @@
 ---
 hi:
   ea:
+    go_to_company: "%{company} पर जाएं"
+    download_ics: "ics फ़ाइल डाउनलोड करें"
     regenerate_link: "लिंक फिर से बनाएं"
     regenerate_link_warning_service: "चेतावनी: वेब पर इस सेवा के मौजूदा लिंक अमान्य हो जाएंगे"
     regenerate_link_warning_provider: "चेतावनी: वेब पर इस प्रदाता के मौजूदा लिंक अमान्य हो जाएंगे"

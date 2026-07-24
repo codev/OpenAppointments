@@ -1,6 +1,8 @@
 ---
 pt:
   ea:
+    go_to_company: "Ir para %{company}"
+    download_ics: "Transferir ficheiro ics"
     regenerate_link: "Gerar ligação novamente"
     regenerate_link_warning_service: "Aviso: As ligações existentes para este serviço na web serão invalidadas"
     regenerate_link_warning_provider: "Aviso: As ligações existentes para este profissional na web serão invalidadas"

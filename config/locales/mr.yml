@@ -1,6 +1,8 @@
 ---
 mr:
   ea:
+    go_to_company: "%{company} वर जा"
+    download_ics: "ics फाईल डाउनलोड करा"
     regenerate_link: "लिंक पुन्हा तयार करा"
     regenerate_link_warning_service: "इशारा: वेबवरील या सेवेच्या विद्यमान लिंक अवैध होतील"
     regenerate_link_warning_provider: "इशारा: वेबवरील या प्रदात्याच्या विद्यमान लिंक अवैध होतील"

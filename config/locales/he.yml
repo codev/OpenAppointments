@@ -1,6 +1,8 @@
 ---
 he:
   ea:
+    go_to_company: "מעבר אל %{company}"
+    download_ics: "הורדת קובץ ics"
     regenerate_link: "יצירת קישור מחדש"
     regenerate_link_warning_service: "אזהרה: קישורים קיימים לשירות זה ברשת יפסיקו לפעול"
     regenerate_link_warning_provider: "אזהרה: קישורים קיימים לספק זה ברשת יפסיקו לפעול"

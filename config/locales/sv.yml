@@ -1,6 +1,8 @@
 ---
 sv:
   ea:
+    go_to_company: "Gå till %{company}"
+    download_ics: "Ladda ner ics-fil"
     regenerate_link: "Generera om länken"
     regenerate_link_warning_service: "Varning: Befintliga länkar till denna tjänst på webben blir ogiltiga"
     regenerate_link_warning_provider: "Varning: Befintliga länkar till denna utförare på webben blir ogiltiga"

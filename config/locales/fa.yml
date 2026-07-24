@@ -1,6 +1,8 @@
 ---
 fa:
   ea:
+    go_to_company: "رفتن به %{company}"
+    download_ics: "دانلود فایل ics"
     regenerate_link: "ساخت دوباره پیوند"
     regenerate_link_warning_service: "هشدار: پیوندهای موجود به این خدمت در وب نامعتبر خواهند شد"
     regenerate_link_warning_provider: "هشدار: پیوندهای موجود به این ارائه‌دهنده در وب نامعتبر خواهند شد"

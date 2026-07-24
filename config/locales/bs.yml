@@ -1,6 +1,8 @@
 ---
 bs:
   ea:
+    go_to_company: "Idi na %{company}"
+    download_ics: "Preuzmi ics datoteku"
     regenerate_link: "Regeneriši link"
     regenerate_link_warning_service: "Upozorenje: Postojeći linkovi na ovu uslugu na webu će prestati važiti"
     regenerate_link_warning_provider: "Upozorenje: Postojeći linkovi na ovog pružaoca usluge na webu će prestati važiti"

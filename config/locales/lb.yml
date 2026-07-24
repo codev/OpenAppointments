@@ -1,6 +1,8 @@
 ---
 lb:
   ea:
+    go_to_company: "Op %{company} goen"
+    download_ics: "ics-Fichier eroflueden"
     regenerate_link: "Link nei generéieren"
     regenerate_link_warning_service: "Warnung: Bestehend Linken op dëse Service um Web ginn ongëlteg"
     regenerate_link_warning_provider: "Warnung: Bestehend Linken op dëse Provider um Web ginn ongëlteg"

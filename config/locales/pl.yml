@@ -1,6 +1,8 @@
 ---
 pl:
   ea:
+    go_to_company: "Przejdź do %{company}"
+    download_ics: "Pobierz plik ics"
     regenerate_link: "Wygeneruj link ponownie"
     regenerate_link_warning_service: "Ostrzeżenie: Istniejące linki do tej usługi w sieci przestaną działać"
     regenerate_link_warning_provider: "Ostrzeżenie: Istniejące linki do tego wykonawcy w sieci przestaną działać"

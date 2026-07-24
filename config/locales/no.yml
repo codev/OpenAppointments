@@ -1,6 +1,8 @@
 ---
 'no':
   ea:
+    go_to_company: "Gå til %{company}"
+    download_ics: "Last ned ics-fil"
     regenerate_link: "Regenerer lenke"
     regenerate_link_warning_service: "Advarsel: Eksisterende lenker til denne tjenesten på nettet blir ugyldige"
     regenerate_link_warning_provider: "Advarsel: Eksisterende lenker til denne tilbyderen på nettet blir ugyldige"

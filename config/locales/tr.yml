@@ -1,6 +1,8 @@
 ---
 tr:
   ea:
+    go_to_company: "%{company} adresine git"
+    download_ics: "ics dosyasını indir"
     regenerate_link: "Bağlantıyı yeniden oluştur"
     regenerate_link_warning_service: "Uyarı: Webdeki bu hizmete ait mevcut bağlantılar geçersiz olacaktır"
     regenerate_link_warning_provider: "Uyarı: Webdeki bu sağlayıcıya ait mevcut bağlantılar geçersiz olacaktır"

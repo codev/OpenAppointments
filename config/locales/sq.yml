@@ -1,6 +1,8 @@
 ---
 sq:
   ea:
+    go_to_company: "Shko te %{company}"
+    download_ics: "Shkarko skedarin ics"
     regenerate_link: "Rigjenero lidhjen"
     regenerate_link_warning_service: "Kujdes: Lidhjet ekzistuese drejt këtij shërbimi në ueb do të bëhen të pavlefshme"
     regenerate_link_warning_provider: "Kujdes: Lidhjet ekzistuese drejt këtij ofruesi në ueb do të bëhen të pavlefshme"

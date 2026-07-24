@@ -1,6 +1,8 @@
 ---
 ro:
   ea:
+    go_to_company: "Mergi la %{company}"
+    download_ics: "Descarcă fișierul ics"
     regenerate_link: "Regenerează linkul"
     regenerate_link_warning_service: "Avertisment: Linkurile existente către acest serviciu pe web vor deveni invalide"
     regenerate_link_warning_provider: "Avertisment: Linkurile existente către acest furnizor pe web vor deveni invalide"

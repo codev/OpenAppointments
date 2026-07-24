@@ -1,6 +1,8 @@
 ---
 de:
   ea:
+    go_to_company: "Weiter zu %{company}"
+    download_ics: "ics-Datei herunterladen"
     regenerate_link: "Link neu erzeugen"
     regenerate_link_warning_service: "Warnung: Bestehende Links zu dieser Dienstleistung im Web werden ungültig"
     regenerate_link_warning_provider: "Warnung: Bestehende Links zu diesem Anbieter im Web werden ungültig"

@@ -1,6 +1,8 @@
 ---
 en:
   ea:
+    go_to_company: "Go to %{company}"
+    download_ics: "Download ics File"
     regenerate_link: "Regenerate Link"
     regenerate_link_warning_service: "Warning: Existing links to this service on the web will be invalidated"
     regenerate_link_warning_provider: "Warning: Existing links to this provider on the web will be invalidated"

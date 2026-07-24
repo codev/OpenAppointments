@@ -1,6 +1,8 @@
 ---
 ca:
   ea:
+    go_to_company: "Vés a %{company}"
+    download_ics: "Baixa el fitxer ics"
     regenerate_link: "Regenera l'enllaç"
     regenerate_link_warning_service: "Atenció: els enllaços existents a aquest servei al web deixaran de ser vàlids"
     regenerate_link_warning_provider: "Atenció: els enllaços existents a aquest proveïdor al web deixaran de ser vàlids"

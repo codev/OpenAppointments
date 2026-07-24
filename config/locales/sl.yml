@@ -1,6 +1,8 @@
 ---
 sl:
   ea:
+    go_to_company: "Pojdi na %{company}"
+    download_ics: "Prenesi datoteko ics"
     regenerate_link: "Ponovno ustvari povezavo"
     regenerate_link_warning_service: "Opozorilo: Obstoječe povezave do te storitve na spletu bodo postale neveljavne"
     regenerate_link_warning_provider: "Opozorilo: Obstoječe povezave do tega ponudnika na spletu bodo postale neveljavne"

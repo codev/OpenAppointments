@@ -1,6 +1,8 @@
 ---
 cs:
   ea:
+    go_to_company: "Přejít na %{company}"
+    download_ics: "Stáhnout soubor ics"
     regenerate_link: "Přegenerovat odkaz"
     regenerate_link_warning_service: "Upozornění: Stávající odkazy na tuto službu na webu přestanou platit"
     regenerate_link_warning_provider: "Upozornění: Stávající odkazy na tohoto poskytovatele na webu přestanou platit"

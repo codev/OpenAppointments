@@ -1,6 +1,8 @@
 ---
 lt:
   ea:
+    go_to_company: "Eiti į %{company}"
+    download_ics: "Atsisiųsti ics failą"
     regenerate_link: "Iš naujo sugeneruoti nuorodą"
     regenerate_link_warning_service: "Įspėjimas: esamos nuorodos į šią paslaugą internete nustos veikti"
     regenerate_link_warning_provider: "Įspėjimas: esamos nuorodos į šį teikėją internete nustos veikti"

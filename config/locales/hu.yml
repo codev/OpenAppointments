@@ -1,6 +1,8 @@
 ---
 hu:
   ea:
+    go_to_company: "Tovább: %{company}"
+    download_ics: "ics fájl letöltése"
     regenerate_link: "Link újragenerálása"
     regenerate_link_warning_service: "Figyelem: A szolgáltatásra mutató meglévő webes linkek érvénytelenné válnak"
     regenerate_link_warning_provider: "Figyelem: A szolgáltatóra mutató meglévő webes linkek érvénytelenné válnak"

@@ -1,6 +1,8 @@
 ---
 lv:
   ea:
+    go_to_company: "Doties uz %{company}"
+    download_ics: "Lejupielādēt ics failu"
     regenerate_link: "Ģenerēt saiti no jauna"
     regenerate_link_warning_service: "Brīdinājums: esošās saites uz šo pakalpojumu tīmeklī vairs nebūs derīgas"
     regenerate_link_warning_provider: "Brīdinājums: esošās saites uz šo sniedzēju tīmeklī vairs nebūs derīgas"

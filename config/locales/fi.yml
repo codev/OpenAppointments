@@ -1,6 +1,8 @@
 ---
 fi:
   ea:
+    go_to_company: "Siirry kohteeseen %{company}"
+    download_ics: "Lataa ics-tiedosto"
     regenerate_link: "Luo linkki uudelleen"
     regenerate_link_warning_service: "Varoitus: Olemassa olevat linkit tähän palveluun verkossa lakkaavat toimimasta"
     regenerate_link_warning_provider: "Varoitus: Olemassa olevat linkit tähän palveluntarjoajaan verkossa lakkaavat toimimasta"

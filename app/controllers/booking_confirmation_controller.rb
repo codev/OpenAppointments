@@ -11,12 +11,24 @@ class BookingConfirmationController < ApplicationController
     html_vars(
       page_title: helpers.lang("success"),
       company_color: Setting.get("company_color"),
+      company_name: Setting.get("company_name"),
+      company_link: Setting.get("company_link"),
       google_analytics_code: Setting.get("google_analytics_code"),
       matomo_analytics_url: Setting.get("matomo_analytics_url"),
       matomo_analytics_site_id: Setting.get("matomo_analytics_site_id"),
       add_to_google_url: add_to_google_url(appointment),
-      display_add_to_google_calendar: Setting.get("display_add_to_google_calendar", "1")
+      display_add_to_google_calendar: Setting.get("display_add_to_google_calendar", "1"),
+      ics_url: booking_confirmation_ics_path(appointment_hash: appointment.booking_hash)
     )
+  end
+
+  # GET /booking_confirmation/ics/:appointment_hash
+  def ics
+    appointment = Appointment.find_by(booking_hash: params[:appointment_hash])
+    return redirect_to "/" unless appointment
+
+    send_data IcsFile.stream(appointment, appointment.service, appointment.provider, appointment.customer),
+              filename: "appointment.ics", type: "text/calendar", disposition: "attachment"
   end
 
   private
