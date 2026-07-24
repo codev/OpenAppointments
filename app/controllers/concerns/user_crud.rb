@@ -75,9 +75,9 @@ module UserCrud
     WorkingPlanException.where(id: existing_ids - kept_ids).delete_all
   end
 
-  # EA user model search: LIKE across the common user columns.
+  # EA user model search: LIKE across the common user columns, alphabetical.
   def search_users(scope, keyword, limit, offset)
-    scope = scope.with_attached_picture.order(updated_at: :desc)
+    scope = scope.with_attached_picture.order(:name)
     if keyword.present?
       pattern = "%#{User.sanitize_sql_like(keyword)}%"
       scope = scope.where(<<~SQL.squish, pattern: pattern)
