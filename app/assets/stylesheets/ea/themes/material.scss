@@ -1,0 +1,76 @@
+/* ----------------------------------------------------------------------------
+ * Material theme: Google Material 3 look - tonal surfaces, pill buttons,
+ * filled text fields with a strong active indicator, gentle elevation.
+ * ---------------------------------------------------------------------------- */
+
+$theme: 'material';
+
+$font-family-sans-serif: Roboto, "Segoe UI", system-ui, -apple-system, "Helvetica Neue",
+    "Noto Sans", Arial, sans-serif;
+$border-radius: 0.75rem;
+$border-radius-sm: 0.5rem;
+$border-radius-lg: 1rem;
+$btn-border-radius: 100rem;
+$btn-border-radius-sm: 100rem;
+$btn-border-radius-lg: 100rem;
+$btn-padding-x: 1.5rem;
+$input-border-color: #79747e;
+$card-border-width: 0;
+
+@import 'bootstrap';
+@import 'shared';
+
+:root {
+    --oa-radius: 0.75rem;
+    --oa-border-width: 0;
+    --oa-surface: #fff;
+    --oa-surface-border: transparent;
+    --oa-shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 1px 3px 1px rgba(0, 0, 0, 0.15);
+    --oa-shadow-raised: 0 2px 6px 2px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.3);
+    --oa-step-bg: rgba(var(--oa-primary-rgb), 0.12);
+    --oa-step-fg: var(--oa-primary-darker);
+}
+
+// M3 buttons: full pills, no borders, elevation on hover, state layers.
+.btn {
+    border-width: 0;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+
+    &:hover {
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 1px 3px 1px rgba(0, 0, 0, 0.15);
+    }
+}
+
+.btn-outline-primary,
+.btn-outline-secondary,
+.btn-outline-danger {
+    border-width: 1px;
+}
+
+// Filled text fields: tonal fill, no outline, bold bottom indicator.
+.form-control,
+.form-select {
+    background-color: #f3f1f6;
+    border: 0;
+    border-bottom: 2px solid #79747e;
+    border-radius: 0.375rem 0.375rem 0 0;
+
+    &:focus {
+        background-color: #ece9f1;
+        border-bottom-color: var(--oa-primary);
+        box-shadow: none;
+    }
+}
+
+// Inputs keep square bottom corners inside input groups too.
+.input-group > .form-control,
+.input-group > .form-select {
+    border-radius: 0.375rem 0.375rem 0 0;
+}
+
+.booking-card,
+#book-appointment-wizard #available-hours .available-hour {
+    border: 0;
+    background-color: #f3f1f6;
+}

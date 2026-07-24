@@ -1,0 +1,116 @@
+/* ----------------------------------------------------------------------------
+ * Shared application layer for every theme, imported after bootstrap.
+ *
+ * Themes set the knob variables in :root; brand colours (--oa-primary,
+ * --oa-secondary, --oa-background and shades) come from the settings via
+ * shared/_brand_style. Everything here reads variables so one layer serves
+ * all seven themes.
+ * ---------------------------------------------------------------------------- */
+
+:root {
+    // Knobs with neutral defaults; themes override.
+    --oa-radius: #{$border-radius};
+    --oa-border-width: 1px;
+    --oa-surface: #fff;
+    --oa-surface-border: var(--bs-border-color);
+    --oa-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+    --oa-shadow-raised: 0 6px 24px rgba(0, 0, 0, 0.1);
+    --oa-header-bg: var(--oa-primary);
+    --oa-header-fg: #fff;
+    --oa-step-bg: var(--oa-primary-dark);
+    --oa-step-fg: var(--oa-primary-subtle);
+    --oa-step-active-bg: var(--oa-secondary);
+    --oa-step-active-fg: #fff;
+}
+
+body {
+    background-color: var(--oa-background);
+}
+
+// Surfaces: the booking wizard, backend cards and modals share one look.
+#book-appointment-wizard,
+.card,
+.modal-content {
+    background-color: var(--oa-surface);
+    border: var(--oa-border-width) solid var(--oa-surface-border);
+    border-radius: var(--oa-radius);
+    box-shadow: var(--oa-shadow);
+}
+
+// Header (booking and backend).
+#header {
+    background: var(--oa-header-bg) !important;
+    border-color: var(--oa-header-bg) !important;
+
+    #company-name,
+    #company-name span,
+    #header-logo h6,
+    #header-logo small,
+    .display-booking-selection {
+        color: var(--oa-header-fg) !important;
+    }
+}
+
+// Booking wizard step indicators.
+#book-appointment-wizard .book-step {
+    background: var(--oa-step-bg);
+    border-radius: var(--oa-radius);
+
+    strong {
+        color: var(--oa-step-fg);
+    }
+}
+
+#book-appointment-wizard .book-step.active-step {
+    background: var(--oa-step-active-bg);
+
+    strong {
+        color: var(--oa-step-active-fg);
+    }
+}
+
+// Available hours.
+#book-appointment-wizard #available-hours .available-hour {
+    border-radius: var(--oa-radius);
+    border: var(--oa-border-width) solid var(--oa-surface-border);
+}
+
+#book-appointment-wizard #available-hours .selected-hour {
+    background-color: var(--oa-primary);
+    border-color: var(--oa-primary);
+    color: #fff;
+}
+
+// Category, service and provider cards.
+.booking-card {
+    border: var(--oa-border-width) solid var(--oa-surface-border);
+    border-radius: var(--oa-radius);
+    box-shadow: none;
+    transition: box-shadow 0.15s ease, transform 0.15s ease, border-color 0.15s ease;
+
+    &:hover {
+        box-shadow: var(--oa-shadow-raised);
+    }
+
+    &.selected {
+        border-color: var(--oa-primary);
+        box-shadow: 0 0 0 0.2rem rgba(var(--oa-primary-rgb), 0.25);
+    }
+}
+
+.booking-card-picture {
+    border-top-left-radius: calc(var(--oa-radius) - var(--oa-border-width));
+    border-top-right-radius: calc(var(--oa-radius) - var(--oa-border-width));
+}
+
+// Backend list filters.
+.backend-page .filter-records .results .entry.selected {
+    border-right-color: var(--oa-primary) !important;
+}
+
+// Footer backend link block.
+#frame-footer .backend-link {
+    background-color: var(--oa-header-bg) !important;
+    border-color: var(--oa-header-bg) !important;
+    color: var(--oa-header-fg);
+}

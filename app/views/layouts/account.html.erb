@@ -16,7 +16,7 @@
     <link rel="icon" type="image/x-icon" href="<%= image_path("favicon.ico") %>">
     <link rel="icon" sizes="192x192" href="<%= image_path('logo.png') %>">
 
-    <%= stylesheet_link_tag "themes/#{setting('theme', 'default').presence || 'default'}", "general" %>
+    <%= stylesheet_link_tag "themes/#{setting('theme', 'nice').presence || 'nice'}", "general" %>
     <%= render "shared/brand_style" %>
 
     <%= yield :styles %>

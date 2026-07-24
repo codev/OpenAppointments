@@ -1,0 +1,91 @@
+/* ----------------------------------------------------------------------------
+ * Neo Brutalism theme: monospace type, hard 2px borders, offset block shadows,
+ * bold flat colour. Based on the brutalist login example.
+ * ---------------------------------------------------------------------------- */
+
+$theme: 'brutalism';
+
+$font-family-sans-serif: ui-monospace, SFMono-Regular, "SF Mono", "Cascadia Mono",
+    Menlo, Consolas, "Courier New", monospace;
+$border-radius: 0;
+$border-radius-sm: 0;
+$border-radius-lg: 0;
+$border-width: 2px;
+$btn-border-width: 2px;
+$input-border-width: 2px;
+$body-color: #000;
+$border-color: #000;
+$input-border-color: #000;
+$input-focus-border-color: #000;
+$form-label-font-weight: 700;
+$headings-font-weight: 700;
+
+@import 'bootstrap';
+@import 'shared';
+
+:root {
+    --oa-radius: 0;
+    --oa-border-width: 2px;
+    --oa-surface-border: #000;
+    --oa-shadow: 8px 8px 0 #000;
+    --oa-shadow-raised: 8px 8px 0 #000;
+    --oa-header-bg: var(--oa-primary);
+    --oa-step-bg: #fff;
+    --oa-step-fg: #000;
+    --oa-step-active-bg: var(--oa-secondary);
+    --oa-step-active-fg: #fff;
+}
+
+#header {
+    border-bottom: 2px solid #000 !important;
+}
+
+.btn {
+    border: 2px solid #000;
+    border-radius: 0;
+    font-weight: 700;
+    text-transform: uppercase;
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
+
+    &:hover {
+        box-shadow: 4px 4px 0 #000;
+        transform: translate(-2px, -2px);
+    }
+}
+
+.form-control,
+.form-select {
+    border: 2px solid #000;
+    border-radius: 0;
+
+    &:focus {
+        box-shadow: 4px 4px 0 #000;
+    }
+}
+
+.form-label {
+    text-transform: uppercase;
+}
+
+.card,
+.modal-content,
+#book-appointment-wizard {
+    border: 2px solid #000;
+}
+
+#book-appointment-wizard .book-step {
+    border: 2px solid #000;
+}
+
+.booking-card {
+    border: 2px solid #000;
+
+    &:hover {
+        box-shadow: 6px 6px 0 #000;
+        transform: translate(-2px, -2px);
+    }
+
+    &.selected {
+        box-shadow: 6px 6px 0 var(--oa-secondary);
+    }
+}

@@ -73,7 +73,7 @@ settings = {
   # Display / formatting
   "date_format" => "DMY",
   "time_format" => "regular",
-  "theme" => "default",
+  "theme" => "nice",
   "display_login_button" => "1",
   "default_language" => "english",
   "default_timezone" => "UTC",

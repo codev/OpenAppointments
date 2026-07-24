@@ -1,25 +1,35 @@
 /* ----------------------------------------------------------------------------
- * OpenAppointments outline theme: coloured borders instead of solid fills.
+ * Outline theme: transparent surfaces with coloured borders instead of fills.
  * ---------------------------------------------------------------------------- */
 
-$theme: 'outline' !default;
+$theme: 'outline';
 
-$primary: #39824f !default;
-$secondary: #6c757d !default;
-$success: #198754 !default;
-$info: #0d6efd !default;
-$warning: #b8860b !default;
-$danger: #b02a37 !default;
-
-$body-bg: #fff !default;
-$border-width: 2px !default;
-$btn-border-width: 2px !default;
-$card-border-width: 2px !default;
-$border-radius: 0.5rem !default;
+$font-family-sans-serif: Seravek, "Gill Sans Nova", Ubuntu, Calibri, "DejaVu Sans",
+    system-ui, sans-serif;
+$border-width: 2px;
+$btn-border-width: 2px;
+$card-border-width: 2px;
+$border-radius: 0.5rem;
 
 @import 'bootstrap';
+@import 'shared';
 
-// Buttons: every solid variant (including dark) becomes its outline counterpart.
+:root {
+    --oa-radius: 0.5rem;
+    --oa-border-width: 2px;
+    --oa-surface: transparent;
+    --oa-surface-border: #{$gray-400};
+    --oa-shadow: none;
+    --oa-shadow-raised: none;
+    --oa-header-bg: transparent;
+    --oa-header-fg: var(--bs-body-color);
+    --oa-step-bg: transparent;
+    --oa-step-fg: #{$gray-600};
+    --oa-step-active-bg: transparent;
+    --oa-step-active-fg: var(--oa-primary);
+}
+
+// Every solid button variant becomes its outline counterpart.
 @each $color, $value in $theme-colors {
     .btn-#{$color} {
         @include button-outline-variant($value);
@@ -27,9 +37,8 @@ $border-radius: 0.5rem !default;
     }
 }
 
-// Badges: transparent with a coloured border.
 .badge {
-    border: $border-width solid currentColor;
+    border: 2px solid currentColor;
 
     @each $color, $value in $theme-colors {
         &.bg-#{$color} {
@@ -40,73 +49,30 @@ $border-radius: 0.5rem !default;
     }
 }
 
-// Alerts: keep the tint out, keep the border.
 .alert {
     background-color: transparent;
-    border-width: $border-width;
+    border-width: 2px;
 }
 
-// Cards and list groups sit on the page with a coloured edge, not a fill.
-.card {
-    background-color: transparent;
-    border-color: $gray-400;
-
-    .card-header {
-        background-color: transparent;
-        border-bottom: $border-width solid $gray-400;
-    }
-}
-
-// Booking header: white with a primary border instead of a solid primary block.
 #header {
-    background: $body-bg !important;
-    border-bottom: 3px solid var(--bs-primary, #{$primary});
-
-    #company-name,
-    #company-name span,
-    .display-booking-selection {
-        color: $body-color !important;
-    }
-
-    #steps .book-step {
-        background: transparent !important;
-        border: $border-width solid $gray-400;
-
-        strong {
-            color: $gray-600 !important;
-        }
-    }
-
-    #steps .active-step {
-        border-color: var(--bs-primary, #{$primary});
-
-        strong {
-            color: var(--bs-primary, #{$primary}) !important;
-        }
-    }
+    border-bottom: 3px solid var(--oa-primary) !important;
 }
 
-// Booking cards mode and available hours follow the same outline language.
-.booking-card {
+#book-appointment-wizard .book-step {
+    border: 2px solid #{$gray-400};
+}
+
+#book-appointment-wizard .book-step.active-step {
+    border-color: var(--oa-primary);
+}
+
+#book-appointment-wizard #available-hours .selected-hour {
     background-color: transparent;
-
-    &.selected {
-        border-color: var(--bs-primary, #{$primary});
-    }
+    color: var(--oa-primary);
+    border: 2px solid var(--oa-primary);
+    font-weight: 700;
 }
 
-#available-hours .available-hour {
-    border: $border-width solid $gray-400;
-    border-radius: $border-radius;
-
-    &.selected-hour {
-        background: transparent !important;
-        border-color: var(--bs-primary, #{$primary});
-        color: var(--bs-primary, #{$primary}) !important;
-    }
-}
-
-// Frame footer keeps its top border, just heavier.
-#frame-footer {
-    border-top-width: $border-width !important;
+.booking-card.selected {
+    background: transparent;
 }
