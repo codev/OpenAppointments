@@ -1,6 +1,7 @@
 ---
 hu:
   ea:
+    longer_text_field: "Hosszabb szövegmező"
     embed_wordpress: "Beágyazás WordPressbe"
     embed_wordpress_hint: "Illessze be a HTML-t egy Custom HTML blokkba, majd adja hozzá a CSS-t és a JavaScriptet a téma egyedi kód beállításaival vagy egy snippet bővítménnyel."
     apply_suggested_colors: "Javasolt színek alkalmazása"

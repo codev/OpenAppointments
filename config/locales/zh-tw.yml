@@ -1,6 +1,7 @@
 ---
 zh-tw:
   ea:
+    longer_text_field: "較長的文字欄位"
     embed_wordpress: "嵌入 WordPress"
     embed_wordpress_hint: "將 HTML 貼到 Custom HTML 區塊，再透過佈景主題的自訂程式碼選項或程式碼片段外掛加入 CSS 與 JavaScript。"
     apply_suggested_colors: "套用建議的顏色"

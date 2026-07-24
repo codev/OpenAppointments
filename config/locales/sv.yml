@@ -1,6 +1,7 @@
 ---
 sv:
   ea:
+    longer_text_field: "Längre textfält"
     embed_wordpress: "Bädda in i WordPress"
     embed_wordpress_hint: "Klistra in HTML-koden i ett Custom HTML-block och lägg till CSS och JavaScript via temats egna kodinställningar eller ett snippet-tillägg."
     apply_suggested_colors: "Använd föreslagna färger"

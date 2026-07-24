@@ -1,6 +1,7 @@
 ---
 ca:
   ea:
+    longer_text_field: "Camp de text més llarg"
     embed_wordpress: "Incrusta a WordPress"
     embed_wordpress_hint: "Enganxeu l'HTML en un bloc Custom HTML i afegiu el CSS i el JavaScript amb les opcions de codi personalitzat del tema o un connector de fragments."
     apply_suggested_colors: "Aplica els colors suggerits"

@@ -1,6 +1,7 @@
 ---
 et:
   ea:
+    longer_text_field: "Pikem tekstiväli"
     embed_wordpress: "Manustamine WordPressi"
     embed_wordpress_hint: "Kleepige HTML plokki Custom HTML ning lisage CSS ja JavaScript teema kohandatud koodi valikute või snipetite pluginaga."
     apply_suggested_colors: "Rakenda soovitatud värvid"

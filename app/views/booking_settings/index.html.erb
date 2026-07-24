@@ -189,7 +189,7 @@
                                         <%= lang('notes') %>
                                         <span class="text-danger">*</span>
                                     </label>
-                                    <textarea id="notes" class="form-control mb-2" rows="1" readonly></textarea>
+                                    <textarea id="notes" class="form-control mb-2" rows="2" readonly></textarea>
                                     <div class="d-flex">
                                         <div class="form-check form-switch me-4">
                                             <input class="form-check-input display-switch" type="checkbox"
@@ -232,7 +232,7 @@
                                                aria-label="label"
                                         />
 
-                                        <div class="d-flex">
+                                        <div class="d-flex flex-wrap">
                                             <div class="form-check form-switch me-4">
                                                 <input class="form-check-input display-switch" type="checkbox"
                                                        id="display-custom-field-<%= i %>"
@@ -242,12 +242,21 @@
                                                 </label>
                                             </div>
 
-                                            <div class="form-check form-switch">
+                                            <div class="form-check form-switch me-4">
                                                 <input class="form-check-input require-switch" type="checkbox"
                                                        id="require-custom-field-<%= i %>"
                                                        data-field="require_custom_field_<%= i %>">
                                                 <label class="form-check-label" for="require-custom-field-<%= i %>">
                                                     <%= lang('require') %>
+                                                </label>
+                                            </div>
+
+                                            <div class="form-check form-switch">
+                                                <input class="form-check-input" type="checkbox"
+                                                       id="long-custom-field-<%= i %>"
+                                                       data-field="long_custom_field_<%= i %>">
+                                                <label class="form-check-label" for="long-custom-field-<%= i %>">
+                                                    <%= lang('longer_text_field') %>
                                                 </label>
                                             </div>
                                         </div>

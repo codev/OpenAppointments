@@ -1,6 +1,7 @@
 ---
 el:
   ea:
+    longer_text_field: "Μεγαλύτερο πεδίο κειμένου"
     embed_wordpress: "Ενσωμάτωση στο WordPress"
     embed_wordpress_hint: "Επικολλήστε το HTML σε ένα μπλοκ Custom HTML και προσθέστε το CSS και το JavaScript μέσω των επιλογών προσαρμοσμένου κώδικα του θέματος ή ενός πρόσθετου αποσπασμάτων."
     apply_suggested_colors: "Εφαρμογή προτεινόμενων χρωμάτων"

@@ -1,6 +1,7 @@
 ---
 ar:
   ea:
+    longer_text_field: "حقل نص أطول"
     embed_wordpress: "التضمين في WordPress"
     embed_wordpress_hint: "الصق كود HTML في مكوّن Custom HTML، ثم أضف CSS و JavaScript عبر خيارات الكود المخصص في القالب أو إضافة مقتطفات."
     apply_suggested_colors: "تطبيق الألوان المقترحة"

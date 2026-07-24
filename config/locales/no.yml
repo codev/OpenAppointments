@@ -1,6 +1,7 @@
 ---
 'no':
   ea:
+    longer_text_field: "Lengre tekstfelt"
     embed_wordpress: "Bygg inn i WordPress"
     embed_wordpress_hint: "Lim inn HTML-en i en Custom HTML-blokk, og legg til CSS og JavaScript via temaets egne kodealternativer eller en snippet-utvidelse."
     apply_suggested_colors: "Bruk foreslåtte farger"

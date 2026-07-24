@@ -1,6 +1,7 @@
 ---
 he:
   ea:
+    longer_text_field: "שדה טקסט ארוך יותר"
     embed_wordpress: "הטמעה ב-WordPress"
     embed_wordpress_hint: "הדביקו את ה-HTML בבלוק Custom HTML והוסיפו את ה-CSS וה-JavaScript דרך אפשרויות הקוד המותאם של התבנית או תוסף סניפטים."
     apply_suggested_colors: "החל צבעים מוצעים"

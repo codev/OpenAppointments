@@ -1,6 +1,7 @@
 ---
 fa:
   ea:
+    longer_text_field: "فیلد متنی طولانی‌تر"
     embed_wordpress: "جاسازی در WordPress"
     embed_wordpress_hint: "کد HTML را در بلوک Custom HTML قرار دهید و CSS و JavaScript را از طریق گزینه‌های کد سفارشی پوسته یا افزونه اسنیپت اضافه کنید."
     apply_suggested_colors: "اعمال رنگ‌های پیشنهادی"

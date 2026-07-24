@@ -1,6 +1,7 @@
 ---
 rs:
   ea:
+    longer_text_field: "Duže tekstualno polje"
     embed_wordpress: "Ugradnja u WordPress"
     embed_wordpress_hint: "Nalepite HTML u Custom HTML blok, a CSS i JavaScript dodajte kroz opcije prilagođenog koda teme ili dodatak za snipete."
     apply_suggested_colors: "Primeni predložene boje"

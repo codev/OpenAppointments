@@ -1,6 +1,7 @@
 ---
 ja:
   ea:
+    longer_text_field: "長いテキストフィールド"
     embed_wordpress: "WordPress への埋め込み"
     embed_wordpress_hint: "HTML を Custom HTML ブロックに貼り付け、CSS と JavaScript はテーマのカスタムコード設定またはスニペットプラグインで追加してください。"
     apply_suggested_colors: "提案されたカラーを適用"

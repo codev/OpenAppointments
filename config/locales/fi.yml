@@ -1,6 +1,7 @@
 ---
 fi:
   ea:
+    longer_text_field: "Pidempi tekstikenttä"
     embed_wordpress: "Upotus WordPressiin"
     embed_wordpress_hint: "Liitä HTML Custom HTML -lohkoon ja lisää CSS ja JavaScript teeman omilla koodiasetuksilla tai snippet-lisäosalla."
     apply_suggested_colors: "Käytä ehdotettuja värejä"

@@ -1,6 +1,7 @@
 ---
 bu:
   ea:
+    longer_text_field: "ပိုရှည်သော စာသားကွက်"
     embed_wordpress: "WordPress တွင် ထည့်သွင်းရန်"
     embed_wordpress_hint: "HTML ကို Custom HTML block ထဲသို့ ကူးထည့်ပြီး CSS နှင့် JavaScript ကို သင့် theme ၏ custom code ရွေးချယ်စရာများ သို့မဟုတ် snippets plugin ဖြင့် ထည့်ပါ။"
     apply_suggested_colors: "Приложи предложените цветове"

@@ -1,6 +1,7 @@
 ---
 sk:
   ea:
+    longer_text_field: "Dlhšie textové pole"
     embed_wordpress: "Vloženie do WordPressu"
     embed_wordpress_hint: "Vložte HTML do bloku Custom HTML a CSS a JavaScript pridajte cez vlastný kód témy alebo plugin pre snippety."
     apply_suggested_colors: "Použiť navrhované farby"

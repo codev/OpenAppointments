@@ -1,6 +1,7 @@
 ---
 lv:
   ea:
+    longer_text_field: "Garāks teksta lauks"
     embed_wordpress: "Iegult WordPress"
     embed_wordpress_hint: "Ielīmējiet HTML blokā Custom HTML un pievienojiet CSS un JavaScript ar tēmas pielāgotā koda opcijām vai fragmentu spraudni."
     apply_suggested_colors: "Lietot ieteiktās krāsas"

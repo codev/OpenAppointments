@@ -1,6 +1,7 @@
 ---
 th:
   ea:
+    longer_text_field: "ช่องข้อความยาวขึ้น"
     embed_wordpress: "ฝังลงใน WordPress"
     embed_wordpress_hint: "วางโค้ด HTML ในบล็อก Custom HTML แล้วเพิ่ม CSS และ JavaScript ผ่านตัวเลือกโค้ดกำหนดเองของธีมหรือปลั๊กอิน snippets"
     apply_suggested_colors: "ใช้สีที่แนะนำ"

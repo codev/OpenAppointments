@@ -1,6 +1,7 @@
 ---
 lb:
   ea:
+    longer_text_field: "Méi laangt Textfeld"
     embed_wordpress: "An WordPress abauen"
     embed_wordpress_hint: "Setzt den HTML an e Custom-HTML-Block an, a fügt CSS a JavaScript iwwer d'Code-Optioune vum Theme oder e Snippet-Plugin derbäi."
     apply_suggested_colors: "Proposéiert Faarwen uwenden"

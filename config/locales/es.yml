@@ -1,6 +1,7 @@
 ---
 es:
   ea:
+    longer_text_field: "Campo de texto más largo"
     embed_wordpress: "Insertar en WordPress"
     embed_wordpress_hint: "Pegue el HTML en un bloque Custom HTML y añada el CSS y el JavaScript con las opciones de código personalizado de su tema o un plugin de fragmentos."
     apply_suggested_colors: "Aplicar colores sugeridos"

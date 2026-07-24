@@ -82,7 +82,8 @@
                 </div>
             <% end %>
 
-            <%= render "shared/custom_fields", col_class: "col-12 col-lg-6" %>
+            <%= render "shared/custom_fields", col_class: "col-12 col-lg-6",
+                                               long_col_class: "col-12", rows: 2 %>
 
             <% if display_notes == "1" %>
                 <div class="col-12 mb-3">
@@ -93,7 +94,7 @@
                         <% end %>
                     </label>
                     <textarea id="notes" maxlength="500"
-                              class="<%= require_notes == "1" ? 'required' : '' %> form-control" rows="1"></textarea>
+                              class="<%= require_notes == "1" ? 'required' : '' %> form-control" rows="2"></textarea>
                 </div>
             <% end %>
 

@@ -1,6 +1,7 @@
 ---
 da:
   ea:
+    longer_text_field: "Længere tekstfelt"
     embed_wordpress: "Indlejring i WordPress"
     embed_wordpress_hint: "Indsæt HTML'en i en Custom HTML-blok, og tilføj CSS og JavaScript via temaets egne kodeindstillinger eller et snippet-plugin."
     apply_suggested_colors: "Anvend foreslåede farver"

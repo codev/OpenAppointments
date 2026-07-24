@@ -1,6 +1,7 @@
 ---
 hi:
   ea:
+    longer_text_field: "लंबा टेक्स्ट फ़ील्ड"
     embed_wordpress: "WordPress में एम्बेड करें"
     embed_wordpress_hint: "HTML को Custom HTML ब्लॉक में पेस्ट करें, फिर CSS और JavaScript को थीम के कस्टम कोड विकल्पों या स्निपेट प्लगइन से जोड़ें।"
     apply_suggested_colors: "सुझाए गए रंग लागू करें"

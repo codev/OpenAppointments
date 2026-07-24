@@ -1,6 +1,7 @@
 ---
 mr:
   ea:
+    longer_text_field: "अधिक लांब मजकूर फील्ड"
     embed_wordpress: "WordPress मध्ये एम्बेड करा"
     embed_wordpress_hint: "HTML Custom HTML ब्लॉकमध्ये पेस्ट करा, नंतर CSS आणि JavaScript थीमच्या कस्टम कोड पर्यायांनी किंवा स्निपेट प्लगइनने जोडा."
     apply_suggested_colors: "सुचवलेले रंग लागू करा"

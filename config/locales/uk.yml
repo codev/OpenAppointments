@@ -1,6 +1,7 @@
 ---
 uk:
   ea:
+    longer_text_field: "Довше текстове поле"
     embed_wordpress: "Вбудовування у WordPress"
     embed_wordpress_hint: "Вставте HTML у блок Custom HTML, а CSS і JavaScript додайте через налаштування власного коду теми або плагін сніпетів."
     apply_suggested_colors: "Застосувати запропоновані кольори"
