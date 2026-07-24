@@ -642,3 +642,25 @@ body .modal.full-screen .modal-push {
 .switch-flash .form-check-input {
     animation: switch-flash 0.6s ease-out;
 }
+
+/* Structural rules moved out of inline styles during the markup cleanup. */
+#header-logo img {
+    width: 45px;
+    height: 45px;
+}
+
+#header-logo h6 {
+    font-size: 15px;
+}
+
+#header-logo small {
+    font-size: 12px;
+}
+
+#header .navbar-nav .nav-item {
+    min-width: 100px;
+}
+
+.filter-records .results {
+    max-height: 650px;
+}

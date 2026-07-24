@@ -1,15 +1,15 @@
 <%# Port of EA components/booking_final_step.php.
     Locals: manage_mode (bool), display_terms_and_conditions, display_privacy_policy ("1"/"0"). %>
 <div id="wizard-frame-5" class="wizard-frame p-3 p-md-4" style="display:none;">
-    <div class="frame-container py-3" style="min-height: 500px;">
+    <div class="frame-container py-3">
         <h2 class="frame-title fw-light text-center mb-4 text-muted"><%= lang('appointment_confirmation') %></h2>
 
-        <div class="row frame-content m-auto pt-md-4 mb-4" style="max-width: 630px;">
-            <div id="appointment-details" class="col-12 col-lg-6 text-center text-md-start mb-2 mb-md-0 fs-5" style="line-height: 28px;">
+        <div class="row frame-content frame-content-narrow m-auto pt-md-4 mb-4">
+            <div id="appointment-details" class="col-12 col-lg-6 text-center text-md-start mb-2 mb-md-0 fs-5">
                 <!-- JS -->
             </div>
 
-            <div id="customer-details" class="col-12 col-lg-6 text-center text-md-end fs-5" style="line-height: 28px;">
+            <div id="customer-details" class="col-12 col-lg-6 text-center text-md-end fs-5">
                 <!-- JS -->
             </div>
 
@@ -17,22 +17,22 @@
 
         <% if setting('require_captcha') == "1" %>
             <% if TurnstileChallenge.enabled? %>
-                <div class="row frame-content m-auto" style="max-width: 630px;">
+                <div class="row frame-content frame-content-narrow m-auto">
                     <div class="col text-center">
                         <div class="cf-turnstile mb-2 d-inline-block" data-sitekey="<%= TurnstileChallenge.site_key %>"></div>
-                        <span id="turnstile-hint" class="help-block text-danger small d-block" style="opacity:0">&nbsp;</span>
+                        <span id="turnstile-hint" class="help-block text-danger small d-block captcha-hint">&nbsp;</span>
                     </div>
                 </div>
             <% elsif setting('altcha_enabled') == "1" %>
-                <div class="row frame-content m-auto" style="max-width: 630px;">
+                <div class="row frame-content frame-content-narrow m-auto">
                     <div class="col">
                         <div id="altcha-widget" class="altcha-widget mb-2"></div>
                         <input type="hidden" id="altcha-payload" value="">
-                        <span id="altcha-hint" class="help-block text-danger small" style="opacity:0">&nbsp;</span>
+                        <span id="altcha-hint" class="help-block text-danger small captcha-hint">&nbsp;</span>
                     </div>
                 </div>
             <% else %>
-                <div class="row frame-content m-auto" style="max-width: 630px;">
+                <div class="row frame-content frame-content-narrow m-auto">
                     <div class="col">
                         <label class="captcha-title float-start my-2 mb-2 me-md-4" for="captcha-text">
                             CAPTCHA
@@ -42,7 +42,7 @@
                         </label>
                         <img class="captcha-image float-start float-md-end mb-4 rounded" src="/captcha" alt="CAPTCHA">
                         <input id="captcha-text" class="captcha-text form-control w-100 mb-4" type="text" value=""/>
-                        <span id="captcha-hint" class="help-block" style="opacity:0">&nbsp;</span>
+                        <span id="captcha-hint" class="help-block captcha-hint">&nbsp;</span>
                     </div>
                 </div>
             <% end %>
@@ -50,7 +50,7 @@
 
     </div>
 
-    <div class="d-flex fs-6 justify-content-around m-auto" style="max-width: 630px;">
+    <div class="d-flex fs-6 justify-content-around frame-content-narrow m-auto">
         <% if display_terms_and_conditions == "1" %>
             <div class="form-check mb-3">
                 <input type="checkbox" class="required form-check-input" id="accept-to-terms-and-conditions">
@@ -76,7 +76,7 @@
     </div>
 
     <div class="command-buttons text-center my-3 mx-auto d-md-flex justify-content-md-between">
-        <button type="button" id="button-back-5" class="btn button-back btn-outline-secondary" style="min-width: 120px; margin-right: 10px;"
+        <button type="button" id="button-back-5" class="btn button-back btn-outline-secondary"
                 data-step_index="5">
             <i class="fas fa-chevron-left me-2"></i>
             <%= lang('back') %>

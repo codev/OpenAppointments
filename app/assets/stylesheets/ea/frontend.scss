@@ -100,3 +100,77 @@
     max-height: 140px;
     object-fit: cover;
 }
+
+/* Structural rules moved out of inline styles during the markup cleanup. */
+#company-name {
+    min-width: 0;
+    line-height: 1.4;
+}
+
+#company-logo {
+    max-height: 56px;
+}
+
+#steps {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    width: 240px;
+}
+
+#steps .book-step {
+    transition: all 0.3s linear;
+}
+
+#steps .book-step:last-child {
+    margin-right: 0 !important;
+}
+
+#steps .book-step strong {
+    cursor: default;
+}
+
+.frame-container {
+    min-height: 500px;
+}
+
+.command-buttons .btn {
+    min-width: 120px;
+}
+
+.command-buttons.d-md-flex {
+    gap: 10px;
+}
+
+.frame-content-narrow {
+    max-width: 630px;
+}
+
+#appointment-details,
+#customer-details {
+    line-height: 28px;
+}
+
+#service-description {
+    max-height: 153px;
+}
+
+#select-time {
+    max-width: 288px;
+}
+
+#available-hours {
+    max-height: 250px;
+}
+
+.captcha-hint {
+    opacity: 0;
+}
+
+#frame-footer #select-language {
+    min-width: 100px;
+}
+
+#frame-footer .backend-link {
+    min-width: 120px;
+}
