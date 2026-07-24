@@ -1,6 +1,12 @@
 ---
 zh-tw:
   ea:
+    apply_suggested_colors: "套用建議的顏色"
+    color_contrast_ok: "所選顏色符合 WCAG AA 對比度要求。"
+    contrast_warning_button_text: "白色按鈕文字在公司顏色上難以辨認 - 請選擇更深的公司顏色。"
+    contrast_warning_primary_background: "公司顏色在背景顏色上難以辨認 - 請選擇更深的公司顏色或更淺的背景顏色。"
+    contrast_warning_secondary: "白色文字在輔助顏色上難以辨認 - 請選擇更深的輔助顏色。"
+    contrast_warning_body_background: "文字在背景顏色上難以辨認 - 請選擇更淺的背景顏色。"
     secondary_color: "輔助顏色"
     background_color: "背景顏色"
     import_providers_caution: "注意：勾選服務人員將建立使用者帳戶並允許使用他們的電子郵件登入"

@@ -42,9 +42,19 @@ class BrandColorsTest < ActionDispatch::IntegrationTest
     assert_equal "#fefefe", Setting.get("company_background_color")
   end
 
+  test "the settings page ships the accessibility panel and suggestions" do
+    post "/login/validate", params: { username: "administrator", password: "administrator1" }
+    get "/general_settings"
+    assert_select "#color-accessibility"
+    assert_select "#apply-suggested-colors"
+    assert_match "theme_suggestions", response.body
+  end
+
   test "the colour labels exist in every locale" do
     I18n.available_locales.each do |locale|
-      %w[secondary_color background_color].each do |key|
+      %w[secondary_color background_color apply_suggested_colors color_contrast_ok
+         contrast_warning_button_text contrast_warning_primary_background
+         contrast_warning_secondary contrast_warning_body_background].each do |key|
         assert I18n.t("ea.#{key}", locale: locale, fallback: false, default: nil).present?,
                "missing ea.#{key} in #{locale}"
       end

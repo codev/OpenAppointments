@@ -1,6 +1,12 @@
 ---
 hu:
   ea:
+    apply_suggested_colors: "Javasolt színek alkalmazása"
+    color_contrast_ok: "A kiválasztott színek megfelelnek a WCAG AA kontrasztnak."
+    contrast_warning_button_text: "A fehér gombfelirat nehezen olvasható a cégszínen - válasszon sötétebb cégszínt."
+    contrast_warning_primary_background: "A cégszín nehezen olvasható a háttérszínen - válasszon sötétebb cégszínt vagy világosabb hátteret."
+    contrast_warning_secondary: "A fehér szöveg nehezen olvasható a másodlagos színen - válasszon sötétebb másodlagos színt."
+    contrast_warning_body_background: "A szöveg nehezen olvasható a háttérszínen - válasszon világosabb háttérszínt."
     secondary_color: "Másodlagos szín"
     background_color: "Háttérszín"
     import_providers_caution: "Figyelem: a szolgáltatók bejelölése felhasználói fiókokat hoz létre, és lehetővé teszi a bejelentkezést az e-mail-címükkel"

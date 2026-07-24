@@ -1,6 +1,12 @@
 ---
 he:
   ea:
+    apply_suggested_colors: "החל צבעים מוצעים"
+    color_contrast_ok: "הצבעים שנבחרו עומדים בניגודיות WCAG AA."
+    contrast_warning_button_text: "טקסט לבן על כפתורים קשה לקריאה על צבע החברה - בחרו צבע חברה כהה יותר."
+    contrast_warning_primary_background: "צבע החברה קשה לקריאה על צבע הרקע - בחרו צבע חברה כהה יותר או רקע בהיר יותר."
+    contrast_warning_secondary: "טקסט לבן קשה לקריאה על הצבע המשני - בחרו צבע משני כהה יותר."
+    contrast_warning_body_background: "טקסט קשה לקריאה על צבע הרקע - בחרו צבע רקע בהיר יותר."
     secondary_color: "צבע משני"
     background_color: "צבע רקע"
     import_providers_caution: "זהירות: סימון נותני שירות ייצור חשבונות משתמש ויאפשר התחברות עם האימייל שלהם"

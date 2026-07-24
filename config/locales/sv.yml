@@ -1,6 +1,12 @@
 ---
 sv:
   ea:
+    apply_suggested_colors: "Använd föreslagna färger"
+    color_contrast_ok: "De valda färgerna uppfyller WCAG AA-kontrast."
+    contrast_warning_button_text: "Vit knapptext är svårläst på företagsfärgen - välj en mörkare företagsfärg."
+    contrast_warning_primary_background: "Företagsfärgen är svårläst på bakgrundsfärgen - välj en mörkare företagsfärg eller en ljusare bakgrund."
+    contrast_warning_secondary: "Vit text är svårläst på den sekundära färgen - välj en mörkare sekundär färg."
+    contrast_warning_body_background: "Text är svårläst på bakgrundsfärgen - välj en ljusare bakgrundsfärg."
     secondary_color: "Sekundär färg"
     background_color: "Bakgrundsfärg"
     import_providers_caution: "Varning: att bocka i utförare skapar användarkonton och tillåter inloggning med deras e-post"

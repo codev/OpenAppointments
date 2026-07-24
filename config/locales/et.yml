@@ -1,6 +1,12 @@
 ---
 et:
   ea:
+    apply_suggested_colors: "Rakenda soovitatud värvid"
+    color_contrast_ok: "Valitud värvid vastavad WCAG AA kontrastile."
+    contrast_warning_button_text: "Valge nuputekst on ettevõtte värvil raskesti loetav - valige tumedam ettevõtte värv."
+    contrast_warning_primary_background: "Ettevõtte värv on taustavärvil raskesti loetav - valige tumedam ettevõtte värv või heledam taust."
+    contrast_warning_secondary: "Valge tekst on teisesel värvil raskesti loetav - valige tumedam teisene värv."
+    contrast_warning_body_background: "Tekst on taustavärvil raskesti loetav - valige heledam taustavärv."
     secondary_color: "Teisene värv"
     background_color: "Taustavärv"
     import_providers_caution: "Ettevaatust: teenusepakkujate märkimine loob kasutajakontod ja lubab nende e-postiga sisse logida"

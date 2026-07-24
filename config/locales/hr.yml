@@ -1,6 +1,12 @@
 ---
 hr:
   ea:
+    apply_suggested_colors: "Primijeni predložene boje"
+    color_contrast_ok: "Odabrane boje zadovoljavaju WCAG AA kontrast."
+    contrast_warning_button_text: "Bijeli tekst gumba teško je čitljiv na boji tvrtke - odaberite tamniju boju tvrtke."
+    contrast_warning_primary_background: "Boja tvrtke je teško čitljiva na boji pozadine - odaberite tamniju boju tvrtke ili svjetliju pozadinu."
+    contrast_warning_secondary: "Bijeli tekst je teško čitljiv na sekundarnoj boji - odaberite tamniju sekundarnu boju."
+    contrast_warning_body_background: "Tekst je teško čitljiv na boji pozadine - odaberite svjetliju boju pozadine."
     secondary_color: "Sekundarna boja"
     background_color: "Boja pozadine"
     import_providers_caution: "Oprez: označavanje pružatelja usluga stvorit će korisničke račune i omogućiti prijavu njihovim emailom"

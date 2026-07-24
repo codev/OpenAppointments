@@ -18,7 +18,7 @@ class GeneralSettingsController < ApplicationController
     return unless require_backend_page!(:system_settings)
 
     backend_page_vars(page_title: helpers.lang("settings"), active_menu: "system_settings")
-    script_vars(general_settings: settings_rows)
+    script_vars(general_settings: settings_rows, theme_suggestions: Themes::SUGGESTED)
     html_vars(
       available_languages: Localization.available_languages,
       available_themes: available_themes

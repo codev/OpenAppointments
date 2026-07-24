@@ -1,6 +1,12 @@
 ---
 ro:
   ea:
+    apply_suggested_colors: "Aplică culorile sugerate"
+    color_contrast_ok: "Culorile selectate respectă contrastul WCAG AA."
+    contrast_warning_button_text: "Textul alb al butoanelor se citește greu pe culoarea companiei - alegeți o culoare a companiei mai închisă."
+    contrast_warning_primary_background: "Culoarea companiei se citește greu pe culoarea de fundal - alegeți o culoare a companiei mai închisă sau un fundal mai deschis."
+    contrast_warning_secondary: "Textul alb se citește greu pe culoarea secundară - alegeți o culoare secundară mai închisă."
+    contrast_warning_body_background: "Textul se citește greu pe culoarea de fundal - alegeți o culoare de fundal mai deschisă."
     secondary_color: "Culoare secundară"
     background_color: "Culoare de fundal"
     import_providers_caution: "Atenție: bifarea furnizorilor va crea conturi de utilizator și va permite autentificarea cu emailul lor"

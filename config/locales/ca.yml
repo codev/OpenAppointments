@@ -1,6 +1,12 @@
 ---
 ca:
   ea:
+    apply_suggested_colors: "Aplica els colors suggerits"
+    color_contrast_ok: "Els colors seleccionats compleixen el contrast WCAG AA."
+    contrast_warning_button_text: "El text blanc dels botons és difícil de llegir sobre el color de l'empresa - trieu un color d'empresa més fosc."
+    contrast_warning_primary_background: "El color de l'empresa és difícil de llegir sobre el color de fons - trieu un color d'empresa més fosc o un fons més clar."
+    contrast_warning_secondary: "El text blanc és difícil de llegir sobre el color secundari - trieu un color secundari més fosc."
+    contrast_warning_body_background: "El text és difícil de llegir sobre el color de fons - trieu un color de fons més clar."
     secondary_color: "Color secundari"
     background_color: "Color de fons"
     import_providers_caution: "Precaució: marcar proveïdors crearà comptes d'usuari i permetrà iniciar sessió amb el seu correu"

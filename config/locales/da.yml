@@ -1,6 +1,12 @@
 ---
 da:
   ea:
+    apply_suggested_colors: "Anvend foreslåede farver"
+    color_contrast_ok: "De valgte farver opfylder WCAG AA-kontrast."
+    contrast_warning_button_text: "Hvid knaptekst er svær at læse på virksomhedsfarven - vælg en mørkere virksomhedsfarve."
+    contrast_warning_primary_background: "Virksomhedsfarven er svær at læse på baggrundsfarven - vælg en mørkere virksomhedsfarve eller en lysere baggrund."
+    contrast_warning_secondary: "Hvid tekst er svær at læse på den sekundære farve - vælg en mørkere sekundær farve."
+    contrast_warning_body_background: "Tekst er svær at læse på baggrundsfarven - vælg en lysere baggrundsfarve."
     secondary_color: "Sekundær farve"
     background_color: "Baggrundsfarve"
     import_providers_caution: "Advarsel: at markere behandlere opretter brugerkonti og tillader login med deres e-mail"

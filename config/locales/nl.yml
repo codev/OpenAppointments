@@ -1,6 +1,12 @@
 ---
 nl:
   ea:
+    apply_suggested_colors: "Voorgestelde kleuren toepassen"
+    color_contrast_ok: "De geselecteerde kleuren voldoen aan WCAG AA-contrast."
+    contrast_warning_button_text: "Witte knoptekst is moeilijk leesbaar op de bedrijfskleur - kies een donkerdere bedrijfskleur."
+    contrast_warning_primary_background: "De bedrijfskleur is moeilijk leesbaar op de achtergrondkleur - kies een donkerdere bedrijfskleur of een lichtere achtergrond."
+    contrast_warning_secondary: "Witte tekst is moeilijk leesbaar op de secundaire kleur - kies een donkerdere secundaire kleur."
+    contrast_warning_body_background: "Tekst is moeilijk leesbaar op de achtergrondkleur - kies een lichtere achtergrondkleur."
     secondary_color: "Secundaire kleur"
     background_color: "Achtergrondkleur"
     import_providers_caution: "Let op: het aanvinken van medewerkers maakt gebruikersaccounts aan en staat inloggen met hun e-mail toe"

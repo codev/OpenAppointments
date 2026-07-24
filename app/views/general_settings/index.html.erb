@@ -144,12 +144,16 @@
                                         <% end %>
                                     </select>
 
-                                    <div class="form-text text-muted">
-                                        <small>
-                                            <%= lang('company_color_hint') %>
-                                        </small>
+                                    <div class="my-2">
+                                        <button type="button" id="apply-suggested-colors"
+                                                class="btn btn-outline-secondary btn-sm">
+                                            <i class="fas fa-fill-drip me-2"></i>
+                                            <%= lang('apply_suggested_colors') %>
+                                        </button>
                                     </div>
                                 </div>
+
+                                <div id="color-accessibility" class="mb-3" aria-live="polite"></div>
 
                             </div>
                         </div>
@@ -252,5 +256,5 @@
 </div>
 
 <% content_for :scripts do %>
-    <%= ea_js "http/general_settings_http_client", "pages/general_settings" %>
+    <%= ea_js "utils/contrast", "http/general_settings_http_client", "pages/general_settings" %>
 <% end %>

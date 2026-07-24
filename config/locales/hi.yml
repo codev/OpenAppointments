@@ -1,6 +1,12 @@
 ---
 hi:
   ea:
+    apply_suggested_colors: "सुझाए गए रंग लागू करें"
+    color_contrast_ok: "चयनित रंग WCAG AA कंट्रास्ट को पूरा करते हैं।"
+    contrast_warning_button_text: "कंपनी रंग पर सफेद बटन टेक्स्ट पढ़ना कठिन है - गहरा कंपनी रंग चुनें।"
+    contrast_warning_primary_background: "पृष्ठभूमि रंग पर कंपनी रंग पढ़ना कठिन है - गहरा कंपनी रंग या हल्की पृष्ठभूमि चुनें।"
+    contrast_warning_secondary: "द्वितीयक रंग पर सफेद टेक्स्ट पढ़ना कठिन है - गहरा द्वितीयक रंग चुनें।"
+    contrast_warning_body_background: "पृष्ठभूमि रंग पर टेक्स्ट पढ़ना कठिन है - हल्का पृष्ठभूमि रंग चुनें।"
     secondary_color: "द्वितीयक रंग"
     background_color: "पृष्ठभूमि रंग"
     import_providers_caution: "सावधानी: प्रदाताओं को टिक करने से उपयोगकर्ता खाते बनेंगे और उनके ईमेल से लॉग इन संभव होगा"

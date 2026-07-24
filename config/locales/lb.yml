@@ -1,6 +1,12 @@
 ---
 lb:
   ea:
+    apply_suggested_colors: "Proposéiert Faarwen uwenden"
+    color_contrast_ok: "Déi gewielte Faarwen erfëllen de WCAG AA Kontrast."
+    contrast_warning_button_text: "Wäissen Text op de Knäppercher ass schwéier ze liesen op der Firmefaarf - wielt eng méi donkel Firmefaarf."
+    contrast_warning_primary_background: "D'Firmefaarf ass schwéier ze liesen op der Hannergrondfaarf - wielt eng méi donkel Firmefaarf oder e méi hellen Hannergrond."
+    contrast_warning_secondary: "Wäissen Text ass schwéier ze liesen op der sekundärer Faarf - wielt eng méi donkel sekundär Faarf."
+    contrast_warning_body_background: "Text ass schwéier ze liesen op der Hannergrondfaarf - wielt eng méi hell Hannergrondfaarf."
     secondary_color: "Sekundär Faarf"
     background_color: "Hannergrondfaarf"
     import_providers_caution: "Opgepasst: wann Dir Déngschtleeschter ukräizt, gi Benotzerkonten erstallt an si kënnen sech mat hirer E-Mail umellen"
