@@ -26,25 +26,34 @@ module DataExport
   end
 
   def categories_sheet
-    rows = ServiceCategory.order(:name).map { |category| [ category.name, category.description ] }
-    [ %w[name description] ] + rows
+    rows = ServiceCategory.with_attached_picture.order(:name).map do |category|
+      [ category.name, category.description, picture_name(category) ]
+    end
+    [ %w[name description picture] ] + rows
   end
 
   def services_sheet
-    rows = Service.includes(:category).order(:name).map do |service|
+    rows = Service.includes(:category).with_attached_picture.order(:name).map do |service|
       [ service.name, service.duration, service.price, service.currency, service.category&.name,
-        service.description, service.color, service.attendants_number, service.is_private ? "1" : "0" ]
+        service.description, service.color, service.attendants_number, service.is_private ? "1" : "0",
+        picture_name(service) ]
     end
-    [ %w[name duration price currency category description color attendants_number is_private] ] + rows
+    [ %w[name duration price currency category description color attendants_number is_private picture] ] + rows
   end
 
   def providers_sheet
-    rows = User.providers.includes(:services, :settings).order(:name).map do |provider|
+    rows = User.providers.includes(:services, :settings).with_attached_picture.order(:name).map do |provider|
       [ provider.name, provider.email, provider.phone_number, provider.timezone,
         provider.services.map(&:name).join("|"), provider.settings&.working_plan,
-        provider.settings&.username ]
+        provider.settings&.username, provider.about, provider.services_description,
+        picture_name(provider) ]
     end
-    [ %w[name email phone_number timezone services working_plan username] ] + rows
+    [ %w[name email phone_number timezone services working_plan username
+         about services_description picture] ] + rows
+  end
+
+  def picture_name(record)
+    record.picture.attached? ? record.picture.filename.to_s : nil
   end
 
   def secretaries_sheet

@@ -1,6 +1,23 @@
 ---
 es:
   ea:
+    release_notes: "Notas de la versión"
+    services_description: "Descripción de los servicios ofrecidos"
+    go_to_company: "Ir a %{company}"
+    download_ics: "Descargar archivo ics"
+    regenerate_link: "Regenerar enlace"
+    regenerate_link_warning_service: "Advertencia: Los enlaces existentes a este servicio en la web dejarán de ser válidos"
+    regenerate_link_warning_provider: "Advertencia: Los enlaces existentes a este proveedor en la web dejarán de ser válidos"
+    change: "Cambiar"
+    turnstile_keys_hint_after: "registrando una cuenta y yendo después a Application Security > Turnstile"
+    failed: "fallidos"
+    import_failures: "Registros fallidos"
+    booking_provider_first: "Primero el proveedor en lugar del servicio"
+    display_order_switch: "Mostrar el enlace para cambiar el orden servicio/proveedor"
+    display_powered_by: "Mostrar Powered by OpenAppointments"
+    longer_text_field: "Campo de texto más largo"
+    embed_wordpress: "Insertar en WordPress"
+    embed_wordpress_hint: "Pegue el HTML en un bloque Custom HTML y añada el CSS y el JavaScript con las opciones de código personalizado de su tema o un plugin de fragmentos."
     apply_suggested_colors: "Aplicar colores sugeridos"
     color_contrast_ok: "Los colores seleccionados cumplen el contraste WCAG AA."
     contrast_warning_button_text: "El texto blanco de los botones es difícil de leer sobre el color de la empresa - elija un color de empresa más oscuro."
@@ -328,7 +345,7 @@ es:
     oops_something_went_wrong: "¡Ups! ¡Algo ha salido mal."
     ea_update_success: OpenAppointments ha sido actualizado exitosamente
     require_captcha: Requiere CAPTCHA
-    require_captcha_hint: Cuando se habilita, el cliente tendrá que escribir el código CAPTCHA antes de reservar/actualizar una cita.
+    require_captcha_hint: "Cuando se habilita, el cliente tendrá que escribir el código CAPTCHA antes de reservar/actualizar una cita. - vaya a Integraciones para elegir un tipo de Captcha más avanzado"
     captcha_is_wrong: Verificación de CAPTCHA fallida, por favor intentelo nuevamente.
     enter_captcha_here: Introduzca el CAPTCHA aquí...
     any_provider: Cualquier Proveedor

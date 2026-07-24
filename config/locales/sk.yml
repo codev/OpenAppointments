@@ -1,6 +1,23 @@
 ---
 sk:
   ea:
+    release_notes: "Poznámky k vydaniu"
+    services_description: "Popis poskytovaných služieb"
+    go_to_company: "Prejsť na %{company}"
+    download_ics: "Stiahnuť súbor ics"
+    regenerate_link: "Pregenerovať odkaz"
+    regenerate_link_warning_service: "Upozornenie: Existujúce odkazy na túto službu na webe prestanú platiť"
+    regenerate_link_warning_provider: "Upozornenie: Existujúce odkazy na tohto poskytovateľa na webe prestanú platiť"
+    change: "Zmeniť"
+    turnstile_keys_hint_after: "registráciou účtu a prechodom do Application Security > Turnstile"
+    failed: "zlyhalo"
+    import_failures: "Neúspešné záznamy"
+    booking_provider_first: "Najprv poskytovateľ namiesto služby"
+    display_order_switch: "Zobraziť odkaz na prepnutie poradia služba/poskytovateľ"
+    display_powered_by: "Zobraziť Powered by OpenAppointments"
+    longer_text_field: "Dlhšie textové pole"
+    embed_wordpress: "Vloženie do WordPressu"
+    embed_wordpress_hint: "Vložte HTML do bloku Custom HTML a CSS a JavaScript pridajte cez vlastný kód témy alebo plugin pre snippety."
     apply_suggested_colors: "Použiť navrhované farby"
     color_contrast_ok: "Vybrané farby spĺňajú kontrast WCAG AA."
     contrast_warning_button_text: "Biely text tlačidiel je na firemnej farbe zle čitateľný - zvoľte tmavšiu firemnú farbu."
@@ -328,7 +345,7 @@ sk:
     oops_something_went_wrong: Úups! Niečo sa pokazilo.
     ea_update_success: OpenAppointments bolo úspešne aktualizované.
     require_captcha: Vyžadovať CAPTCHA
-    require_captcha_hint: Po zapnutí budú zákazníci musieť pred rezerváciou / aktualizáciou schôdzky napísať náhodne vygenerovaný reťazec CAPTCHA.
+    require_captcha_hint: "Po zapnutí budú zákazníci musieť pred rezerváciou / aktualizáciou schôdzky napísať náhodne vygenerovaný reťazec CAPTCHA. - prejdite do Integrácií a zvoľte pokročilejší typ Captcha"
     captcha_is_wrong: CAPTCHA overovanie zlyhalo. Skúste to znova.
     enter_captcha_here: Zadajte CAPTCHA tu...
     any_provider: Akýkoľvek poskytovateľ

@@ -10,6 +10,18 @@ class CustomersController < ApplicationController
                       notes timezone language custom_field_1 custom_field_2 custom_field_3
                       custom_field_4 custom_field_5 ldap_dn].freeze
 
+  # Most recently active customers first: latest of profile update, appointment
+  # change or message (SQLite scalar MAX compares the uniform datetime strings).
+  LAST_INTERACTION_ORDER = <<~SQL.squish.freeze
+    MAX(
+      users.updated_at,
+      COALESCE((SELECT MAX(appointments.updated_at) FROM appointments
+                WHERE appointments.id_users_customer = users.id), users.updated_at),
+      COALESCE((SELECT MAX(messages.created_at) FROM messages
+                WHERE messages.customer_id = users.id), users.updated_at)
+    ) DESC
+  SQL
+
   before_action :require_session, except: [ :index ]
 
   def index
@@ -131,7 +143,7 @@ class CustomersController < ApplicationController
   end
 
   def search_customers(keyword, limit, offset)
-    scope = User.customers.with_attached_picture.order(updated_at: :desc)
+    scope = User.customers.with_attached_picture.order(Arel.sql(LAST_INTERACTION_ORDER))
     if keyword.present?
       pattern = "%#{User.sanitize_sql_like(keyword)}%"
       scope = scope.where(<<~SQL.squish, pattern: pattern)

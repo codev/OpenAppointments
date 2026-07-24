@@ -1,6 +1,23 @@
 ---
 rs:
   ea:
+    release_notes: "Napomene o izdanju"
+    services_description: "Opis pruženih usluga"
+    go_to_company: "Idi na %{company}"
+    download_ics: "Preuzmi ics datoteku"
+    regenerate_link: "Regeneriši link"
+    regenerate_link_warning_service: "Upozorenje: Postojeći linkovi na ovu uslugu na webu će prestati da važe"
+    regenerate_link_warning_provider: "Upozorenje: Postojeći linkovi na ovog pružaoca na webu će prestati da važe"
+    change: "Promeni"
+    turnstile_keys_hint_after: "registracijom naloga pa odlaskom na Application Security > Turnstile"
+    failed: "neuspešno"
+    import_failures: "Neuspešni zapisi"
+    booking_provider_first: "Prvo pružalac umesto usluge"
+    display_order_switch: "Prikaži link za promenu redosleda usluga/pružalac"
+    display_powered_by: "Prikaži Powered by OpenAppointments"
+    longer_text_field: "Duže tekstualno polje"
+    embed_wordpress: "Ugradnja u WordPress"
+    embed_wordpress_hint: "Nalepite HTML u Custom HTML blok, a CSS i JavaScript dodajte kroz opcije prilagođenog koda teme ili dodatak za snipete."
     apply_suggested_colors: "Primeni predložene boje"
     color_contrast_ok: "Izabrane boje zadovoljavaju WCAG AA kontrast."
     contrast_warning_button_text: "Beli tekst dugmadi teško je čitljiv na boji kompanije - izaberite tamniju boju kompanije."
@@ -328,7 +345,7 @@ rs:
     oops_something_went_wrong: Oops! Nešto nije u redu!
     ea_update_success: OpenAppointments je uspešno ažuriran!
     require_captcha: Zahtevajte CAPTCHA-u
-    require_captcha_hint: Ako je moguće, korisnik treba da unese slučajno generisan CAPTCHA niz znakova pre zakazivanja ili menjanja termina.
+    require_captcha_hint: "Ako je moguće, korisnik treba da unese slučajno generisan CAPTCHA niz znakova pre zakazivanja ili menjanja termina. - idite na Integracije da izaberete napredniji tip Captcha"
     captcha_is_wrong: CAPTCHA potvrđivanje nije uspelo, molimo Vas da pokušate ponovo.
     enter_captcha_here: Unesite CAPTCHA ovde...
     any_provider: Bilo koji izvršilac

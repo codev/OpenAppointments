@@ -1,6 +1,23 @@
 ---
 it:
   ea:
+    release_notes: "Note di rilascio"
+    services_description: "Descrizione dei servizi offerti"
+    go_to_company: "Vai a %{company}"
+    download_ics: "Scarica file ics"
+    regenerate_link: "Rigenera link"
+    regenerate_link_warning_service: "Attenzione: i link esistenti a questo servizio sul web non saranno più validi"
+    regenerate_link_warning_provider: "Attenzione: i link esistenti a questo fornitore sul web non saranno più validi"
+    change: "Cambia"
+    turnstile_keys_hint_after: "registrando un account e andando poi su Application Security > Turnstile"
+    failed: "falliti"
+    import_failures: "Record falliti"
+    booking_provider_first: "Prima il fornitore invece del servizio"
+    display_order_switch: "Mostra il link per cambiare l'ordine servizio/fornitore"
+    display_powered_by: "Mostra Powered by OpenAppointments"
+    longer_text_field: "Campo di testo più lungo"
+    embed_wordpress: "Incorpora in WordPress"
+    embed_wordpress_hint: "Incolla l'HTML in un blocco Custom HTML e aggiungi CSS e JavaScript con le opzioni di codice personalizzato del tema o un plugin di snippet."
     apply_suggested_colors: "Applica i colori suggeriti"
     color_contrast_ok: "I colori selezionati soddisfano il contrasto WCAG AA."
     contrast_warning_button_text: "Il testo bianco dei pulsanti è difficile da leggere sul colore aziendale - scegli un colore aziendale più scuro."
@@ -328,7 +345,7 @@ it:
     oops_something_went_wrong: Oops! Qualcosa è andato storto.
     ea_update_success: OpenAppointments è stato aggiornato con successo.
     require_captcha: Richiedi CAPTCHA
-    require_captcha_hint: Quando abilitato, i clienti dovranno digitare il codice CAPTCHA prima di prenotare/aggiornare un appuntamento.
+    require_captcha_hint: "Quando abilitato, i clienti dovranno digitare il codice CAPTCHA prima di prenotare/aggiornare un appuntamento. - vai su Integrazioni per scegliere un tipo di Captcha più avanzato"
     captcha_is_wrong: Verifica del CAPTCHA fallita, prova di nuovo.
     enter_captcha_here: Inserisci il CAPTCHA qui...
     any_provider: Qualsiasi provider

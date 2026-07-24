@@ -2,16 +2,21 @@
 <footer id="frame-footer" class="p-3 text-center border-top">
     <small class="d-block d-md-flex">
         <span class="footer-powered-by small d-block w-100 w-md-50 text-center text-md-start p-1 pe-md-0">
-            Powered By
-            <a href="https://github.com/codev/OpenAppointments" target="_blank">OpenAppointments</a>
+            <% separator_needed = false %>
+            <% if setting("display_powered_by", "1").to_s == "1" %>
+                Powered By
+                <a href="https://github.com/codev/OpenAppointments" target="_blank">OpenAppointments</a>
+                <% separator_needed = true %>
+            <% end %>
 
             <% if legal_notice_url.present? %>
-                <span>|</span>
+                <span <%= "hidden" unless separator_needed %>>|</span>
                 <a href="<%= legal_notice_url %>" target="_blank"><%= lang('legal_notice') %></a>
+                <% separator_needed = true %>
             <% end %>
 
             <% if imprint_url.present? %>
-                <span>|</span>
+                <span <%= "hidden" unless separator_needed %>>|</span>
                 <a href="<%= imprint_url %>" target="_blank"><%= lang('imprint') %></a>
             <% end %>
         </span>

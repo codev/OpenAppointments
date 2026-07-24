@@ -1,6 +1,23 @@
 ---
 ru:
   ea:
+    release_notes: "Примечания к выпуску"
+    services_description: "Описание предоставляемых услуг"
+    go_to_company: "Перейти на %{company}"
+    download_ics: "Скачать файл ics"
+    regenerate_link: "Создать ссылку заново"
+    regenerate_link_warning_service: "Внимание: существующие ссылки на эту услугу в интернете перестанут работать"
+    regenerate_link_warning_provider: "Внимание: существующие ссылки на этого специалиста в интернете перестанут работать"
+    change: "Изменить"
+    turnstile_keys_hint_after: "зарегистрировав аккаунт и перейдя в Application Security > Turnstile"
+    failed: "с ошибкой"
+    import_failures: "Записи с ошибками"
+    booking_provider_first: "Сначала специалист, а не услуга"
+    display_order_switch: "Показывать ссылку смены порядка услуга/специалист"
+    display_powered_by: "Показывать Powered by OpenAppointments"
+    longer_text_field: "Более длинное текстовое поле"
+    embed_wordpress: "Встраивание в WordPress"
+    embed_wordpress_hint: "Вставьте HTML в блок Custom HTML, а CSS и JavaScript добавьте через настройки пользовательского кода темы или плагин сниппетов."
     apply_suggested_colors: "Применить предложенные цвета"
     color_contrast_ok: "Выбранные цвета соответствуют контрасту WCAG AA."
     contrast_warning_button_text: "Белый текст кнопок плохо читается на фирменном цвете - выберите более тёмный фирменный цвет."
@@ -328,7 +345,7 @@ ru:
     oops_something_went_wrong: Сорри! Возникла неопределённая ошибка.
     ea_update_success: Готово! Успешно обновлено.
     require_captcha: Требуется CAPTCHA
-    require_captcha_hint: Если эта функция включена - клиенты должны будут ввести случайно сгенерированную строку CAPTCHA перед бронированием/обновлением записи на прием.
+    require_captcha_hint: "Если эта функция включена - клиенты должны будут ввести случайно сгенерированную строку CAPTCHA перед бронированием/обновлением записи на прием. - перейдите в Интеграции, чтобы выбрать более продвинутый тип Captcha"
     captcha_is_wrong: Проверка CAPTCHA не прошла, пожалуйста, попробуйте еще раз.
     enter_captcha_here: Введите CAPTCHA здесь...
     any_provider: Любой поставщик

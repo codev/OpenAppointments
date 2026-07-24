@@ -1,6 +1,23 @@
 ---
 de:
   ea:
+    release_notes: "Versionshinweise"
+    services_description: "Beschreibung der angebotenen Dienstleistungen"
+    go_to_company: "Weiter zu %{company}"
+    download_ics: "ics-Datei herunterladen"
+    regenerate_link: "Link neu erzeugen"
+    regenerate_link_warning_service: "Warnung: Bestehende Links zu dieser Dienstleistung im Web werden ungültig"
+    regenerate_link_warning_provider: "Warnung: Bestehende Links zu diesem Anbieter im Web werden ungültig"
+    change: "Ändern"
+    turnstile_keys_hint_after: "indem Sie ein Konto anlegen und dann zu Application Security > Turnstile gehen"
+    failed: "fehlgeschlagen"
+    import_failures: "Fehlgeschlagene Datensätze"
+    booking_provider_first: "Zuerst Anbieter statt Dienstleistung"
+    display_order_switch: "Link zum Wechseln der Reihenfolge Dienstleistung/Anbieter anzeigen"
+    display_powered_by: "Powered by OpenAppointments anzeigen"
+    longer_text_field: "Längeres Textfeld"
+    embed_wordpress: "In WordPress einbetten"
+    embed_wordpress_hint: "Fügen Sie das HTML in einen Custom-HTML-Block ein und ergänzen Sie CSS und JavaScript über die Code-Optionen Ihres Themes oder ein Snippet-Plugin."
     apply_suggested_colors: "Vorgeschlagene Farben übernehmen"
     color_contrast_ok: "Die gewählten Farben erfüllen den WCAG-AA-Kontrast."
     contrast_warning_button_text: "Weißer Buttontext ist auf der Firmenfarbe schwer lesbar - wählen Sie eine dunklere Firmenfarbe."
@@ -328,7 +345,7 @@ de:
     oops_something_went_wrong: Oops! Etwas ist schiefgelaufen.
     ea_update_success: OpenAppointments wurde erfolgreich aktualisiert.
     require_captcha: CAPTCHA erfordern
-    require_captcha_hint: Wenn aktiv, werden die Kunden aufgefordert, eine zufällig generierte Zeichenfolge (CAPTCHA) einzutippen bevor Sie einen Termin buchen oder speichern können.
+    require_captcha_hint: "Wenn aktiv, werden die Kunden aufgefordert, eine zufällig generierte Zeichenfolge (CAPTCHA) einzutippen bevor Sie einen Termin buchen oder speichern können. - unter Integrationen können Sie einen fortschrittlicheren Captcha-Typ wählen"
     captcha_is_wrong: CAPTCHA-Überprüfung fehlgeschlagen, bitte versuchen Sie es erneut.
     enter_captcha_here: CAPTCHA hier eingeben...
     any_provider: Jeder Anbieter

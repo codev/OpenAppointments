@@ -1,4 +1,5 @@
 haircut:
+  booking_slug: abcd-efgh
   name: Trim Cut
   duration: 30
   price: 0.00
@@ -8,6 +9,7 @@ haircut:
   category: hair
 
 group_session:
+  booking_slug: bcde-fghj
   name: Group Session
   duration: 60
   price: 0.00

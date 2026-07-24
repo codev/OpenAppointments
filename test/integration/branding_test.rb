@@ -19,9 +19,9 @@ class BrandingTest < ActionDispatch::IntegrationTest
     get "/about"
     assert_response :success
     assert_match "OpenAppointments", response.body
-    # The backend footer carries a deliberate Easy!Appointments attribution;
-    # the old brand must not appear anywhere else.
-    assert_equal 1, response.body.scan(/easy!appointments/i).length
+    # The backend footer attribution and the 1.0.0 release note deliberately
+    # name Easy!Appointments; the old brand must not appear anywhere else.
+    assert_equal 2, response.body.scan(/easy!appointments/i).length
   end
 
   test "backend footer credits Codev and links the AGPL license" do
@@ -29,6 +29,7 @@ class BrandingTest < ActionDispatch::IntegrationTest
     get "/about"
     assert_select "#footer a[href='https://codev.uk/']", text: "Codev"
     assert_select "#footer a[href*='agpl-3.0']", text: /AGPL-3.0/
+    assert_select "#footer a[href='/']", text: I18n.t("ea.go_to_booking_page")
     assert_select "#footer #select-language"
   end
 
@@ -46,6 +47,18 @@ class BrandingTest < ActionDispatch::IntegrationTest
     assert_equal manifest_version, EaHelper::VERSION
     assert_match manifest_version, response.body
     assert_select "#about a[href='https://www.gnu.org/licenses/agpl-3.0.en.html']", text: /AGPL-3\.0/
+  end
+
+  test "about page lists the release notes from the changelog" do
+    post "/login/validate", params: { username: "administrator", password: "administrator1" }
+    get "/about"
+    assert_match I18n.t("ea.release_notes"), response.body
+    assert_select "#about h6", text: "v1.0.0"
+    assert_match "Port of Easy", response.body.gsub("!", "")
+
+    # The released version must have a changelog section.
+    assert_includes Changelog.entries.map { |entry| entry[:version] }, EaHelper::VERSION
+    assert Changelog.entries.all? { |entry| entry[:notes].any? }
   end
 
   test "built-in mail templates carry no old brand" do

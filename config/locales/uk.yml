@@ -1,6 +1,23 @@
 ---
 uk:
   ea:
+    release_notes: "Примітки до випуску"
+    services_description: "Опис послуг, що надаються"
+    go_to_company: "Перейти на %{company}"
+    download_ics: "Завантажити файл ics"
+    regenerate_link: "Створити посилання заново"
+    regenerate_link_warning_service: "Увага: наявні посилання на цю послугу в інтернеті стануть недійсними"
+    regenerate_link_warning_provider: "Увага: наявні посилання на цього фахівця в інтернеті стануть недійсними"
+    change: "Змінити"
+    turnstile_keys_hint_after: "зареєструвавши обліковий запис і перейшовши до Application Security > Turnstile"
+    failed: "з помилкою"
+    import_failures: "Записи з помилками"
+    booking_provider_first: "Спочатку фахівець, а не послуга"
+    display_order_switch: "Показувати посилання зміни порядку послуга/фахівець"
+    display_powered_by: "Показувати Powered by OpenAppointments"
+    longer_text_field: "Довше текстове поле"
+    embed_wordpress: "Вбудовування у WordPress"
+    embed_wordpress_hint: "Вставте HTML у блок Custom HTML, а CSS і JavaScript додайте через налаштування власного коду теми або плагін сніпетів."
     apply_suggested_colors: "Застосувати запропоновані кольори"
     color_contrast_ok: "Вибрані кольори відповідають контрасту WCAG AA."
     contrast_warning_button_text: "Білий текст кнопок погано читається на кольорі компанії - виберіть темніший колір компанії."
@@ -328,7 +345,7 @@ uk:
     oops_something_went_wrong: Ой! Щось пішло не так.
     ea_update_success: OpenAppointments успішно оновлено.
     require_captcha: Вимагати CAPTCHA
-    require_captcha_hint: Коли ввімкнено, клієнти повинні будуть ввести випадково згенерований CAPTCHA код перед бронюванням/оновленням запису.
+    require_captcha_hint: "Коли ввімкнено, клієнти повинні будуть ввести випадково згенерований CAPTCHA код перед бронюванням/оновленням запису. - перейдіть до Інтеграцій, щоб вибрати досконаліший тип Captcha"
     captcha_is_wrong: Перевірка CAPTCHA не вдалася, будь ласка, спробуйте ще раз.
     enter_captcha_here: Введіть CAPTCHA тут...
     any_provider: Будь-який провайдер

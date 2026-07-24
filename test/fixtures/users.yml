@@ -5,6 +5,7 @@ admin:
   timezone: UTC
 
 zane:
+  booking_slug: cdef-ghjk
   name: Zane
   email: zane@example.org
   role: provider

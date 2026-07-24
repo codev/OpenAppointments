@@ -1,6 +1,23 @@
 ---
 fi:
   ea:
+    release_notes: "Julkaisutiedot"
+    services_description: "Kuvaus tarjotuista palveluista"
+    go_to_company: "Siirry kohteeseen %{company}"
+    download_ics: "Lataa ics-tiedosto"
+    regenerate_link: "Luo linkki uudelleen"
+    regenerate_link_warning_service: "Varoitus: Olemassa olevat linkit tähän palveluun verkossa lakkaavat toimimasta"
+    regenerate_link_warning_provider: "Varoitus: Olemassa olevat linkit tähän palveluntarjoajaan verkossa lakkaavat toimimasta"
+    change: "Vaihda"
+    turnstile_keys_hint_after: "rekisteröitymällä ja siirtymällä kohtaan Application Security > Turnstile"
+    failed: "epäonnistui"
+    import_failures: "Epäonnistuneet tietueet"
+    booking_provider_first: "Palveluntarjoaja ensin palvelun sijaan"
+    display_order_switch: "Näytä linkki palvelun/tarjoajan järjestyksen vaihtoon"
+    display_powered_by: "Näytä Powered by OpenAppointments"
+    longer_text_field: "Pidempi tekstikenttä"
+    embed_wordpress: "Upotus WordPressiin"
+    embed_wordpress_hint: "Liitä HTML Custom HTML -lohkoon ja lisää CSS ja JavaScript teeman omilla koodiasetuksilla tai snippet-lisäosalla."
     apply_suggested_colors: "Käytä ehdotettuja värejä"
     color_contrast_ok: "Valitut värit täyttävät WCAG AA -kontrastin."
     contrast_warning_button_text: "Valkoinen painiketeksti on vaikealukuinen yrityksen värillä - valitse tummempi yrityksen väri."
@@ -328,7 +345,7 @@ fi:
     oops_something_went_wrong: Oho! Jotain meni pieleen.
     ea_update_success: OpenAppointments päivitettiin onnistuneesti.
     require_captcha: Vaadi CAPTCHA
-    require_captcha_hint: Jos aktivoitu, asiakkaan pitää kirjoittaa satunnainen CAPTCHA varmennus ennen varauksen lisäämistä/päivittämistä.
+    require_captcha_hint: "Jos aktivoitu, asiakkaan pitää kirjoittaa satunnainen CAPTCHA varmennus ennen varauksen lisäämistä/päivittämistä. - valitse kehittyneempi Captcha-tyyppi Integraatiot-sivulta"
     captcha_is_wrong: CAPTCHA varmennus epäonnistui, ole hyvä ja yritä uudelleen.
     enter_captcha_here: Syötä CAPTCHA tähän...
     any_provider: Kuka tahansa

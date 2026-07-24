@@ -25,6 +25,7 @@ module BookingPayloads
       "id_service_categories" => service.id_service_categories,
       "service_category_name" => service.try(:service_category_name),
       "service_category_id" => service.try(:service_category_id),
+      "booking_slug" => service.booking_slug,
       "picture_url" => EaRows.picture_url(service)
     }
   end
@@ -49,6 +50,8 @@ module BookingPayloads
       {
         "id" => provider.id, "name" => provider.name,
         "services" => provider.services.map(&:id), "timezone" => provider.timezone,
+        "booking_slug" => provider.booking_slug,
+        "about" => provider.about, "services_description" => provider.services_description,
         "picture_url" => EaRows.picture_url(provider)
       }
     end

@@ -81,6 +81,21 @@ class ServicesController < ApplicationController
     json_exception(e, status: :ok)
   end
 
+  # POST /services/regenerate_link
+  def regenerate_link
+    raise ArgumentError, "Forbidden" if cannot?(:edit, :services)
+
+    service_id = params.require(:service_id).to_i
+    raise ArgumentError, "Invalid service ID provided." unless service_id.positive?
+
+    service = Service.find(service_id)
+    service.update_columns(booking_slug: BookingSlug.unique_for(Service))
+
+    render json: { success: true, booking_slug: service.booking_slug }
+  rescue ArgumentError => e
+    json_exception(e, status: :ok)
+  end
+
   private
 
   def service_response(service)
@@ -111,7 +126,7 @@ class ServicesController < ApplicationController
   end
 
   def search_services(keyword, limit, offset)
-    scope = Service.order(updated_at: :desc)
+    scope = Service.order(:name)
     if keyword.present?
       pattern = "%#{Service.sanitize_sql_like(keyword)}%"
       scope = scope.where("name LIKE :pattern OR description LIKE :pattern", pattern: pattern)

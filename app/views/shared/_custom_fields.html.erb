@@ -1,18 +1,30 @@
-<%# Port of EA components/custom_fields.php. Locals: disabled (default false), col_class (extra classes per field). %>
+<%# Port of EA components/custom_fields.php. Locals: disabled (default false), col_class (extra
+    classes per field), long_col_class (classes for longer text fields, defaults to col_class),
+    rows (textarea height for longer text fields, match the sibling notes field). %>
 <% disabled = local_assigns.fetch(:disabled, false) %>
 <% col_class = local_assigns.fetch(:col_class, "") %>
+<% long_col_class = local_assigns.fetch(:long_col_class, col_class) %>
+<% rows = local_assigns.fetch(:rows, 6) %>
 <% (1..5).each do |i| %>
     <% if setting("display_custom_field_#{i}").to_s == "1" %>
-        <div class="mb-3 <%= col_class %>">
+        <% long = setting("long_custom_field_#{i}").to_s == "1" %>
+        <% required = setting("require_custom_field_#{i}").to_s == "1" %>
+        <div class="mb-3 <%= long ? long_col_class : col_class %>">
             <label for="custom-field-<%= i %>" class="form-label">
                 <%= setting("label_custom_field_#{i}").presence || lang('custom_field') + ' #' + i.to_s %>
-                <% if setting("require_custom_field_#{i}").to_s == "1" %>
+                <% if required %>
                     <span class="text-danger" <%= "hidden" if disabled %>>*</span>
                 <% end %>
             </label>
-            <input type="text" id="custom-field-<%= i %>"
-                   class="<%= setting("require_custom_field_#{i}").to_s == "1" ? "required" : "" %> form-control"
-                   maxlength="120" <%= "disabled" if disabled %>/>
+            <% if long %>
+                <textarea id="custom-field-<%= i %>" rows="<%= rows %>"
+                          class="<%= required ? "required" : "" %> form-control"
+                          <%= "disabled" if disabled %>></textarea>
+            <% else %>
+                <input type="text" id="custom-field-<%= i %>"
+                       class="<%= required ? "required" : "" %> form-control"
+                       maxlength="120" <%= "disabled" if disabled %>/>
+            <% end %>
         </div>
     <% end %>
 <% end %>

@@ -1,6 +1,23 @@
 ---
 zh:
   ea:
+    release_notes: "版本说明"
+    services_description: "所提供服务的说明"
+    go_to_company: "前往 %{company}"
+    download_ics: "下载 ics 文件"
+    regenerate_link: "重新生成链接"
+    regenerate_link_warning_service: "警告：网络上指向此服务的现有链接将会失效"
+    regenerate_link_warning_provider: "警告：网络上指向此服务人员的现有链接将会失效"
+    change: "更改"
+    turnstile_keys_hint_after: "注册账号后前往 Application Security > Turnstile"
+    failed: "失败"
+    import_failures: "失败的记录"
+    booking_provider_first: "先显示服务人员而非服务"
+    display_order_switch: "显示切换服务/服务人员顺序的链接"
+    display_powered_by: "显示 Powered by OpenAppointments"
+    longer_text_field: "较长的文本字段"
+    embed_wordpress: "嵌入 WordPress"
+    embed_wordpress_hint: "将 HTML 粘贴到 Custom HTML 区块，再通过主题的自定义代码选项或代码片段插件添加 CSS 和 JavaScript。"
     apply_suggested_colors: "应用建议的颜色"
     color_contrast_ok: "所选颜色符合 WCAG AA 对比度要求。"
     contrast_warning_button_text: "白色按钮文字在公司颜色上难以辨认 - 请选择更深的公司颜色。"
@@ -328,7 +345,7 @@ zh:
     oops_something_went_wrong: 不好！出了一些问题.
     ea_update_success: 预约系统已经成功更新.
     require_captcha: 需要验证码
-    require_captcha_hint: 启用时，客户在预约/更新预约之前必须输入一个随机生成的验证码字符串。
+    require_captcha_hint: "启用时，客户在预约/更新预约之前必须输入一个随机生成的验证码字符串。 - 前往集成页面选择更高级的 Captcha 类型"
     captcha_is_wrong: 验证码验证失败，请重试。
     enter_captcha_here: 在此输入 CAPTCHA...
     any_provider: 任何服务提供者

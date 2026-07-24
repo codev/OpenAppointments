@@ -44,6 +44,11 @@
                     <button id="cancel-provider" class="btn btn-outline-secondary">
                         <%= lang('cancel') %>
                     </button>
+                    <button id="regenerate-provider-link" class="btn btn-outline-secondary ms-2"
+                            style="display:none;">
+                        <i class="fas fa-sync-alt me-2"></i>
+                        <%= lang('regenerate_link') %>
+                    </button>
                     <button id="delete-provider" class="btn btn-outline-danger ms-2">
                         <i class="fas fa-trash-alt me-2"></i>
                         <%= lang('delete') %>
@@ -155,7 +160,7 @@
                                 <label class="form-label" for="notes">
                                     <%= lang('notes') %>
                                 </label>
-                                <textarea id="notes" class="form-control" rows="3" disabled></textarea>
+                                <textarea id="notes" class="form-control" rows="6" disabled></textarea>
                             </div>
 
                         </div>
@@ -271,6 +276,22 @@
                                 <!-- JS -->
                             </div>
 
+                        </div>
+
+                        <div class="col-12">
+                            <div class="mb-3">
+                                <label class="form-label" for="about">
+                                    <%= lang('about') %>
+                                </label>
+                                <textarea id="about" class="form-control" rows="6" disabled></textarea>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label" for="services-description">
+                                    <%= lang('services_description') %>
+                                </label>
+                                <textarea id="services-description" class="form-control" rows="6" disabled></textarea>
+                            </div>
                         </div>
                     </div>
                 </div>

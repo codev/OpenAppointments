@@ -1,6 +1,23 @@
 ---
 fa:
   ea:
+    release_notes: "یادداشت‌های انتشار"
+    services_description: "شرح خدمات ارائه‌شده"
+    go_to_company: "رفتن به %{company}"
+    download_ics: "دانلود فایل ics"
+    regenerate_link: "ساخت دوباره پیوند"
+    regenerate_link_warning_service: "هشدار: پیوندهای موجود به این خدمت در وب نامعتبر خواهند شد"
+    regenerate_link_warning_provider: "هشدار: پیوندهای موجود به این ارائه‌دهنده در وب نامعتبر خواهند شد"
+    change: "تغییر"
+    turnstile_keys_hint_after: "با ثبت‌نام یک حساب و سپس رفتن به Application Security > Turnstile"
+    failed: "ناموفق"
+    import_failures: "رکوردهای ناموفق"
+    booking_provider_first: "ابتدا ارائه‌دهنده به جای خدمت"
+    display_order_switch: "نمایش پیوند تغییر ترتیب خدمت/ارائه‌دهنده"
+    display_powered_by: "نمایش Powered by OpenAppointments"
+    longer_text_field: "فیلد متنی طولانی‌تر"
+    embed_wordpress: "جاسازی در WordPress"
+    embed_wordpress_hint: "کد HTML را در بلوک Custom HTML قرار دهید و CSS و JavaScript را از طریق گزینه‌های کد سفارشی پوسته یا افزونه اسنیپت اضافه کنید."
     apply_suggested_colors: "اعمال رنگ‌های پیشنهادی"
     color_contrast_ok: "رنگ‌های انتخاب‌شده کنتراست WCAG AA را برآورده می‌کنند."
     contrast_warning_button_text: "متن سفید دکمه‌ها روی رنگ شرکت به‌سختی خوانده می‌شود - رنگ شرکت تیره‌تری انتخاب کنید."
@@ -328,7 +345,7 @@ fa:
     oops_something_went_wrong: اوه. مشکلی پیش آمد!
     ea_update_success: OpenAppointments با موفقیت به روز رسانی شد
     require_captcha: کد امنیتی لازم است
-    require_captcha_hint: بعد از فعال کردن این گزینه، کاربران قبل از ایجاد یا تغییر یک قرار ملاقات، باید یک کد امنیتی شامل حروف تصادفی را تشخیص دهند.
+    require_captcha_hint: "بعد از فعال کردن این گزینه، کاربران قبل از ایجاد یا تغییر یک قرار ملاقات، باید یک کد امنیتی شامل حروف تصادفی را تشخیص دهند. - برای انتخاب نوع Captcha پیشرفته‌تر به بخش یکپارچه‌سازی‌ها بروید"
     captcha_is_wrong: کد امنیتی صحیح نمی باشد. لطفا مجددا سعی کنید
     enter_captcha_here: کد CAPTCHA را اینجا وارد کنید...
     any_provider: هر ارائه‌دهنده‌ای

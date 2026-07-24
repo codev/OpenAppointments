@@ -47,6 +47,8 @@ module EaRows
       "custom_field_1" => user.custom_field_1, "custom_field_2" => user.custom_field_2,
       "custom_field_3" => user.custom_field_3, "custom_field_4" => user.custom_field_4,
       "custom_field_5" => user.custom_field_5, "id_roles" => user.id_roles,
+      "booking_slug" => user.booking_slug,
+      "about" => user.about, "services_description" => user.services_description,
       "picture_url" => picture_url(user)
     }
   end
@@ -113,6 +115,7 @@ module EaRows
       "color" => service.color, "slot_interval" => service.slot_interval,
       "attendants_number" => service.attendants_number, "is_private" => service.is_private,
       "id_service_categories" => service.id_service_categories,
+      "booking_slug" => service.booking_slug,
       "picture_url" => picture_url(service)
     }
   end

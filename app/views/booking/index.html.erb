@@ -14,7 +14,7 @@
 
     <!-- Select Service & Provider (order per ?first=, default service first) -->
 
-    <% swap_link = !vars(:manage_mode) %>
+    <% swap_link = !vars(:manage_mode) && setting("display_order_switch", "1").to_s == "1" %>
     <% if vars(:first_step) == "provider" %>
         <%= render "shared/booking_provider_step", frame_index: 1, swap_link: swap_link %>
         <%= render "shared/booking_service_step", available_services: vars(:available_services),
@@ -36,6 +36,7 @@
                require_email: vars(:require_email),
                display_phone_number: vars(:display_phone_number),
                require_phone_number: vars(:require_phone_number),
+               require_phone_or_email: vars(:require_phone_or_email),
                display_address: vars(:display_address),
                require_address: vars(:require_address),
                display_city: vars(:display_city),

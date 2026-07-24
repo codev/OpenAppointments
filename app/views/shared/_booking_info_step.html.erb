@@ -19,6 +19,9 @@
                         <%= lang('email') %>
                         <% if require_email == "1" %>
                             <span class="text-danger">*</span>
+                        <% elsif require_phone_or_email == "1" %>
+                            <span class="required-either" title="<%= lang('phone_or_email_required') %>">*</span>
+                            <span class="visually-hidden"><%= lang('phone_or_email_required') %></span>
                         <% end %>
                     </label>
                     <input type="text" id="email"
@@ -32,6 +35,9 @@
                         <%= lang('phone_number') %>
                         <% if require_phone_number == "1" %>
                             <span class="text-danger">*</span>
+                        <% elsif require_phone_or_email == "1" %>
+                            <span class="required-either" title="<%= lang('phone_or_email_required') %>">*</span>
+                            <span class="visually-hidden"><%= lang('phone_or_email_required') %></span>
                         <% end %>
                     </label>
                     <input type="text" id="phone-number" maxlength="60"
@@ -76,7 +82,8 @@
                 </div>
             <% end %>
 
-            <%= render "shared/custom_fields", col_class: "col-12 col-lg-6" %>
+            <%= render "shared/custom_fields", col_class: "col-12 col-lg-6",
+                                               long_col_class: "col-12", rows: 2 %>
 
             <% if display_notes == "1" %>
                 <div class="col-12 mb-3">
@@ -87,7 +94,7 @@
                         <% end %>
                     </label>
                     <textarea id="notes" maxlength="500"
-                              class="<%= require_notes == "1" ? 'required' : '' %> form-control" rows="1"></textarea>
+                              class="<%= require_notes == "1" ? 'required' : '' %> form-control" rows="2"></textarea>
                 </div>
             <% end %>
 

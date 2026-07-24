@@ -1,6 +1,23 @@
 ---
 ar:
   ea:
+    release_notes: "ملاحظات الإصدار"
+    services_description: "وصف الخدمات المقدمة"
+    go_to_company: "الانتقال إلى %{company}"
+    download_ics: "تنزيل ملف ics"
+    regenerate_link: "إعادة إنشاء الرابط"
+    regenerate_link_warning_service: "تحذير: الروابط الحالية لهذه الخدمة على الويب ستصبح غير صالحة"
+    regenerate_link_warning_provider: "تحذير: الروابط الحالية لمقدم الخدمة هذا على الويب ستصبح غير صالحة"
+    change: "تغيير"
+    turnstile_keys_hint_after: "بالتسجيل للحصول على حساب ثم الانتقال إلى Application Security > Turnstile"
+    failed: "فشل"
+    import_failures: "السجلات الفاشلة"
+    booking_provider_first: "عرض مقدم الخدمة أولاً بدلاً من الخدمة"
+    display_order_switch: "عرض رابط التبديل بين اختيار الخدمة أو مقدم الخدمة أولاً"
+    display_powered_by: "عرض Powered by OpenAppointments"
+    longer_text_field: "حقل نص أطول"
+    embed_wordpress: "التضمين في WordPress"
+    embed_wordpress_hint: "الصق كود HTML في مكوّن Custom HTML، ثم أضف CSS و JavaScript عبر خيارات الكود المخصص في القالب أو إضافة مقتطفات."
     apply_suggested_colors: "تطبيق الألوان المقترحة"
     color_contrast_ok: "الألوان المحددة تحقق تباين WCAG AA."
     contrast_warning_button_text: "نص الأزرار الأبيض صعب القراءة على لون الشركة - اختر لون شركة أغمق."
@@ -328,7 +345,7 @@ ar:
     oops_something_went_wrong: للأسف ! حصل خطأ ما .
     ea_update_success: تم تحديث برنامج الحجوزات بنجاح
     require_captcha: مطلوب CAPTCHA
-    require_captcha_hint: 'عند التمكين ، سيتوجب على الزبون ادخال رمز عشوائي عند الحجز او التعديل على الموعد '
+    require_captcha_hint: "عند التمكين ، سيتوجب على الزبون ادخال رمز عشوائي عند الحجز او التعديل على الموعد  - انتقل إلى التكاملات لاختيار نوع Captcha أكثر تقدماً"
     captcha_is_wrong: الرجاء المحاولة مرة أخرى CAPTCHA لم يتم تأكيد
     enter_captcha_here: أدخل رمز CAPTCHA هنا...
     any_provider: أيْ مزوّد خدمة

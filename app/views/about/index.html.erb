@@ -31,6 +31,21 @@
         </div>
 
         <h4 class="fw-light mb-3">
+            <%= lang('release_notes') %>
+        </h4>
+
+        <div class="mb-5">
+            <% Changelog.entries.each do |entry| %>
+                <h6 class="fw-semibold mb-2">v<%= entry[:version] %></h6>
+                <ul class="text-muted small">
+                    <% entry[:notes].each do |note| %>
+                        <li><%= note %></li>
+                    <% end %>
+                </ul>
+            <% end %>
+        </div>
+
+        <h4 class="fw-light mb-3">
             <%= lang('support') %>
         </h4>
 

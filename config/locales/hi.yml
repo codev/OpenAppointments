@@ -1,6 +1,23 @@
 ---
 hi:
   ea:
+    release_notes: "रिलीज़ नोट्स"
+    services_description: "प्रदान की गई सेवाओं का विवरण"
+    go_to_company: "%{company} पर जाएं"
+    download_ics: "ics फ़ाइल डाउनलोड करें"
+    regenerate_link: "लिंक फिर से बनाएं"
+    regenerate_link_warning_service: "चेतावनी: वेब पर इस सेवा के मौजूदा लिंक अमान्य हो जाएंगे"
+    regenerate_link_warning_provider: "चेतावनी: वेब पर इस प्रदाता के मौजूदा लिंक अमान्य हो जाएंगे"
+    change: "बदलें"
+    turnstile_keys_hint_after: "खाता बनाकर फिर Application Security > Turnstile पर जाकर"
+    failed: "विफल"
+    import_failures: "विफल रिकॉर्ड"
+    booking_provider_first: "सेवा के बजाय पहले प्रदाता"
+    display_order_switch: "सेवा/प्रदाता क्रम बदलने का लिंक दिखाएं"
+    display_powered_by: "Powered by OpenAppointments दिखाएं"
+    longer_text_field: "लंबा टेक्स्ट फ़ील्ड"
+    embed_wordpress: "WordPress में एम्बेड करें"
+    embed_wordpress_hint: "HTML को Custom HTML ब्लॉक में पेस्ट करें, फिर CSS और JavaScript को थीम के कस्टम कोड विकल्पों या स्निपेट प्लगइन से जोड़ें।"
     apply_suggested_colors: "सुझाए गए रंग लागू करें"
     color_contrast_ok: "चयनित रंग WCAG AA कंट्रास्ट को पूरा करते हैं।"
     contrast_warning_button_text: "कंपनी रंग पर सफेद बटन टेक्स्ट पढ़ना कठिन है - गहरा कंपनी रंग चुनें।"
@@ -328,7 +345,7 @@ hi:
     oops_something_went_wrong: उफ़! कुछ गलत हो गया
     ea_update_success: आसान! अपॉइंटमेंट सफलतापूर्वक अद्यतन किया गया है.
     require_captcha: CAPTCHA आवश्यक है
-    require_captcha_hint: जब सक्षम किया गया है, तो ग्राहकों को अपॉइंटमेंट बुकिंग/अपडेट करने से पहले एक यादृच्छिक जनरेटेड CAPTCHA स्ट्रिंग टाइप करनी होगी।
+    require_captcha_hint: "जब सक्षम किया गया है, तो ग्राहकों को अपॉइंटमेंट बुकिंग/अपडेट करने से पहले एक यादृच्छिक जनरेटेड CAPTCHA स्ट्रिंग टाइप करनी होगी। - अधिक उन्नत Captcha प्रकार चुनने के लिए Integrations पर जाएं"
     captcha_is_wrong: CAPTCHA सत्यापन विफल हो गया है, कृपया पुनः प्रयास करें।
     enter_captcha_here: यहाँ CAPTCHA दर्ज करें...
     any_provider: कोई भी प्रदाता

@@ -209,8 +209,13 @@ App.Pages.Booking = (function () {
                 })
                 .fadeIn();
         } else {
-            // Check if a specific service was selected (via URL parameter).
-            const selectedServiceId = App.Utils.Url.queryParam('service');
+            // Check if a specific service was selected (via URL parameter). The parameter
+            // carries the unguessable booking slug, never the database id.
+            const selectedServiceSlug = App.Utils.Url.queryParam('service');
+            const selectedService = (vars('available_services') || []).find(
+                (service) => service.booking_slug && service.booking_slug === selectedServiceSlug,
+            );
+            const selectedServiceId = selectedService ? String(selectedService.id) : null;
 
             if (selectedServiceId && $selectService.find('option[value="' + selectedServiceId + '"]').length > 0) {
                 $selectService.val(selectedServiceId);
@@ -218,17 +223,17 @@ App.Pages.Booking = (function () {
 
             $selectService.trigger('change'); // Load the available hours.
 
-            // Check if a specific provider was selected.
-            const selectedProviderId = App.Utils.Url.queryParam('provider');
+            // Check if a specific provider was selected (also by booking slug).
+            const selectedProviderSlug = App.Utils.Url.queryParam('provider');
+            const selectedProvider = (vars('available_providers') || []).find(
+                (provider) => provider.booking_slug && provider.booking_slug === selectedProviderSlug,
+            );
+            const selectedProviderId = selectedProvider ? String(selectedProvider.id) : null;
 
             if (selectedProviderId && $selectProvider.find('option[value="' + selectedProviderId + '"]').length === 0) {
                 // Select a service of this provider in order to make the provider available in the select box.
-                for (const index in vars('available_providers')) {
-                    const provider = vars('available_providers')[index];
-
-                    if (Number(provider.id) === Number(selectedProviderId) && provider.services.length > 0) {
-                        $selectService.val(provider.services[0]).trigger('change');
-                    }
+                if (selectedProvider.services.length > 0) {
+                    $selectService.val(selectedProvider.services[0]).trigger('change');
                 }
             }
 
@@ -249,8 +254,7 @@ App.Pages.Booking = (function () {
                 }
 
                 // Both selections are known: skip the two selection pages and open the time step.
-                $('.active-step').removeClass('active-step').removeAttr('aria-current');
-                $('#step-3').addClass('active-step').attr('aria-current', 'step');
+                updateStepIndicators(3);
                 $('#wizard-frame-1').css('visibility', 'visible').hide();
                 $('#wizard-frame-2').hide();
 
@@ -270,7 +274,7 @@ App.Pages.Booking = (function () {
 
                 $('#steps .book-step:visible').each((index, bookStepEl) =>
                     $(bookStepEl)
-                        .find('strong')
+                        .find('.step-number')
                         .text(index + 1),
                 );
             } else {
@@ -292,6 +296,45 @@ App.Pages.Booking = (function () {
             // Initialize remember me after prefilling from query params
             initializeRememberMe();
         }
+    }
+
+    /**
+     * Mark the given step active, earlier steps completed (clickable) and later steps upcoming.
+     *
+     * @param {Number} activeIndex
+     */
+    function updateStepIndicators(activeIndex) {
+        $('#steps .book-step').each((index, stepEl) => {
+            const $step = $(stepEl);
+            const stepIndex = Number($step.data('step-index'));
+
+            $step.removeClass('active-step completed-step').removeAttr('aria-current role tabindex');
+
+            if (stepIndex === activeIndex) {
+                $step.addClass('active-step').attr('aria-current', 'step');
+            } else if (stepIndex < activeIndex) {
+                $step.addClass('completed-step').attr({'role': 'button', 'tabindex': 0});
+            }
+        });
+    }
+
+    /**
+     * Jump back to an earlier, already completed wizard step.
+     *
+     * @param {Number} targetIndex
+     */
+    function goBackToStep(targetIndex) {
+        const $visibleFrame = $('.wizard-frame:visible');
+
+        if (!targetIndex || !$visibleFrame.length || $('#wizard-frame-' + targetIndex).is(':visible')) {
+            return;
+        }
+
+        updateStepIndicators(targetIndex);
+
+        $visibleFrame.fadeOut(() => {
+            $('#wizard-frame-' + targetIndex).fadeIn();
+        });
     }
 
     function prefillFromQueryParam(field, param) {
@@ -522,6 +565,8 @@ App.Pages.Booking = (function () {
             }
 
             App.Pages.Booking.updateConfirmFrame();
+
+            App.Pages.Booking.updateProviderDescription($selectProvider.val());
         });
 
         /**
@@ -647,8 +692,7 @@ App.Pages.Booking = (function () {
             const nextTabIndex = parseInt($target.attr('data-step_index')) + 1;
 
             // Update step indicator immediately
-            $('.active-step').removeClass('active-step').removeAttr('aria-current');
-            $('#step-' + nextTabIndex).addClass('active-step').attr('aria-current', 'step');
+            updateStepIndicators(nextTabIndex);
 
             $target
                 .parents()
@@ -674,8 +718,7 @@ App.Pages.Booking = (function () {
             const prevTabIndex = parseInt($(event.currentTarget).attr('data-step_index')) - 1;
 
             // Update step indicator immediately
-            $('.active-step').removeClass('active-step').removeAttr('aria-current');
-            $('#step-' + prevTabIndex).addClass('active-step').attr('aria-current', 'step');
+            updateStepIndicators(prevTabIndex);
 
             $(event.currentTarget)
                 .parents()
@@ -683,6 +726,22 @@ App.Pages.Booking = (function () {
                 .fadeOut(() => {
                     $('#wizard-frame-' + prevTabIndex).fadeIn();
                 });
+        });
+
+        /**
+         * Event: Step Indicator "Clicked" / "Keyed"
+         *
+         * Completed steps act as buttons that jump back to that step.
+         */
+        $('#steps').on('click', '.book-step.completed-step', (event) => {
+            goBackToStep(Number($(event.currentTarget).data('step-index')));
+        });
+
+        $('#steps').on('keydown', '.book-step.completed-step', (event) => {
+            if (event.key === 'Enter' || event.key === ' ') {
+                event.preventDefault();
+                goBackToStep(Number($(event.currentTarget).data('step-index')));
+            }
         });
 
         /**
@@ -1139,6 +1198,16 @@ App.Pages.Booking = (function () {
             return; // Service not found
         }
 
+        // Render the service picture (constrained by the selection-details styles).
+
+        if (service.picture_url) {
+            $('<img/>', {
+                'src': service.picture_url,
+                'alt': service.name,
+                'class': 'selection-picture d-block rounded mb-2',
+            }).appendTo($serviceDescription);
+        }
+
         // Render the additional service information
 
         const additionalInfoParts = [];
@@ -1176,6 +1245,48 @@ App.Pages.Booking = (function () {
                 </div>
             `).appendTo($serviceDescription);
         }
+    }
+
+    /**
+     * Update the provider description under the provider dropdown: picture,
+     * about text and the description of services provided.
+     *
+     * @param {Number} providerId The selected provider record id.
+     */
+    function updateProviderDescription(providerId) {
+        const $providerDescription = $('#provider-description');
+
+        $providerDescription.empty();
+
+        const provider = vars('available_providers').find(
+            (availableProvider) => Number(availableProvider.id) === Number(providerId),
+        );
+
+        if (!provider) {
+            return; // "Any provider" or nothing selected.
+        }
+
+        if (provider.picture_url) {
+            $('<img/>', {
+                'src': provider.picture_url,
+                'alt': provider.name,
+                'class': 'selection-picture d-block rounded mb-2',
+            }).appendTo($providerDescription);
+        }
+
+        [provider.about, provider.services_description].forEach((text) => {
+            if (!text?.length) {
+                return;
+            }
+
+            const escaped = App.Utils.String.escapeHtml(text).replaceAll('\n', '<br/>');
+
+            $(`
+                <div class="text-muted mb-2">
+                    ${escaped}
+                </div>
+            `).appendTo($providerDescription);
+        });
     }
 
     /**
@@ -1311,6 +1422,7 @@ App.Pages.Booking = (function () {
         manageMode,
         updateConfirmFrame,
         updateServiceDescription,
+        updateProviderDescription,
         validateCustomerForm,
     };
 })();

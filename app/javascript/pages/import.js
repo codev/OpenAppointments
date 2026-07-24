@@ -44,19 +44,37 @@ App.Pages.Import = (function () {
         return Object.keys(counts)
             .map((phase) => {
                 const entry = counts[phase];
-                return (
+                let line =
                     lang(phase) + ': ' + entry.created + ' ' + lang('created') + ', ' + entry.matched +
-                    ' ' + lang('matched') + ', ' + entry.skipped + ' ' + lang('skipped')
-                );
+                    ' ' + lang('matched') + ', ' + entry.skipped + ' ' + lang('skipped');
+                if (entry.failed) {
+                    line += ', ' + entry.failed + ' ' + lang('failed');
+                }
+                return line;
             })
             .join('\n');
+    }
+
+    function describeErrors(errors) {
+        if (!errors.length) {
+            return '';
+        }
+
+        return (
+            '\n\n' + lang('import_failures') + '\n' +
+            errors.map((error) => lang(error.phase) + ': ' + error.item + ' - ' + error.message).join('\n')
+        );
     }
 
     function poll(importId) {
         pollTimer = setTimeout(() => {
             $.getJSON(App.Utils.Url.siteUrl('import/status'), {import_id: importId}, (status) => {
                 if (status.state === 'completed') {
-                    show(lang('import_complete') + '\n' + describeCounts(status.counts || {}), 'success');
+                    const errors = status.errors || [];
+                    show(
+                        lang('import_complete') + '\n' + describeCounts(status.counts || {}) + describeErrors(errors),
+                        errors.length ? 'warning' : 'success',
+                    );
                 } else if (status.state === 'failed') {
                     show(status.error || lang('unexpected_issues_occurred'), 'danger');
                 } else {

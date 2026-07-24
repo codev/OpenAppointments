@@ -1,6 +1,23 @@
 ---
 cs:
   ea:
+    release_notes: "Poznámky k vydání"
+    services_description: "Popis poskytovaných služeb"
+    go_to_company: "Přejít na %{company}"
+    download_ics: "Stáhnout soubor ics"
+    regenerate_link: "Přegenerovat odkaz"
+    regenerate_link_warning_service: "Upozornění: Stávající odkazy na tuto službu na webu přestanou platit"
+    regenerate_link_warning_provider: "Upozornění: Stávající odkazy na tohoto poskytovatele na webu přestanou platit"
+    change: "Změnit"
+    turnstile_keys_hint_after: "registrací účtu a přechodem do Application Security > Turnstile"
+    failed: "selhalo"
+    import_failures: "Neúspěšné záznamy"
+    booking_provider_first: "Nejprve poskytovatel místo služby"
+    display_order_switch: "Zobrazit odkaz pro přepnutí pořadí služba/poskytovatel"
+    display_powered_by: "Zobrazit Powered by OpenAppointments"
+    longer_text_field: "Delší textové pole"
+    embed_wordpress: "Vložení do WordPressu"
+    embed_wordpress_hint: "Vložte HTML do bloku Custom HTML a CSS a JavaScript přidejte přes vlastní kód motivu nebo plugin pro snippety."
     apply_suggested_colors: "Použít navržené barvy"
     color_contrast_ok: "Vybrané barvy splňují kontrast WCAG AA."
     contrast_warning_button_text: "Bílý text tlačítek je na firemní barvě špatně čitelný - zvolte tmavší firemní barvu."
@@ -328,7 +345,7 @@ cs:
     oops_something_went_wrong: Oops! Něco se pokazilo.
     ea_update_success: Aplikace OpenAppointments byla úspěšně aktualizována.
     require_captcha: Vyžadovat CAPTCHA
-    require_captcha_hint: Pokud bude povolena, zákazníci budou muset před vytvořením/editací schůzky zadat náhodně vygenerovaný řetězec CAPTCHA.
+    require_captcha_hint: "Pokud bude povolena, zákazníci budou muset před vytvořením/editací schůzky zadat náhodně vygenerovaný řetězec CAPTCHA. - přejděte do Integrací a zvolte pokročilejší typ Captcha"
     captcha_is_wrong: Ověření CAPTCHA selhalo, prosím opakujte akci.
     enter_captcha_here: Zadejte CAPTCHA zde...
     any_provider: Jakýkoli poskytovatel

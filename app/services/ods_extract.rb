@@ -13,6 +13,7 @@ class OdsExtract
   def call
     @sheets = Ods.parse(@path)
     {
+      categories: categories_rows,
       services: services_rows,
       staff: staff_rows,
       customers: customers_rows,
@@ -34,13 +35,20 @@ class OdsExtract
     end
   end
 
+  def categories_rows
+    rows("Service Categories").map do |row|
+      { name: row["name"], description: row["description"].presence,
+        picture: row["picture"].presence }
+    end
+  end
+
   def services_rows
     rows("Services").map do |row|
       { name: row["name"], duration: row["duration"].to_i.nonzero? || 30,
         category: row["category"].presence, price: row["price"].presence&.to_f,
         currency: row["currency"].presence, description: row["description"].presence,
         color: row["color"].presence, attendants_number: row["attendants_number"].to_i.nonzero?,
-        is_private: row["is_private"] == "1" }
+        is_private: row["is_private"] == "1", picture: row["picture"].presence }
     end
   end
 
@@ -49,7 +57,9 @@ class OdsExtract
       plan = JSON.parse(row["working_plan"].presence || "{}") rescue {}
       { name: row["name"], email: row["email"], phone: row["phone_number"],
         services: row["services"].to_s.split("|"), working_plan: plan,
-        username: row["username"].presence }
+        username: row["username"].presence, about: row["about"].presence,
+        services_description: row["services_description"].presence,
+        picture: row["picture"].presence }
     end
   end
 

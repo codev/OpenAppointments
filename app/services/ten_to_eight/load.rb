@@ -7,12 +7,14 @@ module TenToEight
     PHASES = %w[categories services providers customers appointments].freeze
     DO_NOT_CONTACT_PREFIX = "[DO NOT CONTACT - consent not granted]".freeze
 
-    def initialize(data, phases:, create_providers: false, progress: nil)
+    def initialize(data, phases:, create_providers: false, progress: nil, images_dir: nil)
       @data = data
       @phases = Array(phases) & PHASES
       @create_providers = create_providers
       @progress = progress
+      @images_dir = images_dir
       @counts = {}
+      @errors = []
     end
 
     def call
@@ -21,7 +23,7 @@ module TenToEight
       load_providers if phase?("providers")
       load_customers if phase?("customers")
       load_appointments if phase?("appointments")
-      @counts
+      { counts: @counts, errors: @errors }
     end
 
     private
@@ -29,23 +31,56 @@ module TenToEight
     def phase?(name) = @phases.include?(name)
 
     def track(phase)
-      @counts[phase.to_sym] = { created: 0, matched: 0, skipped: 0 }
+      @counts[phase.to_sym] = { created: 0, matched: 0, skipped: 0, failed: 0 }
       @progress&.call(phase)
       @counts[phase.to_sym]
     end
 
+    # A bad record must not abort the run: count it, remember what failed and
+    # carry on. Returns the block value, or nil on failure.
+    def guard(phase, counts, item)
+      yield
+    rescue ActiveRecord::ActiveRecordError => e
+      counts[:failed] += 1
+      @errors << { phase: phase, item: item, message: e.message }
+      nil
+    end
+
+    # Attach a picture referenced by filename from the import bundle's images
+    # directory. Existing pictures are kept.
+    def attach_picture(record, filename)
+      return if @images_dir.blank? || filename.blank? || record.picture.attached?
+
+      path = File.join(@images_dir, File.basename(filename.to_s))
+      return unless File.exist?(path)
+
+      record.picture.attach(io: File.open(path), filename: File.basename(path))
+    end
+
     def load_categories
       counts = track("categories")
-      names = @data[:services].map { |service| service[:category] }.uniq
+      extras = Array(@data[:categories])
+      extra_by_name = extras.index_by { |row| row[:name] }
+      names = (@data[:services].map { |service| service[:category] } +
+               extras.map { |row| row[:name] }).compact.uniq
       @category_ids = {}
       names.each do |name|
+        extra = extra_by_name[name] || {}
         category = ServiceCategory.find_by(name: name)
         if category
           counts[:matched] += 1
+          if category.description.blank? && extra[:description].present?
+            category.update(description: extra[:description])
+          end
         else
-          category = ServiceCategory.create!(name: name)
+          category = guard("categories", counts, name) do
+            ServiceCategory.create!(name: name, description: extra[:description])
+          end
+          next unless category
+
           counts[:created] += 1
         end
+        attach_picture(category, extra[:picture])
         @category_ids[name] = category.id
       end
     end
@@ -58,16 +93,24 @@ module TenToEight
         service = Service.find_by(name: row[:name])
         if service
           counts[:matched] += 1
+          if service.description.blank? && row[:description].present?
+            service.update(description: row[:description])
+          end
         else
-          service = Service.create!(
-            name: row[:name], duration: row[:duration] || 30,
-            price: row[:price] || 0, currency: row[:currency].presence || "GBP",
-            description: row[:description], color: row[:color],
-            attendants_number: row[:attendants_number] || 1, is_private: row[:is_private] || false,
-            id_service_categories: @category_ids[row[:category]]
-          )
+          service = guard("services", counts, row[:name]) do
+            Service.create!(
+              name: row[:name], duration: [ (row[:duration] || 30).to_i, 5 ].max,
+              price: row[:price] || 0, currency: row[:currency].presence || "GBP",
+              description: row[:description], color: row[:color],
+              attendants_number: row[:attendants_number] || 1, is_private: row[:is_private] || false,
+              id_service_categories: @category_ids[row[:category]]
+            )
+          end
+          next unless service
+
           counts[:created] += 1
         end
+        attach_picture(service, row[:picture])
         @service_ids[row[:name]] = service.id
       end
     end
@@ -83,27 +126,41 @@ module TenToEight
         provider = existing[row[:email].downcase] if row[:email].present?
         if provider
           counts[:matched] += 1
+          updates = {}
+          updates[:about] = row[:about] if provider.about.blank? && row[:about].present?
+          if provider.services_description.blank? && row[:services_description].present?
+            updates[:services_description] = row[:services_description]
+          end
+          provider.update(updates) if updates.any?
         elsif @create_providers && row[:email].present?
-          provider = User.create!(
-            name: row[:name], email: row[:email], phone_number: row[:phone],
-            timezone: "Europe/London", role: role
-          )
-          provider.create_settings!(
-            username: row[:username].presence || row[:email].split("@").first,
-            password: Passwords.hash(SecureRandom.base58(12)),
-            notifications: false,
-            working_plan: row[:working_plan].to_json
-          )
+          provider = guard("providers", counts, row[:name].presence || row[:email]) do
+            user = User.create!(
+              name: row[:name], email: row[:email], phone_number: row[:phone],
+              about: row[:about], services_description: row[:services_description],
+              timezone: "Europe/London", role: role
+            )
+            user.create_settings!(
+              username: row[:username].presence || row[:email].split("@").first,
+              password: Passwords.hash(SecureRandom.base58(12)),
+              notifications: false,
+              working_plan: row[:working_plan].to_json
+            )
+            user
+          end
+          next unless provider
+
           counts[:created] += 1
         else
           counts[:skipped] += 1
           next
         end
 
-        service_ids = row[:services].filter_map { |name| @service_ids[name] }
-        service_ids.each do |service_id|
-          ServiceProviderLink.find_or_create_by!(id_users: provider.id, id_services: service_id)
+        guard("providers", counts, row[:name].presence || row[:email]) do
+          row[:services].filter_map { |name| @service_ids[name] }.each do |service_id|
+            ServiceProviderLink.find_or_create_by!(id_users: provider.id, id_services: service_id)
+          end
         end
+        attach_picture(provider, row[:picture])
         @provider_ids[row[:name]] = provider.id
       end
     end
@@ -135,14 +192,18 @@ module TenToEight
 
         notes = row[:notes]
         notes = "#{DO_NOT_CONTACT_PREFIX} #{notes}".strip if row[:do_not_contact]
-        customer = User.create!(
-          name: row[:name], email: row[:email], phone_number: row[:phone],
-          address: row[:address], city: row[:city], zip_code: row[:zip], notes: notes,
-          custom_field_1: row[:pronoun], custom_field_2: row[:access],
-          custom_field_3: row[:custom_field_3], custom_field_4: row[:custom_field_4],
-          custom_field_5: row[:custom_field_5], language: row[:language],
-          timezone: row[:timezone], role: role
-        )
+        customer = guard("customers", counts, row[:name]) do
+          User.create!(
+            name: row[:name], email: row[:email], phone_number: row[:phone],
+            address: row[:address], city: row[:city], zip_code: row[:zip], notes: notes,
+            custom_field_1: row[:pronoun], custom_field_2: row[:access],
+            custom_field_3: row[:custom_field_3], custom_field_4: row[:custom_field_4],
+            custom_field_5: row[:custom_field_5], language: row[:language],
+            timezone: row[:timezone], role: role
+          )
+        end
+        next unless customer
+
         counts[:created] += 1
         @customer_ids[row[:ext_id]] = customer.id
         by_email[row[:email].downcase] = customer.id if row[:email].present?
@@ -171,11 +232,15 @@ module TenToEight
           next
         end
 
-        Appointment.create!(
-          id_users_provider: provider_id, id_users_customer: customer_id,
-          id_services: service_id, start_datetime: row[:start], end_datetime: row[:end],
-          notes: row[:note], location: "", book_datetime: Time.now, status: row[:status]
-        )
+        appointment = guard("appointments", counts, "#{row[:staff]} / #{row[:customer_ext_id]} @ #{row[:start]}") do
+          Appointment.create!(
+            id_users_provider: provider_id, id_users_customer: customer_id,
+            id_services: service_id, start_datetime: row[:start], end_datetime: row[:end],
+            notes: row[:note], location: "", book_datetime: Time.now, status: row[:status]
+          )
+        end
+        next unless appointment
+
         counts[:created] += 1
       end
     end

@@ -1,6 +1,23 @@
 ---
 el:
   ea:
+    release_notes: "Σημειώσεις έκδοσης"
+    services_description: "Περιγραφή των παρεχόμενων υπηρεσιών"
+    go_to_company: "Μετάβαση στο %{company}"
+    download_ics: "Λήψη αρχείου ics"
+    regenerate_link: "Αναδημιουργία συνδέσμου"
+    regenerate_link_warning_service: "Προειδοποίηση: Οι υπάρχοντες σύνδεσμοι προς αυτή την υπηρεσία στο διαδίκτυο θα πάψουν να ισχύουν"
+    regenerate_link_warning_provider: "Προειδοποίηση: Οι υπάρχοντες σύνδεσμοι προς αυτόν τον πάροχο στο διαδίκτυο θα πάψουν να ισχύουν"
+    change: "Αλλαγή"
+    turnstile_keys_hint_after: "δημιουργώντας λογαριασμό και μεταβαίνοντας στο Application Security > Turnstile"
+    failed: "απέτυχαν"
+    import_failures: "Αποτυχημένες εγγραφές"
+    booking_provider_first: "Πρώτα ο πάροχος αντί για την υπηρεσία"
+    display_order_switch: "Εμφάνιση του συνδέσμου εναλλαγής σειράς υπηρεσίας/παρόχου"
+    display_powered_by: "Εμφάνιση Powered by OpenAppointments"
+    longer_text_field: "Μεγαλύτερο πεδίο κειμένου"
+    embed_wordpress: "Ενσωμάτωση στο WordPress"
+    embed_wordpress_hint: "Επικολλήστε το HTML σε ένα μπλοκ Custom HTML και προσθέστε το CSS και το JavaScript μέσω των επιλογών προσαρμοσμένου κώδικα του θέματος ή ενός πρόσθετου αποσπασμάτων."
     apply_suggested_colors: "Εφαρμογή προτεινόμενων χρωμάτων"
     color_contrast_ok: "Τα επιλεγμένα χρώματα πληρούν την αντίθεση WCAG AA."
     contrast_warning_button_text: "Το λευκό κείμενο των κουμπιών διαβάζεται δύσκολα πάνω στο χρώμα της εταιρείας - επιλέξτε πιο σκούρο χρώμα εταιρείας."
@@ -328,7 +345,7 @@ el:
     oops_something_went_wrong: Ώχ! Κάτι πήγε στραβά.
     ea_update_success: Το OpenAppointments ενημερώθηκε με επιτυχία.
     require_captcha: Απαίτηση CAPTCHA
-    require_captcha_hint: Όταν είναι ενεργοποιημένο, οι πελάτες θα χρειαστεί να πληκτρολογήσουν μια τυχαία παραγόμενη συμβολοσειρά CAPTCHA πριν κλείσουν/αποθηκεύσουν ένα ραντεβού.
+    require_captcha_hint: "Όταν είναι ενεργοποιημένο, οι πελάτες θα χρειαστεί να πληκτρολογήσουν μια τυχαία παραγόμενη συμβολοσειρά CAPTCHA πριν κλείσουν/αποθηκεύσουν ένα ραντεβού. - μεταβείτε στις Ενσωματώσεις για να επιλέξετε έναν πιο προηγμένο τύπο Captcha"
     captcha_is_wrong: Η επαλήθευση του CAPTCHA απέτυχε, παρακαλώ δοκιμάστε πάλι.
     enter_captcha_here: Εισάγετε CAPTCHA εδώ...
     any_provider: Οποιοσδήποτε Πάροχος

@@ -48,6 +48,36 @@
     font-size: 12px !important;
 }
 
+/* Completed steps show a check and can be clicked to jump back. */
+#book-appointment-wizard .book-step .step-check {
+    display: none;
+}
+
+#book-appointment-wizard .book-step.completed-step {
+    background: var(--oa-step-active-bg, var(--bs-white)) !important;
+    opacity: 0.8;
+    cursor: pointer;
+}
+
+#book-appointment-wizard .book-step.completed-step strong {
+    color: var(--oa-step-active-fg, var(--bs-primary)) !important;
+    cursor: pointer;
+}
+
+#book-appointment-wizard .book-step.completed-step .step-number {
+    display: none;
+}
+
+#book-appointment-wizard .book-step.completed-step .step-check {
+    display: inline;
+}
+
+#book-appointment-wizard .book-step.completed-step:hover,
+#book-appointment-wizard .book-step.completed-step:focus-visible {
+    opacity: 1;
+    transform: translateY(-2px);
+}
+
 /* Selected hour button state */
 #book-appointment-wizard #available-hours .available-hour {
     margin-bottom: 10px;
@@ -116,6 +146,18 @@
     margin: 0;
     padding: 0;
     width: 240px;
+    /* Never let the company name squeeze the step boxes in the row layout. */
+    flex-shrink: 0;
+}
+
+/* Pictures under the service/provider dropdowns stay heavily constrained. */
+#service-description .selection-picture,
+#provider-description .selection-picture {
+    max-width: min(100%, 400px);
+    max-height: 400px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
 }
 
 #steps .book-step {
@@ -173,4 +215,23 @@
 
 #frame-footer .backend-link {
     min-width: 120px;
+}
+
+/* Inside an embedding iframe (html.is-embedded, stamped before first paint)
+   the backend login button is never shown. */
+.is-embedded #frame-footer .backend-link {
+    display: none !important;
+}
+
+// Half-coloured asterisk marking the email/phone pair when either one is
+// enough (require_phone_or_email); falls back to a plain danger asterisk.
+.required-either {
+    color: var(--bs-danger);
+
+    @supports (background-clip: text) or (-webkit-background-clip: text) {
+        background: linear-gradient(90deg, var(--bs-danger) 50%, #adb5bd 50%);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+    }
 }

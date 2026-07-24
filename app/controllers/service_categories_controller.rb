@@ -91,7 +91,7 @@ class ServiceCategoriesController < ApplicationController
   end
 
   def search_categories(keyword, limit, offset)
-    scope = ServiceCategory.order(updated_at: :desc)
+    scope = ServiceCategory.order(:name)
     if keyword.present?
       pattern = "%#{ServiceCategory.sanitize_sql_like(keyword)}%"
       scope = scope.where("name LIKE :pattern OR description LIKE :pattern", pattern: pattern)

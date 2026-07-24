@@ -1,6 +1,23 @@
 ---
 lb:
   ea:
+    release_notes: "Versiounsnotizen"
+    services_description: "Beschreiwung vun den ugebuedene Servicer"
+    go_to_company: "Op %{company} goen"
+    download_ics: "ics-Fichier eroflueden"
+    regenerate_link: "Link nei generéieren"
+    regenerate_link_warning_service: "Warnung: Bestehend Linken op dëse Service um Web ginn ongëlteg"
+    regenerate_link_warning_provider: "Warnung: Bestehend Linken op dëse Provider um Web ginn ongëlteg"
+    change: "Änneren"
+    turnstile_keys_hint_after: "andeems Dir e Kont uleet an dann op Application Security > Turnstile gitt"
+    failed: "feelgeschloen"
+    import_failures: "Feelgeschloen Datesätz"
+    booking_provider_first: "Fir d'éischt de Provider amplaz vum Service"
+    display_order_switch: "De Link fir d'Reiefolleg Service/Provider ze wiesselen uweisen"
+    display_powered_by: "Powered by OpenAppointments uweisen"
+    longer_text_field: "Méi laangt Textfeld"
+    embed_wordpress: "An WordPress abauen"
+    embed_wordpress_hint: "Setzt den HTML an e Custom-HTML-Block an, a fügt CSS a JavaScript iwwer d'Code-Optioune vum Theme oder e Snippet-Plugin derbäi."
     apply_suggested_colors: "Proposéiert Faarwen uwenden"
     color_contrast_ok: "Déi gewielte Faarwen erfëllen de WCAG AA Kontrast."
     contrast_warning_button_text: "Wäissen Text op de Knäppercher ass schwéier ze liesen op der Firmefaarf - wielt eng méi donkel Firmefaarf."
@@ -328,7 +345,7 @@ lb:
     oops_something_went_wrong: Oops! Et ass eppes schif gaang.
     ea_update_success: OpenAppointments gouf erfollegräich aktualiséiert.
     require_captcha: CAPTCHA erfuerderen
-    require_captcha_hint: Wann aktivéiert, mussen d'Clienten eng zoufälleg generéiert CAPTCHA-Zeichenkette aginn, ier si en Rendez-vous buchen/aktualiséieren.
+    require_captcha_hint: "Wann aktivéiert, mussen d'Clienten eng zoufälleg generéiert CAPTCHA-Zeichenkette aginn, ier si en Rendez-vous buchen/aktualiséieren. - gitt op Integratiounen fir e méi fortgeschrattene Captcha-Typ ze wielen"
     captcha_is_wrong: CAPTCHA Verifikatioun ass gescheitert, probéiert w.e.g. nach eng Kéier.
     enter_captcha_here: CAPTCHA hei aginn...
     any_provider: All Provider

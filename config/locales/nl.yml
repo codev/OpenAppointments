@@ -1,6 +1,23 @@
 ---
 nl:
   ea:
+    release_notes: "Release-opmerkingen"
+    services_description: "Beschrijving van de aangeboden diensten"
+    go_to_company: "Ga naar %{company}"
+    download_ics: "ics-bestand downloaden"
+    regenerate_link: "Link opnieuw genereren"
+    regenerate_link_warning_service: "Waarschuwing: bestaande links naar deze dienst op het web worden ongeldig"
+    regenerate_link_warning_provider: "Waarschuwing: bestaande links naar deze aanbieder op het web worden ongeldig"
+    change: "Wijzigen"
+    turnstile_keys_hint_after: "door een account aan te maken en dan naar Application Security > Turnstile te gaan"
+    failed: "mislukt"
+    import_failures: "Mislukte records"
+    booking_provider_first: "Eerst aanbieder in plaats van dienst"
+    display_order_switch: "Toon de link om de volgorde dienst/aanbieder te wisselen"
+    display_powered_by: "Toon Powered by OpenAppointments"
+    longer_text_field: "Langer tekstveld"
+    embed_wordpress: "Insluiten in WordPress"
+    embed_wordpress_hint: "Plak de HTML in een Custom HTML-blok en voeg de CSS en JavaScript toe via de eigen code-opties van je thema of een snippets-plugin."
     apply_suggested_colors: "Voorgestelde kleuren toepassen"
     color_contrast_ok: "De geselecteerde kleuren voldoen aan WCAG AA-contrast."
     contrast_warning_button_text: "Witte knoptekst is moeilijk leesbaar op de bedrijfskleur - kies een donkerdere bedrijfskleur."
@@ -328,7 +345,7 @@ nl:
     oops_something_went_wrong: Oeps! Er is iets misgegaan.
     ea_update_success: OpenAppointments is succesvol bijgewerkt.
     require_captcha: CAPTCHA vereist.
-    require_captcha_hint: Indien ingeschakeld moeten de klanten een willekeurige tekenreeks invullen om een afspraak te bevestigen.
+    require_captcha_hint: "Indien ingeschakeld moeten de klanten een willekeurige tekenreeks invullen om een afspraak te bevestigen. - ga naar Integraties om een geavanceerder Captcha-type te kiezen"
     captcha_is_wrong: CAPTCHA verificatie is mislukt, probeer het a.u.b.nogmaals.
     enter_captcha_here: Voer CAPTCHA hier in...
     any_provider: Maakt mij niet uit.

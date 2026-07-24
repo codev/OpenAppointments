@@ -1,6 +1,23 @@
 ---
 et:
   ea:
+    release_notes: "Väljalaskemärkmed"
+    services_description: "Pakutavate teenuste kirjeldus"
+    go_to_company: "Mine %{company}"
+    download_ics: "Laadi alla ics-fail"
+    regenerate_link: "Genereeri link uuesti"
+    regenerate_link_warning_service: "Hoiatus: olemasolevad lingid sellele teenusele veebis muutuvad kehtetuks"
+    regenerate_link_warning_provider: "Hoiatus: olemasolevad lingid sellele teenusepakkujale veebis muutuvad kehtetuks"
+    change: "Muuda"
+    turnstile_keys_hint_after: "luues konto ja minnes seejärel Application Security > Turnstile alla"
+    failed: "ebaõnnestunud"
+    import_failures: "Ebaõnnestunud kirjed"
+    booking_provider_first: "Kõigepealt teenusepakkuja, mitte teenus"
+    display_order_switch: "Näita teenuse/teenusepakkuja järjekorra vahetamise linki"
+    display_powered_by: "Näita Powered by OpenAppointments"
+    longer_text_field: "Pikem tekstiväli"
+    embed_wordpress: "Manustamine WordPressi"
+    embed_wordpress_hint: "Kleepige HTML plokki Custom HTML ning lisage CSS ja JavaScript teema kohandatud koodi valikute või snipetite pluginaga."
     apply_suggested_colors: "Rakenda soovitatud värvid"
     color_contrast_ok: "Valitud värvid vastavad WCAG AA kontrastile."
     contrast_warning_button_text: "Valge nuputekst on ettevõtte värvil raskesti loetav - valige tumedam ettevõtte värv."
@@ -328,7 +345,7 @@ et:
     oops_something_went_wrong: Ohhhoo! Midagi läks untsu.
     ea_update_success: OpenAppointments uuendus õnnestus.
     require_captcha: Nõua CAPTCHA-t
-    require_captcha_hint: Kui see on sisse lülitatud, siis nõutakse kasutajalt CAPTCHA-t enne broneeringu lisamist/muutmist.
+    require_captcha_hint: "Kui see on sisse lülitatud, siis nõutakse kasutajalt CAPTCHA-t enne broneeringu lisamist/muutmist. - minge Integratsioonide alla, et valida täiustatum Captcha tüüp"
     captcha_is_wrong: CAPTCHA kinnitus ebaõnnestus. Proovi uuesti.
     enter_captcha_here: Sisestage CAPTCHA siia...
     any_provider: Suvaline teenusepakkuja

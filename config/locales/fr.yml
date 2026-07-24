@@ -1,6 +1,23 @@
 ---
 fr:
   ea:
+    release_notes: "Notes de version"
+    services_description: "Description des services proposés"
+    go_to_company: "Aller sur %{company}"
+    download_ics: "Télécharger le fichier ics"
+    regenerate_link: "Régénérer le lien"
+    regenerate_link_warning_service: "Attention : les liens existants vers ce service sur le web seront invalidés"
+    regenerate_link_warning_provider: "Attention : les liens existants vers ce prestataire sur le web seront invalidés"
+    change: "Modifier"
+    turnstile_keys_hint_after: "en créant un compte puis en allant dans Application Security > Turnstile"
+    failed: "échoués"
+    import_failures: "Enregistrements en échec"
+    booking_provider_first: "Prestataire d'abord au lieu du service"
+    display_order_switch: "Afficher le lien pour changer l'ordre service/prestataire"
+    display_powered_by: "Afficher Powered by OpenAppointments"
+    longer_text_field: "Champ de texte plus long"
+    embed_wordpress: "Intégrer dans WordPress"
+    embed_wordpress_hint: "Collez le HTML dans un bloc Custom HTML, puis ajoutez le CSS et le JavaScript via les options de code personnalisé de votre thème ou une extension de snippets."
     apply_suggested_colors: "Appliquer les couleurs suggérées"
     color_contrast_ok: "Les couleurs sélectionnées respectent le contraste WCAG AA."
     contrast_warning_button_text: "Le texte blanc des boutons est difficile à lire sur la couleur de l'entreprise - choisissez une couleur d'entreprise plus foncée."
@@ -328,7 +345,7 @@ fr:
     oops_something_went_wrong: Oups ! Une erreur s’est produite.
     ea_update_success: OpenAppointments à été mis à jour avec succès.
     require_captcha: CAPTCHA obligatoire
-    require_captcha_hint: Lorsque l’option est activée, les clients doivent taper un code de vérification CAPTCHA avant de pouvoir réserver ou mettre à jour un rendez-vous.
+    require_captcha_hint: "Lorsque l’option est activée, les clients doivent taper un code de vérification CAPTCHA avant de pouvoir réserver ou mettre à jour un rendez-vous. - rendez-vous dans Intégrations pour choisir un type de Captcha plus avancé"
     captcha_is_wrong: Le code de vérification CAPTCHA est erroné, merci de réessayer.
     enter_captcha_here: Entrez le CAPTCHA ici...
     any_provider: Toute personne disponible

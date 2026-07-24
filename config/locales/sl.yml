@@ -1,6 +1,23 @@
 ---
 sl:
   ea:
+    release_notes: "Opombe ob izdaji"
+    services_description: "Opis ponujenih storitev"
+    go_to_company: "Pojdi na %{company}"
+    download_ics: "Prenesi datoteko ics"
+    regenerate_link: "Ponovno ustvari povezavo"
+    regenerate_link_warning_service: "Opozorilo: Obstoječe povezave do te storitve na spletu bodo postale neveljavne"
+    regenerate_link_warning_provider: "Opozorilo: Obstoječe povezave do tega ponudnika na spletu bodo postale neveljavne"
+    change: "Spremeni"
+    turnstile_keys_hint_after: "z registracijo računa in obiskom Application Security > Turnstile"
+    failed: "neuspešno"
+    import_failures: "Neuspešni zapisi"
+    booking_provider_first: "Najprej ponudnik namesto storitve"
+    display_order_switch: "Prikaži povezavo za zamenjavo vrstnega reda storitev/ponudnik"
+    display_powered_by: "Prikaži Powered by OpenAppointments"
+    longer_text_field: "Daljše besedilno polje"
+    embed_wordpress: "Vdelava v WordPress"
+    embed_wordpress_hint: "Prilepite HTML v blok Custom HTML, CSS in JavaScript pa dodajte z možnostmi lastne kode teme ali vtičnikom za izseke."
     apply_suggested_colors: "Uporabi predlagane barve"
     color_contrast_ok: "Izbrane barve izpolnjujejo kontrast WCAG AA."
     contrast_warning_button_text: "Belo besedilo gumbov je težko berljivo na barvi podjetja - izberite temnejšo barvo podjetja."
@@ -328,7 +345,7 @@ sl:
     oops_something_went_wrong: Ojoj! Nekaj je šlo narobe.
     ea_update_success: OpenAppointments je bil uspešno posodobljen.
     require_captcha: Zahtevaj CAPTCHA
-    require_captcha_hint: Ko je omogočeno, bodo morale stranke pred rezervacijo/posodabljanjem termina vnesti naključno ustvarjen niz CAPTCHA.
+    require_captcha_hint: "Ko je omogočeno, bodo morale stranke pred rezervacijo/posodabljanjem termina vnesti naključno ustvarjen niz CAPTCHA. - pojdite na Integracije in izberite naprednejši tip Captcha"
     captcha_is_wrong: CAPTCHA preverjanje ni uspelo, poskusite znova.
     enter_captcha_here: Tukaj vnesite CAPTCHA...
     any_provider: Kateri koli ponudnik

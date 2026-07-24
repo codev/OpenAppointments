@@ -74,7 +74,9 @@ class BookingController < ApplicationController
 
     company_color = Setting.get("company_color")
 
-    first_step = params[:first] == "provider" ? "provider" : "service"
+    first_step = params[:first].presence ||
+                 (Setting.get("booking_provider_first", "0") == "1" ? "provider" : "service")
+    first_step = "service" unless %w[service provider].include?(first_step)
 
     display_mode = Setting.get("booking_display_mode", "dropdown")
     display_mode = "dropdown" unless %w[dropdown cards].include?(display_mode)
@@ -419,7 +421,8 @@ class BookingController < ApplicationController
       [ [ "display_#{field}".to_sym, Setting.get("display_#{field}") ],
        [ "require_#{field}".to_sym, Setting.get("require_#{field}") ] ]
     }.to_h
-    if Setting.get("require_phone_or_email", "1") == "1"
+    vars[:require_phone_or_email] = Setting.get("require_phone_or_email", "1")
+    if vars[:require_phone_or_email] == "1"
       vars[:require_email] = "0"
       vars[:require_phone_number] = "0"
     end

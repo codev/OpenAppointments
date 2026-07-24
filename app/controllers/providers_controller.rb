@@ -8,8 +8,8 @@ class ProvidersController < ApplicationController
 
   # EA allowed_provider_fields (mobile_number is not allowed, matching EA).
   ALLOWED_FIELDS = %w[id name email alt_number phone_number address city state
-                      zip_code notes timezone language is_private ldap_dn id_roles settings
-                      services].freeze
+                      zip_code notes about services_description timezone language
+                      is_private ldap_dn id_roles settings services].freeze
   ALLOWED_SETTING_FIELDS = %w[username password working_plan working_plan_exceptions
                               notifications calendar_view].freeze
 
@@ -86,6 +86,19 @@ class ProvidersController < ApplicationController
     Webhooks.trigger(Webhooks::PROVIDER_DELETE, row)
 
     render json: { success: true }
+  rescue ArgumentError => e
+    json_exception(e, status: :ok)
+  end
+
+  # POST /providers/regenerate_link
+  def regenerate_link
+    raise ArgumentError, "Forbidden" if cannot?(:edit, :users)
+
+    provider_id = positive_id!(params.require(:provider_id), "provider")
+    provider = User.providers.find(provider_id)
+    provider.update_columns(booking_slug: BookingSlug.unique_for(User))
+
+    render json: { success: true, booking_slug: provider.booking_slug }
   rescue ArgumentError => e
     json_exception(e, status: :ok)
   end

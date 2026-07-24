@@ -10,4 +10,6 @@ class Service < ApplicationRecord
   validates :duration, numericality: { greater_than_or_equal_to: Appointment::EVENT_MINIMUM_DURATION }, allow_nil: true
 
   scope :available, -> { where(is_private: false) }
+
+  before_create -> { self.booking_slug ||= BookingSlug.unique_for(Service) }
 end

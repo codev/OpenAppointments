@@ -1,6 +1,23 @@
 ---
 zh-tw:
   ea:
+    release_notes: "版本說明"
+    services_description: "所提供服務的說明"
+    go_to_company: "前往 %{company}"
+    download_ics: "下載 ics 檔案"
+    regenerate_link: "重新產生連結"
+    regenerate_link_warning_service: "警告：網路上指向此服務的現有連結將會失效"
+    regenerate_link_warning_provider: "警告：網路上指向此服務人員的現有連結將會失效"
+    change: "變更"
+    turnstile_keys_hint_after: "註冊帳號後前往 Application Security > Turnstile"
+    failed: "失敗"
+    import_failures: "失敗的記錄"
+    booking_provider_first: "先顯示服務人員而非服務"
+    display_order_switch: "顯示切換服務/服務人員順序的連結"
+    display_powered_by: "顯示 Powered by OpenAppointments"
+    longer_text_field: "較長的文字欄位"
+    embed_wordpress: "嵌入 WordPress"
+    embed_wordpress_hint: "將 HTML 貼到 Custom HTML 區塊，再透過佈景主題的自訂程式碼選項或程式碼片段外掛加入 CSS 與 JavaScript。"
     apply_suggested_colors: "套用建議的顏色"
     color_contrast_ok: "所選顏色符合 WCAG AA 對比度要求。"
     contrast_warning_button_text: "白色按鈕文字在公司顏色上難以辨認 - 請選擇更深的公司顏色。"
@@ -328,7 +345,7 @@ zh-tw:
     oops_something_went_wrong: 哎呀！出了點問題。
     ea_update_success: OpenAppointments 已成功更新。
     require_captcha: 需要驗證碼
-    require_captcha_hint: 啟用後，顧客在預約/更新預約前需要輸入隨機產生的驗證碼字串。
+    require_captcha_hint: "啟用後，顧客在預約/更新預約前需要輸入隨機產生的驗證碼字串。 - 前往整合頁面選擇更進階的 Captcha 類型"
     captcha_is_wrong: 驗證碼驗證失敗，請重試。
     enter_captcha_here: 在此輸入 CAPTCHA...
     any_provider: 任何提供者

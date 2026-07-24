@@ -1,6 +1,23 @@
 ---
 ro:
   ea:
+    release_notes: "Note de lansare"
+    services_description: "Descrierea serviciilor oferite"
+    go_to_company: "Mergi la %{company}"
+    download_ics: "Descarcă fișierul ics"
+    regenerate_link: "Regenerează linkul"
+    regenerate_link_warning_service: "Avertisment: Linkurile existente către acest serviciu pe web vor deveni invalide"
+    regenerate_link_warning_provider: "Avertisment: Linkurile existente către acest furnizor pe web vor deveni invalide"
+    change: "Schimbă"
+    turnstile_keys_hint_after: "creând un cont și mergând apoi la Application Security > Turnstile"
+    failed: "eșuate"
+    import_failures: "Înregistrări eșuate"
+    booking_provider_first: "Mai întâi furnizorul în loc de serviciu"
+    display_order_switch: "Afișează linkul de schimbare a ordinii serviciu/furnizor"
+    display_powered_by: "Afișează Powered by OpenAppointments"
+    longer_text_field: "Câmp de text mai lung"
+    embed_wordpress: "Încorporare în WordPress"
+    embed_wordpress_hint: "Lipiți HTML-ul într-un bloc Custom HTML, apoi adăugați CSS-ul și JavaScript-ul prin opțiunile de cod personalizat ale temei sau un plugin de snippeturi."
     apply_suggested_colors: "Aplică culorile sugerate"
     color_contrast_ok: "Culorile selectate respectă contrastul WCAG AA."
     contrast_warning_button_text: "Textul alb al butoanelor se citește greu pe culoarea companiei - alegeți o culoare a companiei mai închisă."
@@ -328,7 +345,7 @@ ro:
     oops_something_went_wrong: Oops! Ceva nu a funtionat corect.
     ea_update_success: OpenAppointments a fost actualizat.
     require_captcha: Necesar CAPTCHA
-    require_captcha_hint: Când este activat, clienții vor trebui să tasteze un cod CAPTCHA generat aleator înainte de a rezerva/actualiza o programare.
+    require_captcha_hint: "Când este activat, clienții vor trebui să tasteze un cod CAPTCHA generat aleator înainte de a rezerva/actualiza o programare. - mergeți la Integrări pentru a alege un tip de Captcha mai avansat"
     captcha_is_wrong: Verificarea CAPTCHA a eșuat, vă rugăm să încercați din nou.
     enter_captcha_here: Introduceți CAPTCHA aici...
     any_provider: Orice Provider

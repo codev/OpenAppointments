@@ -1,6 +1,23 @@
 ---
 tr:
   ea:
+    release_notes: "Sürüm notları"
+    services_description: "Sunulan hizmetlerin açıklaması"
+    go_to_company: "%{company} adresine git"
+    download_ics: "ics dosyasını indir"
+    regenerate_link: "Bağlantıyı yeniden oluştur"
+    regenerate_link_warning_service: "Uyarı: Webdeki bu hizmete ait mevcut bağlantılar geçersiz olacaktır"
+    regenerate_link_warning_provider: "Uyarı: Webdeki bu sağlayıcıya ait mevcut bağlantılar geçersiz olacaktır"
+    change: "Değiştir"
+    turnstile_keys_hint_after: "bir hesap açıp ardından Application Security > Turnstile bölümüne giderek"
+    failed: "başarısız"
+    import_failures: "Başarısız kayıtlar"
+    booking_provider_first: "Hizmet yerine önce sağlayıcı"
+    display_order_switch: "Hizmet/sağlayıcı sırasını değiştirme bağlantısını göster"
+    display_powered_by: "Powered by OpenAppointments'ı göster"
+    longer_text_field: "Daha uzun metin alanı"
+    embed_wordpress: "WordPress'e gömme"
+    embed_wordpress_hint: "HTML'yi bir Custom HTML bloğuna yapıştırın, CSS ve JavaScript'i temanızın özel kod seçenekleri veya bir snippet eklentisiyle ekleyin."
     apply_suggested_colors: "Önerilen renkleri uygula"
     color_contrast_ok: "Seçilen renkler WCAG AA kontrastını karşılıyor."
     contrast_warning_button_text: "Beyaz düğme metni şirket renginde zor okunuyor - daha koyu bir şirket rengi seçin."
@@ -328,7 +345,7 @@ tr:
     oops_something_went_wrong: Oops! Bir Sorun Oluştu.
     ea_update_success: OpenAppointments başarı ile güncellendi.
     require_captcha: CAPTCHA gereklidir
-    require_captcha_hint: Etkinleştirildiğinde, müşterilerin bir randevu rezervasyonu/güncellemesi yapmadan önce rastgele oluşturulmuş bir CAPTCHA dizesini yazmaları gerekecektir.
+    require_captcha_hint: "Etkinleştirildiğinde, müşterilerin bir randevu rezervasyonu/güncellemesi yapmadan önce rastgele oluşturulmuş bir CAPTCHA dizesini yazmaları gerekecektir. - daha gelişmiş bir Captcha türü seçmek için Entegrasyonlar'a gidin"
     captcha_is_wrong: CAPTCHA doğrulaması başarısız oldu, lütfen tekrar deneyin.
     enter_captcha_here: CAPTCHA kodunu buraya girin...
     any_provider: Herhangi Bir Sağlayıcı

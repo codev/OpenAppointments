@@ -1,6 +1,23 @@
 ---
 ca:
   ea:
+    release_notes: "Notes de la versió"
+    services_description: "Descripció dels serveis oferts"
+    go_to_company: "Vés a %{company}"
+    download_ics: "Baixa el fitxer ics"
+    regenerate_link: "Regenera l'enllaç"
+    regenerate_link_warning_service: "Atenció: els enllaços existents a aquest servei al web deixaran de ser vàlids"
+    regenerate_link_warning_provider: "Atenció: els enllaços existents a aquest proveïdor al web deixaran de ser vàlids"
+    change: "Canvia"
+    turnstile_keys_hint_after: "registrant un compte i anant després a Application Security > Turnstile"
+    failed: "fallits"
+    import_failures: "Registres fallits"
+    booking_provider_first: "Primer el proveïdor en lloc del servei"
+    display_order_switch: "Mostra l'enllaç per canviar l'ordre servei/proveïdor"
+    display_powered_by: "Mostra Powered by OpenAppointments"
+    longer_text_field: "Camp de text més llarg"
+    embed_wordpress: "Incrusta a WordPress"
+    embed_wordpress_hint: "Enganxeu l'HTML en un bloc Custom HTML i afegiu el CSS i el JavaScript amb les opcions de codi personalitzat del tema o un connector de fragments."
     apply_suggested_colors: "Aplica els colors suggerits"
     color_contrast_ok: "Els colors seleccionats compleixen el contrast WCAG AA."
     contrast_warning_button_text: "El text blanc dels botons és difícil de llegir sobre el color de l'empresa - trieu un color d'empresa més fosc."
@@ -328,7 +345,7 @@ ca:
     oops_something_went_wrong: Ups! Alguna cosa no ha funcionat bé.
     ea_update_success: OpenAppointments s'ha actualitzat correctament.
     require_captcha: Requereix un CAPTCHA
-    require_captcha_hint: Quan s'habilita, els clients hauran de teclejar una cadena CAPTCHA generada aleatòriament abans de reservar o actualitzar una cita.
+    require_captcha_hint: "Quan s'habilita, els clients hauran de teclejar una cadena CAPTCHA generada aleatòriament abans de reservar o actualitzar una cita. - aneu a Integracions per triar un tipus de Captcha més avançat"
     captcha_is_wrong: La verificació del CAPTCHA ha fallat, torneu-ho a intentar.
     enter_captcha_here: Introdueix el CAPTCHA aquí...
     any_provider: Qualsevol proveïdor

@@ -1,6 +1,23 @@
 ---
 lt:
   ea:
+    release_notes: "Laidos pastabos"
+    services_description: "Teikiamų paslaugų aprašymas"
+    go_to_company: "Eiti į %{company}"
+    download_ics: "Atsisiųsti ics failą"
+    regenerate_link: "Iš naujo sugeneruoti nuorodą"
+    regenerate_link_warning_service: "Įspėjimas: esamos nuorodos į šią paslaugą internete nustos veikti"
+    regenerate_link_warning_provider: "Įspėjimas: esamos nuorodos į šį teikėją internete nustos veikti"
+    change: "Keisti"
+    turnstile_keys_hint_after: "užsiregistravę paskyrą ir nuėję į Application Security > Turnstile"
+    failed: "nepavyko"
+    import_failures: "Nepavykę įrašai"
+    booking_provider_first: "Pirmiausia teikėjas, o ne paslauga"
+    display_order_switch: "Rodyti paslaugos/teikėjo tvarkos keitimo nuorodą"
+    display_powered_by: "Rodyti Powered by OpenAppointments"
+    longer_text_field: "Ilgesnis teksto laukas"
+    embed_wordpress: "Įdėjimas į WordPress"
+    embed_wordpress_hint: "Įkelkite HTML į Custom HTML bloką, o CSS ir JavaScript pridėkite per temos pasirinktinio kodo nustatymus arba snippetų įskiepį."
     apply_suggested_colors: "Taikyti siūlomas spalvas"
     color_contrast_ok: "Pasirinktos spalvos atitinka WCAG AA kontrastą."
     contrast_warning_button_text: "Baltas mygtukų tekstas sunkiai įskaitomas ant įmonės spalvos - pasirinkite tamsesnę įmonės spalvą."
@@ -328,7 +345,7 @@ lt:
     oops_something_went_wrong: Oi! Kažkas nepavyko.
     ea_update_success: "„OpenAppointments“ sėkmingai atnaujinta."
     require_captcha: Reikalauti „CAPTCHA“ saugos kodo
-    require_captcha_hint: Kai ši parinktis įjungta, prieš užsakydami/atnaujindami vizitą klientai turės įvesti atsitiktinai sugeneruotą saugos kodą.
+    require_captcha_hint: "Kai ši parinktis įjungta, prieš užsakydami/atnaujindami vizitą klientai turės įvesti atsitiktinai sugeneruotą saugos kodą. - eikite į Integracijas ir pasirinkite pažangesnį Captcha tipą"
     captcha_is_wrong: Saugos kodo patikra nepavyko, bandykite dar kartą.
     enter_captcha_here: Įveskite CAPTCHA čia...
     any_provider: Bet kuris teikėjas

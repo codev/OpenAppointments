@@ -1,6 +1,23 @@
 ---
 hu:
   ea:
+    release_notes: "Kiadási megjegyzések"
+    services_description: "A nyújtott szolgáltatások leírása"
+    go_to_company: "Tovább: %{company}"
+    download_ics: "ics fájl letöltése"
+    regenerate_link: "Link újragenerálása"
+    regenerate_link_warning_service: "Figyelem: A szolgáltatásra mutató meglévő webes linkek érvénytelenné válnak"
+    regenerate_link_warning_provider: "Figyelem: A szolgáltatóra mutató meglévő webes linkek érvénytelenné válnak"
+    change: "Módosítás"
+    turnstile_keys_hint_after: "fiók regisztrálásával, majd az Application Security > Turnstile menübe lépve"
+    failed: "sikertelen"
+    import_failures: "Sikertelen rekordok"
+    booking_provider_first: "Először a szolgáltató a szolgáltatás helyett"
+    display_order_switch: "A szolgáltatás/szolgáltató sorrendváltó link megjelenítése"
+    display_powered_by: "A Powered by OpenAppointments megjelenítése"
+    longer_text_field: "Hosszabb szövegmező"
+    embed_wordpress: "Beágyazás WordPressbe"
+    embed_wordpress_hint: "Illessze be a HTML-t egy Custom HTML blokkba, majd adja hozzá a CSS-t és a JavaScriptet a téma egyedi kód beállításaival vagy egy snippet bővítménnyel."
     apply_suggested_colors: "Javasolt színek alkalmazása"
     color_contrast_ok: "A kiválasztott színek megfelelnek a WCAG AA kontrasztnak."
     contrast_warning_button_text: "A fehér gombfelirat nehezen olvasható a cégszínen - válasszon sötétebb cégszínt."
@@ -328,7 +345,7 @@ hu:
     oops_something_went_wrong: Hoppá! Valami balul sült el.
     ea_update_success: Foglalj időpontot a ...
     require_captcha: CAPTCHA Kötelező
-    require_captcha_hint: Ha engedélyezve van, az ügyfeleknek egy véletlenszerűen generált CAPTCHA karakterláncot kell megadniuk, mielőtt foglalnának/módosítanának egy időpontot.
+    require_captcha_hint: "Ha engedélyezve van, az ügyfeleknek egy véletlenszerűen generált CAPTCHA karakterláncot kell megadniuk, mielőtt foglalnának/módosítanának egy időpontot. - a fejlettebb Captcha típushoz lépjen az Integrációk oldalra"
     captcha_is_wrong: A CAPTCHA ellenőrzés sikertelen, kérjük próbálja újra.
     enter_captcha_here: Írja be a CAPTCHA-t ide...
     any_provider: Bármely Szolgáltató

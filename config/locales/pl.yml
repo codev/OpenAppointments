@@ -1,6 +1,23 @@
 ---
 pl:
   ea:
+    release_notes: "Informacje o wydaniu"
+    services_description: "Opis świadczonych usług"
+    go_to_company: "Przejdź do %{company}"
+    download_ics: "Pobierz plik ics"
+    regenerate_link: "Wygeneruj link ponownie"
+    regenerate_link_warning_service: "Ostrzeżenie: Istniejące linki do tej usługi w sieci przestaną działać"
+    regenerate_link_warning_provider: "Ostrzeżenie: Istniejące linki do tego wykonawcy w sieci przestaną działać"
+    change: "Zmień"
+    turnstile_keys_hint_after: "rejestrując konto, a następnie przechodząc do Application Security > Turnstile"
+    failed: "nieudane"
+    import_failures: "Nieudane rekordy"
+    booking_provider_first: "Najpierw wykonawca zamiast usługi"
+    display_order_switch: "Pokaż link do zmiany kolejności usługa/wykonawca"
+    display_powered_by: "Pokaż Powered by OpenAppointments"
+    longer_text_field: "Dłuższe pole tekstowe"
+    embed_wordpress: "Osadzanie w WordPress"
+    embed_wordpress_hint: "Wklej HTML do bloku Custom HTML, a CSS i JavaScript dodaj w opcjach własnego kodu motywu lub wtyczce ze snippetami."
     apply_suggested_colors: "Zastosuj sugerowane kolory"
     color_contrast_ok: "Wybrane kolory spełniają kontrast WCAG AA."
     contrast_warning_button_text: "Biały tekst przycisków jest słabo czytelny na kolorze firmowym - wybierz ciemniejszy kolor firmowy."
@@ -328,7 +345,7 @@ pl:
     oops_something_went_wrong: Ojj! Coś poszło nie tak.
     ea_update_success: OpenAppointments zaktualizowany pomyślnie
     require_captcha: Wymagaj CAPTCHA
-    require_captcha_hint: Po włączeniu klienci będą musieli wpisać losowo wygenerowany ciąg CAPTCHA przed rezerwacją/aktualizacją wizyty.
+    require_captcha_hint: "Po włączeniu klienci będą musieli wpisać losowo wygenerowany ciąg CAPTCHA przed rezerwacją/aktualizacją wizyty. - przejdź do Integracji, aby wybrać bardziej zaawansowany typ Captcha"
     captcha_is_wrong: Weryfikacja CAPTCHA nie powiodła się, spróbuj ponownie.
     enter_captcha_here: Wprowadź CAPTCHA tutaj...
     any_provider: Dowolny dostawca

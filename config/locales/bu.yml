@@ -1,6 +1,23 @@
 ---
 bu:
   ea:
+    release_notes: "ထုတ်ဝေမှုမှတ်စုများ"
+    services_description: "ပေးသော ဝန်ဆောင်မှုများ၏ ဖော်ပြချက်"
+    go_to_company: "%{company} သို့သွားရန်"
+    download_ics: "ics ဖိုင် ဒေါင်းလုဒ်လုပ်ရန်"
+    regenerate_link: "လင့်ခ် ပြန်လည်ထုတ်ရန်"
+    regenerate_link_warning_service: "သတိပေးချက် - ဝဘ်ပေါ်ရှိ ဤဝန်ဆောင်မှုသို့ လက်ရှိလင့်ခ်များ အသုံးမဝင်တော့ပါ"
+    regenerate_link_warning_provider: "သတိပေးချက် - ဝဘ်ပေါ်ရှိ ဤဝန်ဆောင်မှုပေးသူသို့ လက်ရှိလင့်ခ်များ အသုံးမဝင်တော့ပါ"
+    change: "ပြောင်းရန်"
+    turnstile_keys_hint_after: "အကောင့်ဖွင့်ပြီးနောက် Application Security > Turnstile သို့သွားပါ"
+    failed: "မအောင်မြင်ပါ"
+    import_failures: "မအောင်မြင်သော မှတ်တမ်းများ"
+    booking_provider_first: "ဝန်ဆောင်မှုအစား ဝန်ဆောင်မှုပေးသူကို အရင်ပြရန်"
+    display_order_switch: "ဝန်ဆောင်မှု သို့မဟုတ် ဝန်ဆောင်မှုပေးသူ အရင်ရွေးရန် လင့်ခ်ကို ပြရန်"
+    display_powered_by: "Powered by OpenAppointments ကို ပြရန်"
+    longer_text_field: "ပိုရှည်သော စာသားကွက်"
+    embed_wordpress: "WordPress တွင် ထည့်သွင်းရန်"
+    embed_wordpress_hint: "HTML ကို Custom HTML block ထဲသို့ ကူးထည့်ပြီး CSS နှင့် JavaScript ကို သင့် theme ၏ custom code ရွေးချယ်စရာများ သို့မဟုတ် snippets plugin ဖြင့် ထည့်ပါ။"
     apply_suggested_colors: "Приложи предложените цветове"
     color_contrast_ok: "Избраните цветове отговарят на контраста WCAG AA."
     contrast_warning_button_text: "Белият текст на бутоните се чете трудно върху фирмения цвят - изберете по-тъмен фирмен цвят."
@@ -328,7 +345,7 @@ bu:
     oops_something_went_wrong: Опааа! Нещо се обърка!Опааа! Нещо се обърка.
     ea_update_success: Системата Обновена успешно
     require_captcha: Изискване на CAPTCHA
-    require_captcha_hint: Когато е активно, потребителя , ще трябва да въведе произволно генерирани символи за да запише или промени час.
+    require_captcha_hint: "Когато е активно, потребителя , ще трябва да въведе произволно генерирани символи за да запише или промени час. - ပိုမိုအဆင့်မြင့်သော Captcha အမျိုးအစားရွေးရန် Integrations သို့သွားပါ"
     captcha_is_wrong: Неуспешна CAPTCHA верификация, моля опитайте отново.
     enter_captcha_here: Въведете CAPTCHA тук...
     any_provider: Произволен Изпълнител

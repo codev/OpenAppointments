@@ -1,6 +1,23 @@
 ---
 lv:
   ea:
+    release_notes: "Laidiena piezīmes"
+    services_description: "Sniegto pakalpojumu apraksts"
+    go_to_company: "Doties uz %{company}"
+    download_ics: "Lejupielādēt ics failu"
+    regenerate_link: "Ģenerēt saiti no jauna"
+    regenerate_link_warning_service: "Brīdinājums: esošās saites uz šo pakalpojumu tīmeklī vairs nebūs derīgas"
+    regenerate_link_warning_provider: "Brīdinājums: esošās saites uz šo sniedzēju tīmeklī vairs nebūs derīgas"
+    change: "Mainīt"
+    turnstile_keys_hint_after: "reģistrējot kontu un pēc tam dodoties uz Application Security > Turnstile"
+    failed: "neizdevās"
+    import_failures: "Neizdevušies ieraksti"
+    booking_provider_first: "Vispirms sniedzējs, nevis pakalpojums"
+    display_order_switch: "Rādīt saiti pakalpojuma/sniedzēja secības maiņai"
+    display_powered_by: "Rādīt Powered by OpenAppointments"
+    longer_text_field: "Garāks teksta lauks"
+    embed_wordpress: "Iegult WordPress"
+    embed_wordpress_hint: "Ielīmējiet HTML blokā Custom HTML un pievienojiet CSS un JavaScript ar tēmas pielāgotā koda opcijām vai fragmentu spraudni."
     apply_suggested_colors: "Lietot ieteiktās krāsas"
     color_contrast_ok: "Izvēlētās krāsas atbilst WCAG AA kontrastam."
     contrast_warning_button_text: "Balts pogu teksts ir grūti salasāms uz uzņēmuma krāsas - izvēlieties tumšāku uzņēmuma krāsu."
@@ -328,7 +345,7 @@ lv:
     oops_something_went_wrong: Oops! Kaut kas notika nepareizi.
     ea_update_success: OpenAppointments ir veiksmīgi atjaunināts.
     require_captcha: Pieprasīt CAPTCHA
-    require_captcha_hint: Ja šī funkcija ir iespējota, klientiem pirms tikšanās rezervēšanas/atjaunināšanas būs jāievada nejauši ģenerēta CAPTCHA virkne.
+    require_captcha_hint: "Ja šī funkcija ir iespējota, klientiem pirms tikšanās rezervēšanas/atjaunināšanas būs jāievada nejauši ģenerēta CAPTCHA virkne. - dodieties uz Integrācijām, lai izvēlētos progresīvāku Captcha veidu"
     captcha_is_wrong: CAPTCHA verifikācija neizdevās, mēģiniet vēlreiz.
     enter_captcha_here: Ievadiet CAPTCHA šeit...
     any_provider: Jebkurš pakalpojumu sniedzējs

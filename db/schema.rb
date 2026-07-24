@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_07_24_100002) do
+ActiveRecord::Schema[8.1].define(version: 2026_07_24_110000) do
   create_table "action_mailbox_inbound_emails", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.string "message_checksum", null: false
@@ -172,6 +172,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_07_24_100002) do
 
   create_table "services", force: :cascade do |t|
     t.integer "attendants_number", default: 1
+    t.string "booking_slug"
     t.string "color", default: "#7cbae8"
     t.datetime "created_at", null: false
     t.string "currency"
@@ -184,6 +185,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_07_24_100002) do
     t.decimal "price", precision: 10, scale: 2
     t.integer "slot_interval", default: 15
     t.datetime "updated_at", null: false
+    t.index ["booking_slug"], name: "index_services_on_booking_slug", unique: true
     t.index ["id_service_categories"], name: "index_services_on_id_service_categories"
   end
 
@@ -227,7 +229,9 @@ ActiveRecord::Schema[8.1].define(version: 2026_07_24_100002) do
   end
 
   create_table "users", force: :cascade do |t|
+    t.text "about"
     t.string "address"
+    t.string "booking_slug"
     t.string "city"
     t.datetime "created_at", null: false
     t.text "custom_field_1"
@@ -244,10 +248,12 @@ ActiveRecord::Schema[8.1].define(version: 2026_07_24_100002) do
     t.string "name"
     t.text "notes"
     t.string "phone_number"
+    t.text "services_description"
     t.string "state"
     t.string "timezone", default: "UTC"
     t.datetime "updated_at", null: false
     t.string "zip_code"
+    t.index ["booking_slug"], name: "index_users_on_booking_slug", unique: true
     t.index ["email"], name: "index_users_on_email"
     t.index ["id_roles"], name: "index_users_on_id_roles"
   end

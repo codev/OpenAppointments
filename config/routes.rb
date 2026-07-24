@@ -37,6 +37,10 @@ Rails.application.routes.draw do
     post "#{resource}/destroy" => "#{resource}#destroy"
   end
 
+  # Booking link slug regeneration
+  post "services/regenerate_link" => "services#regenerate_link"
+  post "providers/regenerate_link" => "providers#regenerate_link"
+
   # 10to8 import page
   get "import" => "import#index"
   get "import/export" => "import#export"
@@ -58,6 +62,7 @@ Rails.application.routes.draw do
   get "booking/get_unavailable_dates" => "booking#get_unavailable_dates"
   post "booking/register" => "booking#register"
   get "booking_confirmation/of/:appointment_hash" => "booking_confirmation#of", as: :booking_confirmation
+  get "booking_confirmation/ics/:appointment_hash" => "booking_confirmation#ics", as: :booking_confirmation_ics
   # EA has no GET cancellation page: the frame form POSTs and non-POST/empty-reason requests get 403.
   post "booking_cancellation/of/:appointment_hash" => "booking_cancellation#of"
   get "captcha/altcha_challenge" => "captcha#altcha_challenge"

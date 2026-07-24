@@ -1,6 +1,23 @@
 ---
 sq:
   ea:
+    release_notes: "Shënime të versionit"
+    services_description: "Përshkrimi i shërbimeve të ofruara"
+    go_to_company: "Shko te %{company}"
+    download_ics: "Shkarko skedarin ics"
+    regenerate_link: "Rigjenero lidhjen"
+    regenerate_link_warning_service: "Kujdes: Lidhjet ekzistuese drejt këtij shërbimi në ueb do të bëhen të pavlefshme"
+    regenerate_link_warning_provider: "Kujdes: Lidhjet ekzistuese drejt këtij ofruesi në ueb do të bëhen të pavlefshme"
+    change: "Ndrysho"
+    turnstile_keys_hint_after: "duke u regjistruar për një llogari dhe duke shkuar te Application Security > Turnstile"
+    failed: "dështuan"
+    import_failures: "Regjistrime të dështuara"
+    booking_provider_first: "Fillimisht ofruesi në vend të shërbimit"
+    display_order_switch: "Shfaq lidhjen për ndërrimin e radhës shërbim/ofrues"
+    display_powered_by: "Shfaq Powered by OpenAppointments"
+    longer_text_field: "Fushë teksti më e gjatë"
+    embed_wordpress: "Vendosja në WordPress"
+    embed_wordpress_hint: "Ngjiteni HTML-në në një bllok Custom HTML dhe shtoni CSS-në dhe JavaScript-in me opsionet e kodit të personalizuar të temës ose një shtesë snippet-esh."
     apply_suggested_colors: "Apliko ngjyrat e sugjeruara"
     color_contrast_ok: "Ngjyrat e zgjedhura plotësojnë kontrastin WCAG AA."
     contrast_warning_button_text: "Teksti i bardhë i butonave lexohet me vështirësi mbi ngjyrën e kompanisë - zgjidhni një ngjyrë kompanie më të errët."
@@ -328,7 +345,7 @@ sq:
     oops_something_went_wrong: Oops! Diçka Shkoi Keq.
     ea_update_success: OpenAppointments u përditësua me sukses.
     require_captcha: Kërko CAPTCHA
-    require_captcha_hint: Kur aktivizohet, klientët do të duhet të shkruajnë një string CAPTCHA të gjeneruar rastësisht përpara se të rezervojnë/ndryshojnë një takim.
+    require_captcha_hint: "Kur aktivizohet, klientët do të duhet të shkruajnë një string CAPTCHA të gjeneruar rastësisht përpara se të rezervojnë/ndryshojnë një takim. - shkoni te Integrimet për të zgjedhur një lloj Captcha më të avancuar"
     captcha_is_wrong: Verifikimi CAPTCHA dështoi, ju lutemi provoni përsëri.
     enter_captcha_here: Shkruani CAPTCHA këtu...
     any_provider: Çdo Ofrues
