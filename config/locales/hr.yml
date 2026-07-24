@@ -1,7 +1,7 @@
 ---
 hr:
   ea:
-    import_providers_caution: "Oprez: označavanje pružatelja usluga stvorit će korisničke račune i omogućiti prijavu emailom"
+    import_providers_caution: "Oprez: označavanje pružatelja usluga stvorit će korisničke račune i omogućiti prijavu njihovim emailom"
     manage_data: "Upravljanje podacima"
     export_data: "Izvezi podatke"
     import_type: "Vrsta uvoza"

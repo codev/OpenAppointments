@@ -22,8 +22,14 @@ module Authentication
     @current_user ||= User.find_by(id: session[:user_id])
   end
 
+  # A session whose user has been deleted (e.g. by a database reset) is dead:
+  # treat it as logged out and clear it so every page falls back to login.
   def logged_in?
-    session[:user_id].present?
+    return false unless session[:user_id].present?
+    return true if current_user
+
+    reset_session
+    false
   end
 
   def session_role

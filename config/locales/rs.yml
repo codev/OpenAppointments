@@ -1,7 +1,7 @@
 ---
 rs:
   ea:
-    import_providers_caution: "Oprez: označavanje pružalaca usluga kreiraće korisničke naloge i omogućiti prijavu emailom"
+    import_providers_caution: "Oprez: označavanje pružalaca usluga kreiraće korisničke naloge i omogućiti prijavu njihovim emailom"
     manage_data: "Upravljanje podacima"
     export_data: "Izvezi podatke"
     import_type: "Vrsta uvoza"

@@ -1,7 +1,7 @@
 ---
 zh:
   ea:
-    import_providers_caution: "注意：勾选服务人员将创建用户账户并允许使用邮箱登录"
+    import_providers_caution: "注意：勾选服务人员将创建用户账户并允许使用他们的邮箱登录"
     manage_data: "数据管理"
     export_data: "导出数据"
     import_type: "导入类型"

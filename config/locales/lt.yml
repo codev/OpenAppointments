@@ -1,7 +1,7 @@
 ---
 lt:
   ea:
-    import_providers_caution: "Dėmesio: pažymėjus specialistus bus sukurtos naudotojų paskyros ir leista prisijungti el. paštu"
+    import_providers_caution: "Dėmesio: pažymėjus specialistus bus sukurtos naudotojų paskyros ir leista prisijungti jų el. paštu"
     manage_data: "Duomenų valdymas"
     export_data: "Eksportuoti duomenis"
     import_type: "Importo tipas"

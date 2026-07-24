@@ -1,7 +1,7 @@
 ---
 pt:
   ea:
-    import_providers_caution: "Atenção: marcar profissionais criará contas de utilizador e permitirá iniciar sessão com email"
+    import_providers_caution: "Atenção: marcar profissionais criará contas de utilizador e permitirá iniciar sessão com o email deles"
     manage_data: "Gerir dados"
     export_data: "Exportar dados"
     import_type: "Tipo de importação"

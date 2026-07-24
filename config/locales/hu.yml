@@ -1,7 +1,7 @@
 ---
 hu:
   ea:
-    import_providers_caution: "Figyelem: a szolgáltatók bejelölése felhasználói fiókokat hoz létre, és lehetővé teszi az e-mailes bejelentkezést"
+    import_providers_caution: "Figyelem: a szolgáltatók bejelölése felhasználói fiókokat hoz létre, és lehetővé teszi a bejelentkezést az e-mail-címükkel"
     manage_data: "Adatok kezelése"
     export_data: "Adatok exportálása"
     import_type: "Importálás típusa"

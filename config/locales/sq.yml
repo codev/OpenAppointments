@@ -1,7 +1,7 @@
 ---
 sq:
   ea:
-    import_providers_caution: "Kujdes: shënimi i ofruesve do të krijojë llogari përdoruesish dhe do të lejojë hyrjen me email"
+    import_providers_caution: "Kujdes: shënimi i ofruesve do të krijojë llogari përdoruesish dhe do të lejojë hyrjen me emailin e tyre"
     manage_data: "Menaxho të dhënat"
     export_data: "Eksporto të dhënat"
     import_type: "Lloji i importit"

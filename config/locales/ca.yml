@@ -1,7 +1,7 @@
 ---
 ca:
   ea:
-    import_providers_caution: "Precaució: marcar proveïdors crearà comptes d'usuari i permetrà iniciar sessió amb el correu"
+    import_providers_caution: "Precaució: marcar proveïdors crearà comptes d'usuari i permetrà iniciar sessió amb el seu correu"
     manage_data: "Gestiona les dades"
     export_data: "Exporta les dades"
     import_type: "Tipus d'importació"

@@ -83,7 +83,8 @@ class ImportController < ApplicationController
     ResetDatabase.run(full: full)
     reset_session if full
     render json: { success: true, full: full }
-  rescue ArgumentError => e
+  rescue StandardError => e
+    reset_session if full
     json_exception(e)
   end
 

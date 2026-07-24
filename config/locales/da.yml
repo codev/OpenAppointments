@@ -1,7 +1,7 @@
 ---
 da:
   ea:
-    import_providers_caution: "Advarsel: at markere behandlere opretter brugerkonti og tillader login med e-mail"
+    import_providers_caution: "Advarsel: at markere behandlere opretter brugerkonti og tillader login med deres e-mail"
     manage_data: "Administrer data"
     export_data: "Eksporter data"
     import_type: "Importtype"

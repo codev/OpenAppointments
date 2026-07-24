@@ -1,7 +1,7 @@
 ---
 tr:
   ea:
-    import_providers_caution: "Dikkat: sağlayıcıları işaretlemek kullanıcı hesapları oluşturur ve e-posta ile girişe izin verir"
+    import_providers_caution: "Dikkat: sağlayıcıları işaretlemek kullanıcı hesapları oluşturur ve e-postalarıyla girişe izin verir"
     manage_data: "Verileri yönet"
     export_data: "Verileri dışa aktar"
     import_type: "İçe aktarma türü"

@@ -1,7 +1,7 @@
 ---
 cs:
   ea:
-    import_providers_caution: "Pozor: zaškrtnutí poskytovatelů vytvoří uživatelské účty a umožní přihlášení e-mailem"
+    import_providers_caution: "Pozor: zaškrtnutí poskytovatelů vytvoří uživatelské účty a umožní přihlášení jejich e-mailem"
     manage_data: "Správa dat"
     export_data: "Exportovat data"
     import_type: "Typ importu"

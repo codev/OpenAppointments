@@ -1,7 +1,7 @@
 ---
 it:
   ea:
-    import_providers_caution: "Attenzione: selezionare i fornitori creerà account utente e consentirà l'accesso con l'email"
+    import_providers_caution: "Attenzione: selezionare i fornitori creerà account utente e consentirà l'accesso con la loro email"
     manage_data: "Gestione dati"
     export_data: "Esporta dati"
     import_type: "Tipo di importazione"

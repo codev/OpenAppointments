@@ -1,7 +1,7 @@
 ---
 ja:
   ea:
-    import_providers_caution: "注意: 担当者にチェックを入れるとユーザーアカウントが作成され、メールでのログインが可能になります"
+    import_providers_caution: "注意: 担当者にチェックを入れるとユーザーアカウントが作成され、担当者のメールアドレスでログインできるようになります"
     manage_data: "データ管理"
     export_data: "データをエクスポート"
     import_type: "インポートの種類"

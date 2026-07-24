@@ -1,7 +1,7 @@
 ---
 pl:
   ea:
-    import_providers_caution: "Uwaga: zaznaczenie specjalistów utworzy konta użytkowników i umożliwi logowanie e-mailem"
+    import_providers_caution: "Uwaga: zaznaczenie specjalistów utworzy konta użytkowników i umożliwi logowanie ich e-mailem"
     manage_data: "Zarządzanie danymi"
     export_data: "Eksportuj dane"
     import_type: "Typ importu"

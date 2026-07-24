@@ -1,7 +1,7 @@
 ---
 fr:
   ea:
-    import_providers_caution: "Attention : cocher les intervenants créera des comptes utilisateurs et permettra la connexion par e-mail"
+    import_providers_caution: "Attention : cocher les intervenants créera des comptes utilisateurs et permettra la connexion avec leur e-mail"
     manage_data: "Gérer les données"
     export_data: "Exporter les données"
     import_type: "Type d'importation"

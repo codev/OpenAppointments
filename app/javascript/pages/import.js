@@ -106,8 +106,8 @@ App.Pages.Import = (function () {
                     $('#reset-confirmation').val('').trigger('input');
 
                     if (response.full) {
-                        // The session admin is gone; back to the login page.
-                        setTimeout(() => (window.location.href = App.Utils.Url.siteUrl('login')), 2000);
+                        // The session admin is gone; show the logged-out page.
+                        setTimeout(() => (window.location.href = App.Utils.Url.siteUrl('logout')), 2000);
                     }
                 })
                 .fail((jqXHR) => show((jqXHR.responseJSON || {}).message || 'Error', 'danger'));

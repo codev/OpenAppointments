@@ -1,7 +1,7 @@
 ---
 en:
   ea:
-    import_providers_caution: "Caution: ticking providers will create user accounts and allow log in with email"
+    import_providers_caution: "Caution: ticking Providers will create user accounts and allow log in with their email"
     manage_data: "Manage data"
     export_data: "Export data"
     import_type: "Import type"

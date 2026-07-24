@@ -25,9 +25,12 @@ module ResetDatabase
         User.admins.find_each(&:destroy!)
         Setting.delete_all
       end
+
+      # Inside the transaction: a failure rolls the whole reset back instead of
+      # leaving the install half-wiped (e.g. no admin accounts).
+      Rails.application.load_seed
+      InstallAdmin.create if full
     end
-    Rails.application.load_seed
-    InstallAdmin.create if full
     true
   end
 end

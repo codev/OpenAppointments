@@ -1,7 +1,7 @@
 ---
 nl:
   ea:
-    import_providers_caution: "Let op: het aanvinken van medewerkers maakt gebruikersaccounts aan en staat inloggen met e-mail toe"
+    import_providers_caution: "Let op: het aanvinken van medewerkers maakt gebruikersaccounts aan en staat inloggen met hun e-mail toe"
     manage_data: "Gegevens beheren"
     export_data: "Gegevens exporteren"
     import_type: "Importtype"

@@ -83,6 +83,34 @@ class ImportPageTest < ActionDispatch::IntegrationTest
     assert_redirected_to "/login"
   end
 
+  test "a stale session for a deleted user is treated as logged out" do
+    login_admin
+    users(:admin).destroy!
+    get "/calendar"
+    assert_redirected_to "/login"
+
+    post "/account/save", params: { account: { name: "Ghost" } }, as: :json
+    assert_response :unauthorized
+  end
+
+  test "a failed reset returns a json message for the banner" do
+    login_admin
+    singleton = ResetDatabase.singleton_class
+    singleton.alias_method :original_run, :run
+    singleton.define_method(:run) { |**| raise "boom" }
+    begin
+      post "/import/reset", params: { confirmation: "I KNOW WHAT I AM DOING", full: "1" }
+    ensure
+      singleton.alias_method :run, :original_run
+      singleton.remove_method :original_run
+    end
+    assert_response :internal_server_error
+    assert_equal "boom", response.parsed_body["message"]
+
+    get "/calendar"
+    assert_redirected_to "/login"
+  end
+
   test "export downloads a dated ODS with all the sheets" do
     login_admin
     get "/import/export"

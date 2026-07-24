@@ -1,7 +1,7 @@
 ---
 de:
   ea:
-    import_providers_caution: "Achtung: Das Ankreuzen von Dienstleistern erstellt Benutzerkonten und ermöglicht die Anmeldung per E-Mail"
+    import_providers_caution: "Achtung: Das Ankreuzen von Dienstleistern erstellt Benutzerkonten und ermöglicht die Anmeldung mit deren E-Mail"
     manage_data: "Daten verwalten"
     export_data: "Daten exportieren"
     import_type: "Importtyp"

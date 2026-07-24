@@ -1,7 +1,7 @@
 ---
 sv:
   ea:
-    import_providers_caution: "Varning: att bocka i utförare skapar användarkonton och tillåter inloggning med e-post"
+    import_providers_caution: "Varning: att bocka i utförare skapar användarkonton och tillåter inloggning med deras e-post"
     manage_data: "Hantera data"
     export_data: "Exportera data"
     import_type: "Importtyp"
