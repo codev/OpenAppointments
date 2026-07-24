@@ -48,6 +48,36 @@
     font-size: 12px !important;
 }
 
+/* Completed steps show a check and can be clicked to jump back. */
+#book-appointment-wizard .book-step .step-check {
+    display: none;
+}
+
+#book-appointment-wizard .book-step.completed-step {
+    background: var(--oa-step-active-bg, var(--bs-white)) !important;
+    opacity: 0.8;
+    cursor: pointer;
+}
+
+#book-appointment-wizard .book-step.completed-step strong {
+    color: var(--oa-step-active-fg, var(--bs-primary)) !important;
+    cursor: pointer;
+}
+
+#book-appointment-wizard .book-step.completed-step .step-number {
+    display: none;
+}
+
+#book-appointment-wizard .book-step.completed-step .step-check {
+    display: inline;
+}
+
+#book-appointment-wizard .book-step.completed-step:hover,
+#book-appointment-wizard .book-step.completed-step:focus-visible {
+    opacity: 1;
+    transform: translateY(-2px);
+}
+
 /* Selected hour button state */
 #book-appointment-wizard #available-hours .available-hour {
     margin-bottom: 10px;

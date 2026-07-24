@@ -249,8 +249,7 @@ App.Pages.Booking = (function () {
                 }
 
                 // Both selections are known: skip the two selection pages and open the time step.
-                $('.active-step').removeClass('active-step').removeAttr('aria-current');
-                $('#step-3').addClass('active-step').attr('aria-current', 'step');
+                updateStepIndicators(3);
                 $('#wizard-frame-1').css('visibility', 'visible').hide();
                 $('#wizard-frame-2').hide();
 
@@ -270,7 +269,7 @@ App.Pages.Booking = (function () {
 
                 $('#steps .book-step:visible').each((index, bookStepEl) =>
                     $(bookStepEl)
-                        .find('strong')
+                        .find('.step-number')
                         .text(index + 1),
                 );
             } else {
@@ -292,6 +291,45 @@ App.Pages.Booking = (function () {
             // Initialize remember me after prefilling from query params
             initializeRememberMe();
         }
+    }
+
+    /**
+     * Mark the given step active, earlier steps completed (clickable) and later steps upcoming.
+     *
+     * @param {Number} activeIndex
+     */
+    function updateStepIndicators(activeIndex) {
+        $('#steps .book-step').each((index, stepEl) => {
+            const $step = $(stepEl);
+            const stepIndex = Number($step.data('step-index'));
+
+            $step.removeClass('active-step completed-step').removeAttr('aria-current role tabindex');
+
+            if (stepIndex === activeIndex) {
+                $step.addClass('active-step').attr('aria-current', 'step');
+            } else if (stepIndex < activeIndex) {
+                $step.addClass('completed-step').attr({'role': 'button', 'tabindex': 0});
+            }
+        });
+    }
+
+    /**
+     * Jump back to an earlier, already completed wizard step.
+     *
+     * @param {Number} targetIndex
+     */
+    function goBackToStep(targetIndex) {
+        const $visibleFrame = $('.wizard-frame:visible');
+
+        if (!targetIndex || !$visibleFrame.length || $('#wizard-frame-' + targetIndex).is(':visible')) {
+            return;
+        }
+
+        updateStepIndicators(targetIndex);
+
+        $visibleFrame.fadeOut(() => {
+            $('#wizard-frame-' + targetIndex).fadeIn();
+        });
     }
 
     function prefillFromQueryParam(field, param) {
@@ -647,8 +685,7 @@ App.Pages.Booking = (function () {
             const nextTabIndex = parseInt($target.attr('data-step_index')) + 1;
 
             // Update step indicator immediately
-            $('.active-step').removeClass('active-step').removeAttr('aria-current');
-            $('#step-' + nextTabIndex).addClass('active-step').attr('aria-current', 'step');
+            updateStepIndicators(nextTabIndex);
 
             $target
                 .parents()
@@ -674,8 +711,7 @@ App.Pages.Booking = (function () {
             const prevTabIndex = parseInt($(event.currentTarget).attr('data-step_index')) - 1;
 
             // Update step indicator immediately
-            $('.active-step').removeClass('active-step').removeAttr('aria-current');
-            $('#step-' + prevTabIndex).addClass('active-step').attr('aria-current', 'step');
+            updateStepIndicators(prevTabIndex);
 
             $(event.currentTarget)
                 .parents()
@@ -683,6 +719,22 @@ App.Pages.Booking = (function () {
                 .fadeOut(() => {
                     $('#wizard-frame-' + prevTabIndex).fadeIn();
                 });
+        });
+
+        /**
+         * Event: Step Indicator "Clicked" / "Keyed"
+         *
+         * Completed steps act as buttons that jump back to that step.
+         */
+        $('#steps').on('click', '.book-step.completed-step', (event) => {
+            goBackToStep(Number($(event.currentTarget).data('step-index')));
+        });
+
+        $('#steps').on('keydown', '.book-step.completed-step', (event) => {
+            if (event.key === 'Enter' || event.key === ' ') {
+                event.preventDefault();
+                goBackToStep(Number($(event.currentTarget).data('step-index')));
+            }
         });
 
         /**
