@@ -19,9 +19,7 @@ class CustomersController < ApplicationController
     script_vars(secretary_providers: secretary_provider_ids)
     html_vars(
       available_languages: Localization.available_languages,
-      **%w[name email phone_number address city zip_code]
-        .index_with { |field| Setting.get("require_#{field}") }
-        .transform_keys { |field| "require_#{field}".to_sym }
+      **field_display_flags
     )
     render :index
   end

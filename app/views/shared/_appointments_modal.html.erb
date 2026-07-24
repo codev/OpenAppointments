@@ -177,28 +177,32 @@
                                     <input type="text" id="name" class="required form-control" maxlength="220"/>
                                 </div>
 
-                                <div class="mb-3">
-                                    <label for="email" class="form-label">
-                                        <%= lang('email') %>
-                                        <% if require_email %>
-                                            <span class="text-danger">*</span>
-                                        <% end %>
-                                    </label>
-                                    <input type="text" id="email"
-                                           class="<%= require_email ? 'required' : '' %> form-control"
-                                           maxlength="120"/>
-                                </div>
+<% if display_email %>
+                                    <div class="mb-3">
+                                        <label for="email" class="form-label">
+                                            <%= lang('email') %>
+                                            <% if require_email %>
+                                                <span class="text-danger">*</span>
+                                            <% end %>
+                                        </label>
+                                        <input type="text" id="email"
+                                               class="<%= require_email ? 'required' : '' %> form-control"
+                                               maxlength="120"/>
+                                    </div>
+                                <% end %>
 
-                                <div class="mb-3">
-                                    <label for="phone-number" class="form-label">
-                                        <%= lang('phone_number') %>
-                                        <% if require_phone_number %>
-                                            <span class="text-danger">*</span>
-                                        <% end %>
-                                    </label>
-                                    <input type="text" id="phone-number" maxlength="60"
-                                           class="<%= require_phone_number ? 'required' : '' %> form-control"/>
-                                </div>
+<% if display_phone_number %>
+                                    <div class="mb-3">
+                                        <label for="phone-number" class="form-label">
+                                            <%= lang('phone_number') %>
+                                            <% if require_phone_number %>
+                                                <span class="text-danger">*</span>
+                                            <% end %>
+                                        </label>
+                                        <input type="text" id="phone-number" maxlength="60"
+                                               class="<%= require_phone_number ? 'required' : '' %> form-control"/>
+                                    </div>
+                                <% end %>
 
                                 <div class="mb-3">
                                     <label class="form-label" for="language">
@@ -218,41 +222,47 @@
 
                             </div>
                             <div class="col-12 col-sm-6">
-                                <div class="mb-3">
-                                    <label for="address" class="form-label">
-                                        <%= lang('address') %>
-                                        <% if require_address %>
-                                            <span class="text-danger">*</span>
-                                        <% end %>
-                                    </label>
-                                    <input type="text" id="address"
-                                           class="<%= require_address ? 'required' : '' %> form-control"
-                                           maxlength="120"/>
-                                </div>
+<% if display_address %>
+                                    <div class="mb-3">
+                                        <label for="address" class="form-label">
+                                            <%= lang('address') %>
+                                            <% if require_address %>
+                                                <span class="text-danger">*</span>
+                                            <% end %>
+                                        </label>
+                                        <input type="text" id="address"
+                                               class="<%= require_address ? 'required' : '' %> form-control"
+                                               maxlength="120"/>
+                                    </div>
+                                <% end %>
 
-                                <div class="mb-3">
-                                    <label for="city" class="form-label">
-                                        <%= lang('city') %>
-                                        <% if require_city %>
-                                            <span class="text-danger">*</span>
-                                        <% end %>
-                                    </label>
-                                    <input type="text" id="city"
-                                           class="<%= require_city ? 'required' : '' %> form-control"
-                                           maxlength="120"/>
-                                </div>
+<% if display_city %>
+                                    <div class="mb-3">
+                                        <label for="city" class="form-label">
+                                            <%= lang('city') %>
+                                            <% if require_city %>
+                                                <span class="text-danger">*</span>
+                                            <% end %>
+                                        </label>
+                                        <input type="text" id="city"
+                                               class="<%= require_city ? 'required' : '' %> form-control"
+                                               maxlength="120"/>
+                                    </div>
+                                <% end %>
 
-                                <div class="mb-3">
-                                    <label for="zip-code" class="form-label">
-                                        <%= lang('zip_code') %>
-                                        <% if require_zip_code %>
-                                            <span class="text-danger">*</span>
-                                        <% end %>
-                                    </label>
-                                    <input type="text" id="zip-code"
-                                           class="<%= require_zip_code ? 'required' : '' %> form-control"
-                                           maxlength="120"/>
-                                </div>
+<% if display_zip_code %>
+                                    <div class="mb-3">
+                                        <label for="zip-code" class="form-label">
+                                            <%= lang('zip_code') %>
+                                            <% if require_zip_code %>
+                                                <span class="text-danger">*</span>
+                                            <% end %>
+                                        </label>
+                                        <input type="text" id="zip-code"
+                                               class="<%= require_zip_code ? 'required' : '' %> form-control"
+                                               maxlength="120"/>
+                                    </div>
+                                <% end %>
 
                                 <div class="mb-3">
                                     <label class="form-label" for="timezone">

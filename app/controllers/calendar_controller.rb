@@ -74,9 +74,7 @@ class CalendarController < ApplicationController
       available_services: available_services,
       secretary_providers: secretary_provider_ids,
       appointment_status_options: JSON.parse(Setting.get("appointment_status_options", "[]")),
-      **%w[name email phone_number address city zip_code notes]
-        .index_with { |field| Setting.get("require_#{field}") }
-        .transform_keys { |field| "require_#{field}".to_sym }
+      **field_display_flags
     )
 
     render :index

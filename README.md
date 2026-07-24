@@ -83,6 +83,10 @@ Under Settings - Embedding - enter the website you want to embed the booking wid
 
 Each provider can sync their calendar - outbound sync works for CalDAV and Google Calendar. Google Calendar also supports inbound sync so events created in Google prevent booking those times as unavailable and events that are removed are canceled. Still todo: All-day event support.
 
+### Minor fixes
+
+Any Provider is the default for providers
+
 
 ## Operations
 

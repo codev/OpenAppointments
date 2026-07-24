@@ -41,6 +41,16 @@ module BackendPage
     )
   end
 
+  # Booking-form field visibility as booleans, for backend pages that render the
+  # customer fields (customers page, appointments modal).
+  def field_display_flags
+    %w[email phone_number address city zip_code notes].flat_map { |field|
+      %w[display require].map do |kind|
+        [ :"#{kind}_#{field}", Setting.get("#{kind}_#{field}").to_s == "1" ]
+      end
+    }.to_h
+  end
+
   def secretary_provider_ids
     @secretary_provider_ids ||=
       session[:role_slug] == Role::SECRETARY ? current_user.providers.map(&:id) : []
