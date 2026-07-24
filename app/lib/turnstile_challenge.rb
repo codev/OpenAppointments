@@ -4,8 +4,11 @@ module TurnstileChallenge
 
   module_function
 
+  # The altcha_enabled setting is the provider-agnostic "Active" switch on the
+  # captcha settings page (legacy name kept for existing installs).
   def enabled?
     Setting.get("require_captcha") == "1" &&
+      Setting.get("altcha_enabled") == "1" &&
       Setting.get("captcha_provider", "altcha") == "turnstile" &&
       site_key.present? && secret_key.present?
   end

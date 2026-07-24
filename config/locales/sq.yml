@@ -1,6 +1,10 @@
 ---
 sq:
   ea:
+    captcha: "Captcha"
+    captcha_info: "Cilësimet e captcha-s për të verifikuar që vizitori është njeri para rezervimit"
+    captcha_enabled_hint: "Kur aktivizohet, ofruesi i zgjedhur i captcha-s do të përdoret në vend të captcha-s tradicionale me imazh për verifikimin e formularëve."
+    turnstile_keys_hint: "Merrni një çift çelësash (site dhe secret) nga paneli i Cloudflare:"
     first_login_update_details: Ju lutemi vendosni një fjalëkalim të ri dhe përditësoni të dhënat tuaja
     embedding: Ngulitja
     allow_iframe_embedding: Lejo ngulitjen në një iframe

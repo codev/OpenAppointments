@@ -1,6 +1,10 @@
 ---
 ca:
   ea:
+    captcha: "Captcha"
+    captcha_info: "Configuració del captcha per verificar que el visitant és humà abans de reservar"
+    captcha_enabled_hint: "Quan està activat, el proveïdor de captcha seleccionat s'utilitzarà en lloc del captcha d'imatge tradicional per verificar formularis."
+    turnstile_keys_hint: "Obteniu un parell de claus (site i secret) al tauler de Cloudflare:"
     first_login_update_details: Introduïu una contrasenya nova i actualitzeu les vostres dades
     embedding: Incrustació
     allow_iframe_embedding: Permet incrustar en un iframe

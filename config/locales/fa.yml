@@ -1,6 +1,10 @@
 ---
 fa:
   ea:
+    captcha: "Captcha"
+    captcha_info: "تنظیمات کپچا برای تأیید انسان بودن بازدیدکننده پیش از رزرو"
+    captcha_enabled_hint: "در صورت فعال بودن، ارائه‌دهنده کپچای انتخاب‌شده به جای کپچای تصویری سنتی برای تأیید فرم‌ها استفاده می‌شود."
+    turnstile_keys_hint: "یک جفت کلید (site و secret) از داشبورد Cloudflare دریافت کنید:"
     first_login_update_details: لطفاً رمز عبور جدیدی وارد کنید و اطلاعات خود را به‌روزرسانی کنید
     embedding: جاسازی
     allow_iframe_embedding: اجازه جاسازی در iframe

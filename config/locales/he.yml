@@ -1,6 +1,10 @@
 ---
 he:
   ea:
+    captcha: "Captcha"
+    captcha_info: "הגדרות קאפצ'ה לאימות שהמבקר אנושי לפני ההזמנה"
+    captcha_enabled_hint: "כאשר מופעל, ספק הקאפצ'ה שנבחר ישמש במקום קאפצ'ת התמונה המסורתית לאימות טפסים."
+    turnstile_keys_hint: "קבלו צמד מפתחות (site ו-secret) מלוח הבקרה של Cloudflare:"
     first_login_update_details: אנא הזינו סיסמה חדשה ועדכנו את הפרטים שלכם
     embedding: הטמעה
     allow_iframe_embedding: אפשר הטמעה ב-iframe

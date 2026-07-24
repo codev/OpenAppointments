@@ -1,6 +1,10 @@
 ---
 pt-br:
   ea:
+    captcha: "Captcha"
+    captcha_info: "Configurações do captcha para verificar se o visitante é humano antes de agendar"
+    captcha_enabled_hint: "Quando ativado, o provedor de captcha selecionado será usado no lugar do captcha de imagem tradicional para verificação de formulários."
+    turnstile_keys_hint: "Obtenha um par de chaves (site e secret) no painel da Cloudflare:"
     first_login_update_details: Digite uma nova senha e atualize seus dados
     embedding: Incorporação
     allow_iframe_embedding: Permitir incorporação em um iframe

@@ -1,6 +1,10 @@
 ---
 sk:
   ea:
+    captcha: "Captcha"
+    captcha_info: "Nastavenia captcha na overenie, že návštevník je človek, pred rezerváciou"
+    captcha_enabled_hint: "Ak je povolené, na overenie formulárov sa namiesto tradičnej obrázkovej captcha použije vybraný poskytovateľ captcha."
+    turnstile_keys_hint: "Získajte pár kľúčov (site a secret) v paneli Cloudflare:"
     first_login_update_details: Zadajte nové heslo a aktualizujte svoje údaje
     embedding: Vloženie do webu
     allow_iframe_embedding: Povoliť vloženie do iframe

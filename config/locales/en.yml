@@ -1,6 +1,10 @@
 ---
 en:
   ea:
+    captcha: "Captcha"
+    captcha_info: "Captcha settings to verify the visitor is human before booking"
+    captcha_enabled_hint: "When enabled the selected captcha provider will be used instead of the traditional image captcha for form verification."
+    turnstile_keys_hint: "Get a site key and secret key pair from the Cloudflare dashboard:"
     first_login_update_details: Please enter a new password and update your details
     embedding: Embedding
     allow_iframe_embedding: Allow embedding in an iframe

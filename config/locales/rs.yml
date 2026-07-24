@@ -1,6 +1,10 @@
 ---
 rs:
   ea:
+    captcha: "Captcha"
+    captcha_info: "Podešavanja captche za proveru da je posetilac čovek pre rezervacije"
+    captcha_enabled_hint: "Kada je uključeno, izabrani captcha provajder koristiće se umesto tradicionalne slikovne captche za proveru formulara."
+    turnstile_keys_hint: "Nabavite par ključeva (site i secret) na Cloudflare kontrolnoj tabli:"
     first_login_update_details: Unesite novu lozinku i ažurirajte svoje podatke
     embedding: Ugradnja
     allow_iframe_embedding: Dozvoli ugradnju u iframe

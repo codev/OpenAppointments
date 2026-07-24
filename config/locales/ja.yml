@@ -1,6 +1,10 @@
 ---
 ja:
   ea:
+    captcha: "Captcha"
+    captcha_info: "予約前に訪問者が人間であることを確認するためのCaptcha設定"
+    captcha_enabled_hint: "有効にすると、フォーム検証に従来の画像キャプチャの代わりに選択したCaptchaプロバイダーが使用されます。"
+    turnstile_keys_hint: "Cloudflareダッシュボードでサイトキーとシークレットキーのペアを取得してください:"
     first_login_update_details: 新しいパスワードを入力し、情報を更新してください
     embedding: 埋め込み
     allow_iframe_embedding: iframe への埋め込みを許可

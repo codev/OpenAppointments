@@ -1,6 +1,10 @@
 ---
 ro:
   ea:
+    captcha: "Captcha"
+    captcha_info: "Setări captcha pentru a verifica dacă vizitatorul este om înainte de rezervare"
+    captcha_enabled_hint: "Când este activat, furnizorul de captcha selectat va fi folosit în locul captcha-ului tradițional cu imagine pentru verificarea formularelor."
+    turnstile_keys_hint: "Obțineți o pereche de chei (site și secret) din panoul Cloudflare:"
     first_login_update_details: Introduceți o parolă nouă și actualizați-vă datele
     embedding: Încorporare
     allow_iframe_embedding: Permite încorporarea într-un iframe

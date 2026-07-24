@@ -1,6 +1,10 @@
 ---
 fi:
   ea:
+    captcha: "Captcha"
+    captcha_info: "Captcha-asetukset, joilla varmistetaan ennen varausta, että kävijä on ihminen"
+    captcha_enabled_hint: "Kun käytössä, valittua captcha-palvelua käytetään perinteisen kuva-captchan sijaan lomakkeiden varmistamiseen."
+    turnstile_keys_hint: "Hanki site key- ja secret key -avainpari Cloudflaren hallintapaneelista:"
     first_login_update_details: Anna uusi salasana ja päivitä tietosi
     embedding: Upotus
     allow_iframe_embedding: Salli upotus iframeen

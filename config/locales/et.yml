@@ -1,6 +1,10 @@
 ---
 et:
   ea:
+    captcha: "Captcha"
+    captcha_info: "Captcha seaded, millega enne broneerimist kontrollitakse, et külastaja on inimene"
+    captcha_enabled_hint: "Kui see on lubatud, kasutatakse vormide kontrollimiseks valitud captcha teenusepakkujat traditsioonilise pildi-captcha asemel."
+    turnstile_keys_hint: "Hankige site key ja secret key paar Cloudflare'i töölaualt:"
     first_login_update_details: Palun sisestage uus parool ja uuendage oma andmeid
     embedding: Manustamine
     allow_iframe_embedding: Luba manustamine iframe'i

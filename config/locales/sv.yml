@@ -1,6 +1,10 @@
 ---
 sv:
   ea:
+    captcha: "Captcha"
+    captcha_info: "Captcha-inställningar för att verifiera att besökaren är en människa före bokning"
+    captcha_enabled_hint: "När det är aktiverat används den valda captcha-leverantören i stället för den traditionella bild-captchan för formulärverifiering."
+    turnstile_keys_hint: "Hämta ett nyckelpar (site och secret) från Cloudflare-panelen:"
     first_login_update_details: Ange ett nytt lösenord och uppdatera dina uppgifter
     embedding: Inbäddning
     allow_iframe_embedding: Tillåt inbäddning i en iframe

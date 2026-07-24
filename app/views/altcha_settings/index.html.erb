@@ -9,7 +9,7 @@
                 <fieldset>
                     <div class="d-flex justify-content-between align-items-center border-bottom mb-4 py-2">
                         <h4 class="mb-0 fw-light">
-                            <%= lang('altcha') %>
+                            <%= lang('captcha') %>
                         </h4>
 
                         <div>
@@ -31,7 +31,7 @@
                         <div class="col-12">
                             <div class="mb-3">
                                 <div class="form-text text-muted mb-4">
-                                    <%= lang('altcha_info') %>
+                                    <%= lang('captcha_info') %>
                                 </div>
                             </div>
 
@@ -46,6 +46,19 @@
                             <% end %>
 
                             <div class="mb-3">
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" id="altcha-enabled"
+                                           data-field="altcha_enabled">
+                                    <label class="form-check-label" for="altcha-enabled">
+                                        <%= lang('active') %>
+                                    </label>
+                                </div>
+                                <div class="form-text text-muted small">
+                                    <%= lang('captcha_enabled_hint') %>
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
                                 <label class="form-label" for="captcha-provider">
                                     <%= lang('captcha_provider') %>
                                 </label>
@@ -55,34 +68,32 @@
                                 </select>
                             </div>
 
-                            <div class="mb-3">
-                                <label class="form-label" for="turnstile-site-key">
-                                    <%= lang('turnstile_site_key') %>
-                                </label>
-                                <input type="text" id="turnstile-site-key" class="form-control"
-                                       data-field="turnstile_site_key" maxlength="256">
-                            </div>
-
-                            <div class="mb-3">
-                                <label class="form-label" for="turnstile-secret-key">
-                                    <%= lang('turnstile_secret_key') %>
-                                </label>
-                                <input type="password" id="turnstile-secret-key" class="form-control"
-                                       data-field="turnstile_secret_key" maxlength="256" autocomplete="new-password">
-                            </div>
-
-                            <div class="mb-3">
-                                <div class="form-check form-switch">
-                                    <input class="form-check-input" type="checkbox" id="altcha-enabled"
-                                           data-field="altcha_enabled">
-                                    <label class="form-check-label" for="altcha-enabled">
-                                        <%= lang('active') %>
+                            <div id="turnstile-provider-settings">
+                                <div class="mb-3">
+                                    <label class="form-label" for="turnstile-site-key">
+                                        <%= lang('turnstile_site_key') %>
                                     </label>
+                                    <input type="text" id="turnstile-site-key" class="form-control"
+                                           data-field="turnstile_site_key" maxlength="256">
+                                    <div class="form-text text-muted small">
+                                        <%= lang('turnstile_keys_hint') %>
+                                        <a href="https://dash.cloudflare.com/?to=/:account/turnstile" target="_blank">dash.cloudflare.com</a>
+                                    </div>
                                 </div>
-                                <div class="form-text text-muted small">
-                                    <%= lang('altcha_enabled_hint') %>
+
+                                <div class="mb-3">
+                                    <label class="form-label" for="turnstile-secret-key">
+                                        <%= lang('turnstile_secret_key') %>
+                                    </label>
+                                    <input type="password" id="turnstile-secret-key" class="form-control"
+                                           data-field="turnstile_secret_key" maxlength="256" autocomplete="new-password">
                                 </div>
                             </div>
+
+                            <div id="altcha-provider-settings">
+                                <div class="form-text text-muted mb-3">
+                                    <%= lang('altcha_info') %>
+                                </div>
 
                             <div class="mb-3">
                                 <label class="form-label" for="altcha-hmac-key">
@@ -122,6 +133,7 @@
                                 <div class="form-text text-muted small">
                                     <%= lang('altcha_expires_hint') %>
                                 </div>
+                            </div>
                             </div>
 
                         </div>

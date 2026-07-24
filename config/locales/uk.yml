@@ -1,6 +1,10 @@
 ---
 uk:
   ea:
+    captcha: "Captcha"
+    captcha_info: "Налаштування капчі для перевірки, що відвідувач людина, перед бронюванням"
+    captcha_enabled_hint: "Якщо увімкнено, для перевірки форм замість традиційної капчі із зображенням використовуватиметься вибраний провайдер капчі."
+    turnstile_keys_hint: "Отримайте пару ключів (site і secret) у панелі Cloudflare:"
     first_login_update_details: Будь ласка, введіть новий пароль і оновіть свої дані
     embedding: Вбудовування
     allow_iframe_embedding: Дозволити вбудовування в iframe

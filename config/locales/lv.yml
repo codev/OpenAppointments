@@ -1,6 +1,10 @@
 ---
 lv:
   ea:
+    captcha: "Captcha"
+    captcha_info: "Captcha iestatījumi, lai pirms rezervācijas pārbaudītu, ka apmeklētājs ir cilvēks"
+    captcha_enabled_hint: "Ja iespējots, veidlapu pārbaudei tradicionālās attēla captcha vietā tiks izmantots izvēlētais captcha pakalpojumu sniedzējs."
+    turnstile_keys_hint: "Iegūstiet atslēgu pāri (site un secret) Cloudflare panelī:"
     first_login_update_details: Lūdzu, ievadiet jaunu paroli un atjauniniet savus datus
     embedding: Iegulšana
     allow_iframe_embedding: Atļaut iegult iframe

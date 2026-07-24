@@ -1,6 +1,10 @@
 ---
 mr:
   ea:
+    captcha: "Captcha"
+    captcha_info: "बुकिंगपूर्वी अभ्यागत माणूस आहे हे तपासण्यासाठी कॅप्चा सेटिंग्ज"
+    captcha_enabled_hint: "सक्षम केल्यावर फॉर्म पडताळणीसाठी पारंपरिक इमेज कॅप्चाऐवजी निवडलेला कॅप्चा प्रदाता वापरला जाईल."
+    turnstile_keys_hint: "Cloudflare डॅशबोर्डवरून साइट की आणि सीक्रेट की जोडी मिळवा:"
     first_login_update_details: कृपया नवीन पासवर्ड टाका आणि तुमची माहिती अपडेट करा
     embedding: एम्बेडिंग
     allow_iframe_embedding: iframe मध्ये एम्बेड करण्यास परवानगी द्या

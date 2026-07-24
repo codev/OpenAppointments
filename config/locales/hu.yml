@@ -1,6 +1,10 @@
 ---
 hu:
   ea:
+    captcha: "Captcha"
+    captcha_info: "Captcha beállítások annak ellenőrzésére, hogy a látogató ember-e a foglalás előtt"
+    captcha_enabled_hint: "Ha engedélyezve van, az űrlapok ellenőrzéséhez a hagyományos képes captcha helyett a kiválasztott captcha szolgáltató lesz használva."
+    turnstile_keys_hint: "Szerezzen egy kulcspárt (site és secret) a Cloudflare vezérlőpultján:"
     first_login_update_details: Adjon meg új jelszót, és frissítse adatait
     embedding: Beágyazás
     allow_iframe_embedding: Beágyazás engedélyezése iframe-be

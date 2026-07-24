@@ -1,6 +1,10 @@
 ---
 lt:
   ea:
+    captcha: "Captcha"
+    captcha_info: "Captcha nustatymai, patikrinantys, ar lankytojas yra žmogus, prieš rezervaciją"
+    captcha_enabled_hint: "Įjungus, formų patikrai vietoj tradicinės paveikslėlio captcha bus naudojamas pasirinktas captcha teikėjas."
+    turnstile_keys_hint: "Gaukite raktų porą (site ir secret) Cloudflare valdymo skydelyje:"
     first_login_update_details: Įveskite naują slaptažodį ir atnaujinkite savo duomenis
     embedding: Įterpimas
     allow_iframe_embedding: Leisti įterpti į iframe

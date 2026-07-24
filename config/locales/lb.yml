@@ -1,6 +1,10 @@
 ---
 lb:
   ea:
+    captcha: "Captcha"
+    captcha_info: "Captcha-Astellungen fir ze préiwen, datt de Besucher e Mënsch ass, ier gebucht gëtt"
+    captcha_enabled_hint: "Wann aktivéiert, gëtt de gewielte Captcha-Provider amplaz vun der traditioneller Bild-Captcha fir d'Formularverifikatioun benotzt."
+    turnstile_keys_hint: "Kritt e Puer Schlësselen (site a secret) am Cloudflare Dashboard:"
     first_login_update_details: Gitt w.e.g. en neit Passwuert an an aktualiséiert Är Donnéeën
     embedding: Abannen
     allow_iframe_embedding: Abanne an en iframe erlaben

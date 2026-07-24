@@ -1,6 +1,10 @@
 ---
 zh-tw:
   ea:
+    captcha: "Captcha"
+    captcha_info: "用於在預約前驗證訪客是真人的驗證碼設定"
+    captcha_enabled_hint: "啟用後，表單驗證將使用所選的驗證碼提供者，取代傳統的圖片驗證碼。"
+    turnstile_keys_hint: "在 Cloudflare 控制台取得網站金鑰與祕密金鑰對:"
     first_login_update_details: 請輸入新密碼並更新您的資料
     embedding: 嵌入
     allow_iframe_embedding: 允許嵌入 iframe

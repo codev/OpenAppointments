@@ -1,6 +1,10 @@
 ---
 el:
   ea:
+    captcha: "Captcha"
+    captcha_info: "Ρυθμίσεις captcha για επαλήθευση ότι ο επισκέπτης είναι άνθρωπος πριν την κράτηση"
+    captcha_enabled_hint: "Όταν είναι ενεργό, ο επιλεγμένος πάροχος captcha θα χρησιμοποιείται αντί του παραδοσιακού captcha εικόνας για την επαλήθευση φορμών."
+    turnstile_keys_hint: "Αποκτήστε ένα ζεύγος κλειδιών (site και secret) από τον πίνακα του Cloudflare:"
     first_login_update_details: Παρακαλώ εισαγάγετε νέο κωδικό πρόσβασης και ενημερώστε τα στοιχεία σας
     embedding: Ενσωμάτωση
     allow_iframe_embedding: Να επιτρέπεται η ενσωμάτωση σε iframe

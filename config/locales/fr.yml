@@ -1,6 +1,10 @@
 ---
 fr:
   ea:
+    captcha: "Captcha"
+    captcha_info: "Paramètres du captcha pour vérifier que le visiteur est humain avant la réservation"
+    captcha_enabled_hint: "Lorsqu'il est activé, le fournisseur de captcha sélectionné sera utilisé à la place du captcha image traditionnel pour la vérification des formulaires."
+    turnstile_keys_hint: "Obtenez une paire de clés (site et secret) depuis le tableau de bord Cloudflare :"
     first_login_update_details: Veuillez saisir un nouveau mot de passe et mettre à jour vos informations
     embedding: Intégration
     allow_iframe_embedding: Autoriser l'intégration dans une iframe

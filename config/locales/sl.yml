@@ -1,6 +1,10 @@
 ---
 sl:
   ea:
+    captcha: "Captcha"
+    captcha_info: "Nastavitve captcha za preverjanje, da je obiskovalec človek, pred rezervacijo"
+    captcha_enabled_hint: "Ko je omogočeno, se za preverjanje obrazcev namesto tradicionalne slikovne captche uporablja izbrani ponudnik captcha."
+    turnstile_keys_hint: "Pridobite par ključev (site in secret) na nadzorni plošči Cloudflare:"
     first_login_update_details: Vnesite novo geslo in posodobite svoje podatke
     embedding: Vdelava
     allow_iframe_embedding: Dovoli vdelavo v iframe

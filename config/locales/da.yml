@@ -1,6 +1,10 @@
 ---
 da:
   ea:
+    captcha: "Captcha"
+    captcha_info: "Captcha-indstillinger til at bekræfte, at besøgende er et menneske, før der bookes"
+    captcha_enabled_hint: "Når aktiveret bruges den valgte captcha-udbyder i stedet for den traditionelle billed-captcha til formularbekræftelse."
+    turnstile_keys_hint: "Hent et par bestående af site key og secret key fra Cloudflare-panelet:"
     first_login_update_details: Indtast en ny adgangskode og opdater dine oplysninger
     embedding: Indlejring
     allow_iframe_embedding: Tillad indlejring i en iframe

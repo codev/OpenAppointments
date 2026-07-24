@@ -1,6 +1,10 @@
 ---
 th:
   ea:
+    captcha: "Captcha"
+    captcha_info: "การตั้งค่า Captcha เพื่อยืนยันว่าผู้เยี่ยมชมเป็นมนุษย์ก่อนการจอง"
+    captcha_enabled_hint: "เมื่อเปิดใช้งาน ผู้ให้บริการ Captcha ที่เลือกจะถูกใช้แทน Captcha รูปภาพแบบดั้งเดิมในการตรวจสอบแบบฟอร์ม"
+    turnstile_keys_hint: "รับคู่กุญแจ (site key และ secret key) จากแดชบอร์ดของ Cloudflare:"
     first_login_update_details: กรุณาตั้งรหัสผ่านใหม่และอัปเดตข้อมูลของคุณ
     embedding: การฝังหน้า
     allow_iframe_embedding: อนุญาตให้ฝังใน iframe

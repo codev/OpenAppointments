@@ -1,6 +1,10 @@
 ---
 nl:
   ea:
+    captcha: "Captcha"
+    captcha_info: "Captcha-instellingen om te controleren of de bezoeker een mens is voor het boeken"
+    captcha_enabled_hint: "Indien ingeschakeld wordt de geselecteerde captcha-provider gebruikt in plaats van de traditionele afbeeldingscaptcha voor formulierverificatie."
+    turnstile_keys_hint: "Haal een sleutelpaar (site en secret) op in het Cloudflare-dashboard:"
     first_login_update_details: Voer een nieuw wachtwoord in en werk uw gegevens bij
     embedding: Insluiten
     allow_iframe_embedding: Insluiten in een iframe toestaan

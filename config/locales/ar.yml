@@ -1,6 +1,10 @@
 ---
 ar:
   ea:
+    captcha: "Captcha"
+    captcha_info: "إعدادات الكابتشا للتحقق من أن الزائر إنسان قبل الحجز"
+    captcha_enabled_hint: "عند التفعيل، سيُستخدم مزود الكابتشا المحدد بدلاً من كابتشا الصور التقليدية للتحقق من النماذج."
+    turnstile_keys_hint: "احصل على زوج المفاتيح (site وsecret) من لوحة تحكم Cloudflare:"
     first_login_update_details: يرجى إدخال كلمة مرور جديدة وتحديث بياناتك
     embedding: التضمين
     allow_iframe_embedding: السماح بالتضمين داخل iframe

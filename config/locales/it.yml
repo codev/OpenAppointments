@@ -1,6 +1,10 @@
 ---
 it:
   ea:
+    captcha: "Captcha"
+    captcha_info: "Impostazioni del captcha per verificare che il visitatore sia umano prima della prenotazione"
+    captcha_enabled_hint: "Quando abilitato, il provider di captcha selezionato verrà usato al posto del tradizionale captcha con immagine per la verifica dei moduli."
+    turnstile_keys_hint: "Ottieni una coppia di chiavi (site e secret) dalla dashboard di Cloudflare:"
     first_login_update_details: Inserisci una nuova password e aggiorna i tuoi dati
     embedding: Incorporamento
     allow_iframe_embedding: Consenti l'incorporamento in un iframe

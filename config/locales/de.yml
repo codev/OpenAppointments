@@ -1,6 +1,10 @@
 ---
 de:
   ea:
+    captcha: "Captcha"
+    captcha_info: "Captcha-Einstellungen, um vor der Buchung zu prüfen, dass der Besucher ein Mensch ist"
+    captcha_enabled_hint: "Wenn aktiviert, wird der ausgewählte Captcha-Anbieter anstelle des traditionellen Bild-Captchas zur Formularprüfung verwendet."
+    turnstile_keys_hint: "Ein Schlüsselpaar (Site-Key und Secret-Key) erhalten Sie im Cloudflare-Dashboard:"
     first_login_update_details: Bitte geben Sie ein neues Passwort ein und aktualisieren Sie Ihre Daten
     embedding: Einbettung
     allow_iframe_embedding: Einbettung in einen iframe erlauben

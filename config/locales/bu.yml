@@ -1,6 +1,10 @@
 ---
 bu:
   ea:
+    captcha: "Captcha"
+    captcha_info: "Настройки на captcha за проверка, че посетителят е човек, преди резервация"
+    captcha_enabled_hint: "Когато е активирано, избраният captcha доставчик ще се използва вместо традиционната captcha с изображение за проверка на формуляри."
+    turnstile_keys_hint: "Вземете двойка ключове (site и secret) от таблото на Cloudflare:"
     first_login_update_details: Моля, въведете нова парола и актуализирайте данните си
     embedding: Вграждане
     allow_iframe_embedding: Разреши вграждане в iframe
