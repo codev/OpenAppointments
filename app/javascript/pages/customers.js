@@ -35,6 +35,10 @@ App.Pages.Customers = (function () {
     const $notes = $('#notes');
     const $formMessage = $('#form-message');
     const $customerAppointments = $('#customer-appointments');
+    const $customerMessages = $('#customer-messages');
+    const $messageChannel = $('#message-channel');
+    const $messageBody = $('#message-body');
+    const $sendMessage = $('#send-message');
 
     const moment = window.moment;
 
@@ -190,6 +194,18 @@ App.Pages.Customers = (function () {
 
             App.Utils.Message.show(lang('delete_customer'), lang('delete_record_prompt'), buttons);
         });
+
+        /**
+         * Event: Send Message Button "Click"
+         */
+        $customers.on('click', '#send-message', onSendMessageClick);
+
+        $customers.on('keydown', '#message-body', (event) => {
+            if (event.key === 'Enter') {
+                event.preventDefault();
+                onSendMessageClick();
+            }
+        });
     }
 
     /**
@@ -276,6 +292,10 @@ App.Pages.Customers = (function () {
         $customers.find('.record-details #language').val(vars('default_language'));
 
         $customerAppointments.empty();
+        $customerMessages.empty();
+        $messageChannel.val('').prop('disabled', true);
+        $messageBody.val('').prop('disabled', true);
+        $sendMessage.prop('disabled', true);
 
         $customers.find('#edit-customer, #delete-customer').prop('disabled', true);
         $customers.find('#add-edit-delete-group').show();
@@ -311,6 +331,11 @@ App.Pages.Customers = (function () {
         $customField3.val(customer.custom_field_3);
         $customField4.val(customer.custom_field_4);
         $customField5.val(customer.custom_field_5);
+
+        loadMessages(customer.id);
+        $messageChannel.prop('disabled', false);
+        $messageBody.prop('disabled', false);
+        $sendMessage.prop('disabled', false);
 
         $customerAppointments.empty();
 
@@ -396,6 +421,102 @@ App.Pages.Customers = (function () {
     }
 
     /**
+     * Load and render the messages of a customer (also marks them read).
+     *
+     * @param {Number} customerId
+     */
+    function loadMessages(customerId) {
+        if (!$customerMessages.length) {
+            return;
+        }
+
+        App.Http.CustomerMessages.find(customerId).done((messages) => {
+            $customerMessages.empty();
+
+            if (!messages.length) {
+                $('<p/>', {
+                    'text': lang('no_records_found'),
+                }).appendTo($customerMessages);
+            }
+
+            messages.forEach((message) => {
+                appendMessage(message);
+            });
+
+            // Reading the messages clears the unread badge of this customer.
+            const filterResult = (filterResults || []).find &&
+                filterResults.find((result) => Number(result.id) === Number(customerId));
+
+            if (filterResult) {
+                filterResult.unread_messages = 0;
+            }
+
+            $('#filter-customers .entry[data-id="' + customerId + '"] .unread-badge').remove();
+        });
+    }
+
+    /**
+     * Append one message row to the messages panel.
+     *
+     * @param {Object} message
+     */
+    function appendMessage(message) {
+        const incoming = message.direction === 'incoming';
+
+        $('<div/>', {
+            'class': 'message-row mb-2 pb-2 border-bottom',
+            'html': [
+                $('<i/>', {
+                    'class': incoming ? 'fas fa-arrow-down text-success me-1' : 'fas fa-arrow-up text-primary me-1',
+                }),
+                $('<span/>', {
+                    'class': 'badge bg-secondary me-1',
+                    'text': message.channel_label,
+                }),
+                $('<small/>', {
+                    'class': 'text-muted',
+                    'text': message.created_at + (message.status === 'failed' ? ' - ' + lang('messages_status_failed') : ''),
+                }),
+                $('<br/>'),
+                $('<small/>', {
+                    'text': message.body,
+                }),
+            ],
+        }).appendTo($customerMessages);
+    }
+
+    /**
+     * Send a manual message to the displayed customer.
+     */
+    function onSendMessageClick() {
+        const customerId = $id.val();
+        const channel = $messageChannel.val();
+        const body = $messageBody.val().trim();
+
+        if (!customerId || !body) {
+            return;
+        }
+
+        if (!channel) {
+            App.Layouts.Backend.displayNotification(lang('select_one'));
+
+            return;
+        }
+
+        App.Http.CustomerMessages.send(customerId, channel, body).done((response) => {
+            if (response.success === false) {
+                App.Layouts.Backend.displayNotification(response.message);
+
+                return;
+            }
+
+            $messageBody.val('');
+            App.Layouts.Backend.displayNotification(lang('message_sent'));
+            loadMessages(customerId);
+        });
+    }
+
+    /**
      * Filter customer records.
      *
      * @param {String} keyword This keyword string is used to filter the customer records.
@@ -459,6 +580,12 @@ App.Pages.Customers = (function () {
                 $('<strong/>', {
                     'text': name,
                 }),
+                Number(customer.unread_messages)
+                    ? $('<span/>', {
+                          'class': 'badge bg-danger ms-2 unread-badge',
+                          'text': customer.unread_messages,
+                      })
+                    : null,
                 $('<br/>'),
                 $('<small/>', {
                     'class': 'text-muted',
@@ -497,7 +624,11 @@ App.Pages.Customers = (function () {
     function initialize() {
         App.Pages.Customers.resetForm();
         App.Pages.Customers.addEventListeners();
-        App.Pages.Customers.filter('');
+
+        // Deep link support (e.g. from the messages log): /customers?customer_id=N
+        const customerId = new URLSearchParams(window.location.search).get('customer_id');
+
+        App.Pages.Customers.filter('', customerId ? Number(customerId) : null, Boolean(customerId));
     }
 
     document.addEventListener('DOMContentLoaded', initialize);

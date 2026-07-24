@@ -28,4 +28,9 @@ module Messaging
   def enabled?
     Setting.get("messages_enabled", "1") == "1"
   end
+
+  def email_subject_template
+    Setting.get("messages_email_subject").presence ||
+      Messaging::Defaults::SETTINGS["messages_email_subject"]
+  end
 end

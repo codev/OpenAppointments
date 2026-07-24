@@ -126,7 +126,7 @@ module Notifications
 
     if adapter.supports_long_text?
       subject = short.presence ||
-                Messaging::Template.render(Setting.get("messages_email_subject", ""), context)
+                Messaging::Template.render(Messaging.email_subject_template, context)
       body = long.presence || short
     else
       subject = nil

@@ -83,6 +83,8 @@ Rails.application.routes.draw do
   post "messages_notifications/destroy" => "messages_notifications#destroy"
   get "messages_logs" => "messages_logs#index"
   get "unknown_inbox" => "unknown_inbox#index"
+  post "customer_messages/find" => "customer_messages#find"
+  post "customer_messages/send" => "customer_messages#send_message"
   post "business_settings/apply_global_working_plan" => "business_settings#apply_global_working_plan"
   post "altcha_settings/generate_key" => "altcha_settings#generate_key"
   post "ldap_settings/search" => "ldap_settings#search"
