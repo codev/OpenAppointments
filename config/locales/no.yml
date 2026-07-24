@@ -1,6 +1,9 @@
 ---
 'no':
   ea:
+    booking_provider_first: "Tilbyder først i stedet for tjeneste"
+    display_order_switch: "Vis lenken for å bytte rekkefølge tjeneste/tilbyder"
+    display_powered_by: "Vis Powered by OpenAppointments"
     longer_text_field: "Lengre tekstfelt"
     embed_wordpress: "Bygg inn i WordPress"
     embed_wordpress_hint: "Lim inn HTML-en i en Custom HTML-blokk, og legg til CSS og JavaScript via temaets egne kodealternativer eller en snippet-utvidelse."

@@ -1,6 +1,9 @@
 ---
 ro:
   ea:
+    booking_provider_first: "Mai întâi furnizorul în loc de serviciu"
+    display_order_switch: "Afișează linkul de schimbare a ordinii serviciu/furnizor"
+    display_powered_by: "Afișează Powered by OpenAppointments"
     longer_text_field: "Câmp de text mai lung"
     embed_wordpress: "Încorporare în WordPress"
     embed_wordpress_hint: "Lipiți HTML-ul într-un bloc Custom HTML, apoi adăugați CSS-ul și JavaScript-ul prin opțiunile de cod personalizat ale temei sau un plugin de snippeturi."

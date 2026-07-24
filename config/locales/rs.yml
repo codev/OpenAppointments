@@ -1,6 +1,9 @@
 ---
 rs:
   ea:
+    booking_provider_first: "Prvo pružalac umesto usluge"
+    display_order_switch: "Prikaži link za promenu redosleda usluga/pružalac"
+    display_powered_by: "Prikaži Powered by OpenAppointments"
     longer_text_field: "Duže tekstualno polje"
     embed_wordpress: "Ugradnja u WordPress"
     embed_wordpress_hint: "Nalepite HTML u Custom HTML blok, a CSS i JavaScript dodajte kroz opcije prilagođenog koda teme ili dodatak za snipete."

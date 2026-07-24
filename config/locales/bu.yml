@@ -1,6 +1,9 @@
 ---
 bu:
   ea:
+    booking_provider_first: "ဝန်ဆောင်မှုအစား ဝန်ဆောင်မှုပေးသူကို အရင်ပြရန်"
+    display_order_switch: "ဝန်ဆောင်မှု သို့မဟုတ် ဝန်ဆောင်မှုပေးသူ အရင်ရွေးရန် လင့်ခ်ကို ပြရန်"
+    display_powered_by: "Powered by OpenAppointments ကို ပြရန်"
     longer_text_field: "ပိုရှည်သော စာသားကွက်"
     embed_wordpress: "WordPress တွင် ထည့်သွင်းရန်"
     embed_wordpress_hint: "HTML ကို Custom HTML block ထဲသို့ ကူးထည့်ပြီး CSS နှင့် JavaScript ကို သင့် theme ၏ custom code ရွေးချယ်စရာများ သို့မဟုတ် snippets plugin ဖြင့် ထည့်ပါ။"

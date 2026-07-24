@@ -1,6 +1,9 @@
 ---
 nl:
   ea:
+    booking_provider_first: "Eerst aanbieder in plaats van dienst"
+    display_order_switch: "Toon de link om de volgorde dienst/aanbieder te wisselen"
+    display_powered_by: "Toon Powered by OpenAppointments"
     longer_text_field: "Langer tekstveld"
     embed_wordpress: "Insluiten in WordPress"
     embed_wordpress_hint: "Plak de HTML in een Custom HTML-blok en voeg de CSS en JavaScript toe via de eigen code-opties van je thema of een snippets-plugin."

@@ -1,6 +1,9 @@
 ---
 tr:
   ea:
+    booking_provider_first: "Hizmet yerine önce sağlayıcı"
+    display_order_switch: "Hizmet/sağlayıcı sırasını değiştirme bağlantısını göster"
+    display_powered_by: "Powered by OpenAppointments'ı göster"
     longer_text_field: "Daha uzun metin alanı"
     embed_wordpress: "WordPress'e gömme"
     embed_wordpress_hint: "HTML'yi bir Custom HTML bloğuna yapıştırın, CSS ve JavaScript'i temanızın özel kod seçenekleri veya bir snippet eklentisiyle ekleyin."

@@ -1,6 +1,9 @@
 ---
 lv:
   ea:
+    booking_provider_first: "Vispirms sniedzējs, nevis pakalpojums"
+    display_order_switch: "Rādīt saiti pakalpojuma/sniedzēja secības maiņai"
+    display_powered_by: "Rādīt Powered by OpenAppointments"
     longer_text_field: "Garāks teksta lauks"
     embed_wordpress: "Iegult WordPress"
     embed_wordpress_hint: "Ielīmējiet HTML blokā Custom HTML un pievienojiet CSS un JavaScript ar tēmas pielāgotā koda opcijām vai fragmentu spraudni."

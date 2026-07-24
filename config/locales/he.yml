@@ -1,6 +1,9 @@
 ---
 he:
   ea:
+    booking_provider_first: "ספק תחילה במקום שירות"
+    display_order_switch: "הצגת הקישור להחלפת סדר שירות/ספק"
+    display_powered_by: "הצגת Powered by OpenAppointments"
     longer_text_field: "שדה טקסט ארוך יותר"
     embed_wordpress: "הטמעה ב-WordPress"
     embed_wordpress_hint: "הדביקו את ה-HTML בבלוק Custom HTML והוסיפו את ה-CSS וה-JavaScript דרך אפשרויות הקוד המותאם של התבנית או תוסף סניפטים."

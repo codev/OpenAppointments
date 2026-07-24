@@ -1,6 +1,9 @@
 ---
 ja:
   ea:
+    booking_provider_first: "サービスより先に担当者を表示"
+    display_order_switch: "サービス/担当者の順序を切り替えるリンクを表示"
+    display_powered_by: "Powered by OpenAppointments を表示"
     longer_text_field: "長いテキストフィールド"
     embed_wordpress: "WordPress への埋め込み"
     embed_wordpress_hint: "HTML を Custom HTML ブロックに貼り付け、CSS と JavaScript はテーマのカスタムコード設定またはスニペットプラグインで追加してください。"

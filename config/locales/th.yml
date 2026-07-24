@@ -1,6 +1,9 @@
 ---
 th:
   ea:
+    booking_provider_first: "แสดงผู้ให้บริการก่อนแทนบริการ"
+    display_order_switch: "แสดงลิงก์สลับลำดับบริการ/ผู้ให้บริการ"
+    display_powered_by: "แสดง Powered by OpenAppointments"
     longer_text_field: "ช่องข้อความยาวขึ้น"
     embed_wordpress: "ฝังลงใน WordPress"
     embed_wordpress_hint: "วางโค้ด HTML ในบล็อก Custom HTML แล้วเพิ่ม CSS และ JavaScript ผ่านตัวเลือกโค้ดกำหนดเองของธีมหรือปลั๊กอิน snippets"

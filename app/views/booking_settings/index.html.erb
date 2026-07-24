@@ -286,6 +286,39 @@
 
                                     <div class="mb-3">
                                         <div class="form-check form-switch">
+                                            <input class="form-check-input" type="checkbox" id="booking-provider-first"
+                                                   data-field="booking_provider_first"
+                                                   <%= "checked" if setting("booking_provider_first", "0").to_s == "1" %>>
+                                            <label class="form-check-label" for="booking-provider-first">
+                                                <%= lang('booking_provider_first') %>
+                                            </label>
+                                        </div>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <div class="form-check form-switch">
+                                            <input class="form-check-input" type="checkbox" id="display-order-switch"
+                                                   data-field="display_order_switch"
+                                                   <%= "checked" if setting("display_order_switch", "1").to_s == "1" %>>
+                                            <label class="form-check-label" for="display-order-switch">
+                                                <%= lang('display_order_switch') %>
+                                            </label>
+                                        </div>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <div class="form-check form-switch">
+                                            <input class="form-check-input" type="checkbox" id="display-powered-by"
+                                                   data-field="display_powered_by"
+                                                   <%= "checked" if setting("display_powered_by", "1").to_s == "1" %>>
+                                            <label class="form-check-label" for="display-powered-by">
+                                                <%= lang('display_powered_by') %>
+                                            </label>
+                                        </div>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <div class="form-check form-switch">
                                             <input class="form-check-input" type="checkbox" id="limit-customer-access"
                                                    data-field="limit_customer_access">
                                             <label class="form-check-label" for="limit-customer-access">

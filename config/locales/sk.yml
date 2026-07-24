@@ -1,6 +1,9 @@
 ---
 sk:
   ea:
+    booking_provider_first: "Najprv poskytovateľ namiesto služby"
+    display_order_switch: "Zobraziť odkaz na prepnutie poradia služba/poskytovateľ"
+    display_powered_by: "Zobraziť Powered by OpenAppointments"
     longer_text_field: "Dlhšie textové pole"
     embed_wordpress: "Vloženie do WordPressu"
     embed_wordpress_hint: "Vložte HTML do bloku Custom HTML a CSS a JavaScript pridajte cez vlastný kód témy alebo plugin pre snippety."

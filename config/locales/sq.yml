@@ -1,6 +1,9 @@
 ---
 sq:
   ea:
+    booking_provider_first: "Fillimisht ofruesi në vend të shërbimit"
+    display_order_switch: "Shfaq lidhjen për ndërrimin e radhës shërbim/ofrues"
+    display_powered_by: "Shfaq Powered by OpenAppointments"
     longer_text_field: "Fushë teksti më e gjatë"
     embed_wordpress: "Vendosja në WordPress"
     embed_wordpress_hint: "Ngjiteni HTML-në në një bllok Custom HTML dhe shtoni CSS-në dhe JavaScript-in me opsionet e kodit të personalizuar të temës ose një shtesë snippet-esh."

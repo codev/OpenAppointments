@@ -1,6 +1,9 @@
 ---
 zh:
   ea:
+    booking_provider_first: "先显示服务人员而非服务"
+    display_order_switch: "显示切换服务/服务人员顺序的链接"
+    display_powered_by: "显示 Powered by OpenAppointments"
     longer_text_field: "较长的文本字段"
     embed_wordpress: "嵌入 WordPress"
     embed_wordpress_hint: "将 HTML 粘贴到 Custom HTML 区块，再通过主题的自定义代码选项或代码片段插件添加 CSS 和 JavaScript。"

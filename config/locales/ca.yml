@@ -1,6 +1,9 @@
 ---
 ca:
   ea:
+    booking_provider_first: "Primer el proveïdor en lloc del servei"
+    display_order_switch: "Mostra l'enllaç per canviar l'ordre servei/proveïdor"
+    display_powered_by: "Mostra Powered by OpenAppointments"
     longer_text_field: "Camp de text més llarg"
     embed_wordpress: "Incrusta a WordPress"
     embed_wordpress_hint: "Enganxeu l'HTML en un bloc Custom HTML i afegiu el CSS i el JavaScript amb les opcions de codi personalitzat del tema o un connector de fragments."

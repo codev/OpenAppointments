@@ -1,6 +1,9 @@
 ---
 lt:
   ea:
+    booking_provider_first: "Pirmiausia teikėjas, o ne paslauga"
+    display_order_switch: "Rodyti paslaugos/teikėjo tvarkos keitimo nuorodą"
+    display_powered_by: "Rodyti Powered by OpenAppointments"
     longer_text_field: "Ilgesnis teksto laukas"
     embed_wordpress: "Įdėjimas į WordPress"
     embed_wordpress_hint: "Įkelkite HTML į Custom HTML bloką, o CSS ir JavaScript pridėkite per temos pasirinktinio kodo nustatymus arba snippetų įskiepį."

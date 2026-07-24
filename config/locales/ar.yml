@@ -1,6 +1,9 @@
 ---
 ar:
   ea:
+    booking_provider_first: "عرض مقدم الخدمة أولاً بدلاً من الخدمة"
+    display_order_switch: "عرض رابط التبديل بين اختيار الخدمة أو مقدم الخدمة أولاً"
+    display_powered_by: "عرض Powered by OpenAppointments"
     longer_text_field: "حقل نص أطول"
     embed_wordpress: "التضمين في WordPress"
     embed_wordpress_hint: "الصق كود HTML في مكوّن Custom HTML، ثم أضف CSS و JavaScript عبر خيارات الكود المخصص في القالب أو إضافة مقتطفات."

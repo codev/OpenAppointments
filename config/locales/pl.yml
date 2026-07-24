@@ -1,6 +1,9 @@
 ---
 pl:
   ea:
+    booking_provider_first: "Najpierw wykonawca zamiast usługi"
+    display_order_switch: "Pokaż link do zmiany kolejności usługa/wykonawca"
+    display_powered_by: "Pokaż Powered by OpenAppointments"
     longer_text_field: "Dłuższe pole tekstowe"
     embed_wordpress: "Osadzanie w WordPress"
     embed_wordpress_hint: "Wklej HTML do bloku Custom HTML, a CSS i JavaScript dodaj w opcjach własnego kodu motywu lub wtyczce ze snippetami."

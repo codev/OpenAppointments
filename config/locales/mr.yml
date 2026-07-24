@@ -1,6 +1,9 @@
 ---
 mr:
   ea:
+    booking_provider_first: "सेवेऐवजी आधी प्रदाता"
+    display_order_switch: "सेवा/प्रदाता क्रम बदलण्याची लिंक दाखवा"
+    display_powered_by: "Powered by OpenAppointments दाखवा"
     longer_text_field: "अधिक लांब मजकूर फील्ड"
     embed_wordpress: "WordPress मध्ये एम्बेड करा"
     embed_wordpress_hint: "HTML Custom HTML ब्लॉकमध्ये पेस्ट करा, नंतर CSS आणि JavaScript थीमच्या कस्टम कोड पर्यायांनी किंवा स्निपेट प्लगइनने जोडा."
