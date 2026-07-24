@@ -17,18 +17,19 @@
     }
 }
 
-/* Active step indicator - dynamic state that changes via JavaScript */
+/* Active step indicator - dynamic state that changes via JavaScript. Colours
+   come from the theme's step variables (see themes/_shared.scss). */
 #book-appointment-wizard .book-step.active-step {
     height: 45px !important;
     width: 45px !important;
-    background: var(--bs-white) !important;
+    background: var(--oa-step-active-bg, var(--bs-white)) !important;
     padding: 7px !important;
     margin-right: 13px !important;
     margin-top: 0 !important;
 }
 
 #book-appointment-wizard .book-step.active-step strong {
-    color: var(--bs-primary) !important;
+    color: var(--oa-step-active-fg, var(--bs-primary)) !important;
     font-size: 21px !important;
 }
 
@@ -36,14 +37,14 @@
 #book-appointment-wizard .book-step:not(.active-step) {
     height: 35px !important;
     width: 35px !important;
-    background: rgba(0,0,0,0.2) !important;
+    background: var(--oa-step-bg, rgba(0,0,0,0.2)) !important;
     padding: 8px !important;
     margin-right: 12px !important;
     margin-top: 6px !important;
 }
 
 #book-appointment-wizard .book-step:not(.active-step) strong {
-    color: rgba(255,255,255,0.5) !important;
+    color: var(--oa-step-fg, rgba(255,255,255,0.5)) !important;
     font-size: 12px !important;
 }
 
@@ -53,8 +54,8 @@
 }
 
 #book-appointment-wizard #available-hours .selected-hour {
-    background-color: var(--bs-primary) !important;
-    border-color: var(--bs-primary) !important;
+    background-color: var(--oa-primary, var(--bs-primary)) !important;
+    border-color: var(--oa-primary, var(--bs-primary)) !important;
     color: var(--bs-white) !important;
 }
 
@@ -98,4 +99,78 @@
 .booking-card-picture {
     max-height: 140px;
     object-fit: cover;
+}
+
+/* Structural rules moved out of inline styles during the markup cleanup. */
+#company-name {
+    min-width: 0;
+    line-height: 1.4;
+}
+
+#company-logo {
+    max-height: 56px;
+}
+
+#steps {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    width: 240px;
+}
+
+#steps .book-step {
+    transition: all 0.3s linear;
+}
+
+#steps .book-step:last-child {
+    margin-right: 0 !important;
+}
+
+#steps .book-step strong {
+    cursor: default;
+}
+
+.frame-container {
+    min-height: 500px;
+}
+
+.command-buttons .btn {
+    min-width: 120px;
+}
+
+.command-buttons.d-md-flex {
+    gap: 10px;
+}
+
+.frame-content-narrow {
+    max-width: 630px;
+}
+
+#appointment-details,
+#customer-details {
+    line-height: 28px;
+}
+
+#service-description {
+    max-height: 153px;
+}
+
+#select-time {
+    max-width: 288px;
+}
+
+#available-hours {
+    max-height: 250px;
+}
+
+.captcha-hint {
+    opacity: 0;
+}
+
+#frame-footer #select-language {
+    min-width: 100px;
+}
+
+#frame-footer .backend-link {
+    min-width: 120px;
 }

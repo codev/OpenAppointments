@@ -1,6 +1,14 @@
 ---
 sq:
   ea:
+    apply_suggested_colors: "Apliko ngjyrat e sugjeruara"
+    color_contrast_ok: "Ngjyrat e zgjedhura plotësojnë kontrastin WCAG AA."
+    contrast_warning_button_text: "Teksti i bardhë i butonave lexohet me vështirësi mbi ngjyrën e kompanisë - zgjidhni një ngjyrë kompanie më të errët."
+    contrast_warning_primary_background: "Ngjyra e kompanisë lexohet me vështirësi mbi ngjyrën e sfondit - zgjidhni një ngjyrë kompanie më të errët ose një sfond më të çelët."
+    contrast_warning_secondary: "Teksti i bardhë lexohet me vështirësi mbi ngjyrën dytësore - zgjidhni një ngjyrë dytësore më të errët."
+    contrast_warning_body_background: "Teksti lexohet me vështirësi mbi ngjyrën e sfondit - zgjidhni një ngjyrë sfondi më të çelët."
+    secondary_color: "Ngjyra dytësore"
+    background_color: "Ngjyra e sfondit"
     import_providers_caution: "Kujdes: shënimi i ofruesve do të krijojë llogari përdoruesish dhe do të lejojë hyrjen me emailin e tyre"
     manage_data: "Menaxho të dhënat"
     export_data: "Eksporto të dhënat"

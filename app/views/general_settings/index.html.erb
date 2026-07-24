@@ -23,6 +23,81 @@
 
                         <div class="row mb-5">
                             <div class="col-12">
+                        <h5 class="mb-3 fw-light">
+                            <%= lang('theme') %>
+                        </h5>
+
+                                <div class="mb-3">
+                                    <label class="form-label" for="theme">
+                                        <%= lang('theme') %>
+                                    </label>
+
+                                    <select id="theme" data-field="theme" class="form-select">
+                                        <% vars(:available_themes).each do |available_theme| %>
+                                            <option value="<%= available_theme %>">
+                                                <%= available_theme.capitalize %>
+                                            </option>
+                                        <% end %>
+                                    </select>
+
+                                    <div class="my-2 d-flex gap-2">
+                                        <button type="button" class="btn btn-outline-secondary btn-sm apply-suggested-colors"
+                                                data-palette="0">
+                                            <i class="fas fa-fill-drip me-2"></i>
+                                            <%= lang('apply_suggested_colors') %> 1
+                                        </button>
+                                        <button type="button" class="btn btn-outline-secondary btn-sm apply-suggested-colors"
+                                                data-palette="1">
+                                            <i class="fas fa-fill-drip me-2"></i>
+                                            <%= lang('apply_suggested_colors') %> 2
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <div id="color-accessibility" class="mb-3" aria-live="polite"></div>
+
+                                <div class="mb-3">
+                                    <label class="form-label" for="company-color">
+                                        <%= lang('company_color') %>
+                                    </label>
+
+                                    <input type="color" id="company-color" data-field="company_color"
+                                           class="form-control">
+
+                                    <div class="form-text text-muted">
+                                        <small>
+                                            <%= lang('company_color_hint') %>
+                                        </small>
+                                    </div>
+
+                                    <div class="d-flex justify-content-center">
+                                        <button type="button" class="btn btn-danger btn-sm my-3"
+                                                id="reset-company-color" hidden>
+                                            <i class="fas fa-undo-alt me-2"></i>
+                                            <%= lang('reset') %>
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label class="form-label" for="company-secondary-color">
+                                        <%= lang('secondary_color') %>
+                                    </label>
+
+                                    <input type="color" id="company-secondary-color"
+                                           data-field="company_secondary_color" class="form-control">
+                                </div>
+
+                                <div class="mb-3">
+                                    <label class="form-label" for="company-background-color">
+                                        <%= lang('background_color') %>
+                                    </label>
+
+                                    <input type="color" id="company-background-color"
+                                           data-field="company_background_color" class="form-control">
+                                </div>
+
+
                                 <h5 class="mb-3 fw-light"><%= lang('company') %></h5>
 
                                 <div class="mb-3">
@@ -90,48 +165,7 @@
                                     </div>
                                 </div>
 
-                                <div class="mb-3">
-                                    <label class="form-label" for="company-color">
-                                        <%= lang('company_color') %>
-                                    </label>
 
-                                    <input type="color" id="company-color" data-field="company_color"
-                                           class="form-control">
-
-                                    <div class="form-text text-muted">
-                                        <small>
-                                            <%= lang('company_color_hint') %>
-                                        </small>
-                                    </div>
-
-                                    <div class="d-flex justify-content-center">
-                                        <button type="button" class="btn btn-danger btn-sm my-3"
-                                                id="reset-company-color" hidden>
-                                            <i class="fas fa-undo-alt me-2"></i>
-                                            <%= lang('reset') %>
-                                        </button>
-                                    </div>
-                                </div>
-
-                                <div class="mb-3">
-                                    <label class="form-label" for="theme">
-                                        <%= lang('theme') %>
-                                    </label>
-
-                                    <select id="theme" data-field="theme" class="form-select">
-                                        <% vars(:available_themes).each do |available_theme| %>
-                                            <option value="<%= available_theme %>">
-                                                <%= available_theme.capitalize %>
-                                            </option>
-                                        <% end %>
-                                    </select>
-
-                                    <div class="form-text text-muted">
-                                        <small>
-                                            <%= lang('company_color_hint') %>
-                                        </small>
-                                    </div>
-                                </div>
 
                             </div>
                         </div>
@@ -234,5 +268,5 @@
 </div>
 
 <% content_for :scripts do %>
-    <%= ea_js "http/general_settings_http_client", "pages/general_settings" %>
+    <%= ea_js "utils/contrast", "http/general_settings_http_client", "pages/general_settings" %>
 <% end %>

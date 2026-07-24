@@ -1,6 +1,14 @@
 ---
 sk:
   ea:
+    apply_suggested_colors: "Použiť navrhované farby"
+    color_contrast_ok: "Vybrané farby spĺňajú kontrast WCAG AA."
+    contrast_warning_button_text: "Biely text tlačidiel je na firemnej farbe zle čitateľný - zvoľte tmavšiu firemnú farbu."
+    contrast_warning_primary_background: "Firemná farba je na farbe pozadia zle čitateľná - zvoľte tmavšiu firemnú farbu alebo svetlejšie pozadie."
+    contrast_warning_secondary: "Biely text je na sekundárnej farbe zle čitateľný - zvoľte tmavšiu sekundárnu farbu."
+    contrast_warning_body_background: "Text je na farbe pozadia zle čitateľný - zvoľte svetlejšiu farbu pozadia."
+    secondary_color: "Sekundárna farba"
+    background_color: "Farba pozadia"
     import_providers_caution: "Pozor: zaškrtnutie poskytovateľov vytvorí používateľské účty a umožní prihlásenie ich e-mailom"
     manage_data: "Správa dát"
     export_data: "Exportovať dáta"

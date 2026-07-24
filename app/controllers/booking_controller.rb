@@ -9,7 +9,7 @@ class BookingController < ApplicationController
   ALLOWED_APPOINTMENT_FIELDS = %w[id start_datetime end_datetime location meeting_link notes
                                   color status is_unavailability id_users_provider
                                   id_users_customer id_services].freeze
-  THEMES = %w[cosmo darkly default flatly litera lumen materia minty outline sketchy zephyr].freeze
+  THEMES = %w[brutalism coder fruit material nice outline solid].freeze
 
   # Distinct name: per limit - unnamed limits in one controller share a cache key,
   # so the wizard's own availability polling would eat the register budget.
@@ -70,7 +70,7 @@ class BookingController < ApplicationController
 
     theme = params[:theme].to_s.gsub(/[^a-zA-Z0-9_\-]/, "")
     theme = Setting.get("theme", "default") if theme.blank?
-    theme = "default" unless THEMES.include?(theme)
+    theme = "nice" unless THEMES.include?(theme)
 
     company_color = Setting.get("company_color")
 

@@ -1,6 +1,14 @@
 ---
 lt:
   ea:
+    apply_suggested_colors: "Taikyti siūlomas spalvas"
+    color_contrast_ok: "Pasirinktos spalvos atitinka WCAG AA kontrastą."
+    contrast_warning_button_text: "Baltas mygtukų tekstas sunkiai įskaitomas ant įmonės spalvos - pasirinkite tamsesnę įmonės spalvą."
+    contrast_warning_primary_background: "Įmonės spalva sunkiai įskaitoma ant fono spalvos - pasirinkite tamsesnę įmonės spalvą arba šviesesnį foną."
+    contrast_warning_secondary: "Baltas tekstas sunkiai įskaitomas ant antrinės spalvos - pasirinkite tamsesnę antrinę spalvą."
+    contrast_warning_body_background: "Tekstas sunkiai įskaitomas ant fono spalvos - pasirinkite šviesesnę fono spalvą."
+    secondary_color: "Antrinė spalva"
+    background_color: "Fono spalva"
     import_providers_caution: "Dėmesio: pažymėjus specialistus bus sukurtos naudotojų paskyros ir leista prisijungti jų el. paštu"
     manage_data: "Duomenų valdymas"
     export_data: "Eksportuoti duomenis"

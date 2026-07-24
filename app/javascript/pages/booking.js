@@ -249,8 +249,8 @@ App.Pages.Booking = (function () {
                 }
 
                 // Both selections are known: skip the two selection pages and open the time step.
-                $('.active-step').removeClass('active-step');
-                $('#step-3').addClass('active-step');
+                $('.active-step').removeClass('active-step').removeAttr('aria-current');
+                $('#step-3').addClass('active-step').attr('aria-current', 'step');
                 $('#wizard-frame-1').css('visibility', 'visible').hide();
                 $('#wizard-frame-2').hide();
 
@@ -647,8 +647,8 @@ App.Pages.Booking = (function () {
             const nextTabIndex = parseInt($target.attr('data-step_index')) + 1;
 
             // Update step indicator immediately
-            $('.active-step').removeClass('active-step');
-            $('#step-' + nextTabIndex).addClass('active-step');
+            $('.active-step').removeClass('active-step').removeAttr('aria-current');
+            $('#step-' + nextTabIndex).addClass('active-step').attr('aria-current', 'step');
 
             $target
                 .parents()
@@ -674,8 +674,8 @@ App.Pages.Booking = (function () {
             const prevTabIndex = parseInt($(event.currentTarget).attr('data-step_index')) - 1;
 
             // Update step indicator immediately
-            $('.active-step').removeClass('active-step');
-            $('#step-' + prevTabIndex).addClass('active-step');
+            $('.active-step').removeClass('active-step').removeAttr('aria-current');
+            $('#step-' + prevTabIndex).addClass('active-step').attr('aria-current', 'step');
 
             $(event.currentTarget)
                 .parents()

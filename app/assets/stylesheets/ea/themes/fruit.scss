@@ -1,0 +1,80 @@
+/* ----------------------------------------------------------------------------
+ * Fruit theme: Apple's marketing site language - large friendly type, generous
+ * rounding, airy neutral surfaces, translucent blurred header.
+ * ---------------------------------------------------------------------------- */
+
+$theme: 'fruit';
+
+$primary: #39824f !default;
+$secondary: #dd2a5c !default;
+
+$font-family-sans-serif: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue",
+    "Segoe UI", Roboto, Ubuntu, "Noto Sans", sans-serif;
+$border-radius: 0.875rem;
+$border-radius-sm: 0.625rem;
+$border-radius-lg: 1.125rem;
+$btn-border-radius: 980px;
+$btn-border-radius-sm: 980px;
+$btn-border-radius-lg: 980px;
+$body-color: #1d1d1f;
+$border-color: #d2d2d7;
+$input-border-color: #d2d2d7;
+$headings-font-weight: 600;
+
+@import 'bootstrap';
+@import 'shared';
+
+:root {
+    --oa-radius: 0.875rem;
+    --oa-surface: #fff;
+    --oa-surface-border: #e8e8ed;
+    --oa-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+    --oa-shadow-raised: 0 11px 34px rgba(0, 0, 0, 0.12);
+    --oa-header-bg: var(--oa-background);
+    --oa-header-fg: #1d1d1f;
+    --oa-step-bg: #e8e8ed;
+    --oa-step-fg: #6e6e73;
+    --oa-step-active-bg: var(--oa-primary);
+    --oa-step-active-fg: #fff;
+}
+
+// The background colour paints the top bar only; the page stays white.
+body {
+    background-color: #fff;
+}
+
+// Translucent blurred header like apple.com's nav.
+#header {
+    background: rgba(var(--oa-background-rgb), 0.85) !important;
+    -webkit-backdrop-filter: saturate(180%) blur(20px);
+    backdrop-filter: saturate(180%) blur(20px);
+}
+
+.btn {
+    font-weight: 400;
+    border-width: 0;
+    padding-left: 1.375rem;
+    padding-right: 1.375rem;
+}
+
+.btn-outline-primary,
+.btn-outline-secondary,
+.btn-outline-danger {
+    border-width: 1px;
+}
+
+.form-control,
+.form-select {
+    padding-top: 0.625rem;
+    padding-bottom: 0.625rem;
+
+    &:focus {
+        border-color: var(--oa-primary);
+        box-shadow: 0 0 0 4px rgba(var(--oa-primary-rgb), 0.18);
+    }
+}
+
+.frame-title {
+    font-weight: 600;
+    letter-spacing: -0.02em;
+}

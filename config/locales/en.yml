@@ -1,6 +1,14 @@
 ---
 en:
   ea:
+    apply_suggested_colors: "Apply suggested colors"
+    color_contrast_ok: "The selected colors meet WCAG AA contrast."
+    contrast_warning_button_text: "White button text is hard to read on the company color - pick a darker company color."
+    contrast_warning_primary_background: "The company color is hard to read on the background color - pick a darker company color or a lighter background color."
+    contrast_warning_secondary: "White text is hard to read on the secondary color - pick a darker secondary color."
+    contrast_warning_body_background: "Text is hard to read on the background color - pick a lighter background color."
+    secondary_color: "Secondary Color"
+    background_color: "Background Color"
     import_providers_caution: "Caution: ticking Providers will create user accounts and allow log in with their email"
     manage_data: "Manage data"
     export_data: "Export data"

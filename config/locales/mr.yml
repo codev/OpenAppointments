@@ -1,6 +1,14 @@
 ---
 mr:
   ea:
+    apply_suggested_colors: "सुचवलेले रंग लागू करा"
+    color_contrast_ok: "निवडलेले रंग WCAG AA कॉन्ट्रास्ट पूर्ण करतात."
+    contrast_warning_button_text: "कंपनीच्या रंगावर पांढरा बटण मजकूर वाचणे कठीण आहे - गडद कंपनी रंग निवडा."
+    contrast_warning_primary_background: "पार्श्वभूमी रंगावर कंपनीचा रंग वाचणे कठीण आहे - गडद कंपनी रंग किंवा फिकट पार्श्वभूमी निवडा."
+    contrast_warning_secondary: "दुय्यम रंगावर पांढरा मजकूर वाचणे कठीण आहे - गडद दुय्यम रंग निवडा."
+    contrast_warning_body_background: "पार्श्वभूमी रंगावर मजकूर वाचणे कठीण आहे - फिकट पार्श्वभूमी रंग निवडा."
+    secondary_color: "दुय्यम रंग"
+    background_color: "पार्श्वभूमी रंग"
     import_providers_caution: "सावधान: प्रदाते निवडल्यास वापरकर्ता खाती तयार होतील आणि त्यांच्या ईमेलने लॉग इन करता येईल"
     manage_data: "डेटा व्यवस्थापन"
     export_data: "डेटा निर्यात करा"

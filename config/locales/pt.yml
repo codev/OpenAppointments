@@ -1,6 +1,14 @@
 ---
 pt:
   ea:
+    apply_suggested_colors: "Aplicar cores sugeridas"
+    color_contrast_ok: "As cores selecionadas cumprem o contraste WCAG AA."
+    contrast_warning_button_text: "O texto branco dos botões é difícil de ler sobre a cor da empresa - escolha uma cor de empresa mais escura."
+    contrast_warning_primary_background: "A cor da empresa é difícil de ler sobre a cor de fundo - escolha uma cor de empresa mais escura ou um fundo mais claro."
+    contrast_warning_secondary: "O texto branco é difícil de ler sobre a cor secundária - escolha uma cor secundária mais escura."
+    contrast_warning_body_background: "O texto é difícil de ler sobre a cor de fundo - escolha uma cor de fundo mais clara."
+    secondary_color: "Cor secundária"
+    background_color: "Cor de fundo"
     import_providers_caution: "Atenção: marcar profissionais criará contas de utilizador e permitirá iniciar sessão com o email deles"
     manage_data: "Gerir dados"
     export_data: "Exportar dados"

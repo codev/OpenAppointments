@@ -1,6 +1,14 @@
 ---
 cs:
   ea:
+    apply_suggested_colors: "Použít navržené barvy"
+    color_contrast_ok: "Vybrané barvy splňují kontrast WCAG AA."
+    contrast_warning_button_text: "Bílý text tlačítek je na firemní barvě špatně čitelný - zvolte tmavší firemní barvu."
+    contrast_warning_primary_background: "Firemní barva je na barvě pozadí špatně čitelná - zvolte tmavší firemní barvu nebo světlejší pozadí."
+    contrast_warning_secondary: "Bílý text je na sekundární barvě špatně čitelný - zvolte tmavší sekundární barvu."
+    contrast_warning_body_background: "Text je na barvě pozadí špatně čitelný - zvolte světlejší barvu pozadí."
+    secondary_color: "Sekundární barva"
+    background_color: "Barva pozadí"
     import_providers_caution: "Pozor: zaškrtnutí poskytovatelů vytvoří uživatelské účty a umožní přihlášení jejich e-mailem"
     manage_data: "Správa dat"
     export_data: "Exportovat data"
