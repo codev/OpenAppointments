@@ -25,6 +25,21 @@ Frontend is the Easy!Appointments jQuery UI ported as-is.
 
 Datetimes are stored as provider-local wall-clock, not UTC. See config/application.rb.
 
+## New features
+
+New features since the fork from Easy!Appointments 1.6.0 - many of these are opinionated features, the Easy!Appointment choices weren't wrong, they just weren't what I needed:
+
+- Name field (replaces first and last name fields)
+- Service page and provider divided into two pages. Service page is first by default but you can pass a parameter to the URL - `?first=provider`) - to swap them
+- Card display mode - option instead of dropdowns, also includes optional uploadable pictures for each service and provider
+- Option to require phone OR email as well as the existing options to require either of them
+- Cloudflare Turnstile captcha option
+- Admin import page (supporting Sign In App/10to8 CSV)
+- Database reset option
+- Outline theme
+- Iframe embedding support to embed the booking widget on a website + embed code page
+
+
 ## Operations
 
 Scheduled tasks (driven by the Cloudron scheduler addon in production, see CloudronManifest.json):
@@ -46,9 +61,9 @@ bin/rails openappointments:backup   # VACUUM INTO a timestamped SQLite copy
 
 ## Icons
 
-The app icon source is `openout-booking-icon-outline.svg` (workspace root, copied into the
-repo as `app/assets/images/logo.svg` and `public/icon.svg`). All raster variants are rendered
-from it (inkscape for PNGs, ImageMagick for the ico/social card). Everywhere it is used:
+The app icon  `app/assets/images/logo.svg` and is duplicated at`public/icon.svg
+
+All other variants are rendered from it:
 
 - `app/assets/images/logo.svg` - SVG favicon link in the backend/booking/message/account layouts.
 - `app/assets/images/logo.png` (192px) - login/logout/recovery/about pages, backend header and
