@@ -90,6 +90,19 @@ class ProvidersController < ApplicationController
     json_exception(e, status: :ok)
   end
 
+  # POST /providers/regenerate_link
+  def regenerate_link
+    raise ArgumentError, "Forbidden" if cannot?(:edit, :users)
+
+    provider_id = positive_id!(params.require(:provider_id), "provider")
+    provider = User.providers.find(provider_id)
+    provider.update_columns(booking_slug: BookingSlug.unique_for(User))
+
+    render json: { success: true, booking_slug: provider.booking_slug }
+  rescue ArgumentError => e
+    json_exception(e, status: :ok)
+  end
+
   private
 
   def permitted_provider

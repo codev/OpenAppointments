@@ -1,6 +1,10 @@
 ---
 fi:
   ea:
+    regenerate_link: "Luo linkki uudelleen"
+    regenerate_link_warning_service: "Varoitus: Olemassa olevat linkit tähän palveluun verkossa lakkaavat toimimasta"
+    regenerate_link_warning_provider: "Varoitus: Olemassa olevat linkit tähän palveluntarjoajaan verkossa lakkaavat toimimasta"
+    change: "Vaihda"
     turnstile_keys_hint_after: "rekisteröitymällä ja siirtymällä kohtaan Application Security > Turnstile"
     failed: "epäonnistui"
     import_failures: "Epäonnistuneet tietueet"

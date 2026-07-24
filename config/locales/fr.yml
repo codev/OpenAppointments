@@ -1,6 +1,10 @@
 ---
 fr:
   ea:
+    regenerate_link: "Régénérer le lien"
+    regenerate_link_warning_service: "Attention : les liens existants vers ce service sur le web seront invalidés"
+    regenerate_link_warning_provider: "Attention : les liens existants vers ce prestataire sur le web seront invalidés"
+    change: "Modifier"
     turnstile_keys_hint_after: "en créant un compte puis en allant dans Application Security > Turnstile"
     failed: "échoués"
     import_failures: "Enregistrements en échec"

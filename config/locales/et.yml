@@ -1,6 +1,10 @@
 ---
 et:
   ea:
+    regenerate_link: "Genereeri link uuesti"
+    regenerate_link_warning_service: "Hoiatus: olemasolevad lingid sellele teenusele veebis muutuvad kehtetuks"
+    regenerate_link_warning_provider: "Hoiatus: olemasolevad lingid sellele teenusepakkujale veebis muutuvad kehtetuks"
+    change: "Muuda"
     turnstile_keys_hint_after: "luues konto ja minnes seejärel Application Security > Turnstile alla"
     failed: "ebaõnnestunud"
     import_failures: "Ebaõnnestunud kirjed"

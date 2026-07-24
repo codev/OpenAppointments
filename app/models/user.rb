@@ -30,6 +30,8 @@ class User < ApplicationRecord
   scope :secretaries, -> { joins(:role).where(roles: { slug: Role::SECRETARY }) }
   scope :customers, -> { joins(:role).where(roles: { slug: Role::CUSTOMER }) }
 
+  before_create -> { self.booking_slug ||= BookingSlug.unique_for(User) if provider? }
+
   def admin? = role.slug == Role::ADMIN
   def provider? = role.slug == Role::PROVIDER
   def secretary? = role.slug == Role::SECRETARY

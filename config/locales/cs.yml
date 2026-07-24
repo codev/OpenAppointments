@@ -1,6 +1,10 @@
 ---
 cs:
   ea:
+    regenerate_link: "Přegenerovat odkaz"
+    regenerate_link_warning_service: "Upozornění: Stávající odkazy na tuto službu na webu přestanou platit"
+    regenerate_link_warning_provider: "Upozornění: Stávající odkazy na tohoto poskytovatele na webu přestanou platit"
+    change: "Změnit"
     turnstile_keys_hint_after: "registrací účtu a přechodem do Application Security > Turnstile"
     failed: "selhalo"
     import_failures: "Neúspěšné záznamy"

@@ -1,6 +1,10 @@
 ---
 zh:
   ea:
+    regenerate_link: "重新生成链接"
+    regenerate_link_warning_service: "警告：网络上指向此服务的现有链接将会失效"
+    regenerate_link_warning_provider: "警告：网络上指向此服务人员的现有链接将会失效"
+    change: "更改"
     turnstile_keys_hint_after: "注册账号后前往 Application Security > Turnstile"
     failed: "失败"
     import_failures: "失败的记录"

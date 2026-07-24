@@ -1,6 +1,10 @@
 ---
 sq:
   ea:
+    regenerate_link: "Rigjenero lidhjen"
+    regenerate_link_warning_service: "Kujdes: Lidhjet ekzistuese drejt këtij shërbimi në ueb do të bëhen të pavlefshme"
+    regenerate_link_warning_provider: "Kujdes: Lidhjet ekzistuese drejt këtij ofruesi në ueb do të bëhen të pavlefshme"
+    change: "Ndrysho"
     turnstile_keys_hint_after: "duke u regjistruar për një llogari dhe duke shkuar te Application Security > Turnstile"
     failed: "dështuan"
     import_failures: "Regjistrime të dështuara"

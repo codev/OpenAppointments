@@ -1,6 +1,10 @@
 ---
 ar:
   ea:
+    regenerate_link: "إعادة إنشاء الرابط"
+    regenerate_link_warning_service: "تحذير: الروابط الحالية لهذه الخدمة على الويب ستصبح غير صالحة"
+    regenerate_link_warning_provider: "تحذير: الروابط الحالية لمقدم الخدمة هذا على الويب ستصبح غير صالحة"
+    change: "تغيير"
     turnstile_keys_hint_after: "بالتسجيل للحصول على حساب ثم الانتقال إلى Application Security > Turnstile"
     failed: "فشل"
     import_failures: "السجلات الفاشلة"

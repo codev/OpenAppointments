@@ -1,6 +1,10 @@
 ---
 sl:
   ea:
+    regenerate_link: "Ponovno ustvari povezavo"
+    regenerate_link_warning_service: "Opozorilo: Obstoječe povezave do te storitve na spletu bodo postale neveljavne"
+    regenerate_link_warning_provider: "Opozorilo: Obstoječe povezave do tega ponudnika na spletu bodo postale neveljavne"
+    change: "Spremeni"
     turnstile_keys_hint_after: "z registracijo računa in obiskom Application Security > Turnstile"
     failed: "neuspešno"
     import_failures: "Neuspešni zapisi"

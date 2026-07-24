@@ -1,6 +1,10 @@
 ---
 it:
   ea:
+    regenerate_link: "Rigenera link"
+    regenerate_link_warning_service: "Attenzione: i link esistenti a questo servizio sul web non saranno più validi"
+    regenerate_link_warning_provider: "Attenzione: i link esistenti a questo fornitore sul web non saranno più validi"
+    change: "Cambia"
     turnstile_keys_hint_after: "registrando un account e andando poi su Application Security > Turnstile"
     failed: "falliti"
     import_failures: "Record falliti"

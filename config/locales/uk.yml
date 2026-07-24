@@ -1,6 +1,10 @@
 ---
 uk:
   ea:
+    regenerate_link: "Створити посилання заново"
+    regenerate_link_warning_service: "Увага: наявні посилання на цю послугу в інтернеті стануть недійсними"
+    regenerate_link_warning_provider: "Увага: наявні посилання на цього фахівця в інтернеті стануть недійсними"
+    change: "Змінити"
     turnstile_keys_hint_after: "зареєструвавши обліковий запис і перейшовши до Application Security > Turnstile"
     failed: "з помилкою"
     import_failures: "Записи з помилками"

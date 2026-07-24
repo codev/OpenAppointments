@@ -37,6 +37,10 @@ Rails.application.routes.draw do
     post "#{resource}/destroy" => "#{resource}#destroy"
   end
 
+  # Booking link slug regeneration
+  post "services/regenerate_link" => "services#regenerate_link"
+  post "providers/regenerate_link" => "providers#regenerate_link"
+
   # 10to8 import page
   get "import" => "import#index"
   get "import/export" => "import#export"

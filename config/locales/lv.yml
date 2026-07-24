@@ -1,6 +1,10 @@
 ---
 lv:
   ea:
+    regenerate_link: "Ģenerēt saiti no jauna"
+    regenerate_link_warning_service: "Brīdinājums: esošās saites uz šo pakalpojumu tīmeklī vairs nebūs derīgas"
+    regenerate_link_warning_provider: "Brīdinājums: esošās saites uz šo sniedzēju tīmeklī vairs nebūs derīgas"
+    change: "Mainīt"
     turnstile_keys_hint_after: "reģistrējot kontu un pēc tam dodoties uz Application Security > Turnstile"
     failed: "neizdevās"
     import_failures: "Neizdevušies ieraksti"

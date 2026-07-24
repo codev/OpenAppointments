@@ -1,6 +1,10 @@
 ---
 bu:
   ea:
+    regenerate_link: "လင့်ခ် ပြန်လည်ထုတ်ရန်"
+    regenerate_link_warning_service: "သတိပေးချက် - ဝဘ်ပေါ်ရှိ ဤဝန်ဆောင်မှုသို့ လက်ရှိလင့်ခ်များ အသုံးမဝင်တော့ပါ"
+    regenerate_link_warning_provider: "သတိပေးချက် - ဝဘ်ပေါ်ရှိ ဤဝန်ဆောင်မှုပေးသူသို့ လက်ရှိလင့်ခ်များ အသုံးမဝင်တော့ပါ"
+    change: "ပြောင်းရန်"
     turnstile_keys_hint_after: "အကောင့်ဖွင့်ပြီးနောက် Application Security > Turnstile သို့သွားပါ"
     failed: "မအောင်မြင်ပါ"
     import_failures: "မအောင်မြင်သော မှတ်တမ်းများ"

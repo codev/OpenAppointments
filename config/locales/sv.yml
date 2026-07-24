@@ -1,6 +1,10 @@
 ---
 sv:
   ea:
+    regenerate_link: "Generera om länken"
+    regenerate_link_warning_service: "Varning: Befintliga länkar till denna tjänst på webben blir ogiltiga"
+    regenerate_link_warning_provider: "Varning: Befintliga länkar till denna utförare på webben blir ogiltiga"
+    change: "Ändra"
     turnstile_keys_hint_after: "genom att registrera ett konto och sedan gå till Application Security > Turnstile"
     failed: "misslyckades"
     import_failures: "Misslyckade poster"

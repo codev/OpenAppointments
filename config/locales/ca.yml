@@ -1,6 +1,10 @@
 ---
 ca:
   ea:
+    regenerate_link: "Regenera l'enllaç"
+    regenerate_link_warning_service: "Atenció: els enllaços existents a aquest servei al web deixaran de ser vàlids"
+    regenerate_link_warning_provider: "Atenció: els enllaços existents a aquest proveïdor al web deixaran de ser vàlids"
+    change: "Canvia"
     turnstile_keys_hint_after: "registrant un compte i anant després a Application Security > Turnstile"
     failed: "fallits"
     import_failures: "Registres fallits"

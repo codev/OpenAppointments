@@ -1,6 +1,10 @@
 ---
 zh-tw:
   ea:
+    regenerate_link: "重新產生連結"
+    regenerate_link_warning_service: "警告：網路上指向此服務的現有連結將會失效"
+    regenerate_link_warning_provider: "警告：網路上指向此服務人員的現有連結將會失效"
+    change: "變更"
     turnstile_keys_hint_after: "註冊帳號後前往 Application Security > Turnstile"
     failed: "失敗"
     import_failures: "失敗的記錄"

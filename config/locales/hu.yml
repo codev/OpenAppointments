@@ -1,6 +1,10 @@
 ---
 hu:
   ea:
+    regenerate_link: "Link újragenerálása"
+    regenerate_link_warning_service: "Figyelem: A szolgáltatásra mutató meglévő webes linkek érvénytelenné válnak"
+    regenerate_link_warning_provider: "Figyelem: A szolgáltatóra mutató meglévő webes linkek érvénytelenné válnak"
+    change: "Módosítás"
     turnstile_keys_hint_after: "fiók regisztrálásával, majd az Application Security > Turnstile menübe lépve"
     failed: "sikertelen"
     import_failures: "Sikertelen rekordok"

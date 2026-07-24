@@ -1,6 +1,10 @@
 ---
 he:
   ea:
+    regenerate_link: "יצירת קישור מחדש"
+    regenerate_link_warning_service: "אזהרה: קישורים קיימים לשירות זה ברשת יפסיקו לפעול"
+    regenerate_link_warning_provider: "אזהרה: קישורים קיימים לספק זה ברשת יפסיקו לפעול"
+    change: "שינוי"
     turnstile_keys_hint_after: "על ידי הרשמה לחשבון ומעבר אל Application Security > Turnstile"
     failed: "נכשלו"
     import_failures: "רשומות שנכשלו"

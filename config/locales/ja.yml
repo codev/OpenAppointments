@@ -1,6 +1,10 @@
 ---
 ja:
   ea:
+    regenerate_link: "リンクを再生成"
+    regenerate_link_warning_service: "警告: ウェブ上のこのサービスへの既存リンクは無効になります"
+    regenerate_link_warning_provider: "警告: ウェブ上のこの担当者への既存リンクは無効になります"
+    change: "変更"
     turnstile_keys_hint_after: "アカウントを登録し、Application Security > Turnstile に進んでください"
     failed: "失敗"
     import_failures: "失敗したレコード"

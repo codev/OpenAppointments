@@ -84,7 +84,7 @@ App.Pages.Providers = (function () {
             $('#providers-page').addClass('editing');
             $providers.find('.add-edit-delete-group').hide();
             $providers.find('.save-cancel-group').show();
-            $providers.find('#delete-provider').show(); // Show delete button when editing
+            $providers.find('#delete-provider, #regenerate-provider-link').show(); // Show delete/regenerate when editing
             $filterProviders.find('button').prop('disabled', true);
             $filterProviders.find('.results').css('color', '#AAA');
             $providers.find('.record-details').find('input, select, textarea').prop('disabled', false);
@@ -111,7 +111,7 @@ App.Pages.Providers = (function () {
             $filterProviders.find('.results').css('color', '#AAA');
             $providers.find('.add-edit-delete-group').hide();
             $providers.find('.save-cancel-group').show();
-            $providers.find('#delete-provider').hide(); // Hide delete button when adding
+            $providers.find('#delete-provider, #regenerate-provider-link').hide(); // Hide delete/regenerate when adding
             $providers.find('.record-details').find('input, select, textarea').prop('disabled', false);
             $providers.find('.record-details .form-label span').prop('hidden', false);
             $('#password, #password-confirm').addClass('required');
@@ -175,6 +175,46 @@ App.Pages.Providers = (function () {
             ];
 
             App.Utils.Message.show(lang('delete_provider'), lang('delete_record_prompt'), buttons);
+        });
+
+        /**
+         * Event: Regenerate Link Button "Click"
+         *
+         * Issue a fresh booking slug for the provider after a confirmation.
+         */
+        $providers.on('click', '#regenerate-provider-link', () => {
+            const providerId = $id.val();
+
+            if (!providerId) {
+                return;
+            }
+
+            const buttons = [
+                {
+                    text: lang('cancel'),
+                    click: (event, messageModal) => {
+                        messageModal.hide();
+                    },
+                },
+                {
+                    text: lang('change'),
+                    className: 'btn btn-danger',
+                    click: (event, messageModal) => {
+                        $.post(App.Utils.Url.siteUrl('providers/regenerate_link'), {
+                            csrf_token: vars('csrf_token'),
+                            provider_id: providerId,
+                        }).done((response) => {
+                            const url = App.Utils.Url.siteUrl(
+                                '?provider=' + encodeURIComponent(response.booking_slug),
+                            );
+                            $providers.find('.details-view h4 a').attr('href', url);
+                            messageModal.hide();
+                        });
+                    },
+                },
+            ];
+
+            App.Utils.Message.show(lang('regenerate_link'), lang('regenerate_link_warning_provider'), buttons);
         });
 
         /**
@@ -439,8 +479,8 @@ App.Pages.Providers = (function () {
         $username.val(provider.settings.username);
         $calendarView.val(provider.settings.calendar_view);
 
-        // Add dedicated provider link.
-        let dedicatedUrl = App.Utils.Url.siteUrl('?provider=' + encodeURIComponent(provider.id));
+        // Add dedicated provider link (slugged so it cannot be guessed).
+        let dedicatedUrl = App.Utils.Url.siteUrl('?provider=' + encodeURIComponent(provider.booking_slug));
         let $link = $('<a/>', {
             'href': dedicatedUrl,
             'target': '_blank',
@@ -469,9 +509,18 @@ App.Pages.Providers = (function () {
 
             $checkbox.prop('checked', true);
 
-            // Add dedicated service-provider link.
+            // Add dedicated service-provider link (slugged so it cannot be guessed).
+            const linkedService = (vars('services') || []).find(
+                (service) => Number(service.id) === Number(providerServiceId),
+            );
+
+            if (!linkedService || !linkedService.booking_slug) {
+                return;
+            }
+
             dedicatedUrl = App.Utils.Url.siteUrl(
-                '?provider=' + encodeURIComponent(provider.id) + '&service=' + encodeURIComponent(providerServiceId),
+                '?provider=' + encodeURIComponent(provider.booking_slug) +
+                '&service=' + encodeURIComponent(linkedService.booking_slug),
             );
 
             $link = $('<a/>', {

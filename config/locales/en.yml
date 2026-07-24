@@ -1,6 +1,10 @@
 ---
 en:
   ea:
+    regenerate_link: "Regenerate Link"
+    regenerate_link_warning_service: "Warning: Existing links to this service on the web will be invalidated"
+    regenerate_link_warning_provider: "Warning: Existing links to this provider on the web will be invalidated"
+    change: "Change"
     turnstile_keys_hint_after: "by signing up for an account then going to Application Security > Turnstile"
     failed: "failed"
     import_failures: "Failed records"

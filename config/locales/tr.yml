@@ -1,6 +1,10 @@
 ---
 tr:
   ea:
+    regenerate_link: "Bağlantıyı yeniden oluştur"
+    regenerate_link_warning_service: "Uyarı: Webdeki bu hizmete ait mevcut bağlantılar geçersiz olacaktır"
+    regenerate_link_warning_provider: "Uyarı: Webdeki bu sağlayıcıya ait mevcut bağlantılar geçersiz olacaktır"
+    change: "Değiştir"
     turnstile_keys_hint_after: "bir hesap açıp ardından Application Security > Turnstile bölümüne giderek"
     failed: "başarısız"
     import_failures: "Başarısız kayıtlar"

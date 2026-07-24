@@ -1,6 +1,10 @@
 ---
 th:
   ea:
+    regenerate_link: "สร้างลิงก์ใหม่"
+    regenerate_link_warning_service: "คำเตือน: ลิงก์ที่มีอยู่ไปยังบริการนี้บนเว็บจะใช้ไม่ได้อีกต่อไป"
+    regenerate_link_warning_provider: "คำเตือน: ลิงก์ที่มีอยู่ไปยังผู้ให้บริการนี้บนเว็บจะใช้ไม่ได้อีกต่อไป"
+    change: "เปลี่ยน"
     turnstile_keys_hint_after: "โดยสมัครบัญชีแล้วไปที่ Application Security > Turnstile"
     failed: "ล้มเหลว"
     import_failures: "รายการที่ล้มเหลว"

@@ -209,8 +209,13 @@ App.Pages.Booking = (function () {
                 })
                 .fadeIn();
         } else {
-            // Check if a specific service was selected (via URL parameter).
-            const selectedServiceId = App.Utils.Url.queryParam('service');
+            // Check if a specific service was selected (via URL parameter). The parameter
+            // carries the unguessable booking slug, never the database id.
+            const selectedServiceSlug = App.Utils.Url.queryParam('service');
+            const selectedService = (vars('available_services') || []).find(
+                (service) => service.booking_slug && service.booking_slug === selectedServiceSlug,
+            );
+            const selectedServiceId = selectedService ? String(selectedService.id) : null;
 
             if (selectedServiceId && $selectService.find('option[value="' + selectedServiceId + '"]').length > 0) {
                 $selectService.val(selectedServiceId);
@@ -218,17 +223,17 @@ App.Pages.Booking = (function () {
 
             $selectService.trigger('change'); // Load the available hours.
 
-            // Check if a specific provider was selected.
-            const selectedProviderId = App.Utils.Url.queryParam('provider');
+            // Check if a specific provider was selected (also by booking slug).
+            const selectedProviderSlug = App.Utils.Url.queryParam('provider');
+            const selectedProvider = (vars('available_providers') || []).find(
+                (provider) => provider.booking_slug && provider.booking_slug === selectedProviderSlug,
+            );
+            const selectedProviderId = selectedProvider ? String(selectedProvider.id) : null;
 
             if (selectedProviderId && $selectProvider.find('option[value="' + selectedProviderId + '"]').length === 0) {
                 // Select a service of this provider in order to make the provider available in the select box.
-                for (const index in vars('available_providers')) {
-                    const provider = vars('available_providers')[index];
-
-                    if (Number(provider.id) === Number(selectedProviderId) && provider.services.length > 0) {
-                        $selectService.val(provider.services[0]).trigger('change');
-                    }
+                if (selectedProvider.services.length > 0) {
+                    $selectService.val(selectedProvider.services[0]).trigger('change');
                 }
             }
 

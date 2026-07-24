@@ -1,6 +1,10 @@
 ---
 ru:
   ea:
+    regenerate_link: "Создать ссылку заново"
+    regenerate_link_warning_service: "Внимание: существующие ссылки на эту услугу в интернете перестанут работать"
+    regenerate_link_warning_provider: "Внимание: существующие ссылки на этого специалиста в интернете перестанут работать"
+    change: "Изменить"
     turnstile_keys_hint_after: "зарегистрировав аккаунт и перейдя в Application Security > Turnstile"
     failed: "с ошибкой"
     import_failures: "Записи с ошибками"

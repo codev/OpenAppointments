@@ -1,6 +1,10 @@
 ---
 el:
   ea:
+    regenerate_link: "Αναδημιουργία συνδέσμου"
+    regenerate_link_warning_service: "Προειδοποίηση: Οι υπάρχοντες σύνδεσμοι προς αυτή την υπηρεσία στο διαδίκτυο θα πάψουν να ισχύουν"
+    regenerate_link_warning_provider: "Προειδοποίηση: Οι υπάρχοντες σύνδεσμοι προς αυτόν τον πάροχο στο διαδίκτυο θα πάψουν να ισχύουν"
+    change: "Αλλαγή"
     turnstile_keys_hint_after: "δημιουργώντας λογαριασμό και μεταβαίνοντας στο Application Security > Turnstile"
     failed: "απέτυχαν"
     import_failures: "Αποτυχημένες εγγραφές"

@@ -1,6 +1,10 @@
 ---
 de:
   ea:
+    regenerate_link: "Link neu erzeugen"
+    regenerate_link_warning_service: "Warnung: Bestehende Links zu dieser Dienstleistung im Web werden ungültig"
+    regenerate_link_warning_provider: "Warnung: Bestehende Links zu diesem Anbieter im Web werden ungültig"
+    change: "Ändern"
     turnstile_keys_hint_after: "indem Sie ein Konto anlegen und dann zu Application Security > Turnstile gehen"
     failed: "fehlgeschlagen"
     import_failures: "Fehlgeschlagene Datensätze"

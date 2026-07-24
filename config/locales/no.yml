@@ -1,6 +1,10 @@
 ---
 'no':
   ea:
+    regenerate_link: "Regenerer lenke"
+    regenerate_link_warning_service: "Advarsel: Eksisterende lenker til denne tjenesten på nettet blir ugyldige"
+    regenerate_link_warning_provider: "Advarsel: Eksisterende lenker til denne tilbyderen på nettet blir ugyldige"
+    change: "Endre"
     turnstile_keys_hint_after: "ved å registrere en konto og deretter gå til Application Security > Turnstile"
     failed: "mislyktes"
     import_failures: "Mislykkede poster"

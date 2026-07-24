@@ -1,6 +1,10 @@
 ---
 sk:
   ea:
+    regenerate_link: "Pregenerovať odkaz"
+    regenerate_link_warning_service: "Upozornenie: Existujúce odkazy na túto službu na webe prestanú platiť"
+    regenerate_link_warning_provider: "Upozornenie: Existujúce odkazy na tohto poskytovateľa na webe prestanú platiť"
+    change: "Zmeniť"
     turnstile_keys_hint_after: "registráciou účtu a prechodom do Application Security > Turnstile"
     failed: "zlyhalo"
     import_failures: "Neúspešné záznamy"

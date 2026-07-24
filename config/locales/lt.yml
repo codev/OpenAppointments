@@ -1,6 +1,10 @@
 ---
 lt:
   ea:
+    regenerate_link: "Iš naujo sugeneruoti nuorodą"
+    regenerate_link_warning_service: "Įspėjimas: esamos nuorodos į šią paslaugą internete nustos veikti"
+    regenerate_link_warning_provider: "Įspėjimas: esamos nuorodos į šį teikėją internete nustos veikti"
+    change: "Keisti"
     turnstile_keys_hint_after: "užsiregistravę paskyrą ir nuėję į Application Security > Turnstile"
     failed: "nepavyko"
     import_failures: "Nepavykę įrašai"

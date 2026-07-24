@@ -1,6 +1,10 @@
 ---
 nl:
   ea:
+    regenerate_link: "Link opnieuw genereren"
+    regenerate_link_warning_service: "Waarschuwing: bestaande links naar deze dienst op het web worden ongeldig"
+    regenerate_link_warning_provider: "Waarschuwing: bestaande links naar deze aanbieder op het web worden ongeldig"
+    change: "Wijzigen"
     turnstile_keys_hint_after: "door een account aan te maken en dan naar Application Security > Turnstile te gaan"
     failed: "mislukt"
     import_failures: "Mislukte records"

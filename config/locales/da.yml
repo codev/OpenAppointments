@@ -1,6 +1,10 @@
 ---
 da:
   ea:
+    regenerate_link: "Regenerer link"
+    regenerate_link_warning_service: "Advarsel: Eksisterende links til denne ydelse på nettet vil blive ugyldige"
+    regenerate_link_warning_provider: "Advarsel: Eksisterende links til denne udbyder på nettet vil blive ugyldige"
+    change: "Skift"
     turnstile_keys_hint_after: "ved at oprette en konto og derefter gå til Application Security > Turnstile"
     failed: "fejlede"
     import_failures: "Fejlede poster"

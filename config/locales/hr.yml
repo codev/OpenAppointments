@@ -1,6 +1,10 @@
 ---
 hr:
   ea:
+    regenerate_link: "Regeneriraj poveznicu"
+    regenerate_link_warning_service: "Upozorenje: Postojeće poveznice na ovu uslugu na webu prestat će vrijediti"
+    regenerate_link_warning_provider: "Upozorenje: Postojeće poveznice na ovog pružatelja na webu prestat će vrijediti"
+    change: "Promijeni"
     turnstile_keys_hint_after: "registracijom računa pa odlaskom na Application Security > Turnstile"
     failed: "neuspješno"
     import_failures: "Neuspješni zapisi"
