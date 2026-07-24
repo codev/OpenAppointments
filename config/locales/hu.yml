@@ -245,7 +245,7 @@ hu:
     support_group: Támogatás
     project_issues: Project Témák
     license: Licensz
-    about_app_license: 'OpenAppointments a GPLv3 licensz alatt áll. Az OpenAppointments forráskódját bármilyen módon használva beleegyezel az alábbi linken található felhasználási feltételekbe:'
+    about_app_license: "Az OpenAppointments az AGPL-3.0 licenc alatt all. Az OpenAppointments kodjanak barmilyen modon torteno hasznalataval elfogadja az alabbi cimen leirt felteteleket:"
     logout_success: Sikeresen kijelentkeztél! Kattints az alábbi gombok egyikére, hogy egy másik oldalra navigálj.
     book_appointment_title: Időpont foglalás
     backend_section: Felhasználói felület

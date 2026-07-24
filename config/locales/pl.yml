@@ -245,7 +245,7 @@ pl:
     support_group: Grupa Wsparcia
     project_issues: Błędy projektu
     license: Licencja
-    about_app_license: 'OpenAppointments posiada licencję GPLv3. Używaj zgodnie z warunkami opisanymi tu:'
+    about_app_license: "OpenAppointments jest licencjonowany na licencji AGPL-3.0. Korzystajac z kodu OpenAppointments w jakikolwiek sposob, zgadzasz sie na warunki opisane pod nastepujacym adresem:"
     logout_success: Wylogowałeś się Naciśnij przycisk aby nawigować do innej strony.
     book_appointment_title: Zamów wizytę
     backend_section: Sekcja funkcjonalna
@@ -326,7 +326,7 @@ pl:
     select_sync_calendar_prompt: Wybierz kalendarz do synchronizacji wizyt. Brak wyboru spowoduje użycie kalendarza domyślnego.
     sync_calendar_selected: Kalendarz Google wybrany pomyślnie.
     oops_something_went_wrong: Ojj! Coś poszło nie tak.
-    ea_update_success: Easy!Appointment zaktualizowany pomyślnie
+    ea_update_success: OpenAppointments zaktualizowany pomyślnie
     require_captcha: Wymagaj CAPTCHA
     require_captcha_hint: Po włączeniu klienci będą musieli wpisać losowo wygenerowany ciąg CAPTCHA przed rezerwacją/aktualizacją wizyty.
     captcha_is_wrong: Weryfikacja CAPTCHA nie powiodła się, spróbuj ponownie.

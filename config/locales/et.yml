@@ -245,7 +245,7 @@ et:
     support_group: Tugigrupp
     project_issues: Projekti bugid
     license: Litsents
-    about_app_license: 'OpenAppointments on GPLv3 litsentsiga. Kasutades enda töös OpenAppointmentsi nõustud lingis olevate litsentsitingimustega:'
+    about_app_license: "OpenAppointments on litsentseeritud AGPL-3.0 litsentsi alusel. Kasutades OpenAppointments koodi mis tahes viisil, noustute jargmisel aadressil kirjeldatud tingimustega:"
     logout_success: Välja logitud! Vajuta mõnda järgnevatest nuppudest, et siirduda järgmisele lehele.
     book_appointment_title: Tee broneering
     backend_section: Haldusrarakendus

@@ -245,7 +245,7 @@ uk:
     support_group: Група підтримки
     project_issues: Проблеми проекту
     license: Ліцензія
-    about_app_license: 'OpenAppointments ліцензовано за ліцензією GPLv3. Використовуючи код OpenAppointments будь-яким чином, ви погоджуєтеся з умовами, описаними за цим посиланням:'
+    about_app_license: "OpenAppointments розповсюджується за ліцензією AGPL-3.0. Використовуючи код OpenAppointments у будь-який спосіб, ви погоджуєтеся з умовами, описаними за наступним посиланням:"
     logout_success: Ви успішно вийшли з системи! Натисніть одну з наступних кнопок, щоб перейти на іншу сторінку.
     book_appointment_title: Запис на прийом
     backend_section: Розділ адміністрування

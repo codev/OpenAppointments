@@ -245,7 +245,7 @@ de:
     support_group: Gruppenunterstützung
     project_issues: Projektthemen
     license: Nutzungslizenz
-    about_app_license: 'Easy!Appointment ist unter der GPLv3-Lizenz lizensiert. Bei jeglicher Nutzung des Codes für OpenAppointments stimmen Sie den Nutzungsbedingungen zu wie sie auf folgender Seite aufgeführt sind:'
+    about_app_license: "OpenAppointments ist unter der AGPL-3.0-Lizenz lizenziert. Durch jegliche Nutzung des Codes von OpenAppointments stimmen Sie den Bedingungen zu, die unter folgender URL beschrieben sind:"
     logout_success: Sie haben sich erfolgreich abgemeldet! Klicken sie auf einen der folgende Tasten, um auf eine andere Seite zu gelangen.
     book_appointment_title: Terminbuchung
     backend_section: Backend-Sektion

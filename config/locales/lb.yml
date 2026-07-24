@@ -245,7 +245,7 @@ lb:
     support_group: Gruppenënnerstëtzung
     project_issues: Projektthemen
     license: Notzungslizenz
-    about_app_license: 'Easy!Appointment ass ënnert der GPLv3-Lizenz lizenséiert. Duerch d''Benotze vum Code vun OpenAppointments op iergendeng Aart a Weis stëmmt Der den Lizenzbedingungen, wéi se ënnert folgender URL opgefouert sinn, zou:'
+    about_app_license: "OpenAppointments ass ennert der AGPL-3.0-Lizenz lizenseiert. Duerch d'Benotze vum Code vun OpenAppointments op iergendeng Maneier stemmt Dir de Konditiounen zou, dei ennert folgender URL beschriwwe sinn:"
     logout_success: Dir hutt Iech erfollegräich ofgemellt! Klickt op folgend Tasten fir op eng aner Säit ze kommen.
     book_appointment_title: Termäinbuchung
     backend_section: Backend Sektioun

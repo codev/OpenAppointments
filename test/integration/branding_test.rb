@@ -35,8 +35,17 @@ class BrandingTest < ActionDispatch::IntegrationTest
   test "no locale contains the old brand name" do
     I18n.available_locales.each do |locale|
       payload = I18n.t("ea", locale: locale, default: {}).values.grep(String).join(" ")
-      assert_no_match(/easy!appointments/i, payload, "old brand present in locale #{locale}")
+      assert_no_match(/easy ?! ?appoin|easy afspraken/i, payload, "old brand present in locale #{locale}")
     end
+  end
+
+  test "about page shows the manifest version and the AGPL license" do
+    post "/login/validate", params: { username: "administrator", password: "administrator1" }
+    get "/about"
+    manifest_version = JSON.parse(Rails.root.join("CloudronManifest.json").read)["version"]
+    assert_equal manifest_version, EaHelper::VERSION
+    assert_match manifest_version, response.body
+    assert_select "#about a[href='https://www.gnu.org/licenses/agpl-3.0.en.html']", text: /AGPL-3\.0/
   end
 
   test "built-in mail templates carry no old brand" do

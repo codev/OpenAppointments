@@ -245,7 +245,7 @@ sv:
     support_group: Support grupp
     project_issues: Felrapporter
     license: Licens
-    about_app_license: OpenAppointments är licensierat under GPLv3. Genom att använda koden på något sätt godkänner du villkoren på följande länk.
+    about_app_license: "OpenAppointments ar licensierad under AGPL-3.0-licensen. Genom att anvanda OpenAppointments kod pa nagot satt godkanner du villkoren som beskrivs pa foljande url:"
     logout_success: Du är nu utloggad. Välj ett alternativ nedan för att gå vidare.
     book_appointment_title: Boka tid
     backend_section: Administration

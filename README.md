@@ -44,7 +44,7 @@ New features since the fork from Easy!Appointments 1.6.0 - many of these are opi
 
 ### Name field replaces first name and last name
 
-There is now a single `Name` field instead of First/Last names. The REST API is still EA compatible: firstName carries the full name and lastName is accepted and merged when passed on write.
+There is now a single `Name` field instead of First/Last names. The REST API is still EA compatible: firstName carries the full name and lastName is accepted and merged when passed on write. `name` is also emitted and accepted as an alias for firstName and takes precedence when both are sent.
 
 ### Service and provider divided into two pages
 
@@ -81,13 +81,13 @@ admin with the default password.
 
 ### Themes
 
-Seven themes replace the stock set. Themes are structural: the company,
-secondary and background colours from General Settings flow into every theme as
-CSS variables, and each theme offers two one-click suggested palettes. All
-themes use system font stacks only (no remote fonts). General Settings shows
-live WCAG AA contrast warnings with fix suggestions; every suggested palette
-passes AA, guarded by test. On Coder and Fruit the background colour paints the
-top bar only and the page stays white.
+Seven themes replace the stock set, configured on the Settings > Theme page.
+Themes are structural: the company, secondary and background colours flow into
+every theme as CSS variables, and each theme offers two one-click suggested
+palettes. All themes use system font stacks only (no remote fonts). The Theme
+page shows live WCAG AA contrast warnings with fix suggestions; every suggested
+palette passes AA, guarded by test. On Coder and Fruit the background colour
+paints the top bar only and the page stays white.
 
 - Nice (default): refined modern forms with quiet fills, an accent bottom edge
   on inputs and soft depth. Friendly and neutral; works with almost any colours.

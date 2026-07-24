@@ -245,7 +245,7 @@
     support_group: Support Gruppe
     project_issues: Prosjektproblemer
     license: Lisens
-    about_app_license: 'OpenAppointments er lisensiert under GPLv3-lisensen. Ved å bruke koden til OpenAppointments på noen måte godtar du vilkårene beskrevet i følgende URL:'
+    about_app_license: "OpenAppointments er lisensiert under AGPL-3.0-lisensen. Ved aa bruke koden til OpenAppointments paa noen maate godtar du vilkaarene beskrevet paa foelgende url:"
     logout_success: Du har blitt logget ut! Klikk på en av de følgende knappene for å navigere til en annen side.
     book_appointment_title: Bestill tid
     backend_section: Backend Seksjon

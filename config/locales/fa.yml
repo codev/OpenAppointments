@@ -245,7 +245,7 @@ fa:
     support_group: گروه پشتیبانی
     project_issues: مسائل پروژه
     license: مجوز
-    about_app_license: 'OpenAppointments تحت مجوز GPLv3 منتشر شده است. با استفاده از کد این نرم افزار به هر شکل، شما با قوانین موجود در لینک زیر موافقت می کنید '
+    about_app_license: "OpenAppointments تحت مجوز AGPL-3.0 منتشر شده است. با استفاده از کد OpenAppointments به هر شکلی، با شرایط توضیح داده شده در پیوند زیر موافقت می‌کنید:"
     logout_success: شما با موفقیت از سیستم خارج شدید! برای رفتن به صفحه دیگری ، روی یکی از دکمه های زیر کلیک کنید.
     book_appointment_title: ثبت قرار ملاقات
     backend_section: بخش مدیریت

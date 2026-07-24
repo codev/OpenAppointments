@@ -245,7 +245,7 @@ zh-tw:
     support_group: 支援群組
     project_issues: 專案問題
     license: 授權
-    about_app_license: OpenAppointments 授權於 GPLv3 許可證下。以任何方式使用 OpenAppointments 的程式碼，即表示您同意以下網址中描述的條款：
+    about_app_license: "OpenAppointments 基於 AGPL-3.0 授權條款授權。以任何方式使用 OpenAppointments 的程式碼即表示您同意以下連結中所述的條款:"
     logout_success: 您已成功登出！點選以下按鈕之一以導航到不同的頁面。
     book_appointment_title: 預約
     backend_section: 後臺區域

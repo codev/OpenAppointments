@@ -245,7 +245,7 @@ sq:
     support_group: Grupi i Mbështetjes
     project_issues: Çështjet e Projektit
     license: Licenca
-    about_app_license: 'OpenAppointments është i licencuar nën licencën GPLv3. Duke përdorur kodin e OpenAppointments në çfarëdo mënyre, ju po pranoni kushtet e përshkruara në URL-në e mëposhtme:'
+    about_app_license: "OpenAppointments eshte i licencuar nen licencen AGPL-3.0. Duke perdorur kodin e OpenAppointments ne cfaredo menyre, ju pranoni kushtet e pershkruara ne url-ne e meposhtme:"
     logout_success: Ju u keni dalë me sukses! Klikoni në një nga butonat e mëposhtëm për të lundruar në një faqe tjetër.
     book_appointment_title: Rezervo Takim
     backend_section: Seksioni i Backend

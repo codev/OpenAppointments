@@ -54,6 +54,36 @@ module Api
         assert_response :not_found
       end
 
+      test "name is emitted as an alias for firstName" do
+        api_get "/api/v1/customers/#{users(:jx).id}"
+        assert_equal "JX", json["name"]
+        assert_equal json["firstName"], json["name"]
+      end
+
+      test "sort accepts name" do
+        User.customers.create!(name: "Aaron Zed", email: "aaron@example.org",
+                               role: Role.find_by(slug: "customer"))
+        api_get "/api/v1/customers", sort: "name"
+        names = json.map { |c| c["name"] }
+        assert_equal names.sort, names
+      end
+
+      test "store accepts name instead of firstName" do
+        assert_difference "User.customers.count", 1 do
+          api_post "/api/v1/customers", { name: "Solo Name", email: "solo@example.org" }
+        end
+        assert_response :created
+        assert_equal "Solo Name", json["name"]
+        assert_equal "Solo Name", json["firstName"]
+      end
+
+      test "name wins over firstName and lastName on write" do
+        api_put "/api/v1/customers/#{users(:jx).id}",
+                { name: "Alias Wins", firstName: "First", lastName: "Last" }
+        assert_response :success
+        assert_equal "Alias Wins", users(:jx).reload.name
+      end
+
       test "store creates a customer and returns 201" do
         assert_difference "User.customers.count", 1 do
           api_post "/api/v1/customers", { firstName: "New", lastName: "Person", email: "np@example.org",

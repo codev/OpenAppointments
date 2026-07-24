@@ -3,7 +3,7 @@ require "test_helper"
 class SettingsPagesTest < ActionDispatch::IntegrationTest
   # Pages gated on system_settings (admin only in the default roles).
   SYSTEM_SETTINGS_PAGES = %w[
-    general_settings business_settings booking_settings legal_settings api_settings
+    general_settings business_settings booking_settings theme_settings legal_settings api_settings
     altcha_settings google_calendar_settings google_analytics_settings
     matomo_analytics_settings jitsi_settings ldap_settings integrations
   ].freeze

@@ -31,7 +31,9 @@ module Api
 
       def persist!(record)
         settings = (@decoded["settings"] || {}).dup
-        validate_user_payload!(@decoded, settings, role_slug)
+        # The id comes from the URL, not the body: merge it so updates are not
+        # treated as inserts (which would demand a password on every PUT).
+        validate_user_payload!(@decoded.merge("id" => record.id), settings, role_slug)
         validate_unique_role_email!(base_scope, @decoded.merge("id" => record.id)) if @decoded.key?("email")
 
         ActiveRecord::Base.transaction do

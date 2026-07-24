@@ -245,7 +245,7 @@ th:
     support_group: กลุ่มสนับสนุน
     project_issues: ปัญหาที่เกิดขึ้น
     license: ใบอนุญาต
-    about_app_license: 'OpenAppointments ได้รับอนุญาตภายใต้ใบอนุญาต GPLv3 โดยใช้รหัส OpenAppointments ในทางใดทางหนึ่งถือว่าคุณยอมรับเงื่อนไขที่อธิบายไว้ใน URL ต่อไปนี้:'
+    about_app_license: "OpenAppointments อยู่ภายใต้สัญญาอนุญาต AGPL-3.0 การใช้โค้ดของ OpenAppointments ไม่ว่าในทางใดถือว่าคุณยอมรับเงื่อนไขที่อธิบายไว้ใน url ต่อไปนี้:"
     logout_success: คุณออกจากระบบสำเร็จแล้ว! คลิกที่ปุ่มใดปุ่มหนึ่งต่อไปนี้เพื่อไปยังหน้าอื่น
     book_appointment_title: จองการนัดหมาย
     backend_section: ส่วนแบ็กเอนด์
@@ -451,7 +451,7 @@ th:
     matomo_analytics: Matomo Analytics
     matomo_analytics_info: Matomo Analytics ช่วยให้คุณสามารถเพิ่มโค้ดติดตามและมาร์กอัป HTML ลงในหน้าสาธารณะได้โดยอัตโนมัติ และติดตามเซสชันการจองสาธารณะทั้งหมด
     api: เอพีไอ
-    api_info: API ช่วยให้คุณสามารถโต้ตอบกับข้อมูล Easy! Appointments ทั้งหมดผ่านโปรโตคอล HTTP และจุดสิ้นสุด API ที่มีอยู่ และสร้างการผสานรวมของคุณเอง
+    api_info: API ช่วยให้คุณสามารถโต้ตอบกับข้อมูล OpenAppointments ทั้งหมดผ่านโปรโตคอล HTTP และจุดสิ้นสุด API ที่มีอยู่ และสร้างการผสานรวมของคุณเอง
     google_analytics_code: รหัส Google Analytics
     matomo_analytics_url: URL การวิเคราะห์ Matomo
     future_booking_limit: วงเงินการจองในอนาคต

@@ -245,7 +245,7 @@ sk:
     support_group: Podpora
     project_issues: Problémy a riešenia
     license: Licencia
-    about_app_license: 'Manipulácia ako aj šírenie tohoto systému je zakázaná! Viac na:'
+    about_app_license: "OpenAppointments je licencovany pod licenciou AGPL-3.0. Pouzivanim kodu OpenAppointments akymkolvek sposobom suhlasite s podmienkami popisanymi na nasledujucej adrese:"
     logout_success: Boli ste úspešne odhlásený! Kliknite na jedno tlačidlo nižšie, podľa Vášho výberu.
     book_appointment_title: Rezervácie
     backend_section: Administrácia

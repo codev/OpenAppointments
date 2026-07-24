@@ -245,7 +245,7 @@ fi:
     support_group: Tukiryhmä
     project_issues: Projektin asialista
     license: Lisenssi
-    about_app_license: 'OpenAppointments on GPLv3 lisensoitu. Käyttämällä OpenAppointmentsia palvelutuotannossa tai muilla lisenssissä mainituilla tavoilla suostut linkissä oleviin lisenssiehtoihin:'
+    about_app_license: "OpenAppointments on lisensoitu AGPL-3.0-lisenssilla. Kayttamalla OpenAppointmentsin koodia millaan tavalla hyvaksyt seuraavassa osoitteessa kuvatut ehdot:"
     logout_success: Sinut on kirjattu ulos! Paina jotakin seuraavista painikkeista siirtyäksesi toiselle sivulle.
     book_appointment_title: Tee varaus
     backend_section: Taustajärjestelmä

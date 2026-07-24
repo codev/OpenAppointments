@@ -245,7 +245,7 @@ hr:
     support_group: Grupa za podršku
     project_issues: Problemi projekta
     license: Licenca
-    about_app_license: 'OpenAppointments je licenciran pod GPLv3 licencom. Korištenjem koda OpenAppointments na bilo koji način pristajete na uvjete opisane na sljedećem URL-u:'
+    about_app_license: "OpenAppointments je licenciran pod AGPL-3.0 licencom. Koristenjem koda OpenAppointments na bilo koji nacin prihvacate uvjete opisane na sljedecoj poveznici:"
     logout_success: Uspješno ste se odjavili! Kliknite na jedan od sljedećih gumba da biste otišli na drugu stranicu.
     book_appointment_title: Rezerviraj sastanak
     backend_section: Backend odjeljak
