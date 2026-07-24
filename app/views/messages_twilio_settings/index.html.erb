@@ -1,0 +1,10 @@
+<%= render "shared/messages_sms_settings",
+           title: "Twilio",
+           prefix: "twilio",
+           fields: [
+             { name: "messages_twilio_account_sid", label: lang("messages_twilio_account_sid") },
+             { name: "messages_twilio_auth_token", label: lang("messages_twilio_auth_token"), type: "password" },
+             { name: "messages_twilio_from", label: lang("messages_from_number") }
+           ],
+           console_url: "https://console.twilio.com/",
+           console_label: "Twilio Console" %>

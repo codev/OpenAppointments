@@ -68,10 +68,21 @@ Rails.application.routes.draw do
   # Settings pages
   %w[general_settings business_settings booking_settings legal_settings api_settings
      altcha_settings embed_settings google_calendar_settings google_analytics_settings
-     matomo_analytics_settings jitsi_settings ldap_settings].each do |resource|
+     matomo_analytics_settings jitsi_settings ldap_settings
+     messages_settings messages_email_settings messages_twilio_settings
+     messages_plivo_settings messages_textanywhere_settings].each do |resource|
     get resource => "#{resource}#index"
     post "#{resource}/save" => "#{resource}#save"
   end
+
+  # Messages panel
+  get "messages" => redirect("/messages_settings")
+  get "messages_providers" => "messages_providers#index"
+  get "messages_notifications" => "messages_notifications#index"
+  post "messages_notifications/save" => "messages_notifications#save"
+  post "messages_notifications/destroy" => "messages_notifications#destroy"
+  get "messages_logs" => "messages_logs#index"
+  get "unknown_inbox" => "unknown_inbox#index"
   post "business_settings/apply_global_working_plan" => "business_settings#apply_global_working_plan"
   post "altcha_settings/generate_key" => "altcha_settings#generate_key"
   post "ldap_settings/search" => "ldap_settings#search"
