@@ -1,0 +1,92 @@
+<%# Theme and brand colour settings, split out of General Settings. %>
+<div id="theme-settings-page" class="container backend-page py-3">
+    <div id="theme-settings">
+        <div class="row">
+            <div class="col-sm-3">
+                <%= render "shared/settings_nav" %>
+            </div>
+            <div class="col-sm-9">
+                <form>
+                    <fieldset>
+                        <div class="d-flex justify-content-between align-items-center border-bottom mb-4 py-2">
+                            <h4 class="mb-0 fw-light">
+                                <%= lang('theme') %>
+                            </h4>
+
+                            <% if can?(:edit, :system_settings) %>
+                                <button type="button" id="save-settings" class="btn btn-primary">
+                                    <i class="fas fa-check-square me-2"></i>
+                                    <%= lang('save') %>
+                                </button>
+                            <% end %>
+                        </div>
+
+                        <div class="row mb-5">
+                            <div class="col-12">
+                                <div class="mb-3">
+                                    <label class="form-label" for="theme">
+                                        <%= lang('theme') %>
+                                    </label>
+
+                                    <select id="theme" data-field="theme" class="form-select">
+                                        <% vars(:available_themes).each do |available_theme| %>
+                                            <option value="<%= available_theme %>">
+                                                <%= available_theme.capitalize %>
+                                            </option>
+                                        <% end %>
+                                    </select>
+
+                                    <div class="my-2 d-flex gap-2">
+                                        <button type="button" class="btn btn-outline-secondary btn-sm apply-suggested-colors"
+                                                data-palette="0">
+                                            <i class="fas fa-fill-drip me-2"></i>
+                                            <%= lang('apply_suggested_colors') %> 1
+                                        </button>
+                                        <button type="button" class="btn btn-outline-secondary btn-sm apply-suggested-colors"
+                                                data-palette="1">
+                                            <i class="fas fa-fill-drip me-2"></i>
+                                            <%= lang('apply_suggested_colors') %> 2
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <div id="color-accessibility" class="mb-3" aria-live="polite"></div>
+
+                                <div class="mb-3">
+                                    <label class="form-label" for="company-color">
+                                        <%= lang('company_color') %>
+                                    </label>
+
+                                    <input type="color" id="company-color" data-field="company_color"
+                                           class="form-control">
+                                </div>
+
+                                <div class="mb-3">
+                                    <label class="form-label" for="company-secondary-color">
+                                        <%= lang('secondary_color') %>
+                                    </label>
+
+                                    <input type="color" id="company-secondary-color"
+                                           data-field="company_secondary_color" class="form-control">
+                                </div>
+
+                                <div class="mb-3">
+                                    <label class="form-label" for="company-background-color">
+                                        <%= lang('background_color') %>
+                                    </label>
+
+                                    <input type="color" id="company-background-color"
+                                           data-field="company_background_color" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<% content_for :scripts do %>
+    <%= ea_js "utils/contrast", "http/theme_settings_http_client", "pages/theme_settings" %>
+<% end %>

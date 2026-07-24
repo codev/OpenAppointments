@@ -81,13 +81,13 @@ admin with the default password.
 
 ### Themes
 
-Seven themes replace the stock set. Themes are structural: the company,
-secondary and background colours from General Settings flow into every theme as
-CSS variables, and each theme offers two one-click suggested palettes. All
-themes use system font stacks only (no remote fonts). General Settings shows
-live WCAG AA contrast warnings with fix suggestions; every suggested palette
-passes AA, guarded by test. On Coder and Fruit the background colour paints the
-top bar only and the page stays white.
+Seven themes replace the stock set, configured on the Settings > Theme page.
+Themes are structural: the company, secondary and background colours flow into
+every theme as CSS variables, and each theme offers two one-click suggested
+palettes. All themes use system font stacks only (no remote fonts). The Theme
+page shows live WCAG AA contrast warnings with fix suggestions; every suggested
+palette passes AA, guarded by test. On Coder and Fruit the background colour
+paints the top bar only and the page stays white.
 
 - Nice (default): refined modern forms with quiet fills, an accent bottom edge
   on inputs and soft depth. Friendly and neutral; works with almost any colours.

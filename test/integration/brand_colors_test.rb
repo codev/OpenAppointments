@@ -25,31 +25,61 @@ class BrandColorsTest < ActionDispatch::IntegrationTest
     assert_match "--oa-background:", response.body
   end
 
-  test "general settings page offers and saves the two new colours" do
+  test "theme settings page offers and saves the theme and colours" do
     post "/login/validate", params: { username: "administrator", password: "administrator1" }
-    get "/general_settings"
+    get "/theme_settings"
+    assert_select "select[data-field=theme]"
+    assert_select "input[data-field=company_color]"
     assert_select "input[data-field=company_secondary_color]"
     assert_select "input[data-field=company_background_color]"
+    # No reset button and no hint line under the company colour.
+    assert_select "#reset-company-color", false
+    assert_select "#theme-settings form .form-text", count: 0
 
-    post "/general_settings/save", params: {
-      general_settings: [
+    post "/theme_settings/save", params: {
+      theme_settings: [
+        { name: "theme", value: "coder" },
         { name: "company_secondary_color", value: "#123456" },
         { name: "company_background_color", value: "#fefefe" }
       ]
     }
     assert_response :success
+    assert_equal "coder", Setting.get("theme")
     assert_equal "#123456", Setting.get("company_secondary_color")
     assert_equal "#fefefe", Setting.get("company_background_color")
   end
 
-  test "the settings page ships the accessibility panel and suggestions" do
+  test "the theme page ships the accessibility panel and suggestions" do
     post "/login/validate", params: { username: "administrator", password: "administrator1" }
-    get "/general_settings"
+    get "/theme_settings"
     assert_select "#color-accessibility"
     assert_select "button.apply-suggested-colors", 2
     assert_match "theme_suggestions", response.body
-    # Theme and colours come before the company fields.
-    assert response.body.index('id="theme"') < response.body.index('id="company-name"')
+  end
+
+  test "the settings nav lists Theme between Booking Settings and Business Logic" do
+    post "/login/validate", params: { username: "administrator", password: "administrator1" }
+    get "/general_settings"
+    assert_select "#settings-nav a[href='/theme_settings']"
+    booking = response.body.index('href="/booking_settings"')
+    theme = response.body.index('href="/theme_settings"')
+    business = response.body.index('href="/business_settings"')
+    assert booking < theme && theme < business, "Theme nav item is not between Booking Settings and Business Logic"
+  end
+
+  test "general settings no longer accepts the theme and colour settings" do
+    post "/login/validate", params: { username: "administrator", password: "administrator1" }
+    Setting.set("theme", "nice")
+    Setting.set("company_color", "#39824f")
+    post "/general_settings/save", params: {
+      general_settings: [
+        { name: "theme", value: "material" },
+        { name: "company_color", value: "#000001" }
+      ]
+    }
+    assert_response :success
+    assert_equal "nice", Setting.get("theme")
+    assert_equal "#39824f", Setting.get("company_color")
   end
 
   test "the colour labels exist in every locale" do
