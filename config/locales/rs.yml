@@ -58,7 +58,7 @@ rs:
     skipped: preskoceno
     no_file_selected: Nije izabran fajl.
     reset_database: Resetuj bazu podataka
-    reset_database_warning: Ovo trajno brise sve termine, klijente, pruzaoce, sekretare, usluge i kategorije. Administratorski nalozi i podesavanja ostaju. Nepovratno.
+    reset_database_warning: Ovo trajno brise sve termine, klijente, pruzaoce, asistente, usluge i kategorije. Administratorski nalozi i podesavanja ostaju. Nepovratno.
     reset_confirmation_hint: "Upišite I KNOW WHAT I AM DOING da omogućite dugme."
     reset_database_done: Baza podataka je resetovana.
     captcha_provider: Pružalac captche
@@ -196,7 +196,7 @@ rs:
     categories: Kategorije
     admins: Administratori
     providers: Izvršioci
-    secretaries: Asistenti
+    assistants: "Asistenti"
     mobile_number: Broj mobilnog telefona
     mobile: Мобилни
     state: Država
@@ -207,10 +207,10 @@ rs:
     passwords_mismatch: Lozinke se ne podudaraju!
     admin_saved: Admin je sačuvan!
     provider_saved: Izvršilac je sačuvan!
-    secretary_saved: Asistent je sačuvan!
+    assistant_saved: "Asistent uspešno sačuvan."
     admin_deleted: Admin je izbrisan!
     provider_deleted: Izvršilac je izbrisan!
-    secretary_deleted: Asistent je izbrisan!
+    assistant_deleted: "Asistent uspešno obrisan."
     service_saved: Usluga je sačuvana!
     service_category_saved: Kategorija usluga je sačuvana!
     service_deleted: Usluga je obrisana!
@@ -285,7 +285,7 @@ rs:
     delete_service: Obrišite uslugu
     delete_service_category: Obrišite kategoriju Usluga
     delete_provider: Obrišite izvršioca
-    delete_secretary: Obrišite asistenta
+    delete_assistant: "Obriši asistenta"
     delete_appointment: Obrišite posetu
     delete_unavailability: Obrišite nedostupan period
     delete: Obrišite
@@ -438,7 +438,7 @@ rs:
     what_kind_of_event: Kakav događaj želite da dodate?
     theme: Tema
     limit_customer_access: Ograniči Pristup Kupcima
-    limit_customer_access_hint: Ako je omogućeno, pružaoci usluga i sekretari će moći da pristupe samo kupcima sa kojima imaju zakazan sastanak.
+    limit_customer_access_hint: Ako je omogućeno, pružaoci usluga i asistenti će moći da pristupe samo kupcima sa kojima imaju zakazan sastanak.
     url: URL
     secret_token: Tajni Token
     verify_ssl: Verifikuj SSL
@@ -454,8 +454,8 @@ rs:
     service_category_delete: Brisanje Kategorije
     provider_save: Snimanje Pružaoca
     provider_delete: Brisanje Pružaoca
-    secretary_save: Snimanje Sekretara
-    secretary_delete: Brisanje Sekretara
+    assistant_save: "Čuvanje asistenta"
+    assistant_delete: "Brisanje asistenta"
     admin_save: Snimanje Administratora
     admin_delete: Brisanje Administratora
     options: Opcije
@@ -716,7 +716,7 @@ rs:
     notification_send_to: Send to
     notification_audience_customer: Customer
     notification_audience_provider: Provider
-    notification_audience_admins: Admins and secretaries
+    notification_audience_admins: "Administratori i asistenti"
     notification_no_providers: No providers are enabled. Enable one on the Providers page first.
     notification_short_text: Short Text (Email Subject or SMS)
     notification_long_text: Long Text (for providers that support it, e.g. Email Body)

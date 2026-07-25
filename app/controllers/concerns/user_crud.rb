@@ -1,5 +1,5 @@
-# Shared save/search logic for the provider/secretary/admin CRUD controllers,
-# mirroring EA's Providers/Secretaries/Admins_model save flows and validations.
+# Shared save/search logic for the provider/assistant/admin CRUD controllers,
+# mirroring EA's Providers/Assistants/Admins_model save flows and validations.
 module UserCrud
   extend ActiveSupport::Concern
 

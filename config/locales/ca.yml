@@ -58,7 +58,7 @@ ca:
     skipped: omesos
     no_file_selected: No s'ha seleccionat cap fitxer.
     reset_database: Restableix la base de dades
-    reset_database_warning: Això elimina permanentment totes les cites, clients, proveïdors, secretaris, serveis i categories. Els comptes d'administrador i la configuració es conserven. No es pot desfer.
+    reset_database_warning: Això elimina permanentment totes les cites, clients, proveïdors, assistents, serveis i categories. Els comptes d'administrador i la configuració es conserven. No es pot desfer.
     reset_confirmation_hint: "Escriviu I KNOW WHAT I AM DOING per activar el botó."
     reset_database_done: La base de dades s'ha restablert.
     captcha_provider: Proveïdor de captcha
@@ -155,7 +155,7 @@ ca:
     enable_appointment_sync_hint: Permet la sincronització de cites amb el compte de Google Calendar del proveïdor.
     manage_customers_hint: Gestiona els clients registrats i mostra el seu historial de reserves.
     manage_services_hint: Gestiona els serveis disponibles i les categories del sistema.
-    manage_users_hint: Gestiona els usuaris gestors (administradors, proveïdors, secretaris).
+    manage_users_hint: Gestiona els usuaris gestors (administradors, proveïdors, assistents).
     settings_hint: Configura les opcions del sistema i dels usuaris.
     log_out_hint: Surt del sistema.
     unavailability_periods_hint: Durant els períodes de no disponibilitat el proveïdor no acceptarà noves cites.
@@ -196,7 +196,7 @@ ca:
     categories: Categories
     admins: Administradors
     providers: Proveïdors
-    secretaries: Secretaris
+    assistants: "Assistents"
     mobile_number: Número de telefon mòbil
     mobile: Mòbil
     state: Província
@@ -207,10 +207,10 @@ ca:
     passwords_mismatch: Les contrasenyes no coincideixen.
     admin_saved: Admin desat correctament.
     provider_saved: Proveïdor desat correctament.
-    secretary_saved: Secretari desat correctament.
+    assistant_saved: "Assistent desat correctament."
     admin_deleted: Admin eliminat correctament.
     provider_deleted: Proveïdor eliminat correctament.
-    secretary_deleted: Secretari eliminat correctament.
+    assistant_deleted: "Assistent suprimit correctament."
     service_saved: Servei desat correctament.
     service_category_saved: Categoria de servei desada correctament.
     service_deleted: Servei eliminat correctament.
@@ -285,7 +285,7 @@ ca:
     delete_service: Elimina un servei
     delete_service_category: Elimina una categoria de servei
     delete_provider: Elimina un proveïdor
-    delete_secretary: Elimina un secretari
+    delete_assistant: "Suprimeix l'assistent"
     delete_appointment: Elimina una cita
     delete_unavailability: Elimina un període de no disponibilitat
     delete: Elimina
@@ -438,7 +438,7 @@ ca:
     what_kind_of_event: Quin tipus d'esdeveniment voleu afegir?
     theme: Tema
     limit_customer_access: Limita l'accés als clients
-    limit_customer_access_hint: Si s'activa, els proveïdors i els secretaris només tindran accés als clients amb els que tenen cites.
+    limit_customer_access_hint: Si s'activa, els proveïdors i els assistents només tindran accés als clients amb els que tenen cites.
     url: URL
     secret_token: Token secret
     verify_ssl: Verifica l'SSL
@@ -454,8 +454,8 @@ ca:
     service_category_delete: Elimina la categoria
     provider_save: Desa el proveïdor
     provider_delete: Elimina el proveïdor
-    secretary_save: Desa el secretari
-    secretary_delete: Elimina el secretari
+    assistant_save: "Desar assistent"
+    assistant_delete: "Suprimir assistent"
     admin_save: Desa l'administrador
     admin_delete: Elimina l'administrador
     options: Opcions
@@ -716,7 +716,7 @@ ca:
     notification_send_to: Send to
     notification_audience_customer: Customer
     notification_audience_provider: Provider
-    notification_audience_admins: Admins and secretaries
+    notification_audience_admins: "Administradors i assistents"
     notification_no_providers: No providers are enabled. Enable one on the Providers page first.
     notification_short_text: Short Text (Email Subject or SMS)
     notification_long_text: Long Text (for providers that support it, e.g. Email Body)

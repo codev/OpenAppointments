@@ -10,12 +10,12 @@
  * ---------------------------------------------------------------------------- */
 
 /**
- * Secretaries page.
+ * Assistants page.
  *
- * This module implements the functionality of the secretaries page.
+ * This module implements the functionality of the assistants page.
  */
-App.Pages.Secretaries = (function () {
-    const $secretaries = $('#secretaries');
+App.Pages.Assistants = (function () {
+    const $assistants = $('#assistants');
     const $id = $('#id');
     const $name = $('#name');
     const $email = $('#email');
@@ -33,7 +33,7 @@ App.Pages.Secretaries = (function () {
     const $password = $('#password');
     const $passwordConfirmation = $('#password-confirm');
     const $calendarView = $('#calendar-view');
-    const $filterSecretaries = $('#filter-secretaries');
+    const $filterAssistants = $('#filter-assistants');
     let filterResults = {};
     const filterLimit = 20;
 
@@ -51,22 +51,22 @@ App.Pages.Secretaries = (function () {
          *
          * @param {jQuery.Event} event
          */
-        $secretaries.on('blur', '#username', (event) => {
+        $assistants.on('blur', '#username', (event) => {
             const $input = $(event.target);
 
             if ($input.prop('readonly') === true || $input.val() === '') {
                 return;
             }
 
-            const secretaryId = $input.parents().eq(2).find('.record-id').val();
+            const assistantId = $input.parents().eq(2).find('.record-id').val();
 
-            if (!secretaryId) {
+            if (!assistantId) {
                 return;
             }
 
             const username = $input.val();
 
-            App.Http.Account.validateUsername(secretaryId, username).done((response) => {
+            App.Http.Account.validateUsername(assistantId, username).done((response) => {
                 if (response.is_valid === 'false') {
                     $input.addClass('is-invalid');
                     $input.attr('already-exists', 'true');
@@ -83,96 +83,96 @@ App.Pages.Secretaries = (function () {
         });
 
         /**
-         * Event: Filter Secretaries Form "Submit"
+         * Event: Filter Assistants Form "Submit"
          *
-         * Filter the secretary records with the given key string.
+         * Filter the assistant records with the given key string.
          *
          * @param {jQuery.Event} event
          */
-        $secretaries.on('submit', '#filter-secretaries form', (event) => {
+        $assistants.on('submit', '#filter-assistants form', (event) => {
             event.preventDefault();
-            const key = $('#filter-secretaries .key').val();
-            $filterSecretaries.find('.selected').removeClass('selected');
+            const key = $('#filter-assistants .key').val();
+            $filterAssistants.find('.selected').removeClass('selected');
             filterPage = 1;
-            App.Pages.Secretaries.resetForm();
-            App.Pages.Secretaries.filter(key);
+            App.Pages.Assistants.resetForm();
+            App.Pages.Assistants.filter(key);
         });
 
         /**
-         * Event: Filter Secretary Row "Click"
+         * Event: Filter Assistant Row "Click"
          *
-         * Display the selected secretary data to the user.
+         * Display the selected assistant data to the user.
          */
-        $secretaries.on('click', '.secretary-row', (event) => {
-            if ($('#filter-secretaries .filter').prop('disabled')) {
-                $('#filter-secretaries .results').css('color', '#AAA');
+        $assistants.on('click', '.assistant-row', (event) => {
+            if ($('#filter-assistants .filter').prop('disabled')) {
+                $('#filter-assistants .results').css('color', '#AAA');
                 return; // exit because we are currently on edit mode
             }
 
-            const secretaryId = $(event.currentTarget).attr('data-id');
+            const assistantId = $(event.currentTarget).attr('data-id');
 
-            const secretary = filterResults.find((filterResult) => Number(filterResult.id) === Number(secretaryId));
+            const assistant = filterResults.find((filterResult) => Number(filterResult.id) === Number(assistantId));
 
-            App.Pages.Secretaries.display(secretary);
+            App.Pages.Assistants.display(assistant);
 
-            $('#filter-secretaries .selected').removeClass('selected');
+            $('#filter-assistants .selected').removeClass('selected');
             $(event.currentTarget).addClass('selected');
-            $('#edit-secretary, #delete-secretary').prop('disabled', false);
+            $('#edit-assistant, #delete-assistant').prop('disabled', false);
 
             // Automatically enter edit mode
-            $('#secretaries-page').addClass('editing');
-            $filterSecretaries.find('button').prop('disabled', true);
-            $filterSecretaries.find('.results').css('color', '#AAA');
-            $secretaries.find('.add-edit-delete-group').hide();
-            $secretaries.find('.save-cancel-group').show();
-            $secretaries.find('#delete-secretary').show(); // Show delete button when editing
-            $secretaries.find('.record-details').find('input, select, textarea').prop('disabled', false);
-            $secretaries.find('.record-details .form-label span').prop('hidden', false);
+            $('#assistants-page').addClass('editing');
+            $filterAssistants.find('button').prop('disabled', true);
+            $filterAssistants.find('.results').css('color', '#AAA');
+            $assistants.find('.add-edit-delete-group').hide();
+            $assistants.find('.save-cancel-group').show();
+            $assistants.find('#delete-assistant').show(); // Show delete button when editing
+            $assistants.find('.record-details').find('input, select, textarea').prop('disabled', false);
+            $assistants.find('.record-details .form-label span').prop('hidden', false);
             $('#password, #password-confirm').removeClass('required');
-            $('#secretary-providers input:checkbox').prop('disabled', false);
+            $('#assistant-providers input:checkbox').prop('disabled', false);
             $('#select-all-providers, #select-none-providers').prop('disabled', false);
         });
 
         /**
-         * Event: Add New Secretary Button "Click"
+         * Event: Add New Assistant Button "Click"
          */
-        $secretaries.on('click', '#add-secretary', () => {
-            App.Pages.Secretaries.resetForm();
-            $('#secretaries-page').addClass('editing');
-            $filterSecretaries.find('button').prop('disabled', true);
-            $filterSecretaries.find('.results').css('color', '#AAA');
+        $assistants.on('click', '#add-assistant', () => {
+            App.Pages.Assistants.resetForm();
+            $('#assistants-page').addClass('editing');
+            $filterAssistants.find('button').prop('disabled', true);
+            $filterAssistants.find('.results').css('color', '#AAA');
 
-            $secretaries.find('.add-edit-delete-group').hide();
-            $secretaries.find('.save-cancel-group').show();
-            $secretaries.find('#delete-secretary').hide(); // Hide delete button when adding
-            $secretaries.find('.record-details').find('input, select, textarea').prop('disabled', false);
-            $secretaries.find('.record-details .form-label span').prop('hidden', false);
+            $assistants.find('.add-edit-delete-group').hide();
+            $assistants.find('.save-cancel-group').show();
+            $assistants.find('#delete-assistant').hide(); // Hide delete button when adding
+            $assistants.find('.record-details').find('input, select, textarea').prop('disabled', false);
+            $assistants.find('.record-details .form-label span').prop('hidden', false);
             $('#password, #password-confirm').addClass('required');
-            $('#secretary-providers input:checkbox').prop('disabled', false);
+            $('#assistant-providers input:checkbox').prop('disabled', false);
             $('#select-all-providers, #select-none-providers').prop('disabled', false);
         });
 
         /**
-         * Event: Edit Secretary Button "Click"
+         * Event: Edit Assistant Button "Click"
          */
-        $secretaries.on('click', '#edit-secretary', () => {
-            $('#secretaries-page').addClass('editing');
-            $filterSecretaries.find('button').prop('disabled', true);
-            $filterSecretaries.find('.results').css('color', '#AAA');
-            $secretaries.find('.add-edit-delete-group').hide();
-            $secretaries.find('.save-cancel-group').show();
-            $secretaries.find('.record-details').find('input, select, textarea').prop('disabled', false);
-            $secretaries.find('.record-details .form-label span').prop('hidden', false);
+        $assistants.on('click', '#edit-assistant', () => {
+            $('#assistants-page').addClass('editing');
+            $filterAssistants.find('button').prop('disabled', true);
+            $filterAssistants.find('.results').css('color', '#AAA');
+            $assistants.find('.add-edit-delete-group').hide();
+            $assistants.find('.save-cancel-group').show();
+            $assistants.find('.record-details').find('input, select, textarea').prop('disabled', false);
+            $assistants.find('.record-details .form-label span').prop('hidden', false);
             $('#password, #password-confirm').removeClass('required');
-            $('#secretary-providers input:checkbox').prop('disabled', false);
+            $('#assistant-providers input:checkbox').prop('disabled', false);
             $('#select-all-providers, #select-none-providers').prop('disabled', false);
         });
 
         /**
-         * Event: Delete Secretary Button "Click"
+         * Event: Delete Assistant Button "Click"
          */
-        $secretaries.on('click', '#delete-secretary', () => {
-            const secretaryId = $id.val();
+        $assistants.on('click', '#delete-assistant', () => {
+            const assistantId = $id.val();
 
             const buttons = [
                 {
@@ -184,20 +184,20 @@ App.Pages.Secretaries = (function () {
                 {
                     text: lang('delete'),
                     click: (event, messageModal) => {
-                        remove(secretaryId);
+                        remove(assistantId);
                         messageModal.hide();
                     },
                 },
             ];
 
-            App.Utils.Message.show(lang('delete_secretary'), lang('delete_record_prompt'), buttons);
+            App.Utils.Message.show(lang('delete_assistant'), lang('delete_record_prompt'), buttons);
         });
 
         /**
-         * Event: Save Secretary Button "Click"
+         * Event: Save Assistant Button "Click"
          */
-        $secretaries.on('click', '#save-secretary', () => {
-            const secretary = {
+        $assistants.on('click', '#save-assistant', () => {
+            const assistant = {
                 name: $name.val(),
                 email: $email.val(),
                 mobile_number: $mobileNumber.val(),
@@ -216,41 +216,41 @@ App.Pages.Secretaries = (function () {
                 },
             };
 
-            // Include secretary services.
-            secretary.providers = [];
+            // Include assistant services.
+            assistant.providers = [];
 
-            $('#secretary-providers input:checkbox').each((index, checkbox) => {
+            $('#assistant-providers input:checkbox').each((index, checkbox) => {
                 if ($(checkbox).prop('checked')) {
-                    secretary.providers.push($(checkbox).attr('data-id'));
+                    assistant.providers.push($(checkbox).attr('data-id'));
                 }
             });
 
             // Include password if changed.
             if ($password.val() !== '') {
-                secretary.settings.password = $password.val();
+                assistant.settings.password = $password.val();
             }
 
             // Include ID if changed.
             if ($id.val() !== '') {
-                secretary.id = $id.val();
+                assistant.id = $id.val();
             }
 
-            if (!App.Pages.Secretaries.validate()) {
+            if (!App.Pages.Assistants.validate()) {
                 return;
             }
 
-            App.Pages.Secretaries.save(secretary);
+            App.Pages.Assistants.save(assistant);
         });
 
         /**
-         * Event: Cancel Secretary Button "Click"
+         * Event: Cancel Assistant Button "Click"
          *
-         * Cancel add or edit of an secretary record.
+         * Cancel add or edit of an assistant record.
          */
-        $secretaries.on('click', '#cancel-secretary', () => {
+        $assistants.on('click', '#cancel-assistant', () => {
             const id = $id.val();
             resetForm();
-            $('#secretaries-page').removeClass('editing');
+            $('#assistants-page').removeClass('editing');
             if (id) {
                 select(id, true);
             }
@@ -259,62 +259,62 @@ App.Pages.Secretaries = (function () {
         /**
          * Event: Select All Providers Button "Click"
          */
-        $secretaries.on('click', '#select-all-providers', () => {
-            $('#secretary-providers input:checkbox').prop('checked', true);
+        $assistants.on('click', '#select-all-providers', () => {
+            $('#assistant-providers input:checkbox').prop('checked', true);
         });
 
         /**
          * Event: Select None Providers Button "Click"
          */
-        $secretaries.on('click', '#select-none-providers', () => {
-            $('#secretary-providers input:checkbox').prop('checked', false);
+        $assistants.on('click', '#select-none-providers', () => {
+            $('#assistant-providers input:checkbox').prop('checked', false);
         });
     }
 
     /**
-     * Save secretary record to database.
+     * Save assistant record to database.
      *
-     * @param {Object} secretary Contains the secretary record data. If an 'id' value is provided
+     * @param {Object} assistant Contains the assistant record data. If an 'id' value is provided
      * then the update operation is going to be executed.
      */
-    function save(secretary) {
-        App.Http.Secretaries.save(secretary).done((response) => {
-            App.Layouts.Backend.displayNotification(lang('secretary_saved'));
-            App.Pages.Secretaries.resetForm();
-            $('#secretaries-page').removeClass('editing');
-            $('#filter-secretaries .key').val('');
-            App.Pages.Secretaries.filter('', response.id, true);
+    function save(assistant) {
+        App.Http.Assistants.save(assistant).done((response) => {
+            App.Layouts.Backend.displayNotification(lang('assistant_saved'));
+            App.Pages.Assistants.resetForm();
+            $('#assistants-page').removeClass('editing');
+            $('#filter-assistants .key').val('');
+            App.Pages.Assistants.filter('', response.id, true);
         });
     }
 
     /**
-     * Delete a secretary record from database.
+     * Delete a assistant record from database.
      *
      * @param {Number} id Record id to be deleted.
      */
     function remove(id) {
-        App.Http.Secretaries.destroy(id).done(() => {
-            App.Layouts.Backend.displayNotification(lang('secretary_deleted'));
-            App.Pages.Secretaries.resetForm();
-            $('#secretaries-page').removeClass('editing');
-            App.Pages.Secretaries.filter($('#filter-secretaries .key').val());
+        App.Http.Assistants.destroy(id).done(() => {
+            App.Layouts.Backend.displayNotification(lang('assistant_deleted'));
+            App.Pages.Assistants.resetForm();
+            $('#assistants-page').removeClass('editing');
+            App.Pages.Assistants.filter($('#filter-assistants .key').val());
         });
     }
 
     /**
-     * Validates a secretary record.
+     * Validates a assistant record.
      *
      * @return {Boolean} Returns the validation result.
      */
     function validate() {
-        $('#secretaries .is-invalid').removeClass('is-invalid');
-        $secretaries.find('.form-message').removeClass('alert-danger');
+        $('#assistants .is-invalid').removeClass('is-invalid');
+        $assistants.find('.form-message').removeClass('alert-danger');
 
         try {
             // Validate required fields.
             let missingRequired = false;
 
-            $secretaries.find('.required').each((index, requiredField) => {
+            $assistants.find('.required').each((index, requiredField) => {
                 if (!$(requiredField).val()) {
                     $(requiredField).addClass('is-invalid');
                     missingRequired = true;
@@ -365,61 +365,61 @@ App.Pages.Secretaries = (function () {
 
             return true;
         } catch (error) {
-            $('#secretaries .form-message').addClass('alert-danger').text(error.message).show();
+            $('#assistants .form-message').addClass('alert-danger').text(error.message).show();
             return false;
         }
     }
 
     /**
-     * Resets the secretary tab form back to its initial state.
+     * Resets the assistant tab form back to its initial state.
      */
     function resetForm() {
         App.Utils.PictureUpload.reset();
-        $filterSecretaries.find('.selected').removeClass('selected');
-        $filterSecretaries.find('button').prop('disabled', false);
-        $filterSecretaries.find('.results').css('color', '');
-        $secretaries.find('.record-details').find('input, select, textarea').val('').prop('disabled', true);
-        $secretaries.find('.record-details .form-label span').prop('hidden', true);
-        $secretaries.find('.record-details #calendar-view').val('default');
-        $secretaries.find('.record-details #timezone').val(vars('default_timezone'));
-        $secretaries.find('.record-details #language').val(vars('default_language'));
-        $secretaries.find('.add-edit-delete-group').show();
-        $secretaries.find('.save-cancel-group').hide();
-        $secretaries.find('.form-message').hide();
-        $secretaries.find('.is-invalid').removeClass('is-invalid');
-        $('#edit-secretary, #delete-secretary').prop('disabled', true);
-        $('#secretary-providers input:checkbox').prop('disabled', true).prop('checked', false);
+        $filterAssistants.find('.selected').removeClass('selected');
+        $filterAssistants.find('button').prop('disabled', false);
+        $filterAssistants.find('.results').css('color', '');
+        $assistants.find('.record-details').find('input, select, textarea').val('').prop('disabled', true);
+        $assistants.find('.record-details .form-label span').prop('hidden', true);
+        $assistants.find('.record-details #calendar-view').val('default');
+        $assistants.find('.record-details #timezone').val(vars('default_timezone'));
+        $assistants.find('.record-details #language').val(vars('default_language'));
+        $assistants.find('.add-edit-delete-group').show();
+        $assistants.find('.save-cancel-group').hide();
+        $assistants.find('.form-message').hide();
+        $assistants.find('.is-invalid').removeClass('is-invalid');
+        $('#edit-assistant, #delete-assistant').prop('disabled', true);
+        $('#assistant-providers input:checkbox').prop('disabled', true).prop('checked', false);
         $('#select-all-providers, #select-none-providers').prop('disabled', true);
     }
 
     /**
-     * Display a secretary record into the secretary form.
+     * Display a assistant record into the assistant form.
      *
-     * @param {Object} secretary Contains the secretary record data.
+     * @param {Object} assistant Contains the assistant record data.
      */
-    function display(secretary) {
-        App.Utils.PictureUpload.setRecord('secretaries', secretary.id, secretary.picture_url);
-        $id.val(secretary.id);
-        $name.val(secretary.name);
-        $email.val(secretary.email);
-        $mobileNumber.val(secretary.mobile_number);
-        $phoneNumber.val(secretary.phone_number);
-        $address.val(secretary.address);
-        $city.val(secretary.city);
-        $state.val(secretary.state);
-        $zipCode.val(secretary.zip_code);
-        $notes.val(secretary.notes);
-        $language.val(secretary.language);
-        $timezone.val(secretary.timezone);
-        $ldapDn.val(secretary.ldap_dn);
+    function display(assistant) {
+        App.Utils.PictureUpload.setRecord('assistants', assistant.id, assistant.picture_url);
+        $id.val(assistant.id);
+        $name.val(assistant.name);
+        $email.val(assistant.email);
+        $mobileNumber.val(assistant.mobile_number);
+        $phoneNumber.val(assistant.phone_number);
+        $address.val(assistant.address);
+        $city.val(assistant.city);
+        $state.val(assistant.state);
+        $zipCode.val(assistant.zip_code);
+        $notes.val(assistant.notes);
+        $language.val(assistant.language);
+        $timezone.val(assistant.timezone);
+        $ldapDn.val(assistant.ldap_dn);
 
-        $username.val(secretary.settings.username);
-        $calendarView.val(secretary.settings.calendar_view);
+        $username.val(assistant.settings.username);
+        $calendarView.val(assistant.settings.calendar_view);
 
-        $('#secretary-providers input:checkbox').prop('checked', false);
+        $('#assistant-providers input:checkbox').prop('checked', false);
 
-        secretary.providers.forEach((secretaryProviderId) => {
-            const $checkbox = $('#secretary-providers input[data-id="' + secretaryProviderId + '"]');
+        assistant.providers.forEach((assistantProviderId) => {
+            const $checkbox = $('#assistant-providers input[data-id="' + assistantProviderId + '"]');
 
             if (!$checkbox.length) {
                 return;
@@ -430,28 +430,28 @@ App.Pages.Secretaries = (function () {
     }
 
     /**
-     * Filters secretary records based on a string keyword.
+     * Filters assistant records based on a string keyword.
      *
-     * @param {String} keyword This is used to filter the secretary records of the database.
+     * @param {String} keyword This is used to filter the assistant records of the database.
      * @param {Number} selectId Optional, if provided the given ID will be selected in the filter results
      * (only selected, not displayed).
      * @param {Boolean} show Optional (false).
      */
     function filter(keyword, selectId = null, show = false) {
-        App.Http.Secretaries.search(keyword, filterLimit, (filterPage - 1) * filterLimit).done((response, textStatus, jqXHR) => {
+        App.Http.Assistants.search(keyword, filterLimit, (filterPage - 1) * filterLimit).done((response, textStatus, jqXHR) => {
             filterResults = response;
 
-            $filterSecretaries.find('.results').empty();
+            $filterAssistants.find('.results').empty();
 
-            response.forEach((secretary) => {
-                $filterSecretaries
+            response.forEach((assistant) => {
+                $filterAssistants
                     .find('.results')
-                    .append(App.Pages.Secretaries.getFilterHtml(secretary))
+                    .append(App.Pages.Assistants.getFilterHtml(assistant))
                     .append($('<hr/>'));
             });
 
             if (!response.length) {
-                $('#filter-secretaries .results').append(
+                $('#filter-assistants .results').append(
                     $('<em/>', {
                         'text': lang('no_records_found'),
                     }),
@@ -459,13 +459,13 @@ App.Pages.Secretaries = (function () {
             }
 
             App.Utils.Pagination.render(
-                $('#filter-secretaries .results'),
+                $('#filter-assistants .results'),
                 Number(jqXHR.getResponseHeader('X-Total-Count')) || response.length,
                 filterPage,
                 filterLimit,
                 (page) => {
                     filterPage = page;
-                    App.Pages.Secretaries.filter(keyword, selectId, show);
+                    App.Pages.Assistants.filter(keyword, selectId, show);
                 },
             );
 
@@ -476,24 +476,24 @@ App.Pages.Secretaries = (function () {
     }
 
     /**
-     * Get an secretary row html code that is going to be displayed on the filter results list.
+     * Get an assistant row html code that is going to be displayed on the filter results list.
      *
-     * @param {Object} secretary Contains the secretary record data.
+     * @param {Object} assistant Contains the assistant record data.
      *
      * @return {String} The html code that represents the record on the filter results list.
      */
-    function getFilterHtml(secretary) {
-        const name = secretary.name;
+    function getFilterHtml(assistant) {
+        const name = assistant.name;
 
-        let info = secretary.email;
+        let info = assistant.email;
 
-        info = secretary.mobile_number ? info + ', ' + secretary.mobile_number : info;
+        info = assistant.mobile_number ? info + ', ' + assistant.mobile_number : info;
 
-        info = secretary.phone_number ? info + ', ' + secretary.phone_number : info;
+        info = assistant.phone_number ? info + ', ' + assistant.phone_number : info;
 
         return $('<div/>', {
-            'class': 'secretary-row entry',
-            'data-id': secretary.id,
+            'class': 'assistant-row entry',
+            'data-id': assistant.id,
             'html': [
                 $('<strong/>', {
                     'text': name,
@@ -509,23 +509,23 @@ App.Pages.Secretaries = (function () {
     }
 
     /**
-     * Select a specific record from the current filter results. If the secretary id does not exist
+     * Select a specific record from the current filter results. If the assistant id does not exist
      * in the list then no record will be selected.
      *
      * @param {Number} id The record id to be selected from the filter results.
      * @param {Boolean} show Optional (false), if true the method will display the record in the form.
      */
     function select(id, show = false) {
-        $filterSecretaries.find('.selected').removeClass('selected');
+        $filterAssistants.find('.selected').removeClass('selected');
 
-        $('#filter-secretaries .secretary-row[data-id="' + id + '"]').addClass('selected');
+        $('#filter-assistants .assistant-row[data-id="' + id + '"]').addClass('selected');
 
         if (show) {
-            const secretary = filterResults.find((filterResult) => Number(filterResult.id) === Number(id));
+            const assistant = filterResults.find((filterResult) => Number(filterResult.id) === Number(id));
 
-            App.Pages.Secretaries.display(secretary);
+            App.Pages.Assistants.display(assistant);
 
-            $('#edit-secretary, #delete-secretary').prop('disabled', false);
+            $('#edit-assistant, #delete-assistant').prop('disabled', false);
         }
     }
 
@@ -533,9 +533,9 @@ App.Pages.Secretaries = (function () {
      * Initialize the module.
      */
     function initialize() {
-        App.Pages.Secretaries.resetForm();
-        App.Pages.Secretaries.filter('');
-        App.Pages.Secretaries.addEventListeners();
+        App.Pages.Assistants.resetForm();
+        App.Pages.Assistants.filter('');
+        App.Pages.Assistants.addEventListeners();
 
         vars('providers').forEach((provider) => {
             const checkboxId = `provider-service-${provider.id}`;
@@ -563,7 +563,7 @@ App.Pages.Secretaries = (function () {
                         ],
                     }),
                 ],
-            }).appendTo('#secretary-providers');
+            }).appendTo('#assistant-providers');
         });
     }
 

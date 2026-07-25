@@ -58,7 +58,7 @@ he:
     skipped: דולגו
     no_file_selected: לא נבחר קובץ.
     reset_database: איפוס מסד הנתונים
-    reset_database_warning: פעולה זו מוחקת לצמיתות את כל התורים, הלקוחות, נותני השירות, המזכירים, השירותים והקטגוריות. חשבונות מנהלים והגדרות נשמרים. לא ניתן לבטל.
+    reset_database_warning: פעולה זו מוחקת לצמיתות את כל התורים, הלקוחות, נותני השירות, העוזרים, השירותים והקטגוריות. חשבונות מנהלים והגדרות נשמרים. לא ניתן לבטל.
     reset_confirmation_hint: "הקלידו I KNOW WHAT I AM DOING כדי להפעיל את הכפתור."
     reset_database_done: מסד הנתונים אופס.
     captcha_provider: ספק captcha
@@ -155,7 +155,7 @@ he:
     enable_appointment_sync_hint: אפשר סנכרון פגישות עם חשבון יומן הגוגל של הספק.
     manage_customers_hint: נהל את הלקוחות הרשומים וצפה בהיסטוריית ההזמנות שלהם.
     manage_services_hint: נהל את השירותים והקטגוריות הזמינות של המערכת.
-    manage_users_hint: נהל את משתמשי הניהול (מנהלי מערכת, ספקים, מזכירים).
+    manage_users_hint: נהל את משתמשי הניהול (מנהלי מערכת, ספקים, עוזרים).
     settings_hint: הגדר הגדרות מערכת ומשתמשים.
     log_out_hint: יציאה מהמערכת.
     unavailability_periods_hint: במהלך המועדים אשר אינם זמינים הספק לא יקבל פגישות חדשות.
@@ -196,7 +196,7 @@ he:
     categories: קטגוריות
     admins: מנהלים
     providers: ספקים
-    secretaries: מזכירים
+    assistants: "עוזרים"
     mobile_number: מספר נייד
     mobile: נייד
     state: מדינה
@@ -207,10 +207,10 @@ he:
     passwords_mismatch: אי התאמה בין סיסמאות!
     admin_saved: מנהל המערכת נשמר בהצלחה!
     provider_saved: הספק נשמר בהצלחה!
-    secretary_saved: המזכיר/ה נשמר בהצלחה!
+    assistant_saved: "העוזר נשמר בהצלחה."
     admin_deleted: מנהל המערכת נמחק בהצלחה!
     provider_deleted: הספק נמחק בהצלחה!
-    secretary_deleted: המזכיר/ה נמחק בהצלחה!
+    assistant_deleted: "העוזר נמחק בהצלחה."
     service_saved: השירות נשמר בהצלחה!
     service_category_saved: קטגוריית השירות נשמרה בהצלחה!
     service_deleted: השירות נמחק בהצלחה!
@@ -285,7 +285,7 @@ he:
     delete_service: מחיקת שירות
     delete_service_category: מחיקת קטגורית שירות
     delete_provider: מחיקת ספק
-    delete_secretary: מחיקת מזכיר/ה
+    delete_assistant: "מחיקת עוזר"
     delete_appointment: מחיקת פגישה
     delete_unavailability: מחיקת לו"ז לא זמין
     delete: מחיקה
@@ -438,7 +438,7 @@ he:
     what_kind_of_event: איזה סוג אירוע תרצה להוסיף?
     theme: נושא
     limit_customer_access: הגבל גישת לקוחות
-    limit_customer_access_hint: אם מופעל, ספקים ומזכירים יוכלו לגשת רק ללקוחות שיש להם פגישה איתם.
+    limit_customer_access_hint: אם מופעל, ספקים ועוזרים יוכלו לגשת רק ללקוחות שיש להם פגישה איתם.
     url: URL
     secret_token: אסימון סודי
     verify_ssl: אמת SSL
@@ -454,8 +454,8 @@ he:
     service_category_delete: מחק קטגוריה
     provider_save: שמור ספק
     provider_delete: מחק ספק
-    secretary_save: שמור מזכיר
-    secretary_delete: מחק מזכיר
+    assistant_save: "שמירת עוזר"
+    assistant_delete: "מחיקת עוזר"
     admin_save: שמור מנהל
     admin_delete: מחק מנהל
     options: אפשרויות
@@ -716,7 +716,7 @@ he:
     notification_send_to: Send to
     notification_audience_customer: Customer
     notification_audience_provider: Provider
-    notification_audience_admins: Admins and secretaries
+    notification_audience_admins: "מנהלים ועוזרים"
     notification_no_providers: No providers are enabled. Enable one on the Providers page first.
     notification_short_text: Short Text (Email Subject or SMS)
     notification_long_text: Long Text (for providers that support it, e.g. Email Body)

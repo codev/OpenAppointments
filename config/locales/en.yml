@@ -58,7 +58,7 @@ en:
     skipped: skipped
     no_file_selected: No file selected.
     reset_database: Reset database
-    reset_database_warning: This permanently deletes all appointments, customers, providers, secretaries, services and categories. Administrator accounts and settings are kept. This cannot be undone.
+    reset_database_warning: This permanently deletes all appointments, customers, providers, assistants, services and categories. Administrator accounts and settings are kept. This cannot be undone.
     reset_confirmation_hint: "Type I KNOW WHAT I AM DOING to enable the button."
     reset_database_done: The database has been reset.
     captcha_provider: Captcha provider
@@ -155,7 +155,7 @@ en:
     enable_appointment_sync_hint: Enable appointment synchronization with an external calendar.
     manage_customers_hint: Manage the registered customers and view their booking history.
     manage_services_hint: Manage the available services and categories of the system.
-    manage_users_hint: Manage the backend users (admins, providers, secretaries).
+    manage_users_hint: Manage the backend users (admins, providers, assistants).
     settings_hint: Set system and user settings.
     log_out_hint: Log out of the system.
     unavailability_periods_hint: During unavailability periods the provider won't accept new appointments.
@@ -196,7 +196,7 @@ en:
     categories: Categories
     admins: Admins
     providers: Providers
-    secretaries: Secretaries
+    assistants: "Assistants"
     mobile_number: Mobile Number
     mobile: Mobile
     state: State
@@ -207,10 +207,10 @@ en:
     passwords_mismatch: Passwords mismatch.
     admin_saved: Admin saved successfully.
     provider_saved: Provider saved successfully.
-    secretary_saved: Secretary saved successfully.
+    assistant_saved: "Assistant saved successfully."
     admin_deleted: Admin deleted successfully.
     provider_deleted: Provider deleted successfully.
-    secretary_deleted: Secretary deleted successfully.
+    assistant_deleted: "Assistant deleted successfully."
     service_saved: Service saved successfully.
     service_category_saved: Service category saved successfully.
     service_deleted: Service deleted successfully.
@@ -285,7 +285,7 @@ en:
     delete_service: Delete Service
     delete_service_category: Delete Service Category
     delete_provider: Delete Provider
-    delete_secretary: Delete Secretary
+    delete_assistant: "Delete Assistant"
     delete_appointment: Delete Appointment
     delete_unavailability: Delete Unavailability
     delete: Delete
@@ -438,7 +438,7 @@ en:
     what_kind_of_event: What kind of event would you like to add?
     theme: Theme
     limit_customer_access: Limit Customer Access
-    limit_customer_access_hint: If enabled, providers and secretaries will only be able to access customers they have an appointment with.
+    limit_customer_access_hint: If enabled, providers and assistants will only be able to access customers they have an appointment with.
     url: URL
     secret_token: Secret Token
     verify_ssl: Verify SSL
@@ -454,8 +454,8 @@ en:
     service_category_delete: Service Category Delete
     provider_save: Provider Save
     provider_delete: Provider Delete
-    secretary_save: Secretary Save
-    secretary_delete: Secretary Delete
+    assistant_save: "Assistant Save"
+    assistant_delete: "Assistant Delete"
     admin_save: Admin Save
     admin_delete: Admin Delete
     options: Options
@@ -716,7 +716,7 @@ en:
     notification_send_to: Send to
     notification_audience_customer: Customer
     notification_audience_provider: Provider
-    notification_audience_admins: Admins and secretaries
+    notification_audience_admins: "Admins and assistants"
     notification_no_providers: No providers are enabled. Enable one on the Providers page first.
     notification_short_text: Short Text (Email Subject or SMS)
     notification_long_text: Long Text (for providers that support it, e.g. Email Body)

@@ -11,7 +11,7 @@ class ResetDatabaseTest < ActiveSupport::TestCase
     assert_equal 0, Appointment.count
     assert_equal 0, User.customers.count
     assert_equal 0, User.providers.count
-    assert_equal 0, User.secretaries.count
+    assert_equal 0, User.assistants.count
     assert_equal 0, Service.count
     assert_equal 0, ServiceCategory.count
     assert User.admins.any?, "admins must survive a reset"

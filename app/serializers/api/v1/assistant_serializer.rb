@@ -1,6 +1,6 @@
 module Api
   module V1
-    class SecretarySerializer < UserSerializer
+    class AssistantSerializer < UserSerializer
       MAP = UserSerializer::MAP
 
       class << self

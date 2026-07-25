@@ -58,7 +58,7 @@ cs:
     skipped: přeskočeno
     no_file_selected: Není vybrán žádný soubor.
     reset_database: Resetovat databázi
-    reset_database_warning: Tímto trvale smažete všechny schůzky, zákazníky, poskytovatele, sekretáře, služby a kategorie. Administrátorské účty a nastavení zůstanou. Nelze vrátit zpět.
+    reset_database_warning: Tímto trvale smažete všechny schůzky, zákazníky, poskytovatele, asistenty, služby a kategorie. Administrátorské účty a nastavení zůstanou. Nelze vrátit zpět.
     reset_confirmation_hint: "Pro povolení tlačítka napište I KNOW WHAT I AM DOING."
     reset_database_done: Databáze byla resetována.
     captcha_provider: Poskytovatel captcha
@@ -155,7 +155,7 @@ cs:
     enable_appointment_sync_hint: Povolit synchronizaci schůzek s účtem Kalendáře Google poskytovatele.
     manage_customers_hint: Správa registrovaných zákazníků a zobrazení historie jejich rezervací.
     manage_services_hint: Správa dostupných služeb a kategorií.
-    manage_users_hint: Správa interních uživatelů (administrátoři, poskytovatelé, sekretářky).
+    manage_users_hint: Správa interních uživatelů (administrátoři, poskytovatelé, asistenty).
     settings_hint: Systémová a uživatelská nastavení.
     log_out_hint: Odhlášení ze systému.
     unavailability_periods_hint: V době, kdy není poskytovatel dostupný, nelze rezervovat nové schůzky.
@@ -196,7 +196,7 @@ cs:
     categories: Kategorie
     admins: Administrátoři
     providers: Poskytovatelé
-    secretaries: Sekretářky
+    assistants: "Asistenti"
     mobile_number: Mobilní telefon
     mobile: Mobil
     state: Stát
@@ -207,10 +207,10 @@ cs:
     passwords_mismatch: Hesla se neshodují.
     admin_saved: Administrátor úspěšně uložen.
     provider_saved: Poskytovatel úspěšně uložen.
-    secretary_saved: Sekretářka úspěšně uložena.
+    assistant_saved: "Asistent byl úspěšně uložen."
     admin_deleted: Administrátor úspěšně odstraněn.
     provider_deleted: Poskytovatel úspěšně odstraněn.
-    secretary_deleted: Sekretářka úspěšně odstraněna.
+    assistant_deleted: "Asistent byl úspěšně smazán."
     service_saved: Služba úspěšně uložena.
     service_category_saved: Kategorie služeb úspěšně uložena.
     service_deleted: Služba úspěšně odstraněna.
@@ -285,7 +285,7 @@ cs:
     delete_service: Odstranit službu
     delete_service_category: Odstranit kategorii služeb
     delete_provider: Odstranit poskytovatele
-    delete_secretary: Odstranit sekretářku
+    delete_assistant: "Smazat asistenta"
     delete_appointment: Odstranit schůzku
     delete_unavailability: Odstranit období nedostupnosti
     delete: Odstranit
@@ -438,7 +438,7 @@ cs:
     what_kind_of_event: Jaký druh události chcete přidat?
     theme: Šablona
     limit_customer_access: Omezit přístup k zákazníkům
-    limit_customer_access_hint: Pokud bude povoleno, poskytovatelé a sekretářky budou mít přístup pouze k zákazníkům, se kterými mají sjednánu schůzku.
+    limit_customer_access_hint: Pokud bude povoleno, poskytovatelé a asistenti budou mít přístup pouze k zákazníkům, se kterými mají sjednánu schůzku.
     url: URL
     secret_token: Bezpečnostní token
     verify_ssl: Ověřovat SSL
@@ -454,8 +454,8 @@ cs:
     service_category_delete: Smazání kategorie
     provider_save: Uložení poskytovatele
     provider_delete: Smazání poskytovatele
-    secretary_save: Uložení sekretářky
-    secretary_delete: Smazání sekretářky
+    assistant_save: "Uložení asistenta"
+    assistant_delete: "Smazání asistenta"
     admin_save: Uložení administrátora
     admin_delete: Smazání administrátora
     options: Možnosti
@@ -716,7 +716,7 @@ cs:
     notification_send_to: Send to
     notification_audience_customer: Customer
     notification_audience_provider: Provider
-    notification_audience_admins: Admins and secretaries
+    notification_audience_admins: "Administrátoři a asistenti"
     notification_no_providers: No providers are enabled. Enable one on the Providers page first.
     notification_short_text: Short Text (Email Subject or SMS)
     notification_long_text: Long Text (for providers that support it, e.g. Email Body)

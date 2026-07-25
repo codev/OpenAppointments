@@ -29,7 +29,7 @@ class CustomersController < ApplicationController
 
     backend_page_vars(page_title: helpers.lang("customers"), active_menu: "customers")
     script_vars(
-      secretary_providers: secretary_provider_ids,
+      assistant_providers: assistant_provider_ids,
       message_channels: Messaging.enabled_channels.map { |channel| { key: channel.key, label: channel.label } }
     )
     html_vars(
@@ -159,8 +159,8 @@ class CustomersController < ApplicationController
     case session[:role_slug]
     when Role::PROVIDER
       appointments.where(id_users_provider: session[:user_id])
-    when Role::SECRETARY
-      appointments.where(id_users_provider: secretary_provider_ids)
+    when Role::ASSISTANT
+      appointments.where(id_users_provider: assistant_provider_ids)
     else
       appointments
     end

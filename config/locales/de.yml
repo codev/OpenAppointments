@@ -58,7 +58,7 @@ de:
     skipped: übersprungen
     no_file_selected: Keine Datei ausgewählt.
     reset_database: Datenbank zurücksetzen
-    reset_database_warning: Dies löscht dauerhaft alle Termine, Kunden, Anbieter, Sekretariate, Dienstleistungen und Kategorien. Administratorkonten und Einstellungen bleiben erhalten. Kann nicht rückgängig gemacht werden.
+    reset_database_warning: Dies löscht dauerhaft alle Termine, Kunden, Anbieter, Assistenten, Dienstleistungen und Kategorien. Administratorkonten und Einstellungen bleiben erhalten. Kann nicht rückgängig gemacht werden.
     reset_confirmation_hint: "Geben Sie I KNOW WHAT I AM DOING ein, um die Schaltfläche zu aktivieren."
     reset_database_done: Die Datenbank wurde zurückgesetzt.
     captcha_provider: Captcha-Anbieter
@@ -155,7 +155,7 @@ de:
     enable_appointment_sync_hint: Beginnen Sie die Terminsynchronisationen mit dem Externe-Kalender des Dienstleisters.
     manage_customers_hint: Verwalten Sie die registrierten Kunden und sehen Sie die vergangenen Buchungen ein.
     manage_services_hint: Verwalten Sie die erhältlichen Dienstleistungen und Kategorien des Systems.
-    manage_users_hint: Verwalten Sie die Endnutzer (Admins, Anbieter, Büropersonal).
+    manage_users_hint: Verwalten Sie die Endnutzer (Admins, Anbieter, Assistenten).
     settings_hint: Setzen Sie das System auf Nutzereinstellungen.
     log_out_hint: Melden Sie sich vom System ab.
     unavailability_periods_hint: In diesem Zeitraum werden neue Termine vom Anbieter nicht akzeptiert.
@@ -196,7 +196,7 @@ de:
     categories: Kategorien
     admins: Administrator
     providers: Anbieter
-    secretaries: Bearbeiter
+    assistants: "Assistenten"
     mobile_number: Mobiltelefonnummer
     mobile: Mobil
     state: Region/Land
@@ -207,10 +207,10 @@ de:
     passwords_mismatch: Passwort ungültig.
     admin_saved: Administrator erfolgreich gesichert.
     provider_saved: Anbieter erfolgreich gesichert.
-    secretary_saved: Bearbeiter erfolgreich gesichert.
+    assistant_saved: "Assistent erfolgreich gespeichert."
     admin_deleted: Administrator erfolgreich gelöscht.
     provider_deleted: Anbieter erfolgreich gelöscht.
-    secretary_deleted: Bearbeiter erfolgreich gelöscht.
+    assistant_deleted: "Assistent erfolgreich gelöscht."
     service_saved: Dienstleistung erfolgreich gesichert.
     service_category_saved: Kategorie erfolgreich gesichert.
     service_deleted: Dienstleistung erfolgreich gelöscht.
@@ -285,7 +285,7 @@ de:
     delete_service: Dienstleistung löschen
     delete_service_category: Kategorie löschen
     delete_provider: Zeitraum löschen
-    delete_secretary: Bearbeiter löschen
+    delete_assistant: "Assistent löschen"
     delete_appointment: Termin löschen
     delete_unavailability: Nichtverfügbarkeit löschen
     delete: Löschen
@@ -438,7 +438,7 @@ de:
     what_kind_of_event: Welche Art von Veranstaltung möchten Sie hinzufügen?
     theme: Thema
     limit_customer_access: Beschränken Sie den Kundenzugriff
-    limit_customer_access_hint: Wenn diese Option aktiviert ist, können Anbieter und Sekretäre nur auf Kunden zugreifen, mit denen sie einen Termin haben.
+    limit_customer_access_hint: Wenn diese Option aktiviert ist, können Anbieter und Assistenten nur auf Kunden zugreifen, mit denen sie einen Termin haben.
     url: URL
     secret_token: Geheimer Token
     verify_ssl: SSL überprüfen
@@ -454,8 +454,8 @@ de:
     service_category_delete: Kategorie löschen
     provider_save: Anbieter speichern
     provider_delete: Anbieter löschen
-    secretary_save: Sekretär Save
-    secretary_delete: Sekretär löschen
+    assistant_save: "Assistent speichern"
+    assistant_delete: "Assistent löschen"
     admin_save: Admin-Speicherung
     admin_delete: Admin-Löschen
     options: Optionen
@@ -716,7 +716,7 @@ de:
     notification_send_to: Send to
     notification_audience_customer: Customer
     notification_audience_provider: Provider
-    notification_audience_admins: Admins and secretaries
+    notification_audience_admins: "Admins und Assistenten"
     notification_no_providers: No providers are enabled. Enable one on the Providers page first.
     notification_short_text: Short Text (Email Subject or SMS)
     notification_long_text: Long Text (for providers that support it, e.g. Email Body)

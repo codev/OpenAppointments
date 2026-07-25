@@ -15,7 +15,7 @@ class WebhooksController < ApplicationController
     Webhooks::SERVICE_SAVE, Webhooks::SERVICE_DELETE,
     Webhooks::SERVICE_CATEGORY_SAVE, Webhooks::SERVICE_CATEGORY_DELETE,
     Webhooks::PROVIDER_SAVE, Webhooks::PROVIDER_DELETE,
-    Webhooks::SECRETARY_SAVE, Webhooks::SECRETARY_DELETE,
+    Webhooks::ASSISTANT_SAVE, Webhooks::ASSISTANT_DELETE,
     Webhooks::ADMIN_SAVE, Webhooks::ADMIN_DELETE
   ].freeze
 

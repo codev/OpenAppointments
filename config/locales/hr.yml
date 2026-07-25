@@ -58,7 +58,7 @@ hr:
     skipped: preskoceno
     no_file_selected: Nije odabrana datoteka.
     reset_database: Resetiraj bazu podataka
-    reset_database_warning: Ovo trajno brise sve termine, klijente, pruzatelje, tajnike, usluge i kategorije. Administratorski racuni i postavke ostaju. Nepovratno.
+    reset_database_warning: Ovo trajno brise sve termine, klijente, pruzatelje, asistente, usluge i kategorije. Administratorski racuni i postavke ostaju. Nepovratno.
     reset_confirmation_hint: "Upišite I KNOW WHAT I AM DOING da omogućite gumb."
     reset_database_done: Baza podataka je resetirana.
     captcha_provider: Pružatelj captche
@@ -155,7 +155,7 @@ hr:
     enable_appointment_sync_hint: Omogućite sinkronizaciju sastanaka s Google kalendarom pružatelja.
     manage_customers_hint: Upravljajte registriranim klijentima i pregledajte njihovu povijest rezervacija.
     manage_services_hint: Upravljajte dostupnim uslugama i kategorijama sustava.
-    manage_users_hint: Upravljajte korisnicima backenda (administratori, pružatelji, tajnici).
+    manage_users_hint: Upravljajte korisnicima backenda (administratori, pružatelji, asistenti).
     settings_hint: Postavite postavke sustava i korisnika.
     log_out_hint: Odjavite se iz sustava.
     unavailability_periods_hint: During unavailability periods the provider won\\'t accept new appointments.
@@ -196,7 +196,7 @@ hr:
     categories: Kategorije
     admins: Administratori
     providers: Pružatelji
-    secretaries: Tajnici
+    assistants: "Asistenti"
     mobile_number: Broj mobitela
     mobile: Mobitel
     state: Država
@@ -207,10 +207,10 @@ hr:
     passwords_mismatch: Lozinke se ne podudaraju.
     admin_saved: Administrator uspješno spremljen.
     provider_saved: Pružatelj uspješno spremljen.
-    secretary_saved: Tajnik uspješno spremljen.
+    assistant_saved: "Asistent uspješno spremljen."
     admin_deleted: Administrator uspješno izbrisan.
     provider_deleted: Pružatelj uspješno izbrisan.
-    secretary_deleted: Tajnik uspješno izbrisan.
+    assistant_deleted: "Asistent uspješno obrisan."
     service_saved: Usluga uspješno spremljena.
     service_category_saved: Kategorija usluge uspješno spremljena.
     service_deleted: Usluga uspješno izbrisana.
@@ -285,7 +285,7 @@ hr:
     delete_service: Izbriši uslugu
     delete_service_category: Izbriši kategoriju usluge
     delete_provider: Izbriši pružatelja
-    delete_secretary: Izbriši tajnika
+    delete_assistant: "Obriši asistenta"
     delete_appointment: Izbriši sastanak
     delete_unavailability: Obriši Nedostupnost
     delete: Izbriši
@@ -438,7 +438,7 @@ hr:
     what_kind_of_event: Koju vrstu događaja želite dodati?
     theme: Tema
     limit_customer_access: Ograničite pristup korisnika
-    limit_customer_access_hint: Ako je opcija uključena, davatelji usluga i tajnici moći će pristupiti samo korisnicima s kojima imaju dogovoren sastanak.
+    limit_customer_access_hint: Ako je opcija uključena, davatelji usluga i asistenti moći će pristupiti samo korisnicima s kojima imaju dogovoren sastanak.
     url: URL
     secret_token: Tajni token
     verify_ssl: Potvrdite SSL
@@ -454,8 +454,8 @@ hr:
     service_category_delete: kategorija briši
     provider_save: Davatelj usluga spremi
     provider_delete: Davatelj usluga briši
-    secretary_save: Tajnik spremi
-    secretary_delete: Tajnik briši
+    assistant_save: "Spremanje asistenta"
+    assistant_delete: "Brisanje asistenta"
     admin_save: Administrator spremi
     admin_delete: Administrator briši
     options: Opcije
@@ -716,7 +716,7 @@ hr:
     notification_send_to: Send to
     notification_audience_customer: Customer
     notification_audience_provider: Provider
-    notification_audience_admins: Admins and secretaries
+    notification_audience_admins: "Administratori i asistenti"
     notification_no_providers: No providers are enabled. Enable one on the Providers page first.
     notification_short_text: Short Text (Email Subject or SMS)
     notification_long_text: Long Text (for providers that support it, e.g. Email Body)

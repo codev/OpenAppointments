@@ -1,6 +1,6 @@
 module Api
   module V1
-    # Shared base for provider/secretary/admin serializers. Encodes the common user
+    # Shared base for provider/assistant/admin serializers. Encodes the common user
     # scalar fields plus a settings sub-object; decode splits API params back into
     # user columns, a nested settings hash, and (per subclass) services/providers arrays.
     class UserSerializer < BaseSerializer
@@ -35,7 +35,7 @@ module Api
           payload
         end
 
-        # Simple settings sub-object (secretaries/admins).
+        # Simple settings sub-object (assistants/admins).
         def settings_encode(settings)
           {
             "username" => settings.username,

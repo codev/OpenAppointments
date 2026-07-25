@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_07_24_110000) do
+ActiveRecord::Schema[8.1].define(version: 2026_07_25_000000) do
   create_table "action_mailbox_inbound_emails", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.string "message_checksum", null: false
@@ -72,6 +72,12 @@ ActiveRecord::Schema[8.1].define(version: 2026_07_24_110000) do
     t.index ["id_users_customer"], name: "index_appointments_on_id_users_customer"
     t.index ["id_users_provider", "start_datetime"], name: "index_appointments_on_id_users_provider_and_start_datetime"
     t.index ["start_datetime"], name: "index_appointments_on_start_datetime"
+  end
+
+  create_table "assistants_providers", id: false, force: :cascade do |t|
+    t.integer "id_users_assistant", null: false
+    t.integer "id_users_provider", null: false
+    t.index ["id_users_assistant", "id_users_provider"], name: "idx_on_id_users_assistant_id_users_provider_d78f31389d", unique: true
   end
 
   create_table "blocked_periods", force: :cascade do |t|
@@ -155,12 +161,6 @@ ActiveRecord::Schema[8.1].define(version: 2026_07_24_110000) do
     t.integer "users"
     t.integer "webhooks"
     t.index ["slug"], name: "index_roles_on_slug", unique: true
-  end
-
-  create_table "secretaries_providers", id: false, force: :cascade do |t|
-    t.integer "id_users_provider", null: false
-    t.integer "id_users_secretary", null: false
-    t.index ["id_users_secretary", "id_users_provider"], name: "idx_on_id_users_secretary_id_users_provider_111254eeaa", unique: true
   end
 
   create_table "service_categories", force: :cascade do |t|
@@ -289,8 +289,8 @@ ActiveRecord::Schema[8.1].define(version: 2026_07_24_110000) do
   add_foreign_key "appointments", "services", column: "id_services", on_delete: :cascade
   add_foreign_key "appointments", "users", column: "id_users_customer", on_delete: :cascade
   add_foreign_key "appointments", "users", column: "id_users_provider", on_delete: :cascade
-  add_foreign_key "secretaries_providers", "users", column: "id_users_provider", on_delete: :cascade
-  add_foreign_key "secretaries_providers", "users", column: "id_users_secretary", on_delete: :cascade
+  add_foreign_key "assistants_providers", "users", column: "id_users_assistant", on_delete: :cascade
+  add_foreign_key "assistants_providers", "users", column: "id_users_provider", on_delete: :cascade
   add_foreign_key "services", "service_categories", column: "id_service_categories", on_delete: :nullify
   add_foreign_key "services_providers", "services", column: "id_services", on_delete: :cascade
   add_foreign_key "services_providers", "users", column: "id_users", on_delete: :cascade

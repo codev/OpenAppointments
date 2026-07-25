@@ -58,7 +58,7 @@ hu:
     skipped: kihagyva
     no_file_selected: Nincs kiválasztott fájl.
     reset_database: Adatbázis visszaállítása
-    reset_database_warning: Ez véglegesen töröl minden időpontot, ügyfelet, szolgáltatót, titkárt, szolgáltatást és kategóriát. Az adminisztrátori fiókok és a beállítások megmaradnak. Nem vonható vissza.
+    reset_database_warning: Ez véglegesen töröl minden időpontot, ügyfelet, szolgáltatót, asszisztenst, szolgáltatást és kategóriát. Az adminisztrátori fiókok és a beállítások megmaradnak. Nem vonható vissza.
     reset_confirmation_hint: "Írja be: I KNOW WHAT I AM DOING a gomb engedélyezéséhez."
     reset_database_done: Az adatbázis visszaállítva.
     captcha_provider: Captcha szolgáltató
@@ -155,7 +155,7 @@ hu:
     enable_appointment_sync_hint: Az időpontok szinkronizálásának engedélyezése a szolgáltató Google naptárával.
     manage_customers_hint: A regisztrált vendégek kezelése és foglalási előzményeik megtekintése.
     manage_services_hint: A rendszerben rendelkezésre álló szolgáltatások és kategóriák kezelése.
-    manage_users_hint: Felhasználók kezelése (adminisztrátorok, szolgáltatók, titkárok).
+    manage_users_hint: Felhasználók kezelése (adminisztrátorok, szolgáltatók, asszisztensek).
     settings_hint: Rendszer és felhasználói beállítások.
     log_out_hint: Kijelentkezés
     unavailability_periods_hint: Az foglalt időpontokban a szolgáltató nem fogad új bejelentkezéseket.
@@ -196,7 +196,7 @@ hu:
     categories: Kategóriák
     admins: Adminok
     providers: Szolgáltatók
-    secretaries: Titkárok
+    assistants: "Asszisztensek"
     mobile_number: Mobil szám
     mobile: Mobil
     state: Állam
@@ -207,10 +207,10 @@ hu:
     passwords_mismatch: A jelszavak nem egyeznek.
     admin_saved: Admin sikeresen mentve.
     provider_saved: Szolgáltató sikeresen mentve.
-    secretary_saved: Titkár sikeresen mentve.
+    assistant_saved: "Asszisztens sikeresen mentve."
     admin_deleted: Admin törölve.
     provider_deleted: Szolgáltató törölve.
-    secretary_deleted: Titkár törölve.
+    assistant_deleted: "Asszisztens sikeresen törölve."
     service_saved: Szolgáltatás sikeresen mentve.
     service_category_saved: Kategória sikeresen mentve.
     service_deleted: Szolgáltatás törölve.
@@ -285,7 +285,7 @@ hu:
     delete_service: Szolgáltatás törlése
     delete_service_category: Szolgáltatás kategória törlése
     delete_provider: Szolgáltató törlése
-    delete_secretary: Titkár törlése
+    delete_assistant: "Asszisztens törlése"
     delete_appointment: Időpont törlése
     delete_unavailability: Nem foglalható időpont törlése
     delete: Törlés
@@ -438,7 +438,7 @@ hu:
     what_kind_of_event: Milyen típusú eseményt szeretne hozzáadni?
     theme: Téma
     limit_customer_access: Ügyfél hozzáférés korlátozása
-    limit_customer_access_hint: Ha engedélyezve van, a szolgáltatók és titkárok csak azokhoz az ügyfelekhez férhetnek hozzá, akikkel időpontjuk van.
+    limit_customer_access_hint: Ha engedélyezve van, a szolgáltatók és asszisztensek csak azokhoz az ügyfelekhez férhetnek hozzá, akikkel időpontjuk van.
     url: URL
     secret_token: Titkos Token
     verify_ssl: SSL ellenőrzése
@@ -454,8 +454,8 @@ hu:
     service_category_delete: Kategória törlése
     provider_save: Szolgáltató mentése
     provider_delete: Szolgáltató törlése
-    secretary_save: Titkár mentése
-    secretary_delete: Titkár törlése
+    assistant_save: "Asszisztens mentése"
+    assistant_delete: "Asszisztens törlése"
     admin_save: Admin mentése
     admin_delete: Admin törlése
     options: Beállítások
@@ -716,7 +716,7 @@ hu:
     notification_send_to: Send to
     notification_audience_customer: Customer
     notification_audience_provider: Provider
-    notification_audience_admins: Admins and secretaries
+    notification_audience_admins: "Adminisztrátorok és asszisztensek"
     notification_no_providers: No providers are enabled. Enable one on the Providers page first.
     notification_short_text: Short Text (Email Subject or SMS)
     notification_long_text: Long Text (for providers that support it, e.g. Email Body)

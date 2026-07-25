@@ -58,7 +58,7 @@ sv:
     skipped: överhoppade
     no_file_selected: Ingen fil vald.
     reset_database: Återställ databasen
-    reset_database_warning: Detta raderar permanent alla bokningar, kunder, utförare, sekreterare, tjänster och kategorier. Administratörskonton och inställningar behålls. Kan inte ångras.
+    reset_database_warning: Detta raderar permanent alla bokningar, kunder, utförare, assistenter, tjänster och kategorier. Administratörskonton och inställningar behålls. Kan inte ångras.
     reset_confirmation_hint: "Skriv I KNOW WHAT I AM DOING för att aktivera knappen."
     reset_database_done: Databasen har återställts.
     captcha_provider: Captcha-leverantör
@@ -196,7 +196,7 @@ sv:
     categories: Kategorier
     admins: Administratörer
     providers: Utförare
-    secretaries: Assistenter
+    assistants: "Assistenter"
     mobile_number: Mobilnummer
     mobile: Mobil
     state: Land
@@ -207,10 +207,10 @@ sv:
     passwords_mismatch: Lösenordet stämmer inte.
     admin_saved: Administratören är sparad
     provider_saved: Utföraren är sparad
-    secretary_saved: Assistenten är sparad
+    assistant_saved: "Assistenten är sparad"
     admin_deleted: Administratören är borttagen
     provider_deleted: Utföraren är borttagen
-    secretary_deleted: Assistenten är borttagen
+    assistant_deleted: "Assistenten är borttagen"
     service_saved: Tjänsten är sparad
     service_category_saved: Tjänstekategorin är sparad
     service_deleted: Tjänsten är borttagen
@@ -285,7 +285,7 @@ sv:
     delete_service: Ta bort tjänst
     delete_service_category: Ta bort tjänstekategori
     delete_provider: Ta bort utförare
-    delete_secretary: Ta bort assistent
+    delete_assistant: "Ta bort assistent"
     delete_appointment: Ta bort bokning
     delete_unavailability: Ta bort låst period
     delete: Ta bort
@@ -454,8 +454,8 @@ sv:
     service_category_delete: Ta bort tjänstekategori
     provider_save: Spara utförare
     provider_delete: Ta bort utförare
-    secretary_save: Spara assistent
-    secretary_delete: Ta bort assistent
+    assistant_save: "Assistent sparad"
+    assistant_delete: "Assistent borttagen"
     admin_save: Spara administratör
     admin_delete: Ta bort administratör
     options: Alternativ
@@ -716,7 +716,7 @@ sv:
     notification_send_to: Send to
     notification_audience_customer: Customer
     notification_audience_provider: Provider
-    notification_audience_admins: Admins and secretaries
+    notification_audience_admins: "Administratörer och assistenter"
     notification_no_providers: No providers are enabled. Enable one on the Providers page first.
     notification_short_text: Short Text (Email Subject or SMS)
     notification_long_text: Long Text (for providers that support it, e.g. Email Body)

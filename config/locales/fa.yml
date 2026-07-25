@@ -58,7 +58,7 @@ fa:
     skipped: رد شد
     no_file_selected: فایلی انتخاب نشده است.
     reset_database: بازنشانی پایگاه داده
-    reset_database_warning: این کار همه قرارها، مشتریان، ارائه‌دهندگان، منشی‌ها، خدمات و دسته‌ها را برای همیشه حذف می‌کند. حساب‌های مدیر و تنظیمات حفظ می‌شوند. قابل بازگشت نیست.
+    reset_database_warning: این کار همه قرارها، مشتریان، ارائه‌دهندگان، دستیاران، خدمات و دسته‌ها را برای همیشه حذف می‌کند. حساب‌های مدیر و تنظیمات حفظ می‌شوند. قابل بازگشت نیست.
     reset_confirmation_hint: "برای فعال کردن دکمه I KNOW WHAT I AM DOING را تایپ کنید."
     reset_database_done: پایگاه داده بازنشانی شد.
     captcha_provider: ارائه‌دهنده کپچا
@@ -155,7 +155,7 @@ fa:
     enable_appointment_sync_hint: فعال کردن همگام سازی قرارها بر روی تقویم ارائه دهنده
     manage_customers_hint: مدیریت کاربران ثبت شده و نوبت های آن ها
     manage_services_hint: مدیریت خدمات و دسته بندی های سیستم
-    manage_users_hint: مدیریت کاربران (مدیران، منشی ها، ارائه دهندگان)
+    manage_users_hint: مدیریت کاربران (مدیران، دستیاران، ارائه دهندگان)
     settings_hint: تنظیمات سیستم و کاربران
     log_out_hint: خروج از سیستم
     unavailability_periods_hint: در طول زمان در دسترس نبودن، ارائه دهنده قرار جدیدی را نمی پذیرد
@@ -196,7 +196,7 @@ fa:
     categories: دسته بنده ها
     admins: مدیران
     providers: ارائه دهندگان
-    secretaries: منشی ها
+    assistants: "دستیاران"
     mobile_number: شماره موبایل
     mobile: موبایل
     state: ایالت
@@ -207,10 +207,10 @@ fa:
     passwords_mismatch: رمزهای عبور با هم مطابقت ندارند
     admin_saved: مدیر با موفقیت ذخیره شد
     provider_saved: ارائه دهنده با موفقیت ذخیره شد
-    secretary_saved: منشی با موفقیت ذخیره شد
+    assistant_saved: "دستیار با موفقیت ذخیره شد."
     admin_deleted: مدیر با موفقیت حذف شد
     provider_deleted: ارائه دهنده با موفقیت حذف شد
-    secretary_deleted: منشی با موفقیت حذف شد
+    assistant_deleted: "دستیار با موفقیت حذف شد."
     service_saved: خدمت با موفقیت ذخیره شد.
     service_category_saved: دستنه بندی خدمت با موفقیت ذخیره شد
     service_deleted: خدمت با موفقیت حذف شد
@@ -285,7 +285,7 @@ fa:
     delete_service: حذف خدمت
     delete_service_category: حذف دسته بندی خدمت
     delete_provider: حذف ارائه دهنده
-    delete_secretary: حذف منشی
+    delete_assistant: "حذف دستیار"
     delete_appointment: حذف قرار
     delete_unavailability: حذف دوره در دسترس نبودن
     delete: حذف
@@ -438,7 +438,7 @@ fa:
     what_kind_of_event: چه نوع رویدادی می‌خواهید اضافه کنید؟
     theme: تم
     limit_customer_access: محدود کردن دسترسی مشتری
-    limit_customer_access_hint: اگر فعال شود، ارائه‌دهندگان و منشی‌ها فقط قادر خواهند بود به مشتریانی که با آنها قرار ملاقات دارند دسترسی پیدا کنند.
+    limit_customer_access_hint: اگر فعال شود، ارائه‌دهندگان و دستیاران فقط قادر خواهند بود به مشتریانی که با آنها قرار ملاقات دارند دسترسی پیدا کنند.
     url: آدرس URL
     secret_token: توکن مخفی
     verify_ssl: تأیید SSL
@@ -454,8 +454,8 @@ fa:
     service_category_delete: حذف دسته‌بندی
     provider_save: ذخیره ارائه‌دهنده
     provider_delete: حذف ارائه‌دهنده
-    secretary_save: ذخیره منشی
-    secretary_delete: حذف منشی
+    assistant_save: "ذخیره دستیار"
+    assistant_delete: "حذف دستیار"
     admin_save: ذخیره مدیر
     admin_delete: حذف مدیر
     options: گزینه‌ها
@@ -716,7 +716,7 @@ fa:
     notification_send_to: Send to
     notification_audience_customer: Customer
     notification_audience_provider: Provider
-    notification_audience_admins: Admins and secretaries
+    notification_audience_admins: "مدیران و دستیاران"
     notification_no_providers: No providers are enabled. Enable one on the Providers page first.
     notification_short_text: Short Text (Email Subject or SMS)
     notification_long_text: Long Text (for providers that support it, e.g. Email Body)

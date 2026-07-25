@@ -14,7 +14,7 @@ zane:
 sam:
   name: Sam I Wonder
   email: sam@example.org
-  role: secretary
+  role: assistant
   timezone: UTC
 
 jx:

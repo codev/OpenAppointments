@@ -447,8 +447,8 @@ App.Components.AppointmentsModal = (function () {
                     }
 
                     if (
-                        vars('role_slug') === App.Layouts.Backend.DB_SLUG_SECRETARY &&
-                        vars('secretary_providers').indexOf(Number(provider.id)) === -1
+                        vars('role_slug') === App.Layouts.Backend.DB_SLUG_ASSISTANT &&
+                        vars('assistant_providers').indexOf(Number(provider.id)) === -1
                     ) {
                         return; // continue
                     }

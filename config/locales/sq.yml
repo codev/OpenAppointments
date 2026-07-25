@@ -58,7 +58,7 @@ sq:
     skipped: anashkaluar
     no_file_selected: Asnjë skedar i zgjedhur.
     reset_database: Rivendos bazën e të dhënave
-    reset_database_warning: Kjo fshin përgjithmonë të gjitha takimet, klientët, ofruesit, sekretarët, shërbimet dhe kategoritë. Llogaritë e administratorëve dhe cilësimet ruhen. E pakthyeshme.
+    reset_database_warning: Kjo fshin përgjithmonë të gjitha takimet, klientët, ofruesit, asistentët, shërbimet dhe kategoritë. Llogaritë e administratorëve dhe cilësimet ruhen. E pakthyeshme.
     reset_confirmation_hint: "Shkruani I KNOW WHAT I AM DOING për të aktivizuar butonin."
     reset_database_done: Baza e të dhënave u rivendos.
     captcha_provider: Ofruesi i captcha
@@ -155,7 +155,7 @@ sq:
     enable_appointment_sync_hint: Aktivizo sinkronizimin e takimeve me një kalendar të jashtëm.
     manage_customers_hint: Menaxhoni klientët e regjistruar dhe shikoni historinë e rezervimeve të tyre.
     manage_services_hint: Menaxhoni shërbimet dhe kategoritë e disponueshme të sistemit.
-    manage_users_hint: Menaxhoni përdoruesit e backend (administratorë, ofrues, sekretarë).
+    manage_users_hint: Menaxhoni përdoruesit e backend (administratorë, ofrues, asistentë).
     settings_hint: Vendosni cilësimet e sistemit dhe përdoruesit.
     log_out_hint: Dilni nga sistemi.
     unavailability_periods_hint: Gjatë periudhave të pamundësisë, ofruesi nuk do të pranojë takime të reja.
@@ -196,7 +196,7 @@ sq:
     categories: Kategoritë
     admins: Administratorët
     providers: Ofruesit
-    secretaries: Sekretarët
+    assistants: "Asistentët"
     mobile_number: Numri i Celularit
     mobile: Celular
     state: Shteti
@@ -207,10 +207,10 @@ sq:
     passwords_mismatch: Fjalëkalimet nuk përputhen.
     admin_saved: Administratori u ruajt me sukses.
     provider_saved: Ofruesi u ruajt me sukses.
-    secretary_saved: Sekretari u ruajt me sukses.
+    assistant_saved: "Asistenti u ruajt me sukses."
     admin_deleted: Administratori u fshi me sukses.
     provider_deleted: Ofruesi u fshi me sukses.
-    secretary_deleted: Sekretari u fshi me sukses.
+    assistant_deleted: "Asistenti u fshi me sukses."
     service_saved: Shërbimi u ruajt me sukses.
     service_category_saved: Kategoria e shërbimit u ruajt me sukses.
     service_deleted: Shërbimi u fshi me sukses.
@@ -285,7 +285,7 @@ sq:
     delete_service: Fshi Shërbimin
     delete_service_category: Fshi Kategorinë e Shërbimit
     delete_provider: Fshi Ofruesin
-    delete_secretary: Fshi Sekretarin
+    delete_assistant: "Fshi asistentin"
     delete_appointment: Fshi Takimin
     delete_unavailability: Fshi Pamundësinë
     delete: Fshi
@@ -438,7 +438,7 @@ sq:
     what_kind_of_event: Çfarë lloj ngjarjeje dëshironi të shtoni?
     theme: Tema
     limit_customer_access: Kufizo Qasjen e Klientit
-    limit_customer_access_hint: Nëse aktivizohet, ofruesit dhe sekretarët do të jenë në gjendje të kenë qasje vetëm te klientët me të cilët kanë një takim.
+    limit_customer_access_hint: Nëse aktivizohet, ofruesit dhe asistentët do të jenë në gjendje të kenë qasje vetëm te klientët me të cilët kanë një takim.
     url: URL
     secret_token: Token Sekret
     verify_ssl: Verifiko SSL
@@ -454,8 +454,8 @@ sq:
     service_category_delete: Fshirja e Kategorisë së Shërbimit
     provider_save: Ruajtja e Ofruesit
     provider_delete: Fshirja e Ofruesit
-    secretary_save: Ruajtja e Sekretarit
-    secretary_delete: Fshirja e Sekretarit
+    assistant_save: "Ruajtja e asistentit"
+    assistant_delete: "Fshirja e asistentit"
     admin_save: Ruajtja e Administratorit
     admin_delete: Fshirja e Administratorit
     options: Opsionet
@@ -716,7 +716,7 @@ sq:
     notification_send_to: Send to
     notification_audience_customer: Customer
     notification_audience_provider: Provider
-    notification_audience_admins: Admins and secretaries
+    notification_audience_admins: "Administratorët dhe asistentët"
     notification_no_providers: No providers are enabled. Enable one on the Providers page first.
     notification_short_text: Short Text (Email Subject or SMS)
     notification_long_text: Long Text (for providers that support it, e.g. Email Body)

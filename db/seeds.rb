@@ -8,7 +8,7 @@ roles = {
                       users: 0, system_settings: 0, user_settings: 15, webhooks: 0, blocked_periods: 0 },
   Role::CUSTOMER => { name: "Customer", is_admin: false, appointments: 0, customers: 0, services: 0,
                       users: 0, system_settings: 0, user_settings: 0, webhooks: 0, blocked_periods: 0 },
-  Role::SECRETARY => { name: "Secretary", is_admin: false, appointments: 15, customers: 15, services: 0,
+  Role::ASSISTANT => { name: "Assistant", is_admin: false, appointments: 15, customers: 15, services: 0,
                        users: 0, system_settings: 0, user_settings: 15, webhooks: 0, blocked_periods: 0 }
 }
 

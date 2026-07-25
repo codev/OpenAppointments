@@ -58,7 +58,7 @@ nl:
     skipped: overgeslagen
     no_file_selected: Geen bestand geselecteerd.
     reset_database: Database resetten
-    reset_database_warning: Dit verwijdert permanent alle afspraken, klanten, aanbieders, secretariaten, diensten en categorieën. Beheerdersaccounts en instellingen blijven behouden. Onomkeerbaar.
+    reset_database_warning: Dit verwijdert permanent alle afspraken, klanten, aanbieders, assistenten, diensten en categorieën. Beheerdersaccounts en instellingen blijven behouden. Onomkeerbaar.
     reset_confirmation_hint: "Typ I KNOW WHAT I AM DOING om de knop in te schakelen."
     reset_database_done: De database is gereset.
     captcha_provider: Captcha-aanbieder
@@ -196,7 +196,7 @@ nl:
     categories: Categorieën
     admins: Beheerders
     providers: Medewerkers
-    secretaries: Secretarissen
+    assistants: "Assistenten"
     mobile_number: Mobiel nummer
     mobile: Mobiel
     state: Provincie/land
@@ -207,10 +207,10 @@ nl:
     passwords_mismatch: De wachtwoorden zijn niet gelijk.
     admin_saved: Beheerder succesvol opgeslagen.
     provider_saved: Medewerker succesvol opgeslagen.
-    secretary_saved: Secretaris succesvol opgeslagen.
+    assistant_saved: "Assistent succesvol opgeslagen."
     admin_deleted: Beheerder succesvol verwijderd.
     provider_deleted: Medewerker succesvol verwijderd.
-    secretary_deleted: Secretaris succesvol verwijderd.
+    assistant_deleted: "Assistent succesvol verwijderd."
     service_saved: Dienst succesvol opgeslagen.
     service_category_saved: Dienstencategorie succesvol opgeslagen.
     service_deleted: Dienst succesvol verwijderd.
@@ -285,7 +285,7 @@ nl:
     delete_service: Dienst verwijderen
     delete_service_category: Dienstcategorie Verwijderen
     delete_provider: Verwijder medewerker
-    delete_secretary: Verwijder secretaris
+    delete_assistant: "Assistent verwijderen"
     delete_appointment: Afspraak verwijderen
     delete_unavailability: Verwijder een niet beschikbare periode
     delete: Verwijder
@@ -438,7 +438,7 @@ nl:
     what_kind_of_event: Welk soort evenement wil je toevoegen?
     theme: Thema
     limit_customer_access: Beperk Klanten Toegang
-    limit_customer_access_hint: Als ingeschakeld, kunnen providers en secretaresses alleen klanten benaderen waarmee ze een afspraak hebben.
+    limit_customer_access_hint: Als ingeschakeld, kunnen providers en assistenten alleen klanten benaderen waarmee ze een afspraak hebben.
     url: URL
     secret_token: Geheim Token
     verify_ssl: SSL Controleren
@@ -454,8 +454,8 @@ nl:
     service_category_delete: Categorie Verwijderen
     provider_save: Provider Opslaan
     provider_delete: Provider Verwijderen
-    secretary_save: Secretaresse Opslaan
-    secretary_delete: Secretaresse Verwijderen
+    assistant_save: "Assistent opslaan"
+    assistant_delete: "Assistent verwijderen"
     admin_save: Admin Opslaan
     admin_delete: Admin Verwijderen
     options: Opties
@@ -716,7 +716,7 @@ nl:
     notification_send_to: Send to
     notification_audience_customer: Customer
     notification_audience_provider: Provider
-    notification_audience_admins: Admins and secretaries
+    notification_audience_admins: "Beheerders en assistenten"
     notification_no_providers: No providers are enabled. Enable one on the Providers page first.
     notification_short_text: Short Text (Email Subject or SMS)
     notification_long_text: Long Text (for providers that support it, e.g. Email Body)

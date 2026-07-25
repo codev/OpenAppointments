@@ -22,7 +22,7 @@ window.App.Layouts.Backend = (function () {
 
     const DB_SLUG_ADMIN = 'admin';
     const DB_SLUG_PROVIDER = 'provider';
-    const DB_SLUG_SECRETARY = 'secretary';
+    const DB_SLUG_ASSISTANT = 'assistant';
     const DB_SLUG_CUSTOMER = 'customer';
 
     const PRIV_VIEW = 1;
@@ -103,7 +103,7 @@ window.App.Layouts.Backend = (function () {
     return {
         DB_SLUG_ADMIN,
         DB_SLUG_PROVIDER,
-        DB_SLUG_SECRETARY,
+        DB_SLUG_ASSISTANT,
         DB_SLUG_CUSTOMER,
         PRIV_VIEW,
         PRIV_ADD,

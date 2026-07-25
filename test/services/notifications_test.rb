@@ -79,12 +79,12 @@ class NotificationsTest < ActiveSupport::TestCase
     assert_includes Message.sole.body, "Cancelled because Closed"
   end
 
-  test "secretaries are notified only when linked to the provider" do
+  test "assistants are notified only when linked to the provider" do
     create_notification(audiences: %w[admins])
     Notifications.appointment_saved(@appointment, @service, @provider, @customer)
     assert_equal 1, Message.count # admin only
 
-    SecretaryProviderLink.create!(id_users_secretary: users(:sam).id, id_users_provider: @provider.id)
+    AssistantProviderLink.create!(id_users_assistant: users(:sam).id, id_users_provider: @provider.id)
     Message.delete_all
     Notifications.appointment_saved(@appointment, @service, @provider, @customer)
     assert_equal 2, Message.count

@@ -58,7 +58,7 @@
     skipped: hoppet over
     no_file_selected: Ingen fil valgt.
     reset_database: Tilbakestill database
-    reset_database_warning: Dette sletter permanent alle avtaler, kunder, tilbydere, sekretærer, tjenester og kategorier. Administratorkontoer og innstillinger beholdes. Kan ikke angres.
+    reset_database_warning: Dette sletter permanent alle avtaler, kunder, tilbydere, assistenter, tjenester og kategorier. Administratorkontoer og innstillinger beholdes. Kan ikke angres.
     reset_confirmation_hint: "Skriv I KNOW WHAT I AM DOING for å aktivere knappen."
     reset_database_done: Databasen er tilbakestilt.
     captcha_provider: Captcha-leverandør
@@ -155,7 +155,7 @@
     enable_appointment_sync_hint: Aktiver avtalessynkronisering med en ekstern kalender.
     manage_customers_hint: Administrer registrerte kunder og se deres bestillingshistorikk.
     manage_services_hint: Administrer de tilgjengelige tjenestene og kategoriene i systemet.
-    manage_users_hint: Administrer backend-brukere (administratorer, leverandører, sekretærer).
+    manage_users_hint: Administrer backend-brukere (administratorer, leverandører, assistenter).
     settings_hint: Angi system- og brukerinnstillinger.
     log_out_hint: Logg ut av systemet.
     unavailability_periods_hint: I perioder med utilgjengelighet vil leverandøren ikke akseptere nye avtaler.
@@ -196,7 +196,7 @@
     categories: Kategorier
     admins: Administratorer
     providers: Leverandører
-    secretaries: Sekretærer
+    assistants: "Assistenter"
     mobile_number: Mobilnummer
     mobile: Mobil
     state: Stat
@@ -207,10 +207,10 @@
     passwords_mismatch: Passordene stemmer ikke overens.
     admin_saved: Administrator lagret.
     provider_saved: Leverandør lagret.
-    secretary_saved: Sekretær lagret.
+    assistant_saved: "Assistenten ble lagret."
     admin_deleted: Administrator slettet.
     provider_deleted: Leverandør slettet.
-    secretary_deleted: Sekretær slettet.
+    assistant_deleted: "Assistenten ble slettet."
     service_saved: Tjeneste lagret.
     service_category_saved: Tjenestekategori lagret.
     service_deleted: Tjeneste slettet.
@@ -285,7 +285,7 @@
     delete_service: Slett Tjeneste
     delete_service_category: Slett Tjenestekategori
     delete_provider: Slett Leverandør
-    delete_secretary: Slett Sekretær
+    delete_assistant: "Slett assistent"
     delete_appointment: Slett tid
     delete_unavailability: Slett Utilgjengelighet
     delete: Slett
@@ -438,7 +438,7 @@
     what_kind_of_event: Hva slags arrangement ønsker du å legge til?
     theme: Tema
     limit_customer_access: Begrens kundetilgang
-    limit_customer_access_hint: Hvis aktivert, vil leverandører og sekretærer bare kunne få tilgang til kunder de har en avtale med.
+    limit_customer_access_hint: Hvis aktivert, vil leverandører og assistenter bare kunne få tilgang til kunder de har en avtale med.
     url: URL
     secret_token: Hemmelig token
     verify_ssl: Verifiser SSL
@@ -454,8 +454,8 @@
     service_category_delete: Slett tjenestekategori
     provider_save: Tilbyderlagring
     provider_delete: Tilbydersletting
-    secretary_save: Sekretærlagring
-    secretary_delete: Sekretær Slett
+    assistant_save: "Assistent lagret"
+    assistant_delete: "Assistent slettet"
     admin_save: Administratorlagring
     admin_delete: Administratorsletting
     options: Alternativer
@@ -716,7 +716,7 @@
     notification_send_to: Send to
     notification_audience_customer: Customer
     notification_audience_provider: Provider
-    notification_audience_admins: Admins and secretaries
+    notification_audience_admins: "Administratorer og assistenter"
     notification_no_providers: No providers are enabled. Enable one on the Providers page first.
     notification_short_text: Short Text (Email Subject or SMS)
     notification_long_text: Long Text (for providers that support it, e.g. Email Body)

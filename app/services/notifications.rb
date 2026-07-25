@@ -84,14 +84,14 @@ module Notifications
   end
 
   # [user, audience] pairs. The admins audience keeps EA's fan-out: every admin
-  # plus the secretaries the provider is assigned to.
+  # plus the assistants the provider is assigned to.
   def recipients(notification, provider, customer)
     pairs = []
     pairs << [ customer, "customer" ] if customer && notification.audience?(:customer) && contactable?(customer)
     pairs << [ provider, "provider" ] if provider && notification.audience?(:provider)
     if notification.audience?(:admins)
       User.admins.each { |admin| pairs << [ admin, "admins" ] }
-      secretaries_for(provider).each { |secretary| pairs << [ secretary, "admins" ] }
+      assistants_for(provider).each { |assistant| pairs << [ assistant, "admins" ] }
     end
     pairs
   end
@@ -102,11 +102,11 @@ module Notifications
     !customer.notes.to_s.include?("do_not_contact=yes")
   end
 
-  def secretaries_for(provider)
+  def assistants_for(provider)
     return [] unless provider
 
-    User.secretaries.includes(:providers).select do |secretary|
-      secretary.providers.map(&:id).include?(provider.id)
+    User.assistants.includes(:providers).select do |assistant|
+      assistant.providers.map(&:id).include?(provider.id)
     end
   end
 

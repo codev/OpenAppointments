@@ -58,7 +58,7 @@ th:
     skipped: ข้ามแล้ว
     no_file_selected: ยังไม่ได้เลือกไฟล์
     reset_database: รีเซ็ตฐานข้อมูล
-    reset_database_warning: การดำเนินการนี้จะลบการนัดหมาย ลูกค้า ผู้ให้บริการ เลขานุการ บริการ และหมวดหมู่ทั้งหมดอย่างถาวร บัญชีผู้ดูแลระบบและการตั้งค่าจะยังคงอยู่ ไม่สามารถย้อนกลับได้
+    reset_database_warning: การดำเนินการนี้จะลบการนัดหมาย ลูกค้า ผู้ให้บริการ ผู้ช่วย บริการ และหมวดหมู่ทั้งหมดอย่างถาวร บัญชีผู้ดูแลระบบและการตั้งค่าจะยังคงอยู่ ไม่สามารถย้อนกลับได้
     reset_confirmation_hint: "พิมพ์ I KNOW WHAT I AM DOING เพื่อเปิดใช้งานปุ่ม"
     reset_database_done: รีเซ็ตฐานข้อมูลแล้ว
     captcha_provider: ผู้ให้บริการ captcha
@@ -155,7 +155,7 @@ th:
     enable_appointment_sync_hint: เปิดใช้งานการซิงโครไนซ์การนัดหมายกับบัญชี Google ปฏิทินของผู้ให้บริการ
     manage_customers_hint: จัดการลูกค้าที่ลงทะเบียนและดูประวัติการจองของพวกเขา
     manage_services_hint: จัดการบริการและหมวดหมู่ที่มีอยู่ของระบบ
-    manage_users_hint: จัดการผู้ใช้แบ็กเอนด์ (ผู้ดูแลระบบ ผู้ให้บริการ โปรเซสเซอร์)
+    manage_users_hint: จัดการผู้ใช้แบ็กเอนด์ (ผู้ดูแลระบบ ผู้ให้บริการ ผู้ช่วย)
     settings_hint: ตั้งค่าระบบและการตั้งค่าผู้ใช้
     log_out_hint: ออกจากระบบ
     unavailability_periods_hint: During unavailability periods the provider won\\'t accept new appointments.
@@ -196,7 +196,7 @@ th:
     categories: หมวดหมู่
     admins: ผู้ดูแลระบบ
     providers: ผู้ให้บริการ
-    secretaries: โปรเซสเซอร์
+    assistants: "ผู้ช่วย"
     mobile_number: เบอร์มือถือ
     mobile: มือถือ
     state: เมือง/รัฐ
@@ -207,10 +207,10 @@ th:
     passwords_mismatch: รหัสผ่านไม่ตรงกัน
     admin_saved: บันทึกผู้ดูแลระบบเรียบร้อยแล้ว
     provider_saved: บันทึกผู้ให้บริการเรียบร้อยแล้ว
-    secretary_saved: บันทึกเลขานุการเรียบร้อยแล้ว
+    assistant_saved: "บันทึกผู้ช่วยเรียบร้อยแล้ว"
     admin_deleted: ลบผู้ดูแลระบบเรียบร้อยแล้ว
     provider_deleted: ลบผู้ให้บริการเรียบร้อยแล้ว
-    secretary_deleted: ลบโปรเซสเซอร์สำเร็จแล้ว
+    assistant_deleted: "ลบผู้ช่วยเรียบร้อยแล้ว"
     service_saved: บันทึกบริการเรียบร้อยแล้ว
     service_category_saved: บันทึกหมวดหมู่บริการเรียบร้อยแล้ว
     service_deleted: ลบบริการเรียบร้อยแล้ว
@@ -285,7 +285,7 @@ th:
     delete_service: ลบบริการ
     delete_service_category: ลบหมวดหมู่บริการ
     delete_provider: ลบผู้ให้บริการ
-    delete_secretary: ลบโปรเซสเซอร์
+    delete_assistant: "ลบผู้ช่วย"
     delete_appointment: ลบการนัดหมาย
     delete_unavailability: ลบช่วงเวลาที่ไม่ว่าง
     delete: ลบ
@@ -438,7 +438,7 @@ th:
     what_kind_of_event: คุณต้องการเพิ่มกิจกรรมประเภทใด
     theme: ธีม
     limit_customer_access: จำกัดการเข้าถึงของลูกค้า
-    limit_customer_access_hint: หากเปิดใช้งาน ผู้ให้บริการและเลขานุการจะสามารถเข้าถึงเฉพาะลูกค้าที่มีการนัดหมายเท่านั้น
+    limit_customer_access_hint: หากเปิดใช้งาน ผู้ให้บริการและผู้ช่วยจะสามารถเข้าถึงเฉพาะลูกค้าที่มีการนัดหมายเท่านั้น
     url: URL
     secret_token: โทเค็นลับ
     verify_ssl: ตรวจสอบ SSL
@@ -454,8 +454,8 @@ th:
     service_category_delete: ลบประเภทบริการ
     provider_save: บันทึกของผู้ให้บริการ
     provider_delete: ผู้ให้บริการลบ
-    secretary_save: เลขานุการบันทึก
-    secretary_delete: เลขา ลบ
+    assistant_save: "บันทึกผู้ช่วย"
+    assistant_delete: "ลบผู้ช่วย"
     admin_save: ผู้ดูแลระบบบันทึก
     admin_delete: แอดมินลบ
     options: ตัวเลือก
@@ -716,7 +716,7 @@ th:
     notification_send_to: Send to
     notification_audience_customer: Customer
     notification_audience_provider: Provider
-    notification_audience_admins: Admins and secretaries
+    notification_audience_admins: "ผู้ดูแลระบบและผู้ช่วย"
     notification_no_providers: No providers are enabled. Enable one on the Providers page first.
     notification_short_text: Short Text (Email Subject or SMS)
     notification_long_text: Long Text (for providers that support it, e.g. Email Body)

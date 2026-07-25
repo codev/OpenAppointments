@@ -1,12 +1,31 @@
 require "test_helper"
 
 class BackendCrudTest < ActionDispatch::IntegrationTest
-  PAGES = %w[customers services service_categories providers secretaries admins
+  PAGES = %w[customers services service_categories providers assistants admins
              blocked_periods webhooks].freeze
 
   def login_admin
     post "/login/validate", params: { username: "administrator", password: "administrator1" }
     assert_equal({ "success" => true }, response.parsed_body)
+  end
+
+  test "the old secretaries page URL redirects to assistants" do
+    login_admin
+    get "/secretaries"
+    assert_redirected_to "/assistants"
+  end
+
+  test "the assistant role and language carry no secretary naming" do
+    assert Role.exists?(slug: "assistant")
+    assert_not Role.exists?(slug: "secretary")
+    I18n.available_locales.each do |locale|
+      %w[assistants assistant_saved delete_assistant].each do |key|
+        assert I18n.t("ea.#{key}", locale: locale, fallback: false, default: nil).present?,
+               "missing ea.#{key} in #{locale}"
+      end
+      assert_nil I18n.t("ea.secretaries", locale: locale, fallback: false, default: nil),
+                 "old ea.secretaries still present in #{locale}"
+    end
   end
 
   def login_customer

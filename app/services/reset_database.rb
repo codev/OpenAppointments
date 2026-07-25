@@ -1,5 +1,5 @@
 # Database reset for the manage-data page. The default reset removes business
-# data (appointments, customers, providers, secretaries, services, categories,
+# data (appointments, customers, providers, assistants, services, categories,
 # consents, blocked periods, working plan exceptions) and keeps admin accounts
 # and settings. A full reset also deletes admins, webhooks and all settings,
 # reseeds the defaults and recreates the fresh-install administrator.
@@ -13,10 +13,10 @@ module ResetDatabase
       BlockedPeriod.delete_all
       WorkingPlanException.delete_all
       ServiceProviderLink.delete_all
-      SecretaryProviderLink.delete_all
+      AssistantProviderLink.delete_all
       Service.destroy_all
       ServiceCategory.destroy_all
-      [ User.customers, User.providers, User.secretaries ].each do |scope|
+      [ User.customers, User.providers, User.assistants ].each do |scope|
         scope.find_each(&:destroy!)
       end
 

@@ -58,7 +58,7 @@ pl:
     skipped: pominięto
     no_file_selected: Nie wybrano pliku.
     reset_database: Zresetuj bazę danych
-    reset_database_warning: To trwale usuwa wszystkie wizyty, klientów, usługodawców, sekretarzy, usługi i kategorie. Konta administratorów i ustawienia pozostają. Nieodwracalne.
+    reset_database_warning: To trwale usuwa wszystkie wizyty, klientów, usługodawców, asystentów, usługi i kategorie. Konta administratorów i ustawienia pozostają. Nieodwracalne.
     reset_confirmation_hint: "Wpisz I KNOW WHAT I AM DOING, aby włączyć przycisk."
     reset_database_done: Baza danych została zresetowana.
     captcha_provider: Dostawca captcha
@@ -155,7 +155,7 @@ pl:
     enable_appointment_sync_hint: Włącz synchronizację wizyt z kalendarzem Google personelu.
     manage_customers_hint: Zarządzaj zarejestrowanymi klientami i obejrzyj ich historię rejestracji.
     manage_services_hint: Zarządzaj dostępnymi zabiegami i kategoriami systemu.
-    manage_users_hint: Zarządzaj użytkownikami.(admin, personel, sekretarka, inne)
+    manage_users_hint: Zarządzaj użytkownikami.(admin, personel, asystent, inne)
     settings_hint: Zmień ustawienia systemu i użytkownika
     log_out_hint: Wyloguj z systemu
     unavailability_periods_hint: Podczas niedostępnych okresów personel nie akceptuje nowych wizyt.
@@ -196,7 +196,7 @@ pl:
     categories: Kategorie
     admins: Administratorzy
     providers: Personel
-    secretaries: Sekretarze
+    assistants: "Asystenci"
     mobile_number: nr kom.
     mobile: Komórka
     state: Woj.
@@ -207,10 +207,10 @@ pl:
     passwords_mismatch: Nie poprawne hasło.
     admin_saved: Zapisano Administratora pomyślnie.
     provider_saved: Personel zapisany pomyślnie.
-    secretary_saved: Sekretarka zapisana pomyślnie.
+    assistant_saved: "Asystent zapisany pomyślnie."
     admin_deleted: Usunięto administratora pomyślnie
     provider_deleted: Personel usunięty pomyślnie
-    secretary_deleted: Sekretarka usunięta pomyślnie
+    assistant_deleted: "Asystent usunięty pomyślnie."
     service_saved: Zabieg zapisany pomyślnie.
     service_category_saved: Kategoria zabiegu zapisana pomyślnie
     service_deleted: Zabieg usunięty pomyślnie
@@ -285,7 +285,7 @@ pl:
     delete_service: Usuń Zabieg
     delete_service_category: Usuń kategorię zabiegów.
     delete_provider: Usuń personel
-    delete_secretary: Usuń sekretarkę
+    delete_assistant: "Usuń asystenta"
     delete_appointment: Usuń Wizytę
     delete_unavailability: Usuń Niedostępny Okres
     delete: Usuń
@@ -438,7 +438,7 @@ pl:
     what_kind_of_event: Jakiego rodzaju wydarzenie chciałbyś dodać?
     theme: Motyw
     limit_customer_access: Ogranicz dostęp klientów
-    limit_customer_access_hint: Jeśli włączone, dostawcy i sekretarze będą mogli uzyskać dostęp tylko do klientów, z którymi mają umówione spotkanie.
+    limit_customer_access_hint: Jeśli włączone, dostawcy i asystenci będą mogli uzyskać dostęp tylko do klientów, z którymi mają umówione spotkanie.
     url: URL
     secret_token: Sekretny token
     verify_ssl: Weryfikuj SSL
@@ -454,8 +454,8 @@ pl:
     service_category_delete: Usuń kategorię
     provider_save: Zapisz dostawcę
     provider_delete: Usuń dostawcę
-    secretary_save: Zapisz sekretarza
-    secretary_delete: Usuń sekretarza
+    assistant_save: "Zapis asystenta"
+    assistant_delete: "Usunięcie asystenta"
     admin_save: Zapisz administratora
     admin_delete: Usuń administratora
     options: Opcje
@@ -716,7 +716,7 @@ pl:
     notification_send_to: Send to
     notification_audience_customer: Customer
     notification_audience_provider: Provider
-    notification_audience_admins: Admins and secretaries
+    notification_audience_admins: "Administratorzy i asystenci"
     notification_no_providers: No providers are enabled. Enable one on the Providers page first.
     notification_short_text: Short Text (Email Subject or SMS)
     notification_long_text: Long Text (for providers that support it, e.g. Email Body)

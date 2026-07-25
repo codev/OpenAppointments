@@ -58,7 +58,7 @@ ar:
     skipped: متخطى
     no_file_selected: لم يتم اختيار ملف.
     reset_database: إعادة تعيين قاعدة البيانات
-    reset_database_warning: سيحذف هذا نهائيا جميع المواعيد والعملاء ومقدمي الخدمة والسكرتارية والخدمات والفئات. تبقى حسابات المديرين والإعدادات. لا يمكن التراجع عن هذا.
+    reset_database_warning: سيحذف هذا نهائيا جميع المواعيد والعملاء ومقدمي الخدمة والمساعدين والخدمات والفئات. تبقى حسابات المديرين والإعدادات. لا يمكن التراجع عن هذا.
     reset_confirmation_hint: "اكتب I KNOW WHAT I AM DOING لتفعيل الزر."
     reset_database_done: تمت إعادة تعيين قاعدة البيانات.
     captcha_provider: مزود الكابتشا
@@ -155,7 +155,7 @@ ar:
     enable_appointment_sync_hint: تمكين المزامنة للمواعيد على تقويم جوجل الخاص بالمزود
     manage_customers_hint: ادارة الزبائن المسجلين واستعراض حجوزاتهم السابقة
     manage_services_hint: ادارة الخدمات والأقسام أو الفئات المتاحة في البرنامج
-    manage_users_hint: ادارة المستخدمين (مدراء البرنامج, المزودين, السكرتيريين).
+    manage_users_hint: ادارة المستخدمين (مدراء البرنامج, المزودين, المساعدين).
     settings_hint: ضبط البرنامج أو اعدادات المستخدمين
     log_out_hint: تسجيل الخروج من البرنامج
     unavailability_periods_hint: خلال الفترات الغير متوفرة لن يقبل المزود اي موعد
@@ -196,7 +196,7 @@ ar:
     categories: الفئات
     admins: المسؤولين
     providers: المزودون
-    secretaries: السيكرتاريين
+    assistants: "المساعدون"
     mobile_number: رقم الهاتف
     mobile: جوال
     state: الحالة
@@ -207,10 +207,10 @@ ar:
     passwords_mismatch: كلمتا السر غير متطابقتين
     admin_saved: تم حفظ المسؤول بنجاح
     provider_saved: تم حفظ المزود بنجاح
-    secretary_saved: تم حفظ السكرتير بنجاح
+    assistant_saved: "تم حفظ المساعد بنجاح."
     admin_deleted: تم حذف المسؤول بنجاح
     provider_deleted: تم حذف المزود بنجاح
-    secretary_deleted: تم حذف السيكرتير بنجاح
+    assistant_deleted: "تم حذف المساعد بنجاح."
     service_saved: تم حفظ الخدمة بنجاح
     service_category_saved: تم حفظ فئة الخدمة بنجاح
     service_deleted: تم حذف الخدمة بنجاح
@@ -285,7 +285,7 @@ ar:
     delete_service: حذف الخدمة
     delete_service_category: حذف فئة الخدمة
     delete_provider: حذف المزود
-    delete_secretary: حذف السكرتير
+    delete_assistant: "حذف المساعد"
     delete_appointment: حذف الموعد
     delete_unavailability: حذف الفترة الغير متاحة
     delete: حذف
@@ -438,7 +438,7 @@ ar:
     what_kind_of_event: ما نوع الحدث الذي ترغب في إضافته؟
     theme: المظهر
     limit_customer_access: تقييد وصول العملاء
-    limit_customer_access_hint: إذا تم تمكينه، فلن يتمكن مقدمو الخدمة والأمناء من الوصول إلا إلى العملاء الذين لديهم موعد معهم.
+    limit_customer_access_hint: إذا تم تمكينه، فلن يتمكن مقدمو الخدمة والمساعدين من الوصول إلا إلى العملاء الذين لديهم موعد معهم.
     url: URL
     secret_token: رمز سري
     verify_ssl: التحقق من SSL
@@ -454,8 +454,8 @@ ar:
     service_category_delete: حذف فئة الخدمة
     provider_save: حفظ مقدم الخدمة
     provider_delete: حذف مقدم الخدمة
-    secretary_save: حفظ السكرتير
-    secretary_delete: حذف السكرتير
+    assistant_save: "حفظ المساعد"
+    assistant_delete: "حذف المساعد"
     admin_save: حفظ المدير
     admin_delete: حذف المدير
     options: خيارات
@@ -716,7 +716,7 @@ ar:
     notification_send_to: Send to
     notification_audience_customer: Customer
     notification_audience_provider: Provider
-    notification_audience_admins: Admins and secretaries
+    notification_audience_admins: "المدراء والمساعدون"
     notification_no_providers: No providers are enabled. Enable one on the Providers page first.
     notification_short_text: Short Text (Email Subject or SMS)
     notification_long_text: Long Text (for providers that support it, e.g. Email Body)

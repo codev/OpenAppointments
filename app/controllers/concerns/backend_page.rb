@@ -57,9 +57,9 @@ module BackendPage
     }.to_h
   end
 
-  def secretary_provider_ids
-    @secretary_provider_ids ||=
-      session[:role_slug] == Role::SECRETARY ? current_user.providers.map(&:id) : []
+  def assistant_provider_ids
+    @assistant_provider_ids ||=
+      session[:role_slug] == Role::ASSISTANT ? current_user.providers.map(&:id) : []
   end
 
   # EA Permissions::has_customer_access.
@@ -69,8 +69,8 @@ module BackendPage
     case session[:role_slug]
     when Role::PROVIDER
       Appointment.where(id_users_provider: session[:user_id], id_users_customer: customer_id).exists?
-    when Role::SECRETARY
-      Appointment.where(id_users_provider: secretary_provider_ids, id_users_customer: customer_id).exists?
+    when Role::ASSISTANT
+      Appointment.where(id_users_provider: assistant_provider_ids, id_users_customer: customer_id).exists?
     else
       false
     end
@@ -79,8 +79,8 @@ module BackendPage
   # EA Calendar::check_event_permissions.
   def check_event_permissions!(provider_id)
     case session[:role_slug]
-    when Role::SECRETARY
-      head :forbidden unless secretary_provider_ids.include?(provider_id.to_i)
+    when Role::ASSISTANT
+      head :forbidden unless assistant_provider_ids.include?(provider_id.to_i)
     when Role::PROVIDER
       head :forbidden unless session[:user_id].to_i == provider_id.to_i
     end

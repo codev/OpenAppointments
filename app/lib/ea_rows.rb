@@ -88,7 +88,7 @@ module EaRows
     end
   end
 
-  # EA Admins/Secretaries_model::get_settings (no working_plan_exceptions key).
+  # EA Admins/Assistants_model::get_settings (no working_plan_exceptions key).
   def user_settings_row(user)
     settings = user.settings
     return {} unless settings
@@ -96,10 +96,10 @@ module EaRows
     settings.attributes.except("id_users", "created_at", "updated_at", *SENSITIVE_SETTINGS)
   end
 
-  def secretary_row(secretary)
-    user_row(secretary).merge(
-      "settings" => user_settings_row(secretary),
-      "providers" => secretary.providers.map(&:id)
+  def assistant_row(assistant)
+    user_row(assistant).merge(
+      "settings" => user_settings_row(assistant),
+      "providers" => assistant.providers.map(&:id)
     )
   end
 

@@ -58,7 +58,7 @@ bs:
     skipped: preskoceno
     no_file_selected: Nije odabran fajl.
     reset_database: Resetuj bazu podataka
-    reset_database_warning: Ovo trajno brise sve termine, klijente, pruzatelje, sekretare, usluge i kategorije. Administratorski nalozi i postavke ostaju. Ovo se ne moze ponistiti.
+    reset_database_warning: Ovo trajno brise sve termine, klijente, pruzatelje, asistente, usluge i kategorije. Administratorski nalozi i postavke ostaju. Ovo se ne moze ponistiti.
     reset_confirmation_hint: "Upišite I KNOW WHAT I AM DOING da omogućite dugme."
     reset_database_done: Baza podataka je resetovana.
     captcha_provider: Pružatelj captche
@@ -155,7 +155,7 @@ bs:
     enable_appointment_sync_hint: Omogući sinhronizaciju termina sa eksternim kalendarom.
     manage_customers_hint: Upravljajte registrovanim klijentima i pogledajte njihovu istoriju rezervacija.
     manage_services_hint: Upravljajte dostupnim uslugama i kategorijama sistema.
-    manage_users_hint: Upravljajte pozadinskim korisnicima (administratori, provajderi, sekretari).
+    manage_users_hint: Upravljajte pozadinskim korisnicima (administratori, provajderi, asistenti).
     settings_hint: Postavite sistemske i korisničke postavke.
     log_out_hint: Odjavite se sa sistema.
     unavailability_periods_hint: Tokom perioda nedostupnosti provajder neće prihvatiti nove sastanke.
@@ -196,7 +196,7 @@ bs:
     categories: Kategorije
     admins: Admini
     providers: Provajderi
-    secretaries: Sekretarice
+    assistants: "Asistenti"
     mobile_number: Broj mobilnog telefona
     mobile: Mobitel
     state: Stanje
@@ -207,10 +207,10 @@ bs:
     passwords_mismatch: Nepodudaranje lozinki.
     admin_saved: Admin je uspješno sačuvan.
     provider_saved: Provajder je uspešno sačuvan.
-    secretary_saved: Sekretar je uspješno sačuvan.
+    assistant_saved: "Asistent uspješno sačuvan."
     admin_deleted: Admin je uspješno obrisan.
     provider_deleted: Provajder je uspešno obrisan.
-    secretary_deleted: Sekretar je uspješno izbrisan.
+    assistant_deleted: "Asistent uspješno obrisan."
     service_saved: Usluga je uspješno sačuvana.
     service_category_saved: Kategorija usluge je uspješno sačuvana.
     service_deleted: Usluga je uspješno izbrisana.
@@ -285,7 +285,7 @@ bs:
     delete_service: Izbriši uslugu
     delete_service_category: Izbriši kategoriju usluge
     delete_provider: Izbriši dobavljača
-    delete_secretary: Izbriši sekretara
+    delete_assistant: "Obriši asistenta"
     delete_appointment: Izbriši sastanak
     delete_unavailability: Izbriši nedostupnost
     delete: Izbriši
@@ -438,7 +438,7 @@ bs:
     what_kind_of_event: Kakvu vrstu događaja želite da dodate?
     theme: Tema
     limit_customer_access: Ograničite korisnički pristup
-    limit_customer_access_hint: Ako je omogućeno, provajderi i sekretarice će moći pristupiti samo klijentima sa kojima imaju zakazani sastanak.
+    limit_customer_access_hint: Ako je omogućeno, provajderi i asistenti će moći pristupiti samo klijentima sa kojima imaju zakazani sastanak.
     url: URL
     secret_token: Tajni token
     verify_ssl: Proveri SSL
@@ -454,8 +454,8 @@ bs:
     service_category_delete: Izbriši kategoriju usluge
     provider_save: Sačuvaj dobavljača
     provider_delete: Izbriši provajder
-    secretary_save: Sačuvaj sekretara
-    secretary_delete: Izbriši sekretaricu
+    assistant_save: "Snimanje asistenta"
+    assistant_delete: "Brisanje asistenta"
     admin_save: Admin Sačuvaj
     admin_delete: Admin Izbriši
     options: Opcije
@@ -716,7 +716,7 @@ bs:
     notification_send_to: Send to
     notification_audience_customer: Customer
     notification_audience_provider: Provider
-    notification_audience_admins: Admins and secretaries
+    notification_audience_admins: "Administratori i asistenti"
     notification_no_providers: No providers are enabled. Enable one on the Providers page first.
     notification_short_text: Short Text (Email Subject or SMS)
     notification_long_text: Long Text (for providers that support it, e.g. Email Body)

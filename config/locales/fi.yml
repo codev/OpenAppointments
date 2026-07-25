@@ -58,7 +58,7 @@ fi:
     skipped: ohitettu
     no_file_selected: Tiedostoa ei ole valittu.
     reset_database: Nollaa tietokanta
-    reset_database_warning: Tämä poistaa pysyvästi kaikki varaukset, asiakkaat, palveluntarjoajat, sihteerit, palvelut ja kategoriat. Ylläpitäjätilit ja asetukset säilyvät. Ei voi perua.
+    reset_database_warning: Tämä poistaa pysyvästi kaikki varaukset, asiakkaat, palveluntarjoajat, assistentit, palvelut ja kategoriat. Ylläpitäjätilit ja asetukset säilyvät. Ei voi perua.
     reset_confirmation_hint: "Kirjoita I KNOW WHAT I AM DOING ottaaksesi painikkeen käyttöön."
     reset_database_done: Tietokanta on nollattu.
     captcha_provider: Captcha-palvelu
@@ -155,7 +155,7 @@ fi:
     enable_appointment_sync_hint: Aktivoi varausten synkronointi palveluntuottajan Google-kalenteriin.
     manage_customers_hint: Hallinnoi rekisteröityjä käyttäjiä ja tarkastele heidän varaushistoriaansa.
     manage_services_hint: Hallinnoi saatavilla olevia palveluja ja järjestelmän tuoteluokkia
-    manage_users_hint: Hallinnoi taustajärjestelmän käyttäjiä (järjestelmänvalvojat, palveluntuottajat, sihteerit).
+    manage_users_hint: Hallinnoi taustajärjestelmän käyttäjiä (järjestelmänvalvojat, palveluntuottajat, assistentit).
     settings_hint: Aseta järjestelmä- ja käyttäjäasetukset.
     log_out_hint: Kirjaudu ulos järjestelmästä.
     unavailability_periods_hint: Palveluntuottajan ollessa poissaolojaksolla hänelle ei voi tehdä varauksia.
@@ -196,7 +196,7 @@ fi:
     categories: Kategoriat
     admins: Järjestelmänvalvojat
     providers: Palveluntuottajat
-    secretaries: Sihteerit
+    assistants: "Assistentit"
     mobile_number: Matkapuhelinnumero
     mobile: Matkapuhelin
     state: Maa
@@ -207,10 +207,10 @@ fi:
     passwords_mismatch: Salasanat eivät täsmää.
     admin_saved: Järjestelmänvalvoja tallennettiin onnistuneesti.
     provider_saved: Palveluntuottaja tallennettiin onnistuneesti.
-    secretary_saved: Sihteeri tallennettiin onnistuneesti.
+    assistant_saved: "Assistentti tallennettu."
     admin_deleted: Järjestelmänvalvoja poistettiin onnistuneesti.
     provider_deleted: Palveluntuottaja poistettiin onnistuneesti.
-    secretary_deleted: Sihteeri poistettiin onnistuneesti.
+    assistant_deleted: "Assistentti poistettu."
     service_saved: Palvelu tallennettiin onnistuneesti.
     service_category_saved: Palveluluokka tallennettiin onnistuneesti.
     service_deleted: Palvelu poistettiin onnistuneesti.
@@ -285,7 +285,7 @@ fi:
     delete_service: Poista palvelu
     delete_service_category: Poista palveluluokka
     delete_provider: Poista palveluntuottaja
-    delete_secretary: Poista sihteeri
+    delete_assistant: "Poista assistentti"
     delete_appointment: Poista varaus
     delete_unavailability: Poista poissaolojakso
     delete: Poista
@@ -438,7 +438,7 @@ fi:
     what_kind_of_event: Millaisen tapahtuman haluat lisätä?
     theme: Teema
     limit_customer_access: Rajoita pääsy asiakkaisiin
-    limit_customer_access_hint: Jos valittu, palveluntuottajat ja sihteerit voivat päästä ainoastaan omien asiakkaidensa tietoihin.
+    limit_customer_access_hint: Jos valittu, palveluntuottajat ja assistentit voivat päästä ainoastaan omien asiakkaidensa tietoihin.
     url: URL
     secret_token: Salainen token
     verify_ssl: Varmista SSL
@@ -454,8 +454,8 @@ fi:
     service_category_delete: Luokan poisto
     provider_save: Palveluntarjoajan tallennus
     provider_delete: Palveluntarjoajan poisto
-    secretary_save: Sihteerin tallennus
-    secretary_delete: Sihteerin poisto
+    assistant_save: "Assistentin tallennus"
+    assistant_delete: "Assistentin poisto"
     admin_save: Ylläpitäjän tallennus
     admin_delete: Ylläpitäjän poisto
     options: Asetukset
@@ -716,7 +716,7 @@ fi:
     notification_send_to: Send to
     notification_audience_customer: Customer
     notification_audience_provider: Provider
-    notification_audience_admins: Admins and secretaries
+    notification_audience_admins: "Ylläpitäjät ja assistentit"
     notification_no_providers: No providers are enabled. Enable one on the Providers page first.
     notification_short_text: Short Text (Email Subject or SMS)
     notification_long_text: Long Text (for providers that support it, e.g. Email Body)

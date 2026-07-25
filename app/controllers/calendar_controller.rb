@@ -59,7 +59,7 @@ class CalendarController < ApplicationController
       calendar_view: calendar_view,
       available_providers: available_providers,
       available_services: available_services,
-      secretary_providers: secretary_provider_ids,
+      assistant_providers: assistant_provider_ids,
       edit_appointment: edit_appointment,
       google_sync_feature: Setting.get("google_sync_feature") == "1",
       customers: customers
@@ -72,7 +72,7 @@ class CalendarController < ApplicationController
       available_languages: Localization.available_languages,
       available_providers: available_providers,
       available_services: available_services,
-      secretary_providers: secretary_provider_ids,
+      assistant_providers: assistant_provider_ids,
       appointment_status_options: JSON.parse(Setting.get("appointment_status_options", "[]")),
       **field_display_flags
     )
@@ -326,8 +326,8 @@ class CalendarController < ApplicationController
     case session[:role_slug]
     when Role::PROVIDER
       providers.where(id: session[:user_id])
-    when Role::SECRETARY
-      providers.where(id: secretary_provider_ids)
+    when Role::ASSISTANT
+      providers.where(id: assistant_provider_ids)
     else
       providers
     end
@@ -358,8 +358,8 @@ class CalendarController < ApplicationController
     case session[:role_slug]
     when Role::PROVIDER
       events.where(id_users_provider: session[:user_id])
-    when Role::SECRETARY
-      events.where(id_users_provider: secretary_provider_ids)
+    when Role::ASSISTANT
+      events.where(id_users_provider: assistant_provider_ids)
     else
       events
     end

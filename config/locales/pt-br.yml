@@ -58,7 +58,7 @@ pt-br:
     skipped: ignorados
     no_file_selected: Nenhum arquivo selecionado.
     reset_database: Redefinir banco de dados
-    reset_database_warning: Isso exclui permanentemente todos os agendamentos, clientes, prestadores, secretários, serviços e categorias. As contas de administrador e as configurações são mantidas. Irreversível.
+    reset_database_warning: Isso exclui permanentemente todos os agendamentos, clientes, prestadores, assistentes, serviços e categorias. As contas de administrador e as configurações são mantidas. Irreversível.
     reset_confirmation_hint: "Digite I KNOW WHAT I AM DOING para habilitar o botão."
     reset_database_done: O banco de dados foi redefinido.
     captcha_provider: Provedor de captcha
@@ -155,7 +155,7 @@ pt-br:
     enable_appointment_sync_hint: Ativar a sincronização de eventos atráves de uma conta do Google Calendar.
     manage_customers_hint: Gerenciar os clientes e visualizar o seu histórico.
     manage_services_hint: Gerenciar os serviços e as categorias do sistema.
-    manage_users_hint: Gerenciar os usuários de backend (administradores, fornecedores, secretárias).
+    manage_users_hint: Gerenciar os usuários de backend (administradores, fornecedores, assistentes).
     settings_hint: Definir as configurações do sistema e do usuario.
     log_out_hint: Sair do sistema.
     unavailability_periods_hint: Durante os periodos indisponíveis o fornecedor não aceitar novos agendamentos.
@@ -196,7 +196,7 @@ pt-br:
     categories: Categorias
     admins: Administradores
     providers: Atendentes
-    secretaries: Secretários
+    assistants: "Assistentes"
     mobile_number: 'Celular '
     mobile: Celular
     state: Estado
@@ -207,10 +207,10 @@ pt-br:
     passwords_mismatch: Senha inválida.
     admin_saved: Administrador salvo com sucesso.
     provider_saved: Atendende salvo com sucesso.
-    secretary_saved: Assistente salvo com sucesso.
+    assistant_saved: "Assistente salvo com sucesso."
     admin_deleted: Administrador excluído com sucesso.
     provider_deleted: Atendente excluído com sucesso.
-    secretary_deleted: Assistente excluído com sucesso.
+    assistant_deleted: "Assistente excluído com sucesso."
     service_saved: Serviço salvo com sucesso.
     service_category_saved: Categoria de serviço salvo com sucesso.
     service_deleted: Serviço excluído com sucesso.
@@ -285,7 +285,7 @@ pt-br:
     delete_service: Excluir serviço
     delete_service_category: Excluir categoria de serviço
     delete_provider: Excluir atendente
-    delete_secretary: Excluir assistente
+    delete_assistant: "Excluir assistente"
     delete_appointment: Excluir agendamento
     delete_unavailability: Excluir período indisponível
     delete: Excluir
@@ -438,7 +438,7 @@ pt-br:
     what_kind_of_event: Que tipo de evento você gostaria de adicionar?
     theme: Tema
     limit_customer_access: Limitar Acesso ao Cliente
-    limit_customer_access_hint: Se ativado, provedores e secretárias só poderão acessar clientes com os quais tenham um compromisso.
+    limit_customer_access_hint: Se ativado, provedores e assistentes só poderão acessar clientes com os quais tenham um compromisso.
     url: URL
     secret_token: Token Secreto
     verify_ssl: Verificar SSL
@@ -454,8 +454,8 @@ pt-br:
     service_category_delete: Excluir Categoria
     provider_save: Salvar Provedor
     provider_delete: Excluir Provedor
-    secretary_save: Salvar Secretária
-    secretary_delete: Excluir Secretária
+    assistant_save: "Salvar assistente"
+    assistant_delete: "Excluir assistente"
     admin_save: Salvar Admin
     admin_delete: Excluir Admin
     options: Opções
@@ -716,7 +716,7 @@ pt-br:
     notification_send_to: Send to
     notification_audience_customer: Customer
     notification_audience_provider: Provider
-    notification_audience_admins: Admins and secretaries
+    notification_audience_admins: "Administradores e assistentes"
     notification_no_providers: No providers are enabled. Enable one on the Providers page first.
     notification_short_text: Short Text (Email Subject or SMS)
     notification_long_text: Long Text (for providers that support it, e.g. Email Body)

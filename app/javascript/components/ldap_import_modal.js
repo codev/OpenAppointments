@@ -18,7 +18,7 @@
  *
  *   - App.Http.Customers
  *   - App.Http.Providers
- *   - App.Http.Secretaries
+ *   - App.Http.Assistants
  *   - App.Http.Admins
  */
 App.Components.LdapImportModal = (function () {
@@ -68,8 +68,8 @@ App.Components.LdapImportModal = (function () {
                 return App.Http.Customers;
             case App.Layouts.Backend.DB_SLUG_PROVIDER:
                 return App.Http.Providers;
-            case App.Layouts.Backend.DB_SLUG_SECRETARY:
-                return App.Http.Secretaries;
+            case App.Layouts.Backend.DB_SLUG_ASSISTANT:
+                return App.Http.Assistants;
             case App.Layouts.Backend.DB_SLUG_ADMIN:
                 return App.Http.Admins;
             default:

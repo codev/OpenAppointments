@@ -58,7 +58,7 @@ es:
     skipped: omitidos
     no_file_selected: Ningún archivo seleccionado.
     reset_database: Restablecer base de datos
-    reset_database_warning: Esto elimina permanentemente todas las citas, clientes, proveedores, secretarios, servicios y categorías. Las cuentas de administrador y la configuración se conservan. No se puede deshacer.
+    reset_database_warning: Esto elimina permanentemente todas las citas, clientes, proveedores, asistentes, servicios y categorías. Las cuentas de administrador y la configuración se conservan. No se puede deshacer.
     reset_confirmation_hint: "Escriba I KNOW WHAT I AM DOING para habilitar el botón."
     reset_database_done: La base de datos se ha restablecido.
     captcha_provider: Proveedor de captcha
@@ -196,7 +196,7 @@ es:
     categories: Categorías
     admins: Administradores
     providers: Proveedores
-    secretaries: Secretarios/as
+    assistants: "Asistentes"
     mobile_number: Número de teléfono móvil
     mobile: Móvil
     state: Estado
@@ -207,10 +207,10 @@ es:
     passwords_mismatch: Las contraseñas no coinciden
     admin_saved: Administrador guardado exitosamente
     provider_saved: Proveedor guardado exitosamente
-    secretary_saved: Asistente guardado exitosamente
+    assistant_saved: "Asistente guardado correctamente."
     admin_deleted: Administador eliminado exitosamente
     provider_deleted: Proveedor eliminado exitosamente
-    secretary_deleted: Asistente eliminado exitosamente
+    assistant_deleted: "Asistente eliminado correctamente."
     service_saved: Servicio guardado exitosamente
     service_category_saved: Categoría de servicio guardada exitosamente
     service_deleted: Servicio eliminado exitosamente
@@ -285,7 +285,7 @@ es:
     delete_service: Eliminar Servicio
     delete_service_category: Eliminar Categoría de servicio
     delete_provider: Eliminar Proveedor
-    delete_secretary: Eliminar Asistente
+    delete_assistant: "Eliminar asistente"
     delete_appointment: Eliminar cita
     delete_unavailability: Eliminar periodo No disponible
     delete: Eliminar
@@ -438,7 +438,7 @@ es:
     what_kind_of_event: "¿Qué tipo de evento te gustaría añadir?"
     theme: Tema
     limit_customer_access: Limitar el acceso a los clientes
-    limit_customer_access_hint: Si está activado, los proveedores y los secretarios solo podrán acceder a los clientes con los que tengan alguna cita.
+    limit_customer_access_hint: Si está activado, los proveedores y los asistentes solo podrán acceder a los clientes con los que tengan alguna cita.
     url: URL
     secret_token: Token Secreto
     verify_ssl: Verificar SSL
@@ -454,8 +454,8 @@ es:
     service_category_delete: Eliminar categoría
     provider_save: Guardar proveedor
     provider_delete: Eliminar proveedor
-    secretary_save: Guardar secretario
-    secretary_delete: Eliminar secretario
+    assistant_save: "Guardar asistente"
+    assistant_delete: "Eliminar asistente"
     admin_save: Guardar administrador
     admin_delete: Eliminar administrador
     options: Opciones
@@ -716,7 +716,7 @@ es:
     notification_send_to: Send to
     notification_audience_customer: Customer
     notification_audience_provider: Provider
-    notification_audience_admins: Admins and secretaries
+    notification_audience_admins: "Administradores y asistentes"
     notification_no_providers: No providers are enabled. Enable one on the Providers page first.
     notification_short_text: Short Text (Email Subject or SMS)
     notification_long_text: Long Text (for providers that support it, e.g. Email Body)

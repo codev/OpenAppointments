@@ -17,24 +17,24 @@ class User < ApplicationRecord
   has_many :customer_appointments, class_name: "Appointment", foreign_key: :id_users_customer,
                                    inverse_of: :customer, dependent: :destroy
 
-  # Secretary associations
-  has_many :secretary_provider_links, class_name: "SecretaryProviderLink", foreign_key: :id_users_secretary,
-                                      inverse_of: :secretary, dependent: :delete_all
-  has_many :providers, through: :secretary_provider_links
+  # Assistant associations
+  has_many :assistant_provider_links, class_name: "AssistantProviderLink", foreign_key: :id_users_assistant,
+                                      inverse_of: :assistant, dependent: :delete_all
+  has_many :providers, through: :assistant_provider_links
 
   validates :name, presence: true
   validates :email, presence: true, unless: -> { role&.slug == Role::CUSTOMER && email.blank? }
 
   scope :admins, -> { joins(:role).where(roles: { slug: Role::ADMIN }) }
   scope :providers, -> { joins(:role).where(roles: { slug: Role::PROVIDER }) }
-  scope :secretaries, -> { joins(:role).where(roles: { slug: Role::SECRETARY }) }
+  scope :assistants, -> { joins(:role).where(roles: { slug: Role::ASSISTANT }) }
   scope :customers, -> { joins(:role).where(roles: { slug: Role::CUSTOMER }) }
 
   before_create -> { self.booking_slug ||= BookingSlug.unique_for(User) if provider? }
 
   def admin? = role.slug == Role::ADMIN
   def provider? = role.slug == Role::PROVIDER
-  def secretary? = role.slug == Role::SECRETARY
+  def assistant? = role.slug == Role::ASSISTANT
   def customer? = role.slug == Role::CUSTOMER
 
   def full_name = name

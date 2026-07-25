@@ -58,7 +58,7 @@ ja:
     skipped: スキップ
     no_file_selected: ファイルが選択されていません。
     reset_database: データベースのリセット
-    reset_database_warning: すべての予約、顧客、担当者、秘書、サービス、カテゴリーを完全に削除します。管理者アカウントと設定は保持されます。元に戻せません。
+    reset_database_warning: すべての予約、顧客、担当者、アシスタント、サービス、カテゴリーを完全に削除します。管理者アカウントと設定は保持されます。元に戻せません。
     reset_confirmation_hint: "ボタンを有効にするには I KNOW WHAT I AM DOING と入力してください。"
     reset_database_done: データベースをリセットしました。
     captcha_provider: キャプチャプロバイダー
@@ -155,7 +155,7 @@ ja:
     enable_appointment_sync_hint: 担当者のGoogleカレンダーとの同期を有効にします。
     manage_customers_hint: 予約登録をしたお客様とその予約履歴を管理できます。
     manage_services_hint: サービスメニューとサービスカテゴリーの管理ができます。
-    manage_users_hint: 会社ユーザーの管理ができます。(管理者,担当者,予約管理者).
+    manage_users_hint: 会社ユーザーの管理ができます。(管理者,担当者,アシスタント).
     settings_hint: システムとユーザーの設定
     log_out_hint: ログアウト
     unavailability_periods_hint: 都合が悪い期間は、担当者は新しい予約を受けられません。During unavailability periods the provider won't accept new appointments.
@@ -196,7 +196,7 @@ ja:
     categories: カテゴリー
     admins: 管理者
     providers: 担当者
-    secretaries: 予約管理者
+    assistants: "アシスタント"
     mobile_number: 携帯番号
     mobile: 携帯電話
     state: 都道府県
@@ -207,10 +207,10 @@ ja:
     passwords_mismatch: パスワードが違います
     admin_saved: 管理者情報が保存されました。
     provider_saved: 担当者情報が保存されました。
-    secretary_saved: 予約管理者情報が保存されました。
+    assistant_saved: "アシスタントを保存しました。"
     admin_deleted: 管理者情報が削除されました。
     provider_deleted: 担当者情報が削除されました。
-    secretary_deleted: 予約管理者情報が削除されました。
+    assistant_deleted: "アシスタントを削除しました。"
     service_saved: サービスメニューが保存されました。
     service_category_saved: サービスカテゴリーが保存されました。
     service_deleted: サービスメニューが削除されました
@@ -285,7 +285,7 @@ ja:
     delete_service: サービスメニューの削除
     delete_service_category: サービスカテゴリーの削除
     delete_provider: 担当者の削除
-    delete_secretary: 予約管理者の削除
+    delete_assistant: "アシスタントを削除"
     delete_appointment: 予約の削除
     delete_unavailability: 都合の悪い時間の削除
     delete: 削除
@@ -438,7 +438,7 @@ ja:
     what_kind_of_event: どの種類のイベントを追加しますか？
     theme: テーマ
     limit_customer_access: 顧客アクセスを制限
-    limit_customer_access_hint: 有効にすると、プロバイダーと秘書は、予約がある顧客にのみアクセスできます。
+    limit_customer_access_hint: 有効にすると、プロバイダーとアシスタントは、予約がある顧客にのみアクセスできます。
     url: URL
     secret_token: シークレットトークン
     verify_ssl: SSLの確認
@@ -454,8 +454,8 @@ ja:
     service_category_delete: カテゴリーの削除
     provider_save: プロバイダーの保存
     provider_delete: プロバイダーの削除
-    secretary_save: 秘書の保存
-    secretary_delete: 秘書の削除
+    assistant_save: "アシスタント保存"
+    assistant_delete: "アシスタント削除"
     admin_save: 管理者の保存
     admin_delete: 管理者の削除
     options: オプション
@@ -716,7 +716,7 @@ ja:
     notification_send_to: Send to
     notification_audience_customer: Customer
     notification_audience_provider: Provider
-    notification_audience_admins: Admins and secretaries
+    notification_audience_admins: "管理者とアシスタント"
     notification_no_providers: No providers are enabled. Enable one on the Providers page first.
     notification_short_text: Short Text (Email Subject or SMS)
     notification_long_text: Long Text (for providers that support it, e.g. Email Body)

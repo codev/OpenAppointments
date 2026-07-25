@@ -58,7 +58,7 @@ tr:
     skipped: atlandı
     no_file_selected: Dosya seçilmedi.
     reset_database: Veritabanını sıfırla
-    reset_database_warning: Bu işlem tüm randevuları, müşterileri, hizmet verenleri, sekreterleri, hizmetleri ve kategorileri kalıcı olarak siler. Yönetici hesapları ve ayarlar korunur. Geri alınamaz.
+    reset_database_warning: Bu işlem tüm randevuları, müşterileri, hizmet verenleri, asistanları, hizmetleri ve kategorileri kalıcı olarak siler. Yönetici hesapları ve ayarlar korunur. Geri alınamaz.
     reset_confirmation_hint: "Düğmeyi etkinleştirmek için I KNOW WHAT I AM DOING yazın."
     reset_database_done: Veritabanı sıfırlandı.
     captcha_provider: Captcha sağlayıcısı
@@ -155,7 +155,7 @@ tr:
     enable_appointment_sync_hint: Hizmet sağlayıcının Google Takvimi ile eşitlemeyi başlatın.
     manage_customers_hint: Kayıtlı müşterileri ve randevu geçmişlerini yönetin.
     manage_services_hint: Sistemdeki uygun hizmetleri ve kategorileri yönetin.
-    manage_users_hint: Arkayüz kullanıcılarını (yöneticiler, hizmet sağlayıcılar, sekreterler) yönetin.
+    manage_users_hint: Arkayüz kullanıcılarını (yöneticiler, hizmet sağlayıcılar, asistanlar) yönetin.
     settings_hint: Sistem ve kullanıcı ayarlarını yapın.
     log_out_hint: Sistemden çıkış.
     unavailability_periods_hint: Uygun olmayan zaman aralıklarında hizmet sağlayıcı yeni randevu kabul etmeyecektir.
@@ -196,7 +196,7 @@ tr:
     categories: Kategoriler
     admins: Yöneticiler
     providers: Hizmet Sağlayıcılar
-    secretaries: Sekreterler
+    assistants: "Asistanlar"
     mobile_number: Mobil No
     mobile: Cep Telefonu
     state: Eyalet
@@ -207,10 +207,10 @@ tr:
     passwords_mismatch: Şifreler aynı değil.
     admin_saved: Yönetici başarıyla kaydedildi.
     provider_saved: Hizmet sağlayıcı kaydedildi.
-    secretary_saved: Sekreter başarıyla kaydedildi.
+    assistant_saved: "Asistan başarıyla kaydedildi."
     admin_deleted: Yönetici başarıyla silindi.
     provider_deleted: Hizmet sağlayıcı başarıyla silindi.
-    secretary_deleted: Sekreter başarıyla silindi.
+    assistant_deleted: "Asistan başarıyla silindi."
     service_saved: Hizmet başarıyla kaydedildi.
     service_category_saved: Hizmet kategorisi başarıyla kaydedildi.
     service_deleted: Hizmet başarıyla silindi.
@@ -285,7 +285,7 @@ tr:
     delete_service: Hizmeti Sil
     delete_service_category: Hizmet Kategorisi Sil
     delete_provider: Hizmet Sağlayıcı Sil
-    delete_secretary: Sekreter Sil
+    delete_assistant: "Asistan Sil"
     delete_appointment: 'Randevu Sil '
     delete_unavailability: Uygun Olmayan Zaman Aralığı Sil
     delete: Sil
@@ -438,7 +438,7 @@ tr:
     what_kind_of_event: Hangi tür etkinlik eklemek istersiniz?
     theme: Tema
     limit_customer_access: Müşteri Erişimini Sınırla
-    limit_customer_access_hint: Etkinleştirilirse, sağlayıcılar ve sekreterler sadece randevu aldıkları müşterilere erişebilecektir.
+    limit_customer_access_hint: Etkinleştirilirse, sağlayıcılar ve asistanlar sadece randevu aldıkları müşterilere erişebilecektir.
     url: URL
     secret_token: Gizli Jeton
     verify_ssl: SSL’yi Doğrula
@@ -454,8 +454,8 @@ tr:
     service_category_delete: Kategori Sil
     provider_save: Sağlayıcı Kaydet
     provider_delete: Sağlayıcı Sil
-    secretary_save: Sekreter Kaydet
-    secretary_delete: Sekreter Sil
+    assistant_save: "Asistan Kaydet"
+    assistant_delete: "Asistan Sil"
     admin_save: Yönetici Kaydet
     admin_delete: Yönetici Sil
     options: Seçenekler
@@ -716,7 +716,7 @@ tr:
     notification_send_to: Send to
     notification_audience_customer: Customer
     notification_audience_provider: Provider
-    notification_audience_admins: Admins and secretaries
+    notification_audience_admins: "Yöneticiler ve asistanlar"
     notification_no_providers: No providers are enabled. Enable one on the Providers page first.
     notification_short_text: Short Text (Email Subject or SMS)
     notification_long_text: Long Text (for providers that support it, e.g. Email Body)
