@@ -3,6 +3,12 @@
 The about page lists these notes; every release needs a section here matching
 CloudronManifest.json.
 
+## 1.3.1
+
+- Secretaries are now called Assistants throughout, including all translations
+- Old /secretaries URLs and the /api/v1/secretaries endpoints keep working as aliases
+- Bulgarian translation fixes
+
 ## 1.3.0
 
 - Unguessable booking link slugs for services and providers with a Regenerate Link button
