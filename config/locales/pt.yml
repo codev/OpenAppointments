@@ -58,7 +58,7 @@ pt:
     skipped: ignorados
     no_file_selected: Nenhum ficheiro selecionado.
     reset_database: Repor base de dados
-    reset_database_warning: Isto elimina permanentemente todas as marcações, clientes, prestadores, secretários, serviços e categorias. As contas de administrador e as definições mantêm-se. Irreversível.
+    reset_database_warning: Isto elimina permanentemente todas as marcações, clientes, prestadores, assistentes, serviços e categorias. As contas de administrador e as definições mantêm-se. Irreversível.
     reset_confirmation_hint: "Escreva I KNOW WHAT I AM DOING para ativar o botão."
     reset_database_done: A base de dados foi reposta.
     captcha_provider: Fornecedor de captcha
@@ -155,7 +155,7 @@ pt:
     enable_appointment_sync_hint: Ativar a sincronização de eventos atráves de uma conta Google Calendar.
     manage_customers_hint: Gerir os clientes e visualizar o seu histórico.
     manage_services_hint: Gerir os serviços e as categorias do sistema.
-    manage_users_hint: Gerir os utilizadores de backend (administradores, fornecedores, secretárias).
+    manage_users_hint: Gerir os utilizadores de backend (administradores, fornecedores, assistentes).
     settings_hint: Definir as configurações do sistema e do utilizador.
     log_out_hint: Sair do Sistema.
     unavailability_periods_hint: Durante os periodos indisponíveis o fornecedor não aceitar novos evento.
@@ -196,7 +196,7 @@ pt:
     categories: Categorias
     admins: Administradores
     providers: Fornecedores
-    secretaries: Secretários
+    assistants: "Assistentes"
     mobile_number: 'Telemóvel '
     mobile: Telemóvel
     state: Estado
@@ -207,10 +207,10 @@ pt:
     passwords_mismatch: Palavra-passe inválida.
     admin_saved: Administrador guardado com sucesso.
     provider_saved: Fornecedor guardado com sucesso.
-    secretary_saved: Secretário guardado com sucesso.
+    assistant_saved: "Assistente guardado com sucesso."
     admin_deleted: Administrador apagado com sucesso.
     provider_deleted: Fornecedor apagado com sucesso.
-    secretary_deleted: Secretário apagado com sucesso.
+    assistant_deleted: "Assistente eliminado com sucesso."
     service_saved: Serviço guardado com sucesso.
     service_category_saved: Categoria de serviço guardada com sucesso.
     service_deleted: Serviço apagado com sucesso.
@@ -285,7 +285,7 @@ pt:
     delete_service: Apagar Serviço
     delete_service_category: Apagar Categoria de Serviço
     delete_provider: Apagar fornecedor
-    delete_secretary: Apagar secretario
+    delete_assistant: "Eliminar assistente"
     delete_appointment: Apagar apontamento
     delete_unavailability: Apagar periodo indisponivel
     delete: Apagar
@@ -438,7 +438,7 @@ pt:
     what_kind_of_event: Que tipo de evento você gostaria de adicionar?
     theme: Tema
     limit_customer_access: Limitar Acesso do Cliente
-    limit_customer_access_hint: Se ativado, fornecedores e secretárias só poderão acessar clientes com os quais têm um compromisso.
+    limit_customer_access_hint: Se ativado, fornecedores e assistentes só poderão acessar clientes com os quais têm um compromisso.
     url: URL
     secret_token: Token Secreto
     verify_ssl: Verificar SSL
@@ -454,8 +454,8 @@ pt:
     service_category_delete: Excluir Categoria
     provider_save: Guardar Fornecedor
     provider_delete: Eliminar Fornecedor
-    secretary_save: Guardar Secretário
-    secretary_delete: Eliminar Secretário
+    assistant_save: "Guardar assistente"
+    assistant_delete: "Eliminar assistente"
     admin_save: Salvar Administrador
     admin_delete: Excluir Administrador
     options: Opções
@@ -716,7 +716,7 @@ pt:
     notification_send_to: Send to
     notification_audience_customer: Customer
     notification_audience_provider: Provider
-    notification_audience_admins: Admins and secretaries
+    notification_audience_admins: "Administradores e assistentes"
     notification_no_providers: No providers are enabled. Enable one on the Providers page first.
     notification_short_text: Short Text (Email Subject or SMS)
     notification_long_text: Long Text (for providers that support it, e.g. Email Body)

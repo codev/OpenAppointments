@@ -46,7 +46,7 @@ App.Utils.CalendarSync = (function () {
         const selectedProviderId = isProvider ? Number($selectedOption.val()) : null;
         const canManageSync =
             isProvider &&
-            (!isLoggedInProvider || // Admins and secretaries can manage any provider
+            (!isLoggedInProvider || // Admins and assistants can manage any provider
                 Number(vars('user_id')) === selectedProviderId); // Providers can only manage their own sync
 
         $enableSync.prop('hidden', !canManageSync || hasSync);

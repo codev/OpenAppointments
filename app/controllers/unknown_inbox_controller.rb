@@ -1,5 +1,5 @@
 # Incoming messages from senders that match no customer. Visible to admins and
-# secretaries; visiting the page clears the header badge.
+# assistants; visiting the page clears the header badge.
 class UnknownInboxController < ApplicationController
   include BackendPage
 
@@ -10,7 +10,7 @@ class UnknownInboxController < ApplicationController
   def index
     session[:dest_url] = request.original_url
     return redirect_to login_path unless logged_in?
-    return head :forbidden unless [ Role::ADMIN, Role::SECRETARY ].include?(session[:role_slug])
+    return head :forbidden unless [ Role::ADMIN, Role::ASSISTANT ].include?(session[:role_slug])
 
     backend_page_vars(page_title: helpers.lang("unknown_inbox"), active_menu: "messages")
     page = [ params[:page].to_i, 1 ].max

@@ -58,7 +58,7 @@ lv:
     skipped: izlaisti
     no_file_selected: Nav izvēlēts fails.
     reset_database: Atiestatīt datubāzi
-    reset_database_warning: Tas neatgriezeniski dzēš visus pierakstus, klientus, pakalpojumu sniedzējus, sekretārus, pakalpojumus un kategorijas. Administratoru konti un iestatījumi saglabājas. Nevar atsaukt.
+    reset_database_warning: Tas neatgriezeniski dzēš visus pierakstus, klientus, pakalpojumu sniedzējus, asistentus, pakalpojumus un kategorijas. Administratoru konti un iestatījumi saglabājas. Nevar atsaukt.
     reset_confirmation_hint: "Ievadiet I KNOW WHAT I AM DOING, lai iespējotu pogu."
     reset_database_done: Datubāze ir atiestatīta.
     captcha_provider: Captcha nodrošinātājs
@@ -155,7 +155,7 @@ lv:
     enable_appointment_sync_hint: Ieslēdziet tikšanās sinhronizēšanu ar ārējo kalendoru.
     manage_customers_hint: Tvarkykite reģistrētos klientus un pārskatiet viņu pasūtījumu vēsturi.
     manage_services_hint: Tvarkykite galimas sistēmas pakalpojumus un kategorijas.
-    manage_users_hint: Tvarkykite jaupakalinės sistēmas lietotāju (administratoru, lietotāju, sekretāru).
+    manage_users_hint: Tvarkykite jaupakalinės sistēmas lietotāju (administratoru, lietotāju, asistentu).
     settings_hint: Nustatykite sistēmas un lietotojo nustatymus.
     log_out_hint: Atsijunk no sistēmas.
     unavailability_periods_hint: Nepasiekiamumo periodiem piegādātājiem nepieims jaunu tikšanās veidu.
@@ -196,7 +196,7 @@ lv:
     categories: Kategorijas
     admins: Administratori
     providers: Pakalpojumu sniedzēji
-    secretaries: Sekretāri
+    assistants: "Asistenti"
     mobile_number: Mobilais numurs
     mobile: Mobilais
     state: Valsts
@@ -207,10 +207,10 @@ lv:
     passwords_mismatch: Paroles neatbilst.
     admin_saved: Administrators veiksmīgi saglabāts.
     provider_saved: Nodrošinātājs veiksmīgi saglabāts.
-    secretary_saved: Sekretāre veiksmīgi saglabāta.
+    assistant_saved: "Asistents veiksmīgi saglabāts."
     admin_deleted: Administrators veiksmīgi izdzēsts.
     provider_deleted: Nodrošinātājs veiksmīgi izdzēsts.
-    secretary_deleted: Sekretāre veiksmīgi izdzēsta.
+    assistant_deleted: "Asistents veiksmīgi izdzēsts."
     service_saved: Pakalpojums veiksmīgi saglabāts.
     service_category_saved: Pakalpojumu kategorija veiksmīgi saglabāta.
     service_deleted: Pakalpojums veiksmīgi izdzēsts.
@@ -285,7 +285,7 @@ lv:
     delete_service: Dzēst pakalpojumu
     delete_service_category: Dzēst pakalpojumu kategoriju
     delete_provider: Dzēst pakalpojumu sniedzēju
-    delete_secretary: Dzēst sekretāru
+    delete_assistant: "Dzēst asistentu"
     delete_appointment: Dzēst pierakstu
     delete_unavailability: Dzēst nepieejamību
     delete: Dzēst
@@ -438,7 +438,7 @@ lv:
     what_kind_of_event: Kādu notikumu vēlaties pievienot?
     theme: Tēma
     limit_customer_access: Ierobežot klientu piekļuvi
-    limit_customer_access_hint: Ja šī funkcija ir iespējota, pakalpojumu sniedzēji un sekretāri varēs piekļūt tikai tiem klientiem, ar kuriem viņiem ir norunāta tikšanās.
+    limit_customer_access_hint: Ja šī funkcija ir iespējota, pakalpojumu sniedzēji un asistenti varēs piekļūt tikai tiem klientiem, ar kuriem viņiem ir norunāta tikšanās.
     url: URL
     secret_token: Slepenais tokens
     verify_ssl: Verificēt SSL
@@ -454,8 +454,8 @@ lv:
     service_category_delete: Pakalpojumu kategorijas dzēšana
     provider_save: Pakalpojumu sniedzēja saglabāšana
     provider_delete: Pakalpojumu sniedzēja dzēšana
-    secretary_save: Sekretāra saglabāt
-    secretary_delete: Sekretāra dzēšana
+    assistant_save: "Asistenta saglabāšana"
+    assistant_delete: "Asistenta dzēšana"
     admin_save: Administratora saglabāšana
     admin_delete: Administratora dzēšana
     options: Opcijas
@@ -716,7 +716,7 @@ lv:
     notification_send_to: Send to
     notification_audience_customer: Customer
     notification_audience_provider: Provider
-    notification_audience_admins: Admins and secretaries
+    notification_audience_admins: "Administratori un asistenti"
     notification_no_providers: No providers are enabled. Enable one on the Providers page first.
     notification_short_text: Short Text (Email Subject or SMS)
     notification_long_text: Long Text (for providers that support it, e.g. Email Body)

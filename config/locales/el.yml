@@ -58,7 +58,7 @@ el:
     skipped: παραλείφθηκαν
     no_file_selected: Δεν επιλέχθηκε αρχείο.
     reset_database: Επαναφορά βάσης δεδομένων
-    reset_database_warning: Αυτό διαγράφει οριστικά όλα τα ραντεβού, πελάτες, παρόχους, γραμματείς, υπηρεσίες και κατηγορίες. Οι λογαριασμοί διαχειριστών και οι ρυθμίσεις διατηρούνται. Δεν αναιρείται.
+    reset_database_warning: Αυτό διαγράφει οριστικά όλα τα ραντεβού, πελάτες, παρόχους, βοηθούς, υπηρεσίες και κατηγορίες. Οι λογαριασμοί διαχειριστών και οι ρυθμίσεις διατηρούνται. Δεν αναιρείται.
     reset_confirmation_hint: "Πληκτρολογήστε I KNOW WHAT I AM DOING για να ενεργοποιήσετε το κουμπί."
     reset_database_done: Η βάση δεδομένων επαναφέρθηκε.
     captcha_provider: Πάροχος captcha
@@ -155,7 +155,7 @@ el:
     enable_appointment_sync_hint: Ενεργοποιείστε τον συγχρονισμό ραντεβού με τον λογαριασμό Google Calendar του παρόχου.
     manage_customers_hint: Διαχειριστείτε τους καταχωρημένους πελάτες και δείτε το ιστορικό των κρατήσεών τους.
     manage_services_hint: Διαχειριστείτε όλες τις διαθέσιμες υπηρεσίες και κατηγορίες του συστήματος.
-    manage_users_hint: Διαχειριστείτε τους χρήστες του backend (διαχειριστές, πάροχοι, γραμματείς).
+    manage_users_hint: Διαχειριστείτε τους χρήστες του backend (διαχειριστές, πάροχοι, βοηθοί).
     settings_hint: Επεξεργαστείτε τις ρυθμίσεις του συστήματος ή του τρέχοντος χρήστη.
     log_out_hint: Αποσυνδεθείτε από το σύστημα.
     unavailability_periods_hint: Κατά την διάρκεια των μη διαθέσιμων διαστημάτων οι πάροχοι δε θα δέχονται νέα ραντεβού.
@@ -196,7 +196,7 @@ el:
     categories: Κατηγορίες
     admins: Διαχειριστές
     providers: Πάροχοι
-    secretaries: Γραμματείς
+    assistants: "Βοηθοί"
     mobile_number: Κινητό
     mobile: Κινητό
     state: Πολιτεία
@@ -207,10 +207,10 @@ el:
     passwords_mismatch: Οι κωδικοί δεν ταιριάζουν.
     admin_saved: Ο διαχειριστής αποθηκεύτηκε επιτυχώς.
     provider_saved: Ο πάροχος αποθηκεύτηκε επιτυχώς.
-    secretary_saved: Ο γραμματέας αποθηκεύτηκε επιτυχώς.
+    assistant_saved: "Ο βοηθός αποθηκεύτηκε με επιτυχία."
     admin_deleted: Ο διαχειριστής διαγράφηκε επιτυχώς.
     provider_deleted: Ο πάροχος διαγράφηκε επιτυχώς.
-    secretary_deleted: Ο γραμματέας διαγράφηκε επιτυχώς.
+    assistant_deleted: "Ο βοηθός διαγράφηκε με επιτυχία."
     service_saved: Η υπηρεσία αποθηκεύτηκε επιτυχώς.
     service_category_saved: Η κατηγορία αποθηκεύτηκε επιτυχώς.
     service_deleted: Η υπηρεσία διαγράφηκε επιτυχώς.
@@ -285,7 +285,7 @@ el:
     delete_service: Διαγραφή Υπηρεσίας
     delete_service_category: Διαγραφή Κατηγορίας
     delete_provider: Διαγραφή Παρόχου
-    delete_secretary: Διαγραφή Γραμματέα
+    delete_assistant: "Διαγραφή βοηθού"
     delete_appointment: Διαγραφή Ραντεβού
     delete_unavailability: Διαγραφή Μη Διαθέσιμης Περιόδου
     delete: Διαγραφή
@@ -438,7 +438,7 @@ el:
     what_kind_of_event: Τι είδους συμβάν θέλετε να προσθέσετε;
     theme: Θέμα
     limit_customer_access: Περιορισμός πρόσβασης πελατών
-    limit_customer_access_hint: Εάν είναι ενεργοποιημένο, οι πάροχοι και οι γραμματείς θα μπορούν να έχουν πρόσβαση μόνο στους πελάτες με τους οποίους έχουν ραντεβού.
+    limit_customer_access_hint: Εάν είναι ενεργοποιημένο, οι πάροχοι και οι βοηθοί θα μπορούν να έχουν πρόσβαση μόνο στους πελάτες με τους οποίους έχουν ραντεβού.
     url: URL
     secret_token: Συνθηματικό Token
     verify_ssl: Επαλήθευση SSL
@@ -454,8 +454,8 @@ el:
     service_category_delete: Κατηγορία Delete
     provider_save: Πάροχος Αποθήκευση
     provider_delete: Πάροχος Διαγραφή
-    secretary_save: Γραμματέας Αποθήκευση
-    secretary_delete: Γραμματέας Διαγραφή
+    assistant_save: "Αποθήκευση βοηθού"
+    assistant_delete: "Διαγραφή βοηθού"
     admin_save: Διαχειριστής Αποθήκευση
     admin_delete: Διαχειριστής Διαγραφή
     options: Επιλογές
@@ -716,7 +716,7 @@ el:
     notification_send_to: Send to
     notification_audience_customer: Customer
     notification_audience_provider: Provider
-    notification_audience_admins: Admins and secretaries
+    notification_audience_admins: "Διαχειριστές και βοηθοί"
     notification_no_providers: No providers are enabled. Enable one on the Providers page first.
     notification_short_text: Short Text (Email Subject or SMS)
     notification_long_text: Long Text (for providers that support it, e.g. Email Body)

@@ -58,7 +58,7 @@ fr:
     skipped: ignorés
     no_file_selected: Aucun fichier sélectionné.
     reset_database: Réinitialiser la base de données
-    reset_database_warning: Ceci supprime définitivement tous les rendez-vous, clients, prestataires, secrétaires, services et catégories. Les comptes administrateurs et les réglages sont conservés. Irréversible.
+    reset_database_warning: Ceci supprime définitivement tous les rendez-vous, clients, prestataires, assistant·es, services et catégories. Les comptes administrateurs et les réglages sont conservés. Irréversible.
     reset_confirmation_hint: "Saisissez I KNOW WHAT I AM DOING pour activer le bouton."
     reset_database_done: La base de données a été réinitialisée.
     captcha_provider: Fournisseur de captcha
@@ -155,7 +155,7 @@ fr:
     enable_appointment_sync_hint: Activer la synchronisation des rendez-vous avec le calendrier Google de l’exécutant.
     manage_customers_hint: Gérer les clients enregistrés et voir leur historique de rendez-vous.
     manage_services_hint: Gérer les prestations et les catégories actives du système.
-    manage_users_hint: Gérer les utilisateurs du système (administrateurs, exécutants, secrétaires).
+    manage_users_hint: Gérer les utilisateurs du système (administrateurs, exécutants, assistant·es).
     settings_hint: Régler les paramètres système et utilisateurs.
     log_out_hint: Déconnexion du système.
     unavailability_periods_hint: Durant les périodes d’indisponibilité l’exécutant n’acceptera pas de nouvelle prestation.
@@ -196,7 +196,7 @@ fr:
     categories: Catégories
     admins: Administrateurs
     providers: Exécutants
-    secretaries: Secrétaires
+    assistants: "Assistant·es"
     mobile_number: Téléphone portable
     mobile: Mobile
     state: État / Pays
@@ -207,10 +207,10 @@ fr:
     passwords_mismatch: Les 2 mots de passe ne correspondent pas.
     admin_saved: Administrateur enregistré avec succès.
     provider_saved: Exécutant enregistré avec succès.
-    secretary_saved: Secrétaire enregistré·e avec succès.
+    assistant_saved: "Assistant·e enregistré·e avec succès."
     admin_deleted: Administrateur supprimé avec succès.
     provider_deleted: Exécutant supprimé avec succès.
-    secretary_deleted: Secrétaire supprimé·e avec succès.
+    assistant_deleted: "Assistant·e supprimé·e avec succès."
     service_saved: Prestation enregistrée avec succès.
     service_category_saved: Catégorie de prestation enregistrée avec succès.
     service_deleted: Prestation supprimée avec succès.
@@ -285,7 +285,7 @@ fr:
     delete_service: Supprimer la prestation
     delete_service_category: Supprimer la catégorie de prestation
     delete_provider: Supprimer un exécutant
-    delete_secretary: Supprimer un·e secrétaire
+    delete_assistant: "Supprimer un·e assistant·e"
     delete_appointment: Supprimer un rendez-vous
     delete_unavailability: Supprimer une période d’indisponibilité
     delete: Supprimer
@@ -438,7 +438,7 @@ fr:
     what_kind_of_event: Quel genre d’événement aimeriez-vous ajouter?
     theme: Thème
     limit_customer_access: Limiter l’accès des clients
-    limit_customer_access_hint: S’ils sont activés, les fournisseurs et les secrétaires ne pourront accéder qu’à des clients avec lesquels ils ont rendez-vous.
+    limit_customer_access_hint: S’ils sont activés, les fournisseurs et les assistant·es ne pourront accéder qu’à des clients avec lesquels ils ont rendez-vous.
     url: URL
     secret_token: Token secret
     verify_ssl: Vérifiez SSL
@@ -454,8 +454,8 @@ fr:
     service_category_delete: Supprimer la catégorie
     provider_save: Sauvegarde de l’exécutant
     provider_delete: Supprimer l’exécutant
-    secretary_save: Sauvegarde de la secrétaire
-    secretary_delete: Supprimer la secrétaire
+    assistant_save: "Sauvegarde de l'assistant·e"
+    assistant_delete: "Suppression de l'assistant·e"
     admin_save: Sauvegarde de l’administrateur
     admin_delete: Supprimer l’administrateur
     options: Options
@@ -716,7 +716,7 @@ fr:
     notification_send_to: Send to
     notification_audience_customer: Customer
     notification_audience_provider: Provider
-    notification_audience_admins: Admins and secretaries
+    notification_audience_admins: "Admins et assistant·es"
     notification_no_providers: No providers are enabled. Enable one on the Providers page first.
     notification_short_text: Short Text (Email Subject or SMS)
     notification_long_text: Long Text (for providers that support it, e.g. Email Body)

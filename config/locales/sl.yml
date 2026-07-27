@@ -58,7 +58,7 @@ sl:
     skipped: preskoceno
     no_file_selected: Nobena datoteka ni izbrana.
     reset_database: Ponastavi bazo podatkov
-    reset_database_warning: To trajno izbrise vse termine, stranke, izvajalce, tajnike, storitve in kategorije. Skrbniski racuni in nastavitve ostanejo. Nepovratno.
+    reset_database_warning: To trajno izbrise vse termine, stranke, izvajalce, asistente, storitve in kategorije. Skrbniski racuni in nastavitve ostanejo. Nepovratno.
     reset_confirmation_hint: "Vnesite I KNOW WHAT I AM DOING, da omogočite gumb."
     reset_database_done: Baza podatkov je ponastavljena.
     captcha_provider: Ponudnik captche
@@ -155,7 +155,7 @@ sl:
     enable_appointment_sync_hint: Omogoči sinhronizacijo sestankov z zunanjim koledarjem.
     manage_customers_hint: Upravljajte registrirane stranke in si oglejte zgodovino njihovih rezervacij.
     manage_services_hint: Upravljanje razpoložljivih storitev in kategorij sistema.
-    manage_users_hint: Upravljanje zalednih uporabnikov (skrbniki, ponudniki, tajniki).
+    manage_users_hint: Upravljanje zalednih uporabnikov (skrbniki, ponudniki, asistenti).
     settings_hint: Nastavi sistemske in uporabniške nastavitve.
     log_out_hint: Odjava iz sistema.
     unavailability_periods_hint: Med obdobji nedosegljivosti ponudnik ne sprejema novih terminov.
@@ -196,7 +196,7 @@ sl:
     categories: Kategorije
     admins: Skrbniki
     providers: Ponudniki
-    secretaries: Tajnice
+    assistants: "Asistenti"
     mobile_number: Mobilna številka
     mobile: Mobilni
     state: Stanje
@@ -207,10 +207,10 @@ sl:
     passwords_mismatch: Gesla se ne ujemajo.
     admin_saved: Skrbnik je uspešno shranjen.
     provider_saved: Ponudnik je uspešno shranjen.
-    secretary_saved: Tajnik je uspešno shranjen.
+    assistant_saved: "Asistent uspešno shranjen."
     admin_deleted: Skrbnik uspešno izbrisan.
     provider_deleted: Ponudnik je bil uspešno izbrisan.
-    secretary_deleted: Tajnik je bil uspešno izbrisan.
+    assistant_deleted: "Asistent uspešno izbrisan."
     service_saved: Storitev je uspešno shranjena.
     service_category_saved: Kategorija storitve je uspešno shranjena.
     service_deleted: Storitev je bila uspešno izbrisana.
@@ -285,7 +285,7 @@ sl:
     delete_service: Izbriši storitev
     delete_service_category: Izbriši kategorijo storitve
     delete_provider: Izbriši ponudnika
-    delete_secretary: Izbriši tajnika
+    delete_assistant: "Izbriši asistenta"
     delete_appointment: Izbriši sestanek
     delete_unavailability: Izbriši nedostopnost
     delete: Izbriši
@@ -438,7 +438,7 @@ sl:
     what_kind_of_event: Kakšno vrsto dogodka želite dodati?
     theme: Tema
     limit_customer_access: Omeji dostop strank
-    limit_customer_access_hint: Če je omogočeno, bodo ponudniki in tajniki lahko dostopali le do strank, s katerimi so dogovorjeni za sestanek.
+    limit_customer_access_hint: Če je omogočeno, bodo ponudniki in asistenti lahko dostopali le do strank, s katerimi so dogovorjeni za sestanek.
     url: URL
     secret_token: Skrivni žeton
     verify_ssl: Preveri SSL
@@ -454,8 +454,8 @@ sl:
     service_category_delete: Brisanje kategorije storitve
     provider_save: Shranjevanje ponudnika
     provider_delete: Izbris ponudnika
-    secretary_save: Tajniško shranjevanje
-    secretary_delete: Izbriši tajnika
+    assistant_save: "Shranjevanje asistenta"
+    assistant_delete: "Brisanje asistenta"
     admin_save: Skrbniško shranjevanje
     admin_delete: Skrbniško brisanje
     options: Možnosti
@@ -716,7 +716,7 @@ sl:
     notification_send_to: Send to
     notification_audience_customer: Customer
     notification_audience_provider: Provider
-    notification_audience_admins: Admins and secretaries
+    notification_audience_admins: "Skrbniki in asistenti"
     notification_no_providers: No providers are enabled. Enable one on the Providers page first.
     notification_short_text: Short Text (Email Subject or SMS)
     notification_long_text: Long Text (for providers that support it, e.g. Email Body)

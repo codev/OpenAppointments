@@ -58,7 +58,7 @@ ru:
     skipped: пропущено
     no_file_selected: Файл не выбран.
     reset_database: Сбросить базу данных
-    reset_database_warning: Это навсегда удалит все записи, клиентов, специалистов, секретарей, услуги и категории. Учетные записи администраторов и настройки сохранятся. Отменить нельзя.
+    reset_database_warning: Это навсегда удалит все записи, клиентов, специалистов, ассистентов, услуги и категории. Учетные записи администраторов и настройки сохранятся. Отменить нельзя.
     reset_confirmation_hint: "Введите I KNOW WHAT I AM DOING, чтобы активировать кнопку."
     reset_database_done: База данных сброшена.
     captcha_provider: Провайдер капчи
@@ -155,7 +155,7 @@ ru:
     enable_appointment_sync_hint: Включить синхронизацию назначений с Google-календарями поставщиков.
     manage_customers_hint: Управление зарегистрированными заказчиками и просмотр их истории заказов.
     manage_services_hint: Управление доступными категориями и услугами компании.
-    manage_users_hint: Управление пользователей компании (администраторами, исполнителями, секретарями).
+    manage_users_hint: Управление пользователей компании (администраторами, исполнителями, ассистентами).
     settings_hint: Перейти к настройкам пользователя.
     log_out_hint: Выйти из кабинета.
     unavailability_periods_hint: На протяжении недоступного периода исполнитель не будет принимать новые назначения.
@@ -196,7 +196,7 @@ ru:
     categories: Категории
     admins: Администраторы
     providers: Поставщики
-    secretaries: Секретари
+    assistants: "Ассистенты"
     mobile_number: Мобильный
     mobile: Мобильный
     state: Область
@@ -207,10 +207,10 @@ ru:
     passwords_mismatch: Несоответвие паролей.
     admin_saved: Администратор успешно сохранён.
     provider_saved: Исполнитель успешно сохранён.
-    secretary_saved: Секретарь успешно сохранён.
+    assistant_saved: "Ассистент успешно сохранён."
     admin_deleted: Администратор успешно удалён.
     provider_deleted: Исполнитель успешно удалён.
-    secretary_deleted: Секретарь успешно удален.
+    assistant_deleted: "Ассистент успешно удалён."
     service_saved: Услуга успешно сохранена.
     service_category_saved: Категория услуги успешно сохранена.
     service_deleted: Услуга успешно удалена.
@@ -285,7 +285,7 @@ ru:
     delete_service: Удалить услугу
     delete_service_category: Удалить категорию услуги
     delete_provider: Удалить исполнителя
-    delete_secretary: Удалисть секретаря
+    delete_assistant: "Удалить ассистента"
     delete_appointment: Удалить назначение
     delete_unavailability: Удалить недоступный период
     delete: Удалить
@@ -438,7 +438,7 @@ ru:
     what_kind_of_event: Какое событие вы хотели бы добавить?
     theme: Тема
     limit_customer_access: Ограничить доступ клиентов
-    limit_customer_access_hint: Если эта функция включена, поставщики и секретари смогут получить доступ только к тем клиентам, с которыми у них назначена встреча.
+    limit_customer_access_hint: Если эта функция включена, поставщики и ассистенты смогут получить доступ только к тем клиентам, с которыми у них назначена встреча.
     url: URL
     secret_token: Секретный токен
     verify_ssl: Проверка SSL
@@ -454,8 +454,8 @@ ru:
     service_category_delete: Удалить категорию
     provider_save: Сохранить поставщика
     provider_delete: Удалить поставщика
-    secretary_save: Сохранить секретаря
-    secretary_delete: Удалить секретаря
+    assistant_save: "Сохранение ассистента"
+    assistant_delete: "Удаление ассистента"
     admin_save: Сохранить админа
     admin_delete: Удалить админа
     options: Параметры
@@ -716,7 +716,7 @@ ru:
     notification_send_to: Send to
     notification_audience_customer: Customer
     notification_audience_provider: Provider
-    notification_audience_admins: Admins and secretaries
+    notification_audience_admins: "Администраторы и ассистенты"
     notification_no_providers: No providers are enabled. Enable one on the Providers page first.
     notification_short_text: Short Text (Email Subject or SMS)
     notification_long_text: Long Text (for providers that support it, e.g. Email Body)

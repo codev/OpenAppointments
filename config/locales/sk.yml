@@ -58,7 +58,7 @@ sk:
     skipped: preskočené
     no_file_selected: Nie je vybraný žiadny súbor.
     reset_database: Resetovať databázu
-    reset_database_warning: Týmto natrvalo vymažete všetky termíny, zákazníkov, poskytovateľov, sekretárov, služby a kategórie. Administrátorské účty a nastavenia zostanú. Nedá sa vrátiť späť.
+    reset_database_warning: Týmto natrvalo vymažete všetky termíny, zákazníkov, poskytovateľov, asistentov, služby a kategórie. Administrátorské účty a nastavenia zostanú. Nedá sa vrátiť späť.
     reset_confirmation_hint: "Pre povolenie tlačidla napíšte I KNOW WHAT I AM DOING."
     reset_database_done: Databáza bola resetovaná.
     captcha_provider: Poskytovateľ captcha
@@ -155,7 +155,7 @@ sk:
     enable_appointment_sync_hint: Povoliť synchronizáciu rezervácií s poskytovateľom's s kontom Google Kalendár.
     manage_customers_hint: Správa registrovaných zákazníkov a histórie rezervácií.
     manage_services_hint: Správa dostupných služieb a kategórií systému.
-    manage_users_hint: Správa užívateľov administrácie (Administrátori, pracovníci, sekretárky...).
+    manage_users_hint: Správa užívateľov administrácie (Administrátori, pracovníci, asistentov...).
     settings_hint: Nastavenia systému a nastavenia užívateľov.
     log_out_hint: Odhlásiť sa zo systému.
     unavailability_periods_hint: Počas nedostupnosti (otváracia doba) nebudú akceptované nové rezervácie.
@@ -196,7 +196,7 @@ sk:
     categories: Kategórie
     admins: Administrátori
     providers: Pracovníci
-    secretaries: Sekretárky
+    assistants: "Asistenti"
     mobile_number: Mobilné číslo
     mobile: Mobil
     state: Štát
@@ -207,10 +207,10 @@ sk:
     passwords_mismatch: Heslá sa nezhodujú.
     admin_saved: Admin úspešne uložený.
     provider_saved: Pracovník úspešne uložený.
-    secretary_saved: Sekretárka úspešne uložená.
+    assistant_saved: "Asistent bol úspešne uložený."
     admin_deleted: Admin úspešne vymazaný.
     provider_deleted: Pracovník úspešne vymazaný.
-    secretary_deleted: Sekretárka úspešne vymazaná.
+    assistant_deleted: "Asistent bol úspešne vymazaný."
     service_saved: Služba úspešne uložená.
     service_category_saved: Kategórie služieb úspešne uložené.
     service_deleted: Služba  úspešne vymazaná.
@@ -285,7 +285,7 @@ sk:
     delete_service: Zmazať službu
     delete_service_category: Zmazať službu kategórie
     delete_provider: Zmazať pracovníka
-    delete_secretary: Zmazať sekretárku
+    delete_assistant: "Vymazať asistenta"
     delete_appointment: Zmazať rezerváciu
     delete_unavailability: Zmazať nedostupnú dobu
     delete: Zmazať
@@ -438,7 +438,7 @@ sk:
     what_kind_of_event: Aký druh udalosti by ste chceli pridať?
     theme: Téma
     limit_customer_access: Obmedziť zákaznícky prístup
-    limit_customer_access_hint: Ak je povolené, poskytovatelia a sekretárky budú mať prístup len k zákazníkom, s ktorými majú stretnutie.
+    limit_customer_access_hint: Ak je povolené, poskytovatelia a asistenti budú mať prístup len k zákazníkom, s ktorými majú stretnutie.
     url: URL
     secret_token: Tajný token
     verify_ssl: Overiť SSL
@@ -454,8 +454,8 @@ sk:
     service_category_delete: Vymazanie kategórie
     provider_save: Uložiť poskytovateľa
     provider_delete: Vymazať poskytovateľa
-    secretary_save: Uložiť sekretárku
-    secretary_delete: Vymazanie sekretárky
+    assistant_save: "Uloženie asistenta"
+    assistant_delete: "Vymazanie asistenta"
     admin_save: Uloženie správcu
     admin_delete: Odstrániť správcu
     options: Možnosti
@@ -716,7 +716,7 @@ sk:
     notification_send_to: Send to
     notification_audience_customer: Customer
     notification_audience_provider: Provider
-    notification_audience_admins: Admins and secretaries
+    notification_audience_admins: "Administrátori a asistenti"
     notification_no_providers: No providers are enabled. Enable one on the Providers page first.
     notification_short_text: Short Text (Email Subject or SMS)
     notification_long_text: Long Text (for providers that support it, e.g. Email Body)

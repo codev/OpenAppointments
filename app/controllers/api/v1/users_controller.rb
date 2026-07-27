@@ -1,6 +1,6 @@
 module Api
   module V1
-    # Shared base for provider/secretary/admin API controllers: persists the User,
+    # Shared base for provider/assistant/admin API controllers: persists the User,
     # its UserSetting, and (per subclass) service/provider links. Reuses the P5
     # UserCrud helpers for settings, password rules, and working-plan-exception sync.
     class UsersController < ResourceController

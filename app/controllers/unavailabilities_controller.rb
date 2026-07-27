@@ -20,8 +20,8 @@ class UnavailabilitiesController < ApplicationController
     case session[:role_slug]
     when Role::PROVIDER
       unavailabilities.select! { |u| u.id_users_provider == session[:user_id].to_i }
-    when Role::SECRETARY
-      unavailabilities.select! { |u| secretary_provider_ids.include?(u.id_users_provider) }
+    when Role::ASSISTANT
+      unavailabilities.select! { |u| assistant_provider_ids.include?(u.id_users_provider) }
     end
 
     render json: unavailabilities.map { |unavailability| EaRows.appointment_row(unavailability) }
@@ -105,13 +105,13 @@ class UnavailabilitiesController < ApplicationController
     render json: { success: true, id: record.id }
   end
 
-  # EA check_unavailability_access: secretaries limited to their providers,
+  # EA check_unavailability_access: assistants limited to their providers,
   # providers limited to themselves.
   def check_unavailability_access!(unavailability)
     provider_id = unavailability.id_users_provider.to_i
     case session[:role_slug]
-    when Role::SECRETARY
-      head :forbidden unless secretary_provider_ids.include?(provider_id)
+    when Role::ASSISTANT
+      head :forbidden unless assistant_provider_ids.include?(provider_id)
     when Role::PROVIDER
       head :forbidden unless session[:user_id].to_i == provider_id
     end

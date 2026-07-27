@@ -13,8 +13,8 @@ module Webhooks
   SERVICE_CATEGORY_DELETE = "service_category_delete".freeze
   PROVIDER_SAVE = "provider_save".freeze
   PROVIDER_DELETE = "provider_delete".freeze
-  SECRETARY_SAVE = "secretary_save".freeze
-  SECRETARY_DELETE = "secretary_delete".freeze
+  ASSISTANT_SAVE = "assistant_save".freeze
+  ASSISTANT_DELETE = "assistant_delete".freeze
   ADMIN_SAVE = "admin_save".freeze
   ADMIN_DELETE = "admin_delete".freeze
   BLOCKED_PERIOD_SAVE = "blocked_period_save".freeze

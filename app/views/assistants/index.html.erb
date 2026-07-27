@@ -1,8 +1,8 @@
-<%# Port of EA pages/secretaries.php. %>
-<div class="container backend-page py-3" id="secretaries-page">
-    <div class="row" id="secretaries">
-        <div id="filter-secretaries" class="filter-records column col-12 mb-4">
-            <button id="add-secretary" class="btn btn-primary add-record-btn mb-4">
+<%# Port of EA pages/assistants.php. %>
+<div class="container backend-page py-3" id="assistants-page">
+    <div class="row" id="assistants">
+        <div id="filter-assistants" class="filter-records column col-12 mb-4">
+            <button id="add-assistant" class="btn btn-primary add-record-btn mb-4">
                 <i class="fas fa-plus-square me-2"></i>
                 <%= lang('add') %>
             </button>
@@ -19,7 +19,7 @@
             </form>
 
             <h4 class="mb-3 fw-light">
-                <%= lang('secretaries') %>
+                <%= lang('assistants') %>
             </h4>
 
             <div class="results overflow-auto">
@@ -30,21 +30,21 @@
         <div class="record-details column col-12 mb-4">
             <div class="btn-toolbar mb-4">
                 <div class="add-edit-delete-group btn-group">
-                    <button id="edit-secretary" class="btn btn-outline-secondary" disabled="disabled">
+                    <button id="edit-assistant" class="btn btn-outline-secondary" disabled="disabled">
                         <i class="fas fa-edit me-2"></i>
                         <%= lang('edit') %>
                     </button>
                 </div>
 
                 <div class="save-cancel-group" style="display:none;">
-                    <button id="save-secretary" class="btn btn-primary">
+                    <button id="save-assistant" class="btn btn-primary">
                         <i class="fas fa-check-square me-2"></i>
                         <%= lang('save') %>
                     </button>
-                    <button id="cancel-secretary" class="btn btn-outline-secondary">
+                    <button id="cancel-assistant" class="btn btn-outline-secondary">
                         <%= lang('cancel') %>
                     </button>
-                    <button id="delete-secretary" class="btn btn-outline-danger ms-2">
+                    <button id="delete-assistant" class="btn btn-outline-danger ms-2">
                         <i class="fas fa-trash-alt me-2"></i>
                         <%= lang('delete') %>
                     </button>
@@ -230,7 +230,7 @@
                         </div>
                     </div>
 
-                    <div id="secretary-providers" class="card card-body border">
+                    <div id="assistant-providers" class="card card-body border">
                         <!-- JS -->
                     </div>
 
@@ -241,5 +241,5 @@
 </div>
 
 <% content_for :scripts do %>
-    <%= ea_js "utils/picture_upload", "http/account_http_client", "http/secretaries_http_client", "pages/secretaries" %>
+    <%= ea_js "utils/picture_upload", "http/account_http_client", "http/assistants_http_client", "pages/assistants" %>
 <% end %>

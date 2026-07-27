@@ -58,7 +58,7 @@ zh:
     skipped: 已跳过
     no_file_selected: 未选择文件。
     reset_database: 重置数据库
-    reset_database_warning: 这将永久删除所有预约、客户、服务人员、秘书、服务和类别。管理员账户和设置将保留。此操作不可撤销。
+    reset_database_warning: 这将永久删除所有预约、客户、服务人员、助理、服务和类别。管理员账户和设置将保留。此操作不可撤销。
     reset_confirmation_hint: "输入 I KNOW WHAT I AM DOING 以启用该按钮。"
     reset_database_done: 数据库已重置。
     captcha_provider: 验证码提供方
@@ -155,7 +155,7 @@ zh:
     enable_appointment_sync_hint: 开启提供商的谷歌日立帐户预约同步.
     manage_customers_hint: 管理注册客户并且查看预约记录.
     manage_services_hint: 管理系统可用服务项目和类别.
-    manage_users_hint: 管理后台用户 (管理员, 服务人员, 秘书).
+    manage_users_hint: 管理后台用户 (管理员, 服务人员, 助理).
     settings_hint: 配置系统和用户.
     log_out_hint: 注销.
     unavailability_periods_hint: 不可预约时间短内，服务人员将不能接受预约.
@@ -196,7 +196,7 @@ zh:
     categories: 类别
     admins: 管理员
     providers: 服务人员
-    secretaries: 秘书
+    assistants: "助理"
     mobile_number: 手机号码
     mobile: 手机
     state: 省/州
@@ -207,10 +207,10 @@ zh:
     passwords_mismatch: 密码不符合.
     admin_saved: 管理员Admin成功保存.
     provider_saved: 服务人员成功保存.
-    secretary_saved: 秘书成功保存.
+    assistant_saved: "助理成功保存."
     admin_deleted: 管理员Admin成功删除
     provider_deleted: 服务人员成功删除.
-    secretary_deleted: 秘书成功删除.
+    assistant_deleted: "助理已成功删除."
     service_saved: 服务项目成功保存.
     service_category_saved: 服务类别成功保存.
     service_deleted: 服务项目成功删除.
@@ -285,7 +285,7 @@ zh:
     delete_service: 删除服务项目
     delete_service_category: 删除服务类别
     delete_provider: 删除服务人员
-    delete_secretary: 删除秘书
+    delete_assistant: "删除助理"
     delete_appointment: 删除预约
     delete_unavailability: 删除不可用时间段
     delete: 删除
@@ -438,7 +438,7 @@ zh:
     what_kind_of_event: 您想添加什么类型的事件？
     theme: 主题
     limit_customer_access: 限制客户访问
-    limit_customer_access_hint: 启用时，服务提供者和秘书将只能访问他们有预约的客户。
+    limit_customer_access_hint: 启用时，服务提供者和助理将只能访问他们有预约的客户。
     url: 网址
     secret_token: 秘密令牌
     verify_ssl: 验证 SSL
@@ -454,8 +454,8 @@ zh:
     service_category_delete: 删除类别
     provider_save: 保存服务提供者
     provider_delete: 删除服务提供者
-    secretary_save: 保存秘书
-    secretary_delete: 删除秘书
+    assistant_save: "保存助理"
+    assistant_delete: "删除助理"
     admin_save: 保存管理员
     admin_delete: 删除管理员
     options: 选项
@@ -716,7 +716,7 @@ zh:
     notification_send_to: Send to
     notification_audience_customer: Customer
     notification_audience_provider: Provider
-    notification_audience_admins: Admins and secretaries
+    notification_audience_admins: "管理员和助理"
     notification_no_providers: No providers are enabled. Enable one on the Providers page first.
     notification_short_text: Short Text (Email Subject or SMS)
     notification_long_text: Long Text (for providers that support it, e.g. Email Body)

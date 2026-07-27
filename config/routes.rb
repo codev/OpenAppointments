@@ -27,7 +27,7 @@ Rails.application.routes.draw do
   # Backend CRUD pages (EA pattern: page GET + find/search/store/update/destroy).
   # EA declares find as GET but the ported JS clients $.post it, so find takes both.
   # Unavailabilities has no page in EA, only the JSON endpoints.
-  %w[customers services service_categories providers secretaries admins
+  %w[customers services service_categories providers assistants admins
      unavailabilities blocked_periods webhooks].each do |resource|
     get resource => "#{resource}#index" unless resource == "unavailabilities"
     match "#{resource}/find" => "#{resource}#find", via: [ :get, :post ]
@@ -36,6 +36,9 @@ Rails.application.routes.draw do
     post "#{resource}/update" => "#{resource}#update"
     post "#{resource}/destroy" => "#{resource}#destroy"
   end
+
+  # Old backend page URL after the assistant rename
+  get "secretaries" => redirect("/assistants")
 
   # Booking link slug regeneration
   post "services/regenerate_link" => "services#regenerate_link"
@@ -50,7 +53,7 @@ Rails.application.routes.draw do
   post "import/reset" => "import#reset"
 
   # Record pictures (cards display mode)
-  %w[providers secretaries admins services service_categories].each do |resource|
+  %w[providers assistants admins services service_categories].each do |resource|
     post "#{resource}/:id/picture" => "#{resource}#save_picture"
   end
 
@@ -111,7 +114,7 @@ Rails.application.routes.draw do
   # REST API v1 (EA route_api_resource pattern: GET, GET/:id, POST, PUT/:id, DELETE/:id).
   namespace :api do
     namespace :v1 do
-      %w[appointments unavailabilities customers admins providers secretaries
+      %w[appointments unavailabilities customers admins providers assistants
          services service_categories webhooks blocked_periods working_plan_exceptions].each do |resource|
         get resource => "#{resource}#index"
         get "#{resource}/:id" => "#{resource}#show"
@@ -119,6 +122,13 @@ Rails.application.routes.draw do
         put "#{resource}/:id" => "#{resource}#update"
         delete "#{resource}/:id" => "#{resource}#destroy"
       end
+
+      # EA compat: the old secretaries routes stay as aliases for assistants.
+      get "secretaries" => "assistants#index"
+      get "secretaries/:id" => "assistants#show"
+      post "secretaries" => "assistants#store"
+      put "secretaries/:id" => "assistants#update"
+      delete "secretaries/:id" => "assistants#destroy"
 
       get "settings" => "settings#index"
       get "settings/:name" => "settings#show", constraints: { name: /[^\/]+/ }

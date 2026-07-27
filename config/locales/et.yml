@@ -58,7 +58,7 @@ et:
     skipped: vahele jäetud
     no_file_selected: Faili pole valitud.
     reset_database: Lähtesta andmebaas
-    reset_database_warning: See kustutab jäädavalt kõik broneeringud, kliendid, teenusepakkujad, sekretärid, teenused ja kategooriad. Administraatori kontod ja seaded säilivad. Seda ei saa tagasi võtta.
+    reset_database_warning: See kustutab jäädavalt kõik broneeringud, kliendid, teenusepakkujad, assistendid, teenused ja kategooriad. Administraatori kontod ja seaded säilivad. Seda ei saa tagasi võtta.
     reset_confirmation_hint: "Nupu lubamiseks sisestage I KNOW WHAT I AM DOING."
     reset_database_done: Andmebaas on lähtestatud.
     captcha_provider: Captcha pakkuja
@@ -155,7 +155,7 @@ et:
     enable_appointment_sync_hint: Aktiveeri aegade sünkroniseerimine teenuse osutaja Google'i kalendrisse.
     manage_customers_hint: Halda registreerunud kliente ja näita nende broneeringute ajalugu.
     manage_services_hint: Halda teenuseid ja nende kategooriaid.
-    manage_users_hint: Halda süsteemi kasutajaid (adminid, teenusepakkujad, sekretärid).
+    manage_users_hint: Halda süsteemi kasutajaid (adminid, teenusepakkujad, assistendid).
     settings_hint: Halda süsteemi- ja kasutajakohaseid seadeid.
     log_out_hint: Logi süsteemist välja.
     unavailability_periods_hint: Teenusepakkuja äraolekujale ei saa broneeringuid teha.
@@ -196,7 +196,7 @@ et:
     categories: Kategooriad
     admins: Administraatorid
     providers: Teenusepakkujad
-    secretaries: Sekretärid
+    assistants: "Assistendid"
     mobile_number: Mobiili number
     mobile: Mobiil
     state: Riik
@@ -207,10 +207,10 @@ et:
     passwords_mismatch: Salasõnad ei klapi.
     admin_saved: Administraator salvestatud.
     provider_saved: Teenusepakkuja salvestatud.
-    secretary_saved: Sekretär salvestatud.
+    assistant_saved: "Assistent on edukalt salvestatud."
     admin_deleted: Administraator kustutatud.
     provider_deleted: Teenusepakkuja kustutatud.
-    secretary_deleted: Sekretär kustutatud.
+    assistant_deleted: "Assistent on edukalt kustutatud."
     service_saved: Teenus salvestatud.
     service_category_saved: Teenuse kategooria salvestatud.
     service_deleted: Teenus kustutatud.
@@ -285,7 +285,7 @@ et:
     delete_service: Kustuta teenus
     delete_service_category: Kustuta kategooria
     delete_provider: Kustuta teenuseosutaja
-    delete_secretary: Kustuta sekretär
+    delete_assistant: "Kustuta assistent"
     delete_appointment: Kustuta broneering
     delete_unavailability: Kustuta eemalolek
     delete: Kustuta
@@ -438,7 +438,7 @@ et:
     what_kind_of_event: Mis laadi sündmust soovid lisada?
     theme: Teema
     limit_customer_access: Piira Kliendi Ligipääs
-    limit_customer_access_hint: Kui lubatud, saavad pakkujad ja sekretärid juurde pääseda ainult klientidele, kellel on nendega kohtumine.
+    limit_customer_access_hint: Kui lubatud, saavad pakkujad ja assistendid juurde pääseda ainult klientidele, kellel on nendega kohtumine.
     url: URL
     secret_token: Salajane Token
     verify_ssl: Kontrolli SSL-i
@@ -454,8 +454,8 @@ et:
     service_category_delete: Kategooria Kustutamine
     provider_save: Pakkuja Salvestamine
     provider_delete: Pakkuja Kustutamine
-    secretary_save: Sekretäri Salvestamine
-    secretary_delete: Sekretäri Kustutamine
+    assistant_save: "Assistendi salvestamine"
+    assistant_delete: "Assistendi kustutamine"
     admin_save: Administraatori Salvestamine
     admin_delete: Administraatori Kustutamine
     options: Valikud
@@ -716,7 +716,7 @@ et:
     notification_send_to: Send to
     notification_audience_customer: Customer
     notification_audience_provider: Provider
-    notification_audience_admins: Admins and secretaries
+    notification_audience_admins: "Administraatorid ja assistendid"
     notification_no_providers: No providers are enabled. Enable one on the Providers page first.
     notification_short_text: Short Text (Email Subject or SMS)
     notification_long_text: Long Text (for providers that support it, e.g. Email Body)

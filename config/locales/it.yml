@@ -58,7 +58,7 @@ it:
     skipped: saltati
     no_file_selected: Nessun file selezionato.
     reset_database: Reimposta database
-    reset_database_warning: Questo elimina definitivamente tutti gli appuntamenti, clienti, fornitori, segretari, servizi e categorie. Gli account amministratore e le impostazioni restano. Irreversibile.
+    reset_database_warning: Questo elimina definitivamente tutti gli appuntamenti, clienti, fornitori, assistenti, servizi e categorie. Gli account amministratore e le impostazioni restano. Irreversibile.
     reset_confirmation_hint: "Digita I KNOW WHAT I AM DOING per abilitare il pulsante."
     reset_database_done: Il database è stato reimpostato.
     captcha_provider: Fornitore captcha
@@ -155,7 +155,7 @@ it:
     enable_appointment_sync_hint: Abilita la sincronizzazione con l'account Google Calendar del fornitore.
     manage_customers_hint: Gestisci i clienti registrati ed visualizza la loro storia delle prenotazioni.
     manage_services_hint: Gestisci i servizi disponibili e le categorie del sistema.
-    manage_users_hint: Gestisci gli utenti del backend (amministratori, fornitori, segretari).
+    manage_users_hint: Gestisci gli utenti del backend (amministratori, fornitori, assistenti).
     settings_hint: Imposta le preferenze di sistema e utente.
     log_out_hint: Esci dal sistema.
     unavailability_periods_hint: Durante i periodi di indisponibilità il fornitore non vuole accettare nuovi appuntamenti.
@@ -196,7 +196,7 @@ it:
     categories: Categorie
     admins: Amministratori
     providers: Fornitori
-    secretaries: Segretari
+    assistants: "Assistenti"
     mobile_number: Cellulare
     mobile: Cellulare
     state: Stato
@@ -207,10 +207,10 @@ it:
     passwords_mismatch: Le password non coincidono.
     admin_saved: Amministratore salvato con successo.
     provider_saved: Fornitore salvato con successo.
-    secretary_saved: Segretario salvato con successo.
+    assistant_saved: "Assistente salvato con successo."
     admin_deleted: Amministratore cancellato con successo.
     provider_deleted: Fornitore cancellato con successo.
-    secretary_deleted: Segretario cancellato con successo.
+    assistant_deleted: "Assistente eliminato con successo."
     service_saved: Servizio salvato con successo.
     service_category_saved: Categoria servizio salvata con successo.
     service_deleted: Servizio cancellato con successo.
@@ -285,7 +285,7 @@ it:
     delete_service: Cancella servizio
     delete_service_category: Cancella categoria servizio
     delete_provider: Cancella fornitore
-    delete_secretary: Cancella segretario
+    delete_assistant: "Elimina assistente"
     delete_appointment: Cancella appuntamento
     delete_unavailability: Cancella periodo indisponibilità
     delete: Cancella
@@ -438,7 +438,7 @@ it:
     what_kind_of_event: Che tipo di evento vuoi aggiungere?
     theme: Tema
     limit_customer_access: Limita Accesso ai Clienti
-    limit_customer_access_hint: Se abilitato, fornitori e segretari potranno accedere solo ai clienti con cui hanno un appuntamento.
+    limit_customer_access_hint: Se abilitato, fornitori e assistenti potranno accedere solo ai clienti con cui hanno un appuntamento.
     url: URL
     secret_token: Token Segreto
     verify_ssl: Verifica SSL
@@ -454,8 +454,8 @@ it:
     service_category_delete: Elimina Categoria
     provider_save: Salva Fornitore
     provider_delete: Elimina Fornitore
-    secretary_save: Salva Segretario
-    secretary_delete: Elimina Segretario
+    assistant_save: "Salvataggio assistente"
+    assistant_delete: "Eliminazione assistente"
     admin_save: Salva Amministratore
     admin_delete: Elimina Amministratore
     options: Opzioni
@@ -716,7 +716,7 @@ it:
     notification_send_to: Send to
     notification_audience_customer: Customer
     notification_audience_provider: Provider
-    notification_audience_admins: Admins and secretaries
+    notification_audience_admins: "Amministratori e assistenti"
     notification_no_providers: No providers are enabled. Enable one on the Providers page first.
     notification_short_text: Short Text (Email Subject or SMS)
     notification_long_text: Long Text (for providers that support it, e.g. Email Body)

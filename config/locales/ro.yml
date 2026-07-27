@@ -58,7 +58,7 @@ ro:
     skipped: omise
     no_file_selected: Niciun fișier selectat.
     reset_database: Resetează baza de date
-    reset_database_warning: Aceasta șterge definitiv toate programările, clienții, furnizorii, secretarii, serviciile și categoriile. Conturile de administrator și setările rămân. Ireversibil.
+    reset_database_warning: Aceasta șterge definitiv toate programările, clienții, furnizorii, asistenții, serviciile și categoriile. Conturile de administrator și setările rămân. Ireversibil.
     reset_confirmation_hint: "Tastați I KNOW WHAT I AM DOING pentru a activa butonul."
     reset_database_done: Baza de date a fost resetată.
     captcha_provider: Furnizor captcha
@@ -155,7 +155,7 @@ ro:
     enable_appointment_sync_hint: Activeaza sincronizarea întâlnirilor cu calendarul furnizorului.
     manage_customers_hint: Gestioneaza clientii înregistrati si vizualizeaza istoricul întâlnirilor lor.
     manage_services_hint: Gestioneaza serviciile disponibile si categoriile din sistem.
-    manage_users_hint: Gestioneaza utilizatorii de backend (administrator, furnizori, secretari).
+    manage_users_hint: Gestioneaza utilizatorii de backend (administrator, furnizori, asistenți).
     settings_hint: Setarile sistemului si utilizatorilor.
     log_out_hint: Iesire din sistem.
     unavailability_periods_hint: În timpul perioadei de indisponibilitate, furnizorul nu va accepta întâlniri noi.
@@ -196,7 +196,7 @@ ro:
     categories: Categorii
     admins: Administratori
     providers: Furnizori
-    secretaries: Secretari
+    assistants: "Asistenți"
     mobile_number: Numar de mobil
     mobile: Mobil
     state: Stare
@@ -207,10 +207,10 @@ ro:
     passwords_mismatch: Parola nu se potriveste.
     admin_saved: Administrator salvat.
     provider_saved: Furnizor salvat.
-    secretary_saved: Secretar salvat.
+    assistant_saved: "Asistent salvat cu succes."
     admin_deleted: Administrator sters.
     provider_deleted: Furnizor sters.
-    secretary_deleted: Secretar sters.
+    assistant_deleted: "Asistent șters cu succes."
     service_saved: Serviciu salvat.
     service_category_saved: Categorie de servicii salvata.
     service_deleted: Serviciu sters.
@@ -285,7 +285,7 @@ ro:
     delete_service: Sterge serviciu
     delete_service_category: Sterge Categorie de servicii
     delete_provider: Sterge Furnizor
-    delete_secretary: Sterge Secretar
+    delete_assistant: "Șterge asistentul"
     delete_appointment: Sterge întâlnire
     delete_unavailability: Sterge perioada nelucratoare
     delete: Sterge
@@ -438,7 +438,7 @@ ro:
     what_kind_of_event: Ce tip de eveniment doriți să adăugați?
     theme: Temă
     limit_customer_access: Limitează Accesul Clienților
-    limit_customer_access_hint: Dacă este activat, furnizorii și secretarii vor putea accesa doar clienții cu care au o programare.
+    limit_customer_access_hint: Dacă este activat, furnizorii și asistenții vor putea accesa doar clienții cu care au o programare.
     url: URL
     secret_token: Token Secret
     verify_ssl: Verifică SSL
@@ -454,8 +454,8 @@ ro:
     service_category_delete: Șterge Categoria
     provider_save: Salvează Furnizorul
     provider_delete: Șterge Furnizorul
-    secretary_save: Salvează Secretarul
-    secretary_delete: Șterge Secretarul
+    assistant_save: "Salvare asistent"
+    assistant_delete: "Ștergere asistent"
     admin_save: Salvează Adminul
     admin_delete: Șterge Adminul
     options: Opțiuni
@@ -716,7 +716,7 @@ ro:
     notification_send_to: Send to
     notification_audience_customer: Customer
     notification_audience_provider: Provider
-    notification_audience_admins: Admins and secretaries
+    notification_audience_admins: "Administratori și asistenți"
     notification_no_providers: No providers are enabled. Enable one on the Providers page first.
     notification_short_text: Short Text (Email Subject or SMS)
     notification_long_text: Long Text (for providers that support it, e.g. Email Body)

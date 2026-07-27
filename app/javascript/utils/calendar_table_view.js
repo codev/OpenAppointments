@@ -123,8 +123,8 @@ App.Utils.CalendarTableView = (function () {
                 return true;
             }
 
-            if (roleSlug === App.Layouts.Backend.DB_SLUG_SECRETARY) {
-                return vars('secretary_providers').indexOf(Number(provider.id)) !== -1;
+            if (roleSlug === App.Layouts.Backend.DB_SLUG_ASSISTANT) {
+                return vars('assistant_providers').indexOf(Number(provider.id)) !== -1;
             }
 
             if (roleSlug === App.Layouts.Backend.DB_SLUG_PROVIDER) {
@@ -1385,8 +1385,8 @@ App.Utils.CalendarTableView = (function () {
             providers = vars('available_providers').filter((p) => Number(p.id) === Number(vars('user_id')));
         }
 
-        if (vars('role_slug') === 'secretary') {
-            providers = vars('available_providers').filter((p) => vars('secretary_providers').indexOf(p.id) > -1);
+        if (vars('role_slug') === 'assistant') {
+            providers = vars('available_providers').filter((p) => vars('assistant_providers').indexOf(p.id) > -1);
         }
 
         providers.forEach((provider) => {

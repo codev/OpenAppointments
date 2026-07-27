@@ -16,7 +16,7 @@ module DataExport
       "Service Categories" => categories_sheet,
       "Services" => services_sheet,
       "Providers" => providers_sheet,
-      "Secretaries" => secretaries_sheet,
+      "Assistants" => assistants_sheet,
       "Admins" => admins_sheet,
       "Customers" => customers_sheet,
       "Appointments" => appointments_sheet,
@@ -56,10 +56,10 @@ module DataExport
     record.picture.attached? ? record.picture.filename.to_s : nil
   end
 
-  def secretaries_sheet
-    rows = User.secretaries.includes(:providers, :settings).order(:name).map do |secretary|
-      [ secretary.name, secretary.email, secretary.phone_number, secretary.timezone,
-        secretary.providers.map(&:name).join("|"), secretary.settings&.username ]
+  def assistants_sheet
+    rows = User.assistants.includes(:providers, :settings).order(:name).map do |assistant|
+      [ assistant.name, assistant.email, assistant.phone_number, assistant.timezone,
+        assistant.providers.map(&:name).join("|"), assistant.settings&.username ]
     end
     [ %w[name email phone_number timezone providers username] ] + rows
   end

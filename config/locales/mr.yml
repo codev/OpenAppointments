@@ -58,7 +58,7 @@ mr:
     skipped: वगळले
     no_file_selected: कोणतीही फाइल निवडलेली नाही.
     reset_database: डेटाबेस रीसेट करा
-    reset_database_warning: हे सर्व अपॉइंटमेंट, ग्राहक, प्रदाते, सचिव, सेवा आणि श्रेणी कायमचे हटवते. प्रशासक खाती आणि सेटिंग्ज राहतात. हे पूर्ववत करता येत नाही.
+    reset_database_warning: हे सर्व अपॉइंटमेंट, ग्राहक, प्रदाते, सहाय्यक, सेवा आणि श्रेणी कायमचे हटवते. प्रशासक खाती आणि सेटिंग्ज राहतात. हे पूर्ववत करता येत नाही.
     reset_confirmation_hint: "बटण सक्षम करण्यासाठी I KNOW WHAT I AM DOING टाइप करा."
     reset_database_done: डेटाबेस रीसेट झाला आहे.
     captcha_provider: कॅप्चा प्रदाता
@@ -155,7 +155,7 @@ mr:
     enable_appointment_sync_hint: प्रदात्याच्या Google कॅलेंडर खात्यासह अपॉइंटमेंट समक्रमण सक्षम करा
     manage_customers_hint: नोंदणीकृत ग्राहकांचे व्यवस्थापन आणि त्यांचे बुकिंग इतिहास पहा.
     manage_services_hint: उपलब्ध सेवा आणि प्रणालीच्या श्रेणींचे व्यवस्थापन.
-    manage_users_hint: बॅकएंड वापरकर्ते व्यवस्थापित करा (प्रशासक, प्रदाते, सचिव).
+    manage_users_hint: बॅकएंड वापरकर्ते व्यवस्थापित करा (प्रशासक, प्रदाते, सहाय्यक).
     settings_hint: सिस्टम आणि वापरकर्ता सेटिंग्ज बनवा.
     log_out_hint: सिस्टममधून लॉग आउट करा.
     unavailability_periods_hint: प्रदाता अनुपलब्ध कालावधीत नवीन भेटी स्वीकारणार नाही.
@@ -196,7 +196,7 @@ mr:
     categories: श्रेणी
     admins: प्रशासक
     providers: व्यवस्थापक
-    secretaries: सचिव
+    assistants: "सहाय्यक"
     mobile_number: मोबाइल नंबर
     mobile: मोबाइल
     state: राज्य
@@ -207,10 +207,10 @@ mr:
     passwords_mismatch: पासवर्ड जुळत नाहीत.
     admin_saved: प्रशासन यशस्वीरित्या जतन करा.
     provider_saved: प्रदाता यशस्वीरित्या जतन करा.
-    secretary_saved: 'सचिव  यशस्वीरित्या सेव्ह '
+    assistant_saved: "सहाय्यक यशस्वीरित्या जतन केला."
     admin_deleted: प्रशासन यशस्वीरित्या हटविला.
     provider_deleted: प्रदाता यशस्वीरित्या हटविला.
-    secretary_deleted: सचिव यशस्वीरित्या नष्ट.
+    assistant_deleted: "सहाय्यक यशस्वीरित्या हटवला."
     service_saved: सेवा यशस्वीरित्या जतन केली.
     service_category_saved: सेवा श्रेणी यशस्वीरित्या जतन करा.
     service_deleted: सेवा यशस्वीरित्या हटविली.
@@ -285,7 +285,7 @@ mr:
     delete_service: सेवा हटवा
     delete_service_category: सेवा श्रेणी काढा
     delete_provider: प्रदाता हटवा
-    delete_secretary: सचिव हटवा
+    delete_assistant: "सहाय्यक हटवा"
     delete_appointment: अपॉईंटमेंट हटवा
     delete_unavailability: गहाळ कालावधी हटवा
     delete: हटवा
@@ -438,7 +438,7 @@ mr:
     what_kind_of_event: तुम्हाला कोणत्या प्रकारच्या इव्हेंट जोडा इच्छिता?
     theme: थीम
     limit_customer_access: ग्राहक प्रवेश मर्यादित करा
-    limit_customer_access_hint: सक्षम असताना, प्रदाता आणि सचिव फक्त त्या ग्राहकांमध्ये प्रवेश करू शकतात ज्यांच्याशी त्यांची अपॉईंटमेंट आहे.
+    limit_customer_access_hint: सक्षम असताना, प्रदाता आणि सहाय्यक फक्त त्या ग्राहकांमध्ये प्रवेश करू शकतात ज्यांच्याशी त्यांची अपॉईंटमेंट आहे.
     url: URL
     secret_token: गुप्त टोकन
     verify_ssl: SSL पडताळणी करा
@@ -454,8 +454,8 @@ mr:
     service_category_delete: श्रेणी हटवा
     provider_save: प्रदात्याची माहिती सहेज
     provider_delete: प्रदात्याची माहिती हटवा
-    secretary_save: सचिव सहेज
-    secretary_delete: सचिव हटवा
+    assistant_save: "सहाय्यक जतन"
+    assistant_delete: "सहाय्यक हटवणे"
     admin_save: अॅडमिन सहेज
     admin_delete: अॅडमिन हटवा
     options: पर्याय
@@ -716,7 +716,7 @@ mr:
     notification_send_to: Send to
     notification_audience_customer: Customer
     notification_audience_provider: Provider
-    notification_audience_admins: Admins and secretaries
+    notification_audience_admins: "प्रशासक आणि सहाय्यक"
     notification_no_providers: No providers are enabled. Enable one on the Providers page first.
     notification_short_text: Short Text (Email Subject or SMS)
     notification_long_text: Long Text (for providers that support it, e.g. Email Body)

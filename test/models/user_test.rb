@@ -4,7 +4,7 @@ class UserTest < ActiveSupport::TestCase
   test "role scopes" do
     assert_includes User.admins, users(:admin)
     assert_includes User.providers, users(:zane)
-    assert_includes User.secretaries, users(:sam)
+    assert_includes User.assistants, users(:sam)
     assert_includes User.customers, users(:jx)
     assert_not_includes User.providers, users(:jx)
   end
@@ -12,7 +12,7 @@ class UserTest < ActiveSupport::TestCase
   test "role predicates" do
     assert users(:admin).admin?
     assert users(:zane).provider?
-    assert users(:sam).secretary?
+    assert users(:sam).assistant?
     assert users(:jx).customer?
   end
 

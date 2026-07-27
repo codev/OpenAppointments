@@ -3,7 +3,7 @@ require_relative "api_helper"
 module Api
   module V1
     # Coverage for the remaining resources: services, categories, providers,
-    # secretaries, admins, webhooks, blocked_periods, working_plan_exceptions,
+    # assistants, admins, webhooks, blocked_periods, working_plan_exceptions,
     # unavailabilities, settings, availabilities.
     class ResourcesTest < ApiTestCase
       test "services CRUD with camelCase keys" do
@@ -87,16 +87,29 @@ module Api
         assert created.settings.working_plan.present?
       end
 
-      test "secretaries store persists provider links" do
-        assert_difference "User.secretaries.count", 1 do
-          api_post "/api/v1/secretaries", {
+      test "the old secretaries API routes alias the assistants" do
+        api_get "/api/v1/secretaries"
+        assert_response :success
+        assert_equal json, begin
+          api_get "/api/v1/assistants"
+          json
+        end
+
+        api_get "/api/v1/secretaries/#{users(:sam).id}"
+        assert_response :success
+        assert_equal users(:sam).name, json["name"]
+      end
+
+      test "assistants store persists provider links" do
+        assert_difference "User.assistants.count", 1 do
+          api_post "/api/v1/assistants", {
             firstName: "Sec", lastName: "Retary", email: "sec@example.org",
             providers: [ users(:zane).id ],
-            settings: { username: "secretary2", password: "secpass12", notifications: true }
+            settings: { username: "assistant2", password: "secpass12", notifications: true }
           }
         end
         assert_response :created
-        assert_equal [ users(:zane).id ], User.secretaries.find(json["id"]).providers.map(&:id)
+        assert_equal [ users(:zane).id ], User.assistants.find(json["id"]).providers.map(&:id)
       end
 
       test "admins store persists settings" do

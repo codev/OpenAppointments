@@ -10,78 +10,78 @@
  * ---------------------------------------------------------------------------- */
 
 /**
- * Secretaries HTTP client.
+ * Assistants HTTP client.
  *
- * This module implements the secretaries related HTTP requests.
+ * This module implements the assistants related HTTP requests.
  */
-App.Http.Secretaries = (function () {
+App.Http.Assistants = (function () {
     /**
-     * Save (create or update) a secretary.
+     * Save (create or update) a assistant.
      *
-     * @param {Object} secretary
+     * @param {Object} assistant
      *
      * @return {Object}
      */
-    function save(secretary) {
-        return secretary.id ? update(secretary) : store(secretary);
+    function save(assistant) {
+        return assistant.id ? update(assistant) : store(assistant);
     }
 
     /**
-     * Create a secretary.
+     * Create a assistant.
      *
-     * @param {Object} secretary
+     * @param {Object} assistant
      *
      * @return {Object}
      */
-    function store(secretary) {
-        const url = App.Utils.Url.siteUrl('secretaries/store');
+    function store(assistant) {
+        const url = App.Utils.Url.siteUrl('assistants/store');
 
         const data = {
             csrf_token: vars('csrf_token'),
-            secretary: secretary,
+            assistant: assistant,
         };
 
         return $.post(url, data);
     }
 
     /**
-     * Update a secretary.
+     * Update a assistant.
      *
-     * @param {Object} secretary
+     * @param {Object} assistant
      *
      * @return {Object}
      */
-    function update(secretary) {
-        const url = App.Utils.Url.siteUrl('secretaries/update');
+    function update(assistant) {
+        const url = App.Utils.Url.siteUrl('assistants/update');
 
         const data = {
             csrf_token: vars('csrf_token'),
-            secretary: secretary,
+            assistant: assistant,
         };
 
         return $.post(url, data);
     }
 
     /**
-     * Delete a secretary.
+     * Delete a assistant.
      *
-     * @param {Number} secretaryId
+     * @param {Number} assistantId
      *
      * @return {Object}
      */
-    function destroy(secretaryId) {
-        const url = App.Utils.Url.siteUrl('secretaries/destroy');
+    function destroy(assistantId) {
+        const url = App.Utils.Url.siteUrl('assistants/destroy');
 
         const data = {
             csrf_token: vars('csrf_token'),
-            secretary_id: secretaryId,
+            assistant_id: assistantId,
         };
 
         return $.post(url, data);
     }
 
     /**
-     * Search secretaries by keyword.
+     * Search assistants by keyword.
      *
      * @param {String} keyword
      * @param {Number} [limit]
@@ -91,7 +91,7 @@ App.Http.Secretaries = (function () {
      * @return {Object}
      */
     function search(keyword, limit = null, offset = null, orderBy = null) {
-        const url = App.Utils.Url.siteUrl('secretaries/search');
+        const url = App.Utils.Url.siteUrl('assistants/search');
 
         const data = {
             csrf_token: vars('csrf_token'),
@@ -105,18 +105,18 @@ App.Http.Secretaries = (function () {
     }
 
     /**
-     * Find a secretary.
+     * Find a assistant.
      *
-     * @param {Number} secretaryId
+     * @param {Number} assistantId
      *
      * @return {Object}
      */
-    function find(secretaryId) {
-        const url = App.Utils.Url.siteUrl('secretaries/find');
+    function find(assistantId) {
+        const url = App.Utils.Url.siteUrl('assistants/find');
 
         const data = {
             csrf_token: vars('csrf_token'),
-            secretary_id: secretaryId,
+            assistant_id: assistantId,
         };
 
         return $.post(url, data);

@@ -58,7 +58,7 @@ uk:
     skipped: пропущено
     no_file_selected: Файл не вибрано.
     reset_database: Скинути базу даних
-    reset_database_warning: Це назавжди видалить усі записи, клієнтів, спеціалістів, секретарів, послуги та категорії. Облікові записи адміністраторів і налаштування збережуться. Незворотно.
+    reset_database_warning: Це назавжди видалить усі записи, клієнтів, спеціалістів, асистентів, послуги та категорії. Облікові записи адміністраторів і налаштування збережуться. Незворотно.
     reset_confirmation_hint: "Введіть I KNOW WHAT I AM DOING, щоб увімкнути кнопку."
     reset_database_done: Базу даних скинуто.
     captcha_provider: Провайдер капчі
@@ -155,7 +155,7 @@ uk:
     enable_appointment_sync_hint: Увімкніть синхронізацію записів з зовнішнім календарем.
     manage_customers_hint: Керуйте зареєстрованими клієнтами та переглядайте їх історію бронювання.
     manage_services_hint: Керуйте доступними послугами та категоріями системи.
-    manage_users_hint: Керуйте користувачами бекенду (адміністратори, провайдери, секретарі).
+    manage_users_hint: Керуйте користувачами бекенду (адміністратори, провайдери, асистенти).
     settings_hint: Налаштуйте параметри системи та користувачів.
     log_out_hint: Вийти з системи.
     unavailability_periods_hint: Під час періодів невідповідності провайдер не буде приймати нові записи.
@@ -196,7 +196,7 @@ uk:
     categories: Категорії
     admins: Адміністратори
     providers: Провайдери
-    secretaries: Секретарі
+    assistants: "Асистенти"
     mobile_number: Мобільний номер
     mobile: Мобільний
     state: Штат
@@ -207,10 +207,10 @@ uk:
     passwords_mismatch: Паролі не співпадають.
     admin_saved: Адміністратор успішно збережений.
     provider_saved: Провайдер успішно збережений.
-    secretary_saved: Секретар успішно збережений.
+    assistant_saved: "Асистент успішно збережений."
     admin_deleted: Адміністратор успішно видалений.
     provider_deleted: Провайдер успішно видалений.
-    secretary_deleted: Секретар успішно видалений.
+    assistant_deleted: "Асистент успішно видалений."
     service_saved: Послуга успішно збережена.
     service_category_saved: Категорія послуги успішно збережена.
     service_deleted: Послуга успішно видалена.
@@ -285,7 +285,7 @@ uk:
     delete_service: Видалити послугу
     delete_service_category: Видалити категорію послуг
     delete_provider: Видалити провайдера
-    delete_secretary: Видалити секретаря
+    delete_assistant: "Видалити асистента"
     delete_appointment: Видалити запис
     delete_unavailability: Видалити період недоступності
     delete: Видалити
@@ -438,7 +438,7 @@ uk:
     what_kind_of_event: Яку подію ви хочете додати?
     theme: Тема
     limit_customer_access: Обмежити доступ клієнтів
-    limit_customer_access_hint: Якщо увімкнено, провайдери та секретарі зможуть отримати доступ лише до клієнтів, з якими у них є запис.
+    limit_customer_access_hint: Якщо увімкнено, провайдери та асистенти зможуть отримати доступ лише до клієнтів, з якими у них є запис.
     url: URL
     secret_token: Секретний токен
     verify_ssl: Перевірити SSL
@@ -454,8 +454,8 @@ uk:
     service_category_delete: Видалити категорію послуг
     provider_save: Зберегти провайдера
     provider_delete: Видалити провайдера
-    secretary_save: Зберегти секретаря
-    secretary_delete: Видалити секретаря
+    assistant_save: "Збереження асистента"
+    assistant_delete: "Видалення асистента"
     admin_save: Зберегти адміністратора
     admin_delete: Видалити адміністратора
     options: Опції
@@ -716,7 +716,7 @@ uk:
     notification_send_to: Send to
     notification_audience_customer: Customer
     notification_audience_provider: Provider
-    notification_audience_admins: Admins and secretaries
+    notification_audience_admins: "Адміністратори та асистенти"
     notification_no_providers: No providers are enabled. Enable one on the Providers page first.
     notification_short_text: Short Text (Email Subject or SMS)
     notification_long_text: Long Text (for providers that support it, e.g. Email Body)

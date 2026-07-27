@@ -6,7 +6,7 @@ class Role < ApplicationRecord
 
   ADMIN = "admin"
   PROVIDER = "provider"
-  SECRETARY = "secretary"
+  ASSISTANT = "assistant"
   CUSTOMER = "customer"
 
   RESOURCES = %w[appointments customers services users system_settings user_settings webhooks blocked_periods].freeze

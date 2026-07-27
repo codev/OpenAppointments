@@ -58,7 +58,7 @@ lb:
     skipped: iwwersprongen
     no_file_selected: Kee Fichier ausgewielt.
     reset_database: Datebank zrécksetzen
-    reset_database_warning: Dëst läscht permanent all Rendez-vousen, Clienten, Ubidder, Sekretariater, Servicer a Kategorien. Administrateur-Konten an Astellunge bleiwen. Net réckgängeg ze maachen.
+    reset_database_warning: Dëst läscht permanent all Rendez-vousen, Clienten, Ubidder, Assistenten, Servicer a Kategorien. Administrateur-Konten an Astellunge bleiwen. Net réckgängeg ze maachen.
     reset_confirmation_hint: "Gitt I KNOW WHAT I AM DOING an fir de Knäppchen z'aktivéieren."
     reset_database_done: D'Datebank gouf zréckgesat.
     captcha_provider: Captcha-Ubidder
@@ -155,7 +155,7 @@ lb:
     enable_appointment_sync_hint: Fänkt d'Synchronisatioun vun de Termäiner mam Google Kalenner vum Dingschtleeschter un.
     manage_customers_hint: Verwalt déi ageschriwwe Clienten an kuckt Iech déi läscht Buchungen un.
     manage_services_hint: Verwalt déi méiglech Dingschtleeschtungen a Kategorie vum System.
-    manage_users_hint: Verwalt d'Endbenotzer (Admins, Mataarbechter, Büropersonal).
+    manage_users_hint: Verwalt d'Endbenotzer (Admins, Mataarbechter, Assistenten).
     settings_hint: System- a Benotzerastellungen setzen.
     log_out_hint: Meld Iech vum System of.
     unavailability_periods_hint: Während der Indisponibilitéitsperiod gi keng Termäiner ugeholl.
@@ -196,7 +196,7 @@ lb:
     categories: Kategorien
     admins: Administrator
     providers: Mataarbechter
-    secretaries: Büropersonal
+    assistants: "Assistenten"
     mobile_number: Handynummer
     mobile: Mobil
     state: Regioun / Land
@@ -207,10 +207,10 @@ lb:
     passwords_mismatch: Passwuert ongülteg.
     admin_saved: Administrator erfollegräich gespäichert.
     provider_saved: Mataarbechter erfollegräich gespäichert.
-    secretary_saved: Büropersonal erfollegräich gespäichert.
+    assistant_saved: "Assistent erfollegräich gespäichert."
     admin_deleted: Administrator erfollegräich geläscht.
     provider_deleted: Mataarbechter erfollegräich geläscht.
-    secretary_deleted: Büropersonal erfollegräich geläscht.
+    assistant_deleted: "Assistent erfollegräich geläscht."
     service_saved: Dingschtleeschtung erfollegräich gespäichert.
     service_category_saved: Dingschtleeschtungskategorie erfollegräich gespäichert.
     service_deleted: Dingschtleeschtung erfollegräich geläscht.
@@ -285,7 +285,7 @@ lb:
     delete_service: Dienstleistung läschen
     delete_service_category: Servicekategorie läschen
     delete_provider: Zäitraum läschen
-    delete_secretary: Beaarbechter läschen
+    delete_assistant: "Assistent läschen"
     delete_appointment: Termäin läschen
     delete_unavailability: Blockéierten Zäitraum läschen
     delete: Läschen
@@ -438,7 +438,7 @@ lb:
     what_kind_of_event: Wéi een Event wëllt Dir derbäisetzen?
     theme: Thema
     limit_customer_access: Clientenzougang limitéieren
-    limit_customer_access_hint: Wann aktivéiert, kënnen d'Provideren an d'Sekretärinnen nëmmen op Clienten zougräifen, mat deenen si en Rendez-vous hunn.
+    limit_customer_access_hint: Wann aktivéiert, kënnen d'Provideren an d'Assistenten nëmmen op Clienten zougräifen, mat deenen si en Rendez-vous hunn.
     url: URL
     secret_token: Geheimen Token
     verify_ssl: SSL verifizéieren
@@ -454,8 +454,8 @@ lb:
     service_category_delete: Kategorie läschen
     provider_save: Provider späicheren
     provider_delete: Provider läschen
-    secretary_save: Sekretär späicheren
-    secretary_delete: Sekretär läschen
+    assistant_save: "Assistent späicheren"
+    assistant_delete: "Assistent läschen"
     admin_save: Admin späicheren
     admin_delete: Admin läschen
     options: Optiounen
@@ -716,7 +716,7 @@ lb:
     notification_send_to: Send to
     notification_audience_customer: Customer
     notification_audience_provider: Provider
-    notification_audience_admins: Admins and secretaries
+    notification_audience_admins: "Adminen an Assistenten"
     notification_no_providers: No providers are enabled. Enable one on the Providers page first.
     notification_short_text: Short Text (Email Subject or SMS)
     notification_long_text: Long Text (for providers that support it, e.g. Email Body)

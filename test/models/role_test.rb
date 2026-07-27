@@ -37,7 +37,7 @@ class RoleTest < ActiveSupport::TestCase
   end
 
   test "permissions returns EA-shaped nested hash" do
-    perms = roles(:secretary).permissions
+    perms = roles(:assistant).permissions
     assert_equal Role::RESOURCES.sort, perms.keys.sort
     assert_equal({ view: true, add: true, edit: true, delete: true }, perms["appointments"])
     assert_equal({ view: false, add: false, edit: false, delete: false }, perms["webhooks"])

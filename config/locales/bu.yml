@@ -1,23 +1,23 @@
 ---
 bu:
   ea:
-    release_notes: "ထုတ်ဝေမှုမှတ်စုများ"
-    services_description: "ပေးသော ဝန်ဆောင်မှုများ၏ ဖော်ပြချက်"
-    go_to_company: "%{company} သို့သွားရန်"
-    download_ics: "ics ဖိုင် ဒေါင်းလုဒ်လုပ်ရန်"
-    regenerate_link: "လင့်ခ် ပြန်လည်ထုတ်ရန်"
-    regenerate_link_warning_service: "သတိပေးချက် - ဝဘ်ပေါ်ရှိ ဤဝန်ဆောင်မှုသို့ လက်ရှိလင့်ခ်များ အသုံးမဝင်တော့ပါ"
-    regenerate_link_warning_provider: "သတိပေးချက် - ဝဘ်ပေါ်ရှိ ဤဝန်ဆောင်မှုပေးသူသို့ လက်ရှိလင့်ခ်များ အသုံးမဝင်တော့ပါ"
-    change: "ပြောင်းရန်"
-    turnstile_keys_hint_after: "အကောင့်ဖွင့်ပြီးနောက် Application Security > Turnstile သို့သွားပါ"
-    failed: "မအောင်မြင်ပါ"
-    import_failures: "မအောင်မြင်သော မှတ်တမ်းများ"
-    booking_provider_first: "ဝန်ဆောင်မှုအစား ဝန်ဆောင်မှုပေးသူကို အရင်ပြရန်"
-    display_order_switch: "ဝန်ဆောင်မှု သို့မဟုတ် ဝန်ဆောင်မှုပေးသူ အရင်ရွေးရန် လင့်ခ်ကို ပြရန်"
-    display_powered_by: "Powered by OpenAppointments ကို ပြရန်"
-    longer_text_field: "ပိုရှည်သော စာသားကွက်"
-    embed_wordpress: "WordPress တွင် ထည့်သွင်းရန်"
-    embed_wordpress_hint: "HTML ကို Custom HTML block ထဲသို့ ကူးထည့်ပြီး CSS နှင့် JavaScript ကို သင့် theme ၏ custom code ရွေးချယ်စရာများ သို့မဟုတ် snippets plugin ဖြင့် ထည့်ပါ။"
+    release_notes: "Бележки по изданието"
+    services_description: "Описание на предлаганите услуги"
+    go_to_company: "Към %{company}"
+    download_ics: "Изтегляне на ics файл"
+    regenerate_link: "Генериране на нова връзка"
+    regenerate_link_warning_service: "Внимание: Съществуващите връзки към тази услуга в интернет ще станат невалидни"
+    regenerate_link_warning_provider: "Внимание: Съществуващите връзки към този изпълнител в интернет ще станат невалидни"
+    change: "Промяна"
+    turnstile_keys_hint_after: "като се регистрирате и отидете в Application Security > Turnstile"
+    failed: "неуспешни"
+    import_failures: "Неуспешни записи"
+    booking_provider_first: "Първо изпълнителят вместо услугата"
+    display_order_switch: "Показвай връзката за смяна на реда услуга/изпълнител"
+    display_powered_by: "Показвай Powered by OpenAppointments"
+    longer_text_field: "По-дълго текстово поле"
+    embed_wordpress: "Вграждане в WordPress"
+    embed_wordpress_hint: "Поставете HTML в блок Custom HTML, а CSS и JavaScript добавете чрез опциите за собствен код на темата или плъгин за снипети."
     apply_suggested_colors: "Приложи предложените цветове"
     color_contrast_ok: "Избраните цветове отговарят на контраста WCAG AA."
     contrast_warning_button_text: "Белият текст на бутоните се чете трудно върху фирмения цвят - изберете по-тъмен фирмен цвят."
@@ -58,7 +58,7 @@ bu:
     skipped: пропуснати
     no_file_selected: Няма избран файл.
     reset_database: Нулиране на базата данни
-    reset_database_warning: Това изтрива завинаги всички часове, клиенти, изпълнители, секретари, услуги и категории. Администраторските акаунти и настройките се запазват. Не може да бъде отменено.
+    reset_database_warning: Това изтрива завинаги всички часове, клиенти, изпълнители, асистенти, услуги и категории. Администраторските акаунти и настройките се запазват. Не може да бъде отменено.
     reset_confirmation_hint: "Въведете I KNOW WHAT I AM DOING, за да активирате бутона."
     reset_database_done: Базата данни е нулирана.
     captcha_provider: Доставчик на captcha
@@ -155,7 +155,7 @@ bu:
     enable_appointment_sync_hint: Включване на синхронизиране на часове с  Google Calendar  профила на изпълнителя.
     manage_customers_hint: Управление на регистрирани клиенти и преглед на исторически данни за часовете им.
     manage_services_hint: Управление на наличните услуги и категории на системата.
-    manage_users_hint: Управление на административните потребители (администратори, изпълнители и секретари).
+    manage_users_hint: Управление на административните потребители (администратори, изпълнители и асистенти).
     settings_hint: Задаване на системни и потребителски настройки.
     log_out_hint: Изход от системата.
     unavailability_periods_hint: По време на периоди, в които изпълнителя не е на разположение, същият няма да приема нови часове.
@@ -196,7 +196,7 @@ bu:
     categories: Категории
     admins: Администратори
     providers: Изпълнители
-    secretaries: Секретари
+    assistants: "Асистенти"
     mobile_number: Мобилен телефонен номер
     mobile: Мобилен
     state: Държава
@@ -207,10 +207,10 @@ bu:
     passwords_mismatch: Паролите не съвпадат.
     admin_saved: Администратор записан успешно.
     provider_saved: Изпълнител записан успешно.
-    secretary_saved: Секретар записан успешно.
+    assistant_saved: "Асистентът е запазен успешно."
     admin_deleted: Администратор заличен успешно.
     provider_deleted: Изпълнител заличен успешно.
-    secretary_deleted: Секретар заличен успешно.
+    assistant_deleted: "Асистентът е изтрит успешно."
     service_saved: Услуга записана успешно.
     service_category_saved: Категория на услуги записана успешно.
     service_deleted: Услугата заличена успешно.
@@ -262,7 +262,7 @@ bu:
     support_group: Група за поддръжка
     project_issues: Проектни проблеми
     license: 'Лиценз '
-    about_app_license: "OpenAppointments သည် AGPL-3.0 လိုင်စင်ဖြင့် ထုတ်ပေးထားသည်။ OpenAppointments ၏ကုဒ်ကို မည်သည့်နည်းဖြင့်မဆို အသုံးပြုခြင်းဖြင့် အောက်ပါလင့်ခ်တွင် ဖော်ပြထားသော စည်းကမ်းချက်များကို သဘောတူပါသည်:"
+    about_app_license: "OpenAppointments се разпространява под лиценза AGPL-3.0. Използвайки кода на OpenAppointments по какъвто и да е начин, вие се съгласявате с условията, описани на следния адрес:"
     logout_success: Излязохте успешно! Използвайте следните бутони за да навигирате към различна страница.
     book_appointment_title: Запазване на час
     backend_section: Административна секция
@@ -285,7 +285,7 @@ bu:
     delete_service: Заличаване на услуга
     delete_service_category: Заличаване на категория на услуги
     delete_provider: Заличаване на изпълнител
-    delete_secretary: Заличаване на секретар
+    delete_assistant: "Изтриване на асистент"
     delete_appointment: Заличаване на час
     delete_unavailability: Заличаване на неработен период
     delete: Заличаване
@@ -345,7 +345,7 @@ bu:
     oops_something_went_wrong: Опааа! Нещо се обърка!Опааа! Нещо се обърка.
     ea_update_success: Системата Обновена успешно
     require_captcha: Изискване на CAPTCHA
-    require_captcha_hint: "Когато е активно, потребителя , ще трябва да въведе произволно генерирани символи за да запише или промени час. - ပိုမိုအဆင့်မြင့်သော Captcha အမျိုးအစားရွေးရန် Integrations သို့သွားပါ"
+    require_captcha_hint: "Когато е активно, потребителя , ще трябва да въведе произволно генерирани символи за да запише или промени час. - отидете в Интеграции, за да изберете по-усъвършенстван тип Captcha"
     captcha_is_wrong: Неуспешна CAPTCHA верификация, моля опитайте отново.
     enter_captcha_here: Въведете CAPTCHA тук...
     any_provider: Произволен Изпълнител
@@ -438,7 +438,7 @@ bu:
     what_kind_of_event: Какъв вид събитие искате да добавите?
     theme: Тема
     limit_customer_access: Ограничаване на достъпа на клиенти
-    limit_customer_access_hint: Ако е разрешено, доставчиците и секретарките ще имат достъп само до клиентите, с които имат уговорена среща.
+    limit_customer_access_hint: Ако е разрешено, доставчиците и асистентите ще имат достъп само до клиентите, с които имат уговорена среща.
     url: URL
     secret_token: Секретен токен
     verify_ssl: Проверка на SSL
@@ -454,8 +454,8 @@ bu:
     service_category_delete: Изтриване на категория
     provider_save: Запазване на доставчик
     provider_delete: Изтриване на доставчик
-    secretary_save: Запазване на секретар
-    secretary_delete: Изтриване на секретар
+    assistant_save: "Запазване на асистент"
+    assistant_delete: "Изтриване на асистент"
     admin_save: Запазване на администратор
     admin_delete: Изтриване на администратор
     options: Опции
@@ -716,7 +716,7 @@ bu:
     notification_send_to: Send to
     notification_audience_customer: Customer
     notification_audience_provider: Provider
-    notification_audience_admins: Admins and secretaries
+    notification_audience_admins: "Администратори и асистенти"
     notification_no_providers: No providers are enabled. Enable one on the Providers page first.
     notification_short_text: Short Text (Email Subject or SMS)
     notification_long_text: Long Text (for providers that support it, e.g. Email Body)
