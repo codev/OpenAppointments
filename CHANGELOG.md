@@ -5,42 +5,26 @@ CloudronManifest.json.
 
 ## 1.4.0
 
-- Captcha settings reworked: the CAPTCHA switch is gone from Booking Settings, the Integrations page switches are the only control
-- Separate "Active for customers" and "Active for login" captcha switches; login and recovery are gated with ALTCHA or Turnstile per the provider setting
-- Saving captcha settings validates that the active provider is fully configured (ALTCHA HMAC key, Turnstile key pair) and shows an error otherwise
-- Activating Turnstile requires solving a live test challenge on the settings page, proving the keys and domain allowlist work on this site before captcha can lock anyone out
-- Remove the legacy image captcha code left from the port
-- Integrations page shows a status line per integration with a tick when active; webhooks show their count
-- Theme settings show live preview cards for every theme, rendered with the current brand colours
-- Umami Analytics integration: own instance URL and Website ID, optional session replays and heatmaps recorder
-- Exports run in the background and produce both a plain ODS and a zip with images; the five newest backups stay on the server with admin-only dated downloads
-- ODS imports can restore settings (integrations included) via a Settings tickbox, unticked by default; new settings flow through export and import automatically
-- Exported ODS sheets have bold header rows and columns sized to their contents
-- Imports take a plain ODS plus an optional images zip for pictures; the combined zip bundle upload is gone
-- Provider, assistant and admin passwords export as stored hashes and restore on import; assistants and admins have their own import tickboxes, unticked by default
-- Header: logged in user shown under the OpenAppointments title, settings menu is a cog aligned to the page edge, nav dropdowns stack above page panels; footer booking link removed
-- Custom CSS box on the Theme page, applied to the booking pages and the admin interface, kept across theme changes and backed up as a setting
-- Card booking: originals are kept (and are what backups carry) while uploads and imports also store two 400x400 variants, White Border and Zoomed; per-set picture style selects on Booking Settings choose which shows; existing pictures are processed once by a migration
-- Card booking: starts at Select Category, picking one reveals and scrolls to its services under a Select Service heading; uncategorised services show from the start; four full-width cards per row on desktop and centred text on cards without an image
-- Selecting a service or provider scrolls to its description under the cards, shown without repeating the picture
-- Going back to a selection step starts it over: category view restored and selections cleared (rescheduling keeps its prefill)
-- Categories can be marked Hidden to drop them and their services from the booking page; the flag rides export and import
-- The Select Provider First switch is a button beside Next instead of a link under the content
-- The wizard Next buttons follow the theme's primary colour instead of always being black
-- Services, categories and providers can be drag-reordered in the admin lists (pagination gone, whole list shown) with a confirmed Sort Alphabetically reset; the order drives the booking page and rides export and import
-- Dropdown view shows the selected service or provider picture floated left of the description with wrapping text, centred on small screens
-- Outline theme: the booking widget carries a 3px primary-colour border
+- Captchas: there is now one control on the Integrations page, you can select ALTCHA or Cloudflare Turnstile and activate it for customer booking and/or provider logins
+- Integrations page bow shows what is active
+- New Umami Analytics integration
+- Theme page: live preview cards for every theme and a Custom CSS section for changing the theme
+- Backups: export creates an ODS and an images zip to download separately, the five newest are kept for admin download
+- Import: settings, assistants, admins and staff passwords restore with images being imported from an optional separate zip
+- Card booking revamp: pick a category then a service, categories can be hidden, four cards per row, pictures processed to 400x400 with White Border or Zoomed styles per set
+- Drag to reorder services, categories and providers, with the order used on the booking page
+- Booking wizard polish: themed Next buttons, description pictures in the dropdown view, back navigation starts a step over
+- Admin header and footer tidy up
 
 ## 1.3.2
 
-- Fix Internal server error from the captcha challenge endpoint (altcha gem 2.0 API), which broke login and booking when ALTCHA captcha was enabled
+- Fix Internal server error from captchas
 - Security: update Rails to 8.1.3.1 for the Active Storage variant processing vulnerability (CVE-2026-66066)
-- Disable the unused Active Storage variant processor; pictures are served as uploaded
 
 ## 1.3.1
 
 - Secretaries are now called Assistants throughout, including all translations
-- Old /secretaries URLs and the /api/v1/secretaries endpoints keep working as aliases
+- Former /secretaries URLs and the /api/v1/secretaries endpoints keep working as aliases
 - Bulgarian translation fixes
 
 ## 1.3.0
@@ -48,8 +32,8 @@ CloudronManifest.json.
 - Unguessable booking link slugs for services and providers with a Regenerate Link button
 - Booking wizard: clickable step indicators with completion checks, provider-first option, hideable order switch and Powered by credit
 - Service and provider pictures and descriptions under the booking dropdowns; provider About and Description of services fields
-- Zip import bundles (ODS plus images), import failure summaries, per-record error handling
-- Confirmation page links the company website, downloads an ics file; ics attached to confirmation emails
+- Improvements to zip import
+- Confirmation page links to the company website and allows the customer to download an ics file; the ics file is attached to confirmation emails
 - Longer text custom fields, taller notes, alphabetical admin lists, customers by last interaction
 - Embedding: login button hidden in iframes, WordPress embed boxes, frames shrink as well as grow
 - Backend footer spread evenly; release notes on the about page
@@ -57,12 +41,12 @@ CloudronManifest.json.
 ## 1.2.0
 
 - Messages: unified notifications system with templates, audiences, channels and logs; incoming email; SMS provider settings
-- Seven new themes with brand colours, suggested palettes and live accessibility checks; Theme settings page
-- Manage data: ODS export, ODS/CSV import, database reset; REST API name alias; AGPL license correction
+- Seven new themes with brand colours, suggested palettes and live accessibility checks on new Theme settings page
+- Manage data: ODS export, ODS/CSV import, database reset
 
 ## 1.1.1
 
-- Ten feature round: OpenAppointments branding, single name field, service-first wizard, cards display with pictures, phone or email rule, Cloudflare Turnstile, 10to8 import page, Outline theme, iframe embedding, new app icon
+- Ten new features: OpenAppointments branding, single name field, service-first wizard, cards display with pictures, phone or email rule, Cloudflare Turnstile, 10to8 import page, Outline theme, iframe embedding, new app icon
 
 ## 1.1.0
 
