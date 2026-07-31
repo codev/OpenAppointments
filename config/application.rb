@@ -43,6 +43,11 @@ module OpenAppointments
     config.active_record.time_zone_aware_attributes = false
     config.active_record.default_timezone = :local
 
+    # Pictures are served as uploaded, no variants are generated. Active Storage
+    # 8.1.3.1 (CVE-2026-66066) loads the variant processor at boot, so disable it
+    # rather than ship the unused vips/imagemagick toolchain.
+    config.active_storage.variant_processor = :disabled
+
     # EA reuses one CSRF token across many AJAX calls; per-form tokens would break that.
     config.action_controller.per_form_csrf_tokens = false
 

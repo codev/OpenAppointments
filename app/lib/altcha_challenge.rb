@@ -13,17 +13,18 @@ module AltchaChallenge
   end
 
   def create_challenge
-    options = Altcha::ChallengeOptions.new
-    options.hmac_key = hmac_key
-    options.max_number = Setting.get("altcha_max_number", "100000").to_i
-    options.expires = Time.now + Setting.get("altcha_expires", "300").to_i
-    Altcha.create_challenge(options)
+    options = Altcha::V1::ChallengeOptions.new(
+      hmac_key: hmac_key,
+      max_number: Setting.get("altcha_max_number", "100000").to_i,
+      expires: Time.now + Setting.get("altcha_expires", "300").to_i
+    )
+    Altcha::V1.create_challenge(options)
   end
 
   def verify(payload)
     return false if payload.blank?
 
-    Altcha.verify_solution(payload, hmac_key, true)
+    Altcha::V1.verify_solution(payload, hmac_key, true)
   rescue StandardError
     false
   end
