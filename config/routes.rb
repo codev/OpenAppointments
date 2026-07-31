@@ -83,6 +83,9 @@ Rails.application.routes.draw do
     post "#{resource}/save" => "#{resource}#save"
   end
 
+  # Theme preview sample (rendered in the Theme settings cards)
+  get "theme_settings/preview" => "theme_settings#preview"
+
   # Messages panel
   get "messages" => redirect("/messages_settings")
   get "messages_providers" => "messages_providers#index"

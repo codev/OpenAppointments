@@ -10,6 +10,7 @@ CloudronManifest.json.
 - Saving captcha settings validates that the active provider is fully configured (ALTCHA HMAC key, Turnstile key pair) and shows an error otherwise
 - Remove the legacy image captcha code left from the port
 - Integrations page shows a status line per integration with a tick when active; webhooks show their count
+- Theme settings show live preview cards for every theme, rendered with the current brand colours
 
 ## 1.3.2
 
