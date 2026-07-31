@@ -34,7 +34,12 @@ sk:
     delete_personal_information_setting_hint: "Umožnite zákazníkom jedným tlačidlom odstrániť zo systému všetky ich termíny a osobné údaje."
     captcha: "Captcha"
     captcha_info: "Nastavenia captcha na overenie, že návštevník je človek, pred rezerváciou"
-    captcha_enabled_hint: "Ak je povolené, na overenie formulárov sa namiesto tradičnej obrázkovej captcha použije vybraný poskytovateľ captcha."
+    captcha_enabled_hint: "Ak je povolené, zákazníci budú musieť pred dokončením rezervácie vyriešiť Captcha úlohu; povoľte, ak dostávate veľa spamových rezervácií"
+    captcha_active_customers: "Aktívne pre zákazníkov"
+    captcha_active_login: "Aktívne pre prihlásenie"
+    captcha_login_hint: "Ak je povolené, používatelia budú musieť pred prihlásením do administrácie vyriešiť Captcha úlohu"
+    altcha_hmac_key_missing: "ALTCHA potrebuje vygenerovaný kľúč HMAC, aby bolo možné captcha aktivovať"
+    turnstile_keys_missing: "Cloudflare Turnstile potrebuje kľúč webu aj tajný kľúč, aby bolo možné captcha aktivovať"
     turnstile_keys_hint: "Získajte pár kľúčov (site a secret) v paneli Cloudflare:"
     first_login_update_details: Zadajte nové heslo a aktualizujte svoje údaje
     embedding: Vloženie do webu
@@ -345,8 +350,6 @@ sk:
     oops_something_went_wrong: Úups! Niečo sa pokazilo.
     ea_update_success: OpenAppointments bolo úspešne aktualizované.
     require_captcha: Vyžadovať CAPTCHA
-    require_captcha_hint: "Po zapnutí budú zákazníci musieť pred rezerváciou / aktualizáciou schôdzky napísať náhodne vygenerovaný reťazec CAPTCHA. - prejdite do Integrácií a zvoľte pokročilejší typ Captcha"
-    captcha_is_wrong: CAPTCHA overovanie zlyhalo. Skúste to znova.
     enter_captcha_here: Zadajte CAPTCHA tu...
     any_provider: Akýkoľvek poskytovateľ
     requested_hour_is_unavailable: Požadovaná schôdzka nie je vôbec k dispozícii. Vyberte prosím inú hodinu pre Vašu schôdzku.
@@ -574,7 +577,6 @@ sk:
     altcha_expires_hint: 'Doba platnosti výzvy v sekundách (predvolené: 300).'
     altcha_key_generated: Nový kľúč HMAC bol úspešne vygenerovaný.
     altcha_enabled: Povoliť ALTCHA
-    altcha_captcha_not_active_warning: Nastavenie CAPTCHA nie je momentálne aktívne. ALTCHA sa nepoužije, pokiaľ nie je CAPTCHA povolená v
     generate: Generovať
     meeting_link: Odkaz na stretnutie
     google_calendar: Kalendár Google

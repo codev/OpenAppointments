@@ -34,7 +34,12 @@ cs:
     delete_personal_information_setting_hint: "Umožněte zákazníkům jedním tlačítkem odstranit ze systému všechny jejich schůzky a osobní údaje."
     captcha: "Captcha"
     captcha_info: "Nastavení captcha pro ověření, že návštěvník je člověk, před rezervací"
-    captcha_enabled_hint: "Pokud je povoleno, pro ověření formulářů se místo tradiční obrázkové captcha použije vybraný poskytovatel captcha."
+    captcha_enabled_hint: "Pokud je povoleno, zákazníci budou muset před dokončením rezervace vyřešit Captcha úlohu; povolte, pokud máte hodně spamových rezervací"
+    captcha_active_customers: "Aktivní pro zákazníky"
+    captcha_active_login: "Aktivní pro přihlášení"
+    captcha_login_hint: "Pokud je povoleno, uživatelé budou muset před přihlášením do administrace vyřešit Captcha úlohu"
+    altcha_hmac_key_missing: "ALTCHA potřebuje vygenerovaný klíč HMAC, aby bylo možné captcha aktivovat"
+    turnstile_keys_missing: "Cloudflare Turnstile potřebuje klíč webu i tajný klíč, aby bylo možné captcha aktivovat"
     turnstile_keys_hint: "Získejte pár klíčů (site a secret) v panelu Cloudflare:"
     first_login_update_details: Zadejte nové heslo a aktualizujte své údaje
     embedding: Vložení do webu
@@ -345,8 +350,6 @@ cs:
     oops_something_went_wrong: Oops! Něco se pokazilo.
     ea_update_success: Aplikace OpenAppointments byla úspěšně aktualizována.
     require_captcha: Vyžadovat CAPTCHA
-    require_captcha_hint: "Pokud bude povolena, zákazníci budou muset před vytvořením/editací schůzky zadat náhodně vygenerovaný řetězec CAPTCHA. - přejděte do Integrací a zvolte pokročilejší typ Captcha"
-    captcha_is_wrong: Ověření CAPTCHA selhalo, prosím opakujte akci.
     enter_captcha_here: Zadejte CAPTCHA zde...
     any_provider: Jakýkoli poskytovatel
     requested_hour_is_unavailable: Požadovaná schůzka bohužel aktuálně není dostupná. Vyberte prosím pro vaši schůzku jiný čas.
@@ -574,7 +577,6 @@ cs:
     altcha_expires_hint: 'Doba platnosti výzvy v sekundách (výchozí: 300).'
     altcha_key_generated: Nový klíč HMAC byl úspěšně vygenerován.
     altcha_enabled: Povolit ALTCHA
-    altcha_captcha_not_active_warning: Nastavení CAPTCHA není aktuálně aktivní. ALTCHA nebude použita, pokud nebude CAPTCHA povolena v
     generate: Generovat
     meeting_link: Odkaz na schůzku
     google_calendar: Kalendář Google

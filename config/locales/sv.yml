@@ -34,7 +34,12 @@ sv:
     delete_personal_information_setting_hint: "Låt kunder ta bort alla sina bokningar och personuppgifter från systemet med en knapp."
     captcha: "Captcha"
     captcha_info: "Captcha-inställningar för att verifiera att besökaren är en människa före bokning"
-    captcha_enabled_hint: "När det är aktiverat används den valda captcha-leverantören i stället för den traditionella bild-captchan för formulärverifiering."
+    captcha_enabled_hint: "När aktiverat måste kunderna lösa en Captcha-utmaning innan de kan slutföra bokningen; aktivera detta om du får många skräpbokningar"
+    captcha_active_customers: "Aktiv för kunder"
+    captcha_active_login: "Aktiv för inloggning"
+    captcha_login_hint: "När aktiverat måste användare lösa en Captcha-utmaning innan de kan logga in i administrationen"
+    altcha_hmac_key_missing: "ALTCHA behöver en genererad HMAC-nyckel innan captcha kan aktiveras"
+    turnstile_keys_missing: "Cloudflare Turnstile behöver både en webbplatsnyckel och en hemlig nyckel innan captcha kan aktiveras"
     turnstile_keys_hint: "Hämta ett nyckelpar (site och secret) från Cloudflare-panelen:"
     first_login_update_details: Ange ett nytt lösenord och uppdatera dina uppgifter
     embedding: Inbäddning
@@ -345,8 +350,6 @@ sv:
     oops_something_went_wrong: Oops! Något gick fel.
     ea_update_success: OpenAppointments är uppdaterad.
     require_captcha: Kräv CAPTCHA
-    require_captcha_hint: "När detta är aktiverat måste kunder ange en säkerhetskod (CAPTCHA) för att kunna boka eller ändra tider. - gå till Integrationer för att välja en mer avancerad Captcha-typ"
-    captcha_is_wrong: CAPTCHA-verifieringen misslyckades, försök igen.
     enter_captcha_here: Ange CAPTCHA här...
     any_provider: Alla utförare
     requested_hour_is_unavailable: Den begärda tiden är tyvärr inte tillgänglig. Vänligen välj en annan tid för din bokning.
@@ -574,7 +577,6 @@ sv:
     altcha_expires_hint: 'Hur länge en utmaning förblir giltig i sekunder (standard: 300).'
     altcha_key_generated: Ny HMAC-nyckel har genererats.
     altcha_enabled: Aktivera ALTCHA
-    altcha_captcha_not_active_warning: CAPTCHA-inställningen är inte aktiv för tillfället. ALTCHA kommer inte att användas om inte CAPTCHA är aktiverat i
     generate: Generera
     meeting_link: Möteslänk
     google_calendar: Google Kalender

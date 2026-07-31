@@ -13,14 +13,23 @@ class LoginController < ApplicationController
       page_title: helpers.lang("login"),
       base_url: request.base_url,
       dest_url: dest_url,
-      company_name: Setting.get("company_name"),
-      require_captcha: Setting.get("require_captcha"),
-      altcha_enabled: AltchaChallenge.enabled? ? "1" : "0"
+      company_name: Setting.get("company_name")
     )
   end
 
   # POST /login/validate. EA contract: {success: true} or {success: false, message:}.
   def validate
+    case Captcha.for_login
+    when "altcha"
+      unless AltchaChallenge.verify(params[:altcha_payload])
+        return json_response({ altcha_verification: false })
+      end
+    when "turnstile"
+      unless TurnstileChallenge.verify(params[:cf_turnstile_response], request.remote_ip)
+        return json_response({ turnstile_verification: false })
+      end
+    end
+
     username = params[:username].to_s
     password = params[:password].to_s
 

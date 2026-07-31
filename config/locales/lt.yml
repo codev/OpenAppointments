@@ -34,7 +34,12 @@ lt:
     delete_personal_information_setting_hint: "Leisti klientams vienu mygtuku pašalinti visus savo vizitus ir asmeninę informaciją iš sistemos."
     captcha: "Captcha"
     captcha_info: "Captcha nustatymai, patikrinantys, ar lankytojas yra žmogus, prieš rezervaciją"
-    captcha_enabled_hint: "Įjungus, formų patikrai vietoj tradicinės paveikslėlio captcha bus naudojamas pasirinktas captcha teikėjas."
+    captcha_enabled_hint: "Kai įjungta, klientai prieš užbaigdami rezervaciją turės išspręsti Captcha užduotį; įjunkite, jei gaunate daug brukalo rezervacijų"
+    captcha_active_customers: "Aktyvu klientams"
+    captcha_active_login: "Aktyvu prisijungimui"
+    captcha_login_hint: "Kai įjungta, naudotojai prieš prisijungdami prie administravimo turės išspręsti Captcha užduotį"
+    altcha_hmac_key_missing: "Prieš aktyvuojant captcha, ALTCHA reikia sugeneruoto HMAC rakto"
+    turnstile_keys_missing: "Prieš aktyvuojant captcha, Cloudflare Turnstile reikia svetainės rakto ir slapto rakto"
     turnstile_keys_hint: "Gaukite raktų porą (site ir secret) Cloudflare valdymo skydelyje:"
     first_login_update_details: Įveskite naują slaptažodį ir atnaujinkite savo duomenis
     embedding: Įterpimas
@@ -345,8 +350,6 @@ lt:
     oops_something_went_wrong: Oi! Kažkas nepavyko.
     ea_update_success: "„OpenAppointments“ sėkmingai atnaujinta."
     require_captcha: Reikalauti „CAPTCHA“ saugos kodo
-    require_captcha_hint: "Kai ši parinktis įjungta, prieš užsakydami/atnaujindami vizitą klientai turės įvesti atsitiktinai sugeneruotą saugos kodą. - eikite į Integracijas ir pasirinkite pažangesnį Captcha tipą"
-    captcha_is_wrong: Saugos kodo patikra nepavyko, bandykite dar kartą.
     enter_captcha_here: Įveskite CAPTCHA čia...
     any_provider: Bet kuris teikėjas
     requested_hour_is_unavailable: Deja, norimas vizito laikas neleistinas. Pasirinkite kitą vizito laiką.
@@ -574,7 +577,6 @@ lt:
     altcha_expires_hint: 'Kiek laiko iššūkis galioja sekundėmis (numatytoji: 300).'
     altcha_key_generated: Naujas HMAC raktas sėkmingai sugeneruotas.
     altcha_enabled: Įjungti ALTCHA
-    altcha_captcha_not_active_warning: CAPTCHA nustatymas šiuo metu neaktyvus. ALTCHA nebus naudojama, nebent CAPTCHA bus įjungta
     generate: Generuoti
     meeting_link: Susitikimo nuoroda
     google_calendar: Google kalendorius

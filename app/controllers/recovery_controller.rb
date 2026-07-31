@@ -8,9 +8,7 @@ class RecoveryController < ApplicationController
     html_vars(
       page_title: helpers.lang("forgot_your_password"),
       dest_url: session[:dest_url] || calendar_url,
-      company_name: Setting.get("company_name"),
-      require_captcha: Setting.get("require_captcha"),
-      altcha_enabled: AltchaChallenge.enabled? ? "1" : "0"
+      company_name: Setting.get("company_name")
     )
   end
 
@@ -46,9 +44,7 @@ class RecoveryController < ApplicationController
       html_vars(
         token_valid: true,
         token: token,
-        company_name: Setting.get("company_name"),
-        require_captcha: Setting.get("require_captcha"),
-        altcha_enabled: AltchaChallenge.enabled? ? "1" : "0"
+        company_name: Setting.get("company_name")
       )
     end
     render :reset

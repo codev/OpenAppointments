@@ -34,7 +34,12 @@ nl:
     delete_personal_information_setting_hint: "Sta klanten toe om met een knop al hun afspraken en persoonlijke gegevens uit het systeem te verwijderen."
     captcha: "Captcha"
     captcha_info: "Captcha-instellingen om te controleren of de bezoeker een mens is voor het boeken"
-    captcha_enabled_hint: "Indien ingeschakeld wordt de geselecteerde captcha-provider gebruikt in plaats van de traditionele afbeeldingscaptcha voor formulierverificatie."
+    captcha_enabled_hint: "Indien ingeschakeld moeten klanten een Captcha-uitdaging oplossen voordat ze de boeking kunnen voltooien; schakel dit in als u veel spamboekingen krijgt"
+    captcha_active_customers: "Actief voor klanten"
+    captcha_active_login: "Actief voor inloggen"
+    captcha_login_hint: "Indien ingeschakeld moeten gebruikers een Captcha-uitdaging oplossen voordat ze kunnen inloggen op het beheer"
+    altcha_hmac_key_missing: "ALTCHA heeft een gegenereerde HMAC-sleutel nodig voordat de captcha kan worden geactiveerd"
+    turnstile_keys_missing: "Cloudflare Turnstile heeft zowel een sitesleutel als een geheime sleutel nodig voordat de captcha kan worden geactiveerd"
     turnstile_keys_hint: "Haal een sleutelpaar (site en secret) op in het Cloudflare-dashboard:"
     first_login_update_details: Voer een nieuw wachtwoord in en werk uw gegevens bij
     embedding: Insluiten
@@ -345,8 +350,6 @@ nl:
     oops_something_went_wrong: Oeps! Er is iets misgegaan.
     ea_update_success: OpenAppointments is succesvol bijgewerkt.
     require_captcha: CAPTCHA vereist.
-    require_captcha_hint: "Indien ingeschakeld moeten de klanten een willekeurige tekenreeks invullen om een afspraak te bevestigen. - ga naar Integraties om een geavanceerder Captcha-type te kiezen"
-    captcha_is_wrong: CAPTCHA verificatie is mislukt, probeer het a.u.b.nogmaals.
     enter_captcha_here: Voer CAPTCHA hier in...
     any_provider: Maakt mij niet uit.
     requested_hour_is_unavailable: De gekozen tijd voor uw afspraak is helaas niet beschikbaar. Kies a.u.b.een ander uur voor uw afspraak.
@@ -574,7 +577,6 @@ nl:
     altcha_expires_hint: 'Hoe lang een uitdaging geldig blijft in seconden (standaard: 300).'
     altcha_key_generated: Nieuwe HMAC-sleutel succesvol gegenereerd.
     altcha_enabled: ALTCHA inschakelen
-    altcha_captcha_not_active_warning: De CAPTCHA-instelling is momenteel niet actief. ALTCHA wordt niet gebruikt tenzij CAPTCHA is ingeschakeld in de
     generate: Genereren
     meeting_link: Vergaderlink
     google_calendar: Google Agenda

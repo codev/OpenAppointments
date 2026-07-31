@@ -21,12 +21,12 @@ App.Http.PasswordReset = (function () {
      * @param {String} token
      * @param {String} password
      * @param {String} passwordConfirm
-     * @param {String} captcha
      * @param {String} altchaPayload
+     * @param {String} turnstileToken
      *
      * @return {Object}
      */
-    function complete(token, password, passwordConfirm, captcha, altchaPayload) {
+    function complete(token, password, passwordConfirm, altchaPayload, turnstileToken) {
         const url = App.Utils.Url.siteUrl('recovery/complete');
 
         const data = {
@@ -36,12 +36,12 @@ App.Http.PasswordReset = (function () {
             password_confirm: passwordConfirm,
         };
 
-        if (captcha) {
-            data.captcha = captcha;
-        }
-        
         if (altchaPayload) {
             data.altcha_payload = altchaPayload;
+        }
+
+        if (turnstileToken) {
+            data.cf_turnstile_response = turnstileToken;
         }
 
         return $.post(url, data);

@@ -34,7 +34,12 @@ ja:
     delete_personal_information_setting_hint: "顧客がボタンひとつで自分の予約と個人情報をすべてシステムから削除できるようにします。"
     captcha: "Captcha"
     captcha_info: "予約前に訪問者が人間であることを確認するためのCaptcha設定"
-    captcha_enabled_hint: "有効にすると、フォーム検証に従来の画像キャプチャの代わりに選択したCaptchaプロバイダーが使用されます。"
+    captcha_enabled_hint: "有効にすると、お客様は予約を完了する前にCaptchaチャレンジを解く必要があります。スパム予約が多い場合に有効にしてください"
+    captcha_active_customers: "お客様向けに有効"
+    captcha_active_login: "ログイン向けに有効"
+    captcha_login_hint: "有効にすると、ユーザーは管理画面にログインする前にCaptchaチャレンジを解く必要があります"
+    altcha_hmac_key_missing: "captchaを有効にする前に、ALTCHAには生成済みのHMACキーが必要です"
+    turnstile_keys_missing: "captchaを有効にする前に、Cloudflare Turnstileにはサイトキーとシークレットキーの両方が必要です"
     turnstile_keys_hint: "Cloudflareダッシュボードでサイトキーとシークレットキーのペアを取得してください:"
     first_login_update_details: 新しいパスワードを入力し、情報を更新してください
     embedding: 埋め込み
@@ -345,8 +350,6 @@ ja:
     oops_something_went_wrong: おっと、なにか が うまく 行ってません。
     ea_update_success: OpenAppointments の　アップデートが成功しました。
     require_captcha: CAPTCHAを要求
-    require_captcha_hint: "有効にすると、顧客は予約/更新の前にランダムに生成されたCAPTCHA文字列を入力する必要があります。 - より高度な Captcha の種類は連携ページで選択できます"
-    captcha_is_wrong: CAPTCHA認証に失敗しました。もう一度お試しください。
     enter_captcha_here: ここに CAPTCHA を入力...
     any_provider: 任意のプロバイダー
     requested_hour_is_unavailable: 申し訳ありませんが、リクエストされた予約時間は利用できません。他の時間を選択してください。
@@ -574,7 +577,6 @@ ja:
     altcha_expires_hint: チャレンジが有効な秒数（デフォルト：300）。
     altcha_key_generated: 新しい HMAC キーが正常に生成されました。
     altcha_enabled: ALTCHA を有効にする
-    altcha_captcha_not_active_warning: CAPTCHA設定は現在アクティブではありません。CAPTCHAが有効になっていない限り、ALTCHAは使用されません。
     generate: 生成
     meeting_link: ミーティングリンク
     google_calendar: Google カレンダー

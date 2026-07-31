@@ -20,12 +20,12 @@ App.Http.Login = (function () {
      *
      * @param {String} username
      * @param {String} password
-     * @param {String} captcha
      * @param {String} altchaPayload
+     * @param {String} turnstileToken
      *
      * @return {Object}
      */
-    function validate(username, password, captcha, altchaPayload) {
+    function validate(username, password, altchaPayload, turnstileToken) {
         const url = App.Utils.Url.siteUrl('login/validate');
 
         const data = {
@@ -34,12 +34,12 @@ App.Http.Login = (function () {
             password,
         };
 
-        if (captcha) {
-            data.captcha = captcha;
-        }
-        
         if (altchaPayload) {
             data.altcha_payload = altchaPayload;
+        }
+
+        if (turnstileToken) {
+            data.cf_turnstile_response = turnstileToken;
         }
 
         return $.post(url, data);

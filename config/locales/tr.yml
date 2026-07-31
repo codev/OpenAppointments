@@ -34,7 +34,12 @@ tr:
     delete_personal_information_setting_hint: "Müşterilerin tüm randevularını ve kişisel bilgilerini tek bir düğmeyle sistemden kaldırmasına izin verin."
     captcha: "Captcha"
     captcha_info: "Rezervasyondan önce ziyaretçinin insan olduğunu doğrulamak için captcha ayarları"
-    captcha_enabled_hint: "Etkinleştirildiğinde, form doğrulaması için geleneksel resimli captcha yerine seçilen captcha sağlayıcısı kullanılır."
+    captcha_enabled_hint: "Etkinleştirildiğinde müşterilerin rezervasyonu tamamlamadan önce bir Captcha sorusunu çözmesi gerekir; çok fazla istenmeyen rezervasyon alıyorsanız bunu etkinleştirin"
+    captcha_active_customers: "Müşteriler için etkin"
+    captcha_active_login: "Giriş için etkin"
+    captcha_login_hint: "Etkinleştirildiğinde kullanıcıların yönetim paneline giriş yapmadan önce bir Captcha sorusunu çözmesi gerekir"
+    altcha_hmac_key_missing: "Captcha etkinleştirilmeden önce ALTCHA için oluşturulmuş bir HMAC anahtarı gereklidir"
+    turnstile_keys_missing: "Captcha etkinleştirilmeden önce Cloudflare Turnstile için hem site anahtarı hem de gizli anahtar gereklidir"
     turnstile_keys_hint: "Cloudflare panelinden bir anahtar çifti (site ve secret) alın:"
     first_login_update_details: Lütfen yeni bir şifre girin ve bilgilerinizi güncelleyin
     embedding: Gömme
@@ -345,8 +350,6 @@ tr:
     oops_something_went_wrong: Oops! Bir Sorun Oluştu.
     ea_update_success: OpenAppointments başarı ile güncellendi.
     require_captcha: CAPTCHA gereklidir
-    require_captcha_hint: "Etkinleştirildiğinde, müşterilerin bir randevu rezervasyonu/güncellemesi yapmadan önce rastgele oluşturulmuş bir CAPTCHA dizesini yazmaları gerekecektir. - daha gelişmiş bir Captcha türü seçmek için Entegrasyonlar'a gidin"
-    captcha_is_wrong: CAPTCHA doğrulaması başarısız oldu, lütfen tekrar deneyin.
     enter_captcha_here: CAPTCHA kodunu buraya girin...
     any_provider: Herhangi Bir Sağlayıcı
     requested_hour_is_unavailable: İstenen randevu maalesef mevcut değil. Lütfen randevunuz için farklı bir saat seçiniz.
@@ -574,7 +577,6 @@ tr:
     altcha_expires_hint: 'Bir meydan okumanın saniye cinsinden ne kadar süre geçerli kalacağı (varsayılan: 300).'
     altcha_key_generated: Yeni HMAC anahtarı başarıyla oluşturuldu.
     altcha_enabled: ALTCHA'yı Etkinleştir
-    altcha_captcha_not_active_warning: CAPTCHA ayarı şu anda aktif değil. CAPTCHA etkinleştirilmedikçe ALTCHA kullanılmayacaktır.
     generate: Oluştur
     meeting_link: Toplantı Bağlantısı
     google_calendar: Google Takvim

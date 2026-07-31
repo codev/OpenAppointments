@@ -34,7 +34,12 @@ ro:
     delete_personal_information_setting_hint: "Permiteți clienților să își elimine toate programările și informațiile personale din sistem cu un buton."
     captcha: "Captcha"
     captcha_info: "Setări captcha pentru a verifica dacă vizitatorul este om înainte de rezervare"
-    captcha_enabled_hint: "Când este activat, furnizorul de captcha selectat va fi folosit în locul captcha-ului tradițional cu imagine pentru verificarea formularelor."
+    captcha_enabled_hint: "Când este activat, clienții vor trebui să rezolve o provocare Captcha înainte de a finaliza programarea; activați dacă primiți multe programări spam"
+    captcha_active_customers: "Activ pentru clienți"
+    captcha_active_login: "Activ pentru autentificare"
+    captcha_login_hint: "Când este activat, utilizatorii vor trebui să rezolve o provocare Captcha înainte de a se autentifica în administrare"
+    altcha_hmac_key_missing: "ALTCHA are nevoie de o cheie HMAC generată înainte ca captcha să poată fi activat"
+    turnstile_keys_missing: "Cloudflare Turnstile are nevoie de o cheie de site și de o cheie secretă înainte ca captcha să poată fi activat"
     turnstile_keys_hint: "Obțineți o pereche de chei (site și secret) din panoul Cloudflare:"
     first_login_update_details: Introduceți o parolă nouă și actualizați-vă datele
     embedding: Încorporare
@@ -345,8 +350,6 @@ ro:
     oops_something_went_wrong: Oops! Ceva nu a funtionat corect.
     ea_update_success: OpenAppointments a fost actualizat.
     require_captcha: Necesar CAPTCHA
-    require_captcha_hint: "Când este activat, clienții vor trebui să tasteze un cod CAPTCHA generat aleator înainte de a rezerva/actualiza o programare. - mergeți la Integrări pentru a alege un tip de Captcha mai avansat"
-    captcha_is_wrong: Verificarea CAPTCHA a eșuat, vă rugăm să încercați din nou.
     enter_captcha_here: Introduceți CAPTCHA aici...
     any_provider: Orice Provider
     requested_hour_is_unavailable: Programarea solicitată nu este disponibilă. Vă rugăm să selectați o oră diferită pentru programare.
@@ -574,7 +577,6 @@ ro:
     altcha_expires_hint: 'Cât timp rămâne valabilă o provocare în secunde (implicit: 300).'
     altcha_key_generated: Noua cheie HMAC a fost generată cu succes.
     altcha_enabled: Activare ALTCHA
-    altcha_captcha_not_active_warning: Setarea CAPTCHA nu este activă în prezent. ALTCHA nu va fi utilizat decât dacă CAPTCHA este activat în
     generate: Generare
     meeting_link: Link întâlnire
     google_calendar: Google Calendar

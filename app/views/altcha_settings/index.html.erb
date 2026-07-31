@@ -35,26 +35,29 @@
                                 </div>
                             </div>
 
-                            <% if vars(:require_captcha).to_s != "1" %>
-                                <div class="alert alert-warning mb-4">
-                                    <i class="fas fa-exclamation-triangle me-2"></i>
-                                    <%= lang('altcha_captcha_not_active_warning') %>
-                                    <a href="/booking_settings">
-                                        <%= lang('booking_settings') %>
-                                    </a>
-                                </div>
-                            <% end %>
-
                             <div class="mb-3">
                                 <div class="form-check form-switch">
                                     <input class="form-check-input" type="checkbox" id="altcha-enabled"
                                            data-field="altcha_enabled">
                                     <label class="form-check-label" for="altcha-enabled">
-                                        <%= lang('active') %>
+                                        <%= lang('captcha_active_customers') %>
                                     </label>
                                 </div>
                                 <div class="form-text text-muted small">
                                     <%= lang('captcha_enabled_hint') %>
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" id="captcha-login-enabled"
+                                           data-field="captcha_login_enabled">
+                                    <label class="form-check-label" for="captcha-login-enabled">
+                                        <%= lang('captcha_active_login') %>
+                                    </label>
+                                </div>
+                                <div class="form-text text-muted small">
+                                    <%= lang('captcha_login_hint') %>
                                 </div>
                             </div>
 

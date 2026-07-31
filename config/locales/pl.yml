@@ -34,7 +34,12 @@ pl:
     delete_personal_information_setting_hint: "Pozwól klientom jednym przyciskiem usunąć z systemu wszystkie swoje wizyty i dane osobowe."
     captcha: "Captcha"
     captcha_info: "Ustawienia captcha weryfikujące, że odwiedzający jest człowiekiem przed rezerwacją"
-    captcha_enabled_hint: "Po włączeniu wybrany dostawca captcha będzie używany zamiast tradycyjnej obrazkowej captchy do weryfikacji formularzy."
+    captcha_enabled_hint: "Po włączeniu klienci będą musieli rozwiązać zadanie Captcha przed dokończeniem rezerwacji; włącz, jeśli otrzymujesz dużo spamowych rezerwacji"
+    captcha_active_customers: "Aktywne dla klientów"
+    captcha_active_login: "Aktywne dla logowania"
+    captcha_login_hint: "Po włączeniu użytkownicy będą musieli rozwiązać zadanie Captcha przed zalogowaniem się do panelu"
+    altcha_hmac_key_missing: "ALTCHA wymaga wygenerowanego klucza HMAC, zanim captcha będzie mogła zostać aktywowana"
+    turnstile_keys_missing: "Cloudflare Turnstile wymaga klucza witryny i klucza tajnego, zanim captcha będzie mogła zostać aktywowana"
     turnstile_keys_hint: "Uzyskaj parę kluczy (site i secret) w panelu Cloudflare:"
     first_login_update_details: Wprowadź nowe hasło i zaktualizuj swoje dane
     embedding: Osadzanie
@@ -345,8 +350,6 @@ pl:
     oops_something_went_wrong: Ojj! Coś poszło nie tak.
     ea_update_success: OpenAppointments zaktualizowany pomyślnie
     require_captcha: Wymagaj CAPTCHA
-    require_captcha_hint: "Po włączeniu klienci będą musieli wpisać losowo wygenerowany ciąg CAPTCHA przed rezerwacją/aktualizacją wizyty. - przejdź do Integracji, aby wybrać bardziej zaawansowany typ Captcha"
-    captcha_is_wrong: Weryfikacja CAPTCHA nie powiodła się, spróbuj ponownie.
     enter_captcha_here: Wprowadź CAPTCHA tutaj...
     any_provider: Dowolny dostawca
     requested_hour_is_unavailable: Żądany termin wizyty jest niestety niedostępny. Proszę wybrać inny termin dla swojej wizyty.
@@ -574,7 +577,6 @@ pl:
     altcha_expires_hint: 'Czas ważności wyzwania w sekundach (domyślnie: 300).'
     altcha_key_generated: Nowy klucz HMAC został pomyślnie wygenerowany.
     altcha_enabled: Włącz ALTCHA
-    altcha_captcha_not_active_warning: Ustawienie CAPTCHA nie jest obecnie aktywne. ALTCHA nie będzie używana, dopóki CAPTCHA nie zostanie włączona w
     generate: Generuj
     meeting_link: Link do spotkania
     google_calendar: Kalendarz Google

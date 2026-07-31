@@ -48,8 +48,11 @@
 
 <%= ea_js "app", "utils/date", "utils/file", "utils/http", "utils/lang", "utils/message",
           "utils/string", "utils/url", "utils/validation" %>
-<% if AltchaChallenge.enabled? %>
+<% if Captcha.for_login == "altcha" %>
     <%= ea_js "utils/altcha" %>
+<% end %>
+<% if Captcha.for_login == "turnstile" %>
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 <% end %>
 <%= ea_js "layouts/account_layout", "http/account_http_client", "http/localization_http_client" %>
 

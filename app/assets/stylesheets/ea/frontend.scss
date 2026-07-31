@@ -89,16 +89,6 @@
     color: var(--bs-white) !important;
 }
 
-/* Captcha refresh icon hover effect */
-#book-appointment-wizard .captcha-title .fa-sync-alt {
-    cursor: pointer;
-    transition: all 0.3s linear;
-}
-
-#book-appointment-wizard .captcha-title .fa-sync-alt:hover {
-    color: var(--bs-primary);
-}
-
 /* Language popover list */
 .popover .popover-title {
     text-align: center;

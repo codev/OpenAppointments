@@ -34,7 +34,12 @@ he:
     delete_personal_information_setting_hint: "אפשרו ללקוחות להסיר את כל התורים והמידע האישי שלהם מהמערכת בלחיצת כפתור."
     captcha: "Captcha"
     captcha_info: "הגדרות קאפצ'ה לאימות שהמבקר אנושי לפני ההזמנה"
-    captcha_enabled_hint: "כאשר מופעל, ספק הקאפצ'ה שנבחר ישמש במקום קאפצ'ת התמונה המסורתית לאימות טפסים."
+    captcha_enabled_hint: "כאשר מופעל, הלקוחות יידרשו לפתור אתגר קאפצ'ה לפני השלמת ההזמנה; הפעל זאת אם אתה מקבל הרבה הזמנות ספאם"
+    captcha_active_customers: "פעיל ללקוחות"
+    captcha_active_login: "פעיל להתחברות"
+    captcha_login_hint: "כאשר מופעל, המשתמשים יידרשו לפתור אתגר קאפצ'ה לפני התחברות לממשק הניהול"
+    altcha_hmac_key_missing: "ALTCHA זקוק למפתח HMAC שנוצר לפני שניתן להפעיל את הקאפצ'ה"
+    turnstile_keys_missing: "Cloudflare Turnstile זקוק למפתח אתר ולמפתח סודי לפני שניתן להפעיל את הקאפצ'ה"
     turnstile_keys_hint: "קבלו צמד מפתחות (site ו-secret) מלוח הבקרה של Cloudflare:"
     first_login_update_details: אנא הזינו סיסמה חדשה ועדכנו את הפרטים שלכם
     embedding: הטמעה
@@ -345,8 +350,6 @@ he:
     oops_something_went_wrong: אופס! משהו השתבש!
     ea_update_success: OpenAppointments עודכן בהצלחה!
     require_captcha: דרוש CAPTCHA
-    require_captcha_hint: "כאשר אפשרות זו מופעלת, הלקוחות יצטרכו להקליד מחרוזת CAPTCHA אקראית לפני שהם מזמינים / מעדכנים פגישה. - עברו אל אינטגרציות כדי לבחור סוג Captcha מתקדם יותר"
-    captcha_is_wrong: אימות CAPTCHA נכשל, נסה שוב.
     enter_captcha_here: הזן CAPTCHA כאן...
     any_provider: כל ספק
     requested_hour_is_unavailable: לצערנו הפגישה המבוקשת אינה זמינה. יש לבחור שעה אחרת לפגישה שלך.
@@ -574,7 +577,6 @@ he:
     altcha_expires_hint: 'כמה זמן אתגר נשאר תקף בשניות (ברירת מחדל: 300).'
     altcha_key_generated: מפתח HMAC חדש נוצר בהצלחה.
     altcha_enabled: הפעל ALTCHA
-    altcha_captcha_not_active_warning: הגדרת CAPTCHA אינה פעילה כרגע. ALTCHA לא ישמש אלא אם CAPTCHA מופעל ב
     generate: צור
     meeting_link: קישור לפגישה
     google_calendar: יומן Google

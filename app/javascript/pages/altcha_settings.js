@@ -28,16 +28,24 @@ App.Pages.AltchaSettings = (function () {
         try {
             $('#altcha-settings .is-invalid').removeClass('is-invalid');
 
-            const $altchaEnabled = $('#altcha-enabled');
+            const active = $('#altcha-enabled').prop('checked') || $('#captcha-login-enabled').prop('checked');
+            const provider = $('#captcha-provider').val();
 
-            // If enabled with the ALTCHA provider, HMAC key is required
-            if (
-                $altchaEnabled.prop('checked') &&
-                $('#captcha-provider').val() === 'altcha' &&
-                !$altchaHmacKey.val().trim()
-            ) {
+            // An active provider must be fully configured.
+            if (active && provider === 'altcha' && !$altchaHmacKey.val().trim()) {
                 $altchaHmacKey.addClass('is-invalid');
-                throw new Error(lang('fields_are_required'));
+                throw new Error(lang('altcha_hmac_key_missing'));
+            }
+
+            if (active && provider === 'turnstile') {
+                const $siteKey = $('#turnstile-site-key');
+                const $secretKey = $('#turnstile-secret-key');
+
+                if (!$siteKey.val().trim() || !$secretKey.val().trim()) {
+                    $siteKey.toggleClass('is-invalid', !$siteKey.val().trim());
+                    $secretKey.toggleClass('is-invalid', !$secretKey.val().trim());
+                    throw new Error(lang('turnstile_keys_missing'));
+                }
             }
 
             return false;
@@ -87,13 +95,17 @@ App.Pages.AltchaSettings = (function () {
      */
     function onSaveSettingsClick() {
         if (isInvalid()) {
-            App.Layouts.Backend.displayNotification(lang('settings_are_invalid'));
             return;
         }
 
         const altchaSettings = serialize();
 
-        App.Http.AltchaSettings.save(altchaSettings).done(() => {
+        App.Http.AltchaSettings.save(altchaSettings).done((response) => {
+            if (response.success === false) {
+                App.Layouts.Backend.displayNotification(response.message || lang('settings_are_invalid'));
+                return;
+            }
+
             App.Layouts.Backend.displayNotification(lang('settings_saved'));
         });
     }

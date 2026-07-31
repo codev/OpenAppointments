@@ -2,10 +2,13 @@
 module AltchaChallenge
   module_function
 
+  def configured?
+    Setting.get("altcha_hmac_key").to_s.present?
+  end
+
+  # Active on the customer booking flow.
   def enabled?
-    Setting.get("require_captcha") == "1" && Setting.get("altcha_enabled") == "1" &&
-      Setting.get("captcha_provider", "altcha") == "altcha" &&
-      Setting.get("altcha_hmac_key").to_s.present?
+    Captcha.for_customers == "altcha"
   end
 
   def hmac_key

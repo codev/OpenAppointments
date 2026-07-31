@@ -21,8 +21,6 @@ App.Http.Booking = (function () {
     const $selectService = $('#select-service');
     const $selectProvider = $('#select-provider');
     const $availableHours = $('#available-hours');
-    const $captchaHint = $('#captcha-hint');
-    const $captchaTitle = $('.captcha-title');
 
     const MONTH_SEARCH_LIMIT = 2; // Months in the future
 
@@ -155,19 +153,9 @@ App.Http.Booking = (function () {
      * the appointment to the database.
      */
     function registerAppointment() {
-        const $captchaText = $('.captcha-text');
         const $altchaPayload = $('#altcha-payload');
         const $altchaHint = $('#altcha-hint');
 
-        // Validate CAPTCHA or ALTCHA
-        if ($captchaText.length > 0) {
-            $captchaText.removeClass('is-invalid');
-            if ($captchaText.val() === '') {
-                $captchaText.addClass('is-invalid');
-                return;
-            }
-        }
-        
         if ($altchaPayload.length > 0 && $altchaPayload.val() === '') {
             $altchaHint.text(lang('altcha_verification_failed')).fadeTo(400, 1);
 
@@ -199,10 +187,6 @@ App.Http.Booking = (function () {
             post_data: formData,
         };
 
-        if ($captchaText.length > 0) {
-            data.captcha = $captchaText.val();
-        }
-        
         if ($altchaPayload.length > 0 && $altchaPayload.val()) {
             data.altcha_payload = $altchaPayload.val();
         }
@@ -237,20 +221,6 @@ App.Http.Booking = (function () {
             },
         })
             .done((response) => {
-                if (response.captcha_verification === false) {
-                    $captchaHint.text(lang('captcha_is_wrong')).fadeTo(400, 1);
-
-                    setTimeout(() => {
-                        $captchaHint.fadeTo(400, 0);
-                    }, 3000);
-
-                    $captchaTitle.find('button').trigger('click');
-
-                    $captchaText.addClass('is-invalid');
-
-                    return false;
-                }
-                
                 if (response.altcha_verification === false) {
                     $altchaHint.text(lang('altcha_verification_failed')).fadeTo(400, 1);
 
@@ -281,9 +251,6 @@ App.Http.Booking = (function () {
                 }
 
                 window.location.href = App.Utils.Url.siteUrl('booking_confirmation/of/' + response.appointment_hash);
-            })
-            .fail(() => {
-                $captchaTitle.find('button').trigger('click');
             })
             .always(() => {
                 $layer.remove();

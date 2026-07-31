@@ -34,7 +34,12 @@ mr:
     delete_personal_information_setting_hint: "ग्राहकांना एका बटणाने त्यांच्या सर्व भेटी आणि वैयक्तिक माहिती प्रणालीतून काढून टाकण्याची परवानगी द्या."
     captcha: "Captcha"
     captcha_info: "बुकिंगपूर्वी अभ्यागत माणूस आहे हे तपासण्यासाठी कॅप्चा सेटिंग्ज"
-    captcha_enabled_hint: "सक्षम केल्यावर फॉर्म पडताळणीसाठी पारंपरिक इमेज कॅप्चाऐवजी निवडलेला कॅप्चा प्रदाता वापरला जाईल."
+    captcha_enabled_hint: "सक्षम केल्यावर ग्राहकांना बुकिंग पूर्ण करण्यापूर्वी कॅप्चा आव्हान सोडवावे लागेल; तुम्हाला खूप स्पॅम बुकिंग येत असतील तर हे सक्षम करा"
+    captcha_active_customers: "ग्राहकांसाठी सक्रिय"
+    captcha_active_login: "लॉगिनसाठी सक्रिय"
+    captcha_login_hint: "सक्षम केल्यावर वापरकर्त्यांना बॅकएंडमध्ये लॉगिन करण्यापूर्वी कॅप्चा आव्हान सोडवावे लागेल"
+    altcha_hmac_key_missing: "कॅप्चा सक्रिय करण्यापूर्वी ALTCHA ला व्युत्पन्न केलेली HMAC की आवश्यक आहे"
+    turnstile_keys_missing: "कॅप्चा सक्रिय करण्यापूर्वी Cloudflare Turnstile ला साइट की आणि गुप्त की दोन्ही आवश्यक आहेत"
     turnstile_keys_hint: "Cloudflare डॅशबोर्डवरून साइट की आणि सीक्रेट की जोडी मिळवा:"
     first_login_update_details: कृपया नवीन पासवर्ड टाका आणि तुमची माहिती अपडेट करा
     embedding: एम्बेडिंग
@@ -345,8 +350,6 @@ mr:
     oops_something_went_wrong: अरेरे! काहीतरी चूक झाली
     ea_update_success: OpenAppointments यशस्वीरित्या अद्यतनित केली गेली आहे.
     require_captcha: कॅप्चा आवश्यक आहे
-    require_captcha_hint: "सक्षम केल्यावर, ग्राहकांना अपॉइंटमेंट बुक करण्यासाठी / अद्यतनित करण्यापूर्वी यादृच्छिक व्युत्पन्न कॅप्चा स्ट्रिंग टाईप करावी लागेल. - अधिक प्रगत Captcha प्रकार निवडण्यासाठी Integrations वर जा"
-    captcha_is_wrong: कॅप्चा सत्यापन अयशस्वी, कृपया पुन्हा प्रयत्न करा.
     enter_captcha_here: येथे CAPTCHA प्रविष्ट करा...
     any_provider: कोणताही प्रदाता
     requested_hour_is_unavailable: विनंती केलेली अपॉईंटमेंट अनफर्तपणे उपलब्ध नाही. कृपया आपल्या भेटीसाठी एक वेगळा तास निवडा.
@@ -574,7 +577,6 @@ mr:
     altcha_expires_hint: 'आव्हान किती सेकंद वैध राहते (डीफॉल्ट: 300).'
     altcha_key_generated: नवीन HMAC की यशस्वीरित्या तयार झाली.
     altcha_enabled: ALTCHA सक्षम करा
-    altcha_captcha_not_active_warning: CAPTCHA सेटिंग सध्या सक्रिय नाही. CAPTCHA सक्षम होईपर्यंत ALTCHA वापरले जाणार नाही
     generate: तयार करा
     meeting_link: मीटिंग लिंक
     google_calendar: गूगल कॅलेंडर

@@ -34,7 +34,12 @@ ar:
     delete_personal_information_setting_hint: "السماح للعملاء بإزالة جميع مواعيدهم ومعلوماتهم الشخصية من النظام بزر واحد."
     captcha: "Captcha"
     captcha_info: "إعدادات الكابتشا للتحقق من أن الزائر إنسان قبل الحجز"
-    captcha_enabled_hint: "عند التفعيل، سيُستخدم مزود الكابتشا المحدد بدلاً من كابتشا الصور التقليدية للتحقق من النماذج."
+    captcha_enabled_hint: "عند التفعيل سيتعين على العملاء حل تحدي كابتشا قبل إتمام الحجز، فعّل هذا الخيار إذا كنت تتلقى الكثير من الحجوزات المزعجة"
+    captcha_active_customers: "مفعل للعملاء"
+    captcha_active_login: "مفعل لتسجيل الدخول"
+    captcha_login_hint: "عند التفعيل سيتعين على المستخدمين حل تحدي كابتشا قبل تسجيل الدخول إلى لوحة الإدارة"
+    altcha_hmac_key_missing: "يحتاج ALTCHA إلى مفتاح HMAC مُولد قبل تفعيل الكابتشا"
+    turnstile_keys_missing: "يحتاج Cloudflare Turnstile إلى مفتاح موقع ومفتاح سري قبل تفعيل الكابتشا"
     turnstile_keys_hint: "احصل على زوج المفاتيح (site وsecret) من لوحة تحكم Cloudflare:"
     first_login_update_details: يرجى إدخال كلمة مرور جديدة وتحديث بياناتك
     embedding: التضمين
@@ -345,8 +350,6 @@ ar:
     oops_something_went_wrong: للأسف ! حصل خطأ ما .
     ea_update_success: تم تحديث برنامج الحجوزات بنجاح
     require_captcha: مطلوب CAPTCHA
-    require_captcha_hint: "عند التمكين ، سيتوجب على الزبون ادخال رمز عشوائي عند الحجز او التعديل على الموعد  - انتقل إلى التكاملات لاختيار نوع Captcha أكثر تقدماً"
-    captcha_is_wrong: الرجاء المحاولة مرة أخرى CAPTCHA لم يتم تأكيد
     enter_captcha_here: أدخل رمز CAPTCHA هنا...
     any_provider: أيْ مزوّد خدمة
     requested_hour_is_unavailable: 'الموعد الذي طلبته غير متاح للأسف . يرجى اختيار ساعة مختلفة لحجز الموعد '
@@ -574,7 +577,6 @@ ar:
     altcha_expires_hint: 'المدة التي يظل فيها التحدي صالحاً بالثواني (الافتراضي: 300).'
     altcha_key_generated: تم إنشاء مفتاح HMAC جديد بنجاح.
     altcha_enabled: تمكين ALTCHA
-    altcha_captcha_not_active_warning: إعداد CAPTCHA غير مفعّل حالياً. لن يتم استخدام ALTCHA ما لم يتم تفعيل CAPTCHA في
     generate: إنشاء
     meeting_link: رابط الاجتماع
     google_calendar: تقويم جوجل

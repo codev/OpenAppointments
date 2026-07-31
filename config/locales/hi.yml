@@ -34,7 +34,12 @@ hi:
     delete_personal_information_setting_hint: "ग्राहकों को एक बटन से सिस्टम से उनकी सभी अपॉइंटमेंट और व्यक्तिगत जानकारी हटाने की अनुमति दें।"
     captcha: "Captcha"
     captcha_info: "बुकिंग से पहले आगंतुक के मानव होने की पुष्टि के लिए कैप्चा सेटिंग्स"
-    captcha_enabled_hint: "सक्षम होने पर फॉर्म सत्यापन के लिए पारंपरिक इमेज कैप्चा के बजाय चयनित कैप्चा प्रदाता का उपयोग किया जाएगा।"
+    captcha_enabled_hint: "सक्षम होने पर ग्राहकों को बुकिंग पूरी करने से पहले एक कैप्चा चुनौती हल करनी होगी; यदि आपको बहुत सी स्पैम बुकिंग मिल रही हैं तो इसे सक्षम करें"
+    captcha_active_customers: "ग्राहकों के लिए सक्रिय"
+    captcha_active_login: "लॉगिन के लिए सक्रिय"
+    captcha_login_hint: "सक्षम होने पर उपयोगकर्ताओं को बैकएंड में लॉगिन करने से पहले एक कैप्चा चुनौती हल करनी होगी"
+    altcha_hmac_key_missing: "कैप्चा सक्रिय करने से पहले ALTCHA को एक जनरेट की गई HMAC कुंजी चाहिए"
+    turnstile_keys_missing: "कैप्चा सक्रिय करने से पहले Cloudflare Turnstile को साइट कुंजी और गुप्त कुंजी दोनों चाहिए"
     turnstile_keys_hint: "Cloudflare डैशबोर्ड से साइट की और सीक्रेट की की जोड़ी प्राप्त करें:"
     first_login_update_details: कृपया नया पासवर्ड दर्ज करें और अपनी जानकारी अपडेट करें
     embedding: एम्बेडिंग
@@ -345,8 +350,6 @@ hi:
     oops_something_went_wrong: उफ़! कुछ गलत हो गया
     ea_update_success: आसान! अपॉइंटमेंट सफलतापूर्वक अद्यतन किया गया है.
     require_captcha: CAPTCHA आवश्यक है
-    require_captcha_hint: "जब सक्षम किया गया है, तो ग्राहकों को अपॉइंटमेंट बुकिंग/अपडेट करने से पहले एक यादृच्छिक जनरेटेड CAPTCHA स्ट्रिंग टाइप करनी होगी। - अधिक उन्नत Captcha प्रकार चुनने के लिए Integrations पर जाएं"
-    captcha_is_wrong: CAPTCHA सत्यापन विफल हो गया है, कृपया पुनः प्रयास करें।
     enter_captcha_here: यहाँ CAPTCHA दर्ज करें...
     any_provider: कोई भी प्रदाता
     requested_hour_is_unavailable: अनुरोधित अपॉइंटमेंट दुर्भाग्यवश उपलब्ध नहीं है। कृपया अपने अपॉइंटमेंट के लिए एक अलग समय चुनें।
@@ -574,7 +577,6 @@ hi:
     altcha_expires_hint: 'एक चुनौती कितने सेकंड तक वैध रहती है (डिफ़ॉल्ट: 300)।'
     altcha_key_generated: नई HMAC कुंजी सफलतापूर्वक जनरेट हुई।
     altcha_enabled: ALTCHA सक्षम करें
-    altcha_captcha_not_active_warning: CAPTCHA सेटिंग वर्तमान में सक्रिय नहीं है। ALTCHA का उपयोग तब तक नहीं किया जाएगा जब तक CAPTCHA सक्षम न हो
     generate: जनरेट करें
     meeting_link: मीटिंग लिंक
     google_calendar: गूगल कैलेंडर

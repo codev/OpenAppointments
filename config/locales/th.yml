@@ -34,7 +34,12 @@ th:
     delete_personal_information_setting_hint: "อนุญาตให้ลูกค้าลบการนัดหมายและข้อมูลส่วนตัวทั้งหมดออกจากระบบด้วยปุ่มเดียว"
     captcha: "Captcha"
     captcha_info: "การตั้งค่า Captcha เพื่อยืนยันว่าผู้เยี่ยมชมเป็นมนุษย์ก่อนการจอง"
-    captcha_enabled_hint: "เมื่อเปิดใช้งาน ผู้ให้บริการ Captcha ที่เลือกจะถูกใช้แทน Captcha รูปภาพแบบดั้งเดิมในการตรวจสอบแบบฟอร์ม"
+    captcha_enabled_hint: "เมื่อเปิดใช้งาน ลูกค้าจะต้องแก้โจทย์ Captcha ก่อนจึงจะจองได้สำเร็จ เปิดใช้งานหากคุณได้รับการจองสแปมจำนวนมาก"
+    captcha_active_customers: "เปิดใช้งานสำหรับลูกค้า"
+    captcha_active_login: "เปิดใช้งานสำหรับการเข้าสู่ระบบ"
+    captcha_login_hint: "เมื่อเปิดใช้งาน ผู้ใช้จะต้องแก้โจทย์ Captcha ก่อนจึงจะเข้าสู่ระบบหลังบ้านได้"
+    altcha_hmac_key_missing: "ALTCHA ต้องมีคีย์ HMAC ที่สร้างไว้ก่อนจึงจะเปิดใช้งาน captcha ได้"
+    turnstile_keys_missing: "Cloudflare Turnstile ต้องมีทั้งไซต์คีย์และคีย์ลับก่อนจึงจะเปิดใช้งาน captcha ได้"
     turnstile_keys_hint: "รับคู่กุญแจ (site key และ secret key) จากแดชบอร์ดของ Cloudflare:"
     first_login_update_details: กรุณาตั้งรหัสผ่านใหม่และอัปเดตข้อมูลของคุณ
     embedding: การฝังหน้า
@@ -345,8 +350,6 @@ th:
     oops_something_went_wrong: อ๊ะ! มีบางอย่างผิดพลาด.
     ea_update_success: OpenAppointments อัปเดตเรียบร้อยแล้ว
     require_captcha: ต้องมี CAPTCHA
-    require_captcha_hint: "เมื่อเปิดใช้งาน ลูกค้าจะต้องพิมพ์ CAPTCHA ที่สร้างแบบสุ่มก่อนจอง/อัปเดตการนัดหมาย - ไปที่ Integrations เพื่อเลือกประเภท Captcha ขั้นสูงกว่า"
-    captcha_is_wrong: การยืนยัน CAPTCHA ล้มเหลว โปรดลองอีกครั้ง
     enter_captcha_here: ป้อน CAPTCHA ที่นี่...
     any_provider: ผู้ให้บริการใดๆ
     requested_hour_is_unavailable: น่าเสียดาย ไม่สามารถนัดหมายที่ร้องขอได้ โปรดเลือกเวลาอื่นสำหรับการนัดหมายของคุณ
@@ -574,7 +577,6 @@ th:
     altcha_expires_hint: 'ระยะเวลาที่การท้าทายมีผลเป็นวินาที (ค่าเริ่มต้น: 300)'
     altcha_key_generated: สร้างคีย์ HMAC ใหม่เรียบร้อยแล้ว
     altcha_enabled: เปิดใช้งาน ALTCHA
-    altcha_captcha_not_active_warning: การตั้งค่า CAPTCHA ไม่ได้ใช้งานอยู่ในขณะนี้ ALTCHA จะไม่ถูกใช้งานจนกว่าจะเปิดใช้งาน CAPTCHA ใน
     generate: สร้าง
     meeting_link: ลิงก์การประชุม
     google_calendar: Google ปฏิทิน

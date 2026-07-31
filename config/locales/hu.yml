@@ -34,7 +34,12 @@ hu:
     delete_personal_information_setting_hint: "Engedélyezze az ügyfeleknek, hogy egy gombbal eltávolítsák összes időpontjukat és személyes adataikat a rendszerből."
     captcha: "Captcha"
     captcha_info: "Captcha beállítások annak ellenőrzésére, hogy a látogató ember-e a foglalás előtt"
-    captcha_enabled_hint: "Ha engedélyezve van, az űrlapok ellenőrzéséhez a hagyományos képes captcha helyett a kiválasztott captcha szolgáltató lesz használva."
+    captcha_enabled_hint: "Ha engedélyezve van, az ügyfeleknek egy Captcha feladatot kell megoldaniuk a foglalás befejezése előtt; engedélyezze, ha sok kéretlen foglalást kap"
+    captcha_active_customers: "Aktív az ügyfeleknek"
+    captcha_active_login: "Aktív a bejelentkezéshez"
+    captcha_login_hint: "Ha engedélyezve van, a felhasználóknak egy Captcha feladatot kell megoldaniuk a felügyeleti felületre való bejelentkezés előtt"
+    altcha_hmac_key_missing: "Az ALTCHA-hoz generált HMAC kulcs szükséges a captcha aktiválása előtt"
+    turnstile_keys_missing: "A Cloudflare Turnstile-hoz webhelykulcs és titkos kulcs is szükséges a captcha aktiválása előtt"
     turnstile_keys_hint: "Szerezzen egy kulcspárt (site és secret) a Cloudflare vezérlőpultján:"
     first_login_update_details: Adjon meg új jelszót, és frissítse adatait
     embedding: Beágyazás
@@ -345,8 +350,6 @@ hu:
     oops_something_went_wrong: Hoppá! Valami balul sült el.
     ea_update_success: Foglalj időpontot a ...
     require_captcha: CAPTCHA Kötelező
-    require_captcha_hint: "Ha engedélyezve van, az ügyfeleknek egy véletlenszerűen generált CAPTCHA karakterláncot kell megadniuk, mielőtt foglalnának/módosítanának egy időpontot. - a fejlettebb Captcha típushoz lépjen az Integrációk oldalra"
-    captcha_is_wrong: A CAPTCHA ellenőrzés sikertelen, kérjük próbálja újra.
     enter_captcha_here: Írja be a CAPTCHA-t ide...
     any_provider: Bármely Szolgáltató
     requested_hour_is_unavailable: A kért időpont sajnos nem elérhető. Kérjük válasszon egy másik időpontot.
@@ -574,7 +577,6 @@ hu:
     altcha_expires_hint: 'Mennyi ideig marad érvényes egy kihívás másodpercben (alapértelmezett: 300).'
     altcha_key_generated: Az új HMAC kulcs sikeresen létrehozva.
     altcha_enabled: ALTCHA engedélyezése
-    altcha_captcha_not_active_warning: A CAPTCHA beállítás jelenleg nem aktív. Az ALTCHA nem kerül használatra, hacsak a CAPTCHA nincs engedélyezve a
     generate: Generálás
     meeting_link: Találkozó linkje
     google_calendar: Google Naptár

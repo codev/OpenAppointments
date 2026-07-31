@@ -34,7 +34,12 @@ uk:
     delete_personal_information_setting_hint: "Дозволити клієнтам однією кнопкою видалити всі свої записи та особисті дані з системи."
     captcha: "Captcha"
     captcha_info: "Налаштування капчі для перевірки, що відвідувач людина, перед бронюванням"
-    captcha_enabled_hint: "Якщо увімкнено, для перевірки форм замість традиційної капчі із зображенням використовуватиметься вибраний провайдер капчі."
+    captcha_enabled_hint: "Якщо ввімкнено, клієнти повинні будуть розв'язати завдання Captcha перед завершенням бронювання; увімкніть, якщо отримуєте багато спам-бронювань"
+    captcha_active_customers: "Активно для клієнтів"
+    captcha_active_login: "Активно для входу"
+    captcha_login_hint: "Якщо ввімкнено, користувачі повинні будуть розв'язати завдання Captcha перед входом до панелі керування"
+    altcha_hmac_key_missing: "Для активації captcha ALTCHA потребує згенерованого ключа HMAC"
+    turnstile_keys_missing: "Для активації captcha Cloudflare Turnstile потребує ключа сайту та секретного ключа"
     turnstile_keys_hint: "Отримайте пару ключів (site і secret) у панелі Cloudflare:"
     first_login_update_details: Будь ласка, введіть новий пароль і оновіть свої дані
     embedding: Вбудовування
@@ -345,8 +350,6 @@ uk:
     oops_something_went_wrong: Ой! Щось пішло не так.
     ea_update_success: OpenAppointments успішно оновлено.
     require_captcha: Вимагати CAPTCHA
-    require_captcha_hint: "Коли ввімкнено, клієнти повинні будуть ввести випадково згенерований CAPTCHA код перед бронюванням/оновленням запису. - перейдіть до Інтеграцій, щоб вибрати досконаліший тип Captcha"
-    captcha_is_wrong: Перевірка CAPTCHA не вдалася, будь ласка, спробуйте ще раз.
     enter_captcha_here: Введіть CAPTCHA тут...
     any_provider: Будь-який провайдер
     requested_hour_is_unavailable: Запитуваний запис, на жаль, недоступний. Будь ласка, виберіть інший час для вашого запису.
@@ -574,7 +577,6 @@ uk:
     altcha_expires_hint: 'Тривалість дії виклику в секундах (за замовчуванням: 300).'
     altcha_key_generated: Новий ключ HMAC успішно згенеровано.
     altcha_enabled: Увімкнути ALTCHA
-    altcha_captcha_not_active_warning: Налаштування CAPTCHA наразі не активне. ALTCHA не буде використовуватися, доки CAPTCHA не буде увімкнено в
     generate: Згенерувати
     meeting_link: Посилання на зустріч
     google_calendar: Google Календар

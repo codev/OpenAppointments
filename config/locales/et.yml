@@ -34,7 +34,12 @@ et:
     delete_personal_information_setting_hint: "Luba klientidel ühe nupuvajutusega eemaldada süsteemist kõik oma broneeringud ja isikuandmed."
     captcha: "Captcha"
     captcha_info: "Captcha seaded, millega enne broneerimist kontrollitakse, et külastaja on inimene"
-    captcha_enabled_hint: "Kui see on lubatud, kasutatakse vormide kontrollimiseks valitud captcha teenusepakkujat traditsioonilise pildi-captcha asemel."
+    captcha_enabled_hint: "Kui see on lubatud, peavad kliendid enne broneeringu lõpetamist lahendama Captcha ülesande; lubage see, kui saate palju rämpsbroneeringuid"
+    captcha_active_customers: "Aktiivne klientidele"
+    captcha_active_login: "Aktiivne sisselogimisel"
+    captcha_login_hint: "Kui see on lubatud, peavad kasutajad enne haldusliidesesse sisselogimist lahendama Captcha ülesande"
+    altcha_hmac_key_missing: "ALTCHA vajab enne captcha aktiveerimist genereeritud HMAC-võtit"
+    turnstile_keys_missing: "Cloudflare Turnstile vajab enne captcha aktiveerimist nii saidivõtit kui ka salajast võtit"
     turnstile_keys_hint: "Hankige site key ja secret key paar Cloudflare'i töölaualt:"
     first_login_update_details: Palun sisestage uus parool ja uuendage oma andmeid
     embedding: Manustamine
@@ -345,8 +350,6 @@ et:
     oops_something_went_wrong: Ohhhoo! Midagi läks untsu.
     ea_update_success: OpenAppointments uuendus õnnestus.
     require_captcha: Nõua CAPTCHA-t
-    require_captcha_hint: "Kui see on sisse lülitatud, siis nõutakse kasutajalt CAPTCHA-t enne broneeringu lisamist/muutmist. - minge Integratsioonide alla, et valida täiustatum Captcha tüüp"
-    captcha_is_wrong: CAPTCHA kinnitus ebaõnnestus. Proovi uuesti.
     enter_captcha_here: Sisestage CAPTCHA siia...
     any_provider: Suvaline teenusepakkuja
     requested_hour_is_unavailable: Soovitud aeg ei ole enam saadaval. Palun vali uus aeg.
@@ -574,7 +577,6 @@ et:
     altcha_expires_hint: 'Kui kaua väljakutse kehtib sekundites (vaikimisi: 300).'
     altcha_key_generated: Uus HMAC võti edukalt genereeritud.
     altcha_enabled: Luba ALTCHA
-    altcha_captcha_not_active_warning: CAPTCHA seade ei ole hetkel aktiivne. ALTCHA-t ei kasutata, kui CAPTCHA pole lubatud
     generate: Genereeri
     meeting_link: Koosoleku link
     google_calendar: Google kalender

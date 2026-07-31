@@ -34,7 +34,12 @@ sq:
     delete_personal_information_setting_hint: "Lejo klientët të heqin të gjitha takimet dhe të dhënat e tyre personale nga sistemi me një buton."
     captcha: "Captcha"
     captcha_info: "Cilësimet e captcha-s për të verifikuar që vizitori është njeri para rezervimit"
-    captcha_enabled_hint: "Kur aktivizohet, ofruesi i zgjedhur i captcha-s do të përdoret në vend të captcha-s tradicionale me imazh për verifikimin e formularëve."
+    captcha_enabled_hint: "Kur aktivizohet, klientët do të duhet të zgjidhin një sfidë Captcha para se të përfundojnë rezervimin; aktivizojeni nëse merrni shumë rezervime të padëshiruara"
+    captcha_active_customers: "Aktiv për klientët"
+    captcha_active_login: "Aktiv për hyrjen"
+    captcha_login_hint: "Kur aktivizohet, përdoruesit do të duhet të zgjidhin një sfidë Captcha para se të hyjnë në administrim"
+    altcha_hmac_key_missing: "ALTCHA ka nevojë për një çelës HMAC të gjeneruar para se captcha të mund të aktivizohet"
+    turnstile_keys_missing: "Cloudflare Turnstile ka nevojë për një çelës faqeje dhe një çelës sekret para se captcha të mund të aktivizohet"
     turnstile_keys_hint: "Merrni një çift çelësash (site dhe secret) nga paneli i Cloudflare:"
     first_login_update_details: Ju lutemi vendosni një fjalëkalim të ri dhe përditësoni të dhënat tuaja
     embedding: Ngulitja
@@ -345,8 +350,6 @@ sq:
     oops_something_went_wrong: Oops! Diçka Shkoi Keq.
     ea_update_success: OpenAppointments u përditësua me sukses.
     require_captcha: Kërko CAPTCHA
-    require_captcha_hint: "Kur aktivizohet, klientët do të duhet të shkruajnë një string CAPTCHA të gjeneruar rastësisht përpara se të rezervojnë/ndryshojnë një takim. - shkoni te Integrimet për të zgjedhur një lloj Captcha më të avancuar"
-    captcha_is_wrong: Verifikimi CAPTCHA dështoi, ju lutemi provoni përsëri.
     enter_captcha_here: Shkruani CAPTCHA këtu...
     any_provider: Çdo Ofrues
     requested_hour_is_unavailable: Ora e kërkuar për takimin nuk është e disponueshme. Ju lutemi zgjidhni një orë tjetër për takimin tuaj.
@@ -574,7 +577,6 @@ sq:
     altcha_expires_hint: 'Sa kohë mbetet e vlefshme një sfidë në sekonda (parazgjedhur: 300).'
     altcha_key_generated: Çelësi i ri HMAC u gjenerua me sukses.
     altcha_enabled: Aktivizo ALTCHA
-    altcha_captcha_not_active_warning: Cilësimi CAPTCHA nuk është aktiv aktualisht. ALTCHA nuk do të përdoret nëse CAPTCHA nuk aktivizohet në
     generate: Gjenero
     meeting_link: Lidhja e Takimit
     google_calendar: Google Calendar

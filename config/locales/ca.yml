@@ -34,7 +34,12 @@ ca:
     delete_personal_information_setting_hint: "Permet als clients eliminar totes les seves cites i informació personal del sistema amb un botó."
     captcha: "Captcha"
     captcha_info: "Configuració del captcha per verificar que el visitant és humà abans de reservar"
-    captcha_enabled_hint: "Quan està activat, el proveïdor de captcha seleccionat s'utilitzarà en lloc del captcha d'imatge tradicional per verificar formularis."
+    captcha_enabled_hint: "Quan està activat, els clients hauran de resoldre un repte Captcha abans de completar la reserva; activeu-ho si rebeu moltes reserves brossa"
+    captcha_active_customers: "Actiu per a clients"
+    captcha_active_login: "Actiu per a l'inici de sessió"
+    captcha_login_hint: "Quan està activat, els usuaris hauran de resoldre un repte Captcha abans d'iniciar sessió al panell"
+    altcha_hmac_key_missing: "ALTCHA necessita una clau HMAC generada abans de poder activar el captcha"
+    turnstile_keys_missing: "Cloudflare Turnstile necessita una clau de lloc i una clau secreta abans de poder activar el captcha"
     turnstile_keys_hint: "Obteniu un parell de claus (site i secret) al tauler de Cloudflare:"
     first_login_update_details: Introduïu una contrasenya nova i actualitzeu les vostres dades
     embedding: Incrustació
@@ -345,8 +350,6 @@ ca:
     oops_something_went_wrong: Ups! Alguna cosa no ha funcionat bé.
     ea_update_success: OpenAppointments s'ha actualitzat correctament.
     require_captcha: Requereix un CAPTCHA
-    require_captcha_hint: "Quan s'habilita, els clients hauran de teclejar una cadena CAPTCHA generada aleatòriament abans de reservar o actualitzar una cita. - aneu a Integracions per triar un tipus de Captcha més avançat"
-    captcha_is_wrong: La verificació del CAPTCHA ha fallat, torneu-ho a intentar.
     enter_captcha_here: Introdueix el CAPTCHA aquí...
     any_provider: Qualsevol proveïdor
     requested_hour_is_unavailable: La cita que demaneu no està disponible. Seleccioneu una hora diferent per a la vostra cita.
@@ -574,7 +577,6 @@ ca:
     altcha_expires_hint: 'Durant quant de temps (en segons), un repte es manté vàlid (per defecte: 300).'
     altcha_key_generated: La clau HMAC s'ha generat correctament.
     altcha_enabled: Habilita ALTCHA
-    altcha_captcha_not_active_warning: La configuració CAPTCHA no està activa actualment. ALTCHA no s'utilitzarà si CAPTCHA no està habilitada a
     generate: Genera
     meeting_link: Enllaç de la reunió
     google_calendar: Google Calendar

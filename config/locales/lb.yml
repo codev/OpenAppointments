@@ -34,7 +34,12 @@ lb:
     delete_personal_information_setting_hint: "Erlaabt Clienten all hir Rendez-vousen a perséinlech Donnéeë mat engem Knäppchen aus dem System ze läschen."
     captcha: "Captcha"
     captcha_info: "Captcha-Astellungen fir ze préiwen, datt de Besucher e Mënsch ass, ier gebucht gëtt"
-    captcha_enabled_hint: "Wann aktivéiert, gëtt de gewielte Captcha-Provider amplaz vun der traditioneller Bild-Captcha fir d'Formularverifikatioun benotzt."
+    captcha_enabled_hint: "Wann aktivéiert, mussen d'Clienten eng Captcha-Erausfuerderung léisen, ier si d'Reservatioun ofschléisse kënnen; aktivéiert dëst, wann Dir vill Spam-Reservatioune kritt"
+    captcha_active_customers: "Aktiv fir Clienten"
+    captcha_active_login: "Aktiv fir de Login"
+    captcha_login_hint: "Wann aktivéiert, mussen d'Benotzer eng Captcha-Erausfuerderung léisen, ier si sech am Backend umelle kënnen"
+    altcha_hmac_key_missing: "ALTCHA brauch e generéierten HMAC-Schlëssel, ier de Captcha aktivéiert ka ginn"
+    turnstile_keys_missing: "Cloudflare Turnstile brauch e Site-Schlëssel an e geheime Schlëssel, ier de Captcha aktivéiert ka ginn"
     turnstile_keys_hint: "Kritt e Puer Schlësselen (site a secret) am Cloudflare Dashboard:"
     first_login_update_details: Gitt w.e.g. en neit Passwuert an an aktualiséiert Är Donnéeën
     embedding: Abannen
@@ -345,8 +350,6 @@ lb:
     oops_something_went_wrong: Oops! Et ass eppes schif gaang.
     ea_update_success: OpenAppointments gouf erfollegräich aktualiséiert.
     require_captcha: CAPTCHA erfuerderen
-    require_captcha_hint: "Wann aktivéiert, mussen d'Clienten eng zoufälleg generéiert CAPTCHA-Zeichenkette aginn, ier si en Rendez-vous buchen/aktualiséieren. - gitt op Integratiounen fir e méi fortgeschrattene Captcha-Typ ze wielen"
-    captcha_is_wrong: CAPTCHA Verifikatioun ass gescheitert, probéiert w.e.g. nach eng Kéier.
     enter_captcha_here: CAPTCHA hei aginn...
     any_provider: All Provider
     requested_hour_is_unavailable: Den ugefrote Rendez-vous ass leider net verfügbar. Wielt w.e.g. eng aner Zäit fir Äre Rendez-vous.
@@ -574,7 +577,6 @@ lb:
     altcha_expires_hint: 'Wéi laang eng Erausfuerderung a Sekonnen gëlteg ass (Standard: 300).'
     altcha_key_generated: Neien HMAC Schlëssel gouf erfollegräich generéiert.
     altcha_enabled: ALTCHA aktivéieren
-    altcha_captcha_not_active_warning: D'CAPTCHA-Astellung ass momentan net aktiv. ALTCHA gëtt net benotzt, ausser CAPTCHA ass aktivéiert an den
     generate: Generéieren
     meeting_link: Meeting-Link
     google_calendar: Google Kalenner

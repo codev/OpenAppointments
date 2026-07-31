@@ -34,7 +34,12 @@ el:
     delete_personal_information_setting_hint: "Επιτρέψτε στους πελάτες να αφαιρούν όλα τα ραντεβού και τα προσωπικά τους στοιχεία από το σύστημα με ένα κουμπί."
     captcha: "Captcha"
     captcha_info: "Ρυθμίσεις captcha για επαλήθευση ότι ο επισκέπτης είναι άνθρωπος πριν την κράτηση"
-    captcha_enabled_hint: "Όταν είναι ενεργό, ο επιλεγμένος πάροχος captcha θα χρησιμοποιείται αντί του παραδοσιακού captcha εικόνας για την επαλήθευση φορμών."
+    captcha_enabled_hint: "Όταν είναι ενεργό, οι πελάτες θα πρέπει να λύσουν μια πρόκληση Captcha πριν ολοκληρώσουν την κράτηση· ενεργοποιήστε το αν έχετε πολλές ανεπιθύμητες κρατήσεις"
+    captcha_active_customers: "Ενεργό για πελάτες"
+    captcha_active_login: "Ενεργό για σύνδεση"
+    captcha_login_hint: "Όταν είναι ενεργό, οι χρήστες θα πρέπει να λύσουν μια πρόκληση Captcha πριν συνδεθούν στη διαχείριση"
+    altcha_hmac_key_missing: "Το ALTCHA χρειάζεται ένα δημιουργημένο κλειδί HMAC πριν ενεργοποιηθεί το captcha"
+    turnstile_keys_missing: "Το Cloudflare Turnstile χρειάζεται κλειδί ιστότοπου και μυστικό κλειδί πριν ενεργοποιηθεί το captcha"
     turnstile_keys_hint: "Αποκτήστε ένα ζεύγος κλειδιών (site και secret) από τον πίνακα του Cloudflare:"
     first_login_update_details: Παρακαλώ εισαγάγετε νέο κωδικό πρόσβασης και ενημερώστε τα στοιχεία σας
     embedding: Ενσωμάτωση
@@ -345,8 +350,6 @@ el:
     oops_something_went_wrong: Ώχ! Κάτι πήγε στραβά.
     ea_update_success: Το OpenAppointments ενημερώθηκε με επιτυχία.
     require_captcha: Απαίτηση CAPTCHA
-    require_captcha_hint: "Όταν είναι ενεργοποιημένο, οι πελάτες θα χρειαστεί να πληκτρολογήσουν μια τυχαία παραγόμενη συμβολοσειρά CAPTCHA πριν κλείσουν/αποθηκεύσουν ένα ραντεβού. - μεταβείτε στις Ενσωματώσεις για να επιλέξετε έναν πιο προηγμένο τύπο Captcha"
-    captcha_is_wrong: Η επαλήθευση του CAPTCHA απέτυχε, παρακαλώ δοκιμάστε πάλι.
     enter_captcha_here: Εισάγετε CAPTCHA εδώ...
     any_provider: Οποιοσδήποτε Πάροχος
     requested_hour_is_unavailable: Το απαιτούμενο ραντεβού δεν είναι δυστυχώς διαθέσιμο. Παρακαλώ επιλέξτε κάποια άλλη ώρα για το ραντεβού σας.
@@ -574,7 +577,6 @@ el:
     altcha_expires_hint: 'Πόσο χρόνο παραμένει έγκυρη μια πρόκληση σε δευτερόλεπτα (προεπιλογή: 300).'
     altcha_key_generated: Νέο κλειδί HMAC δημιουργήθηκε επιτυχώς.
     altcha_enabled: Ενεργοποίηση ALTCHA
-    altcha_captcha_not_active_warning: Η ρύθμιση CAPTCHA δεν είναι ενεργή αυτή τη στιγμή. Το ALTCHA δεν θα χρησιμοποιηθεί εκτός εάν ενεργοποιηθεί το CAPTCHA στις
     generate: Δημιουργία
     meeting_link: Σύνδεσμος συνάντησης
     google_calendar: Ημερολόγιο Google

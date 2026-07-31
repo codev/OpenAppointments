@@ -34,7 +34,12 @@ sl:
     delete_personal_information_setting_hint: "Strankam omogočite, da z gumbom odstranijo vse svoje termine in osebne podatke iz sistema."
     captcha: "Captcha"
     captcha_info: "Nastavitve captcha za preverjanje, da je obiskovalec človek, pred rezervacijo"
-    captcha_enabled_hint: "Ko je omogočeno, se za preverjanje obrazcev namesto tradicionalne slikovne captche uporablja izbrani ponudnik captcha."
+    captcha_enabled_hint: "Ko je omogočeno, bodo morale stranke pred zaključkom rezervacije rešiti izziv Captcha; omogočite, če prejemate veliko neželenih rezervacij"
+    captcha_active_customers: "Aktivno za stranke"
+    captcha_active_login: "Aktivno za prijavo"
+    captcha_login_hint: "Ko je omogočeno, bodo morali uporabniki pred prijavo v administracijo rešiti izziv Captcha"
+    altcha_hmac_key_missing: "ALTCHA potrebuje ustvarjen ključ HMAC, preden je mogoče captcha aktivirati"
+    turnstile_keys_missing: "Cloudflare Turnstile potrebuje ključ spletnega mesta in skrivni ključ, preden je mogoče captcha aktivirati"
     turnstile_keys_hint: "Pridobite par ključev (site in secret) na nadzorni plošči Cloudflare:"
     first_login_update_details: Vnesite novo geslo in posodobite svoje podatke
     embedding: Vdelava
@@ -345,8 +350,6 @@ sl:
     oops_something_went_wrong: Ojoj! Nekaj je šlo narobe.
     ea_update_success: OpenAppointments je bil uspešno posodobljen.
     require_captcha: Zahtevaj CAPTCHA
-    require_captcha_hint: "Ko je omogočeno, bodo morale stranke pred rezervacijo/posodabljanjem termina vnesti naključno ustvarjen niz CAPTCHA. - pojdite na Integracije in izberite naprednejši tip Captcha"
-    captcha_is_wrong: CAPTCHA preverjanje ni uspelo, poskusite znova.
     enter_captcha_here: Tukaj vnesite CAPTCHA...
     any_provider: Kateri koli ponudnik
     requested_hour_is_unavailable: Zahtevani termin žal ni na voljo. Prosimo izberite drugo uro za vaš termin.
@@ -574,7 +577,6 @@ sl:
     altcha_expires_hint: 'Kako dolgo izziv ostane veljaven v sekundah (privzeto: 300).'
     altcha_key_generated: Nov HMAC ključ je bil uspešno ustvarjen.
     altcha_enabled: Omogoči ALTCHA
-    altcha_captcha_not_active_warning: Nastavitev CAPTCHA trenutno ni aktivna. ALTCHA ne bo uporabljena, razen če je CAPTCHA omogočena v
     generate: Ustvari
     meeting_link: Povezava do sestanka
     google_calendar: Google Koledar

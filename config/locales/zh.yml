@@ -34,7 +34,12 @@ zh:
     delete_personal_information_setting_hint: "允许客户通过一个按钮从系统中删除他们的所有预约和个人信息。"
     captcha: "Captcha"
     captcha_info: "用于在预约前验证访客是真人的验证码设置"
-    captcha_enabled_hint: "启用后，表单验证将使用所选的验证码提供方，替代传统的图片验证码。"
+    captcha_enabled_hint: "启用后，顾客必须先完成 Captcha 验证才能完成预约；如果您收到大量垃圾预约，请启用此功能"
+    captcha_active_customers: "对顾客启用"
+    captcha_active_login: "对登录启用"
+    captcha_login_hint: "启用后，用户必须先完成 Captcha 验证才能登录后台"
+    altcha_hmac_key_missing: "启用 captcha 之前，ALTCHA 需要已生成的 HMAC 密钥"
+    turnstile_keys_missing: "启用 captcha 之前，Cloudflare Turnstile 需要站点密钥和秘密密钥"
     turnstile_keys_hint: "在 Cloudflare 控制台获取站点密钥和秘密密钥对:"
     first_login_update_details: 请输入新密码并更新您的信息
     embedding: 嵌入
@@ -345,8 +350,6 @@ zh:
     oops_something_went_wrong: 不好！出了一些问题.
     ea_update_success: 预约系统已经成功更新.
     require_captcha: 需要验证码
-    require_captcha_hint: "启用时，客户在预约/更新预约之前必须输入一个随机生成的验证码字符串。 - 前往集成页面选择更高级的 Captcha 类型"
-    captcha_is_wrong: 验证码验证失败，请重试。
     enter_captcha_here: 在此输入 CAPTCHA...
     any_provider: 任何服务提供者
     requested_hour_is_unavailable: 请求的预约时间不再可用。请为您的预约选择不同的时间。
@@ -574,7 +577,6 @@ zh:
     altcha_expires_hint: 挑战保持有效的秒数（默认值：300）。
     altcha_key_generated: 新的 HMAC 密钥已成功生成。
     altcha_enabled: 启用 ALTCHA
-    altcha_captcha_not_active_warning: CAPTCHA 设置当前未激活。除非在以下位置启用 CAPTCHA，否则 ALTCHA 将不会被使用：
     generate: 生成
     meeting_link: 会议链接
     google_calendar: Google 日历

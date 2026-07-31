@@ -34,7 +34,12 @@ bu:
     delete_personal_information_setting_hint: "Позволете на клиентите да премахнат всичките си часове и лични данни от системата с един бутон."
     captcha: "Captcha"
     captcha_info: "Настройки на captcha за проверка, че посетителят е човек, преди резервация"
-    captcha_enabled_hint: "Когато е активирано, избраният captcha доставчик ще се използва вместо традиционната captcha с изображение за проверка на формуляри."
+    captcha_enabled_hint: "Когато е активирано, клиентите ще трябва да решат Captcha предизвикателство, преди да завършат резервацията; активирайте това, ако получавате много спам резервации"
+    captcha_active_customers: "Активно за клиенти"
+    captcha_active_login: "Активно за вход"
+    captcha_login_hint: "Когато е активирано, потребителите ще трябва да решат Captcha предизвикателство, преди да влязат в администрацията"
+    altcha_hmac_key_missing: "ALTCHA се нуждае от генериран HMAC ключ, преди captcha да може да бъде активирана"
+    turnstile_keys_missing: "Cloudflare Turnstile се нуждае от ключ за сайт и таен ключ, преди captcha да може да бъде активирана"
     turnstile_keys_hint: "Вземете двойка ключове (site и secret) от таблото на Cloudflare:"
     first_login_update_details: Моля, въведете нова парола и актуализирайте данните си
     embedding: Вграждане
@@ -345,8 +350,6 @@ bu:
     oops_something_went_wrong: Опааа! Нещо се обърка!Опааа! Нещо се обърка.
     ea_update_success: Системата Обновена успешно
     require_captcha: Изискване на CAPTCHA
-    require_captcha_hint: "Когато е активно, потребителя , ще трябва да въведе произволно генерирани символи за да запише или промени час. - отидете в Интеграции, за да изберете по-усъвършенстван тип Captcha"
-    captcha_is_wrong: Неуспешна CAPTCHA верификация, моля опитайте отново.
     enter_captcha_here: Въведете CAPTCHA тук...
     any_provider: Произволен Изпълнител
     requested_hour_is_unavailable: Заявеният от Вас час не е наличен. Моля изберете друг час.
@@ -574,7 +577,6 @@ bu:
     altcha_expires_hint: 'Колко дълго предизвикателството остава валидно в секунди (по подразбиране: 300).'
     altcha_key_generated: Нов HMAC ключ е генериран успешно.
     altcha_enabled: Активиране на ALTCHA
-    altcha_captcha_not_active_warning: Настройката CAPTCHA в момента не е активна. ALTCHA няма да се използва, освен ако CAPTCHA не е активирана в
     generate: Генериране
     meeting_link: Връзка за среща
     google_calendar: Google Календар

@@ -34,7 +34,12 @@ pt-br:
     delete_personal_information_setting_hint: "Permitir que os clientes removam todos os seus agendamentos e informações pessoais do sistema com um botão."
     captcha: "Captcha"
     captcha_info: "Configurações do captcha para verificar se o visitante é humano antes de agendar"
-    captcha_enabled_hint: "Quando ativado, o provedor de captcha selecionado será usado no lugar do captcha de imagem tradicional para verificação de formulários."
+    captcha_enabled_hint: "Quando ativado, os clientes precisarão resolver um desafio Captcha antes de concluir o agendamento; ative se estiver recebendo muitos agendamentos de spam"
+    captcha_active_customers: "Ativo para clientes"
+    captcha_active_login: "Ativo para login"
+    captcha_login_hint: "Quando ativado, os usuários precisarão resolver um desafio Captcha antes de entrar no painel"
+    altcha_hmac_key_missing: "O ALTCHA precisa de uma chave HMAC gerada antes que o captcha possa ser ativado"
+    turnstile_keys_missing: "O Cloudflare Turnstile precisa de uma chave do site e de uma chave secreta antes que o captcha possa ser ativado"
     turnstile_keys_hint: "Obtenha um par de chaves (site e secret) no painel da Cloudflare:"
     first_login_update_details: Digite uma nova senha e atualize seus dados
     embedding: Incorporação
@@ -345,8 +350,6 @@ pt-br:
     oops_something_went_wrong: Ops! Algo deu errado.
     ea_update_success: OpenAppointments foi atualizado com sucesso.
     require_captcha: Requer CAPTCHA
-    require_captcha_hint: "Quando habilitado, os clientes terão que digitar um código CAPTCHA gerado randomicamente antes de cadastrar/atualizar um agendamento. - vá em Integrações para escolher um tipo de Captcha mais avançado"
-    captcha_is_wrong: Verificação do CAPTCHA falhou, favor tente novamente.
     enter_captcha_here: Digite o CAPTCHA aqui...
     any_provider: Qualquer atendente
     requested_hour_is_unavailable: Infelizmente, o agendamento solicitado não está disponível. Por favor selecione um horário diferente para o seu agendamento.
@@ -574,7 +577,6 @@ pt-br:
     altcha_expires_hint: 'Por quanto tempo um desafio permanece válido em segundos (padrão: 300).'
     altcha_key_generated: Nova chave HMAC gerada com sucesso.
     altcha_enabled: Ativar ALTCHA
-    altcha_captcha_not_active_warning: A configuração CAPTCHA não está ativa no momento. O ALTCHA não será utilizado a menos que o CAPTCHA esteja ativado nas
     generate: Gerar
     meeting_link: Link da reunião
     google_calendar: Google Agenda

@@ -15,23 +15,21 @@
 
         </div>
 
-        <% if setting('require_captcha') == "1" %>
-            <% if TurnstileChallenge.enabled? %>
-                <div class="row frame-content frame-content-narrow m-auto">
-                    <div class="col text-center">
-                        <div class="cf-turnstile mb-2 d-inline-block" data-sitekey="<%= TurnstileChallenge.site_key %>"></div>
-                        <span id="turnstile-hint" class="help-block text-danger small d-block captcha-hint">&nbsp;</span>
-                    </div>
+        <% if TurnstileChallenge.enabled? %>
+            <div class="row frame-content frame-content-narrow m-auto">
+                <div class="col text-center">
+                    <div class="cf-turnstile mb-2 d-inline-block" data-sitekey="<%= TurnstileChallenge.site_key %>"></div>
+                    <span id="turnstile-hint" class="help-block text-danger small d-block captcha-hint">&nbsp;</span>
                 </div>
-            <% elsif AltchaChallenge.enabled? %>
-                <div class="row frame-content frame-content-narrow m-auto">
-                    <div class="col">
-                        <div id="altcha-widget" class="altcha-widget mb-2"></div>
-                        <input type="hidden" id="altcha-payload" value="">
-                        <span id="altcha-hint" class="help-block text-danger small captcha-hint">&nbsp;</span>
-                    </div>
+            </div>
+        <% elsif AltchaChallenge.enabled? %>
+            <div class="row frame-content frame-content-narrow m-auto">
+                <div class="col">
+                    <div id="altcha-widget" class="altcha-widget mb-2"></div>
+                    <input type="hidden" id="altcha-payload" value="">
+                    <span id="altcha-hint" class="help-block text-danger small captcha-hint">&nbsp;</span>
                 </div>
-            <% end %>
+            </div>
         <% end %>
 
     </div>

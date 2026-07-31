@@ -19,17 +19,12 @@ App.Pages.Recovery = (function () {
     const $username = $('#username');
     const $email = $('#email');
     const $getNewPassword = $('#get-new-password');
-    const $captchaText = $('.captcha-text');
-    const $captchaTitle = $('.captcha-title');
-    const $captchaHint = $('#captcha-hint');
     const $altchaPayload = $('#altcha-payload');
     const $altchaHint = $('#altcha-hint');
+    const $turnstileHint = $('#turnstile-hint');
 
-    /**
-     * Refresh the captcha image.
-     */
-    function refreshCaptcha() {
-        $('.captcha-image').attr('src', App.Utils.Url.siteUrl('captcha?' + Date.now()));
+    function turnstileToken() {
+        return $('.cf-turnstile [name="cf-turnstile-response"]').val();
     }
 
     /**
@@ -44,14 +39,16 @@ App.Pages.Recovery = (function () {
 
         $alert.addClass('d-none');
 
-        if ($captchaText.length > 0) {
-            $captchaText.removeClass('is-invalid');
-            if ($captchaText.val() === '') {
-                $captchaText.addClass('is-invalid');
-                return;
-            }
+        if ($('.cf-turnstile').length > 0 && !turnstileToken()) {
+            $turnstileHint.text(lang('turnstile_verification_failed')).fadeTo(400, 1);
+
+            setTimeout(() => {
+                $turnstileHint.fadeTo(400, 0);
+            }, 3000);
+
+            return;
         }
-        
+
         if ($altchaPayload.length > 0 && $altchaPayload.val() === '') {
             $altchaHint.text(lang('altcha_verification_failed')).fadeTo(400, 1);
             
@@ -65,27 +62,12 @@ App.Pages.Recovery = (function () {
 
         const username = $username.val();
         const email = $email.val();
-        const captcha = $captchaText.length > 0 ? $captchaText.val() : null;
         const altchaPayloadValue = $altchaPayload.length > 0 ? $altchaPayload.val() : null;
 
-        App.Http.Recovery.perform(username, email, captcha, altchaPayloadValue)
+        App.Http.Recovery.perform(username, email, altchaPayloadValue, turnstileToken())
             .done((response) => {
                 $alert.removeClass('d-none alert-danger alert-success');
 
-                if (response.captcha_verification === false) {
-                    $captchaHint.text(lang('captcha_is_wrong')).fadeTo(400, 1);
-
-                    setTimeout(() => {
-                        $captchaHint.fadeTo(400, 0);
-                    }, 3000);
-
-                    refreshCaptcha();
-
-                    $captchaText.addClass('is-invalid');
-
-                    return;
-                }
-                
                 if (response.altcha_verification === false) {
                     $altchaHint.text(lang('altcha_verification_failed')).fadeTo(400, 1);
                     
@@ -109,7 +91,6 @@ App.Pages.Recovery = (function () {
                         'The operation failed! Please enter a valid username ' +
                             'and email address in order to receive a password reset link.',
                     );
-                    refreshCaptcha();
                 }
             })
             .always(() => {
@@ -128,8 +109,6 @@ App.Pages.Recovery = (function () {
 
     $form.on('submit', onFormSubmit);
 
-    $captchaTitle.on('click', 'button', refreshCaptcha);
-    
     // Initialize ALTCHA
     initializeAltcha();
 

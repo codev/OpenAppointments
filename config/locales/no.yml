@@ -34,7 +34,12 @@
     delete_personal_information_setting_hint: "La kunder fjerne alle sine avtaler og personlige opplysninger fra systemet med en knapp."
     captcha: "Captcha"
     captcha_info: "Captcha-innstillinger for å bekrefte at besøkende er et menneske før booking"
-    captcha_enabled_hint: "Når aktivert brukes den valgte captcha-leverandøren i stedet for den tradisjonelle bilde-captchaen til skjemabekreftelse."
+    captcha_enabled_hint: "Når aktivert må kundene løse en Captcha-utfordring før de kan fullføre bestillingen; aktiver dette hvis du får mange useriøse bestillinger"
+    captcha_active_customers: "Aktiv for kunder"
+    captcha_active_login: "Aktiv for innlogging"
+    captcha_login_hint: "Når aktivert må brukere løse en Captcha-utfordring før de kan logge inn i administrasjonen"
+    altcha_hmac_key_missing: "ALTCHA trenger en generert HMAC-nøkkel før captcha kan aktiveres"
+    turnstile_keys_missing: "Cloudflare Turnstile trenger både en nettstedsnøkkel og en hemmelig nøkkel før captcha kan aktiveres"
     turnstile_keys_hint: "Hent et nøkkelpar (site og secret) fra Cloudflare-panelet:"
     first_login_update_details: Angi et nytt passord og oppdater opplysningene dine
     embedding: Innbygging
@@ -345,8 +350,6 @@
     oops_something_went_wrong: Oops! Noe gikk galt.
     ea_update_success: OpenAppointments har blitt oppdatert.
     require_captcha: Krev CAPTCHA
-    require_captcha_hint: "Når dette er aktivert, må kundene skrive inn en tilfeldig generert CAPTCHA-streng før de bestiller/oppdaterer en avtale. - gå til Integrasjoner for å velge en mer avansert Captcha-type"
-    captcha_is_wrong: CAPTCHA-bekreftelse mislyktes, vennligst prøv igjen.
     enter_captcha_here: Skriv inn CAPTCHA her...
     any_provider: Enhver leverandør
     requested_hour_is_unavailable: Den forespurte avtalen er dessverre ikke tilgjengelig. Vennligst velg en annen time for din avtale.
@@ -574,7 +577,6 @@
     altcha_expires_hint: 'Hvor lenge en utfordring forblir gyldig i sekunder (standard: 300).'
     altcha_key_generated: Ny HMAC-nøkkel generert.
     altcha_enabled: Aktiver ALTCHA
-    altcha_captcha_not_active_warning: CAPTCHA-innstillingen er ikke aktiv for øyeblikket. ALTCHA vil ikke bli brukt med mindre CAPTCHA er aktivert i
     generate: Generer
     meeting_link: Møtelenke
     google_calendar: Google Kalender

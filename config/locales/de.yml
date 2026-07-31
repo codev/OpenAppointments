@@ -34,7 +34,12 @@ de:
     delete_personal_information_setting_hint: "Kunden können mit einem Button alle ihre Termine und persönlichen Daten aus dem System entfernen."
     captcha: "Captcha"
     captcha_info: "Captcha-Einstellungen, um vor der Buchung zu prüfen, dass der Besucher ein Mensch ist"
-    captcha_enabled_hint: "Wenn aktiviert, wird der ausgewählte Captcha-Anbieter anstelle des traditionellen Bild-Captchas zur Formularprüfung verwendet."
+    captcha_enabled_hint: "Wenn aktiviert, müssen Kunden eine Captcha-Aufgabe lösen, bevor sie die Buchung abschließen können; aktivieren Sie dies bei vielen Spam-Buchungen"
+    captcha_active_customers: "Aktiv für Kunden"
+    captcha_active_login: "Aktiv für die Anmeldung"
+    captcha_login_hint: "Wenn aktiviert, müssen Benutzer eine Captcha-Aufgabe lösen, bevor sie sich im Backend anmelden können"
+    altcha_hmac_key_missing: "ALTCHA benötigt einen generierten HMAC-Schlüssel, bevor das Captcha aktiviert werden kann"
+    turnstile_keys_missing: "Cloudflare Turnstile benötigt einen Site-Schlüssel und einen geheimen Schlüssel, bevor das Captcha aktiviert werden kann"
     turnstile_keys_hint: "Ein Schlüsselpaar (Site-Key und Secret-Key) erhalten Sie im Cloudflare-Dashboard:"
     first_login_update_details: Bitte geben Sie ein neues Passwort ein und aktualisieren Sie Ihre Daten
     embedding: Einbettung
@@ -345,8 +350,6 @@ de:
     oops_something_went_wrong: Oops! Etwas ist schiefgelaufen.
     ea_update_success: OpenAppointments wurde erfolgreich aktualisiert.
     require_captcha: CAPTCHA erfordern
-    require_captcha_hint: "Wenn aktiv, werden die Kunden aufgefordert, eine zufällig generierte Zeichenfolge (CAPTCHA) einzutippen bevor Sie einen Termin buchen oder speichern können. - unter Integrationen können Sie einen fortschrittlicheren Captcha-Typ wählen"
-    captcha_is_wrong: CAPTCHA-Überprüfung fehlgeschlagen, bitte versuchen Sie es erneut.
     enter_captcha_here: CAPTCHA hier eingeben...
     any_provider: Jeder Anbieter
     requested_hour_is_unavailable: Der gewünschte Termin ist leider nicht verfügbar. Bitte wählen Sie eine andere Zeit für den Termin.
@@ -574,7 +577,6 @@ de:
     altcha_expires_hint: 'Wie lange eine Herausforderung in Sekunden gültig bleibt (Standard: 300).'
     altcha_key_generated: Neuer HMAC-Schlüssel erfolgreich generiert.
     altcha_enabled: ALTCHA aktivieren
-    altcha_captcha_not_active_warning: Die CAPTCHA-Einstellung ist derzeit nicht aktiv. ALTCHA wird nicht verwendet, wenn CAPTCHA nicht aktiviert ist in den
     generate: Generieren
     meeting_link: Meeting-Link
     google_calendar: Google Kalender

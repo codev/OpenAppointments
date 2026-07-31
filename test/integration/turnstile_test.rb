@@ -5,7 +5,6 @@ class TurnstileTest < ActionDispatch::IntegrationTest
   VERIFY_URL = "https://challenges.cloudflare.com/turnstile/v0/siteverify".freeze
 
   def enable_turnstile
-    Setting.set("require_captcha", "1")
     Setting.set("altcha_enabled", "1")
     Setting.set("captcha_provider", "turnstile")
     Setting.set("turnstile_site_key", "sitekey")
@@ -29,7 +28,7 @@ class TurnstileTest < ActionDispatch::IntegrationTest
     end
   end
 
-  test "enabled only with captcha on, active, provider turnstile and both keys" do
+  test "enabled only with the customer switch on, provider turnstile and both keys" do
     assert_not TurnstileChallenge.enabled?
     enable_turnstile
     assert TurnstileChallenge.enabled?
@@ -42,7 +41,6 @@ class TurnstileTest < ActionDispatch::IntegrationTest
   end
 
   test "altcha keeps working when it is the provider" do
-    Setting.set("require_captcha", "1")
     Setting.set("altcha_enabled", "1")
     Setting.set("altcha_hmac_key", "k")
     assert AltchaChallenge.enabled?
@@ -50,6 +48,27 @@ class TurnstileTest < ActionDispatch::IntegrationTest
 
     Setting.set("captcha_provider", "turnstile")
     assert_not AltchaChallenge.enabled?
+  end
+
+  test "login is gated by Turnstile when active for login" do
+    Setting.set("captcha_login_enabled", "1")
+    Setting.set("captcha_provider", "turnstile")
+    Setting.set("turnstile_site_key", "sitekey")
+    Setting.set("turnstile_secret_key", "secretkey")
+
+    get "/login"
+    assert_select ".cf-turnstile[data-sitekey=?]", "sitekey"
+    assert_select "#altcha-widget", count: 0
+
+    stub_request(:post, VERIFY_URL).to_return(body: { success: false }.to_json)
+    post "/login/validate", params: { username: "administrator", password: "administrator1",
+                                      cf_turnstile_response: "bad" }
+    assert_equal false, response.parsed_body["turnstile_verification"]
+
+    stub_request(:post, VERIFY_URL).to_return(body: { success: true }.to_json)
+    post "/login/validate", params: { username: "administrator", password: "administrator1",
+                                      cf_turnstile_response: "good" }
+    assert_equal true, response.parsed_body["success"]
   end
 
   test "verify posts to siteverify and honours the answer" do
@@ -131,7 +150,7 @@ class TurnstileTest < ActionDispatch::IntegrationTest
   test "the new strings exist in every locale" do
     I18n.available_locales.each do |locale|
       %w[captcha_provider turnstile_site_key turnstile_secret_key turnstile_verification_failed
-         captcha captcha_info captcha_enabled_hint turnstile_keys_hint
+         captcha captcha_info turnstile_keys_hint
          turnstile_keys_hint_after].each do |key|
         assert I18n.t("ea.#{key}", locale: locale, fallback: false, default: nil).present?,
                "missing ea.#{key} in #{locale}"

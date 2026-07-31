@@ -28,7 +28,6 @@ App.Pages.Booking = (function () {
     const $city = $('#city');
     const $zipCode = $('#zip-code');
     const $notes = $('#notes');
-    const $captchaTitle = $('.captcha-title');
     const $availableHours = $('#available-hours');
     const $bookAppointmentSubmit = $('#book-appointment-submit');
     const $deletePersonalInformation = $('#delete-personal-information');
@@ -860,13 +859,6 @@ App.Pages.Booking = (function () {
             }
 
             App.Http.Booking.registerAppointment();
-        });
-
-        /**
-         * Event: Refresh captcha image.
-         */
-        $captchaTitle.on('click', 'button', () => {
-            $('.captcha-image').attr('src', App.Utils.Url.siteUrl('captcha?' + Date.now()));
         });
 
         $selectDate.on('mousedown', '.ui-datepicker-calendar td', () => {

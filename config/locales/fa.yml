@@ -34,7 +34,12 @@ fa:
     delete_personal_information_setting_hint: "به مشتریان اجازه دهید با یک دکمه همه نوبت‌ها و اطلاعات شخصی خود را از سیستم حذف کنند."
     captcha: "Captcha"
     captcha_info: "تنظیمات کپچا برای تأیید انسان بودن بازدیدکننده پیش از رزرو"
-    captcha_enabled_hint: "در صورت فعال بودن، ارائه‌دهنده کپچای انتخاب‌شده به جای کپچای تصویری سنتی برای تأیید فرم‌ها استفاده می‌شود."
+    captcha_enabled_hint: "در صورت فعال بودن، مشتریان باید قبل از تکمیل رزرو یک چالش کپچا را حل کنند؛ اگر رزروهای هرز زیادی دارید این گزینه را فعال کنید"
+    captcha_active_customers: "فعال برای مشتریان"
+    captcha_active_login: "فعال برای ورود"
+    captcha_login_hint: "در صورت فعال بودن، کاربران باید قبل از ورود به بخش مدیریت یک چالش کپچا را حل کنند"
+    altcha_hmac_key_missing: "ALTCHA پیش از فعال شدن کپچا به یک کلید HMAC تولیدشده نیاز دارد"
+    turnstile_keys_missing: "Cloudflare Turnstile پیش از فعال شدن کپچا به کلید سایت و کلید مخفی نیاز دارد"
     turnstile_keys_hint: "یک جفت کلید (site و secret) از داشبورد Cloudflare دریافت کنید:"
     first_login_update_details: لطفاً رمز عبور جدیدی وارد کنید و اطلاعات خود را به‌روزرسانی کنید
     embedding: جاسازی
@@ -345,8 +350,6 @@ fa:
     oops_something_went_wrong: اوه. مشکلی پیش آمد!
     ea_update_success: OpenAppointments با موفقیت به روز رسانی شد
     require_captcha: کد امنیتی لازم است
-    require_captcha_hint: "بعد از فعال کردن این گزینه، کاربران قبل از ایجاد یا تغییر یک قرار ملاقات، باید یک کد امنیتی شامل حروف تصادفی را تشخیص دهند. - برای انتخاب نوع Captcha پیشرفته‌تر به بخش یکپارچه‌سازی‌ها بروید"
-    captcha_is_wrong: کد امنیتی صحیح نمی باشد. لطفا مجددا سعی کنید
     enter_captcha_here: کد CAPTCHA را اینجا وارد کنید...
     any_provider: هر ارائه‌دهنده‌ای
     requested_hour_is_unavailable: متاسفانه ملاقات در زمان درخواستی امکانپذیر نمی باشد. لطفا ساعتی دیگر برای قرار خود انتخاب کنید
@@ -574,7 +577,6 @@ fa:
     altcha_expires_hint: 'مدت زمانی که یک چالش به ثانیه معتبر باقی می‌ماند (پیش‌فرض: 300).'
     altcha_key_generated: کلید HMAC جدید با موفقیت ایجاد شد.
     altcha_enabled: فعال‌سازی ALTCHA
-    altcha_captcha_not_active_warning: تنظیم CAPTCHA در حال حاضر فعال نیست. ALTCHA استفاده نخواهد شد مگر اینکه CAPTCHA در تنظیمات فعال شود
     generate: ایجاد
     meeting_link: لینک جلسه
     google_calendar: تقویم گوگل
