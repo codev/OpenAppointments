@@ -51,7 +51,10 @@ module Messaging
           host: ENV["IMAP_HOST"].presence,
           port: ENV.fetch("IMAP_PORT", "993").to_i,
           username: ENV["IMAP_USERNAME"].presence,
-          password: ENV["IMAP_PASSWORD"].presence
+          password: ENV["IMAP_PASSWORD"].presence,
+          # The internal mail host's certificate names the public mail domain,
+          # not the addon alias, so hostname verification cannot pass.
+          verify_tls: false
         }
       else
         {

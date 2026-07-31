@@ -413,7 +413,7 @@ App.Pages.Customers = (function () {
                     // Timezone
 
                     $('<small/>', {
-                        'text': vars('timezones')[appointment.provider.timezone],
+                        'text': (vars('timezones') || {})[appointment.provider.timezone] || appointment.provider.timezone,
                     }),
                 ],
             }).appendTo('#customer-appointments');

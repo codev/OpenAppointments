@@ -23,7 +23,8 @@ export SMTP_FROM="${CLOUDRON_MAIL_FROM:-}"
 
 # Recvmail addon -> IMAP env for "Receive email through server" (Messages > Providers > Email).
 export IMAP_HOST="${CLOUDRON_MAIL_IMAP_SERVER:-}"
-export IMAP_PORT="${CLOUDRON_MAIL_IMAP_PORT:-993}"
+# Prefer the implicit-TLS IMAPS port; CLOUDRON_MAIL_IMAP_PORT is the plaintext one.
+export IMAP_PORT="${CLOUDRON_MAIL_IMAPS_PORT:-${CLOUDRON_MAIL_IMAP_PORT:-993}}"
 export IMAP_USERNAME="${CLOUDRON_MAIL_IMAP_USERNAME:-${CLOUDRON_MAIL_SMTP_USERNAME:-}}"
 export IMAP_PASSWORD="${CLOUDRON_MAIL_IMAP_PASSWORD:-${CLOUDRON_MAIL_SMTP_PASSWORD:-}}"
 

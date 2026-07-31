@@ -26,7 +26,8 @@ class FetchImapEmailsJob < ApplicationJob
   private
 
   def each_imap_message_id(config)
-    imap = Net::IMAP.new(config[:host], port: config[:port], ssl: true)
+    ssl = config[:verify_tls] == false ? { verify_mode: OpenSSL::SSL::VERIFY_NONE } : true
+    imap = Net::IMAP.new(config[:host], port: config[:port], ssl: ssl)
     imap.login(config[:username], config[:password])
     begin
       imap.select("INBOX")

@@ -30,6 +30,7 @@ class CustomersController < ApplicationController
     backend_page_vars(page_title: helpers.lang("customers"), active_menu: "customers")
     script_vars(
       assistant_providers: assistant_provider_ids,
+      timezones: helpers.timezones,
       message_channels: Messaging.enabled_channels.map { |channel| { key: channel.key, label: channel.label } }
     )
     html_vars(
