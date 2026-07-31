@@ -6,6 +6,7 @@ CloudronManifest.json.
 ## 1.4.1
 
 - Fix receiving email through the server: connect to the mail server's TLS IMAP port
+- Fix clicking a customer doing nothing when the customer has appointment history
 
 ## 1.4.0
 
