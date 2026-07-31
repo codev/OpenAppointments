@@ -47,14 +47,16 @@ class ImportController < ApplicationController
     }
   end
 
-  # GET /import/download_backup?name=... - admin-gated backup download.
+  # GET /import/download_backup?name=... - admin-gated backup download. The
+  # served name comes from the backup listing, never from the parameter.
   def download_backup
-    name = params[:name].to_s
-    path = BackupExport.dir.join(name)
-    raise ArgumentError, "Unknown backup." unless BackupExport.valid_name?(name) && File.exist?(path)
+    requested = params[:name].to_s
+    name = BackupExport.list.flat_map { |backup| backup[:files].values }
+                       .find { |candidate| candidate == requested }
+    raise ArgumentError, "Unknown backup." unless name
 
-    send_file path, filename: name,
-                    type: name.end_with?(".zip") ? "application/zip" : Ods::MIMETYPE
+    send_file BackupExport.dir.join(name), filename: name,
+                                           type: name.end_with?(".zip") ? "application/zip" : Ods::MIMETYPE
   rescue ArgumentError => e
     json_exception(e)
   end
