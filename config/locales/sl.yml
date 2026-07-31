@@ -472,6 +472,13 @@ sl:
     google_analytics_info: Google Analytics vam omogoča samodejno dodajanje kode za sledenje in oznake HTML na javno stran ter sledenje vsem javnim rezervacijskim sejam.
     matomo_analytics: Matomo Analytics
     matomo_analytics_info: Matomo Analytics vam omogoča samodejno dodajanje kode za sledenje in oznake HTML na javno stran ter sledenje vsem javnim rezervacijskim sejam.
+    umami_analytics: "Umami Analytics"
+    umami_analytics_info: "Umami Analytics je zasebnosti prijazna alternativa Google Analytics; povezite lastno instanco Umami za sledenje javnim stranem za rezervacije."
+    umami_analytics_url: "Umami URL"
+    umami_analytics_url_hint: "Dodajte URL svoje namestitve Umami, da omogocite sledenje na straneh za rezervacije."
+    umami_analytics_website_id: "ID spletnega mesta"
+    umami_analytics_recorder: "Posnetki in toplotne karte"
+    umami_analytics_recorder_hint: "Ko je omogoceno, se nalozi tudi skripta Umami recorder za zajem posnetkov sej in toplotnih kart."
     api: API
     api_info: API vam omogoča interakcijo z vsemi podatki OpenAppointments prek protokola HTTP in razpoložljivih končnih točk API ter ustvarjanje lastnih integracij.
     google_analytics_code: Koda Google Analytics

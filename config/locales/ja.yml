@@ -472,6 +472,13 @@ ja:
     google_analytics_info: Google Analyticsを使用すると、トラッキングコードとHTMLマークアップを自動的にパブリックページに追加し、すべてのパブリック予約セッションを追跡できます。
     matomo_analytics: Matomo アナリティクス
     matomo_analytics_info: Matomo Analyticsを使用すると、トラッキングコードとHTMLマークアップを自動的にパブリックページに追加し、すべてのパブリック予約セッションを追跡できます。
+    umami_analytics: "Umami Analytics"
+    umami_analytics_info: "Umami Analyticsはプライバシーに配慮したGoogle Analyticsの代替です。独自のUmamiインスタンスを接続して公開予約ページをトラッキングします。"
+    umami_analytics_url: "Umami URL"
+    umami_analytics_url_hint: "予約ページのトラッキングを有効にするには、UmamiインストールのURLを追加してください。"
+    umami_analytics_website_id: "ウェブサイトID"
+    umami_analytics_recorder: "リプレイとヒートマップ"
+    umami_analytics_recorder_hint: "有効にすると、セッションのリプレイとヒートマップを記録するためにUmamiレコーダースクリプトも読み込まれます。"
     api: API
     api_info: APIを使用すると、HTTPプロトコルおよび利用可能なAPIエンドポイントを介してすべてのOpenAppointmentsデータと対話し、独自の統合を作成できます。
     google_analytics_code: Google Analytics コード

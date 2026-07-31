@@ -472,6 +472,13 @@ sv:
     google_analytics_info: Google Analytics lägger automatiskt till spårningskod och taggar på din bokningssida så att du kan följa alla besök och bokningar.
     matomo_analytics: Matomo Analytics
     matomo_analytics_info: Matomo Analytics lägger automatiskt till spårningskod och taggar på din bokningssida så att du kan följa alla besök och bokningar.
+    umami_analytics: "Umami Analytics"
+    umami_analytics_info: "Umami Analytics ar ett integritetsvanligt alternativ till Google Analytics; anslut din egen Umami-instans for att spara de offentliga bokningssidorna."
+    umami_analytics_url: "Umami URL"
+    umami_analytics_url_hint: "Lagg till URL:en till din Umami-installation for att aktivera sparning pa bokningssidorna."
+    umami_analytics_website_id: "Webbplats-ID"
+    umami_analytics_recorder: "Uppspelningar och varmekartor"
+    umami_analytics_recorder_hint: "Nar aktiverat laddas aven Umami recorder-skriptet for att fanga sessionsuppspelningar och varmekartor."
     api: API
     api_info: API:et ger dig åtkomst till all data via HTTP, vilket gör det möjligt att bygga egna integrationer och lösningar.
     google_analytics_code: Google Analytics Spårnings-ID

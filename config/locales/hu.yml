@@ -472,6 +472,13 @@ hu:
     google_analytics_info: A Google Analytics lehetővé teszi, hogy automatikusan hozzáadja a nyomkövető kódot és a HTML markupot a nyilvános oldalhoz, és nyomon kövesse az összes nyilvános foglalási munkamenetet.
     matomo_analytics: Matomo Analytics
     matomo_analytics_info: A Matomo Analytics lehetővé teszi, hogy automatikusan hozzáadja a nyomkövető kódot és a HTML markupot a nyilvános oldalhoz, és nyomon kövesse az összes nyilvános foglalási munkamenetet.
+    umami_analytics: "Umami Analytics"
+    umami_analytics_info: "Az Umami Analytics a Google Analytics adatvedelembarat alternativaja; kapcsolja oessze sajat Umami peldanyat a nyilvanos foglalasi oldalak koevetesehez."
+    umami_analytics_url: "Umami URL"
+    umami_analytics_url_hint: "Adja meg az Umami telepites URL-jet a koevetes engedelyezesehez a foglalasi oldalakon."
+    umami_analytics_website_id: "Webhely-azonosito"
+    umami_analytics_recorder: "Visszajatszasok es hoterkepekk"
+    umami_analytics_recorder_hint: "Ha engedelyezve van, az Umami recorder szkript is betoeltoedik a munkamenet-visszajatszasokhoz es hoterkepekhez."
     api: API
     api_info: Az API lehetővé teszi, hogy HTTP protokollon keresztül és az elérhető API végpontokon keresztül kapcsolatba lépjen az OpenAppointments összes adatával és saját integrációkat hozzon létre.
     google_analytics_code: Google Analytics Kód

@@ -472,6 +472,13 @@ tr:
     google_analytics_info: Google Analytics, izleme kodunu ve HTML işaretlemesini otomatik olarak eklemenizi ve tüm halka açık rezervasyon oturumlarını takip etmenizi sağlar.
     matomo_analytics: Matomo Analytics
     matomo_analytics_info: Matomo Analytics, izleme kodunu ve HTML işaretlemesini otomatik olarak eklemenizi ve tüm halka açık rezervasyon oturumlarını takip etmenizi sağlar.
+    umami_analytics: "Umami Analytics"
+    umami_analytics_info: "Umami Analytics, Google Analytics'e gizlilik dostu bir alternatiftir; genel rezervasyon sayfalarini izlemek icin kendi Umami sunucunuzu baglayin."
+    umami_analytics_url: "Umami URL"
+    umami_analytics_url_hint: "Rezervasyon sayfalarinda izlemeyi etkinlestirmek icin Umami kurulumunuzun URL'sini ekleyin."
+    umami_analytics_website_id: "Web sitesi kimligi"
+    umami_analytics_recorder: "Tekrarlar ve isi haritalari"
+    umami_analytics_recorder_hint: "Etkinlestirildiginde, oturum tekrarlarini ve isi haritalarini yakalamak icin Umami kaydedici betigi de yuklenir."
     api: API
     api_info: API’ler, HTTP protokolü ve mevcut API uç noktaları aracılığıyla tüm OpenAppointments verileriyle etkileşime geçmenizi sağlar ve kendi entegrasyonlarınızı oluşturmanıza olanak tanır.
     google_analytics_code: Google Analytics Kodu

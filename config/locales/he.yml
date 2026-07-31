@@ -472,6 +472,13 @@ he:
     google_analytics_info: Google Analytics מאפשרים לך להוסיף אוטומטית את קוד המעקב והסימון HTML לעמוד הציבורי ולעקוב אחר כל הסשנים הציבוריים של ההזמנה.
     matomo_analytics: Matomo Analytics
     matomo_analytics_info: Matomo Analytics מאפשרים לך להוסיף אוטומטית את קוד המעקב והסימון HTML לעמוד הציבורי ולעקוב אחר כל הסשנים הציבוריים של ההזמנה.
+    umami_analytics: "Umami Analytics"
+    umami_analytics_info: "Umami Analytics היא חלופה ידידותית לפרטיות ל-Google Analytics; חברו מופע Umami משלכם למעקב אחר דפי ההזמנות הציבוריים."
+    umami_analytics_url: "Umami URL"
+    umami_analytics_url_hint: "הוסיפו את כתובת ה-URL של התקנת Umami שלכם כדי להפעיל מעקב בדפי ההזמנות."
+    umami_analytics_website_id: "מזהה אתר"
+    umami_analytics_recorder: "הקלטות ומפות חום"
+    umami_analytics_recorder_hint: "כאשר מופעל, נטען גם סקריפט המקליט של Umami ללכידת הקלטות ומפות חום."
     api: API
     api_info: API מאפשרים לך אינטראקציה עם כל הנתונים של OpenAppointments דרך פרוטוקול HTTP וה-endpoints הזמינים וליצור אינטגרציות משלך.
     google_analytics_code: קוד Google Analytics

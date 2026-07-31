@@ -472,6 +472,13 @@ nl:
     google_analytics_info: Google Analytics stelt je in staat om automatisch de trackingcode en HTML-markup aan de openbare pagina toe te voegen en alle openbare boekingssessies te volgen.
     matomo_analytics: Matomo Analytics
     matomo_analytics_info: Matomo Analytics stelt je in staat om automatisch de trackingcode en HTML-markup aan de openbare pagina toe te voegen en alle openbare boekingssessies te volgen.
+    umami_analytics: "Umami Analytics"
+    umami_analytics_info: "Umami Analytics is een privacyvriendelijk alternatief voor Google Analytics; koppel uw eigen Umami-instantie om de openbare boekingspagina's te volgen."
+    umami_analytics_url: "Umami URL"
+    umami_analytics_url_hint: "Voeg de URL van uw Umami-installatie toe om tracking op de boekingspagina's in te schakelen."
+    umami_analytics_website_id: "Website-ID"
+    umami_analytics_recorder: "Replays en heatmaps"
+    umami_analytics_recorder_hint: "Indien ingeschakeld wordt ook het Umami-recorderscript geladen om sessiereplays en heatmaps vast te leggen."
     api: API
     api_info: API stelt je in staat om via het HTTP-protocol met alle OpenAppointments-gegevens te communiceren en je eigen integraties te maken met de beschikbare API-eindpunten.
     google_analytics_code: Google Analytics-code

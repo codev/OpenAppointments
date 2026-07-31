@@ -472,6 +472,13 @@ th:
     google_analytics_info: Google Analytics ช่วยให้คุณสามารถเพิ่มโค้ดติดตามและมาร์กอัป HTML ลงในหน้าสาธารณะได้โดยอัตโนมัติ และติดตามเซสชันการจองสาธารณะทั้งหมด
     matomo_analytics: Matomo Analytics
     matomo_analytics_info: Matomo Analytics ช่วยให้คุณสามารถเพิ่มโค้ดติดตามและมาร์กอัป HTML ลงในหน้าสาธารณะได้โดยอัตโนมัติ และติดตามเซสชันการจองสาธารณะทั้งหมด
+    umami_analytics: "Umami Analytics"
+    umami_analytics_info: "Umami Analytics เป็นทางเลือกที่เป็นมิตรต่อความเป็นส่วนตัวแทน Google Analytics เชื่อมต่ออินสแตนซ์ Umami ของคุณเพื่อติดตามหน้าจองสาธารณะ"
+    umami_analytics_url: "Umami URL"
+    umami_analytics_url_hint: "เพิ่ม URL ของการติดตั้ง Umami ของคุณเพื่อเปิดใช้การติดตามบนหน้าจอง"
+    umami_analytics_website_id: "รหัสเว็บไซต์"
+    umami_analytics_recorder: "รีเพลย์และฮีตแมป"
+    umami_analytics_recorder_hint: "เมื่อเปิดใช้งาน สคริปต์ Umami recorder จะถูกโหลดด้วยเพื่อบันทึกรีเพลย์ของเซสชันและฮีตแมป"
     api: เอพีไอ
     api_info: API ช่วยให้คุณสามารถโต้ตอบกับข้อมูล OpenAppointments ทั้งหมดผ่านโปรโตคอล HTTP และจุดสิ้นสุด API ที่มีอยู่ และสร้างการผสานรวมของคุณเอง
     google_analytics_code: รหัส Google Analytics

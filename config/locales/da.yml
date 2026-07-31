@@ -472,6 +472,13 @@ da:
     google_analytics_info: Google Analytics giver dig mulighed for automatisk at tilføje sporingskoden og HTML-markup til den offentlige side og spore alle de offentlige bookingsessioner.
     matomo_analytics: Matomo Analytics
     matomo_analytics_info: Matomo Analytics giver dig mulighed for automatisk at tilføje sporingskoden og HTML-markup til den offentlige side og spore alle de offentlige bookingsessioner.
+    umami_analytics: "Umami Analytics"
+    umami_analytics_info: "Umami Analytics er et privatlivsvenligt alternativ til Google Analytics; forbind din egen Umami-instans for at spore de offentlige bookingsider."
+    umami_analytics_url: "Umami URL"
+    umami_analytics_url_hint: "Tilfoej URL'en til din Umami-installation for at aktivere sporing paa bookingsiderne."
+    umami_analytics_website_id: "Website-ID"
+    umami_analytics_recorder: "Afspilninger og heatmaps"
+    umami_analytics_recorder_hint: "Naar aktiveret indlaeses Umami recorder-scriptet ogsaa for at optage sessioner og heatmaps."
     api: API
     api_info: API giver dig mulighed for at interagere med alle OpenAppointments-data via HTTP-protokollen og de tilgængelige API-endepunkter og oprette dine egne integrationer.
     google_analytics_code: Google Analytics Kode

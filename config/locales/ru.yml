@@ -472,6 +472,13 @@ ru:
     google_analytics_info: Google Аналитика позволяет автоматически добавлять код отслеживания и HTML-разметку на публичную страницу и отслеживать все публичные сеансы бронирования.
     matomo_analytics: Matomo Аналитика
     matomo_analytics_info: Matomo Аналитика позволяет автоматически добавлять код отслеживания и HTML-разметку на публичную страницу и отслеживать все публичные сеансы бронирования.
+    umami_analytics: "Umami Analytics"
+    umami_analytics_info: "Umami Analytics — это дружественная к приватности альтернатива Google Analytics; подключите собственный сервер Umami для отслеживания публичных страниц бронирования."
+    umami_analytics_url: "Umami URL"
+    umami_analytics_url_hint: "Добавьте URL вашей установки Umami, чтобы включить отслеживание на страницах бронирования."
+    umami_analytics_website_id: "ID сайта"
+    umami_analytics_recorder: "Записи и тепловые карты"
+    umami_analytics_recorder_hint: "Если включено, также загружается скрипт Umami recorder для записи сеансов и тепловых карт."
     api: API
     api_info: API позволяют вам взаимодействовать со всеми данными OpenAppointments через протокол HTTP и доступные конечные точки API и создавать собственные интеграции.
     google_analytics_code: Код Google Аналитики

@@ -472,6 +472,13 @@ fi:
     google_analytics_info: Tämä mahdollistaa julkisen sivun ja julkisen varaustoiminnan analytiikan Google Analytics:ssä.
     matomo_analytics: Matomo Analytics
     matomo_analytics_info: Tämä mahdollistaa julkisen sivun ja julkisen varaustoiminnan analytiikan Matomo Analytics:ssä.
+    umami_analytics: "Umami Analytics"
+    umami_analytics_info: "Umami Analytics on yksityisyysystaevaellinen vaihtoehto Google Analyticsille; yhdistae oma Umami-asennuksesi julkisten varaussivujen seurantaan."
+    umami_analytics_url: "Umami URL"
+    umami_analytics_url_hint: "Lisaeae Umami-asennuksesi URL ottaaksesi seurannan kaeyttoeoen varaussivuilla."
+    umami_analytics_website_id: "Sivuston tunnus"
+    umami_analytics_recorder: "Toistot ja laempoekartat"
+    umami_analytics_recorder_hint: "Kun kaeytoessae, myoes Umami recorder -skripti ladataan istuntojen toistoja ja laempoekarttoja varten."
     api: API
     api_info: Tämä mahdollistaa kaiken OpenAppointments -datan käsittelyn HTTP-protokollan ja API-rajapinnan kautta. Tällä voit luoda omia integraatioita järjestelmään.
     google_analytics_code: Google Analytics -koodi

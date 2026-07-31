@@ -1,0 +1,11 @@
+<%# Umami Analytics head scripts, plus the recorder when replays and heatmaps are on. %>
+<%
+  umami_url = setting("umami_analytics_url").to_s.strip.chomp("/")
+  umami_website_id = setting("umami_analytics_website_id").to_s.strip
+%>
+<% if umami_url.present? && umami_website_id.present? %>
+    <script defer src="<%= umami_url %>/script.js" data-website-id="<%= umami_website_id %>"></script>
+    <% if setting("umami_analytics_recorder") == "1" %>
+        <script defer src="<%= umami_url %>/recorder.js" data-website-id="<%= umami_website_id %>"></script>
+    <% end %>
+<% end %>

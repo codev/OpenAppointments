@@ -472,6 +472,13 @@ sq:
     google_analytics_info: Google Analytics ju lejon të shtoni automatikisht kodin e gjurmimit dhe shënimin HTML në faqen publike dhe të gjurmoni të gjitha seancat publike të rezervimit.
     matomo_analytics: Matomo Analytics
     matomo_analytics_info: Matomo Analytics ju lejon të shtoni automatikisht kodin e gjurmimit dhe shënimin HTML në faqen publike dhe të gjurmoni të gjitha seancat publike të rezervimit.
+    umami_analytics: "Umami Analytics"
+    umami_analytics_info: "Umami Analytics eshte nje alternative miqesore ndaj privatesise per Google Analytics; lidhni instancen tuaj Umami per te ndjekur faqet publike te rezervimeve."
+    umami_analytics_url: "Umami URL"
+    umami_analytics_url_hint: "Shtoni URL-ne e instalimit tuaj Umami per te aktivizuar ndjekjen ne faqet e rezervimeve."
+    umami_analytics_website_id: "ID e faqes"
+    umami_analytics_recorder: "Riprodhime dhe harta nxehtesie"
+    umami_analytics_recorder_hint: "Kur aktivizohet, ngarkohet edhe skripti Umami recorder per te kapur riprodhime seancash dhe harta nxehtesie."
     api: API
     api_info: API ju lejon të ndërveproni me të gjitha të dhënat e OpenAppointments nëpërmjet protokollit HTTP dhe pikave të disponueshme të API-së dhe të krijoni integrimet tuaja.
     google_analytics_code: Kodi i Google Analytics

@@ -10,7 +10,7 @@ class IntegrationsPageTest < ActionDispatch::IntegrationTest
     login_admin
     get "/integrations"
     assert_response :success
-    assert_select ".integration-status", count: 9
+    assert_select ".integration-status", count: 10
   end
 
   test "statuses reflect the settings with a tick when active" do
@@ -29,7 +29,7 @@ class IntegrationsPageTest < ActionDispatch::IntegrationTest
     get "/integrations"
     assert_select ".integration-status", text: /\p{So}/, count: 4
     assert_select ".integration-status", text: /2 #{I18n.t('ea.webhooks')}/
-    assert_select ".integration-status", text: /^#{I18n.t('ea.not_active')}$/, count: 5
+    assert_select ".integration-status", text: /^#{I18n.t('ea.not_active')}$/, count: 6
   end
 
   test "captcha counts as active with only the login switch on" do

@@ -472,6 +472,13 @@ lb:
     google_analytics_info: Google Analytics erméiglecht Iech automatesch de Tracking Code an HTML Markup op der ëffentlecher Säit derbäizesetzen an all ëffentlech Buchungssitzungen ze verfollegen.
     matomo_analytics: Matomo Analytics
     matomo_analytics_info: Matomo Analytics erméiglecht Iech automatesch de Tracking Code an HTML Markup op der ëffentlecher Säit derbäizesetzen an all ëffentlech Buchungssitzungen ze verfollegen.
+    umami_analytics: "Umami Analytics"
+    umami_analytics_info: "Umami Analytics ass eng dateschutzfrendlech Alternativ zu Google Analytics; verbannt Aer eegen Umami-Instanz fir déi ëffentlech Reservatiounssaiten ze verfolgen."
+    umami_analytics_url: "Umami URL"
+    umami_analytics_url_hint: "Setzt d'URL vun Aerer Umami-Installatioun derbaei fir d'Verfolgung op de Reservatiounssaiten z'aktivéieren."
+    umami_analytics_website_id: "Websait-ID"
+    umami_analytics_recorder: "Replays an Heatmaps"
+    umami_analytics_recorder_hint: "Wann aktivéiert, gëtt och den Umami-Recorder-Skript geluede fir Sessiouns-Replays an Heatmaps opzehuelen."
     api: API
     api_info: API erméiglecht Iech, mat allen Daten vun OpenAppointments via den HTTP Protokoll an déi verfügbar API Endpunkten ze interagéieren an Är eege Integratiounen ze schafen.
     google_analytics_code: Google Analytics Code

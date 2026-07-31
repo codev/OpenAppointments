@@ -472,6 +472,13 @@ pl:
     google_analytics_info: Google Analytics umożliwia automatyczne dodanie kodu śledzenia i znaczników HTML na stronie publicznej oraz śledzenie wszystkich publicznych sesji rezerwacji.
     matomo_analytics: Matomo Analytics
     matomo_analytics_info: Matomo Analytics umożliwia automatyczne dodanie kodu śledzenia i znaczników HTML na stronie publicznej oraz śledzenie wszystkich publicznych sesji rezerwacji.
+    umami_analytics: "Umami Analytics"
+    umami_analytics_info: "Umami Analytics to przyjazna prywatnosci alternatywa dla Google Analytics; podlacz wlasna instancje Umami, aby sledzic publiczne strony rezerwacji."
+    umami_analytics_url: "Umami URL"
+    umami_analytics_url_hint: "Dodaj adres URL swojej instalacji Umami, aby wlaczyc sledzenie na stronach rezerwacji."
+    umami_analytics_website_id: "ID witryny"
+    umami_analytics_recorder: "Nagrania i mapy cieplne"
+    umami_analytics_recorder_hint: "Po wlaczeniu ladowany jest takze skrypt Umami recorder do rejestrowania nagran sesji i map cieplnych."
     api: API
     api_info: API umożliwia interakcję ze wszystkimi danymi OpenAppointments za pomocą protokołu HTTP oraz dostępnych punktów końcowych API i tworzenie własnych integracji.
     google_analytics_code: Kod Google Analytics

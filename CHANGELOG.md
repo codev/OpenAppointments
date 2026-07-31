@@ -12,6 +12,7 @@ CloudronManifest.json.
 - Remove the legacy image captcha code left from the port
 - Integrations page shows a status line per integration with a tick when active; webhooks show their count
 - Theme settings show live preview cards for every theme, rendered with the current brand colours
+- Umami Analytics integration: own instance URL and Website ID, optional session replays and heatmaps recorder
 
 ## 1.3.2
 

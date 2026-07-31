@@ -75,8 +75,8 @@ Rails.application.routes.draw do
 
   # Settings pages
   %w[general_settings business_settings booking_settings theme_settings legal_settings api_settings
-     altcha_settings embed_settings google_calendar_settings google_analytics_settings
-     matomo_analytics_settings jitsi_settings ldap_settings
+     altcha_settings embed_settings google_calendar_settings umami_analytics_settings
+     google_analytics_settings matomo_analytics_settings jitsi_settings ldap_settings
      messages_settings messages_email_settings messages_twilio_settings
      messages_plivo_settings messages_textanywhere_settings].each do |resource|
     get resource => "#{resource}#index"

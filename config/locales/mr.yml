@@ -472,6 +472,13 @@ mr:
     google_analytics_info: गूगल अॅनालिटिक्स तुम्हाला ट्रॅकिंग कोड आणि HTML मार्कअप सार्वजनिक पृष्ठावर स्वयंचलितपणे जोडण्याची आणि सर्व सार्वजनिक बुकिंग सत्रांचे ट्रॅकिंग करण्याची अनुमती देतात.
     matomo_analytics: मॅटोमो अॅनालिटिक्स
     matomo_analytics_info: Matomo अॅनालिटिक्स तुम्हाला ट्रॅकिंग कोड आणि HTML मार्कअप सार्वजनिक पृष्ठावर स्वयंचलितपणे जोडण्याची आणि सर्व सार्वजनिक बुकिंग सत्रांचे ट्रॅकिंग करण्याची अनुमती देतात.
+    umami_analytics: "Umami Analytics"
+    umami_analytics_info: "Umami Analytics हा Google Analytics चा गोपनीयता-स्नेही पर्याय आहे; सार्वजनिक बुकिंग पृष्ठे ट्रॅक करण्यासाठी तुमचे Umami इन्स्टन्स जोडा."
+    umami_analytics_url: "Umami URL"
+    umami_analytics_url_hint: "बुकिंग पृष्ठांवर ट्रॅकिंग सक्षम करण्यासाठी तुमच्या Umami स्थापनेची URL जोडा."
+    umami_analytics_website_id: "वेबसाइट ID"
+    umami_analytics_recorder: "रीप्ले आणि हीटमॅप"
+    umami_analytics_recorder_hint: "सक्षम केल्यावर सत्र रीप्ले आणि हीटमॅपसाठी Umami रेकॉर्डर स्क्रिप्ट देखील लोड होते."
     api: API
     api_info: API तुम्हाला HTTP प्रोटोकॉलद्वारे OpenAppointments डेटा सह संवाद साधण्याची आणि उपलब्ध API अंतर्गत बिंदूंशी संपर्क साधण्याची अनुमती देतात आणि आपली स्वतःची इंटिग्रेशन्स तयार करू शकतात.
     google_analytics_code: गूगल अॅनालिटिक्स कोड

@@ -472,6 +472,13 @@ lv:
     google_analytics_info: Google Analytics ļauj automātiski pievienot izsekošanas kodu un HTML iezīmējumu publiskajā lapā un izsekot visas publiskās rezervācijas sesijas.
     matomo_analytics: Matomo Analytics
     matomo_analytics_info: Matomo Analytics ļauj automātiski pievienot izsekošanas kodu un HTML iezīmējumu publiskajā lapā un izsekot visas publiskās rezervācijas sesijas.
+    umami_analytics: "Umami Analytics"
+    umami_analytics_info: "Umami Analytics ir privatumam draudziga Google Analytics alternativa; pievienojiet savu Umami instanci publisko rezervaciju lapu izsekosanai."
+    umami_analytics_url: "Umami URL"
+    umami_analytics_url_hint: "Pievienojiet savas Umami instalacijas URL, lai iespejotu izsekosanu rezervaciju lapas."
+    umami_analytics_website_id: "Vietnes ID"
+    umami_analytics_recorder: "Atkartojumi un siltuma kartes"
+    umami_analytics_recorder_hint: "Kad iespejots, tiek ieladets ari Umami ieraksta skripts sesiju atkartojumiem un siltuma kartem."
     api: API
     api_info: API ļauj jums mijiedarboties ar visiem OpenAppointments datiem, izmantojot HTTP protokolu un pieejamos API galapunktus, kā arī izveidot savu integrāciju.
     google_analytics_code: Google Analytics kods

@@ -472,6 +472,13 @@ el:
     google_analytics_info: Το Google Analytics σας επιτρέπει να προσθέσετε αυτόματα τον κώδικα παρακολούθησης και τη σήμανση HTML στη δημόσια σελίδα και να παρακολουθείτε όλες τις δημόσιες συνεδρίες κρατήσεων.
     matomo_analytics: Matomo Analytics
     matomo_analytics_info: Τα Matomo Analytics σας επιτρέπουν να προσθέσετε αυτόματα τον κώδικα παρακολούθησης και τη σήμανση HTML στη δημόσια σελίδα και να παρακολουθείτε όλες τις δημόσιες συνεδρίες κρατήσεων.
+    umami_analytics: "Umami Analytics"
+    umami_analytics_info: "Το Umami Analytics είναι μια φιλική προς την ιδιωτικότητα εναλλακτική του Google Analytics· συνδέστε τη δική σας εγκατάσταση Umami για την παρακολούθηση των δημόσιων σελίδων κρατήσεων."
+    umami_analytics_url: "Umami URL"
+    umami_analytics_url_hint: "Προσθέστε το URL της εγκατάστασης Umami για να ενεργοποιήσετε την παρακολούθηση στις σελίδες κρατήσεων."
+    umami_analytics_website_id: "Αναγνωριστικό ιστότοπου"
+    umami_analytics_recorder: "Επαναλήψεις και χάρτες θερμότητας"
+    umami_analytics_recorder_hint: "Όταν είναι ενεργό, φορτώνεται και το σενάριο Umami recorder για καταγραφή συνεδριών και χάρτες θερμότητας."
     api: API
     api_info: Το API σας επιτρέπει να αλληλεπιδράτε με όλα τα δεδομένα του OpenAppointments μέσω του πρωτοκόλλου HTTP και των διαθέσιμων σημείων τερματισμού API και να δημιουργείτε τις δικές σας ενσωματώσεις.
     google_analytics_code: Κώδικας Google Analytics

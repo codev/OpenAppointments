@@ -472,6 +472,13 @@ et:
     google_analytics_info: Google Analytics võimaldab automaatselt lisada jälgimiskoodi ja HTML-märgendit avalikule lehele ning jälgida kõiki avalikke broneeringu sessioone.
     matomo_analytics: Matomo Analytics
     matomo_analytics_info: Matomo Analytics võimaldab automaatselt lisada jälgimiskoodi ja HTML-märgendit avalikule lehele ning jälgida kõiki avalikke broneeringu sessioone.
+    umami_analytics: "Umami Analytics"
+    umami_analytics_info: "Umami Analytics on privaatsussoebralik alternatiiv Google Analyticsile; uehendage oma Umami server avalike broneerimislehtede jaelgimiseks."
+    umami_analytics_url: "Umami URL"
+    umami_analytics_url_hint: "Lisage oma Umami paigalduse URL, et lubada jaelgimine broneerimislehtedel."
+    umami_analytics_website_id: "Veebisaidi ID"
+    umami_analytics_recorder: "Salvestused ja soojuskaardid"
+    umami_analytics_recorder_hint: "Kui see on lubatud, laaditakse ka Umami recorder skript seansside salvestamiseks ja soojuskaartideks."
     api: API
     api_info: API võimaldab teil suhelda kõigi OpenAppointments andmetega HTTP-protokolli ja saadaval olevate API-lõpp-punktide kaudu ning luua oma integratsioone.
     google_analytics_code: Google Analytics Kood

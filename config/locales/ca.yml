@@ -472,6 +472,13 @@ ca:
     google_analytics_info: Google Analytics us permet afegir automàticament el codi de seguiment i el codi HTML a la pàgina de reserves i fer el seguiment de totes les reserves.
     matomo_analytics: Matomo Analytics
     matomo_analytics_info: Matomo Analytics us permet afegir automàticament el codi de seguiment i el codi HTML a la pàgina de reserves i fer el seguiment de totes les reserves.
+    umami_analytics: "Umami Analytics"
+    umami_analytics_info: "Umami Analytics és una alternativa a Google Analytics respectuosa amb la privadesa; connecteu la vostra instància d'Umami per fer el seguiment de les pàgines públiques de reserva."
+    umami_analytics_url: "Umami URL"
+    umami_analytics_url_hint: "Afegiu l'URL de la vostra instal·lació d'Umami per activar el seguiment a les pàgines de reserva."
+    umami_analytics_website_id: "ID del lloc web"
+    umami_analytics_recorder: "Repeticions i mapes de calor"
+    umami_analytics_recorder_hint: "Quan està activat, també es carrega l'script Umami recorder per capturar repeticions de sessió i mapes de calor."
     api: API
     api_info: L'API us permet interaccionar amb totes les dades OpenAppointments via el protocol HTTP i els API endpoint disponibles i crear les vostres pròpies integracions.
     google_analytics_code: Codi de Google Analytics

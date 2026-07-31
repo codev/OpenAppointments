@@ -472,6 +472,13 @@ fa:
     google_analytics_info: گوگل آنالیتیکس به شما امکان می‌دهد تا کد ردیابی و نشانه‌گذاری HTML را به صفحه عمومی اضافه کنید و تمام جلسات رزرو عمومی را ردیابی کنید.
     matomo_analytics: ماتومو آنالیتیکس
     matomo_analytics_info: Matomo Analytics به شما امکان می‌دهد تا کد ردیابی و نشانه‌گذاری HTML را به صفحه عمومی اضافه کنید و تمام جلسات رزرو عمومی را ردیابی کنید.
+    umami_analytics: "Umami Analytics"
+    umami_analytics_info: "Umami Analytics جایگزینی حافظ حریم خصوصی برای Google Analytics است؛ نمونه Umami خود را متصل کنید تا صفحات عمومی رزرو ردیابی شوند."
+    umami_analytics_url: "Umami URL"
+    umami_analytics_url_hint: "برای فعال کردن ردیابی در صفحات رزرو، آدرس نصب Umami خود را اضافه کنید."
+    umami_analytics_website_id: "شناسه وب‌سایت"
+    umami_analytics_recorder: "بازپخش‌ها و نقشه‌های حرارتی"
+    umami_analytics_recorder_hint: "در صورت فعال بودن، اسکریپت ضبط Umami نیز برای ثبت بازپخش جلسات و نقشه‌های حرارتی بارگذاری می‌شود."
     api: API
     api_info: API به شما امکان می‌دهد تا با تمام داده‌های OpenAppointments از طریق پروتکل HTTP و نقاط پایانی API موجود تعامل کنید و ادغام‌های خود را ایجاد کنید.
     google_analytics_code: کد گوگل آنالیتیکس

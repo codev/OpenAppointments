@@ -472,6 +472,13 @@ en:
     google_analytics_info: Google Analytics enable you to automatically add the tracking code and HTML markup to the public page and track all the public booking sessions.
     matomo_analytics: Matomo Analytics
     matomo_analytics_info: Matomo Analytics enable you to automatically add the tracking code and HTML markup to the public page and track all the public booking sessions.
+    umami_analytics: "Umami Analytics"
+    umami_analytics_info: "Umami Analytics is a privacy friendly alternative to Google Analytics, connect your own Umami instance to track the public booking pages."
+    umami_analytics_url: "Umami URL"
+    umami_analytics_url_hint: "Add the URL of your Umami installation to enable tracking on the booking pages."
+    umami_analytics_website_id: "Website ID"
+    umami_analytics_recorder: "Replays and Heatmaps"
+    umami_analytics_recorder_hint: "When enabled the Umami recorder script is also loaded to capture session replays and heatmaps."
     api: API
     api_info: API enable you to interact with all the OpenAppointments data via the HTTP protocol and the available API endpoints and create your own integrations.
     google_analytics_code: Google Analytics Code

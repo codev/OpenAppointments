@@ -472,6 +472,13 @@ lt:
     google_analytics_info: "„Google Analytics“ suteikia galimybę automatiškai pridėti stebėjimo kodą ir reikiamą HTML kodą į viešąjį tinklalapį ir sekti visas viešąsias registravimosi vizitams sesijas."
     matomo_analytics: Matomo Analytics
     matomo_analytics_info: "„Matomo Analytics“ suteikia galimybę automatiškai pridėti stebėjimo kodą ir reikiamą HTML kodą į viešąjį tinklalapį ir sekti visas viešąsias registravimosi vizitams sesijas."
+    umami_analytics: "Umami Analytics"
+    umami_analytics_info: "Umami Analytics yra privatumui palanki Google Analytics alternatyva; prijunkite savo Umami diegini viesu rezervaciju puslapiu stebejimui."
+    umami_analytics_url: "Umami URL"
+    umami_analytics_url_hint: "Prideket savo Umami diegimo URL, kad ijungtumete stebejima rezervaciju puslapiuose."
+    umami_analytics_website_id: "Svetaines ID"
+    umami_analytics_recorder: "Irasai ir silumos zemelapiai"
+    umami_analytics_recorder_hint: "Kai ijungta, taip pat ikeliamas Umami irasymo skriptas sesiju irasams ir silumos zemelapiams."
     api: API
     api_info: API suteikia galimybę operuoti visais „OpenAppointments“ duomenimis HTTP protokolu per leidžiamus API galinius taškus bei kurti savo integracijas.
     google_analytics_code: "„Google Analytics“ kodas"

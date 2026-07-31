@@ -472,6 +472,13 @@ zh-tw:
     google_analytics_info: Google Analytics 允許您自動將追蹤程式碼和 HTML 標記新增到公開頁面，並追蹤所有公開預約工作階段。
     matomo_analytics: Matomo 分析
     matomo_analytics_info: Matomo Analytics 允許您自動將追蹤程式碼和 HTML 標記新增到公開頁面，並追蹤所有公開預約工作階段。
+    umami_analytics: "Umami Analytics"
+    umami_analytics_info: "Umami Analytics 是重視隱私的 Google Analytics 替代方案；連接您自己的 Umami 伺服器以追蹤公開預約頁面。"
+    umami_analytics_url: "Umami URL"
+    umami_analytics_url_hint: "新增您的 Umami 安裝網址，以在預約頁面啟用追蹤。"
+    umami_analytics_website_id: "網站 ID"
+    umami_analytics_recorder: "重播與熱圖"
+    umami_analytics_recorder_hint: "啟用後，也會載入 Umami 錄製指令碼以擷取工作階段重播與熱圖。"
     api: API
     api_info: API 允許您透過 HTTP 協議和可用的 API 端點與所有 OpenAppointments 資料進行互動，並建立您自己的整合。
     google_analytics_code: Google Analytics 程式碼

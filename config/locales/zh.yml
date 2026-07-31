@@ -472,6 +472,13 @@ zh:
     google_analytics_info: Google Analytics 使您能够自动将跟踪代码和 HTML 标记添加到公共页面，并跟踪所有公共预订会话。
     matomo_analytics: Matomo 分析
     matomo_analytics_info: Matomo Analytics 使您能够自动将跟踪代码和 HTML 标记添加到公共页面，并跟踪所有公共预订会话。
+    umami_analytics: "Umami Analytics"
+    umami_analytics_info: "Umami Analytics 是注重隐私的 Google Analytics 替代方案；连接您自己的 Umami 服务器以跟踪公开预约页面。"
+    umami_analytics_url: "Umami URL"
+    umami_analytics_url_hint: "添加您的 Umami 安装网址,以在预约页面启用跟踪。"
+    umami_analytics_website_id: "网站 ID"
+    umami_analytics_recorder: "回放与热图"
+    umami_analytics_recorder_hint: "启用后,还会加载 Umami 录制脚本以捕获会话回放与热图。"
     api: API
     api_info: API 使您能够通过 HTTP 协议和可用的 API 端点与所有 OpenAppointments 数据进行交互，并创建您自己的集成。
     google_analytics_code: Google Analytics 代码

@@ -472,6 +472,13 @@ fr:
     google_analytics_info: Google Analytics vous permet d’ajouter automatiquement le code de suivi et le balisage HTML à la page publique et de suivre toutes les sessions de réservation publique.
     matomo_analytics: Matomo Analytics
     matomo_analytics_info: Matomo Analytics vous permet d’ajouter automatiquement le code de suivi et le balisage HTML à la page publique et de suivre toutes les sessions de réservation publique.
+    umami_analytics: "Umami Analytics"
+    umami_analytics_info: "Umami Analytics est une alternative à Google Analytics respectueuse de la vie privée; connectez votre propre instance Umami pour suivre les pages publiques de réservation."
+    umami_analytics_url: "Umami URL"
+    umami_analytics_url_hint: "Ajoutez l'URL de votre installation Umami pour activer le suivi sur les pages de réservation."
+    umami_analytics_website_id: "ID du site web"
+    umami_analytics_recorder: "Replays et cartes de chaleur"
+    umami_analytics_recorder_hint: "Lorsque cette option est activée, le script Umami recorder est aussi chargé pour capturer les replays de session et les cartes de chaleur."
     api: API
     api_info: L’API vous permet d’interagir avec toutes les données de OpenAppointments via le protocole HTTP et les points de terminaison API disponibles et créer vos propres intégrations.
     google_analytics_code: Code de Google analytics

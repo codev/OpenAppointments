@@ -472,6 +472,13 @@ ar:
     google_analytics_info: يمكّنك Google Analytics من إضافة كود التتبع وترميز HTML تلقائيًا إلى الصفحة العامة وتتبع جميع جلسات الحجز العامة.
     matomo_analytics: تحليلات Matomo
     matomo_analytics_info: يمكّنك Matomo Analytics من إضافة شفرة التتبع وترميز HTML تلقائيًا إلى الصفحة العامة وتتبع جميع جلسات الحجز العامة
+    umami_analytics: "Umami Analytics"
+    umami_analytics_info: "يوفر Umami Analytics بديلاً يحترم الخصوصية عن Google Analytics، اربط خادم Umami الخاص بك لتتبع صفحات الحجز العامة."
+    umami_analytics_url: "Umami URL"
+    umami_analytics_url_hint: "أضف عنوان URL لتثبيت Umami الخاص بك لتفعيل التتبع على صفحات الحجز."
+    umami_analytics_website_id: "معرف الموقع"
+    umami_analytics_recorder: "التسجيلات والخرائط الحرارية"
+    umami_analytics_recorder_hint: "عند التفعيل يتم تحميل سكربت مسجل Umami أيضاً لالتقاط تسجيلات الجلسات والخرائط الحرارية."
     api: API
     api_info: تُمكِّنك واجهة برمجة التطبيقات من التفاعل مع جميع بيانات OpenAppointments عبر بروتوكول HTTP ونقاط نهاية واجهة برمجة التطبيقات المتاحة وإنشاء عمليات التكامل الخاصة بك.
     google_analytics_code: رمز Google Analytics
