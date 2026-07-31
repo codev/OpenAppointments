@@ -4,7 +4,7 @@ module TenToEight
   # name+phone) so re-runs do not duplicate. Pronoun lands in custom_field_1, access
   # needs in custom_field_2, and a do-not-contact prefix on the notes (GDPR consent).
   class Load
-    PHASES = %w[categories services providers customers appointments].freeze
+    PHASES = %w[categories services providers customers appointments settings].freeze
     DO_NOT_CONTACT_PREFIX = "[DO NOT CONTACT - consent not granted]".freeze
 
     def initialize(data, phases:, create_providers: false, progress: nil, images_dir: nil)
@@ -23,12 +23,28 @@ module TenToEight
       load_providers if phase?("providers")
       load_customers if phase?("customers")
       load_appointments if phase?("appointments")
+      load_settings if phase?("settings")
       { counts: @counts, errors: @errors }
     end
 
     private
 
     def phase?(name) = @phases.include?(name)
+
+    # Restores every exported setting by internal key; new settings flow through
+    # automatically because the export dumps the whole settings table.
+    def load_settings
+      counts = track("settings")
+      Array(@data[:settings]).each do |row|
+        guard("settings", counts, row[:name]) do
+          next counts[:skipped] += 1 if row[:name].blank?
+
+          existing = Setting.find_by(name: row[:name])
+          Setting.set(row[:name], row[:value].to_s)
+          counts[existing ? :matched : :created] += 1
+        end
+      end
+    end
 
     def track(phase)
       @counts[phase.to_sym] = { created: 0, matched: 0, skipped: 0, failed: 0 }

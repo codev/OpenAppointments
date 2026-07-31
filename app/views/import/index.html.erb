@@ -52,7 +52,7 @@
                         <div class="form-check">
                             <input class="form-check-input import-phase" type="checkbox"
                                    id="phase-<%= phase %>" value="<%= phase %>"
-                                   <%= "checked" unless phase == "providers" %>>
+                                   <%= "checked" unless %w[providers settings].include?(phase) %>>
                             <label class="form-check-label" for="phase-<%= phase %>">
                                 <%= lang(phase) %>
                             </label>

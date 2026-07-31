@@ -14,6 +14,7 @@ CloudronManifest.json.
 - Theme settings show live preview cards for every theme, rendered with the current brand colours
 - Umami Analytics integration: own instance URL and Website ID, optional session replays and heatmaps recorder
 - Exports run in the background and produce both a plain ODS and a zip with images; the five newest backups stay on the server with admin-only dated downloads
+- ODS imports can restore settings (integrations included) via a Settings tickbox, unticked by default; new settings flow through export and import automatically
 
 ## 1.3.2
 

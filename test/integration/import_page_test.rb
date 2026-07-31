@@ -236,4 +236,61 @@ class ImportPageTest < ActionDispatch::IntegrationTest
       end
     end
   end
+
+  test "the settings phase tickbox exists and defaults to unticked" do
+    login_admin
+    get "/import"
+    assert_select "#phase-settings"
+    assert_select "#phase-settings[checked]", count: 0
+    assert_select "#phase-customers[checked]"
+  end
+
+  test "settings restore from an exported ODS only when the phase is selected" do
+    login_admin
+    Setting.set("company_name", "Backup Co")
+    Setting.set("umami_analytics_url", "https://stats.example.org")
+    upload_path = Rails.root.join("tmp", "settings-roundtrip-#{SecureRandom.hex(4)}.ods")
+    File.binwrite(upload_path, DataExport.generate)
+    Setting.set("company_name", "Changed Co")
+    Setting.set("umami_analytics_url", "")
+
+    # Default phases (settings unticked): settings stay as they are.
+    perform_enqueued_jobs do
+      post "/import/start", params: {
+        file: Rack::Test::UploadedFile.new(upload_path, Ods::MIMETYPE), import_type: "ods",
+        phases: [ "customers" ], days_back: 365, days_forward: 365
+      }
+    end
+    assert_equal "Changed Co", Setting.get("company_name")
+
+    # With the settings phase every exported key restores, integrations included.
+    post "/import/start", params: {
+      file: Rack::Test::UploadedFile.new(upload_path, Ods::MIMETYPE), import_type: "ods",
+      phases: [ "settings" ], days_back: 365, days_forward: 365
+    }
+    import_id = response.parsed_body["import_id"]
+    perform_enqueued_jobs
+    assert_equal "Backup Co", Setting.get("company_name")
+    assert_equal "https://stats.example.org", Setting.get("umami_analytics_url")
+
+    status = TenToEightImportJob.read_status(import_id)
+    assert_equal "completed", status[:state]
+    assert_operator status[:counts][:settings][:matched], :>, 0
+  ensure
+    FileUtils.rm_f(upload_path) if upload_path
+  end
+
+  test "analyze reports the settings count for an ODS backup" do
+    login_admin
+    upload_path = Rails.root.join("tmp", "settings-analyze-#{SecureRandom.hex(4)}.ods")
+    File.binwrite(upload_path, DataExport.generate)
+    post "/import/analyze", params: {
+      file: Rack::Test::UploadedFile.new(upload_path, Ods::MIMETYPE), import_type: "ods",
+      days_back: 365, days_forward: 365
+    }
+    assert_response :success
+    assert_equal Setting.count, response.parsed_body["summary"]["settings"]
+  ensure
+    FileUtils.rm_f(upload_path) if upload_path
+  end
 end

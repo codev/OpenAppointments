@@ -76,6 +76,7 @@ class ImportController < ApplicationController
       summary: {
         staff: data[:staff].size, services: data[:services].size,
         customers: data[:customers].size, appointments: data[:appointments].size,
+        settings: Array(data[:settings]).size,
         do_not_contact: data[:customers].count { |customer| customer[:do_not_contact] }
       }
     }

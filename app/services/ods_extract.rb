@@ -17,7 +17,8 @@ class OdsExtract
       services: services_rows,
       staff: staff_rows,
       customers: customers_rows,
-      appointments: appointments_rows
+      appointments: appointments_rows,
+      settings: settings_rows
     }
   end
 
@@ -33,6 +34,10 @@ class OdsExtract
 
       header.each_with_index.to_h { |name, index| [ name, row[index].to_s ] }
     end
+  end
+
+  def settings_rows
+    rows("Settings").map { |row| { name: row["name"], value: row["value"] } }
   end
 
   def categories_rows
