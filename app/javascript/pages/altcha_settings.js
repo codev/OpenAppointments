@@ -68,6 +68,14 @@ App.Pages.AltchaSettings = (function () {
      * A fresh test token is needed when Turnstile was not already active with
      * these exact keys.
      */
+    /**
+     * A rejected save means nothing activated: show the stored switch state.
+     */
+    function revertActiveSwitches() {
+        $('#altcha-enabled').prop('checked', storedSetting('altcha_enabled') === '1');
+        $('#captcha-login-enabled').prop('checked', storedSetting('captcha_login_enabled') === '1');
+    }
+
     function turnstileTestRequired() {
         const storedActive = storedSetting('altcha_enabled') === '1' || storedSetting('captcha_login_enabled') === '1';
         const storedTurnstile = storedActive && (storedSetting('captcha_provider') || 'altcha') === 'turnstile';
@@ -114,6 +122,7 @@ App.Pages.AltchaSettings = (function () {
             return false;
         } catch (error) {
             App.Layouts.Backend.displayNotification(error.message);
+            revertActiveSwitches();
             return true;
         }
     }
@@ -166,6 +175,7 @@ App.Pages.AltchaSettings = (function () {
         App.Http.AltchaSettings.save(altchaSettings, turnstileTestToken()).done((response) => {
             if (response.success === false) {
                 App.Layouts.Backend.displayNotification(response.message || lang('settings_are_invalid'));
+                revertActiveSwitches();
 
                 if (turnstileWidgetId !== null && window.turnstile) {
                     window.turnstile.reset(turnstileWidgetId);

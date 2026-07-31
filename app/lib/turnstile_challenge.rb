@@ -22,6 +22,8 @@ module TurnstileChallenge
   def verify(token, remote_ip, secret: secret_key)
     return false if token.blank?
 
+    remote_ip = usable_remote_ip(remote_ip)
+
     http = Net::HTTP.new(VERIFY_URL.host, VERIFY_URL.port)
     http.use_ssl = true
     http.open_timeout = 5
@@ -35,5 +37,17 @@ module TurnstileChallenge
   rescue StandardError => e
     Rails.logger.warn("Turnstile verification failed: #{e.message}")
     false
+  end
+
+  # Cloudflare fails verification when remoteip does not match the IP it saw
+  # the visitor from. Without a proxy (local sites) the request IP is loopback
+  # or private and never matches, so only forward publicly routable addresses.
+  def usable_remote_ip(remote_ip)
+    return nil if remote_ip.blank?
+
+    addr = IPAddr.new(remote_ip.to_s)
+    addr.loopback? || addr.private? || addr.link_local? ? nil : remote_ip
+  rescue IPAddr::InvalidAddressError
+    nil
   end
 end

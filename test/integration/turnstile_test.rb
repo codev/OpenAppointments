@@ -84,6 +84,16 @@ class TurnstileTest < ActionDispatch::IntegrationTest
     assert_not TurnstileChallenge.verify("tok", nil)
 
     assert_not TurnstileChallenge.verify("", nil)
+
+    # Loopback and private IPs never match what Cloudflare saw: omit them.
+    WebMock.reset!
+    stub_request(:post, VERIFY_URL).to_return(body: { success: true }.to_json)
+    assert TurnstileChallenge.verify("tok", "127.0.0.1")
+    assert TurnstileChallenge.verify("tok", "192.168.1.20")
+    assert_requested(:post, VERIFY_URL, times: 2) { |req| !req.body.include?("remoteip") }
+
+    assert TurnstileChallenge.verify("tok", "203.0.113.9")
+    assert_requested(:post, VERIFY_URL) { |req| req.body.include?("remoteip=203.0.113.9") }
   end
 
   test "booking page renders the widget and script only when enabled" do
