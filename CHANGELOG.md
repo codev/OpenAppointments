@@ -3,6 +3,10 @@
 The about page lists these notes; every release needs a section here matching
 CloudronManifest.json.
 
+## 1.4.1
+
+- Fix receiving email through the server: connect to the mail server's TLS IMAP port
+
 ## 1.4.0
 
 - Captchas: there is now one control on the Integrations page, you can select ALTCHA or Cloudflare Turnstile and activate it for customer booking and/or provider logins
