@@ -43,25 +43,49 @@ module Ods
   end
 
   def content_xml(sheets)
+    widths = sheets.map { |_name, rows| column_widths(rows) }
     builder = +<<~XML
       <?xml version="1.0" encoding="UTF-8"?>
       <office:document-content xmlns:office="urn:oasis:names:tc:opendocument:xmlns:office:1.0"
         xmlns:table="urn:oasis:names:tc:opendocument:xmlns:table:1.0"
-        xmlns:text="urn:oasis:names:tc:opendocument:xmlns:text:1.0" office:version="1.2">
-      <office:body><office:spreadsheet>
+        xmlns:text="urn:oasis:names:tc:opendocument:xmlns:text:1.0"
+        xmlns:style="urn:oasis:names:tc:opendocument:xmlns:style:1.0"
+        xmlns:fo="urn:oasis:names:tc:opendocument:xmlns:xsl-fo-compatible:1.0" office:version="1.2">
+      <office:automatic-styles>
+      <style:style style:name="bold" style:family="table-cell"><style:text-properties fo:font-weight="bold"/></style:style>
     XML
-    sheets.each do |name, rows|
+    widths.each_with_index do |sheet_widths, sheet_index|
+      sheet_widths.each_with_index do |width, column_index|
+        builder << %(<style:style style:name="co-#{sheet_index}-#{column_index}" style:family="table-column">) <<
+                   %(<style:table-column-properties style:column-width="#{width}cm"/></style:style>)
+      end
+    end
+    builder << "</office:automatic-styles><office:body><office:spreadsheet>"
+    sheets.each_with_index do |(name, rows), sheet_index|
       builder << %(<table:table table:name="#{escape(name)}">)
-      rows.each do |row|
+      widths[sheet_index].each_index do |column_index|
+        builder << %(<table:table-column table:style-name="co-#{sheet_index}-#{column_index}"/>)
+      end
+      rows.each_with_index do |row, row_index|
         builder << "<table:table-row>"
+        cell_style = row_index.zero? ? %( table:style-name="bold") : ""
         row.each do |cell|
-          builder << %(<table:table-cell office:value-type="string"><text:p>#{escape(cell)}</text:p></table:table-cell>)
+          builder << %(<table:table-cell#{cell_style} office:value-type="string"><text:p>#{escape(cell)}</text:p></table:table-cell>)
         end
         builder << "</table:table-row>"
       end
       builder << "</table:table>"
     end
     builder << "</office:spreadsheet></office:body></office:document-content>"
+  end
+
+  # Rough fit: ~0.19cm per character of the longest cell, clamped so huge
+  # values (working plans, settings blobs) do not produce absurd columns.
+  def column_widths(rows)
+    (0...rows.map(&:length).max.to_i).map do |index|
+      chars = rows.map { |row| row[index].to_s.length }.max.to_i
+      ((1.0 + chars * 0.19).clamp(1.8, 12.0)).round(2)
+    end
   end
 
   def escape(value)

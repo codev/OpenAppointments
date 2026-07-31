@@ -62,4 +62,29 @@ class OdsTest < ActiveSupport::TestCase
     error = assert_raises(ArgumentError) { Ods.parse(path) }
     assert_match(/Not an ODS spreadsheet/, error.message)
   end
+
+  test "headers are bold and columns roughly fit their contents" do
+    data = Ods.generate("Sheet" => [ %w[name description], [ "ab", "a much longer description cell" ] ])
+    content = nil
+    Zip::File.open_buffer(StringIO.new(data)) do |zip|
+      content = zip.read("content.xml")
+    end
+
+    assert_includes content, 'fo:font-weight="bold"'
+    header_row = content[/<table:table-row>.*?<\/table:table-row>/m]
+    assert_includes header_row, 'table:style-name="bold"'
+    data_rows = content.split("</table:table-row>").drop(1).join
+    assert_not_includes data_rows, 'table:style-name="bold"'
+
+    widths = content.scan(/style:column-width="([\d.]+)cm"/).flatten.map(&:to_f)
+    assert_equal 2, widths.size
+    assert_operator widths[1], :>, widths[0]
+
+    # Huge cells clamp instead of producing absurd columns.
+    clamped = Ods.generate("Sheet" => [ %w[a], [ "x" * 500 ] ])
+    Zip::File.open_buffer(StringIO.new(clamped)) do |zip|
+      content = zip.read("content.xml")
+    end
+    assert_includes content, 'style:column-width="12.0cm"'
+  end
 end
