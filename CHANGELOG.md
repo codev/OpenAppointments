@@ -6,7 +6,7 @@ CloudronManifest.json.
 ## 1.4.0
 
 - Captchas: there is now one control on the Integrations page, you can select ALTCHA or Cloudflare Turnstile and activate it for customer booking and/or provider logins
-- Integrations page bow shows what is active
+- Integrations page now shows what is active
 - New Umami Analytics integration
 - Theme page: live preview cards for every theme and a Custom CSS section for changing the theme
 - Backups: export creates an ODS and an images zip to download separately, the five newest are kept for admin download
