@@ -280,7 +280,7 @@ cs:
     book_advance_timeout: Časový limit rezervace
     book_advance_timeout_hint: Definujte časový limit (v minutách), před jehož uplynutím budou moci zákazníci zadat nebo změnit rezervaci schůzky se společností.
     timeout_minutes: Časový limit (minuty)
-    about_app_info: OpenAppointments je vysoce přizpůsobitelná webová aplikace, která vašim zákazníkům umožňuje rezervovat si s vámi schůzky prostřednictvím webu. Navíc poskytuje možnost synchronizovat vaše data s Kalendářem Google, takže je můžete využívat v rámci dalších služeb.
+    about_app_info: "OpenAppointments je vysoce přizpůsobitelná webová aplikace, která vašim zákazníkům umožňuje rezervovat si s vámi schůzky prostřednictvím webu."
     current_version: Aktuální verze
     support: Podpora
     about_app_support: Pokud při používání OpenAppointments narazíte na jakékoli problémy, můžete hledat odpovědi v issues projektu na GitHubu. Můžete také otevřít nové issue a pomoci tak vývoji.

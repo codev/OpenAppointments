@@ -280,7 +280,7 @@ tr:
     book_advance_timeout: Erken Randevu Zamanaşımı Değeri
     book_advance_timeout_hint: Müşterilerin en az ne kadar önceden randevu alması veya randevu düzenlemesi gerektiğini girin (dakika cinsinden).
     timeout_minutes: Zamanaşımı (Dakika)
-    about_app_info: 'OpenAppointments yüksek ölçüde özelleştirilebilen, müşterilerinizin web üzerinden randevu almasını sağlayan bir uygulamadır. Ayrıca, bilgilerinizi Google Takvim ile eşitleyerek diğer uygulamalarla da entegre olmasını sağlar. '
+    about_app_info: "OpenAppointments yüksek ölçüde özelleştirilebilen, müşterilerinizin web üzerinden randevu almasını sağlayan bir uygulamadır."
     current_version: Mevcut Versiyon
     support: Destek
     about_app_support: OpenAppointments kullanırken herhangi bir sorunla karşılaşırsanız, yanıtlar için projenin GitHub üzerindeki issue kayıtlarını arayabilirsiniz. Gelişime yardımcı olmak için yeni bir issue da açabilirsiniz.

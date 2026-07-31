@@ -280,7 +280,7 @@ es:
     book_advance_timeout: Agendar tiempos muertos
     book_advance_timeout_hint: Defina el tiempo muerto (en minutos) antes que de los clientes puedan agendar o reorganizar citas con la empresa.
     timeout_minutes: Tiempo muerto (en minutos)
-    about_app_info: OpenAppointments es un aplicativo web completamente personalizable que le permitirá a sus clientes agendar citas con Usted a través internet. Además, le permitirá sincronizar sus datos con Google Calendar, para poder utilizarlos con otros servicios.
+    about_app_info: "OpenAppointments es un aplicativo web completamente personalizable que le permitirá a sus clientes agendar citas con Usted a través internet."
     current_version: Versión actual
     support: Soporte
     about_app_support: Si encuentra algún problema al usar OpenAppointments, puede buscar respuestas en las incidencias del proyecto en GitHub. También puede abrir una nueva incidencia para ayudar al desarrollo.

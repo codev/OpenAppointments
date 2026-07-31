@@ -280,7 +280,7 @@ da:
     book_advance_timeout: Book forudgående pause
     book_advance_timeout_hint: Definere pausen (i minutter) før kunderne kan booke eller redigere tidsbestillingen hos firmaet.
     timeout_minutes: Pause (minutter)
-    about_app_info: OpenAppointments er et specielfremstillet internet applikation som giver mulighed for kunderne at booke bestillinger med dig via internettet. Endvidere leverandørens evne til at synkronisere dine data med Google kalender, så du kan bruge dem med andre tjenester.
+    about_app_info: "OpenAppointments er et specielfremstillet internet applikation som giver mulighed for kunderne at booke bestillinger med dig via internettet."
     current_version: Nuværende version
     support: Support
     about_app_support: Hvis du støder på problemer med OpenAppointments, kan du søge efter svar i projektets issues på GitHub. Du kan også oprette et nyt issue for at hjælpe udviklingen videre.

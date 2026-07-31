@@ -280,7 +280,7 @@ pt-br:
     book_advance_timeout: Tempo esgotado...
     book_advance_timeout_hint: Definir o limite de tempo (em minutos) antes que os clientes possam reservar ou reorganizar agendamentos com a empresa.
     timeout_minutes: O tempo acaba (minutos)
-    about_app_info: OpenAppointments é uma aplicação web altamente personalizável que permite que os clientes marquem eventos através da internet. Além disso, oferece a possibilidade de sincronizar seus dados com o Google Calendar para que possa usá-los com outros serviços.
+    about_app_info: "OpenAppointments é uma aplicação web altamente personalizável que permite que os clientes marquem eventos através da internet."
     current_version: Versão atual
     support: Suporte
     about_app_support: Se você encontrar algum problema ao usar o OpenAppointments, pode procurar respostas nas issues do projeto no GitHub. Você também pode abrir uma nova issue para ajudar no desenvolvimento.

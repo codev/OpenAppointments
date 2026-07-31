@@ -280,7 +280,7 @@ de:
     book_advance_timeout: Zeitbegrenzung einer Buchung
     book_advance_timeout_hint: Legen Sie eine Zeitbegrenzung (in Minuten) fest, während der die Kunden eine Terminbuchung oder eine Terminänderung durchführen können.
     timeout_minutes: Zeitbegrenzung (Minuten)
-    about_app_info: OpenAppointments ist eine extrem anpassungsfähige Internet-Applikation, die es Ihren Kunden ermöglicht, einen Termin mit Ihnen über das Internet zu vereinbaren. Darüberhinaus gibt es Ihnen die Möglichkeit, Ihre Daten mit dem CalDAV/Google-Kalender zu synchronisieren, so dass Sie diese mit anderen Dienstleistungsprogrammen nutzen können.
+    about_app_info: "OpenAppointments ist eine extrem anpassungsfähige Internet-Applikation, die es Ihren Kunden ermöglicht, einen Termin mit Ihnen über das Internet zu vereinbaren."
     current_version: Laufende Version
     support: Unterstützung
     about_app_support: Falls Sie irgendein Problem bei der Nutzung von OpenAppointments haben sollten, können Sie in den Issues des Projekts auf GitHub nach Lösungen suchen. Sie können auch ein neues Issue eröffnen, um die Weiterentwicklung zu unterstützen.

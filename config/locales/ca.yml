@@ -280,7 +280,7 @@ ca:
     book_advance_timeout: Temps límit de modificació/cancel·lació
     book_advance_timeout_hint: Defineix el temps límit (en minuts) a partir del qual els clients no poden reservar una hora o modificar una cita.
     timeout_minutes: Temps límit de reserva (minuts)
-    about_app_info: OpenAppointments és una aplicació web molt ajustable que permet als vostres clients reservar cites amb vosaltres a través del web. A més, us permet sincronitzar amb Google Calendar de manera que ho podeu usar amb altres serveis.
+    about_app_info: "OpenAppointments és una aplicació web molt ajustable que permet als vostres clients reservar cites amb vosaltres a través del web."
     current_version: Versió actual
     support: Suport
     about_app_support: Si trobeu cap problema en utilitzar OpenAppointments, podeu cercar respostes entre les incidències del projecte a GitHub. També podeu obrir una incidència nova per ajudar al desenvolupament.

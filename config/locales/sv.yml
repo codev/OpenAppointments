@@ -280,7 +280,7 @@ sv:
     book_advance_timeout: Framförhållning för bokning
     book_advance_timeout_hint: Ange hur många minuter i förväg en bokning eller ändring senast måste göras.
     timeout_minutes: Paus (minuter)
-    about_app_info: OpenAppointments är ett bokningssystem som låter dina kunder boka tider online. Bokningarna kan synkas med personalens Google-kalendrar så att de även syns i andra tjänster.
+    about_app_info: "OpenAppointments är ett bokningssystem som låter dina kunder boka tider online."
     current_version: Version
     support: Support
     about_app_support: Om du stöter på problem med OpenAppointments kan du söka efter svar bland projektets issues på GitHub. Du kan också skapa ett nytt issue för att hjälpa utvecklingen.

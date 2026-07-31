@@ -280,7 +280,7 @@ fr:
     book_advance_timeout: Paramètres de réservation
     book_advance_timeout_hint: 'Les réservations ne peuvent pas être créées, modifiées ou annulées moins de ## heures avant le rendez-vous.'
     timeout_minutes: Délai de réservation (en minutes)
-    about_app_info: OpenAppointments est une application Web hautement personnalisable qui permet à vos clients de prendre rendez-vous avec vous via le web. En outre, elle offre la possibilité de synchroniser vos données avec un calendrier Google afin que vous puissiez les utiliser avec d’autres services. OpenAppointments est un projet open source et vous pouvez le télécharger et l’installer même pour un usage commercial. OpenAppointments fonctionnera sans problème avec votre site web existant car il peut être installé dans un dossier spécifique du serveur et bien sûr, les deux sites peuvent partager la même base de données.
+    about_app_info: "OpenAppointments est une application Web hautement personnalisable qui permet à vos clients de prendre rendez-vous avec vous via le web."
     current_version: Version actuelle
     support: Support
     about_app_support: Si vous rencontrez des problèmes en utilisant OpenAppointments, vous pouvez chercher des réponses dans les issues du projet sur GitHub. Vous pouvez aussi ouvrir une nouvelle issue pour aider au développement.

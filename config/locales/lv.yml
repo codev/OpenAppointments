@@ -280,7 +280,7 @@ lv:
     book_advance_timeout: Grāmatu iepriekšēja rezervējuma laika ierobežojums
     book_advance_timeout_hint: Nosakiet laika ierobežojumu (minūtēs), pirms klienti var rezervēt vai pārplānot tikšanās ar uzņēmumu.
     timeout_minutes: Laika limits (minūtes)
-    about_app_info: OpenAppointments ir ļoti pielāgojama tīmekļa lietojumprogramma, kas ļauj jūsu klientiem rezervēt tikšanās ar jums, izmantojot tīmekli. Turklāt tā nodrošina iespēju sinhronizēt datus ar Google kalendāru, lai jūs tos varētu izmantot ar citiem pakalpojumiem.
+    about_app_info: "OpenAppointments ir ļoti pielāgojama tīmekļa lietojumprogramma, kas ļauj jūsu klientiem rezervēt tikšanās ar jums, izmantojot tīmekli."
     current_version: Pašreizējā versija
     support: Atbalsts
     about_app_support: Ja, lietojot OpenAppointments, rodas problēmas, atbildes varat meklēt projekta GitHub problēmu sarakstā. Varat arī izveidot jaunu problēmu, lai palīdzētu attīstībai.

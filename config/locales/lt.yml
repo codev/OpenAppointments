@@ -280,7 +280,7 @@ lt:
     book_advance_timeout: Minimalus laukimo laikas
     book_advance_timeout_hint: Nurodykite, kiek mažiausiai minučių turi praeiti nuo vizito registracijos ar perkėlimo momento iki jo numatomos pradžios, kai vizitui registruojasi ar jį perkelti nori klientas.
     timeout_minutes: Minimalus laukimo laikas (minutėmis)
-    about_app_info: "„OpenAppointments“ – tai labai lengvai pritaikoma saityno programa, suteikianti galimybę jūsų klientams internetu registruotis vizitams pas jus. Be to, ji geba sinchronizuoti duomenis su „Google“ kalendoriumi, todėl galite ją naudoti su kitomis paslaugomis."
+    about_app_info: "„OpenAppointments“ – tai labai lengvai pritaikoma saityno programa, suteikianti galimybę jūsų klientams internetu registruotis vizitams pas jus."
     current_version: Naudojama versija
     support: Pagalba
     about_app_support: Jei naudodamiesi OpenAppointments susidursite su problemomis, atsakymų galite ieškoti projekto GitHub problemų sąraše. Taip pat galite sukurti naują problemą, kad padėtumėte tobulinti sistemą.

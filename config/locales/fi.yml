@@ -280,7 +280,7 @@ fi:
     book_advance_timeout: 'Ajanvaraus viimeistään (minuutteja) ennen:'
     book_advance_timeout_hint: Määrittele aika jota ennen uudet varaukset ja varauksenmuutokset on tehtävä.
     timeout_minutes: Ennakkoaika (minuuteissa)
-    about_app_info: OpenAppointments on web-sovellus jonka avulla asiakkaasi voivat varata aikoja netissä. Lisäominaisuutena on mahdollisuus synkronoida tapaamiset Google-kalenteriin, jolloin varaustietojen käyttö muissa palveluissa on helppoa.
+    about_app_info: "OpenAppointments on web-sovellus jonka avulla asiakkaasi voivat varata aikoja netissä."
     current_version: Tämänhetkinen versio
     support: Tuki
     about_app_support: Jos kohtaat ongelmia OpenAppointmentsin käytössä, voit etsiä vastauksia projektin GitHub-issueista. Voit myös avata uuden issuen auttaaksesi kehitystä.

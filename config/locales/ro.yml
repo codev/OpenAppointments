@@ -280,7 +280,7 @@ ro:
     book_advance_timeout: Programeaza timp liber avansat
     book_advance_timeout_hint: Defineste timpul liber (în minute) înainte ca si clientul sa poata programa sau reprograma o întâlnire cu compania.
     timeout_minutes: Timeout (Minute)
-    about_app_info: OpenAppointments este o aplicatie web usor personalizabila care permite clientilor sa programeze întâlniri cu dumneavoastra de pe internet. Mai mult, are abilitatea de a sincroniza datele dumneavoastra cu Calendarul Google pentru a-l putea folosi împreuna cu alte servicii.
+    about_app_info: "OpenAppointments este o aplicatie web usor personalizabila care permite clientilor sa programeze întâlniri cu dumneavoastra de pe internet."
     current_version: Versiunea Curenta
     support: Suport
     about_app_support: Dacă întâmpinați probleme la utilizarea OpenAppointments, puteți căuta răspunsuri în issue-urile proiectului pe GitHub. Puteți de asemenea deschide un issue nou pentru a ajuta dezvoltarea.

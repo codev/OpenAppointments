@@ -280,7 +280,7 @@ he:
     book_advance_timeout: הגדירו מועדי אי פעילות מתקדמים
     book_advance_timeout_hint: הגדר את זמן קצוב (בדקות) לפני שהלקוחות יכולים להזמין או לתאם פגישות עם החברה.
     timeout_minutes: זמן המתנה (דקות)
-    about_app_info: OpenAppointments is a highly customizable web application that allows your customers to book appointments with you via the web. Moreover, it provides the ability to sync your data with Google Calendar so you can use them with other services.
+    about_app_info: "OpenAppointments is a highly customizable web application that allows your customers to book appointments with you via the web."
     current_version: גרסה נוכחית
     support: תמיכה
     about_app_support: אם נתקלת בבעיות בשימוש ב-OpenAppointments, ניתן לחפש תשובות ב-issues של הפרויקט ב-GitHub. אפשר גם לפתוח issue חדש כדי לעזור לקידום הפיתוח.

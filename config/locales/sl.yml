@@ -280,7 +280,7 @@ sl:
     book_advance_timeout: Časovna omejitev pred knjigo vnaprej
     book_advance_timeout_hint: Določite časovno omejitev (v minutah), preden lahko stranke rezervirajo ali se ponovno dogovorijo za sestanke s podjetjem.
     timeout_minutes: Časovna omejitev (minute)
-    about_app_info: OpenAppointments je zelo prilagodljiva spletna aplikacija, ki vašim strankam omogoča, da rezervirajo sestanke pri vas prek spleta. Poleg tega ponuja možnost sinhronizacije vaših podatkov z Google Koledarjem, tako da jih lahko uporabljate z drugimi storitvami.
+    about_app_info: "OpenAppointments je zelo prilagodljiva spletna aplikacija, ki vašim strankam omogoča, da rezervirajo sestanke pri vas prek spleta."
     current_version: Trenutna različica
     support: Podpora
     about_app_support: Če pri uporabi OpenAppointments naletite na težave, lahko odgovore poiščete med issue prijavami projekta na GitHubu. Lahko tudi odprete novo prijavo in s tem pomagate razvoju.

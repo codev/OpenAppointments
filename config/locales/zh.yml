@@ -280,7 +280,7 @@ zh:
     book_advance_timeout: 预定高级超时设置
     book_advance_timeout_hint: 定义超时 (in minutes) 在其他客户预定预约之前.
     timeout_minutes: 超时 (Minutes)
-    about_app_info: 网上预约系统，可以通过网页形式高度定制满足您的需求.同样可以连接您的谷歌账户，同步日历功能.
+    about_app_info: "网上预约系统，可以通过网页形式高度定制满足您的需求."
     current_version: 版本号
     support: 技术支持
     about_app_support: 如果您在使用 OpenAppointments 时遇到任何问题，可以在 GitHub 上搜索项目的 issue 寻找答案。您也可以新建一个 issue 来帮助项目发展。

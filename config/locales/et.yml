@@ -280,7 +280,7 @@ et:
     book_advance_timeout: Broneeringu tegemise viimane hetk
     book_advance_timeout_hint: Määratle, kui palju varem on võimalik broneeringuid teha.
     timeout_minutes: Mitu minutit enne soovitavat broneeringuaega on võimalik veel broneeringut teha.
-    about_app_info: OpenAppointments on veebirakendus mille abil on võimalik klientidel teenuste aegu broneerida. Broneeringuid saab sünkroniseerida Google'i kalendriga.
+    about_app_info: "OpenAppointments on veebirakendus mille abil on võimalik klientidel teenuste aegu broneerida."
     current_version: Versioon
     support: Abi
     about_app_support: Kui OpenAppointments kasutamisel tekib probleeme, saate vastuseid otsida projekti GitHubi teemadest. Arenduse toetamiseks võite avada ka uue teema.

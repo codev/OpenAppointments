@@ -280,7 +280,7 @@ sq:
     book_advance_timeout: Koha e Rezervimit në Avancë
     book_advance_timeout_hint: Përcaktoni kohën (në minuta) përpara se klientët të mund të rezervojnë ose riorganizojnë takime me kompaninë.
     timeout_minutes: Koha e Skadimit (Minuta)
-    about_app_info: OpenAppointments është një aplikacion web i personalizueshëm që lejon klientët tuaj të rezervojnë takime me ju nëpërmjet internetit. Për më tepër, ofron mundësinë për të sinkronizuar të dhënat tuaja me Google Calendar, në mënyrë që t'i përdorni me shërbime të tjera.
+    about_app_info: "OpenAppointments është një aplikacion web i personalizueshëm që lejon klientët tuaj të rezervojnë takime me ju nëpërmjet internetit."
     current_version: Versioni Aktual
     support: Mbështetje
     about_app_support: Nëse hasni probleme gjatë përdorimit të OpenAppointments, mund të kërkoni përgjigje te issues e projektit në GitHub. Mund të hapni gjithashtu një issue të ri për të ndihmuar zhvillimin.

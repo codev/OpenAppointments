@@ -280,7 +280,7 @@ hu:
     book_advance_timeout: Időkorlát beállítása
     book_advance_timeout_hint: Add meg azt az időkorlátot (percekben) amennyivel az adott időpont előtt a vendég foglalhat vagy módosíthat egy bejelentkezést.
     timeout_minutes: Időkorlát (Percben)
-    about_app_info: OpenAppointments egy könnyen testreszabható webes alkalmazás mely lehetővé teszi, hogy ügyfelek weben keresztül időpontokat foglalhassanak. Ezen felül lehetővé teszi, hogy szinkronizáljuk a foglalások adatait a Google naptárunkkal, így más szolgáltatásokkal is használható.
+    about_app_info: "OpenAppointments egy könnyen testreszabható webes alkalmazás mely lehetővé teszi, hogy ügyfelek weben keresztül időpontokat foglalhassanak."
     current_version: Jelenlegi verzió
     support: Támogatás
     about_app_support: Ha bármilyen problémába ütközik az OpenAppointments használata során, válaszokért keresgélhet a projekt GitHub issue-i között. Új issue-t is nyithat, hogy segítse a fejlesztést.

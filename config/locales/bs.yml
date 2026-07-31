@@ -280,7 +280,7 @@ bs:
     book_advance_timeout: Vreme za rezervaciju unapred
     book_advance_timeout_hint: Definiši vremensko ograničenje (u minutama) pre nego što klijenti mogu da rezervišu ili ponovo dogovore sastanke sa kompanijom.
     timeout_minutes: Vreme je isteklo (minuta)
-    about_app_info: Easy! Sastanci su veoma prilagodljiva web aplikacija koja omogućava vašim klijentima da zakažu sastanke s vama putem weba. Štaviše, pruža mogućnost sinhronizacije vaših podataka sa Google kalendarom, tako da ih možete koristiti sa drugim uslugama.
+    about_app_info: "Easy! Sastanci su veoma prilagodljiva web aplikacija koja omogućava vašim klijentima da zakažu sastanke s vama putem weba."
     current_version: Trenutna verzija
     support: Podrška
     about_app_support: Ako naiđete na bilo kakve probleme pri korištenju OpenAppointments, odgovore možete potražiti među prijavljenim problemima projekta na GitHubu. Možda ćete također trebati otvoriti novu prijavu kako biste pomogli razvoju.

@@ -280,7 +280,7 @@ hr:
     book_advance_timeout: Vremenski limit za unaprijed rezerviranje
     book_advance_timeout_hint: Definirajte vremenski limit (u minutama) prije nego što klijenti mogu rezervirati ili preuređivati sastanke s tvrtkom.
     timeout_minutes: Vremenski limit (Minute)
-    about_app_info: OpenAppointments je visoko prilagodljiva web aplikacija koja omogućuje vašim klijentima da rezerviraju sastanke s vama putem weba. Osim toga, omogućuje sinkronizaciju vaših podataka s Google kalendarom, tako da ih možete koristiti s drugim uslugama.
+    about_app_info: "OpenAppointments je visoko prilagodljiva web aplikacija koja omogućuje vašim klijentima da rezerviraju sastanke s vama putem weba."
     current_version: Trenutačna verzija
     support: Podrška
     about_app_support: Ako naiđete na probleme pri korištenju OpenAppointments, odgovore možete potražiti među issue prijavama projekta na GitHubu. Također možete otvoriti novi issue kako biste pomogli razvoju.

@@ -280,7 +280,7 @@ pl:
     book_advance_timeout: Czas bookowania  minął
     book_advance_timeout_hint: Zdefiniuj w minutach czas w którym klient ponownie może zabookować wizytę.
     timeout_minutes: Czas out
-    about_app_info: OpenAppointments jest aplikacją webową wysoce przystosowywalną do potrzeb klienta. Co więcej pozwala na synchronizację z Kalendarzem Google.
+    about_app_info: "OpenAppointments jest aplikacją webową wysoce przystosowywalną do potrzeb klienta."
     current_version: Aktualna Wersja
     support: Pomoc
     about_app_support: Jeśli napotkasz problemy podczas korzystania z OpenAppointments, możesz poszukać odpowiedzi w zgłoszeniach projektu na GitHubie. Możesz też otworzyć nowe zgłoszenie, aby pomóc w rozwoju.

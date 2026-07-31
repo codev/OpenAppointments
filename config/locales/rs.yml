@@ -280,7 +280,7 @@ rs:
     book_advance_timeout: Rezervišite trajanje neaktivnosti unapred
     book_advance_timeout_hint: Odredite trajanje neaktivnosti (u minutima) pre nego što korisnik može rezervisati ili promeniti termin.
     timeout_minutes: Vreme neaktivnosti (minuti)
-    about_app_info: OpenAppointments je veoma prilagodljiva veb-aplikacija koja omogućava Vašim korisnicima da zakazuju termine, a Vama da njima upravljate. Uz to, omogućava istovremenu povezanost Vaših podataka sa Google kalendarom koje možete onda koristiti na ostalim servisima.
+    about_app_info: "OpenAppointments je veoma prilagodljiva veb-aplikacija koja omogućava Vašim korisnicima da zakazuju termine, a Vama da njima upravljate."
     current_version: Trenutna verzija
     support: Podrška
     about_app_support: Ako naiđete na probleme pri korišćenju OpenAppointments, odgovore možete potražiti među issue prijavama projekta na GitHub-u. Možete i otvoriti novi issue kako biste pomogli razvoju.

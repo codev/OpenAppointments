@@ -280,7 +280,7 @@ sk:
     book_advance_timeout: Časové limity rezervácií
     book_advance_timeout_hint: Definujte časový limit (v minútach) kedy najneskôr môžu zákazníci spraviť rezeváciu, alebo rezerváciu naopak zmeniť.
     timeout_minutes: Časový limit (v minútach)
-    about_app_info: OpenAppointments je vysoko prispôsobiteľná webová aplikácia, ktorá umožňuje svojim zákazníkom, aby si rezervácie u Vás online prostredníctvom webu. Navyše poskytuje možnosť synchronizovať vaše dáta s Google Calendárom, ktorý využíva množstvo ľudí, takže ich môžete použiť aj s inými službami.
+    about_app_info: "OpenAppointments je vysoko prispôsobiteľná webová aplikácia, ktorá umožňuje svojim zákazníkom, aby si rezervácie u Vás online prostredníctvom webu."
     current_version: Aktuálna verzia
     support: Podpora
     about_app_support: Ak pri používaní OpenAppointments narazíte na problémy, odpovede môžete hľadať v issues projektu na GitHube. Môžete tiež otvoriť nové issue a pomôcť tak vývoju.

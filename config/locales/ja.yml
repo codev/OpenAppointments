@@ -280,7 +280,7 @@ ja:
     book_advance_timeout: 予約待機時間
     book_advance_timeout_hint: この待機時間 以上前の予約もしくは予約変更しか受け付けることはできません。時間寸前の予約ができないときなどに使用。
     timeout_minutes: 時間 (分)
-    about_app_info: OpenAppointmentsは、カスタマイズ可能な予約受付ウエッブアップリケーションです。さら、Googleカレンダーとの連携ができるので、このシステムのスケジュールを他のシステムのスケジュールとまとめてみることができます。
+    about_app_info: "OpenAppointmentsは、カスタマイズ可能な予約受付ウエッブアップリケーションです。"
     current_version: バージョン番号
     support: サポート
     about_app_support: OpenAppointments の利用中に問題が発生した場合は、GitHub のプロジェクトの issue から回答を検索できます。開発を支援するために新しい issue を作成することもできます。

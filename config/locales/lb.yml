@@ -280,7 +280,7 @@ lb:
     book_advance_timeout: Zäitlimit fir eng Buchung
     book_advance_timeout_hint: Leet eng Zäitlimit fir eng Reservatioun (a Minutten) fest iert d'Clienten ee Rendez-vous aginn oder ännere kënnen.
     timeout_minutes: Zäitlimit (Minutten)
-    about_app_info: OpenAppointments ass eng extrem upassungsfäeg Internet-Applikatioun déi et äre Clienten erméiglecht, een Termäin bei Iech iwwert Internet ze huelen. Doriwwer eraus gëtt en Iech d'Méiglechkeet Är Donnéeën mam Google Kalenner ze synchroniséieren, sou dass Der des mat anere Programmer notze kënnt.
+    about_app_info: "OpenAppointments ass eng extrem upassungsfäeg Internet-Applikatioun déi et äre Clienten erméiglecht, een Termäin bei Iech iwwert Internet ze huelen."
     current_version: Aktuell Versioun
     support: Ënnerstëtzung
     about_app_support: Wann Dir Problemer mat OpenAppointments hutt, kënnt Dir an den Issues vum Projet op GitHub no Äntwerte sichen. Dir kënnt och en neien Issue opmaachen, fir bei der Entwécklung ze hëllefen.

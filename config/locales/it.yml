@@ -280,7 +280,7 @@ it:
     book_advance_timeout: Tempo limite prenotazione
     book_advance_timeout_hint: Definisci il tempo limite (in minuti) entro cui i clienti posso prenotare o modificare gli appuntamento con l'azienda.
     timeout_minutes: Tempo limite (Minuti)
-    about_app_info: OpenAppointments è un'applicazione web estremamente personalizzabile che permette ai tuoi clienti di prenotare appuntamenti con te attraverso il web. Inoltre, fornisce la possibilità di sincronizzare i tuoi dati con Google Calendar in modo da poterli usare in altri servizi.
+    about_app_info: "OpenAppointments è un'applicazione web estremamente personalizzabile che permette ai tuoi clienti di prenotare appuntamenti con te attraverso il web."
     current_version: Versione corrente
     support: Supporto
     about_app_support: Se riscontri problemi nell'uso di OpenAppointments, puoi cercare risposte tra le issue del progetto su GitHub. Puoi anche aprire una nuova issue per aiutare lo sviluppo.
