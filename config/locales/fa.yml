@@ -551,6 +551,7 @@ fa:
     field_mapping: نقشه‌برداری فیلد
     content: محتوا
     active: فعال
+    not_active: "غیرفعال"
     user_imported: رکورد کاربر با موفقیت وارد شد.
     import: وارد کردن
     ldap_dn: LDAP DN

@@ -551,6 +551,7 @@ en:
     field_mapping: Field Mapping
     content: Content
     active: Active
+    not_active: "Not active"
     user_imported: The user record was imported successfully.
     import: Import
     ldap_dn: LDAP DN

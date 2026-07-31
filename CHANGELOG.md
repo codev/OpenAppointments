@@ -9,6 +9,7 @@ CloudronManifest.json.
 - Separate "Active for customers" and "Active for login" captcha switches; login and recovery are gated with ALTCHA or Turnstile per the provider setting
 - Saving captcha settings validates that the active provider is fully configured (ALTCHA HMAC key, Turnstile key pair) and shows an error otherwise
 - Remove the legacy image captcha code left from the port
+- Integrations page shows a status line per integration with a tick when active; webhooks show their count
 
 ## 1.3.2
 

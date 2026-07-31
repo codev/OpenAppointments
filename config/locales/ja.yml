@@ -551,6 +551,7 @@ ja:
     field_mapping: フィールドマッピング
     content: コンテンツ
     active: アクティブ
+    not_active: "無効"
     user_imported: ユーザーのレコードが正常にインポートされました。
     import: インポート
     ldap_dn: LDAP DN

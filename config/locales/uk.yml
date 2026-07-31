@@ -551,6 +551,7 @@ uk:
     field_mapping: Маппінг полів
     content: Контент
     active: Активний
+    not_active: "Неактивно"
     user_imported: Запис користувача успішно імпортовано.
     import: Імпортувати
     ldap_dn: LDAP DN

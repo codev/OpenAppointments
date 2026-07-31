@@ -551,6 +551,7 @@ zh:
     field_mapping: 字段映射
     content: 内容
     active: 启用
+    not_active: "未启用"
     user_imported: 用户记录已成功导入。
     import: 导入
     ldap_dn: LDAP DN

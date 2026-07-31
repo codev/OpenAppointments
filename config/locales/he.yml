@@ -551,6 +551,7 @@ he:
     field_mapping: מיפוי שדות
     content: תוכן
     active: פעיל
+    not_active: "לא פעיל"
     user_imported: רשומת המשתמש יובאה בהצלחה.
     import: ייבוא
     ldap_dn: LDAP DN

@@ -551,6 +551,7 @@ fr:
     field_mapping: Cartographie des Champs
     content: Contenu
     active: Actif
+    not_active: "Inactif"
     user_imported: L'enregistrement de l'utilisateur a été importé avec succès.
     import: Importer
     ldap_dn: DN LDAP

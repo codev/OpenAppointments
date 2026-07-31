@@ -551,6 +551,7 @@ it:
     field_mapping: Mappatura dei Campi
     content: Contenuto
     active: Attivo
+    not_active: "Non attivo"
     user_imported: Il record dell'utente è stato importato con successo.
     import: Importa
     ldap_dn: DN LDAP

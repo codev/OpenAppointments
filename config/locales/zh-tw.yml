@@ -551,6 +551,7 @@ zh-tw:
     field_mapping: 欄位對映
     content: 內容
     active: 啟用
+    not_active: "未啟用"
     user_imported: 使用者記錄已成功匯入。
     import: 匯入
     ldap_dn: LDAP DN

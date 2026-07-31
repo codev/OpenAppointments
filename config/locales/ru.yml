@@ -551,6 +551,7 @@ ru:
     field_mapping: Сопоставление Полей
     content: Содержание
     active: Активный
+    not_active: "Неактивно"
     user_imported: Запись пользователя была успешно импортирована.
     import: Импорт
     ldap_dn: LDAP DN

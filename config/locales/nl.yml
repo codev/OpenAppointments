@@ -551,6 +551,7 @@ nl:
     field_mapping: Veldtoewijzing
     content: Inhoud
     active: Actief
+    not_active: "Niet actief"
     user_imported: Het gebruikersrecord is succesvol geïmporteerd.
     import: Importeren
     ldap_dn: LDAP DN

@@ -551,6 +551,7 @@ ro:
     field_mapping: Mapare Câmpuri
     content: Conținut
     active: Activ
+    not_active: "Inactiv"
     user_imported: Înregistrarea utilizatorului a fost importată cu succes.
     import: Import
     ldap_dn: LDAP DN

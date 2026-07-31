@@ -551,6 +551,7 @@ lv:
     field_mapping: Lauku kartēšana
     content: Saturs
     active: Aktīvs
+    not_active: "Nav aktīvs"
     user_imported: Lietotāja ieraksts tika veiksmīgi importēts.
     import: Importēt
     ldap_dn: LDAP DN

@@ -551,6 +551,7 @@ cs:
     field_mapping: Mapování polí
     content: Obsah
     active: Aktivní
+    not_active: "Neaktivní"
     user_imported: Záznam uživatele byl úspěšně importován.
     import: Importovat
     ldap_dn: LDAP DN

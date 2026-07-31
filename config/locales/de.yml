@@ -551,6 +551,7 @@ de:
     field_mapping: Feldzuordnung
     content: Inhalt
     active: Aktiv
+    not_active: "Nicht aktiv"
     user_imported: Der Benutzerdatensatz wurde erfolgreich importiert.
     import: Importieren
     ldap_dn: LDAP-DN

@@ -551,6 +551,7 @@ da:
     field_mapping: Feltkortlægning
     content: Indhold
     active: Aktiv
+    not_active: "Ikke aktiv"
     user_imported: Brugerposten blev importeret med succes.
     import: Importér
     ldap_dn: LDAP DN

@@ -551,6 +551,7 @@ el:
     field_mapping: Αντιστοίχιση πεδίων
     content: Περιεχόμενο
     active: Ενεργό
+    not_active: "Ανενεργό"
     user_imported: Η εγγραφή χρήστη εισήχθη με επιτυχία.
     import: Εισαγωγή
     ldap_dn: LDAP DN

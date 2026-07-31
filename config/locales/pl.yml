@@ -551,6 +551,7 @@ pl:
     field_mapping: Mapowanie pól
     content: Treść
     active: Aktywny
+    not_active: "Nieaktywne"
     user_imported: Rekord użytkownika został pomyślnie zaimportowany.
     import: Importuj
     ldap_dn: LDAP DN

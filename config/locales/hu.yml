@@ -551,6 +551,7 @@ hu:
     field_mapping: Mezők leképezése
     content: Tartalom
     active: Aktív
+    not_active: "Nem aktív"
     user_imported: A felhasználó rekord sikeresen importálva.
     import: Importálás
     ldap_dn: LDAP DN

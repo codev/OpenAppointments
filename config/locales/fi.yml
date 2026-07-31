@@ -551,6 +551,7 @@ fi:
     field_mapping: Kenttien yhdistäminen
     content: Sisältö
     active: Aktiivinen
+    not_active: "Ei aktiivinen"
     user_imported: Käyttäjätietueen tuonti onnistui.
     import: Tuo
     ldap_dn: LDAP DN

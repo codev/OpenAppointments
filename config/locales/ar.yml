@@ -551,6 +551,7 @@ ar:
     field_mapping: رسم الخرائط الميدانية
     content: المحتوى
     active: نشط
+    not_active: "غير مفعل"
     user_imported: تم استيراد سجل المستخدم بنجاح
     import: الاستيراد
     ldap_dn: LDAP DN

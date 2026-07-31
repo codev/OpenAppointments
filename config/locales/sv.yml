@@ -551,6 +551,7 @@ sv:
     field_mapping: Koppling av fält
     content: Innehåll
     active: Aktiv
+    not_active: "Inte aktiv"
     user_imported: Importen av användaren lyckades
     import: Importera
     ldap_dn: LDAP DN

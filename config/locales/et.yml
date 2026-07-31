@@ -551,6 +551,7 @@ et:
     field_mapping: Väljade Kaardistamine
     content: Sisu
     active: Aktiivne
+    not_active: "Pole aktiivne"
     user_imported: Kasutaja andmed imporditi edukalt.
     import: Impordi
     ldap_dn: LDAP DN

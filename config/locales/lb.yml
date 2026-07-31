@@ -551,6 +551,7 @@ lb:
     field_mapping: Feld Mapping
     content: Inhalt
     active: Aktiv
+    not_active: "Net aktiv"
     user_imported: D'Benotzeropzeechnung gouf erfollegräich importéiert.
     import: Importéieren
     ldap_dn: LDAP DN

@@ -551,6 +551,7 @@ sq:
     field_mapping: Hartëzimi i Fushave
     content: Përmbajtja
     active: Aktiv
+    not_active: "Joaktiv"
     user_imported: Regjistrimi i përdoruesit u importua me sukses.
     import: Importo
     ldap_dn: LDAP DN

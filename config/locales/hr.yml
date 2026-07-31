@@ -551,6 +551,7 @@ hr:
     field_mapping: Mapiranje Polja
     content: Sadržaj
     active: Aktivan
+    not_active: "Nije aktivno"
     user_imported: Korisnički zapis je uspješno uvezen.
     import: Uvezi
     ldap_dn: LDAP DN

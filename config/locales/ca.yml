@@ -551,6 +551,7 @@ ca:
     field_mapping: Mapejat de camps
     content: Contingut
     active: Actiu
+    not_active: "No actiu"
     user_imported: El registre d'usuari s'ha importat correctament.
     import: Importa
     ldap_dn: DN de LDAP

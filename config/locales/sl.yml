@@ -551,6 +551,7 @@ sl:
     field_mapping: Preslikava polj
     content: Vsebina
     active: Aktivno
+    not_active: "Ni aktivno"
     user_imported: Uporabniški zapis je bil uspešno uvožen.
     import: Uvoz
     ldap_dn: LDAP DN

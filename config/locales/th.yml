@@ -551,6 +551,7 @@ th:
     field_mapping: การแมพฟิลด์
     content: เนื้อหา
     active: ใช้งานอยู่
+    not_active: "ไม่เปิดใช้งาน"
     user_imported: บันทึกผู้ใช้ถูกนำเข้าสำเร็จ
     import: นำเข้า
     ldap_dn: LDAP DN

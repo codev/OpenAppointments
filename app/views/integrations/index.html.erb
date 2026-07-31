@@ -29,6 +29,7 @@
                             </div>
                         </div>
                         <div class="card-footer border-0">
+                            <%= render "status", on: @statuses[:captcha], text: nil %>
                             <a href="/altcha_settings" class="btn btn-outline-primary w-100">
                                 <i class="fas fa-cogs me-2"></i>
                                 <%= lang('configure') %>
@@ -52,6 +53,7 @@
                             </div>
                         </div>
                         <div class="card-footer border-0">
+                            <%= render "status", on: @statuses[:google_calendar], text: nil %>
                             <a href="/google_calendar_settings" class="btn btn-outline-primary w-100">
                                 <i class="fas fa-cogs me-2"></i>
                                 <%= lang('configure') %>
@@ -75,6 +77,7 @@
                             </div>
                         </div>
                         <div class="card-footer border-0">
+                            <%= render "status", on: @statuses[:embedding], text: nil %>
                             <a href="/embed_settings" class="btn btn-outline-primary w-100">
                                 <i class="fas fa-cogs me-2"></i>
                                 <%= lang('configure') %>
@@ -98,6 +101,8 @@
                             </div>
                         </div>
                         <div class="card-footer border-0">
+                            <%= render "status", on: @statuses[:webhooks] > 0,
+                                        text: "#{@statuses[:webhooks]} #{lang('webhooks')}" %>
                             <a href="/webhooks" class="btn btn-outline-primary w-100">
                                 <i class="fas fa-cogs me-2"></i>
                                 <%= lang('configure') %>
@@ -121,6 +126,7 @@
                             </div>
                         </div>
                         <div class="card-footer border-0">
+                            <%= render "status", on: @statuses[:google_analytics], text: nil %>
                             <a href="/google_analytics_settings"
                                class="btn btn-outline-primary w-100">
                                 <i class="fas fa-cogs me-2"></i>
@@ -145,6 +151,7 @@
                             </div>
                         </div>
                         <div class="card-footer border-0">
+                            <%= render "status", on: @statuses[:matomo_analytics], text: nil %>
                             <a href="/matomo_analytics_settings"
                                class="btn btn-outline-primary w-100">
                                 <i class="fas fa-cogs me-2"></i>
@@ -169,6 +176,7 @@
                             </div>
                         </div>
                         <div class="card-footer border-0">
+                            <%= render "status", on: @statuses[:api], text: nil %>
                             <a href="/api_settings" class="btn btn-outline-primary w-100">
                                 <i class="fas fa-cogs me-2"></i>
                                 <%= lang('configure') %>
@@ -192,6 +200,7 @@
                             </div>
                         </div>
                         <div class="card-footer border-0">
+                            <%= render "status", on: @statuses[:ldap], text: nil %>
                             <a href="/ldap_settings" class="btn btn-outline-primary w-100">
                                 <i class="fas fa-cogs me-2"></i>
                                 <%= lang('configure') %>
@@ -215,6 +224,7 @@
                             </div>
                         </div>
                         <div class="card-footer border-0">
+                            <%= render "status", on: @statuses[:jitsi], text: nil %>
                             <a href="/jitsi_settings" class="btn btn-outline-primary w-100">
                                 <i class="fas fa-cogs me-2"></i>
                                 <%= lang('configure') %>

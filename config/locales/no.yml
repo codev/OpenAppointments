@@ -551,6 +551,7 @@
     field_mapping: Felttilordning
     content: Innhold
     active: Aktiv
+    not_active: "Ikke aktiv"
     user_imported: Brukeroppføringen ble importert.
     import: Importer
     ldap_dn: LDAP DN

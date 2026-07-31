@@ -551,6 +551,7 @@ lt:
     field_mapping: Laukų atitiktys (atvaizdis)
     content: Turinys
     active: Aktyvus
+    not_active: "Neaktyvu"
     user_imported: Naudotojo įrašas importuotas.
     import: Importuoti
     ldap_dn: LDAP DN

@@ -551,6 +551,7 @@ tr:
     field_mapping: Alan Eşleme
     content: İçerik
     active: Aktif
+    not_active: "Etkin değil"
     user_imported: Kullanıcı kaydı başarıyla içe aktarıldı.
     import: İçe Aktar
     ldap_dn: LDAP DN

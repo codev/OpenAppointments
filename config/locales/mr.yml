@@ -551,6 +551,7 @@ mr:
     field_mapping: फील्ड मॅपिंग
     content: सामग्री
     active: सक्रिय
+    not_active: "सक्रिय नाही"
     user_imported: वापरकर्त्याची नोंद यशस्वीरित्या आयात झाली.
     import: आयात
     ldap_dn: LDAP DN

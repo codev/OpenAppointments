@@ -551,6 +551,7 @@ bu:
     field_mapping: Полета за съпоставяне
     content: Съдържание
     active: Активен
+    not_active: "Неактивно"
     user_imported: Потребителят е импортиран успешно.
     import: Импортиране
     ldap_dn: LDAP DN
