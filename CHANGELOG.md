@@ -25,6 +25,7 @@ CloudronManifest.json.
 - Selecting a service or provider scrolls to its description under the cards, shown without repeating the picture
 - Categories can be marked Hidden to drop them and their services from the booking page; the flag rides export and import
 - The Select Provider First switch is a button beside Next instead of a link under the content
+- The wizard Next buttons follow the theme's primary colour instead of always being black
 
 ## 1.3.2
 
