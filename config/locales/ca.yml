@@ -708,6 +708,14 @@ ca:
     coming_soon: Coming soon
     messages_incoming: Incoming
     messages_incoming_hint: Customer can reply to support incoming messages as well as outgoing ones.
+    messages_smsgateway_url: "URL del servidor"
+    messages_smsgateway_login: "Usuari de l'API"
+    messages_smsgateway_password: "Contrasenya de l'API"
+    messages_smsgateway_signing_key: "Clau de signatura del webhook"
+    messages_register_webhook: "Registra el webhook"
+    messages_register_webhook_hint: "Registra l'adreça de dalt al servidor de la passarel·la perquè el telèfon hi lliuri els SMS entrants; executeu-ho un cop després de desar."
+    messages_webhook_registered: "Webhook registrat."
+    messages_provider_smsgateway_info: "Envia i rep SMS mitjançant un telèfon Android amb l'aplicació SMS Gateway contra el nostre propi servidor, sense costos per missatge."
     messages_email_outgoing: Outgoing email
     messages_email_mode: Sending method
     messages_email_mode_server: Send email through server

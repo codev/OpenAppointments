@@ -708,6 +708,14 @@ uk:
     coming_soon: Coming soon
     messages_incoming: Incoming
     messages_incoming_hint: Customer can reply to support incoming messages as well as outgoing ones.
+    messages_smsgateway_url: "URL сервера"
+    messages_smsgateway_login: "Логін API"
+    messages_smsgateway_password: "Пароль API"
+    messages_smsgateway_signing_key: "Ключ підпису вебхуків"
+    messages_register_webhook: "Зареєструвати вебхук"
+    messages_register_webhook_hint: "Реєструє адресу вище на сервері шлюзу, щоб телефон доставляв туди вхідні SMS; виконайте один раз після збереження."
+    messages_webhook_registered: "Вебхук зареєстровано."
+    messages_provider_smsgateway_info: "Надсилає та отримує SMS через Android-телефон із застосунком SMS Gateway і власним сервером, без плати за повідомлення."
     messages_email_outgoing: Outgoing email
     messages_email_mode: Sending method
     messages_email_mode_server: Send email through server

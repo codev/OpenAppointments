@@ -708,6 +708,14 @@ hu:
     coming_soon: Coming soon
     messages_incoming: Incoming
     messages_incoming_hint: Customer can reply to support incoming messages as well as outgoing ones.
+    messages_smsgateway_url: "Szerver URL"
+    messages_smsgateway_login: "API belepesi nev"
+    messages_smsgateway_password: "API jelszo"
+    messages_smsgateway_signing_key: "Webhook alairo kulcs"
+    messages_register_webhook: "Webhook regisztralasa"
+    messages_register_webhook_hint: "A fenti cimet regisztralja az atjaro szerveren, hogy a telefon oda kezbesitse a bejovo SMS-eket; mentes utan egyszer futtassa."
+    messages_webhook_registered: "Webhook regisztralva."
+    messages_provider_smsgateway_info: "SMS kuldese es fogadasa egy SMS Gateway alkalmazast futtato Android telefonon at, sajat szerverrel, uzenetenkenti koltseg nelkul."
     messages_email_outgoing: Outgoing email
     messages_email_mode: Sending method
     messages_email_mode_server: Send email through server

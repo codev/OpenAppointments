@@ -708,6 +708,14 @@ zh:
     coming_soon: Coming soon
     messages_incoming: Incoming
     messages_incoming_hint: Customer can reply to support incoming messages as well as outgoing ones.
+    messages_smsgateway_url: "服务器网址"
+    messages_smsgateway_login: "API 账号"
+    messages_smsgateway_password: "API 密码"
+    messages_smsgateway_signing_key: "Webhook 签名密钥"
+    messages_register_webhook: "注册 Webhook"
+    messages_register_webhook_hint: "将上方地址注册到网关服务器,让手机把收到的短信投递到该地址;保存后执行一次。"
+    messages_webhook_registered: "Webhook 已注册。"
+    messages_provider_smsgateway_info: "通过运行 SMS Gateway 应用的 Android 手机与自有服务器收发短信,无每条费用。"
     messages_email_outgoing: Outgoing email
     messages_email_mode: Sending method
     messages_email_mode_server: Send email through server

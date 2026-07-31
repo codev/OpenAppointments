@@ -708,6 +708,14 @@ sv:
     coming_soon: Coming soon
     messages_incoming: Incoming
     messages_incoming_hint: Customer can reply to support incoming messages as well as outgoing ones.
+    messages_smsgateway_url: "Server-URL"
+    messages_smsgateway_login: "API-inloggning"
+    messages_smsgateway_password: "API-loesenord"
+    messages_smsgateway_signing_key: "Webhook-signeringsnyckel"
+    messages_register_webhook: "Registrera webhook"
+    messages_register_webhook_hint: "Registrerar adressen ovan paa gateway-servern saa att telefonen levererar inkommande SMS dit; koer en gaang efter att du sparat."
+    messages_webhook_registered: "Webhook registrerad."
+    messages_provider_smsgateway_info: "Skickar och tar emot SMS via en Android-telefon med SMS Gateway-appen mot vaar egen server, ingen kostnad per meddelande."
     messages_email_outgoing: Outgoing email
     messages_email_mode: Sending method
     messages_email_mode_server: Send email through server

@@ -25,6 +25,12 @@ module Messaging
       "messages_email_imap_password" => "",
 
       # SMS providers
+      "messages_smsgateway_enabled" => "0",
+      "messages_smsgateway_incoming" => "0",
+      "messages_smsgateway_url" => "",
+      "messages_smsgateway_login" => "",
+      "messages_smsgateway_password" => "",
+      "messages_smsgateway_signing_key" => "",
       "messages_twilio_enabled" => "0",
       "messages_twilio_incoming" => "0",
       "messages_twilio_account_sid" => "",
