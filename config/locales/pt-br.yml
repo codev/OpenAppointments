@@ -35,6 +35,8 @@ pt-br:
     backup_failed: "O backup falhou, verifique os logs do servidor."
     ods_file: "Arquivo ODS"
     zip_file: "Zip com imagens"
+    images_zip_optional: "Zip de imagens (opcional)"
+    images_zip_hint: "Adicione o zip exportado com imagens para importar as fotos de servicos, categorias e profissionais, opcional."
     import_type: "Tipo de importação"
     full_reset_label: "Redefinição completa, excluir administradores e redefinir configurações"
     delete_personal_information_setting_hint: "Permitir que os clientes removam todos os seus agendamentos e informações pessoais do sistema com um botão."

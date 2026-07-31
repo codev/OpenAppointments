@@ -21,20 +21,18 @@ class TenToEightImportJob < ApplicationJob
   end
 
   def perform(import_id:, file_path:, phases:, days_back:, days_forward:, create_providers:,
-              import_type: "ten_to_eight", today: nil)
+              import_type: "ten_to_eight", images_path: nil, today: nil)
     write_status(import_id, state: "running", phase: "extract")
 
-    # A zip bundle carries the ODS plus the images its picture columns reference.
-    extract_path = file_path
+    # The optional images zip carries the pictures the sheets reference by filename.
     images_dir = nil
-    if import_type == "ods" && OdsBundle.bundle?(file_path)
-      images_dir = "#{file_path}-bundle"
-      extract_path = OdsBundle.unpack(file_path, images_dir)
-      raise ArgumentError, "No ODS file found in the zip." unless extract_path
+    if images_path
+      images_dir = "#{file_path}-images"
+      OdsBundle.unpack(images_path, images_dir)
     end
 
     data = EXTRACTORS.fetch(import_type).new(
-      extract_path, today: today ? Date.parse(today) : Date.current,
+      file_path, today: today ? Date.parse(today) : Date.current,
       days_back: days_back, days_forward: days_forward
     ).call
 
@@ -49,7 +47,8 @@ class TenToEightImportJob < ApplicationJob
     raise
   ensure
     FileUtils.rm_f(file_path)
-    FileUtils.rm_rf("#{file_path}-bundle")
+    FileUtils.rm_f(images_path) if images_path
+    FileUtils.rm_rf("#{file_path}-images")
   end
 
   private

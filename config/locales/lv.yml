@@ -35,6 +35,8 @@ lv:
     backup_failed: "Rezerves kopija neizdevas, parbaudiet servera zurnalus."
     ods_file: "ODS fails"
     zip_file: "Zip ar atteliem"
+    images_zip_optional: "Attelu zip (neobligati)"
+    images_zip_hint: "Pievienojiet eksporteto zip ar atteliem, lai importetu pakalpojumu, kategoriju un sniedzeju attelus, neobligati."
     import_type: "Importa veids"
     full_reset_label: "Pilnīga atiestatīšana, dzēst administratorus un atiestatīt iestatījumus"
     delete_personal_information_setting_hint: "Ļaut klientiem ar vienu pogu noņemt no sistēmas visas savas rezervācijas un personas datus."

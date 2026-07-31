@@ -35,6 +35,8 @@ tr:
     backup_failed: "Yedekleme basarisiz oldu, sunucu kayitlarini kontrol edin."
     ods_file: "ODS dosyasi"
     zip_file: "Resimlerle birlikte Zip"
+    images_zip_optional: "Resim zipi (istege bagli)"
+    images_zip_hint: "Hizmet, kategori ve saglayici resimlerini almak icin resimli disa aktarilmis zipi ekleyin, istege bagli."
     import_type: "İçe aktarma türü"
     full_reset_label: "Tam sıfırlama, yöneticileri sil ve ayarları sıfırla"
     delete_personal_information_setting_hint: "Müşterilerin tüm randevularını ve kişisel bilgilerini tek bir düğmeyle sistemden kaldırmasına izin verin."

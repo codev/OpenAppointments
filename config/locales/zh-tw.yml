@@ -35,6 +35,8 @@ zh-tw:
     backup_failed: "備份失敗，請檢查伺服器記錄。"
     ods_file: "ODS 檔案"
     zip_file: "含圖片的 Zip"
+    images_zip_optional: "圖片 Zip(選填)"
+    images_zip_hint: "加入含圖片的匯出 Zip 以匯入服務、分類與服務人員的圖片,選填。"
     import_type: "匯入類型"
     full_reset_label: "完全重設，刪除管理員並重設設定"
     delete_personal_information_setting_hint: "允許客戶透過一個按鈕從系統中刪除他們的所有預約和個人資料。"

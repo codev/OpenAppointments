@@ -35,6 +35,8 @@ fr:
     backup_failed: "La sauvegarde a échoué, consultez les journaux du serveur."
     ods_file: "Fichier ODS"
     zip_file: "Zip avec images"
+    images_zip_optional: "Zip d'images (facultatif)"
+    images_zip_hint: "Ajoutez le zip exporté avec les images pour importer les photos des services, catégories et prestataires, facultatif."
     import_type: "Type d'importation"
     full_reset_label: "Réinitialisation complète, supprimer les administrateurs et réinitialiser les paramètres"
     delete_personal_information_setting_hint: "Permettre aux clients de supprimer tous leurs rendez-vous et informations personnelles du système avec un bouton."

@@ -35,6 +35,8 @@ cs:
     backup_failed: "Záloha selhala, zkontrolujte serverové logy."
     ods_file: "Soubor ODS"
     zip_file: "Zip s obrázky"
+    images_zip_optional: "Zip s obrázky (volitelné)"
+    images_zip_hint: "Přidejte exportovaný zip s obrázky pro import fotek služeb, kategorií a poskytovatelů, volitelné."
     import_type: "Typ importu"
     full_reset_label: "Úplný reset, smazat administrátory a obnovit nastavení"
     delete_personal_information_setting_hint: "Umožněte zákazníkům jedním tlačítkem odstranit ze systému všechny jejich schůzky a osobní údaje."

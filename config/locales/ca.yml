@@ -35,6 +35,8 @@ ca:
     backup_failed: "La còpia de seguretat ha fallat, reviseu els registres del servidor."
     ods_file: "Fitxer ODS"
     zip_file: "Zip amb imatges"
+    images_zip_optional: "Zip d'imatges (opcional)"
+    images_zip_hint: "Afegiu el zip exportat amb imatges per importar les fotos de serveis, categories i professionals, opcional."
     import_type: "Tipus d'importació"
     full_reset_label: "Restabliment complet, elimina els administradors i restableix la configuració"
     delete_personal_information_setting_hint: "Permet als clients eliminar totes les seves cites i informació personal del sistema amb un botó."

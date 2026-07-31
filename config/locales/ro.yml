@@ -35,6 +35,8 @@ ro:
     backup_failed: "Copia de siguranta a esuat, verificati jurnalele serverului."
     ods_file: "Fisier ODS"
     zip_file: "Zip cu imagini"
+    images_zip_optional: "Zip cu imagini (optional)"
+    images_zip_hint: "Adaugati zipul exportat cu imagini pentru a importa fotografiile serviciilor, categoriilor si furnizorilor, optional."
     import_type: "Tip de import"
     full_reset_label: "Resetare completă, șterge administratorii și resetează setările"
     delete_personal_information_setting_hint: "Permiteți clienților să își elimine toate programările și informațiile personale din sistem cu un buton."

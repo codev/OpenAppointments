@@ -35,6 +35,8 @@ ja:
     backup_failed: "バックアップに失敗しました。サーバーログを確認してください。"
     ods_file: "ODSファイル"
     zip_file: "画像付きZip"
+    images_zip_optional: "画像Zip(任意)"
+    images_zip_hint: "サービス、カテゴリ、担当者の画像を取り込むには、画像入りのエクスポートZipを追加してください(任意)。"
     import_type: "インポートの種類"
     full_reset_label: "完全リセット、管理者を削除し設定をリセットします"
     delete_personal_information_setting_hint: "顧客がボタンひとつで自分の予約と個人情報をすべてシステムから削除できるようにします。"

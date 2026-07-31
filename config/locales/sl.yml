@@ -35,6 +35,8 @@ sl:
     backup_failed: "Varnostna kopija ni uspela, preverite dnevnike streznika."
     ods_file: "Datoteka ODS"
     zip_file: "Zip s slikami"
+    images_zip_optional: "Zip s slikami (neobvezno)"
+    images_zip_hint: "Dodajte izvozeni zip s slikami za uvoz slik storitev, kategorij in izvajalcev, neobvezno."
     import_type: "Vrsta uvoza"
     full_reset_label: "Popolna ponastavitev, izbriši skrbnike in ponastavi nastavitve"
     delete_personal_information_setting_hint: "Strankam omogočite, da z gumbom odstranijo vse svoje termine in osebne podatke iz sistema."

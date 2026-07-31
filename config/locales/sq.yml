@@ -35,6 +35,8 @@ sq:
     backup_failed: "Kopja rezerve deshtoi, kontrolloni regjistrat e serverit."
     ods_file: "Skedar ODS"
     zip_file: "Zip me imazhe"
+    images_zip_optional: "Zip me imazhe (opsionale)"
+    images_zip_hint: "Shtoni zipin e eksportuar me imazhe per te importuar fotot e sherbimeve, kategorive dhe ofruesve, opsionale."
     import_type: "Lloji i importit"
     full_reset_label: "Rivendosje e plotë, fshi administratorët dhe rivendos cilësimet"
     delete_personal_information_setting_hint: "Lejo klientët të heqin të gjitha takimet dhe të dhënat e tyre personale nga sistemi me një buton."

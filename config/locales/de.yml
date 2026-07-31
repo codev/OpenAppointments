@@ -35,6 +35,8 @@ de:
     backup_failed: "Die Sicherung ist fehlgeschlagen, pruefen Sie die Serverprotokolle."
     ods_file: "ODS-Datei"
     zip_file: "Zip mit Bildern"
+    images_zip_optional: "Bilder-Zip (optional)"
+    images_zip_hint: "Fuegen Sie das exportierte Zip mit Bildern hinzu, um die Bilder von Diensten, Kategorien und Anbietern zu importieren, optional."
     import_type: "Importtyp"
     full_reset_label: "Vollständiger Reset, Administratoren löschen und Einstellungen zurücksetzen"
     delete_personal_information_setting_hint: "Kunden können mit einem Button alle ihre Termine und persönlichen Daten aus dem System entfernen."

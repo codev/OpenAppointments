@@ -35,6 +35,8 @@ zh:
     backup_failed: "备份失败,请检查服务器日志。"
     ods_file: "ODS 文件"
     zip_file: "含图片的 Zip"
+    images_zip_optional: "图片 Zip(可选)"
+    images_zip_hint: "添加含图片的导出 Zip 以导入服务、分类和服务人员的图片,可选。"
     import_type: "导入类型"
     full_reset_label: "完全重置，删除管理员并重置设置"
     delete_personal_information_setting_hint: "允许客户通过一个按钮从系统中删除他们的所有预约和个人信息。"

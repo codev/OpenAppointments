@@ -35,6 +35,8 @@ nl:
     backup_failed: "De back-up is mislukt, controleer de serverlogs."
     ods_file: "ODS-bestand"
     zip_file: "Zip met afbeeldingen"
+    images_zip_optional: "Afbeeldingen-zip (optioneel)"
+    images_zip_hint: "Voeg de geexporteerde zip met afbeeldingen toe om de foto's van diensten, categorieen en aanbieders te importeren, optioneel."
     import_type: "Importtype"
     full_reset_label: "Volledige reset, verwijder beheerders en herstel instellingen"
     delete_personal_information_setting_hint: "Sta klanten toe om met een knop al hun afspraken en persoonlijke gegevens uit het systeem te verwijderen."

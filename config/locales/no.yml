@@ -35,6 +35,8 @@
     backup_failed: "Sikkerhetskopien mislyktes, sjekk serverloggene."
     ods_file: "ODS-fil"
     zip_file: "Zip med bilder"
+    images_zip_optional: "Zip med bilder (valgfritt)"
+    images_zip_hint: "Legg til den eksporterte zip-en med bilder for aa importere tjeneste-, kategori- og tilbyderbilder, valgfritt."
     import_type: "Importtype"
     full_reset_label: "Full tilbakestilling, slett administratorer og tilbakestill innstillinger"
     delete_personal_information_setting_hint: "La kunder fjerne alle sine avtaler og personlige opplysninger fra systemet med en knapp."

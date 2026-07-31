@@ -35,6 +35,8 @@ sv:
     backup_failed: "Sakerhetskopian misslyckades, kontrollera serverloggarna."
     ods_file: "ODS-fil"
     zip_file: "Zip med bilder"
+    images_zip_optional: "Zip med bilder (valfritt)"
+    images_zip_hint: "Lagg till den exporterade zipen med bilder for att importera tjanste-, kategori- och utforarbilder, valfritt."
     import_type: "Importtyp"
     full_reset_label: "Fullständig återställning, ta bort administratörer och återställ inställningar"
     delete_personal_information_setting_hint: "Låt kunder ta bort alla sina bokningar och personuppgifter från systemet med en knapp."

@@ -16,6 +16,7 @@ CloudronManifest.json.
 - Exports run in the background and produce both a plain ODS and a zip with images; the five newest backups stay on the server with admin-only dated downloads
 - ODS imports can restore settings (integrations included) via a Settings tickbox, unticked by default; new settings flow through export and import automatically
 - Exported ODS sheets have bold header rows and columns sized to their contents
+- Imports take a plain ODS plus an optional images zip for pictures; the combined zip bundle upload is gone
 
 ## 1.3.2
 

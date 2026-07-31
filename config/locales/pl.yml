@@ -35,6 +35,8 @@ pl:
     backup_failed: "Kopia zapasowa nie powiodla sie, sprawdz logi serwera."
     ods_file: "Plik ODS"
     zip_file: "Zip z obrazami"
+    images_zip_optional: "Zip z obrazami (opcjonalnie)"
+    images_zip_hint: "Dodaj wyeksportowany zip z obrazami, aby zaimportowac zdjecia uslug, kategorii i uslugodawcow, opcjonalnie."
     import_type: "Typ importu"
     full_reset_label: "Pełny reset, usuń administratorów i zresetuj ustawienia"
     delete_personal_information_setting_hint: "Pozwól klientom jednym przyciskiem usunąć z systemu wszystkie swoje wizyty i dane osobowe."

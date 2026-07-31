@@ -61,15 +61,8 @@ class ImportController < ApplicationController
 
   # POST /import/analyze - dry run: parse the upload and return the counts.
   def analyze
-    path = uploaded_file_path
-    if extractor_type == "ods" && OdsBundle.bundle?(path)
-      @analyze_bundle_dir = Rails.root.join("tmp", "manage-data-analyze-#{SecureRandom.hex(6)}").to_s
-      path = OdsBundle.unpack(path, @analyze_bundle_dir)
-      raise ArgumentError, "No ODS file found in the zip." unless path
-    end
-
     data = extractor_class.new(
-      path, days_back: params[:days_back] || 21, days_forward: params[:days_forward] || 21
+      uploaded_file_path, days_back: params[:days_back] || 21, days_forward: params[:days_forward] || 21
     ).call
     render json: {
       success: true,
@@ -83,7 +76,6 @@ class ImportController < ApplicationController
   rescue ArgumentError, CSV::MalformedCSVError => e
     json_exception(e)
   ensure
-    FileUtils.rm_rf(@analyze_bundle_dir) if @analyze_bundle_dir
     cleanup_upload
   end
 
@@ -95,8 +87,16 @@ class ImportController < ApplicationController
     FileUtils.mkdir_p(File.dirname(path))
     FileUtils.cp(uploaded_file_path, path)
 
+    images_path = nil
+    if params[:images_file].respond_to?(:tempfile)
+      raise ArgumentError, "The file is too large." if params[:images_file].size > MAX_UPLOAD_SIZE
+
+      images_path = "#{path}-images.zip"
+      FileUtils.cp(params[:images_file].tempfile.path, images_path)
+    end
+
     TenToEightImportJob.perform_later(
-      import_id: import_id, file_path: path, import_type: import_type,
+      import_id: import_id, file_path: path, images_path: images_path, import_type: import_type,
       phases: Array(params[:phases]) & TenToEight::Load::PHASES,
       days_back: (params[:days_back] || 21).to_i, days_forward: (params[:days_forward] || 21).to_i,
       create_providers: ActiveModel::Type::Boolean.new.cast(params[:create_providers]) || false
@@ -151,8 +151,10 @@ class ImportController < ApplicationController
   end
 
   def cleanup_upload
-    params[:file].tempfile.close! if params[:file].respond_to?(:tempfile)
-  rescue StandardError
-    nil
+    [ params[:file], params[:images_file] ].each do |file|
+      file.tempfile.close! if file.respond_to?(:tempfile)
+    rescue StandardError
+      nil
+    end
   end
 end

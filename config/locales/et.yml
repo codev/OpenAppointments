@@ -35,6 +35,8 @@ et:
     backup_failed: "Varukoopia ebaonnestus, kontrollige serveri logisid."
     ods_file: "ODS-fail"
     zip_file: "Zip koos piltidega"
+    images_zip_optional: "Piltide zip (valikuline)"
+    images_zip_hint: "Lisage eksporditud piltidega zip, et importida teenuste, kategooriate ja teenusepakkujate pildid, valikuline."
     import_type: "Impordi tüüp"
     full_reset_label: "Täielik lähtestamine, kustuta administraatorid ja lähtesta seaded"
     delete_personal_information_setting_hint: "Luba klientidel ühe nupuvajutusega eemaldada süsteemist kõik oma broneeringud ja isikuandmed."

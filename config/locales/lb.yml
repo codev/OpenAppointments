@@ -35,6 +35,8 @@ lb:
     backup_failed: "De Backup ass feelgeschloen, kuckt d'Serverlogs."
     ods_file: "ODS-Fichier"
     zip_file: "Zip mat Biller"
+    images_zip_optional: "Biller-Zip (optional)"
+    images_zip_hint: "Setzt den exportéierten Zip mat Biller derbaei fir d'Biller vu Servicer, Kategorien an Ubidder z'importéieren, optional."
     import_type: "Importtyp"
     full_reset_label: "Komplette Reset, Administrateure läschen an Astellungen zerécksetzen"
     delete_personal_information_setting_hint: "Erlaabt Clienten all hir Rendez-vousen a perséinlech Donnéeë mat engem Knäppchen aus dem System ze läschen."

@@ -35,6 +35,8 @@ rs:
     backup_failed: "Rezervna kopija nije uspela, proverite serverske logove."
     ods_file: "ODS datoteka"
     zip_file: "Zip sa slikama"
+    images_zip_optional: "Zip sa slikama (opciono)"
+    images_zip_hint: "Dodajte izvezeni zip sa slikama da uvezete slike usluga, kategorija i pružalaca, opciono."
     import_type: "Vrsta uvoza"
     full_reset_label: "Potpuno resetovanje, obriši administratore i resetuj podešavanja"
     delete_personal_information_setting_hint: "Dozvolite klijentima da jednim dugmetom uklone sve svoje termine i lične podatke iz sistema."

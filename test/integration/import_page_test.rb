@@ -293,4 +293,49 @@ class ImportPageTest < ActionDispatch::IntegrationTest
   ensure
     FileUtils.rm_f(upload_path) if upload_path
   end
+
+  test "the optional images zip attaches pictures, a plain ods imports without" do
+    require "zip"
+    login_admin
+    services(:haircut).picture.attach(
+      io: StringIO.new(file_fixture("picture.png").binread), filename: "haircut.png", content_type: "image/png"
+    )
+    ods_path = Rails.root.join("tmp", "images-zip-test-#{SecureRandom.hex(4)}.ods")
+    File.binwrite(ods_path, DataExport.generate)
+    zip_path = Rails.root.join("tmp", "images-zip-test-#{SecureRandom.hex(4)}.zip")
+    Zip::OutputStream.open(zip_path) do |stream|
+      stream.put_next_entry("haircut.png")
+      stream.write(file_fixture("picture.png").binread)
+    end
+    services(:haircut).picture.purge
+
+    # Without the zip the data imports and no picture attaches.
+    post "/import/start", params: {
+      file: Rack::Test::UploadedFile.new(ods_path, Ods::MIMETYPE), import_type: "ods",
+      phases: [ "services" ], days_back: 21, days_forward: 21
+    }
+    perform_enqueued_jobs
+    assert_not services(:haircut).reload.picture.attached?
+
+    # With the zip the referenced picture attaches.
+    post "/import/start", params: {
+      file: Rack::Test::UploadedFile.new(ods_path, Ods::MIMETYPE),
+      images_file: Rack::Test::UploadedFile.new(zip_path, "application/zip"),
+      import_type: "ods", phases: [ "services" ], days_back: 21, days_forward: 21
+    }
+    perform_enqueued_jobs
+    assert services(:haircut).reload.picture.attached?
+  ensure
+    FileUtils.rm_f(ods_path) if ods_path
+    FileUtils.rm_f(zip_path) if zip_path
+  end
+
+  test "the images strings exist in every locale" do
+    I18n.available_locales.each do |locale|
+      %w[images_zip_optional images_zip_hint].each do |key|
+        assert I18n.t("ea.#{key}", locale: locale, fallback: false, default: nil).present?,
+               "missing ea.#{key} in #{locale}"
+      end
+    end
+  end
 end
