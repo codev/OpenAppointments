@@ -338,4 +338,58 @@ class ImportPageTest < ActionDispatch::IntegrationTest
       end
     end
   end
+
+  test "staff passwords round-trip through export and import as stored hashes" do
+    login_admin
+    assistant = User.assistants.first
+    assistant.create_settings!(username: "assist1", password: Passwords.hash("assistpass1"),
+                               notifications: false)
+    admin2 = User.create!(name: "Second Admin", email: "admin2@example.org",
+                          timezone: "Europe/London", role: Role.find_by!(slug: Role::ADMIN))
+    admin2.create_settings!(username: "admin2", password: Passwords.hash("adminpass2"), notifications: false)
+
+    ods_path = Rails.root.join("tmp", "pw-roundtrip-#{SecureRandom.hex(4)}.ods")
+    File.binwrite(ods_path, DataExport.generate)
+
+    sheets = Ods.parse(ods_path.to_s)
+    %w[Providers Assistants Admins].each do |sheet|
+      assert_includes sheets[sheet].first, "password_hash", "#{sheet} sheet misses password_hash"
+    end
+    hashes = sheets["Admins"].drop(1).flat_map { |row| row.last.to_s }
+    assert(hashes.none? { |value| value.include?("adminpass2") }, "plain password leaked into export")
+
+    admin2.settings.update(password: Passwords.hash("changed"))
+    assistant.settings.update(password: Passwords.hash("changed"))
+    zane_settings = users(:zane).settings
+    zane_settings.update(password: Passwords.hash("changed"))
+
+    post "/import/start", params: {
+      file: Rack::Test::UploadedFile.new(ods_path, Ods::MIMETYPE), import_type: "ods",
+      phases: [ "providers" ], days_back: 21, days_forward: 21
+    }
+    perform_enqueued_jobs
+
+    assert Passwords.verify(nil, "janedoe1", zane_settings.reload.password)
+    assert Passwords.verify(nil, "assistpass1", assistant.settings.reload.password)
+    assert Passwords.verify(nil, "adminpass2", admin2.settings.reload.password)
+
+    # Deleted staff come back with working logins when creation is allowed.
+    AssistantProviderLink.where(id_users_assistant: assistant.id).delete_all
+    assistant.settings.destroy
+    assistant.destroy
+    admin2.settings.destroy
+    admin2.destroy
+
+    post "/import/start", params: {
+      file: Rack::Test::UploadedFile.new(ods_path, Ods::MIMETYPE), import_type: "ods",
+      phases: [ "providers" ], create_providers: "1", days_back: 21, days_forward: 21
+    }
+    perform_enqueued_jobs
+
+    post "/logout"
+    post "/login/validate", params: { username: "admin2", password: "adminpass2" }
+    assert_equal true, response.parsed_body["success"]
+  ensure
+    FileUtils.rm_f(ods_path) if ods_path
+  end
 end

@@ -18,6 +18,8 @@ class OdsExtract
       staff: staff_rows,
       customers: customers_rows,
       appointments: appointments_rows,
+      assistants: assistants_rows,
+      admins: admins_rows,
       settings: settings_rows
     }
   end
@@ -64,7 +66,23 @@ class OdsExtract
         services: row["services"].to_s.split("|"), working_plan: plan,
         username: row["username"].presence, about: row["about"].presence,
         services_description: row["services_description"].presence,
-        picture: row["picture"].presence }
+        picture: row["picture"].presence, password_hash: row["password_hash"].presence }
+    end
+  end
+
+  def assistants_rows
+    rows("Assistants").map do |row|
+      { name: row["name"], email: row["email"], phone: row["phone_number"],
+        timezone: row["timezone"].presence, providers: row["providers"].to_s.split("|"),
+        username: row["username"].presence, password_hash: row["password_hash"].presence }
+    end
+  end
+
+  def admins_rows
+    rows("Admins").map do |row|
+      { name: row["name"], email: row["email"], phone: row["phone_number"],
+        timezone: row["timezone"].presence, username: row["username"].presence,
+        password_hash: row["password_hash"].presence }
     end
   end
 

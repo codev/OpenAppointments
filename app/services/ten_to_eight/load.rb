@@ -20,7 +20,11 @@ module TenToEight
     def call
       load_categories if phase?("categories")
       load_services if phase?("services")
-      load_providers if phase?("providers")
+      if phase?("providers")
+        load_providers
+        load_assistants
+        load_admins
+      end
       load_customers if phase?("customers")
       load_appointments if phase?("appointments")
       load_settings if phase?("settings")
@@ -148,6 +152,7 @@ module TenToEight
             updates[:services_description] = row[:services_description]
           end
           provider.update(updates) if updates.any?
+          restore_password(provider, row[:password_hash])
         elsif @create_providers && row[:email].present?
           provider = guard("providers", counts, row[:name].presence || row[:email]) do
             user = User.create!(
@@ -157,7 +162,7 @@ module TenToEight
             )
             user.create_settings!(
               username: row[:username].presence || row[:email].split("@").first,
-              password: Passwords.hash(SecureRandom.base58(12)),
+              password: row[:password_hash].presence || Passwords.hash(SecureRandom.base58(12)),
               notifications: false,
               working_plan: row[:working_plan].to_json
             )
@@ -178,6 +183,64 @@ module TenToEight
         end
         attach_picture(provider, row[:picture])
         @provider_ids[row[:name]] = provider.id
+      end
+    end
+
+    # Hashes round-trip as stored, so restored logins keep their passwords.
+    def restore_password(user, password_hash)
+      user.settings.update(password: password_hash) if password_hash.present? && user.settings
+    end
+
+    # Assistants and admins ride on the providers phase; only OpenAppointments
+    # ODS backups carry them (10to8 exports have no such sheets).
+    def load_assistants
+      return if Array(@data[:assistants]).empty?
+
+      counts = track("assistants")
+      role = Role.find_by!(slug: Role::ASSISTANT)
+      provider_ids = User.providers.pluck(:name, :id).to_h
+      upsert_staff(@data[:assistants], counts, "assistants", User.assistants, role) do |assistant, row|
+        Array(row[:providers]).filter_map { |name| provider_ids[name] }.each do |provider_id|
+          AssistantProviderLink.create!(id_users_assistant: assistant.id, id_users_provider: provider_id)
+        end
+      end
+    end
+
+    def load_admins
+      return if Array(@data[:admins]).empty?
+
+      counts = track("admins")
+      role = Role.find_by!(slug: Role::ADMIN)
+      upsert_staff(@data[:admins], counts, "admins", User.admins, role)
+    end
+
+    def upsert_staff(rows, counts, phase, scope, role)
+      existing = scope.to_a.index_by { |user| user.email.to_s.downcase }
+      rows.each do |row|
+        user = existing[row[:email].to_s.downcase] if row[:email].present?
+        if user
+          counts[:matched] += 1
+          restore_password(user, row[:password_hash])
+        elsif @create_providers && row[:email].present?
+          user = guard(phase, counts, row[:name].presence || row[:email]) do
+            created = User.create!(
+              name: row[:name], email: row[:email], phone_number: row[:phone],
+              timezone: row[:timezone].presence || "Europe/London", role: role
+            )
+            created.create_settings!(
+              username: row[:username].presence || row[:email].split("@").first,
+              password: row[:password_hash].presence || Passwords.hash(SecureRandom.base58(12)),
+              notifications: false
+            )
+            yield(created, row) if block_given?
+            created
+          end
+          next unless user
+
+          counts[:created] += 1
+        else
+          counts[:skipped] += 1
+        end
       end
     end
 

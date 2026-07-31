@@ -44,10 +44,10 @@ module DataExport
       [ provider.name, provider.email, provider.phone_number, provider.timezone,
         provider.services.map(&:name).join("|"), provider.settings&.working_plan,
         provider.settings&.username, provider.about, provider.services_description,
-        picture_name(provider) ]
+        picture_name(provider), provider.settings&.password ]
     end
     [ %w[name email phone_number timezone services working_plan username
-         about services_description picture] ] + rows
+         about services_description picture password_hash] ] + rows
   end
 
   def picture_name(record)
@@ -57,16 +57,18 @@ module DataExport
   def assistants_sheet
     rows = User.assistants.includes(:providers, :settings).order(:name).map do |assistant|
       [ assistant.name, assistant.email, assistant.phone_number, assistant.timezone,
-        assistant.providers.map(&:name).join("|"), assistant.settings&.username ]
+        assistant.providers.map(&:name).join("|"), assistant.settings&.username,
+        assistant.settings&.password ]
     end
-    [ %w[name email phone_number timezone providers username] ] + rows
+    [ %w[name email phone_number timezone providers username password_hash] ] + rows
   end
 
   def admins_sheet
     rows = User.admins.includes(:settings).order(:name).map do |admin|
-      [ admin.name, admin.email, admin.phone_number, admin.timezone, admin.settings&.username ]
+      [ admin.name, admin.email, admin.phone_number, admin.timezone, admin.settings&.username,
+        admin.settings&.password ]
     end
-    [ %w[name email phone_number timezone username] ] + rows
+    [ %w[name email phone_number timezone username password_hash] ] + rows
   end
 
   def customers_sheet
