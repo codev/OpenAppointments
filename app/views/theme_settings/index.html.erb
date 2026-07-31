@@ -135,6 +135,18 @@
                                     <input type="color" id="company-background-color"
                                            data-field="company_background_color" class="form-control">
                                 </div>
+
+                                <div class="mb-3">
+                                    <label class="form-label" for="custom-css">
+                                        <%= lang('custom_css') %>
+                                    </label>
+
+                                    <textarea id="custom-css" data-field="custom_css" rows="8"
+                                              class="form-control font-monospace" spellcheck="false"></textarea>
+                                    <div class="form-text text-muted small">
+                                        <%= lang('custom_css_hint') %>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </fieldset>

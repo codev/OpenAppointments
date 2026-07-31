@@ -260,6 +260,11 @@ sv:
     booking: Bokning
     visible: Synlig
     hidden: Dold
+    custom_css: "Anpassad CSS"
+    custom_css_hint: "Ange CSS haer foer att aendra temat; det gaeller bokningssidorna och administrationen."
+    select_category: "Vaelj kategori"
+    uncategorized: "Utan kategori"
+    category_hidden_hint: "Dolda kategorier och deras tjaenster visas inte paa bokningssidan."
     business_logic: Bokningsregler
     current_user: Nuvarande användare
     about_app: Om OpenAppointments

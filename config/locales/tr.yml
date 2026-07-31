@@ -260,6 +260,11 @@ tr:
     booking: Rezervasyon
     visible: Gözle görülür
     hidden: Gizli
+    custom_css: "Ozel CSS"
+    custom_css_hint: "Temayi degistirmek icin buraya CSS girin; rezervasyon sayfalarina ve yonetim paneline uygulanir."
+    select_category: "Kategori secin"
+    uncategorized: "Kategorisiz"
+    category_hidden_hint: "Gizli kategoriler ve hizmetleri rezervasyon sayfasinda gosterilmez."
     business_logic: İş Mantığı
     current_user: Mevcut Kullanıcı
     about_app: OpenAppointments Hakkında

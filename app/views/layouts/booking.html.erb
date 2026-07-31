@@ -27,6 +27,7 @@
     <%= stylesheet_link_tag "themes/#{active_theme(vars(:theme))}", "general", "frontend" %>
 
     <%= render "shared/brand_style" %>
+    <%= render "shared/custom_css_style" %>
 
     <% if Embedding.enabled? %>
         <%# Runs before first paint so embedded-only styling (e.g. no login button) never flashes. %>

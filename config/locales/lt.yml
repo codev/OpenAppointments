@@ -260,6 +260,11 @@ lt:
     booking: Rezervacija
     visible: Rodomas
     hidden: Nerodomas
+    custom_css: "Pasirinktinis CSS"
+    custom_css_hint: "Iveskite CSS temai keisti; jis taikomas rezervaciju puslapiams ir administravimui."
+    select_category: "Pasirinkite kategorija"
+    uncategorized: "Be kategorijos"
+    category_hidden_hint: "Paslėptos kategorijos ir ju paslaugos rezervaciju puslapyje nerodomos."
     business_logic: Verslo logika
     current_user: Esamasis naudotojas
     about_app: Apie „OpenAppointments“

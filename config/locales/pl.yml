@@ -260,6 +260,11 @@ pl:
     booking: Rezerwacja
     visible: Widoczny
     hidden: Ukryty
+    custom_css: "Wlasny CSS"
+    custom_css_hint: "Wpisz tutaj CSS, aby zmodyfikowac motyw; dotyczy stron rezerwacji i panelu administracyjnego."
+    select_category: "Wybierz kategorie"
+    uncategorized: "Bez kategorii"
+    category_hidden_hint: "Ukryte kategorie i ich uslugi nie sa widoczne na stronie rezerwacji."
     business_logic: Podział Firmy
     current_user: Bieżący Użytkownik
     about_app: O OpenAppointments

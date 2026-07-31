@@ -260,6 +260,11 @@ de:
     booking: Buchung
     visible: Sichtbar
     hidden: Versteckt
+    custom_css: "Eigenes CSS"
+    custom_css_hint: "Geben Sie hier CSS ein, um das Theme anzupassen; es gilt fuer die Buchungsseiten und die Verwaltung."
+    select_category: "Kategorie waehlen"
+    uncategorized: "Ohne Kategorie"
+    category_hidden_hint: "Versteckte Kategorien und ihre Dienste erscheinen nicht auf der Buchungsseite."
     business_logic: Unternehmerische Logik
     current_user: Aktueller Nutzer
     about_app: Über OpenAppointments

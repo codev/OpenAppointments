@@ -5,7 +5,7 @@ class ThemeSettingsController < ApplicationController
 
   layout "backend"
 
-  ALLOWED_SETTINGS = %w[theme company_color company_secondary_color company_background_color].freeze
+  ALLOWED_SETTINGS = %w[theme company_color company_secondary_color company_background_color custom_css].freeze
 
   def index
     return unless require_backend_page!(:system_settings)

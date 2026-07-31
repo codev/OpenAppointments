@@ -260,6 +260,11 @@ ar:
     booking: حجز
     visible: مرئي
     hidden: مختفي
+    custom_css: "CSS مخصص"
+    custom_css_hint: "أدخل CSS هنا لتعديل السمة، يُطبق على صفحات الحجز وواجهة الإدارة معاً."
+    select_category: "اختر الفئة"
+    uncategorized: "بدون فئة"
+    category_hidden_hint: "الفئات المخفية وخدماتها لا تظهر في صفحة الحجز."
     business_logic: منطق الأعمال
     current_user: المستخدم الحالي
     about_app: About E!A

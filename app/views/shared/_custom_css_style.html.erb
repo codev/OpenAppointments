@@ -1,0 +1,5 @@
+<%# Admin-entered CSS applied everywhere; </style> stripped so it cannot break out. %>
+<% custom_css = setting("custom_css").to_s %>
+<% if custom_css.present? %>
+    <style><%= custom_css.gsub(%r{</style}i, "").html_safe %></style>
+<% end %>

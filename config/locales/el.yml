@@ -260,6 +260,11 @@ el:
     booking: Κράτηση
     visible: Ορατός
     hidden: Κρυμμένος
+    custom_css: "Προσαρμοσμένο CSS"
+    custom_css_hint: "Εισαγάγετε CSS εδώ για να τροποποιήσετε το θέμα· εφαρμόζεται στις σελίδες κρατήσεων και στη διαχείριση."
+    select_category: "Επιλέξτε κατηγορία"
+    uncategorized: "Χωρίς κατηγορία"
+    category_hidden_hint: "Οι κρυφές κατηγορίες και οι υπηρεσίες τους δεν εμφανίζονται στη σελίδα κρατήσεων."
     business_logic: Επιχειρηματική Λογική
     current_user: Τρέχων Χρήστης
     about_app: Σχετικά με το OpenAppointments

@@ -260,6 +260,11 @@ mr:
     booking: बुकिंग
     visible: दृश्यमान
     hidden: लपलेले
+    custom_css: "सानुकूल CSS"
+    custom_css_hint: "थीम बदलण्यासाठी येथे CSS प्रविष्ट करा; ते बुकिंग पृष्ठे आणि प्रशासन इंटरफेस दोन्हीवर लागू होते."
+    select_category: "श्रेणी निवडा"
+    uncategorized: "श्रेणीविरहित"
+    category_hidden_hint: "लपवलेल्या श्रेणी आणि त्यांच्या सेवा बुकिंग पृष्ठावर दिसत नाहीत."
     business_logic: व्यवसाय तर्कशास्त्र
     current_user: तात्कालिक प्रयोगकर्ता
     about_app: अ‍ॅप बद्दल...

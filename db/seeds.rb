@@ -77,6 +77,7 @@ settings = {
   "date_format" => "DMY",
   "time_format" => "regular",
   "theme" => "nice",
+  "custom_css" => "",
   "display_login_button" => "1",
   "default_language" => "english",
   "default_timezone" => "UTC",

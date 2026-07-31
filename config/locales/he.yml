@@ -260,6 +260,11 @@ he:
     booking: הזמנה
     visible: גלוי
     hidden: מוּסתָר
+    custom_css: "CSS מותאם אישית"
+    custom_css_hint: "הזינו כאן CSS לשינוי ערכת הנושא; הוא חל על דפי ההזמנות ועל ממשק הניהול."
+    select_category: "בחרו קטגוריה"
+    uncategorized: "ללא קטגוריה"
+    category_hidden_hint: "קטגוריות מוסתרות והשירותים שלהן אינם מוצגים בדף ההזמנות."
     business_logic: לוגיקה עסקית
     current_user: משתמש נוכחי
     about_app: אודות OpenAppointments

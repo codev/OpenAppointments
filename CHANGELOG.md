@@ -19,6 +19,7 @@ CloudronManifest.json.
 - Imports take a plain ODS plus an optional images zip for pictures; the combined zip bundle upload is gone
 - Provider, assistant and admin passwords export as stored hashes and restore on import; assistants and admins have their own import tickboxes, unticked by default
 - Header: logged in user shown under the OpenAppointments title, settings menu is a cog aligned to the page edge, nav dropdowns stack above page panels; footer booking link removed
+- Custom CSS box on the Theme page, applied to the booking pages and the admin interface, kept across theme changes and backed up as a setting
 
 ## 1.3.2
 

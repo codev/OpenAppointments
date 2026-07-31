@@ -260,6 +260,11 @@ ro:
     booking: Rezervare
     visible: Vizibil
     hidden: Ascuns
+    custom_css: "CSS personalizat"
+    custom_css_hint: "Introduceti CSS aici pentru a modifica tema; se aplica paginilor de programari si administrarii."
+    select_category: "Selectati categoria"
+    uncategorized: "Fara categorie"
+    category_hidden_hint: "Categoriile ascunse si serviciile lor nu apar pe pagina de programari."
     business_logic: Logica afacerii
     current_user: Utilizator curent
     about_app: Despre OpenAppointments

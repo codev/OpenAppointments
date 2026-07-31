@@ -260,6 +260,11 @@ lv:
     booking: Rezervācija
     visible: Redzams
     hidden: Slēpts
+    custom_css: "Pielagots CSS"
+    custom_css_hint: "Ievadiet CSS seit, lai mainitu temu; tas attiecas uz rezervaciju lapam un administraciju."
+    select_category: "Izvelieties kategoriju"
+    uncategorized: "Bez kategorijas"
+    category_hidden_hint: "Sleptas kategorijas un to pakalpojumi rezervaciju lapa netiek raditi."
     business_logic: Biznesa loģika
     current_user: Pašreizējais lietotājs
     about_app: Par OpenAppointments

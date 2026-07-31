@@ -260,6 +260,11 @@ cs:
     booking: Rezervace
     visible: Viditelný
     hidden: Skrytý
+    custom_css: "Vlastní CSS"
+    custom_css_hint: "Zde zadejte CSS pro úpravu motivu; použije se na rezervační stránky i administraci."
+    select_category: "Vyberte kategorii"
+    uncategorized: "Bez kategorie"
+    category_hidden_hint: "Skryté kategorie a jejich služby se na rezervační stránce nezobrazují."
     business_logic: Business logika
     current_user: Přihlášený uživatel
     about_app: O aplikaci OpenAppointments

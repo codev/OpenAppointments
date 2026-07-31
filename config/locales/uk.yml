@@ -260,6 +260,11 @@ uk:
     booking: Бронювання
     visible: Видимий
     hidden: Прихований
+    custom_css: "Власний CSS"
+    custom_css_hint: "Введіть тут CSS для зміни теми; він застосовується до сторінок бронювання та адміністрування."
+    select_category: "Виберіть категорію"
+    uncategorized: "Без категорії"
+    category_hidden_hint: "Приховані категорії та їхні послуги не показуються на сторінці бронювання."
     business_logic: Бізнес-логіка
     current_user: Поточний користувач
     about_app: Про OpenAppointments

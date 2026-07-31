@@ -260,6 +260,11 @@ nl:
     booking: Boeking
     visible: Zichtbaar
     hidden: Verborgen
+    custom_css: "Aangepaste CSS"
+    custom_css_hint: "Voer hier CSS in om het thema aan te passen; het geldt voor de boekingspagina's en de beheeromgeving."
+    select_category: "Selecteer categorie"
+    uncategorized: "Zonder categorie"
+    category_hidden_hint: "Verborgen categorieen en hun diensten verschijnen niet op de boekingspagina."
     business_logic: Bedrijfsinstellingen
     current_user: Huidige gebruiker
     about_app: Over OpenAppointments

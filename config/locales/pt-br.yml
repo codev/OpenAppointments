@@ -260,6 +260,11 @@ pt-br:
     booking: Agendamento
     visible: Visível
     hidden: Escondido
+    custom_css: "CSS personalizado"
+    custom_css_hint: "Insira CSS aqui para modificar o tema; aplica-se às páginas de agendamento e à administração."
+    select_category: "Selecione a categoria"
+    uncategorized: "Sem categoria"
+    category_hidden_hint: "Categorias ocultas e seus serviços não aparecem na página de agendamento."
     business_logic: Lógica de negócio
     current_user: Usuário Atual
     about_app: Sobre o OpenAppointments

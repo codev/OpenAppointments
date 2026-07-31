@@ -260,6 +260,11 @@ bs:
     booking: Rezervacija
     visible: Vidljivo
     hidden: Skriveno
+    custom_css: "Prilagođeni CSS"
+    custom_css_hint: "Ovdje unesite CSS za izmjenu teme, primjenjuje se na stranice za rezervacije i na administraciju."
+    select_category: "Odaberite kategoriju"
+    uncategorized: "Bez kategorije"
+    category_hidden_hint: "Skrivene kategorije i njihove usluge ne prikazuju se na stranici za rezervacije."
     business_logic: Poslovna logika
     current_user: Trenutni korisnik
     about_app: O Easy! Sastancima

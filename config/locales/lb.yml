@@ -260,6 +260,11 @@ lb:
     booking: Reservatioun
     visible: Fir siichtbar
     hidden: Verstoppen
+    custom_css: "Personaliséierten CSS"
+    custom_css_hint: "Gitt hei CSS an fir den Theme unzepassen; et gëllt fir d'Reservatiounssaiten an d'Verwaltung."
+    select_category: "Kategorie wielen"
+    uncategorized: "Ouni Kategorie"
+    category_hidden_hint: "Verstoppte Kategorien an hir Servicer ginn net op der Reservatiounssait ugewisen."
     business_logic: Business Logik
     current_user: Ugemellte Benotzer
     about_app: Iwwert OpenAppointments

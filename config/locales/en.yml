@@ -260,6 +260,11 @@ en:
     booking: Booking
     visible: Visible
     hidden: Hidden
+    custom_css: "Custom CSS"
+    custom_css_hint: "Enter CSS here to modify the theme, it is applied to both the booking pages and the admin interface."
+    select_category: "Select Category"
+    uncategorized: "Uncategorized"
+    category_hidden_hint: "Hidden categories and their services are not shown on the booking page."
     business_logic: Business Logic
     current_user: Current User
     about_app: About OpenAppointments

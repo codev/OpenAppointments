@@ -260,6 +260,11 @@ it:
     booking: Prenotazione
     visible: Visibile
     hidden: Nascosto
+    custom_css: "CSS personalizzato"
+    custom_css_hint: "Inserisci qui il CSS per modificare il tema; si applica alle pagine di prenotazione e all'amministrazione."
+    select_category: "Seleziona categoria"
+    uncategorized: "Senza categoria"
+    category_hidden_hint: "Le categorie nascoste e i loro servizi non compaiono nella pagina di prenotazione."
     business_logic: Logiche di business
     current_user: Utente corrente
     about_app: Info su OpenAppointments

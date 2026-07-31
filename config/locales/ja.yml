@@ -260,6 +260,11 @@ ja:
     booking: 予約
     visible: 目に見える
     hidden: 目に見えません
+    custom_css: "カスタムCSS"
+    custom_css_hint: "テーマを変更するCSSをここに入力します。予約ページと管理画面の両方に適用されます。"
+    select_category: "カテゴリを選択"
+    uncategorized: "未分類"
+    category_hidden_hint: "非表示のカテゴリとそのサービスは予約ページに表示されません。"
     business_logic: 勤務時間設定
     current_user: 現在のユーザー
     about_app: OpenAppointmentsとは。

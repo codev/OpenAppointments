@@ -260,6 +260,11 @@ sq:
     booking: Rezervim
     visible: I Dukshëm
     hidden: I Fshehur
+    custom_css: "CSS i personalizuar"
+    custom_css_hint: "Shkruani CSS ketu per te ndryshuar temen; zbatohet ne faqet e rezervimeve dhe ne administrim."
+    select_category: "Zgjidhni kategorine"
+    uncategorized: "Pa kategori"
+    category_hidden_hint: "Kategorite e fshehura dhe sherbimet e tyre nuk shfaqen ne faqen e rezervimeve."
     business_logic: Logjika e Biznesit
     current_user: Përdoruesi Aktual
     about_app: Rreth OpenAppointments

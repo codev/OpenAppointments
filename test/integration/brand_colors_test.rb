@@ -32,9 +32,11 @@ class BrandColorsTest < ActionDispatch::IntegrationTest
     assert_select "input[data-field=company_color]"
     assert_select "input[data-field=company_secondary_color]"
     assert_select "input[data-field=company_background_color]"
-    # No reset button and no hint line under the company colour.
+    # No reset button and no hint line under the company colour; the only
+    # form-text hint on the page belongs to the custom CSS box.
     assert_select "#reset-company-color", false
-    assert_select "#theme-settings form .form-text", count: 0
+    assert_select "#theme-settings form .form-text", count: 1
+    assert_select "#theme-settings form .form-text", text: /#{I18n.t('ea.custom_css_hint')}/
 
     post "/theme_settings/save", params: {
       theme_settings: [

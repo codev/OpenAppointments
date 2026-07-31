@@ -260,6 +260,11 @@ fa:
     booking: رزرو
     visible: قابل رویت
     hidden: پنهان
+    custom_css: "CSS سفارشی"
+    custom_css_hint: "برای تغییر پوسته CSS را اینجا وارد کنید؛ هم روی صفحات رزرو و هم رابط مدیریت اعمال می‌شود."
+    select_category: "انتخاب دسته"
+    uncategorized: "بدون دسته"
+    category_hidden_hint: "دسته‌های پنهان و خدمات آنها در صفحه رزرو نمایش داده نمی‌شوند."
     business_logic: منطق تجارت
     current_user: کاربر جاری
     about_app: درباره OpenAppointments

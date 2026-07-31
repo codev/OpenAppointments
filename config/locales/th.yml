@@ -260,6 +260,11 @@ th:
     booking: การจอง
     visible: มองเห็นได้
     hidden: ซ่อน
+    custom_css: "CSS กำหนดเอง"
+    custom_css_hint: "ป้อน CSS ที่นี่เพื่อปรับแต่งธีม ใช้กับหน้าจองและหน้าจัดการทั้งสองส่วน"
+    select_category: "เลือกหมวดหมู่"
+    uncategorized: "ไม่มีหมวดหมู่"
+    category_hidden_hint: "หมวดหมู่ที่ซ่อนและบริการในหมวดนั้นจะไม่แสดงบนหน้าจอง"
     business_logic: ตรรกะทางธุรกิจ
     current_user: ผู้ใช้ปัจจุบัน
     about_app: เกี่ยวกับ OpenAppointments

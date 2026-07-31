@@ -260,6 +260,11 @@ zh-tw:
     booking: 預約
     visible: 可見
     hidden: 隱藏
+    custom_css: "自訂 CSS"
+    custom_css_hint: "在此輸入 CSS 以修改主題,會同時套用於預約頁面與管理介面。"
+    select_category: "選擇分類"
+    uncategorized: "未分類"
+    category_hidden_hint: "隱藏的分類及其服務不會顯示在預約頁面上。"
     business_logic: 業務邏輯
     current_user: 目前使用者
     about_app: 關於 OpenAppointments

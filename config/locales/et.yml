@@ -260,6 +260,11 @@ et:
     booking: Broneering
     visible: Nähtav
     hidden: Peidetud
+    custom_css: "Kohandatud CSS"
+    custom_css_hint: "Sisestage siia CSS teema muutmiseks; see rakendub broneerimislehtedele ja haldusliidesele."
+    select_category: "Valige kategooria"
+    uncategorized: "Kategooriata"
+    category_hidden_hint: "Peidetud kategooriaid ja nende teenuseid broneerimislehel ei kuvata."
     business_logic: Töötajad
     current_user: Praegune kasutaja
     about_app: Info rakenduse kohta

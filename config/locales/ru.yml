@@ -260,6 +260,11 @@ ru:
     booking: Бронирование
     visible: Видимый
     hidden: Скрытый
+    custom_css: "Пользовательский CSS"
+    custom_css_hint: "Введите здесь CSS для изменения темы; он применяется к страницам бронирования и админке."
+    select_category: "Выберите категорию"
+    uncategorized: "Без категории"
+    category_hidden_hint: "Скрытые категории и их услуги не показываются на странице бронирования."
     business_logic: Бизнес-логика
     current_user: Текущий пользователь
     about_app: О приложении OpenAppointments

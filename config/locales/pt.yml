@@ -260,6 +260,11 @@ pt:
     booking: Reserva
     visible: Visível
     hidden: Escondido
+    custom_css: "CSS personalizado"
+    custom_css_hint: "Introduza CSS aqui para modificar o tema; aplica-se às páginas de marcação e à administração."
+    select_category: "Selecione a categoria"
+    uncategorized: "Sem categoria"
+    category_hidden_hint: "As categorias ocultas e os seus serviços não aparecem na página de marcações."
     business_logic: Lógica de negócio
     current_user: Utilizador Actual
     about_app: Sobre o OpenAppointments

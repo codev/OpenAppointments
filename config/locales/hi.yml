@@ -260,6 +260,11 @@ hi:
     booking: बुकिंग
     visible: दर्शनीय
     hidden: छिपा हुआ
+    custom_css: "कस्टम CSS"
+    custom_css_hint: "थीम बदलने के लिए यहाँ CSS दर्ज करें; यह बुकिंग पृष्ठों और प्रशासन इंटरफ़ेस दोनों पर लागू होता है।"
+    select_category: "श्रेणी चुनें"
+    uncategorized: "बिना श्रेणी"
+    category_hidden_hint: "छिपी श्रेणियाँ और उनकी सेवाएँ बुकिंग पृष्ठ पर नहीं दिखतीं।"
     business_logic: व्यापार का तर्क
     current_user: तात्कालिक प्रयोगकर्ता
     about_app: ई ए के बारे में

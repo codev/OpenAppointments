@@ -260,6 +260,11 @@ ca:
     booking: Reserva
     visible: Visible
     hidden: Amagat
+    custom_css: "CSS personalitzat"
+    custom_css_hint: "Introduïu CSS aquí per modificar el tema; s'aplica a les pàgines de reserva i a la interfície d'administració."
+    select_category: "Seleccioneu una categoria"
+    uncategorized: "Sense categoria"
+    category_hidden_hint: "Les categories ocultes i els seus serveis no es mostren a la pàgina de reserves."
     business_logic: Lògica de negoci
     current_user: Usuari actual
     about_app: Quant a OpenAppointments

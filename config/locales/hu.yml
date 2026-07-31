@@ -260,6 +260,11 @@ hu:
     booking: Foglalás
     visible: Látható
     hidden: Rejtett
+    custom_css: "Egyeni CSS"
+    custom_css_hint: "Irjon ide CSS-t a tema modositasahoz; a foglalasi oldalakra es az adminisztraciora is ervenyes."
+    select_category: "Valasszon kategoriat"
+    uncategorized: "Kategoria nelkul"
+    category_hidden_hint: "A rejtett kategoriak es szolgaltatasaik nem jelennek meg a foglalasi oldalon."
     business_logic: Üzleti logika
     current_user: Jelenlegi felhasználó
     about_app: OpenAppointments-ról

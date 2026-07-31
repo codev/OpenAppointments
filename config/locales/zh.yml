@@ -260,6 +260,11 @@ zh:
     booking: 预约
     visible: 可见的
     hidden: 隐
+    custom_css: "自定义 CSS"
+    custom_css_hint: "在此输入 CSS 以修改主题,会同时应用于预约页面与管理界面。"
+    select_category: "选择分类"
+    uncategorized: "未分类"
+    category_hidden_hint: "隐藏的分类及其服务不会显示在预约页面上。"
     business_logic: 工作时间
     current_user: 目前登录用户
     about_app: 关于网上预约系统

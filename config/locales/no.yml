@@ -260,6 +260,11 @@
     booking: Booking
     visible: Synlig
     hidden: Skjult
+    custom_css: "Tilpasset CSS"
+    custom_css_hint: "Skriv inn CSS her for aa endre temaet; det gjelder bookingsidene og administrasjonen."
+    select_category: "Velg kategori"
+    uncategorized: "Uten kategori"
+    category_hidden_hint: "Skjulte kategorier og tjenestene deres vises ikke paa bookingsiden."
     business_logic: Forretningslogikk
     current_user: Nåværende Bruker
     about_app: Om OpenAppointments

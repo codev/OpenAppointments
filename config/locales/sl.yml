@@ -260,6 +260,11 @@ sl:
     booking: Rezervacija
     visible: Viden
     hidden: Skrito
+    custom_css: "CSS po meri"
+    custom_css_hint: "Sem vnesite CSS za spremembo teme; velja za strani za rezervacije in administracijo."
+    select_category: "Izberite kategorijo"
+    uncategorized: "Brez kategorije"
+    category_hidden_hint: "Skrite kategorije in njihove storitve niso prikazane na strani za rezervacije."
     business_logic: Poslovna logika
     current_user: Trenutni uporabnik
     about_app: O OpenAppointments

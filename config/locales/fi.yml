@@ -260,6 +260,11 @@ fi:
     booking: Varaus
     visible: Näkyvä
     hidden: Piilotettu
+    custom_css: "Mukautettu CSS"
+    custom_css_hint: "Kirjoita CSS taehaen muokataksesi teemaa; se koskee varaussivuja ja hallintaa."
+    select_category: "Valitse kategoria"
+    uncategorized: "Ei kategoriaa"
+    category_hidden_hint: "Piilotetut kategoriat ja niiden palvelut eivaet naey varaussivulla."
     business_logic: Työajat
     current_user: Nykyinen käyttäjä
     about_app: Tietoja OpenAppointments:sta
