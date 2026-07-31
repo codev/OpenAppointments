@@ -1,8 +1,8 @@
 require "test_helper"
 
-# Zip bundle import: an ODS plus referenced images.
+# Images zip import: the ODS references images by filename, the zip carries them.
 class OdsBundleTest < ActiveSupport::TestCase
-  def build_bundle(dir)
+  def build_files(dir)
     require "zip"
     ods = Ods.generate(
       "Service Categories" => [ %w[name description picture],
@@ -13,33 +13,21 @@ class OdsBundleTest < ActiveSupport::TestCase
                        [ "Bundle Provider", "bundleprov@example.org", "", "Europe/London", "Bundle Service",
                          "{}", "bundleprov", "About text", "Provided services text", "picture.png" ] ]
     )
-    zip_path = File.join(dir, "bundle.zip")
+    ods_path = File.join(dir, "import.ods")
+    File.binwrite(ods_path, ods)
+    zip_path = File.join(dir, "images.zip")
     Zip::OutputStream.open(zip_path) do |stream|
-      stream.put_next_entry("import.ods")
-      stream.write(ods)
       stream.put_next_entry("picture.png")
       stream.write(file_fixture("picture.png").binread)
     end
-    zip_path
+    [ ods_path, zip_path ]
   end
 
-  test "bundle? tells zips with an ods apart from a plain ods" do
+  test "an ods with a separate images zip imports records, texts and pictures" do
     Dir.mktmpdir do |dir|
-      zip_path = build_bundle(dir)
-      assert OdsBundle.bundle?(zip_path)
-
-      ods_path = File.join(dir, "plain.ods")
-      File.binwrite(ods_path, Ods.generate("Services" => [ %w[name duration] ]))
-      assert_not OdsBundle.bundle?(ods_path)
-    end
-  end
-
-  test "a zip bundle imports records, texts and pictures" do
-    Dir.mktmpdir do |dir|
-      zip_path = build_bundle(dir)
+      ods_path, zip_path = build_files(dir)
       images_dir = File.join(dir, "unpacked")
-      ods_path = OdsBundle.unpack(zip_path, images_dir)
-      assert ods_path.end_with?("import.ods")
+      OdsBundle.unpack(zip_path, images_dir)
 
       data = OdsExtract.new(ods_path).call
       result = TenToEight::Load.new(
@@ -50,6 +38,7 @@ class OdsBundleTest < ActiveSupport::TestCase
       category = ServiceCategory.find_by!(name: "Bundle Cat")
       assert_equal "Category text", category.description
       assert category.picture.attached?
+      assert category.picture_padded.attached? && category.picture_zoomed.attached?, "import must create both variants"
 
       service = Service.find_by!(name: "Bundle Service")
       assert_equal "Service text", service.description
@@ -65,7 +54,7 @@ class OdsBundleTest < ActiveSupport::TestCase
 
   test "the export sheets carry the picture and description columns" do
     sheets = DataExport.sheets
-    assert_equal %w[name description picture], sheets["Service Categories"].first
+    assert_equal %w[name description picture is_hidden sort_order], sheets["Service Categories"].first
     assert_includes sheets["Services"].first, "picture"
     assert_includes sheets["Providers"].first, "about"
     assert_includes sheets["Providers"].first, "services_description"

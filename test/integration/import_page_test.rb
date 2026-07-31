@@ -1,8 +1,18 @@
 require "test_helper"
 
 class ImportPageTest < ActionDispatch::IntegrationTest
-  setup { TenToEightImportJob.status_store = ActiveSupport::Cache::MemoryStore.new }
-  teardown { TenToEightImportJob.status_store = nil }
+  setup do
+    TenToEightImportJob.status_store = ActiveSupport::Cache::MemoryStore.new
+    BackupExportJob.status_store = ActiveSupport::Cache::MemoryStore.new
+    BackupExport.dir_override = Rails.root.join("tmp", "backups-test-#{SecureRandom.hex(4)}")
+  end
+
+  teardown do
+    TenToEightImportJob.status_store = nil
+    BackupExportJob.status_store = nil
+    FileUtils.rm_rf(BackupExport.dir_override)
+    BackupExport.dir_override = nil
+  end
 
   def login_admin
     post "/login/validate", params: { username: "administrator", password: "administrator1" }
@@ -111,13 +121,28 @@ class ImportPageTest < ActionDispatch::IntegrationTest
     assert_redirected_to "/login"
   end
 
-  test "export downloads a dated ODS with all the sheets" do
+  test "export runs in the background and the backups download with all the sheets" do
     login_admin
-    get "/import/export"
+    post "/import/export"
+    assert_response :success
+    export_id = response.parsed_body["export_id"]
+    assert export_id.present?
+
+    perform_enqueued_jobs
+    get "/import/export_status", params: { export_id: export_id }
+    assert_equal "completed", response.parsed_body["state"]
+
+    get "/import/backups"
+    backups = response.parsed_body["backups"]
+    assert_equal 1, backups.size
+    assert_match(/\A\d{4}-\d{2}-\d{2} \d{2}:\d{2}\z/, backups.first["date"])
+    ods_name = backups.first["files"]["ods"]["name"]
+    assert backups.first["files"]["zip"]["name"].end_with?(".zip")
+    assert backups.first["files"]["ods"]["size"].present?
+
+    get "/import/download_backup", params: { name: ods_name }
     assert_response :success
     assert_equal Ods::MIMETYPE, response.media_type
-    assert_includes response.headers["Content-Disposition"],
-                    "#{Date.current.strftime('%Y-%m-%d')}-OpenAppointments.ods"
 
     path = Rails.root.join("tmp", "export-test-#{SecureRandom.hex(4)}.ods")
     File.binwrite(path, response.body)
@@ -131,14 +156,30 @@ class ImportPageTest < ActionDispatch::IntegrationTest
     FileUtils.rm_f(path) if path
   end
 
+  test "backup downloads are admin only and validate the name" do
+    login_admin
+    perform_enqueued_jobs { post "/import/export" }
+    ods_name = BackupExport.list.first[:files]["ods"]
+
+    get "/import/download_backup", params: { name: "../../config/master.key" }
+    assert_response :internal_server_error
+
+    post "/login/validate", params: { username: "janedoe", password: "janedoe1" }
+    get "/import/download_backup", params: { name: ods_name }
+    assert_response :forbidden
+    get "/import/backups"
+    assert_response :forbidden
+    post "/import/export"
+    assert_response :forbidden
+  end
+
   test "an exported ODS analyzes and imports back after a reset" do
     login_admin
     provider_email = users(:zane).email
     customer_email = users(:jx).email
     service_name = services(:haircut).name
-    get "/import/export"
     upload_path = Rails.root.join("tmp", "roundtrip-#{SecureRandom.hex(4)}.ods")
-    File.binwrite(upload_path, response.body)
+    File.binwrite(upload_path, DataExport.generate)
     ResetDatabase.run
 
     ods_upload = Rack::Test::UploadedFile.new(upload_path, Ods::MIMETYPE)
@@ -185,5 +226,172 @@ class ImportPageTest < ActionDispatch::IntegrationTest
                "missing ea.#{key} in #{locale}"
       end
     end
+  end
+
+  test "the backup strings exist in every locale" do
+    I18n.available_locales.each do |locale|
+      %w[backups backups_hint backup_working backup_failed ods_file zip_file].each do |key|
+        assert I18n.t("ea.#{key}", locale: locale, fallback: false, default: nil).present?,
+               "missing ea.#{key} in #{locale}"
+      end
+    end
+  end
+
+  test "the settings phase tickbox exists and defaults to unticked" do
+    login_admin
+    get "/import"
+    assert_select "#phase-settings"
+    assert_select "#phase-settings[checked]", count: 0
+    assert_select "#phase-assistants[checked]", count: 0
+    assert_select "#phase-admins[checked]", count: 0
+    assert_select "#phase-customers[checked]"
+  end
+
+  test "settings restore from an exported ODS only when the phase is selected" do
+    login_admin
+    Setting.set("company_name", "Backup Co")
+    Setting.set("umami_analytics_url", "https://stats.example.org")
+    upload_path = Rails.root.join("tmp", "settings-roundtrip-#{SecureRandom.hex(4)}.ods")
+    File.binwrite(upload_path, DataExport.generate)
+    Setting.set("company_name", "Changed Co")
+    Setting.set("umami_analytics_url", "")
+
+    # Default phases (settings unticked): settings stay as they are.
+    perform_enqueued_jobs do
+      post "/import/start", params: {
+        file: Rack::Test::UploadedFile.new(upload_path, Ods::MIMETYPE), import_type: "ods",
+        phases: [ "customers" ], days_back: 365, days_forward: 365
+      }
+    end
+    assert_equal "Changed Co", Setting.get("company_name")
+
+    # With the settings phase every exported key restores, integrations included.
+    post "/import/start", params: {
+      file: Rack::Test::UploadedFile.new(upload_path, Ods::MIMETYPE), import_type: "ods",
+      phases: [ "settings" ], days_back: 365, days_forward: 365
+    }
+    import_id = response.parsed_body["import_id"]
+    perform_enqueued_jobs
+    assert_equal "Backup Co", Setting.get("company_name")
+    assert_equal "https://stats.example.org", Setting.get("umami_analytics_url")
+
+    status = TenToEightImportJob.read_status(import_id)
+    assert_equal "completed", status[:state]
+    assert_operator status[:counts][:settings][:matched], :>, 0
+  ensure
+    FileUtils.rm_f(upload_path) if upload_path
+  end
+
+  test "analyze reports the settings count for an ODS backup" do
+    login_admin
+    upload_path = Rails.root.join("tmp", "settings-analyze-#{SecureRandom.hex(4)}.ods")
+    File.binwrite(upload_path, DataExport.generate)
+    post "/import/analyze", params: {
+      file: Rack::Test::UploadedFile.new(upload_path, Ods::MIMETYPE), import_type: "ods",
+      days_back: 365, days_forward: 365
+    }
+    assert_response :success
+    assert_equal Setting.count, response.parsed_body["summary"]["settings"]
+  ensure
+    FileUtils.rm_f(upload_path) if upload_path
+  end
+
+  test "the optional images zip attaches pictures, a plain ods imports without" do
+    require "zip"
+    login_admin
+    services(:haircut).picture.attach(
+      io: StringIO.new(file_fixture("picture.png").binread), filename: "haircut.png", content_type: "image/png"
+    )
+    ods_path = Rails.root.join("tmp", "images-zip-test-#{SecureRandom.hex(4)}.ods")
+    File.binwrite(ods_path, DataExport.generate)
+    zip_path = Rails.root.join("tmp", "images-zip-test-#{SecureRandom.hex(4)}.zip")
+    Zip::OutputStream.open(zip_path) do |stream|
+      stream.put_next_entry("haircut.png")
+      stream.write(file_fixture("picture.png").binread)
+    end
+    services(:haircut).picture.purge
+
+    # Without the zip the data imports and no picture attaches.
+    post "/import/start", params: {
+      file: Rack::Test::UploadedFile.new(ods_path, Ods::MIMETYPE), import_type: "ods",
+      phases: [ "services" ], days_back: 21, days_forward: 21
+    }
+    perform_enqueued_jobs
+    assert_not services(:haircut).reload.picture.attached?
+
+    # With the zip the referenced picture attaches.
+    post "/import/start", params: {
+      file: Rack::Test::UploadedFile.new(ods_path, Ods::MIMETYPE),
+      images_file: Rack::Test::UploadedFile.new(zip_path, "application/zip"),
+      import_type: "ods", phases: [ "services" ], days_back: 21, days_forward: 21
+    }
+    perform_enqueued_jobs
+    assert services(:haircut).reload.picture.attached?
+  ensure
+    FileUtils.rm_f(ods_path) if ods_path
+    FileUtils.rm_f(zip_path) if zip_path
+  end
+
+  test "the images strings exist in every locale" do
+    I18n.available_locales.each do |locale|
+      %w[images_zip_optional images_zip_hint].each do |key|
+        assert I18n.t("ea.#{key}", locale: locale, fallback: false, default: nil).present?,
+               "missing ea.#{key} in #{locale}"
+      end
+    end
+  end
+
+  test "staff passwords round-trip through export and import as stored hashes" do
+    login_admin
+    assistant = User.assistants.first
+    assistant.create_settings!(username: "assist1", password: Passwords.hash("assistpass1"),
+                               notifications: false)
+    admin2 = User.create!(name: "Second Admin", email: "admin2@example.org",
+                          timezone: "Europe/London", role: Role.find_by!(slug: Role::ADMIN))
+    admin2.create_settings!(username: "admin2", password: Passwords.hash("adminpass2"), notifications: false)
+
+    ods_path = Rails.root.join("tmp", "pw-roundtrip-#{SecureRandom.hex(4)}.ods")
+    File.binwrite(ods_path, DataExport.generate)
+
+    sheets = Ods.parse(ods_path.to_s)
+    %w[Providers Assistants Admins].each do |sheet|
+      assert_includes sheets[sheet].first, "password_hash", "#{sheet} sheet misses password_hash"
+    end
+    hashes = sheets["Admins"].drop(1).flat_map { |row| row.last.to_s }
+    assert(hashes.none? { |value| value.include?("adminpass2") }, "plain password leaked into export")
+
+    admin2.settings.update(password: Passwords.hash("changed"))
+    assistant.settings.update(password: Passwords.hash("changed"))
+    zane_settings = users(:zane).settings
+    zane_settings.update(password: Passwords.hash("changed"))
+
+    post "/import/start", params: {
+      file: Rack::Test::UploadedFile.new(ods_path, Ods::MIMETYPE), import_type: "ods",
+      phases: %w[providers assistants admins], days_back: 21, days_forward: 21
+    }
+    perform_enqueued_jobs
+
+    assert Passwords.verify(nil, "janedoe1", zane_settings.reload.password)
+    assert Passwords.verify(nil, "assistpass1", assistant.settings.reload.password)
+    assert Passwords.verify(nil, "adminpass2", admin2.settings.reload.password)
+
+    # Deleted staff come back with working logins when creation is allowed.
+    AssistantProviderLink.where(id_users_assistant: assistant.id).delete_all
+    assistant.settings.destroy
+    assistant.destroy
+    admin2.settings.destroy
+    admin2.destroy
+
+    post "/import/start", params: {
+      file: Rack::Test::UploadedFile.new(ods_path, Ods::MIMETYPE), import_type: "ods",
+      phases: %w[providers assistants admins], create_providers: "1", days_back: 21, days_forward: 21
+    }
+    perform_enqueued_jobs
+
+    post "/logout"
+    post "/login/validate", params: { username: "admin2", password: "adminpass2" }
+    assert_equal true, response.parsed_body["success"]
+  ensure
+    FileUtils.rm_f(ods_path) if ods_path
   end
 end

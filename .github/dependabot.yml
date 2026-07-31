@@ -1,12 +1,14 @@
+# Version updates are disabled (limit 0): only Dependabot security updates
+# (enabled in the repo settings) open PRs.
 version: 2
 updates:
 - package-ecosystem: bundler
   directory: "/"
   schedule:
     interval: weekly
-  open-pull-requests-limit: 10
+  open-pull-requests-limit: 0
 - package-ecosystem: github-actions
   directory: "/"
   schedule:
     interval: weekly
-  open-pull-requests-limit: 10
+  open-pull-requests-limit: 0

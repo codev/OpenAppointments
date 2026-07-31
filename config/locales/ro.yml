@@ -29,12 +29,27 @@ ro:
     import_providers_caution: "Atenție: bifarea furnizorilor va crea conturi de utilizator și va permite autentificarea cu emailul lor"
     manage_data: "Gestionare date"
     export_data: "Exportă datele"
+    backups: "Copii de siguranta"
+    backups_hint: "Cele mai recente cinci copii de siguranta sunt pastrate pe server si doar administratorii le pot descarca. Pastrati-le in siguranta daca le descarcati, deoarece contin informatii personale."
+    backup_working: "Se creeaza copia de siguranta..."
+    backup_failed: "Copia de siguranta a esuat, verificati jurnalele serverului."
+    ods_file: "Fisier ODS"
+    zip_file: "Zip cu imagini"
+    images_zip_optional: "Zip cu imagini (optional)"
+    images_zip_hint: "Adaugati zipul exportat cu imagini pentru a importa fotografiile serviciilor, categoriilor si furnizorilor, optional."
     import_type: "Tip de import"
     full_reset_label: "Resetare completă, șterge administratorii și resetează setările"
     delete_personal_information_setting_hint: "Permiteți clienților să își elimine toate programările și informațiile personale din sistem cu un buton."
     captcha: "Captcha"
     captcha_info: "Setări captcha pentru a verifica dacă vizitatorul este om înainte de rezervare"
-    captcha_enabled_hint: "Când este activat, furnizorul de captcha selectat va fi folosit în locul captcha-ului tradițional cu imagine pentru verificarea formularelor."
+    captcha_enabled_hint: "Când este activat, clienții vor trebui să rezolve o provocare Captcha înainte de a finaliza programarea; activați dacă primiți multe programări spam"
+    captcha_active_customers: "Activ pentru clienți"
+    captcha_active_login: "Activ pentru autentificare"
+    captcha_login_hint: "Când este activat, utilizatorii vor trebui să rezolve o provocare Captcha înainte de a se autentifica în administrare"
+    altcha_hmac_key_missing: "ALTCHA are nevoie de o cheie HMAC generată înainte ca captcha să poată fi activat"
+    turnstile_keys_missing: "Cloudflare Turnstile are nevoie de o cheie de site și de o cheie secretă înainte ca captcha să poată fi activat"
+    turnstile_test_hint: "Rezolvați această provocare de test pentru a confirma că Turnstile funcționează pe acest site; necesar la activarea Turnstile sau la schimbarea cheilor"
+    turnstile_test_failed: "Finalizați provocarea de test Turnstile pentru a confirma că funcționează pe acest site înainte de activare"
     turnstile_keys_hint: "Obțineți o pereche de chei (site și secret) din panoul Cloudflare:"
     first_login_update_details: Introduceți o parolă nouă și actualizați-vă datele
     embedding: Încorporare
@@ -245,6 +260,18 @@ ro:
     booking: Rezervare
     visible: Vizibil
     hidden: Ascuns
+    custom_css: "CSS personalizat"
+    custom_css_hint: "Introduceti CSS aici pentru a modifica tema; se aplica paginilor de programari si administrarii."
+    select_category: "Selectati categoria"
+    uncategorized: "Fara categorie"
+    category_hidden_hint: "Categoriile ascunse si serviciile lor nu apar pe pagina de programari."
+    drag_to_reorder: "Trageti inregistrarile pentru a stabili ordinea afisata pe pagina de programari."
+    sort_alphabetically: "Sortare alfabetica"
+    sort_alphabetically_confirm: "Inlocuiti ordinea actuala sortand toate inregistrarile alfabetic?"
+    picture_styles: "Stiluri de imagine"
+    picture_styles_hint: "Alegeti cum se incadreaza imaginile fiecarui set in patratul de 400x400; Margine alba pastreaza intreaga imagine pe fundal alb, Marita umple patratul prin decupare."
+    white_border: "Margine alba"
+    zoomed: "Marita"
     business_logic: Logica afacerii
     current_user: Utilizator curent
     about_app: Despre OpenAppointments
@@ -253,7 +280,7 @@ ro:
     book_advance_timeout: Programeaza timp liber avansat
     book_advance_timeout_hint: Defineste timpul liber (în minute) înainte ca si clientul sa poata programa sau reprograma o întâlnire cu compania.
     timeout_minutes: Timeout (Minute)
-    about_app_info: OpenAppointments este o aplicatie web usor personalizabila care permite clientilor sa programeze întâlniri cu dumneavoastra de pe internet. Mai mult, are abilitatea de a sincroniza datele dumneavoastra cu Calendarul Google pentru a-l putea folosi împreuna cu alte servicii.
+    about_app_info: "OpenAppointments este o aplicatie web usor personalizabila care permite clientilor sa programeze întâlniri cu dumneavoastra de pe internet."
     current_version: Versiunea Curenta
     support: Suport
     about_app_support: Dacă întâmpinați probleme la utilizarea OpenAppointments, puteți căuta răspunsuri în issue-urile proiectului pe GitHub. Puteți de asemenea deschide un issue nou pentru a ajuta dezvoltarea.
@@ -345,8 +372,6 @@ ro:
     oops_something_went_wrong: Oops! Ceva nu a funtionat corect.
     ea_update_success: OpenAppointments a fost actualizat.
     require_captcha: Necesar CAPTCHA
-    require_captcha_hint: "Când este activat, clienții vor trebui să tasteze un cod CAPTCHA generat aleator înainte de a rezerva/actualiza o programare. - mergeți la Integrări pentru a alege un tip de Captcha mai avansat"
-    captcha_is_wrong: Verificarea CAPTCHA a eșuat, vă rugăm să încercați din nou.
     enter_captcha_here: Introduceți CAPTCHA aici...
     any_provider: Orice Provider
     requested_hour_is_unavailable: Programarea solicitată nu este disponibilă. Vă rugăm să selectați o oră diferită pentru programare.
@@ -467,6 +492,13 @@ ro:
     google_analytics_info: Google Analytics vă permite să adăugați automat codul de urmărire și marcajul HTML pe pagina publică și să urmăriți toate sesiunile de rezervare publice.
     matomo_analytics: Matomo Analytics
     matomo_analytics_info: Matomo Analytics vă permite să adăugați automat codul de urmărire și marcajul HTML pe pagina publică și să urmăriți toate sesiunile de rezervare publice.
+    umami_analytics: "Umami Analytics"
+    umami_analytics_info: "Umami Analytics este o alternativa la Google Analytics prietenoasa cu confidentialitatea; conectati propria instanta Umami pentru a urmari paginile publice de programari."
+    umami_analytics_url: "Umami URL"
+    umami_analytics_url_hint: "Adaugati URL-ul instalarii dvs. Umami pentru a activa urmarirea pe paginile de programari."
+    umami_analytics_website_id: "ID-ul site-ului"
+    umami_analytics_recorder: "Reluari si harti termice"
+    umami_analytics_recorder_hint: "Cand este activat, se incarca si scriptul Umami recorder pentru reluari de sesiune si harti termice."
     api: API
     api_info: API vă permite să interacționați cu toate datele OpenAppointments prin protocolul HTTP și punctele de acces API disponibile și să creați propriile integrări.
     google_analytics_code: Cod Google Analytics
@@ -548,6 +580,7 @@ ro:
     field_mapping: Mapare Câmpuri
     content: Conținut
     active: Activ
+    not_active: "Inactiv"
     user_imported: Înregistrarea utilizatorului a fost importată cu succes.
     import: Import
     ldap_dn: LDAP DN
@@ -574,7 +607,6 @@ ro:
     altcha_expires_hint: 'Cât timp rămâne valabilă o provocare în secunde (implicit: 300).'
     altcha_key_generated: Noua cheie HMAC a fost generată cu succes.
     altcha_enabled: Activare ALTCHA
-    altcha_captcha_not_active_warning: Setarea CAPTCHA nu este activă în prezent. ALTCHA nu va fi utilizat decât dacă CAPTCHA este activat în
     generate: Generare
     meeting_link: Link întâlnire
     google_calendar: Google Calendar

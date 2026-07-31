@@ -35,13 +35,7 @@
         </div>
     </div>
 
-    <% if vars(:require_captcha).to_s == "1" && vars(:altcha_enabled).to_s == "1" %>
-        <div class="mb-4">
-            <div id="altcha-widget" class="altcha-widget"></div>
-            <input type="hidden" id="altcha-payload" value="">
-            <span id="altcha-hint" class="help-block text-danger small" style="opacity:0">&nbsp;</span>
-        </div>
-    <% end %>
+    <%= render "shared/auth_captcha" %>
 
     <div class="d-grid gap-2 mb-3">
         <button type="submit" id="login" class="btn btn-primary">

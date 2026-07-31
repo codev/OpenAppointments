@@ -5,7 +5,7 @@ class ThemeSettingsController < ApplicationController
 
   layout "backend"
 
-  ALLOWED_SETTINGS = %w[theme company_color company_secondary_color company_background_color].freeze
+  ALLOWED_SETTINGS = %w[theme company_color company_secondary_color company_background_color custom_css].freeze
 
   def index
     return unless require_backend_page!(:system_settings)
@@ -17,6 +17,22 @@ class ThemeSettingsController < ApplicationController
     )
     html_vars(available_themes: available_themes)
     render :index
+  end
+
+  HEX_COLOR = /\A#\h{6}\z/
+
+  # GET /theme_settings/preview. Standalone sample page loaded inside the theme
+  # cards; colours come from the (possibly unsaved) pickers via params.
+  def preview
+    return unless require_backend_page!(:system_settings)
+
+    @theme = params[:theme].to_s
+    @theme = "nice" unless available_themes.include?(@theme)
+    @colors = %i[primary secondary background].to_h { |key|
+      value = params[key].to_s
+      [ key, value.match?(HEX_COLOR) ? value : nil ]
+    }
+    render :preview, layout: false
   end
 
   # POST /theme_settings/save

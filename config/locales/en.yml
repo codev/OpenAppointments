@@ -29,12 +29,27 @@ en:
     import_providers_caution: "Caution: ticking Providers will create user accounts and allow log in with their email"
     manage_data: "Manage data"
     export_data: "Export data"
+    backups: "Backups"
+    backups_hint: "The five most recent backups are kept on the server and only administrators can download them. Store them securely if you download them as they contain personal information."
+    backup_working: "Creating backup..."
+    backup_failed: "The backup failed, check the server logs."
+    ods_file: "ODS file"
+    zip_file: "Zip with images"
+    images_zip_optional: "Images zip (optional)"
+    images_zip_hint: "Add the exported zip with images to import the service, category and provider pictures, optional."
     import_type: "Import type"
     full_reset_label: "Full reset, delete administrators and reset settings"
     delete_personal_information_setting_hint: "Allow customers to remove all their appointments and personal information from the system with a button."
     captcha: "Captcha"
     captcha_info: "Captcha settings to verify the visitor is human before booking"
-    captcha_enabled_hint: "When enabled the selected captcha provider will be used instead of the traditional image captcha for form verification."
+    captcha_enabled_hint: "When enabled the customers will have to solve a Captcha challenge before they can complete the booking, enable this if you are having a lot of spam bookings"
+    captcha_active_customers: "Active for customers"
+    captcha_active_login: "Active for login"
+    captcha_login_hint: "When enabled users will have to solve a Captcha challenge before they can log in to the backend"
+    altcha_hmac_key_missing: "ALTCHA needs a generated HMAC key before the captcha can be activated"
+    turnstile_keys_missing: "Cloudflare Turnstile needs both a site key and a secret key before the captcha can be activated"
+    turnstile_test_hint: "Solve this test challenge to confirm Turnstile works on this site, it is required when activating Turnstile or changing its keys"
+    turnstile_test_failed: "Complete the Turnstile test challenge to confirm it works on this site before activating"
     turnstile_keys_hint: "Get a site key and secret key pair from the Cloudflare dashboard:"
     first_login_update_details: Please enter a new password and update your details
     embedding: Embedding
@@ -245,6 +260,18 @@ en:
     booking: Booking
     visible: Visible
     hidden: Hidden
+    custom_css: "Custom CSS"
+    custom_css_hint: "Enter CSS here to modify the theme, it is applied to both the booking pages and the admin interface."
+    select_category: "Select Category"
+    uncategorized: "Uncategorized"
+    category_hidden_hint: "Hidden categories and their services are not shown on the booking page."
+    drag_to_reorder: "Drag the records to set the order shown on the booking page."
+    sort_alphabetically: "Sort Alphabetically"
+    sort_alphabetically_confirm: "Replace the current order by sorting all records alphabetically?"
+    picture_styles: "Picture styles"
+    picture_styles_hint: "Choose how the pictures of each set are fitted to the 400x400 square, White Border keeps the whole image on a white background, Zoomed fills the square by cropping."
+    white_border: "White Border"
+    zoomed: "Zoomed"
     business_logic: Business Logic
     current_user: Current User
     about_app: About OpenAppointments
@@ -253,7 +280,7 @@ en:
     book_advance_timeout: Book Advance Timeout
     book_advance_timeout_hint: Define the timeout (in minutes) before the customers can book or re-arrange appointments with the company.
     timeout_minutes: Timeout (Minutes)
-    about_app_info: OpenAppointments is a highly customizable web application that allows your customers to book appointments with you via the web. Moreover, it provides the ability to sync your data with Google Calendar, so you can use them with other services.
+    about_app_info: "OpenAppointments is a highly customizable web application that allows your customers to book appointments with you via the web."
     current_version: Current Version
     support: Support
     about_app_support: If you encounter any problems when using OpenAppointments you can search the project issues on GitHub for answers. You might also need to open a new issue in order to help the development progress.
@@ -345,8 +372,6 @@ en:
     oops_something_went_wrong: Oops! Something Went Wrong.
     ea_update_success: OpenAppointments has been successfully updated.
     require_captcha: Require CAPTCHA
-    require_captcha_hint: "When enabled, the customers will have to type a random generated CAPTCHA string before booking/updating an appointment. - go to Integrations to pick a more advanced Captcha type"
-    captcha_is_wrong: CAPTCHA verification failed, please try again.
     enter_captcha_here: Enter CAPTCHA here...
     any_provider: Any Provider
     requested_hour_is_unavailable: The requested appointment is unfortunately not available. Please select a different hour for your appointment.
@@ -467,6 +492,13 @@ en:
     google_analytics_info: Google Analytics enable you to automatically add the tracking code and HTML markup to the public page and track all the public booking sessions.
     matomo_analytics: Matomo Analytics
     matomo_analytics_info: Matomo Analytics enable you to automatically add the tracking code and HTML markup to the public page and track all the public booking sessions.
+    umami_analytics: "Umami Analytics"
+    umami_analytics_info: "Umami Analytics is a privacy friendly alternative to Google Analytics, connect your own Umami instance to track the public booking pages."
+    umami_analytics_url: "Umami URL"
+    umami_analytics_url_hint: "Add the URL of your Umami installation to enable tracking on the booking pages."
+    umami_analytics_website_id: "Website ID"
+    umami_analytics_recorder: "Replays and Heatmaps"
+    umami_analytics_recorder_hint: "When enabled the Umami recorder script is also loaded to capture session replays and heatmaps."
     api: API
     api_info: API enable you to interact with all the OpenAppointments data via the HTTP protocol and the available API endpoints and create your own integrations.
     google_analytics_code: Google Analytics Code
@@ -548,6 +580,7 @@ en:
     field_mapping: Field Mapping
     content: Content
     active: Active
+    not_active: "Not active"
     user_imported: The user record was imported successfully.
     import: Import
     ldap_dn: LDAP DN
@@ -574,7 +607,6 @@ en:
     altcha_expires_hint: 'How long a challenge remains valid in seconds (default: 300).'
     altcha_key_generated: New HMAC key generated successfully.
     altcha_enabled: Enable ALTCHA
-    altcha_captcha_not_active_warning: The CAPTCHA setting is not currently active. ALTCHA will not be used unless CAPTCHA is enabled in the
     generate: Generate
     meeting_link: Meeting Link
     google_calendar: Google Calendar

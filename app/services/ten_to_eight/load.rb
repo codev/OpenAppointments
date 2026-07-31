@@ -4,7 +4,7 @@ module TenToEight
   # name+phone) so re-runs do not duplicate. Pronoun lands in custom_field_1, access
   # needs in custom_field_2, and a do-not-contact prefix on the notes (GDPR consent).
   class Load
-    PHASES = %w[categories services providers customers appointments].freeze
+    PHASES = %w[categories services providers assistants admins customers appointments settings].freeze
     DO_NOT_CONTACT_PREFIX = "[DO NOT CONTACT - consent not granted]".freeze
 
     def initialize(data, phases:, create_providers: false, progress: nil, images_dir: nil)
@@ -21,14 +21,32 @@ module TenToEight
       load_categories if phase?("categories")
       load_services if phase?("services")
       load_providers if phase?("providers")
+      load_assistants if phase?("assistants")
+      load_admins if phase?("admins")
       load_customers if phase?("customers")
       load_appointments if phase?("appointments")
+      load_settings if phase?("settings")
       { counts: @counts, errors: @errors }
     end
 
     private
 
     def phase?(name) = @phases.include?(name)
+
+    # Restores every exported setting by internal key; new settings flow through
+    # automatically because the export dumps the whole settings table.
+    def load_settings
+      counts = track("settings")
+      Array(@data[:settings]).each do |row|
+        guard("settings", counts, row[:name]) do
+          next counts[:skipped] += 1 if row[:name].blank?
+
+          existing = Setting.find_by(name: row[:name])
+          Setting.set(row[:name], row[:value].to_s)
+          counts[existing ? :matched : :created] += 1
+        end
+      end
+    end
 
     def track(phase)
       @counts[phase.to_sym] = { created: 0, matched: 0, skipped: 0, failed: 0 }
@@ -54,7 +72,8 @@ module TenToEight
       path = File.join(@images_dir, File.basename(filename.to_s))
       return unless File.exist?(path)
 
-      record.picture.attach(io: File.open(path), filename: File.basename(path))
+      PictureVariants.attach(record, path, filename: File.basename(path),
+                                           content_type: Marcel::MimeType.for(Pathname.new(path)))
     end
 
     def load_categories
@@ -72,9 +91,14 @@ module TenToEight
           if category.description.blank? && extra[:description].present?
             category.update(description: extra[:description])
           end
+          category.update(is_hidden: extra[:is_hidden]) if extra.key?(:is_hidden) &&
+                                                           category.is_hidden != extra[:is_hidden]
+          category.update(sort_order: extra[:sort_order]) if extra[:sort_order] &&
+                                                             category.sort_order != extra[:sort_order]
         else
           category = guard("categories", counts, name) do
-            ServiceCategory.create!(name: name, description: extra[:description])
+            ServiceCategory.create!(name: name, description: extra[:description],
+                                    is_hidden: extra[:is_hidden] || false, sort_order: extra[:sort_order])
           end
           next unless category
 
@@ -96,6 +120,7 @@ module TenToEight
           if service.description.blank? && row[:description].present?
             service.update(description: row[:description])
           end
+          service.update(sort_order: row[:sort_order]) if row[:sort_order] && service.sort_order != row[:sort_order]
         else
           service = guard("services", counts, row[:name]) do
             Service.create!(
@@ -103,7 +128,7 @@ module TenToEight
               price: row[:price] || 0, currency: row[:currency].presence || "GBP",
               description: row[:description], color: row[:color],
               attendants_number: row[:attendants_number] || 1, is_private: row[:is_private] || false,
-              id_service_categories: @category_ids[row[:category]]
+              sort_order: row[:sort_order], id_service_categories: @category_ids[row[:category]]
             )
           end
           next unless service
@@ -131,17 +156,19 @@ module TenToEight
           if provider.services_description.blank? && row[:services_description].present?
             updates[:services_description] = row[:services_description]
           end
+          updates[:sort_order] = row[:sort_order] if row[:sort_order] && provider.sort_order != row[:sort_order]
           provider.update(updates) if updates.any?
+          restore_password(provider, row[:password_hash])
         elsif @create_providers && row[:email].present?
           provider = guard("providers", counts, row[:name].presence || row[:email]) do
             user = User.create!(
               name: row[:name], email: row[:email], phone_number: row[:phone],
               about: row[:about], services_description: row[:services_description],
-              timezone: "Europe/London", role: role
+              sort_order: row[:sort_order], timezone: "Europe/London", role: role
             )
             user.create_settings!(
               username: row[:username].presence || row[:email].split("@").first,
-              password: Passwords.hash(SecureRandom.base58(12)),
+              password: row[:password_hash].presence || Passwords.hash(SecureRandom.base58(12)),
               notifications: false,
               working_plan: row[:working_plan].to_json
             )
@@ -162,6 +189,64 @@ module TenToEight
         end
         attach_picture(provider, row[:picture])
         @provider_ids[row[:name]] = provider.id
+      end
+    end
+
+    # Hashes round-trip as stored, so restored logins keep their passwords.
+    def restore_password(user, password_hash)
+      user.settings.update(password: password_hash) if password_hash.present? && user.settings
+    end
+
+    # Only OpenAppointments ODS backups carry assistants and admins (10to8
+    # exports have no such sheets).
+    def load_assistants
+      return if Array(@data[:assistants]).empty?
+
+      counts = track("assistants")
+      role = Role.find_by!(slug: Role::ASSISTANT)
+      provider_ids = User.providers.pluck(:name, :id).to_h
+      upsert_staff(@data[:assistants], counts, "assistants", User.assistants, role) do |assistant, row|
+        Array(row[:providers]).filter_map { |name| provider_ids[name] }.each do |provider_id|
+          AssistantProviderLink.create!(id_users_assistant: assistant.id, id_users_provider: provider_id)
+        end
+      end
+    end
+
+    def load_admins
+      return if Array(@data[:admins]).empty?
+
+      counts = track("admins")
+      role = Role.find_by!(slug: Role::ADMIN)
+      upsert_staff(@data[:admins], counts, "admins", User.admins, role)
+    end
+
+    def upsert_staff(rows, counts, phase, scope, role)
+      existing = scope.to_a.index_by { |user| user.email.to_s.downcase }
+      rows.each do |row|
+        user = existing[row[:email].to_s.downcase] if row[:email].present?
+        if user
+          counts[:matched] += 1
+          restore_password(user, row[:password_hash])
+        elsif @create_providers && row[:email].present?
+          user = guard(phase, counts, row[:name].presence || row[:email]) do
+            created = User.create!(
+              name: row[:name], email: row[:email], phone_number: row[:phone],
+              timezone: row[:timezone].presence || "Europe/London", role: role
+            )
+            created.create_settings!(
+              username: row[:username].presence || row[:email].split("@").first,
+              password: row[:password_hash].presence || Passwords.hash(SecureRandom.base58(12)),
+              notifications: false
+            )
+            yield(created, row) if block_given?
+            created
+          end
+          next unless user
+
+          counts[:created] += 1
+        else
+          counts[:skipped] += 1
+        end
       end
     end
 

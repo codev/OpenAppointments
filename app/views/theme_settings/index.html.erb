@@ -28,13 +28,70 @@
                                         <%= lang('theme') %>
                                     </label>
 
-                                    <select id="theme" data-field="theme" class="form-select">
+                                    <select id="theme" data-field="theme" class="form-select d-none">
                                         <% vars(:available_themes).each do |available_theme| %>
                                             <option value="<%= available_theme %>">
                                                 <%= available_theme.capitalize %>
                                             </option>
                                         <% end %>
                                     </select>
+
+                                    <div id="theme-cards" class="row g-3 mb-3">
+                                        <% vars(:available_themes).each do |available_theme| %>
+                                            <div class="col-sm-6 col-xl-4">
+                                                <div class="card theme-card h-100" data-theme="<%= available_theme %>"
+                                                     role="button" tabindex="0"
+                                                     aria-label="<%= available_theme.capitalize %>">
+                                                    <div class="theme-preview-holder">
+                                                        <iframe class="theme-preview-frame" title="<%= available_theme.capitalize %>"
+                                                                data-theme="<%= available_theme %>" loading="lazy"
+                                                                scrolling="no" tabindex="-1"></iframe>
+                                                    </div>
+                                                    <div class="card-footer py-2 d-flex align-items-center justify-content-between">
+                                                        <span class="fw-medium"><%= available_theme.capitalize %></span>
+                                                        <i class="fas fa-check-circle theme-selected-check" aria-hidden="true"></i>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        <% end %>
+                                    </div>
+
+                                    <style>
+                                        #theme-cards .theme-card {
+                                            cursor: pointer;
+                                            overflow: hidden;
+                                        }
+
+                                        #theme-cards .theme-card.selected {
+                                            border-color: var(--bs-primary);
+                                            box-shadow: 0 0 0 2px var(--bs-primary);
+                                        }
+
+                                        #theme-cards .theme-selected-check {
+                                            visibility: hidden;
+                                            color: var(--bs-primary);
+                                        }
+
+                                        #theme-cards .theme-card.selected .theme-selected-check {
+                                            visibility: visible;
+                                        }
+
+                                        #theme-cards .theme-preview-holder {
+                                            height: 200px;
+                                            overflow: hidden;
+                                            background: #fff;
+                                        }
+
+                                        #theme-cards .theme-preview-frame {
+                                            display: block;
+                                            width: 200%;
+                                            height: 400px;
+                                            border: 0;
+                                            transform: scale(0.5);
+                                            transform-origin: top left;
+                                            pointer-events: none;
+                                        }
+                                    </style>
 
                                     <div class="my-2 d-flex gap-2">
                                         <button type="button" class="btn btn-outline-secondary btn-sm apply-suggested-colors"
@@ -77,6 +134,18 @@
 
                                     <input type="color" id="company-background-color"
                                            data-field="company_background_color" class="form-control">
+                                </div>
+
+                                <div class="mb-3">
+                                    <label class="form-label" for="custom-css">
+                                        <%= lang('custom_css') %>
+                                    </label>
+
+                                    <textarea id="custom-css" data-field="custom_css" rows="8"
+                                              class="form-control font-monospace" spellcheck="false"></textarea>
+                                    <div class="form-text text-muted small">
+                                        <%= lang('custom_css_hint') %>
+                                    </div>
                                 </div>
                             </div>
                         </div>

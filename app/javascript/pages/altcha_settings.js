@@ -19,6 +19,73 @@ App.Pages.AltchaSettings = (function () {
     const $generateHmacKey = $('#generate-hmac-key');
     const $altchaHmacKey = $('#altcha-hmac-key');
 
+    let turnstileWidgetId = null;
+
+    /**
+     * Render the Turnstile test widget with the entered site key. A solved
+     * test proves the keys work on this site before activation is allowed.
+     */
+    function renderTurnstileTest() {
+        const $container = $('#turnstile-test');
+
+        if (!window.turnstile || !$container.length) {
+            return;
+        }
+
+        if (turnstileWidgetId !== null) {
+            window.turnstile.remove(turnstileWidgetId);
+            turnstileWidgetId = null;
+        }
+
+        $container.empty();
+
+        const siteKey = $('#turnstile-site-key').val().trim();
+
+        if (!siteKey) {
+            return;
+        }
+
+        turnstileWidgetId = window.turnstile.render($container[0], {sitekey: siteKey});
+    }
+
+    window.onloadTurnstileCallback = renderTurnstileTest;
+
+    function turnstileTestToken() {
+        if (turnstileWidgetId === null || !window.turnstile) {
+            return '';
+        }
+
+        return window.turnstile.getResponse(turnstileWidgetId) || '';
+    }
+
+    function storedSetting(name) {
+        const row = (vars('altcha_settings') || []).find((setting) => setting.name === name);
+
+        return row ? String(row.value) : '';
+    }
+
+    /**
+     * A fresh test token is needed when Turnstile was not already active with
+     * these exact keys.
+     */
+    /**
+     * A rejected save means nothing activated: show the stored switch state.
+     */
+    function revertActiveSwitches() {
+        $('#altcha-enabled').prop('checked', storedSetting('altcha_enabled') === '1');
+        $('#captcha-login-enabled').prop('checked', storedSetting('captcha_login_enabled') === '1');
+    }
+
+    function turnstileTestRequired() {
+        const storedActive = storedSetting('altcha_enabled') === '1' || storedSetting('captcha_login_enabled') === '1';
+        const storedTurnstile = storedActive && (storedSetting('captcha_provider') || 'altcha') === 'turnstile';
+        const keysChanged =
+            $('#turnstile-site-key').val().trim() !== storedSetting('turnstile_site_key') ||
+            $('#turnstile-secret-key').val().trim() !== storedSetting('turnstile_secret_key');
+
+        return !storedTurnstile || keysChanged;
+    }
+
     /**
      * Check if the form has invalid values.
      *
@@ -28,21 +95,34 @@ App.Pages.AltchaSettings = (function () {
         try {
             $('#altcha-settings .is-invalid').removeClass('is-invalid');
 
-            const $altchaEnabled = $('#altcha-enabled');
+            const active = $('#altcha-enabled').prop('checked') || $('#captcha-login-enabled').prop('checked');
+            const provider = $('#captcha-provider').val();
 
-            // If enabled with the ALTCHA provider, HMAC key is required
-            if (
-                $altchaEnabled.prop('checked') &&
-                $('#captcha-provider').val() === 'altcha' &&
-                !$altchaHmacKey.val().trim()
-            ) {
+            // An active provider must be fully configured.
+            if (active && provider === 'altcha' && !$altchaHmacKey.val().trim()) {
                 $altchaHmacKey.addClass('is-invalid');
-                throw new Error(lang('fields_are_required'));
+                throw new Error(lang('altcha_hmac_key_missing'));
+            }
+
+            if (active && provider === 'turnstile') {
+                const $siteKey = $('#turnstile-site-key');
+                const $secretKey = $('#turnstile-secret-key');
+
+                if (!$siteKey.val().trim() || !$secretKey.val().trim()) {
+                    $siteKey.toggleClass('is-invalid', !$siteKey.val().trim());
+                    $secretKey.toggleClass('is-invalid', !$secretKey.val().trim());
+                    throw new Error(lang('turnstile_keys_missing'));
+                }
+
+                if (turnstileTestRequired() && !turnstileTestToken()) {
+                    throw new Error(lang('turnstile_test_failed'));
+                }
             }
 
             return false;
         } catch (error) {
             App.Layouts.Backend.displayNotification(error.message);
+            revertActiveSwitches();
             return true;
         }
     }
@@ -87,14 +167,29 @@ App.Pages.AltchaSettings = (function () {
      */
     function onSaveSettingsClick() {
         if (isInvalid()) {
-            App.Layouts.Backend.displayNotification(lang('settings_are_invalid'));
             return;
         }
 
         const altchaSettings = serialize();
 
-        App.Http.AltchaSettings.save(altchaSettings).done(() => {
+        App.Http.AltchaSettings.save(altchaSettings, turnstileTestToken()).done((response) => {
+            if (response.success === false) {
+                App.Layouts.Backend.displayNotification(response.message || lang('settings_are_invalid'));
+                revertActiveSwitches();
+
+                if (turnstileWidgetId !== null && window.turnstile) {
+                    window.turnstile.reset(turnstileWidgetId);
+                }
+
+                return;
+            }
+
             App.Layouts.Backend.displayNotification(lang('settings_saved'));
+
+            // The token is single use: solved state no longer means valid.
+            if (turnstileWidgetId !== null && window.turnstile) {
+                window.turnstile.reset(turnstileWidgetId);
+            }
         });
     }
 
@@ -125,12 +220,15 @@ App.Pages.AltchaSettings = (function () {
         $saveSettings.on('click', onSaveSettingsClick);
         $generateHmacKey.on('click', onGenerateHmacKeyClick);
         $('#captcha-provider').on('change', toggleProviderSections);
+        $('#turnstile-site-key').on('change', renderTurnstileTest);
 
         const altchaSettings = vars('altcha_settings');
 
         deserialize(altchaSettings);
 
         toggleProviderSections();
+
+        renderTurnstileTest();
     }
 
     document.addEventListener('DOMContentLoaded', initialize);

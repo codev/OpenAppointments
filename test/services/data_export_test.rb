@@ -14,15 +14,10 @@ class DataExportTest < ActiveSupport::TestCase
 
   teardown { Array(@paths).each { |path| FileUtils.rm_f(path) } }
 
-  test "filename is dated" do
-    travel_to Time.new(2026, 7, 24, 12, 0, 0) do
-      assert_equal "2026-07-24-OpenAppointments.ods", DataExport.filename
-    end
-  end
 
   test "sheets carry headers plus one row per record" do
     sheets = DataExport.sheets
-    assert_equal %w[name description picture], sheets["Service Categories"].first
+    assert_equal %w[name description picture is_hidden sort_order], sheets["Service Categories"].first
     assert_equal User.customers.count, sheets["Customers"].length - 1
     assert_equal Appointment.count, sheets["Appointments"].length - 1
     assert_equal Setting.count, sheets["Settings"].length - 1

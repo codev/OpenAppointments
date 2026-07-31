@@ -1,0 +1,14 @@
+<%# Captcha widget for the login/recovery forms, per the captcha_login_enabled setting. %>
+<% case Captcha.for_login %>
+<% when "altcha" %>
+    <div class="mb-4">
+        <div id="altcha-widget" class="altcha-widget"></div>
+        <input type="hidden" id="altcha-payload" value="">
+        <span id="altcha-hint" class="help-block text-danger small" style="opacity:0">&nbsp;</span>
+    </div>
+<% when "turnstile" %>
+    <div class="mb-4 text-center">
+        <div class="cf-turnstile d-inline-block" data-sitekey="<%= TurnstileChallenge.site_key %>"></div>
+        <span id="turnstile-hint" class="help-block text-danger small d-block" style="opacity:0">&nbsp;</span>
+    </div>
+<% end %>

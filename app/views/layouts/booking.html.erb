@@ -27,6 +27,7 @@
     <%= stylesheet_link_tag "themes/#{active_theme(vars(:theme))}", "general", "frontend" %>
 
     <%= render "shared/brand_style" %>
+    <%= render "shared/custom_css_style" %>
 
     <% if Embedding.enabled? %>
         <%# Runs before first paint so embedded-only styling (e.g. no login button) never flashes. %>
@@ -77,7 +78,7 @@
 
 <%= ea_js "app", "utils/date", "utils/file", "utils/http", "utils/lang", "utils/message",
           "utils/string", "utils/url", "utils/validation" %>
-<% if setting("altcha_enabled") == "1" %>
+<% if AltchaChallenge.enabled? %>
     <%= ea_js "utils/altcha" %>
 <% end %>
 <% if TurnstileChallenge.enabled? %>
@@ -116,6 +117,7 @@
 <%= render "shared/matomo_analytics_script",
            matomo_analytics_url: vars(:matomo_analytics_url),
            matomo_analytics_site_id: vars(:matomo_analytics_site_id) %>
+<%= render "shared/umami_analytics_script" %>
 
 <%= yield :scripts %>
 

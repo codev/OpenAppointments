@@ -29,12 +29,27 @@ fr:
     import_providers_caution: "Attention : cocher les intervenants créera des comptes utilisateurs et permettra la connexion avec leur e-mail"
     manage_data: "Gérer les données"
     export_data: "Exporter les données"
+    backups: "Sauvegardes"
+    backups_hint: "Les cinq sauvegardes les plus récentes sont conservées sur le serveur et seuls les administrateurs peuvent les télécharger. Conservez-les en lieu sûr si vous les téléchargez car elles contiennent des informations personnelles."
+    backup_working: "Création de la sauvegarde..."
+    backup_failed: "La sauvegarde a échoué, consultez les journaux du serveur."
+    ods_file: "Fichier ODS"
+    zip_file: "Zip avec images"
+    images_zip_optional: "Zip d'images (facultatif)"
+    images_zip_hint: "Ajoutez le zip exporté avec les images pour importer les photos des services, catégories et prestataires, facultatif."
     import_type: "Type d'importation"
     full_reset_label: "Réinitialisation complète, supprimer les administrateurs et réinitialiser les paramètres"
     delete_personal_information_setting_hint: "Permettre aux clients de supprimer tous leurs rendez-vous et informations personnelles du système avec un bouton."
     captcha: "Captcha"
     captcha_info: "Paramètres du captcha pour vérifier que le visiteur est humain avant la réservation"
-    captcha_enabled_hint: "Lorsqu'il est activé, le fournisseur de captcha sélectionné sera utilisé à la place du captcha image traditionnel pour la vérification des formulaires."
+    captcha_enabled_hint: "Lorsque cette option est activée, les clients devront résoudre un défi Captcha avant de finaliser la réservation; activez-la si vous recevez beaucoup de réservations indésirables"
+    captcha_active_customers: "Actif pour les clients"
+    captcha_active_login: "Actif pour la connexion"
+    captcha_login_hint: "Lorsque cette option est activée, les utilisateurs devront résoudre un défi Captcha avant de se connecter à l'administration"
+    altcha_hmac_key_missing: "ALTCHA nécessite une clé HMAC générée avant de pouvoir activer le captcha"
+    turnstile_keys_missing: "Cloudflare Turnstile nécessite une clé de site et une clé secrète avant de pouvoir activer le captcha"
+    turnstile_test_hint: "Résolvez ce défi de test pour confirmer que Turnstile fonctionne sur ce site; requis lors de l'activation de Turnstile ou du changement de clés"
+    turnstile_test_failed: "Terminez le défi de test Turnstile pour confirmer qu'il fonctionne sur ce site avant l'activation"
     turnstile_keys_hint: "Obtenez une paire de clés (site et secret) depuis le tableau de bord Cloudflare :"
     first_login_update_details: Veuillez saisir un nouveau mot de passe et mettre à jour vos informations
     embedding: Intégration
@@ -245,6 +260,18 @@ fr:
     booking: Réservation
     visible: Visible
     hidden: Caché
+    custom_css: "CSS personnalisé"
+    custom_css_hint: "Saisissez du CSS ici pour modifier le thème; il s'applique aux pages de réservation et à l'administration."
+    select_category: "Sélectionnez une catégorie"
+    uncategorized: "Sans catégorie"
+    category_hidden_hint: "Les catégories masquées et leurs services n'apparaissent pas sur la page de réservation."
+    drag_to_reorder: "Faites glisser les enregistrements pour définir l'ordre affiché sur la page de réservation."
+    sort_alphabetically: "Trier par ordre alphabétique"
+    sort_alphabetically_confirm: "Remplacer l'ordre actuel en triant tous les enregistrements par ordre alphabétique?"
+    picture_styles: "Styles d'image"
+    picture_styles_hint: "Choisissez comment les images de chaque ensemble s'ajustent au carré de 400x400; Bordure blanche conserve toute l'image sur fond blanc, Zoomé remplit le carré par recadrage."
+    white_border: "Bordure blanche"
+    zoomed: "Zoomé"
     business_logic: Logique commerciale
     current_user: Utilisateur actuel
     about_app: Au sujet d’OpenAppointments
@@ -253,7 +280,7 @@ fr:
     book_advance_timeout: Paramètres de réservation
     book_advance_timeout_hint: 'Les réservations ne peuvent pas être créées, modifiées ou annulées moins de ## heures avant le rendez-vous.'
     timeout_minutes: Délai de réservation (en minutes)
-    about_app_info: OpenAppointments est une application Web hautement personnalisable qui permet à vos clients de prendre rendez-vous avec vous via le web. En outre, elle offre la possibilité de synchroniser vos données avec un calendrier Google afin que vous puissiez les utiliser avec d’autres services. OpenAppointments est un projet open source et vous pouvez le télécharger et l’installer même pour un usage commercial. OpenAppointments fonctionnera sans problème avec votre site web existant car il peut être installé dans un dossier spécifique du serveur et bien sûr, les deux sites peuvent partager la même base de données.
+    about_app_info: "OpenAppointments est une application Web hautement personnalisable qui permet à vos clients de prendre rendez-vous avec vous via le web."
     current_version: Version actuelle
     support: Support
     about_app_support: Si vous rencontrez des problèmes en utilisant OpenAppointments, vous pouvez chercher des réponses dans les issues du projet sur GitHub. Vous pouvez aussi ouvrir une nouvelle issue pour aider au développement.
@@ -345,8 +372,6 @@ fr:
     oops_something_went_wrong: Oups ! Une erreur s’est produite.
     ea_update_success: OpenAppointments à été mis à jour avec succès.
     require_captcha: CAPTCHA obligatoire
-    require_captcha_hint: "Lorsque l’option est activée, les clients doivent taper un code de vérification CAPTCHA avant de pouvoir réserver ou mettre à jour un rendez-vous. - rendez-vous dans Intégrations pour choisir un type de Captcha plus avancé"
-    captcha_is_wrong: Le code de vérification CAPTCHA est erroné, merci de réessayer.
     enter_captcha_here: Entrez le CAPTCHA ici...
     any_provider: Toute personne disponible
     requested_hour_is_unavailable: Cette heure de rendez n’est malheureusement pas disponible. Merci de sélectionner une autre heure pour votre rendez-vous.
@@ -467,6 +492,13 @@ fr:
     google_analytics_info: Google Analytics vous permet d’ajouter automatiquement le code de suivi et le balisage HTML à la page publique et de suivre toutes les sessions de réservation publique.
     matomo_analytics: Matomo Analytics
     matomo_analytics_info: Matomo Analytics vous permet d’ajouter automatiquement le code de suivi et le balisage HTML à la page publique et de suivre toutes les sessions de réservation publique.
+    umami_analytics: "Umami Analytics"
+    umami_analytics_info: "Umami Analytics est une alternative à Google Analytics respectueuse de la vie privée; connectez votre propre instance Umami pour suivre les pages publiques de réservation."
+    umami_analytics_url: "Umami URL"
+    umami_analytics_url_hint: "Ajoutez l'URL de votre installation Umami pour activer le suivi sur les pages de réservation."
+    umami_analytics_website_id: "ID du site web"
+    umami_analytics_recorder: "Replays et cartes de chaleur"
+    umami_analytics_recorder_hint: "Lorsque cette option est activée, le script Umami recorder est aussi chargé pour capturer les replays de session et les cartes de chaleur."
     api: API
     api_info: L’API vous permet d’interagir avec toutes les données de OpenAppointments via le protocole HTTP et les points de terminaison API disponibles et créer vos propres intégrations.
     google_analytics_code: Code de Google analytics
@@ -548,6 +580,7 @@ fr:
     field_mapping: Cartographie des Champs
     content: Contenu
     active: Actif
+    not_active: "Inactif"
     user_imported: L'enregistrement de l'utilisateur a été importé avec succès.
     import: Importer
     ldap_dn: DN LDAP
@@ -574,7 +607,6 @@ fr:
     altcha_expires_hint: 'Durée de validité d''un défi en secondes (par défaut : 300).'
     altcha_key_generated: Nouvelle clé HMAC générée avec succès.
     altcha_enabled: Activer ALTCHA
-    altcha_captcha_not_active_warning: Le paramètre CAPTCHA n'est pas actuellement actif. ALTCHA ne sera pas utilisé tant que CAPTCHA n'est pas activé dans les
     generate: Générer
     meeting_link: Lien de réunion
     google_calendar: Google Agenda

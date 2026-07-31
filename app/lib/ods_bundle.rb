@@ -1,17 +1,11 @@
-# Zip import bundle: a .zip containing one .ods plus image files that the
-# sheets reference by filename in their picture columns. A plain ODS is itself
-# a zip but contains no .ods entry, so bundle? tells the two apart.
+# Images zip for the manage-data import: image files the sheets reference by
+# filename in their picture columns (an exported backup zip also carries the
+# ODS itself, which the import ignores).
 module OdsBundle
   module_function
 
-  def bundle?(path)
-    require "zip"
-    Zip::File.open(path) { |zip| zip.entries.any? { |entry| ods_entry?(entry) } }
-  rescue StandardError
-    false
-  end
-
-  # Extracts every file entry flat into dir; returns the extracted ODS path.
+  # Extracts every file entry flat into dir; returns the extracted ODS path
+  # when the zip carries one.
   def unpack(path, dir)
     require "zip"
     FileUtils.mkdir_p(dir)

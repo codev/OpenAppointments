@@ -38,7 +38,7 @@ App.Pages.Providers = (function () {
     const $calendarView = $('#calendar-view');
     const $filterProviders = $('#filter-providers');
     let filterResults = {};
-    const filterLimit = 20;
+    const filterLimit = 10000;
 
     let filterPage = 1;
     let workingPlanManager;
@@ -620,6 +620,7 @@ App.Pages.Providers = (function () {
 
         return $('<div/>', {
             'class': 'provider-row entry',
+            'draggable': true,
             'data-id': provider.id,
             'html': [
                 $('<strong/>', {
@@ -696,7 +697,46 @@ App.Pages.Providers = (function () {
         });
     }
 
+
+    /**
+     * Drag-to-reorder: persist the dragged order, blocked while filtering.
+     */
+    function initializeReorder() {
+        App.Utils.DragReorder.enable(
+            $('#filter-providers .results'),
+            '.provider-row',
+            () => !$('#filter-providers .key').val(),
+            (ids) => {
+                $.post(App.Utils.Url.siteUrl('providers/reorder'), {csrf_token: vars('csrf_token'), ids: ids});
+            },
+        );
+
+        $('.sort-alphabetically').on('click', () => {
+            const buttons = [
+                {
+                    text: lang('cancel'),
+                    click: (event, messageModal) => {
+                        messageModal.hide();
+                    },
+                },
+                {
+                    text: lang('sort_alphabetically'),
+                    click: (event, messageModal) => {
+                        $.post(App.Utils.Url.siteUrl('providers/sort_alphabetically'), {csrf_token: vars('csrf_token')}).done(() => {
+                            $('#filter-providers .key').val('');
+                            $('#filter-providers .key').parents('form').trigger('submit');
+                        });
+                        messageModal.hide();
+                    },
+                },
+            ];
+
+            App.Utils.Message.show(lang('sort_alphabetically'), lang('sort_alphabetically_confirm'), buttons);
+        });
+    }
+
     document.addEventListener('DOMContentLoaded', initialize);
+    document.addEventListener('DOMContentLoaded', initializeReorder);
 
     return {
         filter,

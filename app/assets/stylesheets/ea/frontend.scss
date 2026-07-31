@@ -89,16 +89,6 @@
     color: var(--bs-white) !important;
 }
 
-/* Captcha refresh icon hover effect */
-#book-appointment-wizard .captcha-title .fa-sync-alt {
-    cursor: pointer;
-    transition: all 0.3s linear;
-}
-
-#book-appointment-wizard .captcha-title .fa-sync-alt:hover {
-    color: var(--bs-primary);
-}
-
 /* Language popover list */
 .popover .popover-title {
     text-align: center;
@@ -131,6 +121,14 @@
     object-fit: cover;
 }
 
+/* Without an image the text centers in the box. */
+.booking-card:not(:has(.booking-card-picture)) .card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 90px;
+}
+
 /* Structural rules moved out of inline styles during the markup cleanup. */
 #company-name {
     min-width: 0;
@@ -150,14 +148,26 @@
     flex-shrink: 0;
 }
 
-/* Pictures under the service/provider dropdowns stay heavily constrained. */
+/* Dropdown view: the description picture floats left with the text wrapping
+   round it; centered above the text on small screens. */
 #service-description .selection-picture,
 #provider-description .selection-picture {
-    max-width: min(100%, 400px);
-    max-height: 400px;
+    float: left;
+    margin: 0 1rem 0.25rem 0.25rem;
+    max-width: min(100%, 130px);
+    max-height: 130px;
     width: auto;
     height: auto;
     object-fit: contain;
+}
+
+@media (max-width: 575.98px) {
+    #service-description .selection-picture,
+    #provider-description .selection-picture {
+        float: none;
+        display: block;
+        margin: 0 auto 0.75rem;
+    }
 }
 
 #steps .book-step {

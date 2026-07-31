@@ -29,12 +29,27 @@ pl:
     import_providers_caution: "Uwaga: zaznaczenie specjalistów utworzy konta użytkowników i umożliwi logowanie ich e-mailem"
     manage_data: "Zarządzanie danymi"
     export_data: "Eksportuj dane"
+    backups: "Kopie zapasowe"
+    backups_hint: "Piec najnowszych kopii zapasowych jest przechowywanych na serwerze i tylko administratorzy moga je pobrac. Po pobraniu przechowuj je bezpiecznie, poniewaz zawieraja dane osobowe."
+    backup_working: "Tworzenie kopii zapasowej..."
+    backup_failed: "Kopia zapasowa nie powiodla sie, sprawdz logi serwera."
+    ods_file: "Plik ODS"
+    zip_file: "Zip z obrazami"
+    images_zip_optional: "Zip z obrazami (opcjonalnie)"
+    images_zip_hint: "Dodaj wyeksportowany zip z obrazami, aby zaimportowac zdjecia uslug, kategorii i uslugodawcow, opcjonalnie."
     import_type: "Typ importu"
     full_reset_label: "Pełny reset, usuń administratorów i zresetuj ustawienia"
     delete_personal_information_setting_hint: "Pozwól klientom jednym przyciskiem usunąć z systemu wszystkie swoje wizyty i dane osobowe."
     captcha: "Captcha"
     captcha_info: "Ustawienia captcha weryfikujące, że odwiedzający jest człowiekiem przed rezerwacją"
-    captcha_enabled_hint: "Po włączeniu wybrany dostawca captcha będzie używany zamiast tradycyjnej obrazkowej captchy do weryfikacji formularzy."
+    captcha_enabled_hint: "Po włączeniu klienci będą musieli rozwiązać zadanie Captcha przed dokończeniem rezerwacji; włącz, jeśli otrzymujesz dużo spamowych rezerwacji"
+    captcha_active_customers: "Aktywne dla klientów"
+    captcha_active_login: "Aktywne dla logowania"
+    captcha_login_hint: "Po włączeniu użytkownicy będą musieli rozwiązać zadanie Captcha przed zalogowaniem się do panelu"
+    altcha_hmac_key_missing: "ALTCHA wymaga wygenerowanego klucza HMAC, zanim captcha będzie mogła zostać aktywowana"
+    turnstile_keys_missing: "Cloudflare Turnstile wymaga klucza witryny i klucza tajnego, zanim captcha będzie mogła zostać aktywowana"
+    turnstile_test_hint: "Rozwiąż to zadanie testowe, aby potwierdzić, że Turnstile działa w tej witrynie; wymagane przy aktywacji Turnstile lub zmianie kluczy"
+    turnstile_test_failed: "Przed aktywacją ukończ zadanie testowe Turnstile, aby potwierdzić, że działa w tej witrynie"
     turnstile_keys_hint: "Uzyskaj parę kluczy (site i secret) w panelu Cloudflare:"
     first_login_update_details: Wprowadź nowe hasło i zaktualizuj swoje dane
     embedding: Osadzanie
@@ -245,6 +260,18 @@ pl:
     booking: Rezerwacja
     visible: Widoczny
     hidden: Ukryty
+    custom_css: "Wlasny CSS"
+    custom_css_hint: "Wpisz tutaj CSS, aby zmodyfikowac motyw; dotyczy stron rezerwacji i panelu administracyjnego."
+    select_category: "Wybierz kategorie"
+    uncategorized: "Bez kategorii"
+    category_hidden_hint: "Ukryte kategorie i ich uslugi nie sa widoczne na stronie rezerwacji."
+    drag_to_reorder: "Przeciagnij rekordy, aby ustawic kolejnosc widoczna na stronie rezerwacji."
+    sort_alphabetically: "Sortuj alfabetycznie"
+    sort_alphabetically_confirm: "Zastapic obecna kolejnosc, sortujac wszystkie rekordy alfabetycznie?"
+    picture_styles: "Style obrazow"
+    picture_styles_hint: "Wybierz, jak obrazy kazdego zestawu maja byc dopasowane do kwadratu 400x400; Biala ramka zachowuje caly obraz na bialym tle, Powiekszone wypelnia kwadrat przez przyciecie."
+    white_border: "Biala ramka"
+    zoomed: "Powiekszone"
     business_logic: Podział Firmy
     current_user: Bieżący Użytkownik
     about_app: O OpenAppointments
@@ -253,7 +280,7 @@ pl:
     book_advance_timeout: Czas bookowania  minął
     book_advance_timeout_hint: Zdefiniuj w minutach czas w którym klient ponownie może zabookować wizytę.
     timeout_minutes: Czas out
-    about_app_info: OpenAppointments jest aplikacją webową wysoce przystosowywalną do potrzeb klienta. Co więcej pozwala na synchronizację z Kalendarzem Google.
+    about_app_info: "OpenAppointments jest aplikacją webową wysoce przystosowywalną do potrzeb klienta."
     current_version: Aktualna Wersja
     support: Pomoc
     about_app_support: Jeśli napotkasz problemy podczas korzystania z OpenAppointments, możesz poszukać odpowiedzi w zgłoszeniach projektu na GitHubie. Możesz też otworzyć nowe zgłoszenie, aby pomóc w rozwoju.
@@ -345,8 +372,6 @@ pl:
     oops_something_went_wrong: Ojj! Coś poszło nie tak.
     ea_update_success: OpenAppointments zaktualizowany pomyślnie
     require_captcha: Wymagaj CAPTCHA
-    require_captcha_hint: "Po włączeniu klienci będą musieli wpisać losowo wygenerowany ciąg CAPTCHA przed rezerwacją/aktualizacją wizyty. - przejdź do Integracji, aby wybrać bardziej zaawansowany typ Captcha"
-    captcha_is_wrong: Weryfikacja CAPTCHA nie powiodła się, spróbuj ponownie.
     enter_captcha_here: Wprowadź CAPTCHA tutaj...
     any_provider: Dowolny dostawca
     requested_hour_is_unavailable: Żądany termin wizyty jest niestety niedostępny. Proszę wybrać inny termin dla swojej wizyty.
@@ -467,6 +492,13 @@ pl:
     google_analytics_info: Google Analytics umożliwia automatyczne dodanie kodu śledzenia i znaczników HTML na stronie publicznej oraz śledzenie wszystkich publicznych sesji rezerwacji.
     matomo_analytics: Matomo Analytics
     matomo_analytics_info: Matomo Analytics umożliwia automatyczne dodanie kodu śledzenia i znaczników HTML na stronie publicznej oraz śledzenie wszystkich publicznych sesji rezerwacji.
+    umami_analytics: "Umami Analytics"
+    umami_analytics_info: "Umami Analytics to przyjazna prywatnosci alternatywa dla Google Analytics; podlacz wlasna instancje Umami, aby sledzic publiczne strony rezerwacji."
+    umami_analytics_url: "Umami URL"
+    umami_analytics_url_hint: "Dodaj adres URL swojej instalacji Umami, aby wlaczyc sledzenie na stronach rezerwacji."
+    umami_analytics_website_id: "ID witryny"
+    umami_analytics_recorder: "Nagrania i mapy cieplne"
+    umami_analytics_recorder_hint: "Po wlaczeniu ladowany jest takze skrypt Umami recorder do rejestrowania nagran sesji i map cieplnych."
     api: API
     api_info: API umożliwia interakcję ze wszystkimi danymi OpenAppointments za pomocą protokołu HTTP oraz dostępnych punktów końcowych API i tworzenie własnych integracji.
     google_analytics_code: Kod Google Analytics
@@ -548,6 +580,7 @@ pl:
     field_mapping: Mapowanie pól
     content: Treść
     active: Aktywny
+    not_active: "Nieaktywne"
     user_imported: Rekord użytkownika został pomyślnie zaimportowany.
     import: Importuj
     ldap_dn: LDAP DN
@@ -574,7 +607,6 @@ pl:
     altcha_expires_hint: 'Czas ważności wyzwania w sekundach (domyślnie: 300).'
     altcha_key_generated: Nowy klucz HMAC został pomyślnie wygenerowany.
     altcha_enabled: Włącz ALTCHA
-    altcha_captcha_not_active_warning: Ustawienie CAPTCHA nie jest obecnie aktywne. ALTCHA nie będzie używana, dopóki CAPTCHA nie zostanie włączona w
     generate: Generuj
     meeting_link: Link do spotkania
     google_calendar: Kalendarz Google

@@ -657,13 +657,6 @@ body .modal.full-screen .modal-push {
     font-size: 12px;
 }
 
-/* The tagline collides with the nav on mid-width screens. */
-@media (max-width: 1199.98px) {
-    #header-logo small {
-        display: none !important;
-    }
-}
-
 #header .navbar-nav .nav-item {
     min-width: 90px;
 }
@@ -671,6 +664,13 @@ body .modal.full-screen .modal-push {
 #header-logo {
     margin-right: 1rem;
 }
+
+/* Keep the nav dropdown menus above page panels. */
+#header {
+    z-index: 1030;
+}
+
+
 
 .filter-records .results {
     max-height: 650px;

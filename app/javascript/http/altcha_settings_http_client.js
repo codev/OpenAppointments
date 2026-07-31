@@ -22,13 +22,17 @@ App.Http.AltchaSettings = (function () {
      *
      * @return {Object}
      */
-    function save(altchaSettings) {
+    function save(altchaSettings, turnstileTestToken) {
         const url = App.Utils.Url.siteUrl('altcha_settings/save');
 
         const data = {
             csrf_token: vars('csrf_token'),
             altcha_settings: altchaSettings,
         };
+
+        if (turnstileTestToken) {
+            data.cf_turnstile_response = turnstileTestToken;
+        }
 
         return $.post(url, data);
     }

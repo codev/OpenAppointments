@@ -29,12 +29,27 @@ cs:
     import_providers_caution: "Pozor: zaškrtnutí poskytovatelů vytvoří uživatelské účty a umožní přihlášení jejich e-mailem"
     manage_data: "Správa dat"
     export_data: "Exportovat data"
+    backups: "Zálohy"
+    backups_hint: "Pět nejnovějších záloh je uloženo na serveru a stáhnout je mohou pouze administrátoři. Po stažení je bezpečně uložte, obsahují osobní údaje."
+    backup_working: "Vytváření zálohy..."
+    backup_failed: "Záloha selhala, zkontrolujte serverové logy."
+    ods_file: "Soubor ODS"
+    zip_file: "Zip s obrázky"
+    images_zip_optional: "Zip s obrázky (volitelné)"
+    images_zip_hint: "Přidejte exportovaný zip s obrázky pro import fotek služeb, kategorií a poskytovatelů, volitelné."
     import_type: "Typ importu"
     full_reset_label: "Úplný reset, smazat administrátory a obnovit nastavení"
     delete_personal_information_setting_hint: "Umožněte zákazníkům jedním tlačítkem odstranit ze systému všechny jejich schůzky a osobní údaje."
     captcha: "Captcha"
     captcha_info: "Nastavení captcha pro ověření, že návštěvník je člověk, před rezervací"
-    captcha_enabled_hint: "Pokud je povoleno, pro ověření formulářů se místo tradiční obrázkové captcha použije vybraný poskytovatel captcha."
+    captcha_enabled_hint: "Pokud je povoleno, zákazníci budou muset před dokončením rezervace vyřešit Captcha úlohu; povolte, pokud máte hodně spamových rezervací"
+    captcha_active_customers: "Aktivní pro zákazníky"
+    captcha_active_login: "Aktivní pro přihlášení"
+    captcha_login_hint: "Pokud je povoleno, uživatelé budou muset před přihlášením do administrace vyřešit Captcha úlohu"
+    altcha_hmac_key_missing: "ALTCHA potřebuje vygenerovaný klíč HMAC, aby bylo možné captcha aktivovat"
+    turnstile_keys_missing: "Cloudflare Turnstile potřebuje klíč webu i tajný klíč, aby bylo možné captcha aktivovat"
+    turnstile_test_hint: "Vyřešte tuto testovací úlohu pro potvrzení, že Turnstile na tomto webu funguje; vyžaduje se při aktivaci Turnstile nebo změně klíčů"
+    turnstile_test_failed: "Dokončete testovací úlohu Turnstile pro potvrzení, že na tomto webu funguje, před aktivací"
     turnstile_keys_hint: "Získejte pár klíčů (site a secret) v panelu Cloudflare:"
     first_login_update_details: Zadejte nové heslo a aktualizujte své údaje
     embedding: Vložení do webu
@@ -245,6 +260,18 @@ cs:
     booking: Rezervace
     visible: Viditelný
     hidden: Skrytý
+    custom_css: "Vlastní CSS"
+    custom_css_hint: "Zde zadejte CSS pro úpravu motivu; použije se na rezervační stránky i administraci."
+    select_category: "Vyberte kategorii"
+    uncategorized: "Bez kategorie"
+    category_hidden_hint: "Skryté kategorie a jejich služby se na rezervační stránce nezobrazují."
+    drag_to_reorder: "Přetažením záznamů nastavíte pořadí zobrazené na rezervační stránce."
+    sort_alphabetically: "Seřadit abecedně"
+    sort_alphabetically_confirm: "Nahradit současné pořadí abecedním seřazením všech záznamů?"
+    picture_styles: "Styly obrázků"
+    picture_styles_hint: "Zvolte, jak se obrázky každé sady vejdou do čtverce 400x400; Bílý okraj zachová celý obrázek na bílém pozadí, Přiblížené vyplní čtverec oříznutím."
+    white_border: "Bílý okraj"
+    zoomed: "Přiblížené"
     business_logic: Business logika
     current_user: Přihlášený uživatel
     about_app: O aplikaci OpenAppointments
@@ -253,7 +280,7 @@ cs:
     book_advance_timeout: Časový limit rezervace
     book_advance_timeout_hint: Definujte časový limit (v minutách), před jehož uplynutím budou moci zákazníci zadat nebo změnit rezervaci schůzky se společností.
     timeout_minutes: Časový limit (minuty)
-    about_app_info: OpenAppointments je vysoce přizpůsobitelná webová aplikace, která vašim zákazníkům umožňuje rezervovat si s vámi schůzky prostřednictvím webu. Navíc poskytuje možnost synchronizovat vaše data s Kalendářem Google, takže je můžete využívat v rámci dalších služeb.
+    about_app_info: "OpenAppointments je vysoce přizpůsobitelná webová aplikace, která vašim zákazníkům umožňuje rezervovat si s vámi schůzky prostřednictvím webu."
     current_version: Aktuální verze
     support: Podpora
     about_app_support: Pokud při používání OpenAppointments narazíte na jakékoli problémy, můžete hledat odpovědi v issues projektu na GitHubu. Můžete také otevřít nové issue a pomoci tak vývoji.
@@ -345,8 +372,6 @@ cs:
     oops_something_went_wrong: Oops! Něco se pokazilo.
     ea_update_success: Aplikace OpenAppointments byla úspěšně aktualizována.
     require_captcha: Vyžadovat CAPTCHA
-    require_captcha_hint: "Pokud bude povolena, zákazníci budou muset před vytvořením/editací schůzky zadat náhodně vygenerovaný řetězec CAPTCHA. - přejděte do Integrací a zvolte pokročilejší typ Captcha"
-    captcha_is_wrong: Ověření CAPTCHA selhalo, prosím opakujte akci.
     enter_captcha_here: Zadejte CAPTCHA zde...
     any_provider: Jakýkoli poskytovatel
     requested_hour_is_unavailable: Požadovaná schůzka bohužel aktuálně není dostupná. Vyberte prosím pro vaši schůzku jiný čas.
@@ -467,6 +492,13 @@ cs:
     google_analytics_info: Google Analytics umožňují automaticky vkládat měřící kód a HTML markup do veřejné stránky a sledovat všechny veřejné rezervační události.
     matomo_analytics: Matomo Analytics
     matomo_analytics_info: Matomo Analytics umožňují automaticky vkládat měřící kód a HTML markup do veřejné stránky a sledovat všechny veřejné rezervační události.
+    umami_analytics: "Umami Analytics"
+    umami_analytics_info: "Umami Analytics je alternativa ke Google Analytics šetrná k soukromí; připojte vlastní instanci Umami pro sledování veřejných rezervačních stránek."
+    umami_analytics_url: "Umami URL"
+    umami_analytics_url_hint: "Přidejte URL vaší instalace Umami pro zapnutí sledování rezervačních stránek."
+    umami_analytics_website_id: "ID webu"
+    umami_analytics_recorder: "Záznamy a teplotní mapy"
+    umami_analytics_recorder_hint: "Pokud je povoleno, načítá se také skript Umami recorder pro záznam relací a teplotní mapy."
     api: API
     api_info: API umožňuje komunikovat s daty v OpenAppointments prostřednictvím HTTP protokolu a dostupných API endpointů a vytvářet vaše vlastní integrace.
     google_analytics_code: Google Analytics ID
@@ -548,6 +580,7 @@ cs:
     field_mapping: Mapování polí
     content: Obsah
     active: Aktivní
+    not_active: "Neaktivní"
     user_imported: Záznam uživatele byl úspěšně importován.
     import: Importovat
     ldap_dn: LDAP DN
@@ -574,7 +607,6 @@ cs:
     altcha_expires_hint: 'Doba platnosti výzvy v sekundách (výchozí: 300).'
     altcha_key_generated: Nový klíč HMAC byl úspěšně vygenerován.
     altcha_enabled: Povolit ALTCHA
-    altcha_captcha_not_active_warning: Nastavení CAPTCHA není aktuálně aktivní. ALTCHA nebude použita, pokud nebude CAPTCHA povolena v
     generate: Generovat
     meeting_link: Odkaz na schůzku
     google_calendar: Kalendář Google

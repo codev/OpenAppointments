@@ -29,12 +29,27 @@ et:
     import_providers_caution: "Ettevaatust: teenusepakkujate märkimine loob kasutajakontod ja lubab nende e-postiga sisse logida"
     manage_data: "Halda andmeid"
     export_data: "Ekspordi andmed"
+    backups: "Varukoopiad"
+    backups_hint: "Viis uusimat varukoopiat hoitakse serveris ja neid saavad alla laadida ainult administraatorid. Allalaadimisel hoidke neid turvaliselt, sest need sisaldavad isikuandmeid."
+    backup_working: "Varukoopia loomine..."
+    backup_failed: "Varukoopia ebaonnestus, kontrollige serveri logisid."
+    ods_file: "ODS-fail"
+    zip_file: "Zip koos piltidega"
+    images_zip_optional: "Piltide zip (valikuline)"
+    images_zip_hint: "Lisage eksporditud piltidega zip, et importida teenuste, kategooriate ja teenusepakkujate pildid, valikuline."
     import_type: "Impordi tüüp"
     full_reset_label: "Täielik lähtestamine, kustuta administraatorid ja lähtesta seaded"
     delete_personal_information_setting_hint: "Luba klientidel ühe nupuvajutusega eemaldada süsteemist kõik oma broneeringud ja isikuandmed."
     captcha: "Captcha"
     captcha_info: "Captcha seaded, millega enne broneerimist kontrollitakse, et külastaja on inimene"
-    captcha_enabled_hint: "Kui see on lubatud, kasutatakse vormide kontrollimiseks valitud captcha teenusepakkujat traditsioonilise pildi-captcha asemel."
+    captcha_enabled_hint: "Kui see on lubatud, peavad kliendid enne broneeringu lõpetamist lahendama Captcha ülesande; lubage see, kui saate palju rämpsbroneeringuid"
+    captcha_active_customers: "Aktiivne klientidele"
+    captcha_active_login: "Aktiivne sisselogimisel"
+    captcha_login_hint: "Kui see on lubatud, peavad kasutajad enne haldusliidesesse sisselogimist lahendama Captcha ülesande"
+    altcha_hmac_key_missing: "ALTCHA vajab enne captcha aktiveerimist genereeritud HMAC-võtit"
+    turnstile_keys_missing: "Cloudflare Turnstile vajab enne captcha aktiveerimist nii saidivõtit kui ka salajast võtit"
+    turnstile_test_hint: "Lahendage see testülesanne, et kinnitada, et Turnstile töötab sellel saidil; see on nõutav Turnstile'i aktiveerimisel või võtmete muutmisel"
+    turnstile_test_failed: "Enne aktiveerimist lahendage Turnstile'i testülesanne, et kinnitada selle töötamist sellel saidil"
     turnstile_keys_hint: "Hankige site key ja secret key paar Cloudflare'i töölaualt:"
     first_login_update_details: Palun sisestage uus parool ja uuendage oma andmeid
     embedding: Manustamine
@@ -245,6 +260,18 @@ et:
     booking: Broneering
     visible: Nähtav
     hidden: Peidetud
+    custom_css: "Kohandatud CSS"
+    custom_css_hint: "Sisestage siia CSS teema muutmiseks; see rakendub broneerimislehtedele ja haldusliidesele."
+    select_category: "Valige kategooria"
+    uncategorized: "Kategooriata"
+    category_hidden_hint: "Peidetud kategooriaid ja nende teenuseid broneerimislehel ei kuvata."
+    drag_to_reorder: "Lohistage kirjeid, et maarata broneerimislehel kuvatav jarjekord."
+    sort_alphabetically: "Sordi tahestikuliselt"
+    sort_alphabetically_confirm: "Kas asendada praegune jarjekord koigi kirjete tahestikulise sortimisega?"
+    picture_styles: "Piltide stiilid"
+    picture_styles_hint: "Valige, kuidas iga ruehma pildid 400x400 ruutu sobitatakse; Valge aeaeris hoiab kogu pildi valgel taustal, Suumitud taeidab ruudu kaerpimisega."
+    white_border: "Valge aeaeris"
+    zoomed: "Suumitud"
     business_logic: Töötajad
     current_user: Praegune kasutaja
     about_app: Info rakenduse kohta
@@ -253,7 +280,7 @@ et:
     book_advance_timeout: Broneeringu tegemise viimane hetk
     book_advance_timeout_hint: Määratle, kui palju varem on võimalik broneeringuid teha.
     timeout_minutes: Mitu minutit enne soovitavat broneeringuaega on võimalik veel broneeringut teha.
-    about_app_info: OpenAppointments on veebirakendus mille abil on võimalik klientidel teenuste aegu broneerida. Broneeringuid saab sünkroniseerida Google'i kalendriga.
+    about_app_info: "OpenAppointments on veebirakendus mille abil on võimalik klientidel teenuste aegu broneerida."
     current_version: Versioon
     support: Abi
     about_app_support: Kui OpenAppointments kasutamisel tekib probleeme, saate vastuseid otsida projekti GitHubi teemadest. Arenduse toetamiseks võite avada ka uue teema.
@@ -345,8 +372,6 @@ et:
     oops_something_went_wrong: Ohhhoo! Midagi läks untsu.
     ea_update_success: OpenAppointments uuendus õnnestus.
     require_captcha: Nõua CAPTCHA-t
-    require_captcha_hint: "Kui see on sisse lülitatud, siis nõutakse kasutajalt CAPTCHA-t enne broneeringu lisamist/muutmist. - minge Integratsioonide alla, et valida täiustatum Captcha tüüp"
-    captcha_is_wrong: CAPTCHA kinnitus ebaõnnestus. Proovi uuesti.
     enter_captcha_here: Sisestage CAPTCHA siia...
     any_provider: Suvaline teenusepakkuja
     requested_hour_is_unavailable: Soovitud aeg ei ole enam saadaval. Palun vali uus aeg.
@@ -467,6 +492,13 @@ et:
     google_analytics_info: Google Analytics võimaldab automaatselt lisada jälgimiskoodi ja HTML-märgendit avalikule lehele ning jälgida kõiki avalikke broneeringu sessioone.
     matomo_analytics: Matomo Analytics
     matomo_analytics_info: Matomo Analytics võimaldab automaatselt lisada jälgimiskoodi ja HTML-märgendit avalikule lehele ning jälgida kõiki avalikke broneeringu sessioone.
+    umami_analytics: "Umami Analytics"
+    umami_analytics_info: "Umami Analytics on privaatsussoebralik alternatiiv Google Analyticsile; uehendage oma Umami server avalike broneerimislehtede jaelgimiseks."
+    umami_analytics_url: "Umami URL"
+    umami_analytics_url_hint: "Lisage oma Umami paigalduse URL, et lubada jaelgimine broneerimislehtedel."
+    umami_analytics_website_id: "Veebisaidi ID"
+    umami_analytics_recorder: "Salvestused ja soojuskaardid"
+    umami_analytics_recorder_hint: "Kui see on lubatud, laaditakse ka Umami recorder skript seansside salvestamiseks ja soojuskaartideks."
     api: API
     api_info: API võimaldab teil suhelda kõigi OpenAppointments andmetega HTTP-protokolli ja saadaval olevate API-lõpp-punktide kaudu ning luua oma integratsioone.
     google_analytics_code: Google Analytics Kood
@@ -548,6 +580,7 @@ et:
     field_mapping: Väljade Kaardistamine
     content: Sisu
     active: Aktiivne
+    not_active: "Pole aktiivne"
     user_imported: Kasutaja andmed imporditi edukalt.
     import: Impordi
     ldap_dn: LDAP DN
@@ -574,7 +607,6 @@ et:
     altcha_expires_hint: 'Kui kaua väljakutse kehtib sekundites (vaikimisi: 300).'
     altcha_key_generated: Uus HMAC võti edukalt genereeritud.
     altcha_enabled: Luba ALTCHA
-    altcha_captcha_not_active_warning: CAPTCHA seade ei ole hetkel aktiivne. ALTCHA-t ei kasutata, kui CAPTCHA pole lubatud
     generate: Genereeri
     meeting_link: Koosoleku link
     google_calendar: Google kalender

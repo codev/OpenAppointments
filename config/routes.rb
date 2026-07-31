@@ -44,9 +44,18 @@ Rails.application.routes.draw do
   post "services/regenerate_link" => "services#regenerate_link"
   post "providers/regenerate_link" => "providers#regenerate_link"
 
+  # Drag-to-reorder for the booking page ordering
+  %w[services service_categories providers].each do |resource|
+    post "#{resource}/reorder" => "#{resource}#reorder"
+    post "#{resource}/sort_alphabetically" => "#{resource}#sort_alphabetically"
+  end
+
   # 10to8 import page
   get "import" => "import#index"
-  get "import/export" => "import#export"
+  post "import/export" => "import#export"
+  get "import/export_status" => "import#export_status"
+  get "import/backups" => "import#backups"
+  get "import/download_backup" => "import#download_backup"
   post "import/analyze" => "import#analyze"
   post "import/start" => "import#start"
   get "import/status" => "import#status"
@@ -75,13 +84,16 @@ Rails.application.routes.draw do
 
   # Settings pages
   %w[general_settings business_settings booking_settings theme_settings legal_settings api_settings
-     altcha_settings embed_settings google_calendar_settings google_analytics_settings
-     matomo_analytics_settings jitsi_settings ldap_settings
+     altcha_settings embed_settings google_calendar_settings umami_analytics_settings
+     google_analytics_settings matomo_analytics_settings jitsi_settings ldap_settings
      messages_settings messages_email_settings messages_twilio_settings
      messages_plivo_settings messages_textanywhere_settings].each do |resource|
     get resource => "#{resource}#index"
     post "#{resource}/save" => "#{resource}#save"
   end
+
+  # Theme preview sample (rendered in the Theme settings cards)
+  get "theme_settings/preview" => "theme_settings#preview"
 
   # Messages panel
   get "messages" => redirect("/messages_settings")

@@ -29,7 +29,7 @@ class BrandingTest < ActionDispatch::IntegrationTest
     get "/about"
     assert_select "#footer a[href='https://codev.uk/']", text: "Codev"
     assert_select "#footer a[href*='agpl-3.0']", text: /AGPL-3.0/
-    assert_select "#footer a[href='/']", text: I18n.t("ea.go_to_booking_page")
+    assert_select "#footer a[href='/']", count: 0
     assert_select "#footer #select-language"
   end
 

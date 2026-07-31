@@ -1,0 +1,76 @@
+<%# Umami Analytics settings (integrations hub). %>
+<div id="umami-analytics-settings-page" class="container backend-page py-3">
+    <div class="row">
+        <div class="col-sm-3">
+            <%= render "shared/settings_nav" %>
+        </div>
+        <div id="umami-analytics-settings" class="col-sm-9">
+            <form>
+                <fieldset>
+                    <div class="d-flex justify-content-between align-items-center border-bottom mb-4 py-2">
+                        <h4 class="mb-0 fw-light">
+                            <%= lang('umami_analytics') %>
+                        </h4>
+
+                        <div>
+                            <a href="/integrations" class="btn btn-outline-primary me-2">
+                                <i class="fas fa-chevron-left me-2"></i>
+                                <%= lang('back') %>
+                            </a>
+
+                            <% if can?(:edit, :system_settings) %>
+                                <button type="button" id="save-settings" class="btn btn-primary">
+                                    <i class="fas fa-check-square me-2"></i>
+                                    <%= lang('save') %>
+                                </button>
+                            <% end %>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="mb-3">
+                                <label class="form-label" for="umami-analytics-url">
+                                    <%= lang('umami_analytics_url') %>
+                                </label>
+                                <input id="umami-analytics-url" placeholder="https://stats.example.org"
+                                       data-field="umami_analytics_url" class="form-control">
+                                <div class="form-text text-muted">
+                                    <small>
+                                        <%= lang('umami_analytics_url_hint') %>
+                                    </small>
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label" for="umami-analytics-website-id">
+                                    <%= lang('umami_analytics_website_id') %>
+                                </label>
+                                <input id="umami-analytics-website-id" data-field="umami_analytics_website_id"
+                                       class="form-control">
+                            </div>
+
+                            <div class="mb-3">
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" id="umami-analytics-recorder"
+                                           data-field="umami_analytics_recorder">
+                                    <label class="form-check-label" for="umami-analytics-recorder">
+                                        <%= lang('umami_analytics_recorder') %>
+                                    </label>
+                                </div>
+                                <div class="form-text text-muted small">
+                                    <%= lang('umami_analytics_recorder_hint') %>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </fieldset>
+            </form>
+        </div>
+    </div>
+</div>
+
+<% content_for :scripts do %>
+    <%= ea_js "http/umami_analytics_settings_http_client", "pages/umami_analytics_settings" %>
+<% end %>

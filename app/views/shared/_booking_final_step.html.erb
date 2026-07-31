@@ -15,37 +15,21 @@
 
         </div>
 
-        <% if setting('require_captcha') == "1" %>
-            <% if TurnstileChallenge.enabled? %>
-                <div class="row frame-content frame-content-narrow m-auto">
-                    <div class="col text-center">
-                        <div class="cf-turnstile mb-2 d-inline-block" data-sitekey="<%= TurnstileChallenge.site_key %>"></div>
-                        <span id="turnstile-hint" class="help-block text-danger small d-block captcha-hint">&nbsp;</span>
-                    </div>
+        <% if TurnstileChallenge.enabled? %>
+            <div class="row frame-content frame-content-narrow m-auto">
+                <div class="col text-center">
+                    <div class="cf-turnstile mb-2 d-inline-block" data-sitekey="<%= TurnstileChallenge.site_key %>"></div>
+                    <span id="turnstile-hint" class="help-block text-danger small d-block captcha-hint">&nbsp;</span>
                 </div>
-            <% elsif setting('altcha_enabled') == "1" %>
-                <div class="row frame-content frame-content-narrow m-auto">
-                    <div class="col">
-                        <div id="altcha-widget" class="altcha-widget mb-2"></div>
-                        <input type="hidden" id="altcha-payload" value="">
-                        <span id="altcha-hint" class="help-block text-danger small captcha-hint">&nbsp;</span>
-                    </div>
+            </div>
+        <% elsif AltchaChallenge.enabled? %>
+            <div class="row frame-content frame-content-narrow m-auto">
+                <div class="col">
+                    <div id="altcha-widget" class="altcha-widget mb-2"></div>
+                    <input type="hidden" id="altcha-payload" value="">
+                    <span id="altcha-hint" class="help-block text-danger small captcha-hint">&nbsp;</span>
                 </div>
-            <% else %>
-                <div class="row frame-content frame-content-narrow m-auto">
-                    <div class="col">
-                        <label class="captcha-title float-start my-2 mb-2 me-md-4" for="captcha-text">
-                            CAPTCHA
-                            <button class="btn btn-link text-dark text-decoration-none py-0">
-                                <i class="fas fa-sync-alt"></i>
-                            </button>
-                        </label>
-                        <img class="captcha-image float-start float-md-end mb-4 rounded" src="/captcha" alt="CAPTCHA">
-                        <input id="captcha-text" class="captcha-text form-control w-100 mb-4" type="text" value=""/>
-                        <span id="captcha-hint" class="help-block captcha-hint">&nbsp;</span>
-                    </div>
-                </div>
-            <% end %>
+            </div>
         <% end %>
 
     </div>

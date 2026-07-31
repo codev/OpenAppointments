@@ -29,12 +29,27 @@ bs:
     import_providers_caution: "Oprez: označavanje pružatelja usluga kreirat će korisničke naloge i omogućiti prijavu njihovim emailom"
     manage_data: "Upravljanje podacima"
     export_data: "Izvezi podatke"
+    backups: "Sigurnosne kopije"
+    backups_hint: "Pet najnovijih sigurnosnih kopija čuva se na serveru i mogu ih preuzeti samo administratori. Čuvajte ih sigurno ako ih preuzmete jer sadrže lične podatke."
+    backup_working: "Kreiranje sigurnosne kopije..."
+    backup_failed: "Sigurnosna kopija nije uspjela, provjerite serverske logove."
+    ods_file: "ODS datoteka"
+    zip_file: "Zip sa slikama"
+    images_zip_optional: "Zip sa slikama (opcionalno)"
+    images_zip_hint: "Dodajte izvezeni zip sa slikama da uvezete slike usluga, kategorija i pružalaca, opcionalno."
     import_type: "Vrsta uvoza"
     full_reset_label: "Potpuno resetovanje, obriši administratore i resetuj postavke"
     delete_personal_information_setting_hint: "Dozvolite klijentima da jednim dugmetom uklone sve svoje termine i lične podatke iz sistema."
     captcha: "Captcha"
     captcha_info: "Postavke captche za provjeru da je posjetitelj čovjek prije rezervacije"
-    captcha_enabled_hint: "Kada je uključeno, odabrani captcha pružatelj koristit će se umjesto tradicionalne slikovne captche za provjeru obrazaca."
+    captcha_enabled_hint: "Kada je omogućeno, klijenti će morati riješiti Captcha izazov prije nego što završe rezervaciju, omogućite ovo ako imate puno spam rezervacija"
+    captcha_active_customers: "Aktivno za klijente"
+    captcha_active_login: "Aktivno za prijavu"
+    captcha_login_hint: "Kada je omogućeno, korisnici će morati riješiti Captcha izazov prije prijave u administraciju"
+    altcha_hmac_key_missing: "ALTCHA treba generisani HMAC ključ prije nego što se captcha može aktivirati"
+    turnstile_keys_missing: "Cloudflare Turnstile treba i ključ stranice i tajni ključ prije nego što se captcha može aktivirati"
+    turnstile_test_hint: "Riješite ovaj testni izazov da potvrdite da Turnstile radi na ovoj stranici, obavezno pri aktivaciji Turnstile-a ili promjeni ključeva"
+    turnstile_test_failed: "Završite Turnstile testni izazov da potvrdite da radi na ovoj stranici prije aktivacije"
     turnstile_keys_hint: "Nabavite par ključeva (site i secret) na Cloudflare kontrolnoj ploči:"
     first_login_update_details: Unesite novu lozinku i ažurirajte svoje podatke
     embedding: Ugradnja
@@ -245,6 +260,18 @@ bs:
     booking: Rezervacija
     visible: Vidljivo
     hidden: Skriveno
+    custom_css: "Prilagođeni CSS"
+    custom_css_hint: "Ovdje unesite CSS za izmjenu teme, primjenjuje se na stranice za rezervacije i na administraciju."
+    select_category: "Odaberite kategoriju"
+    uncategorized: "Bez kategorije"
+    category_hidden_hint: "Skrivene kategorije i njihove usluge ne prikazuju se na stranici za rezervacije."
+    drag_to_reorder: "Povucite zapise da odredite redoslijed prikazan na stranici za rezervacije."
+    sort_alphabetically: "Sortiraj abecedno"
+    sort_alphabetically_confirm: "Zamijeniti trenutni redoslijed abecednim sortiranjem svih zapisa?"
+    picture_styles: "Stilovi slika"
+    picture_styles_hint: "Odaberite kako se slike svake grupe uklapaju u kvadrat 400x400; Bijeli okvir zadržava cijelu sliku na bijeloj pozadini, Zumirano popunjava kvadrat rezanjem."
+    white_border: "Bijeli okvir"
+    zoomed: "Zumirano"
     business_logic: Poslovna logika
     current_user: Trenutni korisnik
     about_app: O Easy! Sastancima
@@ -253,7 +280,7 @@ bs:
     book_advance_timeout: Vreme za rezervaciju unapred
     book_advance_timeout_hint: Definiši vremensko ograničenje (u minutama) pre nego što klijenti mogu da rezervišu ili ponovo dogovore sastanke sa kompanijom.
     timeout_minutes: Vreme je isteklo (minuta)
-    about_app_info: Easy! Sastanci su veoma prilagodljiva web aplikacija koja omogućava vašim klijentima da zakažu sastanke s vama putem weba. Štaviše, pruža mogućnost sinhronizacije vaših podataka sa Google kalendarom, tako da ih možete koristiti sa drugim uslugama.
+    about_app_info: "Easy! Sastanci su veoma prilagodljiva web aplikacija koja omogućava vašim klijentima da zakažu sastanke s vama putem weba."
     current_version: Trenutna verzija
     support: Podrška
     about_app_support: Ako naiđete na bilo kakve probleme pri korištenju OpenAppointments, odgovore možete potražiti među prijavljenim problemima projekta na GitHubu. Možda ćete također trebati otvoriti novu prijavu kako biste pomogli razvoju.
@@ -345,8 +372,6 @@ bs:
     oops_something_went_wrong: Ups! Nešto je pošlo po zlu.
     ea_update_success: Lako! Sastanci su uspješno ažurirani.
     require_captcha: Zahtijeva CAPTCHA
-    require_captcha_hint: "Kada je omogućeno, klijenti će morati da unesu nasumično generisani CAPTCHA niz prije rezervacije/ažuriranja termina. - idite na Integracije da odaberete napredniji tip Captcha"
-    captcha_is_wrong: CAPTCHA verifikacija nije uspjela, pokušajte ponovo.
     enter_captcha_here: Unesite CAPTCHA ovdje...
     any_provider: Bilo koji provajder
     requested_hour_is_unavailable: Traženi termin nažalost nije dostupan. Molimo odaberite drugo vrijeme za svoj termin.
@@ -467,6 +492,13 @@ bs:
     google_analytics_info: Google Analytics vam omogućava da automatski dodate kod za praćenje i HTML oznake na javnu stranicu i pratite sve javne sesije rezervacije.
     matomo_analytics: Matomo Analytics
     matomo_analytics_info: Matomo Analytics vam omogućava da automatski dodate kod za praćenje i HTML oznake na javnu stranicu i pratite sve javne sesije rezervacije.
+    umami_analytics: "Umami Analytics"
+    umami_analytics_info: "Umami Analytics je alternativa Google Analyticsu koja poštuje privatnost, povežite vlastitu Umami instancu za praćenje javnih stranica za rezervacije."
+    umami_analytics_url: "Umami URL"
+    umami_analytics_url_hint: "Dodajte URL vaše Umami instalacije da omogućite praćenje na stranicama za rezervacije."
+    umami_analytics_website_id: "ID web stranice"
+    umami_analytics_recorder: "Snimke i toplotne mape"
+    umami_analytics_recorder_hint: "Kada je omogućeno, učitava se i Umami recorder skripta za snimanje sesija i toplotne mape."
     api: API
     api_info: API vam omogućava da komunicirate sa svim podacima OpenAppointments putem HTTP protokola i dostupnih API krajnjih tačaka i kreirate sopstvene integracije.
     google_analytics_code: Google Analytics kod
@@ -548,6 +580,7 @@ bs:
     field_mapping: Mapiranje polja
     content: Sadržaj
     active: Aktivan
+    not_active: "Nije aktivno"
     user_imported: Korisnički zapis je uspješno uvezen.
     import: Uvezi
     ldap_dn: LDAP DN
@@ -574,7 +607,6 @@ bs:
     altcha_expires_hint: 'Koliko dugo izazov ostaje važeći u sekundama (zadano: 300).'
     altcha_key_generated: Novi HMAC ključ je uspješno generisan.
     altcha_enabled: Omogući ALTCHA
-    altcha_captcha_not_active_warning: Postavka CAPTCHA trenutno nije aktivna. ALTCHA se neće koristiti ako CAPTCHA nije omogućena u
     generate: Generiši
     meeting_link: Link za Sastanak
     google_calendar: Google Kalendar

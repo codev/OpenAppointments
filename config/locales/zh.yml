@@ -29,12 +29,27 @@ zh:
     import_providers_caution: "注意：勾选服务人员将创建用户账户并允许使用他们的邮箱登录"
     manage_data: "数据管理"
     export_data: "导出数据"
+    backups: "备份"
+    backups_hint: "服务器保留最近五个备份,仅管理员可下载。下载后请妥善保管,因为其中包含个人信息。"
+    backup_working: "正在创建备份..."
+    backup_failed: "备份失败,请检查服务器日志。"
+    ods_file: "ODS 文件"
+    zip_file: "含图片的 Zip"
+    images_zip_optional: "图片 Zip(可选)"
+    images_zip_hint: "添加含图片的导出 Zip 以导入服务、分类和服务人员的图片,可选。"
     import_type: "导入类型"
     full_reset_label: "完全重置，删除管理员并重置设置"
     delete_personal_information_setting_hint: "允许客户通过一个按钮从系统中删除他们的所有预约和个人信息。"
     captcha: "Captcha"
     captcha_info: "用于在预约前验证访客是真人的验证码设置"
-    captcha_enabled_hint: "启用后，表单验证将使用所选的验证码提供方，替代传统的图片验证码。"
+    captcha_enabled_hint: "启用后，顾客必须先完成 Captcha 验证才能完成预约；如果您收到大量垃圾预约，请启用此功能"
+    captcha_active_customers: "对顾客启用"
+    captcha_active_login: "对登录启用"
+    captcha_login_hint: "启用后，用户必须先完成 Captcha 验证才能登录后台"
+    altcha_hmac_key_missing: "启用 captcha 之前，ALTCHA 需要已生成的 HMAC 密钥"
+    turnstile_keys_missing: "启用 captcha 之前，Cloudflare Turnstile 需要站点密钥和秘密密钥"
+    turnstile_test_hint: "解决此测试挑战以确认 Turnstile 可在本网站运行；启用 Turnstile 或更改密钥时必须完成"
+    turnstile_test_failed: "启用前请完成 Turnstile 测试挑战，以确认其可在本网站运行"
     turnstile_keys_hint: "在 Cloudflare 控制台获取站点密钥和秘密密钥对:"
     first_login_update_details: 请输入新密码并更新您的信息
     embedding: 嵌入
@@ -245,6 +260,18 @@ zh:
     booking: 预约
     visible: 可见的
     hidden: 隐
+    custom_css: "自定义 CSS"
+    custom_css_hint: "在此输入 CSS 以修改主题,会同时应用于预约页面与管理界面。"
+    select_category: "选择分类"
+    uncategorized: "未分类"
+    category_hidden_hint: "隐藏的分类及其服务不会显示在预约页面上。"
+    drag_to_reorder: "拖动记录以设置预约页面上显示的顺序。"
+    sort_alphabetically: "按字母排序"
+    sort_alphabetically_confirm: "以按字母排序所有记录替换当前顺序?"
+    picture_styles: "图片样式"
+    picture_styles_hint: "选择每组图片如何适配 400x400 方形;白边框在白色背景上保留完整图片,缩放则通过裁剪填满方形。"
+    white_border: "白边框"
+    zoomed: "缩放"
     business_logic: 工作时间
     current_user: 目前登录用户
     about_app: 关于网上预约系统
@@ -253,7 +280,7 @@ zh:
     book_advance_timeout: 预定高级超时设置
     book_advance_timeout_hint: 定义超时 (in minutes) 在其他客户预定预约之前.
     timeout_minutes: 超时 (Minutes)
-    about_app_info: 网上预约系统，可以通过网页形式高度定制满足您的需求.同样可以连接您的谷歌账户，同步日历功能.
+    about_app_info: "网上预约系统，可以通过网页形式高度定制满足您的需求."
     current_version: 版本号
     support: 技术支持
     about_app_support: 如果您在使用 OpenAppointments 时遇到任何问题，可以在 GitHub 上搜索项目的 issue 寻找答案。您也可以新建一个 issue 来帮助项目发展。
@@ -345,8 +372,6 @@ zh:
     oops_something_went_wrong: 不好！出了一些问题.
     ea_update_success: 预约系统已经成功更新.
     require_captcha: 需要验证码
-    require_captcha_hint: "启用时，客户在预约/更新预约之前必须输入一个随机生成的验证码字符串。 - 前往集成页面选择更高级的 Captcha 类型"
-    captcha_is_wrong: 验证码验证失败，请重试。
     enter_captcha_here: 在此输入 CAPTCHA...
     any_provider: 任何服务提供者
     requested_hour_is_unavailable: 请求的预约时间不再可用。请为您的预约选择不同的时间。
@@ -467,6 +492,13 @@ zh:
     google_analytics_info: Google Analytics 使您能够自动将跟踪代码和 HTML 标记添加到公共页面，并跟踪所有公共预订会话。
     matomo_analytics: Matomo 分析
     matomo_analytics_info: Matomo Analytics 使您能够自动将跟踪代码和 HTML 标记添加到公共页面，并跟踪所有公共预订会话。
+    umami_analytics: "Umami Analytics"
+    umami_analytics_info: "Umami Analytics 是注重隐私的 Google Analytics 替代方案；连接您自己的 Umami 服务器以跟踪公开预约页面。"
+    umami_analytics_url: "Umami URL"
+    umami_analytics_url_hint: "添加您的 Umami 安装网址,以在预约页面启用跟踪。"
+    umami_analytics_website_id: "网站 ID"
+    umami_analytics_recorder: "回放与热图"
+    umami_analytics_recorder_hint: "启用后,还会加载 Umami 录制脚本以捕获会话回放与热图。"
     api: API
     api_info: API 使您能够通过 HTTP 协议和可用的 API 端点与所有 OpenAppointments 数据进行交互，并创建您自己的集成。
     google_analytics_code: Google Analytics 代码
@@ -548,6 +580,7 @@ zh:
     field_mapping: 字段映射
     content: 内容
     active: 启用
+    not_active: "未启用"
     user_imported: 用户记录已成功导入。
     import: 导入
     ldap_dn: LDAP DN
@@ -574,7 +607,6 @@ zh:
     altcha_expires_hint: 挑战保持有效的秒数（默认值：300）。
     altcha_key_generated: 新的 HMAC 密钥已成功生成。
     altcha_enabled: 启用 ALTCHA
-    altcha_captcha_not_active_warning: CAPTCHA 设置当前未激活。除非在以下位置启用 CAPTCHA，否则 ALTCHA 将不会被使用：
     generate: 生成
     meeting_link: 会议链接
     google_calendar: Google 日历

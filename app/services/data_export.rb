@@ -5,8 +5,6 @@ module DataExport
 
   module_function
 
-  def filename = "#{Date.current.strftime('%Y-%m-%d')}-OpenAppointments.ods"
-
   def generate
     Ods.generate(sheets)
   end
@@ -27,18 +25,20 @@ module DataExport
 
   def categories_sheet
     rows = ServiceCategory.with_attached_picture.order(:name).map do |category|
-      [ category.name, category.description, picture_name(category) ]
+      [ category.name, category.description, picture_name(category), category.is_hidden ? "1" : "0",
+        category.sort_order ]
     end
-    [ %w[name description picture] ] + rows
+    [ %w[name description picture is_hidden sort_order] ] + rows
   end
 
   def services_sheet
     rows = Service.includes(:category).with_attached_picture.order(:name).map do |service|
       [ service.name, service.duration, service.price, service.currency, service.category&.name,
         service.description, service.color, service.attendants_number, service.is_private ? "1" : "0",
-        picture_name(service) ]
+        picture_name(service), service.sort_order ]
     end
-    [ %w[name duration price currency category description color attendants_number is_private picture] ] + rows
+    [ %w[name duration price currency category description color attendants_number is_private picture
+         sort_order] ] + rows
   end
 
   def providers_sheet
@@ -46,10 +46,10 @@ module DataExport
       [ provider.name, provider.email, provider.phone_number, provider.timezone,
         provider.services.map(&:name).join("|"), provider.settings&.working_plan,
         provider.settings&.username, provider.about, provider.services_description,
-        picture_name(provider) ]
+        picture_name(provider), provider.settings&.password, provider.sort_order ]
     end
     [ %w[name email phone_number timezone services working_plan username
-         about services_description picture] ] + rows
+         about services_description picture password_hash sort_order] ] + rows
   end
 
   def picture_name(record)
@@ -59,16 +59,18 @@ module DataExport
   def assistants_sheet
     rows = User.assistants.includes(:providers, :settings).order(:name).map do |assistant|
       [ assistant.name, assistant.email, assistant.phone_number, assistant.timezone,
-        assistant.providers.map(&:name).join("|"), assistant.settings&.username ]
+        assistant.providers.map(&:name).join("|"), assistant.settings&.username,
+        assistant.settings&.password ]
     end
-    [ %w[name email phone_number timezone providers username] ] + rows
+    [ %w[name email phone_number timezone providers username password_hash] ] + rows
   end
 
   def admins_sheet
     rows = User.admins.includes(:settings).order(:name).map do |admin|
-      [ admin.name, admin.email, admin.phone_number, admin.timezone, admin.settings&.username ]
+      [ admin.name, admin.email, admin.phone_number, admin.timezone, admin.settings&.username,
+        admin.settings&.password ]
     end
-    [ %w[name email phone_number timezone username] ] + rows
+    [ %w[name email phone_number timezone username password_hash] ] + rows
   end
 
   def customers_sheet

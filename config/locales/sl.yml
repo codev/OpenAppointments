@@ -29,12 +29,27 @@ sl:
     import_providers_caution: "Pozor: označitev izvajalcev bo ustvarila uporabniške račune in omogočila prijavo z njihovo e-pošto"
     manage_data: "Upravljanje podatkov"
     export_data: "Izvozi podatke"
+    backups: "Varnostne kopije"
+    backups_hint: "Pet najnovejsih varnostnih kopij ostane na strezniku in jih lahko prenesejo samo skrbniki. Ob prenosu jih hranite varno, saj vsebujejo osebne podatke."
+    backup_working: "Ustvarjanje varnostne kopije..."
+    backup_failed: "Varnostna kopija ni uspela, preverite dnevnike streznika."
+    ods_file: "Datoteka ODS"
+    zip_file: "Zip s slikami"
+    images_zip_optional: "Zip s slikami (neobvezno)"
+    images_zip_hint: "Dodajte izvozeni zip s slikami za uvoz slik storitev, kategorij in izvajalcev, neobvezno."
     import_type: "Vrsta uvoza"
     full_reset_label: "Popolna ponastavitev, izbriši skrbnike in ponastavi nastavitve"
     delete_personal_information_setting_hint: "Strankam omogočite, da z gumbom odstranijo vse svoje termine in osebne podatke iz sistema."
     captcha: "Captcha"
     captcha_info: "Nastavitve captcha za preverjanje, da je obiskovalec človek, pred rezervacijo"
-    captcha_enabled_hint: "Ko je omogočeno, se za preverjanje obrazcev namesto tradicionalne slikovne captche uporablja izbrani ponudnik captcha."
+    captcha_enabled_hint: "Ko je omogočeno, bodo morale stranke pred zaključkom rezervacije rešiti izziv Captcha; omogočite, če prejemate veliko neželenih rezervacij"
+    captcha_active_customers: "Aktivno za stranke"
+    captcha_active_login: "Aktivno za prijavo"
+    captcha_login_hint: "Ko je omogočeno, bodo morali uporabniki pred prijavo v administracijo rešiti izziv Captcha"
+    altcha_hmac_key_missing: "ALTCHA potrebuje ustvarjen ključ HMAC, preden je mogoče captcha aktivirati"
+    turnstile_keys_missing: "Cloudflare Turnstile potrebuje ključ spletnega mesta in skrivni ključ, preden je mogoče captcha aktivirati"
+    turnstile_test_hint: "Rešite ta testni izziv, da potrdite, da Turnstile deluje na tem spletnem mestu; obvezno ob aktivaciji Turnstile ali spremembi ključev"
+    turnstile_test_failed: "Pred aktivacijo dokončajte testni izziv Turnstile, da potrdite, da deluje na tem spletnem mestu"
     turnstile_keys_hint: "Pridobite par ključev (site in secret) na nadzorni plošči Cloudflare:"
     first_login_update_details: Vnesite novo geslo in posodobite svoje podatke
     embedding: Vdelava
@@ -245,6 +260,18 @@ sl:
     booking: Rezervacija
     visible: Viden
     hidden: Skrito
+    custom_css: "CSS po meri"
+    custom_css_hint: "Sem vnesite CSS za spremembo teme; velja za strani za rezervacije in administracijo."
+    select_category: "Izberite kategorijo"
+    uncategorized: "Brez kategorije"
+    category_hidden_hint: "Skrite kategorije in njihove storitve niso prikazane na strani za rezervacije."
+    drag_to_reorder: "Povlecite zapise, da dolocite vrstni red na strani za rezervacije."
+    sort_alphabetically: "Razvrsti po abecedi"
+    sort_alphabetically_confirm: "Zamenjati trenutni vrstni red z abecednim razvrscanjem vseh zapisov?"
+    picture_styles: "Slogi slik"
+    picture_styles_hint: "Izberite, kako se slike vsake skupine prilegajo kvadratu 400x400; Beli rob ohrani celotno sliko na beli podlagi, Povecano zapolni kvadrat z obrezovanjem."
+    white_border: "Beli rob"
+    zoomed: "Povecano"
     business_logic: Poslovna logika
     current_user: Trenutni uporabnik
     about_app: O OpenAppointments
@@ -253,7 +280,7 @@ sl:
     book_advance_timeout: Časovna omejitev pred knjigo vnaprej
     book_advance_timeout_hint: Določite časovno omejitev (v minutah), preden lahko stranke rezervirajo ali se ponovno dogovorijo za sestanke s podjetjem.
     timeout_minutes: Časovna omejitev (minute)
-    about_app_info: OpenAppointments je zelo prilagodljiva spletna aplikacija, ki vašim strankam omogoča, da rezervirajo sestanke pri vas prek spleta. Poleg tega ponuja možnost sinhronizacije vaših podatkov z Google Koledarjem, tako da jih lahko uporabljate z drugimi storitvami.
+    about_app_info: "OpenAppointments je zelo prilagodljiva spletna aplikacija, ki vašim strankam omogoča, da rezervirajo sestanke pri vas prek spleta."
     current_version: Trenutna različica
     support: Podpora
     about_app_support: Če pri uporabi OpenAppointments naletite na težave, lahko odgovore poiščete med issue prijavami projekta na GitHubu. Lahko tudi odprete novo prijavo in s tem pomagate razvoju.
@@ -345,8 +372,6 @@ sl:
     oops_something_went_wrong: Ojoj! Nekaj je šlo narobe.
     ea_update_success: OpenAppointments je bil uspešno posodobljen.
     require_captcha: Zahtevaj CAPTCHA
-    require_captcha_hint: "Ko je omogočeno, bodo morale stranke pred rezervacijo/posodabljanjem termina vnesti naključno ustvarjen niz CAPTCHA. - pojdite na Integracije in izberite naprednejši tip Captcha"
-    captcha_is_wrong: CAPTCHA preverjanje ni uspelo, poskusite znova.
     enter_captcha_here: Tukaj vnesite CAPTCHA...
     any_provider: Kateri koli ponudnik
     requested_hour_is_unavailable: Zahtevani termin žal ni na voljo. Prosimo izberite drugo uro za vaš termin.
@@ -467,6 +492,13 @@ sl:
     google_analytics_info: Google Analytics vam omogoča samodejno dodajanje kode za sledenje in oznake HTML na javno stran ter sledenje vsem javnim rezervacijskim sejam.
     matomo_analytics: Matomo Analytics
     matomo_analytics_info: Matomo Analytics vam omogoča samodejno dodajanje kode za sledenje in oznake HTML na javno stran ter sledenje vsem javnim rezervacijskim sejam.
+    umami_analytics: "Umami Analytics"
+    umami_analytics_info: "Umami Analytics je zasebnosti prijazna alternativa Google Analytics; povezite lastno instanco Umami za sledenje javnim stranem za rezervacije."
+    umami_analytics_url: "Umami URL"
+    umami_analytics_url_hint: "Dodajte URL svoje namestitve Umami, da omogocite sledenje na straneh za rezervacije."
+    umami_analytics_website_id: "ID spletnega mesta"
+    umami_analytics_recorder: "Posnetki in toplotne karte"
+    umami_analytics_recorder_hint: "Ko je omogoceno, se nalozi tudi skripta Umami recorder za zajem posnetkov sej in toplotnih kart."
     api: API
     api_info: API vam omogoča interakcijo z vsemi podatki OpenAppointments prek protokola HTTP in razpoložljivih končnih točk API ter ustvarjanje lastnih integracij.
     google_analytics_code: Koda Google Analytics
@@ -548,6 +580,7 @@ sl:
     field_mapping: Preslikava polj
     content: Vsebina
     active: Aktivno
+    not_active: "Ni aktivno"
     user_imported: Uporabniški zapis je bil uspešno uvožen.
     import: Uvoz
     ldap_dn: LDAP DN
@@ -574,7 +607,6 @@ sl:
     altcha_expires_hint: 'Kako dolgo izziv ostane veljaven v sekundah (privzeto: 300).'
     altcha_key_generated: Nov HMAC ključ je bil uspešno ustvarjen.
     altcha_enabled: Omogoči ALTCHA
-    altcha_captcha_not_active_warning: Nastavitev CAPTCHA trenutno ni aktivna. ALTCHA ne bo uporabljena, razen če je CAPTCHA omogočena v
     generate: Ustvari
     meeting_link: Povezava do sestanka
     google_calendar: Google Koledar

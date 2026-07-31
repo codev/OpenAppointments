@@ -29,12 +29,27 @@ ca:
     import_providers_caution: "Precaució: marcar proveïdors crearà comptes d'usuari i permetrà iniciar sessió amb el seu correu"
     manage_data: "Gestiona les dades"
     export_data: "Exporta les dades"
+    backups: "Còpies de seguretat"
+    backups_hint: "Les cinc còpies de seguretat més recents es conserven al servidor i només els administradors les poden descarregar. Deseu-les de manera segura si les descarregueu perquè contenen informació personal."
+    backup_working: "S'està creant la còpia de seguretat..."
+    backup_failed: "La còpia de seguretat ha fallat, reviseu els registres del servidor."
+    ods_file: "Fitxer ODS"
+    zip_file: "Zip amb imatges"
+    images_zip_optional: "Zip d'imatges (opcional)"
+    images_zip_hint: "Afegiu el zip exportat amb imatges per importar les fotos de serveis, categories i professionals, opcional."
     import_type: "Tipus d'importació"
     full_reset_label: "Restabliment complet, elimina els administradors i restableix la configuració"
     delete_personal_information_setting_hint: "Permet als clients eliminar totes les seves cites i informació personal del sistema amb un botó."
     captcha: "Captcha"
     captcha_info: "Configuració del captcha per verificar que el visitant és humà abans de reservar"
-    captcha_enabled_hint: "Quan està activat, el proveïdor de captcha seleccionat s'utilitzarà en lloc del captcha d'imatge tradicional per verificar formularis."
+    captcha_enabled_hint: "Quan està activat, els clients hauran de resoldre un repte Captcha abans de completar la reserva; activeu-ho si rebeu moltes reserves brossa"
+    captcha_active_customers: "Actiu per a clients"
+    captcha_active_login: "Actiu per a l'inici de sessió"
+    captcha_login_hint: "Quan està activat, els usuaris hauran de resoldre un repte Captcha abans d'iniciar sessió al panell"
+    altcha_hmac_key_missing: "ALTCHA necessita una clau HMAC generada abans de poder activar el captcha"
+    turnstile_keys_missing: "Cloudflare Turnstile necessita una clau de lloc i una clau secreta abans de poder activar el captcha"
+    turnstile_test_hint: "Resoleu aquest repte de prova per confirmar que Turnstile funciona en aquest lloc; és obligatori en activar Turnstile o canviar-ne les claus"
+    turnstile_test_failed: "Completeu el repte de prova de Turnstile per confirmar que funciona en aquest lloc abans d'activar-lo"
     turnstile_keys_hint: "Obteniu un parell de claus (site i secret) al tauler de Cloudflare:"
     first_login_update_details: Introduïu una contrasenya nova i actualitzeu les vostres dades
     embedding: Incrustació
@@ -245,6 +260,18 @@ ca:
     booking: Reserva
     visible: Visible
     hidden: Amagat
+    custom_css: "CSS personalitzat"
+    custom_css_hint: "Introduïu CSS aquí per modificar el tema; s'aplica a les pàgines de reserva i a la interfície d'administració."
+    select_category: "Seleccioneu una categoria"
+    uncategorized: "Sense categoria"
+    category_hidden_hint: "Les categories ocultes i els seus serveis no es mostren a la pàgina de reserves."
+    drag_to_reorder: "Arrossegueu els registres per definir l'ordre que es mostra a la pàgina de reserves."
+    sort_alphabetically: "Ordena alfabèticament"
+    sort_alphabetically_confirm: "Voleu substituir l'ordre actual ordenant tots els registres alfabèticament?"
+    picture_styles: "Estils d'imatge"
+    picture_styles_hint: "Trieu com s'ajusten les imatges de cada conjunt al quadrat de 400x400; Vora blanca conserva tota la imatge sobre fons blanc, Ampliada omple el quadrat retallant."
+    white_border: "Vora blanca"
+    zoomed: "Ampliada"
     business_logic: Lògica de negoci
     current_user: Usuari actual
     about_app: Quant a OpenAppointments
@@ -253,7 +280,7 @@ ca:
     book_advance_timeout: Temps límit de modificació/cancel·lació
     book_advance_timeout_hint: Defineix el temps límit (en minuts) a partir del qual els clients no poden reservar una hora o modificar una cita.
     timeout_minutes: Temps límit de reserva (minuts)
-    about_app_info: OpenAppointments és una aplicació web molt ajustable que permet als vostres clients reservar cites amb vosaltres a través del web. A més, us permet sincronitzar amb Google Calendar de manera que ho podeu usar amb altres serveis.
+    about_app_info: "OpenAppointments és una aplicació web molt ajustable que permet als vostres clients reservar cites amb vosaltres a través del web."
     current_version: Versió actual
     support: Suport
     about_app_support: Si trobeu cap problema en utilitzar OpenAppointments, podeu cercar respostes entre les incidències del projecte a GitHub. També podeu obrir una incidència nova per ajudar al desenvolupament.
@@ -345,8 +372,6 @@ ca:
     oops_something_went_wrong: Ups! Alguna cosa no ha funcionat bé.
     ea_update_success: OpenAppointments s'ha actualitzat correctament.
     require_captcha: Requereix un CAPTCHA
-    require_captcha_hint: "Quan s'habilita, els clients hauran de teclejar una cadena CAPTCHA generada aleatòriament abans de reservar o actualitzar una cita. - aneu a Integracions per triar un tipus de Captcha més avançat"
-    captcha_is_wrong: La verificació del CAPTCHA ha fallat, torneu-ho a intentar.
     enter_captcha_here: Introdueix el CAPTCHA aquí...
     any_provider: Qualsevol proveïdor
     requested_hour_is_unavailable: La cita que demaneu no està disponible. Seleccioneu una hora diferent per a la vostra cita.
@@ -467,6 +492,13 @@ ca:
     google_analytics_info: Google Analytics us permet afegir automàticament el codi de seguiment i el codi HTML a la pàgina de reserves i fer el seguiment de totes les reserves.
     matomo_analytics: Matomo Analytics
     matomo_analytics_info: Matomo Analytics us permet afegir automàticament el codi de seguiment i el codi HTML a la pàgina de reserves i fer el seguiment de totes les reserves.
+    umami_analytics: "Umami Analytics"
+    umami_analytics_info: "Umami Analytics és una alternativa a Google Analytics respectuosa amb la privadesa; connecteu la vostra instància d'Umami per fer el seguiment de les pàgines públiques de reserva."
+    umami_analytics_url: "Umami URL"
+    umami_analytics_url_hint: "Afegiu l'URL de la vostra instal·lació d'Umami per activar el seguiment a les pàgines de reserva."
+    umami_analytics_website_id: "ID del lloc web"
+    umami_analytics_recorder: "Repeticions i mapes de calor"
+    umami_analytics_recorder_hint: "Quan està activat, també es carrega l'script Umami recorder per capturar repeticions de sessió i mapes de calor."
     api: API
     api_info: L'API us permet interaccionar amb totes les dades OpenAppointments via el protocol HTTP i els API endpoint disponibles i crear les vostres pròpies integracions.
     google_analytics_code: Codi de Google Analytics
@@ -548,6 +580,7 @@ ca:
     field_mapping: Mapejat de camps
     content: Contingut
     active: Actiu
+    not_active: "No actiu"
     user_imported: El registre d'usuari s'ha importat correctament.
     import: Importa
     ldap_dn: DN de LDAP
@@ -574,7 +607,6 @@ ca:
     altcha_expires_hint: 'Durant quant de temps (en segons), un repte es manté vàlid (per defecte: 300).'
     altcha_key_generated: La clau HMAC s'ha generat correctament.
     altcha_enabled: Habilita ALTCHA
-    altcha_captcha_not_active_warning: La configuració CAPTCHA no està activa actualment. ALTCHA no s'utilitzarà si CAPTCHA no està habilitada a
     generate: Genera
     meeting_link: Enllaç de la reunió
     google_calendar: Google Calendar

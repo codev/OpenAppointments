@@ -51,6 +51,15 @@ class BookingWizardTest < ApplicationSystemTestCase
     find("#button-next-2").click
 
     assert_selector "#wizard-frame-3", visible: :visible, wait: 5
+
+    # Going back to the start resets to the category view with nothing selected.
+    find("#button-back-3").click
+    assert_selector "#wizard-frame-2", visible: :visible, wait: 5
+    find("#button-back-2").click
+    assert_selector "#wizard-frame-1", visible: :visible, wait: 5
+    assert_no_selector "#category-cards .booking-card.selected"
+    assert_no_selector ".service-cards:not(.d-none) .booking-card", visible: :all
+    assert_equal "", find("#select-service", visible: :hidden).value
   end
 
   test "first page blocks next until a choice is made" do

@@ -29,12 +29,27 @@ tr:
     import_providers_caution: "Dikkat: sağlayıcıları işaretlemek kullanıcı hesapları oluşturur ve e-postalarıyla girişe izin verir"
     manage_data: "Verileri yönet"
     export_data: "Verileri dışa aktar"
+    backups: "Yedekler"
+    backups_hint: "En son bes yedek sunucuda tutulur ve yalnizca yoneticiler indirebilir. Kisisel bilgiler icerdiginden indirirseniz guvenli sekilde saklayin."
+    backup_working: "Yedek olusturuluyor..."
+    backup_failed: "Yedekleme basarisiz oldu, sunucu kayitlarini kontrol edin."
+    ods_file: "ODS dosyasi"
+    zip_file: "Resimlerle birlikte Zip"
+    images_zip_optional: "Resim zipi (istege bagli)"
+    images_zip_hint: "Hizmet, kategori ve saglayici resimlerini almak icin resimli disa aktarilmis zipi ekleyin, istege bagli."
     import_type: "İçe aktarma türü"
     full_reset_label: "Tam sıfırlama, yöneticileri sil ve ayarları sıfırla"
     delete_personal_information_setting_hint: "Müşterilerin tüm randevularını ve kişisel bilgilerini tek bir düğmeyle sistemden kaldırmasına izin verin."
     captcha: "Captcha"
     captcha_info: "Rezervasyondan önce ziyaretçinin insan olduğunu doğrulamak için captcha ayarları"
-    captcha_enabled_hint: "Etkinleştirildiğinde, form doğrulaması için geleneksel resimli captcha yerine seçilen captcha sağlayıcısı kullanılır."
+    captcha_enabled_hint: "Etkinleştirildiğinde müşterilerin rezervasyonu tamamlamadan önce bir Captcha sorusunu çözmesi gerekir; çok fazla istenmeyen rezervasyon alıyorsanız bunu etkinleştirin"
+    captcha_active_customers: "Müşteriler için etkin"
+    captcha_active_login: "Giriş için etkin"
+    captcha_login_hint: "Etkinleştirildiğinde kullanıcıların yönetim paneline giriş yapmadan önce bir Captcha sorusunu çözmesi gerekir"
+    altcha_hmac_key_missing: "Captcha etkinleştirilmeden önce ALTCHA için oluşturulmuş bir HMAC anahtarı gereklidir"
+    turnstile_keys_missing: "Captcha etkinleştirilmeden önce Cloudflare Turnstile için hem site anahtarı hem de gizli anahtar gereklidir"
+    turnstile_test_hint: "Turnstile'ın bu sitede çalıştığını doğrulamak için bu test sorusunu çözün; Turnstile'ı etkinleştirirken veya anahtarları değiştirirken gereklidir"
+    turnstile_test_failed: "Etkinleştirmeden önce Turnstile test sorusunu tamamlayarak bu sitede çalıştığını doğrulayın"
     turnstile_keys_hint: "Cloudflare panelinden bir anahtar çifti (site ve secret) alın:"
     first_login_update_details: Lütfen yeni bir şifre girin ve bilgilerinizi güncelleyin
     embedding: Gömme
@@ -245,6 +260,18 @@ tr:
     booking: Rezervasyon
     visible: Gözle görülür
     hidden: Gizli
+    custom_css: "Ozel CSS"
+    custom_css_hint: "Temayi degistirmek icin buraya CSS girin; rezervasyon sayfalarina ve yonetim paneline uygulanir."
+    select_category: "Kategori secin"
+    uncategorized: "Kategorisiz"
+    category_hidden_hint: "Gizli kategoriler ve hizmetleri rezervasyon sayfasinda gosterilmez."
+    drag_to_reorder: "Rezervasyon sayfasinda gosterilen sirayi belirlemek icin kayitlari surukleyin."
+    sort_alphabetically: "Alfabetik sirala"
+    sort_alphabetically_confirm: "Tum kayitlari alfabetik siralayarak mevcut sirayi degistir?"
+    picture_styles: "Resim stilleri"
+    picture_styles_hint: "Her kumenin resimlerinin 400x400 kareye nasil sigdirilacagini secin; Beyaz kenarlik tum resmi beyaz zeminde korur, Yakinlastirilmis kareyi kirparak doldurur."
+    white_border: "Beyaz kenarlik"
+    zoomed: "Yakinlastirilmis"
     business_logic: İş Mantığı
     current_user: Mevcut Kullanıcı
     about_app: OpenAppointments Hakkında
@@ -253,7 +280,7 @@ tr:
     book_advance_timeout: Erken Randevu Zamanaşımı Değeri
     book_advance_timeout_hint: Müşterilerin en az ne kadar önceden randevu alması veya randevu düzenlemesi gerektiğini girin (dakika cinsinden).
     timeout_minutes: Zamanaşımı (Dakika)
-    about_app_info: 'OpenAppointments yüksek ölçüde özelleştirilebilen, müşterilerinizin web üzerinden randevu almasını sağlayan bir uygulamadır. Ayrıca, bilgilerinizi Google Takvim ile eşitleyerek diğer uygulamalarla da entegre olmasını sağlar. '
+    about_app_info: "OpenAppointments yüksek ölçüde özelleştirilebilen, müşterilerinizin web üzerinden randevu almasını sağlayan bir uygulamadır."
     current_version: Mevcut Versiyon
     support: Destek
     about_app_support: OpenAppointments kullanırken herhangi bir sorunla karşılaşırsanız, yanıtlar için projenin GitHub üzerindeki issue kayıtlarını arayabilirsiniz. Gelişime yardımcı olmak için yeni bir issue da açabilirsiniz.
@@ -345,8 +372,6 @@ tr:
     oops_something_went_wrong: Oops! Bir Sorun Oluştu.
     ea_update_success: OpenAppointments başarı ile güncellendi.
     require_captcha: CAPTCHA gereklidir
-    require_captcha_hint: "Etkinleştirildiğinde, müşterilerin bir randevu rezervasyonu/güncellemesi yapmadan önce rastgele oluşturulmuş bir CAPTCHA dizesini yazmaları gerekecektir. - daha gelişmiş bir Captcha türü seçmek için Entegrasyonlar'a gidin"
-    captcha_is_wrong: CAPTCHA doğrulaması başarısız oldu, lütfen tekrar deneyin.
     enter_captcha_here: CAPTCHA kodunu buraya girin...
     any_provider: Herhangi Bir Sağlayıcı
     requested_hour_is_unavailable: İstenen randevu maalesef mevcut değil. Lütfen randevunuz için farklı bir saat seçiniz.
@@ -467,6 +492,13 @@ tr:
     google_analytics_info: Google Analytics, izleme kodunu ve HTML işaretlemesini otomatik olarak eklemenizi ve tüm halka açık rezervasyon oturumlarını takip etmenizi sağlar.
     matomo_analytics: Matomo Analytics
     matomo_analytics_info: Matomo Analytics, izleme kodunu ve HTML işaretlemesini otomatik olarak eklemenizi ve tüm halka açık rezervasyon oturumlarını takip etmenizi sağlar.
+    umami_analytics: "Umami Analytics"
+    umami_analytics_info: "Umami Analytics, Google Analytics'e gizlilik dostu bir alternatiftir; genel rezervasyon sayfalarini izlemek icin kendi Umami sunucunuzu baglayin."
+    umami_analytics_url: "Umami URL"
+    umami_analytics_url_hint: "Rezervasyon sayfalarinda izlemeyi etkinlestirmek icin Umami kurulumunuzun URL'sini ekleyin."
+    umami_analytics_website_id: "Web sitesi kimligi"
+    umami_analytics_recorder: "Tekrarlar ve isi haritalari"
+    umami_analytics_recorder_hint: "Etkinlestirildiginde, oturum tekrarlarini ve isi haritalarini yakalamak icin Umami kaydedici betigi de yuklenir."
     api: API
     api_info: API’ler, HTTP protokolü ve mevcut API uç noktaları aracılığıyla tüm OpenAppointments verileriyle etkileşime geçmenizi sağlar ve kendi entegrasyonlarınızı oluşturmanıza olanak tanır.
     google_analytics_code: Google Analytics Kodu
@@ -548,6 +580,7 @@ tr:
     field_mapping: Alan Eşleme
     content: İçerik
     active: Aktif
+    not_active: "Etkin değil"
     user_imported: Kullanıcı kaydı başarıyla içe aktarıldı.
     import: İçe Aktar
     ldap_dn: LDAP DN
@@ -574,7 +607,6 @@ tr:
     altcha_expires_hint: 'Bir meydan okumanın saniye cinsinden ne kadar süre geçerli kalacağı (varsayılan: 300).'
     altcha_key_generated: Yeni HMAC anahtarı başarıyla oluşturuldu.
     altcha_enabled: ALTCHA'yı Etkinleştir
-    altcha_captcha_not_active_warning: CAPTCHA ayarı şu anda aktif değil. CAPTCHA etkinleştirilmedikçe ALTCHA kullanılmayacaktır.
     generate: Oluştur
     meeting_link: Toplantı Bağlantısı
     google_calendar: Google Takvim

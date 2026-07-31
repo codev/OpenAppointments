@@ -61,6 +61,11 @@ $border-radius: 0.5rem;
     border-bottom: 3px solid var(--oa-primary) !important;
 }
 
+// Modals float over other content, so they need an opaque surface.
+.modal-content {
+    background-color: var(--oa-background, #fff);
+}
+
 #book-appointment-wizard .book-step {
     border: 2px solid #{$gray-400};
 }
@@ -78,4 +83,8 @@ $border-radius: 0.5rem;
 
 .booking-card.selected {
     background: transparent;
+}
+
+#book-appointment-wizard {
+    border: 3px solid var(--oa-primary);
 }

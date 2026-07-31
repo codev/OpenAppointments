@@ -285,6 +285,29 @@
                                     </div>
 
                                     <div class="mb-3">
+                                        <label class="form-label"><%= lang('picture_styles') %></label>
+                                        <% { "picture_style_categories" => "categories",
+                                             "picture_style_services" => "services",
+                                             "picture_style_providers" => "providers" }.each do |field, label_key| %>
+                                            <div class="row align-items-center mb-2">
+                                                <label class="col-4 col-form-label" for="<%= field.tr('_', '-') %>">
+                                                    <%= lang(label_key) %>
+                                                </label>
+                                                <div class="col-8">
+                                                    <select id="<%= field.tr('_', '-') %>" class="form-select"
+                                                            data-field="<%= field %>">
+                                                        <option value="border"><%= lang('white_border') %></option>
+                                                        <option value="zoomed"><%= lang('zoomed') %></option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        <% end %>
+                                        <div class="form-text text-muted">
+                                            <small><%= lang('picture_styles_hint') %></small>
+                                        </div>
+                                    </div>
+
+                                    <div class="mb-3">
                                         <div class="form-check form-switch">
                                             <input class="form-check-input" type="checkbox" id="booking-provider-first"
                                                    data-field="booking_provider_first"
@@ -329,22 +352,6 @@
                                         <div class="form-text text-muted">
                                             <small>
                                                 <%= lang('limit_customer_access_hint') %>
-                                            </small>
-                                        </div>
-                                    </div>
-
-                                    <div class="mb-3">
-                                        <div class="form-check form-switch">
-                                            <input class="form-check-input" type="checkbox" id="require-captcha"
-                                                   data-field="require_captcha">
-                                            <label class="form-check-label" for="require-captcha">
-                                                CAPTCHA
-                                            </label>
-                                        </div>
-
-                                        <div class="form-text text-muted">
-                                            <small>
-                                                <%= lang('require_captcha_hint') %>
                                             </small>
                                         </div>
                                     </div>

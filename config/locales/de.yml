@@ -29,12 +29,27 @@ de:
     import_providers_caution: "Achtung: Das Ankreuzen von Dienstleistern erstellt Benutzerkonten und ermöglicht die Anmeldung mit deren E-Mail"
     manage_data: "Daten verwalten"
     export_data: "Daten exportieren"
+    backups: "Sicherungen"
+    backups_hint: "Die fuenf neuesten Sicherungen werden auf dem Server aufbewahrt und koennen nur von Administratoren heruntergeladen werden. Bewahren Sie sie nach dem Herunterladen sicher auf, da sie personenbezogene Daten enthalten."
+    backup_working: "Sicherung wird erstellt..."
+    backup_failed: "Die Sicherung ist fehlgeschlagen, pruefen Sie die Serverprotokolle."
+    ods_file: "ODS-Datei"
+    zip_file: "Zip mit Bildern"
+    images_zip_optional: "Bilder-Zip (optional)"
+    images_zip_hint: "Fuegen Sie das exportierte Zip mit Bildern hinzu, um die Bilder von Diensten, Kategorien und Anbietern zu importieren, optional."
     import_type: "Importtyp"
     full_reset_label: "Vollständiger Reset, Administratoren löschen und Einstellungen zurücksetzen"
     delete_personal_information_setting_hint: "Kunden können mit einem Button alle ihre Termine und persönlichen Daten aus dem System entfernen."
     captcha: "Captcha"
     captcha_info: "Captcha-Einstellungen, um vor der Buchung zu prüfen, dass der Besucher ein Mensch ist"
-    captcha_enabled_hint: "Wenn aktiviert, wird der ausgewählte Captcha-Anbieter anstelle des traditionellen Bild-Captchas zur Formularprüfung verwendet."
+    captcha_enabled_hint: "Wenn aktiviert, müssen Kunden eine Captcha-Aufgabe lösen, bevor sie die Buchung abschließen können; aktivieren Sie dies bei vielen Spam-Buchungen"
+    captcha_active_customers: "Aktiv für Kunden"
+    captcha_active_login: "Aktiv für die Anmeldung"
+    captcha_login_hint: "Wenn aktiviert, müssen Benutzer eine Captcha-Aufgabe lösen, bevor sie sich im Backend anmelden können"
+    altcha_hmac_key_missing: "ALTCHA benötigt einen generierten HMAC-Schlüssel, bevor das Captcha aktiviert werden kann"
+    turnstile_keys_missing: "Cloudflare Turnstile benötigt einen Site-Schlüssel und einen geheimen Schlüssel, bevor das Captcha aktiviert werden kann"
+    turnstile_test_hint: "Lösen Sie diese Testaufgabe, um zu bestätigen, dass Turnstile auf dieser Website funktioniert; erforderlich beim Aktivieren von Turnstile oder Ändern der Schlüssel"
+    turnstile_test_failed: "Schließen Sie die Turnstile-Testaufgabe ab, um vor der Aktivierung zu bestätigen, dass sie auf dieser Website funktioniert"
     turnstile_keys_hint: "Ein Schlüsselpaar (Site-Key und Secret-Key) erhalten Sie im Cloudflare-Dashboard:"
     first_login_update_details: Bitte geben Sie ein neues Passwort ein und aktualisieren Sie Ihre Daten
     embedding: Einbettung
@@ -245,6 +260,18 @@ de:
     booking: Buchung
     visible: Sichtbar
     hidden: Versteckt
+    custom_css: "Eigenes CSS"
+    custom_css_hint: "Geben Sie hier CSS ein, um das Theme anzupassen; es gilt fuer die Buchungsseiten und die Verwaltung."
+    select_category: "Kategorie waehlen"
+    uncategorized: "Ohne Kategorie"
+    category_hidden_hint: "Versteckte Kategorien und ihre Dienste erscheinen nicht auf der Buchungsseite."
+    drag_to_reorder: "Ziehen Sie die Eintraege, um die Reihenfolge auf der Buchungsseite festzulegen."
+    sort_alphabetically: "Alphabetisch sortieren"
+    sort_alphabetically_confirm: "Aktuelle Reihenfolge durch alphabetisches Sortieren aller Eintraege ersetzen?"
+    picture_styles: "Bildstile"
+    picture_styles_hint: "Waehlen Sie, wie die Bilder jeder Gruppe in das 400x400-Quadrat eingepasst werden; Weisser Rand zeigt das ganze Bild auf weissem Hintergrund, Gezoomt fuellt das Quadrat durch Zuschneiden."
+    white_border: "Weisser Rand"
+    zoomed: "Gezoomt"
     business_logic: Unternehmerische Logik
     current_user: Aktueller Nutzer
     about_app: Über OpenAppointments
@@ -253,7 +280,7 @@ de:
     book_advance_timeout: Zeitbegrenzung einer Buchung
     book_advance_timeout_hint: Legen Sie eine Zeitbegrenzung (in Minuten) fest, während der die Kunden eine Terminbuchung oder eine Terminänderung durchführen können.
     timeout_minutes: Zeitbegrenzung (Minuten)
-    about_app_info: OpenAppointments ist eine extrem anpassungsfähige Internet-Applikation, die es Ihren Kunden ermöglicht, einen Termin mit Ihnen über das Internet zu vereinbaren. Darüberhinaus gibt es Ihnen die Möglichkeit, Ihre Daten mit dem CalDAV/Google-Kalender zu synchronisieren, so dass Sie diese mit anderen Dienstleistungsprogrammen nutzen können.
+    about_app_info: "OpenAppointments ist eine extrem anpassungsfähige Internet-Applikation, die es Ihren Kunden ermöglicht, einen Termin mit Ihnen über das Internet zu vereinbaren."
     current_version: Laufende Version
     support: Unterstützung
     about_app_support: Falls Sie irgendein Problem bei der Nutzung von OpenAppointments haben sollten, können Sie in den Issues des Projekts auf GitHub nach Lösungen suchen. Sie können auch ein neues Issue eröffnen, um die Weiterentwicklung zu unterstützen.
@@ -345,8 +372,6 @@ de:
     oops_something_went_wrong: Oops! Etwas ist schiefgelaufen.
     ea_update_success: OpenAppointments wurde erfolgreich aktualisiert.
     require_captcha: CAPTCHA erfordern
-    require_captcha_hint: "Wenn aktiv, werden die Kunden aufgefordert, eine zufällig generierte Zeichenfolge (CAPTCHA) einzutippen bevor Sie einen Termin buchen oder speichern können. - unter Integrationen können Sie einen fortschrittlicheren Captcha-Typ wählen"
-    captcha_is_wrong: CAPTCHA-Überprüfung fehlgeschlagen, bitte versuchen Sie es erneut.
     enter_captcha_here: CAPTCHA hier eingeben...
     any_provider: Jeder Anbieter
     requested_hour_is_unavailable: Der gewünschte Termin ist leider nicht verfügbar. Bitte wählen Sie eine andere Zeit für den Termin.
@@ -467,6 +492,13 @@ de:
     google_analytics_info: Mit Google Analytics können Sie den Tracking-Code und das HTML-Markup automatisch zur öffentlichen Seite hinzufügen und alle öffentlichen Buchungssitzungen verfolgen.
     matomo_analytics: Matomo Analytics
     matomo_analytics_info: Mit Matomo Analytics können Sie den Tracking-Code und das HTML-Markup automatisch zur öffentlichen Seite hinzufügen und alle öffentlichen Buchungssitzungen verfolgen.
+    umami_analytics: "Umami Analytics"
+    umami_analytics_info: "Umami Analytics ist eine datenschutzfreundliche Alternative zu Google Analytics; verbinden Sie Ihre eigene Umami-Instanz, um die oeffentlichen Buchungsseiten zu erfassen."
+    umami_analytics_url: "Umami URL"
+    umami_analytics_url_hint: "Fuegen Sie die URL Ihrer Umami-Installation hinzu, um das Tracking auf den Buchungsseiten zu aktivieren."
+    umami_analytics_website_id: "Website-ID"
+    umami_analytics_recorder: "Aufzeichnungen und Heatmaps"
+    umami_analytics_recorder_hint: "Wenn aktiviert, wird zusaetzlich das Umami-Recorder-Skript geladen, um Sitzungsaufzeichnungen und Heatmaps zu erfassen."
     api: API
     api_info: Mit der API können Sie über das HTTP-Protokoll und die verfügbaren API-Endpunkte mit allen OpenAppointments-Daten interagieren und Ihre eigenen Integrationen erstellen.
     google_analytics_code: Google Analytics-Code
@@ -548,6 +580,7 @@ de:
     field_mapping: Feldzuordnung
     content: Inhalt
     active: Aktiv
+    not_active: "Nicht aktiv"
     user_imported: Der Benutzerdatensatz wurde erfolgreich importiert.
     import: Importieren
     ldap_dn: LDAP-DN
@@ -574,7 +607,6 @@ de:
     altcha_expires_hint: 'Wie lange eine Herausforderung in Sekunden gültig bleibt (Standard: 300).'
     altcha_key_generated: Neuer HMAC-Schlüssel erfolgreich generiert.
     altcha_enabled: ALTCHA aktivieren
-    altcha_captcha_not_active_warning: Die CAPTCHA-Einstellung ist derzeit nicht aktiv. ALTCHA wird nicht verwendet, wenn CAPTCHA nicht aktiviert ist in den
     generate: Generieren
     meeting_link: Meeting-Link
     google_calendar: Google Kalender

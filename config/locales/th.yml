@@ -29,12 +29,27 @@ th:
     import_providers_caution: "ข้อควรระวัง: การเลือกผู้ให้บริการจะสร้างบัญชีผู้ใช้และอนุญาตให้เข้าสู่ระบบด้วยอีเมลของพวกเขา"
     manage_data: "จัดการข้อมูล"
     export_data: "ส่งออกข้อมูล"
+    backups: "ข้อมูลสำรอง"
+    backups_hint: "ข้อมูลสำรองล่าสุดห้าชุดถูกเก็บไว้บนเซิร์ฟเวอร์ และมีเพียงผู้ดูแลระบบเท่านั้นที่ดาวน์โหลดได้ หากดาวน์โหลดโปรดเก็บอย่างปลอดภัยเพราะมีข้อมูลส่วนบุคคล"
+    backup_working: "กำลังสร้างข้อมูลสำรอง..."
+    backup_failed: "การสำรองข้อมูลล้มเหลว โปรดตรวจสอบบันทึกของเซิร์ฟเวอร์"
+    ods_file: "ไฟล์ ODS"
+    zip_file: "Zip พร้อมรูปภาพ"
+    images_zip_optional: "Zip รูปภาพ (ไม่บังคับ)"
+    images_zip_hint: "เพิ่ม zip ที่ส่งออกพร้อมรูปภาพเพื่อนำเข้ารูปบริการ หมวดหมู่ และผู้ให้บริการ ไม่บังคับ"
     import_type: "ประเภทการนำเข้า"
     full_reset_label: "รีเซ็ตทั้งหมด ลบผู้ดูแลระบบและรีเซ็ตการตั้งค่า"
     delete_personal_information_setting_hint: "อนุญาตให้ลูกค้าลบการนัดหมายและข้อมูลส่วนตัวทั้งหมดออกจากระบบด้วยปุ่มเดียว"
     captcha: "Captcha"
     captcha_info: "การตั้งค่า Captcha เพื่อยืนยันว่าผู้เยี่ยมชมเป็นมนุษย์ก่อนการจอง"
-    captcha_enabled_hint: "เมื่อเปิดใช้งาน ผู้ให้บริการ Captcha ที่เลือกจะถูกใช้แทน Captcha รูปภาพแบบดั้งเดิมในการตรวจสอบแบบฟอร์ม"
+    captcha_enabled_hint: "เมื่อเปิดใช้งาน ลูกค้าจะต้องแก้โจทย์ Captcha ก่อนจึงจะจองได้สำเร็จ เปิดใช้งานหากคุณได้รับการจองสแปมจำนวนมาก"
+    captcha_active_customers: "เปิดใช้งานสำหรับลูกค้า"
+    captcha_active_login: "เปิดใช้งานสำหรับการเข้าสู่ระบบ"
+    captcha_login_hint: "เมื่อเปิดใช้งาน ผู้ใช้จะต้องแก้โจทย์ Captcha ก่อนจึงจะเข้าสู่ระบบหลังบ้านได้"
+    altcha_hmac_key_missing: "ALTCHA ต้องมีคีย์ HMAC ที่สร้างไว้ก่อนจึงจะเปิดใช้งาน captcha ได้"
+    turnstile_keys_missing: "Cloudflare Turnstile ต้องมีทั้งไซต์คีย์และคีย์ลับก่อนจึงจะเปิดใช้งาน captcha ได้"
+    turnstile_test_hint: "แก้โจทย์ทดสอบนี้เพื่อยืนยันว่า Turnstile ทำงานบนไซต์นี้ จำเป็นเมื่อเปิดใช้งาน Turnstile หรือเปลี่ยนคีย์"
+    turnstile_test_failed: "ทำโจทย์ทดสอบ Turnstile ให้เสร็จเพื่อยืนยันว่าทำงานบนไซต์นี้ก่อนเปิดใช้งาน"
     turnstile_keys_hint: "รับคู่กุญแจ (site key และ secret key) จากแดชบอร์ดของ Cloudflare:"
     first_login_update_details: กรุณาตั้งรหัสผ่านใหม่และอัปเดตข้อมูลของคุณ
     embedding: การฝังหน้า
@@ -245,6 +260,18 @@ th:
     booking: การจอง
     visible: มองเห็นได้
     hidden: ซ่อน
+    custom_css: "CSS กำหนดเอง"
+    custom_css_hint: "ป้อน CSS ที่นี่เพื่อปรับแต่งธีม ใช้กับหน้าจองและหน้าจัดการทั้งสองส่วน"
+    select_category: "เลือกหมวดหมู่"
+    uncategorized: "ไม่มีหมวดหมู่"
+    category_hidden_hint: "หมวดหมู่ที่ซ่อนและบริการในหมวดนั้นจะไม่แสดงบนหน้าจอง"
+    drag_to_reorder: "ลากรายการเพื่อกำหนดลำดับที่แสดงบนหน้าจอง"
+    sort_alphabetically: "เรียงตามตัวอักษร"
+    sort_alphabetically_confirm: "แทนที่ลำดับปัจจุบันด้วยการเรียงรายการทั้งหมดตามตัวอักษรหรือไม่"
+    picture_styles: "สไตล์รูปภาพ"
+    picture_styles_hint: "เลือกวิธีจัดรูปภาพของแต่ละชุดให้พอดีกับสี่เหลี่ยม 400x400 ขอบขาวคงภาพทั้งหมดบนพื้นหลังสีขาว ซูมเติมเต็มสี่เหลี่ยมด้วยการครอบตัด"
+    white_border: "ขอบขาว"
+    zoomed: "ซูม"
     business_logic: ตรรกะทางธุรกิจ
     current_user: ผู้ใช้ปัจจุบัน
     about_app: เกี่ยวกับ OpenAppointments
@@ -253,7 +280,7 @@ th:
     book_advance_timeout: การจองล่วงหน้าหมดเวลา
     book_advance_timeout_hint: ระบุการหมดเวลา (เป็นนาที) ก่อนที่ลูกค้าจะสามารถจองหรือนัดหมายใหม่กับบริษัทได้
     timeout_minutes: หมดเวลา (นาที)
-    about_app_info: OpenAppointments เป็นเว็บแอปพลิเคชั่นที่ปรับแต่งได้สูง ซึ่งช่วยให้ลูกค้าของคุณสามารถจองการนัดหมายกับคุณผ่านทางเว็บได้ นอกจากนี้ยังให้ความสามารถในการซิงค์ข้อมูลของคุณกับ Google ปฏิทินเพื่อให้คุณสามารถใช้กับบริการอื่นๆ ได้
+    about_app_info: "OpenAppointments เป็นเว็บแอปพลิเคชั่นที่ปรับแต่งได้สูง ซึ่งช่วยให้ลูกค้าของคุณสามารถจองการนัดหมายกับคุณผ่านทางเว็บได้"
     current_version: เวอร์ชันปัจจุบัน
     support: สนับสนุน
     about_app_support: หากคุณพบปัญหาในการใช้งาน OpenAppointments คุณสามารถค้นหาคำตอบได้จาก issues ของโปรเจกต์บน GitHub และยังสามารถเปิด issue ใหม่เพื่อช่วยพัฒนาระบบได้อีกด้วย
@@ -345,8 +372,6 @@ th:
     oops_something_went_wrong: อ๊ะ! มีบางอย่างผิดพลาด.
     ea_update_success: OpenAppointments อัปเดตเรียบร้อยแล้ว
     require_captcha: ต้องมี CAPTCHA
-    require_captcha_hint: "เมื่อเปิดใช้งาน ลูกค้าจะต้องพิมพ์ CAPTCHA ที่สร้างแบบสุ่มก่อนจอง/อัปเดตการนัดหมาย - ไปที่ Integrations เพื่อเลือกประเภท Captcha ขั้นสูงกว่า"
-    captcha_is_wrong: การยืนยัน CAPTCHA ล้มเหลว โปรดลองอีกครั้ง
     enter_captcha_here: ป้อน CAPTCHA ที่นี่...
     any_provider: ผู้ให้บริการใดๆ
     requested_hour_is_unavailable: น่าเสียดาย ไม่สามารถนัดหมายที่ร้องขอได้ โปรดเลือกเวลาอื่นสำหรับการนัดหมายของคุณ
@@ -467,6 +492,13 @@ th:
     google_analytics_info: Google Analytics ช่วยให้คุณสามารถเพิ่มโค้ดติดตามและมาร์กอัป HTML ลงในหน้าสาธารณะได้โดยอัตโนมัติ และติดตามเซสชันการจองสาธารณะทั้งหมด
     matomo_analytics: Matomo Analytics
     matomo_analytics_info: Matomo Analytics ช่วยให้คุณสามารถเพิ่มโค้ดติดตามและมาร์กอัป HTML ลงในหน้าสาธารณะได้โดยอัตโนมัติ และติดตามเซสชันการจองสาธารณะทั้งหมด
+    umami_analytics: "Umami Analytics"
+    umami_analytics_info: "Umami Analytics เป็นทางเลือกที่เป็นมิตรต่อความเป็นส่วนตัวแทน Google Analytics เชื่อมต่ออินสแตนซ์ Umami ของคุณเพื่อติดตามหน้าจองสาธารณะ"
+    umami_analytics_url: "Umami URL"
+    umami_analytics_url_hint: "เพิ่ม URL ของการติดตั้ง Umami ของคุณเพื่อเปิดใช้การติดตามบนหน้าจอง"
+    umami_analytics_website_id: "รหัสเว็บไซต์"
+    umami_analytics_recorder: "รีเพลย์และฮีตแมป"
+    umami_analytics_recorder_hint: "เมื่อเปิดใช้งาน สคริปต์ Umami recorder จะถูกโหลดด้วยเพื่อบันทึกรีเพลย์ของเซสชันและฮีตแมป"
     api: เอพีไอ
     api_info: API ช่วยให้คุณสามารถโต้ตอบกับข้อมูล OpenAppointments ทั้งหมดผ่านโปรโตคอล HTTP และจุดสิ้นสุด API ที่มีอยู่ และสร้างการผสานรวมของคุณเอง
     google_analytics_code: รหัส Google Analytics
@@ -548,6 +580,7 @@ th:
     field_mapping: การแมพฟิลด์
     content: เนื้อหา
     active: ใช้งานอยู่
+    not_active: "ไม่เปิดใช้งาน"
     user_imported: บันทึกผู้ใช้ถูกนำเข้าสำเร็จ
     import: นำเข้า
     ldap_dn: LDAP DN
@@ -574,7 +607,6 @@ th:
     altcha_expires_hint: 'ระยะเวลาที่การท้าทายมีผลเป็นวินาที (ค่าเริ่มต้น: 300)'
     altcha_key_generated: สร้างคีย์ HMAC ใหม่เรียบร้อยแล้ว
     altcha_enabled: เปิดใช้งาน ALTCHA
-    altcha_captcha_not_active_warning: การตั้งค่า CAPTCHA ไม่ได้ใช้งานอยู่ในขณะนี้ ALTCHA จะไม่ถูกใช้งานจนกว่าจะเปิดใช้งาน CAPTCHA ใน
     generate: สร้าง
     meeting_link: ลิงก์การประชุม
     google_calendar: Google ปฏิทิน

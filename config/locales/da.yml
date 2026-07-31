@@ -29,12 +29,27 @@ da:
     import_providers_caution: "Advarsel: at markere behandlere opretter brugerkonti og tillader login med deres e-mail"
     manage_data: "Administrer data"
     export_data: "Eksporter data"
+    backups: "Sikkerhedskopier"
+    backups_hint: "De fem nyeste sikkerhedskopier gemmes paa serveren, og kun administratorer kan hente dem. Opbevar dem sikkert, hvis du henter dem, da de indeholder personoplysninger."
+    backup_working: "Opretter sikkerhedskopi..."
+    backup_failed: "Sikkerhedskopien mislykkedes, tjek serverloggene."
+    ods_file: "ODS-fil"
+    zip_file: "Zip med billeder"
+    images_zip_optional: "Zip med billeder (valgfrit)"
+    images_zip_hint: "Tilfoej den eksporterede zip med billeder for at importere service-, kategori- og behandlerbilleder, valgfrit."
     import_type: "Importtype"
     full_reset_label: "Fuld nulstilling, slet administratorer og nulstil indstillinger"
     delete_personal_information_setting_hint: "Lad kunder fjerne alle deres aftaler og personlige oplysninger fra systemet med en knap."
     captcha: "Captcha"
     captcha_info: "Captcha-indstillinger til at bekræfte, at besøgende er et menneske, før der bookes"
-    captcha_enabled_hint: "Når aktiveret bruges den valgte captcha-udbyder i stedet for den traditionelle billed-captcha til formularbekræftelse."
+    captcha_enabled_hint: "Når aktiveret skal kunderne løse en Captcha-udfordring, før de kan gennemføre bookingen; aktiver dette, hvis du får mange spam-bookinger"
+    captcha_active_customers: "Aktiv for kunder"
+    captcha_active_login: "Aktiv for login"
+    captcha_login_hint: "Når aktiveret skal brugere løse en Captcha-udfordring, før de kan logge ind i administrationen"
+    altcha_hmac_key_missing: "ALTCHA kræver en genereret HMAC-nøgle, før captcha kan aktiveres"
+    turnstile_keys_missing: "Cloudflare Turnstile kræver både en site-nøgle og en hemmelig nøgle, før captcha kan aktiveres"
+    turnstile_test_hint: "Løs denne testudfordring for at bekræfte, at Turnstile virker på dette websted; kræves ved aktivering af Turnstile eller ændring af nøgler"
+    turnstile_test_failed: "Gennemfør Turnstile-testudfordringen for at bekræfte, at den virker på dette websted, før aktivering"
     turnstile_keys_hint: "Hent et par bestående af site key og secret key fra Cloudflare-panelet:"
     first_login_update_details: Indtast en ny adgangskode og opdater dine oplysninger
     embedding: Indlejring
@@ -245,6 +260,18 @@ da:
     booking: Booking
     visible: Synlig
     hidden: Skjult
+    custom_css: "Tilpasset CSS"
+    custom_css_hint: "Indtast CSS her for at aendre temaet; det anvendes paa bookingsiderne og administrationen."
+    select_category: "Vaelg kategori"
+    uncategorized: "Uden kategori"
+    category_hidden_hint: "Skjulte kategorier og deres ydelser vises ikke paa bookingsiden."
+    drag_to_reorder: "Traek posterne for at angive raekkefoelgen paa bookingsiden."
+    sort_alphabetically: "Sorter alfabetisk"
+    sort_alphabetically_confirm: "Erstat den nuvaerende raekkefoelge ved at sortere alle poster alfabetisk?"
+    picture_styles: "Billedstile"
+    picture_styles_hint: "Vaelg hvordan hvert saets billeder passes ind i 400x400-kvadratet; Hvid kant beholder hele billedet paa hvid baggrund, Zoomet fylder kvadratet ved beskaering."
+    white_border: "Hvid kant"
+    zoomed: "Zoomet"
     business_logic: Forretningslogik
     current_user: Nuværende bruger
     about_app: Om OpenAppointments
@@ -253,7 +280,7 @@ da:
     book_advance_timeout: Book forudgående pause
     book_advance_timeout_hint: Definere pausen (i minutter) før kunderne kan booke eller redigere tidsbestillingen hos firmaet.
     timeout_minutes: Pause (minutter)
-    about_app_info: OpenAppointments er et specielfremstillet internet applikation som giver mulighed for kunderne at booke bestillinger med dig via internettet. Endvidere leverandørens evne til at synkronisere dine data med Google kalender, så du kan bruge dem med andre tjenester.
+    about_app_info: "OpenAppointments er et specielfremstillet internet applikation som giver mulighed for kunderne at booke bestillinger med dig via internettet."
     current_version: Nuværende version
     support: Support
     about_app_support: Hvis du støder på problemer med OpenAppointments, kan du søge efter svar i projektets issues på GitHub. Du kan også oprette et nyt issue for at hjælpe udviklingen videre.
@@ -345,8 +372,6 @@ da:
     oops_something_went_wrong: Oops! Noget gik galt.
     ea_update_success: OpenAppointments er blevet opdateret.
     require_captcha: Kræv CAPTCHA
-    require_captcha_hint: "Når det er aktiveret, skal kunderne indtaste en tilfældigt genereret CAPTCHA-streng, før de kan booke/opdatere en aftale. - gå til Integrationer for at vælge en mere avanceret Captcha-type"
-    captcha_is_wrong: CAPTCHA-verifikation fejlede, prøv venligst igen.
     enter_captcha_here: Indtast CAPTCHA her...
     any_provider: Alle udbydere
     requested_hour_is_unavailable: Den ønskede tid er desværre ikke tilgængelig. Vælg venligst et andet tidspunkt for din aftale.
@@ -467,6 +492,13 @@ da:
     google_analytics_info: Google Analytics giver dig mulighed for automatisk at tilføje sporingskoden og HTML-markup til den offentlige side og spore alle de offentlige bookingsessioner.
     matomo_analytics: Matomo Analytics
     matomo_analytics_info: Matomo Analytics giver dig mulighed for automatisk at tilføje sporingskoden og HTML-markup til den offentlige side og spore alle de offentlige bookingsessioner.
+    umami_analytics: "Umami Analytics"
+    umami_analytics_info: "Umami Analytics er et privatlivsvenligt alternativ til Google Analytics; forbind din egen Umami-instans for at spore de offentlige bookingsider."
+    umami_analytics_url: "Umami URL"
+    umami_analytics_url_hint: "Tilfoej URL'en til din Umami-installation for at aktivere sporing paa bookingsiderne."
+    umami_analytics_website_id: "Website-ID"
+    umami_analytics_recorder: "Afspilninger og heatmaps"
+    umami_analytics_recorder_hint: "Naar aktiveret indlaeses Umami recorder-scriptet ogsaa for at optage sessioner og heatmaps."
     api: API
     api_info: API giver dig mulighed for at interagere med alle OpenAppointments-data via HTTP-protokollen og de tilgængelige API-endepunkter og oprette dine egne integrationer.
     google_analytics_code: Google Analytics Kode
@@ -548,6 +580,7 @@ da:
     field_mapping: Feltkortlægning
     content: Indhold
     active: Aktiv
+    not_active: "Ikke aktiv"
     user_imported: Brugerposten blev importeret med succes.
     import: Importér
     ldap_dn: LDAP DN
@@ -574,7 +607,6 @@ da:
     altcha_expires_hint: 'Hvor længe en udfordring forbliver gyldig i sekunder (standard: 300).'
     altcha_key_generated: Ny HMAC-nøgle genereret.
     altcha_enabled: Aktivér ALTCHA
-    altcha_captcha_not_active_warning: CAPTCHA-indstillingen er ikke aktiv i øjeblikket. ALTCHA vil ikke blive brugt, medmindre CAPTCHA er aktiveret i
     generate: Generér
     meeting_link: Mødelink
     google_calendar: Google Kalender

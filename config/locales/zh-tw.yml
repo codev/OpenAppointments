@@ -29,12 +29,27 @@ zh-tw:
     import_providers_caution: "注意：勾選服務人員將建立使用者帳戶並允許使用他們的電子郵件登入"
     manage_data: "資料管理"
     export_data: "匯出資料"
+    backups: "備份"
+    backups_hint: "伺服器保留最近五個備份，僅管理員可下載。下載後請妥善保管，因為其中包含個人資訊。"
+    backup_working: "正在建立備份..."
+    backup_failed: "備份失敗，請檢查伺服器記錄。"
+    ods_file: "ODS 檔案"
+    zip_file: "含圖片的 Zip"
+    images_zip_optional: "圖片 Zip(選填)"
+    images_zip_hint: "加入含圖片的匯出 Zip 以匯入服務、分類與服務人員的圖片,選填。"
     import_type: "匯入類型"
     full_reset_label: "完全重設，刪除管理員並重設設定"
     delete_personal_information_setting_hint: "允許客戶透過一個按鈕從系統中刪除他們的所有預約和個人資料。"
     captcha: "Captcha"
     captcha_info: "用於在預約前驗證訪客是真人的驗證碼設定"
-    captcha_enabled_hint: "啟用後，表單驗證將使用所選的驗證碼提供者，取代傳統的圖片驗證碼。"
+    captcha_enabled_hint: "啟用後，顧客必須先完成 Captcha 驗證才能完成預約；如果您收到大量垃圾預約，請啟用此功能"
+    captcha_active_customers: "對顧客啟用"
+    captcha_active_login: "對登入啟用"
+    captcha_login_hint: "啟用後，使用者必須先完成 Captcha 驗證才能登入後台"
+    altcha_hmac_key_missing: "啟用 captcha 之前，ALTCHA 需要已產生的 HMAC 金鑰"
+    turnstile_keys_missing: "啟用 captcha 之前，Cloudflare Turnstile 需要網站金鑰和密鑰"
+    turnstile_test_hint: "解決此測試挑戰以確認 Turnstile 可在本網站運作；啟用 Turnstile 或變更金鑰時必須完成"
+    turnstile_test_failed: "啟用前請完成 Turnstile 測試挑戰，以確認其可在本網站運作"
     turnstile_keys_hint: "在 Cloudflare 控制台取得網站金鑰與祕密金鑰對:"
     first_login_update_details: 請輸入新密碼並更新您的資料
     embedding: 嵌入
@@ -245,6 +260,18 @@ zh-tw:
     booking: 預約
     visible: 可見
     hidden: 隱藏
+    custom_css: "自訂 CSS"
+    custom_css_hint: "在此輸入 CSS 以修改主題,會同時套用於預約頁面與管理介面。"
+    select_category: "選擇分類"
+    uncategorized: "未分類"
+    category_hidden_hint: "隱藏的分類及其服務不會顯示在預約頁面上。"
+    drag_to_reorder: "拖曳記錄以設定預約頁面上顯示的順序。"
+    sort_alphabetically: "按字母排序"
+    sort_alphabetically_confirm: "以按字母排序所有記錄取代目前順序?"
+    picture_styles: "圖片樣式"
+    picture_styles_hint: "選擇每組圖片如何符合 400x400 方形;白邊框在白色背景上保留完整圖片,縮放則以裁切填滿方形。"
+    white_border: "白邊框"
+    zoomed: "縮放"
     business_logic: 業務邏輯
     current_user: 目前使用者
     about_app: 關於 OpenAppointments
@@ -253,7 +280,7 @@ zh-tw:
     book_advance_timeout: 預約提前超時
     book_advance_timeout_hint: 定義顧客可以在公司預約或重新安排預約前的超時時間（以分鐘為單位）。
     timeout_minutes: 超時（分鐘）
-    about_app_info: OpenAppointments 是一個高度可客製化的網頁應用程式，允許您的顧客透過網路與您預約。此外，它還提供與 Google 日曆同步的功能，讓您可以與其他服務一起使用。
+    about_app_info: "OpenAppointments 是一個高度可客製化的網頁應用程式，允許您的顧客透過網路與您預約。"
     current_version: 目前版本
     support: 支援
     about_app_support: 如果您在使用 OpenAppointments 時遇到任何問題，可以在 GitHub 上搜尋專案的 issue 尋找答案。您也可以建立新的 issue 來協助專案發展。
@@ -345,8 +372,6 @@ zh-tw:
     oops_something_went_wrong: 哎呀！出了點問題。
     ea_update_success: OpenAppointments 已成功更新。
     require_captcha: 需要驗證碼
-    require_captcha_hint: "啟用後，顧客在預約/更新預約前需要輸入隨機產生的驗證碼字串。 - 前往整合頁面選擇更進階的 Captcha 類型"
-    captcha_is_wrong: 驗證碼驗證失敗，請重試。
     enter_captcha_here: 在此輸入 CAPTCHA...
     any_provider: 任何提供者
     requested_hour_is_unavailable: 很抱歉，所請求的預約時間不可用。請選擇其他時間進行預約。
@@ -467,6 +492,13 @@ zh-tw:
     google_analytics_info: Google Analytics 允許您自動將追蹤程式碼和 HTML 標記新增到公開頁面，並追蹤所有公開預約工作階段。
     matomo_analytics: Matomo 分析
     matomo_analytics_info: Matomo Analytics 允許您自動將追蹤程式碼和 HTML 標記新增到公開頁面，並追蹤所有公開預約工作階段。
+    umami_analytics: "Umami Analytics"
+    umami_analytics_info: "Umami Analytics 是重視隱私的 Google Analytics 替代方案；連接您自己的 Umami 伺服器以追蹤公開預約頁面。"
+    umami_analytics_url: "Umami URL"
+    umami_analytics_url_hint: "新增您的 Umami 安裝網址，以在預約頁面啟用追蹤。"
+    umami_analytics_website_id: "網站 ID"
+    umami_analytics_recorder: "重播與熱圖"
+    umami_analytics_recorder_hint: "啟用後，也會載入 Umami 錄製指令碼以擷取工作階段重播與熱圖。"
     api: API
     api_info: API 允許您透過 HTTP 協議和可用的 API 端點與所有 OpenAppointments 資料進行互動，並建立您自己的整合。
     google_analytics_code: Google Analytics 程式碼
@@ -548,6 +580,7 @@ zh-tw:
     field_mapping: 欄位對映
     content: 內容
     active: 啟用
+    not_active: "未啟用"
     user_imported: 使用者記錄已成功匯入。
     import: 匯入
     ldap_dn: LDAP DN
@@ -574,7 +607,6 @@ zh-tw:
     altcha_expires_hint: 挑戰保持有效的秒數（預設值：300）。
     altcha_key_generated: 新的 HMAC 金鑰已成功產生。
     altcha_enabled: 啟用 ALTCHA
-    altcha_captcha_not_active_warning: CAPTCHA 設定目前未啟用。除非在以下位置啟用 CAPTCHA，否則 ALTCHA 將不會被使用：
     generate: 產生
     meeting_link: 會議連結
     google_calendar: Google 日曆

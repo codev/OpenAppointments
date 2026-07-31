@@ -29,12 +29,27 @@ ja:
     import_providers_caution: "注意: 担当者にチェックを入れるとユーザーアカウントが作成され、担当者のメールアドレスでログインできるようになります"
     manage_data: "データ管理"
     export_data: "データをエクスポート"
+    backups: "バックアップ"
+    backups_hint: "最新5件のバックアップがサーバーに保存され、管理者のみダウンロードできます。個人情報が含まれるため、ダウンロードした場合は安全に保管してください。"
+    backup_working: "バックアップを作成中..."
+    backup_failed: "バックアップに失敗しました。サーバーログを確認してください。"
+    ods_file: "ODSファイル"
+    zip_file: "画像付きZip"
+    images_zip_optional: "画像Zip(任意)"
+    images_zip_hint: "サービス、カテゴリ、担当者の画像を取り込むには、画像入りのエクスポートZipを追加してください(任意)。"
     import_type: "インポートの種類"
     full_reset_label: "完全リセット、管理者を削除し設定をリセットします"
     delete_personal_information_setting_hint: "顧客がボタンひとつで自分の予約と個人情報をすべてシステムから削除できるようにします。"
     captcha: "Captcha"
     captcha_info: "予約前に訪問者が人間であることを確認するためのCaptcha設定"
-    captcha_enabled_hint: "有効にすると、フォーム検証に従来の画像キャプチャの代わりに選択したCaptchaプロバイダーが使用されます。"
+    captcha_enabled_hint: "有効にすると、お客様は予約を完了する前にCaptchaチャレンジを解く必要があります。スパム予約が多い場合に有効にしてください"
+    captcha_active_customers: "お客様向けに有効"
+    captcha_active_login: "ログイン向けに有効"
+    captcha_login_hint: "有効にすると、ユーザーは管理画面にログインする前にCaptchaチャレンジを解く必要があります"
+    altcha_hmac_key_missing: "captchaを有効にする前に、ALTCHAには生成済みのHMACキーが必要です"
+    turnstile_keys_missing: "captchaを有効にする前に、Cloudflare Turnstileにはサイトキーとシークレットキーの両方が必要です"
+    turnstile_test_hint: "このサイトでTurnstileが動作することを確認するため、このテストチャレンジを解いてください。Turnstileの有効化やキー変更時に必要です"
+    turnstile_test_failed: "有効化する前に、Turnstileテストチャレンジを完了してこのサイトで動作することを確認してください"
     turnstile_keys_hint: "Cloudflareダッシュボードでサイトキーとシークレットキーのペアを取得してください:"
     first_login_update_details: 新しいパスワードを入力し、情報を更新してください
     embedding: 埋め込み
@@ -245,6 +260,18 @@ ja:
     booking: 予約
     visible: 目に見える
     hidden: 目に見えません
+    custom_css: "カスタムCSS"
+    custom_css_hint: "テーマを変更するCSSをここに入力します。予約ページと管理画面の両方に適用されます。"
+    select_category: "カテゴリを選択"
+    uncategorized: "未分類"
+    category_hidden_hint: "非表示のカテゴリとそのサービスは予約ページに表示されません。"
+    drag_to_reorder: "レコードをドラッグして予約ページに表示される順序を設定します。"
+    sort_alphabetically: "アルファベット順に並べ替え"
+    sort_alphabetically_confirm: "すべてのレコードをアルファベット順に並べ替えて現在の順序を置き換えますか?"
+    picture_styles: "画像スタイル"
+    picture_styles_hint: "各セットの画像を400x400の正方形にどう収めるかを選択します。白枠は画像全体を白背景で保持し、ズームは切り抜いて正方形を埋めます。"
+    white_border: "白枠"
+    zoomed: "ズーム"
     business_logic: 勤務時間設定
     current_user: 現在のユーザー
     about_app: OpenAppointmentsとは。
@@ -253,7 +280,7 @@ ja:
     book_advance_timeout: 予約待機時間
     book_advance_timeout_hint: この待機時間 以上前の予約もしくは予約変更しか受け付けることはできません。時間寸前の予約ができないときなどに使用。
     timeout_minutes: 時間 (分)
-    about_app_info: OpenAppointmentsは、カスタマイズ可能な予約受付ウエッブアップリケーションです。さら、Googleカレンダーとの連携ができるので、このシステムのスケジュールを他のシステムのスケジュールとまとめてみることができます。
+    about_app_info: "OpenAppointmentsは、カスタマイズ可能な予約受付ウエッブアップリケーションです。"
     current_version: バージョン番号
     support: サポート
     about_app_support: OpenAppointments の利用中に問題が発生した場合は、GitHub のプロジェクトの issue から回答を検索できます。開発を支援するために新しい issue を作成することもできます。
@@ -345,8 +372,6 @@ ja:
     oops_something_went_wrong: おっと、なにか が うまく 行ってません。
     ea_update_success: OpenAppointments の　アップデートが成功しました。
     require_captcha: CAPTCHAを要求
-    require_captcha_hint: "有効にすると、顧客は予約/更新の前にランダムに生成されたCAPTCHA文字列を入力する必要があります。 - より高度な Captcha の種類は連携ページで選択できます"
-    captcha_is_wrong: CAPTCHA認証に失敗しました。もう一度お試しください。
     enter_captcha_here: ここに CAPTCHA を入力...
     any_provider: 任意のプロバイダー
     requested_hour_is_unavailable: 申し訳ありませんが、リクエストされた予約時間は利用できません。他の時間を選択してください。
@@ -467,6 +492,13 @@ ja:
     google_analytics_info: Google Analyticsを使用すると、トラッキングコードとHTMLマークアップを自動的にパブリックページに追加し、すべてのパブリック予約セッションを追跡できます。
     matomo_analytics: Matomo アナリティクス
     matomo_analytics_info: Matomo Analyticsを使用すると、トラッキングコードとHTMLマークアップを自動的にパブリックページに追加し、すべてのパブリック予約セッションを追跡できます。
+    umami_analytics: "Umami Analytics"
+    umami_analytics_info: "Umami Analyticsはプライバシーに配慮したGoogle Analyticsの代替です。独自のUmamiインスタンスを接続して公開予約ページをトラッキングします。"
+    umami_analytics_url: "Umami URL"
+    umami_analytics_url_hint: "予約ページのトラッキングを有効にするには、UmamiインストールのURLを追加してください。"
+    umami_analytics_website_id: "ウェブサイトID"
+    umami_analytics_recorder: "リプレイとヒートマップ"
+    umami_analytics_recorder_hint: "有効にすると、セッションのリプレイとヒートマップを記録するためにUmamiレコーダースクリプトも読み込まれます。"
     api: API
     api_info: APIを使用すると、HTTPプロトコルおよび利用可能なAPIエンドポイントを介してすべてのOpenAppointmentsデータと対話し、独自の統合を作成できます。
     google_analytics_code: Google Analytics コード
@@ -548,6 +580,7 @@ ja:
     field_mapping: フィールドマッピング
     content: コンテンツ
     active: アクティブ
+    not_active: "無効"
     user_imported: ユーザーのレコードが正常にインポートされました。
     import: インポート
     ldap_dn: LDAP DN
@@ -574,7 +607,6 @@ ja:
     altcha_expires_hint: チャレンジが有効な秒数（デフォルト：300）。
     altcha_key_generated: 新しい HMAC キーが正常に生成されました。
     altcha_enabled: ALTCHA を有効にする
-    altcha_captcha_not_active_warning: CAPTCHA設定は現在アクティブではありません。CAPTCHAが有効になっていない限り、ALTCHAは使用されません。
     generate: 生成
     meeting_link: ミーティングリンク
     google_calendar: Google カレンダー

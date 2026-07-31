@@ -22,6 +22,12 @@
                 <%= lang('providers') %>
             </h4>
 
+            <div class="d-flex justify-content-between align-items-center mb-2">
+                <small class="text-muted me-2"><%= lang('drag_to_reorder') %></small>
+                <button type="button" class="btn btn-outline-secondary btn-sm sort-alphabetically text-nowrap">
+                    <%= lang('sort_alphabetically') %>
+                </button>
+            </div>
             <div class="results overflow-auto">
                 <!-- JS -->
             </div>
@@ -394,6 +400,6 @@
 
 <% content_for :scripts do %>
     <%= javascript_include_tag "vendor/jquery-jeditable/jquery.jeditable.min" %>
-    <%= ea_js "utils/ui", "utils/working_plan", "utils/picture_upload", "http/account_http_client",
+    <%= ea_js "utils/ui", "utils/drag_reorder", "utils/working_plan", "utils/picture_upload", "http/account_http_client",
               "http/providers_http_client", "pages/providers" %>
 <% end %>

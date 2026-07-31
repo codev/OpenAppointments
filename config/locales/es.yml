@@ -29,12 +29,27 @@ es:
     import_providers_caution: "Precaución: marcar proveedores creará cuentas de usuario y permitirá iniciar sesión con su correo"
     manage_data: "Gestionar datos"
     export_data: "Exportar datos"
+    backups: "Copias de seguridad"
+    backups_hint: "Las cinco copias de seguridad más recientes se conservan en el servidor y solo los administradores pueden descargarlas. Guárdelas de forma segura si las descarga porque contienen información personal."
+    backup_working: "Creando copia de seguridad..."
+    backup_failed: "La copia de seguridad falló, revise los registros del servidor."
+    ods_file: "Archivo ODS"
+    zip_file: "Zip con imágenes"
+    images_zip_optional: "Zip de imágenes (opcional)"
+    images_zip_hint: "Añada el zip exportado con imágenes para importar las fotos de servicios, categorías y profesionales, opcional."
     import_type: "Tipo de importación"
     full_reset_label: "Restablecimiento completo, eliminar administradores y restablecer ajustes"
     delete_personal_information_setting_hint: "Permitir a los clientes eliminar todas sus citas e información personal del sistema con un botón."
     captcha: "Captcha"
     captcha_info: "Configuración del captcha para verificar que el visitante es humano antes de reservar"
-    captcha_enabled_hint: "Cuando está activado, el proveedor de captcha seleccionado se usará en lugar del captcha de imagen tradicional para verificar formularios."
+    captcha_enabled_hint: "Cuando está activado, los clientes deberán resolver un desafío Captcha antes de completar la reserva; actívelo si recibe muchas reservas de spam"
+    captcha_active_customers: "Activo para clientes"
+    captcha_active_login: "Activo para el inicio de sesión"
+    captcha_login_hint: "Cuando está activado, los usuarios deberán resolver un desafío Captcha antes de iniciar sesión en el panel"
+    altcha_hmac_key_missing: "ALTCHA necesita una clave HMAC generada antes de poder activar el captcha"
+    turnstile_keys_missing: "Cloudflare Turnstile necesita una clave de sitio y una clave secreta antes de poder activar el captcha"
+    turnstile_test_hint: "Resuelva este desafío de prueba para confirmar que Turnstile funciona en este sitio; es obligatorio al activar Turnstile o cambiar sus claves"
+    turnstile_test_failed: "Complete el desafío de prueba de Turnstile para confirmar que funciona en este sitio antes de activarlo"
     turnstile_keys_hint: "Obtenga un par de claves (site y secret) en el panel de Cloudflare:"
     first_login_update_details: Introduzca una nueva contraseña y actualice sus datos
     embedding: Incrustación
@@ -245,6 +260,18 @@ es:
     booking: Reserva
     visible: Visible
     hidden: Oculto
+    custom_css: "CSS personalizado"
+    custom_css_hint: "Introduzca CSS aquí para modificar el tema; se aplica a las páginas de reserva y a la administración."
+    select_category: "Seleccione categoría"
+    uncategorized: "Sin categoría"
+    category_hidden_hint: "Las categorías ocultas y sus servicios no se muestran en la página de reservas."
+    drag_to_reorder: "Arrastre los registros para definir el orden mostrado en la página de reservas."
+    sort_alphabetically: "Ordenar alfabéticamente"
+    sort_alphabetically_confirm: "¿Reemplazar el orden actual ordenando todos los registros alfabéticamente?"
+    picture_styles: "Estilos de imagen"
+    picture_styles_hint: "Elija cómo se ajustan las imágenes de cada conjunto al cuadrado de 400x400; Borde blanco conserva toda la imagen sobre fondo blanco, Ampliada llena el cuadrado recortando."
+    white_border: "Borde blanco"
+    zoomed: "Ampliada"
     business_logic: Lógica del negocio
     current_user: Usuario actual
     about_app: Acerca de OpenAppointments
@@ -253,7 +280,7 @@ es:
     book_advance_timeout: Agendar tiempos muertos
     book_advance_timeout_hint: Defina el tiempo muerto (en minutos) antes que de los clientes puedan agendar o reorganizar citas con la empresa.
     timeout_minutes: Tiempo muerto (en minutos)
-    about_app_info: OpenAppointments es un aplicativo web completamente personalizable que le permitirá a sus clientes agendar citas con Usted a través internet. Además, le permitirá sincronizar sus datos con Google Calendar, para poder utilizarlos con otros servicios.
+    about_app_info: "OpenAppointments es un aplicativo web completamente personalizable que le permitirá a sus clientes agendar citas con Usted a través internet."
     current_version: Versión actual
     support: Soporte
     about_app_support: Si encuentra algún problema al usar OpenAppointments, puede buscar respuestas en las incidencias del proyecto en GitHub. También puede abrir una nueva incidencia para ayudar al desarrollo.
@@ -345,8 +372,6 @@ es:
     oops_something_went_wrong: "¡Ups! ¡Algo ha salido mal."
     ea_update_success: OpenAppointments ha sido actualizado exitosamente
     require_captcha: Requiere CAPTCHA
-    require_captcha_hint: "Cuando se habilita, el cliente tendrá que escribir el código CAPTCHA antes de reservar/actualizar una cita. - vaya a Integraciones para elegir un tipo de Captcha más avanzado"
-    captcha_is_wrong: Verificación de CAPTCHA fallida, por favor intentelo nuevamente.
     enter_captcha_here: Introduzca el CAPTCHA aquí...
     any_provider: Cualquier Proveedor
     requested_hour_is_unavailable: La cita requerida desafortunadamente no está disponible. Por favor seleccione una hora diferente para su cita.
@@ -467,6 +492,13 @@ es:
     google_analytics_info: Google Analytics permite añadir de forma automática un código de seguimiento y marcas HTML a las páginas públicas para rastrear todas las sesiones de la página pública de reservas.
     matomo_analytics: Matomo Analytics
     matomo_analytics_info: Matomo Analytics le permite agregar automáticamente el código de seguimiento y el marcado HTML a la página pública y rastrear todas las sesiones de reservas públicas.
+    umami_analytics: "Umami Analytics"
+    umami_analytics_info: "Umami Analytics es una alternativa a Google Analytics respetuosa con la privacidad; conecte su propia instancia de Umami para hacer seguimiento de las páginas públicas de reserva."
+    umami_analytics_url: "Umami URL"
+    umami_analytics_url_hint: "Añada la URL de su instalación de Umami para activar el seguimiento en las páginas de reserva."
+    umami_analytics_website_id: "ID del sitio web"
+    umami_analytics_recorder: "Repeticiones y mapas de calor"
+    umami_analytics_recorder_hint: "Cuando está activado, también se carga el script Umami recorder para capturar repeticiones de sesión y mapas de calor."
     api: API
     api_info: La API permite interactuar con todos los datos de OpenAppointments mediante el protocolo HTTP, así como con los API Endpoints y crear tus propias integraciones.
     google_analytics_code: Código de Google Analytics
@@ -548,6 +580,7 @@ es:
     field_mapping: Mapeo de Campos
     content: Contenido
     active: Activo
+    not_active: "No activo"
     user_imported: El registro del usuario se importó con éxito.
     import: Importar
     ldap_dn: DN de LDAP
@@ -574,7 +607,6 @@ es:
     altcha_expires_hint: 'Tiempo de validez de un desafío en segundos (por defecto: 300).'
     altcha_key_generated: Nueva clave HMAC generada exitosamente.
     altcha_enabled: Habilitar ALTCHA
-    altcha_captcha_not_active_warning: La configuración CAPTCHA no está activa actualmente. ALTCHA no se utilizará a menos que CAPTCHA esté habilitado en la
     generate: Generar
     meeting_link: Enlace de reunión
     google_calendar: Google Calendar

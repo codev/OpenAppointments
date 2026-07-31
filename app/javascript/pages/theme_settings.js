@@ -11,6 +11,45 @@ App.Pages.ThemeSettings = (function () {
     const $backgroundColor = $('#company-background-color');
     const $theme = $('#theme');
     const $colorAccessibility = $('#color-accessibility');
+    const $themeCards = $('#theme-cards');
+
+    let previewRefreshTimeout;
+
+    function previewUrl(theme) {
+        const query = new URLSearchParams({
+            theme: theme,
+            primary: $companyColor.val() || '',
+            secondary: $secondaryColor.val() || '',
+            background: $backgroundColor.val() || '',
+        });
+
+        return App.Utils.Url.siteUrl('theme_settings/preview') + '?' + query.toString();
+    }
+
+    /**
+     * Reload every theme card preview with the current colour picks (debounced).
+     */
+    function refreshThemePreviews() {
+        clearTimeout(previewRefreshTimeout);
+        previewRefreshTimeout = setTimeout(() => {
+            $themeCards.find('.theme-preview-frame').each((index, frame) => {
+                frame.src = previewUrl($(frame).data('theme'));
+            });
+        }, 250);
+    }
+
+    function markSelectedThemeCard() {
+        $themeCards
+            .find('.theme-card')
+            .removeClass('selected')
+            .filter('[data-theme="' + $theme.val() + '"]')
+            .addClass('selected');
+    }
+
+    function onThemeCardSelect(event) {
+        $theme.val($(event.currentTarget).data('theme'));
+        markSelectedThemeCard();
+    }
 
     function deserialize(themeSettings) {
         themeSettings.forEach((themeSetting) => {
@@ -105,6 +144,7 @@ App.Pages.ThemeSettings = (function () {
         $backgroundColor.val(suggestion.background);
 
         evaluateColorAccessibility();
+        refreshThemePreviews();
     }
 
     /**
@@ -117,9 +157,25 @@ App.Pages.ThemeSettings = (function () {
 
         $('.apply-suggested-colors').on('click', onApplySuggestedColorsClick);
 
-        $companyColor.add($secondaryColor).add($backgroundColor).on('input change', evaluateColorAccessibility);
+        $companyColor
+            .add($secondaryColor)
+            .add($backgroundColor)
+            .on('input change', () => {
+                evaluateColorAccessibility();
+                refreshThemePreviews();
+            });
+
+        $themeCards.on('click', '.theme-card', onThemeCardSelect);
+        $themeCards.on('keydown', '.theme-card', (event) => {
+            if (event.key === 'Enter' || event.key === ' ') {
+                event.preventDefault();
+                onThemeCardSelect(event);
+            }
+        });
 
         evaluateColorAccessibility();
+        markSelectedThemeCard();
+        refreshThemePreviews();
     }
 
     document.addEventListener('DOMContentLoaded', initialize);

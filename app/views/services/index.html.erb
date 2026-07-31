@@ -22,6 +22,12 @@
                 <%= lang('services') %>
             </h4>
 
+            <div class="d-flex justify-content-between align-items-center mb-2">
+                <small class="text-muted me-2"><%= lang('drag_to_reorder') %></small>
+                <button type="button" class="btn btn-outline-secondary btn-sm sort-alphabetically text-nowrap">
+                    <%= lang('sort_alphabetically') %>
+                </button>
+            </div>
             <div class="results overflow-auto">
                 <!-- JS -->
             </div>
@@ -203,5 +209,5 @@
 </div>
 
 <% content_for :scripts do %>
-    <%= ea_js "utils/picture_upload", "http/services_http_client", "http/service_categories_http_client", "pages/services" %>
+    <%= ea_js "utils/drag_reorder", "utils/picture_upload", "http/services_http_client", "http/service_categories_http_client", "pages/services" %>
 <% end %>

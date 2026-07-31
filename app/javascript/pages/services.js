@@ -30,7 +30,7 @@ App.Pages.Services = (function () {
     const $filterServices = $('#filter-services');
     const $color = $('#color');
     let filterResults = {};
-    const filterLimit = 20;
+    const filterLimit = 10000;
 
     let filterPage = 1;
 
@@ -504,6 +504,7 @@ App.Pages.Services = (function () {
 
         return $('<div/>', {
             'class': 'service-row entry',
+            'draggable': true,
             'data-id': service.id,
             'html': [
                 $('<strong/>', {
@@ -567,7 +568,46 @@ App.Pages.Services = (function () {
         updateAvailableServiceCategories();
     }
 
+
+    /**
+     * Drag-to-reorder: persist the dragged order, blocked while filtering.
+     */
+    function initializeReorder() {
+        App.Utils.DragReorder.enable(
+            $('#filter-services .results'),
+            '.service-row',
+            () => !$('#filter-services .key').val(),
+            (ids) => {
+                $.post(App.Utils.Url.siteUrl('services/reorder'), {csrf_token: vars('csrf_token'), ids: ids});
+            },
+        );
+
+        $('.sort-alphabetically').on('click', () => {
+            const buttons = [
+                {
+                    text: lang('cancel'),
+                    click: (event, messageModal) => {
+                        messageModal.hide();
+                    },
+                },
+                {
+                    text: lang('sort_alphabetically'),
+                    click: (event, messageModal) => {
+                        $.post(App.Utils.Url.siteUrl('services/sort_alphabetically'), {csrf_token: vars('csrf_token')}).done(() => {
+                            $('#filter-services .key').val('');
+                            $('#filter-services .key').parents('form').trigger('submit');
+                        });
+                        messageModal.hide();
+                    },
+                },
+            ];
+
+            App.Utils.Message.show(lang('sort_alphabetically'), lang('sort_alphabetically_confirm'), buttons);
+        });
+    }
+
     document.addEventListener('DOMContentLoaded', initialize);
+    document.addEventListener('DOMContentLoaded', initializeReorder);
 
     return {
         filter,

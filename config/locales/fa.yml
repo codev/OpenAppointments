@@ -29,12 +29,27 @@ fa:
     import_providers_caution: "احتیاط: انتخاب ارائه‌دهندگان حساب‌های کاربری ایجاد می‌کند و ورود با ایمیل آنها را ممکن می‌سازد"
     manage_data: "مدیریت داده‌ها"
     export_data: "خروجی گرفتن از داده‌ها"
+    backups: "پشتیبان‌ها"
+    backups_hint: "پنج پشتیبان اخیر روی سرور نگهداری می‌شوند و فقط مدیران می‌توانند آنها را دانلود کنند. در صورت دانلود آنها را ایمن نگه دارید زیرا حاوی اطلاعات شخصی هستند."
+    backup_working: "در حال ایجاد پشتیبان..."
+    backup_failed: "پشتیبان‌گیری ناموفق بود، گزارش‌های سرور را بررسی کنید."
+    ods_file: "فایل ODS"
+    zip_file: "فایل Zip همراه تصاویر"
+    images_zip_optional: "فایل Zip تصاویر (اختیاری)"
+    images_zip_hint: "برای وارد کردن تصاویر خدمات، دسته‌ها و ارائه‌دهندگان، فایل Zip صادرشده با تصاویر را اضافه کنید، اختیاری."
     import_type: "نوع واردکردن"
     full_reset_label: "بازنشانی کامل، حذف مدیران و بازنشانی تنظیمات"
     delete_personal_information_setting_hint: "به مشتریان اجازه دهید با یک دکمه همه نوبت‌ها و اطلاعات شخصی خود را از سیستم حذف کنند."
     captcha: "Captcha"
     captcha_info: "تنظیمات کپچا برای تأیید انسان بودن بازدیدکننده پیش از رزرو"
-    captcha_enabled_hint: "در صورت فعال بودن، ارائه‌دهنده کپچای انتخاب‌شده به جای کپچای تصویری سنتی برای تأیید فرم‌ها استفاده می‌شود."
+    captcha_enabled_hint: "در صورت فعال بودن، مشتریان باید قبل از تکمیل رزرو یک چالش کپچا را حل کنند؛ اگر رزروهای هرز زیادی دارید این گزینه را فعال کنید"
+    captcha_active_customers: "فعال برای مشتریان"
+    captcha_active_login: "فعال برای ورود"
+    captcha_login_hint: "در صورت فعال بودن، کاربران باید قبل از ورود به بخش مدیریت یک چالش کپچا را حل کنند"
+    altcha_hmac_key_missing: "ALTCHA پیش از فعال شدن کپچا به یک کلید HMAC تولیدشده نیاز دارد"
+    turnstile_keys_missing: "Cloudflare Turnstile پیش از فعال شدن کپچا به کلید سایت و کلید مخفی نیاز دارد"
+    turnstile_test_hint: "برای تأیید کارکرد Turnstile در این سایت این چالش آزمایشی را حل کنید؛ هنگام فعال‌سازی Turnstile یا تغییر کلیدها الزامی است"
+    turnstile_test_failed: "پیش از فعال‌سازی، چالش آزمایشی Turnstile را کامل کنید تا کارکرد آن در این سایت تأیید شود"
     turnstile_keys_hint: "یک جفت کلید (site و secret) از داشبورد Cloudflare دریافت کنید:"
     first_login_update_details: لطفاً رمز عبور جدیدی وارد کنید و اطلاعات خود را به‌روزرسانی کنید
     embedding: جاسازی
@@ -245,6 +260,18 @@ fa:
     booking: رزرو
     visible: قابل رویت
     hidden: پنهان
+    custom_css: "CSS سفارشی"
+    custom_css_hint: "برای تغییر پوسته CSS را اینجا وارد کنید؛ هم روی صفحات رزرو و هم رابط مدیریت اعمال می‌شود."
+    select_category: "انتخاب دسته"
+    uncategorized: "بدون دسته"
+    category_hidden_hint: "دسته‌های پنهان و خدمات آنها در صفحه رزرو نمایش داده نمی‌شوند."
+    drag_to_reorder: "رکوردها را بکشید تا ترتیب نمایش در صفحه رزرو تعیین شود."
+    sort_alphabetically: "مرتب‌سازی الفبایی"
+    sort_alphabetically_confirm: "ترتیب فعلی با مرتب‌سازی الفبایی همه رکوردها جایگزین شود؟"
+    picture_styles: "سبک‌های تصویر"
+    picture_styles_hint: "انتخاب کنید تصاویر هر مجموعه چگونه در مربع 400x400 جا شوند؛ حاشیه سفید کل تصویر را روی پس‌زمینه سفید نگه می‌دارد و بزرگ‌نمایی مربع را با برش پر می‌کند."
+    white_border: "حاشیه سفید"
+    zoomed: "بزرگ‌نمایی"
     business_logic: منطق تجارت
     current_user: کاربر جاری
     about_app: درباره OpenAppointments
@@ -253,7 +280,7 @@ fa:
     book_advance_timeout: آخرین مهلت ثبت قرار
     book_advance_timeout_hint: تعیین کنید که تا چند دقیقه قبل از جلسه، کاربر می تواند قرار ملاقات تنظیم کند
     timeout_minutes: زمان (دقیقه)
-    about_app_info: OpenAppointments یک نرم افزار تحت وب با قابلیت سفارشی سازی بسیار بالاست که به مشتریان شما امکان می دهد از طریق وب قرار ملاقات با شما را رزرو کنند. علاوه بر این ، توانایی همگام سازی داده های شما با Google Calendar را فراهم می کند ، بنابراین می توانید از آنها در سایر سرویس ها استفاده کنید.
+    about_app_info: "OpenAppointments یک نرم افزار تحت وب با قابلیت سفارشی سازی بسیار بالاست که به مشتریان شما امکان می دهد از طریق وب قرار ملاقات با شما را رزرو کنند."
     current_version: نسخه فعلی
     support: پشتیبانی
     about_app_support: اگر هنگام استفاده از OpenAppointments با مشکلی روبرو شدید، می‌توانید در مسائل پروژه در GitHub به دنبال پاسخ بگردید. همچنین می‌توانید برای کمک به پیشرفت توسعه، مسئله جدیدی باز کنید.
@@ -345,8 +372,6 @@ fa:
     oops_something_went_wrong: اوه. مشکلی پیش آمد!
     ea_update_success: OpenAppointments با موفقیت به روز رسانی شد
     require_captcha: کد امنیتی لازم است
-    require_captcha_hint: "بعد از فعال کردن این گزینه، کاربران قبل از ایجاد یا تغییر یک قرار ملاقات، باید یک کد امنیتی شامل حروف تصادفی را تشخیص دهند. - برای انتخاب نوع Captcha پیشرفته‌تر به بخش یکپارچه‌سازی‌ها بروید"
-    captcha_is_wrong: کد امنیتی صحیح نمی باشد. لطفا مجددا سعی کنید
     enter_captcha_here: کد CAPTCHA را اینجا وارد کنید...
     any_provider: هر ارائه‌دهنده‌ای
     requested_hour_is_unavailable: متاسفانه ملاقات در زمان درخواستی امکانپذیر نمی باشد. لطفا ساعتی دیگر برای قرار خود انتخاب کنید
@@ -467,6 +492,13 @@ fa:
     google_analytics_info: گوگل آنالیتیکس به شما امکان می‌دهد تا کد ردیابی و نشانه‌گذاری HTML را به صفحه عمومی اضافه کنید و تمام جلسات رزرو عمومی را ردیابی کنید.
     matomo_analytics: ماتومو آنالیتیکس
     matomo_analytics_info: Matomo Analytics به شما امکان می‌دهد تا کد ردیابی و نشانه‌گذاری HTML را به صفحه عمومی اضافه کنید و تمام جلسات رزرو عمومی را ردیابی کنید.
+    umami_analytics: "Umami Analytics"
+    umami_analytics_info: "Umami Analytics جایگزینی حافظ حریم خصوصی برای Google Analytics است؛ نمونه Umami خود را متصل کنید تا صفحات عمومی رزرو ردیابی شوند."
+    umami_analytics_url: "Umami URL"
+    umami_analytics_url_hint: "برای فعال کردن ردیابی در صفحات رزرو، آدرس نصب Umami خود را اضافه کنید."
+    umami_analytics_website_id: "شناسه وب‌سایت"
+    umami_analytics_recorder: "بازپخش‌ها و نقشه‌های حرارتی"
+    umami_analytics_recorder_hint: "در صورت فعال بودن، اسکریپت ضبط Umami نیز برای ثبت بازپخش جلسات و نقشه‌های حرارتی بارگذاری می‌شود."
     api: API
     api_info: API به شما امکان می‌دهد تا با تمام داده‌های OpenAppointments از طریق پروتکل HTTP و نقاط پایانی API موجود تعامل کنید و ادغام‌های خود را ایجاد کنید.
     google_analytics_code: کد گوگل آنالیتیکس
@@ -548,6 +580,7 @@ fa:
     field_mapping: نقشه‌برداری فیلد
     content: محتوا
     active: فعال
+    not_active: "غیرفعال"
     user_imported: رکورد کاربر با موفقیت وارد شد.
     import: وارد کردن
     ldap_dn: LDAP DN
@@ -574,7 +607,6 @@ fa:
     altcha_expires_hint: 'مدت زمانی که یک چالش به ثانیه معتبر باقی می‌ماند (پیش‌فرض: 300).'
     altcha_key_generated: کلید HMAC جدید با موفقیت ایجاد شد.
     altcha_enabled: فعال‌سازی ALTCHA
-    altcha_captcha_not_active_warning: تنظیم CAPTCHA در حال حاضر فعال نیست. ALTCHA استفاده نخواهد شد مگر اینکه CAPTCHA در تنظیمات فعال شود
     generate: ایجاد
     meeting_link: لینک جلسه
     google_calendar: تقویم گوگل

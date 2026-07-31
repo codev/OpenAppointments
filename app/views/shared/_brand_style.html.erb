@@ -1,10 +1,10 @@
 <%# Brand colour variables consumed by every theme: primary (company_color),
     secondary and background, with derived shades. Color math in CompanyColorHelper. %>
 <%
-  primary = setting("company_color").presence || "#39824f"
+  primary = local_assigns[:primary_override].presence || setting("company_color").presence || "#39824f"
   primary = "#39824f" if primary == CompanyColorHelper::DEFAULT_COMPANY_COLOR
-  secondary = setting("company_secondary_color").presence || "#dd2a5c"
-  background = setting("company_background_color").presence || "#f2f6fa"
+  secondary = local_assigns[:secondary_override].presence || setting("company_secondary_color").presence || "#dd2a5c"
+  background = local_assigns[:background_override].presence || setting("company_background_color").presence || "#f2f6fa"
 
   rgb = hex_to_rgb(primary)
   hover = adjust_brightness(primary, 15)

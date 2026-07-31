@@ -29,12 +29,27 @@ hu:
     import_providers_caution: "Figyelem: a szolgáltatók bejelölése felhasználói fiókokat hoz létre, és lehetővé teszi a bejelentkezést az e-mail-címükkel"
     manage_data: "Adatok kezelése"
     export_data: "Adatok exportálása"
+    backups: "Biztonsagi mentesek"
+    backups_hint: "Az oet legujabb biztonsagi mentes a szerveren marad, es csak adminisztratorok toelthetik le oeket. Letoeltes utan tarolja oket biztonsagosan, mert szemelyes adatokat tartalmaznak."
+    backup_working: "Biztonsagi mentes keszitese..."
+    backup_failed: "A biztonsagi mentes sikertelen volt, ellenorizze a szervernaplokat."
+    ods_file: "ODS fajl"
+    zip_file: "Zip kepekkel"
+    images_zip_optional: "Kepek zip (opcionalis)"
+    images_zip_hint: "Adja hozza az exportalt zipet a kepekkel a szolgaltatas-, kategoria- es szolgaltatokepek importalasahoz, opcionalis."
     import_type: "Importálás típusa"
     full_reset_label: "Teljes visszaállítás, adminisztrátorok törlése és beállítások visszaállítása"
     delete_personal_information_setting_hint: "Engedélyezze az ügyfeleknek, hogy egy gombbal eltávolítsák összes időpontjukat és személyes adataikat a rendszerből."
     captcha: "Captcha"
     captcha_info: "Captcha beállítások annak ellenőrzésére, hogy a látogató ember-e a foglalás előtt"
-    captcha_enabled_hint: "Ha engedélyezve van, az űrlapok ellenőrzéséhez a hagyományos képes captcha helyett a kiválasztott captcha szolgáltató lesz használva."
+    captcha_enabled_hint: "Ha engedélyezve van, az ügyfeleknek egy Captcha feladatot kell megoldaniuk a foglalás befejezése előtt; engedélyezze, ha sok kéretlen foglalást kap"
+    captcha_active_customers: "Aktív az ügyfeleknek"
+    captcha_active_login: "Aktív a bejelentkezéshez"
+    captcha_login_hint: "Ha engedélyezve van, a felhasználóknak egy Captcha feladatot kell megoldaniuk a felügyeleti felületre való bejelentkezés előtt"
+    altcha_hmac_key_missing: "Az ALTCHA-hoz generált HMAC kulcs szükséges a captcha aktiválása előtt"
+    turnstile_keys_missing: "A Cloudflare Turnstile-hoz webhelykulcs és titkos kulcs is szükséges a captcha aktiválása előtt"
+    turnstile_test_hint: "Oldja meg ezt a tesztfeladatot annak megerősítésére, hogy a Turnstile működik ezen az oldalon; a Turnstile aktiválásakor vagy a kulcsok módosításakor kötelező"
+    turnstile_test_failed: "Aktiválás előtt fejezze be a Turnstile tesztfeladatot annak megerősítésére, hogy működik ezen az oldalon"
     turnstile_keys_hint: "Szerezzen egy kulcspárt (site és secret) a Cloudflare vezérlőpultján:"
     first_login_update_details: Adjon meg új jelszót, és frissítse adatait
     embedding: Beágyazás
@@ -245,6 +260,18 @@ hu:
     booking: Foglalás
     visible: Látható
     hidden: Rejtett
+    custom_css: "Egyeni CSS"
+    custom_css_hint: "Irjon ide CSS-t a tema modositasahoz; a foglalasi oldalakra es az adminisztraciora is ervenyes."
+    select_category: "Valasszon kategoriat"
+    uncategorized: "Kategoria nelkul"
+    category_hidden_hint: "A rejtett kategoriak es szolgaltatasaik nem jelennek meg a foglalasi oldalon."
+    drag_to_reorder: "Huzza a rekordokat a foglalasi oldalon megjeleno sorrend beallitasahoz."
+    sort_alphabetically: "Rendezes abece szerint"
+    sort_alphabetically_confirm: "Lecsereli a jelenlegi sorrendet az osszes rekord abece szerinti rendezesevel?"
+    picture_styles: "Kepstilusok"
+    picture_styles_hint: "Valassza ki, hogyan illeszkedjenek az egyes csoportok kepei a 400x400-as negyzetbe; a Feher keret az egesz kepet megtartja feher hatteren, a Nagyitott kivagassal toelti ki a negyzetet."
+    white_border: "Feher keret"
+    zoomed: "Nagyitott"
     business_logic: Üzleti logika
     current_user: Jelenlegi felhasználó
     about_app: OpenAppointments-ról
@@ -253,7 +280,7 @@ hu:
     book_advance_timeout: Időkorlát beállítása
     book_advance_timeout_hint: Add meg azt az időkorlátot (percekben) amennyivel az adott időpont előtt a vendég foglalhat vagy módosíthat egy bejelentkezést.
     timeout_minutes: Időkorlát (Percben)
-    about_app_info: OpenAppointments egy könnyen testreszabható webes alkalmazás mely lehetővé teszi, hogy ügyfelek weben keresztül időpontokat foglalhassanak. Ezen felül lehetővé teszi, hogy szinkronizáljuk a foglalások adatait a Google naptárunkkal, így más szolgáltatásokkal is használható.
+    about_app_info: "OpenAppointments egy könnyen testreszabható webes alkalmazás mely lehetővé teszi, hogy ügyfelek weben keresztül időpontokat foglalhassanak."
     current_version: Jelenlegi verzió
     support: Támogatás
     about_app_support: Ha bármilyen problémába ütközik az OpenAppointments használata során, válaszokért keresgélhet a projekt GitHub issue-i között. Új issue-t is nyithat, hogy segítse a fejlesztést.
@@ -345,8 +372,6 @@ hu:
     oops_something_went_wrong: Hoppá! Valami balul sült el.
     ea_update_success: Foglalj időpontot a ...
     require_captcha: CAPTCHA Kötelező
-    require_captcha_hint: "Ha engedélyezve van, az ügyfeleknek egy véletlenszerűen generált CAPTCHA karakterláncot kell megadniuk, mielőtt foglalnának/módosítanának egy időpontot. - a fejlettebb Captcha típushoz lépjen az Integrációk oldalra"
-    captcha_is_wrong: A CAPTCHA ellenőrzés sikertelen, kérjük próbálja újra.
     enter_captcha_here: Írja be a CAPTCHA-t ide...
     any_provider: Bármely Szolgáltató
     requested_hour_is_unavailable: A kért időpont sajnos nem elérhető. Kérjük válasszon egy másik időpontot.
@@ -467,6 +492,13 @@ hu:
     google_analytics_info: A Google Analytics lehetővé teszi, hogy automatikusan hozzáadja a nyomkövető kódot és a HTML markupot a nyilvános oldalhoz, és nyomon kövesse az összes nyilvános foglalási munkamenetet.
     matomo_analytics: Matomo Analytics
     matomo_analytics_info: A Matomo Analytics lehetővé teszi, hogy automatikusan hozzáadja a nyomkövető kódot és a HTML markupot a nyilvános oldalhoz, és nyomon kövesse az összes nyilvános foglalási munkamenetet.
+    umami_analytics: "Umami Analytics"
+    umami_analytics_info: "Az Umami Analytics a Google Analytics adatvedelembarat alternativaja; kapcsolja oessze sajat Umami peldanyat a nyilvanos foglalasi oldalak koevetesehez."
+    umami_analytics_url: "Umami URL"
+    umami_analytics_url_hint: "Adja meg az Umami telepites URL-jet a koevetes engedelyezesehez a foglalasi oldalakon."
+    umami_analytics_website_id: "Webhely-azonosito"
+    umami_analytics_recorder: "Visszajatszasok es hoterkepekk"
+    umami_analytics_recorder_hint: "Ha engedelyezve van, az Umami recorder szkript is betoeltoedik a munkamenet-visszajatszasokhoz es hoterkepekhez."
     api: API
     api_info: Az API lehetővé teszi, hogy HTTP protokollon keresztül és az elérhető API végpontokon keresztül kapcsolatba lépjen az OpenAppointments összes adatával és saját integrációkat hozzon létre.
     google_analytics_code: Google Analytics Kód
@@ -548,6 +580,7 @@ hu:
     field_mapping: Mezők leképezése
     content: Tartalom
     active: Aktív
+    not_active: "Nem aktív"
     user_imported: A felhasználó rekord sikeresen importálva.
     import: Importálás
     ldap_dn: LDAP DN
@@ -574,7 +607,6 @@ hu:
     altcha_expires_hint: 'Mennyi ideig marad érvényes egy kihívás másodpercben (alapértelmezett: 300).'
     altcha_key_generated: Az új HMAC kulcs sikeresen létrehozva.
     altcha_enabled: ALTCHA engedélyezése
-    altcha_captcha_not_active_warning: A CAPTCHA beállítás jelenleg nem aktív. Az ALTCHA nem kerül használatra, hacsak a CAPTCHA nincs engedélyezve a
     generate: Generálás
     meeting_link: Találkozó linkje
     google_calendar: Google Naptár

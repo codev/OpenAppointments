@@ -20,12 +20,12 @@ App.Http.Recovery = (function () {
      *
      * @param {String} username
      * @param {String} email
-     * @param {String} captcha
      * @param {String} altchaPayload
+     * @param {String} turnstileToken
      *
      * @return {Object}
      */
-    function perform(username, email, captcha, altchaPayload) {
+    function perform(username, email, altchaPayload, turnstileToken) {
         const url = App.Utils.Url.siteUrl('recovery/perform');
 
         const data = {
@@ -34,12 +34,12 @@ App.Http.Recovery = (function () {
             email,
         };
 
-        if (captcha) {
-            data.captcha = captcha;
-        }
-        
         if (altchaPayload) {
             data.altcha_payload = altchaPayload;
+        }
+
+        if (turnstileToken) {
+            data.cf_turnstile_response = turnstileToken;
         }
 
         return $.post(url, data);

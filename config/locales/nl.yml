@@ -29,12 +29,27 @@ nl:
     import_providers_caution: "Let op: het aanvinken van medewerkers maakt gebruikersaccounts aan en staat inloggen met hun e-mail toe"
     manage_data: "Gegevens beheren"
     export_data: "Gegevens exporteren"
+    backups: "Back-ups"
+    backups_hint: "De vijf meest recente back-ups blijven op de server staan en alleen beheerders kunnen ze downloaden. Bewaar ze veilig als u ze downloadt, want ze bevatten persoonsgegevens."
+    backup_working: "Back-up wordt gemaakt..."
+    backup_failed: "De back-up is mislukt, controleer de serverlogs."
+    ods_file: "ODS-bestand"
+    zip_file: "Zip met afbeeldingen"
+    images_zip_optional: "Afbeeldingen-zip (optioneel)"
+    images_zip_hint: "Voeg de geexporteerde zip met afbeeldingen toe om de foto's van diensten, categorieen en aanbieders te importeren, optioneel."
     import_type: "Importtype"
     full_reset_label: "Volledige reset, verwijder beheerders en herstel instellingen"
     delete_personal_information_setting_hint: "Sta klanten toe om met een knop al hun afspraken en persoonlijke gegevens uit het systeem te verwijderen."
     captcha: "Captcha"
     captcha_info: "Captcha-instellingen om te controleren of de bezoeker een mens is voor het boeken"
-    captcha_enabled_hint: "Indien ingeschakeld wordt de geselecteerde captcha-provider gebruikt in plaats van de traditionele afbeeldingscaptcha voor formulierverificatie."
+    captcha_enabled_hint: "Indien ingeschakeld moeten klanten een Captcha-uitdaging oplossen voordat ze de boeking kunnen voltooien; schakel dit in als u veel spamboekingen krijgt"
+    captcha_active_customers: "Actief voor klanten"
+    captcha_active_login: "Actief voor inloggen"
+    captcha_login_hint: "Indien ingeschakeld moeten gebruikers een Captcha-uitdaging oplossen voordat ze kunnen inloggen op het beheer"
+    altcha_hmac_key_missing: "ALTCHA heeft een gegenereerde HMAC-sleutel nodig voordat de captcha kan worden geactiveerd"
+    turnstile_keys_missing: "Cloudflare Turnstile heeft zowel een sitesleutel als een geheime sleutel nodig voordat de captcha kan worden geactiveerd"
+    turnstile_test_hint: "Los deze testuitdaging op om te bevestigen dat Turnstile op deze site werkt; vereist bij het activeren van Turnstile of het wijzigen van de sleutels"
+    turnstile_test_failed: "Voltooi de Turnstile-testuitdaging om te bevestigen dat deze op deze site werkt voordat u activeert"
     turnstile_keys_hint: "Haal een sleutelpaar (site en secret) op in het Cloudflare-dashboard:"
     first_login_update_details: Voer een nieuw wachtwoord in en werk uw gegevens bij
     embedding: Insluiten
@@ -245,6 +260,18 @@ nl:
     booking: Boeking
     visible: Zichtbaar
     hidden: Verborgen
+    custom_css: "Aangepaste CSS"
+    custom_css_hint: "Voer hier CSS in om het thema aan te passen; het geldt voor de boekingspagina's en de beheeromgeving."
+    select_category: "Selecteer categorie"
+    uncategorized: "Zonder categorie"
+    category_hidden_hint: "Verborgen categorieen en hun diensten verschijnen niet op de boekingspagina."
+    drag_to_reorder: "Sleep de records om de volgorde op de boekingspagina in te stellen."
+    sort_alphabetically: "Alfabetisch sorteren"
+    sort_alphabetically_confirm: "De huidige volgorde vervangen door alle records alfabetisch te sorteren?"
+    picture_styles: "Afbeeldingsstijlen"
+    picture_styles_hint: "Kies hoe de afbeeldingen van elke set in het vierkant van 400x400 passen; Witte rand behoudt de hele afbeelding op een witte achtergrond, Ingezoomd vult het vierkant door bij te snijden."
+    white_border: "Witte rand"
+    zoomed: "Ingezoomd"
     business_logic: Bedrijfsinstellingen
     current_user: Huidige gebruiker
     about_app: Over OpenAppointments
@@ -253,7 +280,7 @@ nl:
     book_advance_timeout: Voor-boek-tijd vooruitboeken
     book_advance_timeout_hint: Definieer de tijd (in minuten) voordat klanten afspraken met het bedrijf kunnen boeken of herindelen.
     timeout_minutes: Voor-boek-tijd (minuten)
-    about_app_info: OpenAppointments is een zeer flexibele web applicatie waarmee klanten afspraken met u kunnen boeken via het web. Bovendien biedt het de mogelijkheid om uw gegevens te synchroniseren met Google Agenda, zodat u ze kunt gebruiken met andere diensten.
+    about_app_info: "OpenAppointments is een zeer flexibele web applicatie waarmee klanten afspraken met u kunnen boeken via het web."
     current_version: Huidige versie
     support: Ondersteuning
     about_app_support: Als u problemen ondervindt bij het gebruik van OpenAppointments, kunt u naar antwoorden zoeken in de issues van het project op GitHub. U kunt ook een nieuw issue openen om de ontwikkeling te helpen.
@@ -345,8 +372,6 @@ nl:
     oops_something_went_wrong: Oeps! Er is iets misgegaan.
     ea_update_success: OpenAppointments is succesvol bijgewerkt.
     require_captcha: CAPTCHA vereist.
-    require_captcha_hint: "Indien ingeschakeld moeten de klanten een willekeurige tekenreeks invullen om een afspraak te bevestigen. - ga naar Integraties om een geavanceerder Captcha-type te kiezen"
-    captcha_is_wrong: CAPTCHA verificatie is mislukt, probeer het a.u.b.nogmaals.
     enter_captcha_here: Voer CAPTCHA hier in...
     any_provider: Maakt mij niet uit.
     requested_hour_is_unavailable: De gekozen tijd voor uw afspraak is helaas niet beschikbaar. Kies a.u.b.een ander uur voor uw afspraak.
@@ -467,6 +492,13 @@ nl:
     google_analytics_info: Google Analytics stelt je in staat om automatisch de trackingcode en HTML-markup aan de openbare pagina toe te voegen en alle openbare boekingssessies te volgen.
     matomo_analytics: Matomo Analytics
     matomo_analytics_info: Matomo Analytics stelt je in staat om automatisch de trackingcode en HTML-markup aan de openbare pagina toe te voegen en alle openbare boekingssessies te volgen.
+    umami_analytics: "Umami Analytics"
+    umami_analytics_info: "Umami Analytics is een privacyvriendelijk alternatief voor Google Analytics; koppel uw eigen Umami-instantie om de openbare boekingspagina's te volgen."
+    umami_analytics_url: "Umami URL"
+    umami_analytics_url_hint: "Voeg de URL van uw Umami-installatie toe om tracking op de boekingspagina's in te schakelen."
+    umami_analytics_website_id: "Website-ID"
+    umami_analytics_recorder: "Replays en heatmaps"
+    umami_analytics_recorder_hint: "Indien ingeschakeld wordt ook het Umami-recorderscript geladen om sessiereplays en heatmaps vast te leggen."
     api: API
     api_info: API stelt je in staat om via het HTTP-protocol met alle OpenAppointments-gegevens te communiceren en je eigen integraties te maken met de beschikbare API-eindpunten.
     google_analytics_code: Google Analytics-code
@@ -548,6 +580,7 @@ nl:
     field_mapping: Veldtoewijzing
     content: Inhoud
     active: Actief
+    not_active: "Niet actief"
     user_imported: Het gebruikersrecord is succesvol geïmporteerd.
     import: Importeren
     ldap_dn: LDAP DN
@@ -574,7 +607,6 @@ nl:
     altcha_expires_hint: 'Hoe lang een uitdaging geldig blijft in seconden (standaard: 300).'
     altcha_key_generated: Nieuwe HMAC-sleutel succesvol gegenereerd.
     altcha_enabled: ALTCHA inschakelen
-    altcha_captcha_not_active_warning: De CAPTCHA-instelling is momenteel niet actief. ALTCHA wordt niet gebruikt tenzij CAPTCHA is ingeschakeld in de
     generate: Genereren
     meeting_link: Vergaderlink
     google_calendar: Google Agenda

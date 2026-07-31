@@ -29,12 +29,27 @@ lt:
     import_providers_caution: "Dėmesio: pažymėjus specialistus bus sukurtos naudotojų paskyros ir leista prisijungti jų el. paštu"
     manage_data: "Duomenų valdymas"
     export_data: "Eksportuoti duomenis"
+    backups: "Atsargines kopijos"
+    backups_hint: "Penkios naujausios atsargines kopijos laikomos serveryje ir tik administratoriai gali jas atsisiusti. Atsisiuntus laikykite jas saugiai, nes jose yra asmens duomenu."
+    backup_working: "Kuriama atsargine kopija..."
+    backup_failed: "Atsargine kopija nepavyko, patikrinkite serverio zurnalus."
+    ods_file: "ODS failas"
+    zip_file: "Zip su paveiksleliais"
+    images_zip_optional: "Paveiksleliu zip (nebutina)"
+    images_zip_hint: "Prideket eksportuota zip su paveiksleliais, kad importuotumete paslaugu, kategoriju ir teikeju nuotraukas, nebutina."
     import_type: "Importo tipas"
     full_reset_label: "Visiškas atstatymas, ištrinti administratorius ir atstatyti nustatymus"
     delete_personal_information_setting_hint: "Leisti klientams vienu mygtuku pašalinti visus savo vizitus ir asmeninę informaciją iš sistemos."
     captcha: "Captcha"
     captcha_info: "Captcha nustatymai, patikrinantys, ar lankytojas yra žmogus, prieš rezervaciją"
-    captcha_enabled_hint: "Įjungus, formų patikrai vietoj tradicinės paveikslėlio captcha bus naudojamas pasirinktas captcha teikėjas."
+    captcha_enabled_hint: "Kai įjungta, klientai prieš užbaigdami rezervaciją turės išspręsti Captcha užduotį; įjunkite, jei gaunate daug brukalo rezervacijų"
+    captcha_active_customers: "Aktyvu klientams"
+    captcha_active_login: "Aktyvu prisijungimui"
+    captcha_login_hint: "Kai įjungta, naudotojai prieš prisijungdami prie administravimo turės išspręsti Captcha užduotį"
+    altcha_hmac_key_missing: "Prieš aktyvuojant captcha, ALTCHA reikia sugeneruoto HMAC rakto"
+    turnstile_keys_missing: "Prieš aktyvuojant captcha, Cloudflare Turnstile reikia svetainės rakto ir slapto rakto"
+    turnstile_test_hint: "Išspręskite šią bandomąją užduotį, kad patvirtintumėte, jog Turnstile veikia šioje svetainėje; privaloma aktyvuojant Turnstile ar keičiant raktus"
+    turnstile_test_failed: "Prieš aktyvuodami užbaikite Turnstile bandomąją užduotį, kad patvirtintumėte, jog ji veikia šioje svetainėje"
     turnstile_keys_hint: "Gaukite raktų porą (site ir secret) Cloudflare valdymo skydelyje:"
     first_login_update_details: Įveskite naują slaptažodį ir atnaujinkite savo duomenis
     embedding: Įterpimas
@@ -245,6 +260,18 @@ lt:
     booking: Rezervacija
     visible: Rodomas
     hidden: Nerodomas
+    custom_css: "Pasirinktinis CSS"
+    custom_css_hint: "Iveskite CSS temai keisti; jis taikomas rezervaciju puslapiams ir administravimui."
+    select_category: "Pasirinkite kategorija"
+    uncategorized: "Be kategorijos"
+    category_hidden_hint: "Paslėptos kategorijos ir ju paslaugos rezervaciju puslapyje nerodomos."
+    drag_to_reorder: "Vilkite irasus, kad nustatytumete rezervaciju puslapyje rodoma tvarka."
+    sort_alphabetically: "Rikiuoti abeceles tvarka"
+    sort_alphabetically_confirm: "Pakeisti dabartine tvarka surikiuojant visus irasus abeceles tvarka?"
+    picture_styles: "Paveiksleliu stiliai"
+    picture_styles_hint: "Pasirinkite, kaip kiekvienos grupes paveiksleliai talpinami 400x400 kvadrate; Baltas remelis islaiko visa vaizda baltame fone, Priartinta uzpildo kvadrata apkerpant."
+    white_border: "Baltas remelis"
+    zoomed: "Priartinta"
     business_logic: Verslo logika
     current_user: Esamasis naudotojas
     about_app: Apie „OpenAppointments“
@@ -253,7 +280,7 @@ lt:
     book_advance_timeout: Minimalus laukimo laikas
     book_advance_timeout_hint: Nurodykite, kiek mažiausiai minučių turi praeiti nuo vizito registracijos ar perkėlimo momento iki jo numatomos pradžios, kai vizitui registruojasi ar jį perkelti nori klientas.
     timeout_minutes: Minimalus laukimo laikas (minutėmis)
-    about_app_info: "„OpenAppointments“ – tai labai lengvai pritaikoma saityno programa, suteikianti galimybę jūsų klientams internetu registruotis vizitams pas jus. Be to, ji geba sinchronizuoti duomenis su „Google“ kalendoriumi, todėl galite ją naudoti su kitomis paslaugomis."
+    about_app_info: "„OpenAppointments“ – tai labai lengvai pritaikoma saityno programa, suteikianti galimybę jūsų klientams internetu registruotis vizitams pas jus."
     current_version: Naudojama versija
     support: Pagalba
     about_app_support: Jei naudodamiesi OpenAppointments susidursite su problemomis, atsakymų galite ieškoti projekto GitHub problemų sąraše. Taip pat galite sukurti naują problemą, kad padėtumėte tobulinti sistemą.
@@ -345,8 +372,6 @@ lt:
     oops_something_went_wrong: Oi! Kažkas nepavyko.
     ea_update_success: "„OpenAppointments“ sėkmingai atnaujinta."
     require_captcha: Reikalauti „CAPTCHA“ saugos kodo
-    require_captcha_hint: "Kai ši parinktis įjungta, prieš užsakydami/atnaujindami vizitą klientai turės įvesti atsitiktinai sugeneruotą saugos kodą. - eikite į Integracijas ir pasirinkite pažangesnį Captcha tipą"
-    captcha_is_wrong: Saugos kodo patikra nepavyko, bandykite dar kartą.
     enter_captcha_here: Įveskite CAPTCHA čia...
     any_provider: Bet kuris teikėjas
     requested_hour_is_unavailable: Deja, norimas vizito laikas neleistinas. Pasirinkite kitą vizito laiką.
@@ -467,6 +492,13 @@ lt:
     google_analytics_info: "„Google Analytics“ suteikia galimybę automatiškai pridėti stebėjimo kodą ir reikiamą HTML kodą į viešąjį tinklalapį ir sekti visas viešąsias registravimosi vizitams sesijas."
     matomo_analytics: Matomo Analytics
     matomo_analytics_info: "„Matomo Analytics“ suteikia galimybę automatiškai pridėti stebėjimo kodą ir reikiamą HTML kodą į viešąjį tinklalapį ir sekti visas viešąsias registravimosi vizitams sesijas."
+    umami_analytics: "Umami Analytics"
+    umami_analytics_info: "Umami Analytics yra privatumui palanki Google Analytics alternatyva; prijunkite savo Umami diegini viesu rezervaciju puslapiu stebejimui."
+    umami_analytics_url: "Umami URL"
+    umami_analytics_url_hint: "Prideket savo Umami diegimo URL, kad ijungtumete stebejima rezervaciju puslapiuose."
+    umami_analytics_website_id: "Svetaines ID"
+    umami_analytics_recorder: "Irasai ir silumos zemelapiai"
+    umami_analytics_recorder_hint: "Kai ijungta, taip pat ikeliamas Umami irasymo skriptas sesiju irasams ir silumos zemelapiams."
     api: API
     api_info: API suteikia galimybę operuoti visais „OpenAppointments“ duomenimis HTTP protokolu per leidžiamus API galinius taškus bei kurti savo integracijas.
     google_analytics_code: "„Google Analytics“ kodas"
@@ -548,6 +580,7 @@ lt:
     field_mapping: Laukų atitiktys (atvaizdis)
     content: Turinys
     active: Aktyvus
+    not_active: "Neaktyvu"
     user_imported: Naudotojo įrašas importuotas.
     import: Importuoti
     ldap_dn: LDAP DN
@@ -574,7 +607,6 @@ lt:
     altcha_expires_hint: 'Kiek laiko iššūkis galioja sekundėmis (numatytoji: 300).'
     altcha_key_generated: Naujas HMAC raktas sėkmingai sugeneruotas.
     altcha_enabled: Įjungti ALTCHA
-    altcha_captcha_not_active_warning: CAPTCHA nustatymas šiuo metu neaktyvus. ALTCHA nebus naudojama, nebent CAPTCHA bus įjungta
     generate: Generuoti
     meeting_link: Susitikimo nuoroda
     google_calendar: Google kalendorius
