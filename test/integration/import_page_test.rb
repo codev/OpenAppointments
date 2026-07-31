@@ -242,6 +242,8 @@ class ImportPageTest < ActionDispatch::IntegrationTest
     get "/import"
     assert_select "#phase-settings"
     assert_select "#phase-settings[checked]", count: 0
+    assert_select "#phase-assistants[checked]", count: 0
+    assert_select "#phase-admins[checked]", count: 0
     assert_select "#phase-customers[checked]"
   end
 
@@ -365,7 +367,7 @@ class ImportPageTest < ActionDispatch::IntegrationTest
 
     post "/import/start", params: {
       file: Rack::Test::UploadedFile.new(ods_path, Ods::MIMETYPE), import_type: "ods",
-      phases: [ "providers" ], days_back: 21, days_forward: 21
+      phases: %w[providers assistants admins], days_back: 21, days_forward: 21
     }
     perform_enqueued_jobs
 
@@ -382,7 +384,7 @@ class ImportPageTest < ActionDispatch::IntegrationTest
 
     post "/import/start", params: {
       file: Rack::Test::UploadedFile.new(ods_path, Ods::MIMETYPE), import_type: "ods",
-      phases: [ "providers" ], create_providers: "1", days_back: 21, days_forward: 21
+      phases: %w[providers assistants admins], create_providers: "1", days_back: 21, days_forward: 21
     }
     perform_enqueued_jobs
 

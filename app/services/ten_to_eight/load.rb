@@ -4,7 +4,7 @@ module TenToEight
   # name+phone) so re-runs do not duplicate. Pronoun lands in custom_field_1, access
   # needs in custom_field_2, and a do-not-contact prefix on the notes (GDPR consent).
   class Load
-    PHASES = %w[categories services providers customers appointments settings].freeze
+    PHASES = %w[categories services providers assistants admins customers appointments settings].freeze
     DO_NOT_CONTACT_PREFIX = "[DO NOT CONTACT - consent not granted]".freeze
 
     def initialize(data, phases:, create_providers: false, progress: nil, images_dir: nil)
@@ -20,11 +20,9 @@ module TenToEight
     def call
       load_categories if phase?("categories")
       load_services if phase?("services")
-      if phase?("providers")
-        load_providers
-        load_assistants
-        load_admins
-      end
+      load_providers if phase?("providers")
+      load_assistants if phase?("assistants")
+      load_admins if phase?("admins")
       load_customers if phase?("customers")
       load_appointments if phase?("appointments")
       load_settings if phase?("settings")
@@ -191,8 +189,8 @@ module TenToEight
       user.settings.update(password: password_hash) if password_hash.present? && user.settings
     end
 
-    # Assistants and admins ride on the providers phase; only OpenAppointments
-    # ODS backups carry them (10to8 exports have no such sheets).
+    # Only OpenAppointments ODS backups carry assistants and admins (10to8
+    # exports have no such sheets).
     def load_assistants
       return if Array(@data[:assistants]).empty?
 
