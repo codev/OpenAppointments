@@ -189,6 +189,14 @@ App.Pages.Booking = (function () {
 
         optimizeContactInfoDisplay();
 
+        // Browsers restore form values on a soft refresh, which would leave a
+        // service or provider silently selected behind the fresh category view.
+        // Deliberate prefills (manage mode, booking links) run below and win.
+        if (!manageMode) {
+            $selectService.val('');
+            $selectProvider.val('');
+        }
+
         const serviceOptionCount = $selectService.find('option').length;
 
         if (serviceOptionCount === 2) {
