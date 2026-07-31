@@ -657,13 +657,6 @@ body .modal.full-screen .modal-push {
     font-size: 12px;
 }
 
-/* The tagline collides with the nav on mid-width screens. */
-@media (max-width: 1199.98px) {
-    #header-logo small {
-        display: none !important;
-    }
-}
-
 #header .navbar-nav .nav-item {
     min-width: 90px;
 }
@@ -677,14 +670,7 @@ body .modal.full-screen .modal-push {
     z-index: 1030;
 }
 
-/* Logged in user, top right corner over the settings item's top padding. */
-#header-user {
-    position: absolute;
-    top: 3px;
-    right: 10px;
-    font-size: 12px;
-    z-index: 1;
-}
+
 
 .filter-records .results {
     max-height: 650px;

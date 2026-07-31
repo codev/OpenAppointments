@@ -3,16 +3,12 @@
     <div id="header-logo" class="navbar-brand p-1 lh-1">
         <img src="<%= image_path("logo.png") %>" alt="" class="float-start me-2">
         <h6 class="mb-1 mt-1 fw-bold text-white">OpenAppointments</h6>
-        <small class="d-block text-white-50">Online Appointment Scheduler</small>
+        <small id="header-user" class="d-block text-white-50 fw-normal"><%= vars(:user_display_name) %></small>
     </div>
 
     <button type="button" class="navbar-toggler me-1" data-bs-toggle="collapse" data-bs-target="#header-menu">
         <span class="navbar-toggler-icon"></span>
     </button>
-
-    <div id="header-user" class="d-none d-md-block text-white">
-        <small class="fw-normal"><%= vars(:user_display_name) %></small>
-    </div>
 
     <div id="header-menu" class="collapse navbar-collapse flex-row-reverse ps-2 pe-0">
         <ul class="navbar-nav">
