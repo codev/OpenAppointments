@@ -42,7 +42,7 @@ class TenToEightImportJob < ApplicationJob
     ).call
 
     write_status(import_id, state: "completed", counts: result[:counts], errors: result[:errors])
-  rescue StandardError => e
+  rescue StandardError, ScriptError => e
     write_status(import_id, state: "failed", error: e.message)
     raise
   ensure

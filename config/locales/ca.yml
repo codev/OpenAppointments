@@ -265,6 +265,10 @@ ca:
     select_category: "Seleccioneu una categoria"
     uncategorized: "Sense categoria"
     category_hidden_hint: "Les categories ocultes i els seus serveis no es mostren a la pàgina de reserves."
+    picture_styles: "Estils d'imatge"
+    picture_styles_hint: "Trieu com s'ajusten les imatges de cada conjunt al quadrat de 400x400; Vora blanca conserva tota la imatge sobre fons blanc, Ampliada omple el quadrat retallant."
+    white_border: "Vora blanca"
+    zoomed: "Ampliada"
     business_logic: Lògica de negoci
     current_user: Usuari actual
     about_app: Quant a OpenAppointments

@@ -12,6 +12,8 @@ module PictureUpload
 
     if ActiveModel::Type::Boolean.new.cast(params[:remove])
       record.picture.purge
+      record.picture_padded.purge
+      record.picture_zoomed.purge
       return render json: { success: true, picture_url: nil }
     end
 
@@ -20,7 +22,8 @@ module PictureUpload
     raise ArgumentError, "Unsupported picture type." unless ALLOWED_PICTURE_TYPES.include?(file.content_type)
     raise ArgumentError, "The picture is too large (5 MB maximum)." if file.size > MAX_PICTURE_SIZE
 
-    record.picture.attach(file)
+    PictureVariants.attach(record, file.tempfile.path, filename: file.original_filename,
+                                                       content_type: file.content_type)
     render json: { success: true, picture_url: EaRows.picture_url(record) }
   rescue ArgumentError, ActiveRecord::RecordNotFound => e
     json_exception(e)

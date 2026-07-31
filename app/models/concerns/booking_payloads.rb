@@ -9,6 +9,7 @@ module BookingPayloads
     Service.available.joins(:provider_links).distinct
            .with_attached_picture
            .left_joins(:category)
+           .where(service_categories: { is_hidden: [ nil, false ] })
            .order(:name)
            .select("services.*", "service_categories.name AS service_category_name",
                    "service_categories.id AS service_category_id")
@@ -33,7 +34,8 @@ module BookingPayloads
   # Categories of the available services (cards display mode), EA order.
   def available_categories
     category_ids = Service.available.joins(:provider_links).distinct.pluck(:id_service_categories).compact
-    ServiceCategory.where(id: category_ids).with_attached_picture.order(:name).map do |category|
+    ServiceCategory.where(id: category_ids, is_hidden: false)
+                   .with_attached_picture.order(:name).map do |category|
       { "id" => category.id, "name" => category.name, "description" => category.description,
         "picture_url" => EaRows.picture_url(category) }
     end

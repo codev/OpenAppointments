@@ -265,6 +265,10 @@ fi:
     select_category: "Valitse kategoria"
     uncategorized: "Ei kategoriaa"
     category_hidden_hint: "Piilotetut kategoriat ja niiden palvelut eivaet naey varaussivulla."
+    picture_styles: "Kuvatyylit"
+    picture_styles_hint: "Valitse miten kunkin ryhmaen kuvat sovitetaan 400x400-nelioeoen; Valkoinen reunus saeilyttaeae koko kuvan valkoisella taustalla, Zoomattu taeyttaeae nelioen rajaamalla."
+    white_border: "Valkoinen reunus"
+    zoomed: "Zoomattu"
     business_logic: Työajat
     current_user: Nykyinen käyttäjä
     about_app: Tietoja OpenAppointments:sta

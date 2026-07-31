@@ -45,7 +45,7 @@ class OdsExtract
   def categories_rows
     rows("Service Categories").map do |row|
       { name: row["name"], description: row["description"].presence,
-        picture: row["picture"].presence }
+        picture: row["picture"].presence, is_hidden: row["is_hidden"] == "1" }
     end
   end
 

@@ -265,6 +265,10 @@ en:
     select_category: "Select Category"
     uncategorized: "Uncategorized"
     category_hidden_hint: "Hidden categories and their services are not shown on the booking page."
+    picture_styles: "Picture styles"
+    picture_styles_hint: "Choose how the pictures of each set are fitted to the 400x400 square, White Border keeps the whole image on a white background, Zoomed fills the square by cropping."
+    white_border: "White Border"
+    zoomed: "Zoomed"
     business_logic: Business Logic
     current_user: Current User
     about_app: About OpenAppointments

@@ -72,7 +72,8 @@ module TenToEight
       path = File.join(@images_dir, File.basename(filename.to_s))
       return unless File.exist?(path)
 
-      record.picture.attach(io: File.open(path), filename: File.basename(path))
+      PictureVariants.attach(record, path, filename: File.basename(path),
+                                           content_type: Marcel::MimeType.for(Pathname.new(path)))
     end
 
     def load_categories
@@ -90,9 +91,12 @@ module TenToEight
           if category.description.blank? && extra[:description].present?
             category.update(description: extra[:description])
           end
+          category.update(is_hidden: extra[:is_hidden]) if extra.key?(:is_hidden) &&
+                                                           category.is_hidden != extra[:is_hidden]
         else
           category = guard("categories", counts, name) do
-            ServiceCategory.create!(name: name, description: extra[:description])
+            ServiceCategory.create!(name: name, description: extra[:description],
+                                    is_hidden: extra[:is_hidden] || false)
           end
           next unless category
 

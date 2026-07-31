@@ -5,7 +5,7 @@ class ServiceCategoriesController < ApplicationController
 
   layout "backend"
 
-  ALLOWED_FIELDS = %w[id name description].freeze
+  ALLOWED_FIELDS = %w[id name description is_hidden].freeze
 
   before_action :require_session, except: [ :index ]
 

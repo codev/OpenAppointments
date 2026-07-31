@@ -265,6 +265,10 @@ ar:
     select_category: "اختر الفئة"
     uncategorized: "بدون فئة"
     category_hidden_hint: "الفئات المخفية وخدماتها لا تظهر في صفحة الحجز."
+    picture_styles: "أنماط الصور"
+    picture_styles_hint: "اختر كيفية ملاءمة صور كل مجموعة داخل مربع 400x400؛ الإطار الأبيض يحافظ على الصورة كاملة على خلفية بيضاء، والتكبير يملأ المربع بالقص."
+    white_border: "إطار أبيض"
+    zoomed: "مكبر"
     business_logic: منطق الأعمال
     current_user: المستخدم الحالي
     about_app: About E!A

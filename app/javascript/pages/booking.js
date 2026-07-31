@@ -449,7 +449,7 @@ App.Pages.Booking = (function () {
                 $card.addClass('selected');
             }
 
-            $providerCards.append($('<div/>', {'class': 'col-6 col-md-4'}).append($card));
+            $providerCards.append($('<div/>', {'class': 'col-6 col-md-3'}).append($card));
         });
     }
 
@@ -551,7 +551,7 @@ App.Pages.Booking = (function () {
          * In provider-first mode the service list is narrowed down to the provider's
          * services; the confirmation details are refreshed either way.
          */
-        $selectProvider.on('change', () => {
+        $selectProvider.on('change', (event) => {
             if (firstStep === 'provider') {
                 filterServicesByProvider();
             }
@@ -566,6 +566,10 @@ App.Pages.Booking = (function () {
             App.Pages.Booking.updateConfirmFrame();
 
             App.Pages.Booking.updateProviderDescription($selectProvider.val());
+
+            if (event.originalEvent) {
+                scrollToDescription($('#provider-description'));
+            }
         });
 
         /**
@@ -574,7 +578,7 @@ App.Pages.Booking = (function () {
          * When the user picks a service, the provider list is rebuilt with the
          * providers that can serve it (all providers while no service is chosen).
          */
-        $selectService.on('change', () => {
+        $selectService.on('change', (event) => {
             const serviceId = $selectService.val();
 
             populateProviders(serviceId);
@@ -582,6 +586,10 @@ App.Pages.Booking = (function () {
             App.Pages.Booking.updateConfirmFrame();
 
             App.Pages.Booking.updateServiceDescription(serviceId);
+
+            if (event.originalEvent) {
+                scrollToDescription($('#service-description'));
+            }
         });
 
         /**
@@ -597,8 +605,16 @@ App.Pages.Booking = (function () {
                 const $card = $(event.currentTarget);
                 $('#category-cards .booking-card').removeClass('selected');
                 $card.addClass('selected');
-                $('.service-cards').addClass('d-none');
+                // Categorised lists swap; uncategorised services stay visible.
+                $('.service-cards[data-category-id!=""]').addClass('d-none');
                 $('.service-cards[data-category-id="' + ($card.attr('data-category-id') || '') + '"]').removeClass('d-none');
+
+                const $heading = $('#select-service-heading');
+
+                if ($heading.length) {
+                    $heading.removeClass('d-none');
+                    $('html, body').animate({scrollTop: $heading.offset().top - 20}, 400);
+                }
             });
 
             $(document).on('click keypress', '.service-cards .booking-card', (event) => {
@@ -610,6 +626,7 @@ App.Pages.Booking = (function () {
                 $('.service-cards .booking-card').removeClass('selected');
                 $card.addClass('selected');
                 $selectService.val($card.attr('data-service-id')).trigger('change');
+                scrollToDescription($('#service-description'));
             });
 
             $(document).on('click keypress', '#provider-cards .booking-card', (event) => {
@@ -621,6 +638,7 @@ App.Pages.Booking = (function () {
                 $('#provider-cards .booking-card').removeClass('selected');
                 $card.addClass('selected');
                 $selectProvider.val($card.attr('data-provider-id')).trigger('change');
+                scrollToDescription($('#provider-description'));
             });
         }
 
@@ -1190,16 +1208,6 @@ App.Pages.Booking = (function () {
             return; // Service not found
         }
 
-        // Render the service picture (constrained by the selection-details styles).
-
-        if (service.picture_url) {
-            $('<img/>', {
-                'src': service.picture_url,
-                'alt': service.name,
-                'class': 'selection-picture d-block rounded mb-2',
-            }).appendTo($serviceDescription);
-        }
-
         // Render the additional service information
 
         const additionalInfoParts = [];
@@ -1258,14 +1266,6 @@ App.Pages.Booking = (function () {
             return; // "Any provider" or nothing selected.
         }
 
-        if (provider.picture_url) {
-            $('<img/>', {
-                'src': provider.picture_url,
-                'alt': provider.name,
-                'class': 'selection-picture d-block rounded mb-2',
-            }).appendTo($providerDescription);
-        }
-
         [provider.about, provider.services_description].forEach((text) => {
             if (!text?.length) {
                 return;
@@ -1279,6 +1279,17 @@ App.Pages.Booking = (function () {
                 </div>
             `).appendTo($providerDescription);
         });
+    }
+
+    /**
+     * Animate down to a freshly filled description box (no-op while empty).
+     */
+    function scrollToDescription($element) {
+        if (!$element.length || !$element.children().length) {
+            return;
+        }
+
+        $('html, body').animate({scrollTop: $element.offset().top - 20}, 400);
     }
 
     /**

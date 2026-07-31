@@ -265,6 +265,10 @@ pl:
     select_category: "Wybierz kategorie"
     uncategorized: "Bez kategorii"
     category_hidden_hint: "Ukryte kategorie i ich uslugi nie sa widoczne na stronie rezerwacji."
+    picture_styles: "Style obrazow"
+    picture_styles_hint: "Wybierz, jak obrazy kazdego zestawu maja byc dopasowane do kwadratu 400x400; Biala ramka zachowuje caly obraz na bialym tle, Powiekszone wypelnia kwadrat przez przyciecie."
+    white_border: "Biala ramka"
+    zoomed: "Powiekszone"
     business_logic: Podział Firmy
     current_user: Bieżący Użytkownik
     about_app: O OpenAppointments

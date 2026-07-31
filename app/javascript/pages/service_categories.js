@@ -20,6 +20,7 @@ App.Pages.ServiceCategories = (function () {
     const $id = $('#id');
     const $name = $('#name');
     const $description = $('#description');
+    const $hidden = $('#category-hidden');
     let filterResults = {};
     const filterLimit = 20;
 
@@ -138,6 +139,7 @@ App.Pages.ServiceCategories = (function () {
             const serviceCategory = {
                 name: $name.val(),
                 description: $description.val(),
+                is_hidden: $hidden.prop('checked') ? 1 : 0,
             };
 
             if ($id.val() !== '') {
@@ -248,6 +250,7 @@ App.Pages.ServiceCategories = (function () {
         $id.val(serviceCategory.id);
         $name.val(serviceCategory.name);
         $description.val(serviceCategory.description);
+        $hidden.prop('checked', Boolean(Number(serviceCategory.is_hidden)));
     }
 
     /**
@@ -292,6 +295,7 @@ App.Pages.ServiceCategories = (function () {
         $serviceCategories.find('.add-edit-delete-group').show();
         $serviceCategories.find('.save-cancel-group').hide();
         $serviceCategories.find('.record-details').find('input, select, textarea').val('').prop('disabled', true);
+        $hidden.prop('checked', false);
         $serviceCategories.find('.record-details .form-label span').prop('hidden', true);
         $('#edit-service-category, #delete-service-category').prop('disabled', true);
 

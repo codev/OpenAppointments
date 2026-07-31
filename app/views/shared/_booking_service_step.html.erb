@@ -3,11 +3,18 @@
 <div id="wizard-frame-<%= frame_index %>" class="wizard-frame p-3 p-md-4"
      style="<%= frame_index == 1 ? 'visibility: hidden;' : 'display:none;' %>">
     <div class="frame-container py-3">
-        <h2 class="frame-title fw-light text-center mb-4 text-muted mt-md-5"><%= lang('select_service') %></h2>
+        <%
+          cards_mode = vars(:display_mode) == "cards"
+          categories = cards_mode ? vars(:available_categories) : []
+          uncategorized = cards_mode ? available_services.select { |service| service["service_category_id"].nil? } : []
+          category_first = cards_mode && categories.any?
+        %>
+        <h2 class="frame-title fw-light text-center mb-4 text-muted mt-md-5">
+            <%= lang(category_first ? 'select_category' : 'select_service') %>
+        </h2>
 
-        <% cards_mode = vars(:display_mode) == "cards" %>
         <div class="row frame-content">
-            <div class="col col-lg-8 offset-md-2">
+            <div class="col col-lg-12">
                 <div class="mb-3">
                     <label for="select-service" class="fs-5 mb-2 <%= 'd-none' if cards_mode %>">
                         <strong><%= lang('service') %></strong>
@@ -26,7 +33,7 @@
                             <% grouped_services["uncategorized"] = available_services.select { |service| service["service_category_id"].nil? } %>
                             <% grouped_services.each do |key, group| %>
                                 <% next unless group.any? %>
-                                <% group_label = key != "uncategorized" ? group.first["service_category_name"] : "Uncategorized" %>
+                                <% group_label = key != "uncategorized" ? group.first["service_category_name"] : lang('uncategorized') %>
                                 <optgroup label="<%= group_label %>">
                                     <% group.each do |service| %>
                                         <option value="<%= service["id"] %>"><%= service["name"] %></option>
@@ -42,15 +49,11 @@
                 </div>
 
                 <% if cards_mode %>
-                    <%
-                      categories = vars(:available_categories)
-                      uncategorized = available_services.select { |service| service["service_category_id"].nil? }
-                      service_groups = available_services.group_by { |service| service["service_category_id"] }
-                    %>
-                    <% if categories.any? %>
+                    <% service_groups = available_services.group_by { |service| service["service_category_id"] } %>
+                    <% if category_first %>
                         <div id="category-cards" class="booking-cards row g-3 mb-4">
                             <% categories.each do |category| %>
-                                <div class="col-6 col-md-4">
+                                <div class="col-6 col-md-3">
                                     <div class="booking-card card h-100 text-center" role="button" tabindex="0"
                                          data-category-id="<%= category["id"] %>">
                                         <% if category["picture_url"].present? %>
@@ -62,23 +65,20 @@
                                     </div>
                                 </div>
                             <% end %>
-                            <% if uncategorized.any? %>
-                                <div class="col-6 col-md-4">
-                                    <div class="booking-card card h-100 text-center" role="button" tabindex="0"
-                                         data-category-id="">
-                                        <div class="card-body p-2">
-                                            <h5 class="card-title fs-6 mb-0">Uncategorized</h5>
-                                        </div>
-                                    </div>
-                                </div>
-                            <% end %>
                         </div>
+
+                        <%# Shown once a category is picked; visible from the start when
+                            uncategorized services exist (they are always listed). %>
+                        <h2 id="select-service-heading"
+                            class="frame-title fw-light text-center mb-4 text-muted <%= 'd-none' if uncategorized.empty? %>">
+                            <%= lang('select_service') %>
+                        </h2>
                     <% end %>
                     <% service_groups.each do |category_id, services| %>
-                        <div class="service-cards booking-cards row g-3 mb-4 <%= 'd-none' if categories.any? %>"
+                        <div class="service-cards booking-cards row g-3 mb-4 <%= 'd-none' if category_first && category_id.present? %>"
                              data-category-id="<%= category_id %>">
                             <% services.each do |service| %>
-                                <div class="col-6 col-md-4">
+                                <div class="col-6 col-md-3">
                                     <div class="booking-card card h-100 text-center" role="button" tabindex="0"
                                          data-service-id="<%= service["id"] %>">
                                         <% if service["picture_url"].present? %>
@@ -104,21 +104,20 @@
                     <!-- JS -->
                 </div>
 
-                <% if swap_link %>
-                    <div class="text-center mt-4">
-                        <a class="swap-first-step small"
-                           href="<%= url_for(request.query_parameters.merge("first" => "provider")) %>">
-                            <%= lang('select_provider_first') %>
-                        </a>
-                    </div>
-                <% end %>
             </div>
         </div>
     </div>
 
     <div class="command-buttons text-center my-3 mx-auto d-md-flex justify-content-md-between">
         <% if frame_index == 1 %>
-            <span>&nbsp;</span>
+            <% if swap_link %>
+                <a class="swap-first-step btn btn-outline-secondary"
+                   href="<%= url_for(request.query_parameters.merge("first" => "provider")) %>">
+                    <%= lang('select_provider_first') %>
+                </a>
+            <% else %>
+                <span>&nbsp;</span>
+            <% end %>
         <% else %>
             <button type="button" id="button-back-2" class="btn button-back btn-outline-secondary"
                     data-step_index="2">

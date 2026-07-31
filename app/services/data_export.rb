@@ -25,9 +25,9 @@ module DataExport
 
   def categories_sheet
     rows = ServiceCategory.with_attached_picture.order(:name).map do |category|
-      [ category.name, category.description, picture_name(category) ]
+      [ category.name, category.description, picture_name(category), category.is_hidden ? "1" : "0" ]
     end
-    [ %w[name description picture] ] + rows
+    [ %w[name description picture is_hidden] ] + rows
   end
 
   def services_sheet

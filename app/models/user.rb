@@ -1,6 +1,8 @@
 class User < ApplicationRecord
   belongs_to :role, foreign_key: :id_roles
   has_one_attached :picture
+  has_one_attached :picture_padded
+  has_one_attached :picture_zoomed
   has_one :settings, class_name: "UserSetting", foreign_key: :id_users,
                      inverse_of: :user, dependent: :destroy, autosave: true
 

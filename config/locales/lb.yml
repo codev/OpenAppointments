@@ -265,6 +265,10 @@ lb:
     select_category: "Kategorie wielen"
     uncategorized: "Ouni Kategorie"
     category_hidden_hint: "Verstoppte Kategorien an hir Servicer ginn net op der Reservatiounssait ugewisen."
+    picture_styles: "Billerstiler"
+    picture_styles_hint: "Wielt wéi d'Biller vun all Grupp an de 400x400-Quadrat agepasst ginn; Wäisse Rand hält dat ganzt Bild op wäissem Hannergrond, Gezoomt fëllt de Quadrat duerch Zouschneiden."
+    white_border: "Wäisse Rand"
+    zoomed: "Gezoomt"
     business_logic: Business Logik
     current_user: Ugemellte Benotzer
     about_app: Iwwert OpenAppointments

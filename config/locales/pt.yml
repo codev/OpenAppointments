@@ -265,6 +265,10 @@ pt:
     select_category: "Selecione a categoria"
     uncategorized: "Sem categoria"
     category_hidden_hint: "As categorias ocultas e os seus serviços não aparecem na página de marcações."
+    picture_styles: "Estilos de imagem"
+    picture_styles_hint: "Escolha como as imagens de cada conjunto se ajustam ao quadrado de 400x400; Margem branca mantém a imagem inteira sobre fundo branco, Ampliada preenche o quadrado recortando."
+    white_border: "Margem branca"
+    zoomed: "Ampliada"
     business_logic: Lógica de negócio
     current_user: Utilizador Actual
     about_app: Sobre o OpenAppointments

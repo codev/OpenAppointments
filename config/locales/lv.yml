@@ -265,6 +265,10 @@ lv:
     select_category: "Izvelieties kategoriju"
     uncategorized: "Bez kategorijas"
     category_hidden_hint: "Sleptas kategorijas un to pakalpojumi rezervaciju lapa netiek raditi."
+    picture_styles: "Attelu stili"
+    picture_styles_hint: "Izvelieties, ka katras kopas atteli tiek ietilpinati 400x400 kvadrata; Balta mala satur visu attelu uz balta fona, Tuvinats aizpilda kvadratu apgriezot."
+    white_border: "Balta mala"
+    zoomed: "Tuvinats"
     business_logic: Biznesa loģika
     current_user: Pašreizējais lietotājs
     about_app: Par OpenAppointments

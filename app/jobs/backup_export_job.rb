@@ -22,7 +22,7 @@ class BackupExportJob < ApplicationJob
     self.class.write_status(export_id, state: "running")
     files = BackupExport.run
     self.class.write_status(export_id, state: "completed", files: files)
-  rescue StandardError => e
+  rescue StandardError, ScriptError => e
     Rails.logger.error("Backup export failed: #{e.message}")
     self.class.write_status(export_id, state: "failed", error: e.message)
   end

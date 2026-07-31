@@ -265,6 +265,10 @@ sv:
     select_category: "Vaelj kategori"
     uncategorized: "Utan kategori"
     category_hidden_hint: "Dolda kategorier och deras tjaenster visas inte paa bokningssidan."
+    picture_styles: "Bildstilar"
+    picture_styles_hint: "Valj hur bilderna i varje uppsattning passas in i 400x400-kvadraten; Vit kant behaller hela bilden pa vit bakgrund, Zoomad fyller kvadraten genom beskarning."
+    white_border: "Vit kant"
+    zoomed: "Zoomad"
     business_logic: Bokningsregler
     current_user: Nuvarande användare
     about_app: Om OpenAppointments

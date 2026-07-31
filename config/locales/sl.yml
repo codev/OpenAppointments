@@ -265,6 +265,10 @@ sl:
     select_category: "Izberite kategorijo"
     uncategorized: "Brez kategorije"
     category_hidden_hint: "Skrite kategorije in njihove storitve niso prikazane na strani za rezervacije."
+    picture_styles: "Slogi slik"
+    picture_styles_hint: "Izberite, kako se slike vsake skupine prilegajo kvadratu 400x400; Beli rob ohrani celotno sliko na beli podlagi, Povecano zapolni kvadrat z obrezovanjem."
+    white_border: "Beli rob"
+    zoomed: "Povecano"
     business_logic: Poslovna logika
     current_user: Trenutni uporabnik
     about_app: O OpenAppointments

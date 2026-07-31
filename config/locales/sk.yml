@@ -265,6 +265,10 @@ sk:
     select_category: "Vyberte kategoriu"
     uncategorized: "Bez kategorie"
     category_hidden_hint: "Skryte kategorie a ich sluzby sa na rezervacnej stranke nezobrazuju."
+    picture_styles: "Styly obrazkov"
+    picture_styles_hint: "Zvolte, ako sa obrazky kazdej sady vojdu do stvorca 400x400; Biely okraj zachova cely obrazok na bielom pozadi, Priblizene vyplni stvorec orezanim."
+    white_border: "Biely okraj"
+    zoomed: "Priblizene"
     business_logic: Firemné údaje
     current_user: Prihlásený užívateľ
     about_app: O OpenAppointments

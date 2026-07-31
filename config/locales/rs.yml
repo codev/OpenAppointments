@@ -265,6 +265,10 @@ rs:
     select_category: "Izaberite kategoriju"
     uncategorized: "Bez kategorije"
     category_hidden_hint: "Skrivene kategorije i njihove usluge se ne prikazuju na stranici za rezervacije."
+    picture_styles: "Stilovi slika"
+    picture_styles_hint: "Izaberite kako se slike svake grupe uklapaju u kvadrat 400x400; Beli okvir zadržava celu sliku na beloj pozadini, Zumirano popunjava kvadrat isecanjem."
+    white_border: "Beli okvir"
+    zoomed: "Zumirano"
     business_logic: Poslovna logika
     current_user: Trenutni korisnik
     about_app: O OpenAppointments

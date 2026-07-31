@@ -121,6 +121,14 @@
     object-fit: cover;
 }
 
+/* Without an image the text centers in the box. */
+.booking-card:not(:has(.booking-card-picture)) .card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 90px;
+}
+
 /* Structural rules moved out of inline styles during the markup cleanup. */
 #company-name {
     min-width: 0;

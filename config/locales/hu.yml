@@ -265,6 +265,10 @@ hu:
     select_category: "Valasszon kategoriat"
     uncategorized: "Kategoria nelkul"
     category_hidden_hint: "A rejtett kategoriak es szolgaltatasaik nem jelennek meg a foglalasi oldalon."
+    picture_styles: "Kepstilusok"
+    picture_styles_hint: "Valassza ki, hogyan illeszkedjenek az egyes csoportok kepei a 400x400-as negyzetbe; a Feher keret az egesz kepet megtartja feher hatteren, a Nagyitott kivagassal toelti ki a negyzetet."
+    white_border: "Feher keret"
+    zoomed: "Nagyitott"
     business_logic: Üzleti logika
     current_user: Jelenlegi felhasználó
     about_app: OpenAppointments-ról

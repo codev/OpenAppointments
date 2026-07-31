@@ -265,6 +265,10 @@ zh-tw:
     select_category: "選擇分類"
     uncategorized: "未分類"
     category_hidden_hint: "隱藏的分類及其服務不會顯示在預約頁面上。"
+    picture_styles: "圖片樣式"
+    picture_styles_hint: "選擇每組圖片如何符合 400x400 方形;白邊框在白色背景上保留完整圖片,縮放則以裁切填滿方形。"
+    white_border: "白邊框"
+    zoomed: "縮放"
     business_logic: 業務邏輯
     current_user: 目前使用者
     about_app: 關於 OpenAppointments

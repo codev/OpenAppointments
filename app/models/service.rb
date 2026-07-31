@@ -1,6 +1,8 @@
 class Service < ApplicationRecord
   belongs_to :category, class_name: "ServiceCategory", foreign_key: :id_service_categories, optional: true
   has_one_attached :picture
+  has_one_attached :picture_padded
+  has_one_attached :picture_zoomed
   has_many :provider_links, class_name: "ServiceProviderLink", foreign_key: :id_services,
                             inverse_of: :service, dependent: :delete_all
   has_many :providers, through: :provider_links

@@ -265,6 +265,10 @@ lt:
     select_category: "Pasirinkite kategorija"
     uncategorized: "Be kategorijos"
     category_hidden_hint: "Paslėptos kategorijos ir ju paslaugos rezervaciju puslapyje nerodomos."
+    picture_styles: "Paveiksleliu stiliai"
+    picture_styles_hint: "Pasirinkite, kaip kiekvienos grupes paveiksleliai talpinami 400x400 kvadrate; Baltas remelis islaiko visa vaizda baltame fone, Priartinta uzpildo kvadrata apkerpant."
+    white_border: "Baltas remelis"
+    zoomed: "Priartinta"
     business_logic: Verslo logika
     current_user: Esamasis naudotojas
     about_app: Apie „OpenAppointments“

@@ -265,6 +265,10 @@ tr:
     select_category: "Kategori secin"
     uncategorized: "Kategorisiz"
     category_hidden_hint: "Gizli kategoriler ve hizmetleri rezervasyon sayfasinda gosterilmez."
+    picture_styles: "Resim stilleri"
+    picture_styles_hint: "Her kumenin resimlerinin 400x400 kareye nasil sigdirilacagini secin; Beyaz kenarlik tum resmi beyaz zeminde korur, Yakinlastirilmis kareyi kirparak doldurur."
+    white_border: "Beyaz kenarlik"
+    zoomed: "Yakinlastirilmis"
     business_logic: İş Mantığı
     current_user: Mevcut Kullanıcı
     about_app: OpenAppointments Hakkında

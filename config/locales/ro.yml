@@ -265,6 +265,10 @@ ro:
     select_category: "Selectati categoria"
     uncategorized: "Fara categorie"
     category_hidden_hint: "Categoriile ascunse si serviciile lor nu apar pe pagina de programari."
+    picture_styles: "Stiluri de imagine"
+    picture_styles_hint: "Alegeti cum se incadreaza imaginile fiecarui set in patratul de 400x400; Margine alba pastreaza intreaga imagine pe fundal alb, Marita umple patratul prin decupare."
+    white_border: "Margine alba"
+    zoomed: "Marita"
     business_logic: Logica afacerii
     current_user: Utilizator curent
     about_app: Despre OpenAppointments

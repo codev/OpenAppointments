@@ -8,10 +8,21 @@ module EaRows
   module_function
 
   # Blob path for a record's picture, nil when none is attached.
-  def picture_url(record)
-    return nil unless record.picture.attached?
+  PICTURE_STYLE_SETTINGS = {
+    "ServiceCategory" => "picture_style_categories",
+    "Service" => "picture_style_services",
+    "User" => "picture_style_providers"
+  }.freeze
 
-    Rails.application.routes.url_helpers.rails_blob_path(record.picture, only_path: true)
+  # Display picture: the 400x400 variant picked by the record type's
+  # picture_style_* setting, falling back to the original when unprocessed.
+  def picture_url(record)
+    style = Setting.get(PICTURE_STYLE_SETTINGS.fetch(record.class.name, "picture_style_services"), "border")
+    attachment = style == "zoomed" ? record.picture_zoomed : record.picture_padded
+    attachment = record.picture unless attachment.attached?
+    return nil unless attachment.attached?
+
+    Rails.application.routes.url_helpers.rails_blob_path(attachment, only_path: true)
   end
 
   def dt(value)
@@ -122,7 +133,7 @@ module EaRows
 
   def service_category_row(category)
     { "id" => category.id, "name" => category.name, "description" => category.description,
-      "picture_url" => picture_url(category) }
+      "is_hidden" => category.is_hidden, "picture_url" => picture_url(category) }
   end
 
   def webhook_row(webhook)

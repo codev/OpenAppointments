@@ -265,6 +265,10 @@ sq:
     select_category: "Zgjidhni kategorine"
     uncategorized: "Pa kategori"
     category_hidden_hint: "Kategorite e fshehura dhe sherbimet e tyre nuk shfaqen ne faqen e rezervimeve."
+    picture_styles: "Stilet e imazheve"
+    picture_styles_hint: "Zgjidhni si pershtaten imazhet e cdo grupi ne katrorin 400x400; Korniza e bardhe ruan gjithe imazhin mbi sfond te bardhe, I zmadhuar e mbush katrorin duke prere."
+    white_border: "Kornize e bardhe"
+    zoomed: "I zmadhuar"
     business_logic: Logjika e Biznesit
     current_user: Përdoruesi Aktual
     about_app: Rreth OpenAppointments

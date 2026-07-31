@@ -8,7 +8,7 @@
 
         <% cards_mode = vars(:display_mode) == "cards" %>
         <div class="row frame-content">
-            <div class="col col-lg-8 offset-md-2">
+            <div class="col col-lg-12">
                 <div class="mb-3">
                     <label for="select-provider" class="fs-5 mb-2 <%= 'd-none' if cards_mode %>">
                         <strong><%= lang('provider') %></strong>
@@ -19,10 +19,6 @@
                             <%= lang('please_select') %>
                         </option>
                     </select>
-
-                    <div id="provider-description" class="selection-details small overflow-auto shadow-none">
-                        <!-- JS -->
-                    </div>
                 </div>
 
                 <% if cards_mode %>
@@ -30,21 +26,24 @@
                     <div id="provider-cards" class="booking-cards row g-3 mb-4"></div>
                 <% end %>
 
-                <% if swap_link %>
-                    <div class="text-center mt-4">
-                        <a class="swap-first-step small"
-                           href="<%= url_for(request.query_parameters.merge("first" => "service")) %>">
-                            <%= lang('select_service_first') %>
-                        </a>
-                    </div>
-                <% end %>
+                <div id="provider-description" class="selection-details small overflow-auto shadow-none">
+                    <!-- JS -->
+                </div>
+
             </div>
         </div>
     </div>
 
     <div class="command-buttons text-center my-3 mx-auto d-md-flex justify-content-md-between">
         <% if frame_index == 1 %>
-            <span>&nbsp;</span>
+            <% if swap_link %>
+                <a class="swap-first-step btn btn-outline-secondary"
+                   href="<%= url_for(request.query_parameters.merge("first" => "service")) %>">
+                    <%= lang('select_service_first') %>
+                </a>
+            <% else %>
+                <span>&nbsp;</span>
+            <% end %>
         <% else %>
             <button type="button" id="button-back-2" class="btn button-back btn-outline-secondary"
                     data-step_index="2">

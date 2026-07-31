@@ -265,6 +265,10 @@
     select_category: "Velg kategori"
     uncategorized: "Uten kategori"
     category_hidden_hint: "Skjulte kategorier og tjenestene deres vises ikke paa bookingsiden."
+    picture_styles: "Bildestiler"
+    picture_styles_hint: "Velg hvordan bildene i hvert sett tilpasses 400x400-kvadratet; Hvit kant beholder hele bildet paa hvit bakgrunn, Zoomet fyller kvadratet ved beskjaering."
+    white_border: "Hvit kant"
+    zoomed: "Zoomet"
     business_logic: Forretningslogikk
     current_user: Nåværende Bruker
     about_app: Om OpenAppointments

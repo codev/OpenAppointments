@@ -265,6 +265,10 @@ th:
     select_category: "เลือกหมวดหมู่"
     uncategorized: "ไม่มีหมวดหมู่"
     category_hidden_hint: "หมวดหมู่ที่ซ่อนและบริการในหมวดนั้นจะไม่แสดงบนหน้าจอง"
+    picture_styles: "สไตล์รูปภาพ"
+    picture_styles_hint: "เลือกวิธีจัดรูปภาพของแต่ละชุดให้พอดีกับสี่เหลี่ยม 400x400 ขอบขาวคงภาพทั้งหมดบนพื้นหลังสีขาว ซูมเติมเต็มสี่เหลี่ยมด้วยการครอบตัด"
+    white_border: "ขอบขาว"
+    zoomed: "ซูม"
     business_logic: ตรรกะทางธุรกิจ
     current_user: ผู้ใช้ปัจจุบัน
     about_app: เกี่ยวกับ OpenAppointments

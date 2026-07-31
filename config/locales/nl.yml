@@ -265,6 +265,10 @@ nl:
     select_category: "Selecteer categorie"
     uncategorized: "Zonder categorie"
     category_hidden_hint: "Verborgen categorieen en hun diensten verschijnen niet op de boekingspagina."
+    picture_styles: "Afbeeldingsstijlen"
+    picture_styles_hint: "Kies hoe de afbeeldingen van elke set in het vierkant van 400x400 passen; Witte rand behoudt de hele afbeelding op een witte achtergrond, Ingezoomd vult het vierkant door bij te snijden."
+    white_border: "Witte rand"
+    zoomed: "Ingezoomd"
     business_logic: Bedrijfsinstellingen
     current_user: Huidige gebruiker
     about_app: Over OpenAppointments

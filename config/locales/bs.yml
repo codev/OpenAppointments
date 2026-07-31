@@ -265,6 +265,10 @@ bs:
     select_category: "Odaberite kategoriju"
     uncategorized: "Bez kategorije"
     category_hidden_hint: "Skrivene kategorije i njihove usluge ne prikazuju se na stranici za rezervacije."
+    picture_styles: "Stilovi slika"
+    picture_styles_hint: "Odaberite kako se slike svake grupe uklapaju u kvadrat 400x400; Bijeli okvir zadržava cijelu sliku na bijeloj pozadini, Zumirano popunjava kvadrat rezanjem."
+    white_border: "Bijeli okvir"
+    zoomed: "Zumirano"
     business_logic: Poslovna logika
     current_user: Trenutni korisnik
     about_app: O Easy! Sastancima

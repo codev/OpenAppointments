@@ -25,7 +25,7 @@ RUN SECRET_KEY_BASE_DUMMY=1 RAILS_ENV=production bundle exec rails assets:precom
 FROM cloudron/base:5.0.0
 
 RUN apt-get update -qq && \
-    apt-get install --no-install-recommends -y libsqlite3-0 libyaml-0-2 && \
+    apt-get install --no-install-recommends -y libsqlite3-0 libyaml-0-2 imagemagick && \
     rm -rf /var/lib/apt/lists/*
 
 COPY --from=builder /opt/mise /opt/mise

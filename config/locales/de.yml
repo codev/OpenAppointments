@@ -265,6 +265,10 @@ de:
     select_category: "Kategorie waehlen"
     uncategorized: "Ohne Kategorie"
     category_hidden_hint: "Versteckte Kategorien und ihre Dienste erscheinen nicht auf der Buchungsseite."
+    picture_styles: "Bildstile"
+    picture_styles_hint: "Waehlen Sie, wie die Bilder jeder Gruppe in das 400x400-Quadrat eingepasst werden; Weisser Rand zeigt das ganze Bild auf weissem Hintergrund, Gezoomt fuellt das Quadrat durch Zuschneiden."
+    white_border: "Weisser Rand"
+    zoomed: "Gezoomt"
     business_logic: Unternehmerische Logik
     current_user: Aktueller Nutzer
     about_app: Über OpenAppointments

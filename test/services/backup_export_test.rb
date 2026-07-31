@@ -28,14 +28,17 @@ class BackupExportTest < ActiveSupport::TestCase
     assert_equal Time.new(2026, 7, 31, 14, 30, 5), list.first[:date]
   end
 
-  test "the zip bundles attached pictures" do
-    services(:haircut).picture.attach(
-      io: StringIO.new("fake-image-bytes"), filename: "haircut.png", content_type: "image/png"
-    )
+  test "the zip bundles only the original pictures, no derivatives" do
+    PictureVariants.attach(services(:haircut), file_fixture("picture.png").to_s,
+                           filename: "haircut.png", content_type: "image/png")
     files = BackupExport.run(now: Time.new(2026, 7, 31, 15, 0, 0))
     entries = []
     Zip::File.open(BackupExport.dir.join(files[:zip])) { |zip| entries = zip.map(&:name) }
     assert_includes entries, "haircut.png"
+    assert(entries.none? { |name| name.start_with?("padded-", "zoomed-") },
+           "backups must carry only the originals")
+    assert_equal file_fixture("picture.png").binread,
+                 Zip::File.open(BackupExport.dir.join(files[:zip])) { |zip| zip.read("haircut.png") }
   end
 
   test "prune keeps only the newest five pairs" do

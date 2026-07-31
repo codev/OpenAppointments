@@ -265,6 +265,10 @@ fa:
     select_category: "انتخاب دسته"
     uncategorized: "بدون دسته"
     category_hidden_hint: "دسته‌های پنهان و خدمات آنها در صفحه رزرو نمایش داده نمی‌شوند."
+    picture_styles: "سبک‌های تصویر"
+    picture_styles_hint: "انتخاب کنید تصاویر هر مجموعه چگونه در مربع 400x400 جا شوند؛ حاشیه سفید کل تصویر را روی پس‌زمینه سفید نگه می‌دارد و بزرگ‌نمایی مربع را با برش پر می‌کند."
+    white_border: "حاشیه سفید"
+    zoomed: "بزرگ‌نمایی"
     business_logic: منطق تجارت
     current_user: کاربر جاری
     about_app: درباره OpenAppointments

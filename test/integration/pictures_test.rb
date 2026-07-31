@@ -12,6 +12,8 @@ class PicturesTest < ActionDispatch::IntegrationTest
     zane = users(:zane)
 
     post "/providers/#{zane.id}/picture", params: { picture: png }
+    assert zane.reload.picture_padded.attached?, "upload must create the padded variant"
+    assert zane.picture_zoomed.attached?, "upload must create the zoomed variant"
     assert_response :success
     assert response.parsed_body["picture_url"].present?
     assert zane.reload.picture.attached?

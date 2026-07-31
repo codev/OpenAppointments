@@ -20,6 +20,11 @@ CloudronManifest.json.
 - Provider, assistant and admin passwords export as stored hashes and restore on import; assistants and admins have their own import tickboxes, unticked by default
 - Header: logged in user shown under the OpenAppointments title, settings menu is a cog aligned to the page edge, nav dropdowns stack above page panels; footer booking link removed
 - Custom CSS box on the Theme page, applied to the booking pages and the admin interface, kept across theme changes and backed up as a setting
+- Card booking: originals are kept (and are what backups carry) while uploads and imports also store two 400x400 variants, White Border and Zoomed; per-set picture style selects on Booking Settings choose which shows; existing pictures are processed once by a migration
+- Card booking: starts at Select Category, picking one reveals and scrolls to its services under a Select Service heading; uncategorised services show from the start; four full-width cards per row on desktop and centred text on cards without an image
+- Selecting a service or provider scrolls to its description under the cards, shown without repeating the picture
+- Categories can be marked Hidden to drop them and their services from the booking page; the flag rides export and import
+- The Select Provider First switch is a button beside Next instead of a link under the content
 
 ## 1.3.2
 
