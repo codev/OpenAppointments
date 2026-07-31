@@ -15,7 +15,7 @@ class LoginController < ApplicationController
       dest_url: dest_url,
       company_name: Setting.get("company_name"),
       require_captcha: Setting.get("require_captcha"),
-      altcha_enabled: Setting.get("altcha_enabled")
+      altcha_enabled: AltchaChallenge.enabled? ? "1" : "0"
     )
   end
 
