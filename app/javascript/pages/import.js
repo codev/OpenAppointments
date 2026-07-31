@@ -85,7 +85,78 @@ App.Pages.Import = (function () {
         }, 2000);
     }
 
+    /**
+     * Fill the backups table from the server (newest first).
+     */
+    function loadBackups() {
+        $.get(App.Utils.Url.siteUrl('import/backups')).done((response) => {
+            const $section = $('#backups-section');
+            const $tbody = $('#backups-table tbody');
+
+            $tbody.empty();
+
+            (response.backups || []).forEach((backup) => {
+                const $row = $('<tr/>');
+
+                $('<td/>', {'text': backup.date}).appendTo($row);
+
+                ['ods', 'zip'].forEach((kind) => {
+                    const file = backup.files[kind];
+                    const $cell = $('<td/>').appendTo($row);
+
+                    if (file) {
+                        $('<a/>', {
+                            'href': App.Utils.Url.siteUrl('import/download_backup?name=' + encodeURIComponent(file.name)),
+                            'text': lang(kind === 'ods' ? 'ods_file' : 'zip_file') + ' (' + file.size + ')',
+                        }).appendTo($cell);
+                    }
+                });
+
+                $row.appendTo($tbody);
+            });
+
+            $section.toggleClass('d-none', !(response.backups || []).length);
+        });
+    }
+
+    function setExportWorking(working) {
+        const $button = $('#export-data');
+
+        $button.prop('disabled', working);
+        $button.find('i').toggleClass('fa-download', !working).toggleClass('fa-spinner fa-spin', working);
+        $button.contents().last()[0].textContent = ' ' + lang(working ? 'backup_working' : 'export_data');
+    }
+
+    function pollExport(exportId) {
+        $.get(App.Utils.Url.siteUrl('import/export_status'), {export_id: exportId}).done((status) => {
+            if (status.state === 'completed') {
+                setExportWorking(false);
+                loadBackups();
+                return;
+            }
+
+            if (status.state === 'failed' || status.state === 'unknown') {
+                setExportWorking(false);
+                show(lang('backup_failed'), 'danger');
+                return;
+            }
+
+            setTimeout(() => pollExport(exportId), 2000);
+        });
+    }
+
+    function onExportClick() {
+        setExportWorking(true);
+        $.post(App.Utils.Url.siteUrl('import/export'), {csrf_token: vars('csrf_token')})
+            .done((response) => pollExport(response.export_id))
+            .fail(() => setExportWorking(false));
+    }
+
     function initialize() {
+        $('#export-data').on('click', onExportClick);
+
+        loadBackups();
+
         $('#analyze-import').on('click', () => {
             if (!requireFile()) return;
             show(lang('import_running'));

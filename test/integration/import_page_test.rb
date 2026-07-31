@@ -1,8 +1,18 @@
 require "test_helper"
 
 class ImportPageTest < ActionDispatch::IntegrationTest
-  setup { TenToEightImportJob.status_store = ActiveSupport::Cache::MemoryStore.new }
-  teardown { TenToEightImportJob.status_store = nil }
+  setup do
+    TenToEightImportJob.status_store = ActiveSupport::Cache::MemoryStore.new
+    BackupExportJob.status_store = ActiveSupport::Cache::MemoryStore.new
+    BackupExport.dir_override = Rails.root.join("tmp", "backups-test-#{SecureRandom.hex(4)}")
+  end
+
+  teardown do
+    TenToEightImportJob.status_store = nil
+    BackupExportJob.status_store = nil
+    FileUtils.rm_rf(BackupExport.dir_override)
+    BackupExport.dir_override = nil
+  end
 
   def login_admin
     post "/login/validate", params: { username: "administrator", password: "administrator1" }
@@ -111,13 +121,28 @@ class ImportPageTest < ActionDispatch::IntegrationTest
     assert_redirected_to "/login"
   end
 
-  test "export downloads a dated ODS with all the sheets" do
+  test "export runs in the background and the backups download with all the sheets" do
     login_admin
-    get "/import/export"
+    post "/import/export"
+    assert_response :success
+    export_id = response.parsed_body["export_id"]
+    assert export_id.present?
+
+    perform_enqueued_jobs
+    get "/import/export_status", params: { export_id: export_id }
+    assert_equal "completed", response.parsed_body["state"]
+
+    get "/import/backups"
+    backups = response.parsed_body["backups"]
+    assert_equal 1, backups.size
+    assert_match(/\A\d{4}-\d{2}-\d{2} \d{2}:\d{2}\z/, backups.first["date"])
+    ods_name = backups.first["files"]["ods"]["name"]
+    assert backups.first["files"]["zip"]["name"].end_with?(".zip")
+    assert backups.first["files"]["ods"]["size"].present?
+
+    get "/import/download_backup", params: { name: ods_name }
     assert_response :success
     assert_equal Ods::MIMETYPE, response.media_type
-    assert_includes response.headers["Content-Disposition"],
-                    "#{Date.current.strftime('%Y-%m-%d')}-OpenAppointments.ods"
 
     path = Rails.root.join("tmp", "export-test-#{SecureRandom.hex(4)}.ods")
     File.binwrite(path, response.body)
@@ -131,14 +156,30 @@ class ImportPageTest < ActionDispatch::IntegrationTest
     FileUtils.rm_f(path) if path
   end
 
+  test "backup downloads are admin only and validate the name" do
+    login_admin
+    perform_enqueued_jobs { post "/import/export" }
+    ods_name = BackupExport.list.first[:files]["ods"]
+
+    get "/import/download_backup", params: { name: "../../config/master.key" }
+    assert_response :internal_server_error
+
+    post "/login/validate", params: { username: "janedoe", password: "janedoe1" }
+    get "/import/download_backup", params: { name: ods_name }
+    assert_response :forbidden
+    get "/import/backups"
+    assert_response :forbidden
+    post "/import/export"
+    assert_response :forbidden
+  end
+
   test "an exported ODS analyzes and imports back after a reset" do
     login_admin
     provider_email = users(:zane).email
     customer_email = users(:jx).email
     service_name = services(:haircut).name
-    get "/import/export"
     upload_path = Rails.root.join("tmp", "roundtrip-#{SecureRandom.hex(4)}.ods")
-    File.binwrite(upload_path, response.body)
+    File.binwrite(upload_path, DataExport.generate)
     ResetDatabase.run
 
     ods_upload = Rack::Test::UploadedFile.new(upload_path, Ods::MIMETYPE)
@@ -181,6 +222,15 @@ class ImportPageTest < ActionDispatch::IntegrationTest
       %w[import_data import_hint analyze start_import create_providers days_back days_forward
          reset_database reset_database_warning reset_confirmation_hint
          manage_data export_data import_type full_reset_label import_providers_caution].each do |key|
+        assert I18n.t("ea.#{key}", locale: locale, fallback: false, default: nil).present?,
+               "missing ea.#{key} in #{locale}"
+      end
+    end
+  end
+
+  test "the backup strings exist in every locale" do
+    I18n.available_locales.each do |locale|
+      %w[backups backups_hint backup_working backup_failed ods_file zip_file].each do |key|
         assert I18n.t("ea.#{key}", locale: locale, fallback: false, default: nil).present?,
                "missing ea.#{key} in #{locale}"
       end

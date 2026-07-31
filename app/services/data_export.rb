@@ -5,8 +5,6 @@ module DataExport
 
   module_function
 
-  def filename = "#{Date.current.strftime('%Y-%m-%d')}-OpenAppointments.ods"
-
   def generate
     Ods.generate(sheets)
   end

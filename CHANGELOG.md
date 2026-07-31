@@ -13,6 +13,7 @@ CloudronManifest.json.
 - Integrations page shows a status line per integration with a tick when active; webhooks show their count
 - Theme settings show live preview cards for every theme, rendered with the current brand colours
 - Umami Analytics integration: own instance URL and Website ID, optional session replays and heatmaps recorder
+- Exports run in the background and produce both a plain ODS and a zip with images; the five newest backups stay on the server with admin-only dated downloads
 
 ## 1.3.2
 

@@ -20,9 +20,43 @@ class ImportController < ApplicationController
     render :index
   end
 
-  # GET /import/export - full ODS backup download.
+  # POST /import/export - build a backup pair (ODS + zip) in the background.
   def export
-    send_data DataExport.generate, filename: DataExport.filename, type: Ods::MIMETYPE
+    export_id = SecureRandom.hex(12)
+    BackupExportJob.perform_later(export_id: export_id)
+    BackupExportJob.write_status(export_id, { state: "queued" })
+    render json: { success: true, export_id: export_id }
+  end
+
+  # GET /import/export_status
+  def export_status
+    render json: BackupExportJob.read_status(params[:export_id].to_s) || { state: "unknown" }
+  end
+
+  # GET /import/backups - the kept backups, newest first.
+  def backups
+    render json: {
+      backups: BackupExport.list.map { |backup|
+        {
+          date: backup[:date].strftime("%Y-%m-%d %H:%M"),
+          files: backup[:files].transform_values { |name|
+            { name: name, size: helpers.number_to_human_size(File.size(BackupExport.dir.join(name))) }
+          }
+        }
+      }
+    }
+  end
+
+  # GET /import/download_backup?name=... - admin-gated backup download.
+  def download_backup
+    name = params[:name].to_s
+    path = BackupExport.dir.join(name)
+    raise ArgumentError, "Unknown backup." unless BackupExport.valid_name?(name) && File.exist?(path)
+
+    send_file path, filename: name,
+                    type: name.end_with?(".zip") ? "application/zip" : Ods::MIMETYPE
+  rescue ArgumentError => e
+    json_exception(e)
   end
 
   # POST /import/analyze - dry run: parse the upload and return the counts.
