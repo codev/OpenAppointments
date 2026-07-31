@@ -25,6 +25,9 @@ class AltchaSettingsController < ApplicationController
     render :index
   end
 
+  # Pasted keys often carry stray whitespace; store them clean.
+  KEY_SETTINGS = %w[turnstile_site_key turnstile_secret_key altcha_hmac_key].freeze
+
   # POST /altcha_settings/save. Refuses to activate a provider that is not
   # fully configured (merging the payload over the stored settings).
   def save
@@ -32,7 +35,7 @@ class AltchaSettingsController < ApplicationController
       return render json: { success: false, message: message }
     end
 
-    save_setting_rows(:altcha_settings)
+    save_setting_rows(:altcha_settings) { |name, value| KEY_SETTINGS.include?(name) ? value.strip : value }
   rescue ArgumentError => e
     json_exception(e)
   end
@@ -45,7 +48,10 @@ class AltchaSettingsController < ApplicationController
   private
 
   def validation_error
-    rows = setting_row_params(:altcha_settings).to_h { |row| [ row["name"], row["value"].to_s ] }
+    rows = setting_row_params(:altcha_settings).to_h { |row|
+      value = row["value"].to_s
+      [ row["name"], KEY_SETTINGS.include?(row["name"]) ? value.strip : value ]
+    }
     merged = ->(name, default = "") { rows.key?(name) ? rows[name] : Setting.get(name, default) }
 
     active = merged.call("altcha_enabled") == "1" || merged.call("captcha_login_enabled") == "1"
@@ -56,7 +62,16 @@ class AltchaSettingsController < ApplicationController
         return helpers.lang("turnstile_keys_missing")
       end
 
-      helpers.lang("turnstile_test_failed") if turnstile_test_required?(merged) && !turnstile_test_passed?(merged)
+      if turnstile_test_required?(merged)
+        result = TurnstileChallenge.verify_detailed(params[:cf_turnstile_response].to_s, request.remote_ip,
+                                                    secret: merged.call("turnstile_secret_key"))
+        unless result[:success]
+          message = helpers.lang("turnstile_test_failed")
+          message += " (#{result[:errors].join(', ')})" if result[:errors].any?
+          return message
+        end
+      end
+      nil
     else
       helpers.lang("altcha_hmac_key_missing") if merged.call("altcha_hmac_key").blank?
     end
@@ -71,10 +86,5 @@ class AltchaSettingsController < ApplicationController
                    merged.call("turnstile_secret_key") != Setting.get("turnstile_secret_key", "")
 
     !stored_turnstile || keys_changed
-  end
-
-  def turnstile_test_passed?(merged)
-    TurnstileChallenge.verify(params[:cf_turnstile_response].to_s, request.remote_ip,
-                              secret: merged.call("turnstile_secret_key"))
   end
 end

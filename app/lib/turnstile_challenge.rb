@@ -20,7 +20,13 @@ module TurnstileChallenge
   # Server-side verification of the widget token via Cloudflare's siteverify.
   # secret can be overridden to verify against not-yet-saved settings.
   def verify(token, remote_ip, secret: secret_key)
-    return false if token.blank?
+    verify_detailed(token, remote_ip, secret: secret)[:success]
+  end
+
+  # Like verify but returns { success:, errors: } with Cloudflare's error codes
+  # so the settings page can say why activation failed.
+  def verify_detailed(token, remote_ip, secret: secret_key)
+    return { success: false, errors: [ "missing-input-response" ] } if token.blank?
 
     remote_ip = usable_remote_ip(remote_ip)
 
@@ -32,11 +38,13 @@ module TurnstileChallenge
     request = Net::HTTP::Post.new(VERIFY_URL.request_uri)
     request.set_form_data({ "secret" => secret, "response" => token, "remoteip" => remote_ip }.compact)
 
-    response = http.request(request)
-    JSON.parse(response.body)["success"] == true
+    body = JSON.parse(http.request(request).body)
+    success = body["success"] == true
+    Rails.logger.warn("Turnstile verification rejected: #{body['error-codes']}") unless success
+    { success: success, errors: Array(body["error-codes"]) }
   rescue StandardError => e
     Rails.logger.warn("Turnstile verification failed: #{e.message}")
-    false
+    { success: false, errors: [ "request-failed" ] }
   end
 
   # Cloudflare fails verification when remoteip does not match the IP it saw

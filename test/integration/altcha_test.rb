@@ -192,7 +192,8 @@ class AltchaTest < ActionDispatch::IntegrationTest
     # No test token at all: the widget could not run here.
     post "/altcha_settings/save", params: activate_turnstile_params
     assert_equal false, response.parsed_body["success"]
-    assert_equal I18n.t("ea.turnstile_test_failed"), response.parsed_body["message"]
+    assert_equal "#{I18n.t('ea.turnstile_test_failed')} (missing-input-response)",
+                 response.parsed_body["message"]
     assert_not_equal "1", Setting.get("captcha_login_enabled")
 
     # Token present but Cloudflare rejects it.
@@ -219,7 +220,7 @@ class AltchaTest < ActionDispatch::IntegrationTest
     changed[:altcha_settings][2][:value] = "sk-new"
     post "/altcha_settings/save", params: changed
     assert_equal false, response.parsed_body["success"]
-    assert_equal I18n.t("ea.turnstile_test_failed"), response.parsed_body["message"]
+    assert_match I18n.t("ea.turnstile_test_failed"), response.parsed_body["message"]
     assert_equal "sk", Setting.get("turnstile_site_key")
   end
 
