@@ -40,6 +40,8 @@ pt:
     captcha_login_hint: "Quando ativado, os utilizadores terão de resolver um desafio Captcha antes de iniciar sessão no painel"
     altcha_hmac_key_missing: "O ALTCHA precisa de uma chave HMAC gerada antes de o captcha poder ser ativado"
     turnstile_keys_missing: "O Cloudflare Turnstile precisa de uma chave do site e de uma chave secreta antes de o captcha poder ser ativado"
+    turnstile_test_hint: "Resolva este desafio de teste para confirmar que o Turnstile funciona neste site; obrigatório ao ativar o Turnstile ou alterar as chaves"
+    turnstile_test_failed: "Conclua o desafio de teste do Turnstile para confirmar que funciona neste site antes de ativar"
     turnstile_keys_hint: "Obtenha um par de chaves (site e secret) no painel da Cloudflare:"
     first_login_update_details: Introduza uma nova palavra-passe e atualize os seus dados
     embedding: Incorporação

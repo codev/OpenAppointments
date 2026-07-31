@@ -40,6 +40,8 @@ th:
     captcha_login_hint: "เมื่อเปิดใช้งาน ผู้ใช้จะต้องแก้โจทย์ Captcha ก่อนจึงจะเข้าสู่ระบบหลังบ้านได้"
     altcha_hmac_key_missing: "ALTCHA ต้องมีคีย์ HMAC ที่สร้างไว้ก่อนจึงจะเปิดใช้งาน captcha ได้"
     turnstile_keys_missing: "Cloudflare Turnstile ต้องมีทั้งไซต์คีย์และคีย์ลับก่อนจึงจะเปิดใช้งาน captcha ได้"
+    turnstile_test_hint: "แก้โจทย์ทดสอบนี้เพื่อยืนยันว่า Turnstile ทำงานบนไซต์นี้ จำเป็นเมื่อเปิดใช้งาน Turnstile หรือเปลี่ยนคีย์"
+    turnstile_test_failed: "ทำโจทย์ทดสอบ Turnstile ให้เสร็จเพื่อยืนยันว่าทำงานบนไซต์นี้ก่อนเปิดใช้งาน"
     turnstile_keys_hint: "รับคู่กุญแจ (site key และ secret key) จากแดชบอร์ดของ Cloudflare:"
     first_login_update_details: กรุณาตั้งรหัสผ่านใหม่และอัปเดตข้อมูลของคุณ
     embedding: การฝังหน้า

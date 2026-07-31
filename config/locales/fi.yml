@@ -40,6 +40,8 @@ fi:
     captcha_login_hint: "Kun tämä on käytössä, käyttäjien on ratkaistava Captcha-haaste ennen hallintaan kirjautumista"
     altcha_hmac_key_missing: "ALTCHA tarvitsee luodun HMAC-avaimen ennen kuin captcha voidaan aktivoida"
     turnstile_keys_missing: "Cloudflare Turnstile tarvitsee sekä sivustoavaimen että salaisen avaimen ennen kuin captcha voidaan aktivoida"
+    turnstile_test_hint: "Ratkaise tämä testihaaste varmistaaksesi, että Turnstile toimii tällä sivustolla; vaaditaan Turnstilea aktivoitaessa tai avaimia vaihdettaessa"
+    turnstile_test_failed: "Suorita Turnstile-testihaaste varmistaaksesi sen toimivuuden tällä sivustolla ennen aktivointia"
     turnstile_keys_hint: "Hanki site key- ja secret key -avainpari Cloudflaren hallintapaneelista:"
     first_login_update_details: Anna uusi salasana ja päivitä tietosi
     embedding: Upotus

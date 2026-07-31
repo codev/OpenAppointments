@@ -40,6 +40,8 @@ sq:
     captcha_login_hint: "Kur aktivizohet, përdoruesit do të duhet të zgjidhin një sfidë Captcha para se të hyjnë në administrim"
     altcha_hmac_key_missing: "ALTCHA ka nevojë për një çelës HMAC të gjeneruar para se captcha të mund të aktivizohet"
     turnstile_keys_missing: "Cloudflare Turnstile ka nevojë për një çelës faqeje dhe një çelës sekret para se captcha të mund të aktivizohet"
+    turnstile_test_hint: "Zgjidhni këtë sfidë prove për të konfirmuar që Turnstile funksionon në këtë faqe; kërkohet kur aktivizoni Turnstile ose ndryshoni çelësat"
+    turnstile_test_failed: "Përfundoni sfidën e provës Turnstile për të konfirmuar që funksionon në këtë faqe para aktivizimit"
     turnstile_keys_hint: "Merrni një çift çelësash (site dhe secret) nga paneli i Cloudflare:"
     first_login_update_details: Ju lutemi vendosni një fjalëkalim të ri dhe përditësoni të dhënat tuaja
     embedding: Ngulitja

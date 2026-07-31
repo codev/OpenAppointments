@@ -40,6 +40,8 @@ de:
     captcha_login_hint: "Wenn aktiviert, müssen Benutzer eine Captcha-Aufgabe lösen, bevor sie sich im Backend anmelden können"
     altcha_hmac_key_missing: "ALTCHA benötigt einen generierten HMAC-Schlüssel, bevor das Captcha aktiviert werden kann"
     turnstile_keys_missing: "Cloudflare Turnstile benötigt einen Site-Schlüssel und einen geheimen Schlüssel, bevor das Captcha aktiviert werden kann"
+    turnstile_test_hint: "Lösen Sie diese Testaufgabe, um zu bestätigen, dass Turnstile auf dieser Website funktioniert; erforderlich beim Aktivieren von Turnstile oder Ändern der Schlüssel"
+    turnstile_test_failed: "Schließen Sie die Turnstile-Testaufgabe ab, um vor der Aktivierung zu bestätigen, dass sie auf dieser Website funktioniert"
     turnstile_keys_hint: "Ein Schlüsselpaar (Site-Key und Secret-Key) erhalten Sie im Cloudflare-Dashboard:"
     first_login_update_details: Bitte geben Sie ein neues Passwort ein und aktualisieren Sie Ihre Daten
     embedding: Einbettung

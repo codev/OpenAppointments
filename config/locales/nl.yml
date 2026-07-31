@@ -40,6 +40,8 @@ nl:
     captcha_login_hint: "Indien ingeschakeld moeten gebruikers een Captcha-uitdaging oplossen voordat ze kunnen inloggen op het beheer"
     altcha_hmac_key_missing: "ALTCHA heeft een gegenereerde HMAC-sleutel nodig voordat de captcha kan worden geactiveerd"
     turnstile_keys_missing: "Cloudflare Turnstile heeft zowel een sitesleutel als een geheime sleutel nodig voordat de captcha kan worden geactiveerd"
+    turnstile_test_hint: "Los deze testuitdaging op om te bevestigen dat Turnstile op deze site werkt; vereist bij het activeren van Turnstile of het wijzigen van de sleutels"
+    turnstile_test_failed: "Voltooi de Turnstile-testuitdaging om te bevestigen dat deze op deze site werkt voordat u activeert"
     turnstile_keys_hint: "Haal een sleutelpaar (site en secret) op in het Cloudflare-dashboard:"
     first_login_update_details: Voer een nieuw wachtwoord in en werk uw gegevens bij
     embedding: Insluiten

@@ -40,6 +40,8 @@ lv:
     captcha_login_hint: "Kad iespējots, lietotājiem pirms pieteikšanās administrācijā būs jāatrisina Captcha uzdevums"
     altcha_hmac_key_missing: "Pirms captcha aktivizēšanas ALTCHA ir nepieciešama ģenerēta HMAC atslēga"
     turnstile_keys_missing: "Pirms captcha aktivizēšanas Cloudflare Turnstile ir nepieciešama vietnes atslēga un slepenā atslēga"
+    turnstile_test_hint: "Atrisiniet šo testa uzdevumu, lai apstiprinātu, ka Turnstile darbojas šajā vietnē; nepieciešams, aktivizējot Turnstile vai mainot atslēgas"
+    turnstile_test_failed: "Pirms aktivizēšanas pabeidziet Turnstile testa uzdevumu, lai apstiprinātu, ka tas darbojas šajā vietnē"
     turnstile_keys_hint: "Iegūstiet atslēgu pāri (site un secret) Cloudflare panelī:"
     first_login_update_details: Lūdzu, ievadiet jaunu paroli un atjauniniet savus datus
     embedding: Iegulšana

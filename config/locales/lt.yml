@@ -40,6 +40,8 @@ lt:
     captcha_login_hint: "Kai įjungta, naudotojai prieš prisijungdami prie administravimo turės išspręsti Captcha užduotį"
     altcha_hmac_key_missing: "Prieš aktyvuojant captcha, ALTCHA reikia sugeneruoto HMAC rakto"
     turnstile_keys_missing: "Prieš aktyvuojant captcha, Cloudflare Turnstile reikia svetainės rakto ir slapto rakto"
+    turnstile_test_hint: "Išspręskite šią bandomąją užduotį, kad patvirtintumėte, jog Turnstile veikia šioje svetainėje; privaloma aktyvuojant Turnstile ar keičiant raktus"
+    turnstile_test_failed: "Prieš aktyvuodami užbaikite Turnstile bandomąją užduotį, kad patvirtintumėte, jog ji veikia šioje svetainėje"
     turnstile_keys_hint: "Gaukite raktų porą (site ir secret) Cloudflare valdymo skydelyje:"
     first_login_update_details: Įveskite naują slaptažodį ir atnaujinkite savo duomenis
     embedding: Įterpimas

@@ -40,6 +40,8 @@ ru:
     captcha_login_hint: "Если включено, пользователям нужно будет решить Captcha перед входом в панель управления"
     altcha_hmac_key_missing: "Для активации captcha ALTCHA требуется сгенерированный ключ HMAC"
     turnstile_keys_missing: "Для активации captcha Cloudflare Turnstile требуются ключ сайта и секретный ключ"
+    turnstile_test_hint: "Решите это тестовое задание, чтобы подтвердить, что Turnstile работает на этом сайте; требуется при активации Turnstile или смене ключей"
+    turnstile_test_failed: "Перед активацией пройдите тестовое задание Turnstile, чтобы подтвердить его работу на этом сайте"
     turnstile_keys_hint: "Получите пару ключей (site и secret) в панели Cloudflare:"
     first_login_update_details: Пожалуйста, введите новый пароль и обновите свои данные
     embedding: Встраивание

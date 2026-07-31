@@ -19,6 +19,65 @@ App.Pages.AltchaSettings = (function () {
     const $generateHmacKey = $('#generate-hmac-key');
     const $altchaHmacKey = $('#altcha-hmac-key');
 
+    let turnstileWidgetId = null;
+
+    /**
+     * Render the Turnstile test widget with the entered site key. A solved
+     * test proves the keys work on this site before activation is allowed.
+     */
+    function renderTurnstileTest() {
+        const $container = $('#turnstile-test');
+
+        if (!window.turnstile || !$container.length) {
+            return;
+        }
+
+        if (turnstileWidgetId !== null) {
+            window.turnstile.remove(turnstileWidgetId);
+            turnstileWidgetId = null;
+        }
+
+        $container.empty();
+
+        const siteKey = $('#turnstile-site-key').val().trim();
+
+        if (!siteKey) {
+            return;
+        }
+
+        turnstileWidgetId = window.turnstile.render($container[0], {sitekey: siteKey});
+    }
+
+    window.onloadTurnstileCallback = renderTurnstileTest;
+
+    function turnstileTestToken() {
+        if (turnstileWidgetId === null || !window.turnstile) {
+            return '';
+        }
+
+        return window.turnstile.getResponse(turnstileWidgetId) || '';
+    }
+
+    function storedSetting(name) {
+        const row = (vars('altcha_settings') || []).find((setting) => setting.name === name);
+
+        return row ? String(row.value) : '';
+    }
+
+    /**
+     * A fresh test token is needed when Turnstile was not already active with
+     * these exact keys.
+     */
+    function turnstileTestRequired() {
+        const storedActive = storedSetting('altcha_enabled') === '1' || storedSetting('captcha_login_enabled') === '1';
+        const storedTurnstile = storedActive && (storedSetting('captcha_provider') || 'altcha') === 'turnstile';
+        const keysChanged =
+            $('#turnstile-site-key').val().trim() !== storedSetting('turnstile_site_key') ||
+            $('#turnstile-secret-key').val().trim() !== storedSetting('turnstile_secret_key');
+
+        return !storedTurnstile || keysChanged;
+    }
+
     /**
      * Check if the form has invalid values.
      *
@@ -45,6 +104,10 @@ App.Pages.AltchaSettings = (function () {
                     $siteKey.toggleClass('is-invalid', !$siteKey.val().trim());
                     $secretKey.toggleClass('is-invalid', !$secretKey.val().trim());
                     throw new Error(lang('turnstile_keys_missing'));
+                }
+
+                if (turnstileTestRequired() && !turnstileTestToken()) {
+                    throw new Error(lang('turnstile_test_failed'));
                 }
             }
 
@@ -100,13 +163,23 @@ App.Pages.AltchaSettings = (function () {
 
         const altchaSettings = serialize();
 
-        App.Http.AltchaSettings.save(altchaSettings).done((response) => {
+        App.Http.AltchaSettings.save(altchaSettings, turnstileTestToken()).done((response) => {
             if (response.success === false) {
                 App.Layouts.Backend.displayNotification(response.message || lang('settings_are_invalid'));
+
+                if (turnstileWidgetId !== null && window.turnstile) {
+                    window.turnstile.reset(turnstileWidgetId);
+                }
+
                 return;
             }
 
             App.Layouts.Backend.displayNotification(lang('settings_saved'));
+
+            // The token is single use: solved state no longer means valid.
+            if (turnstileWidgetId !== null && window.turnstile) {
+                window.turnstile.reset(turnstileWidgetId);
+            }
         });
     }
 
@@ -137,12 +210,15 @@ App.Pages.AltchaSettings = (function () {
         $saveSettings.on('click', onSaveSettingsClick);
         $generateHmacKey.on('click', onGenerateHmacKeyClick);
         $('#captcha-provider').on('change', toggleProviderSections);
+        $('#turnstile-site-key').on('change', renderTurnstileTest);
 
         const altchaSettings = vars('altcha_settings');
 
         deserialize(altchaSettings);
 
         toggleProviderSections();
+
+        renderTurnstileTest();
     }
 
     document.addEventListener('DOMContentLoaded', initialize);

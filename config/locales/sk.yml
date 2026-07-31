@@ -40,6 +40,8 @@ sk:
     captcha_login_hint: "Ak je povolené, používatelia budú musieť pred prihlásením do administrácie vyriešiť Captcha úlohu"
     altcha_hmac_key_missing: "ALTCHA potrebuje vygenerovaný kľúč HMAC, aby bolo možné captcha aktivovať"
     turnstile_keys_missing: "Cloudflare Turnstile potrebuje kľúč webu aj tajný kľúč, aby bolo možné captcha aktivovať"
+    turnstile_test_hint: "Vyriešte túto testovaciu úlohu na potvrdenie, že Turnstile na tomto webe funguje; vyžaduje sa pri aktivácii Turnstile alebo zmene kľúčov"
+    turnstile_test_failed: "Pred aktiváciou dokončite testovaciu úlohu Turnstile na potvrdenie, že na tomto webe funguje"
     turnstile_keys_hint: "Získajte pár kľúčov (site a secret) v paneli Cloudflare:"
     first_login_update_details: Zadajte nové heslo a aktualizujte svoje údaje
     embedding: Vloženie do webu

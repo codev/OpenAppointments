@@ -40,6 +40,8 @@ lb:
     captcha_login_hint: "Wann aktivéiert, mussen d'Benotzer eng Captcha-Erausfuerderung léisen, ier si sech am Backend umelle kënnen"
     altcha_hmac_key_missing: "ALTCHA brauch e generéierten HMAC-Schlëssel, ier de Captcha aktivéiert ka ginn"
     turnstile_keys_missing: "Cloudflare Turnstile brauch e Site-Schlëssel an e geheime Schlëssel, ier de Captcha aktivéiert ka ginn"
+    turnstile_test_hint: "Léist dës Testerausfuerderung fir ze confirméieren, datt Turnstile op dësem Site funktionéiert; néideg beim Aktivéiere vun Turnstile oder beim Ännere vun de Schlësselen"
+    turnstile_test_failed: "Schléisst d'Turnstile-Testerausfuerderung of fir virun der Aktivéierung ze confirméieren, datt et op dësem Site funktionéiert"
     turnstile_keys_hint: "Kritt e Puer Schlësselen (site a secret) am Cloudflare Dashboard:"
     first_login_update_details: Gitt w.e.g. en neit Passwuert an an aktualiséiert Är Donnéeën
     embedding: Abannen

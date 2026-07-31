@@ -40,6 +40,8 @@ en:
     captcha_login_hint: "When enabled users will have to solve a Captcha challenge before they can log in to the backend"
     altcha_hmac_key_missing: "ALTCHA needs a generated HMAC key before the captcha can be activated"
     turnstile_keys_missing: "Cloudflare Turnstile needs both a site key and a secret key before the captcha can be activated"
+    turnstile_test_hint: "Solve this test challenge to confirm Turnstile works on this site, it is required when activating Turnstile or changing its keys"
+    turnstile_test_failed: "Complete the Turnstile test challenge to confirm it works on this site before activating"
     turnstile_keys_hint: "Get a site key and secret key pair from the Cloudflare dashboard:"
     first_login_update_details: Please enter a new password and update your details
     embedding: Embedding

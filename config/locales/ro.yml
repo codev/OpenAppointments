@@ -40,6 +40,8 @@ ro:
     captcha_login_hint: "Când este activat, utilizatorii vor trebui să rezolve o provocare Captcha înainte de a se autentifica în administrare"
     altcha_hmac_key_missing: "ALTCHA are nevoie de o cheie HMAC generată înainte ca captcha să poată fi activat"
     turnstile_keys_missing: "Cloudflare Turnstile are nevoie de o cheie de site și de o cheie secretă înainte ca captcha să poată fi activat"
+    turnstile_test_hint: "Rezolvați această provocare de test pentru a confirma că Turnstile funcționează pe acest site; necesar la activarea Turnstile sau la schimbarea cheilor"
+    turnstile_test_failed: "Finalizați provocarea de test Turnstile pentru a confirma că funcționează pe acest site înainte de activare"
     turnstile_keys_hint: "Obțineți o pereche de chei (site și secret) din panoul Cloudflare:"
     first_login_update_details: Introduceți o parolă nouă și actualizați-vă datele
     embedding: Încorporare

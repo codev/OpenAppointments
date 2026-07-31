@@ -40,6 +40,8 @@ ja:
     captcha_login_hint: "有効にすると、ユーザーは管理画面にログインする前にCaptchaチャレンジを解く必要があります"
     altcha_hmac_key_missing: "captchaを有効にする前に、ALTCHAには生成済みのHMACキーが必要です"
     turnstile_keys_missing: "captchaを有効にする前に、Cloudflare Turnstileにはサイトキーとシークレットキーの両方が必要です"
+    turnstile_test_hint: "このサイトでTurnstileが動作することを確認するため、このテストチャレンジを解いてください。Turnstileの有効化やキー変更時に必要です"
+    turnstile_test_failed: "有効化する前に、Turnstileテストチャレンジを完了してこのサイトで動作することを確認してください"
     turnstile_keys_hint: "Cloudflareダッシュボードでサイトキーとシークレットキーのペアを取得してください:"
     first_login_update_details: 新しいパスワードを入力し、情報を更新してください
     embedding: 埋め込み

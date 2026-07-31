@@ -8,6 +8,7 @@ CloudronManifest.json.
 - Captcha settings reworked: the CAPTCHA switch is gone from Booking Settings, the Integrations page switches are the only control
 - Separate "Active for customers" and "Active for login" captcha switches; login and recovery are gated with ALTCHA or Turnstile per the provider setting
 - Saving captcha settings validates that the active provider is fully configured (ALTCHA HMAC key, Turnstile key pair) and shows an error otherwise
+- Activating Turnstile requires solving a live test challenge on the settings page, proving the keys and domain allowlist work on this site before captcha can lock anyone out
 - Remove the legacy image captcha code left from the port
 - Integrations page shows a status line per integration with a tick when active; webhooks show their count
 - Theme settings show live preview cards for every theme, rendered with the current brand colours

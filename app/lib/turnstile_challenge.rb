@@ -18,7 +18,8 @@ module TurnstileChallenge
   def secret_key = Setting.get("turnstile_secret_key").to_s
 
   # Server-side verification of the widget token via Cloudflare's siteverify.
-  def verify(token, remote_ip)
+  # secret can be overridden to verify against not-yet-saved settings.
+  def verify(token, remote_ip, secret: secret_key)
     return false if token.blank?
 
     http = Net::HTTP.new(VERIFY_URL.host, VERIFY_URL.port)
@@ -27,7 +28,7 @@ module TurnstileChallenge
     http.read_timeout = 10
 
     request = Net::HTTP::Post.new(VERIFY_URL.request_uri)
-    request.set_form_data({ "secret" => secret_key, "response" => token, "remoteip" => remote_ip }.compact)
+    request.set_form_data({ "secret" => secret, "response" => token, "remoteip" => remote_ip }.compact)
 
     response = http.request(request)
     JSON.parse(response.body)["success"] == true

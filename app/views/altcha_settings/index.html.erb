@@ -92,6 +92,13 @@
                                     <input type="password" id="turnstile-secret-key" class="form-control"
                                            data-field="turnstile_secret_key" maxlength="256" autocomplete="new-password">
                                 </div>
+
+                                <div class="mb-3">
+                                    <div id="turnstile-test" class="mb-2"></div>
+                                    <div class="form-text text-muted small">
+                                        <%= lang('turnstile_test_hint') %>
+                                    </div>
+                                </div>
                             </div>
 
                             <div id="altcha-provider-settings">
@@ -151,4 +158,6 @@
 
 <% content_for :scripts do %>
     <%= ea_js "http/altcha_settings_http_client", "pages/altcha_settings" %>
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?onload=onloadTurnstileCallback&render=explicit"
+            async defer></script>
 <% end %>

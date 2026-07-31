@@ -52,10 +52,29 @@ class AltchaSettingsController < ApplicationController
     return nil unless active
 
     if merged.call("captcha_provider", "altcha") == "turnstile"
-      helpers.lang("turnstile_keys_missing") if merged.call("turnstile_site_key").blank? ||
-                                                merged.call("turnstile_secret_key").blank?
+      if merged.call("turnstile_site_key").blank? || merged.call("turnstile_secret_key").blank?
+        return helpers.lang("turnstile_keys_missing")
+      end
+
+      helpers.lang("turnstile_test_failed") if turnstile_test_required?(merged) && !turnstile_test_passed?(merged)
     else
       helpers.lang("altcha_hmac_key_missing") if merged.call("altcha_hmac_key").blank?
     end
+  end
+
+  # A fresh test token is needed when Turnstile was not already active with
+  # these exact keys: a solved widget proves it runs on this site's domain.
+  def turnstile_test_required?(merged)
+    stored_active = Setting.get("altcha_enabled") == "1" || Setting.get("captcha_login_enabled", "0") == "1"
+    stored_turnstile = stored_active && Setting.get("captcha_provider", "altcha") == "turnstile"
+    keys_changed = merged.call("turnstile_site_key") != Setting.get("turnstile_site_key", "") ||
+                   merged.call("turnstile_secret_key") != Setting.get("turnstile_secret_key", "")
+
+    !stored_turnstile || keys_changed
+  end
+
+  def turnstile_test_passed?(merged)
+    TurnstileChallenge.verify(params[:cf_turnstile_response].to_s, request.remote_ip,
+                              secret: merged.call("turnstile_secret_key"))
   end
 end

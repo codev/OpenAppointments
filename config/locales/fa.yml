@@ -40,6 +40,8 @@ fa:
     captcha_login_hint: "در صورت فعال بودن، کاربران باید قبل از ورود به بخش مدیریت یک چالش کپچا را حل کنند"
     altcha_hmac_key_missing: "ALTCHA پیش از فعال شدن کپچا به یک کلید HMAC تولیدشده نیاز دارد"
     turnstile_keys_missing: "Cloudflare Turnstile پیش از فعال شدن کپچا به کلید سایت و کلید مخفی نیاز دارد"
+    turnstile_test_hint: "برای تأیید کارکرد Turnstile در این سایت این چالش آزمایشی را حل کنید؛ هنگام فعال‌سازی Turnstile یا تغییر کلیدها الزامی است"
+    turnstile_test_failed: "پیش از فعال‌سازی، چالش آزمایشی Turnstile را کامل کنید تا کارکرد آن در این سایت تأیید شود"
     turnstile_keys_hint: "یک جفت کلید (site و secret) از داشبورد Cloudflare دریافت کنید:"
     first_login_update_details: لطفاً رمز عبور جدیدی وارد کنید و اطلاعات خود را به‌روزرسانی کنید
     embedding: جاسازی

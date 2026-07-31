@@ -40,6 +40,8 @@ bu:
     captcha_login_hint: "Когато е активирано, потребителите ще трябва да решат Captcha предизвикателство, преди да влязат в администрацията"
     altcha_hmac_key_missing: "ALTCHA се нуждае от генериран HMAC ключ, преди captcha да може да бъде активирана"
     turnstile_keys_missing: "Cloudflare Turnstile се нуждае от ключ за сайт и таен ключ, преди captcha да може да бъде активирана"
+    turnstile_test_hint: "Решете това тестово предизвикателство, за да потвърдите, че Turnstile работи на този сайт; изисква се при активиране на Turnstile или смяна на ключовете"
+    turnstile_test_failed: "Завършете тестовото предизвикателство на Turnstile, за да потвърдите, че работи на този сайт, преди активиране"
     turnstile_keys_hint: "Вземете двойка ключове (site и secret) от таблото на Cloudflare:"
     first_login_update_details: Моля, въведете нова парола и актуализирайте данните си
     embedding: Вграждане

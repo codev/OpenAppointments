@@ -170,8 +170,12 @@ class AltchaTest < ActionDispatch::IntegrationTest
     assert_equal false, response.parsed_body["success"]
     assert_equal I18n.t("ea.turnstile_keys_missing"), response.parsed_body["message"]
     assert_not_equal "1", Setting.get("captcha_login_enabled")
+  end
 
-    post "/altcha_settings/save", params: {
+  VERIFY_URL = "https://challenges.cloudflare.com/turnstile/v0/siteverify".freeze
+
+  def activate_turnstile_params
+    {
       altcha_settings: [
         { name: "captcha_login_enabled", value: "1" },
         { name: "captcha_provider", value: "turnstile" },
@@ -179,14 +183,51 @@ class AltchaTest < ActionDispatch::IntegrationTest
         { name: "turnstile_secret_key", value: "sec" }
       ]
     }
+  end
+
+  test "activating Turnstile requires a verified test challenge from this site" do
+    require "webmock/minitest"
+    post "/login/validate", params: { username: "administrator", password: "administrator1" }
+
+    # No test token at all: the widget could not run here.
+    post "/altcha_settings/save", params: activate_turnstile_params
+    assert_equal false, response.parsed_body["success"]
+    assert_equal I18n.t("ea.turnstile_test_failed"), response.parsed_body["message"]
+    assert_not_equal "1", Setting.get("captcha_login_enabled")
+
+    # Token present but Cloudflare rejects it.
+    stub_request(:post, VERIFY_URL).to_return(body: { success: false }.to_json)
+    post "/altcha_settings/save", params: activate_turnstile_params.merge(cf_turnstile_response: "bad")
+    assert_equal false, response.parsed_body["success"]
+    assert_not_equal "1", Setting.get("captcha_login_enabled")
+
+    # Verified token: activation goes through, checked with the posted secret.
+    stub_request(:post, VERIFY_URL).to_return(body: { success: true }.to_json)
+    post "/altcha_settings/save", params: activate_turnstile_params.merge(cf_turnstile_response: "good")
     assert_equal true, response.parsed_body["success"]
     assert_equal "1", Setting.get("captcha_login_enabled")
+    assert_requested(:post, VERIFY_URL, times: 2)
+    assert_requested(:post, VERIFY_URL) { |req| req.body.include?("secret=sec") && req.body.include?("good") }
+
+    # Already active with the same keys: saving again needs no fresh test.
+    WebMock.reset!
+    post "/altcha_settings/save", params: activate_turnstile_params
+    assert_equal true, response.parsed_body["success"]
+
+    # Changing a key while active requires a fresh verified test.
+    changed = activate_turnstile_params
+    changed[:altcha_settings][2][:value] = "sk-new"
+    post "/altcha_settings/save", params: changed
+    assert_equal false, response.parsed_body["success"]
+    assert_equal I18n.t("ea.turnstile_test_failed"), response.parsed_body["message"]
+    assert_equal "sk", Setting.get("turnstile_site_key")
   end
 
   test "the new strings exist and the removed keys are gone in every locale" do
     I18n.available_locales.each do |locale|
       %w[captcha_enabled_hint captcha_active_customers captcha_active_login captcha_login_hint
-         altcha_hmac_key_missing turnstile_keys_missing].each do |key|
+         altcha_hmac_key_missing turnstile_keys_missing
+         turnstile_test_hint turnstile_test_failed].each do |key|
         assert I18n.t("ea.#{key}", locale: locale, fallback: false, default: nil).present?,
                "missing ea.#{key} in #{locale}"
       end

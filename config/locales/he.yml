@@ -40,6 +40,8 @@ he:
     captcha_login_hint: "כאשר מופעל, המשתמשים יידרשו לפתור אתגר קאפצ'ה לפני התחברות לממשק הניהול"
     altcha_hmac_key_missing: "ALTCHA זקוק למפתח HMAC שנוצר לפני שניתן להפעיל את הקאפצ'ה"
     turnstile_keys_missing: "Cloudflare Turnstile זקוק למפתח אתר ולמפתח סודי לפני שניתן להפעיל את הקאפצ'ה"
+    turnstile_test_hint: "פתרו אתגר בדיקה זה כדי לאשר ש-Turnstile פועל באתר זה; נדרש בעת הפעלת Turnstile או שינוי המפתחות"
+    turnstile_test_failed: "השלימו את אתגר הבדיקה של Turnstile כדי לאשר שהוא פועל באתר זה לפני ההפעלה"
     turnstile_keys_hint: "קבלו צמד מפתחות (site ו-secret) מלוח הבקרה של Cloudflare:"
     first_login_update_details: אנא הזינו סיסמה חדשה ועדכנו את הפרטים שלכם
     embedding: הטמעה

@@ -40,6 +40,8 @@ bs:
     captcha_login_hint: "Kada je omogućeno, korisnici će morati riješiti Captcha izazov prije prijave u administraciju"
     altcha_hmac_key_missing: "ALTCHA treba generisani HMAC ključ prije nego što se captcha može aktivirati"
     turnstile_keys_missing: "Cloudflare Turnstile treba i ključ stranice i tajni ključ prije nego što se captcha može aktivirati"
+    turnstile_test_hint: "Riješite ovaj testni izazov da potvrdite da Turnstile radi na ovoj stranici, obavezno pri aktivaciji Turnstile-a ili promjeni ključeva"
+    turnstile_test_failed: "Završite Turnstile testni izazov da potvrdite da radi na ovoj stranici prije aktivacije"
     turnstile_keys_hint: "Nabavite par ključeva (site i secret) na Cloudflare kontrolnoj ploči:"
     first_login_update_details: Unesite novu lozinku i ažurirajte svoje podatke
     embedding: Ugradnja

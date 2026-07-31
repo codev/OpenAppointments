@@ -40,6 +40,8 @@ et:
     captcha_login_hint: "Kui see on lubatud, peavad kasutajad enne haldusliidesesse sisselogimist lahendama Captcha ülesande"
     altcha_hmac_key_missing: "ALTCHA vajab enne captcha aktiveerimist genereeritud HMAC-võtit"
     turnstile_keys_missing: "Cloudflare Turnstile vajab enne captcha aktiveerimist nii saidivõtit kui ka salajast võtit"
+    turnstile_test_hint: "Lahendage see testülesanne, et kinnitada, et Turnstile töötab sellel saidil; see on nõutav Turnstile'i aktiveerimisel või võtmete muutmisel"
+    turnstile_test_failed: "Enne aktiveerimist lahendage Turnstile'i testülesanne, et kinnitada selle töötamist sellel saidil"
     turnstile_keys_hint: "Hankige site key ja secret key paar Cloudflare'i töölaualt:"
     first_login_update_details: Palun sisestage uus parool ja uuendage oma andmeid
     embedding: Manustamine

@@ -40,6 +40,8 @@ ca:
     captcha_login_hint: "Quan està activat, els usuaris hauran de resoldre un repte Captcha abans d'iniciar sessió al panell"
     altcha_hmac_key_missing: "ALTCHA necessita una clau HMAC generada abans de poder activar el captcha"
     turnstile_keys_missing: "Cloudflare Turnstile necessita una clau de lloc i una clau secreta abans de poder activar el captcha"
+    turnstile_test_hint: "Resoleu aquest repte de prova per confirmar que Turnstile funciona en aquest lloc; és obligatori en activar Turnstile o canviar-ne les claus"
+    turnstile_test_failed: "Completeu el repte de prova de Turnstile per confirmar que funciona en aquest lloc abans d'activar-lo"
     turnstile_keys_hint: "Obteniu un parell de claus (site i secret) al tauler de Cloudflare:"
     first_login_update_details: Introduïu una contrasenya nova i actualitzeu les vostres dades
     embedding: Incrustació

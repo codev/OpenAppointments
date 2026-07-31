@@ -40,6 +40,8 @@ fr:
     captcha_login_hint: "Lorsque cette option est activée, les utilisateurs devront résoudre un défi Captcha avant de se connecter à l'administration"
     altcha_hmac_key_missing: "ALTCHA nécessite une clé HMAC générée avant de pouvoir activer le captcha"
     turnstile_keys_missing: "Cloudflare Turnstile nécessite une clé de site et une clé secrète avant de pouvoir activer le captcha"
+    turnstile_test_hint: "Résolvez ce défi de test pour confirmer que Turnstile fonctionne sur ce site; requis lors de l'activation de Turnstile ou du changement de clés"
+    turnstile_test_failed: "Terminez le défi de test Turnstile pour confirmer qu'il fonctionne sur ce site avant l'activation"
     turnstile_keys_hint: "Obtenez une paire de clés (site et secret) depuis le tableau de bord Cloudflare :"
     first_login_update_details: Veuillez saisir un nouveau mot de passe et mettre à jour vos informations
     embedding: Intégration

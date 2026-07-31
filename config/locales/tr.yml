@@ -40,6 +40,8 @@ tr:
     captcha_login_hint: "Etkinleştirildiğinde kullanıcıların yönetim paneline giriş yapmadan önce bir Captcha sorusunu çözmesi gerekir"
     altcha_hmac_key_missing: "Captcha etkinleştirilmeden önce ALTCHA için oluşturulmuş bir HMAC anahtarı gereklidir"
     turnstile_keys_missing: "Captcha etkinleştirilmeden önce Cloudflare Turnstile için hem site anahtarı hem de gizli anahtar gereklidir"
+    turnstile_test_hint: "Turnstile'ın bu sitede çalıştığını doğrulamak için bu test sorusunu çözün; Turnstile'ı etkinleştirirken veya anahtarları değiştirirken gereklidir"
+    turnstile_test_failed: "Etkinleştirmeden önce Turnstile test sorusunu tamamlayarak bu sitede çalıştığını doğrulayın"
     turnstile_keys_hint: "Cloudflare panelinden bir anahtar çifti (site ve secret) alın:"
     first_login_update_details: Lütfen yeni bir şifre girin ve bilgilerinizi güncelleyin
     embedding: Gömme

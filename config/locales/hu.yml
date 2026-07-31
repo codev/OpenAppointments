@@ -40,6 +40,8 @@ hu:
     captcha_login_hint: "Ha engedélyezve van, a felhasználóknak egy Captcha feladatot kell megoldaniuk a felügyeleti felületre való bejelentkezés előtt"
     altcha_hmac_key_missing: "Az ALTCHA-hoz generált HMAC kulcs szükséges a captcha aktiválása előtt"
     turnstile_keys_missing: "A Cloudflare Turnstile-hoz webhelykulcs és titkos kulcs is szükséges a captcha aktiválása előtt"
+    turnstile_test_hint: "Oldja meg ezt a tesztfeladatot annak megerősítésére, hogy a Turnstile működik ezen az oldalon; a Turnstile aktiválásakor vagy a kulcsok módosításakor kötelező"
+    turnstile_test_failed: "Aktiválás előtt fejezze be a Turnstile tesztfeladatot annak megerősítésére, hogy működik ezen az oldalon"
     turnstile_keys_hint: "Szerezzen egy kulcspárt (site és secret) a Cloudflare vezérlőpultján:"
     first_login_update_details: Adjon meg új jelszót, és frissítse adatait
     embedding: Beágyazás

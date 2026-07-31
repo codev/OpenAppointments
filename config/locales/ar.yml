@@ -40,6 +40,8 @@ ar:
     captcha_login_hint: "عند التفعيل سيتعين على المستخدمين حل تحدي كابتشا قبل تسجيل الدخول إلى لوحة الإدارة"
     altcha_hmac_key_missing: "يحتاج ALTCHA إلى مفتاح HMAC مُولد قبل تفعيل الكابتشا"
     turnstile_keys_missing: "يحتاج Cloudflare Turnstile إلى مفتاح موقع ومفتاح سري قبل تفعيل الكابتشا"
+    turnstile_test_hint: "حل هذا التحدي التجريبي للتأكد من عمل Turnstile على هذا الموقع، وهو مطلوب عند تفعيل Turnstile أو تغيير مفاتيحه"
+    turnstile_test_failed: "أكمل تحدي Turnstile التجريبي للتأكد من عمله على هذا الموقع قبل التفعيل"
     turnstile_keys_hint: "احصل على زوج المفاتيح (site وsecret) من لوحة تحكم Cloudflare:"
     first_login_update_details: يرجى إدخال كلمة مرور جديدة وتحديث بياناتك
     embedding: التضمين

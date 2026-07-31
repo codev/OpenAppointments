@@ -40,6 +40,8 @@ zh:
     captcha_login_hint: "启用后，用户必须先完成 Captcha 验证才能登录后台"
     altcha_hmac_key_missing: "启用 captcha 之前，ALTCHA 需要已生成的 HMAC 密钥"
     turnstile_keys_missing: "启用 captcha 之前，Cloudflare Turnstile 需要站点密钥和秘密密钥"
+    turnstile_test_hint: "解决此测试挑战以确认 Turnstile 可在本网站运行；启用 Turnstile 或更改密钥时必须完成"
+    turnstile_test_failed: "启用前请完成 Turnstile 测试挑战，以确认其可在本网站运行"
     turnstile_keys_hint: "在 Cloudflare 控制台获取站点密钥和秘密密钥对:"
     first_login_update_details: 请输入新密码并更新您的信息
     embedding: 嵌入
