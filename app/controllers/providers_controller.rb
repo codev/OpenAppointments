@@ -39,7 +39,7 @@ class ProvidersController < ApplicationController
   def search
     raise ArgumentError, "Forbidden" if cannot?(:view, :users)
 
-    providers = search_users(User.providers.includes(:services, :settings), params[:keyword].to_s,
+    providers = search_users(User.providers.display_order.includes(:services, :settings), params[:keyword].to_s,
                              params.fetch(:limit, 1000).to_i, params.fetch(:offset, 0).to_i)
 
     render json: providers.map { |provider| EaRows.provider_row(provider) }
@@ -99,6 +99,31 @@ class ProvidersController < ApplicationController
     provider.update_columns(booking_slug: BookingSlug.unique_for(User))
 
     render json: { success: true, booking_slug: provider.booking_slug }
+  rescue ArgumentError => e
+    json_exception(e, status: :ok)
+  end
+
+  # POST /providers/reorder - persist the dragged order (1-based).
+  def reorder
+    raise ArgumentError, "Forbidden" if cannot?(:edit, :users)
+
+    ids = Array(params[:ids]).map(&:to_i).reject(&:zero?)
+    raise ArgumentError, "No order provided." if ids.empty?
+
+    ActiveRecord::Base.transaction do
+      ids.each_with_index { |id, index| User.providers.where(id: id).update_all(sort_order: index + 1) }
+    end
+    render json: { success: true }
+  rescue ArgumentError => e
+    json_exception(e, status: :ok)
+  end
+
+  # POST /providers/sort_alphabetically - clear the manual order.
+  def sort_alphabetically
+    raise ArgumentError, "Forbidden" if cannot?(:edit, :users)
+
+    User.providers.update_all(sort_order: nil)
+    render json: { success: true }
   rescue ArgumentError => e
     json_exception(e, status: :ok)
   end

@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   belongs_to :role, foreign_key: :id_roles
   has_one_attached :picture
+  scope :display_order, -> { order(Arel.sql("users.sort_order IS NULL, users.sort_order"), :name, :email) }
   has_one_attached :picture_padded
   has_one_attached :picture_zoomed
   has_one :settings, class_name: "UserSetting", foreign_key: :id_users,

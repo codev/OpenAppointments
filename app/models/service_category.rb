@@ -5,4 +5,6 @@ class ServiceCategory < ApplicationRecord
   has_one_attached :picture_zoomed
 
   validates :name, presence: true
+
+  scope :display_order, -> { order(Arel.sql("service_categories.sort_order IS NULL, service_categories.sort_order"), :name) }
 end

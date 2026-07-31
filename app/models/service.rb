@@ -12,6 +12,7 @@ class Service < ApplicationRecord
   validates :duration, numericality: { greater_than_or_equal_to: Appointment::EVENT_MINIMUM_DURATION }, allow_nil: true
 
   scope :available, -> { where(is_private: false) }
+  scope :display_order, -> { order(Arel.sql("services.sort_order IS NULL, services.sort_order"), :name) }
 
   before_create -> { self.booking_slug ||= BookingSlug.unique_for(Service) }
 end

@@ -54,7 +54,7 @@ class OdsBundleTest < ActiveSupport::TestCase
 
   test "the export sheets carry the picture and description columns" do
     sheets = DataExport.sheets
-    assert_equal %w[name description picture is_hidden], sheets["Service Categories"].first
+    assert_equal %w[name description picture is_hidden sort_order], sheets["Service Categories"].first
     assert_includes sheets["Services"].first, "picture"
     assert_includes sheets["Providers"].first, "about"
     assert_includes sheets["Providers"].first, "services_description"

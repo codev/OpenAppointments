@@ -25,18 +25,20 @@ module DataExport
 
   def categories_sheet
     rows = ServiceCategory.with_attached_picture.order(:name).map do |category|
-      [ category.name, category.description, picture_name(category), category.is_hidden ? "1" : "0" ]
+      [ category.name, category.description, picture_name(category), category.is_hidden ? "1" : "0",
+        category.sort_order ]
     end
-    [ %w[name description picture is_hidden] ] + rows
+    [ %w[name description picture is_hidden sort_order] ] + rows
   end
 
   def services_sheet
     rows = Service.includes(:category).with_attached_picture.order(:name).map do |service|
       [ service.name, service.duration, service.price, service.currency, service.category&.name,
         service.description, service.color, service.attendants_number, service.is_private ? "1" : "0",
-        picture_name(service) ]
+        picture_name(service), service.sort_order ]
     end
-    [ %w[name duration price currency category description color attendants_number is_private picture] ] + rows
+    [ %w[name duration price currency category description color attendants_number is_private picture
+         sort_order] ] + rows
   end
 
   def providers_sheet
@@ -44,10 +46,10 @@ module DataExport
       [ provider.name, provider.email, provider.phone_number, provider.timezone,
         provider.services.map(&:name).join("|"), provider.settings&.working_plan,
         provider.settings&.username, provider.about, provider.services_description,
-        picture_name(provider), provider.settings&.password ]
+        picture_name(provider), provider.settings&.password, provider.sort_order ]
     end
     [ %w[name email phone_number timezone services working_plan username
-         about services_description picture password_hash] ] + rows
+         about services_description picture password_hash sort_order] ] + rows
   end
 
   def picture_name(record)

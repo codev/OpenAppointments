@@ -44,6 +44,12 @@ Rails.application.routes.draw do
   post "services/regenerate_link" => "services#regenerate_link"
   post "providers/regenerate_link" => "providers#regenerate_link"
 
+  # Drag-to-reorder for the booking page ordering
+  %w[services service_categories providers].each do |resource|
+    post "#{resource}/reorder" => "#{resource}#reorder"
+    post "#{resource}/sort_alphabetically" => "#{resource}#sort_alphabetically"
+  end
+
   # 10to8 import page
   get "import" => "import#index"
   post "import/export" => "import#export"

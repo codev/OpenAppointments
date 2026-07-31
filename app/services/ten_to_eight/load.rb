@@ -93,10 +93,12 @@ module TenToEight
           end
           category.update(is_hidden: extra[:is_hidden]) if extra.key?(:is_hidden) &&
                                                            category.is_hidden != extra[:is_hidden]
+          category.update(sort_order: extra[:sort_order]) if extra[:sort_order] &&
+                                                             category.sort_order != extra[:sort_order]
         else
           category = guard("categories", counts, name) do
             ServiceCategory.create!(name: name, description: extra[:description],
-                                    is_hidden: extra[:is_hidden] || false)
+                                    is_hidden: extra[:is_hidden] || false, sort_order: extra[:sort_order])
           end
           next unless category
 
@@ -118,6 +120,7 @@ module TenToEight
           if service.description.blank? && row[:description].present?
             service.update(description: row[:description])
           end
+          service.update(sort_order: row[:sort_order]) if row[:sort_order] && service.sort_order != row[:sort_order]
         else
           service = guard("services", counts, row[:name]) do
             Service.create!(
@@ -125,7 +128,7 @@ module TenToEight
               price: row[:price] || 0, currency: row[:currency].presence || "GBP",
               description: row[:description], color: row[:color],
               attendants_number: row[:attendants_number] || 1, is_private: row[:is_private] || false,
-              id_service_categories: @category_ids[row[:category]]
+              sort_order: row[:sort_order], id_service_categories: @category_ids[row[:category]]
             )
           end
           next unless service
@@ -153,6 +156,7 @@ module TenToEight
           if provider.services_description.blank? && row[:services_description].present?
             updates[:services_description] = row[:services_description]
           end
+          updates[:sort_order] = row[:sort_order] if row[:sort_order] && provider.sort_order != row[:sort_order]
           provider.update(updates) if updates.any?
           restore_password(provider, row[:password_hash])
         elsif @create_providers && row[:email].present?
@@ -160,7 +164,7 @@ module TenToEight
             user = User.create!(
               name: row[:name], email: row[:email], phone_number: row[:phone],
               about: row[:about], services_description: row[:services_description],
-              timezone: "Europe/London", role: role
+              sort_order: row[:sort_order], timezone: "Europe/London", role: role
             )
             user.create_settings!(
               username: row[:username].presence || row[:email].split("@").first,

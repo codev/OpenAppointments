@@ -96,6 +96,31 @@ class ServicesController < ApplicationController
     json_exception(e, status: :ok)
   end
 
+  # POST /services/reorder - persist the dragged order (1-based).
+  def reorder
+    raise ArgumentError, "Forbidden" if cannot?(:edit, :services)
+
+    ids = Array(params[:ids]).map(&:to_i).reject(&:zero?)
+    raise ArgumentError, "No order provided." if ids.empty?
+
+    ActiveRecord::Base.transaction do
+      ids.each_with_index { |id, index| Service.where(id: id).update_all(sort_order: index + 1) }
+    end
+    render json: { success: true }
+  rescue ArgumentError => e
+    json_exception(e, status: :ok)
+  end
+
+  # POST /services/sort_alphabetically - clear the manual order.
+  def sort_alphabetically
+    raise ArgumentError, "Forbidden" if cannot?(:edit, :services)
+
+    Service.update_all(sort_order: nil)
+    render json: { success: true }
+  rescue ArgumentError => e
+    json_exception(e, status: :ok)
+  end
+
   private
 
   def service_response(service)
@@ -126,7 +151,7 @@ class ServicesController < ApplicationController
   end
 
   def search_services(keyword, limit, offset)
-    scope = Service.order(:name)
+    scope = Service.display_order
     if keyword.present?
       pattern = "%#{Service.sanitize_sql_like(keyword)}%"
       scope = scope.where("name LIKE :pattern OR description LIKE :pattern", pattern: pattern)

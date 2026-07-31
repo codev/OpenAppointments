@@ -22,7 +22,7 @@ App.Pages.ServiceCategories = (function () {
     const $description = $('#description');
     const $hidden = $('#category-hidden');
     let filterResults = {};
-    const filterLimit = 20;
+    const filterLimit = 10000;
 
     let filterPage = 1;
 
@@ -313,6 +313,7 @@ App.Pages.ServiceCategories = (function () {
     function getFilterHtml(serviceCategory) {
         return $('<div/>', {
             'class': 'service-category-row entry',
+            'draggable': true,
             'data-id': serviceCategory.id,
             'html': [
                 $('<strong/>', {
@@ -354,7 +355,46 @@ App.Pages.ServiceCategories = (function () {
         App.Pages.ServiceCategories.addEventListeners();
     }
 
+
+    /**
+     * Drag-to-reorder: persist the dragged order, blocked while filtering.
+     */
+    function initializeReorder() {
+        App.Utils.DragReorder.enable(
+            $('#filter-service-categories .results'),
+            '.service-category-row',
+            () => !$('#filter-service-categories .key').val(),
+            (ids) => {
+                $.post(App.Utils.Url.siteUrl('service_categories/reorder'), {csrf_token: vars('csrf_token'), ids: ids});
+            },
+        );
+
+        $('.sort-alphabetically').on('click', () => {
+            const buttons = [
+                {
+                    text: lang('cancel'),
+                    click: (event, messageModal) => {
+                        messageModal.hide();
+                    },
+                },
+                {
+                    text: lang('sort_alphabetically'),
+                    click: (event, messageModal) => {
+                        $.post(App.Utils.Url.siteUrl('service_categories/sort_alphabetically'), {csrf_token: vars('csrf_token')}).done(() => {
+                            $('#filter-service-categories .key').val('');
+                            $('#filter-service-categories .key').parents('form').trigger('submit');
+                        });
+                        messageModal.hide();
+                    },
+                },
+            ];
+
+            App.Utils.Message.show(lang('sort_alphabetically'), lang('sort_alphabetically_confirm'), buttons);
+        });
+    }
+
     document.addEventListener('DOMContentLoaded', initialize);
+    document.addEventListener('DOMContentLoaded', initializeReorder);
 
     return {
         filter,

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_07_31_130000) do
+ActiveRecord::Schema[8.1].define(version: 2026_07_31_150000) do
   create_table "action_mailbox_inbound_emails", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.string "message_checksum", null: false
@@ -168,6 +168,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_07_31_130000) do
     t.text "description"
     t.boolean "is_hidden", default: false, null: false
     t.string "name"
+    t.integer "sort_order"
     t.datetime "updated_at", null: false
   end
 
@@ -185,6 +186,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_07_31_130000) do
     t.string "name"
     t.decimal "price", precision: 10, scale: 2
     t.integer "slot_interval", default: 15
+    t.integer "sort_order"
     t.datetime "updated_at", null: false
     t.index ["booking_slug"], name: "index_services_on_booking_slug", unique: true
     t.index ["id_service_categories"], name: "index_services_on_id_service_categories"
@@ -250,6 +252,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_07_31_130000) do
     t.text "notes"
     t.string "phone_number"
     t.text "services_description"
+    t.integer "sort_order"
     t.string "state"
     t.string "timezone", default: "UTC"
     t.datetime "updated_at", null: false

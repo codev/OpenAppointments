@@ -10,7 +10,7 @@ module BookingPayloads
            .with_attached_picture
            .left_joins(:category)
            .where(service_categories: { is_hidden: [ nil, false ] })
-           .order(:name)
+           .display_order
            .select("services.*", "service_categories.name AS service_category_name",
                    "service_categories.id AS service_category_id")
            .map { |service| service_payload(service) }
@@ -35,7 +35,7 @@ module BookingPayloads
   def available_categories
     category_ids = Service.available.joins(:provider_links).distinct.pluck(:id_service_categories).compact
     ServiceCategory.where(id: category_ids, is_hidden: false)
-                   .with_attached_picture.order(:name).map do |category|
+                   .with_attached_picture.display_order.map do |category|
       { "id" => category.id, "name" => category.name, "description" => category.description,
         "picture_url" => EaRows.picture_url(category) }
     end
@@ -45,7 +45,7 @@ module BookingPayloads
   def available_providers
     User.providers.where(is_private: false)
         .joins(:provider_service_links).distinct
-        .order(:name, :email)
+        .display_order
         .with_attached_picture
         .includes(:services)
         .map do |provider|

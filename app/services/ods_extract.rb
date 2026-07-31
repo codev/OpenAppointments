@@ -45,7 +45,8 @@ class OdsExtract
   def categories_rows
     rows("Service Categories").map do |row|
       { name: row["name"], description: row["description"].presence,
-        picture: row["picture"].presence, is_hidden: row["is_hidden"] == "1" }
+        picture: row["picture"].presence, is_hidden: row["is_hidden"] == "1",
+        sort_order: row["sort_order"].presence&.to_i }
     end
   end
 
@@ -55,7 +56,8 @@ class OdsExtract
         category: row["category"].presence, price: row["price"].presence&.to_f,
         currency: row["currency"].presence, description: row["description"].presence,
         color: row["color"].presence, attendants_number: row["attendants_number"].to_i.nonzero?,
-        is_private: row["is_private"] == "1", picture: row["picture"].presence }
+        is_private: row["is_private"] == "1", picture: row["picture"].presence,
+        sort_order: row["sort_order"].presence&.to_i }
     end
   end
 
@@ -66,7 +68,8 @@ class OdsExtract
         services: row["services"].to_s.split("|"), working_plan: plan,
         username: row["username"].presence, about: row["about"].presence,
         services_description: row["services_description"].presence,
-        picture: row["picture"].presence, password_hash: row["password_hash"].presence }
+        picture: row["picture"].presence, password_hash: row["password_hash"].presence,
+        sort_order: row["sort_order"].presence&.to_i }
     end
   end
 
