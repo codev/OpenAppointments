@@ -708,6 +708,14 @@ zh-tw:
     coming_soon: Coming soon
     messages_incoming: Incoming
     messages_incoming_hint: Customer can reply to support incoming messages as well as outgoing ones.
+    messages_smsgateway_url: "伺服器網址"
+    messages_smsgateway_login: "API 帳號"
+    messages_smsgateway_password: "API 密碼"
+    messages_smsgateway_signing_key: "Webhook 簽章金鑰"
+    messages_register_webhook: "註冊 Webhook"
+    messages_register_webhook_hint: "將上方位址註冊到閘道伺服器,讓手機把收到的簡訊傳送到該位址;儲存後執行一次。"
+    messages_webhook_registered: "Webhook 已註冊。"
+    messages_provider_smsgateway_info: "透過執行 SMS Gateway 應用程式的 Android 手機與自有伺服器收發簡訊,無每則費用。"
     messages_email_outgoing: Outgoing email
     messages_email_mode: Sending method
     messages_email_mode_server: Send email through server

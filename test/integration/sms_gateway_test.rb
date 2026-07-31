@@ -160,4 +160,15 @@ class SmsGatewayTest < ActionDispatch::IntegrationTest
     assert_response :success
     assert_equal BASE, Setting.get("messages_smsgateway_url")
   end
+
+  test "the gateway strings exist in every locale" do
+    I18n.available_locales.each do |locale|
+      %w[messages_smsgateway_url messages_smsgateway_login messages_smsgateway_password
+         messages_smsgateway_signing_key messages_register_webhook messages_register_webhook_hint
+         messages_webhook_registered messages_provider_smsgateway_info].each do |key|
+        assert I18n.t("ea.#{key}", locale: locale, fallback: false, default: nil).present?,
+               "missing ea.#{key} in #{locale}"
+      end
+    end
+  end
 end

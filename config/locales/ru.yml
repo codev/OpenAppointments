@@ -708,6 +708,14 @@ ru:
     coming_soon: Coming soon
     messages_incoming: Incoming
     messages_incoming_hint: Customer can reply to support incoming messages as well as outgoing ones.
+    messages_smsgateway_url: "URL сервера"
+    messages_smsgateway_login: "Логин API"
+    messages_smsgateway_password: "Пароль API"
+    messages_smsgateway_signing_key: "Ключ подписи вебхуков"
+    messages_register_webhook: "Зарегистрировать вебхук"
+    messages_register_webhook_hint: "Регистрирует адрес выше на сервере шлюза, чтобы телефон доставлял туда входящие SMS; выполните один раз после сохранения."
+    messages_webhook_registered: "Вебхук зарегистрирован."
+    messages_provider_smsgateway_info: "Отправляет и принимает SMS через Android-телефон с приложением SMS Gateway и собственным сервером, без платы за сообщение."
     messages_email_outgoing: Outgoing email
     messages_email_mode: Sending method
     messages_email_mode_server: Send email through server

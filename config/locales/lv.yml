@@ -708,6 +708,14 @@ lv:
     coming_soon: Coming soon
     messages_incoming: Incoming
     messages_incoming_hint: Customer can reply to support incoming messages as well as outgoing ones.
+    messages_smsgateway_url: "Servera URL"
+    messages_smsgateway_login: "API lietotajvards"
+    messages_smsgateway_password: "API parole"
+    messages_smsgateway_signing_key: "Webhook parakstisanas atslega"
+    messages_register_webhook: "Registret webhook"
+    messages_register_webhook_hint: "Registre augstak norādīto adresi vārtejas serverī, lai tālrunis piegādātu ienākošos SMS uz to; palaidiet vienreiz pēc saglabāšanas."
+    messages_webhook_registered: "Webhook registrets."
+    messages_provider_smsgateway_info: "Suta un sanem SMS caur Android talruni ar SMS Gateway lietotni pret musu pasu serveri, bez maksas par zinu."
     messages_email_outgoing: Outgoing email
     messages_email_mode: Sending method
     messages_email_mode_server: Send email through server

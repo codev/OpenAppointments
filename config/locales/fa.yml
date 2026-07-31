@@ -708,6 +708,14 @@ fa:
     coming_soon: Coming soon
     messages_incoming: Incoming
     messages_incoming_hint: Customer can reply to support incoming messages as well as outgoing ones.
+    messages_smsgateway_url: "نشانی سرور"
+    messages_smsgateway_login: "نام کاربری API"
+    messages_smsgateway_password: "گذرواژه API"
+    messages_smsgateway_signing_key: "کلید امضای وب‌هوک"
+    messages_register_webhook: "ثبت وب‌هوک"
+    messages_register_webhook_hint: "نشانی بالا را روی سرور دروازه ثبت می‌کند تا تلفن پیامک‌های دریافتی را به آن تحویل دهد؛ پس از ذخیره یک بار اجرا کنید."
+    messages_webhook_registered: "وب‌هوک ثبت شد."
+    messages_provider_smsgateway_info: "پیامک‌ها را از طریق یک تلفن اندرویدی با برنامه SMS Gateway و سرور خودمان ارسال و دریافت می‌کند، بدون هزینه به ازای هر پیام."
     messages_email_outgoing: Outgoing email
     messages_email_mode: Sending method
     messages_email_mode_server: Send email through server

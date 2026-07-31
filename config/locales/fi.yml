@@ -708,6 +708,14 @@ fi:
     coming_soon: Coming soon
     messages_incoming: Incoming
     messages_incoming_hint: Customer can reply to support incoming messages as well as outgoing ones.
+    messages_smsgateway_url: "Palvelimen URL"
+    messages_smsgateway_login: "API-tunnus"
+    messages_smsgateway_password: "API-salasana"
+    messages_smsgateway_signing_key: "Webhookin allekirjoitusavain"
+    messages_register_webhook: "Rekisteroei webhook"
+    messages_register_webhook_hint: "Rekisteroei ylla olevan osoitteen yhdyskaeytaevaepalvelimelle, jotta puhelin toimittaa saapuvat tekstiviestit siihen; aja kerran tallennuksen jaelkeen."
+    messages_webhook_registered: "Webhook rekisteroeity."
+    messages_provider_smsgateway_info: "Laehettaeae ja vastaanottaa tekstiviestejae Android-puhelimella, jossa on SMS Gateway -sovellus omaa palvelinta vasten, ei viestikohtaisia kuluja."
     messages_email_outgoing: Outgoing email
     messages_email_mode: Sending method
     messages_email_mode_server: Send email through server

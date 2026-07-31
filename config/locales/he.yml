@@ -708,6 +708,14 @@ he:
     coming_soon: Coming soon
     messages_incoming: Incoming
     messages_incoming_hint: Customer can reply to support incoming messages as well as outgoing ones.
+    messages_smsgateway_url: "כתובת השרת"
+    messages_smsgateway_login: "שם משתמש API"
+    messages_smsgateway_password: "סיסמת API"
+    messages_smsgateway_signing_key: "מפתח חתימת Webhook"
+    messages_register_webhook: "רישום Webhook"
+    messages_register_webhook_hint: "רושם את הכתובת שלמעלה בשרת השער כדי שהטלפון ימסור אליה הודעות SMS נכנסות; הריצו פעם אחת לאחר השמירה."
+    messages_webhook_registered: "ה-Webhook נרשם."
+    messages_provider_smsgateway_info: "שולח ומקבל SMS דרך טלפון אנדרואיד עם אפליקציית SMS Gateway מול השרת שלנו, ללא עלות להודעה."
     messages_email_outgoing: Outgoing email
     messages_email_mode: Sending method
     messages_email_mode_server: Send email through server

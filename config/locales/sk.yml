@@ -708,6 +708,14 @@ sk:
     coming_soon: Coming soon
     messages_incoming: Incoming
     messages_incoming_hint: Customer can reply to support incoming messages as well as outgoing ones.
+    messages_smsgateway_url: "URL servera"
+    messages_smsgateway_login: "Prihlasovacie meno API"
+    messages_smsgateway_password: "Heslo API"
+    messages_smsgateway_signing_key: "Podpisovy kluc webhookov"
+    messages_register_webhook: "Registrovat webhook"
+    messages_register_webhook_hint: "Zaregistruje uvedenu adresu na serveri brany, aby tam telefon dorucoval prichadzajuce SMS; spustite raz po ulozeni."
+    messages_webhook_registered: "Webhook zaregistrovany."
+    messages_provider_smsgateway_info: "Odosiela a prijima SMS cez telefon s Androidom s aplikaciou SMS Gateway a vlastnym serverom, bez poplatku za spravu."
     messages_email_outgoing: Outgoing email
     messages_email_mode: Sending method
     messages_email_mode_server: Send email through server
