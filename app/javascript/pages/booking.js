@@ -330,10 +330,57 @@ App.Pages.Booking = (function () {
         }
 
         updateStepIndicators(targetIndex);
+        resetSelectionStep(targetIndex);
 
         $visibleFrame.fadeOut(() => {
             $('#wizard-frame-' + targetIndex).fadeIn();
         });
+    }
+
+    /**
+     * Going back to a selection step starts it over: category view restored,
+     * selections on that step and the steps after it cleared. Rescheduling
+     * (manage mode) keeps its prefilled appointment untouched.
+     */
+    function resetSelectionStep(targetIndex) {
+        if (manageMode) {
+            return;
+        }
+
+        const $frame = $('#wizard-frame-' + targetIndex);
+        let resetService = $frame.find('#select-service').length > 0;
+        let resetProvider = $frame.find('#select-provider').length > 0;
+
+        // The later selection step restarts along with the earlier one.
+        if (firstStep === 'provider') {
+            resetService = resetService || resetProvider;
+        } else {
+            resetProvider = resetProvider || resetService;
+        }
+
+        if (resetService) {
+            $('#category-cards .booking-card').removeClass('selected');
+            $('.service-cards .booking-card').removeClass('selected');
+            $('.service-cards[data-category-id!=""]').addClass('d-none');
+
+            const $heading = $('#select-service-heading');
+
+            if ($heading.length && !$('.service-cards[data-category-id=""]').length) {
+                $heading.addClass('d-none');
+            }
+
+            if ($selectService.val()) {
+                $selectService.val('').trigger('change');
+            }
+        }
+
+        if (resetProvider) {
+            $('#provider-cards .booking-card').removeClass('selected');
+
+            if ($selectProvider.val()) {
+                $selectProvider.val('').trigger('change');
+            }
+        }
     }
 
     function prefillFromQueryParam(field, param) {
@@ -736,6 +783,7 @@ App.Pages.Booking = (function () {
 
             // Update step indicator immediately
             updateStepIndicators(prevTabIndex);
+            resetSelectionStep(prevTabIndex);
 
             $(event.currentTarget)
                 .parents()
