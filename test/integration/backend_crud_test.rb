@@ -42,6 +42,17 @@ class BackendCrudTest < ActionDispatch::IntegrationTest
     end
   end
 
+  test "the header shows the user top right with a cog settings menu, no footer booking link" do
+    login_admin
+    get "/calendar"
+    assert_select "#header-user small", text: users(:admin).name
+    assert_select "#header a.dropdown-toggle[aria-label=?]", I18n.t("ea.settings") do |links|
+      assert_select links.first, "i.fa-cog"
+      assert_equal "", links.first.children.select(&:text?).map(&:text).join.strip
+    end
+    assert_select "#footer a", text: I18n.t("ea.go_to_booking_page"), count: 0
+  end
+
   test "backend pages render for admins" do
     login_admin
     PAGES.each do |page|
