@@ -9,7 +9,7 @@
           uncategorized = cards_mode ? available_services.select { |service| service["service_category_id"].nil? } : []
           category_first = cards_mode && categories.any?
         %>
-        <h2 class="frame-title fw-light text-center mb-4 text-muted mt-md-5">
+        <h2 class="frame-title fw-light text-center mb-4 text-muted mt-md-1">
             <%= lang(category_first ? 'select_category' : 'select_service') %>
         </h2>
 
