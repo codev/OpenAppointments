@@ -3,6 +3,12 @@
 The about page lists these notes; every release needs a section here matching
 CloudronManifest.json.
 
+## 1.3.3
+
+- Login and recovery pages no longer show the ALTCHA widget when Turnstile is the captcha provider or the HMAC key is missing, which popped an error at login
+- ALTCHA counts as enabled only when its HMAC key is configured, matching Turnstile
+- Remove the unported legacy image captcha fallback from the booking form
+
 ## 1.3.2
 
 - Fix Internal server error from the captcha challenge endpoint (altcha gem 2.0 API), which broke login and booking when ALTCHA captcha was enabled

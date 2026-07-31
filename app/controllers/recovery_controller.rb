@@ -10,7 +10,7 @@ class RecoveryController < ApplicationController
       dest_url: session[:dest_url] || calendar_url,
       company_name: Setting.get("company_name"),
       require_captcha: Setting.get("require_captcha"),
-      altcha_enabled: Setting.get("altcha_enabled")
+      altcha_enabled: AltchaChallenge.enabled? ? "1" : "0"
     )
   end
 
@@ -48,7 +48,7 @@ class RecoveryController < ApplicationController
         token: token,
         company_name: Setting.get("company_name"),
         require_captcha: Setting.get("require_captcha"),
-        altcha_enabled: Setting.get("altcha_enabled")
+        altcha_enabled: AltchaChallenge.enabled? ? "1" : "0"
       )
     end
     render :reset

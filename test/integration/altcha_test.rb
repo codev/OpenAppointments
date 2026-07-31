@@ -29,6 +29,48 @@ class AltchaTest < ActionDispatch::IntegrationTest
     assert_equal false, response.parsed_body["success"]
   end
 
+  test "enabled requires the HMAC key" do
+    enable_altcha
+    assert AltchaChallenge.enabled?
+    Setting.set("altcha_hmac_key", "")
+    assert_not AltchaChallenge.enabled?
+  end
+
+  test "login page renders the widget only when ALTCHA is the active provider" do
+    enable_altcha
+    get "/login"
+    assert_select "#altcha-widget"
+
+    Setting.set("captcha_provider", "turnstile")
+    get "/login"
+    assert_select "#altcha-widget", count: 0
+
+    Setting.set("captcha_provider", "altcha")
+    Setting.set("altcha_hmac_key", "")
+    get "/login"
+    assert_select "#altcha-widget", count: 0
+  end
+
+  test "recovery page renders the widget only when ALTCHA is the active provider" do
+    enable_altcha
+    get "/recovery"
+    assert_select "#altcha-widget"
+
+    Setting.set("captcha_provider", "turnstile")
+    get "/recovery"
+    assert_select "#altcha-widget", count: 0
+  end
+
+  test "booking page shows no captcha markup when neither provider is configured" do
+    Setting.set("require_captcha", "1")
+    Setting.set("altcha_enabled", "1")
+    Setting.set("captcha_provider", "turnstile")
+    get "/"
+    assert_select "#altcha-widget", count: 0
+    assert_select ".cf-turnstile", count: 0
+    assert_select ".captcha-image", count: 0
+  end
+
   test "verify accepts a solved challenge payload and rejects garbage" do
     enable_altcha
     challenge = AltchaChallenge.create_challenge
