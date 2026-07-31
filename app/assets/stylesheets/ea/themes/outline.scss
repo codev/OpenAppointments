@@ -79,3 +79,7 @@ $border-radius: 0.5rem;
 .booking-card.selected {
     background: transparent;
 }
+
+#book-appointment-wizard {
+    border: 3px solid var(--oa-primary);
+}

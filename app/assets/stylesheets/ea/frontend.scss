@@ -148,14 +148,26 @@
     flex-shrink: 0;
 }
 
-/* Pictures under the service/provider dropdowns stay heavily constrained. */
+/* Dropdown view: the description picture floats left with the text wrapping
+   round it; centered above the text on small screens. */
 #service-description .selection-picture,
 #provider-description .selection-picture {
-    max-width: min(100%, 400px);
-    max-height: 400px;
+    float: left;
+    margin: 0 1rem 0.25rem 0.25rem;
+    max-width: min(100%, 130px);
+    max-height: 130px;
     width: auto;
     height: auto;
     object-fit: contain;
+}
+
+@media (max-width: 575.98px) {
+    #service-description .selection-picture,
+    #provider-description .selection-picture {
+        float: none;
+        display: block;
+        margin: 0 auto 0.75rem;
+    }
 }
 
 #steps .book-step {

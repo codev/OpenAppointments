@@ -28,6 +28,8 @@ CloudronManifest.json.
 - The Select Provider First switch is a button beside Next instead of a link under the content
 - The wizard Next buttons follow the theme's primary colour instead of always being black
 - Services, categories and providers can be drag-reordered in the admin lists (pagination gone, whole list shown) with a confirmed Sort Alphabetically reset; the order drives the booking page and rides export and import
+- Dropdown view shows the selected service or provider picture floated left of the description with wrapping text, centred on small screens
+- Outline theme: the booking widget carries a 3px primary-colour border
 
 ## 1.3.2
 

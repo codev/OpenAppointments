@@ -1264,6 +1264,16 @@ App.Pages.Booking = (function () {
             return; // Service not found
         }
 
+        // Dropdown view only: the picture floats left of the description text
+        // (the card view already shows it on the card itself).
+        if (displayMode !== 'cards' && service.picture_url) {
+            $('<img/>', {
+                'src': service.picture_url,
+                'alt': service.name,
+                'class': 'selection-picture rounded',
+            }).appendTo($serviceDescription);
+        }
+
         // Render the additional service information
 
         const additionalInfoParts = [];
@@ -1320,6 +1330,14 @@ App.Pages.Booking = (function () {
 
         if (!provider) {
             return; // "Any provider" or nothing selected.
+        }
+
+        if (displayMode !== 'cards' && provider.picture_url) {
+            $('<img/>', {
+                'src': provider.picture_url,
+                'alt': provider.name,
+                'class': 'selection-picture rounded',
+            }).appendTo($providerDescription);
         }
 
         [provider.about, provider.services_description].forEach((text) => {
