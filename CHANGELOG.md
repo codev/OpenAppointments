@@ -6,6 +6,8 @@ CloudronManifest.json.
 ## 1.3.2
 
 - Fix Internal server error from the captcha challenge endpoint (altcha gem 2.0 API), which broke login and booking when ALTCHA captcha was enabled
+- Security: update Rails to 8.1.3.1 for the Active Storage variant processing vulnerability (CVE-2026-66066)
+- Disable the unused Active Storage variant processor; pictures are served as uploaded
 
 ## 1.3.1
 
