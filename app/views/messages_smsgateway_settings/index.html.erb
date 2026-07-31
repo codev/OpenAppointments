@@ -1,0 +1,12 @@
+<%= render "shared/messages_sms_settings",
+           title: "SMS Gateway",
+           prefix: "smsgateway",
+           fields: [
+             { name: "messages_smsgateway_url", label: lang("messages_smsgateway_url") },
+             { name: "messages_smsgateway_login", label: lang("messages_smsgateway_login") },
+             { name: "messages_smsgateway_password", label: lang("messages_smsgateway_password"), type: "password" },
+             { name: "messages_smsgateway_signing_key", label: lang("messages_smsgateway_signing_key"), type: "password" }
+           ],
+           console_url: "https://docs.sms-gate.app/getting-started/private-server/",
+           console_label: "sms-gate.app",
+           register_webhook_path: "messages_smsgateway_settings/register_webhook" %>

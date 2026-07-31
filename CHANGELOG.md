@@ -3,6 +3,10 @@
 The about page lists these notes; every release needs a section here matching
 CloudronManifest.json.
 
+## 1.5.0
+
+- SMS through your own Android phone: new SMS Gateway provider (sms-gate.app private server) with sending, signed incoming webhooks and one-click webhook registration
+
 ## 1.4.1
 
 - Fix receiving email through the server: connect to the mail server's TLS IMAP port

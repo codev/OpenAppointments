@@ -87,7 +87,8 @@ Rails.application.routes.draw do
      altcha_settings embed_settings google_calendar_settings umami_analytics_settings
      google_analytics_settings matomo_analytics_settings jitsi_settings ldap_settings
      messages_settings messages_email_settings messages_twilio_settings
-     messages_plivo_settings messages_textanywhere_settings].each do |resource|
+     messages_plivo_settings messages_textanywhere_settings
+     messages_smsgateway_settings].each do |resource|
     get resource => "#{resource}#index"
     post "#{resource}/save" => "#{resource}#save"
   end
@@ -107,6 +108,7 @@ Rails.application.routes.draw do
   post "customer_messages/send" => "customer_messages#send_message"
   post "business_settings/apply_global_working_plan" => "business_settings#apply_global_working_plan"
   post "altcha_settings/generate_key" => "altcha_settings#generate_key"
+  post "messages_smsgateway_settings/register_webhook" => "messages_smsgateway_settings#register_webhook"
   post "ldap_settings/search" => "ldap_settings#search"
   get "integrations" => "integrations#index"
   get "about" => "about#index"
