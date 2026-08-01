@@ -3,6 +3,10 @@
 The about page lists these notes; every release needs a section here matching
 CloudronManifest.json.
 
+## 1.5.1
+
+- Remove the redundant Android SMS Gateway placeholder card from the providers page
+
 ## 1.5.0
 
 - SMS through your own Android phone: new SMS Gateway provider (sms-gate.app private server) with sending, signed incoming webhooks and one-click webhook registration
