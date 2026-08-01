@@ -244,7 +244,10 @@ class SmsGatewayTest < ActionDispatch::IntegrationTest
          messages_smsgateway_signing_key messages_provider_smsgateway_info
          default_country_code default_country_code_hint messages_default_country_only
          messages_smsgateway_setup messages_smsgateway_apk messages_smsgateway_apk_link
-         messages_smsgateway_step_device messages_smsgateway_step_url messages_smsgateway_step_token
+         messages_smsgateway_step_device messages_smsgateway_step_server
+         messages_smsgateway_step_server_public messages_smsgateway_step_server_or
+         messages_smsgateway_step_server_private
+         messages_smsgateway_step_url messages_smsgateway_step_token
          messages_smsgateway_step_signing messages_smsgateway_step_credentials
          messages_smsgateway_step_activate messages_smsgateway_inbound_hint
          messages_smsgateway_invalid messages_test_sms messages_test_sms_number

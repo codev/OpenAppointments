@@ -5,10 +5,9 @@ CloudronManifest.json.
 
 ## 1.5.1
 
-- Remove the redundant Android SMS Gateway placeholder card from the providers page
-- SMS Gateway page rebuilt: step by step setup instructions, settings validated against the server on save with automatic webhook registration and deduplication, and a Send Test SMS button
-- Default country code setting converts local numbers for SMS; each SMS provider can be restricted to default-country phones
-- SMS numbers normalise to E.164 at send time, fixing sends to customers who typed UK local numbers into the booking form
+- SMS Gateway page now has step by step setup instructions, validates settings when you save and has a Send Test SMS button
+- Default country code setting converts local numbers for SMS - each SMS provider can be restricted to only sending to default-country phones
+- SMS numbers normalise to E.164 format when sending for customer who type local numbers in the booking form
 
 ## 1.5.0
 
@@ -16,8 +15,7 @@ CloudronManifest.json.
 
 ## 1.4.1
 
-- Fix receiving email through the server: connect to the mail server's TLS IMAP port
-- Fix clicking a customer doing nothing when the customer has appointment history
+- Minor fixes for receiving email through a Cloudron server and viewing customer records
 
 ## 1.4.0
 
