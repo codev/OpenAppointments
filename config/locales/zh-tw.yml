@@ -705,13 +705,27 @@ zh-tw:
     messages_provider_textanywhere_info: Send and receive SMS with a TextAnywhere account.
     messages_incoming: Incoming
     messages_incoming_hint: Customer can reply to support incoming messages as well as outgoing ones.
+    messages_test_sms_sent: "測試簡訊已傳送,請檢查手機。"
+    messages_test_sms_number: "測試電話號碼"
+    messages_test_sms: "傳送測試簡訊"
+    messages_smsgateway_invalid: "無法驗證閘道設定:"
+    messages_smsgateway_inbound_hint: "手機會將傳入訊息傳送到此位址,儲存時若開啟接收會自動完成註冊。"
+    messages_smsgateway_step_activate: "勾選啟用與接收傳入訊息,然後儲存。系統會測試設定;修正錯誤後用下方的傳送測試簡訊按鈕測試傳送。"
+    messages_smsgateway_step_credentials: "在主畫面關閉 Local server、開啟 Cloud server 並按 Offline 按鈕連線(同時勾選 Start on boot),然後將主畫面顯示的使用者名稱與密碼複製到下方的使用者名稱與密碼。"
+    messages_smsgateway_step_signing: "前往應用程式的 Settings -> Webhooks -> Signing Key -> 輸入簽章金鑰,再複製到下方的 Webhook 簽章金鑰。"
+    messages_smsgateway_step_token: "若使用私有伺服器,也要在同一設定畫面輸入 Private Token - 權杖位於閘道伺服器的 /app/data/private_token。"
+    messages_smsgateway_step_url: "在應用程式設定中前往 Cloud Server,在 API URL 輸入此網址(需先填寫下方的 Server URL):"
+    messages_smsgateway_step_device: "在應用程式中:允許簡訊權限,在詢問時停用電池最佳化(或在 Android 設定中)。在下方輸入所用伺服器的 Server URL。"
+    messages_smsgateway_apk_link: "GitHub 發行頁面"
+    messages_smsgateway_apk: "在要傳送簡訊的 Android 手機上安裝 SMS Gateway 應用程式。從此下載 APK:"
+    messages_smsgateway_setup: "設定"
+    messages_default_country_only: "僅傳送到預設國家(%{code})的電話"
+    default_country_code_hint: "用於將以 0 開頭的本地電話號碼轉換為簡訊用的國際格式,例如英國為 +44。"
+    default_country_code: "預設國碼"
     messages_smsgateway_url: "伺服器網址"
-    messages_smsgateway_login: "API 帳號"
-    messages_smsgateway_password: "API 密碼"
+    messages_smsgateway_login: "使用者名稱"
+    messages_smsgateway_password: "密碼"
     messages_smsgateway_signing_key: "Webhook 簽章金鑰"
-    messages_register_webhook: "註冊 Webhook"
-    messages_register_webhook_hint: "將上方位址註冊到閘道伺服器,讓手機把收到的簡訊傳送到該位址;儲存後執行一次。"
-    messages_webhook_registered: "Webhook 已註冊。"
     messages_provider_smsgateway_info: "透過執行 SMS Gateway 應用程式的 Android 手機與自有伺服器收發簡訊,無每則費用。"
     messages_email_outgoing: Outgoing email
     messages_email_mode: Sending method

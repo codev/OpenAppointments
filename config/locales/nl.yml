@@ -705,13 +705,27 @@ nl:
     messages_provider_textanywhere_info: Send and receive SMS with a TextAnywhere account.
     messages_incoming: Incoming
     messages_incoming_hint: Customer can reply to support incoming messages as well as outgoing ones.
+    messages_test_sms_sent: "Test-sms verstuurd, controleer de telefoon."
+    messages_test_sms_number: "Testtelefoonnummer"
+    messages_test_sms: "Test-sms versturen"
+    messages_smsgateway_invalid: "De gateway-instellingen konden niet worden gevalideerd:"
+    messages_smsgateway_inbound_hint: "De telefoon bezorgt inkomende berichten op dit adres, registratie gebeurt automatisch bij het opslaan met ontvangen ingeschakeld."
+    messages_smsgateway_step_activate: "Vink Actief en Inkomende berichten ontvangen aan en sla op. De instellingen worden getest; herstel fouten en test het verzenden met de knop Test-sms versturen hieronder."
+    messages_smsgateway_step_credentials: "Zet op het beginscherm Local server uit, Cloud server aan en druk op de knop Offline om te verbinden (vink ook Start on boot aan), kopieer daarna de gebruikersnaam en het wachtwoord van het beginscherm naar Gebruikersnaam en Wachtwoord hieronder."
+    messages_smsgateway_step_signing: "Ga naar Settings -> Webhooks -> Signing Key in de app -> voer een ondertekeningssleutel in en kopieer die naar de Webhook-ondertekeningssleutel hieronder."
+    messages_smsgateway_step_token: "Gebruikt u een privéserver, vul dan op dat scherm ook de Private Token in - de token staat in /app/data/private_token op de gatewayserver."
+    messages_smsgateway_step_url: "Ga in de app-instellingen naar Cloud Server en vul bij API URL deze URL in (vul eerst de Server URL hieronder in):"
+    messages_smsgateway_step_device: "In de app: sta de sms-machtigingen toe, schakel batterijoptimalisatie uit wanneer gevraagd (of via de Android-instellingen). Vul hieronder de Server URL van de gebruikte server in."
+    messages_smsgateway_apk_link: "GitHub-releasepagina"
+    messages_smsgateway_apk: "Installeer de SMS Gateway-app op de Android-telefoon waarmee u sms't. Download de APK van de"
+    messages_smsgateway_setup: "Installatie"
+    messages_default_country_only: "Alleen verzenden naar telefoons van het standaardland (%{code})"
+    default_country_code_hint: "Wordt gebruikt om lokale nummers die met 0 beginnen om te zetten naar internationaal formaat voor sms, bijvoorbeeld +44 voor het Verenigd Koninkrijk."
+    default_country_code: "Standaard landcode"
     messages_smsgateway_url: "Server-URL"
-    messages_smsgateway_login: "API-login"
-    messages_smsgateway_password: "API-wachtwoord"
+    messages_smsgateway_login: "Gebruikersnaam"
+    messages_smsgateway_password: "Wachtwoord"
     messages_smsgateway_signing_key: "Webhook-ondertekeningssleutel"
-    messages_register_webhook: "Webhook registreren"
-    messages_register_webhook_hint: "Registreert het bovenstaande adres op de gatewayserver zodat de telefoon inkomende sms daarheen aflevert; eenmaal uitvoeren na het opslaan."
-    messages_webhook_registered: "Webhook geregistreerd."
     messages_provider_smsgateway_info: "Verstuurt en ontvangt sms via een Android-telefoon met de SMS Gateway-app tegen onze eigen server, zonder kosten per bericht."
     messages_email_outgoing: Outgoing email
     messages_email_mode: Sending method

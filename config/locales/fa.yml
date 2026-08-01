@@ -705,13 +705,27 @@ fa:
     messages_provider_textanywhere_info: Send and receive SMS with a TextAnywhere account.
     messages_incoming: Incoming
     messages_incoming_hint: Customer can reply to support incoming messages as well as outgoing ones.
+    messages_test_sms_sent: "پیامک آزمایشی ارسال شد، تلفن را بررسی کنید."
+    messages_test_sms_number: "شماره تلفن آزمایشی"
+    messages_test_sms: "ارسال پیامک آزمایشی"
+    messages_smsgateway_invalid: "تنظیمات دروازه تأیید نشد:"
+    messages_smsgateway_inbound_hint: "تلفن پیام‌های ورودی را به این نشانی تحویل می‌دهد؛ ثبت هنگام ذخیره با دریافت روشن به طور خودکار انجام می‌شود."
+    messages_smsgateway_step_activate: "فعال و دریافت پیام‌های ورودی را علامت بزنید و ذخیره کنید. تنظیمات آزمایش می‌شوند؛ خطاها را برطرف کنید و ارسال را با دکمه ارسال پیامک آزمایشی پایین بیازمایید."
+    messages_smsgateway_step_credentials: "در صفحه اصلی برنامه Local server را خاموش و Cloud server را روشن کنید و دکمه Offline را برای اتصال بزنید (Start on boot را هم علامت بزنید)، سپس نام کاربری و گذرواژه صفحه اصلی را در نام کاربری و گذرواژه پایین کپی کنید."
+    messages_smsgateway_step_signing: "به Settings -> Webhooks -> Signing Key برنامه بروید -> یک کلید امضا وارد کنید و آن را در کلید امضای وب‌هوک پایین کپی کنید."
+    messages_smsgateway_step_token: "اگر از سرور خصوصی استفاده می‌کنید Private Token را نیز در همان صفحه وارد کنید - توکن در /app/data/private_token روی سرور دروازه است."
+    messages_smsgateway_step_url: "در تنظیمات برنامه به Cloud Server بروید و در API URL این نشانی را وارد کنید (ابتدا Server URL پایین را پر کنید):"
+    messages_smsgateway_step_device: "در برنامه: مجوزهای پیامک را بدهید، بهینه‌سازی باتری را هنگام درخواست غیرفعال کنید (یا از تنظیمات اندروید). Server URL سرور مورد استفاده را در پایین وارد کنید."
+    messages_smsgateway_apk_link: "صفحه انتشارهای GitHub دانلود کنید"
+    messages_smsgateway_apk: "برنامه SMS Gateway را روی تلفن اندرویدی که از آن پیامک می‌فرستید نصب کنید. فایل APK را از"
+    messages_smsgateway_setup: "راه‌اندازی"
+    messages_default_country_only: "ارسال فقط به تلفن‌های کشور پیش‌فرض (%{code})"
+    default_country_code_hint: "برای تبدیل شماره‌های محلی که با 0 شروع می‌شوند به قالب بین‌المللی برای پیامک استفاده می‌شود، مثلاً +44 برای بریتانیا."
+    default_country_code: "کد کشور پیش‌فرض"
     messages_smsgateway_url: "نشانی سرور"
-    messages_smsgateway_login: "نام کاربری API"
-    messages_smsgateway_password: "گذرواژه API"
+    messages_smsgateway_login: "نام کاربری"
+    messages_smsgateway_password: "گذرواژه"
     messages_smsgateway_signing_key: "کلید امضای وب‌هوک"
-    messages_register_webhook: "ثبت وب‌هوک"
-    messages_register_webhook_hint: "نشانی بالا را روی سرور دروازه ثبت می‌کند تا تلفن پیامک‌های دریافتی را به آن تحویل دهد؛ پس از ذخیره یک بار اجرا کنید."
-    messages_webhook_registered: "وب‌هوک ثبت شد."
     messages_provider_smsgateway_info: "پیامک‌ها را از طریق یک تلفن اندرویدی با برنامه SMS Gateway و سرور خودمان ارسال و دریافت می‌کند، بدون هزینه به ازای هر پیام."
     messages_email_outgoing: Outgoing email
     messages_email_mode: Sending method

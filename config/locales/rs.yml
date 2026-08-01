@@ -705,13 +705,27 @@ rs:
     messages_provider_textanywhere_info: Send and receive SMS with a TextAnywhere account.
     messages_incoming: Incoming
     messages_incoming_hint: Customer can reply to support incoming messages as well as outgoing ones.
+    messages_test_sms_sent: "Test SMS poslat, proverite telefon."
+    messages_test_sms_number: "Test broj telefona"
+    messages_test_sms: "Pošalji test SMS"
+    messages_smsgateway_invalid: "Podešavanja mrežnog prolaza nije moguće proveriti:"
+    messages_smsgateway_inbound_hint: "Telefon dostavlja dolazne poruke na ovu adresu, registracija se obavlja automatski pri čuvanju sa uključenim primanjem."
+    messages_smsgateway_step_activate: "Označite Aktivno i Primanje dolaznih poruka pa Sačuvaj. Podešavanja se testiraju; ispravite greške i isprobajte slanje dugmetom Pošalji test SMS ispod."
+    messages_smsgateway_step_credentials: "Na početnom ekranu isključite Local server, uključite Cloud server i pritisnite dugme Offline za povezivanje (označite i Start on boot), zatim kopirajte korisničko ime i lozinku sa početnog ekrana u Korisničko ime i Lozinku ispod."
+    messages_smsgateway_step_signing: "Idite na Settings -> Webhooks -> Signing Key u aplikaciji -> unesite ključ za potpis i kopirajte ga u Ključ za potpis webhooka ispod."
+    messages_smsgateway_step_token: "Ako koristite privatni server unesite i Private Token na istom ekranu - token je u /app/data/private_token na serveru mrežnog prolaza."
+    messages_smsgateway_step_url: "U podešavanjima aplikacije idite na Cloud Server i pod API URL unesite ovaj URL (prvo popunite Server URL ispod):"
+    messages_smsgateway_step_device: "U aplikaciji: dozvolite SMS dozvole, isključite optimizaciju baterije kada se zatraži (ili u podešavanjima Androida). Unesite ispod Server URL servera koji koristite."
+    messages_smsgateway_apk_link: "GitHub stranice izdanja"
+    messages_smsgateway_apk: "Instalirajte aplikaciju SMS Gateway na Android telefon sa kojeg ćete slati SMS poruke. Preuzmite APK sa"
+    messages_smsgateway_setup: "Podešavanje"
+    messages_default_country_only: "Šalji samo na telefone podrazumevane zemlje (%{code})"
+    default_country_code_hint: "Koristi se za pretvaranje lokalnih brojeva koji počinju nulom u međunarodni format za SMS, npr. +44 za Ujedinjeno Kraljevstvo."
+    default_country_code: "Podrazumevani pozivni broj zemlje"
     messages_smsgateway_url: "URL servera"
-    messages_smsgateway_login: "API korisničko ime"
-    messages_smsgateway_password: "API lozinka"
+    messages_smsgateway_login: "Korisničko ime"
+    messages_smsgateway_password: "Lozinka"
     messages_smsgateway_signing_key: "Ključ za potpis webhooka"
-    messages_register_webhook: "Registruj webhook"
-    messages_register_webhook_hint: "Registruje gornju adresu na serveru mrežnog prolaza da telefon dostavlja dolazne SMS poruke na nju; pokrenite jednom nakon čuvanja."
-    messages_webhook_registered: "Webhook registrovan."
     messages_provider_smsgateway_info: "Šalje i prima SMS preko Android telefona sa aplikacijom SMS Gateway i sopstvenim serverom, bez troška po poruci."
     messages_email_outgoing: Outgoing email
     messages_email_mode: Sending method

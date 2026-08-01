@@ -705,13 +705,27 @@ ro:
     messages_provider_textanywhere_info: Send and receive SMS with a TextAnywhere account.
     messages_incoming: Incoming
     messages_incoming_hint: Customer can reply to support incoming messages as well as outgoing ones.
+    messages_test_sms_sent: "SMS de test trimis, verificati telefonul."
+    messages_test_sms_number: "Numar de telefon de test"
+    messages_test_sms: "Trimite SMS de test"
+    messages_smsgateway_invalid: "Setarile gateway-ului nu au putut fi validate:"
+    messages_smsgateway_inbound_hint: "Telefonul livreaza mesajele primite la aceasta adresa, inregistrarea se face automat la salvare cu primirea activata."
+    messages_smsgateway_step_activate: "Bifati Activ si Primire mesaje, apoi Salvati. Setarile sunt testate; corectati erorile si testati trimiterea cu butonul Trimite SMS de test de mai jos."
+    messages_smsgateway_step_credentials: "Pe ecranul principal opriti Local server, porniti Cloud server si apasati butonul Offline pentru conectare (bifati si Start on boot), apoi copiati utilizatorul si parola de pe ecranul principal in campurile Nume utilizator si Parola de mai jos."
+    messages_smsgateway_step_signing: "Mergeti la Settings -> Webhooks -> Signing Key in aplicatie -> introduceti o cheie de semnare si copiati-o in Cheia de semnare a webhookurilor de mai jos."
+    messages_smsgateway_step_token: "Daca folositi un server privat introduceti si Private Token pe acelasi ecran - tokenul este in /app/data/private_token pe serverul gateway."
+    messages_smsgateway_step_url: "In setarile aplicatiei mergeti la Cloud Server si la API URL introduceti acest URL (completati mai intai Server URL de mai jos):"
+    messages_smsgateway_step_device: "In aplicatie: permiteti permisiunile SMS, dezactivati optimizarea bateriei cand vi se cere (sau din setarile Android). Introduceti mai jos Server URL al serverului folosit."
+    messages_smsgateway_apk_link: "pagina de versiuni GitHub"
+    messages_smsgateway_apk: "Instalati aplicatia SMS Gateway pe telefonul Android de pe care veti trimite SMS-uri. Descarcati APK-ul de pe"
+    messages_smsgateway_setup: "Configurare"
+    messages_default_country_only: "Trimite doar catre telefoane din tara implicita (%{code})"
+    default_country_code_hint: "Folosit pentru a converti numerele locale care incep cu 0 in format international pentru SMS, de exemplu +44 pentru Regatul Unit."
+    default_country_code: "Prefixul de tara implicit"
     messages_smsgateway_url: "URL server"
-    messages_smsgateway_login: "Utilizator API"
-    messages_smsgateway_password: "Parola API"
+    messages_smsgateway_login: "Nume utilizator"
+    messages_smsgateway_password: "Parola"
     messages_smsgateway_signing_key: "Cheia de semnare a webhookurilor"
-    messages_register_webhook: "Inregistreaza webhook"
-    messages_register_webhook_hint: "Inregistreaza adresa de mai sus pe serverul gateway pentru ca telefonul sa livreze acolo SMS-urile primite; rulati o data dupa salvare."
-    messages_webhook_registered: "Webhook inregistrat."
     messages_provider_smsgateway_info: "Trimite si primeste SMS printr-un telefon Android cu aplicatia SMS Gateway pe serverul nostru, fara cost pe mesaj."
     messages_email_outgoing: Outgoing email
     messages_email_mode: Sending method

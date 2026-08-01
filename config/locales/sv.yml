@@ -705,13 +705,27 @@ sv:
     messages_provider_textanywhere_info: Send and receive SMS with a TextAnywhere account.
     messages_incoming: Incoming
     messages_incoming_hint: Customer can reply to support incoming messages as well as outgoing ones.
+    messages_test_sms_sent: "Test-SMS skickat, kontrollera telefonen."
+    messages_test_sms_number: "Testtelefonnummer"
+    messages_test_sms: "Skicka test-SMS"
+    messages_smsgateway_invalid: "Gateway-instaellningarna kunde inte valideras:"
+    messages_smsgateway_inbound_hint: "Telefonen levererar inkommande meddelanden till denna adress, registreringen sker automatiskt vid sparande med mottagning paa."
+    messages_smsgateway_step_activate: "Bocka i Aktiv och Ta emot inkommande meddelanden och spara. Instaellningarna testas; raetta fel och testa saendning med knappen Skicka test-SMS nedan."
+    messages_smsgateway_step_credentials: "Paa startskaermen: staeng av Local server, sla paa Cloud server och tryck paa Offline-knappen foer att ansluta (bocka ocksaa i Start on boot), kopiera sedan anvaendarnamnet och loesenordet fraan startskaermen till Anvaendarnamn och Loesenord nedan."
+    messages_smsgateway_step_signing: "Gaa till appens Settings -> Webhooks -> Signing Key -> ange en signeringsnyckel och kopiera den till Webhook-signeringsnyckeln nedan."
+    messages_smsgateway_step_token: "Anvaender du en privat server ska du ocksaa ange Private Token paa samma skaerm - token finns i /app/data/private_token paa gateway-servern."
+    messages_smsgateway_step_url: "Gaa till Cloud Server i appens instaellningar och ange denna URL under API URL (fyll foerst i Server URL nedan):"
+    messages_smsgateway_step_device: "I appen: tillaat SMS-behorigheter, staeng av batterioptimering naer du tillfraagas (eller via Android-instaellningarna). Ange Server URL foer servern du anvaender nedan."
+    messages_smsgateway_apk_link: "GitHub-releasesidan"
+    messages_smsgateway_apk: "Installera SMS Gateway-appen paa den Android-telefon du ska skicka SMS fraan. Ladda ner APK:n fraan"
+    messages_smsgateway_setup: "Installation"
+    messages_default_country_only: "Skicka bara till telefoner i standardlandet (%{code})"
+    default_country_code_hint: "Anvands for att omvandla lokala nummer som borjar med 0 till internationellt format for SMS, t.ex. +44 for Storbritannien."
+    default_country_code: "Standardlandskod"
     messages_smsgateway_url: "Server-URL"
-    messages_smsgateway_login: "API-inloggning"
-    messages_smsgateway_password: "API-loesenord"
+    messages_smsgateway_login: "Anvaendarnamn"
+    messages_smsgateway_password: "Loesenord"
     messages_smsgateway_signing_key: "Webhook-signeringsnyckel"
-    messages_register_webhook: "Registrera webhook"
-    messages_register_webhook_hint: "Registrerar adressen ovan paa gateway-servern saa att telefonen levererar inkommande SMS dit; koer en gaang efter att du sparat."
-    messages_webhook_registered: "Webhook registrerad."
     messages_provider_smsgateway_info: "Skickar och tar emot SMS via en Android-telefon med SMS Gateway-appen mot vaar egen server, ingen kostnad per meddelande."
     messages_email_outgoing: Outgoing email
     messages_email_mode: Sending method

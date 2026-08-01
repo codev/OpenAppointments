@@ -705,13 +705,27 @@ pt:
     messages_provider_textanywhere_info: Send and receive SMS with a TextAnywhere account.
     messages_incoming: Incoming
     messages_incoming_hint: Customer can reply to support incoming messages as well as outgoing ones.
+    messages_test_sms_sent: "SMS de teste enviado, verifique o telemóvel."
+    messages_test_sms_number: "Número de telefone de teste"
+    messages_test_sms: "Enviar SMS de teste"
+    messages_smsgateway_invalid: "Não foi possível validar as definições do gateway:"
+    messages_smsgateway_inbound_hint: "O telemóvel entrega as mensagens recebidas neste endereço, o registo é automático ao guardar com a receção ligada."
+    messages_smsgateway_step_activate: "Assinale Ativo e Receber mensagens e guarde. As definições são testadas; corrija erros e teste o envio com o botão Enviar SMS de teste abaixo."
+    messages_smsgateway_step_credentials: "No ecrã inicial desligue o Local server, ligue o Cloud server e toque no botão Offline para ligar (assinale também Start on boot), depois copie o utilizador e a palavra-passe do ecrã inicial para Nome de utilizador e Palavra-passe abaixo."
+    messages_smsgateway_step_signing: "Vá a Settings -> Webhooks -> Signing Key na aplicação -> introduza uma chave de assinatura e copie-a para a Chave de assinatura do webhook abaixo."
+    messages_smsgateway_step_token: "Se usar um servidor privado introduza também o Private Token nesse ecrã - o token está em /app/data/private_token no servidor do gateway."
+    messages_smsgateway_step_url: "Nas definições da aplicação vá a Cloud Server e em API URL introduza este URL (preencha primeiro o Server URL abaixo):"
+    messages_smsgateway_step_device: "Na aplicação: permita as permissões de SMS, desative a otimização de bateria quando pedido (ou nas definições do Android). Introduza abaixo o Server URL do servidor usado."
+    messages_smsgateway_apk_link: "página de versões do GitHub"
+    messages_smsgateway_apk: "Instale a aplicação SMS Gateway no telemóvel Android a partir do qual vai enviar SMS. Transfira o APK da"
+    messages_smsgateway_setup: "Configuração"
+    messages_default_country_only: "Enviar apenas para telefones do país predefinido (%{code})"
+    default_country_code_hint: "Usado para converter números locais que começam por 0 para o formato internacional para SMS, por exemplo +44 para o Reino Unido."
+    default_country_code: "Código de país predefinido"
     messages_smsgateway_url: "URL do servidor"
-    messages_smsgateway_login: "Login da API"
-    messages_smsgateway_password: "Palavra-passe da API"
+    messages_smsgateway_login: "Nome de utilizador"
+    messages_smsgateway_password: "Palavra-passe"
     messages_smsgateway_signing_key: "Chave de assinatura do webhook"
-    messages_register_webhook: "Registar webhook"
-    messages_register_webhook_hint: "Regista o endereço acima no servidor do gateway para o telefone entregar aí os SMS recebidos; execute uma vez após guardar."
-    messages_webhook_registered: "Webhook registado."
     messages_provider_smsgateway_info: "Envia e recebe SMS através de um telefone Android com a aplicação SMS Gateway no nosso próprio servidor, sem custo por mensagem."
     messages_email_outgoing: Outgoing email
     messages_email_mode: Sending method

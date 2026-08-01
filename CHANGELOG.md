@@ -6,6 +6,8 @@ CloudronManifest.json.
 ## 1.5.1
 
 - Remove the redundant Android SMS Gateway placeholder card from the providers page
+- SMS Gateway page rebuilt: step by step setup instructions, settings validated against the server on save with automatic webhook registration and deduplication, and a Send Test SMS button
+- Default country code setting converts local numbers for SMS; each SMS provider can be restricted to default-country phones
 - SMS numbers normalise to E.164 at send time, fixing sends to customers who typed UK local numbers into the booking form
 
 ## 1.5.0

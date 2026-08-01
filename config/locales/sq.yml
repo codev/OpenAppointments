@@ -705,13 +705,27 @@ sq:
     messages_provider_textanywhere_info: Send and receive SMS with a TextAnywhere account.
     messages_incoming: Incoming
     messages_incoming_hint: Customer can reply to support incoming messages as well as outgoing ones.
+    messages_test_sms_sent: "SMS prove u dergua, kontrolloni telefonin."
+    messages_test_sms_number: "Numri i telefonit te proves"
+    messages_test_sms: "Dergo SMS prove"
+    messages_smsgateway_invalid: "Cilesimet e portes nuk u verifikuan dot:"
+    messages_smsgateway_inbound_hint: "Telefoni dorezon mesazhet hyrese ne kete adrese, regjistrimi behet automatikisht kur ruani me marrjen te ndezur."
+    messages_smsgateway_step_activate: "Shenoni Aktiv dhe Merr mesazhet hyrese, pastaj Ruani. Cilesimet testohen; rregulloni gabimet dhe provoni dergimin me butonin Dergo SMS prove me poshte."
+    messages_smsgateway_step_credentials: "Ne ekranin kryesor fikni Local server, ndizni Cloud server dhe shtypni butonin Offline per t'u lidhur (shenoni edhe Start on boot), pastaj kopjoni emrin e perdoruesit dhe fjalekalimin nga ekrani kryesor te fushat Emri i perdoruesit dhe Fjalekalimi me poshte."
+    messages_smsgateway_step_signing: "Shkoni te Settings -> Webhooks -> Signing Key ne aplikacion -> vendosni nje celes nenshkrimi dhe kopjojeni te Celesi i nenshkrimit te webhook-ut me poshte."
+    messages_smsgateway_step_token: "Nese perdorni server privat vendosni edhe Private Token ne te njejtin ekran - tokeni ndodhet ne /app/data/private_token ne serverin e portes."
+    messages_smsgateway_step_url: "Ne cilesimet e aplikacionit shkoni te Cloud Server dhe te API URL vendosni kete URL (plotesoni fillimisht Server URL me poshte):"
+    messages_smsgateway_step_device: "Ne aplikacion: lejoni lejet e SMS, caktivizoni optimizimin e baterise kur kerkohet (ose nga cilesimet e Android). Vendosni me poshte Server URL te serverit qe perdorni."
+    messages_smsgateway_apk_link: "faqja e versioneve ne GitHub"
+    messages_smsgateway_apk: "Instaloni aplikacionin SMS Gateway ne telefonin Android nga i cili do te dergoni SMS. Shkarkoni APK nga"
+    messages_smsgateway_setup: "Konfigurimi"
+    messages_default_country_only: "Dergo vetem ne telefonat e shtetit te parazgjedhur (%{code})"
+    default_country_code_hint: "Perdoret per te kthyer numrat lokale qe fillojne me 0 ne format nderkombetar per SMS, p.sh. +44 per Mbreterine e Bashkuar."
+    default_country_code: "Kodi i shtetit i parazgjedhur"
     messages_smsgateway_url: "URL e serverit"
-    messages_smsgateway_login: "Perdoruesi i API-se"
-    messages_smsgateway_password: "Fjalekalimi i API-se"
+    messages_smsgateway_login: "Emri i perdoruesit"
+    messages_smsgateway_password: "Fjalekalimi"
     messages_smsgateway_signing_key: "Celesi i nenshkrimit te webhook-ut"
-    messages_register_webhook: "Regjistro webhook"
-    messages_register_webhook_hint: "Regjistron adresen me siper ne serverin e portes qe telefoni te dorezoje aty SMS-te hyrese; ekzekutoni nje here pas ruajtjes."
-    messages_webhook_registered: "Webhook u regjistrua."
     messages_provider_smsgateway_info: "Dergon dhe merr SMS permes nje telefoni Android me aplikacionin SMS Gateway ne serverin tone, pa kosto per mesazh."
     messages_email_outgoing: Outgoing email
     messages_email_mode: Sending method

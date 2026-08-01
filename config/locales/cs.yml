@@ -705,13 +705,27 @@ cs:
     messages_provider_textanywhere_info: Send and receive SMS with a TextAnywhere account.
     messages_incoming: Incoming
     messages_incoming_hint: Customer can reply to support incoming messages as well as outgoing ones.
+    messages_test_sms_sent: "Testovací SMS odeslána, zkontrolujte telefon."
+    messages_test_sms_number: "Testovací telefonní číslo"
+    messages_test_sms: "Odeslat testovací SMS"
+    messages_smsgateway_invalid: "Nastavení brány se nepodařilo ověřit:"
+    messages_smsgateway_inbound_hint: "Telefon doručuje příchozí zprávy na tuto adresu, registrace proběhne automaticky při uložení se zapnutým příjmem."
+    messages_smsgateway_step_activate: "Zaškrtněte Aktivní a Přijímat příchozí zprávy a uložte. Nastavení se otestuje, opravte chyby a použijte tlačítko Odeslat testovací SMS níže."
+    messages_smsgateway_step_credentials: "Na úvodní obrazovce vypněte Local server, zapněte Cloud server a klepněte na tlačítko Offline pro připojení (zaškrtněte i Start on boot), poté zkopírujte uživatelské jméno a heslo z úvodní obrazovky do polí Uživatelské jméno a Heslo níže."
+    messages_smsgateway_step_signing: "V aplikaci přejděte na Settings -> Webhooks -> Signing Key -> zadejte podpisový klíč a zkopírujte jej do Podpisového klíče webhooků níže."
+    messages_smsgateway_step_token: "Používáte-li privátní server, zadejte na této obrazovce i Private Token - token je v /app/data/private_token na serveru brány."
+    messages_smsgateway_step_url: "V nastavení aplikace přejděte na Cloud Server a do API URL zadejte tuto adresu (nejprve vyplňte Server URL níže):"
+    messages_smsgateway_step_device: "V aplikaci: povolte oprávnění SMS, vypněte optimalizaci baterie na vyžádání (nebo v nastavení Androidu). Níže zadejte Server URL používaného serveru."
+    messages_smsgateway_apk_link: "stránky vydání na GitHubu"
+    messages_smsgateway_apk: "Nainstalujte aplikaci SMS Gateway na telefon Android, ze kterého budete SMS odesílat. Stáhněte APK ze"
+    messages_smsgateway_setup: "Nastavení"
+    messages_default_country_only: "Odesílat jen na telefony výchozí země (%{code})"
+    default_country_code_hint: "Používá se k převodu místních čísel začínajících nulou na mezinárodní formát pro SMS, například +44 pro Spojené království."
+    default_country_code: "Výchozí kód země"
     messages_smsgateway_url: "URL serveru"
-    messages_smsgateway_login: "Přihlašovací jméno API"
-    messages_smsgateway_password: "Heslo API"
+    messages_smsgateway_login: "Uživatelské jméno"
+    messages_smsgateway_password: "Heslo"
     messages_smsgateway_signing_key: "Podpisový klíč webhooků"
-    messages_register_webhook: "Registrovat webhook"
-    messages_register_webhook_hint: "Zaregistruje výše uvedenou adresu na serveru brány, aby na ni telefon doručoval příchozí SMS; spusťte jednou po uložení."
-    messages_webhook_registered: "Webhook zaregistrován."
     messages_provider_smsgateway_info: "Odesílá a přijímá SMS přes telefon Android s aplikací SMS Gateway a vlastním serverem, bez poplatků za zprávu."
     messages_email_outgoing: Outgoing email
     messages_email_mode: Sending method

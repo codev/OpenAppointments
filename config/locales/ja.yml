@@ -705,13 +705,27 @@ ja:
     messages_provider_textanywhere_info: Send and receive SMS with a TextAnywhere account.
     messages_incoming: Incoming
     messages_incoming_hint: Customer can reply to support incoming messages as well as outgoing ones.
+    messages_test_sms_sent: "テストSMSを送信しました。電話を確認してください。"
+    messages_test_sms_number: "テスト電話番号"
+    messages_test_sms: "テストSMS送信"
+    messages_smsgateway_invalid: "ゲートウェイ設定を検証できませんでした:"
+    messages_smsgateway_inbound_hint: "電話は受信メッセージをこのアドレスに配信します。受信をオンにして保存すると登録は自動で行われます。"
+    messages_smsgateway_step_activate: "有効と受信メッセージの受け取りにチェックを入れて保存します。設定はテストされます。エラーを修正し、下のテストSMS送信ボタンで送信を確認してください。"
+    messages_smsgateway_step_credentials: "ホーム画面でLocal serverをオフ、Cloud serverをオンにし、Offlineボタンを押して接続します(Start on bootにもチェック)。ホーム画面のユーザー名とパスワードを下のユーザー名とパスワードにコピーします。"
+    messages_smsgateway_step_signing: "アプリのSettings -> Webhooks -> Signing Keyで署名キーを入力し、下のWebhook署名キーにコピーします。"
+    messages_smsgateway_step_token: "プライベートサーバーを使う場合は同じ設定画面でPrivate Tokenも入力します。トークンはゲートウェイサーバーの/app/data/private_tokenにあります。"
+    messages_smsgateway_step_url: "アプリ設定のCloud Serverを開き、API URLに次のURLを入力します(先に下のServer URLを入力してください):"
+    messages_smsgateway_step_device: "アプリで: SMS権限を許可し、求められたら(またはAndroid設定から)バッテリー最適化を無効にします。下に使用するサーバーのServer URLを入力してください。"
+    messages_smsgateway_apk_link: "GitHubリリースページ"
+    messages_smsgateway_apk: "SMSを送信するAndroid端末にSMS Gatewayアプリをインストールします。APKは次からダウンロード:"
+    messages_smsgateway_setup: "セットアップ"
+    messages_default_country_only: "既定の国(%{code})の電話にのみ送信"
+    default_country_code_hint: "0で始まるローカル電話番号をSMS用の国際形式に変換するために使います。例: 英国は+44。"
+    default_country_code: "既定の国コード"
     messages_smsgateway_url: "サーバーURL"
-    messages_smsgateway_login: "APIログイン"
-    messages_smsgateway_password: "APIパスワード"
+    messages_smsgateway_login: "ユーザー名"
+    messages_smsgateway_password: "パスワード"
     messages_smsgateway_signing_key: "Webhook署名キー"
-    messages_register_webhook: "Webhookを登録"
-    messages_register_webhook_hint: "上記のアドレスをゲートウェイサーバーに登録し、電話が受信SMSをそこへ配信するようにします。保存後に一度実行してください。"
-    messages_webhook_registered: "Webhookを登録しました。"
     messages_provider_smsgateway_info: "SMS Gatewayアプリを実行するAndroid端末と自前のサーバーでSMSを送受信します。メッセージごとの費用はかかりません。"
     messages_email_outgoing: Outgoing email
     messages_email_mode: Sending method

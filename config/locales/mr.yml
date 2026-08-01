@@ -705,13 +705,27 @@ mr:
     messages_provider_textanywhere_info: Send and receive SMS with a TextAnywhere account.
     messages_incoming: Incoming
     messages_incoming_hint: Customer can reply to support incoming messages as well as outgoing ones.
+    messages_test_sms_sent: "चाचणी SMS पाठवला, फोन तपासा."
+    messages_test_sms_number: "चाचणी फोन नंबर"
+    messages_test_sms: "चाचणी SMS पाठवा"
+    messages_smsgateway_invalid: "गेटवे सेटिंग्ज तपासता आल्या नाहीत:"
+    messages_smsgateway_inbound_hint: "फोन येणारे संदेश या पत्त्यावर पोहोचवतो, प्राप्ती सुरू ठेवून सेव्ह केल्यावर नोंदणी आपोआप होते."
+    messages_smsgateway_step_activate: "सक्रिय आणि येणारे संदेश प्राप्त करा निवडा, मग सेव्ह करा. सेटिंग्ज तपासल्या जातात; चुका दुरुस्त करा आणि खालील चाचणी SMS पाठवा बटणाने पाठवणे तपासा."
+    messages_smsgateway_step_credentials: "होम स्क्रीनवर Local server बंद करा, Cloud server सुरू करा आणि जोडण्यासाठी Offline बटण दाबा (Start on boot देखील निवडा), मग होम स्क्रीनवरील वापरकर्तानाव आणि पासवर्ड खाली वापरकर्तानाव आणि पासवर्डमध्ये कॉपी करा."
+    messages_smsgateway_step_signing: "अ‍ॅपच्या Settings -> Webhooks -> Signing Key मध्ये जा -> साइनिंग की टाका आणि ती खाली वेबहुक स्वाक्षरी की मध्ये कॉपी करा."
+    messages_smsgateway_step_token: "खाजगी सर्व्हर वापरत असल्यास त्याच स्क्रीनवर Private Token देखील टाका - टोकन गेटवे सर्व्हरवर /app/data/private_token मध्ये आहे."
+    messages_smsgateway_step_url: "अ‍ॅप सेटिंग्जमध्ये Cloud Server वर जा आणि API URL मध्ये हा URL टाका (आधी खालचा Server URL भरा):"
+    messages_smsgateway_step_device: "अ‍ॅपमध्ये: SMS परवानग्या द्या, विचारल्यावर बॅटरी ऑप्टिमायझेशन बंद करा (किंवा Android सेटिंग्जमधून). खाली वापरत असलेल्या सर्व्हरचा Server URL भरा."
+    messages_smsgateway_apk_link: "GitHub रिलीझ पृष्ठ"
+    messages_smsgateway_apk: "ज्या Android फोनवरून SMS पाठवाल त्यावर SMS Gateway अ‍ॅप इन्स्टॉल करा. APK येथून डाउनलोड करा:"
+    messages_smsgateway_setup: "सेटअप"
+    messages_default_country_only: "फक्त डीफॉल्ट देशाच्या (%{code}) फोनवर पाठवा"
+    default_country_code_hint: "0 ने सुरू होणारे स्थानिक क्रमांक SMS साठी आंतरराष्ट्रीय स्वरूपात बदलण्यासाठी वापरला जातो, उदा. युनायटेड किंगडमसाठी +44."
+    default_country_code: "डीफॉल्ट देश कोड"
     messages_smsgateway_url: "सर्व्हर URL"
-    messages_smsgateway_login: "API लॉगिन"
-    messages_smsgateway_password: "API पासवर्ड"
+    messages_smsgateway_login: "वापरकर्तानाव"
+    messages_smsgateway_password: "पासवर्ड"
     messages_smsgateway_signing_key: "वेबहुक स्वाक्षरी की"
-    messages_register_webhook: "वेबहुक नोंदवा"
-    messages_register_webhook_hint: "वरील पत्ता गेटवे सर्व्हरवर नोंदवते जेणेकरून फोन येणारे SMS तिथे पोहोचवेल; सेव्ह केल्यानंतर एकदा चालवा."
-    messages_webhook_registered: "वेबहुक नोंदवला."
     messages_provider_smsgateway_info: "आमच्या स्वतःच्या सर्व्हरसह SMS Gateway अ‍ॅप चालवणाऱ्या Android फोनद्वारे SMS पाठवते आणि प्राप्त करते, प्रति संदेश खर्च नाही."
     messages_email_outgoing: Outgoing email
     messages_email_mode: Sending method

@@ -705,13 +705,27 @@ lt:
     messages_provider_textanywhere_info: Send and receive SMS with a TextAnywhere account.
     messages_incoming: Incoming
     messages_incoming_hint: Customer can reply to support incoming messages as well as outgoing ones.
+    messages_test_sms_sent: "Bandomoji SMS issiusta, patikrinkite telefona."
+    messages_test_sms_number: "Bandomasis telefono numeris"
+    messages_test_sms: "Siusti bandomaja SMS"
+    messages_smsgateway_invalid: "Nepavyko patikrinti tinklu saito nustatymu:"
+    messages_smsgateway_inbound_hint: "Telefonas pristato gaunamas zinutes siuo adresu, registracija vyksta automatiskai issaugant su ijungtu gavimu."
+    messages_smsgateway_step_activate: "Pazymekite Aktyvu ir Gauti gaunamas zinutes, tada issaugokite. Nustatymai patikrinami; istaisykite klaidas ir isbandykite siuntima mygtuku Siusti bandomaja SMS zemiau."
+    messages_smsgateway_step_credentials: "Pagrindiniame ekrane isjunkite Local server, ijunkite Cloud server ir paspauskite mygtuka Offline prisijungimui (pazymekite ir Start on boot), tada nukopijuokite pagrindiniame ekrane rodoma naudotojo varda ir slaptazodi i laukus Naudotojo vardas ir Slaptazodis zemiau."
+    messages_smsgateway_step_signing: "Eikite i programos Settings -> Webhooks -> Signing Key -> iveskite pasirasymo rakta ir nukopijuokite ji i Webhook parasymo rakta zemiau."
+    messages_smsgateway_step_token: "Jei naudojate privatu serveri, tame paciame ekrane iveskite ir Private Token - jis yra /app/data/private_token faile serveryje."
+    messages_smsgateway_step_url: "Programos nustatymuose eikite i Cloud Server ir API URL lauke iveskite si adresa (pirmiausia uzpildykite Server URL zemiau):"
+    messages_smsgateway_step_device: "Programoje: leiskite SMS teises, isjunkite baterijos optimizavima paprasius (arba Android nustatymuose). Zemiau iveskite naudojamo serverio Server URL."
+    messages_smsgateway_apk_link: "GitHub leidimu puslapio"
+    messages_smsgateway_apk: "Idiekite SMS Gateway programa Android telefone, is kurio siusite SMS. Atsisiuskite APK is"
+    messages_smsgateway_setup: "Sąranka"
+    messages_default_country_only: "Siusti tik i numatytosios salies (%{code}) telefonus"
+    default_country_code_hint: "Naudojamas vietiniams numeriams, prasidedantiems 0, konvertuoti i tarptautini formata SMS zinutems, pvz., +44 Jungtinei Karalystei."
+    default_country_code: "Numatytasis salies kodas"
     messages_smsgateway_url: "Serverio URL"
-    messages_smsgateway_login: "API prisijungimo vardas"
-    messages_smsgateway_password: "API slaptazodis"
+    messages_smsgateway_login: "Naudotojo vardas"
+    messages_smsgateway_password: "Slaptazodis"
     messages_smsgateway_signing_key: "Webhook parasymo raktas"
-    messages_register_webhook: "Registruoti webhook"
-    messages_register_webhook_hint: "Uzregistruoja auksciau esanti adresa tinklu saitu serveryje, kad telefonas pristatytu gaunamas SMS i ji; paleiskite karta issaugoje."
-    messages_webhook_registered: "Webhook uzregistruotas."
     messages_provider_smsgateway_info: "Siuncia ir gauna SMS per Android telefona su SMS Gateway programa ir musu paciu serveriu, be mokesciu uz zinute."
     messages_email_outgoing: Outgoing email
     messages_email_mode: Sending method

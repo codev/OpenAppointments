@@ -705,13 +705,27 @@ et:
     messages_provider_textanywhere_info: Send and receive SMS with a TextAnywhere account.
     messages_incoming: Incoming
     messages_incoming_hint: Customer can reply to support incoming messages as well as outgoing ones.
+    messages_test_sms_sent: "Test-SMS saadetud, kontrollige telefoni."
+    messages_test_sms_number: "Testi telefoninumber"
+    messages_test_sms: "Saada test-SMS"
+    messages_smsgateway_invalid: "Lüüsi seadeid ei õnnestunud kontrollida:"
+    messages_smsgateway_inbound_hint: "Telefon toimetab sissetulevad sõnumid sellele aadressile, registreerimine toimub salvestamisel automaatselt, kui vastuvõtt on sees."
+    messages_smsgateway_step_activate: "Märkige Aktiivne ja Sissetulevate sõnumite vastuvõtt ning salvestage. Seadeid testitakse, parandage vead ja proovige saatmist alloleva nupuga Saada test-SMS."
+    messages_smsgateway_step_credentials: "Avakuval lülitage Local server välja, Cloud server sisse ja vajutage ühendamiseks nuppu Offline (märkige ka Start on boot), seejärel kopeerige avakuval kuvatav kasutajanimi ja parool alla väljadele Kasutajanimi ja Parool."
+    messages_smsgateway_step_signing: "Minge rakenduses Settings -> Webhooks -> Signing Key -> sisestage allkirjavõti ja kopeerige see allolevasse Webhooki allkirjavõtmesse."
+    messages_smsgateway_step_token: "Privaatserveri korral sisestage samal ekraanil ka Private Token - token asub lüüsi serveris failis /app/data/private_token."
+    messages_smsgateway_step_url: "Minge rakenduse seadetes Cloud Server alla ja sisestage API URL-i see aadress (täitke esmalt allolev Server URL):"
+    messages_smsgateway_step_device: "Rakenduses: lubage SMS-i õigused, keelake aku optimeerimine küsimisel (või Androidi seadetes). Sisestage allpool kasutatava serveri Server URL."
+    messages_smsgateway_apk_link: "GitHubi väljalasete lehelt"
+    messages_smsgateway_apk: "Installige SMS Gateway rakendus Android-telefoni, millest SMS-e saadate. Laadige APK alla"
+    messages_smsgateway_setup: "Seadistamine"
+    messages_default_country_only: "Saada ainult vaikimisi riigi (%{code}) telefonidele"
+    default_country_code_hint: "Kasutatakse nulliga algavate kohalike numbrite teisendamiseks rahvusvahelisse vormingusse SMS-ide jaoks, nt +44 Ühendkuningriigi puhul."
+    default_country_code: "Vaikimisi riigikood"
     messages_smsgateway_url: "Serveri URL"
-    messages_smsgateway_login: "API kasutajanimi"
-    messages_smsgateway_password: "API parool"
+    messages_smsgateway_login: "Kasutajanimi"
+    messages_smsgateway_password: "Parool"
     messages_smsgateway_signing_key: "Webhooki allkirjavõti"
-    messages_register_webhook: "Registreeri webhook"
-    messages_register_webhook_hint: "Registreerib ülaltoodud aadressi lüüsi serveris, et telefon toimetaks sissetulevad SMS-id sinna; käivitage üks kord pärast salvestamist."
-    messages_webhook_registered: "Webhook registreeritud."
     messages_provider_smsgateway_info: "Saadab ja võtab vastu SMS-e Android-telefoni kaudu, millel töötab SMS Gateway rakendus meie oma serveriga, sõnumipõhise tasuta."
     messages_email_outgoing: Outgoing email
     messages_email_mode: Sending method

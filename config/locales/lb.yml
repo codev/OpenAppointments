@@ -705,13 +705,27 @@ lb:
     messages_provider_textanywhere_info: Send and receive SMS with a TextAnywhere account.
     messages_incoming: Incoming
     messages_incoming_hint: Customer can reply to support incoming messages as well as outgoing ones.
+    messages_test_sms_sent: "Test-SMS geschéckt, kuckt den Telefon."
+    messages_test_sms_number: "Test-Telefonsnummer"
+    messages_test_sms: "Test-SMS schécken"
+    messages_smsgateway_invalid: "D'Gateway-Astellunge konnten net iwwerpréift ginn:"
+    messages_smsgateway_inbound_hint: "Den Telefon liwwert erakommend Messagen op dës Adress, d'Registréierung geschitt automatesch beim Späichere mat ageschaltem Empfang."
+    messages_smsgateway_step_activate: "Kräizt Aktiv an Erakommend Messagen empfaenken un, duerno Späicheren. D'Astellunge gi getest; behieft Feeler a probéiert de Versand mam Knäppchen Test-SMS schécken ënnen."
+    messages_smsgateway_step_credentials: "Um Startecran: Local server aus, Cloud server un an op de Knäppchen Offline drécke fir ze verbannen (och Start on boot ukräizen), duerno de Benotzernumm an d'Passwuert vum Startecran ënnen a Benotzernumm a Passwuert kopéieren."
+    messages_smsgateway_step_signing: "Gitt an der App op Settings -> Webhooks -> Signing Key -> gitt e Signaturschlëssel an a kopéiert en ënnen an de Webhook-Signaturschlëssel."
+    messages_smsgateway_step_token: "Bei engem private Server muss op deem Ecran och de Private Token aginn ginn - en läit an /app/data/private_token um Gateway-Server."
+    messages_smsgateway_step_url: "Gitt an den App-Astellungen op Cloud Server an dréit ënner API URL dës URL an (fëllt fir d'éischt ënnen d'Server-URL aus):"
+    messages_smsgateway_step_device: "An der App: SMS-Berechtigungen erlaben, Batterie-Optiméierung op Nofro desaktivéieren (oder an den Android-Astellungen). Gitt ënnen d'Server-URL vum benotzte Server an."
+    messages_smsgateway_apk_link: "GitHub-Releases-Sait erof"
+    messages_smsgateway_apk: "Installéiert d'SMS-Gateway-App op dem Android-Telefon vun deem Dir SMS schéckt. Luet den APK vun der"
+    messages_smsgateway_setup: "Ariichtung"
+    messages_default_country_only: "Nëmmen un Telefone vum Standardland (%{code}) schécken"
+    default_country_code_hint: "Gëtt benotzt fir lokal Nummeren mat féierender 0 an den internationale Format fir SMS ëmzewandelen, z. B. +44 fir Groussbritannien."
+    default_country_code: "Standard-Landesvirwahl"
     messages_smsgateway_url: "Server-URL"
-    messages_smsgateway_login: "API-Login"
-    messages_smsgateway_password: "API-Passwuert"
+    messages_smsgateway_login: "Benotzernumm"
+    messages_smsgateway_password: "Passwuert"
     messages_smsgateway_signing_key: "Webhook-Signaturschlëssel"
-    messages_register_webhook: "Webhook registréieren"
-    messages_register_webhook_hint: "Registréiert déi uewe genannten Adress um Gateway-Server, fir datt den Telefon erakommend SMSen dohinner liwwert; eemol nom Späichere lafe loossen."
-    messages_webhook_registered: "Webhook registréiert."
     messages_provider_smsgateway_info: "Schéckt an empfaenkt SMS iwwer en Android-Telefon mat der SMS-Gateway-App géint eisen eegene Server, ouni Käschte pro Message."
     messages_email_outgoing: Outgoing email
     messages_email_mode: Sending method

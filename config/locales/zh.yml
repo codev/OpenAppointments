@@ -705,13 +705,27 @@ zh:
     messages_provider_textanywhere_info: Send and receive SMS with a TextAnywhere account.
     messages_incoming: Incoming
     messages_incoming_hint: Customer can reply to support incoming messages as well as outgoing ones.
+    messages_test_sms_sent: "测试短信已发送,请检查手机。"
+    messages_test_sms_number: "测试电话号码"
+    messages_test_sms: "发送测试短信"
+    messages_smsgateway_invalid: "无法验证网关设置:"
+    messages_smsgateway_inbound_hint: "手机会将传入消息投递到此地址,保存时若开启接收会自动完成注册。"
+    messages_smsgateway_step_activate: "勾选启用与接收传入消息,然后保存。系统会测试设置;修正错误后用下方的发送测试短信按钮测试发送。"
+    messages_smsgateway_step_credentials: "在主屏幕关闭 Local server、开启 Cloud server 并点按 Offline 按钮连接(同时勾选 Start on boot),然后将主屏幕显示的用户名和密码复制到下方的用户名和密码。"
+    messages_smsgateway_step_signing: "前往应用的 Settings -> Webhooks -> Signing Key -> 输入签名密钥,再复制到下方的 Webhook 签名密钥。"
+    messages_smsgateway_step_token: "如使用私有服务器,还需在同一设置页面输入 Private Token - 令牌位于网关服务器的 /app/data/private_token。"
+    messages_smsgateway_step_url: "在应用设置中前往 Cloud Server,在 API URL 输入此网址(需先填写下方的 Server URL):"
+    messages_smsgateway_step_device: "在应用中:允许短信权限,在询问时停用电池优化(或在 Android 设置中)。在下方输入所用服务器的 Server URL。"
+    messages_smsgateway_apk_link: "GitHub 发布页面"
+    messages_smsgateway_apk: "在要发送短信的 Android 手机上安装 SMS Gateway 应用。从此下载 APK:"
+    messages_smsgateway_setup: "设置"
+    messages_default_country_only: "仅发送到默认国家(%{code})的电话"
+    default_country_code_hint: "用于将以 0 开头的本地电话号码转换为短信用的国际格式,例如英国为 +44。"
+    default_country_code: "默认国家代码"
     messages_smsgateway_url: "服务器网址"
-    messages_smsgateway_login: "API 账号"
-    messages_smsgateway_password: "API 密码"
+    messages_smsgateway_login: "用户名"
+    messages_smsgateway_password: "密码"
     messages_smsgateway_signing_key: "Webhook 签名密钥"
-    messages_register_webhook: "注册 Webhook"
-    messages_register_webhook_hint: "将上方地址注册到网关服务器,让手机把收到的短信投递到该地址;保存后执行一次。"
-    messages_webhook_registered: "Webhook 已注册。"
     messages_provider_smsgateway_info: "通过运行 SMS Gateway 应用的 Android 手机与自有服务器收发短信,无每条费用。"
     messages_email_outgoing: Outgoing email
     messages_email_mode: Sending method

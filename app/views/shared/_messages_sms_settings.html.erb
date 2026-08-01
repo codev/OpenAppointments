@@ -44,6 +44,16 @@
                                 </div>
                             <% end %>
 
+                            <div class="form-check form-switch mb-4">
+                                <input type="checkbox" class="form-check-input" id="<%= prefix %>-default-country-only"
+                                       data-field="messages_<%= prefix %>_default_country_only">
+                                <label class="form-check-label" for="<%= prefix %>-default-country-only">
+                                    <%= t("ea.messages_default_country_only",
+                                          code: Messaging::Template.default_country_code,
+                                          default: "messages_default_country_only") %>
+                                </label>
+                            </div>
+
                             <div data-visible-when="messages_<%= prefix %>_incoming=1">
                                 <div class="mb-3">
                                     <label class="form-label"><%= lang('messages_inbound_webhook') %></label>
@@ -55,19 +65,6 @@
                                     </div>
                                 </div>
 
-                                <% if local_assigns[:register_webhook_path] %>
-                                    <div class="mb-3">
-                                        <button type="button" id="register-webhook" class="btn btn-outline-secondary"
-                                                data-url="<%= local_assigns[:register_webhook_path] %>">
-                                            <%= lang('messages_register_webhook') %>
-                                        </button>
-                                        <div class="form-text text-muted">
-                                            <small>
-                                                <%= lang('messages_register_webhook_hint') %>
-                                            </small>
-                                        </div>
-                                    </div>
-                                <% end %>
                             </div>
 
                             <div class="form-text text-muted mb-3">

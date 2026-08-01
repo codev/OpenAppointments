@@ -705,13 +705,27 @@ he:
     messages_provider_textanywhere_info: Send and receive SMS with a TextAnywhere account.
     messages_incoming: Incoming
     messages_incoming_hint: Customer can reply to support incoming messages as well as outgoing ones.
+    messages_test_sms_sent: "SMS הבדיקה נשלח, בדקו את הטלפון."
+    messages_test_sms_number: "מספר טלפון לבדיקה"
+    messages_test_sms: "שליחת SMS בדיקה"
+    messages_smsgateway_invalid: "לא ניתן לאמת את הגדרות השער:"
+    messages_smsgateway_inbound_hint: "הטלפון מוסר הודעות נכנסות לכתובת זו, הרישום מתבצע אוטומטית בשמירה עם קבלה מופעלת."
+    messages_smsgateway_step_activate: "סמנו פעיל וקבלת הודעות נכנסות ושמרו. ההגדרות נבדקות, תקנו שגיאות ובדקו שליחה עם כפתור שליחת SMS בדיקה למטה."
+    messages_smsgateway_step_credentials: "במסך הבית כבו את Local server, הפעילו את Cloud server ולחצו על כפתור Offline להתחברות (סמנו גם Start on boot), ואז העתיקו את שם המשתמש והסיסמה ממסך הבית לשדות שם משתמש וסיסמה למטה."
+    messages_smsgateway_step_signing: "עברו ל-Settings -> Webhooks -> Signing Key באפליקציה -> הזינו מפתח חתימה והעתיקו אותו לשדה מפתח חתימת Webhook למטה."
+    messages_smsgateway_step_token: "אם אתם משתמשים בשרת פרטי הזינו באותו מסך גם את ה-Private Token - הטוקן נמצא ב-/app/data/private_token בשרת השער."
+    messages_smsgateway_step_url: "בהגדרות האפליקציה עברו ל-Cloud Server ובשדה API URL הזינו את הכתובת הזו (מלאו קודם את ה-Server URL למטה):"
+    messages_smsgateway_step_device: "באפליקציה: אשרו את הרשאות ה-SMS, בטלו אופטימיזציית סוללה כשנשאלים (או בהגדרות אנדרואיד). הזינו למטה את ה-Server URL של השרת שבשימוש."
+    messages_smsgateway_apk_link: "עמוד הגרסאות ב-GitHub"
+    messages_smsgateway_apk: "התקינו את אפליקציית SMS Gateway בטלפון האנדרואיד שממנו תשלחו SMS. הורידו את ה-APK מ"
+    messages_smsgateway_setup: "התקנה"
+    messages_default_country_only: "שליחה רק לטלפונים במדינת ברירת המחדל (%{code})"
+    default_country_code_hint: "משמשת להמרת מספרים מקומיים המתחילים ב-0 לפורמט בינלאומי עבור SMS, למשל +44 לבריטניה."
+    default_country_code: "קידומת מדינה ברירת מחדל"
     messages_smsgateway_url: "כתובת השרת"
-    messages_smsgateway_login: "שם משתמש API"
-    messages_smsgateway_password: "סיסמת API"
+    messages_smsgateway_login: "שם משתמש"
+    messages_smsgateway_password: "סיסמה"
     messages_smsgateway_signing_key: "מפתח חתימת Webhook"
-    messages_register_webhook: "רישום Webhook"
-    messages_register_webhook_hint: "רושם את הכתובת שלמעלה בשרת השער כדי שהטלפון ימסור אליה הודעות SMS נכנסות; הריצו פעם אחת לאחר השמירה."
-    messages_webhook_registered: "ה-Webhook נרשם."
     messages_provider_smsgateway_info: "שולח ומקבל SMS דרך טלפון אנדרואיד עם אפליקציית SMS Gateway מול השרת שלנו, ללא עלות להודעה."
     messages_email_outgoing: Outgoing email
     messages_email_mode: Sending method

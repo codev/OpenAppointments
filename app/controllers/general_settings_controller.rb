@@ -7,7 +7,7 @@ class GeneralSettingsController < ApplicationController
 
   ALLOWED_SETTINGS = %w[
     company_name company_email company_link company_logo
-    company_working_plan book_advance_timeout default_timezone default_language
+    company_working_plan book_advance_timeout default_timezone default_language default_country_code
     date_format time_format first_weekday require_phone_number
     display_cookie_notice cookie_notice_content display_terms_and_conditions
     terms_and_conditions_content display_privacy_policy privacy_policy_content

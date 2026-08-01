@@ -705,13 +705,27 @@ tr:
     messages_provider_textanywhere_info: Send and receive SMS with a TextAnywhere account.
     messages_incoming: Incoming
     messages_incoming_hint: Customer can reply to support incoming messages as well as outgoing ones.
+    messages_test_sms_sent: "Test SMS'i gonderildi, telefonu kontrol edin."
+    messages_test_sms_number: "Test telefon numarasi"
+    messages_test_sms: "Test SMS'i gonder"
+    messages_smsgateway_invalid: "Ag gecidi ayarlari dogrulanamadi:"
+    messages_smsgateway_inbound_hint: "Telefon gelen mesajlari bu adrese iletir, alma acikken kaydedince kayit otomatik yapilir."
+    messages_smsgateway_step_activate: "Etkin ve Gelen mesajlari al seceneklerini isaretleyip kaydedin. Ayarlar test edilir; hatalari duzeltin ve asagidaki Test SMS'i gonder dugmesiyle gonderimi deneyin."
+    messages_smsgateway_step_credentials: "Ana ekranda Local server'i kapatin, Cloud server'i acin ve baglanmak icin Offline dugmesine basin (Start on boot'u da isaretleyin), sonra ana ekrandaki kullanici adi ve parolayi asagidaki Kullanici adi ve Parola alanlarina kopyalayin."
+    messages_smsgateway_step_signing: "Uygulamanin Settings -> Webhooks -> Signing Key bolumune gidin -> bir imza anahtari girin ve asagidaki Webhook imza anahtarina kopyalayin."
+    messages_smsgateway_step_token: "Ozel sunucu kullaniyorsaniz ayni ekranda Private Token'i da girin - token, ag gecidi sunucusunda /app/data/private_token dosyasindadir."
+    messages_smsgateway_step_url: "Uygulama ayarlarinda Cloud Server'a gidin ve API URL'ye bu adresi girin (once asagidaki Server URL'yi doldurun):"
+    messages_smsgateway_step_device: "Uygulamada: SMS izinlerini verin, sorulunca pil optimizasyonunu kapatin (veya Android ayarlarindan). Asagiya kullandiginiz sunucunun Server URL'sini girin."
+    messages_smsgateway_apk_link: "GitHub surumleri sayfasi"
+    messages_smsgateway_apk: "SMS gonderileceginiz Android telefona SMS Gateway uygulamasini kurun. APK'yi surdan indirin:"
+    messages_smsgateway_setup: "Kurulum"
+    messages_default_country_only: "Yalnizca varsayilan ulke (%{code}) telefonlarina gonder"
+    default_country_code_hint: "0 ile baslayan yerel numaralari SMS icin uluslararasi formata cevirmek icin kullanilir, ornegin Birlesik Krallik icin +44."
+    default_country_code: "Varsayilan ulke kodu"
     messages_smsgateway_url: "Sunucu URL'si"
-    messages_smsgateway_login: "API kullanici adi"
-    messages_smsgateway_password: "API parolasi"
+    messages_smsgateway_login: "Kullanici adi"
+    messages_smsgateway_password: "Parola"
     messages_smsgateway_signing_key: "Webhook imza anahtari"
-    messages_register_webhook: "Webhook kaydet"
-    messages_register_webhook_hint: "Yukaridaki adresi ag gecidi sunucusuna kaydeder, boylece telefon gelen SMS'leri oraya iletir; kaydettikten sonra bir kez calistirin."
-    messages_webhook_registered: "Webhook kaydedildi."
     messages_provider_smsgateway_info: "SMS Gateway uygulamasini calistiran bir Android telefon ve kendi sunucumuz uzerinden SMS gonderir ve alir, mesaj basina maliyet yoktur."
     messages_email_outgoing: Outgoing email
     messages_email_mode: Sending method

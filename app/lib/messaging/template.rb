@@ -53,16 +53,22 @@ module Messaging
     end
 
     # SMS providers require E.164. Numbers typed into the booking form arrive
-    # in UK local format (07...), the 10to8 import already normalised to +44.
+    # in local format (leading 0); the default country code setting converts
+    # them, the 10to8 import already normalised to +44.
     def e164(number)
       return nil if number.blank?
 
       digits = number.gsub(/[\s\-().]/, "")
       return digits if digits.start_with?("+")
-      return "+44#{digits[1..]}" if digits.match?(/\A07\d{9}\z/)
       return "+#{digits[2..]}" if digits.start_with?("00")
+      return "#{default_country_code}#{digits[1..]}" if digits.match?(/\A0\d{9,10}\z/)
 
       digits
+    end
+
+    def default_country_code
+      code = Setting.get("default_country_code", "+44").to_s.strip
+      code.start_with?("+") ? code : "+#{code}"
     end
 
     def format_date(time)

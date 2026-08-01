@@ -705,13 +705,27 @@ lv:
     messages_provider_textanywhere_info: Send and receive SMS with a TextAnywhere account.
     messages_incoming: Incoming
     messages_incoming_hint: Customer can reply to support incoming messages as well as outgoing ones.
+    messages_test_sms_sent: "Testa SMS nosutita, parbaudiet talruni."
+    messages_test_sms_number: "Testa talruna numurs"
+    messages_test_sms: "Sutit testa SMS"
+    messages_smsgateway_invalid: "Neizdevas parbaudit vartejas iestatijumus:"
+    messages_smsgateway_inbound_hint: "Talrunis piegada ienakosas zinas uz so adresi, registracija notiek automatiski saglabajot ar ieslegtu sanemsanu."
+    messages_smsgateway_step_activate: "Atzimejiet Aktivs un Sanemt ienakosas zinas, tad saglabajiet. Iestatijumi tiek testeti; izlabojiet kludas un parbaudiet sutisanu ar pogu Sutit testa SMS zemak."
+    messages_smsgateway_step_credentials: "Sakuma ekrana izsledziet Local server, iesledziet Cloud server un nospiediet pogu Offline, lai pieslegtos (atzimejiet ari Start on boot), tad nokopejiet sakuma ekrana redzamo lietotajvardu un paroli laukos Lietotajvards un Parole zemak."
+    messages_smsgateway_step_signing: "Ejiet uz lietotnes Settings -> Webhooks -> Signing Key -> ievadiet parakstisanas atslegu un nokopejiet to zemak lauka Webhook parakstisanas atslega."
+    messages_smsgateway_step_token: "Ja izmantojat privatu serveri, taja pasa ekrana ievadiet ari Private Token - tas atrodas /app/data/private_token uz vartejas servera."
+    messages_smsgateway_step_url: "Lietotnes iestatijumos ejiet uz Cloud Server un lauka API URL ievadiet so adresi (vispirms aizpildiet Server URL zemak):"
+    messages_smsgateway_step_device: "Lietotne: atlaujiet SMS atlaujas, izsledziet baterijas optimizaciju pec pieprasijuma (vai Android iestatijumos). Zemak ievadiet izmantota servera Server URL."
+    messages_smsgateway_apk_link: "GitHub laidienu lapas"
+    messages_smsgateway_apk: "Instalejiet SMS Gateway lietotni Android talruni, no kura sutisiet SMS. Lejupieladejiet APK no"
+    messages_smsgateway_setup: "Iestatisana"
+    messages_default_country_only: "Sutit tikai uz noklusejuma valsts (%{code}) talruniem"
+    default_country_code_hint: "Izmanto, lai vietejos numurus, kas sakas ar 0, parverstu starptautiskaja formata SMS sutisanai, piemeram, +44 Apvienotajai Karalistei."
+    default_country_code: "Noklusejuma valsts kods"
     messages_smsgateway_url: "Servera URL"
-    messages_smsgateway_login: "API lietotajvards"
-    messages_smsgateway_password: "API parole"
+    messages_smsgateway_login: "Lietotajvards"
+    messages_smsgateway_password: "Parole"
     messages_smsgateway_signing_key: "Webhook parakstisanas atslega"
-    messages_register_webhook: "Registret webhook"
-    messages_register_webhook_hint: "Registre augstak norādīto adresi vārtejas serverī, lai tālrunis piegādātu ienākošos SMS uz to; palaidiet vienreiz pēc saglabāšanas."
-    messages_webhook_registered: "Webhook registrets."
     messages_provider_smsgateway_info: "Suta un sanem SMS caur Android talruni ar SMS Gateway lietotni pret musu pasu serveri, bez maksas par zinu."
     messages_email_outgoing: Outgoing email
     messages_email_mode: Sending method

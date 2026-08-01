@@ -149,6 +149,19 @@
                                 </div>
 
                                 <div class="mb-3">
+                                    <label class="form-label" for="default-country-code">
+                                        <%= lang('default_country_code') %>
+                                    </label>
+                                    <input id="default-country-code" data-field="default_country_code"
+                                           class="form-control" placeholder="+44" maxlength="5">
+                                    <div class="form-text text-muted">
+                                        <small>
+                                            <%= lang('default_country_code_hint') %>
+                                        </small>
+                                    </div>
+                                </div>
+
+                                <div class="mb-3">
                                     <label class="form-label" for="default-language">
                                         <%= lang('default_language') %>
                                         <span class="text-danger" hidden>*</span>
