@@ -6,6 +6,7 @@ CloudronManifest.json.
 ## 1.5.1
 
 - Remove the redundant Android SMS Gateway placeholder card from the providers page
+- SMS numbers normalise to E.164 at send time, fixing sends to customers who typed UK local numbers into the booking form
 
 ## 1.5.0
 

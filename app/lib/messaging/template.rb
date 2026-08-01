@@ -49,7 +49,20 @@ module Messaging
     def sms_address(user)
       return nil unless user
 
-      user.mobile_number.presence || user.phone_number.presence
+      e164(user.mobile_number.presence || user.phone_number.presence)
+    end
+
+    # SMS providers require E.164. Numbers typed into the booking form arrive
+    # in UK local format (07...), the 10to8 import already normalised to +44.
+    def e164(number)
+      return nil if number.blank?
+
+      digits = number.gsub(/[\s\-().]/, "")
+      return digits if digits.start_with?("+")
+      return "+44#{digits[1..]}" if digits.match?(/\A07\d{9}\z/)
+      return "+#{digits[2..]}" if digits.start_with?("00")
+
+      digits
     end
 
     def format_date(time)
