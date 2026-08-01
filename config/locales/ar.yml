@@ -703,18 +703,33 @@ ar:
     messages_provider_twilio_info: Send and receive SMS with a Twilio account and phone number.
     messages_provider_plivo_info: Send and receive SMS with a Plivo account and phone number.
     messages_provider_textanywhere_info: Send and receive SMS with a TextAnywhere account.
-    messages_provider_sms_gateway: Android SMS Gateway
-    messages_provider_sms_gateway_info: Send and receive SMS through an Android phone with your own number.
-    coming_soon: Coming soon
     messages_incoming: Incoming
     messages_incoming_hint: Customer can reply to support incoming messages as well as outgoing ones.
+    messages_test_sms_sent: "أرسلت الرسالة التجريبية، تحقق من الهاتف."
+    messages_test_sms_number: "رقم الهاتف التجريبي"
+    messages_test_sms: "إرسال رسالة تجريبية"
+    messages_smsgateway_invalid: "تعذر التحقق من إعدادات البوابة:"
+    messages_smsgateway_inbound_hint: "يسلم الهاتف الرسائل الواردة إلى هذا العنوان، ويتم التسجيل تلقائياً عند الحفظ مع تفعيل الاستقبال."
+    messages_smsgateway_step_activate: "فعل نشط واستقبال الرسائل الواردة ثم احفظ. يتم اختبار الإعدادات، صحح أي أخطاء واستخدم زر إرسال رسالة تجريبية أدناه لاختبار الإرسال."
+    messages_smsgateway_step_credentials: "في الشاشة الرئيسية للتطبيق أوقف Local server وشغل Cloud server واضغط زر Offline للاتصال (وفعل Start on boot ليعمل بعد كل إعادة تشغيل) ثم انسخ اسم المستخدم وكلمة المرور الظاهرين إلى اسم المستخدم وكلمة المرور أدناه."
+    messages_smsgateway_step_signing: "اذهب إلى إعدادات التطبيق -> Webhooks -> Signing Key -> أدخل مفتاح توقيع ثم انسخه إلى مفتاح توقيع الويب هوك أدناه."
+    messages_smsgateway_step_token: "إذا كنت تستخدم خادماً خاصاً فأدخل أيضاً الرمز الخاص في شاشة الإعدادات هذه - الرمز موجود في /app/data/private_token على خادم البوابة."
+    messages_smsgateway_step_url: "في إعدادات التطبيق انتقل إلى Cloud Server وأدخل هذا العنوان في API URL (يجب ملء عنوان الخادم أدناه أولاً):"
+    messages_smsgateway_step_device: "في التطبيق: امنح أذونات الرسائل القصيرة وعطل تحسين البطارية عند الطلب (أو من إعدادات أندرويد)."
+    messages_smsgateway_step_server: "أدخل عنوان الخادم الذي تستخدمه أدناه. استخدم api.sms-gate.app لخادم"
+    messages_smsgateway_step_server_public: "السحابة العام"
+    messages_smsgateway_step_server_or: "أو أدخل"
+    messages_smsgateway_step_server_private: "خادمك الخاص"
+    messages_smsgateway_apk_link: "صفحة إصدارات GitHub"
+    messages_smsgateway_apk: "ثبت تطبيق SMS Gateway على هاتف أندرويد الذي سترسل منه الرسائل. نزل ملف APK من"
+    messages_smsgateway_setup: "الإعداد"
+    messages_default_country_only: "الإرسال فقط لهواتف الدولة الافتراضية (%{code})"
+    default_country_code_hint: "يستخدم لتحويل أرقام الهاتف المحلية التي تبدأ بصفر إلى الصيغة الدولية للرسائل القصيرة، مثلاً +44 للمملكة المتحدة."
+    default_country_code: "رمز الدولة الافتراضي"
     messages_smsgateway_url: "عنوان الخادم"
-    messages_smsgateway_login: "اسم مستخدم API"
-    messages_smsgateway_password: "كلمة مرور API"
+    messages_smsgateway_login: "اسم المستخدم"
+    messages_smsgateway_password: "كلمة المرور"
     messages_smsgateway_signing_key: "مفتاح توقيع الويب هوك"
-    messages_register_webhook: "تسجيل الويب هوك"
-    messages_register_webhook_hint: "يسجل العنوان أعلاه على خادم البوابة كي يسلم الهاتف الرسائل الواردة إليه، ينفذ مرة واحدة بعد الحفظ."
-    messages_webhook_registered: "تم تسجيل الويب هوك."
     messages_provider_smsgateway_info: "يرسل ويستقبل الرسائل القصيرة عبر هاتف أندرويد يشغل تطبيق SMS Gateway مع خادمنا الخاص، بدون تكلفة لكل رسالة."
     messages_email_outgoing: Outgoing email
     messages_email_mode: Sending method

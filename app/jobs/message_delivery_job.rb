@@ -10,6 +10,9 @@ class MessageDeliveryJob < ApplicationJob
     adapter = Messaging.channel(message.channel)
     raise "unknown channel #{message.channel}" unless adapter
 
+    restriction = Messaging.country_restriction_error(message.channel, message.to_address)
+    raise restriction if restriction
+
     adapter.deliver(message)
     message.update!(status: "sent", error: nil)
   rescue StandardError => e

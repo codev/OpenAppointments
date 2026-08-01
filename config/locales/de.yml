@@ -703,18 +703,33 @@ de:
     messages_provider_twilio_info: Send and receive SMS with a Twilio account and phone number.
     messages_provider_plivo_info: Send and receive SMS with a Plivo account and phone number.
     messages_provider_textanywhere_info: Send and receive SMS with a TextAnywhere account.
-    messages_provider_sms_gateway: Android SMS Gateway
-    messages_provider_sms_gateway_info: Send and receive SMS through an Android phone with your own number.
-    coming_soon: Coming soon
     messages_incoming: Incoming
     messages_incoming_hint: Customer can reply to support incoming messages as well as outgoing ones.
+    messages_test_sms_sent: "Test-SMS gesendet, pruefen Sie das Telefon."
+    messages_test_sms_number: "Test-Telefonnummer"
+    messages_test_sms: "Test-SMS senden"
+    messages_smsgateway_invalid: "Die Gateway-Einstellungen konnten nicht geprueft werden:"
+    messages_smsgateway_inbound_hint: "Das Telefon liefert eingehende Nachrichten an diese Adresse, die Registrierung erfolgt beim Speichern mit aktiviertem Empfang automatisch."
+    messages_smsgateway_step_activate: "Aktiv und Eingehende Nachrichten empfangen ankreuzen, dann Speichern. Die Einstellungen werden getestet, beheben Sie Fehler und testen Sie den Versand mit der Schaltflaeche Test-SMS senden unten."
+    messages_smsgateway_step_credentials: "Auf dem Startbildschirm der App: Local server aus, Cloud server ein und die Offline-Schaltflaeche zum Verbinden druecken (auch Start on boot ankreuzen), dann Benutzername und Passwort vom Startbildschirm unten in Benutzername und Passwort kopieren."
+    messages_smsgateway_step_signing: "Gehen Sie in der App zu Settings -> Webhooks -> Signing Key -> geben Sie einen Signaturschluessel ein und kopieren Sie ihn unten in den Webhook-Signaturschluessel."
+    messages_smsgateway_step_token: "Bei einem privaten Server muss auf diesem Einstellungsbildschirm auch der Private Token eingetragen werden - er liegt in /app/data/private_token auf dem Gateway-Server."
+    messages_smsgateway_step_url: "Gehen Sie in den App-Einstellungen zu Cloud Server und tragen Sie unter API URL diese URL ein (zuerst unten die Server-URL ausfuellen):"
+    messages_smsgateway_step_device: "In der App: SMS-Berechtigungen erlauben, Akku-Optimierung auf Nachfrage deaktivieren (oder in den Android-Einstellungen)."
+    messages_smsgateway_step_server: "Geben Sie unten die Server-URL des verwendeten Servers ein. Verwenden Sie api.sms-gate.app fuer den"
+    messages_smsgateway_step_server_public: "oeffentlichen Cloud-Server"
+    messages_smsgateway_step_server_or: "oder tragen Sie Ihren eigenen"
+    messages_smsgateway_step_server_private: "privaten Server ein"
+    messages_smsgateway_apk_link: "GitHub-Releases-Seite"
+    messages_smsgateway_apk: "Installieren Sie die SMS-Gateway-App auf dem Android-Telefon, von dem Sie SMS senden. Laden Sie die APK von der"
+    messages_smsgateway_setup: "Einrichtung"
+    messages_default_country_only: "Nur an Telefone des Standardlandes (%{code}) senden"
+    default_country_code_hint: "Wandelt lokale Nummern mit fuehrender 0 fuer SMS ins internationale Format um, z. B. +44 fuer Grossbritannien."
+    default_country_code: "Standard-Laendervorwahl"
     messages_smsgateway_url: "Server-URL"
-    messages_smsgateway_login: "API-Login"
-    messages_smsgateway_password: "API-Passwort"
+    messages_smsgateway_login: "Benutzername"
+    messages_smsgateway_password: "Passwort"
     messages_smsgateway_signing_key: "Webhook-Signaturschluessel"
-    messages_register_webhook: "Webhook registrieren"
-    messages_register_webhook_hint: "Registriert die obige Adresse auf dem Gateway-Server, damit das Telefon eingehende SMS dorthin zustellt; einmal nach dem Speichern ausfuehren."
-    messages_webhook_registered: "Webhook registriert."
     messages_provider_smsgateway_info: "Sendet und empfaengt SMS ueber ein Android-Telefon mit der SMS-Gateway-App gegen unseren eigenen Server, ohne Kosten pro Nachricht."
     messages_email_outgoing: Outgoing email
     messages_email_mode: Sending method

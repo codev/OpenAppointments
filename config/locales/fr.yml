@@ -703,18 +703,33 @@ fr:
     messages_provider_twilio_info: Send and receive SMS with a Twilio account and phone number.
     messages_provider_plivo_info: Send and receive SMS with a Plivo account and phone number.
     messages_provider_textanywhere_info: Send and receive SMS with a TextAnywhere account.
-    messages_provider_sms_gateway: Android SMS Gateway
-    messages_provider_sms_gateway_info: Send and receive SMS through an Android phone with your own number.
-    coming_soon: Coming soon
     messages_incoming: Incoming
     messages_incoming_hint: Customer can reply to support incoming messages as well as outgoing ones.
+    messages_test_sms_sent: "SMS de test envoyé, vérifiez le téléphone."
+    messages_test_sms_number: "Numéro de téléphone de test"
+    messages_test_sms: "Envoyer un SMS de test"
+    messages_smsgateway_invalid: "Impossible de valider les réglages de la passerelle :"
+    messages_smsgateway_inbound_hint: "Le téléphone livre les messages entrants à cette adresse, l'enregistrement se fait automatiquement à la sauvegarde avec la réception activée."
+    messages_smsgateway_step_activate: "Cochez Actif et Recevoir les messages entrants, puis Enregistrer. Les réglages sont testés, corrigez les erreurs et testez l'envoi avec le bouton Envoyer un SMS de test ci-dessous."
+    messages_smsgateway_step_credentials: "Sur l'écran d'accueil, désactivez Local server, activez Cloud server et appuyez sur le bouton Offline pour vous connecter (cochez aussi Start on boot), puis copiez le nom d'utilisateur et le mot de passe affichés dans Nom d'utilisateur et Mot de passe ci-dessous."
+    messages_smsgateway_step_signing: "Allez dans Settings -> Webhooks -> Signing Key de l'application -> saisissez une clé de signature puis copiez-la dans la Clé de signature des webhooks ci-dessous."
+    messages_smsgateway_step_token: "Si vous utilisez un serveur privé, saisissez aussi le Private Token sur cet écran - le jeton se trouve dans /app/data/private_token sur le serveur de la passerelle."
+    messages_smsgateway_step_url: "Dans les réglages de l'application, allez dans Cloud Server et saisissez cette URL dans API URL (remplissez d'abord le Server URL ci-dessous) :"
+    messages_smsgateway_step_device: "Dans l'application : accordez les autorisations SMS, désactivez l'optimisation de batterie quand demandé (ou dans les réglages Android)."
+    messages_smsgateway_step_server: "Saisissez ci-dessous le Server URL du serveur utilisé. Utilisez api.sms-gate.app pour le"
+    messages_smsgateway_step_server_public: "serveur cloud public"
+    messages_smsgateway_step_server_or: "ou saisissez votre propre"
+    messages_smsgateway_step_server_private: "serveur privé"
+    messages_smsgateway_apk_link: "page des versions GitHub"
+    messages_smsgateway_apk: "Installez l'application SMS Gateway sur le téléphone Android depuis lequel vous enverrez les SMS. Téléchargez l'APK depuis la"
+    messages_smsgateway_setup: "Installation"
+    messages_default_country_only: "Envoyer uniquement aux téléphones du pays par défaut (%{code})"
+    default_country_code_hint: "Sert à convertir les numéros locaux commençant par 0 au format international pour les SMS, par exemple +44 pour le Royaume-Uni."
+    default_country_code: "Indicatif pays par défaut"
     messages_smsgateway_url: "URL du serveur"
-    messages_smsgateway_login: "Identifiant API"
-    messages_smsgateway_password: "Mot de passe API"
+    messages_smsgateway_login: "Nom d'utilisateur"
+    messages_smsgateway_password: "Mot de passe"
     messages_smsgateway_signing_key: "Clé de signature des webhooks"
-    messages_register_webhook: "Enregistrer le webhook"
-    messages_register_webhook_hint: "Enregistre l'adresse ci-dessus sur le serveur de la passerelle pour que le téléphone y livre les SMS entrants; à exécuter une fois après l'enregistrement."
-    messages_webhook_registered: "Webhook enregistré."
     messages_provider_smsgateway_info: "Envoie et reçoit des SMS via un téléphone Android exécutant l'application SMS Gateway avec notre propre serveur, sans coût par message."
     messages_email_outgoing: Outgoing email
     messages_email_mode: Sending method

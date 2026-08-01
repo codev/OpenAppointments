@@ -703,18 +703,33 @@ el:
     messages_provider_twilio_info: Send and receive SMS with a Twilio account and phone number.
     messages_provider_plivo_info: Send and receive SMS with a Plivo account and phone number.
     messages_provider_textanywhere_info: Send and receive SMS with a TextAnywhere account.
-    messages_provider_sms_gateway: Android SMS Gateway
-    messages_provider_sms_gateway_info: Send and receive SMS through an Android phone with your own number.
-    coming_soon: Coming soon
     messages_incoming: Incoming
     messages_incoming_hint: Customer can reply to support incoming messages as well as outgoing ones.
+    messages_test_sms_sent: "Το δοκιμαστικό SMS στάλθηκε, ελέγξτε το τηλέφωνο."
+    messages_test_sms_number: "Δοκιμαστικός αριθμός τηλεφώνου"
+    messages_test_sms: "Αποστολή δοκιμαστικού SMS"
+    messages_smsgateway_invalid: "Δεν ήταν δυνατή η επαλήθευση των ρυθμίσεων της πύλης:"
+    messages_smsgateway_inbound_hint: "Το τηλέφωνο παραδίδει τα εισερχόμενα μηνύματα σε αυτή τη διεύθυνση, η εγγραφή γίνεται αυτόματα κατά την αποθήκευση με ενεργή λήψη."
+    messages_smsgateway_step_activate: "Τσεκάρετε Ενεργό και Λήψη εισερχόμενων μηνυμάτων και αποθηκεύστε. Οι ρυθμίσεις ελέγχονται, διορθώστε τυχόν σφάλματα και δοκιμάστε την αποστολή με το κουμπί Αποστολή δοκιμαστικού SMS παρακάτω."
+    messages_smsgateway_step_credentials: "Στην αρχική οθόνη απενεργοποιήστε το Local server, ενεργοποιήστε το Cloud server και πατήστε το κουμπί Offline για σύνδεση (τσεκάρετε και το Start on boot), μετά αντιγράψτε το όνομα χρήστη και τον κωδικό από την αρχική οθόνη στα πεδία Όνομα χρήστη και Κωδικός παρακάτω."
+    messages_smsgateway_step_signing: "Πηγαίνετε στο Settings -> Webhooks -> Signing Key της εφαρμογής -> εισαγάγετε ένα κλειδί υπογραφής και αντιγράψτε το στο Κλειδί υπογραφής webhook παρακάτω."
+    messages_smsgateway_step_token: "Αν χρησιμοποιείτε ιδιωτικό διακομιστή εισαγάγετε και το Private Token στην ίδια οθόνη - το token βρίσκεται στο /app/data/private_token στον διακομιστή της πύλης."
+    messages_smsgateway_step_url: "Στις ρυθμίσεις της εφαρμογής πηγαίνετε στο Cloud Server και στο API URL εισαγάγετε αυτό το URL (συμπληρώστε πρώτα το Server URL παρακάτω):"
+    messages_smsgateway_step_device: "Στην εφαρμογή: επιτρέψτε τα δικαιώματα SMS, απενεργοποιήστε τη βελτιστοποίηση μπαταρίας όταν ζητηθεί (ή από τις ρυθμίσεις Android)."
+    messages_smsgateway_step_server: "Εισαγάγετε παρακάτω το Server URL του διακομιστή σας. Χρησιμοποιήστε το api.sms-gate.app για τον"
+    messages_smsgateway_step_server_public: "δημόσιο διακομιστή cloud"
+    messages_smsgateway_step_server_or: "ή εισαγάγετε τον δικό σας"
+    messages_smsgateway_step_server_private: "ιδιωτικό διακομιστή"
+    messages_smsgateway_apk_link: "σελίδα εκδόσεων στο GitHub"
+    messages_smsgateway_apk: "Εγκαταστήστε την εφαρμογή SMS Gateway στο Android τηλέφωνο από το οποίο θα στέλνετε SMS. Κατεβάστε το APK από τη"
+    messages_smsgateway_setup: "Ρύθμιση"
+    messages_default_country_only: "Αποστολή μόνο σε τηλέφωνα της προεπιλεγμένης χώρας (%{code})"
+    default_country_code_hint: "Χρησιμοποιείται για τη μετατροπή τοπικών αριθμών που αρχίζουν με 0 σε διεθνή μορφή για SMS, π.χ. +44 για το Ηνωμένο Βασίλειο."
+    default_country_code: "Προεπιλεγμένος κωδικός χώρας"
     messages_smsgateway_url: "URL διακομιστή"
-    messages_smsgateway_login: "Όνομα χρήστη API"
-    messages_smsgateway_password: "Κωδικός API"
+    messages_smsgateway_login: "Όνομα χρήστη"
+    messages_smsgateway_password: "Κωδικός πρόσβασης"
     messages_smsgateway_signing_key: "Κλειδί υπογραφής webhook"
-    messages_register_webhook: "Καταχώρηση webhook"
-    messages_register_webhook_hint: "Καταχωρεί την παραπάνω διεύθυνση στον διακομιστή της πύλης ώστε το τηλέφωνο να παραδίδει εκεί τα εισερχόμενα SMS· εκτελέστε μία φορά μετά την αποθήκευση."
-    messages_webhook_registered: "Το webhook καταχωρήθηκε."
     messages_provider_smsgateway_info: "Στέλνει και λαμβάνει SMS μέσω τηλεφώνου Android με την εφαρμογή SMS Gateway στον δικό μας διακομιστή, χωρίς κόστος ανά μήνυμα."
     messages_email_outgoing: Outgoing email
     messages_email_mode: Sending method

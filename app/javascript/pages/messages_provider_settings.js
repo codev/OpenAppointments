@@ -51,7 +51,12 @@ App.Pages.MessagesProviderSettings = (function () {
     }
 
     function onSaveSettingsClick() {
-        App.Http.MessagesSettings.save(vars('provider_save_url'), 'provider_settings', serialize()).done(() => {
+        App.Http.MessagesSettings.save(vars('provider_save_url'), 'provider_settings', serialize()).done((response) => {
+            if (response && response.success === false) {
+                App.Layouts.Backend.displayNotification(response.message || lang('settings_are_invalid'));
+                return;
+            }
+
             App.Layouts.Backend.displayNotification(lang('settings_saved'));
         });
     }
@@ -64,21 +69,7 @@ App.Pages.MessagesProviderSettings = (function () {
         updateVisibility();
     }
 
-    /**
-     * Register the inbound webhook with the provider's server (SMS Gateway).
-     */
-    function initializeRegisterWebhook() {
-        $('#register-webhook').on('click', (event) => {
-            const url = $(event.currentTarget).data('url');
-
-            $.post(App.Utils.Url.siteUrl(url), {csrf_token: vars('csrf_token')}).done(() => {
-                App.Layouts.Backend.displayNotification(lang('messages_webhook_registered'));
-            });
-        });
-    }
-
     document.addEventListener('DOMContentLoaded', initialize);
-    document.addEventListener('DOMContentLoaded', initializeRegisterWebhook);
 
 
     return {};

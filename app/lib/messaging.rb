@@ -29,6 +29,17 @@ module Messaging
     Setting.get("messages_enabled", "1") == "1"
   end
 
+  # Per-provider "send only to default country phones" switch. Returns an error
+  # string when the address falls outside the default country, else nil.
+  def country_restriction_error(channel_key, address)
+    return nil unless Setting.get("messages_#{channel_key}_default_country_only", "0") == "1"
+
+    code = Messaging::Template.default_country_code
+    return nil if address.to_s.start_with?(code)
+
+    "recipient #{address} is outside the default country (#{code})"
+  end
+
   def email_subject_template
     Setting.get("messages_email_subject").presence ||
       Messaging::Defaults::SETTINGS["messages_email_subject"]

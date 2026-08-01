@@ -703,18 +703,33 @@ th:
     messages_provider_twilio_info: Send and receive SMS with a Twilio account and phone number.
     messages_provider_plivo_info: Send and receive SMS with a Plivo account and phone number.
     messages_provider_textanywhere_info: Send and receive SMS with a TextAnywhere account.
-    messages_provider_sms_gateway: Android SMS Gateway
-    messages_provider_sms_gateway_info: Send and receive SMS through an Android phone with your own number.
-    coming_soon: Coming soon
     messages_incoming: Incoming
     messages_incoming_hint: Customer can reply to support incoming messages as well as outgoing ones.
+    messages_test_sms_sent: "ส่ง SMS ทดสอบแล้ว ตรวจสอบโทรศัพท์"
+    messages_test_sms_number: "หมายเลขโทรศัพท์ทดสอบ"
+    messages_test_sms: "ส่ง SMS ทดสอบ"
+    messages_smsgateway_invalid: "ไม่สามารถตรวจสอบการตั้งค่าเกตเวย์:"
+    messages_smsgateway_inbound_hint: "โทรศัพท์ส่งข้อความขาเข้ามาที่ที่อยู่นี้ การลงทะเบียนเกิดขึ้นอัตโนมัติเมื่อบันทึกโดยเปิดรับข้อความ"
+    messages_smsgateway_step_activate: "ติ๊กเปิดใช้งานและรับข้อความขาเข้า แล้วบันทึก ระบบจะทดสอบการตั้งค่า แก้ไขข้อผิดพลาดแล้วทดสอบส่งด้วยปุ่มส่ง SMS ทดสอบด้านล่าง"
+    messages_smsgateway_step_credentials: "ที่หน้าจอหลักปิด Local server เปิด Cloud server แล้วกดปุ่ม Offline เพื่อเชื่อมต่อ (ติ๊ก Start on boot ด้วย) จากนั้นคัดลอกชื่อผู้ใช้และรหัสผ่านจากหน้าจอหลักไปที่ชื่อผู้ใช้และรหัสผ่านด้านล่าง"
+    messages_smsgateway_step_signing: "ไปที่ Settings -> Webhooks -> Signing Key ในแอป -> ใส่คีย์ลงนามแล้วคัดลอกไปที่คีย์ลงนามเว็บฮุกด้านล่าง"
+    messages_smsgateway_step_token: "หากใช้เซิร์ฟเวอร์ส่วนตัวให้กรอก Private Token ในหน้าจอเดียวกันด้วย - โทเคนอยู่ที่ /app/data/private_token บนเซิร์ฟเวอร์เกตเวย์"
+    messages_smsgateway_step_url: "ในการตั้งค่าแอปไปที่ Cloud Server และกรอก URL นี้ใน API URL (ต้องกรอก Server URL ด้านล่างก่อน):"
+    messages_smsgateway_step_device: "ในแอป: อนุญาตสิทธิ์ SMS ปิดการปรับแต่งแบตเตอรี่เมื่อถูกถาม (หรือในการตั้งค่า Android)"
+    messages_smsgateway_step_server: "กรอก Server URL ของเซิร์ฟเวอร์ที่ใช้ด้านล่าง ใช้ api.sms-gate.app สำหรับ"
+    messages_smsgateway_step_server_public: "เซิร์ฟเวอร์คลาวด์สาธารณะ"
+    messages_smsgateway_step_server_or: "หรือกรอก"
+    messages_smsgateway_step_server_private: "เซิร์ฟเวอร์ส่วนตัวของคุณ"
+    messages_smsgateway_apk_link: "หน้า GitHub releases"
+    messages_smsgateway_apk: "ติดตั้งแอป SMS Gateway บนโทรศัพท์ Android ที่จะใช้ส่ง SMS ดาวน์โหลด APK จาก"
+    messages_smsgateway_setup: "การตั้งค่า"
+    messages_default_country_only: "ส่งเฉพาะโทรศัพท์ในประเทศเริ่มต้น (%{code})"
+    default_country_code_hint: "ใช้แปลงหมายเลขท้องถิ่นที่ขึ้นต้นด้วย 0 เป็นรูปแบบสากลสำหรับ SMS เช่น +44 สำหรับสหราชอาณาจักร"
+    default_country_code: "รหัสประเทศเริ่มต้น"
     messages_smsgateway_url: "URL เซิร์ฟเวอร์"
-    messages_smsgateway_login: "ล็อกอิน API"
-    messages_smsgateway_password: "รหัสผ่าน API"
+    messages_smsgateway_login: "ชื่อผู้ใช้"
+    messages_smsgateway_password: "รหัสผ่าน"
     messages_smsgateway_signing_key: "คีย์ลงนามเว็บฮุก"
-    messages_register_webhook: "ลงทะเบียนเว็บฮุก"
-    messages_register_webhook_hint: "ลงทะเบียนที่อยู่ด้านบนบนเซิร์ฟเวอร์เกตเวย์เพื่อให้โทรศัพท์ส่ง SMS ขาเข้ามาที่นี่ ทำครั้งเดียวหลังบันทึก"
-    messages_webhook_registered: "ลงทะเบียนเว็บฮุกแล้ว"
     messages_provider_smsgateway_info: "ส่งและรับ SMS ผ่านโทรศัพท์ Android ที่ใช้แอป SMS Gateway กับเซิร์ฟเวอร์ของเราเอง ไม่มีค่าใช้จ่ายต่อข้อความ"
     messages_email_outgoing: Outgoing email
     messages_email_mode: Sending method

@@ -3,14 +3,19 @@
 The about page lists these notes; every release needs a section here matching
 CloudronManifest.json.
 
+## 1.5.1
+
+- SMS Gateway page now has step by step setup instructions, validates settings when you save and has a Send Test SMS button
+- Default country code setting converts local numbers for SMS - each SMS provider can be restricted to only sending to default-country phones
+- SMS numbers normalise to E.164 format when sending for customer who type local numbers in the booking form
+
 ## 1.5.0
 
 - SMS through your own Android phone: new SMS Gateway provider (sms-gate.app private server) with sending, signed incoming webhooks and one-click webhook registration
 
 ## 1.4.1
 
-- Fix receiving email through the server: connect to the mail server's TLS IMAP port
-- Fix clicking a customer doing nothing when the customer has appointment history
+- Minor fixes for receiving email through a Cloudron server and viewing customer records
 
 ## 1.4.0
 

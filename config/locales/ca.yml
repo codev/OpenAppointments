@@ -703,18 +703,33 @@ ca:
     messages_provider_twilio_info: Send and receive SMS with a Twilio account and phone number.
     messages_provider_plivo_info: Send and receive SMS with a Plivo account and phone number.
     messages_provider_textanywhere_info: Send and receive SMS with a TextAnywhere account.
-    messages_provider_sms_gateway: Android SMS Gateway
-    messages_provider_sms_gateway_info: Send and receive SMS through an Android phone with your own number.
-    coming_soon: Coming soon
     messages_incoming: Incoming
     messages_incoming_hint: Customer can reply to support incoming messages as well as outgoing ones.
+    messages_test_sms_sent: "SMS de prova enviat, comproveu el telèfon."
+    messages_test_sms_number: "Número de telèfon de prova"
+    messages_test_sms: "Envia SMS de prova"
+    messages_smsgateway_invalid: "No s'han pogut validar els ajustos de la passarel·la:"
+    messages_smsgateway_inbound_hint: "El telèfon lliura els missatges entrants a aquesta adreça, el registre es fa automàticament en desar amb la recepció activada."
+    messages_smsgateway_step_activate: "Marqueu Actiu i Rebre missatges entrants i deseu. Els ajustos es comproven, corregiu els errors i useu el botó Envia SMS de prova de sota."
+    messages_smsgateway_step_credentials: "A la pantalla d'inici desactiveu Local server, activeu Cloud server i premeu el botó Offline per connectar (marqueu també Start on boot), després copieu el nom d'usuari i la contrasenya de la pantalla d'inici a Nom d'usuari i Contrasenya de sota."
+    messages_smsgateway_step_signing: "Aneu a Settings -> Webhooks -> Signing Key a l'aplicació -> introduïu una clau de signatura i copieu-la a la Clau de signatura del webhook de sota."
+    messages_smsgateway_step_token: "Si useu un servidor privat introduïu també el Private Token en aquesta pantalla - el token és a /app/data/private_token al servidor de la passarel·la."
+    messages_smsgateway_step_url: "Als ajustos de l'aplicació aneu a Cloud Server i a API URL introduïu aquest URL (primer heu d'omplir el Server URL de sota):"
+    messages_smsgateway_step_device: "A l'aplicació: permeteu els permisos d'SMS, desactiveu l'optimització de bateria quan es demani (o des dels ajustos d'Android)."
+    messages_smsgateway_step_server: "Introduïu el Server URL del servidor que useu a sota. Useu api.sms-gate.app per al"
+    messages_smsgateway_step_server_public: "servidor públic al núvol"
+    messages_smsgateway_step_server_or: "o introduïu el vostre"
+    messages_smsgateway_step_server_private: "servidor privat"
+    messages_smsgateway_apk_link: "pàgina de versions de GitHub"
+    messages_smsgateway_apk: "Instal·leu l'aplicació SMS Gateway al telèfon Android des del qual enviareu SMS. Baixeu l'APK de la"
+    messages_smsgateway_setup: "Configuració"
+    messages_default_country_only: "Envia només a telèfons del país per defecte (%{code})"
+    default_country_code_hint: "S'utilitza per convertir números locals que comencen per 0 al format internacional per a SMS, per exemple +44 per al Regne Unit."
+    default_country_code: "Codi de país per defecte"
     messages_smsgateway_url: "URL del servidor"
-    messages_smsgateway_login: "Usuari de l'API"
-    messages_smsgateway_password: "Contrasenya de l'API"
+    messages_smsgateway_login: "Nom d'usuari"
+    messages_smsgateway_password: "Contrasenya"
     messages_smsgateway_signing_key: "Clau de signatura del webhook"
-    messages_register_webhook: "Registra el webhook"
-    messages_register_webhook_hint: "Registra l'adreça de dalt al servidor de la passarel·la perquè el telèfon hi lliuri els SMS entrants; executeu-ho un cop després de desar."
-    messages_webhook_registered: "Webhook registrat."
     messages_provider_smsgateway_info: "Envia i rep SMS mitjançant un telèfon Android amb l'aplicació SMS Gateway contra el nostre propi servidor, sense costos per missatge."
     messages_email_outgoing: Outgoing email
     messages_email_mode: Sending method

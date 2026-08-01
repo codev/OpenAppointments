@@ -108,7 +108,7 @@ Rails.application.routes.draw do
   post "customer_messages/send" => "customer_messages#send_message"
   post "business_settings/apply_global_working_plan" => "business_settings#apply_global_working_plan"
   post "altcha_settings/generate_key" => "altcha_settings#generate_key"
-  post "messages_smsgateway_settings/register_webhook" => "messages_smsgateway_settings#register_webhook"
+  post "messages_smsgateway_settings/test_sms" => "messages_smsgateway_settings#test_sms"
   post "ldap_settings/search" => "ldap_settings#search"
   get "integrations" => "integrations#index"
   get "about" => "about#index"

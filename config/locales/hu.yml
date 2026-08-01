@@ -703,18 +703,33 @@ hu:
     messages_provider_twilio_info: Send and receive SMS with a Twilio account and phone number.
     messages_provider_plivo_info: Send and receive SMS with a Plivo account and phone number.
     messages_provider_textanywhere_info: Send and receive SMS with a TextAnywhere account.
-    messages_provider_sms_gateway: Android SMS Gateway
-    messages_provider_sms_gateway_info: Send and receive SMS through an Android phone with your own number.
-    coming_soon: Coming soon
     messages_incoming: Incoming
     messages_incoming_hint: Customer can reply to support incoming messages as well as outgoing ones.
+    messages_test_sms_sent: "Teszt SMS elkuldve, ellenorizze a telefont."
+    messages_test_sms_number: "Teszt telefonszam"
+    messages_test_sms: "Teszt SMS kuldese"
+    messages_smsgateway_invalid: "A gateway beallitasait nem sikerult ellenorizni:"
+    messages_smsgateway_inbound_hint: "A telefon a bejovo uzeneteket erre a cimre kezbesiti, a regisztracio automatikus a mentesnel bekapcsolt fogadassal."
+    messages_smsgateway_step_activate: "Pipalja be az Aktiv es a Bejovo uzenetek fogadasa opciokat, majd mentsen. A beallitasok tesztelesre kerulnek; javitsa a hibakat es probalja ki a kuldest a lenti Teszt SMS kuldese gombbal."
+    messages_smsgateway_step_credentials: "A kezdokepernyon kapcsolja ki a Local servert, kapcsolja be a Cloud servert es nyomja meg az Offline gombot a csatlakozashoz (pipalja be a Start on boot-ot is), majd masolja a kezdokepernyon lathato felhasznalonevet es jelszot a lenti Felhasznalonev es Jelszo mezokbe."
+    messages_smsgateway_step_signing: "Menjen az alkalmazas Settings -> Webhooks -> Signing Key menupontjaba -> adjon meg egy alairo kulcsot, majd masolja a lenti Webhook alairo kulcs mezobe."
+    messages_smsgateway_step_token: "Privat szerver eseten ugyanezen a kepernyon adja meg a Private Token-t is - a token a /app/data/private_token fajlban van a szerveren."
+    messages_smsgateway_step_url: "Az alkalmazas beallitasaiban menjen a Cloud Server-re es az API URL-hez irja be ezt a cimet (eloszor toltse ki lent a Server URL-t):"
+    messages_smsgateway_step_device: "Az alkalmazasban: engedelyezze az SMS jogosultsagokat, kapcsolja ki az akkumulator-optimalizalast keresre (vagy az Android beallitasokban)."
+    messages_smsgateway_step_server: "Adja meg lent a hasznalt szerver Server URL-jet. Hasznalja az api.sms-gate.app cimet a"
+    messages_smsgateway_step_server_public: "nyilvanos felhoszerverhez"
+    messages_smsgateway_step_server_or: "vagy adja meg sajat"
+    messages_smsgateway_step_server_private: "privat szerveret"
+    messages_smsgateway_apk_link: "GitHub kiadasok oldalarol"
+    messages_smsgateway_apk: "Telepitse az SMS Gateway alkalmazast arra az Android telefonra, amelyrol SMS-t kuld. Toltse le az APK-t a"
+    messages_smsgateway_setup: "Beallitas"
+    messages_default_country_only: "Kuldes csak az alapertelmezett orszag (%{code}) telefonjaira"
+    default_country_code_hint: "A nullaval kezdodo helyi szamokat alakitja nemzetkozi formatumra SMS-hez, pl. +44 az Egyesult Kiralysaghoz."
+    default_country_code: "Alapertelmezett orszaghivo"
     messages_smsgateway_url: "Szerver URL"
-    messages_smsgateway_login: "API belepesi nev"
-    messages_smsgateway_password: "API jelszo"
+    messages_smsgateway_login: "Felhasznalonev"
+    messages_smsgateway_password: "Jelszo"
     messages_smsgateway_signing_key: "Webhook alairo kulcs"
-    messages_register_webhook: "Webhook regisztralasa"
-    messages_register_webhook_hint: "A fenti cimet regisztralja az atjaro szerveren, hogy a telefon oda kezbesitse a bejovo SMS-eket; mentes utan egyszer futtassa."
-    messages_webhook_registered: "Webhook regisztralva."
     messages_provider_smsgateway_info: "SMS kuldese es fogadasa egy SMS Gateway alkalmazast futtato Android telefonon at, sajat szerverrel, uzenetenkenti koltseg nelkul."
     messages_email_outgoing: Outgoing email
     messages_email_mode: Sending method

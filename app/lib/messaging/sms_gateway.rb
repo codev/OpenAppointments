@@ -42,6 +42,53 @@ module Messaging
       post!(api_uri("message"), request)
     end
 
+    # Credential check against the server: nil when good, an error string otherwise.
+    def validate(url: base_url, user: login, pass: password)
+      uri = URI("#{url.to_s.strip.chomp('/')}/api/3rdparty/v1/device")
+      request = Net::HTTP::Get.new(uri.request_uri)
+      request.basic_auth(user, pass)
+      response = http_for(uri).request(request)
+      case response
+      when Net::HTTPSuccess then nil
+      when Net::HTTPUnauthorized then "wrong API login or password"
+      else "server answered #{response.code}"
+      end
+    rescue StandardError => e
+      e.message
+    end
+
+    # Ensures exactly one sms:received webhook for our inbound path: stale and
+    # duplicate registrations are removed, the URL is registered if missing.
+    def ensure_webhook(url)
+      ours = webhooks.select { |hook| hook["url"].to_s.include?("/messages/inbound/smsgateway/") }
+      keep = ours.find { |hook| hook["url"] == url }
+      ours.each { |hook| delete_webhook(hook["id"]) unless hook.equal?(keep) }
+      register_webhook(url) unless keep
+    end
+
+    # Removes every registration pointing at our inbound path.
+    def remove_webhooks
+      webhooks.each do |hook|
+        delete_webhook(hook["id"]) if hook["url"].to_s.include?("/messages/inbound/smsgateway/")
+      end
+    end
+
+    def webhooks
+      request = Net::HTTP::Get.new(api_uri("webhooks").request_uri)
+      request.basic_auth(login, password)
+      response = http_for(api_uri("webhooks")).request(request)
+      raise "SMS Gateway #{response.code}: #{response.body.to_s.truncate(200)}" unless response.is_a?(Net::HTTPSuccess)
+
+      JSON.parse(response.body)
+    end
+
+    def delete_webhook(id)
+      uri = api_uri("webhooks/#{id}")
+      request = Net::HTTP::Delete.new(uri.request_uri)
+      request.basic_auth(login, password)
+      http_for(uri).request(request)
+    end
+
     # Registers the incoming-SMS webhook on the server; the device fetches the
     # registration and posts matching events straight to the URL.
     def register_webhook(url)
@@ -64,12 +111,16 @@ module Messaging
       URI("#{base_url}/api/3rdparty/v1/#{path}")
     end
 
-    def post!(uri, request)
+    def http_for(uri)
       http = Net::HTTP.new(uri.host, uri.port)
       http.use_ssl = uri.scheme == "https"
       http.open_timeout = 5
       http.read_timeout = 15
-      response = http.request(request)
+      http
+    end
+
+    def post!(uri, request)
+      response = http_for(uri).request(request)
       return if response.is_a?(Net::HTTPSuccess)
 
       raise "SMS Gateway #{response.code}: #{response.body.to_s.truncate(200)}"

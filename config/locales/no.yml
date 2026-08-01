@@ -703,18 +703,33 @@
     messages_provider_twilio_info: Send and receive SMS with a Twilio account and phone number.
     messages_provider_plivo_info: Send and receive SMS with a Plivo account and phone number.
     messages_provider_textanywhere_info: Send and receive SMS with a TextAnywhere account.
-    messages_provider_sms_gateway: Android SMS Gateway
-    messages_provider_sms_gateway_info: Send and receive SMS through an Android phone with your own number.
-    coming_soon: Coming soon
     messages_incoming: Incoming
     messages_incoming_hint: Customer can reply to support incoming messages as well as outgoing ones.
+    messages_test_sms_sent: "Test-SMS sendt, sjekk telefonen."
+    messages_test_sms_number: "Testtelefonnummer"
+    messages_test_sms: "Send test-SMS"
+    messages_smsgateway_invalid: "Gateway-innstillingene kunne ikke valideres:"
+    messages_smsgateway_inbound_hint: "Telefonen leverer innkommende meldinger til denne adressen, registreringen skjer automatisk ved lagring med mottak paa."
+    messages_smsgateway_step_activate: "Huk av Aktiv og Motta innkommende meldinger, og lagre. Innstillingene testes; rett feil og test sending med knappen Send test-SMS nedenfor."
+    messages_smsgateway_step_credentials: "Paa startskjermen: slaa av Local server, slaa paa Cloud server og trykk paa Offline-knappen for aa koble til (huk ogsaa av Start on boot), kopier saa brukernavnet og passordet fra startskjermen til Brukernavn og Passord nedenfor."
+    messages_smsgateway_step_signing: "Gaa til appens Settings -> Webhooks -> Signing Key -> skriv inn en signeringsnoekkel og kopier den til Webhook-signeringsnoekkel nedenfor."
+    messages_smsgateway_step_token: "Bruker du en privat server maa du ogsaa skrive inn Private Token paa samme skjerm - tokenet ligger i /app/data/private_token paa gateway-serveren."
+    messages_smsgateway_step_url: "Gaa til Cloud Server i appinnstillingene og skriv inn denne URL-en under API URL (fyll ut Server URL nedenfor foerst):"
+    messages_smsgateway_step_device: "I appen: tillat SMS-tillatelser, deaktiver batterioptimalisering naar du blir spurt (eller via Android-innstillingene)."
+    messages_smsgateway_step_server: "Skriv inn Server URL for serveren du bruker nedenfor. Bruk api.sms-gate.app for den"
+    messages_smsgateway_step_server_public: "offentlige skyserveren"
+    messages_smsgateway_step_server_or: "eller skriv inn din egen"
+    messages_smsgateway_step_server_private: "private server"
+    messages_smsgateway_apk_link: "GitHub-utgivelsessiden"
+    messages_smsgateway_apk: "Installer SMS Gateway-appen paa Android-telefonen du skal sende SMS fra. Last ned APK-en fra"
+    messages_smsgateway_setup: "Oppsett"
+    messages_default_country_only: "Send bare til telefoner i standardlandet (%{code})"
+    default_country_code_hint: "Brukes til aa konvertere lokale numre som starter med 0 til internasjonalt format for SMS, f.eks. +44 for Storbritannia."
+    default_country_code: "Standard landskode"
     messages_smsgateway_url: "Server-URL"
-    messages_smsgateway_login: "API-paalogging"
-    messages_smsgateway_password: "API-passord"
+    messages_smsgateway_login: "Brukernavn"
+    messages_smsgateway_password: "Passord"
     messages_smsgateway_signing_key: "Webhook-signeringsnoekkel"
-    messages_register_webhook: "Registrer webhook"
-    messages_register_webhook_hint: "Registrerer adressen ovenfor paa gateway-serveren slik at telefonen leverer innkommende SMS dit; kjoer en gang etter lagring."
-    messages_webhook_registered: "Webhook registrert."
     messages_provider_smsgateway_info: "Sender og mottar SMS via en Android-telefon med SMS Gateway-appen mot vaar egen server, ingen kostnad per melding."
     messages_email_outgoing: Outgoing email
     messages_email_mode: Sending method

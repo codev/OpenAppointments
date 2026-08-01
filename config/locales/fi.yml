@@ -703,18 +703,33 @@ fi:
     messages_provider_twilio_info: Send and receive SMS with a Twilio account and phone number.
     messages_provider_plivo_info: Send and receive SMS with a Plivo account and phone number.
     messages_provider_textanywhere_info: Send and receive SMS with a TextAnywhere account.
-    messages_provider_sms_gateway: Android SMS Gateway
-    messages_provider_sms_gateway_info: Send and receive SMS through an Android phone with your own number.
-    coming_soon: Coming soon
     messages_incoming: Incoming
     messages_incoming_hint: Customer can reply to support incoming messages as well as outgoing ones.
+    messages_test_sms_sent: "Testitekstiviesti laehetetty, tarkista puhelin."
+    messages_test_sms_number: "Testipuhelinnumero"
+    messages_test_sms: "Laeheta testitekstiviesti"
+    messages_smsgateway_invalid: "Yhdyskaeytaevaen asetuksia ei voitu vahvistaa:"
+    messages_smsgateway_inbound_hint: "Puhelin toimittaa saapuvat viestit taehaen osoitteeseen, rekisteroeinti tapahtuu automaattisesti tallennettaessa vastaanotto paeaellae."
+    messages_smsgateway_step_activate: "Rastita Aktiivinen ja Vastaanota saapuvat viestit ja tallenna. Asetukset testataan; korjaa virheet ja testaa laehetys alla olevalla Laeheta testitekstiviesti -painikkeella."
+    messages_smsgateway_step_credentials: "Sovelluksen aloitusnaeytoellae: kytke Local server pois, Cloud server paeaelle ja paina Offline-painiketta yhdistaeaeksesi (rastita myoes Start on boot), kopioi sitten aloitusnaeytoen kaeyttaejaetunnus ja salasana alla oleviin kenttiin Kaeyttaejaetunnus ja Salasana."
+    messages_smsgateway_step_signing: "Siirry sovelluksen kohtaan Settings -> Webhooks -> Signing Key -> syoetae allekirjoitusavain ja kopioi se alla olevaan Webhookin allekirjoitusavaimeen."
+    messages_smsgateway_step_token: "Jos kaeytaet yksityistae palvelinta, syoetae samalla naeytoellae myoes Private Token - token on lyysipalvelimen tiedostossa /app/data/private_token."
+    messages_smsgateway_step_url: "Siirry sovelluksen asetuksissa kohtaan Cloud Server ja syoetae API URL -kenttaeaen taemae osoite (taeytae ensin alla oleva Server URL):"
+    messages_smsgateway_step_device: "Sovelluksessa: salli SMS-oikeudet, poista akun optimointi kaeytoestae pyydettaeessae (tai Androidin asetuksista)."
+    messages_smsgateway_step_server: "Syoetae alle kaeyttaemaesi palvelimen Server URL. Kaeytae api.sms-gate.app -osoitetta"
+    messages_smsgateway_step_server_public: "julkiselle pilvipalvelimelle"
+    messages_smsgateway_step_server_or: "tai syoetae oma"
+    messages_smsgateway_step_server_private: "yksityinen palvelin"
+    messages_smsgateway_apk_link: "GitHubin julkaisusivulta"
+    messages_smsgateway_apk: "Asenna SMS Gateway -sovellus Android-puhelimeen, josta laehetaet tekstiviestit. Lataa APK"
+    messages_smsgateway_setup: "Kaeyttoeoenotto"
+    messages_default_country_only: "Laeheta vain oletusmaan (%{code}) puhelimiin"
+    default_country_code_hint: "Muuntaa nollalla alkavat paikalliset numerot kansainvaeliseen muotoon tekstiviestejae varten, esim. +44 Iso-Britannialle."
+    default_country_code: "Oletusmaakoodi"
     messages_smsgateway_url: "Palvelimen URL"
-    messages_smsgateway_login: "API-tunnus"
-    messages_smsgateway_password: "API-salasana"
+    messages_smsgateway_login: "Kaeyttaejaetunnus"
+    messages_smsgateway_password: "Salasana"
     messages_smsgateway_signing_key: "Webhookin allekirjoitusavain"
-    messages_register_webhook: "Rekisteroei webhook"
-    messages_register_webhook_hint: "Rekisteroei ylla olevan osoitteen yhdyskaeytaevaepalvelimelle, jotta puhelin toimittaa saapuvat tekstiviestit siihen; aja kerran tallennuksen jaelkeen."
-    messages_webhook_registered: "Webhook rekisteroeity."
     messages_provider_smsgateway_info: "Laehettaeae ja vastaanottaa tekstiviestejae Android-puhelimella, jossa on SMS Gateway -sovellus omaa palvelinta vasten, ei viestikohtaisia kuluja."
     messages_email_outgoing: Outgoing email
     messages_email_mode: Sending method

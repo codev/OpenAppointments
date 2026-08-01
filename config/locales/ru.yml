@@ -703,18 +703,33 @@ ru:
     messages_provider_twilio_info: Send and receive SMS with a Twilio account and phone number.
     messages_provider_plivo_info: Send and receive SMS with a Plivo account and phone number.
     messages_provider_textanywhere_info: Send and receive SMS with a TextAnywhere account.
-    messages_provider_sms_gateway: Android SMS Gateway
-    messages_provider_sms_gateway_info: Send and receive SMS through an Android phone with your own number.
-    coming_soon: Coming soon
     messages_incoming: Incoming
     messages_incoming_hint: Customer can reply to support incoming messages as well as outgoing ones.
+    messages_test_sms_sent: "Тестовое SMS отправлено, проверьте телефон."
+    messages_test_sms_number: "Тестовый номер телефона"
+    messages_test_sms: "Отправить тестовое SMS"
+    messages_smsgateway_invalid: "Не удалось проверить настройки шлюза:"
+    messages_smsgateway_inbound_hint: "Телефон доставляет входящие сообщения на этот адрес, регистрация происходит автоматически при сохранении с включённым приёмом."
+    messages_smsgateway_step_activate: "Отметьте Активно и Приём входящих сообщений, затем Сохранить. Настройки проверяются; исправьте ошибки и проверьте отправку кнопкой Отправить тестовое SMS ниже."
+    messages_smsgateway_step_credentials: "На главном экране выключите Local server, включите Cloud server и нажмите кнопку Offline для подключения (отметьте также Start on boot), затем скопируйте имя пользователя и пароль с главного экрана в поля Имя пользователя и Пароль ниже."
+    messages_smsgateway_step_signing: "Откройте в приложении Settings -> Webhooks -> Signing Key -> введите ключ подписи и скопируйте его в Ключ подписи вебхуков ниже."
+    messages_smsgateway_step_token: "Если используете частный сервер, введите на том же экране и Private Token - токен находится в /app/data/private_token на сервере шлюза."
+    messages_smsgateway_step_url: "В настройках приложения откройте Cloud Server и в поле API URL введите этот адрес (сначала заполните Server URL ниже):"
+    messages_smsgateway_step_device: "В приложении: разрешите SMS-разрешения, отключите оптимизацию батареи по запросу (или в настройках Android)."
+    messages_smsgateway_step_server: "Введите ниже Server URL используемого сервера. Используйте api.sms-gate.app для"
+    messages_smsgateway_step_server_public: "публичного облачного сервера"
+    messages_smsgateway_step_server_or: "или введите собственный"
+    messages_smsgateway_step_server_private: "частный сервер"
+    messages_smsgateway_apk_link: "страницы релизов GitHub"
+    messages_smsgateway_apk: "Установите приложение SMS Gateway на Android-телефон, с которого будете отправлять SMS. Скачайте APK со"
+    messages_smsgateway_setup: "Настройка"
+    messages_default_country_only: "Отправлять только на телефоны страны по умолчанию (%{code})"
+    default_country_code_hint: "Используется для преобразования местных номеров, начинающихся с 0, в международный формат для SMS, например +44 для Великобритании."
+    default_country_code: "Код страны по умолчанию"
     messages_smsgateway_url: "URL сервера"
-    messages_smsgateway_login: "Логин API"
-    messages_smsgateway_password: "Пароль API"
+    messages_smsgateway_login: "Имя пользователя"
+    messages_smsgateway_password: "Пароль"
     messages_smsgateway_signing_key: "Ключ подписи вебхуков"
-    messages_register_webhook: "Зарегистрировать вебхук"
-    messages_register_webhook_hint: "Регистрирует адрес выше на сервере шлюза, чтобы телефон доставлял туда входящие SMS; выполните один раз после сохранения."
-    messages_webhook_registered: "Вебхук зарегистрирован."
     messages_provider_smsgateway_info: "Отправляет и принимает SMS через Android-телефон с приложением SMS Gateway и собственным сервером, без платы за сообщение."
     messages_email_outgoing: Outgoing email
     messages_email_mode: Sending method

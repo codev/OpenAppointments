@@ -51,20 +51,99 @@ class SmsGatewayTest < ActionDispatch::IntegrationTest
     assert_match(/SMS Gateway 400/, error.message)
   end
 
-  test "register webhook endpoint posts the inbound URL" do
-    enable_gateway
+  def save_params(enabled: "1", incoming: "1")
+    { provider_settings: [
+      { name: "messages_smsgateway_enabled", value: enabled },
+      { name: "messages_smsgateway_incoming", value: incoming },
+      { name: "messages_smsgateway_url", value: BASE },
+      { name: "messages_smsgateway_login", value: "NAWFKJ" },
+      { name: "messages_smsgateway_password", value: "secretpw" }
+    ] }
+  end
+
+  test "activating save validates credentials, registers the webhook once and dedupes" do
     login_admin
+    Setting.set("messages_inbound_token", "secrettoken123")
+    token = Setting.get("messages_inbound_token")
+    inbound = %r{/messages/inbound/smsgateway/#{token}}
+
+    # Bad credentials block the save.
+    stub_request(:get, "#{BASE}/api/3rdparty/v1/device").to_return(status: 401)
+    post "/messages_smsgateway_settings/save", params: save_params
+    assert_equal false, response.parsed_body["success"]
+    assert_match(/wrong API login or password/, response.parsed_body["message"])
+    assert_not_equal "1", Setting.get("messages_smsgateway_enabled")
+
+    # Good credentials: stale duplicates are removed, the URL registered once.
+    stub_request(:get, "#{BASE}/api/3rdparty/v1/device").to_return(status: 200, body: "[]")
+    stub_request(:get, "#{BASE}/api/3rdparty/v1/webhooks").to_return(
+      status: 200,
+      body: [
+        { id: "dup1", url: "https://appointments.example.org/messages/inbound/smsgateway/oldtoken", event: "sms:received" },
+        { id: "dup2", url: "https://appointments.example.org/messages/inbound/smsgateway/oldtoken", event: "sms:received" },
+        { id: "other", url: "https://elsewhere.example.org/unrelated", event: "sms:received" }
+      ].to_json
+    )
+    stub_request(:delete, %r{#{BASE}/api/3rdparty/v1/webhooks/dup[12]}).to_return(status: 204)
     stub_request(:post, "#{BASE}/api/3rdparty/v1/webhooks").to_return(status: 201, body: "{}")
 
-    post "/messages_smsgateway_settings/register_webhook"
-    assert_response :success
+    post "/messages_smsgateway_settings/save", params: save_params
     assert_equal true, response.parsed_body["success"]
-
-    token = Setting.get("messages_inbound_token")
+    assert_equal "1", Setting.get("messages_smsgateway_enabled")
+    assert_requested(:delete, "#{BASE}/api/3rdparty/v1/webhooks/dup1")
+    assert_requested(:delete, "#{BASE}/api/3rdparty/v1/webhooks/dup2")
     assert_requested(:post, "#{BASE}/api/3rdparty/v1/webhooks") do |req|
-      body = JSON.parse(req.body)
-      body["event"] == "sms:received" && body["url"].include?("/messages/inbound/smsgateway/#{token}")
+      JSON.parse(req.body)["url"].match?(inbound)
     end
+  end
+
+  test "turning incoming off deregisters our webhooks" do
+    enable_gateway
+    login_admin
+    stub_request(:get, "#{BASE}/api/3rdparty/v1/device").to_return(status: 200, body: "[]")
+    stub_request(:get, "#{BASE}/api/3rdparty/v1/webhooks").to_return(
+      status: 200,
+      body: [ { id: "w1", url: "https://a.example.org/messages/inbound/smsgateway/tok", event: "sms:received" } ].to_json
+    )
+    stub_request(:delete, "#{BASE}/api/3rdparty/v1/webhooks/w1").to_return(status: 204)
+
+    post "/messages_smsgateway_settings/save", params: save_params(incoming: "0")
+    assert_equal true, response.parsed_body["success"]
+    assert_requested(:delete, "#{BASE}/api/3rdparty/v1/webhooks/w1")
+  end
+
+  test "test sms sends through the gateway and logs the message" do
+    enable_gateway
+    login_admin
+    stub_request(:post, "#{BASE}/api/3rdparty/v1/message").to_return(status: 201, body: "{}")
+
+    post "/messages_smsgateway_settings/test_sms", params: { number: "07971 862965" }
+    assert_equal true, response.parsed_body["success"]
+    message = Message.order(id: :desc).first
+    assert_equal "sent", message.status
+    assert_equal "+447971862965", message.to_address
+
+    stub_request(:post, "#{BASE}/api/3rdparty/v1/message").to_return(status: 400, body: { message: "invalid phone number" }.to_json)
+    post "/messages_smsgateway_settings/test_sms", params: { number: "07971862965" }
+    assert_equal false, response.parsed_body["success"]
+    assert_match(/invalid phone number/, response.parsed_body["message"])
+    assert_equal "failed", Message.order(id: :desc).first.status
+  end
+
+  test "country restriction blocks foreign numbers when enabled" do
+    enable_gateway
+    login_admin
+    Setting.set("messages_smsgateway_default_country_only", "1")
+
+    post "/messages_smsgateway_settings/test_sms", params: { number: "+15551234567" }
+    assert_equal false, response.parsed_body["success"]
+    assert_match(/outside the default country/, response.parsed_body["message"])
+
+    message = Message.create!(direction: "outgoing", channel: "smsgateway", status: "queued",
+                              to_address: "+15551234567", body: "x")
+    MessageDeliveryJob.perform_now(message.id)
+    assert_equal "failed", message.reload.status
+    assert_match(/outside the default country/, message.error)
   end
 
   def webhook_payload(sender: "+447912345678", message: "Yes please")
@@ -147,25 +226,32 @@ class SmsGatewayTest < ActionDispatch::IntegrationTest
     get "/messages_smsgateway_settings"
     assert_response :success
     assert_select "[data-field=messages_smsgateway_url]"
-    assert_select "#register-webhook"
+    assert_select "#register-webhook", count: 0
+    assert_select "#smsgateway-send-test"
+    assert_select "a[href='https://github.com/capcom6/android-sms-gateway/releases']"
 
     post "/messages_smsgateway_settings/save", params: {
-      provider_settings: [
-        { name: "messages_smsgateway_enabled", value: "1" },
-        { name: "messages_smsgateway_url", value: BASE },
-        { name: "messages_smsgateway_login", value: "AB" },
-        { name: "messages_smsgateway_password", value: "pw" }
-      ]
+      provider_settings: [ { name: "messages_smsgateway_url", value: BASE } ]
     }
     assert_response :success
-    assert_equal BASE, Setting.get("messages_smsgateway_url")
+    assert_equal BASE, Setting.get("messages_smsgateway_url"),
+                 "inactive saves persist without server validation"
   end
 
   test "the gateway strings exist in every locale" do
     I18n.available_locales.each do |locale|
       %w[messages_smsgateway_url messages_smsgateway_login messages_smsgateway_password
-         messages_smsgateway_signing_key messages_register_webhook messages_register_webhook_hint
-         messages_webhook_registered messages_provider_smsgateway_info].each do |key|
+         messages_smsgateway_signing_key messages_provider_smsgateway_info
+         default_country_code default_country_code_hint messages_default_country_only
+         messages_smsgateway_setup messages_smsgateway_apk messages_smsgateway_apk_link
+         messages_smsgateway_step_device messages_smsgateway_step_server
+         messages_smsgateway_step_server_public messages_smsgateway_step_server_or
+         messages_smsgateway_step_server_private
+         messages_smsgateway_step_url messages_smsgateway_step_token
+         messages_smsgateway_step_signing messages_smsgateway_step_credentials
+         messages_smsgateway_step_activate messages_smsgateway_inbound_hint
+         messages_smsgateway_invalid messages_test_sms messages_test_sms_number
+         messages_test_sms_sent].each do |key|
         assert I18n.t("ea.#{key}", locale: locale, fallback: false, default: nil).present?,
                "missing ea.#{key} in #{locale}"
       end
