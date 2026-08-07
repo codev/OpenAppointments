@@ -73,6 +73,21 @@ Rails.application.configure do
     }.compact
   end
 
+  # Email crash reports.
+  config.middleware.use ExceptionNotification::Rack,
+    email: {
+      email_prefix: "[OpenAppointments Error] ",
+      sender_address: %("OpenAppointments Administrator" <#{ENV.fetch('CLOUDRON_MAIL_FROM', 'openappointments@localhost')}>),
+      exception_recipients: %w[marc@codev.uk]
+    },
+    # Rethrow and log (but don't email about) errors in rack url decoding
+    ignore_if: ->(env, e) {
+      e.class.name == "ArgumentError" && (
+        e.message.start_with?("invalid byte sequence in UTF-8") ||
+        e.message.start_with?("invalid %-encoding")
+      )
+    }
+
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation cannot be found).
   config.i18n.fallbacks = true

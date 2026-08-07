@@ -3,6 +3,10 @@
 The about page lists these notes; every release needs a section here matching
 CloudronManifest.json.
 
+## 1.6.4
+
+- Crash reports are emailed to the administrator
+
 ## 1.6.3
 
 - Provider Private flags export and import, so private providers survive a backup restore

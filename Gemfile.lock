@@ -121,6 +121,9 @@ GEM
     erubi (1.13.1)
     et-orbi (1.4.0)
       tzinfo
+    exception_notification (5.0.1)
+      actionmailer (>= 7.1, < 9)
+      activesupport (>= 7.1, < 9)
     faraday (2.14.3)
       faraday-net_http (>= 2.0, < 3.5)
       json
@@ -468,6 +471,7 @@ DEPENDENCIES
   csv
   dartsass-rails (~> 0.5.1)
   debug
+  exception_notification (~> 5.0)
   google-apis-calendar_v3 (~> 0.57.0)
   googleauth (~> 1.17)
   icalendar (~> 2.12)
@@ -526,6 +530,7 @@ CHECKSUMS
   erb (6.0.6) sha256=a9b24986700f5bf127c4f297c5403c3ca41b83b0a316c0cd09a096b56e644ae5
   erubi (1.13.1) sha256=a082103b0885dbc5ecf1172fede897f9ebdb745a4b97a5e8dc63953db1ee4ad9
   et-orbi (1.4.0) sha256=6c7e3c90779821f9e3b324c5e96fda9767f72995d6ae435b96678a4f3e2de8bc
+  exception_notification (5.0.1) sha256=a9698c8d4670ec50f1714fd14a61a9f83da082d3b5535fd830baf3dc75ba28f9
   faraday (2.14.3) sha256=1882247e6766615c8220b4392bf1d27f6ebb63d8e28267587cef1fb0bf37f278
   faraday-follow_redirects (0.5.0) sha256=5cde93c894b30943a5d2b93c2fe9284216a6b756f7af406a1e55f211d97d10ad
   faraday-net_http (3.4.4) sha256=0e78af151747ed1b00f33e25973b4bc220d7f16c00c39676817c8b12331eb588
