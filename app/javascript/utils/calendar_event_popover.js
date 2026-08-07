@@ -293,7 +293,7 @@ App.Utils.CalendarEventPopover = (function () {
 
         const messagesButton = $('<a/>', {
             class: 'btn btn-outline-secondary me-2',
-            href: App.Utils.Url.siteUrl('customers?customer_id=' + customer.id),
+            href: App.Utils.Url.siteUrl('customers?customer_id=' + customer.id + '&section=messages'),
             html: [
                 $('<i/>', {class: 'fas fa-comments me-2'}),
                 $('<span/>', {text: lang('messages')}),
