@@ -77,7 +77,7 @@ Rails.application.configure do
   config.middleware.use ExceptionNotification::Rack,
     email: {
       email_prefix: "[OpenAppointments Error] ",
-      sender_address: %("OpenAppointments Administrator" <#{ENV.fetch('CLOUDRON_MAIL_FROM', 'openappointments@localhost')}>),
+      sender_address: %("OpenAppointments Administrator" <#{ENV.fetch('CLOUDRON_MAIL_FROM', 'info@codev.uk')}>),
       exception_recipients: %w[marc@codev.uk]
     },
     # Rethrow and log (but don't email about) errors in rack url decoding
