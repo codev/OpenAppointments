@@ -3,6 +3,10 @@
 The about page lists these notes; every release needs a section here matching
 CloudronManifest.json.
 
+## 1.6.1
+
+- The Messages button on the calendar appointment popover shows the customer's unread message count in a bubble
+
 ## 1.6.0
 
 - Private booking links: private providers and services (and hidden categories) can now be booked through their direct booking link while staying off the public booking page - a private provider's link locks the wizard to that provider and their services
