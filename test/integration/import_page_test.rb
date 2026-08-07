@@ -173,6 +173,28 @@ class ImportPageTest < ActionDispatch::IntegrationTest
     assert_response :forbidden
   end
 
+  test "a private provider round-trips through export and import" do
+    login_admin
+    users(:zane).update!(is_private: true)
+    upload_path = Rails.root.join("tmp", "private-#{SecureRandom.hex(4)}.ods")
+    File.binwrite(upload_path, DataExport.generate)
+    assert_includes Ods.parse(upload_path.to_s)["Providers"].first, "is_private"
+    ResetDatabase.run
+
+    ods_upload = Rack::Test::UploadedFile.new(upload_path, Ods::MIMETYPE)
+    travel_to Time.new(2026, 7, 10, 12, 0, 0) do
+      post "/import/start", params: { file: ods_upload, import_type: "ods",
+                                      phases: TenToEight::Load::PHASES, create_providers: "1",
+                                      days_back: 365, days_forward: 365 }
+    end
+    assert_response :success
+    perform_enqueued_jobs
+
+    assert User.providers.find_by(email: users(:zane).email).is_private
+  ensure
+    FileUtils.rm_f(upload_path) if upload_path
+  end
+
   test "an exported ODS analyzes and imports back after a reset" do
     login_admin
     provider_email = users(:zane).email
