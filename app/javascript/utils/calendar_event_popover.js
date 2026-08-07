@@ -294,7 +294,13 @@ App.Utils.CalendarEventPopover = (function () {
         const messagesButton = $('<a/>', {
             class: 'btn btn-outline-secondary me-2',
             href: App.Utils.Url.siteUrl('customers?customer_id=' + customer.id),
-            html: [$('<i/>', {class: 'fas fa-comments me-2'}), $('<span/>', {text: lang('messages')})],
+            html: [
+                $('<i/>', {class: 'fas fa-comments me-2'}),
+                $('<span/>', {text: lang('messages')}),
+                customer.unread_messages > 0
+                    ? $('<span/>', {class: 'badge rounded-pill bg-danger ms-2', text: customer.unread_messages})
+                    : null,
+            ].filter(Boolean),
         });
 
         return $('<div/>', {
