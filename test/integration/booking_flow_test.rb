@@ -12,6 +12,11 @@ class BookingFlowTest < ActionDispatch::IntegrationTest
     assert_match "window.vars", response.body
   end
 
+  test "old mobile browsers are not rejected with 406" do
+    get "/", headers: { "User-Agent" => "Mozilla/5.0 (Android 9; Mobile; rv:68.0) Gecko/68.0 Firefox/68.0" }
+    assert_response :success
+  end
+
   test "get_available_hours returns EA hour strings" do
     travel_to Time.new(2026, 7, 1, 12, 0, 0) do
       post "/booking/get_available_hours", params: {

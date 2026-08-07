@@ -6,6 +6,8 @@ CloudronManifest.json.
 ## 1.6.1
 
 - The Messages button on the calendar appointment popover shows the customer's unread message count in a bubble
+- Fix 406 Not Acceptable on mobile and other unrecognised browsers (the browser version guard is gone)
+- The popover Messages button is the same size as the other popover buttons
 
 ## 1.6.0
 
