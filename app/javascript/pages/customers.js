@@ -43,6 +43,10 @@ App.Pages.Customers = (function () {
     const moment = window.moment;
 
     let filterResults = {};
+
+    // Set by the ?section=messages deep link (calendar popover Messages button):
+    // once the customer is displayed, jump to the conversation panel.
+    let scrollToMessagesOnDisplay = false;
     const filterLimit = 20;
 
     let filterPage = 1;
@@ -342,6 +346,15 @@ App.Pages.Customers = (function () {
         $messageBody.prop('disabled', false);
         $sendMessage.prop('disabled', false);
 
+        if (scrollToMessagesOnDisplay) {
+            scrollToMessagesOnDisplay = false;
+            const messagesEl = document.querySelector('#customer-messages');
+            if (messagesEl) {
+                messagesEl.scrollIntoView({behavior: 'smooth', block: 'center'});
+            }
+            $messageBody.trigger('focus');
+        }
+
         $customerAppointments.empty();
 
         if (!customer.appointments.length) {
@@ -631,7 +644,10 @@ App.Pages.Customers = (function () {
         App.Pages.Customers.addEventListeners();
 
         // Deep link support (e.g. from the messages log): /customers?customer_id=N
-        const customerId = new URLSearchParams(window.location.search).get('customer_id');
+        // with optional &section=messages to land on the conversation panel.
+        const urlParams = new URLSearchParams(window.location.search);
+        const customerId = urlParams.get('customer_id');
+        scrollToMessagesOnDisplay = Boolean(customerId) && urlParams.get('section') === 'messages';
 
         App.Pages.Customers.filter('', customerId ? Number(customerId) : null, Boolean(customerId));
     }

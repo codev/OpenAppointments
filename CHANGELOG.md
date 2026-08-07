@@ -3,6 +3,10 @@
 The about page lists these notes; every release needs a section here matching
 CloudronManifest.json.
 
+## 1.6.2
+
+- The calendar Messages button opens the customer page scrolled to the conversation panel with the composer focused
+
 ## 1.6.1
 
 - The Messages button on the calendar appointment popover shows the customer's unread message count in a bubble
