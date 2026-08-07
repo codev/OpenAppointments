@@ -264,7 +264,7 @@ ro:
     custom_css_hint: "Introduceti CSS aici pentru a modifica tema; se aplica paginilor de programari si administrarii."
     select_category: "Selectati categoria"
     uncategorized: "Fara categorie"
-    category_hidden_hint: "Categoriile ascunse si serviciile lor nu apar pe pagina de programari."
+    category_hidden_hint: "Categoriile ascunse și serviciile lor nu sunt afișate pe pagina de programări, dar serviciile lor pot fi totuși rezervate printr-un link direct de programare."
     drag_to_reorder: "Trageti inregistrarile pentru a stabili ordinea afisata pe pagina de programari."
     sort_alphabetically: "Sortare alfabetica"
     sort_alphabetically_confirm: "Inlocuiti ordinea actuala sortand toate inregistrarile alfabetic?"
@@ -455,7 +455,7 @@ ro:
     login_button: Buton Autentificare
     display_login_button_hint: Defineste dacă butonul de autentificare este afișat pe pagina de rezervare.
     private: Privat
-    private_hint: Înregistrările private nu vor fi afișate sau procesate pe paginile publice, cum ar fi pagina de rezervare.
+    private_hint: "Înregistrările private nu sunt afișate pe pagina publică de programări, dar pot fi totuși rezervate prin linkul lor direct de programare."
     reset: Resetare
     all: Toate
     booking_link: Link Rezervare

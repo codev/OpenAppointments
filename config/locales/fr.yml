@@ -264,7 +264,7 @@ fr:
     custom_css_hint: "Saisissez du CSS ici pour modifier le thème; il s'applique aux pages de réservation et à l'administration."
     select_category: "Sélectionnez une catégorie"
     uncategorized: "Sans catégorie"
-    category_hidden_hint: "Les catégories masquées et leurs services n'apparaissent pas sur la page de réservation."
+    category_hidden_hint: "Les catégories masquées et leurs services ne sont pas affichés sur la page de réservation, mais leurs services peuvent toujours être réservés via un lien de réservation direct."
     drag_to_reorder: "Faites glisser les enregistrements pour définir l'ordre affiché sur la page de réservation."
     sort_alphabetically: "Trier par ordre alphabétique"
     sort_alphabetically_confirm: "Remplacer l'ordre actuel en triant tous les enregistrements par ordre alphabétique?"
@@ -455,7 +455,7 @@ fr:
     login_button: Bouton de Connexion
     display_login_button_hint: Définit si le bouton de connexion est affiché dans la page de réservation.
     private: Privé
-    private_hint: Les dossiers privés ne seront pas affichés ou traités dans des pages publiques telles que la page de réservation.
+    private_hint: "Les dossiers privés ne sont pas affichés sur la page de réservation publique, mais peuvent toujours être réservés via leur lien de réservation direct."
     reset: Réinitialiser
     all: Tout
     booking_link: Lien de réservation

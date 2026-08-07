@@ -264,7 +264,7 @@ nl:
     custom_css_hint: "Voer hier CSS in om het thema aan te passen; het geldt voor de boekingspagina's en de beheeromgeving."
     select_category: "Selecteer categorie"
     uncategorized: "Zonder categorie"
-    category_hidden_hint: "Verborgen categorieen en hun diensten verschijnen niet op de boekingspagina."
+    category_hidden_hint: "Verborgen categorieën en hun diensten worden niet getoond op de boekingspagina, maar hun diensten kunnen nog steeds worden geboekt via een directe boekingslink."
     drag_to_reorder: "Sleep de records om de volgorde op de boekingspagina in te stellen."
     sort_alphabetically: "Alfabetisch sorteren"
     sort_alphabetically_confirm: "De huidige volgorde vervangen door alle records alfabetisch te sorteren?"
@@ -455,7 +455,7 @@ nl:
     login_button: Inlogknop
     display_login_button_hint: Bepaalt of de inlogknop wordt weergegeven op de boekingspagina.
     private: Privé
-    private_hint: Privérecords worden niet weergegeven of verwerkt op openbare pagina's zoals de boekingspagina.
+    private_hint: "Privérecords worden niet getoond op de openbare boekingspagina, maar kunnen nog steeds worden geboekt via hun directe boekingslink."
     reset: Resetten
     all: Alle
     booking_link: Boekingslink

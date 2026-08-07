@@ -264,7 +264,7 @@ sq:
     custom_css_hint: "Shkruani CSS ketu per te ndryshuar temen; zbatohet ne faqet e rezervimeve dhe ne administrim."
     select_category: "Zgjidhni kategorine"
     uncategorized: "Pa kategori"
-    category_hidden_hint: "Kategorite e fshehura dhe sherbimet e tyre nuk shfaqen ne faqen e rezervimeve."
+    category_hidden_hint: "Kategoritë e fshehura dhe shërbimet e tyre nuk shfaqen në faqen e rezervimeve, por shërbimet e tyre mund të rezervohen ende përmes një lidhjeje direkte rezervimi."
     drag_to_reorder: "Terhiqni regjistrimet per te caktuar renditjen e shfaqur ne faqen e rezervimeve."
     sort_alphabetically: "Rendit alfabetikisht"
     sort_alphabetically_confirm: "Te zevendesohet renditja aktuale duke i renditur te gjitha regjistrimet alfabetikisht?"
@@ -455,7 +455,7 @@ sq:
     login_button: Butoni i Identifikimit
     display_login_button_hint: Përcakton nëse butoni i identifikimit shfaqet në faqen e rezervimit.
     private: Privat
-    private_hint: Regjistrimet private nuk do të shfaqen ose përpunohen në faqet publike si faqja e rezervimit.
+    private_hint: "Regjistrimet private nuk shfaqen në faqen publike të rezervimeve, por ato mund të rezervohen ende përmes lidhjes së tyre direkte të rezervimit."
     reset: Rivendos
     all: Të Gjitha
     booking_link: Lidhja e Rezervimit

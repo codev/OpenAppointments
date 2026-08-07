@@ -264,7 +264,7 @@ zh:
     custom_css_hint: "在此输入 CSS 以修改主题,会同时应用于预约页面与管理界面。"
     select_category: "选择分类"
     uncategorized: "未分类"
-    category_hidden_hint: "隐藏的分类及其服务不会显示在预约页面上。"
+    category_hidden_hint: "隐藏的类别及其服务不会显示在预约页面上，但其服务仍可通过直接预约链接进行预约。"
     drag_to_reorder: "拖动记录以设置预约页面上显示的顺序。"
     sort_alphabetically: "按字母排序"
     sort_alphabetically_confirm: "以按字母排序所有记录替换当前顺序?"
@@ -455,7 +455,7 @@ zh:
     login_button: 登录按钮
     display_login_button_hint: 定义是否在预订页面显示登录按钮。
     private: 私人
-    private_hint: 私人记录将不会在公共页面（例如预订页面）中显示或处理。
+    private_hint: "私人记录不会显示在公开预约页面上，但仍可通过其直接预约链接进行预约。"
     reset: 重置
     all: 所有
     booking_link: 预订链接

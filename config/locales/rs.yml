@@ -264,7 +264,7 @@ rs:
     custom_css_hint: "Ovde unesite CSS za izmenu teme; primenjuje se na stranice za rezervacije i administraciju."
     select_category: "Izaberite kategoriju"
     uncategorized: "Bez kategorije"
-    category_hidden_hint: "Skrivene kategorije i njihove usluge se ne prikazuju na stranici za rezervacije."
+    category_hidden_hint: "Skrivene kategorije i njihove usluge se ne prikazuju na stranici za zakazivanje, ali se njihove usluge i dalje mogu zakazati putem direktnog linka za zakazivanje."
     drag_to_reorder: "Prevucite zapise da odredite redosled prikazan na stranici za rezervacije."
     sort_alphabetically: "Sortiraj abecedno"
     sort_alphabetically_confirm: "Zameniti trenutni redosled abecednim sortiranjem svih zapisa?"
@@ -455,7 +455,7 @@ rs:
     login_button: Dugme za Prijavljivanje
     display_login_button_hint: Definiše da li će dugme za prijavljivanje biti prikazano na stranici za rezervaciju.
     private: Privatno
-    private_hint: Privatni zapisi neće biti prikazani ili obrađeni na javnim stranicama kao što je stranica za rezervaciju.
+    private_hint: "Privatni zapisi se ne prikazuju na javnoj stranici za zakazivanje, ali se i dalje mogu zakazati putem svog direktnog linka za zakazivanje."
     reset: Poništi
     all: Sve
     booking_link: Link za Rezervaciju

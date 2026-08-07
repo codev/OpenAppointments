@@ -264,7 +264,7 @@ de:
     custom_css_hint: "Geben Sie hier CSS ein, um das Theme anzupassen; es gilt fuer die Buchungsseiten und die Verwaltung."
     select_category: "Kategorie waehlen"
     uncategorized: "Ohne Kategorie"
-    category_hidden_hint: "Versteckte Kategorien und ihre Dienste erscheinen nicht auf der Buchungsseite."
+    category_hidden_hint: "Versteckte Kategorien und ihre Dienstleistungen werden auf der Buchungsseite nicht angezeigt, ihre Dienstleistungen können aber weiterhin über einen direkten Buchungslink gebucht werden."
     drag_to_reorder: "Ziehen Sie die Eintraege, um die Reihenfolge auf der Buchungsseite festzulegen."
     sort_alphabetically: "Alphabetisch sortieren"
     sort_alphabetically_confirm: "Aktuelle Reihenfolge durch alphabetisches Sortieren aller Eintraege ersetzen?"
@@ -455,7 +455,7 @@ de:
     login_button: Anmeldeschaltfläche
     display_login_button_hint: Legt fest, ob der Login-Button auf der Buchungsseite angezeigt wird.
     private: Privatgelände
-    private_hint: Private Datensätze werden auf öffentlichen Seiten wie der Buchungsseite nicht angezeigt oder verarbeitet.
+    private_hint: "Private Datensätze werden auf der öffentlichen Buchungsseite nicht angezeigt, können aber weiterhin über ihren direkten Buchungslink gebucht werden."
     reset: Zurücksetzen
     all: Alle
     booking_link: Buchungslink

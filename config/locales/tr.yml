@@ -264,7 +264,7 @@ tr:
     custom_css_hint: "Temayi degistirmek icin buraya CSS girin; rezervasyon sayfalarina ve yonetim paneline uygulanir."
     select_category: "Kategori secin"
     uncategorized: "Kategorisiz"
-    category_hidden_hint: "Gizli kategoriler ve hizmetleri rezervasyon sayfasinda gosterilmez."
+    category_hidden_hint: "Gizli kategoriler ve hizmetleri rezervasyon sayfasında gösterilmez, ancak hizmetleri doğrudan bir rezervasyon bağlantısı üzerinden yine de rezerve edilebilir."
     drag_to_reorder: "Rezervasyon sayfasinda gosterilen sirayi belirlemek icin kayitlari surukleyin."
     sort_alphabetically: "Alfabetik sirala"
     sort_alphabetically_confirm: "Tum kayitlari alfabetik siralayarak mevcut sirayi degistir?"
@@ -455,7 +455,7 @@ tr:
     login_button: Giriş Butonu
     display_login_button_hint: Giriş butonunun rezervasyon sayfasında görüntülenip görüntülenmeyeceğini tanımlar.
     private: Özel
-    private_hint: Özel kayıtlar, rezervasyon sayfası gibi halka açık sayfalarda görüntülenmeyecek veya işleme alınmayacaktır.
+    private_hint: "Özel kayıtlar herkese açık rezervasyon sayfasında gösterilmez, ancak doğrudan rezervasyon bağlantıları üzerinden yine de rezerve edilebilir."
     reset: Sıfırla
     all: Tümü
     booking_link: Rezervasyon Bağlantısı

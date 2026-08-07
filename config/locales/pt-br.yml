@@ -264,7 +264,7 @@ pt-br:
     custom_css_hint: "Insira CSS aqui para modificar o tema; aplica-se às páginas de agendamento e à administração."
     select_category: "Selecione a categoria"
     uncategorized: "Sem categoria"
-    category_hidden_hint: "Categorias ocultas e seus serviços não aparecem na página de agendamento."
+    category_hidden_hint: "Categorias ocultas e seus serviços não são exibidos na página de agendamento, mas seus serviços ainda podem ser agendados através de um link direto de agendamento."
     drag_to_reorder: "Arraste os registros para definir a ordem exibida na página de agendamento."
     sort_alphabetically: "Ordenar alfabeticamente"
     sort_alphabetically_confirm: "Substituir a ordem atual ordenando todos os registros alfabeticamente?"
@@ -455,7 +455,7 @@ pt-br:
     login_button: Botão de Login
     display_login_button_hint: Define se o botão de login está sendo exibido na página de reserva.
     private: Privado
-    private_hint: Registros privados não serão exibidos ou processados em páginas públicas, como a página de reserva.
+    private_hint: "Registros privados não são exibidos na página pública de agendamento, mas ainda podem ser agendados através do seu link direto de agendamento."
     reset: Redefinir
     all: Todos
     booking_link: Link de Reserva

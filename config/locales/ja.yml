@@ -264,7 +264,7 @@ ja:
     custom_css_hint: "テーマを変更するCSSをここに入力します。予約ページと管理画面の両方に適用されます。"
     select_category: "カテゴリを選択"
     uncategorized: "未分類"
-    category_hidden_hint: "非表示のカテゴリとそのサービスは予約ページに表示されません。"
+    category_hidden_hint: "非表示のカテゴリーとそのサービスは予約ページには表示されませんが、そのサービスは直接予約リンクから予約することができます。"
     drag_to_reorder: "レコードをドラッグして予約ページに表示される順序を設定します。"
     sort_alphabetically: "アルファベット順に並べ替え"
     sort_alphabetically_confirm: "すべてのレコードをアルファベット順に並べ替えて現在の順序を置き換えますか?"
@@ -455,7 +455,7 @@ ja:
     login_button: ログインボタン
     display_login_button_hint: 予約ページにログインボタンを表示するかどうかを定義します。
     private: 非公開
-    private_hint: 非公開のレコードは、予約ページなどの公開ページに表示または処理されません。
+    private_hint: "非公開のレコードは公開予約ページには表示されませんが、直接予約リンクから予約することができます。"
     reset: リセット
     all: すべて
     booking_link: 予約リンク

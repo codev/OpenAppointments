@@ -264,7 +264,7 @@ ca:
     custom_css_hint: "Introduïu CSS aquí per modificar el tema; s'aplica a les pàgines de reserva i a la interfície d'administració."
     select_category: "Seleccioneu una categoria"
     uncategorized: "Sense categoria"
-    category_hidden_hint: "Les categories ocultes i els seus serveis no es mostren a la pàgina de reserves."
+    category_hidden_hint: "Les categories ocultes i els seus serveis no es mostren a la pàgina de reserves, però els seus serveis encara es poden reservar mitjançant un enllaç directe de reserva."
     drag_to_reorder: "Arrossegueu els registres per definir l'ordre que es mostra a la pàgina de reserves."
     sort_alphabetically: "Ordena alfabèticament"
     sort_alphabetically_confirm: "Voleu substituir l'ordre actual ordenant tots els registres alfabèticament?"
@@ -455,7 +455,7 @@ ca:
     login_button: Botó d'entrada
     display_login_button_hint: Defineix si el botó d'entrada es mostra a la pàgina de reserves.
     private: Privat
-    private_hint: Els registres privats no es mostraran i no es processaran en pàgines públiques com la pàgina de reserves.
+    private_hint: "Els registres privats no es mostren a la pàgina pública de reserves, però encara es poden reservar mitjançant el seu enllaç directe de reserva."
     reset: Reinicia
     all: Tot
     booking_link: Enllaç de reserva

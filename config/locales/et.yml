@@ -264,7 +264,7 @@ et:
     custom_css_hint: "Sisestage siia CSS teema muutmiseks; see rakendub broneerimislehtedele ja haldusliidesele."
     select_category: "Valige kategooria"
     uncategorized: "Kategooriata"
-    category_hidden_hint: "Peidetud kategooriaid ja nende teenuseid broneerimislehel ei kuvata."
+    category_hidden_hint: "Peidetud kategooriaid ja nende teenuseid ei kuvata broneerimislehel, kuid nende teenuseid saab siiski broneerida otsese broneerimislingi kaudu."
     drag_to_reorder: "Lohistage kirjeid, et maarata broneerimislehel kuvatav jarjekord."
     sort_alphabetically: "Sordi tahestikuliselt"
     sort_alphabetically_confirm: "Kas asendada praegune jarjekord koigi kirjete tahestikulise sortimisega?"
@@ -455,7 +455,7 @@ et:
     login_button: Sisselogimisnupp
     display_login_button_hint: Määra, kas broneeringulehel näidatakse sisselogimisnuppu.
     private: Privaatne
-    private_hint: Privaatseid kirjeid avalikus vaates ei näidata.
+    private_hint: "Privaatseid kirjeid ei kuvata avalikul broneerimislehel, kuid neid saab siiski broneerida nende otsese broneerimislingi kaudu."
     reset: Lähtesta
     all: Kõik
     booking_link: Broneeringu link

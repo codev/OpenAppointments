@@ -264,7 +264,7 @@ sl:
     custom_css_hint: "Sem vnesite CSS za spremembo teme; velja za strani za rezervacije in administracijo."
     select_category: "Izberite kategorijo"
     uncategorized: "Brez kategorije"
-    category_hidden_hint: "Skrite kategorije in njihove storitve niso prikazane na strani za rezervacije."
+    category_hidden_hint: "Skrite kategorije in njihove storitve niso prikazane na strani za rezervacije, vendar je njihove storitve še vedno mogoče rezervirati prek neposredne povezave za rezervacijo."
     drag_to_reorder: "Povlecite zapise, da dolocite vrstni red na strani za rezervacije."
     sort_alphabetically: "Razvrsti po abecedi"
     sort_alphabetically_confirm: "Zamenjati trenutni vrstni red z abecednim razvrscanjem vseh zapisov?"
@@ -455,7 +455,7 @@ sl:
     login_button: Gumb za prijavo
     display_login_button_hint: Določi, ali je gumb za prijavo prikazan na strani za rezervacije.
     private: Zasebno
-    private_hint: Zasebni zapisi ne bodo prikazani ali obdelani na javnih straneh, kot je stran za rezervacije.
+    private_hint: "Zasebni zapisi niso prikazani na javni strani za rezervacije, vendar jih je še vedno mogoče rezervirati prek njihove neposredne povezave za rezervacijo."
     reset: Ponastavi
     all: Vse
     booking_link: Povezava za rezervacijo

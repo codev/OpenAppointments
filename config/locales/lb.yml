@@ -264,7 +264,7 @@ lb:
     custom_css_hint: "Gitt hei CSS an fir den Theme unzepassen; et gëllt fir d'Reservatiounssaiten an d'Verwaltung."
     select_category: "Kategorie wielen"
     uncategorized: "Ouni Kategorie"
-    category_hidden_hint: "Verstoppte Kategorien an hir Servicer ginn net op der Reservatiounssait ugewisen."
+    category_hidden_hint: "Verstoppte Kategorien an hir Servicer ginn net op der Buchungssäit ugewisen, mee hir Servicer kënnen weiderhin iwwer en direkte Buchungslink gebucht ginn."
     drag_to_reorder: "Zitt d'Anträg fir d'Reiefolleg op der Reservatiounssait festzeleeen."
     sort_alphabetically: "Alphabetesch zortéieren"
     sort_alphabetically_confirm: "Déi aktuell Reiefolleg duerch alphabetescht Zortéiere vun allen Anträg ersetzen?"
@@ -455,7 +455,7 @@ lb:
     login_button: Login Knäppchen
     display_login_button_hint: Definéiert ob de Login Knäppchen op der Buchungssäit ugewise gëtt.
     private: Privat
-    private_hint: Privat Opzeechnungen ginn net op ëffentleche Säiten, wéi der Buchungssäit, ugewisen oder verschafft.
+    private_hint: "Privat Datesätz ginn net op der ëffentlecher Buchungssäit ugewisen, kënnen awer weiderhin iwwer hiren direkte Buchungslink gebucht ginn."
     reset: Zrécksetzen
     all: All
     booking_link: Buchungslink

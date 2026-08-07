@@ -264,7 +264,7 @@ pl:
     custom_css_hint: "Wpisz tutaj CSS, aby zmodyfikowac motyw; dotyczy stron rezerwacji i panelu administracyjnego."
     select_category: "Wybierz kategorie"
     uncategorized: "Bez kategorii"
-    category_hidden_hint: "Ukryte kategorie i ich uslugi nie sa widoczne na stronie rezerwacji."
+    category_hidden_hint: "Ukryte kategorie i ich usługi nie są wyświetlane na stronie rezerwacji, ale ich usługi nadal można rezerwować za pomocą bezpośredniego linku do rezerwacji."
     drag_to_reorder: "Przeciagnij rekordy, aby ustawic kolejnosc widoczna na stronie rezerwacji."
     sort_alphabetically: "Sortuj alfabetycznie"
     sort_alphabetically_confirm: "Zastapic obecna kolejnosc, sortujac wszystkie rekordy alfabetycznie?"
@@ -455,7 +455,7 @@ pl:
     login_button: Przycisk logowania
     display_login_button_hint: Określa, czy przycisk logowania jest wyświetlany na stronie rezerwacji.
     private: Prywatny
-    private_hint: Prywatne rekordy nie będą wyświetlane ani przetwarzane na stronach publicznych, takich jak strona rezerwacji.
+    private_hint: "Prywatne rekordy nie są wyświetlane na publicznej stronie rezerwacji, ale nadal można je rezerwować za pomocą ich bezpośredniego linku do rezerwacji."
     reset: Resetuj
     all: Wszystko
     booking_link: Link do rezerwacji
