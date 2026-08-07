@@ -3,6 +3,10 @@
 The about page lists these notes; every release needs a section here matching
 CloudronManifest.json.
 
+## 1.5.2
+
+- Fix the text editor toolbar buttons showing as empty grey squares on the legal contents and other editor pages
+
 ## 1.5.1
 
 - SMS Gateway page now has step by step setup instructions, validates settings when you save and has a Send Test SMS button
