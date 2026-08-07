@@ -264,7 +264,7 @@
     custom_css_hint: "Skriv inn CSS her for aa endre temaet; det gjelder bookingsidene og administrasjonen."
     select_category: "Velg kategori"
     uncategorized: "Uten kategori"
-    category_hidden_hint: "Skjulte kategorier og tjenestene deres vises ikke paa bookingsiden."
+    category_hidden_hint: "Skjulte kategorier og deres tjenester vises ikke på bookingsiden, men tjenestene deres kan fortsatt bookes via en direkte bookinglenke."
     drag_to_reorder: "Dra postene for aa angi rekkefoelgen som vises paa bookingsiden."
     sort_alphabetically: "Sorter alfabetisk"
     sort_alphabetically_confirm: "Erstatte gjeldende rekkefoelge ved aa sortere alle poster alfabetisk?"
@@ -455,7 +455,7 @@
     login_button: Innloggingsknapp
     display_login_button_hint: Definerer om påloggingsknappen vises på bestillingssiden.
     private: Privat
-    private_hint: Private poster vil ikke bli vist eller behandlet på offentlige sider, for eksempel bestillingssiden.
+    private_hint: "Private oppføringer vises ikke på den offentlige bookingsiden, men kan fortsatt bookes via deres direkte bookinglenke."
     reset: Tilbakestill
     all: All
     booking_link: Bookinglenke

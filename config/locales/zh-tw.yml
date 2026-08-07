@@ -264,7 +264,7 @@ zh-tw:
     custom_css_hint: "在此輸入 CSS 以修改主題,會同時套用於預約頁面與管理介面。"
     select_category: "選擇分類"
     uncategorized: "未分類"
-    category_hidden_hint: "隱藏的分類及其服務不會顯示在預約頁面上。"
+    category_hidden_hint: "隱藏的類別及其服務不會顯示在預約頁面上，但其服務仍可透過直接預約連結進行預約。"
     drag_to_reorder: "拖曳記錄以設定預約頁面上顯示的順序。"
     sort_alphabetically: "按字母排序"
     sort_alphabetically_confirm: "以按字母排序所有記錄取代目前順序?"
@@ -455,7 +455,7 @@ zh-tw:
     login_button: 登入按鈕
     display_login_button_hint: 定義是否在預約頁面顯示登入按鈕。
     private: 私人
-    private_hint: 私人記錄將不會顯示或處理於公開頁面，如預約頁面。
+    private_hint: "私人記錄不會顯示在公開預約頁面上，但仍可透過其直接預約連結進行預約。"
     reset: 重設
     all: 全部
     booking_link: 預約連結

@@ -264,7 +264,7 @@ it:
     custom_css_hint: "Inserisci qui il CSS per modificare il tema; si applica alle pagine di prenotazione e all'amministrazione."
     select_category: "Seleziona categoria"
     uncategorized: "Senza categoria"
-    category_hidden_hint: "Le categorie nascoste e i loro servizi non compaiono nella pagina di prenotazione."
+    category_hidden_hint: "Le categorie nascoste e i loro servizi non vengono mostrati nella pagina di prenotazione, ma i loro servizi possono comunque essere prenotati tramite un link diretto di prenotazione."
     drag_to_reorder: "Trascina i record per impostare l'ordine mostrato nella pagina di prenotazione."
     sort_alphabetically: "Ordina alfabeticamente"
     sort_alphabetically_confirm: "Sostituire l'ordine attuale ordinando tutti i record alfabeticamente?"
@@ -455,7 +455,7 @@ it:
     login_button: Pulsante di Accesso
     display_login_button_hint: Definisce se il pulsante di accesso viene visualizzato nella pagina di prenotazione.
     private: Privato
-    private_hint: I record privati non verranno visualizzati o elaborati in pagine pubbliche come la pagina di prenotazione.
+    private_hint: "I record privati non vengono mostrati nella pagina pubblica di prenotazione, ma possono comunque essere prenotati tramite il loro link diretto di prenotazione."
     reset: Reimposta
     all: Tutti
     booking_link: Link di Prenotazione

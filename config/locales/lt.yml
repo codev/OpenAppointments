@@ -264,7 +264,7 @@ lt:
     custom_css_hint: "Iveskite CSS temai keisti; jis taikomas rezervaciju puslapiams ir administravimui."
     select_category: "Pasirinkite kategorija"
     uncategorized: "Be kategorijos"
-    category_hidden_hint: "Paslėptos kategorijos ir ju paslaugos rezervaciju puslapyje nerodomos."
+    category_hidden_hint: "Paslėptos kategorijos ir jų paslaugos nerodomos rezervacijų puslapyje, tačiau jų paslaugas vis tiek galima rezervuoti per tiesioginę rezervacijos nuorodą."
     drag_to_reorder: "Vilkite irasus, kad nustatytumete rezervaciju puslapyje rodoma tvarka."
     sort_alphabetically: "Rikiuoti abeceles tvarka"
     sort_alphabetically_confirm: "Pakeisti dabartine tvarka surikiuojant visus irasus abeceles tvarka?"
@@ -455,7 +455,7 @@ lt:
     login_button: Prisijungimo mygtukas
     display_login_button_hint: Nurodo, ar registravimosi vizitui tinklalapyje bus rodomas prisijungimo mygtukas.
     private: Privatus
-    private_hint: Privatūs įrašai nebus rodomi ir apdorojami viešuose tinklalapiuose, kaip antai registravimosi vizitui tinklalapyje.
+    private_hint: "Privatūs įrašai nerodomi viešame rezervacijų puslapyje, tačiau juos vis tiek galima rezervuoti per jų tiesioginę rezervacijos nuorodą."
     reset: Atkurti
     all: Visi
     booking_link: Registravimosi nuoroda

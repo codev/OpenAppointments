@@ -264,7 +264,7 @@ es:
     custom_css_hint: "Introduzca CSS aquí para modificar el tema; se aplica a las páginas de reserva y a la administración."
     select_category: "Seleccione categoría"
     uncategorized: "Sin categoría"
-    category_hidden_hint: "Las categorías ocultas y sus servicios no se muestran en la página de reservas."
+    category_hidden_hint: "Las categorías ocultas y sus servicios no se muestran en la página de reservas, pero sus servicios aún se pueden reservar a través de un enlace directo de reserva."
     drag_to_reorder: "Arrastre los registros para definir el orden mostrado en la página de reservas."
     sort_alphabetically: "Ordenar alfabéticamente"
     sort_alphabetically_confirm: "¿Reemplazar el orden actual ordenando todos los registros alfabéticamente?"
@@ -455,7 +455,7 @@ es:
     login_button: Botón de inicio de sesión
     display_login_button_hint: Define si el botón de inicio de sesión debe ser mostrado en la página de reservas.
     private: Privado
-    private_hint: Los registros privados no se mostrarán o procesarán en páginas públicas como en la página de reservas.
+    private_hint: "Los registros privados no se muestran en la página pública de reservas, pero aún se pueden reservar a través de su enlace directo de reserva."
     reset: Restaurar
     all: Todo
     booking_link: Enlace para reservar

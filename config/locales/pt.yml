@@ -264,7 +264,7 @@ pt:
     custom_css_hint: "Introduza CSS aqui para modificar o tema; aplica-se às páginas de marcação e à administração."
     select_category: "Selecione a categoria"
     uncategorized: "Sem categoria"
-    category_hidden_hint: "As categorias ocultas e os seus serviços não aparecem na página de marcações."
+    category_hidden_hint: "As categorias ocultas e os seus serviços não são mostrados na página de marcações, mas os seus serviços podem ainda ser marcados através de uma ligação direta de marcação."
     drag_to_reorder: "Arraste os registos para definir a ordem apresentada na página de marcações."
     sort_alphabetically: "Ordenar alfabeticamente"
     sort_alphabetically_confirm: "Substituir a ordem atual ordenando todos os registos alfabeticamente?"
@@ -455,7 +455,7 @@ pt:
     login_button: Botão de Login
     display_login_button_hint: Define se o botão de login será exibido na página de agendamento.
     private: Privado
-    private_hint: Registros privados não serão exibidos ou processados em páginas públicas, como a página de agendamento.
+    private_hint: "Os registos privados não são mostrados na página pública de marcações, mas podem ainda ser marcados através da sua ligação direta de marcação."
     reset: Redefinir
     all: Todos
     booking_link: Link de Agendamento

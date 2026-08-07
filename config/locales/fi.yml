@@ -264,7 +264,7 @@ fi:
     custom_css_hint: "Kirjoita CSS taehaen muokataksesi teemaa; se koskee varaussivuja ja hallintaa."
     select_category: "Valitse kategoria"
     uncategorized: "Ei kategoriaa"
-    category_hidden_hint: "Piilotetut kategoriat ja niiden palvelut eivaet naey varaussivulla."
+    category_hidden_hint: "Piilotettuja kategorioita ja niiden palveluita ei näytetä varaussivulla, mutta niiden palvelut voi silti varata suoran varauslinkin kautta."
     drag_to_reorder: "Vedae tietueita maeaerittaeaeksesi varaussivulla naekyvaen jaerjestyksen."
     sort_alphabetically: "Lajittele aakkosittain"
     sort_alphabetically_confirm: "Korvataanko nykyinen jaerjestys lajittelemalla kaikki tietueet aakkosittain?"
@@ -455,7 +455,7 @@ fi:
     login_button: Kirjautumispainike
     display_login_button_hint: Määrittää näytetäänkö kirjautumispainike varaussivulla.
     private: Yksityinen
-    private_hint: Yksityisiä tietueita ei näytetä julkisilla sivuilla, kuten esim. varaussivulla.
+    private_hint: "Yksityisiä tietueita ei näytetä julkisella varaussivulla, mutta ne voi silti varata niiden suoran varauslinkin kautta."
     reset: Nollaa
     all: Kaikki
     booking_link: Varauslinkki

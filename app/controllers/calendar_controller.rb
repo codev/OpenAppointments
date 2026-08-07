@@ -62,7 +62,8 @@ class CalendarController < ApplicationController
       assistant_providers: assistant_provider_ids,
       edit_appointment: edit_appointment,
       google_sync_feature: Setting.get("google_sync_feature") == "1",
-      customers: customers
+      customers: customers,
+      **(1..5).to_h { |i| [ :"label_custom_field_#{i}", Setting.get("label_custom_field_#{i}") ] }
     )
 
     script_vars(timezones: helpers.timezones)

@@ -279,6 +279,11 @@ App.Pages.Assistants = (function () {
      */
     function save(assistant) {
         App.Http.Assistants.save(assistant).done((response) => {
+            if (response.success === false) {
+                $('#assistants .form-message').addClass('alert-danger').text(response.message).show();
+                return;
+            }
+
             App.Layouts.Backend.displayNotification(lang('assistant_saved'));
             App.Pages.Assistants.resetForm();
             $('#assistants-page').removeClass('editing');

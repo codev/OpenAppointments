@@ -264,7 +264,7 @@ lv:
     custom_css_hint: "Ievadiet CSS seit, lai mainitu temu; tas attiecas uz rezervaciju lapam un administraciju."
     select_category: "Izvelieties kategoriju"
     uncategorized: "Bez kategorijas"
-    category_hidden_hint: "Sleptas kategorijas un to pakalpojumi rezervaciju lapa netiek raditi."
+    category_hidden_hint: "Slēptās kategorijas un to pakalpojumi netiek rādīti rezervāciju lapā, taču to pakalpojumus joprojām var rezervēt, izmantojot tiešo rezervācijas saiti."
     drag_to_reorder: "Velciet ierakstus, lai iestatitu rezervaciju lapa redzamo secibu."
     sort_alphabetically: "Kartot alfabetiski"
     sort_alphabetically_confirm: "Vai aizstat pasreizejo secibu, kartojot visus ierakstus alfabetiski?"
@@ -455,7 +455,7 @@ lv:
     login_button: Pieteikšanās poga
     display_login_button_hint: Nosaka, vai rezervēšanas lapā tiek rādīta pieteikšanās poga.
     private: Privāts
-    private_hint: Privātie ieraksti netiks rādīti vai apstrādāti publiskajās lapās, piemēram, rezervēšanas lapā.
+    private_hint: "Privātie ieraksti netiek rādīti publiskajā rezervāciju lapā, taču tos joprojām var rezervēt, izmantojot to tiešo rezervācijas saiti."
     reset: Atiestatīt
     all: All
     booking_link: Rezervēšanas saite

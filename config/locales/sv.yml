@@ -264,7 +264,7 @@ sv:
     custom_css_hint: "Ange CSS haer foer att aendra temat; det gaeller bokningssidorna och administrationen."
     select_category: "Vaelj kategori"
     uncategorized: "Utan kategori"
-    category_hidden_hint: "Dolda kategorier och deras tjaenster visas inte paa bokningssidan."
+    category_hidden_hint: "Dolda kategorier och deras tjänster visas inte på bokningssidan, men deras tjänster kan fortfarande bokas via en direkt bokningslänk."
     drag_to_reorder: "Dra posterna foer att staella in ordningen som visas paa bokningssidan."
     sort_alphabetically: "Sortera alfabetiskt"
     sort_alphabetically_confirm: "Ersaetta den nuvarande ordningen genom att sortera alla poster alfabetiskt?"
@@ -455,7 +455,7 @@ sv:
     login_button: Knapp för inloggning
     display_login_button_hint: Välj om inloggningsknappen till admin-delen ska visas på bokningssidan.
     private: Privat innehåll
-    private_hint: Privat innehåll kommer inte att publiceras eller vara tillgängligt på bokningssidan.
+    private_hint: "Privata poster visas inte på den offentliga bokningssidan, men kan fortfarande bokas via deras direkta bokningslänk."
     reset: Återställ
     all: Alla
     booking_link: Bokningslänk

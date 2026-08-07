@@ -64,6 +64,10 @@ App.Pages.Booking = (function () {
      */
     const displayMode = vars('display_mode') || 'dropdown';
 
+    // Set when the visitor followed a private provider's direct booking link:
+    // the wizard then only offers that provider and their services.
+    let lockedProviderId = null;
+
     /**
      * Detect the month step.
      *
@@ -228,14 +232,20 @@ App.Pages.Booking = (function () {
                 $selectService.val(selectedServiceId);
             }
 
-            $selectService.trigger('change'); // Load the available hours.
-
             // Check if a specific provider was selected (also by booking slug).
+            // Resolved before the service change below so a private provider's
+            // link locks the wizard before the provider list is rebuilt.
             const selectedProviderSlug = App.Utils.Url.queryParam('provider');
             const selectedProvider = (vars('available_providers') || []).find(
                 (provider) => provider.booking_slug && provider.booking_slug === selectedProviderSlug,
             );
             const selectedProviderId = selectedProvider ? String(selectedProvider.id) : null;
+
+            if (selectedProvider && selectedProvider.is_private) {
+                lockedProviderId = selectedProviderId;
+            }
+
+            $selectService.trigger('change'); // Load the available hours.
 
             if (selectedProviderId && $selectProvider.find('option[value="' + selectedProviderId + '"]').length === 0) {
                 // Select a service of this provider in order to make the provider available in the select box.
@@ -417,6 +427,10 @@ App.Pages.Booking = (function () {
         let previousProviderCanServe = false;
 
         vars('available_providers').forEach((provider) => {
+            if (lockedProviderId && String(provider.id) !== String(lockedProviderId)) {
+                return;
+            }
+
             const canServeService =
                 !serviceId ||
                 provider.services.filter((providerServiceId) => Number(providerServiceId) === Number(serviceId))
@@ -607,7 +621,7 @@ App.Pages.Booking = (function () {
          * services; the confirmation details are refreshed either way.
          */
         $selectProvider.on('change', (event) => {
-            if (firstStep === 'provider') {
+            if (firstStep === 'provider' || lockedProviderId) {
                 filterServicesByProvider();
             }
 

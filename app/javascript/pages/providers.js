@@ -327,6 +327,11 @@ App.Pages.Providers = (function () {
      */
     function save(provider) {
         App.Http.Providers.save(provider).then((response) => {
+            if (response.success === false) {
+                $('#providers .form-message').addClass('alert-danger').text(response.message).show();
+                return;
+            }
+
             App.Layouts.Backend.displayNotification(lang('provider_saved'));
             App.Pages.Providers.resetForm();
             $('#providers-page').removeClass('editing');

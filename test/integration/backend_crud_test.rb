@@ -149,6 +149,22 @@ class BackendCrudTest < ActionDispatch::IntegrationTest
     assert_equal false, response.parsed_body["success"]
   end
 
+  test "provider store rejects a duplicate email with an error payload" do
+    login_admin
+
+    assert_no_difference "User.providers.count" do
+      post "/providers/store", params: {
+        provider: {
+          name: "Chair 2", email: users(:zane).email,
+          settings: { username: "chairtwo", password: "chairtwopass1" }
+        }
+      }
+    end
+    body = response.parsed_body
+    assert_equal false, body["success"]
+    assert_match(/already in use/i, body["message"])
+  end
+
   test "admins cannot delete their own account" do
     login_admin
 

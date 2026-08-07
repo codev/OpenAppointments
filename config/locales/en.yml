@@ -264,7 +264,7 @@ en:
     custom_css_hint: "Enter CSS here to modify the theme, it is applied to both the booking pages and the admin interface."
     select_category: "Select Category"
     uncategorized: "Uncategorized"
-    category_hidden_hint: "Hidden categories and their services are not shown on the booking page."
+    category_hidden_hint: "Hidden categories and their services are not shown on the booking page, but their services can still be booked through a direct booking link."
     drag_to_reorder: "Drag the records to set the order shown on the booking page."
     sort_alphabetically: "Sort Alphabetically"
     sort_alphabetically_confirm: "Replace the current order by sorting all records alphabetically?"
@@ -455,7 +455,7 @@ en:
     login_button: Login Button
     display_login_button_hint: Defines whether the login button is being displayed in the booking page.
     private: Private
-    private_hint: Private records will not be displayed or processed in public pages such as the booking page.
+    private_hint: "Private records are not shown on the public booking page but can still be booked through their direct booking link."
     reset: Reset
     all: All
     booking_link: Booking Link

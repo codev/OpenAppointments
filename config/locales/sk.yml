@@ -264,7 +264,7 @@ sk:
     custom_css_hint: "Sem zadajte CSS na upravu temy; pouzije sa na rezervacne stranky aj administraciu."
     select_category: "Vyberte kategoriu"
     uncategorized: "Bez kategorie"
-    category_hidden_hint: "Skryte kategorie a ich sluzby sa na rezervacnej stranke nezobrazuju."
+    category_hidden_hint: "Skryté kategórie a ich služby sa na rezervačnej stránke nezobrazujú, ale ich služby možno stále rezervovať prostredníctvom priameho rezervačného odkazu."
     drag_to_reorder: "Potiahnutim zaznamov nastavite poradie zobrazene na rezervacnej stranke."
     sort_alphabetically: "Zoradit abecedne"
     sort_alphabetically_confirm: "Nahradit sucasne poradie abecednym zoradenim vsetkych zaznamov?"
@@ -455,7 +455,7 @@ sk:
     login_button: Tlačidlo na prihlásenie
     display_login_button_hint: Definuje, či sa prihlasovacie tlačidlo zobrazuje na stránke rezervácie.
     private: Súkromné
-    private_hint: Súkromné záznamy nebudú zobrazené ani spracované na verejných stránkach, ako je napríklad stránka rezervácie.
+    private_hint: "Súkromné záznamy sa nezobrazujú na verejnej rezervačnej stránke, ale stále ich možno rezervovať prostredníctvom ich priameho rezervačného odkazu."
     reset: Resetovať
     all: Všetko
     booking_link: Odkaz na rezerváciu

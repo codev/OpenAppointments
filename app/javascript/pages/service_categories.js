@@ -218,6 +218,11 @@ App.Pages.ServiceCategories = (function () {
      */
     function save(serviceCategory) {
         App.Http.ServiceCategories.save(serviceCategory).then((response) => {
+            if (response.success === false) {
+                $serviceCategories.find('.form-message').addClass('alert-danger').text(response.message).show();
+                return;
+            }
+
             App.Layouts.Backend.displayNotification(lang('service_category_saved'));
             App.Pages.ServiceCategories.resetForm();
             $('#service-categories-page').removeClass('editing');
