@@ -21,6 +21,13 @@ class CalendarTest < ActionDispatch::IntegrationTest
     assert_match "window.vars", response.body
   end
 
+  test "calendar vars carry the custom field labels for the event popover" do
+    Setting.set("label_custom_field_1", "Pronouns")
+    login_admin
+    get "/calendar"
+    assert_match '"label_custom_field_1":"Pronouns"', response.body
+  end
+
   test "get_calendar_appointments with provider filter returns EA shape" do
     login_admin
     post "/calendar/get_calendar_appointments", params: {

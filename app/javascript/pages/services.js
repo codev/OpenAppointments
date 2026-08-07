@@ -288,6 +288,11 @@ App.Pages.Services = (function () {
      */
     function save(service) {
         App.Http.Services.save(service).then((response) => {
+            if (response.success === false) {
+                $services.find('.form-message').addClass('alert-danger').text(response.message).show();
+                return;
+            }
+
             App.Layouts.Backend.displayNotification(lang('service_saved'));
             App.Pages.Services.resetForm();
             $('#services-page').removeClass('editing');

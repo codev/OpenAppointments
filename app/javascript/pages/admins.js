@@ -250,6 +250,11 @@ App.Pages.Admins = (function () {
      */
     function save(admin) {
         App.Http.Admins.save(admin).then((response) => {
+            if (response.success === false) {
+                $admins.find('.form-message').addClass('alert-danger').text(response.message).show();
+                return;
+            }
+
             App.Layouts.Backend.displayNotification(lang('admin_saved'));
             App.Pages.Admins.resetForm();
             $('#admins-page').removeClass('editing');

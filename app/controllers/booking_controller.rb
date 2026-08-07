@@ -33,6 +33,14 @@ class BookingController < ApplicationController
     available_services = BookingPayloads.available_services
     available_providers = BookingPayloads.available_providers
 
+    additions = BookingPayloads.slug_additions(
+      params[:service], params[:provider],
+      known_service_ids: available_services.map { |row| row["id"] },
+      known_provider_ids: available_providers.map { |row| row["id"] }
+    )
+    available_services += additions[:services]
+    available_providers += additions[:providers]
+
     manage_mode = false
     appointment = provider_payload = customer_payload = nil
     customer_token = false
@@ -63,6 +71,16 @@ class BookingController < ApplicationController
         "id" => provider.id, "name" => provider.name,
         "services" => provider.services.map(&:id), "timezone" => provider.timezone
       }
+
+      # Private or hidden-category records are absent from the public payloads,
+      # which left the reschedule wizard unable to prefill them.
+      unless available_services.any? { |row| row["id"] == record.id_services }
+        available_services << BookingPayloads.service_payload(BookingPayloads.service_row(record.id_services))
+                                             .merge("booking_slug" => nil)
+      end
+      unless available_providers.any? { |row| row["id"] == provider.id }
+        available_providers << BookingPayloads.provider_payload(provider).merge("booking_slug" => nil)
+      end
       customer_payload = customer_fields(record.customer)
       customer_token = SecureRandom.hex(16)
       Rails.cache.write("customer-token-#{customer_token}", record.customer.id, expires_in: 10.minutes)
@@ -80,6 +98,17 @@ class BookingController < ApplicationController
 
     display_mode = Setting.get("booking_display_mode", "dropdown")
     display_mode = "dropdown" unless %w[dropdown cards].include?(display_mode)
+
+    available_categories = []
+    if display_mode == "cards"
+      available_categories = BookingPayloads.available_categories
+      # Categories of injected (private/hidden) services so their cards render.
+      missing_category_ids = available_services.filter_map { |row| row["service_category_id"] }.uniq -
+                             available_categories.map { |row| row["id"] }
+      available_categories += ServiceCategory.where(id: missing_category_ids).with_attached_picture
+                                             .display_order
+                                             .map { |category| BookingPayloads.category_payload(category) }
+    end
 
     script_vars(
       first_step: first_step,
@@ -105,7 +134,7 @@ class BookingController < ApplicationController
     html_vars(
       first_step: first_step,
       display_mode: display_mode,
-      available_categories: display_mode == "cards" ? BookingPayloads.available_categories : [],
+      available_categories: available_categories,
       available_services: available_services,
       available_providers: available_providers,
       theme: theme,

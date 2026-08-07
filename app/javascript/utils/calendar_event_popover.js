@@ -149,13 +149,15 @@ App.Utils.CalendarEventPopover = (function () {
      *
      * @param {string} displayEdit - CSS class to show/hide edit button.
      * @param {string} displayDelete - CSS class to show/hide delete button.
+     * @param {Array<jQuery>} [extraButtons] - Extra elements placed after the close button.
      * @returns {jQuery} Button container element.
      */
-    function createPopoverButtons(displayEdit, displayDelete) {
+    function createPopoverButtons(displayEdit, displayDelete, extraButtons = []) {
         return $('<div/>', {
             class: 'd-flex justify-content-center',
             html: [
                 createPopoverButton('close-popover btn btn-outline-secondary me-2', 'fas fa-ban', 'close'),
+                ...extraButtons,
                 createPopoverButton(
                     'delete-popover btn btn-outline-secondary ' + displayDelete,
                     'fas fa-trash-alt',
@@ -273,6 +275,28 @@ App.Utils.CalendarEventPopover = (function () {
                   $('<br/>'),
               ]
             : [];
+
+        // Customer custom fields (e.g. pronouns, access needs) with their configured labels.
+        const customFieldElements = [];
+        [1, 2, 3, 4, 5].forEach((fieldNumber) => {
+            const value = customer['custom_field_' + fieldNumber];
+            if (!value) {
+                return;
+            }
+            const label = vars('label_custom_field_' + fieldNumber) || lang('custom_field') + ' #' + fieldNumber;
+            customFieldElements.push(
+                $('<strong/>', {class: 'd-inline-block me-2', text: label}),
+                $('<span/>', {class: 'd-inline-block', text: value}),
+                $('<br/>'),
+            );
+        });
+
+        const messagesButton = $('<a/>', {
+            class: 'btn btn-outline-secondary me-2',
+            href: App.Utils.Url.siteUrl('customers?customer_id=' + customer.id),
+            html: [$('<i/>', {class: 'fas fa-comments me-2'}), $('<span/>', {text: lang('messages')})],
+        });
+
         return $('<div/>', {
             html: [
                 ...createPopoverRow('start', formatDateTime(info.event.start)),
@@ -296,11 +320,12 @@ App.Utils.CalendarEventPopover = (function () {
                 renderPhoneIcon(customer.phone_number),
                 $('<span/>', {class: 'd-inline-block', text: customer.phone_number || '-'}),
                 $('<br/>'),
+                ...customFieldElements,
                 ...meetingLinkElements,
                 ...createPopoverRow('notes', getEventNotes(info.event)),
                 renderCustomContent(info),
                 $('<hr/>'),
-                createPopoverButtons(displayEdit, displayDelete),
+                createPopoverButtons(displayEdit, displayDelete, [messagesButton]),
             ],
         });
     }

@@ -66,7 +66,7 @@ module Messaging
           event: "created_or_updated",
           audiences: %w[customer provider admins],
           channels: %w[email],
-          short_text: "Your appointment has been saved",
+          short_text: "Your appointment is confirmed",
           long_text: <<~TEXT
             Your appointment has been successfully saved.
 

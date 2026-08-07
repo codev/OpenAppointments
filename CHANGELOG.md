@@ -3,6 +3,14 @@
 The about page lists these notes; every release needs a section here matching
 CloudronManifest.json.
 
+## 1.6.0
+
+- Private booking links: private providers and services (and hidden categories) can now be booked through their direct booking link while staying off the public booking page - a private provider's link locks the wizard to that provider and their services
+- Rescheduling appointments on private providers or services now works
+- Saving a provider, service, customer, admin, assistant or category with a duplicate email or other server error now shows the error instead of pretending it saved
+- Calendar appointment popover shows the customer custom fields (for example pronouns and access needs) and has a Messages button that opens the customer conversation
+- New installs default the confirmation notification to "Your appointment is confirmed"
+
 ## 1.5.2
 
 - Fix the text editor toolbar buttons showing as empty grey squares on the legal contents and other editor pages

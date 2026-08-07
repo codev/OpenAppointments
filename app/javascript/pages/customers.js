@@ -215,6 +215,11 @@ App.Pages.Customers = (function () {
      */
     function save(customer) {
         App.Http.Customers.save(customer).then((response) => {
+            if (response.success === false) {
+                $formMessage.addClass('alert-danger').text(response.message).show();
+                return;
+            }
+
             App.Layouts.Backend.displayNotification(lang('customer_saved'));
             App.Pages.Customers.resetForm();
             $('#customers-page').removeClass('editing');
