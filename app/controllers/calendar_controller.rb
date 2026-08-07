@@ -335,8 +335,9 @@ class CalendarController < ApplicationController
   end
 
   def calendar_events_response(appointments, unavailabilities, start_date, end_date)
-    appointments = filter_events_by_role(appointments.includes(:provider, :service, :customer))
+    appointments = filter_events_by_role(appointments.includes(:provider, :service, :customer)).to_a
     unavailabilities = filter_events_by_role(unavailabilities.includes(:provider))
+    unread_counts = Message.unread_counts_for(appointments.filter_map(&:id_users_customer).uniq)
 
     {
       appointments: appointments.map do |appointment|
@@ -344,6 +345,7 @@ class CalendarController < ApplicationController
           "provider" => appointment.provider && EaRows.provider_row(appointment.provider),
           "service" => appointment.service && EaRows.service_row(appointment.service),
           "customer" => appointment.customer && EaRows.customer_row(appointment.customer)
+                          .merge("unread_messages" => unread_counts[appointment.customer.id] || 0)
         )
       end,
       unavailabilities: unavailabilities.map do |unavailability|

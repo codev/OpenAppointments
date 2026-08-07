@@ -43,11 +43,27 @@ class CalendarTest < ActionDispatch::IntegrationTest
     assert_equal "Zane", appointment["provider"]["name"]
     assert_equal "Trim Cut", appointment["service"]["name"]
     assert_equal "JX", appointment["customer"]["name"]
+    assert_equal 0, appointment["customer"]["unread_messages"]
     assert appointment["provider"]["settings"].key?("working_plan")
     assert_not appointment["provider"]["settings"].key?("password")
     assert_equal 1, body["unavailabilities"].length
     assert_equal true, body["unavailabilities"].first["is_unavailability"]
     assert body.key?("blocked_periods")
+  end
+
+  test "calendar appointments carry the customer unread message count" do
+    2.times do |i|
+      Message.create!(direction: "incoming", channel: "smsgateway", status: "received",
+                      customer: users(:jx), body: "reply #{i}", from_address: "+447700900123")
+    end
+
+    login_admin
+    post "/calendar/get_calendar_appointments", params: {
+      record_id: users(:zane).id, filter_type: "provider",
+      start_date: "2026-07-19", end_date: "2026-07-21"
+    }
+    assert_response :success
+    assert_equal 2, response.parsed_body["appointments"].first["customer"]["unread_messages"]
   end
 
   test "get_calendar_appointments service filter excludes unavailabilities" do

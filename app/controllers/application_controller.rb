@@ -9,7 +9,8 @@ class ApplicationController < ActionController::Base
   # EA JS posts the CSRF token as a `csrf_token` body param (double-submit port).
   self.request_forgery_protection_token = :csrf_token
 
-  allow_browser versions: :modern
+  # No allow_browser guard: it 406s unrecognised mobile user agents, and the
+  # public booking page must work on any phone browser.
 
   private
 

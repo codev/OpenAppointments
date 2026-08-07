@@ -236,12 +236,15 @@ body {
             display: inline-block;
         }
 
-        button {
+        button,
+        a.btn {
             font-size: 1em;
             box-sizing: border-box;
             margin: 0;
             height: 2.1em;
             padding: 0 0.6em;
+            display: inline-flex;
+            align-items: center;
         }
 
         a {
