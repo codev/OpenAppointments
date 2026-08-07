@@ -157,6 +157,7 @@ module TenToEight
             updates[:services_description] = row[:services_description]
           end
           updates[:sort_order] = row[:sort_order] if row[:sort_order] && provider.sort_order != row[:sort_order]
+          updates[:is_private] = row[:is_private] if !row[:is_private].nil? && provider.is_private != row[:is_private]
           provider.update(updates) if updates.any?
           restore_password(provider, row[:password_hash])
         elsif @create_providers && row[:email].present?
@@ -164,7 +165,8 @@ module TenToEight
             user = User.create!(
               name: row[:name], email: row[:email], phone_number: row[:phone],
               about: row[:about], services_description: row[:services_description],
-              sort_order: row[:sort_order], timezone: "Europe/London", role: role
+              sort_order: row[:sort_order], is_private: row[:is_private] || false,
+              timezone: "Europe/London", role: role
             )
             user.create_settings!(
               username: row[:username].presence || row[:email].split("@").first,

@@ -46,10 +46,11 @@ module DataExport
       [ provider.name, provider.email, provider.phone_number, provider.timezone,
         provider.services.map(&:name).join("|"), provider.settings&.working_plan,
         provider.settings&.username, provider.about, provider.services_description,
-        picture_name(provider), provider.settings&.password, provider.sort_order ]
+        picture_name(provider), provider.settings&.password, provider.sort_order,
+        provider.is_private ? "1" : "0" ]
     end
     [ %w[name email phone_number timezone services working_plan username
-         about services_description picture password_hash sort_order] ] + rows
+         about services_description picture password_hash sort_order is_private] ] + rows
   end
 
   def picture_name(record)

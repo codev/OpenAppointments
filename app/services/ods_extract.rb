@@ -69,7 +69,8 @@ class OdsExtract
         username: row["username"].presence, about: row["about"].presence,
         services_description: row["services_description"].presence,
         picture: row["picture"].presence, password_hash: row["password_hash"].presence,
-        sort_order: row["sort_order"].presence&.to_i }
+        sort_order: row["sort_order"].presence&.to_i,
+        is_private: row["is_private"].nil? ? nil : row["is_private"] == "1" }
     end
   end
 
