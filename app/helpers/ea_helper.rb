@@ -5,7 +5,11 @@ module EaHelper
   VERSION = JSON.parse(Rails.root.join("CloudronManifest.json").read)["version"].freeze
 
   def lang(key)
-    t("ea.#{key}", default: key)
+    Terminology.apply(key, t("ea.#{key}", default: key), terminology_labels)
+  end
+
+  def terminology_labels
+    @terminology_labels ||= Terminology.labels
   end
 
   # EA's vars() in views reads the html_vars accumulator.

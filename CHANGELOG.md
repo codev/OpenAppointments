@@ -3,6 +3,10 @@
 The about page lists these notes; every release needs a section here matching
 CloudronManifest.json.
 
+## 1.7.0
+
+- General Settings can rename Provider and Service (e.g. Stylist) across the English interface
+
 ## 1.6.4
 
 - Crash reports are emailed to the administrator

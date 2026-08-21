@@ -32,6 +32,6 @@ module Localization
   # Flat translation hash for the window.lang payload, from the ea.* locale keys.
   def translations(language_name)
     code = code_for(language_name)
-    I18n.t("ea", locale: code, default: {}).transform_keys(&:to_s)
+    Terminology.apply_all(I18n.t("ea", locale: code, default: {}).transform_keys(&:to_s), code)
   end
 end
