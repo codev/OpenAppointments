@@ -7,6 +7,8 @@ CloudronManifest.json.
 
 - Terminology hint says to capitalise the labels
 - Appointments menu item shows the table view; Calendar always shows the calendar. The per-user calendar view preference is removed
+- Messages moves under the cog menu as Message Settings, with Unknown Inbox below it; Manage data is now Data Settings
+- Appointments view: provider and service filters sit in the top bar next to the days selector, empty means all; prev, next and Today buttons and the date picker styled like the calendar view
 
 ## 1.7.0
 

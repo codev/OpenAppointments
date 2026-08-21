@@ -27,7 +27,6 @@ th:
     secondary_color: "สีรอง"
     background_color: "สีพื้นหลัง"
     import_providers_caution: "ข้อควรระวัง: การเลือกผู้ให้บริการจะสร้างบัญชีผู้ใช้และอนุญาตให้เข้าสู่ระบบด้วยอีเมลของพวกเขา"
-    manage_data: "จัดการข้อมูล"
     export_data: "ส่งออกข้อมูล"
     backups: "ข้อมูลสำรอง"
     backups_hint: "ข้อมูลสำรองล่าสุดห้าชุดถูกเก็บไว้บนเซิร์ฟเวอร์ และมีเพียงผู้ดูแลระบบเท่านั้นที่ดาวน์โหลดได้ หากดาวน์โหลดโปรดเก็บอย่างปลอดภัยเพราะมีข้อมูลส่วนบุคคล"
@@ -801,3 +800,9 @@ th:
     provider_label_plural: Providers (plural)
     service_label: Service (singular)
     service_label_plural: Services (plural)
+    message_settings: Message Settings
+    data_settings: Data Settings
+    all_services: All Services
+    select_day_interval_hint: Number of days to show.
+    filter_providers_hint: Show only the selected providers.
+    filter_services_hint: Show only the selected services.

@@ -27,7 +27,6 @@ zh:
     secondary_color: "辅助颜色"
     background_color: "背景颜色"
     import_providers_caution: "注意：勾选服务人员将创建用户账户并允许使用他们的邮箱登录"
-    manage_data: "数据管理"
     export_data: "导出数据"
     backups: "备份"
     backups_hint: "服务器保留最近五个备份,仅管理员可下载。下载后请妥善保管,因为其中包含个人信息。"
@@ -801,3 +800,9 @@ zh:
     provider_label_plural: Providers (plural)
     service_label: Service (singular)
     service_label_plural: Services (plural)
+    message_settings: Message Settings
+    data_settings: Data Settings
+    all_services: All Services
+    select_day_interval_hint: Number of days to show.
+    filter_providers_hint: Show only the selected providers.
+    filter_services_hint: Show only the selected services.

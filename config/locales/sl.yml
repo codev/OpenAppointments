@@ -27,7 +27,6 @@ sl:
     secondary_color: "Sekundarna barva"
     background_color: "Barva ozadja"
     import_providers_caution: "Pozor: označitev izvajalcev bo ustvarila uporabniške račune in omogočila prijavo z njihovo e-pošto"
-    manage_data: "Upravljanje podatkov"
     export_data: "Izvozi podatke"
     backups: "Varnostne kopije"
     backups_hint: "Pet najnovejsih varnostnih kopij ostane na strezniku in jih lahko prenesejo samo skrbniki. Ob prenosu jih hranite varno, saj vsebujejo osebne podatke."
@@ -801,3 +800,9 @@ sl:
     provider_label_plural: Providers (plural)
     service_label: Service (singular)
     service_label_plural: Services (plural)
+    message_settings: Message Settings
+    data_settings: Data Settings
+    all_services: All Services
+    select_day_interval_hint: Number of days to show.
+    filter_providers_hint: Show only the selected providers.
+    filter_services_hint: Show only the selected services.

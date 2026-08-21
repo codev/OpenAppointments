@@ -27,7 +27,6 @@ fi:
     secondary_color: "Toissijainen väri"
     background_color: "Taustaväri"
     import_providers_caution: "Varoitus: palveluntarjoajien valinta luo käyttäjätilit ja sallii kirjautumisen heidän sähköpostillaan"
-    manage_data: "Hallitse tietoja"
     export_data: "Vie tiedot"
     backups: "Varmuuskopiot"
     backups_hint: "Viisi uusinta varmuuskopiota sailytetaan palvelimella ja vain jaerjestelmaenvalvojat voivat ladata ne. Sailytae ladatut kopiot turvallisesti, sillae ne sisaeltaevaet henkiloetietoja."
@@ -801,3 +800,9 @@ fi:
     provider_label_plural: Providers (plural)
     service_label: Service (singular)
     service_label_plural: Services (plural)
+    message_settings: Message Settings
+    data_settings: Data Settings
+    all_services: All Services
+    select_day_interval_hint: Number of days to show.
+    filter_providers_hint: Show only the selected providers.
+    filter_services_hint: Show only the selected services.

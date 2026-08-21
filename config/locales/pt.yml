@@ -27,7 +27,6 @@ pt:
     secondary_color: "Cor secundária"
     background_color: "Cor de fundo"
     import_providers_caution: "Atenção: marcar profissionais criará contas de utilizador e permitirá iniciar sessão com o email deles"
-    manage_data: "Gerir dados"
     export_data: "Exportar dados"
     backups: "Cópias de segurança"
     backups_hint: "As cinco cópias de segurança mais recentes ficam no servidor e apenas os administradores as podem descarregar. Guarde-as em segurança se as descarregar porque contêm informações pessoais."
@@ -801,3 +800,9 @@ pt:
     provider_label_plural: Providers (plural)
     service_label: Service (singular)
     service_label_plural: Services (plural)
+    message_settings: Message Settings
+    data_settings: Data Settings
+    all_services: All Services
+    select_day_interval_hint: Number of days to show.
+    filter_providers_hint: Show only the selected providers.
+    filter_services_hint: Show only the selected services.

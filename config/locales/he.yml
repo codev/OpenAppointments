@@ -27,7 +27,6 @@ he:
     secondary_color: "צבע משני"
     background_color: "צבע רקע"
     import_providers_caution: "זהירות: סימון נותני שירות ייצור חשבונות משתמש ויאפשר התחברות עם האימייל שלהם"
-    manage_data: "ניהול נתונים"
     export_data: "ייצוא נתונים"
     backups: "גיבויים"
     backups_hint: "חמשת הגיבויים האחרונים נשמרים בשרת ורק מנהלים יכולים להוריד אותם. שמרו אותם באופן מאובטח אם הורדתם אותם מכיוון שהם מכילים מידע אישי."
@@ -801,3 +800,9 @@ he:
     provider_label_plural: Providers (plural)
     service_label: Service (singular)
     service_label_plural: Services (plural)
+    message_settings: Message Settings
+    data_settings: Data Settings
+    all_services: All Services
+    select_day_interval_hint: Number of days to show.
+    filter_providers_hint: Show only the selected providers.
+    filter_services_hint: Show only the selected services.

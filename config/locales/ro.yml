@@ -27,7 +27,6 @@ ro:
     secondary_color: "Culoare secundară"
     background_color: "Culoare de fundal"
     import_providers_caution: "Atenție: bifarea furnizorilor va crea conturi de utilizator și va permite autentificarea cu emailul lor"
-    manage_data: "Gestionare date"
     export_data: "Exportă datele"
     backups: "Copii de siguranta"
     backups_hint: "Cele mai recente cinci copii de siguranta sunt pastrate pe server si doar administratorii le pot descarca. Pastrati-le in siguranta daca le descarcati, deoarece contin informatii personale."
@@ -801,3 +800,9 @@ ro:
     provider_label_plural: Providers (plural)
     service_label: Service (singular)
     service_label_plural: Services (plural)
+    message_settings: Message Settings
+    data_settings: Data Settings
+    all_services: All Services
+    select_day_interval_hint: Number of days to show.
+    filter_providers_hint: Show only the selected providers.
+    filter_services_hint: Show only the selected services.

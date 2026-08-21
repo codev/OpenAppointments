@@ -27,7 +27,6 @@ mr:
     secondary_color: "दुय्यम रंग"
     background_color: "पार्श्वभूमी रंग"
     import_providers_caution: "सावधान: प्रदाते निवडल्यास वापरकर्ता खाती तयार होतील आणि त्यांच्या ईमेलने लॉग इन करता येईल"
-    manage_data: "डेटा व्यवस्थापन"
     export_data: "डेटा निर्यात करा"
     backups: "बॅकअप"
     backups_hint: "पाच सर्वात अलीकडील बॅकअप सर्व्हरवर ठेवले जातात आणि फक्त प्रशासक ते डाउनलोड करू शकतात. डाउनलोड केल्यास ते सुरक्षित ठेवा कारण त्यात वैयक्तिक माहिती असते."
@@ -801,3 +800,9 @@ mr:
     provider_label_plural: Providers (plural)
     service_label: Service (singular)
     service_label_plural: Services (plural)
+    message_settings: Message Settings
+    data_settings: Data Settings
+    all_services: All Services
+    select_day_interval_hint: Number of days to show.
+    filter_providers_hint: Show only the selected providers.
+    filter_services_hint: Show only the selected services.

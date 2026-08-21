@@ -27,7 +27,6 @@ en:
     secondary_color: "Secondary Color"
     background_color: "Background Color"
     import_providers_caution: "Caution: ticking Providers will create user accounts and allow log in with their email"
-    manage_data: "Manage data"
     export_data: "Export data"
     backups: "Backups"
     backups_hint: "The five most recent backups are kept on the server and only administrators can download them. Store them securely if you download them as they contain personal information."
@@ -801,3 +800,9 @@ en:
     provider_label_plural: Providers (plural)
     service_label: Service (singular)
     service_label_plural: Services (plural)
+    message_settings: Message Settings
+    data_settings: Data Settings
+    all_services: All Services
+    select_day_interval_hint: Number of days to show.
+    filter_providers_hint: Show only the selected providers.
+    filter_services_hint: Show only the selected services.

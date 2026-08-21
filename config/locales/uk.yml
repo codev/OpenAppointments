@@ -27,7 +27,6 @@ uk:
     secondary_color: "Додатковий колір"
     background_color: "Колір тла"
     import_providers_caution: "Увага: позначення спеціалістів створить облікові записи та дозволить вхід за їхнім email"
-    manage_data: "Керування даними"
     export_data: "Експорт даних"
     backups: "Резервні копії"
     backups_hint: "П'ять останніх резервних копій зберігаються на сервері, і лише адміністратори можуть їх завантажити. Зберігайте завантажені копії в безпечному місці, оскільки вони містять персональні дані."
@@ -801,3 +800,9 @@ uk:
     provider_label_plural: Providers (plural)
     service_label: Service (singular)
     service_label_plural: Services (plural)
+    message_settings: Message Settings
+    data_settings: Data Settings
+    all_services: All Services
+    select_day_interval_hint: Number of days to show.
+    filter_providers_hint: Show only the selected providers.
+    filter_services_hint: Show only the selected services.

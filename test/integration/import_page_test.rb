@@ -243,7 +243,7 @@ class ImportPageTest < ActionDispatch::IntegrationTest
     I18n.available_locales.each do |locale|
       %w[import_data import_hint analyze start_import create_providers days_back days_forward
          reset_database reset_database_warning reset_confirmation_hint
-         manage_data export_data import_type full_reset_label import_providers_caution].each do |key|
+         data_settings export_data import_type full_reset_label import_providers_caution].each do |key|
         assert I18n.t("ea.#{key}", locale: locale, fallback: false, default: nil).present?,
                "missing ea.#{key} in #{locale}"
       end

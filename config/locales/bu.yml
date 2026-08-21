@@ -27,7 +27,6 @@ bu:
     secondary_color: "Вторичен цвят"
     background_color: "Цвят на фона"
     import_providers_caution: "Внимание: отбелязването на специалисти ще създаде потребителски акаунти и ще позволи вход с техния имейл"
-    manage_data: "Управление на данни"
     export_data: "Експортиране на данни"
     backups: "Резервни копия"
     backups_hint: "Петте най-нови резервни копия се пазят на сървъра и само администратори могат да ги изтеглят. Съхранявайте ги сигурно при изтегляне, тъй като съдържат лични данни."
@@ -801,3 +800,9 @@ bu:
     provider_label_plural: Providers (plural)
     service_label: Service (singular)
     service_label_plural: Services (plural)
+    message_settings: Message Settings
+    data_settings: Data Settings
+    all_services: All Services
+    select_day_interval_hint: Number of days to show.
+    filter_providers_hint: Show only the selected providers.
+    filter_services_hint: Show only the selected services.

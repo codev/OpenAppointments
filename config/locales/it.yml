@@ -27,7 +27,6 @@ it:
     secondary_color: "Colore secondario"
     background_color: "Colore di sfondo"
     import_providers_caution: "Attenzione: selezionare i fornitori creerà account utente e consentirà l'accesso con la loro email"
-    manage_data: "Gestione dati"
     export_data: "Esporta dati"
     backups: "Backup"
     backups_hint: "I cinque backup più recenti restano sul server e solo gli amministratori possono scaricarli. Conservali in modo sicuro se li scarichi perché contengono informazioni personali."
@@ -801,3 +800,9 @@ it:
     provider_label_plural: Providers (plural)
     service_label: Service (singular)
     service_label_plural: Services (plural)
+    message_settings: Message Settings
+    data_settings: Data Settings
+    all_services: All Services
+    select_day_interval_hint: Number of days to show.
+    filter_providers_hint: Show only the selected providers.
+    filter_services_hint: Show only the selected services.

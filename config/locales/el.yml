@@ -27,7 +27,6 @@ el:
     secondary_color: "Δευτερεύον χρώμα"
     background_color: "Χρώμα φόντου"
     import_providers_caution: "Προσοχή: η επιλογή παρόχων θα δημιουργήσει λογαριασμούς χρηστών και θα επιτρέψει τη σύνδεση με το email τους"
-    manage_data: "Διαχείριση δεδομένων"
     export_data: "Εξαγωγή δεδομένων"
     backups: "Αντίγραφα ασφαλείας"
     backups_hint: "Τα πέντε πιο πρόσφατα αντίγραφα ασφαλείας διατηρούνται στον διακομιστή και μόνο οι διαχειριστές μπορούν να τα κατεβάσουν. Φυλάξτε τα με ασφάλεια αν τα κατεβάσετε, καθώς περιέχουν προσωπικά δεδομένα."
@@ -801,3 +800,9 @@ el:
     provider_label_plural: Providers (plural)
     service_label: Service (singular)
     service_label_plural: Services (plural)
+    message_settings: Message Settings
+    data_settings: Data Settings
+    all_services: All Services
+    select_day_interval_hint: Number of days to show.
+    filter_providers_hint: Show only the selected providers.
+    filter_services_hint: Show only the selected services.

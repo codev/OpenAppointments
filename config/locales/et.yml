@@ -27,7 +27,6 @@ et:
     secondary_color: "Teisene värv"
     background_color: "Taustavärv"
     import_providers_caution: "Ettevaatust: teenusepakkujate märkimine loob kasutajakontod ja lubab nende e-postiga sisse logida"
-    manage_data: "Halda andmeid"
     export_data: "Ekspordi andmed"
     backups: "Varukoopiad"
     backups_hint: "Viis uusimat varukoopiat hoitakse serveris ja neid saavad alla laadida ainult administraatorid. Allalaadimisel hoidke neid turvaliselt, sest need sisaldavad isikuandmeid."
@@ -801,3 +800,9 @@ et:
     provider_label_plural: Providers (plural)
     service_label: Service (singular)
     service_label_plural: Services (plural)
+    message_settings: Message Settings
+    data_settings: Data Settings
+    all_services: All Services
+    select_day_interval_hint: Number of days to show.
+    filter_providers_hint: Show only the selected providers.
+    filter_services_hint: Show only the selected services.

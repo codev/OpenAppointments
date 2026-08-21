@@ -27,7 +27,6 @@ zh-tw:
     secondary_color: "輔助顏色"
     background_color: "背景顏色"
     import_providers_caution: "注意：勾選服務人員將建立使用者帳戶並允許使用他們的電子郵件登入"
-    manage_data: "資料管理"
     export_data: "匯出資料"
     backups: "備份"
     backups_hint: "伺服器保留最近五個備份，僅管理員可下載。下載後請妥善保管，因為其中包含個人資訊。"
@@ -801,3 +800,9 @@ zh-tw:
     provider_label_plural: Providers (plural)
     service_label: Service (singular)
     service_label_plural: Services (plural)
+    message_settings: Message Settings
+    data_settings: Data Settings
+    all_services: All Services
+    select_day_interval_hint: Number of days to show.
+    filter_providers_hint: Show only the selected providers.
+    filter_services_hint: Show only the selected services.

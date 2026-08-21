@@ -27,7 +27,6 @@ lt:
     secondary_color: "Antrinė spalva"
     background_color: "Fono spalva"
     import_providers_caution: "Dėmesio: pažymėjus specialistus bus sukurtos naudotojų paskyros ir leista prisijungti jų el. paštu"
-    manage_data: "Duomenų valdymas"
     export_data: "Eksportuoti duomenis"
     backups: "Atsargines kopijos"
     backups_hint: "Penkios naujausios atsargines kopijos laikomos serveryje ir tik administratoriai gali jas atsisiusti. Atsisiuntus laikykite jas saugiai, nes jose yra asmens duomenu."
@@ -801,3 +800,9 @@ lt:
     provider_label_plural: Providers (plural)
     service_label: Service (singular)
     service_label_plural: Services (plural)
+    message_settings: Message Settings
+    data_settings: Data Settings
+    all_services: All Services
+    select_day_interval_hint: Number of days to show.
+    filter_providers_hint: Show only the selected providers.
+    filter_services_hint: Show only the selected services.

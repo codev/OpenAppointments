@@ -27,7 +27,6 @@
     secondary_color: "Sekundærfarge"
     background_color: "Bakgrunnsfarge"
     import_providers_caution: "Advarsel: å krysse av for behandlere oppretter brukerkontoer og tillater innlogging med deres e-post"
-    manage_data: "Administrer data"
     export_data: "Eksporter data"
     backups: "Sikkerhetskopier"
     backups_hint: "De fem nyeste sikkerhetskopiene beholdes paa serveren, og bare administratorer kan laste dem ned. Oppbevar dem sikkert hvis du laster dem ned, da de inneholder personopplysninger."
@@ -801,3 +800,9 @@
     provider_label_plural: Providers (plural)
     service_label: Service (singular)
     service_label_plural: Services (plural)
+    message_settings: Message Settings
+    data_settings: Data Settings
+    all_services: All Services
+    select_day_interval_hint: Number of days to show.
+    filter_providers_hint: Show only the selected providers.
+    filter_services_hint: Show only the selected services.

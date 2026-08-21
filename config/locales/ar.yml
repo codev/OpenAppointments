@@ -27,7 +27,6 @@ ar:
     secondary_color: "اللون الثانوي"
     background_color: "لون الخلفية"
     import_providers_caution: "تحذير: تحديد مقدمي الخدمة سينشئ حسابات مستخدمين ويسمح بتسجيل الدخول ببريدهم الإلكتروني"
-    manage_data: "إدارة البيانات"
     export_data: "تصدير البيانات"
     backups: "النسخ الاحتياطية"
     backups_hint: "يُحتفظ بآخر خمس نسخ احتياطية على الخادم ولا يمكن تنزيلها إلا للمسؤولين. احفظها بأمان عند تنزيلها لأنها تحتوي على معلومات شخصية."
@@ -801,3 +800,9 @@ ar:
     provider_label_plural: Providers (plural)
     service_label: Service (singular)
     service_label_plural: Services (plural)
+    message_settings: Message Settings
+    data_settings: Data Settings
+    all_services: All Services
+    select_day_interval_hint: Number of days to show.
+    filter_providers_hint: Show only the selected providers.
+    filter_services_hint: Show only the selected services.

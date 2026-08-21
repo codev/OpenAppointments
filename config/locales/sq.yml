@@ -27,7 +27,6 @@ sq:
     secondary_color: "Ngjyra dytësore"
     background_color: "Ngjyra e sfondit"
     import_providers_caution: "Kujdes: shënimi i ofruesve do të krijojë llogari përdoruesish dhe do të lejojë hyrjen me emailin e tyre"
-    manage_data: "Menaxho të dhënat"
     export_data: "Eksporto të dhënat"
     backups: "Kopjet rezerve"
     backups_hint: "Pese kopjet rezerve me te fundit mbahen ne server dhe vetem administratoret mund t'i shkarkojne. Ruajini ne menyre te sigurt nese i shkarkoni sepse permbajne informacion personal."
@@ -801,3 +800,9 @@ sq:
     provider_label_plural: Providers (plural)
     service_label: Service (singular)
     service_label_plural: Services (plural)
+    message_settings: Message Settings
+    data_settings: Data Settings
+    all_services: All Services
+    select_day_interval_hint: Number of days to show.
+    filter_providers_hint: Show only the selected providers.
+    filter_services_hint: Show only the selected services.

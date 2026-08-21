@@ -27,7 +27,6 @@ fr:
     secondary_color: "Couleur secondaire"
     background_color: "Couleur de fond"
     import_providers_caution: "Attention : cocher les intervenants créera des comptes utilisateurs et permettra la connexion avec leur e-mail"
-    manage_data: "Gérer les données"
     export_data: "Exporter les données"
     backups: "Sauvegardes"
     backups_hint: "Les cinq sauvegardes les plus récentes sont conservées sur le serveur et seuls les administrateurs peuvent les télécharger. Conservez-les en lieu sûr si vous les téléchargez car elles contiennent des informations personnelles."
@@ -801,3 +800,9 @@ fr:
     provider_label_plural: Providers (plural)
     service_label: Service (singular)
     service_label_plural: Services (plural)
+    message_settings: Message Settings
+    data_settings: Data Settings
+    all_services: All Services
+    select_day_interval_hint: Number of days to show.
+    filter_providers_hint: Show only the selected providers.
+    filter_services_hint: Show only the selected services.

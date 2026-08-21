@@ -27,7 +27,6 @@ nl:
     secondary_color: "Secundaire kleur"
     background_color: "Achtergrondkleur"
     import_providers_caution: "Let op: het aanvinken van medewerkers maakt gebruikersaccounts aan en staat inloggen met hun e-mail toe"
-    manage_data: "Gegevens beheren"
     export_data: "Gegevens exporteren"
     backups: "Back-ups"
     backups_hint: "De vijf meest recente back-ups blijven op de server staan en alleen beheerders kunnen ze downloaden. Bewaar ze veilig als u ze downloadt, want ze bevatten persoonsgegevens."
@@ -801,3 +800,9 @@ nl:
     provider_label_plural: Providers (plural)
     service_label: Service (singular)
     service_label_plural: Services (plural)
+    message_settings: Message Settings
+    data_settings: Data Settings
+    all_services: All Services
+    select_day_interval_hint: Number of days to show.
+    filter_providers_hint: Show only the selected providers.
+    filter_services_hint: Show only the selected services.

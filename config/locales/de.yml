@@ -27,7 +27,6 @@ de:
     secondary_color: "Sekundärfarbe"
     background_color: "Hintergrundfarbe"
     import_providers_caution: "Achtung: Das Ankreuzen von Dienstleistern erstellt Benutzerkonten und ermöglicht die Anmeldung mit deren E-Mail"
-    manage_data: "Daten verwalten"
     export_data: "Daten exportieren"
     backups: "Sicherungen"
     backups_hint: "Die fuenf neuesten Sicherungen werden auf dem Server aufbewahrt und koennen nur von Administratoren heruntergeladen werden. Bewahren Sie sie nach dem Herunterladen sicher auf, da sie personenbezogene Daten enthalten."
@@ -801,3 +800,9 @@ de:
     provider_label_plural: Providers (plural)
     service_label: Service (singular)
     service_label_plural: Services (plural)
+    message_settings: Message Settings
+    data_settings: Data Settings
+    all_services: All Services
+    select_day_interval_hint: Number of days to show.
+    filter_providers_hint: Show only the selected providers.
+    filter_services_hint: Show only the selected services.
