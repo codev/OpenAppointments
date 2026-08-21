@@ -65,7 +65,11 @@ App.Pages.Appointments = (function () {
 
                 resize();
             })
-            .always(() => navButtons.prop('disabled', false));
+            .always(() => {
+                navButtons.prop('disabled', false);
+                // Like FullCalendar, Today is disabled while today is the first column.
+                $('#today').prop('disabled', start.isSame(moment(), 'day'));
+            });
     }
 
     function createDateColumn($wrapper, date, events) {

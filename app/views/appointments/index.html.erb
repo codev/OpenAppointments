@@ -31,14 +31,16 @@
     </div>
 
     <div id="calendar">
-        <div class="calendar-header fc">
+        <div class="calendar-header fc fc-direction-ltr fc-theme-standard">
             <div class="fc-toolbar fc-header-toolbar">
                 <div class="fc-toolbar-chunk">
                     <div class="fc-button-group">
-                        <button type="button" class="fc-prev-button fc-button fc-button-primary" id="previous-day">
+                        <button type="button" class="fc-prev-button fc-button fc-button-primary" id="previous-day"
+                                aria-label="<%= lang('previous') %>">
                             <span class="fc-icon fc-icon-chevron-left"></span>
                         </button>
-                        <button type="button" class="fc-next-button fc-button fc-button-primary" id="next-day">
+                        <button type="button" class="fc-next-button fc-button fc-button-primary" id="next-day"
+                                aria-label="<%= lang('next') %>">
                             <span class="fc-icon fc-icon-chevron-right"></span>
                         </button>
                     </div>
