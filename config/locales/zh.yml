@@ -795,3 +795,9 @@ zh:
     select_one: Select One
     all_providers: All Providers
     message_sent: Message sent.
+    terminology: Terminology
+    terminology_hint: Rename Provider and Service, for example Stylist and Treatment. Leave blank for the defaults. Languages other than English are not affected.
+    provider_label: Provider (singular)
+    provider_label_plural: Providers (plural)
+    service_label: Service (singular)
+    service_label_plural: Services (plural)

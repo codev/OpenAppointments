@@ -97,6 +97,19 @@
 
                         <div class="row mb-5">
                             <div class="col-12">
+                                <h5 class="mb-3 fw-light"><%= lang('terminology') %></h5>
+                                <p class="form-text text-muted"><small><%= lang('terminology_hint') %></small></p>
+                                <% Terminology::SETTINGS.each do |field| %>
+                                    <div class="mb-3">
+                                        <label class="form-label" for="<%= field.dasherize %>"><%= lang(field) %></label>
+                                        <input id="<%= field.dasherize %>" data-field="<%= field %>" class="form-control">
+                                    </div>
+                                <% end %>
+                            </div>
+                        </div>
+
+                        <div class="row mb-5">
+                            <div class="col-12">
                                 <h5 class="mb-3 fw-light"><%= lang('localization') %></h5>
 
                                 <div class="mb-3">

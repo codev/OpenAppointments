@@ -11,6 +11,7 @@ class GeneralSettingsController < ApplicationController
     date_format time_format first_weekday require_phone_number
     display_cookie_notice cookie_notice_content display_terms_and_conditions
     terms_and_conditions_content display_privacy_policy privacy_policy_content
+    provider_label provider_label_plural service_label service_label_plural
   ].freeze
 
   def index
