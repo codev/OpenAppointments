@@ -12,24 +12,24 @@
 
     <div id="header-menu" class="collapse navbar-collapse flex-row-reverse ps-2 pe-0">
         <ul class="navbar-nav">
-            <% hidden = can?(:view, :appointments) ? "" : "d-none" %>
-            <% active = active_menu == "calendar" ? "active" : "" %>
-            <li class="nav-item text-center <%= active + hidden %>">
-                <a href="/calendar" class="nav-link text-white fw-light py-3 px-3"
-                   data-tippy-content="<%= lang('manage_appointment_record_hint') %>">
-                    <i class="fas fa-calendar-alt me-2"></i>
-                    <%= lang('calendar') %>
-                </a>
-            </li>
+          <% hidden = can?(:view, :appointments) ? "" : "d-none" %>
+          <% active = active_menu == "appointments" ? "active" : "" %>
+          <li class="nav-item text-center <%= active + hidden %>">
+            <a href="/appointments" class="nav-link text-white fw-light py-3 px-3"
+               data-tippy-content="<%= lang('manage_appointment_record_hint') %>">
+              <i class="fas fa-list me-2"></i>
+              <%= lang('appointments') %>
+            </a>
+          </li>
 
-            <% active = active_menu == "appointments" ? "active" : "" %>
-            <li class="nav-item text-center <%= active + hidden %>">
-                <a href="/appointments" class="nav-link text-white fw-light py-3 px-3"
-                   data-tippy-content="<%= lang('manage_appointment_record_hint') %>">
-                    <i class="fas fa-list me-2"></i>
-                    <%= lang('appointments') %>
-                </a>
-            </li>
+          <% active = active_menu == "calendar" ? "active" : "" %>
+          <li class="nav-item text-center <%= active + hidden %>">
+            <a href="/calendar" class="nav-link text-white fw-light py-3 px-3"
+               data-tippy-content="<%= lang('manage_appointment_record_hint') %>">
+              <i class="fas fa-calendar-alt me-2"></i>
+              <%= lang('calendar') %>
+            </a>
+          </li>
 
             <% hidden = can?(:view, :customers) ? "" : "d-none" %>
             <% active = active_menu == "customers" ? "active" : "" %>
