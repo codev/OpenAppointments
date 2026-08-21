@@ -1180,36 +1180,56 @@ App.Utils.CalendarTableView = (function () {
     /**
      * Create table view header container.
      */
+    /**
+     * Rebuild the view from the first displayed date, keeping the day interval.
+     */
+    function refreshView() {
+        const firstColumnDate = $('.calendar-view .date-column:first').data('date');
+        const startDate = moment(firstColumnDate);
+        const endDate = startDate.clone().add(parseInt($selectFilterItem.val()) - 1, 'days');
+        createView(startDate.toDate(), endDate.toDate());
+    }
+
+    /**
+     * Header mirrors the FullCalendar toolbar of the calendar view: prev/next and today on
+     * the left, the date picker in the middle, nothing on the right.
+     */
     function createHeader() {
-        $calendarFilter
-            .find('select')
+        $selectFilterItem
             .empty()
             .append(new Option('1 ' + lang('day'), '1'))
             .append(new Option('3 ' + lang('days'), '3'));
-        const $calendarHeader = $('<div/>', {class: 'calendar-header'}).appendTo('#calendar');
 
-        // Previous button
+        const $calendarHeader = $('<div/>', {class: 'calendar-header fc'}).appendTo('#calendar');
+        const $toolbar = $('<div/>', {class: 'fc-toolbar fc-header-toolbar'}).appendTo($calendarHeader);
+        const $left = $('<div/>', {class: 'fc-toolbar-chunk'}).appendTo($toolbar);
+        const $center = $('<div/>', {class: 'fc-toolbar-chunk'}).appendTo($toolbar);
+        $('<div/>', {class: 'fc-toolbar-chunk'}).appendTo($toolbar);
 
+        const $navGroup = $('<div/>', {class: 'fc-button-group'}).appendTo($left);
         $('<button/>', {
-            class: 'btn btn-xs btn-outline-secondary previous me-2',
-            html: [$('<span/>', {class: 'fas fa-chevron-left'})],
-        }).appendTo($calendarHeader);
-
-        // Date picker
+            type: 'button',
+            class: 'fc-prev-button fc-button fc-button-primary previous',
+            html: [$('<span/>', {class: 'fc-icon fc-icon-chevron-left'})],
+        }).appendTo($navGroup);
+        $('<button/>', {
+            type: 'button',
+            class: 'fc-next-button fc-button fc-button-primary next',
+            html: [$('<span/>', {class: 'fc-icon fc-icon-chevron-right'})],
+        }).appendTo($navGroup);
+        $('<button/>', {
+            type: 'button',
+            class: 'fc-today-button fc-button fc-button-primary today',
+            text: lang('today'),
+        }).appendTo($left);
 
         $selectDate = $('<input/>', {
             type: 'text',
-            class: 'form-control d-inline-block select-date me-2',
+            class: 'form-control d-inline-block select-date',
             value: App.Utils.Date.format(new Date(), vars('date_format'), vars('time_format'), false),
-        }).appendTo($calendarHeader);
+        }).appendTo($center);
 
-        // Next button
-
-        $('<button/>', {
-            class: 'btn btn-xs btn-outline-secondary next',
-            html: [$('<span/>', {class: 'fas fa-chevron-right'})],
-        }).appendTo($calendarHeader);
-        App.Utils.UI.initializeDatePicker($calendarHeader.find('.select-date'), {
+        App.Utils.UI.initializeDatePicker($selectDate, {
             onChange(selectedDates) {
                 const startDate = selectedDates[0];
 
@@ -1222,26 +1242,20 @@ App.Utils.CalendarTableView = (function () {
         });
         $calendarHeader.find('.flatpickr-wrapper').addClass('w-auto');
         const providers = getAvailableProviders();
+        const $filterItems = $calendarFilter.find('.calendar-filter-items');
+        const filterGroup = (hint) => {
+            const $group = $('<div/>', {class: 'filter-group'}).appendTo($filterItems);
+            tippy($group[0], {content: hint});
+            return $group;
+        };
 
-        // Provider filter
+        // Provider filter, empty means all providers
 
-        const $providerFilterGroup = $('<div/>', {class: 'filter-group'}).appendTo($calendarHeader);
-        $('<label/>', {text: lang('provider')}).appendTo($providerFilterGroup);
         $filterProvider = $('<select/>', {
             id: 'filter-provider',
             multiple: 'multiple',
-            on: {
-                change: () => {
-                    const firstColumnDate = $('.calendar-view .date-column:first').data('date');
-
-                    const startDateMoment = moment(firstColumnDate);
-
-                    const endDateMoment = moment(firstColumnDate).add(parseInt($selectFilterItem.val()) - 1, 'day');
-
-                    createView(startDateMoment.toDate(), endDateMoment.toDate());
-                },
-            },
-        }).appendTo($providerFilterGroup);
+            on: {change: refreshView},
+        }).appendTo(filterGroup(lang('filter_providers_hint')));
 
         if (vars('role_slug') !== App.Layouts.Backend.DB_SLUG_PROVIDER) {
             providers.forEach((provider) => {
@@ -1255,36 +1269,24 @@ App.Utils.CalendarTableView = (function () {
             });
         }
 
-        App.Utils.UI.initializeDropdown($filterProvider);
+        App.Utils.UI.initializeDropdown($filterProvider, {placeholder: lang('all_providers'), width: '100%'});
 
-        // Service filter
+        // Service filter, empty means all services
 
         const services = vars('available_services').filter((service) => {
             const provider = providers.find((p) => p.services.indexOf(service.id) !== -1);
 
             return vars('role_slug') === App.Layouts.Backend.DB_SLUG_ADMIN || provider;
         });
-        const $serviceFilterGroup = $('<div/>', {class: 'filter-group'}).appendTo($calendarHeader);
-        $('<label/>', {text: lang('service')}).appendTo($serviceFilterGroup);
         $filterService = $('<select/>', {
             id: 'filter-service',
             multiple: 'multiple',
-            on: {
-                change: () => {
-                    const firstColumnDate = $('.calendar-view .date-column:first').data('date');
-
-                    const startDateMoment = moment(firstColumnDate);
-
-                    const endDateMoment = moment(firstColumnDate).add({days: parseInt($selectFilterItem.val()) - 1});
-
-                    createView(startDateMoment.toDate(), endDateMoment.toDate());
-                },
-            },
-        }).appendTo($serviceFilterGroup);
+            on: {change: refreshView},
+        }).appendTo(filterGroup(lang('filter_services_hint')));
         services.forEach((service) => {
             $filterService.append(new Option(service.name, service.id));
         });
-        App.Utils.UI.initializeDropdown($filterService);
+        App.Utils.UI.initializeDropdown($filterService, {placeholder: lang('all_services'), width: '100%'});
     }
 
     /**
@@ -1296,7 +1298,7 @@ App.Utils.CalendarTableView = (function () {
     function createView(startDate, endDate) {
         // Disable date navigation
 
-        $('#calendar .calendar-header .btn').addClass('disabled').prop('disabled', true);
+        $('#calendar .calendar-header .fc-button').prop('disabled', true);
 
         // Remember provider calendar view mode
 
@@ -1329,7 +1331,7 @@ App.Utils.CalendarTableView = (function () {
 
             // Activate calendar navigation
 
-            $('#calendar .calendar-header .btn').removeClass('disabled').prop('disabled', false);
+            $('#calendar .calendar-header .fc-button').prop('disabled', false);
 
             // Apply provider calendar view mode
 
@@ -1503,7 +1505,7 @@ App.Utils.CalendarTableView = (function () {
     function addEventListeners() {
         // Previous day button
 
-        $calendar.on('click', '.calendar-header .btn.previous', () => {
+        $calendar.on('click', '.calendar-header .previous', () => {
             const dayInterval = $selectFilterItem.val();
 
             const currentDate = App.Utils.UI.getDateTimePickerValue($selectDate);
@@ -1518,7 +1520,7 @@ App.Utils.CalendarTableView = (function () {
 
         // Next day button
 
-        $calendar.on('click', '.calendar-header .btn.next', () => {
+        $calendar.on('click', '.calendar-header .next', () => {
             const dayInterval = $selectFilterItem.val();
 
             const currentDate = App.Utils.UI.getDateTimePickerValue($selectDate);
@@ -1526,6 +1528,16 @@ App.Utils.CalendarTableView = (function () {
             const startDate = moment(currentDate).add(1, 'days');
 
             const endDate = startDate.clone().add(dayInterval - 1, 'days');
+
+            App.Utils.UI.setDateTimePickerValue($selectDate, startDate.toDate());
+            createView(startDate.toDate(), endDate.toDate());
+        });
+
+        // Today button
+
+        $calendar.on('click', '.calendar-header .today', () => {
+            const startDate = moment().startOf('day');
+            const endDate = startDate.clone().add($selectFilterItem.val() - 1, 'days');
 
             App.Utils.UI.setDateTimePickerValue($selectDate, startDate.toDate());
             createView(startDate.toDate(), endDate.toDate());

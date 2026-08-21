@@ -1,18 +1,19 @@
 <%# Port of EA pages/calendar.php. %>
 <div class="container-fluid backend-page pt-0 pb-0" id="calendar-page">
     <div class="row mb-3 text-white py-3 bg-dark" id="calendar-toolbar">
-        <div id="calendar-filter" class="col-lg-3">
-            <div class="calendar-filter-items">
+        <% table_view = vars(:calendar_view) == "table" %>
+        <div id="calendar-filter" class="<%= table_view ? "col-lg-8" : "col-lg-3" %>">
+            <div class="calendar-filter-items d-flex flex-wrap gap-2">
                 <select id="select-filter-item"
-                        class="form-select col mb-2 mb-lg-0"
-                        data-tippy-content="<%= lang('select_filter_item_hint') %>"
+                        class="form-select"
+                        data-tippy-content="<%= lang(table_view ? 'select_day_interval_hint' : 'select_filter_item_hint') %>"
                         aria-label="Filter">
                     <!-- JS -->
                 </select>
             </div>
         </div>
 
-        <div id="calendar-actions" class="col-lg-9 text-md-end">
+        <div id="calendar-actions" class="<%= table_view ? "col-lg-4" : "col-lg-9" %> text-md-end">
             <% if vars(:calendar_view) == "default" %>
                 <button
                     id="enable-sync"

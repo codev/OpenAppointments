@@ -310,24 +310,12 @@ body .modal.full-screen .modal-push {
 }
 
 /* Calendar header and Select2 integration */
-#calendar .calendar-header {
-    padding-bottom: 15px;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 10px;
-}
-
-#calendar .calendar-header label {
-    margin: 0;
-    vertical-align: middle;
-}
-
 #calendar .calendar-header .select-date {
     width: auto;
+    text-align: center;
 }
 
-#calendar .calendar-header .select2-container--default .select2-selection--multiple {
+#calendar-filter .select2-container--default .select2-selection--multiple {
     height: 38px;
 }
 
@@ -573,9 +561,6 @@ body .modal.full-screen .modal-push {
     }
 
 
-    #calendar .calendar-header .select2-container {
-        width: 300px !important;
-    }
 }
 
 /* On mobile viewports the sync buttons should occupy a full row, with the
@@ -601,29 +586,21 @@ body .modal.full-screen .modal-push {
     }
 }
 
-/* Calendar table view filter groups (label + select side by side). */
-#calendar .calendar-header .filter-group {
-    display: flex;
-    align-items: center;
-    gap: 10px;
+/* Table view toolbar: day interval, provider and service filters side by side,
+   stacking on mobile. */
+#calendar-filter #select-filter-item {
+    width: auto;
 }
 
-/* On mobile viewports the calendar table view filters should stack: the
-   provider filter on its own row and the service filter on the next row,
-   each using the full available width. */
+#calendar-filter .filter-group {
+    flex: 1 1 12rem;
+    min-width: 0;
+}
+
 @media (max-width: 767.98px) {
-    #calendar .calendar-header .filter-group {
+    #calendar-filter #select-filter-item,
+    #calendar-filter .filter-group {
         flex: 1 0 100%;
-    }
-
-    #calendar .calendar-header .filter-group label {
-        flex: 0 0 5rem;
-    }
-
-    #calendar .calendar-header .filter-group .select2-container {
-        flex: 1 1 auto;
-        width: auto !important;
-        min-width: 0;
     }
 }
 
