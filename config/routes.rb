@@ -14,7 +14,7 @@ Rails.application.routes.draw do
 
   # Backend calendar
   get "calendar" => "calendar#index", as: :calendar
-  get "appointments" => "calendar#index", as: :appointments
+  get "appointments" => "appointments#index", as: :appointments
   get "calendar/reschedule/:appointment_hash" => "calendar#reschedule"
   post "calendar/get_calendar_appointments" => "calendar#get_calendar_appointments"
   post "calendar/get_calendar_appointments_for_table_view" => "calendar#get_calendar_appointments_for_table_view"

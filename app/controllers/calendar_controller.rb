@@ -1,6 +1,7 @@
 # Backend calendar, port of EA's Calendar controller.
 class CalendarController < ApplicationController
   include BackendPage
+  include CalendarPage
 
   layout "backend"
 
@@ -16,74 +17,7 @@ class CalendarController < ApplicationController
   end
 
   def index
-    return unless require_backend_page!(:appointments)
-
-    appointment_hash = params[:appointment_hash].to_s
-    edit_appointment = nil
-    if appointment_hash.present?
-      record = Appointment.find_by(booking_hash: appointment_hash)
-      if record
-        edit_appointment = EaRows.appointment_row(record)
-        edit_appointment["customer"] = EaRows.customer_row(record.customer) if record.customer
-      end
-    end
-
-    available_providers = visible_providers.map { |provider| EaRows.provider_row(provider) }
-
-    provider_service_ids = available_providers.flat_map { |provider| provider["services"] }.uniq
-    category_names = ServiceCategory.pluck(:id, :name).to_h
-    available_services = Service.available.joins(:provider_links).distinct.order(:name)
-                                .select { |service| provider_service_ids.include?(service.id) }
-                                .map do |service|
-      # EA get_available_services shape includes the category id/name aliases.
-      EaRows.service_row(service).merge(
-        "service_category_id" => service.id_service_categories,
-        "service_category_name" => category_names[service.id_service_categories]
-      )
-    end
-
-    # /appointments is the table view, /calendar the calendar view.
-    calendar_view = request.path == "/appointments" ? "table" : "default"
-
-    customers = User.customers.order(updated_at: :desc).limit(50).to_a
-    if Setting.get("limit_customer_access") == "1" && session[:role_slug] == Role::PROVIDER
-      customers = customers.select { |customer| customer_access?(customer.id) }
-    end
-    customers = customers.map { |customer| EaRows.customer_row(customer) }
-
-    if calendar_view == "table"
-      backend_page_vars(page_title: helpers.lang("appointments"), active_menu: "appointments")
-    else
-      backend_page_vars(page_title: helpers.lang("calendar"), active_menu: "calendar")
-    end
-
-    script_vars(
-      first_weekday: Setting.get("first_weekday"),
-      company_working_plan: Setting.get("company_working_plan"),
-      privileges: session_role.permissions,
-      calendar_view: calendar_view,
-      available_providers: available_providers,
-      available_services: available_services,
-      assistant_providers: assistant_provider_ids,
-      edit_appointment: edit_appointment,
-      google_sync_feature: Setting.get("google_sync_feature") == "1",
-      customers: customers,
-      **(1..5).to_h { |i| [ :"label_custom_field_#{i}", Setting.get("label_custom_field_#{i}") ] }
-    )
-
-    script_vars(timezones: helpers.timezones)
-
-    html_vars(
-      calendar_view: calendar_view,
-      available_languages: Localization.available_languages,
-      available_providers: available_providers,
-      available_services: available_services,
-      assistant_providers: assistant_provider_ids,
-      appointment_status_options: JSON.parse(Setting.get("appointment_status_options", "[]")),
-      **field_display_flags
-    )
-
-    render :index
+    render_calendar_page(page_title: "calendar", active_menu: "calendar")
   end
 
   # POST /calendar/save_appointment
@@ -325,19 +259,6 @@ class CalendarController < ApplicationController
   end
 
   private
-
-  def visible_providers
-    providers = User.providers.joins(:provider_service_links).distinct
-                    .order(:name, :email).includes(:services, :settings)
-    case session[:role_slug]
-    when Role::PROVIDER
-      providers.where(id: session[:user_id])
-    when Role::ASSISTANT
-      providers.where(id: assistant_provider_ids)
-    else
-      providers
-    end
-  end
 
   def calendar_events_response(appointments, unavailabilities, start_date, end_date)
     appointments = filter_events_by_role(appointments.includes(:provider, :service, :customer)).to_a

@@ -1,0 +1,32 @@
+<%# Add and reload buttons shared by the calendar and appointments pages. Locals: working_plan_exception. %>
+<% if can?(:add, :appointments) %>
+    <div class="dropdown d-inline-block">
+        <button class="btn btn-light" type="button" data-bs-toggle="dropdown">
+            <i class="fas fa-plus-square"></i>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a class="dropdown-item" href="#" id="insert-appointment">
+                    <%= lang('appointment') %>
+                </a>
+            </li>
+            <li>
+                <a class="dropdown-item" href="#" id="insert-unavailability">
+                    <%= lang('unavailability') %>
+                </a>
+            </li>
+            <% if working_plan_exception && session[:role_slug] == Role::ADMIN %>
+                <li>
+                    <a class="dropdown-item" href="#" id="insert-working-plan-exception">
+                        <%= lang('working_plan_exception') %>
+                    </a>
+                </li>
+            <% end %>
+        </ul>
+    </div>
+<% end %>
+
+<button id="reload-appointments" class="btn btn-light"
+        data-tippy-content="<%= lang('reload_appointments_hint') %>">
+    <i class="fas fa-sync-alt"></i>
+</button>
