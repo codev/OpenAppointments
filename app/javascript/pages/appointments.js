@@ -1,8 +1,7 @@
 /**
- * Appointments page: a column per date, a FullCalendar day per provider inside it.
+ * Appointments page: a column per date, a FullCalendar day list per provider inside it.
  */
 App.Pages.Appointments = (function () {
-    const $calendar = $('#calendar');
     const $calendarView = $('#calendar .calendar-view');
     const $selectDayInterval = $('#select-day-interval');
     const $filterProvider = $('#filter-provider');
@@ -56,19 +55,12 @@ App.Pages.Appointments = (function () {
         const end = start.clone().add(dayInterval() - 1, 'days');
         const navButtons = $('#calendar .calendar-header .fc-button').prop('disabled', true);
 
-        // Keep each provider's list/day mode across reloads.
-        const viewModes = {};
-        $calendarView.find('.provider-column').each((index, column) => {
-            const $column = $(column);
-            viewModes[$column.data('provider').id] = $column.data('fullCalendar').view.type;
-        });
-
         App.Http.Calendar.getCalendarAppointmentsForTableView(start.toDate(), end.toDate())
             .done((response) => {
                 const $wrapper = $calendarView.children('div').empty();
 
                 for (const date = start.clone(); date.isSameOrBefore(end); date.add(1, 'day')) {
-                    createDateColumn($wrapper, date.toDate(), response, viewModes);
+                    createDateColumn($wrapper, date.toDate(), response);
                 }
 
                 resize();
@@ -76,7 +68,7 @@ App.Pages.Appointments = (function () {
             .always(() => navButtons.prop('disabled', false));
     }
 
-    function createDateColumn($wrapper, date, events, viewModes) {
+    function createDateColumn($wrapper, date, events) {
         const $dateColumn = $('<div/>', {class: 'date-column'}).appendTo($wrapper);
 
         $('<h5/>', {
@@ -85,11 +77,11 @@ App.Pages.Appointments = (function () {
         }).appendTo($dateColumn);
 
         visibleProviders().forEach((provider) => {
-            createProviderColumn($dateColumn, date, provider, events, viewModes[provider.id]);
+            createProviderColumn($dateColumn, date, provider, events);
         });
     }
 
-    function createProviderColumn($dateColumn, date, provider, events, viewMode) {
+    function createProviderColumn($dateColumn, date, provider, events) {
         const $column = $('<div/>', {class: 'provider-column'}).appendTo($dateColumn);
         const $wrapper = $('<div/>', {class: 'calendar-wrapper'}).appendTo($column);
         const serviceIds = selectedIds($filterService);
@@ -100,24 +92,15 @@ App.Pages.Appointments = (function () {
         const fullCalendar = new FullCalendar.Calendar(
             $wrapper[0],
             Events.calendarOptions({
-                initialView: viewMode || 'timeGridDay',
+                initialView: 'listDay',
                 initialDate: date,
                 height: calendarHeight(),
-                headerToolbar: {left: 'listDay,timeGridDay', center: '', right: ''},
-                buttonText: {timeGridDay: lang('calendar'), listDay: lang('list')},
-                select: (info) => {
-                    if (info.allDay) {
-                        return;
-                    }
-                    Events.newEventDialog(info, {providerId});
-                    fullCalendar.unselect();
-                    return false;
-                },
+                headerToolbar: false,
             }),
         );
 
         fullCalendar.render();
-        $column.data({provider, fullCalendar});
+        $column.data('provider', provider);
 
         const dayStart = moment(date).startOf('day');
         const appointments = events.appointments.filter(
@@ -163,7 +146,6 @@ App.Pages.Appointments = (function () {
         $filterService.on('change', reload);
         $('#reload-appointments').on('click', reload);
         $(window).on('resize', resize);
-        $calendar.on('click', '.fc-listDay-button, .fc-timeGridDay-button', resize);
     }
 
     function initialize() {
