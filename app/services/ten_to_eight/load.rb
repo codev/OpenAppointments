@@ -1,7 +1,7 @@
 module TenToEight
   # Port of import/load_to_ea.py, writing straight to the models. Matches existing
-  # records (categories/services by name, providers by email, customers by email or
-  # name+phone) so re-runs do not duplicate. Pronoun lands in custom_field_1, access
+  # records (categories/services by name, providers by email or name, customers by
+  # email or name+phone) so re-runs do not duplicate. Pronoun lands in custom_field_1, access
   # needs in custom_field_2, and a do-not-contact prefix on the notes (GDPR consent).
   class Load
     PHASES = %w[categories services providers assistants admins customers appointments settings].freeze
@@ -145,10 +145,10 @@ module TenToEight
       role = Role.find_by!(slug: Role::PROVIDER)
       @service_ids ||= Service.pluck(:name, :id).to_h
       @provider_ids = {}
-      existing = User.providers.to_a.index_by { |user| user.email.to_s.downcase }
+      providers = User.providers.to_a
 
       @data[:staff].each do |row|
-        provider = existing[row[:email].downcase] if row[:email].present?
+        provider = match_provider(providers, row)
         if provider
           counts[:matched] += 1
           updates = {}
@@ -191,6 +191,31 @@ module TenToEight
         end
         attach_picture(provider, row[:picture])
         @provider_ids[row[:name]] = provider.id
+      end
+    end
+
+    # An existing provider for a staff row: same email, else same name, else the
+    # row's first name when exactly one provider is called that (10to8 exports
+    # "Adae Bajomo", the app may hold "Adae"). Case-insensitive throughout.
+    def match_provider(providers, row)
+      email = row[:email].to_s.downcase
+      name = row[:name].to_s.strip.downcase
+      first_name = name.split(" ").first
+
+      (email.present? && providers.find { |p| p.email.to_s.downcase == email }) ||
+        providers.find { |p| p.name.to_s.strip.downcase == name } ||
+        begin
+          candidates = providers.select { |p| p.name.to_s.strip.downcase == first_name }
+          candidates.one? ? candidates.first : nil
+        end
+    end
+
+    # Staff name => provider id for an appointments run without the providers phase.
+    def match_existing_providers
+      providers = User.providers.to_a
+      @data[:staff].each_with_object({}) do |row, map|
+        provider = match_provider(providers, row)
+        map[row[:name]] = provider.id if provider
       end
     end
 
@@ -300,7 +325,7 @@ module TenToEight
 
     def load_appointments
       counts = track("appointments")
-      provider_ids = @provider_ids || User.providers.to_a.to_h { |user| [ user.name, user.id ] }
+      provider_ids = @provider_ids || match_existing_providers
       service_ids = @service_ids || Service.pluck(:name, :id).to_h
       customer_ids = @customer_ids || match_existing_customers
 

@@ -107,6 +107,32 @@ class TenToEightTest < ActiveSupport::TestCase
     assert_equal 5, Service.find_by(name: "Quick Fringe").duration
   end
 
+  test "appointments land under an existing provider matched by first name" do
+    data = extract
+    TenToEight::Load.new(data, phases: %w[categories services customers]).call
+    alice = User.create!(name: "Alice", email: "a@example.org", role: Role.find_by!(slug: Role::PROVIDER))
+    alice.create_settings!(username: "alice", password: Passwords.hash("alicealice1"), notifications: false)
+
+    counts = TenToEight::Load.new(data, phases: %w[appointments]).call[:counts]
+
+    assert_equal 2, counts[:appointments][:created]
+    assert_equal 1, counts[:appointments][:skipped], "the other staff member has no provider"
+    assert_equal 2, Appointment.where(id_users_provider: alice.id).count
+  end
+
+  test "providers phase matches an existing provider by name and links the services" do
+    data = extract
+    TenToEight::Load.new(data, phases: %w[categories services]).call
+    alice = User.create!(name: "alice stylist", email: "a@example.org", role: Role.find_by!(slug: Role::PROVIDER))
+    alice.create_settings!(username: "alice", password: Passwords.hash("alicealice1"), notifications: false)
+
+    counts = TenToEight::Load.new(data, phases: %w[providers]).call[:counts]
+
+    assert_equal 1, counts[:providers][:matched]
+    assert_includes alice.reload.services.map(&:name), "TS Short trim"
+    assert_equal 1, User.providers.where("lower(users.name) LIKE 'alice%'").count
+  end
+
   test "phases run as separate imports still link and resolve via the database" do
     data = extract
     TenToEight::Load.new(data, phases: %w[categories]).call
