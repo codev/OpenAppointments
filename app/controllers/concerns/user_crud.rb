@@ -3,7 +3,6 @@
 module UserCrud
   extend ActiveSupport::Concern
 
-  CALENDAR_VIEWS = %w[default table].freeze
 
   private
 
@@ -17,9 +16,6 @@ module UserCrud
     end
     if user_params["id"].blank? && password.blank?
       raise ArgumentError, "The #{role_label} password cannot be empty when inserting a new record."
-    end
-    if settings["calendar_view"].present? && CALENDAR_VIEWS.exclude?(settings["calendar_view"])
-      raise ArgumentError, "The provided calendar view is invalid: #{settings['calendar_view']}"
     end
   end
 

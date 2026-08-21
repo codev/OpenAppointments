@@ -10,7 +10,7 @@ class AssistantsController < ApplicationController
   ALLOWED_FIELDS = %w[id name email alt_number phone_number address city state
                       zip_code notes timezone language is_private ldap_dn id_roles settings
                       providers].freeze
-  ALLOWED_SETTING_FIELDS = %w[username password notifications calendar_view].freeze
+  ALLOWED_SETTING_FIELDS = %w[username password notifications].freeze
 
   before_action :require_session, except: [ :index ]
 

@@ -11,7 +11,7 @@ class ProvidersController < ApplicationController
                       zip_code notes about services_description timezone language
                       is_private ldap_dn id_roles settings services].freeze
   ALLOWED_SETTING_FIELDS = %w[username password working_plan working_plan_exceptions
-                              notifications calendar_view].freeze
+                              notifications].freeze
 
   before_action :require_session, except: [ :index ]
 

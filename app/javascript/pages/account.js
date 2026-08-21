@@ -30,7 +30,6 @@ App.Pages.Account = (function () {
     const $username = $('#username');
     const $password = $('#password');
     const $retypePassword = $('#retype-password');
-    const $calendarView = $('#calendar-view');
     const $saveSettings = $('#save-settings');
 
     /**
@@ -108,7 +107,6 @@ App.Pages.Account = (function () {
         $username.val(account.settings.username);
         $password.val('');
         $retypePassword.val('');
-        $calendarView.val(account.settings.calendar_view);
     }
 
     /**
@@ -133,7 +131,6 @@ App.Pages.Account = (function () {
             settings: {
                 username: $username.val(),
                 password: $password.val() || undefined,
-                calendar_view: $calendarView.val(),
             },
         };
     }

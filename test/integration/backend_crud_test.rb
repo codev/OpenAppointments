@@ -123,7 +123,6 @@ class BackendCrudTest < ActionDispatch::IntegrationTest
         services: [ services(:haircut).id ],
         settings: {
           username: "patstylist", password: "patstylist1", notifications: "1",
-          calendar_view: "default",
           working_plan_exceptions: { "0" => { startDate: "2026-08-01", endDate: "2026-08-01",
                                               startTime: "10:00", endTime: "14:00" } }.values.to_json
         }

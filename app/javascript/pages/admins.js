@@ -32,7 +32,6 @@ App.Pages.Admins = (function () {
     const $username = $('#username');
     const $password = $('#password');
     const $passwordConfirmation = $('#password-confirm');
-    const $calendarView = $('#calendar-view');
     const $filterAdmins = $('#filter-admins');
     let filterResults = {};
     const filterLimit = 20;
@@ -204,7 +203,6 @@ App.Pages.Admins = (function () {
                 ldap_dn: $ldapDn.val(),
                 settings: {
                     username: $username.val(),
-                    calendar_view: $calendarView.val(),
                 },
             };
 
@@ -359,7 +357,6 @@ App.Pages.Admins = (function () {
         $admins.find('.save-cancel-group').hide();
         $admins.find('.record-details').find('input, select, textarea').val('').prop('disabled', true);
         $admins.find('.record-details .form-label span').prop('hidden', true);
-        $admins.find('.record-details #calendar-view').val('default');
         $admins.find('.record-details #language').val(vars('default_language'));
         $admins.find('.record-details #timezone').val(vars('default_timezone'));
         $('#edit-admin, #delete-admin').prop('disabled', true);
@@ -390,7 +387,6 @@ App.Pages.Admins = (function () {
         $ldapDn.val(admin.ldap_dn);
 
         $username.val(admin.settings.username);
-        $calendarView.val(admin.settings.calendar_view);
     }
 
     /**

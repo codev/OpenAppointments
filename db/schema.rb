@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_07_31_150000) do
+ActiveRecord::Schema[8.1].define(version: 2026_08_21_120000) do
   create_table "action_mailbox_inbound_emails", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.string "message_checksum", null: false
@@ -212,7 +212,6 @@ ActiveRecord::Schema[8.1].define(version: 2026_07_31_150000) do
     t.boolean "caldav_sync", default: false
     t.string "caldav_url"
     t.string "caldav_username"
-    t.string "calendar_view", default: "default"
     t.datetime "created_at", null: false
     t.string "google_calendar"
     t.boolean "google_sync", default: false

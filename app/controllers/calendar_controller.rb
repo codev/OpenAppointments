@@ -42,7 +42,8 @@ class CalendarController < ApplicationController
       )
     end
 
-    calendar_view = params[:view].presence || current_user.settings&.calendar_view || "default"
+    # /appointments is the table view, /calendar the calendar view.
+    calendar_view = request.path == "/appointments" ? "table" : "default"
 
     customers = User.customers.order(updated_at: :desc).limit(50).to_a
     if Setting.get("limit_customer_access") == "1" && session[:role_slug] == Role::PROVIDER
@@ -50,7 +51,11 @@ class CalendarController < ApplicationController
     end
     customers = customers.map { |customer| EaRows.customer_row(customer) }
 
-    backend_page_vars(page_title: helpers.lang("calendar"), active_menu: "appointments")
+    if calendar_view == "table"
+      backend_page_vars(page_title: helpers.lang("appointments"), active_menu: "appointments")
+    else
+      backend_page_vars(page_title: helpers.lang("calendar"), active_menu: "calendar")
+    end
 
     script_vars(
       first_weekday: Setting.get("first_weekday"),

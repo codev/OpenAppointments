@@ -76,20 +76,6 @@
                 <i class="fas fa-sync-alt"></i>
             </button>
 
-            <% if vars(:calendar_view) == "default" %>
-                <a class="btn btn-light mb-0" href="/calendar?view=table"
-                   data-tippy-content="<%= lang('table') %>">
-                    <i class="fas fa-table"></i>
-                </a>
-            <% end %>
-
-            <% if vars(:calendar_view) == "table" %>
-                <a class="btn btn-light mb-0" href="/calendar?view=default"
-                   data-tippy-content="<%= lang('default') %>">
-                    <i class="fas fa-calendar-alt"></i>
-                </a>
-            <% end %>
-
         </div>
     </div>
 

@@ -6,6 +6,7 @@ CloudronManifest.json.
 ## 1.7.1
 
 - Terminology hint says to capitalise the labels
+- Appointments menu item shows the table view; Calendar always shows the calendar. The per-user calendar view preference is removed
 
 ## 1.7.0
 

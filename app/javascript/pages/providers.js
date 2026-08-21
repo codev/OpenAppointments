@@ -35,7 +35,6 @@ App.Pages.Providers = (function () {
     const $username = $('#username');
     const $password = $('#password');
     const $passwordConfirmation = $('#password-confirm');
-    const $calendarView = $('#calendar-view');
     const $filterProviders = $('#filter-providers');
     let filterResults = {};
     const filterLimit = 10000;
@@ -249,7 +248,6 @@ App.Pages.Providers = (function () {
                     username: $username.val(),
                     working_plan: JSON.stringify(workingPlan),
                     working_plan_exceptions: JSON.stringify(workingPlanManager.getWorkingPlanExceptions()),
-                    calendar_view: $calendarView.val(),
                 },
             };
 
@@ -438,7 +436,6 @@ App.Pages.Providers = (function () {
         $providers.find('.record-details h4 a').remove();
         $providers.find('.record-details').find('input, select, textarea').val('').prop('disabled', true);
         $providers.find('.record-details .form-label span').prop('hidden', true);
-        $providers.find('.record-details #calendar-view').val('default');
         $providers.find('.record-details #language').val(vars('default_language'));
         $providers.find('.record-details #timezone').val(vars('default_timezone'));
         $providers.find('.record-details #is-private').prop('checked', false);
@@ -488,7 +485,6 @@ App.Pages.Providers = (function () {
         $ldapDn.val(provider.ldap_dn);
 
         $username.val(provider.settings.username);
-        $calendarView.val(provider.settings.calendar_view);
 
         // Add dedicated provider link (slugged so it cannot be guessed).
         let dedicatedUrl = App.Utils.Url.siteUrl('?provider=' + encodeURIComponent(provider.booking_slug));

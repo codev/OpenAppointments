@@ -82,7 +82,7 @@ class SettingsPagesTest < ActionDispatch::IntegrationTest
       account: {
         name: "Janet Doe", email: "zane@example.org",
         timezone: "Europe/London", language: "english",
-        settings: { username: "janedoe", calendar_view: "default", notifications: 1 }
+        settings: { username: "janedoe", notifications: 1 }
       }
     }
     assert_response :success
