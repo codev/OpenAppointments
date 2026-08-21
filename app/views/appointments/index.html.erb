@@ -8,20 +8,20 @@
                     <option value="1">1 <%= lang('day') %></option>
                     <option value="3">3 <%= lang('days') %></option>
                 </select>
-                <div class="filter-group" data-tippy-content="<%= lang('filter_providers_hint') %>">
-                    <select id="filter-provider" multiple data-placeholder="<%= lang('all_providers') %>">
-                        <% vars(:available_providers).each do |provider| %>
-                            <option value="<%= provider["id"] %>"><%= provider["name"] %></option>
-                        <% end %>
-                    </select>
-                </div>
-                <div class="filter-group" data-tippy-content="<%= lang('filter_services_hint') %>">
-                    <select id="filter-service" multiple data-placeholder="<%= lang('all_services') %>">
-                        <% vars(:available_services).each do |service| %>
-                            <option value="<%= service["id"] %>"><%= service["name"] %></option>
-                        <% end %>
-                    </select>
-                </div>
+                <select id="filter-provider" class="form-select filter-group"
+                        data-tippy-content="<%= lang('filter_providers_hint') %>" aria-label="<%= lang('provider') %>">
+                    <option value=""><%= lang('all_providers') %></option>
+                    <% vars(:available_providers).each do |provider| %>
+                        <option value="<%= provider["id"] %>"><%= provider["name"] %></option>
+                    <% end %>
+                </select>
+                <select id="filter-service" class="form-select filter-group"
+                        data-tippy-content="<%= lang('filter_services_hint') %>" aria-label="<%= lang('service') %>">
+                    <option value=""><%= lang('all_services') %></option>
+                    <% vars(:available_services).each do |service| %>
+                        <option value="<%= service["id"] %>"><%= service["name"] %></option>
+                    <% end %>
+                </select>
             </div>
         </div>
 
@@ -54,6 +54,7 @@
                 <div class="fc-toolbar-chunk"></div>
             </div>
         </div>
+        <div id="not-working-notes" class="text-muted mb-2"></div>
         <div class="calendar-view"><div></div></div>
     </div>
 </div>

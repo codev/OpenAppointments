@@ -10,6 +10,7 @@ App.Utils.CalendarEvents = (function () {
         unavailability: '#879DB4',
         blockedPeriod: '#d65069',
         notWorking: '#BEBEBE',
+        free: '#9fd69f',
         default: '#7cbae8',
     };
 
@@ -240,6 +241,25 @@ App.Utils.CalendarEvents = (function () {
             .css('width', 'calc(50% - 10px)');
     }
 
+    /**
+     * Open the new appointment modal for a provider starting at the given time.
+     *
+     * @param {number} providerId
+     * @param {Date} start
+     */
+    function newAppointmentAt(providerId, start) {
+        $('#insert-appointment').trigger('click');
+        preselectServiceAndProvider({providerId});
+        const service = findService($('#select-service').val());
+        App.Utils.UI.setDateTimePickerValue($('#start-datetime'), start);
+        App.Utils.UI.setDateTimePickerValue(
+            $('#end-datetime'),
+            moment(start)
+                .add(service ? service.duration : 60, 'minutes')
+                .toDate(),
+        );
+    }
+
     function preselectServiceAndProvider({providerId, serviceId}) {
         const $service = $appointmentsModal.find('#select-service');
         const $provider = $appointmentsModal.find('#select-provider');
@@ -356,6 +376,11 @@ App.Utils.CalendarEvents = (function () {
         const Popover = App.Utils.CalendarEventPopover;
         const isCustom = $target.hasClass('fc-custom');
         let $html;
+
+        if ($target.hasClass('fc-free')) {
+            newAppointmentAt(info.event.extendedProps.data.providerId, info.event.start);
+            return;
+        }
 
         if ($target.hasClass('fc-blocked-period')) {
             $html = Popover.buildBlockedPeriodPopover(info);
@@ -715,38 +740,128 @@ App.Utils.CalendarEvents = (function () {
      * @param {Date} rangeEnd Exclusive.
      * @returns {Array}
      */
-    function workingPlanEvents(provider, rangeStart, rangeEnd) {
-        const events = [];
+    /**
+     * The working plan for one day: the exception covering it if any, else the weekly plan.
+     *
+     * @param {Object|undefined} provider Falls back to the company working plan.
+     * @param {moment.Moment} date
+     * @returns {Object} {dayPlan: {start, end, breaks} or null when not working, exception}
+     */
+    function dayPlanFor(provider, date) {
         const workingPlan = JSON.parse(provider?.settings?.working_plan || vars('company_working_plan'));
-        const rawExceptions = JSON.parse(provider?.settings?.working_plan_exceptions || '[]');
+        const exceptions = JSON.parse(provider?.settings?.working_plan_exceptions || '[]');
+        const exception = Array.isArray(exceptions)
+            ? exceptions.find((e) => date.isBetween(e.startDate, e.endDate, 'day', '[]'))
+            : undefined;
 
-        // Exceptions keyed by date, expanding date ranges.
-        const exceptionsByDate = {};
-        if (Array.isArray(rawExceptions)) {
-            rawExceptions.forEach((exception) => {
-                const date = moment(exception.startDate);
-                const endDate = moment(exception.endDate);
-                while (date.isSameOrBefore(endDate)) {
-                    exceptionsByDate[date.format('YYYY-MM-DD')] = exception;
-                    date.add(1, 'day');
-                }
-            });
+        if (exception) {
+            // A non-working exception has no times; treat the day as non-working.
+            const dayPlan = exception.startTime
+                ? {start: exception.startTime, end: exception.endTime, breaks: exception.breaks || []}
+                : null;
+            return {dayPlan, exception};
         }
 
+        return {dayPlan: workingPlan[date.format('dddd').toLowerCase()] || null, exception};
+    }
+
+    function at(date, time) {
+        return moment(date.format('YYYY-MM-DD') + ' ' + time, 'YYYY-MM-DD HH:mm').toDate();
+    }
+
+    /**
+     * Working hours minus breaks for one day, as [{start, end}] Date pairs.
+     *
+     * @param {Object|undefined} provider
+     * @param {Date} day
+     * @returns {Array}
+     */
+    function workingIntervals(provider, day) {
+        const date = moment(day).startOf('day');
+        const {dayPlan} = dayPlanFor(provider, date);
+
+        if (!dayPlan) {
+            return [];
+        }
+
+        const intervals = [];
+        let cursor = at(date, dayPlan.start);
+        const end = at(date, dayPlan.end);
+
+        (dayPlan.breaks || [])
+            .map((b) => ({start: at(date, b.start), end: at(date, b.end)}))
+            .sort((a, b) => a.start - b.start)
+            .forEach((b) => {
+                if (b.start > cursor) {
+                    intervals.push({start: cursor, end: b.start});
+                }
+                cursor = b.end > cursor ? b.end : cursor;
+            });
+
+        if (end > cursor) {
+            intervals.push({start: cursor, end});
+        }
+
+        return intervals;
+    }
+
+    /**
+     * Working time not covered by any busy interval, as "free" list entries.
+     *
+     * @param {Object} provider
+     * @param {Date} day
+     * @param {Array} busy [{start, end}] Date pairs.
+     * @returns {Array}
+     */
+    function freeSlotEvents(provider, day, busy) {
+        const MIN_MINUTES = 15;
+        const sortedBusy = busy.slice().sort((a, b) => a.start - b.start);
+        const events = [];
+
+        workingIntervals(provider, day).forEach((interval) => {
+            let cursor = interval.start;
+
+            sortedBusy.forEach((b) => {
+                if (b.end <= cursor || b.start >= interval.end) {
+                    return;
+                }
+                if (b.start > cursor) {
+                    events.push({start: cursor, end: b.start});
+                }
+                cursor = b.end > cursor ? b.end : cursor;
+            });
+
+            if (interval.end > cursor) {
+                events.push({start: cursor, end: interval.end});
+            }
+        });
+
+        return events
+            .filter((gap) => moment(gap.end).diff(gap.start, 'minutes') >= MIN_MINUTES)
+            .map((gap) => ({
+                title: lang('free_for_appointments'),
+                start: gap.start,
+                end: gap.end,
+                allDay: false,
+                color: COLORS.free,
+                editable: false,
+                className: 'fc-free',
+                display: 'block',
+                extendedProps: {data: {providerId: provider.id}},
+            }));
+    }
+
+    function workingPlanEvents(provider, rangeStart, rangeEnd) {
+        const events = [];
         const date = moment(rangeStart).startOf('day');
 
         while (date.toDate() < rangeEnd) {
             const dateStr = date.format('YYYY-MM-DD');
             const dayStart = date.clone().toDate();
             const dayEnd = date.clone().add(1, 'day').toDate();
-            let dayPlan = workingPlan[date.format('dddd').toLowerCase()];
+            const {dayPlan, exception} = dayPlanFor(provider, date);
 
-            const exception = exceptionsByDate[dateStr];
             if (exception) {
-                // A non-working exception has no times; treat the day as non-working.
-                dayPlan = exception.startTime
-                    ? {start: exception.startTime, end: exception.endTime, breaks: exception.breaks || []}
-                    : null;
                 events.push({
                     title: lang('working_plan_exception'),
                     start: moment(dateStr + ' ' + (exception.startTime || '00:00'), 'YYYY-MM-DD HH:mm').toDate(),
@@ -768,8 +883,8 @@ App.Utils.CalendarEvents = (function () {
                 continue;
             }
 
-            const workStart = moment(dateStr + ' ' + dayPlan.start, 'YYYY-MM-DD HH:mm').toDate();
-            const workEnd = moment(dateStr + ' ' + dayPlan.end, 'YYYY-MM-DD HH:mm').toDate();
+            const workStart = at(date, dayPlan.start);
+            const workEnd = at(date, dayPlan.end);
 
             if (dayStart < workStart) {
                 events.push(backgroundEvent(lang('not_working'), dayStart, workStart));
@@ -781,8 +896,8 @@ App.Utils.CalendarEvents = (function () {
                 events.push(
                     backgroundEvent(
                         lang('break'),
-                        moment(dateStr + ' ' + breakPeriod.start, 'YYYY-MM-DD HH:mm').toDate(),
-                        moment(dateStr + ' ' + breakPeriod.end, 'YYYY-MM-DD HH:mm').toDate(),
+                        at(date, breakPeriod.start),
+                        at(date, breakPeriod.end),
                         'fc-unavailability fc-break',
                     ),
                 );
@@ -808,5 +923,7 @@ App.Utils.CalendarEvents = (function () {
         unavailabilityEvents,
         blockedPeriodEvents,
         workingPlanEvents,
+        workingIntervals,
+        freeSlotEvents,
     };
 })();

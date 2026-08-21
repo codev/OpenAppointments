@@ -23,26 +23,30 @@ App.Pages.Appointments = (function () {
         return Events.calendarHeight($('#calendar .calendar-header').outerHeight() + 65);
     }
 
-    function selectedIds($select) {
-        return ($select.val() || []).map(Number);
+    function selectedId($select) {
+        return $select.val() ? Number($select.val()) : null;
     }
 
     /**
-     * Providers to show: those selected, or those serving a selected service, or all.
+     * Providers to show: the selected one, or those serving the selected service, or all.
      */
     function visibleProviders() {
-        const providerIds = selectedIds($filterProvider);
-        const serviceIds = selectedIds($filterService);
+        const providerId = selectedId($filterProvider);
+        const serviceId = selectedId($filterService);
 
         return vars('available_providers').filter((provider) => {
             if (!provider.services.length) {
                 return false;
             }
-            if (providerIds.length && !providerIds.includes(Number(provider.id))) {
+            if (providerId && Number(provider.id) !== providerId) {
                 return false;
             }
-            return !serviceIds.length || provider.services.some((id) => serviceIds.includes(Number(id)));
+            return !serviceId || provider.services.some((id) => Number(id) === serviceId);
         });
+    }
+
+    function interval(record) {
+        return {start: moment(record.start_datetime).toDate(), end: moment(record.end_datetime).toDate()};
     }
 
     /**
@@ -58,9 +62,18 @@ App.Pages.Appointments = (function () {
         App.Http.Calendar.getCalendarAppointmentsForTableView(start.toDate(), end.toDate())
             .done((response) => {
                 const $wrapper = $calendarView.children('div').empty();
+                const $notes = $('#not-working-notes').empty();
 
                 for (const date = start.clone(); date.isSameOrBefore(end); date.add(1, 'day')) {
-                    createDateColumn($wrapper, date.toDate(), response);
+                    const notWorking = createDateColumn($wrapper, date.toDate(), response);
+
+                    if (notWorking.length) {
+                        $('<div/>', {
+                            text: lang('not_working_on')
+                                .replace('{date}', App.Utils.Date.format(date, vars('date_format'), vars('time_format')))
+                                .replace('{names}', joinNames(notWorking.map((p) => p.name))),
+                        }).appendTo($notes);
+                    }
                 }
 
                 resize();
@@ -72,8 +85,22 @@ App.Pages.Appointments = (function () {
             });
     }
 
+    /**
+     * "A, B and C".
+     */
+    function joinNames(names) {
+        if (names.length < 2) {
+            return names.join('');
+        }
+        return names.slice(0, -1).join(', ') + ' ' + lang('and') + ' ' + names[names.length - 1];
+    }
+
+    /**
+     * Render a column per working provider for the date; returns the providers not working.
+     */
     function createDateColumn($wrapper, date, events) {
         const $dateColumn = $('<div/>', {class: 'date-column'}).appendTo($wrapper);
+        const notWorking = [];
 
         $('<h5/>', {
             class: 'date-column-title',
@@ -81,14 +108,20 @@ App.Pages.Appointments = (function () {
         }).appendTo($dateColumn);
 
         visibleProviders().forEach((provider) => {
-            createProviderColumn($dateColumn, date, provider, events);
+            if (Events.workingIntervals(provider, date).length) {
+                createProviderColumn($dateColumn, date, provider, events);
+            } else {
+                notWorking.push(provider);
+            }
         });
+
+        return notWorking;
     }
 
     function createProviderColumn($dateColumn, date, provider, events) {
         const $column = $('<div/>', {class: 'provider-column'}).appendTo($dateColumn);
         const $wrapper = $('<div/>', {class: 'calendar-wrapper'}).appendTo($column);
-        const serviceIds = selectedIds($filterService);
+        const serviceId = selectedId($filterService);
         const providerId = Number(provider.id);
 
         $('<h6/>', {text: provider.name}).prependTo($column);
@@ -107,18 +140,17 @@ App.Pages.Appointments = (function () {
         $column.data('provider', provider);
 
         const dayStart = moment(date).startOf('day');
-        const appointments = events.appointments.filter(
-            (a) =>
-                Number(a.id_users_provider) === providerId &&
-                (!serviceIds.length || serviceIds.includes(Number(a.id_services))),
-        );
+        const providerAppointments = events.appointments.filter((a) => Number(a.id_users_provider) === providerId);
+        const appointments = providerAppointments.filter((a) => !serviceId || Number(a.id_services) === serviceId);
         const unavailabilities = events.unavailabilities.filter((u) => Number(u.id_users_provider) === providerId);
+        const busy = [...providerAppointments, ...unavailabilities].map(interval);
 
         fullCalendar.addEventSource([
             ...Events.workingPlanEvents(provider, dayStart.toDate(), dayStart.clone().add(1, 'day').toDate()),
             ...Events.appointmentEvents(appointments),
             ...Events.unavailabilityEvents(unavailabilities),
             ...Events.blockedPeriodEvents(events.blocked_periods),
+            ...Events.freeSlotEvents(provider, date, busy),
         ]);
     }
 
@@ -154,8 +186,6 @@ App.Pages.Appointments = (function () {
 
     function initialize() {
         App.Utils.UI.initializeDatePicker($selectDate, {onChange: reload});
-        App.Utils.UI.initializeDropdown($filterProvider, {placeholder: $filterProvider.data('placeholder'), width: '100%'});
-        App.Utils.UI.initializeDropdown($filterService, {placeholder: $filterService.data('placeholder'), width: '100%'});
 
         Events.configure(reload);
         addEventListeners();

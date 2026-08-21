@@ -806,3 +806,6 @@ ca:
     select_day_interval_hint: Number of days to show.
     filter_providers_hint: Show only the selected providers.
     filter_services_hint: Show only the selected services.
+    free_for_appointments: Free for appointments
+    not_working_on: "Not working {date}: {names}"
+    and: and

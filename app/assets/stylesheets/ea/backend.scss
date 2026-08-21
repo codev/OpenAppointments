@@ -320,6 +320,7 @@ body .modal.full-screen .modal-push {
 #calendar .calendar-header .fc-toolbar-chunk {
     margin-bottom: 0;
     text-align: left;
+    justify-self: start;
 }
 
 #calendar .calendar-header .fc-toolbar-chunk:nth-child(2) {
@@ -329,10 +330,6 @@ body .modal.full-screen .modal-push {
 #calendar .calendar-header .select-date {
     width: auto;
     text-align: center;
-}
-
-#calendar-filter .select2-container--default .select2-selection--multiple {
-    height: 38px;
 }
 
 #calendar .select2-container--default.select2-container--focus .select2-selection--multiple {
@@ -589,19 +586,22 @@ body .modal.full-screen .modal-push {
 
 /* Table view toolbar: day interval, provider and service filters side by side,
    stacking on mobile. */
-#calendar-filter #select-filter-item {
-    width: auto;
+#calendar-filter #select-day-interval {
+    width: 7em;
+    flex: 0 0 auto;
 }
 
 #calendar-filter .filter-group {
     flex: 1 1 12rem;
     min-width: 0;
+    width: auto;
 }
 
 @media (max-width: 767.98px) {
-    #calendar-filter #select-filter-item,
+    #calendar-filter #select-day-interval,
     #calendar-filter .filter-group {
         flex: 1 0 100%;
+        width: 100%;
     }
 }
 
