@@ -3,6 +3,10 @@
 The about page lists these notes; every release needs a section here matching
 CloudronManifest.json.
 
+## 1.7.1
+
+- Terminology hint says to capitalise the labels
+
 ## 1.7.0
 
 - General Settings can rename Provider and Service (e.g. Stylist) across the English interface
