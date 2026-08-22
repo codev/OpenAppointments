@@ -69,7 +69,7 @@ class ImportController < ApplicationController
     to = Date.parse(params[:to].to_s)
     raise ArgumentError, "The to date must not be before the from date." if to < from
 
-    status_ids = params[:status_ids].presence&.map(&:to_i)
+    status_ids = Array(params[:status_ids]).reject(&:blank?).map(&:to_i) if params.key?(:status_ids)
     ods = AppointmentReport.generate(from: from, to: to, status_ids: status_ids,
                                      labels: ->(key) { helpers.lang(key) })
     send_data ods, filename: "#{from}-to-#{to}-appointments.ods", type: Ods::MIMETYPE

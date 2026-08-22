@@ -75,7 +75,9 @@ class CalendarController < ApplicationController
 
     skipped = []
     if repeat.present? && repeat["rule"].present? && !manage_mode
-      skipped = AppointmentSeries.start_from(appointment, repeat, created_by: session[:user_id])[:skipped]
+      result = AppointmentSeries.start_from(appointment, repeat, created_by: session[:user_id])
+      result[:series].announce(created: result[:rows])
+      skipped = result[:skipped]
     end
 
     provider = appointment.provider

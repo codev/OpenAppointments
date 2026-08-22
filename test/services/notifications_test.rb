@@ -73,6 +73,7 @@ class NotificationsTest < ActiveSupport::TestCase
   end
 
   test "cancelled templates can target in-time or too-late cancellations" do
+    Setting.set("book_advance_timeout", "1440")
     Setting.set("late_cancellation_timeout", "1440")
     create_notification(event: "cancelled", audiences: %w[customer], title: "Any")
     create_notification(event: "cancelled", audiences: %w[customer], title: "In time", cancellation_scope: "in_time")
@@ -86,6 +87,18 @@ class NotificationsTest < ActiveSupport::TestCase
     @appointment.update!(start_datetime: Time.current + 2.hours, end_datetime: Time.current + 2.hours + 30.minutes)
     Notifications.appointment_deleted(@appointment, @service, @provider, @customer)
     assert_equal [ "Any", "Late" ], Message.all.map { |m| m.notification.title }.sort
+  end
+
+  test "coming up skips rescheduled rows and includes rows without a status" do
+    create_notification(event: "coming_up", audiences: %w[customer], lead_days: 0, lead_hours: 24)
+    @appointment.update!(start_datetime: Time.current + 2.hours, end_datetime: Time.current + 3.hours,
+                         appointment_status: AppointmentStatus.of("rescheduled"))
+    Notifications.scan_coming_up
+    assert_equal 0, Message.count
+
+    @appointment.update!(appointment_status: nil)
+    Notifications.scan_coming_up
+    assert_equal 1, Message.count
   end
 
   test "deleted fires cancelled with the reason token" do

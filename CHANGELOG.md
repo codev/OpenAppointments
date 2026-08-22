@@ -7,7 +7,8 @@ CloudronManifest.json.
 
 - Notifications no longer have a separate description; the hint sits under the title
 - Cancelled notifications can apply to all cancellations, only those made in time, or only those made too late
-- Business Settings has two minimum times before an appointment, entered as hours and minutes: how close a customer can book (also the reschedule/cancel deadline) and the late cancellation window; the late window cannot exceed the booking window
+- Changing a repeating pattern keeps the replaced occurrences as Rescheduled (slots freed), leaves occurrences a customer moved alone, syncs and webhooks every changed row and sends the customer one notification describing the new pattern; an unedited pattern dialog keeps the series weekday and switching Ends to Never clears the old count or date
+- Business Settings has two minimum times before an appointment, entered as hours and minutes: how close a customer can book, and how close a customer can still reschedule or cancel in time (the late cancellation window); the late window cannot exceed the booking window and is clamped wherever settings are written
 - Inside the late window the customer's manage link offers Late Cancel only, which sets the Late Cancel status and shows the notice period message; the cancelled notification's in time / too late scope uses the late window
 - Appointment statuses are records with a kind: Booked, Rescheduled, Cancelled, Late Cancel and No Show can be renamed but not deleted; other statuses are free labels
 - Cancelling keeps the appointment with the Cancelled status and rescheduling books a new appointment and marks the original Rescheduled; cancelled, late cancelled and rescheduled appointments free their slot; the calendar popover has a Cancel button next to Delete (hard delete)

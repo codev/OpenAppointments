@@ -180,6 +180,10 @@ class ImportPageTest < ActionDispatch::IntegrationTest
     File.binwrite(path, response.body)
     assert_equal 1, Ods.parse(path.to_s)["Appointments"].size - 1
 
+    get "/import/report", params: { from: "2026-07-20", to: "2026-07-21", status_ids: [ "" ] }
+    File.binwrite(path, response.body)
+    assert_equal 0, Ods.parse(path.to_s)["Appointments"].size - 1
+
     get "/import/report", params: { from: "2026-07-22", to: "2026-07-21" }
     assert_response :internal_server_error
     assert_not_nil cancelled

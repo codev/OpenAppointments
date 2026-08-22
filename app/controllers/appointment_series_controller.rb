@@ -25,6 +25,8 @@ class AppointmentSeriesController < ApplicationController
     raise ArgumentError, "Invalid repeat pattern." if repeat.blank? || repeat["rule"].blank?
 
     result = series.reschedule!(repeat)
+    series.announce(created: result[:rows], removed: result[:rescheduled],
+                    notify: boolean_param(params.fetch(:notify_users, true)))
     render json: { success: true, skipped: result[:skipped], series: EaRows.series_row(series.reload) }
   rescue ArgumentError, ActiveRecord::RecordInvalid, ActiveRecord::RecordNotFound => e
     json_exception(e, status: :ok)
@@ -40,15 +42,8 @@ class AppointmentSeriesController < ApplicationController
     notify_users = boolean_param(params.fetch(:notify_users, true))
     reason = params[:cancellation_reason].to_s
 
-    deleted = series.cancel_from(from)
-    deleted.each do |appointment|
-      if notify_users
-        Notifications.appointment_deleted(appointment, appointment.service, appointment.provider,
-                                          appointment.customer, nil, reason: reason)
-      end
-      Synchronization.appointment_deleted(appointment, appointment.provider)
-      Webhooks.trigger(Webhooks::APPOINTMENT_DELETE, appointment)
-    end
+    deleted = series.cancel_from(from, reason: reason)
+    series.announce(removed: deleted, notify: notify_users, reason: reason)
 
     render json: { success: true, deleted: deleted.size }
   rescue ArgumentError, Date::Error, ActiveRecord::RecordNotFound => e

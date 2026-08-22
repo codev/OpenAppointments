@@ -42,6 +42,7 @@
                 </div>
             </div>
             <label class="form-label"><%= lang('report_statuses') %></label>
+            <input type="hidden" name="status_ids[]" value="">
             <div class="d-flex flex-wrap gap-3 mb-3">
                 <% vars(:appointment_statuses).each do |status| %>
                     <div class="form-check">

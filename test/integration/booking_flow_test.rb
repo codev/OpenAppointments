@@ -183,6 +183,30 @@ class BookingFlowTest < ActionDispatch::IntegrationTest
     assert_match(/not found/i, response.body)
   end
 
+  test "register refuses a reschedule inside the late window or of a cancelled appointment" do
+    appointment = appointments(:upcoming)
+    travel_to Time.new(2026, 7, 20, 9, 45, 0) do
+      assert_no_difference "Appointment.count" do
+        post "/booking/register", params: register_params(
+          start: "2026-07-21 11:00:00", email: users(:jx).email,
+          extra_appointment: { "id" => appointment.id }, manage_mode: true
+        )
+      end
+    end
+    assert_equal false, response.parsed_body["success"]
+    assert_equal "Booked", appointment.reload.status
+  end
+
+  test "late window uses the provider timezone" do
+    users(:zane).update!(timezone: "Europe/London")
+    Setting.set("book_advance_timeout", "60")
+    Setting.set("late_cancellation_timeout", "60")
+    appointment = appointments(:upcoming) # 10:00 provider local time
+    zone = Time.find_zone!(users(:zane).effective_timezone)
+    assert_not BookingWindows.late?(appointment, zone.parse("2026-07-20 08:59"))
+    assert BookingWindows.late?(appointment, zone.parse("2026-07-20 09:01"))
+  end
+
   test "customer cancel keeps the row as cancelled; inside the late window as late cancel" do
     appointment = appointments(:upcoming)
     travel_to Time.new(2026, 7, 10, 12, 0, 0) do

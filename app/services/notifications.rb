@@ -54,7 +54,7 @@ module Notifications
     horizon = now + notification.lead_days.days + notification.lead_hours.hours + 1.day
     Appointment.appointments
                .where(start_datetime: now..horizon)
-               .where.not(status_id: AppointmentStatus.where(kind: %w[cancelled late_cancel no_show]).select(:id))
+               .not_kind(AppointmentStatus::FREE_SLOT_KINDS + %w[no_show])
                .includes(:service, :provider, :customer)
                .select { |appointment| send_at(notification, appointment) <= now }
   end

@@ -7,6 +7,7 @@ class AppointmentSeriesExtendJob < ApplicationJob
     report = []
     AppointmentSeries.open.includes(:provider, :customer, :service).find_each do |series|
       result = series.materialise
+      series.announce(created: result[:rows])
       report << [ series, result[:skipped] ] if result[:skipped].any?
     rescue StandardError => e
       Rails.logger.error("Appointment series #{series.id} not extended: #{e.message}")

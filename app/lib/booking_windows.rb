@@ -3,6 +3,8 @@
 # late_cancellation_timeout (how close a reschedule/cancel still counts as in
 # time). The late window cannot exceed the booking window.
 module BookingWindows
+  KEYS = %w[book_advance_timeout late_cancellation_timeout].freeze
+
   module_function
 
   def minutes(name)
@@ -12,8 +14,26 @@ module BookingWindows
 
   def late_minutes = minutes("late_cancellation_timeout")
 
+  # The appointment start as an absolute time: start_datetime is stored in the
+  # provider's local time.
+  def starts_at(appointment)
+    zone = Time.find_zone!(appointment.provider&.effective_timezone || Time.zone.name)
+    zone.parse(appointment.start_datetime.strftime("%Y-%m-%d %H:%M:%S"))
+  end
+
+  def past?(appointment, now = Time.now) = starts_at(appointment) < now
+
   def late?(appointment, now = Time.now)
-    appointment.start_datetime - now < late_minutes * 60
+    starts_at(appointment) - now < late_minutes * 60
+  end
+
+  # Keep late <= booking whichever path wrote the settings (API, restore, seeds).
+  def clamp!
+    booking = minutes("book_advance_timeout")
+    return unless late_minutes > booking
+
+    Setting.where(name: "late_cancellation_timeout").update_all(value: booking.to_s)
+    Rails.cache.delete("setting/late_cancellation_timeout")
   end
 
   def hours_and_minutes(total) = total.divmod(60)

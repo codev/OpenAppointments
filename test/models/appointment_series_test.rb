@@ -91,6 +91,32 @@ class AppointmentSeriesTest < ActiveSupport::TestCase
     assert_equal result[:created].size, series.appointments.where("occurrence_at >= ?", Date.new(2026, 7, 28)).count
   end
 
+  test "reschedule! marks replaced occurrences rescheduled and keeps customer-moved ones" do
+    series = build_series({ "rule" => rule("weekly"), "ends" => "never" })
+    series.materialise(now: TODAY)
+    moved = series.appointments.find_by(occurrence_at: Date.new(2026, 8, 10))
+    moved.update!(start_datetime: "2026-08-11 10:00:00", end_datetime: "2026-08-11 10:30:00")
+
+    result = series.reschedule!({ "rule" => rule("weekly", weekdays: [ 4 ]), "ends" => "never" }, now: Date.new(2026, 7, 28))
+
+    assert result[:rescheduled].all? { |a| a.reload.status == "Rescheduled" && a.occurrence_at.nil? }
+    assert_equal "Booked", moved.reload.status
+    assert result[:created].all?(&:thursday?)
+    assert_equal 0, series.appointments.where(id: result[:rescheduled].map(&:id)).active.count
+  end
+
+  test "schedule_from keeps the series weekday for an unedited weekly rule and clears a stale count" do
+    series = build_series({ "rule" => rule("weekly", weekdays: [ 2 ]), "ends" => "after", "count" => 3 })
+    series.materialise(now: TODAY)
+    assert_equal 3, series.appointments.count
+
+    unedited = { "rule_type" => "IceCube::WeeklyRule", "interval" => 1, "validations" => { "day" => [] } }.to_json
+    series.reschedule!({ "rule" => unedited, "ends" => "never" }, now: Date.new(2026, 7, 24))
+    future = series.appointments.active.where("occurrence_at > ?", Date.new(2026, 7, 24)).pluck(:occurrence_at)
+    assert future.all?(&:tuesday?)
+    assert_operator future.size, :>, 3
+  end
+
   test "description is readable" do
     series = build_series({ "rule" => rule("weekly"), "ends" => "never" })
     assert_match(/Weekly on Mondays/, series.description)

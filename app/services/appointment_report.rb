@@ -6,7 +6,8 @@ module AppointmentReport
   COLUMNS = %w[date start end duration customer email phone_number provider service status
                location notes repeats booked_on].freeze
 
-  # labels: key -> header text. status_ids: nil for every status.
+  # labels: key -> header text. status_ids: nil for every status; a list that
+  # covers every status also includes appointments with no status.
   def generate(from:, to:, status_ids: nil, labels: ->(key) { key })
     Ods.generate("Appointments" => [ COLUMNS.map { |key| labels.call(key) } ] + rows(from, to, status_ids))
   end
@@ -16,6 +17,9 @@ module AppointmentReport
                        .where(start_datetime: from.beginning_of_day..to.end_of_day)
                        .includes(:customer, :provider, :service, :appointment_status, :series)
                        .order(:start_datetime)
+    if status_ids && (AppointmentStatus.pluck(:id) - status_ids).empty?
+      status_ids = nil
+    end
     scope = scope.where(status_id: status_ids) if status_ids
     scope.map do |appointment|
       [ appointment.start_datetime.strftime("%Y-%m-%d"), appointment.start_datetime.strftime("%H:%M"),

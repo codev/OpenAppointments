@@ -97,6 +97,12 @@ module Api
         end
         assert_response :no_content
       end
+      test "sort by status uses the status name" do
+        api_get "/api/v1/appointments", sort: "-status"
+        assert_response :success
+        api_get "/api/v1/unavailabilities", sort: "status"
+        assert_response :success
+      end
     end
   end
 end

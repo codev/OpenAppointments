@@ -14,10 +14,12 @@ class Appointment < ApplicationRecord
   scope :appointments, -> { where(is_unavailability: false) }
   scope :unavailabilities, -> { where(is_unavailability: true) }
   scope :overlapping, ->(start_dt, end_dt) { where("start_datetime < ? AND end_datetime > ?", end_dt, start_dt) }
-  # Rows that still occupy their slot: anything not cancelled, late cancelled or rescheduled.
-  scope :active, lambda {
-    where(status_id: nil).or(where.not(status_id: AppointmentStatus.free_slot.select(:id)))
+  # Rows whose status kind is not one of the given (no status counts as active).
+  scope :not_kind, lambda { |kinds|
+    where(status_id: nil).or(where.not(status_id: AppointmentStatus.where(kind: kinds).select(:id)))
   }
+  # Rows that still occupy their slot: anything not cancelled, late cancelled or rescheduled.
+  scope :active, -> { not_kind(AppointmentStatus::FREE_SLOT_KINDS) }
 
   # EA availability query: events whose date range covers the given date, per provider.
   scope :covering_date, lambda { |date, provider_id, exclude_appointment_id = nil|

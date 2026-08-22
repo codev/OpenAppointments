@@ -53,7 +53,7 @@ module Messaging
       series = appointment&.series
       return "" unless series && appointment.occurrence_at
 
-      date = series.appointments.where("occurrence_at > ?", appointment.occurrence_at).minimum(:occurrence_at)
+      date = series.appointments.active.where("occurrence_at > ?", appointment.occurrence_at).minimum(:occurrence_at)
       date ? format_date(series.starts_at(date)) : ""
     end
 

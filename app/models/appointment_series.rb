@@ -30,7 +30,7 @@ class AppointmentSeries < ApplicationRecord
       color: appointment.color, created_by: created_by
     )
     appointment.update!(series_id: series.id, occurrence_at: starts_on)
-    series.materialise(now: starts_on)
+    series.materialise(now: starts_on).merge(series: series)
   end
 
   # A deleted occurrence is never recreated.
@@ -41,16 +41,32 @@ class AppointmentSeries < ApplicationRecord
   end
 
   # Build the stored schedule from the repeat fields: the recurring_select rule hash
-  # (JSON string or hash) plus ends: never|on|after with ends_on / count.
-  def self.schedule_from(repeat, starts_on)
+  # (JSON string or hash) plus ends: never|on|after with ends_on / count. The
+  # schedule is anchored at anchor (default the series start). A weekly or
+  # monthly rule with no day picked (the dialog saved unedited) keeps the days of
+  # previous (the current rule) when it is the same type, else starts_on's day.
+  def self.schedule_from(repeat, starts_on, anchor: starts_on, previous: nil)
     rule = RecurringSelect.dirty_hash_to_rule(repeat["rule"])
     raise ArgumentError, "Unknown repeat pattern." unless rule
 
+    same = previous.class == rule.class ? previous : nil
+    if rule.is_a?(IceCube::WeeklyRule) && rule.validations[:day].blank?
+      days = same ? same.validations[:day].map(&:day) : [ starts_on.wday ]
+      rule.day(*days)
+    end
+    if rule.is_a?(IceCube::MonthlyRule) && rule.validations[:day_of_month].blank?
+      days = same ? same.validations[:day_of_month].map(&:day) : [ starts_on.day ]
+      rule.day_of_month(*days)
+    end
+
+    # A round-tripped rule carries its old count/until; the ends fields decide.
+    rule.until(nil)
+    rule.count(nil)
     case repeat["ends"]
     when "on" then rule.until(Date.parse(repeat["ends_on"].to_s).end_of_day)
     when "after" then rule.count([ repeat["count"].to_i, 1 ].max)
     end
-    schedule = IceCube::Schedule.new(starts_on.to_time)
+    schedule = IceCube::Schedule.new(anchor.to_time)
     schedule.add_recurrence_rule(rule)
     schedule
   end
@@ -108,11 +124,12 @@ class AppointmentSeries < ApplicationRecord
   end
 
   # Create the missing occurrences up to the horizon. Clashing dates are skipped
-  # and recorded. Returns {created: [dates], skipped: [{date, reason}]}.
+  # and recorded. Returns {created: [dates], rows: [appointments], skipped: [{date, reason}]}.
   def materialise(now: Date.current)
     existing = appointments.where.not(occurrence_at: nil).pluck(:occurrence_at)
     already_skipped = skipped_list.to_h { |entry| [ entry["date"], entry["reason"] ] }
     created = []
+    rows = []
     newly_skipped = []
 
     (future_dates(now) - existing).each do |date|
@@ -122,11 +139,11 @@ class AppointmentSeries < ApplicationRecord
         next
       end
 
-      appointments.create!(
+      rows << appointments.create!(
         id_users_provider: id_users_provider, id_users_customer: id_users_customer, id_services: id_services,
         start_datetime: starts_at(date), end_datetime: starts_at(date) + duration * 60,
-        notes: notes, location: location.to_s, status: status, color: color.presence || "#7cbae8",
-        book_datetime: Time.now, occurrence_at: date
+        notes: notes, location: location.to_s, appointment_status: AppointmentStatus.of("booked"),
+        color: color.presence || "#7cbae8", book_datetime: Time.now, occurrence_at: date
       )
       created << date
     end
@@ -136,7 +153,29 @@ class AppointmentSeries < ApplicationRecord
     remaining.reject! { |entry| newly_skipped.any? { |n| n["date"] == entry["date"] } }
     update!(skipped: (remaining + newly_skipped).sort_by { |entry| entry["date"] }.to_json)
 
-    { created: created, skipped: newly_skipped }
+    { created: created, rows: rows, skipped: newly_skipped }
+  end
+
+  # Sync, webhook and (optionally) notify for rows a series edit created or
+  # marked rescheduled/cancelled. The customer gets one notification, on the
+  # first new row (its email carries the repeat pattern and next date), or one
+  # cancellation on the first removed row when nothing was created.
+  def announce(created: [], removed: [], notify: false, reason: nil)
+    removed.each do |appointment|
+      Synchronization.appointment_deleted(appointment, appointment.provider)
+      Webhooks.trigger(Webhooks::APPOINTMENT_DELETE, appointment)
+    end
+    created.each do |appointment|
+      Synchronization.appointment_saved(appointment, appointment.service, appointment.provider, appointment.customer, nil)
+      Webhooks.trigger(Webhooks::APPOINTMENT_SAVE, appointment)
+    end
+    return unless notify
+
+    if (first = created.first)
+      Notifications.appointment_saved(first, first.service, first.provider, first.customer, nil, manage_mode: true)
+    elsif (first = removed.first)
+      Notifications.appointment_deleted(first, first.service, first.provider, first.customer, nil, reason: reason)
+    end
   end
 
   # Why the occurrence cannot be booked on this date, or nil.
@@ -155,20 +194,29 @@ class AppointmentSeries < ApplicationRecord
     fits ? nil : "not_working"
   end
 
-  # Remove future occurrences from a date on and end the series the day before.
-  def cancel_from(date)
+  # Cancel future occurrences from a date on and end the series the day before.
+  def cancel_from(date, reason: nil)
     to_cancel = appointments.active.where("occurrence_at >= ?", date).to_a
-    to_cancel.each { |appointment| appointment.cancel! }
+    to_cancel.each { |appointment| appointment.cancel!(reason: reason) }
     update!(ends_on: date - 1, skipped: skipped_list.reject { |e| Date.parse(e["date"]) >= date }.to_json)
     to_cancel
   end
 
-  # Replace the pattern and regenerate occurrences after today (earlier ones are kept).
+  # Replace the pattern after today: future occurrences still on the old
+  # pattern are marked Rescheduled (kept, slot freed) and the new pattern is
+  # booked; earlier ones and occurrences a customer moved are left alone.
+  # Returns materialise's result plus rescheduled: [appointments].
   def reschedule!(repeat, now: Date.current)
-    self.ice_schedule = self.class.schedule_from(repeat, [ starts_on, now ].max)
+    self.ice_schedule = self.class.schedule_from(repeat, starts_on, anchor: [ starts_on, now ].max,
+                                                 previous: ice_schedule.recurrence_rules.first)
     self.ends_on = repeat["ends"] == "on" ? Date.parse(repeat["ends_on"].to_s) : nil
-    appointments.where("occurrence_at > ?", now).find_each(&:destroy!)
-    update!(skipped: "[]")
-    materialise(now: now)
+    rescheduled = appointments.active.where("occurrence_at > ?", now).select { |a| a.start_datetime == starts_at(a.occurrence_at) }
+    transaction do
+      rescheduled.each do |appointment|
+        appointment.update!(appointment_status: AppointmentStatus.of("rescheduled"), occurrence_at: nil)
+      end
+      update!(skipped: "[]")
+    end
+    materialise(now: now).merge(rescheduled: rescheduled)
   end
 end

@@ -53,7 +53,7 @@ class BookingController < ApplicationController
                                       helpers.lang("appointment_does_not_exist_in_db"))
       end
 
-      if record.frees_slot? || record.start_datetime < Time.now
+      if record.frees_slot? || BookingWindows.past?(record)
         return render_booking_message(helpers.lang("appointment_not_found"),
                                       helpers.lang("appointment_does_not_exist_in_db"))
       end
@@ -232,6 +232,10 @@ class BookingController < ApplicationController
 
     # A reschedule books a new row and marks the original Rescheduled.
     original = manage_mode ? Appointment.find(appointment_params["id"]) : nil
+    if original && (original.frees_slot? || BookingWindows.past?(original))
+      raise ArgumentError, helpers.lang("appointment_does_not_exist_in_db")
+    end
+    raise ArgumentError, helpers.lang("appointment_locked") if original && BookingWindows.late?(original)
     appointment = Appointment.new(series_id: original&.series_id, occurrence_at: original&.occurrence_at)
     appointment.assign_attributes(
       start_datetime: appointment_params["start_datetime"],
