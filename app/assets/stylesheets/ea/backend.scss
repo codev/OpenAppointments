@@ -659,6 +659,34 @@ body .modal.full-screen .modal-push {
     margin-right: 1rem;
 }
 
+/* Tablets: the expanded bar must fit every item, so the logo stacks above its
+   text, items lose their minimum width and the list wraps onto a second line. */
+#header .navbar-nav {
+    flex-wrap: wrap;
+    justify-content: flex-end;
+}
+
+@media (min-width: 768px) and (max-width: 991.98px) {
+    #header-logo {
+        flex-direction: column;
+        text-align: center;
+        margin-right: 0.5rem;
+    }
+
+    #header-logo img {
+        margin-right: 0 !important;
+    }
+
+    #header .navbar-nav .nav-item {
+        min-width: 0;
+    }
+
+    #header .navbar-nav .nav-link {
+        padding-left: 0.6rem !important;
+        padding-right: 0.6rem !important;
+    }
+}
+
 /* Keep the nav dropdown menus above page panels. */
 #header {
     z-index: 1030;

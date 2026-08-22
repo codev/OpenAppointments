@@ -1,9 +1,11 @@
 <%# Port of EA components/backend_header.php. Locals: active_menu. %>
 <nav id="header" class="navbar navbar-expand-md navbar-dark bg-primary p-0 position-relative">
-    <div id="header-logo" class="navbar-brand p-1 lh-1">
-        <img src="<%= image_path("logo.png") %>" alt="" class="float-start me-2">
-        <h6 class="mb-1 mt-1 fw-bold text-white">OpenAppointments</h6>
-        <small id="header-user" class="d-block text-white-50 fw-normal"><%= vars(:user_display_name) %></small>
+    <div id="header-logo" class="navbar-brand p-1 lh-1 d-flex align-items-center">
+        <img src="<%= image_path("logo.png") %>" alt="" class="me-2">
+        <div>
+            <h6 class="mb-1 mt-1 fw-bold text-white">OpenAppointments</h6>
+            <small id="header-user" class="d-block text-white-50 fw-normal"><%= vars(:user_display_name) %></small>
+        </div>
     </div>
 
     <button type="button" class="navbar-toggler me-1" data-bs-toggle="collapse" data-bs-target="#header-menu">
