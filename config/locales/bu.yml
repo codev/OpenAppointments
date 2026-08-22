@@ -412,7 +412,6 @@ bu:
     working_plan_exception_saved: Изключението от работния план е записано успешно.
     working_plan_exception_deleted: Изключението от работния план е успешно изтрито.
     add_working_plan_exceptions_during_each_day: Добавяне на изключения от работния план, извън работния план.
-    add_working_plan_exception: Добавяне на изключения от работния план
     require_phone_number: Изисква се телефонен номер
     require_phone_number_hint: Когато е разрешено, клиентите и потребителите ще трябва да въведат телефонния номер на клиента, когато резервират среща
     check_spam_folder: Моля, проверете папката си за спам, ако имейлът не пристигне в рамките на няколко минути.
@@ -809,3 +808,5 @@ bu:
     free_for_appointments: Free for appointments
     not_working_on: "Not working {date}: {names}"
     and: and
+    add_available_exception: Add Extra Days/Times Available
+    add_unavailable_exception: Add Unavailable/Holiday Days

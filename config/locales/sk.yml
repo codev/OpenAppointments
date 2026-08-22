@@ -412,7 +412,6 @@ sk:
     working_plan_exception_saved: Výnimka pracovného plánu bola úspešne uložená.
     working_plan_exception_deleted: Výnimka pracovného plánu bola úspešne odstránená.
     add_working_plan_exceptions_during_each_day: Pridajte výnimky pracovného plánu mimo pracovného plánu.
-    add_working_plan_exception: Pridať výnimku pracovného plánu
     require_phone_number: Pridať výnimku pracovného plánu
     require_phone_number_hint: Keď je táto možnosť povolená, zákazníci a používatelia budú musieť pri rezervácii stretnutia zadať telefónne číslo zákazníka
     check_spam_folder: Ak e-mail nepríde do niekoľkých minút, skontrolujte priečinok so spamom.
@@ -809,3 +808,5 @@ sk:
     free_for_appointments: Free for appointments
     not_working_on: "Not working {date}: {names}"
     and: and
+    add_available_exception: Add Extra Days/Times Available
+    add_unavailable_exception: Add Unavailable/Holiday Days

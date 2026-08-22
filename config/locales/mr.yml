@@ -412,7 +412,6 @@ mr:
     working_plan_exception_saved: कामकाज योजना अपवाद यशस्वीरित्या सहेत.
     working_plan_exception_deleted: कामकाज योजना अपवाद यशस्वीरित्या हटवला.
     add_working_plan_exceptions_during_each_day: कामकाज योजनाच्या बाहेर कामकाज योजना अपवाद जोडा.
-    add_working_plan_exception: कामकाज योजना अपवाद जोडा
     require_phone_number: फोन नंबर आवश्यक आहे
     require_phone_number_hint: सक्षम असताना, ग्राहक आणि वापरकर्त्यांना अपॉईंटमेंट बुक करताना ग्राहकाचा फोन नंबर प्रविष्ट करणे आवश्यक आहे
     check_spam_folder: ईमेल काही मिनिटांत आले नाही तर कृपया आपल्या स्पॅम फोल्डरची तपासणी करा.
@@ -809,3 +808,5 @@ mr:
     free_for_appointments: Free for appointments
     not_working_on: "Not working {date}: {names}"
     and: and
+    add_available_exception: Add Extra Days/Times Available
+    add_unavailable_exception: Add Unavailable/Holiday Days

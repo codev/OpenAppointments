@@ -412,7 +412,6 @@ bs:
     working_plan_exception_saved: Izuzetak radnog plana je uspješno sačuvan.
     working_plan_exception_deleted: Izuzetak radnog plana je uspješno izbrisan.
     add_working_plan_exceptions_during_each_day: Dodaj iznimke radnog plana, izvan radnog plana.
-    add_working_plan_exception: Dodaj izuzetak radnog plana
     require_phone_number: Zahteva se broj telefona
     require_phone_number_hint: Kada je omogućeno, kupci i korisnici će morati da unesu broj telefona klijenta kada rezervišu termin
     check_spam_folder: Provjerite svoju spam folder ako email ne stigne u roku od nekoliko minuta.
@@ -809,3 +808,5 @@ bs:
     free_for_appointments: Free for appointments
     not_working_on: "Not working {date}: {names}"
     and: and
+    add_available_exception: Add Extra Days/Times Available
+    add_unavailable_exception: Add Unavailable/Holiday Days

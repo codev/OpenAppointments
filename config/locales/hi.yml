@@ -412,7 +412,6 @@ hi:
     working_plan_exception_saved: कार्य योजना अपवाद सफलतापूर्वक सहेजा गया।
     working_plan_exception_deleted: कार्य योजना अपवाद सफलतापूर्वक हटा दिया गया।
     add_working_plan_exceptions_during_each_day: प्रत्येक दिन के दौरान कार्य योजना अपवाद जोड़ें।
-    add_working_plan_exception: कार्य योजना अपवाद जोड़ें
     require_phone_number: फोन नंबर आवश्यक है
     require_phone_number_hint: जब सक्षम किया गया है, तो ग्राहकों और उपयोगकर्ताओं को अपॉइंटमेंट बुक करते समय ग्राहक का फोन नंबर दर्ज करना होगा।
     check_spam_folder: यदि ईमेल कुछ मिनटों के भीतर नहीं आता है, तो कृपया अपनी स्पैम फ़ोल्डर की जांच करें।
@@ -809,3 +808,5 @@ hi:
     free_for_appointments: Free for appointments
     not_working_on: "Not working {date}: {names}"
     and: and
+    add_available_exception: Add Extra Days/Times Available
+    add_unavailable_exception: Add Unavailable/Holiday Days

@@ -412,7 +412,6 @@ sv:
     working_plan_exception_saved: Den nya arbetsdagen är sparad.
     working_plan_exception_deleted: Undantag från arbetsplan har tagits bort.
     add_working_plan_exceptions_during_each_day: Lägg till arbetsdagar utanför schemat.
-    add_working_plan_exception: Lägg till en arbetsdag.
     require_phone_number: Kräv telefonnummer.
     require_phone_number_hint: När detta är aktiverat är telefonnummer obligatoriskt för att kunna göra en bokning.
     check_spam_folder: Kontrollera skräpposten om du inte har fått mejlet inom några minuter.
@@ -809,3 +808,5 @@ sv:
     free_for_appointments: Free for appointments
     not_working_on: "Not working {date}: {names}"
     and: and
+    add_available_exception: Add Extra Days/Times Available
+    add_unavailable_exception: Add Unavailable/Holiday Days

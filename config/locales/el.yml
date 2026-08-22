@@ -412,7 +412,6 @@ el:
     working_plan_exception_saved: Η εξαίρεση πλάνου εργασίας αποθηκεύτηκε επιτυχώς.
     working_plan_exception_deleted: Η εξαίρεση πλάνου εργασίας διαγράφηκε επιτυχώς.
     add_working_plan_exceptions_during_each_day: Προσθέστε μια εξαίρεση πλάνου εργασίας, εκτός του κανικού πλάνου εργασίας.
-    add_working_plan_exception: Προσθήκη Εξαίρεσης Πλάνου Εργασίας
     require_phone_number: Απαίτηση Αριθμού Τηλεφώνου
     require_phone_number_hint: Όταν ενεργοποιημένο, οι πελάτες και οι χρήστες θα χρειαστούν να καταχωρήσουν τον τηλεφωνικό αριθμό του πελάτη κατα την διάρκεια της κράτησης ραντεβού.
     check_spam_folder: Παρακαλώ ελέγξτε τον φάκελο spam εφόσον το ηλεκτρονικό μήνυμα δεν έχει ληφθεί.
@@ -809,3 +808,5 @@ el:
     free_for_appointments: Free for appointments
     not_working_on: "Not working {date}: {names}"
     and: and
+    add_available_exception: Add Extra Days/Times Available
+    add_unavailable_exception: Add Unavailable/Holiday Days

@@ -412,7 +412,6 @@ th:
     working_plan_exception_saved: บันทึกข้อยกเว้นแผนการทำงานเรียบร้อยแล้ว
     working_plan_exception_deleted: ลบข้อยกเว้นแผนการทำงานเรียบร้อยแล้ว
     add_working_plan_exceptions_during_each_day: เพิ่มข้อยกเว้นแผนการทำงานนอกแผนการทำงาน
-    add_working_plan_exception: เพิ่มข้อยกเว้นแผนการทำงาน
     require_phone_number: ต้องการหมายเลขโทรศัพท์
     require_phone_number_hint: เมื่อเปิดใช้งาน ลูกค้าและผู้ใช้จะต้องป้อนหมายเลขโทรศัพท์ของลูกค้าเมื่อจองการนัดหมาย
     check_spam_folder: โปรดตรวจสอบโฟลเดอร์สแปมของคุณ หากคุณไม่ได้รับอีเมลภายในไม่กี่นาที
@@ -809,3 +808,5 @@ th:
     free_for_appointments: Free for appointments
     not_working_on: "Not working {date}: {names}"
     and: and
+    add_available_exception: Add Extra Days/Times Available
+    add_unavailable_exception: Add Unavailable/Holiday Days

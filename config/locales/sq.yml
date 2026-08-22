@@ -412,7 +412,6 @@ sq:
     working_plan_exception_saved: Përjashtimi i planit të punës u ruajt me sukses.
     working_plan_exception_deleted: Përjashtimi i planit të punës u fshi me sukses.
     add_working_plan_exceptions_during_each_day: Shtoni përjashtime të planit të punës, jashtë planit të punës.
-    add_working_plan_exception: Shto Përjashtim të Planit të Punës
     require_phone_number: Kërko numrin e telefonit
     require_phone_number_hint: Kur aktivizohet, klientët dhe përdoruesit do të duhet të vendosin numrin e telefonit të klientit kur rezervojnë një takim
     check_spam_folder: Ju lutemi kontrolloni dosjen tuaj të spam-it nëse email-i nuk arrin brenda disa minutave.
@@ -809,3 +808,5 @@ sq:
     free_for_appointments: Free for appointments
     not_working_on: "Not working {date}: {names}"
     and: and
+    add_available_exception: Add Extra Days/Times Available
+    add_unavailable_exception: Add Unavailable/Holiday Days

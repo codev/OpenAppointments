@@ -412,7 +412,6 @@ en:
     working_plan_exception_saved: Working plan exception saved successfully.
     working_plan_exception_deleted: Working plan exception deleted successfully.
     add_working_plan_exceptions_during_each_day: Add working plan exceptions, outside the working plan.
-    add_working_plan_exception: Add Working Plan Exception
     require_phone_number: Require phone number
     require_phone_number_hint: When enabled, customers and users will need to enter the customer's phone number when booking an appointment
     check_spam_folder: Please check your spam folder if the email does not arrive within a few minutes.
@@ -809,3 +808,5 @@ en:
     free_for_appointments: Free for appointments
     not_working_on: "Not working {date}: {names}"
     and: and
+    add_available_exception: Add Extra Days/Times Available
+    add_unavailable_exception: Add Unavailable/Holiday Days

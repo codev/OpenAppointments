@@ -412,7 +412,6 @@ fi:
     working_plan_exception_saved: Työsuunnitelmapoikkeus tallennettu.
     working_plan_exception_deleted: Työsuunnitelmapoikkeus poistettu.
     add_working_plan_exceptions_during_each_day: Lisää työsuunnitelman ulkopuoliset poikkeukset.
-    add_working_plan_exception: Lisää työsuunnitelmapoikkeus
     require_phone_number: Vaadi puhelinnumero
     require_phone_number_hint: Jos valittu, asiakkaiden ja käyttäjien on annettava asiakkaan puhelinnumero varauksen yhteydessä
     check_spam_folder: Tarkista roskapostikansio mikäli viestiä ei näy muutaman minuutin kuluessa.
@@ -809,3 +808,5 @@ fi:
     free_for_appointments: Free for appointments
     not_working_on: "Not working {date}: {names}"
     and: and
+    add_available_exception: Add Extra Days/Times Available
+    add_unavailable_exception: Add Unavailable/Holiday Days

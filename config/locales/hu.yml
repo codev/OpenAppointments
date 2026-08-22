@@ -412,7 +412,6 @@ hu:
     working_plan_exception_saved: A munkaterv kivétel sikeresen mentve.
     working_plan_exception_deleted: A munkaterv kivétel sikeresen törölve.
     add_working_plan_exceptions_during_each_day: Adjon hozzá munkaterv kivételeket, a munkaterven kívül.
-    add_working_plan_exception: Munkaterv Kivétel Hozzáadása
     require_phone_number: Telefonszám Kötelező
     require_phone_number_hint: Ha engedélyezve van, az ügyfeleknek és felhasználóknak meg kell adniuk az ügyfél telefonszámát a foglaláskor.
     check_spam_folder: Kérjük, ellenőrizze a spam mappáját, ha az e-mail néhány percen belül nem érkezik meg.
@@ -809,3 +808,5 @@ hu:
     free_for_appointments: Free for appointments
     not_working_on: "Not working {date}: {names}"
     and: and
+    add_available_exception: Add Extra Days/Times Available
+    add_unavailable_exception: Add Unavailable/Holiday Days

@@ -412,7 +412,6 @@ lv:
     working_plan_exception_saved: Darba plāna izņēmums veiksmīgi saglabāts.
     working_plan_exception_deleted: Darba plāna izņēmums veiksmīgi dzēsts.
     add_working_plan_exceptions_during_each_day: Pievienot darba plāna izņēmumus ārpus darba plāna.
-    add_working_plan_exception: Pievienot darba plāna izņēmumu
     require_phone_number: Pieprasīt tālruņa numuru
     require_phone_number_hint: Ja šī funkcija ir iespējota, klientiem un lietotājiem, rezervējot tikšanos, būs jāievada klienta tālruņa numurs
     check_spam_folder: Lūdzu, pārbaudiet surogātpasta mapi, ja e-pasta vēstule nav saņemta dažu minūšu laikā.
@@ -809,3 +808,5 @@ lv:
     free_for_appointments: Free for appointments
     not_working_on: "Not working {date}: {names}"
     and: and
+    add_available_exception: Add Extra Days/Times Available
+    add_unavailable_exception: Add Unavailable/Holiday Days

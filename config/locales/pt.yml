@@ -412,7 +412,6 @@ pt:
     working_plan_exception_saved: Exceção ao plano de trabalho salva com sucesso.
     working_plan_exception_deleted: Exceção ao plano de trabalho excluída com sucesso.
     add_working_plan_exceptions_during_each_day: Adicione exceções ao plano de trabalho, fora do plano de trabalho.
-    add_working_plan_exception: Adicionar Exceção ao Plano de Trabalho
     require_phone_number: Exigir número de telefone
     require_phone_number_hint: Quando ativado, os clientes e usuários precisarão inserir o número de telefone do cliente ao agendar um compromisso
     check_spam_folder: Por favor, verifique sua pasta de spam se o email não chegar dentro de alguns minutos.
@@ -809,3 +808,5 @@ pt:
     free_for_appointments: Free for appointments
     not_working_on: "Not working {date}: {names}"
     and: and
+    add_available_exception: Add Extra Days/Times Available
+    add_unavailable_exception: Add Unavailable/Holiday Days

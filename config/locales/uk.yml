@@ -412,7 +412,6 @@ uk:
     working_plan_exception_saved: Виключення з робочого плану успішно збережено.
     working_plan_exception_deleted: Виключення з робочого плану успішно видалено.
     add_working_plan_exceptions_during_each_day: Додати виключення з робочого плану для кожного дня.
-    add_working_plan_exception: Додати виключення з робочого плану
     require_phone_number: Вимагати номер телефону
     require_phone_number_hint: Коли увімкнено, клієнти та користувачі повинні будуть вказати номер телефону клієнта при бронюванні запису.
     check_spam_folder: Будь ласка, перевірте папку зі спамом, якщо електронна пошта не надійшла протягом кількох хвилин.
@@ -809,3 +808,5 @@ uk:
     free_for_appointments: Free for appointments
     not_working_on: "Not working {date}: {names}"
     and: and
+    add_available_exception: Add Extra Days/Times Available
+    add_unavailable_exception: Add Unavailable/Holiday Days

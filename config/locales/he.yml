@@ -412,7 +412,6 @@ he:
     working_plan_exception_saved: הוספת חריגה בתוכנית העבודה נשמרה בהצלחה.
     working_plan_exception_deleted: חריגות בתוכנית העבודה נמחקו בהצלחה.
     add_working_plan_exceptions_during_each_day: הוספת חריגה בתוכנית עבודה, מחוץ לתוכנית העבודה.
-    add_working_plan_exception: הוספת חריגה בתכנית עבודה
     require_phone_number: נדרש מספר טלפון
     require_phone_number_hint: כאשר אפשרות זו מופעלת, לקוחות ומשתמשים יצטרכו להזין את מספר הטלפון בעת הזמנת פגישה
     check_spam_folder: אם הדוא"ל אינו מגיע תוך מספר דקות יש לבדוק את תיקיית הספאם שלך .
@@ -809,3 +808,5 @@ he:
     free_for_appointments: Free for appointments
     not_working_on: "Not working {date}: {names}"
     and: and
+    add_available_exception: Add Extra Days/Times Available
+    add_unavailable_exception: Add Unavailable/Holiday Days

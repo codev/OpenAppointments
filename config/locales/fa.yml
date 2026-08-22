@@ -412,7 +412,6 @@ fa:
     working_plan_exception_saved: روز کاری خارج از برنامه با موفقیت ثبت شد
     working_plan_exception_deleted: روز کاری خارج از برنامه با موفقیت حذف شد.
     add_working_plan_exceptions_during_each_day: یک روز کاری خارج از برنامه اضافه کنید
-    add_working_plan_exception: افزودن روز کاری خارج از برنامه
     require_phone_number: اجباری کردن شماره تلفن
     require_phone_number_hint: در صورت فعال بودن ، هنگام رزرو قرار ملاقات ، مشتریان و کاربران باید شماره تلفن مشتری را وارد کنند
     check_spam_folder: اگر تا دقایقی دیگر ایمیل را دریافت نکردید ، لطفاً پوشه هرزنامه خود را بررسی کنید.
@@ -809,3 +808,5 @@ fa:
     free_for_appointments: Free for appointments
     not_working_on: "Not working {date}: {names}"
     and: and
+    add_available_exception: Add Extra Days/Times Available
+    add_unavailable_exception: Add Unavailable/Holiday Days

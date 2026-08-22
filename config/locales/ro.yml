@@ -412,7 +412,6 @@ ro:
     working_plan_exception_saved: Excepția planului de lucru a fost salvată cu succes.
     working_plan_exception_deleted: Excepția planului de lucru a fost ștearsă cu succes.
     add_working_plan_exceptions_during_each_day: Adăugați excepții ale planului de lucru, în afara planului de lucru.
-    add_working_plan_exception: Adăugați Excepție Plan de Lucru
     require_phone_number: Necesar Număr de Telefon
     require_phone_number_hint: Când este activat, clienții și utilizatorii vor trebui să introducă numărul de telefon al clientului atunci când rezervă o programare.
     check_spam_folder: Vă rugăm să verificați folderul de spam dacă emailul nu sosește în câteva minute.
@@ -809,3 +808,5 @@ ro:
     free_for_appointments: Free for appointments
     not_working_on: "Not working {date}: {names}"
     and: and
+    add_available_exception: Add Extra Days/Times Available
+    add_unavailable_exception: Add Unavailable/Holiday Days

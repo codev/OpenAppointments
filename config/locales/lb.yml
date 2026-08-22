@@ -412,7 +412,6 @@ lb:
     working_plan_exception_saved: Ausnam am Schaffplang erfollegräich gespäichert.
     working_plan_exception_deleted: Ausnam am Schaffplang erfollegräich geläscht.
     add_working_plan_exceptions_during_each_day: Füügt Ausnamen an de Schaffplang bäi, déi ausserhalb vum normale Schaffplang sinn.
-    add_working_plan_exception: Ausnam am Schaffplang derbäisetzen
     require_phone_number: Telefonsnummer erfuerderen
     require_phone_number_hint: Wann aktivéiert, mussen d'Clienten an d'Benotzer d'Telefonsnummer vum Client aginn wann si en Rendez-vous buchen.
     check_spam_folder: Kuckt w.e.g. an Äre Spam-Dossier wann d'E-Mail net bannent e puer Minutten ukënnt.
@@ -809,3 +808,5 @@ lb:
     free_for_appointments: Free for appointments
     not_working_on: "Not working {date}: {names}"
     and: and
+    add_available_exception: Add Extra Days/Times Available
+    add_unavailable_exception: Add Unavailable/Holiday Days

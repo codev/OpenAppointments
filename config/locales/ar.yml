@@ -412,7 +412,6 @@ ar:
     working_plan_exception_saved: تم حفظ استثناء خطة العمل بنجاح.
     working_plan_exception_deleted: تم حذف استثناء خطة العمل بنجاح.
     add_working_plan_exceptions_during_each_day: إضافة استثناءات خطة العمل، خارج خطة العمل.
-    add_working_plan_exception: إضافة استثناء خطة العمل
     require_phone_number: يتطلب رقم الهاتف
     require_phone_number_hint: عند التمكين، سيحتاج العملاء والمستخدمون إلى إدخال رقم هاتف العميل عند حجز موعد
     check_spam_folder: يرجى التحقق من مجلد الرسائل غير المرغوب فيها إذا لم تصل رسالة البريد الإلكتروني خلال بضع دقائق.
@@ -809,3 +808,5 @@ ar:
     free_for_appointments: Free for appointments
     not_working_on: "Not working {date}: {names}"
     and: and
+    add_available_exception: Add Extra Days/Times Available
+    add_unavailable_exception: Add Unavailable/Holiday Days

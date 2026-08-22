@@ -412,7 +412,6 @@ et:
     working_plan_exception_saved: Tööplaani erand salvestatud.
     working_plan_exception_deleted: Tööplaani erand kustutatud.
     add_working_plan_exceptions_during_each_day: Lisa tööplaani erand (väljapoole tavalist tööplaani).
-    add_working_plan_exception: Lisa tööplaani erand
     require_phone_number: Nõua telefoninumbrit
     require_phone_number_hint: Kui see on sisse lülitatud, siis klient peab broneerimisel sisestama ka enda telefoninumbri.
     check_spam_folder: Kui e-maili mõne minuti jooksul ei saabu, siis palun kontrolli enda meili rämpspostikausta.
@@ -809,3 +808,5 @@ et:
     free_for_appointments: Free for appointments
     not_working_on: "Not working {date}: {names}"
     and: and
+    add_available_exception: Add Extra Days/Times Available
+    add_unavailable_exception: Add Unavailable/Holiday Days

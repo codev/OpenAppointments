@@ -412,7 +412,6 @@ ca:
     working_plan_exception_saved: L'excepció del pla de treball s'ha desat correctament.
     working_plan_exception_deleted: L'excepció del pla de treball s'ha suprimit correctament.
     add_working_plan_exceptions_during_each_day: Afegeix excepcions al pla de treball, fora del pla de treball.
-    add_working_plan_exception: Afegeix una excepció al pla de treball
     require_phone_number: Requereix el número de telèfon
     require_phone_number_hint: Quan està activat, els clients i els usuaris hauran d'introduir el número de telèfon al reservar una cita
     check_spam_folder: Comproveu la vostra carpeta de correu brossa si el correu no arriba en uns minuts.
@@ -809,3 +808,5 @@ ca:
     free_for_appointments: Free for appointments
     not_working_on: "Not working {date}: {names}"
     and: and
+    add_available_exception: Add Extra Days/Times Available
+    add_unavailable_exception: Add Unavailable/Holiday Days

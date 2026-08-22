@@ -412,7 +412,6 @@ lt:
     working_plan_exception_saved: Darbo grafiko išimtis įrašyta.
     working_plan_exception_deleted: Darbo grafiko išimtis pašalinta.
     add_working_plan_exceptions_during_each_day: Įveskite išimtines datas, kuriomis šio paslaugų teikėjo darbo grafikas skirsis nuo įprastinio.
-    add_working_plan_exception: Pridėti darbo grafiko išimtį
     require_phone_number: Reikalauti telefono numerio
     require_phone_number_hint: Kai ši parinktis įjungta, rezervuodami laiką vizitui, klientai ir naudotojai turės įvesti kliento telefono numerį
     check_spam_folder: Jei laiško negausite per kelias minutes, patikrinkite nepageidaujamų laiškų aplanką.
@@ -809,3 +808,5 @@ lt:
     free_for_appointments: Free for appointments
     not_working_on: "Not working {date}: {names}"
     and: and
+    add_available_exception: Add Extra Days/Times Available
+    add_unavailable_exception: Add Unavailable/Holiday Days

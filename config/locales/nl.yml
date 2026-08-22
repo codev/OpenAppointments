@@ -412,7 +412,6 @@ nl:
     working_plan_exception_saved: Uitzondering werkrooster succesvol opgeslagen.
     working_plan_exception_deleted: Uitzondering werkrooster succesvol verwijderd.
     add_working_plan_exceptions_during_each_day: Voeg uitzonderingen toe aan het werkrooster, buiten het werkrooster.
-    add_working_plan_exception: Voeg Uitzondering Werkrooster Toe
     require_phone_number: Telefoonnummer Vereisen
     require_phone_number_hint: Wanneer ingeschakeld, moeten klanten en gebruikers het telefoonnummer van de klant invoeren bij het maken van een afspraak.
     check_spam_folder: Controleer je spammap als de e-mail niet binnen een paar minuten arriveert.
@@ -809,3 +808,5 @@ nl:
     free_for_appointments: Free for appointments
     not_working_on: "Not working {date}: {names}"
     and: and
+    add_available_exception: Add Extra Days/Times Available
+    add_unavailable_exception: Add Unavailable/Holiday Days

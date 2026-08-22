@@ -412,7 +412,6 @@ sl:
     working_plan_exception_saved: Izjema delovnega načrta je uspešno shranjena.
     working_plan_exception_deleted: Izjema delovnega načrta je bila uspešno izbrisana.
     add_working_plan_exceptions_during_each_day: Dodaj izjeme delovnega načrta zunaj delovnega načrta.
-    add_working_plan_exception: Dodaj izjemo delovnega načrta
     require_phone_number: Zahtevaj telefonsko številko
     require_phone_number_hint: Ko je omogočeno, bodo stranke in uporabniki morali vnesti telefonsko številko stranke pri rezervaciji termina
     check_spam_folder: Prosimo, preverite mapo z vsiljeno pošto, če e-pošta ne prispe v nekaj minutah.
@@ -809,3 +808,5 @@ sl:
     free_for_appointments: Free for appointments
     not_working_on: "Not working {date}: {names}"
     and: and
+    add_available_exception: Add Extra Days/Times Available
+    add_unavailable_exception: Add Unavailable/Holiday Days

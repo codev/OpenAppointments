@@ -412,7 +412,6 @@
     working_plan_exception_saved: Arbeidsplanunntak lagret.
     working_plan_exception_deleted: Arbeidsplanunntak slettet.
     add_working_plan_exceptions_during_each_day: Legg til unntak fra arbeidsplanen, utenfor arbeidsplanen.
-    add_working_plan_exception: Legg til unntak for arbeidsplan
     require_phone_number: Krev telefonnummer
     require_phone_number_hint: Når denne funksjonen er aktivert, må kunder og brukere oppgi kundens telefonnummer når de bestiller en time
     check_spam_folder: Vennligst sjekk søppelpostmappen din hvis e-posten ikke kommer innen noen minutter
@@ -809,3 +808,5 @@
     free_for_appointments: Free for appointments
     not_working_on: "Not working {date}: {names}"
     and: and
+    add_available_exception: Add Extra Days/Times Available
+    add_unavailable_exception: Add Unavailable/Holiday Days

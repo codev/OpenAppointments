@@ -412,7 +412,6 @@ tr:
     working_plan_exception_saved: Çalışma planı istisnası başarıyla kaydedildi.
     working_plan_exception_deleted: Çalışma planı istisnası başarıyla silindi.
     add_working_plan_exceptions_during_each_day: Çalışma planı dışında çalışma planı istisnaları ekleyin.
-    add_working_plan_exception: İstisna ekle
     require_phone_number: Telefon num. gerekli
     require_phone_number_hint: Etkinleştirildiğinde, müşterilerin ve kullanıcıların randevu alırken müşterinin telefon numarasını girmeleri gerekir.
     check_spam_folder: E-posta birkaç dakika içinde gelmezse lütfen spam klasörünüzü kontrol edin.
@@ -809,3 +808,5 @@ tr:
     free_for_appointments: Free for appointments
     not_working_on: "Not working {date}: {names}"
     and: and
+    add_available_exception: Add Extra Days/Times Available
+    add_unavailable_exception: Add Unavailable/Holiday Days

@@ -412,7 +412,6 @@ ja:
     working_plan_exception_saved: 作業計画の例外が正常に保存されました。
     working_plan_exception_deleted: 作業計画の例外が正常に削除されました。
     add_working_plan_exceptions_during_each_day: 作業計画外の作業計画の例外を追加します。
-    add_working_plan_exception: 作業計画の例外を追加
     require_phone_number: 電話番号を要求
     require_phone_number_hint: 有効にすると、予約時に顧客の電話番号を入力する必要があります。
     check_spam_folder: メールが数分以内に届かない場合は、迷惑メールフォルダーを確認してください。
@@ -809,3 +808,5 @@ ja:
     free_for_appointments: Free for appointments
     not_working_on: "Not working {date}: {names}"
     and: and
+    add_available_exception: Add Extra Days/Times Available
+    add_unavailable_exception: Add Unavailable/Holiday Days

@@ -6,6 +6,7 @@ CloudronManifest.json.
 ## 1.7.1
 
 - Terminology hint says to capitalise the labels
+- Provider Working Plan: "Add Extra Days/Times Available" and "Add Unavailable Days/Times" buttons replace the single exception button; the unavailable dialog asks only for dates
 - 10to8 import matches existing providers by name as well as email, including a first name against the export's full name, so appointments land under the providers already set up
 - Appointments menu item shows the table view; Calendar always shows the calendar. The per-user calendar view preference is removed
 - Messages moves under the cog menu as Message Settings, with Unknown Inbox below it; Manage data is now Data Settings

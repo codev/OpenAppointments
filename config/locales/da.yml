@@ -412,7 +412,6 @@ da:
     working_plan_exception_saved: Arbejdsplan-undtagelse gemt med succes.
     working_plan_exception_deleted: Arbejdsplan-undtagelse slettet med succes.
     add_working_plan_exceptions_during_each_day: Tilføj arbejdsplan-undtagelser, uden for arbejdsplanen.
-    add_working_plan_exception: Tilføj arbejdsplan-undtagelse
     require_phone_number: Kræver telefonnummer
     require_phone_number_hint: Når det er aktiveret, skal kunder og brugere indtaste kundens telefonnummer, når de booker en aftale
     check_spam_folder: Tjek venligst din uønskede e-mail (spam) mappe, hvis du ikke har modtaget e-mailen inden for et par minutter.
@@ -809,3 +808,5 @@ da:
     free_for_appointments: Free for appointments
     not_working_on: "Not working {date}: {names}"
     and: and
+    add_available_exception: Add Extra Days/Times Available
+    add_unavailable_exception: Add Unavailable/Holiday Days

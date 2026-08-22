@@ -412,7 +412,6 @@ ru:
     working_plan_exception_saved: Исключение из рабочего плана успешно сохранено.
     working_plan_exception_deleted: Исключение из рабочего плана успешно удалено.
     add_working_plan_exceptions_during_each_day: Добавить исключения из рабочего плана, вне рабочего плана.
-    add_working_plan_exception: Добавить исключение рабочего плана
     require_phone_number: Требуется номер телефона
     require_phone_number_hint: Когда эта функция включена, клиентам и пользователям необходимо будет ввести номер телефона клиента при бронировании встречи
     check_spam_folder: Пожалуйста, проверьте папку спама, если письмо не пришло в течение нескольких минут.
@@ -809,3 +808,5 @@ ru:
     free_for_appointments: Free for appointments
     not_working_on: "Not working {date}: {names}"
     and: and
+    add_available_exception: Add Extra Days/Times Available
+    add_unavailable_exception: Add Unavailable/Holiday Days

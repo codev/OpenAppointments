@@ -412,7 +412,6 @@ zh-tw:
     working_plan_exception_saved: 工作計劃例外已成功儲存。
     working_plan_exception_deleted: 工作計劃例外已成功刪除。
     add_working_plan_exceptions_during_each_day: 新增工作計劃例外，超出工作計劃。
-    add_working_plan_exception: 新增工作計劃例外
     require_phone_number: 需要電話號碼
     require_phone_number_hint: 啟用後，顧客和使用者在預約時需要輸入顧客的電話號碼
     check_spam_folder: 如果電子郵件在幾分鐘內未送達，請檢查您的垃圾郵件夾。
@@ -809,3 +808,5 @@ zh-tw:
     free_for_appointments: Free for appointments
     not_working_on: "Not working {date}: {names}"
     and: and
+    add_available_exception: Add Extra Days/Times Available
+    add_unavailable_exception: Add Unavailable/Holiday Days

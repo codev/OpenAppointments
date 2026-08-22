@@ -586,8 +586,10 @@ App.Utils.WorkingPlan = (function () {
              *
              * A new row is added on the table and the user can enter the new working plan exception.
              */
-            $(document).on('click', '.add-working-plan-exception', () => {
-                App.Components.WorkingPlanExceptionsModal.add().done((workingPlanException) => {
+            $(document).on('click', '.add-working-plan-exception', (event) => {
+                const nonWorking = $(event.currentTarget).data('nonWorking');
+                const fixed = nonWorking === undefined ? undefined : Boolean(Number(nonWorking));
+                App.Components.WorkingPlanExceptionsModal.add(fixed).done((workingPlanException) => {
                     let $newTr = this.renderWorkingPlanExceptionRow(workingPlanException);
                     $newTr.appendTo('.working-plan-exceptions tbody');
                 });
