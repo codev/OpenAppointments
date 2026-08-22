@@ -679,7 +679,7 @@ zh-tw:
     messages: Messages
     messages_hint: Manage notifications, providers and message logs
     unknown_inbox: Unknown Inbox
-    unknown_inbox_info: Incoming messages from senders that do not match any customer. These messages also appear in the main log.
+    unknown_inbox_info: 'Incoming messages from senders that do not match any customer. Mark each one read once dealt with. These messages also appear in the main log.'
     messages_providers: Providers
     messages_provider: Provider
     messages_logs: Logs
@@ -886,3 +886,11 @@ zh-tw:
     statuses: 'Statuses'
     filter_statuses_hint: 'Choose which appointment statuses to show.'
     appointment_statuses: 'Appointment Statuses'
+    inbox: 'Inbox'
+    inbox_hint: 'Incoming messages from your customers.'
+    inbox_info: 'Incoming messages from customers. Messages stay unread until someone marks them read.'
+    unread: 'Unread'
+    read: 'Read'
+    message: 'Message'
+    mark_as_read: 'Mark as read'
+    mark_all_as_read: 'Mark all as read'

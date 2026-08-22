@@ -61,7 +61,12 @@
                         <%= message.direction == "incoming" ? message.from_address : message.to_address %>
                     </td>
                     <% if inbox %>
-                        <td class="text-break fw-normal"><%= message.body.to_s.truncate(200) %></td>
+                        <td class="text-break fw-normal">
+                            <% if message.subject.present? %>
+                                <strong><%= message.subject %></strong><br>
+                            <% end %>
+                            <%= simple_format(message.body.to_s.truncate(500)) %>
+                        </td>
                     <% end %>
                     <td>
                         <% badge = { "sent" => "bg-success", "received" => "bg-success",
