@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
   include LocaleSelection
 
   before_action { script_vars(default_script_vars) }
+  before_action :exception_notifier_data
 
   # EA JS posts the CSRF token as a `csrf_token` body param (double-submit port).
   self.request_forgery_protection_token = :csrf_token
@@ -28,5 +29,15 @@ class ApplicationController < ActionController::Base
   def paginate_search(scope, limit, offset)
     response.set_header("X-Total-Count", scope.except(:includes, :order).count.to_s)
     scope.limit(limit).offset(offset)
+  end
+
+  # Who was logged in when a crash report is emailed.
+  def exception_notifier_data
+    user = current_user
+    return unless user
+
+    request.env["exception_notifier.exception_data"] = {
+      user: "#{user.name} <#{user.email}> (id #{user.id}, #{session[:role_slug]})"
+    }
   end
 end
