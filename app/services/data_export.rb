@@ -17,6 +17,7 @@ module DataExport
       "Assistants" => assistants_sheet,
       "Admins" => admins_sheet,
       "Customers" => customers_sheet,
+      "Appointment Statuses" => appointment_statuses_sheet,
       "Appointments" => appointments_sheet,
       "Blocked Periods" => blocked_periods_sheet,
       "Appointment Series" => appointment_series_sheet,
@@ -100,6 +101,11 @@ module DataExport
     end
     [ %w[id name email phone_number address city zip_code notes custom_field_1 custom_field_2
          custom_field_3 custom_field_4 custom_field_5 language timezone] ] + rows
+  end
+
+  def appointment_statuses_sheet
+    rows = AppointmentStatus.ordered.map { |status| [ status.name, status.kind, status.position ] }
+    [ %w[name kind position] ] + rows
   end
 
   def appointments_sheet

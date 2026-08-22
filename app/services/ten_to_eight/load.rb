@@ -4,8 +4,8 @@ module TenToEight
   # email or name+phone) so re-runs do not duplicate. Pronoun lands in custom_field_1, access
   # needs in custom_field_2, and a do-not-contact prefix on the notes (GDPR consent).
   class Load
-    PHASES = %w[categories services providers assistants admins customers appointments appointment_series
-                working_plan_exceptions notifications webhooks consents settings].freeze
+    PHASES = %w[categories services providers assistants admins customers appointment_statuses appointments
+                appointment_series working_plan_exceptions notifications webhooks consents settings].freeze
     DO_NOT_CONTACT_PREFIX = "[DO NOT CONTACT - consent not granted]".freeze
 
     def initialize(data, phases:, create_providers: false, progress: nil, images_dir: nil)
@@ -25,6 +25,7 @@ module TenToEight
       load_assistants if phase?("assistants")
       load_admins if phase?("admins")
       load_customers if phase?("customers")
+      load_appointment_statuses if phase?("appointment_statuses")
       load_appointments if phase?("appointments")
       load_appointment_series if phase?("appointment_series")
       load_working_plan_exceptions if phase?("working_plan_exceptions")
@@ -309,6 +310,20 @@ module TenToEight
     end
 
     # Templates match on title and event.
+    # Special kinds match on kind (so a renamed special is restored), customs on name.
+    def load_appointment_statuses
+      counts = track("appointment_statuses")
+      Array(@data[:appointment_statuses]).each do |row|
+        guard("appointment_statuses", counts, row[:name]) do
+          status = row[:kind] == "custom" ? nil : AppointmentStatus.of(row[:kind])
+          status ||= AppointmentStatus.find_or_initialize_by(name: row[:name])
+          created = status.new_record?
+          status.update!(row)
+          counts[created ? :created : :matched] += 1
+        end
+      end
+    end
+
     def load_notifications
       counts = track("notifications")
       Array(@data[:notifications]).each do |row|

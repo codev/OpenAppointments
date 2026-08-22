@@ -102,12 +102,17 @@ class DataExportTest < ActiveSupport::TestCase
       starts_on: Date.new(2026, 7, 20), start_time: "10:00", duration: 30, status: "Booked"
     )
     series_dates = series.materialise(now: Date.new(2026, 7, 20))[:created]
+    AppointmentStatus.of("cancelled").update!(name: "Called off")
+    AppointmentStatus.create!(name: "Waiting", kind: "custom", position: 9)
     path = export_to_file
 
     ResetDatabase.run
 
     data = OdsExtract.new(path, today: Date.new(2026, 7, 20), days_back: 30, days_forward: 30).call
     TenToEight::Load.new(data, phases: TenToEight::Load::PHASES, create_providers: true).call
+
+    assert_equal "Called off", AppointmentStatus.of("cancelled").name
+    assert_equal "custom", AppointmentStatus.find_by!(name: "Waiting").kind
 
     service = Service.find_by!(name: "Trim Cut")
     assert_equal 12.5, service.price.to_f

@@ -17,6 +17,7 @@ class OdsExtract
       services: services_rows,
       staff: staff_rows,
       customers: customers_rows,
+      appointment_statuses: appointment_statuses_rows,
       appointments: appointments_rows,
       appointment_series: appointment_series_rows,
       assistants: assistants_rows,
@@ -170,6 +171,12 @@ class OdsExtract
       { staff: row["provider"], service: row["service"], customer_ext_id: row["customer_id"],
         start: start_at, end: parse_time(row["end_datetime"]) || start_at + 30 * 60,
         note: row["notes"], status: row["status"] }
+    end
+  end
+
+  def appointment_statuses_rows
+    rows("Appointment Statuses").map do |row|
+      { name: row["name"], kind: row["kind"].presence || "custom", position: row["position"].to_i }
     end
   end
 

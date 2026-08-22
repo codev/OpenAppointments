@@ -509,7 +509,7 @@ pt:
     at_least_one_field: Pelo menos um campo deve ser exibido na página de agendamento.
     status: Estado
     appointment_status_options: Opções de Status de Compromisso
-    appointment_status_options_info: Defina uma lista de opções de status de compromisso disponíveis que podem ser usadas na página do calendário (a primeira opção se tornará automaticamente o valor padrão).
+    appointment_status_options_info: 'Statuses available on the calendar. The marked ones drive behaviour and can be renamed but not deleted. Cancelled, Late Cancel and Rescheduled appointments keep their record but free the slot.'
     sunday_short: Dom
     monday_short: Seg
     tuesday_short: Ter
@@ -867,4 +867,22 @@ pt:
     notification_cancellation_all: For all canceled appointments
     notification_cancellation_in_time: For appointments canceled within the cancellation window
     notification_cancellation_late: For appointments canceled too late
-    notification_cancellation_scope_hint: The window is the Book Advance Timeout in Business Logic.
+    notification_cancellation_scope_hint: 'The window is the late cancellation time in Business Logic.'
+    minimum_times_before_appointments: 'Minimum Times Before Appointments'
+    booking_window: 'Time Before An Appointment A Customer Can Book'
+    booking_window_hint: 'Customers cannot book a slot that starts sooner than this. Also the latest a customer can reschedule or cancel in time.'
+    late_window: 'Time Before An Appointment A Customer Can Reschedule/Cancel Before Late Cancellation'
+    late_window_hint: 'Inside this window the customer can only late cancel, which sets the Late Cancel status and keeps the slot free for others. Must not be longer than the booking window.'
+    late_window_exceeds_booking_window: 'The late cancellation window cannot be longer than the booking window.'
+    status_booked: 'Default for new bookings'
+    status_rescheduled: 'Set on the original when a customer reschedules'
+    status_cancelled: 'Set when an appointment is cancelled'
+    status_late_cancel: 'Set when a customer cancels inside the late window'
+    status_no_show: 'Sends the missed notification'
+    write_appointment_cancel_reason: 'Please take a minute to write the reason you are cancelling the appointment:'
+    late_cancel_title: 'Late Cancellation'
+    late_cancel: 'Late Cancel'
+    late_cancel_notice: 'Thank you for letting us know you can''t make the appointment, we ask for {$hours} hours and {$minutes} minutes notice before cancellation or ask for a payment to cover the cost of the missed appointment.'
+    statuses: 'Statuses'
+    filter_statuses_hint: 'Choose which appointment statuses to show.'
+    appointment_statuses: 'Appointment Statuses'

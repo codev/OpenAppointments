@@ -12,6 +12,7 @@ CloudronManifest.json.
 - Appointment statuses are records with a kind: Booked, Rescheduled, Cancelled, Late Cancel and No Show can be renamed but not deleted; other statuses are free labels
 - Cancelling keeps the appointment with the Cancelled status and rescheduling books a new appointment and marks the original Rescheduled; cancelled, late cancelled and rescheduled appointments free their slot; the calendar popover has a Cancel button next to Delete (hard delete)
 - Calendar and Appointments pages have a Statuses tick-box filter; Cancelled and Rescheduled start unticked
+- Backups include an Appointment Statuses sheet, restored before appointments so renamed statuses survive
 - Repeating appointments: the appointment form sets a repeat pattern (recurring_select dialog: daily, weekly, monthly, yearly) with an optional end date or count, booked up to the Future Booking Limit; dates that clash are skipped and reported; a nightly job keeps open series booked ahead and emails the failure report addresses about new clashes; the Appointments page has a Repeating Appointments view to change a pattern or cancel from a chosen date; emails get {{Repeats}} and {{Next Appointment}} tokens; backups include the series
 - The booking page's cancel appointment button says Cancel, as its hint text does, instead of Delete
 
