@@ -315,12 +315,9 @@ App.Utils.WorkingPlan = (function () {
          * @param {Object} workingPlanException Contains exception information (startDate, endDate, startTime, endTime, breaks).
          */
         renderWorkingPlanExceptionRow(workingPlanException) {
-            const timeFormat = vars('time_format') === 'regular' ? 'h:mm a' : 'HH:mm';
-
             const startDate = workingPlanException.startDate;
             const endDate = workingPlanException.endDate;
             const startTime = workingPlanException.startTime;
-            const endTime = workingPlanException.endTime;
 
             // Format the date range display
             let dateDisplay;
@@ -342,18 +339,14 @@ App.Utils.WorkingPlan = (function () {
                         'text': dateDisplay,
                     }),
                     $('<td/>', {
-                        'class': 'working-plan-exception--start',
-                        'text': startTime ? moment(startTime, 'HH:mm').format(timeFormat).toLowerCase() : '-',
-                    }),
-                    $('<td/>', {
-                        'class': 'working-plan-exception--end',
-                        'text': endTime ? moment(endTime, 'HH:mm').format(timeFormat).toLowerCase() : '-',
+                        'class': 'working-plan-exception-status',
+                        'text': lang(startTime ? 'available' : 'unavailable'),
                     }),
                     $('<td/>', {
                         'html': [
                             $('<button/>', {
                                 'type': 'button',
-                                'class': 'btn btn-outline-secondary btn-sm edit-working-plan-exception',
+                                'class': 'btn btn-primary btn-sm edit-working-plan-exception',
                                 'title': lang('edit'),
                                 'html': [
                                     $('<span/>', {

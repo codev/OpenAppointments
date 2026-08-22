@@ -810,3 +810,5 @@ tr:
     and: and
     add_available_exception: Add Extra Days/Times Available
     add_unavailable_exception: Add Unavailable/Holiday Days
+    available: Available
+    unavailable: Unavailable
