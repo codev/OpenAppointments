@@ -83,6 +83,24 @@ class SettingsPagesTest < ActionDispatch::IntegrationTest
     assert_match '"fixed_timezone":true', response.body
   end
 
+  test "message failure report addresses default to the admins and must be valid" do
+    login_admin
+    get "/messages_settings"
+    assert_match User.admins.first.email, response.body
+
+    post "/messages_settings/save", params: {
+      messages_settings: [ { name: "messages_failure_alert_emails", value: "a@example.org; not-an-email" } ]
+    }
+    assert_equal false, response.parsed_body["success"]
+    assert_match "not-an-email", response.parsed_body["message"]
+
+    post "/messages_settings/save", params: {
+      messages_settings: [ { name: "messages_failure_alert_emails", value: "a@example.org, b@example.org" } ]
+    }
+    assert_equal true, response.parsed_body["success"]
+    assert_equal "a@example.org, b@example.org", Setting.get("messages_failure_alert_emails")
+  end
+
   test "general settings save persists whitelisted settings" do
     login_admin
     post "/general_settings/save", params: {

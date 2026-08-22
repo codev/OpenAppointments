@@ -815,3 +815,7 @@ sv:
     fixed_timezone: Fixed timezone
     fixed_timezone_hint: Everyone uses the default timezone. Timezone fields are hidden on the booking page, staff, customer and appointment forms.
     consents: Consents
+    messages_failure_alert: Email a report when a message fails to send
+    messages_failure_alert_hint: Send an email with the time and provider when a notification fails to send - the full details are in the message log
+    messages_failure_alert_emails: Report email addresses
+    messages_failure_alert_emails_hint: Comma separated
