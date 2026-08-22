@@ -28,6 +28,18 @@ class DataExportTest < ActiveSupport::TestCase
     assert_includes provider_row[header.index("services")], services(:haircut).name
   end
 
+  test "providers, services and categories export in their display order" do
+    zane = users(:zane)
+    other = User.create!(name: "Aaron", email: "aaron@example.org", role: zane.role)
+    other.create_settings!(username: "aaron", password: Passwords.hash("aaronaaron1"))
+    ServiceProviderLink.create!(id_users: other.id, id_services: services(:haircut).id)
+    zane.update!(sort_order: 1)
+    other.update!(sort_order: 2)
+
+    names = DataExport.sheets["Providers"].drop(1).map(&:first)
+    assert_equal [ zane.name, "Aaron" ], names.first(2)
+  end
+
   test "extract reads the export back with the same shape the loader expects" do
     users(:jx).update!(custom_field_1: "they/them", custom_field_2: "Step-free access",
                        city: "London", zip_code: "E1 6AN",

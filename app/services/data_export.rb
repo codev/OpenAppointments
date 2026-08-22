@@ -28,7 +28,7 @@ module DataExport
   end
 
   def categories_sheet
-    rows = ServiceCategory.with_attached_picture.order(:name).map do |category|
+    rows = ServiceCategory.with_attached_picture.display_order.map do |category|
       [ category.name, category.description, picture_name(category), category.is_hidden ? "1" : "0",
         category.sort_order ]
     end
@@ -36,7 +36,7 @@ module DataExport
   end
 
   def services_sheet
-    rows = Service.includes(:category).with_attached_picture.order(:name).map do |service|
+    rows = Service.includes(:category).with_attached_picture.display_order.map do |service|
       [ service.name, service.duration, service.price, service.currency, service.category&.name,
         service.description, service.color, service.attendants_number, service.is_private ? "1" : "0",
         picture_name(service), service.sort_order ]
@@ -50,7 +50,7 @@ module DataExport
                     caldav_username caldav_password caldav_calendar sync_past_days sync_future_days].freeze
 
   def providers_sheet
-    rows = User.providers.includes(:services, :settings).with_attached_picture.order(:name).map do |provider|
+    rows = User.providers.includes(:services, :settings).with_attached_picture.display_order.map do |provider|
       [ provider.name, provider.email, provider.phone_number, provider.timezone,
         provider.services.map(&:name).join("|"), provider.settings&.working_plan,
         provider.settings&.username, provider.about, provider.services_description,
