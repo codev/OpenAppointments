@@ -41,13 +41,17 @@ class MessagesPagesTest < ActionDispatch::IntegrationTest
     assert_redirected_to "/login"
   end
 
-  test "visiting the unknown inbox clears unread unknown messages" do
-    Message.create!(direction: "incoming", channel: "twilio", from_address: "+447700900999",
-                    body: "Hello?", status: "received")
-    assert_equal 1, Message.unread.unknown_sender.count
+  test "unknown inbox messages stay unread until marked read" do
+    message = Message.create!(direction: "incoming", channel: "twilio", from_address: "+447700900999",
+                              body: "Hello?", status: "received")
     login_admin
     get "/unknown_inbox"
     assert_response :success
+    assert_equal 1, Message.unread.unknown_sender.count
+    assert_includes response.body, "mark-read"
+
+    post "/messages/#{message.id}/mark_read"
+    assert_equal true, response.parsed_body["success"]
     assert_equal 0, Message.unread.unknown_sender.count
   end
 

@@ -7,7 +7,7 @@ class CustomerMessagesTest < ActionDispatch::IntegrationTest
 
   def customer = users(:jx)
 
-  test "find returns customer messages and marks incoming read" do
+  test "find returns customer messages without marking them read" do
     Message.create!(direction: "incoming", channel: "email", from_address: customer.email,
                     customer_id: customer.id, body: "Running late", status: "received")
     login_admin
@@ -17,7 +17,41 @@ class CustomerMessagesTest < ActionDispatch::IntegrationTest
     assert_equal 1, rows.size
     assert_equal "Running late", rows.first["body"]
     assert_equal "Email", rows.first["channel_label"]
+    assert_equal false, rows.first["read"]
+    assert_equal 1, Message.unread.where(customer_id: customer.id).count
+
+    post "/customer_messages/mark_read", params: { customer_id: customer.id }
+    assert_equal 0, response.parsed_body["inbox_unread"]
     assert_equal 0, Message.unread.where(customer_id: customer.id).count
+  end
+
+  test "inbox lists messages the user may see with an unread badge in the header" do
+    message = Message.create!(direction: "incoming", channel: "email", from_address: customer.email,
+                              customer_id: customer.id, body: "Running late", status: "received")
+    login_admin
+    get "/inbox"
+    assert_response :success
+    assert_includes response.body, "Running late"
+    assert_includes response.body, 'id="inbox-unread" class="badge bg-danger ms-1 ">1<'
+
+    post "/messages/#{message.id}/mark_read"
+    assert_equal 0, response.parsed_body["inbox_unread"]
+    get "/inbox?unread=1"
+    assert_not_includes response.body, "Running late"
+  end
+
+  test "a provider's inbox is limited to their customers when access is limited" do
+    Setting.set("limit_customer_access", "1")
+    other = User.create!(name: "Nobody", email: "nobody@example.org", role: customer.role)
+    Message.create!(direction: "incoming", channel: "email", from_address: other.email,
+                    customer_id: other.id, body: "Stranger", status: "received")
+    Message.create!(direction: "incoming", channel: "email", from_address: customer.email,
+                    customer_id: customer.id, body: "Known", status: "received")
+    post "/login/validate", params: { username: "janedoe", password: "janedoe1" }
+    get "/inbox"
+    assert_response :success
+    assert_includes response.body, "Known"
+    assert_not_includes response.body, "Stranger"
   end
 
   test "customer search rows include unread counts" do

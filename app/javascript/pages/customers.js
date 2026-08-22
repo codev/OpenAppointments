@@ -203,6 +203,13 @@ App.Pages.Customers = (function () {
          * Event: Send Message Button "Click"
          */
         $customers.on('click', '#send-message', onSendMessageClick);
+        $customers.on('click', '#mark-all-read', onMarkAllReadClick);
+        $customers.on('click', '#customer-messages .mark-read', () => {
+            decreaseUnreadBadge($id.val(), 1);
+            if ($customerMessages.find('.message-unread').length <= 1) {
+                $('#mark-all-read').addClass('d-none');
+            }
+        });
 
         $customers.on('keydown', '#message-body', (event) => {
             if (event.key === 'Enter') {
@@ -443,7 +450,7 @@ App.Pages.Customers = (function () {
     }
 
     /**
-     * Load and render the messages of a customer (also marks them read).
+     * Load and render the messages of a customer.
      *
      * @param {Number} customerId
      */
@@ -465,15 +472,45 @@ App.Pages.Customers = (function () {
                 appendMessage(message);
             });
 
-            // Reading the messages clears the unread badge of this customer.
-            const filterResult = (filterResults || []).find &&
-                filterResults.find((result) => Number(result.id) === Number(customerId));
+            $('#mark-all-read').toggleClass('d-none', !messages.some((message) => !message.read));
+        });
+    }
 
-            if (filterResult) {
-                filterResult.unread_messages = 0;
-            }
+    /**
+     * Drop the unread badge of a customer in the filter list by the given amount (all when 0).
+     *
+     * @param {Number} customerId
+     * @param {Number} amount
+     */
+    function decreaseUnreadBadge(customerId, amount) {
+        const filterResult = (filterResults || []).find &&
+            filterResults.find((result) => Number(result.id) === Number(customerId));
+        const remaining = filterResult ? Math.max((Number(filterResult.unread_messages) || 0) - amount, 0) : 0;
+        const $badge = $('#filter-customers .entry[data-id="' + customerId + '"] .unread-badge');
 
-            $('#filter-customers .entry[data-id="' + customerId + '"] .unread-badge').remove();
+        if (filterResult) {
+            filterResult.unread_messages = amount ? remaining : 0;
+        }
+
+        if (!amount || !remaining) {
+            $badge.remove();
+        } else {
+            $badge.text(remaining);
+        }
+    }
+
+    function onMarkAllReadClick() {
+        const customerId = $id.val();
+
+        if (!customerId) {
+            return;
+        }
+
+        App.Http.CustomerMessages.markRead(customerId).done((response) => {
+            App.Utils.MarkRead.updateHeaderBadge(response.inbox_unread);
+            decreaseUnreadBadge(customerId, 0);
+            $customerMessages.find('.message-unread').removeClass('message-unread fw-bold').find('.mark-read').remove();
+            $('#mark-all-read').addClass('d-none');
         });
     }
 
@@ -484,9 +521,10 @@ App.Pages.Customers = (function () {
      */
     function appendMessage(message) {
         const incoming = message.direction === 'incoming';
+        const unread = incoming && !message.read;
 
         $('<div/>', {
-            'class': 'message-row mb-2 pb-2 border-bottom',
+            'class': 'message-row mb-2 pb-2 border-bottom' + (unread ? ' message-unread fw-bold' : ''),
             'html': [
                 $('<i/>', {
                     'class': incoming ? 'fas fa-arrow-down text-success me-1' : 'fas fa-arrow-up text-primary me-1',
@@ -499,6 +537,14 @@ App.Pages.Customers = (function () {
                     'class': 'text-muted',
                     'text': message.created_at + (message.status === 'failed' ? ' - ' + lang('messages_status_failed') : ''),
                 }),
+                unread
+                    ? $('<button/>', {
+                          'type': 'button',
+                          'class': 'btn btn-link btn-sm p-0 ms-2 mark-read',
+                          'data-id': message.id,
+                          'text': lang('mark_as_read'),
+                      })
+                    : null,
                 $('<br/>'),
                 $('<small/>', {
                     'text': message.body,
