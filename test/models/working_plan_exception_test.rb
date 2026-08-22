@@ -11,6 +11,20 @@ class WorkingPlanExceptionTest < ActiveSupport::TestCase
     assert_empty WorkingPlanException.covering(Date.new(2026, 7, 24))
   end
 
+  test "a working day inside a week off wins, even on the first day" do
+    provider = users(:zane)
+    WorkingPlanException.create!(start_date: Date.new(2026, 7, 20), end_date: Date.new(2026, 7, 26), provider: provider)
+    WorkingPlanException.create!(start_date: Date.new(2026, 7, 22), end_date: Date.new(2026, 7, 22),
+                                 start_time: "10:00", end_time: "14:00", provider: provider)
+    WorkingPlanException.create!(start_date: Date.new(2026, 7, 20), end_date: Date.new(2026, 7, 20),
+                                 start_time: "09:00", end_time: "12:00", provider: provider)
+
+    expanded = WorkingPlanException.expanded_for(provider.id)
+    assert_equal "10:00", expanded["2026-07-22"]["start"]
+    assert_equal "09:00", expanded["2026-07-20"]["start"]
+    assert_nil expanded["2026-07-21"]
+  end
+
   test "day_off? when times blank" do
     exception = WorkingPlanException.new(start_date: Date.today, end_date: Date.today)
     assert exception.day_off?

@@ -9,10 +9,11 @@ class WorkingPlanException < ApplicationRecord
   scope :covering, ->(date) { where("start_date <= ? AND end_date >= ?", date, date) }
 
   # EA get_by_provider: expand ranges into {"YYYY-MM-DD" => {start, end, breaks} | nil (day off)}.
-  # Later exceptions overwrite earlier ones on overlapping dates (start_date order).
+  # Later exceptions overwrite earlier ones on overlapping dates (start_date, then id),
+  # so a working day inside a week off wins. The JS dayPlanFor applies the same rule.
   def self.expanded_for(provider_id)
     result = {}
-    where(id_users_provider: provider_id).order(:start_date).each do |exception|
+    where(id_users_provider: provider_id).order(:start_date, :id).each do |exception|
       (exception.start_date..exception.end_date).each do |date|
         result[date.strftime("%Y-%m-%d")] =
           if exception.start_time.blank?

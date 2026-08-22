@@ -87,7 +87,7 @@ module EaRows
 
   # EA Working_plan_exceptions_model::get_all_by_provider (camelCase API shape).
   def working_plan_exceptions_api(provider_id)
-    WorkingPlanException.where(id_users_provider: provider_id).order(:start_date).map do |exception|
+    WorkingPlanException.where(id_users_provider: provider_id).order(:start_date, :id).map do |exception|
       {
         "id" => exception.id,
         "startDate" => exception.start_date.strftime("%Y-%m-%d"),

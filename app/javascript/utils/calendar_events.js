@@ -742,6 +742,8 @@ App.Utils.CalendarEvents = (function () {
      */
     /**
      * The working plan for one day: the exception covering it if any, else the weekly plan.
+     * Exceptions arrive ordered by start date then id and the last covering one wins, matching
+     * WorkingPlanException.expanded_for, so a working day inside a week off is shown as working.
      *
      * @param {Object|undefined} provider Falls back to the company working plan.
      * @param {moment.Moment} date
@@ -751,7 +753,7 @@ App.Utils.CalendarEvents = (function () {
         const workingPlan = JSON.parse(provider?.settings?.working_plan || vars('company_working_plan'));
         const exceptions = JSON.parse(provider?.settings?.working_plan_exceptions || '[]');
         const exception = Array.isArray(exceptions)
-            ? exceptions.find((e) => date.isBetween(e.startDate, e.endDate, 'day', '[]'))
+            ? exceptions.findLast((e) => date.isBetween(e.startDate, e.endDate, 'day', '[]'))
             : undefined;
 
         if (exception) {

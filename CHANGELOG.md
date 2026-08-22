@@ -6,6 +6,7 @@ CloudronManifest.json.
 ## 1.7.1
 
 - Terminology hint says to capitalise the labels
+- A working day added inside a longer unavailable period shows as working on the calendar and appointments pages, matching what customers can book
 - Provider Working Plan: "Add Extra Days/Times Available" and "Add Unavailable Days/Times" buttons replace the single exception button; the unavailable dialog asks only for dates
 - 10to8 import matches existing providers by name as well as email, including a first name against the export's full name, so appointments land under the providers already set up
 - Appointments menu item shows the table view; Calendar always shows the calendar. The per-user calendar view preference is removed
