@@ -3,7 +3,7 @@
 The about page lists these notes; every release needs a section here matching
 CloudronManifest.json.
 
-## 1.8.1
+## 1.9.0
 
 - The booking page's cancel appointment button says Cancel, as its hint text does, instead of Delete
 
