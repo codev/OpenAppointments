@@ -327,6 +327,17 @@ body .modal.full-screen .modal-push {
     justify-self: center;
 }
 
+#calendar .calendar-header .fc-toolbar-chunk:nth-child(3) {
+    justify-self: end;
+}
+
+/* Same size as the FullCalendar Today button. */
+#calendar .calendar-header #toggle-series {
+    font-size: 1em;
+    padding: 0.4em 0.65em;
+    line-height: 1.5;
+}
+
 #calendar .calendar-header .select-date {
     width: auto;
     text-align: center;
