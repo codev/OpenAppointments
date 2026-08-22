@@ -8,22 +8,28 @@ class Appointment < ApplicationRecord
   belongs_to :service, foreign_key: :id_services, optional: true
   belongs_to :series, class_name: "AppointmentSeries", foreign_key: :series_id,
                       inverse_of: :appointments, optional: true
+  belongs_to :appointment_status, foreign_key: :status_id, inverse_of: :appointments, optional: true
+  belongs_to :rescheduled_to, class_name: "Appointment", optional: true
 
   scope :appointments, -> { where(is_unavailability: false) }
   scope :unavailabilities, -> { where(is_unavailability: true) }
   scope :overlapping, ->(start_dt, end_dt) { where("start_datetime < ? AND end_datetime > ?", end_dt, start_dt) }
+  # Rows that still occupy their slot: anything not cancelled, late cancelled or rescheduled.
+  scope :active, lambda {
+    where(status_id: nil).or(where.not(status_id: AppointmentStatus.free_slot.select(:id)))
+  }
 
   # EA availability query: events whose date range covers the given date, per provider.
   scope :covering_date, lambda { |date, provider_id, exclude_appointment_id = nil|
-    relation = where(id_users_provider: provider_id)
-               .where("DATE(start_datetime) <= ? AND DATE(end_datetime) >= ?", date, date)
+    relation = active.where(id_users_provider: provider_id)
+                     .where("DATE(start_datetime) <= ? AND DATE(end_datetime) >= ?", date, date)
     relation = relation.where.not(id: exclude_appointment_id) if exclude_appointment_id
     relation
   }
 
   # EA slot occupancy: (start <= S AND end > S) OR (start < E AND end >= E).
   def self.slot_occupancy(slot_start, slot_end, provider_id, exclude_appointment_id)
-    relation = where(id_users_provider: provider_id)
+    relation = active.where(id_users_provider: provider_id)
                .where("(start_datetime <= :s AND end_datetime > :s) OR (start_datetime < :e AND end_datetime >= :e)",
                       s: slot_start, e: slot_end)
     relation = relation.where.not(id: exclude_appointment_id) if exclude_appointment_id
@@ -41,7 +47,7 @@ class Appointment < ApplicationRecord
 
   # EA has_provider_conflict: (existing_start < new_end) AND (existing_end > new_start).
   def self.provider_conflict?(provider_id, start_datetime, end_datetime, exclude_appointment_id = nil)
-    relation = where(id_users_provider: provider_id).overlapping(start_datetime, end_datetime)
+    relation = active.where(id_users_provider: provider_id).overlapping(start_datetime, end_datetime)
     relation = relation.where.not(id: exclude_appointment_id) if exclude_appointment_id
     relation.exists?
   end
@@ -52,6 +58,24 @@ class Appointment < ApplicationRecord
   validates :id_users_provider, presence: true
   validates :id_users_customer, :id_services, presence: true, unless: :is_unavailability
   validate :minimum_duration
+
+  # Status by name, for the API, imports, templates and the calendar payloads.
+  def status = appointment_status&.name.to_s
+
+  def status=(name)
+    self.appointment_status = AppointmentStatus.resolve(name)
+  end
+
+  def status_kind = appointment_status&.kind || "custom"
+
+  def frees_slot? = appointment_status&.frees_slot? || false
+
+  # Mark cancelled (or late cancelled) keeping the row; the slot becomes bookable.
+  def cancel!(kind: "cancelled", reason: nil)
+    self.appointment_status = AppointmentStatus.of(kind)
+    self.notes = [ notes.presence, reason.presence ].compact.join("\n")
+    save!
+  end
 
   def duration_minutes
     return 0 unless start_datetime && end_datetime

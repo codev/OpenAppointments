@@ -148,6 +148,17 @@ class CalendarTest < ActionDispatch::IntegrationTest
     assert_equal true, response.parsed_body["success"]
   end
 
+  test "cancel_appointment keeps the row with the cancelled status" do
+    login_admin
+    assert_no_difference "Appointment.appointments.count" do
+      post "/calendar/cancel_appointment", params: {
+        appointment_id: appointments(:upcoming).id, cancellation_reason: "test"
+      }
+    end
+    assert_equal true, response.parsed_body["success"]
+    assert_equal "Cancelled", appointments(:upcoming).reload.status
+  end
+
   test "unavailability save and delete round trip" do
     login_admin
     post "/calendar/save_unavailability", params: {

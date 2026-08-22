@@ -1,0 +1,29 @@
+booked:
+  name: Booked
+  kind: booked
+  position: 0
+
+confirmed:
+  name: Confirmed
+  kind: custom
+  position: 1
+
+rescheduled:
+  name: Rescheduled
+  kind: rescheduled
+  position: 2
+
+cancelled:
+  name: Cancelled
+  kind: cancelled
+  position: 3
+
+late_cancel:
+  name: Late Cancel
+  kind: late_cancel
+  position: 4
+
+no_show:
+  name: No Show
+  kind: no_show
+  position: 5

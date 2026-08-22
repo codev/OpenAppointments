@@ -10,7 +10,8 @@ class BusinessSettingsController < ApplicationController
 
     backend_page_vars(page_title: helpers.lang("settings"), active_menu: "system_settings")
     script_vars(
-      business_settings: settings_rows,
+      business_settings: settings_rows + [ { "name" => "appointment_status_options",
+                                             "value" => JSON.generate(AppointmentStatus.rows) } ],
       first_weekday: Setting.get("first_weekday"),
       time_format: Setting.get("time_format")
     )
@@ -20,9 +21,23 @@ class BusinessSettingsController < ApplicationController
   # POST /business_settings/save
   def save
     require_system_settings_edit!
-    save_setting_rows(:business_settings)
-  rescue ArgumentError => e
+    validate_windows!
+    save_setting_rows(:business_settings) do |name, value|
+      next value unless name == "appointment_status_options"
+
+      AppointmentStatus.apply!(JSON.parse(value))
+      nil
+    end
+  rescue ArgumentError, JSON::ParserError, ActiveRecord::RecordInvalid => e
     json_exception(e)
+  end
+
+  # The late cancellation window cannot exceed the booking window.
+  def validate_windows!
+    rows = setting_row_params(:business_settings).to_h { |row| [ row["name"], row["value"].to_i ] }
+    booking = rows.fetch("book_advance_timeout") { BookingWindows.minutes("book_advance_timeout") }
+    late = rows.fetch("late_cancellation_timeout") { BookingWindows.late_minutes }
+    raise ArgumentError, helpers.lang("late_window_exceeds_booking_window") if late > booking
   end
 
   # POST /business_settings/apply_global_working_plan

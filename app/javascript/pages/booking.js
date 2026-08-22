@@ -879,7 +879,7 @@ App.Pages.Booking = (function () {
 
                 App.Utils.Message.show(
                     lang('cancel_appointment_title'),
-                    lang('write_appointment_removal_reason'),
+                    lang('write_appointment_cancel_reason'),
                     buttons,
                 );
 

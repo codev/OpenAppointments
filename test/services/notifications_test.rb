@@ -60,7 +60,7 @@ class NotificationsTest < ActiveSupport::TestCase
     create_notification(event: "created_or_updated", audiences: %w[customer], title: "Saved")
     @appointment.status = "Cancelled"
     Notifications.appointment_saved(@appointment, @service, @provider, @customer,
-                                    manage_mode: true, previous_status: "Booked")
+                                    manage_mode: true, previous_status_id: appointment_statuses(:booked).id)
     assert_equal [ "Bye" ], Message.all.map { |m| m.notification.title }
   end
 
@@ -68,12 +68,12 @@ class NotificationsTest < ActiveSupport::TestCase
     create_notification(event: "missed", audiences: %w[customer], title: "Missed")
     @appointment.status = "No Show"
     Notifications.appointment_saved(@appointment, @service, @provider, @customer,
-                                    manage_mode: true, previous_status: "Booked")
+                                    manage_mode: true, previous_status_id: appointment_statuses(:booked).id)
     assert_equal [ "Missed" ], Message.all.map { |m| m.notification.title }
   end
 
   test "cancelled templates can target in-time or too-late cancellations" do
-    Setting.set("book_advance_timeout", "1440")
+    Setting.set("late_cancellation_timeout", "1440")
     create_notification(event: "cancelled", audiences: %w[customer], title: "Any")
     create_notification(event: "cancelled", audiences: %w[customer], title: "In time", cancellation_scope: "in_time")
     create_notification(event: "cancelled", audiences: %w[customer], title: "Late", cancellation_scope: "late")

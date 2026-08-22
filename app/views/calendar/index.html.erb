@@ -1,8 +1,8 @@
 <%# Calendar page: one FullCalendar filtered by a provider or a service. %>
 <div class="container-fluid backend-page pt-0 pb-0" id="calendar-page">
     <div class="row mb-3 text-white py-3 bg-dark" id="calendar-toolbar">
-        <div id="calendar-filter" class="col-lg-3">
-            <select id="select-filter-item" class="form-select mb-2 mb-lg-0"
+        <div id="calendar-filter" class="col-lg-5 d-flex flex-wrap gap-2 mb-2 mb-lg-0">
+            <select id="select-filter-item" class="form-select w-auto flex-grow-1"
                     data-tippy-content="<%= lang('select_filter_item_hint') %>" aria-label="Filter">
                 <option value="all"><%= lang('all') %></option>
                 <% if vars(:available_providers).any? %>
@@ -25,9 +25,10 @@
                     </optgroup>
                 <% end %>
             </select>
+            <%= render "shared/status_filter" %>
         </div>
 
-        <div id="calendar-actions" class="col-lg-9 text-md-end">
+        <div id="calendar-actions" class="col-lg-7 text-md-end">
             <button id="enable-sync" class="btn btn-light"
                     data-tippy-content="<%= lang('enable_appointment_sync_hint') %>" hidden>
                 <i class="fas fa-rotate me-2"></i>
@@ -66,7 +67,7 @@
     <%= javascript_include_tag "vendor/fullcalendar/index.global.min",
                                "vendor/fullcalendar-moment/index.global.min",
                                "vendor/jquery-jeditable/jquery.jeditable.min" %>
-    <%= ea_js "utils/ui", "utils/calendar_events", "utils/calendar_event_popover",
+    <%= ea_js "utils/status_filter", "utils/ui", "utils/calendar_events", "utils/calendar_event_popover",
               "http/calendar_http_client", "http/customers_http_client",
               "utils/calendar_sync", "http/google_http_client", "http/caldav_http_client",
               "pages/calendar" %>

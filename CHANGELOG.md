@@ -6,7 +6,12 @@ CloudronManifest.json.
 ## 1.9.0
 
 - Notifications no longer have a separate description; the hint sits under the title
-- Cancelled notifications can apply to all cancellations, only those made before the Book Advance Timeout, or only those made too late
+- Cancelled notifications can apply to all cancellations, only those made in time, or only those made too late
+- Business Settings has two minimum times before an appointment, entered as hours and minutes: how close a customer can book (also the reschedule/cancel deadline) and the late cancellation window; the late window cannot exceed the booking window
+- Inside the late window the customer's manage link offers Late Cancel only, which sets the Late Cancel status and shows the notice period message; the cancelled notification's in time / too late scope uses the late window
+- Appointment statuses are records with a kind: Booked, Rescheduled, Cancelled, Late Cancel and No Show can be renamed but not deleted; other statuses are free labels
+- Cancelling keeps the appointment with the Cancelled status and rescheduling books a new appointment and marks the original Rescheduled; cancelled, late cancelled and rescheduled appointments free their slot; the calendar popover has a Cancel button next to Delete (hard delete)
+- Calendar and Appointments pages have a Statuses tick-box filter; Cancelled and Rescheduled start unticked
 - Repeating appointments: the appointment form sets a repeat pattern (recurring_select dialog: daily, weekly, monthly, yearly) with an optional end date or count, booked up to the Future Booking Limit; dates that clash are skipped and reported; a nightly job keeps open series booked ahead and emails the failure report addresses about new clashes; the Appointments page has a Repeating Appointments view to change a pattern or cancel from a chosen date; emails get {{Repeats}} and {{Next Appointment}} tokens; backups include the series
 - The booking page's cancel appointment button says Cancel, as its hint text does, instead of Delete
 

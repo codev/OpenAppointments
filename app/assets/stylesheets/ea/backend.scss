@@ -198,6 +198,11 @@ body .modal.full-screen .modal-push {
     font-size: 11px;
 }
 
+#calendar-page #calendar .fc-freed-slot {
+    opacity: 0.5;
+    text-decoration: line-through;
+}
+
 #calendar-page #calendar .fc-unavailability {
     background-image: url('../img/unavailability.jpg');
     background-blend-mode: hard-light;

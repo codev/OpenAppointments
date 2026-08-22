@@ -43,6 +43,7 @@ settings = {
 
   # Booking / scheduling
   "book_advance_timeout" => "30",
+  "late_cancellation_timeout" => "30",
   "future_booking_limit" => "90",
   "display_any_provider" => "1",
   "booking_display_mode" => "dropdown",
@@ -61,7 +62,6 @@ settings = {
   "disable_booking" => "0",
   "disable_booking_message" => disable_booking_message,
   "first_weekday" => "sunday",
-  "appointment_status_options" => '["Booked", "Confirmed", "Rescheduled", "Cancelled", "Draft", "No Show"]',
 
   # Booking form fields
   "display_email" => "1", "require_email" => "0",
@@ -128,6 +128,8 @@ settings = {
 settings.each do |name, value|
   Setting.find_or_create_by!(name: name) { |setting| setting.value = value }
 end
+
+AppointmentStatus.seed!
 
 # Messages system defaults
 Messaging::Defaults::SETTINGS.each do |name, value|

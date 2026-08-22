@@ -141,9 +141,11 @@ App.Pages.Appointments = (function () {
 
         const dayStart = moment(date).startOf('day');
         const providerAppointments = events.appointments.filter((a) => Number(a.id_users_provider) === providerId);
-        const appointments = providerAppointments.filter((a) => !serviceId || Number(a.id_services) === serviceId);
+        const appointments = App.Utils.StatusFilter.apply(
+            providerAppointments.filter((a) => !serviceId || Number(a.id_services) === serviceId),
+        );
         const unavailabilities = events.unavailabilities.filter((u) => Number(u.id_users_provider) === providerId);
-        const busy = [...providerAppointments, ...unavailabilities].map(interval);
+        const busy = [...providerAppointments.filter((a) => !a.frees_slot), ...unavailabilities].map(interval);
 
         fullCalendar.addEventSource([
             ...Events.workingPlanEvents(provider, dayStart.toDate(), dayStart.clone().add(1, 'day').toDate()),
@@ -323,6 +325,7 @@ App.Pages.Appointments = (function () {
         $selectDayInterval.on('change', reload);
         $filterProvider.on('change', reload);
         $filterService.on('change', reload);
+        App.Utils.StatusFilter.onChange(reload);
         $('#reload-appointments').on('click', reload);
         $(window).on('resize', resize);
 

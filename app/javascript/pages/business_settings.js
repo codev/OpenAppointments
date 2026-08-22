@@ -53,8 +53,21 @@ App.Pages.BusinessSettings = (function () {
         }
     }
 
+    function minutesFields() {
+        return $('[data-minutes-field]').toArray().map((el) => $(el));
+    }
+
     function deserialize(businessSettings) {
         businessSettings.forEach((businessSetting) => {
+            const $minutes = $('[data-minutes-field="' + businessSetting.name + '"]');
+
+            if ($minutes.length) {
+                const total = Math.max(Number(businessSetting.value) || 0, 0);
+                $minutes.find('.hours').val(Math.floor(total / 60));
+                $minutes.find('.minutes').val(total % 60);
+                return;
+            }
+
             const $field = $('[data-field="' + businessSetting.name + '"]');
 
             $field.is(':checkbox')
@@ -72,6 +85,13 @@ App.Pages.BusinessSettings = (function () {
             businessSettings.push({
                 name: $field.data('field'),
                 value: $field.is(':checkbox') ? Number($field.prop('checked')) : $field.val(),
+            });
+        });
+
+        minutesFields().forEach(($minutes) => {
+            businessSettings.push({
+                name: $minutes.data('minutes-field'),
+                value: (Number($minutes.find('.hours').val()) || 0) * 60 + (Number($minutes.find('.minutes').val()) || 0),
             });
         });
 

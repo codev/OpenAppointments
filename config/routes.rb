@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   post "calendar/get_calendar_appointments_for_table_view" => "calendar#get_calendar_appointments_for_table_view"
   post "calendar/save_appointment" => "calendar#save_appointment"
   post "calendar/delete_appointment" => "calendar#delete_appointment"
+  post "calendar/cancel_appointment" => "calendar#cancel_appointment"
   post "calendar/save_unavailability" => "calendar#save_unavailability"
   post "calendar/delete_unavailability" => "calendar#delete_unavailability"
   post "calendar/save_working_plan_exception" => "calendar#save_working_plan_exception"
@@ -83,6 +84,7 @@ Rails.application.routes.draw do
   get "booking_confirmation/ics/:appointment_hash" => "booking_confirmation#ics", as: :booking_confirmation_ics
   # EA has no GET cancellation page: the frame form POSTs and non-POST/empty-reason requests get 403.
   post "booking_cancellation/of/:appointment_hash" => "booking_cancellation#of"
+  post "booking_cancellation/late/:appointment_hash" => "booking_cancellation#late"
   get "captcha/altcha_challenge" => "captcha#altcha_challenge"
   post "consents/save" => "consents#save"
   post "privacy/delete_personal_information" => "privacy#delete_personal_information"

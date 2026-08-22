@@ -91,20 +91,29 @@
                             </div>
                         <% end %>
 
-                        <h5 class="mb-3 fw-light"><%= lang('allow_rescheduling_cancellation_before') %></h5>
+                        <h5 class="mb-3 fw-light"><%= lang('minimum_times_before_appointments') %></h5>
 
-                        <div class="mb-5">
-                            <label for="book-advance-timeout" class="form-label">
-                                <%= lang('timeout_minutes') %>
-                            </label>
-                            <input id="book-advance-timeout" data-field="book_advance_timeout" class="form-control"
-                                   type="number" min="15">
-                            <div class="form-text text-muted">
-                                <small>
-                                    <%= lang('book_advance_timeout_hint') %>
-                                </small>
+                        <% { "book_advance_timeout" => "booking_window", "late_cancellation_timeout" => "late_window" }.each do |field, key| %>
+                            <div class="mb-4 minutes-field" data-minutes-field="<%= field %>">
+                                <label class="form-label"><%= lang(key) %></label>
+                                <div class="d-flex gap-2">
+                                    <div class="input-group">
+                                        <input class="form-control hours" type="number" min="0"
+                                               aria-label="<%= lang('hours') %>">
+                                        <span class="input-group-text"><%= lang('hours') %></span>
+                                    </div>
+                                    <div class="input-group">
+                                        <input class="form-control minutes" type="number" min="0" max="59"
+                                               aria-label="<%= lang('minutes') %>">
+                                        <span class="input-group-text"><%= lang('minutes') %></span>
+                                    </div>
+                                </div>
+                                <div class="form-text text-muted">
+                                    <small><%= lang("#{key}_hint") %></small>
+                                </div>
                             </div>
-                        </div>
+                        <% end %>
+                        <div class="mb-5"></div>
 
                         <h5 class="mb-3 fw-light"><%= lang('future_booking_limit') %></h5>
 

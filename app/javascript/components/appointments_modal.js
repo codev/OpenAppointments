@@ -535,8 +535,8 @@ App.Components.AppointmentsModal = (function () {
         $appointmentsModal.find('.modal-message').addClass('.d-none');
         $appointmentsModal.find('.is-invalid').removeClass('is-invalid');
 
-        const defaultStatusValue = $appointmentStatus.find('option:first').val();
-        $appointmentStatus.val(defaultStatusValue);
+        const $defaultStatus = $appointmentStatus.find('option[data-kind="booked"]').first();
+        $appointmentStatus.val(($defaultStatus.length ? $defaultStatus : $appointmentStatus.find('option:first')).val());
 
         $language.val(vars('default_language'));
         $timezone.val(vars('default_timezone'));

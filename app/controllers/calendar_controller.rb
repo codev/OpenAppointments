@@ -66,7 +66,7 @@ class CalendarController < ApplicationController
     end
 
     appointment = manage_mode ? Appointment.find(appointment_data["id"]) : Appointment.new
-    previous_status = appointment.status
+    previous_status_id = appointment.status_id
     appointment.assign_attributes(
       appointment_data.slice(*BookingController::ALLOWED_APPOINTMENT_FIELDS).except("id")
     )
@@ -86,7 +86,7 @@ class CalendarController < ApplicationController
     Synchronization.appointment_saved(appointment, service, provider, customer, settings)
     if notify_users
       Notifications.appointment_saved(appointment, service, provider, customer, settings,
-                                      manage_mode: manage_mode, previous_status: manage_mode ? previous_status : nil)
+                                      manage_mode: manage_mode, previous_status_id: previous_status_id)
     end
     Webhooks.trigger(Webhooks::APPOINTMENT_SAVE, appointment)
 
@@ -95,35 +95,14 @@ class CalendarController < ApplicationController
     json_exception(e, status: :ok)
   end
 
-  # POST /calendar/delete_appointment
+  # POST /calendar/delete_appointment: hard delete (admin tool).
   def delete_appointment
-    raise ArgumentError, "You do not have the required permissions for this task." if cannot?(:delete, :appointments)
+    remove_appointment { |appointment| appointment.destroy! }
+  end
 
-    appointment = Appointment.find(params.require(:appointment_id))
-    check_event_permissions!(appointment.id_users_provider)
-    return if performed?
-
-    cancellation_reason = params[:cancellation_reason].to_s
-    notify_users = boolean_param(params.fetch(:notify_users, true))
-
-    provider = appointment.provider
-    customer = appointment.customer
-    service = appointment.service
-    settings = notification_settings
-
-    appointment.destroy!
-    appointment.series&.forget(appointment.occurrence_at)
-
-    if notify_users
-      Notifications.appointment_deleted(appointment, service, provider, customer, settings,
-                                        reason: cancellation_reason)
-    end
-    Synchronization.appointment_deleted(appointment, provider)
-    Webhooks.trigger(Webhooks::APPOINTMENT_DELETE, appointment)
-
-    render json: { success: true }
-  rescue ArgumentError => e
-    json_exception(e, status: :ok)
+  # POST /calendar/cancel_appointment: keeps the row with the cancelled status.
+  def cancel_appointment
+    remove_appointment { |appointment, reason| appointment.cancel!(reason: reason) }
   end
 
   # POST /calendar/save_unavailability
@@ -266,6 +245,37 @@ class CalendarController < ApplicationController
   end
 
   private
+
+  def remove_appointment
+    raise ArgumentError, "You do not have the required permissions for this task." if cannot?(:delete, :appointments)
+
+    appointment = Appointment.find(params.require(:appointment_id))
+    check_event_permissions!(appointment.id_users_provider)
+    return if performed?
+
+    cancellation_reason = params[:cancellation_reason].to_s
+    notify_users = boolean_param(params.fetch(:notify_users, true))
+
+    provider = appointment.provider
+    customer = appointment.customer
+    service = appointment.service
+    settings = notification_settings
+
+    yield(appointment, cancellation_reason)
+    appointment.series&.forget(appointment.occurrence_at)
+
+    if notify_users
+      Notifications.appointment_deleted(appointment, service, provider, customer, settings,
+                                        reason: cancellation_reason)
+    end
+    Synchronization.appointment_deleted(appointment, provider)
+    Webhooks.trigger(Webhooks::APPOINTMENT_DELETE, appointment)
+
+    render json: { success: true }
+  rescue ArgumentError => e
+    json_exception(e, status: :ok)
+  end
+
 
   def calendar_events_response(appointments, unavailabilities, start_date, end_date)
     appointments = filter_events_by_role(appointments.includes(:provider, :service, :customer)).to_a

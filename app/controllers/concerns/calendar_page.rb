@@ -57,7 +57,7 @@ module CalendarPage
       available_providers: available_providers,
       available_services: available_services,
       assistant_providers: assistant_provider_ids,
-      appointment_status_options: JSON.parse(Setting.get("appointment_status_options", "[]")),
+      appointment_statuses: AppointmentStatus.rows,
       **field_display_flags
     )
 

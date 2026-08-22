@@ -7,7 +7,7 @@ upcoming:
   customer: jx
   service: haircut
   booking_hash: abc123def456
-  status: Booked
+  appointment_status: booked
 
 lunch_block:
   start_datetime: "2026-07-20 12:00:00"

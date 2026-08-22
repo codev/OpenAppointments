@@ -74,7 +74,8 @@ class AppointmentSeriesTest < ActiveSupport::TestCase
     deleted = series.cancel_from(Date.new(2026, 8, 3))
 
     assert_equal 7, deleted.size
-    assert_equal 2, series.appointments.count
+    assert_equal 2, series.appointments.active.count
+    assert deleted.all? { |appointment| appointment.reload.status == "Cancelled" }
     assert_equal Date.new(2026, 8, 2), series.reload.ends_on
     assert_empty series.future_dates(Date.new(2026, 8, 3))
   end

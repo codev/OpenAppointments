@@ -157,10 +157,10 @@ class AppointmentSeries < ApplicationRecord
 
   # Remove future occurrences from a date on and end the series the day before.
   def cancel_from(date)
-    to_delete = appointments.where("occurrence_at >= ?", date).to_a
-    to_delete.each(&:destroy!)
+    to_cancel = appointments.active.where("occurrence_at >= ?", date).to_a
+    to_cancel.each { |appointment| appointment.cancel! }
     update!(ends_on: date - 1, skipped: skipped_list.reject { |e| Date.parse(e["date"]) >= date }.to_json)
-    to_delete
+    to_cancel
   end
 
   # Replace the pattern and regenerate occurrences after today (earlier ones are kept).

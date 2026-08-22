@@ -10,6 +10,9 @@
         <p class="fs-5 text-muted mb-1">
             <%= lang('appointment_cancelled') %>
         </p>
+        <% if vars(:late_notice).present? %>
+            <p class="text-muted mb-1"><%= vars(:late_notice) %></p>
+        <% end %>
 
         <div class="mt-4">
             <a href="/" class="btn btn-primary px-4 py-2">

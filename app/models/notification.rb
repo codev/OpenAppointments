@@ -5,8 +5,8 @@ class Notification < ApplicationRecord
   EVENTS = %w[coming_up created created_or_updated updated cancelled missed].freeze
   AUDIENCES = %w[customer provider admins].freeze
   LEAD_MODES = %w[before day_at].freeze
-  # Cancelled templates: every cancellation, only those made before the Book
-  # Advance Timeout closes (in time), or only those made inside it (too late).
+  # Cancelled templates: every cancellation, only those made before the late
+  # cancellation window closes (in time), or only those made inside it (too late).
   CANCELLATION_SCOPES = %w[all in_time late].freeze
 
   # Which template events fire for a concrete trigger.
@@ -31,13 +31,12 @@ class Notification < ApplicationRecord
   scope :coming_up, -> { where(event: "coming_up") }
 
   # Whether a cancelled template applies to this appointment, by how close to
-  # the start it was cancelled relative to the Book Advance Timeout (minutes).
+  # the start it was cancelled relative to the late cancellation window.
   def applies_to_cancellation?(appointment, now = Time.current)
     return true if cancellation_scope == "all" || appointment&.start_datetime.nil?
 
-    timeout_minutes = [ Setting.get("book_advance_timeout", "0").to_i, 0 ].max
-    in_time = appointment.start_datetime - now >= timeout_minutes * 60
-    cancellation_scope == "in_time" ? in_time : !in_time
+    late = appointment.status_kind == "late_cancel" || BookingWindows.late?(appointment, now)
+    cancellation_scope == "in_time" ? !late : late
   end
 
   def self.for_trigger(trigger)

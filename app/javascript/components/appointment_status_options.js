@@ -12,48 +12,35 @@
 /**
  * Appointment status options component.
  *
- * This module implements the appointment status options.
+ * Each option is {id, name, kind}. Special kinds (booked, rescheduled, cancelled,
+ * late_cancel, no_show) can be renamed but not deleted.
  */
 App.Components.AppointmentStatusOptions = (function () {
-    /**
-     * Render an appointment status option.
-     *
-     * @param {String} [appointmentStatusOption]
-     *
-     * @return {jQuery} Returns a jQuery selector with the list group item markup.
-     */
-    function renderListGroupItem(appointmentStatusOption = '') {
-        return $(`
+    function renderListGroupItem(option = {id: '', name: '', kind: 'custom'}) {
+        const special = option.kind !== 'custom';
+        const $item = $(`
             <li class="list-group-item d-flex justify-content-between align-items-center p-0 border-0 mb-3 appointment-status-option">
-                <label class="w-100 me-2">
-                    <input class="form-control" value="${appointmentStatusOption}">
+                <label class="w-100 me-2 d-flex align-items-center gap-2">
+                    <input class="form-control">
+                    <span class="badge text-bg-secondary text-nowrap ${special ? '' : 'd-none'}"></span>
                 </label>
-    
-                <button type="button" class="btn btn-outline-danger delete-appointment-status-option">
+                <button type="button" class="btn btn-outline-danger delete-appointment-status-option" ${special ? 'disabled' : ''}>
                     <i class="fas fa-trash"></i>
                 </button>
             </li>
         `);
+        $item.data('option', option);
+        $item.find('input').val(option.name);
+        $item.find('.badge').text(lang('status_' + option.kind));
+        return $item;
     }
 
-    /**
-     * Event: Delete Appointment Status Option "Click"
-     *
-     * @param {jQuery.Event} event
-     */
     function onDeleteAppointmentStatusOptionClick(event) {
         $(event.currentTarget).closest('li').remove();
     }
 
-    /**
-     * Event: Add Appointment Status Option "Click"
-     *
-     * @param {jQuery.Event} event
-     */
     function onAddAppointmentStatusOptionClick(event) {
-        const $target = $(event.currentTarget);
-
-        const $listGroup = $target.closest('.appointment-status-options').find('.list-group');
+        const $listGroup = $(event.currentTarget).closest('.appointment-status-options').find('.list-group');
 
         if (!$listGroup.length) {
             return;
@@ -63,53 +50,31 @@ App.Components.AppointmentStatusOptions = (function () {
     }
 
     /**
-     * Get target options.
-     *
-     * @param {jQuery} $target Container element ".status-list" selector.
-     *
-     * @return {String[]}
+     * @param {jQuery} $target Container element.
+     * @return {Object[]} [{id, name, kind}]
      */
     function getOptions($target) {
-        const $listGroup = $target.find('.list-group');
-
-        const appointmentStatusOptions = [];
-
-        $listGroup.find('li').each((index, listGroupItemEl) => {
-            const $listGroupItem = $(listGroupItemEl);
-            const appointmentStatusOption = $listGroupItem.find('input:text').val();
-            appointmentStatusOptions.push(appointmentStatusOption);
-        });
-
-        return appointmentStatusOptions;
+        return $target
+            .find('.list-group li')
+            .toArray()
+            .map((el) => ({...$(el).data('option'), name: $(el).find('input').val()}));
     }
 
     /**
-     * Set target options.
-     *
-     * @param {jQuery} $target Container element ".status-list" selector.
-     * @param {String[]} appointmentStatusOptions Appointment status options.
+     * @param {jQuery} $target Container element.
+     * @param {Object[]} options [{id, name, kind}]
      */
-    function setOptions($target, appointmentStatusOptions) {
-        if (!$target.length || !appointmentStatusOptions || !appointmentStatusOptions.length) {
-            return;
-        }
-
+    function setOptions($target, options) {
         const $listGroup = $target.find('.list-group');
 
-        if (!$listGroup.length) {
+        if (!$listGroup.length || !options) {
             return;
         }
 
         $listGroup.empty();
-
-        appointmentStatusOptions.forEach((appointmentStatusOption) => {
-            renderListGroupItem(appointmentStatusOption).appendTo($listGroup);
-        });
+        options.forEach((option) => renderListGroupItem(option).appendTo($listGroup));
     }
 
-    /**
-     * Initialize the module.
-     */
     function initialize() {
         $(document).on('click', '.delete-appointment-status-option', onDeleteAppointmentStatusOptionClick);
         $(document).on('click', '.add-appointment-status-option', onAddAppointmentStatusOptionClick);

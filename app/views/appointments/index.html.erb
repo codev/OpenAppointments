@@ -22,6 +22,7 @@
                         <option value="<%= service["id"] %>"><%= service["name"] %></option>
                     <% end %>
                 </select>
+                <%= render "shared/status_filter" %>
             </div>
         </div>
 
@@ -138,6 +139,6 @@
     <%= javascript_include_tag "vendor/fullcalendar/index.global.min",
                                "vendor/fullcalendar-moment/index.global.min",
                                "vendor/jquery-jeditable/jquery.jeditable.min" %>
-    <%= ea_js "utils/ui", "utils/calendar_events", "utils/calendar_event_popover",
+    <%= ea_js "utils/status_filter", "utils/ui", "utils/calendar_events", "utils/calendar_event_popover",
               "http/calendar_http_client", "http/customers_http_client", "pages/appointments" %>
 <% end %>

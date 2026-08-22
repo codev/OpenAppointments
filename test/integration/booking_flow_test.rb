@@ -141,10 +141,10 @@ class BookingFlowTest < ActionDispatch::IntegrationTest
     assert_response :forbidden
   end
 
-  test "reschedule updates the existing appointment in manage mode" do
+  test "reschedule books a new appointment and marks the original rescheduled" do
     appointment = appointments(:upcoming)
     travel_to Time.new(2026, 7, 10, 12, 0, 0) do
-      assert_no_difference "Appointment.count" do
+      assert_difference "Appointment.count", 1 do
         post "/booking/register", params: register_params(
           start: "#{DATE} 11:00:00", email: users(:jx).email,
           extra_appointment: { "id" => appointment.id }, manage_mode: true
@@ -152,10 +152,15 @@ class BookingFlowTest < ActionDispatch::IntegrationTest
       end
     end
     assert_response :success
-    assert_equal "2026-07-20 11:00:00", appointment.reload.start_datetime.strftime("%Y-%m-%d %H:%M:%S")
+    replacement = Appointment.find(response.parsed_body["appointment_id"])
+    assert_equal "2026-07-20 11:00:00", replacement.start_datetime.strftime("%Y-%m-%d %H:%M:%S")
+    assert_equal "Booked", replacement.status
+    assert_equal "Rescheduled", appointment.reload.status
+    assert_equal replacement, appointment.rescheduled_to
+    assert_equal "2026-07-20 10:00:00", appointment.start_datetime.strftime("%Y-%m-%d %H:%M:%S")
   end
 
-  test "reschedule page enters manage mode and locked appointments show message" do
+  test "reschedule page enters manage mode, late window shows late cancel only" do
     travel_to Time.new(2026, 7, 10, 12, 0, 0) do
       get "/booking/reschedule/#{appointments(:upcoming).booking_hash}"
       assert_response :success
@@ -165,12 +170,38 @@ class BookingFlowTest < ActionDispatch::IntegrationTest
     travel_to Time.new(2026, 7, 20, 9, 45, 0) do
       get "/booking/reschedule/#{appointments(:upcoming).booking_hash}"
       assert_response :success
-      assert_match(/locked/i, response.body)
+      assert_no_match '"manage_mode":true', response.body
+      assert_includes response.body, "/booking_cancellation/late/#{appointments(:upcoming).booking_hash}"
     end
+
+    appointments(:upcoming).cancel!
+    get "/booking/reschedule/#{appointments(:upcoming).booking_hash}"
+    assert_match(/not found/i, response.body)
 
     get "/booking/reschedule/unknownhash00"
     assert_response :success
     assert_match(/not found/i, response.body)
+  end
+
+  test "customer cancel keeps the row as cancelled; inside the late window as late cancel" do
+    appointment = appointments(:upcoming)
+    travel_to Time.new(2026, 7, 10, 12, 0, 0) do
+      assert_no_difference "Appointment.count" do
+        post "/booking_cancellation/of/#{appointment.booking_hash}", params: { cancellation_reason: "Away" }
+      end
+    end
+    assert_response :success
+    assert_equal "Cancelled", appointment.reload.status
+    assert_includes appointment.notes, "Away"
+    assert_not Appointment.provider_conflict?(appointment.id_users_provider, appointment.start_datetime,
+                                              appointment.end_datetime)
+
+    appointment.update!(appointment_status: nil)
+    travel_to Time.new(2026, 7, 20, 9, 45, 0) do
+      post "/booking_cancellation/late/#{appointment.booking_hash}", params: { cancellation_reason: "Ill" }
+    end
+    assert_response :success
+    assert_equal "Late Cancel", appointment.reload.status
   end
 
   private

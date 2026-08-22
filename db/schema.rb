@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_08_22_171000) do
+ActiveRecord::Schema[8.1].define(version: 2026_08_23_100000) do
   create_table "action_mailbox_inbound_emails", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.string "message_checksum", null: false
@@ -70,6 +70,15 @@ ActiveRecord::Schema[8.1].define(version: 2026_08_22_171000) do
     t.index ["id_users_provider"], name: "index_appointment_series_on_id_users_provider"
   end
 
+  create_table "appointment_statuses", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.integer "kind", default: 0, null: false
+    t.string "name", null: false
+    t.integer "position", default: 0, null: false
+    t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_appointment_statuses_on_name", unique: true
+  end
+
   create_table "appointments", force: :cascade do |t|
     t.datetime "book_datetime"
     t.string "booking_hash"
@@ -86,9 +95,10 @@ ActiveRecord::Schema[8.1].define(version: 2026_08_22_171000) do
     t.text "meeting_link"
     t.text "notes"
     t.date "occurrence_at"
+    t.integer "rescheduled_to_id"
     t.integer "series_id"
     t.datetime "start_datetime"
-    t.string "status", default: ""
+    t.integer "status_id"
     t.datetime "updated_at", null: false
     t.index ["booking_hash"], name: "index_appointments_on_booking_hash", unique: true
     t.index ["end_datetime"], name: "index_appointments_on_end_datetime"
@@ -97,6 +107,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_08_22_171000) do
     t.index ["id_users_provider", "start_datetime"], name: "index_appointments_on_id_users_provider_and_start_datetime"
     t.index ["series_id"], name: "index_appointments_on_series_id"
     t.index ["start_datetime"], name: "index_appointments_on_start_datetime"
+    t.index ["status_id"], name: "index_appointments_on_status_id"
   end
 
   create_table "assistants_providers", id: false, force: :cascade do |t|

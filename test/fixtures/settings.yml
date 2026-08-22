@@ -10,9 +10,9 @@ company_name:
   name: company_name
   value: Test Company
 
-appointment_status_options:
-  name: appointment_status_options
-  value: '["Booked", "Confirmed", "Rescheduled", "Cancelled", "Draft"]'
+late_cancellation_timeout:
+  name: late_cancellation_timeout
+  value: "30"
 
 disable_booking_message:
   name: disable_booking_message

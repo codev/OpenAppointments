@@ -77,7 +77,7 @@ class AppointmentSeriesIntegrationTest < ActionDispatch::IntegrationTest
 
     post "/appointment_series/#{series.id}/cancel", params: { from: "2026-07-21", notify_users: 0 }
     assert_equal true, response.parsed_body["success"]
-    assert_equal [ Date.new(2026, 7, 20) ], series.reload.appointments.pluck(:occurrence_at)
+    assert_equal [ Date.new(2026, 7, 20) ], series.reload.appointments.active.pluck(:occurrence_at)
     assert_equal Date.new(2026, 7, 20), series.ends_on
   end
 

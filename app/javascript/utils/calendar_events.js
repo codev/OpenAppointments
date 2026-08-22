@@ -130,6 +130,7 @@ App.Utils.CalendarEvents = (function () {
         $calendarPage.on('click', '.close-popover', closePopover);
         $calendarPage.on('click', '.edit-popover', onEditPopoverClick);
         $calendarPage.on('click', '.delete-popover', onDeletePopoverClick);
+        $calendarPage.on('click', '.cancel-popover', onCancelPopoverClick);
     }
 
     // Modals
@@ -453,8 +454,27 @@ App.Utils.CalendarEvents = (function () {
         }
     }
 
+    function onCancelPopoverClick() {
+        closePopover();
+        removeAppointmentDialog(lastFocusedEvent.extendedProps.data.id, 'cancel');
+    }
+
     function deleteAppointmentDialog(appointmentId) {
-        App.Utils.Message.show(lang('delete_appointment_title'), lang('notify_users_on_delete_question'), [
+        removeAppointmentDialog(appointmentId, 'delete');
+    }
+
+    /**
+     * Ask about notifying, then for a reason, then delete (hard) or cancel (status).
+     *
+     * @param {Number} appointmentId
+     * @param {String} action 'delete' or 'cancel'
+     */
+    function removeAppointmentDialog(appointmentId, action) {
+        const title = lang(action === 'cancel' ? 'cancel_appointment_title' : 'delete_appointment_title');
+        const reasonText = lang(action === 'cancel' ? 'write_appointment_cancel_reason' : 'write_appointment_removal_reason');
+        const request = action === 'cancel' ? App.Http.Calendar.cancelAppointment : App.Http.Calendar.deleteAppointment;
+
+        App.Utils.Message.show(title, lang('notify_users_on_delete_question'), [
             {
                 text: lang('cancel'),
                 click: (event, notifyModal) => notifyModal.hide(),
@@ -463,7 +483,7 @@ App.Utils.CalendarEvents = (function () {
                 text: lang('no'),
                 click: (event, notifyModal) => {
                     notifyModal.hide();
-                    App.Http.Calendar.deleteAppointment(appointmentId, null, false).done(reload);
+                    request(appointmentId, null, false).done(reload);
                 },
             },
             {
@@ -472,19 +492,19 @@ App.Utils.CalendarEvents = (function () {
                     notifyModal.hide();
 
                     App.Utils.Message.show(
-                        lang('delete_appointment_title'),
-                        lang('write_appointment_removal_reason'),
+                        title,
+                        reasonText,
                         [
                             {
-                                text: lang('cancel'),
+                                text: lang('close'),
                                 click: (event, messageModal) => messageModal.hide(),
                             },
                             {
-                                text: lang('delete'),
+                                text: lang(action),
                                 click: (event, messageModal) => {
                                     const reason = $('#cancellation-reason').val();
                                     messageModal.hide();
-                                    App.Http.Calendar.deleteAppointment(appointmentId, reason, true).done(reload);
+                                    request(appointmentId, reason, true).done(reload);
                                 },
                             },
                         ],
@@ -679,6 +699,7 @@ App.Utils.CalendarEvents = (function () {
                 color: appointment.color,
                 data: appointment,
                 display: 'block',
+                className: appointment.frees_slot ? 'fc-freed-slot' : '',
             };
         });
     }

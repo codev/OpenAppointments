@@ -53,18 +53,13 @@ class BookingController < ApplicationController
                                       helpers.lang("appointment_does_not_exist_in_db"))
       end
 
-      provider = record.provider
-      timeout = Setting.get("book_advance_timeout", "0").to_i
-      zone = Time.find_zone!(provider.effective_timezone)
-      appointment_start = zone.parse(record.start_datetime.strftime("%Y-%m-%d %H:%M:%S"))
-      limit = Time.now + timeout * 60
-
-      if appointment_start < limit
-        message = helpers.lang("appointment_locked_message")
-                         .sub("{$limit}", format("%02d:%02d", timeout / 60, timeout % 60))
-        return render_booking_message(helpers.lang("appointment_locked"), message)
+      if record.frees_slot? || record.start_datetime < Time.now
+        return render_booking_message(helpers.lang("appointment_not_found"),
+                                      helpers.lang("appointment_does_not_exist_in_db"))
       end
+      return render_late_cancel(record) if BookingWindows.late?(record)
 
+      provider = record.provider
       manage_mode = true
       appointment = appointment_payload(record)
       provider_payload = {
@@ -220,7 +215,7 @@ class BookingController < ApplicationController
 
     existing_customer = User.customers.find_by(email: customer_params["email"]) if customer_params["email"].present?
     if existing_customer
-      conflict = Appointment.where(id_users_customer: existing_customer.id)
+      conflict = Appointment.active.where(id_users_customer: existing_customer.id)
                             .where("start_datetime <= ? AND end_datetime >= ?",
                                    appointment_params["start_datetime"], end_datetime_for(appointment_params, service))
       conflict = conflict.where.not(id: appointment_params["id"]) if manage_mode
@@ -235,7 +230,9 @@ class BookingController < ApplicationController
     customer.language = session[:language] || Setting.get("default_language", "english")
     customer.save!
 
-    appointment = manage_mode ? Appointment.find(appointment_params["id"]) : Appointment.new
+    # A reschedule books a new row and marks the original Rescheduled.
+    original = manage_mode ? Appointment.find(appointment_params["id"]) : nil
+    appointment = Appointment.new(series_id: original&.series_id, occurrence_at: original&.occurrence_at)
     appointment.assign_attributes(
       start_datetime: appointment_params["start_datetime"],
       end_datetime: end_datetime_for(appointment_params, service),
@@ -246,13 +243,17 @@ class BookingController < ApplicationController
       service: service,
       is_unavailability: false,
       color: service.color,
-      status: JSON.parse(Setting.get("appointment_status_options", "[]")).first,
-      book_datetime: appointment.book_datetime || Time.now
+      appointment_status: AppointmentStatus.of("booked"),
+      book_datetime: Time.now
     )
-    appointment.save!
+    Appointment.transaction do
+      appointment.save!
+      original&.update!(appointment_status: AppointmentStatus.of("rescheduled"), rescheduled_to: appointment)
+    end
 
     settings = notification_settings
 
+    Synchronization.appointment_deleted(original, provider) if original
     Synchronization.appointment_saved(appointment, service, provider, customer, settings)
     Notifications.appointment_saved(appointment, service, provider, customer, settings, manage_mode: manage_mode)
     Webhooks.trigger(Webhooks::APPOINTMENT_SAVE, appointment)
@@ -358,6 +359,20 @@ class BookingController < ApplicationController
       message_is_html: raw_text
     )
     render "booking/message", layout: "message"
+  end
+
+  # Inside the late cancellation window: no reschedule, only a late cancel.
+  def render_late_cancel(record)
+    html_vars(
+      page_title: helpers.lang("late_cancel_title"),
+      company_color: Setting.get("company_color"),
+      appointment_hash: record.booking_hash,
+      notice: BookingWindows.late_notice(helpers),
+      google_analytics_code: Setting.get("google_analytics_code"),
+      matomo_analytics_url: Setting.get("matomo_analytics_url"),
+      matomo_analytics_site_id: Setting.get("matomo_analytics_site_id")
+    )
+    render "booking/late_cancel", layout: "message"
   end
 
   def check_datetime_availability(appointment_params, manage_mode)

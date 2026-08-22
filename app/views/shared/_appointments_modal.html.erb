@@ -79,9 +79,9 @@
                                         <%= lang('status') %>
                                     </label>
                                     <select id="appointment-status" class="form-select">
-                                        <% appointment_status_options.each do |appointment_status_option| %>
-                                            <option value="<%= appointment_status_option %>">
-                                                <%= appointment_status_option %>
+                                        <% appointment_status_options.each do |status| %>
+                                            <option value="<%= status["name"] %>" data-kind="<%= status["kind"] %>">
+                                                <%= status["name"] %>
                                             </option>
                                         <% end %>
                                     </select>
