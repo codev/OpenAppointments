@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_08_22_150000) do
+ActiveRecord::Schema[8.1].define(version: 2026_08_22_170000) do
   create_table "action_mailbox_inbound_emails", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.string "message_checksum", null: false
@@ -159,7 +159,6 @@ ActiveRecord::Schema[8.1].define(version: 2026_08_22_150000) do
     t.text "audiences", default: "[\"customer\"]"
     t.text "channels", default: "[]"
     t.datetime "created_at", null: false
-    t.string "description"
     t.string "event", null: false
     t.integer "lead_days", default: 0
     t.integer "lead_hours", default: 1

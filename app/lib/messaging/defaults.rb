@@ -62,7 +62,6 @@ module Messaging
       [
         {
           title: "Appointment Created or Updated",
-          description: "Confirmation sent whenever an appointment is booked or changed.",
           event: "created_or_updated",
           audiences: %w[customer provider admins],
           channels: %w[email],
@@ -84,7 +83,6 @@ module Messaging
         },
         {
           title: "Appointment Canceled",
-          description: "Sent when an appointment is cancelled or removed.",
           event: "cancelled",
           audiences: %w[customer provider admins],
           channels: %w[email],
@@ -104,7 +102,6 @@ module Messaging
         },
         {
           title: "Appointment Reminder in the Morning",
-          description: "Reminder text at 8am on the day of the appointment.",
           event: "coming_up",
           lead_mode: "day_at",
           lead_days: 0,

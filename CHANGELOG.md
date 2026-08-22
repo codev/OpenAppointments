@@ -5,6 +5,7 @@ CloudronManifest.json.
 
 ## 1.9.0
 
+- Notifications no longer have a separate description; the hint sits under the title
 - Repeating appointments: the appointment form sets a repeat pattern (recurring_select dialog: daily, weekly, monthly, yearly) with an optional end date or count, booked up to the Future Booking Limit; dates that clash are skipped and reported; a nightly job keeps open series booked ahead and emails the failure report addresses about new clashes; the Appointments page has a Repeating Appointments view to change a pattern or cancel from a chosen date; emails get {{Repeats}} and {{Next Appointment}} tokens; backups include the series
 - The booking page's cancel appointment button says Cancel, as its hint text does, instead of Delete
 

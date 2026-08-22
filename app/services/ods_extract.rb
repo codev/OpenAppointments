@@ -102,7 +102,7 @@ class OdsExtract
 
   def notifications_rows
     rows("Notifications").map do |row|
-      { title: row["title"], event: row["event"], description: row["description"].presence,
+      { title: row["title"], event: row["event"],
         audiences: JSON.parse(row["audiences"].presence || "[]"),
         channels: JSON.parse(row["channels"].presence || "[]"),
         lead_days: row["lead_days"].to_i, lead_hours: row["lead_hours"].to_i,
