@@ -3,6 +3,10 @@
 The about page lists these notes; every release needs a section here matching
 CloudronManifest.json.
 
+## 1.8.1
+
+- The booking page's cancel appointment button says Cancel, as its hint text does, instead of Delete
+
 ## 1.8.0
 
 - Calendar view divided into Appointments (a table view) and the traditional Calendar view and the Appointments view has been improved with better filters and navigation
