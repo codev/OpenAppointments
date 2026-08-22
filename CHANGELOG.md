@@ -5,20 +5,16 @@ CloudronManifest.json.
 
 ## 1.9.0
 
-- Notifications no longer have a separate description; the hint sits under the title
-- Cancelled notifications can apply to all cancellations, only those made in time, or only those made too late
-- Changing a repeating pattern keeps the replaced occurrences as Rescheduled (slots freed), leaves occurrences a customer moved alone, syncs and webhooks every changed row and sends the customer one notification describing the new pattern; an unedited pattern dialog keeps the series weekday and switching Ends to Never clears the old count or date
-- Business Settings has two minimum times before an appointment, entered as hours and minutes: how close a customer can book, and how close a customer can still reschedule or cancel in time (the late cancellation window); the late window cannot exceed the booking window and is clamped wherever settings are written
-- Inside the late window the customer's manage link offers Late Cancel only, which sets the Late Cancel status and shows the notice period message; the cancelled notification's in time / too late scope uses the late window
-- Appointment statuses are records with a kind: Booked, Rescheduled, Cancelled, Late Cancel and No Show can be renamed but not deleted; other statuses are free labels
-- Cancelling keeps the appointment with the Cancelled status and rescheduling books a new appointment and marks the original Rescheduled; cancelled, late cancelled and rescheduled appointments free their slot; the calendar popover has a Cancel button next to Delete (hard delete)
-- Calendar and Appointments pages have a Statuses tick-box filter; Cancelled and Rescheduled start unticked
-- Backups include an Appointment Statuses sheet, restored before appointments so renamed statuses survive
-- Incoming messages stay unread until someone marks them read (per message, or all of a customer's); an Inbox page in the top bar lists incoming customer messages (admins see all, providers and assistants their own customers when customer access is limited) with an unread count badge
-- Data page has a Reports section: download a spreadsheet of appointments starting in a date range with the chosen statuses (date, times, length, customer, contact details, provider, service, status, location, notes, repeat pattern, booked on)
-- The top bar wraps on tablets: logo above the text and the items flow onto a second line instead of overflowing
-- Repeating appointments: the appointment form sets a repeat pattern (recurring_select dialog: daily, weekly, monthly, yearly) with an optional end date or count, booked up to the Future Booking Limit; dates that clash are skipped and reported; a nightly job keeps open series booked ahead and emails the failure report addresses about new clashes; the Appointments page has a Repeating Appointments view to change a pattern or cancel from a chosen date; emails get {{Repeats}} and {{Next Appointment}} tokens; backups include the series
+- Repeating appointments - these can only be added by providers, assistants or admins
+- Reports added under Data Settings
+- New Inbox view on the navigation bar with number of unread messages for a provider
+- Incoming messages stay unread until someone marks them read
+- Option to send messages for late cancellations
+- Cancelled appointments are kept, with their status changed, instead of being deleted
+- Settings for minimum time an appointment can be made before it starts and late cancellation window time
 - The booking page's cancel appointment button says Cancel, as its hint text does, instead of Delete
+- Calendar and Appointments pages have a Statuses tick-box filter
+- Minor fixes: navigation bar looks better on tablets; appointment status labels are backed up; important statuses can only be renamed, not deleted
 
 ## 1.8.0
 
