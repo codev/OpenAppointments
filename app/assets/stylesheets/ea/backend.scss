@@ -672,3 +672,18 @@ body .modal.full-screen .modal-push {
 #footer {
     font-size: 11px;
 }
+
+/* Provider Details / Working Plan switch: outline buttons, the active one filled. */
+.switch-view .nav-item + .nav-item {
+    margin-left: 0.5rem;
+}
+
+.switch-view .nav-link {
+    border: 1px solid var(--bs-primary);
+    color: var(--bs-primary);
+}
+
+.switch-view .nav-link:hover:not(.active) {
+    background-color: var(--bs-primary);
+    color: var(--bs-white);
+}
