@@ -17,6 +17,8 @@ class ImportController < ApplicationController
     return head :forbidden unless can?(:edit, :system_settings)
 
     backend_page_vars(page_title: helpers.lang("data_settings"), active_menu: "system_settings")
+    html_vars(appointment_statuses: AppointmentStatus.rows, report_from: Date.current.beginning_of_month,
+              report_to: Date.current)
     render :index
   end
 
@@ -58,6 +60,20 @@ class ImportController < ApplicationController
     send_file BackupExport.dir.join(name), filename: name,
                                            type: name.end_with?(".zip") ? "application/zip" : Ods::MIMETYPE
   rescue ArgumentError => e
+    json_exception(e)
+  end
+
+  # GET /import/report?from=&to=&status_ids[]= - appointments report download.
+  def report
+    from = Date.parse(params[:from].to_s)
+    to = Date.parse(params[:to].to_s)
+    raise ArgumentError, "The to date must not be before the from date." if to < from
+
+    status_ids = params[:status_ids].presence&.map(&:to_i)
+    ods = AppointmentReport.generate(from: from, to: to, status_ids: status_ids,
+                                     labels: ->(key) { helpers.lang(key) })
+    send_data ods, filename: "#{from}-to-#{to}-appointments.ods", type: Ods::MIMETYPE
+  rescue ArgumentError, Date::Error => e
     json_exception(e)
   end
 

@@ -14,6 +14,7 @@ CloudronManifest.json.
 - Calendar and Appointments pages have a Statuses tick-box filter; Cancelled and Rescheduled start unticked
 - Backups include an Appointment Statuses sheet, restored before appointments so renamed statuses survive
 - Incoming messages stay unread until someone marks them read (per message, or all of a customer's); an Inbox page in the top bar lists incoming customer messages (admins see all, providers and assistants their own customers when customer access is limited) with an unread count badge
+- Data page has a Reports section: download a spreadsheet of appointments starting in a date range with the chosen statuses (date, times, length, customer, contact details, provider, service, status, location, notes, repeat pattern, booked on)
 - The top bar wraps on tablets: logo above the text and the items flow onto a second line instead of overflowing
 - Repeating appointments: the appointment form sets a repeat pattern (recurring_select dialog: daily, weekly, monthly, yearly) with an optional end date or count, booked up to the Future Booking Limit; dates that clash are skipped and reported; a nightly job keeps open series booked ahead and emails the failure report addresses about new clashes; the Appointments page has a Repeating Appointments view to change a pattern or cancel from a chosen date; emails get {{Repeats}} and {{Next Appointment}} tokens; backups include the series
 - The booking page's cancel appointment button says Cancel, as its hint text does, instead of Delete
