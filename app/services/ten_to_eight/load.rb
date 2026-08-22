@@ -4,7 +4,7 @@ module TenToEight
   # email or name+phone) so re-runs do not duplicate. Pronoun lands in custom_field_1, access
   # needs in custom_field_2, and a do-not-contact prefix on the notes (GDPR consent).
   class Load
-    PHASES = %w[categories services providers assistants admins customers appointments
+    PHASES = %w[categories services providers assistants admins customers appointments appointment_series
                 working_plan_exceptions notifications webhooks consents settings].freeze
     DO_NOT_CONTACT_PREFIX = "[DO NOT CONTACT - consent not granted]".freeze
 
@@ -26,6 +26,7 @@ module TenToEight
       load_admins if phase?("admins")
       load_customers if phase?("customers")
       load_appointments if phase?("appointments")
+      load_appointment_series if phase?("appointment_series")
       load_working_plan_exceptions if phase?("working_plan_exceptions")
       load_notifications if phase?("notifications")
       load_webhooks if phase?("webhooks")
@@ -234,6 +235,52 @@ module TenToEight
     # Notification flag and calendar sync credentials from an ODS export.
     def restore_sync_settings(user, sync)
       user.settings.update(sync) if sync.present? && user.settings
+    end
+
+    # Series are recreated and relinked to the restored appointments that fall on
+    # their dates; missing future dates are booked again.
+    def load_appointment_series
+      counts = track("appointment_series")
+      provider_ids = @provider_ids || match_existing_providers
+      service_ids = @service_ids || Service.pluck(:name, :id).to_h
+      customer_ids = @customer_ids || match_existing_customers
+
+      Array(@data[:appointment_series]).each do |row|
+        provider_id = provider_ids[row[:staff]]
+        service_id = service_ids[row[:service]]
+        customer_id = customer_ids[row[:customer_ext_id]]
+        next counts[:skipped] += 1 if provider_id.nil? || service_id.nil? || customer_id.nil?
+
+        guard("appointment_series", counts, "#{row[:staff]} / #{row[:customer_ext_id]} from #{row[:starts_on]}") do
+          attrs = { id_users_provider: provider_id, id_users_customer: customer_id, id_services: service_id,
+                    starts_on: row[:starts_on], start_time: row[:start_time] }
+          series = AppointmentSeries.find_by(attrs)
+          if series
+            counts[:matched] += 1
+            next
+          end
+
+          series = AppointmentSeries.create!(
+            attrs.merge(schedule: row[:schedule], ends_on: row[:ends_on], duration: row[:duration],
+                        notes: row[:notes], location: row[:location], status: row[:status], color: row[:color],
+                        skipped: row[:skipped], removed: row[:removed])
+          )
+          link_series_appointments(series)
+          series.materialise
+          counts[:created] += 1
+        end
+      end
+    end
+
+    def link_series_appointments(series)
+      dates = series.dates_between(series.starts_on, series.horizon)
+      Appointment.where(id_users_provider: series.id_users_provider, id_users_customer: series.id_users_customer,
+                        id_services: series.id_services, series_id: nil).find_each do |appointment|
+        date = appointment.start_datetime.to_date
+        next unless dates.include?(date) && appointment.start_datetime.strftime("%H:%M") == series.start_time
+
+        appointment.update!(series_id: series.id, occurrence_at: date)
+      end
     end
 
     # Replaces each listed provider's exceptions with the exported set.

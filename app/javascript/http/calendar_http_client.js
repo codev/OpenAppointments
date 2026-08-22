@@ -42,12 +42,17 @@ App.Http.Calendar = (function () {
     ) {
         const url = App.Utils.Url.siteUrl('calendar/save_appointment');
 
+        const {repeat, ...appointmentData} = appointment;
         const data = {
             csrf_token: vars('csrf_token'),
-            appointment_data: appointment,
+            appointment_data: appointmentData,
             notify_users: notifyUsers ? 1 : 0,
             force_save: forceSave ? 1 : 0,
         };
+
+        if (repeat) {
+            data.repeat = repeat;
+        }
 
         if (customer) {
             data.customer_data = customer;

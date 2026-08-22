@@ -8,6 +8,7 @@ module ResetDatabase
 
   def run(full: false)
     ActiveRecord::Base.transaction do
+      AppointmentSeries.delete_all
       Appointment.delete_all
       Consent.delete_all
       BlockedPeriod.delete_all

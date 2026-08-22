@@ -74,6 +74,7 @@ module Messaging
             Provider: {{Provider Name}}
             Date: {{Appointment Date}}
             Time: {{Appointment Time}}
+            Repeats: {{Repeats}}
 
             View or change the appointment: {{Appointment Link}}
 

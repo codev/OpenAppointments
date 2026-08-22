@@ -51,11 +51,84 @@
                 <div class="fc-toolbar-chunk">
                     <input type="text" id="select-date" class="form-control d-inline-block select-date">
                 </div>
-                <div class="fc-toolbar-chunk"></div>
+                <div class="fc-toolbar-chunk">
+                    <button type="button" class="btn btn-outline-primary btn-sm" id="toggle-series">
+                        <i class="fas fa-redo me-2"></i><span><%= lang('repeating_appointments') %></span>
+                    </button>
+                </div>
             </div>
         </div>
         <div id="not-working-notes" class="text-muted mb-2"></div>
         <div class="calendar-view"><div></div></div>
+
+        <div id="series-view" class="d-none">
+            <h5 class="fw-light mb-3"><%= lang('repeating_appointments') %></h5>
+            <div class="table-responsive">
+                <table class="table table-striped align-middle" id="series-table">
+                    <thead>
+                    <tr>
+                        <th><%= lang('provider') %></th>
+                        <th><%= lang('customer') %></th>
+                        <th><%= lang('service') %></th>
+                        <th><%= lang('repeats') %></th>
+                        <th><%= lang('next_appointment') %></th>
+                        <th><%= lang('not_booked') %></th>
+                        <th><%= lang('actions') %></th>
+                    </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+            <p id="series-empty" class="text-muted d-none"><%= lang('no_repeating_appointments') %></p>
+        </div>
+    </div>
+</div>
+
+<div class="modal" id="series-pattern-modal">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title"><%= lang('change_pattern') %></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <p class="text-muted small"><%= lang('change_pattern_hint') %></p>
+                <%= render "shared/repeat_fields", prefix: "series-repeat" %>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal"><%= lang('cancel') %></button>
+                <button type="button" class="btn btn-primary" id="series-pattern-save">
+                    <i class="fas fa-check-square me-2"></i><%= lang('save') %>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal" id="series-cancel-modal">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title"><%= lang('cancel_series') %></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <p class="text-muted small"><%= lang('cancel_series_hint') %></p>
+                <div id="series-cancel-dates" class="mb-3" style="max-height: 16rem; overflow-y: auto;"></div>
+                <label class="form-label" for="series-cancel-reason"><%= lang('reason') %></label>
+                <textarea id="series-cancel-reason" class="form-control" rows="2"></textarea>
+                <div class="form-check form-switch mt-2">
+                    <input class="form-check-input" type="checkbox" id="series-cancel-notify" checked>
+                    <label class="form-check-label" for="series-cancel-notify"><%= lang('notify_customer') %></label>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal"><%= lang('close') %></button>
+                <button type="button" class="btn btn-danger" id="series-cancel-confirm">
+                    <i class="fas fa-calendar-times me-2"></i><%= lang('cancel_series_from') %>
+                </button>
+            </div>
+        </div>
     </div>
 </div>
 

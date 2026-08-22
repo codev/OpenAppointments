@@ -332,6 +332,7 @@ App.Utils.CalendarEventPopover = (function () {
                 $('<br/>'),
                 ...customFieldElements,
                 ...meetingLinkElements,
+                ...(data.series_description ? createPopoverRow('repeats', data.series_description) : []),
                 ...createPopoverRow('notes', getEventNotes(info.event)),
                 renderCustomContent(info),
                 $('<hr/>'),

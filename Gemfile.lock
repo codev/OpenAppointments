@@ -475,6 +475,7 @@ DEPENDENCIES
   google-apis-calendar_v3 (~> 0.57.0)
   googleauth (~> 1.17)
   icalendar (~> 2.12)
+  ice_cube (~> 0.17)
   image_processing (~> 2.0)
   mini_magick (~> 5.0)
   propshaft

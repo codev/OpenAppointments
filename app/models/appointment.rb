@@ -6,6 +6,8 @@ class Appointment < ApplicationRecord
   belongs_to :customer, class_name: "User", foreign_key: :id_users_customer,
                         inverse_of: :customer_appointments, optional: true
   belongs_to :service, foreign_key: :id_services, optional: true
+  belongs_to :series, class_name: "AppointmentSeries", foreign_key: :series_id,
+                      inverse_of: :appointments, optional: true
 
   scope :appointments, -> { where(is_unavailability: false) }
   scope :unavailabilities, -> { where(is_unavailability: true) }

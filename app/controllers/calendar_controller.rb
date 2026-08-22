@@ -24,6 +24,7 @@ class CalendarController < ApplicationController
   def save_appointment
     customer_data = permitted_hash(params[:customer_data], CUSTOMER_PERMIT)
     appointment_data = permitted_hash(params[:appointment_data], APPOINTMENT_PERMIT)
+    repeat = permitted_hash(params[:repeat], REPEAT_PERMIT)
     notify_users = boolean_param(params.fetch(:notify_users, true))
     force_save = boolean_param(params.fetch(:force_save, false))
 
@@ -72,6 +73,11 @@ class CalendarController < ApplicationController
     appointment.book_datetime ||= Time.now
     appointment.save!
 
+    skipped = []
+    if repeat.present? && repeat["frequency"].present? && repeat["frequency"] != "none" && !manage_mode
+      skipped = AppointmentSeries.start_from(appointment, repeat, created_by: session[:user_id])[:skipped]
+    end
+
     provider = appointment.provider
     customer = appointment.customer
     service = appointment.service
@@ -84,7 +90,7 @@ class CalendarController < ApplicationController
     end
     Webhooks.trigger(Webhooks::APPOINTMENT_SAVE, appointment)
 
-    render json: { success: true }
+    render json: { success: true, id: appointment.id, skipped: skipped }
   rescue ArgumentError, ActiveRecord::RecordInvalid => e
     json_exception(e, status: :ok)
   end
@@ -106,6 +112,7 @@ class CalendarController < ApplicationController
     settings = notification_settings
 
     appointment.destroy!
+    appointment.series&.forget(appointment.occurrence_at)
 
     if notify_users
       Notifications.appointment_deleted(appointment, service, provider, customer, settings,
@@ -296,17 +303,10 @@ class CalendarController < ApplicationController
 
   CUSTOMER_PERMIT = (BookingController::ALLOWED_CUSTOMER_FIELDS + %w[notes]).map(&:to_sym).freeze
   APPOINTMENT_PERMIT = BookingController::ALLOWED_APPOINTMENT_FIELDS.map(&:to_sym).freeze
+  REPEAT_PERMIT = [ :frequency, :interval, :ends, :ends_on, :count, { weekdays: [] } ].freeze
   UNAVAILABILITY_PERMIT = %i[id start_datetime end_datetime location notes id_users_provider].freeze
   EXCEPTION_PERMIT = [ :id, :startDate, :endDate, :startTime, :endTime, :start_date, :end_date,
                       :start_time, :end_time, { breaks: [ :start, :end ] } ].freeze
-
-  def permitted_hash(value, allowed)
-    value.is_a?(ActionController::Parameters) ? value.permit(*allowed).to_h : value
-  end
-
-  def boolean_param(value)
-    ActiveModel::Type::Boolean.new.cast(value) || false
-  end
 
   def notification_settings
     company_color = Setting.get("company_color")

@@ -111,6 +111,11 @@ App.Components.AppointmentsModal = (function () {
                 appointment.id = $appointmentId.val();
             }
 
+            // A repeat pattern only applies to a new appointment.
+            if (!appointment.id) {
+                appointment.repeat = App.Components.RepeatFields.read('repeat');
+            }
+
             const customer = {
                 name: $name.val(),
                 email: $email.val(),
@@ -135,9 +140,10 @@ App.Components.AppointmentsModal = (function () {
             }
 
             // Define success callback.
-            const successCallback = () => {
+            const successCallback = (response) => {
                 // Display success message to the user.
                 App.Layouts.Backend.displayNotification(lang('appointment_saved'));
+                App.Components.AppointmentsModal.reportSkipped(response && response.skipped);
 
                 // Close the modal dialog and refresh the calendar appointments.
                 $appointmentsModal.find('.alert').addClass('d-none');
@@ -500,7 +506,30 @@ App.Components.AppointmentsModal = (function () {
      * This method resets the manage appointment dialog modal to its initial state. After that you can make
      * any modification might be necessary in order to bring the dialog to the desired state.
      */
+    /**
+     * Tell the user which repeat dates clashed and were not booked.
+     */
+    function reportSkipped(skipped) {
+        if (!skipped || !skipped.length) {
+            return;
+        }
+        const dates = skipped
+            .map((entry) => App.Utils.Date.format(entry.date, vars('date_format'), vars('time_format'), false))
+            .join(', ');
+        App.Utils.Message.show(lang('repeat'), lang('repeat_dates_not_booked').replace('{count}', skipped.length) + ' ' + dates);
+    }
+
+    /**
+     * Show the series the occurrence belongs to instead of the repeat fields.
+     */
+    function showSeries(description) {
+        $('#appointment-repeat').toggle(!description);
+        $('#appointment-series-summary').toggleClass('d-none', !description).find('span').text(description || '');
+    }
+
     function resetModal() {
+        App.Components.RepeatFields.reset('repeat');
+        showSeries(null);
         // Empty form fields.
         $appointmentsModal.find('input, textarea').val('');
         $appointmentsModal.find('.modal-message').addClass('.d-none');
@@ -641,6 +670,8 @@ App.Components.AppointmentsModal = (function () {
 
     return {
         resetModal,
+        reportSkipped,
+        showSeries,
         validateAppointmentForm,
     };
 })();

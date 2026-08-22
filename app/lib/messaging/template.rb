@@ -8,7 +8,7 @@ module Messaging
       "Customer Email", "Customer Phone", "Provider Name", "Service Name",
       "Service Duration", "Appointment Date", "Appointment Time",
       "Appointment End Time", "Appointment Status", "Appointment Link",
-      "Cancellation Reason", "User Name"
+      "Cancellation Reason", "Repeats", "Next Appointment", "User Name"
     ].freeze
 
     module_function
@@ -42,8 +42,19 @@ module Messaging
         "Appointment End Time" => end_at ? format_time(end_at) : "",
         "Appointment Status" => appointment&.status.to_s,
         "Appointment Link" => link_path ? "#{base_url}#{link_path}" : "",
-        "Cancellation Reason" => reason.to_s
+        "Cancellation Reason" => reason.to_s,
+        "Repeats" => appointment&.series&.description.to_s,
+        "Next Appointment" => next_occurrence(appointment)
       )
+    end
+
+    # The series occurrence after this one, formatted, or blank.
+    def next_occurrence(appointment)
+      series = appointment&.series
+      return "" unless series && appointment.occurrence_at
+
+      date = series.appointments.where("occurrence_at > ?", appointment.occurrence_at).minimum(:occurrence_at)
+      date ? format_date(series.starts_at(date)) : ""
     end
 
     def sms_address(user)

@@ -19,6 +19,7 @@ module DataExport
       "Customers" => customers_sheet,
       "Appointments" => appointments_sheet,
       "Blocked Periods" => blocked_periods_sheet,
+      "Appointment Series" => appointment_series_sheet,
       "Working Plan Exceptions" => working_plan_exceptions_sheet,
       "Notifications" => notifications_sheet,
       "Webhooks" => webhooks_sheet,
@@ -110,6 +111,16 @@ module DataExport
     end
     [ %w[start_datetime end_datetime provider customer_id service notes status is_unavailability
          booking_hash] ] + rows
+  end
+
+  def appointment_series_sheet
+    rows = AppointmentSeries.includes(:provider, :service).order(:starts_on).map do |series|
+      [ series.provider&.name, series.id_users_customer, series.service&.name, series.schedule,
+        series.starts_on.to_s, series.ends_on&.to_s, series.start_time, series.duration, series.notes,
+        series.location, series.status, series.color, series.skipped, series.removed ]
+    end
+    [ %w[provider customer_id service schedule starts_on ends_on start_time duration notes location status
+         color skipped removed] ] + rows
   end
 
   def blocked_periods_sheet

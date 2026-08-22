@@ -95,6 +95,13 @@ class DataExportTest < ActiveSupport::TestCase
     Webhook.create!(name: "n8n", url: "https://n8n.example.org/hook", actions: "appointment_save",
                     secret_token: "tok", is_ssl_verified: false, notes: "glue")
     Consent.create!(type: "book", name: "J", email: "j@example.org", ip: "127.0.0.1", created_at: Time.new(2026, 7, 1, 9, 0, 0))
+    Setting.set("future_booking_limit", "30")
+    series = AppointmentSeries.create!(
+      provider: users(:zane), customer: users(:jx), service: services(:haircut),
+      ice_schedule: AppointmentSeries.schedule_from({ "frequency" => "weekly", "interval" => 1, "weekdays" => [ 1 ] }, Date.new(2026, 7, 20)),
+      starts_on: Date.new(2026, 7, 20), start_time: "10:00", duration: 30, status: "Booked"
+    )
+    series_dates = series.materialise(now: Date.new(2026, 7, 20))[:created]
     path = export_to_file
 
     ResetDatabase.run
@@ -116,7 +123,7 @@ class DataExportTest < ActiveSupport::TestCase
     assert_equal JSON.parse(original_plan), JSON.parse(provider.settings.working_plan)
     assert_equal "janedoe", provider.settings.username
 
-    appointment = Appointment.appointments.sole
+    appointment = Appointment.appointments.find_by!(start_datetime: original_start)
     assert_equal provider.id, appointment.id_users_provider
     assert_equal customer.id, appointment.id_users_customer
     assert_equal original_start, appointment.start_datetime
@@ -145,6 +152,12 @@ class DataExportTest < ActiveSupport::TestCase
     consent = Consent.find_by!(email: "j@example.org")
     assert_equal "book", consent.type
     assert_equal Time.new(2026, 7, 1, 9, 0, 0), consent.created_at
+
+    restored = AppointmentSeries.sole
+    assert_equal "10:00", restored.start_time
+    assert_match "Weekly on Mondays", restored.description
+    assert_equal series_dates, restored.appointments.where(occurrence_at: series_dates).order(:occurrence_at).pluck(:occurrence_at),
+                 "restored occurrences relinked to the series"
   end
 
   test "reimporting twice does not duplicate" do

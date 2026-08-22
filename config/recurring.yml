@@ -19,3 +19,6 @@ production:
   fetch_imap_emails:
     class: FetchImapEmailsJob
     schedule: every 5 minutes
+  extend_appointment_series:
+    class: AppointmentSeriesExtendJob
+    schedule: at 3am every day

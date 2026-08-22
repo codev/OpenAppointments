@@ -86,6 +86,13 @@
                                         <% end %>
                                     </select>
                                 </div>
+
+                                <div id="appointment-repeat">
+                                    <%= render "shared/repeat_fields", prefix: "repeat" %>
+                                </div>
+                                <div id="appointment-series-summary" class="alert alert-info py-2 d-none">
+                                    <i class="fas fa-redo me-2"></i><span></span>
+                                </div>
                             </div>
 
                             <div class="col-12 col-sm-6">
@@ -303,5 +310,5 @@
 </div>
 
 <% content_for :scripts do %>
-    <%= ea_js "components/appointments_modal" %>
+    <%= ea_js "components/repeat_fields", "components/appointments_modal" %>
 <% end %>

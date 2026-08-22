@@ -3,12 +3,12 @@ require "test_helper"
 class CalendarTest < ActionDispatch::IntegrationTest
   def login_admin
     post "/login/validate", params: { username: "administrator", password: "administrator1" }
-    assert_equal({ "success" => true }, response.parsed_body)
+    assert_equal true, response.parsed_body["success"]
   end
 
   def login_provider
     post "/login/validate", params: { username: "janedoe", password: "janedoe1" }
-    assert_equal({ "success" => true }, response.parsed_body)
+    assert_equal true, response.parsed_body["success"]
   end
 
   test "calendar page requires session then renders" do
@@ -118,7 +118,7 @@ class CalendarTest < ActionDispatch::IntegrationTest
                             status: "Booked" }
       }
     end
-    assert_equal({ "success" => true }, response.parsed_body)
+    assert_equal true, response.parsed_body["success"]
   end
 
   test "save_appointment reports conflicts unless forced" do
@@ -135,7 +135,7 @@ class CalendarTest < ActionDispatch::IntegrationTest
     assert_difference "Appointment.appointments.count", 1 do
       post "/calendar/save_appointment", params: { appointment_data: conflicting, force_save: true }
     end
-    assert_equal({ "success" => true }, response.parsed_body)
+    assert_equal true, response.parsed_body["success"]
   end
 
   test "delete_appointment destroys the appointment" do
@@ -145,7 +145,7 @@ class CalendarTest < ActionDispatch::IntegrationTest
         appointment_id: appointments(:upcoming).id, cancellation_reason: "test"
       }
     end
-    assert_equal({ "success" => true }, response.parsed_body)
+    assert_equal true, response.parsed_body["success"]
   end
 
   test "unavailability save and delete round trip" do
@@ -160,7 +160,7 @@ class CalendarTest < ActionDispatch::IntegrationTest
     assert_equal "Lunch", record.notes
 
     post "/calendar/delete_unavailability", params: { unavailability_id: record.id }
-    assert_equal({ "success" => true }, response.parsed_body)
+    assert_equal true, response.parsed_body["success"]
     assert_nil Appointment.find_by(id: record.id)
   end
 
@@ -185,7 +185,7 @@ class CalendarTest < ActionDispatch::IntegrationTest
     assert_equal true, body["success"]
 
     post "/calendar/delete_working_plan_exception", params: { exception_id: body["id"], provider_id: users(:zane).id }
-    assert_equal({ "success" => true }, response.parsed_body)
+    assert_equal true, response.parsed_body["success"]
   end
 
   test "provider cannot manage another providers events" do

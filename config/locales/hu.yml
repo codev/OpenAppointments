@@ -819,3 +819,33 @@ hu:
     messages_failure_alert_hint: Send an email with the time and provider when a notification fails to send - the full details are in the message log
     messages_failure_alert_emails: Report email addresses
     messages_failure_alert_emails_hint: Comma separated
+    repeat: Repeat
+    does_not_repeat: Does not repeat
+    daily: Daily
+    weekly: Weekly
+    monthly: Monthly
+    repeat_every: Every (1 = every, 2 = every 2nd...)
+    repeat_ends: Ends
+    repeat_never: Never
+    repeat_on_date: On date
+    repeat_after: After
+    repeat_times: times
+    repeat_dates_not_booked: "{count} dates clashed and were not booked:"
+    repeats: Repeats
+    repeating_appointments: Repeating Appointments
+    back_to_appointments: Back to Appointments
+    no_repeating_appointments: No repeating appointments.
+    next_appointment: Next Appointment
+    not_booked: Not booked
+    reason_busy: already booked
+    reason_not_working: not working
+    reason_blocked: blocked period
+    change_pattern: Change pattern
+    change_pattern_hint: Appointments after today are rebooked with the new pattern - earlier ones will be kept.
+    cancel_series: Cancel series
+    cancel_series_hint: Appointments from the chosen date onwards are cancelled - earlier ones will be kept.
+    cancel_series_from: Cancel from this date
+    notify_customer: Notify the customer
+    series_saved: Repeating pattern saved.
+    series_cancelled: Repeating appointments cancelled.
+    appointment_series: Repeating Appointments

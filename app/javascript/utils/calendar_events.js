@@ -172,6 +172,7 @@ App.Utils.CalendarEvents = (function () {
         $appointmentsModal.find('#appointment-status').val(appointment.status);
         $appointmentsModal.find('#appointment-notes').val(appointment.notes);
         App.Components.ColorSelection.setColor($appointmentsModal.find('#appointment-color'), appointment.color);
+        App.Components.AppointmentsModal.showSeries(appointment.series_description);
 
         $appointmentsModal.modal('show');
     }

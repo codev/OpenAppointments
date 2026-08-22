@@ -1,0 +1,50 @@
+<%# Repeat pattern fields. Locals: prefix (element id prefix, e.g. "repeat"). %>
+<div class="repeat-fields" data-prefix="<%= prefix %>">
+    <div class="row g-2 align-items-end mb-2">
+        <div class="col-6">
+            <label class="form-label" for="<%= prefix %>-frequency"><%= lang('repeat') %></label>
+            <select id="<%= prefix %>-frequency" class="form-select repeat-frequency">
+                <option value="none"><%= lang('does_not_repeat') %></option>
+                <option value="daily"><%= lang('daily') %></option>
+                <option value="weekly"><%= lang('weekly') %></option>
+                <option value="monthly"><%= lang('monthly') %></option>
+            </select>
+        </div>
+        <div class="col-6 repeat-detail">
+            <label class="form-label" for="<%= prefix %>-interval"><%= lang('repeat_every') %></label>
+            <input type="number" min="1" max="52" value="1" id="<%= prefix %>-interval" class="form-control repeat-interval">
+        </div>
+    </div>
+
+    <div class="mb-2 repeat-detail repeat-weekdays">
+        <% %w[monday tuesday wednesday thursday friday saturday sunday].each_with_index do |day, i| %>
+            <% wday = (i + 1) % 7 %>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input repeat-weekday" type="checkbox" value="<%= wday %>"
+                       id="<%= prefix %>-weekday-<%= wday %>">
+                <label class="form-check-label" for="<%= prefix %>-weekday-<%= wday %>"><%= lang("#{day}_short") %></label>
+            </div>
+        <% end %>
+    </div>
+
+    <div class="row g-2 align-items-end mb-3 repeat-detail">
+        <div class="col-4">
+            <label class="form-label" for="<%= prefix %>-ends"><%= lang('repeat_ends') %></label>
+            <select id="<%= prefix %>-ends" class="form-select repeat-ends">
+                <option value="never"><%= lang('repeat_never') %></option>
+                <option value="on"><%= lang('repeat_on_date') %></option>
+                <option value="after"><%= lang('repeat_after') %></option>
+            </select>
+        </div>
+        <div class="col-4 repeat-ends-on-group">
+            <input id="<%= prefix %>-ends-on" class="form-control repeat-ends-on" aria-label="<%= lang('repeat_on_date') %>">
+        </div>
+        <div class="col-4 repeat-count-group">
+            <div class="input-group">
+                <input type="number" min="1" max="365" value="10" id="<%= prefix %>-count" class="form-control repeat-count"
+                       aria-label="<%= lang('repeat_after') %>">
+                <span class="input-group-text"><%= lang('repeat_times') %></span>
+            </div>
+        </div>
+    </div>
+</div>

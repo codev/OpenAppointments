@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_08_21_120000) do
+ActiveRecord::Schema[8.1].define(version: 2026_08_22_150000) do
   create_table "action_mailbox_inbound_emails", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.string "message_checksum", null: false
@@ -48,6 +48,28 @@ ActiveRecord::Schema[8.1].define(version: 2026_08_21_120000) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
+  create_table "appointment_series", force: :cascade do |t|
+    t.string "color"
+    t.datetime "created_at", null: false
+    t.integer "created_by"
+    t.integer "duration", null: false
+    t.date "ends_on"
+    t.integer "id_services", null: false
+    t.integer "id_users_customer", null: false
+    t.integer "id_users_provider", null: false
+    t.text "location"
+    t.text "notes"
+    t.text "removed", default: "[]"
+    t.text "schedule", null: false
+    t.text "skipped", default: "[]"
+    t.string "start_time", null: false
+    t.date "starts_on", null: false
+    t.string "status", default: ""
+    t.datetime "updated_at", null: false
+    t.index ["id_users_customer"], name: "index_appointment_series_on_id_users_customer"
+    t.index ["id_users_provider"], name: "index_appointment_series_on_id_users_provider"
+  end
+
   create_table "appointments", force: :cascade do |t|
     t.datetime "book_datetime"
     t.string "booking_hash"
@@ -63,6 +85,8 @@ ActiveRecord::Schema[8.1].define(version: 2026_08_21_120000) do
     t.text "location"
     t.text "meeting_link"
     t.text "notes"
+    t.date "occurrence_at"
+    t.integer "series_id"
     t.datetime "start_datetime"
     t.string "status", default: ""
     t.datetime "updated_at", null: false
@@ -71,6 +95,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_08_21_120000) do
     t.index ["id_services"], name: "index_appointments_on_id_services"
     t.index ["id_users_customer"], name: "index_appointments_on_id_users_customer"
     t.index ["id_users_provider", "start_datetime"], name: "index_appointments_on_id_users_provider_and_start_datetime"
+    t.index ["series_id"], name: "index_appointments_on_series_id"
     t.index ["start_datetime"], name: "index_appointments_on_start_datetime"
   end
 

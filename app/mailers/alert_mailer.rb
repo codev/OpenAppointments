@@ -12,6 +12,14 @@ class AlertMailer < ActionMailer::Base
     mail(to: self.class.failure_recipients, subject: "[OpenAppointments] Message delivery failed: #{@provider}")
   end
 
+  # Nightly series extension could not book some dates.
+  def series_skipped(report)
+    @lines = report.flat_map do |series, skipped|
+      skipped.map { |entry| "#{entry['date']} #{series.provider&.name} / #{series.customer&.name}: #{entry['reason']}" }
+    end
+    mail(to: self.class.failure_recipients, subject: "[OpenAppointments] Repeating appointments not booked")
+  end
+
   # The configured list, else every admin.
   def self.failure_recipients
     configured = Setting.get("messages_failure_alert_emails").to_s.split(/[\s,;]+/).reject(&:blank?)
