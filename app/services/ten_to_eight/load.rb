@@ -4,7 +4,8 @@ module TenToEight
   # email or name+phone) so re-runs do not duplicate. Pronoun lands in custom_field_1, access
   # needs in custom_field_2, and a do-not-contact prefix on the notes (GDPR consent).
   class Load
-    PHASES = %w[categories services providers assistants admins customers appointments settings].freeze
+    PHASES = %w[categories services providers assistants admins customers appointments
+                working_plan_exceptions notifications webhooks consents settings].freeze
     DO_NOT_CONTACT_PREFIX = "[DO NOT CONTACT - consent not granted]".freeze
 
     def initialize(data, phases:, create_providers: false, progress: nil, images_dir: nil)
@@ -25,6 +26,10 @@ module TenToEight
       load_admins if phase?("admins")
       load_customers if phase?("customers")
       load_appointments if phase?("appointments")
+      load_working_plan_exceptions if phase?("working_plan_exceptions")
+      load_notifications if phase?("notifications")
+      load_webhooks if phase?("webhooks")
+      load_consents if phase?("consents")
       load_settings if phase?("settings")
       { counts: @counts, errors: @errors }
     end
@@ -160,6 +165,7 @@ module TenToEight
           updates[:is_private] = row[:is_private] if !row[:is_private].nil? && provider.is_private != row[:is_private]
           provider.update(updates) if updates.any?
           restore_password(provider, row[:password_hash])
+          restore_sync_settings(provider, row[:sync])
         elsif @create_providers && row[:email].present?
           provider = guard("providers", counts, row[:name].presence || row[:email]) do
             user = User.create!(
@@ -172,7 +178,8 @@ module TenToEight
               username: row[:username].presence || row[:email].split("@").first,
               password: row[:password_hash].presence || Passwords.hash(SecureRandom.base58(12)),
               notifications: false,
-              working_plan: row[:working_plan].to_json
+              working_plan: row[:working_plan].to_json,
+              **(row[:sync] || {})
             )
             user
           end
@@ -224,6 +231,78 @@ module TenToEight
       user.settings.update(password: password_hash) if password_hash.present? && user.settings
     end
 
+    # Notification flag and calendar sync credentials from an ODS export.
+    def restore_sync_settings(user, sync)
+      user.settings.update(sync) if sync.present? && user.settings
+    end
+
+    # Replaces each listed provider's exceptions with the exported set.
+    def load_working_plan_exceptions
+      counts = track("working_plan_exceptions")
+      providers = User.providers.to_a
+      by_provider = Array(@data[:working_plan_exceptions]).group_by { |row| row[:provider] }
+
+      by_provider.each do |provider_name, rows|
+        provider = match_provider(providers, { name: provider_name })
+        next counts[:skipped] += rows.size unless provider
+
+        guard("working_plan_exceptions", counts, provider_name) do
+          WorkingPlanException.transaction do
+            provider.working_plan_exceptions.delete_all
+            rows.each do |row|
+              WorkingPlanException.create!(
+                provider: provider, start_date: row[:start_date], end_date: row[:end_date],
+                start_time: row[:start_time], end_time: row[:end_time], breaks: row[:breaks]
+              )
+            end
+          end
+          counts[:created] += rows.size
+        end
+      end
+    end
+
+    # Templates match on title and event.
+    def load_notifications
+      counts = track("notifications")
+      Array(@data[:notifications]).each do |row|
+        guard("notifications", counts, row[:title]) do
+          notification = Notification.find_or_initialize_by(title: row[:title], event: row[:event])
+          created = notification.new_record?
+          notification.update!(row.except(:title, :event))
+          counts[created ? :created : :matched] += 1
+        end
+      end
+    end
+
+    def load_webhooks
+      counts = track("webhooks")
+      Array(@data[:webhooks]).each do |row|
+        guard("webhooks", counts, row[:name]) do
+          webhook = Webhook.find_or_initialize_by(name: row[:name])
+          created = webhook.new_record?
+          webhook.update!(row.except(:name))
+          counts[created ? :created : :matched] += 1
+        end
+      end
+    end
+
+    # Append-only audit log: a row is matched on its timestamp, type and email.
+    def load_consents
+      counts = track("consents")
+      Array(@data[:consents]).each do |row|
+        guard("consents", counts, "#{row[:type]} #{row[:email]}") do
+          next counts[:skipped] += 1 if row[:created_at].nil? || row[:type].blank?
+
+          if Consent.exists?(created_at: row[:created_at], type: row[:type], email: row[:email])
+            counts[:matched] += 1
+          else
+            Consent.create!(row)
+            counts[:created] += 1
+          end
+        end
+      end
+    end
+
     # Only OpenAppointments ODS backups carry assistants and admins (10to8
     # exports have no such sheets).
     def load_assistants
@@ -254,6 +333,7 @@ module TenToEight
         if user
           counts[:matched] += 1
           restore_password(user, row[:password_hash])
+          restore_sync_settings(user, row[:sync])
         elsif @create_providers && row[:email].present?
           user = guard(phase, counts, row[:name].presence || row[:email]) do
             created = User.create!(
@@ -263,7 +343,8 @@ module TenToEight
             created.create_settings!(
               username: row[:username].presence || row[:email].split("@").first,
               password: row[:password_hash].presence || Passwords.hash(SecureRandom.base58(12)),
-              notifications: false
+              notifications: false,
+              **(row[:sync] || {})
             )
             yield(created, row) if block_given?
             created

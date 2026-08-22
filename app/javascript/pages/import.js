@@ -23,7 +23,7 @@ App.Pages.Import = (function () {
 
         data.append('days_back', $('#days-back').val());
         data.append('days_forward', $('#days-forward').val());
-        $('.import-phase:checked').each((index, el) => data.append('phases[]', $(el).val()));
+        $('.import-phase:checked:visible').each((index, el) => data.append('phases[]', $(el).val()));
         data.append('create_providers', $('#phase-providers').prop('checked') ? '1' : '0');
         return data;
     }
@@ -160,7 +160,9 @@ App.Pages.Import = (function () {
     }
 
     function toggleImagesZip() {
-        $('#images-zip-wrapper').toggleClass('d-none', $('#import-type').val() !== 'ods');
+        const isOds = $('#import-type').val() === 'ods';
+        $('#images-zip-wrapper').toggleClass('d-none', !isOds);
+        $('.ods-only').toggleClass('d-none', !isOds);
     }
 
     function initialize() {

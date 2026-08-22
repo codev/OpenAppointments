@@ -6,6 +6,7 @@ CloudronManifest.json.
 ## 1.7.1
 
 - Terminology hint says to capitalise the labels
+- Backup and restore now cover message templates, working plan exceptions, webhooks, consents and provider calendar sync settings
 - General Settings "Fixed timezone": everyone uses the default timezone and timezone fields are hidden throughout
 - Settings and Messages side menus show the current page as plain text and mark the parent of a sub-page
 - A picture chosen while adding a provider, assistant, admin, service or category is uploaded when the record is saved instead of being lost

@@ -814,3 +814,4 @@ ro:
     unavailable: Unavailable
     fixed_timezone: Fixed timezone
     fixed_timezone_hint: Everyone uses the default timezone. Timezone fields are hidden on the booking page, staff, customer and appointment forms.
+    consents: Consents

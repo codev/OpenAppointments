@@ -20,6 +20,10 @@ class OdsExtract
       appointments: appointments_rows,
       assistants: assistants_rows,
       admins: admins_rows,
+      working_plan_exceptions: working_plan_exceptions_rows,
+      notifications: notifications_rows,
+      webhooks: webhooks_rows,
+      consents: consents_rows,
       settings: settings_rows
     }
   end
@@ -70,7 +74,54 @@ class OdsExtract
         services_description: row["services_description"].presence,
         picture: row["picture"].presence, password_hash: row["password_hash"].presence,
         sort_order: row["sort_order"].presence&.to_i,
-        is_private: row["is_private"].nil? ? nil : row["is_private"] == "1" }
+        is_private: row["is_private"].nil? ? nil : row["is_private"] == "1",
+        sync: sync_settings(row) }
+    end
+  end
+
+  # Per-user settings columns present in the sheet (older exports have none).
+  def sync_settings(row)
+    DataExport::SYNC_COLUMNS.filter_map do |column|
+      next unless row.key?(column)
+
+      value = row[column]
+      value = (value == "1") if %w[notifications google_sync caldav_sync].include?(column)
+      value = value.presence&.to_i if %w[sync_past_days sync_future_days].include?(column)
+      [ column.to_sym, value.is_a?(String) ? value.presence : value ]
+    end.to_h
+  end
+
+  def working_plan_exceptions_rows
+    rows("Working Plan Exceptions").map do |row|
+      { provider: row["provider"], start_date: row["start_date"], end_date: row["end_date"],
+        start_time: row["start_time"].presence, end_time: row["end_time"].presence,
+        breaks: row["breaks"].presence }
+    end
+  end
+
+  def notifications_rows
+    rows("Notifications").map do |row|
+      { title: row["title"], event: row["event"], description: row["description"].presence,
+        audiences: JSON.parse(row["audiences"].presence || "[]"),
+        channels: JSON.parse(row["channels"].presence || "[]"),
+        lead_days: row["lead_days"].to_i, lead_hours: row["lead_hours"].to_i,
+        lead_mode: row["lead_mode"].presence || "before", send_time: row["send_time"].presence || "08:00",
+        short_text: row["short_text"], long_text: row["long_text"] }
+    end
+  end
+
+  def webhooks_rows
+    rows("Webhooks").map do |row|
+      { name: row["name"], url: row["url"], actions: row["actions"], secret_header: row["secret_header"].presence,
+        secret_token: row["secret_token"].presence, is_ssl_verified: row["is_ssl_verified"] != "0",
+        notes: row["notes"].presence }
+    end
+  end
+
+  def consents_rows
+    rows("Consents").map do |row|
+      { created_at: parse_time(row["created_at"]), type: row["type"], name: row["name"].presence,
+        email: row["email"].presence, ip: row["ip"].presence }
     end
   end
 
@@ -78,7 +129,8 @@ class OdsExtract
     rows("Assistants").map do |row|
       { name: row["name"], email: row["email"], phone: row["phone_number"],
         timezone: row["timezone"].presence, providers: row["providers"].to_s.split("|"),
-        username: row["username"].presence, password_hash: row["password_hash"].presence }
+        username: row["username"].presence, password_hash: row["password_hash"].presence,
+        sync: sync_settings(row) }
     end
   end
 
@@ -86,7 +138,7 @@ class OdsExtract
     rows("Admins").map do |row|
       { name: row["name"], email: row["email"], phone: row["phone_number"],
         timezone: row["timezone"].presence, username: row["username"].presence,
-        password_hash: row["password_hash"].presence }
+        password_hash: row["password_hash"].presence, sync: sync_settings(row) }
     end
   end
 

@@ -148,7 +148,8 @@ class ImportPageTest < ActionDispatch::IntegrationTest
     File.binwrite(path, response.body)
     sheets = Ods.parse(path.to_s)
     assert_equal [ "Service Categories", "Services", "Providers", "Assistants", "Admins",
-                   "Customers", "Appointments", "Blocked Periods", "Settings" ], sheets.keys
+                   "Customers", "Appointments", "Blocked Periods", "Working Plan Exceptions",
+                   "Notifications", "Webhooks", "Consents", "Settings" ], sheets.keys
     customer_rows = sheets["Customers"]
     assert_includes customer_rows.first, "email"
     assert(customer_rows.drop(1).any? { |row| row.include?(users(:jx).email) })

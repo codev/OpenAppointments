@@ -54,8 +54,9 @@
             <div class="row mb-3">
                 <div class="col-12 col-md-6">
                     <label class="form-label"><%= lang('import_phases') %></label>
+                    <% ods_only = %w[working_plan_exceptions notifications webhooks consents] %>
                     <% TenToEight::Load::PHASES.each do |phase| %>
-                        <div class="form-check">
+                        <div class="form-check<%= " ods-only" if ods_only.include?(phase) %>">
                             <input class="form-check-input import-phase" type="checkbox"
                                    id="phase-<%= phase %>" value="<%= phase %>"
                                    <%= "checked" unless %w[providers assistants admins settings].include?(phase) %>>
