@@ -659,14 +659,38 @@ body .modal.full-screen .modal-push {
     margin-right: 1rem;
 }
 
-/* Tablets: the expanded bar must fit every item, so the logo stacks above its
-   text, items lose their minimum width and the list wraps onto a second line. */
-#header .navbar-nav {
-    flex-wrap: wrap;
-    justify-content: flex-end;
+/* Expanded bar (768px up): the menu and its items fill the full bar height so
+   the whole column is clickable, and the list wraps instead of overflowing. */
+@media (min-width: 768px) {
+    #header {
+        align-items: stretch;
+    }
+
+    #header #header-menu {
+        align-self: stretch;
+        align-items: stretch;
+    }
+
+    #header .navbar-nav {
+        flex-wrap: wrap;
+        justify-content: flex-end;
+        align-items: stretch;
+    }
+
+    #header .navbar-nav .nav-item {
+        display: flex;
+    }
+
+    #header .navbar-nav .nav-link {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex: 1;
+    }
 }
 
-@media (min-width: 768px) and (max-width: 991.98px) {
+/* Below 1024px: logo above its text, icon above the label, tighter items. */
+@media (min-width: 768px) and (max-width: 1023.98px) {
     #header-logo {
         flex-direction: column;
         text-align: center;
@@ -682,8 +706,13 @@ body .modal.full-screen .modal-push {
     }
 
     #header .navbar-nav .nav-link {
-        padding-left: 0.6rem !important;
-        padding-right: 0.6rem !important;
+        flex-direction: column;
+        padding: 0.5rem 0.6rem !important;
+        line-height: 1.2;
+    }
+
+    #header .navbar-nav .nav-link i {
+        margin: 0 0 0.25rem !important;
     }
 }
 
