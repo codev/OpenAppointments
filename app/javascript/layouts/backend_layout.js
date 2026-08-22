@@ -82,9 +82,36 @@ window.App.Layouts.Backend = (function () {
     }
 
     /**
+     * Warn before leaving a page with unsaved changes: a CRUD page in add/edit mode
+     * (its save/cancel buttons are showing) or a settings page edited since the last save.
+     * The browser shows its own dialog, the text cannot be customised.
+     */
+    function guardUnsavedChanges() {
+        const isSettingsPage = $('#save-settings').length > 0;
+        let settingsDirty = false;
+
+        $(document).on('input change', '.backend-page :input', () => {
+            settingsDirty = isSettingsPage;
+        });
+
+        $(document).on('click', '#save-settings', () => {
+            settingsDirty = false;
+        });
+
+        window.addEventListener('beforeunload', (event) => {
+            if (settingsDirty || $('.save-cancel-group:visible').length) {
+                event.preventDefault();
+                event.returnValue = '';
+            }
+        });
+    }
+
+    /**
      * Initialize the module.
      */
     function initialize() {
+        guardUnsavedChanges();
+
         $(document).ajaxStart(() => {
             $loading.show();
         });

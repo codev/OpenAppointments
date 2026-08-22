@@ -6,6 +6,7 @@ CloudronManifest.json.
 ## 1.7.1
 
 - Terminology hint says to capitalise the labels
+- The browser warns before leaving a page with unsaved changes, on the record pages while adding or editing and on the settings pages once a field has been changed
 - A working day added inside a longer unavailable period shows as working on the calendar and appointments pages, matching what customers can book
 - Provider Working Plan: "Add Extra Days/Times Available" and "Add Unavailable Days/Times" buttons replace the single exception button; the unavailable dialog asks only for dates; the exceptions table shows a Status column instead of times
 - 10to8 import matches existing providers by name as well as email, including a first name against the export's full name, so appointments land under the providers already set up
