@@ -167,7 +167,7 @@ class BookingFlowTest < ActionDispatch::IntegrationTest
       assert_match '"manage_mode":true', response.body # window.vars JSON is emitted raw
     end
 
-    travel_to Time.new(2026, 7, 20, 9, 45, 0) do
+    travel_to provider_zone.parse("2026-07-20 09:45") do
       get "/booking/reschedule/#{appointments(:upcoming).booking_hash}"
       assert_response :success
       assert_no_match '"manage_mode":true', response.body
@@ -185,7 +185,7 @@ class BookingFlowTest < ActionDispatch::IntegrationTest
 
   test "register refuses a reschedule inside the late window or of a cancelled appointment" do
     appointment = appointments(:upcoming)
-    travel_to Time.new(2026, 7, 20, 9, 45, 0) do
+    travel_to provider_zone.parse("2026-07-20 09:45") do
       assert_no_difference "Appointment.count" do
         post "/booking/register", params: register_params(
           start: "2026-07-21 11:00:00", email: users(:jx).email,
@@ -221,7 +221,7 @@ class BookingFlowTest < ActionDispatch::IntegrationTest
                                               appointment.end_datetime)
 
     appointment.update!(appointment_status: nil)
-    travel_to Time.new(2026, 7, 20, 9, 45, 0) do
+    travel_to provider_zone.parse("2026-07-20 09:45") do
       post "/booking_cancellation/late/#{appointment.booking_hash}", params: { cancellation_reason: "Ill" }
     end
     assert_response :success
@@ -229,6 +229,10 @@ class BookingFlowTest < ActionDispatch::IntegrationTest
   end
 
   private
+
+  # Inside the late window of the 10:00 fixture appointment, in the provider's
+  # zone (CI runs in UTC, the fixture provider is in Europe/London).
+  def provider_zone = Time.find_zone!(users(:zane).effective_timezone)
 
   def register_params(start:, provider: users(:zane).id, email: "new@example.org",
                       extra_appointment: {}, manage_mode: false)
