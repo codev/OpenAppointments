@@ -5,22 +5,16 @@ CloudronManifest.json.
 
 ## 1.8.0
 
-- Terminology hint says to capitalise the labels
-- Message Settings can email a report (time and provider) to a list of addresses whenever a message fails to send
-- Backup exports providers, services and categories in their display order
-- Backup and restore now cover message templates, working plan exceptions, webhooks, consents and provider calendar sync settings
-- General Settings "Fixed timezone": everyone uses the default timezone and timezone fields are hidden throughout
-- Settings and Messages side menus show the current page as plain text and mark the parent of a sub-page
-- A picture chosen while adding a provider, assistant, admin, service or category is uploaded when the record is saved instead of being lost
+- Calendar view divided into Appointments (a table view) and the traditional Calendar view and the Appointments view has been improved with better filters and navigation
+- Appointments view only shows working providers with a list of providers not working on that day at the top
+- Improvements to provider working plans: buttons for adding holidays and overtime are clearer in a provider working plan; working days added inside a longer unavailable period are shown correctly in the admin interface
+- Backup improvements: backups are now shown in the spreadsheet in the order they are saved in, backups covers message templates, webhooks and more settings - note the backup can contain passwords and other authentication data so store it securely
+- Fixed Timezone: new option under general settings to use the default timezone everywhere
+- Messages and notification settings moved to the cog menu with the other settings
+- Message Settings can email a report to admins when a message fails to send
 - robots.txt blocks AI crawlers (Ultimate AI Block List v1.8)
-- The browser warns before leaving a page with unsaved changes, on the record pages while adding or editing and on the settings pages once a field has been changed
-- A working day added inside a longer unavailable period shows as working on the calendar and appointments pages, matching what customers can book
-- Provider Working Plan: "Add Extra Days/Times Available" and "Add Unavailable Days/Times" buttons replace the single exception button; the unavailable dialog asks only for dates; the exceptions table shows a Status column instead of times
-- 10to8 import matches existing providers by name as well as email, including a first name against the export's full name, so appointments land under the providers already set up
-- Appointments menu item shows the table view; Calendar always shows the calendar. The per-user calendar view preference is removed
-- Messages moves under the cog menu as Message Settings, with Unknown Inbox below it; Manage data is now Data Settings
-- Calendar and Appointments are separate pages with their toolbars in HTML; the shared calendar behaviour lives in one JS module instead of two copies
-- Appointments view: each provider column is a plain list; provider and service filters sit in the top bar next to the days selector, empty means all; prev, next and Today buttons and the date picker styled like the calendar view
+- The browser warns before leaving a page with unsaved changes
+- Minor fixes: pictures save correctly when adding a provider; settings side menus indicate the current page; 10to8 import matches existing providers by name as well as email
 
 ## 1.7.0
 
@@ -32,17 +26,17 @@ CloudronManifest.json.
 
 ## 1.6.3
 
-- Provider Private flags export and import, so private providers survive a backup restore
+- Hidden providers added to backup and restore
 
 ## 1.6.2
 
-- The calendar Messages button opens the customer page scrolled to the conversation panel with the composer focused
+- Message button on the calendar opens the customer page scrolled to the conversation panel
 
 ## 1.6.1
 
 - The Messages button on the calendar appointment popover shows the customer's unread message count in a bubble
-- Fix 406 Not Acceptable on mobile and other unrecognised browsers (the browser version guard is gone)
-- The popover Messages button is the same size as the other popover buttons
+- Fix 406 Not Acceptable on mobile and other unrecognised browsers (the rails browser version guard is gone)
+- Messages button in calendar neater
 
 ## 1.6.0
 
