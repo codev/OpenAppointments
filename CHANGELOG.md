@@ -3,6 +3,19 @@
 The about page lists these notes; every release needs a section here matching
 CloudronManifest.json.
 
+## 1.9.0
+
+- Repeating appointments - these can only be added by providers, assistants or admins
+- Reports added under Data Settings
+- New Inbox view on the navigation bar with number of unread messages for a provider
+- Incoming messages stay unread until someone marks them read
+- Option to send messages for late cancellations
+- Cancelled appointments are kept, with their status changed, instead of being deleted
+- Settings for minimum time an appointment can be made before it starts and late cancellation window time
+- The booking page's cancel appointment button says Cancel, as its hint text does, instead of Delete
+- Calendar and Appointments pages have a Statuses tick-box filter
+- Minor fixes: navigation bar looks better on tablets; appointment status labels are backed up; important statuses can only be renamed, not deleted
+
 ## 1.8.0
 
 - Calendar view divided into Appointments (a table view) and the traditional Calendar view and the Appointments view has been improved with better filters and navigation

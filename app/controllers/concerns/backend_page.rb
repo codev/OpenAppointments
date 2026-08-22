@@ -35,7 +35,8 @@ module BackendPage
       user_display_name: current_user&.full_name,
       timezone: session[:timezone],
       grouped_timezones: helpers.grouped_timezones,
-      privileges: session_role.permissions
+      privileges: session_role.permissions,
+      inbox_unread: can?(:view, :customers) ? inbox_scope.unread.count : 0
     )
     script_vars(
       user_id: session[:user_id],
@@ -56,6 +57,18 @@ module BackendPage
         [ :"#{kind}_#{field}", Setting.get("#{kind}_#{field}").to_s == "1" ]
       end
     }.to_h
+  end
+
+  def inbox_provider_ids
+    session[:role_slug] == Role::PROVIDER ? [ session[:user_id] ] : assistant_provider_ids
+  end
+
+  def inbox_scope
+    Message.inbox_for(session[:role_slug], inbox_provider_ids)
+  end
+
+  def unknown_inbox_access?
+    [ Role::ADMIN, Role::ASSISTANT ].include?(session[:role_slug])
   end
 
   def assistant_provider_ids

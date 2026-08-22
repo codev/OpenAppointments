@@ -253,10 +253,7 @@ module Availability
 
     def consider_book_advance_timeout(date, hours, provider)
       zone = Time.find_zone!(provider.effective_timezone)
-      timeout = Setting.get("book_advance_timeout", "0")
-      timeout = timeout.to_s.match?(/\A-?\d+\z/) ? [ timeout.to_i, 0 ].max : 0
-
-      threshold = now + timeout * 60
+      threshold = now + BookingWindows.minutes("book_advance_timeout") * 60
 
       hours = hours.reject { |hour| zone.parse("#{date} #{hour}").to_i <= threshold.to_i }
       hours.sort

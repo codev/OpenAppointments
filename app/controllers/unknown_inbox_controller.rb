@@ -1,5 +1,5 @@
 # Incoming messages from senders that match no customer. Visible to admins and
-# assistants; visiting the page clears the header badge.
+# assistants; each message is marked read by hand.
 class UnknownInboxController < ApplicationController
   include BackendPage
 
@@ -10,7 +10,7 @@ class UnknownInboxController < ApplicationController
   def index
     session[:dest_url] = request.original_url
     return redirect_to login_path unless logged_in?
-    return head :forbidden unless [ Role::ADMIN, Role::ASSISTANT ].include?(session[:role_slug])
+    return head :forbidden unless unknown_inbox_access?
 
     backend_page_vars(page_title: helpers.lang("unknown_inbox"), active_menu: "messages")
     page = [ params[:page].to_i, 1 ].max
@@ -20,7 +20,6 @@ class UnknownInboxController < ApplicationController
       inbox_page: page,
       inbox_last_page: Message.incoming.unknown_sender.count <= page * PER_PAGE
     )
-    Message.mark_unknown_read
     render :index
   end
 end

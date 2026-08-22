@@ -15,6 +15,10 @@ module Api
         "googleCalendarId" => "id_google_calendar"
       }.freeze
 
+      SORT_OVERRIDES = {
+        "status" => "(SELECT name FROM appointment_statuses WHERE appointment_statuses.id = appointments.status_id)"
+      }.freeze
+
       SEARCH_COLUMNS = %w[start_datetime end_datetime location notes booking_hash].freeze
     end
   end

@@ -17,7 +17,9 @@ class OdsExtract
       services: services_rows,
       staff: staff_rows,
       customers: customers_rows,
+      appointment_statuses: appointment_statuses_rows,
       appointments: appointments_rows,
+      appointment_series: appointment_series_rows,
       assistants: assistants_rows,
       admins: admins_rows,
       working_plan_exceptions: working_plan_exceptions_rows,
@@ -101,7 +103,7 @@ class OdsExtract
 
   def notifications_rows
     rows("Notifications").map do |row|
-      { title: row["title"], event: row["event"], description: row["description"].presence,
+      { title: row["title"], event: row["event"], cancellation_scope: row["cancellation_scope"].presence || "all",
         audiences: JSON.parse(row["audiences"].presence || "[]"),
         channels: JSON.parse(row["channels"].presence || "[]"),
         lead_days: row["lead_days"].to_i, lead_hours: row["lead_hours"].to_i,
@@ -169,6 +171,22 @@ class OdsExtract
       { staff: row["provider"], service: row["service"], customer_ext_id: row["customer_id"],
         start: start_at, end: parse_time(row["end_datetime"]) || start_at + 30 * 60,
         note: row["notes"], status: row["status"] }
+    end
+  end
+
+  def appointment_statuses_rows
+    rows("Appointment Statuses").map do |row|
+      { name: row["name"], kind: row["kind"].presence || "custom", position: row["position"].to_i }
+    end
+  end
+
+  def appointment_series_rows
+    rows("Appointment Series").map do |row|
+      { staff: row["provider"], customer_ext_id: row["customer_id"], service: row["service"],
+        schedule: row["schedule"], starts_on: row["starts_on"], ends_on: row["ends_on"].presence,
+        start_time: row["start_time"], duration: row["duration"].to_i, notes: row["notes"],
+        location: row["location"], status: row["status"], color: row["color"].presence,
+        skipped: row["skipped"].presence || "[]", removed: row["removed"].presence || "[]" }
     end
   end
 

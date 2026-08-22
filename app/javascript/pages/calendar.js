@@ -46,7 +46,7 @@ App.Pages.Calendar = (function () {
 
                 const events = [
                     ...Events.appointmentEvents(
-                        response.appointments,
+                        App.Utils.StatusFilter.apply(response.appointments),
                         filterType() === FILTER_TYPE_SERVICE ? 'provider' : 'service',
                     ),
                     ...Events.unavailabilityEvents(response.unavailabilities),
@@ -92,6 +92,7 @@ App.Pages.Calendar = (function () {
 
     function addEventListeners() {
         $reloadAppointments.on('click', reload);
+        App.Utils.StatusFilter.onChange(reload);
 
         $selectFilterItem.on('change', () => {
             const provider = Events.findProvider($selectFilterItem.val());

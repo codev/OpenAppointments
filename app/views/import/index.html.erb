@@ -25,6 +25,41 @@
             </div>
         </div>
 
+        <h5 class="mb-3 fw-light"><%= lang('reports') %></h5>
+
+        <form class="card card-body mb-4" method="get" action="/import/report" id="report-form">
+            <p class="text-muted small"><%= lang('report_hint') %></p>
+            <div class="row g-3 mb-3">
+                <div class="col-sm-6">
+                    <label for="report-from" class="form-label"><%= lang('report_from') %></label>
+                    <input type="date" id="report-from" name="from" class="form-control" required
+                           value="<%= vars(:report_from) %>">
+                </div>
+                <div class="col-sm-6">
+                    <label for="report-to" class="form-label"><%= lang('report_to') %></label>
+                    <input type="date" id="report-to" name="to" class="form-control" required
+                           value="<%= vars(:report_to) %>">
+                </div>
+            </div>
+            <label class="form-label"><%= lang('report_statuses') %></label>
+            <input type="hidden" name="status_ids[]" value="">
+            <div class="d-flex flex-wrap gap-3 mb-3">
+                <% vars(:appointment_statuses).each do |status| %>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="status_ids[]" value="<%= status["id"] %>"
+                               id="report-status-<%= status["id"] %>" checked>
+                        <label class="form-check-label" for="report-status-<%= status["id"] %>"><%= status["name"] %></label>
+                    </div>
+                <% end %>
+            </div>
+            <div>
+                <button type="submit" class="btn btn-outline-primary">
+                    <i class="fas fa-file-download me-2"></i>
+                    <%= lang('download_report') %>
+                </button>
+            </div>
+        </form>
+
         <p class="text-muted small"><%= lang('import_hint') %></p>
 
         <div class="card card-body mb-4">
@@ -54,7 +89,7 @@
             <div class="row mb-3">
                 <div class="col-12 col-md-6">
                     <label class="form-label"><%= lang('import_phases') %></label>
-                    <% ods_only = %w[working_plan_exceptions notifications webhooks consents] %>
+                    <% ods_only = %w[appointment_statuses appointment_series working_plan_exceptions notifications webhooks consents] %>
                     <% TenToEight::Load::PHASES.each do |phase| %>
                         <div class="form-check<%= " ods-only" if ods_only.include?(phase) %>">
                             <input class="form-check-input import-phase" type="checkbox"

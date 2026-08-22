@@ -141,10 +141,10 @@ class BookingFlowTest < ActionDispatch::IntegrationTest
     assert_response :forbidden
   end
 
-  test "reschedule updates the existing appointment in manage mode" do
+  test "reschedule books a new appointment and marks the original rescheduled" do
     appointment = appointments(:upcoming)
     travel_to Time.new(2026, 7, 10, 12, 0, 0) do
-      assert_no_difference "Appointment.count" do
+      assert_difference "Appointment.count", 1 do
         post "/booking/register", params: register_params(
           start: "#{DATE} 11:00:00", email: users(:jx).email,
           extra_appointment: { "id" => appointment.id }, manage_mode: true
@@ -152,28 +152,87 @@ class BookingFlowTest < ActionDispatch::IntegrationTest
       end
     end
     assert_response :success
-    assert_equal "2026-07-20 11:00:00", appointment.reload.start_datetime.strftime("%Y-%m-%d %H:%M:%S")
+    replacement = Appointment.find(response.parsed_body["appointment_id"])
+    assert_equal "2026-07-20 11:00:00", replacement.start_datetime.strftime("%Y-%m-%d %H:%M:%S")
+    assert_equal "Booked", replacement.status
+    assert_equal "Rescheduled", appointment.reload.status
+    assert_equal replacement, appointment.rescheduled_to
+    assert_equal "2026-07-20 10:00:00", appointment.start_datetime.strftime("%Y-%m-%d %H:%M:%S")
   end
 
-  test "reschedule page enters manage mode and locked appointments show message" do
+  test "reschedule page enters manage mode, late window shows late cancel only" do
     travel_to Time.new(2026, 7, 10, 12, 0, 0) do
       get "/booking/reschedule/#{appointments(:upcoming).booking_hash}"
       assert_response :success
       assert_match '"manage_mode":true', response.body # window.vars JSON is emitted raw
     end
 
-    travel_to Time.new(2026, 7, 20, 9, 45, 0) do
+    travel_to provider_zone.parse("2026-07-20 09:45") do
       get "/booking/reschedule/#{appointments(:upcoming).booking_hash}"
       assert_response :success
-      assert_match(/locked/i, response.body)
+      assert_no_match '"manage_mode":true', response.body
+      assert_includes response.body, "/booking_cancellation/late/#{appointments(:upcoming).booking_hash}"
     end
+
+    appointments(:upcoming).cancel!
+    get "/booking/reschedule/#{appointments(:upcoming).booking_hash}"
+    assert_match(/not found/i, response.body)
 
     get "/booking/reschedule/unknownhash00"
     assert_response :success
     assert_match(/not found/i, response.body)
   end
 
+  test "register refuses a reschedule inside the late window or of a cancelled appointment" do
+    appointment = appointments(:upcoming)
+    travel_to provider_zone.parse("2026-07-20 09:45") do
+      assert_no_difference "Appointment.count" do
+        post "/booking/register", params: register_params(
+          start: "2026-07-21 11:00:00", email: users(:jx).email,
+          extra_appointment: { "id" => appointment.id }, manage_mode: true
+        )
+      end
+    end
+    assert_equal false, response.parsed_body["success"]
+    assert_equal "Booked", appointment.reload.status
+  end
+
+  test "late window uses the provider timezone" do
+    users(:zane).update!(timezone: "Europe/London")
+    Setting.set("book_advance_timeout", "60")
+    Setting.set("late_cancellation_timeout", "60")
+    appointment = appointments(:upcoming) # 10:00 provider local time
+    zone = Time.find_zone!(users(:zane).effective_timezone)
+    assert_not BookingWindows.late?(appointment, zone.parse("2026-07-20 08:59"))
+    assert BookingWindows.late?(appointment, zone.parse("2026-07-20 09:01"))
+  end
+
+  test "customer cancel keeps the row as cancelled; inside the late window as late cancel" do
+    appointment = appointments(:upcoming)
+    travel_to Time.new(2026, 7, 10, 12, 0, 0) do
+      assert_no_difference "Appointment.count" do
+        post "/booking_cancellation/of/#{appointment.booking_hash}", params: { cancellation_reason: "Away" }
+      end
+    end
+    assert_response :success
+    assert_equal "Cancelled", appointment.reload.status
+    assert_includes appointment.notes, "Away"
+    assert_not Appointment.provider_conflict?(appointment.id_users_provider, appointment.start_datetime,
+                                              appointment.end_datetime)
+
+    appointment.update!(appointment_status: nil)
+    travel_to provider_zone.parse("2026-07-20 09:45") do
+      post "/booking_cancellation/late/#{appointment.booking_hash}", params: { cancellation_reason: "Ill" }
+    end
+    assert_response :success
+    assert_equal "Late Cancel", appointment.reload.status
+  end
+
   private
+
+  # Inside the late window of the 10:00 fixture appointment, in the provider's
+  # zone (CI runs in UTC, the fixture provider is in Europe/London).
+  def provider_zone = Time.find_zone!(users(:zane).effective_timezone)
 
   def register_params(start:, provider: users(:zane).id, email: "new@example.org",
                       extra_appointment: {}, manage_mode: false)

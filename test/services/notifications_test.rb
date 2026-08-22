@@ -60,7 +60,7 @@ class NotificationsTest < ActiveSupport::TestCase
     create_notification(event: "created_or_updated", audiences: %w[customer], title: "Saved")
     @appointment.status = "Cancelled"
     Notifications.appointment_saved(@appointment, @service, @provider, @customer,
-                                    manage_mode: true, previous_status: "Booked")
+                                    manage_mode: true, previous_status_id: appointment_statuses(:booked).id)
     assert_equal [ "Bye" ], Message.all.map { |m| m.notification.title }
   end
 
@@ -68,8 +68,37 @@ class NotificationsTest < ActiveSupport::TestCase
     create_notification(event: "missed", audiences: %w[customer], title: "Missed")
     @appointment.status = "No Show"
     Notifications.appointment_saved(@appointment, @service, @provider, @customer,
-                                    manage_mode: true, previous_status: "Booked")
+                                    manage_mode: true, previous_status_id: appointment_statuses(:booked).id)
     assert_equal [ "Missed" ], Message.all.map { |m| m.notification.title }
+  end
+
+  test "cancelled templates can target in-time or too-late cancellations" do
+    Setting.set("book_advance_timeout", "1440")
+    Setting.set("late_cancellation_timeout", "1440")
+    create_notification(event: "cancelled", audiences: %w[customer], title: "Any")
+    create_notification(event: "cancelled", audiences: %w[customer], title: "In time", cancellation_scope: "in_time")
+    create_notification(event: "cancelled", audiences: %w[customer], title: "Late", cancellation_scope: "late")
+
+    @appointment.update!(start_datetime: Time.current + 3.days, end_datetime: Time.current + 3.days + 30.minutes)
+    Notifications.appointment_deleted(@appointment, @service, @provider, @customer)
+    assert_equal [ "Any", "In time" ], Message.all.map { |m| m.notification.title }.sort
+
+    Message.delete_all
+    @appointment.update!(start_datetime: Time.current + 2.hours, end_datetime: Time.current + 2.hours + 30.minutes)
+    Notifications.appointment_deleted(@appointment, @service, @provider, @customer)
+    assert_equal [ "Any", "Late" ], Message.all.map { |m| m.notification.title }.sort
+  end
+
+  test "coming up skips rescheduled rows and includes rows without a status" do
+    create_notification(event: "coming_up", audiences: %w[customer], lead_days: 0, lead_hours: 24)
+    @appointment.update!(start_datetime: Time.current + 2.hours, end_datetime: Time.current + 3.hours,
+                         appointment_status: AppointmentStatus.of("rescheduled"))
+    Notifications.scan_coming_up
+    assert_equal 0, Message.count
+
+    @appointment.update!(appointment_status: nil)
+    Notifications.scan_coming_up
+    assert_equal 1, Message.count
   end
 
   test "deleted fires cancelled with the reason token" do

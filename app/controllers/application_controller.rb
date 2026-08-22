@@ -31,6 +31,14 @@ class ApplicationController < ActionController::Base
     scope.limit(limit).offset(offset)
   end
 
+  def permitted_hash(value, allowed)
+    value.is_a?(ActionController::Parameters) ? value.permit(*allowed).to_h : value
+  end
+
+  def boolean_param(value)
+    ActiveModel::Type::Boolean.new.cast(value) || false
+  end
+
   # Who was logged in when a crash report is emailed.
   def exception_notifier_data
     user = current_user

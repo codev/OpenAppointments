@@ -7,11 +7,22 @@ class BookingCancellationController < ApplicationController
   # without a token field (see components/booking_cancellation_frame).
   skip_forgery_protection
 
-  rate_limit to: 5, within: 10.minutes, only: :of,
+  rate_limit to: 5, within: 10.minutes, only: %i[of late],
              with: -> { render_cancellation_error("Too many cancellation attempts. Please try again later.") }
 
   # POST /booking_cancellation/of/:appointment_hash
   def of
+    cancel("cancelled")
+  end
+
+  # POST /booking_cancellation/late/:appointment_hash: inside the late window.
+  def late
+    cancel("late_cancel")
+  end
+
+  private
+
+  def cancel(kind)
     return head :forbidden if Setting.get("disable_booking") == "1"
 
     appointment_hash = params[:appointment_hash].to_s
@@ -24,6 +35,9 @@ class BookingCancellationController < ApplicationController
 
     appointment = Appointment.find_by(booking_hash: appointment_hash)
     return render_appointment_not_found unless appointment
+    return render_appointment_not_found if appointment.frees_slot?
+
+    kind = "late_cancel" if BookingWindows.late?(appointment)
 
     provider = appointment.provider
     customer = appointment.customer
@@ -39,8 +53,7 @@ class BookingCancellationController < ApplicationController
       time_format: Setting.get("time_format")
     }
 
-    # EA deletes first, then notifies with the already loaded records.
-    appointment.destroy!
+    appointment.cancel!(kind: kind, reason: cancellation_reason)
 
     Synchronization.appointment_deleted(appointment, provider)
     Notifications.appointment_deleted(appointment, service, provider, customer, settings,
@@ -50,6 +63,7 @@ class BookingCancellationController < ApplicationController
     html_vars(
       page_title: helpers.lang("appointment_cancelled_title"),
       company_color: Setting.get("company_color"),
+      late_notice: kind == "late_cancel" ? BookingWindows.late_notice(helpers) : nil,
       google_analytics_code: Setting.get("google_analytics_code"),
       matomo_analytics_url: Setting.get("matomo_analytics_url"),
       matomo_analytics_site_id: Setting.get("matomo_analytics_site_id")
@@ -60,8 +74,6 @@ class BookingCancellationController < ApplicationController
     Rails.logger.error("Booking Cancellation Exception: #{e.message}")
     render_cancellation_error(e.message)
   end
-
-  private
 
   def render_appointment_not_found
     html_vars(

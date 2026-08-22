@@ -24,7 +24,7 @@ module SettingsPage
   end
 
   # EA save loop: persists each {name, value} row, optionally whitelisted. An
-  # optional block transforms values (name, value) -> value.
+  # optional block transforms values (name, value) -> value; nil skips the row.
   def save_setting_rows(key, allowed_names: nil)
     setting_row_params(key).each do |row|
       name = row["name"]
@@ -33,7 +33,7 @@ module SettingsPage
 
       value = row["value"].to_s
       value = yield(name, value) if block_given?
-      Setting.set(name, value)
+      Setting.set(name, value) unless value.nil?
     end
 
     render json: { success: true }

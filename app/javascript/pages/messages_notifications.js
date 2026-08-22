@@ -62,6 +62,7 @@ App.Pages.MessagesNotifications = (function () {
         const comingUp = $panel.find('[data-name="event"]').val() === 'coming_up';
 
         $panel.find('.coming-up-block').toggle(comingUp);
+        $panel.find('.cancelled-block').toggle($panel.find('[data-name="event"]').val() === 'cancelled');
 
         const dayAt = $panel.find('[data-name="lead_mode"]').val() === 'day_at';
 

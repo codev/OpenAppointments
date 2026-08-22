@@ -3,7 +3,7 @@
  */
 App.Http.CustomerMessages = (function () {
     /**
-     * Fetch the messages of a customer (marks incoming messages as read).
+     * Fetch the messages of a customer.
      *
      * @param {Number} customerId
      *
@@ -42,8 +42,22 @@ App.Http.CustomerMessages = (function () {
         return $.post(url, data);
     }
 
+    /**
+     * Mark every incoming message of a customer read.
+     *
+     * @param {Number} customerId
+     *
+     * @return {Object}
+     */
+    function markRead(customerId) {
+        const url = App.Utils.Url.siteUrl('customer_messages/mark_read');
+
+        return $.post(url, {csrf_token: vars('csrf_token'), customer_id: customerId});
+    }
+
     return {
         find,
         send,
+        markRead,
     };
 })();

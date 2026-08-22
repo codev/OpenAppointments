@@ -42,12 +42,17 @@ App.Http.Calendar = (function () {
     ) {
         const url = App.Utils.Url.siteUrl('calendar/save_appointment');
 
+        const {repeat, ...appointmentData} = appointment;
         const data = {
             csrf_token: vars('csrf_token'),
-            appointment_data: appointment,
+            appointment_data: appointmentData,
             notify_users: notifyUsers ? 1 : 0,
             force_save: forceSave ? 1 : 0,
         };
+
+        if (repeat) {
+            data.repeat = repeat;
+        }
 
         if (customer) {
             data.customer_data = customer;
@@ -74,8 +79,8 @@ App.Http.Calendar = (function () {
      *
      * @return {*|jQuery}
      */
-    function deleteAppointment(appointmentId, cancellationReason, notifyUsers = true) {
-        const url = App.Utils.Url.siteUrl('calendar/delete_appointment');
+    function removeAppointment(action, appointmentId, cancellationReason, notifyUsers) {
+        const url = App.Utils.Url.siteUrl('calendar/' + action);
 
         const data = {
             csrf_token: vars('csrf_token'),
@@ -85,6 +90,14 @@ App.Http.Calendar = (function () {
         };
 
         return $.post(url, data);
+    }
+
+    function deleteAppointment(appointmentId, cancellationReason, notifyUsers = true) {
+        return removeAppointment('delete_appointment', appointmentId, cancellationReason, notifyUsers);
+    }
+
+    function cancelAppointment(appointmentId, cancellationReason, notifyUsers = true) {
+        return removeAppointment('cancel_appointment', appointmentId, cancellationReason, notifyUsers);
     }
 
     /**
@@ -307,6 +320,7 @@ App.Http.Calendar = (function () {
         saveAppointment,
         saveAppointmentWithConflictHandling,
         deleteAppointment,
+        cancelAppointment,
         saveUnavailability,
         deleteUnavailability,
         saveWorkingPlanException,

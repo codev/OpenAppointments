@@ -11,7 +11,11 @@
 
             <%= render "shared/messages_log_table",
                        messages: vars(:inbox_messages), page: vars(:inbox_page),
-                       last_page: vars(:inbox_last_page), base_path: "/unknown_inbox" %>
+                       last_page: vars(:inbox_last_page), base_path: "/unknown_inbox", inbox: true %>
         </div>
     </div>
 </div>
+
+<% content_for :scripts do %>
+    <%= ea_js "utils/mark_read" %>
+<% end %>

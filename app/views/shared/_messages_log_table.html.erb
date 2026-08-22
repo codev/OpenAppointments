@@ -1,4 +1,7 @@
-<%# Locals: messages, page, last_page, base_path. %>
+<%# Locals: messages, page, last_page, base_path, inbox (optional: body column and
+    mark as read buttons; unread rows are bold). %>
+<% inbox = local_assigns.fetch(:inbox, false) %>
+<% page_url = ->(n) { "#{base_path}#{base_path.include?('?') ? '&' : '?'}page=#{n}" } %>
 <% format_settings = { date_format: setting("date_format"), time_format: setting("time_format") } %>
 <div class="table-responsive">
     <table class="table table-sm align-middle">
@@ -10,12 +13,19 @@
                 <th scope="col"><%= lang('notification') %></th>
                 <th scope="col"><%= lang('customer') %></th>
                 <th scope="col"><%= lang('messages_address') %></th>
+                <% if inbox %>
+                    <th scope="col"><%= lang('message') %></th>
+                <% end %>
                 <th scope="col"><%= lang('status') %></th>
+                <% if inbox %>
+                    <th scope="col"></th>
+                <% end %>
             </tr>
         </thead>
         <tbody>
             <% messages.each do |message| %>
-                <tr>
+                <% unread = message.direction == "incoming" && !message.read? %>
+                <tr class="<%= 'message-unread fw-bold' if inbox && unread %>">
                     <td class="text-nowrap"><%= format_appointment_datetime(message.created_at, format_settings) %></td>
                     <td>
                         <% if message.direction == "incoming" %>
@@ -50,6 +60,14 @@
                     <td class="text-break">
                         <%= message.direction == "incoming" ? message.from_address : message.to_address %>
                     </td>
+                    <% if inbox %>
+                        <td class="text-break fw-normal">
+                            <% if message.subject.present? %>
+                                <strong><%= message.subject %></strong><br>
+                            <% end %>
+                            <%= simple_format(message.body.to_s.truncate(500)) %>
+                        </td>
+                    <% end %>
                     <td>
                         <% badge = { "sent" => "bg-success", "received" => "bg-success",
                                      "failed" => "bg-danger", "queued" => "bg-secondary" }[message.status] %>
@@ -58,11 +76,22 @@
                             <%= lang("messages_status_#{message.status}") %>
                         </span>
                     </td>
+                    <% if inbox %>
+                        <td class="text-nowrap">
+                            <% if unread %>
+                                <button type="button" class="btn btn-sm btn-outline-primary mark-read" data-id="<%= message.id %>">
+                                    <i class="fas fa-check me-1"></i><%= lang('mark_as_read') %>
+                                </button>
+                            <% elsif message.direction == "incoming" %>
+                                <i class="fas fa-check text-success" title="<%= lang('read') %>"></i>
+                            <% end %>
+                        </td>
+                    <% end %>
                 </tr>
             <% end %>
             <% if messages.empty? %>
                 <tr>
-                    <td colspan="7" class="text-muted text-center py-4"><%= lang('no_records_found') %></td>
+                    <td colspan="<%= inbox ? 9 : 7 %>" class="text-muted text-center py-4"><%= lang('no_records_found') %></td>
                 </tr>
             <% end %>
         </tbody>
@@ -71,14 +100,14 @@
 
 <div class="d-flex justify-content-between">
     <% if page > 1 %>
-        <a class="btn btn-outline-secondary" href="<%= base_path %>?page=<%= page - 1 %>">
+        <a class="btn btn-outline-secondary" href="<%= page_url.call(page - 1) %>">
             <i class="fas fa-chevron-left me-2"></i><%= lang('previous') %>
         </a>
     <% else %>
         <span></span>
     <% end %>
     <% unless last_page %>
-        <a class="btn btn-outline-secondary" href="<%= base_path %>?page=<%= page + 1 %>">
+        <a class="btn btn-outline-secondary" href="<%= page_url.call(page + 1) %>">
             <%= lang('next') %><i class="fas fa-chevron-right ms-2"></i>
         </a>
     <% end %>

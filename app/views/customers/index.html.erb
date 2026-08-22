@@ -196,8 +196,11 @@
 
                     <div id="customer-appointments" class="card border p-3 overflow-auto mb-4" style="min-height: 400px; max-height: 800px; max-width: 330px; width: 100%;"></div>
 
-                    <h4 class="mb-3 fw-light">
+                    <h4 class="mb-3 fw-light d-flex justify-content-between align-items-center">
                         <%= lang('customer_messages') %>
+                        <button type="button" id="mark-all-read" class="btn btn-sm btn-outline-primary d-none">
+                            <i class="fas fa-check-double me-1"></i><%= lang('mark_all_as_read') %>
+                        </button>
                     </h4>
 
                     <div id="customer-messages" class="card border p-3 overflow-auto mb-3"></div>
@@ -226,5 +229,5 @@
 </div>
 
 <% content_for :scripts do %>
-    <%= ea_js "http/customers_http_client", "http/customer_messages_http_client", "pages/customers" %>
+    <%= ea_js "utils/mark_read", "http/customers_http_client", "http/customer_messages_http_client", "pages/customers" %>
 <% end %>

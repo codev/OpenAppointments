@@ -1,5 +1,5 @@
-# Customer page messages section: conversation listing (marks incoming read)
-# and manual sends over one or all enabled providers.
+# Customer page messages section: conversation listing, manual sends over one
+# or all enabled providers, and marking a conversation read.
 class CustomerMessagesController < ApplicationController
   include BackendPage
 
@@ -14,8 +14,20 @@ class CustomerMessagesController < ApplicationController
     return head :forbidden unless customer_access?(customer_id)
 
     messages = Message.where(customer_id: customer_id).newest_first.limit(200).to_a
-    Message.mark_read_for_customer(customer_id)
     render json: messages.map { |message| message_row(message) }
+  rescue ArgumentError => e
+    json_exception(e, status: :ok)
+  end
+
+  # POST /customer_messages/mark_read: every incoming message of the customer.
+  def mark_read
+    raise ArgumentError, "Forbidden" if cannot?(:view, :customers)
+
+    customer_id = params.require(:customer_id).to_i
+    return head :forbidden unless customer_access?(customer_id)
+
+    Message.mark_read_for_customer(customer_id)
+    render json: { success: true, inbox_unread: inbox_scope.unread.count }
   rescue ArgumentError => e
     json_exception(e, status: :ok)
   end
@@ -74,6 +86,7 @@ class CustomerMessagesController < ApplicationController
       "subject" => message.subject,
       "body" => message.body,
       "status" => message.status,
+      "read" => message.direction != "incoming" || message.read?,
       "created_at" => message.created_at&.strftime("%Y-%m-%d %H:%M:%S")
     }
   end

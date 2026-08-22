@@ -198,6 +198,11 @@ body .modal.full-screen .modal-push {
     font-size: 11px;
 }
 
+#calendar-page #calendar .fc-freed-slot {
+    opacity: 0.5;
+    text-decoration: line-through;
+}
+
 #calendar-page #calendar .fc-unavailability {
     background-image: url('../img/unavailability.jpg');
     background-blend-mode: hard-light;
@@ -325,6 +330,17 @@ body .modal.full-screen .modal-push {
 
 #calendar .calendar-header .fc-toolbar-chunk:nth-child(2) {
     justify-self: center;
+}
+
+#calendar .calendar-header .fc-toolbar-chunk:nth-child(3) {
+    justify-self: end;
+}
+
+/* Same size as the FullCalendar Today button. */
+#calendar .calendar-header #toggle-series {
+    font-size: 1em;
+    padding: 0.4em 0.65em;
+    line-height: 1.5;
 }
 
 #calendar .calendar-header .select-date {
@@ -643,6 +659,63 @@ body .modal.full-screen .modal-push {
     margin-right: 1rem;
 }
 
+/* Expanded bar (768px up): the menu and its items fill the full bar height so
+   the whole column is clickable, and the list wraps instead of overflowing. */
+@media (min-width: 768px) {
+    #header {
+        align-items: stretch;
+    }
+
+    #header #header-menu {
+        align-self: stretch;
+        align-items: stretch;
+    }
+
+    #header .navbar-nav {
+        flex-wrap: wrap;
+        justify-content: flex-end;
+        align-items: stretch;
+    }
+
+    #header .navbar-nav .nav-item {
+        display: flex;
+    }
+
+    #header .navbar-nav .nav-link {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex: 1;
+    }
+}
+
+/* Below 1024px: logo above its text, icon above the label, tighter items. */
+@media (min-width: 768px) and (max-width: 1023.98px) {
+    #header-logo {
+        flex-direction: column;
+        text-align: center;
+        margin-right: 0.5rem;
+    }
+
+    #header-logo img {
+        margin-right: 0 !important;
+    }
+
+    #header .navbar-nav .nav-item {
+        min-width: 0;
+    }
+
+    #header .navbar-nav .nav-link {
+        flex-direction: column;
+        padding: 0.5rem 0.6rem !important;
+        line-height: 1.2;
+    }
+
+    #header .navbar-nav .nav-link i {
+        margin: 0 0 0.25rem !important;
+    }
+}
+
 /* Keep the nav dropdown menus above page panels. */
 #header {
     z-index: 1030;
@@ -687,3 +760,5 @@ body .modal.full-screen .modal-push {
     background-color: var(--bs-primary);
     color: var(--bs-white);
 }
+
+@import "recurring_select";

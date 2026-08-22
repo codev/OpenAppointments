@@ -17,8 +17,10 @@ module DataExport
       "Assistants" => assistants_sheet,
       "Admins" => admins_sheet,
       "Customers" => customers_sheet,
+      "Appointment Statuses" => appointment_statuses_sheet,
       "Appointments" => appointments_sheet,
       "Blocked Periods" => blocked_periods_sheet,
+      "Appointment Series" => appointment_series_sheet,
       "Working Plan Exceptions" => working_plan_exceptions_sheet,
       "Notifications" => notifications_sheet,
       "Webhooks" => webhooks_sheet,
@@ -101,6 +103,11 @@ module DataExport
          custom_field_3 custom_field_4 custom_field_5 language timezone] ] + rows
   end
 
+  def appointment_statuses_sheet
+    rows = AppointmentStatus.ordered.map { |status| [ status.name, status.kind, status.position ] }
+    [ %w[name kind position] ] + rows
+  end
+
   def appointments_sheet
     rows = Appointment.includes(:provider, :customer, :service).order(:start_datetime).map do |appointment|
       [ appointment.start_datetime&.strftime(DATETIME), appointment.end_datetime&.strftime(DATETIME),
@@ -110,6 +117,16 @@ module DataExport
     end
     [ %w[start_datetime end_datetime provider customer_id service notes status is_unavailability
          booking_hash] ] + rows
+  end
+
+  def appointment_series_sheet
+    rows = AppointmentSeries.includes(:provider, :service).order(:starts_on).map do |series|
+      [ series.provider&.name, series.id_users_customer, series.service&.name, series.schedule,
+        series.starts_on.to_s, series.ends_on&.to_s, series.start_time, series.duration, series.notes,
+        series.location, series.status, series.color, series.skipped, series.removed ]
+    end
+    [ %w[provider customer_id service schedule starts_on ends_on start_time duration notes location status
+         color skipped removed] ] + rows
   end
 
   def blocked_periods_sheet
@@ -130,13 +147,13 @@ module DataExport
 
   def notifications_sheet
     rows = Notification.order(:id).map do |notification|
-      [ notification.title, notification.event, notification.description,
+      [ notification.title, notification.event, notification.cancellation_scope,
         notification.audiences.to_json, notification.channels.to_json,
         notification.lead_days, notification.lead_hours, notification.lead_mode,
         notification.send_time, notification.short_text, notification.long_text ]
     end
-    [ %w[title event description audiences channels lead_days lead_hours lead_mode send_time
-         short_text long_text] ] + rows
+    [ %w[title event cancellation_scope audiences channels lead_days lead_hours lead_mode send_time short_text
+         long_text] ] + rows
   end
 
   def webhooks_sheet

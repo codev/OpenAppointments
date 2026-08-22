@@ -79,12 +79,19 @@
                                         <%= lang('status') %>
                                     </label>
                                     <select id="appointment-status" class="form-select">
-                                        <% appointment_status_options.each do |appointment_status_option| %>
-                                            <option value="<%= appointment_status_option %>">
-                                                <%= appointment_status_option %>
+                                        <% appointment_status_options.each do |status| %>
+                                            <option value="<%= status["name"] %>" data-kind="<%= status["kind"] %>">
+                                                <%= status["name"] %>
                                             </option>
                                         <% end %>
                                     </select>
+                                </div>
+
+                                <div id="appointment-repeat">
+                                    <%= render "shared/repeat_fields", prefix: "repeat" %>
+                                </div>
+                                <div id="appointment-series-summary" class="alert alert-info py-2 d-none">
+                                    <i class="fas fa-redo me-2"></i><span></span>
                                 </div>
                             </div>
 
@@ -303,5 +310,6 @@
 </div>
 
 <% content_for :scripts do %>
-    <%= ea_js "components/appointments_modal" %>
+    <%= javascript_include_tag "vendor/recurring_select/recurring_select" %>
+    <%= ea_js "components/repeat_fields", "components/appointments_modal" %>
 <% end %>

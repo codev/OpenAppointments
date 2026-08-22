@@ -19,15 +19,25 @@ class Message < ApplicationRecord
   scope :unknown_sender, -> { where(customer_id: nil) }
   scope :newest_first, -> { order(created_at: :desc, id: :desc) }
 
+  # Incoming customer messages a backend user may see: everything for admins or
+  # when customer access is not limited, otherwise those of customers with an
+  # appointment with the given providers.
+  def self.inbox_for(role, provider_ids)
+    scope = incoming.where.not(customer_id: nil)
+    return scope if role == Role::ADMIN || Setting.get("limit_customer_access") != "1"
+
+    scope.where(customer_id: Appointment.where(id_users_provider: provider_ids).select(:id_users_customer))
+  end
+
+  def read? = read_at.present?
+
+  def mark_read! = update!(read_at: read_at || Time.current)
+
   def self.unread_counts_for(customer_ids)
     unread.where(customer_id: customer_ids).group(:customer_id).count
   end
 
   def self.mark_read_for_customer(customer_id)
     unread.where(customer_id: customer_id).update_all(read_at: Time.current)
-  end
-
-  def self.mark_unknown_read
-    unread.unknown_sender.update_all(read_at: Time.current)
   end
 end

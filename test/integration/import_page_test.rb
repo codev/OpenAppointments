@@ -148,11 +148,45 @@ class ImportPageTest < ActionDispatch::IntegrationTest
     File.binwrite(path, response.body)
     sheets = Ods.parse(path.to_s)
     assert_equal [ "Service Categories", "Services", "Providers", "Assistants", "Admins",
-                   "Customers", "Appointments", "Blocked Periods", "Working Plan Exceptions",
+                   "Customers", "Appointment Statuses", "Appointments", "Blocked Periods", "Appointment Series",
+                   "Working Plan Exceptions",
                    "Notifications", "Webhooks", "Consents", "Settings" ], sheets.keys
     customer_rows = sheets["Customers"]
     assert_includes customer_rows.first, "email"
     assert(customer_rows.drop(1).any? { |row| row.include?(users(:jx).email) })
+  ensure
+    FileUtils.rm_f(path) if path
+  end
+
+  test "appointments report downloads the range with the chosen statuses" do
+    login_admin
+    cancelled = Appointment.create!(
+      start_datetime: "2026-07-21 10:00:00", end_datetime: "2026-07-21 10:45:00",
+      provider: users(:zane), customer: users(:jx), service: services(:haircut), status: "Cancelled"
+    )
+    get "/import/report", params: { from: "2026-07-20", to: "2026-07-21" }
+    assert_response :success
+    assert_equal Ods::MIMETYPE, response.media_type
+    path = Rails.root.join("tmp", "report-test-#{SecureRandom.hex(4)}.ods")
+    File.binwrite(path, response.body)
+    rows = Ods.parse(path.to_s)["Appointments"]
+    assert_equal %w[Date Start End Duration Customer], rows.first.first(5)
+    assert_equal 2, rows.size - 1
+    assert_includes rows.last, "Cancelled"
+    assert_includes rows.last, "45"
+
+    get "/import/report", params: { from: "2026-07-20", to: "2026-07-21",
+                                    status_ids: [ appointment_statuses(:booked).id ] }
+    File.binwrite(path, response.body)
+    assert_equal 1, Ods.parse(path.to_s)["Appointments"].size - 1
+
+    get "/import/report", params: { from: "2026-07-20", to: "2026-07-21", status_ids: [ "" ] }
+    File.binwrite(path, response.body)
+    assert_equal 0, Ods.parse(path.to_s)["Appointments"].size - 1
+
+    get "/import/report", params: { from: "2026-07-22", to: "2026-07-21" }
+    assert_response :internal_server_error
+    assert_not_nil cancelled
   ensure
     FileUtils.rm_f(path) if path
   end

@@ -3,16 +3,13 @@
 # ticked, enabled channels as Message rows delivered by MessageDeliveryJob.
 # Recipient failures are logged, never raised (EA behaviour).
 module Notifications
-  CANCELLED_STATUS = "Cancelled".freeze
-  NO_SHOW_STATUS = "No Show".freeze
-
   module_function
 
   # settings param kept for call-site compatibility; company data now comes from
   # Setting directly.
   def appointment_saved(appointment, service, provider, customer, _settings = nil,
-                        manage_mode: false, previous_status: nil)
-    trigger = save_trigger(appointment, manage_mode, previous_status)
+                        manage_mode: false, previous_status_id: nil)
+    trigger = save_trigger(appointment, manage_mode, previous_status_id)
     dispatch(trigger, appointment, service, provider, customer)
   end
 
@@ -20,11 +17,11 @@ module Notifications
     dispatch(:cancelled, appointment, service, provider, customer, reason: reason)
   end
 
-  def save_trigger(appointment, manage_mode, previous_status)
-    status = appointment.status.to_s
-    if previous_status && status != previous_status.to_s
-      return :cancelled if status == CANCELLED_STATUS
-      return :missed if status == NO_SHOW_STATUS
+  # A status change to a cancelled kind fires cancelled, to no show fires missed.
+  def save_trigger(appointment, manage_mode, previous_status_id)
+    if manage_mode && previous_status_id != appointment.status_id
+      return :cancelled if %w[cancelled late_cancel].include?(appointment.status_kind)
+      return :missed if appointment.status_kind == "no_show"
     end
     manage_mode ? :updated : :created
   end
@@ -33,6 +30,8 @@ module Notifications
     return unless Messaging.enabled?
 
     Notification.for_trigger(trigger).find_each do |notification|
+      next if trigger == :cancelled && !notification.applies_to_cancellation?(appointment)
+
       deliver_notification(notification, appointment, service, provider, customer, reason: reason)
     end
   end
@@ -55,7 +54,7 @@ module Notifications
     horizon = now + notification.lead_days.days + notification.lead_hours.hours + 1.day
     Appointment.appointments
                .where(start_datetime: now..horizon)
-               .where.not(status: [ CANCELLED_STATUS, NO_SHOW_STATUS ])
+               .not_kind(AppointmentStatus::FREE_SLOT_KINDS + %w[no_show])
                .includes(:service, :provider, :customer)
                .select { |appointment| send_at(notification, appointment) <= now }
   end

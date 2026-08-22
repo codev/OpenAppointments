@@ -4,6 +4,8 @@ module Api
     # decode -> attribute hash, db_field -> inverse lookup for sort. Datetimes are
     # naive Y-m-d H:i:s strings, never iso8601.
     class BaseSerializer
+      SORT_OVERRIDES = {}.freeze
+
       class << self
         # {api_field => db_column}; subclasses set MAP.
         def map = self::MAP
@@ -23,6 +25,9 @@ module Api
         end
 
         def db_field(api_field) = map[api_field]
+
+        # ORDER BY expression; virtual attributes override the column name.
+        def sort_field(api_field) = self::SORT_OVERRIDES.fetch(api_field) { db_field(api_field) }
 
         def format_value(value)
           case value

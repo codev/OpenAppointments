@@ -56,7 +56,7 @@ module Api
         clauses = sort.split(",").filter_map do |raw|
           direction = raw.start_with?("-") ? "DESC" : "ASC"
           api_field = raw.sub(/\A[+\- ]/, "").strip
-          db_field = serializer.db_field(api_field)
+          db_field = serializer.sort_field(api_field)
           "#{db_field} #{direction}" if db_field
         end
         clauses.presence&.join(", ")

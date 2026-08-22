@@ -38,12 +38,30 @@ module EaRows
       "location" => appointment.location, "meeting_link" => appointment.meeting_link,
       "notes" => appointment.notes, "hash" => appointment.booking_hash,
       "color" => appointment.color, "status" => appointment.status,
+      "status_kind" => appointment.status_kind, "frees_slot" => appointment.frees_slot?,
       "is_unavailability" => appointment.is_unavailability,
       "id_users_provider" => appointment.id_users_provider,
       "id_users_customer" => appointment.id_users_customer,
       "id_services" => appointment.id_services,
       "id_google_calendar" => appointment.id_google_calendar,
-      "id_caldav_calendar" => appointment.id_caldav_calendar
+      "id_caldav_calendar" => appointment.id_caldav_calendar,
+      "series_id" => appointment.series_id,
+      "series_description" => appointment.series_id ? appointment.series&.description : nil
+    }
+  end
+
+  def series_row(series, now: Date.current)
+    future = series.future_dates(now)
+    {
+      "id" => series.id,
+      "provider" => series.provider&.name, "customer" => series.customer&.name, "service" => series.service&.name,
+      "id_users_provider" => series.id_users_provider,
+      "description" => series.description, "start_time" => series.start_time, "duration" => series.duration,
+      "starts_on" => series.starts_on.to_s, "ends_on" => series.ends_on&.to_s,
+      "booked" => series.appointments.active.where("occurrence_at >= ?", now).order(:occurrence_at).pluck(:occurrence_at).map(&:to_s),
+      "future" => future.map(&:to_s),
+      "skipped" => series.skipped_list,
+      "rule" => series.rule_hash
     }
   end
 
