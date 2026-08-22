@@ -53,6 +53,20 @@ class SettingsPagesTest < ActionDispatch::IntegrationTest
     end
   end
 
+  test "side menu shows the current page as text and marks a parent of the current page" do
+    login_admin
+    get "/booking_settings"
+    assert_select "#settings-nav span.nav-link", text: /Booking Settings/
+    assert_select "#settings-nav a[href='/booking_settings']", count: 0
+    assert_select "#settings-nav a[href='/general_settings']"
+
+    get "/ldap_settings"
+    assert_select "#settings-nav a.fw-bold[href='/integrations']"
+
+    get "/messages_twilio_settings"
+    assert_select "#messages-nav a.fw-bold[href='/messages_providers']"
+  end
+
   test "general settings save persists whitelisted settings" do
     login_admin
     post "/general_settings/save", params: {

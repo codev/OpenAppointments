@@ -3,28 +3,10 @@
     <%= lang('messages') %>
 </h4>
 
+<% providers_child = request.path =~ %r{\A/messages_[a-z]+_settings\z} %>
 <ul id="messages-nav" class="nav flex-column">
-    <li class="nav-item mb-3">
-        <a class="nav-link px-0 py-2" href="/messages_settings">
-            <%= lang('settings') %>
-        </a>
-    </li>
-
-    <li class="nav-item mb-3">
-        <a class="nav-link px-0 py-2" href="/messages_providers">
-            <%= lang('messages_providers') %>
-        </a>
-    </li>
-
-    <li class="nav-item mb-3">
-        <a class="nav-link px-0 py-2" href="/messages_notifications">
-            <%= lang('notifications') %>
-        </a>
-    </li>
-
-    <li class="nav-item mb-3">
-        <a class="nav-link px-0 py-2" href="/messages_logs">
-            <%= lang('messages_logs') %>
-        </a>
-    </li>
+    <%= render "shared/side_nav_item", path: "/messages_settings", text: lang('settings'), child: false %>
+    <%= render "shared/side_nav_item", path: "/messages_providers", text: lang('messages_providers'), child: providers_child.present? %>
+    <%= render "shared/side_nav_item", path: "/messages_notifications", text: lang('notifications'), child: false %>
+    <%= render "shared/side_nav_item", path: "/messages_logs", text: lang('messages_logs'), child: false %>
 </ul>
