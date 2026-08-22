@@ -119,11 +119,10 @@ class BackendCrudTest < ActionDispatch::IntegrationTest
 
     post "/providers/store", params: {
       provider: {
-        name: "Pat Stylist", email: "pat@example.org",
+        name: "Pat Stylist", email: "pat@example.org", mobile_number: "07700 900123",
         services: [ services(:haircut).id ],
         settings: {
           username: "patstylist", password: "patstylist1", notifications: "1",
-          calendar_view: "default",
           working_plan_exceptions: { "0" => { startDate: "2026-08-01", endDate: "2026-08-01",
                                               startTime: "10:00", endTime: "14:00" } }.values.to_json
         }
@@ -135,6 +134,7 @@ class BackendCrudTest < ActionDispatch::IntegrationTest
 
     provider = User.providers.find(body["id"])
     assert_equal "patstylist", provider.settings.username
+    assert_equal "07700 900123", provider.mobile_number
     assert Passwords.verify(nil, "patstylist1", provider.settings.password)
     assert_equal company_plan, provider.settings.working_plan,
                  "working_plan should default to the company plan"

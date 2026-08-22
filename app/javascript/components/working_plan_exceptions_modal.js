@@ -24,6 +24,8 @@ App.Components.WorkingPlanExceptionsModal = (function () {
     const $save = $('#working-plan-exceptions-save');
     const $addBreak = $('.working-plan-exceptions-add-break');
     const $isNonWorkingDay = $('#working-plan-exceptions-is-non-working-day');
+    const $isNonWorkingDayGroup = $('#working-plan-exceptions-is-non-working-day-group');
+    const $times = $('#working-plan-exceptions-times');
 
     const moment = window.moment;
 
@@ -43,6 +45,8 @@ App.Components.WorkingPlanExceptionsModal = (function () {
         $breaks.find('tbody').html(renderNoBreaksRow());
         $isNonWorkingDay.prop('checked', false);
         toggleFieldsByNonWorkingDay(false);
+        $isNonWorkingDayGroup.show();
+        $times.show();
     }
 
     /**
@@ -239,9 +243,11 @@ App.Components.WorkingPlanExceptionsModal = (function () {
     /**
      * Open the modal and start adding a new working plan exception.
      *
+     * @param {Boolean} [nonWorking] When given, the non-working switch is fixed to this
+     *     value and hidden; a non-working exception shows only the dates.
      * @returns {*|jQuery.Deferred}
      */
-    function add() {
+    function add(nonWorking) {
         deferred = $.Deferred();
 
         App.Utils.UI.setDateTimePickerValue($startDate, new Date());
@@ -249,7 +255,13 @@ App.Components.WorkingPlanExceptionsModal = (function () {
 
         resetTimeSelection();
 
-        $isNonWorkingDay.prop('checked', false);
+        $isNonWorkingDay.prop('checked', Boolean(nonWorking));
+        toggleFieldsByNonWorkingDay(Boolean(nonWorking));
+
+        if (nonWorking !== undefined) {
+            $isNonWorkingDayGroup.hide();
+            $times.toggle(!nonWorking);
+        }
 
         $breaks.find('tbody').html(renderNoBreaksRow());
 

@@ -34,7 +34,7 @@
         </div>
 
         <div class="record-details column col-12 mb-4">
-            <div class="float-md-start mb-4 me-4">
+            <div class="mb-3">
                 <div class="add-edit-delete-group btn-group">
                     <button id="edit-provider" class="btn btn-outline-secondary" disabled="disabled">
                         <i class="fas fa-edit me-2"></i>
@@ -63,7 +63,7 @@
 
             </div>
 
-            <ul class="nav nav-pills switch-view">
+            <ul class="nav nav-pills switch-view mb-3">
                 <li class="nav-item">
                     <a class="nav-link active" href="#details" data-bs-toggle="tab">
                         <%= lang('details') %>
@@ -198,16 +198,6 @@
                                        autocomplete="new-password" disabled>
                             </div>
 
-                            <div class="mb-3">
-                                <label class="form-label" for="calendar-view">
-                                    <%= lang('calendar') %>
-                                    <span class="text-danger" hidden>*</span>
-                                </label>
-                                <select id="calendar-view" class="form-select required" disabled>
-                                    <option value="default"><%= lang('default') %></option>
-                                    <option value="table"><%= lang('table') %></option>
-                                </select>
-                            </div>
 
                             <div class="mb-3">
                                 <label class="form-label" for="language">
@@ -223,7 +213,7 @@
                                 </select>
                             </div>
 
-                            <div class="mb-3">
+                            <div class="mb-3<%= timezone_hidden_class %>">
                                 <label class="form-label" for="timezone">
                                     <%= lang('timezone') %>
                                     <span class="text-danger" hidden>*</span>
@@ -367,10 +357,14 @@
                         <%= lang('add_working_plan_exceptions_during_each_day') %>
                     </p>
 
-                    <div>
-                        <button type="button" class="add-working-plan-exception btn btn-primary me-2">
+                    <div class="d-flex flex-column align-items-start gap-2">
+                        <button type="button" class="add-working-plan-exception btn btn-primary" data-non-working="0">
                             <i class="fas fa-plus-square me-2"></i>
-                            <%= lang('add_working_plan_exception') %>
+                            <%= lang('add_available_exception') %>
+                        </button>
+                        <button type="button" class="add-working-plan-exception btn btn-primary" data-non-working="1">
+                            <i class="fas fa-plus-square me-2"></i>
+                            <%= lang('add_unavailable_exception') %>
                         </button>
                     </div>
 
@@ -381,8 +375,7 @@
                             <thead>
                             <tr>
                                 <th><%= lang('date') %></th>
-                                <th><%= lang('start') %></th>
-                                <th><%= lang('end') %></th>
+                                <th><%= lang('status') %></th>
                                 <th><%= lang('actions') %></th>
                             </tr>
                             </thead>

@@ -15,7 +15,6 @@ module Api
           {
             "username" => settings.username,
             "notifications" => bool(settings.notifications),
-            "calendarView" => settings.calendar_view,
             "googleSync" => bool(settings.google_sync),
             "googleToken" => settings.google_token,
             "googleCalendar" => settings.google_calendar,

@@ -55,7 +55,7 @@ class BookingController < ApplicationController
 
       provider = record.provider
       timeout = Setting.get("book_advance_timeout", "0").to_i
-      zone = Time.find_zone!(provider.timezone.presence || "UTC")
+      zone = Time.find_zone!(provider.effective_timezone)
       appointment_start = zone.parse(record.start_datetime.strftime("%Y-%m-%d %H:%M:%S"))
       limit = Time.now + timeout * 60
 
@@ -69,7 +69,7 @@ class BookingController < ApplicationController
       appointment = appointment_payload(record)
       provider_payload = {
         "id" => provider.id, "name" => provider.name,
-        "services" => provider.services.map(&:id), "timezone" => provider.timezone
+        "services" => provider.services.map(&:id), "timezone" => provider.effective_timezone
       }
 
       # Private or hidden-category records are absent from the public payloads,
@@ -128,7 +128,8 @@ class BookingController < ApplicationController
       customer_data: customer_payload,
       customer_token: customer_token,
       default_language: Setting.get("default_language"),
-      default_timezone: Setting.get("default_timezone")
+      default_timezone: Setting.get("default_timezone"),
+      fixed_timezone: Setting.fixed_timezone?
     )
 
     html_vars(

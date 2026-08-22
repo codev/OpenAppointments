@@ -6,12 +6,11 @@ class ProvidersController < ApplicationController
 
   layout "backend"
 
-  # EA allowed_provider_fields (mobile_number is not allowed, matching EA).
-  ALLOWED_FIELDS = %w[id name email alt_number phone_number address city state
+  ALLOWED_FIELDS = %w[id name email alt_number mobile_number phone_number address city state
                       zip_code notes about services_description timezone language
                       is_private ldap_dn id_roles settings services].freeze
   ALLOWED_SETTING_FIELDS = %w[username password working_plan working_plan_exceptions
-                              notifications calendar_view].freeze
+                              notifications].freeze
 
   before_action :require_session, except: [ :index ]
 

@@ -27,7 +27,6 @@ et:
     secondary_color: "Teisene värv"
     background_color: "Taustavärv"
     import_providers_caution: "Ettevaatust: teenusepakkujate märkimine loob kasutajakontod ja lubab nende e-postiga sisse logida"
-    manage_data: "Halda andmeid"
     export_data: "Ekspordi andmed"
     backups: "Varukoopiad"
     backups_hint: "Viis uusimat varukoopiat hoitakse serveris ja neid saavad alla laadida ainult administraatorid. Allalaadimisel hoidke neid turvaliselt, sest need sisaldavad isikuandmeid."
@@ -413,7 +412,6 @@ et:
     working_plan_exception_saved: Tööplaani erand salvestatud.
     working_plan_exception_deleted: Tööplaani erand kustutatud.
     add_working_plan_exceptions_during_each_day: Lisa tööplaani erand (väljapoole tavalist tööplaani).
-    add_working_plan_exception: Lisa tööplaani erand
     require_phone_number: Nõua telefoninumbrit
     require_phone_number_hint: Kui see on sisse lülitatud, siis klient peab broneerimisel sisestama ka enda telefoninumbri.
     check_spam_folder: Kui e-maili mõne minuti jooksul ei saabu, siis palun kontrolli enda meili rämpspostikausta.
@@ -796,8 +794,28 @@ et:
     all_providers: All Providers
     message_sent: Message sent.
     terminology: Terminology
-    terminology_hint: Rename Provider and Service, for example Stylist and Treatment. Leave blank for the defaults. Languages other than English are not affected.
+    terminology_hint: Rename Provider and Service, for example Stylist and Treatment. Leave blank for the defaults. Languages other than English are not affected. Start the words with a capital letter.
     provider_label: Provider (singular)
     provider_label_plural: Providers (plural)
     service_label: Service (singular)
     service_label_plural: Services (plural)
+    message_settings: Message Settings
+    data_settings: Data Settings
+    all_services: All Services
+    select_day_interval_hint: Number of days to show.
+    filter_providers_hint: Show only the selected providers.
+    filter_services_hint: Show only the selected services.
+    free_for_appointments: Free for appointments
+    not_working_on: "Not working {date}: {names}"
+    and: and
+    add_available_exception: Add Extra Days/Times Available
+    add_unavailable_exception: Add Unavailable/Holiday Days
+    available: Available
+    unavailable: Unavailable
+    fixed_timezone: Fixed timezone
+    fixed_timezone_hint: Everyone uses the default timezone. Timezone fields are hidden on the booking page, staff, customer and appointment forms.
+    consents: Consents
+    messages_failure_alert: Email a report when a message fails to send
+    messages_failure_alert_hint: Send an email with the time and provider when a notification fails to send - the full details are in the message log
+    messages_failure_alert_emails: Report email addresses
+    messages_failure_alert_emails_hint: Comma separated

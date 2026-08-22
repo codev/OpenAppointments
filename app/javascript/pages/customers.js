@@ -430,9 +430,13 @@ App.Pages.Customers = (function () {
 
                     // Timezone
 
-                    $('<small/>', {
-                        'text': (vars('timezones') || {})[appointment.provider.timezone] || appointment.provider.timezone,
-                    }),
+                    vars('fixed_timezone')
+                        ? null
+                        : $('<small/>', {
+                              'text':
+                                  (vars('timezones') || {})[appointment.provider.timezone] ||
+                                  appointment.provider.timezone,
+                          }),
                 ],
             }).appendTo('#customer-appointments');
         });

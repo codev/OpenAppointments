@@ -25,7 +25,7 @@ class CalendarPull
 
   def sync_provider(provider)
     settings = provider.settings
-    zone = Time.find_zone!(provider.timezone.presence || "UTC")
+    zone = Time.find_zone!(provider.effective_timezone)
     now = Time.now.in_time_zone(zone)
     from = now - settings.sync_past_days.to_i.days
     to = now + settings.sync_future_days.to_i.days

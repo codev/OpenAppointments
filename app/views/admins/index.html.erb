@@ -167,16 +167,6 @@
                                maxlength="512" autocomplete="new-password" disabled>
                     </div>
 
-                    <div class="mb-3">
-                        <label class="form-label" for="calendar-view">
-                            <%= lang('calendar') %>
-                            <span class="text-danger" hidden>*</span>
-                        </label>
-                        <select id="calendar-view" class="form-select required" disabled>
-                            <option value="default"><%= lang('default') %></option>
-                            <option value="table"><%= lang('table') %></option>
-                        </select>
-                    </div>
 
                     <div class="mb-3">
                         <label class="form-label" for="language">
@@ -192,7 +182,7 @@
                         </select>
                     </div>
 
-                    <div class="mb-3">
+                    <div class="mb-3<%= timezone_hidden_class %>">
                         <label class="form-label" for="timezone">
                             <%= lang('timezone') %>
                             <span class="text-danger" hidden>*</span>

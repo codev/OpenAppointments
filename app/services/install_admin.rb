@@ -20,7 +20,6 @@ module InstallAdmin
       username: "administrator",
       password: BCrypt::Password.create(DEFAULT_PASSWORD, cost: 12),
       notifications: true,
-      calendar_view: "default",
       require_password_change: true
     )
     admin

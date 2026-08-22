@@ -27,7 +27,6 @@ pt:
     secondary_color: "Cor secundária"
     background_color: "Cor de fundo"
     import_providers_caution: "Atenção: marcar profissionais criará contas de utilizador e permitirá iniciar sessão com o email deles"
-    manage_data: "Gerir dados"
     export_data: "Exportar dados"
     backups: "Cópias de segurança"
     backups_hint: "As cinco cópias de segurança mais recentes ficam no servidor e apenas os administradores as podem descarregar. Guarde-as em segurança se as descarregar porque contêm informações pessoais."
@@ -413,7 +412,6 @@ pt:
     working_plan_exception_saved: Exceção ao plano de trabalho salva com sucesso.
     working_plan_exception_deleted: Exceção ao plano de trabalho excluída com sucesso.
     add_working_plan_exceptions_during_each_day: Adicione exceções ao plano de trabalho, fora do plano de trabalho.
-    add_working_plan_exception: Adicionar Exceção ao Plano de Trabalho
     require_phone_number: Exigir número de telefone
     require_phone_number_hint: Quando ativado, os clientes e usuários precisarão inserir o número de telefone do cliente ao agendar um compromisso
     check_spam_folder: Por favor, verifique sua pasta de spam se o email não chegar dentro de alguns minutos.
@@ -796,8 +794,28 @@ pt:
     all_providers: All Providers
     message_sent: Message sent.
     terminology: Terminology
-    terminology_hint: Rename Provider and Service, for example Stylist and Treatment. Leave blank for the defaults. Languages other than English are not affected.
+    terminology_hint: Rename Provider and Service, for example Stylist and Treatment. Leave blank for the defaults. Languages other than English are not affected. Start the words with a capital letter.
     provider_label: Provider (singular)
     provider_label_plural: Providers (plural)
     service_label: Service (singular)
     service_label_plural: Services (plural)
+    message_settings: Message Settings
+    data_settings: Data Settings
+    all_services: All Services
+    select_day_interval_hint: Number of days to show.
+    filter_providers_hint: Show only the selected providers.
+    filter_services_hint: Show only the selected services.
+    free_for_appointments: Free for appointments
+    not_working_on: "Not working {date}: {names}"
+    and: and
+    add_available_exception: Add Extra Days/Times Available
+    add_unavailable_exception: Add Unavailable/Holiday Days
+    available: Available
+    unavailable: Unavailable
+    fixed_timezone: Fixed timezone
+    fixed_timezone_hint: Everyone uses the default timezone. Timezone fields are hidden on the booking page, staff, customer and appointment forms.
+    consents: Consents
+    messages_failure_alert: Email a report when a message fails to send
+    messages_failure_alert_hint: Send an email with the time and provider when a notification fails to send - the full details are in the message log
+    messages_failure_alert_emails: Report email addresses
+    messages_failure_alert_emails_hint: Comma separated

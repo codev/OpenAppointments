@@ -1,0 +1,70 @@
+<%# Appointments page: a day column per provider for one or three days. %>
+<div class="container-fluid backend-page pt-0 pb-0" id="calendar-page">
+    <div class="row mb-3 text-white py-3 bg-dark" id="calendar-toolbar">
+        <div id="calendar-filter" class="col-lg-8">
+            <div class="calendar-filter-items d-flex flex-wrap gap-2">
+                <select id="select-day-interval" class="form-select"
+                        data-tippy-content="<%= lang('select_day_interval_hint') %>" aria-label="Days">
+                    <option value="1">1 <%= lang('day') %></option>
+                    <option value="3">3 <%= lang('days') %></option>
+                </select>
+                <select id="filter-provider" class="form-select filter-group"
+                        data-tippy-content="<%= lang('filter_providers_hint') %>" aria-label="<%= lang('provider') %>">
+                    <option value=""><%= lang('all_providers') %></option>
+                    <% vars(:available_providers).each do |provider| %>
+                        <option value="<%= provider["id"] %>"><%= provider["name"] %></option>
+                    <% end %>
+                </select>
+                <select id="filter-service" class="form-select filter-group"
+                        data-tippy-content="<%= lang('filter_services_hint') %>" aria-label="<%= lang('service') %>">
+                    <option value=""><%= lang('all_services') %></option>
+                    <% vars(:available_services).each do |service| %>
+                        <option value="<%= service["id"] %>"><%= service["name"] %></option>
+                    <% end %>
+                </select>
+            </div>
+        </div>
+
+        <div id="calendar-actions" class="col-lg-4 text-md-end">
+            <%= render "calendar/actions", working_plan_exception: false %>
+        </div>
+    </div>
+
+    <div id="calendar">
+        <div class="calendar-header fc fc-direction-ltr fc-theme-standard">
+            <div class="fc-toolbar fc-header-toolbar">
+                <div class="fc-toolbar-chunk">
+                    <div class="fc-button-group">
+                        <button type="button" class="fc-prev-button fc-button fc-button-primary" id="previous-day"
+                                aria-label="<%= lang('previous') %>">
+                            <span class="fc-icon fc-icon-chevron-left"></span>
+                        </button>
+                        <button type="button" class="fc-next-button fc-button fc-button-primary" id="next-day"
+                                aria-label="<%= lang('next') %>">
+                            <span class="fc-icon fc-icon-chevron-right"></span>
+                        </button>
+                    </div>
+                    <button type="button" class="fc-today-button fc-button fc-button-primary" id="today">
+                        <%= lang('today') %>
+                    </button>
+                </div>
+                <div class="fc-toolbar-chunk">
+                    <input type="text" id="select-date" class="form-control d-inline-block select-date">
+                </div>
+                <div class="fc-toolbar-chunk"></div>
+            </div>
+        </div>
+        <div id="not-working-notes" class="text-muted mb-2"></div>
+        <div class="calendar-view"><div></div></div>
+    </div>
+</div>
+
+<%= render "calendar/modals" %>
+
+<% content_for :scripts do %>
+    <%= javascript_include_tag "vendor/fullcalendar/index.global.min",
+                               "vendor/fullcalendar-moment/index.global.min",
+                               "vendor/jquery-jeditable/jquery.jeditable.min" %>
+    <%= ea_js "utils/ui", "utils/calendar_events", "utils/calendar_event_popover",
+              "http/calendar_http_client", "http/customers_http_client", "pages/appointments" %>
+<% end %>

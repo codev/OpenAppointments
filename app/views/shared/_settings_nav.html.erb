@@ -3,40 +3,12 @@
     <%= lang('settings') %>
 </h4>
 
+<% integrations_child = request.path =~ %r{\A/(altcha|google_calendar|google_analytics|matomo_analytics|umami_analytics|jitsi|ldap|api|embed)_settings\z} %>
 <ul id="settings-nav" class="nav flex-column">
-    <li class="nav-item mb-3">
-        <a class="nav-link px-0 py-2" href="/general_settings">
-            <%= lang('general_settings') %>
-        </a>
-    </li>
-
-    <li class="nav-item mb-3">
-        <a class="nav-link px-0 py-2" href="/booking_settings">
-            <%= lang('booking_settings') %>
-        </a>
-    </li>
-
-    <li class="nav-item mb-3">
-        <a class="nav-link px-0 py-2" href="/theme_settings">
-            <%= lang('theme') %>
-        </a>
-    </li>
-
-    <li class="nav-item mb-3">
-        <a class="nav-link px-0 py-2" href="/business_settings">
-            <%= lang('business_logic') %>
-        </a>
-    </li>
-
-    <li class="nav-item mb-3">
-        <a class="nav-link px-0 py-2" href="/legal_settings">
-            <%= lang('legal_contents') %>
-        </a>
-    </li>
-
-    <li class="nav-item mb-3">
-        <a class="nav-link px-0 py-2" href="/integrations">
-            <%= lang('integrations') %>
-        </a>
-    </li>
+    <%= render "shared/side_nav_item", path: "/general_settings", text: lang('general_settings'), child: false %>
+    <%= render "shared/side_nav_item", path: "/booking_settings", text: lang('booking_settings'), child: false %>
+    <%= render "shared/side_nav_item", path: "/theme_settings", text: lang('theme'), child: false %>
+    <%= render "shared/side_nav_item", path: "/business_settings", text: lang('business_logic'), child: false %>
+    <%= render "shared/side_nav_item", path: "/legal_settings", text: lang('legal_contents'), child: false %>
+    <%= render "shared/side_nav_item", path: "/integrations", text: lang('integrations'), child: integrations_child.present? %>
 </ul>

@@ -18,5 +18,17 @@ class MessageDeliveryJob < ApplicationJob
   rescue StandardError => e
     Rails.logger.error("Messages - delivery of message #{message_id} failed: #{e.message}")
     message&.update!(status: "failed", error: e.message.truncate(255))
+    alert_failure(message) if message
+  end
+
+  private
+
+  # Optional email to the maintainer; never lets an alert problem mask the failure.
+  def alert_failure(message)
+    return unless Setting.get("messages_failure_alert") == "1"
+
+    AlertMailer.message_failed(message).deliver_later
+  rescue StandardError => e
+    Rails.logger.error("Messages - failure alert for message #{message.id} not sent: #{e.message}")
   end
 end

@@ -3,6 +3,36 @@
  */
 App.Pages.MessagesSettings = (function () {
     const $saveSettings = $('#save-settings');
+    const $failureAlert = $('#messages-failure-alert');
+    const $failureEmails = $('#messages-failure-alert-emails');
+
+    function toggleFailureEmails() {
+        $failureEmails.prop('disabled', !$failureAlert.prop('checked'));
+    }
+
+    /**
+     * The report list must be valid addresses when reports are on.
+     */
+    function validate() {
+        $failureEmails.removeClass('is-invalid');
+
+        if (!$failureAlert.prop('checked')) {
+            return true;
+        }
+
+        const emails = $failureEmails
+            .val()
+            .split(/[\s,;]+/)
+            .filter((email) => email.length);
+
+        if (emails.length && emails.every((email) => App.Utils.Validation.email(email))) {
+            return true;
+        }
+
+        $failureEmails.addClass('is-invalid');
+        App.Layouts.Backend.displayNotification(lang('invalid_email'));
+        return false;
+    }
 
     function deserialize(rows) {
         rows.forEach((row) => {
@@ -28,6 +58,10 @@ App.Pages.MessagesSettings = (function () {
     }
 
     function onSaveSettingsClick() {
+        if (!validate()) {
+            return;
+        }
+
         App.Http.MessagesSettings.save('messages_settings/save', 'messages_settings', serialize()).done(() => {
             App.Layouts.Backend.displayNotification(lang('settings_saved'));
         });
@@ -37,6 +71,8 @@ App.Pages.MessagesSettings = (function () {
         $saveSettings.on('click', onSaveSettingsClick);
 
         deserialize(vars('messages_settings'));
+        toggleFailureEmails();
+        $failureAlert.on('change', toggleFailureEmails);
     }
 
     document.addEventListener('DOMContentLoaded', initialize);

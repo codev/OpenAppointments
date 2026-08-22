@@ -27,7 +27,6 @@ mr:
     secondary_color: "दुय्यम रंग"
     background_color: "पार्श्वभूमी रंग"
     import_providers_caution: "सावधान: प्रदाते निवडल्यास वापरकर्ता खाती तयार होतील आणि त्यांच्या ईमेलने लॉग इन करता येईल"
-    manage_data: "डेटा व्यवस्थापन"
     export_data: "डेटा निर्यात करा"
     backups: "बॅकअप"
     backups_hint: "पाच सर्वात अलीकडील बॅकअप सर्व्हरवर ठेवले जातात आणि फक्त प्रशासक ते डाउनलोड करू शकतात. डाउनलोड केल्यास ते सुरक्षित ठेवा कारण त्यात वैयक्तिक माहिती असते."
@@ -413,7 +412,6 @@ mr:
     working_plan_exception_saved: कामकाज योजना अपवाद यशस्वीरित्या सहेत.
     working_plan_exception_deleted: कामकाज योजना अपवाद यशस्वीरित्या हटवला.
     add_working_plan_exceptions_during_each_day: कामकाज योजनाच्या बाहेर कामकाज योजना अपवाद जोडा.
-    add_working_plan_exception: कामकाज योजना अपवाद जोडा
     require_phone_number: फोन नंबर आवश्यक आहे
     require_phone_number_hint: सक्षम असताना, ग्राहक आणि वापरकर्त्यांना अपॉईंटमेंट बुक करताना ग्राहकाचा फोन नंबर प्रविष्ट करणे आवश्यक आहे
     check_spam_folder: ईमेल काही मिनिटांत आले नाही तर कृपया आपल्या स्पॅम फोल्डरची तपासणी करा.
@@ -796,8 +794,28 @@ mr:
     all_providers: All Providers
     message_sent: Message sent.
     terminology: Terminology
-    terminology_hint: Rename Provider and Service, for example Stylist and Treatment. Leave blank for the defaults. Languages other than English are not affected.
+    terminology_hint: Rename Provider and Service, for example Stylist and Treatment. Leave blank for the defaults. Languages other than English are not affected. Start the words with a capital letter.
     provider_label: Provider (singular)
     provider_label_plural: Providers (plural)
     service_label: Service (singular)
     service_label_plural: Services (plural)
+    message_settings: Message Settings
+    data_settings: Data Settings
+    all_services: All Services
+    select_day_interval_hint: Number of days to show.
+    filter_providers_hint: Show only the selected providers.
+    filter_services_hint: Show only the selected services.
+    free_for_appointments: Free for appointments
+    not_working_on: "Not working {date}: {names}"
+    and: and
+    add_available_exception: Add Extra Days/Times Available
+    add_unavailable_exception: Add Unavailable/Holiday Days
+    available: Available
+    unavailable: Unavailable
+    fixed_timezone: Fixed timezone
+    fixed_timezone_hint: Everyone uses the default timezone. Timezone fields are hidden on the booking page, staff, customer and appointment forms.
+    consents: Consents
+    messages_failure_alert: Email a report when a message fails to send
+    messages_failure_alert_hint: Send an email with the time and provider when a notification fails to send - the full details are in the message log
+    messages_failure_alert_emails: Report email addresses
+    messages_failure_alert_emails_hint: Comma separated

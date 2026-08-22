@@ -73,13 +73,16 @@ Rails.application.configure do
     }.compact
   end
 
-  # Email crash reports.
+  # Email crash reports. The logged-in user arrives in the data section via
+  # ApplicationController#exception_notifier_data.
   config.middleware.use ExceptionNotification::Rack,
     email: {
       email_prefix: "[OpenAppointments Error] ",
       sender_address: %("OpenAppointments Administrator" <#{ENV.fetch('CLOUDRON_MAIL_FROM', 'info@codev.uk')}>),
       exception_recipients: %w[marc@codev.uk]
     },
+    # Routing misses that fall through to the next app are not errors.
+    ignore_cascade_pass: true,
     # Rethrow and log (but don't email about) errors in rack url decoding
     ignore_if: ->(env, e) {
       e.class.name == "ArgumentError" && (

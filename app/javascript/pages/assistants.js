@@ -32,7 +32,6 @@ App.Pages.Assistants = (function () {
     const $username = $('#username');
     const $password = $('#password');
     const $passwordConfirmation = $('#password-confirm');
-    const $calendarView = $('#calendar-view');
     const $filterAssistants = $('#filter-assistants');
     let filterResults = {};
     const filterLimit = 20;
@@ -212,7 +211,6 @@ App.Pages.Assistants = (function () {
                 ldap_dn: $ldapDn.val(),
                 settings: {
                     username: $username.val(),
-                    calendar_view: $calendarView.val(),
                 },
             };
 
@@ -385,7 +383,6 @@ App.Pages.Assistants = (function () {
         $filterAssistants.find('.results').css('color', '');
         $assistants.find('.record-details').find('input, select, textarea').val('').prop('disabled', true);
         $assistants.find('.record-details .form-label span').prop('hidden', true);
-        $assistants.find('.record-details #calendar-view').val('default');
         $assistants.find('.record-details #timezone').val(vars('default_timezone'));
         $assistants.find('.record-details #language').val(vars('default_language'));
         $assistants.find('.add-edit-delete-group').show();
@@ -419,7 +416,6 @@ App.Pages.Assistants = (function () {
         $ldapDn.val(assistant.ldap_dn);
 
         $username.val(assistant.settings.username);
-        $calendarView.val(assistant.settings.calendar_view);
 
         $('#assistant-providers input:checkbox').prop('checked', false);
 

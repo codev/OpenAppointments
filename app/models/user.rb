@@ -6,6 +6,19 @@ class User < ApplicationRecord
   has_one_attached :picture_zoomed
   has_one :settings, class_name: "UserSetting", foreign_key: :id_users,
                      inverse_of: :user, dependent: :destroy, autosave: true
+  before_save :apply_fixed_timezone
+
+  # The timezone everything runs in for this user: the default when timezones are
+  # fixed, else the stored one, the default, then UTC.
+  def effective_timezone
+    return Setting.get("default_timezone", "UTC") if Setting.fixed_timezone?
+
+    timezone.presence || Setting.get("default_timezone", "UTC")
+  end
+
+  def apply_fixed_timezone
+    self.timezone = Setting.get("default_timezone", "UTC") if Setting.fixed_timezone?
+  end
 
   # Provider associations
   has_many :provider_service_links, class_name: "ServiceProviderLink", foreign_key: :id_users,

@@ -16,7 +16,7 @@ class ImportController < ApplicationController
     return unless require_backend_page!(:system_settings)
     return head :forbidden unless can?(:edit, :system_settings)
 
-    backend_page_vars(page_title: helpers.lang("manage_data"), active_menu: "system_settings")
+    backend_page_vars(page_title: helpers.lang("data_settings"), active_menu: "system_settings")
     render :index
   end
 

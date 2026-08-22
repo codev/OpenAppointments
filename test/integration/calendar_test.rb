@@ -21,6 +21,18 @@ class CalendarTest < ActionDispatch::IntegrationTest
     assert_match "window.vars", response.body
   end
 
+  test "calendar is the calendar view and appointments is the table view" do
+    login_admin
+    get "/calendar"
+    assert_match 'id="select-filter-item"', response.body
+    assert_match "pages/calendar", response.body
+    get "/appointments"
+    assert_response :success
+    assert_match 'id="select-day-interval"', response.body
+    assert_match 'id="filter-provider"', response.body
+    assert_match "pages/appointments", response.body
+  end
+
   test "calendar vars carry the custom field labels for the event popover" do
     Setting.set("label_custom_field_1", "Pronouns")
     login_admin

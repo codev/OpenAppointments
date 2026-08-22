@@ -1072,7 +1072,7 @@ App.Pages.Booking = (function () {
                     <i class="fas fa-clock me-2"></i>
                     ${service.duration} ${lang('minutes')}
                 </div>
-                <div class="mb-2">
+                <div class="mb-2" ${vars('fixed_timezone') ? 'hidden' : ''}>
                     <i class="fas fa-globe me-2"></i>
                     ${timezoneOptionText}
                 </div> 

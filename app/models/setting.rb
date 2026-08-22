@@ -14,6 +14,11 @@ class Setting < ApplicationRecord
     record
   end
 
+  # With a fixed timezone every user and booking uses default_timezone.
+  def self.fixed_timezone?
+    get("fixed_timezone") == "1"
+  end
+
   def self.get_many(*names)
     names.flatten.index_with { |name| get(name) }
   end

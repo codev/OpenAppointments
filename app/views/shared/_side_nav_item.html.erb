@@ -1,0 +1,10 @@
+<%# One entry of a settings-style side menu. The current page is text, not a link;
+    a parent of the current page (child: true) stays a link but is marked. %>
+<% current = request.path == path %>
+<li class="nav-item mb-3">
+    <% if current %>
+        <span class="nav-link px-0 py-2 fw-bold text-body"><%= text %></span>
+    <% else %>
+        <a class="nav-link px-0 py-2 <%= "fw-bold" if child %>" href="<%= path %>"><%= text %></a>
+    <% end %>
+</li>

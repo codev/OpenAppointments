@@ -119,7 +119,7 @@ module Notifications
                                        : "/calendar/reschedule/#{appointment.booking_hash}"
     context = Messaging::Template.appointment_context(
       appointment: appointment, service: service, provider: provider, customer: customer,
-      recipient_timezone: user.timezone, reason: reason, link_path: link_path
+      recipient_timezone: user.effective_timezone, reason: reason, link_path: link_path
     )
     short = Messaging::Template.render(notification.short_text, context)
     long = Messaging::Template.render(notification.long_text, context)

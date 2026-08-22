@@ -28,6 +28,18 @@ class DataExportTest < ActiveSupport::TestCase
     assert_includes provider_row[header.index("services")], services(:haircut).name
   end
 
+  test "providers, services and categories export in their display order" do
+    zane = users(:zane)
+    other = User.create!(name: "Aaron", email: "aaron@example.org", role: zane.role)
+    other.create_settings!(username: "aaron", password: Passwords.hash("aaronaaron1"))
+    ServiceProviderLink.create!(id_users: other.id, id_services: services(:haircut).id)
+    zane.update!(sort_order: 1)
+    other.update!(sort_order: 2)
+
+    names = DataExport.sheets["Providers"].drop(1).map(&:first)
+    assert_equal [ zane.name, "Aaron" ], names.first(2)
+  end
+
   test "extract reads the export back with the same shape the loader expects" do
     users(:jx).update!(custom_field_1: "they/them", custom_field_2: "Step-free access",
                        city: "London", zip_code: "E1 6AN",
@@ -70,6 +82,19 @@ class DataExportTest < ActiveSupport::TestCase
     users(:jx).update!(custom_field_1: "they/them", city: "London", zip_code: "E1 6AN")
     original_plan = users(:zane).settings.working_plan
     original_start = appointments(:upcoming).start_datetime
+    users(:zane).settings.update!(notifications: false, caldav_sync: true, caldav_url: "https://cal.example.org",
+                                  caldav_username: "zane", caldav_password: "secret", sync_past_days: 7)
+    WorkingPlanException.create!(provider: users(:zane), start_date: Date.new(2026, 8, 3),
+                                 end_date: Date.new(2026, 8, 7))
+    WorkingPlanException.create!(provider: users(:zane), start_date: Date.new(2026, 8, 5), end_date: Date.new(2026, 8, 5),
+                                 start_time: "10:00", end_time: "14:00", breaks: [ { start: "12:00", end: "12:30" } ].to_json)
+    Notification.delete_all
+    Notification.create!(title: "Reminder", event: "coming_up", audiences: %w[customer], channels: %w[email sms],
+                         lead_days: 1, lead_hours: 0, lead_mode: "day_at", send_time: "09:00",
+                         short_text: "See you tomorrow", long_text: "Long body")
+    Webhook.create!(name: "n8n", url: "https://n8n.example.org/hook", actions: "appointment_save",
+                    secret_token: "tok", is_ssl_verified: false, notes: "glue")
+    Consent.create!(type: "book", name: "J", email: "j@example.org", ip: "127.0.0.1", created_at: Time.new(2026, 7, 1, 9, 0, 0))
     path = export_to_file
 
     ResetDatabase.run
@@ -95,6 +120,31 @@ class DataExportTest < ActiveSupport::TestCase
     assert_equal provider.id, appointment.id_users_provider
     assert_equal customer.id, appointment.id_users_customer
     assert_equal original_start, appointment.start_datetime
+
+    settings = provider.settings
+    assert_equal false, settings.notifications
+    assert_equal true, settings.caldav_sync
+    assert_equal "https://cal.example.org", settings.caldav_url
+    assert_equal "secret", settings.caldav_password
+    assert_equal 7, settings.sync_past_days
+
+    exceptions = provider.working_plan_exceptions.order(:start_date).to_a
+    assert_equal 2, exceptions.size
+    assert_equal [ Date.new(2026, 8, 3), nil ], [ exceptions.first.start_date, exceptions.first.start_time ]
+    assert_equal "12:30", exceptions.last.break_list.first["end"]
+
+    notification = Notification.find_by!(title: "Reminder")
+    assert_equal %w[email sms], notification.channels
+    assert_equal "day_at", notification.lead_mode
+    assert_equal "Long body", notification.long_text
+
+    webhook = Webhook.find_by!(name: "n8n")
+    assert_equal "tok", webhook.secret_token
+    assert_equal false, webhook.is_ssl_verified
+
+    consent = Consent.find_by!(email: "j@example.org")
+    assert_equal "book", consent.type
+    assert_equal Time.new(2026, 7, 1, 9, 0, 0), consent.created_at
   end
 
   test "reimporting twice does not duplicate" do
@@ -109,5 +159,7 @@ class DataExportTest < ActiveSupport::TestCase
     assert_equal 1, User.customers.where(email: "j@example.org").count
     assert_equal 1, Service.where(name: "Trim Cut").count
     assert_equal 1, Appointment.appointments.count
+    assert_equal Notification.distinct.count(:title), Notification.count
+    assert_equal Webhook.distinct.count(:name), Webhook.count
   end
 end

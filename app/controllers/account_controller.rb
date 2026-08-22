@@ -6,7 +6,7 @@ class AccountController < ApplicationController
 
   ALLOWED_USER_FIELDS = %w[name email mobile_number phone_number
                            address city state zip_code notes timezone language].freeze
-  ALLOWED_USER_SETTING_FIELDS = %w[username password notifications calendar_view].freeze
+  ALLOWED_USER_SETTING_FIELDS = %w[username password notifications].freeze
 
   before_action :require_session, except: [ :index ]
 

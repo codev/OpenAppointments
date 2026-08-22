@@ -6,11 +6,10 @@ class AssistantsController < ApplicationController
 
   layout "backend"
 
-  # EA allowed_assistant_fields (mobile_number is not allowed, matching EA).
-  ALLOWED_FIELDS = %w[id name email alt_number phone_number address city state
+  ALLOWED_FIELDS = %w[id name email alt_number mobile_number phone_number address city state
                       zip_code notes timezone language is_private ldap_dn id_roles settings
                       providers].freeze
-  ALLOWED_SETTING_FIELDS = %w[username password notifications calendar_view].freeze
+  ALLOWED_SETTING_FIELDS = %w[username password notifications].freeze
 
   before_action :require_session, except: [ :index ]
 

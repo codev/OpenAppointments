@@ -3,6 +3,19 @@
 The about page lists these notes; every release needs a section here matching
 CloudronManifest.json.
 
+## 1.8.0
+
+- Calendar view divided into Appointments (a table view) and the traditional Calendar view and the Appointments view has been improved with better filters and navigation
+- Appointments view only shows working providers with a list of providers not working on that day at the top
+- Improvements to provider working plans: buttons for adding holidays and overtime are clearer in a provider working plan; working days added inside a longer unavailable period are shown correctly in the admin interface
+- Backup improvements: backups are now shown in the spreadsheet in the order they are saved in, backups covers message templates, webhooks and more settings - note the backup can contain passwords and other authentication data so store it securely
+- Fixed Timezone: new option under general settings to use the default timezone everywhere
+- Messages and notification settings moved to the cog menu with the other settings
+- Message Settings can email a report to admins when a message fails to send
+- robots.txt blocks AI crawlers (Ultimate AI Block List v1.8)
+- The browser warns before leaving a page with unsaved changes
+- Minor fixes: pictures save correctly when adding a provider; settings side menus indicate the current page; 10to8 import matches existing providers by name as well as email
+
 ## 1.7.0
 
 - General Settings can rename Provider and Service (e.g. Stylist) across the English interface
@@ -13,17 +26,17 @@ CloudronManifest.json.
 
 ## 1.6.3
 
-- Provider Private flags export and import, so private providers survive a backup restore
+- Hidden providers added to backup and restore
 
 ## 1.6.2
 
-- The calendar Messages button opens the customer page scrolled to the conversation panel with the composer focused
+- Message button on the calendar opens the customer page scrolled to the conversation panel
 
 ## 1.6.1
 
 - The Messages button on the calendar appointment popover shows the customer's unread message count in a bubble
-- Fix 406 Not Acceptable on mobile and other unrecognised browsers (the browser version guard is gone)
-- The popover Messages button is the same size as the other popover buttons
+- Fix 406 Not Acceptable on mobile and other unrecognised browsers (the rails browser version guard is gone)
+- Messages button in calendar neater
 
 ## 1.6.0
 

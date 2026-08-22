@@ -39,8 +39,7 @@ module Api
         def settings_encode(settings)
           {
             "username" => settings.username,
-            "notifications" => bool(settings.notifications),
-            "calendarView" => settings.calendar_view
+            "notifications" => bool(settings.notifications)
           }
         end
 
@@ -67,7 +66,6 @@ module Api
           out = {}
           out["username"] = settings["username"] if settings.key?("username")
           out["password"] = settings["password"] if settings.key?("password")
-          out["calendar_view"] = settings["calendarView"] if settings.key?("calendarView")
           out["notifications"] = settings["notifications"] if settings.key?("notifications")
           out
         end

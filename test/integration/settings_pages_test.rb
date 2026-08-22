@@ -53,6 +53,54 @@ class SettingsPagesTest < ActionDispatch::IntegrationTest
     end
   end
 
+  test "side menu shows the current page as text and marks a parent of the current page" do
+    login_admin
+    get "/booking_settings"
+    assert_select "#settings-nav span.nav-link", text: /Booking Settings/
+    assert_select "#settings-nav a[href='/booking_settings']", count: 0
+    assert_select "#settings-nav a[href='/general_settings']"
+
+    get "/ldap_settings"
+    assert_select "#settings-nav a.fw-bold[href='/integrations']"
+
+    get "/messages_twilio_settings"
+    assert_select "#messages-nav a.fw-bold[href='/messages_providers']"
+  end
+
+  test "fixing the timezone moves every user to the default and hides the controls" do
+    login_admin
+    users(:zane).update!(timezone: "America/New_York")
+    post "/general_settings/save", params: {
+      general_settings: [ { name: "default_timezone", value: "Europe/London" }, { name: "fixed_timezone", value: "1" } ]
+    }
+    assert_response :success
+    assert_equal "Europe/London", users(:zane).reload.timezone
+
+    get "/providers"
+    assert_select "div.d-none label[for='timezone']"
+    get "/booking"
+    assert_select "div.d-none label[for='select-timezone']"
+    assert_match '"fixed_timezone":true', response.body
+  end
+
+  test "message failure report addresses default to the admins and must be valid" do
+    login_admin
+    get "/messages_settings"
+    assert_match User.admins.first.email, response.body
+
+    post "/messages_settings/save", params: {
+      messages_settings: [ { name: "messages_failure_alert_emails", value: "a@example.org; not-an-email" } ]
+    }
+    assert_equal false, response.parsed_body["success"]
+    assert_match "not-an-email", response.parsed_body["message"]
+
+    post "/messages_settings/save", params: {
+      messages_settings: [ { name: "messages_failure_alert_emails", value: "a@example.org, b@example.org" } ]
+    }
+    assert_equal true, response.parsed_body["success"]
+    assert_equal "a@example.org, b@example.org", Setting.get("messages_failure_alert_emails")
+  end
+
   test "general settings save persists whitelisted settings" do
     login_admin
     post "/general_settings/save", params: {
@@ -82,7 +130,7 @@ class SettingsPagesTest < ActionDispatch::IntegrationTest
       account: {
         name: "Janet Doe", email: "zane@example.org",
         timezone: "Europe/London", language: "english",
-        settings: { username: "janedoe", calendar_view: "default", notifications: 1 }
+        settings: { username: "janedoe", notifications: 1 }
       }
     }
     assert_response :success

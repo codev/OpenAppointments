@@ -43,7 +43,8 @@ module BackendPage
       date_format: Setting.get("date_format"),
       time_format: Setting.get("time_format"),
       default_language: Setting.get("default_language"),
-      default_timezone: Setting.get("default_timezone")
+      default_timezone: Setting.get("default_timezone"),
+      fixed_timezone: Setting.fixed_timezone?
     )
   end
 

@@ -12,16 +12,24 @@
 
     <div id="header-menu" class="collapse navbar-collapse flex-row-reverse ps-2 pe-0">
         <ul class="navbar-nav">
-            <% hidden = can?(:view, :appointments) ? "" : "d-none" %>
-            <% active = active_menu == "appointments" ? "active" : "" %>
-            <li class="nav-item text-center <%= active + hidden %>">
-                <a href="/calendar<%= vars(:calendar_view) == "table" ? "?view=table" : "" %>"
-                   class="nav-link text-white fw-light py-3 px-3"
-                   data-tippy-content="<%= lang('manage_appointment_record_hint') %>">
-                    <i class="fas fa-calendar-alt me-2"></i>
-                    <%= lang('calendar') %>
-                </a>
-            </li>
+          <% hidden = can?(:view, :appointments) ? "" : "d-none" %>
+          <% active = active_menu == "appointments" ? "active" : "" %>
+          <li class="nav-item text-center <%= active + hidden %>">
+            <a href="/appointments" class="nav-link text-white fw-light py-3 px-3"
+               data-tippy-content="<%= lang('manage_appointment_record_hint') %>">
+              <i class="fas fa-list me-2"></i>
+              <%= lang('appointments') %>
+            </a>
+          </li>
+
+          <% active = active_menu == "calendar" ? "active" : "" %>
+          <li class="nav-item text-center <%= active + hidden %>">
+            <a href="/calendar" class="nav-link text-white fw-light py-3 px-3"
+               data-tippy-content="<%= lang('manage_appointment_record_hint') %>">
+              <i class="fas fa-calendar-alt me-2"></i>
+              <%= lang('calendar') %>
+            </a>
+          </li>
 
             <% hidden = can?(:view, :customers) ? "" : "d-none" %>
             <% active = active_menu == "customers" ? "active" : "" %>
@@ -30,16 +38,6 @@
                    data-tippy-content="<%= lang('manage_customers_hint') %>">
                     <i class="fas fa-user-friends me-2"></i>
                     <%= lang('customers') %>
-                </a>
-            </li>
-
-            <% hidden = can?(:view, :system_settings) ? "" : "d-none" %>
-            <% active = active_menu == "messages" ? "active" : "" %>
-            <li class="nav-item text-center <%= active + hidden %>" style="min-width: 100px;">
-                <a href="/messages_settings" class="nav-link text-white fw-light py-3 px-3"
-                   data-tippy-content="<%= lang('messages_hint') %>">
-                    <i class="fas fa-envelope me-2"></i>
-                    <%= lang('messages') %>
                 </a>
             </li>
 
@@ -83,7 +81,7 @@
             </li>
 
             <% hidden = can?(:view, :system_settings) || can?(:view, :user_settings) ? "" : "d-none" %>
-            <% active = active_menu == "system_settings" ? "active" : "" %>
+            <% active = %w[system_settings messages].include?(active_menu) ? "active" : "" %>
             <li class="nav-item dropdown text-center <%= active + hidden %>">
                 <a class="nav-link dropdown-toggle text-white fw-light py-3 px-3" href="#"
                    data-bs-toggle="dropdown" aria-label="<%= lang('settings') %>"
@@ -98,17 +96,12 @@
                         </a>
                     <% end %>
 
-                    <% if can?(:edit, :system_settings) %>
-                        <a class="dropdown-item" href="/import">
-                            <i class="fas fa-file-import me-2"></i>
-                            <%= lang('manage_data') %>
+                    <% if can?(:view, :system_settings) %>
+                        <a class="dropdown-item" href="/messages_settings">
+                            <i class="fas fa-envelope me-2"></i>
+                            <%= lang('message_settings') %>
                         </a>
                     <% end %>
-
-                    <a class="dropdown-item" href="/account">
-                        <i class="fas fa-user me-2"></i>
-                        <%= lang('account') %>
-                    </a>
 
                     <% if [ Role::ADMIN, Role::ASSISTANT ].include?(session[:role_slug]) %>
                         <% unknown_unread = Message.unread.unknown_sender.count %>
@@ -120,6 +113,20 @@
                             <% end %>
                         </a>
                     <% end %>
+
+                    <% if can?(:edit, :system_settings) %>
+                        <a class="dropdown-item" href="/import">
+                            <i class="fas fa-file-import me-2"></i>
+                            <%= lang('data_settings') %>
+                        </a>
+                        <div class="dropdown-divider"></div>
+                    <% end %>
+
+                    <a class="dropdown-item" href="/account">
+                        <i class="fas fa-user me-2"></i>
+                        <%= lang('account') %>
+                    </a>
+
                     <a class="dropdown-item" href="/about">
                         <i class="fas fa-info-circle me-2"></i>
                         <%= lang('about') %>

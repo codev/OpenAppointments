@@ -1,162 +1,174 @@
-/* ----------------------------------------------------------------------------
- * Easy!Appointments - Online Appointment Scheduler
- *
- * @package     EasyAppointments
- * @author      A.Tselegidis <alextselegidis@gmail.com>
- * @copyright   Copyright (c) Alex Tselegidis
- * @license     https://opensource.org/licenses/GPL-3.0 - GPLv3
- * @link        https://easyappointments.org
- * @since       v1.5.0
- * ---------------------------------------------------------------------------- */
-
 /**
- * Calendar page.
- *
- * This module implements the functionality of the backend calendar page.
+ * Calendar page: one FullCalendar showing a provider, a service or everything.
  */
 App.Pages.Calendar = (function () {
+    const FILTER_TYPE_ALL = 'all';
+    const FILTER_TYPE_PROVIDER = 'provider';
+    const FILTER_TYPE_SERVICE = 'service';
+
+    const $calendar = $('#calendar');
+    const $selectFilterItem = $('#select-filter-item');
+    const $reloadAppointments = $('#reload-appointments');
     const $insertWorkingPlanException = $('#insert-working-plan-exception');
 
+    const Events = App.Utils.CalendarEvents;
     const moment = window.moment;
 
+    let fullCalendar = null;
+
+    function filterType() {
+        return $selectFilterItem.find('option:selected').attr('type') || FILTER_TYPE_ALL;
+    }
+
+    function isProviderFilter() {
+        return filterType() === FILTER_TYPE_PROVIDER;
+    }
+
     /**
-     * Add the page event listeners.
+     * Fetch the visible range and replace every event source.
      */
+    function reload() {
+        Events.closePopover();
+
+        if (!$selectFilterItem.val()) {
+            return;
+        }
+
+        const recordId = $selectFilterItem.val();
+        const startDate = moment(fullCalendar.view.activeStart).format('YYYY-MM-DD');
+        const endDate = moment(fullCalendar.view.activeEnd).format('YYYY-MM-DD');
+
+        $('#loading').css('visibility', 'hidden');
+
+        App.Http.Calendar.getCalendarAppointments(recordId, startDate, endDate, filterType())
+            .done((response) => {
+                fullCalendar.getEventSources().forEach((source) => source.remove());
+
+                const events = [
+                    ...Events.appointmentEvents(
+                        response.appointments,
+                        filterType() === FILTER_TYPE_SERVICE ? 'provider' : 'service',
+                    ),
+                    ...Events.unavailabilityEvents(response.unavailabilities),
+                    ...Events.blockedPeriodEvents(response.blocked_periods),
+                ];
+
+                if (fullCalendar.view.type !== 'dayGridMonth') {
+                    events.push(
+                        ...Events.workingPlanEvents(
+                            Events.findProvider(recordId),
+                            fullCalendar.view.currentStart,
+                            fullCalendar.view.currentEnd,
+                        ),
+                    );
+                }
+
+                fullCalendar.addEventSource(events);
+            })
+            .always(() => $('#loading').css('visibility', ''));
+    }
+
+    function onSelect(info) {
+        if (info.allDay) {
+            return;
+        }
+
+        Events.newEventDialog(info, {
+            providerId: isProviderFilter() ? $selectFilterItem.val() : undefined,
+            serviceId: filterType() === FILTER_TYPE_SERVICE ? $selectFilterItem.val() : undefined,
+        });
+
+        fullCalendar.unselect();
+
+        return false;
+    }
+
+    function onDateClick(info) {
+        if (info.allDay) {
+            fullCalendar.changeView('timeGridDay');
+            fullCalendar.gotoDate(info.date);
+        }
+    }
+
     function addEventListeners() {
-        const $calendarPage = $('#calendar-page');
+        $reloadAppointments.on('click', reload);
 
-        $calendarPage.on('click', '#toggle-fullscreen', (event) => {
-            const $toggleFullscreen = $(event.target);
-            const element = document.documentElement;
-            const isFullScreen =
-                document.fullScreenElement || document.mozFullScreen || document.webkitIsFullScreen || false;
+        $selectFilterItem.on('change', () => {
+            const provider = Events.findProvider($selectFilterItem.val());
 
-            if (isFullScreen) {
-                // Exit fullscreen mode.
-                if (document.exitFullscreen) {
-                    document.exitFullscreen();
-                } else if (document.msExitFullscreen) {
-                    document.msExitFullscreen();
-                } else if (document.mozCancelFullScreen) {
-                    document.mozCancelFullScreen();
-                } else if (document.webkitExitFullscreen) {
-                    document.webkitExitFullscreen();
-                }
-
-                $toggleFullscreen.removeClass('btn-success').addClass('btn-light');
-            } else {
-                // Switch to fullscreen mode.
-                if (element.requestFullscreen) {
-                    element.requestFullscreen();
-                } else if (element.msRequestFullscreen) {
-                    element.msRequestFullscreen();
-                } else if (element.mozRequestFullScreen) {
-                    element.mozRequestFullScreen();
-                } else if (element.webkitRequestFullscreen) {
-                    element.webkitRequestFullscreen();
-                }
-                $toggleFullscreen.removeClass('btn-light').addClass('btn-success');
+            if (provider?.timezone) {
+                $('.provider-timezone').text(vars('timezones')[provider.timezone]);
             }
+
+            $insertWorkingPlanException.toggle(isProviderFilter());
+            reload();
+            window.localStorage.setItem('EasyAppointments.SelectFilterItem', $selectFilterItem.val());
         });
 
         $insertWorkingPlanException.on('click', () => {
-            const providerId = $('#select-filter-item').val();
+            const provider = Events.findProvider($selectFilterItem.val());
 
-            if (providerId === App.Utils.CalendarDefaultView.FILTER_TYPE_ALL) {
+            if (!provider) {
                 return;
             }
 
-            const provider = vars('available_providers').find((availableProvider) => {
-                return Number(availableProvider.id) === Number(providerId);
-            });
-
-            if (!provider) {
-                throw new Error('Provider could not be found: ' + providerId);
-            }
-
-            App.Components.WorkingPlanExceptionsModal.add().done((workingPlanException) => {
-                const successCallback = (response) => {
-                    App.Layouts.Backend.displayNotification(lang('working_plan_exception_saved'));
-
-                    // Update the in-memory provider data with the new exception
-                    let exceptions = JSON.parse(provider.settings.working_plan_exceptions || '[]');
-                    if (!Array.isArray(exceptions)) {
-                        exceptions = [];
-                    }
-
-                    // Add the new exception (with ID from response if available)
-                    if (response && response.id) {
-                        workingPlanException.id = response.id;
-                    }
-                    exceptions.push(workingPlanException);
-                    provider.settings.working_plan_exceptions = JSON.stringify(exceptions);
-
-                    $('#select-filter-item').trigger('change'); // Update the calendar.
-                };
-
-                App.Http.Calendar.saveWorkingPlanException(
-                    workingPlanException,
-                    providerId,
-                    successCallback,
-                    null,
-                );
+            App.Components.WorkingPlanExceptionsModal.add().done((exception) => {
+                Events.saveWorkingPlanException(provider, exception);
             });
         });
     }
 
-    /**
-     * Get calendar selection end date.
-     *
-     * On calendar slot selection, calculate the end date based on the provided start date.
-     *
-     * @param {Object} info Holding the "start" and "end" props, as provided by FullCalendar.
-     *
-     * @return {Date}
-     */
-    function getSelectionEndDate(info) {
-        const startMoment = moment(info.start);
-        const endMoment = moment(info.end);
-        const startTillEndDiff = endMoment.diff(startMoment);
-        const startTillEndDuration = moment.duration(startTillEndDiff);
-        const durationInMinutes = startTillEndDuration.asMinutes();
-        const minDurationInMinutes = 15;
-
-        if (durationInMinutes <= minDurationInMinutes) {
-            const serviceId = $('#select-service').val();
-            const service = vars('available_services').find(
-                (availableService) => Number(availableService.id) === Number(serviceId),
-            );
-
-            if (service) {
-                endMoment.add(service.duration - durationInMinutes, 'minutes');
-            }
-        }
-
-        return endMoment.toDate();
-    }
-
-    /**
-     * Initialize the module.
-     *
-     * This function makes the necessary initialization for the default backend calendar page.
-     *
-     * If this module is used in another page then this function might not be needed.
-     */
     function initialize() {
-        // Load and initialize the calendar view.
-        if (vars('calendar_view') === 'table') {
-            App.Utils.CalendarTableView.initialize();
-        } else {
-            App.Utils.CalendarDefaultView.initialize();
+        fullCalendar = new FullCalendar.Calendar(
+            $calendar[0],
+            Events.calendarOptions({
+                initialView: window.innerWidth < 468 ? 'timeGridDay' : 'timeGridWeek',
+                height: Events.calendarHeight(),
+                headerToolbar: {
+                    left: 'prev,next today',
+                    center: 'title',
+                    right: 'timeGridDay,timeGridWeek,dayGridMonth',
+                },
+                windowResize: () => fullCalendar.setOption('height', Events.calendarHeight()),
+                datesSet: () => {
+                    reload();
+                    $(window).trigger('resize');
+                },
+                dateClick: onDateClick,
+                select: onSelect,
+            }),
+        );
+
+        fullCalendar.render();
+        $calendar.data('fullCalendar', fullCalendar);
+
+        Events.configure(reload);
+        addEventListeners();
+
+        const savedFilter = window.localStorage.getItem('EasyAppointments.SelectFilterItem');
+        if (savedFilter && $selectFilterItem.find('option[value="' + savedFilter + '"]').length) {
+            $selectFilterItem.val(savedFilter);
+        }
+        $selectFilterItem.trigger('change');
+
+        if (vars('edit_appointment')) {
+            Events.populateAppointmentModal(vars('edit_appointment'));
+            fullCalendar.gotoDate(moment(vars('edit_appointment').start_datetime).toDate());
         }
 
-        App.Pages.Calendar.addEventListeners();
+        setInterval(() => {
+            if ($('.popover').length || App.Utils.CalendarSync.isCurrentlySyncing()) {
+                return;
+            }
+            reload();
+        }, 60000);
     }
 
     document.addEventListener('DOMContentLoaded', initialize);
 
     return {
-        addEventListeners,
-        getSelectionEndDate,
+        FILTER_TYPE_ALL,
+        FILTER_TYPE_PROVIDER,
+        FILTER_TYPE_SERVICE,
     };
 })();

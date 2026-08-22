@@ -8,7 +8,7 @@ class AdminsController < ApplicationController
 
   ALLOWED_FIELDS = %w[id name email mobile_number phone_number address city state
                       zip_code notes timezone language ldap_dn settings].freeze
-  ALLOWED_SETTING_FIELDS = %w[username password notifications calendar_view].freeze
+  ALLOWED_SETTING_FIELDS = %w[username password notifications].freeze
 
   before_action :require_session, except: [ :index ]
 

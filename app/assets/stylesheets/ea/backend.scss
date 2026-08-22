@@ -310,25 +310,26 @@ body .modal.full-screen .modal-push {
 }
 
 /* Calendar header and Select2 integration */
-#calendar .calendar-header {
-    padding-bottom: 15px;
-    display: flex;
-    flex-wrap: wrap;
+/* Appointments page header: nav buttons left, date picker exactly centred. */
+#calendar .calendar-header .fc-header-toolbar {
+    display: grid !important;
+    grid-template-columns: 1fr auto 1fr;
     align-items: center;
-    gap: 10px;
 }
 
-#calendar .calendar-header label {
-    margin: 0;
-    vertical-align: middle;
+#calendar .calendar-header .fc-toolbar-chunk {
+    margin-bottom: 0;
+    text-align: left;
+    justify-self: start;
+}
+
+#calendar .calendar-header .fc-toolbar-chunk:nth-child(2) {
+    justify-self: center;
 }
 
 #calendar .calendar-header .select-date {
     width: auto;
-}
-
-#calendar .calendar-header .select2-container--default .select2-selection--multiple {
-    height: 38px;
+    text-align: center;
 }
 
 #calendar .select2-container--default.select2-container--focus .select2-selection--multiple {
@@ -394,23 +395,8 @@ body .modal.full-screen .modal-push {
     height: calc(100% - 40px);
 }
 
-#calendar .calendar-view .date-column .provider-column .event {
-    font-size: 10px;
-    border-radius: var(--bs-border-radius);
-    padding: 2px 3px;
-    cursor: pointer;
-    margin: 1px 25px 1px 1px;
-}
 
-#calendar .calendar-view .date-column .provider-column .event.appointment {
-    background: var(--bs-info);
-    color: var(--bs-white);
-}
 
-#calendar .calendar-view .date-column .provider-column .event.unavailability {
-    background: var(--bs-primary);
-    color: var(--bs-white);
-}
 
 /* Customer appointments in customer details */
 #customers-page #customer-appointments .appointment-row {
@@ -573,9 +559,6 @@ body .modal.full-screen .modal-push {
     }
 
 
-    #calendar .calendar-header .select2-container {
-        width: 300px !important;
-    }
 }
 
 /* On mobile viewports the sync buttons should occupy a full row, with the
@@ -601,29 +584,24 @@ body .modal.full-screen .modal-push {
     }
 }
 
-/* Calendar table view filter groups (label + select side by side). */
-#calendar .calendar-header .filter-group {
-    display: flex;
-    align-items: center;
-    gap: 10px;
+/* Table view toolbar: day interval, provider and service filters side by side,
+   stacking on mobile. */
+#calendar-filter #select-day-interval {
+    width: 7em;
+    flex: 0 0 auto;
 }
 
-/* On mobile viewports the calendar table view filters should stack: the
-   provider filter on its own row and the service filter on the next row,
-   each using the full available width. */
+#calendar-filter .filter-group {
+    flex: 1 1 12rem;
+    min-width: 0;
+    width: auto;
+}
+
 @media (max-width: 767.98px) {
-    #calendar .calendar-header .filter-group {
+    #calendar-filter #select-day-interval,
+    #calendar-filter .filter-group {
         flex: 1 0 100%;
-    }
-
-    #calendar .calendar-header .filter-group label {
-        flex: 0 0 5rem;
-    }
-
-    #calendar .calendar-header .filter-group .select2-container {
-        flex: 1 1 auto;
-        width: auto !important;
-        min-width: 0;
+        width: 100%;
     }
 }
 
@@ -693,4 +671,19 @@ body .modal.full-screen .modal-push {
 
 #footer {
     font-size: 11px;
+}
+
+/* Provider Details / Working Plan switch: outline buttons, the active one filled. */
+.switch-view .nav-item + .nav-item {
+    margin-left: 0.5rem;
+}
+
+.switch-view .nav-link {
+    border: 1px solid var(--bs-primary);
+    color: var(--bs-primary);
+}
+
+.switch-view .nav-link:hover:not(.active) {
+    background-color: var(--bs-primary);
+    color: var(--bs-white);
 }
