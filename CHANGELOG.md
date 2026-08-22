@@ -6,6 +6,7 @@ CloudronManifest.json.
 ## 1.7.1
 
 - Terminology hint says to capitalise the labels
+- A picture chosen while adding a provider, assistant, admin, service or category is uploaded when the record is saved instead of being lost
 - robots.txt blocks AI crawlers (Ultimate AI Block List v1.8)
 - The browser warns before leaving a page with unsaved changes, on the record pages while adding or editing and on the settings pages once a field has been changed
 - A working day added inside a longer unavailable period shows as working on the calendar and appointments pages, matching what customers can book
