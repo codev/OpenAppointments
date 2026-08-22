@@ -33,6 +33,8 @@ module Notifications
     return unless Messaging.enabled?
 
     Notification.for_trigger(trigger).find_each do |notification|
+      next if trigger == :cancelled && !notification.applies_to_cancellation?(appointment)
+
       deliver_notification(notification, appointment, service, provider, customer, reason: reason)
     end
   end

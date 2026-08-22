@@ -5,7 +5,7 @@ class MessagesNotificationsController < ApplicationController
 
   layout "backend"
 
-  ALLOWED_FIELDS = %w[title event lead_mode lead_days lead_hours send_time
+  ALLOWED_FIELDS = %w[title event cancellation_scope lead_mode lead_days lead_hours send_time
                       short_text long_text].freeze
 
   def index
@@ -47,7 +47,7 @@ class MessagesNotificationsController < ApplicationController
   private
 
   def notification_row(notification)
-    notification.slice(:id, :title, :event, :lead_mode, :lead_days,
+    notification.slice(:id, :title, :event, :cancellation_scope, :lead_mode, :lead_days,
                        :lead_hours, :send_time, :short_text, :long_text)
                 .merge(audiences: Array(notification.audiences), channels: Array(notification.channels))
   end

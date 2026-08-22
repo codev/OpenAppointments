@@ -141,12 +141,13 @@ module DataExport
 
   def notifications_sheet
     rows = Notification.order(:id).map do |notification|
-      [ notification.title, notification.event,
+      [ notification.title, notification.event, notification.cancellation_scope,
         notification.audiences.to_json, notification.channels.to_json,
         notification.lead_days, notification.lead_hours, notification.lead_mode,
         notification.send_time, notification.short_text, notification.long_text ]
     end
-    [ %w[title event audiences channels lead_days lead_hours lead_mode send_time short_text long_text] ] + rows
+    [ %w[title event cancellation_scope audiences channels lead_days lead_hours lead_mode send_time short_text
+         long_text] ] + rows
   end
 
   def webhooks_sheet

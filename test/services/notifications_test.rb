@@ -72,6 +72,22 @@ class NotificationsTest < ActiveSupport::TestCase
     assert_equal [ "Missed" ], Message.all.map { |m| m.notification.title }
   end
 
+  test "cancelled templates can target in-time or too-late cancellations" do
+    Setting.set("book_advance_timeout", "1440")
+    create_notification(event: "cancelled", audiences: %w[customer], title: "Any")
+    create_notification(event: "cancelled", audiences: %w[customer], title: "In time", cancellation_scope: "in_time")
+    create_notification(event: "cancelled", audiences: %w[customer], title: "Late", cancellation_scope: "late")
+
+    @appointment.update!(start_datetime: Time.current + 3.days, end_datetime: Time.current + 3.days + 30.minutes)
+    Notifications.appointment_deleted(@appointment, @service, @provider, @customer)
+    assert_equal [ "Any", "In time" ], Message.all.map { |m| m.notification.title }.sort
+
+    Message.delete_all
+    @appointment.update!(start_datetime: Time.current + 2.hours, end_datetime: Time.current + 2.hours + 30.minutes)
+    Notifications.appointment_deleted(@appointment, @service, @provider, @customer)
+    assert_equal [ "Any", "Late" ], Message.all.map { |m| m.notification.title }.sort
+  end
+
   test "deleted fires cancelled with the reason token" do
     create_notification(event: "cancelled", audiences: %w[customer],
                         long_text: "Cancelled because {{Cancellation Reason}}")

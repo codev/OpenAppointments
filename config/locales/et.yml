@@ -863,3 +863,8 @@ et:
     rs_last_day: Last Day
     rs_days_first_letter: Su, M, Tu, W, Th, F, Sa
     rs_order: 1st, 2nd, 3rd, 4th, 5th, Last
+    notification_cancellation_scope: Send
+    notification_cancellation_all: For all canceled appointments
+    notification_cancellation_in_time: For appointments canceled within the cancellation window
+    notification_cancellation_late: For appointments canceled too late
+    notification_cancellation_scope_hint: The window is the Book Advance Timeout in Business Logic.

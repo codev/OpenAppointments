@@ -54,6 +54,18 @@
                 </select>
             </div>
 
+            <div class="cancelled-block mb-3" style="display: none;">
+                <label class="form-label"><%= lang('notification_cancellation_scope') %></label>
+                <select class="form-select n-field" data-name="cancellation_scope">
+                    <% Notification::CANCELLATION_SCOPES.each do |scope| %>
+                        <option value="<%= scope %>"><%= lang("notification_cancellation_#{scope}") %></option>
+                    <% end %>
+                </select>
+                <div class="form-text text-muted">
+                    <small><%= lang('notification_cancellation_scope_hint') %></small>
+                </div>
+            </div>
+
             <div class="coming-up-block border rounded p-3 mb-3" style="display: none;">
                 <div class="mb-3">
                     <select class="form-select n-field" data-name="lead_mode">
