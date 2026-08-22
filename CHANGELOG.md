@@ -3,7 +3,7 @@
 The about page lists these notes; every release needs a section here matching
 CloudronManifest.json.
 
-## 1.7.1
+## 1.8.0
 
 - Terminology hint says to capitalise the labels
 - Message Settings can email a report (time and provider) to a list of addresses whenever a message fails to send
