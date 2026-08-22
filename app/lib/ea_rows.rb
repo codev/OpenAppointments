@@ -60,7 +60,7 @@ module EaRows
       "booked" => series.appointments.where("occurrence_at >= ?", now).order(:occurrence_at).pluck(:occurrence_at).map(&:to_s),
       "future" => future.map(&:to_s),
       "skipped" => series.skipped_list,
-      "schedule" => JSON.parse(series.schedule)
+      "rule" => series.rule_hash
     }
   end
 

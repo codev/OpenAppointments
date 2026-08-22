@@ -238,7 +238,7 @@ App.Pages.Appointments = (function () {
 
     function openPattern(id) {
         const row = findSeries(id);
-        App.Components.RepeatFields.load('series-repeat', row.schedule, row.ends_on);
+        App.Components.RepeatFields.load('series-repeat', row.rule, row.description, row.ends_on);
         $('#series-pattern-save').data('id', id);
         $('#series-pattern-modal').modal('show');
     }

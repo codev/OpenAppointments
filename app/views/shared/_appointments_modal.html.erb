@@ -310,5 +310,6 @@
 </div>
 
 <% content_for :scripts do %>
+    <%= javascript_include_tag "vendor/recurring_select/recurring_select" %>
     <%= ea_js "components/repeat_fields", "components/appointments_modal" %>
 <% end %>

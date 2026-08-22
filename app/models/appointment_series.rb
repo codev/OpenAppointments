@@ -40,19 +40,12 @@ class AppointmentSeries < ApplicationRecord
     update!(removed: (removed_list | [ date.to_s ]).to_json)
   end
 
-  # Build the stored schedule from the modal's repeat fields.
-  # repeat: {frequency, interval, weekdays: [0..6], ends: never|on|after, ends_on, count}
+  # Build the stored schedule from the repeat fields: the recurring_select rule hash
+  # (JSON string or hash) plus ends: never|on|after with ends_on / count.
   def self.schedule_from(repeat, starts_on)
-    interval = [ repeat["interval"].to_i, 1 ].max
-    rule = case repeat["frequency"]
-    when "daily" then IceCube::Rule.daily(interval)
-    when "weekly"
-             days = Array(repeat["weekdays"]).map(&:to_i).uniq
-             days = [ starts_on.wday ] if days.empty?
-             IceCube::Rule.weekly(interval).day(*days)
-    when "monthly" then IceCube::Rule.monthly(interval).day_of_month(starts_on.day)
-    else raise ArgumentError, "Unknown repeat frequency."
-    end
+    rule = RecurringSelect.dirty_hash_to_rule(repeat["rule"])
+    raise ArgumentError, "Unknown repeat pattern." unless rule
+
     case repeat["ends"]
     when "on" then rule.until(Date.parse(repeat["ends_on"].to_s).end_of_day)
     when "after" then rule.count([ repeat["count"].to_i, 1 ].max)
@@ -60,6 +53,11 @@ class AppointmentSeries < ApplicationRecord
     schedule = IceCube::Schedule.new(starts_on.to_time)
     schedule.add_recurrence_rule(rule)
     schedule
+  end
+
+  # The first rule's hash, for the dropdown.
+  def rule_hash
+    ice_schedule.recurrence_rules.first&.to_hash
   end
 
   def ice_schedule

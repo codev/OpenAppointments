@@ -3,6 +3,12 @@ require "test_helper"
 class AppointmentSeriesTest < ActiveSupport::TestCase
   TODAY = Date.new(2026, 7, 20) # a Monday; fixture provider zane works Mon, Tue, Thu, Fri 09:00-18:00
 
+  def rule(frequency, interval: 1, weekdays: [ 1 ])
+    return { "rule_type" => "IceCube::DailyRule", "interval" => interval }.to_json if frequency == "daily"
+
+    { "rule_type" => "IceCube::WeeklyRule", "interval" => interval, "validations" => { "day" => weekdays } }.to_json
+  end
+
   def build_series(repeat, starts_on: TODAY, start_time: "10:00")
     AppointmentSeries.create!(
       provider: users(:zane), customer: users(:jx), service: services(:haircut),
@@ -18,7 +24,7 @@ class AppointmentSeriesTest < ActiveSupport::TestCase
   end
 
   test "weekly occurrences are created up to the booking limit" do
-    series = build_series({ "frequency" => "weekly", "interval" => 1, "weekdays" => [ 1 ], "ends" => "never" })
+    series = build_series({ "rule" => rule("weekly"), "ends" => "never" })
     result = series.materialise(now: TODAY)
 
     assert_equal 9, result[:created].size, "Mondays from 20 Jul to 18 Sep"
@@ -30,12 +36,12 @@ class AppointmentSeriesTest < ActiveSupport::TestCase
   end
 
   test "materialising again adds nothing and respects an end date and count" do
-    series = build_series({ "frequency" => "weekly", "interval" => 1, "weekdays" => [ 1 ], "ends" => "after", "count" => 3 })
+    series = build_series({ "rule" => rule("weekly"), "ends" => "after", "count" => 3 })
     series.materialise(now: TODAY)
     assert_equal 3, series.appointments.count
     assert_empty series.materialise(now: TODAY)[:created]
 
-    ended = build_series({ "frequency" => "daily", "interval" => 1, "ends" => "on", "ends_on" => "2026-07-21" },
+    ended = build_series({ "rule" => rule("daily"), "ends" => "on", "ends_on" => "2026-07-21" },
                          start_time: "11:00")
     assert_equal [ Date.new(2026, 7, 20), Date.new(2026, 7, 21) ], ended.materialise(now: TODAY)[:created]
   end
@@ -46,7 +52,7 @@ class AppointmentSeriesTest < ActiveSupport::TestCase
     WorkingPlanException.create!(provider: users(:zane), start_date: Date.new(2026, 8, 3), end_date: Date.new(2026, 8, 3))
     BlockedPeriod.create!(name: "Closed", start_datetime: Time.new(2026, 8, 10, 0, 0), end_datetime: Time.new(2026, 8, 10, 23, 59))
 
-    series = build_series({ "frequency" => "weekly", "interval" => 1, "weekdays" => [ 1 ], "ends" => "never" })
+    series = build_series({ "rule" => rule("weekly"), "ends" => "never" })
     result = series.materialise(now: TODAY)
 
     assert_equal [ [ "2026-07-27", "busy" ], [ "2026-08-03", "not_working" ], [ "2026-08-10", "blocked" ] ],
@@ -56,14 +62,14 @@ class AppointmentSeriesTest < ActiveSupport::TestCase
   end
 
   test "a day the provider does not work is not booked" do
-    series = build_series({ "frequency" => "weekly", "interval" => 1, "weekdays" => [ 3 ], "ends" => "never" }) # Wednesday
+    series = build_series({ "rule" => rule("weekly", weekdays: [ 3 ]), "ends" => "never" }) # Wednesday
     result = series.materialise(now: TODAY)
     assert_empty result[:created]
     assert result[:skipped].all? { |entry| entry["reason"] == "not_working" }
   end
 
   test "cancel_from removes later occurrences and ends the series" do
-    series = build_series({ "frequency" => "weekly", "interval" => 1, "weekdays" => [ 1 ], "ends" => "never" })
+    series = build_series({ "rule" => rule("weekly"), "ends" => "never" })
     series.materialise(now: TODAY)
     deleted = series.cancel_from(Date.new(2026, 8, 3))
 
@@ -74,9 +80,9 @@ class AppointmentSeriesTest < ActiveSupport::TestCase
   end
 
   test "reschedule! replaces future occurrences with the new pattern" do
-    series = build_series({ "frequency" => "weekly", "interval" => 1, "weekdays" => [ 1 ], "ends" => "never" })
+    series = build_series({ "rule" => rule("weekly"), "ends" => "never" })
     series.materialise(now: TODAY)
-    result = series.reschedule!({ "frequency" => "weekly", "interval" => 2, "weekdays" => [ 2 ], "ends" => "never" },
+    result = series.reschedule!({ "rule" => rule("weekly", interval: 2, weekdays: [ 2 ]), "ends" => "never" },
                                 now: Date.new(2026, 7, 28))
 
     assert_equal 2, series.appointments.where("occurrence_at < ?", Date.new(2026, 7, 28)).count, "past kept"
@@ -85,7 +91,7 @@ class AppointmentSeriesTest < ActiveSupport::TestCase
   end
 
   test "description is readable" do
-    series = build_series({ "frequency" => "weekly", "interval" => 1, "weekdays" => [ 1 ], "ends" => "never" })
+    series = build_series({ "rule" => rule("weekly"), "ends" => "never" })
     assert_match(/Weekly on Mondays/, series.description)
   end
 end

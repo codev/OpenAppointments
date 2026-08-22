@@ -17,6 +17,10 @@ class AppointmentSeriesIntegrationTest < ActionDispatch::IntegrationTest
     travel_to Time.new(2026, 7, 20, 8, 0, 0)
   end
 
+  def weekly
+    { rule_type: "IceCube::WeeklyRule", interval: 1, validations: { day: [ 1 ] } }
+  end
+
   def save_repeating(repeat)
     post "/calendar/save_appointment", params: {
       appointment_data: {
@@ -34,7 +38,7 @@ class AppointmentSeriesIntegrationTest < ActionDispatch::IntegrationTest
     Appointment.create!(provider: users(:zane), customer: users(:jx), service: services(:haircut),
                         start_datetime: Time.new(2026, 7, 27, 10, 0), end_datetime: Time.new(2026, 7, 27, 10, 30))
 
-    body = save_repeating({ frequency: "weekly", interval: 1, weekdays: [ 1 ], ends: "never" })
+    body = save_repeating({ rule: weekly.to_json, ends: "never" })
     assert_equal true, body["success"]
     assert_equal [ [ "2026-07-27", "busy" ] ], body["skipped"].map { |s| [ s["date"], s["reason"] ] }
 
@@ -51,7 +55,7 @@ class AppointmentSeriesIntegrationTest < ActionDispatch::IntegrationTest
 
   test "deleting one occurrence never recreates it" do
     login_admin
-    save_repeating({ frequency: "weekly", interval: 1, weekdays: [ 1 ], ends: "never" })
+    save_repeating({ rule: weekly.to_json, ends: "never" })
     series = AppointmentSeries.sole
     victim = series.appointments.find_by(occurrence_at: Date.new(2026, 8, 3))
 
@@ -63,11 +67,11 @@ class AppointmentSeriesIntegrationTest < ActionDispatch::IntegrationTest
 
   test "cancel from a date and reschedule the pattern" do
     login_admin
-    save_repeating({ frequency: "weekly", interval: 1, weekdays: [ 1 ], ends: "never" })
+    save_repeating({ rule: weekly.to_json, ends: "never" })
     series = AppointmentSeries.sole
 
     post "/appointment_series/#{series.id}/reschedule",
-         params: { repeat: { frequency: "weekly", interval: 1, weekdays: [ 2 ], ends: "after", count: 2 } }
+         params: { repeat: { rule: { rule_type: "IceCube::WeeklyRule", interval: 1, validations: { day: [ 2 ] } }.to_json, ends: "after", count: 2 } }
     assert_equal true, response.parsed_body["success"]
     assert series.reload.appointments.where("occurrence_at > ?", Date.new(2026, 7, 20)).all? { |a| a.occurrence_at.tuesday? }
 
@@ -79,12 +83,12 @@ class AppointmentSeriesIntegrationTest < ActionDispatch::IntegrationTest
 
   test "a provider only sees and changes their own series" do
     login_admin
-    save_repeating({ frequency: "weekly", interval: 1, weekdays: [ 1 ], ends: "never" })
+    save_repeating({ rule: weekly.to_json, ends: "never" })
     other = User.create!(name: "Other", email: "other@example.org", role: users(:zane).role)
     other.create_settings!(username: "other", password: Passwords.hash("otherother1"), working_plan: users(:zane).settings.working_plan)
     ServiceProviderLink.create!(id_users: other.id, id_services: services(:haircut).id)
     foreign = AppointmentSeries.create!(provider: other, customer: users(:jx), service: services(:haircut),
-                                        ice_schedule: AppointmentSeries.schedule_from({ "frequency" => "daily", "interval" => 1 }, Date.new(2026, 7, 20)),
+                                        ice_schedule: AppointmentSeries.schedule_from({ "rule" => { "rule_type" => "IceCube::DailyRule", "interval" => 1 }.to_json }, Date.new(2026, 7, 20)),
                                         starts_on: Date.new(2026, 7, 20), start_time: "12:00", duration: 30)
 
     login_provider
@@ -95,9 +99,16 @@ class AppointmentSeriesIntegrationTest < ActionDispatch::IntegrationTest
     assert_equal false, response.parsed_body["success"]
   end
 
+  test "the recurring_select dialog can ask the server for a rule summary" do
+    login_admin
+    post "/recurring_select/translate/en", params: { rule_type: "IceCube::WeeklyRule", interval: 1, validations: { day: [ 1, 3 ] } }
+    assert_response :success
+    assert_equal "Weekly on Mondays and Wednesdays", response.body
+  end
+
   test "the email context carries the repeat description and next date" do
     login_admin
-    save_repeating({ frequency: "weekly", interval: 1, weekdays: [ 1 ], ends: "never" })
+    save_repeating({ rule: weekly.to_json, ends: "never" })
     first = AppointmentSeries.sole.appointments.order(:occurrence_at).first
     context = Messaging::Template.appointment_context(appointment: first, service: first.service,
                                                       provider: first.provider, customer: first.customer)

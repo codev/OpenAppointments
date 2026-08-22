@@ -74,7 +74,7 @@ class CalendarController < ApplicationController
     appointment.save!
 
     skipped = []
-    if repeat.present? && repeat["frequency"].present? && repeat["frequency"] != "none" && !manage_mode
+    if repeat.present? && repeat["rule"].present? && !manage_mode
       skipped = AppointmentSeries.start_from(appointment, repeat, created_by: session[:user_id])[:skipped]
     end
 
@@ -303,7 +303,7 @@ class CalendarController < ApplicationController
 
   CUSTOMER_PERMIT = (BookingController::ALLOWED_CUSTOMER_FIELDS + %w[notes]).map(&:to_sym).freeze
   APPOINTMENT_PERMIT = BookingController::ALLOWED_APPOINTMENT_FIELDS.map(&:to_sym).freeze
-  REPEAT_PERMIT = [ :frequency, :interval, :ends, :ends_on, :count, { weekdays: [] } ].freeze
+  REPEAT_PERMIT = %i[rule ends ends_on count].freeze
   UNAVAILABILITY_PERMIT = %i[id start_datetime end_datetime location notes id_users_provider].freeze
   EXCEPTION_PERMIT = [ :id, :startDate, :endDate, :startTime, :endTime, :start_date, :end_date,
                       :start_time, :end_time, { breaks: [ :start, :end ] } ].freeze

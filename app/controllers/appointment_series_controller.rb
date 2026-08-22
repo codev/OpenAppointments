@@ -22,7 +22,7 @@ class AppointmentSeriesController < ApplicationController
 
     series = visible_series.find(params[:id])
     repeat = permitted_hash(params[:repeat], REPEAT_PERMIT)
-    raise ArgumentError, "Invalid repeat pattern." if repeat.blank? || repeat["frequency"].blank?
+    raise ArgumentError, "Invalid repeat pattern." if repeat.blank? || repeat["rule"].blank?
 
     result = series.reschedule!(repeat)
     render json: { success: true, skipped: result[:skipped], series: EaRows.series_row(series.reload) }

@@ -849,3 +849,17 @@ hr:
     series_saved: Repeating pattern saved.
     series_cancelled: Repeating appointments cancelled.
     appointment_series: Repeating Appointments
+    rs_set_schedule: Set schedule...
+    rs_frequency: Frequency
+    rs_yearly: Yearly
+    rs_days: day(s)
+    rs_weeks_on: week(s) on
+    rs_months: month(s)
+    rs_years: year(s)
+    rs_day_of_month: Day of month
+    rs_day_of_week: Day of week
+    rs_ok: OK
+    rs_summary: Summary
+    rs_last_day: Last Day
+    rs_days_first_letter: Su, M, Tu, W, Th, F, Sa
+    rs_order: 1st, 2nd, 3rd, 4th, 5th, Last

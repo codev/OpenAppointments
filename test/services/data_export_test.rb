@@ -98,7 +98,7 @@ class DataExportTest < ActiveSupport::TestCase
     Setting.set("future_booking_limit", "30")
     series = AppointmentSeries.create!(
       provider: users(:zane), customer: users(:jx), service: services(:haircut),
-      ice_schedule: AppointmentSeries.schedule_from({ "frequency" => "weekly", "interval" => 1, "weekdays" => [ 1 ] }, Date.new(2026, 7, 20)),
+      ice_schedule: AppointmentSeries.schedule_from({ "rule" => { "rule_type" => "IceCube::WeeklyRule", "interval" => 1, "validations" => { "day" => [ 1 ] } }.to_json }, Date.new(2026, 7, 20)),
       starts_on: Date.new(2026, 7, 20), start_time: "10:00", duration: 30, status: "Booked"
     )
     series_dates = series.materialise(now: Date.new(2026, 7, 20))[:created]
