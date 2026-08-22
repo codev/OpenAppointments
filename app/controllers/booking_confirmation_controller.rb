@@ -37,7 +37,7 @@ class BookingConfirmationController < ApplicationController
   def add_to_google_url(appointment)
     provider = appointment.provider
     customer = appointment.customer
-    zone = Time.find_zone!(provider&.timezone.presence || "UTC")
+    zone = Time.find_zone!(provider&.effective_timezone || "UTC")
     dates = [ appointment.start_datetime, appointment.end_datetime ].map { |dt|
       zone.parse(dt.strftime("%Y-%m-%d %H:%M:%S")).utc.strftime("%Y%m%dT%H%M%SZ")
     }.join("/")

@@ -64,7 +64,7 @@ module BookingPayloads
   def provider_payload(provider)
     {
       "id" => provider.id, "name" => provider.name,
-      "services" => provider.services.map(&:id), "timezone" => provider.timezone,
+      "services" => provider.services.map(&:id), "timezone" => provider.effective_timezone,
       "booking_slug" => provider.booking_slug, "is_private" => provider.is_private,
       "about" => provider.about, "services_description" => provider.services_description,
       "picture_url" => EaRows.picture_url(provider)

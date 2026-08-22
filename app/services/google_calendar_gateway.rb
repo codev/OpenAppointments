@@ -77,7 +77,7 @@ class GoogleCalendarGateway
 
   # Pure event construction (EA add_appointment), testable without the API.
   def build_event(appointment, provider, service, customer, company_name)
-    tzid = provider.timezone.presence || "UTC"
+    tzid = provider.effective_timezone
     Calendar::Event.new(
       summary: service&.name.presence || "Unavailable",
       description: appointment.notes,

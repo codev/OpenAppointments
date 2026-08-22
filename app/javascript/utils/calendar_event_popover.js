@@ -176,6 +176,10 @@ App.Utils.CalendarEventPopover = (function () {
      * @returns {Array<jQuery>} Array of jQuery elements.
      */
     function createPopoverRow(labelKey, text) {
+        if (labelKey === 'timezone' && vars('fixed_timezone')) {
+            return [];
+        }
+
         return [
             $('<strong/>', {class: 'd-inline-block me-2', text: lang(labelKey)}),
             $('<span/>', {text: text}),

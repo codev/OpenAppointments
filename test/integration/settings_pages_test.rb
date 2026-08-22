@@ -67,6 +67,22 @@ class SettingsPagesTest < ActionDispatch::IntegrationTest
     assert_select "#messages-nav a.fw-bold[href='/messages_providers']"
   end
 
+  test "fixing the timezone moves every user to the default and hides the controls" do
+    login_admin
+    users(:zane).update!(timezone: "America/New_York")
+    post "/general_settings/save", params: {
+      general_settings: [ { name: "default_timezone", value: "Europe/London" }, { name: "fixed_timezone", value: "1" } ]
+    }
+    assert_response :success
+    assert_equal "Europe/London", users(:zane).reload.timezone
+
+    get "/providers"
+    assert_select "div.d-none label[for='timezone']"
+    get "/booking"
+    assert_select "div.d-none label[for='select-timezone']"
+    assert_match '"fixed_timezone":true', response.body
+  end
+
   test "general settings save persists whitelisted settings" do
     login_admin
     post "/general_settings/save", params: {

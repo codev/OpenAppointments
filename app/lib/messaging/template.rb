@@ -28,7 +28,7 @@ module Messaging
     # Tokens for an appointment event, with times shifted into the recipient
     # timezone (appointments store provider-local wall-clock times).
     def appointment_context(appointment:, service:, provider:, customer:, recipient_timezone: nil, reason: nil, link_path: nil)
-      start_at, end_at = localized_times(appointment, provider&.timezone, recipient_timezone)
+      start_at, end_at = localized_times(appointment, provider&.effective_timezone, recipient_timezone)
       base_context.merge(
         "Customer Name" => customer&.name.to_s,
         "Customer First Name" => customer&.name.to_s.split(" ").first.to_s,

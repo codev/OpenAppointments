@@ -7,7 +7,7 @@ class GeneralSettingsController < ApplicationController
 
   ALLOWED_SETTINGS = %w[
     company_name company_email company_link company_logo
-    company_working_plan book_advance_timeout default_timezone default_language default_country_code
+    company_working_plan book_advance_timeout default_timezone fixed_timezone default_language default_country_code
     date_format time_format first_weekday require_phone_number
     display_cookie_notice cookie_notice_content display_terms_and_conditions
     terms_and_conditions_content display_privacy_policy privacy_policy_content
@@ -27,6 +27,7 @@ class GeneralSettingsController < ApplicationController
   def save
     require_system_settings_edit!
     save_setting_rows(:general_settings, allowed_names: ALLOWED_SETTINGS)
+    User.where.not(timezone: Setting.get("default_timezone")).update_all(timezone: Setting.get("default_timezone")) if Setting.fixed_timezone?
   rescue ArgumentError => e
     json_exception(e)
   end

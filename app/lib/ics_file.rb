@@ -4,7 +4,7 @@ module IcsFile
   module_function
 
   def stream(appointment, service, provider, customer)
-    tzid = provider.timezone.presence || "UTC"
+    tzid = provider.effective_timezone
     calendar = Icalendar::Calendar.new
     calendar.prodid = "-//OpenAppointments//EN"
 

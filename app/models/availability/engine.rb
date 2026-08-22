@@ -252,7 +252,7 @@ module Availability
     end
 
     def consider_book_advance_timeout(date, hours, provider)
-      zone = Time.find_zone!(provider.timezone.presence || "UTC")
+      zone = Time.find_zone!(provider.effective_timezone)
       timeout = Setting.get("book_advance_timeout", "0")
       timeout = timeout.to_s.match?(/\A-?\d+\z/) ? [ timeout.to_i, 0 ].max : 0
 

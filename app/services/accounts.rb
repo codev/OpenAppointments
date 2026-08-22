@@ -20,7 +20,7 @@ module Accounts
       user_id: user.id,
       user_email: user.email,
       username: username,
-      timezone: user.timezone.presence || Setting.get("default_timezone", "UTC"),
+      timezone: user.effective_timezone,
       language: user.language.presence || Setting.get("default_language", "english"),
       role_slug: user.role.slug
     }
