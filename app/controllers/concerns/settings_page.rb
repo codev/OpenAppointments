@@ -34,7 +34,6 @@ module SettingsPage
       next if allowed_names && !allowed_names.include?(name)
 
       value = row["value"].to_s
-      next if value.blank? && SENSITIVE_SETTING_NAMES.include?(name) && params[:settings] # password field left empty
       value = yield(name, value) if block_given?
       Setting.set(name, value) unless value.nil?
     end
@@ -62,8 +61,13 @@ module SettingsPage
   # objects (key[0][name]=...), which Rack parses into a hash keyed "0", "1", ...
   # Both become an array of {name, value} hashes.
   def setting_row_params(key)
-    if params[:settings].respond_to?(:to_unsafe_h)
-      return params[:settings].to_unsafe_h.map { |name, value| { "name" => name.to_s, "value" => value } }
+    if settings_form_post?
+      # A password field left empty keeps the stored secret.
+      return params[:settings].to_unsafe_h.filter_map { |name, value|
+        next if value.blank? && SENSITIVE_SETTING_NAMES.include?(name.to_s)
+
+        { "name" => name.to_s, "value" => value }
+      }
     end
 
     rows = params[key]

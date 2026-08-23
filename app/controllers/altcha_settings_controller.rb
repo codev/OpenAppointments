@@ -10,18 +10,6 @@ class AltchaSettingsController < ApplicationController
 
   def index
     backend_page_vars(page_title: helpers.lang("settings"), active_menu: "system_settings")
-    script_vars(
-      altcha_settings: [
-        { "name" => "captcha_provider", "value" => Setting.get("captcha_provider", "altcha") },
-        { "name" => "altcha_enabled", "value" => Setting.get("altcha_enabled", "0") },
-        { "name" => "captcha_login_enabled", "value" => Setting.get("captcha_login_enabled", "0") },
-        { "name" => "altcha_hmac_key", "value" => Setting.get("altcha_hmac_key", "") },
-        { "name" => "altcha_max_number", "value" => Setting.get("altcha_max_number", "100000") },
-        { "name" => "altcha_expires", "value" => Setting.get("altcha_expires", "300") },
-        { "name" => "turnstile_site_key", "value" => Setting.get("turnstile_site_key", "") },
-        { "name" => "turnstile_secret_key", "value" => Setting.get("turnstile_secret_key", "") }
-      ]
-    )
     render :index
   end
 
@@ -31,9 +19,8 @@ class AltchaSettingsController < ApplicationController
   # POST /altcha_settings/save. Refuses to activate a provider that is not
   # fully configured (merging the payload over the stored settings).
   def save
-    if (message = validation_error)
-      return render json: { success: false, message: message }
-    end
+    message = validation_error
+    raise ArgumentError, message if message
 
     save_setting_rows(:altcha_settings) { |name, value| KEY_SETTINGS.include?(name) ? value.strip : value }
   rescue ArgumentError => e
