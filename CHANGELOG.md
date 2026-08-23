@@ -6,7 +6,11 @@ CloudronManifest.json.
 ## 2.0.0
 
 - Admin pages move from the inherited jQuery scripts to standard Rails views with Turbo Frames: Service Categories, Blocked Periods, Webhooks, Services, Admins, Assistants, Providers and Customers. They look the same; pictures are saved with the form, the filter, sort and delete actions reload in place, and confirmations use the usual dialog
+- Every settings page is a Rails form too, with the same layout; saved values show straight away, secrets never appear in the page, and an empty password field keeps the stored one
+- The repeating appointments panel and its cancel dialog are Rails views
 - Blocked period dates use the browser's date and time picker
+- Lists of customers, admins, assistants, blocked periods and webhooks page 20 at a time
+- Fixed: the API, LDAP, analytics, Google Calendar and messages settings pages showed blank values after a save
 - Browser tests cover every converted page
 
 ## 1.9.0
