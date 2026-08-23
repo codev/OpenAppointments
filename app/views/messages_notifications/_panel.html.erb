@@ -1,0 +1,113 @@
+<%# One notification template as a form. Locals: notification, index, open. %>
+<% n = notification %>
+<div class="card mb-3 notification-panel" data-id="<%= n.id %>">
+    <div class="card-header d-flex justify-content-between align-items-center notification-header" role="button">
+        <span class="notification-title-display fw-light"><%= n.title.presence || lang('notification_untitled') %></span>
+        <i class="fas fa-chevron-<%= open ? 'up' : 'down' %>"></i>
+    </div>
+    <div class="card-body notification-body" <%= 'style=display:none' unless open %>>
+        <%= form_with url: "/messages_notifications/save", method: :post, class: "notification-form", data: { turbo_frame: "notifications" } do %>
+            <%= hidden_field_tag :form, "1", id: nil %>
+            <%= hidden_field_tag "notification[id]", n.id, id: nil %>
+            <div class="mb-3">
+                <label class="form-label" for="title-<%= index %>"><%= lang('title') %></label>
+                <%= text_field_tag "notification[title]", n.title, id: "title-#{index}", class: "form-control n-title", maxlength: 220 %>
+                <div class="form-text text-muted"><small><%= lang('notification_description_hint') %></small></div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="event-<%= index %>"><%= lang('notification_event') %></label>
+                <%= select_tag "notification[event]", options_for_select(Notification::EVENTS.map { |e| [ lang("notification_event_#{e}"), e ] }, n.event),
+                               id: "event-#{index}", class: "form-select", data: { field: "event" } %>
+            </div>
+            <div class="cancelled-block mb-3" data-visible-when="event=cancelled">
+                <label class="form-label" for="cancellation-scope-<%= index %>"><%= lang('notification_cancellation_scope') %></label>
+                <%= select_tag "notification[cancellation_scope]",
+                               options_for_select(Notification::CANCELLATION_SCOPES.map { |s| [ lang("notification_cancellation_#{s}"), s ] }, n.cancellation_scope),
+                               id: "cancellation-scope-#{index}", class: "form-select" %>
+                <div class="form-text text-muted"><small><%= lang('notification_cancellation_scope_hint') %></small></div>
+            </div>
+            <div class="coming-up-block border rounded p-3 mb-3" data-visible-when="event=coming_up">
+                <div class="mb-3">
+                    <%= select_tag "notification[lead_mode]",
+                                   options_for_select([ [ lang('notification_lead_before'), "before" ], [ lang('notification_lead_day_at'), "day_at" ] ], n.lead_mode),
+                                   id: "lead-mode-#{index}", class: "form-select", data: { field: "lead_mode" } %>
+                </div>
+                <div class="lead-before-block row" data-visible-when="lead_mode=before">
+                    <div class="col-6">
+                        <label class="form-label" for="lead-days-<%= index %>"><%= lang('days') %></label>
+                        <%= select_tag "notification[lead_days]", options_for_select((0..30).to_a, n.lead_days.to_i), id: "lead-days-#{index}", class: "form-select" %>
+                    </div>
+                    <div class="col-6">
+                        <label class="form-label" for="lead-hours-<%= index %>"><%= lang('hours') %></label>
+                        <%= select_tag "notification[lead_hours]", options_for_select((0..23).to_a, n.lead_hours.to_i), id: "lead-hours-#{index}", class: "form-select" %>
+                    </div>
+                </div>
+                <div class="lead-day-at-block row" data-visible-when="lead_mode=day_at">
+                    <div class="col-6">
+                        <label class="form-label" for="day-at-days-<%= index %>"><%= lang('notification_days_before') %></label>
+                        <%= select_tag "notification[day_at_days]", options_for_select((0..30).to_a, n.lead_days.to_i), id: "day-at-days-#{index}", class: "form-select" %>
+                    </div>
+                    <div class="col-6">
+                        <label class="form-label" for="send-time-<%= index %>"><%= lang('notification_send_time') %></label>
+                        <%= select_tag "notification[send_time]", options_for_select((0..23).map { |h| format("%02d:00", h) }, n.send_time),
+                                       id: "send-time-#{index}", class: "form-select" %>
+                    </div>
+                </div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label d-block"><%= lang('notification_send_to') %></label>
+                <%= hidden_field_tag "notification[audiences][]", "", id: nil %>
+                <% Notification::AUDIENCES.each do |audience| %>
+                    <div class="form-check form-check-inline">
+                        <%= check_box_tag "notification[audiences][]", audience, Array(n.audiences).include?(audience),
+                                          id: "audience-#{audience}-#{index}", class: "form-check-input" %>
+                        <label class="form-check-label" for="audience-<%= audience %>-<%= index %>"><%= lang("notification_audience_#{audience}") %></label>
+                    </div>
+                <% end %>
+            </div>
+            <div class="mb-3">
+                <label class="form-label d-block"><%= lang('messages_providers') %></label>
+                <%= hidden_field_tag "notification[channels][]", "", id: nil %>
+                <% @channels.each do |channel| %>
+                    <div class="form-check form-check-inline">
+                        <%= check_box_tag "notification[channels][]", channel.key, Array(n.channels).include?(channel.key),
+                                          id: "channel-#{channel.key}-#{index}", class: "form-check-input" %>
+                        <label class="form-check-label" for="channel-<%= channel.key %>-<%= index %>"><%= channel.label %></label>
+                    </div>
+                <% end %>
+                <% if @channels.empty? %>
+                    <div class="form-text text-muted"><small><%= lang('notification_no_providers') %></small></div>
+                <% end %>
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="short-text-<%= index %>"><%= lang('notification_short_text') %></label>
+                <%= text_field_tag "notification[short_text]", n.short_text, id: "short-text-#{index}", class: "form-control", maxlength: 500 %>
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="long-text-<%= index %>"><%= lang('notification_long_text') %></label>
+                <%= text_area_tag "notification[long_text]", n.long_text, id: "long-text-#{index}", class: "form-control", rows: 7 %>
+                <div class="form-text text-muted">
+                    <small>
+                        <%= lang('notification_tokens_hint') %>
+                        <%= Messaging::Template::TOKENS.map { |token| "{{#{token}}}" }.join(", ") %>
+                    </small>
+                </div>
+            </div>
+            <% if can?(:edit, :system_settings) %>
+                <div class="d-flex justify-content-between border-top pt-3">
+                    <button type="submit" class="btn btn-primary save-notification">
+                        <i class="fas fa-check-square me-2"></i>
+                        <%= lang('save') %>
+                    </button>
+                </div>
+            <% end %>
+        <% end %>
+        <% if can?(:edit, :system_settings) && n.persisted? %>
+            <%= button_to "/messages_notifications/destroy", method: :post, class: "btn btn-outline-danger delete-notification mt-2",
+                          params: { form: "1", notification_id: n.id }, data: { turbo_confirm_title: lang('delete_notification') },
+                          form: { data: { turbo_frame: "notifications", turbo_confirm: lang('delete_record_prompt') } } do %>
+                <i class="fas fa-trash-alt me-2"></i><%= lang('delete') %>
+            <% end %>
+        <% end %>
+    </div>
+</div>

@@ -81,3 +81,49 @@ class MessagesPagesTest < ActionDispatch::IntegrationTest
     assert_nil Notification.find_by(id: id)
   end
 end
+
+# The notification templates as Rails forms.
+class MessagesNotificationsFormTest < ActionDispatch::IntegrationTest
+  def login_admin
+    post "/login/validate", params: { username: "administrator", password: "administrator1" }
+  end
+
+  test "panels render per notification, add opens a blank one, save and delete come back with the panel open" do
+    login_admin
+    existing = Notification.create!(title: "Reminder", event: "coming_up", lead_mode: "day_at", lead_days: 1, send_time: "09:00",
+                                    audiences: [ "customer" ], channels: [ "email" ], short_text: "S", long_text: "L")
+    get "/messages_notifications"
+    assert_select "turbo-frame#notifications .notification-panel[data-id=?]", existing.id.to_s do
+      assert_select ".notification-title-display", text: "Reminder"
+      assert_select ".notification-body[style*='display:none']"
+      assert_select "form.notification-form input[name='notification[id]'][value=?]", existing.id.to_s
+      assert_select "select[name='notification[lead_mode]'] option[selected][value=day_at]"
+      assert_select "select[name='notification[day_at_days]'] option[selected][value='1']"
+      assert_select "input[name='notification[audiences][]'][value=customer][checked]"
+      assert_select "form[action='/messages_notifications/destroy'] input[name=notification_id][value=?]", existing.id.to_s
+    end
+    assert_select "a#add-notification[href='/messages_notifications?new=1']"
+
+    get "/messages_notifications", params: { new: 1 }
+    assert_select ".notification-panel", count: 2
+    assert_select ".notification-panel[data-id=''] .notification-body:not([style])"
+
+    post "/messages_notifications/save", params: { form: "1", notification: { title: "New one", event: "created", audiences: [ "", "provider" ],
+                                                                               channels: [ "" ], short_text: "S", long_text: "L" } }
+    created = Notification.find_by!(title: "New one")
+    assert_redirected_to "/messages_notifications?open=#{created.id}"
+    follow_redirect!
+    assert_select ".alert-success", text: I18n.t("ea.notification_saved")
+    assert_select ".notification-panel[data-id=?] .notification-body:not([style])", created.id.to_s
+    assert_equal [ "provider" ], created.audiences
+    assert_equal [], created.channels
+
+    post "/messages_notifications/save", params: { form: "1", notification: { id: existing.id, title: "Reminder", event: "coming_up",
+                                                                               lead_mode: "day_at", day_at_days: "3", lead_days: "0", lead_hours: "5", send_time: "10:00" } }
+    assert_equal [ 3, 0, "10:00" ], [ existing.reload.lead_days, existing.lead_hours, existing.send_time ]
+
+    post "/messages_notifications/destroy", params: { form: "1", notification_id: created.id }
+    assert_redirected_to "/messages_notifications"
+    assert_nil Notification.find_by(id: created.id)
+  end
+end
