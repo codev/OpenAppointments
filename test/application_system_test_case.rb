@@ -29,6 +29,21 @@ class ApplicationSystemTestCase < ActionDispatch::SystemTestCase
     assert_current_path %r{/calendar}, wait: 10
   end
 
+  # Typing during Bootstrap's fade-in loses keys to its focus handling: wait for
+  # the shown modal's opacity to reach 1 before driving its fields.
+  def wait_for_modal
+    assert_selector ".modal.show", wait: 5
+    assert page.has_css?(".modal.show", wait: 5) && wait_until_opaque, "modal did not finish showing"
+  end
+
+  def wait_until_opaque
+    20.times do
+      return true if page.evaluate_script("getComputedStyle(document.querySelector('.modal.show')).opacity") == "1"
+      sleep 0.1
+    end
+    false
+  end
+
   # Confirms the EA message modal (jQuery pages and Turbo confirms alike).
   def confirm_modal(title, button)
     assert_selector "#message-modal .modal-title", text: title, wait: 5

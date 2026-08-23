@@ -14,6 +14,7 @@ class TurboDriveTest < ApplicationSystemTestCase
 
   test "the header, settings and messages menus drive between pages and each page initialises" do
     login_as_admin
+    page.driver.browser.logs.get(:browser) # drop the earlier tests' console entries
     page.execute_script("window.__driveMarker = 1")
 
     drive_to "Appointments"

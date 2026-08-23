@@ -78,12 +78,12 @@ App.Components.EventModal = (function () {
         }
 
         if (changed) {
-            const colors = JSON.parse($service.data('colors') || '{}');
+            const colors = JSON.parse($service.attr('data-colors') || '{}');
             if (colors[serviceId]) {
                 App.Components.ColorSelection.setColor($('#appointment-color'), colors[serviceId]);
                 $('#appointment-color input[type=hidden]').val(colors[serviceId]);
             }
-            const durations = JSON.parse($service.data('durations') || '{}');
+            const durations = JSON.parse($service.attr('data-durations') || '{}');
             const start = App.Utils.UI.getDateTimePickerValue($('#start-datetime'));
             if (start) {
                 const end = new Date(start.getTime() + (durations[serviceId] || 60) * 60000);

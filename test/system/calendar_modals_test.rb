@@ -28,6 +28,7 @@ class CalendarModalsTest < ApplicationSystemTestCase
       find("#calendar-actions [data-bs-toggle=dropdown]").click
       find("#insert-appointment").click
       assert_selector "#save-appointment", visible: true, wait: 5
+      wait_for_modal
       within(find("#save-appointment").ancestor(".modal")) do
         select "Trim Cut", from: "select-service"
         select "Zane", from: "select-provider"
@@ -49,6 +50,7 @@ class CalendarModalsTest < ApplicationSystemTestCase
       open_event("Trim Cut")
       within(".popover") { click_on "Edit" }
       assert_selector "#save-appointment", visible: true, wait: 5
+      wait_for_modal
       within(find("#save-appointment").ancestor(".modal")) do
         assert_field "appointment-notes", with: /Fringe only|/
         fill_in "appointment-notes", with: "Fringe and wash"
@@ -63,6 +65,7 @@ class CalendarModalsTest < ApplicationSystemTestCase
       assert_selector ".modal.show .modal-title", text: "Cancel Appointment", wait: 5
       within(".modal.show") { has_button?("Yes") ? click_on("Yes") : choose("Yes") }
       assert_selector "#cancellation-reason", visible: true, wait: 5
+      wait_for_modal
       find("#cancellation-reason").set("Client away")
       within(".modal.show .modal-footer") { click_on "Cancel" }
       assert_no_selector ".modal.show", wait: 5
@@ -79,6 +82,7 @@ class CalendarModalsTest < ApplicationSystemTestCase
       find("#calendar-actions [data-bs-toggle=dropdown]").click
       find("#insert-unavailability").click
       assert_selector "#save-unavailability", visible: true, wait: 5
+      wait_for_modal
       within(find("#save-unavailability").ancestor(".modal")) do
         select "Zane", from: "unavailability-provider"
         find("#unavailability-start").set("#{today} 3:00 pm\t")
