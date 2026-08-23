@@ -1,0 +1,109 @@
+<%# User record fields for admins, assistants and providers: two columns, details
+    left and settings right. Locals: f (builder), record, delete_title, optional
+    header, settings (extra HTML at the end of the settings column). %>
+<% picture_url = EaRows.picture_url(record) %>
+<% settings = record.settings || record.build_settings %>
+<%# Keep typed settings through a failed save (they are not assigned to the record). %>
+<% typed = params.dig(controller_name.singularize, :settings) || {} %>
+<%= render "shared/crud_form", record: record, delete_title: delete_title, header: local_assigns[:header] do |f| %>
+    <div class="row">
+        <div class="details col-12 col-lg-6">
+            <div class="mb-3">
+                <%= f.label :name, class: "form-label" do %>
+                    <%= lang('name') %> <span class="text-danger">*</span>
+                <% end %>
+                <%= f.text_field :name, required: true, maxlength: 220,
+                                 class: "form-control #{'is-invalid' if record.errors.include?(:name)}" %>
+            </div>
+
+            <div class="mb-3 record-picture">
+                <%= f.label :picture, lang('picture'), class: "form-label d-block" %>
+                <img class="picture-preview img-thumbnail mb-2 <%= 'd-none' unless picture_url %>"
+                     style="max-height: 120px;" src="<%= picture_url %>" alt="">
+                <%= f.file_field :picture, class: "form-control mb-2", accept: PictureUpload::ALLOWED_PICTURE_TYPES.join(",") %>
+                <% if picture_url %>
+                    <div class="form-check">
+                        <%= f.check_box :remove_picture, class: "form-check-input", checked: false %>
+                        <%= f.label :remove_picture, lang('remove_picture'), class: "form-check-label" %>
+                    </div>
+                <% end %>
+            </div>
+
+            <div class="mb-3">
+                <%= f.label :email, class: "form-label" do %>
+                    <%= lang('email') %> <span class="text-danger">*</span>
+                <% end %>
+                <%= f.email_field :email, required: true, maxlength: 512,
+                                  class: "form-control #{'is-invalid' if record.errors.include?(:email)}" %>
+            </div>
+
+            <% { phone_number: 128, mobile_number: 128, address: 256, city: 256, state: 128, zip_code: 64 }.each do |field, max| %>
+                <div class="mb-3">
+                    <%= f.label field, lang(field.to_s), class: "form-label" %>
+                    <%= f.text_field field, maxlength: max, class: "form-control" %>
+                </div>
+            <% end %>
+
+            <div class="mb-3">
+                <%= f.label :notes, lang('notes'), class: "form-label" %>
+                <%= f.text_area :notes, rows: 6, class: "form-control" %>
+            </div>
+        </div>
+
+        <div class="settings col-12 col-lg-6">
+            <%= f.fields_for :settings, settings do |s| %>
+                <div class="mb-3">
+                    <%= s.label :username, class: "form-label" do %>
+                        <%= lang('username') %> <span class="text-danger">*</span>
+                    <% end %>
+                    <%= s.text_field :username, value: typed.fetch(:username, settings.username), required: true,
+                                     maxlength: 256, autocomplete: "off",
+                                     class: "form-control #{'is-invalid' if record.errors[:base].include?(lang('username_already_exists'))}" %>
+                </div>
+
+                <div class="mb-3">
+                    <%= s.label :password, class: "form-label" do %>
+                        <%= lang('password') %> <span class="text-danger">*</span>
+                    <% end %>
+                    <%= s.password_field :password, value: typed[:password], required: record.new_record?, maxlength: 512,
+                                         autocomplete: "new-password", class: "form-control" %>
+                </div>
+
+                <div class="mb-3">
+                    <%= s.label :password_confirmation, class: "form-label" do %>
+                        <%= lang('retype_password') %> <span class="text-danger">*</span>
+                    <% end %>
+                    <%= s.password_field :password_confirmation, value: typed[:password_confirmation],
+                                         required: record.new_record?, maxlength: 512,
+                                         autocomplete: "new-password", class: "form-control" %>
+                </div>
+            <% end %>
+
+            <div class="mb-3">
+                <%= f.label :language, class: "form-label" do %>
+                    <%= lang('language') %> <span class="text-danger">*</span>
+                <% end %>
+                <%= f.select :language, Localization.available_languages.map { |l| [ l.capitalize, l ] }, {},
+                             required: true, class: "form-select" %>
+            </div>
+
+            <div class="mb-3<%= timezone_hidden_class %>">
+                <%= f.label :timezone, class: "form-label" do %>
+                    <%= lang('timezone') %> <span class="text-danger">*</span>
+                <% end %>
+                <%= f.select :timezone, grouped_timezones.map { |continent, zones| [ continent, zones.map { |value, name| [ name, value ] } ] }, {},
+                             required: true, class: "form-select" %>
+            </div>
+
+            <% if setting('ldap_is_active').to_s == "1" %>
+                <div class="mb-3">
+                    <%= f.label :ldap_dn, lang('ldap_dn'), class: "form-label" %>
+                    <%= f.text_field :ldap_dn, maxlength: 100, class: "form-control" %>
+                </div>
+            <% end %>
+
+            <div><label class="form-label mb-3"><%= lang('options') %></label></div>
+            <%= local_assigns[:settings] %>
+        </div>
+    </div>
+<% end %>

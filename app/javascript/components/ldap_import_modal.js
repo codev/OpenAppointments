@@ -14,12 +14,8 @@
  *
  * This module implements the LDAP import modal functionality.
  *
- * This module requires the following scripts:
- *
- *   - App.Http.Customers
- *   - App.Http.Providers
- *   - App.Http.Assistants
- *   - App.Http.Admins
+ * Customers and providers post through their EA HTTP clients; admins and
+ * assistants post to their Rails resource routes.
  */
 App.Components.LdapImportModal = (function () {
     const $modal = $('#ldap-import-modal');
@@ -69,9 +65,16 @@ App.Components.LdapImportModal = (function () {
             case App.Layouts.Backend.DB_SLUG_PROVIDER:
                 return App.Http.Providers;
             case App.Layouts.Backend.DB_SLUG_ASSISTANT:
-                return App.Http.Assistants;
             case App.Layouts.Backend.DB_SLUG_ADMIN:
-                return App.Http.Admins;
+                return {
+                    store: (user) =>
+                        $.ajax({
+                            url: App.Utils.Url.siteUrl(roleSlug + 's'),
+                            method: 'POST',
+                            dataType: 'json',
+                            data: {csrf_token: vars('csrf_token'), [roleSlug]: user},
+                        }),
+                };
             default:
                 throw new Error(`Unsupported role slug provided: ${roleSlug}`);
         }

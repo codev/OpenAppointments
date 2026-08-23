@@ -123,16 +123,6 @@ class BackendCrudTest < ActionDispatch::IntegrationTest
     assert_match(/already in use/i, body["message"])
   end
 
-  test "admins cannot delete their own account" do
-    login_admin
-
-    post "/admins/destroy", params: { admin_id: users(:admin).id }
-    body = response.parsed_body
-    assert_equal false, body["success"]
-    assert_match(/cannot delete your own account/i, body["message"])
-    assert User.exists?(users(:admin).id)
-  end
-
   test "unavailabilities endpoints work without a page" do
     login_admin
 

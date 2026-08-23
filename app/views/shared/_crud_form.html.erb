@@ -3,7 +3,9 @@
     buttons that post elsewhere, since forms cannot nest); the block renders the
     fields with the builder. %>
 <%= local_assigns[:header] %>
-<%= form_with model: record, class: "crud-form", data: { turbo_frame: controller_name } do |f| %>
+<%= form_with model: record, scope: controller_name.singularize, class: "crud-form",
+              url: url_for(record.persisted? ? { action: :update, id: record } : { action: :create }),
+              data: { turbo_frame: controller_name } do |f| %>
     <% if record.errors.any? %>
         <div class="form-message alert alert-danger">
             <%= record.errors[:base].first || lang('fields_are_required') %>

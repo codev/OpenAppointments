@@ -1,7 +1,8 @@
 # Admin CRUD pages rendered as Rails views inside Turbo Frames (see
 # shared/_crud_page). The controller sets PAGE (privilege resource, menu, title
 # key, saved/deleted message keys, optional save/delete webhooks) and defines
-# record_scope, filter(scope, keyword), record_params, and optionally after_save.
+# record_scope, filter(scope, keyword), record_params, and optionally
+# before_save / after_save.
 module CrudPage
   extend ActiveSupport::Concern
 
@@ -62,6 +63,10 @@ module CrudPage
   end
 
   def render_page(status: :ok)
+    if request.format.json?
+      return render json: { success: false, message: @record.errors.full_messages.to_sentence }, status: status
+    end
+
     backend_page_vars(page_title: helpers.lang(self.class::PAGE[:title]), active_menu: self.class::PAGE[:menu])
     @keyword = params[:keyword].to_s
     @records = filter(record_scope, @keyword)
@@ -73,16 +78,24 @@ module CrudPage
     @editing = true
     return render_page(status: :unprocessable_entity) unless @record.valid?
 
+    before_save
     @record.transaction do
       @record.save!
       after_save
     end
     trigger_webhook(:save_webhook, Webhooks.to_row(@record))
-    redirect_to index_path(selected: @record.id), notice: helpers.lang(self.class::PAGE[:saved])
+    respond_to do |format|
+      format.html { redirect_to index_path(selected: @record.id), notice: helpers.lang(self.class::PAGE[:saved]) }
+      format.json { render json: { success: true, id: @record.id } }
+    end
   rescue ArgumentError => e
     @record.errors.add(:base, e.message)
     render_page(status: :unprocessable_entity)
   end
+
+  # Hooks: before_save raises ArgumentError for cross-field checks; after_save
+  # persists dependent data inside the save transaction.
+  def before_save; end
 
   def after_save; end
 
