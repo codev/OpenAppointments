@@ -25,7 +25,6 @@ Rails.application.routes.draw do
   resources :unavailabilities, only: %i[new create edit update destroy], controller: "unavailabilities_form"
   get "calendar/reschedule/:appointment_hash" => "calendar#reschedule"
   post "calendar/get_calendar_appointments" => "calendar#get_calendar_appointments"
-  post "calendar/get_calendar_appointments_for_table_view" => "calendar#get_calendar_appointments_for_table_view"
   post "calendar/save_appointment" => "calendar#save_appointment"
   post "calendar/delete_appointment" => "calendar#delete_appointment"
   post "calendar/cancel_appointment" => "calendar#cancel_appointment"

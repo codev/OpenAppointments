@@ -97,16 +97,6 @@ class CalendarTest < ActionDispatch::IntegrationTest
     assert_equal({ "appointments" => [], "unavailabilities" => [] }, response.parsed_body)
   end
 
-  test "table view returns appointments unavailabilities and blocked periods" do
-    login_admin
-    post "/calendar/get_calendar_appointments_for_table_view", params: {
-      start_date: "2026-07-19", end_date: "2026-07-21"
-    }
-    body = response.parsed_body
-    assert_equal 1, body["appointments"].length
-    assert_equal 1, body["unavailabilities"].length
-  end
-
   test "save_appointment creates appointment with new customer" do
     login_admin
     assert_difference [ "Appointment.appointments.count", "User.customers.count" ], 1 do

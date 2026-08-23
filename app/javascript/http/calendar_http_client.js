@@ -210,26 +210,6 @@ App.Http.Calendar = (function () {
     }
 
     /**
-     * Get the calendar appointments for the table view (different data structure).
-     *
-     * @param {Date} startDate
-     * @param {Date} endDate
-     *
-     * @return {*|jQuery}
-     */
-    function getCalendarAppointmentsForTableView(startDate, endDate) {
-        const url = App.Utils.Url.siteUrl('calendar/get_calendar_appointments_for_table_view');
-
-        const data = {
-            csrf_token: vars('csrf_token'),
-            start_date: moment(startDate).format('YYYY-MM-DD'),
-            end_date: moment(endDate).format('YYYY-MM-DD'),
-        };
-
-        return $.post(url, data);
-    }
-
-    /**
      * Save appointment with conflict handling.
      *
      * This method saves an appointment and handles conflict responses by showing a confirmation dialog
@@ -295,6 +275,5 @@ App.Http.Calendar = (function () {
         saveWorkingPlanException,
         deleteWorkingPlanException,
         getCalendarAppointments,
-        getCalendarAppointmentsForTableView,
     };
 })();

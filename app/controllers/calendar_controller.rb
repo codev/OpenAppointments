@@ -98,24 +98,6 @@ class CalendarController < ApplicationController
     json_exception(e, status: :ok)
   end
 
-  # POST /calendar/get_calendar_appointments_for_table_view
-  def get_calendar_appointments_for_table_view
-    raise ArgumentError, "You do not have the required permissions for this task." if cannot?(:view, :appointments)
-
-    start_datetime = "#{params.require(:start_date)} 00:00:00"
-    end_datetime = "#{params.require(:end_date)} 23:59:59"
-
-    appointments = Appointment.appointments
-                              .where("start_datetime >= ? AND end_datetime <= ?", start_datetime, end_datetime)
-    unavailabilities = Appointment.unavailabilities
-                                  .where("start_datetime >= ? AND end_datetime <= ?", start_datetime, end_datetime)
-
-    render json: calendar_events_response(appointments, unavailabilities,
-                                          params[:start_date], params[:end_date])
-  rescue ArgumentError => e
-    json_exception(e, status: :ok)
-  end
-
   # POST /calendar/get_calendar_appointments
   def get_calendar_appointments
     raise ArgumentError, "You do not have the required permissions for this task." if cannot?(:view, :appointments)

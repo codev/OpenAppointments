@@ -1,11 +1,29 @@
-# Appointments page (one day column per provider, the EA "table" view) and the
-# appointment dialog forms used by both calendar pages.
+# Appointments page (one day column per provider, the EA "table" view, rendered
+# server side from the URL's date and filters) and the appointment dialog forms
+# used by both calendar pages.
 class AppointmentsController < ApplicationController
   include CalendarPage
   include EventForm
 
+  DAY_COUNTS = [ 1, 3 ].freeze
+
+  # GET /appointments?date=&days=&provider=&service=&statuses[]=
   def index
-    render_calendar_page(page_title: "appointments", active_menu: "appointments")
+    return unless require_backend_page!(:appointments)
+
+    @date = Date.parse(params[:date].to_s) rescue Date.current
+    @days = DAY_COUNTS.include?(params[:days].to_i) ? params[:days].to_i : 1
+    @provider_id = params[:provider].to_i
+    @service_id = params[:service].to_i
+    @statuses = AppointmentStatus.rows
+    @selected_statuses = params.key?(:statuses) ? Array(params[:statuses]) : default_statuses
+    @providers = visible_providers.to_a
+    @services = Service.available.joins(:provider_links).distinct.order(:name).to_a
+    @columns = build_columns
+    backend_page_vars(page_title: helpers.lang("appointments"), active_menu: "appointments")
+    script_vars(edit_appointment: edit_appointment_var, first_weekday: Setting.get("first_weekday"))
+    html_vars(appointment_statuses: @statuses)
+    render :index
   end
 
   # GET /appointments/new?start=&end=&provider_id=&service_id=
@@ -60,6 +78,47 @@ class AppointmentsController < ApplicationController
   end
 
   private
+
+  def default_statuses
+    @statuses.reject { |status| %w[cancelled rescheduled].include?(status["kind"]) }.map { |status| status["name"] }
+  end
+
+  def edit_appointment_var
+    return nil if params[:appointment_hash].blank?
+
+    record = Appointment.find_by(booking_hash: params[:appointment_hash].to_s)
+    record && EaRows.appointment_row(record)
+  end
+
+  # [{ date:, days: [ProviderDay], not_working: [providers] }] for each shown date.
+  def build_columns
+    dates = (0...@days).map { |offset| @date + offset }
+    providers = @provider_id.positive? ? @providers.select { |p| p.id == @provider_id } : @providers
+    range = dates.first.beginning_of_day..dates.last.end_of_day
+    appointments = role_events(Appointment.appointments.where(start_datetime: range).includes(:service, :customer, :appointment_status))
+                   .select { |a| @selected_statuses.include?(a.status) }
+                   .select { |a| @service_id.zero? || a.id_services == @service_id }
+    unavailabilities = role_events(Appointment.unavailabilities.where("start_datetime <= ? AND end_datetime >= ?", range.end, range.begin))
+    blocked = BlockedPeriod.for_period(dates.first, dates.last).to_a
+
+    dates.map do |date|
+      days = providers.map do |provider|
+        ProviderDay.new(provider, date,
+                        appointments: appointments.select { |a| a.id_users_provider == provider.id && a.start_datetime.to_date == date },
+                        unavailabilities: unavailabilities.select { |u| u.id_users_provider == provider.id && u.start_datetime.to_date <= date && u.end_datetime.to_date >= date },
+                        blocked_periods: blocked.select { |b| b.start_datetime.to_date <= date && b.end_datetime.to_date >= date })
+      end
+      { date: date, days: days.select(&:working?), not_working: days.reject(&:working?).map(&:provider) }
+    end
+  end
+
+  def role_events(scope)
+    case session[:role_slug]
+    when Role::PROVIDER then scope.where(id_users_provider: session[:user_id])
+    when Role::ASSISTANT then scope.where(id_users_provider: assistant_provider_ids)
+    else scope
+    end.to_a
+  end
 
   def save
     data = appointment_params

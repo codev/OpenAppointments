@@ -1,0 +1,14 @@
+<%# One entry of a provider's day column. Locals: entry (ProviderDay::Entry), day, formats. %>
+<% time = ->(t) { t.strftime(MailerFormatHelper::TIME_FORMATS[formats[:time_format]] || MailerFormatHelper::TIME_FORMATS["regular"]).strip } %>
+<% href = case entry.kind
+          when "appointment", "freed" then edit_appointment_path(entry.record)
+          when "unavailability" then edit_unavailability_path(entry.record)
+          when "free" then new_appointment_path(start: entry.start.strftime("%Y-%m-%d %H:%M:%S"), provider_id: day.provider.id)
+          end %>
+<% tag = href ? :a : :div %>
+<%= content_tag tag, class: "day-entry day-entry-#{entry.kind} d-block text-reset text-decoration-none", href: href,
+                data: (href ? { turbo_frame: "event" } : {}), style: (entry.color ? "border-left-color: #{entry.color}" : nil),
+                title: entry.title do %>
+    <small class="day-entry-time"><%= time.call(entry.start) %> - <%= time.call(entry.end) %></small>
+    <span class="day-entry-title"><%= entry.title %></span>
+<% end %>
