@@ -1,5 +1,7 @@
-# Shared behavior for EA settings controllers: settings rows for script vars and
-# the EA save loop over [{name, value}, ...] payloads.
+# Shared behavior for the settings controllers: settings rows for script vars,
+# and the save loop over the settings form (settings[name]=value) or EA's
+# [{name, value}, ...] rows; HTML posts redirect back with a flash, JSON callers
+# get EA's {success} shape.
 module SettingsPage
   extend ActiveSupport::Concern
 
@@ -32,16 +34,36 @@ module SettingsPage
       next if allowed_names && !allowed_names.include?(name)
 
       value = row["value"].to_s
+      next if value.blank? && SENSITIVE_SETTING_NAMES.include?(name) && params[:settings] # password field left empty
       value = yield(name, value) if block_given?
       Setting.set(name, value) unless value.nil?
     end
 
-    render json: { success: true }
+    settings_saved
   end
 
-  # jQuery posts arrays of objects as key[0][name]=..., which Rack parses into a
-  # hash keyed "0", "1", ... Normalize to an array of plain hashes.
+  def settings_saved
+    respond_to do |format|
+      format.html { redirect_to url_for(action: :index), notice: helpers.lang("settings_saved") }
+      format.json { render json: { success: true } }
+    end
+  end
+
+  def settings_failed(error)
+    respond_to do |format|
+      format.html { redirect_to url_for(action: :index), alert: error.message }
+      format.json { json_exception(error) }
+    end
+  end
+
+  # The settings form posts settings[name]=value; EA's jQuery posted arrays of
+  # objects (key[0][name]=...), which Rack parses into a hash keyed "0", "1", ...
+  # Both become an array of {name, value} hashes.
   def setting_row_params(key)
+    if params[:settings].respond_to?(:to_unsafe_h)
+      return params[:settings].to_unsafe_h.map { |name, value| { "name" => name.to_s, "value" => value } }
+    end
+
     rows = params[key]
     return [] if rows.blank?
 

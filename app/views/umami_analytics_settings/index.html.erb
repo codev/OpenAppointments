@@ -5,27 +5,23 @@
             <%= render "shared/settings_nav" %>
         </div>
         <div id="umami-analytics-settings" class="col-sm-9">
-            <form>
-                <fieldset>
+            <turbo-frame id="settings">
+                <%= settings_form "/umami_analytics_settings/save" do %>
                     <div class="d-flex justify-content-between align-items-center border-bottom mb-4 py-2">
                         <h4 class="mb-0 fw-light">
                             <%= lang('umami_analytics') %>
                         </h4>
 
                         <div>
-                            <a href="/integrations" class="btn btn-outline-primary me-2">
+                            <a href="/integrations" data-turbo="false" class="btn btn-outline-primary me-2">
                                 <i class="fas fa-chevron-left me-2"></i>
                                 <%= lang('back') %>
                             </a>
 
-                            <% if can?(:edit, :system_settings) %>
-                                <button type="button" id="save-settings" class="btn btn-primary">
-                                    <i class="fas fa-check-square me-2"></i>
-                                    <%= lang('save') %>
-                                </button>
-                            <% end %>
+                            <%= settings_save_button %>
                         </div>
                     </div>
+                    <%= settings_flash %>
 
                     <div class="row">
                         <div class="col-12">
@@ -33,8 +29,7 @@
                                 <label class="form-label" for="umami-analytics-url">
                                     <%= lang('umami_analytics_url') %>
                                 </label>
-                                <input id="umami-analytics-url" placeholder="https://stats.example.org"
-                                       data-field="umami_analytics_url" class="form-control">
+                                <%= setting_text "umami_analytics_url", placeholder: "https://stats.example.org" %>
                                 <div class="form-text text-muted">
                                     <small>
                                         <%= lang('umami_analytics_url_hint') %>
@@ -46,14 +41,12 @@
                                 <label class="form-label" for="umami-analytics-website-id">
                                     <%= lang('umami_analytics_website_id') %>
                                 </label>
-                                <input id="umami-analytics-website-id" data-field="umami_analytics_website_id"
-                                       class="form-control">
+                                <%= setting_text "umami_analytics_website_id" %>
                             </div>
 
                             <div class="mb-3">
                                 <div class="form-check form-switch">
-                                    <input class="form-check-input" type="checkbox" id="umami-analytics-recorder"
-                                           data-field="umami_analytics_recorder">
+                                    <%= setting_switch "umami_analytics_recorder" %>
                                     <label class="form-check-label" for="umami-analytics-recorder">
                                         <%= lang('umami_analytics_recorder') %>
                                     </label>
@@ -65,12 +58,9 @@
                         </div>
                     </div>
 
-                </fieldset>
-            </form>
+                <% end %>
+            </turbo-frame>
         </div>
     </div>
 </div>
 
-<% content_for :scripts do %>
-    <%= ea_js "http/umami_analytics_settings_http_client", "pages/umami_analytics_settings" %>
-<% end %>

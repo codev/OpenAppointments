@@ -35,7 +35,7 @@ class LdapSettingsController < ApplicationController
     require_system_settings_edit!
     save_setting_rows(:ldap_settings)
   rescue ArgumentError => e
-    json_exception(e)
+    settings_failed(e)
   end
 
   # POST /ldap_settings/search
@@ -43,6 +43,6 @@ class LdapSettingsController < ApplicationController
     require_system_settings_edit!
     raise ArgumentError, "LDAP is not available in this build."
   rescue ArgumentError => e
-    json_exception(e)
+    settings_failed(e)
   end
 end

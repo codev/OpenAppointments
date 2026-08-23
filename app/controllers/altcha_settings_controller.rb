@@ -37,7 +37,7 @@ class AltchaSettingsController < ApplicationController
 
     save_setting_rows(:altcha_settings) { |name, value| KEY_SETTINGS.include?(name) ? value.strip : value }
   rescue ArgumentError => e
-    json_exception(e)
+    settings_failed(e)
   end
 
   # POST /altcha_settings/generate_key

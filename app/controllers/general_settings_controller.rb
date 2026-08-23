@@ -29,6 +29,6 @@ class GeneralSettingsController < ApplicationController
     save_setting_rows(:general_settings, allowed_names: ALLOWED_SETTINGS)
     User.where.not(timezone: Setting.get("default_timezone")).update_all(timezone: Setting.get("default_timezone")) if Setting.fixed_timezone?
   rescue ArgumentError => e
-    json_exception(e)
+    settings_failed(e)
   end
 end

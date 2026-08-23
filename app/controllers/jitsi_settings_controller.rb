@@ -9,11 +9,6 @@ class JitsiSettingsController < ApplicationController
 
   def index
     backend_page_vars(page_title: helpers.lang("settings"), active_menu: "system_settings")
-    script_vars(
-      jitsi_settings: [
-        { "name" => "jitsi_enabled", "value" => Setting.get("jitsi_enabled", "0") }
-      ]
-    )
     render :index
   end
 
@@ -21,6 +16,6 @@ class JitsiSettingsController < ApplicationController
   def save
     save_setting_rows(:jitsi_settings)
   rescue ArgumentError => e
-    json_exception(e)
+    settings_failed(e)
   end
 end

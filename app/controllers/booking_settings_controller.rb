@@ -29,7 +29,7 @@ class BookingSettingsController < ApplicationController
     end
     reconcile_contact_requirements
   rescue ArgumentError => e
-    json_exception(e)
+    settings_failed(e)
   end
 
   private

@@ -29,7 +29,7 @@ class BusinessSettingsController < ApplicationController
       nil
     end
   rescue ArgumentError, JSON::ParserError, ActiveRecord::RecordInvalid => e
-    json_exception(e)
+    settings_failed(e)
   end
 
   # The late cancellation window cannot exceed the booking window.
@@ -54,6 +54,6 @@ class BusinessSettingsController < ApplicationController
 
     render json: { success: true }
   rescue ArgumentError, JSON::ParserError, ActionController::ParameterMissing => e
-    json_exception(e)
+    settings_failed(e)
   end
 end

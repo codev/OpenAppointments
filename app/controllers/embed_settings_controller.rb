@@ -24,6 +24,6 @@ class EmbedSettingsController < ApplicationController
   def save
     save_setting_rows(:embed_settings, allowed_names: %w[allow_iframe_embedding iframe_embed_origin])
   rescue ArgumentError => e
-    json_exception(e)
+    settings_failed(e)
   end
 end

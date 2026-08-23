@@ -40,7 +40,7 @@ class ThemeSettingsController < ApplicationController
     require_system_settings_edit!
     save_setting_rows(:theme_settings, allowed_names: ALLOWED_SETTINGS)
   rescue ArgumentError => e
-    json_exception(e)
+    settings_failed(e)
   end
 
   private

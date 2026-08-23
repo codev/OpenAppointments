@@ -29,7 +29,7 @@ class MessagesSettingsController < ApplicationController
       end
     end
   rescue ArgumentError => e
-    json_exception(e)
+    settings_failed(e)
   end
 
   private

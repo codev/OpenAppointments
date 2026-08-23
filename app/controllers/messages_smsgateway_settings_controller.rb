@@ -49,7 +49,7 @@ class MessagesSmsgatewaySettingsController < ApplicationController
 
     render json: { success: true }
   rescue ArgumentError => e
-    json_exception(e)
+    settings_failed(e)
   end
 
   # POST /messages_smsgateway_settings/test_sms - validates the saved settings
@@ -75,7 +75,7 @@ class MessagesSmsgatewaySettingsController < ApplicationController
       render json: { success: false, message: e.message }
     end
   rescue ArgumentError => e
-    json_exception(e)
+    settings_failed(e)
   end
 
   private
