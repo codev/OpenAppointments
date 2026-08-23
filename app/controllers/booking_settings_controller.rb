@@ -11,7 +11,6 @@ class BookingSettingsController < ApplicationController
     return unless require_backend_page!(:system_settings)
 
     backend_page_vars(page_title: helpers.lang("settings"), active_menu: "system_settings")
-    script_vars(booking_settings: settings_rows)
     render :index
   end
 

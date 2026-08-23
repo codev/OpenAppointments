@@ -42,10 +42,10 @@ module SettingsFormHelper
     select_tag "settings[#{name}]", tags, setting_field_options(name, { class: "form-select" }.merge(options))
   end
 
-  # A form-switch storing "1"/"0".
-  def setting_switch(name, **options)
+  # A form-switch storing "1"/"0"; default: value assumed while unset.
+  def setting_switch(name, default: nil, **options)
     hidden_field_tag("settings[#{name}]", "0", id: nil) +
-      check_box_tag("settings[#{name}]", "1", setting_value(name).to_s == "1",
+      check_box_tag("settings[#{name}]", "1", setting(name, setting_value(name) || default).to_s == "1",
                     setting_field_options(name, { class: "form-check-input" }.merge(options)))
   end
 
