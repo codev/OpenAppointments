@@ -54,6 +54,7 @@
 
 <% if category.persisted? %>
     <%= button_to service_category_path(category), method: :delete, class: "btn btn-outline-danger mt-2",
+                  data: { turbo_confirm_title: lang('delete_service_category') },
                   form: { data: { turbo_frame: "service_categories", turbo_confirm: lang('delete_record_prompt') } } do %>
         <i class="fas fa-trash-alt me-2"></i>
         <%= lang('delete') %>

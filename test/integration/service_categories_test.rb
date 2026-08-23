@@ -114,7 +114,11 @@ class ServiceCategoriesTest < ActionDispatch::IntegrationTest
       assert_select "img#picture-preview[src*=rails]"
       assert_select "input[type=checkbox][name='service_category[remove_picture]']"
     end
-    assert_select "form[action=?] input[name=_method][value=delete]", "/service_categories/#{category.id}"
+    assert_select "form[action=?][data-turbo-confirm=?]", "/service_categories/#{category.id}",
+                  I18n.t("ea.delete_record_prompt") do
+      assert_select "input[name=_method][value=delete]"
+      assert_select "button[data-turbo-confirm-title=?]", I18n.t("ea.delete_service_category")
+    end
   end
 
   test "update changes the fields and can remove the picture" do

@@ -38,7 +38,13 @@ class ServiceCategoriesPageTest < ApplicationSystemTestCase
     assert_selector "#service-categories-page.editing", wait: 5
     assert_field "service_category[name]", with: "Hair"
 
-    accept_confirm { click_on "Delete" }
+    click_on "Delete"
+    assert_selector "#message-modal .modal-title", text: "Delete Service Category", wait: 5
+    within("#message-modal") { click_on "Cancel" }
+    assert_no_selector "#message-modal", wait: 5
+    assert ServiceCategory.exists?(service_categories(:hair).id)
+    click_on "Delete"
+    within("#message-modal") { click_on "Delete" }
     assert_selector ".alert-success", text: "Service category deleted", wait: 5
     assert_no_selector ".service-category-row[data-id='#{service_categories(:hair).id}']", visible: :all
     assert_no_selector "#service-categories-page.editing"
@@ -60,7 +66,9 @@ class ServiceCategoriesPageTest < ApplicationSystemTestCase
 
     ServiceCategory.update_all(sort_order: nil)
     ServiceCategory.find_by!(name: "Hair").update!(sort_order: 1)
-    accept_confirm { click_on "Sort Alphabetically" }
+    click_on "Sort Alphabetically"
+    assert_selector "#message-modal .modal-title", text: "Sort Alphabetically", wait: 5
+    within("#message-modal") { click_on "Sort Alphabetically" }
     assert_selector ".service-category-row:first-child strong", text: "Beard", wait: 5
     assert_nil ServiceCategory.find_by!(name: "Hair").reload.sort_order
   end

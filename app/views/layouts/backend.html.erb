@@ -63,6 +63,25 @@
 <script type="module">
     import { Turbo } from "<%= asset_path('turbo.min.js') %>";
     Turbo.session.drive = false;
+
+    // data-turbo-confirm uses EA's message modal instead of window.confirm. The
+    // submitter's text is the confirm button; data-turbo-confirm-title overrides the title.
+    Turbo.config.forms.confirm = (message, form, submitter) => new Promise((resolve) => {
+        const button = submitter || form;
+        const label = button.textContent.trim();
+        let answered = false;
+        const answer = (value, modal) => {
+            answered = true;
+            resolve(value);
+            modal.hide();
+        };
+
+        App.Utils.Message.show(button.dataset.turboConfirmTitle || label, message, [
+            {text: lang('cancel'), click: (event, modal) => answer(false, modal)},
+            {text: label, click: (event, modal) => answer(true, modal)},
+        ]);
+        $('#message-modal').on('hidden.bs.modal', () => answered || resolve(false));
+    });
 </script>
 
 <%= render "shared/js_vars_script" %>
