@@ -15,24 +15,25 @@ class ServiceCategoriesPageTest < ApplicationSystemTestCase
 
     click_on "Add"
     assert_selector "#service-categories-page.editing", wait: 5
-    assert_selector "#service-category-form", visible: true
+    assert_selector ".crud-form", visible: true
     assert_no_selector "#filter-service-categories", visible: true
     fill_in "service_category[name]", with: "Beard"
     click_on "Save"
 
     assert_selector ".alert-success", text: "Service category saved", wait: 5
-    assert_selector ".service-category-row.selected strong", text: "Beard", visible: :all
-    assert_selector "#service-category-form input[name='service_category[name]'][value='Beard']"
+    assert_no_selector "#service-categories-page.editing"
+    assert_selector ".service-category-row.selected strong", text: "Beard"
     assert_equal page_path, current_path, "frames must not navigate the page"
-
-    click_on "Cancel"
-    assert_no_selector "#service-categories-page.editing", wait: 5
-    assert_selector "#filter-service-categories", visible: true
-    assert_selector ".service-category-row strong", text: "Beard"
 
     find(".service-category-row[data-id='#{service_categories(:hair).id}']").click
     assert_selector "#service-categories-page.editing", wait: 5
     assert_field "service_category[name]", with: "Hair"
+    click_on "Cancel"
+    assert_no_selector "#service-categories-page.editing", wait: 5
+    assert_selector ".service-category-row.selected strong", text: "Hair"
+
+    find(".service-category-row[data-id='#{service_categories(:hair).id}']").click
+    assert_selector "#service-categories-page.editing", wait: 5
 
     click_on "Delete"
     confirm_modal "Delete Service Category", "Cancel"

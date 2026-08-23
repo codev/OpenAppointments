@@ -33,13 +33,13 @@ class ServiceCategoriesTest < ActionDispatch::IntegrationTest
       assert_select ".service-category-row[draggable=true][data-id=?]", service_categories(:hair).id.to_s
       assert_select "a[href=?]", "/service_categories/#{service_categories(:hair).id}/edit", text: "Hair"
       assert_select "a[href=?]", "/service_categories/new"
-      assert_select "turbo-frame#service_category"
+      assert_select "turbo-frame#service_categories_record"
     end
     names = css_select(".service-category-row strong").map(&:text)
     assert_equal %w[Beard Hair], names
     assert_select "form[action=?][method=get]", "/service_categories"
     assert_select ".sort-alphabetically"
-    assert_select "script[src*='pages/service_categories']"
+    assert_select "script[src*='utils/crud_page']"
     assert_select "script[src*='service_categories_http_client']", count: 0
   end
 
@@ -56,7 +56,7 @@ class ServiceCategoriesTest < ActionDispatch::IntegrationTest
     login_admin
     get "/service_categories/new"
     assert_response :success
-    assert_select "turbo-frame#service_category form[action=?][method=post][enctype='multipart/form-data']",
+    assert_select "turbo-frame#service_categories_record form[action=?][method=post][enctype='multipart/form-data']",
                   "/service_categories" do
       assert_select "input[name='service_category[name]'][required]"
       assert_select "textarea[name='service_category[description]']"
@@ -85,7 +85,8 @@ class ServiceCategoriesTest < ActionDispatch::IntegrationTest
     follow_redirect!
     assert_select ".alert-success", text: I18n.t("ea.service_category_saved")
     assert_select ".service-category-row.selected[data-id=?]", category.id.to_s
-    assert_select "turbo-frame#service_category form[action=?]", "/service_categories/#{category.id}"
+    assert_select "#service-categories-page.editing", count: 0
+    assert_select "turbo-frame#service_categories_record form", count: 0
   end
 
   test "create without a name re-renders the form with the error" do
@@ -94,7 +95,7 @@ class ServiceCategoriesTest < ActionDispatch::IntegrationTest
       post "/service_categories", params: { service_category: { name: "", description: "x" } }
     end
     assert_response :unprocessable_entity
-    assert_select "turbo-frame#service_category form .is-invalid[name='service_category[name]']"
+    assert_select "turbo-frame#service_categories_record form .is-invalid[name='service_category[name]']"
     assert_select ".form-message.alert-danger"
   end
 
@@ -106,12 +107,12 @@ class ServiceCategoriesTest < ActionDispatch::IntegrationTest
                            filename: "picture.png", content_type: "image/png")
     get "/service_categories/#{category.id}/edit"
     assert_response :success
-    assert_select "turbo-frame#service_category form[action=?]", "/service_categories/#{category.id}" do
+    assert_select "turbo-frame#service_categories_record form[action=?]", "/service_categories/#{category.id}" do
       assert_select "input[name=_method][value=patch]"
       assert_select "input[name='service_category[name]'][value=Hair]"
       assert_select "textarea[name='service_category[description]']", text: "Cuts"
       assert_select "input[type=checkbox][name='service_category[is_hidden]'][checked]"
-      assert_select "img#picture-preview[src*=rails]"
+      assert_select "img.picture-preview[src*=rails]"
       assert_select "input[type=checkbox][name='service_category[remove_picture]']"
     end
     assert_select "form[action=?][data-turbo-confirm=?]", "/service_categories/#{category.id}",

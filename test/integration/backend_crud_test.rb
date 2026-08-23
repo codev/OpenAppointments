@@ -92,26 +92,6 @@ class BackendCrudTest < ActionDispatch::IntegrationTest
     assert_equal [ users(:zane).id ], rows.first["providers"]
   end
 
-  test "blocked periods store and search round trip" do
-    login_admin
-
-    post "/blocked_periods/store", params: {
-      blocked_period: { name: "Xmas Break", start_datetime: "2026-12-24 00:00:00",
-                        end_datetime: "2026-12-28 23:59:59", notes: "Closed" }
-    }
-    assert_response :success
-    body = response.parsed_body
-    assert_equal true, body["success"]
-    assert body["id"].present?
-
-    post "/blocked_periods/search", params: { keyword: "Xmas" }
-    assert_response :success
-    rows = response.parsed_body
-    assert_equal 1, rows.length
-    assert_equal "Xmas Break", rows.first["name"]
-    assert_equal "2026-12-24 00:00:00", rows.first["start_datetime"]
-  end
-
   test "provider store persists settings, services and working plan exceptions" do
     login_admin
     company_plan = { monday: { start: "09:00", end: "17:00", breaks: [] } }.to_json

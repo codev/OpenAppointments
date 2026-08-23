@@ -1,62 +1,36 @@
-<% picture_url = EaRows.picture_url(category) %>
-<%= form_with model: category, id: "service-category-form", data: { turbo_frame: "service_categories" } do |f| %>
-    <% if category.errors.any? %>
-        <div class="form-message alert alert-danger">
-            <%= category.errors[:base].first || lang('fields_are_required') %>
-        </div>
-    <% end %>
+<% picture_url = EaRows.picture_url(record) %>
+<%= render "shared/crud_form", record: record, delete_title: lang('delete_service_category') do |f| %>
+    <div class="mb-3">
+        <%= f.label :name, class: "form-label" do %>
+            <%= lang('name') %> <span class="text-danger">*</span>
+        <% end %>
+        <%= f.text_field :name, required: true,
+                         class: "form-control #{'is-invalid' if record.errors.include?(:name)}" %>
+    </div>
 
-    <fieldset>
-        <div class="mb-3">
-            <%= f.label :name, class: "form-label" do %>
-                <%= lang('name') %> <span class="text-danger">*</span>
-            <% end %>
-            <%= f.text_field :name, required: true,
-                             class: "form-control #{'is-invalid' if category.errors.include?(:name)}" %>
-        </div>
-
-        <div class="mb-3 record-picture">
-            <%= f.label :picture, lang('picture'), class: "form-label d-block" %>
-            <img id="picture-preview" class="img-thumbnail mb-2 <%= 'd-none' unless picture_url %>"
-                 style="max-height: 120px;" src="<%= picture_url %>" alt="">
-            <%= f.file_field :picture, class: "form-control mb-2", accept: PictureUpload::ALLOWED_PICTURE_TYPES.join(",") %>
-            <% if picture_url %>
-                <div class="form-check">
-                    <%= f.check_box :remove_picture, class: "form-check-input", checked: false %>
-                    <%= f.label :remove_picture, lang('remove_picture'), class: "form-check-label" %>
-                </div>
-            <% end %>
-        </div>
-
-        <div class="mb-3">
-            <%= f.label :description, lang('description'), class: "form-label" %>
-            <%= f.text_area :description, rows: 4, class: "form-control" %>
-        </div>
-
-        <div class="mb-3">
-            <div class="form-check form-switch">
-                <%= f.check_box :is_hidden, class: "form-check-input" %>
-                <%= f.label :is_hidden, lang('hidden'), class: "form-check-label" %>
+    <div class="mb-3 record-picture">
+        <%= f.label :picture, lang('picture'), class: "form-label d-block" %>
+        <img class="picture-preview img-thumbnail mb-2 <%= 'd-none' unless picture_url %>"
+             style="max-height: 120px;" src="<%= picture_url %>" alt="">
+        <%= f.file_field :picture, class: "form-control mb-2", accept: PictureUpload::ALLOWED_PICTURE_TYPES.join(",") %>
+        <% if picture_url %>
+            <div class="form-check">
+                <%= f.check_box :remove_picture, class: "form-check-input", checked: false %>
+                <%= f.label :remove_picture, lang('remove_picture'), class: "form-check-label" %>
             </div>
-            <div class="form-text text-muted small"><%= lang('category_hidden_hint') %></div>
-        </div>
+        <% end %>
+    </div>
 
-        <div class="btn-toolbar">
-            <button type="submit" class="btn btn-primary">
-                <i class="fas fa-check-square me-2"></i>
-                <%= lang('save') %>
-            </button>
-            <%= link_to lang('cancel'), service_categories_path, class: "btn btn-outline-secondary ms-2",
-                        data: { turbo_frame: "service_categories" } %>
-        </div>
-    </fieldset>
-<% end %>
+    <div class="mb-3">
+        <%= f.label :description, lang('description'), class: "form-label" %>
+        <%= f.text_area :description, rows: 4, class: "form-control" %>
+    </div>
 
-<% if category.persisted? %>
-    <%= button_to service_category_path(category), method: :delete, class: "btn btn-outline-danger mt-2",
-                  data: { turbo_confirm_title: lang('delete_service_category') },
-                  form: { data: { turbo_frame: "service_categories", turbo_confirm: lang('delete_record_prompt') } } do %>
-        <i class="fas fa-trash-alt me-2"></i>
-        <%= lang('delete') %>
-    <% end %>
+    <div class="mb-3">
+        <div class="form-check form-switch">
+            <%= f.check_box :is_hidden, class: "form-check-input" %>
+            <%= f.label :is_hidden, lang('hidden'), class: "form-check-label" %>
+        </div>
+        <div class="form-text text-muted small"><%= lang('category_hidden_hint') %></div>
+    </div>
 <% end %>

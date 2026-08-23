@@ -1,0 +1,69 @@
+<%# Admin CRUD page: list + detail form in nested Turbo Frames. The outer frame
+    reloads after save/delete/filter; the inner one swaps the form on row click.
+    backend.scss shows either the list or the details, toggled by the editing
+    class (rendered for direct visits, kept in sync by utils/crud_page.js).
+    Locals: page, title, records, record, editing, keyword, row partial, form
+    partial, optional before_add and list_toolbar HTML. %>
+<% frame = controller_name %>
+<div class="container backend-page py-3 <%= 'editing' if editing %>" id="<%= page %>-page" data-crud-page>
+    <turbo-frame id="<%= frame %>">
+        <% if notice %>
+            <div class="alert alert-success"><%= notice %></div>
+        <% end %>
+
+        <div class="row" id="<%= page %>">
+            <div id="filter-<%= page %>" class="filter-records column col-12 mb-4">
+                <div class="mb-4">
+                    <%= local_assigns[:before_add] %>
+                    <%= link_to url_for(action: :new), id: "add-#{page.singularize}",
+                                class: "btn btn-primary add-record-btn",
+                                data: { turbo_frame: "#{frame}_record" } do %>
+                        <i class="fas fa-plus-square me-2"></i>
+                        <%= lang('add') %>
+                    <% end %>
+                </div>
+
+                <%= form_with url: url_for(action: :index), method: :get, class: "input-append mb-4" do |f| %>
+                    <div class="input-group">
+                        <%= f.text_field :keyword, value: keyword, class: "key form-control", "aria-label": "keyword" %>
+                        <button class="filter btn btn-outline-secondary" type="submit"
+                                data-tippy-content="<%= lang('filter') %>">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                <% end %>
+
+                <h4 class="mb-3 fw-light"><%= title %></h4>
+
+                <%= local_assigns[:list_toolbar] %>
+
+                <div class="results overflow-auto" data-keyword="<%= keyword %>">
+                    <% if records.empty? %>
+                        <em><%= lang('no_records_found') %></em>
+                    <% end %>
+                    <% records.each do |item| %>
+                        <div class="<%= page.singularize %>-row entry <%= 'selected' if record&.id == item.id %>"
+                             data-id="<%= item.id %>" <%= 'draggable=true' if local_assigns[:list_toolbar] %>>
+                            <%= link_to url_for(action: :edit, id: item), data: { turbo_frame: "#{frame}_record" },
+                                        class: "text-reset text-decoration-none d-block" do %>
+                                <%= render row, record: item %>
+                            <% end %>
+                        </div>
+                        <hr>
+                    <% end %>
+                </div>
+            </div>
+
+            <div class="record-details col-12 mb-4">
+                <h4 class="mb-3 fw-light"><%= lang('details') %></h4>
+                <turbo-frame id="<%= frame %>_record">
+                    <%= render form, record: record if editing %>
+                </turbo-frame>
+            </div>
+        </div>
+    </turbo-frame>
+</div>
+
+<% content_for :scripts do %>
+    <%= ea_js "utils/drag_reorder", "utils/crud_page" %>
+<% end %>

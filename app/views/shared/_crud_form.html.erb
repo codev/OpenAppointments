@@ -1,0 +1,29 @@
+<%# Wraps a CRUD detail form: error message, fields (block), save/cancel, delete.
+    Locals: record, delete_title; the block renders the fields with the builder. %>
+<%= form_with model: record, class: "crud-form", data: { turbo_frame: controller_name } do |f| %>
+    <% if record.errors.any? %>
+        <div class="form-message alert alert-danger">
+            <%= record.errors[:base].first || lang('fields_are_required') %>
+        </div>
+    <% end %>
+
+    <%= yield f %>
+
+    <div class="btn-toolbar">
+        <button type="submit" class="btn btn-primary">
+            <i class="fas fa-check-square me-2"></i>
+            <%= lang('save') %>
+        </button>
+        <%= link_to lang('cancel'), url_for(action: :index, selected: record.id), class: "btn btn-outline-secondary ms-2",
+                    data: { turbo_frame: controller_name } %>
+    </div>
+<% end %>
+
+<% if record.persisted? %>
+    <%= button_to url_for(action: :destroy, id: record), method: :delete, class: "btn btn-outline-danger mt-2",
+                  data: { turbo_confirm_title: delete_title },
+                  form: { data: { turbo_frame: controller_name, turbo_confirm: lang('delete_record_prompt') } } do %>
+        <i class="fas fa-trash-alt me-2"></i>
+        <%= lang('delete') %>
+    <% end %>
+<% end %>

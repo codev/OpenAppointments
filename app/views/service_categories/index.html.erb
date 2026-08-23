@@ -1,56 +1,11 @@
-<%# Service categories: list + detail form in nested Turbo Frames. The outer frame
-    reloads after save/delete/sort/filter; the inner one swaps the form on row click.
-    backend.scss shows either the list or the details, toggled by the editing class
-    (set here for direct visits, kept in sync by pages/service_categories.js). %>
-<div class="container backend-page py-3 <%= 'editing' if @category %>" id="service-categories-page">
-    <turbo-frame id="service_categories">
-        <% if notice %>
-            <div class="alert alert-success"><%= notice %></div>
-        <% end %>
-
-        <div class="row" id="service-categories">
-            <div id="filter-service-categories" class="filter-records column col-12 mb-4">
-                <%= link_to new_service_category_path, id: "add-service-category",
-                            class: "btn btn-primary add-record-btn mb-4",
-                            data: { turbo_frame: "service_category" } do %>
-                    <i class="fas fa-plus-square me-2"></i>
-                    <%= lang('add') %>
-                <% end %>
-
-                <%= form_with url: service_categories_path, method: :get, class: "input-append mb-4" do |f| %>
-                    <div class="input-group">
-                        <%= f.text_field :keyword, value: @keyword, class: "key form-control", "aria-label": "keyword" %>
-                        <button class="filter btn btn-outline-secondary" type="submit"
-                                data-tippy-content="<%= lang('filter') %>">
-                            <i class="fas fa-search"></i>
-                        </button>
-                    </div>
-                <% end %>
-
-                <h4 class="mb-3 fw-light"><%= lang('service_categories') %></h4>
-
-                <div class="d-flex justify-content-between align-items-center mb-2">
-                    <small class="text-muted me-2"><%= lang('drag_to_reorder') %></small>
-                    <%= button_to lang('sort_alphabetically'), "/service_categories/sort_alphabetically",
-                                  class: "btn btn-outline-secondary btn-sm sort-alphabetically text-nowrap",
-                                  form: { data: { turbo_confirm: lang('sort_alphabetically_confirm') } } %>
-                </div>
-
-                <div class="results overflow-auto" data-keyword="<%= @keyword %>">
-                    <%= render "list", categories: @categories, selected: @category %>
-                </div>
-            </div>
-
-            <div class="record-details col-12 mb-4">
-                <h4 class="mb-3 fw-light"><%= lang('details') %></h4>
-                <turbo-frame id="service_category">
-                    <%= render "form", category: @category if @category %>
-                </turbo-frame>
-            </div>
-        </div>
-    </turbo-frame>
-</div>
-
-<% content_for :scripts do %>
-    <%= ea_js "utils/drag_reorder", "pages/service_categories" %>
+<% list_toolbar = capture do %>
+    <div class="d-flex justify-content-between align-items-center mb-2">
+        <small class="text-muted me-2"><%= lang('drag_to_reorder') %></small>
+        <%= button_to lang('sort_alphabetically'), "/service_categories/sort_alphabetically",
+                      class: "btn btn-outline-secondary btn-sm sort-alphabetically text-nowrap",
+                      form: { data: { turbo_confirm: lang('sort_alphabetically_confirm') } } %>
+    </div>
 <% end %>
+<%= render "shared/crud_page", page: "service-categories", title: lang('service_categories'),
+           records: @records, record: @record, editing: @editing, keyword: @keyword,
+           row: "service_categories/row", form: "service_categories/form", list_toolbar: list_toolbar %>

@@ -68,3 +68,27 @@ class BlockedPeriodsPageTest < ApplicationSystemTestCase
     assert_equal 1, BlockedPeriod.count
   end
 end
+
+# Rails views only: the date fields are native datetime-local inputs.
+class BlockedPeriodsFormTest < ApplicationSystemTestCase
+  test "dates are typed into datetime-local fields and an end before the start is refused" do
+    login_as_admin
+    visit blocked_periods_url
+    click_on "Add"
+    assert_selector "#blocked-periods-page.editing", wait: 5
+    fill_in "Name", with: "Xmas"
+    fill_in "Start", with: Time.zone.local(2026, 12, 28)
+    fill_in "End", with: Time.zone.local(2026, 12, 24)
+    click_on "Save"
+    assert_selector ".form-message.alert-danger", wait: 5
+    assert_selector "input.is-invalid[name='blocked_period[end_datetime]']"
+    assert_nil BlockedPeriod.find_by(name: "Xmas")
+
+    fill_in "End", with: Time.zone.local(2026, 12, 31)
+    click_on "Save"
+    assert_text "Blocked period saved", wait: 5
+    xmas = BlockedPeriod.find_by!(name: "Xmas")
+    assert_equal "2026-12-28 00:00", xmas.start_datetime.strftime("%F %H:%M")
+    assert_equal "2026-12-31 00:00", xmas.end_datetime.strftime("%F %H:%M")
+  end
+end
