@@ -40,12 +40,7 @@ class CustomersController < ApplicationController
     customers = paginate_search(filter(record_scope, params[:keyword].to_s), params.fetch(:limit, 1000).to_i,
                                 params.fetch(:offset, 0).to_i)
     unread_counts = Message.unread_counts_for(customers.map(&:id))
-    payload = customers.filter_map do |customer|
-      next unless customer_access?(customer.id)
-
-      EaRows.customer_row(customer).merge("unread_messages" => unread_counts[customer.id] || 0)
-    end
-    render json: payload
+    render json: customers.map { |customer| EaRows.customer_row(customer).merge("unread_messages" => unread_counts[customer.id] || 0) }
   rescue ArgumentError => e
     json_exception(e, status: :ok)
   end
@@ -67,7 +62,9 @@ class CustomersController < ApplicationController
     end
     return scope if session[:role_slug] == Role::ADMIN || Setting.get("limit_customer_access") != "1"
 
-    scope.select { |customer| customer_access?(customer.id) }
+    # EA Permissions::has_customer_access as a query: customers with an appointment with the user's providers.
+    provider_ids = session[:role_slug] == Role::PROVIDER ? [ session[:user_id] ] : assistant_provider_ids
+    scope.where(id: Appointment.where(id_users_provider: provider_ids).select(:id_users_customer))
   end
 
   def record_params

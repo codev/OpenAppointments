@@ -44,6 +44,7 @@ class LdapSettingsController < ApplicationController
     user.language ||= Setting.get("default_language")
     user.timezone ||= Setting.get("default_timezone")
     settings = params.fetch(:settings, {}).permit(:username, :password).to_h
+    validate_unique_role_email!(User.joins(:role).where(roles: { slug: role.slug }), { "email" => user.email })
     if role.slug != Role::CUSTOMER
       validate_user_payload!({}, settings, role.slug)
       settings["working_plan"] = Setting.get("company_working_plan") if role.slug == Role::PROVIDER

@@ -54,15 +54,14 @@
         App.once('providers-page', () => {
             document.addEventListener('submit', serialise, true);
             document.addEventListener('turbo:frame-load', load);
+            $(document).on('click', '#reset-working-plan', (event) => {
+                $('.breaks tbody, .working-plan-exceptions tbody').empty();
+                $('.work-start, .work-end').val('');
+                workingPlanManager.setup(JSON.parse($(event.currentTarget).attr('data-company-working-plan')));
+                workingPlanManager.timepickers(false);
+            });
         });
         load();
-
-        $(document).on('click', '#reset-working-plan', (event) => {
-            $('.breaks tbody, .working-plan-exceptions tbody').empty();
-            $('.work-start, .work-end').val('');
-            workingPlanManager.setup(JSON.parse($(event.currentTarget).attr('data-company-working-plan')));
-            workingPlanManager.timepickers(false);
-        });
     }
 
     App.page(initialize);

@@ -4,8 +4,20 @@
  * repeating appointments panel (list frame plus the pattern dialog).
  */
 (function () {
+    // The frame renders inline (no src) until a filter or day link navigates it,
+    // and Turbo's reload() is a no-op without a src: point it at the current URL.
     function reloadDay() {
-        document.querySelector('turbo-frame#day_view').reload();
+        const frame = document.querySelector('turbo-frame#day_view');
+
+        if (!frame) {
+            return; // the reload button is shared with the calendar page
+        }
+
+        if (frame.src) {
+            frame.reload();
+        } else {
+            frame.src = window.location.href;
+        }
     }
 
     function loadSeries() {

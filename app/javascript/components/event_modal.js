@@ -157,7 +157,7 @@ App.Components.EventModal = (function () {
             form.requestSubmit();
         };
 
-        App.Utils.Message.show(form.dataset.askNotify, lang('notify_users_on_create_question'), [
+        App.Utils.Message.show(form.dataset.askNotify, lang(form.dataset.askNotifyQuestion), [
             {text: lang('no'), click: (e, messageModal) => { messageModal.hide(); answer('0'); }},
             {text: lang('yes'), click: (e, messageModal) => { messageModal.hide(); answer('1'); }},
         ]);

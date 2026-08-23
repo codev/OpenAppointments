@@ -65,11 +65,15 @@
 <% end %>
 <%# The working plan editor reads and writes these; the tab content is shown by
     pages/providers.js after the frame loads. %>
+<%# After a failed save the typed plan wins over the stored one. %>
+<% typed_settings = params.dig(:provider, :settings) || {} %>
 <% working_plan = capture do %>
-    <%= hidden_field_tag "provider[settings][working_plan]", plan_settings&.working_plan.presence || setting('company_working_plan'),
+    <%= hidden_field_tag "provider[settings][working_plan]",
+                         typed_settings[:working_plan].presence || plan_settings&.working_plan.presence || setting('company_working_plan'),
                          id: "working-plan-json" %>
     <%= hidden_field_tag "provider[settings][working_plan_exceptions]",
-                         record.persisted? ? EaRows.working_plan_exceptions_api(record.id).to_json : "[]",
+                         typed_settings[:working_plan_exceptions].presence ||
+                           (record.persisted? ? EaRows.working_plan_exceptions_api(record.id).to_json : "[]"),
                          id: "working-plan-exceptions-json" %>
     <div class="working-plan-view tab-pane fade clearfix" id="working-plan">
         <h4 class="mb-3 fw-light"><%= lang('working_plan') %></h4>

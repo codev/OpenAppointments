@@ -12,6 +12,9 @@ class ApiSettingsController < ApplicationController
     render :index
   end
 
+  # The token is shown on this page, so it can be blanked to revoke it.
+  def shown_secrets = %w[api_token]
+
   # POST /api_settings/save
   def save
     require_system_settings_edit!

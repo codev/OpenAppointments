@@ -4,7 +4,9 @@
 <% fields = { email: 120, phone_number: 60, address: 120, city: 120, zip_code: 120 } %>
 <turbo-frame id="event">
     <%= form_with url: (new_record ? appointments_path : appointment_path(@appointment)), method: (new_record ? :post : :patch),
-                  id: "appointment-form", class: "event-form", data: { ask_notify: (new_record ? lang('new_appointment_title') : lang('appointment_update')) } do |f| %>
+                  id: "appointment-form", class: "event-form",
+                  data: { ask_notify: (new_record ? lang('new_appointment_title') : lang('appointment_update')),
+                          ask_notify_question: (new_record ? "notify_users_on_create_question" : "notify_users_on_update_question") } do |f| %>
         <div class="modal-header">
             <h3 class="modal-title"><%= new_record ? lang('new_appointment_title') : lang('edit_appointment_title') %></h3>
             <button type="button" class="btn-close" data-bs-dismiss="modal"></button>

@@ -13,6 +13,7 @@ module CrudPage
 
     before_action :require_session, except: [ :index ]
     before_action -> { require_backend_page!(self.class::PAGE[:resource]) }, only: %i[index new edit]
+    before_action -> { head :forbidden unless can?(:add, self.class::PAGE[:resource]) }, only: :new
     before_action :require_privilege, only: %i[create update destroy]
     before_action :load_record, only: %i[edit update destroy]
   end
@@ -57,8 +58,10 @@ module CrudPage
 
   def index_path(**query) = url_for(controller: controller_name, action: :index, **query)
 
+  # EA's privilege bits: add for new records, edit for changes, delete for removals.
   def require_privilege
-    head :forbidden unless can?(action_name == "destroy" ? :delete : :edit, self.class::PAGE[:resource])
+    privilege = { "create" => :add, "destroy" => :delete }.fetch(action_name, :edit)
+    head :forbidden unless can?(privilege, self.class::PAGE[:resource])
   end
 
   def load_record
@@ -85,11 +88,15 @@ module CrudPage
     per_page = self.class::PAGE[:per_page]
     return records unless per_page
 
-    ids = records.is_a?(Array) ? records.map(&:id) : records.unscope(:includes, :preload).pluck(:id)
+    count = records.is_a?(Array) ? records.length : records.unscope(:includes, :preload, :order).count
     page = params[:page].to_i
-    page = (ids.index(@record.id) || 0) / per_page + 1 if page < 1 && @record&.persisted?
-    page = page.clamp(1, [ (ids.length + per_page - 1) / per_page, 1 ].max)
-    @pagy, records = pagy(:offset, records, limit: per_page, page: page, count: ids.length)
+    if page < 1 && @record&.persisted?
+      # The selected record's page: only here are the ordered ids needed.
+      ids = records.is_a?(Array) ? records.map(&:id) : records.unscope(:includes, :preload).pluck(:id)
+      page = (ids.index(@record.id) || 0) / per_page + 1
+    end
+    page = page.clamp(1, [ (count + per_page - 1) / per_page, 1 ].max)
+    @pagy, records = pagy(:offset, records, limit: per_page, page: page, count: count)
     records
   end
 
@@ -108,7 +115,7 @@ module CrudPage
       format.html { redirect_to index_path(selected: @record.id), notice: helpers.lang(self.class::PAGE[:saved]) }
       format.json { render json: { success: true, id: @record.id } }
     end
-  rescue ArgumentError => e
+  rescue ArgumentError, ActiveRecord::RecordInvalid, ActiveRecord::RecordNotFound, ActiveRecord::RecordNotUnique => e
     @record.errors.add(:base, e.message)
     render_page(status: :unprocessable_entity)
   end

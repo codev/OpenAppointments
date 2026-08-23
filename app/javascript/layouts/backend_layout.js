@@ -105,6 +105,12 @@ window.App.Layouts.Backend = (function () {
             settingsDirty = false;
         });
 
+        // A frame that swapped its form starts clean, unless it came back with an
+        // error (a 422 re-render still holds the unsaved values).
+        document.addEventListener('turbo:frame-load', (event) => {
+            settingsDirty = $(event.target).find('.form-message.alert-danger').length > 0;
+        });
+
         document.addEventListener('turbo:before-visit', (event) => {
             if (!unsaved()) {
                 return;

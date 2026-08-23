@@ -28,6 +28,14 @@
     }
 
     $(document).on('change input', '[data-field]', update);
+
+    // Image fields preview the chosen file (the company logo).
+    $(document).on('change', '#settings-form input[type=file][accept^="image/"]', (event) => {
+        const file = event.target.files[0];
+        if (file) {
+            $('#settings-form .picture-preview').attr('src', URL.createObjectURL(file)).prop('hidden', false);
+        }
+    });
     document.addEventListener('turbo:frame-load', update);
     App.page(update);
 })();

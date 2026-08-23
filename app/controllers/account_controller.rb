@@ -35,7 +35,8 @@ class AccountController < ApplicationController
     if password.present? && password.length < Passwords::MIN_LENGTH
       raise ArgumentError, helpers.lang("password_length_notice").sub("$number", Passwords::MIN_LENGTH.to_s)
     end
-    if UserSetting.where(username: settings_attributes["username"]).where.not(id_users: user.id).exists?
+    if settings_attributes["username"].present? &&
+       UserSetting.where(username: settings_attributes["username"]).where.not(id_users: user.id).exists?
       raise ArgumentError, helpers.lang("username_already_exists")
     end
     settings.assign_attributes(settings_attributes)

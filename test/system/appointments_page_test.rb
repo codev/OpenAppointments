@@ -48,3 +48,41 @@ class AppointmentsPageTest < ApplicationSystemTestCase
     assert_current_path(/statuses/, wait: 5)
   end
 end
+
+class AppointmentsPageRefreshTest < ApplicationSystemTestCase
+  test "a saved appointment appears in the day column without any filter interaction" do
+    date = Date.current
+    date += 1 until (1..5).cover?(date.wday)
+    login_as_admin
+    visit appointments_url(date: date)
+    assert_selector ".provider-column[data-provider-id='#{users(:zane).id}']", wait: 5
+    assert_no_selector ".day-entry-appointment", text: "JX - "
+
+    first(".provider-column .day-entry-free").click
+    assert_selector "#save-appointment", visible: true, wait: 5
+    wait_for_modal
+    within(find("#save-appointment").ancestor(".modal")) do
+      click_on "Select"
+      assert_selector "#existing-customers-list div", text: "JX", wait: 5
+      find("#existing-customers-list div", text: "JX").click
+      click_on "Save"
+    end
+    confirm_modal "New Appointment", "No"
+    assert_text "Appointment saved", wait: 10
+    assert_selector ".day-entry-appointment", text: "JX - ", wait: 10
+    assert_current_path(/date=#{date}/)
+  end
+
+  test "the reload button still works on the calendar page after the appointments page was visited" do
+    login_as_admin
+    visit appointments_url
+    assert_selector "#day-filter", wait: 5
+    within("#header") { click_on "Calendar", match: :first }
+    assert_selector "#calendar .fc-view-harness", wait: 10
+    page.driver.browser.logs.get(:browser)
+    find("#reload-appointments").click
+    sleep 0.5
+    errors = page.driver.browser.logs.get(:browser).select { |log| log.level == "SEVERE" }.map(&:message).reject { |m| m.include?("404") }
+    assert_empty errors
+  end
+end

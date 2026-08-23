@@ -96,7 +96,7 @@ class AppointmentsController < ApplicationController
     providers = @provider_id.positive? ? @providers.select { |p| p.id == @provider_id } : @providers
     range = dates.first.beginning_of_day..dates.last.end_of_day
     appointments = role_events(Appointment.appointments.where(start_datetime: range).includes(:service, :customer, :appointment_status))
-                   .select { |a| @selected_statuses.include?(a.status) }
+                   .select { |a| a.status.blank? || @selected_statuses.include?(a.status) }
                    .select { |a| @service_id.zero? || a.id_services == @service_id }
     unavailabilities = role_events(Appointment.unavailabilities.where("start_datetime <= ? AND end_datetime >= ?", range.end, range.begin))
     blocked = BlockedPeriod.for_period(dates.first, dates.last).to_a
@@ -168,14 +168,14 @@ class AppointmentsController < ApplicationController
   # As the jQuery dialog: the next quarter hour, for the duration of the
   # chosen (else the first offered) service.
   def default_times
-    return if @appointment.start_datetime.present?
-
-    start = Time.zone.now
-    minutes = start.min
-    start = minutes.zero? ? start : start.change(min: 0) + ((minutes / 15) + 1) * 15.minutes
     duration = (@appointment.service || @services.first)&.duration || 60
-    @appointment.start_datetime = start
-    @appointment.end_datetime = start + duration.minutes
+    if @appointment.start_datetime.blank?
+      start = Time.zone.now
+      minutes = start.min
+      @appointment.start_datetime = minutes.zero? ? start : start.change(min: 0) + ((minutes / 15) + 1) * 15.minutes
+    end
+    # A free slot click passes only the start.
+    @appointment.end_datetime ||= @appointment.start_datetime + duration.minutes
   end
 
   def load_form_data

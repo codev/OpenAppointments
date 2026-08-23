@@ -51,6 +51,10 @@ class EventFormsTest < ActionDispatch::IntegrationTest
     assert_select "#end-datetime[value='01/09/2026 10:45 am']"
     assert_select "#select-service option[selected][value=?]", services(:group_session).id.to_s
     assert_select "#select-provider option[selected][value=?]", users(:zane).id.to_s
+
+    # A free slot passes only the start: the end follows the first listed service.
+    get "/appointments/new", params: { start: "2026-09-01 10:00:00", provider_id: users(:zane).id }
+    assert_select "#end-datetime[value='01/09/2026 11:00 am']"
   end
 
   test "edit form shows the record and its customer, no repeat fields" do

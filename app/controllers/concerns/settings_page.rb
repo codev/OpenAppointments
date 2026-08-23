@@ -68,9 +68,13 @@ module SettingsPage
       rows = rows.values if rows.respond_to?(:values)
       Array(rows).map { |row| row.respond_to?(:permit) ? row.permit(:id, :name, :value).to_h : row }
     end
-    # Secrets are never shown in the page, so a password field left empty keeps the stored one.
-    rows.reject { |row| row["value"].blank? && SENSITIVE_SETTING_NAMES.include?(row["name"]) }
+    # Secrets are never shown in the page, so a password field left empty keeps
+    # the stored one; pages that show a secret (the API token) can clear it.
+    rows.reject { |row| row["value"].blank? && SENSITIVE_SETTING_NAMES.include?(row["name"]) && !shown_secrets.include?(row["name"]) }
   end
+
+  # Secrets a page renders in clear, overridden per controller.
+  def shown_secrets = []
 
   # EA settings save actions raise on missing edit privilege (json_exception -> 500).
   def require_system_settings_edit!
