@@ -5,7 +5,9 @@ CloudronManifest.json.
 
 ## 2.0.0
 
-- Admin pages are moving from the inherited jQuery scripts to standard Rails views with Turbo Frames, starting with Service Categories. The page looks the same; pictures are saved with the form and the filter, sort and delete actions reload in place
+- Admin pages move from the inherited jQuery scripts to standard Rails views with Turbo Frames: Service Categories, Blocked Periods, Webhooks, Services, Admins, Assistants, Providers and Customers. They look the same; pictures are saved with the form, the filter, sort and delete actions reload in place, and confirmations use the usual dialog
+- Blocked period dates use the browser's date and time picker
+- Browser tests cover every converted page
 
 ## 1.9.0
 
