@@ -81,87 +81,26 @@ class BookingController < ApplicationController
       Rails.cache.write("customer-token-#{customer_token}", record.customer.id, expires_in: 10.minutes)
     end
 
-    theme = params[:theme].to_s.gsub(/[^a-zA-Z0-9_\-]/, "")
-    theme = Setting.get("theme", "default") if theme.blank?
-    theme = "nice" unless THEMES.include?(theme)
+    base_index_vars(available_services, available_providers, manage_mode, appointment: appointment,
+                    provider_payload: provider_payload, customer_payload: customer_payload,
+                    customer_token: customer_token)
+    resolve_wizard_state(available_services, available_providers, manage_mode)
+    render :index
+  end
 
-    company_color = Setting.get("company_color")
+  # POST /booking/confirm - the customer details post here; the confirmation
+  # step renders with everything in hidden fields (customer data stays out of URLs).
+  def confirm
+    return head :forbidden if Setting.get("disable_booking") == "1"
 
-    first_step = params[:first].presence ||
-                 (Setting.get("booking_provider_first", "0") == "1" ? "provider" : "service")
-    first_step = "service" unless %w[service provider].include?(first_step)
-
-    display_mode = Setting.get("booking_display_mode", "dropdown")
-    display_mode = "dropdown" unless %w[dropdown cards].include?(display_mode)
-
-    available_categories = []
-    if display_mode == "cards"
-      available_categories = BookingPayloads.available_categories
-      # Categories of injected (private/hidden) services so their cards render.
-      missing_category_ids = available_services.filter_map { |row| row["service_category_id"] }.uniq -
-                             available_categories.map { |row| row["id"] }
-      available_categories += ServiceCategory.where(id: missing_category_ids).with_attached_picture
-                                             .display_order
-                                             .map { |category| BookingPayloads.category_payload(category) }
+    index_vars_for_confirm
+    @customer = customer_form_params
+    if params[:back].present?
+      @step = "info"
+      return render :index
     end
-
-    script_vars(
-      first_step: first_step,
-      display_mode: display_mode,
-      require_phone_or_email: Setting.get("require_phone_or_email", "1"),
-      manage_mode: manage_mode,
-      available_services: available_services,
-      available_providers: available_providers,
-      date_format: Setting.get("date_format"),
-      time_format: Setting.get("time_format"),
-      first_weekday: Setting.get("first_weekday"),
-      display_cookie_notice: Setting.get("display_cookie_notice"),
-      display_any_provider: Setting.get("display_any_provider"),
-      future_booking_limit: Setting.get("future_booking_limit"),
-      appointment_data: appointment,
-      provider_data: provider_payload,
-      customer_data: customer_payload,
-      customer_token: customer_token,
-      default_language: Setting.get("default_language"),
-      default_timezone: Setting.get("default_timezone"),
-      fixed_timezone: Setting.fixed_timezone?
-    )
-
-    html_vars(
-      first_step: first_step,
-      display_mode: display_mode,
-      available_categories: available_categories,
-      available_services: available_services,
-      available_providers: available_providers,
-      theme: theme,
-      company_name: Setting.get("company_name"),
-      company_logo: Setting.get("company_logo"),
-      company_color: company_color == "#ffffff" ? "" : company_color,
-      date_format: Setting.get("date_format"),
-      time_format: Setting.get("time_format"),
-      first_weekday: Setting.get("first_weekday"),
-      **field_display_vars,
-      display_cookie_notice: Setting.get("display_cookie_notice"),
-      cookie_notice_content: Setting.get("cookie_notice_content"),
-      display_terms_and_conditions: Setting.get("display_terms_and_conditions"),
-      terms_and_conditions_content: Setting.get("terms_and_conditions_content"),
-      display_privacy_policy: Setting.get("display_privacy_policy"),
-      privacy_policy_content: Setting.get("privacy_policy_content"),
-      display_any_provider: Setting.get("display_any_provider"),
-      display_login_button: Setting.get("display_login_button"),
-      display_delete_personal_information: Setting.get("display_delete_personal_information"),
-      legal_notice_url: Setting.get("legal_notice_url"),
-      imprint_url: Setting.get("imprint_url"),
-      google_analytics_code: Setting.get("google_analytics_code"),
-      matomo_analytics_url: Setting.get("matomo_analytics_url"),
-      matomo_analytics_site_id: Setting.get("matomo_analytics_site_id"),
-      grouped_timezones: helpers.grouped_timezones,
-      manage_mode: manage_mode,
-      appointment_data: appointment,
-      provider_data: provider_payload,
-      customer_data: customer_payload
-    )
-
+    @error = customer_error(@customer)
+    @step = @error ? "info" : "final"
     render :index
   end
 
@@ -170,6 +109,13 @@ class BookingController < ApplicationController
     return head :forbidden if Setting.get("disable_booking") == "1"
 
     post_data = params[:post_data]
+    if post_data.blank? && params[:appointment].present?
+      post_data = {
+        "manage_mode" => params[:manage_mode],
+        "appointment" => params.require(:appointment).permit(*ALLOWED_APPOINTMENT_FIELDS.map(&:to_sym)).to_h,
+        "customer" => params.require(:customer).permit(*ALLOWED_CUSTOMER_FIELDS.map(&:to_sym), :notes).to_h
+      }
+    end
     if post_data.is_a?(ActionController::Parameters)
       post_data = post_data.permit(:manage_mode,
                                    appointment: ALLOWED_APPOINTMENT_FIELDS.map(&:to_sym),
@@ -206,11 +152,11 @@ class BookingController < ApplicationController
     service = Service.find(appointment_params["id_services"])
 
     if AltchaChallenge.enabled? && !AltchaChallenge.verify(params[:altcha_payload])
-      return render json: { altcha_verification: false }
+      return form_post? ? register_failed(helpers.lang("altcha_verification_failed")) : render(json: { altcha_verification: false })
     end
 
     if TurnstileChallenge.enabled? && !TurnstileChallenge.verify(params[:cf_turnstile_response], request.remote_ip)
-      return render json: { turnstile_verification: false }
+      return form_post? ? register_failed(helpers.lang("turnstile_verification_failed")) : render(json: { turnstile_verification: false })
     end
 
     existing_customer = User.customers.find_by(email: customer_params["email"]) if customer_params["email"].present?
@@ -262,9 +208,13 @@ class BookingController < ApplicationController
     Notifications.appointment_saved(appointment, service, provider, customer, settings, manage_mode: manage_mode)
     Webhooks.trigger(Webhooks::APPOINTMENT_SAVE, appointment)
 
-    render json: { appointment_id: appointment.id, appointment_hash: appointment.booking_hash }
+    if form_post?
+      redirect_to booking_confirmation_path(appointment_hash: appointment.booking_hash)
+    else
+      render json: { appointment_id: appointment.id, appointment_hash: appointment.booking_hash }
+    end
   rescue ArgumentError => e
-    json_exception(e, status: :ok)
+    form_post? ? register_failed(e.message) : json_exception(e, status: :ok)
   end
 
   # POST /booking/get_available_hours
@@ -346,6 +296,203 @@ class BookingController < ApplicationController
   end
 
   private
+
+  def form_post? = params[:form].present?
+
+  def base_index_vars(available_services, available_providers, manage_mode, appointment: nil,
+                      provider_payload: nil, customer_payload: nil, customer_token: false)
+    theme = params[:theme].to_s.gsub(/[^a-zA-Z0-9_\-]/, "")
+    theme = Setting.get("theme", "default") if theme.blank?
+    theme = "nice" unless THEMES.include?(theme)
+
+    company_color = Setting.get("company_color")
+
+    first_step = params[:first].presence ||
+                 (Setting.get("booking_provider_first", "0") == "1" ? "provider" : "service")
+    first_step = "service" unless %w[service provider].include?(first_step)
+
+    display_mode = Setting.get("booking_display_mode", "dropdown")
+    display_mode = "dropdown" unless %w[dropdown cards].include?(display_mode)
+
+    available_categories = []
+    if display_mode == "cards"
+      available_categories = BookingPayloads.available_categories
+      # Categories of injected (private/hidden) services so their cards render.
+      missing_category_ids = available_services.filter_map { |row| row["service_category_id"] }.uniq -
+                             available_categories.map { |row| row["id"] }
+      available_categories += ServiceCategory.where(id: missing_category_ids).with_attached_picture
+                                             .display_order
+                                             .map { |category| BookingPayloads.category_payload(category) }
+    end
+
+    script_vars(
+      first_step: first_step,
+      display_mode: display_mode,
+      require_phone_or_email: Setting.get("require_phone_or_email", "1"),
+      manage_mode: manage_mode,
+      available_services: available_services,
+      available_providers: available_providers,
+      date_format: Setting.get("date_format"),
+      time_format: Setting.get("time_format"),
+      first_weekday: Setting.get("first_weekday"),
+      display_cookie_notice: Setting.get("display_cookie_notice"),
+      display_any_provider: Setting.get("display_any_provider"),
+      future_booking_limit: Setting.get("future_booking_limit"),
+      appointment_data: appointment,
+      provider_data: provider_payload,
+      customer_data: customer_payload,
+      customer_token: customer_token,
+      default_language: Setting.get("default_language"),
+      default_timezone: Setting.get("default_timezone"),
+      fixed_timezone: Setting.fixed_timezone?
+    )
+
+    html_vars(
+      first_step: first_step,
+      display_mode: display_mode,
+      available_categories: available_categories,
+      available_services: available_services,
+      available_providers: available_providers,
+      theme: theme,
+      company_name: Setting.get("company_name"),
+      company_logo: Setting.get("company_logo"),
+      company_color: company_color == "#ffffff" ? "" : company_color,
+      date_format: Setting.get("date_format"),
+      time_format: Setting.get("time_format"),
+      first_weekday: Setting.get("first_weekday"),
+      **field_display_vars,
+      display_cookie_notice: Setting.get("display_cookie_notice"),
+      cookie_notice_content: Setting.get("cookie_notice_content"),
+      display_terms_and_conditions: Setting.get("display_terms_and_conditions"),
+      terms_and_conditions_content: Setting.get("terms_and_conditions_content"),
+      display_privacy_policy: Setting.get("display_privacy_policy"),
+      privacy_policy_content: Setting.get("privacy_policy_content"),
+      display_any_provider: Setting.get("display_any_provider"),
+      display_login_button: Setting.get("display_login_button"),
+      display_delete_personal_information: Setting.get("display_delete_personal_information"),
+      legal_notice_url: Setting.get("legal_notice_url"),
+      imprint_url: Setting.get("imprint_url"),
+      google_analytics_code: Setting.get("google_analytics_code"),
+      matomo_analytics_url: Setting.get("matomo_analytics_url"),
+      matomo_analytics_site_id: Setting.get("matomo_analytics_site_id"),
+      grouped_timezones: helpers.grouped_timezones,
+      manage_mode: manage_mode,
+      appointment_data: appointment,
+      provider_data: provider_payload,
+      customer_data: customer_payload
+    )
+  end
+
+  STEPS = %w[first second time info final].freeze
+
+  # The wizard's URL state: which step shows and what is chosen. The step never
+  # runs ahead of its prerequisites; slug deep links preselect and lock.
+  def resolve_wizard_state(available_services, available_providers, manage_mode)
+    slugged_service = params[:service].present? &&
+                      available_services.find { |row| row["booking_slug"] == params[:service] }
+    slugged_provider = params[:provider].present? &&
+                       available_providers.find { |row| row["booking_slug"] == params[:provider] }
+
+    @service_id = (params[:service_id].presence || (slugged_service ? slugged_service["id"] : nil) ||
+                   (manage_mode ? html_vars[:appointment_data]["id_services"] : nil)).to_i
+    @provider_id = params[:provider_id].presence ||
+                   (slugged_provider ? slugged_provider["id"].to_s : nil) ||
+                   (manage_mode ? html_vars[:provider_data]["id"].to_s : nil)
+    @service_id = 0 unless available_services.any? { |row| row["id"] == @service_id }
+    unless @provider_id == BookingPayloads::ANY_PROVIDER ||
+           available_providers.any? { |row| row["id"].to_s == @provider_id.to_s }
+      @provider_id = nil
+    end
+    # The pair must actually match.
+    if @service_id.positive? && @provider_id.present? && @provider_id != BookingPayloads::ANY_PROVIDER
+      provider = available_providers.find { |row| row["id"].to_s == @provider_id.to_s }
+      @provider_id = nil unless provider && provider["services"].include?(@service_id)
+    end
+    @locked_provider = slugged_provider.present? || manage_mode
+
+    @date = params[:date].to_s[/\A\d{4}-\d{2}-\d{2}\z/]
+    @time = params[:time].to_s[/\A\d{2}:\d{2}\z/]
+
+    first_kind = html_vars[:first_step] # "service" or "provider"
+    chosen = { "service" => @service_id.positive?, "provider" => @provider_id.present? }
+    reachable = [ "first" ]
+    reachable << "second" if chosen[first_kind]
+    reachable << "time" if chosen.values.all?
+    reachable << "info" if chosen.values.all? && @date && @time
+
+    requested = STEPS.include?(params[:step]) ? params[:step] : nil
+    requested ||= manage_mode && chosen.values.all? ? "time" : "first"
+    @step = reachable.include?(requested) ? requested : reachable.last
+
+    if @step == "time"
+      service = Service.find(@service_id)
+      exclude = manage_mode ? html_vars[:appointment_data]["id"] : nil
+      @window = BookingWindow.build(service, @provider_id, exclude_appointment_id: exclude)
+    end
+  end
+
+  # confirm/register re-render: rebuild the page vars the steps need.
+  def index_vars_for_confirm
+    available_services = BookingPayloads.available_services
+    available_providers = BookingPayloads.available_providers
+    additions = BookingPayloads.slug_additions(
+      params[:service], params[:provider],
+      known_service_ids: available_services.map { |row| row["id"] },
+      known_provider_ids: available_providers.map { |row| row["id"] }
+    )
+    available_services += additions[:services]
+    available_providers += additions[:providers]
+    manage_mode = ActiveModel::Type::Boolean.new.cast(params[:manage_mode]) || false
+    appointment = provider_payload = nil
+    if manage_mode
+      record = Appointment.find_by!(booking_hash: params[:appointment_hash].to_s)
+      provider = record.provider
+      appointment = appointment_payload(record)
+      provider_payload = { "id" => provider.id, "name" => provider.name,
+                           "services" => provider.services.map(&:id), "timezone" => provider.effective_timezone }
+    end
+    base_index_vars(available_services, available_providers, manage_mode,
+                    appointment: appointment, provider_payload: provider_payload)
+    resolve_wizard_state(available_services, available_providers, manage_mode)
+  end
+
+  def customer_form_params
+    params.fetch(:customer, {}).permit(*ALLOWED_CUSTOMER_FIELDS.map(&:to_sym), :notes).to_h
+  end
+
+  def customer_error(customer)
+    return helpers.lang("fields_are_required") if customer["name"].blank?
+    if customer["email"].present? && !customer["email"].match?(URI::MailTo::EMAIL_REGEXP)
+      return helpers.lang("invalid_email")
+    end
+    if Setting.get("require_phone_or_email", "1") == "1" && customer["email"].blank? && customer["phone_number"].blank?
+      return helpers.lang("phone_or_email_required")
+    end
+    required = { "email" => "require_email", "phone_number" => "require_phone_number", "address" => "require_address",
+                 "city" => "require_city", "zip_code" => "require_zip_code", "notes" => "require_notes" }
+    required.each do |field, setting_name|
+      return helpers.lang("fields_are_required") if Setting.get(setting_name).to_s == "1" && customer[field].blank?
+    end
+    nil
+  end
+
+  def register_failed(message)
+    if message == helpers.lang("requested_hour_is_unavailable")
+      # The slot went while the window sat on the client: back to the times with a fresh window.
+      redirect_to url_for(request.query_parameters.merge(action: :index, step: "time", time: nil,
+                                                         service_id: params.dig(:appointment, :id_services),
+                                                         provider_id: params.dig(:appointment, :id_users_provider),
+                                                         date: params[:date].presence)
+                                 .merge(params[:appointment_hash].present? ? { appointment_hash: params[:appointment_hash] } : {})),
+                  alert: message
+    else
+      index_vars_for_confirm
+      @customer = customer_form_params
+      @error = message
+      @step = "final"
+      render :index
+    end
+  end
 
   def render_booking_message(title, text, raw_text: false)
     html_vars(

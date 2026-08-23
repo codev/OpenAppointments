@@ -33,10 +33,11 @@ class ProviderDescriptionsTest < ActionDispatch::IntegrationTest
   test "the booking payload carries the provider texts and the page has the details divs" do
     users(:zane).update!(about: "About Zane", services_description: "All the cuts")
     get "/"
-    assert_match(/"about":"About Zane"/, response.body)
-    assert_match(/"services_description":"All the cuts"/, response.body)
-    assert_select "#provider-description"
-    assert_select "#service-description"
+    assert_select "#service-description .selection-description[data-for-service]"
+
+    get "/", params: { step: "second", service_id: services(:haircut).id }
+    assert_select "#provider-description .selection-description", text: /About Zane/
+    assert_select "#provider-description .selection-description", text: /All the cuts/
   end
 
   test "the services_description label exists in every locale" do

@@ -56,7 +56,7 @@ class PhoneOrEmailTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test "booking page passes the OR rule to the js and relaxes the two require flags" do
+  test "the OR rule relaxes the two require flags on the details step" do
     Setting.set("display_email", "1")
     Setting.set("display_phone_number", "1")
     Setting.set("require_email", "1")
@@ -68,22 +68,22 @@ class PhoneOrEmailTest < ActionDispatch::IntegrationTest
     assert_select "#phone-number.required", false
 
     Setting.set("require_phone_or_email", "0")
-    get "/"
-    assert_select "#email.required"
-    assert_select "#phone-number.required"
+    get "/", params: { step: "info", service_id: services(:haircut).id, provider_id: users(:zane).id, date: "2026-07-20", time: "10:00" }
+    assert_select "#email[required]"
+    assert_select "#phone-number[required]"
   end
 
   test "booking page marks email and phone with the half asterisk when either is enough" do
     Setting.set("display_email", "1")
     Setting.set("display_phone_number", "1")
 
-    get "/"
+    get "/", params: { step: "info", service_id: services(:haircut).id, provider_id: users(:zane).id, date: "2026-07-20", time: "10:00" }
     assert_select "label[for=email] .required-either", text: "*"
     assert_select "label[for=phone-number] .required-either", text: "*"
     assert_select "label[for=email] .visually-hidden", text: I18n.t("ea.phone_or_email_required")
 
     Setting.set("require_phone_or_email", "0")
-    get "/"
+    get "/", params: { step: "info", service_id: services(:haircut).id, provider_id: users(:zane).id, date: "2026-07-20", time: "10:00" }
     assert_select ".required-either", false
   end
 
@@ -96,9 +96,12 @@ class PhoneOrEmailTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test "booking page has the validation message container" do
-    get "/"
-    assert_select "#wizard-frame-4 #form-message.alert-danger"
+  test "the details step shows the phone-or-email message when both are blank" do
+    post "/booking/confirm", params: { form: "1", step: "info", service_id: services(:haircut).id,
+                                       provider_id: users(:zane).id, date: "2026-07-20", time: "10:00",
+                                       customer: { name: "Only Name" } }
+    assert_select "#wizard-frame-4 #form-message.alert-danger", text: I18n.t("ea.phone_or_email_required")
+    assert_select "#name[value='Only Name']"
   end
 
   test "seeds do not require email or phone individually" do

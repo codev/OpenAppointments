@@ -1,21 +1,26 @@
 require "test_helper"
 
 class BookingWizardOrderTest < ActionDispatch::IntegrationTest
-  test "default order is service first then provider" do
+  test "default order is service first then provider, one step per request" do
     get "/"
     assert_response :success
-    assert_select "#wizard-frame-1 #select-service"
-    assert_select "#wizard-frame-2 #select-provider"
-    assert_select "#wizard-frame-3 #select-date"
-    assert_select "#wizard-frame-4 #name"
-    assert_select "#wizard-frame-5 #book-appointment-submit"
+    assert_select "turbo-frame#wizard #wizard-frame-1 #select-service"
     assert_select "#steps #step-5"
+
+    get "/", params: { step: "second", service_id: services(:haircut).id }
+    assert_select "#wizard-frame-2 #select-provider"
+    get "/", params: { step: "time", service_id: services(:haircut).id, provider_id: users(:zane).id }
+    assert_select "#wizard-frame-3 #select-date"
+    get "/", params: { step: "info", service_id: services(:haircut).id, provider_id: users(:zane).id,
+                       date: "2026-07-20", time: "10:00" }
+    assert_select "#wizard-frame-4 #name"
   end
 
   test "first=provider swaps the two selection pages" do
     get "/", params: { first: "provider" }
     assert_response :success
     assert_select "#wizard-frame-1 #select-provider"
+    get "/", params: { first: "provider", step: "second", provider_id: users(:zane).id }
     assert_select "#wizard-frame-2 #select-service"
   end
 
@@ -28,7 +33,6 @@ class BookingWizardOrderTest < ActionDispatch::IntegrationTest
     Setting.set("booking_provider_first", "1")
     get "/"
     assert_select "#wizard-frame-1 #select-provider"
-    assert_select "#wizard-frame-2 #select-service"
 
     # The URL parameter still overrides the setting in both directions.
     get "/", params: { first: "service" }
@@ -85,7 +89,8 @@ class BookingWizardOrderTest < ActionDispatch::IntegrationTest
       get "/booking/reschedule/#{appointment.booking_hash}"
     end
     assert_response :success
-    assert_select "#wizard-frame-1 #select-service"
+    # A reschedule already knows the service and provider: straight to the times.
+    assert_select "#wizard-frame-3 #select-date"
     assert_no_match(/swap-first-step/, response.body)
   end
 

@@ -76,7 +76,7 @@ class SettingsPagesTest < ActionDispatch::IntegrationTest
 
     get "/providers/new"
     assert_select "div.d-none label[for='provider_timezone']"
-    get "/booking"
+    get "/booking", params: { step: "time", service_id: services(:haircut).id, provider_id: users(:zane).id }
     assert_select "div.d-none label[for='select-timezone']"
     assert_match '"fixed_timezone":true', response.body
   end

@@ -19,6 +19,8 @@ class BookingCardsTest < ActionDispatch::IntegrationTest
     assert_select "#select-service-heading.d-none", text: I18n.t("ea.select_service")
     assert_select ".service-cards.d-none .booking-card .card-title", text: services(:haircut).name
     assert_select "#wizard-frame-1 #select-service.d-none"
+
+    get "/", params: { step: "second", service_id: services(:haircut).id }
     assert_select "#provider-cards"
     assert_select "#wizard-frame-2 #select-provider.d-none"
   end

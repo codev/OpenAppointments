@@ -1,132 +1,80 @@
-<%# Port of EA components/booking_info_step.php. Locals: display_*/require_* setting flags ("1"/"0"). %>
-<div id="wizard-frame-4" class="wizard-frame p-3 p-md-4" style="display:none;">
-    <div class="frame-container py-3">
-
-        <h2 class="frame-title fw-light text-center mb-4 text-muted"><%= lang('customer_information') %></h2>
-
-        <div class="row frame-content">
-            <div class="col-12 col-lg-6 mb-3">
-                <label for="name" class="form-label">
-                    <%= lang('name') %>
-                    <span class="text-danger">*</span>
-                </label>
-                <input type="text" id="name" class="required form-control" maxlength="220"/>
-            </div>
-
-            <% if display_email == "1" %>
-                <div class="col-12 col-lg-6 mb-3">
-                    <label for="email" class="form-label">
-                        <%= lang('email') %>
-                        <% if require_email == "1" %>
-                            <span class="text-danger">*</span>
-                        <% elsif require_phone_or_email == "1" %>
-                            <span class="required-either" title="<%= lang('phone_or_email_required') %>">*</span>
-                            <span class="visually-hidden"><%= lang('phone_or_email_required') %></span>
-                        <% end %>
-                    </label>
-                    <input type="text" id="email"
-                           class="<%= require_email == "1" ? 'required' : '' %> form-control" maxlength="120"/>
-                </div>
+<%# Customer details, posted to booking/confirm (never in a URL). Locals: the
+    display_/require_ settings. %>
+<% customer = @customer || vars(:customer_data) || {} %>
+<% required_star = ->(flag, either: false) { %>
+    <% if flag == "1" %><span class="text-danger">*</span><% elsif either %>
+        <span class="required-either" title="<%= lang('phone_or_email_required') %>">*</span>
+        <span class="visually-hidden"><%= lang('phone_or_email_required') %></span>
+    <% end %>
+<% } %>
+<div id="wizard-frame-<%= step_number %>" class="wizard-frame p-3 p-md-4">
+    <%= form_with url: "/booking/confirm", method: :post, id: "info-step-form", data: { turbo_frame: "wizard" } do %>
+        <%= hidden_field_tag :form, "1", id: nil %>
+        <%= wizard_state_fields %>
+        <% if vars(:manage_mode) %>
+            <%= hidden_field_tag :manage_mode, "1", id: nil %>
+            <%= hidden_field_tag :appointment_hash, vars(:appointment_data)["hash"] || params[:appointment_hash], id: nil %>
+            <%= hidden_field_tag :appointment_id, vars(:appointment_data)["id"], id: nil %>
+        <% end %>
+        <div class="frame-container py-3">
+            <h2 class="frame-title fw-light text-center mb-4 text-muted"><%= lang('customer_information') %></h2>
+            <% if @error %>
+                <div id="form-message" class="alert alert-danger text-center" role="alert"><%= @error %></div>
             <% end %>
-
-            <% if display_phone_number == "1" %>
-                <div class="col-12 col-lg-6 mb-3">
-                    <label for="phone-number" class="form-label">
-                        <%= lang('phone_number') %>
-                        <% if require_phone_number == "1" %>
-                            <span class="text-danger">*</span>
-                        <% elsif require_phone_or_email == "1" %>
-                            <span class="required-either" title="<%= lang('phone_or_email_required') %>">*</span>
-                            <span class="visually-hidden"><%= lang('phone_or_email_required') %></span>
-                        <% end %>
-                    </label>
-                    <input type="text" id="phone-number" maxlength="60"
-                           class="<%= require_phone_number == "1" ? 'required' : '' %> form-control"/>
+            <div class="row frame-content">
+                <div class="col-12 col-md-6 field-col">
+                    <div class="mb-3">
+                        <label for="name" class="form-label"><%= lang('name') %> <span class="text-danger">*</span></label>
+                        <%= text_field_tag "customer[name]", customer["name"], id: "name", class: "form-control", maxlength: 220, required: true %>
+                    </div>
+                    <% if display_email == "1" %>
+                        <div class="mb-3">
+                            <label for="email" class="form-label"><%= lang('email') %>
+                                <%= required_star.call(require_email, either: require_phone_or_email == "1") %></label>
+                            <%= text_field_tag "customer[email]", customer["email"], id: "email", class: "form-control", maxlength: 120,
+                                               required: require_email == "1" %>
+                        </div>
+                    <% end %>
+                    <% if display_phone_number == "1" %>
+                        <div class="mb-3">
+                            <label for="phone-number" class="form-label"><%= lang('phone_number') %>
+                                <%= required_star.call(require_phone_number, either: require_phone_or_email == "1") %></label>
+                            <%= text_field_tag "customer[phone_number]", customer["phone_number"], id: "phone-number", class: "form-control",
+                                               maxlength: 60, required: require_phone_number == "1" %>
+                        </div>
+                    <% end %>
+                    <%= render "shared/custom_fields", name: "customer", values: customer, rows: 2 %>
                 </div>
-            <% end %>
-
-            <% if display_address == "1" %>
-                <div class="col-12 col-lg-6 mb-3">
-                    <label for="address" class="form-label">
-                        <%= lang('address') %>
-                        <% if require_address == "1" %>
-                            <span class="text-danger">*</span>
-                        <% end %>
-                    </label>
-                    <input type="text" id="address" class="<%= require_address == "1" ? 'required' : '' %> form-control"
-                           maxlength="120"/>
-                </div>
-            <% end %>
-            <% if display_city == "1" %>
-                <div class="col-12 col-lg-6 mb-3">
-                    <label for="city" class="form-label">
-                        <%= lang('city') %>
-                        <% if require_city == "1" %>
-                            <span class="text-danger">*</span>
-                        <% end %>
-                    </label>
-                    <input type="text" id="city" class="<%= require_city == "1" ? 'required' : '' %> form-control"
-                           maxlength="120"/>
-                </div>
-            <% end %>
-            <% if display_zip_code == "1" %>
-                <div class="col-12 col-lg-6 mb-3">
-                    <label for="zip-code" class="form-label">
-                        <%= lang('zip_code') %>
-                        <% if require_zip_code == "1" %>
-                            <span class="text-danger">*</span>
-                        <% end %>
-                    </label>
-                    <input type="text" id="zip-code" class="<%= require_zip_code == "1" ? 'required' : '' %> form-control"
-                           maxlength="120"/>
-                </div>
-            <% end %>
-
-            <%= render "shared/custom_fields", col_class: "col-12 col-lg-6",
-                                               long_col_class: "col-12", rows: 2 %>
-
-            <% if display_notes == "1" %>
-                <div class="col-12 mb-3">
-                    <label for="notes" class="form-label">
-                        <%= lang('notes') %>
-                        <% if require_notes == "1" %>
-                            <span class="text-danger">*</span>
-                        <% end %>
-                    </label>
-                    <textarea id="notes" maxlength="500"
-                              class="<%= require_notes == "1" ? 'required' : '' %> form-control" rows="2"></textarea>
-                </div>
-            <% end %>
-
-            <% unless vars(:manage_mode) %>
-                <div class="col-12 mb-3">
-                    <div class="form-check">
+                <div class="col-12 col-md-6 field-col">
+                    <% { "address" => [ display_address, require_address ], "city" => [ display_city, require_city ],
+                         "zip_code" => [ display_zip_code, require_zip_code ] }.each do |field, (display, require)| %>
+                        <% next unless display == "1" %>
+                        <div class="mb-3">
+                            <label for="<%= field.dasherize %>" class="form-label"><%= lang(field) %> <%= required_star.call(require) %></label>
+                            <%= text_field_tag "customer[#{field}]", customer[field], id: field.dasherize, class: "form-control",
+                                               maxlength: 120, required: require == "1" %>
+                        </div>
+                    <% end %>
+                    <% if display_notes == "1" %>
+                        <div class="mb-3">
+                            <label for="notes" class="form-label"><%= lang('notes') %> <%= required_star.call(require_notes) %></label>
+                            <%= text_area_tag "customer[notes]", customer["notes"], id: "notes", class: "form-control", rows: 2,
+                                              maxlength: 500, required: require_notes == "1" %>
+                        </div>
+                    <% end %>
+                    <div class="form-check mb-3">
                         <input type="checkbox" id="remember-me" class="form-check-input">
-                        <label for="remember-me" class="form-check-label">
-                            <%= lang('remember_me') %>
-                        </label>
-                    </div>
-                    <div class="form-text text-muted small">
-                        <%= lang('remember_me_hint') %>
+                        <label for="remember-me" class="form-check-label"><%= lang('remember_me') %></label>
                     </div>
                 </div>
-            <% end %>
-
+            </div>
         </div>
-
-        <div id="form-message" class="alert alert-danger text-center" role="alert" style="display:none;"></div>
-    </div>
-
-    <div class="command-buttons text-center my-3 mx-auto d-md-flex justify-content-md-between">
-        <button type="button" id="button-back-4" class="btn button-back btn-outline-secondary"
-                data-step_index="4">
-            <i class="fas fa-chevron-left me-2"></i>
-            <%= lang('back') %>
-        </button>
-        <button type="button" id="button-next-4" class="btn button-next btn-primary"
-                data-step_index="4">
-            <%= lang('next') %>
-            <i class="fas fa-chevron-right ms-2"></i>
-        </button>
-    </div>
+        <div class="command-buttons text-center my-3 mx-auto d-md-flex justify-content-md-between">
+            <%= wizard_back_button "time" %>
+            <button type="submit" id="button-next-<%= step_number %>" class="btn button-next btn-primary">
+                <%= lang('next') %>
+                <i class="fas fa-chevron-right ms-2"></i>
+            </button>
+        </div>
+    <% end %>
 </div>
