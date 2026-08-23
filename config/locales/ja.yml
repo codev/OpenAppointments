@@ -901,3 +901,4 @@ ja:
     report_statuses: 'Status'
     download_report: 'Download Report'
     booked_on: 'Booked Date'
+    invalid_datetime: "日付と時刻を読み取れませんでした"

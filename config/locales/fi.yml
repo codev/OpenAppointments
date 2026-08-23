@@ -901,3 +901,4 @@ fi:
     report_statuses: 'Status'
     download_report: 'Download Report'
     booked_on: 'Booked Date'
+    invalid_datetime: "Päivämäärää ja aikaa ei voitu lukea"

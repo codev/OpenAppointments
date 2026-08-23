@@ -901,3 +901,4 @@ sl:
     report_statuses: 'Status'
     download_report: 'Download Report'
     booked_on: 'Booked Date'
+    invalid_datetime: "Datuma in ure ni bilo mogoče prebrati"

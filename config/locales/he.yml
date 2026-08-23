@@ -901,3 +901,4 @@ he:
     report_statuses: 'Status'
     download_report: 'Download Report'
     booked_on: 'Booked Date'
+    invalid_datetime: "לא ניתן לקרוא את התאריך והשעה"

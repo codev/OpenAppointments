@@ -901,3 +901,4 @@ it:
     report_statuses: 'Status'
     download_report: 'Download Report'
     booked_on: 'Booked Date'
+    invalid_datetime: "Impossibile leggere la data e l'ora"

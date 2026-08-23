@@ -901,3 +901,4 @@ zh-tw:
     report_statuses: 'Status'
     download_report: 'Download Report'
     booked_on: 'Booked Date'
+    invalid_datetime: "無法讀取日期和時間"

@@ -901,3 +901,4 @@ mr:
     report_statuses: 'Status'
     download_report: 'Download Report'
     booked_on: 'Booked Date'
+    invalid_datetime: "तारीख आणि वेळ वाचता आली नाही"

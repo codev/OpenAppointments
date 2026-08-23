@@ -901,3 +901,4 @@ uk:
     report_statuses: 'Status'
     download_report: 'Download Report'
     booked_on: 'Booked Date'
+    invalid_datetime: "Не вдалося прочитати дату й час"

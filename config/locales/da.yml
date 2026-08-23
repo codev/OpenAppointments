@@ -901,3 +901,4 @@ da:
     report_statuses: 'Status'
     download_report: 'Download Report'
     booked_on: 'Booked Date'
+    invalid_datetime: "Dato og klokkeslæt kunne ikke læses"

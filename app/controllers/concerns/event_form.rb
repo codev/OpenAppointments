@@ -33,8 +33,8 @@ module EventForm
     date_format = MailerFormatHelper::DATE_FORMATS[Setting.get("date_format")] || MailerFormatHelper::DATE_FORMATS["DMY"]
     time_format = Setting.get("time_format") == "military" ? "%H:%M" : "%I:%M %p"
     Time.zone.strptime(value, "#{date_format} #{time_format}").strftime("%Y-%m-%d %H:%M:%S")
-  rescue ArgumentError => e
-    raise ArgumentError, "#{value}: #{e.message}"
+  rescue ArgumentError
+    raise ArgumentError, "#{value}: #{helpers.lang('invalid_datetime')}"
   end
 
   def providers_for_form

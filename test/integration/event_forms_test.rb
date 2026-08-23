@@ -164,7 +164,10 @@ class EventFormsTest < ActionDispatch::IntegrationTest
     login_admin
     post "/unavailabilities", params: { unavailability: { id_users_provider: users(:zane).id, start_datetime: "yesterday", end_datetime: "later" } }
     assert_response :unprocessable_entity
-    assert_select "form#unavailability-form .modal-message", text: /yesterday/
+    assert_select "form#unavailability-form .modal-message", text: "yesterday: #{I18n.t('ea.invalid_datetime')}"
+    I18n.available_locales.each do |locale|
+      assert I18n.t("ea.invalid_datetime", locale: locale, fallback: false, default: nil).present?, "missing in #{locale}"
+    end
 
     login_provider
     other = User.create!(name: "Other", email: "other@example.org", role: users(:zane).role)

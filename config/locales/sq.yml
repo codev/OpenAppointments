@@ -901,3 +901,4 @@ sq:
     report_statuses: 'Status'
     download_report: 'Download Report'
     booked_on: 'Booked Date'
+    invalid_datetime: "Data dhe ora nuk mund të lexoheshin"
