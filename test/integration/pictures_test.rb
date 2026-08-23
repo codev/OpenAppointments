@@ -24,13 +24,6 @@ class PicturesTest < ActionDispatch::IntegrationTest
     assert_not zane.reload.picture.attached?
   end
 
-  test "service picture upload" do
-    login_admin
-    post "/services/#{services(:haircut).id}/picture", params: { picture: png }
-    assert_response :success
-    assert services(:haircut).reload.picture.attached?
-  end
-
   test "non-image uploads are rejected" do
     login_admin
     file = Rack::Test::UploadedFile.new(StringIO.new("plain"), "text/plain", original_filename: "x.txt")

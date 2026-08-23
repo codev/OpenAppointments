@@ -70,28 +70,6 @@ class BackendCrudTest < ActionDispatch::IntegrationTest
     end
   end
 
-  test "services store and search round trip" do
-    login_admin
-
-    post "/services/store", params: {
-      service: { name: "Colour Consult", duration: 45, price: 0, currency: "GBP",
-                 providers: [ users(:zane).id ] }
-    }
-    assert_response :success
-    body = response.parsed_body
-    assert_equal true, body["success"]
-    service_id = body["id"]
-    assert service_id.present?
-    assert_equal [ users(:zane).id ], Service.find(service_id).provider_links.map(&:id_users)
-
-    post "/services/search", params: { keyword: "Colour Consult" }
-    assert_response :success
-    rows = response.parsed_body
-    assert_equal 1, rows.length
-    assert_equal "Colour Consult", rows.first["name"]
-    assert_equal [ users(:zane).id ], rows.first["providers"]
-  end
-
   test "provider store persists settings, services and working plan exceptions" do
     login_admin
     company_plan = { monday: { start: "09:00", end: "17:00", breaks: [] } }.to_json

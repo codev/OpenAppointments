@@ -17,8 +17,8 @@ class AdminListSortingTest < ActionDispatch::IntegrationTest
     names = response.parsed_body.map { |row| row["name"] }
     assert_equal names.sort, names
 
-    post "/services/search", params: { keyword: "" }
-    names = response.parsed_body.map { |row| row["name"] }
+    get "/services"
+    names = css_select(".service-row strong").map(&:text)
     assert_equal names.sort, names
 
     post "/service_categories/search", params: { keyword: "" }

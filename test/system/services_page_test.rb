@@ -110,3 +110,27 @@ class ServicesPageTest < ApplicationSystemTestCase
     assert_equal 2, Service.count
   end
 end
+
+# Rails views only: the picture is part of the form.
+class ServicesFormTest < ApplicationSystemTestCase
+  test "a picture chosen while adding previews and saves with the record, then can be removed" do
+    login_as_admin
+    visit services_url
+    click_on "Add"
+    assert_selector "#services-page.editing", wait: 5
+    fill_in "Name", with: "Pictured"
+    attach_file "Picture", file_fixture("picture.png")
+    assert_selector ".picture-preview[src^='blob:']", visible: true
+    click_on "Save"
+    assert_text "Service saved", wait: 5
+    service = Service.find_by!(name: "Pictured")
+    assert service.picture.attached?
+
+    find(".service-row", text: "Pictured").click
+    assert_selector ".picture-preview[src*='/rails/']", visible: true, wait: 5
+    check "Remove picture"
+    click_on "Save"
+    assert_text "Service saved", wait: 5
+    assert_not service.reload.picture.attached?
+  end
+end

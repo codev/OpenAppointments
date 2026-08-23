@@ -28,6 +28,8 @@ App.Components.ColorSelection = (function () {
         $colorSelection.find('.color-selection-option.selected').removeClass('selected');
 
         $target.addClass('selected');
+
+        $colorSelection.find('input[type=hidden]').val($target.data('value'));
     }
 
     /**

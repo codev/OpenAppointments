@@ -26,6 +26,11 @@
             }
         });
 
+        $page.on('click', '[data-check-all], [data-check-none]', (event) => {
+            const target = $(event.currentTarget).data('checkAll') || $(event.currentTarget).data('checkNone');
+            $(target).find('input:checkbox').prop('checked', Boolean($(event.currentTarget).data('checkAll')));
+        });
+
         App.Utils.DragReorder.enable(
             $page,
             '.entry[draggable]',

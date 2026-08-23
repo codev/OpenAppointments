@@ -65,5 +65,6 @@
 </div>
 
 <% content_for :scripts do %>
-    <%= ea_js "utils/drag_reorder", "utils/crud_page" %>
+    <%# Frame-loaded forms cannot add scripts, so the form components load here. %>
+    <%= ea_js "utils/drag_reorder", "components/color_selection", "utils/crud_page" %>
 <% end %>

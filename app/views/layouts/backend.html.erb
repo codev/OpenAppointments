@@ -65,10 +65,11 @@
     Turbo.session.drive = false;
 
     // data-turbo-confirm uses EA's message modal instead of window.confirm. The
-    // submitter's text is the confirm button; data-turbo-confirm-title overrides the title.
+    // submitter's text is the confirm button and title; data-turbo-confirm-title
+    // and data-turbo-confirm-button override them.
     Turbo.config.forms.confirm = (message, form, submitter) => new Promise((resolve) => {
         const button = submitter || form;
-        const label = button.textContent.trim();
+        const label = button.dataset.turboConfirmButton || button.textContent.trim();
         let answered = false;
         const answer = (value, modal) => {
             answered = true;
@@ -76,7 +77,7 @@
             modal.hide();
         };
 
-        App.Utils.Message.show(button.dataset.turboConfirmTitle || label, message, [
+        App.Utils.Message.show(button.dataset.turboConfirmTitle || button.textContent.trim(), message, [
             {text: lang('cancel'), click: (event, modal) => answer(false, modal)},
             {text: label, click: (event, modal) => answer(true, modal)},
         ]);

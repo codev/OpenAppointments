@@ -1,5 +1,8 @@
 <%# Wraps a CRUD detail form: error message, fields (block), save/cancel, delete.
-    Locals: record, delete_title; the block renders the fields with the builder. %>
+    Locals: record, delete_title, optional header HTML placed before the form (for
+    buttons that post elsewhere, since forms cannot nest); the block renders the
+    fields with the builder. %>
+<%= local_assigns[:header] %>
 <%= form_with model: record, class: "crud-form", data: { turbo_frame: controller_name } do |f| %>
     <% if record.errors.any? %>
         <div class="form-message alert alert-danger">

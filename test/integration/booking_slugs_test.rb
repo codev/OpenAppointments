@@ -37,8 +37,8 @@ class BookingSlugsTest < ActionDispatch::IntegrationTest
     assert_match(/"booking_slug":"[a-z2-9]{4}-[a-z2-9]{4}"/, response.body)
 
     login_admin
-    post "/services/search", params: { keyword: "" }
-    assert(response.parsed_body.any? { |row| row["booking_slug"].present? })
+    get "/services/#{services(:haircut).id}/edit"
+    assert_select "a[href=?]", "/?service=#{services(:haircut).booking_slug}"
     post "/providers/search", params: { keyword: "" }
     assert(response.parsed_body.any? { |row| row["booking_slug"].present? })
   end
@@ -47,12 +47,11 @@ class BookingSlugsTest < ActionDispatch::IntegrationTest
     login_admin
     service = services(:haircut)
     old_slug = service.booking_slug
-    post "/services/regenerate_link", params: { service_id: service.id }
-    assert_response :success
-    new_slug = response.parsed_body["booking_slug"]
+    post "/services/#{service.id}/regenerate_link"
+    assert_redirected_to "/services/#{service.id}/edit"
+    new_slug = service.reload.booking_slug
     assert_match BookingSlug::FORMAT, new_slug
     assert_not_equal old_slug, new_slug
-    assert_equal new_slug, service.reload.booking_slug
 
     provider = users(:zane)
     old_slug = provider.booking_slug
@@ -66,9 +65,8 @@ class BookingSlugsTest < ActionDispatch::IntegrationTest
     customer.create_settings!(username: "jxlogin", password: Passwords.hash("customer1"))
     post "/login/validate", params: { username: "jxlogin", password: "customer1" }
 
-    post "/services/regenerate_link", params: { service_id: services(:haircut).id }
-    body = response.parsed_body
-    assert body["exceptions"].present? || body["success"] != true
+    post "/services/#{services(:haircut).id}/regenerate_link"
+    assert_response :forbidden
     assert_equal services(:haircut).booking_slug, services(:haircut).reload.booking_slug
   end
 

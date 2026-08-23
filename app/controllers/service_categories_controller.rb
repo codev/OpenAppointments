@@ -2,6 +2,7 @@
 # for the services page category select.
 class ServiceCategoriesController < ApplicationController
   include CrudPage
+  include RecordPicture
 
   PAGE = { resource: :services, menu: "services", title: "service_categories",
            save_webhook: Webhooks::SERVICE_CATEGORY_SAVE, delete_webhook: Webhooks::SERVICE_CATEGORY_DELETE,
@@ -56,15 +57,5 @@ class ServiceCategoriesController < ApplicationController
     params.require(:service_category).permit(:name, :description, :is_hidden)
   end
 
-  def after_save
-    picture = params.dig(:service_category, :picture)
-    if ActiveModel::Type::Boolean.new.cast(params.dig(:service_category, :remove_picture))
-      %i[picture picture_padded picture_zoomed].each { |name| @record.public_send(name).purge }
-    end
-    return unless picture.respond_to?(:content_type)
-
-    PictureUpload.validate!(picture)
-    PictureVariants.attach(@record, picture.tempfile.path, filename: picture.original_filename,
-                                                           content_type: picture.content_type)
-  end
+  def after_save = save_record_picture(@record, params[:service_category])
 end
