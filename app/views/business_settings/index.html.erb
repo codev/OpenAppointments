@@ -6,21 +6,19 @@
                 <%= render "shared/settings_nav" %>
             </div>
             <div class="col-sm-9">
-                <form>
-                    <fieldset>
+                <turbo-frame id="settings">
+                    <%= settings_form "/business_settings/save" do %>
                         <div class="d-flex justify-content-between align-items-center border-bottom mb-4 py-2">
                             <h4 class="mb-0 fw-light">
                                 <%= lang('business_logic') %>
                             </h4>
 
-                            <% if can?(:edit, :system_settings) %>
-                                <button type="button" id="save-settings" class="btn btn-primary">
-                                    <i class="fas fa-check-square me-2"></i>
-                                    <%= lang('save') %>
-                                </button>
-                            <% end %>
+                            <%= settings_save_button %>
                         </div>
 
+                        <%# The working plan editor and status options write into these on submit. %>
+                        <%= hidden_field_tag "settings[company_working_plan]", setting('company_working_plan'), id: "working-plan-json" %>
+                        <%= hidden_field_tag "settings[appointment_status_options]", vars(:appointment_status_options), id: "status-options-json" %>
                         <h5 class="mb-3 fw-light"><%= lang('working_plan') %></h5>
 
                         <p class="form-text text-muted mb-4">
@@ -84,7 +82,7 @@
                             </p>
 
                             <div class="mb-5">
-                                <a href="/blocked_periods" class="btn btn-primary">
+                                <a href="/blocked_periods" data-turbo="false" class="btn btn-primary">
                                     <i class="fas fa-cogs me-2"></i>
                                     <%= lang('configure') %>
                                 </a>
@@ -98,16 +96,17 @@
                                 <label class="form-label"><%= lang(key) %></label>
                                 <div class="d-flex gap-2">
                                     <div class="input-group">
-                                        <input class="form-control hours" type="number" min="0"
-                                               aria-label="<%= lang('hours') %>">
+                                        <%= number_field_tag "minutes[#{field}][hours]", setting(field).to_i / 60, min: 0, id: nil,
+                                                             class: "form-control hours", "aria-label": lang('hours') %>
                                         <span class="input-group-text"><%= lang('hours') %></span>
                                     </div>
                                     <div class="input-group">
-                                        <input class="form-control minutes" type="number" min="0" max="59"
-                                               aria-label="<%= lang('minutes') %>">
+                                        <%= number_field_tag "minutes[#{field}][minutes]", setting(field).to_i % 60, min: 0, max: 59, id: nil,
+                                                             class: "form-control minutes", "aria-label": lang('minutes') %>
                                         <span class="input-group-text"><%= lang('minutes') %></span>
                                     </div>
                                 </div>
+                                <%= settings_flash %>
                                 <div class="form-text text-muted">
                                     <small><%= lang("#{key}_hint") %></small>
                                 </div>
@@ -121,8 +120,7 @@
                             <label for="future-booking-limit" class="form-label">
                                 <%= lang('limit_days') %>
                             </label>
-                            <input id="future-booking-limit" data-field="future_booking_limit" class="form-control"
-                                   type="number" min="15">
+                            <%= setting_text "future_booking_limit", min: 15, type: "number" %>
                             <div class="form-text text-muted">
                                 <small>
                                     <%= lang('future_booking_limit_hint') %>
@@ -143,8 +141,8 @@
                         <%= render "shared/appointment_status_options",
                                    attributes: 'id="appointment-status-options"' %>
 
-                    </fieldset>
-                </form>
+                    <% end %>
+                </turbo-frame>
             </div>
         </div>
     </div>
@@ -152,6 +150,5 @@
 
 <% content_for :scripts do %>
     <%= javascript_include_tag "vendor/jquery-jeditable/jquery.jeditable.min" %>
-    <%= ea_js "utils/ui", "utils/working_plan",
-              "http/business_settings_http_client", "pages/business_settings" %>
+    <%= ea_js "utils/ui", "utils/working_plan", "pages/business_settings" %>
 <% end %>

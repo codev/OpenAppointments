@@ -74,3 +74,30 @@ class SettingsPagesTest < ApplicationSystemTestCase
     save_and_check("theme_settings") { assert_equal "#112233", Setting.get("company_color") }
   end
 end
+
+# Rails forms only: the business page's JS widgets post through hidden fields.
+class BusinessSettingsFormTest < ApplicationSystemTestCase
+  test "working plan, hours and minutes windows and status options save with the form" do
+    login_as_admin
+    visit "/business_settings"
+    assert_selector "table.working-plan tbody tr", count: 7, wait: 5
+    check "Wednesday" unless has_checked_field?("Wednesday")
+    find("#wednesday-start").set("10:00 am")
+    find("#wednesday-end").set("2:00 pm")
+    within("[data-minutes-field='book_advance_timeout']") do
+      find(".hours").set("2")
+      find(".minutes").set("30")
+    end
+    find("#appointment-status-options .add-appointment-status-option").click
+    all("#appointment-status-options input").last.set("No show")
+    find("#save-settings").click
+    assert_text "Settings saved", wait: 5
+
+    plan = JSON.parse(Setting.get("company_working_plan"))
+    assert_equal({ "start" => "10:00", "end" => "14:00" }, plan["wednesday"].slice("start", "end"))
+    assert_equal "150", Setting.get("book_advance_timeout")
+    assert_includes AppointmentStatus.rows.map { |row| row["name"] }, "No show"
+    assert_equal "10:00 am", find("#wednesday-start").value
+    assert_equal "2", find("[data-minutes-field='book_advance_timeout'] .hours").value
+  end
+end

@@ -9,18 +9,15 @@ class BusinessSettingsController < ApplicationController
     return unless require_backend_page!(:system_settings)
 
     backend_page_vars(page_title: helpers.lang("settings"), active_menu: "system_settings")
-    script_vars(
-      business_settings: settings_rows + [ { "name" => "appointment_status_options",
-                                             "value" => JSON.generate(AppointmentStatus.rows) } ],
-      first_weekday: Setting.get("first_weekday"),
-      time_format: Setting.get("time_format")
-    )
+    script_vars(first_weekday: Setting.get("first_weekday"), time_format: Setting.get("time_format"))
+    html_vars(appointment_status_options: JSON.generate(AppointmentStatus.rows))
     render :index
   end
 
   # POST /business_settings/save
   def save
     require_system_settings_edit!
+    merge_minutes_fields
     validate_windows!
     save_setting_rows(:business_settings) do |name, value|
       next value unless name == "appointment_status_options"
@@ -33,6 +30,15 @@ class BusinessSettingsController < ApplicationController
   end
 
   # The late cancellation window cannot exceed the booking window.
+  # The windows are typed as hours + minutes (minutes[name][hours|minutes]).
+  def merge_minutes_fields
+    return unless settings_form_post? && params[:minutes].respond_to?(:each)
+
+    params[:minutes].each do |name, parts|
+      params[:settings][name] = (parts[:hours].to_i * 60 + parts[:minutes].to_i).to_s
+    end
+  end
+
   def validate_windows!
     rows = setting_row_params(:business_settings).to_h { |row| [ row["name"], row["value"].to_i ] }
     booking = rows.fetch("book_advance_timeout") { BookingWindows.minutes("book_advance_timeout") }
