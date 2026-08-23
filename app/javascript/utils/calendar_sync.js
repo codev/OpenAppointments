@@ -17,24 +17,24 @@
  * Old Name: BackendCalendarSync
  */
 App.Utils.CalendarSync = (function () {
-    const $selectFilterItem = $('#select-filter-item');
-    const $enableSync = $('#enable-sync');
-    const $disableSync = $('#disable-sync');
-    const $triggerSync = $('#trigger-sync');
-    const $syncButtonGroup = $('#sync-button-group');
-    const $reloadAppointments = $('#reload-appointments');
+    const $selectFilterItem = () => $('#select-filter-item');
+    const $enableSync = () => $('#enable-sync');
+    const $disableSync = () => $('#disable-sync');
+    const $triggerSync = () => $('#trigger-sync');
+    const $syncButtonGroup = () => $('#sync-button-group');
+    const $reloadAppointments = () => $('#reload-appointments');
 
     const FILTER_TYPE_PROVIDER = 'provider';
     let isSyncing = false;
 
     function hasSync(type) {
-        const $selectedOption = $selectFilterItem.find('option:selected');
+        const $selectedOption = $selectFilterItem().find('option:selected');
 
         return Boolean(Number($selectedOption.attr(`${type}-sync`)));
     }
 
     function updateSyncButtons() {
-        const $selectedOption = $selectFilterItem.find('option:selected');
+        const $selectedOption = $selectFilterItem().find('option:selected');
         const type = $selectedOption.attr('type');
         const isProvider = type === FILTER_TYPE_PROVIDER;
         const hasGoogleSync = Boolean(Number($selectedOption.attr('google-sync')));
@@ -49,8 +49,8 @@ App.Utils.CalendarSync = (function () {
             (!isLoggedInProvider || // Admins and assistants can manage any provider
                 Number(vars('user_id')) === selectedProviderId); // Providers can only manage their own sync
 
-        $enableSync.prop('hidden', !canManageSync || hasSync);
-        $syncButtonGroup.prop('hidden', !canManageSync || !hasSync);
+        $enableSync().prop('hidden', !canManageSync || hasSync);
+        $syncButtonGroup().prop('hidden', !canManageSync || !hasSync);
     }
 
     function enableGoogleSync() {
@@ -74,7 +74,7 @@ App.Utils.CalendarSync = (function () {
                 windowHandle.close();
             }
 
-            const $selectedOption = $selectFilterItem.find('option:selected');
+            const $selectedOption = $selectFilterItem().find('option:selected');
 
             $selectedOption.attr('google-sync', '1');
 
@@ -98,7 +98,7 @@ App.Utils.CalendarSync = (function () {
                 text: lang('confirm'),
                 click: (event, messageModal) => {
                     // Disable synchronization for selected provider.
-                    const providerId = $selectFilterItem.val();
+                    const providerId = $selectFilterItem().val();
 
                     const provider = vars('available_providers').find(
                         (availableProvider) => Number(availableProvider.id) === Number(providerId),
@@ -113,7 +113,7 @@ App.Utils.CalendarSync = (function () {
 
                     App.Http.Google.disableProviderSync(provider.id);
 
-                    const $selectedOption = $selectFilterItem.find('option:selected');
+                    const $selectedOption = $selectFilterItem().find('option:selected');
 
                     $selectedOption.attr('google-sync', '0');
 
@@ -126,7 +126,7 @@ App.Utils.CalendarSync = (function () {
     }
 
     function selectGoogleCalendar() {
-        const providerId = $selectFilterItem.val();
+        const providerId = $selectFilterItem().val();
 
         App.Http.Google.getGoogleCalendars(providerId).done((googleCalendars) => {
             const $selectGoogleCalendar = $(`
@@ -163,12 +163,12 @@ App.Utils.CalendarSync = (function () {
     }
 
     function triggerGoogleSync() {
-        const providerId = $selectFilterItem.val();
+        const providerId = $selectFilterItem().val();
 
         App.Http.Google.syncWithGoogle(providerId)
             .done(() => {
                 App.Layouts.Backend.displayNotification(lang('calendar_sync_completed'));
-                $reloadAppointments.trigger('click');
+                $reloadAppointments().trigger('click');
             })
             .fail((jqXHR) => {
                 const serverMessage = jqXHR.responseJSON && jqXHR.responseJSON.message;
@@ -226,7 +226,7 @@ App.Utils.CalendarSync = (function () {
             {
                 text: lang('connect'),
                 click: (event, messageModal) => {
-                    const providerId = $selectFilterItem.val();
+                    const providerId = $selectFilterItem().val();
 
                     $messageModal.find('.is-invalid').removeClass('is-invalid');
 
@@ -269,7 +269,7 @@ App.Utils.CalendarSync = (function () {
                                 return;
                             }
 
-                            const $selectedOption = $selectFilterItem.find('option:selected');
+                            const $selectedOption = $selectFilterItem().find('option:selected');
 
                             $selectedOption.attr('caldav-sync', '1');
 
@@ -299,7 +299,7 @@ App.Utils.CalendarSync = (function () {
                 text: lang('confirm'),
                 click: (event, messageModal) => {
                     // Disable synchronization for selected provider.
-                    const providerId = $selectFilterItem.val();
+                    const providerId = $selectFilterItem().val();
 
                     const provider = vars('available_providers').find(
                         (availableProvider) => Number(availableProvider.id) === Number(providerId),
@@ -316,7 +316,7 @@ App.Utils.CalendarSync = (function () {
 
                     App.Http.Caldav.disableProviderSync(provider.id);
 
-                    const $selectedOption = $selectFilterItem.find('option:selected');
+                    const $selectedOption = $selectFilterItem().find('option:selected');
 
                     $selectedOption.attr('caldav-sync', '0');
 
@@ -329,12 +329,12 @@ App.Utils.CalendarSync = (function () {
     }
 
     function triggerCaldavSync() {
-        const providerId = $selectFilterItem.val();
+        const providerId = $selectFilterItem().val();
 
         App.Http.Caldav.syncWithCaldav(providerId)
             .done(() => {
                 App.Layouts.Backend.displayNotification(lang('calendar_sync_completed'));
-                $reloadAppointments.trigger('click');
+                $reloadAppointments().trigger('click');
             })
             .fail((jqXHR) => {
                 const serverMessage = jqXHR.responseJSON && jqXHR.responseJSON.message;
@@ -424,14 +424,18 @@ App.Utils.CalendarSync = (function () {
      * Initialize the module.
      */
     function initialize() {
-        $selectFilterItem.on('change', onSelectFilterItemChange);
-        $enableSync.on('click', onEnableSyncClick);
-        $disableSync.on('click', onDisableSyncClick);
-        $triggerSync.on('click', onTriggerSyncClick);
+        if (!$selectFilterItem().length) {
+            return;
+        }
+
+        $selectFilterItem().on('change', onSelectFilterItemChange);
+        $enableSync().on('click', onEnableSyncClick);
+        $disableSync().on('click', onDisableSyncClick);
+        $triggerSync().on('click', onTriggerSyncClick);
         updateSyncButtons();
     }
 
-    document.addEventListener('DOMContentLoaded', initialize);
+    App.page(initialize);
 
     return {
         initialize,

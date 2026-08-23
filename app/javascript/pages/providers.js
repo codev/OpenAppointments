@@ -45,10 +45,16 @@
             return;
         }
 
-        workingPlanManager = new App.Utils.WorkingPlan();
-        workingPlanManager.addEventListeners();
-        document.addEventListener('submit', serialise, true);
-        document.addEventListener('turbo:frame-load', load);
+        // One editor per session (shared with the other working plan page): its listeners are document level.
+        if (!App.Utils.workingPlanManager) {
+            App.Utils.workingPlanManager = new App.Utils.WorkingPlan();
+            App.Utils.workingPlanManager.addEventListeners();
+        }
+        workingPlanManager = App.Utils.workingPlanManager;
+        App.once('providers-page', () => {
+            document.addEventListener('submit', serialise, true);
+            document.addEventListener('turbo:frame-load', load);
+        });
         load();
 
         $(document).on('click', '#reset-working-plan', (event) => {
@@ -59,5 +65,5 @@
         });
     }
 
-    document.addEventListener('DOMContentLoaded', initialize);
+    App.page(initialize);
 })();

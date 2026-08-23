@@ -188,39 +188,41 @@ App.Components.EventModal = (function () {
             return;
         }
 
-        document.addEventListener('turbo:frame-load', onFrameLoad);
-        document.addEventListener('submit', serialiseRepeat, true);
-        document.addEventListener('submit', onSubmit, true);
+        App.once('event-modal', () => {
+            document.addEventListener('turbo:frame-load', onFrameLoad);
+            document.addEventListener('submit', serialiseRepeat, true);
+            document.addEventListener('submit', onSubmit, true);
 
-        $(document).on('change', '#select-service', () => updateProviders(true));
-        $(document).on('change', '#select-provider, #unavailability-provider', updateTimezone);
-        $(document).on('click', '#select-customer', () => toggleCustomerList(!$('#existing-customers-list').is(':visible')));
-        $(document).on('click', '#existing-customers-list div', (event) => {
-            fillCustomer(JSON.parse(event.currentTarget.dataset.customer));
-            toggleCustomerList(false);
-        });
-        $(document).on('keyup', '#filter-existing-customers', (event) => searchCustomers(event.target.value));
-        $(document).on('click', '#new-customer', () => fillCustomer({}));
+            $(document).on('change', '#select-service', () => updateProviders(true));
+            $(document).on('change', '#select-provider, #unavailability-provider', updateTimezone);
+            $(document).on('click', '#select-customer', () => toggleCustomerList(!$('#existing-customers-list').is(':visible')));
+            $(document).on('click', '#existing-customers-list div', (event) => {
+                fillCustomer(JSON.parse(event.currentTarget.dataset.customer));
+                toggleCustomerList(false);
+            });
+            $(document).on('keyup', '#filter-existing-customers', (event) => searchCustomers(event.target.value));
+            $(document).on('click', '#new-customer', () => fillCustomer({}));
 
-        // Toolbar: new appointment / unavailability for the filtered provider or service.
-        $(document).on('click', '#insert-appointment', (event) => {
-            event.preventDefault();
-            const $filter = $('#select-filter-item, #filter-provider').first();
-            const type = $filter.find('option:selected').attr('type') || ($filter.is('#filter-provider') ? 'provider' : '');
-            const params = new URLSearchParams();
-            if (type === 'provider' && $filter.val()) params.set('provider_id', $filter.val());
-            if (type === 'service' && $filter.val()) params.set('service_id', $filter.val());
-            open('appointments/new?' + params.toString());
-        });
-        $(document).on('click', '#insert-unavailability', (event) => {
-            event.preventDefault();
-            const $filter = $('#select-filter-item, #filter-provider').first();
-            const providerId = $filter.find('option:selected').attr('type') === 'provider' || $filter.is('#filter-provider') ? $filter.val() : '';
-            open('unavailabilities/new' + (providerId ? '?provider_id=' + providerId : ''));
+            // Toolbar: new appointment / unavailability for the filtered provider or service.
+            $(document).on('click', '#insert-appointment', (event) => {
+                event.preventDefault();
+                const $filter = $('#select-filter-item, #filter-provider').first();
+                const type = $filter.find('option:selected').attr('type') || ($filter.is('#filter-provider') ? 'provider' : '');
+                const params = new URLSearchParams();
+                if (type === 'provider' && $filter.val()) params.set('provider_id', $filter.val());
+                if (type === 'service' && $filter.val()) params.set('service_id', $filter.val());
+                open('appointments/new?' + params.toString());
+            });
+            $(document).on('click', '#insert-unavailability', (event) => {
+                event.preventDefault();
+                const $filter = $('#select-filter-item, #filter-provider').first();
+                const providerId = $filter.find('option:selected').attr('type') === 'provider' || $filter.is('#filter-provider') ? $filter.val() : '';
+                open('unavailabilities/new' + (providerId ? '?provider_id=' + providerId : ''));
+            });
         });
     }
 
-    document.addEventListener('DOMContentLoaded', initialize);
+    App.page(initialize);
 
     return {open, reportSkipped};
 })();

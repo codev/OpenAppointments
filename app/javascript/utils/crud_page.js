@@ -14,8 +14,11 @@
         const resource = $page.find('turbo-frame').first().attr('id');
 
         // backend.scss shows the details only while the page is "editing".
-        document.addEventListener('turbo:frame-load', () => {
-            $page.toggleClass('editing', $page.find('.crud-form').length > 0);
+        App.once('crud-page', () => {
+            document.addEventListener('turbo:frame-load', () => {
+                const $current = $('[data-crud-page]');
+                $current.toggleClass('editing', $current.find('.crud-form').length > 0);
+            });
         });
 
         $page.on('change', 'input[type=file][accept^="image/"]', (event) => {
@@ -41,5 +44,5 @@
         );
     }
 
-    document.addEventListener('DOMContentLoaded', initialize);
+    App.page(initialize);
 })();

@@ -56,14 +56,16 @@
             return;
         }
 
-        $(document).on('click', '#reload-appointments', reloadDay);
-        $(document).on('click', '#toggle-series', () => showSeriesView($('#series-view').hasClass('d-none')));
-        $(document).on('click', '#series-table .series-edit', (event) => openPattern($(event.currentTarget).data('id')));
-        $(document).on('click', '#series-pattern-save', savePattern);
-        document.addEventListener('turbo:frame-load', (event) => {
-            if (event.target.id === 'day_view') {
-                tippy('[data-tippy-content]');
-            }
+        App.once('appointments-page', () => {
+            $(document).on('click', '#reload-appointments', reloadDay);
+            $(document).on('click', '#toggle-series', () => showSeriesView($('#series-view').hasClass('d-none')));
+            $(document).on('click', '#series-table .series-edit', (event) => openPattern($(event.currentTarget).data('id')));
+            $(document).on('click', '#series-pattern-save', savePattern);
+            document.addEventListener('turbo:frame-load', (event) => {
+                if (event.target.id === 'day_view') {
+                    tippy('[data-tippy-content]');
+                }
+            });
         });
 
         if (vars('edit_appointment')) {
@@ -75,5 +77,5 @@
         }
     }
 
-    document.addEventListener('DOMContentLoaded', initialize);
+    App.page(initialize);
 })();

@@ -111,33 +111,35 @@ App.Components.CustomerMessages = (function () {
             return;
         }
 
-        $document.on('click', '#send-message', send);
-        $document.on('keydown', '#message-body', (event) => {
-            if (event.key === 'Enter') {
-                event.preventDefault();
-                send();
-            }
-        });
-        $document.on('click', '#mark-all-read', () => {
-            App.Http.CustomerMessages.markRead(customerId()).done((response) => {
-                App.Utils.MarkRead.updateHeaderBadge(response.inbox_unread);
-                decreaseUnreadBadge(0);
-                panel().find('.message-unread').removeClass('message-unread fw-bold').find('.mark-read').remove();
-                $('#mark-all-read').addClass('d-none');
+        App.once('customer-messages', () => {
+            $document.on('click', '#send-message', send);
+            $document.on('keydown', '#message-body', (event) => {
+                if (event.key === 'Enter') {
+                    event.preventDefault();
+                    send();
+                }
             });
-        });
-        $document.on('click', '#customer-messages .mark-read', () => {
-            decreaseUnreadBadge(1);
-            if (panel().find('.message-unread').length <= 1) {
-                $('#mark-all-read').addClass('d-none');
-            }
-        });
+            $document.on('click', '#mark-all-read', () => {
+                App.Http.CustomerMessages.markRead(customerId()).done((response) => {
+                    App.Utils.MarkRead.updateHeaderBadge(response.inbox_unread);
+                    decreaseUnreadBadge(0);
+                    panel().find('.message-unread').removeClass('message-unread fw-bold').find('.mark-read').remove();
+                    $('#mark-all-read').addClass('d-none');
+                });
+            });
+            $document.on('click', '#customer-messages .mark-read', () => {
+                decreaseUnreadBadge(1);
+                if (panel().find('.message-unread').length <= 1) {
+                    $('#mark-all-read').addClass('d-none');
+                }
+            });
 
-        document.addEventListener('turbo:frame-load', load);
+            document.addEventListener('turbo:frame-load', load);
+        });
         load();
     }
 
-    document.addEventListener('DOMContentLoaded', initialize);
+    App.page(initialize);
 
     return {load};
 })();

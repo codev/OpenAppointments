@@ -18,7 +18,7 @@
 
     $(document).on('input change', '#messages-smsgateway-url, #messages-smsgateway-login, #messages-smsgateway-password', update);
     document.addEventListener('turbo:frame-load', update);
-    document.addEventListener('DOMContentLoaded', update);
+    App.page(update);
 
     $(document).on('click', '#smsgateway-send-test', () => {
         $.post(App.Utils.Url.siteUrl('messages_smsgateway_settings/test_sms'), {

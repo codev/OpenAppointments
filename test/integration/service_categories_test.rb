@@ -18,10 +18,14 @@ class ServiceCategoriesTest < ActionDispatch::IntegrationTest
     fixture_file_upload("picture.png", "image/png")
   end
 
-  test "the backend layout loads Turbo with Drive off" do
+  test "the backend layout loads Turbo (Drive on) from the head, with tracked scripts" do
     login_admin
     get "/service_categories"
-    assert_select "script[type=module]", text: /import \{ Turbo \} from ".*turbo.*\.js".*Turbo\.session\.drive = false/m
+    assert_select "head script[type=module][data-turbo-track=reload]", text: /import \{ Turbo \} from ".*turbo.*\.js"/m
+    assert_no_match(/drive = false/, response.body)
+    assert_select "head script[src*='vendor/jquery'][data-turbo-track=reload]"
+    assert_select "head script[src*='utils/crud_page']:not([data-turbo-track])"
+    assert_select "body script[src]", count: 0
   end
 
   test "index lists the categories in a frame with rows linking to edit" do

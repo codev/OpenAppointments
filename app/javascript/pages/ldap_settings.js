@@ -15,13 +15,13 @@
  * This module implements the functionality of the LDAP settings page.
  */
 App.Pages.LdapSettings = (function () {
-    const $searchForm = $('#ldap-search-form');
-    const $searchKeyword = $('#ldap-search-keyword');
-    const $searchResults = $('#ldap-search-results');
-    const $ldapFilter = $('#ldap-filter');
-    const $ldapFieldMapping = $('#ldap-field-mapping');
-    const $resetFilter = $('#ldap-reset-filter');
-    const $resetFieldMapping = $('#ldap-reset-field-mapping');
+    const $searchForm = () => $('#ldap-search-form');
+    const $searchKeyword = () => $('#ldap-search-keyword');
+    const $searchResults = () => $('#ldap-search-results');
+    const $ldapFilter = () => $('#ldap-filter');
+    const $ldapFieldMapping = () => $('#ldap-field-mapping');
+    const $resetFilter = () => $('#ldap-reset-filter');
+    const $resetFieldMapping = () => $('#ldap-reset-field-mapping');
 
     /**
      * Prepare an array of setting values based on the UI form.
@@ -44,7 +44,7 @@ App.Pages.LdapSettings = (function () {
     }
 
     function getLdapFieldMapping() {
-        const jsonLdapFieldMapping = $ldapFieldMapping.val();
+        const jsonLdapFieldMapping = $ldapFieldMapping().val();
         return JSON.parse(jsonLdapFieldMapping);
     }
 
@@ -63,24 +63,24 @@ App.Pages.LdapSettings = (function () {
      * Search the LDAP server based on a keyword.
      */
     function searchServer() {
-        $searchResults.empty();
+        $searchResults().empty();
 
-        const keyword = $searchKeyword.val();
+        const keyword = $searchKeyword().val();
 
         if (!keyword) {
             return;
         }
 
         $.post(App.Utils.Url.siteUrl('ldap_settings/search'), {csrf_token: vars('csrf_token'), keyword}).done((entries) => {
-            $searchResults.empty();
+            $searchResults().empty();
 
             if (!entries?.length) {
-                renderNoRecordsFound().appendTo($searchResults);
+                renderNoRecordsFound().appendTo($searchResults());
                 return;
             }
 
             entries.forEach((entry) => {
-                renderEntry(entry).appendTo($searchResults);
+                renderEntry(entry).appendTo($searchResults());
             });
         });
     }
@@ -89,7 +89,7 @@ App.Pages.LdapSettings = (function () {
      * Set the field value back to the original state.
      */
     function onResetFilterClick() {
-        $ldapFilter.val(vars('ldap_default_filter'));
+        $ldapFilter().val(vars('ldap_default_filter'));
     }
 
     /**
@@ -98,7 +98,7 @@ App.Pages.LdapSettings = (function () {
     function onResetFieldMappingClick() {
         const defaultFieldMapping = vars('ldap_default_field_mapping');
         const jsonDefaultFieldMapping = JSON.stringify(defaultFieldMapping, null, 2);
-        $ldapFieldMapping.val(jsonDefaultFieldMapping);
+        $ldapFieldMapping().val(jsonDefaultFieldMapping);
     }
 
     /**
@@ -175,14 +175,14 @@ App.Pages.LdapSettings = (function () {
      * Initialize the module.
      */
     function initialize() {
-        $resetFilter.on('click', onResetFilterClick);
-        $resetFieldMapping.on('click', onResetFieldMappingClick);
-        $searchForm.on('submit', onSearchFormSubmit);
-        $searchResults.on('click', '.ldap-import', onLdapImportClick);
+        $resetFilter().on('click', onResetFilterClick);
+        $resetFieldMapping().on('click', onResetFieldMappingClick);
+        $searchForm().on('submit', onSearchFormSubmit);
+        $searchResults().on('click', '.ldap-import', onLdapImportClick);
 
     }
 
-    document.addEventListener('DOMContentLoaded', initialize);
+    App.page(initialize);
 
     return {};
 })();

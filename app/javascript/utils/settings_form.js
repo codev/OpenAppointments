@@ -29,5 +29,5 @@
 
     $(document).on('change input', '[data-field]', update);
     document.addEventListener('turbo:frame-load', update);
-    document.addEventListener('DOMContentLoaded', update);
+    App.page(update);
 })();

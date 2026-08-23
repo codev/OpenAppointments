@@ -15,10 +15,10 @@
  * This module implements the backend layout functionality.
  */
 window.App.Layouts.Backend = (function () {
-    const $selectLanguage = $('#select-language');
-    const $notification = $('#notification');
-    const $loading = $('#loading');
-    const $footer = $('#footer');
+    const $selectLanguage = () => $('#select-language');
+    const $notification = () => $('#notification');
+    const $loading = () => $('#loading');
+    const $footer = () => $('#footer');
 
     const DB_SLUG_ADMIN = 'admin';
     const DB_SLUG_PROVIDER = 'provider';
@@ -82,24 +82,51 @@ window.App.Layouts.Backend = (function () {
     }
 
     /**
-     * Warn before leaving a page with unsaved changes: a CRUD page in add/edit mode
-     * (its save/cancel buttons are showing) or a settings page edited since the last save.
-     * The browser shows its own dialog, the text cannot be customised.
+     * Warn before leaving a settings page edited since its last save, or a CRUD
+     * page with a record open. Turbo visits ask through the app dialog; a full
+     * navigation gets the browser's own (its text cannot be customised).
      */
-    function guardUnsavedChanges() {
-        const isSettingsPage = $('#save-settings').length > 0;
-        let settingsDirty = false;
+    let settingsDirty = false;
 
-        $(document).on('input change', '.backend-page :input', () => {
-            settingsDirty = isSettingsPage;
+    function unsaved() {
+        return settingsDirty || $('.crud-form').length > 0;
+    }
+
+    function guardUnsavedChanges() {
+        $(document).on('input change', '#settings-form :input, #account-form :input', () => {
+            settingsDirty = true;
         });
 
-        $(document).on('click', '#save-settings', () => {
+        $(document).on('submit', '#settings-form, #account-form', () => {
             settingsDirty = false;
         });
 
+        document.addEventListener('turbo:load', () => {
+            settingsDirty = false;
+        });
+
+        document.addEventListener('turbo:before-visit', (event) => {
+            // The dialog strings are pending (proposed-strings.txt); without them the visit proceeds.
+            if (!unsaved() || lang('unsaved_changes_prompt') === 'unsaved_changes_prompt') {
+                return;
+            }
+
+            event.preventDefault();
+            App.Utils.Message.show(lang('settings'), lang('unsaved_changes_prompt'), [
+                {text: lang('cancel'), click: (e, modal) => modal.hide()},
+                {
+                    text: lang('leave_page'),
+                    click: (e, modal) => {
+                        modal.hide();
+                        settingsDirty = false;
+                        Turbo.visit(event.detail.url);
+                    },
+                },
+            ]);
+        });
+
         window.addEventListener('beforeunload', (event) => {
-            if (settingsDirty || $('.save-cancel-group:visible').length) {
+            if (unsaved()) {
                 event.preventDefault();
                 event.returnValue = '';
             }
@@ -107,25 +134,20 @@ window.App.Layouts.Backend = (function () {
     }
 
     /**
-     * Initialize the module.
+     * Session wide listeners once; per page: tooltips and the language menu.
      */
     function initialize() {
-        guardUnsavedChanges();
-
-        $(document).ajaxStart(() => {
-            $loading.show();
-        });
-
-        $(document).ajaxStop(() => {
-            $loading.hide();
+        App.once('backend-layout', () => {
+            guardUnsavedChanges();
+            $(document).ajaxStart(() => $loading().show());
+            $(document).ajaxStop(() => $loading().hide());
         });
 
         tippy('[data-tippy-content]');
-
-        App.Utils.Lang.enableLanguageSelection($selectLanguage);
+        App.Utils.Lang.enableLanguageSelection($selectLanguage());
     }
 
-    document.addEventListener('DOMContentLoaded', initialize);
+    document.addEventListener('turbo:load', initialize);
 
     return {
         DB_SLUG_ADMIN,

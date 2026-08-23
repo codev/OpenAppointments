@@ -5,21 +5,21 @@
  * accessibility check (split out of the general settings page).
  */
 App.Pages.ThemeSettings = (function () {
-    const $companyColor = $('#company-color');
-    const $secondaryColor = $('#company-secondary-color');
-    const $backgroundColor = $('#company-background-color');
-    const $theme = $('#theme');
-    const $colorAccessibility = $('#color-accessibility');
-    const $themeCards = $('#theme-cards');
+    const $companyColor = () => $('#company-color');
+    const $secondaryColor = () => $('#company-secondary-color');
+    const $backgroundColor = () => $('#company-background-color');
+    const $theme = () => $('#theme');
+    const $colorAccessibility = () => $('#color-accessibility');
+    const $themeCards = () => $('#theme-cards');
 
     let previewRefreshTimeout;
 
     function previewUrl(theme) {
         const query = new URLSearchParams({
             theme: theme,
-            primary: $companyColor.val() || '',
-            secondary: $secondaryColor.val() || '',
-            background: $backgroundColor.val() || '',
+            primary: $companyColor().val() || '',
+            secondary: $secondaryColor().val() || '',
+            background: $backgroundColor().val() || '',
         });
 
         return App.Utils.Url.siteUrl('theme_settings/preview') + '?' + query.toString();
@@ -31,22 +31,22 @@ App.Pages.ThemeSettings = (function () {
     function refreshThemePreviews() {
         clearTimeout(previewRefreshTimeout);
         previewRefreshTimeout = setTimeout(() => {
-            $themeCards.find('.theme-preview-frame').each((index, frame) => {
+            $themeCards().find('.theme-preview-frame').each((index, frame) => {
                 frame.src = previewUrl($(frame).data('theme'));
             });
         }, 250);
     }
 
     function markSelectedThemeCard() {
-        $themeCards
+        $themeCards()
             .find('.theme-card')
             .removeClass('selected')
-            .filter('[data-theme="' + $theme.val() + '"]')
+            .filter('[data-theme="' + $theme().val() + '"]')
             .addClass('selected');
     }
 
     function onThemeCardSelect(event) {
-        $theme.val($(event.currentTarget).data('theme'));
+        $theme().val($(event.currentTarget).data('theme'));
         markSelectedThemeCard();
     }
 
@@ -55,14 +55,14 @@ App.Pages.ThemeSettings = (function () {
      * suggestions when a pairing is hard to read.
      */
     function evaluateColorAccessibility() {
-        if (!$colorAccessibility.length) {
+        if (!$colorAccessibility().length) {
             return;
         }
 
         const contrast = App.Utils.Contrast;
-        const primary = $companyColor.val() || '#39824f';
-        const secondary = $secondaryColor.val() || '#dd2a5c';
-        const background = $backgroundColor.val() || '#f2f6fa';
+        const primary = $companyColor().val() || '#39824f';
+        const secondary = $secondaryColor().val() || '#dd2a5c';
+        const background = $backgroundColor().val() || '#f2f6fa';
         const bodyText = '#212529';
 
         const checks = [
@@ -74,10 +74,10 @@ App.Pages.ThemeSettings = (function () {
 
         const warnings = checks.filter((check) => check.ratio < contrast.AA_NORMAL);
 
-        $colorAccessibility.empty();
+        $colorAccessibility().empty();
 
         if (!warnings.length) {
-            $colorAccessibility.append(
+            $colorAccessibility().append(
                 $('<div/>', {'class': 'alert alert-success py-2 small mb-0', 'text': lang('color_contrast_ok')}),
             );
             return;
@@ -89,7 +89,7 @@ App.Pages.ThemeSettings = (function () {
             $alert.append($('<div/>', {'text': warning.message + ' (' + warning.ratio.toFixed(1) + ':1)'}));
         });
 
-        $colorAccessibility.append($alert);
+        $colorAccessibility().append($alert);
     }
 
     /**
@@ -98,16 +98,16 @@ App.Pages.ThemeSettings = (function () {
      */
     function onApplySuggestedColorsClick(event) {
         const suggestions = vars('theme_suggestions') || {};
-        const palettes = suggestions[$theme.val()] || [];
+        const palettes = suggestions[$theme().val()] || [];
         const suggestion = palettes[Number($(event.currentTarget).data('palette')) || 0];
 
         if (!suggestion) {
             return;
         }
 
-        $companyColor.val(suggestion.primary);
-        $secondaryColor.val(suggestion.secondary);
-        $backgroundColor.val(suggestion.background);
+        $companyColor().val(suggestion.primary);
+        $secondaryColor().val(suggestion.secondary);
+        $backgroundColor().val(suggestion.background);
 
         evaluateColorAccessibility();
         refreshThemePreviews();
@@ -121,16 +121,16 @@ App.Pages.ThemeSettings = (function () {
 
         $('.apply-suggested-colors').on('click', onApplySuggestedColorsClick);
 
-        $companyColor
-            .add($secondaryColor)
-            .add($backgroundColor)
+        $companyColor()
+            .add($secondaryColor())
+            .add($backgroundColor())
             .on('input change', () => {
                 evaluateColorAccessibility();
                 refreshThemePreviews();
             });
 
-        $themeCards.on('click', '.theme-card', onThemeCardSelect);
-        $themeCards.on('keydown', '.theme-card', (event) => {
+        $themeCards().on('click', '.theme-card', onThemeCardSelect);
+        $themeCards().on('keydown', '.theme-card', (event) => {
             if (event.key === 'Enter' || event.key === ' ') {
                 event.preventDefault();
                 onThemeCardSelect(event);
@@ -142,7 +142,7 @@ App.Pages.ThemeSettings = (function () {
         refreshThemePreviews();
     }
 
-    document.addEventListener('DOMContentLoaded', initialize);
+    App.page(initialize);
 
     return {};
 })();

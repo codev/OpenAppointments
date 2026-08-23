@@ -16,9 +16,9 @@ App.Utils.CalendarEvents = (function () {
 
     const DATETIME = 'YYYY-MM-DD HH:mm:ss';
 
-    const $calendarPage = $('#calendar-page');
-    const $notification = $('#notification');
-    const $unavailabilitiesModal = $('#unavailabilities-modal');
+    const $calendarPage = () => $('#calendar-page');
+    const $notification = () => $('#notification');
+    const $unavailabilitiesModal = () => $('#unavailabilities-modal');
 
     const moment = window.moment;
 
@@ -126,10 +126,10 @@ App.Utils.CalendarEvents = (function () {
      */
     function configure(reloadFunction) {
         reload = reloadFunction;
-        $calendarPage.on('click', '.close-popover', closePopover);
-        $calendarPage.on('click', '.edit-popover', onEditPopoverClick);
-        $calendarPage.on('click', '.delete-popover', onDeletePopoverClick);
-        $calendarPage.on('click', '.cancel-popover', onCancelPopoverClick);
+        $calendarPage().on('click', '.close-popover', closePopover);
+        $calendarPage().on('click', '.edit-popover', onEditPopoverClick);
+        $calendarPage().on('click', '.delete-popover', onDeletePopoverClick);
+        $calendarPage().on('click', '.cancel-popover', onCancelPopoverClick);
     }
 
     /**
@@ -306,7 +306,7 @@ App.Utils.CalendarEvents = (function () {
         $target.popover('show');
         $popoverTarget = $target;
 
-        const $popover = $calendarPage.find('.popover');
+        const $popover = $calendarPage().find('.popover');
         if ($popover.length && $popover.position().top < 200) {
             $popover.css('top', '200px');
         }
@@ -356,8 +356,8 @@ App.Utils.CalendarEvents = (function () {
             return false;
         }
 
-        if ($notification.is(':visible')) {
-            $notification.hide('bind');
+        if ($notification().is(':visible')) {
+            $notification().hide('bind');
         }
 
         return true;
@@ -433,7 +433,7 @@ App.Utils.CalendarEvents = (function () {
                         apply(appointment, negate);
                         apply(eventData, negate);
                         App.Http.Calendar.saveAppointment(appointment, null, null, null, notifyUsers).done(() =>
-                            $notification.hide('blind'),
+                            $notification().hide('blind'),
                         );
                         info.revert();
                     },
@@ -496,7 +496,7 @@ App.Utils.CalendarEvents = (function () {
                         unavailability.end_datetime = shift(unavailability.end_datetime, negate(deltas.end));
                         eventData.start_datetime = unavailability.start_datetime;
                         eventData.end_datetime = unavailability.end_datetime;
-                        App.Http.Calendar.saveUnavailability(unavailability).done(() => $notification.hide('blind'));
+                        App.Http.Calendar.saveUnavailability(unavailability).done(() => $notification().hide('blind'));
                         info.revert();
                     },
                 },

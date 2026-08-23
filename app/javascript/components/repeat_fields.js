@@ -117,7 +117,7 @@ App.Components.RepeatFields = (function () {
         });
     }
 
-    document.addEventListener('DOMContentLoaded', initialize);
+    App.page(initialize);
     document.addEventListener('turbo:frame-load', setup);
 
     return {read, reset, load, refresh, setup};

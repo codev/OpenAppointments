@@ -76,11 +76,13 @@ App.Components.AppointmentStatusOptions = (function () {
     }
 
     function initialize() {
-        $(document).on('click', '.delete-appointment-status-option', onDeleteAppointmentStatusOptionClick);
-        $(document).on('click', '.add-appointment-status-option', onAddAppointmentStatusOptionClick);
+        App.once('appointment-status-options', () => {
+            $(document).on('click', '.delete-appointment-status-option', onDeleteAppointmentStatusOptionClick);
+            $(document).on('click', '.add-appointment-status-option', onAddAppointmentStatusOptionClick);
+        });
     }
 
-    document.addEventListener('DOMContentLoaded', initialize);
+    App.page(initialize);
 
     return {
         getOptions,

@@ -29,7 +29,7 @@
 
     $(document).on('change', '#turnstile-site-key', renderTurnstileTest);
     document.addEventListener('turbo:frame-load', renderTurnstileTest);
-    document.addEventListener('DOMContentLoaded', renderTurnstileTest);
+    App.page(renderTurnstileTest);
 
     $(document).on('click', '#generate-hmac-key', () => {
         $.post(App.Utils.Url.siteUrl('altcha_settings/generate_key'), {csrf_token: vars('csrf_token')}).done((response) => {

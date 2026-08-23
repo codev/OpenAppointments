@@ -14,7 +14,7 @@
     }
 
     document.addEventListener('turbo:frame-load', (event) => schedule(event.target));
-    document.addEventListener('DOMContentLoaded', () => {
+    document.addEventListener('turbo:load', () => {
         document.querySelectorAll('turbo-frame[data-poll-every]').forEach(schedule);
     });
 })();
