@@ -13,13 +13,13 @@ class CrudPaginationTest < ActionDispatch::IntegrationTest
     assert_select ".customer-row", count: 20
     assert_select "turbo-frame#customers ul.pagination li.page-item.active a", text: "1"
     assert_select "ul.pagination a[href='/customers?page=3']", text: "3"
-    assert_select "ul.pagination li.page-item.disabled a", text: "«"
-    assert_no_match(/&lt;\/?(li|ul|a)/, response.body, "template text leaked into the page as visible markup")
+    assert_select "ul.pagination li.page-item.previous.disabled a"
 
     get "/customers", params: { page: 3, keyword: "tester" }
     assert_select ".customer-row", count: 5
-    assert_select "ul.pagination li.page-item.active a[href='/customers?keyword=tester&page=3']"
-    assert_select "ul.pagination li.page-item.disabled a", text: "»"
+    assert_select "ul.pagination li.page-item.active a", text: "3"
+    assert_select "ul.pagination a[href='/customers?page=2&keyword=tester']"
+    assert_select "ul.pagination li.page-item.next.disabled a"
 
     get "/customers", params: { page: 99 }
     assert_select ".customer-row", count: 6

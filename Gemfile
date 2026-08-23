@@ -5,6 +5,7 @@ gem "rails", "~> 8.1.3"
 # The modern asset pipeline for Rails [https://github.com/rails/propshaft]
 gem "propshaft"
 gem "turbo-rails", "~> 2.0" # Turbo Frames on the converted admin pages
+gem "pagy" # admin list paging
 # Use sqlite3 as the database for Active Record
 gem "sqlite3", ">= 2.1"
 # Use the Puma web server [https://github.com/puma/puma]

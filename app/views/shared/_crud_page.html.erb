@@ -56,7 +56,9 @@
                         </div>
                         <hr>
                     <% end %>
-                    <%= render "shared/pagination", page: @page, page_count: @page_count, keyword: keyword if @page_count.to_i > 1 %>
+                    <% if @pagy && @pagy.last > 1 %>
+                        <%= raw @pagy.series_nav(:bootstrap, classes: "pagination pagination-sm justify-content-center mt-3 mb-0") %>
+                    <% end %>
                 </div>
             </div>
 

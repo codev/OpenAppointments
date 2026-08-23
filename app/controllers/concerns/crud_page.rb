@@ -8,6 +8,7 @@ module CrudPage
 
   included do
     include BackendPage
+    include Pagy::Method
     layout "backend"
 
     before_action :require_session, except: [ :index ]
@@ -76,20 +77,20 @@ module CrudPage
     render :index, status: status
   end
 
-  # PAGE[:per_page] windows the list (old pages used 20); without it the whole
-  # list renders, as the drag-to-reorder pages need. The selected record's page
-  # is used when no page is asked for, so a saved record stays in view.
+  # PAGE[:per_page] windows the list with Pagy (old pages used 20); without it
+  # the whole list renders, as the drag-to-reorder pages need. The selected
+  # record's page is used when no page is asked for, so a saved record stays in
+  # view; out of range pages clamp to the last.
   def paginate(records)
     per_page = self.class::PAGE[:per_page]
     return records unless per_page
 
     ids = records.is_a?(Array) ? records.map(&:id) : records.unscope(:includes, :preload).pluck(:id)
-    @page = params[:page].to_i
-    @page = (ids.index(@record.id) || 0) / per_page + 1 if @page < 1 && @record&.persisted?
-    @page_count = [ (ids.length + per_page - 1) / per_page, 1 ].max
-    @page = @page.clamp(1, @page_count)
-    offset = (@page - 1) * per_page
-    records.is_a?(Array) ? records.slice(offset, per_page) || [] : records.offset(offset).limit(per_page)
+    page = params[:page].to_i
+    page = (ids.index(@record.id) || 0) / per_page + 1 if page < 1 && @record&.persisted?
+    page = page.clamp(1, [ (ids.length + per_page - 1) / per_page, 1 ].max)
+    @pagy, records = pagy(:offset, records, limit: per_page, page: page, count: ids.length)
+    records
   end
 
   def save_record
