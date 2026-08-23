@@ -24,15 +24,11 @@ class PicturesTest < ActionDispatch::IntegrationTest
     assert_not zane.reload.picture.attached?
   end
 
-  test "service and category picture upload" do
+  test "service picture upload" do
     login_admin
     post "/services/#{services(:haircut).id}/picture", params: { picture: png }
     assert_response :success
     assert services(:haircut).reload.picture.attached?
-
-    post "/service_categories/#{service_categories(:hair).id}/picture", params: { picture: png }
-    assert_response :success
-    assert service_categories(:hair).reload.picture.attached?
   end
 
   test "non-image uploads are rejected" do

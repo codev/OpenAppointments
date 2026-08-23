@@ -552,7 +552,11 @@ App.Pages.Services = (function () {
      * Use this method every time a change is made to the service categories db table.
      */
     function updateAvailableServiceCategories() {
-        App.Http.ServiceCategories.search('', 999).then((response) => {
+        $.post(App.Utils.Url.siteUrl('service_categories/search'), {
+            csrf_token: vars('csrf_token'),
+            keyword: '',
+            limit: 999,
+        }).then((response) => {
             $serviceCategoryId.empty();
 
             $serviceCategoryId.append(new Option('', '')).val('');

@@ -1,114 +1,54 @@
-<%# Port of EA pages/service_categories.php. %>
-<div class="container backend-page py-3" id="service-categories-page">
+<%# Service categories: list + detail form in nested Turbo Frames. The outer frame
+    reloads after save/delete/sort/filter; the inner one swaps the form on row click. %>
+<div class="container backend-page py-3" id="service-categories-page" data-turbo="true">
+    <turbo-frame id="service_categories">
+        <% if notice %>
+            <div class="alert alert-success"><%= notice %></div>
+        <% end %>
 
-    <div class="row" id="service-categories">
-        <div id="filter-service-categories" class="filter-records column col-12 mb-4">
-            <button id="add-service-category" class="btn btn-primary add-record-btn mb-4">
-                <i class="fas fa-plus-square me-2"></i>
-                <%= lang('add') %>
-            </button>
+        <div class="row" id="service-categories">
+            <div id="filter-service-categories" class="filter-records column col-12 col-md-5 mb-4">
+                <%= link_to new_service_category_path, id: "add-service-category",
+                            class: "btn btn-primary add-record-btn mb-4",
+                            data: { turbo_frame: "service_category" } do %>
+                    <i class="fas fa-plus-square me-2"></i>
+                    <%= lang('add') %>
+                <% end %>
 
-            <form class="input-append mb-4">
-                <div class="input-group">
-                    <input type="text" class="key form-control" aria-label="keyword">
+                <%= form_with url: service_categories_path, method: :get, class: "input-append mb-4" do |f| %>
+                    <div class="input-group">
+                        <%= f.text_field :keyword, value: @keyword, class: "key form-control", "aria-label": "keyword" %>
+                        <button class="filter btn btn-outline-secondary" type="submit"
+                                data-tippy-content="<%= lang('filter') %>">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                <% end %>
 
-                    <button class="filter btn btn-outline-secondary" type="submit"
-                            data-tippy-content="<%= lang('filter') %>">
-                        <i class="fas fa-search"></i>
-                    </button>
+                <h4 class="mb-3 fw-light"><%= lang('service_categories') %></h4>
+
+                <div class="d-flex justify-content-between align-items-center mb-2">
+                    <small class="text-muted me-2"><%= lang('drag_to_reorder') %></small>
+                    <%= button_to lang('sort_alphabetically'), "/service_categories/sort_alphabetically",
+                                  class: "btn btn-outline-secondary btn-sm sort-alphabetically text-nowrap",
+                                  form: { data: { turbo_confirm: lang('sort_alphabetically_confirm') } } %>
                 </div>
-            </form>
 
-            <h4 class="mb-3 fw-light">
-                <%= lang('service_categories') %>
-            </h4>
-
-            <div class="d-flex justify-content-between align-items-center mb-2">
-                <small class="text-muted me-2"><%= lang('drag_to_reorder') %></small>
-                <button type="button" class="btn btn-outline-secondary btn-sm sort-alphabetically text-nowrap">
-                    <%= lang('sort_alphabetically') %>
-                </button>
+                <div class="results overflow-auto" data-keyword="<%= @keyword %>">
+                    <%= render "list", categories: @categories, selected: @category %>
+                </div>
             </div>
-            <div class="results overflow-auto">
-                <!-- JS -->
+
+            <div class="record-details col-12 col-md-7 mb-4">
+                <h4 class="mb-3 fw-light"><%= lang('details') %></h4>
+                <turbo-frame id="service_category">
+                    <%= render "form", category: @category %>
+                </turbo-frame>
             </div>
         </div>
-
-        <div class="record-details col-12 mb-4">
-            <div class="btn-toolbar mb-4">
-                <div class="add-edit-delete-group btn-group">
-                    <button id="edit-service-category" class="btn btn-outline-secondary" disabled="disabled">
-                        <i class="fas fa-edit me-2"></i>
-                        <%= lang('edit') %>
-                    </button>
-                </div>
-
-                <div class="save-cancel-group" style="display:none;">
-                    <button id="save-service-category" class="btn btn-primary">
-                        <i class="fas fa-check-square me-2"></i>
-                        <%= lang('save') %>
-                    </button>
-                    <button id="cancel-service-category" class="btn btn-outline-secondary">
-                        <%= lang('cancel') %>
-                    </button>
-                    <button id="delete-service-category" class="btn btn-outline-danger ms-2">
-                        <i class="fas fa-trash-alt me-2"></i>
-                        <%= lang('delete') %>
-                    </button>
-                </div>
-
-            </div>
-
-            <h4 class="mb-3 fw-light">
-                <%= lang('details') %>
-            </h4>
-
-            <div class="form-message alert" style="display:none;"></div>
-
-            <input type="hidden" id="id">
-
-            <div class="mb-3">
-                <label class="form-label" for="name">
-                    <%= lang('name') %>
-                    <span class="text-danger" hidden>*</span>
-                </label>
-                <input id="name" class="form-control required" disabled>
-            </div>
-
-            <div class="mb-3 record-picture">
-                <label class="form-label d-block"><%= lang('picture') %></label>
-                <img id="picture-preview" class="img-thumbnail mb-2 d-none" style="max-height: 120px;" alt="">
-                <input type="file" id="picture-input" class="form-control mb-2"
-                       accept="image/png,image/jpeg,image/gif,image/webp" disabled>
-                <button type="button" id="picture-remove" class="btn btn-outline-danger btn-sm d-none">
-                    <%= lang('remove_picture') %>
-                </button>
-            </div>
-
-            <div class="mb-3">
-                <label class="form-label" for="description">
-                    <%= lang('description') %>
-                </label>
-                <textarea id="description" rows="4" class="form-control" disabled></textarea>
-            </div>
-
-            <div class="mb-3">
-                <div class="form-check form-switch">
-                    <input class="form-check-input" type="checkbox" id="category-hidden" disabled>
-                    <label class="form-check-label" for="category-hidden">
-                        <%= lang('hidden') %>
-                    </label>
-                </div>
-                <div class="form-text text-muted small">
-                    <%= lang('category_hidden_hint') %>
-                </div>
-            </div>
-
-        </div>
-    </div>
-
+    </turbo-frame>
 </div>
 
 <% content_for :scripts do %>
-    <%= ea_js "utils/drag_reorder", "utils/picture_upload", "http/service_categories_http_client", "pages/service_categories" %>
+    <%= ea_js "utils/drag_reorder", "pages/service_categories" %>
 <% end %>

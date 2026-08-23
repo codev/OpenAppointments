@@ -3,6 +3,10 @@
 The about page lists these notes; every release needs a section here matching
 CloudronManifest.json.
 
+## 2.0.0
+
+- Admin pages are moving from the inherited jQuery scripts to standard Rails views with Turbo Frames, starting with Service Categories. The page looks the same; pictures are saved with the form and the filter, sort and delete actions reload in place
+
 ## 1.9.0
 
 - Repeating appointments - these can only be added by providers, assistants or admins

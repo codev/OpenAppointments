@@ -34,7 +34,7 @@ Rails.application.routes.draw do
   # Backend CRUD pages (EA pattern: page GET + find/search/store/update/destroy).
   # EA declares find as GET but the ported JS clients $.post it, so find takes both.
   # Unavailabilities has no page in EA, only the JSON endpoints.
-  %w[customers services service_categories providers assistants admins
+  %w[customers services providers assistants admins
      unavailabilities blocked_periods webhooks].each do |resource|
     get resource => "#{resource}#index" unless resource == "unavailabilities"
     match "#{resource}/find" => "#{resource}#find", via: [ :get, :post ]
@@ -57,6 +57,11 @@ Rails.application.routes.draw do
     post "#{resource}/sort_alphabetically" => "#{resource}#sort_alphabetically"
   end
 
+  # Converted to Rails views + Turbo Frames; search stays for the services page select.
+  resources :service_categories, only: %i[index new create edit update destroy] do
+    post :search, on: :collection
+  end
+
   # 10to8 import page
   get "import" => "import#index"
   post "import/export" => "import#export"
@@ -70,7 +75,7 @@ Rails.application.routes.draw do
   post "import/reset" => "import#reset"
 
   # Record pictures (cards display mode)
-  %w[providers assistants admins services service_categories].each do |resource|
+  %w[providers assistants admins services].each do |resource|
     post "#{resource}/:id/picture" => "#{resource}#save_picture"
   end
 

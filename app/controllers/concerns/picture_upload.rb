@@ -4,6 +4,12 @@ module PictureUpload
   ALLOWED_PICTURE_TYPES = %w[image/png image/jpeg image/gif image/webp].freeze
   MAX_PICTURE_SIZE = 5.megabytes
 
+  def self.validate!(file)
+    raise ArgumentError, "No picture provided." unless file.respond_to?(:content_type)
+    raise ArgumentError, "Unsupported picture type." unless ALLOWED_PICTURE_TYPES.include?(file.content_type)
+    raise ArgumentError, "The picture is too large (5 MB maximum)." if file.size > MAX_PICTURE_SIZE
+  end
+
   # POST /<resource>/:id/picture with a picture file, or remove=1 to detach.
   def save_picture
     raise ArgumentError, "Forbidden" if cannot?(:edit, picture_permission_resource)
@@ -18,9 +24,7 @@ module PictureUpload
     end
 
     file = params[:picture]
-    raise ArgumentError, "No picture provided." unless file.respond_to?(:content_type)
-    raise ArgumentError, "Unsupported picture type." unless ALLOWED_PICTURE_TYPES.include?(file.content_type)
-    raise ArgumentError, "The picture is too large (5 MB maximum)." if file.size > MAX_PICTURE_SIZE
+    PictureUpload.validate!(file)
 
     PictureVariants.attach(record, file.tempfile.path, filename: file.original_filename,
                                                        content_type: file.content_type)
