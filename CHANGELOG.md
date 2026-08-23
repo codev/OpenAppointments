@@ -10,6 +10,8 @@ CloudronManifest.json.
 - The appointment, unavailability and cancel/delete dialogs on the calendar pages are Rails forms; a clash shows in the dialog with a save-anyway option
 - The Appointments page is rendered by the server: provider day columns with free gaps from the booking availability rules, and the date, days, provider, service and status filters live in the address bar
 - The repeating appointments panel and its cancel dialog are Rails views
+- Login, recovery, password reset, account, notification templates, manage data and the LDAP import are plain forms
+- Pages load with Turbo Drive: moving between admin pages keeps the scripts and only swaps the page
 - Blocked period dates use the browser's date and time picker
 - Lists of customers, admins, assistants, blocked periods and webhooks page 20 at a time
 - Fixed: the API, LDAP, analytics, Google Calendar and messages settings pages showed blank values after a save
