@@ -1,8 +1,7 @@
 /**
  * Booking settings: the display switch greys its example field and the
  * require switch shows its asterisk; requiring email or phone individually
- * clears the phone-or-email rule and vice versa (with a flash). The disable
- * booking message is a rich text editor.
+ * clears the phone-or-email rule and vice versa (with a flash).
  */
 (function () {
     function updateDisplaySwitch($switch) {
@@ -45,7 +44,6 @@
     function applyState() {
         $('.display-switch').each((index, el) => updateDisplaySwitch($(el)));
         $('.require-switch').each((index, el) => updateRequireSwitch($(el)));
-        $('textarea.rich-text').trumbowyg();
     }
 
     $(document).on('click', '.display-switch', (event) => updateDisplaySwitch($(event.target)));
