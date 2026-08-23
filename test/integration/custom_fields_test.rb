@@ -22,9 +22,9 @@ class CustomFieldsTest < ActionDispatch::IntegrationTest
     Setting.set("display_custom_field_1", "1")
     Setting.set("long_custom_field_1", "1")
     login_admin
-    get "/customers"
-    assert_select "textarea#custom-field-1[rows='8'][disabled]"
-    assert_select "textarea#notes[rows='8']"
+    get "/customers/new"
+    assert_select "textarea#custom-field-1[rows='8'][name='customer[custom_field_1]']"
+    assert_select "textarea#customer_notes[rows='8']"
   end
 
   test "booking settings offers and saves the longer text field switch" do

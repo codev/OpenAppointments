@@ -1,0 +1,7 @@
+<% unread = Message.unread.where(customer_id: record.id).count %>
+<strong><%= record.name.presence || "[No Name]" %></strong>
+<% if unread.positive? %>
+    <span class="badge bg-danger ms-2 unread-badge"><%= unread %></span>
+<% end %>
+<br>
+<small class="text-muted"><%= [ record.email.presence || "[No Email]", record.phone_number.presence ].compact.join(", ") %></small>

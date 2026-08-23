@@ -148,5 +148,5 @@
 <%= render "shared/ldap_import_modal", roles: vars(:roles) %>
 
 <% content_for :scripts do %>
-    <%= ea_js "http/customers_http_client", "http/ldap_settings_http_client", "pages/ldap_settings" %>
+    <%= ea_js "http/ldap_settings_http_client", "pages/ldap_settings" %>
 <% end %>

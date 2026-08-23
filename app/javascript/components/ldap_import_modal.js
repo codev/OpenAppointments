@@ -14,8 +14,7 @@
  *
  * This module implements the LDAP import modal functionality.
  *
- * Customers post through the EA HTTP client; the other roles post to their
- * Rails resource routes.
+ * Users post to their Rails resource routes.
  */
 App.Components.LdapImportModal = (function () {
     const $modal = $('#ldap-import-modal');
@@ -61,7 +60,6 @@ App.Components.LdapImportModal = (function () {
     function getHttpClient(roleSlug) {
         switch (roleSlug) {
             case App.Layouts.Backend.DB_SLUG_CUSTOMER:
-                return App.Http.Customers;
             case App.Layouts.Backend.DB_SLUG_PROVIDER:
             case App.Layouts.Backend.DB_SLUG_ASSISTANT:
             case App.Layouts.Backend.DB_SLUG_ADMIN:

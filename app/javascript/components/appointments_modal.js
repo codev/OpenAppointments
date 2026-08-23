@@ -363,7 +363,7 @@ App.Components.AppointmentsModal = (function () {
             filterExistingCustomersTimeout = setTimeout(() => {
                 $('#loading').css('visibility', 'hidden');
 
-                App.Http.Customers.search(keyword, 50)
+                $.post(App.Utils.Url.siteUrl('customers/search'), {csrf_token: vars('csrf_token'), keyword, limit: 50})
                     .done((response) => {
                         $existingCustomersList.empty();
 

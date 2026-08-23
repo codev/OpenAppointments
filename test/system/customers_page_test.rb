@@ -88,3 +88,17 @@ class CustomersPageTest < ApplicationSystemTestCase
     assert_no_selector ".customer-row .unread-badge"
   end
 end
+
+# Rails views only: the deep link opens the record on the conversation panel.
+class CustomersDeepLinkTest < ApplicationSystemTestCase
+  test "the messages deep link opens the customer with the conversation loaded" do
+    Message.create!(direction: "incoming", channel: "email", from_address: users(:jx).email,
+                    customer_id: users(:jx).id, body: "Running late", status: "received")
+    login_as_admin
+    visit customers_url(customer_id: users(:jx).id, section: "messages")
+    assert_selector "#customers-page.editing", wait: 5
+    assert_field "Name", with: "JX"
+    assert_selector "#customer-messages .message-row.message-unread", text: "Running late", wait: 5
+    assert_selector "#mark-all-read", visible: true
+  end
+end

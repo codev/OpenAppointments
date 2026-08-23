@@ -3,7 +3,7 @@
     backend.scss shows either the list or the details, toggled by the editing
     class (rendered for direct visits, kept in sync by utils/crud_page.js).
     Locals: page, title, records, record, editing, keyword, row partial, form
-    partial, optional before_add and list_toolbar HTML. %>
+    partial, optional before_add and list_toolbar HTML, can_add (default true). %>
 <% frame = controller_name %>
 <div class="container backend-page py-3 <%= 'editing' if editing %>" id="<%= page %>-page" data-crud-page>
     <turbo-frame id="<%= frame %>">
@@ -18,11 +18,13 @@
             <div id="filter-<%= page %>" class="filter-records column col-12 mb-4">
                 <div class="mb-4">
                     <%= local_assigns[:before_add] %>
-                    <%= link_to url_for(action: :new), id: "add-#{page.singularize}",
-                                class: "btn btn-primary add-record-btn",
-                                data: { turbo_frame: "#{frame}_record" } do %>
-                        <i class="fas fa-plus-square me-2"></i>
-                        <%= lang('add') %>
+                    <% if local_assigns.fetch(:can_add, true) %>
+                        <%= link_to url_for(action: :new), id: "add-#{page.singularize}",
+                                    class: "btn btn-primary add-record-btn",
+                                    data: { turbo_frame: "#{frame}_record" } do %>
+                            <i class="fas fa-plus-square me-2"></i>
+                            <%= lang('add') %>
+                        <% end %>
                     <% end %>
                 </div>
 
