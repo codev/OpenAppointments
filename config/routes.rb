@@ -71,7 +71,6 @@ Rails.application.routes.draw do
   get "import" => "import#index"
   post "import/export" => "import#export"
   get "import/export_status" => "import#export_status"
-  get "import/backups" => "import#backups"
   get "import/download_backup" => "import#download_backup"
   get "import/report" => "import#report"
   post "import/analyze" => "import#analyze"

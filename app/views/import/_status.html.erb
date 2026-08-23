@@ -1,0 +1,25 @@
+<%# Analyze summary or the running import's status; polls while it runs. Locals: import_status, summary. %>
+<% status = import_status&.with_indifferent_access %>
+<% running = status && %w[queued running].include?(status[:state]) %>
+<turbo-frame id="import-status" src="/import?import_id=<%= params[:import_id] %>" <%= 'data-poll-every=2000' if running %>>
+    <% if summary %>
+        <div id="import-results" class="alert alert-info mt-3 mb-0" style="white-space: pre-line;"><%= summary %></div>
+    <% elsif alert %>
+        <div id="import-results" class="alert alert-danger mt-3 mb-0"><%= alert %></div>
+    <% elsif status %>
+        <% case status[:state] %>
+        <% when "completed" %>
+            <% errors = Array(status[:errors]) %>
+            <div id="import-results" class="alert <%= errors.any? ? 'alert-warning' : 'alert-success' %> mt-3 mb-0" style="white-space: pre-line;"><%= lang('import_complete') %>
+<% (status[:counts] || {}).each do |phase, entry| %><%= lang(phase) %>: <%= entry[:created] %> <%= lang('created') %>, <%= entry[:matched] %> <%= lang('matched') %>, <%= entry[:skipped] %> <%= lang('skipped') %><%= ", #{entry[:failed]} #{lang('failed')}" if entry[:failed].to_i.positive? %>
+<% end %><% if errors.any? %>
+<%= lang('import_failures') %>
+<% errors.each do |error| %><%= lang(error[:phase]) %>: <%= error[:item] %> - <%= error[:message] %>
+<% end %><% end %></div>
+        <% when "failed" %>
+            <div id="import-results" class="alert alert-danger mt-3 mb-0"><%= status[:error].presence || lang('unexpected_issues_occurred') %></div>
+        <% else %>
+            <div id="import-results" class="alert alert-info mt-3 mb-0"><%= lang('import_running') %><%= " (#{lang(status[:phase])})" if status[:phase].present? %></div>
+        <% end %>
+    <% end %>
+</turbo-frame>

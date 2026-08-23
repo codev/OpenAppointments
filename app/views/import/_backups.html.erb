@@ -1,0 +1,45 @@
+<%# Export button and the kept backups; polls every 2 s while an export runs. Locals: backups, export_status. %>
+<% working = export_status && %w[queued running].include?(export_status[:state] || export_status["state"]) %>
+<% state = export_status && (export_status[:state] || export_status["state"]) %>
+<turbo-frame id="backups" src="/import?export_id=<%= params[:export_id] %>" <%= 'data-poll-every=2000' if working %>>
+    <%= form_with url: "/import/export", method: :post, class: "d-inline", data: { turbo_frame: "backups" } do %>
+        <%= hidden_field_tag :form, "1", id: nil %>
+        <button type="submit" class="btn btn-outline-primary" id="export-data" <%= 'disabled' if working %>>
+            <i class="fas <%= working ? 'fa-spinner fa-spin' : 'fa-download' %> me-2"></i>
+            <%= lang(working ? 'backup_working' : 'export_data') %>
+        </button>
+    <% end %>
+    <% if state == "failed" %>
+        <div class="alert alert-danger mt-3 mb-0"><%= lang('backup_failed') %></div>
+    <% end %>
+    <% if backups.any? %>
+        <div id="backups-section" class="mt-3">
+            <h6 class="fw-light"><%= lang('backups') %></h6>
+            <table class="table table-sm align-middle mb-2" id="backups-table">
+                <thead>
+                    <tr>
+                        <th><%= lang('date') %></th>
+                        <th><%= lang('ods_file') %></th>
+                        <th><%= lang('zip_file') %></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% backups.each do |backup| %>
+                        <tr>
+                            <td><%= backup[:date].strftime("%Y-%m-%d %H:%M") %></td>
+                            <% %i[ods zip].each do |kind| %>
+                                <td>
+                                    <% if (name = backup[:files][kind.to_s]) %>
+                                        <%= link_to "#{lang(kind == :ods ? 'ods_file' : 'zip_file')} (#{number_to_human_size(File.size(BackupExport.dir.join(name)))})",
+                                                    "/import/download_backup?name=#{ERB::Util.url_encode(name)}", data: { turbo: false } %>
+                                    <% end %>
+                                </td>
+                            <% end %>
+                        </tr>
+                    <% end %>
+                </tbody>
+            </table>
+            <p class="text-muted small mb-0"><%= lang('backups_hint') %></p>
+        </div>
+    <% end %>
+</turbo-frame>

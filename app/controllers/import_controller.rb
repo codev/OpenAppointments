@@ -12,6 +12,8 @@ class ImportController < ApplicationController
   before_action :require_session, except: [ :index ]
   before_action :forbid_unless_system_settings_edit, except: [ :index ]
 
+  # GET /import?export_id=&import_id= - the page; the backups and import status
+  # frames poll while an export or import runs.
   def index
     return unless require_backend_page!(:system_settings)
     return head :forbidden unless can?(:edit, :system_settings)
@@ -19,6 +21,10 @@ class ImportController < ApplicationController
     backend_page_vars(page_title: helpers.lang("data_settings"), active_menu: "system_settings")
     html_vars(appointment_statuses: AppointmentStatus.rows, report_from: Date.current.beginning_of_month,
               report_to: Date.current)
+    @backups = BackupExport.list
+    @export_status = BackupExportJob.read_status(params[:export_id].to_s) if params[:export_id].present?
+    @import_status = TenToEightImportJob.read_status(params[:import_id].to_s) if params[:import_id].present?
+    @summary = session.delete(:import_summary)
     render :index
   end
 
@@ -27,26 +33,12 @@ class ImportController < ApplicationController
     export_id = SecureRandom.hex(12)
     BackupExportJob.perform_later(export_id: export_id)
     BackupExportJob.write_status(export_id, { state: "queued" })
-    render json: { success: true, export_id: export_id }
+    form_post? ? redirect_to("/import?export_id=#{export_id}") : render(json: { success: true, export_id: export_id })
   end
 
   # GET /import/export_status
   def export_status
     render json: BackupExportJob.read_status(params[:export_id].to_s) || { state: "unknown" }
-  end
-
-  # GET /import/backups - the kept backups, newest first.
-  def backups
-    render json: {
-      backups: BackupExport.list.map { |backup|
-        {
-          date: backup[:date].strftime("%Y-%m-%d %H:%M"),
-          files: backup[:files].transform_values { |name|
-            { name: name, size: helpers.number_to_human_size(File.size(BackupExport.dir.join(name))) }
-          }
-        }
-      }
-    }
   end
 
   # GET /import/download_backup?name=... - admin-gated backup download. The
@@ -82,17 +74,20 @@ class ImportController < ApplicationController
     data = extractor_class.new(
       uploaded_file_path, days_back: params[:days_back] || 21, days_forward: params[:days_forward] || 21
     ).call
-    render json: {
-      success: true,
-      summary: {
-        staff: data[:staff].size, services: data[:services].size,
-        customers: data[:customers].size, appointments: data[:appointments].size,
-        settings: Array(data[:settings]).size,
-        do_not_contact: data[:customers].count { |customer| customer[:do_not_contact] }
-      }
+    summary = {
+      staff: data[:staff].size, services: data[:services].size,
+      customers: data[:customers].size, appointments: data[:appointments].size,
+      settings: Array(data[:settings]).size,
+      do_not_contact: data[:customers].count { |customer| customer[:do_not_contact] }
     }
+    if form_post?
+      session[:import_summary] = summary.map { |key, value| "#{key}: #{value}" }.join("\n")
+      redirect_to "/import"
+    else
+      render json: { success: true, summary: summary }
+    end
   rescue ArgumentError, CSV::MalformedCSVError => e
-    json_exception(e)
+    import_failed(e)
   ensure
     cleanup_upload
   end
@@ -117,12 +112,12 @@ class ImportController < ApplicationController
       import_id: import_id, file_path: path, images_path: images_path, import_type: import_type,
       phases: Array(params[:phases]) & TenToEight::Load::PHASES,
       days_back: (params[:days_back] || 21).to_i, days_forward: (params[:days_forward] || 21).to_i,
-      create_providers: ActiveModel::Type::Boolean.new.cast(params[:create_providers]) || false
+      create_providers: ActiveModel::Type::Boolean.new.cast(params[:create_providers]) || Array(params[:phases]).include?("providers")
     )
     TenToEightImportJob.write_status(import_id, { state: "queued" })
-    render json: { success: true, import_id: import_id }
+    form_post? ? redirect_to("/import?import_id=#{import_id}") : render(json: { success: true, import_id: import_id })
   rescue ArgumentError => e
-    json_exception(e)
+    import_failed(e)
   ensure
     cleanup_upload
   end
@@ -143,13 +138,23 @@ class ImportController < ApplicationController
     full = ActiveModel::Type::Boolean.new.cast(params[:full]) || false
     ResetDatabase.run(full: full)
     reset_session if full
-    render json: { success: true, full: full }
+    if form_post?
+      full ? redirect_to("/logout") : redirect_to("/import", notice: helpers.lang("reset_database_done"))
+    else
+      render json: { success: true, full: full }
+    end
   rescue StandardError => e
     reset_session if full
-    json_exception(e)
+    import_failed(e)
   end
 
   private
+
+  def form_post? = params[:form].present?
+
+  def import_failed(error)
+    form_post? ? redirect_to("/import", alert: error.message) : json_exception(error)
+  end
 
   def extractor_type
     type = params[:import_type].presence || "ten_to_eight"
