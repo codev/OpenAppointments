@@ -155,3 +155,32 @@ class SettingsPagesTest < ActionDispatch::IntegrationTest
     assert_select ".alert-danger", text: I18n.t("ea.passwords_mismatch")
   end
 end
+
+class LdapImportFormTest < ActionDispatch::IntegrationTest
+  def login_admin
+    post "/login/validate", params: { username: "administrator", password: "administrator1" }
+  end
+
+  test "the import dialog is a form creating the chosen role with its settings" do
+    login_admin
+    get "/ldap_settings"
+    assert_select "form#ldap-import-form[action='/ldap_settings/import'] select[name=role_slug] option[value=provider]"
+
+    post "/ldap_settings/import", params: { role_slug: "provider", user: { name: "Dir Provider", email: "dir@example.org", phone_number: "1", ldap_dn: "cn=dir" },
+                                            settings: { username: "dirprovider", password: "password1" } }
+    assert_redirected_to "/ldap_settings"
+    follow_redirect!
+    assert_select ".alert-success", text: I18n.t("ea.user_imported")
+    provider = User.providers.find_by!(email: "dir@example.org")
+    assert_equal "dirprovider", provider.settings.username
+    assert_equal Setting.get("company_working_plan"), provider.settings.working_plan
+    assert_equal "cn=dir", provider.ldap_dn
+
+    post "/ldap_settings/import", params: { role_slug: "customer", user: { name: "Dir Customer", email: "dirc@example.org", phone_number: "2", ldap_dn: "cn=c" } }
+    assert User.customers.exists?(email: "dirc@example.org")
+
+    post "/ldap_settings/import", params: { role_slug: "admin", user: { name: "No pass", email: "np@example.org", phone_number: "3", ldap_dn: "cn=n" }, settings: { username: "np" } }
+    follow_redirect!
+    assert_select ".alert-danger", text: /password/
+  end
+end

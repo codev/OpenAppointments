@@ -127,6 +127,7 @@ Rails.application.routes.draw do
   post "altcha_settings/generate_key" => "altcha_settings#generate_key"
   post "messages_smsgateway_settings/test_sms" => "messages_smsgateway_settings#test_sms"
   post "ldap_settings/search" => "ldap_settings#search"
+  post "ldap_settings/import" => "ldap_settings#import"
   get "integrations" => "integrations#index"
   get "about" => "about#index"
   get "account" => "account#index"

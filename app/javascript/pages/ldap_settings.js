@@ -110,9 +110,7 @@ App.Pages.LdapSettings = (function () {
         const entry = $card.data('entry');
         const ldapFieldMapping = getLdapFieldMapping();
 
-        App.Components.LdapImportModal.open(entry, ldapFieldMapping).done(() => {
-            App.Layouts.Backend.displayNotification(lang('user_imported'));
-        });
+        App.Components.LdapImportModal.open(entry, ldapFieldMapping);
     }
 
     /**
