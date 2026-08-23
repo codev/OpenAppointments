@@ -132,7 +132,6 @@ Rails.application.routes.draw do
   get "about" => "about#index"
   get "account" => "account#index"
   post "account/save" => "account#save"
-  post "account/validate_username" => "account#validate_username"
 
   # Inbound SMS webhooks (public; token in URL)
   post "messages/inbound/:channel/:token" => "inbound_messages#receive"

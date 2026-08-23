@@ -132,12 +132,26 @@ class SettingsPagesTest < ActionDispatch::IntegrationTest
     assert_equal "Janet Doe", provider.reload.name
   end
 
-  test "account validate_username reports duplicates" do
-    login_provider
-    post "/account/validate_username", params: { username: "administrator", user_id: users(:zane).id }
-    assert_equal false, response.parsed_body["is_valid"]
+  test "the account form saves with a flash and refuses a taken username or mismatched passwords" do
+    login_admin
+    get "/account"
+    assert_select "form#account-form[action='/account/save'] input[name='account[settings][username]'][value=administrator]"
 
-    post "/account/validate_username", params: { username: "janedoe", user_id: users(:zane).id }
-    assert_equal true, response.parsed_body["is_valid"]
+    post "/account/save", params: { form: "1", account: { name: "Edson M", email: users(:admin).email, timezone: "UTC", language: "english",
+                                                            settings: { username: "administrator", password: "", password_confirmation: "" } } }
+    assert_redirected_to "/account"
+    follow_redirect!
+    assert_select ".alert-success", text: I18n.t("ea.settings_saved")
+    assert_equal "Edson M", users(:admin).reload.name
+
+    post "/account/save", params: { form: "1", account: { name: "Edson M", email: users(:admin).email,
+                                                            settings: { username: "janedoe" } } }
+    follow_redirect!
+    assert_select ".alert-danger", text: I18n.t("ea.username_already_exists")
+
+    post "/account/save", params: { form: "1", account: { name: "Edson M", email: users(:admin).email,
+                                                            settings: { username: "administrator", password: "password1", password_confirmation: "x" } } }
+    follow_redirect!
+    assert_select ".alert-danger", text: I18n.t("ea.passwords_mismatch")
   end
 end

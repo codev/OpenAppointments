@@ -14,13 +14,12 @@ class AccountController < ApplicationController
     return unless require_backend_page!(:user_settings)
 
     backend_page_vars(page_title: helpers.lang("settings"), active_menu: "system_settings")
-    script_vars(account: account_payload(current_user))
-    html_vars(available_languages: Localization.available_languages,
-              require_password_change: current_user&.settings&.require_password_change == true)
+    html_vars(require_password_change: current_user&.settings&.require_password_change == true)
     render :index
   end
 
-  # POST /account/save
+  # POST /account/save. The page form (form=1) comes back with a flash; other
+  # callers get EA's JSON.
   def save
     raise ArgumentError, "You do not have the required permissions for this task." if cannot?(:edit, :user_settings)
 
@@ -29,8 +28,16 @@ class AccountController < ApplicationController
     settings = user.settings || user.build_settings
 
     user.assign_attributes(account.permit(*ALLOWED_USER_FIELDS).to_h)
-    settings_attributes = account.fetch(:settings, {}).permit(*ALLOWED_USER_SETTING_FIELDS).to_h
+    settings_attributes = account.fetch(:settings, {}).permit(*ALLOWED_USER_SETTING_FIELDS, :password_confirmation).to_h
     password = settings_attributes.delete("password")
+    confirmation = settings_attributes.delete("password_confirmation")
+    raise ArgumentError, helpers.lang("passwords_mismatch") if password.present? && !confirmation.nil? && password != confirmation
+    if password.present? && password.length < Passwords::MIN_LENGTH
+      raise ArgumentError, helpers.lang("password_length_notice").sub("$number", Passwords::MIN_LENGTH.to_s)
+    end
+    if UserSetting.where(username: settings_attributes["username"]).where.not(id_users: user.id).exists?
+      raise ArgumentError, helpers.lang("username_already_exists")
+    end
     settings.assign_attributes(settings_attributes)
     if password.present?
       settings.password = Passwords.hash(password)
@@ -45,35 +52,10 @@ class AccountController < ApplicationController
     session[:timezone] = user.timezone
     session[:language] = user.language
 
-    render json: { success: true }
+    params[:form].present? ? redirect_to("/account", notice: helpers.lang("settings_saved")) : render(json: { success: true })
   rescue ArgumentError, ActiveRecord::RecordInvalid => e
-    json_exception(e)
+    params[:form].present? ? redirect_to("/account", alert: e.message) : json_exception(e)
   end
 
-  # POST /account/validate_username
-  def validate_username
-    username = params.require(:username)
-    user_id = params[:user_id].presence
 
-    scope = UserSetting.where(username: username)
-    scope = scope.where.not(id_users: user_id) if user_id
-
-    render json: { is_valid: !scope.exists? }
-  rescue ArgumentError => e
-    json_exception(e)
-  end
-
-  private
-
-  # EA users_model->find + filter_sensitive_user_data.
-  def account_payload(user)
-    row = EaRows.user_row(user)
-    row["settings"] =
-      if user.settings
-        user.settings.attributes.except("id_users", "created_at", "updated_at", *EaRows::SENSITIVE_SETTINGS)
-      else
-        {}
-      end
-    row
-  end
 end
