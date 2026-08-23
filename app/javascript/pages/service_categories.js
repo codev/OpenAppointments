@@ -1,15 +1,21 @@
 /**
- * Service categories page: drag-to-reorder and picture preview. The markup is
- * server rendered inside Turbo Frames, so everything binds by delegation and
- * survives frame reloads.
+ * Service categories page: list/details toggle, drag-to-reorder and picture
+ * preview. The markup is server rendered inside Turbo Frames, so everything
+ * binds by delegation and survives frame reloads.
  */
 (function () {
     function initialize() {
+        const $page = $('#service-categories-page');
         const $frame = $('turbo-frame#service_categories');
 
         if (!$frame.length) {
             return;
         }
+
+        // backend.scss shows the details only while the page is "editing".
+        document.addEventListener('turbo:frame-load', () => {
+            $page.toggleClass('editing', $('#service-category-form').length > 0);
+        });
 
         App.Utils.DragReorder.enable(
             $frame,

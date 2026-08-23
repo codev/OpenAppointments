@@ -1,20 +1,18 @@
-<%# Empty detail pane (no record picked) renders the form disabled. %>
-<% picture_url = category && EaRows.picture_url(category) %>
-<%= form_with model: category || ServiceCategory.new, id: "service-category-form",
-              data: { turbo_frame: "service_categories" } do |f| %>
-    <% if category&.errors&.any? %>
+<% picture_url = EaRows.picture_url(category) %>
+<%= form_with model: category, id: "service-category-form", data: { turbo_frame: "service_categories" } do |f| %>
+    <% if category.errors.any? %>
         <div class="form-message alert alert-danger">
             <%= category.errors[:base].first || lang('fields_are_required') %>
         </div>
     <% end %>
 
-    <fieldset <%= 'disabled' unless category %>>
+    <fieldset>
         <div class="mb-3">
             <%= f.label :name, class: "form-label" do %>
                 <%= lang('name') %> <span class="text-danger">*</span>
             <% end %>
             <%= f.text_field :name, required: true,
-                             class: "form-control #{'is-invalid' if category&.errors&.include?(:name)}" %>
+                             class: "form-control #{'is-invalid' if category.errors.include?(:name)}" %>
         </div>
 
         <div class="mb-3 record-picture">
@@ -54,7 +52,7 @@
     </fieldset>
 <% end %>
 
-<% if category&.persisted? %>
+<% if category.persisted? %>
     <%= button_to service_category_path(category), method: :delete, class: "btn btn-outline-danger mt-2",
                   form: { data: { turbo_frame: "service_categories", turbo_confirm: lang('delete_record_prompt') } } do %>
         <i class="fas fa-trash-alt me-2"></i>

@@ -1,13 +1,15 @@
 <%# Service categories: list + detail form in nested Turbo Frames. The outer frame
-    reloads after save/delete/sort/filter; the inner one swaps the form on row click. %>
-<div class="container backend-page py-3" id="service-categories-page" data-turbo="true">
+    reloads after save/delete/sort/filter; the inner one swaps the form on row click.
+    backend.scss shows either the list or the details, toggled by the editing class
+    (set here for direct visits, kept in sync by pages/service_categories.js). %>
+<div class="container backend-page py-3 <%= 'editing' if @category %>" id="service-categories-page">
     <turbo-frame id="service_categories">
         <% if notice %>
             <div class="alert alert-success"><%= notice %></div>
         <% end %>
 
         <div class="row" id="service-categories">
-            <div id="filter-service-categories" class="filter-records column col-12 col-md-5 mb-4">
+            <div id="filter-service-categories" class="filter-records column col-12 mb-4">
                 <%= link_to new_service_category_path, id: "add-service-category",
                             class: "btn btn-primary add-record-btn mb-4",
                             data: { turbo_frame: "service_category" } do %>
@@ -39,10 +41,10 @@
                 </div>
             </div>
 
-            <div class="record-details col-12 col-md-7 mb-4">
+            <div class="record-details col-12 mb-4">
                 <h4 class="mb-3 fw-light"><%= lang('details') %></h4>
                 <turbo-frame id="service_category">
-                    <%= render "form", category: @category %>
+                    <%= render "form", category: @category if @category %>
                 </turbo-frame>
             </div>
         </div>
