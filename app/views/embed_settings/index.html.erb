@@ -8,11 +8,13 @@
         <div class="col-lg-9 col-xl-10">
             <h4 class="py-3 mb-3 fw-light"><%= lang('embedding') %></h4>
 
+            <turbo-frame id="settings">
             <div class="card card-body mb-4" style="max-width: 720px;">
+                <%= settings_form "/embed_settings/save" do %>
+                <%= settings_flash %>
                 <div class="mb-3">
                     <div class="form-check form-switch">
-                        <input class="form-check-input" type="checkbox" id="allow-iframe-embedding"
-                               data-field="allow_iframe_embedding">
+                        <%= setting_switch "allow_iframe_embedding" %>
                         <label class="form-check-label" for="allow-iframe-embedding">
                             <%= lang('allow_iframe_embedding') %>
                         </label>
@@ -23,17 +25,15 @@
                     <label class="form-label" for="iframe-embed-origin">
                         <%= lang('iframe_embed_origin') %>
                     </label>
-                    <input type="url" id="iframe-embed-origin" class="form-control"
-                           data-field="iframe_embed_origin" placeholder="https://www.example.org" maxlength="256">
+                    <%= setting_text "iframe_embed_origin", type: "url", placeholder: "https://www.example.org", maxlength: 256 %>
                 </div>
 
                 <div>
-                    <button type="button" id="save-embed-settings" class="btn btn-primary">
-                        <i class="fas fa-check-square me-2"></i>
-                        <%= lang('save') %>
-                    </button>
+                    <%= settings_save_button %>
                 </div>
+                <% end %>
             </div>
+            </turbo-frame>
 
             <h5 class="fw-light mb-2"><%= lang('embed_code') %></h5>
             <p class="text-muted small"><%= lang('embed_hint') %></p>
@@ -113,5 +113,5 @@
 </div>
 
 <% content_for :scripts do %>
-    <%= ea_js "pages/embed_settings" %>
+    <%= ea_js "utils/copy_target" %>
 <% end %>
