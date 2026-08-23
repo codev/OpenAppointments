@@ -1,7 +1,7 @@
 <%# Calendar page: one FullCalendar filtered by a provider or a service. %>
 <div class="container-fluid backend-page pt-0 pb-0" id="calendar-page">
     <div class="row mb-3 text-white py-3 bg-dark" id="calendar-toolbar">
-        <div id="calendar-filter" class="col-lg-5 d-flex flex-wrap gap-2 mb-2 mb-lg-0">
+        <div id="calendar-filter" class="col-lg-5 d-flex flex-nowrap align-items-center gap-2 mb-2 mb-lg-0">
             <select id="select-filter-item" class="form-select w-auto flex-grow-1"
                     data-tippy-content="<%= lang('select_filter_item_hint') %>" aria-label="Filter">
                 <option value="all"><%= lang('all') %></option>

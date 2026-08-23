@@ -45,8 +45,8 @@
     <% end %>
 
     <div id="calendar">
-        <div class="calendar-header d-flex flex-wrap align-items-center justify-content-between gap-2 mb-3">
-            <div class="d-flex align-items-center gap-2">
+        <div class="calendar-header row align-items-center g-2 mb-3">
+            <div class="col-4 d-flex align-items-center gap-2">
                 <div class="btn-group">
                     <%= link_to appointments_path(query.call(date: @date - 1)), id: "previous-day", class: "btn btn-primary",
                                 "aria-label": lang('previous') do %><i class="fas fa-chevron-left"></i><% end %>
@@ -55,12 +55,16 @@
                 </div>
                 <%= link_to lang('today'), appointments_path(query.call(date: Date.current)), id: "today",
                             class: "btn btn-primary #{'disabled' if @date == Date.current}" %>
+            </div>
+            <div class="col-4 text-center">
                 <%= date_field_tag :date, @date, id: "select-date", class: "form-control d-inline-block select-date w-auto", form: "day-filter",
                                    onchange: "document.getElementById('day-filter').requestSubmit()" %>
             </div>
-            <button type="button" class="btn btn-outline-primary" id="toggle-series">
-                <i class="fas fa-redo me-2"></i><span><%= lang('repeating_appointments') %></span>
-            </button>
+            <div class="col-4 text-end">
+                <button type="button" class="btn btn-outline-primary" id="toggle-series">
+                    <i class="fas fa-redo me-2"></i><span><%= lang('repeating_appointments') %></span>
+                </button>
+            </div>
         </div>
 
         <div id="not-working-notes" class="text-muted mb-2">
