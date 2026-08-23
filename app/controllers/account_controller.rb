@@ -56,6 +56,4 @@ class AccountController < ApplicationController
   rescue ArgumentError, ActiveRecord::RecordInvalid => e
     params[:form].present? ? redirect_to("/account", alert: e.message) : json_exception(e)
   end
-
-
 end
