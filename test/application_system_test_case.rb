@@ -25,7 +25,7 @@ class ApplicationSystemTestCase < ActionDispatch::SystemTestCase
   def login_as_admin
     visit login_url
     2.times do
-      assert_selector "#login", wait: 5
+      assert_selector "#login", wait: 15 # the first page of a run waits for Puma
       page.evaluate_script("typeof App !== 'undefined' && App.Pages && App.Pages.Login ? true : false")
       fill_in "username", with: "administrator"
       fill_in "password", with: "administrator1"
