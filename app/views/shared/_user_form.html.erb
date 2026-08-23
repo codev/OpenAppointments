@@ -1,5 +1,5 @@
-<%# User record fields for admins, assistants and providers: two columns, details
-    left and settings right. Locals: record, delete_title, optional header,
+<%# User record fields for admins, assistants and providers: details then settings,
+    each full width. Locals: record, delete_title, optional header,
     settings (extra HTML at the end of the settings column), after (a full-width
     row after the columns) and working_plan (a second tab pane; the columns then
     become the details pane). %>
@@ -10,7 +10,7 @@
 <%= render "shared/crud_form", record: record, delete_title: delete_title, header: local_assigns[:header] do |f| %>
     <div class="tab-content">
     <div class="row tab-pane fade show active" id="details">
-        <div class="details col-12 col-lg-6">
+        <div class="details col-12">
             <div class="mb-3">
                 <%= f.label :name, class: "form-label" do %>
                     <%= lang('name') %> <span class="text-danger">*</span>
@@ -53,7 +53,7 @@
             </div>
         </div>
 
-        <div class="settings col-12 col-lg-6">
+        <div class="settings col-12">
             <%= f.fields_for :settings, settings do |s| %>
                 <div class="mb-3">
                     <%= s.label :username, class: "form-label" do %>

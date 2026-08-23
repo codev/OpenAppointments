@@ -2,7 +2,7 @@
 class BlockedPeriodsController < ApplicationController
   include CrudPage
 
-  PAGE = { resource: :blocked_periods, menu: "blocked_periods", title: "blocked_periods",
+  PAGE = { resource: :blocked_periods, menu: "blocked_periods", title: "blocked_periods", per_page: 20,
            save_webhook: Webhooks::BLOCKED_PERIOD_SAVE, delete_webhook: Webhooks::BLOCKED_PERIOD_DELETE,
            saved: "blocked_period_saved", deleted: "blocked_period_deleted" }.freeze
 

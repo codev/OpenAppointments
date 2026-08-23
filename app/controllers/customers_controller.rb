@@ -3,7 +3,7 @@
 class CustomersController < ApplicationController
   include CrudPage
 
-  PAGE = { resource: :customers, menu: "customers", title: "customers",
+  PAGE = { resource: :customers, menu: "customers", title: "customers", per_page: 20,
            save_webhook: Webhooks::CUSTOMER_SAVE, delete_webhook: Webhooks::CUSTOMER_DELETE,
            saved: "customer_saved", deleted: "customer_deleted" }.freeze
 
@@ -76,9 +76,9 @@ class CustomersController < ApplicationController
     permitted
   end
 
-  def page_script_vars
+  def page_vars
     script_vars(timezones: helpers.timezones)
-    html_vars(**field_display_flags, can_add: can_add?)
+    html_vars(**field_display_flags, can_add: can_add?, unread_counts: Message.unread_counts_for(@records.map(&:id)))
   end
 
   def can_add? = can?(:add, :customers) && (Setting.get("limit_customer_access") != "1" || session[:role_slug] == Role::ADMIN)

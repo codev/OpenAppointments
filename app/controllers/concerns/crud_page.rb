@@ -70,10 +70,26 @@ module CrudPage
     end
 
     backend_page_vars(page_title: helpers.lang(self.class::PAGE[:title]), active_menu: self.class::PAGE[:menu])
-    page_script_vars
     @keyword = params[:keyword].to_s
-    @records = filter(record_scope, @keyword)
+    @records = paginate(filter(record_scope, @keyword))
+    page_vars
     render :index, status: status
+  end
+
+  # PAGE[:per_page] windows the list (old pages used 20); without it the whole
+  # list renders, as the drag-to-reorder pages need. The selected record's page
+  # is used when no page is asked for, so a saved record stays in view.
+  def paginate(records)
+    per_page = self.class::PAGE[:per_page]
+    return records unless per_page
+
+    ids = records.is_a?(Array) ? records.map(&:id) : records.unscope(:includes, :preload).pluck(:id)
+    @page = params[:page].to_i
+    @page = (ids.index(@record.id) || 0) / per_page + 1 if @page < 1 && @record&.persisted?
+    @page_count = [ (ids.length + per_page - 1) / per_page, 1 ].max
+    @page = @page.clamp(1, @page_count)
+    offset = (@page - 1) * per_page
+    records.is_a?(Array) ? records.slice(offset, per_page) || [] : records.offset(offset).limit(per_page)
   end
 
   def save_record
@@ -96,10 +112,10 @@ module CrudPage
     render_page(status: :unprocessable_entity)
   end
 
-  # Hooks: page_script_vars adds window.vars entries the page script needs;
-  # before_save raises ArgumentError for cross-field checks; after_save persists
-  # dependent data inside the save transaction.
-  def page_script_vars; end
+  # Hooks: page_vars adds html/script vars after @records is set; before_save
+  # raises ArgumentError for cross-field checks; after_save persists dependent
+  # data inside the save transaction.
+  def page_vars; end
 
   def before_save; end
 

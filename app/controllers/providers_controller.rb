@@ -41,7 +41,7 @@ class ProvidersController < ApplicationController
 
   def record_scope = User.providers.display_order.includes(:settings, :services)
 
-  def page_script_vars = script_vars(first_weekday: Setting.get("first_weekday"))
+  def page_vars = script_vars(first_weekday: Setting.get("first_weekday"))
 
   def record_params
     super.merge(user_fields.permit(:about, :services_description))

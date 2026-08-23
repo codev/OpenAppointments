@@ -1,0 +1,26 @@
+<%# Page links for a CRUD list (port of utils/pagination.js): a 5 page window
+    with first/last and ellipses. Links stay inside the list's Turbo Frame. %>
+<% window = 5 %>
+<% start_page = [ 1, page - window / 2 ].max %>
+<% end_page = [ page_count, start_page + window - 1 ].min %>
+<% start_page = [ 1, end_page - window + 1 ].max %>
+<% link = ->(label, target, disabled: false, active: false) do %>
+    <li class="page-item <%= 'disabled' if disabled %> <%= 'active' if active %>">
+        <%= link_to label, url_for(action: :index, keyword: keyword.presence, page: target), class: "page-link" %>
+    </li>
+<% end %>
+<ul class="pagination pagination-sm justify-content-center mt-3 mb-0">
+    <%= link.call("«".html_safe, page - 1, disabled: page <= 1) %>
+    <% if start_page > 1 %>
+        <%= link.call("1", 1) %>
+        <% if start_page > 2 %><li class="page-item disabled"><span class="page-link">…</span></li><% end %>
+    <% end %>
+    <% (start_page..end_page).each do |number| %>
+        <%= link.call(number.to_s, number, active: number == page) %>
+    <% end %>
+    <% if end_page < page_count %>
+        <% if end_page < page_count - 1 %><li class="page-item disabled"><span class="page-link">…</span></li><% end %>
+        <%= link.call(page_count.to_s, page_count) %>
+    <% end %>
+    <%= link.call("»".html_safe, page + 1, disabled: page >= page_count) %>
+</ul>

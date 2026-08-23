@@ -3,7 +3,7 @@
 class WebhooksController < ApplicationController
   include CrudPage
 
-  PAGE = { resource: :webhooks, menu: "system_settings", title: "webhooks",
+  PAGE = { resource: :webhooks, menu: "system_settings", title: "webhooks", per_page: 20,
            saved: "webhook_saved", deleted: "webhook_deleted" }.freeze
 
   AVAILABLE_ACTIONS = [

@@ -2,7 +2,7 @@
 class AssistantsController < ApplicationController
   include UserPage
 
-  PAGE = { resource: :users, menu: "users", title: "assistants", role: Role::ASSISTANT,
+  PAGE = { resource: :users, menu: "users", title: "assistants", per_page: 20, role: Role::ASSISTANT,
            save_webhook: Webhooks::ASSISTANT_SAVE, delete_webhook: Webhooks::ASSISTANT_DELETE,
            saved: "assistant_saved", deleted: "assistant_deleted" }.freeze
 
