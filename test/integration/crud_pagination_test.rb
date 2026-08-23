@@ -14,6 +14,7 @@ class CrudPaginationTest < ActionDispatch::IntegrationTest
     assert_select "turbo-frame#customers ul.pagination li.page-item.active a", text: "1"
     assert_select "ul.pagination a[href='/customers?page=3']", text: "3"
     assert_select "ul.pagination li.page-item.disabled a", text: "«"
+    assert_no_match(/&lt;\/?(li|ul|a)/, response.body, "template text leaked into the page as visible markup")
 
     get "/customers", params: { page: 3, keyword: "tester" }
     assert_select ".customer-row", count: 5
@@ -35,6 +36,16 @@ class CrudPaginationTest < ActionDispatch::IntegrationTest
     assert_select "ul.pagination", count: 0
     get "/services"
     assert_select "ul.pagination", count: 0
+  end
+
+  test "no converted page leaks template text as visible markup" do
+    %w[customers admins assistants providers services service_categories blocked_periods webhooks].each do |page|
+      [ "/#{page}", "/#{page}/new" ].each do |path|
+        get path
+        assert_response :success, path
+        assert_no_match(/&lt;\/?(li|ul|a|div|span)\b/, response.body, "markup leaked on #{path}")
+      end
+    end
   end
 
   test "the customer list counts unread messages in one query per page" do

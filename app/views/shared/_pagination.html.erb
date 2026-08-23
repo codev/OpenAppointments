@@ -4,11 +4,11 @@
 <% start_page = [ 1, page - window / 2 ].max %>
 <% end_page = [ page_count, start_page + window - 1 ].min %>
 <% start_page = [ 1, end_page - window + 1 ].max %>
-<% link = ->(label, target, disabled: false, active: false) do %>
+<% link = ->(label, target, disabled: false, active: false) { capture do %>
     <li class="page-item <%= 'disabled' if disabled %> <%= 'active' if active %>">
         <%= link_to label, url_for(action: :index, keyword: keyword.presence, page: target), class: "page-link" %>
     </li>
-<% end %>
+<% end } %>
 <ul class="pagination pagination-sm justify-content-center mt-3 mb-0">
     <%= link.call("«".html_safe, page - 1, disabled: page <= 1) %>
     <% if start_page > 1 %>
