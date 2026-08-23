@@ -39,17 +39,6 @@ Rails.application.routes.draw do
   post "appointment_series/:id/reschedule" => "appointment_series#reschedule"
   post "appointment_series/:id/cancel" => "appointment_series#cancel", as: :cancel_appointment_series
 
-  # Backend CRUD pages (EA pattern: page GET + find/search/store/update/destroy).
-  # EA declares find as GET but the ported JS clients $.post it, so find takes both.
-  # Unavailabilities has no page in EA, only the JSON endpoints.
-  %w[unavailabilities].each do |resource|
-    match "#{resource}/find" => "#{resource}#find", via: [ :get, :post ]
-    post "#{resource}/search" => "#{resource}#search"
-    post "#{resource}/store" => "#{resource}#store"
-    post "#{resource}/update" => "#{resource}#update"
-    post "#{resource}/destroy" => "#{resource}#destroy"
-  end
-
   # Old backend page URL after the assistant rename
   get "secretaries" => redirect("/assistants")
 

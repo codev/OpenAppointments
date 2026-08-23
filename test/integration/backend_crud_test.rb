@@ -69,26 +69,4 @@ class BackendCrudTest < ActionDispatch::IntegrationTest
       assert_response :forbidden, "expected /#{page} to be forbidden"
     end
   end
-
-  test "unavailabilities endpoints work without a page" do
-    login_admin
-
-    post "/unavailabilities/store", params: {
-      unavailability: { start_datetime: "2026-07-21 09:00:00", end_datetime: "2026-07-21 11:00:00",
-                        notes: "Dentist", id_users_provider: users(:zane).id }
-    }
-    assert_response :success
-    body = response.parsed_body
-    assert_equal true, body["success"]
-    record = Appointment.unavailabilities.find(body["id"])
-    assert record.is_unavailability
-
-    post "/unavailabilities/search", params: { keyword: "Dentist" }
-    assert_response :success
-    assert_equal 1, response.parsed_body.length
-
-    get "/unavailabilities/find", params: { unavailability_id: record.id }
-    assert_response :success
-    assert_equal "Dentist", response.parsed_body["notes"]
-  end
 end
