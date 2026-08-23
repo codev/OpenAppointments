@@ -6,20 +6,15 @@
                 <%= render "shared/settings_nav" %>
             </div>
             <div class="col-sm-9">
-                <form>
-                    <fieldset>
+                <%= settings_form "/theme_settings/save", frame: false do %>
                         <div class="d-flex justify-content-between align-items-center border-bottom mb-4 py-2">
                             <h4 class="mb-0 fw-light">
                                 <%= lang('theme') %>
                             </h4>
 
-                            <% if can?(:edit, :system_settings) %>
-                                <button type="button" id="save-settings" class="btn btn-primary">
-                                    <i class="fas fa-check-square me-2"></i>
-                                    <%= lang('save') %>
-                                </button>
-                            <% end %>
+                            <%= settings_save_button %>
                         </div>
+                        <%= settings_flash %>
 
                         <div class="row mb-5">
                             <div class="col-12">
@@ -28,13 +23,7 @@
                                         <%= lang('theme') %>
                                     </label>
 
-                                    <select id="theme" data-field="theme" class="form-select d-none">
-                                        <% vars(:available_themes).each do |available_theme| %>
-                                            <option value="<%= available_theme %>">
-                                                <%= available_theme.capitalize %>
-                                            </option>
-                                        <% end %>
-                                    </select>
+                                    <%= setting_select "theme", vars(:available_themes).map { |t| [ t.capitalize, t ] }, class: "form-select d-none" %>
 
                                     <div id="theme-cards" class="row g-3 mb-3">
                                         <% vars(:available_themes).each do |available_theme| %>
@@ -114,8 +103,7 @@
                                         <%= lang('company_color') %>
                                     </label>
 
-                                    <input type="color" id="company-color" data-field="company_color"
-                                           class="form-control">
+                                    <%= setting_text "company_color", type: "color" %>
                                 </div>
 
                                 <div class="mb-3">
@@ -123,8 +111,7 @@
                                         <%= lang('secondary_color') %>
                                     </label>
 
-                                    <input type="color" id="company-secondary-color"
-                                           data-field="company_secondary_color" class="form-control">
+                                    <%= setting_text "company_secondary_color", type: "color" %>
                                 </div>
 
                                 <div class="mb-3">
@@ -132,8 +119,7 @@
                                         <%= lang('background_color') %>
                                     </label>
 
-                                    <input type="color" id="company-background-color"
-                                           data-field="company_background_color" class="form-control">
+                                    <%= setting_text "company_background_color", type: "color" %>
                                 </div>
 
                                 <div class="mb-3">
@@ -141,21 +127,19 @@
                                         <%= lang('custom_css') %>
                                     </label>
 
-                                    <textarea id="custom-css" data-field="custom_css" rows="8"
-                                              class="form-control font-monospace" spellcheck="false"></textarea>
+                                    <%= setting_textarea "custom_css", class: "form-control font-monospace", rows: 8 %>
                                     <div class="form-text text-muted small">
                                         <%= lang('custom_css_hint') %>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </fieldset>
-                </form>
-            </div>
+                    <% end %>
+                            </div>
         </div>
     </div>
 </div>
 
 <% content_for :scripts do %>
-    <%= ea_js "utils/contrast", "http/theme_settings_http_client", "pages/theme_settings" %>
+    <%= ea_js "utils/contrast", "pages/theme_settings" %>
 <% end %>

@@ -2,8 +2,10 @@
 # value, ids as the old pages had (name dasherized), data-field kept for the few
 # page scripts that read it.
 module SettingsFormHelper
-  def settings_form(url, multipart: false, &block)
-    form_with(url: url, method: :post, id: "settings-form", multipart: multipart, data: { turbo_frame: "settings" }, &block)
+  # frame: false posts the whole page (for settings the layout itself renders).
+  def settings_form(url, multipart: false, frame: true, &block)
+    data = frame ? { turbo_frame: "settings" } : { turbo: false }
+    form_with(url: url, method: :post, id: "settings-form", multipart: multipart, data: data, &block)
   end
 
   def settings_flash

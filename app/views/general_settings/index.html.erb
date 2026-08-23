@@ -6,8 +6,7 @@
                 <%= render "shared/settings_nav" %>
             </div>
             <div class="col-sm-9">
-                <turbo-frame id="settings">
-                    <%= settings_form "/general_settings/save", multipart: true do %>
+                        <%= settings_form "/general_settings/save", multipart: true, frame: false do %>
                         <div class="d-flex justify-content-between align-items-center border-bottom mb-4 py-2">
                             <h4 class="mb-0 fw-light">
                                 <%= lang('general_settings') %>
@@ -215,8 +214,7 @@
                         </div>
 
                     <% end %>
-                </turbo-frame>
-            </div>
+                </div>
         </div>
     </div>
 </div>

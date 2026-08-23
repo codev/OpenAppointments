@@ -5,7 +5,6 @@
  * accessibility check (split out of the general settings page).
  */
 App.Pages.ThemeSettings = (function () {
-    const $saveSettings = $('#save-settings');
     const $companyColor = $('#company-color');
     const $secondaryColor = $('#company-secondary-color');
     const $backgroundColor = $('#company-background-color');
@@ -49,39 +48,6 @@ App.Pages.ThemeSettings = (function () {
     function onThemeCardSelect(event) {
         $theme.val($(event.currentTarget).data('theme'));
         markSelectedThemeCard();
-    }
-
-    function deserialize(themeSettings) {
-        themeSettings.forEach((themeSetting) => {
-            $('[data-field="' + themeSetting.name + '"]').val(themeSetting.value);
-        });
-    }
-
-    function serialize() {
-        const themeSettings = [];
-
-        $('[data-field]').each((index, field) => {
-            const $field = $(field);
-
-            themeSettings.push({
-                name: $field.data('field'),
-                value: $field.val(),
-            });
-        });
-
-        return themeSettings;
-    }
-
-    /**
-     * Save the theme settings.
-     */
-    function onSaveSettingsClick() {
-        App.Http.ThemeSettings.save(serialize()).done(() => {
-            App.Layouts.Backend.displayNotification(lang('settings_saved'));
-
-            // Reload so the saved theme and colours take effect immediately.
-            setTimeout(() => window.location.reload(), 700);
-        });
     }
 
     /**
@@ -151,9 +117,7 @@ App.Pages.ThemeSettings = (function () {
      * Initialize the module.
      */
     function initialize() {
-        $saveSettings.on('click', onSaveSettingsClick);
 
-        deserialize(vars('theme_settings'));
 
         $('.apply-suggested-colors').on('click', onApplySuggestedColorsClick);
 
