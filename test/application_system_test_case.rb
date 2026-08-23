@@ -15,4 +15,19 @@ class ApplicationSystemTestCase < ActionDispatch::SystemTestCase
       options.add_argument("--user-data-dir=#{profile_dir}")
     end
   end
+
+  def login_as_admin
+    visit login_url
+    fill_in "username", with: "administrator"
+    fill_in "password", with: "administrator1"
+    find("#login").click
+    assert_current_path %r{/calendar}, wait: 5
+  end
+
+  # Confirms the EA message modal (jQuery pages and Turbo confirms alike).
+  def confirm_modal(title, button)
+    assert_selector "#message-modal .modal-title", text: title, wait: 5
+    within("#message-modal") { click_on button }
+    assert_no_selector "#message-modal", wait: 5
+  end
 end

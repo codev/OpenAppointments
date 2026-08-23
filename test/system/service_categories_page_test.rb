@@ -2,11 +2,7 @@ require "application_system_test_case"
 
 class ServiceCategoriesPageTest < ApplicationSystemTestCase
   setup do
-    visit login_url
-    fill_in "username", with: "administrator"
-    fill_in "password", with: "administrator1"
-    find("#login").click
-    assert_current_path %r{/calendar}, wait: 5
+    login_as_admin
     visit service_categories_url
     assert_selector ".service-category-row", wait: 5
   end
@@ -39,12 +35,10 @@ class ServiceCategoriesPageTest < ApplicationSystemTestCase
     assert_field "service_category[name]", with: "Hair"
 
     click_on "Delete"
-    assert_selector "#message-modal .modal-title", text: "Delete Service Category", wait: 5
-    within("#message-modal") { click_on "Cancel" }
-    assert_no_selector "#message-modal", wait: 5
+    confirm_modal "Delete Service Category", "Cancel"
     assert ServiceCategory.exists?(service_categories(:hair).id)
     click_on "Delete"
-    within("#message-modal") { click_on "Delete" }
+    confirm_modal "Delete Service Category", "Delete"
     assert_selector ".alert-success", text: "Service category deleted", wait: 5
     assert_no_selector ".service-category-row[data-id='#{service_categories(:hair).id}']", visible: :all
     assert_no_selector "#service-categories-page.editing"
@@ -67,8 +61,7 @@ class ServiceCategoriesPageTest < ApplicationSystemTestCase
     ServiceCategory.update_all(sort_order: nil)
     ServiceCategory.find_by!(name: "Hair").update!(sort_order: 1)
     click_on "Sort Alphabetically"
-    assert_selector "#message-modal .modal-title", text: "Sort Alphabetically", wait: 5
-    within("#message-modal") { click_on "Sort Alphabetically" }
+    confirm_modal "Sort Alphabetically", "Sort Alphabetically"
     assert_selector ".service-category-row:first-child strong", text: "Beard", wait: 5
     assert_nil ServiceCategory.find_by!(name: "Hair").reload.sort_order
   end
