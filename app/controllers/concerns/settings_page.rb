@@ -17,7 +17,7 @@ module SettingsPage
   # EA settings_model->get() row shape. like: SQL prefix filter (e.g. "api_").
   def settings_rows(like: nil, filter_sensitive: true)
     scope = Setting.order(:id)
-    scope = scope.where("name LIKE ?", "#{Setting.sanitize_sql_like(like)}%") if like
+    scope = scope.where("name LIKE ? ESCAPE '\\'", "#{Setting.sanitize_sql_like(like)}%") if like
     rows = scope.map { |setting| { "id" => setting.id, "name" => setting.name, "value" => setting.value } }
     rows.reject! { |row| SENSITIVE_SETTING_NAMES.include?(row["name"]) } if filter_sensitive
     rows
