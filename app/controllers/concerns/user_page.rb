@@ -17,6 +17,8 @@ module UserPage
 
   def role = Role.find_by!(slug: self.class::PAGE[:role])
 
+  def new_record = User.new(role: role)
+
   def filter(scope, keyword)
     return scope if keyword.blank?
 
@@ -55,10 +57,14 @@ module UserPage
     end
   end
 
-  def after_save
+  def settings_to_apply
     settings = setting_params.except(:password_confirmation)
     settings[:notifications] = ActiveModel::Type::Boolean.new.cast(settings[:notifications]) if settings.key?(:notifications)
-    apply_user_settings!(@record, settings.stringify_keys)
+    settings
+  end
+
+  def after_save
+    apply_user_settings!(@record, settings_to_apply.stringify_keys)
     save_record_picture(@record, user_fields)
   end
 end

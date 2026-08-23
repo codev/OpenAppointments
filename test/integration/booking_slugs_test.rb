@@ -39,8 +39,8 @@ class BookingSlugsTest < ActionDispatch::IntegrationTest
     login_admin
     get "/services/#{services(:haircut).id}/edit"
     assert_select "a[href=?]", "/?service=#{services(:haircut).booking_slug}"
-    post "/providers/search", params: { keyword: "" }
-    assert(response.parsed_body.any? { |row| row["booking_slug"].present? })
+    get "/providers/#{users(:zane).id}/edit"
+    assert_select "a[href=?]", "/?provider=#{users(:zane).booking_slug}"
   end
 
   test "regenerate endpoints issue a fresh slug" do
@@ -55,8 +55,8 @@ class BookingSlugsTest < ActionDispatch::IntegrationTest
 
     provider = users(:zane)
     old_slug = provider.booking_slug
-    post "/providers/regenerate_link", params: { provider_id: provider.id }
-    assert_response :success
+    post "/providers/#{provider.id}/regenerate_link"
+    assert_redirected_to "/providers/#{provider.id}/edit"
     assert_not_equal old_slug, provider.reload.booking_slug
   end
 

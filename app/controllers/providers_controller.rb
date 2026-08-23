@@ -1,105 +1,19 @@
-# Providers admin CRUD, port of EA's Providers controller.
+# Providers admin: Rails views inside Turbo Frames. The working plan editor
+# (utils/working_plan.js) writes its JSON into hidden settings fields.
 class ProvidersController < ApplicationController
-  include BackendPage
-  include PictureUpload
-  include UserCrud
+  include UserPage
 
-  layout "backend"
+  PAGE = { resource: :users, menu: "users", title: "providers", role: Role::PROVIDER,
+           save_webhook: Webhooks::PROVIDER_SAVE, delete_webhook: Webhooks::PROVIDER_DELETE,
+           saved: "provider_saved", deleted: "provider_deleted" }.freeze
 
-  ALLOWED_FIELDS = %w[id name email alt_number mobile_number phone_number address city state
-                      zip_code notes about services_description timezone language
-                      is_private ldap_dn id_roles settings services].freeze
-  ALLOWED_SETTING_FIELDS = %w[username password working_plan working_plan_exceptions
-                              notifications].freeze
+  before_action(only: %i[regenerate_link sort_alphabetically]) { require_privilege }
 
-  before_action :require_session, except: [ :index ]
-
-  def index
-    return unless require_backend_page!(:users)
-
-    services = Service.order(:name).map { |service| { "id" => service.id, "name" => service.name } }
-
-    backend_page_vars(page_title: helpers.lang("providers"), active_menu: "users")
-    script_vars(
-      company_working_plan: Setting.get("company_working_plan"),
-      first_weekday: Setting.get("first_weekday"),
-      min_password_length: Passwords::MIN_LENGTH,
-      timezones: helpers.timezones,
-      services: services
-    )
-    html_vars(
-      available_languages: Localization.available_languages,
-      services: Service.order(:name).map { |service| EaRows.service_row(service) }
-    )
-    render :index
-  end
-
-  # POST /providers/search
-  def search
-    raise ArgumentError, "Forbidden" if cannot?(:view, :users)
-
-    providers = search_users(User.providers.display_order.includes(:services, :settings), params[:keyword].to_s,
-                             params.fetch(:limit, 1000).to_i, params.fetch(:offset, 0).to_i)
-
-    render json: providers.map { |provider| EaRows.provider_row(provider) }
-  rescue ArgumentError => e
-    json_exception(e, status: :ok)
-  end
-
-  # POST /providers/store
-  def store
-    raise ArgumentError, "Forbidden" if cannot?(:add, :users)
-
-    save_provider(User.new(role: Role.find_by!(slug: Role::PROVIDER)))
-  rescue ArgumentError, ActiveRecord::RecordInvalid => e
-    json_exception(e, status: :ok)
-  end
-
-  # GET/POST /providers/find
-  def find
-    raise ArgumentError, "Forbidden" if cannot?(:view, :users)
-
-    provider_id = positive_id!(params.require(:provider_id), "provider")
-    render json: EaRows.provider_row(User.providers.find(provider_id))
-  rescue ArgumentError => e
-    json_exception(e, status: :ok)
-  end
-
-  # POST /providers/update
-  def update
-    raise ArgumentError, "Forbidden" if cannot?(:edit, :users)
-
-    save_provider(User.providers.find(permitted_provider.fetch("id")))
-  rescue ArgumentError, ActiveRecord::RecordInvalid => e
-    json_exception(e, status: :ok)
-  end
-
-  # POST /providers/destroy
-  def destroy
-    raise ArgumentError, "Forbidden" if cannot?(:delete, :users)
-
-    provider_id = positive_id!(params.require(:provider_id), "provider")
-    provider = User.providers.find(provider_id)
-    row = EaRows.provider_row(provider)
-    provider.destroy!
-    Webhooks.trigger(Webhooks::PROVIDER_DELETE, row)
-
-    render json: { success: true }
-  rescue ArgumentError => e
-    json_exception(e, status: :ok)
-  end
-
-  # POST /providers/regenerate_link
+  # POST /providers/:id/regenerate_link
   def regenerate_link
-    raise ArgumentError, "Forbidden" if cannot?(:edit, :users)
-
-    provider_id = positive_id!(params.require(:provider_id), "provider")
-    provider = User.providers.find(provider_id)
+    provider = record_scope.find(params[:id])
     provider.update_columns(booking_slug: BookingSlug.unique_for(User))
-
-    render json: { success: true, booking_slug: provider.booking_slug }
-  rescue ArgumentError => e
-    json_exception(e, status: :ok)
+    redirect_to edit_provider_path(provider)
   end
 
   # POST /providers/reorder - persist the dragged order (1-based).
@@ -119,57 +33,38 @@ class ProvidersController < ApplicationController
 
   # POST /providers/sort_alphabetically - clear the manual order.
   def sort_alphabetically
-    raise ArgumentError, "Forbidden" if cannot?(:edit, :users)
-
     User.providers.update_all(sort_order: nil)
-    render json: { success: true }
-  rescue ArgumentError => e
-    json_exception(e, status: :ok)
+    redirect_to providers_path
   end
 
   private
 
-  def permitted_provider
-    value = params.require(:provider)
-    if value.is_a?(ActionController::Parameters)
-      value = value.permit(*(ALLOWED_FIELDS - %w[settings services]).map(&:to_sym),
-                           services: [], settings: ALLOWED_SETTING_FIELDS.map(&:to_sym)).to_h
-    end
-    value
+  def record_scope = User.providers.display_order.includes(:settings, :services)
+
+  def page_script_vars = script_vars(first_weekday: Setting.get("first_weekday"))
+
+  def record_params
+    super.merge(user_fields.permit(:about, :services_description))
   end
 
-  def save_provider(provider)
-    provider_params = permitted_provider
-    settings = (provider_params["settings"] || {}).slice(*ALLOWED_SETTING_FIELDS)
-    service_ids = provider_params["services"] || []
-
-    validate_user_payload!(provider_params, settings, "provider")
-    validate_unique_role_email!(User.providers, provider_params)
-
-    # EA optional fields: working_plan defaults to the company plan, exceptions to none.
-    settings["working_plan"] = Setting.get("company_working_plan") unless settings.key?("working_plan")
-    settings["working_plan_exceptions"] = "{}" unless settings.key?("working_plan_exceptions")
-
-    provider.assign_attributes(
-      provider_params.except("id", "settings", "services", "alt_number", "id_roles")
-    )
-    provider.save!
-    apply_user_settings!(provider, settings)
-    set_service_ids(provider, service_ids)
-
-    Webhooks.trigger(Webhooks::PROVIDER_SAVE, EaRows.provider_row(provider))
-    render json: { success: true, id: provider.id }
+  def setting_params
+    super.merge(user_fields.fetch(:settings, {}).permit(:working_plan, :working_plan_exceptions).to_h)
   end
 
-  # EA Providers_model::set_service_ids: re-insert the join rows.
-  def set_service_ids(provider, service_ids)
-    provider.provider_service_links.delete_all
-    Array(service_ids).each do |service_id|
-      ServiceProviderLink.create!(id_users: provider.id, id_services: service_id)
+  # EA optional field: a new provider's working plan defaults to the company plan.
+  def settings_to_apply
+    settings = super
+    settings[:working_plan] = Setting.get("company_working_plan") if @record.settings.nil? && settings[:working_plan].blank?
+    settings
+  end
+
+  def after_save
+    super
+    return unless user_fields.key?(:services)
+
+    @record.provider_service_links.delete_all
+    Array(user_fields[:services]).compact_blank.each do |service_id|
+      ServiceProviderLink.create!(id_users: @record.id, id_services: service_id)
     end
   end
-
-  def picture_record = User.providers.find(params[:id])
-
-  def picture_permission_resource = :users
 end

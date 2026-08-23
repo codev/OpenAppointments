@@ -119,3 +119,37 @@ class ProvidersPageTest < ApplicationSystemTestCase
     assert_nil users(:zane).reload.sort_order
   end
 end
+
+# Rails views only: the editor round-trips through hidden fields, and an invalid
+# plan blocks the submit client side.
+class ProvidersFormTest < ApplicationSystemTestCase
+  test "a start after the end keeps the form open with the message; a break and an exception save" do
+    login_as_admin
+    visit providers_url
+    find(".provider-row", text: "Zane").click
+    assert_selector "#providers-page.editing", wait: 5
+    click_on "Working Plan"
+    assert_selector "#working-plan.active", wait: 5
+    find("#monday-start").set("5:00 pm")
+    find("#monday-end").set("9:00 am")
+    click_on "Save"
+    assert_selector ".backend-notification", wait: 5
+    assert_selector "#providers-page.editing"
+    assert_equal "09:00", JSON.parse(users(:zane).settings.reload.working_plan)["monday"]["start"]
+
+    find("#monday-start").set("9:00 am")
+    find("#monday-end").set("5:00 pm")
+    click_on "Add Unavailable/Holiday Days"
+    assert_selector "#working-plan-exceptions-modal", visible: true, wait: 5
+    within("#working-plan-exceptions-modal") do
+      # flatpickr inputs (DMY in the fixtures), typed then blurred
+      find("#working-plan-exceptions-start-date").set("01/09/2026\t")
+      find("#working-plan-exceptions-end-date").set("01/09/2026\t")
+      find("#working-plan-exceptions-save").click
+    end
+    assert_selector "table.working-plan-exceptions tbody tr", count: 1, wait: 5
+    click_on "Save"
+    assert_text "Provider saved", wait: 5
+    assert_equal 1, WorkingPlanException.where(id_users_provider: users(:zane).id).count
+  end
+end

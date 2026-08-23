@@ -70,59 +70,6 @@ class BackendCrudTest < ActionDispatch::IntegrationTest
     end
   end
 
-  test "provider store persists settings, services and working plan exceptions" do
-    login_admin
-    company_plan = { monday: { start: "09:00", end: "17:00", breaks: [] } }.to_json
-    Setting.set("company_working_plan", company_plan)
-
-    post "/providers/store", params: {
-      provider: {
-        name: "Pat Stylist", email: "pat@example.org", mobile_number: "07700 900123",
-        services: [ services(:haircut).id ],
-        settings: {
-          username: "patstylist", password: "patstylist1", notifications: "1",
-          working_plan_exceptions: { "0" => { startDate: "2026-08-01", endDate: "2026-08-01",
-                                              startTime: "10:00", endTime: "14:00" } }.values.to_json
-        }
-      }
-    }
-    assert_response :success
-    body = response.parsed_body
-    assert_equal true, body["success"]
-
-    provider = User.providers.find(body["id"])
-    assert_equal "patstylist", provider.settings.username
-    assert_equal "07700 900123", provider.mobile_number
-    assert Passwords.verify(nil, "patstylist1", provider.settings.password)
-    assert_equal company_plan, provider.settings.working_plan,
-                 "working_plan should default to the company plan"
-    assert_equal [ services(:haircut).id ], provider.provider_service_links.map(&:id_services)
-    assert_equal 1, WorkingPlanException.where(id_users_provider: provider.id).count
-
-    # New providers without a password are rejected, as in EA.
-    post "/providers/store", params: {
-      provider: { name: "No Password", email: "nopass@example.org",
-                  settings: { username: "nopassword" } }
-    }
-    assert_equal false, response.parsed_body["success"]
-  end
-
-  test "provider store rejects a duplicate email with an error payload" do
-    login_admin
-
-    assert_no_difference "User.providers.count" do
-      post "/providers/store", params: {
-        provider: {
-          name: "Chair 2", email: users(:zane).email,
-          settings: { username: "chairtwo", password: "chairtwopass1" }
-        }
-      }
-    end
-    body = response.parsed_body
-    assert_equal false, body["success"]
-    assert_match(/already in use/i, body["message"])
-  end
-
   test "unavailabilities endpoints work without a page" do
     login_admin
 

@@ -21,12 +21,6 @@ class SearchPaginationTest < ActionDispatch::IntegrationTest
     assert_equal "5", response.headers["X-Total-Count"]
   end
 
-  test "providers search reports the total through the shared user search" do
-    post "/providers/search", params: { keyword: "", limit: 1, offset: 0 }
-    assert_response :success
-    assert_equal User.providers.count.to_s, response.headers["X-Total-Count"]
-  end
-
   test "categories report totals" do
     post "/service_categories/search", params: { keyword: "", limit: 1, offset: 0 }
     assert_response :success

@@ -76,8 +76,8 @@ class SettingsPagesTest < ActionDispatch::IntegrationTest
     assert_response :success
     assert_equal "Europe/London", users(:zane).reload.timezone
 
-    get "/providers"
-    assert_select "div.d-none label[for='timezone']"
+    get "/providers/new"
+    assert_select "div.d-none label[for='provider_timezone']"
     get "/booking"
     assert_select "div.d-none label[for='select-timezone']"
     assert_match '"fixed_timezone":true', response.body

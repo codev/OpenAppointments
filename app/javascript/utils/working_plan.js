@@ -381,7 +381,7 @@ App.Utils.WorkingPlan = (function () {
              *
              * @param {jQuery.Event} event
              */
-            $('.working-plan tbody').on('click', 'input:checkbox', (event) => {
+            $(document).on('click', '.working-plan tbody input:checkbox', (event) => {
                 const id = $(event.currentTarget).attr('id');
 
                 const isRegularFormat = vars('time_format') === 'regular';
@@ -411,7 +411,7 @@ App.Utils.WorkingPlan = (function () {
              * A new row is added on the table and the user can enter the new break
              * data. After that he can either press the save or cancel button.
              */
-            $('.add-break').on('click', () => {
+            $(document).on('click', '.add-break', () => {
                 const timeFormat = vars('time_format') === 'regular' ? 'h:mm a' : 'HH:mm';
 
                 const $newBreak = $('<tr/>', {

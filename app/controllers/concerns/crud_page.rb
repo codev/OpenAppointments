@@ -24,7 +24,7 @@ module CrudPage
 
   # new and edit return the whole page too: Turbo pulls the detail frame out of it.
   def new
-    @record = record_scope.new
+    @record = new_record
     @editing = true
     render_page
   end
@@ -35,7 +35,7 @@ module CrudPage
   end
 
   def create
-    @record = record_scope.new
+    @record = new_record
     save_record
   end
 
@@ -51,6 +51,8 @@ module CrudPage
   end
 
   private
+
+  def new_record = record_scope.new
 
   def index_path(**query) = url_for(controller: controller_name, action: :index, **query)
 
@@ -68,6 +70,7 @@ module CrudPage
     end
 
     backend_page_vars(page_title: helpers.lang(self.class::PAGE[:title]), active_menu: self.class::PAGE[:menu])
+    page_script_vars
     @keyword = params[:keyword].to_s
     @records = filter(record_scope, @keyword)
     render :index, status: status
@@ -93,8 +96,11 @@ module CrudPage
     render_page(status: :unprocessable_entity)
   end
 
-  # Hooks: before_save raises ArgumentError for cross-field checks; after_save
-  # persists dependent data inside the save transaction.
+  # Hooks: page_script_vars adds window.vars entries the page script needs;
+  # before_save raises ArgumentError for cross-field checks; after_save persists
+  # dependent data inside the save transaction.
+  def page_script_vars; end
+
   def before_save; end
 
   def after_save; end

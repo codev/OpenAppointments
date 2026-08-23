@@ -34,7 +34,7 @@ Rails.application.routes.draw do
   # Backend CRUD pages (EA pattern: page GET + find/search/store/update/destroy).
   # EA declares find as GET but the ported JS clients $.post it, so find takes both.
   # Unavailabilities has no page in EA, only the JSON endpoints.
-  %w[customers providers unavailabilities].each do |resource|
+  %w[customers unavailabilities].each do |resource|
     get resource => "#{resource}#index" unless resource == "unavailabilities"
     match "#{resource}/find" => "#{resource}#find", via: [ :get, :post ]
     post "#{resource}/search" => "#{resource}#search"
@@ -45,9 +45,6 @@ Rails.application.routes.draw do
 
   # Old backend page URL after the assistant rename
   get "secretaries" => redirect("/assistants")
-
-  # Booking link slug regeneration
-  post "providers/regenerate_link" => "providers#regenerate_link"
 
   # Drag-to-reorder for the booking page ordering
   %w[services service_categories providers].each do |resource|
@@ -63,6 +60,9 @@ Rails.application.routes.draw do
   resources :webhooks, only: %i[index new create edit update destroy]
   resources :admins, only: %i[index new create edit update destroy]
   resources :assistants, only: %i[index new create edit update destroy]
+  resources :providers, only: %i[index new create edit update destroy] do
+    post :regenerate_link, on: :member
+  end
   resources :services, only: %i[index new create edit update destroy] do
     post :regenerate_link, on: :member
   end
@@ -79,8 +79,6 @@ Rails.application.routes.draw do
   get "import/status" => "import#status"
   post "import/reset" => "import#reset"
 
-  # Record pictures (cards display mode)
-  post "providers/:id/picture" => "providers#save_picture"
 
   # Public booking wizard
   root "booking#index"
