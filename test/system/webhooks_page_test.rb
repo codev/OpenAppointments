@@ -82,3 +82,21 @@ class WebhooksPageTest < ApplicationSystemTestCase
     assert_nil Webhook.find_by(name: "No url")
   end
 end
+
+# Rails views only: the action count in the list follows the switches.
+class WebhooksFormTest < ApplicationSystemTestCase
+  test "unticking every action leaves the webhook with none" do
+    hook = Webhook.create!(name: "Old hook", url: "https://hooks.example.org/old",
+                           actions: "appointment_save,customer_delete")
+    login_as_admin
+    visit webhooks_url
+    find(".webhook-row", text: "2 Actions").click
+    assert_selector "#webhooks-page.editing", wait: 5
+    uncheck "Appointment Save"
+    uncheck "Customer Delete"
+    click_on "Save"
+    assert_text "Webhook saved", wait: 5
+    assert_selector ".webhook-row.selected", text: "0 Actions"
+    assert_equal [], hook.reload.action_list
+  end
+end

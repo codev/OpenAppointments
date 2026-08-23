@@ -1,7 +1,7 @@
 # Admin CRUD pages rendered as Rails views inside Turbo Frames (see
 # shared/_crud_page). The controller sets PAGE (privilege resource, menu, title
-# key, save/delete webhooks) and defines record_scope, filter(scope, keyword),
-# record_params, and optionally after_save.
+# key, saved/deleted message keys, optional save/delete webhooks) and defines
+# record_scope, filter(scope, keyword), record_params, and optionally after_save.
 module CrudPage
   extend ActiveSupport::Concern
 
@@ -45,7 +45,7 @@ module CrudPage
   def destroy
     row = Webhooks.to_row(@record)
     @record.destroy!
-    Webhooks.trigger(self.class::PAGE[:delete_webhook], row)
+    trigger_webhook(:delete_webhook, row)
     redirect_to index_path, notice: helpers.lang(self.class::PAGE[:deleted])
   end
 
@@ -77,7 +77,7 @@ module CrudPage
       @record.save!
       after_save
     end
-    Webhooks.trigger(self.class::PAGE[:save_webhook], Webhooks.to_row(@record))
+    trigger_webhook(:save_webhook, Webhooks.to_row(@record))
     redirect_to index_path(selected: @record.id), notice: helpers.lang(self.class::PAGE[:saved])
   rescue ArgumentError => e
     @record.errors.add(:base, e.message)
@@ -85,4 +85,9 @@ module CrudPage
   end
 
   def after_save; end
+
+  def trigger_webhook(key, row)
+    action = self.class::PAGE[key]
+    Webhooks.trigger(action, row) if action
+  end
 end

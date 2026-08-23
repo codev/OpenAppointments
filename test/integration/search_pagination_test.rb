@@ -34,11 +34,9 @@ class SearchPaginationTest < ActionDispatch::IntegrationTest
     assert_equal User.providers.count.to_s, response.headers["X-Total-Count"]
   end
 
-  test "webhooks and categories report totals" do
-    %w[webhooks service_categories].each do |resource|
-      post "/#{resource}/search", params: { keyword: "", limit: 1, offset: 0 }
-      assert_response :success
-      assert response.headers["X-Total-Count"].present?, "missing header for #{resource}"
-    end
+  test "categories report totals" do
+    post "/service_categories/search", params: { keyword: "", limit: 1, offset: 0 }
+    assert_response :success
+    assert response.headers["X-Total-Count"].present?
   end
 end

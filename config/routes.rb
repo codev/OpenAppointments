@@ -34,7 +34,7 @@ Rails.application.routes.draw do
   # Backend CRUD pages (EA pattern: page GET + find/search/store/update/destroy).
   # EA declares find as GET but the ported JS clients $.post it, so find takes both.
   # Unavailabilities has no page in EA, only the JSON endpoints.
-  %w[customers services providers assistants admins unavailabilities webhooks].each do |resource|
+  %w[customers services providers assistants admins unavailabilities].each do |resource|
     get resource => "#{resource}#index" unless resource == "unavailabilities"
     match "#{resource}/find" => "#{resource}#find", via: [ :get, :post ]
     post "#{resource}/search" => "#{resource}#search"
@@ -61,6 +61,7 @@ Rails.application.routes.draw do
     post :search, on: :collection
   end
   resources :blocked_periods, only: %i[index new create edit update destroy]
+  resources :webhooks, only: %i[index new create edit update destroy]
 
   # 10to8 import page
   get "import" => "import#index"
