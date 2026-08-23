@@ -29,25 +29,25 @@ class BackendFieldSettingsTest < ActionDispatch::IntegrationTest
     assert_select "label[for=customer_phone_number] span.text-danger"
   end
 
-  test "appointments modal hides fields with display off" do
+  test "appointment form hides fields with display off" do
     Setting.set("display_address", "0")
     Setting.set("display_email", "1")
-    get "/calendar"
-    assert_select "#appointments-modal #address", false
-    assert_select "#appointments-modal #email"
+    get "/appointments/new"
+    assert_select "#appointment-form #address", false
+    assert_select "#appointment-form #email"
   end
 
-  test "appointments modal only marks fields required when the flag is on" do
+  test "appointment form only marks fields required when the flag is on" do
     Setting.set("display_email", "1")
     Setting.set("require_email", "0")
-    get "/calendar"
-    assert_select "#appointments-modal #email.required", false
-    assert_select "#appointments-modal label[for=email] span.text-danger", false
+    get "/appointments/new"
+    assert_select "#appointment-form #email[required]", false
+    assert_select "#appointment-form label[for=email] span.text-danger", false
 
     Setting.set("require_email", "1")
-    get "/calendar"
-    assert_select "#appointments-modal #email.required"
-    assert_select "#appointments-modal label[for=email] span.text-danger"
+    get "/appointments/new"
+    assert_select "#appointment-form #email[required]"
+    assert_select "#appointment-form label[for=email] span.text-danger"
   end
 
   test "customer notes stays visible regardless of the booking notes flag" do

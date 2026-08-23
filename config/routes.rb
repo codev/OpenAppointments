@@ -15,6 +15,14 @@ Rails.application.routes.draw do
   # Backend calendar
   get "calendar" => "calendar#index", as: :calendar
   get "appointments" => "appointments#index", as: :appointments
+  # Event dialog forms (rendered into the calendar pages' event frame)
+  resources :appointments, only: %i[new create edit update] do
+    member do
+      get :remove, action: :remove_form
+      post :remove
+    end
+  end
+  resources :unavailabilities, only: %i[new create edit update destroy], controller: "unavailabilities_form"
   get "calendar/reschedule/:appointment_hash" => "calendar#reschedule"
   post "calendar/get_calendar_appointments" => "calendar#get_calendar_appointments"
   post "calendar/get_calendar_appointments_for_table_view" => "calendar#get_calendar_appointments_for_table_view"

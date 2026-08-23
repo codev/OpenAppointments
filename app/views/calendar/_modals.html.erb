@@ -1,9 +1,10 @@
-<%= render "shared/appointments_modal",
-           available_services: vars(:available_services),
-           appointment_status_options: vars(:appointment_statuses),
-           **%i[email phone_number address city zip_code notes]
-             .flat_map { |f| [ [ :"display_#{f}", vars(:"display_#{f}") ], [ :"require_#{f}", vars(:"require_#{f}") ] ] }.to_h %>
-
-<%= render "shared/unavailabilities_modal" %>
+<%# The event dialog (appointment, unavailability and remove forms) and the
+    working plan exception dialog. The reschedule link opens its appointment. %>
+<%= render "shared/event_modal", src: (script_vars[:edit_appointment] && edit_appointment_path(script_vars[:edit_appointment]["id"])) %>
 
 <%= render "shared/working_plan_exceptions_modal" %>
+
+<% content_for :scripts do %>
+    <%= javascript_include_tag "vendor/recurring_select/recurring_select" %>
+    <%= ea_js "components/color_selection", "components/repeat_fields", "components/event_modal" %>
+<% end %>

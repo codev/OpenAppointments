@@ -1,3 +1,6 @@
+# Browser tests run one at a time: a Chrome per core starves the box and flakes.
+# Set before test_helper configures parallelisation.
+ENV["PARALLEL_WORKERS"] ||= "1"
 require "test_helper"
 
 class ApplicationSystemTestCase < ActionDispatch::SystemTestCase
@@ -7,7 +10,8 @@ class ApplicationSystemTestCase < ActionDispatch::SystemTestCase
 
   driven_by :selenium, using: :headless_chrome, screen_size: [ 1400, 1400 ] do |options|
     if File.exist?(SNAP_CHROMIUM) && !system("which google-chrome > /dev/null 2>&1")
-      profile_dir = File.expand_path("~/snap/chromium/common/selenium-profile")
+      # One profile per test process: Rails runs the system tests in parallel.
+      profile_dir = File.expand_path("~/snap/chromium/common/selenium-profile-#{Process.pid}")
       FileUtils.mkdir_p(profile_dir)
       options.binary = SNAP_CHROMIUM
       options.add_argument("--no-sandbox")
@@ -16,11 +20,18 @@ class ApplicationSystemTestCase < ActionDispatch::SystemTestCase
     end
   end
 
+  # The login page submits through its script; under load the click can land
+  # before that binds, so wait for it and try once more if still on /login.
   def login_as_admin
     visit login_url
-    fill_in "username", with: "administrator"
-    fill_in "password", with: "administrator1"
-    find("#login").click
+    2.times do
+      assert_selector "#login", wait: 5
+      page.evaluate_script("typeof App !== 'undefined' && App.Pages && App.Pages.Login ? true : false")
+      fill_in "username", with: "administrator"
+      fill_in "password", with: "administrator1"
+      find("#login").click
+      break if has_current_path?(%r{/calendar}, wait: 5)
+    end
     assert_current_path %r{/calendar}, wait: 5
   end
 

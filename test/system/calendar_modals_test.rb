@@ -27,8 +27,8 @@ class CalendarModalsTest < ApplicationSystemTestCase
       assert_selector "#insert-appointment", visible: :all, wait: 10
       find("#calendar-actions [data-bs-toggle=dropdown]").click
       find("#insert-appointment").click
-      assert_selector "#appointments-modal", visible: true, wait: 5
-      within("#appointments-modal") do
+      assert_selector "#save-appointment", visible: true, wait: 5
+      within(find("#save-appointment").ancestor(".modal")) do
         select "Trim Cut", from: "select-service"
         select "Zane", from: "select-provider"
         find("#start-datetime").set("#{today} 2:00 pm\t")
@@ -48,8 +48,8 @@ class CalendarModalsTest < ApplicationSystemTestCase
 
       open_event("Trim Cut")
       within(".popover") { click_on "Edit" }
-      assert_selector "#appointments-modal", visible: true, wait: 5
-      within("#appointments-modal") do
+      assert_selector "#save-appointment", visible: true, wait: 5
+      within(find("#save-appointment").ancestor(".modal")) do
         assert_field "appointment-notes", with: /Fringe only|/
         fill_in "appointment-notes", with: "Fringe and wash"
         click_on "Save"
@@ -60,12 +60,12 @@ class CalendarModalsTest < ApplicationSystemTestCase
 
       open_event("Trim Cut")
       within(".popover") { click_on "Cancel" }
-      assert_selector "#message-modal .modal-title", text: "Cancel Appointment", wait: 5
-      within("#message-modal") { click_on "Yes" }
-      assert_selector "#message-modal textarea", wait: 5
-      find("#message-modal textarea").set("Client away")
-      within("#message-modal .modal-footer") { click_on "Cancel" }
-      assert_no_selector "#message-modal", wait: 5
+      assert_selector ".modal.show .modal-title", text: "Cancel Appointment", wait: 5
+      within(".modal.show") { has_button?("Yes") ? click_on("Yes") : choose("Yes") }
+      assert_selector "#cancellation-reason", visible: true, wait: 5
+      find("#cancellation-reason").set("Client away")
+      within(".modal.show .modal-footer") { click_on "Cancel" }
+      assert_no_selector ".modal.show", wait: 5
       assert_no_selector ".fc-event", text: "Trim Cut", wait: 10
       cancelled = Appointment.where("notes LIKE ?", "Fringe%").sole
       assert_equal "cancelled", cancelled.appointment_status&.kind
@@ -78,8 +78,8 @@ class CalendarModalsTest < ApplicationSystemTestCase
       visit appointments_url
       find("#calendar-actions [data-bs-toggle=dropdown]").click
       find("#insert-unavailability").click
-      assert_selector "#unavailabilities-modal", visible: true, wait: 5
-      within("#unavailabilities-modal") do
+      assert_selector "#save-unavailability", visible: true, wait: 5
+      within(find("#save-unavailability").ancestor(".modal")) do
         select "Zane", from: "unavailability-provider"
         find("#unavailability-start").set("#{today} 3:00 pm\t")
         find("#unavailability-end").set("#{today} 4:00 pm\t")

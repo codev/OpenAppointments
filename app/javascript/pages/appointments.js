@@ -212,7 +212,7 @@ App.Pages.Appointments = (function () {
             }
             $('#series-pattern-modal').modal('hide');
             App.Layouts.Backend.displayNotification(lang('series_saved'));
-            App.Components.AppointmentsModal.reportSkipped(response.skipped);
+            App.Components.EventModal.reportSkipped(response.skipped);
             loadSeries();
         });
     }
@@ -249,7 +249,7 @@ App.Pages.Appointments = (function () {
         reload();
 
         if (edit) {
-            Events.populateAppointmentModal(edit);
+            Events.openEventForm('appointments/' + edit.id + '/edit');
         }
 
         if (window.localStorage.getItem('OpenAppointments.SeriesView') === '1') {

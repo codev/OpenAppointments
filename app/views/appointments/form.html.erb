@@ -1,0 +1,200 @@
+<%# Appointment dialog: the appointment on the left and its customer below, as
+    EA's appointments modal. A new appointment offers a repeat pattern. %>
+<% new_record = @appointment.new_record? %>
+<% fields = { email: 120, phone_number: 60, address: 120, city: 120, zip_code: 120 } %>
+<turbo-frame id="event">
+    <%= form_with url: (new_record ? appointments_path : appointment_path(@appointment)), method: (new_record ? :post : :patch),
+                  id: "appointment-form", class: "event-form", data: { ask_notify: (new_record ? lang('new_appointment_title') : lang('appointment_update')) } do |f| %>
+        <div class="modal-header">
+            <h3 class="modal-title"><%= new_record ? lang('new_appointment_title') : lang('edit_appointment_title') %></h3>
+            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+            <% if @error %>
+                <div class="modal-message alert alert-danger"><%= @error %></div>
+            <% end %>
+            <%= hidden_field_tag "notify_users", "", id: "notify-users" %>
+            <%= hidden_field_tag "force_save", "1", id: "force-save" if @force_save %>
+            <% if @appointment.series %>
+                <div id="appointment-series-summary" class="alert alert-info py-2">
+                    <i class="fas fa-redo me-2"></i><span><%= @appointment.series.description %></span>
+                </div>
+            <% end %>
+
+            <fieldset>
+                <div class="row">
+                    <div class="col-12 col-sm-6">
+                        <div class="mb-3">
+                            <label for="select-service" class="form-label"><%= lang('service') %> <span class="text-danger">*</span></label>
+                            <% grouped = @services.group_by { |service| service.category&.name } %>
+                            <select name="appointment[id_services]" id="select-service" class="form-select" required
+                                    data-durations="<%= @services.to_h { |s| [ s.id, s.duration ] }.to_json %>"
+                                    data-colors="<%= @services.to_h { |s| [ s.id, s.color ] }.to_json %>">
+                                <% if grouped.keys.compact.any? %>
+                                    <% grouped.each do |category, services| %>
+                                        <optgroup label="<%= category || 'Uncategorized' %>">
+                                            <% services.each do |service| %>
+                                                <option value="<%= service.id %>" <%= 'selected' if service.id == @appointment.id_services %>><%= service.name %></option>
+                                            <% end %>
+                                        </optgroup>
+                                    <% end %>
+                                <% else %>
+                                    <% @services.each do |service| %>
+                                        <option value="<%= service.id %>" <%= 'selected' if service.id == @appointment.id_services %>><%= service.name %></option>
+                                    <% end %>
+                                <% end %>
+                            </select>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="select-provider" class="form-label"><%= lang('provider') %> <span class="text-danger">*</span></label>
+                            <select name="appointment[id_users_provider]" id="select-provider" class="form-select" required>
+                                <% @providers.each do |provider| %>
+                                    <option value="<%= provider.id %>" data-services="<%= provider.services.map(&:id).to_json %>"
+                                            data-timezone="<%= format_timezone(provider.effective_timezone) %>"
+                                            <%= 'selected' if provider.id == @appointment.id_users_provider %>><%= provider.name %></option>
+                                <% end %>
+                            </select>
+                        </div>
+
+                        <div class="mb-3">
+                            <%= render "shared/color_selection", attributes: 'id="appointment-color"', name: "appointment[color]",
+                                       value: @appointment.color %>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="appointment-location" class="form-label"><%= lang('location') %></label>
+                            <%= text_field_tag "appointment[location]", @appointment.location, id: "appointment-location", class: "form-control" %>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="appointment-meeting-link" class="form-label"><%= lang('meeting_link') %></label>
+                            <%= text_field_tag "appointment[meeting_link]", @appointment.meeting_link, id: "appointment-meeting-link",
+                                               class: "form-control", placeholder: "https://" %>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="appointment-status" class="form-label"><%= lang('status') %></label>
+                            <%= select_tag "appointment[status]", options_for_select(@statuses.map { |s| [ s["name"], s["name"] ] }, @appointment.status.presence),
+                                           id: "appointment-status", class: "form-select" %>
+                        </div>
+
+                        <% if new_record %>
+                            <div id="appointment-repeat">
+                                <%= render "shared/repeat_fields", prefix: "repeat" %>
+                            </div>
+                        <% end %>
+                    </div>
+
+                    <div class="col-12 col-sm-6">
+                        <div class="mb-3">
+                            <label for="start-datetime" class="form-label"><%= lang('start_date_time') %></label>
+                            <%= render "shared/event_datetime", name: "appointment[start_datetime]", value: @appointment.start_datetime, id: "start-datetime" %>
+                        </div>
+                        <div class="mb-3">
+                            <label for="end-datetime" class="form-label"><%= lang('end_date_time') %></label>
+                            <%= render "shared/event_datetime", name: "appointment[end_datetime]", value: @appointment.end_datetime, id: "end-datetime" %>
+                        </div>
+                        <div class="mb-3<%= timezone_hidden_class %>">
+                            <label class="form-label"><%= lang('timezone') %></label>
+                            <div class="border rounded d-flex justify-content-between align-items-center bg-light timezone-info">
+                                <div class="border-end w-50 p-1 text-center">
+                                    <small><%= lang('provider') %>: <span class="provider-timezone">-</span></small>
+                                </div>
+                                <div class="w-50 p-1 text-center">
+                                    <small><%= lang('current_user') %>: <span><%= timezones[session[:timezone].presence || "UTC"] %></span></small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="appointment-notes" class="form-label">
+                                <%= lang('notes') %>
+                                <% if vars(:require_notes) %><span class="text-danger">*</span><% end %>
+                            </label>
+                            <%= text_area_tag "appointment[notes]", @appointment.notes, id: "appointment-notes", class: "form-control", rows: 6,
+                                              required: vars(:require_notes) %>
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+            <br>
+            <fieldset>
+                <h5 class="mb-3 fw-light">
+                    <%= lang('customer_details_title') %>
+                    <button id="new-customer" class="btn btn-outline-secondary btn-sm" type="button"
+                            data-tippy-content="<%= lang('clear_fields_add_existing_customer_hint') %>">
+                        <i class="fas fa-plus-square me-2"></i><%= lang('new') %>
+                    </button>
+                    <button id="select-customer" class="btn btn-outline-secondary btn-sm" type="button"
+                            data-tippy-content="<%= lang('pick_existing_customer_hint') %>">
+                        <i class="fas fa-hand-pointer me-2"></i><span><%= lang('select') %></span>
+                    </button>
+                    <input id="filter-existing-customers" placeholder="<%= lang('type_to_filter_customers') %>"
+                           style="display: none;" class="input-sm form-control">
+                </h5>
+                <div id="existing-customers-list" style="display: none;">
+                    <% @customers.each do |customer| %>
+                        <div data-id="<%= customer.id %>" data-customer="<%= EaRows.customer_row(customer).to_json %>"><%= customer.name.presence || "[No Name]" %></div>
+                    <% end %>
+                </div>
+                <%= hidden_field_tag "customer[id]", @customer.id, id: "customer-id" %>
+                <div class="row">
+                    <div class="col-12 col-sm-6">
+                        <div class="mb-3">
+                            <label for="name" class="form-label"><%= lang('name') %> <span class="text-danger">*</span></label>
+                            <%= text_field_tag "customer[name]", @customer.name, id: "name", class: "form-control", maxlength: 220, required: true %>
+                        </div>
+                        <% %i[email phone_number].each do |field| %>
+                            <% next unless vars(:"display_#{field}") %>
+                            <div class="mb-3">
+                                <label for="<%= field.to_s.dasherize %>" class="form-label">
+                                    <%= lang(field.to_s) %>
+                                    <% if vars(:"require_#{field}") %><span class="text-danger">*</span><% end %>
+                                </label>
+                                <%= text_field_tag "customer[#{field}]", @customer.public_send(field), id: field.to_s.dasherize, class: "form-control",
+                                                   maxlength: fields[field], required: vars(:"require_#{field}") %>
+                            </div>
+                        <% end %>
+                        <div class="mb-3">
+                            <label class="form-label" for="language"><%= lang('language') %> <span class="text-danger">*</span></label>
+                            <%= select_tag "customer[language]", options_for_select(Localization.available_languages.map { |l| [ l.capitalize, l ] },
+                                                                                    @customer.language.presence || setting('default_language')),
+                                           id: "language", class: "form-select", required: true %>
+                        </div>
+                        <%= render "shared/custom_fields", name: "customer", record: @customer %>
+                    </div>
+                    <div class="col-12 col-sm-6">
+                        <% %i[address city zip_code].each do |field| %>
+                            <% next unless vars(:"display_#{field}") %>
+                            <div class="mb-3">
+                                <label for="<%= field.to_s.dasherize %>" class="form-label">
+                                    <%= lang(field.to_s) %>
+                                    <% if vars(:"require_#{field}") %><span class="text-danger">*</span><% end %>
+                                </label>
+                                <%= text_field_tag "customer[#{field}]", @customer.public_send(field), id: field.to_s.dasherize, class: "form-control",
+                                                   maxlength: fields[field], required: vars(:"require_#{field}") %>
+                            </div>
+                        <% end %>
+                        <div class="mb-3<%= timezone_hidden_class %>">
+                            <label class="form-label" for="timezone"><%= lang('timezone') %> <span class="text-danger">*</span></label>
+                            <%= select_tag "customer[timezone]",
+                                           grouped_options_for_select(grouped_timezones.map { |c, zones| [ c, zones.map { |v, n| [ n, v ] } ] },
+                                                                      @customer.timezone.presence || setting('default_timezone')),
+                                           id: "timezone", class: "form-select", required: true %>
+                        </div>
+                        <div class="mb-3">
+                            <label for="customer-notes" class="form-label"><%= lang('notes') %></label>
+                            <%= text_area_tag "customer[notes]", @customer.notes, id: "customer-notes", rows: 6, class: "form-control" %>
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal"><%= lang('cancel') %></button>
+            <button type="submit" id="save-appointment" class="btn btn-primary">
+                <i class="fas fa-check-square me-2"></i><%= lang('save') %>
+            </button>
+        </div>
+    <% end %>
+</turbo-frame>

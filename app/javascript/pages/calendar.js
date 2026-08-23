@@ -153,7 +153,7 @@ App.Pages.Calendar = (function () {
         $selectFilterItem.trigger('change');
 
         if (vars('edit_appointment')) {
-            Events.populateAppointmentModal(vars('edit_appointment'));
+            Events.openEventForm('appointments/' + vars('edit_appointment').id + '/edit');
             fullCalendar.gotoDate(moment(vars('edit_appointment').start_datetime).toDate());
         }
 

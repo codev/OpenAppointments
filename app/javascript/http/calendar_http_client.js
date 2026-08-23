@@ -72,35 +72,6 @@ App.Http.Calendar = (function () {
     }
 
     /**
-     * Remove an appointment.
-     *
-     * @param {Number} appointmentId
-     * @param {String} cancellationReason
-     *
-     * @return {*|jQuery}
-     */
-    function removeAppointment(action, appointmentId, cancellationReason, notifyUsers) {
-        const url = App.Utils.Url.siteUrl('calendar/' + action);
-
-        const data = {
-            csrf_token: vars('csrf_token'),
-            appointment_id: appointmentId,
-            cancellation_reason: cancellationReason,
-            notify_users: notifyUsers ? 1 : 0,
-        };
-
-        return $.post(url, data);
-    }
-
-    function deleteAppointment(appointmentId, cancellationReason, notifyUsers = true) {
-        return removeAppointment('delete_appointment', appointmentId, cancellationReason, notifyUsers);
-    }
-
-    function cancelAppointment(appointmentId, cancellationReason, notifyUsers = true) {
-        return removeAppointment('cancel_appointment', appointmentId, cancellationReason, notifyUsers);
-    }
-
-    /**
      * Save unavailability period to database.
      *
      * @param {Object} unavailability Contains the unavailability period data.
@@ -319,8 +290,6 @@ App.Http.Calendar = (function () {
     return {
         saveAppointment,
         saveAppointmentWithConflictHandling,
-        deleteAppointment,
-        cancelAppointment,
         saveUnavailability,
         deleteUnavailability,
         saveWorkingPlanException,

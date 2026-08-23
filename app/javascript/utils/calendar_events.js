@@ -18,7 +18,6 @@ App.Utils.CalendarEvents = (function () {
 
     const $calendarPage = $('#calendar-page');
     const $notification = $('#notification');
-    const $appointmentsModal = $('#appointments-modal');
     const $unavailabilitiesModal = $('#unavailabilities-modal');
 
     const moment = window.moment;
@@ -133,181 +132,6 @@ App.Utils.CalendarEvents = (function () {
         $calendarPage.on('click', '.cancel-popover', onCancelPopoverClick);
     }
 
-    // Modals
-
-    function populateAppointmentModal(appointment) {
-        const customer = appointment.customer;
-
-        App.Components.AppointmentsModal.resetModal();
-
-        $appointmentsModal.find('.modal-header h3').text(lang('edit_appointment_title'));
-        $appointmentsModal.find('#appointment-id').val(appointment.id);
-        $appointmentsModal.find('#select-service').val(appointment.id_services).trigger('change');
-        $appointmentsModal.find('#select-provider').val(appointment.id_users_provider);
-
-        App.Utils.UI.setDateTimePickerValue(
-            $appointmentsModal.find('#start-datetime'),
-            moment(appointment.start_datetime).toDate(),
-        );
-        App.Utils.UI.setDateTimePickerValue(
-            $appointmentsModal.find('#end-datetime'),
-            moment(appointment.end_datetime).toDate(),
-        );
-
-        $appointmentsModal.find('#customer-id').val(appointment.id_users_customer);
-        $appointmentsModal.find('#name').val(customer.name);
-        $appointmentsModal.find('#email').val(customer.email);
-        $appointmentsModal.find('#phone-number').val(customer.phone_number);
-        $appointmentsModal.find('#address').val(customer.address);
-        $appointmentsModal.find('#city').val(customer.city);
-        $appointmentsModal.find('#zip-code').val(customer.zip_code);
-        $appointmentsModal.find('#language').val(customer.language);
-        $appointmentsModal.find('#timezone').val(customer.timezone);
-        $appointmentsModal.find('#customer-notes').val(customer.notes);
-        [1, 2, 3, 4, 5].forEach((i) => {
-            $appointmentsModal.find('#custom-field-' + i).val(customer['custom_field_' + i]);
-        });
-
-        $appointmentsModal.find('#appointment-location').val(appointment.location);
-        $appointmentsModal.find('#appointment-meeting-link').val(appointment.meeting_link);
-        $appointmentsModal.find('#appointment-status').val(appointment.status);
-        $appointmentsModal.find('#appointment-notes').val(appointment.notes);
-        App.Components.ColorSelection.setColor($appointmentsModal.find('#appointment-color'), appointment.color);
-        App.Components.AppointmentsModal.showSeries(appointment.series_description);
-
-        $appointmentsModal.modal('show');
-    }
-
-    function populateUnavailabilityModal(unavailability) {
-        App.Components.UnavailabilitiesModal.resetModal();
-        $unavailabilitiesModal.find('.modal-header h3').text(lang('edit_unavailability_title'));
-
-        App.Utils.UI.setDateTimePickerValue(
-            $unavailabilitiesModal.find('#unavailability-start'),
-            moment(unavailability.start_datetime).toDate(),
-        );
-        App.Utils.UI.setDateTimePickerValue(
-            $unavailabilitiesModal.find('#unavailability-end'),
-            moment(unavailability.end_datetime).toDate(),
-        );
-
-        $unavailabilitiesModal.find('#unavailability-id').val(unavailability.id);
-        $unavailabilitiesModal.find('#unavailability-provider').val(unavailability.id_users_provider);
-        $unavailabilitiesModal.find('#unavailability-notes').val(unavailability.notes);
-
-        $unavailabilitiesModal.modal('show');
-    }
-
-    /**
-     * Offer a new unavailability or appointment for a selected slot and preselect
-     * the provider and service in the opened modal.
-     *
-     * @param {Object} info FullCalendar select info.
-     * @param {Object} preselect {providerId, serviceId}, either may be undefined.
-     */
-    function newEventDialog(info, preselect) {
-        const buttons = [
-            {
-                text: lang('unavailability'),
-                click: (event, messageModal) => {
-                    $('#insert-unavailability').trigger('click');
-                    const $provider = $('#unavailability-provider');
-                    if (preselect.providerId) {
-                        $provider.val(preselect.providerId);
-                    } else {
-                        $provider.find('option:first').prop('selected', true);
-                    }
-                    $provider.trigger('change');
-                    App.Utils.UI.setDateTimePickerValue($('#unavailability-start'), info.start);
-                    App.Utils.UI.setDateTimePickerValue($('#unavailability-end'), info.end);
-                    messageModal.hide();
-                },
-            },
-            {
-                text: lang('appointment'),
-                click: (event, messageModal) => {
-                    $('#insert-appointment').trigger('click');
-                    preselectServiceAndProvider(preselect);
-                    App.Utils.UI.setDateTimePickerValue($('#start-datetime'), info.start);
-                    App.Utils.UI.setDateTimePickerValue($('#end-datetime'), selectionEndDate(info));
-                    messageModal.hide();
-                },
-            },
-        ];
-
-        App.Utils.Message.show(lang('add_new_event'), lang('what_kind_of_event'), buttons);
-
-        $('#message-modal .modal-footer')
-            .addClass('justify-content-between')
-            .find('.btn')
-            .css('width', 'calc(50% - 10px)');
-    }
-
-    /**
-     * Open the new appointment modal for a provider starting at the given time.
-     *
-     * @param {number} providerId
-     * @param {Date} start
-     */
-    function newAppointmentAt(providerId, start) {
-        $('#insert-appointment').trigger('click');
-        preselectServiceAndProvider({providerId});
-        const service = findService($('#select-service').val());
-        App.Utils.UI.setDateTimePickerValue($('#start-datetime'), start);
-        App.Utils.UI.setDateTimePickerValue(
-            $('#end-datetime'),
-            moment(start)
-                .add(service ? service.duration : 60, 'minutes')
-                .toDate(),
-        );
-    }
-
-    function preselectServiceAndProvider({providerId, serviceId}) {
-        const $service = $appointmentsModal.find('#select-service');
-        const $provider = $appointmentsModal.find('#select-provider');
-        const provider = findProvider(providerId);
-
-        if (provider) {
-            const service = vars('available_services').find((s) => provider.services.indexOf(s.id) !== -1);
-            if (service) {
-                $service.val(service.id);
-            }
-            if (!$service.val()) {
-                $service.find('option:first').prop('selected', true);
-            }
-            $service.trigger('change');
-            $provider.val(provider.id);
-            if (!$provider.val()) {
-                $provider.find('option:first').prop('selected', true);
-            }
-            $provider.trigger('change');
-        } else if (findService(serviceId)) {
-            $service.val(serviceId).trigger('change');
-        }
-    }
-
-    /**
-     * Selection end, stretched to the selected service's duration for tiny selections.
-     *
-     * @param {Object} info FullCalendar select info.
-     * @returns {Date}
-     */
-    function selectionEndDate(info) {
-        const endMoment = moment(info.end);
-        const durationInMinutes = endMoment.diff(moment(info.start), 'minutes');
-
-        if (durationInMinutes <= 15) {
-            const service = findService($('#select-service').val());
-            if (service) {
-                endMoment.add(service.duration - durationInMinutes, 'minutes');
-            }
-        }
-
-        return endMoment.toDate();
-    }
-
-    // Working plan exceptions
-
     /**
      * Save an exception, update the provider's in-memory exceptions and reload.
      *
@@ -371,6 +195,74 @@ App.Utils.CalendarEvents = (function () {
         }
     }
 
+    // Event dialog: forms load into the event frame (components/event_modal.js shows it).
+
+    function openEventForm(url) {
+        App.Components.EventModal.open(url);
+    }
+
+    function query(params) {
+        return new URLSearchParams(
+            Object.entries(params).filter(([, value]) => value !== undefined && value !== null && value !== ''),
+        ).toString();
+    }
+
+    function newEventDialog(info, preselect) {
+        const start = moment(info.start).format(DATETIME);
+        const buttons = [
+            {
+                text: lang('unavailability'),
+                click: (event, messageModal) => {
+                    openEventForm('unavailabilities/new?' + query({
+                        start,
+                        end: moment(info.end).format(DATETIME),
+                        provider_id: preselect.providerId,
+                    }));
+                    messageModal.hide();
+                },
+            },
+            {
+                text: lang('appointment'),
+                click: (event, messageModal) => {
+                    openEventForm('appointments/new?' + query({
+                        start,
+                        end: selectionEndDate(info, preselect.serviceId),
+                        provider_id: preselect.providerId,
+                        service_id: preselect.serviceId,
+                    }));
+                    messageModal.hide();
+                },
+            },
+        ];
+
+        App.Utils.Message.show(lang('add_new_event'), lang('what_kind_of_event'), buttons);
+
+        $('#message-modal .modal-footer')
+            .addClass('justify-content-between')
+            .find('.btn')
+            .css('width', 'calc(50% - 10px)');
+    }
+
+    function newAppointmentAt(providerId, start) {
+        openEventForm('appointments/new?' + query({start: moment(start).format(DATETIME), provider_id: providerId}));
+    }
+
+    // A click-sized selection gets the service's duration (or an hour); the server adds it when end is empty.
+    function selectionEndDate(info, serviceId) {
+        const minutes = moment(info.end).diff(moment(info.start), 'minutes');
+
+        if (minutes > 15) {
+            return moment(info.end).format(DATETIME);
+        }
+
+        const service = findService(serviceId);
+        return moment(info.start).add(service ? service.duration : 60, 'minutes').format(DATETIME);
+    }
+
+    function removeAppointmentDialog(appointmentId, action) {
+        openEventForm('appointments/' + appointmentId + '/remove?kind=' + action);
+    }
+
     function onEventClick(info) {
         const $target = $(info.el);
         closePopover();
@@ -430,13 +322,9 @@ App.Utils.CalendarEvents = (function () {
                 saveWorkingPlanException(data.provider, updated);
             });
         } else if (isUnavailability(data)) {
-            populateUnavailabilityModal({
-                ...data,
-                start_datetime: moment(lastFocusedEvent.start).format(DATETIME),
-                end_datetime: moment(lastFocusedEvent.end).format(DATETIME),
-            });
+            openEventForm('unavailabilities/' + data.id + '/edit');
         } else {
-            populateAppointmentModal(data);
+            openEventForm('appointments/' + data.id + '/edit');
         }
     }
 
@@ -450,74 +338,13 @@ App.Utils.CalendarEvents = (function () {
         } else if (isUnavailability(data)) {
             App.Http.Calendar.deleteUnavailability(data.id).done(reload);
         } else {
-            deleteAppointmentDialog(data.id);
+            removeAppointmentDialog(data.id, 'delete');
         }
     }
 
     function onCancelPopoverClick() {
         closePopover();
         removeAppointmentDialog(lastFocusedEvent.extendedProps.data.id, 'cancel');
-    }
-
-    function deleteAppointmentDialog(appointmentId) {
-        removeAppointmentDialog(appointmentId, 'delete');
-    }
-
-    /**
-     * Ask about notifying, then for a reason, then delete (hard) or cancel (status).
-     *
-     * @param {Number} appointmentId
-     * @param {String} action 'delete' or 'cancel'
-     */
-    function removeAppointmentDialog(appointmentId, action) {
-        const title = lang(action === 'cancel' ? 'cancel_appointment_title' : 'delete_appointment_title');
-        const reasonText = lang(action === 'cancel' ? 'write_appointment_cancel_reason' : 'write_appointment_removal_reason');
-        const request = action === 'cancel' ? App.Http.Calendar.cancelAppointment : App.Http.Calendar.deleteAppointment;
-
-        App.Utils.Message.show(title, lang('notify_users_on_delete_question'), [
-            {
-                text: lang('cancel'),
-                click: (event, notifyModal) => notifyModal.hide(),
-            },
-            {
-                text: lang('no'),
-                click: (event, notifyModal) => {
-                    notifyModal.hide();
-                    request(appointmentId, null, false).done(reload);
-                },
-            },
-            {
-                text: lang('yes'),
-                click: (event, notifyModal) => {
-                    notifyModal.hide();
-
-                    App.Utils.Message.show(
-                        title,
-                        reasonText,
-                        [
-                            {
-                                text: lang('close'),
-                                click: (event, messageModal) => messageModal.hide(),
-                            },
-                            {
-                                text: lang(action),
-                                click: (event, messageModal) => {
-                                    const reason = $('#cancellation-reason').val();
-                                    messageModal.hide();
-                                    request(appointmentId, reason, true).done(reload);
-                                },
-                            },
-                        ],
-                    );
-
-                    $('<textarea/>', {
-                        class: 'form-control w-100',
-                        id: 'cancellation-reason',
-                        rows: '3',
-                    }).appendTo('#message-modal .modal-body');
-                },
-            },
-        ]);
     }
 
     // Drag and resize
@@ -940,7 +767,7 @@ App.Utils.CalendarEvents = (function () {
         findProvider,
         findService,
         closePopover,
-        populateAppointmentModal,
+        openEventForm,
         newEventDialog,
         saveWorkingPlanException,
         appointmentEvents,

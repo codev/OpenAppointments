@@ -2,6 +2,7 @@
 class CalendarController < ApplicationController
   include BackendPage
   include CalendarPage
+  include EventSaving
 
   layout "backend"
 
@@ -10,6 +11,7 @@ class CalendarController < ApplicationController
   FILTER_TYPE_SERVICE = "service".freeze
 
   before_action :require_session, except: [ :index, :reschedule ]
+  rescue_from EventSaving::Forbidden, with: -> { head :forbidden }
 
   def reschedule
     params[:appointment_hash] = params[:appointment_hash].to_s
@@ -20,116 +22,35 @@ class CalendarController < ApplicationController
     render_calendar_page(page_title: "calendar", active_menu: "calendar")
   end
 
-  # POST /calendar/save_appointment
+  # POST /calendar/save_appointment (drag, resize and the EA API shape)
   def save_appointment
-    customer_data = permitted_hash(params[:customer_data], CUSTOMER_PERMIT)
-    appointment_data = permitted_hash(params[:appointment_data], APPOINTMENT_PERMIT)
-    repeat = permitted_hash(params[:repeat], REPEAT_PERMIT)
-    notify_users = boolean_param(params.fetch(:notify_users, true))
-    force_save = boolean_param(params.fetch(:force_save, false))
-
-    raise ArgumentError, "Invalid appointment data." if appointment_data.blank?
-
-    check_event_permissions!(appointment_data["id_users_provider"])
-    return if performed?
-
-    customer_id = nil
-    if customer_data.present?
-      unless can?(customer_data["id"].present? ? :add : :edit, :customers)
-        raise ArgumentError, "You do not have the required permissions for this task."
-      end
-
-      customer_params = customer_data.slice(*BookingController::ALLOWED_CUSTOMER_FIELDS, "notes")
-      existing = customer_params["id"].presence &&
-                 User.customers.find_by(id: customer_params["id"])
-      existing ||= customer_params["email"].presence &&
-                   User.customers.find_by(email: customer_params["email"])
-      customer = existing || User.new(role: Role.find_by!(slug: Role::CUSTOMER))
-      customer.assign_attributes(customer_params.except("id"))
-      customer.save!
-      customer_id = customer.id
-    end
-
-    unless can?(appointment_data["id"].present? ? :add : :edit, :appointments)
-      raise ArgumentError, "You do not have the required permissions for this task."
-    end
-
-    manage_mode = appointment_data["id"].present?
-    appointment_data["id_users_customer"] ||= customer_id || customer_data&.dig("id")
-
-    exclude_id = manage_mode ? appointment_data["id"].to_i : nil
-    if Appointment.provider_conflict?(appointment_data["id_users_provider"],
-                                      appointment_data["start_datetime"],
-                                      appointment_data["end_datetime"], exclude_id) && !force_save
-      return render json: { success: false, conflict: true,
-                            message: helpers.lang("provider_has_conflicting_appointment") }
-    end
-
-    appointment = manage_mode ? Appointment.find(appointment_data["id"]) : Appointment.new
-    previous_status_id = appointment.status_id
-    appointment.assign_attributes(
-      appointment_data.slice(*BookingController::ALLOWED_APPOINTMENT_FIELDS).except("id")
+    result = store_appointment(
+      permitted_hash(params[:appointment_data], APPOINTMENT_PERMIT),
+      permitted_hash(params[:customer_data], CUSTOMER_PERMIT),
+      permitted_hash(params[:repeat], REPEAT_PERMIT),
+      notify_users: boolean_param(params.fetch(:notify_users, true)),
+      force_save: boolean_param(params.fetch(:force_save, false))
     )
-    appointment.book_datetime ||= Time.now
-    appointment.save!
-
-    skipped = []
-    if repeat.present? && repeat["rule"].present? && !manage_mode
-      result = AppointmentSeries.start_from(appointment, repeat, created_by: session[:user_id])
-      result[:series].announce(created: result[:rows])
-      skipped = result[:skipped]
-    end
-
-    provider = appointment.provider
-    customer = appointment.customer
-    service = appointment.service
-    settings = notification_settings
-
-    Synchronization.appointment_saved(appointment, service, provider, customer, settings)
-    if notify_users
-      Notifications.appointment_saved(appointment, service, provider, customer, settings,
-                                      manage_mode: manage_mode, previous_status_id: previous_status_id)
-    end
-    Webhooks.trigger(Webhooks::APPOINTMENT_SAVE, appointment)
-
-    render json: { success: true, id: appointment.id, skipped: skipped }
+    render json: { success: true, id: result[:appointment].id, skipped: result[:skipped] }
+  rescue EventSaving::Conflict => e
+    render json: { success: false, conflict: true, message: e.message }
   rescue ArgumentError, ActiveRecord::RecordInvalid => e
     json_exception(e, status: :ok)
   end
 
   # POST /calendar/delete_appointment: hard delete (admin tool).
   def delete_appointment
-    remove_appointment { |appointment| appointment.destroy! }
+    remove_appointment("delete")
   end
 
   # POST /calendar/cancel_appointment: keeps the row with the cancelled status.
   def cancel_appointment
-    remove_appointment { |appointment, reason| appointment.cancel!(reason: reason) }
+    remove_appointment("cancel")
   end
 
   # POST /calendar/save_unavailability
   def save_unavailability
-    unavailability_data = permitted_hash(params[:unavailability], UNAVAILABILITY_PERMIT)
-    raise ArgumentError, "Invalid unavailability data." if unavailability_data.blank?
-
-    unless can?(unavailability_data["id"].present? ? :edit : :add, :appointments)
-      raise ArgumentError, "You do not have the required permissions for this task."
-    end
-
-    check_event_permissions!(unavailability_data["id_users_provider"])
-    return if performed?
-
-    record = unavailability_data["id"].present? ? Appointment.find(unavailability_data["id"]) : Appointment.new
-    record.assign_attributes(
-      unavailability_data.slice("start_datetime", "end_datetime", "location", "notes", "id_users_provider")
-    )
-    record.is_unavailability = true
-    record.book_datetime ||= Time.now
-    record.save!
-
-    Synchronization.unavailability_saved(record, record.provider)
-    Webhooks.trigger(Webhooks::UNAVAILABILITY_SAVE, record)
-
+    store_unavailability(permitted_hash(params[:unavailability], UNAVAILABILITY_PERMIT))
     render json: { success: true, warnings: [] }
   rescue ArgumentError, ActiveRecord::RecordInvalid => e
     json_exception(e, status: :ok)
@@ -137,18 +58,7 @@ class CalendarController < ApplicationController
 
   # POST /calendar/delete_unavailability
   def delete_unavailability
-    raise ArgumentError, "You do not have the required permissions for this task." if cannot?(:delete, :appointments)
-
-    record = Appointment.unavailabilities.find(params.require(:unavailability_id))
-    check_event_permissions!(record.id_users_provider)
-    return if performed?
-
-    provider = record.provider
-    record.destroy!
-
-    Synchronization.unavailability_deleted(record, provider)
-    Webhooks.trigger(Webhooks::UNAVAILABILITY_DELETE, record)
-
+    remove_unavailability(Appointment.unavailabilities.find(params.require(:unavailability_id)))
     render json: { success: true }
   rescue ArgumentError => e
     json_exception(e, status: :ok)
@@ -248,36 +158,14 @@ class CalendarController < ApplicationController
 
   private
 
-  def remove_appointment
-    raise ArgumentError, "You do not have the required permissions for this task." if cannot?(:delete, :appointments)
-
-    appointment = Appointment.find(params.require(:appointment_id))
-    check_event_permissions!(appointment.id_users_provider)
-    return if performed?
-
-    cancellation_reason = params[:cancellation_reason].to_s
-    notify_users = boolean_param(params.fetch(:notify_users, true))
-
-    provider = appointment.provider
-    customer = appointment.customer
-    service = appointment.service
-    settings = notification_settings
-
-    yield(appointment, cancellation_reason)
-    appointment.series&.forget(appointment.occurrence_at)
-
-    if notify_users
-      Notifications.appointment_deleted(appointment, service, provider, customer, settings,
-                                        reason: cancellation_reason)
-    end
-    Synchronization.appointment_deleted(appointment, provider)
-    Webhooks.trigger(Webhooks::APPOINTMENT_DELETE, appointment)
-
+  def remove_appointment(kind)
+    remove_appointment_record(Appointment.find(params.require(:appointment_id)), kind: kind,
+                              reason: params[:cancellation_reason].to_s,
+                              notify_users: boolean_param(params.fetch(:notify_users, true)))
     render json: { success: true }
   rescue ArgumentError => e
     json_exception(e, status: :ok)
   end
-
 
   def calendar_events_response(appointments, unavailabilities, start_date, end_date)
     appointments = filter_events_by_role(appointments.includes(:provider, :service, :customer)).to_a
@@ -313,22 +201,10 @@ class CalendarController < ApplicationController
     end
   end
 
-  CUSTOMER_PERMIT = (BookingController::ALLOWED_CUSTOMER_FIELDS + %w[notes]).map(&:to_sym).freeze
-  APPOINTMENT_PERMIT = BookingController::ALLOWED_APPOINTMENT_FIELDS.map(&:to_sym).freeze
+  CUSTOMER_PERMIT = EventSaving::CUSTOMER_FIELDS.map(&:to_sym).freeze
+  APPOINTMENT_PERMIT = EventSaving::APPOINTMENT_FIELDS.map(&:to_sym).freeze
   REPEAT_PERMIT = %i[rule ends ends_on count].freeze
-  UNAVAILABILITY_PERMIT = %i[id start_datetime end_datetime location notes id_users_provider].freeze
+  UNAVAILABILITY_PERMIT = EventSaving::UNAVAILABILITY_FIELDS.map(&:to_sym).freeze
   EXCEPTION_PERMIT = [ :id, :startDate, :endDate, :startTime, :endTime, :start_date, :end_date,
                       :start_time, :end_time, { breaks: [ :start, :end ] } ].freeze
-
-  def notification_settings
-    company_color = Setting.get("company_color")
-    {
-      company_name: Setting.get("company_name"),
-      company_link: Setting.get("company_link"),
-      company_email: Setting.get("company_email"),
-      company_color: company_color.present? && company_color != "#ffffff" ? company_color : nil,
-      date_format: Setting.get("date_format"),
-      time_format: Setting.get("time_format")
-    }
-  end
 end
