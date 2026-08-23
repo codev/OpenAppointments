@@ -70,10 +70,8 @@ class SettingsPagesTest < ActionDispatch::IntegrationTest
   test "fixing the timezone moves every user to the default and hides the controls" do
     login_admin
     users(:zane).update!(timezone: "America/New_York")
-    post "/general_settings/save", params: {
-      general_settings: [ { name: "default_timezone", value: "Europe/London" }, { name: "fixed_timezone", value: "1" } ]
-    }
-    assert_response :success
+    post "/general_settings/save", params: { settings: { default_timezone: "Europe/London", fixed_timezone: "1" } }
+    assert_redirected_to "/general_settings"
     assert_equal "Europe/London", users(:zane).reload.timezone
 
     get "/providers/new"
@@ -88,39 +86,35 @@ class SettingsPagesTest < ActionDispatch::IntegrationTest
     get "/messages_settings"
     assert_match User.admins.first.email, response.body
 
-    post "/messages_settings/save", params: {
-      messages_settings: [ { name: "messages_failure_alert_emails", value: "a@example.org; not-an-email" } ]
-    }
-    assert_equal false, response.parsed_body["success"]
-    assert_match "not-an-email", response.parsed_body["message"]
+    post "/messages_settings/save", params: { settings: { messages_failure_alert_emails: "a@example.org; not-an-email" } }
+    assert_redirected_to "/messages_settings"
+    follow_redirect!
+    assert_select ".alert-danger", text: /not-an-email/
 
-    post "/messages_settings/save", params: {
-      messages_settings: [ { name: "messages_failure_alert_emails", value: "a@example.org, b@example.org" } ]
-    }
-    assert_equal true, response.parsed_body["success"]
+    post "/messages_settings/save", params: { settings: { messages_failure_alert_emails: "a@example.org, b@example.org" } }
+    assert_redirected_to "/messages_settings"
     assert_equal "a@example.org, b@example.org", Setting.get("messages_failure_alert_emails")
   end
 
   test "general settings save persists whitelisted settings" do
     login_admin
-    post "/general_settings/save", params: {
-      general_settings: [
-        { name: "company_name", value: "Open Out" },
-        { name: "not_whitelisted", value: "ignored" }
-      ]
-    }
-    assert_response :success
-    assert_equal true, response.parsed_body["success"]
+    post "/general_settings/save", params: { settings: { company_name: "Open Out", not_whitelisted: "ignored" } }
+    assert_redirected_to "/general_settings"
+    follow_redirect!
+    assert_select ".alert-success", text: I18n.t("ea.settings_saved")
     assert_equal "Open Out", Setting.get("company_name")
     assert_nil Setting.get("not_whitelisted")
   end
 
   test "general settings save is forbidden without edit privilege" do
     login_provider
+    post "/general_settings/save", params: { settings: { company_name: "X" } }
+    assert_redirected_to "/general_settings"
+    assert_equal "Test Company", Setting.get("company_name")
+
     post "/general_settings/save", params: { general_settings: [ { name: "company_name", value: "X" } ] }
     assert_response :internal_server_error
     assert_equal false, response.parsed_body["success"]
-    assert_equal "Test Company", Setting.get("company_name")
   end
 
   test "account save persists the display name change" do

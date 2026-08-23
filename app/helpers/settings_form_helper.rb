@@ -2,8 +2,8 @@
 # value, ids as the old pages had (name dasherized), data-field kept for the few
 # page scripts that read it.
 module SettingsFormHelper
-  def settings_form(url, &block)
-    form_with(url: url, method: :post, id: "settings-form", data: { turbo_frame: "settings" }, &block)
+  def settings_form(url, multipart: false, &block)
+    form_with(url: url, method: :post, id: "settings-form", multipart: multipart, data: { turbo_frame: "settings" }, &block)
   end
 
   def settings_flash
@@ -17,8 +17,13 @@ module SettingsFormHelper
     { id: name.dasherize, data: { field: name } }.merge(options)
   end
 
+  # Stored value, else the messaging default (the only settings with code defaults).
+  def setting_value(name)
+    setting(name, Messaging::Defaults::SETTINGS[name])
+  end
+
   def setting_text(name, **options)
-    text_field_tag "settings[#{name}]", setting(name), setting_field_options(name, { class: "form-control" }.merge(options))
+    text_field_tag "settings[#{name}]", setting_value(name), setting_field_options(name, { class: "form-control" }.merge(options))
   end
 
   # Secrets are never written into the page; a blank submission keeps the stored one.
@@ -27,18 +32,20 @@ module SettingsFormHelper
   end
 
   def setting_textarea(name, **options)
-    text_area_tag "settings[#{name}]", setting(name), setting_field_options(name, { class: "form-control" }.merge(options))
+    text_area_tag "settings[#{name}]", setting_value(name), setting_field_options(name, { class: "form-control" }.merge(options))
   end
 
+  # choices: flat [[label, value]] or grouped [[group, [[label, value]]]].
   def setting_select(name, choices, **options)
-    select_tag "settings[#{name}]", options_for_select(choices, setting(name)),
-               setting_field_options(name, { class: "form-select" }.merge(options))
+    grouped = choices.first&.last.is_a?(Array) && choices.first.last.first.is_a?(Array)
+    tags = grouped ? grouped_options_for_select(choices, setting_value(name)) : options_for_select(choices, setting_value(name))
+    select_tag "settings[#{name}]", tags, setting_field_options(name, { class: "form-select" }.merge(options))
   end
 
   # A form-switch storing "1"/"0".
   def setting_switch(name, **options)
     hidden_field_tag("settings[#{name}]", "0", id: nil) +
-      check_box_tag("settings[#{name}]", "1", setting(name).to_s == "1",
+      check_box_tag("settings[#{name}]", "1", setting_value(name).to_s == "1",
                     setting_field_options(name, { class: "form-check-input" }.merge(options)))
   end
 

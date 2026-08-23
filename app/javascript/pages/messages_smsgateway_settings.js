@@ -1,55 +1,35 @@
 /**
- * SMS Gateway settings page extras on top of the shared provider module: the
- * computed mobile API URL in the instructions, and the test SMS section that
- * appears once the connection details are filled in.
+ * SMS gateway settings: the mobile API URL hint follows the typed server URL,
+ * the test SMS block appears once the credentials are complete.
  */
-App.Pages.MessagesSmsgatewaySettings = (function () {
-    const $url = $('#messages-smsgateway-url');
-    const $login = $('#messages-smsgateway-login');
-    const $password = $('#messages-smsgateway-password');
-
-    function updateMobileApiUrl() {
+(function () {
+    function update() {
+        const url = $('#messages-smsgateway-url').val();
         const $target = $('#smsgateway-mobile-api-url');
-        const base = ($url.val() || 'https://<server>').replace(/\/+$/, '');
-        $target.text(base + $target.data('suffix'));
-    }
 
-    function updateTestVisibility() {
-        const ready = Boolean($url.val() && $login.val() && $password.val());
+        if (!$target.length) {
+            return;
+        }
+
+        $target.text((url || 'https://<server>').replace(/\/+$/, '') + $target.data('suffix'));
+        const ready = Boolean(url && $('#messages-smsgateway-login').val() && $('#messages-smsgateway-password').val());
         $('#smsgateway-test').toggleClass('d-none', !ready);
     }
 
-    function onSendTestClick() {
-        const number = $('#smsgateway-test-number').val();
+    $(document).on('input change', '#messages-smsgateway-url, #messages-smsgateway-login, #messages-smsgateway-password', update);
+    document.addEventListener('turbo:frame-load', update);
+    document.addEventListener('DOMContentLoaded', update);
 
+    $(document).on('click', '#smsgateway-send-test', () => {
         $.post(App.Utils.Url.siteUrl('messages_smsgateway_settings/test_sms'), {
             csrf_token: vars('csrf_token'),
-            number: number,
+            number: $('#smsgateway-test-number').val(),
         }).done((response) => {
             if (response && response.success === false) {
                 App.Layouts.Backend.displayNotification(response.message || lang('settings_are_invalid'));
                 return;
             }
-
             App.Layouts.Backend.displayNotification(lang('messages_test_sms_sent'));
         });
-    }
-
-    function initialize() {
-        $url.add($login).add($password).on('input change', () => {
-            updateMobileApiUrl();
-            updateTestVisibility();
-        });
-        $('#smsgateway-send-test').on('click', onSendTestClick);
-
-        // The shared module deserializes on DOMContentLoaded too; run after it.
-        setTimeout(() => {
-            updateMobileApiUrl();
-            updateTestVisibility();
-        }, 0);
-    }
-
-    document.addEventListener('DOMContentLoaded', initialize);
-
-    return {};
+    });
 })();

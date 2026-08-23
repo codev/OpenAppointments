@@ -42,19 +42,21 @@ module SettingsPage
     settings_saved
   end
 
+  # The settings form (settings[...]) gets a redirect with a flash; EA's row
+  # format callers get the {success} JSON they expect.
   def settings_saved
-    respond_to do |format|
-      format.html { redirect_to url_for(action: :index), notice: helpers.lang("settings_saved") }
-      format.json { render json: { success: true } }
-    end
+    return render json: { success: true } unless settings_form_post?
+
+    redirect_to url_for(action: :index), notice: helpers.lang("settings_saved")
   end
 
   def settings_failed(error)
-    respond_to do |format|
-      format.html { redirect_to url_for(action: :index), alert: error.message }
-      format.json { json_exception(error) }
-    end
+    return json_exception(error) unless settings_form_post?
+
+    redirect_to url_for(action: :index), alert: error.message
   end
+
+  def settings_form_post? = params[:settings].respond_to?(:to_unsafe_h)
 
   # The settings form posts settings[name]=value; EA's jQuery posted arrays of
   # objects (key[0][name]=...), which Rack parses into a hash keyed "0", "1", ...

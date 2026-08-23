@@ -6,19 +6,14 @@
                 <%= render "shared/settings_nav" %>
             </div>
             <div class="col-sm-9">
-                <form>
-                    <fieldset>
+                <turbo-frame id="settings">
+                    <%= settings_form "/general_settings/save", multipart: true do %>
                         <div class="d-flex justify-content-between align-items-center border-bottom mb-4 py-2">
                             <h4 class="mb-0 fw-light">
                                 <%= lang('general_settings') %>
                             </h4>
 
-                            <% if can?(:edit, :system_settings) %>
-                                <button type="button" id="save-settings" class="btn btn-primary">
-                                    <i class="fas fa-check-square me-2"></i>
-                                    <%= lang('save') %>
-                                </button>
-                            <% end %>
+                            <%= settings_save_button %>
                         </div>
 
                         <div class="row mb-5">
@@ -30,20 +25,21 @@
                                         <%= lang('company_name') %>
                                         <span class="text-danger">*</span>
                                     </label>
-                                    <input id="company-name" data-field="company_name" class="required form-control">
+                                    <%= setting_text "company_name", class: "required form-control" %>
                                     <div class="form-text text-muted">
                                         <small>
                                             <%= lang('company_name_hint') %>
                                         </small>
                                     </div>
                                 </div>
+                                <%= settings_flash %>
 
                                 <div class="mb-3">
                                     <label class="form-label" for="company-email">
                                         <%= lang('company_email') %>
                                         <span class="text-danger">*</span>
                                     </label>
-                                    <input id="company-email" data-field="company_email" class="required form-control">
+                                    <%= setting_text "company_email", class: "required form-control" %>
                                     <div class="form-text text-muted">
                                         <small>
                                             <%= lang('company_email_hint') %>
@@ -56,7 +52,7 @@
                                         <%= lang('company_link') %>
                                         <span class="text-danger">*</span>
                                     </label>
-                                    <input id="company-link" data-field="company_link" class="required form-control">
+                                    <%= setting_text "company_link", class: "required form-control" %>
                                     <div class="form-text text-muted">
                                         <small>
                                             <%= lang('company_link_hint') %>
@@ -68,8 +64,7 @@
                                     <label class="form-label" for="company-logo">
                                         <%= lang('company_logo') %>
                                     </label>
-                                    <input type="file" id="company-logo" data-field="company_logo" class="form-control"
-                                           accept="image/*">
+                                    <%= file_field_tag "company_logo", id: "company-logo", class: "form-control", accept: "image/*" %>
                                     <div class="form-text text-muted">
                                         <small>
                                             <%= lang('company_logo_hint') %>
@@ -116,10 +111,10 @@
                                     <label class="form-label" for="date-format">
                                         <%= lang('date_format') %>
                                     </label>
-                                    <select class="form-select" id="date-format" data-field="date_format">
-                                        <option value="DMY">DMY</option>
-                                        <option value="MDY">MDY</option>
-                                        <option value="YMD">YMD</option>
+                                    <select name="settings[date_format]" data-field="date_format" class="form-select" id="date-format" >
+                                        <option value="DMY" <%= "selected" if setting('date_format').to_s == "DMY" %>>DMY</option>
+                                        <option value="MDY" <%= "selected" if setting('date_format').to_s == "MDY" %>>MDY</option>
+                                        <option value="YMD" <%= "selected" if setting('date_format').to_s == "YMD" %>>YMD</option>
                                     </select>
                                     <div class="form-text text-muted">
                                         <small>
@@ -131,9 +126,9 @@
                                     <label class="form-label" for="time-format">
                                         <%= lang('time_format') %>
                                     </label>
-                                    <select class="form-select" id="time-format" data-field="time_format">
-                                        <option value="regular">H:MM AM/PM</option>
-                                        <option value="military">HH:MM</option>
+                                    <select name="settings[time_format]" data-field="time_format" class="form-select" id="time-format" >
+                                        <option value="regular" <%= "selected" if setting('time_format').to_s == "regular" %>>H:MM AM/PM</option>
+                                        <option value="military" <%= "selected" if setting('time_format').to_s == "military" %>>HH:MM</option>
                                     </select>
                                     <div class="form-text text-muted">
                                         <small>
@@ -145,14 +140,14 @@
                                     <label class="form-label" for="first-weekday">
                                         <%= lang('first_weekday') %>
                                     </label>
-                                    <select class="form-select" id="first-weekday" data-field="first_weekday">
-                                        <option value="sunday"><%= lang('sunday') %></option>
-                                        <option value="monday"><%= lang('monday') %></option>
-                                        <option value="tuesday"><%= lang('tuesday') %></option>
-                                        <option value="wednesday"><%= lang('wednesday') %></option>
-                                        <option value="thursday"><%= lang('thursday') %></option>
-                                        <option value="friday"><%= lang('friday') %></option>
-                                        <option value="saturday"><%= lang('saturday') %></option>
+                                    <select name="settings[first_weekday]" data-field="first_weekday" class="form-select" id="first-weekday" >
+                                        <option value="sunday" <%= "selected" if setting('first_weekday').to_s == "sunday" %>><%= lang('sunday') %></option>
+                                        <option value="monday" <%= "selected" if setting('first_weekday').to_s == "monday" %>><%= lang('monday') %></option>
+                                        <option value="tuesday" <%= "selected" if setting('first_weekday').to_s == "tuesday" %>><%= lang('tuesday') %></option>
+                                        <option value="wednesday" <%= "selected" if setting('first_weekday').to_s == "wednesday" %>><%= lang('wednesday') %></option>
+                                        <option value="thursday" <%= "selected" if setting('first_weekday').to_s == "thursday" %>><%= lang('thursday') %></option>
+                                        <option value="friday" <%= "selected" if setting('first_weekday').to_s == "friday" %>><%= lang('friday') %></option>
+                                        <option value="saturday" <%= "selected" if setting('first_weekday').to_s == "saturday" %>><%= lang('saturday') %></option>
                                     </select>
                                     <div class="form-text text-muted">
                                         <small>
@@ -165,8 +160,7 @@
                                     <label class="form-label" for="default-country-code">
                                         <%= lang('default_country_code') %>
                                     </label>
-                                    <input id="default-country-code" data-field="default_country_code"
-                                           class="form-control" placeholder="+44" maxlength="5">
+                                    <%= setting_text "default_country_code", placeholder: "+44", maxlength: 5 %>
                                     <div class="form-text text-muted">
                                         <small>
                                             <%= lang('default_country_code_hint') %>
@@ -179,14 +173,8 @@
                                         <%= lang('default_language') %>
                                         <span class="text-danger" hidden>*</span>
                                     </label>
-                                    <select id="default-language" class="form-select required"
-                                            data-field="default_language">
-                                        <% vars(:available_languages).each do |available_language| %>
-                                            <option value="<%= available_language %>">
-                                                <%= available_language.capitalize %>
-                                            </option>
-                                        <% end %>
-                                    </select>
+                                    <%= setting_select "default_language",
+                                                       Localization.available_languages.map { |l| [ l.capitalize, l ] }, required: true %>
                                     <div class="form-text text-muted">
                                         <small>
                                             <%= lang('default_language_hint') %>
@@ -199,8 +187,9 @@
                                         <%= lang('default_timezone') %>
                                         <span class="text-danger" hidden>*</span>
                                     </label>
-                                    <%= render "shared/timezone_dropdown",
-                                               attributes: 'id="default-timezone" data-field="default_timezone" class="form-select required"' %>
+                                    <%= setting_select "default_timezone",
+                                                       grouped_timezones.map { |continent, zones| [ continent, zones.map { |value, name| [ name, value ] } ] },
+                                                       required: true %>
                                 </div>
                                 <div class="form-text text-muted">
                                     <small>
@@ -210,7 +199,7 @@
 
                                 <div class="mb-3 mt-3">
                                     <div class="form-check form-switch">
-                                        <input class="form-check-input" type="checkbox" id="fixed-timezone" data-field="fixed_timezone">
+                                        <%= setting_switch "fixed_timezone" %>
                                         <label class="form-check-label" for="fixed-timezone">
                                             <%= lang('fixed_timezone') %>
                                         </label>
@@ -225,13 +214,10 @@
                             </div>
                         </div>
 
-                    </fieldset>
-                </form>
+                    <% end %>
+                </turbo-frame>
             </div>
         </div>
     </div>
 </div>
 
-<% content_for :scripts do %>
-    <%= ea_js "http/general_settings_http_client", "pages/general_settings" %>
-<% end %>

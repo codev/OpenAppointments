@@ -52,13 +52,22 @@ class SmsGatewayTest < ActionDispatch::IntegrationTest
   end
 
   def save_params(enabled: "1", incoming: "1")
-    { provider_settings: [
-      { name: "messages_smsgateway_enabled", value: enabled },
-      { name: "messages_smsgateway_incoming", value: incoming },
-      { name: "messages_smsgateway_url", value: BASE },
-      { name: "messages_smsgateway_login", value: "NAWFKJ" },
-      { name: "messages_smsgateway_password", value: "secretpw" }
-    ] }
+    { settings: { messages_smsgateway_enabled: enabled, messages_smsgateway_incoming: incoming,
+                  messages_smsgateway_url: BASE, messages_smsgateway_login: "NAWFKJ",
+                  messages_smsgateway_password: "secretpw" } }
+  end
+
+  # The settings form redirects back with a flash; read it from the page.
+  def assert_saved
+    assert_redirected_to "/messages_smsgateway_settings"
+    follow_redirect!
+    assert_select ".alert-success"
+  end
+
+  def assert_save_failed(pattern)
+    assert_redirected_to "/messages_smsgateway_settings"
+    follow_redirect!
+    assert_select ".alert-danger", text: pattern
   end
 
   test "activating save validates credentials, registers the webhook once and dedupes" do
@@ -70,8 +79,7 @@ class SmsGatewayTest < ActionDispatch::IntegrationTest
     # Bad credentials block the save.
     stub_request(:get, "#{BASE}/api/3rdparty/v1/device").to_return(status: 401)
     post "/messages_smsgateway_settings/save", params: save_params
-    assert_equal false, response.parsed_body["success"]
-    assert_match(/wrong API login or password/, response.parsed_body["message"])
+    assert_save_failed(/wrong API login or password/)
     assert_not_equal "1", Setting.get("messages_smsgateway_enabled")
 
     # Good credentials: stale duplicates are removed, the URL registered once.
@@ -88,7 +96,7 @@ class SmsGatewayTest < ActionDispatch::IntegrationTest
     stub_request(:post, "#{BASE}/api/3rdparty/v1/webhooks").to_return(status: 201, body: "{}")
 
     post "/messages_smsgateway_settings/save", params: save_params
-    assert_equal true, response.parsed_body["success"]
+    assert_saved
     assert_equal "1", Setting.get("messages_smsgateway_enabled")
     assert_requested(:delete, "#{BASE}/api/3rdparty/v1/webhooks/dup1")
     assert_requested(:delete, "#{BASE}/api/3rdparty/v1/webhooks/dup2")
@@ -108,7 +116,7 @@ class SmsGatewayTest < ActionDispatch::IntegrationTest
     stub_request(:delete, "#{BASE}/api/3rdparty/v1/webhooks/w1").to_return(status: 204)
 
     post "/messages_smsgateway_settings/save", params: save_params(incoming: "0")
-    assert_equal true, response.parsed_body["success"]
+    assert_saved
     assert_requested(:delete, "#{BASE}/api/3rdparty/v1/webhooks/w1")
   end
 
@@ -230,10 +238,8 @@ class SmsGatewayTest < ActionDispatch::IntegrationTest
     assert_select "#smsgateway-send-test"
     assert_select "a[href='https://github.com/capcom6/android-sms-gateway/releases']"
 
-    post "/messages_smsgateway_settings/save", params: {
-      provider_settings: [ { name: "messages_smsgateway_url", value: BASE } ]
-    }
-    assert_response :success
+    post "/messages_smsgateway_settings/save", params: { settings: { messages_smsgateway_url: BASE } }
+    assert_saved
     assert_equal BASE, Setting.get("messages_smsgateway_url"),
                  "inactive saves persist without server validation"
   end

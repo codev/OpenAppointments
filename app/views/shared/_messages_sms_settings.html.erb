@@ -6,23 +6,21 @@
             <%= render "shared/messages_nav" %>
         </div>
         <div id="messages-<%= prefix %>-settings" class="col-sm-9">
-            <form>
-                <fieldset>
+            <turbo-frame id="settings">
+                <%= settings_form "/messages_#{prefix}_settings/save" do %>
                     <%= render "shared/messages_provider_header", title: title %>
 
                     <div class="row">
                         <div class="col-12 col-md-8">
                             <div class="form-check form-switch mb-3">
-                                <input type="checkbox" class="form-check-input" id="<%= prefix %>-enabled"
-                                       data-field="messages_<%= prefix %>_enabled">
+                                <%= setting_switch "messages_#{prefix}_enabled", id: "#{prefix}-enabled" %>
                                 <label class="form-check-label" for="<%= prefix %>-enabled">
                                     <%= lang('active') %>
                                 </label>
                             </div>
 
                             <div class="form-check form-switch mb-4">
-                                <input type="checkbox" class="form-check-input" id="<%= prefix %>-incoming"
-                                       data-field="messages_<%= prefix %>_incoming">
+                                <%= setting_switch "messages_#{prefix}_incoming", id: "#{prefix}-incoming" %>
                                 <label class="form-check-label" for="<%= prefix %>-incoming">
                                     <%= lang('messages_incoming') %>
                                 </label>
@@ -38,15 +36,16 @@
                                     <label class="form-label" for="<%= field[:name].dasherize %>">
                                         <%= field[:label] %>
                                     </label>
-                                    <input type="<%= field[:type] || 'text' %>" id="<%= field[:name].dasherize %>"
-                                           class="form-control" autocomplete="off"
-                                           data-field="<%= field[:name] %>">
+                                    <% if field[:type] == "password" %>
+                                        <%= setting_password field[:name], autocomplete: "off" %>
+                                    <% else %>
+                                        <%= setting_text field[:name], autocomplete: "off" %>
+                                    <% end %>
                                 </div>
                             <% end %>
 
                             <div class="form-check form-switch mb-4">
-                                <input type="checkbox" class="form-check-input" id="<%= prefix %>-default-country-only"
-                                       data-field="messages_<%= prefix %>_default_country_only">
+                                <%= setting_switch "messages_#{prefix}_default_country_only", id: "#{prefix}-default-country-only" %>
                                 <label class="form-check-label" for="<%= prefix %>-default-country-only">
                                     <%= t("ea.messages_default_country_only",
                                           code: Messaging::Template.default_country_code,
@@ -75,12 +74,9 @@
                             </div>
                         </div>
                     </div>
-                </fieldset>
-            </form>
+                <% end %>
+            </turbo-frame>
         </div>
     </div>
 </div>
 
-<% content_for :scripts do %>
-    <%= ea_js "http/messages_settings_http_client", "pages/messages_provider_settings" %>
-<% end %>

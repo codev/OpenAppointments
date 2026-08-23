@@ -12,9 +12,9 @@ class MessagesSettingsController < ApplicationController
     return unless require_backend_page!(:system_settings)
 
     backend_page_vars(page_title: helpers.lang("messages"), active_menu: "messages")
-    script_vars(messages_settings: SETTING_NAMES.map { |name|
-      { "name" => name, "value" => Setting.get(name, default_setting(name)) }
-    })
+    # The report list starts as every admin's address.
+    html_vars(failure_alert_emails: Setting.get("messages_failure_alert_emails",
+                                                User.admins.pluck(:email).compact_blank.join(", ")))
     render :index
   end
 
@@ -33,13 +33,6 @@ class MessagesSettingsController < ApplicationController
   end
 
   private
-
-  # The report list starts as every admin's address.
-  def default_setting(name)
-    return User.admins.pluck(:email).compact_blank.join(", ") if name == "messages_failure_alert_emails"
-
-    Messaging::Defaults::SETTINGS[name]
-  end
 
   # Comma separated, each a valid address; blank clears the list (admins are used).
   def normalise_emails(value)

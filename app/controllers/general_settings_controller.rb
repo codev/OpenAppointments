@@ -18,17 +18,29 @@ class GeneralSettingsController < ApplicationController
     return unless require_backend_page!(:system_settings)
 
     backend_page_vars(page_title: helpers.lang("settings"), active_menu: "system_settings")
-    script_vars(general_settings: settings_rows)
-    html_vars(available_languages: Localization.available_languages)
     render :index
   end
 
-  # POST /general_settings/save
+  # POST /general_settings/save. The logo arrives as a file and is stored as a
+  # data URL, as the jQuery page did; remove_company_logo clears it.
   def save
     require_system_settings_edit!
+    save_company_logo
     save_setting_rows(:general_settings, allowed_names: ALLOWED_SETTINGS)
     User.where.not(timezone: Setting.get("default_timezone")).update_all(timezone: Setting.get("default_timezone")) if Setting.fixed_timezone?
   rescue ArgumentError => e
     settings_failed(e)
+  end
+
+  private
+
+  def save_company_logo
+    if ActiveModel::Type::Boolean.new.cast(params[:remove_company_logo])
+      Setting.set("company_logo", "")
+    elsif params[:company_logo].respond_to?(:read)
+      file = params[:company_logo]
+      PictureUpload.validate!(file)
+      Setting.set("company_logo", "data:#{file.content_type};base64,#{Base64.strict_encode64(file.read)}")
+    end
   end
 end
