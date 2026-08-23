@@ -1,8 +1,7 @@
 class RecoveryController < ApplicationController
   layout "account"
 
-  rate_limit to: 5, within: 5.minutes, only: [ :perform, :complete ],
-             with: -> { render json: { success: false, message: "Too many attempts. Please try again in a few minutes." }, status: :too_many_requests }
+  rate_limit to: 5, within: 5.minutes, only: [ :perform, :complete ], with: :too_many_attempts
 
   def index
     html_vars(
@@ -12,8 +11,11 @@ class RecoveryController < ApplicationController
     )
   end
 
-  # POST /recovery/perform. Always responds {success: true} to prevent enumeration.
+  # POST /recovery/perform. Always answers success to prevent enumeration; the
+  # form (form=1) comes back to the page with the sent message.
   def perform
+    return captcha_failed(recovery_path) unless captcha_ok?
+
     username = params[:username].to_s
     email = params[:email].to_s
 
@@ -25,7 +27,7 @@ class RecoveryController < ApplicationController
       Rails.logger.info("Password recovery attempted for non-existent user: #{username} / #{email}")
     end
 
-    json_response({ success: true })
+    form_post? ? redirect_to(recovery_path, notice: helpers.lang("reset_link_sent_with_email")) : json_response({ success: true })
   end
 
   # GET /recovery/reset?token=... EA branches: malformed token -> invalid_reset_token,
@@ -55,19 +57,50 @@ class RecoveryController < ApplicationController
     token = params[:token].to_s
     password = params[:password].to_s
     password_confirm = params[:password_confirm].to_s
+    return captcha_failed(recovery_reset_path(token: token)) unless captcha_ok?
 
     if password != password_confirm
-      return json_response({ success: false, message: "The provided passwords do not match." })
+      return complete_failed(token, "The provided passwords do not match.", helpers.lang("passwords_mismatch"))
     end
 
     if password.length < Passwords::MIN_LENGTH
-      return json_response({ success: false,
-                             message: "The password must be at least #{Passwords::MIN_LENGTH} characters long." })
+      return complete_failed(token, "The password must be at least #{Passwords::MIN_LENGTH} characters long.",
+                             helpers.lang("password_length_notice").sub("$number", Passwords::MIN_LENGTH.to_s))
     end
 
     Accounts.reset_password_with_token(token, password)
-    json_response({ success: true })
+    form_post? ? redirect_to(login_path, notice: helpers.lang("password_reset_success")) : json_response({ success: true })
   rescue ArgumentError => e
-    json_response({ success: false, message: e.message })
+    complete_failed(token, e.message, e.message)
+  end
+
+  private
+
+  def form_post? = params[:form].present?
+
+  def captcha_ok?
+    case Captcha.for_login
+    when "altcha" then AltchaChallenge.verify(params[:altcha_payload])
+    when "turnstile" then TurnstileChallenge.verify(params[:cf_turnstile_response], request.remote_ip)
+    else true
+    end
+  end
+
+  def captcha_failed(path)
+    key = Captcha.for_login == "altcha" ? "altcha_verification_failed" : "turnstile_verification_failed"
+    form_post? ? redirect_to(path, alert: helpers.lang(key)) : json_response({ success: false, message: helpers.lang(key) })
+  end
+
+  def complete_failed(token, message, flash_message)
+    return json_response({ success: false, message: message }) unless form_post?
+
+    redirect_to recovery_reset_path(token: token), alert: flash_message
+  end
+
+  def too_many_attempts
+    message = "Too many attempts. Please try again in a few minutes."
+    return redirect_to(recovery_path, alert: message) if form_post?
+
+    render json: { success: false, message: message }, status: :too_many_requests
   end
 end

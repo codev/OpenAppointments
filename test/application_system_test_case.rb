@@ -20,19 +20,13 @@ class ApplicationSystemTestCase < ActionDispatch::SystemTestCase
     end
   end
 
-  # The login page submits through its script; under load the click can land
-  # before that binds, so wait for it and try once more if still on /login.
   def login_as_admin
     visit login_url
-    2.times do
-      assert_selector "#login", wait: 15 # the first page of a run waits for Puma
-      page.evaluate_script("typeof App !== 'undefined' && App.Pages && App.Pages.Login ? true : false")
-      fill_in "username", with: "administrator"
-      fill_in "password", with: "administrator1"
-      find("#login").click
-      break if has_current_path?(%r{/calendar}, wait: 5)
-    end
-    assert_current_path %r{/calendar}, wait: 5
+    assert_selector "#login", wait: 15 # the first page of a run waits for Puma
+    fill_in "username", with: "administrator"
+    fill_in "password", with: "administrator1"
+    find("#login").click
+    assert_current_path %r{/calendar}, wait: 10
   end
 
   # Confirms the EA message modal (jQuery pages and Turbo confirms alike).
