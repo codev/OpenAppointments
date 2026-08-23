@@ -21,11 +21,7 @@ class LdapSettingsController < ApplicationController
     return unless require_backend_page!(:system_settings)
 
     backend_page_vars(page_title: helpers.lang("ldap"), active_menu: "system_settings")
-    script_vars(
-      ldap_settings: settings_rows(like: "ldap_"),
-      ldap_default_filter: LDAP_DEFAULT_FILTER,
-      ldap_default_field_mapping: LDAP_DEFAULT_FIELD_MAPPING
-    )
+    script_vars(ldap_default_filter: LDAP_DEFAULT_FILTER, ldap_default_field_mapping: LDAP_DEFAULT_FIELD_MAPPING)
     html_vars(roles: Role.order(:id).map { |role| { "id" => role.id, "name" => role.name, "slug" => role.slug } })
     render :index
   end

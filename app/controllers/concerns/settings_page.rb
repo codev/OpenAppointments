@@ -61,20 +61,15 @@ module SettingsPage
   # objects (key[0][name]=...), which Rack parses into a hash keyed "0", "1", ...
   # Both become an array of {name, value} hashes.
   def setting_row_params(key)
-    if settings_form_post?
-      # A password field left empty keeps the stored secret.
-      return params[:settings].to_unsafe_h.filter_map { |name, value|
-        next if value.blank? && SENSITIVE_SETTING_NAMES.include?(name.to_s)
-
-        { "name" => name.to_s, "value" => value }
-      }
+    rows = if settings_form_post?
+      params[:settings].to_unsafe_h.map { |name, value| { "name" => name.to_s, "value" => value } }
+    else
+      rows = params[key]
+      rows = rows.values if rows.respond_to?(:values)
+      Array(rows).map { |row| row.respond_to?(:permit) ? row.permit(:id, :name, :value).to_h : row }
     end
-
-    rows = params[key]
-    return [] if rows.blank?
-
-    rows = rows.values if rows.respond_to?(:values)
-    rows.map { |row| row.respond_to?(:permit) ? row.permit(:id, :name, :value).to_h : row }
+    # Secrets are never shown in the page, so a password field left empty keeps the stored one.
+    rows.reject { |row| row["value"].blank? && SENSITIVE_SETTING_NAMES.include?(row["name"]) }
   end
 
   # EA settings save actions raise on missing edit privilege (json_exception -> 500).

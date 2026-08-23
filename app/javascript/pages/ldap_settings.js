@@ -15,7 +15,6 @@
  * This module implements the functionality of the LDAP settings page.
  */
 App.Pages.LdapSettings = (function () {
-    const $saveSettings = $('#save-settings');
     const $searchForm = $('#ldap-search-form');
     const $searchKeyword = $('#ldap-search-keyword');
     const $searchResults = $('#ldap-search-results');
@@ -23,54 +22,6 @@ App.Pages.LdapSettings = (function () {
     const $ldapFieldMapping = $('#ldap-field-mapping');
     const $resetFilter = $('#ldap-reset-filter');
     const $resetFieldMapping = $('#ldap-reset-field-mapping');
-
-    /**
-     * Check if the form has invalid values.
-     *
-     * @return {Boolean}
-     */
-    function isInvalid() {
-        try {
-            $('#ldap-settings .is-invalid').removeClass('is-invalid');
-
-            // Validate required fields.
-
-            let missingRequiredFields = false;
-
-            $('#ldap-settings .required').each((index, requiredField) => {
-                const $requiredField = $(requiredField);
-
-                if (!$requiredField.val()) {
-                    $requiredField.addClass('is-invalid');
-                    missingRequiredFields = true;
-                }
-            });
-
-            if (missingRequiredFields) {
-                throw new Error(lang('fields_are_required'));
-            }
-
-            return false;
-        } catch (error) {
-            App.Layouts.Backend.displayNotification(error.message);
-            return true;
-        }
-    }
-
-    /**
-     * Apply the setting values to the UI form.
-     *
-     * @param {Array} ldapSettings
-     */
-    function deserialize(ldapSettings) {
-        ldapSettings.forEach((ldapSetting) => {
-            const $field = $('[data-field="' + ldapSetting.name + '"]');
-
-            $field.is(':checkbox')
-                ? $field.prop('checked', Boolean(Number(ldapSetting.value)))
-                : $field.val(ldapSetting.value);
-        });
-    }
 
     /**
      * Prepare an array of setting values based on the UI form.
@@ -100,16 +51,12 @@ App.Pages.LdapSettings = (function () {
     /**
      * Save the current server settings.
      */
+    // The search runs against the stored settings, so save the form first (JSON rows path).
     function saveSettings() {
-        if (isInvalid()) {
-            App.Layouts.Backend.displayNotification(lang('settings_are_invalid'));
-
-            return;
-        }
-
-        const ldapSettings = serialize();
-
-        return App.Http.LdapSettings.save(ldapSettings);
+        return $.post(App.Utils.Url.siteUrl('ldap_settings/save'), {
+            csrf_token: vars('csrf_token'),
+            ldap_settings: serialize(),
+        });
     }
 
     /**
@@ -124,7 +71,7 @@ App.Pages.LdapSettings = (function () {
             return;
         }
 
-        App.Http.LdapSettings.search(keyword).done((entries) => {
+        $.post(App.Utils.Url.siteUrl('ldap_settings/search'), {csrf_token: vars('csrf_token'), keyword}).done((entries) => {
             $searchResults.empty();
 
             if (!entries?.length) {
@@ -135,15 +82,6 @@ App.Pages.LdapSettings = (function () {
             entries.forEach((entry) => {
                 renderEntry(entry).appendTo($searchResults);
             });
-        });
-    }
-
-    /**
-     * Save the account information.
-     */
-    function onSaveSettingsClick() {
-        saveSettings().done(() => {
-            App.Layouts.Backend.displayNotification(lang('settings_saved'));
         });
     }
 
@@ -239,15 +177,11 @@ App.Pages.LdapSettings = (function () {
      * Initialize the module.
      */
     function initialize() {
-        $saveSettings.on('click', onSaveSettingsClick);
         $resetFilter.on('click', onResetFilterClick);
         $resetFieldMapping.on('click', onResetFieldMappingClick);
         $searchForm.on('submit', onSearchFormSubmit);
         $searchResults.on('click', '.ldap-import', onLdapImportClick);
 
-        const ldapSettings = vars('ldap_settings');
-
-        deserialize(ldapSettings);
     }
 
     document.addEventListener('DOMContentLoaded', initialize);
