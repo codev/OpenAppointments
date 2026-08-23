@@ -29,10 +29,10 @@ class AppointmentSeriesPageTest < ApplicationSystemTestCase
       assert_text "Back to Appointments"
 
       click_on "Cancel series"
-      assert_selector "#series-cancel-modal", visible: true, wait: 5
-      within("#series-cancel-modal") do
-        assert_selector "input[name='series-cancel-from']", minimum: 2, visible: :all
-        all("input[name='series-cancel-from']", visible: :all)[1].click
+      assert_selector "#series-cancel-confirm", visible: true, wait: 5
+      within(find("#series-cancel-confirm").ancestor("form, .modal")) do
+        assert_selector "#series-cancel-dates input[type=radio]", minimum: 2, visible: :all
+        all("#series-cancel-dates input[type=radio]", visible: :all)[1].click
         fill_in "series-cancel-reason", with: "Away"
         uncheck "series-cancel-notify"
         click_on "Cancel from this date"

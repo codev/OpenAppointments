@@ -172,59 +172,10 @@ App.Pages.Appointments = (function () {
 
     // Repeating appointments view
 
-    let seriesRows = [];
 
-    function formatDate(value) {
-        return App.Utils.Date.format(value, vars('date_format'), vars('time_format'), false);
-    }
-
-    function findSeries(id) {
-        return seriesRows.find((row) => Number(row.id) === Number(id));
-    }
-
-    function renderSeries(rows) {
-        seriesRows = rows;
-        const $tbody = $('#series-table tbody').empty();
-        $('#series-empty').toggleClass('d-none', rows.length > 0);
-
-        rows.forEach((row) => {
-            const skipped = row.skipped.map((entry) => formatDate(entry.date) + ' (' + lang('reason_' + entry.reason) + ')');
-            $('<tr/>', {
-                html: [
-                    $('<td/>', {text: row.provider}),
-                    $('<td/>', {text: row.customer}),
-                    $('<td/>', {text: row.service}),
-                    $('<td/>', {text: row.description + ' ' + row.start_time}),
-                    $('<td/>', {text: row.booked.length ? formatDate(row.booked[0]) : '-'}),
-                    $('<td/>', {
-                        html: skipped.length
-                            ? $('<span/>', {class: 'badge bg-warning text-dark', text: skipped.length, title: skipped.join('\n')})
-                            : '-',
-                    }),
-                    $('<td/>', {
-                        class: 'text-nowrap',
-                        html: [
-                            $('<button/>', {
-                                type: 'button',
-                                class: 'btn btn-primary btn-sm me-2 series-edit',
-                                'data-id': row.id,
-                                html: [$('<i/>', {class: 'fas fa-edit me-2'}), $('<span/>', {text: lang('change_pattern')})],
-                            }),
-                            $('<button/>', {
-                                type: 'button',
-                                class: 'btn btn-outline-danger btn-sm series-cancel',
-                                'data-id': row.id,
-                                html: [$('<i/>', {class: 'fas fa-calendar-times me-2'}), $('<span/>', {text: lang('cancel_series')})],
-                            }),
-                        ],
-                    }),
-                ],
-            }).appendTo($tbody);
-        });
-    }
-
+    // The series list is a Turbo Frame served by /appointment_series.
     function loadSeries() {
-        $.getJSON(App.Utils.Url.siteUrl('appointment_series')).done((rows) => renderSeries(rows.success === false ? [] : rows));
+        document.querySelector('turbo-frame#series').reload();
     }
 
     function showSeriesView(show) {
@@ -239,8 +190,8 @@ App.Pages.Appointments = (function () {
     }
 
     function openPattern(id) {
-        const row = findSeries(id);
-        App.Components.RepeatFields.load('series-repeat', row.rule, row.description, row.ends_on);
+        const row = $('#series-table tr[data-id="' + id + '"]');
+        App.Components.RepeatFields.load('series-repeat', row.data('rule'), row.data('description'), row.data('endsOn') || null);
         $('#series-pattern-save').data('id', id);
         $('#series-pattern-modal').modal('show');
     }
@@ -266,53 +217,6 @@ App.Pages.Appointments = (function () {
         });
     }
 
-    function openCancel(id) {
-        const row = findSeries(id);
-        const $dates = $('#series-cancel-dates').empty();
-        const dates = row.booked.length ? row.booked : row.future;
-        dates.forEach((date, index) => {
-            $('<div/>', {
-                class: 'form-check',
-                html: [
-                    $('<input/>', {
-                        class: 'form-check-input',
-                        type: 'radio',
-                        name: 'series-cancel-from',
-                        id: 'series-cancel-from-' + index,
-                        value: date,
-                        checked: index === 0,
-                    }),
-                    $('<label/>', {class: 'form-check-label', for: 'series-cancel-from-' + index, text: formatDate(date)}),
-                ],
-            }).appendTo($dates);
-        });
-        $('#series-cancel-reason').val('');
-        $('#series-cancel-confirm').data('id', id).prop('disabled', !dates.length);
-        $('#series-cancel-modal').modal('show');
-    }
-
-    function confirmCancel() {
-        const id = $('#series-cancel-confirm').data('id');
-        const from = $('input[name="series-cancel-from"]:checked').val();
-        if (!from) {
-            return;
-        }
-        $.post(App.Utils.Url.siteUrl('appointment_series/' + id + '/cancel'), {
-            csrf_token: vars('csrf_token'),
-            from,
-            cancellation_reason: $('#series-cancel-reason').val(),
-            notify_users: $('#series-cancel-notify').prop('checked') ? 1 : 0,
-        }).done((response) => {
-            if (!response.success) {
-                App.Layouts.Backend.displayNotification(response.message || lang('unexpected_issues_occurred'));
-                return;
-            }
-            $('#series-cancel-modal').modal('hide');
-            App.Layouts.Backend.displayNotification(lang('series_cancelled'));
-            loadSeries();
-        });
-    }
-
     function goTo(date) {
         App.Utils.UI.setDateTimePickerValue($selectDate, date.toDate());
         reload();
@@ -330,10 +234,8 @@ App.Pages.Appointments = (function () {
         $(window).on('resize', resize);
 
         $('#toggle-series').on('click', () => showSeriesView($('#series-view').hasClass('d-none')));
-        $('#series-table').on('click', '.series-edit', (event) => openPattern($(event.currentTarget).data('id')));
-        $('#series-table').on('click', '.series-cancel', (event) => openCancel($(event.currentTarget).data('id')));
+        $(document).on('click', '#series-table .series-edit', (event) => openPattern($(event.currentTarget).data('id')));
         $('#series-pattern-save').on('click', savePattern);
-        $('#series-cancel-confirm').on('click', confirmCancel);
     }
 
     function initialize() {

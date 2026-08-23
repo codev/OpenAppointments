@@ -26,10 +26,11 @@ Rails.application.routes.draw do
   post "calendar/save_working_plan_exception" => "calendar#save_working_plan_exception"
   post "calendar/delete_working_plan_exception" => "calendar#delete_working_plan_exception"
 
-  # Repeating appointments (backend only)
-  get "appointment_series" => "appointment_series#index"
+  # Repeating appointments (backend only); the list and cancel form render in a frame
+  get "appointment_series" => "appointment_series#index", as: :appointment_series
+  get "appointment_series/:id/cancel" => "appointment_series#cancel_form", as: :cancel_form_appointment_series
   post "appointment_series/:id/reschedule" => "appointment_series#reschedule"
-  post "appointment_series/:id/cancel" => "appointment_series#cancel"
+  post "appointment_series/:id/cancel" => "appointment_series#cancel", as: :cancel_appointment_series
 
   # Backend CRUD pages (EA pattern: page GET + find/search/store/update/destroy).
   # EA declares find as GET but the ported JS clients $.post it, so find takes both.

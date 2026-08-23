@@ -46,7 +46,7 @@ class AppointmentSeriesIntegrationTest < ActionDispatch::IntegrationTest
     assert_equal 5, series.appointments.count, "20 Jul plus 4 more Mondays within 40 days, 27 Jul skipped"
     assert_equal Date.new(2026, 7, 20), series.appointments.order(:occurrence_at).first.occurrence_at
 
-    get "/appointment_series"
+    get "/appointment_series", as: :json
     row = response.parsed_body.sole
     assert_match "Weekly", row["description"]
     assert_equal 1, row["skipped"].size
@@ -75,7 +75,7 @@ class AppointmentSeriesIntegrationTest < ActionDispatch::IntegrationTest
     assert_equal true, response.parsed_body["success"]
     assert series.reload.appointments.where("occurrence_at > ?", Date.new(2026, 7, 20)).all? { |a| a.occurrence_at.tuesday? }
 
-    post "/appointment_series/#{series.id}/cancel", params: { from: "2026-07-21", notify_users: 0 }
+    post "/appointment_series/#{series.id}/cancel", params: { from: "2026-07-21", notify_users: 0 }, as: :json
     assert_equal true, response.parsed_body["success"]
     assert_equal [ Date.new(2026, 7, 20) ], series.reload.appointments.active.pluck(:occurrence_at)
     assert_equal Date.new(2026, 7, 20), series.ends_on
@@ -92,10 +92,10 @@ class AppointmentSeriesIntegrationTest < ActionDispatch::IntegrationTest
                                         starts_on: Date.new(2026, 7, 20), start_time: "12:00", duration: 30)
 
     login_provider
-    get "/appointment_series"
+    get "/appointment_series", as: :json
     assert_equal [ users(:zane).id ], response.parsed_body.map { |row| row["id_users_provider"] }.uniq
 
-    post "/appointment_series/#{foreign.id}/cancel", params: { from: "2026-07-21" }
+    post "/appointment_series/#{foreign.id}/cancel", params: { from: "2026-07-21" }, as: :json
     assert_equal false, response.parsed_body["success"]
   end
 
@@ -114,5 +114,71 @@ class AppointmentSeriesIntegrationTest < ActionDispatch::IntegrationTest
                                                       provider: first.provider, customer: first.customer)
     assert_match "Weekly on Mondays", context["Repeats"]
     assert context["Next Appointment"].present?
+  end
+end
+
+# The series panel as Rails views in the appointments page frame.
+class AppointmentSeriesPanelTest < ActionDispatch::IntegrationTest
+  include ActiveSupport::Testing::TimeHelpers
+
+  setup do
+    Setting.set("future_booking_limit", "40")
+    travel_to Time.new(2026, 7, 20, 8, 0, 0)
+    repeat = { "rule" => { rule_type: "IceCube::WeeklyRule", interval: 1, validations: { day: [ 1 ] } }.to_json, "ends" => "never" }
+    @series = AppointmentSeries.start_from(appointments(:upcoming), repeat)[:series]
+    post "/login/validate", params: { username: "administrator", password: "administrator1" }
+  end
+
+  test "the appointments page embeds the lazy series frame and the list renders into it" do
+    get "/appointments"
+    assert_select "#series-view turbo-frame#series[src='/appointment_series'][loading=lazy]"
+    assert_select "#series-pattern-modal"
+    assert_select "#series-cancel-modal", count: 0
+
+    get "/appointment_series"
+    assert_select "turbo-frame#series #series-table tbody tr[data-id=?][data-rule]", @series.id.to_s do
+      assert_select "td", text: "Zane"
+      assert_select "td", text: /20\/07\/2026/
+      assert_select "a.series-cancel[href=?]", "/appointment_series/#{@series.id}/cancel"
+      assert_select "button.series-edit[data-id=?]", @series.id.to_s
+    end
+
+    get "/appointment_series", as: :json
+    assert_equal [ @series.id ], response.parsed_body.map { |row| row["id"] }
+  end
+
+  test "the cancel form lists the booked dates and cancelling returns to the list with a flash" do
+    get "/appointment_series/#{@series.id}/cancel"
+    assert_select "turbo-frame#series form#series-cancel-form[action=?]", "/appointment_series/#{@series.id}/cancel" do
+      assert_select "#series-cancel-dates input[type=radio][name=from][value='2026-07-20'][checked]"
+      assert_select "#series-cancel-dates input[type=radio][name=from][value='2026-08-03']"
+      assert_select "textarea#series-cancel-reason"
+      assert_select "input#series-cancel-notify[checked]"
+      assert_select "a[href='/appointment_series']", text: I18n.t("ea.close")
+    end
+
+    post "/appointment_series/#{@series.id}/cancel", params: { from: "2026-07-27", notify_users: "0", cancellation_reason: "Away" }
+    assert_redirected_to "/appointment_series"
+    follow_redirect!
+    assert_select ".alert-success", text: I18n.t("ea.series_cancelled")
+    assert_equal [ Date.new(2026, 7, 20) ], @series.reload.appointments.active.pluck(:occurrence_at)
+    assert_select "#series-table tbody tr", count: 1
+
+    post "/appointment_series/#{@series.id}/cancel", params: { from: "not a date" }
+    assert_redirected_to "/appointment_series"
+    follow_redirect!
+    assert_select ".alert-danger"
+  end
+
+  test "providers only get their own series in the panel and cannot cancel others" do
+    foreign_provider = User.create!(name: "Other", email: "other@example.org", role: users(:zane).role)
+    foreign = AppointmentSeries.create!(id_users_provider: foreign_provider.id, id_users_customer: users(:jx).id,
+                                        id_services: services(:haircut).id, ice_schedule: @series.ice_schedule,
+                                        starts_on: Date.new(2026, 7, 21), start_time: "11:00", duration: 30)
+    post "/login/validate", params: { username: "janedoe", password: "janedoe1" }
+    get "/appointment_series"
+    assert_select "#series-table tbody tr", count: 1
+    get "/appointment_series/#{foreign.id}/cancel"
+    assert_response :not_found
   end
 end

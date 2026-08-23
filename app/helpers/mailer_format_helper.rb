@@ -12,6 +12,11 @@ module MailerFormatHelper
     time.strftime("#{date_format} #{time_format}").strip
   end
 
+  # Date only, per the date_format setting.
+  def format_setting_date(date)
+    date.strftime(DATE_FORMATS[Setting.get("date_format")] || DATE_FORMATS["DMY"])
+  end
+
   # EA format_timezone: identifier -> display label (Timezones::get_timezone_name).
   def format_timezone(value)
     return if value.blank?

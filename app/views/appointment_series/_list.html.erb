@@ -1,0 +1,49 @@
+<% today = Date.current %>
+<h5 class="fw-light mb-3"><%= lang('repeating_appointments') %></h5>
+<div class="table-responsive">
+    <table class="table table-striped align-middle" id="series-table">
+        <thead>
+        <tr>
+            <th><%= lang('provider') %></th>
+            <th><%= lang('customer') %></th>
+            <th><%= lang('service') %></th>
+            <th><%= lang('repeats') %></th>
+            <th><%= lang('next_appointment') %></th>
+            <th><%= lang('not_booked') %></th>
+            <th><%= lang('actions') %></th>
+        </tr>
+        </thead>
+        <tbody>
+        <% series.each do |row| %>
+            <% booked = row.appointments.active.where("occurrence_at >= ?", today).order(:occurrence_at).pluck(:occurrence_at) %>
+            <% skipped = row.skipped_list.map { |entry| "#{format_setting_date(Date.parse(entry['date']))} (#{lang("reason_#{entry['reason']}")})" } %>
+            <tr data-id="<%= row.id %>" data-rule="<%= row.rule_hash.to_json %>" data-description="<%= row.description %>"
+                data-ends-on="<%= row.ends_on %>">
+                <td><%= row.provider&.name %></td>
+                <td><%= row.customer&.name %></td>
+                <td><%= row.service&.name %></td>
+                <td><%= row.description %> <%= row.start_time %></td>
+                <td><%= booked.any? ? format_setting_date(booked.first) : "-" %></td>
+                <td>
+                    <% if skipped.any? %>
+                        <span class="badge bg-warning text-dark" title="<%= skipped.join("\n") %>"><%= skipped.length %></span>
+                    <% else %>
+                        -
+                    <% end %>
+                </td>
+                <td class="text-nowrap">
+                    <button type="button" class="btn btn-primary btn-sm me-2 series-edit" data-id="<%= row.id %>">
+                        <i class="fas fa-edit me-2"></i><span><%= lang('change_pattern') %></span>
+                    </button>
+                    <%= link_to cancel_form_appointment_series_path(row), class: "btn btn-outline-danger btn-sm series-cancel" do %>
+                        <i class="fas fa-calendar-times me-2"></i><span><%= lang('cancel_series') %></span>
+                    <% end %>
+                </td>
+            </tr>
+        <% end %>
+        </tbody>
+    </table>
+</div>
+<% if series.empty? %>
+    <p id="series-empty" class="text-muted"><%= lang('no_repeating_appointments') %></p>
+<% end %>
