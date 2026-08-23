@@ -70,3 +70,106 @@ class BookingWizardTest < ApplicationSystemTestCase
     assert_no_selector "#wizard-frame-2", visible: :visible
   end
 end
+
+# Written before the Rails + Turbo conversion: labels, visible text and stable
+# ids only, so it must pass on both versions.
+class BookingWizardFlowTest < ApplicationSystemTestCase
+  setup do
+    Setting.set("display_email", "1")
+    Setting.set("display_phone_number", "1")
+  end
+
+  def next_weekday(from = Date.current + 1)
+    date = from
+    date += 1 until (1..5).cover?(date.wday)
+    date
+  end
+
+  # A second provider so the Any Provider option appears.
+  def second_provider
+    provider = User.create!(name: "Riley", email: "riley@example.org", role: Role.find_by!(slug: Role::PROVIDER))
+    provider.create_settings!(username: "riley", password: Passwords.hash("rileypass1"),
+                              working_plan: users(:zane).settings.working_plan)
+    ServiceProviderLink.create!(id_users: provider.id, id_services: services(:haircut).id)
+    provider
+  end
+
+  test "a customer books an appointment end to end and then reschedules it" do
+    date = next_weekday
+    visit root_url
+    assert_selector "#wizard-frame-1", visible: :visible, wait: 5
+    select services(:haircut).name, from: "select-service"
+    find("#button-next-1").click
+    select users(:zane).name, from: "select-provider"
+    find("#button-next-2").click
+
+    assert_selector "#wizard-frame-3", visible: :visible, wait: 5
+    find(".flatpickr-day[aria-label='#{date.strftime('%B %-d, %Y')}']", wait: 10).click
+    assert_selector "#available-hours .available-hour", minimum: 2, wait: 10
+    find("#available-hours .available-hour", text: /\A9:30 am\z/).click
+    find("#button-next-3").click
+
+    assert_selector "#wizard-frame-4", visible: :visible, wait: 5
+    fill_in "name", with: "Walk In"
+    fill_in "email", with: "walkin@example.org"
+    find("#button-next-4").click
+
+    assert_selector "#wizard-frame-5", visible: :visible, wait: 5
+    assert_text "Walk In"
+    assert_text services(:haircut).name
+    click_on "Confirm"
+
+    assert_text "Your appointment has been successfully registered", wait: 10
+    appointment = Appointment.appointments.find_by!(start_datetime: date.to_time.change(hour: 9, min: 30))
+    assert_equal "walkin@example.org", appointment.customer.email
+    assert_equal users(:zane).id, appointment.id_users_provider
+    assert_equal "booked", appointment.appointment_status.kind
+
+    # Reschedule to the next free hour through the public link.
+    visit "/booking/reschedule/#{appointment.booking_hash}"
+    assert_selector "#wizard-frame-3, #wizard-frame-1", visible: :visible, wait: 10
+    if page.has_selector?("#wizard-frame-1", visible: :visible, wait: 1)
+      find("#button-next-1").click
+      find("#button-next-2").click
+    end
+    assert_selector "#wizard-frame-3", visible: :visible, wait: 5
+    find(".flatpickr-day[aria-label='#{date.strftime('%B %-d, %Y')}']", wait: 10).click
+    assert_selector "#available-hours .available-hour", minimum: 2, wait: 10
+    find("#available-hours .available-hour", text: /\A10:00 am\z/).click
+    find("#button-next-3").click
+    assert_selector "#wizard-frame-4", visible: :visible, wait: 5
+    find("#button-next-4").click
+    assert_selector "#wizard-frame-5", visible: :visible, wait: 5
+    click_on "Update"
+
+    assert_text "successfully", wait: 10
+    replacement = Appointment.appointments.order(:id).last
+    assert_equal date.to_time.change(hour: 10), replacement.start_datetime
+    assert_equal "rescheduled", appointment.reload.appointment_status.kind
+  end
+
+  test "any provider offers the union of hours and books an actual provider" do
+    Setting.set("display_any_provider", "1")
+    second_provider
+    date = next_weekday
+    visit root_url
+    assert_selector "#wizard-frame-1", visible: :visible, wait: 5
+    select services(:haircut).name, from: "select-service"
+    find("#button-next-1").click
+    select "Any Provider", from: "select-provider"
+    find("#button-next-2").click
+    assert_selector "#wizard-frame-3", visible: :visible, wait: 5
+    find(".flatpickr-day[aria-label='#{date.strftime('%B %-d, %Y')}']", wait: 10).click
+    assert_selector "#available-hours .available-hour", minimum: 2, wait: 10
+    find("#available-hours .available-hour", text: /\A11:00 am\z/).click
+    find("#button-next-3").click
+    fill_in "name", with: "Any One"
+    fill_in "email", with: "anyone@example.org"
+    find("#button-next-4").click
+    assert_selector "#wizard-frame-5", visible: :visible, wait: 5
+    click_on "Confirm"
+    assert_text "successfully registered", wait: 10
+    appointment = Appointment.appointments.order(:id).last
+    assert_includes User.providers.pluck(:id), appointment.id_users_provider
+  end
+end
