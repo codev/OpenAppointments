@@ -75,14 +75,25 @@ class TurboDriveTest < ApplicationSystemTestCase
     assert_selector "#add-notification", wait: 5
     assert_driven
 
+    # An edited settings page asks before a Drive visit leaves it.
+    within("#messages-nav") { click_on "Settings" }
+    assert_selector "#messages-retention-days", wait: 5
+    fill_in "messages-retention-days", with: "7"
     drive_to "Appointments"
+    assert_selector "#message-modal .modal-title", text: "Settings", wait: 5
+    within("#message-modal") { click_on "Cancel" }
+    assert_no_selector "#message-modal", wait: 5
+    assert_selector "#messages-retention-days"
+    drive_to "Appointments"
+    within("#message-modal") { click_on "Leave page" }
+
     assert_selector "#day-filter", wait: 5
     find("#calendar-actions [data-bs-toggle=dropdown]").click
     find("#insert-appointment").click
     assert_selector "#save-appointment", visible: true, wait: 5
     assert_driven
     errors = page.driver.browser.logs.get(:browser).select { |log| log.level == "SEVERE" }.map(&:message)
-                 .reject { |m| m.include?("404") || m.include?("unsaved_changes_prompt") || m.include?("status_custom") }
+                 .reject { |m| m.include?("404") }
     assert_empty errors
   end
 end

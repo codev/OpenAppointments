@@ -902,3 +902,6 @@ hr:
     download_report: 'Download Report'
     booked_on: 'Booked Date'
     invalid_datetime: "Datum i vrijeme nisu mogli biti pročitani"
+    unsaved_changes_prompt: "Imate nespremljene promjene. Napustiti stranicu i izgubiti ih?"
+    leave_page: "Napusti stranicu"
+    status_custom: "Prilagođeno"

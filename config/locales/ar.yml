@@ -902,3 +902,6 @@ ar:
     download_report: 'Download Report'
     booked_on: 'Booked Date'
     invalid_datetime: "تعذر قراءة التاريخ والوقت"
+    unsaved_changes_prompt: "لديك تغييرات غير محفوظة. مغادرة هذه الصفحة وفقدانها؟"
+    leave_page: "مغادرة الصفحة"
+    status_custom: "مخصص"

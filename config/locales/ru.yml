@@ -902,3 +902,6 @@ ru:
     download_report: 'Download Report'
     booked_on: 'Booked Date'
     invalid_datetime: "Не удалось прочитать дату и время"
+    unsaved_changes_prompt: "У вас есть несохранённые изменения. Покинуть страницу и потерять их?"
+    leave_page: "Покинуть страницу"
+    status_custom: "Пользовательский"

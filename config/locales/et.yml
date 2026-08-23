@@ -902,3 +902,6 @@ et:
     download_report: 'Download Report'
     booked_on: 'Booked Date'
     invalid_datetime: "Kuupäeva ja kellaaega ei õnnestunud lugeda"
+    unsaved_changes_prompt: "Sul on salvestamata muudatusi. Kas lahkuda lehelt ja need kaotada?"
+    leave_page: "Lahku lehelt"
+    status_custom: "Kohandatud"

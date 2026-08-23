@@ -902,3 +902,6 @@ nl:
     download_report: 'Download Report'
     booked_on: 'Booked Date'
     invalid_datetime: "De datum en tijd konden niet worden gelezen"
+    unsaved_changes_prompt: "Je hebt niet-opgeslagen wijzigingen. Deze pagina verlaten en ze verliezen?"
+    leave_page: "Pagina verlaten"
+    status_custom: "Aangepast"

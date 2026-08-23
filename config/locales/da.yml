@@ -902,3 +902,6 @@ da:
     download_report: 'Download Report'
     booked_on: 'Booked Date'
     invalid_datetime: "Dato og klokkeslæt kunne ikke læses"
+    unsaved_changes_prompt: "Du har ugemte ændringer. Forlad siden og mist dem?"
+    leave_page: "Forlad siden"
+    status_custom: "Brugerdefineret"

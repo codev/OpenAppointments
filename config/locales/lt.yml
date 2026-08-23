@@ -902,3 +902,6 @@ lt:
     download_report: 'Download Report'
     booked_on: 'Booked Date'
     invalid_datetime: "Nepavyko nuskaityti datos ir laiko"
+    unsaved_changes_prompt: "Turite neišsaugotų pakeitimų. Palikti šį puslapį ir juos prarasti?"
+    leave_page: "Palikti puslapį"
+    status_custom: "Pasirinktinis"

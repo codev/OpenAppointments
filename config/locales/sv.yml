@@ -902,3 +902,6 @@ sv:
     download_report: 'Download Report'
     booked_on: 'Booked Date'
     invalid_datetime: "Datum och tid kunde inte läsas"
+    unsaved_changes_prompt: "Du har osparade ändringar. Lämna sidan och förlora dem?"
+    leave_page: "Lämna sidan"
+    status_custom: "Anpassad"

@@ -902,3 +902,6 @@ zh-tw:
     download_report: 'Download Report'
     booked_on: 'Booked Date'
     invalid_datetime: "無法讀取日期和時間"
+    unsaved_changes_prompt: "您有未儲存的變更。離開此頁並放棄變更？"
+    leave_page: "離開頁面"
+    status_custom: "自訂"

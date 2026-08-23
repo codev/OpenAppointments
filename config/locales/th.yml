@@ -902,3 +902,6 @@ th:
     download_report: 'Download Report'
     booked_on: 'Booked Date'
     invalid_datetime: "ไม่สามารถอ่านวันที่และเวลาได้"
+    unsaved_changes_prompt: "คุณมีการเปลี่ยนแปลงที่ยังไม่ได้บันทึก ออกจากหน้านี้และทิ้งการเปลี่ยนแปลงหรือไม่"
+    leave_page: "ออกจากหน้า"
+    status_custom: "กำหนดเอง"

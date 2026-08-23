@@ -902,3 +902,6 @@ ca:
     download_report: 'Download Report'
     booked_on: 'Booked Date'
     invalid_datetime: "No s'ha pogut llegir la data i l'hora"
+    unsaved_changes_prompt: "Tens canvis sense desar. Vols sortir de la pàgina i perdre'ls?"
+    leave_page: "Sortir de la pàgina"
+    status_custom: "Personalitzat"

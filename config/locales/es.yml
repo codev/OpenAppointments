@@ -902,3 +902,6 @@ es:
     download_report: 'Download Report'
     booked_on: 'Booked Date'
     invalid_datetime: "No se pudo leer la fecha y la hora"
+    unsaved_changes_prompt: "Tienes cambios sin guardar. ¿Salir de esta página y perderlos?"
+    leave_page: "Salir de la página"
+    status_custom: "Personalizado"

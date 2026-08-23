@@ -82,22 +82,22 @@ window.App.Layouts.Backend = (function () {
     }
 
     /**
-     * Warn before leaving a settings page edited since its last save, or a CRUD
-     * page with a record open. Turbo visits ask through the app dialog; a full
-     * navigation gets the browser's own (its text cannot be customised).
+     * Warn before leaving a form edited since its last save (settings, account,
+     * a record form). Turbo visits ask through the app dialog; a full navigation
+     * gets the browser's own (its text cannot be customised).
      */
     let settingsDirty = false;
 
     function unsaved() {
-        return settingsDirty || $('.crud-form').length > 0;
+        return settingsDirty;
     }
 
     function guardUnsavedChanges() {
-        $(document).on('input change', '#settings-form :input, #account-form :input', () => {
+        $(document).on('input change', '#settings-form :input, #account-form :input, .crud-form :input', () => {
             settingsDirty = true;
         });
 
-        $(document).on('submit', '#settings-form, #account-form', () => {
+        $(document).on('submit', '#settings-form, #account-form, .crud-form', () => {
             settingsDirty = false;
         });
 
@@ -106,8 +106,7 @@ window.App.Layouts.Backend = (function () {
         });
 
         document.addEventListener('turbo:before-visit', (event) => {
-            // The dialog strings are pending (proposed-strings.txt); without them the visit proceeds.
-            if (!unsaved() || lang('unsaved_changes_prompt') === 'unsaved_changes_prompt') {
+            if (!unsaved()) {
                 return;
             }
 

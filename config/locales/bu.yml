@@ -902,3 +902,6 @@ bu:
     download_report: 'Download Report'
     booked_on: 'Booked Date'
     invalid_datetime: "Датата и часът не можаха да бъдат прочетени"
+    unsaved_changes_prompt: "Имате незапазени промени. Да напуснете страницата и да ги загубите?"
+    leave_page: "Напускане на страницата"
+    status_custom: "Персонализиран"

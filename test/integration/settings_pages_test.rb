@@ -184,3 +184,13 @@ class LdapImportFormTest < ActionDispatch::IntegrationTest
     assert_select ".alert-danger", text: /password/
   end
 end
+
+class DriveStringsTest < ActionDispatch::IntegrationTest
+  test "the unsaved changes and custom status strings exist in every locale" do
+    I18n.available_locales.each do |locale|
+      %w[unsaved_changes_prompt leave_page status_custom].each do |key|
+        assert I18n.t("ea.#{key}", locale: locale, fallback: false, default: nil).present?, "missing ea.#{key} in #{locale}"
+      end
+    end
+  end
+end

@@ -902,3 +902,6 @@ hu:
     download_report: 'Download Report'
     booked_on: 'Booked Date'
     invalid_datetime: "A dátum és az idő nem olvasható"
+    unsaved_changes_prompt: "Nem mentett módosításai vannak. Elhagyja az oldalt és elveszíti őket?"
+    leave_page: "Oldal elhagyása"
+    status_custom: "Egyéni"

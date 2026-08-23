@@ -902,3 +902,6 @@ el:
     download_report: 'Download Report'
     booked_on: 'Booked Date'
     invalid_datetime: "Δεν ήταν δυνατή η ανάγνωση της ημερομηνίας και ώρας"
+    unsaved_changes_prompt: "Έχετε μη αποθηκευμένες αλλαγές. Αποχώρηση από τη σελίδα και απώλειά τους;"
+    leave_page: "Αποχώρηση από τη σελίδα"
+    status_custom: "Προσαρμοσμένο"

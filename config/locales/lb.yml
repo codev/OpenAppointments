@@ -902,3 +902,6 @@ lb:
     download_report: 'Download Report'
     booked_on: 'Booked Date'
     invalid_datetime: "Datum an Zäit konnten net gelies ginn"
+    unsaved_changes_prompt: "Dir hutt net gespäichert Ännerungen. Säit verloossen an se verléieren?"
+    leave_page: "Säit verloossen"
+    status_custom: "Benotzerdefinéiert"
