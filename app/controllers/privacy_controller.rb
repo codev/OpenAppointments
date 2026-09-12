@@ -23,8 +23,8 @@ class PrivacyController < ApplicationController
 
     Rails.logger.info("Customer personal information deleted. Customer ID: #{customer_id} IP: #{request.remote_ip}")
 
-    render json: { success: true }
+    params[:form].present? ? redirect_to(root_path) : render(json: { success: true })
   rescue StandardError => e
-    json_exception(e)
+    params[:form].present? ? redirect_to(root_path, alert: e.message) : json_exception(e)
   end
 end

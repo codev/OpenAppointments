@@ -13,6 +13,7 @@ CloudronManifest.json.
 - Login, recovery, password reset, account, notification templates, manage data and the LDAP import are plain forms
 - Pages load with Turbo Drive: moving between admin pages keeps the scripts and only swaps the page
 - The public booking wizard is served step by step by the server; every day's free hours arrive with the time step, so browsing days is instant even on a slow connection, and a slot taken in the meantime returns to the times with a message
+- On the time step the timezone select relabels the hours and is saved on the customer; the reschedule page's cancel and delete-my-data buttons open dialogs that post plain forms
 - Blocked period dates use the browser's date and time picker
 - Lists of customers, admins, assistants, blocked periods and webhooks page 20 at a time
 - Fixed: the API, LDAP, analytics, Google Calendar and messages settings pages showed blank values after a save

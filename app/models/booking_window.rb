@@ -4,15 +4,16 @@
 class BookingWindow
   # { "YYYY-MM-DD" => [ "HH:MM", ... ] }, empty days omitted.
   def self.build(service, provider_id, exclude_appointment_id: nil)
-    engine = Availability::Engine.new
     providers =
       if provider_id.to_s == BookingPayloads::ANY_PROVIDER
-        BookingPayloads.providers_for_service(service.id)
+        BookingPayloads.providers_for_service(service.id).to_a
       else
         [ User.providers.find(provider_id) ]
       end
 
     horizon = Setting.get("future_booking_limit", "90").to_i
+    engine = Availability::Engine.new
+    engine.preload(providers, Date.current, Date.current + horizon.days)
     window = {}
     (Date.current..Date.current + horizon.days).each do |date|
       key = date.strftime("%Y-%m-%d")

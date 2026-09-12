@@ -17,47 +17,17 @@ class BookingFlowTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test "get_available_hours returns EA hour strings" do
+  test "the booking window lists EA hour strings per date, merging any-provider hours" do
     travel_to Time.new(2026, 7, 1, 12, 0, 0) do
-      post "/booking/get_available_hours", params: {
-        service_id: services(:haircut).id, provider_id: users(:zane).id,
-        selected_date: DATE, service_duration: 30, manage_mode: 0, appointment_id: ""
-      }
-    end
-    assert_response :success
-    hours = response.parsed_body
-    assert_includes hours, "09:00"
-    assert_not_includes hours, "10:00" # taken by fixture appointment
-    assert_not_includes hours, "14:30" # break
-  end
+      window = BookingWindow.build(services(:haircut), users(:zane).id)
+      hours = window[DATE]
+      assert_includes hours, "09:00"
+      assert_not_includes hours, "10:00" # taken by fixture appointment
+      assert_not_includes hours, "14:30" # break
+      assert_not window.key?("2026-07-22"), "Wednesday is a day off"
 
-  test "get_available_hours with any-provider merges providers" do
-    travel_to Time.new(2026, 7, 1, 12, 0, 0) do
-      post "/booking/get_available_hours", params: {
-        service_id: services(:haircut).id, provider_id: "any-provider",
-        selected_date: DATE, manage_mode: 0
-      }
+      assert_includes BookingWindow.build(services(:haircut), "any-provider")[DATE], "09:00"
     end
-    assert_includes response.parsed_body, "09:00"
-  end
-
-  test "get_available_hours empty provider returns empty array" do
-    post "/booking/get_available_hours", params: { service_id: services(:haircut).id, selected_date: DATE }
-    assert_equal [], response.parsed_body
-  end
-
-  test "get_unavailable_dates marks past and dayoff dates" do
-    travel_to Time.new(2026, 7, 10, 12, 0, 0) do
-      get "/booking/get_unavailable_dates", params: {
-        provider_id: users(:zane).id, service_id: services(:haircut).id,
-        selected_date: DATE, manage_mode: 0
-      }
-    end
-    assert_response :success
-    dates = response.parsed_body
-    assert_includes dates, "2026-07-01" # past
-    assert_includes dates, "2026-07-22" # Wednesday: day off
-    assert_not_includes dates, "2026-07-20"
   end
 
   test "register books an appointment and returns the hash" do
@@ -137,7 +107,7 @@ class BookingFlowTest < ActionDispatch::IntegrationTest
     post "/booking/register", params: register_params(start: "#{DATE} 09:00:00")
     assert_response :forbidden
 
-    post "/booking/get_available_hours", params: { service_id: services(:haircut).id }
+    post "/booking/confirm", params: { form: "1", service_id: services(:haircut).id }
     assert_response :forbidden
   end
 
@@ -164,13 +134,13 @@ class BookingFlowTest < ActionDispatch::IntegrationTest
     travel_to Time.new(2026, 7, 10, 12, 0, 0) do
       get "/booking/reschedule/#{appointments(:upcoming).booking_hash}"
       assert_response :success
-      assert_match '"manage_mode":true', response.body # window.vars JSON is emitted raw
+      assert_select "#cancel-appointment-frame"
     end
 
     travel_to provider_zone.parse("2026-07-20 09:45") do
       get "/booking/reschedule/#{appointments(:upcoming).booking_hash}"
       assert_response :success
-      assert_no_match '"manage_mode":true', response.body
+      assert_select "#cancel-appointment-frame", count: 0
       assert_includes response.body, "/booking_cancellation/late/#{appointments(:upcoming).booking_hash}"
     end
 
@@ -238,6 +208,7 @@ class BookingFlowTest < ActionDispatch::IntegrationTest
                       extra_appointment: {}, manage_mode: false)
     {
       post_data: {
+        appointment_hash: extra_appointment["id"] && Appointment.find(extra_appointment["id"]).booking_hash,
         appointment: {
           "start_datetime" => start,
           "id_services" => services(:haircut).id,

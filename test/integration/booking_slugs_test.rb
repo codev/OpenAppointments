@@ -32,9 +32,10 @@ class BookingSlugsTest < ActionDispatch::IntegrationTest
     assert User.providers.where(booking_slug: nil).none?
   end
 
-  test "the booking page payload carries slugs, admin rows too" do
+  test "the booking payloads carry slugs but the public page does not, admin rows do" do
+    assert BookingPayloads.available_services.all? { |row| row["booking_slug"].match?(/\A[a-z2-9]{4}-[a-z2-9]{4}\z/) }
     get "/"
-    assert_match(/"booking_slug":"[a-z2-9]{4}-[a-z2-9]{4}"/, response.body)
+    assert_no_match services(:haircut).booking_slug, response.body
 
     login_admin
     get "/services/#{services(:haircut).id}/edit"

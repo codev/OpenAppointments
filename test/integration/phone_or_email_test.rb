@@ -62,10 +62,10 @@ class PhoneOrEmailTest < ActionDispatch::IntegrationTest
     Setting.set("require_email", "1")
     Setting.set("require_phone_number", "1")
 
-    get "/"
-    assert_match(/"require_phone_or_email":"1"/, response.body)
-    assert_select "#email.required", false
-    assert_select "#phone-number.required", false
+    get "/", params: { step: "info", service_id: services(:haircut).id, provider_id: users(:zane).id, date: "2026-07-20", time: "10:00" }
+    assert_select "#email:not([required])"
+    assert_select "#phone-number:not([required])"
+    assert_select "label[for=email] .required-either"
 
     Setting.set("require_phone_or_email", "0")
     get "/", params: { step: "info", service_id: services(:haircut).id, provider_id: users(:zane).id, date: "2026-07-20", time: "10:00" }

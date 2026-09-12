@@ -7,9 +7,12 @@
     <%= render "shared/booking_cancellation_frame",
                manage_mode: vars(:manage_mode),
                appointment_data: vars(:appointment_data),
+               customer_token: vars(:customer_token),
                display_delete_personal_information: vars(:display_delete_personal_information) %>
 
-    <turbo-frame id="wizard" data-turbo-action="<%= request.get? ? 'advance' : 'replace' %>" data-step="<%= step_number %>">
+    <%# Turbo keeps the frame element's own attributes across loads: navigation
+        and step attributes live on the links and forms inside it. %>
+    <turbo-frame id="wizard">
         <% if flash[:alert] %>
             <div class="alert alert-danger m-3"><%= flash[:alert] %></div>
         <% end %>

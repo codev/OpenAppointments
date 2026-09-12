@@ -76,13 +76,6 @@ class BookingWizardOrderTest < ActionDispatch::IntegrationTest
                   text: I18n.t("ea.select_service_first")
   end
 
-  test "the js payload carries the first step" do
-    get "/"
-    assert_match(/"first_step":"service"/, response.body)
-    get "/", params: { first: "provider" }
-    assert_match(/"first_step":"provider"/, response.body)
-  end
-
   test "manage mode still renders the wizard" do
     appointment = appointments(:upcoming)
     travel_to Time.new(2026, 7, 10, 12, 0, 0) do

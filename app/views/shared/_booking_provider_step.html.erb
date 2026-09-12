@@ -3,7 +3,7 @@
 <% any_provider = !vars(:manage_mode) && providers.length > 1 && vars(:display_any_provider).to_s == "1" %>
 <% cards_mode = vars(:display_mode) == "cards" %>
 <div id="wizard-frame-<%= step_number %>" class="wizard-frame p-3 p-md-4">
-    <%= form_with url: url_for(only_path: true), method: :get, id: "provider-step-form", data: { turbo_frame: "wizard", turbo_action: "advance" } do %>
+    <%= form_with url: wizard_form_path, method: :get, id: "provider-step-form", data: { turbo_frame: "wizard", turbo_action: "advance" } do %>
         <%= wizard_state_fields(provider_id: nil, date: nil, time: nil, step: nil) %>
         <%= hidden_field_tag :step, (@step == "first" ? "second" : "time"), id: nil %>
         <div class="frame-container py-3">
@@ -68,7 +68,7 @@
         <div class="command-buttons text-center my-3 mx-auto d-md-flex justify-content-md-between">
             <% if @step == "first" %>
                 <% if !vars(:manage_mode) && setting("display_order_switch", "1").to_s == "1" %>
-                    <a class="swap-first-step btn btn-outline-secondary" data-turbo-frame="wizard"
+                    <a class="swap-first-step btn btn-outline-secondary" data-turbo-action="advance"
                        href="<%= wizard_step_path('first', first: 'service', service_id: nil, provider_id: nil) %>">
                         <%= lang('select_service_first') %>
                     </a>

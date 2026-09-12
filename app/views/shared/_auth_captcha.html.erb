@@ -8,7 +8,8 @@
     </div>
 <% when "turnstile" %>
     <div class="mb-4 text-center">
-        <div class="cf-turnstile d-inline-block" data-sitekey="<%= TurnstileChallenge.site_key %>"></div>
+        <div class="cf-turnstile d-inline-block" data-sitekey="<%= TurnstileChallenge.site_key %>"
+             data-response-field-name="cf_turnstile_response"></div>
         <span id="turnstile-hint" class="help-block text-danger small d-block" style="opacity:0">&nbsp;</span>
     </div>
 <% end %>

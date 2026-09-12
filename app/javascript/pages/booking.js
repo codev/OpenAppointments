@@ -2,23 +2,21 @@
  * Public booking wizard. The steps are server rendered into the wizard frame;
  * this script handles what stays client side: the calendar and hour buttons
  * (the whole window's hours arrive with the time step, so switching days needs
- * no request), card selection, live descriptions, the remembered details and
- * the captcha.
+ * no request), the timezone labels, card selection, live descriptions, the
+ * remembered details and the captcha.
  */
 App.Pages.Booking = (function () {
-    function timeLabel(hhmm, timeFormat) {
-        const [hour, minute] = hhmm.split(':').map(Number);
-        if (timeFormat === 'military') {
-            return hhmm;
-        }
-        const suffix = hour >= 12 ? 'pm' : 'am';
-        const twelve = hour % 12 === 0 ? 12 : hour % 12;
-        return twelve + ':' + String(minute).padStart(2, '0') + ' ' + suffix;
+    function timeStepFrame() {
+        return $('#time-step-form').closest('.wizard-frame');
     }
 
-    function renderHours($frame, date) {
+    // Hours are provider wall-clock keys; labels show them in the chosen zone.
+    function renderHours($frame, date, keepSelection) {
         const windowHours = $frame.data('window') || {};
-        const timeFormat = $frame.data('timeFormat');
+        const timeFormat = $frame.data('timeFormat') === 'military' ? 'HH:mm' : 'h:mm a';
+        const providerTimezone = $frame.data('providerTimezone');
+        const timezone = $('#select-timezone').val() || providerTimezone;
+        const selected = keepSelection ? $('#selected-time').val() : '';
         const $hours = $('#available-hours').empty();
         const hours = windowHours[date] || [];
 
@@ -30,28 +28,20 @@ App.Pages.Booking = (function () {
             return;
         }
 
-        // A reschedule keeps its original hour selectable on its own day.
-        const appointmentStart = String($frame.data('appointmentStart') || '');
-        const shown = hours.slice();
-        if (appointmentStart.startsWith(date)) {
-            const original = appointmentStart.slice(11, 16);
-            if (original && !shown.includes(original)) {
-                shown.push(original);
-                shown.sort();
+        hours.forEach((hour) => {
+            const moment_ = moment.tz(date + ' ' + hour, providerTimezone).tz(timezone);
+            if (moment_.format('YYYY-MM-DD') !== date) {
+                return; // In the chosen zone this hour belongs to another day.
             }
-        }
-
-        shown.forEach((hour) => {
             $('<button/>', {
                 'type': 'button',
                 'class': 'btn btn-outline-secondary w-100 shadow-none available-hour my-1',
                 'data-value': hour,
-                'text': timeLabel(hour, timeFormat),
+                'text': moment_.format(timeFormat),
             }).appendTo($hours);
         });
 
-        const selected = $frame.data('selectedTime');
-        if (selected && shown.includes(selected)) {
+        if (selected && hours.includes(selected)) {
             selectHour(selected);
         }
     }
@@ -63,12 +53,22 @@ App.Pages.Booking = (function () {
         $('#selected-time').val(hour);
     }
 
+    // The chosen zone, else the browser's, else the provider's.
+    function initializeTimezone($frame) {
+        const $select = $('#select-timezone');
+        const wanted = $frame.data('selectedTimezone') || Intl.DateTimeFormat().resolvedOptions().timeZone;
+        const supported = $select.find('option[value="' + wanted + '"]').length > 0;
+        $select.val(supported ? wanted : $frame.data('providerTimezone'));
+    }
+
     function initializeTimeStep() {
-        const $frame = $('#time-step-form').closest('.wizard-frame');
+        const $frame = timeStepFrame();
 
         if (!$frame.length) {
             return;
         }
+
+        initializeTimezone($frame);
 
         const windowHours = $frame.data('window') || {};
         const enabled = Object.keys(windowHours);
@@ -77,14 +77,14 @@ App.Pages.Booking = (function () {
         flatpickr('#select-date', {
             inline: true,
             static: true,
-            enable: enabled.length ? enabled : [ () => false ],
+            enable: enabled.length ? enabled : [() => false],
             defaultDate: initial,
-            locale: App.Utils.UI.getFlatpickrLocale ? undefined : undefined,
-            onChange: (dates, dateStr) => renderHours($frame, dateStr),
+            locale: App.Utils.UI.getFlatpickrLocale(),
+            onChange: (dates, dateStr) => renderHours($frame, dateStr, false),
         });
 
         if (initial) {
-            renderHours($frame, initial);
+            renderHours($frame, initial, true);
         }
     }
 
@@ -133,7 +133,7 @@ App.Pages.Booking = (function () {
     }
 
     function updateStepIndicator() {
-        const step = Number($('turbo-frame#wizard').data('step') || $('.wizard-frame').attr('id')?.replace('wizard-frame-', ''));
+        const step = Number(($('.wizard-frame').attr('id') || '').replace('wizard-frame-', ''));
 
         $('.book-step').removeClass('active-step').removeAttr('aria-current');
         if (step) {
@@ -148,6 +148,14 @@ App.Pages.Booking = (function () {
         $('#provider-description .selection-description[data-for-provider="' + $('#select-provider').val() + '"]').removeClass('d-none');
     }
 
+    function initializeStep() {
+        initializeTimeStep();
+        initializeInfoStep();
+        initializeFinalStep();
+        updateStepIndicator();
+        showDescription();
+    }
+
     function initialize() {
         if (!$('turbo-frame#wizard').length) {
             return;
@@ -158,15 +166,12 @@ App.Pages.Booking = (function () {
                 if (event.target.id !== 'wizard') {
                     return;
                 }
-                initializeTimeStep();
-                initializeInfoStep();
-                initializeFinalStep();
-                updateStepIndicator();
-                showDescription();
+                initializeStep();
                 window.scrollTo({top: 0});
             });
 
             $(document).on('change', '#select-service, #select-provider', showDescription);
+            $(document).on('change', '#select-timezone', () => renderHours(timeStepFrame(), $('#selected-date').val(), true));
             $(document).on('click', '.available-hour', (event) => selectHour($(event.currentTarget).data('value')));
 
             // The time step's Next needs a chosen hour.
@@ -218,11 +223,7 @@ App.Pages.Booking = (function () {
             });
         });
 
-        initializeTimeStep();
-        initializeInfoStep();
-        initializeFinalStep();
-        updateStepIndicator();
-        showDescription();
+        initializeStep();
     }
 
     App.page(initialize);

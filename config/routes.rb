@@ -83,8 +83,6 @@ Rails.application.routes.draw do
   root "booking#index"
   get "booking" => "booking#index"
   get "booking/reschedule/:appointment_hash" => "booking#reschedule"
-  post "booking/get_available_hours" => "booking#get_available_hours"
-  get "booking/get_unavailable_dates" => "booking#get_unavailable_dates"
   post "booking/confirm" => "booking#confirm"
   post "booking/register" => "booking#register"
   get "booking_confirmation/of/:appointment_hash" => "booking_confirmation#of", as: :booking_confirmation

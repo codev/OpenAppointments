@@ -10,6 +10,17 @@ module Availability
   class Engine
     def initialize(now: nil)
       @now = now
+      @exceptions = {}
+    end
+
+    # BookingWindow asks for every day of a range: load each table once instead
+    # of once per date. Without a preload every call queries for its date.
+    def preload(providers, from, to)
+      @events = providers.to_h do |provider|
+        [ provider.id, Appointment.active.where(id_users_provider: provider.id)
+                                  .where("DATE(start_datetime) <= ? AND DATE(end_datetime) >= ?", to, from).to_a ]
+      end
+      @blocked = BlockedPeriod.for_period(from, to).to_a
     end
 
     def available_hours(date, service, provider, exclude_appointment_id: nil)
@@ -32,10 +43,9 @@ module Availability
       raise ArgumentError, "Invalid date format provided." unless date.match?(/\A\d{4}-\d{2}-\d{2}\z/)
 
       working_plan = provider.working_plan || {}
-      exceptions = WorkingPlanException.expanded_for(provider.id)
+      exceptions = exceptions_for(provider.id)
 
-      events = Appointment.covering_date(date, provider.id, exclude_appointment_id).to_a +
-               BlockedPeriod.for_period(date, date).to_a
+      events = events_for(date, provider, exclude_appointment_id) + blocked_for(date)
 
       day_plan = exceptions.key?(date) ? exceptions[date] : working_plan[weekday(date)]
       return [] unless day_plan
@@ -146,10 +156,10 @@ module Availability
     private
 
     def consider_multiple_attendants(date, service, provider, exclude_appointment_id)
-      unavailabilities = Appointment.unavailabilities.covering_date(date, provider.id, exclude_appointment_id).to_a
-      blocked = BlockedPeriod.for_period(date, date).to_a
+      unavailabilities = events_for(date, provider, exclude_appointment_id).select(&:is_unavailability)
+      blocked = blocked_for(date)
 
-      exceptions = WorkingPlanException.expanded_for(provider.id)
+      exceptions = exceptions_for(provider.id)
       working_plan = provider.working_plan || {}
       day_plan = exceptions.key?(date) ? exceptions[date] : working_plan[weekday(date)]
       return [] unless day_plan
@@ -252,25 +262,52 @@ module Availability
     end
 
     def consider_book_advance_timeout(date, hours, provider)
-      zone = Time.find_zone!(provider.effective_timezone)
-      threshold = now + BookingWindows.minutes("book_advance_timeout") * 60
+      zone = (@zones ||= {})[provider.id] ||= Time.find_zone!(provider.effective_timezone)
+      threshold = now + (@advance_seconds ||= BookingWindows.minutes("book_advance_timeout") * 60)
 
       hours = hours.reject { |hour| zone.parse("#{date} #{hour}").to_i <= threshold.to_i }
       hours.sort
     end
 
     def consider_future_booking_limit(date, hours)
-      limit = Setting.get("future_booking_limit", "90")
-      limit = limit.to_s.match?(/\A-?\d+\z/) ? [ limit.to_i, 0 ].max : 90
-
-      threshold = now + limit * 86_400
+      threshold = now + future_booking_limit_days * 86_400
       selected = Time.new(*date.split("-").map(&:to_i))
 
       threshold.to_i > selected.to_i ? hours : []
     end
 
+    def future_booking_limit_days
+      @future_booking_limit_days ||= begin
+        limit = Setting.get("future_booking_limit", "90")
+        limit.to_s.match?(/\A-?\d+\z/) ? [ limit.to_i, 0 ].max : 90
+      end
+    end
+
     def entire_date_blocked?(date)
-      BlockedPeriod.covering_date(date).count > 1
+      return BlockedPeriod.covering_date(date).count > 1 unless @blocked
+
+      blocked_for(date).count > 1
+    end
+
+    def exceptions_for(provider_id)
+      @exceptions[provider_id] ||= WorkingPlanException.expanded_for(provider_id)
+    end
+
+    def events_for(date, provider, exclude_appointment_id)
+      return Appointment.covering_date(date, provider.id, exclude_appointment_id).to_a unless @events&.key?(provider.id)
+
+      @events[provider.id].select { |event| covers?(event, date) && event.id != exclude_appointment_id.to_i }
+    end
+
+    # for_period(date, date) reduces to the covering condition.
+    def blocked_for(date)
+      return BlockedPeriod.for_period(date, date).to_a unless @blocked
+
+      @blocked.select { |period| covers?(period, date) }
+    end
+
+    def covers?(event, date)
+      event.start_datetime.strftime("%Y-%m-%d") <= date && event.end_datetime.strftime("%Y-%m-%d") >= date
     end
 
     def now

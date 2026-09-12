@@ -148,6 +148,25 @@ class BookingWizardFlowTest < ApplicationSystemTestCase
     assert_equal "rescheduled", appointment.reload.appointment_status.kind
   end
 
+  test "cancelling from the reschedule link asks for a reason" do
+    date = next_weekday
+    appointment = Appointment.create!(id_users_provider: users(:zane).id, id_users_customer: users(:jx).id,
+                                      id_services: services(:haircut).id, start_datetime: date.to_time.change(hour: 14),
+                                      end_datetime: date.to_time.change(hour: 14, min: 30),
+                                      appointment_status: AppointmentStatus.of("booked"))
+    visit "/booking/reschedule/#{appointment.booking_hash}"
+    assert_selector "#cancel-appointment", wait: 10
+    find("#cancel-appointment").click
+    wait_for_modal
+    find("#cancel-appointment-confirm").click # the reason is required
+    assert_selector "#cancel-appointment-modal.show"
+    fill_in "cancellation-reason", with: "Moving house"
+    find("#cancel-appointment-confirm").click
+    assert_no_selector "#cancel-appointment", wait: 10
+    assert_equal "cancelled", appointment.reload.appointment_status.kind
+    assert_includes appointment.notes, "Moving house"
+  end
+
   test "any provider offers the union of hours and books an actual provider" do
     Setting.set("display_any_provider", "1")
     second_provider
@@ -217,6 +236,52 @@ class BookingWizardWindowTest < ApplicationSystemTestCase
     # the wizard's own Back buttons carry the selection.
     page.go_back
     assert_selector "#wizard-frame-1", visible: :visible, wait: 5
+  end
+
+  test "the indicator follows the frame, the details post leaves the address alone and Back stays in the frame" do
+    Setting.set("first_weekday", "monday")
+    to_time_step
+    assert_selector "#steps #step-3.active-step"
+    assert_no_selector "#steps #step-1.active-step"
+    assert_equal "Mon", first(".flatpickr-weekday").text.strip
+
+    date = weekday(0)
+    find(".flatpickr-day[aria-label='#{date.strftime('%B %-d, %Y')}']").click
+    find("#available-hours .available-hour", text: /\A9:30 am\z/, wait: 5).click
+    find("#button-next-3").click
+    assert_selector "#wizard-frame-4", visible: :visible, wait: 5
+    page.execute_script("window.__sameDocument = true")
+    fill_in "name", with: "Stepper"
+    fill_in "email", with: "stepper@example.org"
+    find("#button-next-4").click
+    assert_selector "#wizard-frame-5", visible: :visible, wait: 5
+    assert_selector "#steps #step-5.active-step"
+    assert_no_match(%r{/booking/confirm}, current_url)
+
+    find("#button-back-5").click
+    assert_selector "#wizard-frame-4", visible: :visible, wait: 5
+    assert_equal "Stepper", find("#name").value
+    assert page.evaluate_script("window.__sameDocument === true"), "Back must not reload the page"
+  end
+
+  test "the timezone select relabels the hours and travels to the customer record" do
+    Setting.set("fixed_timezone", "0")
+    to_time_step
+    date = weekday(0)
+    find(".flatpickr-day[aria-label='#{date.strftime('%B %-d, %Y')}']").click
+    find("#available-hours .available-hour", text: /\A9:30 am\z/, wait: 5).click
+    select "New_York (-5:00)", from: "select-timezone"
+    assert_selector "#available-hours .available-hour.selected-hour", text: /\A4:30 am\z/
+    find("#button-next-3").click
+    assert_selector "#wizard-frame-4", visible: :visible, wait: 5
+    fill_in "name", with: "Far Away"
+    fill_in "email", with: "far@example.org"
+    find("#button-next-4").click
+    assert_selector "#wizard-frame-5 #appointment-details", text: /4:30 am/, wait: 5
+    assert_selector "#wizard-frame-5 #appointment-details", text: /New_York/
+    click_on "Confirm"
+    assert_text "successfully registered", wait: 10
+    assert_equal "America/New_York", User.customers.find_by!(email: "far@example.org").timezone
   end
 
   test "a slot taken while choosing returns to a fresh time step with the message" do

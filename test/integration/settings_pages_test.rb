@@ -78,7 +78,7 @@ class SettingsPagesTest < ActionDispatch::IntegrationTest
     assert_select "div.d-none label[for='provider_timezone']"
     get "/booking", params: { step: "time", service_id: services(:haircut).id, provider_id: users(:zane).id }
     assert_select "div.d-none label[for='select-timezone']"
-    assert_match '"fixed_timezone":true', response.body
+    assert_select "select#select-timezone[disabled]"
   end
 
   test "message failure report addresses default to the admins and must be valid" do

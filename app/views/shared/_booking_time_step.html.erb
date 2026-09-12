@@ -1,12 +1,13 @@
 <%# Date and hour: the whole booking window arrives with the page, so switching
-    days is instant on the client. Times are HH:MM keys, labels per time_format. %>
+    days is instant on the client. Times are HH:MM keys in the provider's zone;
+    labels follow time_format and the chosen timezone. %>
 <div id="wizard-frame-<%= step_number %>" class="wizard-frame p-3 p-md-4"
      data-window="<%= @window.to_json %>"
-     data-selected-date="<%= @date %>" data-selected-time="<%= @time %>"
-     data-time-format="<%= vars(:time_format) %>" data-first-weekday="<%= vars(:first_weekday) %>"
-     <% if vars(:manage_mode) %>data-appointment-start="<%= vars(:appointment_data)["start_datetime"] %>"<% end %>>
-    <%= form_with url: url_for(only_path: true), method: :get, id: "time-step-form", data: { turbo_frame: "wizard", turbo_action: "advance" } do %>
-        <%= wizard_state_fields(date: nil, time: nil, step: nil) %>
+     data-selected-date="<%= @date %>" data-selected-time="<%= @time %>" data-selected-timezone="<%= @timezone %>"
+     data-provider-timezone="<%= wizard_provider_timezone %>"
+     data-time-format="<%= vars(:time_format) %>">
+    <%= form_with url: wizard_form_path, method: :get, id: "time-step-form", data: { turbo_frame: "wizard", turbo_action: "advance" } do %>
+        <%= wizard_state_fields(date: nil, time: nil, timezone: nil, step: nil) %>
         <%= hidden_field_tag :step, "info", id: nil %>
         <%= hidden_field_tag :date, @date, id: "selected-date" %>
         <%= hidden_field_tag :time, @time, id: "selected-time" %>
@@ -20,8 +21,11 @@
                     <div id="select-time" class="mx-auto py-3">
                         <div class="mb-3<%= timezone_hidden_class %>">
                             <label for="select-timezone" class="form-label"><%= lang('timezone') %></label>
-                            <%= render "shared/timezone_dropdown",
-                                       attributes: 'id="select-timezone" class="form-select mb-3" value="UTC"' %>
+                            <% if Setting.fixed_timezone? %>
+                                <%= render "shared/timezone_dropdown", attributes: 'id="select-timezone" class="form-select mb-3" disabled' %>
+                            <% else %>
+                                <%= render "shared/timezone_dropdown", attributes: 'id="select-timezone" name="timezone" class="form-select mb-3"' %>
+                            <% end %>
                         </div>
                         <div id="available-hours" class="overflow-auto my-3 pe-2">
                             <% if @window.empty? %>

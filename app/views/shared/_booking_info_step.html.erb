@@ -13,8 +13,7 @@
         <%= wizard_state_fields %>
         <% if vars(:manage_mode) %>
             <%= hidden_field_tag :manage_mode, "1", id: nil %>
-            <%= hidden_field_tag :appointment_hash, vars(:appointment_data)["hash"] || params[:appointment_hash], id: nil %>
-            <%= hidden_field_tag :appointment_id, vars(:appointment_data)["id"], id: nil %>
+            <%= hidden_field_tag :appointment_hash, vars(:appointment_data)["hash"], id: nil %>
         <% end %>
         <div class="frame-container py-3">
             <h2 class="frame-title fw-light text-center mb-4 text-muted"><%= lang('customer_information') %></h2>
