@@ -37,16 +37,24 @@ class ApplicationSystemTestCase < ActionDispatch::SystemTestCase
     assert_current_path %r{/calendar}, wait: 10
   end
 
-  # Typing during Bootstrap's fade-in loses keys to its focus handling: wait for
-  # the shown modal's opacity to reach 1 before driving its fields.
+  # Typing during Bootstrap's fade-in loses keys to its focus handling, and a
+  # dismiss click during the transition is ignored: wait for the shown modal to
+  # be opaque and for Bootstrap to have finished its transition.
   def wait_for_modal
     assert_selector ".modal.show", wait: 5
-    assert page.has_css?(".modal.show", wait: 5) && wait_until_opaque, "modal did not finish showing"
+    assert page.has_css?(".modal.show", wait: 5) && wait_until_shown, "modal did not finish showing"
   end
 
-  def wait_until_opaque
-    20.times do
-      return true if page.evaluate_script("getComputedStyle(document.querySelector('.modal.show')).opacity") == "1"
+  def wait_until_shown
+    50.times do
+      shown = page.evaluate_script(<<~JS)
+        (() => {
+          const element = document.querySelector('.modal.show');
+          const instance = element && bootstrap.Modal.getInstance(element);
+          return !!element && getComputedStyle(element).opacity === '1' && !!instance && !instance._isTransitioning;
+        })()
+      JS
+      return true if shown
       sleep 0.1
     end
     false

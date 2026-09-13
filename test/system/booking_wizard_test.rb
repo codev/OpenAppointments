@@ -348,8 +348,9 @@ class BookingWizardWindowTest < ApplicationSystemTestCase
     find("#available-hours .available-hour", text: /\A9:30 am\z/, wait: 5).click
     find("#button-next-3").click
     assert_selector "#wizard-frame-4", visible: :visible, wait: 5
-    assert_equal "Draft Person", find("#name").value
-    assert_equal "draft@example.org", find("#email").value
+    # The draft is filled in on the frame's load event, after the fields exist.
+    assert_field "name", with: "Draft Person", wait: 5
+    assert_field "email", with: "draft@example.org", wait: 5
     assert_not find("#remember-me").checked?
   end
 
