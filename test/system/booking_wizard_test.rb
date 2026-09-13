@@ -271,6 +271,27 @@ class BookingWizardWindowTest < ApplicationSystemTestCase
     assert_selector "#wizard-frame-1", visible: :visible, wait: 5
   end
 
+  test "the details step marks missing fields and shows the message below them" do
+    to_time_step
+    date = weekday(0)
+    find(".flatpickr-day[aria-label='#{date.strftime('%B %-d, %Y')}']").click
+    find("#available-hours .available-hour", text: /\A9:30 am\z/, wait: 5).click
+    find("#button-next-3").click
+    assert_selector "#wizard-frame-4", visible: :visible, wait: 5
+    find("#button-next-4").click
+    assert_selector "#name.is-invalid"
+    assert_selector "#form-message", text: I18n.t("ea.fields_are_required"), visible: :visible
+    assert_selector "#wizard-frame-4", visible: :visible
+    assert_no_selector "#wizard-frame-5"
+
+    fill_in "name", with: "Marked Up"
+    fill_in "email", with: "nope"
+    find("#button-next-4").click
+    assert_no_selector "#name.is-invalid"
+    assert_selector "#email.is-invalid"
+    assert_selector "#form-message", text: I18n.t("ea.invalid_email")
+  end
+
   test "the time step refuses Next until an hour is chosen" do
     to_time_step
     find("#button-next-3").click

@@ -72,7 +72,7 @@ class BookingController < ApplicationController
     index_vars_for_confirm
     @customer = customer_form_params
     if @reachable.include?("info")
-      @error = customer_error(@customer) if params[:back].blank?
+      @error, @invalid_fields = customer_error(@customer) if params[:back].blank?
       @step = params[:back].present? || @error ? "info" : "final"
     else
       @step = @reachable.last
@@ -367,18 +367,18 @@ class BookingController < ApplicationController
     original
   end
 
+  # [message, the fields at fault], or nil when the details pass.
   def customer_error(customer)
-    return helpers.lang("fields_are_required") if customer["name"].blank?
-    if customer["email"].present? && !customer["email"].match?(URI::MailTo::EMAIL_REGEXP)
-      return helpers.lang("invalid_email")
-    end
-    if Setting.get("require_phone_or_email", "1") == "1" && customer["email"].blank? && customer["phone_number"].blank?
-      return helpers.lang("phone_or_email_required")
-    end
     required = { "email" => "require_email", "phone_number" => "require_phone_number", "address" => "require_address",
                  "city" => "require_city", "zip_code" => "require_zip_code", "notes" => "require_notes" }
-    required.each do |field, setting_name|
-      return helpers.lang("fields_are_required") if Setting.get(setting_name).to_s == "1" && customer[field].blank?
+    missing = required.select { |_field, setting_name| Setting.get(setting_name).to_s == "1" }.keys.unshift("name")
+                      .select { |field| customer[field].blank? }
+    return [ helpers.lang("fields_are_required"), missing ] if missing.any?
+    if Setting.get("require_phone_or_email", "1") == "1" && customer["email"].blank? && customer["phone_number"].blank?
+      return [ helpers.lang("phone_or_email_required"), %w[email phone_number] ]
+    end
+    if customer["email"].present? && !customer["email"].match?(URI::MailTo::EMAIL_REGEXP)
+      return [ helpers.lang("invalid_email"), [ "email" ] ]
     end
     nil
   end

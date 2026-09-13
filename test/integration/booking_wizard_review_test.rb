@@ -269,6 +269,27 @@ class BookingWizardReviewTest < ActionDispatch::IntegrationTest
     assert_select "#wizard-frame-4 #remember-me", count: 0
   end
 
+  test "invalid details are outlined and the message sits below the fields" do
+    get "/", params: @state.merge(step: "info")
+    assert_select "form#info-step-form[novalidate]"
+    assert_select "#form-message[hidden]"
+
+    confirm(customer: { name: "", email: "" })
+    assert_select "#name.is-invalid"
+    assert_select "#email.is-invalid", count: 0
+    assert_select ".frame-content + #form-message.alert-danger:not([hidden])", text: I18n.t("ea.fields_are_required")
+
+    confirm(customer: { name: "Only Name", email: "", phone_number: "" })
+    assert_select "#email.is-invalid"
+    assert_select "#phone-number.is-invalid"
+    assert_select "#form-message", text: I18n.t("ea.phone_or_email_required")
+
+    confirm(customer: { name: "Only Name", email: "not-an-email" })
+    assert_select "#email.is-invalid"
+    assert_select "#name.is-invalid", count: 0
+    assert_select "#form-message", text: I18n.t("ea.invalid_email")
+  end
+
   test "no public page leaks template text as visible markup" do
     Setting.set("display_notes", "1")
     Setting.set("display_delete_personal_information", "1")

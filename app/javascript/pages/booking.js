@@ -124,6 +124,38 @@ App.Pages.Booking = (function () {
         }
     }
 
+    // The details step's own checks, as the server applies them: required
+    // fields, one of phone or email, and the email and phone formats.
+    function validateDetails(form) {
+        const $form = $(form);
+        const $message = $('#form-message');
+        const fail = (fields, message) => {
+            fields.forEach(($field) => $field.addClass('is-invalid'));
+            $message.text(message).prop('hidden', false);
+            return false;
+        };
+
+        $form.find('.is-invalid').removeClass('is-invalid');
+        $message.prop('hidden', true);
+
+        const missing = $form.find('[required]').filter((index, field) => !$(field).val()).toArray().map((field) => $(field));
+        if (missing.length) {
+            return fail(missing, lang('fields_are_required'));
+        }
+        const $email = $('#email');
+        const $phone = $('#phone-number');
+        if ($form.data('requirePhoneOrEmail') === 1 && !$email.val() && !$phone.val()) {
+            return fail([$email, $phone], lang('phone_or_email_required'));
+        }
+        if ($email.val() && !App.Utils.Validation.email($email.val())) {
+            return fail([$email], lang('invalid_email'));
+        }
+        if ($phone.val() && !App.Utils.Validation.phone($phone.val())) {
+            return fail([$phone], lang('invalid_phone'));
+        }
+        return true;
+    }
+
     function saveDraft() {
         const draft = {};
         $('#info-step-form .form-control').each((index, field) => {
@@ -236,6 +268,10 @@ App.Pages.Booking = (function () {
                 event.preventDefault();
             }
         } else if (form.id === 'info-step-form') {
+            if (!validateDetails(form)) {
+                event.preventDefault();
+                return;
+            }
             rememberCustomer();
             saveDraft();
         } else if (form.id === 'book-appointment-form') {

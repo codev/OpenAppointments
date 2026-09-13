@@ -2,6 +2,7 @@
     display_/require_ settings. Half-width fields; long custom fields and notes
     full width. %>
 <% customer = @customer || vars(:customer_data) || prefilled_customer %>
+<% invalid = Array(@invalid_fields) %>
 <%# The lambdas return captured HTML, so each prints once. %>
 <% required_star = ->(flag, either: false) { capture do %>
     <% if flag == "1" %><span class="text-danger">*</span><% elsif either %>
@@ -12,12 +13,14 @@
 <% text_field = ->(field, label, require, maxlength, either: false) { capture do %>
     <div class="col-12 col-lg-6 mb-3">
         <label for="<%= field.dasherize %>" class="form-label"><%= label %> <%= required_star.call(require, either: either) %></label>
-        <%= text_field_tag "customer[#{field}]", customer[field], id: field.dasherize, class: "form-control",
-                           maxlength: maxlength, required: require == "1" %>
+        <%= text_field_tag "customer[#{field}]", customer[field], id: field.dasherize, maxlength: maxlength,
+                           class: "form-control#{' is-invalid' if invalid.include?(field)}", required: require == "1" %>
     </div>
 <% end } %>
 <div id="wizard-frame-<%= step_number %>" class="wizard-frame p-3 p-md-4">
-    <%= form_with url: "/booking/confirm", method: :post, id: "info-step-form", data: { turbo_frame: "wizard" } do %>
+    <%# novalidate: the script marks the fields and writes the message below them, as the server does. %>
+    <%= form_with url: "/booking/confirm", method: :post, id: "info-step-form", html: { novalidate: true },
+                  data: { turbo_frame: "wizard", require_phone_or_email: require_phone_or_email } do %>
         <%= hidden_field_tag :form, "1", id: nil %>
         <%= wizard_state_fields %>
         <% if vars(:manage_mode) %>
@@ -39,8 +42,8 @@
                 <% if display_notes == "1" %>
                     <div class="col-12 mb-3">
                         <label for="notes" class="form-label"><%= lang('notes') %> <%= required_star.call(require_notes) %></label>
-                        <%= text_area_tag "customer[notes]", customer["notes"], id: "notes", class: "form-control", rows: 2,
-                                          maxlength: 500, required: require_notes == "1" %>
+                        <%= text_area_tag "customer[notes]", customer["notes"], id: "notes", rows: 2, maxlength: 500,
+                                          class: "form-control#{' is-invalid' if invalid.include?('notes')}", required: require_notes == "1" %>
                     </div>
                 <% end %>
                 <% unless vars(:manage_mode) %>
@@ -53,9 +56,7 @@
                     </div>
                 <% end %>
             </div>
-            <% if @error %>
-                <div id="form-message" class="alert alert-danger text-center" role="alert"><%= @error %></div>
-            <% end %>
+            <div id="form-message" class="alert alert-danger text-center" role="alert" <%= 'hidden' unless @error %>><%= @error %></div>
         </div>
         <div class="command-buttons text-center my-3 mx-auto d-md-flex justify-content-md-between">
             <%= wizard_back_button "time" %>
