@@ -20,6 +20,14 @@ class ApplicationSystemTestCase < ActionDispatch::SystemTestCase
     end
   end
 
+  # The booking wizard labels hours in the browser's zone, so the browser is
+  # pinned to the fixture provider's zone whatever the runner's clock says.
+  BROWSER_TIMEZONE = "Europe/London".freeze
+
+  setup do
+    page.driver.browser.execute_cdp("Emulation.setTimezoneOverride", timezoneId: BROWSER_TIMEZONE)
+  end
+
   def login_as_admin
     visit login_url
     assert_selector "#login", wait: 15 # the first page of a run waits for Puma

@@ -52,7 +52,8 @@ class CalendarModalsTest < ApplicationSystemTestCase
       assert_selector "#save-appointment", visible: true, wait: 5
       wait_for_modal
       within(find("#save-appointment").ancestor(".modal")) do
-        assert_field "appointment-notes", with: /Fringe only|/
+        # The frame fills the form after the modal shows: typing before that is lost.
+        assert_field "appointment-notes", with: "Fringe only", wait: 5
         fill_in "appointment-notes", with: "Fringe and wash"
         click_on "Save"
       end

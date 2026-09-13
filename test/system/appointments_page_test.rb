@@ -25,6 +25,7 @@ class AppointmentsPageTest < ApplicationSystemTestCase
     assert_selector "#save-appointment", visible: true, wait: 5
     assert_equal users(:zane).id.to_s, find("#select-provider").value
     assert_match(/9:00 am/, find("#start-datetime").value)
+    wait_for_modal
     within(find("#save-appointment").ancestor(".modal")) { click_on "Cancel" }
     assert_no_selector ".modal.show", wait: 5
 
