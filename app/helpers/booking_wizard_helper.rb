@@ -51,7 +51,7 @@ module BookingWizardHelper
     return if step == "second" && vars(:manage_mode)
 
     overrides = {}
-    # Cards mode starts over from the category view, as the jQuery wizard did.
+    # Cards mode starts over from the category view.
     overrides = { service_id: nil, provider_id: nil } if step == "first" && vars(:display_mode) == "cards"
     link_to wizard_step_path(step, overrides), id: "button-back-#{step_number}", class: "btn button-back btn-outline-secondary",
                                                data: { turbo_action: "advance" } do

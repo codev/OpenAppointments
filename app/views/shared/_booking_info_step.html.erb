@@ -1,6 +1,6 @@
 <%# Customer details, posted to booking/confirm (never in a URL). Locals: the
-    display_/require_ settings. Same grid as the jQuery version: half-width
-    fields, long custom fields and notes full width. %>
+    display_/require_ settings. Half-width fields; long custom fields and notes
+    full width. %>
 <% customer = @customer || vars(:customer_data) || prefilled_customer %>
 <%# The lambdas return captured HTML, so each prints once. %>
 <% required_star = ->(flag, either: false) { capture do %>
