@@ -132,12 +132,65 @@ App.Pages.Booking = (function () {
         }
     }
 
-    function updateStepIndicator() {
-        const step = Number(($('.wizard-frame').attr('id') || '').replace('wizard-frame-', ''));
+    // The header sits outside the frame: mirror #wizard-state into it.
+    function updateHeader() {
+        const $state = $('#wizard-state');
+        if (!$state.length) {
+            return;
+        }
+        const step = Number($state.data('step'));
+        const links = JSON.parse($state.attr('data-step-links') || '{}');
 
-        $('.book-step').removeClass('active-step').removeAttr('aria-current');
-        if (step) {
-            $('#step-' + step).addClass('active-step').attr('aria-current', 'step');
+        $('.book-step').each((index, element) => {
+            const $step = $(element);
+            const number = Number($step.data('stepIndex'));
+            $step.removeClass('active-step completed-step').removeAttr('aria-current role tabindex data-href');
+            if (number === step) {
+                $step.addClass('active-step').attr('aria-current', 'step');
+            } else if (links[number]) {
+                $step.addClass('completed-step').attr({'role': 'button', 'tabindex': 0, 'data-href': links[number]});
+            }
+        });
+
+        $('.display-booking-selection').text($state.data('selection'));
+    }
+
+    // A choice on a selection step shows straight away in the header line.
+    function updateSelectionText() {
+        const $select = $('#select-service, #select-provider').first();
+        if (!$select.length || !$select.val()) {
+            return;
+        }
+        // The parts run in wizard order: step 1 chooses the first, step 2 the second.
+        const parts = $('#wizard-state').data('selection').split('│').map((part) => part.trim());
+        parts[Number($('#wizard-state').data('step')) === 1 ? 0 : 1] = $select.find('option:selected').text().trim();
+        $('.display-booking-selection').text(parts.join(' │ '));
+    }
+
+    // Completed header steps jump back; the previous step goes through the
+    // page's own Back button so a confirmation keeps its typed details.
+    function goBackToStep(number) {
+        const current = Number($('#wizard-state').data('step'));
+        const $back = $('.wizard-frame .button-back');
+        if (number === current - 1 && $back.length) {
+            $back[0].click();
+            return;
+        }
+        const href = $('#step-' + number).attr('data-href');
+        if (href) {
+            window.Turbo.visit(href, {frame: 'wizard', action: 'advance'});
+        }
+    }
+
+    function scrollTo(top) {
+        $('html, body').animate({scrollTop: Math.max(top, 0)}, 400);
+    }
+
+    // Bring the step's Next button to the bottom of the view.
+    function scrollToNext() {
+        const $buttons = $('.wizard-frame .command-buttons');
+        if ($buttons.length) {
+            scrollTo($buttons.offset().top + $buttons.outerHeight() + 20 - window.innerHeight);
         }
     }
 
@@ -152,7 +205,8 @@ App.Pages.Booking = (function () {
         initializeTimeStep();
         initializeInfoStep();
         initializeFinalStep();
-        updateStepIndicator();
+        updateHeader();
+        updateSelectionText(); // a lone provider is preselected without a change event
         showDescription();
     }
 
@@ -170,7 +224,21 @@ App.Pages.Booking = (function () {
                 window.scrollTo({top: 0});
             });
 
-            $(document).on('change', '#select-service, #select-provider', showDescription);
+            $(document).on('change', '#select-service, #select-provider', (event) => {
+                showDescription();
+                updateSelectionText();
+                if (event.originalEvent) {
+                    scrollToNext();
+                }
+            });
+
+            $('#steps').on('click', '.book-step.completed-step', (event) => goBackToStep(Number($(event.currentTarget).data('stepIndex'))));
+            $('#steps').on('keydown', '.book-step.completed-step', (event) => {
+                if (event.key === 'Enter' || event.key === ' ') {
+                    event.preventDefault();
+                    goBackToStep(Number($(event.currentTarget).data('stepIndex')));
+                }
+            });
             $(document).on('change', '#select-timezone', () => renderHours(timeStepFrame(), $('#selected-date').val(), true));
             $(document).on('click', '.available-hour', (event) => selectHour($(event.currentTarget).data('value')));
 
@@ -199,7 +267,8 @@ App.Pages.Booking = (function () {
                     $card.addClass('selected');
                     $('.service-cards').addClass('d-none');
                     $('.service-cards[data-category-id="' + $card.data('categoryId') + '"], .service-cards[data-category-id=""]').removeClass('d-none');
-                    $('#select-service-heading').removeClass('d-none');
+                    const $heading = $('#select-service-heading').removeClass('d-none');
+                    scrollTo($heading.offset().top - 20);
                     return;
                 }
                 if ($card.is('[data-service-id]')) {
@@ -212,6 +281,7 @@ App.Pages.Booking = (function () {
                     $card.addClass('selected');
                     $('#select-provider').val(String($card.data('providerId'))).trigger('change');
                 }
+                scrollToNext();
             });
 
             // Cards mode has no visible select: block Next until a card is picked.
@@ -223,6 +293,7 @@ App.Pages.Booking = (function () {
             });
         });
 
+        window.tippy('[data-tippy-content]');
         initializeStep();
     }
 

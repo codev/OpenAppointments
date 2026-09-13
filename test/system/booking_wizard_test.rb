@@ -62,6 +62,30 @@ class BookingWizardTest < ApplicationSystemTestCase
     assert_equal "", find("#select-service", visible: :hidden).value
   end
 
+  test "the header follows the choices, completed steps tick and jump back, steps have tooltips" do
+    visit root_url
+    assert_selector "#wizard-frame-1", visible: :visible, wait: 5
+    assert_selector ".display-booking-selection", text: "Service"
+    assert page.evaluate_script("!!document.querySelector('#step-1')._tippy"), "steps need tooltips"
+
+    select services(:haircut).name, from: "select-service"
+    assert_selector ".display-booking-selection", text: services(:haircut).name
+    find("#button-next-1").click
+    assert_selector "#wizard-frame-2", visible: :visible, wait: 5
+    # The only provider is preselected, so the header names them straight away.
+    assert_selector ".display-booking-selection", text: "#{services(:haircut).name} │ Zane"
+    assert_selector "#step-1.completed-step .step-check", visible: :visible
+    select users(:zane).name, from: "select-provider"
+    find("#button-next-2").click
+    assert_selector "#wizard-frame-3", visible: :visible, wait: 5
+    assert_selector "#step-2.completed-step"
+
+    find("#step-1").click
+    assert_selector "#wizard-frame-1", visible: :visible, wait: 5
+    assert_no_selector "#steps .completed-step"
+    assert_equal services(:haircut).id.to_s, find("#select-service").value
+  end
+
   test "first page blocks next until a choice is made" do
     visit root_url
     assert_selector "#wizard-frame-1", visible: :visible, wait: 5

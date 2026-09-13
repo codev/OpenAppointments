@@ -54,13 +54,33 @@ module BookingWizardHelper
   end
 
   def selected_service
-    vars(:available_services).find { |row| row["id"] == @service_id }
+    vars(:available_services)&.find { |row| row["id"] == @service_id }
   end
 
   def selected_provider
     return { "name" => lang("any_provider") } if @provider_id == BookingPayloads::ANY_PROVIDER
 
-    vars(:available_providers).find { |row| row["id"].to_s == @provider_id.to_s }
+    vars(:available_providers)&.find { |row| row["id"].to_s == @provider_id.to_s }
+  end
+
+  # The header line: the choices so far in wizard order, a label until chosen.
+  # The second kind appears once its step is reached or it is already chosen.
+  def wizard_selection_text
+    names = { "service" => selected_service&.dig("name") || lang("service"),
+              "provider" => selected_provider&.dig("name") || lang("provider") }
+    chosen = { "service" => selected_service.present?, "provider" => selected_provider.present? }
+    kinds = vars(:first_step) == "provider" ? %w[provider service] : %w[service provider]
+    kinds = kinds.first(1) if step_number == 1 && !chosen[kinds.last]
+    names.values_at(*kinds).join(" │ ")
+  end
+
+  # Completed steps in the header link back to their page, as the Back buttons do.
+  def wizard_step_links
+    steps = { 1 => "first", 2 => "second", 3 => "time", 4 => "info" }
+    steps.select { |number, _| number < step_number }.to_h do |number, step|
+      overrides = number == 1 && vars(:display_mode) == "cards" ? { service_id: nil, provider_id: nil } : {}
+      [ number, wizard_step_path(step, overrides) ]
+    end
   end
 
   # Providers offering the chosen service (all of them before one is chosen).

@@ -189,6 +189,30 @@ class BookingWizardReviewTest < ActionDispatch::IntegrationTest
     assert_equal "Europe/London", User.customers.find_by!(email: "second@example.org").timezone
   end
 
+  test "the header shows the choices so far, ticks completed steps and links them back" do
+    get "/"
+    assert_select ".display-booking-selection", text: "Service"
+    assert_select "#steps #step-1.active-step[data-tippy-content]"
+    assert_select "#steps .completed-step", count: 0
+
+    get "/", params: { step: "second", service_id: services(:haircut).id }
+    assert_select ".display-booking-selection", text: "#{services(:haircut).name} │ Provider"
+    assert_select "#steps #step-1.completed-step[role=button][data-href^='/?']"
+    assert_select "#steps #step-2.active-step"
+    assert_select "turbo-frame#wizard #wizard-state[data-step='2'][data-step-links]"
+
+    get "/", params: { first: "provider" }
+    assert_select ".display-booking-selection", text: "Provider"
+
+    get "/", params: { provider: users(:zane).booking_slug }
+    assert_select ".display-booking-selection", text: "Service │ Zane"
+
+    get "/", params: @state.merge(step: "time")
+    assert_select ".display-booking-selection", text: "#{services(:haircut).name} │ Zane"
+    assert_select "#steps #step-2.completed-step[data-href*='step=second']"
+    assert_select "#steps #step-3.active-step"
+  end
+
   test "the time step names the provider zone and carries the chosen zone" do
     Setting.set("fixed_timezone", "0")
     get "/", params: @state.merge(step: "time", timezone: "America/New_York")

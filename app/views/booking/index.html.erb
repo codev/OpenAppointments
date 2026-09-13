@@ -34,6 +34,9 @@
                        display_terms_and_conditions: vars(:display_terms_and_conditions),
                        display_privacy_policy: vars(:display_privacy_policy) %>
         <% end %>
+        <%# Header state for this step; pages/booking.js copies it into #header. %>
+        <div id="wizard-state" hidden data-step="<%= step_number %>" data-selection="<%= wizard_selection_text %>"
+             data-step-links="<%= wizard_step_links.to_json %>"></div>
     </turbo-frame>
 <% end %>
 
