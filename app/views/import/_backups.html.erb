@@ -1,7 +1,7 @@
 <%# Export button and the kept backups; polls every 2 s while an export runs. Locals: backups, export_status. %>
 <% working = export_status && %w[queued running].include?(export_status[:state] || export_status["state"]) %>
 <% state = export_status && (export_status[:state] || export_status["state"]) %>
-<turbo-frame id="backups" src="/import?export_id=<%= params[:export_id] %>" <%= 'data-poll-every=2000' if working %>>
+<turbo-frame id="backups" <% if working %>data-poll-every="2000" data-poll-src="/import?export_id=<%= params[:export_id] %>"<% end %>>
     <%= form_with url: "/import/export", method: :post, class: "d-inline", data: { turbo_frame: "backups" } do %>
         <%= hidden_field_tag :form, "1", id: nil %>
         <button type="submit" class="btn btn-outline-primary" id="export-data" <%= 'disabled' if working %>>

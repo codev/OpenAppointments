@@ -29,6 +29,21 @@ class ImportPageTest < ActionDispatch::IntegrationTest
     assert_response :forbidden
   end
 
+  # A frame whose src is the page it sits in is refused by Turbo and emptied.
+  test "the page frames carry no source of their own and poll through a separate address" do
+    login_admin
+    get "/import"
+    assert_select "turbo-frame#backups:not([src]) #export-data"
+    assert_select "turbo-frame#import-status:not([src])"
+
+    BackupExportJob.write_status("abc123", { state: "running" })
+    get "/import", params: { export_id: "abc123" }
+    assert_select "turbo-frame#backups:not([src])[data-poll-every][data-poll-src='/import?export_id=abc123']"
+    TenToEightImportJob.write_status("def456", { state: "running", phase: "services" })
+    get "/import", params: { import_id: "def456" }
+    assert_select "turbo-frame#import-status:not([src])[data-poll-every][data-poll-src='/import?import_id=def456']"
+  end
+
   test "analyze returns a dry-run summary" do
     login_admin
     travel_to Time.new(2026, 7, 10, 12, 0, 0) do
