@@ -108,9 +108,11 @@ class ImportController < ApplicationController
       FileUtils.cp(params[:images_file].tempfile.path, images_path)
     end
 
+    # The day the import was asked for: the date window and the recent service
+    # catalogue are relative to it, however long the job waits in the queue.
     TenToEightImportJob.perform_later(
       import_id: import_id, file_path: path, images_path: images_path, import_type: import_type,
-      phases: Array(params[:phases]) & TenToEight::Load::PHASES,
+      today: Date.current.to_s, phases: Array(params[:phases]) & TenToEight::Load::PHASES,
       days_back: (params[:days_back] || 21).to_i, days_forward: (params[:days_forward] || 21).to_i,
       create_providers: ActiveModel::Type::Boolean.new.cast(params[:create_providers]) || Array(params[:phases]).include?("providers")
     )
