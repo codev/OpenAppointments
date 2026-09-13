@@ -1,153 +1,48 @@
-/* ----------------------------------------------------------------------------
- * Easy!Appointments - Online Appointment Scheduler
- *
- * @package     EasyAppointments
- * @author      A.Tselegidis <alextselegidis@gmail.com>
- * @copyright   Copyright (c) Alex Tselegidis
- * @license     https://opensource.org/licenses/GPL-3.0 - GPLv3
- * @link        https://easyappointments.org
- * @since       v1.5.0
- * ---------------------------------------------------------------------------- */
-
 /**
- * Business settings page.
- *
- * This module implements the functionality of the business settings page.
+ * Business settings: the working plan editor and the status option list are
+ * JS widgets; their JSON is written into hidden settings fields on submit.
  */
-App.Pages.BusinessSettings = (function () {
-    const $saveSettings = $('#save-settings');
-    const $applyGlobalWorkingPlan = $('#apply-global-working-plan');
-    const $appointmentStatusOptions = $('#appointment-status-options');
+(function () {
     let workingPlanManager = null;
 
-    /**
-     * Check if the form has invalid values.
-     *
-     * @return {Boolean}
-     */
-    function isInvalid() {
-        try {
-            $('#business-settings .is-invalid').removeClass('is-invalid');
+    function load() {
+        const $json = $('#working-plan-json');
 
-            // Validate required fields.
-
-            let missingRequiredFields = false;
-
-            $('#business-settings .required').each((index, requiredField) => {
-                const $requiredField = $(requiredField);
-
-                if (!$requiredField.val()) {
-                    $requiredField.addClass('is-invalid');
-                    missingRequiredFields = true;
-                }
-            });
-
-            if (missingRequiredFields) {
-                throw new Error(lang('fields_are_required'));
-            }
-
-            return false;
-        } catch (error) {
-            App.Layouts.Backend.displayNotification(error.message);
-            return true;
+        if (!$json.length) {
+            return;
         }
+
+        $('.breaks tbody').empty();
+        workingPlanManager.setup(JSON.parse($json.val() || '{}'));
+        workingPlanManager.timepickers(false);
+        App.Components.AppointmentStatusOptions.setOptions(
+            $('#appointment-status-options'),
+            JSON.parse($('#status-options-json').val() || '[]'),
+        );
     }
 
-    function minutesFields() {
-        return $('[data-minutes-field]').toArray().map((el) => $(el));
-    }
-
-    function deserialize(businessSettings) {
-        businessSettings.forEach((businessSetting) => {
-            const $minutes = $('[data-minutes-field="' + businessSetting.name + '"]');
-
-            if ($minutes.length) {
-                const total = Math.max(Number(businessSetting.value) || 0, 0);
-                $minutes.find('.hours').val(Math.floor(total / 60));
-                $minutes.find('.minutes').val(total % 60);
-                return;
-            }
-
-            const $field = $('[data-field="' + businessSetting.name + '"]');
-
-            $field.is(':checkbox')
-                ? $field.prop('checked', Boolean(Number(businessSetting.value)))
-                : $field.val(businessSetting.value);
-        });
-    }
-
-    function serialize() {
-        const businessSettings = [];
-
-        $('[data-field]').each((index, field) => {
-            const $field = $(field);
-
-            businessSettings.push({
-                name: $field.data('field'),
-                value: $field.is(':checkbox') ? Number($field.prop('checked')) : $field.val(),
-            });
-        });
-
-        minutesFields().forEach(($minutes) => {
-            businessSettings.push({
-                name: $minutes.data('minutes-field'),
-                value: (Number($minutes.find('.hours').val()) || 0) * 60 + (Number($minutes.find('.minutes').val()) || 0),
-            });
-        });
+    function serialise(event) {
+        if (!$(event.target).is('#settings-form') || !$('#working-plan-json').length) {
+            return;
+        }
 
         const workingPlan = workingPlanManager.get();
 
         if (workingPlan === null) {
-            return null;
-        }
-
-        businessSettings.push({
-            name: 'company_working_plan',
-            value: JSON.stringify(workingPlan),
-        });
-
-        const appointmentStatusOptions = App.Components.AppointmentStatusOptions.getOptions($appointmentStatusOptions);
-
-        businessSettings.push({
-            name: 'appointment_status_options',
-            value: JSON.stringify(appointmentStatusOptions),
-        });
-
-        return businessSettings;
-    }
-
-    /**
-     * Save the account information.
-     */
-    function onSaveSettingsClick() {
-        if (isInvalid()) {
-            App.Layouts.Backend.displayNotification(lang('settings_are_invalid'));
-
+            event.preventDefault();
+            event.stopImmediatePropagation();
             return;
         }
 
-        const businessSettings = serialize();
-
-        if (businessSettings === null) {
-            return;
-        }
-
-        App.Http.BusinessSettings.save(businessSettings).done(() => {
-            App.Layouts.Backend.displayNotification(lang('settings_saved'));
-        });
+        $('#working-plan-json').val(JSON.stringify(workingPlan));
+        $('#status-options-json').val(
+            JSON.stringify(App.Components.AppointmentStatusOptions.getOptions($('#appointment-status-options'))),
+        );
     }
 
-    /**
-     * Save the global working plan information.
-     */
     function onApplyGlobalWorkingPlan() {
         const buttons = [
-            {
-                text: lang('cancel'),
-                click: (event, messageModal) => {
-                    messageModal.hide();
-                },
-            },
+            {text: lang('cancel'), click: (event, messageModal) => messageModal.hide()},
             {
                 text: 'OK',
                 click: (event, messageModal) => {
@@ -158,13 +53,12 @@ App.Pages.BusinessSettings = (function () {
                         return;
                     }
 
-                    App.Http.BusinessSettings.applyGlobalWorkingPlan(workingPlan)
-                        .done(() => {
-                            App.Layouts.Backend.displayNotification(lang('working_plans_got_updated'));
-                        })
-                        .always(() => {
-                            messageModal.hide();
-                        });
+                    $.post(App.Utils.Url.siteUrl('business_settings/apply_global_working_plan'), {
+                        csrf_token: vars('csrf_token'),
+                        working_plan: JSON.stringify(workingPlan),
+                    })
+                        .done(() => App.Layouts.Backend.displayNotification(lang('working_plans_got_updated')))
+                        .always(() => messageModal.hide());
                 },
             },
         ];
@@ -172,40 +66,24 @@ App.Pages.BusinessSettings = (function () {
         App.Utils.Message.show(lang('working_plan'), lang('overwrite_existing_working_plans'), buttons);
     }
 
-    /**
-     * Initialize the module.
-     */
     function initialize() {
-        const businessSettings = vars('business_settings');
+        if (!$('#business-logic-page').length) {
+            return;
+        }
 
-        deserialize(businessSettings);
-
-        let companyWorkingPlan = {};
-        let appointmentStatusOptions = [];
-
-        vars('business_settings').forEach((businessSetting) => {
-            if (businessSetting.name === 'company_working_plan') {
-                companyWorkingPlan = JSON.parse(businessSetting.value);
-            }
-
-            if (businessSetting.name === 'appointment_status_options') {
-                appointmentStatusOptions = JSON.parse(businessSetting.value);
-            }
+        // One editor per session (shared with the other working plan page): its listeners are document level.
+        if (!App.Utils.workingPlanManager) {
+            App.Utils.workingPlanManager = new App.Utils.WorkingPlan();
+            App.Utils.workingPlanManager.addEventListeners();
+        }
+        workingPlanManager = App.Utils.workingPlanManager;
+        App.once('business-settings', () => {
+            document.addEventListener('submit', serialise, true);
+            document.addEventListener('turbo:frame-load', load);
         });
-
-        workingPlanManager = new App.Utils.WorkingPlan();
-        workingPlanManager.setup(companyWorkingPlan);
-        workingPlanManager.timepickers(false);
-        workingPlanManager.addEventListeners();
-
-        App.Components.AppointmentStatusOptions.setOptions($appointmentStatusOptions, appointmentStatusOptions);
-
-        $saveSettings.on('click', onSaveSettingsClick);
-
-        $applyGlobalWorkingPlan.on('click', onApplyGlobalWorkingPlan);
+        load();
+        $(document).on('click', '#apply-global-working-plan', onApplyGlobalWorkingPlan);
     }
 
-    document.addEventListener('DOMContentLoaded', initialize);
-
-    return {};
+    App.page(initialize);
 })();

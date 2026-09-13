@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <meta name="theme-color" content="#39824f">
     <meta name="google" content="notranslate">
+    <%= csrf_meta_tags %>
 
     <%= yield :meta %>
 
@@ -24,6 +25,56 @@
     <%= render "shared/custom_css_style" %>
 
     <%= yield :styles %>
+
+    <%# Scripts load once per session (tracked: a new digest forces a full reload). %>
+    <%= javascript_include_tag "vendor/jquery/jquery.min", "vendor/@popperjs-core/popper.min",
+                               "vendor/bootstrap/bootstrap.min", "vendor/moment/moment.min",
+                               "vendor/moment-timezone/moment-timezone-with-data.min",
+                               "vendor/@fortawesome-fontawesome-free/fontawesome.min",
+                               "vendor/@fortawesome-fontawesome-free/solid.min",
+                               "vendor/tippy.js/tippy-bundle.umd.min", "vendor/trumbowyg/trumbowyg.min",
+                               "vendor/select2/select2.min", "vendor/flatpickr/flatpickr.min",
+                               "data-turbo-track": "reload" %>
+
+    <%# Trumbowyg derives its icon sprite path from its own script URL, which the
+        digested asset filename breaks; point it at the digested sprite instead. %>
+    <script>
+        if (window.jQuery && jQuery.trumbowyg) {
+            jQuery.trumbowyg.svgPath = "<%= asset_path('vendor/trumbowyg/ui/icons.svg') %>";
+        }
+    </script>
+
+    <%= ea_js "app", "utils/date", "utils/file", "utils/http", "utils/lang", "utils/message",
+              "utils/string", "utils/url", "utils/validation", track: true %>
+    <%= ea_js "layouts/backend_layout", "http/localization_http_client", "utils/settings_form", "utils/poll_frame", track: true %>
+
+    <%# Turbo Drive: page scripts initialise on turbo:load and bind by delegation. %>
+    <script type="module" data-turbo-track="reload">
+        import { Turbo } from "<%= asset_path('turbo.min.js') %>";
+        window.Turbo = Turbo;
+
+        // data-turbo-confirm uses EA's message modal instead of window.confirm. The
+        // submitter's text is the confirm button and title; data-turbo-confirm-title
+        // and data-turbo-confirm-button override them.
+        Turbo.config.forms.confirm = (message, form, submitter) => new Promise((resolve) => {
+            const button = submitter || form;
+            const label = button.dataset.turboConfirmButton || button.textContent.trim();
+            let answered = false;
+            const answer = (value, modal) => {
+                answered = true;
+                resolve(value);
+                modal.hide();
+            };
+
+            App.Utils.Message.show(button.dataset.turboConfirmTitle || button.textContent.trim(), message, [
+                {text: lang('cancel'), click: (event, modal) => answer(false, modal)},
+                {text: label, click: (event, modal) => answer(true, modal)},
+            ]);
+            $('#message-modal').on('hidden.bs.modal', () => answered || resolve(false));
+        });
+    </script>
+
+    <%= yield :scripts %>
 </head>
 <body class="d-flex flex-column h-100">
 
@@ -37,30 +88,9 @@
 
 <%= render "shared/backend_footer", user_display_name: vars(:user_display_name) %>
 
-<%= javascript_include_tag "vendor/jquery/jquery.min", "vendor/@popperjs-core/popper.min",
-                           "vendor/bootstrap/bootstrap.min", "vendor/moment/moment.min",
-                           "vendor/moment-timezone/moment-timezone-with-data.min",
-                           "vendor/@fortawesome-fontawesome-free/fontawesome.min",
-                           "vendor/@fortawesome-fontawesome-free/solid.min",
-                           "vendor/tippy.js/tippy-bundle.umd.min", "vendor/trumbowyg/trumbowyg.min",
-                           "vendor/select2/select2.min", "vendor/flatpickr/flatpickr.min" %>
-
-<%# Trumbowyg derives its icon sprite path from its own script URL, which the
-    digested asset filename breaks; point it at the digested sprite instead. %>
-<script>
-    if (window.jQuery && jQuery.trumbowyg) {
-        jQuery.trumbowyg.svgPath = "<%= asset_path('vendor/trumbowyg/ui/icons.svg') %>";
-    }
-</script>
-
-<%= ea_js "app", "utils/date", "utils/file", "utils/http", "utils/lang", "utils/message",
-          "utils/pagination", "utils/string", "utils/url", "utils/validation" %>
-<%= ea_js "layouts/backend_layout", "http/localization_http_client" %>
-
+<%# Per page values, re-run by Turbo on every visit. %>
 <%= render "shared/js_vars_script" %>
 <%= render "shared/js_lang_script" %>
-
-<%= yield :scripts %>
 
 </body>
 </html>

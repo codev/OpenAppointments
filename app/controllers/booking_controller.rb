@@ -11,12 +11,7 @@ class BookingController < ApplicationController
                                   id_users_customer id_services].freeze
   THEMES = %w[brutalism coder fruit material nice outline solid].freeze
 
-  # Distinct name: per limit - unnamed limits in one controller share a cache key,
-  # so the wizard's own availability polling would eat the register budget.
-  rate_limit to: 15, within: 1.minute, only: :register, name: "register",
-             with: -> { render json: { success: false, message: "Too many requests." }, status: :too_many_requests }
-  # The availability lookups are unauthenticated and cheap to script; cap per-IP bursts.
-  rate_limit to: 60, within: 1.minute, only: [ :get_available_hours, :get_unavailable_dates ], name: "availability",
+  rate_limit to: 15, within: 1.minute, only: :register,
              with: -> { render json: { success: false, message: "Too many requests." }, status: :too_many_requests }
 
   def reschedule
@@ -48,39 +43,163 @@ class BookingController < ApplicationController
     appointment_hash = html_vars[:appointment_hash]
     if appointment_hash.present?
       record = Appointment.find_by(booking_hash: appointment_hash)
-      unless record
-        return render_booking_message(helpers.lang("appointment_not_found"),
-                                      helpers.lang("appointment_does_not_exist_in_db"))
-      end
-
-      if record.frees_slot? || BookingWindows.past?(record)
+      if !record || record.frees_slot? || BookingWindows.past?(record)
         return render_booking_message(helpers.lang("appointment_not_found"),
                                       helpers.lang("appointment_does_not_exist_in_db"))
       end
       return render_late_cancel(record) if BookingWindows.late?(record)
 
-      provider = record.provider
       manage_mode = true
-      appointment = appointment_payload(record)
-      provider_payload = {
-        "id" => provider.id, "name" => provider.name,
-        "services" => provider.services.map(&:id), "timezone" => provider.effective_timezone
-      }
-
-      # Private or hidden-category records are absent from the public payloads,
-      # which left the reschedule wizard unable to prefill them.
-      unless available_services.any? { |row| row["id"] == record.id_services }
-        available_services << BookingPayloads.service_payload(BookingPayloads.service_row(record.id_services))
-                                             .merge("booking_slug" => nil)
-      end
-      unless available_providers.any? { |row| row["id"] == provider.id }
-        available_providers << BookingPayloads.provider_payload(provider).merge("booking_slug" => nil)
-      end
+      appointment, provider_payload = manage_payloads(record, available_services, available_providers)
       customer_payload = customer_fields(record.customer)
       customer_token = SecureRandom.hex(16)
       Rails.cache.write("customer-token-#{customer_token}", record.customer.id, expires_in: 10.minutes)
     end
 
+    base_index_vars(available_services, available_providers, manage_mode, appointment: appointment,
+                    provider_payload: provider_payload, customer_payload: customer_payload,
+                    customer_token: customer_token)
+    resolve_wizard_state(available_services, available_providers, manage_mode)
+    render :index
+  end
+
+  # POST /booking/confirm - the customer details post here; the confirmation
+  # step renders with everything in hidden fields (customer data stays out of URLs).
+  # Without a chosen slot the page shows the step the state reaches instead.
+  def confirm
+    return head :forbidden if Setting.get("disable_booking") == "1"
+
+    index_vars_for_confirm
+    @customer = customer_form_params
+    if @reachable.include?("info")
+      @error, @invalid_fields = customer_error(@customer) if params[:back].blank?
+      @step = params[:back].present? || @error ? "info" : "final"
+    else
+      @step = @reachable.last
+    end
+    render :index
+  end
+
+  # POST /booking/register
+  def register
+    return head :forbidden if Setting.get("disable_booking") == "1"
+
+    post_data = params[:post_data]
+    if post_data.blank? && params[:appointment].present?
+      post_data = {
+        "manage_mode" => params[:manage_mode],
+        "appointment_hash" => params[:appointment_hash],
+        "appointment" => params.require(:appointment).permit(*ALLOWED_APPOINTMENT_FIELDS.map(&:to_sym)).to_h,
+        "customer" => params.require(:customer).permit(*ALLOWED_CUSTOMER_FIELDS.map(&:to_sym)).to_h
+      }
+    end
+    if post_data.is_a?(ActionController::Parameters)
+      post_data = post_data.permit(:manage_mode, :appointment_hash,
+                                   appointment: ALLOWED_APPOINTMENT_FIELDS.map(&:to_sym),
+                                   customer: ALLOWED_CUSTOMER_FIELDS.map(&:to_sym)).to_h
+    end
+    raise ArgumentError, "Invalid request data format." unless post_data.is_a?(Hash)
+
+    appointment_params = post_data["appointment"]
+    customer_params = post_data["customer"]
+    manage_mode = ActiveModel::Type::Boolean.new.cast(post_data["manage_mode"]) || false
+
+    raise ArgumentError, "Invalid appointment data." if appointment_params.blank?
+    raise ArgumentError, "Invalid customer data." if customer_params.blank?
+
+    if customer_params["email"].present? && !customer_params["email"].match?(URI::MailTo::EMAIL_REGEXP)
+      raise ArgumentError, "Invalid email address format."
+    end
+
+    customer_params = customer_params.slice(*ALLOWED_CUSTOMER_FIELDS)
+    appointment_params = appointment_params.slice(*ALLOWED_APPOINTMENT_FIELDS)
+
+    if Setting.get("require_phone_or_email", "1") == "1" &&
+       customer_params["email"].blank? && customer_params["phone_number"].blank?
+      raise ArgumentError, helpers.lang("phone_or_email_required")
+    end
+
+    %w[address city zip_code phone_number].each { |field| customer_params[field] ||= "" }
+
+    # A reschedule books a new row and marks the original Rescheduled.
+    original = manage_mode ? reschedule_original(appointment_params["id"], post_data["appointment_hash"]) : nil
+    appointment_params["id"] = original&.id
+
+    provider_id = check_datetime_availability(appointment_params, manage_mode)
+    raise ArgumentError, helpers.lang("requested_hour_is_unavailable") unless provider_id
+
+    appointment_params["id_users_provider"] = provider_id
+    provider = User.providers.find(provider_id)
+    service = Service.find(appointment_params["id_services"])
+
+    if AltchaChallenge.enabled? && !AltchaChallenge.verify(params[:altcha_payload])
+      return form_post? ? register_failed(helpers.lang("altcha_verification_failed")) : render(json: { altcha_verification: false })
+    end
+
+    if TurnstileChallenge.enabled? && !TurnstileChallenge.verify(params[:cf_turnstile_response], request.remote_ip)
+      return form_post? ? register_failed(helpers.lang("turnstile_verification_failed")) : render(json: { turnstile_verification: false })
+    end
+
+    existing_customer = User.customers.find_by(email: customer_params["email"]) if customer_params["email"].present?
+    # A reschedule keeps the appointment's customer unless the email now belongs to another record.
+    existing_customer ||= original.customer if original
+    if existing_customer
+      conflict = Appointment.active.where(id_users_customer: existing_customer.id)
+                            .where("start_datetime <= ? AND end_datetime >= ?",
+                                   appointment_params["start_datetime"], end_datetime_for(appointment_params, service))
+      conflict = conflict.where.not(id: original.id) if original
+      raise ArgumentError, helpers.lang("customer_is_already_booked") if conflict.exists?
+    end
+
+    save_consents(customer_params)
+
+    customer = existing_customer || User.new(role: Role.find_by!(slug: Role::CUSTOMER))
+    timezone = customer_params["timezone"].presence || (customer.new_record? ? provider.effective_timezone : customer.timezone)
+    customer.assign_attributes(customer_params.except("id", "timezone", "language").merge("timezone" => timezone))
+    customer.language = session[:language] || Setting.get("default_language", "english")
+    customer.save!
+
+    appointment = Appointment.new(series_id: original&.series_id, occurrence_at: original&.occurrence_at)
+    appointment.assign_attributes(
+      start_datetime: appointment_params["start_datetime"],
+      end_datetime: end_datetime_for(appointment_params, service),
+      location: appointment_params["location"].presence || service.location,
+      notes: appointment_params["notes"],
+      customer: customer,
+      provider: provider,
+      service: service,
+      is_unavailability: false,
+      color: service.color,
+      appointment_status: AppointmentStatus.of("booked"),
+      book_datetime: Time.now
+    )
+    Appointment.transaction do
+      appointment.save!
+      original&.update!(appointment_status: AppointmentStatus.of("rescheduled"), rescheduled_to: appointment)
+    end
+
+    settings = notification_settings
+
+    Synchronization.appointment_deleted(original, provider) if original
+    Synchronization.appointment_saved(appointment, service, provider, customer, settings)
+    Notifications.appointment_saved(appointment, service, provider, customer, settings, manage_mode: manage_mode)
+    Webhooks.trigger(Webhooks::APPOINTMENT_SAVE, appointment)
+
+    if form_post?
+      redirect_to booking_confirmation_path(appointment_hash: appointment.booking_hash)
+    else
+      render json: { appointment_id: appointment.id, appointment_hash: appointment.booking_hash }
+    end
+  rescue ArgumentError => e
+    form_post? ? register_failed(e.message) : json_exception(e, status: :ok)
+  end
+
+  private
+
+  def form_post? = params[:form].present?
+
+  def base_index_vars(available_services, available_providers, manage_mode, appointment: nil,
+                      provider_payload: nil, customer_payload: nil, customer_token: false)
     theme = params[:theme].to_s.gsub(/[^a-zA-Z0-9_\-]/, "")
     theme = Setting.get("theme", "default") if theme.blank?
     theme = "nice" unless THEMES.include?(theme)
@@ -105,26 +224,11 @@ class BookingController < ApplicationController
                                              .map { |category| BookingPayloads.category_payload(category) }
     end
 
+    # utils/ui.js reads these for the calendar; the wizard itself is server rendered.
     script_vars(
-      first_step: first_step,
-      display_mode: display_mode,
-      require_phone_or_email: Setting.get("require_phone_or_email", "1"),
-      manage_mode: manage_mode,
-      available_services: available_services,
-      available_providers: available_providers,
       date_format: Setting.get("date_format"),
       time_format: Setting.get("time_format"),
-      first_weekday: Setting.get("first_weekday"),
-      display_cookie_notice: Setting.get("display_cookie_notice"),
-      display_any_provider: Setting.get("display_any_provider"),
-      future_booking_limit: Setting.get("future_booking_limit"),
-      appointment_data: appointment,
-      provider_data: provider_payload,
-      customer_data: customer_payload,
-      customer_token: customer_token,
-      default_language: Setting.get("default_language"),
-      default_timezone: Setting.get("default_timezone"),
-      fixed_timezone: Setting.fixed_timezone?
+      first_weekday: Setting.get("first_weekday")
     )
 
     html_vars(
@@ -159,193 +263,145 @@ class BookingController < ApplicationController
       manage_mode: manage_mode,
       appointment_data: appointment,
       provider_data: provider_payload,
-      customer_data: customer_payload
+      customer_data: customer_payload,
+      customer_token: customer_token
     )
-
-    render :index
   end
 
-  # POST /booking/register
-  def register
-    return head :forbidden if Setting.get("disable_booking") == "1"
+  STEPS = %w[first second time info final].freeze
 
-    post_data = params[:post_data]
-    if post_data.is_a?(ActionController::Parameters)
-      post_data = post_data.permit(:manage_mode,
-                                   appointment: ALLOWED_APPOINTMENT_FIELDS.map(&:to_sym),
-                                   customer: ALLOWED_CUSTOMER_FIELDS.map(&:to_sym)).to_h
+  # The wizard's URL state: which step shows and what is chosen. The step never
+  # runs ahead of its prerequisites; slug deep links preselect and lock.
+  def resolve_wizard_state(available_services, available_providers, manage_mode)
+    slugged_service = params[:service].present? &&
+                      available_services.find { |row| row["booking_slug"] == params[:service] }
+    slugged_provider = params[:provider].present? &&
+                       available_providers.find { |row| row["booking_slug"] == params[:provider] }
+
+    @service_id = (params[:service_id].presence || (slugged_service ? slugged_service["id"] : nil) ||
+                   (manage_mode ? html_vars[:appointment_data]["id_services"] : nil)).to_i
+    @provider_id = params[:provider_id].presence ||
+                   (slugged_provider ? slugged_provider["id"].to_s : nil) ||
+                   (manage_mode ? html_vars[:provider_data]["id"].to_s : nil)
+    @service_id = 0 unless available_services.any? { |row| row["id"] == @service_id }
+    unless @provider_id == BookingPayloads::ANY_PROVIDER ||
+           available_providers.any? { |row| row["id"].to_s == @provider_id.to_s }
+      @provider_id = nil
     end
-    raise ArgumentError, "Invalid request data format." unless post_data.is_a?(Hash)
-
-    appointment_params = post_data["appointment"]
-    customer_params = post_data["customer"]
-    manage_mode = ActiveModel::Type::Boolean.new.cast(post_data["manage_mode"]) || false
-
-    raise ArgumentError, "Invalid appointment data." if appointment_params.blank?
-    raise ArgumentError, "Invalid customer data." if customer_params.blank?
-
-    if customer_params["email"].present? && !customer_params["email"].match?(URI::MailTo::EMAIL_REGEXP)
-      raise ArgumentError, "Invalid email address format."
+    # The pair must actually match.
+    if @service_id.positive? && @provider_id.present? && @provider_id != BookingPayloads::ANY_PROVIDER
+      provider = available_providers.find { |row| row["id"].to_s == @provider_id.to_s }
+      @provider_id = nil unless provider && provider["services"].include?(@service_id)
     end
+    @date = params[:date].to_s[/\A\d{4}-\d{2}-\d{2}\z/]
+    @time = params[:time].to_s[/\A\d{2}:\d{2}\z/]
+    @timezone = params[:timezone].presence if params[:timezone].present? && Time.find_zone(params[:timezone])
 
-    customer_params = customer_params.slice(*ALLOWED_CUSTOMER_FIELDS)
-    appointment_params = appointment_params.slice(*ALLOWED_APPOINTMENT_FIELDS)
+    first_kind = html_vars[:first_step] # "service" or "provider"
+    chosen = { "service" => @service_id.positive?, "provider" => @provider_id.present? }
+    @reachable = [ "first" ]
+    @reachable << "second" if chosen[first_kind]
+    @reachable << "time" if chosen.values.all?
+    @reachable << "info" if chosen.values.all? && @date && @time
 
-    if Setting.get("require_phone_or_email", "1") == "1" &&
-       customer_params["email"].blank? && customer_params["phone_number"].blank?
-      raise ArgumentError, helpers.lang("phone_or_email_required")
+    requested = STEPS.include?(params[:step]) ? params[:step] : nil
+    requested ||= manage_mode && chosen.values.all? ? "time" : "first"
+    @step = @reachable.include?(requested) ? requested : @reachable.last
+
+    if @step == "time"
+      service = Service.find(@service_id)
+      exclude = manage_mode ? html_vars[:appointment_data]["id"] : nil
+      @window = BookingWindow.build(service, @provider_id, exclude_appointment_id: exclude)
     end
+  end
 
-    %w[address city zip_code notes phone_number].each { |field| customer_params[field] ||= "" }
-
-    provider_id = check_datetime_availability(appointment_params, manage_mode)
-    raise ArgumentError, helpers.lang("requested_hour_is_unavailable") unless provider_id
-
-    appointment_params["id_users_provider"] = provider_id
-    provider = User.providers.find(provider_id)
-    service = Service.find(appointment_params["id_services"])
-
-    if AltchaChallenge.enabled? && !AltchaChallenge.verify(params[:altcha_payload])
-      return render json: { altcha_verification: false }
+  # The appointment and provider rows of a reschedule. Private or hidden-category
+  # records are absent from the public payloads, so they are added for the wizard.
+  def manage_payloads(record, available_services, available_providers)
+    provider = record.provider
+    unless available_services.any? { |row| row["id"] == record.id_services }
+      available_services << BookingPayloads.service_payload(BookingPayloads.service_row(record.id_services))
+                                           .merge("booking_slug" => nil)
     end
-
-    if TurnstileChallenge.enabled? && !TurnstileChallenge.verify(params[:cf_turnstile_response], request.remote_ip)
-      return render json: { turnstile_verification: false }
+    unless available_providers.any? { |row| row["id"] == provider.id }
+      available_providers << BookingPayloads.provider_payload(provider).merge("booking_slug" => nil)
     end
+    provider_payload = { "id" => provider.id, "name" => provider.name,
+                         "services" => provider.services.map(&:id), "timezone" => provider.effective_timezone }
+    [ appointment_payload(record), provider_payload ]
+  end
 
-    existing_customer = User.customers.find_by(email: customer_params["email"]) if customer_params["email"].present?
-    if existing_customer
-      conflict = Appointment.active.where(id_users_customer: existing_customer.id)
-                            .where("start_datetime <= ? AND end_datetime >= ?",
-                                   appointment_params["start_datetime"], end_datetime_for(appointment_params, service))
-      conflict = conflict.where.not(id: appointment_params["id"]) if manage_mode
-      raise ArgumentError, helpers.lang("customer_is_already_booked") if conflict.exists?
+  # confirm/register re-render: rebuild the page vars the steps need.
+  def index_vars_for_confirm
+    available_services = BookingPayloads.available_services
+    available_providers = BookingPayloads.available_providers
+    additions = BookingPayloads.slug_additions(
+      params[:service], params[:provider],
+      known_service_ids: available_services.map { |row| row["id"] },
+      known_provider_ids: available_providers.map { |row| row["id"] }
+    )
+    available_services += additions[:services]
+    available_providers += additions[:providers]
+    manage_mode = ActiveModel::Type::Boolean.new.cast(params[:manage_mode]) || false
+    appointment = provider_payload = nil
+    if manage_mode
+      record = Appointment.find_by!(booking_hash: params[:appointment_hash].to_s)
+      appointment, provider_payload = manage_payloads(record, available_services, available_providers)
     end
+    base_index_vars(available_services, available_providers, manage_mode,
+                    appointment: appointment, provider_payload: provider_payload)
+    resolve_wizard_state(available_services, available_providers, manage_mode)
+  end
 
-    save_consents(customer_params)
+  def customer_form_params
+    params.fetch(:customer, {}).permit(*(ALLOWED_CUSTOMER_FIELDS - %w[id]).map(&:to_sym), :notes).to_h
+  end
 
-    customer = existing_customer || User.new(role: Role.find_by!(slug: Role::CUSTOMER))
-    customer.assign_attributes(customer_params.except("id", "timezone", "language")
-                                              .merge("timezone" => customer_params["timezone"].presence || "UTC"))
-    customer.language = session[:language] || Setting.get("default_language", "english")
-    customer.save!
-
-    # A reschedule books a new row and marks the original Rescheduled.
-    original = manage_mode ? Appointment.find(appointment_params["id"]) : nil
-    if original && (original.frees_slot? || BookingWindows.past?(original))
+  # The id alone is guessable: a reschedule must carry the appointment's hash too.
+  def reschedule_original(appointment_id, appointment_hash)
+    original = appointment_hash.present? && Appointment.find_by(id: appointment_id, booking_hash: appointment_hash.to_s)
+    if !original || original.frees_slot? || BookingWindows.past?(original)
       raise ArgumentError, helpers.lang("appointment_does_not_exist_in_db")
     end
-    raise ArgumentError, helpers.lang("appointment_locked") if original && BookingWindows.late?(original)
-    appointment = Appointment.new(series_id: original&.series_id, occurrence_at: original&.occurrence_at)
-    appointment.assign_attributes(
-      start_datetime: appointment_params["start_datetime"],
-      end_datetime: end_datetime_for(appointment_params, service),
-      location: appointment_params["location"].presence || service.location,
-      notes: appointment_params["notes"],
-      customer: customer,
-      provider: provider,
-      service: service,
-      is_unavailability: false,
-      color: service.color,
-      appointment_status: AppointmentStatus.of("booked"),
-      book_datetime: Time.now
-    )
-    Appointment.transaction do
-      appointment.save!
-      original&.update!(appointment_status: AppointmentStatus.of("rescheduled"), rescheduled_to: appointment)
-    end
-
-    settings = notification_settings
-
-    Synchronization.appointment_deleted(original, provider) if original
-    Synchronization.appointment_saved(appointment, service, provider, customer, settings)
-    Notifications.appointment_saved(appointment, service, provider, customer, settings, manage_mode: manage_mode)
-    Webhooks.trigger(Webhooks::APPOINTMENT_SAVE, appointment)
-
-    render json: { appointment_id: appointment.id, appointment_hash: appointment.booking_hash }
-  rescue ArgumentError => e
-    json_exception(e, status: :ok)
+    raise ArgumentError, helpers.lang("appointment_locked") if BookingWindows.late?(original)
+    original
   end
 
-  # POST /booking/get_available_hours
-  def get_available_hours
-    return head :forbidden if Setting.get("disable_booking") == "1"
+  # [message, the fields at fault], or nil when the details pass.
+  def customer_error(customer)
+    required = { "email" => "require_email", "phone_number" => "require_phone_number", "address" => "require_address",
+                 "city" => "require_city", "zip_code" => "require_zip_code", "notes" => "require_notes" }
+    missing = required.select { |_field, setting_name| Setting.get(setting_name).to_s == "1" }.keys.unshift("name")
+                      .select { |field| customer[field].blank? }
+    return [ helpers.lang("fields_are_required"), missing ] if missing.any?
+    if Setting.get("require_phone_or_email", "1") == "1" && customer["email"].blank? && customer["phone_number"].blank?
+      return [ helpers.lang("phone_or_email_required"), %w[email phone_number] ]
+    end
+    if customer["email"].present? && !customer["email"].match?(URI::MailTo::EMAIL_REGEXP)
+      return [ helpers.lang("invalid_email"), [ "email" ] ]
+    end
+    nil
+  end
 
-    provider_id = params[:provider_id]
-    service_id = params[:service_id]
-    selected_date = params[:selected_date]
-    return render json: [] if provider_id.blank?
-
-    manage_mode = params[:manage_mode].to_s == "1"
-    exclude_appointment_id = manage_mode ? params[:appointment_id].presence : nil
-
-    service = Service.find(service_id)
-    engine = Availability::Engine.new
-
-    if provider_id == BookingPayloads::ANY_PROVIDER
-      hours = BookingPayloads.providers_for_service(service.id).flat_map do |provider|
-        engine.available_hours(selected_date, service, provider, exclude_appointment_id: exclude_appointment_id)
-      end
-      render json: hours.uniq.sort
+  def register_failed(message)
+    if message == helpers.lang("requested_hour_is_unavailable")
+      # The slot went while the window sat on the client: back to the times with
+      # a fresh window, keeping the link parameters and the reschedule route.
+      manage_mode = ActiveModel::Type::Boolean.new.cast(params[:manage_mode]) || false
+      route = manage_mode ? { action: :reschedule, appointment_hash: params[:appointment_hash] } : { action: :index }
+      state = params.permit(:first, :service, :provider, :theme, :date, :timezone).to_h.compact_blank
+      redirect_to url_for(route.merge(state).merge(step: "time",
+                                                   service_id: params.dig(:appointment, :id_services),
+                                                   provider_id: params.dig(:appointment, :id_users_provider))),
+                  alert: message
     else
-      provider = User.providers.find(provider_id)
-      render json: engine.available_hours(selected_date, service, provider,
-                                          exclude_appointment_id: exclude_appointment_id)
+      index_vars_for_confirm
+      @customer = customer_form_params
+      @error = message
+      @step = @reachable.include?("info") ? "final" : @reachable.last
+      render :index
     end
-  rescue StandardError => e
-    json_exception(e)
   end
-
-  # GET /booking/get_unavailable_dates
-  def get_unavailable_dates
-    return head :forbidden if Setting.get("disable_booking") == "1"
-
-    provider_id = params[:provider_id]
-    service_id = params[:service_id]
-    manage_mode = ActiveModel::Type::Boolean.new.cast(params[:manage_mode]) || false
-    exclude_appointment_id = manage_mode ? params[:appointment_id].presence : nil
-
-    selected_date = Date.parse(CGI.unescape(params[:selected_date].to_s))
-    days_in_month = Date.new(selected_date.year, selected_date.month, -1).day
-
-    service = Service.find(service_id)
-    providers =
-      if provider_id == BookingPayloads::ANY_PROVIDER
-        BookingPayloads.providers_for_service(service.id).to_a
-      else
-        [ User.providers.find(provider_id) ]
-      end
-
-    engine = Availability::Engine.new
-    today = Date.today
-    unavailable_dates = []
-
-    (1..days_in_month).each do |day|
-      current_date = Date.new(selected_date.year, selected_date.month, day)
-
-      if current_date < today
-        unavailable_dates << current_date.strftime("%Y-%m-%d")
-        next
-      end
-
-      available = providers.any? do |provider|
-        engine.available_hours(current_date.strftime("%Y-%m-%d"), service, provider,
-                               exclude_appointment_id: exclude_appointment_id).any?
-      end
-
-      unavailable_dates << current_date.strftime("%Y-%m-%d") unless available
-    end
-
-    if unavailable_dates.length == days_in_month
-      render json: { is_month_unavailable: true }
-    else
-      render json: unavailable_dates
-    end
-  rescue StandardError => e
-    json_exception(e)
-  end
-
-  private
 
   def render_booking_message(title, text, raw_text: false)
     html_vars(
@@ -442,7 +498,7 @@ class BookingController < ApplicationController
     }
   end
 
-  # EA row shape for script_vars appointment_data (naive Y-m-d H:i:s strings).
+  # EA row shape for the appointment_data page var (naive Y-m-d H:i:s strings).
   def appointment_payload(record)
     {
       "id" => record.id,
@@ -458,7 +514,7 @@ class BookingController < ApplicationController
   end
 
   def customer_fields(customer)
-    BookingController::ALLOWED_CUSTOMER_FIELDS.index_with { |field| customer.public_send(field) }
+    ALLOWED_CUSTOMER_FIELDS.index_with { |field| customer.public_send(field) }
   end
 
   # The single name field is always shown and required; only these are optional.

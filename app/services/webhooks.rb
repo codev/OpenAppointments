@@ -31,6 +31,16 @@ module Webhooks
     end
   end
 
+  # Users carry their role's row, as EA's controllers sent them.
+  def user_payload_row(user)
+    case user.role&.slug
+    when Role::PROVIDER then EaRows.provider_row(user)
+    when Role::ASSISTANT then EaRows.assistant_row(user)
+    when Role::ADMIN then EaRows.admin_row(user)
+    else EaRows.customer_row(user)
+    end
+  end
+
   def to_row(payload)
     case payload
     when Appointment then EaRows.appointment_row(payload)
@@ -38,7 +48,7 @@ module Webhooks
     when ServiceCategory then EaRows.service_category_row(payload)
     when BlockedPeriod then EaRows.blocked_period_row(payload)
     when Webhook then EaRows.webhook_row(payload)
-    when User then EaRows.user_row(payload)
+    when User then user_payload_row(payload)
     else payload
     end
   end

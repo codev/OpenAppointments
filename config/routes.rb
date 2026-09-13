@@ -15,9 +15,16 @@ Rails.application.routes.draw do
   # Backend calendar
   get "calendar" => "calendar#index", as: :calendar
   get "appointments" => "appointments#index", as: :appointments
+  # Event dialog forms (rendered into the calendar pages' event frame)
+  resources :appointments, only: %i[new create edit update] do
+    member do
+      get :remove, action: :remove_form
+      post :remove
+    end
+  end
+  resources :unavailabilities, only: %i[new create edit update destroy], controller: "unavailabilities_form"
   get "calendar/reschedule/:appointment_hash" => "calendar#reschedule"
   post "calendar/get_calendar_appointments" => "calendar#get_calendar_appointments"
-  post "calendar/get_calendar_appointments_for_table_view" => "calendar#get_calendar_appointments_for_table_view"
   post "calendar/save_appointment" => "calendar#save_appointment"
   post "calendar/delete_appointment" => "calendar#delete_appointment"
   post "calendar/cancel_appointment" => "calendar#cancel_appointment"
@@ -26,30 +33,14 @@ Rails.application.routes.draw do
   post "calendar/save_working_plan_exception" => "calendar#save_working_plan_exception"
   post "calendar/delete_working_plan_exception" => "calendar#delete_working_plan_exception"
 
-  # Repeating appointments (backend only)
-  get "appointment_series" => "appointment_series#index"
+  # Repeating appointments (backend only); the list and cancel form render in a frame
+  get "appointment_series" => "appointment_series#index", as: :appointment_series
+  get "appointment_series/:id/cancel" => "appointment_series#cancel_form", as: :cancel_form_appointment_series
   post "appointment_series/:id/reschedule" => "appointment_series#reschedule"
-  post "appointment_series/:id/cancel" => "appointment_series#cancel"
-
-  # Backend CRUD pages (EA pattern: page GET + find/search/store/update/destroy).
-  # EA declares find as GET but the ported JS clients $.post it, so find takes both.
-  # Unavailabilities has no page in EA, only the JSON endpoints.
-  %w[customers services service_categories providers assistants admins
-     unavailabilities blocked_periods webhooks].each do |resource|
-    get resource => "#{resource}#index" unless resource == "unavailabilities"
-    match "#{resource}/find" => "#{resource}#find", via: [ :get, :post ]
-    post "#{resource}/search" => "#{resource}#search"
-    post "#{resource}/store" => "#{resource}#store"
-    post "#{resource}/update" => "#{resource}#update"
-    post "#{resource}/destroy" => "#{resource}#destroy"
-  end
+  post "appointment_series/:id/cancel" => "appointment_series#cancel", as: :cancel_appointment_series
 
   # Old backend page URL after the assistant rename
   get "secretaries" => redirect("/assistants")
-
-  # Booking link slug regeneration
-  post "services/regenerate_link" => "services#regenerate_link"
-  post "providers/regenerate_link" => "providers#regenerate_link"
 
   # Drag-to-reorder for the booking page ordering
   %w[services service_categories providers].each do |resource|
@@ -57,11 +48,29 @@ Rails.application.routes.draw do
     post "#{resource}/sort_alphabetically" => "#{resource}#sort_alphabetically"
   end
 
+  # Converted to Rails views + Turbo Frames; category and customer search stay as
+  # JSON for the services page select and the appointments modal.
+  resources :service_categories, only: %i[index new create edit update destroy] do
+    post :search, on: :collection
+  end
+  resources :customers, only: %i[index new create edit update destroy] do
+    post :search, on: :collection
+  end
+  resources :blocked_periods, only: %i[index new create edit update destroy]
+  resources :webhooks, only: %i[index new create edit update destroy]
+  resources :admins, only: %i[index new create edit update destroy]
+  resources :assistants, only: %i[index new create edit update destroy]
+  resources :providers, only: %i[index new create edit update destroy] do
+    post :regenerate_link, on: :member
+  end
+  resources :services, only: %i[index new create edit update destroy] do
+    post :regenerate_link, on: :member
+  end
+
   # 10to8 import page
   get "import" => "import#index"
   post "import/export" => "import#export"
   get "import/export_status" => "import#export_status"
-  get "import/backups" => "import#backups"
   get "import/download_backup" => "import#download_backup"
   get "import/report" => "import#report"
   post "import/analyze" => "import#analyze"
@@ -69,17 +78,12 @@ Rails.application.routes.draw do
   get "import/status" => "import#status"
   post "import/reset" => "import#reset"
 
-  # Record pictures (cards display mode)
-  %w[providers assistants admins services service_categories].each do |resource|
-    post "#{resource}/:id/picture" => "#{resource}#save_picture"
-  end
 
   # Public booking wizard
   root "booking#index"
   get "booking" => "booking#index"
   get "booking/reschedule/:appointment_hash" => "booking#reschedule"
-  post "booking/get_available_hours" => "booking#get_available_hours"
-  get "booking/get_unavailable_dates" => "booking#get_unavailable_dates"
+  post "booking/confirm" => "booking#confirm"
   post "booking/register" => "booking#register"
   get "booking_confirmation/of/:appointment_hash" => "booking_confirmation#of", as: :booking_confirmation
   get "booking_confirmation/ics/:appointment_hash" => "booking_confirmation#ics", as: :booking_confirmation_ics
@@ -122,11 +126,11 @@ Rails.application.routes.draw do
   post "altcha_settings/generate_key" => "altcha_settings#generate_key"
   post "messages_smsgateway_settings/test_sms" => "messages_smsgateway_settings#test_sms"
   post "ldap_settings/search" => "ldap_settings#search"
+  post "ldap_settings/import" => "ldap_settings#import"
   get "integrations" => "integrations#index"
   get "about" => "about#index"
   get "account" => "account#index"
   post "account/save" => "account#save"
-  post "account/validate_username" => "account#validate_username"
 
   # Inbound SMS webhooks (public; token in URL)
   post "messages/inbound/:channel/:token" => "inbound_messages#receive"

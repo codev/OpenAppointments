@@ -1,0 +1,54 @@
+<%= render "shared/crud_form", record: record, delete_title: lang('delete_webhook') do |f| %>
+    <div class="mb-3">
+        <%= f.label :name, class: "form-label" do %>
+            <%= lang('name') %> <span class="text-danger">*</span>
+        <% end %>
+        <%= f.text_field :name, required: true, maxlength: 128,
+                         class: "form-control #{'is-invalid' if record.errors.include?(:name)}" %>
+    </div>
+
+    <div class="mb-3">
+        <%= f.label :url, class: "form-label" do %>
+            <%= lang('url') %> <span class="text-danger">*</span>
+        <% end %>
+        <%= f.text_field :url, required: true,
+                         class: "form-control #{'is-invalid' if record.errors.include?(:url)}" %>
+    </div>
+
+    <div class="mb-3">
+        <%= f.label :secret_header, lang('secret_header'), class: "form-label" %>
+        <%= f.text_field :secret_header, class: "form-control" %>
+    </div>
+
+    <div class="mb-3">
+        <%= f.label :secret_token, lang('secret_token'), class: "form-label" %>
+        <%= f.text_field :secret_token, class: "form-control" %>
+    </div>
+
+    <div><label class="form-label mb-3"><%= lang('actions') %></label></div>
+    <div class="border rounded mb-3 p-3" id="actions">
+        <%= hidden_field_tag "webhook[actions][]", "" %>
+        <% WebhooksController::AVAILABLE_ACTIONS.each do |action| %>
+            <div class="mb-3">
+                <div class="form-check form-switch">
+                    <%= check_box_tag "webhook[actions][]", action, record.handles?(action),
+                                      id: "include-#{action.dasherize}", class: "form-check-input" %>
+                    <label class="form-check-label" for="include-<%= action.dasherize %>"><%= lang(action) %></label>
+                </div>
+            </div>
+        <% end %>
+    </div>
+
+    <div><label class="form-label mb-3"><%= lang('options') %></label></div>
+    <div class="border rounded mb-3 p-3">
+        <div class="form-check form-switch">
+            <%= f.check_box :is_ssl_verified, class: "form-check-input" %>
+            <%= f.label :is_ssl_verified, lang('verify_ssl'), class: "form-check-label" %>
+        </div>
+    </div>
+
+    <div class="mb-3">
+        <%= f.label :notes, lang('notes'), class: "form-label" %>
+        <%= f.text_area :notes, rows: 8, class: "form-control" %>
+    </div>
+<% end %>

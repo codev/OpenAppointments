@@ -901,3 +901,8 @@ lv:
     report_statuses: 'Status'
     download_report: 'Download Report'
     booked_on: 'Booked Date'
+    invalid_datetime: "Neizdevās nolasīt datumu un laiku"
+    unsaved_changes_prompt: "Jums ir nesaglabātas izmaiņas. Pamest šo lapu un tās zaudēt?"
+    leave_page: "Pamest lapu"
+    status_custom: "Pielāgots"
+    provider_does_not_offer_service: "Izvēlētais pakalpojumu sniedzējs nepiedāvā šo pakalpojumu."

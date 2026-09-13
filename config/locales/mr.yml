@@ -901,3 +901,8 @@ mr:
     report_statuses: 'Status'
     download_report: 'Download Report'
     booked_on: 'Booked Date'
+    invalid_datetime: "तारीख आणि वेळ वाचता आली नाही"
+    unsaved_changes_prompt: "तुमच्याकडे जतन न केलेले बदल आहेत. हे पान सोडून ते गमावायचे?"
+    leave_page: "पान सोडा"
+    status_custom: "सानुकूल"
+    provider_does_not_offer_service: "निवडलेला प्रदाता ही सेवा देत नाही."

@@ -18,8 +18,8 @@ class ReorderTest < ActionDispatch::IntegrationTest
     names = BookingPayloads.available_services.map { |service| service["name"] }
     assert_operator names.index(services(:haircut).name), :<, names.index(zebra.name)
 
-    post "/services/search", params: { keyword: "" }
-    admin_names = response.parsed_body.map { |row| row["name"] }
+    get "/services"
+    admin_names = css_select(".service-row strong").map(&:text)
     assert_operator admin_names.index(services(:haircut).name), :<, admin_names.index(zebra.name)
   end
 
@@ -39,7 +39,7 @@ class ReorderTest < ActionDispatch::IntegrationTest
     assert_equal 1, services(:haircut).reload.sort_order
 
     post "/services/sort_alphabetically"
-    assert_response :success
+    assert_redirected_to "/services"
     assert_nil services(:haircut).reload.sort_order
   end
 

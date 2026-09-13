@@ -6,8 +6,8 @@
             <%= render "shared/messages_nav" %>
         </div>
         <div id="messages-smsgateway-settings" class="col-sm-9">
-            <form>
-                <fieldset>
+            <turbo-frame id="settings">
+                <%= settings_form "/messages_smsgateway_settings/save" do %>
                     <%= render "shared/messages_provider_header", title: "SMS Gateway" %>
 
                     <div class="row">
@@ -41,16 +41,14 @@
                             </div>
 
                             <div class="form-check form-switch mb-3">
-                                <input type="checkbox" class="form-check-input" id="smsgateway-enabled"
-                                       data-field="messages_smsgateway_enabled">
+                                <%= setting_switch "messages_smsgateway_enabled", id: "smsgateway-enabled" %>
                                 <label class="form-check-label" for="smsgateway-enabled">
                                     <%= lang('active') %>
                                 </label>
                             </div>
 
                             <div class="form-check form-switch mb-4">
-                                <input type="checkbox" class="form-check-input" id="smsgateway-incoming"
-                                       data-field="messages_smsgateway_incoming">
+                                <%= setting_switch "messages_smsgateway_incoming", id: "smsgateway-incoming" %>
                                 <label class="form-check-label" for="smsgateway-incoming">
                                     <%= lang('messages_incoming') %>
                                 </label>
@@ -65,37 +63,32 @@
                                 <label class="form-label" for="messages-smsgateway-url">
                                     <%= lang('messages_smsgateway_url') %>
                                 </label>
-                                <input type="text" id="messages-smsgateway-url" class="form-control"
-                                       autocomplete="off" data-field="messages_smsgateway_url">
+                                <%= setting_text "messages_smsgateway_url", autocomplete: "off" %>
                             </div>
 
                             <div class="mb-3">
                                 <label class="form-label" for="messages-smsgateway-login">
                                     <%= lang('messages_smsgateway_login') %>
                                 </label>
-                                <input type="text" id="messages-smsgateway-login" class="form-control"
-                                       autocomplete="off" data-field="messages_smsgateway_login">
+                                <%= setting_text "messages_smsgateway_login", autocomplete: "off" %>
                             </div>
 
                             <div class="mb-3">
                                 <label class="form-label" for="messages-smsgateway-password">
                                     <%= lang('messages_smsgateway_password') %>
                                 </label>
-                                <input type="password" id="messages-smsgateway-password" class="form-control"
-                                       autocomplete="off" data-field="messages_smsgateway_password">
+                                <%= setting_password "messages_smsgateway_password", autocomplete: "off" %>
                             </div>
 
                             <div class="mb-3">
                                 <label class="form-label" for="messages-smsgateway-signing-key">
                                     <%= lang('messages_smsgateway_signing_key') %>
                                 </label>
-                                <input type="password" id="messages-smsgateway-signing-key" class="form-control"
-                                       autocomplete="off" data-field="messages_smsgateway_signing_key">
+                                <%= setting_password "messages_smsgateway_signing_key", autocomplete: "off" %>
                             </div>
 
                             <div class="form-check form-switch mb-4">
-                                <input type="checkbox" class="form-check-input" id="smsgateway-default-country-only"
-                                       data-field="messages_smsgateway_default_country_only">
+                                <%= setting_switch "messages_smsgateway_default_country_only", id: "smsgateway-default-country-only" %>
                                 <label class="form-check-label" for="smsgateway-default-country-only">
                                     <%= t("ea.messages_default_country_only",
                                           code: Messaging::Template.default_country_code,
@@ -129,13 +122,12 @@
                             </div>
                         </div>
                     </div>
-                </fieldset>
-            </form>
+                <% end %>
+            </turbo-frame>
         </div>
     </div>
 </div>
 
 <% content_for :scripts do %>
-    <%= ea_js "http/messages_settings_http_client", "pages/messages_provider_settings",
-              "pages/messages_smsgateway_settings" %>
+    <%= ea_js "pages/messages_smsgateway_settings" %>
 <% end %>

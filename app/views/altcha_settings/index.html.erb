@@ -5,27 +5,23 @@
             <%= render "shared/settings_nav" %>
         </div>
         <div id="altcha-settings" class="col-sm-9">
-            <form>
-                <fieldset>
+            <turbo-frame id="settings">
+                <%= settings_form "/altcha_settings/save" do %>
                     <div class="d-flex justify-content-between align-items-center border-bottom mb-4 py-2">
                         <h4 class="mb-0 fw-light">
                             <%= lang('captcha') %>
                         </h4>
 
                         <div>
-                            <a href="/integrations" class="btn btn-outline-primary me-2">
+                            <a href="/integrations" data-turbo="false" class="btn btn-outline-primary me-2">
                                 <i class="fas fa-chevron-left me-2"></i>
                                 <%= lang('back') %>
                             </a>
 
-                            <% if can?(:edit, :system_settings) %>
-                                <button type="button" id="save-settings" class="btn btn-primary">
-                                    <i class="fas fa-check-square me-2"></i>
-                                    <%= lang('save') %>
-                                </button>
-                            <% end %>
+                            <%= settings_save_button %>
                         </div>
                     </div>
+                    <%= settings_flash %>
 
                     <div class="row">
                         <div class="col-12">
@@ -37,8 +33,7 @@
 
                             <div class="mb-3">
                                 <div class="form-check form-switch">
-                                    <input class="form-check-input" type="checkbox" id="altcha-enabled"
-                                           data-field="altcha_enabled">
+                                    <%= setting_switch "altcha_enabled" %>
                                     <label class="form-check-label" for="altcha-enabled">
                                         <%= lang('captcha_active_customers') %>
                                     </label>
@@ -50,8 +45,7 @@
 
                             <div class="mb-3">
                                 <div class="form-check form-switch">
-                                    <input class="form-check-input" type="checkbox" id="captcha-login-enabled"
-                                           data-field="captcha_login_enabled">
+                                    <%= setting_switch "captcha_login_enabled" %>
                                     <label class="form-check-label" for="captcha-login-enabled">
                                         <%= lang('captcha_active_login') %>
                                     </label>
@@ -65,19 +59,18 @@
                                 <label class="form-label" for="captcha-provider">
                                     <%= lang('captcha_provider') %>
                                 </label>
-                                <select id="captcha-provider" class="form-select" data-field="captcha_provider">
-                                    <option value="altcha">ALTCHA</option>
-                                    <option value="turnstile">Cloudflare Turnstile</option>
+                                <select name="settings[captcha_provider]" data-field="captcha_provider" id="captcha-provider" class="form-select" >
+                                    <option value="altcha" <%= "selected" if setting('captcha_provider').to_s == "altcha" %>>ALTCHA</option>
+                                    <option value="turnstile" <%= "selected" if setting('captcha_provider').to_s == "turnstile" %>>Cloudflare Turnstile</option>
                                 </select>
                             </div>
 
-                            <div id="turnstile-provider-settings">
+                            <div id="turnstile-provider-settings" data-visible-when="captcha_provider=turnstile">
                                 <div class="mb-3">
                                     <label class="form-label" for="turnstile-site-key">
                                         <%= lang('turnstile_site_key') %>
                                     </label>
-                                    <input type="text" id="turnstile-site-key" class="form-control"
-                                           data-field="turnstile_site_key" maxlength="256">
+                                    <%= setting_text "turnstile_site_key", maxlength: 256 %>
                                     <div class="form-text text-muted small">
                                         <%= lang('turnstile_keys_hint') %>
                                         <a href="https://dash.cloudflare.com/?to=/:account/turnstile" target="_blank">dash.cloudflare.com</a>
@@ -89,8 +82,7 @@
                                     <label class="form-label" for="turnstile-secret-key">
                                         <%= lang('turnstile_secret_key') %>
                                     </label>
-                                    <input type="password" id="turnstile-secret-key" class="form-control"
-                                           data-field="turnstile_secret_key" maxlength="256" autocomplete="new-password">
+                                    <%= setting_password "turnstile_secret_key", maxlength: 256, autocomplete: "new-password" %>
                                 </div>
 
                                 <div class="mb-3">
@@ -101,7 +93,7 @@
                                 </div>
                             </div>
 
-                            <div id="altcha-provider-settings">
+                            <div id="altcha-provider-settings" data-visible-when="captcha_provider=altcha">
                                 <div class="form-text text-muted mb-3">
                                     <%= lang('altcha_info') %>
                                 </div>
@@ -112,8 +104,7 @@
                                     <span class="text-danger">*</span>
                                 </label>
                                 <div class="input-group">
-                                    <input type="text" id="altcha-hmac-key" class="form-control"
-                                           data-field="altcha_hmac_key">
+                                    <%= setting_text "altcha_hmac_key" %>
                                     <button type="button" id="generate-hmac-key" class="btn btn-outline-secondary">
                                         <i class="fas fa-sync-alt me-2"></i>
                                         <%= lang('generate') %>
@@ -128,8 +119,7 @@
                                 <label class="form-label" for="altcha-max-number">
                                     <%= lang('altcha_max_number') %>
                                 </label>
-                                <input type="number" id="altcha-max-number" class="form-control"
-                                       data-field="altcha_max_number" min="10000" max="1000000">
+                                <%= setting_text "altcha_max_number", min: 10000, max: 1000000, type: "number" %>
                                 <div class="form-text text-muted small">
                                     <%= lang('altcha_max_number_hint') %>
                                 </div>
@@ -139,8 +129,7 @@
                                 <label class="form-label" for="altcha-expires">
                                     <%= lang('altcha_expires') %>
                                 </label>
-                                <input type="number" id="altcha-expires" class="form-control"
-                                       data-field="altcha_expires" min="60" max="3600">
+                                <%= setting_text "altcha_expires", min: 60, max: 3600, type: "number" %>
                                 <div class="form-text text-muted small">
                                     <%= lang('altcha_expires_hint') %>
                                 </div>
@@ -150,14 +139,14 @@
                         </div>
                     </div>
 
-                </fieldset>
-            </form>
+                <% end %>
+            </turbo-frame>
         </div>
     </div>
 </div>
 
 <% content_for :scripts do %>
-    <%= ea_js "http/altcha_settings_http_client", "pages/altcha_settings" %>
+    <%= ea_js "pages/altcha_settings" %>
     <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?onload=onloadTurnstileCallback&render=explicit"
             async defer></script>
 <% end %>

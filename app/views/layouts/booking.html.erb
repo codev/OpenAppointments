@@ -110,6 +110,13 @@
 <% end %>
 <%= ea_js "layouts/booking_layout", "http/localization_http_client" %>
 
+<%# Turbo drives only the wizard frame here; whole-page visits stay full loads
+    (the analytics and cookie scripts below are not Turbo aware). %>
+<script type="module">
+    import { Turbo } from "<%= asset_path('turbo.min.js') %>";
+    Turbo.session.drive = false;
+</script>
+
 <%= render "shared/js_vars_script" %>
 <%= render "shared/js_lang_script" %>
 

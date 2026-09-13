@@ -70,17 +70,15 @@ class SettingsPagesTest < ActionDispatch::IntegrationTest
   test "fixing the timezone moves every user to the default and hides the controls" do
     login_admin
     users(:zane).update!(timezone: "America/New_York")
-    post "/general_settings/save", params: {
-      general_settings: [ { name: "default_timezone", value: "Europe/London" }, { name: "fixed_timezone", value: "1" } ]
-    }
-    assert_response :success
+    post "/general_settings/save", params: { settings: { default_timezone: "Europe/London", fixed_timezone: "1" } }
+    assert_redirected_to "/general_settings"
     assert_equal "Europe/London", users(:zane).reload.timezone
 
-    get "/providers"
-    assert_select "div.d-none label[for='timezone']"
-    get "/booking"
+    get "/providers/new"
+    assert_select "div.d-none label[for='provider_timezone']"
+    get "/booking", params: { step: "time", service_id: services(:haircut).id, provider_id: users(:zane).id }
     assert_select "div.d-none label[for='select-timezone']"
-    assert_match '"fixed_timezone":true', response.body
+    assert_select "select#select-timezone[disabled]"
   end
 
   test "message failure report addresses default to the admins and must be valid" do
@@ -88,39 +86,35 @@ class SettingsPagesTest < ActionDispatch::IntegrationTest
     get "/messages_settings"
     assert_match User.admins.first.email, response.body
 
-    post "/messages_settings/save", params: {
-      messages_settings: [ { name: "messages_failure_alert_emails", value: "a@example.org; not-an-email" } ]
-    }
-    assert_equal false, response.parsed_body["success"]
-    assert_match "not-an-email", response.parsed_body["message"]
+    post "/messages_settings/save", params: { settings: { messages_failure_alert_emails: "a@example.org; not-an-email" } }
+    assert_redirected_to "/messages_settings"
+    follow_redirect!
+    assert_select ".alert-danger", text: /not-an-email/
 
-    post "/messages_settings/save", params: {
-      messages_settings: [ { name: "messages_failure_alert_emails", value: "a@example.org, b@example.org" } ]
-    }
-    assert_equal true, response.parsed_body["success"]
+    post "/messages_settings/save", params: { settings: { messages_failure_alert_emails: "a@example.org, b@example.org" } }
+    assert_redirected_to "/messages_settings"
     assert_equal "a@example.org, b@example.org", Setting.get("messages_failure_alert_emails")
   end
 
   test "general settings save persists whitelisted settings" do
     login_admin
-    post "/general_settings/save", params: {
-      general_settings: [
-        { name: "company_name", value: "Open Out" },
-        { name: "not_whitelisted", value: "ignored" }
-      ]
-    }
-    assert_response :success
-    assert_equal true, response.parsed_body["success"]
+    post "/general_settings/save", params: { settings: { company_name: "Open Out", not_whitelisted: "ignored" } }
+    assert_redirected_to "/general_settings"
+    follow_redirect!
+    assert_select ".alert-success", text: I18n.t("ea.settings_saved")
     assert_equal "Open Out", Setting.get("company_name")
     assert_nil Setting.get("not_whitelisted")
   end
 
   test "general settings save is forbidden without edit privilege" do
     login_provider
+    post "/general_settings/save", params: { settings: { company_name: "X" } }
+    assert_redirected_to "/general_settings"
+    assert_equal "Test Company", Setting.get("company_name")
+
     post "/general_settings/save", params: { general_settings: [ { name: "company_name", value: "X" } ] }
     assert_response :internal_server_error
     assert_equal false, response.parsed_body["success"]
-    assert_equal "Test Company", Setting.get("company_name")
   end
 
   test "account save persists the display name change" do
@@ -138,12 +132,65 @@ class SettingsPagesTest < ActionDispatch::IntegrationTest
     assert_equal "Janet Doe", provider.reload.name
   end
 
-  test "account validate_username reports duplicates" do
-    login_provider
-    post "/account/validate_username", params: { username: "administrator", user_id: users(:zane).id }
-    assert_equal false, response.parsed_body["is_valid"]
+  test "the account form saves with a flash and refuses a taken username or mismatched passwords" do
+    login_admin
+    get "/account"
+    assert_select "form#account-form[action='/account/save'] input[name='account[settings][username]'][value=administrator]"
 
-    post "/account/validate_username", params: { username: "janedoe", user_id: users(:zane).id }
-    assert_equal true, response.parsed_body["is_valid"]
+    post "/account/save", params: { form: "1", account: { name: "Edson M", email: users(:admin).email, timezone: "UTC", language: "english",
+                                                            settings: { username: "administrator", password: "", password_confirmation: "" } } }
+    assert_redirected_to "/account"
+    follow_redirect!
+    assert_select ".alert-success", text: I18n.t("ea.settings_saved")
+    assert_equal "Edson M", users(:admin).reload.name
+
+    post "/account/save", params: { form: "1", account: { name: "Edson M", email: users(:admin).email,
+                                                            settings: { username: "janedoe" } } }
+    follow_redirect!
+    assert_select ".alert-danger", text: I18n.t("ea.username_already_exists")
+
+    post "/account/save", params: { form: "1", account: { name: "Edson M", email: users(:admin).email,
+                                                            settings: { username: "administrator", password: "password1", password_confirmation: "x" } } }
+    follow_redirect!
+    assert_select ".alert-danger", text: I18n.t("ea.passwords_mismatch")
+  end
+end
+
+class LdapImportFormTest < ActionDispatch::IntegrationTest
+  def login_admin
+    post "/login/validate", params: { username: "administrator", password: "administrator1" }
+  end
+
+  test "the import dialog is a form creating the chosen role with its settings" do
+    login_admin
+    get "/ldap_settings"
+    assert_select "form#ldap-import-form[action='/ldap_settings/import'] select[name=role_slug] option[value=provider]"
+
+    post "/ldap_settings/import", params: { role_slug: "provider", user: { name: "Dir Provider", email: "dir@example.org", phone_number: "1", ldap_dn: "cn=dir" },
+                                            settings: { username: "dirprovider", password: "password1" } }
+    assert_redirected_to "/ldap_settings"
+    follow_redirect!
+    assert_select ".alert-success", text: I18n.t("ea.user_imported")
+    provider = User.providers.find_by!(email: "dir@example.org")
+    assert_equal "dirprovider", provider.settings.username
+    assert_equal Setting.get("company_working_plan"), provider.settings.working_plan
+    assert_equal "cn=dir", provider.ldap_dn
+
+    post "/ldap_settings/import", params: { role_slug: "customer", user: { name: "Dir Customer", email: "dirc@example.org", phone_number: "2", ldap_dn: "cn=c" } }
+    assert User.customers.exists?(email: "dirc@example.org")
+
+    post "/ldap_settings/import", params: { role_slug: "admin", user: { name: "No pass", email: "np@example.org", phone_number: "3", ldap_dn: "cn=n" }, settings: { username: "np" } }
+    follow_redirect!
+    assert_select ".alert-danger", text: /password/
+  end
+end
+
+class DriveStringsTest < ActionDispatch::IntegrationTest
+  test "the unsaved changes and custom status strings exist in every locale" do
+    I18n.available_locales.each do |locale|
+      %w[unsaved_changes_prompt leave_page status_custom].each do |key|
+        assert I18n.t("ea.#{key}", locale: locale, fallback: false, default: nil).present?, "missing ea.#{key} in #{locale}"
+      end
+    end
   end
 end

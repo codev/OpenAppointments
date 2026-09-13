@@ -260,5 +260,6 @@ window.App.Utils.UI = (function () {
         initializeTextEditor,
         getDateTimePickerValue,
         setDateTimePickerValue,
+        getFlatpickrLocale,
     };
 })();

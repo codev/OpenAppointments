@@ -1,0 +1,3 @@
+<%# A flatpickr date/time field posting the display-format string. Locals: name, value, id, required. %>
+<%= text_field_tag name, (value.present? ? format_appointment_datetime(value, date_format: setting('date_format'), time_format: setting('time_format')) : ""),
+                   id: id, class: "form-control datetime-picker", required: local_assigns.fetch(:required, true), autocomplete: "off" %>

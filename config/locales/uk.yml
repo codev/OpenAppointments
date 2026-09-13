@@ -901,3 +901,8 @@ uk:
     report_statuses: 'Status'
     download_report: 'Download Report'
     booked_on: 'Booked Date'
+    invalid_datetime: "Не вдалося прочитати дату й час"
+    unsaved_changes_prompt: "У вас є незбережені зміни. Покинути сторінку й втратити їх?"
+    leave_page: "Покинути сторінку"
+    status_custom: "Власний"
+    provider_does_not_offer_service: "Обраний спеціаліст не надає цю послугу."

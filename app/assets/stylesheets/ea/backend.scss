@@ -762,3 +762,43 @@ body .modal.full-screen .modal-push {
 }
 
 @import "recurring_select";
+
+/* Appointments page day entries (server rendered) */
+#calendar .calendar-view .day-entries {
+    padding: 6px;
+}
+
+#calendar .calendar-view .day-entry {
+    border: 1px solid var(--bs-border-color);
+    border-left: 5px solid var(--bs-primary);
+    border-radius: 4px;
+    padding: 4px 8px;
+    margin-bottom: 4px;
+    line-height: 1.25;
+}
+
+#calendar .calendar-view .day-entry-time {
+    display: block;
+    color: var(--bs-secondary-color);
+}
+
+#calendar .calendar-view a.day-entry:hover {
+    background: rgba(var(--bs-emphasis-color-rgb), 0.075);
+}
+
+#calendar .calendar-view .day-entry-free {
+    border-left-color: #abe9a4;
+    color: var(--bs-secondary-color);
+    font-style: italic;
+}
+
+#calendar .calendar-view .day-entry-unavailability,
+#calendar .calendar-view .day-entry-blocked {
+    border-left-color: #879dad;
+    background: rgba(135, 157, 173, 0.15);
+}
+
+#calendar .calendar-view .day-entry-freed {
+    opacity: 0.5;
+    text-decoration: line-through;
+}

@@ -12,9 +12,9 @@ class CustomFieldsTest < ActionDispatch::IntegrationTest
     Setting.set("display_custom_field_2", "1")
     Setting.set("display_notes", "1")
 
-    get "/"
-    assert_select "div.col-12 > textarea#custom-field-1[rows='2']"
-    assert_select "div.col-12.col-lg-6 > input#custom-field-2"
+    get "/", params: { step: "info", service_id: services(:haircut).id, provider_id: users(:zane).id, date: "2026-07-20", time: "10:00" }
+    assert_select "textarea#custom-field-1[rows='2'][name='customer[custom_field_1]']"
+    assert_select "input#custom-field-2[name='customer[custom_field_2]']"
     assert_select "textarea#notes[rows='2']"
   end
 
@@ -22,9 +22,9 @@ class CustomFieldsTest < ActionDispatch::IntegrationTest
     Setting.set("display_custom_field_1", "1")
     Setting.set("long_custom_field_1", "1")
     login_admin
-    get "/customers"
-    assert_select "textarea#custom-field-1[rows='8'][disabled]"
-    assert_select "textarea#notes[rows='8']"
+    get "/customers/new"
+    assert_select "textarea#custom-field-1[rows='8'][name='customer[custom_field_1]']"
+    assert_select "textarea#customer_notes[rows='8']"
   end
 
   test "booking settings offers and saves the longer text field switch" do

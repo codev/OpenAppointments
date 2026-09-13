@@ -1,54 +1,30 @@
-<%# Port of EA pages/api_settings.php. %>
 <div id="api-settings-page" class="container backend-page py-3">
     <div class="row">
         <div class="col-sm-3">
             <%= render "shared/settings_nav" %>
         </div>
         <div id="api-settings" class="col-sm-9">
-            <form>
-                <fieldset>
+            <turbo-frame id="settings">
+                <%= settings_form "/api_settings/save" do %>
                     <div class="d-flex justify-content-between align-items-center border-bottom mb-4 py-2">
-                        <h4 class="mb-0 fw-light">
-                            <%= lang('api') %>
-                        </h4>
-
+                        <h4 class="mb-0 fw-light"><%= lang('api') %></h4>
                         <div>
-                            <a href="/integrations" class="btn btn-outline-primary me-2">
+                            <a href="/integrations" class="btn btn-outline-primary me-2" data-turbo="false">
                                 <i class="fas fa-chevron-left me-2"></i>
                                 <%= lang('back') %>
                             </a>
-
-                            <% if can?(:edit, :system_settings) %>
-                                <button type="button" id="save-settings" class="btn btn-primary">
-                                    <i class="fas fa-check-square me-2"></i>
-                                    <%= lang('save') %>
-                                </button>
-                            <% end %>
+                            <%= settings_save_button %>
                         </div>
                     </div>
+                    <%= settings_flash %>
 
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="mb-3">
-                                <label class="form-label" for="api-token">
-                                    <%= lang('api_token') %>
-                                </label>
-                                <input id="api-token" class="form-control" data-field="api_token">
-                                <div class="form-text text-muted">
-                                    <small>
-                                        <%= lang('api_token_hint') %>
-                                    </small>
-                                </div>
-                            </div>
-                        </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="api-token"><%= lang('api_token') %></label>
+                        <%= setting_text "api_token" %>
+                        <div class="form-text text-muted"><small><%= lang('api_token_hint') %></small></div>
                     </div>
-
-                </fieldset>
-            </form>
+                <% end %>
+            </turbo-frame>
         </div>
     </div>
 </div>
-
-<% content_for :scripts do %>
-    <%= ea_js "http/api_settings_http_client", "pages/api_settings" %>
-<% end %>

@@ -1,0 +1,25 @@
+<% dates = series.appointments.active.where("occurrence_at >= ?", Date.current).order(:occurrence_at).pluck(:occurrence_at) %>
+<% dates = series.future_dates if dates.empty? %>
+<h5 class="fw-light mb-3"><%= lang('cancel_series') %>: <%= series.customer&.name %>, <%= series.description %> <%= series.start_time %></h5>
+<%= form_with url: cancel_appointment_series_path(series), method: :post, id: "series-cancel-form" do %>
+    <p class="text-muted small"><%= lang('cancel_series_hint') %></p>
+    <div id="series-cancel-dates" class="mb-3" style="max-height: 16rem; overflow-y: auto;">
+        <% dates.each_with_index do |date, index| %>
+            <div class="form-check">
+                <%= radio_button_tag "from", date, index.zero?, id: "series-cancel-from-#{index}", class: "form-check-input" %>
+                <label class="form-check-label" for="series-cancel-from-<%= index %>"><%= format_setting_date(date) %></label>
+            </div>
+        <% end %>
+    </div>
+    <label class="form-label" for="series-cancel-reason"><%= lang('reason') %></label>
+    <%= text_area_tag "cancellation_reason", nil, id: "series-cancel-reason", class: "form-control", rows: 2 %>
+    <div class="form-check mt-2 mb-3">
+        <%= hidden_field_tag "notify_users", "0", id: nil %>
+        <%= check_box_tag "notify_users", "1", true, id: "series-cancel-notify", class: "form-check-input" %>
+        <label class="form-check-label" for="series-cancel-notify"><%= lang('notify_customer') %></label>
+    </div>
+    <%= link_to lang('close'), appointment_series_path, class: "btn btn-outline-secondary me-2" %>
+    <button type="submit" class="btn btn-danger" id="series-cancel-confirm" <%= 'disabled' if dates.empty? %>>
+        <i class="fas fa-calendar-times me-2"></i><%= lang('cancel_series_from') %>
+    </button>
+<% end %>

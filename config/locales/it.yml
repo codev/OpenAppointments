@@ -901,3 +901,8 @@ it:
     report_statuses: 'Status'
     download_report: 'Download Report'
     booked_on: 'Booked Date'
+    invalid_datetime: "Impossibile leggere la data e l'ora"
+    unsaved_changes_prompt: "Hai modifiche non salvate. Lasciare questa pagina e perderle?"
+    leave_page: "Lascia la pagina"
+    status_custom: "Personalizzato"
+    provider_does_not_offer_service: "Il fornitore selezionato non offre questo servizio."

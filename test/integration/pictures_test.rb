@@ -7,46 +7,36 @@ class PicturesTest < ActionDispatch::IntegrationTest
 
   def png = fixture_file_upload("picture.png", "image/png")
 
-  test "provider picture upload, payload url and removal" do
+  test "provider picture upload with the form, preview url and removal" do
     login_admin
     zane = users(:zane)
 
-    post "/providers/#{zane.id}/picture", params: { picture: png }
+    patch "/providers/#{zane.id}", params: { provider: { picture: png } }
+    assert_redirected_to "/providers?selected=#{zane.id}"
     assert zane.reload.picture_padded.attached?, "upload must create the padded variant"
     assert zane.picture_zoomed.attached?, "upload must create the zoomed variant"
-    assert_response :success
-    assert response.parsed_body["picture_url"].present?
-    assert zane.reload.picture.attached?
+    assert zane.picture.attached?
+    get "/providers/#{zane.id}/edit"
+    assert_select "img.picture-preview[src*='/rails/']"
+    assert_select "input[name='provider[remove_picture]']"
 
-    post "/providers/#{zane.id}/picture", params: { remove: "1" }
-    assert_response :success
-    assert_nil response.parsed_body["picture_url"]
+    patch "/providers/#{zane.id}", params: { provider: { remove_picture: "1" } }
     assert_not zane.reload.picture.attached?
-  end
-
-  test "service and category picture upload" do
-    login_admin
-    post "/services/#{services(:haircut).id}/picture", params: { picture: png }
-    assert_response :success
-    assert services(:haircut).reload.picture.attached?
-
-    post "/service_categories/#{service_categories(:hair).id}/picture", params: { picture: png }
-    assert_response :success
-    assert service_categories(:hair).reload.picture.attached?
   end
 
   test "non-image uploads are rejected" do
     login_admin
     file = Rack::Test::UploadedFile.new(StringIO.new("plain"), "text/plain", original_filename: "x.txt")
-    post "/providers/#{users(:zane).id}/picture", params: { picture: file }
-    assert_response :internal_server_error
-    assert_equal false, response.parsed_body["success"]
+    patch "/providers/#{users(:zane).id}", params: { provider: { picture: file } }
+    assert_response :unprocessable_entity
+    assert_select ".form-message", text: /Unsupported picture type/
     assert_not users(:zane).reload.picture.attached?
   end
 
   test "picture upload requires a permitted session" do
-    post "/providers/#{users(:zane).id}/picture", params: { picture: png }
+    patch "/providers/#{users(:zane).id}", params: { provider: { picture: png } }
     assert_response :redirect
+    assert_not users(:zane).reload.picture.attached?
   end
 
   test "backend row payloads carry picture_url" do

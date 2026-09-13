@@ -1,0 +1,5 @@
+<%# Answer to a saved event form: the page script closes the dialog, shows the
+    message and reloads the calendar. Locals: message, skipped. %>
+<turbo-frame id="event">
+    <div data-event-saved data-message="<%= message %>" data-skipped="<%= skipped.to_json %>"></div>
+</turbo-frame>

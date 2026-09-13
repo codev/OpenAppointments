@@ -11,10 +11,7 @@ class ThemeSettingsController < ApplicationController
     return unless require_backend_page!(:system_settings)
 
     backend_page_vars(page_title: helpers.lang("theme"), active_menu: "system_settings")
-    script_vars(
-      theme_settings: settings_rows.select { |row| ALLOWED_SETTINGS.include?(row["name"]) },
-      theme_suggestions: Themes::SUGGESTED
-    )
+    script_vars(theme_suggestions: Themes::SUGGESTED)
     html_vars(available_themes: available_themes)
     render :index
   end
@@ -40,7 +37,7 @@ class ThemeSettingsController < ApplicationController
     require_system_settings_edit!
     save_setting_rows(:theme_settings, allowed_names: ALLOWED_SETTINGS)
   rescue ArgumentError => e
-    json_exception(e)
+    settings_failed(e)
   end
 
   private

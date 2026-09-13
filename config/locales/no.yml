@@ -901,3 +901,8 @@
     report_statuses: 'Status'
     download_report: 'Download Report'
     booked_on: 'Booked Date'
+    invalid_datetime: "Kunne ikke lese dato og klokkeslett"
+    unsaved_changes_prompt: "Du har ulagrede endringer. Forlate siden og miste dem?"
+    leave_page: "Forlat siden"
+    status_custom: "Egendefinert"
+    provider_does_not_offer_service: "Den valgte leverandøren tilbyr ikke denne tjenesten."

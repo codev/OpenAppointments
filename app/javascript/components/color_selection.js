@@ -28,6 +28,8 @@ App.Components.ColorSelection = (function () {
         $colorSelection.find('.color-selection-option.selected').removeClass('selected');
 
         $target.addClass('selected');
+
+        $colorSelection.find('input[type=hidden]').val($target.data('value'));
     }
 
     /**
@@ -94,12 +96,12 @@ App.Components.ColorSelection = (function () {
      * Initialize the module.
      */
     function initialize() {
-        $(document).on('click', '.color-selection-option', onColorSelectionOptionClick);
+        App.once('color-selection', () => $(document).on('click', '.color-selection-option', onColorSelectionOptionClick));
 
         applyBackgroundColors();
     }
 
-    document.addEventListener('DOMContentLoaded', initialize);
+    App.page(initialize);
 
     return {
         disable,

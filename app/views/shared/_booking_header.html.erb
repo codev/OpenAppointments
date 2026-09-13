@@ -1,4 +1,6 @@
-<%# Port of EA components/booking_header.php. Locals: company_name, company_logo. %>
+<%# Port of EA components/booking_header.php. Locals: company_name, company_logo.
+    The header sits outside the wizard frame: it renders the current step here and
+    pages/booking.js mirrors #wizard-state into it on every frame load. %>
 <header id="header" class="overflow-hidden p-3 p-md-4 d-flex flex-column flex-lg-row align-items-center bg-primary">
     <div id="company-name" class="d-block d-md-inline-block float-md-start text-center text-md-start text-white fs-4 fw-light my-3 my-md-0 mw-100 flex-grow-1">
         <img src="<%= company_logo.presence || image_path("logo.png") %>" alt="" id="company-logo"
@@ -10,7 +12,7 @@
 
         <div class="d-flex justify-content-center justify-content-md-start">
             <span class="display-booking-selection small fw-normal text-white-50">
-                <%= lang('service') %> │ <%= lang('provider') %>
+                <%= wizard_selection_text %>
             </span>
         </div>
     </div>
@@ -18,15 +20,19 @@
     <%
       selection_titles = vars(:first_step) == "provider" ? %w[select_provider select_service] : %w[select_service select_provider]
       step_titles = selection_titles + %w[appointment_date_and_time customer_information appointment_confirmation]
+      links = wizard_step_links
     %>
     <ol id="steps" class="d-block d-md-inline-block float-md-end overflow-hidden mx-auto my-3 my-md-1">
         <% step_titles.each_with_index do |title, index| %>
-            <li id="step-<%= index + 1 %>" data-step-index="<%= index + 1 %>"
-                class="book-step d-inline-block float-start rounded text-center <%= 'active-step' if index.zero? %>"
+            <% number = index + 1 %>
+            <% next unless wizard_header_steps.cover?(number) %>
+            <li id="step-<%= number %>" data-step-index="<%= number %>"
+                class="book-step d-inline-block float-start rounded text-center <%= 'active-step' if number == step_number %> <%= 'completed-step' if links[number] %>"
                 data-tippy-content="<%= lang(title) %>" aria-label="<%= lang(title) %>"
-                <%= 'aria-current="step"'.html_safe if index.zero? %>>
+                <%= 'aria-current="step"'.html_safe if number == step_number %>
+                <% if links[number] %>role="button" tabindex="0" data-href="<%= links[number] %>"<% end %>>
                 <strong class="d-block text-center">
-                    <span class="step-number"><%= index + 1 %></span>
+                    <span class="step-number"><%= number - wizard_header_steps.first + 1 %></span>
                     <i class="fas fa-check step-check" aria-hidden="true"></i>
                 </strong>
             </li>

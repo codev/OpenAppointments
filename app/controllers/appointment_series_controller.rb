@@ -1,7 +1,11 @@
 # Repeating appointments: list, change the pattern, cancel from a date. Backend
-# roles only; providers see and change their own series.
+# roles only; providers see and change their own series. The list and the
+# cancel form render inside the appointments page's series frame; the pattern
+# dialog (a recurring_select widget) posts JSON.
 class AppointmentSeriesController < ApplicationController
   include BackendPage
+
+  layout "backend"
 
   before_action :require_session
 
@@ -11,9 +15,22 @@ class AppointmentSeriesController < ApplicationController
   def index
     raise ArgumentError, "You do not have the required permissions for this task." if cannot?(:view, :appointments)
 
-    render json: visible_series.map { |series| EaRows.series_row(series) }
+    @series = visible_series.to_a
+    respond_to do |format|
+      format.html { render_panel }
+      format.json { render json: @series.map { |series| EaRows.series_row(series) } }
+    end
   rescue ArgumentError => e
     json_exception(e, status: :ok)
+  end
+
+  # GET /appointment_series/:id/cancel - the cancel form for the frame.
+  def cancel_form
+    head :forbidden and return if cannot?(:delete, :appointments)
+
+    @cancelling = visible_series.find(params[:id])
+    @series = visible_series.to_a
+    render_panel
   end
 
   # POST /appointment_series/:id/reschedule
@@ -45,12 +62,23 @@ class AppointmentSeriesController < ApplicationController
     deleted = series.cancel_from(from, reason: reason)
     series.announce(removed: deleted, notify: notify_users, reason: reason)
 
-    render json: { success: true, deleted: deleted.size }
+    respond_to do |format|
+      format.html { redirect_to appointment_series_path, notice: helpers.lang("series_cancelled") }
+      format.json { render json: { success: true, deleted: deleted.size } }
+    end
   rescue ArgumentError, Date::Error, ActiveRecord::RecordNotFound => e
-    json_exception(e, status: :ok)
+    respond_to do |format|
+      format.html { redirect_to appointment_series_path, alert: e.message }
+      format.json { json_exception(e, status: :ok) }
+    end
   end
 
   private
+
+  def render_panel
+    backend_page_vars(page_title: helpers.lang("repeating_appointments"), active_menu: "appointments")
+    render :index
+  end
 
   def visible_series
     scope = AppointmentSeries.includes(:provider, :customer, :service).order(:starts_on)

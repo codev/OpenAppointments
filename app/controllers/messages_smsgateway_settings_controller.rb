@@ -22,21 +22,16 @@ class MessagesSmsgatewaySettingsController < ApplicationController
         url: merged["messages_smsgateway_url"], user: merged["messages_smsgateway_login"],
         pass: merged["messages_smsgateway_password"]
       )
-      return render json: { success: false, message: "#{helpers.lang('messages_smsgateway_invalid')} #{error}" } if error
+      raise ArgumentError, "#{helpers.lang('messages_smsgateway_invalid')} #{error}" if error
     end
 
-    setting_row_params(setting_rows_key).each do |row|
-      next unless SETTING_NAMES.include?(row["name"])
-
-      Setting.set(row["name"], row["value"].to_s.strip)
-    end
+    merged.each { |name, value| Setting.set(name, value) }
 
     if merged["messages_smsgateway_incoming"] == "1" && active
       begin
         Messaging::SmsGateway.ensure_webhook(inbound_url)
       rescue StandardError => e
-        return render json: { success: false,
-                              message: "#{helpers.lang('messages_smsgateway_invalid')} #{e.message}" }
+        raise ArgumentError, "#{helpers.lang('messages_smsgateway_invalid')} #{e.message}"
       end
     else
       begin
@@ -47,9 +42,9 @@ class MessagesSmsgatewaySettingsController < ApplicationController
       end
     end
 
-    render json: { success: true }
+    settings_saved
   rescue ArgumentError => e
-    json_exception(e)
+    settings_failed(e)
   end
 
   # POST /messages_smsgateway_settings/test_sms - validates the saved settings
@@ -80,8 +75,10 @@ class MessagesSmsgatewaySettingsController < ApplicationController
 
   private
 
+  # Posted values (blank password keeps the stored one) over the stored ones.
   def merged_settings
-    rows = setting_row_params(setting_rows_key).to_h { |row| [ row["name"], row["value"].to_s.strip ] }
+    rows = setting_row_params(:messages_smsgateway_settings).to_h { |row| [ row["name"], row["value"].to_s.strip ] }
+    rows.delete("messages_smsgateway_password") if rows["messages_smsgateway_password"].blank?
     SETTING_NAMES.index_with { |name| rows.key?(name) ? rows[name] : Setting.get(name, "") }
   end
 end

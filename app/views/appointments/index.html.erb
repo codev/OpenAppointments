@@ -1,87 +1,103 @@
-<%# Appointments page: a day column per provider for one or three days. %>
+<%# Appointments page: a day column per provider for one or three days, rendered
+    from the URL (date, days, provider, service, statuses) into the day frame.
+    Entries open the event dialog. %>
+<% formats = { date_format: setting('date_format'), time_format: setting('time_format') } %>
+<% query = ->(overrides) { { date: @date, days: @days, provider: @provider_id.positive? ? @provider_id : nil,
+                             service: @service_id.positive? ? @service_id : nil, statuses: @selected_statuses }.merge(overrides).compact } %>
 <div class="container-fluid backend-page pt-0 pb-0" id="calendar-page">
-    <div class="row mb-3 text-white py-3 bg-dark" id="calendar-toolbar">
-        <div id="calendar-filter" class="col-lg-8">
-            <div class="calendar-filter-items d-flex flex-wrap gap-2">
-                <select id="select-day-interval" class="form-select"
-                        data-tippy-content="<%= lang('select_day_interval_hint') %>" aria-label="Days">
-                    <option value="1">1 <%= lang('day') %></option>
-                    <option value="3">3 <%= lang('days') %></option>
-                </select>
-                <select id="filter-provider" class="form-select filter-group"
-                        data-tippy-content="<%= lang('filter_providers_hint') %>" aria-label="<%= lang('provider') %>">
-                    <option value=""><%= lang('all_providers') %></option>
-                    <% vars(:available_providers).each do |provider| %>
-                        <option value="<%= provider["id"] %>"><%= provider["name"] %></option>
-                    <% end %>
-                </select>
-                <select id="filter-service" class="form-select filter-group"
-                        data-tippy-content="<%= lang('filter_services_hint') %>" aria-label="<%= lang('service') %>">
-                    <option value=""><%= lang('all_services') %></option>
-                    <% vars(:available_services).each do |service| %>
-                        <option value="<%= service["id"] %>"><%= service["name"] %></option>
-                    <% end %>
-                </select>
-                <%= render "shared/status_filter" %>
+    <turbo-frame id="day_view" data-turbo-action="advance">
+    <%= form_with url: appointments_path, method: :get, id: "day-filter", data: { turbo_frame: "day_view" } do %>
+        <div class="row mb-3 text-white py-3 bg-dark" id="calendar-toolbar">
+            <div id="calendar-filter" class="col-lg-8">
+                <div class="calendar-filter-items d-flex flex-wrap gap-2">
+                    <%= hidden_field_tag :date, @date, id: "day-date" %>
+                    <%= select_tag :days, options_for_select([ [ "1 #{lang('day')}", 1 ], [ "3 #{lang('days')}", 3 ] ], @days),
+                                   id: "select-day-interval", class: "form-select", "aria-label": "Days", onchange: "this.form.requestSubmit()",
+                                   data: { tippy_content: lang('select_day_interval_hint') } %>
+                    <%= select_tag :provider, options_for_select([ [ lang('all_providers'), "" ] ] + @providers.map { |p| [ p.name, p.id ] }, @provider_id),
+                                   id: "filter-provider", class: "form-select filter-group", "aria-label": lang('provider'), onchange: "this.form.requestSubmit()",
+                                   data: { tippy_content: lang('filter_providers_hint') } %>
+                    <%= select_tag :service, options_for_select([ [ lang('all_services'), "" ] ] + @services.map { |s| [ s.name, s.id ] }, @service_id),
+                                   id: "filter-service", class: "form-select filter-group", "aria-label": lang('service'), onchange: "this.form.requestSubmit()",
+                                   data: { tippy_content: lang('filter_services_hint') } %>
+                    <div class="dropdown" id="status-filter">
+                        <button class="btn btn-light dropdown-toggle" type="button" data-bs-toggle="dropdown" data-bs-auto-close="outside"
+                                data-tippy-content="<%= lang('filter_statuses_hint') %>"><%= lang('statuses') %></button>
+                        <ul class="dropdown-menu p-2">
+                            <% @statuses.each do |status| %>
+                                <li>
+                                    <label class="dropdown-item d-flex align-items-center gap-2 mb-0">
+                                        <%= check_box_tag "statuses[]", status["name"], @selected_statuses.include?(status["name"]),
+                                                          id: nil, class: "form-check-input m-0", onchange: "this.form.requestSubmit()" %>
+                                        <%= status["name"] %>
+                                    </label>
+                                </li>
+                            <% end %>
+                            <%= hidden_field_tag "statuses[]", "", id: nil %>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div id="calendar-actions" class="col-lg-4 text-md-end">
+                <%= render "calendar/actions", working_plan_exception: false %>
             </div>
         </div>
-
-        <div id="calendar-actions" class="col-lg-4 text-md-end">
-            <%= render "calendar/actions", working_plan_exception: false %>
-        </div>
-    </div>
+    <% end %>
 
     <div id="calendar">
-        <div class="calendar-header fc fc-direction-ltr fc-theme-standard">
-            <div class="fc-toolbar fc-header-toolbar">
-                <div class="fc-toolbar-chunk">
-                    <div class="fc-button-group">
-                        <button type="button" class="fc-prev-button fc-button fc-button-primary" id="previous-day"
-                                aria-label="<%= lang('previous') %>">
-                            <span class="fc-icon fc-icon-chevron-left"></span>
-                        </button>
-                        <button type="button" class="fc-next-button fc-button fc-button-primary" id="next-day"
-                                aria-label="<%= lang('next') %>">
-                            <span class="fc-icon fc-icon-chevron-right"></span>
-                        </button>
-                    </div>
-                    <button type="button" class="fc-today-button fc-button fc-button-primary" id="today">
-                        <%= lang('today') %>
-                    </button>
+        <div class="calendar-header row align-items-center g-2 mb-3">
+            <div class="col-4 d-flex align-items-center gap-2">
+                <div class="btn-group">
+                    <%= link_to appointments_path(query.call(date: @date - 1)), id: "previous-day", class: "btn btn-primary",
+                                "aria-label": lang('previous') do %><i class="fas fa-chevron-left"></i><% end %>
+                    <%= link_to appointments_path(query.call(date: @date + 1)), id: "next-day", class: "btn btn-primary",
+                                "aria-label": lang('next') do %><i class="fas fa-chevron-right"></i><% end %>
                 </div>
-                <div class="fc-toolbar-chunk">
-                    <input type="text" id="select-date" class="form-control d-inline-block select-date">
-                </div>
-                <div class="fc-toolbar-chunk">
-                    <button type="button" class="btn btn-outline-primary" id="toggle-series">
-                        <i class="fas fa-redo me-2"></i><span><%= lang('repeating_appointments') %></span>
-                    </button>
-                </div>
+                <%= link_to lang('today'), appointments_path(query.call(date: Date.current)), id: "today",
+                            class: "btn btn-primary #{'disabled' if @date == Date.current}" %>
+            </div>
+            <div class="col-4 text-center">
+                <%= date_field_tag :date, @date, id: "select-date", class: "form-control d-inline-block select-date w-auto", form: "day-filter",
+                                   onchange: "document.getElementById('day-filter').requestSubmit()" %>
+            </div>
+            <div class="col-4 text-end">
+                <button type="button" class="btn btn-outline-primary" id="toggle-series">
+                    <i class="fas fa-redo me-2"></i><span><%= lang('repeating_appointments') %></span>
+                </button>
             </div>
         </div>
-        <div id="not-working-notes" class="text-muted mb-2"></div>
-        <div class="calendar-view"><div></div></div>
 
-        <div id="series-view" class="d-none">
-            <h5 class="fw-light mb-3"><%= lang('repeating_appointments') %></h5>
-            <div class="table-responsive">
-                <table class="table table-striped align-middle" id="series-table">
-                    <thead>
-                    <tr>
-                        <th><%= lang('provider') %></th>
-                        <th><%= lang('customer') %></th>
-                        <th><%= lang('service') %></th>
-                        <th><%= lang('repeats') %></th>
-                        <th><%= lang('next_appointment') %></th>
-                        <th><%= lang('not_booked') %></th>
-                        <th><%= lang('actions') %></th>
-                    </tr>
-                    </thead>
-                    <tbody></tbody>
-                </table>
-            </div>
-            <p id="series-empty" class="text-muted d-none"><%= lang('no_repeating_appointments') %></p>
+        <div id="not-working-notes" class="text-muted mb-2">
+            <% @columns.each do |column| %>
+                <% next if column[:not_working].empty? %>
+                <div><%= lang('not_working_on').sub('{date}', format_setting_date(column[:date])).sub('{names}', column[:not_working].map(&:name).to_sentence(last_word_connector: " #{lang('and')} ", two_words_connector: " #{lang('and')} ")) %></div>
+            <% end %>
         </div>
+
+        <div class="calendar-view">
+            <div>
+                <% @columns.each do |column| %>
+                    <div class="date-column">
+                        <h5 class="date-column-title"><%= format_setting_date(column[:date]) %></h5>
+                        <% column[:days].each do |day| %>
+                            <div class="provider-column" data-provider-id="<%= day.provider.id %>">
+                                <h6><%= day.provider.name %></h6>
+                                <div class="day-entries">
+                                    <% day.entries.each do |entry| %>
+                                        <%= render "appointments/entry", entry: entry, day: day, formats: formats %>
+                                    <% end %>
+                                </div>
+                            </div>
+                        <% end %>
+                    </div>
+                <% end %>
+            </div>
+        </div>
+    </div>
+    </turbo-frame>
+
+    <div id="series-view" class="d-none">
+        <turbo-frame id="series" src="/appointment_series" loading="lazy"></turbo-frame>
     </div>
 </div>
 
@@ -106,39 +122,8 @@
     </div>
 </div>
 
-<div class="modal" id="series-cancel-modal">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title"><%= lang('cancel_series') %></h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-            </div>
-            <div class="modal-body">
-                <p class="text-muted small"><%= lang('cancel_series_hint') %></p>
-                <div id="series-cancel-dates" class="mb-3" style="max-height: 16rem; overflow-y: auto;"></div>
-                <label class="form-label" for="series-cancel-reason"><%= lang('reason') %></label>
-                <textarea id="series-cancel-reason" class="form-control" rows="2"></textarea>
-                <div class="form-check form-switch mt-2">
-                    <input class="form-check-input" type="checkbox" id="series-cancel-notify" checked>
-                    <label class="form-check-label" for="series-cancel-notify"><%= lang('notify_customer') %></label>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal"><%= lang('close') %></button>
-                <button type="button" class="btn btn-danger" id="series-cancel-confirm">
-                    <i class="fas fa-calendar-times me-2"></i><%= lang('cancel_series_from') %>
-                </button>
-            </div>
-        </div>
-    </div>
-</div>
-
 <%= render "calendar/modals" %>
 
 <% content_for :scripts do %>
-    <%= javascript_include_tag "vendor/fullcalendar/index.global.min",
-                               "vendor/fullcalendar-moment/index.global.min",
-                               "vendor/jquery-jeditable/jquery.jeditable.min" %>
-    <%= ea_js "utils/status_filter", "utils/ui", "utils/calendar_events", "utils/calendar_event_popover",
-              "http/calendar_http_client", "http/customers_http_client", "pages/appointments" %>
+    <%= ea_js "utils/ui", "pages/appointments" %>
 <% end %>

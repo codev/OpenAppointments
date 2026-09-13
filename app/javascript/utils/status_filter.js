@@ -3,17 +3,17 @@
  * Appointments with no status are always shown.
  */
 App.Utils.StatusFilter = (function () {
-    const $filter = $('#status-filter');
+    const $filter = () => $('#status-filter');
 
     function selected() {
-        return $filter
+        return $filter()
             .find('input:checked')
             .toArray()
             .map((el) => el.value);
     }
 
     function apply(appointments) {
-        if (!$filter.length) {
+        if (!$filter().length) {
             return appointments;
         }
 
@@ -23,7 +23,7 @@ App.Utils.StatusFilter = (function () {
     }
 
     function onChange(callback) {
-        $filter.on('change', 'input', callback);
+        $filter().on('change', 'input', callback);
     }
 
     return {

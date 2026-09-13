@@ -14,7 +14,10 @@
 
 <div class="alert d-none"></div>
 
-<form>
+<% if flash[:notice] %><div class="alert alert-success"><%= flash[:notice] %></div><% end %>
+<% if flash[:alert] %><div class="alert alert-danger"><%= flash[:alert] %></div><% end %>
+<%= form_with url: "/recovery/perform", method: :post, id: "recovery-form", data: { turbo: false } do %>
+    <%= hidden_field_tag :form, "1" %>
     <div class="mb-3">
         <label for="username" class="form-label fw-medium">
             <%= lang('username') %>
@@ -23,8 +26,7 @@
             <span class="input-group-text bg-light border-end-0">
                 <i class="fas fa-user"></i>
             </span>
-            <input type="text" id="username"
-                   placeholder="<%= lang('enter_username_here') %>" class="form-control border-start-0 ps-2"/>
+            <%= text_field_tag :username, nil, id: "username", placeholder: lang('enter_username_here'), class: "form-control border-start-0 ps-2", required: true %>
         </div>
     </div>
 
@@ -36,8 +38,7 @@
             <span class="input-group-text bg-light border-end-0">
                 <i class="fas fa-envelope"></i>
             </span>
-            <input type="text" id="email"
-                   placeholder="<%= lang('enter_email_here') %>" class="form-control border-start-0 ps-2"/>
+            <%= email_field_tag :email, nil, id: "email", placeholder: lang('enter_email_here'), class: "form-control border-start-0 ps-2", required: true %>
         </div>
     </div>
 
@@ -56,8 +57,4 @@
             <%= lang('go_to_login') %>
         </a>
     </div>
-</form>
-
-<% content_for :scripts do %>
-    <%= ea_js "http/recovery_http_client", "pages/recovery" %>
 <% end %>

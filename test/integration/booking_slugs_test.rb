@@ -32,32 +32,32 @@ class BookingSlugsTest < ActionDispatch::IntegrationTest
     assert User.providers.where(booking_slug: nil).none?
   end
 
-  test "the booking page payload carries slugs, admin rows too" do
+  test "the booking payloads carry slugs but the public page does not, admin rows do" do
+    assert BookingPayloads.available_services.all? { |row| row["booking_slug"].match?(/\A[a-z2-9]{4}-[a-z2-9]{4}\z/) }
     get "/"
-    assert_match(/"booking_slug":"[a-z2-9]{4}-[a-z2-9]{4}"/, response.body)
+    assert_no_match services(:haircut).booking_slug, response.body
 
     login_admin
-    post "/services/search", params: { keyword: "" }
-    assert(response.parsed_body.any? { |row| row["booking_slug"].present? })
-    post "/providers/search", params: { keyword: "" }
-    assert(response.parsed_body.any? { |row| row["booking_slug"].present? })
+    get "/services/#{services(:haircut).id}/edit"
+    assert_select "a[href=?]", "/?service=#{services(:haircut).booking_slug}"
+    get "/providers/#{users(:zane).id}/edit"
+    assert_select "a[href=?]", "/?provider=#{users(:zane).booking_slug}"
   end
 
   test "regenerate endpoints issue a fresh slug" do
     login_admin
     service = services(:haircut)
     old_slug = service.booking_slug
-    post "/services/regenerate_link", params: { service_id: service.id }
-    assert_response :success
-    new_slug = response.parsed_body["booking_slug"]
+    post "/services/#{service.id}/regenerate_link"
+    assert_redirected_to "/services/#{service.id}/edit"
+    new_slug = service.reload.booking_slug
     assert_match BookingSlug::FORMAT, new_slug
     assert_not_equal old_slug, new_slug
-    assert_equal new_slug, service.reload.booking_slug
 
     provider = users(:zane)
     old_slug = provider.booking_slug
-    post "/providers/regenerate_link", params: { provider_id: provider.id }
-    assert_response :success
+    post "/providers/#{provider.id}/regenerate_link"
+    assert_redirected_to "/providers/#{provider.id}/edit"
     assert_not_equal old_slug, provider.reload.booking_slug
   end
 
@@ -66,9 +66,8 @@ class BookingSlugsTest < ActionDispatch::IntegrationTest
     customer.create_settings!(username: "jxlogin", password: Passwords.hash("customer1"))
     post "/login/validate", params: { username: "jxlogin", password: "customer1" }
 
-    post "/services/regenerate_link", params: { service_id: services(:haircut).id }
-    body = response.parsed_body
-    assert body["exceptions"].present? || body["success"] != true
+    post "/services/#{services(:haircut).id}/regenerate_link"
+    assert_response :forbidden
     assert_equal services(:haircut).booking_slug, services(:haircut).reload.booking_slug
   end
 

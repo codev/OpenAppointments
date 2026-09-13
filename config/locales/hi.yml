@@ -901,3 +901,8 @@ hi:
     report_statuses: 'Status'
     download_report: 'Download Report'
     booked_on: 'Booked Date'
+    invalid_datetime: "दिनांक और समय पढ़ा नहीं जा सका"
+    unsaved_changes_prompt: "आपके पास सहेजे नहीं गए बदलाव हैं। इस पेज को छोड़कर उन्हें खो दें?"
+    leave_page: "पेज छोड़ें"
+    status_custom: "कस्टम"
+    provider_does_not_offer_service: "चयनित प्रदाता यह सेवा प्रदान नहीं करता है।"

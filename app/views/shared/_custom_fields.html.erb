@@ -1,7 +1,12 @@
 <%# Port of EA components/custom_fields.php. Locals: disabled (default false), col_class (extra
     classes per field), long_col_class (classes for longer text fields, defaults to col_class),
-    rows (textarea height for longer text fields, match the sibling notes field). %>
+    rows (textarea height for longer text fields, match the sibling notes field); name and
+    record add form field names and values for plain form posts. %>
 <% disabled = local_assigns.fetch(:disabled, false) %>
+<% record = local_assigns[:record] %>
+<% values = local_assigns[:values] || {} %>
+<% field_value = ->(i) { values["custom_field_#{i}"] || record&.public_send("custom_field_#{i}") } %>
+<% field_name = ->(i) { local_assigns[:name] && "#{local_assigns[:name]}[custom_field_#{i}]" } %>
 <% col_class = local_assigns.fetch(:col_class, "") %>
 <% long_col_class = local_assigns.fetch(:long_col_class, col_class) %>
 <% rows = local_assigns.fetch(:rows, 6) %>
@@ -17,13 +22,13 @@
                 <% end %>
             </label>
             <% if long %>
-                <textarea id="custom-field-<%= i %>" rows="<%= rows %>"
-                          class="<%= required ? "required" : "" %> form-control"
-                          <%= "disabled" if disabled %>></textarea>
+                <%= text_area_tag field_name.call(i), field_value.call(i), id: "custom-field-#{i}",
+                                  rows: rows, class: "#{'required' if required} form-control", disabled: disabled,
+                                  required: required && local_assigns[:name].present? %>
             <% else %>
-                <input type="text" id="custom-field-<%= i %>"
-                       class="<%= required ? "required" : "" %> form-control"
-                       maxlength="120" <%= "disabled" if disabled %>/>
+                <%= text_field_tag field_name.call(i), field_value.call(i), id: "custom-field-#{i}",
+                                   maxlength: 120, class: "#{'required' if required} form-control", disabled: disabled,
+                                   required: required && local_assigns[:name].present? %>
             <% end %>
         </div>
     <% end %>

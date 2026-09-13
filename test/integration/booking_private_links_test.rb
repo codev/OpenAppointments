@@ -37,18 +37,13 @@ class BookingPrivateLinksTest < ActionDispatch::IntegrationTest
   test "a private provider link exposes that provider and their services only" do
     get "/", params: { provider: @chair.booking_slug }
     assert_response :success
-    assert_match "Chair 1", response.body
-    assert_match "Chair rental half day", response.body
+    assert_select "#select-service optgroup[label='Chair hire'] option[value=?]", @chair_service.id.to_s
     assert_match @chair.booking_slug, response.body
-
-    provider_row = script_var("available_providers").find { |row| row["id"] == @chair.id }
-    assert provider_row["is_private"]
-
-    service_row = script_var("available_services").find { |row| row["id"] == @chair_service.id }
-    assert_equal "Chair hire", service_row["service_category_name"]
-    assert_nil service_row["booking_slug"], "associated records must not expose their slugs"
-
+    assert_no_match @chair_service.booking_slug, response.body, "associated records must not expose their slugs"
     assert_no_match "Secret Consult", response.body
+
+    get "/", params: { provider: @chair.booking_slug, step: "second", service_id: @chair_service.id }
+    assert_select "#select-provider option[value=?]", @chair.id.to_s, text: "Chair 1"
     assert_no_match "Secret Pro", response.body
   end
 
@@ -56,11 +51,11 @@ class BookingPrivateLinksTest < ActionDispatch::IntegrationTest
     get "/", params: { service: @chair_service.booking_slug }
     assert_response :success
     assert_match "Chair rental half day", response.body
-    assert_match "Chair 1", response.body
     assert_no_match @chair.booking_slug, response.body
 
-    provider_row = script_var("available_providers").find { |row| row["id"] == @chair.id }
-    assert_nil provider_row["booking_slug"]
+    get "/", params: { service: @chair_service.booking_slug, step: "second", service_id: @chair_service.id }
+    assert_select "#select-provider option[value=?]", @chair.id.to_s, text: "Chair 1"
+    assert_no_match @chair.booking_slug, response.body
     assert_no_match "Secret Pro", response.body
   end
 
@@ -75,19 +70,7 @@ class BookingPrivateLinksTest < ActionDispatch::IntegrationTest
 
   test "a private provider and service book end to end" do
     travel_to Time.new(2026, 7, 10, 12, 0, 0) do
-      post "/booking/get_available_hours", params: {
-        service_id: @chair_service.id, provider_id: @chair.id,
-        selected_date: DATE, service_duration: 240, manage_mode: 0, appointment_id: ""
-      }
-      assert_response :success
-      assert_includes response.parsed_body, "09:00"
-
-      get "/booking/get_unavailable_dates", params: {
-        provider_id: @chair.id, service_id: @chair_service.id,
-        selected_date: DATE, manage_mode: 0
-      }
-      assert_response :success
-      assert_not_includes response.parsed_body, DATE
+      assert_includes BookingWindow.build(@chair_service, @chair.id)[DATE], "09:00"
 
       assert_difference "Appointment.count", 1 do
         post "/booking/register", params: {
@@ -108,11 +91,7 @@ class BookingPrivateLinksTest < ActionDispatch::IntegrationTest
 
   test "any-provider never books onto a private provider" do
     travel_to Time.new(2026, 7, 10, 12, 0, 0) do
-      post "/booking/get_available_hours", params: {
-        service_id: @chair_service.id, provider_id: "any-provider",
-        selected_date: DATE, manage_mode: 0
-      }
-      assert_equal [], response.parsed_body
+      assert_empty BookingWindow.build(@chair_service, "any-provider")
     end
   end
 
@@ -136,16 +115,8 @@ class BookingPrivateLinksTest < ActionDispatch::IntegrationTest
       get "/booking/reschedule/#{appointment.booking_hash}"
     end
     assert_response :success
-    assert(script_var("available_services").any? { |row| row["id"] == @chair_service.id })
-    assert(script_var("available_providers").any? { |row| row["id"] == @chair.id })
-  end
-
-  private
-
-  # The wizard's window.vars payload rendered into the booking page.
-  def script_var(name)
-    json = response.body[/const vars = (.*);/, 1]
-    assert json, "script vars not found in the booking page body"
-    JSON.parse(json)[name]
+    assert_select "#wizard-frame-3 #select-date"
+    assert_select "#wizard-frame-3 input[name=service_id][value=?]", @chair_service.id.to_s
+    assert_select "#wizard-frame-3 input[name=provider_id][value=?]", @chair.id.to_s
   end
 end

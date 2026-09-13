@@ -27,8 +27,13 @@ module EaHelper
   end
 
   # Script tag for a ported EA JS file under app/javascript (logical path without extension).
-  def ea_js(*names)
-    safe_join(names.map { |name| javascript_include_tag(name) }, "\n")
+  # Scripts sit in <head> and load once per session under Turbo Drive; page
+  # scripts initialise on turbo:load. track: the layout's shared scripts, whose
+  # changed digest forces a full reload (page scripts must not be tracked: their
+  # set differs per page, which Turbo would take as a reason to reload).
+  def ea_js(*names, track: false)
+    options = track ? { "data-turbo-track": "reload" } : {}
+    safe_join(names.map { |name| javascript_include_tag(name, **options) }, "\n")
   end
 
   # window.vars / window.lang payloads must be JSON-escaped for inline script tags.

@@ -103,8 +103,11 @@ class TurnstileTest < ActionDispatch::IntegrationTest
 
     enable_turnstile
     get "/"
-    assert_select ".cf-turnstile[data-sitekey=?]", "sitekey"
     assert_match(/challenges\.cloudflare\.com\/turnstile/, response.body)
+    post "/booking/confirm", params: { form: "1", service_id: services(:haircut).id, provider_id: users(:zane).id,
+                                       date: "2026-07-20", time: "10:00",
+                                       customer: { name: "T", email: "t@example.org" } }
+    assert_select ".cf-turnstile[data-sitekey=?]", "sitekey"
   end
 
   test "register rejects a failed verification with the EA-style flag" do

@@ -901,3 +901,8 @@ fa:
     report_statuses: 'Status'
     download_report: 'Download Report'
     booked_on: 'Booked Date'
+    invalid_datetime: "تاریخ و زمان قابل خواندن نبود"
+    unsaved_changes_prompt: "تغییرات ذخیره‌نشده دارید. این صفحه را ترک کرده و آن‌ها را از دست بدهید؟"
+    leave_page: "ترک صفحه"
+    status_custom: "سفارشی"
+    provider_does_not_offer_service: "ارائه‌دهنده انتخاب‌شده این خدمت را ارائه نمی‌دهد."

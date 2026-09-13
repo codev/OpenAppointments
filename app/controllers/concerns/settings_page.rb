@@ -1,5 +1,7 @@
-# Shared behavior for EA settings controllers: settings rows for script vars and
-# the EA save loop over [{name, value}, ...] payloads.
+# Shared behavior for the settings controllers: settings rows for script vars,
+# and the save loop over the settings form (settings[name]=value) or EA's
+# [{name, value}, ...] rows; HTML posts redirect back with a flash, JSON callers
+# get EA's {success} shape.
 module SettingsPage
   extend ActiveSupport::Concern
 
@@ -17,7 +19,7 @@ module SettingsPage
   # EA settings_model->get() row shape. like: SQL prefix filter (e.g. "api_").
   def settings_rows(like: nil, filter_sensitive: true)
     scope = Setting.order(:id)
-    scope = scope.where("name LIKE ?", "#{Setting.sanitize_sql_like(like)}%") if like
+    scope = scope.where("name LIKE ? ESCAPE '\\'", "#{Setting.sanitize_sql_like(like)}%") if like
     rows = scope.map { |setting| { "id" => setting.id, "name" => setting.name, "value" => setting.value } }
     rows.reject! { |row| SENSITIVE_SETTING_NAMES.include?(row["name"]) } if filter_sensitive
     rows
@@ -36,18 +38,43 @@ module SettingsPage
       Setting.set(name, value) unless value.nil?
     end
 
-    render json: { success: true }
+    settings_saved
   end
 
-  # jQuery posts arrays of objects as key[0][name]=..., which Rack parses into a
-  # hash keyed "0", "1", ... Normalize to an array of plain hashes.
+  # The settings form (settings[...]) gets a redirect with a flash; EA's row
+  # format callers get the {success} JSON they expect.
+  def settings_saved
+    return render json: { success: true } unless settings_form_post?
+
+    redirect_to url_for(action: :index), notice: helpers.lang("settings_saved")
+  end
+
+  def settings_failed(error)
+    return json_exception(error) unless settings_form_post?
+
+    redirect_to url_for(action: :index), alert: error.message
+  end
+
+  def settings_form_post? = params[:settings].respond_to?(:to_unsafe_h)
+
+  # The settings form posts settings[name]=value; EA's jQuery posted arrays of
+  # objects (key[0][name]=...), which Rack parses into a hash keyed "0", "1", ...
+  # Both become an array of {name, value} hashes.
   def setting_row_params(key)
-    rows = params[key]
-    return [] if rows.blank?
-
-    rows = rows.values if rows.respond_to?(:values)
-    rows.map { |row| row.respond_to?(:permit) ? row.permit(:id, :name, :value).to_h : row }
+    rows = if settings_form_post?
+      params[:settings].to_unsafe_h.map { |name, value| { "name" => name.to_s, "value" => value } }
+    else
+      rows = params[key]
+      rows = rows.values if rows.respond_to?(:values)
+      Array(rows).map { |row| row.respond_to?(:permit) ? row.permit(:id, :name, :value).to_h : row }
+    end
+    # Secrets are never shown in the page, so a password field left empty keeps
+    # the stored one; pages that show a secret (the API token) can clear it.
+    rows.reject { |row| row["value"].blank? && SENSITIVE_SETTING_NAMES.include?(row["name"]) && !shown_secrets.include?(row["name"]) }
   end
+
+  # Secrets a page renders in clear, overridden per controller.
+  def shown_secrets = []
 
   # EA settings save actions raise on missing edit privilege (json_exception -> 500).
   def require_system_settings_edit!

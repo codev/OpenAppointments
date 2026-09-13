@@ -1,0 +1,113 @@
+<%# Customer details left, appointment history and conversation right. Field
+    visibility and requirements follow the booking form settings, as in EA. %>
+<% fields = { email: 120, phone_number: 60, address: 120, city: 120, zip_code: 120 } %>
+<% formats = { date_format: setting('date_format'), time_format: setting('time_format') } %>
+<% channels = Messaging.enabled_channels %>
+<%= render "shared/crud_form", record: record, delete_title: lang('delete_customer') do |f| %>
+    <div class="row">
+        <div class="col-12 col-lg-6">
+            <div class="mb-3">
+                <%= f.label :name, class: "form-label" do %>
+                    <%= lang('name') %> <span class="text-danger">*</span>
+                <% end %>
+                <%= f.text_field :name, required: true, maxlength: 220,
+                                 class: "form-control #{'is-invalid' if record.errors.include?(:name)}" %>
+            </div>
+
+            <% fields.each do |field, max| %>
+                <% next unless vars(:"display_#{field}") %>
+                <% required = vars(:"require_#{field}") %>
+                <div class="mb-3">
+                    <%= f.label field, class: "form-label" do %>
+                        <%= lang(field.to_s) %>
+                        <% if required %><span class="text-danger">*</span><% end %>
+                    <% end %>
+                    <%= f.text_field field, required: required, maxlength: max,
+                                     class: "form-control #{'is-invalid' if record.errors.include?(field)}" %>
+                </div>
+            <% end %>
+
+            <div class="mb-3">
+                <%= f.label :language, class: "form-label" do %>
+                    <%= lang('language') %> <span class="text-danger">*</span>
+                <% end %>
+                <%= f.select :language, Localization.available_languages.map { |l| [ l.capitalize, l ] }, {},
+                             required: true, class: "form-select" %>
+            </div>
+
+            <div class="mb-3<%= timezone_hidden_class %>">
+                <%= f.label :timezone, class: "form-label" do %>
+                    <%= lang('timezone') %> <span class="text-danger">*</span>
+                <% end %>
+                <%= f.select :timezone, grouped_timezones.map { |continent, zones| [ continent, zones.map { |value, name| [ name, value ] } ] }, {},
+                             required: true, class: "form-select" %>
+            </div>
+
+            <% if setting('ldap_is_active').to_s == "1" %>
+                <div class="mb-3">
+                    <%= f.label :ldap_dn, lang('ldap_dn'), class: "form-label" %>
+                    <%= f.text_field :ldap_dn, maxlength: 100, class: "form-control" %>
+                </div>
+            <% end %>
+
+            <%= render "shared/custom_fields", rows: 8, name: "customer", record: record %>
+
+            <div class="mb-3">
+                <%= f.label :notes, lang('notes'), class: "form-label" %>
+                <%= f.text_area :notes, rows: 8, class: "form-control" %>
+            </div>
+        </div>
+
+        <div class="col-12 col-lg-6">
+            <h4 class="mb-3 fw-light"><%= lang('appointments') %></h4>
+            <div id="customer-appointments" class="card border p-3 overflow-auto mb-4"
+                 style="min-height: 400px; max-height: 800px; max-width: 330px; width: 100%;">
+                <% appointments = record.persisted? ? visible_appointments(record) : [] %>
+                <% if appointments.empty? %>
+                    <p><%= lang('no_records_found') %></p>
+                <% end %>
+                <% appointments.each do |appointment| %>
+                    <div class="appointment-row" data-id="<%= appointment.id %>">
+                        <a href="/calendar/reschedule/<%= appointment.booking_hash %>" data-turbo="false">
+                            <i class="fas fa-edit me-1"></i>
+                            <strong><%= appointment.service&.name %> - <%= appointment.provider&.name %></strong>
+                            <br>
+                        </a>
+                        <small><%= format_appointment_datetime(appointment.start_datetime, formats) %></small><br>
+                        <small><%= format_appointment_datetime(appointment.end_datetime, formats) %></small><br>
+                        <% unless Setting.fixed_timezone? %>
+                            <small><%= format_timezone(appointment.provider&.effective_timezone) %></small>
+                        <% end %>
+                    </div>
+                <% end %>
+            </div>
+
+            <% if record.persisted? %>
+                <h4 class="mb-3 fw-light d-flex justify-content-between align-items-center">
+                    <%= lang('customer_messages') %>
+                    <button type="button" id="mark-all-read" class="btn btn-sm btn-outline-primary d-none">
+                        <i class="fas fa-check-double me-1"></i><%= lang('mark_all_as_read') %>
+                    </button>
+                </h4>
+                <div id="customer-messages" class="card border p-3 overflow-auto mb-3" data-customer-id="<%= record.id %>"
+                     data-scroll="<%= params[:section] == 'messages' %>"></div>
+                <% if channels.any? %>
+                    <div id="customer-message-composer" class="input-group mb-4">
+                        <select id="message-channel" class="form-select">
+                            <option value=""><%= lang('select_one') %></option>
+                            <% channels.each do |channel| %>
+                                <option value="<%= channel.key %>"><%= channel.label %></option>
+                            <% end %>
+                            <option value="all"><%= lang('all_providers') %></option>
+                        </select>
+                        <input type="text" id="message-body" class="form-control" maxlength="1000">
+                        <button type="button" id="send-message" class="btn btn-primary">
+                            <i class="fas fa-paper-plane me-2"></i>
+                            <%= lang('send_message') %>
+                        </button>
+                    </div>
+                <% end %>
+            <% end %>
+        </div>
+    </div>
+<% end %>

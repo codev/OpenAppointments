@@ -901,3 +901,8 @@ zh:
     report_statuses: 'Status'
     download_report: 'Download Report'
     booked_on: 'Booked Date'
+    invalid_datetime: "无法读取日期和时间"
+    unsaved_changes_prompt: "您有未保存的更改。离开此页并放弃更改？"
+    leave_page: "离开页面"
+    status_custom: "自定义"
+    provider_does_not_offer_service: "所选服务人员不提供此服务。"

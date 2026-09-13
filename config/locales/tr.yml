@@ -901,3 +901,8 @@ tr:
     report_statuses: 'Status'
     download_report: 'Download Report'
     booked_on: 'Booked Date'
+    invalid_datetime: "Tarih ve saat okunamadı"
+    unsaved_changes_prompt: "Kaydedilmemiş değişiklikleriniz var. Sayfadan ayrılıp kaybedilsin mi?"
+    leave_page: "Sayfadan ayrıl"
+    status_custom: "Özel"
+    provider_does_not_offer_service: "Seçilen hizmet sağlayıcı bu hizmeti sunmuyor."

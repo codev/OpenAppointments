@@ -6,19 +6,14 @@
                 <%= render "shared/settings_nav" %>
             </div>
             <div class="col-sm-9">
-                <form>
-                    <fieldset>
+                <turbo-frame id="settings">
+                    <%= settings_form "/booking_settings/save" do %>
                         <div class="d-flex justify-content-between align-items-center border-bottom mb-4 py-2">
                             <h4 class="mb-0 fw-light">
                                 <%= lang('booking_settings') %>
                             </h4>
 
-                            <% if can?(:edit, :system_settings) %>
-                                <button type="button" id="save-settings" class="btn btn-primary">
-                                    <i class="fas fa-check-square me-2"></i>
-                                    <%= lang('save') %>
-                                </button>
-                            <% end %>
+                            <%= settings_save_button %>
                         </div>
 
                         <h5 class="mb-3 fw-light">
@@ -36,6 +31,7 @@
                                     <input type="text" id="name" class="form-control mb-2" readonly/>
                                 </div>
                             </div>
+                            <%= settings_flash %>
                             <div class="col-12 col-lg-6">
                                 <div class="form-group mb-4">
                                     <label for="email" class="form-label">
@@ -45,18 +41,14 @@
                                     <input type="text" id="email" class="form-control mb-2" readonly/>
                                     <div class="d-flex">
                                         <div class="form-check form-switch me-4">
-                                            <input class="form-check-input display-switch" type="checkbox"
-                                                   id="display-email"
-                                                   data-field="display_email">
+                                            <%= setting_switch "display_email", class: "form-check-input display-switch" %>
                                             <label class="form-check-label" for="display-email">
                                                 <%= lang('display') %>
                                             </label>
                                         </div>
 
                                         <div class="form-check form-switch">
-                                            <input class="form-check-input require-switch" type="checkbox"
-                                                   id="require-email"
-                                                   data-field="require_email">
+                                            <%= setting_switch "require_email", class: "form-check-input require-switch" %>
                                             <label class="form-check-label" for="require-email">
                                                 <%= lang('require') %>
                                             </label>
@@ -73,26 +65,21 @@
                                     <input type="text" id="phone-number" class="form-control mb-2" readonly/>
                                     <div class="d-flex">
                                         <div class="form-check form-switch me-4">
-                                            <input class="form-check-input display-switch" type="checkbox"
-                                                   id="display-phone-number"
-                                                   data-field="display_phone_number">
+                                            <%= setting_switch "display_phone_number", class: "form-check-input display-switch" %>
                                             <label class="form-check-label" for="display-phone-number">
                                                 <%= lang('display') %>
                                             </label>
                                         </div>
 
                                         <div class="form-check form-switch">
-                                            <input class="form-check-input require-switch" type="checkbox"
-                                                   id="require-phone-number"
-                                                   data-field="require_phone_number">
+                                            <%= setting_switch "require_phone_number", class: "form-check-input require-switch" %>
                                             <label class="form-check-label" for="require-phone-number">
                                                 <%= lang('require') %>
                                             </label>
                                         </div>
                                     </div>
                                     <div class="form-check form-switch mt-2">
-                                        <input class="form-check-input" type="checkbox" id="require-phone-or-email"
-                                               data-field="require_phone_or_email">
+                                        <%= setting_switch "require_phone_or_email" %>
                                         <label class="form-check-label" for="require-phone-or-email">
                                             <%= lang('require_phone_or_email_label') %>
                                         </label>
@@ -108,18 +95,14 @@
                                     <input type="text" id="address" class="form-control mb-2" readonly/>
                                     <div class="d-flex">
                                         <div class="form-check form-switch me-4">
-                                            <input class="form-check-input display-switch" type="checkbox"
-                                                   id="display-address"
-                                                   data-field="display_address">
+                                            <%= setting_switch "display_address", class: "form-check-input display-switch" %>
                                             <label class="form-check-label" for="display-address">
                                                 <%= lang('display') %>
                                             </label>
                                         </div>
 
                                         <div class="form-check form-switch">
-                                            <input class="form-check-input require-switch" type="checkbox"
-                                                   id="require-address"
-                                                   data-field="require_address">
+                                            <%= setting_switch "require_address", class: "form-check-input require-switch" %>
                                             <label class="form-check-label" for="require-address">
                                                 <%= lang('require') %>
                                             </label>
@@ -136,18 +119,14 @@
                                     <input type="text" id="city" class="form-control mb-2" readonly/>
                                     <div class="d-flex">
                                         <div class="form-check form-switch me-4">
-                                            <input class="form-check-input display-switch" type="checkbox"
-                                                   id="display-city"
-                                                   data-field="display_city">
+                                            <%= setting_switch "display_city", class: "form-check-input display-switch" %>
                                             <label class="form-check-label" for="display-city">
                                                 <%= lang('display') %>
                                             </label>
                                         </div>
 
                                         <div class="form-check form-switch">
-                                            <input class="form-check-input require-switch" type="checkbox"
-                                                   id="require-city"
-                                                   data-field="require_city">
+                                            <%= setting_switch "require_city", class: "form-check-input require-switch" %>
                                             <label class="form-check-label" for="require-city">
                                                 <%= lang('require') %>
                                             </label>
@@ -164,18 +143,14 @@
                                     <input type="text" id="zip-code" class="form-control mb-2" readonly/>
                                     <div class="d-flex">
                                         <div class="form-check form-switch me-4">
-                                            <input class="form-check-input display-switch" type="checkbox"
-                                                   id="display-zip-code"
-                                                   data-field="display_zip_code">
+                                            <%= setting_switch "display_zip_code", class: "form-check-input display-switch" %>
                                             <label class="form-check-label" for="display-zip-code">
                                                 <%= lang('display') %>
                                             </label>
                                         </div>
 
                                         <div class="form-check form-switch">
-                                            <input class="form-check-input require-switch" type="checkbox"
-                                                   id="require-zip-code"
-                                                   data-field="require_zip_code">
+                                            <%= setting_switch "require_zip_code", class: "form-check-input require-switch" %>
                                             <label class="form-check-label" for="require-zip-code">
                                                 <%= lang('require') %>
                                             </label>
@@ -192,18 +167,14 @@
                                     <textarea id="notes" class="form-control mb-2" rows="2" readonly></textarea>
                                     <div class="d-flex">
                                         <div class="form-check form-switch me-4">
-                                            <input class="form-check-input display-switch" type="checkbox"
-                                                   id="display-notes"
-                                                   data-field="display_notes">
+                                            <%= setting_switch "display_notes", class: "form-check-input display-switch" %>
                                             <label class="form-check-label" for="display-notes">
                                                 <%= lang('display') %>
                                             </label>
                                         </div>
 
                                         <div class="form-check form-switch">
-                                            <input class="form-check-input require-switch" type="checkbox"
-                                                   id="require-notes"
-                                                   data-field="require_notes">
+                                            <%= setting_switch "require_notes", class: "form-check-input require-switch" %>
                                             <label class="form-check-label" for="require-notes">
                                                 <%= lang('require') %>
                                             </label>
@@ -226,35 +197,25 @@
                                             <span class="text-danger">*</span>
                                         </label>
 
-                                        <input type="text" id="custom-field-<%= i %>" class="form-control mb-2"
-                                               placeholder="<%= lang('label') %>"
-                                               data-field="label_custom_field_<%= i %>"
-                                               aria-label="label"
-                                        />
+                                        <%= setting_text "label_custom_field_#{i}", id: "custom-field-#{i}", class: "form-control mb-2", placeholder: lang('label'), "aria-label": "label" %>
 
                                         <div class="d-flex flex-wrap">
                                             <div class="form-check form-switch me-4">
-                                                <input class="form-check-input display-switch" type="checkbox"
-                                                       id="display-custom-field-<%= i %>"
-                                                       data-field="display_custom_field_<%= i %>">
+                                                <%= setting_switch "display_custom_field_#{i}", class: "form-check-input display-switch" %>
                                                 <label class="form-check-label" for="display-custom-field-<%= i %>">
                                                     <%= lang('display') %>
                                                 </label>
                                             </div>
 
                                             <div class="form-check form-switch me-4">
-                                                <input class="form-check-input require-switch" type="checkbox"
-                                                       id="require-custom-field-<%= i %>"
-                                                       data-field="require_custom_field_<%= i %>">
+                                                <%= setting_switch "require_custom_field_#{i}", class: "form-check-input require-switch" %>
                                                 <label class="form-check-label" for="require-custom-field-<%= i %>">
                                                     <%= lang('require') %>
                                                 </label>
                                             </div>
 
                                             <div class="form-check form-switch">
-                                                <input class="form-check-input" type="checkbox"
-                                                       id="long-custom-field-<%= i %>"
-                                                       data-field="long_custom_field_<%= i %>">
+                                                <%= setting_switch "long_custom_field_#{i}" %>
                                                 <label class="form-check-label" for="long-custom-field-<%= i %>">
                                                     <%= lang('longer_text_field') %>
                                                 </label>
@@ -277,11 +238,8 @@
                                         <label class="form-label" for="booking-display-mode">
                                             <%= lang('booking_display_mode') %>
                                         </label>
-                                        <select id="booking-display-mode" class="form-select"
-                                                data-field="booking_display_mode">
-                                            <option value="dropdown"><%= lang('display_as_dropdown') %></option>
-                                            <option value="cards"><%= lang('display_as_cards') %></option>
-                                        </select>
+                                        <%= setting_select "booking_display_mode",
+                                                           [ [ lang('display_as_dropdown'), "dropdown" ], [ lang('display_as_cards'), "cards" ] ] %>
                                     </div>
 
                                     <div class="mb-3">
@@ -294,11 +252,7 @@
                                                     <%= lang(label_key) %>
                                                 </label>
                                                 <div class="col-8">
-                                                    <select id="<%= field.tr('_', '-') %>" class="form-select"
-                                                            data-field="<%= field %>">
-                                                        <option value="border"><%= lang('white_border') %></option>
-                                                        <option value="zoomed"><%= lang('zoomed') %></option>
-                                                    </select>
+                                                    <%= setting_select field, [ [ lang('white_border'), "border" ], [ lang('zoomed'), "zoomed" ] ], id: field.tr('_', '-') %>
                                                 </div>
                                             </div>
                                         <% end %>
@@ -309,9 +263,7 @@
 
                                     <div class="mb-3">
                                         <div class="form-check form-switch">
-                                            <input class="form-check-input" type="checkbox" id="booking-provider-first"
-                                                   data-field="booking_provider_first"
-                                                   <%= "checked" if setting("booking_provider_first", "0").to_s == "1" %>>
+                                            <%= setting_switch "booking_provider_first" %>
                                             <label class="form-check-label" for="booking-provider-first">
                                                 <%= lang('booking_provider_first') %>
                                             </label>
@@ -320,9 +272,7 @@
 
                                     <div class="mb-3">
                                         <div class="form-check form-switch">
-                                            <input class="form-check-input" type="checkbox" id="display-order-switch"
-                                                   data-field="display_order_switch"
-                                                   <%= "checked" if setting("display_order_switch", "1").to_s == "1" %>>
+                                            <%= setting_switch "display_order_switch", default: "1" %>
                                             <label class="form-check-label" for="display-order-switch">
                                                 <%= lang('display_order_switch') %>
                                             </label>
@@ -331,9 +281,7 @@
 
                                     <div class="mb-3">
                                         <div class="form-check form-switch">
-                                            <input class="form-check-input" type="checkbox" id="display-powered-by"
-                                                   data-field="display_powered_by"
-                                                   <%= "checked" if setting("display_powered_by", "1").to_s == "1" %>>
+                                            <%= setting_switch "display_powered_by" %>
                                             <label class="form-check-label" for="display-powered-by">
                                                 <%= lang('display_powered_by') %>
                                             </label>
@@ -342,8 +290,7 @@
 
                                     <div class="mb-3">
                                         <div class="form-check form-switch">
-                                            <input class="form-check-input" type="checkbox" id="limit-customer-access"
-                                                   data-field="limit_customer_access">
+                                            <%= setting_switch "limit_customer_access" %>
                                             <label class="form-check-label" for="limit-customer-access">
                                                 <%= lang('limit_customer_access') %>
                                             </label>
@@ -358,8 +305,7 @@
 
                                     <div class="mb-3">
                                         <div class="form-check form-switch">
-                                            <input class="form-check-input" type="checkbox" id="display-any-provider"
-                                                   data-field="display_any_provider">
+                                            <%= setting_switch "display_any_provider" %>
                                             <label class="form-check-label" for="display-any-provider">
                                                 <%= lang('any_provider') %>
                                             </label>
@@ -374,8 +320,7 @@
 
                                     <div class="mb-3">
                                         <div class="form-check form-switch">
-                                            <input class="form-check-input" type="checkbox" id="display-login-button"
-                                                   data-field="display_login_button">
+                                            <%= setting_switch "display_login_button" %>
                                             <label class="form-check-label" for="display-login-button">
                                                 <%= lang('login_button') %>
                                             </label>
@@ -390,9 +335,7 @@
 
                                     <div class="mb-3">
                                         <div class="form-check form-switch">
-                                            <input class="form-check-input" type="checkbox"
-                                                   id="display-delete-personal-information"
-                                                   data-field="display_delete_personal_information">
+                                            <%= setting_switch "display_delete_personal_information" %>
                                             <label class="form-check-label" for="display-delete-personal-information">
                                                 <%= lang('delete_personal_information') %>
                                             </label>
@@ -407,8 +350,7 @@
 
                                     <div>
                                         <div class="form-check form-switch">
-                                            <input class="form-check-input" type="checkbox" id="disable-booking"
-                                                   data-field="disable_booking">
+                                            <%= setting_switch "disable_booking" %>
                                             <label class="form-check-label" for="disable-booking">
                                                 <%= lang('disable_booking') %>
                                             </label>
@@ -421,24 +363,23 @@
                                         </div>
                                     </div>
 
-                                    <div class="form-group mb-3" hidden>
+                                    <div class="form-group mb-3" data-visible-when="disable_booking=1">
                                         <label class="form-label" for="disable-booking-message">
                                             <%= lang('display_message') %>
                                         </label>
-                                        <textarea id="disable-booking-message" cols="30" rows="10"
-                                                  class="mb-3"></textarea>
+                                        <%= setting_textarea "disable_booking_message", class: "mb-3 rich-text", cols: 30, rows: 10 %>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
-                    </fieldset>
-                </form>
+                    <% end %>
+                </turbo-frame>
             </div>
         </div>
     </div>
 </div>
 
 <% content_for :scripts do %>
-    <%= ea_js "http/booking_settings_http_client", "pages/booking_settings" %>
+    <%= ea_js "pages/booking_settings" %>
 <% end %>

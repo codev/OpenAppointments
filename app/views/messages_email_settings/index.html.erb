@@ -4,23 +4,21 @@
             <%= render "shared/messages_nav" %>
         </div>
         <div id="messages-email-settings" class="col-sm-9">
-            <form>
-                <fieldset>
+            <turbo-frame id="settings">
+                <%= settings_form "/messages_email_settings/save" do %>
                     <%= render "shared/messages_provider_header", title: "Email" %>
 
                     <div class="row">
                         <div class="col-12 col-md-8">
                             <div class="form-check form-switch mb-3">
-                                <input type="checkbox" class="form-check-input" id="email-enabled"
-                                       data-field="messages_email_enabled">
+                                <%= setting_switch "messages_email_enabled", id: "email-enabled" %>
                                 <label class="form-check-label" for="email-enabled">
                                     <%= lang('active') %>
                                 </label>
                             </div>
 
                             <div class="form-check form-switch mb-4">
-                                <input type="checkbox" class="form-check-input" id="email-incoming"
-                                       data-field="messages_email_incoming">
+                                <%= setting_switch "messages_email_incoming", id: "email-incoming" %>
                                 <label class="form-check-label" for="email-incoming">
                                     <%= lang('messages_incoming') %>
                                 </label>
@@ -39,36 +37,31 @@
                                 <label class="form-label" for="email-mode">
                                     <%= lang('messages_email_mode') %>
                                 </label>
-                                <select id="email-mode" class="form-select" data-field="messages_email_mode">
-                                    <option value="server"><%= lang('messages_email_mode_server') %></option>
-                                    <option value="smtp"><%= lang('messages_email_mode_smtp') %></option>
+                                <select name="settings[messages_email_mode]" data-field="messages_email_mode" id="email-mode" class="form-select" >
+                                    <option value="server" <%= "selected" if setting('messages_email_mode').to_s == "server" %>><%= lang('messages_email_mode_server') %></option>
+                                    <option value="smtp" <%= "selected" if setting('messages_email_mode').to_s == "smtp" %>><%= lang('messages_email_mode_smtp') %></option>
                                 </select>
                             </div>
 
                             <div data-visible-when="messages_email_mode=smtp">
                                 <div class="mb-3">
                                     <label class="form-label" for="smtp-host"><%= lang('messages_smtp_host') %></label>
-                                    <input type="text" id="smtp-host" class="form-control"
-                                           data-field="messages_email_smtp_host">
+                                    <%= setting_text "messages_email_smtp_host", id: "smtp-host" %>
                                 </div>
                                 <div class="mb-3">
                                     <label class="form-label" for="smtp-port"><%= lang('messages_smtp_port') %></label>
-                                    <input type="number" id="smtp-port" class="form-control"
-                                           data-field="messages_email_smtp_port">
+                                    <%= setting_text "messages_email_smtp_port", id: "smtp-port", type: "number" %>
                                 </div>
                                 <div class="mb-3">
                                     <label class="form-label" for="smtp-username"><%= lang('username') %></label>
-                                    <input type="text" id="smtp-username" class="form-control" autocomplete="off"
-                                           data-field="messages_email_smtp_username">
+                                    <%= setting_text "messages_email_smtp_username", id: "smtp-username", autocomplete: "off" %>
                                 </div>
                                 <div class="mb-3">
                                     <label class="form-label" for="smtp-password"><%= lang('password') %></label>
-                                    <input type="password" id="smtp-password" class="form-control" autocomplete="new-password"
-                                           data-field="messages_email_smtp_password">
+                                    <%= setting_password "messages_email_smtp_password", id: "smtp-password", autocomplete: "new-password" %>
                                 </div>
                                 <div class="form-check form-switch mb-3">
-                                    <input type="checkbox" class="form-check-input" id="smtp-tls"
-                                           data-field="messages_email_smtp_tls">
+                                    <%= setting_switch "messages_email_smtp_tls", id: "smtp-tls" %>
                                     <label class="form-check-label" for="smtp-tls">
                                         <%= lang('messages_smtp_tls') %>
                                     </label>
@@ -84,10 +77,10 @@
                                     <label class="form-label" for="email-incoming-mode">
                                         <%= lang('messages_email_incoming_mode') %>
                                     </label>
-                                    <select id="email-incoming-mode" class="form-select"
-                                            data-field="messages_email_incoming_mode">
-                                        <option value="server"><%= lang('messages_email_incoming_server') %></option>
-                                        <option value="imap"><%= lang('messages_email_incoming_imap') %></option>
+                                    <select name="settings[messages_email_incoming_mode]" data-field="messages_email_incoming_mode" id="email-incoming-mode" class="form-select"
+                                            >
+                                        <option value="server" <%= "selected" if setting('messages_email_incoming_mode').to_s == "server" %>><%= lang('messages_email_incoming_server') %></option>
+                                        <option value="imap" <%= "selected" if setting('messages_email_incoming_mode').to_s == "imap" %>><%= lang('messages_email_incoming_imap') %></option>
                                     </select>
                                     <div class="form-text text-muted">
                                         <small>
@@ -99,23 +92,19 @@
                                 <div data-visible-when="messages_email_incoming=1&messages_email_incoming_mode=imap">
                                     <div class="mb-3">
                                         <label class="form-label" for="imap-host"><%= lang('messages_imap_host') %></label>
-                                        <input type="text" id="imap-host" class="form-control"
-                                               data-field="messages_email_imap_host">
+                                        <%= setting_text "messages_email_imap_host", id: "imap-host" %>
                                     </div>
                                     <div class="mb-3">
                                         <label class="form-label" for="imap-port"><%= lang('messages_imap_port') %></label>
-                                        <input type="number" id="imap-port" class="form-control"
-                                               data-field="messages_email_imap_port">
+                                        <%= setting_text "messages_email_imap_port", id: "imap-port", type: "number" %>
                                     </div>
                                     <div class="mb-3">
                                         <label class="form-label" for="imap-username"><%= lang('username') %></label>
-                                        <input type="text" id="imap-username" class="form-control" autocomplete="off"
-                                               data-field="messages_email_imap_username">
+                                        <%= setting_text "messages_email_imap_username", id: "imap-username", autocomplete: "off" %>
                                     </div>
                                     <div class="mb-3">
                                         <label class="form-label" for="imap-password"><%= lang('password') %></label>
-                                        <input type="password" id="imap-password" class="form-control" autocomplete="new-password"
-                                               data-field="messages_email_imap_password">
+                                        <%= setting_password "messages_email_imap_password", id: "imap-password", autocomplete: "new-password" %>
                                     </div>
                                 </div>
                             </div>
@@ -128,12 +117,9 @@
                             </div>
                         </div>
                     </div>
-                </fieldset>
-            </form>
+                <% end %>
+            </turbo-frame>
         </div>
     </div>
 </div>
 
-<% content_for :scripts do %>
-    <%= ea_js "http/messages_settings_http_client", "pages/messages_provider_settings" %>
-<% end %>

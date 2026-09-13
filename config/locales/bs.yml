@@ -901,3 +901,8 @@ bs:
     report_statuses: 'Status'
     download_report: 'Download Report'
     booked_on: 'Booked Date'
+    invalid_datetime: "Datum i vrijeme nisu mogli biti pročitani"
+    unsaved_changes_prompt: "Imate nesačuvane izmjene. Napustiti stranicu i izgubiti ih?"
+    leave_page: "Napusti stranicu"
+    status_custom: "Prilagođeno"
+    provider_does_not_offer_service: "Odabrani pružalac ne nudi ovu uslugu."

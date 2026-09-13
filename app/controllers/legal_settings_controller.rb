@@ -12,7 +12,6 @@ class LegalSettingsController < ApplicationController
     return unless require_backend_page!(:system_settings)
 
     backend_page_vars(page_title: helpers.lang("settings"), active_menu: "system_settings")
-    script_vars(legal_settings: settings_rows)
     render :index
   end
 
@@ -23,6 +22,6 @@ class LegalSettingsController < ApplicationController
       LEGAL_CONTENT_SETTINGS.include?(name) ? helpers.sanitize(value) : value
     end
   rescue ArgumentError => e
-    json_exception(e)
+    settings_failed(e)
   end
 end

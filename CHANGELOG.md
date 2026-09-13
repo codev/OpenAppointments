@@ -3,6 +3,22 @@
 The about page lists these notes; every release needs a section here matching
 CloudronManifest.json.
 
+## 2.0.0
+
+- The views are converted from jQuery scripts to standard Rails views
+- Pages load with Turbo Drive
+- Appointments and the Admin interface are rendered with Turbo Frames
+- Login and accounts and other accessories are rendered as plain forms
+- An appointment clash shows in the dialog with a save-anyway option
+- Filters now live in the address bar
+- Every day's free hours arrive on the time step so browsing days is instant even on a slow connection - a slot taken in the meantime returns to the times with a message that someone else has taken it
+- On the time step the timezone select relabels the hours
+- Blocked period dates use the browser's date and time picker
+- Longer lists page 20 items at a time
+- Saving an appointment refuses a provider who does not offer the chosen service
+- Import fixes
+- Browser tests cover every converted page
+
 ## 1.9.0
 
 - Repeating appointments - these can only be added by providers, assistants or admins

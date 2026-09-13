@@ -901,3 +901,8 @@ fi:
     report_statuses: 'Status'
     download_report: 'Download Report'
     booked_on: 'Booked Date'
+    invalid_datetime: "Päivämäärää ja aikaa ei voitu lukea"
+    unsaved_changes_prompt: "Sinulla on tallentamattomia muutoksia. Poistutaanko sivulta ja menetetään ne?"
+    leave_page: "Poistu sivulta"
+    status_custom: "Mukautettu"
+    provider_does_not_offer_service: "Valittu palveluntarjoaja ei tarjoa tätä palvelua."

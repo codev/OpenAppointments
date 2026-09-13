@@ -1,99 +1,25 @@
-# Services admin CRUD, port of EA's Services controller.
+# Services admin: Rails views inside Turbo Frames.
 class ServicesController < ApplicationController
-  include BackendPage
-  include PictureUpload
+  include CrudPage
+  include RecordPicture
 
-  layout "backend"
+  PAGE = { resource: :services, menu: "services", title: "services",
+           save_webhook: Webhooks::SERVICE_SAVE, delete_webhook: Webhooks::SERVICE_DELETE,
+           saved: "service_saved", deleted: "service_deleted" }.freeze
 
-  ALLOWED_FIELDS = %w[id name duration price currency description color location slot_interval
-                      attendants_number is_private id_service_categories providers].freeze
+  before_action(only: %i[regenerate_link sort_alphabetically]) { require_privilege }
 
-  before_action :require_session, except: [ :index ]
-
-  def index
-    return unless require_backend_page!(:services)
-
-    providers = User.providers.order(:name).includes(:services, :settings)
-                    .map { |provider| EaRows.provider_row(provider) }
-
-    backend_page_vars(page_title: helpers.lang("services"), active_menu: "services")
-    script_vars(event_minimum_duration: Appointment::EVENT_MINIMUM_DURATION, providers: providers)
-    html_vars(providers: providers)
-    render :index
+  def new
+    @record = Service.new(name: "Service", duration: 30, price: 0, slot_interval: 15, attendants_number: 1)
+    @editing = true
+    render_page
   end
 
-  # POST /services/search
-  def search
-    raise ArgumentError, "Forbidden" if cannot?(:view, :services)
-
-    services = search_services(params[:keyword].to_s, params.fetch(:limit, 1000).to_i,
-                               params.fetch(:offset, 0).to_i)
-
-    render json: services.map { |service| service_response(service) }
-  rescue ArgumentError => e
-    json_exception(e, status: :ok)
-  end
-
-  # POST /services/store
-  def store
-    raise ArgumentError, "Forbidden" if cannot?(:add, :services)
-
-    save_service(Service.new)
-  rescue ArgumentError, ActiveRecord::RecordInvalid => e
-    json_exception(e, status: :ok)
-  end
-
-  # GET/POST /services/find
-  def find
-    raise ArgumentError, "Forbidden" if cannot?(:view, :services)
-
-    service_id = params.require(:service_id).to_i
-    raise ArgumentError, "Invalid service ID provided." unless service_id.positive?
-
-    render json: EaRows.service_row(Service.find(service_id))
-  rescue ArgumentError => e
-    json_exception(e, status: :ok)
-  end
-
-  # POST /services/update
-  def update
-    raise ArgumentError, "Forbidden" if cannot?(:edit, :services)
-
-    save_service(Service.find(permitted_service.fetch("id")))
-  rescue ArgumentError, ActiveRecord::RecordInvalid => e
-    json_exception(e, status: :ok)
-  end
-
-  # POST /services/destroy
-  def destroy
-    raise ArgumentError, "Forbidden" if cannot?(:delete, :services)
-
-    service_id = params.require(:service_id).to_i
-    raise ArgumentError, "Invalid service ID provided." unless service_id.positive?
-
-    service = Service.find(service_id)
-    row = EaRows.service_row(service)
-    service.destroy!
-    Webhooks.trigger(Webhooks::SERVICE_DELETE, row)
-
-    render json: { success: true }
-  rescue ArgumentError => e
-    json_exception(e, status: :ok)
-  end
-
-  # POST /services/regenerate_link
+  # POST /services/:id/regenerate_link
   def regenerate_link
-    raise ArgumentError, "Forbidden" if cannot?(:edit, :services)
-
-    service_id = params.require(:service_id).to_i
-    raise ArgumentError, "Invalid service ID provided." unless service_id.positive?
-
-    service = Service.find(service_id)
+    service = Service.find(params[:id])
     service.update_columns(booking_slug: BookingSlug.unique_for(Service))
-
-    render json: { success: true, booking_slug: service.booking_slug }
-  rescue ArgumentError => e
-    json_exception(e, status: :ok)
+    redirect_to edit_service_path(service)
   end
 
   # POST /services/reorder - persist the dragged order (1-based).
@@ -113,53 +39,34 @@ class ServicesController < ApplicationController
 
   # POST /services/sort_alphabetically - clear the manual order.
   def sort_alphabetically
-    raise ArgumentError, "Forbidden" if cannot?(:edit, :services)
-
     Service.update_all(sort_order: nil)
-    render json: { success: true }
-  rescue ArgumentError => e
-    json_exception(e, status: :ok)
+    redirect_to services_path
   end
 
   private
 
-  def service_response(service)
-    EaRows.service_row(service).merge("providers" => service.provider_links.map(&:id_users))
+  def record_scope = Service.display_order.includes(:category)
+
+  def filter(scope, keyword)
+    return scope if keyword.blank?
+
+    pattern = "%#{Service.sanitize_sql_like(keyword)}%"
+    scope.where("services.name LIKE :pattern OR services.description LIKE :pattern", pattern: pattern)
   end
 
-  def permitted_service
-    value = params.require(:service)
-    value = value.permit(*ALLOWED_FIELDS.map(&:to_sym), providers: []).to_h if value.is_a?(ActionController::Parameters)
-    value
+  def record_params
+    params.require(:service).permit(:name, :duration, :price, :currency, :description, :color, :location,
+                                    :slot_interval, :attendants_number, :is_private, :id_service_categories)
   end
 
-  def save_service(service)
-    service_params = permitted_service
-    provider_ids = service_params["providers"]
-    service.assign_attributes(service_params.except("id", "providers"))
-    service.save!
-    set_provider_ids(service, provider_ids) unless provider_ids.nil?
-    Webhooks.trigger(Webhooks::SERVICE_SAVE, EaRows.service_row(service))
-    render json: { success: true, id: service.id }
-  end
+  def after_save
+    fields = params[:service]
+    save_record_picture(@record, fields)
+    return unless fields.key?(:providers)
 
-  def set_provider_ids(service, provider_ids)
-    service.provider_links.delete_all
-    Array(provider_ids).each do |provider_id|
-      ServiceProviderLink.create!(id_services: service.id, id_users: provider_id)
+    @record.provider_links.delete_all
+    Array(fields[:providers]).compact_blank.each do |provider_id|
+      ServiceProviderLink.create!(id_services: @record.id, id_users: provider_id)
     end
   end
-
-  def search_services(keyword, limit, offset)
-    scope = Service.display_order
-    if keyword.present?
-      pattern = "%#{Service.sanitize_sql_like(keyword)}%"
-      scope = scope.where("name LIKE :pattern OR description LIKE :pattern", pattern: pattern)
-    end
-    paginate_search(scope, limit, offset)
-  end
-
-  def picture_record = Service.find(params[:id])
-
-  def picture_permission_resource = :services
 end

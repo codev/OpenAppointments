@@ -9,7 +9,6 @@ class UmamiAnalyticsSettingsController < ApplicationController
     return unless require_backend_page!(:system_settings)
 
     backend_page_vars(page_title: helpers.lang("umami_analytics"), active_menu: "system_settings")
-    script_vars(umami_analytics_settings: settings_rows(like: "umami_analytics_"))
     render :index
   end
 
@@ -18,6 +17,6 @@ class UmamiAnalyticsSettingsController < ApplicationController
     require_system_settings_edit!
     save_setting_rows(:umami_analytics_settings) { |_name, value| value.strip }
   rescue ArgumentError => e
-    json_exception(e)
+    settings_failed(e)
   end
 end

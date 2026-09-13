@@ -1,0 +1,9 @@
+<%# The event dialog shell: forms load into the frame and the page script shows
+    the modal. Locals: src (optional form to open on load). %>
+<div id="event-modal" class="modal fade" tabindex="-1">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <turbo-frame id="event" <%= "src=#{local_assigns[:src]}" if local_assigns[:src] %>></turbo-frame>
+        </div>
+    </div>
+</div>

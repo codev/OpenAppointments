@@ -1,42 +1,44 @@
-<%# Port of EA components/booking_time_step.php. Timezone data comes from EaHelper#grouped_timezones. %>
-<div id="wizard-frame-3" class="wizard-frame p-3 p-md-4" style="display:none;">
-    <div class="frame-container py-3">
-
-        <h2 class="frame-title fw-light text-center mb-4 text-muted"><%= lang('appointment_date_and_time') %></h2>
-
-        <div class="row frame-content">
-            <div class="col-12 col-lg-6">
-                <div id="select-date" class="mx-auto my-4"></div>
-
-            </div>
-
-            <div class="col-12 col-lg-6">
-                <div id="select-time" class="mx-auto py-3">
-                    <div class="mb-3<%= timezone_hidden_class %>">
-                        <label for="select-timezone" class="form-label">
-                            <%= lang('timezone') %>
-                        </label>
-                        <%= render "shared/timezone_dropdown",
-                                   attributes: 'id="select-timezone" class="form-select mb-3" value="UTC"' %>
+<%# Date and hour: the whole booking window arrives with the page, so switching
+    days is instant on the client. Times are HH:MM keys in the provider's zone;
+    labels follow time_format and the chosen timezone. %>
+<div id="wizard-frame-<%= step_number %>" class="wizard-frame p-3 p-md-4"
+     data-window="<%= @window.to_json %>"
+     data-selected-date="<%= @date %>" data-selected-time="<%= @time %>" data-selected-timezone="<%= @timezone %>"
+     data-provider-timezone="<%= wizard_provider_timezone %>"
+     data-time-format="<%= vars(:time_format) %>">
+    <%= form_with url: wizard_form_path, method: :get, id: "time-step-form", data: { turbo_frame: "wizard", turbo_action: "advance" } do %>
+        <%= wizard_state_fields(date: nil, time: nil, timezone: nil, step: nil) %>
+        <%= hidden_field_tag :step, "info", id: nil %>
+        <%= hidden_field_tag :date, @date, id: "selected-date" %>
+        <%= hidden_field_tag :time, @time, id: "selected-time" %>
+        <div class="frame-container py-3">
+            <h2 class="frame-title fw-light text-center mb-4 text-muted"><%= lang('appointment_date_and_time') %></h2>
+            <div class="row frame-content">
+                <div class="col-12 col-lg-6">
+                    <div id="select-date" class="mx-auto my-4"></div>
+                </div>
+                <div class="col-12 col-lg-6">
+                    <div id="select-time" class="mx-auto py-3">
+                        <div class="mb-3<%= timezone_hidden_class %>">
+                            <label for="select-timezone" class="form-label"><%= lang('timezone') %></label>
+                            <% if Setting.fixed_timezone? %>
+                                <%= render "shared/timezone_dropdown", attributes: 'id="select-timezone" class="form-select mb-3" disabled' %>
+                            <% else %>
+                                <%= render "shared/timezone_dropdown", attributes: 'id="select-timezone" name="timezone" class="form-select mb-3"' %>
+                            <% end %>
+                        </div>
+                        <div id="available-hours" class="overflow-auto my-3 pe-2">
+                            <% if @window.empty? %>
+                                <em><%= lang('no_available_hours') %></em>
+                            <% end %>
+                        </div>
                     </div>
-
-                    <div id="available-hours" class="overflow-auto my-3 pe-2"></div>
-
                 </div>
             </div>
         </div>
-    </div>
-
-    <div class="command-buttons text-center my-3 mx-auto d-md-flex justify-content-md-between">
-        <button type="button" id="button-back-3" class="btn button-back btn-outline-secondary"
-                data-step_index="3">
-            <i class="fas fa-chevron-left me-2"></i>
-            <%= lang('back') %>
-        </button>
-        <button type="button" id="button-next-3" class="btn button-next btn-primary"
-                data-step_index="3">
-            <%= lang('next') %>
-            <i class="fas fa-chevron-right ms-2"></i>
-        </button>
-    </div>
+        <div class="command-buttons text-center my-3 mx-auto d-md-flex justify-content-md-between">
+            <%= wizard_back_button "second" %>
+            <%= wizard_next_button %>
+        </div>
+    <% end %>
 </div>

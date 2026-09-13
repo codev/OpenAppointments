@@ -18,8 +18,10 @@
 
     <!-- Password Reset Form -->
 
-    <form id="password-reset-form">
-        <input type="hidden" id="token" value="<%= vars(:token) %>">
+    <% if flash[:alert] %><div class="alert alert-danger"><%= flash[:alert] %></div><% end %>
+    <%= form_with url: "/recovery/complete", method: :post, id: "password-reset-form", data: { turbo: false } do %>
+        <%= hidden_field_tag :form, "1" %>
+        <%= hidden_field_tag :token, vars(:token), id: "token" %>
 
         <div class="mb-3">
             <label for="password" class="form-label fw-medium">
@@ -29,8 +31,7 @@
                 <span class="input-group-text bg-light border-end-0">
                     <i class="fas fa-lock"></i>
                 </span>
-                <input type="password" id="password"
-                       placeholder="<%= lang('enter_password_here') %>" class="form-control border-start-0 ps-2"/>
+                <%= password_field_tag :password, nil, id: "password", placeholder: lang('enter_password_here'), class: "form-control border-start-0 ps-2", required: true %>
             </div>
             <small class="text-muted">
                 <%= lang('password_length_notice').sub('$number', Passwords::MIN_LENGTH.to_s) %>
@@ -45,8 +46,7 @@
                 <span class="input-group-text bg-light border-end-0">
                     <i class="fas fa-lock"></i>
                 </span>
-                <input type="password" id="password-confirm"
-                       placeholder="<%= lang('enter_password_here') %>" class="form-control border-start-0 ps-2"/>
+                <%= password_field_tag :password_confirm, nil, id: "password-confirm", placeholder: lang('enter_password_here'), class: "form-control border-start-0 ps-2", required: true %>
             </div>
         </div>
 
@@ -59,7 +59,7 @@
             </button>
         </div>
 
-    </form>
+    <% end %>
 
 <% else %>
     <!-- Invalid or Expired Token Message -->
@@ -76,6 +76,3 @@
     </a>
 </div>
 
-<% content_for :scripts do %>
-    <%= ea_js "http/password_reset_http_client", "pages/password_reset" %>
-<% end %>

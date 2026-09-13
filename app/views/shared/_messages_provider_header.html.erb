@@ -5,14 +5,12 @@
     </h4>
 
     <div>
-        <a href="/messages_providers" class="btn btn-outline-primary me-2">
+        <a href="/messages_providers" class="btn btn-outline-primary me-2" data-turbo="false">
             <i class="fas fa-chevron-left me-2"></i>
             <%= lang('back') %>
         </a>
 
-        <button type="button" id="save-settings" class="btn btn-primary">
-            <i class="fas fa-check-square me-2"></i>
-            <%= lang('save') %>
-        </button>
+        <%= settings_save_button %>
     </div>
 </div>
+<%= settings_flash %>

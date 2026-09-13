@@ -1,14 +1,14 @@
-# Customers admin CRUD, port of EA's Customers controller. This is the reference
-# pattern for all backend CRUD controllers: page GET + search/find/store/update/destroy
-# POST endpoints with EA's JSON shapes and permission checks.
+# Customers admin: Rails views inside Turbo Frames. search stays as JSON for the
+# appointments modal customer picker.
 class CustomersController < ApplicationController
-  include BackendPage
+  include CrudPage
 
-  layout "backend"
+  PAGE = { resource: :customers, menu: "customers", title: "customers", per_page: 20,
+           save_webhook: Webhooks::CUSTOMER_SAVE, delete_webhook: Webhooks::CUSTOMER_DELETE,
+           saved: "customer_saved", deleted: "customer_deleted" }.freeze
 
-  ALLOWED_FIELDS = %w[id name email phone_number address city state zip_code
-                      notes timezone language custom_field_1 custom_field_2 custom_field_3
-                      custom_field_4 custom_field_5 ldap_dn].freeze
+  FIELDS = %i[name email phone_number address city state zip_code notes timezone language
+              custom_field_1 custom_field_2 custom_field_3 custom_field_4 custom_field_5 ldap_dn].freeze
 
   # Most recently active customers first: latest of profile update, appointment
   # change or message (SQLite scalar MAX compares the uniform datetime strings).
@@ -22,129 +22,36 @@ class CustomersController < ApplicationController
     ) DESC
   SQL
 
-  before_action :require_session, except: [ :index ]
+  before_action :require_customer_access, only: %i[edit update destroy]
+  before_action :require_add_allowed, only: %i[new create]
 
+  # GET /customers?customer_id=N[&section=messages] is the deep link from the
+  # messages log and calendar popovers: open the record on the messages panel.
   def index
-    return unless require_backend_page!(:customers)
+    return redirect_to edit_customer_path(params[:customer_id], section: params[:section]) if params[:customer_id].present?
 
-    backend_page_vars(page_title: helpers.lang("customers"), active_menu: "customers")
-    script_vars(
-      assistant_providers: assistant_provider_ids,
-      timezones: helpers.timezones,
-      message_channels: Messaging.enabled_channels.map { |channel| { key: channel.key, label: channel.label } }
-    )
-    html_vars(
-      available_languages: Localization.available_languages,
-      **field_display_flags
-    )
-    render :index
+    super
   end
 
-  # GET /customers/find
-  def find
-    raise ArgumentError, "Forbidden" if cannot?(:view, :customers)
-
-    customer_id = params.require(:customer_id).to_i
-    raise ArgumentError, "Invalid customer ID provided." unless customer_id.positive?
-    return head :forbidden unless customer_access?(customer_id)
-
-    render json: EaRows.customer_row(User.customers.find(customer_id))
-  rescue ArgumentError => e
-    json_exception(e, status: :ok)
-  end
-
-  # POST /customers/search
+  # POST /customers/search - JSON rows for the appointments modal.
   def search
     raise ArgumentError, "Forbidden" if cannot?(:view, :customers)
 
-    customers = search_customers(params[:keyword].to_s, params.fetch(:limit, 1000).to_i,
-                                 params.fetch(:offset, 0).to_i)
-
+    customers = paginate_search(filter(record_scope, params[:keyword].to_s), params.fetch(:limit, 1000).to_i,
+                                params.fetch(:offset, 0).to_i)
     unread_counts = Message.unread_counts_for(customers.map(&:id))
-
-    payload = customers.filter_map do |customer|
-      next unless customer_access?(customer.id)
-
-      appointments = Appointment.appointments.where(id_users_customer: customer.id)
-      appointments = filter_appointments_by_role(appointments)
-      row = EaRows.customer_row(customer)
-      row["unread_messages"] = unread_counts[customer.id] || 0
-      row["appointments"] = appointments.includes(:service, :provider).map do |appointment|
-        EaRows.appointment_row(appointment).merge(
-          "service" => appointment.service && EaRows.service_row(appointment.service),
-          "provider" => appointment.provider && EaRows.provider_row(appointment.provider)
-        )
-      end
-      row
-    end
-
-    render json: payload
-  rescue ArgumentError => e
-    json_exception(e, status: :ok)
-  end
-
-  # POST /customers/store
-  def store
-    raise ArgumentError, "Forbidden" if cannot?(:add, :customers)
-    if session[:role_slug] != Role::ADMIN && Setting.get("limit_customer_visibility") == "1"
-      return head :forbidden
-    end
-
-    customer = User.new(role: Role.find_by!(slug: Role::CUSTOMER))
-    save_customer(customer)
-  rescue ArgumentError, ActiveRecord::RecordInvalid => e
-    json_exception(e, status: :ok)
-  end
-
-  # POST /customers/update
-  def update
-    raise ArgumentError, "Forbidden" if cannot?(:edit, :customers)
-
-    customer_params = permitted_customer
-    return head :forbidden unless customer_access?(customer_params["id"])
-
-    customer = User.customers.find(customer_params["id"])
-    save_customer(customer)
-  rescue ArgumentError, ActiveRecord::RecordInvalid => e
-    json_exception(e, status: :ok)
-  end
-
-  # POST /customers/destroy
-  def destroy
-    raise ArgumentError, "Forbidden" if cannot?(:delete, :customers)
-
-    customer_id = params.require(:customer_id).to_i
-    raise ArgumentError, "Invalid customer ID provided." unless customer_id.positive?
-    return head :forbidden unless customer_access?(customer_id)
-
-    customer = User.customers.find(customer_id)
-    row = EaRows.customer_row(customer)
-    customer.destroy!
-    Webhooks.trigger(Webhooks::CUSTOMER_DELETE, row)
-
-    render json: { success: true }
+    render json: customers.map { |customer| EaRows.customer_row(customer).merge("unread_messages" => unread_counts[customer.id] || 0) }
   rescue ArgumentError => e
     json_exception(e, status: :ok)
   end
 
   private
 
-  def permitted_customer
-    value = params.require(:customer)
-    value = value.permit(*ALLOWED_FIELDS.map(&:to_sym)).to_h if value.is_a?(ActionController::Parameters)
-    value
-  end
+  def record_scope = User.customers.with_attached_picture.order(Arel.sql(LAST_INTERACTION_ORDER))
 
-  def save_customer(customer)
-    customer_params = permitted_customer
-    customer.assign_attributes(customer_params.except("id"))
-    customer.save!
-    Webhooks.trigger(Webhooks::CUSTOMER_SAVE, EaRows.customer_row(customer))
-    render json: { success: true, id: customer.id }
-  end
+  def new_record = User.new(role: Role.find_by!(slug: Role::CUSTOMER))
 
-  def search_customers(keyword, limit, offset)
-    scope = User.customers.with_attached_picture.order(Arel.sql(LAST_INTERACTION_ORDER))
+  def filter(scope, keyword)
     if keyword.present?
       pattern = "%#{User.sanitize_sql_like(keyword)}%"
       scope = scope.where(<<~SQL.squish, pattern: pattern)
@@ -153,17 +60,43 @@ class CustomersController < ApplicationController
         OR zip_code LIKE :pattern OR notes LIKE :pattern
       SQL
     end
-    paginate_search(scope, limit, offset)
+    return scope if session[:role_slug] == Role::ADMIN || Setting.get("limit_customer_access") != "1"
+
+    # EA Permissions::has_customer_access as a query: customers with an appointment with the user's providers.
+    provider_ids = session[:role_slug] == Role::PROVIDER ? [ session[:user_id] ] : assistant_provider_ids
+    scope.where(id: Appointment.where(id_users_provider: provider_ids).select(:id_users_customer))
   end
 
-  def filter_appointments_by_role(appointments)
+  def record_params
+    permitted = params.require(:customer).permit(*FIELDS)
+    permitted.delete(:ldap_dn) unless Setting.get("ldap_is_active").to_s == "1"
+    permitted
+  end
+
+  def page_vars
+    script_vars(timezones: helpers.timezones)
+    html_vars(**field_display_flags, can_add: can_add?, unread_counts: Message.unread_counts_for(@records.map(&:id)))
+  end
+
+  def can_add? = can?(:add, :customers) && (Setting.get("limit_customer_access") != "1" || session[:role_slug] == Role::ADMIN)
+
+  # Appointments the signed in user may see for the record, as the old page filtered.
+  def visible_appointments(customer)
+    appointments = Appointment.appointments.where(id_users_customer: customer.id).includes(:service, :provider)
+                              .order(start_datetime: :desc)
     case session[:role_slug]
-    when Role::PROVIDER
-      appointments.where(id_users_provider: session[:user_id])
-    when Role::ASSISTANT
-      appointments.where(id_users_provider: assistant_provider_ids)
-    else
-      appointments
+    when Role::PROVIDER then appointments.where(id_users_provider: session[:user_id])
+    when Role::ASSISTANT then appointments.where(id_users_provider: assistant_provider_ids)
+    else appointments
     end
+  end
+  helper_method :visible_appointments
+
+  def require_customer_access
+    head :forbidden unless customer_access?(params[:id])
+  end
+
+  def require_add_allowed
+    head :forbidden unless can_add?
   end
 end

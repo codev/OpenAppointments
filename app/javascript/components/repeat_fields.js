@@ -101,8 +101,14 @@ App.Components.RepeatFields = (function () {
             order: list('rs_order'),
         });
 
-        $('.repeat-fields').each((index, fields) => {
+        setup();
+    }
+
+    // Bind every repeat-fields block on the page (again after a frame load).
+    function setup() {
+        $('.repeat-fields:not([data-ready])').each((index, fields) => {
             const prefix = $(fields).data('prefix');
+            $(fields).attr('data-ready', '1');
             App.Utils.UI.initializeDatePicker($(fields).find('.repeat-ends-on'));
             $(fields).on('change', '.repeat-ends', () => refresh(prefix));
             $(fields).on('recurring_select:save recurring_select:cancel', '.repeat-rule', () => refresh(prefix));
@@ -111,7 +117,8 @@ App.Components.RepeatFields = (function () {
         });
     }
 
-    document.addEventListener('DOMContentLoaded', initialize);
+    App.page(initialize);
+    document.addEventListener('turbo:frame-load', setup);
 
-    return {read, reset, load, refresh};
+    return {read, reset, load, refresh, setup};
 })();

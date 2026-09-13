@@ -72,35 +72,6 @@ App.Http.Calendar = (function () {
     }
 
     /**
-     * Remove an appointment.
-     *
-     * @param {Number} appointmentId
-     * @param {String} cancellationReason
-     *
-     * @return {*|jQuery}
-     */
-    function removeAppointment(action, appointmentId, cancellationReason, notifyUsers) {
-        const url = App.Utils.Url.siteUrl('calendar/' + action);
-
-        const data = {
-            csrf_token: vars('csrf_token'),
-            appointment_id: appointmentId,
-            cancellation_reason: cancellationReason,
-            notify_users: notifyUsers ? 1 : 0,
-        };
-
-        return $.post(url, data);
-    }
-
-    function deleteAppointment(appointmentId, cancellationReason, notifyUsers = true) {
-        return removeAppointment('delete_appointment', appointmentId, cancellationReason, notifyUsers);
-    }
-
-    function cancelAppointment(appointmentId, cancellationReason, notifyUsers = true) {
-        return removeAppointment('cancel_appointment', appointmentId, cancellationReason, notifyUsers);
-    }
-
-    /**
      * Save unavailability period to database.
      *
      * @param {Object} unavailability Contains the unavailability period data.
@@ -239,26 +210,6 @@ App.Http.Calendar = (function () {
     }
 
     /**
-     * Get the calendar appointments for the table view (different data structure).
-     *
-     * @param {Date} startDate
-     * @param {Date} endDate
-     *
-     * @return {*|jQuery}
-     */
-    function getCalendarAppointmentsForTableView(startDate, endDate) {
-        const url = App.Utils.Url.siteUrl('calendar/get_calendar_appointments_for_table_view');
-
-        const data = {
-            csrf_token: vars('csrf_token'),
-            start_date: moment(startDate).format('YYYY-MM-DD'),
-            end_date: moment(endDate).format('YYYY-MM-DD'),
-        };
-
-        return $.post(url, data);
-    }
-
-    /**
      * Save appointment with conflict handling.
      *
      * This method saves an appointment and handles conflict responses by showing a confirmation dialog
@@ -319,13 +270,10 @@ App.Http.Calendar = (function () {
     return {
         saveAppointment,
         saveAppointmentWithConflictHandling,
-        deleteAppointment,
-        cancelAppointment,
         saveUnavailability,
         deleteUnavailability,
         saveWorkingPlanException,
         deleteWorkingPlanException,
         getCalendarAppointments,
-        getCalendarAppointmentsForTableView,
     };
 })();

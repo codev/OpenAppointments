@@ -29,6 +29,21 @@ class ImportPageTest < ActionDispatch::IntegrationTest
     assert_response :forbidden
   end
 
+  # A frame whose src is the page it sits in is refused by Turbo and emptied.
+  test "the page frames carry no source of their own and poll through a separate address" do
+    login_admin
+    get "/import"
+    assert_select "turbo-frame#backups:not([src]) #export-data"
+    assert_select "turbo-frame#import-status:not([src])"
+
+    BackupExportJob.write_status("abc123", { state: "running" })
+    get "/import", params: { export_id: "abc123" }
+    assert_select "turbo-frame#backups:not([src])[data-poll-every][data-poll-src='/import?export_id=abc123']"
+    TenToEightImportJob.write_status("def456", { state: "running", phase: "services" })
+    get "/import", params: { import_id: "def456" }
+    assert_select "turbo-frame#import-status:not([src])[data-poll-every][data-poll-src='/import?import_id=def456']"
+  end
+
   test "analyze returns a dry-run summary" do
     login_admin
     travel_to Time.new(2026, 7, 10, 12, 0, 0) do
@@ -132,13 +147,19 @@ class ImportPageTest < ActionDispatch::IntegrationTest
     get "/import/export_status", params: { export_id: export_id }
     assert_equal "completed", response.parsed_body["state"]
 
-    get "/import/backups"
-    backups = response.parsed_body["backups"]
-    assert_equal 1, backups.size
-    assert_match(/\A\d{4}-\d{2}-\d{2} \d{2}:\d{2}\z/, backups.first["date"])
-    ods_name = backups.first["files"]["ods"]["name"]
-    assert backups.first["files"]["zip"]["name"].end_with?(".zip")
-    assert backups.first["files"]["ods"]["size"].present?
+    get "/import"
+    assert_select "turbo-frame#backups #backups-table tbody tr", count: 1
+    assert_select "#backups-table td", text: /\A\d{4}-\d{2}-\d{2} \d{2}:\d{2}\z/
+    ods_name = BackupExport.list.first[:files]["ods"]
+    assert_select "#backups-table a[href=?]", "/import/download_backup?name=#{ERB::Util.url_encode(ods_name)}", text: /ODS file \(/
+    assert_select "#backups-table a[href*='.zip']"
+
+    # The form path polls: an export in flight marks the frame, a finished one does not.
+    get "/import", params: { export_id: export_id }
+    assert_select "turbo-frame#backups:not([data-poll-every])"
+    BackupExportJob.write_status("pending1", { state: "running" })
+    get "/import", params: { export_id: "pending1" }
+    assert_select "turbo-frame#backups[data-poll-every] #export-data[disabled]", text: /#{I18n.t('ea.backup_working')}/
 
     get "/import/download_backup", params: { name: ods_name }
     assert_response :success
@@ -202,7 +223,7 @@ class ImportPageTest < ActionDispatch::IntegrationTest
     post "/login/validate", params: { username: "janedoe", password: "janedoe1" }
     get "/import/download_backup", params: { name: ods_name }
     assert_response :forbidden
-    get "/import/backups"
+    get "/import"
     assert_response :forbidden
     post "/import/export"
     assert_response :forbidden
@@ -450,5 +471,80 @@ class ImportPageTest < ActionDispatch::IntegrationTest
     assert_equal true, response.parsed_body["success"]
   ensure
     FileUtils.rm_f(ods_path) if ods_path
+  end
+end
+
+# The manage data page as forms with polling frames.
+class ImportFormsTest < ActionDispatch::IntegrationTest
+  include ActiveJob::TestHelper
+
+  setup do
+    TenToEightImportJob.status_store = ActiveSupport::Cache::MemoryStore.new
+    BackupExportJob.status_store = ActiveSupport::Cache::MemoryStore.new
+  end
+
+  teardown do
+    TenToEightImportJob.status_store = nil
+    BackupExportJob.status_store = nil
+  end
+
+  def login_admin
+    post "/login/validate", params: { username: "administrator", password: "administrator1" }
+  end
+
+  def ods_upload
+    path = Rails.root.join("tmp", "forms-test-#{SecureRandom.hex(4)}.ods")
+    File.binwrite(path, DataExport.generate)
+    Rack::Test::UploadedFile.new(path, Ods::MIMETYPE)
+  end
+
+  test "the page has the import, reset and export forms and no page script" do
+    login_admin
+    get "/import"
+    assert_select "form#import-form[action='/import/start'][enctype='multipart/form-data'] button#analyze-import[formaction='/import/analyze']"
+    assert_select "form#import-form input[name='phases[]'][value=customers][checked]"
+    assert_select "form#import-form #images-zip-wrapper[data-visible-when='import_type=ods']"
+    assert_select "form#reset-form[action='/import/reset'] #reset-database[data-enabled-when]"
+    assert_select "turbo-frame#backups form[action='/import/export'] #export-data"
+    assert_select "turbo-frame#import-status:not([data-poll-every])"
+    assert_select "script[src*='pages/import']", count: 0
+  end
+
+  test "analyze from the form shows the summary on the page once" do
+    login_admin
+    post "/import/analyze", params: { form: "1", import_type: "ods", file: ods_upload, days_back: 21, days_forward: 21 }
+    assert_redirected_to "/import"
+    follow_redirect!
+    assert_select "#import-results", text: /customers: \d+/
+    get "/import"
+    assert_select "#import-results", count: 0
+  end
+
+  test "start from the form polls the status frame until the import completes" do
+    login_admin
+    post "/import/start", params: { form: "1", import_type: "ods", file: ods_upload, phases: [ "customers" ], days_back: 21, days_forward: 21 }
+    assert_response :redirect
+    import_id = response.location[/import_id=(\w+)/, 1]
+    get "/import", params: { import_id: import_id }
+    assert_select "turbo-frame#import-status[data-poll-every='2000'] #import-results", text: /#{I18n.t('ea.import_running')}/
+
+    perform_enqueued_jobs
+    get "/import", params: { import_id: import_id }
+    assert_select "turbo-frame#import-status:not([data-poll-every]) #import-results.alert-success", text: /#{I18n.t('ea.import_complete')}/
+    assert_select "#import-results", text: /#{I18n.t('ea.customers')}: \d+ #{I18n.t('ea.created')}/
+  end
+
+  test "a bad file from the form comes back with the message; reset needs the phrase" do
+    login_admin
+    csv = Rack::Test::UploadedFile.new(StringIO.new("a,b\n1,2\n"), "text/csv", original_filename: "x.csv")
+    post "/import/analyze", params: { form: "1", import_type: "ods", file: csv }
+    assert_redirected_to "/import"
+    follow_redirect!
+    assert_select "#import-results.alert-danger"
+
+    post "/import/reset", params: { form: "1", confirmation: "nope" }
+    assert_redirected_to "/import"
+    follow_redirect!
+    assert_select "#import-results.alert-danger", text: /I KNOW WHAT I AM DOING/
   end
 end

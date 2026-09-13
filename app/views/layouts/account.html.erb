@@ -55,7 +55,7 @@
 <% if Captcha.for_login == "turnstile" %>
     <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 <% end %>
-<%= ea_js "layouts/account_layout", "http/account_http_client", "http/localization_http_client" %>
+<%= ea_js "layouts/account_layout", "http/localization_http_client" %>
 
 <%= render "shared/js_vars_script" %>
 <%= render "shared/js_lang_script" %>

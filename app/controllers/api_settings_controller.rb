@@ -9,16 +9,17 @@ class ApiSettingsController < ApplicationController
     return unless require_backend_page!(:system_settings)
 
     backend_page_vars(page_title: helpers.lang("api"), active_menu: "system_settings")
-    # EA passes the api_% rows unfiltered so the token can be edited on this page.
-    script_vars(api_settings: settings_rows(like: "api_", filter_sensitive: false))
     render :index
   end
+
+  # The token is shown on this page, so it can be blanked to revoke it.
+  def shown_secrets = %w[api_token]
 
   # POST /api_settings/save
   def save
     require_system_settings_edit!
     save_setting_rows(:api_settings)
   rescue ArgumentError => e
-    json_exception(e)
+    settings_failed(e)
   end
 end

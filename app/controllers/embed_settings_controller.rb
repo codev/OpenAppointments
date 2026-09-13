@@ -10,12 +10,6 @@ class EmbedSettingsController < ApplicationController
 
   def index
     backend_page_vars(page_title: helpers.lang("embedding"), active_menu: "system_settings")
-    script_vars(
-      embed_settings: [
-        { "name" => "allow_iframe_embedding", "value" => Setting.get("allow_iframe_embedding", "0") },
-        { "name" => "iframe_embed_origin", "value" => Setting.get("iframe_embed_origin", "") }
-      ]
-    )
     html_vars(booking_url: request.base_url, embed_origin: Embedding.origin)
     render :index
   end
@@ -24,6 +18,6 @@ class EmbedSettingsController < ApplicationController
   def save
     save_setting_rows(:embed_settings, allowed_names: %w[allow_iframe_embedding iframe_embed_origin])
   rescue ArgumentError => e
-    json_exception(e)
+    settings_failed(e)
   end
 end

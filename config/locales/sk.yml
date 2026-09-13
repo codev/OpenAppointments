@@ -901,3 +901,8 @@ sk:
     report_statuses: 'Status'
     download_report: 'Download Report'
     booked_on: 'Booked Date'
+    invalid_datetime: "Dátum a čas sa nepodarilo prečítať"
+    unsaved_changes_prompt: "Máte neuložené zmeny. Opustiť stránku a stratiť ich?"
+    leave_page: "Opustiť stránku"
+    status_custom: "Vlastný"
+    provider_does_not_offer_service: "Vybraný poskytovateľ túto službu neponúka."
