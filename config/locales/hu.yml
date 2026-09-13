@@ -905,3 +905,4 @@ hu:
     unsaved_changes_prompt: "Nem mentett módosításai vannak. Elhagyja az oldalt és elveszíti őket?"
     leave_page: "Oldal elhagyása"
     status_custom: "Egyéni"
+    provider_does_not_offer_service: "A kiválasztott szolgáltató nem kínálja ezt a szolgáltatást."

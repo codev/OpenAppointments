@@ -905,3 +905,4 @@ it:
     unsaved_changes_prompt: "Hai modifiche non salvate. Lasciare questa pagina e perderle?"
     leave_page: "Lascia la pagina"
     status_custom: "Personalizzato"
+    provider_does_not_offer_service: "Il fornitore selezionato non offre questo servizio."

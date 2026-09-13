@@ -905,3 +905,4 @@ ro:
     unsaved_changes_prompt: "Aveți modificări nesalvate. Părăsiți această pagină și le pierdeți?"
     leave_page: "Părăsește pagina"
     status_custom: "Personalizat"
+    provider_does_not_offer_service: "Furnizorul selectat nu oferă acest serviciu."

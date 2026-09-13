@@ -180,4 +180,26 @@ class EventFormsTest < ActionDispatch::IntegrationTest
     get "/appointments/#{appointments(:upcoming).id}/edit"
     assert_response :success
   end
+  # The form's provider list follows the service, but a post can name any pair.
+  test "saving an appointment refuses a provider who does not offer the service" do
+    other = Service.create!(name: "Beard Trim", duration: 15)
+    login_admin
+    assert_no_difference "Appointment.appointments.count" do
+      post "/appointments", params: {
+        notify_users: "0",
+        appointment: { id_services: other.id, id_users_provider: users(:zane).id, status: "Booked",
+                       start_datetime: "21/07/2026 2:00 pm", end_datetime: "21/07/2026 2:15 pm" },
+        customer: { id: users(:jx).id, name: "JX" }
+      }
+    end
+    assert_response :unprocessable_entity
+    assert_select "form#appointment-form .modal-message", text: I18n.t("ea.provider_does_not_offer_service")
+
+    post "/calendar/save_appointment", params: {
+      appointment_data: { start_datetime: "2026-07-21 14:00:00", end_datetime: "2026-07-21 14:15:00",
+                          id_users_provider: users(:zane).id, id_services: other.id, id_users_customer: users(:jx).id }
+    }
+    assert_equal false, response.parsed_body["success"]
+    assert_equal I18n.t("ea.provider_does_not_offer_service"), response.parsed_body["message"]
+  end
 end

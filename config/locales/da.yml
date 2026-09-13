@@ -905,3 +905,4 @@ da:
     unsaved_changes_prompt: "Du har ugemte ændringer. Forlad siden og mist dem?"
     leave_page: "Forlad siden"
     status_custom: "Brugerdefineret"
+    provider_does_not_offer_service: "Den valgte udbyder tilbyder ikke denne ydelse."

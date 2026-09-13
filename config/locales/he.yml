@@ -905,3 +905,4 @@ he:
     unsaved_changes_prompt: "יש לך שינויים שלא נשמרו. לעזוב את הדף ולאבד אותם?"
     leave_page: "עזוב את הדף"
     status_custom: "מותאם אישית"
+    provider_does_not_offer_service: "נותן השירות שנבחר אינו מציע שירות זה."

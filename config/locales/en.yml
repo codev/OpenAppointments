@@ -905,3 +905,4 @@ en:
     unsaved_changes_prompt: "You have unsaved changes. Leave this page and lose them?"
     leave_page: "Leave page"
     status_custom: "Custom"
+    provider_does_not_offer_service: "The selected provider does not offer this service."

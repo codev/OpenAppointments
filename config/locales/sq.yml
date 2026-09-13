@@ -905,3 +905,4 @@ sq:
     unsaved_changes_prompt: "Keni ndryshime të paruajtura. Të largoheni nga faqja dhe t'i humbni?"
     leave_page: "Largohu nga faqja"
     status_custom: "I personalizuar"
+    provider_does_not_offer_service: "Ofruesi i zgjedhur nuk e ofron këtë shërbim."

@@ -905,3 +905,4 @@ zh:
     unsaved_changes_prompt: "您有未保存的更改。离开此页并放弃更改？"
     leave_page: "离开页面"
     status_custom: "自定义"
+    provider_does_not_offer_service: "所选服务人员不提供此服务。"

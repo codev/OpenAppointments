@@ -905,3 +905,4 @@ sl:
     unsaved_changes_prompt: "Imate neshranjene spremembe. Zapustiti stran in jih izgubiti?"
     leave_page: "Zapusti stran"
     status_custom: "Po meri"
+    provider_does_not_offer_service: "Izbrani ponudnik te storitve ne ponuja."

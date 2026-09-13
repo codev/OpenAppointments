@@ -905,3 +905,4 @@ pl:
     unsaved_changes_prompt: "Masz niezapisane zmiany. Opuścić tę stronę i je utracić?"
     leave_page: "Opuść stronę"
     status_custom: "Własny"
+    provider_does_not_offer_service: "Wybrany usługodawca nie oferuje tej usługi."

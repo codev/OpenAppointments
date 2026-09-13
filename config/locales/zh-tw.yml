@@ -905,3 +905,4 @@ zh-tw:
     unsaved_changes_prompt: "您有未儲存的變更。離開此頁並放棄變更？"
     leave_page: "離開頁面"
     status_custom: "自訂"
+    provider_does_not_offer_service: "所選服務人員不提供此服務。"

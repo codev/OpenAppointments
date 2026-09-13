@@ -905,3 +905,4 @@ uk:
     unsaved_changes_prompt: "У вас є незбережені зміни. Покинути сторінку й втратити їх?"
     leave_page: "Покинути сторінку"
     status_custom: "Власний"
+    provider_does_not_offer_service: "Обраний спеціаліст не надає цю послугу."

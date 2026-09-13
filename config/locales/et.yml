@@ -905,3 +905,4 @@ et:
     unsaved_changes_prompt: "Sul on salvestamata muudatusi. Kas lahkuda lehelt ja need kaotada?"
     leave_page: "Lahku lehelt"
     status_custom: "Kohandatud"
+    provider_does_not_offer_service: "Valitud teenusepakkuja ei paku seda teenust."

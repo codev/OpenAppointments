@@ -905,3 +905,4 @@ hr:
     unsaved_changes_prompt: "Imate nespremljene promjene. Napustiti stranicu i izgubiti ih?"
     leave_page: "Napusti stranicu"
     status_custom: "Prilagođeno"
+    provider_does_not_offer_service: "Odabrani pružatelj ne nudi ovu uslugu."

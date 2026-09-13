@@ -28,6 +28,10 @@ module EventSaving
     end
     appointment_data["id_users_customer"] ||= customer_id || customer_data&.dig("id")
 
+    unless ServiceProviderLink.exists?(id_users: appointment_data["id_users_provider"], id_services: appointment_data["id_services"])
+      raise ArgumentError, helpers.lang("provider_does_not_offer_service")
+    end
+
     exclude_id = manage_mode ? appointment_data["id"].to_i : nil
     if !force_save && Appointment.provider_conflict?(appointment_data["id_users_provider"],
                                                      appointment_data["start_datetime"],

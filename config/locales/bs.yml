@@ -905,3 +905,4 @@ bs:
     unsaved_changes_prompt: "Imate nesačuvane izmjene. Napustiti stranicu i izgubiti ih?"
     leave_page: "Napusti stranicu"
     status_custom: "Prilagođeno"
+    provider_does_not_offer_service: "Odabrani pružalac ne nudi ovu uslugu."

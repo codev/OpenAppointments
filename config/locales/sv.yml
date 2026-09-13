@@ -905,3 +905,4 @@ sv:
     unsaved_changes_prompt: "Du har osparade ändringar. Lämna sidan och förlora dem?"
     leave_page: "Lämna sidan"
     status_custom: "Anpassad"
+    provider_does_not_offer_service: "Den valda leverantören erbjuder inte denna tjänst."

@@ -905,3 +905,4 @@ tr:
     unsaved_changes_prompt: "Kaydedilmemiş değişiklikleriniz var. Sayfadan ayrılıp kaybedilsin mi?"
     leave_page: "Sayfadan ayrıl"
     status_custom: "Özel"
+    provider_does_not_offer_service: "Seçilen hizmet sağlayıcı bu hizmeti sunmuyor."

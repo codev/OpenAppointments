@@ -905,3 +905,4 @@ de:
     unsaved_changes_prompt: "Sie haben ungespeicherte Änderungen. Seite verlassen und verwerfen?"
     leave_page: "Seite verlassen"
     status_custom: "Benutzerdefiniert"
+    provider_does_not_offer_service: "Der ausgewählte Anbieter bietet diese Dienstleistung nicht an."

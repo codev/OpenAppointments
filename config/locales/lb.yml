@@ -905,3 +905,4 @@ lb:
     unsaved_changes_prompt: "Dir hutt net gespäichert Ännerungen. Säit verloossen an se verléieren?"
     leave_page: "Säit verloossen"
     status_custom: "Benotzerdefinéiert"
+    provider_does_not_offer_service: "De gewielten Ubidder bitt dës Déngschtleeschtung net un."

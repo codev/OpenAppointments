@@ -905,3 +905,4 @@ fr:
     unsaved_changes_prompt: "Vous avez des modifications non enregistrées. Quitter cette page et les perdre ?"
     leave_page: "Quitter la page"
     status_custom: "Personnalisé"
+    provider_does_not_offer_service: "Le prestataire sélectionné ne propose pas ce service."

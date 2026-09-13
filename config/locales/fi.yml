@@ -905,3 +905,4 @@ fi:
     unsaved_changes_prompt: "Sinulla on tallentamattomia muutoksia. Poistutaanko sivulta ja menetetään ne?"
     leave_page: "Poistu sivulta"
     status_custom: "Mukautettu"
+    provider_does_not_offer_service: "Valittu palveluntarjoaja ei tarjoa tätä palvelua."

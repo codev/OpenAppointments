@@ -905,3 +905,4 @@ ja:
     unsaved_changes_prompt: "保存されていない変更があります。このページを離れて破棄しますか？"
     leave_page: "ページを離れる"
     status_custom: "カスタム"
+    provider_does_not_offer_service: "選択した担当者はこのサービスを提供していません。"

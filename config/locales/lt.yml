@@ -905,3 +905,4 @@ lt:
     unsaved_changes_prompt: "Turite neišsaugotų pakeitimų. Palikti šį puslapį ir juos prarasti?"
     leave_page: "Palikti puslapį"
     status_custom: "Pasirinktinis"
+    provider_does_not_offer_service: "Pasirinktas paslaugų teikėjas šios paslaugos neteikia."

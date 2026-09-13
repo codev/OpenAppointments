@@ -905,3 +905,4 @@ pt:
     unsaved_changes_prompt: "Tem alterações por guardar. Sair desta página e perdê-las?"
     leave_page: "Sair da página"
     status_custom: "Personalizado"
+    provider_does_not_offer_service: "O prestador selecionado não oferece este serviço."

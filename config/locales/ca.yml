@@ -905,3 +905,4 @@ ca:
     unsaved_changes_prompt: "Tens canvis sense desar. Vols sortir de la pàgina i perdre'ls?"
     leave_page: "Sortir de la pàgina"
     status_custom: "Personalitzat"
+    provider_does_not_offer_service: "El proveïdor seleccionat no ofereix aquest servei."

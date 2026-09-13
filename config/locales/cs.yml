@@ -905,3 +905,4 @@ cs:
     unsaved_changes_prompt: "Máte neuložené změny. Opustit stránku a ztratit je?"
     leave_page: "Opustit stránku"
     status_custom: "Vlastní"
+    provider_does_not_offer_service: "Vybraný poskytovatel tuto službu nenabízí."
