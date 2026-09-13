@@ -53,19 +53,26 @@ class ProviderDay
 
   def blocked_entries
     @blocked_periods.map do |period|
-      Entry.new(kind: "blocked", start: [ period.start_datetime, date.beginning_of_day ].max,
-                end: [ period.end_datetime, date.end_of_day ].min, title: period.name, record: period)
+      Entry.new(kind: "blocked", start: [ period.start_datetime, wall_time("00:00") ].max,
+                end: [ period.end_datetime, wall_time("23:59") ].min, title: period.name, record: period)
     end
   end
 
   # Working time left after breaks and busy events, as the booking engine sees it.
   def free_entries
     Availability::Engine.new.available_periods(date.strftime("%Y-%m-%d"), provider).filter_map do |period|
-      start_time = Time.zone.parse("#{date} #{period['start']}")
-      end_time = Time.zone.parse("#{date} #{period['end']}")
+      start_time = wall_time(period["start"])
+      end_time = wall_time(period["end"])
       next if ((end_time - start_time) / 60) < MIN_FREE_MINUTES
 
       Entry.new(kind: "free", start: start_time, end: end_time, title: I18n.t("ea.free_for_appointments"))
     end
+  end
+
+  # Stored datetimes are plain Time values in the process zone (no zone-aware
+  # attributes); the day's own times are built the same way so they compare.
+  def wall_time(hhmm)
+    hour, minute = hhmm.split(":").map(&:to_i)
+    Time.new(date.year, date.month, date.day, hour, minute, 0)
   end
 end
