@@ -5,18 +5,18 @@ CloudronManifest.json.
 
 ## 2.0.0
 
-- Admin pages move from the inherited jQuery scripts to standard Rails views with Turbo Frames: Service Categories, Blocked Periods, Webhooks, Services, Admins, Assistants, Providers and Customers. They look the same; pictures are saved with the form, the filter, sort and delete actions reload in place, and confirmations use the usual dialog
-- Every settings page is a Rails form too, with the same layout; saved values show straight away, secrets never appear in the page, and an empty password field keeps the stored one
-- The appointment, unavailability and cancel/delete dialogs on the calendar pages are Rails forms; a clash shows in the dialog with a save-anyway option
-- The Appointments page is rendered by the server: provider day columns with free gaps from the booking availability rules, and the date, days, provider, service and status filters live in the address bar
-- The repeating appointments panel and its cancel dialog are Rails views
-- Login, recovery, password reset, account, notification templates, manage data and the LDAP import are plain forms
-- Pages load with Turbo Drive: moving between admin pages keeps the scripts and only swaps the page
-- The public booking wizard is served step by step by the server; every day's free hours arrive with the time step, so browsing days is instant even on a slow connection, and a slot taken in the meantime returns to the times with a message
-- On the time step the timezone select relabels the hours and is saved on the customer; the reschedule page's cancel and delete-my-data buttons open dialogs that post plain forms
+- The views are converted from jQuery scripts to standard Rails views
+- Pages load with Turbo Drive
+- Appointments and the Admin interface are rendered with Turbo Frames
+- Login and accounts and other accessories are rendered as plain forms
+- An appointment clash shows in the dialog with a save-anyway option
+- Filters now live in the address bar
+- Every day's free hours arrive on the time step so browsing days is instant even on a slow connection - a slot taken in the meantime returns to the times with a message that someone else has taken it
+- On the time step the timezone select relabels the hours
 - Blocked period dates use the browser's date and time picker
-- Lists of customers, admins, assistants, blocked periods and webhooks page 20 at a time
-- Fixed: the API, LDAP, analytics, Google Calendar and messages settings pages showed blank values after a save
+- Longer lists page 20 items at a time
+- Saving an appointment refuses a provider who does not offer the chosen service
+- Import fixes
 - Browser tests cover every converted page
 
 ## 1.9.0
