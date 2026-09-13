@@ -32,6 +32,7 @@ class AppointmentsPageTest < ApplicationSystemTestCase
     find(".day-entry-appointment", text: "JX - Trim Cut").click
     assert_selector "#save-appointment", visible: true, wait: 5
     assert_field "appointment-notes", with: "Morning cut"
+    wait_for_modal
     within(find("#save-appointment").ancestor(".modal")) { click_on "Cancel" }
     assert_no_selector ".modal.show", wait: 5
 
