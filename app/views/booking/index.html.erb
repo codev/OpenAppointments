@@ -20,7 +20,7 @@
         <% when "first", "second" %>
             <% kind = @step == "first" ? vars(:first_step) : (vars(:first_step) == "provider" ? "service" : "provider") %>
             <% if kind == "service" %>
-                <%= render "shared/booking_service_step", available_services: vars(:available_services) %>
+                <%= render "shared/booking_service_step", available_services: selectable_services %>
             <% else %>
                 <%= render "shared/booking_provider_step" %>
             <% end %>

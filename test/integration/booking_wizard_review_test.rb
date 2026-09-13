@@ -213,6 +213,84 @@ class BookingWizardReviewTest < ActionDispatch::IntegrationTest
     assert_select "#steps #step-3.active-step"
   end
 
+  test "a chosen provider narrows the services to the ones they offer" do
+    riley = User.create!(name: "Riley", email: "riley@example.org", role: Role.find_by!(slug: Role::PROVIDER))
+    beard = Service.create!(name: "Beard Trim", duration: 15)
+    ServiceProviderLink.create!(provider: riley, service: beard)
+
+    get "/", params: { first: "provider", step: "second", provider_id: users(:zane).id }
+    assert_select "#select-service option[value=?]", services(:haircut).id.to_s
+    assert_select "#select-service option[value=?]", beard.id.to_s, count: 0
+
+    get "/", params: { provider: riley.booking_slug }
+    assert_select "#select-service option[value=?]", beard.id.to_s
+    assert_select "#select-service option[value=?]", services(:haircut).id.to_s, count: 0
+
+    get "/", params: { first: "provider", step: "second", provider_id: "any-provider" }
+    assert_select "#select-service option[value=?]", beard.id.to_s
+    assert_select "#select-service option[value=?]", services(:haircut).id.to_s
+  end
+
+  test "link parameters prefill the details and travel through the steps" do
+    get "/", params: { name: "Link Person", email: "link@example.org", phone: "+447700900111", zip: "N1" }
+    assert_select "#service-step-form input[name=name][value='Link Person']"
+    assert_select "#service-step-form input[name=zip][value='N1']"
+    get "/", params: @state.merge(step: "info", name: "Link Person", email: "link@example.org", phone: "+447700900111")
+    assert_select "#name[value='Link Person']"
+    assert_select "#email[value='link@example.org']"
+    assert_select "#phone-number[value='+447700900111']"
+  end
+
+  test "a reschedule hides the two selection steps and the way back to them" do
+    travel_to booking_time do
+      get "/booking/reschedule/#{HASH}"
+    end
+    assert_select "#wizard-frame-3 #select-date"
+    assert_select "#steps #step-1, #steps #step-2", count: 0
+    assert_select "#steps #step-3.active-step .step-number", text: "1"
+    assert_select "#steps #step-5 .step-number", text: "3"
+    assert_select "#button-back-3", count: 0
+    assert_select "#wizard-state[data-step-links='{}']"
+  end
+
+  test "the details step keeps the 1.9.0 grid and leaks no markup" do
+    Setting.set("display_notes", "1")
+    Setting.set("display_custom_field_1", "1")
+    Setting.set("long_custom_field_1", "1")
+    get "/", params: @state.merge(step: "info")
+    %w[name email phone-number].each { |id| assert_select "#wizard-frame-4 .row > .col-12.col-lg-6 > ##{id}" }
+    assert_select "#wizard-frame-4 .row > .col-12:not(.col-lg-6) > textarea#custom-field-1"
+    assert_select "#wizard-frame-4 .row > .col-12:not(.col-lg-6) > #notes"
+    assert_select "#wizard-frame-4 .row > .col-12 #remember-me ~ label", text: I18n.t("ea.remember_me")
+    assert_select "#wizard-frame-4 .form-text", text: I18n.t("ea.remember_me_hint")
+    assert_no_match(%r{&lt;/?[a-z]+&gt;|%&gt;}, response.body, "escaped markup leaked into the page")
+
+    confirm(manage_mode: "1", appointment_hash: HASH, customer: { name: "" })
+    assert_select "#wizard-frame-4 #remember-me", count: 0
+  end
+
+  test "no public page leaks template text as visible markup" do
+    Setting.set("display_notes", "1")
+    Setting.set("display_delete_personal_information", "1")
+    leak = %r{&lt;/?[a-z]+&gt;|%&gt;}
+    pages = [ [ "/", {} ], [ "/", { first: "provider" } ], [ "/", @state.slice(:service_id).merge(step: "second") ],
+              [ "/", @state.merge(step: "time") ], [ "/", @state.merge(step: "info") ], [ "/login", {} ] ]
+    pages.each do |path, params|
+      get path, params: params
+      assert_no_match leak, response.body, "markup leaked on #{path} #{params}"
+    end
+    confirm
+    assert_no_match leak, response.body, "markup leaked on the confirmation step"
+    confirm(customer: { name: "" })
+    assert_no_match leak, response.body, "markup leaked on the details step with an error"
+    travel_to booking_time do
+      get "/booking/reschedule/#{HASH}"
+      assert_no_match leak, response.body, "markup leaked on the reschedule page"
+      get "/booking_confirmation/of/#{HASH}"
+      assert_no_match leak, response.body, "markup leaked on the confirmation page"
+    end
+  end
+
   test "the time step names the provider zone and carries the chosen zone" do
     Setting.set("fixed_timezone", "0")
     get "/", params: @state.merge(step: "time", timezone: "America/New_York")

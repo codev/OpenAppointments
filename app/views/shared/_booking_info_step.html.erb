@@ -1,12 +1,21 @@
 <%# Customer details, posted to booking/confirm (never in a URL). Locals: the
-    display_/require_ settings. %>
-<% customer = @customer || vars(:customer_data) || {} %>
-<% required_star = ->(flag, either: false) { %>
+    display_/require_ settings. Same grid as the jQuery version: half-width
+    fields, long custom fields and notes full width. %>
+<% customer = @customer || vars(:customer_data) || prefilled_customer %>
+<%# The lambdas return captured HTML, so each prints once. %>
+<% required_star = ->(flag, either: false) { capture do %>
     <% if flag == "1" %><span class="text-danger">*</span><% elsif either %>
         <span class="required-either" title="<%= lang('phone_or_email_required') %>">*</span>
         <span class="visually-hidden"><%= lang('phone_or_email_required') %></span>
     <% end %>
-<% } %>
+<% end } %>
+<% text_field = ->(field, label, require, maxlength, either: false) { capture do %>
+    <div class="col-12 col-lg-6 mb-3">
+        <label for="<%= field.dasherize %>" class="form-label"><%= label %> <%= required_star.call(require, either: either) %></label>
+        <%= text_field_tag "customer[#{field}]", customer[field], id: field.dasherize, class: "form-control",
+                           maxlength: maxlength, required: require == "1" %>
+    </div>
+<% end } %>
 <div id="wizard-frame-<%= step_number %>" class="wizard-frame p-3 p-md-4">
     <%= form_with url: "/booking/confirm", method: :post, id: "info-step-form", data: { turbo_frame: "wizard" } do %>
         <%= hidden_field_tag :form, "1", id: nil %>
@@ -17,56 +26,36 @@
         <% end %>
         <div class="frame-container py-3">
             <h2 class="frame-title fw-light text-center mb-4 text-muted"><%= lang('customer_information') %></h2>
+            <div class="row frame-content">
+                <%= text_field.call("name", lang("name"), "1", 220) %>
+                <%= text_field.call("email", lang("email"), require_email, 120, either: require_phone_or_email == "1") if display_email == "1" %>
+                <%= text_field.call("phone_number", lang("phone_number"), require_phone_number, 60, either: require_phone_or_email == "1") if display_phone_number == "1" %>
+                <% { "address" => [ display_address, require_address ], "city" => [ display_city, require_city ],
+                     "zip_code" => [ display_zip_code, require_zip_code ] }.each do |field, (display, require)| %>
+                    <%= text_field.call(field, lang(field), require, 120) if display == "1" %>
+                <% end %>
+                <%= render "shared/custom_fields", name: "customer", values: customer,
+                                                   col_class: "col-12 col-lg-6", long_col_class: "col-12", rows: 2 %>
+                <% if display_notes == "1" %>
+                    <div class="col-12 mb-3">
+                        <label for="notes" class="form-label"><%= lang('notes') %> <%= required_star.call(require_notes) %></label>
+                        <%= text_area_tag "customer[notes]", customer["notes"], id: "notes", class: "form-control", rows: 2,
+                                          maxlength: 500, required: require_notes == "1" %>
+                    </div>
+                <% end %>
+                <% unless vars(:manage_mode) %>
+                    <div class="col-12 mb-3">
+                        <div class="form-check">
+                            <input type="checkbox" id="remember-me" class="form-check-input">
+                            <label for="remember-me" class="form-check-label"><%= lang('remember_me') %></label>
+                        </div>
+                        <div class="form-text text-muted small"><%= lang('remember_me_hint') %></div>
+                    </div>
+                <% end %>
+            </div>
             <% if @error %>
                 <div id="form-message" class="alert alert-danger text-center" role="alert"><%= @error %></div>
             <% end %>
-            <div class="row frame-content">
-                <div class="col-12 col-md-6 field-col">
-                    <div class="mb-3">
-                        <label for="name" class="form-label"><%= lang('name') %> <span class="text-danger">*</span></label>
-                        <%= text_field_tag "customer[name]", customer["name"], id: "name", class: "form-control", maxlength: 220, required: true %>
-                    </div>
-                    <% if display_email == "1" %>
-                        <div class="mb-3">
-                            <label for="email" class="form-label"><%= lang('email') %>
-                                <%= required_star.call(require_email, either: require_phone_or_email == "1") %></label>
-                            <%= text_field_tag "customer[email]", customer["email"], id: "email", class: "form-control", maxlength: 120,
-                                               required: require_email == "1" %>
-                        </div>
-                    <% end %>
-                    <% if display_phone_number == "1" %>
-                        <div class="mb-3">
-                            <label for="phone-number" class="form-label"><%= lang('phone_number') %>
-                                <%= required_star.call(require_phone_number, either: require_phone_or_email == "1") %></label>
-                            <%= text_field_tag "customer[phone_number]", customer["phone_number"], id: "phone-number", class: "form-control",
-                                               maxlength: 60, required: require_phone_number == "1" %>
-                        </div>
-                    <% end %>
-                    <%= render "shared/custom_fields", name: "customer", values: customer, rows: 2 %>
-                </div>
-                <div class="col-12 col-md-6 field-col">
-                    <% { "address" => [ display_address, require_address ], "city" => [ display_city, require_city ],
-                         "zip_code" => [ display_zip_code, require_zip_code ] }.each do |field, (display, require)| %>
-                        <% next unless display == "1" %>
-                        <div class="mb-3">
-                            <label for="<%= field.dasherize %>" class="form-label"><%= lang(field) %> <%= required_star.call(require) %></label>
-                            <%= text_field_tag "customer[#{field}]", customer[field], id: field.dasherize, class: "form-control",
-                                               maxlength: 120, required: require == "1" %>
-                        </div>
-                    <% end %>
-                    <% if display_notes == "1" %>
-                        <div class="mb-3">
-                            <label for="notes" class="form-label"><%= lang('notes') %> <%= required_star.call(require_notes) %></label>
-                            <%= text_area_tag "customer[notes]", customer["notes"], id: "notes", class: "form-control", rows: 2,
-                                              maxlength: 500, required: require_notes == "1" %>
-                        </div>
-                    <% end %>
-                    <div class="form-check mb-3">
-                        <input type="checkbox" id="remember-me" class="form-check-input">
-                        <label for="remember-me" class="form-check-label"><%= lang('remember_me') %></label>
-                    </div>
-                </div>
-            </div>
         </div>
         <div class="command-buttons text-center my-3 mx-auto d-md-flex justify-content-md-between">
             <%= wizard_back_button "time" %>

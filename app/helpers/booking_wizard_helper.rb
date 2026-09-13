@@ -1,11 +1,20 @@
 # The booking wizard's steps as URL state.
 module BookingWizardHelper
+  # Link parameters that prefill the details step (EA's ?name=&email=&phone=...).
+  PREFILL_PARAMS = { "name" => "name", "email" => "email", "phone" => "phone_number",
+                     "address" => "address", "city" => "city", "zip" => "zip_code" }.freeze
+
   # The kept query parameters at every step.
   def wizard_params(overrides = {})
     base = { first: params[:first].presence, service: params[:service].presence, provider: params[:provider].presence,
              theme: params[:theme].presence, service_id: @service_id.to_i.positive? ? @service_id : nil,
              provider_id: @provider_id.presence, date: @date, time: @time, timezone: @timezone }
+    PREFILL_PARAMS.each_key { |key| base[key.to_sym] = params[key].presence }
     base.merge(overrides).compact
+  end
+
+  def prefilled_customer
+    PREFILL_PARAMS.filter_map { |param, field| [ field, params[param].to_s.strip ] if params[param].present? }.to_h
   end
 
   # The wizard's own route: confirm and register render steps too, and their
@@ -38,6 +47,9 @@ module BookingWizardHelper
   end
 
   def wizard_back_button(step)
+    # A reschedule has its service and provider fixed: no way back from the times.
+    return if step == "second" && vars(:manage_mode)
+
     overrides = {}
     # Cards mode starts over from the category view, as the jQuery wizard did.
     overrides = { service_id: nil, provider_id: nil } if step == "first" && vars(:display_mode) == "cards"
@@ -74,13 +86,27 @@ module BookingWizardHelper
     names.values_at(*kinds).join(" │ ")
   end
 
+  # Header steps: a reschedule starts at the times, so its two selection steps are not shown.
+  def wizard_header_steps
+    vars(:manage_mode) ? (3..5) : (1..5)
+  end
+
   # Completed steps in the header link back to their page, as the Back buttons do.
   def wizard_step_links
     steps = { 1 => "first", 2 => "second", 3 => "time", 4 => "info" }
-    steps.select { |number, _| number < step_number }.to_h do |number, step|
+    steps.select { |number, _| number < step_number && wizard_header_steps.cover?(number) }.to_h do |number, step|
       overrides = number == 1 && vars(:display_mode) == "cards" ? { service_id: nil, provider_id: nil } : {}
       [ number, wizard_step_path(step, overrides) ]
     end
+  end
+
+  # Services the chosen provider offers (all of them before one is chosen).
+  def selectable_services
+    services = vars(:available_services)
+    return services if @provider_id.blank? || @provider_id == BookingPayloads::ANY_PROVIDER
+
+    offered = selected_provider&.dig("services") || []
+    services.select { |row| offered.include?(row["id"]) }
   end
 
   # Providers offering the chosen service (all of them before one is chosen).

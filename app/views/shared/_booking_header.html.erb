@@ -25,13 +25,14 @@
     <ol id="steps" class="d-block d-md-inline-block float-md-end overflow-hidden mx-auto my-3 my-md-1">
         <% step_titles.each_with_index do |title, index| %>
             <% number = index + 1 %>
+            <% next unless wizard_header_steps.cover?(number) %>
             <li id="step-<%= number %>" data-step-index="<%= number %>"
                 class="book-step d-inline-block float-start rounded text-center <%= 'active-step' if number == step_number %> <%= 'completed-step' if links[number] %>"
                 data-tippy-content="<%= lang(title) %>" aria-label="<%= lang(title) %>"
                 <%= 'aria-current="step"'.html_safe if number == step_number %>
                 <% if links[number] %>role="button" tabindex="0" data-href="<%= links[number] %>"<% end %>>
                 <strong class="d-block text-center">
-                    <span class="step-number"><%= number %></span>
+                    <span class="step-number"><%= number - wizard_header_steps.first + 1 %></span>
                     <i class="fas fa-check step-check" aria-hidden="true"></i>
                 </strong>
             </li>

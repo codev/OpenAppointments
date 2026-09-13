@@ -89,28 +89,47 @@ App.Pages.Booking = (function () {
     }
 
     const STORED_FIELDS = ['name', 'email', 'phone-number', 'address', 'city', 'zip-code'];
+    const DRAFT_KEY = 'OpenAppointments.Draft';
 
+    function readStorage(storage, key) {
+        try {
+            return JSON.parse(storage.getItem(key) || 'null');
+        } catch (error) {
+            return null;
+        }
+    }
+
+    function fillEmptyFields(values) {
+        Object.keys(values || {}).forEach((id) => {
+            const $field = $('#' + id);
+            if ($field.length && !$field.val()) {
+                $field.val(values[id] || '');
+            }
+        });
+    }
+
+    // Details typed this session come back when an earlier step is revisited;
+    // remembered details (opt-in, kept across sessions) fill what is still empty.
     function initializeInfoStep() {
         if (!$('#info-step-form').length) {
             return;
         }
 
-        let stored;
-        try {
-            stored = JSON.parse(window.localStorage.getItem('OpenAppointments.Customer') || 'null');
-        } catch (error) {
-            stored = null;
-        }
+        fillEmptyFields(readStorage(window.sessionStorage, DRAFT_KEY));
 
+        const stored = readStorage(window.localStorage, 'OpenAppointments.Customer');
         if (stored) {
             $('#remember-me').prop('checked', true);
-            STORED_FIELDS.forEach((id) => {
-                const $field = $('#' + id);
-                if ($field.length && !$field.val()) {
-                    $field.val(stored[id] || '');
-                }
-            });
+            fillEmptyFields(stored);
         }
+    }
+
+    function saveDraft() {
+        const draft = {};
+        $('#info-step-form .form-control').each((index, field) => {
+            draft[field.id] = $(field).val() || '';
+        });
+        window.sessionStorage.setItem(DRAFT_KEY, JSON.stringify(draft));
     }
 
     function rememberCustomer() {
@@ -201,6 +220,29 @@ App.Pages.Booking = (function () {
         $('#provider-description .selection-description[data-for-provider="' + $('#select-provider').val() + '"]').removeClass('d-none');
     }
 
+    function onSubmit(event) {
+        const form = event.target;
+        if (form.id === 'time-step-form' && !$('#selected-time').val()) {
+            // Next needs a chosen hour.
+            event.preventDefault();
+            if (!$('#select-hour-prompt').length) {
+                $('<div/>', {id: 'select-hour-prompt', class: 'text-danger mb-4', text: lang('appointment_hour_missing')})
+                    .prependTo('#available-hours');
+            }
+        } else if (form.id === 'service-step-form' || form.id === 'provider-step-form') {
+            // Cards mode has no visible select: block Next until a card is picked.
+            const $select = $(form).find('#select-service, #select-provider');
+            if ($select.hasClass('d-none') && !$select.val()) {
+                event.preventDefault();
+            }
+        } else if (form.id === 'info-step-form') {
+            rememberCustomer();
+            saveDraft();
+        } else if (form.id === 'book-appointment-form') {
+            window.sessionStorage.removeItem(DRAFT_KEY);
+        }
+    }
+
     function initializeStep() {
         initializeTimeStep();
         initializeInfoStep();
@@ -242,19 +284,9 @@ App.Pages.Booking = (function () {
             $(document).on('change', '#select-timezone', () => renderHours(timeStepFrame(), $('#selected-date').val(), true));
             $(document).on('click', '.available-hour', (event) => selectHour($(event.currentTarget).data('value')));
 
-            // The time step's Next needs a chosen hour.
-            $(document).on('submit', '#time-step-form', (event) => {
-                if ($('#selected-time').val()) {
-                    return;
-                }
-                event.preventDefault();
-                if (!$('#select-hour-prompt').length) {
-                    $('<div/>', {id: 'select-hour-prompt', class: 'text-danger mb-4', text: lang('appointment_hour_missing')})
-                        .prependTo('#available-hours');
-                }
-            });
-
-            $(document).on('submit', '#info-step-form', rememberCustomer);
+            // Turbo swallows a form's submit before delegated jQuery handlers see
+            // it, so the guards listen in the capture phase.
+            document.addEventListener('submit', onSubmit, true);
 
             // Card selection writes into the step's select.
             $(document).on('click keypress', '.booking-card', (event) => {
@@ -284,13 +316,6 @@ App.Pages.Booking = (function () {
                 scrollToNext();
             });
 
-            // Cards mode has no visible select: block Next until a card is picked.
-            $(document).on('submit', '#service-step-form, #provider-step-form', (event) => {
-                const $select = $(event.target).find('#select-service, #select-provider');
-                if ($select.hasClass('d-none') && !$select.val()) {
-                    event.preventDefault();
-                }
-            });
         });
 
         window.tippy('[data-tippy-content]');

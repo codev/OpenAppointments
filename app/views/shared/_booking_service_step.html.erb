@@ -1,4 +1,5 @@
-<%# Service selection: a GET form advancing the wizard. Locals: available_services. %>
+<%# Service selection: a GET form advancing the wizard. Locals: available_services
+    (already narrowed to the chosen provider's). %>
 <div id="wizard-frame-<%= step_number %>" class="wizard-frame p-3 p-md-4">
     <%= form_with url: wizard_form_path, method: :get, id: "service-step-form", data: { turbo_frame: "wizard", turbo_action: "advance" } do %>
         <%= wizard_state_fields(service_id: nil, date: nil, time: nil, step: nil) %>
@@ -6,7 +7,8 @@
         <div class="frame-container py-3">
             <%
               cards_mode = vars(:display_mode) == "cards"
-              categories = cards_mode ? vars(:available_categories) : []
+              offered_category_ids = available_services.map { |service| service["service_category_id"] }
+              categories = cards_mode ? vars(:available_categories).select { |category| offered_category_ids.include?(category["id"]) } : []
               uncategorized = cards_mode ? available_services.select { |service| service["service_category_id"].nil? } : []
               category_first = cards_mode && categories.any?
             %>

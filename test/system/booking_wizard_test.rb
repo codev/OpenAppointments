@@ -86,6 +86,15 @@ class BookingWizardTest < ApplicationSystemTestCase
     assert_equal services(:haircut).id.to_s, find("#select-service").value
   end
 
+  test "the cookie banner shows and its link opens the notice" do
+    Setting.set("display_cookie_notice", "1")
+    Setting.set("cookie_notice_content", "We use one cookie.")
+    visit root_url
+    assert_selector ".cc-window", wait: 5
+    find(".cc-link[data-bs-target='#cookie-notice-modal']").click
+    assert_selector "#cookie-notice-modal.show", text: "We use one cookie.", wait: 5
+  end
+
   test "first page blocks next until a choice is made" do
     visit root_url
     assert_selector "#wizard-frame-1", visible: :visible, wait: 5
@@ -262,6 +271,14 @@ class BookingWizardWindowTest < ApplicationSystemTestCase
     assert_selector "#wizard-frame-1", visible: :visible, wait: 5
   end
 
+  test "the time step refuses Next until an hour is chosen" do
+    to_time_step
+    find("#button-next-3").click
+    assert_selector "#select-hour-prompt", text: I18n.t("ea.appointment_hour_missing")
+    assert_selector "#wizard-frame-3", visible: :visible
+    assert_no_selector "#wizard-frame-4"
+  end
+
   test "the indicator follows the frame, the details post leaves the address alone and Back stays in the frame" do
     Setting.set("first_weekday", "monday")
     to_time_step
@@ -286,6 +303,33 @@ class BookingWizardWindowTest < ApplicationSystemTestCase
     assert_selector "#wizard-frame-4", visible: :visible, wait: 5
     assert_equal "Stepper", find("#name").value
     assert page.evaluate_script("window.__sameDocument === true"), "Back must not reload the page"
+  end
+
+  test "details typed this session come back after revisiting an earlier step" do
+    to_time_step
+    date = weekday(0)
+    find(".flatpickr-day[aria-label='#{date.strftime('%B %-d, %Y')}']").click
+    find("#available-hours .available-hour", text: /\A9:30 am\z/, wait: 5).click
+    find("#button-next-3").click
+    assert_selector "#wizard-frame-4", visible: :visible, wait: 5
+    fill_in "name", with: "Draft Person"
+    fill_in "email", with: "draft@example.org"
+    find("#button-next-4").click
+    assert_selector "#wizard-frame-5", visible: :visible, wait: 5
+
+    find("#step-1").click
+    assert_selector "#wizard-frame-1", visible: :visible, wait: 5
+    find("#button-next-1").click
+    find("#button-next-2").click
+    assert_selector "#wizard-frame-3", visible: :visible, wait: 5
+    # A fresh service choice starts the times over; the details are what must come back.
+    find(".flatpickr-day[aria-label='#{date.strftime('%B %-d, %Y')}']").click
+    find("#available-hours .available-hour", text: /\A9:30 am\z/, wait: 5).click
+    find("#button-next-3").click
+    assert_selector "#wizard-frame-4", visible: :visible, wait: 5
+    assert_equal "Draft Person", find("#name").value
+    assert_equal "draft@example.org", find("#email").value
+    assert_not find("#remember-me").checked?
   end
 
   test "the timezone select relabels the hours and travels to the customer record" do
