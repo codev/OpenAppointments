@@ -34,6 +34,7 @@ class AppointmentsController < ApplicationController
                                    id_users_provider: params[:provider_id].presence, id_services: params[:service_id].presence)
     @customer = User.new
     load_form_data
+    default_service_for_provider
     default_times
     render_form :form
   end
@@ -165,8 +166,19 @@ class AppointmentsController < ApplicationController
     load_form_data
   end
 
-  # As the jQuery dialog: the next quarter hour, for the duration of the
-  # chosen (else the first offered) service.
+  # A free slot click names the provider but no service. The provider list in
+  # the form follows the service, so start on one this provider offers.
+  def default_service_for_provider
+    return if @appointment.id_services.present?
+
+    provider = @providers.find { |candidate| candidate.id == @appointment.id_users_provider }
+    return unless provider
+
+    offered = provider.services.map(&:id)
+    @appointment.id_services = @services.find { |service| offered.include?(service.id) }&.id
+  end
+
+  # The next quarter hour, for the duration of the chosen (else the first offered) service.
   def default_times
     duration = (@appointment.service || @services.first)&.duration || 60
     if @appointment.start_datetime.blank?

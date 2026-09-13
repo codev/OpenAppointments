@@ -61,4 +61,20 @@ class AppointmentsPageTest < ActionDispatch::IntegrationTest
     assert_select "#filter-provider option", count: 2
     assert_select ".provider-column[data-provider-id=?]", other.id.to_s, count: 0
   end
+  # A free slot click names the provider; the form must open on a service that
+  # provider offers, or the provider list (which follows the service) drops them.
+  test "a new appointment for a provider opens on a service they offer" do
+    riley = User.create!(name: "Riley", email: "riley@example.org", role: Role.find_by!(slug: Role::PROVIDER))
+    riley.create_settings!(username: "riley", password: Passwords.hash("rileypass1"), working_plan: users(:zane).settings.working_plan)
+    aardvark = Service.create!(name: "Aardvark Wash", duration: 15)
+    ServiceProviderLink.create!(provider: riley, service: aardvark)
+    login_admin
+    get "/appointments/new", params: { start: "2026-07-20 11:30:00", provider_id: users(:zane).id }
+    assert_response :success
+    assert_select "#select-service option[value=?]", aardvark.id.to_s
+    assert_select "#select-provider option[selected][value=?]", users(:zane).id.to_s
+    # Zane's first service in list order, not the list's first service.
+    assert_select "#select-service option[selected][value=?]", services(:group_session).id.to_s
+    assert_select "#select-service option[selected]", count: 1
+  end
 end
