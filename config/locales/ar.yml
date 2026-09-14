@@ -917,3 +917,4 @@ ar:
     customer_report_hint: "تنزيل جدول بيانات لكل عميل مع تفاصيله وعدد المواعيد في العام الماضي ومقدمي الخدمة والخدمات التي حجزها."
     customer_notes: "ملاحظات العميل"
     appointments_in_last_year: "المواعيد في العام الماضي"
+    notification_event_customer_message: "تم استلام رسالة من العميل"

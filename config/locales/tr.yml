@@ -917,3 +917,4 @@ tr:
     customer_report_hint: "Tüm müşterileri, bilgilerini, son bir yıldaki randevu sayısını ve rezerve ettikleri sağlayıcı ve hizmetleri içeren bir tablo indirin."
     customer_notes: "Müşteri Notları"
     appointments_in_last_year: "Son Bir Yıldaki Randevular"
+    notification_event_customer_message: "Müşteri Mesajı Alındı"

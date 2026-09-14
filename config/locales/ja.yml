@@ -917,3 +917,4 @@ ja:
     customer_report_hint: "全顧客の詳細、過去1年の予約数、予約した担当者とサービスを記載したスプレッドシートをダウンロードします。"
     customer_notes: "顧客メモ"
     appointments_in_last_year: "過去1年の予約数"
+    notification_event_customer_message: "顧客からのメッセージを受信"

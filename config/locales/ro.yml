@@ -917,3 +917,4 @@ ro:
     customer_report_hint: "Descărcați un tabel cu toți clienții, datele lor, numărul de programări din ultimul an și furnizorii și serviciile rezervate."
     customer_notes: "Note client"
     appointments_in_last_year: "Programări în ultimul an"
+    notification_event_customer_message: "Mesaj de la client primit"

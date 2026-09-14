@@ -8,7 +8,8 @@ module Messaging
       "Customer Email", "Customer Phone", "Provider Name", "Service Name",
       "Service Duration", "Appointment Date", "Appointment Time",
       "Appointment End Time", "Appointment Status", "Appointment Link",
-      "Cancellation Reason", "Repeats", "Next Appointment", "User Name"
+      "Cancellation Reason", "Repeats", "Next Appointment", "User Name",
+      "Customer Message Link"
     ].freeze
 
     module_function
@@ -23,6 +24,18 @@ module Messaging
         "Company Name" => Setting.get("company_name", ""),
         "Company Link" => Setting.get("company_link", "")
       }
+    end
+
+    # Tokens for an incoming customer message: the customer and a login link to
+    # the messages panel of their record.
+    def customer_message_context(customer:)
+      base_context.merge(
+        "Customer Name" => customer.name.to_s,
+        "Customer First Name" => customer.name.to_s.split(" ").first.to_s,
+        "Customer Email" => customer.email.to_s,
+        "Customer Phone" => sms_address(customer).to_s,
+        "Customer Message Link" => "#{base_url}/customers?customer_id=#{customer.id}&section=messages"
+      )
     end
 
     # Tokens for an appointment event, with times shifted into the recipient

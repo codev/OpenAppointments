@@ -917,3 +917,4 @@ lt:
     customer_report_hint: "Atsisiųskite lentelę su visais klientais, jų duomenimis, vizitų skaičiumi per pastaruosius metus bei užsakytais paslaugų teikėjais ir paslaugomis."
     customer_notes: "Kliento pastabos"
     appointments_in_last_year: "Vizitai per pastaruosius metus"
+    notification_event_customer_message: "Gauta kliento žinutė"

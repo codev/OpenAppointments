@@ -917,3 +917,4 @@ da:
     customer_report_hint: "Download et regneark med alle kunder, deres oplysninger, antal aftaler det seneste år samt de udbydere og ydelser, de har booket."
     customer_notes: "Kundenoter"
     appointments_in_last_year: "Aftaler det seneste år"
+    notification_event_customer_message: "Kundebesked modtaget"

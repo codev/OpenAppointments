@@ -917,3 +917,4 @@ lb:
     customer_report_hint: "Luet eng Tabell mat alle Clienten, hiren Donnéeën, der Zuel vun de Rendez-vousen am leschte Joer an de gebuchte Fournisseuren a Servicer erof."
     customer_notes: "Notizen zum Client"
     appointments_in_last_year: "Rendez-vousen am leschte Joer"
+    notification_event_customer_message: "Clientsmessage kritt"

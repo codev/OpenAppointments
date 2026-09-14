@@ -917,3 +917,4 @@ en:
     customer_report_hint: "Download a spreadsheet of every customer with their details, the number of appointments in the last year, and the providers and services they have booked."
     customer_notes: "Customer Notes"
     appointments_in_last_year: "Appointments in Last Year"
+    notification_event_customer_message: "Customer Message Received"

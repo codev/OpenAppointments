@@ -29,4 +29,16 @@ class MessagesMailboxTest < ActionMailbox::TestCase
     assert_nil Message.incoming.sole.customer_id
     assert_equal 1, Message.unread.unknown_sender.count
   end
+
+  test "a customer's email fires the customer message notification" do
+    Notification.create!(title: "Customer Message Received", event: "customer_message", audiences: %w[provider],
+                         channels: %w[email], short_text: "New message from {{Customer Name}}")
+    Appointment.create!(start_datetime: 2.days.from_now, end_datetime: 2.days.from_now + 30.minutes,
+                        provider: users(:zane), customer: users(:jx), service: services(:haircut), status: "Booked")
+    receive_inbound_email_from_mail(from: users(:jx).email, to: "shop@example.org", subject: "Hi", body: "Late")
+    assert_equal [ users(:zane).email ], Message.outgoing.pluck(:to_address)
+
+    receive_inbound_email_from_mail(from: "stranger@example.org", to: "shop@example.org", subject: "Hi", body: "?")
+    assert_equal 1, Message.outgoing.count
+  end
 end

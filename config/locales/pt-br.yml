@@ -917,3 +917,4 @@ pt-br:
     customer_report_hint: "Baixe uma planilha com todos os clientes, seus dados, o número de agendamentos no último ano e os prestadores e serviços reservados."
     customer_notes: "Observações do cliente"
     appointments_in_last_year: "Agendamentos no último ano"
+    notification_event_customer_message: "Mensagem do cliente recebida"

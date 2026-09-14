@@ -917,3 +917,4 @@ cs:
     customer_report_hint: "Stáhněte tabulku všech zákazníků s jejich údaji, počtem schůzek za poslední rok a poskytovateli a službami, které si rezervovali."
     customer_notes: "Poznámky k zákazníkovi"
     appointments_in_last_year: "Schůzky za poslední rok"
+    notification_event_customer_message: "Přijata zpráva od zákazníka"

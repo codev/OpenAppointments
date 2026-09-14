@@ -917,3 +917,4 @@ fi:
     customer_report_hint: "Lataa taulukko kaikista asiakkaista, heidän tiedoistaan, viime vuoden varausten määrästä sekä varatuista palveluntarjoajista ja palveluista."
     customer_notes: "Asiakkaan muistiinpanot"
     appointments_in_last_year: "Varaukset viime vuonna"
+    notification_event_customer_message: "Asiakkaan viesti vastaanotettu"

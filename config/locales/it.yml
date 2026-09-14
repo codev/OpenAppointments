@@ -917,3 +917,4 @@ it:
     customer_report_hint: "Scarica un foglio di calcolo con tutti i clienti, i loro dati, il numero di appuntamenti nell'ultimo anno e i fornitori e servizi prenotati."
     customer_notes: "Note cliente"
     appointments_in_last_year: "Appuntamenti nell'ultimo anno"
+    notification_event_customer_message: "Messaggio del cliente ricevuto"

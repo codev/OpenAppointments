@@ -917,3 +917,4 @@ fa:
     customer_report_hint: "دانلود صفحه‌گسترده‌ای از همه مشتریان با جزئیات آن‌ها، تعداد نوبت‌های سال گذشته و ارائه‌دهندگان و خدماتی که رزرو کرده‌اند."
     customer_notes: "یادداشت‌های مشتری"
     appointments_in_last_year: "نوبت‌های سال گذشته"
+    notification_event_customer_message: "پیام مشتری دریافت شد"

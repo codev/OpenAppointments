@@ -917,3 +917,4 @@ sl:
     customer_report_hint: "Prenesite preglednico vseh strank z njihovimi podatki, številom terminov v zadnjem letu ter rezerviranimi ponudniki in storitvami."
     customer_notes: "Opombe o stranki"
     appointments_in_last_year: "Termini v zadnjem letu"
+    notification_event_customer_message: "Prejeto sporočilo stranke"

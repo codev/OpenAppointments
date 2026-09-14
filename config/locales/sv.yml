@@ -917,3 +917,4 @@ sv:
     customer_report_hint: "Ladda ner ett kalkylblad med alla kunder, deras uppgifter, antal bokningar det senaste året samt bokade leverantörer och tjänster."
     customer_notes: "Kundanteckningar"
     appointments_in_last_year: "Bokningar det senaste året"
+    notification_event_customer_message: "Kundmeddelande mottaget"

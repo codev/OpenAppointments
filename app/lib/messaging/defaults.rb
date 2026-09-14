@@ -119,14 +119,41 @@ module Messaging
             See you soon,
             {{Company Name}}
           TEXT
-        }
+        },
+        customer_message_notification
       ]
+    end
+
+    # Stylists hear about incoming customer messages by email and, when the
+    # gateway is activated, SMS.
+    def customer_message_notification
+      {
+        title: "Customer Message Received",
+        event: "customer_message",
+        audiences: %w[provider],
+        channels: %w[email smsgateway],
+        short_text: "New message from {{Customer Name}}: {{Customer Message Link}}",
+        long_text: <<~TEXT
+          {{Customer Name}} has sent you a message.
+
+          Read and reply: {{Customer Message Link}}
+
+          {{Company Name}}
+        TEXT
+      }
     end
 
     def create_notifications!
       return unless Notification.none?
 
       notifications.each { |attrs| Notification.create!(attrs) }
+    end
+
+    # Existing installs: the customer message template unless one is set up.
+    def create_customer_message_notification!
+      return if Notification.exists?(event: "customer_message")
+
+      Notification.create!(customer_message_notification)
     end
   end
 end

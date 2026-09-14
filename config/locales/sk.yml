@@ -917,3 +917,4 @@ sk:
     customer_report_hint: "Stiahnite tabuľku všetkých zákazníkov s ich údajmi, počtom termínov za posledný rok a poskytovateľmi a službami, ktoré si rezervovali."
     customer_notes: "Poznámky k zákazníkovi"
     appointments_in_last_year: "Termíny za posledný rok"
+    notification_event_customer_message: "Prijatá správa od zákazníka"

@@ -917,3 +917,4 @@ rs:
     customer_report_hint: "Preuzmite tabelu sa svim klijentima, njihovim podacima, brojem termina u poslednjih godinu dana i pružaocima usluga i uslugama koje su rezervisali."
     customer_notes: "Napomene o klijentu"
     appointments_in_last_year: "Termini u poslednjih godinu dana"
+    notification_event_customer_message: "Primljena poruka klijenta"

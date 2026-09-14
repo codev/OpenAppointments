@@ -917,3 +917,4 @@ pl:
     customer_report_hint: "Pobierz arkusz ze wszystkimi klientami, ich danymi, liczbą wizyt w ostatnim roku oraz zarezerwowanymi usługodawcami i usługami."
     customer_notes: "Notatki o kliencie"
     appointments_in_last_year: "Wizyty w ostatnim roku"
+    notification_event_customer_message: "Otrzymano wiadomość od klienta"

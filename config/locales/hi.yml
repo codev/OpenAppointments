@@ -917,3 +917,4 @@ hi:
     customer_report_hint: "हर ग्राहक के विवरण, पिछले वर्ष की अपॉइंटमेंट संख्या और बुक किए गए प्रदाताओं और सेवाओं की स्प्रेडशीट डाउनलोड करें।"
     customer_notes: "ग्राहक नोट्स"
     appointments_in_last_year: "पिछले वर्ष की अपॉइंटमेंट"
+    notification_event_customer_message: "ग्राहक संदेश प्राप्त हुआ"

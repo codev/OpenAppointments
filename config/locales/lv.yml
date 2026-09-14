@@ -917,3 +917,4 @@ lv:
     customer_report_hint: "Lejupielādējiet tabulu ar visiem klientiem, viņu datiem, pierakstu skaitu pēdējā gadā un rezervētajiem pakalpojumu sniedzējiem un pakalpojumiem."
     customer_notes: "Klienta piezīmes"
     appointments_in_last_year: "Pieraksti pēdējā gadā"
+    notification_event_customer_message: "Saņemta klienta ziņa"

@@ -917,3 +917,4 @@ he:
     customer_report_hint: "הורדת גיליון של כל הלקוחות עם פרטיהם, מספר הפגישות בשנה האחרונה והספקים והשירותים שהזמינו."
     customer_notes: "הערות לקוח"
     appointments_in_last_year: "פגישות בשנה האחרונה"
+    notification_event_customer_message: "התקבלה הודעה מלקוח"

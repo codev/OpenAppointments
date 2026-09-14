@@ -917,3 +917,4 @@ es:
     customer_report_hint: "Descargue una hoja de cálculo con todos los clientes, sus datos, el número de citas del último año y los proveedores y servicios que han reservado."
     customer_notes: "Notas del cliente"
     appointments_in_last_year: "Citas del último año"
+    notification_event_customer_message: "Mensaje de cliente recibido"

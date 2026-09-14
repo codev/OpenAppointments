@@ -917,3 +917,4 @@ ca:
     customer_report_hint: "Descarrega un full de càlcul amb tots els clients, les seves dades, el nombre de cites de l'últim any i els proveïdors i serveis que han reservat."
     customer_notes: "Notes del client"
     appointments_in_last_year: "Cites de l'últim any"
+    notification_event_customer_message: "Missatge de client rebut"

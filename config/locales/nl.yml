@@ -917,3 +917,4 @@ nl:
     customer_report_hint: "Download een spreadsheet met alle klanten, hun gegevens, het aantal afspraken in het afgelopen jaar en de geboekte aanbieders en diensten."
     customer_notes: "Klantnotities"
     appointments_in_last_year: "Afspraken in het afgelopen jaar"
+    notification_event_customer_message: "Klantbericht ontvangen"

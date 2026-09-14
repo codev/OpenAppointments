@@ -917,3 +917,4 @@ zh:
     customer_report_hint: "下载包含所有客户资料、过去一年的预约数以及所预约的服务人员与服务的电子表格。"
     customer_notes: "客户备注"
     appointments_in_last_year: "过去一年的预约"
+    notification_event_customer_message: "收到客户消息"

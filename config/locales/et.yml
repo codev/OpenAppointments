@@ -917,3 +917,4 @@ et:
     customer_report_hint: "Laadi alla tabel kõigi klientide, nende andmete, viimase aasta broneeringute arvu ning broneeritud teenusepakkujate ja teenustega."
     customer_notes: "Kliendi märkused"
     appointments_in_last_year: "Broneeringud viimasel aastal"
+    notification_event_customer_message: "Kliendi sõnum saabunud"
