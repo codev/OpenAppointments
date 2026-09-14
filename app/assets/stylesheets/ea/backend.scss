@@ -152,7 +152,7 @@ body .modal.full-screen .modal-push {
 
 /* Filter records entry styling */
 .backend-page .filter-records .results .entry {
-    padding: 10px 7px;
+    padding: 5px 7px;
     cursor: pointer;
 }
 
@@ -162,7 +162,7 @@ body .modal.full-screen .modal-push {
 
 .backend-page .filter-records .results hr {
     margin: 5px 0;
-    opacity: .1; 
+    opacity: .1;
 }
 
 /* Calendar page specific styles */
@@ -719,12 +719,6 @@ body .modal.full-screen .modal-push {
 /* Keep the nav dropdown menus above page panels. */
 #header {
     z-index: 1030;
-}
-
-
-
-.filter-records .results {
-    max-height: 650px;
 }
 
 /* Inbox: unread blocks carry an accent bar on the left; message text keeps its line breaks. */
