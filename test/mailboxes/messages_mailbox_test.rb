@@ -13,6 +13,14 @@ class MessagesMailboxTest < ActionMailbox::TestCase
     assert_nil message.read_at
   end
 
+  test "the quoted reply is stripped from the body and the full text kept as the source" do
+    body = "Thanks, see you Wednesday.\n\nOn Tue, 2 Sep 2026 at 17:10, Open Out <shop@example.org> wrote:\n> Your appointment is confirmed.\n"
+    receive_inbound_email_from_mail(from: users(:jx).email, to: "shop@example.org", subject: "Re: Confirmed", body: body)
+    message = Message.incoming.sole
+    assert_equal "Thanks, see you Wednesday.", message.body
+    assert_includes message.source, "> Your appointment is confirmed."
+  end
+
   test "inbound email from an unknown sender lands in the unknown inbox" do
     receive_inbound_email_from_mail(
       from: "stranger@example.org", to: "shop@example.org",

@@ -9,9 +9,9 @@
                 <%= lang('unknown_inbox_info') %>
             </p>
 
-            <%= render "shared/messages_log_table",
+            <%= render "shared/inbox_list",
                        messages: vars(:inbox_messages), page: vars(:inbox_page),
-                       last_page: vars(:inbox_last_page), base_path: "/unknown_inbox", inbox: true %>
+                       last_page: vars(:inbox_last_page), base_path: "/unknown_inbox" %>
         </div>
     </div>
 </div>
