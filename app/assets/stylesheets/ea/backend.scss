@@ -727,11 +727,10 @@ body .modal.full-screen .modal-push {
     max-height: 650px;
 }
 
-/* Inbox: unread blocks carry an accent bar; message text keeps its line breaks. */
+/* Inbox: unread blocks carry an accent bar on the left; message text keeps its line breaks. */
 .inbox-message.message-unread {
     border-left: 4px solid var(--bs-primary);
     padding-left: 0.75rem;
-    background-color: rgba(var(--bs-primary-rgb), 0.08);
 }
 
 .inbox-message .inbox-body {
