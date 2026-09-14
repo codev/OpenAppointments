@@ -912,3 +912,8 @@ hr:
     leave_page: "Napusti stranicu"
     status_custom: "Prilagođeno"
     provider_does_not_offer_service: "Odabrani pružatelj ne nudi ovu uslugu."
+    appointment_report: "Izvještaj o terminima"
+    customer_report: "Izvještaj o klijentima"
+    customer_report_hint: "Preuzmite tablicu sa svim klijentima, njihovim podacima, brojem termina u posljednjih godinu dana te pružateljima usluga i uslugama koje su rezervirali."
+    customer_notes: "Bilješke o klijentu"
+    appointments_in_last_year: "Termini u posljednjih godinu dana"

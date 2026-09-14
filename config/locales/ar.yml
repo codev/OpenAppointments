@@ -912,3 +912,8 @@ ar:
     leave_page: "مغادرة الصفحة"
     status_custom: "مخصص"
     provider_does_not_offer_service: "مقدم الخدمة المحدد لا يقدم هذه الخدمة."
+    appointment_report: "تقرير المواعيد"
+    customer_report: "تقرير العملاء"
+    customer_report_hint: "تنزيل جدول بيانات لكل عميل مع تفاصيله وعدد المواعيد في العام الماضي ومقدمي الخدمة والخدمات التي حجزها."
+    customer_notes: "ملاحظات العميل"
+    appointments_in_last_year: "المواعيد في العام الماضي"

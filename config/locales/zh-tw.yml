@@ -912,3 +912,8 @@ zh-tw:
     leave_page: "離開頁面"
     status_custom: "自訂"
     provider_does_not_offer_service: "所選服務人員不提供此服務。"
+    appointment_report: "預約報表"
+    customer_report: "顧客報表"
+    customer_report_hint: "下載包含所有顧客資料、過去一年的預約數，以及所預約的服務人員與服務的試算表。"
+    customer_notes: "顧客備註"
+    appointments_in_last_year: "過去一年的預約"

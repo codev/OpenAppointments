@@ -912,3 +912,8 @@ uk:
     leave_page: "Покинути сторінку"
     status_custom: "Власний"
     provider_does_not_offer_service: "Обраний спеціаліст не надає цю послугу."
+    appointment_report: "Звіт про записи"
+    customer_report: "Звіт про клієнтів"
+    customer_report_hint: "Завантажте таблицю з усіма клієнтами, їхніми даними, кількістю записів за останній рік, а також заброньованими фахівцями та послугами."
+    customer_notes: "Нотатки про клієнта"
+    appointments_in_last_year: "Записи за останній рік"

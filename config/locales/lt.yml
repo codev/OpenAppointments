@@ -912,3 +912,8 @@ lt:
     leave_page: "Palikti puslapį"
     status_custom: "Pasirinktinis"
     provider_does_not_offer_service: "Pasirinktas paslaugų teikėjas šios paslaugos neteikia."
+    appointment_report: "Vizitų ataskaita"
+    customer_report: "Klientų ataskaita"
+    customer_report_hint: "Atsisiųskite lentelę su visais klientais, jų duomenimis, vizitų skaičiumi per pastaruosius metus bei užsakytais paslaugų teikėjais ir paslaugomis."
+    customer_notes: "Kliento pastabos"
+    appointments_in_last_year: "Vizitai per pastaruosius metus"

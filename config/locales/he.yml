@@ -912,3 +912,8 @@ he:
     leave_page: "עזוב את הדף"
     status_custom: "מותאם אישית"
     provider_does_not_offer_service: "נותן השירות שנבחר אינו מציע שירות זה."
+    appointment_report: "דוח פגישות"
+    customer_report: "דוח לקוחות"
+    customer_report_hint: "הורדת גיליון של כל הלקוחות עם פרטיהם, מספר הפגישות בשנה האחרונה והספקים והשירותים שהזמינו."
+    customer_notes: "הערות לקוח"
+    appointments_in_last_year: "פגישות בשנה האחרונה"

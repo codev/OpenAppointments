@@ -912,3 +912,8 @@ sv:
     leave_page: "Lämna sidan"
     status_custom: "Anpassad"
     provider_does_not_offer_service: "Den valda leverantören erbjuder inte denna tjänst."
+    appointment_report: "Bokningsrapport"
+    customer_report: "Kundrapport"
+    customer_report_hint: "Ladda ner ett kalkylblad med alla kunder, deras uppgifter, antal bokningar det senaste året samt bokade leverantörer och tjänster."
+    customer_notes: "Kundanteckningar"
+    appointments_in_last_year: "Bokningar det senaste året"

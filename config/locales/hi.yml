@@ -912,3 +912,8 @@ hi:
     leave_page: "पेज छोड़ें"
     status_custom: "कस्टम"
     provider_does_not_offer_service: "चयनित प्रदाता यह सेवा प्रदान नहीं करता है।"
+    appointment_report: "अपॉइंटमेंट रिपोर्ट"
+    customer_report: "ग्राहक रिपोर्ट"
+    customer_report_hint: "हर ग्राहक के विवरण, पिछले वर्ष की अपॉइंटमेंट संख्या और बुक किए गए प्रदाताओं और सेवाओं की स्प्रेडशीट डाउनलोड करें।"
+    customer_notes: "ग्राहक नोट्स"
+    appointments_in_last_year: "पिछले वर्ष की अपॉइंटमेंट"

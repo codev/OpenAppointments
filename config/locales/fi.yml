@@ -912,3 +912,8 @@ fi:
     leave_page: "Poistu sivulta"
     status_custom: "Mukautettu"
     provider_does_not_offer_service: "Valittu palveluntarjoaja ei tarjoa tätä palvelua."
+    appointment_report: "Varausraportti"
+    customer_report: "Asiakasraportti"
+    customer_report_hint: "Lataa taulukko kaikista asiakkaista, heidän tiedoistaan, viime vuoden varausten määrästä sekä varatuista palveluntarjoajista ja palveluista."
+    customer_notes: "Asiakkaan muistiinpanot"
+    appointments_in_last_year: "Varaukset viime vuonna"

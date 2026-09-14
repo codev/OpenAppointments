@@ -912,3 +912,8 @@ de:
     leave_page: "Seite verlassen"
     status_custom: "Benutzerdefiniert"
     provider_does_not_offer_service: "Der ausgewählte Anbieter bietet diese Dienstleistung nicht an."
+    appointment_report: "Terminbericht"
+    customer_report: "Kundenbericht"
+    customer_report_hint: "Laden Sie eine Tabelle mit allen Kunden, ihren Daten, der Anzahl der Termine im letzten Jahr sowie den gebuchten Anbietern und Dienstleistungen herunter."
+    customer_notes: "Kundennotizen"
+    appointments_in_last_year: "Termine im letzten Jahr"

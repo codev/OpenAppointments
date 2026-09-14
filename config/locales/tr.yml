@@ -912,3 +912,8 @@ tr:
     leave_page: "Sayfadan ayrıl"
     status_custom: "Özel"
     provider_does_not_offer_service: "Seçilen hizmet sağlayıcı bu hizmeti sunmuyor."
+    appointment_report: "Randevu Raporu"
+    customer_report: "Müşteri Raporu"
+    customer_report_hint: "Tüm müşterileri, bilgilerini, son bir yıldaki randevu sayısını ve rezerve ettikleri sağlayıcı ve hizmetleri içeren bir tablo indirin."
+    customer_notes: "Müşteri Notları"
+    appointments_in_last_year: "Son Bir Yıldaki Randevular"

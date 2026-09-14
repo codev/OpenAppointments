@@ -912,3 +912,8 @@ pt-br:
     leave_page: "Sair da página"
     status_custom: "Personalizado"
     provider_does_not_offer_service: "O prestador selecionado não oferece este serviço."
+    appointment_report: "Relatório de agendamentos"
+    customer_report: "Relatório de clientes"
+    customer_report_hint: "Baixe uma planilha com todos os clientes, seus dados, o número de agendamentos no último ano e os prestadores e serviços reservados."
+    customer_notes: "Observações do cliente"
+    appointments_in_last_year: "Agendamentos no último ano"

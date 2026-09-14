@@ -912,3 +912,8 @@ lv:
     leave_page: "Pamest lapu"
     status_custom: "Pielāgots"
     provider_does_not_offer_service: "Izvēlētais pakalpojumu sniedzējs nepiedāvā šo pakalpojumu."
+    appointment_report: "Pierakstu atskaite"
+    customer_report: "Klientu atskaite"
+    customer_report_hint: "Lejupielādējiet tabulu ar visiem klientiem, viņu datiem, pierakstu skaitu pēdējā gadā un rezervētajiem pakalpojumu sniedzējiem un pakalpojumiem."
+    customer_notes: "Klienta piezīmes"
+    appointments_in_last_year: "Pieraksti pēdējā gadā"

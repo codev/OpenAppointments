@@ -912,3 +912,8 @@ sk:
     leave_page: "Opustiť stránku"
     status_custom: "Vlastný"
     provider_does_not_offer_service: "Vybraný poskytovateľ túto službu neponúka."
+    appointment_report: "Prehľad termínov"
+    customer_report: "Prehľad zákazníkov"
+    customer_report_hint: "Stiahnite tabuľku všetkých zákazníkov s ich údajmi, počtom termínov za posledný rok a poskytovateľmi a službami, ktoré si rezervovali."
+    customer_notes: "Poznámky k zákazníkovi"
+    appointments_in_last_year: "Termíny za posledný rok"

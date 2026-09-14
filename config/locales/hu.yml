@@ -912,3 +912,8 @@ hu:
     leave_page: "Oldal elhagyása"
     status_custom: "Egyéni"
     provider_does_not_offer_service: "A kiválasztott szolgáltató nem kínálja ezt a szolgáltatást."
+    appointment_report: "Időpontjelentés"
+    customer_report: "Ügyféljelentés"
+    customer_report_hint: "Töltsön le egy táblázatot minden ügyfélről az adataikkal, az elmúlt év időpontjainak számával, valamint a lefoglalt szolgáltatókkal és szolgáltatásokkal."
+    customer_notes: "Ügyfél megjegyzései"
+    appointments_in_last_year: "Időpontok az elmúlt évben"

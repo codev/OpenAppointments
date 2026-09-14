@@ -11,6 +11,7 @@ CloudronManifest.json.
 - Inbox and Unknown inbox: each message is a block with the sender, channel, date and status on one line and the full text beneath, readable at every screen width
 - Incoming email keeps only the reply text; quoted earlier mail and signatures are dropped from the body while the full text stays on the message
 - Stylist, admin and assistant lists show the name and contact details on one line with tighter spacing, and every list runs down the page instead of scrolling inside its own box, so more people fit on the screen
+- Reports: the appointment report gains a column for each displayed customer custom field, headed by its label, and a Customer Notes column; a new customer report lists every customer with their details, custom fields and notes, the appointments kept in the last year, the providers and services booked with counts, and the cancelled, late cancelled and rescheduled counts for the year
 
 ## 2.0.0
 

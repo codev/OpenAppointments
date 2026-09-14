@@ -912,3 +912,8 @@ pl:
     leave_page: "Opuść stronę"
     status_custom: "Własny"
     provider_does_not_offer_service: "Wybrany usługodawca nie oferuje tej usługi."
+    appointment_report: "Raport wizyt"
+    customer_report: "Raport klientów"
+    customer_report_hint: "Pobierz arkusz ze wszystkimi klientami, ich danymi, liczbą wizyt w ostatnim roku oraz zarezerwowanymi usługodawcami i usługami."
+    customer_notes: "Notatki o kliencie"
+    appointments_in_last_year: "Wizyty w ostatnim roku"

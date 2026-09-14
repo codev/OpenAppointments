@@ -912,3 +912,8 @@ et:
     leave_page: "Lahku lehelt"
     status_custom: "Kohandatud"
     provider_does_not_offer_service: "Valitud teenusepakkuja ei paku seda teenust."
+    appointment_report: "Broneeringute aruanne"
+    customer_report: "Klientide aruanne"
+    customer_report_hint: "Laadi alla tabel kõigi klientide, nende andmete, viimase aasta broneeringute arvu ning broneeritud teenusepakkujate ja teenustega."
+    customer_notes: "Kliendi märkused"
+    appointments_in_last_year: "Broneeringud viimasel aastal"

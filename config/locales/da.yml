@@ -912,3 +912,8 @@ da:
     leave_page: "Forlad siden"
     status_custom: "Brugerdefineret"
     provider_does_not_offer_service: "Den valgte udbyder tilbyder ikke denne ydelse."
+    appointment_report: "Aftalerapport"
+    customer_report: "Kunderapport"
+    customer_report_hint: "Download et regneark med alle kunder, deres oplysninger, antal aftaler det seneste år samt de udbydere og ydelser, de har booket."
+    customer_notes: "Kundenoter"
+    appointments_in_last_year: "Aftaler det seneste år"

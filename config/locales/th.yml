@@ -912,3 +912,8 @@ th:
     leave_page: "ออกจากหน้า"
     status_custom: "กำหนดเอง"
     provider_does_not_offer_service: "ผู้ให้บริการที่เลือกไม่ได้ให้บริการนี้"
+    appointment_report: "รายงานการนัดหมาย"
+    customer_report: "รายงานลูกค้า"
+    customer_report_hint: "ดาวน์โหลดสเปรดชีตของลูกค้าทุกคนพร้อมรายละเอียด จำนวนการนัดหมายในปีที่ผ่านมา และผู้ให้บริการและบริการที่จองไว้"
+    customer_notes: "บันทึกลูกค้า"
+    appointments_in_last_year: "การนัดหมายในปีที่ผ่านมา"

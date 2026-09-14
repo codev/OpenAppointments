@@ -212,6 +212,34 @@ class ImportPageTest < ActionDispatch::IntegrationTest
     FileUtils.rm_f(path) if path
   end
 
+  test "customer report downloads every customer with last-year counts" do
+    login_admin
+    get "/import/customer_report"
+    assert_response :success
+    assert_equal Ods::MIMETYPE, response.media_type
+    path = Rails.root.join("tmp", "customer-report-test-#{SecureRandom.hex(4)}.ods")
+    File.binwrite(path, response.body)
+    rows = Ods.parse(path.to_s)["Customers"]
+    assert_equal %w[Name Email], rows.first.first(2)
+    assert_equal [ "Appointments in Last Year", "Providers", "Services", "Cancelled", "Late Cancel", "Rescheduled" ],
+                 rows.first.last(6)
+    assert_equal [ "JX" ], rows.drop(1).map(&:first)
+
+    post "/login/validate", params: { username: "janedoe", password: "janedoe1" }
+    get "/import/customer_report"
+    assert_response :forbidden
+  ensure
+    FileUtils.rm_f(path) if path
+  end
+
+  test "the page shows a heading for each report" do
+    login_admin
+    get "/import"
+    assert_select "h6", text: "Appointment Report"
+    assert_select "h6", text: "Customer Report"
+    assert_select "form[action='/import/customer_report']"
+  end
+
   test "backup downloads are admin only and validate the name" do
     login_admin
     perform_enqueued_jobs { post "/import/export" }

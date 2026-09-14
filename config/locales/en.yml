@@ -912,3 +912,8 @@ en:
     leave_page: "Leave page"
     status_custom: "Custom"
     provider_does_not_offer_service: "The selected provider does not offer this service."
+    appointment_report: "Appointment Report"
+    customer_report: "Customer Report"
+    customer_report_hint: "Download a spreadsheet of every customer with their details, the number of appointments in the last year, and the providers and services they have booked."
+    customer_notes: "Customer Notes"
+    appointments_in_last_year: "Appointments in Last Year"

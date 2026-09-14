@@ -912,3 +912,8 @@
     leave_page: "Forlat siden"
     status_custom: "Egendefinert"
     provider_does_not_offer_service: "Den valgte leverandøren tilbyr ikke denne tjenesten."
+    appointment_report: "Avtalerapport"
+    customer_report: "Kunderapport"
+    customer_report_hint: "Last ned et regneark med alle kunder, deres opplysninger, antall avtaler det siste året og leverandørene og tjenestene de har bestilt."
+    customer_notes: "Kundenotater"
+    appointments_in_last_year: "Avtaler det siste året"

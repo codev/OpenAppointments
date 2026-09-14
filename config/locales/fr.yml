@@ -912,3 +912,8 @@ fr:
     leave_page: "Quitter la page"
     status_custom: "Personnalisé"
     provider_does_not_offer_service: "Le prestataire sélectionné ne propose pas ce service."
+    appointment_report: "Rapport des rendez-vous"
+    customer_report: "Rapport des clients"
+    customer_report_hint: "Téléchargez une feuille de calcul de tous les clients avec leurs coordonnées, le nombre de rendez-vous de l'année écoulée et les prestataires et services réservés."
+    customer_notes: "Notes du client"
+    appointments_in_last_year: "Rendez-vous de l'année écoulée"

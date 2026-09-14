@@ -69,6 +69,12 @@ class ImportController < ApplicationController
     json_exception(e)
   end
 
+  # GET /import/customer_report - customers report download.
+  def customer_report
+    ods = CustomerReport.generate(labels: ->(key) { helpers.lang(key) })
+    send_data ods, filename: "#{Date.current}-customers.ods", type: Ods::MIMETYPE
+  end
+
   # POST /import/analyze - dry run: parse the upload and return the counts.
   def analyze
     data = extractor_class.new(

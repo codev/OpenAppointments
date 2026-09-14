@@ -912,3 +912,8 @@ pt:
     leave_page: "Sair da página"
     status_custom: "Personalizado"
     provider_does_not_offer_service: "O prestador selecionado não oferece este serviço."
+    appointment_report: "Relatório de marcações"
+    customer_report: "Relatório de clientes"
+    customer_report_hint: "Descarregue uma folha de cálculo com todos os clientes, os seus dados, o número de marcações no último ano e os prestadores e serviços reservados."
+    customer_notes: "Notas do cliente"
+    appointments_in_last_year: "Marcações no último ano"

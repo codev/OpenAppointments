@@ -912,3 +912,8 @@ ca:
     leave_page: "Sortir de la pàgina"
     status_custom: "Personalitzat"
     provider_does_not_offer_service: "El proveïdor seleccionat no ofereix aquest servei."
+    appointment_report: "Informe de cites"
+    customer_report: "Informe de clients"
+    customer_report_hint: "Descarrega un full de càlcul amb tots els clients, les seves dades, el nombre de cites de l'últim any i els proveïdors i serveis que han reservat."
+    customer_notes: "Notes del client"
+    appointments_in_last_year: "Cites de l'últim any"

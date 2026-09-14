@@ -912,3 +912,8 @@ ro:
     leave_page: "Părăsește pagina"
     status_custom: "Personalizat"
     provider_does_not_offer_service: "Furnizorul selectat nu oferă acest serviciu."
+    appointment_report: "Raport programări"
+    customer_report: "Raport clienți"
+    customer_report_hint: "Descărcați un tabel cu toți clienții, datele lor, numărul de programări din ultimul an și furnizorii și serviciile rezervate."
+    customer_notes: "Note client"
+    appointments_in_last_year: "Programări în ultimul an"

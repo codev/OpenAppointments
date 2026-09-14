@@ -912,3 +912,8 @@ fa:
     leave_page: "ترک صفحه"
     status_custom: "سفارشی"
     provider_does_not_offer_service: "ارائه‌دهنده انتخاب‌شده این خدمت را ارائه نمی‌دهد."
+    appointment_report: "گزارش نوبت‌ها"
+    customer_report: "گزارش مشتریان"
+    customer_report_hint: "دانلود صفحه‌گسترده‌ای از همه مشتریان با جزئیات آن‌ها، تعداد نوبت‌های سال گذشته و ارائه‌دهندگان و خدماتی که رزرو کرده‌اند."
+    customer_notes: "یادداشت‌های مشتری"
+    appointments_in_last_year: "نوبت‌های سال گذشته"

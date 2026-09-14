@@ -912,3 +912,8 @@ es:
     leave_page: "Salir de la página"
     status_custom: "Personalizado"
     provider_does_not_offer_service: "El proveedor seleccionado no ofrece este servicio."
+    appointment_report: "Informe de citas"
+    customer_report: "Informe de clientes"
+    customer_report_hint: "Descargue una hoja de cálculo con todos los clientes, sus datos, el número de citas del último año y los proveedores y servicios que han reservado."
+    customer_notes: "Notas del cliente"
+    appointments_in_last_year: "Citas del último año"

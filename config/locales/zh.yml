@@ -912,3 +912,8 @@ zh:
     leave_page: "离开页面"
     status_custom: "自定义"
     provider_does_not_offer_service: "所选服务人员不提供此服务。"
+    appointment_report: "预约报表"
+    customer_report: "客户报表"
+    customer_report_hint: "下载包含所有客户资料、过去一年的预约数以及所预约的服务人员与服务的电子表格。"
+    customer_notes: "客户备注"
+    appointments_in_last_year: "过去一年的预约"

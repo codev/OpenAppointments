@@ -912,3 +912,8 @@ sl:
     leave_page: "Zapusti stran"
     status_custom: "Po meri"
     provider_does_not_offer_service: "Izbrani ponudnik te storitve ne ponuja."
+    appointment_report: "Poročilo o terminih"
+    customer_report: "Poročilo o strankah"
+    customer_report_hint: "Prenesite preglednico vseh strank z njihovimi podatki, številom terminov v zadnjem letu ter rezerviranimi ponudniki in storitvami."
+    customer_notes: "Opombe o stranki"
+    appointments_in_last_year: "Termini v zadnjem letu"
