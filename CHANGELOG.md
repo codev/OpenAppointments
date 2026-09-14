@@ -7,6 +7,7 @@ CloudronManifest.json.
 
 - Fixed: the Terminology labels on General Settings showed empty and could not be changed from the page
 - Enable notifications on Messages > Settings is now On, Off or Debug; Debug redirects every outgoing email and SMS to an intercept address and phone number and marks the original recipient at the top of the message
+- Customer page: the conversation sits full width below the record buttons and the message box takes several lines; Enter sends, Shift-Enter adds a line
 
 ## 2.0.0
 

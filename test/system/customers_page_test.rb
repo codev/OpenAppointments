@@ -87,6 +87,32 @@ class CustomersPageTest < ApplicationSystemTestCase
     assert_no_selector "#customers-page.editing", wait: 5
     assert_no_selector ".customer-row .unread-badge"
   end
+
+  test "the conversation sits below the record buttons; Enter sends, Shift-Enter adds a line, typing there is not an unsaved change" do
+    visit customers_url
+    find(".customer-row[data-id='#{users(:jx).id}']").click
+    assert_selector "#customers-page.editing", wait: 5
+    assert_selector "form.crud-form ~ #customer-conversation textarea#message-body[rows='3']", wait: 5
+    assert_selector "#customer-conversation .btn-toolbar", count: 0
+
+    box = find("#message-body")
+    before = box.evaluate_script("this.offsetHeight")
+    box.send_keys("Running late", [ :shift, :enter ], "back at three", [ :shift, :enter ], "sorry", [ :shift, :enter ], "again")
+    assert_equal "Running late\nback at three\nsorry\nagain", box.value
+    assert_operator box.evaluate_script("this.offsetHeight"), :>, before
+
+    select "Email", from: "message-channel"
+    box.send_keys(:enter)
+    assert_selector "#customer-messages .message-row", text: "Running late", wait: 5
+    assert Message.outgoing.last.body.start_with?("Running late\nback at three\nsorry\nagain\n"), "the line breaks should be kept"
+    assert_equal "", box.value
+    assert_equal before, box.evaluate_script("this.offsetHeight")
+
+    box.send_keys("draft never sent")
+    click_on "Calendar"
+    assert_no_selector "#message-modal", wait: 2
+    assert_selector "#calendar-page", wait: 5
+  end
 end
 
 # Rails views only: the deep link opens the record on the conversation panel.

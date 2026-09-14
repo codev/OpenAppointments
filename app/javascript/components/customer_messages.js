@@ -1,8 +1,8 @@
 /**
  * Customer conversation panel on the customers page: loads the messages of the
  * displayed customer (#customer-messages[data-customer-id]) after each frame
- * load, sends manual messages and marks them read. Extracted from the old
- * pages/customers.js.
+ * load, sends manual messages and marks them read. The message box grows with
+ * its content; Enter sends, Shift-Enter adds a line.
  */
 App.Components.CustomerMessages = (function () {
     const $document = $(document);
@@ -101,9 +101,24 @@ App.Components.CustomerMessages = (function () {
             }
 
             $('#message-body').val('');
+            fitMessageBox();
             App.Layouts.Backend.displayNotification(lang('message_sent'));
             load();
         });
+    }
+
+    // Height follows the text, never below the rows attribute.
+    function fitMessageBox() {
+        const box = $('#message-body')[0];
+
+        if (!box) {
+            return;
+        }
+
+        box.style.height = '';
+        if (box.scrollHeight > box.clientHeight) {
+            box.style.height = box.scrollHeight + box.offsetHeight - box.clientHeight + 'px';
+        }
     }
 
     function initialize() {
@@ -114,11 +129,12 @@ App.Components.CustomerMessages = (function () {
         App.once('customer-messages', () => {
             $document.on('click', '#send-message', send);
             $document.on('keydown', '#message-body', (event) => {
-                if (event.key === 'Enter') {
+                if (event.key === 'Enter' && !event.shiftKey) {
                     event.preventDefault();
                     send();
                 }
             });
+            $document.on('input', '#message-body', fitMessageBox);
             $document.on('click', '#mark-all-read', () => {
                 App.Http.CustomerMessages.markRead(customerId()).done((response) => {
                     App.Utils.MarkRead.updateHeaderBadge(response.inbox_unread);

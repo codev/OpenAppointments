@@ -1,5 +1,7 @@
-<%# Customer details left, appointment history and conversation right. Field
-    visibility and requirements follow the booking form settings, as in EA. %>
+<%# Customer details left, appointment history right, the conversation full
+    width below the record buttons (outside the form, so typing a message is
+    not an unsaved change). Field visibility and requirements follow the
+    booking form settings, as in EA. %>
 <% fields = { email: 120, phone_number: 60, address: 120, city: 120, zip_code: 120 } %>
 <% formats = { date_format: setting('date_format'), time_format: setting('time_format') } %>
 <% channels = Messaging.enabled_channels %>
@@ -81,33 +83,35 @@
                     </div>
                 <% end %>
             </div>
-
-            <% if record.persisted? %>
-                <h4 class="mb-3 fw-light d-flex justify-content-between align-items-center">
-                    <%= lang('customer_messages') %>
-                    <button type="button" id="mark-all-read" class="btn btn-sm btn-outline-primary d-none">
-                        <i class="fas fa-check-double me-1"></i><%= lang('mark_all_as_read') %>
-                    </button>
-                </h4>
-                <div id="customer-messages" class="card border p-3 overflow-auto mb-3" data-customer-id="<%= record.id %>"
-                     data-scroll="<%= params[:section] == 'messages' %>"></div>
-                <% if channels.any? %>
-                    <div id="customer-message-composer" class="input-group mb-4">
-                        <select id="message-channel" class="form-select">
-                            <option value=""><%= lang('select_one') %></option>
-                            <% channels.each do |channel| %>
-                                <option value="<%= channel.key %>"><%= channel.label %></option>
-                            <% end %>
-                            <option value="all"><%= lang('all_providers') %></option>
-                        </select>
-                        <input type="text" id="message-body" class="form-control" maxlength="1000">
-                        <button type="button" id="send-message" class="btn btn-primary">
-                            <i class="fas fa-paper-plane me-2"></i>
-                            <%= lang('send_message') %>
-                        </button>
-                    </div>
-                <% end %>
-            <% end %>
         </div>
+    </div>
+<% end %>
+
+<% if record.persisted? %>
+    <div id="customer-conversation" class="mt-4">
+        <h4 class="mb-3 fw-light d-flex justify-content-between align-items-center">
+            <%= lang('customer_messages') %>
+            <button type="button" id="mark-all-read" class="btn btn-sm btn-outline-primary d-none">
+                <i class="fas fa-check-double me-1"></i><%= lang('mark_all_as_read') %>
+            </button>
+        </h4>
+        <div id="customer-messages" class="card border p-3 overflow-auto mb-3" data-customer-id="<%= record.id %>"
+             data-scroll="<%= params[:section] == 'messages' %>"></div>
+        <% if channels.any? %>
+            <div id="customer-message-composer" class="input-group mb-4">
+                <select id="message-channel" class="form-select">
+                    <option value=""><%= lang('select_one') %></option>
+                    <% channels.each do |channel| %>
+                        <option value="<%= channel.key %>"><%= channel.label %></option>
+                    <% end %>
+                    <option value="all"><%= lang('all_providers') %></option>
+                </select>
+                <textarea id="message-body" class="form-control" rows="3" maxlength="1000"></textarea>
+                <button type="button" id="send-message" class="btn btn-primary">
+                    <i class="fas fa-paper-plane me-2"></i>
+                    <%= lang('send_message') %>
+                </button>
+            </div>
+        <% end %>
     </div>
 <% end %>

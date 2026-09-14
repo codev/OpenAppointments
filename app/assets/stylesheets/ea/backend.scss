@@ -730,16 +730,19 @@ body .modal.full-screen .modal-push {
 #customer-messages {
     min-height: 200px;
     max-height: 400px;
-    max-width: 330px;
-    width: 100%;
 }
 
-#customer-message-composer {
-    max-width: 330px;
+#customer-messages .message-row small:last-child {
+    white-space: pre-line;
 }
 
 #customer-message-composer #message-channel {
     max-width: 130px;
+}
+
+#customer-message-composer #message-body {
+    resize: none;
+    overflow: hidden;
 }
 
 #footer {
