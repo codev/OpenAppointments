@@ -3,6 +3,10 @@
 The about page lists these notes; every release needs a section here matching
 CloudronManifest.json.
 
+## 2.1.0
+
+- Fixed: the Terminology labels on General Settings showed empty and could not be changed from the page
+
 ## 2.0.0
 
 - The views are converted from jQuery scripts to standard Rails views

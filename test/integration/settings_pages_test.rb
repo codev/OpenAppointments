@@ -154,6 +154,21 @@ class SettingsPagesTest < ActionDispatch::IntegrationTest
     follow_redirect!
     assert_select ".alert-danger", text: I18n.t("ea.passwords_mismatch")
   end
+  test "the terminology labels show their stored values and save from the form" do
+    Setting.set("provider_label", "Stylist")
+    Setting.set("provider_label_plural", "Stylists")
+    login_admin
+    get "/general_settings"
+    assert_select "input#provider-label[name='settings[provider_label]'][value='Stylist']"
+    assert_select "input#provider-label-plural[name='settings[provider_label_plural]'][value='Stylists']"
+    assert_select "input#service-label[name='settings[service_label]']"
+
+    post "/general_settings/save", params: { settings: { provider_label: "Barber", provider_label_plural: "Barbers",
+                                                         service_label: "", service_label_plural: "" } }
+    assert_redirected_to "/general_settings"
+    assert_equal "Barber", Setting.get("provider_label")
+    assert_equal "", Setting.get("service_label").to_s
+  end
 end
 
 class LdapImportFormTest < ActionDispatch::IntegrationTest
