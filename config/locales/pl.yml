@@ -797,6 +797,7 @@ pl:
     send_message: Send
     select_one: Select One
     all_providers: All Providers
+    messages_all_providers: All Providers
     message_sent: Message sent.
     terminology: Terminology
     terminology_hint: Rename Provider and Service, for example Stylist and Treatment. Leave blank for the defaults. Languages other than English are not affected. Start the words with a capital letter.

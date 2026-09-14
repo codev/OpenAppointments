@@ -8,6 +8,9 @@ module Terminology
   # providers) plus the terminology settings form itself.
   SKIP_PREFIXES = %w[captcha_ messages_ notification_ about_app_ terminology provider_label service_label].freeze
 
+  # Keys under a skipped prefix that do mean the staff member.
+  STAFF_KEYS = %w[notification_audience_provider].freeze
+
   WORDS = {
     "providers" => "provider_label_plural",
     "provider" => "provider_label",
@@ -27,7 +30,7 @@ module Terminology
 
   def apply(key, text, current = labels, locale = I18n.locale)
     return text unless text.is_a?(String) && active?(locale, current)
-    return text if SKIP_PREFIXES.any? { |prefix| key.to_s.start_with?(prefix) }
+    return text if !STAFF_KEYS.include?(key.to_s) && SKIP_PREFIXES.any? { |prefix| key.to_s.start_with?(prefix) }
 
     WORDS.reduce(text) { |acc, (word, setting)| substitute(acc, word, current[setting]) }
   end

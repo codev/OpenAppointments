@@ -24,6 +24,11 @@ class TerminologyTest < ActiveSupport::TestCase
     assert_equal "Provider (singular)", Terminology.apply("provider_label", "Provider (singular)")
   end
 
+  test "the notification audience means the staff member even under the skipped prefix" do
+    assert_equal "Stylist", Terminology.apply("notification_audience_provider", "Provider")
+    assert_equal "Provider", Terminology.apply("messages_provider", "Provider")
+  end
+
   test "only applies to English" do
     assert_equal "Provider", Terminology.apply("provider", "Provider", Terminology.labels, :de)
     assert_equal({ "provider" => "Provider" }, Terminology.apply_all({ "provider" => "Provider" }, "de"))
