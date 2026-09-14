@@ -23,10 +23,26 @@ module Messaging
     channels.select { |c| c.enabled? && c.incoming? }
   end
 
-  # Global switch on Messages > Settings. Gates automatic notifications only;
-  # password resets and manual sends are unaffected.
+  # Global choice on Messages > Settings: "1" on, "0" off, "debug" on with every
+  # outgoing email and message redirected to the intercept addresses. Off gates
+  # automatic notifications only; password resets and manual sends still go.
   def enabled?
-    Setting.get("messages_enabled", "1") == "1"
+    %w[1 debug].include?(Setting.get("messages_enabled", "1"))
+  end
+
+  def debug?
+    Setting.get("messages_enabled", "1") == "debug"
+  end
+
+  # Debug destination for a channel: the intercept email for email, the phone
+  # for every other channel.
+  def intercept_address(channel_key)
+    Setting.get(channel_key.to_s == "email" ? "messages_intercept_email" : "messages_intercept_phone").presence
+  end
+
+  # The real recipient noted on top of a redirected body.
+  def mark_original_to(body, address)
+    "ORIGINAL-TO: #{address}\n#{body}"
   end
 
   # Per-provider "send only to default country phones" switch. Returns an error

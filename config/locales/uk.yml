@@ -688,7 +688,12 @@ uk:
     title: Title
     hours: Hours
     messages_enabled: Enable notifications
-    messages_enabled_hint: Globally turn all notifications on or off. Password reset emails will still be sent.
+    messages_enabled_hint: "Увімкнути або вимкнути всі сповіщення"
+    messages_enabled_on: "Увімкнено"
+    messages_enabled_off: "Вимкнено - листи для скидання пароля все одно надсилаються"
+    messages_enabled_debug: "Налагодження - перенаправляти всі вихідні листи та повідомлення"
+    messages_intercept_hint: "Поки вибрано Налагодження, кожен вихідний лист іде на цю адресу, а кожне SMS на цей номер."
+    messages_intercept_required: "Для налагодження потрібні дійсні адреса електронної пошти та номер телефону для перенаправлення."
     messages_retention_days: Delete messages older than (days)
     messages_retention_days_hint: Messages older than this many days are deleted automatically. Set 0 to keep all messages.
     messages_email_subject: Outgoing Email Subject Line

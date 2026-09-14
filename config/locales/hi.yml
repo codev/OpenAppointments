@@ -688,7 +688,12 @@ hi:
     title: Title
     hours: Hours
     messages_enabled: Enable notifications
-    messages_enabled_hint: Globally turn all notifications on or off. Password reset emails will still be sent.
+    messages_enabled_hint: "सभी सूचनाओं को वैश्विक रूप से चालू या बंद करें"
+    messages_enabled_on: "चालू"
+    messages_enabled_off: "बंद - पासवर्ड रीसेट ईमेल फिर भी भेजे जाएंगे"
+    messages_enabled_debug: "डीबग - सभी आउटगोइंग ईमेल और संदेशों को पुनर्निर्देशित करें"
+    messages_intercept_hint: "जब डीबग चुना गया हो, हर आउटगोइंग ईमेल इस पते पर और हर SMS इस नंबर पर जाता है।"
+    messages_intercept_required: "डीबग के लिए पुनर्निर्देशन हेतु एक वैध ईमेल पता और फ़ोन नंबर आवश्यक है।"
     messages_retention_days: Delete messages older than (days)
     messages_retention_days_hint: Messages older than this many days are deleted automatically. Set 0 to keep all messages.
     messages_email_subject: Outgoing Email Subject Line

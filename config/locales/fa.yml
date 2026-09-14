@@ -688,7 +688,12 @@ fa:
     title: Title
     hours: Hours
     messages_enabled: Enable notifications
-    messages_enabled_hint: Globally turn all notifications on or off. Password reset emails will still be sent.
+    messages_enabled_hint: "روشن یا خاموش کردن همه اعلان‌ها به صورت سراسری"
+    messages_enabled_on: "روشن"
+    messages_enabled_off: "خاموش - ایمیل‌های بازنشانی رمز عبور همچنان ارسال می‌شوند"
+    messages_enabled_debug: "اشکال‌زدایی - هدایت همه ایمیل‌ها و پیام‌های خروجی"
+    messages_intercept_hint: "تا زمانی که اشکال‌زدایی انتخاب شده باشد، هر ایمیل خروجی به این نشانی و هر پیامک به این شماره می‌رود."
+    messages_intercept_required: "اشکال‌زدایی به یک نشانی ایمیل و شماره تلفن معتبر برای هدایت نیاز دارد."
     messages_retention_days: Delete messages older than (days)
     messages_retention_days_hint: Messages older than this many days are deleted automatically. Set 0 to keep all messages.
     messages_email_subject: Outgoing Email Subject Line

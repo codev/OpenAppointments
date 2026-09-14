@@ -688,7 +688,12 @@ ru:
     title: Title
     hours: Hours
     messages_enabled: Enable notifications
-    messages_enabled_hint: Globally turn all notifications on or off. Password reset emails will still be sent.
+    messages_enabled_hint: "Включить или выключить все уведомления"
+    messages_enabled_on: "Включено"
+    messages_enabled_off: "Выключено - письма для сброса пароля всё равно отправляются"
+    messages_enabled_debug: "Отладка - перенаправлять все исходящие письма и сообщения"
+    messages_intercept_hint: "Пока выбрана Отладка, каждое исходящее письмо уходит на этот адрес, а каждое SMS на этот номер."
+    messages_intercept_required: "Для отладки нужны действительные адрес электронной почты и номер телефона для перенаправления."
     messages_retention_days: Delete messages older than (days)
     messages_retention_days_hint: Messages older than this many days are deleted automatically. Set 0 to keep all messages.
     messages_email_subject: Outgoing Email Subject Line

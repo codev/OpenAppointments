@@ -688,7 +688,12 @@ sk:
     title: Title
     hours: Hours
     messages_enabled: Enable notifications
-    messages_enabled_hint: Globally turn all notifications on or off. Password reset emails will still be sent.
+    messages_enabled_hint: "Globálne zapnúť alebo vypnúť všetky oznámenia"
+    messages_enabled_on: "Zapnuté"
+    messages_enabled_off: "Vypnuté - e-maily na obnovenie hesla sa stále odosielajú"
+    messages_enabled_debug: "Ladenie - presmerovať všetky odchádzajúce e-maily a správy"
+    messages_intercept_hint: "Kým je vybrané Ladenie, každý odchádzajúci e-mail ide na túto adresu a každá SMS na toto číslo."
+    messages_intercept_required: "Ladenie vyžaduje platnú e-mailovú adresu a telefónne číslo na presmerovanie."
     messages_retention_days: Delete messages older than (days)
     messages_retention_days_hint: Messages older than this many days are deleted automatically. Set 0 to keep all messages.
     messages_email_subject: Outgoing Email Subject Line

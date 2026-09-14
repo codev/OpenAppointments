@@ -688,7 +688,12 @@ hu:
     title: Title
     hours: Hours
     messages_enabled: Enable notifications
-    messages_enabled_hint: Globally turn all notifications on or off. Password reset emails will still be sent.
+    messages_enabled_hint: "Minden értesítés globális be- vagy kikapcsolása"
+    messages_enabled_on: "Be"
+    messages_enabled_off: "Ki - a jelszó-visszaállító e-mailek továbbra is kimennek"
+    messages_enabled_debug: "Hibakeresés - minden kimenő e-mail és üzenet átirányítása"
+    messages_intercept_hint: "Amíg a Hibakeresés van kiválasztva, minden kimenő e-mail erre a címre, minden SMS erre a számra megy."
+    messages_intercept_required: "A hibakereséshez érvényes e-mail-cím és telefonszám kell az átirányításhoz."
     messages_retention_days: Delete messages older than (days)
     messages_retention_days_hint: Messages older than this many days are deleted automatically. Set 0 to keep all messages.
     messages_email_subject: Outgoing Email Subject Line

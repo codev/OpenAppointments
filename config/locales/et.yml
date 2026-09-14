@@ -688,7 +688,12 @@ et:
     title: Title
     hours: Hours
     messages_enabled: Enable notifications
-    messages_enabled_hint: Globally turn all notifications on or off. Password reset emails will still be sent.
+    messages_enabled_hint: "Lülita kõik teavitused globaalselt sisse või välja"
+    messages_enabled_on: "Sees"
+    messages_enabled_off: "Väljas - parooli lähtestamise e-kirjad saadetakse endiselt"
+    messages_enabled_debug: "Silumine - suuna kõik väljuvad e-kirjad ja sõnumid ümber"
+    messages_intercept_hint: "Kui Silumine on valitud, läheb iga väljuv e-kiri sellele aadressile ja iga SMS sellele numbrile."
+    messages_intercept_required: "Silumine vajab ümbersuunamiseks kehtivat e-posti aadressi ja telefoninumbrit."
     messages_retention_days: Delete messages older than (days)
     messages_retention_days_hint: Messages older than this many days are deleted automatically. Set 0 to keep all messages.
     messages_email_subject: Outgoing Email Subject Line

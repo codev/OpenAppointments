@@ -688,7 +688,12 @@ nl:
     title: Title
     hours: Hours
     messages_enabled: Enable notifications
-    messages_enabled_hint: Globally turn all notifications on or off. Password reset emails will still be sent.
+    messages_enabled_hint: "Alle meldingen globaal in- of uitschakelen"
+    messages_enabled_on: "Aan"
+    messages_enabled_off: "Uit - e-mails voor wachtwoordherstel worden nog steeds verzonden"
+    messages_enabled_debug: "Debug - alle uitgaande e-mails en berichten omleiden"
+    messages_intercept_hint: "Zolang Debug is gekozen, gaat elke uitgaande e-mail naar dit adres en elke sms naar dit nummer."
+    messages_intercept_required: "Debug heeft een geldig e-mailadres en telefoonnummer nodig om naar om te leiden."
     messages_retention_days: Delete messages older than (days)
     messages_retention_days_hint: Messages older than this many days are deleted automatically. Set 0 to keep all messages.
     messages_email_subject: Outgoing Email Subject Line

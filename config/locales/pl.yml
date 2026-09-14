@@ -688,7 +688,12 @@ pl:
     title: Title
     hours: Hours
     messages_enabled: Enable notifications
-    messages_enabled_hint: Globally turn all notifications on or off. Password reset emails will still be sent.
+    messages_enabled_hint: "Globalnie włącz lub wyłącz wszystkie powiadomienia"
+    messages_enabled_on: "Włączone"
+    messages_enabled_off: "Wyłączone - e-maile resetowania hasła nadal będą wysyłane"
+    messages_enabled_debug: "Debugowanie - przekieruj wszystkie wychodzące e-maile i wiadomości"
+    messages_intercept_hint: "Gdy wybrano Debugowanie, każdy wychodzący e-mail trafia na ten adres, a każdy SMS na ten numer."
+    messages_intercept_required: "Debugowanie wymaga prawidłowego adresu e-mail i numeru telefonu do przekierowania."
     messages_retention_days: Delete messages older than (days)
     messages_retention_days_hint: Messages older than this many days are deleted automatically. Set 0 to keep all messages.
     messages_email_subject: Outgoing Email Subject Line

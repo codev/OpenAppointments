@@ -688,7 +688,12 @@ ca:
     title: Title
     hours: Hours
     messages_enabled: Enable notifications
-    messages_enabled_hint: Globally turn all notifications on or off. Password reset emails will still be sent.
+    messages_enabled_hint: "Activa o desactiva globalment totes les notificacions"
+    messages_enabled_on: "Activat"
+    messages_enabled_off: "Desactivat - els correus de restabliment de contrasenya s'enviaran igualment"
+    messages_enabled_debug: "Depuració - redirigeix tots els correus i missatges sortints"
+    messages_intercept_hint: "Mentre Depuració està seleccionat, cada correu sortint va a aquesta adreça i cada SMS a aquest número."
+    messages_intercept_required: "Depuració necessita una adreça de correu i un número de telèfon vàlids per redirigir."
     messages_retention_days: Delete messages older than (days)
     messages_retention_days_hint: Messages older than this many days are deleted automatically. Set 0 to keep all messages.
     messages_email_subject: Outgoing Email Subject Line

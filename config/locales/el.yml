@@ -688,7 +688,12 @@ el:
     title: Title
     hours: Hours
     messages_enabled: Enable notifications
-    messages_enabled_hint: Globally turn all notifications on or off. Password reset emails will still be sent.
+    messages_enabled_hint: "Ενεργοποίηση ή απενεργοποίηση όλων των ειδοποιήσεων"
+    messages_enabled_on: "Ενεργό"
+    messages_enabled_off: "Ανενεργό - τα email επαναφοράς κωδικού θα συνεχίσουν να αποστέλλονται"
+    messages_enabled_debug: "Debug - ανακατεύθυνση όλων των εξερχόμενων email και μηνυμάτων"
+    messages_intercept_hint: "Όσο είναι επιλεγμένο το Debug, κάθε εξερχόμενο email πηγαίνει σε αυτή τη διεύθυνση και κάθε SMS σε αυτόν τον αριθμό."
+    messages_intercept_required: "Το Debug χρειάζεται έγκυρη διεύθυνση email και αριθμό τηλεφώνου για ανακατεύθυνση."
     messages_retention_days: Delete messages older than (days)
     messages_retention_days_hint: Messages older than this many days are deleted automatically. Set 0 to keep all messages.
     messages_email_subject: Outgoing Email Subject Line

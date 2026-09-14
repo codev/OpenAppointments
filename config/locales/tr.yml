@@ -688,7 +688,12 @@ tr:
     title: Title
     hours: Hours
     messages_enabled: Enable notifications
-    messages_enabled_hint: Globally turn all notifications on or off. Password reset emails will still be sent.
+    messages_enabled_hint: "Tüm bildirimleri genel olarak aç veya kapat"
+    messages_enabled_on: "Açık"
+    messages_enabled_off: "Kapalı - parola sıfırlama e-postaları yine de gönderilir"
+    messages_enabled_debug: "Hata ayıklama - giden tüm e-postaları ve mesajları yönlendir"
+    messages_intercept_hint: "Hata ayıklama seçiliyken giden her e-posta bu adrese, her SMS bu numaraya gider."
+    messages_intercept_required: "Hata ayıklama için yönlendirilecek geçerli bir e-posta adresi ve telefon numarası gerekir."
     messages_retention_days: Delete messages older than (days)
     messages_retention_days_hint: Messages older than this many days are deleted automatically. Set 0 to keep all messages.
     messages_email_subject: Outgoing Email Subject Line

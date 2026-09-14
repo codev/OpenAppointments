@@ -96,6 +96,49 @@ class SettingsPagesTest < ActionDispatch::IntegrationTest
     assert_equal "a@example.org, b@example.org", Setting.get("messages_failure_alert_emails")
   end
 
+  test "the notifications choice offers on, off and debug with the intercept fields tied to debug" do
+    Setting.set("messages_enabled", "debug")
+    Setting.set("messages_intercept_email", "dev@example.org")
+    Setting.set("messages_intercept_phone", "+447700900123")
+    login_admin
+    get "/messages_settings"
+    assert_select "select#messages-enabled[name='settings[messages_enabled]']" do
+      assert_select "option[value='1']", text: "On"
+      assert_select "option[value='0']", text: /^Off/
+      assert_select "option[value='debug'][selected]", text: /^Debug/
+    end
+    assert_select "input[name='settings[messages_intercept_email]'][value='dev@example.org'][data-enabled-when='messages_enabled=debug']"
+    assert_select "input[name='settings[messages_intercept_phone]'][value='+447700900123'][data-enabled-when='messages_enabled=debug']"
+  end
+
+  test "debug needs a valid intercept email and phone, and on or off clears them" do
+    login_admin
+    post "/messages_settings/save", params: { settings: { messages_enabled: "debug", messages_intercept_email: "not-an-email", messages_intercept_phone: "07700 900123" } }
+    assert_redirected_to "/messages_settings"
+    follow_redirect!
+    assert_select ".alert-danger", text: /Invalid email address/
+    assert_equal "1", Setting.get("messages_enabled", "1")
+
+    post "/messages_settings/save", params: { settings: { messages_enabled: "debug", messages_intercept_email: "dev@example.org", messages_intercept_phone: "12" } }
+    follow_redirect!
+    assert_select ".alert-danger", text: /Invalid phone number/
+    assert_equal "1", Setting.get("messages_enabled", "1")
+
+    post "/messages_settings/save", params: { settings: { messages_enabled: "debug", messages_intercept_email: "", messages_intercept_phone: "" } }
+    follow_redirect!
+    assert_select ".alert-danger", text: /Debug needs a valid email address and phone number/
+
+    post "/messages_settings/save", params: { settings: { messages_enabled: "debug", messages_intercept_email: "dev@example.org", messages_intercept_phone: "07700 900123" } }
+    assert_equal "debug", Setting.get("messages_enabled")
+    assert_equal "dev@example.org", Setting.get("messages_intercept_email")
+    assert_equal "+447700900123", Setting.get("messages_intercept_phone")
+
+    post "/messages_settings/save", params: { settings: { messages_enabled: "0", messages_intercept_email: "dev@example.org", messages_intercept_phone: "07700 900123" } }
+    assert_equal "0", Setting.get("messages_enabled")
+    assert_equal "", Setting.get("messages_intercept_email").to_s
+    assert_equal "", Setting.get("messages_intercept_phone").to_s
+  end
+
   test "general settings save persists whitelisted settings" do
     login_admin
     post "/general_settings/save", params: { settings: { company_name: "Open Out", not_whitelisted: "ignored" } }

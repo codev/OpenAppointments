@@ -688,7 +688,12 @@ sq:
     title: Title
     hours: Hours
     messages_enabled: Enable notifications
-    messages_enabled_hint: Globally turn all notifications on or off. Password reset emails will still be sent.
+    messages_enabled_hint: "Aktivizo ose çaktivizo globalisht të gjitha njoftimet"
+    messages_enabled_on: "Aktiv"
+    messages_enabled_off: "Joaktiv - email-et e rivendosjes së fjalëkalimit do të dërgohen gjithsesi"
+    messages_enabled_debug: "Debug - ridrejto të gjitha email-et dhe mesazhet dalëse"
+    messages_intercept_hint: "Sa kohë është zgjedhur Debug, çdo email dalës shkon në këtë adresë dhe çdo SMS në këtë numër."
+    messages_intercept_required: "Debug kërkon një adresë email-i dhe një numër telefoni të vlefshëm për ridrejtim."
     messages_retention_days: Delete messages older than (days)
     messages_retention_days_hint: Messages older than this many days are deleted automatically. Set 0 to keep all messages.
     messages_email_subject: Outgoing Email Subject Line

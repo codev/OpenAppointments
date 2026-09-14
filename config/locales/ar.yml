@@ -688,7 +688,12 @@ ar:
     title: Title
     hours: Hours
     messages_enabled: Enable notifications
-    messages_enabled_hint: Globally turn all notifications on or off. Password reset emails will still be sent.
+    messages_enabled_hint: "تشغيل أو إيقاف جميع الإشعارات بشكل عام"
+    messages_enabled_on: "تشغيل"
+    messages_enabled_off: "إيقاف - سيستمر إرسال رسائل إعادة تعيين كلمة المرور"
+    messages_enabled_debug: "تصحيح - إعادة توجيه جميع الرسائل والبريد الصادر"
+    messages_intercept_hint: "أثناء اختيار التصحيح، يذهب كل بريد صادر إلى هذا العنوان وكل رسالة نصية إلى هذا الرقم."
+    messages_intercept_required: "يحتاج التصحيح إلى عنوان بريد إلكتروني ورقم هاتف صالحين لإعادة التوجيه إليهما."
     messages_retention_days: Delete messages older than (days)
     messages_retention_days_hint: Messages older than this many days are deleted automatically. Set 0 to keep all messages.
     messages_email_subject: Outgoing Email Subject Line

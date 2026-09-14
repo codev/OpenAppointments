@@ -688,7 +688,12 @@ fi:
     title: Title
     hours: Hours
     messages_enabled: Enable notifications
-    messages_enabled_hint: Globally turn all notifications on or off. Password reset emails will still be sent.
+    messages_enabled_hint: "Kytke kaikki ilmoitukset päälle tai pois"
+    messages_enabled_on: "Päällä"
+    messages_enabled_off: "Pois - salasanan palautusviestit lähetetään silti"
+    messages_enabled_debug: "Debug - ohjaa kaikki lähtevät sähköpostit ja viestit uudelleen"
+    messages_intercept_hint: "Kun Debug on valittuna, jokainen lähtevä sähköposti menee tähän osoitteeseen ja jokainen tekstiviesti tähän numeroon."
+    messages_intercept_required: "Debug tarvitsee kelvollisen sähköpostiosoitteen ja puhelinnumeron uudelleenohjaukseen."
     messages_retention_days: Delete messages older than (days)
     messages_retention_days_hint: Messages older than this many days are deleted automatically. Set 0 to keep all messages.
     messages_email_subject: Outgoing Email Subject Line

@@ -688,7 +688,12 @@ zh-tw:
     title: Title
     hours: Hours
     messages_enabled: Enable notifications
-    messages_enabled_hint: Globally turn all notifications on or off. Password reset emails will still be sent.
+    messages_enabled_hint: "整體開啟或關閉所有通知"
+    messages_enabled_on: "開啟"
+    messages_enabled_off: "關閉 - 密碼重設郵件仍會寄出"
+    messages_enabled_debug: "偵錯 - 將所有寄出的郵件和訊息轉送"
+    messages_intercept_hint: "選擇偵錯時，所有寄出的郵件都會送到此地址，所有簡訊都會送到此號碼。"
+    messages_intercept_required: "偵錯需要有效的電子郵件地址和電話號碼作為轉送目標。"
     messages_retention_days: Delete messages older than (days)
     messages_retention_days_hint: Messages older than this many days are deleted automatically. Set 0 to keep all messages.
     messages_email_subject: Outgoing Email Subject Line

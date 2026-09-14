@@ -688,7 +688,12 @@
     title: Title
     hours: Hours
     messages_enabled: Enable notifications
-    messages_enabled_hint: Globally turn all notifications on or off. Password reset emails will still be sent.
+    messages_enabled_hint: "Slå alle varsler på eller av globalt"
+    messages_enabled_on: "På"
+    messages_enabled_off: "Av - e-poster for tilbakestilling av passord sendes fortsatt"
+    messages_enabled_debug: "Feilsøking - omdiriger alle utgående e-poster og meldinger"
+    messages_intercept_hint: "Mens Feilsøking er valgt, går hver utgående e-post til denne adressen og hver SMS til dette nummeret."
+    messages_intercept_required: "Feilsøking krever en gyldig e-postadresse og et gyldig telefonnummer å omdirigere til."
     messages_retention_days: Delete messages older than (days)
     messages_retention_days_hint: Messages older than this many days are deleted automatically. Set 0 to keep all messages.
     messages_email_subject: Outgoing Email Subject Line

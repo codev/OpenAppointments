@@ -688,7 +688,12 @@ th:
     title: Title
     hours: Hours
     messages_enabled: Enable notifications
-    messages_enabled_hint: Globally turn all notifications on or off. Password reset emails will still be sent.
+    messages_enabled_hint: "เปิดหรือปิดการแจ้งเตือนทั้งหมด"
+    messages_enabled_on: "เปิด"
+    messages_enabled_off: "ปิด - อีเมลรีเซ็ตรหัสผ่านจะยังคงถูกส่ง"
+    messages_enabled_debug: "ดีบัก - เปลี่ยนเส้นทางอีเมลและข้อความขาออกทั้งหมด"
+    messages_intercept_hint: "ขณะที่เลือกดีบัก อีเมลขาออกทุกฉบับจะไปที่ที่อยู่นี้และ SMS ทุกข้อความจะไปที่หมายเลขนี้"
+    messages_intercept_required: "ดีบักต้องการที่อยู่อีเมลและหมายเลขโทรศัพท์ที่ถูกต้องสำหรับการเปลี่ยนเส้นทาง"
     messages_retention_days: Delete messages older than (days)
     messages_retention_days_hint: Messages older than this many days are deleted automatically. Set 0 to keep all messages.
     messages_email_subject: Outgoing Email Subject Line

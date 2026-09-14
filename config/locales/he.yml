@@ -688,7 +688,12 @@ he:
     title: Title
     hours: Hours
     messages_enabled: Enable notifications
-    messages_enabled_hint: Globally turn all notifications on or off. Password reset emails will still be sent.
+    messages_enabled_hint: "הפעלה או כיבוי של כל ההתראות באופן גלובלי"
+    messages_enabled_on: "פועל"
+    messages_enabled_off: "כבוי - הודעות דוא\"ל לאיפוס סיסמה עדיין יישלחו"
+    messages_enabled_debug: "ניפוי שגיאות - הפניית כל הודעות הדוא\"ל וההודעות היוצאות"
+    messages_intercept_hint: "כל עוד נבחר ניפוי שגיאות, כל דוא\"ל יוצא נשלח לכתובת זו וכל SMS למספר זה."
+    messages_intercept_required: "ניפוי שגיאות דורש כתובת דוא\"ל ומספר טלפון תקינים להפניה."
     messages_retention_days: Delete messages older than (days)
     messages_retention_days_hint: Messages older than this many days are deleted automatically. Set 0 to keep all messages.
     messages_email_subject: Outgoing Email Subject Line

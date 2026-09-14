@@ -688,7 +688,12 @@ ro:
     title: Title
     hours: Hours
     messages_enabled: Enable notifications
-    messages_enabled_hint: Globally turn all notifications on or off. Password reset emails will still be sent.
+    messages_enabled_hint: "Activează sau dezactivează global toate notificările"
+    messages_enabled_on: "Activat"
+    messages_enabled_off: "Dezactivat - e-mailurile de resetare a parolei vor fi trimise în continuare"
+    messages_enabled_debug: "Depanare - redirecționează toate e-mailurile și mesajele trimise"
+    messages_intercept_hint: "Cât timp Depanare este selectat, fiecare e-mail trimis merge la această adresă și fiecare SMS la acest număr."
+    messages_intercept_required: "Depanarea necesită o adresă de e-mail și un număr de telefon valide pentru redirecționare."
     messages_retention_days: Delete messages older than (days)
     messages_retention_days_hint: Messages older than this many days are deleted automatically. Set 0 to keep all messages.
     messages_email_subject: Outgoing Email Subject Line
