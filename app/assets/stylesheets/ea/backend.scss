@@ -629,6 +629,7 @@ body .modal.full-screen .modal-push {
 #header-logo img {
     width: 45px;
     height: 45px;
+    object-fit: contain;
 }
 
 #header-logo h6 {
