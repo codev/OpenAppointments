@@ -677,8 +677,9 @@ body .modal.full-screen .modal-push {
     }
 }
 
-/* Below 1024px: logo above its text, icon above the label, tighter items. */
-@media (min-width: 768px) and (max-width: 1023.98px) {
+/* Below 1200px: logo above its text, icon above the label, tighter items.
+   Font Awesome swaps each <i> for an <svg>, so icon rules name both. */
+@media (min-width: 768px) and (max-width: 1199.98px) {
     #header-logo {
         flex-direction: column;
         text-align: center;
@@ -695,12 +696,22 @@ body .modal.full-screen .modal-push {
 
     #header .navbar-nav .nav-link {
         flex-direction: column;
+        justify-content: flex-start;
         padding: 0.5rem 0.6rem !important;
+        margin-top: 0.6rem;
         line-height: 1.2;
     }
 
-    #header .navbar-nav .nav-link i {
+    #header .navbar-nav .nav-link i,
+    #header .navbar-nav .nav-link svg {
+        width: 1.25em;
+        height: 1em;
         margin: 0 0 0.25rem !important;
+        text-align: center;
+    }
+
+    #header .navbar-nav .nav-link.dropdown-toggle::after {
+        margin: 0.25rem 0 0;
     }
 }
 
