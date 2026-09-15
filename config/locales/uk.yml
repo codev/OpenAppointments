@@ -918,3 +918,7 @@ uk:
     customer_notes: "Нотатки про клієнта"
     appointments_in_last_year: "Записи за останній рік"
     notification_event_customer_message: "Отримано повідомлення від клієнта"
+    booking_notice: "Повідомлення про бронювання"
+    display_booking_notice_time_step: "Показувати повідомлення про бронювання на кроці дати/часу"
+    display_booking_notice_info_step: "Показувати повідомлення про бронювання на кроці даних клієнта"
+    booking_notice_content: "Текст повідомлення про бронювання"

@@ -918,3 +918,7 @@ lt:
     customer_notes: "Kliento pastabos"
     appointments_in_last_year: "Vizitai per pastaruosius metus"
     notification_event_customer_message: "Gauta kliento žinutė"
+    booking_notice: "Pranešimas apie rezervaciją"
+    display_booking_notice_time_step: "Rodyti pranešimą apie rezervaciją datos/laiko žingsnyje"
+    display_booking_notice_info_step: "Rodyti pranešimą apie rezervaciją kliento duomenų žingsnyje"
+    booking_notice_content: "Pranešimo apie rezervaciją turinys"

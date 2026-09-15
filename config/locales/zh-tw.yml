@@ -918,3 +918,7 @@ zh-tw:
     customer_notes: "顧客備註"
     appointments_in_last_year: "過去一年的預約"
     notification_event_customer_message: "收到顧客訊息"
+    booking_notice: "預約須知"
+    display_booking_notice_time_step: "在日期/時間步驟顯示預約須知"
+    display_booking_notice_info_step: "在客戶資料步驟顯示預約須知"
+    booking_notice_content: "預約須知內容"

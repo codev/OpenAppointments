@@ -918,3 +918,7 @@ hu:
     customer_notes: "Ügyfél megjegyzései"
     appointments_in_last_year: "Időpontok az elmúlt évben"
     notification_event_customer_message: "Ügyfélüzenet érkezett"
+    booking_notice: "Foglalási Értesítés"
+    display_booking_notice_time_step: "Foglalási értesítés megjelenítése a dátum/idő lépésnél"
+    display_booking_notice_info_step: "Foglalási értesítés megjelenítése az ügyféladatok lépésnél"
+    booking_notice_content: "Foglalási értesítés tartalma"

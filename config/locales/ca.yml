@@ -918,3 +918,7 @@ ca:
     customer_notes: "Notes del client"
     appointments_in_last_year: "Cites de l'últim any"
     notification_event_customer_message: "Missatge de client rebut"
+    booking_notice: "Avís de reserva"
+    display_booking_notice_time_step: "Mostrar l'avís de reserva al pas de data/hora"
+    display_booking_notice_info_step: "Mostrar l'avís de reserva al pas de dades del client"
+    booking_notice_content: "Contingut de l'avís de reserva"

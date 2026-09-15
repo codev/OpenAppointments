@@ -918,3 +918,7 @@ da:
     customer_notes: "Kundenoter"
     appointments_in_last_year: "Aftaler det seneste år"
     notification_event_customer_message: "Kundebesked modtaget"
+    booking_notice: "Bookingmeddelelse"
+    display_booking_notice_time_step: "Vis bookingmeddelelse på dato/tid-trinnet"
+    display_booking_notice_info_step: "Vis bookingmeddelelse på kundeoplysninger-trinnet"
+    booking_notice_content: "Indhold af bookingmeddelelse"

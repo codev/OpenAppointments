@@ -918,3 +918,7 @@ he:
     customer_notes: "הערות לקוח"
     appointments_in_last_year: "פגישות בשנה האחרונה"
     notification_event_customer_message: "התקבלה הודעה מלקוח"
+    booking_notice: "הודעת הזמנה"
+    display_booking_notice_time_step: "הצג הודעת הזמנה בשלב תאריך/שעה"
+    display_booking_notice_info_step: "הצג הודעת הזמנה בשלב פרטי הלקוח"
+    booking_notice_content: "תוכן הודעת ההזמנה"

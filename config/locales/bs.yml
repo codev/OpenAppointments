@@ -918,3 +918,7 @@ bs:
     customer_notes: "Napomene o klijentu"
     appointments_in_last_year: "Termini u posljednjih godinu dana"
     notification_event_customer_message: "Primljena poruka klijenta"
+    booking_notice: "Obaveštenje o rezervaciji"
+    display_booking_notice_time_step: "Prikaži obaveštenje o rezervaciji na koraku datuma/vremena"
+    display_booking_notice_info_step: "Prikaži obaveštenje o rezervaciji na koraku podataka o klijentu"
+    booking_notice_content: "Sadržaj obaveštenja o rezervaciji"

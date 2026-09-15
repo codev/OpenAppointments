@@ -918,3 +918,7 @@ sl:
     customer_notes: "Opombe o stranki"
     appointments_in_last_year: "Termini v zadnjem letu"
     notification_event_customer_message: "Prejeto sporočilo stranke"
+    booking_notice: "Obvestilo o rezervaciji"
+    display_booking_notice_time_step: "Prikaži obvestilo o rezervaciji na koraku datum/čas"
+    display_booking_notice_info_step: "Prikaži obvestilo o rezervaciji na koraku podatki o stranki"
+    booking_notice_content: "Vsebina obvestila o rezervaciji"

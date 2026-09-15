@@ -918,3 +918,7 @@ th:
     customer_notes: "บันทึกลูกค้า"
     appointments_in_last_year: "การนัดหมายในปีที่ผ่านมา"
     notification_event_customer_message: "ได้รับข้อความจากลูกค้า"
+    booking_notice: "ประกาศการจอง"
+    display_booking_notice_time_step: "แสดงประกาศการจองในขั้นตอนวันที่/เวลา"
+    display_booking_notice_info_step: "แสดงประกาศการจองในขั้นตอนข้อมูลลูกค้า"
+    booking_notice_content: "เนื้อหาประกาศการจอง"

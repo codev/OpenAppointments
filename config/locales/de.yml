@@ -918,3 +918,7 @@ de:
     customer_notes: "Kundennotizen"
     appointments_in_last_year: "Termine im letzten Jahr"
     notification_event_customer_message: "Kundennachricht erhalten"
+    booking_notice: "Buchungshinweis"
+    display_booking_notice_time_step: "Buchungshinweis im Schritt Datum/Uhrzeit anzeigen"
+    display_booking_notice_info_step: "Buchungshinweis im Schritt Kundendaten anzeigen"
+    booking_notice_content: "Inhalt des Buchungshinweises"

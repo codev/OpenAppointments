@@ -918,3 +918,7 @@ mr:
     customer_notes: "ग्राहक नोंदी"
     appointments_in_last_year: "गेल्या वर्षातील अपॉइंटमेंट"
     notification_event_customer_message: "ग्राहक संदेश प्राप्त झाला"
+    booking_notice: "बुकिंग सूचना"
+    display_booking_notice_time_step: "तारीख/वेळ टप्प्यावर बुकिंग सूचना दाखवा"
+    display_booking_notice_info_step: "ग्राहक तपशील टप्प्यावर बुकिंग सूचना दाखवा"
+    booking_notice_content: "बुकिंग सूचनेची सामग्री"

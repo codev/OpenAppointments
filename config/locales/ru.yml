@@ -918,3 +918,7 @@ ru:
     customer_notes: "Заметки о клиенте"
     appointments_in_last_year: "Записи за последний год"
     notification_event_customer_message: "Получено сообщение от клиента"
+    booking_notice: "Уведомление о бронировании"
+    display_booking_notice_time_step: "Показывать уведомление о бронировании на шаге даты/времени"
+    display_booking_notice_info_step: "Показывать уведомление о бронировании на шаге данных клиента"
+    booking_notice_content: "Текст уведомления о бронировании"

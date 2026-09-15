@@ -918,3 +918,7 @@ tr:
     customer_notes: "Müşteri Notları"
     appointments_in_last_year: "Son Bir Yıldaki Randevular"
     notification_event_customer_message: "Müşteri Mesajı Alındı"
+    booking_notice: "Rezervasyon Bildirimi"
+    display_booking_notice_time_step: "Rezervasyon bildirimini tarih/saat adımında göster"
+    display_booking_notice_info_step: "Rezervasyon bildirimini müşteri bilgileri adımında göster"
+    booking_notice_content: "Rezervasyon bildirimi içeriği"

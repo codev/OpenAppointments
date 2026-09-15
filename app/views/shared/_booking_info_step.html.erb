@@ -29,6 +29,7 @@
         <% end %>
         <div class="frame-container py-3">
             <h2 class="frame-title fw-light text-center mb-4 text-muted"><%= lang('customer_information') %></h2>
+            <%= render "shared/booking_notice", shown: vars(:display_booking_notice_info_step) %>
             <div class="row frame-content">
                 <%= text_field.call("name", lang("name"), "1", 220) %>
                 <%= text_field.call("email", lang("email"), require_email, 120, either: require_phone_or_email == "1") if display_email == "1" %>

@@ -918,3 +918,7 @@ bu:
     customer_notes: "Бележки за клиента"
     appointments_in_last_year: "Часове през последната година"
     notification_event_customer_message: "Получено съобщение от клиент"
+    booking_notice: "Известие за резервация"
+    display_booking_notice_time_step: "Показване на известието за резервация на стъпката дата/час"
+    display_booking_notice_info_step: "Показване на известието за резервация на стъпката данни за клиента"
+    booking_notice_content: "Съдържание на известието за резервация"

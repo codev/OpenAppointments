@@ -918,3 +918,7 @@ fa:
     customer_notes: "یادداشت‌های مشتری"
     appointments_in_last_year: "نوبت‌های سال گذشته"
     notification_event_customer_message: "پیام مشتری دریافت شد"
+    booking_notice: "اعلامیه رزرو"
+    display_booking_notice_time_step: "نمایش اعلامیه رزرو در مرحله تاریخ/زمان"
+    display_booking_notice_info_step: "نمایش اعلامیه رزرو در مرحله اطلاعات مشتری"
+    booking_notice_content: "محتوای اعلامیه رزرو"

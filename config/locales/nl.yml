@@ -918,3 +918,7 @@ nl:
     customer_notes: "Klantnotities"
     appointments_in_last_year: "Afspraken in het afgelopen jaar"
     notification_event_customer_message: "Klantbericht ontvangen"
+    booking_notice: "Boekingsmededeling"
+    display_booking_notice_time_step: "Boekingsmededeling tonen bij de stap datum/tijd"
+    display_booking_notice_info_step: "Boekingsmededeling tonen bij de stap klantgegevens"
+    booking_notice_content: "Inhoud boekingsmededeling"

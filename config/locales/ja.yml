@@ -918,3 +918,7 @@ ja:
     customer_notes: "顧客メモ"
     appointments_in_last_year: "過去1年の予約数"
     notification_event_customer_message: "顧客からのメッセージを受信"
+    booking_notice: "予約に関するお知らせ"
+    display_booking_notice_time_step: "日時ステップに予約のお知らせを表示"
+    display_booking_notice_info_step: "お客様情報ステップに予約のお知らせを表示"
+    booking_notice_content: "予約のお知らせの内容"

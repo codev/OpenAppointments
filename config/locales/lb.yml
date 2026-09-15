@@ -918,3 +918,7 @@ lb:
     customer_notes: "Notizen zum Client"
     appointments_in_last_year: "Rendez-vousen am leschte Joer"
     notification_event_customer_message: "Clientsmessage kritt"
+    booking_notice: "Buchungshiweis"
+    display_booking_notice_time_step: "Buchungshiweis am Schrëtt Datum/Zäit weisen"
+    display_booking_notice_info_step: "Buchungshiweis am Schrëtt Clientsdaten weisen"
+    booking_notice_content: "Inhalt vum Buchungshiweis"

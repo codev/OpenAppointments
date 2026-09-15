@@ -918,3 +918,7 @@ ar:
     customer_notes: "ملاحظات العميل"
     appointments_in_last_year: "المواعيد في العام الماضي"
     notification_event_customer_message: "تم استلام رسالة من العميل"
+    booking_notice: "إشعار الحجز"
+    display_booking_notice_time_step: "عرض إشعار الحجز في خطوة التاريخ/الوقت"
+    display_booking_notice_info_step: "عرض إشعار الحجز في خطوة بيانات العميل"
+    booking_notice_content: "محتوى إشعار الحجز"

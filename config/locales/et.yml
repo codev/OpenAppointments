@@ -918,3 +918,7 @@ et:
     customer_notes: "Kliendi märkused"
     appointments_in_last_year: "Broneeringud viimasel aastal"
     notification_event_customer_message: "Kliendi sõnum saabunud"
+    booking_notice: "Broneeringu teadaanne"
+    display_booking_notice_time_step: "Näita broneeringu teadaannet kuupäeva/kellaaja sammul"
+    display_booking_notice_info_step: "Näita broneeringu teadaannet kliendi andmete sammul"
+    booking_notice_content: "Broneeringu teadaande sisu"

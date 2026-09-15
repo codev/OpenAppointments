@@ -918,3 +918,7 @@ zh:
     customer_notes: "客户备注"
     appointments_in_last_year: "过去一年的预约"
     notification_event_customer_message: "收到客户消息"
+    booking_notice: "预约须知"
+    display_booking_notice_time_step: "在日期/时间步骤显示预约须知"
+    display_booking_notice_info_step: "在客户资料步骤显示预约须知"
+    booking_notice_content: "预约须知内容"

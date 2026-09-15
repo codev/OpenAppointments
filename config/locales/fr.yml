@@ -918,3 +918,7 @@ fr:
     customer_notes: "Notes du client"
     appointments_in_last_year: "Rendez-vous de l'année écoulée"
     notification_event_customer_message: "Message client reçu"
+    booking_notice: "Avis de réservation"
+    display_booking_notice_time_step: "Afficher l'avis de réservation à l'étape date/heure"
+    display_booking_notice_info_step: "Afficher l'avis de réservation à l'étape coordonnées du client"
+    booking_notice_content: "Contenu de l'avis de réservation"

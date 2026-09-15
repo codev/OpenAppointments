@@ -918,3 +918,7 @@ ro:
     customer_notes: "Note client"
     appointments_in_last_year: "Programări în ultimul an"
     notification_event_customer_message: "Mesaj de la client primit"
+    booking_notice: "Notificare Rezervare"
+    display_booking_notice_time_step: "Afișează notificarea de rezervare la pasul dată/oră"
+    display_booking_notice_info_step: "Afișează notificarea de rezervare la pasul date client"
+    booking_notice_content: "Conținutul notificării de rezervare"

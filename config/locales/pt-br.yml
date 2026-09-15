@@ -918,3 +918,7 @@ pt-br:
     customer_notes: "Observações do cliente"
     appointments_in_last_year: "Agendamentos no último ano"
     notification_event_customer_message: "Mensagem do cliente recebida"
+    booking_notice: "Aviso de agendamento"
+    display_booking_notice_time_step: "Exibir aviso de agendamento na etapa de data/hora"
+    display_booking_notice_info_step: "Exibir aviso de agendamento na etapa de dados do cliente"
+    booking_notice_content: "Conteúdo do aviso de agendamento"

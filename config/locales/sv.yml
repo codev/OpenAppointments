@@ -918,3 +918,7 @@ sv:
     customer_notes: "Kundanteckningar"
     appointments_in_last_year: "Bokningar det senaste året"
     notification_event_customer_message: "Kundmeddelande mottaget"
+    booking_notice: "Bokningsmeddelande"
+    display_booking_notice_time_step: "Visa bokningsmeddelande i steget datum/tid"
+    display_booking_notice_info_step: "Visa bokningsmeddelande i steget kunduppgifter"
+    booking_notice_content: "Innehåll i bokningsmeddelande"

@@ -918,3 +918,7 @@ sk:
     customer_notes: "Poznámky k zákazníkovi"
     appointments_in_last_year: "Termíny za posledný rok"
     notification_event_customer_message: "Prijatá správa od zákazníka"
+    booking_notice: "Oznámenie o rezervácii"
+    display_booking_notice_time_step: "Zobraziť oznámenie o rezervácii v kroku dátum/čas"
+    display_booking_notice_info_step: "Zobraziť oznámenie o rezervácii v kroku údaje zákazníka"
+    booking_notice_content: "Obsah oznámenia o rezervácii"

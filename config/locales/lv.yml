@@ -918,3 +918,7 @@ lv:
     customer_notes: "Klienta piezīmes"
     appointments_in_last_year: "Pieraksti pēdējā gadā"
     notification_event_customer_message: "Saņemta klienta ziņa"
+    booking_notice: "Paziņojums par rezervāciju"
+    display_booking_notice_time_step: "Rādīt paziņojumu par rezervāciju datuma/laika solī"
+    display_booking_notice_info_step: "Rādīt paziņojumu par rezervāciju klienta datu solī"
+    booking_notice_content: "Paziņojuma par rezervāciju saturs"

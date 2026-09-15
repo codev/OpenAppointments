@@ -18,6 +18,28 @@
 
                         <div class="row">
                             <div class="col-12">
+                                <h5 class="mb-3 fw-light"><%= lang('booking_notice') %></h5>
+
+                                <div class="form-check form-switch mb-3">
+                                    <%= setting_switch "display_booking_notice_time_step", class: "form-check-input display-switch" %>
+                                    <label class="form-check-label" for="display-booking-notice-time-step">
+                                        <%= lang('display_booking_notice_time_step') %>
+                                    </label>
+                                </div>
+
+                                <div class="form-check form-switch mb-3">
+                                    <%= setting_switch "display_booking_notice_info_step", class: "form-check-input display-switch" %>
+                                    <label class="form-check-label" for="display-booking-notice-info-step">
+                                        <%= lang('display_booking_notice_info_step') %>
+                                    </label>
+                                </div>
+
+                                <div class="mb-5">
+                                    <label class="form-label"
+                                           for="booking-notice-content"><%= lang('booking_notice_content') %></label>
+                                    <%= setting_textarea "booking_notice_content", class: "mb-3 rich-text", cols: 30, rows: 10 %>
+                                </div>
+
                                 <h5 class="mb-3 fw-light"><%= lang('cookie_notice') %></h5>
 
                                 <div class="form-check form-switch mb-3">

@@ -918,3 +918,7 @@ en:
     customer_notes: "Customer Notes"
     appointments_in_last_year: "Appointments in Last Year"
     notification_event_customer_message: "Customer Message Received"
+    booking_notice: "Booking Notice"
+    display_booking_notice_time_step: "Display Booking Notice on Date/Time Step"
+    display_booking_notice_info_step: "Display Booking Notice on Customer Details Step"
+    booking_notice_content: "Booking Notice Content"

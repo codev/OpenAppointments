@@ -9,7 +9,7 @@ module Messaging
       "Service Duration", "Appointment Date", "Appointment Time",
       "Appointment End Time", "Appointment Status", "Appointment Link",
       "Cancellation Reason", "Repeats", "Next Appointment", "User Name",
-      "Customer Message Link"
+      "Customer Message Link", "Booking Notice"
     ].freeze
 
     module_function
@@ -22,8 +22,16 @@ module Messaging
     def base_context
       {
         "Company Name" => Setting.get("company_name", ""),
-        "Company Link" => Setting.get("company_link", "")
+        "Company Link" => Setting.get("company_link", ""),
+        "Booking Notice" => plain_text(Setting.get("booking_notice_content", ""))
       }
+    end
+
+    # Rich text settings as message text: block ends and line breaks become
+    # newlines, every other tag is dropped.
+    def plain_text(html)
+      text = html.to_s.gsub(%r{</(p|div|h\d|li)>|<br\s*/?>}i, "\n")
+      Rails::Html::FullSanitizer.new.sanitize(text).to_s.strip
     end
 
     # Tokens for an incoming customer message: the customer and a login link to

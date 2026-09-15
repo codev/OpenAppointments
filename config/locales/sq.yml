@@ -918,3 +918,7 @@ sq:
     customer_notes: "Shënime për klientin"
     appointments_in_last_year: "Takime në vitin e fundit"
     notification_event_customer_message: "Mesazh nga klienti i marrë"
+    booking_notice: "Njoftimi i Rezervimit"
+    display_booking_notice_time_step: "Shfaq njoftimin e rezervimit në hapin data/ora"
+    display_booking_notice_info_step: "Shfaq njoftimin e rezervimit në hapin të dhënat e klientit"
+    booking_notice_content: "Përmbajtja e njoftimit të rezervimit"

@@ -13,6 +13,7 @@
         <%= hidden_field_tag :time, @time, id: "selected-time" %>
         <div class="frame-container py-3">
             <h2 class="frame-title fw-light text-center mb-4 text-muted"><%= lang('appointment_date_and_time') %></h2>
+            <%= render "shared/booking_notice", shown: vars(:display_booking_notice_time_step) %>
             <div class="row frame-content">
                 <div class="col-12 col-lg-6">
                     <div id="select-date" class="mx-auto my-4"></div>

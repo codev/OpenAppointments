@@ -918,3 +918,7 @@ el:
     customer_notes: "Σημειώσεις πελάτη"
     appointments_in_last_year: "Ραντεβού τον τελευταίο χρόνο"
     notification_event_customer_message: "Ελήφθη μήνυμα πελάτη"
+    booking_notice: "Ειδοποίηση Κράτησης"
+    display_booking_notice_time_step: "Εμφάνιση ειδοποίησης κράτησης στο βήμα ημερομηνίας/ώρας"
+    display_booking_notice_info_step: "Εμφάνιση ειδοποίησης κράτησης στο βήμα στοιχείων πελάτη"
+    booking_notice_content: "Περιεχόμενο ειδοποίησης κράτησης"

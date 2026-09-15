@@ -918,3 +918,7 @@ fi:
     customer_notes: "Asiakkaan muistiinpanot"
     appointments_in_last_year: "Varaukset viime vuonna"
     notification_event_customer_message: "Asiakkaan viesti vastaanotettu"
+    booking_notice: "Varausilmoitus"
+    display_booking_notice_time_step: "Näytä varausilmoitus päivämäärä/aika-vaiheessa"
+    display_booking_notice_info_step: "Näytä varausilmoitus asiakastiedot-vaiheessa"
+    booking_notice_content: "Varausilmoituksen sisältö"
