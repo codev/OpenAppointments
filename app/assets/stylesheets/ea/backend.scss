@@ -314,7 +314,6 @@ body .modal.full-screen .modal-push {
     font-size: 12px;
 }
 
-/* Calendar header and Select2 integration */
 /* Appointments page header: nav buttons left, date picker exactly centred. */
 #calendar .calendar-header .fc-header-toolbar {
     display: grid !important;
@@ -346,17 +345,6 @@ body .modal.full-screen .modal-push {
 #calendar .calendar-header .select-date {
     width: auto;
     text-align: center;
-}
-
-#calendar .select2-container--default.select2-container--focus .select2-selection--multiple {
-    border-color: var(--bs-primary);
-    outline: 0;
-    box-shadow: 0 0 0 0.2rem rgba(var(--bs-primary-rgb), 0.25);
-}
-
-#calendar .select2-container--default .select2-selection--multiple .select2-selection__choice {
-    background-color: var(--bs-light);
-    border: 1px solid var(--bs-border-color);
 }
 
 /* Calendar table view */
