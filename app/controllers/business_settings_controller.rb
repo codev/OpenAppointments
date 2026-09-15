@@ -18,7 +18,6 @@ class BusinessSettingsController < ApplicationController
   def save
     require_system_settings_edit!
     merge_minutes_fields
-    validate_windows!
     save_setting_rows(:business_settings) do |name, value|
       next value unless name == "appointment_status_options"
 
@@ -29,7 +28,6 @@ class BusinessSettingsController < ApplicationController
     settings_failed(e)
   end
 
-  # The late cancellation window cannot exceed the booking window.
   # The windows are typed as hours + minutes (minutes[name][hours|minutes]).
   def merge_minutes_fields
     return unless settings_form_post? && params[:minutes].respond_to?(:each)
@@ -37,13 +35,6 @@ class BusinessSettingsController < ApplicationController
     params[:minutes].each do |name, parts|
       params[:settings][name] = (parts[:hours].to_i * 60 + parts[:minutes].to_i).to_s
     end
-  end
-
-  def validate_windows!
-    rows = setting_row_params(:business_settings).to_h { |row| [ row["name"], row["value"].to_i ] }
-    booking = rows.fetch("book_advance_timeout") { BookingWindows.minutes("book_advance_timeout") }
-    late = rows.fetch("late_cancellation_timeout") { BookingWindows.late_minutes }
-    raise ArgumentError, helpers.lang("late_window_exceeds_booking_window") if late > booking
   end
 
   # POST /business_settings/apply_global_working_plan

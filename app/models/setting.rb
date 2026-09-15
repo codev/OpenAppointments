@@ -11,7 +11,6 @@ class Setting < ApplicationRecord
     record = find_or_initialize_by(name: name)
     record.update!(value: value.to_s)
     Rails.cache.delete("setting/#{name}")
-    BookingWindows.clamp! if BookingWindows::KEYS.include?(name)
     record
   end
 

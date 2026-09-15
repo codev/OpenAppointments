@@ -1,10 +1,8 @@
 # The two customer-facing windows in Business Settings, stored as minutes:
 # book_advance_timeout (how close to the start a slot can be booked) and
 # late_cancellation_timeout (how close a reschedule/cancel still counts as in
-# time). The late window cannot exceed the booking window.
+# time).
 module BookingWindows
-  KEYS = %w[book_advance_timeout late_cancellation_timeout].freeze
-
   module_function
 
   def minutes(name)
@@ -25,15 +23,6 @@ module BookingWindows
 
   def late?(appointment, now = Time.now)
     starts_at(appointment) - now < late_minutes * 60
-  end
-
-  # Keep late <= booking whichever path wrote the settings (API, restore, seeds).
-  def clamp!
-    booking = minutes("book_advance_timeout")
-    return unless late_minutes > booking
-
-    Setting.where(name: "late_cancellation_timeout").update_all(value: booking.to_s)
-    Rails.cache.delete("setting/late_cancellation_timeout")
   end
 
   def hours_and_minutes(total) = total.divmod(60)
