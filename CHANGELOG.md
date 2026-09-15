@@ -5,16 +5,19 @@ CloudronManifest.json.
 
 ## 2.1.0
 
-- Fixed: the Terminology labels on General Settings showed empty and could not be changed from the page
-- Enable notifications on Messages > Settings is now On, Off or Debug; Debug redirects every outgoing email and SMS to an intercept address and phone number and marks the original recipient at the top of the message
-- Customer page: the conversation sits full width below the record buttons and the message box takes several lines; Enter sends, Shift-Enter adds a line
-- Inbox and Unknown inbox: each message is a block with the sender, channel, date and status on one line and the full text beneath, readable at every screen width
-- Incoming email keeps only the reply text; quoted earlier mail and signatures are dropped from the body while the full text stays on the message
-- Stylist, admin and assistant lists show the name and contact details on one line with tighter spacing, and every list runs down the page instead of scrolling inside its own box, so more people fit on the screen
-- Notifications: a Customer Message Received event tells the customer's stylist (the one with their next appointment, or their last) when a message comes in by email or SMS; a {{Customer Message Link}} template field links to the messages panel of the customer record; the default set includes it for stylists by Email and SMS Gateway
-- Business Settings: the late cancellation window no longer has to fit inside the booking window; each can be set on its own
-- Booking Notice: a rich text notice under Settings > Legal Contents with switches to show it above the calendar on the date and time step and above the fields on the customer details step; a {{Booking Notice}} template field carries it as plain text into notifications such as the confirmation email
-- Reports: the appointment report gains a column for each displayed customer custom field, headed by its label, and a Customer Notes column; a new customer report lists every customer with their details, custom fields and notes, the appointments kept in the last year, the providers and services booked with counts, and the cancelled, late cancelled and rescheduled counts for the year
+- Bug fix: Terminology labels in General Settings were empty and could not be changed
+- Debug setting for Message Settings > Enable notifications on Messages to allow all messages to be routed to one number or email address for testing
+- Customer page: the Message section sits full width below the record buttons
+- Customer page: Message box is now multi-line - enter sends, shift-enter adds a line
+- Inbox and Unknown Inbox: improved layout with message more easily readable on all screen widths
+- Incoming email keeps only the reply text - reply-to/quoted email content is dropped
+- User lists show the name and contact details on one line with tighter spacing, so more people fit on the screen
+- Notifications: a Customer Message Received event tells the customer's stylist (the one with their next appointment, or their last) when a message comes in by email or SMS - default notifications set includes this one for stylists by Email and SMS Gateway
+- New {{Customer Message Link}} template field links to the messages panel of the customer record
+- Business Settings: the late cancellation window no longer has to fit inside the booking window
+- Booking Notice: a rich text notice under Settings > Legal Contents with switches to show it above the calendar on the date and time step and above the fields on the customer details step
+- New {{Booking Notice}} template field for notifications to put the notice above into the confirmation email or other notifications
+- Reports: Added a Customer Report and edited the Appointments Report to include more details
 
 ## 2.0.0
 
