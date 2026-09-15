@@ -318,7 +318,10 @@ App.Pages.Booking = (function () {
                 }
             });
             $(document).on('change', '#select-timezone', () => renderHours(timeStepFrame(), $('#selected-date').val(), true));
-            $(document).on('click', '.available-hour', (event) => selectHour($(event.currentTarget).data('value')));
+            $(document).on('click', '.available-hour', (event) => {
+                selectHour($(event.currentTarget).data('value'));
+                scrollToNext();
+            });
 
             // Turbo swallows a form's submit before delegated jQuery handlers see
             // it, so the guards listen in the capture phase.
