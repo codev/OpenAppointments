@@ -15,6 +15,7 @@ CloudronManifest.json.
 - Notifications: a Customer Message Received event tells the customer's stylist (the one with their next appointment, or their last) when a message comes in by email or SMS - default notifications set includes this one for stylists by Email and SMS Gateway
 - New {{Customer Message Link}} template field links to the messages panel of the customer record
 - Business Settings: the late cancellation window no longer has to fit inside the booking window
+- The Data Settings page and cog menu entry are called Manage Data again
 - Admin pages: the company logo from General Settings shows top left in place of the OpenAppointments logo
 - Booking wizard: choosing a time scrolls the page down to the Next button, as choosing a service or stylist does
 - Booking Notice: a rich text notice under Settings > Legal Contents with switches to show it above the calendar on the date and time step and above the fields on the customer details step

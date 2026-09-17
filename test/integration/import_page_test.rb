@@ -323,11 +323,19 @@ class ImportPageTest < ActionDispatch::IntegrationTest
     assert_match(/Not an ODS spreadsheet/, response.parsed_body["message"])
   end
 
+  test "the page and the cog menu call it Manage Data" do
+    login_admin
+    get "/import"
+    assert_select "h4", text: "Manage Data"
+    assert_select "#header .dropdown-item[href='/import']", text: /Manage Data/
+    assert_select "title", text: /Manage Data/
+  end
+
   test "the import strings exist in every locale" do
     I18n.available_locales.each do |locale|
       %w[import_data import_hint analyze start_import create_providers days_back days_forward
          reset_database reset_database_warning reset_confirmation_hint
-         data_settings export_data import_type full_reset_label import_providers_caution].each do |key|
+         manage_data export_data import_type full_reset_label import_providers_caution].each do |key|
         assert I18n.t("ea.#{key}", locale: locale, fallback: false, default: nil).present?,
                "missing ea.#{key} in #{locale}"
       end

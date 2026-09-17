@@ -18,7 +18,7 @@ class ImportController < ApplicationController
     return unless require_backend_page!(:system_settings)
     return head :forbidden unless can?(:edit, :system_settings)
 
-    backend_page_vars(page_title: helpers.lang("data_settings"), active_menu: "system_settings")
+    backend_page_vars(page_title: helpers.lang("manage_data"), active_menu: "system_settings")
     html_vars(appointment_statuses: AppointmentStatus.rows, report_from: Date.current.beginning_of_month,
               report_to: Date.current)
     @backups = BackupExport.list
