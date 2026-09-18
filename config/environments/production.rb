@@ -79,7 +79,7 @@ Rails.application.configure do
     email: {
       email_prefix: "[OpenAppointments Error] ",
       sender_address: %("OpenAppointments Administrator" <#{ENV.fetch('CLOUDRON_MAIL_FROM', 'info@codev.uk')}>),
-      exception_recipients: %w[marc@codev.uk]
+      exception_recipients: -> { ErrorReports.recipients }
     },
     # Routing misses that fall through to the next app are not errors.
     ignore_cascade_pass: true,
