@@ -98,21 +98,11 @@
 
                                 <h5 class="mb-3 fw-light"><%= lang('imprint') %></h5>
 
-                                <div class="mb-5">
+                                <div class="mb-3">
                                     <label class="form-label" for="imprint-url"><%= lang('imprint_url') %></label>
                                     <%= setting_text "imprint_url", type: "url", placeholder: "https://..." %>
                                     <div class="form-text text-muted small">
                                         <%= lang('imprint_url_hint') %>
-                                    </div>
-                                </div>
-
-                                <h5 class="mb-3 fw-light"><%= lang('data_retention') %></h5>
-
-                                <div class="mb-3">
-                                    <label class="form-label" for="data-retention-days"><%= lang('data_retention_days') %></label>
-                                    <%= setting_text "data_retention_days", type: "number", min: 0, placeholder: "0" %>
-                                    <div class="form-text text-muted small">
-                                        <%= lang('data_retention_days_hint') %>
                                     </div>
                                 </div>
                             </div>

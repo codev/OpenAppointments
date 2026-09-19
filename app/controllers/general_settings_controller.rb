@@ -12,7 +12,7 @@ class GeneralSettingsController < ApplicationController
     display_booking_notice_time_step display_booking_notice_info_step booking_notice_content
     display_cookie_notice cookie_notice_content display_terms_and_conditions
     terms_and_conditions_content display_privacy_policy privacy_policy_content
-    provider_label provider_label_plural service_label service_label_plural
+    provider_label provider_label_plural service_label service_label_plural data_retention_days
   ].freeze
 
   def index

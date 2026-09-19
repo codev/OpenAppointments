@@ -15,6 +15,7 @@ CloudronManifest.json.
 - Notifications: a Customer Message Received event tells the customer's stylist (the one with their next appointment, or their last) when a message comes in by email or SMS - default notifications set includes this one for stylists by Email and SMS Gateway
 - New {{Customer Message Link}} template field links to the messages panel of the customer record
 - Business Settings: the late cancellation window no longer has to fit inside the booking window
+- Data Retention moved from Legal Contents to General Settings
 - Timezones: the Fixed timezone switch is now Timezone support, on by default, shown above the default timezone on General Settings; existing installs keep their choice
 - Turning timezone support off no longer overwrites each stylist's and customer's stored timezone, so it comes back when the switch is turned on again
 - With timezone support off the booking page shows the stylist's hours whatever zone the visitor's device is in
