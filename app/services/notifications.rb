@@ -76,21 +76,24 @@ module Notifications
     end
   end
 
+  # Stored starts are the stylist's wall clock, so the query brackets the
+  # window by a day each side and the zone-aware checks decide.
   def due_appointments(notification, now)
     horizon = now + notification.lead_days.days + notification.lead_hours.hours + 1.day
     Appointment.appointments
-               .where(start_datetime: now..horizon)
+               .where(start_datetime: (now - 1.day).strftime("%Y-%m-%d %H:%M:%S")..(horizon + 1.day).strftime("%Y-%m-%d %H:%M:%S"))
                .not_kind(AppointmentStatus::FREE_SLOT_KINDS + %w[no_show])
                .includes(:service, :provider, :customer)
-               .select { |appointment| send_at(notification, appointment) <= now }
+               .select { |appointment| BookingWindows.starts_at(appointment) >= now && send_at(notification, appointment) <= now }
   end
 
+  # When the reminder is due, on the stylist's clock.
   def send_at(notification, appointment)
-    start_at = appointment.start_datetime
+    start_at = BookingWindows.starts_at(appointment)
     if notification.lead_mode == "day_at"
       date = start_at.to_date - notification.lead_days
       hour, minute = notification.send_time.split(":").map(&:to_i)
-      Time.zone.local(date.year, date.month, date.day, hour, minute)
+      start_at.time_zone.local(date.year, date.month, date.day, hour, minute)
     else
       start_at - notification.lead_days.days - notification.lead_hours.hours
     end

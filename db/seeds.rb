@@ -84,6 +84,7 @@ settings = {
   "display_login_button" => "1",
   "default_language" => "english",
   "default_timezone" => "UTC",
+  "timezone_support" => "1",
   "default_country_code" => "+44",
 
   # Notifications / privacy / legal

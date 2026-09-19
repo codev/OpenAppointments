@@ -6,7 +6,7 @@ class UnavailabilitiesFormController < ApplicationController
   def new
     head :forbidden and return if cannot?(:add, :appointments)
 
-    @unavailability = Appointment.new(start_datetime: params[:start].presence || Time.zone.now.change(min: 0) + 1.hour,
+    @unavailability = Appointment.new(start_datetime: params[:start].presence || BookingWindows.wall_clock_now.change(min: 0) + 1.hour,
                                       end_datetime: params[:end].presence, id_users_provider: params[:provider_id].presence)
     @unavailability.end_datetime ||= @unavailability.start_datetime + 1.hour
     @providers = providers_for_form.to_a

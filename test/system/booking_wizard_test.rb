@@ -355,7 +355,7 @@ class BookingWizardWindowTest < ApplicationSystemTestCase
   end
 
   test "the timezone select relabels the hours and travels to the customer record" do
-    Setting.set("fixed_timezone", "0")
+    Setting.set("timezone_support", "1")
     to_time_step
     date = weekday(0)
     find(".flatpickr-day[aria-label='#{date.strftime('%B %-d, %Y')}']").click

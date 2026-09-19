@@ -14,9 +14,10 @@ class Setting < ApplicationRecord
     record
   end
 
-  # With a fixed timezone every user and booking uses default_timezone.
-  def self.fixed_timezone?
-    get("fixed_timezone") == "1"
+  # Timezone support on (the default) shows timezone fields and honours each
+  # user's zone; off, every user and booking runs on default_timezone.
+  def self.timezone_support?
+    get("timezone_support", "1") == "1"
   end
 
   def self.get_many(*names)

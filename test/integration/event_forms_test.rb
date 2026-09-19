@@ -139,6 +139,21 @@ class EventFormsTest < ActionDispatch::IntegrationTest
     assert_not Appointment.exists?(appointment.id)
   end
 
+  test "a new unavailability defaults to the next hour on the default zone's clock" do
+    Setting.set("default_timezone", "Europe/London")
+    saved = ENV["TZ"]
+    ENV["TZ"] = "UTC"
+    login_admin
+    travel_to Time.utc(2026, 8, 1, 12, 5) do
+      get "/unavailabilities/new", params: { provider_id: users(:zane).id }
+      assert_response :success
+      value = css_select("#unavailability-start").first["value"]
+      assert_match(/14:00|2:00 pm/i, value, "expected the London hour after 13:05, got #{value}")
+    end
+  ensure
+    saved.nil? ? ENV.delete("TZ") : ENV["TZ"] = saved
+  end
+
   test "unavailability form round trip and delete" do
     login_admin
     get "/unavailabilities/new", params: { provider_id: users(:zane).id, start: "2026-07-22 12:00:00", end: "2026-07-22 13:00:00" }

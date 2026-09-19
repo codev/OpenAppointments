@@ -67,18 +67,19 @@ class SettingsPagesTest < ActionDispatch::IntegrationTest
     assert_select "#messages-nav a.fw-bold[href='/messages_providers']"
   end
 
-  test "fixing the timezone moves every user to the default and hides the controls" do
+  test "turning timezone support off leaves stored zones alone and hides the controls" do
     login_admin
     users(:zane).update!(timezone: "America/New_York")
-    post "/general_settings/save", params: { settings: { default_timezone: "Europe/London", fixed_timezone: "1" } }
+    post "/general_settings/save", params: { settings: { default_timezone: "Europe/London", timezone_support: "0" } }
     assert_redirected_to "/general_settings"
-    assert_equal "Europe/London", users(:zane).reload.timezone
+    assert_equal "America/New_York", users(:zane).reload.timezone
+    assert_equal "Europe/London", users(:zane).effective_timezone
 
     get "/providers/new"
     assert_select "div.d-none label[for='provider_timezone']"
     get "/booking", params: { step: "time", service_id: services(:haircut).id, provider_id: users(:zane).id }
-    assert_select "div.d-none label[for='select-timezone']"
-    assert_select "select#select-timezone[disabled]"
+    assert_select "#select-timezone", 0
+    assert_select "label[for='select-timezone']", 0
   end
 
   test "message failure report addresses default to the admins and must be valid" do

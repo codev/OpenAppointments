@@ -162,42 +162,84 @@ class NotificationsTest < ActiveSupport::TestCase
     Message.singleton_class.remove_method(:create!)
   end
 
+  # Appointments are the stylist's wall clock (plain Time); scan instants are
+  # given on the same clock so the tests hold on any server zone.
+  def stylist_clock = Time.find_zone!(@provider.effective_timezone)
+
   test "scan_coming_up before mode sends once and again after reschedule" do
     notification = create_notification(event: "coming_up", lead_mode: "before",
                                        lead_days: 0, lead_hours: 2, audiences: %w[customer])
-    start_at = Time.zone.parse("2026-08-01 15:00")
+    start_at = Time.new(2026, 8, 1, 15, 0, 0)
     appointment = Appointment.create!(provider: @provider, customer: @customer, service: @service,
                                       start_datetime: start_at, end_datetime: start_at + 30.minutes,
                                       status: "Booked")
 
-    Notifications.scan_coming_up(Time.zone.parse("2026-08-01 12:00"))
+    Notifications.scan_coming_up(stylist_clock.parse("2026-08-01 12:00"))
     assert_equal 0, Message.count # not due yet
 
-    Notifications.scan_coming_up(Time.zone.parse("2026-08-01 13:30"))
+    Notifications.scan_coming_up(stylist_clock.parse("2026-08-01 13:30"))
     assert_equal 1, Message.count
     assert_equal notification.id, Message.sole.notification_id
 
-    Notifications.scan_coming_up(Time.zone.parse("2026-08-01 13:45"))
+    Notifications.scan_coming_up(stylist_clock.parse("2026-08-01 13:45"))
     assert_equal 1, Message.count # deduped
 
     appointment.update!(start_datetime: start_at + 1.day, end_datetime: start_at + 1.day + 30.minutes)
-    Notifications.scan_coming_up(Time.zone.parse("2026-08-02 14:00"))
+    Notifications.scan_coming_up(stylist_clock.parse("2026-08-02 14:00"))
     assert_equal 2, Message.count # new start, reminder sent again
   end
 
   test "scan_coming_up day_at mode sends at the configured morning time" do
     create_notification(event: "coming_up", lead_mode: "day_at", lead_days: 0,
                         send_time: "08:00", audiences: %w[customer])
-    start_at = Time.zone.parse("2026-08-01 15:00")
+    start_at = Time.new(2026, 8, 1, 15, 0, 0)
     Appointment.create!(provider: @provider, customer: @customer, service: @service,
                         start_datetime: start_at, end_datetime: start_at + 30.minutes,
                         status: "Booked")
 
-    Notifications.scan_coming_up(Time.zone.parse("2026-08-01 07:30"))
+    Notifications.scan_coming_up(stylist_clock.parse("2026-08-01 07:30"))
     assert_equal 0, Message.count
 
-    Notifications.scan_coming_up(Time.zone.parse("2026-08-01 08:05"))
+    Notifications.scan_coming_up(stylist_clock.parse("2026-08-01 08:05"))
     assert_equal 1, Message.count
+  end
+
+  # Stored times are the stylist's wall clock; the server clock is UTC in the
+  # container. During summer time the two differ by an hour.
+  def with_utc_process
+    saved = ENV["TZ"]
+    ENV["TZ"] = "UTC"
+    yield
+  ensure
+    saved.nil? ? ENV.delete("TZ") : ENV["TZ"] = saved
+  end
+
+  test "scan_coming_up before mode counts the lead from the stylist's zone during summer time" do
+    with_utc_process do
+      create_notification(event: "coming_up", lead_mode: "before", lead_days: 0, lead_hours: 2, audiences: %w[customer])
+      Appointment.create!(provider: @provider, customer: @customer, service: @service,
+                          start_datetime: Time.new(2026, 8, 1, 15, 0, 0), end_datetime: Time.new(2026, 8, 1, 15, 30, 0),
+                          status: "Booked")
+      utc = Time.find_zone!("UTC")
+      Notifications.scan_coming_up(utc.parse("2026-08-01 11:59")) # 12:59 London
+      assert_equal 0, Message.count
+      Notifications.scan_coming_up(utc.parse("2026-08-01 12:00")) # 13:00 London, two hours before
+      assert_equal 1, Message.count
+    end
+  end
+
+  test "scan_coming_up day_at mode uses the stylist's clock during summer time" do
+    with_utc_process do
+      create_notification(event: "coming_up", lead_mode: "day_at", lead_days: 0, send_time: "08:00", audiences: %w[customer])
+      Appointment.create!(provider: @provider, customer: @customer, service: @service,
+                          start_datetime: Time.new(2026, 8, 1, 15, 0, 0), end_datetime: Time.new(2026, 8, 1, 15, 30, 0),
+                          status: "Booked")
+      utc = Time.find_zone!("UTC")
+      Notifications.scan_coming_up(utc.parse("2026-08-01 06:59"))
+      assert_equal 0, Message.count
+      Notifications.scan_coming_up(utc.parse("2026-08-01 07:00")) # 08:00 London
+      assert_equal 1, Message.count
+    end
   end
 
   test "scan_coming_up skips cancelled appointments" do

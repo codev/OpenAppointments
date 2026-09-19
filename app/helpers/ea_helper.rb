@@ -21,9 +21,9 @@ module EaHelper
     Setting.get(name, default)
   end
 
-  # Bootstrap class hiding timezone controls while the timezone is fixed.
+  # Bootstrap class hiding timezone controls without timezone support.
   def timezone_hidden_class
-    Setting.fixed_timezone? ? " d-none" : ""
+    Setting.timezone_support? ? "" : " d-none"
   end
 
   # Script tag for a ported EA JS file under app/javascript (logical path without extension).

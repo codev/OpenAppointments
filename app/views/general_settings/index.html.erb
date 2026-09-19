@@ -181,6 +181,20 @@
                                 </div>
 
                                 <div class="mb-3">
+                                    <div class="form-check form-switch">
+                                        <%= setting_switch "timezone_support", default: "1" %>
+                                        <label class="form-check-label" for="timezone-support">
+                                            <%= lang('timezone_support') %>
+                                        </label>
+                                    </div>
+                                    <div class="form-text text-muted">
+                                        <small>
+                                            <%= lang('timezone_support_hint') %>
+                                        </small>
+                                    </div>
+                                </div>
+
+                                <div class="mb-3">
                                     <label class="form-label" for="default-timezone">
                                         <%= lang('default_timezone') %>
                                         <span class="text-danger" hidden>*</span>
@@ -193,20 +207,6 @@
                                     <small>
                                         <%= lang('default_timezone_hint') %>
                                     </small>
-                                </div>
-
-                                <div class="mb-3 mt-3">
-                                    <div class="form-check form-switch">
-                                        <%= setting_switch "fixed_timezone" %>
-                                        <label class="form-check-label" for="fixed-timezone">
-                                            <%= lang('fixed_timezone') %>
-                                        </label>
-                                    </div>
-                                    <div class="form-text text-muted">
-                                        <small>
-                                            <%= lang('fixed_timezone_hint') %>
-                                        </small>
-                                    </div>
                                 </div>
 
                             </div>

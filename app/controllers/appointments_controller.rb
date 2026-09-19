@@ -182,7 +182,7 @@ class AppointmentsController < ApplicationController
   def default_times
     duration = (@appointment.service || @services.first)&.duration || 60
     if @appointment.start_datetime.blank?
-      start = Time.zone.now
+      start = BookingWindows.wall_clock_now
       minutes = start.min
       @appointment.start_datetime = minutes.zero? ? start : start.change(min: 0) + ((minutes / 15) + 1) * 15.minutes
     end

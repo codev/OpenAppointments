@@ -21,6 +21,12 @@ module BookingWindows
 
   def past?(appointment, now = Time.now) = starts_at(appointment) < now
 
+  # Now on the default zone's clock as a plain Time, the form stored times use.
+  def wall_clock_now
+    now = Time.now.in_time_zone(Setting.get("default_timezone", "UTC"))
+    Time.new(now.year, now.month, now.day, now.hour, now.min, now.sec)
+  end
+
   def late?(appointment, now = Time.now)
     starts_at(appointment) - now < late_minutes * 60
   end
