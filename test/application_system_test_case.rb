@@ -8,7 +8,9 @@ class ApplicationSystemTestCase < ActionDispatch::SystemTestCase
   # write inside the snap area, so give it a profile dir there and skip the sandbox.
   SNAP_CHROMIUM = "/snap/bin/chromium".freeze
 
-  driven_by :selenium, using: :headless_chrome, screen_size: [ 1400, 1400 ] do |options|
+  SCREEN_SIZE = [ 1400, 1400 ].freeze
+
+  driven_by :selenium, using: :headless_chrome, screen_size: SCREEN_SIZE do |options|
     if File.exist?(SNAP_CHROMIUM) && !system("which google-chrome > /dev/null 2>&1")
       # One profile per test process: Rails runs the system tests in parallel.
       profile_dir = File.expand_path("~/snap/chromium/common/selenium-profile-#{Process.pid}")
@@ -26,6 +28,17 @@ class ApplicationSystemTestCase < ActionDispatch::SystemTestCase
 
   setup do
     page.driver.browser.execute_cdp("Emulation.setTimezoneOverride", timezoneId: BROWSER_TIMEZONE)
+  end
+
+  # One browser serves the whole run, so a test that changes the window size
+  # must hand the next test the configured size back.
+  def resize_window(width, height)
+    @window_resized = true
+    page.driver.browser.manage.window.resize_to(width, height)
+  end
+
+  teardown do
+    page.driver.browser.manage.window.resize_to(*SCREEN_SIZE) if @window_resized
   end
 
   def login_as_admin

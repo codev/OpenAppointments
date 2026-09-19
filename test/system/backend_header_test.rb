@@ -29,7 +29,7 @@ class BackendHeaderTest < ApplicationSystemTestCase
   JS
 
   def measure_at(width)
-    page.driver.browser.manage.window.resize_to(width, 900)
+    resize_window(width, 900)
     assert_selector "#header .navbar-nav .nav-link", wait: 5
     page.evaluate_script("(() => { #{MEASURE} })()")
   end

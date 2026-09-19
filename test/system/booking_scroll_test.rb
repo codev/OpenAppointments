@@ -4,7 +4,7 @@ require "application_system_test_case"
 # provider does.
 class BookingScrollTest < ApplicationSystemTestCase
   test "choosing an hour scrolls the time step down to Next" do
-    page.driver.browser.manage.window.resize_to(1000, 450)
+    resize_window(1000, 450)
     visit root_url
     select services(:haircut).name, from: "select-service"
     find("#button-next-1").click
