@@ -28,10 +28,11 @@ module Messaging
     end
 
     # Rich text settings as message text: block ends and line breaks become
-    # newlines, every other tag is dropped.
+    # newlines, every other tag is dropped and entities become their characters
+    # (message channels escape plain text themselves).
     def plain_text(html)
       text = html.to_s.gsub(%r{</(p|div|h\d|li)>|<br\s*/?>}i, "\n")
-      Rails::Html::FullSanitizer.new.sanitize(text).to_s.strip
+      CGI.unescapeHTML(Rails::Html::FullSanitizer.new.sanitize(text).to_s).strip
     end
 
     # Tokens for an incoming customer message: the customer and a login link to

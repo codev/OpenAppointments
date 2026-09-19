@@ -11,6 +11,11 @@ class BookingNoticeTokenTest < ActiveSupport::TestCase
                  Messaging::Template.render("Note: {{Booking Notice}}", Messaging::Template.base_context)
   end
 
+  test "entities are decoded so messages carry the characters, not the codes" do
+    Setting.set("booking_notice_content", "<p>Cuts &amp; colour &lt;on the day&gt;</p>")
+    assert_equal "Cuts & colour <on the day>", Messaging::Template.base_context["Booking Notice"]
+  end
+
   test "an empty notice renders an empty token" do
     Setting.set("booking_notice_content", "")
     assert_equal "", Messaging::Template.base_context["Booking Notice"]
