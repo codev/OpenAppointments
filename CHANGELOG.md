@@ -15,19 +15,16 @@ CloudronManifest.json.
 - Notifications: a Customer Message Received event tells the customer's stylist (the one with their next appointment, or their last) when a message comes in by email or SMS - default notifications set includes this one for stylists by Email and SMS Gateway
 - New {{Customer Message Link}} template field links to the messages panel of the customer record
 - Business Settings: the late cancellation window no longer has to fit inside the booking window
+- Fixed: an email the mail server refused was recorded as sent; it is now recorded as failed with the error and raises the failure alert
 - Fixed: with iframe embedding on, booking over plain http (a dev server) lost its session and failed at the details step with a CSRF error; the relaxed cookie policy now applies only over https
 - Data Retention moved from Legal Contents to General Settings
 - Timezones: the Fixed timezone switch is now Timezone support, on by default, shown above the default timezone on General Settings; existing installs keep their choice
 - Turning timezone support off no longer overwrites each stylist's and customer's stored timezone, so it comes back when the switch is turned on again
 - With timezone support off the booking page shows the stylist's hours whatever zone the visitor's device is in
 - Reminders and the default time of a new appointment or unavailability follow the stylist's clock through the summer time change
-- Record pages: the Delete button sits at the right end of the Save and Cancel row, spanning the details panel
-- The Data Settings page and cog menu entry are called Manage Data again
-- Admin pages: the company logo from General Settings shows top left in place of the OpenAppointments logo
-- Booking wizard: choosing a time scrolls the page down to the Next button, as choosing a service or stylist does
-- Booking Notice: a rich text notice under Settings > Legal Contents with switches to show it above the calendar on the date and time step and above the fields on the customer details step
-- New {{Booking Notice}} template field for notifications to put the notice above into the confirmation email or other notifications
-- Reports: Added a Customer Report and edited the Appointments Report to include more details
+- Reports: Customer Report added and Appointments Report has more detail
+- Booking Notice: Added to display extra info on the date and time and customer info steps
+- Admin interface improvement including custom logo and better tablet layout
 
 ## 2.0.0
 
