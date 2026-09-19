@@ -5,26 +5,18 @@ CloudronManifest.json.
 
 ## 2.1.0
 
-- Bug fix: Terminology labels in General Settings were empty and could not be changed
-- Debug setting for Message Settings > Enable notifications on Messages to allow all messages to be routed to one number or email address for testing
-- Customer page: the Message section sits full width below the record buttons
-- Customer page: Message box is now multi-line - enter sends, shift-enter adds a line
-- Inbox and Unknown Inbox: improved layout with message more easily readable on all screen widths
-- Incoming email keeps only the reply text - reply-to/quoted email content is dropped
-- User lists show the name and contact details on one line with tighter spacing, so more people fit on the screen
-- Notifications: a Customer Message Received event tells the customer's stylist (the one with their next appointment, or their last) when a message comes in by email or SMS - default notifications set includes this one for stylists by Email and SMS Gateway
-- New {{Customer Message Link}} template field links to the messages panel of the customer record
-- Business Settings: the late cancellation window no longer has to fit inside the booking window
-- Fixed: an email the mail server refused was recorded as sent; it is now recorded as failed with the error and raises the failure alert
-- Fixed: with iframe embedding on, booking over plain http (a dev server) lost its session and failed at the details step with a CSRF error; the relaxed cookie policy now applies only over https
-- Data Retention moved from Legal Contents to General Settings
-- Timezones: the Fixed timezone switch is now Timezone support, on by default, shown above the default timezone on General Settings; existing installs keep their choice
-- Turning timezone support off no longer overwrites each stylist's and customer's stored timezone, so it comes back when the switch is turned on again
-- With timezone support off the booking page shows the stylist's hours whatever zone the visitor's device is in
-- Reminders and the default time of a new appointment or unavailability follow the stylist's clock through the summer time change
 - Reports: Customer Report added and Appointments Report has more detail
+- Customer page: Message box is now multi-line - enter sends, shift-enter adds a line
+- Inbox and Unknown Inbox: improved layout with message more easily readable on all screen widths, quoted email content is dropped so you only see the latest contents
+- Customer page: Messages are full width at the bottom of the page, the message box is now larger and {{Customer Message Link}} template fields in messages allow linking straight to the customer message section
+- Message Settings > Enable notifications has a Debug setting to allow all messages to be routed to one number or email address for testing
+- A new Customer Message Received event in Notifications tells the provider (the one with their next appointment, or their last) when a message comes in by email or SMS
+- Timezone Support: Toggle in general settings to turn on or off timezone support for booking
+- Business Logic: the late cancellation window no longer has to fit inside the booking window
+- Data Retention period moved to General Settings
 - Booking Notice: Added to display extra info on the date and time and customer info steps
 - Admin interface improvement including custom logo and better tablet layout
+- User lists show the name and contact details on one line with tighter spacing, so more people fit on the screen
 
 ## 2.0.0
 
