@@ -688,7 +688,12 @@ sv:
     title: Title
     hours: Hours
     messages_enabled: Enable notifications
-    messages_enabled_hint: Globally turn all notifications on or off. Password reset emails will still be sent.
+    messages_enabled_hint: "Slå på eller av alla aviseringar globalt"
+    messages_enabled_on: "På"
+    messages_enabled_off: "Av - e-post för lösenordsåterställning skickas fortfarande"
+    messages_enabled_debug: "Felsökning - omdirigera all utgående e-post och alla meddelanden"
+    messages_intercept_hint: "Medan Felsökning är valt går varje utgående e-post till den här adressen och varje sms till det här numret."
+    messages_intercept_required: "Felsökning kräver en giltig e-postadress och ett giltigt telefonnummer att omdirigera till."
     messages_retention_days: Delete messages older than (days)
     messages_retention_days_hint: Messages older than this many days are deleted automatically. Set 0 to keep all messages.
     messages_email_subject: Outgoing Email Subject Line
@@ -792,6 +797,7 @@ sv:
     send_message: Send
     select_one: Select One
     all_providers: All Providers
+    messages_all_providers: All Providers
     message_sent: Message sent.
     terminology: Terminology
     terminology_hint: Rename Provider and Service, for example Stylist and Treatment. Leave blank for the defaults. Languages other than English are not affected. Start the words with a capital letter.
@@ -800,7 +806,7 @@ sv:
     service_label: Service (singular)
     service_label_plural: Services (plural)
     message_settings: Message Settings
-    data_settings: Data Settings
+    manage_data: "Hantera data"
     all_services: All Services
     select_day_interval_hint: Number of days to show.
     filter_providers_hint: Show only the selected providers.
@@ -812,8 +818,8 @@ sv:
     add_unavailable_exception: Add Unavailable/Holiday Days
     available: Available
     unavailable: Unavailable
-    fixed_timezone: Fixed timezone
-    fixed_timezone_hint: Everyone uses the default timezone. Timezone fields are hidden on the booking page, staff, customer and appointment forms.
+    timezone_support: "Stöd för tidszoner"
+    timezone_support_hint: "Visa tidszonsfält på bokningssidan och i formulären för personal, kunder och bokningar. Avstängt använder alla standardtidszonen."
     consents: Consents
     messages_failure_alert: Email a report when a message fails to send
     messages_failure_alert_hint: Send an email with the time and provider when a notification fails to send - the full details are in the message log
@@ -873,7 +879,6 @@ sv:
     booking_window_hint: 'Customers cannot book a slot that starts sooner than this.'
     late_window: 'Time Before An Appointment A Customer Can Reschedule/Cancel Before Late Cancellation'
     late_window_hint: 'Inside this window the customer can only late cancel, which sets the Late Cancel status and keeps the slot free for others. Must not be longer than the booking window.'
-    late_window_exceeds_booking_window: 'The late cancellation window cannot be longer than the booking window.'
     status_booked: 'Default for new bookings'
     status_rescheduled: 'Set on the original when a customer reschedules'
     status_cancelled: 'Set when an appointment is cancelled'
@@ -906,3 +911,13 @@ sv:
     leave_page: "Lämna sidan"
     status_custom: "Anpassad"
     provider_does_not_offer_service: "Den valda leverantören erbjuder inte denna tjänst."
+    appointment_report: "Bokningsrapport"
+    customer_report: "Kundrapport"
+    customer_report_hint: "Ladda ner ett kalkylblad med alla kunder, deras uppgifter, antal bokningar det senaste året samt bokade leverantörer och tjänster."
+    customer_notes: "Kundanteckningar"
+    appointments_in_last_year: "Bokningar det senaste året"
+    notification_event_customer_message: "Kundmeddelande mottaget"
+    booking_notice: "Bokningsmeddelande"
+    display_booking_notice_time_step: "Visa bokningsmeddelande i steget datum/tid"
+    display_booking_notice_info_step: "Visa bokningsmeddelande i steget kunduppgifter"
+    booking_notice_content: "Innehåll i bokningsmeddelande"

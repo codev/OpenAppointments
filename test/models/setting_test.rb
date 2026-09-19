@@ -30,12 +30,4 @@ class SettingTest < ActiveSupport::TestCase
       Setting.create!(name: "company_name", value: "Duplicate")
     end
   end
-
-  test "the late cancellation window is clamped to the booking window" do
-    Setting.set("book_advance_timeout", "60")
-    Setting.set("late_cancellation_timeout", "120")
-    assert_equal "60", Setting.get("late_cancellation_timeout")
-    Setting.set("book_advance_timeout", "30")
-    assert_equal "30", Setting.get("late_cancellation_timeout")
-  end
 end

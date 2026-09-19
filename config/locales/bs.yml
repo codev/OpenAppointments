@@ -688,7 +688,12 @@ bs:
     title: Title
     hours: Hours
     messages_enabled: Enable notifications
-    messages_enabled_hint: Globally turn all notifications on or off. Password reset emails will still be sent.
+    messages_enabled_hint: "Globalno uključi ili isključi sva obavještenja"
+    messages_enabled_on: "Uključeno"
+    messages_enabled_off: "Isključeno - e-poruke za resetovanje lozinke i dalje se šalju"
+    messages_enabled_debug: "Debug - preusmjeri sve odlazne e-poruke i poruke"
+    messages_intercept_hint: "Dok je odabran Debug, svaka odlazna e-poruka ide na ovu adresu, a svaki SMS na ovaj broj."
+    messages_intercept_required: "Debug zahtijeva ispravnu e-mail adresu i broj telefona za preusmjeravanje."
     messages_retention_days: Delete messages older than (days)
     messages_retention_days_hint: Messages older than this many days are deleted automatically. Set 0 to keep all messages.
     messages_email_subject: Outgoing Email Subject Line
@@ -792,6 +797,7 @@ bs:
     send_message: Send
     select_one: Select One
     all_providers: All Providers
+    messages_all_providers: All Providers
     message_sent: Message sent.
     terminology: Terminology
     terminology_hint: Rename Provider and Service, for example Stylist and Treatment. Leave blank for the defaults. Languages other than English are not affected. Start the words with a capital letter.
@@ -800,7 +806,7 @@ bs:
     service_label: Service (singular)
     service_label_plural: Services (plural)
     message_settings: Message Settings
-    data_settings: Data Settings
+    manage_data: "Upravljanje podacima"
     all_services: All Services
     select_day_interval_hint: Number of days to show.
     filter_providers_hint: Show only the selected providers.
@@ -812,8 +818,8 @@ bs:
     add_unavailable_exception: Add Unavailable/Holiday Days
     available: Available
     unavailable: Unavailable
-    fixed_timezone: Fixed timezone
-    fixed_timezone_hint: Everyone uses the default timezone. Timezone fields are hidden on the booking page, staff, customer and appointment forms.
+    timezone_support: "Podrška za vremenske zone"
+    timezone_support_hint: "Prikaži polja vremenske zone na stranici za rezervaciju i u obrascima osoblja, klijenata i termina. Isključeno, svi koriste podrazumevanu vremensku zonu."
     consents: Consents
     messages_failure_alert: Email a report when a message fails to send
     messages_failure_alert_hint: Send an email with the time and provider when a notification fails to send - the full details are in the message log
@@ -873,7 +879,6 @@ bs:
     booking_window_hint: 'Customers cannot book a slot that starts sooner than this.'
     late_window: 'Time Before An Appointment A Customer Can Reschedule/Cancel Before Late Cancellation'
     late_window_hint: 'Inside this window the customer can only late cancel, which sets the Late Cancel status and keeps the slot free for others. Must not be longer than the booking window.'
-    late_window_exceeds_booking_window: 'The late cancellation window cannot be longer than the booking window.'
     status_booked: 'Default for new bookings'
     status_rescheduled: 'Set on the original when a customer reschedules'
     status_cancelled: 'Set when an appointment is cancelled'
@@ -906,3 +911,13 @@ bs:
     leave_page: "Napusti stranicu"
     status_custom: "Prilagođeno"
     provider_does_not_offer_service: "Odabrani pružalac ne nudi ovu uslugu."
+    appointment_report: "Izvještaj o terminima"
+    customer_report: "Izvještaj o klijentima"
+    customer_report_hint: "Preuzmite tabelu sa svim klijentima, njihovim podacima, brojem termina u posljednjih godinu dana te pružaocima usluga i uslugama koje su rezervisali."
+    customer_notes: "Napomene o klijentu"
+    appointments_in_last_year: "Termini u posljednjih godinu dana"
+    notification_event_customer_message: "Primljena poruka klijenta"
+    booking_notice: "Obaveštenje o rezervaciji"
+    display_booking_notice_time_step: "Prikaži obaveštenje o rezervaciji na koraku datuma/vremena"
+    display_booking_notice_info_step: "Prikaži obaveštenje o rezervaciji na koraku podataka o klijentu"
+    booking_notice_content: "Sadržaj obaveštenja o rezervaciji"

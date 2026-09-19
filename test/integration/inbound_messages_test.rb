@@ -32,6 +32,19 @@ class InboundMessagesTest < ActionDispatch::IntegrationTest
     assert_equal "twilio", message.channel
   end
 
+  test "an SMS from a customer fires the customer message notification" do
+    Notification.create!(title: "Customer Message Received", event: "customer_message", audiences: %w[provider],
+                         channels: %w[email], short_text: "New message from {{Customer Name}}")
+    Appointment.create!(start_datetime: 2.days.from_now, end_datetime: 2.days.from_now + 30.minutes,
+                        provider: users(:zane), customer: users(:jx), service: services(:haircut), status: "Booked")
+    params = { "From" => users(:jx).phone_number, "To" => "+15005550006", "Body" => "On my way" }
+    url = "http://www.example.com/messages/inbound/twilio/secrettoken123"
+    post "/messages/inbound/twilio/secrettoken123", params: params,
+         headers: { "X-Twilio-Signature" => twilio_signature(url, params) }
+    assert_response :success
+    assert_equal [ users(:zane).email ], Message.outgoing.pluck(:to_address)
+  end
+
   test "twilio webhook rejects a bad signature" do
     post "/messages/inbound/twilio/secrettoken123",
          params: { "From" => "+447700900321", "Body" => "spoof" },

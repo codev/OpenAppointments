@@ -688,7 +688,12 @@ pl:
     title: Title
     hours: Hours
     messages_enabled: Enable notifications
-    messages_enabled_hint: Globally turn all notifications on or off. Password reset emails will still be sent.
+    messages_enabled_hint: "Globalnie włącz lub wyłącz wszystkie powiadomienia"
+    messages_enabled_on: "Włączone"
+    messages_enabled_off: "Wyłączone - e-maile resetowania hasła nadal będą wysyłane"
+    messages_enabled_debug: "Debugowanie - przekieruj wszystkie wychodzące e-maile i wiadomości"
+    messages_intercept_hint: "Gdy wybrano Debugowanie, każdy wychodzący e-mail trafia na ten adres, a każdy SMS na ten numer."
+    messages_intercept_required: "Debugowanie wymaga prawidłowego adresu e-mail i numeru telefonu do przekierowania."
     messages_retention_days: Delete messages older than (days)
     messages_retention_days_hint: Messages older than this many days are deleted automatically. Set 0 to keep all messages.
     messages_email_subject: Outgoing Email Subject Line
@@ -792,6 +797,7 @@ pl:
     send_message: Send
     select_one: Select One
     all_providers: All Providers
+    messages_all_providers: All Providers
     message_sent: Message sent.
     terminology: Terminology
     terminology_hint: Rename Provider and Service, for example Stylist and Treatment. Leave blank for the defaults. Languages other than English are not affected. Start the words with a capital letter.
@@ -800,7 +806,7 @@ pl:
     service_label: Service (singular)
     service_label_plural: Services (plural)
     message_settings: Message Settings
-    data_settings: Data Settings
+    manage_data: "Zarządzanie danymi"
     all_services: All Services
     select_day_interval_hint: Number of days to show.
     filter_providers_hint: Show only the selected providers.
@@ -812,8 +818,8 @@ pl:
     add_unavailable_exception: Add Unavailable/Holiday Days
     available: Available
     unavailable: Unavailable
-    fixed_timezone: Fixed timezone
-    fixed_timezone_hint: Everyone uses the default timezone. Timezone fields are hidden on the booking page, staff, customer and appointment forms.
+    timezone_support: "Obsługa stref czasowych"
+    timezone_support_hint: "Pokazuj pola strefy czasowej na stronie rezerwacji oraz w formularzach pracowników, klientów i wizyt. Wyłączone: wszyscy używają domyślnej strefy czasowej."
     consents: Consents
     messages_failure_alert: Email a report when a message fails to send
     messages_failure_alert_hint: Send an email with the time and provider when a notification fails to send - the full details are in the message log
@@ -873,7 +879,6 @@ pl:
     booking_window_hint: 'Customers cannot book a slot that starts sooner than this.'
     late_window: 'Time Before An Appointment A Customer Can Reschedule/Cancel Before Late Cancellation'
     late_window_hint: 'Inside this window the customer can only late cancel, which sets the Late Cancel status and keeps the slot free for others. Must not be longer than the booking window.'
-    late_window_exceeds_booking_window: 'The late cancellation window cannot be longer than the booking window.'
     status_booked: 'Default for new bookings'
     status_rescheduled: 'Set on the original when a customer reschedules'
     status_cancelled: 'Set when an appointment is cancelled'
@@ -906,3 +911,13 @@ pl:
     leave_page: "Opuść stronę"
     status_custom: "Własny"
     provider_does_not_offer_service: "Wybrany usługodawca nie oferuje tej usługi."
+    appointment_report: "Raport wizyt"
+    customer_report: "Raport klientów"
+    customer_report_hint: "Pobierz arkusz ze wszystkimi klientami, ich danymi, liczbą wizyt w ostatnim roku oraz zarezerwowanymi usługodawcami i usługami."
+    customer_notes: "Notatki o kliencie"
+    appointments_in_last_year: "Wizyty w ostatnim roku"
+    notification_event_customer_message: "Otrzymano wiadomość od klienta"
+    booking_notice: "Informacja o rezerwacji"
+    display_booking_notice_time_step: "Pokaż informację o rezerwacji na kroku data/godzina"
+    display_booking_notice_info_step: "Pokaż informację o rezerwacji na kroku dane klienta"
+    booking_notice_content: "Treść informacji o rezerwacji"

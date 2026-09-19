@@ -200,18 +200,6 @@ window.App.Utils.UI = (function () {
     }
 
     /**
-     * Initialize the select dropdown component.
-     *
-     * This method is based on Select2.
-     *
-     * @param {jQuery} $target
-     * @param {Object} [params]
-     */
-    function initializeDropdown($target, params = {}) {
-        $target.select2(params);
-    }
-
-    /**
      * Initialize the text editor component.
      *
      * This method is based on Trumbowyg.
@@ -256,7 +244,6 @@ window.App.Utils.UI = (function () {
         initializeDateTimePicker,
         initializeDatePicker,
         initializeTimePicker,
-        initializeDropdown,
         initializeTextEditor,
         getDateTimePickerValue,
         setDateTimePickerValue,

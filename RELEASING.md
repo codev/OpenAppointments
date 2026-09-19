@@ -61,6 +61,17 @@ docker push $REGI/openappointments:$VER
 
 ```
 
+## Crash report emails
+
+Production emails unhandled exceptions to the addresses in the `EXCEPTION_RECIPIENTS`
+environment variable (comma separated). Unset, no crash reports are sent. Set it on
+the instance with the Cloudron CLI; the app restarts to pick it up:
+
+```bash
+cloudron env set --app appointments.<your-domain> EXCEPTION_RECIPIENTS=you@example.org
+cloudron env list --app appointments.<your-domain>
+```
+
 ## Update safety
 
 - The old container is stopped before the new one starts; SQLite is single-writer, so

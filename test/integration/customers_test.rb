@@ -9,6 +9,16 @@ class CustomersTest < ActionDispatch::IntegrationTest
     post "/login/validate", params: { username: "janedoe", password: "janedoe1" }
   end
 
+  test "the conversation channel choice keeps All Providers under staff terminology" do
+    Setting.set("provider_label", "Stylist")
+    Setting.set("provider_label_plural", "Stylists")
+    login_admin
+    get "/customers/#{users(:jx).id}/edit"
+    assert_select "#message-channel option[value='all']", text: "All Providers"
+    get "/appointments"
+    assert_select "select#filter-provider option", text: "All Stylists"
+  end
+
   test "index lists customers with unread badges and the record links to edit" do
     login_admin
     Message.create!(direction: "incoming", channel: "email", from_address: users(:jx).email,

@@ -18,6 +18,28 @@
 
                         <div class="row">
                             <div class="col-12">
+                                <h5 class="mb-3 fw-light"><%= lang('booking_notice') %></h5>
+
+                                <div class="form-check form-switch mb-3">
+                                    <%= setting_switch "display_booking_notice_time_step", class: "form-check-input display-switch" %>
+                                    <label class="form-check-label" for="display-booking-notice-time-step">
+                                        <%= lang('display_booking_notice_time_step') %>
+                                    </label>
+                                </div>
+
+                                <div class="form-check form-switch mb-3">
+                                    <%= setting_switch "display_booking_notice_info_step", class: "form-check-input display-switch" %>
+                                    <label class="form-check-label" for="display-booking-notice-info-step">
+                                        <%= lang('display_booking_notice_info_step') %>
+                                    </label>
+                                </div>
+
+                                <div class="mb-5">
+                                    <label class="form-label"
+                                           for="booking-notice-content"><%= lang('booking_notice_content') %></label>
+                                    <%= setting_textarea "booking_notice_content", class: "mb-3 rich-text", cols: 30, rows: 10 %>
+                                </div>
+
                                 <h5 class="mb-3 fw-light"><%= lang('cookie_notice') %></h5>
 
                                 <div class="form-check form-switch mb-3">
@@ -76,21 +98,11 @@
 
                                 <h5 class="mb-3 fw-light"><%= lang('imprint') %></h5>
 
-                                <div class="mb-5">
+                                <div class="mb-3">
                                     <label class="form-label" for="imprint-url"><%= lang('imprint_url') %></label>
                                     <%= setting_text "imprint_url", type: "url", placeholder: "https://..." %>
                                     <div class="form-text text-muted small">
                                         <%= lang('imprint_url_hint') %>
-                                    </div>
-                                </div>
-
-                                <h5 class="mb-3 fw-light"><%= lang('data_retention') %></h5>
-
-                                <div class="mb-3">
-                                    <label class="form-label" for="data-retention-days"><%= lang('data_retention_days') %></label>
-                                    <%= setting_text "data_retention_days", type: "number", min: 0, placeholder: "0" %>
-                                    <div class="form-text text-muted small">
-                                        <%= lang('data_retention_days_hint') %>
                                     </div>
                                 </div>
                             </div>

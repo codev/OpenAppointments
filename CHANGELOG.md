@@ -3,6 +3,21 @@
 The about page lists these notes; every release needs a section here matching
 CloudronManifest.json.
 
+## 2.1.0
+
+- Reports: Customer Report added and Appointments Report has more detail
+- Customer page: Message box is now multi-line - enter sends, shift-enter adds a line
+- Inbox and Unknown Inbox: improved layout with message more easily readable on all screen widths, quoted email content is dropped so you only see the latest contents
+- Customer page: Messages are full width at the bottom of the page, the message box is now larger and {{Customer Message Link}} template fields in messages allow linking straight to the customer message section
+- Message Settings > Enable notifications has a Debug setting to allow all messages to be routed to one number or email address for testing
+- A new Customer Message Received event in Notifications tells the provider (the one with their next appointment, or their last) when a message comes in by email or SMS
+- Timezone Support: Toggle in general settings to turn on or off timezone support for booking
+- Business Logic: the late cancellation window no longer has to fit inside the booking window
+- Data Retention period moved to General Settings
+- Booking Notice: Added to display extra info on the date and time and customer info steps
+- Admin interface improvement including custom logo and better tablet layout
+- User lists show the name and contact details on one line with tighter spacing, so more people fit on the screen
+
 ## 2.0.0
 
 - The views are converted from jQuery scripts to standard Rails views

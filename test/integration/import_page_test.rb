@@ -212,6 +212,34 @@ class ImportPageTest < ActionDispatch::IntegrationTest
     FileUtils.rm_f(path) if path
   end
 
+  test "customer report downloads every customer with last-year counts" do
+    login_admin
+    get "/import/customer_report"
+    assert_response :success
+    assert_equal Ods::MIMETYPE, response.media_type
+    path = Rails.root.join("tmp", "customer-report-test-#{SecureRandom.hex(4)}.ods")
+    File.binwrite(path, response.body)
+    rows = Ods.parse(path.to_s)["Customers"]
+    assert_equal %w[Name Email], rows.first.first(2)
+    assert_equal [ "Appointments in Last Year", "Providers", "Services", "Cancelled", "Late Cancel", "Rescheduled" ],
+                 rows.first.last(6)
+    assert_equal [ "JX" ], rows.drop(1).map(&:first)
+
+    post "/login/validate", params: { username: "janedoe", password: "janedoe1" }
+    get "/import/customer_report"
+    assert_response :forbidden
+  ensure
+    FileUtils.rm_f(path) if path
+  end
+
+  test "the page shows a heading for each report" do
+    login_admin
+    get "/import"
+    assert_select "h6", text: "Appointment Report"
+    assert_select "h6", text: "Customer Report"
+    assert_select "form[action='/import/customer_report']"
+  end
+
   test "backup downloads are admin only and validate the name" do
     login_admin
     perform_enqueued_jobs { post "/import/export" }
@@ -295,11 +323,19 @@ class ImportPageTest < ActionDispatch::IntegrationTest
     assert_match(/Not an ODS spreadsheet/, response.parsed_body["message"])
   end
 
+  test "the page and the cog menu call it Manage Data" do
+    login_admin
+    get "/import"
+    assert_select "h4", text: "Manage Data"
+    assert_select "#header .dropdown-item[href='/import']", text: /Manage Data/
+    assert_select "title", text: /Manage Data/
+  end
+
   test "the import strings exist in every locale" do
     I18n.available_locales.each do |locale|
       %w[import_data import_hint analyze start_import create_providers days_back days_forward
          reset_database reset_database_warning reset_confirmation_hint
-         data_settings export_data import_type full_reset_label import_providers_caution].each do |key|
+         manage_data export_data import_type full_reset_label import_providers_caution].each do |key|
         assert I18n.t("ea.#{key}", locale: locale, fallback: false, default: nil).present?,
                "missing ea.#{key} in #{locale}"
       end

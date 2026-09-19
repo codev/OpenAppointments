@@ -688,7 +688,12 @@ fi:
     title: Title
     hours: Hours
     messages_enabled: Enable notifications
-    messages_enabled_hint: Globally turn all notifications on or off. Password reset emails will still be sent.
+    messages_enabled_hint: "Kytke kaikki ilmoitukset päälle tai pois"
+    messages_enabled_on: "Päällä"
+    messages_enabled_off: "Pois - salasanan palautusviestit lähetetään silti"
+    messages_enabled_debug: "Debug - ohjaa kaikki lähtevät sähköpostit ja viestit uudelleen"
+    messages_intercept_hint: "Kun Debug on valittuna, jokainen lähtevä sähköposti menee tähän osoitteeseen ja jokainen tekstiviesti tähän numeroon."
+    messages_intercept_required: "Debug tarvitsee kelvollisen sähköpostiosoitteen ja puhelinnumeron uudelleenohjaukseen."
     messages_retention_days: Delete messages older than (days)
     messages_retention_days_hint: Messages older than this many days are deleted automatically. Set 0 to keep all messages.
     messages_email_subject: Outgoing Email Subject Line
@@ -792,6 +797,7 @@ fi:
     send_message: Send
     select_one: Select One
     all_providers: All Providers
+    messages_all_providers: All Providers
     message_sent: Message sent.
     terminology: Terminology
     terminology_hint: Rename Provider and Service, for example Stylist and Treatment. Leave blank for the defaults. Languages other than English are not affected. Start the words with a capital letter.
@@ -800,7 +806,7 @@ fi:
     service_label: Service (singular)
     service_label_plural: Services (plural)
     message_settings: Message Settings
-    data_settings: Data Settings
+    manage_data: "Hallitse tietoja"
     all_services: All Services
     select_day_interval_hint: Number of days to show.
     filter_providers_hint: Show only the selected providers.
@@ -812,8 +818,8 @@ fi:
     add_unavailable_exception: Add Unavailable/Holiday Days
     available: Available
     unavailable: Unavailable
-    fixed_timezone: Fixed timezone
-    fixed_timezone_hint: Everyone uses the default timezone. Timezone fields are hidden on the booking page, staff, customer and appointment forms.
+    timezone_support: "Aikavyöhyketuki"
+    timezone_support_hint: "Näytä aikavyöhykekentät varaussivulla sekä henkilöstön, asiakkaiden ja ajanvarausten lomakkeilla. Pois päältä, kaikki käyttävät oletusaikavyöhykettä."
     consents: Consents
     messages_failure_alert: Email a report when a message fails to send
     messages_failure_alert_hint: Send an email with the time and provider when a notification fails to send - the full details are in the message log
@@ -873,7 +879,6 @@ fi:
     booking_window_hint: 'Customers cannot book a slot that starts sooner than this.'
     late_window: 'Time Before An Appointment A Customer Can Reschedule/Cancel Before Late Cancellation'
     late_window_hint: 'Inside this window the customer can only late cancel, which sets the Late Cancel status and keeps the slot free for others. Must not be longer than the booking window.'
-    late_window_exceeds_booking_window: 'The late cancellation window cannot be longer than the booking window.'
     status_booked: 'Default for new bookings'
     status_rescheduled: 'Set on the original when a customer reschedules'
     status_cancelled: 'Set when an appointment is cancelled'
@@ -906,3 +911,13 @@ fi:
     leave_page: "Poistu sivulta"
     status_custom: "Mukautettu"
     provider_does_not_offer_service: "Valittu palveluntarjoaja ei tarjoa tätä palvelua."
+    appointment_report: "Varausraportti"
+    customer_report: "Asiakasraportti"
+    customer_report_hint: "Lataa taulukko kaikista asiakkaista, heidän tiedoistaan, viime vuoden varausten määrästä sekä varatuista palveluntarjoajista ja palveluista."
+    customer_notes: "Asiakkaan muistiinpanot"
+    appointments_in_last_year: "Varaukset viime vuonna"
+    notification_event_customer_message: "Asiakkaan viesti vastaanotettu"
+    booking_notice: "Varausilmoitus"
+    display_booking_notice_time_step: "Näytä varausilmoitus päivämäärä/aika-vaiheessa"
+    display_booking_notice_info_step: "Näytä varausilmoitus asiakastiedot-vaiheessa"
+    booking_notice_content: "Varausilmoituksen sisältö"

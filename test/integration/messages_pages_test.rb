@@ -41,6 +41,26 @@ class MessagesPagesTest < ActionDispatch::IntegrationTest
     assert_redirected_to "/login"
   end
 
+  test "the inbox lists each message as a block with the metadata line above the full text" do
+    Message.create!(direction: "incoming", channel: "email", from_address: users(:jx).email, customer_id: users(:jx).id,
+                    subject: "Re: Confirmed", body: "Line one\nLine two\n" + ("Long text " * 80), status: "received")
+    login_admin
+    %w[inbox unknown_inbox].each do |page|
+      get "/#{page}"
+      assert_select "##{page.dasherize}-page table", 0, "#{page}: no table"
+    end
+    get "/inbox"
+    assert_select ".inbox-message.message-unread", 1 do
+      assert_select ".inbox-meta a[href='/customers?customer_id=#{users(:jx).id}']", text: "JX"
+      assert_select ".inbox-meta .badge", text: "Email"
+      assert_select ".inbox-meta .badge", text: "Received"
+      assert_select ".inbox-meta .mark-read"
+      assert_select ".inbox-subject", text: "Re: Confirmed"
+    end
+    assert css_select(".inbox-message .inbox-body").sole.text.start_with?("Line one\nLine two\nLong text"), "line breaks are kept"
+    assert_equal 80, css_select(".inbox-message .inbox-body").sole.text.scan("Long text").size, "the whole text is shown"
+  end
+
   test "unknown inbox messages stay unread until marked read" do
     message = Message.create!(direction: "incoming", channel: "twilio", from_address: "+447700900999",
                               body: "Hello?", status: "received")

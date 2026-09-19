@@ -688,7 +688,12 @@ mr:
     title: Title
     hours: Hours
     messages_enabled: Enable notifications
-    messages_enabled_hint: Globally turn all notifications on or off. Password reset emails will still be sent.
+    messages_enabled_hint: "सर्व सूचना जागतिक स्तरावर चालू किंवा बंद करा"
+    messages_enabled_on: "चालू"
+    messages_enabled_off: "बंद - पासवर्ड रीसेट ईमेल तरीही पाठवले जातील"
+    messages_enabled_debug: "डीबग - सर्व जाणारे ईमेल आणि संदेश पुनर्निर्देशित करा"
+    messages_intercept_hint: "डीबग निवडलेले असताना प्रत्येक जाणारा ईमेल या पत्त्यावर आणि प्रत्येक SMS या क्रमांकावर जातो."
+    messages_intercept_required: "डीबगसाठी पुनर्निर्देशनासाठी वैध ईमेल पत्ता आणि फोन क्रमांक आवश्यक आहे."
     messages_retention_days: Delete messages older than (days)
     messages_retention_days_hint: Messages older than this many days are deleted automatically. Set 0 to keep all messages.
     messages_email_subject: Outgoing Email Subject Line
@@ -792,6 +797,7 @@ mr:
     send_message: Send
     select_one: Select One
     all_providers: All Providers
+    messages_all_providers: All Providers
     message_sent: Message sent.
     terminology: Terminology
     terminology_hint: Rename Provider and Service, for example Stylist and Treatment. Leave blank for the defaults. Languages other than English are not affected. Start the words with a capital letter.
@@ -800,7 +806,7 @@ mr:
     service_label: Service (singular)
     service_label_plural: Services (plural)
     message_settings: Message Settings
-    data_settings: Data Settings
+    manage_data: "डेटा व्यवस्थापन"
     all_services: All Services
     select_day_interval_hint: Number of days to show.
     filter_providers_hint: Show only the selected providers.
@@ -812,8 +818,8 @@ mr:
     add_unavailable_exception: Add Unavailable/Holiday Days
     available: Available
     unavailable: Unavailable
-    fixed_timezone: Fixed timezone
-    fixed_timezone_hint: Everyone uses the default timezone. Timezone fields are hidden on the booking page, staff, customer and appointment forms.
+    timezone_support: "टाइम झोन समर्थन"
+    timezone_support_hint: "बुकिंग पृष्ठावर आणि कर्मचारी, ग्राहक व भेट फॉर्मवर टाइम झोन फील्ड दाखवा. बंद असल्यास सर्वजण डीफॉल्ट टाइम झोन वापरतात."
     consents: Consents
     messages_failure_alert: Email a report when a message fails to send
     messages_failure_alert_hint: Send an email with the time and provider when a notification fails to send - the full details are in the message log
@@ -873,7 +879,6 @@ mr:
     booking_window_hint: 'Customers cannot book a slot that starts sooner than this.'
     late_window: 'Time Before An Appointment A Customer Can Reschedule/Cancel Before Late Cancellation'
     late_window_hint: 'Inside this window the customer can only late cancel, which sets the Late Cancel status and keeps the slot free for others. Must not be longer than the booking window.'
-    late_window_exceeds_booking_window: 'The late cancellation window cannot be longer than the booking window.'
     status_booked: 'Default for new bookings'
     status_rescheduled: 'Set on the original when a customer reschedules'
     status_cancelled: 'Set when an appointment is cancelled'
@@ -906,3 +911,13 @@ mr:
     leave_page: "पान सोडा"
     status_custom: "सानुकूल"
     provider_does_not_offer_service: "निवडलेला प्रदाता ही सेवा देत नाही."
+    appointment_report: "अपॉइंटमेंट अहवाल"
+    customer_report: "ग्राहक अहवाल"
+    customer_report_hint: "प्रत्येक ग्राहकाचे तपशील, गेल्या वर्षातील अपॉइंटमेंटची संख्या आणि बुक केलेले प्रदाते व सेवा असलेली स्प्रेडशीट डाउनलोड करा."
+    customer_notes: "ग्राहक नोंदी"
+    appointments_in_last_year: "गेल्या वर्षातील अपॉइंटमेंट"
+    notification_event_customer_message: "ग्राहक संदेश प्राप्त झाला"
+    booking_notice: "बुकिंग सूचना"
+    display_booking_notice_time_step: "तारीख/वेळ टप्प्यावर बुकिंग सूचना दाखवा"
+    display_booking_notice_info_step: "ग्राहक तपशील टप्प्यावर बुकिंग सूचना दाखवा"
+    booking_notice_content: "बुकिंग सूचनेची सामग्री"

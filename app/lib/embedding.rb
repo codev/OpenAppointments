@@ -31,8 +31,9 @@ module Embedding
   end
 
   # Cookie SameSite policy: the embedded booking flow needs None (cross-site iframe
-  # POSTs must carry the session for CSRF), everything else keeps Lax.
-  def same_site_for(path, enabled: enabled?)
-    enabled && embed_path?(path) ? :none : :lax
+  # POSTs must carry the session for CSRF), everything else keeps Lax. Browsers
+  # drop a SameSite=None cookie that is not Secure, so plain http stays Lax.
+  def same_site_for(path, ssl:, enabled: enabled?)
+    enabled && ssl && embed_path?(path) ? :none : :lax
   end
 end

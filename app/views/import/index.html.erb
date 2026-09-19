@@ -2,7 +2,7 @@
     The backups and import status frames poll while a job runs. %>
 <div class="container backend-page py-3" id="import-page">
     <div class="col-lg-8 offset-lg-2">
-        <h4 class="mb-3 fw-light"><%= lang('data_settings') %></h4>
+        <h4 class="mb-3 fw-light"><%= lang('manage_data') %></h4>
 
         <div class="card card-body mb-4">
             <%= render "import/backups", backups: @backups, export_status: @export_status %>
@@ -11,6 +11,7 @@
         <h5 class="mb-3 fw-light"><%= lang('reports') %></h5>
 
         <form class="card card-body mb-4" method="get" action="/import/report" id="report-form" data-turbo="false">
+            <h6 class="fw-light"><%= lang('appointment_report') %></h6>
             <p class="text-muted small"><%= lang('report_hint') %></p>
             <div class="row g-3 mb-3">
                 <div class="col-sm-6">
@@ -35,6 +36,17 @@
                     </div>
                 <% end %>
             </div>
+            <div>
+                <button type="submit" class="btn btn-outline-primary">
+                    <i class="fas fa-file-download me-2"></i>
+                    <%= lang('download_report') %>
+                </button>
+            </div>
+        </form>
+
+        <form class="card card-body mb-4" method="get" action="/import/customer_report" id="customer-report-form" data-turbo="false">
+            <h6 class="fw-light"><%= lang('customer_report') %></h6>
+            <p class="text-muted small"><%= lang('customer_report_hint') %></p>
             <div>
                 <button type="submit" class="btn btn-outline-primary">
                     <i class="fas fa-file-download me-2"></i>

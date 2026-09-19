@@ -1,6 +1,7 @@
 # Public webhook endpoints for incoming SMS. The URL carries the secret inbound
 # token; Twilio requests are additionally signature-checked. Senders are matched
 # to customers by E.164 phone; unmatched messages land in the Unknown Inbox.
+# A matched message notifies the customer's stylist.
 class InboundMessagesController < ActionController::Base
   skip_forgery_protection
 
@@ -18,10 +19,11 @@ class InboundMessagesController < ActionController::Base
     from, to, body = extract(channel)
     return head :unprocessable_entity if from.blank?
 
-    Message.create!(
+    message = Message.create!(
       direction: "incoming", channel: channel, status: "received",
       from_address: from, to_address: to, customer_id: match_customer(from)&.id, body: body
     )
+    Notifications.customer_message_received(message)
     channel == "twilio" ? render(xml: "<Response></Response>") : head(:ok)
   end
 

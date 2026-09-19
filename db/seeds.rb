@@ -84,11 +84,15 @@ settings = {
   "display_login_button" => "1",
   "default_language" => "english",
   "default_timezone" => "UTC",
+  "timezone_support" => "1",
   "default_country_code" => "+44",
 
   # Notifications / privacy / legal
   "customer_notifications" => "1",
   "captcha_login_enabled" => "0",
+  "display_booking_notice_time_step" => "0",
+  "display_booking_notice_info_step" => "0",
+  "booking_notice_content" => "",
   "display_cookie_notice" => "0",
   "cookie_notice_content" => "Cookie notice content.",
   "display_terms_and_conditions" => "0",

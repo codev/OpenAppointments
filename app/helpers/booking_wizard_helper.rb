@@ -123,9 +123,9 @@ module BookingWizardHelper
     provider&.dig("timezone") || Setting.get("default_timezone", "UTC")
   end
 
-  # The zone the customer chose on the time step, when it is not fixed.
+  # The zone the customer chose on the time step, with timezone support on.
   def wizard_customer_timezone
-    Setting.fixed_timezone? ? wizard_provider_timezone : (@timezone || wizard_provider_timezone)
+    Setting.timezone_support? ? (@timezone || wizard_provider_timezone) : wizard_provider_timezone
   end
 
   def info_step_settings

@@ -13,6 +13,7 @@ class MessageDeliveryJob < ApplicationJob
     restriction = Messaging.country_restriction_error(message.channel, message.to_address)
     raise restriction if restriction
 
+    redirect_for_debug(message)
     adapter.deliver(message)
     message.update!(status: "sent", error: nil)
   rescue StandardError => e
@@ -22,6 +23,17 @@ class MessageDeliveryJob < ApplicationJob
   end
 
   private
+
+  # Debug on Messages > Settings: the row itself is rewritten so the Messages
+  # log shows where it really went, the original recipient marked in the body.
+  def redirect_for_debug(message)
+    return unless Messaging.debug?
+
+    intercept = Messaging.intercept_address(message.channel)
+    return if intercept.nil? || message.to_address == intercept
+
+    message.update!(to_address: intercept, body: Messaging.mark_original_to(message.body, message.to_address))
+  end
 
   # Optional email to the maintainer; never lets an alert problem mask the failure.
   def alert_failure(message)

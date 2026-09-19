@@ -688,7 +688,12 @@ fa:
     title: Title
     hours: Hours
     messages_enabled: Enable notifications
-    messages_enabled_hint: Globally turn all notifications on or off. Password reset emails will still be sent.
+    messages_enabled_hint: "روشن یا خاموش کردن همه اعلان‌ها به صورت سراسری"
+    messages_enabled_on: "روشن"
+    messages_enabled_off: "خاموش - ایمیل‌های بازنشانی رمز عبور همچنان ارسال می‌شوند"
+    messages_enabled_debug: "اشکال‌زدایی - هدایت همه ایمیل‌ها و پیام‌های خروجی"
+    messages_intercept_hint: "تا زمانی که اشکال‌زدایی انتخاب شده باشد، هر ایمیل خروجی به این نشانی و هر پیامک به این شماره می‌رود."
+    messages_intercept_required: "اشکال‌زدایی به یک نشانی ایمیل و شماره تلفن معتبر برای هدایت نیاز دارد."
     messages_retention_days: Delete messages older than (days)
     messages_retention_days_hint: Messages older than this many days are deleted automatically. Set 0 to keep all messages.
     messages_email_subject: Outgoing Email Subject Line
@@ -792,6 +797,7 @@ fa:
     send_message: Send
     select_one: Select One
     all_providers: All Providers
+    messages_all_providers: All Providers
     message_sent: Message sent.
     terminology: Terminology
     terminology_hint: Rename Provider and Service, for example Stylist and Treatment. Leave blank for the defaults. Languages other than English are not affected. Start the words with a capital letter.
@@ -800,7 +806,7 @@ fa:
     service_label: Service (singular)
     service_label_plural: Services (plural)
     message_settings: Message Settings
-    data_settings: Data Settings
+    manage_data: "مدیریت داده‌ها"
     all_services: All Services
     select_day_interval_hint: Number of days to show.
     filter_providers_hint: Show only the selected providers.
@@ -812,8 +818,8 @@ fa:
     add_unavailable_exception: Add Unavailable/Holiday Days
     available: Available
     unavailable: Unavailable
-    fixed_timezone: Fixed timezone
-    fixed_timezone_hint: Everyone uses the default timezone. Timezone fields are hidden on the booking page, staff, customer and appointment forms.
+    timezone_support: "پشتیبانی از منطقه زمانی"
+    timezone_support_hint: "نمایش فیلدهای منطقه زمانی در صفحه رزرو و در فرم‌های کارکنان، مشتریان و قرارها. خاموش، همه از منطقه زمانی پیش‌فرض استفاده می‌کنند."
     consents: Consents
     messages_failure_alert: Email a report when a message fails to send
     messages_failure_alert_hint: Send an email with the time and provider when a notification fails to send - the full details are in the message log
@@ -873,7 +879,6 @@ fa:
     booking_window_hint: 'Customers cannot book a slot that starts sooner than this.'
     late_window: 'Time Before An Appointment A Customer Can Reschedule/Cancel Before Late Cancellation'
     late_window_hint: 'Inside this window the customer can only late cancel, which sets the Late Cancel status and keeps the slot free for others. Must not be longer than the booking window.'
-    late_window_exceeds_booking_window: 'The late cancellation window cannot be longer than the booking window.'
     status_booked: 'Default for new bookings'
     status_rescheduled: 'Set on the original when a customer reschedules'
     status_cancelled: 'Set when an appointment is cancelled'
@@ -906,3 +911,13 @@ fa:
     leave_page: "ترک صفحه"
     status_custom: "سفارشی"
     provider_does_not_offer_service: "ارائه‌دهنده انتخاب‌شده این خدمت را ارائه نمی‌دهد."
+    appointment_report: "گزارش نوبت‌ها"
+    customer_report: "گزارش مشتریان"
+    customer_report_hint: "دانلود صفحه‌گسترده‌ای از همه مشتریان با جزئیات آن‌ها، تعداد نوبت‌های سال گذشته و ارائه‌دهندگان و خدماتی که رزرو کرده‌اند."
+    customer_notes: "یادداشت‌های مشتری"
+    appointments_in_last_year: "نوبت‌های سال گذشته"
+    notification_event_customer_message: "پیام مشتری دریافت شد"
+    booking_notice: "اعلامیه رزرو"
+    display_booking_notice_time_step: "نمایش اعلامیه رزرو در مرحله تاریخ/زمان"
+    display_booking_notice_info_step: "نمایش اعلامیه رزرو در مرحله اطلاعات مشتری"
+    booking_notice_content: "محتوای اعلامیه رزرو"

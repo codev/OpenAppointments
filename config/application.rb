@@ -54,7 +54,7 @@ module OpenAppointments
     # Embedded booking iframe: cross-site POSTs need the session cookie, so the
     # public flow gets SameSite=None when embedding is enabled (see Embedding).
     config.action_dispatch.cookies_same_site_protection = lambda do |request|
-      Embedding.same_site_for(request.path)
+      Embedding.same_site_for(request.path, ssl: request.ssl?)
     rescue StandardError
       :lax
     end

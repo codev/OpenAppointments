@@ -67,18 +67,19 @@ class SettingsPagesTest < ActionDispatch::IntegrationTest
     assert_select "#messages-nav a.fw-bold[href='/messages_providers']"
   end
 
-  test "fixing the timezone moves every user to the default and hides the controls" do
+  test "turning timezone support off leaves stored zones alone and hides the controls" do
     login_admin
     users(:zane).update!(timezone: "America/New_York")
-    post "/general_settings/save", params: { settings: { default_timezone: "Europe/London", fixed_timezone: "1" } }
+    post "/general_settings/save", params: { settings: { default_timezone: "Europe/London", timezone_support: "0" } }
     assert_redirected_to "/general_settings"
-    assert_equal "Europe/London", users(:zane).reload.timezone
+    assert_equal "America/New_York", users(:zane).reload.timezone
+    assert_equal "Europe/London", users(:zane).effective_timezone
 
     get "/providers/new"
     assert_select "div.d-none label[for='provider_timezone']"
     get "/booking", params: { step: "time", service_id: services(:haircut).id, provider_id: users(:zane).id }
-    assert_select "div.d-none label[for='select-timezone']"
-    assert_select "select#select-timezone[disabled]"
+    assert_select "#select-timezone", 0
+    assert_select "label[for='select-timezone']", 0
   end
 
   test "message failure report addresses default to the admins and must be valid" do
@@ -94,6 +95,49 @@ class SettingsPagesTest < ActionDispatch::IntegrationTest
     post "/messages_settings/save", params: { settings: { messages_failure_alert_emails: "a@example.org, b@example.org" } }
     assert_redirected_to "/messages_settings"
     assert_equal "a@example.org, b@example.org", Setting.get("messages_failure_alert_emails")
+  end
+
+  test "the notifications choice offers on, off and debug with the intercept fields tied to debug" do
+    Setting.set("messages_enabled", "debug")
+    Setting.set("messages_intercept_email", "dev@example.org")
+    Setting.set("messages_intercept_phone", "+447700900123")
+    login_admin
+    get "/messages_settings"
+    assert_select "select#messages-enabled[name='settings[messages_enabled]']" do
+      assert_select "option[value='1']", text: "On"
+      assert_select "option[value='0']", text: /^Off/
+      assert_select "option[value='debug'][selected]", text: /^Debug/
+    end
+    assert_select "input[name='settings[messages_intercept_email]'][value='dev@example.org'][data-enabled-when='messages_enabled=debug']"
+    assert_select "input[name='settings[messages_intercept_phone]'][value='+447700900123'][data-enabled-when='messages_enabled=debug']"
+  end
+
+  test "debug needs a valid intercept email and phone, and on or off clears them" do
+    login_admin
+    post "/messages_settings/save", params: { settings: { messages_enabled: "debug", messages_intercept_email: "not-an-email", messages_intercept_phone: "07700 900123" } }
+    assert_redirected_to "/messages_settings"
+    follow_redirect!
+    assert_select ".alert-danger", text: /Invalid email address/
+    assert_equal "1", Setting.get("messages_enabled", "1")
+
+    post "/messages_settings/save", params: { settings: { messages_enabled: "debug", messages_intercept_email: "dev@example.org", messages_intercept_phone: "12" } }
+    follow_redirect!
+    assert_select ".alert-danger", text: /Invalid phone number/
+    assert_equal "1", Setting.get("messages_enabled", "1")
+
+    post "/messages_settings/save", params: { settings: { messages_enabled: "debug", messages_intercept_email: "", messages_intercept_phone: "" } }
+    follow_redirect!
+    assert_select ".alert-danger", text: /Debug needs a valid email address and phone number/
+
+    post "/messages_settings/save", params: { settings: { messages_enabled: "debug", messages_intercept_email: "dev@example.org", messages_intercept_phone: "07700 900123" } }
+    assert_equal "debug", Setting.get("messages_enabled")
+    assert_equal "dev@example.org", Setting.get("messages_intercept_email")
+    assert_equal "+447700900123", Setting.get("messages_intercept_phone")
+
+    post "/messages_settings/save", params: { settings: { messages_enabled: "0", messages_intercept_email: "dev@example.org", messages_intercept_phone: "07700 900123" } }
+    assert_equal "0", Setting.get("messages_enabled")
+    assert_equal "", Setting.get("messages_intercept_email").to_s
+    assert_equal "", Setting.get("messages_intercept_phone").to_s
   end
 
   test "general settings save persists whitelisted settings" do
@@ -153,6 +197,21 @@ class SettingsPagesTest < ActionDispatch::IntegrationTest
                                                             settings: { username: "administrator", password: "password1", password_confirmation: "x" } } }
     follow_redirect!
     assert_select ".alert-danger", text: I18n.t("ea.passwords_mismatch")
+  end
+  test "the terminology labels show their stored values and save from the form" do
+    Setting.set("provider_label", "Stylist")
+    Setting.set("provider_label_plural", "Stylists")
+    login_admin
+    get "/general_settings"
+    assert_select "input#provider-label[name='settings[provider_label]'][value='Stylist']"
+    assert_select "input#provider-label-plural[name='settings[provider_label_plural]'][value='Stylists']"
+    assert_select "input#service-label[name='settings[service_label]']"
+
+    post "/general_settings/save", params: { settings: { provider_label: "Barber", provider_label_plural: "Barbers",
+                                                         service_label: "", service_label_plural: "" } }
+    assert_redirected_to "/general_settings"
+    assert_equal "Barber", Setting.get("provider_label")
+    assert_equal "", Setting.get("service_label").to_s
   end
 end
 

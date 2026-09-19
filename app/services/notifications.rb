@@ -36,6 +36,32 @@ module Notifications
     end
   end
 
+  # An incoming message from a known customer goes to the customer's stylist:
+  # the provider of their next upcoming appointment, or of the most recent one.
+  # The customer audience is skipped; nobody is told about their own message.
+  def customer_message_received(message)
+    customer = message.customer
+    return unless customer && Messaging.enabled?
+
+    provider = stylist_for(customer)
+    context = Messaging::Template.customer_message_context(customer: customer)
+    Notification.for_trigger(:customer_message).find_each do |notification|
+      recipients(notification, provider, nil).each do |user, audience|
+        enabled_channels(notification).each do |channel_key|
+          deliver("#{notification.title} to #{audience}", nil) do
+            queue_for(notification, Messaging.channel(channel_key), user, audience, context)
+          end
+        end
+      end
+    end
+  end
+
+  def stylist_for(customer, now = Time.current)
+    scope = Appointment.appointments.active.where(id_users_customer: customer.id).includes(:provider)
+    upcoming = scope.where("start_datetime >= ?", now).order(:start_datetime).first
+    (upcoming || scope.where("start_datetime < ?", now).order(start_datetime: :desc).first)&.provider
+  end
+
   # Due coming-up notifications (ReminderScanJob / openappointments:reminders).
   def scan_coming_up(now = Time.current)
     return unless Messaging.enabled?
@@ -50,21 +76,24 @@ module Notifications
     end
   end
 
+  # Stored starts are the stylist's wall clock, so the query brackets the
+  # window by a day each side and the zone-aware checks decide.
   def due_appointments(notification, now)
     horizon = now + notification.lead_days.days + notification.lead_hours.hours + 1.day
     Appointment.appointments
-               .where(start_datetime: now..horizon)
+               .where(start_datetime: (now - 1.day).strftime("%Y-%m-%d %H:%M:%S")..(horizon + 1.day).strftime("%Y-%m-%d %H:%M:%S"))
                .not_kind(AppointmentStatus::FREE_SLOT_KINDS + %w[no_show])
                .includes(:service, :provider, :customer)
-               .select { |appointment| send_at(notification, appointment) <= now }
+               .select { |appointment| BookingWindows.starts_at(appointment) >= now && send_at(notification, appointment) <= now }
   end
 
+  # When the reminder is due, on the stylist's clock.
   def send_at(notification, appointment)
-    start_at = appointment.start_datetime
+    start_at = BookingWindows.starts_at(appointment)
     if notification.lead_mode == "day_at"
       date = start_at.to_date - notification.lead_days
       hour, minute = notification.send_time.split(":").map(&:to_i)
-      Time.zone.local(date.year, date.month, date.day, hour, minute)
+      start_at.time_zone.local(date.year, date.month, date.day, hour, minute)
     else
       start_at - notification.lead_days.days - notification.lead_hours.hours
     end
@@ -72,14 +101,17 @@ module Notifications
 
   def deliver_notification(notification, appointment, service, provider, customer, reason: nil)
     recipients(notification, provider, customer).each do |user, audience|
-      channels = Array(notification.channels) & Messaging.enabled_channel_keys
-      channels.each do |channel_key|
+      enabled_channels(notification).each do |channel_key|
         deliver("#{notification.title} to #{audience}", appointment) do
           queue_message(notification, channel_key, user, audience,
                         appointment, service, provider, customer, reason)
         end
       end
     end
+  end
+
+  def enabled_channels(notification)
+    Array(notification.channels) & Messaging.enabled_channel_keys
   end
 
   # [user, audience] pairs. The admins audience keeps EA's fan-out: every admin
@@ -110,16 +142,21 @@ module Notifications
   end
 
   def queue_message(notification, channel_key, user, audience, appointment, service, provider, customer, reason)
-    adapter = Messaging.channel(channel_key)
-    address = adapter.address_for(user)
-    return if address.blank?
-
     link_path = audience == "customer" ? "/booking/reschedule/#{appointment.booking_hash}"
                                        : "/calendar/reschedule/#{appointment.booking_hash}"
     context = Messaging::Template.appointment_context(
       appointment: appointment, service: service, provider: provider, customer: customer,
       recipient_timezone: user.effective_timezone, reason: reason, link_path: link_path
     )
+    queue_for(notification, Messaging.channel(channel_key), user, audience, context, appointment: appointment)
+  end
+
+  # Renders the template for the channel and queues the Message row: email gets
+  # the short text as subject and the long text as body, SMS the short text.
+  def queue_for(notification, adapter, user, audience, context, appointment: nil)
+    address = adapter.address_for(user)
+    return if address.blank?
+
     short = Messaging::Template.render(notification.short_text, context)
     long = Messaging::Template.render(notification.long_text, context)
 
@@ -134,7 +171,7 @@ module Notifications
     return if body.blank?
 
     message = Message.create!(
-      direction: "outgoing", channel: channel_key, audience: audience, to_address: address,
+      direction: "outgoing", channel: adapter.key, audience: audience, to_address: address,
       customer_id: audience == "customer" ? user.id : nil,
       appointment_id: appointment&.id, notification_id: notification.id,
       subject: subject, body: body, status: "queued"

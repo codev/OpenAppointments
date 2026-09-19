@@ -688,7 +688,12 @@ zh-tw:
     title: Title
     hours: Hours
     messages_enabled: Enable notifications
-    messages_enabled_hint: Globally turn all notifications on or off. Password reset emails will still be sent.
+    messages_enabled_hint: "整體開啟或關閉所有通知"
+    messages_enabled_on: "開啟"
+    messages_enabled_off: "關閉 - 密碼重設郵件仍會寄出"
+    messages_enabled_debug: "偵錯 - 將所有寄出的郵件和訊息轉送"
+    messages_intercept_hint: "選擇偵錯時，所有寄出的郵件都會送到此地址，所有簡訊都會送到此號碼。"
+    messages_intercept_required: "偵錯需要有效的電子郵件地址和電話號碼作為轉送目標。"
     messages_retention_days: Delete messages older than (days)
     messages_retention_days_hint: Messages older than this many days are deleted automatically. Set 0 to keep all messages.
     messages_email_subject: Outgoing Email Subject Line
@@ -792,6 +797,7 @@ zh-tw:
     send_message: Send
     select_one: Select One
     all_providers: All Providers
+    messages_all_providers: All Providers
     message_sent: Message sent.
     terminology: Terminology
     terminology_hint: Rename Provider and Service, for example Stylist and Treatment. Leave blank for the defaults. Languages other than English are not affected. Start the words with a capital letter.
@@ -800,7 +806,7 @@ zh-tw:
     service_label: Service (singular)
     service_label_plural: Services (plural)
     message_settings: Message Settings
-    data_settings: Data Settings
+    manage_data: "資料管理"
     all_services: All Services
     select_day_interval_hint: Number of days to show.
     filter_providers_hint: Show only the selected providers.
@@ -812,8 +818,8 @@ zh-tw:
     add_unavailable_exception: Add Unavailable/Holiday Days
     available: Available
     unavailable: Unavailable
-    fixed_timezone: Fixed timezone
-    fixed_timezone_hint: Everyone uses the default timezone. Timezone fields are hidden on the booking page, staff, customer and appointment forms.
+    timezone_support: "時區支援"
+    timezone_support_hint: "在預約頁面以及員工、客戶和預約表單中顯示時區欄位。關閉時，所有人使用預設時區。"
     consents: Consents
     messages_failure_alert: Email a report when a message fails to send
     messages_failure_alert_hint: Send an email with the time and provider when a notification fails to send - the full details are in the message log
@@ -873,7 +879,6 @@ zh-tw:
     booking_window_hint: 'Customers cannot book a slot that starts sooner than this.'
     late_window: 'Time Before An Appointment A Customer Can Reschedule/Cancel Before Late Cancellation'
     late_window_hint: 'Inside this window the customer can only late cancel, which sets the Late Cancel status and keeps the slot free for others. Must not be longer than the booking window.'
-    late_window_exceeds_booking_window: 'The late cancellation window cannot be longer than the booking window.'
     status_booked: 'Default for new bookings'
     status_rescheduled: 'Set on the original when a customer reschedules'
     status_cancelled: 'Set when an appointment is cancelled'
@@ -906,3 +911,13 @@ zh-tw:
     leave_page: "離開頁面"
     status_custom: "自訂"
     provider_does_not_offer_service: "所選服務人員不提供此服務。"
+    appointment_report: "預約報表"
+    customer_report: "顧客報表"
+    customer_report_hint: "下載包含所有顧客資料、過去一年的預約數，以及所預約的服務人員與服務的試算表。"
+    customer_notes: "顧客備註"
+    appointments_in_last_year: "過去一年的預約"
+    notification_event_customer_message: "收到顧客訊息"
+    booking_notice: "預約須知"
+    display_booking_notice_time_step: "在日期/時間步驟顯示預約須知"
+    display_booking_notice_info_step: "在客戶資料步驟顯示預約須知"
+    booking_notice_content: "預約須知內容"

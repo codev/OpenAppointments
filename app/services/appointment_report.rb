@@ -7,12 +7,15 @@ module AppointmentReport
                location notes repeats booked_on].freeze
 
   # labels: key -> header text. status_ids: nil for every status; a list that
-  # covers every status also includes appointments with no status.
+  # covers every status also includes appointments with no status. The
+  # displayed customer custom fields and the customer notes follow the columns.
   def generate(from:, to:, status_ids: nil, labels: ->(key) { key })
-    Ods.generate("Appointments" => [ COLUMNS.map { |key| labels.call(key) } ] + rows(from, to, status_ids))
+    custom_fields = CustomerColumns.custom_fields(labels)
+    header = COLUMNS.map { |key| labels.call(key) } + custom_fields.map(&:last) + [ labels.call("customer_notes") ]
+    Ods.generate("Appointments" => [ header ] + rows(from, to, status_ids, custom_fields.map(&:first)))
   end
 
-  def rows(from, to, status_ids)
+  def rows(from, to, status_ids, custom_fields)
     scope = Appointment.appointments
                        .where(start_datetime: from.beginning_of_day..to.end_of_day)
                        .includes(:customer, :provider, :service, :appointment_status, :series)
@@ -22,12 +25,14 @@ module AppointmentReport
     end
     scope = scope.where(status_id: status_ids) if status_ids
     scope.map do |appointment|
+      customer = appointment.customer
       [ appointment.start_datetime.strftime("%Y-%m-%d"), appointment.start_datetime.strftime("%H:%M"),
         appointment.end_datetime.strftime("%H:%M"), appointment.duration_minutes,
-        appointment.customer&.name, appointment.customer&.email, appointment.customer&.phone_number,
+        customer&.name, customer&.email, customer&.phone_number,
         appointment.provider&.name, appointment.service&.name, appointment.status,
         appointment.location, appointment.notes, appointment.series&.description,
-        appointment.book_datetime&.strftime("%Y-%m-%d %H:%M") ]
+        appointment.book_datetime&.strftime("%Y-%m-%d %H:%M") ] +
+        custom_fields.map { |attribute| customer&.public_send(attribute) } + [ customer&.notes ]
     end
   end
 end

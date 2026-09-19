@@ -95,7 +95,7 @@
                                 <% Terminology::SETTINGS.each do |field| %>
                                     <div class="mb-3">
                                         <label class="form-label" for="<%= field.dasherize %>"><%= lang(field) %></label>
-                                        <input id="<%= field.dasherize %>" data-field="<%= field %>" class="form-control">
+                                        <%= setting_text field, id: field.dasherize %>
                                     </div>
                                 <% end %>
                             </div>
@@ -181,6 +181,20 @@
                                 </div>
 
                                 <div class="mb-3">
+                                    <div class="form-check form-switch">
+                                        <%= setting_switch "timezone_support", default: "1" %>
+                                        <label class="form-check-label" for="timezone-support">
+                                            <%= lang('timezone_support') %>
+                                        </label>
+                                    </div>
+                                    <div class="form-text text-muted">
+                                        <small>
+                                            <%= lang('timezone_support_hint') %>
+                                        </small>
+                                    </div>
+                                </div>
+
+                                <div class="mb-3">
                                     <label class="form-label" for="default-timezone">
                                         <%= lang('default_timezone') %>
                                         <span class="text-danger" hidden>*</span>
@@ -189,26 +203,21 @@
                                                        grouped_timezones.map { |continent, zones| [ continent, zones.map { |value, name| [ name, value ] } ] },
                                                        required: true %>
                                 </div>
-                                <div class="form-text text-muted">
+                                <div class="form-text text-muted mb-5">
                                     <small>
                                         <%= lang('default_timezone_hint') %>
                                     </small>
                                 </div>
 
-                                <div class="mb-3 mt-3">
-                                    <div class="form-check form-switch">
-                                        <%= setting_switch "fixed_timezone" %>
-                                        <label class="form-check-label" for="fixed-timezone">
-                                            <%= lang('fixed_timezone') %>
-                                        </label>
-                                    </div>
-                                    <div class="form-text text-muted">
-                                        <small>
-                                            <%= lang('fixed_timezone_hint') %>
-                                        </small>
+                                <h5 class="mb-3 fw-light"><%= lang('data_retention') %></h5>
+
+                                <div class="mb-3">
+                                    <label class="form-label" for="data-retention-days"><%= lang('data_retention_days') %></label>
+                                    <%= setting_text "data_retention_days", type: "number", min: 0, placeholder: "0" %>
+                                    <div class="form-text text-muted small">
+                                        <%= lang('data_retention_days_hint') %>
                                     </div>
                                 </div>
-
                             </div>
                         </div>
 

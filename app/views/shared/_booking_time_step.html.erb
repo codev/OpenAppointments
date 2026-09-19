@@ -13,20 +13,20 @@
         <%= hidden_field_tag :time, @time, id: "selected-time" %>
         <div class="frame-container py-3">
             <h2 class="frame-title fw-light text-center mb-4 text-muted"><%= lang('appointment_date_and_time') %></h2>
+            <%= render "shared/booking_notice", shown: vars(:display_booking_notice_time_step) %>
             <div class="row frame-content">
                 <div class="col-12 col-lg-6">
                     <div id="select-date" class="mx-auto my-4"></div>
                 </div>
                 <div class="col-12 col-lg-6">
                     <div id="select-time" class="mx-auto py-3">
-                        <div class="mb-3<%= timezone_hidden_class %>">
-                            <label for="select-timezone" class="form-label"><%= lang('timezone') %></label>
-                            <% if Setting.fixed_timezone? %>
-                                <%= render "shared/timezone_dropdown", attributes: 'id="select-timezone" class="form-select mb-3" disabled' %>
-                            <% else %>
+                        <%# Without timezone support there is no select, so the script labels hours in the stylist's zone. %>
+                        <% if Setting.timezone_support? %>
+                            <div class="mb-3">
+                                <label for="select-timezone" class="form-label"><%= lang('timezone') %></label>
                                 <%= render "shared/timezone_dropdown", attributes: 'id="select-timezone" name="timezone" class="form-select mb-3"' %>
-                            <% end %>
-                        </div>
+                            </div>
+                        <% end %>
                         <div id="available-hours" class="overflow-auto my-3 pe-2">
                             <% if @window.empty? %>
                                 <em><%= lang('no_available_hours') %></em>

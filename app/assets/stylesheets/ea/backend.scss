@@ -152,7 +152,7 @@ body .modal.full-screen .modal-push {
 
 /* Filter records entry styling */
 .backend-page .filter-records .results .entry {
-    padding: 10px 7px;
+    padding: 5px 7px;
     cursor: pointer;
 }
 
@@ -162,7 +162,7 @@ body .modal.full-screen .modal-push {
 
 .backend-page .filter-records .results hr {
     margin: 5px 0;
-    opacity: .1; 
+    opacity: .1;
 }
 
 /* Calendar page specific styles */
@@ -314,7 +314,6 @@ body .modal.full-screen .modal-push {
     font-size: 12px;
 }
 
-/* Calendar header and Select2 integration */
 /* Appointments page header: nav buttons left, date picker exactly centred. */
 #calendar .calendar-header .fc-header-toolbar {
     display: grid !important;
@@ -346,17 +345,6 @@ body .modal.full-screen .modal-push {
 #calendar .calendar-header .select-date {
     width: auto;
     text-align: center;
-}
-
-#calendar .select2-container--default.select2-container--focus .select2-selection--multiple {
-    border-color: var(--bs-primary);
-    outline: 0;
-    box-shadow: 0 0 0 0.2rem rgba(var(--bs-primary-rgb), 0.25);
-}
-
-#calendar .select2-container--default .select2-selection--multiple .select2-selection__choice {
-    background-color: var(--bs-light);
-    border: 1px solid var(--bs-border-color);
 }
 
 /* Calendar table view */
@@ -641,6 +629,7 @@ body .modal.full-screen .modal-push {
 #header-logo img {
     width: 45px;
     height: 45px;
+    object-fit: contain;
 }
 
 #header-logo h6 {
@@ -689,8 +678,9 @@ body .modal.full-screen .modal-push {
     }
 }
 
-/* Below 1024px: logo above its text, icon above the label, tighter items. */
-@media (min-width: 768px) and (max-width: 1023.98px) {
+/* Below 1200px: logo above its text, icon above the label, tighter items.
+   Font Awesome swaps each <i> for an <svg>, so icon rules name both. */
+@media (min-width: 768px) and (max-width: 1199.98px) {
     #header-logo {
         flex-direction: column;
         text-align: center;
@@ -707,12 +697,22 @@ body .modal.full-screen .modal-push {
 
     #header .navbar-nav .nav-link {
         flex-direction: column;
+        justify-content: flex-start;
         padding: 0.5rem 0.6rem !important;
+        margin-top: 0.6rem;
         line-height: 1.2;
     }
 
-    #header .navbar-nav .nav-link i {
+    #header .navbar-nav .nav-link i,
+    #header .navbar-nav .nav-link svg {
+        width: 1.25em;
+        height: 1em;
         margin: 0 0 0.25rem !important;
+        text-align: center;
+    }
+
+    #header .navbar-nav .nav-link.dropdown-toggle::after {
+        margin: 0.25rem 0 0;
     }
 }
 
@@ -721,25 +721,33 @@ body .modal.full-screen .modal-push {
     z-index: 1030;
 }
 
+/* Inbox: unread blocks carry an accent bar on the left; message text keeps its line breaks. */
+.inbox-message.message-unread {
+    border-left: 4px solid var(--bs-primary);
+    padding-left: 0.75rem;
+}
 
-
-.filter-records .results {
-    max-height: 650px;
+.inbox-message .inbox-body {
+    white-space: pre-line;
+    overflow-wrap: anywhere;
 }
 
 #customer-messages {
     min-height: 200px;
     max-height: 400px;
-    max-width: 330px;
-    width: 100%;
 }
 
-#customer-message-composer {
-    max-width: 330px;
+#customer-messages .message-row small:last-child {
+    white-space: pre-line;
 }
 
 #customer-message-composer #message-channel {
     max-width: 130px;
+}
+
+#customer-message-composer #message-body {
+    resize: none;
+    overflow: hidden;
 }
 
 #footer {

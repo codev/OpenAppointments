@@ -44,12 +44,25 @@ class IframeEmbedTest < ActionDispatch::IntegrationTest
     assert_match(/openappointments:height/, response.body)
   end
 
-  test "cookie same-site policy relaxes only for the embedded booking flow" do
-    assert_equal :lax, Embedding.same_site_for("/", enabled: false)
-    assert_equal :none, Embedding.same_site_for("/", enabled: true)
-    assert_equal :none, Embedding.same_site_for("/booking/register", enabled: true)
-    assert_equal :lax, Embedding.same_site_for("/calendar", enabled: true)
-    assert_equal :lax, Embedding.same_site_for("/login", enabled: true)
+  test "cookie same-site policy relaxes only for the embedded booking flow over https" do
+    assert_equal :lax, Embedding.same_site_for("/", enabled: false, ssl: true)
+    assert_equal :none, Embedding.same_site_for("/", enabled: true, ssl: true)
+    assert_equal :none, Embedding.same_site_for("/booking/register", enabled: true, ssl: true)
+    assert_equal :lax, Embedding.same_site_for("/calendar", enabled: true, ssl: true)
+    assert_equal :lax, Embedding.same_site_for("/login", enabled: true, ssl: true)
+    # Browsers drop a SameSite=None cookie that is not Secure, so plain http stays Lax.
+    assert_equal :lax, Embedding.same_site_for("/", enabled: true, ssl: false)
+  end
+
+  test "the booking page session cookie is Lax over http and None over https" do
+    enable_embedding
+    get "/"
+    assert_match(/samesite=lax/i, response.headers["Set-Cookie"].to_s)
+
+    # Secure itself comes from force_ssl in production, not from this rule.
+    https!
+    get "/"
+    assert_match(/samesite=none/i, response.headers["Set-Cookie"].to_s)
   end
 
   test "embed settings page renders the snippet and saves" do

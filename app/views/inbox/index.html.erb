@@ -15,11 +15,10 @@
 
             <p class="form-text text-muted mb-4"><%= lang('inbox_info') %></p>
 
-            <%= render "shared/messages_log_table",
+            <%= render "shared/inbox_list",
                        messages: vars(:inbox_messages), page: vars(:inbox_page),
                        last_page: vars(:inbox_last_page),
-                       base_path: vars(:inbox_unread_only) ? "/inbox?unread=1" : "/inbox",
-                       inbox: true %>
+                       base_path: vars(:inbox_unread_only) ? "/inbox?unread=1" : "/inbox" %>
         </div>
     </div>
 </div>

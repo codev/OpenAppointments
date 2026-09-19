@@ -175,7 +175,7 @@ class BookingWizardReviewTest < ActionDispatch::IntegrationTest
   end
 
   test "the customer timezone comes from the time step, else the provider's" do
-    Setting.set("fixed_timezone", "0")
+    Setting.set("timezone_support", "1")
     confirm(timezone: "America/New_York")
     assert_select "#wizard-frame-5 input[name='customer[timezone]'][value='America/New_York']"
     assert_select "#wizard-frame-5 #appointment-details", text: /6:00 am/ # 11:00 in London
@@ -313,15 +313,15 @@ class BookingWizardReviewTest < ActionDispatch::IntegrationTest
   end
 
   test "the time step names the provider zone and carries the chosen zone" do
-    Setting.set("fixed_timezone", "0")
+    Setting.set("timezone_support", "1")
     get "/", params: @state.merge(step: "time", timezone: "America/New_York")
     assert_select "#wizard-frame-3[data-provider-timezone='Europe/London'][data-selected-timezone='America/New_York']"
     assert_select "#wizard-frame-3 select#select-timezone[name=timezone]"
     assert_select "#wizard-frame-3[data-appointment-start]", count: 0
 
-    Setting.set("fixed_timezone", "1")
+    Setting.set("timezone_support", "0")
     get "/", params: @state.merge(step: "time", timezone: "America/New_York")
-    assert_select "#wizard-frame-3 select#select-timezone[disabled]"
+    assert_select "#wizard-frame-3 select#select-timezone", 0
     confirm(timezone: "America/New_York")
     assert_select "#wizard-frame-5 input[name='customer[timezone]'][value=?]", Setting.get("default_timezone", "UTC")
   end

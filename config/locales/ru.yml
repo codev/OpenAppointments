@@ -688,7 +688,12 @@ ru:
     title: Title
     hours: Hours
     messages_enabled: Enable notifications
-    messages_enabled_hint: Globally turn all notifications on or off. Password reset emails will still be sent.
+    messages_enabled_hint: "Включить или выключить все уведомления"
+    messages_enabled_on: "Включено"
+    messages_enabled_off: "Выключено - письма для сброса пароля всё равно отправляются"
+    messages_enabled_debug: "Отладка - перенаправлять все исходящие письма и сообщения"
+    messages_intercept_hint: "Пока выбрана Отладка, каждое исходящее письмо уходит на этот адрес, а каждое SMS на этот номер."
+    messages_intercept_required: "Для отладки нужны действительные адрес электронной почты и номер телефона для перенаправления."
     messages_retention_days: Delete messages older than (days)
     messages_retention_days_hint: Messages older than this many days are deleted automatically. Set 0 to keep all messages.
     messages_email_subject: Outgoing Email Subject Line
@@ -792,6 +797,7 @@ ru:
     send_message: Send
     select_one: Select One
     all_providers: All Providers
+    messages_all_providers: All Providers
     message_sent: Message sent.
     terminology: Terminology
     terminology_hint: Rename Provider and Service, for example Stylist and Treatment. Leave blank for the defaults. Languages other than English are not affected. Start the words with a capital letter.
@@ -800,7 +806,7 @@ ru:
     service_label: Service (singular)
     service_label_plural: Services (plural)
     message_settings: Message Settings
-    data_settings: Data Settings
+    manage_data: "Управление данными"
     all_services: All Services
     select_day_interval_hint: Number of days to show.
     filter_providers_hint: Show only the selected providers.
@@ -812,8 +818,8 @@ ru:
     add_unavailable_exception: Add Unavailable/Holiday Days
     available: Available
     unavailable: Unavailable
-    fixed_timezone: Fixed timezone
-    fixed_timezone_hint: Everyone uses the default timezone. Timezone fields are hidden on the booking page, staff, customer and appointment forms.
+    timezone_support: "Поддержка часовых поясов"
+    timezone_support_hint: "Показывать поля часового пояса на странице записи и в формах сотрудников, клиентов и записей. Выключено: все используют часовой пояс по умолчанию."
     consents: Consents
     messages_failure_alert: Email a report when a message fails to send
     messages_failure_alert_hint: Send an email with the time and provider when a notification fails to send - the full details are in the message log
@@ -873,7 +879,6 @@ ru:
     booking_window_hint: 'Customers cannot book a slot that starts sooner than this.'
     late_window: 'Time Before An Appointment A Customer Can Reschedule/Cancel Before Late Cancellation'
     late_window_hint: 'Inside this window the customer can only late cancel, which sets the Late Cancel status and keeps the slot free for others. Must not be longer than the booking window.'
-    late_window_exceeds_booking_window: 'The late cancellation window cannot be longer than the booking window.'
     status_booked: 'Default for new bookings'
     status_rescheduled: 'Set on the original when a customer reschedules'
     status_cancelled: 'Set when an appointment is cancelled'
@@ -906,3 +911,13 @@ ru:
     leave_page: "Покинуть страницу"
     status_custom: "Пользовательский"
     provider_does_not_offer_service: "Выбранный специалист не предоставляет эту услугу."
+    appointment_report: "Отчёт по записям"
+    customer_report: "Отчёт по клиентам"
+    customer_report_hint: "Скачайте таблицу со всеми клиентами, их данными, числом записей за последний год, а также забронированными специалистами и услугами."
+    customer_notes: "Заметки о клиенте"
+    appointments_in_last_year: "Записи за последний год"
+    notification_event_customer_message: "Получено сообщение от клиента"
+    booking_notice: "Уведомление о бронировании"
+    display_booking_notice_time_step: "Показывать уведомление о бронировании на шаге даты/времени"
+    display_booking_notice_info_step: "Показывать уведомление о бронировании на шаге данных клиента"
+    booking_notice_content: "Текст уведомления о бронировании"

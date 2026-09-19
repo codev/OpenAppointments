@@ -42,7 +42,7 @@
 
                 <%= local_assigns[:list_toolbar] %>
 
-                <div class="results overflow-auto" data-keyword="<%= keyword %>">
+                <div class="results" data-keyword="<%= keyword %>">
                     <% if records.empty? %>
                         <em><%= lang('no_records_found') %></em>
                     <% end %>
