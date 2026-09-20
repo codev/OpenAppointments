@@ -83,8 +83,10 @@ Rails.application.configure do
     },
     # Routing misses that fall through to the next app are not errors.
     ignore_cascade_pass: true,
-    # Rethrow and log (but don't email about) errors in rack url decoding
+    # Nothing is sent without recipients. Rethrow and log (but don't email
+    # about) errors in rack url decoding.
     ignore_if: ->(env, e) {
+      !ErrorReports.enabled? ||
       e.class.name == "ArgumentError" && (
         e.message.start_with?("invalid byte sequence in UTF-8") ||
         e.message.start_with?("invalid %-encoding")
