@@ -24,4 +24,14 @@ class BookingWindow
     end
     window
   end
+
+  # No bookable hour anywhere in the window: for the service with any of its
+  # providers, or for every service the provider offers.
+  def self.fully_booked?(service: nil, provider: nil)
+    if service
+      build(service, provider&.id || BookingPayloads::ANY_PROVIDER).empty?
+    else
+      provider.services.none? { |offered| build(offered, provider.id).any? }
+    end
+  end
 end

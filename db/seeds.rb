@@ -101,6 +101,7 @@ settings = {
   "display_booking_notice_time_step" => "0",
   "display_booking_notice_info_step" => "0",
   "booking_notice_content" => "",
+  "fully_booked_notice_content" => "<p>#{I18n.t('ea.fully_booked_notice_default', locale: :en)}</p>",
   "display_cookie_notice" => "0",
   "cookie_notice_content" => "Cookie notice content.",
   "display_terms_and_conditions" => "0",

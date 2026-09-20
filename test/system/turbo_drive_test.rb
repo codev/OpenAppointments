@@ -60,7 +60,7 @@ class TurboDriveTest < ApplicationSystemTestCase
     within("#settings-nav") { click_on "Booking Settings" }
     assert_selector "#display-email", wait: 5
     assert_driven
-    within("#settings-nav") { click_on "Legal Contents" }
+    within("#settings-nav") { click_on "Notices" }
     assert_selector ".trumbowyg-editor", wait: 5
     assert_driven
     within("#settings-nav") { click_on "Integrations" }

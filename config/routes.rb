@@ -87,6 +87,7 @@ Rails.application.routes.draw do
   get "booking/reschedule/:appointment_hash" => "booking#reschedule"
   post "booking/confirm" => "booking#confirm"
   post "booking/register" => "booking#register"
+  post "booking/waitlist" => "booking#waitlist"
   get "booking_confirmation/of/:appointment_hash" => "booking_confirmation#of", as: :booking_confirmation
   get "booking_confirmation/ics/:appointment_hash" => "booking_confirmation#ics", as: :booking_confirmation_ics
   # EA has no GET cancellation page: the frame form POSTs and non-POST/empty-reason requests get 403.
