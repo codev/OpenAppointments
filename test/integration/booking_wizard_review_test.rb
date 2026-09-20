@@ -325,4 +325,14 @@ class BookingWizardReviewTest < ActionDispatch::IntegrationTest
     confirm(timezone: "America/New_York")
     assert_select "#wizard-frame-5 input[name='customer[timezone]'][value=?]", Setting.get("default_timezone", "UTC")
   end
+
+  test "a booking with a known phone number and no email reuses that customer" do
+    Setting.set("require_email", "0")
+    known = User.create!(name: "Known Caller", phone_number: "+447700900555", role: Role.find_by!(slug: Role::CUSTOMER))
+    assert_no_difference "User.customers.count" do
+      register_at_booking_time(customer: { name: "Known Caller", email: "", phone_number: "07700 900555" })
+    end
+    assert_response :redirect
+    assert_equal known.id, Appointment.order(:id).last.id_users_customer
+  end
 end
