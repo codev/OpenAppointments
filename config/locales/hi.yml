@@ -765,7 +765,7 @@ hi:
     notification_event_created: Appointment Created
     notification_event_created_or_updated: Appointment Created or Updated
     notification_event_updated: Appointment Updated
-    notification_event_cancelled: Appointment Canceled
+    notification_event_cancelled: Appointment Cancelled
     notification_event_missed: Appointment Missed
     notification_lead_before: Send this long before the appointment
     notification_lead_day_at: Send a number of days before, at a set time
@@ -870,9 +870,9 @@ hi:
     rs_days_first_letter: Su, M, Tu, W, Th, F, Sa
     rs_order: 1st, 2nd, 3rd, 4th, 5th, Last
     notification_cancellation_scope: Send
-    notification_cancellation_all: For all canceled appointments
-    notification_cancellation_in_time: For appointments canceled within the cancellation window
-    notification_cancellation_late: For appointments canceled too late
+    notification_cancellation_all: For all cancelled appointments
+    notification_cancellation_in_time: For appointments cancelled within the cancellation window
+    notification_cancellation_late: For appointments cancelled too late
     notification_cancellation_scope_hint: 'The window is the late cancellation time in Business Logic.'
     minimum_times_before_appointments: 'Minimum Times Before Appointments'
     booking_window: 'Time Before An Appointment A Customer Can Book'

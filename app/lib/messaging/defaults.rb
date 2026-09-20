@@ -82,7 +82,7 @@ module Messaging
           TEXT
         },
         {
-          title: "Appointment Canceled",
+          title: "Appointment Cancelled",
           event: "cancelled",
           audiences: %w[customer provider admins],
           channels: %w[email],
