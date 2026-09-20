@@ -90,6 +90,14 @@ settings = {
   # Notifications / privacy / legal
   "customer_notifications" => "1",
   "captcha_login_enabled" => "0",
+  # Waitlist: signups live waitlist_days, get at most waitlist_max_notices freed
+  # slot notices, hear about the horizon once a day when it has
+  # waitlist_min_slots free, and are told one by one waitlist_stagger_seconds apart.
+  "waitlist_enabled" => "0",
+  "waitlist_days" => "14",
+  "waitlist_max_notices" => "7",
+  "waitlist_min_slots" => "3",
+  "waitlist_stagger_seconds" => "60",
   "display_booking_notice_time_step" => "0",
   "display_booking_notice_info_step" => "0",
   "booking_notice_content" => "",
