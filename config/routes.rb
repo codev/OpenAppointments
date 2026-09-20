@@ -24,6 +24,8 @@ Rails.application.routes.draw do
     end
   end
   resources :unavailabilities, only: %i[new create edit update destroy], controller: "unavailabilities_form"
+  get "calendar/feed/:token" => "calendar_feed#show", constraints: { token: /[A-Za-z0-9]+/ }
+  post "calendar/feed_link" => "calendar_feed#link"
   get "calendar/reschedule/:appointment_hash" => "calendar#reschedule"
   post "calendar/get_calendar_appointments" => "calendar#get_calendar_appointments"
   post "calendar/save_appointment" => "calendar#save_appointment"

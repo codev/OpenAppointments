@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_09_20_140000) do
+ActiveRecord::Schema[8.1].define(version: 2026_09_20_150000) do
   create_table "action_mailbox_inbound_emails", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.string "message_checksum", null: false
@@ -249,6 +249,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_20_140000) do
     t.boolean "caldav_sync", default: false
     t.string "caldav_url"
     t.string "caldav_username"
+    t.string "calendar_feed_token"
     t.datetime "created_at", null: false
     t.string "google_calendar"
     t.boolean "google_sync", default: false
@@ -264,6 +265,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_20_140000) do
     t.datetime "updated_at", null: false
     t.string "username"
     t.text "working_plan"
+    t.index ["calendar_feed_token"], name: "index_user_settings_on_calendar_feed_token", unique: true
     t.index ["username"], name: "index_user_settings_on_username", unique: true
   end
 
