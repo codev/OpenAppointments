@@ -2,8 +2,10 @@
 # channels are JSON string arrays.
 class Notification < ApplicationRecord
   # Dropdown order; coming_up stays on top. customer_message fires when an
-  # incoming message from a known customer arrives.
-  EVENTS = %w[coming_up created created_or_updated updated cancelled missed customer_message].freeze
+  # incoming message from a known customer arrives; the waitlist events go to
+  # waiting list signups, not to the audiences.
+  EVENTS = %w[coming_up created created_or_updated updated cancelled missed customer_message
+              waitlist_slot_freed waitlist_daily].freeze
   AUDIENCES = %w[customer provider admins].freeze
   LEAD_MODES = %w[before day_at].freeze
   # Cancelled templates: every cancellation, only those made before the late
@@ -16,7 +18,9 @@ class Notification < ApplicationRecord
     updated: %w[updated created_or_updated],
     cancelled: %w[cancelled],
     missed: %w[missed],
-    customer_message: %w[customer_message]
+    customer_message: %w[customer_message],
+    waitlist_slot_freed: %w[waitlist_slot_freed],
+    waitlist_daily: %w[waitlist_daily]
   }.freeze
 
   serialize :audiences, coder: JSON

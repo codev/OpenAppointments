@@ -27,6 +27,11 @@ class WaitlistEntry < ApplicationRecord
   end
 
   def notices_left? = notices_sent < self.class.max_notices
+  def expired?(now = Time.current) = expires_at <= now
+
+  # Message channels address a recipient like a user.
+  def phone_number = phone
+  def mobile_number = nil
 
   private
 

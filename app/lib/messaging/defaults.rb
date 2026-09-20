@@ -120,7 +120,43 @@ module Messaging
             {{Company Name}}
           TEXT
         },
-        customer_message_notification
+        customer_message_notification,
+        *waitlist_notifications
+      ]
+    end
+
+    # Waiting list signups hear about a freed slot straight away and about
+    # availability in the booking window once a day.
+    def waitlist_notifications
+      [
+        {
+          title: "Waiting List Slot Freed",
+          event: "waitlist_slot_freed",
+          audiences: %w[customer],
+          channels: %w[email],
+          short_text: "An appointment for {{Service Name}} with {{Provider Name}} on {{Appointment Date}} at {{Appointment Time}} has just become free at {{Company Name}}. Book it here: {{Booking Link}}",
+          long_text: <<~TEXT
+            Hello {{Customer First Name}},
+
+            An appointment for {{Service Name}} with {{Provider Name}} on {{Appointment Date}} at {{Appointment Time}} has just become free. First come, first served: {{Booking Link}}
+
+            You are receiving this because you joined the waiting list at {{Company Name}}. Leave the list: {{Unsubscribe Link}}
+          TEXT
+        },
+        {
+          title: "Waiting List Daily Availability",
+          event: "waitlist_daily",
+          audiences: %w[customer],
+          channels: %w[email],
+          short_text: "There are appointments available for {{Service Name}} at {{Company Name}}. Book here: {{Booking Link}}",
+          long_text: <<~TEXT
+            Hello {{Customer First Name}},
+
+            There are appointments available for {{Service Name}} at {{Company Name}}. Book here: {{Booking Link}}
+
+            You are receiving this because you joined the waiting list. Leave the list: {{Unsubscribe Link}}
+          TEXT
+        }
       ]
     end
 
@@ -147,6 +183,13 @@ module Messaging
       return unless Notification.none?
 
       notifications.each { |attrs| Notification.create!(attrs) }
+    end
+
+    # Existing installs: the waiting list templates unless they are set up.
+    def create_waitlist_notifications!
+      waitlist_notifications.each do |attrs|
+        Notification.create!(attrs) unless Notification.exists?(event: attrs[:event])
+      end
     end
 
     # Existing installs: the customer message template unless one is set up.

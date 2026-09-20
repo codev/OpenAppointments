@@ -5,7 +5,7 @@ module Cleanup
   module_function
 
   def run
-    result = purge_messages
+    result = purge_messages.merge(waitlist_deleted: WaitlistEntry.where(expires_at: ..Time.now).delete_all)
     days = Setting.get("data_retention_days").to_i
     return result.merge(enabled: false, deleted: 0) if days <= 0
 

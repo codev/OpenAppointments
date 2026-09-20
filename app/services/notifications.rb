@@ -34,6 +34,20 @@ module Notifications
 
       deliver_notification(notification, appointment, service, provider, customer, reason: reason)
     end
+    Waitlist.slot_freed(appointment) if trigger == :cancelled
+  end
+
+  # A waiting list notice: the signup is the recipient, linked to their
+  # customer record when the email matches one.
+  def waitlist_notice(trigger, entry, context)
+    customer_id = User.customers.find_by(email: entry.email)&.id
+    Notification.for_trigger(trigger).find_each do |notification|
+      enabled_channels(notification).each do |channel_key|
+        deliver("#{notification.title} to waitlist", nil) do
+          queue_for(notification, Messaging.channel(channel_key), entry, "waitlist", context, customer_id: customer_id)
+        end
+      end
+    end
   end
 
   # An incoming message from a known customer goes to the customer's stylist:
@@ -153,7 +167,7 @@ module Notifications
 
   # Renders the template for the channel and queues the Message row: email gets
   # the short text as subject and the long text as body, SMS the short text.
-  def queue_for(notification, adapter, user, audience, context, appointment: nil)
+  def queue_for(notification, adapter, user, audience, context, appointment: nil, customer_id: nil)
     address = adapter.address_for(user)
     return if address.blank?
 
@@ -172,7 +186,7 @@ module Notifications
 
     message = Message.create!(
       direction: "outgoing", channel: adapter.key, audience: audience, to_address: address,
-      customer_id: audience == "customer" ? user.id : nil,
+      customer_id: audience == "customer" ? user.id : customer_id,
       appointment_id: appointment&.id, notification_id: notification.id,
       subject: subject, body: body, status: "queued"
     )

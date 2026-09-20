@@ -10,7 +10,7 @@ module Messaging
       "Service Duration", "Appointment Date", "Appointment Time",
       "Appointment End Time", "Appointment Status", "Appointment Link",
       "Cancellation Reason", "Repeats", "Next Appointment", "User Name",
-      "Customer Message Link", "Booking Notice"
+      "Customer Message Link", "Booking Notice", "Booking Link", "Unsubscribe Link"
     ].freeze
 
     module_function
@@ -48,6 +48,28 @@ module Messaging
         "Customer Email" => customer.email.to_s,
         "Customer Phone" => sms_address(customer).to_s,
         "Customer Message Link" => "#{base_url}/customers?customer_id=#{customer.id}&section=messages"
+      )
+    end
+
+    # Tokens for a waiting list notice. A freed slot carries its provider and
+    # start (provider wall clock); the booking link opens the wizard on it.
+    def waitlist_context(entry:, provider: nil, start_at: nil)
+      service = entry.service
+      link = "#{base_url}/booking?service=#{service.booking_slug}"
+      link += "&provider=#{provider.booking_slug}" if provider
+      link += "&date=#{start_at.strftime('%Y-%m-%d')}&time=#{start_at.strftime('%H:%M')}&step=time" if start_at
+      base_context.merge(
+        "Customer Name" => entry.name.to_s,
+        "Customer First Name" => entry.name.to_s.split(" ").first.to_s,
+        "Customer Email" => entry.email.to_s,
+        "Customer Phone" => sms_address(entry).to_s,
+        "Provider Name" => provider&.name.to_s,
+        "Service Name" => service.name.to_s,
+        "Service Duration" => service.duration.to_s,
+        "Appointment Date" => start_at ? format_date(start_at) : "",
+        "Appointment Time" => start_at ? format_time(start_at) : "",
+        "Booking Link" => link,
+        "Unsubscribe Link" => "#{base_url}/booking/waitlist/leave/#{entry.unsubscribe_token}"
       )
     end
 
