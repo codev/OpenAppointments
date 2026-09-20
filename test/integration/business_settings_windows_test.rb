@@ -15,4 +15,12 @@ class BusinessSettingsWindowsTest < ActionDispatch::IntegrationTest
     assert_equal "0", Setting.get("book_advance_timeout")
     assert_equal "360", Setting.get("late_cancellation_timeout")
   end
+
+  test "the late window hint does not tie it to the booking window" do
+    post "/login/validate", params: { username: "administrator", password: "administrator1" }
+    get "/business_settings"
+    assert_response :success
+    assert_includes response.body, "keeps the slot free for others"
+    assert_not_includes response.body, "longer than the booking window"
+  end
 end
