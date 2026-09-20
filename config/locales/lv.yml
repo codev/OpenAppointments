@@ -973,3 +973,7 @@ lv:
     merge_customer_not_found: "Nevienam citam klientam nav šī e-pasta vai tālruņa numura."
     customer_merged: "Klienti apvienoti"
     provider_color_hint: "Izmanto šī pakalpojumu sniedzēja tikšanām, kad kalendārs rāda visus."
+    other_emails: "Citas e-pasta adreses"
+    other_emails_hint: "Viena rindā. Rezervācijas un ziņas no jebkuras no šīm adresēm pieder šim klientam."
+    other_phones: "Citi tālruņa numuri"
+    other_phones_hint: "Viens rindā. Rezervācijas un ziņas no jebkura no šiem numuriem pieder šim klientam."

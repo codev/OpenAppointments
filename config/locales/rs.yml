@@ -973,3 +973,7 @@ rs:
     merge_customer_not_found: "Nijedan drugi posetilac nema taj email ili broj telefona."
     customer_merged: "Posetioci spojeni"
     provider_color_hint: "Koristi se za termine ovog izvršioca usluge kada kalendar prikazuje sve."
+    other_emails: "Ostale email adrese"
+    other_emails_hint: "Jedna po redu. Rezervacije i poruke sa bilo koje od ovih adresa pripadaju ovom posetiocu."
+    other_phones: "Ostali brojevi telefona"
+    other_phones_hint: "Jedan po redu. Rezervacije i poruke sa bilo kog od ovih brojeva pripadaju ovom posetiocu."

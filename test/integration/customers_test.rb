@@ -145,4 +145,20 @@ class CustomersTest < ActionDispatch::IntegrationTest
     get "/customers", params: { keyword: "gone2" }
     assert_select ".record-row, .customer-row, tr, li", text: /Kept/
   end
+
+  test "the form edits other emails and phone numbers, and the strings exist in every locale" do
+    login_admin
+    get "/customers/#{users(:jx).id}/edit"
+    assert_select "textarea[name='customer[other_emails]']"
+    assert_select "textarea[name='customer[other_phones]']"
+    patch "/customers/#{users(:jx).id}", params: { customer: { other_emails: "a@example.org\nb@example.org", other_phones: "07700 900321" } }
+    assert_equal %w[a@example.org b@example.org], users(:jx).reload.other_email_list
+    assert_equal [ "07700 900321" ], users(:jx).other_phone_list
+
+    I18n.available_locales.each do |locale|
+      %w[other_emails other_emails_hint other_phones other_phones_hint].each do |key|
+        assert I18n.t("ea.#{key}", locale: locale, fallback: false, default: nil).present?, "missing ea.#{key} in #{locale}"
+      end
+    end
+  end
 end

@@ -973,3 +973,7 @@ sv:
     merge_customer_not_found: "Ingen annan kund har den e-postadressen eller det telefonnumret."
     customer_merged: "Kunder sammanslagna"
     provider_color_hint: "Används för denna utförares bokningar när kalendern visar alla."
+    other_emails: "Andra e-postadresser"
+    other_emails_hint: "En per rad. Bokningar och meddelanden från någon av dessa adresser tillhör denna kund."
+    other_phones: "Andra telefonnummer"
+    other_phones_hint: "En per rad. Bokningar och meddelanden från något av dessa nummer tillhör denna kund."

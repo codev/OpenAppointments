@@ -973,3 +973,7 @@ ca:
     merge_customer_not_found: "Cap altre client té aquest correu electrònic o número de telèfon."
     customer_merged: "Clients fusionats"
     provider_color_hint: "S'utilitza per a les cites d'aquest proveïdor quan el calendari mostra tothom."
+    other_emails: "Altres correus electrònics"
+    other_emails_hint: "Un per línia. Les reserves i missatges de qualsevol d'aquestes adreces pertanyen a aquest client."
+    other_phones: "Altres números de telèfon"
+    other_phones_hint: "Un per línia. Les reserves i missatges de qualsevol d'aquests números pertanyen a aquest client."

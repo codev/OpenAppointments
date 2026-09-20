@@ -973,3 +973,7 @@ ja:
     merge_customer_not_found: "そのメールアドレスまたは電話番号のお客様は他にいません。"
     customer_merged: "お客様を統合しました"
     provider_color_hint: "カレンダーが全員を表示するとき、この担当者の予約に使用されます。"
+    other_emails: "その他のメールアドレス"
+    other_emails_hint: "1行に1つ。これらのアドレスからの予約やメッセージはこのお客様のものとして扱われます。"
+    other_phones: "その他の電話番号"
+    other_phones_hint: "1行に1つ。これらの番号からの予約やメッセージはこのお客様のものとして扱われます。"

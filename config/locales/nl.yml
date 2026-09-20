@@ -973,3 +973,7 @@ nl:
     merge_customer_not_found: "Geen andere klant heeft dat e-mailadres of telefoonnummer."
     customer_merged: "Klanten samengevoegd"
     provider_color_hint: "Wordt gebruikt voor de afspraken van deze medewerker wanneer de kalender iedereen toont."
+    other_emails: "Overige e-mailadressen"
+    other_emails_hint: "Eén per regel. Boekingen en berichten van een van deze adressen horen bij deze klant."
+    other_phones: "Overige telefoonnummers"
+    other_phones_hint: "Eén per regel. Boekingen en berichten van een van deze nummers horen bij deze klant."

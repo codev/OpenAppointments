@@ -973,3 +973,7 @@ zh-tw:
     merge_customer_not_found: "沒有其他顧客使用該電子郵件或電話號碼。"
     customer_merged: "顧客已合併"
     provider_color_hint: "當日曆顯示所有人時，用於此提供者的預約。"
+    other_emails: "其他電子郵件"
+    other_emails_hint: "每行一個。來自這些地址的任何預約和訊息均屬於該顧客。"
+    other_phones: "其他電話號碼"
+    other_phones_hint: "每行一個。來自這些號碼的任何預約和訊息均屬於該顧客。"

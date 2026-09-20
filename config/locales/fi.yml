@@ -973,3 +973,7 @@ fi:
     merge_customer_not_found: "Millään toisella asiakkaalla ei ole tätä sähköpostia tai puhelinnumeroa."
     customer_merged: "Asiakkaat yhdistetty"
     provider_color_hint: "Käytetään tämän palveluntuottajan varauksille, kun kalenteri näyttää kaikki."
+    other_emails: "Muut sähköpostiosoitteet"
+    other_emails_hint: "Yksi per rivi. Varaukset ja viestit näistä osoitteista kuuluvat tälle asiakkaalle."
+    other_phones: "Muut puhelinnumerot"
+    other_phones_hint: "Yksi per rivi. Varaukset ja viestit näistä numeroista kuuluvat tälle asiakkaalle."

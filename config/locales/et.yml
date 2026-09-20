@@ -973,3 +973,7 @@ et:
     merge_customer_not_found: "Ühelgi teisel kliendil ei ole seda e-posti ega telefoninumbrit."
     customer_merged: "Kliendid ühendatud"
     provider_color_hint: "Kasutatakse selle teenusepakkuja broneeringute jaoks, kui kalender näitab kõiki."
+    other_emails: "Muud e-posti aadressid"
+    other_emails_hint: "Üks rea kohta. Broneeringud ja sõnumid mis tahes neist aadressidest kuuluvad sellele kliendile."
+    other_phones: "Muud telefoninumbrid"
+    other_phones_hint: "Üks rea kohta. Broneeringud ja sõnumid mis tahes neist numbritest kuuluvad sellele kliendile."

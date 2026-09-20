@@ -973,3 +973,7 @@ en:
     merge_customer_not_found: "No other customer has that email or phone number."
     customer_merged: "Customers merged"
     provider_color_hint: "Used for this provider's appointments when the calendar shows everyone."
+    other_emails: "Other emails"
+    other_emails_hint: "One per line. Bookings and messages from any of these addresses belong to this customer."
+    other_phones: "Other phone numbers"
+    other_phones_hint: "One per line. Bookings and messages from any of these numbers belong to this customer."

@@ -973,3 +973,7 @@ sl:
     merge_customer_not_found: "Nobena druga stranka nima te e-pošte ali telefonske številke."
     customer_merged: "Stranke združene"
     provider_color_hint: "Uporabljeno za termine tega ponudnika, ko koledar prikazuje vse."
+    other_emails: "Drugi e-poštni naslovi"
+    other_emails_hint: "En na vrstico. Termini in sporočila s katerega koli od teh naslovov pripadajo tej stranki."
+    other_phones: "Druge telefonske številke"
+    other_phones_hint: "Ena na vrstico. Termini in sporočila s katere koli od teh številk pripadajo tej stranki."

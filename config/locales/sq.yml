@@ -973,3 +973,7 @@ sq:
     merge_customer_not_found: "Asnjë klient tjetër nuk ka atë email ose numër telefoni."
     customer_merged: "Klientët u bashkuan"
     provider_color_hint: "Përdoret për takimet e këtij ofruesi kur kalendari shfaq të gjithë."
+    other_emails: "Email-e të tjerë"
+    other_emails_hint: "Një për rresht. Rezervimet dhe mesazhet nga secila prej këtyre adresave i përkasin këtij klienti."
+    other_phones: "Numra të tjerë telefoni"
+    other_phones_hint: "Një për rresht. Rezervimet dhe mesazhet nga secili prej këtyre numrave i përkasin këtij klienti."

@@ -45,6 +45,14 @@
                              required: true, class: "form-select" %>
             </div>
 
+            <% { other_emails: "other_emails", other_phones: "other_phones" }.each do |field, key| %>
+                <div class="mb-3">
+                    <%= f.label field, lang(key), class: "form-label" %>
+                    <%= f.text_area field, rows: 2, class: "form-control" %>
+                    <div class="form-text text-muted"><small><%= lang("#{key}_hint") %></small></div>
+                </div>
+            <% end %>
+
             <% if setting('ldap_is_active').to_s == "1" %>
                 <div class="mb-3">
                     <%= f.label :ldap_dn, lang('ldap_dn'), class: "form-label" %>

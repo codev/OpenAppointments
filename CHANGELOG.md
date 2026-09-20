@@ -12,7 +12,8 @@ CloudronManifest.json.
 - Calendar: each provider has a colour, used with a legend when the calendar shows everyone; appointments show a coloured edge over a light tint
 - Working plan exceptions: a Time off row for part of a day off, saved as a break
 - Appointments view shows working plan breaks
-- Customer page: merge a customer into another by email or phone number; bookings without an email reuse the customer with that phone number
+- Customers can have other emails and phone numbers. Bookings, replies, search, merging and the 10to8 import match a customer by any of them, and a new address typed on a booking is added to the record
+- Customer page: merge a customer into another by email or phone number
 - Messages > Settings: Vary each SMS adds a short code so no two texts are identical
 - Manage Data is at /data; the old address redirects
 - Booking wizard: Next shows a spinner while the next step loads

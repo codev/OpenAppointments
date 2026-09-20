@@ -973,3 +973,7 @@ lt:
     merge_customer_not_found: "Nė vienas kitas klientas neturi tokio el. pašto ar telefono numerio."
     customer_merged: "Klientai sujungti"
     provider_color_hint: "Naudojama šio teikėjo vizitams, kai kalendorius rodo visus."
+    other_emails: "Kiti el. pašto adresai"
+    other_emails_hint: "Po vieną eilutėje. Rezervacijos ir žinutės iš bet kurio iš šių adresų priklauso šiam klientui."
+    other_phones: "Kiti telefono numeriai"
+    other_phones_hint: "Po vieną eilutėje. Rezervacijos ir žinutės iš bet kurio iš šių numerių priklauso šiam klientui."
