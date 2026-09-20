@@ -49,6 +49,7 @@ body .modal-header .btn-close {
 
 body .modal-content {
     border: none;
+    --bs-modal-border-width: 0;
 }
 
 /* Full screen modal */
@@ -798,6 +799,12 @@ body .modal.full-screen .modal-push {
     border-left-color: #abe9a4;
     color: var(--bs-secondary-color);
     font-style: italic;
+}
+
+#calendar .calendar-view .day-entry-break {
+    border-left-color: #d9c27a;
+    background: rgba(217, 194, 122, 0.15);
+    color: var(--bs-secondary-color);
 }
 
 #calendar .calendar-view .day-entry-unavailability,

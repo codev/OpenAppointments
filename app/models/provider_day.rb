@@ -29,7 +29,8 @@ class ProviderDay
   def entries
     return [] unless working?
 
-    (appointment_entries + unavailability_entries + blocked_entries + free_entries).sort_by { |entry| [ entry.start, entry.end ] }
+    (appointment_entries + unavailability_entries + blocked_entries + break_entries + free_entries)
+      .sort_by { |entry| [ entry.start, entry.end ] }
   end
 
   private
@@ -55,6 +56,12 @@ class ProviderDay
     @blocked_periods.map do |period|
       Entry.new(kind: "blocked", start: [ period.start_datetime, wall_time("00:00") ].max,
                 end: [ period.end_datetime, wall_time("23:59") ].min, title: period.name, record: period)
+    end
+  end
+
+  def break_entries
+    Array(day_plan["breaks"]).map do |period|
+      Entry.new(kind: "break", start: wall_time(period["start"]), end: wall_time(period["end"]), title: I18n.t("ea.break"))
     end
   end
 
