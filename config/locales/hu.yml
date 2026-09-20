@@ -765,7 +765,7 @@ hu:
     notification_event_created: Appointment Created
     notification_event_created_or_updated: Appointment Created or Updated
     notification_event_updated: Appointment Updated
-    notification_event_cancelled: Appointment Canceled
+    notification_event_cancelled: Appointment Cancelled
     notification_event_missed: Appointment Missed
     notification_lead_before: Send this long before the appointment
     notification_lead_day_at: Send a number of days before, at a set time
@@ -870,15 +870,15 @@ hu:
     rs_days_first_letter: Su, M, Tu, W, Th, F, Sa
     rs_order: 1st, 2nd, 3rd, 4th, 5th, Last
     notification_cancellation_scope: Send
-    notification_cancellation_all: For all canceled appointments
-    notification_cancellation_in_time: For appointments canceled within the cancellation window
-    notification_cancellation_late: For appointments canceled too late
+    notification_cancellation_all: For all cancelled appointments
+    notification_cancellation_in_time: For appointments cancelled within the cancellation window
+    notification_cancellation_late: For appointments cancelled too late
     notification_cancellation_scope_hint: 'The window is the late cancellation time in Business Logic.'
     minimum_times_before_appointments: 'Minimum Times Before Appointments'
     booking_window: 'Time Before An Appointment A Customer Can Book'
     booking_window_hint: 'Customers cannot book a slot that starts sooner than this.'
     late_window: 'Time Before An Appointment A Customer Can Reschedule/Cancel Before Late Cancellation'
-    late_window_hint: 'Inside this window the customer can only late cancel, which sets the Late Cancel status and keeps the slot free for others. Must not be longer than the booking window.'
+    late_window_hint: 'Inside this window the customer can only late cancel, which sets the Late Cancel status and keeps the slot free for others.'
     status_booked: 'Default for new bookings'
     status_rescheduled: 'Set on the original when a customer reschedules'
     status_cancelled: 'Set when an appointment is cancelled'
@@ -921,3 +921,59 @@ hu:
     display_booking_notice_time_step: "Foglalási értesítés megjelenítése a dátum/idő lépésnél"
     display_booking_notice_info_step: "Foglalási értesítés megjelenítése az ügyféladatok lépésnél"
     booking_notice_content: "Foglalási értesítés tartalma"
+    waitlist: "Várólista"
+    waitlist_signup_title: "Csatlakozás a várólistához"
+    waitlist_signup_hint: "Add meg az adataidat, és értesítünk, amint felszabadul egy megfelelő időpont."
+    waitlist_join: "Csatlakozás a várólistához"
+    waitlist_joined: "Felkerültél a várólistára. Értesítünk, amint felszabadul egy időpont."
+    waitlist_already_joined: "Már rajta vagy ennek a szolgáltatásnak a várólistáján."
+    waitlist_left: "Kikerültél a várólistáról."
+    waitlist_link_invalid: "Ez a várólista-hivatkozás már nem érvényes."
+    fully_booked_notice: "Betelt időpontok üzenete"
+    fully_booked_notice_hint: "Az első lépéseknél jelenik meg, ha a kiválasztott szolgáltatásnak vagy szolgáltatónak nincs szabad időpontja a foglalási időkereten belül."
+    fully_booked_notice_default: "Nincs elérhető időpont. Próbálj másik szolgáltatást vagy szolgáltatót, vagy próbáld újra később."
+    notices: "Üzenetek"
+    waitlist_enabled: "Várólista"
+    waitlist_enabled_hint: "Engedd meg a vásárlóknak, hogy feliratkozzanak, és értesítést kapjanak, amikor felszabadul egy időpont."
+    waitlist_days: "Napok a listán"
+    waitlist_days_hint: "A feliratkozásokat ennyi nap után töröljük."
+    waitlist_max_notices: "Felszabadult időpontról szóló üzenetek feliratkozásonként"
+    waitlist_max_notices_hint: "Ennyi üzenet után ne értesítsük tovább a feliratkozót a felszabadult időpontokról."
+    waitlist_min_slots: "Szabad időpontok a napi üzenethez"
+    waitlist_min_slots_hint: "A napi üzenetet akkor küldjük el, ha legalább ennyi időpont szabad a foglalási időkereten belül."
+    waitlist_stagger_seconds: "Másodperc az üzenetek között"
+    waitlist_stagger_seconds_hint: "Minden feliratkozó kicsit később kap értesítést, mint az előző, a leghosszabb ideje várók elsőként, hogy előnyt szerezzenek a foglalásnál."
+    notification_event_waitlist_slot_freed: "Várólista - Felszabadult időpont"
+    notification_event_waitlist_daily: "Várólista - Napi elérhetőség"
+    waitlist_hint: "Vásárlók, akik egy időpont felszabadulására várnak."
+    waitlist_empty: "Senki sem vár."
+    waitlist_signed_up: "Feliratkozva"
+    waitlist_expires: "Lejár"
+    waitlist_messages_sent: "Elküldött üzenetek"
+    calendar_feed: "Naptárfolyam"
+    calendar_feed_hint: "Iratkozzon fel erre a linkre a saját naptáralkalmazásában, hogy ott is lássa az időpontjait. Bárki, akinek megvan a link, láthatja a naptárat, ezért tartsa titokban, és állítsa vissza, ha kikerül."
+    calendar_feed_link: "Folyam linkje"
+    calendar_feed_copy: "Link másolása"
+    calendar_feed_copied: "Másolva"
+    calendar_feed_reset: "Link visszaállítása"
+    calendar_feed_reset_confirm: "Visszaállítja a linket? A régi linket használó naptáralkalmazások leállnak a frissítéssel, amíg hozzá nem adja az újat."
+    calendar_feed_google: "Google Naptár: laptopon nyissa meg a Google Naptárat, az Egyéb naptárak mellett kattintson a pluszjelre, válassza az URL-ből lehetőséget, illessze be a linket, majd kattintson a Naptár hozzáadása gombra. Ezután a telefonján is megjelenik."
+    calendar_feed_apple: "Apple Naptár: Mac gépen válassza a Fájl, Új naptár-előfizetés lehetőséget, és illessze be a linket. iPhone-on lépjen a Beállítások, Naptár, Fiókok, Fiók hozzáadása, Egyéb, Előfizetett naptár hozzáadása menüpontba."
+    calendar_feed_refresh_note: "A Google csak 8-24 óránként frissíti az előfizetett naptárakat, az Apple pedig óránként, hacsak nem módosítja ezt, ezért a mai időpontok megtekintéséhez inkább jelentkezzen be ide, mintsem a naptáralkalmazására hagyatkozzon."
+    date_display: "Dátum megjelenítése"
+    date_display_hint: "Hogyan íródnak a dátumok az oldalakon és az üzenetekben. A dátummezők megtartják a fenti számformátumot."
+    time_off: "Szabadidő"
+    time_off_hint: "Ha a nap egy részéről van szó, add meg a távollét óráit. Ezek szünetként kerülnek mentésre az adott napokon."
+    messages_sms_variation: "Minden SMS variálása"
+    messages_sms_variation_hint: "Minden SMS végéhez hozzáad egy rövid hivatkozási kódot, hogy ne legyen két egyforma üzenet, amit egyes szolgáltatók megkövetelnek."
+    merge_customer: "Összevonás egy másik ügyféllel"
+    merge_customer_hint: "Add meg a másik ügyfél e-mail címét vagy telefonszámát. Ennek az ügyfélnek az időpontjai és üzenetei átkerülnek arra a rekordra, ez a rekord pedig törlődik."
+    merge_customer_button: "Összevonás"
+    merge_customer_confirm: "Összevonod ezt az ügyfelet a másik rekorddal? Ez nem vonható vissza."
+    merge_customer_not_found: "Egyetlen másik ügyfélnek sincs ilyen e-mail címe vagy telefonszáma."
+    customer_merged: "Ügyfelek összevonva"
+    provider_color_hint: "Ezt használjuk ennek a szolgáltatónak az időpontjaihoz, amikor a naptár mindenkit megjelenít."
+    other_emails: "Egyéb email címek"
+    other_emails_hint: "Soronként egy. Az ezekről a címekről érkező időpontok és üzenetek ehhez az ügyfélhez tartoznak."
+    other_phones: "Egyéb telefonszámok"
+    other_phones_hint: "Soronként egy. Az ezekről a számokról érkező időpontok és üzenetek ehhez az ügyfélhez tartoznak."

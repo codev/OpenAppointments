@@ -765,7 +765,7 @@ zh:
     notification_event_created: Appointment Created
     notification_event_created_or_updated: Appointment Created or Updated
     notification_event_updated: Appointment Updated
-    notification_event_cancelled: Appointment Canceled
+    notification_event_cancelled: Appointment Cancelled
     notification_event_missed: Appointment Missed
     notification_lead_before: Send this long before the appointment
     notification_lead_day_at: Send a number of days before, at a set time
@@ -870,15 +870,15 @@ zh:
     rs_days_first_letter: Su, M, Tu, W, Th, F, Sa
     rs_order: 1st, 2nd, 3rd, 4th, 5th, Last
     notification_cancellation_scope: Send
-    notification_cancellation_all: For all canceled appointments
-    notification_cancellation_in_time: For appointments canceled within the cancellation window
-    notification_cancellation_late: For appointments canceled too late
+    notification_cancellation_all: For all cancelled appointments
+    notification_cancellation_in_time: For appointments cancelled within the cancellation window
+    notification_cancellation_late: For appointments cancelled too late
     notification_cancellation_scope_hint: 'The window is the late cancellation time in Business Logic.'
     minimum_times_before_appointments: 'Minimum Times Before Appointments'
     booking_window: 'Time Before An Appointment A Customer Can Book'
     booking_window_hint: 'Customers cannot book a slot that starts sooner than this.'
     late_window: 'Time Before An Appointment A Customer Can Reschedule/Cancel Before Late Cancellation'
-    late_window_hint: 'Inside this window the customer can only late cancel, which sets the Late Cancel status and keeps the slot free for others. Must not be longer than the booking window.'
+    late_window_hint: 'Inside this window the customer can only late cancel, which sets the Late Cancel status and keeps the slot free for others.'
     status_booked: 'Default for new bookings'
     status_rescheduled: 'Set on the original when a customer reschedules'
     status_cancelled: 'Set when an appointment is cancelled'
@@ -921,3 +921,59 @@ zh:
     display_booking_notice_time_step: "在日期/时间步骤显示预约须知"
     display_booking_notice_info_step: "在客户资料步骤显示预约须知"
     booking_notice_content: "预约须知内容"
+    waitlist: "候补名单"
+    waitlist_signup_title: "加入候补名单"
+    waitlist_signup_hint: "请留下您的信息，一旦有合适的预约空出，我们会通知您。"
+    waitlist_join: "加入候补名单"
+    waitlist_joined: "您已加入候补名单。一旦有预约空出，我们会通知您。"
+    waitlist_already_joined: "您已经在该服务项目的候补名单中。"
+    waitlist_left: "您已从候补名单中移除。"
+    waitlist_link_invalid: "此候补名单链接已失效。"
+    fully_booked_notice: "约满提示"
+    fully_booked_notice_hint: "当所选服务项目或服务人员在可预约时间范围内没有空闲预约时，会在最初步骤中显示。"
+    fully_booked_notice_default: "目前没有可用的预约。请尝试其他服务项目或服务人员，或稍后再试。"
+    notices: "提示"
+    waitlist_enabled: "候补名单"
+    waitlist_enabled_hint: "允许客户登记候补，以便在有预约空出时收到通知。"
+    waitlist_days: "候补保留天数"
+    waitlist_days_hint: "超过此天数后，候补登记将被移除。"
+    waitlist_max_notices: "每位候补者收到的空位通知次数上限"
+    waitlist_max_notices_hint: "达到此通知次数后，停止向该候补者发送空位通知。"
+    waitlist_min_slots: "发送每日通知所需的空闲预约数"
+    waitlist_min_slots_hint: "当可预约时间范围内至少有此数量的空闲预约时，将发送每日通知。"
+    waitlist_stagger_seconds: "通知间隔秒数"
+    waitlist_stagger_seconds_hint: "每位候补者会在前一位之后稍晚收到通知，等待时间最长的最先收到，以便优先预约。"
+    notification_event_waitlist_slot_freed: "候补名单 - 出现空位"
+    notification_event_waitlist_daily: "候补名单 - 每日空位情况"
+    waitlist_hint: "正在等待预约空位的客户。"
+    waitlist_empty: "目前没有候补客户。"
+    waitlist_signed_up: "登记日期"
+    waitlist_expires: "到期日期"
+    waitlist_messages_sent: "已发送通知数"
+    calendar_feed: "日历订阅源"
+    calendar_feed_hint: "在您自己的日历应用中订阅此链接即可在那里看到您的预约。任何拥有此链接的人都可以查看该日历，因此请妥善保管，如果泄露请重置。"
+    calendar_feed_link: "订阅链接"
+    calendar_feed_copy: "复制链接"
+    calendar_feed_copied: "已复制"
+    calendar_feed_reset: "重置链接"
+    calendar_feed_reset_confirm: "要重置链接吗？使用旧链接的日历应用将停止更新，直到您添加新链接为止。"
+    calendar_feed_google: "Google Calendar：在电脑上打开 Google Calendar，在 Other calendars 旁点击加号，选择 From URL，粘贴链接并点击 Add calendar。之后手机上也会显示。"
+    calendar_feed_apple: "Apple Calendar：在 Mac 上选择 File，然后 New Calendar Subscription 并粘贴链接。在 iPhone 上依次进入 Settings、Calendar、Accounts、Add Account、Other、Add Subscribed Calendar。"
+    calendar_feed_refresh_note: "Google 每 8 到 24 小时才刷新一次订阅的日历，Apple 除非您更改设置，否则每小时刷新一次，因此要查看今天的预约，请登录这里，而不要依赖您的日历应用。"
+    date_display: "日期显示"
+    date_display_hint: "页面和消息中日期的书写方式。日期字段保持上面的数字格式。"
+    time_off: "请假"
+    time_off_hint: "如果只请一天中的部分时间假，请输入您不在的时间。这些时间会作为休息保存在这些日期上。"
+    messages_sms_variation: "每条短信不同"
+    messages_sms_variation_hint: "在每条短信末尾添加一个简短的参考代码，使任何两条短信都不相同，这是一些运营商网络的要求。"
+    merge_customer: "合并到另一个客户"
+    merge_customer_hint: "输入另一位客户的电子邮件或电话号码。此客户的预约和消息将移到该记录，此记录将被删除。"
+    merge_customer_button: "合并"
+    merge_customer_confirm: "将此客户合并到另一条记录？此操作无法撤销。"
+    merge_customer_not_found: "没有其他客户使用该电子邮件或电话号码。"
+    customer_merged: "客户已合并"
+    provider_color_hint: "当日历显示所有人时，用于此服务人员的预约。"
+    other_emails: "其他电子邮件"
+    other_emails_hint: "每行一个。来自这些地址的任何预约和消息均属于该客户。"
+    other_phones: "其他电话号码"
+    other_phones_hint: "每行一个。来自这些号码的任何预约和消息均属于该客户。"

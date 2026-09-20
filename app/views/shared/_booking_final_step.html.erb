@@ -33,7 +33,7 @@
             <% end %>
             <div class="row frame-content">
                 <div id="appointment-details" class="col-12 col-lg-6 text-center text-md-start mb-2 mb-md-0 fs-5">
-                    <div><i class="fas fa-calendar-day me-2"></i><strong><%= format_appointment_datetime(customer_start_at, formats) %></strong></div>
+                    <div><i class="fas fa-calendar-day me-2"></i><strong><%= display_datetime(customer_start_at) %></strong></div>
                     <% if Setting.timezone_support? %>
                         <div class="small text-muted"><%= format_timezone(customer["timezone"]) %></div>
                     <% end %>

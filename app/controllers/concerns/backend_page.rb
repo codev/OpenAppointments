@@ -33,7 +33,7 @@ module BackendPage
       page_title: page_title,
       active_menu: active_menu,
       user_display_name: current_user&.full_name,
-      company_logo: Setting.get("company_logo"),
+      company_logo: CompanyLogo.path,
       timezone: session[:timezone],
       grouped_timezones: helpers.grouped_timezones,
       privileges: session_role.permissions,

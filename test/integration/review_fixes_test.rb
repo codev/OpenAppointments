@@ -116,7 +116,7 @@ class ReviewFixesTest < ActionDispatch::IntegrationTest
     login_admin
     Setting.set("company_logo", "data:image/png;base64,AAAA")
     get "/general_settings"
-    assert_select "#company-logo-preview[src^='data:image']:not([hidden])"
+    assert_select "#company-logo-preview[src^='/company_logo?v=']:not([hidden])"
     assert_select "#remove-company-logo[name=remove_company_logo]"
     post "/general_settings/save", params: { settings: { company_name: "Test Company" }, remove_company_logo: "1" }
     assert_equal "", Setting.get("company_logo")

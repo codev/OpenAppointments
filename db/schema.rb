@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_09_19_120000) do
+ActiveRecord::Schema[8.1].define(version: 2026_09_20_170000) do
   create_table "action_mailbox_inbound_emails", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.string "message_checksum", null: false
@@ -249,6 +249,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_19_120000) do
     t.boolean "caldav_sync", default: false
     t.string "caldav_url"
     t.string "caldav_username"
+    t.string "calendar_feed_token"
     t.datetime "created_at", null: false
     t.string "google_calendar"
     t.boolean "google_sync", default: false
@@ -264,6 +265,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_19_120000) do
     t.datetime "updated_at", null: false
     t.string "username"
     t.text "working_plan"
+    t.index ["calendar_feed_token"], name: "index_user_settings_on_calendar_feed_token", unique: true
     t.index ["username"], name: "index_user_settings_on_username", unique: true
   end
 
@@ -272,6 +274,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_19_120000) do
     t.string "address"
     t.string "booking_slug"
     t.string "city"
+    t.string "color"
     t.datetime "created_at", null: false
     t.text "custom_field_1"
     t.text "custom_field_2"
@@ -286,6 +289,8 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_19_120000) do
     t.string "mobile_number"
     t.string "name"
     t.text "notes"
+    t.text "other_emails"
+    t.text "other_phones"
     t.string "phone_number"
     t.text "services_description"
     t.integer "sort_order"
@@ -296,6 +301,24 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_19_120000) do
     t.index ["booking_slug"], name: "index_users_on_booking_slug", unique: true
     t.index ["email"], name: "index_users_on_email"
     t.index ["id_roles"], name: "index_users_on_id_roles"
+  end
+
+  create_table "waitlist_entries", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.integer "duration", null: false
+    t.string "email", null: false
+    t.datetime "expires_at", null: false
+    t.datetime "last_digest_at"
+    t.string "name", null: false
+    t.integer "notices_sent", default: 0, null: false
+    t.string "phone"
+    t.integer "provider_id"
+    t.integer "service_id", null: false
+    t.string "unsubscribe_token", null: false
+    t.datetime "updated_at", null: false
+    t.index ["expires_at"], name: "index_waitlist_entries_on_expires_at"
+    t.index ["service_id"], name: "index_waitlist_entries_on_service_id"
+    t.index ["unsubscribe_token"], name: "index_waitlist_entries_on_unsubscribe_token", unique: true
   end
 
   create_table "webhooks", force: :cascade do |t|

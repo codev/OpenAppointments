@@ -765,7 +765,7 @@ bu:
     notification_event_created: Appointment Created
     notification_event_created_or_updated: Appointment Created or Updated
     notification_event_updated: Appointment Updated
-    notification_event_cancelled: Appointment Canceled
+    notification_event_cancelled: Appointment Cancelled
     notification_event_missed: Appointment Missed
     notification_lead_before: Send this long before the appointment
     notification_lead_day_at: Send a number of days before, at a set time
@@ -870,15 +870,15 @@ bu:
     rs_days_first_letter: Su, M, Tu, W, Th, F, Sa
     rs_order: 1st, 2nd, 3rd, 4th, 5th, Last
     notification_cancellation_scope: Send
-    notification_cancellation_all: For all canceled appointments
-    notification_cancellation_in_time: For appointments canceled within the cancellation window
-    notification_cancellation_late: For appointments canceled too late
+    notification_cancellation_all: For all cancelled appointments
+    notification_cancellation_in_time: For appointments cancelled within the cancellation window
+    notification_cancellation_late: For appointments cancelled too late
     notification_cancellation_scope_hint: 'The window is the late cancellation time in Business Logic.'
     minimum_times_before_appointments: 'Minimum Times Before Appointments'
     booking_window: 'Time Before An Appointment A Customer Can Book'
     booking_window_hint: 'Customers cannot book a slot that starts sooner than this.'
     late_window: 'Time Before An Appointment A Customer Can Reschedule/Cancel Before Late Cancellation'
-    late_window_hint: 'Inside this window the customer can only late cancel, which sets the Late Cancel status and keeps the slot free for others. Must not be longer than the booking window.'
+    late_window_hint: 'Inside this window the customer can only late cancel, which sets the Late Cancel status and keeps the slot free for others.'
     status_booked: 'Default for new bookings'
     status_rescheduled: 'Set on the original when a customer reschedules'
     status_cancelled: 'Set when an appointment is cancelled'
@@ -921,3 +921,59 @@ bu:
     display_booking_notice_time_step: "Показване на известието за резервация на стъпката дата/час"
     display_booking_notice_info_step: "Показване на известието за резервация на стъпката данни за клиента"
     booking_notice_content: "Съдържание на известието за резервация"
+    waitlist: "Списък на чакащите"
+    waitlist_signup_title: "Запишете се в списъка на чакащите"
+    waitlist_signup_hint: "Оставете данните си и ще ви уведомим, когато се освободи подходящ час."
+    waitlist_join: "Запишете се в списъка на чакащите"
+    waitlist_joined: "Вие сте в списъка на чакащите. Ще ви уведомим, когато се освободи час."
+    waitlist_already_joined: "Вече сте в списъка на чакащите за тази услуга."
+    waitlist_left: "Бяхте премахнати от списъка на чакащите."
+    waitlist_link_invalid: "Този линк за списъка на чакащите вече не е валиден."
+    fully_booked_notice: "Съобщение за пълна заетост"
+    fully_booked_notice_hint: "Показва се на първите стъпки, когато избраната услуга или изпълнител нямат свободни часове в рамките на прозореца за резервации."
+    fully_booked_notice_default: "Няма свободни часове. Моля, изберете друга услуга или изпълнител, или опитайте отново по-късно."
+    notices: "Съобщения"
+    waitlist_enabled: "Списък на чакащите"
+    waitlist_enabled_hint: "Позволете на клиентите да се записват, за да ги уведомявате при освободен час."
+    waitlist_days: "Дни в списъка"
+    waitlist_days_hint: "Записванията се премахват след този брой дни."
+    waitlist_max_notices: "Съобщения за освободен час на записване"
+    waitlist_max_notices_hint: "Спрете да уведомявате записването за освободени часове след този брой съобщения."
+    waitlist_min_slots: "Свободни часове за дневното съобщение"
+    waitlist_min_slots_hint: "Дневното съобщение се изпраща, когато в рамките на прозореца за резервации са свободни поне толкова часа."
+    waitlist_stagger_seconds: "Секунди между съобщенията"
+    waitlist_stagger_seconds_hint: "Всяко записване се уведомява малко след предходното, първо чакащите най-дълго, за да имат преднина при резервация."
+    notification_event_waitlist_slot_freed: "Списък на чакащите - Освободен час"
+    notification_event_waitlist_daily: "Списък на чакащите - Дневна наличност"
+    waitlist_hint: "Клиенти, които чакат да се освободи час."
+    waitlist_empty: "Няма чакащи."
+    waitlist_signed_up: "Записан на"
+    waitlist_expires: "Изтича"
+    waitlist_messages_sent: "Изпратени съобщения"
+    calendar_feed: "Календарен фийд"
+    calendar_feed_hint: "Абонирайте се за тази връзка във вашето приложение за календар, за да виждате часовете си там. Всеки, който има връзката, може да вижда календара, затова я пазете в тайна и я нулирайте, ако изтече."
+    calendar_feed_link: "Връзка към фийда"
+    calendar_feed_copy: "Копиране на връзката"
+    calendar_feed_copied: "Копирано"
+    calendar_feed_reset: "Нулиране на връзката"
+    calendar_feed_reset_confirm: "Да се нулира ли връзката? Календарните приложения, които използват старата връзка, ще спрат да се обновяват, докато не добавите новата."
+    calendar_feed_google: "Google Calendar: на компютър отворете Google Calendar, до „Други календари“ натиснете плюса, изберете „От URL адрес“, поставете връзката и натиснете „Добавяне на календар“. След това той ще се появи и на телефона ви."
+    calendar_feed_apple: "Apple Calendar: на Mac изберете „Файл“, „Нов абонамент за календар“ и поставете връзката. На iPhone отидете в „Настройки“, „Календар“, „Профили“, „Добавяне на профил“, „Друг“, „Добавяне на абониран календар“."
+    calendar_feed_refresh_note: "Google обновява абонираните календари само на всеки 8 до 24 часа, а Apple - на всеки час, освен ако не го промените, затова за да видите днешните си часове, влизайте тук, вместо да разчитате на приложението за календар."
+    date_display: "Показване на датата"
+    date_display_hint: "Как датите се изписват на страниците и в съобщенията. Числовият формат по-горе се запазва без промяна."
+    time_off: "Свободно време"
+    time_off_hint: "За част от деня въведете часовете на отсъствие. Те се записват като почивка за тези дати."
+    messages_sms_variation: "Промяна на всяко SMS"
+    messages_sms_variation_hint: "Добавя кратък код в края на всяко SMS, така че никои две съобщения да не съвпадат - изискване на някои оператори."
+    merge_customer: "Обединяване с друг клиент"
+    merge_customer_hint: "Въведете имейл или телефонен номер на другия клиент. Часовете и съобщенията на този клиент се прехвърлят към този запис, а този запис се изтрива."
+    merge_customer_button: "Обединяване"
+    merge_customer_confirm: "Обединяване на този клиент с другия запис? Това действие не може да бъде отменено."
+    merge_customer_not_found: "Няма друг клиент с този имейл или телефонен номер."
+    customer_merged: "Клиентите са обединени"
+    provider_color_hint: "Използва се за часовете на този изпълнител, когато календарят показва всички."
+    other_emails: "Други имейли"
+    other_emails_hint: "По един на ред. Резервации и съобщения от всеки от тези адреси принадлежат на този клиент."
+    other_phones: "Други телефонни номера"
+    other_phones_hint: "По един на ред. Резервации и съобщения от всеки от тези номера принадлежат на този клиент."

@@ -765,7 +765,7 @@ pt:
     notification_event_created: Appointment Created
     notification_event_created_or_updated: Appointment Created or Updated
     notification_event_updated: Appointment Updated
-    notification_event_cancelled: Appointment Canceled
+    notification_event_cancelled: Appointment Cancelled
     notification_event_missed: Appointment Missed
     notification_lead_before: Send this long before the appointment
     notification_lead_day_at: Send a number of days before, at a set time
@@ -870,15 +870,15 @@ pt:
     rs_days_first_letter: Su, M, Tu, W, Th, F, Sa
     rs_order: 1st, 2nd, 3rd, 4th, 5th, Last
     notification_cancellation_scope: Send
-    notification_cancellation_all: For all canceled appointments
-    notification_cancellation_in_time: For appointments canceled within the cancellation window
-    notification_cancellation_late: For appointments canceled too late
+    notification_cancellation_all: For all cancelled appointments
+    notification_cancellation_in_time: For appointments cancelled within the cancellation window
+    notification_cancellation_late: For appointments cancelled too late
     notification_cancellation_scope_hint: 'The window is the late cancellation time in Business Logic.'
     minimum_times_before_appointments: 'Minimum Times Before Appointments'
     booking_window: 'Time Before An Appointment A Customer Can Book'
     booking_window_hint: 'Customers cannot book a slot that starts sooner than this.'
     late_window: 'Time Before An Appointment A Customer Can Reschedule/Cancel Before Late Cancellation'
-    late_window_hint: 'Inside this window the customer can only late cancel, which sets the Late Cancel status and keeps the slot free for others. Must not be longer than the booking window.'
+    late_window_hint: 'Inside this window the customer can only late cancel, which sets the Late Cancel status and keeps the slot free for others.'
     status_booked: 'Default for new bookings'
     status_rescheduled: 'Set on the original when a customer reschedules'
     status_cancelled: 'Set when an appointment is cancelled'
@@ -921,3 +921,59 @@ pt:
     display_booking_notice_time_step: "Mostrar o aviso de marcação no passo de data/hora"
     display_booking_notice_info_step: "Mostrar o aviso de marcação no passo de dados do cliente"
     booking_notice_content: "Conteúdo do aviso de marcação"
+    waitlist: "Lista de espera"
+    waitlist_signup_title: "Juntar-se à lista de espera"
+    waitlist_signup_hint: "Deixe os seus dados e avisamo-lo assim que uma marcação adequada estiver disponível."
+    waitlist_join: "Juntar-se à lista de espera"
+    waitlist_joined: "Está na lista de espera. Avisamo-lo assim que uma marcação estiver disponível."
+    waitlist_already_joined: "Já está na lista de espera para este serviço."
+    waitlist_left: "Foi removido da lista de espera."
+    waitlist_link_invalid: "Esta ligação da lista de espera já não é válida."
+    fully_booked_notice: "Aviso de agenda completa"
+    fully_booked_notice_hint: "Mostrado nos primeiros passos quando o serviço ou prestador escolhido não tem marcações livres dentro do prazo de marcação."
+    fully_booked_notice_default: "Não há marcações disponíveis. Tente um serviço ou prestador diferente ou tente novamente mais tarde."
+    notices: "Avisos"
+    waitlist_enabled: "Lista de espera"
+    waitlist_enabled_hint: "Permite que os clientes se inscrevam para serem avisados quando uma marcação ficar livre."
+    waitlist_days: "Dias na lista"
+    waitlist_days_hint: "As inscrições são removidas passado este número de dias."
+    waitlist_max_notices: "Mensagens de vaga libertada por inscrição"
+    waitlist_max_notices_hint: "Deixar de avisar uma inscrição sobre vagas libertadas após este número de mensagens."
+    waitlist_min_slots: "Vagas livres para a mensagem diária"
+    waitlist_min_slots_hint: "A mensagem diária é enviada quando há pelo menos este número de marcações livres dentro do prazo de marcação."
+    waitlist_stagger_seconds: "Segundos entre mensagens"
+    waitlist_stagger_seconds_hint: "Cada inscrição é avisada um pouco depois da anterior, começando por quem está à espera há mais tempo, para lhe dar avanço na marcação."
+    notification_event_waitlist_slot_freed: "Lista de espera - Vaga libertada"
+    notification_event_waitlist_daily: "Lista de espera - Disponibilidade diária"
+    waitlist_hint: "Clientes à espera que uma marcação fique livre."
+    waitlist_empty: "Ninguém está à espera."
+    waitlist_signed_up: "Inscrito"
+    waitlist_expires: "Expira"
+    waitlist_messages_sent: "Mensagens enviadas"
+    calendar_feed: "Feed do calendário"
+    calendar_feed_hint: "Subscreva este link na sua própria aplicação de calendário para ver ali os seus compromissos. Qualquer pessoa com o link pode ver o calendário, por isso mantenha-o privado e reinicie-o se for divulgado."
+    calendar_feed_link: "Link do feed"
+    calendar_feed_copy: "Copiar link"
+    calendar_feed_copied: "Copiado"
+    calendar_feed_reset: "Reiniciar link"
+    calendar_feed_reset_confirm: "Reiniciar o link? As aplicações de calendário que usam o link antigo deixarão de se atualizar até adicionar o novo."
+    calendar_feed_google: "Google Calendar: num portátil abra o Google Calendar, junto a Outros calendários clique no sinal de mais, escolha A partir do URL, cole o link e clique em Adicionar calendário. Também aparece no seu telemóvel."
+    calendar_feed_apple: "Apple Calendar: num Mac escolha Ficheiro, Nova subscrição de calendário e cole o link. Num iPhone vá a Definições, Calendário, Contas, Adicionar conta, Outra, Adicionar calendário subscrito."
+    calendar_feed_refresh_note: "O Google só atualiza os calendários subscritos a cada 8 a 24 horas, e a Apple a cada hora salvo alteração, por isso, para ver os compromissos de hoje, inicie sessão aqui em vez de confiar na sua aplicação de calendário."
+    date_display: "Apresentação da data"
+    date_display_hint: "Como as datas são escritas nas páginas e nas mensagens. Os campos de data mantêm o formato numérico acima."
+    time_off: "Ausência"
+    time_off_hint: "Para uma ausência de parte de um dia, indique as horas em que estará fora. São guardadas como uma pausa nessas datas."
+    messages_sms_variation: "Variar cada SMS"
+    messages_sms_variation_hint: "Adiciona um pequeno código de referência ao fim de cada SMS para que não haja dois textos iguais, o que algumas operadoras exigem."
+    merge_customer: "Fundir com outro cliente"
+    merge_customer_hint: "Introduza o email ou número de telefone do outro cliente. Os eventos e mensagens deste cliente serão movidos para esse registo e este registo será eliminado."
+    merge_customer_button: "Fundir"
+    merge_customer_confirm: "Fundir este cliente com o outro registo? Não será possível voltar atrás."
+    merge_customer_not_found: "Nenhum outro cliente tem esse email ou número de telefone."
+    customer_merged: "Clientes fundidos"
+    provider_color_hint: "Utilizada para os eventos deste fornecedor quando o calendário mostra todos."
+    other_emails: "Outros emails"
+    other_emails_hint: "Um por linha. As reservas e mensagens de qualquer um destes endereços pertencem a este cliente."
+    other_phones: "Outros números de telefone"
+    other_phones_hint: "Um por linha. As reservas e mensagens de qualquer um destes números pertencem a este cliente."

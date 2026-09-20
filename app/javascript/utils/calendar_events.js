@@ -510,12 +510,14 @@ App.Utils.CalendarEvents = (function () {
     /**
      * @param {Array} appointments
      * @param {string} titleBy 'service' or 'provider', shown after the customer name.
+     * @param {boolean} byProvider colour by the provider (everyone's calendar) instead of the appointment.
      * @returns {Array}
      */
-    function appointmentEvents(appointments, titleBy = 'service') {
+    function appointmentEvents(appointments, titleBy = 'service', byProvider = false) {
         return appointments.map((appointment) => {
             const detail = titleBy === 'provider' ? appointment.provider.name : appointment.service.name;
             const title = appointment.customer.name ? appointment.customer.name + ' - ' + detail : detail;
+            const color = (byProvider && appointment.provider.color) || appointment.color || COLORS.default;
 
             return {
                 id: appointment.id,
@@ -523,12 +525,30 @@ App.Utils.CalendarEvents = (function () {
                 start: moment(appointment.start_datetime).toDate(),
                 end: moment(appointment.end_datetime).toDate(),
                 allDay: false,
-                color: appointment.color,
+                ...eventColors(color),
                 data: appointment,
                 display: 'block',
                 className: appointment.frees_slot ? 'fc-freed-slot' : '',
             };
         });
+    }
+
+    // A solid colour on the left edge over a light tint keeps dark text readable.
+    function eventColors(color) {
+        return {
+            backgroundColor: tint(color),
+            borderColor: color,
+            textColor: '#212529',
+        };
+    }
+
+    function tint(color) {
+        const hex = color.replace('#', '');
+        if (hex.length !== 6) {
+            return color;
+        }
+        const [r, g, b] = [0, 2, 4].map((i) => parseInt(hex.substr(i, 2), 16));
+        return `rgba(${r}, ${g}, ${b}, 0.28)`;
     }
 
     function unavailabilityEvents(unavailabilities) {

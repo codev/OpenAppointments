@@ -50,7 +50,7 @@ class AccountController < ApplicationController
 
     session[:user_email] = user.email
     session[:username] = settings.username
-    session[:timezone] = user.timezone
+    session[:timezone] = user.effective_timezone
     session[:language] = user.language
 
     params[:form].present? ? redirect_to("/account", notice: helpers.lang("settings_saved")) : render(json: { success: true })

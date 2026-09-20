@@ -152,4 +152,27 @@ class ProvidersFormTest < ApplicationSystemTestCase
     assert_text "Provider saved", wait: 5
     assert_equal 1, WorkingPlanException.where(id_users_provider: users(:zane).id).count
   end
+
+  test "time off in the exception dialog is saved as a break on those dates" do
+    login_as_admin
+    visit providers_url
+    find(".provider-row", text: "Zane").click
+    assert_selector "#providers-page.editing", wait: 5
+    click_on "Working Plan"
+    assert_selector "#working-plan.active", wait: 5
+    click_on I18n.t("ea.add_available_exception")
+    assert_selector "#working-plan-exceptions-modal", visible: true, wait: 5
+    within("#working-plan-exceptions-modal") do
+      find("#working-plan-exceptions-start-date").set("02/09/2026\t")
+      find("#working-plan-exceptions-end-date").set("02/09/2026\t")
+      find("#working-plan-exceptions-time-off-start").set("1:00 pm\t")
+      find("#working-plan-exceptions-time-off-end").set("5:00 pm\t")
+      find("#working-plan-exceptions-save").click
+    end
+    assert_selector "table.working-plan-exceptions tbody tr", count: 1, wait: 5
+    click_on "Save"
+    assert_text "Provider saved", wait: 5
+    exception = WorkingPlanException.where(id_users_provider: users(:zane).id).sole
+    assert_equal [ { "start" => "13:00", "end" => "17:00" } ], exception.break_list
+  end
 end

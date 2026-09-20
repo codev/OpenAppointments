@@ -25,7 +25,7 @@
             <% messages.each do |message| %>
                 <% unread = message.direction == "incoming" && !message.read? %>
                 <tr class="<%= 'message-unread fw-bold' if inbox && unread %>">
-                    <td class="text-nowrap"><%= format_appointment_datetime(message.created_at, format_settings) %></td>
+                    <td class="text-nowrap"><%= display_datetime(message.created_at) %></td>
                     <td>
                         <% if message.direction == "incoming" %>
                             <i class="fas fa-arrow-down text-success" title="<%= lang('messages_incoming_label') %>"></i>

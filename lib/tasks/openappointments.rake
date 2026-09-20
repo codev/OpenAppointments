@@ -36,6 +36,11 @@ namespace :openappointments do
     puts "Reminder scan complete."
   end
 
+  desc "Waiting list daily availability notices (cron target)"
+  task waitlist: :environment do
+    Waitlist.scan_daily
+  end
+
   desc "Fetch unread incoming email over IMAP into Action Mailbox (cron target)"
   task fetch_mail: :environment do
     FetchImapEmailsJob.perform_now

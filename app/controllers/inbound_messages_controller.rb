@@ -71,6 +71,6 @@ class InboundMessagesController < ActionController::Base
   end
 
   def match_customer(from)
-    User.customers.where(phone_number: from).or(User.customers.where(mobile_number: from)).first
+    User.customer_by_phone(from)
   end
 end

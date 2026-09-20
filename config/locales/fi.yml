@@ -765,7 +765,7 @@ fi:
     notification_event_created: Appointment Created
     notification_event_created_or_updated: Appointment Created or Updated
     notification_event_updated: Appointment Updated
-    notification_event_cancelled: Appointment Canceled
+    notification_event_cancelled: Appointment Cancelled
     notification_event_missed: Appointment Missed
     notification_lead_before: Send this long before the appointment
     notification_lead_day_at: Send a number of days before, at a set time
@@ -870,15 +870,15 @@ fi:
     rs_days_first_letter: Su, M, Tu, W, Th, F, Sa
     rs_order: 1st, 2nd, 3rd, 4th, 5th, Last
     notification_cancellation_scope: Send
-    notification_cancellation_all: For all canceled appointments
-    notification_cancellation_in_time: For appointments canceled within the cancellation window
-    notification_cancellation_late: For appointments canceled too late
+    notification_cancellation_all: For all cancelled appointments
+    notification_cancellation_in_time: For appointments cancelled within the cancellation window
+    notification_cancellation_late: For appointments cancelled too late
     notification_cancellation_scope_hint: 'The window is the late cancellation time in Business Logic.'
     minimum_times_before_appointments: 'Minimum Times Before Appointments'
     booking_window: 'Time Before An Appointment A Customer Can Book'
     booking_window_hint: 'Customers cannot book a slot that starts sooner than this.'
     late_window: 'Time Before An Appointment A Customer Can Reschedule/Cancel Before Late Cancellation'
-    late_window_hint: 'Inside this window the customer can only late cancel, which sets the Late Cancel status and keeps the slot free for others. Must not be longer than the booking window.'
+    late_window_hint: 'Inside this window the customer can only late cancel, which sets the Late Cancel status and keeps the slot free for others.'
     status_booked: 'Default for new bookings'
     status_rescheduled: 'Set on the original when a customer reschedules'
     status_cancelled: 'Set when an appointment is cancelled'
@@ -921,3 +921,59 @@ fi:
     display_booking_notice_time_step: "Näytä varausilmoitus päivämäärä/aika-vaiheessa"
     display_booking_notice_info_step: "Näytä varausilmoitus asiakastiedot-vaiheessa"
     booking_notice_content: "Varausilmoituksen sisältö"
+    waitlist: "Jonotuslista"
+    waitlist_signup_title: "Liity jonotuslistalle"
+    waitlist_signup_hint: "Jätä yhteystietosi, niin ilmoitamme sinulle, kun sopiva aika vapautuu."
+    waitlist_join: "Liity jonotuslistalle"
+    waitlist_joined: "Olet jonotuslistalla. Ilmoitamme sinulle, kun aika vapautuu."
+    waitlist_already_joined: "Olet jo tämän palvelun jonotuslistalla."
+    waitlist_left: "Sinut on poistettu jonotuslistalta."
+    waitlist_link_invalid: "Tämä jonotuslistan linkki ei ole enää voimassa."
+    fully_booked_notice: "Täyteen varattu -ilmoitus"
+    fully_booked_notice_hint: "Näytetään ensimmäisissä vaiheissa, kun valitulla palvelulla tai henkilöllä ei ole vapaita aikoja varausikkunan sisällä."
+    fully_booked_notice_default: "Vapaita aikoja ei ole. Kokeile toista palvelua tai henkilöä tai yritä myöhemmin uudelleen."
+    notices: "Ilmoitukset"
+    waitlist_enabled: "Jonotuslista"
+    waitlist_enabled_hint: "Anna asiakkaiden liittyä jonoon saadakseen ilmoituksen, kun aika vapautuu."
+    waitlist_days: "Päiviä listalla"
+    waitlist_days_hint: "Ilmoittautumiset poistetaan tämän monen päivän kuluttua."
+    waitlist_max_notices: "Vapautuneen ajan viestejä per ilmoittautuminen"
+    waitlist_max_notices_hint: "Lopeta ilmoittautuneelle vapautuneista ajoista kertominen tämän monen viestin jälkeen."
+    waitlist_min_slots: "Vapaita aikoja päivittäistä viestiä varten"
+    waitlist_min_slots_hint: "Päivittäinen viesti lähetetään, kun vähintään näin monta aikaa on vapaana varausikkunan sisällä."
+    waitlist_stagger_seconds: "Sekuntia viestien välillä"
+    waitlist_stagger_seconds_hint: "Jokainen ilmoittautunut saa tiedon hieman edellistä myöhemmin, pisimpään odottanut ensin, jotta hän saa etumatkan varaamisessa."
+    notification_event_waitlist_slot_freed: "Jonotuslista - Aika vapautui"
+    notification_event_waitlist_daily: "Jonotuslista - Päivittäinen saatavuus"
+    waitlist_hint: "Asiakkaat, jotka odottavat ajan vapautumista."
+    waitlist_empty: "Kukaan ei odota."
+    waitlist_signed_up: "Ilmoittautunut"
+    waitlist_expires: "Vanhenee"
+    waitlist_messages_sent: "Viestejä lähetetty"
+    calendar_feed: "Kalenterisyöte"
+    calendar_feed_hint: "Tilaa tämä linkki omaan kalenterisovellukseesi nähdäksesi varauksesi siellä. Kuka tahansa linkin saanut näkee kalenterin, joten pidä se yksityisenä ja nollaa se, jos se päätyy vääriin käsiin."
+    calendar_feed_link: "Syötteen linkki"
+    calendar_feed_copy: "Kopioi linkki"
+    calendar_feed_copied: "Kopioitu"
+    calendar_feed_reset: "Nollaa linkki"
+    calendar_feed_reset_confirm: "Nollataanko linkki? Vanhaa linkkiä käyttävät kalenterisovellukset lakkaavat päivittymästä, kunnes lisäät uuden."
+    calendar_feed_google: "Google-kalenteri: avaa Google-kalenteri tietokoneella, napsauta plus-merkkiä Muut kalenterit -kohdan vieressä, valitse Osoitteesta (URL), liitä linkki ja napsauta Lisää kalenteri. Se näkyy sitten myös puhelimessasi."
+    calendar_feed_apple: "Apple-kalenteri: valitse Macilla Arkisto, Uusi kalenteritilaus ja liitä linkki. iPhonessa siirry kohtaan Asetukset, Kalenteri, Tilit, Lisää tili, Muu, Lisää tilattu kalenteri."
+    calendar_feed_refresh_note: "Google päivittää tilatut kalenterit vain 8–24 tunnin välein ja Apple joka tunti, ellet muuta sitä, joten nähdäksesi tämän päivän varaukset kirjaudu tänne kalenterisovelluksen sijaan."
+    date_display: "Päivämäärän näyttö"
+    date_display_hint: "Miten päivämäärät kirjoitetaan sivuilla ja viesteissä. Päivämääräkentät säilyttävät yllä olevan numeromuodon."
+    time_off: "Vapaa"
+    time_off_hint: "Jos kyseessä on osa päivästä, syötä tunnit, jolloin olet poissa. Ne tallennetaan taukona näille päiville."
+    messages_sms_variation: "Vaihtele jokaista tekstiviestiä"
+    messages_sms_variation_hint: "Lisää lyhyen viitekoodin jokaisen tekstiviestin loppuun, jotta mitkään kaksi viestiä eivät ole samanlaisia, mitä jotkin operaattorit vaativat."
+    merge_customer: "Yhdistä toiseen asiakkaaseen"
+    merge_customer_hint: "Syötä toisen asiakkaan sähköposti tai puhelinnumero. Tämän asiakkaan varaukset ja viestit siirtyvät kyseiseen tietueeseen, ja tämä tietue poistetaan."
+    merge_customer_button: "Yhdistä"
+    merge_customer_confirm: "Yhdistetäänkö tämä asiakas toiseen tietueeseen? Tätä ei voi perua."
+    merge_customer_not_found: "Millään toisella asiakkaalla ei ole tätä sähköpostia tai puhelinnumeroa."
+    customer_merged: "Asiakkaat yhdistetty"
+    provider_color_hint: "Käytetään tämän palveluntuottajan varauksille, kun kalenteri näyttää kaikki."
+    other_emails: "Muut sähköpostiosoitteet"
+    other_emails_hint: "Yksi per rivi. Varaukset ja viestit näistä osoitteista kuuluvat tälle asiakkaalle."
+    other_phones: "Muut puhelinnumerot"
+    other_phones_hint: "Yksi per rivi. Varaukset ja viestit näistä numeroista kuuluvat tälle asiakkaalle."

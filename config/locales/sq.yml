@@ -765,7 +765,7 @@ sq:
     notification_event_created: Appointment Created
     notification_event_created_or_updated: Appointment Created or Updated
     notification_event_updated: Appointment Updated
-    notification_event_cancelled: Appointment Canceled
+    notification_event_cancelled: Appointment Cancelled
     notification_event_missed: Appointment Missed
     notification_lead_before: Send this long before the appointment
     notification_lead_day_at: Send a number of days before, at a set time
@@ -870,15 +870,15 @@ sq:
     rs_days_first_letter: Su, M, Tu, W, Th, F, Sa
     rs_order: 1st, 2nd, 3rd, 4th, 5th, Last
     notification_cancellation_scope: Send
-    notification_cancellation_all: For all canceled appointments
-    notification_cancellation_in_time: For appointments canceled within the cancellation window
-    notification_cancellation_late: For appointments canceled too late
+    notification_cancellation_all: For all cancelled appointments
+    notification_cancellation_in_time: For appointments cancelled within the cancellation window
+    notification_cancellation_late: For appointments cancelled too late
     notification_cancellation_scope_hint: 'The window is the late cancellation time in Business Logic.'
     minimum_times_before_appointments: 'Minimum Times Before Appointments'
     booking_window: 'Time Before An Appointment A Customer Can Book'
     booking_window_hint: 'Customers cannot book a slot that starts sooner than this.'
     late_window: 'Time Before An Appointment A Customer Can Reschedule/Cancel Before Late Cancellation'
-    late_window_hint: 'Inside this window the customer can only late cancel, which sets the Late Cancel status and keeps the slot free for others. Must not be longer than the booking window.'
+    late_window_hint: 'Inside this window the customer can only late cancel, which sets the Late Cancel status and keeps the slot free for others.'
     status_booked: 'Default for new bookings'
     status_rescheduled: 'Set on the original when a customer reschedules'
     status_cancelled: 'Set when an appointment is cancelled'
@@ -921,3 +921,59 @@ sq:
     display_booking_notice_time_step: "Shfaq njoftimin e rezervimit në hapin data/ora"
     display_booking_notice_info_step: "Shfaq njoftimin e rezervimit në hapin të dhënat e klientit"
     booking_notice_content: "Përmbajtja e njoftimit të rezervimit"
+    waitlist: "Lista e pritjes"
+    waitlist_signup_title: "Bashkohuni me listën e pritjes"
+    waitlist_signup_hint: "Lini të dhënat tuaja dhe ne do t'ju njoftojmë kur të lirohet një takim i përshtatshëm."
+    waitlist_join: "Bashkohuni me listën e pritjes"
+    waitlist_joined: "Jeni në listën e pritjes. Do t'ju njoftojmë kur të lirohet një takim."
+    waitlist_already_joined: "Jeni tashmë në listën e pritjes për këtë shërbim."
+    waitlist_left: "Jeni hequr nga lista e pritjes."
+    waitlist_link_invalid: "Ky lidhje për listën e pritjes nuk është më e vlefshme."
+    fully_booked_notice: "Njoftim për plotësim"
+    fully_booked_notice_hint: "Shfaqet në hapat e parë kur shërbimi ose ofruesi i zgjedhur nuk ka takime të lira brenda dritares së rezervimit."
+    fully_booked_notice_default: "Nuk ka takime të disponueshme. Ju lutemi provoni një shërbim ose ofrues tjetër, ose provoni përsëri më vonë."
+    notices: "Njoftime"
+    waitlist_enabled: "Lista e pritjes"
+    waitlist_enabled_hint: "Lejoni klientët të regjistrohen për t'u njoftuar kur një takim lirohet."
+    waitlist_days: "Ditë në listë"
+    waitlist_days_hint: "Regjistrimet hiqen pas këtij numri ditësh."
+    waitlist_max_notices: "Mesazhe për takim të liruar për regjistrim"
+    waitlist_max_notices_hint: "Ndaloni njoftimin e regjistrimit për takime të liruara pas këtij numri mesazhesh."
+    waitlist_min_slots: "Takime të lira për mesazhin ditor"
+    waitlist_min_slots_hint: "Mesazhi ditor dërgohet kur brenda dritares së rezervimit janë të lira të paktën kaq shumë takime."
+    waitlist_stagger_seconds: "Sekonda ndërmjet mesazheve"
+    waitlist_stagger_seconds_hint: "Çdo regjistrimi i dërgohet mesazhi pak pas atij para tij, duke filluar me atë që ka pritur më gjatë, që të kenë përparësi në rezervim."
+    notification_event_waitlist_slot_freed: "Lista e pritjes - Takim i liruar"
+    notification_event_waitlist_daily: "Lista e pritjes - Disponueshmëria ditore"
+    waitlist_hint: "Klientët që presin lirimin e një takimi."
+    waitlist_empty: "Askush nuk po pret."
+    waitlist_signed_up: "Regjistruar"
+    waitlist_expires: "Skadon"
+    waitlist_messages_sent: "Mesazhe të dërguara"
+    calendar_feed: "Feed i kalendarit"
+    calendar_feed_hint: "Abonohuni në këtë lidhje në aplikacionin tuaj të kalendarit për të parë atje takimet tuaja. Kushdo që ka lidhjen mund ta shohë kalendarin, prandaj mbajeni private dhe rivendoseni nëse bëhet publike."
+    calendar_feed_link: "Lidhja e feed-it"
+    calendar_feed_copy: "Kopjo lidhjen"
+    calendar_feed_copied: "U kopjua"
+    calendar_feed_reset: "Rivendos lidhjen"
+    calendar_feed_reset_confirm: "Ta rivendosim lidhjen? Aplikacionet e kalendarit që përdorin lidhjen e vjetër do të ndalojnë së përditësuari derisa të shtoni të renë."
+    calendar_feed_google: "Google Calendar: në kompjuter hapni Google Calendar, pranë Other calendars klikoni shenjën plus, zgjidhni From URL, ngjitni lidhjen dhe klikoni Add calendar. Pas kësaj shfaqet edhe në telefonin tuaj."
+    calendar_feed_apple: "Apple Calendar: në Mac zgjidhni File, New Calendar Subscription dhe ngjitni lidhjen. Në iPhone shkoni te Settings, Calendar, Accounts, Add Account, Other, Add Subscribed Calendar."
+    calendar_feed_refresh_note: "Google i rifreskon kalendarët e abonuar vetëm çdo 8 deri në 24 orë, kurse Apple çdo orë, nëse nuk e ndryshoni, prandaj për të parë takimet e sotme hyni këtu në vend që të mbështeteni te aplikacioni i kalendarit."
+    date_display: "Shfaqja e datës"
+    date_display_hint: "Si shkruhen datat në faqe dhe në mesazhe. Formati numerik më sipër mbetet i pandryshuar."
+    time_off: "Pushim"
+    time_off_hint: "Për një pjesë të ditës, vendosni orët kur mungoni. Ato ruhen si pauzë në ato data."
+    messages_sms_variation: "Ndrysho çdo SMS"
+    messages_sms_variation_hint: "Shton një kod të shkurtër referimi në fund të çdo SMS-je, në mënyrë që asnjë dy mesazhe të mos jenë njësoj, gjë që kërkohet nga disa operatorë."
+    merge_customer: "Bashko me një klient tjetër"
+    merge_customer_hint: "Vendosni email-in ose numrin e telefonit të klientit tjetër. Takimet dhe mesazhet e këtij klienti kalojnë tek ai rekord dhe ky rekord fshihet."
+    merge_customer_button: "Bashko"
+    merge_customer_confirm: "Të bashkohet ky klient me rekordin tjetër? Kjo nuk mund të zhbëhet."
+    merge_customer_not_found: "Asnjë klient tjetër nuk ka atë email ose numër telefoni."
+    customer_merged: "Klientët u bashkuan"
+    provider_color_hint: "Përdoret për takimet e këtij ofruesi kur kalendari shfaq të gjithë."
+    other_emails: "Email-e të tjerë"
+    other_emails_hint: "Një për rresht. Rezervimet dhe mesazhet nga secila prej këtyre adresave i përkasin këtij klienti."
+    other_phones: "Numra të tjerë telefoni"
+    other_phones_hint: "Një për rresht. Rezervimet dhe mesazhet nga secili prej këtyre numrave i përkasin këtij klienti."

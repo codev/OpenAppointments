@@ -765,7 +765,7 @@ ro:
     notification_event_created: Appointment Created
     notification_event_created_or_updated: Appointment Created or Updated
     notification_event_updated: Appointment Updated
-    notification_event_cancelled: Appointment Canceled
+    notification_event_cancelled: Appointment Cancelled
     notification_event_missed: Appointment Missed
     notification_lead_before: Send this long before the appointment
     notification_lead_day_at: Send a number of days before, at a set time
@@ -870,15 +870,15 @@ ro:
     rs_days_first_letter: Su, M, Tu, W, Th, F, Sa
     rs_order: 1st, 2nd, 3rd, 4th, 5th, Last
     notification_cancellation_scope: Send
-    notification_cancellation_all: For all canceled appointments
-    notification_cancellation_in_time: For appointments canceled within the cancellation window
-    notification_cancellation_late: For appointments canceled too late
+    notification_cancellation_all: For all cancelled appointments
+    notification_cancellation_in_time: For appointments cancelled within the cancellation window
+    notification_cancellation_late: For appointments cancelled too late
     notification_cancellation_scope_hint: 'The window is the late cancellation time in Business Logic.'
     minimum_times_before_appointments: 'Minimum Times Before Appointments'
     booking_window: 'Time Before An Appointment A Customer Can Book'
     booking_window_hint: 'Customers cannot book a slot that starts sooner than this.'
     late_window: 'Time Before An Appointment A Customer Can Reschedule/Cancel Before Late Cancellation'
-    late_window_hint: 'Inside this window the customer can only late cancel, which sets the Late Cancel status and keeps the slot free for others. Must not be longer than the booking window.'
+    late_window_hint: 'Inside this window the customer can only late cancel, which sets the Late Cancel status and keeps the slot free for others.'
     status_booked: 'Default for new bookings'
     status_rescheduled: 'Set on the original when a customer reschedules'
     status_cancelled: 'Set when an appointment is cancelled'
@@ -921,3 +921,59 @@ ro:
     display_booking_notice_time_step: "Afișează notificarea de rezervare la pasul dată/oră"
     display_booking_notice_info_step: "Afișează notificarea de rezervare la pasul date client"
     booking_notice_content: "Conținutul notificării de rezervare"
+    waitlist: "Listă de așteptare"
+    waitlist_signup_title: "Alătură-te listei de așteptare"
+    waitlist_signup_hint: "Lasă-ne datele tale și te vom anunța când se eliberează o programare potrivită."
+    waitlist_join: "Alătură-te listei de așteptare"
+    waitlist_joined: "Ești pe lista de așteptare. Te vom anunța când se eliberează o programare."
+    waitlist_already_joined: "Ești deja pe lista de așteptare pentru acest serviciu."
+    waitlist_left: "Ai fost eliminat de pe lista de așteptare."
+    waitlist_link_invalid: "Acest link pentru lista de așteptare nu mai este valabil."
+    fully_booked_notice: "Mesaj complet rezervat"
+    fully_booked_notice_hint: "Este afișat la primii pași atunci când serviciul sau furnizorul ales nu are programări libere în intervalul de rezervare."
+    fully_booked_notice_default: "Nu există programări disponibile. Încercați un alt serviciu sau furnizor, sau reveniți mai târziu."
+    notices: "Mesaje"
+    waitlist_enabled: "Listă de așteptare"
+    waitlist_enabled_hint: "Permiteți clienților să se înscrie pentru a fi anunțați când se eliberează o programare."
+    waitlist_days: "Zile pe listă"
+    waitlist_days_hint: "Înscrierile sunt eliminate după acest număr de zile."
+    waitlist_max_notices: "Mesaje despre programări eliberate per înscriere"
+    waitlist_max_notices_hint: "Nu mai anunțați o înscriere despre programări eliberate după acest număr de mesaje."
+    waitlist_min_slots: "Programări libere pentru mesajul zilnic"
+    waitlist_min_slots_hint: "Mesajul zilnic este trimis când există cel puțin acest număr de programări libere în intervalul de rezervare."
+    waitlist_stagger_seconds: "Secunde între mesaje"
+    waitlist_stagger_seconds_hint: "Fiecare înscriere este anunțată puțin după cea anterioară, cei care așteaptă cel mai mult fiind anunțați primii, pentru a avea un avans la rezervare."
+    notification_event_waitlist_slot_freed: "Listă de așteptare - Programare eliberată"
+    notification_event_waitlist_daily: "Listă de așteptare - Disponibilitate zilnică"
+    waitlist_hint: "Clienți care așteaptă eliberarea unei programări."
+    waitlist_empty: "Nimeni nu așteaptă."
+    waitlist_signed_up: "Înscris"
+    waitlist_expires: "Expiră"
+    waitlist_messages_sent: "Mesaje trimise"
+    calendar_feed: "Flux de calendar"
+    calendar_feed_hint: "Abonați-vă la acest link în propria aplicație de calendar pentru a vă vedea întâlnirile acolo. Oricine are linkul poate vedea calendarul, așa că păstrați-l privat și resetați-l dacă ajunge la alte persoane."
+    calendar_feed_link: "Link flux"
+    calendar_feed_copy: "Copiază linkul"
+    calendar_feed_copied: "Copiat"
+    calendar_feed_reset: "Resetează linkul"
+    calendar_feed_reset_confirm: "Resetați linkul? Aplicațiile de calendar care folosesc vechiul link vor înceta să se actualizeze până când adăugați unul nou."
+    calendar_feed_google: "Google Calendar: pe laptop deschideți Google Calendar, lângă Alte calendare faceți clic pe semnul plus, alegeți Din URL, lipiți linkul și faceți clic pe Adăugare calendar. Va apărea apoi și pe telefon."
+    calendar_feed_apple: "Apple Calendar: pe un Mac alegeți Fișier, Abonament nou la calendar și lipiți linkul. Pe un iPhone accesați Setări, Calendar, Conturi, Adăugare cont, Altele, Adăugare calendar abonat."
+    calendar_feed_refresh_note: "Google actualizează calendarele abonate doar la fiecare 8 până la 24 de ore, iar Apple în fiecare oră, dacă nu modificați asta, așa că pentru a vedea întâlnirile de azi, conectați-vă aici în loc să vă bazați pe aplicația de calendar."
+    date_display: "Afișarea datei"
+    date_display_hint: "Modul în care sunt scrise datele pe pagini și în mesaje. Câmpurile de dată păstrează formatul numeric de mai sus."
+    time_off: "Timp liber"
+    time_off_hint: "Pentru o parte dintr-o zi liberă, introduceți orele în care lipsiți. Acestea sunt salvate ca pauză în acele date."
+    messages_sms_variation: "Variază fiecare SMS"
+    messages_sms_variation_hint: "Adaugă un cod de referință scurt la finalul fiecărui SMS, astfel încât niciun mesaj să nu fie identic, lucru cerut de unele rețele."
+    merge_customer: "Îmbină cu un alt client"
+    merge_customer_hint: "Introduceți e-mailul sau numărul de telefon al celuilalt client. Întâlnirile și mesajele acestui client vor fi mutate în acea înregistrare, iar această înregistrare va fi ștearsă."
+    merge_customer_button: "Îmbină"
+    merge_customer_confirm: "Îmbinați acest client cu cealaltă înregistrare? Această acțiune nu poate fi anulată."
+    merge_customer_not_found: "Niciun alt client nu are acest e-mail sau număr de telefon."
+    customer_merged: "Clienți îmbinați"
+    provider_color_hint: "Folosit pentru întâlnirile acestui furnizor atunci când calendarul îi afișează pe toți."
+    other_emails: "Alte adrese de email"
+    other_emails_hint: "Una pe linie. Întâlnirile și mesajele de la oricare dintre aceste adrese aparțin acestui client."
+    other_phones: "Alte numere de telefon"
+    other_phones_hint: "Unul pe linie. Întâlnirile și mesajele de la oricare dintre aceste numere aparțin acestui client."

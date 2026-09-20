@@ -1,0 +1,27 @@
+<%# Calendar feed dialog: the selected provider's subscription link with copy
+    and reset, and how to add it to Google and Apple Calendar. %>
+<div class="modal fade" id="calendar-feed-modal" tabindex="-1" aria-labelledby="calendar-feed-title">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="calendar-feed-title"><%= lang('calendar_feed') %></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="<%= lang('close') %>"></button>
+            </div>
+            <div class="modal-body">
+                <p><%= lang('calendar_feed_hint') %></p>
+                <label for="calendar-feed-link" class="form-label"><%= lang('calendar_feed_link') %></label>
+                <div class="input-group mb-4">
+                    <input type="text" id="calendar-feed-link" class="form-control" readonly>
+                    <button type="button" id="calendar-feed-copy" class="btn btn-outline-primary"
+                            data-label="<%= lang('calendar_feed_copy') %>" data-copied="<%= lang('calendar_feed_copied') %>">
+                        <%= lang('calendar_feed_copy') %>
+                    </button>
+                    <button type="button" id="calendar-feed-reset" class="btn btn-outline-danger"><%= lang('calendar_feed_reset') %></button>
+                </div>
+                <p><%= lang('calendar_feed_google') %></p>
+                <p><%= lang('calendar_feed_apple') %></p>
+                <div class="alert alert-warning mb-0"><%= lang('calendar_feed_refresh_note') %></div>
+            </div>
+        </div>
+    </div>
+</div>

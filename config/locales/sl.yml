@@ -765,7 +765,7 @@ sl:
     notification_event_created: Appointment Created
     notification_event_created_or_updated: Appointment Created or Updated
     notification_event_updated: Appointment Updated
-    notification_event_cancelled: Appointment Canceled
+    notification_event_cancelled: Appointment Cancelled
     notification_event_missed: Appointment Missed
     notification_lead_before: Send this long before the appointment
     notification_lead_day_at: Send a number of days before, at a set time
@@ -870,15 +870,15 @@ sl:
     rs_days_first_letter: Su, M, Tu, W, Th, F, Sa
     rs_order: 1st, 2nd, 3rd, 4th, 5th, Last
     notification_cancellation_scope: Send
-    notification_cancellation_all: For all canceled appointments
-    notification_cancellation_in_time: For appointments canceled within the cancellation window
-    notification_cancellation_late: For appointments canceled too late
+    notification_cancellation_all: For all cancelled appointments
+    notification_cancellation_in_time: For appointments cancelled within the cancellation window
+    notification_cancellation_late: For appointments cancelled too late
     notification_cancellation_scope_hint: 'The window is the late cancellation time in Business Logic.'
     minimum_times_before_appointments: 'Minimum Times Before Appointments'
     booking_window: 'Time Before An Appointment A Customer Can Book'
     booking_window_hint: 'Customers cannot book a slot that starts sooner than this.'
     late_window: 'Time Before An Appointment A Customer Can Reschedule/Cancel Before Late Cancellation'
-    late_window_hint: 'Inside this window the customer can only late cancel, which sets the Late Cancel status and keeps the slot free for others. Must not be longer than the booking window.'
+    late_window_hint: 'Inside this window the customer can only late cancel, which sets the Late Cancel status and keeps the slot free for others.'
     status_booked: 'Default for new bookings'
     status_rescheduled: 'Set on the original when a customer reschedules'
     status_cancelled: 'Set when an appointment is cancelled'
@@ -921,3 +921,59 @@ sl:
     display_booking_notice_time_step: "Prikaži obvestilo o rezervaciji na koraku datum/čas"
     display_booking_notice_info_step: "Prikaži obvestilo o rezervaciji na koraku podatki o stranki"
     booking_notice_content: "Vsebina obvestila o rezervaciji"
+    waitlist: "Čakalni seznam"
+    waitlist_signup_title: "Pridružite se čakalnemu seznamu"
+    waitlist_signup_hint: "Pustite nam svoje podatke in obvestili vas bomo, ko se sprosti primeren termin."
+    waitlist_join: "Pridružite se čakalnemu seznamu"
+    waitlist_joined: "Na čakalnem seznamu ste. Obvestili vas bomo, ko se sprosti termin."
+    waitlist_already_joined: "Za to storitev ste že na čakalnem seznamu."
+    waitlist_left: "Odstranjeni ste bili s čakalnega seznama."
+    waitlist_link_invalid: "Ta povezava do čakalnega seznama ni več veljavna."
+    fully_booked_notice: "Obvestilo o zasedenosti"
+    fully_booked_notice_hint: "Prikazano v prvih korakih, ko izbrana storitev ali ponudnik nima prostih terminov znotraj časovnega okna za rezervacije."
+    fully_booked_notice_default: "Ni razpoložljivih terminov. Poskusite z drugo storitvijo ali ponudnikom oziroma poskusite znova pozneje."
+    notices: "Obvestila"
+    waitlist_enabled: "Čakalni seznam"
+    waitlist_enabled_hint: "Strankam omogočite prijavo, da bodo obveščene, ko se termin sprosti."
+    waitlist_days: "Dni na seznamu"
+    waitlist_days_hint: "Prijave se odstranijo po tem številu dni."
+    waitlist_max_notices: "Sporočil o sproščenih terminih na prijavo"
+    waitlist_max_notices_hint: "Po tem številu sporočil prijave ne obveščajte več o sproščenih terminih."
+    waitlist_min_slots: "Prosti termini za dnevno sporočilo"
+    waitlist_min_slots_hint: "Dnevno sporočilo se pošlje, ko je znotraj časovnega okna za rezervacije prostih vsaj toliko terminov."
+    waitlist_stagger_seconds: "Sekund med sporočili"
+    waitlist_stagger_seconds_hint: "Vsaka prijava je obveščena malce za prejšnjo, najprej tisti, ki čakajo najdlje, da imajo prednost pri rezervaciji."
+    notification_event_waitlist_slot_freed: "Čakalni seznam - Sproščen termin"
+    notification_event_waitlist_daily: "Čakalni seznam - Dnevna razpoložljivost"
+    waitlist_hint: "Stranke, ki čakajo na sprostitev termina."
+    waitlist_empty: "Nihče ne čaka."
+    waitlist_signed_up: "Prijavljen"
+    waitlist_expires: "Poteče"
+    waitlist_messages_sent: "Poslana sporočila"
+    calendar_feed: "Koledarski vir"
+    calendar_feed_hint: "Naročite se na to povezavo v svoji aplikaciji za koledar, da boste tam videli svoje sestanke. Vsakdo s povezavo lahko vidi koledar, zato jo hranite zasebno in jo ponastavite, če pride v napačne roke."
+    calendar_feed_link: "Povezava vira"
+    calendar_feed_copy: "Kopiraj povezavo"
+    calendar_feed_copied: "Kopirano"
+    calendar_feed_reset: "Ponastavi povezavo"
+    calendar_feed_reset_confirm: "Ponastaviti povezavo? Aplikacije za koledar, ki uporabljajo staro povezavo, se ne bodo več posodabljale, dokler ne dodate nove."
+    calendar_feed_google: "Google Koledar: v računalniku odprite Google Koledar, poleg Drugi koledarji kliknite znak plus, izberite Iz URL-ja, prilepite povezavo in kliknite Dodaj koledar. Nato se prikaže tudi v telefonu."
+    calendar_feed_apple: "Apple Koledar: na Macu izberite Datoteka, Nova naročnina na koledar in prilepite povezavo. V iPhonu pojdite v Nastavitve, Koledar, Računi, Dodaj račun, Drugo, Dodaj naročeni koledar."
+    calendar_feed_refresh_note: "Google naročene koledarje osveži le vsakih 8 do 24 ur, Apple pa vsako uro, če tega ne spremenite, zato za ogled današnjih sestankov se raje prijavite sem, kot da bi se zanašali na aplikacijo za koledar."
+    date_display: "Prikaz datuma"
+    date_display_hint: "Kako so datumi zapisani na straneh in v sporočilih. Polja za datum ohranijo zgornjo številčno obliko."
+    time_off: "Odsotnost"
+    time_off_hint: "Za del dneva odsotnosti vnesite ure, ko ste odsotni. Shranijo se kot odmor na te datume."
+    messages_sms_variation: "Spremeni vsak SMS"
+    messages_sms_variation_hint: "Na konec vsakega SMS-a doda kratko referenčno kodo, da si nobeni dve sporočili nista enaki, kar zahtevajo nekateri operaterji."
+    merge_customer: "Združi z drugo stranko"
+    merge_customer_hint: "Vnesite e-pošto ali telefonsko številko druge stranke. Termini in sporočila te stranke se prenesejo na ta zapis, ta zapis pa se izbriše."
+    merge_customer_button: "Združi"
+    merge_customer_confirm: "Ali želite to stranko združiti z drugim zapisom? Tega ni mogoče razveljaviti."
+    merge_customer_not_found: "Nobena druga stranka nima te e-pošte ali telefonske številke."
+    customer_merged: "Stranke združene"
+    provider_color_hint: "Uporabljeno za termine tega ponudnika, ko koledar prikazuje vse."
+    other_emails: "Drugi e-poštni naslovi"
+    other_emails_hint: "En na vrstico. Termini in sporočila s katerega koli od teh naslovov pripadajo tej stranki."
+    other_phones: "Druge telefonske številke"
+    other_phones_hint: "Ena na vrstico. Termini in sporočila s katere koli od teh številk pripadajo tej stranki."

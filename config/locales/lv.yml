@@ -765,7 +765,7 @@ lv:
     notification_event_created: Appointment Created
     notification_event_created_or_updated: Appointment Created or Updated
     notification_event_updated: Appointment Updated
-    notification_event_cancelled: Appointment Canceled
+    notification_event_cancelled: Appointment Cancelled
     notification_event_missed: Appointment Missed
     notification_lead_before: Send this long before the appointment
     notification_lead_day_at: Send a number of days before, at a set time
@@ -870,15 +870,15 @@ lv:
     rs_days_first_letter: Su, M, Tu, W, Th, F, Sa
     rs_order: 1st, 2nd, 3rd, 4th, 5th, Last
     notification_cancellation_scope: Send
-    notification_cancellation_all: For all canceled appointments
-    notification_cancellation_in_time: For appointments canceled within the cancellation window
-    notification_cancellation_late: For appointments canceled too late
+    notification_cancellation_all: For all cancelled appointments
+    notification_cancellation_in_time: For appointments cancelled within the cancellation window
+    notification_cancellation_late: For appointments cancelled too late
     notification_cancellation_scope_hint: 'The window is the late cancellation time in Business Logic.'
     minimum_times_before_appointments: 'Minimum Times Before Appointments'
     booking_window: 'Time Before An Appointment A Customer Can Book'
     booking_window_hint: 'Customers cannot book a slot that starts sooner than this.'
     late_window: 'Time Before An Appointment A Customer Can Reschedule/Cancel Before Late Cancellation'
-    late_window_hint: 'Inside this window the customer can only late cancel, which sets the Late Cancel status and keeps the slot free for others. Must not be longer than the booking window.'
+    late_window_hint: 'Inside this window the customer can only late cancel, which sets the Late Cancel status and keeps the slot free for others.'
     status_booked: 'Default for new bookings'
     status_rescheduled: 'Set on the original when a customer reschedules'
     status_cancelled: 'Set when an appointment is cancelled'
@@ -921,3 +921,59 @@ lv:
     display_booking_notice_time_step: "Rādīt paziņojumu par rezervāciju datuma/laika solī"
     display_booking_notice_info_step: "Rādīt paziņojumu par rezervāciju klienta datu solī"
     booking_notice_content: "Paziņojuma par rezervāciju saturs"
+    waitlist: "Gaidīšanas saraksts"
+    waitlist_signup_title: "Pievienoties gaidīšanas sarakstam"
+    waitlist_signup_hint: "Atstājiet savus datus, un mēs jums paziņosim, kad atradīsies piemērots pieraksts."
+    waitlist_join: "Pievienoties gaidīšanas sarakstam"
+    waitlist_joined: "Jūs esat gaidīšanas sarakstā. Mēs jums paziņosim, kad atbrīvosies pieraksts."
+    waitlist_already_joined: "Jūs jau esat gaidīšanas sarakstā šim pakalpojumam."
+    waitlist_left: "Jūs esat izņemts no gaidīšanas saraksta."
+    waitlist_link_invalid: "Šī gaidīšanas saraksta saite vairs nav derīga."
+    fully_booked_notice: "Paziņojums par pilnu noslogojumu"
+    fully_booked_notice_hint: "Tiek rādīts pirmajos soļos, kad izvēlētajam pakalpojumam vai tiekējam nav brīvu pierakstu rezervēšanas logā."
+    fully_booked_notice_default: "Nav pieejamu pierakstu. Lūdzu, izvēlieties citu pakalpojumu vai tiekēju, vai mēģiniet vēlāk."
+    notices: "Paziņojumi"
+    waitlist_enabled: "Gaidīšanas saraksts"
+    waitlist_enabled_hint: "Ļaujiet klientiem pieteikties, lai viņiem paziņotu, kad pieraksts atbrīvojas."
+    waitlist_days: "Dienas sarakstā"
+    waitlist_days_hint: "Pieteikumi tiek izņemti pēc šī dienu skaita."
+    waitlist_max_notices: "Paziņojumi par atbrīvotu laiku vienam pieteikumam"
+    waitlist_max_notices_hint: "Pārtrauciet paziņot pieteikumam par atbrīvotiem laikiem pēc šī paziņojumu skaita."
+    waitlist_min_slots: "Brīvi laiki dienas paziņojumam"
+    waitlist_min_slots_hint: "Dienas paziņojums tiek nosūtīts, kad rezervēšanas logā ir brīvi vismaz tik daudz pierakstu."
+    waitlist_stagger_seconds: "Sekundes starp paziņojumiem"
+    waitlist_stagger_seconds_hint: "Katram pieteikumam paziņo nedaudz vēlāk nekā iepriekšējam, vispirms tiem, kas gaida visilgāk, lai viņiem būtu priekšrocība rezervējot."
+    notification_event_waitlist_slot_freed: "Gaidīšanas saraksts - Laiks atbrīvots"
+    notification_event_waitlist_daily: "Gaidīšanas saraksts - Ikdienas pieejamība"
+    waitlist_hint: "Klienti, kas gaida, kad pieraksts atbrīvosies."
+    waitlist_empty: "Neviens negaida."
+    waitlist_signed_up: "Pieteicās"
+    waitlist_expires: "Beidzas"
+    waitlist_messages_sent: "Nosūtīti paziņojumi"
+    calendar_feed: "Kalendāra plūsma"
+    calendar_feed_hint: "Piesakieties šai saitei savā kalendāra lietotnē, lai tur redzētu savus pierakstus. Ikviens, kam ir saite, var redzēt kalendāru, tāpēc glabājiet to slepenībā un atiestatiet, ja tā nonāk citu rokās."
+    calendar_feed_link: "Plūsmas saite"
+    calendar_feed_copy: "Kopēt saiti"
+    calendar_feed_copied: "Nokopēts"
+    calendar_feed_reset: "Atiestatīt saiti"
+    calendar_feed_reset_confirm: "Vai atiestatīt saiti? Kalendāra lietotnes, kas izmanto veco saiti, pārstās atjaunināties, kamēr nepievienosiet jauno."
+    calendar_feed_google: "Google kalendārs: datorā atveriet Google kalendāru, blakus „Citi kalendāri” noklikšķiniet uz plusa zīmes, izvēlieties „No URL”, ielīmējiet saiti un noklikšķiniet „Pievienot kalendāru”. Pēc tam tas ir redzams arī tālrunī."
+    calendar_feed_apple: "Apple Calendar: datorā Mac izvēlieties Fails, Jauns kalendāra abonements un ielīmējiet saiti. iPhone tālrunī dodieties uz Iestatījumi, Kalendārs, Konti, Pievienot kontu, Cits, Pievienot abonēto kalendāru."
+    calendar_feed_refresh_note: "Google atjauno abonētos kalendārus tikai reizi 8 līdz 24 stundās, bet Apple - reizi stundā, ja vien to nemaināt, tāpēc, lai redzētu šodienas pierakstus, piesakieties šeit, nevis paļaujieties uz kalendāra lietotni."
+    date_display: "Datuma attēlošana"
+    date_display_hint: "Kā datumi tiek rakstīti lapās un ziņojumos. Augstāk norādītais skaitliskais formāts paliek nemainīgs."
+    time_off: "Brīvlaiks"
+    time_off_hint: "Ja tā ir daļa no dienas, ievadiet stundas, kad jūs neesat pieejams. Tās tiek saglabātas kā pārtraukums šajos datumos."
+    messages_sms_variation: "Mainīt katru SMS"
+    messages_sms_variation_hint: "Katras SMS beigās pievieno īsu atsauces kodu, lai nekādas divas ziņas nebūtu vienādas - to pieprasa daži operatori."
+    merge_customer: "Apvienot ar citu klientu"
+    merge_customer_hint: "Ievadiet otra klienta e-pastu vai tālruņa numuru. Šī klienta tikšanās un ziņas tiks pārceltas uz to ierakstu, un šis ieraksts tiks dzēsts."
+    merge_customer_button: "Apvienot"
+    merge_customer_confirm: "Vai apvienot šo klientu ar otru ierakstu? To nevar atsaukt."
+    merge_customer_not_found: "Nevienam citam klientam nav šī e-pasta vai tālruņa numura."
+    customer_merged: "Klienti apvienoti"
+    provider_color_hint: "Izmanto šī pakalpojumu sniedzēja tikšanām, kad kalendārs rāda visus."
+    other_emails: "Citas e-pasta adreses"
+    other_emails_hint: "Viena rindā. Rezervācijas un ziņas no jebkuras no šīm adresēm pieder šim klientam."
+    other_phones: "Citi tālruņa numuri"
+    other_phones_hint: "Viens rindā. Rezervācijas un ziņas no jebkura no šiem numuriem pieder šim klientam."

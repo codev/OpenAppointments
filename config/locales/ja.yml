@@ -765,7 +765,7 @@ ja:
     notification_event_created: Appointment Created
     notification_event_created_or_updated: Appointment Created or Updated
     notification_event_updated: Appointment Updated
-    notification_event_cancelled: Appointment Canceled
+    notification_event_cancelled: Appointment Cancelled
     notification_event_missed: Appointment Missed
     notification_lead_before: Send this long before the appointment
     notification_lead_day_at: Send a number of days before, at a set time
@@ -870,15 +870,15 @@ ja:
     rs_days_first_letter: Su, M, Tu, W, Th, F, Sa
     rs_order: 1st, 2nd, 3rd, 4th, 5th, Last
     notification_cancellation_scope: Send
-    notification_cancellation_all: For all canceled appointments
-    notification_cancellation_in_time: For appointments canceled within the cancellation window
-    notification_cancellation_late: For appointments canceled too late
+    notification_cancellation_all: For all cancelled appointments
+    notification_cancellation_in_time: For appointments cancelled within the cancellation window
+    notification_cancellation_late: For appointments cancelled too late
     notification_cancellation_scope_hint: 'The window is the late cancellation time in Business Logic.'
     minimum_times_before_appointments: 'Minimum Times Before Appointments'
     booking_window: 'Time Before An Appointment A Customer Can Book'
     booking_window_hint: 'Customers cannot book a slot that starts sooner than this.'
     late_window: 'Time Before An Appointment A Customer Can Reschedule/Cancel Before Late Cancellation'
-    late_window_hint: 'Inside this window the customer can only late cancel, which sets the Late Cancel status and keeps the slot free for others. Must not be longer than the booking window.'
+    late_window_hint: 'Inside this window the customer can only late cancel, which sets the Late Cancel status and keeps the slot free for others.'
     status_booked: 'Default for new bookings'
     status_rescheduled: 'Set on the original when a customer reschedules'
     status_cancelled: 'Set when an appointment is cancelled'
@@ -921,3 +921,59 @@ ja:
     display_booking_notice_time_step: "日時ステップに予約のお知らせを表示"
     display_booking_notice_info_step: "お客様情報ステップに予約のお知らせを表示"
     booking_notice_content: "予約のお知らせの内容"
+    waitlist: "キャンセル待ちリスト"
+    waitlist_signup_title: "キャンセル待ちリストに登録"
+    waitlist_signup_hint: "お客様の情報をご入力ください。ご都合の合う予約が空き次第、ご連絡いたします。"
+    waitlist_join: "キャンセル待ちリストに登録"
+    waitlist_joined: "キャンセル待ちリストに登録されました。予約が空き次第、ご連絡いたします。"
+    waitlist_already_joined: "このメニューのキャンセル待ちリストにはすでに登録されています。"
+    waitlist_left: "キャンセル待ちリストから削除されました。"
+    waitlist_link_invalid: "このキャンセル待ちリストのリンクは無効になりました。"
+    fully_booked_notice: "満席通知"
+    fully_booked_notice_hint: "選択したメニューまたは担当者に予約可能期間内で空き予約がない場合、最初のステップで表示されます。"
+    fully_booked_notice_default: "ご利用いただける予約枠がありません。別のメニューまたは担当者をお試しいただくか、しばらくしてから再度お試しください。"
+    notices: "通知"
+    waitlist_enabled: "キャンセル待ちリスト"
+    waitlist_enabled_hint: "予約が空いた際にお知らせするため、お客様がキャンセル待ちに登録できるようにします。"
+    waitlist_days: "リストに残る日数"
+    waitlist_days_hint: "この日数を経過すると登録は削除されます。"
+    waitlist_max_notices: "登録者ごとの空き通知メッセージ数"
+    waitlist_max_notices_hint: "この件数のメッセージを送信した後は、その登録者への空き通知を停止します。"
+    waitlist_min_slots: "毎日の通知に必要な空き枠数"
+    waitlist_min_slots_hint: "予約可能期間内でこの件数以上の空き予約がある場合に、毎日の通知が送信されます。"
+    waitlist_stagger_seconds: "メッセージ間隔（秒）"
+    waitlist_stagger_seconds_hint: "各登録者には前の登録者より少し遅れて通知が送られ、最も長く待っている方から順に通知されるため、予約で有利になります。"
+    notification_event_waitlist_slot_freed: "キャンセル待ち - 空き発生"
+    notification_event_waitlist_daily: "キャンセル待ち - 毎日の空き状況"
+    waitlist_hint: "予約の空きを待っているお客様。"
+    waitlist_empty: "待っている方はいません。"
+    waitlist_signed_up: "登録日"
+    waitlist_expires: "期限"
+    waitlist_messages_sent: "送信済みメッセージ数"
+    calendar_feed: "カレンダーフィード"
+    calendar_feed_hint: "このリンクをご自身のカレンダーアプリで購読すると、そこに予約が表示されます。リンクを知っている人は誰でもカレンダーを見ることができるため、非公開にし、漏れた場合はリセットしてください。"
+    calendar_feed_link: "フィードリンク"
+    calendar_feed_copy: "リンクをコピー"
+    calendar_feed_copied: "コピーしました"
+    calendar_feed_reset: "リンクをリセット"
+    calendar_feed_reset_confirm: "リンクをリセットしますか？古いリンクを使っているカレンダーアプリは、新しいリンクを追加するまで更新されなくなります。"
+    calendar_feed_google: "Google Calendar: パソコンでGoogle Calendarを開き、Other calendarsの横にあるプラス記号をクリックし、From URLを選び、リンクを貼り付けてAdd calendarをクリックします。その後スマートフォンにも表示されます。"
+    calendar_feed_apple: "Apple Calendar: MacではFile、New Calendar Subscriptionを選んでリンクを貼り付けます。iPhoneではSettings、Calendar、Accounts、Add Account、Other、Add Subscribed Calendarに進みます。"
+    calendar_feed_refresh_note: "Googleは購読中のカレンダーを8～24時間ごとにしか更新せず、Appleは設定を変更しない限り1時間ごとです。そのため、今日の予約を確認するにはカレンダーアプリに頼らず、こちらにログインしてください。"
+    date_display: "日付の表示"
+    date_display_hint: "ページやメッセージで日付がどのように表記されるかです。日付欄は上記の数値形式のままです。"
+    time_off: "休み"
+    time_off_hint: "一日の一部を休む場合は、不在にする時間を入力してください。その日付の休憩時間として保存されます。"
+    messages_sms_variation: "SMSごとに内容を変える"
+    messages_sms_variation_hint: "すべてのSMSの末尾に短い参照コードを追加し、2通が同じ内容にならないようにします。一部の通信網ではこれが必要です。"
+    merge_customer: "別のお客様に統合する"
+    merge_customer_hint: "相手のお客様のメールアドレスまたは電話番号を入力してください。このお客様の予約とメッセージはその記録に移され、この記録は削除されます。"
+    merge_customer_button: "統合"
+    merge_customer_confirm: "このお客様を別の記録に統合しますか？この操作は元に戻せません。"
+    merge_customer_not_found: "そのメールアドレスまたは電話番号のお客様は他にいません。"
+    customer_merged: "お客様を統合しました"
+    provider_color_hint: "カレンダーが全員を表示するとき、この担当者の予約に使用されます。"
+    other_emails: "その他のメールアドレス"
+    other_emails_hint: "1行に1つ。これらのアドレスからの予約やメッセージはこのお客様のものとして扱われます。"
+    other_phones: "その他の電話番号"
+    other_phones_hint: "1行に1つ。これらの番号からの予約やメッセージはこのお客様のものとして扱われます。"

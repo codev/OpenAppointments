@@ -765,7 +765,7 @@ sk:
     notification_event_created: Appointment Created
     notification_event_created_or_updated: Appointment Created or Updated
     notification_event_updated: Appointment Updated
-    notification_event_cancelled: Appointment Canceled
+    notification_event_cancelled: Appointment Cancelled
     notification_event_missed: Appointment Missed
     notification_lead_before: Send this long before the appointment
     notification_lead_day_at: Send a number of days before, at a set time
@@ -870,15 +870,15 @@ sk:
     rs_days_first_letter: Su, M, Tu, W, Th, F, Sa
     rs_order: 1st, 2nd, 3rd, 4th, 5th, Last
     notification_cancellation_scope: Send
-    notification_cancellation_all: For all canceled appointments
-    notification_cancellation_in_time: For appointments canceled within the cancellation window
-    notification_cancellation_late: For appointments canceled too late
+    notification_cancellation_all: For all cancelled appointments
+    notification_cancellation_in_time: For appointments cancelled within the cancellation window
+    notification_cancellation_late: For appointments cancelled too late
     notification_cancellation_scope_hint: 'The window is the late cancellation time in Business Logic.'
     minimum_times_before_appointments: 'Minimum Times Before Appointments'
     booking_window: 'Time Before An Appointment A Customer Can Book'
     booking_window_hint: 'Customers cannot book a slot that starts sooner than this.'
     late_window: 'Time Before An Appointment A Customer Can Reschedule/Cancel Before Late Cancellation'
-    late_window_hint: 'Inside this window the customer can only late cancel, which sets the Late Cancel status and keeps the slot free for others. Must not be longer than the booking window.'
+    late_window_hint: 'Inside this window the customer can only late cancel, which sets the Late Cancel status and keeps the slot free for others.'
     status_booked: 'Default for new bookings'
     status_rescheduled: 'Set on the original when a customer reschedules'
     status_cancelled: 'Set when an appointment is cancelled'
@@ -921,3 +921,59 @@ sk:
     display_booking_notice_time_step: "Zobraziť oznámenie o rezervácii v kroku dátum/čas"
     display_booking_notice_info_step: "Zobraziť oznámenie o rezervácii v kroku údaje zákazníka"
     booking_notice_content: "Obsah oznámenia o rezervácii"
+    waitlist: "Čakacia listina"
+    waitlist_signup_title: "Prihlásiť sa na čakaciu listinu"
+    waitlist_signup_hint: "Nechajte nám svoje údaje a dáme vám vedieť, keď sa uvoľní vhodný termín."
+    waitlist_join: "Prihlásiť sa na čakaciu listinu"
+    waitlist_joined: "Ste na čakacej listine. Dáme vám vedieť, keď sa uvoľní termín."
+    waitlist_already_joined: "Na čakaciu listinu pre túto službu ste už prihlásení."
+    waitlist_left: "Boli ste odstránení z čakacej listiny."
+    waitlist_link_invalid: "Tento odkaz na čakaciu listinu už nie je platný."
+    fully_booked_notice: "Oznámenie o plnej obsadenosti"
+    fully_booked_notice_hint: "Zobrazí sa v prvých krokoch, ak vybraná služba alebo poskytovateľ nemá v rámci rezervačného okna žiadne voľné termíny."
+    fully_booked_notice_default: "Nie sú k dispozícii žiadne voľné termíny. Skúste inú službu alebo poskytovateľa, alebo to skúste znova neskôr."
+    notices: "Oznámenia"
+    waitlist_enabled: "Čakacia listina"
+    waitlist_enabled_hint: "Umožnite zákazníkom prihlásiť sa na odber upozornení, keď sa uvoľní termín."
+    waitlist_days: "Počet dní na listine"
+    waitlist_days_hint: "Prihlášky sa po uplynutí tohto počtu dní odstránia."
+    waitlist_max_notices: "Správ o uvoľnenom termíne na prihlášku"
+    waitlist_max_notices_hint: "Po tomto počte správ prestaňte prihláške oznamovať uvoľnené termíny."
+    waitlist_min_slots: "Voľné termíny pre dennú správu"
+    waitlist_min_slots_hint: "Denná správa sa odošle, keď je v rámci rezervačného okna voľných aspoň toľko termínov."
+    waitlist_stagger_seconds: "Sekúnd medzi správami"
+    waitlist_stagger_seconds_hint: "Každá prihláška je informovaná trochu neskôr ako tá predchádzajúca, najprv tí, ktorí čakajú najdlhšie, aby mali náskok pri rezervácii."
+    notification_event_waitlist_slot_freed: "Čakacia listina - Uvoľnený termín"
+    notification_event_waitlist_daily: "Čakacia listina - Denná dostupnosť"
+    waitlist_hint: "Zákazníci čakajúci na uvoľnenie termínu."
+    waitlist_empty: "Nikto nečaká."
+    waitlist_signed_up: "Prihlásený"
+    waitlist_expires: "Vyprší"
+    waitlist_messages_sent: "Odoslaných správ"
+    calendar_feed: "Kalendárny kanál"
+    calendar_feed_hint: "Prihláste sa na odber tohto odkazu vo vlastnej kalendárovej aplikácii, aby ste tam videli svoje rezervácie. Ktokoľvek s odkazom môže vidieť kalendár, preto ho uchovávajte v súkromí a obnovte ho, ak unikne."
+    calendar_feed_link: "Odkaz na kanál"
+    calendar_feed_copy: "Kopírovať odkaz"
+    calendar_feed_copied: "Skopírované"
+    calendar_feed_reset: "Obnoviť odkaz"
+    calendar_feed_reset_confirm: "Obnoviť odkaz? Kalendárové aplikácie používajúce starý odkaz sa prestanú aktualizovať, kým nepridáte nový."
+    calendar_feed_google: "Google Kalendár: na počítači otvorte Google Kalendár, vedľa Ďalšie kalendáre kliknite na znamienko plus, vyberte Z adresy URL, vložte odkaz a kliknite na Pridať kalendár. Potom sa zobrazí aj v telefóne."
+    calendar_feed_apple: "Apple Kalendár: na Macu zvoľte Súbor, Nový odber kalendára a vložte odkaz. V iPhone prejdite do Nastavenia, Kalendár, Účty, Pridať účet, Iné, Pridať odoberaný kalendár."
+    calendar_feed_refresh_note: "Google aktualizuje odoberané kalendáre iba každých 8 až 24 hodín a Apple každú hodinu, pokiaľ to nezmeníte, takže na zobrazenie dnešných rezervácií sa radšej prihláste sem, než sa spoliehať na kalendárovú aplikáciu."
+    date_display: "Zobrazenie dátumu"
+    date_display_hint: "Ako sa dátumy zapisujú na stránkach a v správach. Polia dátumu zachovávajú vyššie uvedený číselný formát."
+    time_off: "Voľno"
+    time_off_hint: "Ak ide o časť dňa voľna, zadajte hodiny, kedy ste preč. Uložia sa ako prestávka v tieto dni."
+    messages_sms_variation: "Obmieňať každú SMS"
+    messages_sms_variation_hint: "Na koniec každej SMS pridá krátky referenčný kód, aby žiadne dve správy neboli rovnaké, čo niektoré siete vyžadujú."
+    merge_customer: "Zlúčiť s iným zákazníkom"
+    merge_customer_hint: "Zadajte e-mail alebo telefónne číslo druhého zákazníka. Rezervácie a správy tohto zákazníka sa presunú do daného záznamu a tento záznam bude odstránený."
+    merge_customer_button: "Zlúčiť"
+    merge_customer_confirm: "Zlúčiť tohto zákazníka s druhým záznamom? Túto akciu nie je možné vrátiť späť."
+    merge_customer_not_found: "Žiadny iný zákazník nemá tento e-mail ani telefónne číslo."
+    customer_merged: "Zákazníci zlúčení"
+    provider_color_hint: "Používa sa pre rezervácie tohto pracovníka, keď kalendár zobrazuje všetkých."
+    other_emails: "Ďalšie emaily"
+    other_emails_hint: "Jeden na riadok. Rezervácie a správy z ktorejkoľvek z týchto adries patria tomuto zákazníkovi."
+    other_phones: "Ďalšie telefónne čísla"
+    other_phones_hint: "Jedno na riadok. Rezervácie a správy z ktoréhokoľvek z týchto čísel patria tomuto zákazníkovi."

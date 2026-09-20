@@ -101,4 +101,64 @@ class CustomersTest < ActionDispatch::IntegrationTest
     post "/customers/store", params: { customer: { name: "x" } }
     assert_response :not_found
   end
+
+  test "merging moves appointments and messages to the customer with the typed phone or email and deletes the record" do
+    login_admin
+    kept = User.create!(name: "Kept", email: "kept@example.org", role: roles(:customer))
+    gone = User.create!(name: "Gone", phone_number: "+447700900777", address: "1 Lane", notes: "Allergic to X", role: roles(:customer))
+    appointment = Appointment.create!(provider: users(:zane), customer: gone, service: services(:haircut), status: "Booked",
+                                      start_datetime: "2026-08-03 11:00:00", end_datetime: "2026-08-03 11:30:00")
+    message = Message.create!(direction: "incoming", channel: "email", status: "received", customer_id: gone.id, body: "Hi")
+
+    get "/customers/#{gone.id}/edit"
+    assert_select "form#merge-customer input#merge-target"
+
+    post "/customers/#{gone.id}/merge", params: { target: "nobody@example.org" }
+    assert_redirected_to "/customers/#{gone.id}/edit"
+    assert_equal I18n.t("ea.merge_customer_not_found"), flash[:alert]
+
+    post "/customers/#{gone.id}/merge", params: { target: "kept@example.org" }
+    assert_redirected_to "/customers/#{kept.id}/edit"
+    assert_equal I18n.t("ea.customer_merged"), flash[:notice]
+    assert_nil User.find_by(id: gone.id)
+    assert_equal kept.id, appointment.reload.id_users_customer
+    assert_equal kept.id, message.reload.customer_id
+    kept.reload
+    assert_equal [ "+447700900777", "1 Lane", "Allergic to X" ], [ kept.phone_number, kept.address, kept.notes ]
+    assert_equal [], kept.other_phone_list
+
+    other = User.create!(name: "Other", phone_number: "07700 900888", role: roles(:customer))
+    post "/customers/#{kept.id}/merge", params: { target: "+447700900888" }
+    assert_redirected_to "/customers/#{other.id}/edit"
+  end
+
+  test "merging keeps the other record's addresses as other emails and phones, and search finds them" do
+    login_admin
+    kept = User.create!(name: "Kept", email: "kept@example.org", phone_number: "+447700900700", role: roles(:customer))
+    gone = User.create!(name: "Gone", email: "gone@example.org", phone_number: "07700 900701", other_emails: "gone2@example.org", role: roles(:customer))
+    post "/customers/#{gone.id}/merge", params: { target: "gone2@example.org" }
+    assert_redirected_to "/customers/#{gone.id}/edit"
+    post "/customers/#{gone.id}/merge", params: { target: "kept@example.org" }
+    kept.reload
+    assert_equal %w[gone@example.org gone2@example.org], kept.other_email_list
+    assert_equal %w[+447700900701], kept.other_phone_list
+    get "/customers", params: { keyword: "gone2" }
+    assert_select ".record-row, .customer-row, tr, li", text: /Kept/
+  end
+
+  test "the form edits other emails and phone numbers, and the strings exist in every locale" do
+    login_admin
+    get "/customers/#{users(:jx).id}/edit"
+    assert_select "textarea[name='customer[other_emails]']"
+    assert_select "textarea[name='customer[other_phones]']"
+    patch "/customers/#{users(:jx).id}", params: { customer: { other_emails: "a@example.org\nb@example.org", other_phones: "07700 900321" } }
+    assert_equal %w[a@example.org b@example.org], users(:jx).reload.other_email_list
+    assert_equal [ "07700 900321" ], users(:jx).other_phone_list
+
+    I18n.available_locales.each do |locale|
+      %w[other_emails other_emails_hint other_phones other_phones_hint].each do |key|
+        assert I18n.t("ea.#{key}", locale: locale, fallback: false, default: nil).present?, "missing ea.#{key} in #{locale}"
+      end
+    end
+  end
 end

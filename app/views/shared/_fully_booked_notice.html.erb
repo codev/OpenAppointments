@@ -1,0 +1,5 @@
+<%# The Fully Booked Notice from the Notices page, when nothing in the booking
+    window can be booked for the choice so far. Sanitised by Setting.set. %>
+<% if @fully_booked && vars(:fully_booked_notice_content).present? %>
+    <div class="booking-notice fully-booked-notice mb-4"><%= vars(:fully_booked_notice_content).html_safe %></div>
+<% end %>

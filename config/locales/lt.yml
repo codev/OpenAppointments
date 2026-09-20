@@ -765,7 +765,7 @@ lt:
     notification_event_created: Appointment Created
     notification_event_created_or_updated: Appointment Created or Updated
     notification_event_updated: Appointment Updated
-    notification_event_cancelled: Appointment Canceled
+    notification_event_cancelled: Appointment Cancelled
     notification_event_missed: Appointment Missed
     notification_lead_before: Send this long before the appointment
     notification_lead_day_at: Send a number of days before, at a set time
@@ -870,15 +870,15 @@ lt:
     rs_days_first_letter: Su, M, Tu, W, Th, F, Sa
     rs_order: 1st, 2nd, 3rd, 4th, 5th, Last
     notification_cancellation_scope: Send
-    notification_cancellation_all: For all canceled appointments
-    notification_cancellation_in_time: For appointments canceled within the cancellation window
-    notification_cancellation_late: For appointments canceled too late
+    notification_cancellation_all: For all cancelled appointments
+    notification_cancellation_in_time: For appointments cancelled within the cancellation window
+    notification_cancellation_late: For appointments cancelled too late
     notification_cancellation_scope_hint: 'The window is the late cancellation time in Business Logic.'
     minimum_times_before_appointments: 'Minimum Times Before Appointments'
     booking_window: 'Time Before An Appointment A Customer Can Book'
     booking_window_hint: 'Customers cannot book a slot that starts sooner than this.'
     late_window: 'Time Before An Appointment A Customer Can Reschedule/Cancel Before Late Cancellation'
-    late_window_hint: 'Inside this window the customer can only late cancel, which sets the Late Cancel status and keeps the slot free for others. Must not be longer than the booking window.'
+    late_window_hint: 'Inside this window the customer can only late cancel, which sets the Late Cancel status and keeps the slot free for others.'
     status_booked: 'Default for new bookings'
     status_rescheduled: 'Set on the original when a customer reschedules'
     status_cancelled: 'Set when an appointment is cancelled'
@@ -921,3 +921,59 @@ lt:
     display_booking_notice_time_step: "Rodyti pranešimą apie rezervaciją datos/laiko žingsnyje"
     display_booking_notice_info_step: "Rodyti pranešimą apie rezervaciją kliento duomenų žingsnyje"
     booking_notice_content: "Pranešimo apie rezervaciją turinys"
+    waitlist: "Laukiančiųjų sąrašas"
+    waitlist_signup_title: "Prisijunkite prie laukiančiųjų sąrašo"
+    waitlist_signup_hint: "Palikite savo duomenis, ir mes pranešime, kai atsiras tinkamas vizito laikas."
+    waitlist_join: "Prisijungti prie laukiančiųjų sąrašo"
+    waitlist_joined: "Jūs esate laukiančiųjų sąraše. Pranešime, kai atsiras laisvas vizito laikas."
+    waitlist_already_joined: "Jūs jau esate laukiančiųjų sąraše šiai paslaugai."
+    waitlist_left: "Jūs buvote pašalintas iš laukiančiųjų sąrašo."
+    waitlist_link_invalid: "Ši laukiančiųjų sąrašo nuoroda nebegalioja."
+    fully_booked_notice: "Pranešimas apie pilną užimtumą"
+    fully_booked_notice_hint: "Rodomas pirmuosiuose žingsniuose, kai pasirinkta paslauga ar teikėjas neturi laisvų vizitų per rezervacijos langą."
+    fully_booked_notice_default: "Nėra laisvų vizitų laikų. Pasirinkite kitą paslaugą ar teikėją arba bandykite vėliau."
+    notices: "Pranešimai"
+    waitlist_enabled: "Laukiančiųjų sąrašas"
+    waitlist_enabled_hint: "Leiskite klientams užsiregistruoti, kad būtų informuoti, kai atsiras laisvas vizito laikas."
+    waitlist_days: "Dienos sąraše"
+    waitlist_days_hint: "Registracijos pašalinamos po nurodyto dienų skaičiaus."
+    waitlist_max_notices: "Pranešimų apie laisvą laiką skaičius vienai registracijai"
+    waitlist_max_notices_hint: "Nustokite informuoti registraciją apie laisvus laikus po šio pranešimų skaičiaus."
+    waitlist_min_slots: "Laisvi laikai dienos pranešimui"
+    waitlist_min_slots_hint: "Dienos pranešimas siunčiamas, kai per rezervacijos langą yra laisva bent tiek vizitų."
+    waitlist_stagger_seconds: "Sekundės tarp pranešimų"
+    waitlist_stagger_seconds_hint: "Kiekvienai registracijai pranešama šiek tiek vėliau nei ankstesnei, pirmiausia informuojant seniausiai laukiančius, kad jie turėtų pranašumą rezervuojant."
+    notification_event_waitlist_slot_freed: "Laukiančiųjų sąrašas - Atsirado laisvas laikas"
+    notification_event_waitlist_daily: "Laukiančiųjų sąrašas - Kasdienis laisvų laikų pranešimas"
+    waitlist_hint: "Klientai, laukiantys, kol atsiras laisvas vizito laikas."
+    waitlist_empty: "Niekas nelaukia."
+    waitlist_signed_up: "Užsiregistravo"
+    waitlist_expires: "Galioja iki"
+    waitlist_messages_sent: "Išsiųsti pranešimai"
+    calendar_feed: "Kalendoriaus srautas"
+    calendar_feed_hint: "Prenumeruokite šią nuorodą savo kalendoriaus programėlėje, kad ten matytumėte savo vizitus. Nuorodą turintis bet kas gali matyti kalendorių, todėl laikykite ją slaptą ir nustatykite iš naujo, jei ji paviešinama."
+    calendar_feed_link: "Srauto nuoroda"
+    calendar_feed_copy: "Kopijuoti nuorodą"
+    calendar_feed_copied: "Nukopijuota"
+    calendar_feed_reset: "Nustatyti nuorodą iš naujo"
+    calendar_feed_reset_confirm: "Nustatyti nuorodą iš naujo? Kalendoriaus programėlės, naudojančios seną nuorodą, nustos atsinaujinti, kol pridėsite naują."
+    calendar_feed_google: "Google kalendorius: kompiuteryje atidarykite Google kalendorių, šalia „Kiti kalendoriai“ spustelėkite pliuso ženklą, pasirinkite „Iš URL“, įklijuokite nuorodą ir spustelėkite „Pridėti kalendorių“. Po to jis matomas ir telefone."
+    calendar_feed_apple: "Apple Calendar: „Mac“ kompiuteryje pasirinkite Failas, Nauja kalendoriaus prenumerata ir įklijuokite nuorodą. „iPhone“ eikite į Nustatymai, Kalendorius, Paskyros, Pridėti paskyrą, Kita, Pridėti prenumeruojamą kalendorių."
+    calendar_feed_refresh_note: "„Google“ atnaujina prenumeruojamus kalendorius tik kas 8-24 valandas, o „Apple“ kas valandą, jei to nepakeisite, todėl norėdami matyti šiandienos vizitus prisijunkite čia, o ne pasikliaukite kalendoriaus programėle."
+    date_display: "Datos rodymas"
+    date_display_hint: "Kaip datos rašomos puslapiuose ir pranešimuose. Aukščiau nurodytas skaitinis formatas išlieka nepakitęs."
+    time_off: "Laisvas laikas"
+    time_off_hint: "Jei tai dalis dienos, įveskite valandas, kai jūsų nėra. Jos išsaugomos kaip pertrauka tomis datomis."
+    messages_sms_variation: "Keisti kiekvieną SMS"
+    messages_sms_variation_hint: "Prideda trumpą nuorodos kodą kiekvienos SMS pabaigoje, kad jokios dvi žinutės nebūtų vienodos - to reikalauja kai kurie operatoriai."
+    merge_customer: "Sujungti su kitu klientu"
+    merge_customer_hint: "Įveskite kito kliento el. paštą arba telefono numerį. Šio kliento vizitai ir žinutės bus perkelti į tą įrašą, o šis įrašas bus ištrintas."
+    merge_customer_button: "Sujungti"
+    merge_customer_confirm: "Sujungti šį klientą su kitu įrašu? Šio veiksmo negalima atšaukti."
+    merge_customer_not_found: "Nė vienas kitas klientas neturi tokio el. pašto ar telefono numerio."
+    customer_merged: "Klientai sujungti"
+    provider_color_hint: "Naudojama šio teikėjo vizitams, kai kalendorius rodo visus."
+    other_emails: "Kiti el. pašto adresai"
+    other_emails_hint: "Po vieną eilutėje. Rezervacijos ir žinutės iš bet kurio iš šių adresų priklauso šiam klientui."
+    other_phones: "Kiti telefono numeriai"
+    other_phones_hint: "Po vieną eilutėje. Rezervacijos ir žinutės iš bet kurio iš šių numerių priklauso šiam klientui."

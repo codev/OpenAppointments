@@ -765,7 +765,7 @@ nl:
     notification_event_created: Appointment Created
     notification_event_created_or_updated: Appointment Created or Updated
     notification_event_updated: Appointment Updated
-    notification_event_cancelled: Appointment Canceled
+    notification_event_cancelled: Appointment Cancelled
     notification_event_missed: Appointment Missed
     notification_lead_before: Send this long before the appointment
     notification_lead_day_at: Send a number of days before, at a set time
@@ -870,15 +870,15 @@ nl:
     rs_days_first_letter: Su, M, Tu, W, Th, F, Sa
     rs_order: 1st, 2nd, 3rd, 4th, 5th, Last
     notification_cancellation_scope: Send
-    notification_cancellation_all: For all canceled appointments
-    notification_cancellation_in_time: For appointments canceled within the cancellation window
-    notification_cancellation_late: For appointments canceled too late
+    notification_cancellation_all: For all cancelled appointments
+    notification_cancellation_in_time: For appointments cancelled within the cancellation window
+    notification_cancellation_late: For appointments cancelled too late
     notification_cancellation_scope_hint: 'The window is the late cancellation time in Business Logic.'
     minimum_times_before_appointments: 'Minimum Times Before Appointments'
     booking_window: 'Time Before An Appointment A Customer Can Book'
     booking_window_hint: 'Customers cannot book a slot that starts sooner than this.'
     late_window: 'Time Before An Appointment A Customer Can Reschedule/Cancel Before Late Cancellation'
-    late_window_hint: 'Inside this window the customer can only late cancel, which sets the Late Cancel status and keeps the slot free for others. Must not be longer than the booking window.'
+    late_window_hint: 'Inside this window the customer can only late cancel, which sets the Late Cancel status and keeps the slot free for others.'
     status_booked: 'Default for new bookings'
     status_rescheduled: 'Set on the original when a customer reschedules'
     status_cancelled: 'Set when an appointment is cancelled'
@@ -921,3 +921,59 @@ nl:
     display_booking_notice_time_step: "Boekingsmededeling tonen bij de stap datum/tijd"
     display_booking_notice_info_step: "Boekingsmededeling tonen bij de stap klantgegevens"
     booking_notice_content: "Inhoud boekingsmededeling"
+    waitlist: "Wachtlijst"
+    waitlist_signup_title: "Meld u aan voor de wachtlijst"
+    waitlist_signup_hint: "Laat uw gegevens achter en wij laten u weten zodra er een geschikte afspraak beschikbaar komt."
+    waitlist_join: "Meld u aan voor de wachtlijst"
+    waitlist_joined: "U staat op de wachtlijst. Wij laten u weten zodra er een afspraak beschikbaar komt."
+    waitlist_already_joined: "U staat al op de wachtlijst voor deze dienst."
+    waitlist_left: "U bent van de wachtlijst verwijderd."
+    waitlist_link_invalid: "Deze wachtlijstlink is niet meer geldig."
+    fully_booked_notice: "Melding volgeboekt"
+    fully_booked_notice_hint: "Wordt getoond in de eerste stappen wanneer de gekozen dienst of medewerker geen vrije afspraken heeft binnen het boekingsvenster."
+    fully_booked_notice_default: "Er zijn geen afspraken beschikbaar. Probeer een andere dienst of medewerker, of probeer het later opnieuw."
+    notices: "Meldingen"
+    waitlist_enabled: "Wachtlijst"
+    waitlist_enabled_hint: "Laat klanten zich aanmelden om te horen wanneer er een afspraak vrijkomt."
+    waitlist_days: "Dagen op de lijst"
+    waitlist_days_hint: "Aanmeldingen worden na dit aantal dagen verwijderd."
+    waitlist_max_notices: "Berichten over vrijgekomen plekken per aanmelding"
+    waitlist_max_notices_hint: "Stop met het informeren van een aanmelding over vrijgekomen plekken na dit aantal berichten."
+    waitlist_min_slots: "Vrije plekken voor het dagelijkse bericht"
+    waitlist_min_slots_hint: "Het dagelijkse bericht wordt verstuurd wanneer er binnen het boekingsvenster minstens dit aantal afspraken vrij zijn."
+    waitlist_stagger_seconds: "Seconden tussen berichten"
+    waitlist_stagger_seconds_hint: "Elke aanmelding wordt iets later geïnformeerd dan de vorige, waarbij wie het langst wacht als eerste aan de beurt is, zodat zij een voorsprong hebben bij het boeken."
+    notification_event_waitlist_slot_freed: "Wachtlijst - Plek vrijgekomen"
+    notification_event_waitlist_daily: "Wachtlijst - Dagelijkse beschikbaarheid"
+    waitlist_hint: "Klanten die wachten tot er een afspraak vrijkomt."
+    waitlist_empty: "Niemand staat te wachten."
+    waitlist_signed_up: "Aangemeld"
+    waitlist_expires: "Verloopt"
+    waitlist_messages_sent: "Verzonden berichten"
+    calendar_feed: "Kalenderfeed"
+    calendar_feed_hint: "Abonneer u op deze link in uw eigen kalender-app om daar uw afspraken te zien. Iedereen met de link kan de kalender zien, houd hem dus privé en reset hem als hij uitlekt."
+    calendar_feed_link: "Feedlink"
+    calendar_feed_copy: "Link kopiëren"
+    calendar_feed_copied: "Gekopieerd"
+    calendar_feed_reset: "Link resetten"
+    calendar_feed_reset_confirm: "Link resetten? Kalender-apps die de oude link gebruiken, stoppen met bijwerken totdat u de nieuwe toevoegt."
+    calendar_feed_google: "Google Calendar: open op een laptop Google Calendar, klik naast Andere kalenders op het plusteken, kies Via URL, plak de link en klik op Kalender toevoegen. Hij verschijnt dan ook op uw telefoon."
+    calendar_feed_apple: "Apple Calendar: kies op een Mac Archief, Nieuw kalenderabonnement en plak de link. Ga op een iPhone naar Instellingen, Kalender, Accounts, Voeg account toe, Overige, Voeg geabonneerde kalender toe."
+    calendar_feed_refresh_note: "Google werkt geabonneerde kalenders maar elke 8 tot 24 uur bij, en Apple elk uur tenzij u dit wijzigt, dus log hier in om de afspraken van vandaag te zien in plaats van te vertrouwen op uw kalender-app."
+    date_display: "Datumweergave"
+    date_display_hint: "Hoe datums worden geschreven op pagina's en in berichten. Datumvelden behouden het numerieke formaat hierboven."
+    time_off: "Vrije tijd"
+    time_off_hint: "Voor afwezigheid gedurende een deel van een dag voert u de uren in waarop u weg bent. Deze worden op die datums als pauze opgeslagen."
+    messages_sms_variation: "Elke SMS laten variëren"
+    messages_sms_variation_hint: "Voegt een korte referentiecode toe aan het einde van elke SMS zodat geen twee berichten hetzelfde zijn, wat sommige netwerken vereisen."
+    merge_customer: "Samenvoegen met een andere klant"
+    merge_customer_hint: "Voer het e-mailadres of telefoonnummer van de andere klant in. De afspraken en berichten van deze klant worden naar dat record verplaatst en dit record wordt verwijderd."
+    merge_customer_button: "Samenvoegen"
+    merge_customer_confirm: "Deze klant samenvoegen met het andere record? Dit kan niet ongedaan worden gemaakt."
+    merge_customer_not_found: "Geen andere klant heeft dat e-mailadres of telefoonnummer."
+    customer_merged: "Klanten samengevoegd"
+    provider_color_hint: "Wordt gebruikt voor de afspraken van deze medewerker wanneer de kalender iedereen toont."
+    other_emails: "Overige e-mailadressen"
+    other_emails_hint: "Eén per regel. Boekingen en berichten van een van deze adressen horen bij deze klant."
+    other_phones: "Overige telefoonnummers"
+    other_phones_hint: "Eén per regel. Boekingen en berichten van een van deze nummers horen bij deze klant."

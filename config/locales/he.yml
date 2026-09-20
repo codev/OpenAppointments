@@ -765,7 +765,7 @@ he:
     notification_event_created: Appointment Created
     notification_event_created_or_updated: Appointment Created or Updated
     notification_event_updated: Appointment Updated
-    notification_event_cancelled: Appointment Canceled
+    notification_event_cancelled: Appointment Cancelled
     notification_event_missed: Appointment Missed
     notification_lead_before: Send this long before the appointment
     notification_lead_day_at: Send a number of days before, at a set time
@@ -870,15 +870,15 @@ he:
     rs_days_first_letter: Su, M, Tu, W, Th, F, Sa
     rs_order: 1st, 2nd, 3rd, 4th, 5th, Last
     notification_cancellation_scope: Send
-    notification_cancellation_all: For all canceled appointments
-    notification_cancellation_in_time: For appointments canceled within the cancellation window
-    notification_cancellation_late: For appointments canceled too late
+    notification_cancellation_all: For all cancelled appointments
+    notification_cancellation_in_time: For appointments cancelled within the cancellation window
+    notification_cancellation_late: For appointments cancelled too late
     notification_cancellation_scope_hint: 'The window is the late cancellation time in Business Logic.'
     minimum_times_before_appointments: 'Minimum Times Before Appointments'
     booking_window: 'Time Before An Appointment A Customer Can Book'
     booking_window_hint: 'Customers cannot book a slot that starts sooner than this.'
     late_window: 'Time Before An Appointment A Customer Can Reschedule/Cancel Before Late Cancellation'
-    late_window_hint: 'Inside this window the customer can only late cancel, which sets the Late Cancel status and keeps the slot free for others. Must not be longer than the booking window.'
+    late_window_hint: 'Inside this window the customer can only late cancel, which sets the Late Cancel status and keeps the slot free for others.'
     status_booked: 'Default for new bookings'
     status_rescheduled: 'Set on the original when a customer reschedules'
     status_cancelled: 'Set when an appointment is cancelled'
@@ -921,3 +921,59 @@ he:
     display_booking_notice_time_step: "הצג הודעת הזמנה בשלב תאריך/שעה"
     display_booking_notice_info_step: "הצג הודעת הזמנה בשלב פרטי הלקוח"
     booking_notice_content: "תוכן הודעת ההזמנה"
+    waitlist: "רשימת המתנה"
+    waitlist_signup_title: "הצטרפות לרשימת ההמתנה"
+    waitlist_signup_hint: "השאירו את פרטיכם ואנו נודיע לכם כאשר תתפנה פגישה מתאימה."
+    waitlist_join: "הצטרפות לרשימת ההמתנה"
+    waitlist_joined: "אתם ברשימת ההמתנה. נודיע לכם כאשר תתפנה פגישה."
+    waitlist_already_joined: "אתם כבר ברשימת ההמתנה לשירות זה."
+    waitlist_left: "הוסרתם מרשימת ההמתנה."
+    waitlist_link_invalid: "קישור רשימת ההמתנה הזה אינו תקף עוד."
+    fully_booked_notice: "הודעת תפוסה מלאה"
+    fully_booked_notice_hint: "מוצג בשלבים הראשונים כאשר לשירות או לספק שנבחרו אין פגישות פנויות בטווח ההזמנה."
+    fully_booked_notice_default: "אין פגישות פנויות. אנא נסו שירות או ספק אחר, או נסו שוב מאוחר יותר."
+    notices: "הודעות"
+    waitlist_enabled: "רשימת המתנה"
+    waitlist_enabled_hint: "לאפשר ללקוחות להירשם כדי לקבל הודעה כאשר תתפנה פגישה."
+    waitlist_days: "מספר ימים ברשימה"
+    waitlist_days_hint: "רישומים מוסרים לאחר מספר ימים זה."
+    waitlist_max_notices: "מספר הודעות על תורים שהתפנו לכל נרשם"
+    waitlist_max_notices_hint: "הפסקת עדכון נרשם על תורים שהתפנו לאחר מספר הודעות זה."
+    waitlist_min_slots: "תורים פנויים להודעה היומית"
+    waitlist_min_slots_hint: "ההודעה היומית נשלחת כאשר לפחות מספר זה של פגישות פנויות בטווח ההזמנה."
+    waitlist_stagger_seconds: "שניות בין הודעות"
+    waitlist_stagger_seconds_hint: "כל נרשם מקבל עדכון זמן קצר אחרי הנרשם שלפניו, כאשר מי שממתין הכי הרבה זמן מקבל עדכון ראשון, כדי לתת לו יתרון בהזמנה."
+    notification_event_waitlist_slot_freed: "רשימת המתנה - תור התפנה"
+    notification_event_waitlist_daily: "רשימת המתנה - זמינות יומית"
+    waitlist_hint: "לקוחות הממתינים שתתפנה פגישה."
+    waitlist_empty: "אין ממתינים."
+    waitlist_signed_up: "תאריך הרשמה"
+    waitlist_expires: "תוקף עד"
+    waitlist_messages_sent: "הודעות שנשלחו"
+    calendar_feed: "פיד יומן"
+    calendar_feed_hint: "הירשם לקישור זה באפליקציית היומן שלך כדי לראות את הפגישות שלך שם. כל מי שיש לו את הקישור יכול לראות את היומן, לכן שמור עליו בסודיות ואפס אותו אם הוא דלף."
+    calendar_feed_link: "קישור הפיד"
+    calendar_feed_copy: "העתקת קישור"
+    calendar_feed_copied: "הועתק"
+    calendar_feed_reset: "איפוס קישור"
+    calendar_feed_reset_confirm: "לאפס את הקישור? אפליקציות יומן שמשתמשות בקישור הישן יפסיקו להתעדכן עד שתוסיף את הקישור החדש."
+    calendar_feed_google: "Google Calendar: במחשב נייד פתח את Google Calendar, ליד Other calendars לחץ על סימן הפלוס, בחר From URL, הדבק את הקישור ולחץ על Add calendar. הוא יופיע אז גם בטלפון שלך."
+    calendar_feed_apple: "Apple Calendar: במחשב Mac בחר File, New Calendar Subscription והדבק את הקישור. באייפון עבור אל Settings, Calendar, Accounts, Add Account, Other, Add Subscribed Calendar."
+    calendar_feed_refresh_note: "Google מרענן יומנים מנוי רק כל 8 עד 24 שעות, ו-Apple כל שעה אלא אם תשנה זאת, לכן כדי לראות את הפגישות של היום התחבר כאן במקום להסתמך על אפליקציית היומן שלך."
+    date_display: "תצוגת תאריך"
+    date_display_hint: "כיצד תאריכים נכתבים בדפים ובהודעות. שדות התאריך שומרים על התבנית המספרית שלמעלה."
+    time_off: "חופשה"
+    time_off_hint: "עבור חלק מיום חופשה, הזינו את שעות ההיעדרות שלכם. הן נשמרות כהפסקה בתאריכים אלו."
+    messages_sms_variation: "גיוון כל SMS"
+    messages_sms_variation_hint: "מוסיף קוד ייחוס קצר לסוף כל SMS כדי שלא יהיו שני מסרונים זהים, דרישה של חלק מהרשתות."
+    merge_customer: "מיזוג לתוך לקוח אחר"
+    merge_customer_hint: "הזינו את האימייל או מספר הטלפון של הלקוח האחר. הפגישות וההודעות של לקוח זה יועברו לרשומה ההיא ורשומה זו תימחק."
+    merge_customer_button: "מיזוג"
+    merge_customer_confirm: "למזג לקוח זה לתוך הרשומה האחרת? לא ניתן לבטל פעולה זו."
+    merge_customer_not_found: "אין לקוח אחר עם אימייל או מספר טלפון זה."
+    customer_merged: "הלקוחות מוזגו"
+    provider_color_hint: "משמש לפגישות של ספק זה כאשר היומן מציג את כולם."
+    other_emails: "כתובות אימייל נוספות"
+    other_emails_hint: "אחת בכל שורה. הזמנות והודעות מכל אחת מהכתובות הללו שייכות ללקוח זה."
+    other_phones: "מספרי טלפון נוספים"
+    other_phones_hint: "אחת בכל שורה. הזמנות והודעות מכל אחד מהמספרים הללו שייכות ללקוח זה."

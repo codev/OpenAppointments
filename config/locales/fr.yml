@@ -765,7 +765,7 @@ fr:
     notification_event_created: Appointment Created
     notification_event_created_or_updated: Appointment Created or Updated
     notification_event_updated: Appointment Updated
-    notification_event_cancelled: Appointment Canceled
+    notification_event_cancelled: Appointment Cancelled
     notification_event_missed: Appointment Missed
     notification_lead_before: Send this long before the appointment
     notification_lead_day_at: Send a number of days before, at a set time
@@ -870,15 +870,15 @@ fr:
     rs_days_first_letter: Su, M, Tu, W, Th, F, Sa
     rs_order: 1st, 2nd, 3rd, 4th, 5th, Last
     notification_cancellation_scope: Send
-    notification_cancellation_all: For all canceled appointments
-    notification_cancellation_in_time: For appointments canceled within the cancellation window
-    notification_cancellation_late: For appointments canceled too late
+    notification_cancellation_all: For all cancelled appointments
+    notification_cancellation_in_time: For appointments cancelled within the cancellation window
+    notification_cancellation_late: For appointments cancelled too late
     notification_cancellation_scope_hint: 'The window is the late cancellation time in Business Logic.'
     minimum_times_before_appointments: 'Minimum Times Before Appointments'
     booking_window: 'Time Before An Appointment A Customer Can Book'
     booking_window_hint: 'Customers cannot book a slot that starts sooner than this.'
     late_window: 'Time Before An Appointment A Customer Can Reschedule/Cancel Before Late Cancellation'
-    late_window_hint: 'Inside this window the customer can only late cancel, which sets the Late Cancel status and keeps the slot free for others. Must not be longer than the booking window.'
+    late_window_hint: 'Inside this window the customer can only late cancel, which sets the Late Cancel status and keeps the slot free for others.'
     status_booked: 'Default for new bookings'
     status_rescheduled: 'Set on the original when a customer reschedules'
     status_cancelled: 'Set when an appointment is cancelled'
@@ -921,3 +921,59 @@ fr:
     display_booking_notice_time_step: "Afficher l'avis de réservation à l'étape date/heure"
     display_booking_notice_info_step: "Afficher l'avis de réservation à l'étape coordonnées du client"
     booking_notice_content: "Contenu de l'avis de réservation"
+    waitlist: "Liste d'attente"
+    waitlist_signup_title: "Rejoindre la liste d'attente"
+    waitlist_signup_hint: "Laissez vos coordonnées et nous vous préviendrons dès qu'un rendez-vous adapté sera disponible."
+    waitlist_join: "Rejoindre la liste d'attente"
+    waitlist_joined: "Vous êtes sur la liste d'attente. Nous vous préviendrons dès qu'un rendez-vous sera disponible."
+    waitlist_already_joined: "Vous êtes déjà sur la liste d'attente pour cette prestation."
+    waitlist_left: "Vous avez été retiré de la liste d'attente."
+    waitlist_link_invalid: "Ce lien de liste d'attente n'est plus valable."
+    fully_booked_notice: "Message de complet"
+    fully_booked_notice_hint: "Affiché dès les premières étapes lorsque la prestation ou l'exécutant choisi n'a aucun rendez-vous libre dans le délai de réservation."
+    fully_booked_notice_default: "Aucun rendez-vous n'est disponible. Veuillez essayer une autre prestation ou un autre exécutant, ou réessayer plus tard."
+    notices: "Messages"
+    waitlist_enabled: "Liste d'attente"
+    waitlist_enabled_hint: "Permettre aux clients de s'inscrire pour être prévenus dès qu'un rendez-vous se libère."
+    waitlist_days: "Jours sur la liste"
+    waitlist_days_hint: "Les inscriptions sont retirées après ce nombre de jours."
+    waitlist_max_notices: "Messages de créneau libéré par inscription"
+    waitlist_max_notices_hint: "Cesser d'informer une inscription des créneaux libérés après ce nombre de messages."
+    waitlist_min_slots: "Créneaux libres pour le message quotidien"
+    waitlist_min_slots_hint: "Le message quotidien est envoyé lorsqu'au moins ce nombre de rendez-vous sont libres dans le délai de réservation."
+    waitlist_stagger_seconds: "Secondes entre les messages"
+    waitlist_stagger_seconds_hint: "Chaque inscription est prévenue un peu après la précédente, les plus anciennes en attente en premier, afin qu'elles aient une longueur d'avance pour réserver."
+    notification_event_waitlist_slot_freed: "Liste d'attente - Créneau libéré"
+    notification_event_waitlist_daily: "Liste d'attente - Disponibilité quotidienne"
+    waitlist_hint: "Clients en attente d'un rendez-vous qui se libère."
+    waitlist_empty: "Personne n'est en attente."
+    waitlist_signed_up: "Inscrit"
+    waitlist_expires: "Expire"
+    waitlist_messages_sent: "Messages envoyés"
+    calendar_feed: "Flux calendrier"
+    calendar_feed_hint: "Abonnez-vous à ce lien dans votre propre application calendrier pour y voir vos rendez-vous. Toute personne disposant du lien peut voir le calendrier, gardez-le donc privé et réinitialisez-le s'il venait à être divulgué."
+    calendar_feed_link: "Lien du flux"
+    calendar_feed_copy: "Copier le lien"
+    calendar_feed_copied: "Copié"
+    calendar_feed_reset: "Réinitialiser le lien"
+    calendar_feed_reset_confirm: "Réinitialiser le lien ? Les applications calendrier utilisant l'ancien lien cesseront de se mettre à jour tant que vous n'aurez pas ajouté le nouveau."
+    calendar_feed_google: "Google Calendar : sur un ordinateur portable, ouvrez Google Calendar, à côté de Autres agendas cliquez sur le signe plus, choisissez Depuis une URL, collez le lien et cliquez sur Ajouter un agenda. Il s'affiche ensuite aussi sur votre téléphone."
+    calendar_feed_apple: "Apple Calendar : sur un Mac, choisissez Fichier, Nouvel abonnement à un calendrier et collez le lien. Sur un iPhone, allez dans Réglages, Calendrier, Comptes, Ajouter un compte, Autre, Ajouter un calendrier par abonnement."
+    calendar_feed_refresh_note: "Google n'actualise les calendriers abonnés que toutes les 8 à 24 heures, et Apple toutes les heures sauf si vous le modifiez, donc pour voir les rendez-vous du jour, connectez-vous ici plutôt que de compter sur votre application calendrier."
+    date_display: "Affichage de la date"
+    date_display_hint: "La façon dont les dates sont écrites sur les pages et dans les messages. Les champs de date conservent le format numérique ci-dessus."
+    time_off: "Absence"
+    time_off_hint: "Pour une absence sur une partie de la journée, saisissez les heures où vous êtes absent. Elles sont enregistrées comme une pause à ces dates."
+    messages_sms_variation: "Varier chaque SMS"
+    messages_sms_variation_hint: "Ajoute un court code de référence à la fin de chaque SMS afin qu'aucun texte ne soit identique, ce que certains opérateurs exigent."
+    merge_customer: "Fusionner avec un autre client"
+    merge_customer_hint: "Saisissez l'email ou le numéro de téléphone de l'autre client. Les rendez-vous et messages de ce client seront transférés vers cet enregistrement et celui-ci sera supprimé."
+    merge_customer_button: "Fusionner"
+    merge_customer_confirm: "Fusionner ce client avec l'autre enregistrement ? Cette action est irréversible."
+    merge_customer_not_found: "Aucun autre client n'a cet email ou ce numéro de téléphone."
+    customer_merged: "Clients fusionnés"
+    provider_color_hint: "Utilisée pour les rendez-vous de cet exécutant lorsque le calendrier affiche tout le monde."
+    other_emails: "Autres adresses e-mail"
+    other_emails_hint: "Une par ligne. Les réservations et messages provenant de l'une de ces adresses appartiennent à ce client."
+    other_phones: "Autres numéros de téléphone"
+    other_phones_hint: "Un par ligne. Les réservations et messages provenant de l'un de ces numéros appartiennent à ce client."

@@ -20,6 +20,14 @@ class AlertMailer < ActionMailer::Base
     mail(to: self.class.failure_recipients, subject: "[OpenAppointments] Repeating appointments not booked")
   end
 
+  # Repeated failed logins reached a limit; that IP or username is refused for a while.
+  def login_attempts(ip, username)
+    @ip = ip
+    @username = username
+    @window_minutes = (LoginThrottle::WINDOW / 60).to_i
+    mail(to: self.class.failure_recipients, subject: "[OpenAppointments] Repeated failed logins")
+  end
+
   # The configured list, else every admin.
   def self.failure_recipients
     configured = Setting.get("messages_failure_alert_emails").to_s.split(/[\s,;]+/).reject(&:blank?)

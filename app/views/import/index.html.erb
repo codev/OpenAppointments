@@ -10,7 +10,7 @@
 
         <h5 class="mb-3 fw-light"><%= lang('reports') %></h5>
 
-        <form class="card card-body mb-4" method="get" action="/import/report" id="report-form" data-turbo="false">
+        <form class="card card-body mb-4" method="get" action="/data/report" id="report-form" data-turbo="false">
             <h6 class="fw-light"><%= lang('appointment_report') %></h6>
             <p class="text-muted small"><%= lang('report_hint') %></p>
             <div class="row g-3 mb-3">
@@ -44,7 +44,7 @@
             </div>
         </form>
 
-        <form class="card card-body mb-4" method="get" action="/import/customer_report" id="customer-report-form" data-turbo="false">
+        <form class="card card-body mb-4" method="get" action="/data/customer_report" id="customer-report-form" data-turbo="false">
             <h6 class="fw-light"><%= lang('customer_report') %></h6>
             <p class="text-muted small"><%= lang('customer_report_hint') %></p>
             <div>
@@ -57,7 +57,7 @@
 
         <p class="text-muted small"><%= lang('import_hint') %></p>
 
-        <%= form_with url: "/import/start", method: :post, multipart: true, id: "import-form", class: "card card-body mb-4", data: { turbo: false } do %>
+        <%= form_with url: "/data/start", method: :post, multipart: true, id: "import-form", class: "card card-body mb-4", data: { turbo: false } do %>
             <%= hidden_field_tag :form, "1", id: nil %>
             <div class="mb-3">
                 <label class="form-label" for="import-type"><%= lang('import_type') %></label>
@@ -96,14 +96,14 @@
                 </div>
             </div>
             <div class="d-flex gap-2">
-                <button type="submit" id="analyze-import" class="btn btn-outline-secondary" formaction="/import/analyze"><%= lang('analyze') %></button>
+                <button type="submit" id="analyze-import" class="btn btn-outline-secondary" formaction="/data/analyze"><%= lang('analyze') %></button>
                 <button type="submit" id="start-import" class="btn btn-primary"><%= lang('start_import') %></button>
             </div>
             <%= render "import/status", import_status: @import_status, summary: @summary %>
         <% end %>
 
         <h4 class="mb-3 fw-light text-danger"><%= lang('reset_database') %></h4>
-        <%= form_with url: "/import/reset", method: :post, id: "reset-form", class: "card card-body border-danger", data: { turbo: false } do %>
+        <%= form_with url: "/data/reset", method: :post, id: "reset-form", class: "card card-body border-danger", data: { turbo: false } do %>
             <%= hidden_field_tag :form, "1", id: nil %>
             <div class="alert alert-danger">
                 <i class="fas fa-exclamation-triangle me-2"></i>

@@ -277,6 +277,16 @@ App.Pages.Booking = (function () {
         } else if (form.id === 'book-appointment-form') {
             window.sessionStorage.removeItem(DRAFT_KEY);
         }
+        if (!event.defaultPrevented) {
+            showNextSpinner(form);
+        }
+    }
+
+    // Next is disabled with a spinner until the next step replaces the frame.
+    function showNextSpinner(form) {
+        const $next = $(form).find('.button-next');
+        $next.prop('disabled', true);
+        $next.find('i').replaceWith('<span class="spinner-border spinner-border-sm ms-2" role="status" aria-hidden="true"></span>');
     }
 
     function initializeStep() {

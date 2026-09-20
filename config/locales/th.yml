@@ -765,7 +765,7 @@ th:
     notification_event_created: Appointment Created
     notification_event_created_or_updated: Appointment Created or Updated
     notification_event_updated: Appointment Updated
-    notification_event_cancelled: Appointment Canceled
+    notification_event_cancelled: Appointment Cancelled
     notification_event_missed: Appointment Missed
     notification_lead_before: Send this long before the appointment
     notification_lead_day_at: Send a number of days before, at a set time
@@ -870,15 +870,15 @@ th:
     rs_days_first_letter: Su, M, Tu, W, Th, F, Sa
     rs_order: 1st, 2nd, 3rd, 4th, 5th, Last
     notification_cancellation_scope: Send
-    notification_cancellation_all: For all canceled appointments
-    notification_cancellation_in_time: For appointments canceled within the cancellation window
-    notification_cancellation_late: For appointments canceled too late
+    notification_cancellation_all: For all cancelled appointments
+    notification_cancellation_in_time: For appointments cancelled within the cancellation window
+    notification_cancellation_late: For appointments cancelled too late
     notification_cancellation_scope_hint: 'The window is the late cancellation time in Business Logic.'
     minimum_times_before_appointments: 'Minimum Times Before Appointments'
     booking_window: 'Time Before An Appointment A Customer Can Book'
     booking_window_hint: 'Customers cannot book a slot that starts sooner than this.'
     late_window: 'Time Before An Appointment A Customer Can Reschedule/Cancel Before Late Cancellation'
-    late_window_hint: 'Inside this window the customer can only late cancel, which sets the Late Cancel status and keeps the slot free for others. Must not be longer than the booking window.'
+    late_window_hint: 'Inside this window the customer can only late cancel, which sets the Late Cancel status and keeps the slot free for others.'
     status_booked: 'Default for new bookings'
     status_rescheduled: 'Set on the original when a customer reschedules'
     status_cancelled: 'Set when an appointment is cancelled'
@@ -921,3 +921,59 @@ th:
     display_booking_notice_time_step: "แสดงประกาศการจองในขั้นตอนวันที่/เวลา"
     display_booking_notice_info_step: "แสดงประกาศการจองในขั้นตอนข้อมูลลูกค้า"
     booking_notice_content: "เนื้อหาประกาศการจอง"
+    waitlist: "รายชื่อรอ"
+    waitlist_signup_title: "เข้าร่วมรายชื่อรอ"
+    waitlist_signup_hint: "กรุณาฝากข้อมูลของท่านไว้ เราจะแจ้งให้ทราบเมื่อมีนัดหมายที่เหมาะสมว่าง"
+    waitlist_join: "เข้าร่วมรายชื่อรอ"
+    waitlist_joined: "ท่านอยู่ในรายชื่อรอแล้ว เราจะแจ้งให้ทราบเมื่อมีนัดหมายว่าง"
+    waitlist_already_joined: "ท่านอยู่ในรายชื่อรอของบริการนี้อยู่แล้ว"
+    waitlist_left: "ท่านถูกนำออกจากรายชื่อรอแล้ว"
+    waitlist_link_invalid: "ลิงก์รายชื่อรอนี้ใช้งานไม่ได้อีกต่อไป"
+    fully_booked_notice: "ประกาศเต็มจำนวน"
+    fully_booked_notice_hint: "แสดงในขั้นตอนแรกเมื่อบริการหรือผู้ให้บริการที่เลือกไม่มีนัดหมายว่างภายในช่วงเวลาที่สามารถจองได้"
+    fully_booked_notice_default: "ไม่มีนัดหมายว่างในขณะนี้ กรุณาลองเลือกบริการหรือผู้ให้บริการอื่น หรือลองใหม่อีกครั้งในภายหลัง"
+    notices: "ประกาศ"
+    waitlist_enabled: "รายชื่อรอ"
+    waitlist_enabled_hint: "ให้ลูกค้าลงชื่อเพื่อรับแจ้งเมื่อมีนัดหมายว่าง"
+    waitlist_days: "จำนวนวันที่อยู่ในรายชื่อ"
+    waitlist_days_hint: "รายชื่อจะถูกลบออกหลังจากจำนวนวันนี้"
+    waitlist_max_notices: "จำนวนข้อความแจ้งช่วงเวลาว่างต่อผู้ลงชื่อหนึ่งคน"
+    waitlist_max_notices_hint: "หยุดแจ้งช่วงเวลาว่างให้ผู้ลงชื่อหลังจากส่งข้อความครบจำนวนนี้"
+    waitlist_min_slots: "จำนวนช่วงเวลาว่างขั้นต่ำสำหรับข้อความประจำวัน"
+    waitlist_min_slots_hint: "ข้อความประจำวันจะถูกส่งเมื่อมีนัดหมายว่างอย่างน้อยตามจำนวนนี้ภายในช่วงเวลาที่สามารถจองได้"
+    waitlist_stagger_seconds: "จำนวนวินาทีระหว่างข้อความ"
+    waitlist_stagger_seconds_hint: "ผู้ลงชื่อแต่ละคนจะได้รับแจ้งหลังจากคนก่อนหน้าเล็กน้อย โดยผู้ที่รอนานที่สุดจะได้รับแจ้งก่อน เพื่อให้มีโอกาสจองก่อนผู้อื่น"
+    notification_event_waitlist_slot_freed: "รายชื่อรอ - มีช่วงเวลาว่าง"
+    notification_event_waitlist_daily: "รายชื่อรอ - ความพร้อมใช้งานประจำวัน"
+    waitlist_hint: "ลูกค้าที่กำลังรอให้นัดหมายว่าง"
+    waitlist_empty: "ไม่มีผู้ใดรออยู่"
+    waitlist_signed_up: "วันที่ลงชื่อ"
+    waitlist_expires: "วันหมดอายุ"
+    waitlist_messages_sent: "ข้อความที่ส่งแล้ว"
+    calendar_feed: "ฟีดปฏิทิน"
+    calendar_feed_hint: "สมัครรับลิงก์นี้ในแอปปฏิทินของคุณเองเพื่อดูการนัดหมายของคุณที่นั่น ใครก็ตามที่มีลิงก์นี้สามารถดูปฏิทินได้ ดังนั้นควรเก็บไว้เป็นส่วนตัวและรีเซ็ตหากลิงก์รั่วไหล"
+    calendar_feed_link: "ลิงก์ฟีด"
+    calendar_feed_copy: "คัดลอกลิงก์"
+    calendar_feed_copied: "คัดลอกแล้ว"
+    calendar_feed_reset: "รีเซ็ตลิงก์"
+    calendar_feed_reset_confirm: "รีเซ็ตลิงก์หรือไม่? แอปปฏิทินที่ใช้ลิงก์เดิมจะหยุดอัปเดตจนกว่าคุณจะเพิ่มลิงก์ใหม่"
+    calendar_feed_google: "Google Calendar: บนแล็ปท็อปให้เปิด Google Calendar คลิกเครื่องหมายบวกข้าง Other calendars เลือก From URL วางลิงก์แล้วคลิก Add calendar จากนั้นจะแสดงบนโทรศัพท์ของคุณด้วย"
+    calendar_feed_apple: "Apple Calendar: บน Mac เลือก File จากนั้น New Calendar Subscription แล้ววางลิงก์ บน iPhone ให้ไปที่ Settings, Calendar, Accounts, Add Account, Other, Add Subscribed Calendar"
+    calendar_feed_refresh_note: "Google รีเฟรชปฏิทินที่สมัครรับไว้ทุก 8 ถึง 24 ชั่วโมงเท่านั้น และ Apple ทุกชั่วโมงเว้นแต่คุณจะเปลี่ยนการตั้งค่า ดังนั้นในการดูการนัดหมายของวันนี้ ให้เข้าสู่ระบบที่นี่แทนที่จะพึ่งพาแอปปฏิทินของคุณ"
+    date_display: "การแสดงวันที่"
+    date_display_hint: "วิธีเขียนวันที่ในหน้าต่างๆ และข้อความ ช่องวันที่ยังคงใช้รูปแบบตัวเลขด้านบน"
+    time_off: "วันหยุด"
+    time_off_hint: "สำหรับการหยุดบางส่วนของวัน ให้ป้อนจำนวนชั่วโมงที่คุณไม่อยู่ ซึ่งจะถูกบันทึกเป็นช่วงพักในวันที่นั้น"
+    messages_sms_variation: "เปลี่ยนแปลงข้อความ SMS แต่ละข้อความ"
+    messages_sms_variation_hint: "เพิ่มรหัสอ้างอิงสั้นๆ ต่อท้ายข้อความ SMS ทุกข้อความ เพื่อไม่ให้ข้อความสองข้อความเหมือนกัน ซึ่งบางเครือข่ายกำหนดให้ต้องทำเช่นนี้"
+    merge_customer: "รวมเข้ากับลูกค้ารายอื่น"
+    merge_customer_hint: "ป้อนอีเมลหรือหมายเลขโทรศัพท์ของลูกค้ารายอื่น การนัดหมายและข้อความของลูกค้ารายนี้จะย้ายไปยังบันทึกนั้น และบันทึกนี้จะถูกลบ"
+    merge_customer_button: "รวม"
+    merge_customer_confirm: "รวมลูกค้ารายนี้เข้ากับบันทึกอื่นหรือไม่? การดำเนินการนี้ไม่สามารถยกเลิกได้"
+    merge_customer_not_found: "ไม่มีลูกค้ารายอื่นที่ใช้อีเมลหรือหมายเลขโทรศัพท์นี้"
+    customer_merged: "รวมลูกค้าเรียบร้อยแล้ว"
+    provider_color_hint: "ใช้สำหรับการนัดหมายของผู้ให้บริการรายนี้เมื่อปฏิทินแสดงทุกคน"
+    other_emails: "อีเมลอื่นๆ"
+    other_emails_hint: "หนึ่งรายการต่อบรรทัด การจองและข้อความจากที่อยู่เหล่านี้เป็นของลูกค้ารายนี้"
+    other_phones: "หมายเลขโทรศัพท์อื่นๆ"
+    other_phones_hint: "หนึ่งรายการต่อบรรทัด การจองและข้อความจากหมายเลขเหล่านี้เป็นของลูกค้ารายนี้"

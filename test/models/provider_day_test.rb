@@ -25,4 +25,11 @@ class ProviderDayTest < ActiveSupport::TestCase
       assert_equal entries[1].start.utc_offset, appointment.start_datetime.utc_offset
     end
   end
+
+  test "breaks in the working plan show as break entries, not as free time" do
+    entries = day_for(users(:zane)).entries # fixture plan: 09:00 to 18:00 with a 14:30 to 15:00 break
+    break_entry = entries.find { |entry| entry.kind == "break" }
+    assert_equal [ "14:30", "15:00", I18n.t("ea.break") ], [ break_entry.start.strftime("%H:%M"), break_entry.end.strftime("%H:%M"), break_entry.title ]
+    assert entries.none? { |entry| entry.kind == "free" && entry.start.strftime("%H:%M") < "15:00" && entry.end.strftime("%H:%M") > "14:30" }
+  end
 end

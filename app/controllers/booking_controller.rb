@@ -80,6 +80,28 @@ class BookingController < ApplicationController
     render :index
   end
 
+  # POST /booking/waitlist: the time step's waiting list signup, rendered back
+  # into the same step with the outcome.
+  def waitlist
+    return head :forbidden unless Setting.get("waitlist_enabled") == "1"
+
+    index_vars_for_confirm
+    return head :bad_request unless @reachable.include?("time")
+
+    @step = "time"
+    signup = params.fetch(:waitlist, {}).permit(:name, :email, :phone).to_h
+    @waitlist_notice, @waitlist_alert = waitlist_signup(signup)
+    render :index
+  end
+
+  # GET /booking/waitlist/leave/:token, the link in every waiting list notice.
+  def leave_waitlist
+    entry = WaitlistEntry.find_by(unsubscribe_token: params[:token].to_s)
+    entry&.destroy!
+    render_booking_message(helpers.lang("waitlist"), helpers.lang(entry ? "waitlist_left" : "waitlist_link_invalid"),
+                           icon: entry ? "success.png" : "error.png")
+  end
+
   # POST /booking/register
   def register
     return head :forbidden if Setting.get("disable_booking") == "1"
@@ -140,7 +162,7 @@ class BookingController < ApplicationController
       return form_post? ? register_failed(helpers.lang("turnstile_verification_failed")) : render(json: { turnstile_verification: false })
     end
 
-    existing_customer = User.customers.find_by(email: customer_params["email"]) if customer_params["email"].present?
+    existing_customer = User.customer_by_contact(email: customer_params["email"], phone: customer_params["phone_number"])
     # A reschedule keeps the appointment's customer unless the email now belongs to another record.
     existing_customer ||= original.customer if original
     if existing_customer
@@ -155,7 +177,13 @@ class BookingController < ApplicationController
 
     customer = existing_customer || User.new(role: Role.find_by!(slug: Role::CUSTOMER))
     timezone = customer_params["timezone"].presence || (customer.new_record? ? provider.effective_timezone : customer.timezone)
-    customer.assign_attributes(customer_params.except("id", "timezone", "language").merge("timezone" => timezone))
+    attributes = customer_params.except("id", "timezone", "language")
+    # A known customer keeps their primary email and phone; a different one typed is added as another.
+    if customer.persisted?
+      customer.add_contact(email: attributes["email"], phone: attributes["phone_number"])
+      attributes = attributes.except("email", "phone_number")
+    end
+    customer.assign_attributes(attributes.merge("timezone" => timezone))
     customer.language = session[:language] || Setting.get("default_language", "english")
     customer.save!
 
@@ -184,6 +212,7 @@ class BookingController < ApplicationController
     Synchronization.appointment_saved(appointment, service, provider, customer, settings)
     Notifications.appointment_saved(appointment, service, provider, customer, settings, manage_mode: manage_mode)
     Webhooks.trigger(Webhooks::APPOINTMENT_SAVE, appointment)
+    WaitlistEntry.where(email: customer.email, service_id: service.id).delete_all if customer.email.present?
 
     if form_post?
       redirect_to booking_confirmation_path(appointment_hash: appointment.booking_hash)
@@ -239,7 +268,7 @@ class BookingController < ApplicationController
       available_providers: available_providers,
       theme: theme,
       company_name: Setting.get("company_name"),
-      company_logo: Setting.get("company_logo"),
+      company_logo: CompanyLogo.path,
       company_color: company_color == "#ffffff" ? "" : company_color,
       date_format: Setting.get("date_format"),
       time_format: Setting.get("time_format"),
@@ -248,6 +277,8 @@ class BookingController < ApplicationController
       display_booking_notice_time_step: Setting.get("display_booking_notice_time_step"),
       display_booking_notice_info_step: Setting.get("display_booking_notice_info_step"),
       booking_notice_content: Setting.get("booking_notice_content"),
+      fully_booked_notice_content: Setting.get("fully_booked_notice_content"),
+      display_waitlist: Setting.get("waitlist_enabled"),
       display_cookie_notice: Setting.get("display_cookie_notice"),
       cookie_notice_content: Setting.get("cookie_notice_content"),
       display_terms_and_conditions: Setting.get("display_terms_and_conditions"),
@@ -316,6 +347,24 @@ class BookingController < ApplicationController
       exclude = manage_mode ? html_vars[:appointment_data]["id"] : nil
       @window = BookingWindow.build(service, @provider_id, exclude_appointment_id: exclude)
     end
+    @fully_booked = fully_booked?(first_kind)
+  end
+
+  # The Fully Booked Notice: once the first choice is made and nothing in the
+  # window can be booked for it, and on the time step when the window is empty.
+  def fully_booked?(first_kind)
+    case @step
+    when "second"
+      if first_kind == "service"
+        BookingWindow.fully_booked?(service: Service.find(@service_id))
+      else
+        @provider_id != BookingPayloads::ANY_PROVIDER && BookingWindow.fully_booked?(provider: User.providers.find(@provider_id))
+      end
+    when "time"
+      @window.empty?
+    else
+      false
+    end
   end
 
   # The appointment and provider rows of a reschedule. Private or hidden-category
@@ -354,6 +403,17 @@ class BookingController < ApplicationController
     base_index_vars(available_services, available_providers, manage_mode,
                     appointment: appointment, provider_payload: provider_payload)
     resolve_wizard_state(available_services, available_providers, manage_mode)
+  end
+
+  # [message, alert class] for a signup; an email waits once per service.
+  def waitlist_signup(signup)
+    return [ helpers.lang("fields_are_required"), "danger" ] if signup["name"].blank? || signup["email"].blank?
+    return [ helpers.lang("invalid_email"), "danger" ] unless signup["email"].match?(URI::MailTo::EMAIL_REGEXP)
+    return [ helpers.lang("waitlist_already_joined"), "warning" ] if WaitlistEntry.live.exists?(email: signup["email"], service_id: @service_id)
+
+    provider_id = @provider_id == BookingPayloads::ANY_PROVIDER ? nil : @provider_id
+    WaitlistEntry.create!(signup.merge(service_id: @service_id, provider_id: provider_id))
+    [ helpers.lang("waitlist_joined"), "success" ]
   end
 
   def customer_form_params
@@ -406,13 +466,13 @@ class BookingController < ApplicationController
     end
   end
 
-  def render_booking_message(title, text, raw_text: false)
+  def render_booking_message(title, text, raw_text: false, icon: "error.png")
     html_vars(
       show_message: true,
       page_title: "#{helpers.lang('page_title')} #{Setting.get('company_name')}",
       message_title: title,
       message_text: text,
-      message_icon: helpers.image_path("error.png"),
+      message_icon: helpers.image_path(icon),
       google_analytics_code: Setting.get("google_analytics_code"),
       matomo_analytics_url: Setting.get("matomo_analytics_url"),
       matomo_analytics_site_id: Setting.get("matomo_analytics_site_id"),

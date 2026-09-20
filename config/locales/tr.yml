@@ -765,7 +765,7 @@ tr:
     notification_event_created: Appointment Created
     notification_event_created_or_updated: Appointment Created or Updated
     notification_event_updated: Appointment Updated
-    notification_event_cancelled: Appointment Canceled
+    notification_event_cancelled: Appointment Cancelled
     notification_event_missed: Appointment Missed
     notification_lead_before: Send this long before the appointment
     notification_lead_day_at: Send a number of days before, at a set time
@@ -870,15 +870,15 @@ tr:
     rs_days_first_letter: Su, M, Tu, W, Th, F, Sa
     rs_order: 1st, 2nd, 3rd, 4th, 5th, Last
     notification_cancellation_scope: Send
-    notification_cancellation_all: For all canceled appointments
-    notification_cancellation_in_time: For appointments canceled within the cancellation window
-    notification_cancellation_late: For appointments canceled too late
+    notification_cancellation_all: For all cancelled appointments
+    notification_cancellation_in_time: For appointments cancelled within the cancellation window
+    notification_cancellation_late: For appointments cancelled too late
     notification_cancellation_scope_hint: 'The window is the late cancellation time in Business Logic.'
     minimum_times_before_appointments: 'Minimum Times Before Appointments'
     booking_window: 'Time Before An Appointment A Customer Can Book'
     booking_window_hint: 'Customers cannot book a slot that starts sooner than this.'
     late_window: 'Time Before An Appointment A Customer Can Reschedule/Cancel Before Late Cancellation'
-    late_window_hint: 'Inside this window the customer can only late cancel, which sets the Late Cancel status and keeps the slot free for others. Must not be longer than the booking window.'
+    late_window_hint: 'Inside this window the customer can only late cancel, which sets the Late Cancel status and keeps the slot free for others.'
     status_booked: 'Default for new bookings'
     status_rescheduled: 'Set on the original when a customer reschedules'
     status_cancelled: 'Set when an appointment is cancelled'
@@ -921,3 +921,59 @@ tr:
     display_booking_notice_time_step: "Rezervasyon bildirimini tarih/saat adımında göster"
     display_booking_notice_info_step: "Rezervasyon bildirimini müşteri bilgileri adımında göster"
     booking_notice_content: "Rezervasyon bildirimi içeriği"
+    waitlist: "Bekleme Listesi"
+    waitlist_signup_title: "Bekleme listesine katılın"
+    waitlist_signup_hint: "Bilgilerinizi bırakın, uygun bir randevu açıldığında size haber verelim."
+    waitlist_join: "Bekleme listesine katılın"
+    waitlist_joined: "Bekleme listesindesiniz. Bir randevu açıldığında size haber vereceğiz."
+    waitlist_already_joined: "Bu hizmet için zaten bekleme listesindesiniz."
+    waitlist_left: "Bekleme listesinden çıkarıldınız."
+    waitlist_link_invalid: "Bu bekleme listesi bağlantısı artık geçerli değil."
+    fully_booked_notice: "Doluluk Bildirimi"
+    fully_booked_notice_hint: "Seçilen hizmet veya hizmet sağlayıcının randevu penceresi içinde boş randevusu olmadığında ilk adımlarda gösterilir."
+    fully_booked_notice_default: "Uygun randevu bulunmuyor. Lütfen farklı bir hizmet veya hizmet sağlayıcı deneyin ya da daha sonra tekrar deneyin."
+    notices: "Bildirimler"
+    waitlist_enabled: "Bekleme listesi"
+    waitlist_enabled_hint: "Müşterilerin bir randevu boşaldığında haber almak üzere kaydolmasına izin verin."
+    waitlist_days: "Listede kalış süresi (gün)"
+    waitlist_days_hint: "Kayıtlar bu kadar gün sonra listeden kaldırılır."
+    waitlist_max_notices: "Kayıt başına boşalan randevu bildirimi"
+    waitlist_max_notices_hint: "Bu kadar bildirimden sonra bir kayda boşalan randevular hakkında bilgi vermeyi durdurun."
+    waitlist_min_slots: "Günlük bildirim için boş randevu sayısı"
+    waitlist_min_slots_hint: "Günlük bildirim, randevu penceresi içinde en az bu kadar randevu boş olduğunda gönderilir."
+    waitlist_stagger_seconds: "Bildirimler arası saniye"
+    waitlist_stagger_seconds_hint: "Her kayda bir öncekinden biraz sonra bilgi verilir; en uzun süredir bekleyenler önce bilgilendirilir, böylece randevu almada avantaj kazanırlar."
+    notification_event_waitlist_slot_freed: "Bekleme Listesi - Randevu Boşaldı"
+    notification_event_waitlist_daily: "Bekleme Listesi - Günlük Müsaitlik"
+    waitlist_hint: "Bir randevunun boşalmasını bekleyen müşteriler."
+    waitlist_empty: "Bekleyen kimse yok."
+    waitlist_signed_up: "Kaydolma tarihi"
+    waitlist_expires: "Son geçerlilik"
+    waitlist_messages_sent: "Gönderilen bildirim sayısı"
+    calendar_feed: "Takvim Beslemesi"
+    calendar_feed_hint: "Randevularınızı orada görmek için bu bağlantıya kendi takvim uygulamanızda abone olun. Bağlantıya sahip olan herkes takvimi görebilir, bu yüzden gizli tutun ve dışarı sızarsa sıfırlayın."
+    calendar_feed_link: "Besleme bağlantısı"
+    calendar_feed_copy: "Bağlantıyı kopyala"
+    calendar_feed_copied: "Kopyalandı"
+    calendar_feed_reset: "Bağlantıyı sıfırla"
+    calendar_feed_reset_confirm: "Bağlantı sıfırlansın mı? Eski bağlantıyı kullanan takvim uygulamaları, siz yenisini eklemedikçe güncellenmeyi durduracak."
+    calendar_feed_google: "Google Takvim: bilgisayarda Google Takvim'i açın, Diğer takvimler'in yanındaki artı işaretine tıklayın, URL'den seçeneğini seçin, bağlantıyı yapıştırın ve Takvim ekle'ye tıklayın. Ardından telefonunuzda da görünür."
+    calendar_feed_apple: "Apple Calendar: Mac'te Dosya, Yeni Takvim Aboneliği'ni seçin ve bağlantıyı yapıştırın. iPhone'da Ayarlar, Takvim, Hesaplar, Hesap Ekle, Diğer, Abone Olunan Takvim Ekle yolunu izleyin."
+    calendar_feed_refresh_note: "Google, abone olunan takvimleri yalnızca 8 ila 24 saatte bir yeniler, Apple ise siz değiştirmediğiniz sürece her saat başı yeniler; bu yüzden bugünkü randevularınızı görmek için takvim uygulamanıza güvenmek yerine buraya giriş yapın."
+    date_display: "Tarih gösterimi"
+    date_display_hint: "Tarihlerin sayfalarda ve mesajlarda nasıl yazıldığı. Yukarıdaki sayısal format değişmeden kalır."
+    time_off: "İzin"
+    time_off_hint: "Günün bir bölümü için izinliyseniz, uzakta olduğunuz saatleri girin. Bunlar o tarihlerde ara olarak kaydedilir."
+    messages_sms_variation: "Her SMS'i farklılaştır"
+    messages_sms_variation_hint: "Bazı operatörlerin gerektirdiği gibi hiçbir iki metnin aynı olmaması için her SMS'in sonuna kısa bir referans kodu ekler."
+    merge_customer: "Başka bir müşteriyle birleştir"
+    merge_customer_hint: "Diğer müşterinin e-postasını veya telefon numarasını girin. Bu müşterinin randevuları ve mesajları o kayda taşınır ve bu kayıt silinir."
+    merge_customer_button: "Birleştir"
+    merge_customer_confirm: "Bu müşteri diğer kayıtla birleştirilsin mi? Bu işlem geri alınamaz."
+    merge_customer_not_found: "Bu e-posta veya telefon numarasına sahip başka bir müşteri yok."
+    customer_merged: "Müşteriler birleştirildi"
+    provider_color_hint: "Takvim herkesi gösterdiğinde bu hizmet sağlayıcının randevuları için kullanılır."
+    other_emails: "Diğer e-postalar"
+    other_emails_hint: "Her satıra bir tane. Bu adreslerden herhangi birinden gelen rezervasyonlar ve mesajlar bu müşteriye aittir."
+    other_phones: "Diğer telefon numaraları"
+    other_phones_hint: "Her satıra bir tane. Bu numaralardan herhangi birinden gelen rezervasyonlar ve mesajlar bu müşteriye aittir."

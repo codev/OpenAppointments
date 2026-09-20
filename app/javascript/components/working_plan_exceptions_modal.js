@@ -22,6 +22,8 @@ App.Components.WorkingPlanExceptionsModal = (function () {
     const $endTime = () => $('#working-plan-exceptions-end-time');
     const $breaks = () => $('#working-plan-exceptions-breaks');
     const $save = () => $('#working-plan-exceptions-save');
+    const $timeOffStart = () => $('#working-plan-exceptions-time-off-start');
+    const $timeOffEnd = () => $('#working-plan-exceptions-time-off-end');
     const $addBreak = () => $('.working-plan-exceptions-add-break');
     const $isNonWorkingDay = () => $('#working-plan-exceptions-is-non-working-day');
     const $isNonWorkingDayGroup = () => $('#working-plan-exceptions-is-non-working-day-group');
@@ -71,6 +73,8 @@ App.Components.WorkingPlanExceptionsModal = (function () {
         $startTime().prop('disabled', isNonWorkingDay).toggleClass('text-decoration-line-through', isNonWorkingDay);
         $endTime().prop('disabled', isNonWorkingDay).toggleClass('text-decoration-line-through', isNonWorkingDay);
         $addBreak().prop('disabled', isNonWorkingDay);
+        $timeOffStart().prop('disabled', isNonWorkingDay);
+        $timeOffEnd().prop('disabled', isNonWorkingDay);
         $breaks().find('button').prop('disabled', isNonWorkingDay);
         $breaks().toggleClass('text-decoration-line-through', isNonWorkingDay);
     }
@@ -124,6 +128,21 @@ App.Components.WorkingPlanExceptionsModal = (function () {
      */
     function onModalHidden() {
         resetModal();
+    }
+
+    // Time off is a break on the dates: both ends typed, else nothing.
+    function getTimeOff() {
+        const start = App.Utils.UI.getDateTimePickerValue($timeOffStart());
+        const end = App.Utils.UI.getDateTimePickerValue($timeOffEnd());
+        if (!start || !end) {
+            return [];
+        }
+        return [{start: moment(start).format('HH:mm'), end: moment(end).format('HH:mm')}];
+    }
+
+    function resetTimeOff() {
+        App.Utils.UI.setDateTimePickerValue($timeOffStart(), null);
+        App.Utils.UI.setDateTimePickerValue($timeOffEnd(), null);
     }
 
     /**
@@ -186,7 +205,7 @@ App.Components.WorkingPlanExceptionsModal = (function () {
             endDate: endDate,
             startTime: isNonWorkingDay ? null : moment(App.Utils.UI.getDateTimePickerValue($startTime())).format('HH:mm'),
             endTime: isNonWorkingDay ? null : moment(App.Utils.UI.getDateTimePickerValue($endTime())).format('HH:mm'),
-            breaks: isNonWorkingDay ? [] : getBreaks(),
+            breaks: isNonWorkingDay ? [] : getBreaks().concat(getTimeOff()),
         };
 
         deferred.resolve(workingPlanException);
@@ -238,6 +257,7 @@ App.Components.WorkingPlanExceptionsModal = (function () {
     function resetTimeSelection() {
         App.Utils.UI.setDateTimePickerValue($startTime(), moment('08:00', 'HH:mm').toDate());
         App.Utils.UI.setDateTimePickerValue($endTime(), moment('20:00', 'HH:mm').toDate());
+        resetTimeOff();
     }
 
     /**
@@ -507,6 +527,8 @@ App.Components.WorkingPlanExceptionsModal = (function () {
         App.Utils.UI.initializeDatePicker($endDate());
         App.Utils.UI.initializeTimePicker($startTime());
         App.Utils.UI.initializeTimePicker($endTime());
+        App.Utils.UI.initializeTimePicker($timeOffStart());
+        App.Utils.UI.initializeTimePicker($timeOffEnd());
 
         $modal()
             .on('hidden.bs.modal', onModalHidden)

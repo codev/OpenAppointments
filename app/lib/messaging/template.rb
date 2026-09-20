@@ -1,5 +1,6 @@
 # {{Token}} substitution for notification texts. Tokens are matched
-# case-insensitively; unknown tokens render empty.
+# case-insensitively; unknown tokens render empty. A context value may be a
+# callable, resolved only when a template uses its token.
 module Messaging
   module Template
     # Shown on the Notifications page guide; keep in sync with context builders.
@@ -9,29 +10,33 @@ module Messaging
       "Service Duration", "Appointment Date", "Appointment Time",
       "Appointment End Time", "Appointment Status", "Appointment Link",
       "Cancellation Reason", "Repeats", "Next Appointment", "User Name",
-      "Customer Message Link", "Booking Notice"
+      "Customer Message Link", "Booking Notice", "Booking Link", "Unsubscribe Link"
     ].freeze
 
     module_function
 
     def render(text, context)
       normalized = context.transform_keys { |key| key.to_s.downcase }
-      text.to_s.gsub(/\{\{\s*([^{}]+?)\s*\}\}/) { normalized[Regexp.last_match(1).downcase].to_s }
+      text.to_s.gsub(/\{\{\s*([^{}]+?)\s*\}\}/) do
+        value = normalized[Regexp.last_match(1).downcase]
+        (value.respond_to?(:call) ? value.call : value).to_s
+      end
     end
 
     def base_context
       {
         "Company Name" => Setting.get("company_name", ""),
         "Company Link" => Setting.get("company_link", ""),
-        "Booking Notice" => plain_text(Setting.get("booking_notice_content", ""))
+        "Booking Notice" => -> { plain_text(Setting.get("booking_notice_content", "")) }
       }
     end
 
     # Rich text settings as message text: block ends and line breaks become
-    # newlines, every other tag is dropped.
+    # newlines, every other tag is dropped and entities become their characters
+    # (message channels escape plain text themselves).
     def plain_text(html)
       text = html.to_s.gsub(%r{</(p|div|h\d|li)>|<br\s*/?>}i, "\n")
-      Rails::Html::FullSanitizer.new.sanitize(text).to_s.strip
+      CGI.unescapeHTML(Rails::Html::FullSanitizer.new.sanitize(text).to_s).strip
     end
 
     # Tokens for an incoming customer message: the customer and a login link to
@@ -43,6 +48,28 @@ module Messaging
         "Customer Email" => customer.email.to_s,
         "Customer Phone" => sms_address(customer).to_s,
         "Customer Message Link" => "#{base_url}/customers?customer_id=#{customer.id}&section=messages"
+      )
+    end
+
+    # Tokens for a waiting list notice. A freed slot carries its provider and
+    # start (provider wall clock); the booking link opens the wizard on it.
+    def waitlist_context(entry:, provider: nil, start_at: nil)
+      service = entry.service
+      link = "#{base_url}/booking?service=#{service.booking_slug}"
+      link += "&provider=#{provider.booking_slug}" if provider
+      link += "&date=#{start_at.strftime('%Y-%m-%d')}&time=#{start_at.strftime('%H:%M')}&step=time" if start_at
+      base_context.merge(
+        "Customer Name" => entry.name.to_s,
+        "Customer First Name" => entry.name.to_s.split(" ").first.to_s,
+        "Customer Email" => entry.email.to_s,
+        "Customer Phone" => sms_address(entry).to_s,
+        "Provider Name" => provider&.name.to_s,
+        "Service Name" => service.name.to_s,
+        "Service Duration" => service.duration.to_s,
+        "Appointment Date" => start_at ? format_date(start_at) : "",
+        "Appointment Time" => start_at ? format_time(start_at) : "",
+        "Booking Link" => link,
+        "Unsubscribe Link" => "#{base_url}/booking/waitlist/leave/#{entry.unsubscribe_token}"
       )
     end
 
@@ -104,9 +131,7 @@ module Messaging
     end
 
     def format_date(time)
-      format = MailerFormatHelper::DATE_FORMATS[Setting.get("date_format")] ||
-               MailerFormatHelper::DATE_FORMATS["DMY"]
-      time.strftime(format)
+      DateDisplay.format(time)
     end
 
     def format_time(time)

@@ -765,7 +765,7 @@ da:
     notification_event_created: Appointment Created
     notification_event_created_or_updated: Appointment Created or Updated
     notification_event_updated: Appointment Updated
-    notification_event_cancelled: Appointment Canceled
+    notification_event_cancelled: Appointment Cancelled
     notification_event_missed: Appointment Missed
     notification_lead_before: Send this long before the appointment
     notification_lead_day_at: Send a number of days before, at a set time
@@ -870,15 +870,15 @@ da:
     rs_days_first_letter: Su, M, Tu, W, Th, F, Sa
     rs_order: 1st, 2nd, 3rd, 4th, 5th, Last
     notification_cancellation_scope: Send
-    notification_cancellation_all: For all canceled appointments
-    notification_cancellation_in_time: For appointments canceled within the cancellation window
-    notification_cancellation_late: For appointments canceled too late
+    notification_cancellation_all: For all cancelled appointments
+    notification_cancellation_in_time: For appointments cancelled within the cancellation window
+    notification_cancellation_late: For appointments cancelled too late
     notification_cancellation_scope_hint: 'The window is the late cancellation time in Business Logic.'
     minimum_times_before_appointments: 'Minimum Times Before Appointments'
     booking_window: 'Time Before An Appointment A Customer Can Book'
     booking_window_hint: 'Customers cannot book a slot that starts sooner than this.'
     late_window: 'Time Before An Appointment A Customer Can Reschedule/Cancel Before Late Cancellation'
-    late_window_hint: 'Inside this window the customer can only late cancel, which sets the Late Cancel status and keeps the slot free for others. Must not be longer than the booking window.'
+    late_window_hint: 'Inside this window the customer can only late cancel, which sets the Late Cancel status and keeps the slot free for others.'
     status_booked: 'Default for new bookings'
     status_rescheduled: 'Set on the original when a customer reschedules'
     status_cancelled: 'Set when an appointment is cancelled'
@@ -921,3 +921,59 @@ da:
     display_booking_notice_time_step: "Vis bookingmeddelelse på dato/tid-trinnet"
     display_booking_notice_info_step: "Vis bookingmeddelelse på kundeoplysninger-trinnet"
     booking_notice_content: "Indhold af bookingmeddelelse"
+    waitlist: "Venteliste"
+    waitlist_signup_title: "Tilmeld dig ventelisten"
+    waitlist_signup_hint: "Efterlad dine oplysninger, så giver vi dig besked, når en passende aftale bliver ledig."
+    waitlist_join: "Tilmeld dig ventelisten"
+    waitlist_joined: "Du er på ventelisten. Vi giver dig besked, når en aftale bliver ledig."
+    waitlist_already_joined: "Du er allerede på ventelisten for denne betjening."
+    waitlist_left: "Du er blevet fjernet fra ventelisten."
+    waitlist_link_invalid: "Dette link til ventelisten er ikke længere gyldigt."
+    fully_booked_notice: "Besked om fuldt booket"
+    fully_booked_notice_hint: "Vises i de første trin, når den valgte betjening eller leverandør ikke har ledige aftaler inden for bookingvinduet."
+    fully_booked_notice_default: "Der er ingen ledige aftaler. Prøv en anden betjening eller leverandør, eller prøv igen senere."
+    notices: "Beskeder"
+    waitlist_enabled: "Venteliste"
+    waitlist_enabled_hint: "Lad kunder tilmelde sig for at få besked, når en aftale bliver ledig."
+    waitlist_days: "Dage på listen"
+    waitlist_days_hint: "Tilmeldinger fjernes efter dette antal dage."
+    waitlist_max_notices: "Beskeder om ledig tid pr. tilmelding"
+    waitlist_max_notices_hint: "Stop med at give en tilmelding besked om ledige tider efter dette antal beskeder."
+    waitlist_min_slots: "Ledige tider for den daglige besked"
+    waitlist_min_slots_hint: "Den daglige besked sendes, når mindst dette antal aftaler er ledige inden for bookingvinduet."
+    waitlist_stagger_seconds: "Sekunder mellem beskeder"
+    waitlist_stagger_seconds_hint: "Hver tilmelding får besked lidt efter den forrige, hvor dem der har ventet længst får besked først, så de får et forspring i bookingen."
+    notification_event_waitlist_slot_freed: "Venteliste - Ledig tid"
+    notification_event_waitlist_daily: "Venteliste - Daglig tilgængelighed"
+    waitlist_hint: "Kunder, der venter på, at en aftale bliver ledig."
+    waitlist_empty: "Der venter ingen."
+    waitlist_signed_up: "Tilmeldt"
+    waitlist_expires: "Udløber"
+    waitlist_messages_sent: "Beskeder sendt"
+    calendar_feed: "Kalenderfeed"
+    calendar_feed_hint: "Abonnér på dette link i din egen kalenderapp for at se dine aftaler der. Alle med linket kan se kalenderen, så hold det privat og nulstil det, hvis det kommer ud."
+    calendar_feed_link: "Feedlink"
+    calendar_feed_copy: "Kopiér link"
+    calendar_feed_copied: "Kopieret"
+    calendar_feed_reset: "Nulstil link"
+    calendar_feed_reset_confirm: "Nulstil linket? Kalenderapps, der bruger det gamle link, holder op med at opdatere, indtil du tilføjer det nye."
+    calendar_feed_google: "Google Calendar: åbn Google Calendar på en bærbar, klik på plusset ved siden af Andre kalendere, vælg Fra URL, indsæt linket og klik på Tilføj kalender. Det vises derefter også på din telefon."
+    calendar_feed_apple: "Apple Calendar: vælg Arkiv, Nyt kalenderabonnement på en Mac, og indsæt linket. Gå på en iPhone til Indstillinger, Kalender, Konti, Tilføj konto, Andre, Tilføj abonneret kalender."
+    calendar_feed_refresh_note: "Google opdaterer kun abonnerede kalendere hver 8. til 24. time, og Apple hver time, medmindre du ændrer det, så log ind her for at se dagens aftaler i stedet for at stole på din kalenderapp."
+    date_display: "Datovisning"
+    date_display_hint: "Hvordan datoer skrives på sider og i beskeder. Datofelter beholder det numeriske format ovenfor."
+    time_off: "Fri"
+    time_off_hint: "Ved fravær en del af en dag skal du angive de timer, hvor du er væk. De gemmes som en pause på de datoer."
+    messages_sms_variation: "Variér hver SMS"
+    messages_sms_variation_hint: "Tilføjer en kort referencekode til slutningen af hver SMS, så ingen to beskeder er ens, hvilket nogle netværk kræver."
+    merge_customer: "Flet sammen med en anden kunde"
+    merge_customer_hint: "Indtast den anden kundes email eller telefonnummer. Denne kundes aftaler og beskeder flyttes til den post, og denne post slettes."
+    merge_customer_button: "Flet sammen"
+    merge_customer_confirm: "Flet denne kunde sammen med den anden post? Dette kan ikke fortrydes."
+    merge_customer_not_found: "Ingen anden kunde har den email eller det telefonnummer."
+    customer_merged: "Kunder flettet sammen"
+    provider_color_hint: "Bruges til denne leverandørs aftaler, når kalenderen viser alle."
+    other_emails: "Andre e-mailadresser"
+    other_emails_hint: "Én pr. linje. Bookinger og beskeder fra en af disse adresser tilhører denne kunde."
+    other_phones: "Andre telefonnumre"
+    other_phones_hint: "Én pr. linje. Bookinger og beskeder fra et af disse numre tilhører denne kunde."

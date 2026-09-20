@@ -765,7 +765,7 @@ et:
     notification_event_created: Appointment Created
     notification_event_created_or_updated: Appointment Created or Updated
     notification_event_updated: Appointment Updated
-    notification_event_cancelled: Appointment Canceled
+    notification_event_cancelled: Appointment Cancelled
     notification_event_missed: Appointment Missed
     notification_lead_before: Send this long before the appointment
     notification_lead_day_at: Send a number of days before, at a set time
@@ -870,15 +870,15 @@ et:
     rs_days_first_letter: Su, M, Tu, W, Th, F, Sa
     rs_order: 1st, 2nd, 3rd, 4th, 5th, Last
     notification_cancellation_scope: Send
-    notification_cancellation_all: For all canceled appointments
-    notification_cancellation_in_time: For appointments canceled within the cancellation window
-    notification_cancellation_late: For appointments canceled too late
+    notification_cancellation_all: For all cancelled appointments
+    notification_cancellation_in_time: For appointments cancelled within the cancellation window
+    notification_cancellation_late: For appointments cancelled too late
     notification_cancellation_scope_hint: 'The window is the late cancellation time in Business Logic.'
     minimum_times_before_appointments: 'Minimum Times Before Appointments'
     booking_window: 'Time Before An Appointment A Customer Can Book'
     booking_window_hint: 'Customers cannot book a slot that starts sooner than this.'
     late_window: 'Time Before An Appointment A Customer Can Reschedule/Cancel Before Late Cancellation'
-    late_window_hint: 'Inside this window the customer can only late cancel, which sets the Late Cancel status and keeps the slot free for others. Must not be longer than the booking window.'
+    late_window_hint: 'Inside this window the customer can only late cancel, which sets the Late Cancel status and keeps the slot free for others.'
     status_booked: 'Default for new bookings'
     status_rescheduled: 'Set on the original when a customer reschedules'
     status_cancelled: 'Set when an appointment is cancelled'
@@ -921,3 +921,59 @@ et:
     display_booking_notice_time_step: "Näita broneeringu teadaannet kuupäeva/kellaaja sammul"
     display_booking_notice_info_step: "Näita broneeringu teadaannet kliendi andmete sammul"
     booking_notice_content: "Broneeringu teadaande sisu"
+    waitlist: "Ootenimekiri"
+    waitlist_signup_title: "Liitu ootenimekirjaga"
+    waitlist_signup_hint: "Jätke oma andmed ja anname teile teada, kui sobiv broneering vabaneb."
+    waitlist_join: "Liitu ootenimekirjaga"
+    waitlist_joined: "Olete ootenimekirjas. Anname teile teada, kui broneering vabaneb."
+    waitlist_already_joined: "Olete juba selle teenuse ootenimekirjas."
+    waitlist_left: "Olete ootenimekirjast eemaldatud."
+    waitlist_link_invalid: "See ootenimekirja link ei kehti enam."
+    fully_booked_notice: "Täisbroneeringu teade"
+    fully_booked_notice_hint: "Kuvatakse esimestel sammudel, kui valitud teenusel või teenusepakkujal pole broneerimisakna piires vabu aegu."
+    fully_booked_notice_default: "Vabu aegu ei ole. Palun proovige teist teenust või teenusepakkujat või proovige hiljem uuesti."
+    notices: "Teated"
+    waitlist_enabled: "Ootenimekiri"
+    waitlist_enabled_hint: "Lubage klientidel liituda, et neile teatataks, kui aeg vabaneb."
+    waitlist_days: "Päevi nimekirjas"
+    waitlist_days_hint: "Liitumised eemaldatakse pärast seda arvu päevi."
+    waitlist_max_notices: "Vabanenud aja teateid liitumise kohta"
+    waitlist_max_notices_hint: "Lõpetage liitumisele vabanenud aegadest teatamine pärast seda arvu teateid."
+    waitlist_min_slots: "Vabu aegu päevateate jaoks"
+    waitlist_min_slots_hint: "Päevateade saadetakse, kui broneerimisakna piires on vaba vähemalt nii palju aegu."
+    waitlist_stagger_seconds: "Sekundeid teadete vahel"
+    waitlist_stagger_seconds_hint: "Igale liitumisele teatatakse veidi hiljem kui eelmisele, kõigepealt kõige kauem oodanutele, et neil oleks broneerimisel eelis."
+    notification_event_waitlist_slot_freed: "Ootenimekiri - Aeg vabanes"
+    notification_event_waitlist_daily: "Ootenimekiri - Igapäevane saadavus"
+    waitlist_hint: "Kliendid, kes ootavad aja vabanemist."
+    waitlist_empty: "Keegi ei oota."
+    waitlist_signed_up: "Liitus"
+    waitlist_expires: "Aegub"
+    waitlist_messages_sent: "Saadetud teateid"
+    calendar_feed: "Kalendrivoog"
+    calendar_feed_hint: "Telli see link oma kalendrirakenduses, et näha seal oma aegu. Kõik, kellel on link, näevad kalendrit, seega hoia see privaatsena ja lähtesta, kui see lekib."
+    calendar_feed_link: "Voo link"
+    calendar_feed_copy: "Kopeeri link"
+    calendar_feed_copied: "Kopeeritud"
+    calendar_feed_reset: "Lähtesta link"
+    calendar_feed_reset_confirm: "Kas lähtestada link? Vana linki kasutavad kalendrirakendused lõpetavad uuenemise, kuni lisad uue."
+    calendar_feed_google: "Google'i kalender: arvutis ava Google'i kalender, klõpsa rea „Teised kalendrid” kõrval plussimärgil, vali „URL-i kaudu”, kleebi link ja klõpsa „Lisa kalender”. Seejärel on see näha ka telefonis."
+    calendar_feed_apple: "Apple Calendar: Macis vali Fail, Uus kalenditellimus ja kleebi link. iPhone'is mine Seaded, Kalender, Kontod, Lisa konto, Muu, Lisa tellitud kalender."
+    calendar_feed_refresh_note: "Google värskendab tellitud kalendreid ainult iga 8 kuni 24 tunni järel ja Apple iga tunni järel, kui sa seda ei muuda, seega tänaste aegade nägemiseks logi siia, mitte ära looda oma kalendrirakendusele."
+    date_display: "Kuupäeva kuvamine"
+    date_display_hint: "Kuidas kuupäevad kirjutatakse lehtedel ja sõnumites. Ülaltoodud numbriline formaat jääb muutumatuks."
+    time_off: "Vaba aeg"
+    time_off_hint: "Kui tegemist on osaga päevast, sisesta tunnid, mil sind ei ole kohal. Need salvestatakse pausina neil kuupäevadel."
+    messages_sms_variation: "Muuda igat SMS-i"
+    messages_sms_variation_hint: "Lisab iga SMS-i lõppu lühikese viitekoodi, et ükski kaks sõnumit ei oleks ühesugused - seda nõuavad mõned operaatorid."
+    merge_customer: "Ühenda teise kliendiga"
+    merge_customer_hint: "Sisesta teise kliendi e-post või telefoninumber. Selle kliendi broneeringud ja sõnumid viiakse üle sellele kirjele ning see kirje kustutatakse."
+    merge_customer_button: "Ühenda"
+    merge_customer_confirm: "Kas ühendada see klient teise kirjega? Seda ei saa tagasi võtta."
+    merge_customer_not_found: "Ühelgi teisel kliendil ei ole seda e-posti ega telefoninumbrit."
+    customer_merged: "Kliendid ühendatud"
+    provider_color_hint: "Kasutatakse selle teenusepakkuja broneeringute jaoks, kui kalender näitab kõiki."
+    other_emails: "Muud e-posti aadressid"
+    other_emails_hint: "Üks rea kohta. Broneeringud ja sõnumid mis tahes neist aadressidest kuuluvad sellele kliendile."
+    other_phones: "Muud telefoninumbrid"
+    other_phones_hint: "Üks rea kohta. Broneeringud ja sõnumid mis tahes neist numbritest kuuluvad sellele kliendile."

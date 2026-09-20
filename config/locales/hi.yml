@@ -765,7 +765,7 @@ hi:
     notification_event_created: Appointment Created
     notification_event_created_or_updated: Appointment Created or Updated
     notification_event_updated: Appointment Updated
-    notification_event_cancelled: Appointment Canceled
+    notification_event_cancelled: Appointment Cancelled
     notification_event_missed: Appointment Missed
     notification_lead_before: Send this long before the appointment
     notification_lead_day_at: Send a number of days before, at a set time
@@ -870,15 +870,15 @@ hi:
     rs_days_first_letter: Su, M, Tu, W, Th, F, Sa
     rs_order: 1st, 2nd, 3rd, 4th, 5th, Last
     notification_cancellation_scope: Send
-    notification_cancellation_all: For all canceled appointments
-    notification_cancellation_in_time: For appointments canceled within the cancellation window
-    notification_cancellation_late: For appointments canceled too late
+    notification_cancellation_all: For all cancelled appointments
+    notification_cancellation_in_time: For appointments cancelled within the cancellation window
+    notification_cancellation_late: For appointments cancelled too late
     notification_cancellation_scope_hint: 'The window is the late cancellation time in Business Logic.'
     minimum_times_before_appointments: 'Minimum Times Before Appointments'
     booking_window: 'Time Before An Appointment A Customer Can Book'
     booking_window_hint: 'Customers cannot book a slot that starts sooner than this.'
     late_window: 'Time Before An Appointment A Customer Can Reschedule/Cancel Before Late Cancellation'
-    late_window_hint: 'Inside this window the customer can only late cancel, which sets the Late Cancel status and keeps the slot free for others. Must not be longer than the booking window.'
+    late_window_hint: 'Inside this window the customer can only late cancel, which sets the Late Cancel status and keeps the slot free for others.'
     status_booked: 'Default for new bookings'
     status_rescheduled: 'Set on the original when a customer reschedules'
     status_cancelled: 'Set when an appointment is cancelled'
@@ -921,3 +921,59 @@ hi:
     display_booking_notice_time_step: "तिथि/समय चरण पर बुकिंग सूचना दिखाएं"
     display_booking_notice_info_step: "ग्राहक विवरण चरण पर बुकिंग सूचना दिखाएं"
     booking_notice_content: "बुकिंग सूचना सामग्री"
+    waitlist: "प्रतीक्षा सूची"
+    waitlist_signup_title: "प्रतीक्षा सूची में शामिल हों"
+    waitlist_signup_hint: "अपनी जानकारी दें, उपयुक्त अपॉइंटमेंट उपलब्ध होने पर हम आपको सूचित करेंगे।"
+    waitlist_join: "प्रतीक्षा सूची में शामिल हों"
+    waitlist_joined: "आप प्रतीक्षा सूची में हैं। अपॉइंटमेंट उपलब्ध होने पर हम आपको सूचित करेंगे।"
+    waitlist_already_joined: "आप पहले से ही इस सेवा की प्रतीक्षा सूची में हैं।"
+    waitlist_left: "आपको प्रतीक्षा सूची से हटा दिया गया है।"
+    waitlist_link_invalid: "यह प्रतीक्षा सूची लिंक अब मान्य नहीं है।"
+    fully_booked_notice: "पूर्ण बुकिंग सूचना"
+    fully_booked_notice_hint: "यह तब पहले चरणों में दिखाई देता है जब चुनी गई सेवा या प्रदाता के पास बुकिंग अवधि में कोई खाली अपॉइंटमेंट नहीं होता।"
+    fully_booked_notice_default: "कोई अपॉइंटमेंट उपलब्ध नहीं है। कृपया कोई अन्य सेवा या प्रदाता आज़माएं या बाद में पुनः प्रयास करें।"
+    notices: "सूचनाएं"
+    waitlist_enabled: "प्रतीक्षा सूची"
+    waitlist_enabled_hint: "ग्राहकों को पंजीकरण करने दें ताकि अपॉइंटमेंट खाली होने पर उन्हें सूचित किया जा सके।"
+    waitlist_days: "सूची में रहने के दिन"
+    waitlist_days_hint: "इतने दिनों के बाद पंजीकरण सूची से हटा दिए जाते हैं।"
+    waitlist_max_notices: "प्रति पंजीकरण खाली स्लॉट संदेशों की संख्या"
+    waitlist_max_notices_hint: "इतने संदेशों के बाद किसी पंजीकरण को खाली स्लॉट के बारे में सूचित करना बंद कर दें।"
+    waitlist_min_slots: "दैनिक संदेश के लिए आवश्यक खाली स्लॉट"
+    waitlist_min_slots_hint: "दैनिक संदेश तब भेजा जाता है जब बुकिंग अवधि में कम से कम इतने अपॉइंटमेंट खाली हों।"
+    waitlist_stagger_seconds: "संदेशों के बीच सेकंड"
+    waitlist_stagger_seconds_hint: "प्रत्येक पंजीकरण को उससे पहले वाले के कुछ समय बाद सूचित किया जाता है, सबसे लंबे समय से प्रतीक्षारत व्यक्ति को पहले, ताकि उसे बुकिंग में बढ़त मिले।"
+    notification_event_waitlist_slot_freed: "प्रतीक्षा सूची - स्लॉट खाली हुआ"
+    notification_event_waitlist_daily: "प्रतीक्षा सूची - दैनिक उपलब्धता"
+    waitlist_hint: "अपॉइंटमेंट खाली होने की प्रतीक्षा कर रहे ग्राहक।"
+    waitlist_empty: "कोई भी प्रतीक्षा नहीं कर रहा है।"
+    waitlist_signed_up: "पंजीकरण तिथि"
+    waitlist_expires: "समाप्ति तिथि"
+    waitlist_messages_sent: "भेजे गए संदेश"
+    calendar_feed: "कैलेंडर फ़ीड"
+    calendar_feed_hint: "अपनी अपॉइंटमेंट वहां देखने के लिए अपने कैलेंडर ऐप में इस लिंक को सब्सक्राइब करें। जिसके पास भी यह लिंक है वह कैलेंडर देख सकता है, इसलिए इसे निजी रखें और लीक होने पर इसे रीसेट करें।"
+    calendar_feed_link: "फ़ीड लिंक"
+    calendar_feed_copy: "लिंक कॉपी करें"
+    calendar_feed_copied: "कॉपी हो गया"
+    calendar_feed_reset: "लिंक रीसेट करें"
+    calendar_feed_reset_confirm: "लिंक रीसेट करें? पुराने लिंक का उपयोग करने वाले कैलेंडर ऐप नया लिंक जोड़ने तक अपडेट होना बंद कर देंगे।"
+    calendar_feed_google: "Google Calendar: लैपटॉप पर Google Calendar खोलें, Other calendars के पास प्लस चिह्न पर क्लिक करें, From URL चुनें, लिंक पेस्ट करें और Add calendar पर क्लिक करें। यह फिर आपके फ़ोन पर भी दिखेगा।"
+    calendar_feed_apple: "Apple Calendar: Mac पर File, फिर New Calendar Subscription चुनें और लिंक पेस्ट करें। iPhone पर Settings, Calendar, Accounts, Add Account, Other, Add Subscribed Calendar पर जाएं।"
+    calendar_feed_refresh_note: "Google सब्सक्राइब किए गए कैलेंडर को केवल हर 8 से 24 घंटे में रीफ़्रेश करता है, और Apple हर घंटे, जब तक आप इसे बदल न दें, इसलिए आज की अपॉइंटमेंट देखने के लिए अपने कैलेंडर ऐप पर निर्भर रहने के बजाय यहां लॉगिन करें।"
+    date_display: "तारीख प्रदर्शन"
+    date_display_hint: "पृष्ठों और संदेशों में तारीखें किस तरह लिखी जाती हैं। तारीख फ़ील्ड ऊपर दिया गया अंकीय प्रारूप बनाए रखते हैं।"
+    time_off: "छुट्टी"
+    time_off_hint: "दिन के किसी हिस्से की छुट्टी के लिए, आप जितने घंटे अनुपस्थित रहेंगे वह दर्ज करें। इन्हें उन तारीखों पर ब्रेक के रूप में सहेजा जाता है।"
+    messages_sms_variation: "हर SMS को अलग बनाएं"
+    messages_sms_variation_hint: "हर SMS के अंत में एक छोटा संदर्भ कोड जोड़ता है ताकि कोई भी दो संदेश एक जैसे न हों, जो कुछ नेटवर्क आवश्यक मानते हैं।"
+    merge_customer: "किसी अन्य उपभोक्ता में मिलाएं"
+    merge_customer_hint: "दूसरे उपभोक्ता का ईमेल या फ़ोन नंबर दर्ज करें। इस उपभोक्ता के अपॉइंटमेंट और संदेश उस रिकॉर्ड में स्थानांतरित हो जाएंगे और यह रिकॉर्ड हटा दिया जाएगा।"
+    merge_customer_button: "मिलाएं"
+    merge_customer_confirm: "क्या इस उपभोक्ता को दूसरे रिकॉर्ड में मिलाया जाए? इस क्रिया को पूर्ववत नहीं किया जा सकता।"
+    merge_customer_not_found: "इस ईमेल या फ़ोन नंबर वाला कोई अन्य उपभोक्ता नहीं है।"
+    customer_merged: "उपभोक्ता मिला दिए गए"
+    provider_color_hint: "जब कैलन्डर सभी को दिखाता है, तो यह इस प्रबन्धक के अपॉइंटमेंट के लिए उपयोग होता है।"
+    other_emails: "अन्य ईमेल"
+    other_emails_hint: "प्रति पंक्ति एक। इनमें से किसी भी पते से बुकिंग और संदेश इस ग्राहक से संबंधित हैं।"
+    other_phones: "अन्य फ़ोन नंबर"
+    other_phones_hint: "प्रति पंक्ति एक। इनमें से किसी भी नंबर से बुकिंग और संदेश इस ग्राहक से संबंधित हैं।"

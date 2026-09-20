@@ -765,7 +765,7 @@ ar:
     notification_event_created: Appointment Created
     notification_event_created_or_updated: Appointment Created or Updated
     notification_event_updated: Appointment Updated
-    notification_event_cancelled: Appointment Canceled
+    notification_event_cancelled: Appointment Cancelled
     notification_event_missed: Appointment Missed
     notification_lead_before: Send this long before the appointment
     notification_lead_day_at: Send a number of days before, at a set time
@@ -870,15 +870,15 @@ ar:
     rs_days_first_letter: Su, M, Tu, W, Th, F, Sa
     rs_order: 1st, 2nd, 3rd, 4th, 5th, Last
     notification_cancellation_scope: Send
-    notification_cancellation_all: For all canceled appointments
-    notification_cancellation_in_time: For appointments canceled within the cancellation window
-    notification_cancellation_late: For appointments canceled too late
+    notification_cancellation_all: For all cancelled appointments
+    notification_cancellation_in_time: For appointments cancelled within the cancellation window
+    notification_cancellation_late: For appointments cancelled too late
     notification_cancellation_scope_hint: 'The window is the late cancellation time in Business Logic.'
     minimum_times_before_appointments: 'Minimum Times Before Appointments'
     booking_window: 'Time Before An Appointment A Customer Can Book'
     booking_window_hint: 'Customers cannot book a slot that starts sooner than this.'
     late_window: 'Time Before An Appointment A Customer Can Reschedule/Cancel Before Late Cancellation'
-    late_window_hint: 'Inside this window the customer can only late cancel, which sets the Late Cancel status and keeps the slot free for others. Must not be longer than the booking window.'
+    late_window_hint: 'Inside this window the customer can only late cancel, which sets the Late Cancel status and keeps the slot free for others.'
     status_booked: 'Default for new bookings'
     status_rescheduled: 'Set on the original when a customer reschedules'
     status_cancelled: 'Set when an appointment is cancelled'
@@ -921,3 +921,59 @@ ar:
     display_booking_notice_time_step: "عرض إشعار الحجز في خطوة التاريخ/الوقت"
     display_booking_notice_info_step: "عرض إشعار الحجز في خطوة بيانات العميل"
     booking_notice_content: "محتوى إشعار الحجز"
+    waitlist: "قائمة الانتظار"
+    waitlist_signup_title: "الانضمام إلى قائمة الانتظار"
+    waitlist_signup_hint: "اترك بياناتك وسنخبرك عندما يصبح هناك موعد مناسب متاحًا."
+    waitlist_join: "الانضمام إلى قائمة الانتظار"
+    waitlist_joined: "أنت الآن على قائمة الانتظار. سنخبرك عندما يصبح هناك موعد متاحًا."
+    waitlist_already_joined: "أنت بالفعل على قائمة الانتظار لهذه الخدمة."
+    waitlist_left: "تمت إزالتك من قائمة الانتظار."
+    waitlist_link_invalid: "رابط قائمة الانتظار هذا لم يعد صالحًا."
+    fully_booked_notice: "إشعار الحجز الكامل"
+    fully_booked_notice_hint: "يظهر في الخطوات الأولى عندما لا تتوفر مواعيد فارغة للخدمة أو المزود المختار ضمن فترة الحجز المتاحة."
+    fully_booked_notice_default: "لا توجد مواعيد متاحة. يرجى تجربة خدمة أو مزود مختلف أو المحاولة مرة أخرى لاحقًا."
+    notices: "الإشعارات"
+    waitlist_enabled: "قائمة الانتظار"
+    waitlist_enabled_hint: "السماح للعملاء بالتسجيل لإخبارهم عند توفر موعد."
+    waitlist_days: "عدد الأيام في القائمة"
+    waitlist_days_hint: "تتم إزالة التسجيلات بعد مرور هذا العدد من الأيام."
+    waitlist_max_notices: "عدد رسائل المواعيد المتاحة لكل تسجيل"
+    waitlist_max_notices_hint: "التوقف عن إخبار المسجل بالمواعيد المتاحة بعد هذا العدد من الرسائل."
+    waitlist_min_slots: "المواعيد الفارغة اللازمة للرسالة اليومية"
+    waitlist_min_slots_hint: "تُرسل الرسالة اليومية عندما يتوفر هذا العدد على الأقل من المواعيد الفارغة ضمن فترة الحجز المتاحة."
+    waitlist_stagger_seconds: "عدد الثواني بين الرسائل"
+    waitlist_stagger_seconds_hint: "يتم إخبار كل مسجل بعد قليل من المسجل الذي سبقه، بدءًا بمن انتظر أطول مدة، ليحصل على فرصة أفضل للحجز."
+    notification_event_waitlist_slot_freed: "قائمة الانتظار - توفر موعد"
+    notification_event_waitlist_daily: "قائمة الانتظار - التوفر اليومي"
+    waitlist_hint: "العملاء الذين ينتظرون توفر موعد."
+    waitlist_empty: "لا أحد في الانتظار."
+    waitlist_signed_up: "تاريخ التسجيل"
+    waitlist_expires: "تاريخ الانتهاء"
+    waitlist_messages_sent: "الرسائل المرسلة"
+    calendar_feed: "موجز التقويم"
+    calendar_feed_hint: "اشترك في هذا الرابط في تطبيق التقويم الخاص بك لرؤية مواعيدك هناك. يمكن لأي شخص يملك الرابط رؤية التقويم، لذا احتفظ به سرياً وأعد تعيينه إذا تم الكشف عنه."
+    calendar_feed_link: "رابط الموجز"
+    calendar_feed_copy: "نسخ الرابط"
+    calendar_feed_copied: "تم النسخ"
+    calendar_feed_reset: "إعادة تعيين الرابط"
+    calendar_feed_reset_confirm: "إعادة تعيين الرابط؟ ستتوقف تطبيقات التقويم التي تستخدم الرابط القديم عن التحديث حتى تضيف الرابط الجديد."
+    calendar_feed_google: "Google Calendar: على الكمبيوتر المحمول افتح Google Calendar، وبجانب Other calendars اضغط على علامة الزائد، واختر From URL، الصق الرابط واضغط Add calendar. سيظهر بعد ذلك على هاتفك أيضاً."
+    calendar_feed_apple: "Apple Calendar: على جهاز Mac اختر File، ثم New Calendar Subscription والصق الرابط. على iPhone اذهب إلى Settings، Calendar، Accounts، Add Account، Other، Add Subscribed Calendar."
+    calendar_feed_refresh_note: "يقوم Google بتحديث التقويمات المشترك بها كل 8 إلى 24 ساعة فقط، ويقوم Apple بذلك كل ساعة ما لم تغير الإعداد، لذا لرؤية مواعيد اليوم سجل الدخول هنا بدلاً من الاعتماد على تطبيق التقويم الخاص بك."
+    date_display: "عرض التاريخ"
+    date_display_hint: "كيفية كتابة التواريخ في الصفحات والرسائل. تحتفظ حقول التاريخ بالتنسيق الرقمي أعلاه."
+    time_off: "إجازة"
+    time_off_hint: "لجزء من يوم إجازة، أدخل ساعات غيابك. يتم حفظها كاستراحة في تلك التواريخ."
+    messages_sms_variation: "تنويع كل رسالة SMS"
+    messages_sms_variation_hint: "يضيف رمزًا مرجعيًا قصيرًا في نهاية كل رسالة SMS حتى لا تتطابق رسالتان، وهو ما تتطلبه بعض الشبكات."
+    merge_customer: "الدمج مع زبون آخر"
+    merge_customer_hint: "أدخل البريد الإلكتروني أو رقم الجوال للزبون الآخر. ستُنقل مواعيد ورسائل هذا الزبون إلى ذلك السجل وسيُحذف هذا السجل."
+    merge_customer_button: "دمج"
+    merge_customer_confirm: "هل تريد دمج هذا الزبون مع السجل الآخر؟ لا يمكن التراجع عن هذا الإجراء."
+    merge_customer_not_found: "لا يوجد زبون آخر بهذا البريد الإلكتروني أو رقم الجوال."
+    customer_merged: "تم دمج الزبائن"
+    provider_color_hint: "يُستخدم لمواعيد هذا المزود عندما يعرض التقويم الجميع."
+    other_emails: "عناوين بريد إلكتروني أخرى"
+    other_emails_hint: "واحد في كل سطر. الحجوزات والرسائل من أي من هذه العناوين تخص هذا الزبون."
+    other_phones: "أرقام هاتف أخرى"
+    other_phones_hint: "واحد في كل سطر. الحجوزات والرسائل من أي من هذه الأرقام تخص هذا الزبون."

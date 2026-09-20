@@ -2,6 +2,7 @@
 # builds URLs with App.Utils.Url.siteUrl.
 Rails.application.routes.draw do
   get "up" => "rails/health#show", as: :rails_health_check
+  get "company_logo" => "company_logo#show"
 
   # Auth
   get "login" => "login#index", as: :login
@@ -23,6 +24,8 @@ Rails.application.routes.draw do
     end
   end
   resources :unavailabilities, only: %i[new create edit update destroy], controller: "unavailabilities_form"
+  get "calendar/feed/:token" => "calendar_feed#show", constraints: { token: /[A-Za-z0-9]+/ }
+  post "calendar/feed_link" => "calendar_feed#link"
   get "calendar/reschedule/:appointment_hash" => "calendar#reschedule"
   post "calendar/get_calendar_appointments" => "calendar#get_calendar_appointments"
   post "calendar/save_appointment" => "calendar#save_appointment"
@@ -53,8 +56,11 @@ Rails.application.routes.draw do
   resources :service_categories, only: %i[index new create edit update destroy] do
     post :search, on: :collection
   end
+  get "waitlist" => "waitlist#index"
+  delete "waitlist/:id" => "waitlist#destroy"
   resources :customers, only: %i[index new create edit update destroy] do
     post :search, on: :collection
+    post :merge, on: :member
   end
   resources :blocked_periods, only: %i[index new create edit update destroy]
   resources :webhooks, only: %i[index new create edit update destroy]
@@ -68,16 +74,18 @@ Rails.application.routes.draw do
   end
 
   # 10to8 import page
-  get "import" => "import#index"
-  post "import/export" => "import#export"
-  get "import/export_status" => "import#export_status"
-  get "import/download_backup" => "import#download_backup"
-  get "import/report" => "import#report"
-  get "import/customer_report" => "import#customer_report"
-  post "import/analyze" => "import#analyze"
-  post "import/start" => "import#start"
-  get "import/status" => "import#status"
-  post "import/reset" => "import#reset"
+  get "data" => "import#index"
+  post "data/export" => "import#export"
+  get "data/export_status" => "import#export_status"
+  get "data/download_backup" => "import#download_backup"
+  get "data/report" => "import#report"
+  get "data/customer_report" => "import#customer_report"
+  post "data/analyze" => "import#analyze"
+  post "data/start" => "import#start"
+  get "data/status" => "import#status"
+  post "data/reset" => "import#reset"
+  # The page was /import before it became Manage Data.
+  get "import" => redirect("/data")
 
 
   # Public booking wizard
@@ -86,6 +94,8 @@ Rails.application.routes.draw do
   get "booking/reschedule/:appointment_hash" => "booking#reschedule"
   post "booking/confirm" => "booking#confirm"
   post "booking/register" => "booking#register"
+  post "booking/waitlist" => "booking#waitlist"
+  get "booking/waitlist/leave/:token" => "booking#leave_waitlist"
   get "booking_confirmation/of/:appointment_hash" => "booking_confirmation#of", as: :booking_confirmation
   get "booking_confirmation/ics/:appointment_hash" => "booking_confirmation#ics", as: :booking_confirmation_ics
   # EA has no GET cancellation page: the frame form POSTs and non-POST/empty-reason requests get 403.

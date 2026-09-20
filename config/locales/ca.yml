@@ -765,7 +765,7 @@ ca:
     notification_event_created: Appointment Created
     notification_event_created_or_updated: Appointment Created or Updated
     notification_event_updated: Appointment Updated
-    notification_event_cancelled: Appointment Canceled
+    notification_event_cancelled: Appointment Cancelled
     notification_event_missed: Appointment Missed
     notification_lead_before: Send this long before the appointment
     notification_lead_day_at: Send a number of days before, at a set time
@@ -870,15 +870,15 @@ ca:
     rs_days_first_letter: Su, M, Tu, W, Th, F, Sa
     rs_order: 1st, 2nd, 3rd, 4th, 5th, Last
     notification_cancellation_scope: Send
-    notification_cancellation_all: For all canceled appointments
-    notification_cancellation_in_time: For appointments canceled within the cancellation window
-    notification_cancellation_late: For appointments canceled too late
+    notification_cancellation_all: For all cancelled appointments
+    notification_cancellation_in_time: For appointments cancelled within the cancellation window
+    notification_cancellation_late: For appointments cancelled too late
     notification_cancellation_scope_hint: 'The window is the late cancellation time in Business Logic.'
     minimum_times_before_appointments: 'Minimum Times Before Appointments'
     booking_window: 'Time Before An Appointment A Customer Can Book'
     booking_window_hint: 'Customers cannot book a slot that starts sooner than this.'
     late_window: 'Time Before An Appointment A Customer Can Reschedule/Cancel Before Late Cancellation'
-    late_window_hint: 'Inside this window the customer can only late cancel, which sets the Late Cancel status and keeps the slot free for others. Must not be longer than the booking window.'
+    late_window_hint: 'Inside this window the customer can only late cancel, which sets the Late Cancel status and keeps the slot free for others.'
     status_booked: 'Default for new bookings'
     status_rescheduled: 'Set on the original when a customer reschedules'
     status_cancelled: 'Set when an appointment is cancelled'
@@ -921,3 +921,59 @@ ca:
     display_booking_notice_time_step: "Mostrar l'avís de reserva al pas de data/hora"
     display_booking_notice_info_step: "Mostrar l'avís de reserva al pas de dades del client"
     booking_notice_content: "Contingut de l'avís de reserva"
+    waitlist: "Llista d'espera"
+    waitlist_signup_title: "Uniu-vos a la llista d'espera"
+    waitlist_signup_hint: "Deixeu les vostres dades i us avisarem quan hi hagi disponible una cita adequada."
+    waitlist_join: "Uniu-vos a la llista d'espera"
+    waitlist_joined: "Esteu a la llista d'espera. Us avisarem quan hi hagi disponible una cita."
+    waitlist_already_joined: "Ja esteu a la llista d'espera per a aquest servei."
+    waitlist_left: "Se us ha eliminat de la llista d'espera."
+    waitlist_link_invalid: "Aquest enllaç de la llista d'espera ja no és vàlid."
+    fully_booked_notice: "Avís d'agenda completa"
+    fully_booked_notice_hint: "Es mostra en els primers passos quan el servei o proveïdor escollit no té cites lliures dins la finestra de reserva."
+    fully_booked_notice_default: "No hi ha cites disponibles. Proveu un servei o proveïdor diferent o torneu-ho a provar més tard."
+    notices: "Avisos"
+    waitlist_enabled: "Llista d'espera"
+    waitlist_enabled_hint: "Permet que els clients s'apuntin per ser avisats quan una cita quedi lliure."
+    waitlist_days: "Dies a la llista"
+    waitlist_days_hint: "Les inscripcions s'eliminen passats aquests dies."
+    waitlist_max_notices: "Missatges de forat alliberat per inscripció"
+    waitlist_max_notices_hint: "Deixar d'avisar una inscripció sobre forats alliberats després d'aquest nombre de missatges."
+    waitlist_min_slots: "Forats lliures per al missatge diari"
+    waitlist_min_slots_hint: "El missatge diari s'envia quan hi ha com a mínim aquest nombre de cites lliures dins la finestra de reserva."
+    waitlist_stagger_seconds: "Segons entre missatges"
+    waitlist_stagger_seconds_hint: "Cada inscripció s'avisa una mica després de l'anterior, començant per qui porta més temps esperant, perquè tingui avantatge a l'hora de reservar."
+    notification_event_waitlist_slot_freed: "Llista d'espera - Forat alliberat"
+    notification_event_waitlist_daily: "Llista d'espera - Disponibilitat diària"
+    waitlist_hint: "Clients que esperen que quedi lliure una cita."
+    waitlist_empty: "Ningú està esperant."
+    waitlist_signed_up: "Inscrit"
+    waitlist_expires: "Caduca"
+    waitlist_messages_sent: "Missatges enviats"
+    calendar_feed: "Feed del calendari"
+    calendar_feed_hint: "Subscriviu-vos a aquest enllaç a la vostra pròpia aplicació de calendari per veure-hi les vostres cites. Qualsevol persona amb l'enllaç pot veure el calendari, així que manteniu-lo privat i restabliu-lo si es filtra."
+    calendar_feed_link: "Enllaç del feed"
+    calendar_feed_copy: "Copia l'enllaç"
+    calendar_feed_copied: "Copiat"
+    calendar_feed_reset: "Restableix l'enllaç"
+    calendar_feed_reset_confirm: "Voleu restablir l'enllaç? Les aplicacions de calendari que facin servir l'enllaç antic deixaran d'actualitzar-se fins que afegiu el nou."
+    calendar_feed_google: "Google Calendar: en un portàtil obriu Google Calendar, al costat d'Altres calendaris feu clic al signe més, trieu Des d'un URL, enganxeu l'enllaç i feu clic a Afegeix calendari. Després també apareixerà al vostre telèfon."
+    calendar_feed_apple: "Apple Calendar: en un Mac trieu Fitxer, Subscripció de calendari nova i enganxeu l'enllaç. En un iPhone aneu a Configuració, Calendari, Comptes, Afegeix compte, Altres, Afegeix calendari subscrit."
+    calendar_feed_refresh_note: "Google només actualitza els calendaris subscrits cada 8 a 24 hores, i Apple cada hora tret que ho canvieu, per la qual cosa, per veure les cites d'avui, inicieu sessió aquí en lloc de confiar en la vostra aplicació de calendari."
+    date_display: "Visualització de la data"
+    date_display_hint: "Com s'escriuen les dates a les pàgines i als missatges. Els camps de data mantenen el format numèric anterior."
+    time_off: "Absència"
+    time_off_hint: "Per a una absència de part d'un dia, introduïu les hores en què estareu fora. Es desen com un descans en aquestes dates."
+    messages_sms_variation: "Variar cada SMS"
+    messages_sms_variation_hint: "Afegeix un codi de referència curt al final de cada SMS perquè no hi hagi dos textos iguals, cosa que exigeixen algunes operadores."
+    merge_customer: "Fusionar amb un altre client"
+    merge_customer_hint: "Introduïu el correu electrònic o número de telèfon de l'altre client. Les cites i missatges d'aquest client es traslladaran a aquest registre i aquest registre s'eliminarà."
+    merge_customer_button: "Fusionar"
+    merge_customer_confirm: "Voleu fusionar aquest client amb l'altre registre? Aquesta acció no es pot desfer."
+    merge_customer_not_found: "Cap altre client té aquest correu electrònic o número de telèfon."
+    customer_merged: "Clients fusionats"
+    provider_color_hint: "S'utilitza per a les cites d'aquest proveïdor quan el calendari mostra tothom."
+    other_emails: "Altres correus electrònics"
+    other_emails_hint: "Un per línia. Les reserves i missatges de qualsevol d'aquestes adreces pertanyen a aquest client."
+    other_phones: "Altres números de telèfon"
+    other_phones_hint: "Un per línia. Les reserves i missatges de qualsevol d'aquests números pertanyen a aquest client."

@@ -75,6 +75,20 @@
 
                             <div class="mb-3">
                                 <div class="form-check form-switch">
+                                    <%= setting_switch "messages_sms_variation" %>
+                                    <label class="form-check-label" for="messages-sms-variation">
+                                        <%= lang('messages_sms_variation') %>
+                                    </label>
+                                </div>
+                                <div class="form-text text-muted">
+                                    <small>
+                                        <%= lang('messages_sms_variation_hint') %>
+                                    </small>
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <div class="form-check form-switch">
                                     <%= setting_switch "messages_failure_alert" %>
                                     <label class="form-check-label" for="messages-failure-alert">
                                         <%= lang('messages_failure_alert') %>

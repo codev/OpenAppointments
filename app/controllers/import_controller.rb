@@ -33,7 +33,7 @@ class ImportController < ApplicationController
     export_id = SecureRandom.hex(12)
     BackupExportJob.perform_later(export_id: export_id)
     BackupExportJob.write_status(export_id, { state: "queued" })
-    form_post? ? redirect_to("/import?export_id=#{export_id}") : render(json: { success: true, export_id: export_id })
+    form_post? ? redirect_to("/data?export_id=#{export_id}") : render(json: { success: true, export_id: export_id })
   end
 
   # GET /import/export_status
@@ -88,7 +88,7 @@ class ImportController < ApplicationController
     }
     if form_post?
       session[:import_summary] = summary.map { |key, value| "#{key}: #{value}" }.join("\n")
-      redirect_to "/import"
+      redirect_to "/data"
     else
       render json: { success: true, summary: summary }
     end
@@ -123,7 +123,7 @@ class ImportController < ApplicationController
       create_providers: ActiveModel::Type::Boolean.new.cast(params[:create_providers]) || Array(params[:phases]).include?("providers")
     )
     TenToEightImportJob.write_status(import_id, { state: "queued" })
-    form_post? ? redirect_to("/import?import_id=#{import_id}") : render(json: { success: true, import_id: import_id })
+    form_post? ? redirect_to("/data?import_id=#{import_id}") : render(json: { success: true, import_id: import_id })
   rescue ArgumentError => e
     import_failed(e)
   ensure
@@ -147,7 +147,7 @@ class ImportController < ApplicationController
     ResetDatabase.run(full: full)
     reset_session if full
     if form_post?
-      full ? redirect_to("/logout") : redirect_to("/import", notice: helpers.lang("reset_database_done"))
+      full ? redirect_to("/logout") : redirect_to("/data", notice: helpers.lang("reset_database_done"))
     else
       render json: { success: true, full: full }
     end
@@ -161,7 +161,7 @@ class ImportController < ApplicationController
   def form_post? = params[:form].present?
 
   def import_failed(error)
-    form_post? ? redirect_to("/import", alert: error.message) : json_exception(error)
+    form_post? ? redirect_to("/data", alert: error.message) : json_exception(error)
   end
 
   def extractor_type

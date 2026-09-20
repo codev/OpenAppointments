@@ -25,6 +25,13 @@ class SettingTest < ActiveSupport::TestCase
     assert_equal "45", Setting.get("book_advance_timeout")
   end
 
+  test "rich text settings are sanitised whichever path writes them" do
+    Setting.set("booking_notice_content", '<p style="text-align: center; background: url(javascript:x)">Hi</p><script>alert(1)</script><img src=x onerror=alert(1)>')
+    assert_equal '<p style="text-align:center;">Hi</p>alert(1)<img src="x">', Setting.get("booking_notice_content")
+    Setting.set("company_name", "<b>Kept</b>")
+    assert_equal "<b>Kept</b>", Setting.get("company_name")
+  end
+
   test "name is unique" do
     assert_raises(ActiveRecord::RecordInvalid) do
       Setting.create!(name: "company_name", value: "Duplicate")

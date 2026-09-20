@@ -72,3 +72,5 @@ gem "webmock", "~> 3.26", group: :test
 gem "roo", "~> 3.0"
 
 gem "exception_notification", "~> 5.0" # crash report emails in production
+
+gem "rails-i18n", "~> 8.1"

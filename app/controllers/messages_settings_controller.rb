@@ -6,7 +6,8 @@ class MessagesSettingsController < ApplicationController
   layout "backend"
 
   SETTING_NAMES = %w[messages_enabled messages_retention_days messages_email_subject messages_failure_alert
-                     messages_failure_alert_emails messages_intercept_email messages_intercept_phone].freeze
+                     messages_failure_alert_emails messages_intercept_email messages_intercept_phone
+                     messages_sms_variation].freeze
 
   def index
     return unless require_backend_page!(:system_settings)

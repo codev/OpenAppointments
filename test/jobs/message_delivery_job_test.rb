@@ -62,7 +62,7 @@ class MessageDeliveryDebugTest < ActiveJob::TestCase
     end
     mail = ActionMailer::Base.deliveries.last
     assert_equal [ "dev@example.org" ], mail.to
-    body = mail.html_part.body.to_s
+    body = (mail.html_part || mail).body.to_s
     assert_match "ORIGINAL-TO: jane@example.org", body
     assert_match "See you soon", body
     assert_equal "sent", message.reload.status

@@ -14,6 +14,11 @@ class ErrorReportsTest < ActiveSupport::TestCase
     with_env("EXCEPTION_RECIPIENTS" => " ") { assert_equal [], ErrorReports.recipients }
   end
 
+  test "reports are only enabled when there is someone to send them to" do
+    with_env("EXCEPTION_RECIPIENTS" => "ops@example.org") { assert ErrorReports.enabled? }
+    with_env("EXCEPTION_RECIPIENTS" => nil) { assert_not ErrorReports.enabled? }
+  end
+
   def with_env(pairs)
     saved = pairs.keys.to_h { |key| [ key, ENV[key] ] }
     pairs.each { |key, value| value.nil? ? ENV.delete(key) : ENV[key] = value }

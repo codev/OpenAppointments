@@ -44,7 +44,7 @@ class ProvidersController < ApplicationController
   def page_vars = script_vars(first_weekday: Setting.get("first_weekday"))
 
   def record_params
-    super.merge(user_fields.permit(:about, :services_description))
+    super.merge(user_fields.permit(:about, :services_description, :color))
   end
 
   def setting_params

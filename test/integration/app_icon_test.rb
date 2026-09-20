@@ -26,13 +26,17 @@ class AppIconTest < ActionDispatch::IntegrationTest
     assert_equal "file://icon.png", manifest["icon"]
   end
 
-  test "mail still inlines a png logo" do
-    message = Message.create!(direction: "outgoing", channel: "email", audience: "customer",
-                              to_address: "someone@example.org", subject: "Hello", body: "Hi there")
-    mail = MessagesMailer.outgoing(message)
+  test "only the password reset mail carries the png logo" do
+    mail = AccountMailer.password_reset_link("someone@example.org", "http://www.example.com/recovery/reset?token=x")
     logo = mail.attachments.inline["logo.png"]
     assert_not_nil logo
     assert_equal "image/png", logo.mime_type
+
+    message = Message.create!(direction: "outgoing", channel: "email", audience: "customer",
+                              to_address: "someone@example.org", subject: "Hello", body: "Hi there")
+    outgoing = MessagesMailer.outgoing(message)
+    assert_empty outgoing.attachments
+    assert_not_includes outgoing.html_part&.body&.to_s || outgoing.body.to_s, "cid:logo.png"
   end
 
   test "the readme documents every icon site" do

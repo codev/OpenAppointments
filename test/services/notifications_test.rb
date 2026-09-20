@@ -145,6 +145,26 @@ class NotificationsTest < ActiveSupport::TestCase
     Setting.set("messages_twilio_enabled", "0")
   end
 
+  test "sms variation adds a different code to each text and leaves email alone" do
+    Setting.set("messages_twilio_enabled", "1")
+    Setting.set("messages_twilio_account_sid", "AC1")
+    Setting.set("messages_twilio_auth_token", "t")
+    Setting.set("messages_twilio_from", "+15005550006")
+    Setting.set("messages_sms_variation", "1")
+    create_notification(audiences: %w[customer], channels: %w[twilio email])
+
+    Notifications.appointment_saved(@appointment, @service, @provider, @customer)
+    Notifications.appointment_saved(@appointment, @service, @provider, @customer)
+    sms = Message.where(channel: "twilio").order(:id).map(&:body)
+    assert_equal 2, sms.size
+    sms.each { |body| assert_match(/\ASaved: Trim Cut \[[A-Z0-9]{4}\]\z/, body) }
+    assert_not_equal sms.first, sms.last
+    assert_equal "Saved: Trim Cut", Message.where(channel: "email").first.subject
+  ensure
+    Setting.set("messages_twilio_enabled", "0")
+    Setting.set("messages_sms_variation", "0")
+  end
+
   test "disabled channels are not used even when ticked" do
     create_notification(audiences: %w[customer], channels: %w[twilio])
     assert_no_enqueued_jobs only: MessageDeliveryJob do

@@ -3,6 +3,25 @@
 The about page lists these notes; every release needs a section here matching
 CloudronManifest.json.
 
+## 2.2.0
+
+- Waiting List: customers can join a waiting list at the time step if no services are available
+- Calendar Feed: a button on the calendar page gives each provider a private link to subscribe to their appointments in Google Calendar, Apple Calendar or Outlook
+- Login: repeated failed logins are refused for 15 minutes and an admin email is sent
+- General Settings: Date display has more option including day and month names
+- Calendar: each provider has a colour with a legend when viewing all providers
+- Working plan exceptions: a Time off row for part of a day off, saved as a break
+- Appointments view shows working plan breaks
+- Customers can have more than one email and phone number. Bookings, replies, search, merging and import match a customer by any of them, and a new address on a booking is added to the customer record
+- Customer page: merge a customer into another by email or phone number
+- Messages > Settings: Vary each SMS adds a short code so no two texts are identical for SMS Gateway and other providers that might ban multiple messages that are the same
+- Notices page has a Fully Booked Notice, shown on the booking steps when the chosen service or provider has no free appointments
+- Bug fix: the notices are cleaned of unsafe HTML however they are saved
+- Bug fix: the late cancellation hint no longer says the window must fit inside the booking window
+- Bug fix: saving the account page with Timezone Support off keeps the default timezone for the session
+- Bug fix: Company logo is served as a cacheable image so pages load faster after the first visit
+- Minor: The app logo is no longer attached to every message email
+
 ## 2.1.0
 
 - Reports: Customer Report added and Appointments Report has more detail

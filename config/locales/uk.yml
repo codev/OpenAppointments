@@ -765,7 +765,7 @@ uk:
     notification_event_created: Appointment Created
     notification_event_created_or_updated: Appointment Created or Updated
     notification_event_updated: Appointment Updated
-    notification_event_cancelled: Appointment Canceled
+    notification_event_cancelled: Appointment Cancelled
     notification_event_missed: Appointment Missed
     notification_lead_before: Send this long before the appointment
     notification_lead_day_at: Send a number of days before, at a set time
@@ -870,15 +870,15 @@ uk:
     rs_days_first_letter: Su, M, Tu, W, Th, F, Sa
     rs_order: 1st, 2nd, 3rd, 4th, 5th, Last
     notification_cancellation_scope: Send
-    notification_cancellation_all: For all canceled appointments
-    notification_cancellation_in_time: For appointments canceled within the cancellation window
-    notification_cancellation_late: For appointments canceled too late
+    notification_cancellation_all: For all cancelled appointments
+    notification_cancellation_in_time: For appointments cancelled within the cancellation window
+    notification_cancellation_late: For appointments cancelled too late
     notification_cancellation_scope_hint: 'The window is the late cancellation time in Business Logic.'
     minimum_times_before_appointments: 'Minimum Times Before Appointments'
     booking_window: 'Time Before An Appointment A Customer Can Book'
     booking_window_hint: 'Customers cannot book a slot that starts sooner than this.'
     late_window: 'Time Before An Appointment A Customer Can Reschedule/Cancel Before Late Cancellation'
-    late_window_hint: 'Inside this window the customer can only late cancel, which sets the Late Cancel status and keeps the slot free for others. Must not be longer than the booking window.'
+    late_window_hint: 'Inside this window the customer can only late cancel, which sets the Late Cancel status and keeps the slot free for others.'
     status_booked: 'Default for new bookings'
     status_rescheduled: 'Set on the original when a customer reschedules'
     status_cancelled: 'Set when an appointment is cancelled'
@@ -921,3 +921,59 @@ uk:
     display_booking_notice_time_step: "Показувати повідомлення про бронювання на кроці дати/часу"
     display_booking_notice_info_step: "Показувати повідомлення про бронювання на кроці даних клієнта"
     booking_notice_content: "Текст повідомлення про бронювання"
+    waitlist: "Список очікування"
+    waitlist_signup_title: "Записатися до списку очікування"
+    waitlist_signup_hint: "Залиште свої дані, і ми повідомимо вам, коли з'явиться відповідний запис."
+    waitlist_join: "Записатися до списку очікування"
+    waitlist_joined: "Ви у списку очікування. Ми повідомимо вам, коли з'явиться вільний запис."
+    waitlist_already_joined: "Ви вже у списку очікування на цю послугу."
+    waitlist_left: "Вас видалено зі списку очікування."
+    waitlist_link_invalid: "Це посилання на список очікування більше недійсне."
+    fully_booked_notice: "Повідомлення про повне бронювання"
+    fully_booked_notice_hint: "Показується на перших кроках, коли для обраної послуги або провайдера немає вільних записів у межах вікна бронювання."
+    fully_booked_notice_default: "Немає вільних записів. Будь ласка, оберіть іншу послугу чи провайдера або спробуйте пізніше."
+    notices: "Повідомлення"
+    waitlist_enabled: "Список очікування"
+    waitlist_enabled_hint: "Дозволити клієнтам записуватися, щоб їм повідомляли про звільнення запису."
+    waitlist_days: "Днів у списку"
+    waitlist_days_hint: "Записи видаляються зі списку через цю кількість днів."
+    waitlist_max_notices: "Повідомлень про звільнений час на один запис"
+    waitlist_max_notices_hint: "Припинити повідомляти запис про звільнений час після цієї кількості повідомлень."
+    waitlist_min_slots: "Вільних місць для щоденного повідомлення"
+    waitlist_min_slots_hint: "Щоденне повідомлення надсилається, коли в межах вікна бронювання вільно щонайменше стільки записів."
+    waitlist_stagger_seconds: "Секунд між повідомленнями"
+    waitlist_stagger_seconds_hint: "Кожному запису повідомлення надсилається трохи пізніше за попередній, спочатку тим, хто чекає найдовше, щоб дати їм перевагу в бронюванні."
+    notification_event_waitlist_slot_freed: "Список очікування - Час звільнився"
+    notification_event_waitlist_daily: "Список очікування - Щоденна доступність"
+    waitlist_hint: "Клієнти, які очікують звільнення запису."
+    waitlist_empty: "Ніхто не очікує."
+    waitlist_signed_up: "Записаний"
+    waitlist_expires: "Закінчується"
+    waitlist_messages_sent: "Надіслано повідомлень"
+    calendar_feed: "Стрічка календаря"
+    calendar_feed_hint: "Підпишіться на це посилання у своєму застосунку календаря, щоб бачити там свої записи. Побачити календар може будь-хто, у кого є посилання, тож тримайте його в таємниці й скиньте, якщо воно стане відомим."
+    calendar_feed_link: "Посилання на стрічку"
+    calendar_feed_copy: "Копіювати посилання"
+    calendar_feed_copied: "Скопійовано"
+    calendar_feed_reset: "Скинути посилання"
+    calendar_feed_reset_confirm: "Скинути посилання? Календарі, що використовують старе посилання, перестануть оновлюватися, поки ви не додасте нове."
+    calendar_feed_google: "Google Календар: на комп'ютері відкрийте Google Календар, поруч з «Інші календарі» натисніть на плюс, оберіть «За URL-адресою», вставте посилання та натисніть «Додати календар». Після цього він з'явиться і на телефоні."
+    calendar_feed_apple: "Apple Calendar: на Mac виберіть «Файл», «Нова підписка на календар» і вставте посилання. На iPhone перейдіть у «Налаштування», «Календар», «Облікові записи», «Додати обліковий запис», «Інше», «Додати підписний календар»."
+    calendar_feed_refresh_note: "Google оновлює підписані календарі лише раз на 8-24 години, а Apple - раз на годину, якщо ви це не змінили, тож щоб побачити сьогоднішні записи, заходьте сюди, а не покладайтеся на застосунок календаря."
+    date_display: "Відображення дати"
+    date_display_hint: "Як дати записуються на сторінках і в повідомленнях. Числовий формат у полі вище залишається без змін."
+    time_off: "Вихідний"
+    time_off_hint: "Для частини дня вкажіть години відсутності. Вони зберігаються як перерва на ці дати."
+    messages_sms_variation: "Змінювати кожне SMS"
+    messages_sms_variation_hint: "Додає короткий код у кінець кожного SMS, щоб жодні два повідомлення не збігалися - це вимагають деякі оператори."
+    merge_customer: "Об'єднати з іншим клієнтом"
+    merge_customer_hint: "Введіть email або номер телефону іншого клієнта. Записи та повідомлення цього клієнта буде перенесено до того запису, а цей запис буде видалено."
+    merge_customer_button: "Об'єднати"
+    merge_customer_confirm: "Об'єднати цього клієнта з іншим записом? Цю дію не можна скасувати."
+    merge_customer_not_found: "Жоден інший клієнт не має такого email або номера телефону."
+    customer_merged: "Клієнтів об'єднано"
+    provider_color_hint: "Використовується для записів цього провайдера, коли календар показує всіх."
+    other_emails: "Інші адреси електронної пошти"
+    other_emails_hint: "По одній в рядку. Бронювання та повідомлення з будь-якої з цих адрес належать цьому клієнту."
+    other_phones: "Інші номери телефонів"
+    other_phones_hint: "По одному в рядку. Бронювання та повідомлення з будь-якого з цих номерів належать цьому клієнту."

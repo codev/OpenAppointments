@@ -14,6 +14,7 @@
         <div class="frame-container py-3">
             <h2 class="frame-title fw-light text-center mb-4 text-muted"><%= lang('appointment_date_and_time') %></h2>
             <%= render "shared/booking_notice", shown: vars(:display_booking_notice_time_step) %>
+            <%= render "shared/fully_booked_notice" %>
             <div class="row frame-content">
                 <div class="col-12 col-lg-6">
                     <div id="select-date" class="mx-auto my-4"></div>
@@ -39,6 +40,41 @@
         <div class="command-buttons text-center my-3 mx-auto d-md-flex justify-content-md-between">
             <%= wizard_back_button "second" %>
             <%= wizard_next_button %>
+        </div>
+    <% end %>
+    <%# Waiting list signup: its own form after the step's, posted into the frame. %>
+    <% if vars(:display_waitlist).to_s == "1" %>
+        <div id="waitlist" class="frame-container border-top pt-4 pb-2">
+            <h5 class="fw-light text-center mb-2"><%= lang('waitlist_signup_title') %></h5>
+            <p class="text-muted text-center small mb-3"><%= lang('waitlist_signup_hint') %></p>
+            <% if @waitlist_notice %>
+                <div class="alert alert-<%= @waitlist_alert %> text-center" role="alert"><%= @waitlist_notice %></div>
+            <% end %>
+            <% unless @waitlist_alert == "success" %>
+                <% signup = params.fetch(:waitlist, {}).permit(:name, :email, :phone) %>
+                <%= form_with url: "/booking/waitlist", method: :post, id: "waitlist-form", data: { turbo_frame: "wizard" } do %>
+                    <%= wizard_state_fields(step: "time") %>
+                    <div class="row">
+                        <div class="col-12 col-lg-4 mb-3">
+                            <label for="waitlist-name" class="form-label"><%= lang('name') %> <span class="text-danger">*</span></label>
+                            <%= text_field_tag "waitlist[name]", signup[:name], id: "waitlist-name", class: "form-control", maxlength: 220, required: true %>
+                        </div>
+                        <div class="col-12 col-lg-4 mb-3">
+                            <label for="waitlist-email" class="form-label"><%= lang('email') %> <span class="text-danger">*</span></label>
+                            <%= email_field_tag "waitlist[email]", signup[:email], id: "waitlist-email", class: "form-control", maxlength: 120, required: true %>
+                        </div>
+                        <% if vars(:display_phone_number).to_s == "1" %>
+                            <div class="col-12 col-lg-4 mb-3">
+                                <label for="waitlist-phone" class="form-label"><%= lang('phone_number') %></label>
+                                <%= telephone_field_tag "waitlist[phone]", signup[:phone], id: "waitlist-phone", class: "form-control", maxlength: 60 %>
+                            </div>
+                        <% end %>
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" id="waitlist-join" class="btn btn-outline-primary"><%= lang('waitlist_join') %></button>
+                    </div>
+                <% end %>
+            <% end %>
         </div>
     <% end %>
 </div>
