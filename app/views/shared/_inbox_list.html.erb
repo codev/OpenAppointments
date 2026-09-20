@@ -20,7 +20,7 @@
                     <span class="text-muted"><%= message.audience %></span>
                 <% end %>
                 <span class="text-muted text-break"><%= message.direction == "incoming" ? message.from_address : message.to_address %></span>
-                <span class="ms-md-auto text-muted text-nowrap"><%= format_appointment_datetime(message.created_at, format_settings) %></span>
+                <span class="ms-md-auto text-muted text-nowrap"><%= display_datetime(message.created_at) %></span>
                 <% badge = { "sent" => "bg-success", "received" => "bg-success",
                              "failed" => "bg-danger", "queued" => "bg-secondary" }[message.status] %>
                 <span class="badge <%= badge %>" <% if message.error.present? %>title="<%= message.error %>"<% end %>>

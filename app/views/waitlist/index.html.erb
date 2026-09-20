@@ -28,8 +28,8 @@
                             <td><%= [ entry.email, entry.phone.presence ].compact.join(", ") %></td>
                             <td><%= entry.service.name %></td>
                             <td><%= entry.provider&.name || lang('any_provider') %></td>
-                            <td class="text-nowrap"><%= format_appointment_datetime(entry.created_at, format_settings) %></td>
-                            <td class="text-nowrap"><%= format_appointment_datetime(entry.expires_at, format_settings) %></td>
+                            <td class="text-nowrap"><%= display_datetime(entry.created_at) %></td>
+                            <td class="text-nowrap"><%= display_datetime(entry.expires_at) %></td>
                             <td class="text-end"><%= entry.notices_sent %></td>
                             <td class="text-end">
                                 <%= button_to lang('delete'), "/waitlist/#{entry.id}", method: :delete,

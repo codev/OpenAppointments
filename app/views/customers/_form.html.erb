@@ -75,8 +75,8 @@
                             <strong><%= appointment.service&.name %> - <%= appointment.provider&.name %></strong>
                             <br>
                         </a>
-                        <small><%= format_appointment_datetime(appointment.start_datetime, formats) %></small><br>
-                        <small><%= format_appointment_datetime(appointment.end_datetime, formats) %></small><br>
+                        <small><%= display_datetime(appointment.start_datetime) %></small><br>
+                        <small><%= display_datetime(appointment.end_datetime) %></small><br>
                         <% if Setting.timezone_support? %>
                             <small><%= format_timezone(appointment.provider&.effective_timezone) %></small>
                         <% end %>

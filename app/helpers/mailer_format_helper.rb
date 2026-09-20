@@ -12,9 +12,15 @@ module MailerFormatHelper
     time.strftime("#{date_format} #{time_format}").strip
   end
 
-  # Date only, per the date_format setting.
+  # Date only in the display style (General Settings > Date display).
   def format_setting_date(date)
-    date.strftime(DATE_FORMATS[Setting.get("date_format")] || DATE_FORMATS["DMY"])
+    DateDisplay.format(date)
+  end
+
+  # Date and time in the display style, for lists and confirmations; date
+  # fields use format_appointment_datetime so the typed value parses.
+  def display_datetime(time)
+    DateDisplay.format_time(time)
   end
 
   # EA format_timezone: identifier -> display label (Timezones::get_timezone_name).

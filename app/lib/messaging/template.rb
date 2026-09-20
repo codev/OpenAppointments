@@ -131,9 +131,7 @@ module Messaging
     end
 
     def format_date(time)
-      format = MailerFormatHelper::DATE_FORMATS[Setting.get("date_format")] ||
-               MailerFormatHelper::DATE_FORMATS["DMY"]
-      time.strftime(format)
+      DateDisplay.format(time)
     end
 
     def format_time(time)
