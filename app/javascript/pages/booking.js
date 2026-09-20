@@ -35,7 +35,7 @@ App.Pages.Booking = (function () {
             }
             $('<button/>', {
                 'type': 'button',
-                'class': 'btn btn-outline-secondary w-100 shadow-none available-hour my-1',
+                'class': 'available-hour',
                 'data-value': hour,
                 'text': moment_.format(timeFormat),
             }).appendTo($hours);
@@ -48,8 +48,8 @@ App.Pages.Booking = (function () {
 
     function selectHour(hour) {
         $('#select-hour-prompt').remove();
-        $('.available-hour').removeClass('selected-hour btn-primary').addClass('btn-outline-secondary');
-        $('.available-hour[data-value="' + hour + '"]').addClass('selected-hour btn-primary').removeClass('btn-outline-secondary');
+        $('.available-hour').removeClass('selected-hour').attr('aria-pressed', 'false');
+        $('.available-hour[data-value="' + hour + '"]').addClass('selected-hour').attr('aria-pressed', 'true');
         $('#selected-time').val(hour);
     }
 
@@ -130,12 +130,12 @@ App.Pages.Booking = (function () {
         const $form = $(form);
         const $message = $('#form-message');
         const fail = (fields, message) => {
-            fields.forEach(($field) => $field.addClass('is-invalid'));
+            fields.forEach(($field) => $field.attr('aria-invalid', 'true'));
             $message.text(message).prop('hidden', false);
             return false;
         };
 
-        $form.find('.is-invalid').removeClass('is-invalid');
+        $form.find('[aria-invalid]').removeAttr('aria-invalid');
         $message.prop('hidden', true);
 
         const missing = $form.find('[required]').filter((index, field) => !$(field).val()).toArray().map((field) => $(field));
@@ -158,7 +158,7 @@ App.Pages.Booking = (function () {
 
     function saveDraft() {
         const draft = {};
-        $('#info-step-form .form-control').each((index, field) => {
+        $('#info-step-form input:not([type=hidden]):not([type=checkbox]), #info-step-form textarea').each((index, field) => {
             draft[field.id] = $(field).val() || '';
         });
         window.sessionStorage.setItem(DRAFT_KEY, JSON.stringify(draft));
@@ -246,10 +246,10 @@ App.Pages.Booking = (function () {
     }
 
     function showDescription() {
-        $('#service-description .selection-description').addClass('d-none');
-        $('#service-description .selection-description[data-for-service="' + $('#select-service').val() + '"]').removeClass('d-none');
-        $('#provider-description .selection-description').addClass('d-none');
-        $('#provider-description .selection-description[data-for-provider="' + $('#select-provider').val() + '"]').removeClass('d-none');
+        $('#service-description .selection-description').prop('hidden', true);
+        $('#service-description .selection-description[data-for-service="' + $('#select-service').val() + '"]').prop('hidden', false);
+        $('#provider-description .selection-description').prop('hidden', true);
+        $('#provider-description .selection-description[data-for-provider="' + $('#select-provider').val() + '"]').prop('hidden', false);
     }
 
     function onSubmit(event) {
@@ -264,7 +264,7 @@ App.Pages.Booking = (function () {
         } else if (form.id === 'service-step-form' || form.id === 'provider-step-form') {
             // Cards mode has no visible select: block Next until a card is picked.
             const $select = $(form).find('#select-service, #select-provider');
-            if ($select.hasClass('d-none') && !$select.val()) {
+            if ($select.prop('hidden') && !$select.val()) {
                 event.preventDefault();
             }
         } else if (form.id === 'info-step-form') {
@@ -282,11 +282,9 @@ App.Pages.Booking = (function () {
         }
     }
 
-    // Next is disabled with a spinner until the next step replaces the frame.
+    // Next is disabled and busy (Pico shows a spinner) until the next step replaces the frame.
     function showNextSpinner(form) {
-        const $next = $(form).find('.button-next');
-        $next.prop('disabled', true);
-        $next.find('i').replaceWith('<span class="spinner-border spinner-border-sm ms-2" role="status" aria-hidden="true"></span>');
+        $(form).find('.button-next').prop('disabled', true).attr('aria-busy', 'true');
     }
 
     function initializeStep() {
@@ -346,9 +344,9 @@ App.Pages.Booking = (function () {
                 if ($card.is('[data-category-id]') && !$card.is('[data-service-id]')) {
                     $('#category-cards .booking-card').removeClass('selected');
                     $card.addClass('selected');
-                    $('.service-cards').addClass('d-none');
-                    $('.service-cards[data-category-id="' + $card.data('categoryId') + '"], .service-cards[data-category-id=""]').removeClass('d-none');
-                    const $heading = $('#select-service-heading').removeClass('d-none');
+                    $('.service-cards').prop('hidden', true);
+                    $('.service-cards[data-category-id="' + $card.data('categoryId') + '"], .service-cards[data-category-id=""]').prop('hidden', false);
+                    const $heading = $('#select-service-heading').prop('hidden', false);
                     scrollTo($heading.offset().top - 20);
                     return;
                 }

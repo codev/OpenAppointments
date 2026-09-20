@@ -1,3 +1,7 @@
-// nice theme on Pico: token overrides only (see ea/themes/nice.scss for the look it carries over).
+// Nice theme on Pico: the knobs the shared layer reads.
 :root {
+    --oa-radius: 0.5rem;
+    --oa-surface-border: #e5e7eb;
+    --oa-shadow: 0 1px 3px rgba(16, 24, 40, 0.08), 0 1px 2px rgba(16, 24, 40, 0.04);
+    --oa-shadow-raised: 0 12px 24px rgba(16, 24, 40, 0.1);
 }

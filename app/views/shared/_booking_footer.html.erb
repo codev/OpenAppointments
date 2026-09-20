@@ -1,39 +1,36 @@
 <%# Port of EA components/booking_footer.php. Locals: display_login_button, legal_notice_url, imprint_url. %>
-<footer id="frame-footer" class="p-3 text-center border-top">
-    <small class="d-block d-md-flex">
-        <span class="footer-powered-by small d-block w-100 w-md-50 text-center text-md-start p-1 pe-md-0">
-            <% separator_needed = false %>
-            <% if setting("display_powered_by", "1").to_s == "1" %>
-                Powered By
-                <a href="https://github.com/codev/OpenAppointments" target="_blank">OpenAppointments</a>
-                <% separator_needed = true %>
-            <% end %>
+<footer id="frame-footer" class="wizard-footer">
+    <span class="footer-powered-by">
+        <% separator_needed = false %>
+        <% if setting("display_powered_by", "1").to_s == "1" %>
+            Powered By
+            <a href="https://github.com/codev/OpenAppointments" target="_blank">OpenAppointments</a>
+            <% separator_needed = true %>
+        <% end %>
 
-            <% if legal_notice_url.present? %>
-                <span <%= "hidden" unless separator_needed %>>|</span>
-                <a href="<%= legal_notice_url %>" target="_blank"><%= lang('legal_notice') %></a>
-                <% separator_needed = true %>
-            <% end %>
+        <% if legal_notice_url.present? %>
+            <span <%= "hidden" unless separator_needed %>>|</span>
+            <a href="<%= legal_notice_url %>" target="_blank"><%= lang('legal_notice') %></a>
+            <% separator_needed = true %>
+        <% end %>
 
-            <% if imprint_url.present? %>
-                <span <%= "hidden" unless separator_needed %>>|</span>
-                <a href="<%= imprint_url %>" target="_blank"><%= lang('imprint') %></a>
-            <% end %>
+        <% if imprint_url.present? %>
+            <span <%= "hidden" unless separator_needed %>>|</span>
+            <a href="<%= imprint_url %>" target="_blank"><%= lang('imprint') %></a>
+        <% end %>
+    </span>
+
+    <span class="footer-options">
+        <span id="select-language" role="button" tabindex="0">
+            <i class="fas fa-language"></i>
+            <%= script_vars[:language].to_s.upcase_first %>
         </span>
 
-        <span class="footer-options d-block w-100 w-md-50 text-center text-md-end">
-            <span id="select-language" class="badge bg-secondary d-inline-block my-1 my-md-0 p-1">
-                <i class="fas fa-language me-2"></i>
-                <%= script_vars[:language].to_s.upcase_first %>
-            </span>
-
-            <% if display_login_button.to_s == "1" %>
-                <a class="backend-link badge bg-primary text-decoration-none px-2 d-inline-block my-1 my-md-0 p-1"
-                   href="<%= session[:user_id] ? "/calendar" : "/login" %>">
-                    <i class="fas fa-sign-in-alt me-2"></i>
-                    <%= session[:user_id] ? lang('backend_section') : lang('login') %>
-                </a>
-            <% end %>
-        </span>
-    </small>
+        <% if display_login_button.to_s == "1" %>
+            <a class="backend-link" href="<%= session[:user_id] ? "/calendar" : "/login" %>">
+                <i class="fas fa-sign-in-alt"></i>
+                <%= session[:user_id] ? lang('backend_section') : lang('login') %>
+            </a>
+        <% end %>
+    </span>
 </footer>

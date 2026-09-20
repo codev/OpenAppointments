@@ -53,17 +53,20 @@ class ApplicationSystemTestCase < ActionDispatch::SystemTestCase
   # Typing during Bootstrap's fade-in loses keys to its focus handling, and a
   # dismiss click during the transition is ignored: wait for the shown modal to
   # be opaque and for Bootstrap to have finished its transition.
+  # A native dialog is open at once; a Bootstrap modal (pages not yet on Pico)
+  # is waited for until its transition ends.
   def wait_for_modal
-    assert_selector ".modal.show", wait: 5
-    assert page.has_css?(".modal.show", wait: 5) && wait_until_shown, "modal did not finish showing"
+    assert_selector ".modal.show, dialog[open]", wait: 5
+    assert wait_until_shown, "modal did not finish showing"
   end
 
   def wait_until_shown
     50.times do
       shown = page.evaluate_script(<<~JS)
         (() => {
+          if (document.querySelector('dialog[open]')) return true;
           const element = document.querySelector('.modal.show');
-          const instance = element && bootstrap.Modal.getInstance(element);
+          const instance = element && window.bootstrap && bootstrap.Modal.getInstance(element);
           return !!element && getComputedStyle(element).opacity === '1' && !!instance && !instance._isTransitioning;
         })()
       JS

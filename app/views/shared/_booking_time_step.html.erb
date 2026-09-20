@@ -1,7 +1,7 @@
 <%# Date and hour: the whole booking window arrives with the page, so switching
     days is instant on the client. Times are HH:MM keys in the provider's zone;
     labels follow time_format and the chosen timezone. %>
-<div id="wizard-frame-<%= step_number %>" class="wizard-frame p-3 p-md-4"
+<div id="wizard-frame-<%= step_number %>" class="wizard-frame"
      data-window="<%= @window.to_json %>"
      data-selected-date="<%= @date %>" data-selected-time="<%= @time %>" data-selected-timezone="<%= @timezone %>"
      data-provider-timezone="<%= wizard_provider_timezone %>"
@@ -11,24 +11,24 @@
         <%= hidden_field_tag :step, "info", id: nil %>
         <%= hidden_field_tag :date, @date, id: "selected-date" %>
         <%= hidden_field_tag :time, @time, id: "selected-time" %>
-        <div class="frame-container py-3">
-            <h2 class="frame-title fw-light text-center mb-4 text-muted"><%= lang('appointment_date_and_time') %></h2>
+        <div class="frame-container">
+            <h2 class="frame-title"><%= lang('appointment_date_and_time') %></h2>
             <%= render "shared/booking_notice", shown: vars(:display_booking_notice_time_step) %>
             <%= render "shared/fully_booked_notice" %>
-            <div class="row frame-content">
-                <div class="col-12 col-lg-6">
-                    <div id="select-date" class="mx-auto my-4"></div>
+            <div class="frame-content time-step">
+                <div>
+                    <div id="select-date"></div>
                 </div>
-                <div class="col-12 col-lg-6">
-                    <div id="select-time" class="mx-auto py-3">
+                <div>
+                    <div id="select-time">
                         <%# Without timezone support there is no select, so the script labels hours in the stylist's zone. %>
                         <% if Setting.timezone_support? %>
-                            <div class="mb-3">
-                                <label for="select-timezone" class="form-label"><%= lang('timezone') %></label>
-                                <%= render "shared/timezone_dropdown", attributes: 'id="select-timezone" name="timezone" class="form-select mb-3"' %>
+                            <div class="field">
+                                <label for="select-timezone"><%= lang('timezone') %></label>
+                                <%= render "shared/timezone_dropdown", attributes: 'id="select-timezone" name="timezone"' %>
                             </div>
                         <% end %>
-                        <div id="available-hours" class="overflow-auto my-3 pe-2">
+                        <div id="available-hours">
                             <% if @window.empty? %>
                                 <em><%= lang('no_available_hours') %></em>
                             <% end %>
@@ -37,41 +37,41 @@
                 </div>
             </div>
         </div>
-        <div class="command-buttons text-center my-3 mx-auto d-md-flex justify-content-md-between">
+        <div class="command-buttons">
             <%= wizard_back_button "second" %>
             <%= wizard_next_button %>
         </div>
     <% end %>
     <%# Waiting list signup: its own form after the step's, posted into the frame. %>
     <% if vars(:display_waitlist).to_s == "1" %>
-        <div id="waitlist" class="frame-container border-top pt-4 pb-2">
-            <h5 class="fw-light text-center mb-2"><%= lang('waitlist_signup_title') %></h5>
-            <p class="text-muted text-center small mb-3"><%= lang('waitlist_signup_hint') %></p>
+        <div id="waitlist" class="frame-container">
+            <h5><%= lang('waitlist_signup_title') %></h5>
+            <p class="hint"><%= lang('waitlist_signup_hint') %></p>
             <% if @waitlist_notice %>
-                <div class="alert alert-<%= @waitlist_alert %> text-center" role="alert"><%= @waitlist_notice %></div>
+                <p class="notice" data-tone="<%= @waitlist_alert %>" role="alert"><%= @waitlist_notice %></p>
             <% end %>
             <% unless @waitlist_alert == "success" %>
                 <% signup = params.fetch(:waitlist, {}).permit(:name, :email, :phone) %>
                 <%= form_with url: "/booking/waitlist", method: :post, id: "waitlist-form", data: { turbo_frame: "wizard" } do %>
                     <%= wizard_state_fields(step: "time") %>
-                    <div class="row">
-                        <div class="col-12 col-lg-4 mb-3">
-                            <label for="waitlist-name" class="form-label"><%= lang('name') %> <span class="text-danger">*</span></label>
-                            <%= text_field_tag "waitlist[name]", signup[:name], id: "waitlist-name", class: "form-control", maxlength: 220, required: true %>
+                    <div class="fields" data-columns="2">
+                        <div class="field">
+                            <label for="waitlist-name"><%= lang('name') %> <abbr class="required" title="<%= lang('fields_are_required') %>">*</abbr></label>
+                            <%= text_field_tag "waitlist[name]", signup[:name], id: "waitlist-name", maxlength: 220, required: true %>
                         </div>
-                        <div class="col-12 col-lg-4 mb-3">
-                            <label for="waitlist-email" class="form-label"><%= lang('email') %> <span class="text-danger">*</span></label>
-                            <%= email_field_tag "waitlist[email]", signup[:email], id: "waitlist-email", class: "form-control", maxlength: 120, required: true %>
+                        <div class="field">
+                            <label for="waitlist-email"><%= lang('email') %> <abbr class="required" title="<%= lang('fields_are_required') %>">*</abbr></label>
+                            <%= email_field_tag "waitlist[email]", signup[:email], id: "waitlist-email", maxlength: 120, required: true %>
                         </div>
                         <% if vars(:display_phone_number).to_s == "1" %>
-                            <div class="col-12 col-lg-4 mb-3">
-                                <label for="waitlist-phone" class="form-label"><%= lang('phone_number') %></label>
-                                <%= telephone_field_tag "waitlist[phone]", signup[:phone], id: "waitlist-phone", class: "form-control", maxlength: 60 %>
+                            <div class="field">
+                                <label for="waitlist-phone"><%= lang('phone_number') %></label>
+                                <%= telephone_field_tag "waitlist[phone]", signup[:phone], id: "waitlist-phone", maxlength: 60 %>
                             </div>
                         <% end %>
                     </div>
-                    <div class="text-center">
-                        <button type="submit" id="waitlist-join" class="btn btn-outline-primary"><%= lang('waitlist_join') %></button>
+                    <div class="actions">
+                        <button type="submit" id="waitlist-join" class="secondary"><%= lang('waitlist_join') %></button>
                     </div>
                 <% end %>
             <% end %>

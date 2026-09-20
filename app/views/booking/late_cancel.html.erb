@@ -1,26 +1,22 @@
 <%# Manage link opened inside the late cancellation window: late cancel only. %>
-<div class="d-flex align-items-center justify-content-center">
-    <div class="text-center py-4 px-3" style="max-width: 600px;">
-        <div class="d-flex align-items-center justify-content-center rounded-circle bg-warning bg-opacity-10 mx-auto mb-4" style="width: 100px; height: 100px;">
-            <i class="fas fa-calendar-times fa-3x text-warning"></i>
-        </div>
+<div class="message-icon-warning"><i class="fas fa-calendar-times"></i></div>
 
-        <h3 class="text-muted fw-semibold mb-4"><%= lang('late_cancel_title') %></h3>
+<h3><%= lang('late_cancel_title') %></h3>
 
-        <p class="fs-5 text-muted mb-3"><%= vars(:notice) %></p>
+<p class="muted"><%= vars(:notice) %></p>
 
-        <form method="post" action="<%= "/booking_cancellation/late/#{vars(:appointment_hash)}" %>" class="text-start">
-            <label for="cancellation-reason" class="form-label"><%= lang('reason') %></label>
-            <textarea id="cancellation-reason" name="cancellation_reason" class="form-control mb-3" rows="3" required></textarea>
-            <div class="text-center">
-                <button type="submit" class="btn btn-warning px-4 py-2">
-                    <i class="fas fa-calendar-times me-2"></i>
-                    <%= lang('late_cancel') %>
-                </button>
-            </div>
-        </form>
+<form method="post" action="<%= "/booking_cancellation/late/#{vars(:appointment_hash)}" %>">
+    <div class="field">
+        <label for="cancellation-reason"><%= lang('reason') %></label>
+        <textarea id="cancellation-reason" name="cancellation_reason" rows="3" required></textarea>
     </div>
-</div>
+    <div class="actions centered">
+        <button type="submit">
+            <i class="fas fa-calendar-times"></i>
+            <%= lang('late_cancel') %>
+        </button>
+    </div>
+</form>
 
 <% content_for :scripts do %>
     <%= render "shared/google_analytics_script", google_analytics_code: vars(:google_analytics_code) %>

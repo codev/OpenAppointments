@@ -100,7 +100,7 @@ class PhoneOrEmailTest < ActionDispatch::IntegrationTest
     post "/booking/confirm", params: { form: "1", step: "info", service_id: services(:haircut).id,
                                        provider_id: users(:zane).id, date: "2026-07-20", time: "10:00",
                                        customer: { name: "Only Name" } }
-    assert_select "#wizard-frame-4 #form-message.alert-danger", text: I18n.t("ea.phone_or_email_required")
+    assert_select "#wizard-frame-4 #form-message[data-tone=error]", text: I18n.t("ea.phone_or_email_required")
     assert_select "#name[value='Only Name']"
   end
 

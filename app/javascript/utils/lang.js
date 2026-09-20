@@ -24,51 +24,45 @@ window.App.Utils.Lang = (function () {
      * @param {Object} $target Selected element button for the language selection.
      */
     function enableLanguageSelection($target) {
-        // Select Language
-        const $languageList = $('<ul/>', {
-            'id': 'language-list',
-            'html': vars('available_languages').map((availableLanguage) =>
+        // The languages open in a dialog; choosing one changes the language and reloads.
+        const $list = $('<ul/>', {
+            id: 'language-list',
+            class: 'language-list',
+            html: vars('available_languages').map((availableLanguage) =>
                 $('<li/>', {
-                    'class': 'language',
+                    class: 'language',
                     'data-language': availableLanguage,
-                    'text': App.Utils.String.upperCaseFirstLetter(availableLanguage),
+                    text: App.Utils.String.upperCaseFirstLetter(availableLanguage),
                 }),
             ),
         });
+        const $dialog = $(`
+            <dialog id="language-dialog">
+                <article>
+                    <header>
+                        <h4>Select Language</h4>
+                        <button type="button" class="dialog-close" aria-label="Close" data-dialog-close>&times;</button>
+                    </header>
+                </article>
+            </dialog>
+        `).appendTo('body');
+        $dialog.find('article').append($list);
 
-        $target.popover({
-            placement: 'top',
-            title: 'Select Language',
-            content: $languageList[0],
-            html: true,
-            container: 'body',
-            trigger: 'manual',
-        });
-
-        $target.on('click', function (event) {
-            event.stopPropagation();
-
-            const $target = $(event.target);
-
-            if ($('#language-list').length === 0) {
-                $target.popover('show');
-            } else {
-                $target.popover('hide');
+        $target.on('click', () => App.Utils.Dialog.open($dialog[0]));
+        $target.on('keydown', (event) => {
+            if (event.key === 'Enter' || event.key === ' ') {
+                event.preventDefault();
+                App.Utils.Dialog.open($dialog[0]);
             }
-
-            $target.toggleClass('active');
         });
 
         $(document).on('click', 'li.language', (event) => {
             // Change language with HTTP request and refresh page.
-
             const language = $(event.target).data('language');
-
-            App.Http.Localization.changeLanguage(language).done(() => document.location.reload());
-        });
-
-        $(document).on('click', () => {
-            $target.popover('hide');
+            App.Http.Localization.changeLanguage(language).done(() => {
+                document.location.reload();
+            });
+            App.Utils.Dialog.close($dialog[0]);
         });
     }
 

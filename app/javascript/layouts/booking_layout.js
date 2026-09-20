@@ -41,8 +41,7 @@ window.App.Layouts.Booking = (function () {
         const $link = $('.cc-link');
         $link.replaceWith(
             $('<a/>', {
-                'data-bs-toggle': 'modal',
-                'data-bs-target': '#cookie-notice-modal',
+                'data-dialog-open': 'cookie-notice-modal',
                 'href': '#',
                 'class': 'cc-link',
                 'text': $link.text(),

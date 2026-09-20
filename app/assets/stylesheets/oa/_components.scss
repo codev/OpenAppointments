@@ -29,7 +29,8 @@
     }
 }
 
-.page-title {
+.page-title,
+.pico .page-title {
     font-weight: 300;
     font-size: 1.5rem;
     margin: 0 0 1rem;
@@ -37,7 +38,8 @@
     border-bottom: var(--oa-border-width) solid var(--oa-surface-border);
 }
 
-.section-title {
+.section-title,
+.pico .section-title {
     font-weight: 300;
     font-size: 1.15rem;
     margin: 1.5rem 0 0.75rem;
@@ -91,7 +93,10 @@
 
 button,
 [role="button"],
-input[type="submit"] {
+input[type="submit"],
+.pico button,
+.pico [role="button"],
+.pico input[type="submit"] {
     width: auto;
     margin-bottom: 0;
 }
@@ -474,4 +479,29 @@ dialog > article {
     border-radius: 2px;
     margin-right: 4px;
     vertical-align: -1px;
+}
+
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+.booking-notice {
+    padding: 0.75rem 1rem;
+    border-radius: var(--oa-radius);
+    background: rgba(var(--oa-primary-rgb), 0.08);
+    border-left: 4px solid var(--oa-primary);
+    margin-bottom: 1.5rem;
+}
+
+dialog .dialog-body {
+    max-height: 60vh;
+    overflow: auto;
 }

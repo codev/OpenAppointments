@@ -102,7 +102,7 @@ class BookingPrivateLinksTest < ActionDispatch::IntegrationTest
     assert_no_match "Chair hire", response.body
 
     get "/", params: { provider: @chair.booking_slug }
-    assert_select "#category-cards .booking-card .card-title", text: "Chair hire"
+    assert_select "#category-cards .booking-card .booking-card-title", text: "Chair hire"
   end
 
   test "rescheduling an appointment on private records prefills them" do

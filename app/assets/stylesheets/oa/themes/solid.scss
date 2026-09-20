@@ -1,3 +1,13 @@
-// solid theme on Pico: token overrides only (see ea/themes/solid.scss for the look it carries over).
+// Solid theme on Pico: the knobs the shared layer reads.
 :root {
+    --oa-radius: 4px;
+    --oa-border-width: 0;
+    --oa-surface: #fff;
+    --oa-surface-border: transparent;
+    --oa-shadow: 0 10px 40px rgba(0, 0, 0, 0.12);
+    --oa-shadow-raised: 0 14px 48px rgba(0, 0, 0, 0.18);
+    --oa-step-bg: var(--oa-primary-dark);
+    --oa-step-fg: var(--oa-primary-subtle);
+    --oa-step-active-bg: var(--oa-secondary);
+    --oa-step-active-fg: #fff;
 }

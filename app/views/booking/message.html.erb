@@ -1,14 +1,10 @@
 <%# Port of EA pages/booking_message.php. Rendered with the message layout.
     message_is_html: message_text is the disable_booking_message HTML setting. %>
-<div>
-    <img id="message-icon" class="mt-0 mb-5" src="<%= vars(:message_icon) %>" alt="warning">
-</div>
+<img id="message-icon" src="<%= vars(:message_icon) %>" alt="warning">
 
-<div class="mb-5">
-    <h4 class="mb-5"><%= vars(:message_title) %></h4>
+<h4><%= vars(:message_title) %></h4>
 
-    <p><% if vars(:message_is_html) %><%= vars(:message_text)&.html_safe %><% else %><%= vars(:message_text) %><% end %></p>
-</div>
+<p><% if vars(:message_is_html) %><%= vars(:message_text)&.html_safe %><% else %><%= vars(:message_text) %><% end %></p>
 
 <% content_for :scripts do %>
     <%= render "shared/google_analytics_script", google_analytics_code: vars(:google_analytics_code) %>

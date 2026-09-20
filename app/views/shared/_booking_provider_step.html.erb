@@ -2,74 +2,66 @@
 <% providers = selectable_providers %>
 <% any_provider = !vars(:manage_mode) && providers.length > 1 && vars(:display_any_provider).to_s == "1" %>
 <% cards_mode = vars(:display_mode) == "cards" %>
-<div id="wizard-frame-<%= step_number %>" class="wizard-frame p-3 p-md-4">
+<div id="wizard-frame-<%= step_number %>" class="wizard-frame">
     <%= form_with url: wizard_form_path, method: :get, id: "provider-step-form", data: { turbo_frame: "wizard", turbo_action: "advance" } do %>
         <%= wizard_state_fields(provider_id: nil, date: nil, time: nil, step: nil) %>
         <%= hidden_field_tag :step, (@step == "first" ? "second" : "time"), id: nil %>
-        <div class="frame-container py-3">
-            <h2 class="frame-title fw-light text-center mb-4 text-muted mt-md-1"><%= lang('select_provider') %></h2>
+        <div class="frame-container">
+            <h2 class="frame-title"><%= lang('select_provider') %></h2>
             <%= render "shared/fully_booked_notice" %>
-            <div class="row frame-content">
-                <div class="col col-lg-12">
-                    <div class="mb-3">
-                        <label for="select-provider" class="fs-5 mb-2 <%= 'd-none' if cards_mode %>">
-                            <strong><%= lang('provider') %></strong>
-                        </label>
-                        <select name="provider_id" id="select-provider" class="form-select mb-4 <%= 'd-none' if cards_mode %>" <%= 'required' unless cards_mode %>>
-                            <% if providers.length != 1 %>
-                                <option value=""><%= lang('please_select') %></option>
-                            <% end %>
-                            <% if any_provider %>
-                                <option value="<%= BookingPayloads::ANY_PROVIDER %>" <%= 'selected' if @provider_id == BookingPayloads::ANY_PROVIDER %>><%= lang('any_provider') %></option>
-                            <% end %>
-                            <% providers.each do |provider| %>
-                                <option value="<%= provider['id'] %>" <%= 'selected' if provider['id'].to_s == @provider_id.to_s || providers.length == 1 %>><%= provider['name'] %></option>
-                            <% end %>
-                        </select>
-                    </div>
-                    <% if cards_mode %>
-                        <div id="provider-cards" class="booking-cards row g-3 mb-4">
-                            <% if any_provider %>
-                                <div class="col-6 col-md-3">
-                                    <div class="booking-card card h-100 text-center <%= 'selected' if @provider_id == BookingPayloads::ANY_PROVIDER %>"
-                                         role="button" tabindex="0" data-provider-id="<%= BookingPayloads::ANY_PROVIDER %>">
-                                        <div class="card-body p-2"><h5 class="card-title fs-6 mb-0"><%= lang('any_provider') %></h5></div>
-                                    </div>
-                                </div>
-                            <% end %>
-                            <% providers.each do |provider| %>
-                                <div class="col-6 col-md-3">
-                                    <div class="booking-card card h-100 text-center <%= 'selected' if provider['id'].to_s == @provider_id.to_s %>"
-                                         role="button" tabindex="0" data-provider-id="<%= provider["id"] %>">
-                                        <% if provider["picture_url"].present? %>
-                                            <img src="<%= provider["picture_url"] %>" class="card-img-top booking-card-picture" alt="">
-                                        <% end %>
-                                        <div class="card-body p-2"><h5 class="card-title fs-6 mb-0"><%= provider["name"] %></h5></div>
-                                    </div>
-                                </div>
-                            <% end %>
-                        </div>
-                    <% end %>
-                    <div id="provider-description" class="selection-details small overflow-auto shadow-none">
+            <div class="frame-content">
+                <div class="field">
+                    <label for="select-provider" <%= 'hidden' if cards_mode %>><%= lang('provider') %></label>
+                    <select name="provider_id" id="select-provider" <%= 'hidden' if cards_mode %> <%= 'required' unless cards_mode %>>
+                        <% if providers.length != 1 %>
+                            <option value=""><%= lang('please_select') %></option>
+                        <% end %>
+                        <% if any_provider %>
+                            <option value="<%= BookingPayloads::ANY_PROVIDER %>" <%= 'selected' if @provider_id == BookingPayloads::ANY_PROVIDER %>><%= lang('any_provider') %></option>
+                        <% end %>
                         <% providers.each do |provider| %>
-                            <div class="selection-description d-none" data-for-provider="<%= provider['id'] %>">
-                                <% if !cards_mode && provider["picture_url"].present? %>
-                                    <img src="<%= provider["picture_url"] %>" alt="<%= provider["name"] %>" class="selection-picture rounded">
+                            <option value="<%= provider['id'] %>" <%= 'selected' if provider['id'].to_s == @provider_id.to_s || providers.length == 1 %>><%= provider['name'] %></option>
+                        <% end %>
+                    </select>
+                </div>
+                <% if cards_mode %>
+                    <div id="provider-cards" class="booking-cards">
+                        <% if any_provider %>
+                            <div class="booking-card <%= 'selected' if @provider_id == BookingPayloads::ANY_PROVIDER %>"
+                                 role="button" tabindex="0" data-provider-id="<%= BookingPayloads::ANY_PROVIDER %>">
+                                <div class="booking-card-body"><h5 class="booking-card-title"><%= lang('any_provider') %></h5></div>
+                            </div>
+                        <% end %>
+                        <% providers.each do |provider| %>
+                            <div class="booking-card <%= 'selected' if provider['id'].to_s == @provider_id.to_s %>"
+                                 role="button" tabindex="0" data-provider-id="<%= provider["id"] %>">
+                                <% if provider["picture_url"].present? %>
+                                    <img src="<%= provider["picture_url"] %>" class="booking-card-picture" alt="">
                                 <% end %>
-                                <% [ provider["about"], provider["services_description"] ].each do |text| %>
-                                    <% next if text.blank? %>
-                                    <div class="text-muted mb-2"><%= simple_format(text) %></div>
-                                <% end %>
+                                <div class="booking-card-body"><h5 class="booking-card-title"><%= provider["name"] %></h5></div>
                             </div>
                         <% end %>
                     </div>
+                <% end %>
+                <div id="provider-description" class="selection-details">
+                    <% providers.each do |provider| %>
+                        <div class="selection-description" data-for-provider="<%= provider['id'] %>" hidden>
+                            <% if !cards_mode && provider["picture_url"].present? %>
+                                <img src="<%= provider["picture_url"] %>" alt="<%= provider["name"] %>" class="selection-picture">
+                            <% end %>
+                            <% [ provider["about"], provider["services_description"] ].each do |text| %>
+                                <% next if text.blank? %>
+                                <div class="muted"><%= simple_format(text) %></div>
+                            <% end %>
+                        </div>
+                    <% end %>
                 </div>
             </div>
         </div>
-        <div class="command-buttons text-center my-3 mx-auto d-md-flex justify-content-md-between">
+        <div class="command-buttons">
             <% if @step == "first" %>
                 <% if !vars(:manage_mode) && setting("display_order_switch", "1").to_s == "1" %>
-                    <a class="swap-first-step btn btn-outline-secondary" data-turbo-action="advance"
+                    <a class="swap-first-step secondary" role="button" data-turbo-action="advance"
                        href="<%= wizard_step_path('first', first: 'service', service_id: nil, provider_id: nil) %>">
                         <%= lang('select_service_first') %>
                     </a>

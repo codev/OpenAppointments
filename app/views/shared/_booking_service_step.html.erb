@@ -1,10 +1,10 @@
 <%# Service selection: a GET form advancing the wizard. Locals: available_services
     (already narrowed to the chosen provider's). %>
-<div id="wizard-frame-<%= step_number %>" class="wizard-frame p-3 p-md-4">
+<div id="wizard-frame-<%= step_number %>" class="wizard-frame">
     <%= form_with url: wizard_form_path, method: :get, id: "service-step-form", data: { turbo_frame: "wizard", turbo_action: "advance" } do %>
         <%= wizard_state_fields(service_id: nil, date: nil, time: nil, step: nil) %>
         <%= hidden_field_tag :step, (@step == "first" ? "second" : "time"), id: nil %>
-        <div class="frame-container py-3">
+        <div class="frame-container">
             <%
               cards_mode = vars(:display_mode) == "cards"
               offered_category_ids = available_services.map { |service| service["service_category_id"] }
@@ -12,109 +12,99 @@
               uncategorized = cards_mode ? available_services.select { |service| service["service_category_id"].nil? } : []
               category_first = cards_mode && categories.any?
             %>
-            <h2 class="frame-title fw-light text-center mb-4 text-muted mt-md-1">
+            <h2 class="frame-title">
                 <%= lang(category_first ? 'select_category' : 'select_service') %>
             </h2>
             <%= render "shared/fully_booked_notice" %>
-            <div class="row frame-content">
-                <div class="col col-lg-12">
-                    <div class="mb-3">
-                        <label for="select-service" class="fs-5 mb-2 <%= 'd-none' if cards_mode %>">
-                            <strong><%= lang('service') %></strong>
-                        </label>
-                        <select name="service_id" id="select-service" class="form-select mb-4 <%= 'd-none' if cards_mode %>" <%= 'required' unless cards_mode %>>
-                            <option value=""><%= lang('please_select') %></option>
-                            <% has_category = available_services.any? { |service| service["service_category_id"].present? } %>
-                            <% option = ->(service) { %>
-                                <option value="<%= service['id'] %>" <%= 'selected' if service['id'] == @service_id %>><%= service['name'] %></option>
-                            <% } %>
-                            <% if has_category %>
-                                <% grouped_services = available_services.select { |service| service["service_category_id"].present? }
-                                                                        .group_by { |service| service["service_category_name"] } %>
-                                <% grouped_services["uncategorized"] = available_services.select { |service| service["service_category_id"].nil? } %>
-                                <% grouped_services.each do |key, group| %>
-                                    <% next unless group.any? %>
-                                    <optgroup label="<%= key != 'uncategorized' ? group.first['service_category_name'] : lang('uncategorized') %>">
-                                        <% group.each { |service| option.call(service) } %>
-                                    </optgroup>
-                                <% end %>
-                            <% else %>
-                                <% available_services.each { |service| option.call(service) } %>
+            <div class="frame-content">
+                <div class="field">
+                    <label for="select-service" <%= 'hidden' if cards_mode %>><%= lang('service') %></label>
+                    <select name="service_id" id="select-service" <%= 'hidden' if cards_mode %> <%= 'required' unless cards_mode %>>
+                        <option value=""><%= lang('please_select') %></option>
+                        <% has_category = available_services.any? { |service| service["service_category_id"].present? } %>
+                        <% option = ->(service) { %>
+                            <option value="<%= service['id'] %>" <%= 'selected' if service['id'] == @service_id %>><%= service['name'] %></option>
+                        <% } %>
+                        <% if has_category %>
+                            <% grouped_services = available_services.select { |service| service["service_category_id"].present? }
+                                                                    .group_by { |service| service["service_category_name"] } %>
+                            <% grouped_services["uncategorized"] = available_services.select { |service| service["service_category_id"].nil? } %>
+                            <% grouped_services.each do |key, group| %>
+                                <% next unless group.any? %>
+                                <optgroup label="<%= key != 'uncategorized' ? group.first['service_category_name'] : lang('uncategorized') %>">
+                                    <% group.each { |service| option.call(service) } %>
+                                </optgroup>
                             <% end %>
-                        </select>
-                    </div>
-                    <% if cards_mode %>
-                        <% service_groups = available_services.group_by { |service| service["service_category_id"] } %>
-                        <% if category_first %>
-                            <div id="category-cards" class="booking-cards row g-3 mb-4">
-                                <% categories.each do |category| %>
-                                    <div class="col-6 col-md-3">
-                                        <div class="booking-card card h-100 text-center" role="button" tabindex="0"
-                                             data-category-id="<%= category["id"] %>">
-                                            <% if category["picture_url"].present? %>
-                                                <img src="<%= category["picture_url"] %>" class="card-img-top booking-card-picture" alt="">
-                                            <% end %>
-                                            <div class="card-body p-2">
-                                                <h5 class="card-title fs-6 mb-0"><%= category["name"] %></h5>
-                                            </div>
-                                        </div>
-                                    </div>
-                                <% end %>
-                            </div>
-                            <h2 id="select-service-heading"
-                                class="frame-title fw-light text-center mb-4 text-muted <%= 'd-none' if uncategorized.empty? %>">
-                                <%= lang('select_service') %>
-                            </h2>
+                        <% else %>
+                            <% available_services.each { |service| option.call(service) } %>
                         <% end %>
-                        <% service_groups.each do |category_id, services| %>
-                            <div class="service-cards booking-cards row g-3 mb-4 <%= 'd-none' if category_first && category_id.present? %>"
-                                 data-category-id="<%= category_id %>">
-                                <% services.each do |service| %>
-                                    <div class="col-6 col-md-3">
-                                        <div class="booking-card card h-100 text-center <%= 'selected' if service['id'] == @service_id %>"
-                                             role="button" tabindex="0" data-service-id="<%= service["id"] %>">
-                                            <% if service["picture_url"].present? %>
-                                                <img src="<%= service["picture_url"] %>" class="card-img-top booking-card-picture" alt="">
-                                            <% end %>
-                                            <div class="card-body p-2">
-                                                <h5 class="card-title fs-6 mb-1"><%= service["name"] %></h5>
-                                                <div class="small text-muted">
-                                                    <%= service["duration"] %> <%= lang('minutes') %>
-                                                    <% if service["price"].to_f.positive? %>
-                                                        | <%= service["price"] %> <%= service["currency"] %>
-                                                    <% end %>
-                                                </div>
-                                            </div>
-                                        </div>
+                    </select>
+                </div>
+                <% if cards_mode %>
+                    <% service_groups = available_services.group_by { |service| service["service_category_id"] } %>
+                    <% if category_first %>
+                        <div id="category-cards" class="booking-cards">
+                            <% categories.each do |category| %>
+                                <div class="booking-card" role="button" tabindex="0" data-category-id="<%= category["id"] %>">
+                                    <% if category["picture_url"].present? %>
+                                        <img src="<%= category["picture_url"] %>" class="booking-card-picture" alt="">
+                                    <% end %>
+                                    <div class="booking-card-body">
+                                        <h5 class="booking-card-title"><%= category["name"] %></h5>
                                     </div>
-                                <% end %>
-                            </div>
-                        <% end %>
+                                </div>
+                            <% end %>
+                        </div>
+                        <h2 id="select-service-heading" class="frame-title" <%= 'hidden' if uncategorized.empty? %>>
+                            <%= lang('select_service') %>
+                        </h2>
                     <% end %>
-                    <div id="service-description" class="small overflow-auto shadow-none">
-                        <% available_services.each do |service| %>
-                            <div class="selection-description d-none" data-for-service="<%= service['id'] %>">
-                                <% if vars(:display_mode) != "cards" && service["picture_url"].present? %>
-                                    <img src="<%= service["picture_url"] %>" alt="<%= service["name"] %>" class="selection-picture rounded">
-                                <% end %>
-                                <% info = [] %>
-                                <% info << "#{lang('duration')}: #{service['duration']} #{lang('minutes')}" if service["duration"] %>
-                                <% info << "#{lang('price')}: #{format('%.2f', service['price'])} #{service['currency']}" if service["price"].to_f.positive? %>
-                                <% info << "#{lang('location')}: #{service['location']}" if service["location"].present? %>
-                                <div class="mb-2 fst-italic"><%= info.join(", ") %></div>
-                                <% if service["description"].present? %>
-                                    <div class="text-muted mb-2"><%= simple_format(service["description"]) %></div>
-                                <% end %>
-                            </div>
-                        <% end %>
-                    </div>
+                    <% service_groups.each do |category_id, services| %>
+                        <div class="service-cards booking-cards" data-category-id="<%= category_id %>"
+                             <%= 'hidden' if category_first && category_id.present? %>>
+                            <% services.each do |service| %>
+                                <div class="booking-card <%= 'selected' if service['id'] == @service_id %>"
+                                     role="button" tabindex="0" data-service-id="<%= service["id"] %>">
+                                    <% if service["picture_url"].present? %>
+                                        <img src="<%= service["picture_url"] %>" class="booking-card-picture" alt="">
+                                    <% end %>
+                                    <div class="booking-card-body">
+                                        <h5 class="booking-card-title"><%= service["name"] %></h5>
+                                        <small class="muted">
+                                            <%= service["duration"] %> <%= lang('minutes') %>
+                                            <% if service["price"].to_f.positive? %>
+                                                | <%= service["price"] %> <%= service["currency"] %>
+                                            <% end %>
+                                        </small>
+                                    </div>
+                                </div>
+                            <% end %>
+                        </div>
+                    <% end %>
+                <% end %>
+                <div id="service-description" class="selection-details">
+                    <% available_services.each do |service| %>
+                        <div class="selection-description" data-for-service="<%= service['id'] %>" hidden>
+                            <% if vars(:display_mode) != "cards" && service["picture_url"].present? %>
+                                <img src="<%= service["picture_url"] %>" alt="<%= service["name"] %>" class="selection-picture">
+                            <% end %>
+                            <% info = [] %>
+                            <% info << "#{lang('duration')}: #{service['duration']} #{lang('minutes')}" if service["duration"] %>
+                            <% info << "#{lang('price')}: #{format('%.2f', service['price'])} #{service['currency']}" if service["price"].to_f.positive? %>
+                            <% info << "#{lang('location')}: #{service['location']}" if service["location"].present? %>
+                            <div class="selection-summary"><%= info.join(", ") %></div>
+                            <% if service["description"].present? %>
+                                <div class="muted"><%= simple_format(service["description"]) %></div>
+                            <% end %>
+                        </div>
+                    <% end %>
                 </div>
             </div>
         </div>
-        <div class="command-buttons text-center my-3 mx-auto d-md-flex justify-content-md-between">
+        <div class="command-buttons">
             <% if @step == "first" %>
                 <% if !vars(:manage_mode) && setting("display_order_switch", "1").to_s == "1" %>
-                    <a class="swap-first-step btn btn-outline-secondary" data-turbo-action="advance"
+                    <a class="swap-first-step secondary" role="button" data-turbo-action="advance"
                        href="<%= wizard_step_path('first', first: 'provider', service_id: nil, provider_id: nil) %>">
                         <%= lang('select_provider_first') %>
                     </a>

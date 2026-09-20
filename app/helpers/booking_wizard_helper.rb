@@ -53,15 +53,15 @@ module BookingWizardHelper
     overrides = {}
     # Cards mode starts over from the category view.
     overrides = { service_id: nil, provider_id: nil } if step == "first" && vars(:display_mode) == "cards"
-    link_to wizard_step_path(step, overrides), id: "button-back-#{step_number}", class: "btn button-back btn-outline-secondary",
+    link_to wizard_step_path(step, overrides), id: "button-back-#{step_number}", class: "button-back secondary", role: "button",
                                                data: { turbo_action: "advance" } do
-      safe_join([ tag.i(class: "fas fa-chevron-left me-2"), lang("back") ])
+      safe_join([ tag.i(class: "fas fa-chevron-left"), " ", lang("back") ])
     end
   end
 
   def wizard_next_button
-    button_tag type: "submit", id: "button-next-#{step_number}", class: "btn button-next btn-primary" do
-      safe_join([ lang("next"), tag.i(class: "fas fa-chevron-right ms-2") ])
+    button_tag type: "submit", id: "button-next-#{step_number}", class: "button-next" do
+      safe_join([ lang("next"), " ", tag.i(class: "fas fa-chevron-right") ])
     end
   end
 

@@ -58,7 +58,7 @@ class BookingWizardTest < ApplicationSystemTestCase
     find("#button-back-2").click
     assert_selector "#wizard-frame-1", visible: :visible, wait: 5
     assert_no_selector "#category-cards .booking-card.selected"
-    assert_no_selector ".service-cards:not(.d-none) .booking-card", visible: :all
+    assert_no_selector ".service-cards:not([hidden]) .booking-card", visible: :all
     assert_equal "", find("#select-service", visible: :hidden).value
   end
 
@@ -91,8 +91,8 @@ class BookingWizardTest < ApplicationSystemTestCase
     Setting.set("cookie_notice_content", "We use one cookie.")
     visit root_url
     assert_selector ".cc-window", wait: 5
-    find(".cc-link[data-bs-target='#cookie-notice-modal']").click
-    assert_selector "#cookie-notice-modal.show", text: "We use one cookie.", wait: 5
+    find(".cc-link[data-dialog-open='cookie-notice-modal']").click
+    assert_selector "#cookie-notice-modal[open]", text: "We use one cookie.", wait: 5
   end
 
   test "first page blocks next until a choice is made" do
@@ -192,7 +192,7 @@ class BookingWizardFlowTest < ApplicationSystemTestCase
     find("#cancel-appointment").click
     wait_for_modal
     find("#cancel-appointment-confirm").click # the reason is required
-    assert_selector "#cancel-appointment-modal.show"
+    assert_selector "#cancel-appointment-modal[open]"
     fill_in "cancellation-reason", with: "Moving house"
     find("#cancel-appointment-confirm").click
     assert_no_selector "#cancel-appointment", wait: 10
@@ -279,7 +279,7 @@ class BookingWizardWindowTest < ApplicationSystemTestCase
     find("#button-next-3").click
     assert_selector "#wizard-frame-4", visible: :visible, wait: 5
     find("#button-next-4").click
-    assert_selector "#name.is-invalid"
+    assert_selector "#name[aria-invalid=true]"
     assert_selector "#form-message", text: I18n.t("ea.fields_are_required"), visible: :visible
     assert_selector "#wizard-frame-4", visible: :visible
     assert_no_selector "#wizard-frame-5"
@@ -287,8 +287,8 @@ class BookingWizardWindowTest < ApplicationSystemTestCase
     fill_in "name", with: "Marked Up"
     fill_in "email", with: "nope"
     find("#button-next-4").click
-    assert_no_selector "#name.is-invalid"
-    assert_selector "#email.is-invalid"
+    assert_no_selector "#name[aria-invalid=true]"
+    assert_selector "#email[aria-invalid=true]"
     assert_selector "#form-message", text: I18n.t("ea.invalid_email")
   end
 
@@ -394,7 +394,7 @@ class BookingWizardWindowTest < ApplicationSystemTestCase
     click_on "Confirm"
 
     assert_selector "#wizard-frame-3", visible: :visible, wait: 10
-    assert_selector ".alert-danger", text: I18n.t("ea.requested_hour_is_unavailable")
+    assert_selector ".notice[data-tone=error]", text: I18n.t("ea.requested_hour_is_unavailable")
     find(".flatpickr-day[aria-label='#{date.strftime('%B %-d, %Y')}']").click
     assert_no_selector "#available-hours .available-hour", text: /\A9:30 am\z/
     assert_selector "#available-hours .available-hour", text: /\A10:00 am\z/

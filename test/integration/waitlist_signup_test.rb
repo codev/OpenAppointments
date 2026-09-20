@@ -35,7 +35,7 @@ class WaitlistSignupTest < ActionDispatch::IntegrationTest
     assert_equal [ "Waiting Person", "waiting@example.org", "07700900001", services(:haircut).id, users(:zane).id ],
                  [ entry.name, entry.email, entry.phone, entry.service_id, entry.provider_id ]
     assert_select "#wizard-frame-3"
-    assert_select "#waitlist .alert-success", text: I18n.t("ea.waitlist_joined")
+    assert_select "#waitlist .notice[data-tone=success]", text: I18n.t("ea.waitlist_joined")
     assert_select "#waitlist-form", 0
   end
 
@@ -49,15 +49,15 @@ class WaitlistSignupTest < ActionDispatch::IntegrationTest
     assert_no_difference "WaitlistEntry.count" do
       join
     end
-    assert_select "#waitlist .alert-warning", text: I18n.t("ea.waitlist_already_joined")
+    assert_select "#waitlist .notice[data-tone=warning]", text: I18n.t("ea.waitlist_already_joined")
   end
 
   test "a missing name or bad email is refused" do
     assert_no_difference "WaitlistEntry.count" do
       join(waitlist: { name: "" })
-      assert_select "#waitlist .alert-danger", text: I18n.t("ea.fields_are_required")
+      assert_select "#waitlist .notice[data-tone=error]", text: I18n.t("ea.fields_are_required")
       join(waitlist: { email: "not-an-email" })
-      assert_select "#waitlist .alert-danger", text: I18n.t("ea.invalid_email")
+      assert_select "#waitlist .notice[data-tone=error]", text: I18n.t("ea.invalid_email")
     end
   end
 

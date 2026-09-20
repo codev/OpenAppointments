@@ -1,5 +1,5 @@
 <%# The Booking Notice from Legal Contents. Locals: shown ("1" to render); the
     content is sanitised by Setting.set and rendered as HTML by design. %>
 <% if shown == "1" && vars(:booking_notice_content).present? %>
-    <div class="booking-notice mb-4"><%= vars(:booking_notice_content).html_safe %></div>
+    <div class="booking-notice"><%= vars(:booking_notice_content).html_safe %></div>
 <% end %>

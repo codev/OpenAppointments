@@ -1,3 +1,15 @@
-// fruit theme on Pico: token overrides only (see ea/themes/fruit.scss for the look it carries over).
+// Fruit theme on Pico: the knobs the shared layer reads.
 :root {
+    --oa-radius: 0.875rem;
+    --oa-surface: #fff;
+    --oa-surface-border: #e8e8ed;
+    --oa-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+    --oa-shadow-raised: 0 11px 34px rgba(0, 0, 0, 0.12);
+    --oa-header-bg: var(--oa-background);
+    --oa-header-fg: #1d1d1f;
+    --oa-step-bg: #e8e8ed;
+    --oa-step-fg: #6e6e73;
+    --oa-step-active-bg: var(--oa-primary);
+    --oa-step-active-fg: #fff;
+    --oa-font: -apple-system, "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }

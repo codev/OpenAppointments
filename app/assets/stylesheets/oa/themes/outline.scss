@@ -1,3 +1,38 @@
-// outline theme on Pico: token overrides only (see ea/themes/outline.scss for the look it carries over).
+// Outline theme on Pico: the knobs the shared layer reads.
 :root {
+    --oa-radius: 0.5rem;
+    --oa-border-width: 2px;
+    --oa-surface: transparent;
+    --oa-surface-border: #ced4da;
+    --oa-shadow: none;
+    --oa-shadow-raised: none;
+    --oa-header-bg: transparent;
+    --oa-header-fg: var(--oa-text);
+    --oa-step-bg: transparent;
+    --oa-step-fg: #6c757d;
+    --oa-step-active-bg: transparent;
+    --oa-step-active-fg: var(--oa-primary);
+}
+
+// Borders, no fills: primary buttons are outlined and fill on hover.
+.pico button:not(.secondary):not(.destructive),
+.pico [role="button"]:not(.secondary):not(.destructive) {
+    background: transparent;
+    color: var(--oa-primary);
+    border: 2px solid var(--oa-primary);
+
+    &:hover,
+    &:focus {
+        background: var(--oa-primary);
+        color: #fff;
+    }
+}
+
+.wizard-steps .book-step {
+    border: 2px solid var(--oa-surface-border);
+}
+
+.wizard-steps .book-step.active-step,
+.wizard-steps .book-step.completed-step {
+    border-color: var(--oa-primary);
 }

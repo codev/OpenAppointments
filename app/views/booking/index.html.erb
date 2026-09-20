@@ -14,7 +14,7 @@
         and step attributes live on the links and forms inside it. %>
     <turbo-frame id="wizard">
         <% if flash[:alert] %>
-            <div class="alert alert-danger m-3"><%= flash[:alert] %></div>
+            <p class="notice" data-tone="error" role="alert"><%= flash[:alert] %></p>
         <% end %>
         <% case @step %>
         <% when "first", "second" %>

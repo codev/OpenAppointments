@@ -5,19 +5,19 @@
 <% invalid = Array(@invalid_fields) %>
 <%# The lambdas return captured HTML, so each prints once. %>
 <% required_star = ->(flag, either: false) { capture do %>
-    <% if flag == "1" %><span class="text-danger">*</span><% elsif either %>
-        <span class="required-either" title="<%= lang('phone_or_email_required') %>">*</span>
+    <% if flag == "1" %><abbr class="required" title="<%= lang('fields_are_required') %>">*</abbr><% elsif either %>
+        <abbr class="required-either" title="<%= lang('phone_or_email_required') %>">*</abbr>
         <span class="visually-hidden"><%= lang('phone_or_email_required') %></span>
     <% end %>
 <% end } %>
 <% text_field = ->(field, label, require, maxlength, either: false) { capture do %>
-    <div class="col-12 col-lg-6 mb-3">
-        <label for="<%= field.dasherize %>" class="form-label"><%= label %> <%= required_star.call(require, either: either) %></label>
+    <div class="field">
+        <label for="<%= field.dasherize %>"><%= label %> <%= required_star.call(require, either: either) %></label>
         <%= text_field_tag "customer[#{field}]", customer[field], id: field.dasherize, maxlength: maxlength,
-                           class: "form-control#{' is-invalid' if invalid.include?(field)}", required: require == "1" %>
+                           "aria-invalid": (invalid.include?(field) ? "true" : nil), required: require == "1" %>
     </div>
 <% end } %>
-<div id="wizard-frame-<%= step_number %>" class="wizard-frame p-3 p-md-4">
+<div id="wizard-frame-<%= step_number %>" class="wizard-frame">
     <%# novalidate: the script marks the fields and writes the message below them, as the server does. %>
     <%= form_with url: "/booking/confirm", method: :post, id: "info-step-form", html: { novalidate: true },
                   data: { turbo_frame: "wizard", require_phone_or_email: require_phone_or_email } do %>
@@ -27,10 +27,10 @@
             <%= hidden_field_tag :manage_mode, "1", id: nil %>
             <%= hidden_field_tag :appointment_hash, vars(:appointment_data)["hash"], id: nil %>
         <% end %>
-        <div class="frame-container py-3">
-            <h2 class="frame-title fw-light text-center mb-4 text-muted"><%= lang('customer_information') %></h2>
+        <div class="frame-container">
+            <h2 class="frame-title"><%= lang('customer_information') %></h2>
             <%= render "shared/booking_notice", shown: vars(:display_booking_notice_info_step) %>
-            <div class="row frame-content">
+            <div class="frame-content fields" data-columns="2">
                 <%= text_field.call("name", lang("name"), "1", 220) %>
                 <%= text_field.call("email", lang("email"), require_email, 120, either: require_phone_or_email == "1") if display_email == "1" %>
                 <%= text_field.call("phone_number", lang("phone_number"), require_phone_number, 60, either: require_phone_or_email == "1") if display_phone_number == "1" %>
@@ -38,33 +38,26 @@
                      "zip_code" => [ display_zip_code, require_zip_code ] }.each do |field, (display, require)| %>
                     <%= text_field.call(field, lang(field), require, 120) if display == "1" %>
                 <% end %>
-                <%= render "shared/custom_fields", name: "customer", values: customer,
-                                                   col_class: "col-12 col-lg-6", long_col_class: "col-12", rows: 2 %>
+                <%= render "shared/custom_fields", name: "customer", values: customer, rows: 2 %>
                 <% if display_notes == "1" %>
-                    <div class="col-12 mb-3">
-                        <label for="notes" class="form-label"><%= lang('notes') %> <%= required_star.call(require_notes) %></label>
+                    <div class="field full">
+                        <label for="notes"><%= lang('notes') %> <%= required_star.call(require_notes) %></label>
                         <%= text_area_tag "customer[notes]", customer["notes"], id: "notes", rows: 2, maxlength: 500,
-                                          class: "form-control#{' is-invalid' if invalid.include?('notes')}", required: require_notes == "1" %>
+                                          "aria-invalid": (invalid.include?("notes") ? "true" : nil), required: require_notes == "1" %>
                     </div>
                 <% end %>
                 <% unless vars(:manage_mode) %>
-                    <div class="col-12 mb-3">
-                        <div class="form-check">
-                            <input type="checkbox" id="remember-me" class="form-check-input">
-                            <label for="remember-me" class="form-check-label"><%= lang('remember_me') %></label>
-                        </div>
-                        <div class="form-text text-muted small"><%= lang('remember_me_hint') %></div>
+                    <div class="field full">
+                        <label><input type="checkbox" id="remember-me"> <%= lang('remember_me') %></label>
+                        <span class="field-hint"><%= lang('remember_me_hint') %></span>
                     </div>
                 <% end %>
             </div>
-            <div id="form-message" class="alert alert-danger text-center" role="alert" <%= 'hidden' unless @error %>><%= @error %></div>
+            <div id="form-message" class="notice" data-tone="error" role="alert" <%= 'hidden' unless @error %>><%= @error %></div>
         </div>
-        <div class="command-buttons text-center my-3 mx-auto d-md-flex justify-content-md-between">
+        <div class="command-buttons">
             <%= wizard_back_button "time" %>
-            <button type="submit" id="button-next-<%= step_number %>" class="btn button-next btn-primary">
-                <%= lang('next') %>
-                <i class="fas fa-chevron-right ms-2"></i>
-            </button>
+            <%= wizard_next_button %>
         </div>
     <% end %>
 </div>

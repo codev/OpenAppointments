@@ -94,7 +94,7 @@ class BookingWizardReviewTest < ActionDispatch::IntegrationTest
       assert_equal users(:zane).id.to_s, query["provider_id"]
       assert_nil query["time"]
       follow_redirect!
-      assert_select "turbo-frame#wizard .alert-danger", text: I18n.t("ea.requested_hour_is_unavailable")
+      assert_select "turbo-frame#wizard .notice[data-tone=error]", text: I18n.t("ea.requested_hour_is_unavailable")
       assert_select "#wizard-frame-3 #select-date"
     end
     assert_equal "Booked", appointments(:upcoming).reload.status
@@ -137,7 +137,7 @@ class BookingWizardReviewTest < ActionDispatch::IntegrationTest
       travel_to booking_time do # the token expires ten minutes after the page
         get "/booking/reschedule/#{HASH}"
         assert_select "#cancel-appointment-modal form[action='/booking_cancellation/of/#{HASH}'] textarea[name=cancellation_reason][required]"
-        assert_select "#cancel-appointment[data-bs-target='#cancel-appointment-modal']"
+        assert_select "#cancel-appointment[data-dialog-open='cancel-appointment-modal']"
         token = css_select("#delete-personal-information-form input[name=customer_token]").first["value"]
         assert_match(/\A[a-f0-9]{32}\z/, token)
         assert_no_match token, response.body[/const vars = (.*);/, 1]
@@ -258,11 +258,11 @@ class BookingWizardReviewTest < ActionDispatch::IntegrationTest
     Setting.set("display_custom_field_1", "1")
     Setting.set("long_custom_field_1", "1")
     get "/", params: @state.merge(step: "info")
-    %w[name email phone-number].each { |id| assert_select "#wizard-frame-4 .row > .col-12.col-lg-6 > ##{id}" }
-    assert_select "#wizard-frame-4 .row > .col-12:not(.col-lg-6) > textarea#custom-field-1"
-    assert_select "#wizard-frame-4 .row > .col-12:not(.col-lg-6) > #notes"
-    assert_select "#wizard-frame-4 .row > .col-12 #remember-me ~ label", text: I18n.t("ea.remember_me")
-    assert_select "#wizard-frame-4 .form-text", text: I18n.t("ea.remember_me_hint")
+    %w[name email phone-number].each { |id| assert_select "#wizard-frame-4 .fields > .field:not(.full) > ##{id}" }
+    assert_select "#wizard-frame-4 .fields > .field.full > textarea#custom-field-1"
+    assert_select "#wizard-frame-4 .fields > .field.full > #notes"
+    assert_select "#wizard-frame-4 .fields > .field.full label #remember-me"
+    assert_select "#wizard-frame-4 .field-hint", text: I18n.t("ea.remember_me_hint")
     assert_no_match(%r{&lt;/?[a-z]+&gt;|%&gt;}, response.body, "escaped markup leaked into the page")
 
     confirm(manage_mode: "1", appointment_hash: HASH, customer: { name: "" })
@@ -275,18 +275,18 @@ class BookingWizardReviewTest < ActionDispatch::IntegrationTest
     assert_select "#form-message[hidden]"
 
     confirm(customer: { name: "", email: "" })
-    assert_select "#name.is-invalid"
-    assert_select "#email.is-invalid", count: 0
-    assert_select ".frame-content + #form-message.alert-danger:not([hidden])", text: I18n.t("ea.fields_are_required")
+    assert_select "#name[aria-invalid=true]"
+    assert_select "#email[aria-invalid=true]", count: 0
+    assert_select ".frame-content + #form-message[data-tone=error]:not([hidden])", text: I18n.t("ea.fields_are_required")
 
     confirm(customer: { name: "Only Name", email: "", phone_number: "" })
-    assert_select "#email.is-invalid"
-    assert_select "#phone-number.is-invalid"
+    assert_select "#email[aria-invalid=true]"
+    assert_select "#phone-number[aria-invalid=true]"
     assert_select "#form-message", text: I18n.t("ea.phone_or_email_required")
 
     confirm(customer: { name: "Only Name", email: "not-an-email" })
-    assert_select "#email.is-invalid"
-    assert_select "#name.is-invalid", count: 0
+    assert_select "#email[aria-invalid=true]"
+    assert_select "#name[aria-invalid=true]", count: 0
     assert_select "#form-message", text: I18n.t("ea.invalid_email")
   end
 

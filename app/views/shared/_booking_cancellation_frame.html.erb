@@ -1,67 +1,56 @@
 <%# Port of EA components/booking_cancellation_frame.php. Locals: manage_mode (bool),
     appointment_data (hash), customer_token, display_delete_personal_information ("1"/"0"). %>
 <% if manage_mode %>
-    <div id="cancel-appointment-frame" class="row booking-header-bar py-2 px-3 m-0 align-items-center bg-warning-subtle">
-        <div class="col-lg-9">
-            <small><%= lang('cancel_appointment_hint') %></small>
-        </div>
-        <div class="col-lg-3 text-end">
-            <button type="button" id="cancel-appointment" class="btn btn-warning btn-sm"
-                    data-bs-toggle="modal" data-bs-target="#cancel-appointment-modal">
-                <i class="fas fa-calendar-times me-2"></i>
-                <%= lang('cancel') %>
+    <div id="cancel-appointment-frame" class="manage-bar" data-tone="warning">
+        <small><%= lang('cancel_appointment_hint') %></small>
+        <button type="button" id="cancel-appointment" class="small-action secondary" data-dialog-open="cancel-appointment-modal">
+            <i class="fas fa-calendar-times"></i>
+            <%= lang('cancel') %>
+        </button>
+    </div>
+    <dialog id="cancel-appointment-modal">
+        <article>
+            <form id="cancel-appointment-form" method="post" action="<%= "/booking_cancellation/of/#{appointment_data['hash']}" %>">
+                <header>
+                    <h5><%= lang('cancel_appointment_title') %></h5>
+                    <button type="button" class="dialog-close" aria-label="<%= lang('close') %>" data-dialog-close>&times;</button>
+                </header>
+                <p><%= lang('write_appointment_cancel_reason') %></p>
+                <div class="field">
+                    <%= text_area_tag "cancellation_reason", nil, id: "cancellation-reason", rows: 3, required: true %>
+                </div>
+                <footer>
+                    <button type="button" class="secondary" data-dialog-close><%= lang('close') %></button>
+                    <button type="submit" id="cancel-appointment-confirm"><%= lang('confirm') %></button>
+                </footer>
+            </form>
+        </article>
+    </dialog>
+    <% if display_delete_personal_information == "1" %>
+        <div class="manage-bar" data-tone="error">
+            <small><%= lang('delete_personal_information_hint') %></small>
+            <button type="button" id="delete-personal-information" class="small-action destructive" data-dialog-open="delete-personal-information-modal">
+                <i class="fas fa-trash"></i>
+                <%= lang('delete') %>
             </button>
         </div>
-    </div>
-    <div class="modal" id="cancel-appointment-modal" tabindex="-1">
-        <div class="modal-dialog modal-dialog-centered">
-            <form id="cancel-appointment-form" method="post" class="modal-content"
-                  action="<%= "/booking_cancellation/of/#{appointment_data['hash']}" %>">
-                <div class="modal-header">
-                    <h5 class="modal-title"><%= lang('cancel_appointment_title') %></h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <p><%= lang('write_appointment_cancel_reason') %></p>
-                    <%= text_area_tag "cancellation_reason", nil, id: "cancellation-reason", class: "form-control", rows: 3, required: true %>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal"><%= lang('close') %></button>
-                    <button type="submit" id="cancel-appointment-confirm" class="btn btn-warning"><%= lang('confirm') %></button>
-                </div>
-            </form>
-        </div>
-    </div>
-    <% if display_delete_personal_information == "1" %>
-        <div class="booking-header-bar row py-2 px-3 m-0 align-items-center bg-danger-subtle">
-            <div class="col-lg-9">
-                <small><%= lang('delete_personal_information_hint') %></small>
-            </div>
-            <div class="col-lg-3 text-end">
-                <button type="button" id="delete-personal-information" class="btn btn-danger btn-sm"
-                        data-bs-toggle="modal" data-bs-target="#delete-personal-information-modal">
-                    <i class="fas fa-trash me-2"></i>
-                    <%= lang('delete') %>
-                </button>
-            </div>
-        </div>
-        <div class="modal" id="delete-personal-information-modal" tabindex="-1">
-            <div class="modal-dialog modal-dialog-centered">
+        <dialog id="delete-personal-information-modal">
+            <article>
                 <%= form_with url: "/privacy/delete_personal_information", method: :post, id: "delete-personal-information-form",
-                              class: "modal-content", data: { turbo: false } do %>
+                              data: { turbo: false } do %>
                     <%= hidden_field_tag :form, "1", id: nil %>
                     <%= hidden_field_tag :customer_token, customer_token, id: nil %>
-                    <div class="modal-header">
-                        <h5 class="modal-title"><%= lang('delete_personal_information') %></h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body"><%= lang('delete_personal_information_prompt') %></div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal"><%= lang('cancel') %></button>
-                        <button type="submit" id="delete-personal-information-confirm" class="btn btn-danger"><%= lang('delete') %></button>
-                    </div>
+                    <header>
+                        <h5><%= lang('delete_personal_information') %></h5>
+                        <button type="button" class="dialog-close" aria-label="<%= lang('close') %>" data-dialog-close>&times;</button>
+                    </header>
+                    <p><%= lang('delete_personal_information_prompt') %></p>
+                    <footer>
+                        <button type="button" class="secondary" data-dialog-close><%= lang('cancel') %></button>
+                        <button type="submit" id="delete-personal-information-confirm" class="destructive"><%= lang('delete') %></button>
+                    </footer>
                 <% end %>
-            </div>
-        </div>
+            </article>
+        </dialog>
     <% end %>
 <% end %>

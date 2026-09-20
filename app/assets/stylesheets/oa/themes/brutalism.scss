@@ -1,3 +1,26 @@
-// brutalism theme on Pico: token overrides only (see ea/themes/brutalism.scss for the look it carries over).
+// Brutalism theme on Pico: the knobs the shared layer reads.
 :root {
+    --oa-radius: 0;
+    --oa-border-width: 2px;
+    --oa-surface-border: #000;
+    --oa-shadow: 8px 8px 0 #000;
+    --oa-shadow-raised: 8px 8px 0 #000;
+    --oa-header-bg: var(--oa-primary);
+    --oa-step-bg: #fff;
+    --oa-step-fg: #000;
+    --oa-step-active-bg: var(--oa-secondary);
+    --oa-step-active-fg: #fff;
+    --oa-font: "Helvetica Neue", Arial, sans-serif;
+}
+
+// Everything square, thick and black.
+.pico button,
+.pico [role="button"],
+.pico input,
+.pico select,
+.pico textarea,
+.booking-card,
+.wizard-steps .book-step {
+    border-width: 2px;
+    border-color: #000;
 }

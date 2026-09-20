@@ -1,33 +1,31 @@
-<%# Port of EA components/custom_fields.php. Locals: disabled (default false), col_class (extra
-    classes per field), long_col_class (classes for longer text fields, defaults to col_class),
-    rows (textarea height for longer text fields, match the sibling notes field); name and
-    record add form field names and values for plain form posts. %>
+<%# Port of EA components/custom_fields.php. Locals: disabled (default false), rows
+    (textarea height for longer text fields, match the sibling notes field); name and
+    record add form field names and values for plain form posts. Longer fields span
+    the whole fields row. %>
 <% disabled = local_assigns.fetch(:disabled, false) %>
 <% record = local_assigns[:record] %>
 <% values = local_assigns[:values] || {} %>
 <% field_value = ->(i) { values["custom_field_#{i}"] || record&.public_send("custom_field_#{i}") } %>
 <% field_name = ->(i) { local_assigns[:name] && "#{local_assigns[:name]}[custom_field_#{i}]" } %>
-<% col_class = local_assigns.fetch(:col_class, "") %>
-<% long_col_class = local_assigns.fetch(:long_col_class, col_class) %>
 <% rows = local_assigns.fetch(:rows, 6) %>
 <% (1..5).each do |i| %>
     <% if setting("display_custom_field_#{i}").to_s == "1" %>
         <% long = setting("long_custom_field_#{i}").to_s == "1" %>
         <% required = setting("require_custom_field_#{i}").to_s == "1" %>
-        <div class="mb-3 <%= long ? long_col_class : col_class %>">
-            <label for="custom-field-<%= i %>" class="form-label">
+        <div class="field <%= 'full' if long %>">
+            <label for="custom-field-<%= i %>">
                 <%= setting("label_custom_field_#{i}").presence || lang('custom_field') + ' #' + i.to_s %>
                 <% if required %>
-                    <span class="text-danger" <%= "hidden" if disabled %>>*</span>
+                    <abbr class="required" title="<%= lang('fields_are_required') %>" <%= "hidden" if disabled %>>*</abbr>
                 <% end %>
             </label>
             <% if long %>
                 <%= text_area_tag field_name.call(i), field_value.call(i), id: "custom-field-#{i}",
-                                  rows: rows, class: "#{'required' if required} form-control", disabled: disabled,
+                                  rows: rows, class: ("required" if required), disabled: disabled,
                                   required: required && local_assigns[:name].present? %>
             <% else %>
                 <%= text_field_tag field_name.call(i), field_value.call(i), id: "custom-field-#{i}",
-                                   maxlength: 120, class: "#{'required' if required} form-control", disabled: disabled,
+                                   maxlength: 120, class: ("required" if required), disabled: disabled,
                                    required: required && local_assigns[:name].present? %>
             <% end %>
         </div>

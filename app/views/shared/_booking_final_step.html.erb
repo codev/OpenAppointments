@@ -6,8 +6,7 @@
 <% provider_zone = Time.find_zone!(wizard_provider_timezone) %>
 <% start_at = provider_zone.parse("#{@date} #{@time}") %>
 <% customer_start_at = start_at.in_time_zone(customer["timezone"]) %>
-<% formats = { date_format: vars(:date_format), time_format: vars(:time_format) } %>
-<div id="wizard-frame-<%= step_number %>" class="wizard-frame p-3 p-md-4">
+<div id="wizard-frame-<%= step_number %>" class="wizard-frame">
     <%# The Back button re-renders the details step in the frame; the booking
         itself leaves the frame for the confirmation page, so only Confirm is a
         plain submit. %>
@@ -26,21 +25,21 @@
             <%= hidden_field_tag :appointment_hash, vars(:appointment_data)["hash"], id: nil %>
             <%= hidden_field_tag "appointment[id]", vars(:appointment_data)["id"], id: nil %>
         <% end %>
-        <div class="frame-container py-3">
-            <h2 class="frame-title fw-light text-center mb-4 text-muted"><%= lang('appointment_confirmation') %></h2>
+        <div class="frame-container">
+            <h2 class="frame-title"><%= lang('appointment_confirmation') %></h2>
             <% if @error %>
-                <div id="form-message" class="alert alert-danger text-center" role="alert"><%= @error %></div>
+                <div id="form-message" class="notice" data-tone="error" role="alert"><%= @error %></div>
             <% end %>
-            <div class="row frame-content">
-                <div id="appointment-details" class="col-12 col-lg-6 text-center text-md-start mb-2 mb-md-0 fs-5">
-                    <div><i class="fas fa-calendar-day me-2"></i><strong><%= display_datetime(customer_start_at) %></strong></div>
+            <div class="frame-content summary">
+                <div id="appointment-details">
+                    <div><i class="fas fa-calendar-day"></i> <strong><%= display_datetime(customer_start_at) %></strong></div>
                     <% if Setting.timezone_support? %>
-                        <div class="small text-muted"><%= format_timezone(customer["timezone"]) %></div>
+                        <div class="muted"><small><%= format_timezone(customer["timezone"]) %></small></div>
                     <% end %>
                     <div><%= service["name"] %></div>
                     <div><%= provider["name"] %></div>
                 </div>
-                <div id="customer-details" class="col-12 col-lg-6 text-center text-md-end fs-5">
+                <div id="customer-details">
                     <div><strong><%= customer["name"] %></strong></div>
                     <% %w[email phone_number address city zip_code].each do |field| %>
                         <% next if customer[field].blank? %>
@@ -49,48 +48,48 @@
                 </div>
             </div>
             <% if TurnstileChallenge.enabled? %>
-                <div class="mt-4 text-center">
-                    <div class="cf-turnstile d-inline-block" data-sitekey="<%= TurnstileChallenge.site_key %>"
+                <div class="captcha">
+                    <div class="cf-turnstile" data-sitekey="<%= TurnstileChallenge.site_key %>"
                          data-response-field-name="cf_turnstile_response"></div>
-                    <span id="turnstile-hint" class="help-block text-danger small d-block captcha-hint">&nbsp;</span>
+                    <span id="turnstile-hint" class="captcha-hint">&nbsp;</span>
                 </div>
             <% end %>
             <% if AltchaChallenge.enabled? %>
-                <div class="mt-4">
-                    <div id="altcha-widget" class="altcha-widget mb-2"></div>
+                <div class="captcha">
+                    <div id="altcha-widget" class="altcha-widget"></div>
                     <input type="hidden" id="altcha-payload" name="altcha_payload" value="">
-                    <span id="altcha-hint" class="help-block text-danger small captcha-hint">&nbsp;</span>
+                    <span id="altcha-hint" class="captcha-hint">&nbsp;</span>
                 </div>
             <% end %>
-            <% if display_terms_and_conditions == "1" %>
-                <div class="form-check mt-4">
-                    <input type="checkbox" class="form-check-input" id="accept-to-terms-and-conditions" required>
-                    <label class="form-check-label" for="accept-to-terms-and-conditions">
-                        <%= lang('read_and_agree_to_terms_and_conditions')
-                              .sub('{$link}', '<a href="#" data-bs-toggle="modal" data-bs-target="#terms-and-conditions-modal">')
-                              .sub('{/$link}', '</a>').html_safe %>
-                    </label>
-                </div>
-            <% end %>
-            <% if display_privacy_policy == "1" %>
-                <div class="form-check mt-2">
-                    <input type="checkbox" class="form-check-input" id="accept-to-privacy-policy" required>
-                    <label class="form-check-label" for="accept-to-privacy-policy">
-                        <%= lang('read_and_agree_to_privacy_policy')
-                              .sub('{$link}', '<a href="#" data-bs-toggle="modal" data-bs-target="#privacy-policy-modal">')
-                              .sub('{/$link}', '</a>').html_safe %>
-                    </label>
+            <% if display_terms_and_conditions == "1" || display_privacy_policy == "1" %>
+                <div class="agreements">
+                    <% if display_terms_and_conditions == "1" %>
+                        <label>
+                            <input type="checkbox" id="accept-to-terms-and-conditions" required>
+                            <%= lang('read_and_agree_to_terms_and_conditions')
+                                  .sub('{$link}', '<a href="#" data-dialog-open="terms-and-conditions-modal">')
+                                  .sub('{/$link}', '</a>').html_safe %>
+                        </label>
+                    <% end %>
+                    <% if display_privacy_policy == "1" %>
+                        <label>
+                            <input type="checkbox" id="accept-to-privacy-policy" required>
+                            <%= lang('read_and_agree_to_privacy_policy')
+                                  .sub('{$link}', '<a href="#" data-dialog-open="privacy-policy-modal">')
+                                  .sub('{/$link}', '</a>').html_safe %>
+                        </label>
+                    <% end %>
                 </div>
             <% end %>
         </div>
-        <div class="command-buttons text-center my-3 mx-auto d-md-flex justify-content-md-between">
-            <button type="submit" id="button-back-5" class="btn button-back btn-outline-secondary"
+        <div class="command-buttons">
+            <button type="submit" id="button-back-5" class="button-back secondary"
                     formaction="/booking/confirm" formnovalidate name="back" value="1" data-turbo-frame="wizard">
-                <i class="fas fa-chevron-left me-2"></i>
+                <i class="fas fa-chevron-left"></i>
                 <%= lang('back') %>
             </button>
-            <button id="book-appointment-submit" type="submit" class="btn btn-primary" data-turbo="false">
-                <i class="fas fa-check-square me-2"></i>
+            <button id="book-appointment-submit" type="submit" data-turbo="false">
+                <i class="fas fa-check-square"></i>
                 <%= vars(:manage_mode) ? lang('update') : lang('confirm') %>
             </button>
         </div>

@@ -1,1 +1,598 @@
-// Booking wizard rules migrated from ea/frontend.scss.
+// The public booking wizard: one surface with a header of steps, a frame per
+// step and a footer. Names describe the parts of the wizard.
+
+.wizard-page {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+
+    @media (min-width: 768px) {
+        padding: 1rem;
+    }
+}
+
+.wizard {
+    width: 100%;
+    max-width: 960px;
+    background: var(--oa-surface);
+    overflow: hidden;
+
+    @media (min-width: 768px) {
+        border: var(--oa-border-width) solid var(--oa-surface-border);
+        border-radius: var(--oa-radius);
+        box-shadow: var(--oa-shadow);
+    }
+}
+
+// Header: company name and the step indicators.
+.wizard-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    background: var(--oa-header-bg);
+    color: var(--oa-header-fg);
+
+    @media (min-width: 992px) {
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 1.5rem;
+    }
+}
+
+.company {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.25rem;
+    min-width: 0;
+    font-size: 1.5rem;
+    font-weight: 300;
+    text-align: center;
+
+    @media (min-width: 768px) {
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: center;
+        text-align: left;
+        gap: 0 1rem;
+    }
+
+    img {
+        max-height: 56px;
+    }
+}
+
+.display-booking-selection {
+    flex-basis: 100%;
+    font-size: 0.875rem;
+    opacity: 0.75;
+}
+
+.wizard-steps {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    flex-shrink: 0;
+
+    .book-step {
+        width: 35px;
+        height: 35px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: var(--oa-radius);
+        background: var(--oa-step-bg);
+        color: var(--oa-step-fg);
+        font-size: 12px;
+        transition: all 0.3s linear;
+        margin: 0;
+
+        strong {
+            color: inherit;
+            cursor: default;
+        }
+    }
+
+    .book-step.active-step {
+        width: 45px;
+        height: 45px;
+        font-size: 21px;
+        background: var(--oa-step-active-bg);
+        color: var(--oa-step-active-fg);
+    }
+
+    .book-step .step-check {
+        display: none;
+    }
+
+    .book-step.completed-step {
+        background: var(--oa-step-active-bg);
+        color: var(--oa-step-active-fg);
+        opacity: 0.8;
+        cursor: pointer;
+
+        strong {
+            cursor: pointer;
+        }
+
+        .step-number {
+            display: none;
+        }
+
+        .step-check {
+            display: inline;
+        }
+
+        &:hover,
+        &:focus-visible {
+            opacity: 1;
+            transform: translateY(-2px);
+        }
+    }
+}
+
+// Notice bars above the wizard (reschedule links).
+.manage-bar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+
+    &[data-tone="warning"] {
+        background: rgba(180, 83, 9, 0.12);
+    }
+
+    &[data-tone="error"] {
+        background: rgba(176, 42, 55, 0.1);
+    }
+}
+
+// One step of the wizard.
+.wizard-frame {
+    padding: 1rem;
+
+    @media (min-width: 768px) {
+        padding: 1.5rem;
+    }
+}
+
+.frame-container {
+    min-height: 500px;
+    padding: 1rem 0;
+}
+
+.frame-title,
+.pico .frame-title {
+    font-weight: 300;
+    font-size: 1.5rem;
+    text-align: center;
+    color: var(--oa-muted);
+    margin: 0 0 1.5rem;
+}
+
+.frame-content > .field > label {
+    font-size: 1.15rem;
+    font-weight: 600;
+}
+
+.selection-details {
+    font-size: 0.875rem;
+    max-height: 153px;
+    overflow: auto;
+}
+
+.selection-description .selection-picture {
+    float: left;
+    margin: 0 1rem 0.25rem 0.25rem;
+    max-width: min(100%, 130px);
+    max-height: 130px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    border-radius: var(--oa-radius);
+
+    @media (max-width: 575.98px) {
+        float: none;
+        display: block;
+        margin: 0 auto 0.75rem;
+    }
+}
+
+.selection-summary {
+    font-style: italic;
+    margin-bottom: 0.5rem;
+}
+
+// Cards for categories, services and providers.
+.booking-cards {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+
+    @media (min-width: 768px) {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+}
+
+.booking-card {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    cursor: pointer;
+    border: var(--oa-border-width) solid var(--oa-surface-border);
+    border-radius: var(--oa-radius);
+    background: var(--oa-surface);
+    overflow: hidden;
+    transition: box-shadow 0.15s ease, transform 0.15s ease, border-color 0.15s ease;
+
+    &:hover {
+        box-shadow: var(--oa-shadow-raised);
+    }
+
+    &.selected {
+        border-color: var(--oa-primary);
+        box-shadow: 0 0 0 0.2rem rgba(var(--oa-primary-rgb), 0.25);
+    }
+
+    &:not(:has(.booking-card-picture)) .booking-card-body {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        min-height: 90px;
+    }
+}
+
+.booking-card-picture {
+    width: 100%;
+    max-height: 140px;
+    object-fit: cover;
+}
+
+.booking-card-body {
+    padding: 0.5rem;
+    flex: 1;
+}
+
+.booking-card-title {
+    font-size: 1rem;
+    margin: 0 0 0.25rem;
+}
+
+// Date and time.
+.time-step {
+    display: grid;
+    gap: 1.5rem;
+
+    @media (min-width: 992px) {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+#select-date {
+    margin: 1rem auto;
+}
+
+#select-time {
+    max-width: 288px;
+    margin: 0 auto;
+    padding: 1rem 0;
+}
+
+#available-hours {
+    max-height: 250px;
+    overflow: auto;
+    padding-right: 0.5rem;
+    margin: 1rem 0;
+
+    .available-hour {
+        display: block;
+        width: 100%;
+        margin-bottom: 10px;
+        background: var(--oa-surface);
+        color: var(--oa-text);
+        border: var(--oa-border-width) solid var(--oa-surface-border);
+        border-radius: var(--oa-radius);
+        box-shadow: none;
+    }
+
+    .selected-hour {
+        background: var(--oa-primary);
+        border-color: var(--oa-primary);
+        color: #fff;
+    }
+}
+
+// Summary on the confirmation step.
+.summary {
+    display: grid;
+    gap: 1rem;
+    font-size: 1.15rem;
+    line-height: 1.75;
+    text-align: center;
+
+    @media (min-width: 992px) {
+        grid-template-columns: 1fr 1fr;
+        text-align: left;
+
+        #customer-details {
+            text-align: right;
+        }
+    }
+}
+
+.agreements {
+    margin-top: 1.5rem;
+}
+
+.captcha {
+    margin-top: 1.5rem;
+    text-align: center;
+}
+
+.captcha-hint {
+    display: block;
+    color: var(--oa-danger);
+    font-size: 0.875rem;
+    opacity: 0;
+}
+
+// Half-coloured asterisk marking the email/phone pair when either one is enough.
+.required-either {
+    color: var(--oa-danger);
+    text-decoration: none;
+
+    @supports (background-clip: text) or (-webkit-background-clip: text) {
+        background: linear-gradient(90deg, var(--oa-danger) 50%, #adb5bd 50%);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+    }
+}
+
+// Buttons at the bottom of a step.
+.command-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 10px;
+    margin: 1rem auto;
+
+    button,
+    [role="button"] {
+        min-width: 120px;
+    }
+}
+
+// Waiting list signup under the hours.
+#waitlist {
+    border-top: var(--oa-border-width) solid var(--oa-surface-border);
+    padding-top: 1.5rem;
+    min-height: 0;
+
+    h5 {
+        font-weight: 300;
+        text-align: center;
+    }
+
+    .hint {
+        text-align: center;
+        margin-bottom: 1rem;
+    }
+
+    .actions {
+        justify-content: center;
+    }
+}
+
+.empty-state {
+    text-align: center;
+    padding: 3rem 1rem;
+    color: var(--oa-muted);
+
+    i {
+        font-size: 4rem;
+        margin-bottom: 1rem;
+    }
+}
+
+// Footer.
+.wizard-footer {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: center;
+    padding: 1rem;
+    border-top: var(--oa-border-width) solid var(--oa-surface-border);
+    font-size: 0.875rem;
+
+    @media (min-width: 768px) {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .footer-options {
+        display: flex;
+        gap: 0.5rem;
+    }
+
+    #select-language,
+    .backend-link {
+        display: inline-block;
+        padding: 0.25rem 0.5rem;
+        border-radius: var(--oa-radius);
+        background: var(--oa-muted);
+        color: #fff;
+        text-decoration: none;
+        cursor: pointer;
+        min-width: 100px;
+        text-align: center;
+    }
+
+    .backend-link {
+        background: var(--oa-header-bg);
+        color: var(--oa-header-fg);
+        min-width: 120px;
+    }
+}
+
+// Inside an embedding iframe (html.is-embedded) the backend login button is never shown.
+.is-embedded .wizard-footer .backend-link {
+    display: none;
+}
+
+// Language list dialog.
+.language-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 0.5rem;
+
+    li {
+        cursor: pointer;
+        padding: 0.35rem 0.5rem;
+        border-radius: var(--oa-radius);
+
+        &:hover {
+            background: rgba(var(--oa-primary-rgb), 0.08);
+        }
+    }
+}
+
+// Message pages (booking closed, appointment gone, late cancel).
+.message-page {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+}
+
+.message-frame {
+    width: 100%;
+    max-width: 600px;
+    text-align: center;
+    background: var(--oa-surface);
+    border: var(--oa-border-width) solid var(--oa-surface-border);
+    border-radius: var(--oa-radius);
+    box-shadow: var(--oa-shadow);
+    padding: 2rem;
+
+    @media (min-width: 768px) {
+        padding: 3rem;
+    }
+
+    img {
+        margin-bottom: 2rem;
+    }
+
+    form {
+        text-align: left;
+    }
+}
+
+.message-icon-warning {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: rgba(180, 83, 9, 0.12);
+    color: var(--oa-warning);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem;
+    font-size: 3rem;
+}
+
+// flatpickr, in the brand colour.
+.flatpickr-wrapper {
+    width: 100%;
+}
+
+.flatpickr-calendar {
+    box-shadow: none;
+
+    &.inline {
+        margin: auto;
+    }
+
+    .flatpickr-monthDropdown-months:hover {
+        background: rgba(0, 0, 0, 0.05);
+    }
+
+    .flatpickr-months {
+        padding: 10px 0;
+        background: var(--oa-primary);
+        border-radius: var(--oa-radius) var(--oa-radius) 0 0;
+    }
+
+    .flatpickr-current-month {
+        padding: 3px;
+        height: auto;
+        line-height: 1.4;
+    }
+
+    .flatpickr-current-month .flatpickr-monthDropdown-months {
+        height: auto;
+        line-height: 1.4;
+        padding: 2px 0 4px 0.5ch;
+    }
+
+    .flatpickr-innerContainer {
+        border-radius: 0 0 var(--oa-radius) var(--oa-radius);
+    }
+
+    .dayContainer {
+        padding: 10px 0;
+    }
+
+    .flatpickr-months .flatpickr-month,
+    .flatpickr-weekdays,
+    .flatpickr-current-month .flatpickr-monthDropdown-months,
+    span.flatpickr-weekday {
+        background: var(--oa-primary);
+        color: #fff;
+        -webkit-appearance: none;
+    }
+
+    .flatpickr-day {
+        &.selected,
+        &.startRange,
+        &.endRange {
+            &,
+            &.inRange,
+            &.nextMonthDay,
+            &.prevMonthDay,
+            &:focus,
+            &:hover {
+                background: var(--oa-primary);
+                border-color: var(--oa-primary);
+                color: #fff;
+            }
+        }
+
+        &.prevMonthDay,
+        &.nextMonthDay {
+            height: 0;
+            width: 0;
+            visibility: hidden;
+        }
+    }
+}
+
+.cc-revoke,
+.cc-window {
+    z-index: 999 !important;
+}

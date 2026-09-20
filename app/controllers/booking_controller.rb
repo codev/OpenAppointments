@@ -407,8 +407,8 @@ class BookingController < ApplicationController
 
   # [message, alert class] for a signup; an email waits once per service.
   def waitlist_signup(signup)
-    return [ helpers.lang("fields_are_required"), "danger" ] if signup["name"].blank? || signup["email"].blank?
-    return [ helpers.lang("invalid_email"), "danger" ] unless signup["email"].match?(URI::MailTo::EMAIL_REGEXP)
+    return [ helpers.lang("fields_are_required"), "error" ] if signup["name"].blank? || signup["email"].blank?
+    return [ helpers.lang("invalid_email"), "error" ] unless signup["email"].match?(URI::MailTo::EMAIL_REGEXP)
     return [ helpers.lang("waitlist_already_joined"), "warning" ] if WaitlistEntry.live.exists?(email: signup["email"], service_id: @service_id)
 
     provider_id = @provider_id == BookingPayloads::ANY_PROVIDER ? nil : @provider_id
