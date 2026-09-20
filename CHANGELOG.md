@@ -3,6 +3,16 @@
 The about page lists these notes; every release needs a section here matching
 CloudronManifest.json.
 
+## 2.2.0
+
+Bug fixes:
+
+- Messages: the {{Booking Notice}} template field shows characters such as & as typed instead of their HTML codes
+- Legal Contents: the notices are cleaned of unsafe HTML however they are saved, including through the API and data imports
+- Business Settings: the late cancellation hint no longer says the window must fit inside the booking window
+- Account: saving the account page with Timezone Support off keeps the default timezone for the session
+- Company logo is served as a cacheable image so pages load faster after the first visit
+
 ## 2.1.0
 
 - Reports: Customer Report added and Appointments Report has more detail
