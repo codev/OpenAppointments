@@ -1,7 +1,7 @@
 <%# Analyze summary or the running import's status; polls while it runs. Locals: import_status, summary. %>
 <% status = import_status&.with_indifferent_access %>
 <% running = status && %w[queued running].include?(status[:state]) %>
-<turbo-frame id="import-status" <% if running %>data-poll-every="2000" data-poll-src="/import?import_id=<%= params[:import_id] %>"<% end %>>
+<turbo-frame id="import-status" <% if running %>data-poll-every="2000" data-poll-src="/data?import_id=<%= params[:import_id] %>"<% end %>>
     <% if summary %>
         <div id="import-results" class="alert alert-info mt-3 mb-0" style="white-space: pre-line;"><%= summary %></div>
     <% elsif alert %>

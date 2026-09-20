@@ -73,16 +73,18 @@ Rails.application.routes.draw do
   end
 
   # 10to8 import page
-  get "import" => "import#index"
-  post "import/export" => "import#export"
-  get "import/export_status" => "import#export_status"
-  get "import/download_backup" => "import#download_backup"
-  get "import/report" => "import#report"
-  get "import/customer_report" => "import#customer_report"
-  post "import/analyze" => "import#analyze"
-  post "import/start" => "import#start"
-  get "import/status" => "import#status"
-  post "import/reset" => "import#reset"
+  get "data" => "import#index"
+  post "data/export" => "import#export"
+  get "data/export_status" => "import#export_status"
+  get "data/download_backup" => "import#download_backup"
+  get "data/report" => "import#report"
+  get "data/customer_report" => "import#customer_report"
+  post "data/analyze" => "import#analyze"
+  post "data/start" => "import#start"
+  get "data/status" => "import#status"
+  post "data/reset" => "import#reset"
+  # The page was /import before it became Manage Data.
+  get "import" => redirect("/data")
 
 
   # Public booking wizard

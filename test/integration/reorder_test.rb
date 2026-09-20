@@ -82,7 +82,7 @@ class ReorderTest < ActionDispatch::IntegrationTest
     File.binwrite(upload_path, DataExport.generate)
     services(:haircut).update!(sort_order: nil)
 
-    post "/import/start", params: {
+    post "/data/start", params: {
       file: Rack::Test::UploadedFile.new(upload_path, Ods::MIMETYPE), import_type: "ods",
       phases: [ "services" ], days_back: 21, days_forward: 21
     }

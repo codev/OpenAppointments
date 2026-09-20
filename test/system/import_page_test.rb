@@ -13,7 +13,7 @@ class ImportPageSystemTest < ApplicationSystemTestCase
 
   test "the export button shows and analyze reports the dry run" do
     login_as_admin
-    visit "/import"
+    visit "/data"
     assert_selector "#export-data", visible: :visible, wait: 5
     assert_no_selector "turbo-frame#backups[src]"
 
