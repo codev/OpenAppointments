@@ -236,11 +236,7 @@ App.Utils.CalendarEvents = (function () {
         ];
 
         App.Utils.Message.show(lang('add_new_event'), lang('what_kind_of_event'), buttons);
-
-        $('#message-modal .modal-footer')
-            .addClass('justify-content-between')
-            .find('.btn')
-            .css('width', 'calc(50% - 10px)');
+        $('#message-modal footer').addClass('spread');
     }
 
     function newAppointmentAt(providerId, start) {

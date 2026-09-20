@@ -1,0 +1,183 @@
+<%# Each block shows a component as the pages use it. Classes name the content, never the look. %>
+<header class="app-header">
+    <strong>OpenAppointments</strong>
+    <nav>
+        <ul class="toolbar">
+            <li><a href="#forms">Forms</a></li>
+            <li><a href="#notices">Notices</a></li>
+            <li>
+                <details class="menu">
+                    <summary>Menu</summary>
+                    <ul>
+                        <li><a href="#dialogs">Dialogs</a></li>
+                        <li><a href="#tabs">Tabs</a></li>
+                        <li><hr></li>
+                        <li><button type="button">A button item</button></li>
+                    </ul>
+                </details>
+            </li>
+        </ul>
+    </nav>
+</header>
+
+<main class="page" id="styleguide">
+    <h1 class="page-title">Style guide</h1>
+
+    <div class="with-sidebar">
+        <aside>
+            <ul class="side-nav">
+                <li><a href="#typography">Typography</a></li>
+                <li><span aria-current="page">Buttons</span></li>
+                <li><a href="#forms" class="is-parent">Forms</a></li>
+            </ul>
+        </aside>
+
+        <section>
+            <h2 class="section-title" id="typography">Typography</h2>
+            <p>Body text with a <a href="#">link</a>, <strong>strong</strong> and <span class="muted">muted</span> text.</p>
+            <h3>A third level heading</h3>
+            <p><small>Small print.</small></p>
+
+            <h2 class="section-title" id="buttons">Buttons and actions</h2>
+            <div class="actions">
+                <button type="button"><i class="fas fa-check-square"></i> Save</button>
+                <button type="button" class="secondary">Cancel</button>
+                <button type="button" class="outline">Outline</button>
+                <button type="button" class="destructive trailing"><i class="fas fa-trash-alt"></i> Delete</button>
+            </div>
+            <div class="actions">
+                <button type="button" class="small-action">Small</button>
+                <span class="loading" role="status" aria-label="Loading"></span>
+                <span class="count">3</span>
+                <span class="tag">Booked</span>
+            </div>
+
+            <h2 class="section-title" id="forms">Forms</h2>
+            <form>
+                <div class="fields" data-columns="2">
+                    <div class="field">
+                        <label for="sg-name">Name <abbr class="required" title="required">*</abbr></label>
+                        <input id="sg-name" type="text" value="Jane Doe" required>
+                        <span class="field-hint">A hint under the field.</span>
+                    </div>
+                    <div class="field">
+                        <label for="sg-email">Email</label>
+                        <input id="sg-email" type="email" value="not an email" aria-invalid="true">
+                        <span class="field-hint">Invalid email address.</span>
+                    </div>
+                    <div class="field">
+                        <label for="sg-select">Select</label>
+                        <select id="sg-select"><option>One</option><option>Two</option></select>
+                    </div>
+                    <div class="field">
+                        <label for="sg-number">Number</label>
+                        <div class="input-row">
+                            <input id="sg-number" type="number" value="30">
+                            <span>minutes</span>
+                        </div>
+                    </div>
+                    <div class="field full">
+                        <label for="sg-notes">Notes</label>
+                        <textarea id="sg-notes" rows="3"></textarea>
+                    </div>
+                </div>
+                <div class="switch-field">
+                    <input type="checkbox" role="switch" id="sg-switch" checked>
+                    <label for="sg-switch">A switch</label>
+                </div>
+                <fieldset>
+                    <legend>Choices</legend>
+                    <label><input type="checkbox" checked> Email</label>
+                    <label><input type="checkbox"> SMS</label>
+                    <label><input type="radio" name="sg-r" checked> First</label>
+                    <label><input type="radio" name="sg-r"> Second</label>
+                </fieldset>
+                <div class="actions">
+                    <button type="submit">Save</button>
+                    <a href="#" role="button" class="secondary">Cancel</a>
+                    <button type="button" class="destructive trailing">Delete</button>
+                </div>
+            </form>
+
+            <h2 class="section-title" id="notices">Notices</h2>
+            <p class="notice" data-tone="success" role="status">Settings saved.</p>
+            <p class="notice" data-tone="error" role="alert">Fields with * are required.</p>
+            <p class="notice" data-tone="warning">You are already on the waiting list.</p>
+            <p class="notice" data-tone="info">Google refreshes subscribed calendars every 8 to 24 hours.</p>
+
+            <h2 class="section-title" id="surfaces">Surfaces</h2>
+            <article>
+                <header>Card header</header>
+                A card made of an article.
+                <footer>Card footer</footer>
+            </article>
+            <div class="panel">A panel: a bordered surface without header or footer.</div>
+
+            <h2 class="section-title" id="records">Records</h2>
+            <div class="record-list">
+                <a class="record" href="#">Alice Stylist <span class="muted">alice@example.org</span></a>
+                <a class="record" href="#" aria-current="true">Bella Booker <span class="muted">bella@example.org</span></a>
+                <a class="record" href="#">Cher</a>
+            </div>
+
+            <h2 class="section-title" id="tables">Tables</h2>
+            <table class="striped">
+                <thead><tr><th>Name</th><th>Service</th><th>When</th></tr></thead>
+                <tbody>
+                    <tr><td>Bella Booker</td><td>Trim Cut</td><td>Mon 20 Jul 2026 10:00</td></tr>
+                    <tr><td>Dana Doe</td><td>Curl cut</td><td>Tue 21 Jul 2026 11:00</td></tr>
+                </tbody>
+            </table>
+
+            <h2 class="section-title" id="tabs">Tabs</h2>
+            <div role="tablist">
+                <button type="button" role="tab" aria-selected="true" aria-controls="sg-tab-1">Details</button>
+                <button type="button" role="tab" aria-selected="false" aria-controls="sg-tab-2">Working Plan</button>
+            </div>
+            <div role="tabpanel" id="sg-tab-1">The details panel.</div>
+            <div role="tabpanel" id="sg-tab-2" hidden>The working plan panel.</div>
+
+            <h2 class="section-title" id="dialogs">Dialogs and toasts</h2>
+            <div class="actions">
+                <button type="button" data-dialog-open="sg-dialog">Open dialog</button>
+                <button type="button" class="secondary" id="sg-confirm">Confirm dialog</button>
+                <button type="button" class="secondary" id="sg-toast">Toast</button>
+            </div>
+            <dialog id="sg-dialog">
+                <article>
+                    <header>
+                        <h3>A dialog</h3>
+                        <button type="button" class="dialog-close" aria-label="Close" data-dialog-close>&times;</button>
+                    </header>
+                    <p>Dialog content, with a form field.</p>
+                    <div class="field">
+                        <label for="sg-dialog-input">Field</label>
+                        <input id="sg-dialog-input" type="text">
+                    </div>
+                    <footer>
+                        <button type="button" class="secondary" data-dialog-close>Cancel</button>
+                        <button type="button" data-dialog-close>Save</button>
+                    </footer>
+                </article>
+            </dialog>
+
+            <h2 class="section-title" id="legend">Legend</h2>
+            <div class="legend">
+                <span><i class="legend-swatch" style="background: #7cbae8"></i>Zane</span>
+                <span><i class="legend-swatch" style="background: #eb8687"></i>Kai</span>
+            </div>
+        </section>
+    </div>
+</main>
+
+<script>
+    document.getElementById('sg-confirm').addEventListener('click', () => {
+        App.Utils.Message.show('Delete record', 'Are you sure?', [
+            {text: 'Cancel', click: (event, dialog) => dialog.hide()},
+            {text: 'Delete', click: (event, dialog) => dialog.hide()},
+        ]);
+    });
+    document.getElementById('sg-toast').addEventListener('click', () => {
+        App.Utils.Dialog.toast('Appointment saved', [{label: 'Undo', click: () => {}}]);
+    });
+</script>

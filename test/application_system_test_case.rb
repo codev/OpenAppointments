@@ -75,7 +75,7 @@ class ApplicationSystemTestCase < ActionDispatch::SystemTestCase
 
   # Confirms the EA message modal (jQuery pages and Turbo confirms alike).
   def confirm_modal(title, button)
-    assert_selector "#message-modal .modal-title", text: title, wait: 5
+    assert_selector "#message-modal h3", text: title, wait: 5
     within("#message-modal") { click_on button }
     assert_no_selector "#message-modal", wait: 5
   end

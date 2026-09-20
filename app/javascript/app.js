@@ -32,15 +32,7 @@ window.App = (function () {
         if (App.Utils.Message) {
             App.Utils.Message.show('OpenAppointments', lang('unexpected_issues_message'));
 
-            $('<div/>', {
-                'class': 'card',
-                'html': [
-                    $('<div/>', {
-                        'class': 'card-body overflow-auto',
-                        'html': response.message,
-                    }),
-                ],
-            }).appendTo('#message-modal .modal-body');
+            $('<div/>', {class: 'panel error-details', html: response.message}).insertAfter('#message-modal article > p');
         }
     }
 

@@ -20,6 +20,7 @@
     <%= stylesheet_link_tag "vendor/trumbowyg/trumbowyg.min",
                             "vendor/flatpickr/flatpickr.min", "vendor/flatpickr/material_green.min" %>
     <%= stylesheet_link_tag "themes/#{active_theme}", "general", "backend" %>
+    <%= stylesheet_link_tag "vendor/pico/pico.conditional.min", "oa-backend", "oa-themes/#{active_theme}" %>
 
     <%= render "shared/brand_style" %>
     <%= render "shared/custom_css_style" %>
@@ -44,8 +45,8 @@
         }
     </script>
 
-    <%= ea_js "app", "utils/date", "utils/file", "utils/http", "utils/lang", "utils/message",
-              "utils/string", "utils/url", "utils/validation", track: true %>
+    <%= ea_js "app", "utils/date", "utils/file", "utils/http", "utils/lang", "utils/dialog", "utils/message",
+              "utils/tabs", "utils/string", "utils/url", "utils/validation", track: true %>
     <%= ea_js "layouts/backend_layout", "http/localization_http_client", "utils/settings_form", "utils/poll_frame", track: true %>
 
     <%# Turbo Drive: page scripts initialise on turbo:load and bind by delegation. %>
@@ -66,11 +67,11 @@
                 modal.hide();
             };
 
-            App.Utils.Message.show(button.dataset.turboConfirmTitle || button.textContent.trim(), message, [
+            const $dialog = App.Utils.Message.show(button.dataset.turboConfirmTitle || button.textContent.trim(), message, [
                 {text: lang('cancel'), click: (event, modal) => answer(false, modal)},
                 {text: label, click: (event, modal) => answer(true, modal)},
             ]);
-            $('#message-modal').on('hidden.bs.modal', () => answered || resolve(false));
+            $dialog[0].addEventListener('close', () => answered || resolve(false));
         });
     </script>
 

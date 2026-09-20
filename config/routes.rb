@@ -2,6 +2,8 @@
 # builds URLs with App.Utils.Url.siteUrl.
 Rails.application.routes.draw do
   get "up" => "rails/health#show", as: :rails_health_check
+  # Component reference for the stylesheet work; development and test only.
+  get "styleguide" => "styleguide#index" if Rails.env.local?
   get "company_logo" => "company_logo#show"
 
   # Auth

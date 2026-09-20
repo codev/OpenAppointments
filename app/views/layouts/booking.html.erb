@@ -25,6 +25,7 @@
     <%= stylesheet_link_tag "vendor/cookieconsent/cookieconsent.min", "vendor/flatpickr/flatpickr.min",
                             "vendor/flatpickr/material_green.min" %>
     <%= stylesheet_link_tag "themes/#{active_theme(vars(:theme))}", "general", "frontend" %>
+    <%= stylesheet_link_tag "vendor/pico/pico.conditional.min", "oa-booking", "oa-themes/#{active_theme(vars(:theme))}" %>
 
     <%= render "shared/brand_style" %>
     <%= render "shared/custom_css_style" %>
@@ -76,7 +77,7 @@
                            "vendor/@fortawesome-fontawesome-free/solid.min",
                            "vendor/tippy.js/tippy-bundle.umd.min", "vendor/flatpickr/flatpickr.min" %>
 
-<%= ea_js "app", "utils/date", "utils/file", "utils/http", "utils/lang", "utils/message",
+<%= ea_js "app", "utils/date", "utils/file", "utils/http", "utils/lang", "utils/dialog", "utils/message",
           "utils/string", "utils/url", "utils/validation" %>
 <% if AltchaChallenge.enabled? %>
     <%= ea_js "utils/altcha" %>

@@ -9,6 +9,8 @@ Rails.application.config.dartsass.builds = {
   "ea/frontend.scss" => "frontend.css",
   "ea/backend.scss" => "backend.css"
 }.merge(themes.to_h { |theme| [ "ea/themes/#{theme}.scss", "themes/#{theme}.css" ] })
+  .merge("oa/backend.scss" => "oa-backend.css", "oa/booking.scss" => "oa-booking.css")
+  .merge(themes.to_h { |theme| [ "oa/themes/#{theme}.scss", "oa-themes/#{theme}.css" ] })
 
 Rails.application.config.dartsass.build_options = %w[--style=compressed --no-source-map --quiet-deps
                                                      --silence-deprecation=import --silence-deprecation=color-functions

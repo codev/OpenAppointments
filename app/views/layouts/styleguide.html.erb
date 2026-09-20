@@ -1,0 +1,18 @@
+<%# Pico plus the shared components and the active theme, as the migrated layouts load them. %>
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title><%= vars(:page_title) %> | OpenAppointments</title>
+    <%= stylesheet_link_tag "vendor/pico/pico.conditional.min", "oa-backend", "oa-themes/#{active_theme}" %>
+    <%= render "shared/brand_style" %>
+    <%= javascript_include_tag "vendor/jquery/jquery.min", "vendor/@fortawesome-fontawesome-free/fontawesome.min",
+                               "vendor/@fortawesome-fontawesome-free/solid.min" %>
+    <%= ea_js "app", "utils/lang", "utils/dialog", "utils/message", "utils/tabs" %>
+</head>
+<body class="pico">
+<%= yield %>
+<%= render "shared/js_lang_script" %>
+</body>
+</html>

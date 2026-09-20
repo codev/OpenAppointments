@@ -17,6 +17,7 @@
     <link rel="icon" sizes="192x192" href="<%= image_path('logo.png') %>">
 
     <%= stylesheet_link_tag "themes/#{active_theme}", "general" %>
+    <%= stylesheet_link_tag "vendor/pico/pico.conditional.min", "oa-backend", "oa-themes/#{active_theme}" %>
 
     <%= render "shared/brand_style" %>
     <%= render "shared/custom_css_style" %>
@@ -68,7 +69,7 @@
                            "vendor/@fortawesome-fontawesome-free/fontawesome.min",
                            "vendor/@fortawesome-fontawesome-free/solid.min" %>
 
-<%= ea_js "app", "utils/date", "utils/file", "utils/http", "utils/lang", "utils/message",
+<%= ea_js "app", "utils/date", "utils/file", "utils/http", "utils/lang", "utils/dialog", "utils/message",
           "utils/string", "utils/url", "utils/validation" %>
 <%= ea_js "layouts/message_layout", "http/localization_http_client" %>
 

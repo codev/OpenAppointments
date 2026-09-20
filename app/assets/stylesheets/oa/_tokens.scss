@@ -1,0 +1,80 @@
+// Design tokens. Brand colours (--oa-primary and friends) arrive from
+// shared/_brand_style; themes set the knobs; everything below reads them.
+// Pico is the base and takes its variables from the same tokens.
+:root {
+    --oa-radius: 0.5rem;
+    --oa-border-width: 1px;
+    --oa-surface: #fff;
+    --oa-surface-border: #e5e7eb;
+    --oa-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+    --oa-shadow-raised: 0 6px 24px rgba(0, 0, 0, 0.1);
+    --oa-header-bg: var(--oa-primary);
+    --oa-header-fg: #fff;
+    --oa-step-bg: var(--oa-primary-dark);
+    --oa-step-fg: var(--oa-primary-subtle);
+    --oa-step-active-bg: #fff;
+    --oa-step-active-fg: var(--oa-primary);
+    --oa-text: #1f2937;
+    --oa-muted: #6b7280;
+    --oa-danger: #b02a37;
+    --oa-warning: #b45309;
+    --oa-success: #1a7f4b;
+    --oa-info: #1d5fa3;
+    --oa-font: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif;
+    --oa-space: 1rem;
+}
+
+// Pico reads these; the light scheme is pinned so the theme, not the OS, decides.
+.pico,
+:root {
+    color-scheme: light;
+    --pico-font-family: var(--oa-font);
+    --pico-font-size: 100%;
+    --pico-line-height: 1.5;
+    --pico-spacing: var(--oa-space);
+    --pico-typography-spacing-vertical: 1rem;
+    --pico-block-spacing-vertical: 1rem;
+    --pico-block-spacing-horizontal: 1rem;
+    --pico-form-element-spacing-vertical: 0.5rem;
+    --pico-form-element-spacing-horizontal: 0.75rem;
+    --pico-border-radius: var(--oa-radius);
+    --pico-border-width: var(--oa-border-width);
+    --pico-background-color: var(--oa-background);
+    --pico-color: var(--oa-text);
+    --pico-muted-color: var(--oa-muted);
+    --pico-muted-border-color: var(--oa-surface-border);
+    --pico-primary: var(--oa-primary);
+    --pico-primary-background: var(--oa-primary);
+    --pico-primary-border: var(--oa-primary);
+    --pico-primary-hover: var(--oa-primary-hover);
+    --pico-primary-hover-background: var(--oa-primary-hover);
+    --pico-primary-hover-border: var(--oa-primary-hover);
+    --pico-primary-underline: rgba(var(--oa-primary-rgb), 0.5);
+    --pico-primary-focus: rgba(var(--oa-primary-rgb), 0.25);
+    --pico-primary-inverse: #fff;
+    --pico-secondary: var(--oa-muted);
+    --pico-secondary-background: #fff;
+    --pico-secondary-border: var(--oa-surface-border);
+    --pico-secondary-hover: var(--oa-text);
+    --pico-secondary-hover-background: #f3f4f6;
+    --pico-secondary-hover-border: var(--oa-surface-border);
+    --pico-secondary-inverse: var(--oa-text);
+    --pico-card-background-color: var(--oa-surface);
+    --pico-card-border-color: var(--oa-surface-border);
+    --pico-card-box-shadow: var(--oa-shadow);
+    --pico-card-sectioning-background-color: var(--oa-surface);
+    --pico-form-element-background-color: #fff;
+    --pico-form-element-border-color: var(--oa-surface-border);
+    --pico-form-element-color: var(--oa-text);
+    --pico-form-element-placeholder-color: var(--oa-muted);
+    --pico-form-element-active-border-color: var(--oa-primary);
+    --pico-form-element-focus-color: var(--oa-primary-focus, rgba(var(--oa-primary-rgb), 0.25));
+    --pico-form-element-invalid-border-color: var(--oa-danger);
+    --pico-form-element-invalid-active-border-color: var(--oa-danger);
+    --pico-form-element-invalid-focus-color: rgba(176, 42, 55, 0.25);
+    --pico-switch-background-color: #d1d5db;
+    --pico-switch-checked-background-color: var(--oa-primary);
+    --pico-modal-overlay-background-color: rgba(31, 41, 55, 0.6);
+    --pico-table-border-color: var(--oa-surface-border);
+    --pico-table-row-stripped-background-color: rgba(var(--oa-primary-rgb), 0.04);
+}

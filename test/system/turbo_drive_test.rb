@@ -81,7 +81,7 @@ class TurboDriveTest < ApplicationSystemTestCase
     assert_selector "#messages-retention-days", wait: 5
     fill_in "messages-retention-days", with: "7"
     drive_to "Appointments"
-    assert_selector "#message-modal .modal-title", text: "Settings", wait: 5
+    assert_selector "#message-modal h3", text: "Settings", wait: 5
     within("#message-modal") { click_on "Cancel" }
     assert_no_selector "#message-modal", wait: 5
     assert_selector "#messages-retention-days"
