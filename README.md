@@ -110,7 +110,9 @@ Under Settings - Embedding - enter the website you want to embed the booking wid
 
 ### Calendar sync
 
-Each provider can sync their calendar - outbound sync works for CalDAV and Google Calendar. Google Calendar also supports inbound sync so events created in Google prevent booking those times as unavailable and events that are removed are canceled. Still todo: All-day event support.
+Each provider has a calendar feed: the Calendar Feed button on the calendar page gives a secret subscription link (ICS) to paste into Google Calendar, Apple Calendar or Outlook, with copy and reset. It is one way and carries the service and customer name and a link back here, no contact details. Calendar apps refresh it on their own schedule (Google 8 to 24 hours, Apple hourly), so it is a reference, not a live view.
+
+Each provider can also sync their calendar - outbound sync works for CalDAV and Google Calendar. Google Calendar also supports inbound sync so events created in Google prevent booking those times as unavailable and events that are removed are canceled. Still todo: All-day event support.
 
 ### Minor fixes
 

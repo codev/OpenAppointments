@@ -54,6 +54,11 @@
                 </ul>
             </div>
 
+            <button id="calendar-feed" class="btn btn-light" data-tippy-content="<%= lang('calendar_feed_hint') %>" hidden>
+                <i class="fas fa-calendar-plus me-2"></i>
+                <%= lang('calendar_feed') %>
+            </button>
+
             <%= render "calendar/actions", working_plan_exception: true %>
         </div>
     </div>
@@ -62,6 +67,7 @@
 </div>
 
 <%= render "calendar/modals" %>
+<%= render "calendar/feed_modal" %>
 
 <% content_for :scripts do %>
     <%= javascript_include_tag "vendor/fullcalendar/index.global.min",
@@ -69,6 +75,6 @@
                                "vendor/jquery-jeditable/jquery.jeditable.min" %>
     <%= ea_js "utils/status_filter", "utils/ui", "utils/calendar_events", "utils/calendar_event_popover",
               "http/calendar_http_client",
-              "utils/calendar_sync", "http/google_http_client", "http/caldav_http_client",
+              "utils/calendar_sync", "http/google_http_client", "http/caldav_http_client", "utils/calendar_feed",
               "pages/calendar" %>
 <% end %>

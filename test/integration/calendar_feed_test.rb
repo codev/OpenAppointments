@@ -72,4 +72,28 @@ class CalendarFeedTest < ActionDispatch::IntegrationTest
     post "/calendar/feed_link", params: { provider_id: users(:zane).id }, as: :json
     assert_response :unauthorized
   end
+
+  test "the calendar page has the feed button, the dialog with the instructions and the script" do
+    login("administrator", "administrator1")
+    get "/calendar"
+    assert_select "#calendar-feed[hidden]", text: /#{I18n.t('ea.calendar_feed')}/
+    assert_select "#calendar-feed-modal input#calendar-feed-link[readonly]"
+    assert_select "#calendar-feed-modal #calendar-feed-copy"
+    assert_select "#calendar-feed-modal #calendar-feed-reset"
+    %w[calendar_feed_hint calendar_feed_google calendar_feed_apple calendar_feed_refresh_note].each do |key|
+      assert_includes response.body, I18n.t("ea.#{key}")
+    end
+    assert_match "utils/calendar_feed", response.body
+  end
+
+  test "the calendar feed strings exist in every locale" do
+    keys = %w[calendar_feed calendar_feed_hint calendar_feed_link calendar_feed_copy calendar_feed_copied
+              calendar_feed_reset calendar_feed_reset_confirm calendar_feed_google calendar_feed_apple
+              calendar_feed_refresh_note]
+    I18n.available_locales.each do |locale|
+      keys.each do |key|
+        assert I18n.t("ea.#{key}", locale: locale, fallback: false, default: nil).present?, "missing ea.#{key} in #{locale}"
+      end
+    end
+  end
 end
