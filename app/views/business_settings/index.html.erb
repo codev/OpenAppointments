@@ -128,6 +128,24 @@
                             </div>
                         </div>
 
+                        <h5 class="mb-3 fw-light"><%= lang('waitlist') %></h5>
+
+                        <div class="form-check form-switch mb-3">
+                            <%= setting_switch "waitlist_enabled", default: "0" %>
+                            <label class="form-check-label" for="waitlist-enabled"><%= lang('waitlist_enabled') %></label>
+                            <div class="form-text text-muted"><small><%= lang('waitlist_enabled_hint') %></small></div>
+                        </div>
+
+                        <% { "waitlist_days" => 14, "waitlist_max_notices" => 7, "waitlist_min_slots" => 3,
+                             "waitlist_stagger_seconds" => 60 }.each do |name, default| %>
+                            <div class="mb-3">
+                                <label for="<%= name.dasherize %>" class="form-label"><%= lang(name) %></label>
+                                <%= setting_text name, type: "number", min: 0, value: setting(name).presence || default %>
+                                <div class="form-text text-muted"><small><%= lang("#{name}_hint") %></small></div>
+                            </div>
+                        <% end %>
+                        <div class="mb-5"></div>
+
                         <div class="d-flex justify-content-start align-items-center mb-3">
                             <h5 class="mb-0 me-3 fw-light">
                                 <%= lang('appointment_status_options') %>

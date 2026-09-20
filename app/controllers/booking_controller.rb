@@ -94,6 +94,14 @@ class BookingController < ApplicationController
     render :index
   end
 
+  # GET /booking/waitlist/leave/:token, the link in every waiting list notice.
+  def leave_waitlist
+    entry = WaitlistEntry.find_by(unsubscribe_token: params[:token].to_s)
+    entry&.destroy!
+    render_booking_message(helpers.lang("waitlist"), helpers.lang(entry ? "waitlist_left" : "waitlist_link_invalid"),
+                           icon: entry ? "success.png" : "error.png")
+  end
+
   # POST /booking/register
   def register
     return head :forbidden if Setting.get("disable_booking") == "1"
@@ -198,6 +206,7 @@ class BookingController < ApplicationController
     Synchronization.appointment_saved(appointment, service, provider, customer, settings)
     Notifications.appointment_saved(appointment, service, provider, customer, settings, manage_mode: manage_mode)
     Webhooks.trigger(Webhooks::APPOINTMENT_SAVE, appointment)
+    WaitlistEntry.where(email: customer.email, service_id: service.id).delete_all if customer.email.present?
 
     if form_post?
       redirect_to booking_confirmation_path(appointment_hash: appointment.booking_hash)
@@ -451,13 +460,13 @@ class BookingController < ApplicationController
     end
   end
 
-  def render_booking_message(title, text, raw_text: false)
+  def render_booking_message(title, text, raw_text: false, icon: "error.png")
     html_vars(
       show_message: true,
       page_title: "#{helpers.lang('page_title')} #{Setting.get('company_name')}",
       message_title: title,
       message_text: text,
-      message_icon: helpers.image_path("error.png"),
+      message_icon: helpers.image_path(icon),
       google_analytics_code: Setting.get("google_analytics_code"),
       matomo_analytics_url: Setting.get("matomo_analytics_url"),
       matomo_analytics_site_id: Setting.get("matomo_analytics_site_id"),

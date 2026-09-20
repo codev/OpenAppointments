@@ -51,4 +51,13 @@ class CleanupTest < ActiveSupport::TestCase
       Cleanup.run
     end
   end
+
+  test "expired waiting list signups are removed" do
+    expired = WaitlistEntry.create!(name: "W", email: "expired@example.org", service: services(:haircut), expires_at: 1.day.ago)
+    live = WaitlistEntry.create!(name: "W", email: "live@example.org", service: services(:haircut))
+    result = Cleanup.run
+    assert_equal 1, result[:waitlist_deleted]
+    assert_nil WaitlistEntry.find_by(id: expired.id)
+    assert WaitlistEntry.exists?(live.id)
+  end
 end

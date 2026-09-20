@@ -1,6 +1,12 @@
+<% waitlist_link = capture do %>
+    <%= link_to "/waitlist", id: "waitlist-link", class: "btn btn-outline-secondary me-2" do %>
+        <i class="fas fa-clock me-2"></i>
+        <%= lang('waitlist') %>
+    <% end %>
+<% end %>
 <%= render "shared/crud_page", page: "customers", title: lang('customers'),
            records: @records, record: @record, editing: @editing, keyword: @keyword,
-           row: "customers/row", form: "customers/form", can_add: vars(:can_add) %>
+           row: "customers/row", form: "customers/form", can_add: vars(:can_add), before_add: waitlist_link %>
 
 <% content_for :scripts do %>
     <%= ea_js "utils/mark_read", "http/customer_messages_http_client", "components/customer_messages" %>

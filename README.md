@@ -131,6 +131,12 @@ Admin > Messages manages all notifications:
 - Logs: every message sent/received; unknown senders land in the Unknown Inbox
   (user menu). The customer page shows each customer's thread, unread badges and a
   manual send box.
+- Waiting list: with the switch on (Settings > Business Logic) the booking time step
+  offers a signup. A cancelled slot is offered to matching signups straight away,
+  longest waiting first and a stagger apart; a daily scan tells signups whose
+  service has free hours. Both are Notifications events. Customers > Waiting List
+  shows who is waiting. The Notices page holds the Fully Booked Notice shown when
+  the chosen service or provider has nothing free.
 
 ## Operations
 
@@ -142,11 +148,13 @@ bin/rails openappointments:cleanup    # GDPR retention: purge stale customers + 
 bin/rails openappointments:backup     # VACUUM INTO a timestamped SQLite copy
 bin/rails openappointments:reminders  # send due coming-up notifications
 bin/rails openappointments:fetch_mail # pull unread IMAP mail into Action Mailbox
+bin/rails openappointments:waitlist   # daily waiting list availability notices
 ```
 
 In production Solid Queue runs inside Puma (start.sh sets SOLID_QUEUE_IN_PUMA) and
-config/recurring.yml already runs the reminder scan and mail fetch every 5 minutes;
-the rake targets are for manual runs or an external cron.
+config/recurring.yml already runs the reminder scan and mail fetch every 5 minutes
+and the waiting list scan daily at 9am; the rake targets are for manual runs or an
+external cron.
 
 - Data retention: set the `data_retention_days` setting (0 disables). Cleanup deletes
   customers created before the cutoff with no appointment ending on or after it;

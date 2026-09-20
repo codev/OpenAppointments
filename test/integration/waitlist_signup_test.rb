@@ -2,6 +2,8 @@ require "test_helper"
 
 # Waiting list signup on the time step, shown while the waitlist is enabled.
 class WaitlistSignupTest < ActionDispatch::IntegrationTest
+  include ActiveSupport::Testing::TimeHelpers
+
   setup do
     Setting.set("waitlist_enabled", "1")
     Setting.set("display_phone_number", "1")
@@ -63,6 +65,33 @@ class WaitlistSignupTest < ActionDispatch::IntegrationTest
     Setting.set("waitlist_enabled", "0")
     join
     assert_response :forbidden
+  end
+
+  test "the leave link removes the signup" do
+    entry = WaitlistEntry.create!(name: "W", email: "w@example.org", service: services(:haircut))
+    get "/booking/waitlist/leave/#{entry.unsubscribe_token}"
+    assert_response :success
+    assert_includes response.body, I18n.t("ea.waitlist_left")
+    assert_nil WaitlistEntry.find_by(id: entry.id)
+
+    get "/booking/waitlist/leave/nope"
+    assert_response :success
+    assert_includes response.body, I18n.t("ea.waitlist_link_invalid")
+  end
+
+  test "booking the service takes the customer off the list" do
+    entry = WaitlistEntry.create!(name: "W", email: "review@example.org", service: services(:haircut))
+    other = WaitlistEntry.create!(name: "W", email: "review@example.org", service: services(:group_session))
+    travel_to(Time.new(2026, 7, 10, 12, 0, 0)) do
+      post "/booking/register", params: {
+        form: "1", service_id: services(:haircut).id, provider_id: users(:zane).id, date: "2026-07-20", time: "11:00",
+        appointment: { id_services: services(:haircut).id, id_users_provider: users(:zane).id, start_datetime: "2026-07-20 11:00:00" },
+        customer: { name: "Review Booker", email: "review@example.org" }
+      }
+    end
+    assert_response :redirect
+    assert_nil WaitlistEntry.find_by(id: entry.id)
+    assert WaitlistEntry.exists?(other.id)
   end
 
   test "the waitlist strings exist in every locale" do

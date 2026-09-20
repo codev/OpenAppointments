@@ -54,6 +54,8 @@ Rails.application.routes.draw do
   resources :service_categories, only: %i[index new create edit update destroy] do
     post :search, on: :collection
   end
+  get "waitlist" => "waitlist#index"
+  delete "waitlist/:id" => "waitlist#destroy"
   resources :customers, only: %i[index new create edit update destroy] do
     post :search, on: :collection
   end
