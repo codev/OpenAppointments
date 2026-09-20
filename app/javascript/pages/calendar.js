@@ -16,6 +16,19 @@ App.Pages.Calendar = (function () {
 
     let fullCalendar = null;
 
+    // Everyone's calendar colours appointments by provider; the legend names them.
+    function renderLegend() {
+        const $legend = $('#calendar-legend');
+        const providers = filterType() === FILTER_TYPE_PROVIDER ? [] : vars('available_providers').filter((provider) => provider.color);
+        $legend.empty().prop('hidden', providers.length === 0);
+        providers.forEach((provider) => {
+            $('<span/>')
+                .append($('<i/>', {class: 'legend-swatch', css: {backgroundColor: provider.color}}))
+                .append(document.createTextNode(provider.name))
+                .appendTo($legend);
+        });
+    }
+
     function filterType() {
         return $selectFilterItem().find('option:selected').attr('type') || FILTER_TYPE_ALL;
     }
@@ -43,11 +56,13 @@ App.Pages.Calendar = (function () {
         App.Http.Calendar.getCalendarAppointments(recordId, startDate, endDate, filterType())
             .done((response) => {
                 fullCalendar.getEventSources().forEach((source) => source.remove());
+                renderLegend();
 
                 const events = [
                     ...Events.appointmentEvents(
                         App.Utils.StatusFilter.apply(response.appointments),
                         filterType() === FILTER_TYPE_SERVICE ? 'provider' : 'service',
+                        filterType() !== FILTER_TYPE_PROVIDER,
                     ),
                     ...Events.unavailabilityEvents(response.unavailabilities),
                     ...Events.blockedPeriodEvents(response.blocked_periods),

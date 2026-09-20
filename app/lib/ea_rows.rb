@@ -72,7 +72,7 @@ module EaRows
       "phone_number" => user.phone_number, "address" => user.address, "city" => user.city,
       "state" => user.state, "zip_code" => user.zip_code, "notes" => user.notes,
       "timezone" => user.effective_timezone, "language" => user.language,
-      "is_private" => user.is_private, "ldap_dn" => user.ldap_dn,
+      "is_private" => user.is_private, "ldap_dn" => user.ldap_dn, "color" => user.color,
       "custom_field_1" => user.custom_field_1, "custom_field_2" => user.custom_field_2,
       "custom_field_3" => user.custom_field_3, "custom_field_4" => user.custom_field_4,
       "custom_field_5" => user.custom_field_5, "id_roles" => user.id_roles,

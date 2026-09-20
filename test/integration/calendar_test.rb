@@ -206,4 +206,19 @@ class CalendarTest < ActionDispatch::IntegrationTest
     body = response.parsed_body
     assert body["appointments"].all? { |a| a["id_users_provider"] == users(:zane).id }
   end
+
+  test "a provider colour is saved from the form and sent with calendar appointments" do
+    login_admin
+    get "/providers/#{users(:zane).id}/edit"
+    assert_select ".color-selection input[name='provider[color]']"
+    patch "/providers/#{users(:zane).id}", params: { provider: { color: "#eb8687" } }
+    assert_equal "#eb8687", users(:zane).reload.color
+
+    post "/calendar/get_calendar_appointments", params: {
+      record_id: users(:zane).id, filter_type: "provider", start_date: "2026-07-19", end_date: "2026-07-21"
+    }
+    assert_equal "#eb8687", response.parsed_body["appointments"].first["provider"]["color"]
+    get "/calendar"
+    assert_select "#calendar-legend"
+  end
 end
