@@ -101,4 +101,33 @@ class CustomersTest < ActionDispatch::IntegrationTest
     post "/customers/store", params: { customer: { name: "x" } }
     assert_response :not_found
   end
+
+  test "merging moves appointments and messages to the customer with the typed phone or email and deletes the record" do
+    login_admin
+    kept = User.create!(name: "Kept", email: "kept@example.org", role: roles(:customer))
+    gone = User.create!(name: "Gone", phone_number: "+447700900777", address: "1 Lane", notes: "Allergic to X", role: roles(:customer))
+    appointment = Appointment.create!(provider: users(:zane), customer: gone, service: services(:haircut), status: "Booked",
+                                      start_datetime: "2026-08-03 11:00:00", end_datetime: "2026-08-03 11:30:00")
+    message = Message.create!(direction: "incoming", channel: "email", status: "received", customer_id: gone.id, body: "Hi")
+
+    get "/customers/#{gone.id}/edit"
+    assert_select "form#merge-customer input#merge-target"
+
+    post "/customers/#{gone.id}/merge", params: { target: "nobody@example.org" }
+    assert_redirected_to "/customers/#{gone.id}/edit"
+    assert_equal I18n.t("ea.merge_customer_not_found"), flash[:alert]
+
+    post "/customers/#{gone.id}/merge", params: { target: "kept@example.org" }
+    assert_redirected_to "/customers/#{kept.id}/edit"
+    assert_equal I18n.t("ea.customer_merged"), flash[:notice]
+    assert_nil User.find_by(id: gone.id)
+    assert_equal kept.id, appointment.reload.id_users_customer
+    assert_equal kept.id, message.reload.customer_id
+    kept.reload
+    assert_equal [ "+447700900777", "1 Lane", "Allergic to X" ], [ kept.phone_number, kept.address, kept.notes ]
+
+    other = User.create!(name: "Other", phone_number: "07700 900888", role: roles(:customer))
+    post "/customers/#{kept.id}/merge", params: { target: "+447700900888" }
+    assert_redirected_to "/customers/#{other.id}/edit"
+  end
 end

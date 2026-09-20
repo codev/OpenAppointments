@@ -60,6 +60,7 @@ Rails.application.routes.draw do
   delete "waitlist/:id" => "waitlist#destroy"
   resources :customers, only: %i[index new create edit update destroy] do
     post :search, on: :collection
+    post :merge, on: :member
   end
   resources :blocked_periods, only: %i[index new create edit update destroy]
   resources :webhooks, only: %i[index new create edit update destroy]

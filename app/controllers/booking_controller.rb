@@ -163,7 +163,7 @@ class BookingController < ApplicationController
     end
 
     existing_customer = User.customers.find_by(email: customer_params["email"]) if customer_params["email"].present?
-    existing_customer ||= customer_by_phone(customer_params["phone_number"]) if customer_params["email"].blank?
+    existing_customer ||= User.customer_by_phone(customer_params["phone_number"]) if customer_params["email"].blank?
     # A reschedule keeps the appointment's customer unless the email now belongs to another record.
     existing_customer ||= original.customer if original
     if existing_customer
@@ -409,13 +409,6 @@ class BookingController < ApplicationController
     provider_id = @provider_id == BookingPayloads::ANY_PROVIDER ? nil : @provider_id
     WaitlistEntry.create!(signup.merge(service_id: @service_id, provider_id: provider_id))
     [ helpers.lang("waitlist_joined"), "success" ]
-  end
-
-  # Without an email the phone number identifies the customer, however it was typed.
-  def customer_by_phone(phone)
-    return nil if phone.blank?
-
-    User.customers.find_by(phone_number: [ phone, Messaging::Template.e164(phone) ].compact.uniq)
   end
 
   def customer_form_params

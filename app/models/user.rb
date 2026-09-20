@@ -39,6 +39,18 @@ class User < ApplicationRecord
 
   scope :admins, -> { joins(:role).where(roles: { slug: Role::ADMIN }) }
   scope :providers, -> { joins(:role).where(roles: { slug: Role::PROVIDER }) }
+
+  # The customer whose phone or mobile number is this one, however either was
+  # typed: both sides are compared in E.164 after a digits-only narrowing.
+  def self.customer_by_phone(number, scope = customers)
+    wanted = Messaging::Template.e164(number)
+    return nil if wanted.blank? || wanted.length < 7
+
+    tail = "%#{wanted[-7..]}"
+    stripped = "REPLACE(REPLACE(REPLACE(%s, ' ', ''), '-', ''), '(', '')"
+    scope.where("#{format(stripped, 'phone_number')} LIKE :tail OR #{format(stripped, 'mobile_number')} LIKE :tail", tail: tail)
+         .find { |user| [ user.phone_number, user.mobile_number ].any? { |stored| Messaging::Template.e164(stored) == wanted } }
+  end
   scope :assistants, -> { joins(:role).where(roles: { slug: Role::ASSISTANT }) }
   scope :customers, -> { joins(:role).where(roles: { slug: Role::CUSTOMER }) }
 
