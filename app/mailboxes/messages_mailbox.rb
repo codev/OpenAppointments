@@ -5,7 +5,7 @@
 class MessagesMailbox < ApplicationMailbox
   def process
     from = mail.from&.first.to_s
-    customer = User.customers.where("LOWER(email) = ?", from.downcase).first if from.present?
+    customer = User.customer_by_email(from) if from.present?
 
     message = Message.create!(
       direction: "incoming", channel: "email", status: "received",

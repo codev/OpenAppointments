@@ -150,6 +150,8 @@ class OdsExtract
       do_not_contact = notes.start_with?(TenToEight::Load::DO_NOT_CONTACT_PREFIX)
       notes = notes.delete_prefix(TenToEight::Load::DO_NOT_CONTACT_PREFIX).strip if do_not_contact
       { ext_id: row["id"], name: row["name"], email: row["email"], phone: row["phone_number"],
+        other_emails: row["other_emails"].to_s.split(/[\r\n]+/).map(&:strip).compact_blank,
+        other_phones: row["other_phones"].to_s.split(/[\r\n]+/).map(&:strip).compact_blank,
         address: row["address"], city: row["city"].presence, zip: row["zip_code"].presence,
         notes: notes, do_not_contact: do_not_contact,
         pronoun: row["custom_field_1"], access: row["custom_field_2"],

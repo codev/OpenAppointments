@@ -40,7 +40,7 @@ module Notifications
   # A waiting list notice: the signup is the recipient, linked to their
   # customer record when the email matches one.
   def waitlist_notice(trigger, entry, context)
-    customer_id = User.customers.find_by(email: entry.email)&.id
+    customer_id = User.customer_by_email(entry.email)&.id
     Notification.for_trigger(trigger).find_each do |notification|
       enabled_channels(notification).each do |channel_key|
         deliver("#{notification.title} to waitlist", nil) do

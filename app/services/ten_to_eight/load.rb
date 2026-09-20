@@ -1,7 +1,7 @@
 module TenToEight
   # Port of import/load_to_ea.py, writing straight to the models. Matches existing
   # records (categories/services by name, providers by email or name, customers by
-  # email or name+phone) so re-runs do not duplicate. Pronoun lands in custom_field_1, access
+  # any email or phone number) so re-runs do not duplicate. Pronoun lands in custom_field_1, access
   # needs in custom_field_2, and a do-not-contact prefix on the notes (GDPR consent).
   class Load
     PHASES = %w[categories services providers assistants admins customers appointment_statuses appointments
@@ -420,23 +420,32 @@ module TenToEight
       end
     end
 
+    # Customers match on any email or phone number, primary or other, of an
+    # existing record; a matched row's addresses are added to that record.
     def load_customers
       counts = track("customers")
       role = Role.find_by!(slug: Role::CUSTOMER)
       @customer_ids = {}
-      by_email = {}
-      by_name_phone = {}
-      User.customers.find_each do |user|
-        by_email[user.email.to_s.downcase] = user.id if user.email.present?
-        by_name_phone["#{user.name.to_s.downcase}|#{user.phone_number}"] = user.id
+      index = {}
+      register = lambda do |id, emails, phones|
+        emails.each { |address| index["e:#{address.downcase}"] ||= id }
+        phones.each { |number| index["p:#{number}"] ||= id }
       end
+      User.customers.find_each { |user| register.call(user.id, user.all_emails, user.all_phones) }
 
       @data[:customers].each do |row|
-        existing_id = row[:email].present? ? by_email[row[:email].downcase] : nil
-        existing_id ||= by_name_phone["#{row[:name].downcase}|#{row[:phone]}"]
+        emails = [ row[:email], *row[:other_emails] ].compact_blank.uniq
+        phones = [ row[:phone], *row[:other_phones] ].compact_blank.filter_map { |number| Messaging::Template.e164(number) }.uniq
+        existing_id = emails.filter_map { |address| index["e:#{address.downcase}"] }.first ||
+                      phones.filter_map { |number| index["p:#{number}"] }.first
         if existing_id
           counts[:matched] += 1
           @customer_ids[row[:ext_id]] = existing_id
+          user = User.find(existing_id)
+          emails.each { |address| user.add_contact(email: address) }
+          phones.each { |number| user.add_contact(phone: number) }
+          user.save! if user.changed?
+          register.call(existing_id, emails, phones)
           next
         end
 
@@ -450,6 +459,7 @@ module TenToEight
         customer = guard("customers", counts, row[:name]) do
           User.create!(
             name: row[:name], email: row[:email], phone_number: row[:phone],
+            other_emails: Array(row[:other_emails]).join("\n").presence, other_phones: Array(row[:other_phones]).join("\n").presence,
             address: row[:address], city: row[:city], zip_code: row[:zip], notes: notes,
             custom_field_1: row[:pronoun], custom_field_2: row[:access],
             custom_field_3: row[:custom_field_3], custom_field_4: row[:custom_field_4],
@@ -461,8 +471,7 @@ module TenToEight
 
         counts[:created] += 1
         @customer_ids[row[:ext_id]] = customer.id
-        by_email[row[:email].downcase] = customer.id if row[:email].present?
-        by_name_phone["#{row[:name].downcase}|#{row[:phone]}"] = customer.id
+        register.call(customer.id, emails, phones)
       end
     end
 
