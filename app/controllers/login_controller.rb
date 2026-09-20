@@ -30,12 +30,18 @@ class LoginController < ApplicationController
       return login_failed
     end
 
+    return login_failed if LoginThrottle.blocked?(request.remote_ip, username)
+
     user_data = Accounts.check_login(username, password)
 
     if user_data.nil?
       Rails.logger.info("Failed login attempt for username: #{username} from IP: #{request.remote_ip}")
+      if LoginThrottle.record_failure(request.remote_ip, username)
+        AlertMailer.login_attempts(request.remote_ip, username).deliver_later
+      end
       return login_failed
     end
+    LoginThrottle.clear_username(username)
 
     dest_url = session[:dest_url] || calendar_url
     log_in(user_data)
