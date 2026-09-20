@@ -13,7 +13,7 @@ class BackendHeaderLogoTest < ActionDispatch::IntegrationTest
     Setting.set("company_logo", LOGO)
     login_admin
     get "/calendar"
-    assert_select "#header-logo img[src=?]", LOGO
+    assert_select "#header-logo img[src^=?]", "/company_logo?v="
   end
 
   test "the app logo is shown when no company logo is set" do

@@ -2,6 +2,7 @@
 # builds URLs with App.Utils.Url.siteUrl.
 Rails.application.routes.draw do
   get "up" => "rails/health#show", as: :rails_health_check
+  get "company_logo" => "company_logo#show"
 
   # Auth
   get "login" => "login#index", as: :login

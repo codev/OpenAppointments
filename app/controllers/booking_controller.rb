@@ -239,7 +239,7 @@ class BookingController < ApplicationController
       available_providers: available_providers,
       theme: theme,
       company_name: Setting.get("company_name"),
-      company_logo: Setting.get("company_logo"),
+      company_logo: CompanyLogo.path,
       company_color: company_color == "#ffffff" ? "" : company_color,
       date_format: Setting.get("date_format"),
       time_format: Setting.get("time_format"),
