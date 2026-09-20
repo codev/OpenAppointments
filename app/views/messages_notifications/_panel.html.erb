@@ -94,19 +94,26 @@
                 </div>
             </div>
             <% if can?(:edit, :system_settings) %>
-                <div class="d-flex justify-content-between border-top pt-3">
+                <div class="d-flex border-top pt-3">
                     <button type="submit" class="btn btn-primary save-notification">
                         <i class="fas fa-check-square me-2"></i>
                         <%= lang('save') %>
                     </button>
+                    <% if n.persisted? %>
+                        <button type="submit" form="delete-notification-<%= n.id %>" class="btn btn-outline-danger delete-notification ms-auto"
+                                data-turbo-confirm-title="<%= lang('delete_notification') %>">
+                            <i class="fas fa-trash-alt me-2"></i><%= lang('delete') %>
+                        </button>
+                    <% end %>
                 </div>
             <% end %>
         <% end %>
+        <%# The delete form sits outside the edit form; its button is in the row above. %>
         <% if can?(:edit, :system_settings) && n.persisted? %>
-            <%= button_to "/messages_notifications/destroy", method: :post, class: "btn btn-outline-danger delete-notification mt-2",
-                          params: { form: "1", notification_id: n.id }, data: { turbo_confirm_title: lang('delete_notification') },
-                          form: { data: { turbo_frame: "notifications", turbo_confirm: lang('delete_record_prompt') } } do %>
-                <i class="fas fa-trash-alt me-2"></i><%= lang('delete') %>
+            <%= form_with url: "/messages_notifications/destroy", method: :post, id: "delete-notification-#{n.id}",
+                          data: { turbo_frame: "notifications", turbo_confirm: lang('delete_record_prompt') } do %>
+                <%= hidden_field_tag :form, "1", id: nil %>
+                <%= hidden_field_tag :notification_id, n.id, id: nil %>
             <% end %>
         <% end %>
     </div>
