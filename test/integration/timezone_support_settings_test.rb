@@ -50,4 +50,25 @@ class TimezoneSupportSettingsTest < ActionDispatch::IntegrationTest
                                                timezone: "America/New_York" } }, as: :json
     assert_equal "America/New_York", session[:timezone]
   end
+
+  test "the date display select offers each style as a sample date and saves" do
+    login_admin
+    Setting.set("date_format", "DMY")
+    get "/general_settings"
+    assert_select "#date-display[name='settings[date_display]'] option", 5
+    assert_select "#date-display option[value=day_long]", text: DateDisplay.format(Date.current, style: "day_long")
+    post "/general_settings/save", params: { settings: { date_display: "day_short" } }
+    assert_equal "day_short", Setting.get("date_display")
+  end
+
+  test "the lab book batch strings exist in every locale" do
+    keys = %w[date_display date_display_hint time_off time_off_hint messages_sms_variation messages_sms_variation_hint
+              merge_customer merge_customer_hint merge_customer_button merge_customer_confirm merge_customer_not_found
+              customer_merged provider_color_hint]
+    I18n.available_locales.each do |locale|
+      keys.each do |key|
+        assert I18n.t("ea.#{key}", locale: locale, fallback: false, default: nil).present?, "missing ea.#{key} in #{locale}"
+      end
+    end
+  end
 end

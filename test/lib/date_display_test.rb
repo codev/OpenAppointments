@@ -4,6 +4,8 @@ require "test_helper"
 # adds day and month names in the reader's language; the order follows the
 # date format setting. Date fields keep the numeric format.
 class DateDisplayTest < ActiveSupport::TestCase
+  include ActiveSupport::Testing::TimeHelpers
+
   MONDAY = Date.new(2026, 7, 20)
 
   test "the styles in day month year order" do

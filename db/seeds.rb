@@ -78,6 +78,7 @@ settings = {
 
   # Display / formatting
   "date_format" => "DMY",
+  "date_display" => "numeric",
   "time_format" => "regular",
   "theme" => "nice",
   "custom_css" => "",

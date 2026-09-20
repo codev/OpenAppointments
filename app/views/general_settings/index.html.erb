@@ -121,6 +121,21 @@
                                     </div>
                                 </div>
                                 <div class="mb-3">
+                                    <label class="form-label" for="date-display">
+                                        <%= lang('date_display') %>
+                                    </label>
+                                    <select name="settings[date_display]" data-field="date_display" class="form-select" id="date-display">
+                                        <% DateDisplay::STYLES.each do |style| %>
+                                            <option value="<%= style %>" <%= "selected" if DateDisplay.style == style %>><%= DateDisplay.format(Date.current, style: style) %></option>
+                                        <% end %>
+                                    </select>
+                                    <div class="form-text text-muted">
+                                        <small>
+                                            <%= lang('date_display_hint') %>
+                                        </small>
+                                    </div>
+                                </div>
+                                <div class="mb-3">
                                     <label class="form-label" for="time-format">
                                         <%= lang('time_format') %>
                                     </label>
