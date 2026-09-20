@@ -7,6 +7,15 @@ CloudronManifest.json.
 
 - Waiting List: customers can join a waiting list on the booking time step. A cancelled appointment is offered to matching signups straight away, longest waiting first with a pause between each, and a daily message tells signups when their service has free appointments. Switch and limits are on Business Settings, the two message templates on Notifications, and Customers > Waiting List shows who is waiting
 - Calendar Feed: a button on the calendar page gives each provider a private link to subscribe to their appointments in Google Calendar, Apple Calendar or Outlook, with copy and reset and instructions
+- Login: repeated failed logins are refused for 15 minutes and the failure alert address is told
+- General Settings: Date display chooses how dates are written, with day and month names in the reader's language
+- Calendar: each provider has a colour, used with a legend when the calendar shows everyone; appointments show a coloured edge over a light tint
+- Working plan exceptions: a Time off row for part of a day off, saved as a break
+- Appointments view shows working plan breaks
+- Customer page: merge a customer into another by email or phone number; bookings without an email reuse the customer with that phone number
+- Messages > Settings: Vary each SMS adds a short code so no two texts are identical
+- Manage Data is at /data; the old address redirects
+- Booking wizard: Next shows a spinner while the next step loads
 - Notices page (was Legal Contents) has a Fully Booked Notice, shown on the booking steps when the chosen service or provider has no free appointments
 
 Bug fixes:
@@ -16,6 +25,8 @@ Bug fixes:
 - Business Settings: the late cancellation hint no longer says the window must fit inside the booking window
 - Account: saving the account page with Timezone Support off keeps the default timezone for the session
 - Company logo is served as a cacheable image so pages load faster after the first visit
+- The app logo is no longer attached to every message email
+- Notification panels have Delete on the Save row; dialog corners line up
 
 ## 2.1.0
 
