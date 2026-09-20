@@ -10,3 +10,50 @@
     --oa-step-fg: #fff;
     --oa-font: Roboto, system-ui, "Segoe UI", Arial, sans-serif;
 }
+
+// Material buttons: pills without borders that lift on hover.
+.pico button,
+.pico [role="button"] {
+    border-width: 0;
+    border-radius: 999px;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+
+    &:hover {
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 1px 3px 1px rgba(0, 0, 0, 0.15);
+    }
+}
+
+.pico button.secondary,
+.pico button.outline,
+.pico button.destructive {
+    border-width: 1px;
+}
+
+// Filled text fields: tonal fill, no outline, bold bottom indicator.
+.pico input:not([type="checkbox"]):not([type="radio"]),
+.pico select,
+.pico textarea {
+    background-color: #f3f1f6;
+    border: 0;
+    border-bottom: 2px solid #79747e;
+    border-radius: 0.375rem 0.375rem 0 0;
+
+    &:focus {
+        background-color: #ece9f1;
+        border-bottom-color: var(--oa-primary);
+        box-shadow: none;
+    }
+}
+
+.booking-card,
+#available-hours .available-hour {
+    border: 0;
+    background-color: #f3f1f6;
+}
+
+.pico button.secondary,
+.pico [role="button"].secondary {
+    background: #f3f1f6;
+    color: var(--oa-text);
+}

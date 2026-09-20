@@ -13,14 +13,55 @@
     --oa-font: "Helvetica Neue", Arial, sans-serif;
 }
 
-// Everything square, thick and black.
-.pico button,
-.pico [role="button"],
-.pico input,
+// Everything square, thick and black; buttons shout and lift on hover.
+.pico input:not([type="checkbox"]):not([type="radio"]),
 .pico select,
-.pico textarea,
+.pico textarea {
+    border: 2px solid #000;
+    border-radius: 0;
+
+    &:focus {
+        box-shadow: 4px 4px 0 #000;
+    }
+}
+
+.pico label {
+    text-transform: uppercase;
+    font-size: 0.85rem;
+}
+
+.pico button,
+.pico [role="button"] {
+    border: 2px solid #000;
+    border-radius: 0;
+    font-weight: 700;
+    text-transform: uppercase;
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
+
+    &:hover {
+        box-shadow: 4px 4px 0 #000;
+        transform: translate(-2px, -2px);
+    }
+}
+
+.app-header,
+.wizard-header {
+    border-bottom: 2px solid #000;
+}
+
+.wizard,
+.panel,
+dialog > article,
 .booking-card,
 .wizard-steps .book-step {
-    border-width: 2px;
-    border-color: #000;
+    border: 2px solid #000;
+}
+
+.booking-card:hover {
+    box-shadow: 6px 6px 0 #000;
+    transform: translate(-2px, -2px);
+}
+
+.booking-card.selected {
+    box-shadow: 6px 6px 0 var(--oa-secondary);
 }

@@ -11,15 +11,15 @@ class CrudPaginationTest < ActionDispatch::IntegrationTest
   test "the customer list pages with links inside the frame and keeps the keyword" do
     get "/customers"
     assert_select ".customer-row", count: 20
-    assert_select "turbo-frame#customers ul.pagination li.page-item.active a", text: "1"
-    assert_select "ul.pagination a[href='/customers?page=3']", text: "3"
-    assert_select "ul.pagination li.page-item.previous.disabled a"
+    assert_select "turbo-frame#customers nav.pagy a[aria-current=page]", text: "1"
+    assert_select "nav.pagy a[href='/customers?page=3']", text: "3"
+    assert_select "nav.pagy a[aria-label=Previous][aria-disabled=true]"
 
     get "/customers", params: { page: 3, keyword: "tester" }
     assert_select ".customer-row", count: 5
-    assert_select "ul.pagination li.page-item.active a", text: "3"
-    assert_select "ul.pagination a[href='/customers?page=2&keyword=tester']"
-    assert_select "ul.pagination li.page-item.next.disabled a"
+    assert_select "nav.pagy a[aria-current=page]", text: "3"
+    assert_select "nav.pagy a[href='/customers?page=2&keyword=tester']"
+    assert_select "nav.pagy a[aria-label=Next][aria-disabled=true]"
 
     get "/customers", params: { page: 99 }
     assert_select ".customer-row", count: 6
@@ -30,12 +30,12 @@ class CrudPaginationTest < ActionDispatch::IntegrationTest
     quiet.update_columns(updated_at: 1.year.ago)
     get "/customers", params: { selected: quiet.id }
     assert_select ".customer-row.selected[data-id=?]", quiet.id.to_s
-    assert_select "ul.pagination li.page-item.active a", text: "3"
+    assert_select "nav.pagy a[aria-current=page]", text: "3"
 
     get "/admins"
-    assert_select "ul.pagination", count: 0
+    assert_select "nav.pagy", count: 0
     get "/services"
-    assert_select "ul.pagination", count: 0
+    assert_select "nav.pagy", count: 0
   end
 
   test "no converted page leaks template text as visible markup" do

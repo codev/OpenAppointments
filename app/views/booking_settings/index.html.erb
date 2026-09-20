@@ -22,7 +22,7 @@
 
                         <div class="fields-row split">
                             <div class="full">
-                                <div class="form-group">
+                                <div class="field">
                                     <label for="name" >
                                         <%= lang('name') %>
                                         <span class="required">*</span>
@@ -33,7 +33,7 @@
                             </div>
                             <%= settings_flash %>
                             <div class="split">
-                                <div class="form-group">
+                                <div class="field">
                                     <label for="email" >
                                         <%= lang('email') %>
                                         <span class="required">*</span>
@@ -57,7 +57,7 @@
                                 </div>
                             </div>
                             <div class="full">
-                                <div class="form-group">
+                                <div class="field">
                                     <label for="phone-number" >
                                         <%= lang('phone_number') %>
                                         <span class="required">*</span>
@@ -87,7 +87,7 @@
                                 </div>
                             </div>
                             <div>
-                                <div class="form-group">
+                                <div class="field">
                                     <label for="address" >
                                         <%= lang('address') %>
                                         <span class="required">*</span>
@@ -111,7 +111,7 @@
                                 </div>
                             </div>
                             <div>
-                                <div class="form-group">
+                                <div class="field">
                                     <label for="city" >
                                         <%= lang('city') %>
                                         <span class="required">*</span>
@@ -135,7 +135,7 @@
                                 </div>
                             </div>
                             <div>
-                                <div class="form-group">
+                                <div class="field">
                                     <label for="zip-code" >
                                         <%= lang('zip_code') %>
                                         <span class="required">*</span>
@@ -159,7 +159,7 @@
                                 </div>
                             </div>
                             <div>
-                                <div class="form-group">
+                                <div class="field">
                                     <label for="notes" >
                                         <%= lang('notes') %>
                                         <span class="required">*</span>
@@ -191,7 +191,7 @@
                         <div class="fields-row split">
                             <% (1..5).each do |i| %>
                                 <div>
-                                    <div class="form-group">
+                                    <div class="field">
                                         <label for="custom-field-<%= i %>" >
                                             <%= lang('custom_field') %> #<%= i %>
                                             <span class="required">*</span>
@@ -248,7 +248,7 @@
                                              "picture_style_services" => "services",
                                              "picture_style_providers" => "providers" }.each do |field, label_key| %>
                                             <div class="field split">
-                                                <label class="col-form-label" for="<%= field.tr('_', '-') %>">
+                                                <label for="<%= field.tr('_', '-') %>">
                                                     <%= lang(label_key) %>
                                                 </label>
                                                 <div>
@@ -363,7 +363,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="form-group" data-visible-when="disable_booking=1">
+                                    <div class="field" data-visible-when="disable_booking=1">
                                         <label  for="disable-booking-message">
                                             <%= lang('display_message') %>
                                         </label>

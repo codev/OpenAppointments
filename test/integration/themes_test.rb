@@ -7,8 +7,8 @@ class ThemesTest < ActionDispatch::IntegrationTest
     assert_equal THEMES, BookingController::THEMES.sort
     builds = Rails.application.config.dartsass.builds
     THEMES.each do |theme|
-      assert_equal "themes/#{theme}.css", builds["ea/themes/#{theme}.scss"], "missing build for #{theme}"
-      assert Rails.root.join("app/assets/builds/themes/#{theme}.css").exist?, "missing css for #{theme}"
+      assert_equal "oa-themes/#{theme}.css", builds["oa/themes/#{theme}.scss"], "missing build for #{theme}"
+      assert Rails.root.join("app/assets/builds/oa-themes/#{theme}.css").exist?, "missing css for #{theme}"
     end
   end
 
@@ -16,11 +16,11 @@ class ThemesTest < ActionDispatch::IntegrationTest
     THEMES.each do |theme|
       get "/", params: { theme: theme }
       assert_response :success
-      assert_match %r{themes/#{theme}}, response.body
+      assert_match %r{oa-themes/#{theme}}, response.body
     end
 
     get "/", params: { theme: "cosmo" }
-    assert_match %r{themes/nice}, response.body
+    assert_match %r{oa-themes/nice}, response.body
   end
 
   test "seeds default the theme to nice" do
@@ -39,19 +39,19 @@ class ThemesTest < ActionDispatch::IntegrationTest
     assert_equal "brutalism", Setting.get("theme")
   end
 
-  test "every theme consumes the brand variables and avoids remote fonts" do
+  test "every theme sets the shared knobs and avoids remote fonts" do
     THEMES.each do |theme|
-      source = Rails.root.join("app/assets/stylesheets/ea/themes/#{theme}.scss").read
-      assert_match(/@import 'bootstrap'/, source)
-      assert_match(/@import 'shared'/, source)
-      css = Rails.root.join("app/assets/builds/themes/#{theme}.css").read
+      source = Rails.root.join("app/assets/stylesheets/oa/themes/#{theme}.scss").read
+      assert_match(/:root \{/, source)
+      assert_match(/--oa-radius/, source)
+      css = Rails.root.join("app/assets/builds/oa-themes/#{theme}.css").read
       assert_no_match(/fonts\.googleapis|@import url/, css, "#{theme} pulls remote fonts")
-      assert_match(/--oa-primary/, css)
+      assert_no_match(/\.btn\b|--bs-/, css, "#{theme} still carries Bootstrap")
     end
   end
 
   test "outline styling keeps its outline character" do
-    source = Rails.root.join("app/assets/stylesheets/ea/themes/outline.scss").read
-    assert_match(/button-outline-variant/, source)
+    source = Rails.root.join("app/assets/stylesheets/oa/themes/outline.scss").read
+    assert_match(/background: transparent/, source)
   end
 end

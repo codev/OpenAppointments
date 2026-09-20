@@ -5,3 +5,30 @@
     --oa-shadow: 0 1px 3px rgba(16, 24, 40, 0.08), 0 1px 2px rgba(16, 24, 40, 0.04);
     --oa-shadow-raised: 0 12px 24px rgba(16, 24, 40, 0.1);
 }
+
+// Quiet inputs with an accent bottom edge and a clear focus ring.
+.pico input:not([type="checkbox"]):not([type="radio"]),
+.pico select,
+.pico textarea {
+    background-color: #f9fafb;
+    border-color: #c0c4c9;
+    border-bottom-width: 2px;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease, background-color 0.15s ease;
+
+    &:focus {
+        background-color: #fff;
+        border-color: var(--oa-primary);
+        box-shadow: 0 0 0 0.2rem rgba(var(--oa-primary-rgb), 0.15);
+    }
+}
+
+.pico label {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #374151;
+}
+
+.pico button,
+.pico [role="button"] {
+    font-weight: 500;
+}

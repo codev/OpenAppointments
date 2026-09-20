@@ -7,9 +7,9 @@
         <div class="inbox-message <%= ' message-unread' if unread %>">
             <div class="inbox-meta toolbar">
                 <% if message.direction == "incoming" %>
-                    <i class="fas fa-arrow-down text-success" title="<%= lang('messages_incoming_label') %>"></i>
+                    <i class="fas fa-arrow-down success" title="<%= lang('messages_incoming_label') %>"></i>
                 <% else %>
-                    <i class="fas fa-arrow-up text-primary" title="<%= lang('messages_outgoing_label') %>"></i>
+                    <i class="fas fa-arrow-up accent" title="<%= lang('messages_outgoing_label') %>"></i>
                 <% end %>
                 <span class="tag"><%= Messaging.channel(message.channel)&.label || message.channel %></span>
                 <% if message.customer %>
@@ -31,7 +31,7 @@
                         <i class="fas fa-check"></i><%= lang('mark_as_read') %>
                     </button>
                 <% elsif message.direction == "incoming" %>
-                    <i class="fas fa-check text-success" title="<%= lang('read') %>"></i>
+                    <i class="fas fa-check success" title="<%= lang('read') %>"></i>
                 <% end %>
             </div>
             <% if message.subject.present? %>

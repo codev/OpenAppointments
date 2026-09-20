@@ -13,3 +13,52 @@
     --oa-step-active-fg: #fff;
     --oa-font: -apple-system, "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
+
+// The background colour paints the top bar only; the page stays white.
+.pico,
+body {
+    --pico-background-color: #fff;
+    background-color: #fff;
+}
+
+// Translucent blurred header like apple.com's nav.
+.app-header,
+.wizard-header {
+    background: rgba(var(--oa-background-rgb), 0.85);
+    -webkit-backdrop-filter: saturate(180%) blur(20px);
+    backdrop-filter: saturate(180%) blur(20px);
+}
+
+.pico button,
+.pico [role="button"] {
+    font-weight: 400;
+    border-width: 0;
+    padding-left: 1.375rem;
+    padding-right: 1.375rem;
+    border-radius: 980px;
+}
+
+.pico button.secondary,
+.pico button.outline,
+.pico button.destructive,
+.pico [role="button"].secondary {
+    border-width: 1px;
+}
+
+.pico input:not([type="checkbox"]):not([type="radio"]),
+.pico select,
+.pico textarea {
+    padding-top: 0.625rem;
+    padding-bottom: 0.625rem;
+
+    &:focus {
+        border-color: var(--oa-primary);
+        box-shadow: 0 0 0 4px rgba(var(--oa-primary-rgb), 0.18);
+    }
+}
+
+.frame-title,
+.pico .frame-title {
+    font-weight: 600;
+    letter-spacing: -0.02em;
+}

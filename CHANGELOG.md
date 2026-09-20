@@ -3,6 +3,10 @@
 The about page lists these notes; every release needs a section here matching
 CloudronManifest.json.
 
+## 2.3.0
+
+- The pages are rebuilt on semantic HTML and Pico CSS in place of Bootstrap: native dialogs and menus, the same seven themes, smaller stylesheets and no framework scripts. Nothing changes in what the pages do
+
 ## 2.2.0
 
 - Waiting List: customers can join a waiting list at the time step if no services are available

@@ -56,7 +56,7 @@
                         <hr>
                     <% end %>
                     <% if @pagy && @pagy.last > 1 %>
-                        <%= raw @pagy.series_nav(:bootstrap, classes: "pagination pagination-sm justify-content-center mt-3 mb-0") %>
+                        <%= raw @pagy.series_nav %>
                     <% end %>
                 </div>
             </div>

@@ -846,7 +846,7 @@ li.language {
 }
 
 // The recurring select widget keeps its own look.
-@import "../ea/recurring_select";
+@import "recurring_select";
 
 // Event popover on the calendar (a tippy carrying our surface).
 .tippy-box[data-theme~="event"] {
@@ -926,12 +926,53 @@ li.language {
     margin: 0 0 1rem;
 }
 
-.pico button[type="submit"],
-.pico [type="submit"] {
-    width: auto;
-}
 
 .side-nav + h4,
 .with-sidebar aside > h4 {
     font-weight: 300;
+}
+
+// FullCalendar in the brand colours.
+#calendar {
+    --fc-button-bg-color: var(--oa-primary);
+    --fc-button-border-color: var(--oa-primary);
+    --fc-button-hover-bg-color: var(--oa-primary-hover);
+    --fc-button-hover-border-color: var(--oa-primary-hover);
+    --fc-button-active-bg-color: var(--oa-primary-active);
+    --fc-button-active-border-color: var(--oa-primary-active);
+    --fc-today-bg-color: rgba(var(--oa-primary-rgb), 0.08);
+    --fc-border-color: var(--oa-surface-border);
+
+    .fc-button {
+        border-radius: var(--oa-radius);
+        font-weight: 400;
+    }
+}
+
+// Pagination (Pagy's plain nav)
+nav.pagy {
+    display: flex;
+    justify-content: center;
+    gap: 0.25rem;
+    margin: 1rem 0 0;
+
+    a {
+        display: inline-block;
+        padding: 0.25rem 0.6rem;
+        border: var(--oa-border-width) solid var(--oa-surface-border);
+        border-radius: var(--oa-radius);
+        text-decoration: none;
+        color: var(--oa-text);
+        font-size: 0.875rem;
+
+        &[aria-current="page"] {
+            background: var(--oa-primary);
+            border-color: var(--oa-primary);
+            color: #fff;
+        }
+
+        &[aria-disabled="true"]:not([aria-current]) {
+            opacity: 0.4;
+        }
+    }
 }

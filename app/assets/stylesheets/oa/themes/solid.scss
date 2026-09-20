@@ -11,3 +11,27 @@
     --oa-step-active-bg: var(--oa-secondary);
     --oa-step-active-fg: #fff;
 }
+
+// Flat blocks of colour: no borders, square-ish corners, deep shadows.
+.pico button,
+.pico [role="button"] {
+    border-width: 0;
+    font-weight: 600;
+}
+
+.pico button.secondary,
+.pico [role="button"].secondary {
+    background: #e5e7eb;
+    color: var(--oa-text);
+}
+
+.pico input:not([type="checkbox"]):not([type="radio"]),
+.pico select,
+.pico textarea {
+    background: #f3f4f6;
+    border-width: 0;
+
+    &:focus {
+        box-shadow: 0 0 0 3px rgba(var(--oa-primary-rgb), 0.3);
+    }
+}

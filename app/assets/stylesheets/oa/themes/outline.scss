@@ -28,6 +28,22 @@
     }
 }
 
+.tag,
+.count {
+    background: transparent;
+    border: 2px solid currentColor;
+    color: var(--oa-muted);
+}
+
+.count {
+    color: var(--oa-danger);
+}
+
+.notice {
+    background: transparent;
+    border-width: 2px;
+}
+
 .wizard-steps .book-step {
     border: 2px solid var(--oa-surface-border);
 }
@@ -35,4 +51,9 @@
 .wizard-steps .book-step.active-step,
 .wizard-steps .book-step.completed-step {
     border-color: var(--oa-primary);
+}
+
+.app-header,
+.wizard-header {
+    border-bottom: 2px solid var(--oa-surface-border);
 }

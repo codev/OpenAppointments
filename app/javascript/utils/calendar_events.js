@@ -104,7 +104,7 @@ App.Utils.CalendarEvents = (function () {
             dayHeaderFormat: vars('date_format') === 'DMY' ? 'ddd D/M' : 'ddd M/D',
             selectable: true,
             selectMirror: true,
-            themeSystem: 'bootstrap5',
+            themeSystem: 'standard',
             selectLongPressDelay: 100,
             buttonText: {
                 today: lang('today'),

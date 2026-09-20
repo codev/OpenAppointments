@@ -96,7 +96,8 @@ button,
 input[type="submit"],
 .pico button,
 .pico [role="button"],
-.pico input[type="submit"] {
+.pico [type="submit"],
+.pico button[type="submit"] {
     width: auto;
     margin-bottom: 0;
 }
@@ -655,4 +656,16 @@ dialog .dialog-body {
 .actions > * {
     flex: 0 0 auto;
     width: auto;
+}
+
+.accent {
+    color: var(--oa-primary);
+}
+
+.success {
+    color: var(--oa-success);
+}
+
+.message-unread {
+    font-weight: 600;
 }

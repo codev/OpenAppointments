@@ -79,15 +79,28 @@ business data but keeps admin accounts and settings. A full reset also deletes
 administrators and settings, reseeds the defaults and recreates the install
 admin with the default password.
 
+### Styling
+
+The pages are semantic HTML styled with Pico CSS (vendored, the conditional
+build scoped to `body.pico`) plus our own component stylesheet under
+`app/assets/stylesheets/oa`. Class names say what a thing is (`field`,
+`notice`, `toolbar`, `record-list`, `wizard-steps`), never how it looks; state
+is expressed with attributes (`hidden`, `aria-invalid`, `aria-current`,
+`data-tone`). Dialogs are native `dialog` elements, menus are `details`
+elements, tabs use `role="tablist"`. Design tokens live in `oa/_tokens.scss`
+and map onto Pico's variables. In development `/styleguide` renders every
+component on the current theme.
+
 ### Themes
 
-Seven themes replace the stock set, configured on the Settings > Theme page.
-Themes are structural: the company, secondary and background colours flow into
-every theme as CSS variables, and each theme offers two one-click suggested
-palettes. All themes use system font stacks only (no remote fonts). The Theme
-page shows live WCAG AA contrast warnings with fix suggestions; every suggested
-palette passes AA, guarded by test. On Coder and Fruit the background colour
-paints the top bar only and the page stays white.
+Seven themes, configured on the Settings > Theme page. Each theme is a file of
+token overrides and a few element rules (`oa/themes`). The company, secondary
+and background colours flow into every theme as CSS variables, and each theme
+offers two one-click suggested palettes. All themes use system font stacks
+only (no remote fonts). The Theme page shows live WCAG AA contrast warnings
+with fix suggestions; every suggested palette passes AA, guarded by test. On
+Coder and Fruit the background colour paints the top bar only and the page
+stays white.
 
 - Nice (default): refined modern forms with quiet fills, an accent bottom edge
   on inputs and soft depth. Friendly and neutral; works with almost any colours.
