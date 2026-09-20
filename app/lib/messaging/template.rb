@@ -1,5 +1,6 @@
 # {{Token}} substitution for notification texts. Tokens are matched
-# case-insensitively; unknown tokens render empty.
+# case-insensitively; unknown tokens render empty. A context value may be a
+# callable, resolved only when a template uses its token.
 module Messaging
   module Template
     # Shown on the Notifications page guide; keep in sync with context builders.
@@ -16,14 +17,17 @@ module Messaging
 
     def render(text, context)
       normalized = context.transform_keys { |key| key.to_s.downcase }
-      text.to_s.gsub(/\{\{\s*([^{}]+?)\s*\}\}/) { normalized[Regexp.last_match(1).downcase].to_s }
+      text.to_s.gsub(/\{\{\s*([^{}]+?)\s*\}\}/) do
+        value = normalized[Regexp.last_match(1).downcase]
+        (value.respond_to?(:call) ? value.call : value).to_s
+      end
     end
 
     def base_context
       {
         "Company Name" => Setting.get("company_name", ""),
         "Company Link" => Setting.get("company_link", ""),
-        "Booking Notice" => plain_text(Setting.get("booking_notice_content", ""))
+        "Booking Notice" => -> { plain_text(Setting.get("booking_notice_content", "")) }
       }
     end
 
