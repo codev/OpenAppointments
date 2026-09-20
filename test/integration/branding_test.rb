@@ -63,13 +63,13 @@ class BrandingTest < ActionDispatch::IntegrationTest
 
   test "built-in mail templates carry no old brand" do
     mail = AccountMailer.password_reset_link("someone@example.org", "https://example.org/reset")
-    body = mail.html_part.body.decoded
+    body = (mail.html_part || mail).body.decoded
     assert_no_match(/easy!appointments/i, body)
     assert_match "OpenAppointments", body
 
     message = Message.create!(direction: "outgoing", channel: "email", audience: "customer",
                               to_address: "someone@example.org", subject: "Hello", body: "Hi there")
     outgoing = MessagesMailer.outgoing(message)
-    assert_no_match(/easy!appointments/i, outgoing.html_part.body.decoded)
+    assert_no_match(/easy!appointments/i, (outgoing.html_part || outgoing).body.decoded)
   end
 end

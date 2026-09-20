@@ -4,9 +4,6 @@ class ApplicationMailer < ActionMailer::Base
   helper :ea
   helper :mailer_format
 
-  # EA embeds assets/img/logo.png as CID in every email.
-  before_action { attachments.inline["logo.png"] = Rails.root.join("app/assets/images/logo.png").read }
-
   private
 
   # EA from/reply-to fall back to the company settings.
