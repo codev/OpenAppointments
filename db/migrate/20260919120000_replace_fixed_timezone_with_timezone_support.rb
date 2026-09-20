@@ -15,5 +15,7 @@ class ReplaceFixedTimezoneWithTimezoneSupport < ActiveRecord::Migration[8.1]
     support = Setting.find_by(name: "timezone_support")
     Setting.find_or_create_by!(name: "fixed_timezone") { |row| row.value = support&.value == "0" ? "1" : "0" }
     support&.destroy
+    Rails.cache.delete("setting/fixed_timezone")
+    Rails.cache.delete("setting/timezone_support")
   end
 end
