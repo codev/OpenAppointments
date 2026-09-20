@@ -184,6 +184,8 @@ module Notifications
     end
     return if body.blank?
 
+    body = vary(body) if adapter.key != "email" && Setting.get("messages_sms_variation") == "1"
+
     message = Message.create!(
       direction: "outgoing", channel: adapter.key, audience: audience, to_address: address,
       customer_id: audience == "customer" ? user.id : customer_id,
@@ -191,6 +193,11 @@ module Notifications
       subject: subject, body: body, status: "queued"
     )
     MessageDeliveryJob.perform_later(message.id)
+  end
+
+  # A short code on the end of an SMS so no two texts are identical.
+  def vary(body)
+    "#{body} [#{SecureRandom.alphanumeric(4).upcase}]"
   end
 
   def deliver(context, appointment)
