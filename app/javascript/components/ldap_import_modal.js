@@ -27,7 +27,7 @@ App.Components.LdapImportModal = (function () {
         $modal().find('#ldap-import-email').val(entry?.[ldapFieldMapping?.email] ?? '');
         $modal().find('#ldap-import-phone-number').val(entry?.[ldapFieldMapping?.phone_number] ?? '');
         $modal().find('#ldap-import-username').val(entry?.[ldapFieldMapping?.username] ?? '');
-        $modal().modal('show');
+        App.Utils.Dialog.open($modal());
     }
 
     return {open};

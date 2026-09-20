@@ -61,7 +61,7 @@ class ReviewFixesTest < ActionDispatch::IntegrationTest
     post "/ldap_settings/import", params: { role_slug: "provider", user: { name: "Dup", email: users(:zane).email, phone_number: "1", ldap_dn: "cn=d" },
                                             settings: { username: "dup", password: "password1" } }
     follow_redirect!
-    assert_select ".alert-danger", text: /already in use/
+    assert_select ".notice[data-tone=error]", text: /already in use/
     assert_equal 1, User.providers.where(email: users(:zane).email).count
   end
 
@@ -93,15 +93,15 @@ class ReviewFixesTest < ActionDispatch::IntegrationTest
                                                           display_city: "0", display_zip_code: "0", display_notes: "0" } }
     assert_redirected_to "/booking_settings"
     follow_redirect!
-    assert_select ".alert-danger", text: I18n.t("ea.at_least_one_field")
+    assert_select ".notice[data-tone=error]", text: I18n.t("ea.at_least_one_field")
 
     post "/booking_settings/save", params: { settings: { display_email: "1", require_email: "0", require_phone_number: "0", require_phone_or_email: "0" } }
     follow_redirect!
-    assert_select ".alert-danger", text: I18n.t("ea.at_least_one_field_required")
+    assert_select ".notice[data-tone=error]", text: I18n.t("ea.at_least_one_field_required")
 
     post "/booking_settings/save", params: { settings: { display_email: "1", require_phone_or_email: "1" } }
     follow_redirect!
-    assert_select ".alert-success"
+    assert_select ".notice[data-tone=success]"
   end
 
   test "appointments without a status stay in the day view" do

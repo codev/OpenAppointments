@@ -1,9 +1,9 @@
 <%# The repeating appointments panel: loaded into the appointments page's
     series frame, or a page of its own on a direct visit. %>
-<div class="container-fluid backend-page py-3">
+<div class="backend-page">
     <turbo-frame id="series">
-        <% if notice %><div class="alert alert-success"><%= notice %></div><% end %>
-        <% if alert %><div class="alert alert-danger"><%= alert %></div><% end %>
+        <% if notice %><div class="notice" data-tone="success"><%= notice %></div><% end %>
+        <% if alert %><div class="notice" data-tone="error"><%= alert %></div><% end %>
         <% if @cancelling %>
             <%= render "appointment_series/cancel_form", series: @cancelling %>
         <% else %>

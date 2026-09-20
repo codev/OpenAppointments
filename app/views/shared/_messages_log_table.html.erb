@@ -2,8 +2,8 @@
     mark as read buttons; unread rows are bold). %>
 <% inbox = local_assigns.fetch(:inbox, false) %>
 <% format_settings = { date_format: setting("date_format"), time_format: setting("time_format") } %>
-<div class="table-responsive">
-    <table class="table table-sm align-middle">
+<div class="table-scroll">
+    <table class="align-middle">
         <thead>
             <tr>
                 <th scope="col"><%= lang('date') %></th>
@@ -25,7 +25,7 @@
             <% messages.each do |message| %>
                 <% unread = message.direction == "incoming" && !message.read? %>
                 <tr class="<%= 'message-unread fw-bold' if inbox && unread %>">
-                    <td class="text-nowrap"><%= display_datetime(message.created_at) %></td>
+                    <td class="nowrap"><%= display_datetime(message.created_at) %></td>
                     <td>
                         <% if message.direction == "incoming" %>
                             <i class="fas fa-arrow-down text-success" title="<%= lang('messages_incoming_label') %>"></i>
@@ -34,7 +34,7 @@
                         <% end %>
                     </td>
                     <td>
-                        <span class="badge bg-secondary"><%= Messaging.channel(message.channel)&.label || message.channel %></span>
+                        <span class="tag"><%= Messaging.channel(message.channel)&.label || message.channel %></span>
                     </td>
                     <td>
                         <% if message.notification %>
@@ -51,16 +51,16 @@
                                 <%= message.customer.name %>
                             </a>
                         <% elsif message.direction == "incoming" %>
-                            <span class="text-muted"><%= lang('messages_unknown_sender') %></span>
+                            <span class="muted"><%= lang('messages_unknown_sender') %></span>
                         <% else %>
-                            <span class="text-muted"><%= message.audience %></span>
+                            <span class="muted"><%= message.audience %></span>
                         <% end %>
                     </td>
-                    <td class="text-break">
+                    <td>
                         <%= message.direction == "incoming" ? message.from_address : message.to_address %>
                     </td>
                     <% if inbox %>
-                        <td class="text-break fw-normal">
+                        <td>
                             <% if message.subject.present? %>
                                 <strong><%= message.subject %></strong><br>
                             <% end %>
@@ -68,18 +68,18 @@
                         </td>
                     <% end %>
                     <td>
-                        <% badge = { "sent" => "bg-success", "received" => "bg-success",
-                                     "failed" => "bg-danger", "queued" => "bg-secondary" }[message.status] %>
-                        <span class="badge <%= badge %>"
+                        <% badge = { "sent" => "success", "received" => "success",
+                                     "failed" => "error", "queued" => "info" }[message.status] %>
+                        <span class="tag" data-tone="<%= badge %>"
                               <% if message.error.present? %>title="<%= message.error %>"<% end %>>
                             <%= lang("messages_status_#{message.status}") %>
                         </span>
                     </td>
                     <% if inbox %>
-                        <td class="text-nowrap">
+                        <td class="nowrap">
                             <% if unread %>
-                                <button type="button" class="btn btn-sm btn-outline-primary mark-read" data-id="<%= message.id %>">
-                                    <i class="fas fa-check me-1"></i><%= lang('mark_as_read') %>
+                                <button type="button" class="small-action outline mark-read" data-id="<%= message.id %>">
+                                    <i class="fas fa-check"></i><%= lang('mark_as_read') %>
                                 </button>
                             <% elsif message.direction == "incoming" %>
                                 <i class="fas fa-check text-success" title="<%= lang('read') %>"></i>
@@ -90,7 +90,7 @@
             <% end %>
             <% if messages.empty? %>
                 <tr>
-                    <td colspan="<%= inbox ? 9 : 7 %>" class="text-muted text-center py-4"><%= lang('no_records_found') %></td>
+                    <td colspan="<%= inbox ? 9 : 7 %>" class="muted"><%= lang('no_records_found') %></td>
                 </tr>
             <% end %>
         </tbody>

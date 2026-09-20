@@ -19,7 +19,6 @@
 
     <%= stylesheet_link_tag "vendor/trumbowyg/trumbowyg.min",
                             "vendor/flatpickr/flatpickr.min", "vendor/flatpickr/material_green.min" %>
-    <%= stylesheet_link_tag "themes/#{active_theme}", "general", "backend" %>
     <%= stylesheet_link_tag "vendor/pico/pico.conditional.min", "oa-backend", "oa-themes/#{active_theme}" %>
 
     <%= render "shared/brand_style" %>
@@ -28,8 +27,9 @@
     <%= yield :styles %>
 
     <%# Scripts load once per session (tracked: a new digest forces a full reload). %>
+    <%# Popper stays for tippy tooltips. %>
     <%= javascript_include_tag "vendor/jquery/jquery.min", "vendor/@popperjs-core/popper.min",
-                               "vendor/bootstrap/bootstrap.min", "vendor/moment/moment.min",
+                               "vendor/moment/moment.min",
                                "vendor/moment-timezone/moment-timezone-with-data.min",
                                "vendor/@fortawesome-fontawesome-free/fontawesome.min",
                                "vendor/@fortawesome-fontawesome-free/solid.min",
@@ -77,9 +77,9 @@
 
     <%= yield :scripts %>
 </head>
-<body class="d-flex flex-column h-100">
+<body class="pico app-body">
 
-<main class="flex-shrink-0">
+<main class="app-main">
 
     <%= render "shared/backend_header", active_menu: vars(:active_menu) %>
 

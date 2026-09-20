@@ -19,19 +19,19 @@ App.Components.AppointmentStatusOptions = (function () {
     function renderListGroupItem(option = {id: '', name: '', kind: 'custom'}) {
         const special = option.kind !== 'custom';
         const $item = $(`
-            <li class="list-group-item d-flex justify-content-between align-items-center p-0 border-0 mb-3 appointment-status-option">
-                <label class="w-100 me-2 d-flex align-items-center gap-2">
-                    <input class="form-control">
-                    <span class="badge text-bg-secondary text-nowrap ${special ? '' : 'd-none'}"></span>
+            <li class="appointment-status-option toolbar">
+                <label class="toolbar">
+                    <input class="small-field">
+                    <span class="tag nowrap" ${special ? '' : 'hidden'}></span>
                 </label>
-                <button type="button" class="btn btn-outline-danger delete-appointment-status-option" ${special ? 'disabled' : ''}>
+                <button type="button" class="destructive small-action delete-appointment-status-option" ${special ? 'disabled' : ''}>
                     <i class="fas fa-trash"></i>
                 </button>
             </li>
         `);
         $item.data('option', option);
         $item.find('input').val(option.name);
-        $item.find('.badge').text(lang('status_' + option.kind));
+        $item.find('.tag').text(lang('status_' + option.kind));
         return $item;
     }
 
@@ -40,7 +40,7 @@ App.Components.AppointmentStatusOptions = (function () {
     }
 
     function onAddAppointmentStatusOptionClick(event) {
-        const $listGroup = $(event.currentTarget).closest('.appointment-status-options').find('.list-group');
+        const $listGroup = $(event.currentTarget).closest('.appointment-status-options').find('.record-list');
 
         if (!$listGroup.length) {
             return;
@@ -55,7 +55,7 @@ App.Components.AppointmentStatusOptions = (function () {
      */
     function getOptions($target) {
         return $target
-            .find('.list-group li')
+            .find('.record-list li')
             .toArray()
             .map((el) => ({...$(el).data('option'), name: $(el).find('input').val()}));
     }
@@ -65,7 +65,7 @@ App.Components.AppointmentStatusOptions = (function () {
      * @param {Object[]} options [{id, name, kind}]
      */
     function setOptions($target, options) {
-        const $listGroup = $target.find('.list-group');
+        const $listGroup = $target.find('.record-list');
 
         if (!$listGroup.length || !options) {
             return;

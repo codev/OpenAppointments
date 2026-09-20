@@ -8,9 +8,9 @@ class CrudFormToolbarTest < ActionDispatch::IntegrationTest
     post "/login/validate", params: { username: "administrator", password: "administrator1" }
     get "/customers/#{users(:jx).id}/edit"
     assert_response :success
-    assert_select ".crud-form .btn-toolbar.d-flex" do
-      assert_select "button[type=submit].btn-primary"
-      assert_select "button.btn-outline-danger.ms-auto[form=?]", "delete-customer-#{users(:jx).id}"
+    assert_select ".crud-form .actions" do
+      assert_select "button[type=submit]:not(.secondary):not(.destructive)"
+      assert_select "button.destructive.trailing[form=?]", "delete-customer-#{users(:jx).id}"
     end
     assert_select "form#delete-customer-#{users(:jx).id}[action=?]", "/customers/#{users(:jx).id}" do
       assert_select "input[name=_method][value=delete]"

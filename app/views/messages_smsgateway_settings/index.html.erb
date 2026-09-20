@@ -1,27 +1,27 @@
 <%# SMS Gateway (sms-gate.app private server) settings with setup instructions,
     validated save (auto webhook registration) and a test SMS. %>
-<div id="messages-smsgateway-settings-page" class="container backend-page py-3">
-    <div class="row">
-        <div class="col-sm-3">
+<div id="messages-smsgateway-settings-page" class="backend-page">
+    <div class="with-sidebar">
+        <aside>
             <%= render "shared/messages_nav" %>
-        </div>
-        <div id="messages-smsgateway-settings" class="col-sm-9">
+        </aside>
+        <div id="messages-smsgateway-settings" >
             <turbo-frame id="settings">
                 <%= settings_form "/messages_smsgateway_settings/save" do %>
                     <%= render "shared/messages_provider_header", title: "SMS Gateway" %>
 
-                    <div class="row">
-                        <div class="col-12 col-md-8">
-                            <div class="card card-body mb-4">
-                                <h6 class="fw-light"><%= lang('messages_smsgateway_setup') %></h6>
-                                <ol class="small mb-0 ps-3">
-                                    <li class="mb-2">
+                    <div class="split">
+                        <div>
+                            <div class="panel">
+                                <h6><%= lang('messages_smsgateway_setup') %></h6>
+                                <ol>
+                                    <li>
                                         <%= lang('messages_smsgateway_apk') %>
                                         <a href="https://github.com/capcom6/android-sms-gateway/releases"
                                            target="_blank" rel="noopener"><%= lang('messages_smsgateway_apk_link') %></a>.
                                     </li>
-                                    <li class="mb-2"><%= lang('messages_smsgateway_step_device') %></li>
-                                    <li class="mb-2">
+                                    <li><%= lang('messages_smsgateway_step_device') %></li>
+                                    <li>
                                         <%= lang('messages_smsgateway_step_server') %>
                                         <a href="https://docs.sms-gate.app/getting-started/public-cloud-server/#how-to-use"
                                            target="_blank" rel="noopener"><%= lang('messages_smsgateway_step_server_public') %></a>
@@ -29,67 +29,67 @@
                                         <a href="https://docs.sms-gate.app/getting-started/private-server/"
                                            target="_blank" rel="noopener"><%= lang('messages_smsgateway_step_server_private') %></a>.
                                     </li>
-                                    <li class="mb-2">
+                                    <li>
                                         <%= lang('messages_smsgateway_step_url') %>
                                         <code id="smsgateway-mobile-api-url" data-suffix="/api/mobile/v1"></code>
-                                        <div class="text-muted"><%= lang('messages_smsgateway_step_token') %></div>
+                                        <div class="muted"><%= lang('messages_smsgateway_step_token') %></div>
                                     </li>
-                                    <li class="mb-2"><%= lang('messages_smsgateway_step_signing') %></li>
-                                    <li class="mb-2"><%= lang('messages_smsgateway_step_credentials') %></li>
+                                    <li><%= lang('messages_smsgateway_step_signing') %></li>
+                                    <li><%= lang('messages_smsgateway_step_credentials') %></li>
                                     <li><%= lang('messages_smsgateway_step_activate') %></li>
                                 </ol>
                             </div>
 
-                            <div class="form-check form-switch mb-3">
+                            <div class="choice switch-field">
                                 <%= setting_switch "messages_smsgateway_enabled", id: "smsgateway-enabled" %>
-                                <label class="form-check-label" for="smsgateway-enabled">
+                                <label  for="smsgateway-enabled">
                                     <%= lang('active') %>
                                 </label>
                             </div>
 
-                            <div class="form-check form-switch mb-4">
+                            <div class="choice switch-field">
                                 <%= setting_switch "messages_smsgateway_incoming", id: "smsgateway-incoming" %>
-                                <label class="form-check-label" for="smsgateway-incoming">
+                                <label  for="smsgateway-incoming">
                                     <%= lang('messages_incoming') %>
                                 </label>
-                                <div class="form-text text-muted">
+                                <div class="field-hint muted">
                                     <small>
                                         <%= lang('messages_incoming_hint') %>
                                     </small>
                                 </div>
                             </div>
 
-                            <div class="mb-3">
-                                <label class="form-label" for="messages-smsgateway-url">
+                            <div class="field">
+                                <label  for="messages-smsgateway-url">
                                     <%= lang('messages_smsgateway_url') %>
                                 </label>
                                 <%= setting_text "messages_smsgateway_url", autocomplete: "off" %>
                             </div>
 
-                            <div class="mb-3">
-                                <label class="form-label" for="messages-smsgateway-login">
+                            <div class="field">
+                                <label  for="messages-smsgateway-login">
                                     <%= lang('messages_smsgateway_login') %>
                                 </label>
                                 <%= setting_text "messages_smsgateway_login", autocomplete: "off" %>
                             </div>
 
-                            <div class="mb-3">
-                                <label class="form-label" for="messages-smsgateway-password">
+                            <div class="field">
+                                <label  for="messages-smsgateway-password">
                                     <%= lang('messages_smsgateway_password') %>
                                 </label>
                                 <%= setting_password "messages_smsgateway_password", autocomplete: "off" %>
                             </div>
 
-                            <div class="mb-3">
-                                <label class="form-label" for="messages-smsgateway-signing-key">
+                            <div class="field">
+                                <label  for="messages-smsgateway-signing-key">
                                     <%= lang('messages_smsgateway_signing_key') %>
                                 </label>
                                 <%= setting_password "messages_smsgateway_signing_key", autocomplete: "off" %>
                             </div>
 
-                            <div class="form-check form-switch mb-4">
+                            <div class="choice switch-field">
                                 <%= setting_switch "messages_smsgateway_default_country_only", id: "smsgateway-default-country-only" %>
-                                <label class="form-check-label" for="smsgateway-default-country-only">
+                                <label  for="smsgateway-default-country-only">
                                     <%= t("ea.messages_default_country_only",
                                           code: Messaging::Template.default_country_code,
                                           default: "messages_default_country_only") %>
@@ -97,10 +97,10 @@
                             </div>
 
                             <div data-visible-when="messages_smsgateway_incoming=1">
-                                <div class="mb-3">
-                                    <label class="form-label"><%= lang('messages_inbound_webhook') %></label>
-                                    <input type="text" class="form-control" readonly value="<%= vars(:inbound_url) %>">
-                                    <div class="form-text text-muted">
+                                <div class="field">
+                                    <label><%= lang('messages_inbound_webhook') %></label>
+                                    <input type="text"  readonly value="<%= vars(:inbound_url) %>">
+                                    <div class="field-hint muted">
                                         <small>
                                             <%= lang('messages_smsgateway_inbound_hint') %>
                                         </small>
@@ -108,14 +108,14 @@
                                 </div>
                             </div>
 
-                            <div id="smsgateway-test" class="d-none border-top pt-3 mb-3">
-                                <label class="form-label" for="smsgateway-test-number">
+                            <div id="smsgateway-test" hidden>
+                                <label  for="smsgateway-test-number">
                                     <%= lang('messages_test_sms_number') %>
                                 </label>
-                                <div class="input-group">
-                                    <input type="text" id="smsgateway-test-number" class="form-control"
+                                <div class="input-row">
+                                    <input type="text" id="smsgateway-test-number" 
                                            autocomplete="off" placeholder="07...">
-                                    <button type="button" id="smsgateway-send-test" class="btn btn-outline-secondary">
+                                    <button type="button" id="smsgateway-send-test" class="secondary">
                                         <%= lang('messages_test_sms') %>
                                     </button>
                                 </div>

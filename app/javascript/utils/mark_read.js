@@ -5,7 +5,7 @@
 App.Utils.MarkRead = (function () {
     function updateHeaderBadge(count) {
         const $badge = $('#inbox-unread');
-        $badge.text(count).toggleClass('d-none', !count);
+        $badge.text(count).prop('hidden', !count);
     }
 
     function markRead(messageId) {

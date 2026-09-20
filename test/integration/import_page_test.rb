@@ -333,7 +333,7 @@ class ImportPageTest < ActionDispatch::IntegrationTest
     login_admin
     get "/data"
     assert_select "h4", text: "Manage Data"
-    assert_select "#header .dropdown-item[href='/data']", text: /Manage Data/
+    assert_select "#header details.menu a[href='/data']", text: /Manage Data/
     assert_select "title", text: /Manage Data/
   end
 
@@ -572,7 +572,7 @@ class ImportFormsTest < ActionDispatch::IntegrationTest
 
     perform_enqueued_jobs
     get "/data", params: { import_id: import_id }
-    assert_select "turbo-frame#import-status:not([data-poll-every]) #import-results.alert-success", text: /#{I18n.t('ea.import_complete')}/
+    assert_select "turbo-frame#import-status:not([data-poll-every]) #import-results[data-tone=success]", text: /#{I18n.t('ea.import_complete')}/
     assert_select "#import-results", text: /#{I18n.t('ea.customers')}: \d+ #{I18n.t('ea.created')}/
   end
 
@@ -582,11 +582,11 @@ class ImportFormsTest < ActionDispatch::IntegrationTest
     post "/data/analyze", params: { form: "1", import_type: "ods", file: csv }
     assert_redirected_to "/data"
     follow_redirect!
-    assert_select "#import-results.alert-danger"
+    assert_select "#import-results[data-tone=error]"
 
     post "/data/reset", params: { form: "1", confirmation: "nope" }
     assert_redirected_to "/data"
     follow_redirect!
-    assert_select "#import-results.alert-danger", text: /I KNOW WHAT I AM DOING/
+    assert_select "#import-results[data-tone=error]", text: /I KNOW WHAT I AM DOING/
   end
 end

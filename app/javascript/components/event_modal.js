@@ -9,7 +9,8 @@ App.Components.EventModal = (function () {
     }
 
     function modal() {
-        return bootstrap.Modal.getOrCreateInstance(document.getElementById('event-modal'));
+        const dialog = document.getElementById('event-modal');
+        return {show: () => App.Utils.Dialog.open(dialog), hide: () => App.Utils.Dialog.close(dialog)};
     }
 
     function open(url) {
@@ -50,7 +51,7 @@ App.Components.EventModal = (function () {
         updateProviders();
         updateTimezone();
         modal().show();
-        $('.event-form .modal-body').scrollTop(0);
+        $('.event-form .dialog-body').scrollTop(0);
     }
 
     // The provider list follows the chosen service; the end time follows its duration.

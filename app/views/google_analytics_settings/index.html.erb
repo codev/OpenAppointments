@@ -1,20 +1,20 @@
 <%# Port of EA pages/google_analytics_settings.php. %>
-<div id="google-analytics-settings-page" class="container backend-page py-3">
-    <div class="row">
-        <div class="col-sm-3">
+<div id="google-analytics-settings-page" class="backend-page">
+    <div class="with-sidebar">
+        <aside>
             <%= render "shared/settings_nav" %>
-        </div>
-        <div id="google-analytics-settings" class="col-sm-9">
+        </aside>
+        <div id="google-analytics-settings" >
             <turbo-frame id="settings">
                 <%= settings_form "/google_analytics_settings/save" do %>
-                    <div class="d-flex justify-content-between align-items-center border-bottom mb-4 py-2">
-                        <h4 class="mb-0 fw-light">
+                    <div class="toolbar spaced">
+                        <h4>
                             <%= lang('google_analytics') %>
                         </h4>
 
-                        <div>
-                            <a href="/integrations" data-turbo="false" class="btn btn-outline-primary me-2">
-                                <i class="fas fa-chevron-left me-2"></i>
+                        <div class="split">
+                            <a role="button" href="/integrations" data-turbo="false" class="outline">
+                                <i class="fas fa-chevron-left"></i>
                                 <%= lang('back') %>
                             </a>
 
@@ -23,14 +23,14 @@
                     </div>
                     <%= settings_flash %>
 
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="mb-3">
-                                <label class="form-label" for="google-analytics-code">
+                    <div>
+                        <div class="full">
+                            <div class="field">
+                                <label  for="google-analytics-code">
                                     <%= lang('google_analytics_code') %>
                                 </label>
                                 <%= setting_text "google_analytics_code", placeholder: "G-XXXXXXXXXX" %>
-                                <div class="form-text text-muted">
+                                <div class="field-hint muted">
                                     <small>
                                         <%= lang('google_analytics_code_hint') %>
                                     </small>

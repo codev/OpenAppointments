@@ -1,20 +1,20 @@
 <%# Port of EA pages/altcha_settings.php. %>
-<div id="altcha-settings-page" class="container backend-page py-3">
-    <div class="row">
-        <div class="col-sm-3">
+<div id="altcha-settings-page" class="backend-page">
+    <div class="with-sidebar">
+        <aside>
             <%= render "shared/settings_nav" %>
-        </div>
-        <div id="altcha-settings" class="col-sm-9">
+        </aside>
+        <div id="altcha-settings" >
             <turbo-frame id="settings">
                 <%= settings_form "/altcha_settings/save" do %>
-                    <div class="d-flex justify-content-between align-items-center border-bottom mb-4 py-2">
-                        <h4 class="mb-0 fw-light">
+                    <div class="toolbar spaced">
+                        <h4>
                             <%= lang('captcha') %>
                         </h4>
 
-                        <div>
-                            <a href="/integrations" data-turbo="false" class="btn btn-outline-primary me-2">
-                                <i class="fas fa-chevron-left me-2"></i>
+                        <div class="split">
+                            <a role="button" href="/integrations" data-turbo="false" class="outline">
+                                <i class="fas fa-chevron-left"></i>
                                 <%= lang('back') %>
                             </a>
 
@@ -23,114 +23,114 @@
                     </div>
                     <%= settings_flash %>
 
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="mb-3">
-                                <div class="form-text text-muted mb-4">
+                    <div>
+                        <div class="full">
+                            <div>
+                                <div class="field-hint muted">
                                     <%= lang('captcha_info') %>
                                 </div>
                             </div>
 
-                            <div class="mb-3">
-                                <div class="form-check form-switch">
+                            <div>
+                                <div class="choice switch-field">
                                     <%= setting_switch "altcha_enabled" %>
-                                    <label class="form-check-label" for="altcha-enabled">
+                                    <label  for="altcha-enabled">
                                         <%= lang('captcha_active_customers') %>
                                     </label>
                                 </div>
-                                <div class="form-text text-muted small">
+                                <div class="field-hint muted">
                                     <%= lang('captcha_enabled_hint') %>
                                 </div>
                             </div>
 
-                            <div class="mb-3">
-                                <div class="form-check form-switch">
+                            <div>
+                                <div class="choice switch-field">
                                     <%= setting_switch "captcha_login_enabled" %>
-                                    <label class="form-check-label" for="captcha-login-enabled">
+                                    <label  for="captcha-login-enabled">
                                         <%= lang('captcha_active_login') %>
                                     </label>
                                 </div>
-                                <div class="form-text text-muted small">
+                                <div class="field-hint muted">
                                     <%= lang('captcha_login_hint') %>
                                 </div>
                             </div>
 
-                            <div class="mb-3">
-                                <label class="form-label" for="captcha-provider">
+                            <div class="field">
+                                <label  for="captcha-provider">
                                     <%= lang('captcha_provider') %>
                                 </label>
-                                <select name="settings[captcha_provider]" data-field="captcha_provider" id="captcha-provider" class="form-select" >
+                                <select name="settings[captcha_provider]" data-field="captcha_provider" id="captcha-provider" >
                                     <option value="altcha" <%= "selected" if setting('captcha_provider').to_s == "altcha" %>>ALTCHA</option>
                                     <option value="turnstile" <%= "selected" if setting('captcha_provider').to_s == "turnstile" %>>Cloudflare Turnstile</option>
                                 </select>
                             </div>
 
                             <div id="turnstile-provider-settings" data-visible-when="captcha_provider=turnstile">
-                                <div class="mb-3">
-                                    <label class="form-label" for="turnstile-site-key">
+                                <div class="field">
+                                    <label  for="turnstile-site-key">
                                         <%= lang('turnstile_site_key') %>
                                     </label>
                                     <%= setting_text "turnstile_site_key", maxlength: 256 %>
-                                    <div class="form-text text-muted small">
+                                    <div class="field-hint muted">
                                         <%= lang('turnstile_keys_hint') %>
                                         <a href="https://dash.cloudflare.com/?to=/:account/turnstile" target="_blank">dash.cloudflare.com</a>
                                         <%= lang('turnstile_keys_hint_after') %>
                                     </div>
                                 </div>
 
-                                <div class="mb-3">
-                                    <label class="form-label" for="turnstile-secret-key">
+                                <div class="field">
+                                    <label  for="turnstile-secret-key">
                                         <%= lang('turnstile_secret_key') %>
                                     </label>
                                     <%= setting_password "turnstile_secret_key", maxlength: 256, autocomplete: "new-password" %>
                                 </div>
 
-                                <div class="mb-3">
-                                    <div id="turnstile-test" class="mb-2"></div>
-                                    <div class="form-text text-muted small">
+                                <div>
+                                    <div id="turnstile-test" ></div>
+                                    <div class="field-hint muted">
                                         <%= lang('turnstile_test_hint') %>
                                     </div>
                                 </div>
                             </div>
 
                             <div id="altcha-provider-settings" data-visible-when="captcha_provider=altcha">
-                                <div class="form-text text-muted mb-3">
+                                <div class="field-hint muted">
                                     <%= lang('altcha_info') %>
                                 </div>
 
-                            <div class="mb-3">
-                                <label class="form-label" for="altcha-hmac-key">
+                            <div class="field">
+                                <label  for="altcha-hmac-key">
                                     <%= lang('altcha_hmac_key') %>
-                                    <span class="text-danger">*</span>
+                                    <span class="required">*</span>
                                 </label>
-                                <div class="input-group">
+                                <div class="input-row">
                                     <%= setting_text "altcha_hmac_key" %>
-                                    <button type="button" id="generate-hmac-key" class="btn btn-outline-secondary">
-                                        <i class="fas fa-sync-alt me-2"></i>
+                                    <button type="button" id="generate-hmac-key" class="secondary">
+                                        <i class="fas fa-sync-alt"></i>
                                         <%= lang('generate') %>
                                     </button>
                                 </div>
-                                <div class="form-text text-muted small">
+                                <div class="field-hint muted">
                                     <%= lang('altcha_hmac_key_hint') %>
                                 </div>
                             </div>
 
-                            <div class="mb-3">
-                                <label class="form-label" for="altcha-max-number">
+                            <div class="field">
+                                <label  for="altcha-max-number">
                                     <%= lang('altcha_max_number') %>
                                 </label>
                                 <%= setting_text "altcha_max_number", min: 10000, max: 1000000, type: "number" %>
-                                <div class="form-text text-muted small">
+                                <div class="field-hint muted">
                                     <%= lang('altcha_max_number_hint') %>
                                 </div>
                             </div>
 
-                            <div class="mb-3">
-                                <label class="form-label" for="altcha-expires">
+                            <div class="field">
+                                <label  for="altcha-expires">
                                     <%= lang('altcha_expires') %>
                                 </label>
                                 <%= setting_text "altcha_expires", min: 60, max: 3600, type: "number" %>
-                                <div class="form-text text-muted small">
+                                <div class="field-hint muted">
                                     <%= lang('altcha_expires_hint') %>
                                 </div>
                             </div>

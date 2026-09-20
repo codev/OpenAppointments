@@ -25,7 +25,7 @@
             const file = event.target.files[0];
 
             if (file) {
-                $page.find('.picture-preview').attr('src', URL.createObjectURL(file)).removeClass('d-none');
+                $page.find('.picture-preview').attr('src', URL.createObjectURL(file)).prop('hidden', false);
             }
         });
 

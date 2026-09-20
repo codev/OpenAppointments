@@ -1,79 +1,78 @@
 <%# The signed in user's own details and settings, as a Rails form. %>
 <% user = current_user %>
 <% settings = user.settings || user.build_settings %>
-<div id="account-page" class="container backend-page py-3">
+<div id="account-page" class="backend-page">
     <div id="account">
-        <div class="row">
-            <div class="col-lg-8 offset-lg-2">
+        <div class="split">
+            <div class="offset-lg-2">
                 <% if vars(:require_password_change) %>
-                    <div id="password-change-banner" class="alert alert-warning">
+                    <div id="password-change-banner" class="notice" data-tone="warning">
                         <%= lang('first_login_update_details') %>
                     </div>
                 <% end %>
                 <%= form_with url: "/account/save", method: :post, id: "account-form", data: { turbo: false } do |f| %>
                     <%= hidden_field_tag :form, "1" %>
-                    <div class="d-flex justify-content-between align-items-center border-bottom mb-4 py-2">
-                        <h4 class="mb-0 fw-light"><%= lang('account') %></h4>
+                    <div class="toolbar spaced">
+                        <h4><%= lang('account') %></h4>
                         <% if can?(:edit, :user_settings) %>
-                            <button type="submit" id="save-settings" class="btn btn-primary">
-                                <i class="fas fa-check-square me-2"></i>
+                            <button type="submit" id="save-settings" >
+                                <i class="fas fa-check-square"></i>
                                 <%= lang('save') %>
                             </button>
                         <% end %>
                     </div>
-                    <% if notice %><div class="alert alert-success"><%= notice %></div><% end %>
-                    <% if alert %><div class="alert alert-danger"><%= alert %></div><% end %>
+                    <% if notice %><div class="notice" data-tone="success"><%= notice %></div><% end %>
+                    <% if alert %><div class="notice" data-tone="error"><%= alert %></div><% end %>
 
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <div class="mb-3">
-                                <label class="form-label" for="name"><%= lang('name') %> <span class="text-danger">*</span></label>
-                                <%= text_field_tag "account[name]", user.name, id: "name", class: "form-control", required: true %>
+                    <div class="split">
+                        <div>
+                            <div class="field">
+                                <label  for="name"><%= lang('name') %> <span class="required">*</span></label>
+                                <%= text_field_tag "account[name]", user.name, id: "name", required: true %>
                             </div>
-                            <div class="mb-3">
-                                <label class="form-label" for="email"><%= lang('email') %> <span class="text-danger">*</span></label>
-                                <%= email_field_tag "account[email]", user.email, id: "email", class: "form-control", required: true %>
+                            <div class="field">
+                                <label  for="email"><%= lang('email') %> <span class="required">*</span></label>
+                                <%= email_field_tag "account[email]", user.email, id: "email", required: true %>
                             </div>
                             <% %i[phone_number mobile_number address city state zip_code].each do |field| %>
-                                <div class="mb-3">
-                                    <label class="form-label" for="<%= field.to_s.dasherize %>"><%= lang(field.to_s) %></label>
-                                    <%= text_field_tag "account[#{field}]", user.public_send(field), id: field.to_s.dasherize, class: "form-control" %>
+                                <div class="field">
+                                    <label  for="<%= field.to_s.dasherize %>"><%= lang(field.to_s) %></label>
+                                    <%= text_field_tag "account[#{field}]", user.public_send(field), id: field.to_s.dasherize %>
                                 </div>
                             <% end %>
-                            <div class="mb-3">
-                                <label class="form-label" for="notes"><%= lang('notes') %></label>
-                                <%= text_area_tag "account[notes]", user.notes, id: "notes", class: "form-control", rows: 6 %>
+                            <div class="field">
+                                <label  for="notes"><%= lang('notes') %></label>
+                                <%= text_area_tag "account[notes]", user.notes, id: "notes", rows: 6 %>
                             </div>
                         </div>
 
-                        <div class="col-lg-6">
-                            <div class="mb-3">
-                                <label class="form-label" for="username"><%= lang('username') %> <span class="text-danger">*</span></label>
-                                <%= text_field_tag "account[settings][username]", settings.username, id: "username", class: "form-control",
+                        <div>
+                            <div class="field">
+                                <label  for="username"><%= lang('username') %> <span class="required">*</span></label>
+                                <%= text_field_tag "account[settings][username]", settings.username, id: "username",
                                                    required: true, autocomplete: "username" %>
                             </div>
-                            <div class="mb-3">
-                                <label class="form-label" for="password"><%= lang('password') %></label>
-                                <%= password_field_tag "account[settings][password]", nil, id: "password", class: "form-control",
+                            <div class="field">
+                                <label  for="password"><%= lang('password') %></label>
+                                <%= password_field_tag "account[settings][password]", nil, id: "password",
                                                        autocomplete: "new-password" %>
                             </div>
-                            <div class="mb-3">
-                                <label class="form-label" for="retype-password"><%= lang('retype_password') %></label>
-                                <%= password_field_tag "account[settings][password_confirmation]", nil, id: "retype-password",
-                                                       class: "form-control", autocomplete: "new-password" %>
+                            <div class="field">
+                                <label  for="retype-password"><%= lang('retype_password') %></label>
+                                <%= password_field_tag "account[settings][password_confirmation]", nil, id: "retype-password", autocomplete: "new-password" %>
                             </div>
-                            <div class="mb-3">
-                                <label class="form-label" for="language"><%= lang('language') %> <span class="text-danger">*</span></label>
+                            <div class="field">
+                                <label  for="language"><%= lang('language') %> <span class="required">*</span></label>
                                 <%= select_tag "account[language]", options_for_select(Localization.available_languages.map { |l| [ l.capitalize, l ] }, user.language),
-                                               id: "language", class: "form-select", required: true %>
+                                               id: "language", required: true %>
                             </div>
-                            <div class="mb-3<%= timezone_hidden_class %>">
-                                <label class="form-label" for="timezone"><%= lang('timezone') %> <span class="text-danger">*</span></label>
+                            <div class="<%= timezone_hidden_class %>">
+                                <label  for="timezone"><%= lang('timezone') %> <span class="required">*</span></label>
                                 <%= select_tag "account[timezone]",
                                                grouped_options_for_select(grouped_timezones.map { |c, zones| [ c, zones.map { |v, n| [ n, v ] } ] }, user.timezone),
-                                               id: "timezone", class: "form-select", required: true %>
+                                               id: "timezone", required: true %>
                             </div>
-                            <div><label class="form-label mb-3"><%= lang('options') %></label></div>
+                            <div><label><%= lang('options') %></label></div>
                         </div>
                     </div>
                 <% end %>

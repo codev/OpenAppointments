@@ -237,6 +237,11 @@ input[type="submit"],
     background: var(--oa-muted);
     color: #fff;
     font-size: 0.75rem;
+
+    &[data-tone="success"] { background: var(--oa-success); }
+    &[data-tone="error"] { background: var(--oa-danger); }
+    &[data-tone="warning"] { background: var(--oa-warning); }
+    &[data-tone="info"] { background: var(--oa-info); }
 }
 
 .muted {
@@ -315,6 +320,15 @@ details.menu {
         hr {
             margin: 0.25rem 0;
         }
+
+        label {
+            display: block;
+            padding: 0.35rem 1rem;
+            margin: 0;
+            color: var(--oa-text);
+            white-space: nowrap;
+            cursor: pointer;
+        }
     }
 
     &[data-align="start"] > ul {
@@ -392,6 +406,40 @@ dialog > article {
         max-height: 40vh;
         overflow: auto;
     }
+}
+
+// Forms that load into a dialog carry these part classes instead of header/footer elements.
+dialog .dialog-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    background: var(--oa-header-bg);
+    color: var(--oa-header-fg);
+    margin: calc(var(--pico-block-spacing-vertical) * -1) calc(var(--pico-block-spacing-horizontal) * -1) var(--pico-block-spacing-vertical);
+    padding: calc(var(--pico-block-spacing-vertical) * 0.66) var(--pico-block-spacing-horizontal);
+    border-bottom: var(--pico-border-width) solid var(--pico-card-border-color);
+
+    .dialog-title {
+        margin: 0;
+        font-size: 1.15rem;
+        font-weight: 400;
+        color: inherit;
+    }
+}
+
+dialog .dialog-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.5rem;
+    margin: var(--pico-block-spacing-vertical) calc(var(--pico-block-spacing-horizontal) * -1) calc(var(--pico-block-spacing-vertical) * -1);
+    padding: calc(var(--pico-block-spacing-vertical) * 0.66) var(--pico-block-spacing-horizontal);
+    border-top: var(--pico-border-width) solid var(--pico-card-border-color);
+    background: var(--pico-card-sectioning-background-color);
+}
+
+dialog article > form {
+    margin: 0;
 }
 
 .dialog-close {
@@ -504,4 +552,107 @@ dialog > article {
 dialog .dialog-body {
     max-height: 60vh;
     overflow: auto;
+}
+
+.is-hidden {
+    display: none !important;
+}
+
+.link-button,
+.pico .link-button {
+    background: none;
+    border: 0;
+    padding: 0;
+    color: var(--oa-primary);
+    text-decoration: underline;
+    font-size: inherit;
+}
+
+.small-field,
+.pico .small-field {
+    padding: 0.2rem 0.4rem;
+    font-size: 0.875rem;
+    margin: 0;
+}
+
+.nowrap {
+    white-space: nowrap;
+}
+
+.table-scroll {
+    overflow-x: auto;
+}
+
+.choice {
+    margin-bottom: 0.5rem;
+
+    label {
+        display: inline;
+    }
+}
+
+.input-addon {
+    display: inline-flex;
+    align-items: center;
+    padding: 0 0.5rem;
+    color: var(--oa-muted);
+}
+
+.inline-form {
+    display: inline;
+}
+
+.input-row > button,
+.input-row > [role="button"] {
+    flex: 0 0 auto;
+    width: auto;
+    margin: 0;
+}
+
+.input-append {
+    margin: 1rem 0;
+}
+
+// Layout: two halves that stack on small screens, a full-width child, a column stack.
+.split {
+    display: grid;
+    gap: 0 1rem;
+
+    @media (min-width: 992px) {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    > .full {
+        grid-column: 1 / -1;
+    }
+}
+
+.stack {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.toolbar.spaced {
+    justify-content: space-between;
+}
+
+.centered {
+    text-align: center;
+}
+
+.end-aligned {
+    text-align: right;
+}
+
+.pico a[role="button"],
+.pico [role="button"] {
+    width: auto;
+    display: inline-block;
+}
+
+.toolbar > *,
+.actions > * {
+    flex: 0 0 auto;
+    width: auto;
 }

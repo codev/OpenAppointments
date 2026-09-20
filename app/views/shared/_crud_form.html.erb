@@ -10,24 +10,24 @@
               url: url_for(record.persisted? ? { action: :update, id: record } : { action: :create }),
               data: { turbo_frame: controller_name } do |f| %>
     <% if record.errors.any? %>
-        <div class="form-message alert alert-danger">
+        <div class="form-message notice" data-tone="error">
             <%= record.errors[:base].first || lang('fields_are_required') %>
         </div>
     <% end %>
 
     <%= yield f %>
 
-    <div class="btn-toolbar d-flex">
-        <button type="submit" class="btn btn-primary">
-            <i class="fas fa-check-square me-2"></i>
+    <div class="actions toolbar">
+        <button type="submit" >
+            <i class="fas fa-check-square"></i>
             <%= lang('save') %>
         </button>
-        <%= link_to lang('cancel'), url_for(action: :index, selected: record.id), class: "btn btn-outline-secondary ms-2",
+        <%= link_to lang('cancel'), url_for(action: :index, selected: record.id), class: "secondary",
                     data: { turbo_frame: controller_name } %>
         <% if record.persisted? %>
-            <button type="submit" form="<%= delete_form_id %>" class="btn btn-outline-danger ms-auto"
+            <button type="submit" form="<%= delete_form_id %>" class="destructive trailing"
                     data-turbo-confirm-title="<%= delete_title %>">
-                <i class="fas fa-trash-alt me-2"></i>
+                <i class="fas fa-trash-alt"></i>
                 <%= lang('delete') %>
             </button>
         <% end %>

@@ -1,21 +1,21 @@
 <%# Port of EA pages/logout.php. %>
-<div class="text-center mb-4">
+<div class="centered">
     <img src="<%= image_path("logo.png") %>"
-        alt="OpenAppointments" class="shadow mb-3" width="72" height="72">
-    <h4 class="text-primary fw-semibold mb-1"><%= lang('log_out') %></h4>
-    <p class=" small mb-0"><%= lang('logout_success') %></p>
+        alt="OpenAppointments"  width="72" height="72">
+    <h4 class="text-primary"><%= lang('log_out') %></h4>
+    <p><%= lang('logout_success') %></p>
 </div>
 
-<div class="d-grid gap-2 mb-3">
-    <a href="/" class="btn btn-primary">
-        <i class="fas fa-calendar-alt me-2"></i>
+<div class="centered">
+    <a role="button" href="/" >
+        <i class="fas fa-calendar-alt"></i>
         <%= lang('book_appointment_title') %>
     </a>
 </div>
 
-<div class="text-center">
-    <a href="/login" class="text-decoration-none  small">
-        <i class="fas fa-arrow-left me-1"></i>
+<div>
+    <a href="/login" >
+        <i class="fas fa-arrow-left"></i>
         <%= lang('backend_section') %>
     </a>
 </div>

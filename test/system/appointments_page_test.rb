@@ -26,15 +26,15 @@ class AppointmentsPageTest < ApplicationSystemTestCase
     assert_equal users(:zane).id.to_s, find("#select-provider").value
     assert_match(/9:00 am/, find("#start-datetime").value)
     wait_for_modal
-    within(find("#save-appointment").ancestor(".modal")) { click_on "Cancel" }
-    assert_no_selector ".modal.show", wait: 5
+    within(find("#save-appointment").ancestor("dialog")) { click_on "Cancel" }
+    assert_no_selector "dialog[open]", wait: 5
 
     find(".day-entry-appointment", text: "JX - Trim Cut").click
     assert_selector "#save-appointment", visible: true, wait: 5
     assert_field "appointment-notes", with: "Morning cut"
     wait_for_modal
-    within(find("#save-appointment").ancestor(".modal")) { click_on "Cancel" }
-    assert_no_selector ".modal.show", wait: 5
+    within(find("#save-appointment").ancestor("dialog")) { click_on "Cancel" }
+    assert_no_selector "dialog[open]", wait: 5
 
     find("#next-day").click
     assert_current_path(/date=#{@date + 1}/, wait: 5)
@@ -44,7 +44,7 @@ class AppointmentsPageTest < ApplicationSystemTestCase
     assert_current_path(/days=3/, wait: 5)
     assert_selector ".date-column", count: 3, wait: 5
 
-    find("#status-filter button").click
+    find("#status-filter summary").click
     uncheck "Booked"
     assert_no_selector ".day-entry-appointment", text: "JX - Trim Cut", wait: 5
     assert_current_path(/statuses/, wait: 5)
@@ -63,7 +63,7 @@ class AppointmentsPageRefreshTest < ApplicationSystemTestCase
     first(".provider-column .day-entry-free").click
     assert_selector "#save-appointment", visible: true, wait: 5
     wait_for_modal
-    within(find("#save-appointment").ancestor(".modal")) do
+    within(find("#save-appointment").ancestor("dialog")) do
       click_on "Select"
       assert_selector "#existing-customers-list div", text: "JX", wait: 5
       find("#existing-customers-list div", text: "JX").click

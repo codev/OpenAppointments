@@ -188,11 +188,13 @@ App.Utils.CalendarEvents = (function () {
 
     // Popover
 
+    // The event popover is a tippy with the built content; .popover marks it for the page scripts.
     function closePopover() {
         if ($popoverTarget) {
-            $popoverTarget.popover('dispose');
+            $popoverTarget[0]._tippy?.destroy();
             $popoverTarget = null;
         }
+        $('.popover').remove();
     }
 
     // Event dialog: forms load into the event frame (components/event_modal.js shows it).
@@ -277,8 +279,8 @@ App.Utils.CalendarEvents = (function () {
         } else {
             const generated = $target.hasClass('fc-unavailability') || $target.hasClass('fc-working-plan-exception');
             const editable = generated ? isCustom : true;
-            const displayEdit = editable && canEdit() ? '' : 'd-none';
-            const displayDelete = editable && canDelete() ? 'me-2' : 'd-none';
+            const displayEdit = editable && canEdit() ? '' : 'is-hidden';
+            const displayDelete = editable && canDelete() ? '' : 'is-hidden';
 
             if ($target.hasClass('fc-working-plan-exception')) {
                 $html = Popover.buildWorkingPlanExceptionPopover(info, displayEdit, displayDelete);
@@ -289,23 +291,24 @@ App.Utils.CalendarEvents = (function () {
             }
         }
 
-        $target.popover({
-            placement: 'top',
-            title: App.Utils.String.escapeHtml(info.event.title),
-            content: $html,
-            html: true,
-            container: '#calendar',
-            trigger: 'manual',
-        });
+        const $popover = $('<div/>', {class: 'popover'})
+            .append($('<h3/>', {class: 'popover-title', text: info.event.title}))
+            .append($('<div/>', {class: 'popover-body'}).append($html));
 
         lastFocusedEvent = info.event;
-        $target.popover('show');
         $popoverTarget = $target;
-
-        const $popover = $calendarPage().find('.popover');
-        if ($popover.length && $popover.position().top < 200) {
-            $popover.css('top', '200px');
-        }
+        tippy($target[0], {
+            content: $popover[0],
+            allowHTML: true,
+            interactive: true,
+            trigger: 'manual',
+            placement: 'top',
+            arrow: false,
+            theme: 'event',
+            maxWidth: 'none',
+            appendTo: document.getElementById('calendar-page') || document.body,
+            onHidden: (instance) => instance.destroy(),
+        }).show();
     }
 
     function onEditPopoverClick() {

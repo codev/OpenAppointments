@@ -1,9 +1,9 @@
 <%# Port of EA pages/about.php, trimmed of the upstream blog/premium/social sections. %>
-<div id="about-page" class="container backend-page py-3">
-    <div id="about" class="col-lg-8 offset-lg-2">
+<div id="about-page" class="backend-page">
+    <div id="about" class="offset-lg-2">
 
-        <div class="text-center my-5">
-            <img src="<%= image_path('logo.png') %>" alt="OpenAppointments Logo" class="mb-5">
+        <div class="centered">
+            <img src="<%= image_path('logo.png') %>" alt="OpenAppointments Logo" >
 
             <h3>
                 OpenAppointments
@@ -13,31 +13,31 @@
             </h6>
         </div>
 
-        <p class="mb-5">
+        <p>
             <%= lang('about_app_info') %>
         </p>
 
-        <div class="card mb-5">
-            <div class="card-header">
-                <h5 class="fw-light mb-0">
+        <div class="panel">
+            <div class="split">
+                <h5>
                     <%= lang('current_version') %>
                 </h5>
             </div>
-            <div class="card-body">
+            <div>
                 <strong>
                     <%= EaHelper::VERSION %>
                 </strong>
             </div>
         </div>
 
-        <h4 class="fw-light mb-3">
+        <h4>
             <%= lang('release_notes') %>
         </h4>
 
-        <div class="mb-5">
+        <div>
             <% Changelog.entries.each do |entry| %>
-                <h6 class="fw-semibold mb-2">v<%= entry[:version] %></h6>
-                <ul class="text-muted small">
+                <h6>v<%= entry[:version] %></h6>
+                <ul class="muted">
                     <% entry[:notes].each do |note| %>
                         <li><%= note %></li>
                     <% end %>
@@ -45,7 +45,7 @@
             <% end %>
         </div>
 
-        <h4 class="fw-light mb-3">
+        <h4>
             <%= lang('support') %>
         </h4>
 
@@ -53,24 +53,24 @@
             <%= lang('about_app_support') %>
         </p>
 
-        <div class="row mb-5">
-            <div class="col-lg-6 mb-3">
-                <a class="btn btn-outline-secondary d-block" href="https://github.com/codev/OpenAppointments" target="_blank">
-                    <i class="fas fa-external-link-alt me-2"></i>
+        <div>
+            <div>
+                <a role="button" class="secondary" href="https://github.com/codev/OpenAppointments" target="_blank">
+                    <i class="fas fa-external-link-alt"></i>
                     <%= lang('official_website') %>
                 </a>
             </div>
 
-            <div class="col-lg-6 mb-3">
-                <a class="btn btn-outline-secondary d-block"
+            <div>
+                <a role="button" class="secondary"
                    href="https://github.com/codev/OpenAppointments/issues" target="_blank">
-                    <i class="fas fa-external-link-alt me-2"></i>
+                    <i class="fas fa-external-link-alt"></i>
                     <%= lang('project_issues') %>
                 </a>
             </div>
         </div>
 
-        <h4 class="fw-light mb-3">
+        <h4>
             <%= lang('license') %>
         </h4>
 
@@ -78,10 +78,10 @@
             <%= lang('about_app_license') %>
         </p>
 
-        <div class="mb-5">
-            <a class="btn btn-outline-secondary d-block w-50 m-auto" href="https://www.gnu.org/licenses/agpl-3.0.en.html"
+        <div>
+            <a role="button" class="secondary" href="https://www.gnu.org/licenses/agpl-3.0.en.html"
                target="_blank">
-                <i class="fas fa-external-link-alt me-2"></i>
+                <i class="fas fa-external-link-alt"></i>
                 AGPL-3.0
             </a>
         </div>

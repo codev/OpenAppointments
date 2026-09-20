@@ -2,67 +2,66 @@
 <% plan_settings = record.settings %>
 <% header = capture do %>
     <% if record.persisted? %>
-        <div class="mb-3">
+        <div class="full">
             <%= link_to root_path(provider: record.booking_slug), target: "_blank", title: lang('booking_link'),
                         "aria-label": lang('booking_link') do %>
                 <i class="fas fa-link"></i>
             <% end %>
             <%= button_to lang('regenerate_link'), regenerate_link_provider_path(record),
-                          class: "btn btn-outline-secondary btn-sm ms-2", form_class: "d-inline",
-                          data: { turbo_confirm_title: lang('regenerate_link'), turbo_confirm_button: lang('change') },
+                          class: "secondary small-action", form_class: "inline-form", data: { turbo_confirm_title: lang('regenerate_link'), turbo_confirm_button: lang('change') },
                           form: { data: { turbo_frame: "providers_record",
                                           turbo_confirm: lang('regenerate_link_warning_provider') } } %>
         </div>
     <% end %>
-    <ul class="nav nav-pills switch-view mb-3">
-        <li class="nav-item"><a class="nav-link active" href="#details" data-bs-toggle="tab"><%= lang('details') %></a></li>
-        <li class="nav-item"><a class="nav-link" href="#working-plan" data-bs-toggle="tab"><%= lang('working_plan') %></a></li>
-    </ul>
+    <div role="tablist" class="switch-view">
+        <button type="button" role="tab" aria-selected="true" aria-controls="details"><%= lang('details') %></button>
+        <button type="button" role="tab" aria-selected="false" aria-controls="working-plan"><%= lang('working_plan') %></button>
+    </div>
 <% end %>
 <% settings = capture do %>
-    <div class="border rounded mb-3 p-3">
-        <div class="form-check form-switch">
+    <div>
+        <div class="choice switch-field">
             <%= hidden_field_tag "provider[is_private]", "0", id: nil %>
-            <%= check_box_tag "provider[is_private]", "1", record.is_private, id: "provider_is_private", class: "form-check-input" %>
-            <label class="form-check-label" for="provider_is_private"><%= lang('hide_from_public') %></label>
+            <%= check_box_tag "provider[is_private]", "1", record.is_private, id: "provider_is_private" %>
+            <label  for="provider_is_private"><%= lang('hide_from_public') %></label>
         </div>
-        <div class="form-text text-muted mb-3"><small><%= lang('private_hint') %></small></div>
+        <div class="field-hint muted"><small><%= lang('private_hint') %></small></div>
     </div>
-    <div class="mb-3">
+    <div>
         <%= render "shared/color_selection", name: "provider[color]", value: record.color %>
-        <div class="form-text text-muted"><small><%= lang('provider_color_hint') %></small></div>
+        <div class="field-hint muted"><small><%= lang('provider_color_hint') %></small></div>
     </div>
-    <div class="d-flex justify-content-between align-items-center mb-3">
-        <label class="form-label mb-0"><%= lang('services') %></label>
-        <div class="btn-group btn-group-sm">
-            <button type="button" class="btn btn-outline-secondary" data-check-all="#provider-services">
+    <div class="field toolbar spaced">
+        <label><%= lang('services') %></label>
+        <div class="toolbar btn-group-sm">
+            <button type="button" class="secondary" data-check-all="#provider-services">
                 <%= lang('select_all') %>
             </button>
-            <button type="button" class="btn btn-outline-secondary" data-check-none="#provider-services">
+            <button type="button" class="secondary" data-check-none="#provider-services">
                 <%= lang('select_none') %>
             </button>
         </div>
     </div>
-    <div id="provider-services" class="card card-body border">
+    <div id="provider-services" class="panel">
         <%= hidden_field_tag "provider[services][]", "", id: nil %>
         <% Service.order(:name).each do |service| %>
-            <div class="form-check">
+            <div class="choice">
                 <%= check_box_tag "provider[services][]", service.id, linked_ids.include?(service.id),
-                                  id: "service-#{service.id}", class: "form-check-input" %>
-                <label class="form-check-label" for="service-<%= service.id %>"><%= service.name %></label>
+                                  id: "service-#{service.id}" %>
+                <label  for="service-<%= service.id %>"><%= service.name %></label>
             </div>
         <% end %>
     </div>
 <% end %>
 <% after = capture do %>
-    <div class="col-12">
-        <div class="mb-3">
-            <label class="form-label" for="provider_about"><%= lang('about') %></label>
-            <%= text_area_tag "provider[about]", record.about, rows: 6, class: "form-control", id: "provider_about" %>
+    <div>
+        <div class="field">
+            <label  for="provider_about"><%= lang('about') %></label>
+            <%= text_area_tag "provider[about]", record.about, rows: 6, id: "provider_about" %>
         </div>
-        <div class="mb-3">
-            <label class="form-label" for="provider_services_description"><%= lang('services_description') %></label>
-            <%= text_area_tag "provider[services_description]", record.services_description, rows: 6, class: "form-control",
+        <div class="field">
+            <label  for="provider_services_description"><%= lang('services_description') %></label>
+            <%= text_area_tag "provider[services_description]", record.services_description, rows: 6,
                               id: "provider_services_description" %>
         </div>
     </div>
@@ -79,52 +78,52 @@
                          typed_settings[:working_plan_exceptions].presence ||
                            (record.persisted? ? EaRows.working_plan_exceptions_api(record.id).to_json : "[]"),
                          id: "working-plan-exceptions-json" %>
-    <div class="working-plan-view tab-pane fade clearfix" id="working-plan">
-        <h4 class="mb-3 fw-light"><%= lang('working_plan') %></h4>
-        <button type="button" id="reset-working-plan" class="btn btn-primary"
+    <div class="working-plan-view" id="working-plan" role="tabpanel" hidden>
+        <h4><%= lang('working_plan') %></h4>
+        <button type="button" id="reset-working-plan" 
                 data-company-working-plan="<%= setting('company_working_plan') %>"
                 data-tippy-content="<%= lang('reset_working_plan') %>">
-            <i class="fas fa-undo-alt me-2"></i>
+            <i class="fas fa-undo-alt"></i>
             <%= lang('reset_plan') %>
         </button>
-        <div class="table-responsive">
-            <table class="working-plan table table-striped mt-2">
+        <div class="table-scroll">
+            <table class="working-plan striped">
                 <thead><tr><th><%= lang('day') %></th><th><%= lang('start') %></th><th><%= lang('end') %></th></tr></thead>
                 <tbody></tbody>
             </table>
         </div>
         <br>
-        <h4 class="mb-3 fw-light"><%= lang('breaks') %></h4>
+        <h4><%= lang('breaks') %></h4>
         <p><%= lang('add_breaks_during_each_day') %></p>
-        <div>
-            <button type="button" class="add-break btn btn-primary">
-                <i class="fas fa-plus-square me-2"></i>
+        <div class="stack">
+            <button type="button" class="add-break">
+                <i class="fas fa-plus-square"></i>
                 <%= lang('add_break') %>
             </button>
         </div>
         <br>
-        <div class="table-responsive">
-            <table class="breaks table table-striped">
+        <div class="table-scroll">
+            <table class="breaks striped">
                 <thead><tr><th><%= lang('day') %></th><th><%= lang('start') %></th><th><%= lang('end') %></th><th><%= lang('actions') %></th></tr></thead>
                 <tbody></tbody>
             </table>
         </div>
         <br>
-        <h4 class="mb-3 fw-light"><%= lang('working_plan_exceptions') %></h4>
+        <h4><%= lang('working_plan_exceptions') %></h4>
         <p><%= lang('add_working_plan_exceptions_during_each_day') %></p>
-        <div class="d-flex flex-column align-items-start gap-2">
-            <button type="button" class="add-working-plan-exception btn btn-primary" data-non-working="0">
-                <i class="fas fa-plus-square me-2"></i>
+        <div>
+            <button type="button" class="add-working-plan-exception" data-non-working="0">
+                <i class="fas fa-plus-square"></i>
                 <%= lang('add_available_exception') %>
             </button>
-            <button type="button" class="add-working-plan-exception btn btn-primary" data-non-working="1">
-                <i class="fas fa-plus-square me-2"></i>
+            <button type="button" class="add-working-plan-exception" data-non-working="1">
+                <i class="fas fa-plus-square"></i>
                 <%= lang('add_unavailable_exception') %>
             </button>
         </div>
         <br>
-        <div class="table-responsive">
-            <table class="working-plan-exceptions table table-striped">
+        <div class="table-scroll">
+            <table class="working-plan-exceptions striped">
                 <thead><tr><th><%= lang('date') %></th><th><%= lang('status') %></th><th><%= lang('actions') %></th></tr></thead>
                 <tbody></tbody>
             </table>

@@ -13,7 +13,7 @@
 
         $target.text((url || 'https://<server>').replace(/\/+$/, '') + $target.data('suffix'));
         const ready = Boolean(url && $('#messages-smsgateway-login').val() && $('#messages-smsgateway-password').val());
-        $('#smsgateway-test').toggleClass('d-none', !ready);
+        $('#smsgateway-test').prop('hidden', !ready);
     }
 
     $(document).on('input change', '#messages-smsgateway-url, #messages-smsgateway-login, #messages-smsgateway-password', update);

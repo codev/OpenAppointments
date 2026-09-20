@@ -1,14 +1,14 @@
 <%# Theme and brand colour settings, split out of General Settings. %>
-<div id="theme-settings-page" class="container backend-page py-3">
+<div id="theme-settings-page" class="backend-page">
     <div id="theme-settings">
-        <div class="row">
-            <div class="col-sm-3">
+        <div class="with-sidebar">
+            <aside>
                 <%= render "shared/settings_nav" %>
-            </div>
-            <div class="col-sm-9">
+            </aside>
+            <div>
                 <%= settings_form "/theme_settings/save", frame: false do %>
-                        <div class="d-flex justify-content-between align-items-center border-bottom mb-4 py-2">
-                            <h4 class="mb-0 fw-light">
+                        <div class="page-heading toolbar spaced">
+                            <h4>
                                 <%= lang('theme') %>
                             </h4>
 
@@ -16,19 +16,19 @@
                         </div>
                         <%= settings_flash %>
 
-                        <div class="row mb-5">
-                            <div class="col-12">
-                                <div class="mb-3">
-                                    <label class="form-label" for="theme">
+                        <div class="split">
+                            <div class="full">
+                                <div class="field">
+                                    <label  for="theme">
                                         <%= lang('theme') %>
                                     </label>
 
-                                    <%= setting_select "theme", vars(:available_themes).map { |t| [ t.capitalize, t ] }, class: "form-select d-none" %>
+                                    <%= setting_select "theme", vars(:available_themes).map { |t| [ t.capitalize, t ] }, hidden: true %>
 
-                                    <div id="theme-cards" class="row g-3 mb-3">
+                                    <div class="split" id="theme-cards" >
                                         <% vars(:available_themes).each do |available_theme| %>
-                                            <div class="col-sm-6 col-xl-4">
-                                                <div class="card theme-card h-100" data-theme="<%= available_theme %>"
+                                            <div class="toolbar">
+                                                <div class="panel theme-card" data-theme="<%= available_theme %>"
                                                      role="button" tabindex="0"
                                                      aria-label="<%= available_theme.capitalize %>">
                                                     <div class="theme-preview-holder">
@@ -36,8 +36,8 @@
                                                                 data-theme="<%= available_theme %>" loading="lazy"
                                                                 scrolling="no" tabindex="-1"></iframe>
                                                     </div>
-                                                    <div class="card-footer py-2 d-flex align-items-center justify-content-between">
-                                                        <span class="fw-medium"><%= available_theme.capitalize %></span>
+                                                    <div class="toolbar spaced">
+                                                        <span><%= available_theme.capitalize %></span>
                                                         <i class="fas fa-check-circle theme-selected-check" aria-hidden="true"></i>
                                                     </div>
                                                 </div>
@@ -82,53 +82,53 @@
                                         }
                                     </style>
 
-                                    <div class="my-2 d-flex gap-2">
-                                        <button type="button" class="btn btn-outline-secondary btn-sm apply-suggested-colors"
+                                    <div>
+                                        <button type="button" class="secondary small-action apply-suggested-colors"
                                                 data-palette="0">
-                                            <i class="fas fa-fill-drip me-2"></i>
+                                            <i class="fas fa-fill-drip"></i>
                                             <%= lang('apply_suggested_colors') %> 1
                                         </button>
-                                        <button type="button" class="btn btn-outline-secondary btn-sm apply-suggested-colors"
+                                        <button type="button" class="secondary small-action apply-suggested-colors"
                                                 data-palette="1">
-                                            <i class="fas fa-fill-drip me-2"></i>
+                                            <i class="fas fa-fill-drip"></i>
                                             <%= lang('apply_suggested_colors') %> 2
                                         </button>
                                     </div>
                                 </div>
 
-                                <div id="color-accessibility" class="mb-3" aria-live="polite"></div>
+                                <div id="color-accessibility"  aria-live="polite"></div>
 
-                                <div class="mb-3">
-                                    <label class="form-label" for="company-color">
+                                <div class="field">
+                                    <label  for="company-color">
                                         <%= lang('company_color') %>
                                     </label>
 
                                     <%= setting_text "company_color", type: "color" %>
                                 </div>
 
-                                <div class="mb-3">
-                                    <label class="form-label" for="company-secondary-color">
+                                <div class="field">
+                                    <label  for="company-secondary-color">
                                         <%= lang('secondary_color') %>
                                     </label>
 
                                     <%= setting_text "company_secondary_color", type: "color" %>
                                 </div>
 
-                                <div class="mb-3">
-                                    <label class="form-label" for="company-background-color">
+                                <div class="field">
+                                    <label  for="company-background-color">
                                         <%= lang('background_color') %>
                                     </label>
 
                                     <%= setting_text "company_background_color", type: "color" %>
                                 </div>
 
-                                <div class="mb-3">
-                                    <label class="form-label" for="custom-css">
+                                <div class="field">
+                                    <label  for="custom-css">
                                         <%= lang('custom_css') %>
                                     </label>
 
-                                    <%= setting_textarea "custom_css", class: "form-control font-monospace", rows: 8 %>
-                                    <div class="form-text text-muted small">
+                                    <%= setting_textarea "custom_css", rows: 8 %>
+                                    <div class="field-hint muted">
                                         <%= lang('custom_css_hint') %>
                                     </div>
                                 </div>

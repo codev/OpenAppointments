@@ -15,19 +15,19 @@
     </style>
 </head>
 <body id="book-appointment-wizard">
-    <header id="header" class="p-3 d-flex align-items-center bg-primary">
-        <div id="company-name" class="text-white fs-5 fw-light flex-grow-1">
+    <header class="toolbar" id="header" >
+        <div id="company-name" >
             <span><%= setting("company_name") %></span>
-            <div>
-                <span class="display-booking-selection small fw-normal text-white-50">
+            <div class="toolbar spaced">
+                <span class="display-booking-selection">
                     <%= lang('service') %> │ <%= lang('provider') %>
                 </span>
             </div>
         </div>
-        <ol id="steps" class="d-inline-block my-1">
+        <ol id="steps" >
             <% [ "completed-step", "active-step", "", "", "" ].each_with_index do |state, index| %>
-                <li class="book-step d-inline-block float-start rounded text-center <%= state %>">
-                    <strong class="d-block text-center">
+                <li class="book-step <%= state %>">
+                    <strong>
                         <span class="step-number"><%= index + 1 %></span>
                         <i class="fas fa-check step-check" aria-hidden="true"></i>
                     </strong>
@@ -36,27 +36,27 @@
         </ol>
     </header>
 
-    <div class="p-3">
-        <h6 class="fw-light mb-3"><%= lang('select_service') %></h6>
+    <div>
+        <h6><%= lang('select_service') %></h6>
 
-        <select class="form-select mb-3">
+        <select>
             <option><%= lang('select_service') %></option>
         </select>
 
-        <input type="text" class="form-control mb-3" value="<%= lang('customer_information') %>" readonly>
+        <input type="text"  value="<%= lang('customer_information') %>" readonly>
 
-        <div class="alert alert-success py-2 small">
+        <div class="notice" data-tone="success">
             <%= lang('appointment_registered') %>
         </div>
 
-        <div class="d-flex justify-content-between">
-            <button class="btn btn-outline-secondary" type="button">
-                <i class="fas fa-chevron-left me-2"></i>
+        <div>
+            <button class="secondary" type="button">
+                <i class="fas fa-chevron-left"></i>
                 <%= lang('back') %>
             </button>
-            <button class="btn btn-primary" type="button">
+            <button  type="button">
                 <%= lang('next') %>
-                <i class="fas fa-chevron-right ms-2"></i>
+                <i class="fas fa-chevron-right"></i>
             </button>
         </div>
     </div>

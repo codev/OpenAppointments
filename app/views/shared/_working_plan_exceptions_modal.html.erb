@@ -1,67 +1,66 @@
 <%# Port of EA components/working_plan_exceptions_modal.php. %>
-<div class="modal" id="working-plan-exceptions-modal">
-    <div class="modal-dialog modal-dialog-centered modal-fullscreen-lg-down modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title"><%= lang('working_plan_exception') %></h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+<dialog id="working-plan-exceptions-modal" data-static>
+    <article class="wide">
+            <div class="dialog-header">
+                <h5 class="dialog-title"><%= lang('working_plan_exception') %></h5>
+                <button type="button" class="dialog-close" data-dialog-close aria-label="Close">&times;</button>
             </div>
-            <div class="modal-body">
-                <div class="row">
-                    <div class="col-sm-6">
-                        <div class="mb-3">
-                            <label class="form-label" for="working-plan-exceptions-start-date"><%= lang('start_date') %></label>
-                            <input class="form-control" id="working-plan-exceptions-start-date">
+            <div class="dialog-body">
+                <div class="split">
+                    <div class="split">
+                        <div class="field full">
+                            <label  for="working-plan-exceptions-start-date"><%= lang('start_date') %></label>
+                            <input  id="working-plan-exceptions-start-date">
                         </div>
                     </div>
-                    <div class="col-sm-6">
-                        <div class="mb-3">
-                            <label class="form-label" for="working-plan-exceptions-end-date"><%= lang('end_date') %></label>
-                            <input class="form-control" id="working-plan-exceptions-end-date">
+                    <div class="split">
+                        <div class="field">
+                            <label  for="working-plan-exceptions-end-date"><%= lang('end_date') %></label>
+                            <input  id="working-plan-exceptions-end-date">
                         </div>
                     </div>
                 </div>
 
-                <div class="form-check form-switch mb-3" id="working-plan-exceptions-is-non-working-day-group">
-                    <input class="form-check-input" type="checkbox" id="working-plan-exceptions-is-non-working-day">
-                    <label class="form-check-label" for="working-plan-exceptions-is-non-working-day">
+                <div class="choice switch-field" id="working-plan-exceptions-is-non-working-day-group">
+                    <input  type="checkbox" id="working-plan-exceptions-is-non-working-day">
+                    <label  for="working-plan-exceptions-is-non-working-day">
                         <%= lang('make_non_working_day') %>
                     </label>
                 </div>
 
                 <div id="working-plan-exceptions-times">
-                <div class="row">
-                    <div class="col-sm-6">
-                        <div class="mb-3">
-                            <label class="form-label" for="working-plan-exceptions-start-time"><%= lang('start') %></label>
-                            <input class="form-control" id="working-plan-exceptions-start-time">
+                <div>
+                    <div class="full">
+                        <div class="field">
+                            <label  for="working-plan-exceptions-start-time"><%= lang('start') %></label>
+                            <input  id="working-plan-exceptions-start-time">
                         </div>
                     </div>
 
-                    <div class="col-sm-6">
-                        <div class="mb-3">
-                            <label class="form-label" for="working-plan-exceptions-end-time"><%= lang('end') %></label>
-                            <input class="form-control" id="working-plan-exceptions-end-time">
+                    <div>
+                        <div class="field">
+                            <label  for="working-plan-exceptions-end-time"><%= lang('end') %></label>
+                            <input  id="working-plan-exceptions-end-time">
                         </div>
                     </div>
                 </div>
 
-                <div class="row">
-                    <div class="col-12">
-                        <label class="form-label"><%= lang('time_off') %></label>
+                <div>
+                    <div class="field">
+                        <label><%= lang('time_off') %></label>
                     </div>
-                    <div class="col-sm-6">
-                        <div class="mb-2">
-                            <input class="form-control" id="working-plan-exceptions-time-off-start" aria-label="<%= lang('start') %>">
+                    <div>
+                        <div>
+                            <input  id="working-plan-exceptions-time-off-start" aria-label="<%= lang('start') %>">
                         </div>
                     </div>
-                    <div class="col-sm-6">
-                        <div class="mb-2">
-                            <input class="form-control" id="working-plan-exceptions-time-off-end" aria-label="<%= lang('end') %>">
+                    <div>
+                        <div>
+                            <input  id="working-plan-exceptions-time-off-end" aria-label="<%= lang('end') %>">
                         </div>
                     </div>
-                    <div class="col-12 mb-3">
-                        <div class="form-text text-muted"><small><%= lang('time_off_hint') %></small></div>
+                    <div>
+                        <div class="field-hint muted"><small><%= lang('time_off_hint') %></small></div>
                     </div>
                 </div>
 
@@ -72,16 +71,16 @@
                 </p>
 
                 <div>
-                    <button type="button" class="btn btn-outline-primary btn-sm working-plan-exceptions-add-break">
-                        <i class="fas fa-plus-square me-2"></i>
+                    <button type="button" class="outline small-action working-plan-exceptions-add-break">
+                        <i class="fas fa-plus-square"></i>
                         <%= lang('add_break') %>
                     </button>
                 </div>
 
                 <br>
 
-                <div class="table-responsive">
-                    <table class="table table-striped" id="working-plan-exceptions-breaks">
+                <div class="table-scroll">
+                    <table class="striped" id="working-plan-exceptions-breaks">
                         <thead>
                         <tr>
                             <th><%= lang('start') %></th>
@@ -95,19 +94,18 @@
                 </div>
 
             </div>
-            <div class="modal-footer">
+            <div class="dialog-footer">
 
-                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+                <button type="button" class="secondary" data-dialog-close>
                     <%= lang('cancel') %>
                 </button>
-                <button type="button" class="btn btn-primary" id="working-plan-exceptions-save">
-                    <i class="fas fa-check-square me-2"></i>
+                <button type="button"  id="working-plan-exceptions-save">
+                    <i class="fas fa-check-square"></i>
                     <%= lang('save') %>
                 </button>
             </div>
-        </div>
-    </div>
-</div>
+    </article>
+</dialog>
 
 <% content_for :scripts do %>
     <%= ea_js "components/working_plan_exceptions_modal" %>

@@ -1,24 +1,23 @@
-<%# Backend footer: brand left, language right, remaining items spread evenly between.
-    Collapses to a stacked, centered column below lg. %>
-<footer id="footer" class="d-lg-flex justify-content-lg-between align-items-lg-center gap-lg-4 p-2 text-center mt-auto bg-body border-top">
-    <div class="mb-3 mb-lg-0">
-        <img class="me-1" src="<%= image_path("logo-16x16.png") %>" alt="" width="16" height="16">
+<%# Backend footer: brand, credits, licence and the language picker. %>
+<footer id="footer" class="app-footer">
+    <div class="toolbar centered">
+        <img src="<%= image_path("logo-16x16.png") %>" alt="" width="16" height="16">
         <a href="https://github.com/codev/OpenAppointments" target="_blank">OpenAppointments</a>
         <span>v<%= EaHelper::VERSION %></span>
     </div>
 
-    <div class="mb-3 mb-lg-0">
+    <div>
         By <a href="https://codev.uk/" target="_blank">Codev</a> - Based on Easy!Appointments by <a href="https://alextselegidis.com" target="_blank">Alex Tselegidis</a>
     </div>
 
-    <div class="mb-3 mb-lg-0">
+    <div>
         <%= lang('licensed_under') %>
         <a href="https://www.gnu.org/licenses/agpl-3.0.en.html" target="_blank">AGPL-3.0</a>
     </div>
 
     <div>
-        <span id="select-language" class="badge bg-dark">
-            <i class="fas fa-language me-2"></i>
+        <span id="select-language" class="tag" role="button" tabindex="0">
+            <i class="fas fa-language"></i>
             <%= script_vars[:language].to_s.upcase_first %>
         </span>
     </div>

@@ -65,7 +65,7 @@ class EventFormsTest < ActionDispatch::IntegrationTest
     assert_select "#customer-id[value=?]", users(:jx).id.to_s
     assert_select "#name[value=JX]"
     assert_select "#appointment-repeat", count: 0
-    assert_select ".modal-title", text: I18n.t("ea.edit_appointment_title")
+    assert_select ".dialog-title", text: I18n.t("ea.edit_appointment_title")
   end
 
   test "create with a typed time and an existing customer by email answers the saved marker" do
@@ -126,7 +126,7 @@ class EventFormsTest < ActionDispatch::IntegrationTest
       assert_select "input[name=kind][value=cancel]"
       assert_select "input[type=radio][name=notify_users][value='1'][checked]"
       assert_select "textarea#cancellation-reason"
-      assert_select ".modal-title", text: I18n.t("ea.cancel_appointment_title")
+      assert_select ".dialog-title", text: I18n.t("ea.cancel_appointment_title")
     end
 
     post "/appointments/#{appointment.id}/remove", params: { kind: "cancel", notify_users: "0", cancellation_reason: "Away" }

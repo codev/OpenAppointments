@@ -26,7 +26,7 @@ class ProvidersPageTest < ApplicationSystemTestCase
     check "Trim Cut"
 
     click_on "Working Plan"
-    assert_selector "#working-plan.active", wait: 5
+    assert_selector "#working-plan:not([hidden])", wait: 5
     assert_selector "#working-plan table.working-plan tbody tr", count: 7
     # Saturday off, Monday 10:00 to 16:00
     uncheck "Saturday" if has_checked_field?("Saturday")
@@ -62,7 +62,7 @@ class ProvidersPageTest < ApplicationSystemTestCase
     assert_not_equal old_slug, pat.booking_slug
 
     click_on "Working Plan"
-    assert_selector "#working-plan.active", wait: 5
+    assert_selector "#working-plan:not([hidden])", wait: 5
     assert_checked_field "Monday"
     assert_equal "10:00 am", find("#monday-start").value
     uncheck "Monday"
@@ -98,7 +98,7 @@ class ProvidersPageTest < ApplicationSystemTestCase
     find(".provider-row", text: "Zane").click
     assert_selector "#providers-page.editing", wait: 5
     click_on "Working Plan"
-    assert_selector "#working-plan.active", wait: 5
+    assert_selector "#working-plan:not([hidden])", wait: 5
     assert_unchecked_field "Wednesday"
     click_on "Reset Plan"
     assert_checked_field "Wednesday", wait: 5
@@ -129,11 +129,11 @@ class ProvidersFormTest < ApplicationSystemTestCase
     find(".provider-row", text: "Zane").click
     assert_selector "#providers-page.editing", wait: 5
     click_on "Working Plan"
-    assert_selector "#working-plan.active", wait: 5
+    assert_selector "#working-plan:not([hidden])", wait: 5
     find("#monday-start").set("5:00 pm")
     find("#monday-end").set("9:00 am")
     click_on "Save"
-    assert_selector ".backend-notification", wait: 5
+    assert_selector ".toast", wait: 5
     assert_selector "#providers-page.editing"
     assert_equal "09:00", JSON.parse(users(:zane).settings.reload.working_plan)["monday"]["start"]
 
@@ -159,7 +159,7 @@ class ProvidersFormTest < ApplicationSystemTestCase
     find(".provider-row", text: "Zane").click
     assert_selector "#providers-page.editing", wait: 5
     click_on "Working Plan"
-    assert_selector "#working-plan.active", wait: 5
+    assert_selector "#working-plan:not([hidden])", wait: 5
     click_on I18n.t("ea.add_available_exception")
     assert_selector "#working-plan-exceptions-modal", visible: true, wait: 5
     within("#working-plan-exceptions-modal") do

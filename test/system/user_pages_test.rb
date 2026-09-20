@@ -26,7 +26,7 @@ class UserPagesTest < ApplicationSystemTestCase
     select "London (+0:00)", from: "Timezone"
     fill_in "Retype Password", with: "different"
     click_on "Save"
-    assert_selector "##{page}-page.editing .alert", wait: 5
+    assert_selector "##{page}-page.editing .notice", wait: 5
     assert_nil User.find_by(email: "patperson@example.org")
 
     fill_in "Retype Password", with: "password1"

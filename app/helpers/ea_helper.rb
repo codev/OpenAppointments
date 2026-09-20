@@ -23,7 +23,7 @@ module EaHelper
 
   # Bootstrap class hiding timezone controls without timezone support.
   def timezone_hidden_class
-    Setting.timezone_support? ? "" : " d-none"
+    Setting.timezone_support? ? "" : " is-hidden"
   end
 
   # Script tag for a ported EA JS file under app/javascript (logical path without extension).

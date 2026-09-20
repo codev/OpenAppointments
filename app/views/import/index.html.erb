@@ -1,124 +1,124 @@
 <%# Manage data: backups, reports, ODS/10to8 import, database reset (admin only).
     The backups and import status frames poll while a job runs. %>
-<div class="container backend-page py-3" id="import-page">
-    <div class="col-lg-8 offset-lg-2">
-        <h4 class="mb-3 fw-light"><%= lang('manage_data') %></h4>
+<div class="backend-page" id="import-page">
+    <div class="offset-lg-2">
+        <h4><%= lang('manage_data') %></h4>
 
-        <div class="card card-body mb-4">
+        <div class="panel">
             <%= render "import/backups", backups: @backups, export_status: @export_status %>
         </div>
 
-        <h5 class="mb-3 fw-light"><%= lang('reports') %></h5>
+        <h5><%= lang('reports') %></h5>
 
-        <form class="card card-body mb-4" method="get" action="/data/report" id="report-form" data-turbo="false">
-            <h6 class="fw-light"><%= lang('appointment_report') %></h6>
-            <p class="text-muted small"><%= lang('report_hint') %></p>
-            <div class="row g-3 mb-3">
-                <div class="col-sm-6">
-                    <label for="report-from" class="form-label"><%= lang('report_from') %></label>
-                    <input type="date" id="report-from" name="from" class="form-control" required
+        <form class="panel" method="get" action="/data/report" id="report-form" data-turbo="false">
+            <h6><%= lang('appointment_report') %></h6>
+            <p class="muted"><%= lang('report_hint') %></p>
+            <div class="split">
+                <div class="field">
+                    <label for="report-from" ><%= lang('report_from') %></label>
+                    <input type="date" id="report-from" name="from"  required
                            value="<%= vars(:report_from) %>">
                 </div>
-                <div class="col-sm-6">
-                    <label for="report-to" class="form-label"><%= lang('report_to') %></label>
-                    <input type="date" id="report-to" name="to" class="form-control" required
+                <div class="field">
+                    <label for="report-to" ><%= lang('report_to') %></label>
+                    <input type="date" id="report-to" name="to"  required
                            value="<%= vars(:report_to) %>">
                 </div>
             </div>
-            <label class="form-label"><%= lang('report_statuses') %></label>
+            <label><%= lang('report_statuses') %></label>
             <input type="hidden" name="status_ids[]" value="">
-            <div class="d-flex flex-wrap gap-3 mb-3">
+            <div class="toolbar">
                 <% vars(:appointment_statuses).each do |status| %>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" name="status_ids[]" value="<%= status["id"] %>"
+                    <div class="choice">
+                        <input  type="checkbox" name="status_ids[]" value="<%= status["id"] %>"
                                id="report-status-<%= status["id"] %>" checked>
-                        <label class="form-check-label" for="report-status-<%= status["id"] %>"><%= status["name"] %></label>
+                        <label  for="report-status-<%= status["id"] %>"><%= status["name"] %></label>
                     </div>
                 <% end %>
             </div>
-            <div>
-                <button type="submit" class="btn btn-outline-primary">
-                    <i class="fas fa-file-download me-2"></i>
+            <div class="split">
+                <button type="submit" class="outline">
+                    <i class="fas fa-file-download"></i>
                     <%= lang('download_report') %>
                 </button>
             </div>
         </form>
 
-        <form class="card card-body mb-4" method="get" action="/data/customer_report" id="customer-report-form" data-turbo="false">
-            <h6 class="fw-light"><%= lang('customer_report') %></h6>
-            <p class="text-muted small"><%= lang('customer_report_hint') %></p>
-            <div>
-                <button type="submit" class="btn btn-outline-primary">
-                    <i class="fas fa-file-download me-2"></i>
+        <form class="panel" method="get" action="/data/customer_report" id="customer-report-form" data-turbo="false">
+            <h6><%= lang('customer_report') %></h6>
+            <p class="muted"><%= lang('customer_report_hint') %></p>
+            <div class="toolbar">
+                <button type="submit" class="outline">
+                    <i class="fas fa-file-download"></i>
                     <%= lang('download_report') %>
                 </button>
             </div>
         </form>
 
-        <p class="text-muted small"><%= lang('import_hint') %></p>
+        <p class="muted"><%= lang('import_hint') %></p>
 
-        <%= form_with url: "/data/start", method: :post, multipart: true, id: "import-form", class: "card card-body mb-4", data: { turbo: false } do %>
+        <%= form_with url: "/data/start", method: :post, multipart: true, id: "import-form", class: "panel", data: { turbo: false } do %>
             <%= hidden_field_tag :form, "1", id: nil %>
-            <div class="mb-3">
-                <label class="form-label" for="import-type"><%= lang('import_type') %></label>
+            <div class="field">
+                <label  for="import-type"><%= lang('import_type') %></label>
                 <%= select_tag :import_type, options_for_select([ [ "OpenAppointments ODS", "ods" ], [ "Sign In App / 10to8 CSV", "ten_to_eight" ] ]),
-                               id: "import-type", class: "form-select", data: { field: "import_type" } %>
+                               id: "import-type", data: { field: "import_type" } %>
             </div>
-            <div class="mb-3">
-                <%= file_field_tag :file, id: "import-file", class: "form-control", required: true,
+            <div>
+                <%= file_field_tag :file, id: "import-file", required: true,
                                    accept: ".ods,.csv,application/vnd.oasis.opendocument.spreadsheet,text/csv" %>
             </div>
-            <div class="mb-3" id="images-zip-wrapper" data-visible-when="import_type=ods">
-                <label class="form-label" for="import-images-file"><%= lang('images_zip_optional') %></label>
-                <%= file_field_tag :images_file, id: "import-images-file", class: "form-control", accept: ".zip,application/zip" %>
-                <div class="form-text text-muted small"><%= lang('images_zip_hint') %></div>
+            <div  id="images-zip-wrapper" data-visible-when="import_type=ods">
+                <label  for="import-images-file"><%= lang('images_zip_optional') %></label>
+                <%= file_field_tag :images_file, id: "import-images-file", accept: ".zip,application/zip" %>
+                <div class="field-hint muted"><%= lang('images_zip_hint') %></div>
             </div>
-            <div class="alert alert-warning py-2 small mb-3"><%= lang('import_providers_caution') %></div>
-            <div class="row mb-3">
-                <div class="col-12 col-md-6">
-                    <label class="form-label"><%= lang('import_phases') %></label>
+            <div class="notice" data-tone="warning"><%= lang('import_providers_caution') %></div>
+            <div>
+                <div class="field">
+                    <label><%= lang('import_phases') %></label>
                     <% ods_only = %w[appointment_statuses appointment_series working_plan_exceptions notifications webhooks consents] %>
                     <% TenToEight::Load::PHASES.each do |phase| %>
-                        <div class="form-check<%= ' ods-only' if ods_only.include?(phase) %>" <%= 'data-visible-when=import_type=ods' if ods_only.include?(phase) %>>
+                        <div class="choice <%= ' ods-only' if ods_only.include?(phase) %>" <%= 'data-visible-when=import_type=ods' if ods_only.include?(phase) %>>
                             <%= check_box_tag "phases[]", phase, !%w[providers assistants admins settings].include?(phase),
-                                              id: "phase-#{phase}", class: "form-check-input import-phase" %>
-                            <label class="form-check-label" for="phase-<%= phase %>"><%= lang(phase) %></label>
+                                              id: "phase-#{phase}", class: "import-phase" %>
+                            <label  for="phase-<%= phase %>"><%= lang(phase) %></label>
                         </div>
                     <% end %>
                 </div>
-                <div class="col-6 col-md-3">
-                    <label class="form-label" for="days-back"><%= lang('days_back') %></label>
-                    <%= number_field_tag :days_back, 21, id: "days-back", class: "form-control", min: 0, max: 3650 %>
+                <div class="field">
+                    <label  for="days-back"><%= lang('days_back') %></label>
+                    <%= number_field_tag :days_back, 21, id: "days-back", min: 0, max: 3650 %>
                 </div>
-                <div class="col-6 col-md-3">
-                    <label class="form-label" for="days-forward"><%= lang('days_forward') %></label>
-                    <%= number_field_tag :days_forward, 21, id: "days-forward", class: "form-control", min: 0, max: 3650 %>
+                <div class="field">
+                    <label  for="days-forward"><%= lang('days_forward') %></label>
+                    <%= number_field_tag :days_forward, 21, id: "days-forward", min: 0, max: 3650 %>
                 </div>
             </div>
-            <div class="d-flex gap-2">
-                <button type="submit" id="analyze-import" class="btn btn-outline-secondary" formaction="/data/analyze"><%= lang('analyze') %></button>
-                <button type="submit" id="start-import" class="btn btn-primary"><%= lang('start_import') %></button>
+            <div>
+                <button type="submit" id="analyze-import" class="secondary" formaction="/data/analyze"><%= lang('analyze') %></button>
+                <button type="submit" id="start-import" ><%= lang('start_import') %></button>
             </div>
             <%= render "import/status", import_status: @import_status, summary: @summary %>
         <% end %>
 
-        <h4 class="mb-3 fw-light text-danger"><%= lang('reset_database') %></h4>
-        <%= form_with url: "/data/reset", method: :post, id: "reset-form", class: "card card-body border-danger", data: { turbo: false } do %>
+        <h4 class="required"><%= lang('reset_database') %></h4>
+        <%= form_with url: "/data/reset", method: :post, id: "reset-form", class: "panel", data: { turbo: false } do %>
             <%= hidden_field_tag :form, "1", id: nil %>
-            <div class="alert alert-danger">
-                <i class="fas fa-exclamation-triangle me-2"></i>
+            <div class="notice" data-tone="error">
+                <i class="fas fa-exclamation-triangle"></i>
                 <%= lang('reset_database_warning') %>
             </div>
-            <div class="form-check mb-3">
-                <%= check_box_tag :full, "1", false, id: "full-reset", class: "form-check-input" %>
-                <label class="form-check-label" for="full-reset"><%= lang('full_reset_label') %></label>
+            <div class="choice">
+                <%= check_box_tag :full, "1", false, id: "full-reset" %>
+                <label  for="full-reset"><%= lang('full_reset_label') %></label>
             </div>
-            <div class="mb-3">
-                <label class="form-label" for="reset-confirmation"><%= lang('reset_confirmation_hint') %></label>
-                <%= text_field_tag :confirmation, nil, id: "reset-confirmation", class: "form-control", autocomplete: "off", data: { field: "confirmation" } %>
+            <div class="field">
+                <label  for="reset-confirmation"><%= lang('reset_confirmation_hint') %></label>
+                <%= text_field_tag :confirmation, nil, id: "reset-confirmation", autocomplete: "off", data: { field: "confirmation" } %>
             </div>
             <div>
-                <button type="submit" id="reset-database" class="btn btn-danger" data-enabled-when="confirmation=I KNOW WHAT I AM DOING">
+                <button type="submit" id="reset-database" class="destructive" data-enabled-when="confirmation=I KNOW WHAT I AM DOING">
                     <%= lang('reset_database') %>
                 </button>
             </div>

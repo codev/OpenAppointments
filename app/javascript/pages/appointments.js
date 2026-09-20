@@ -25,8 +25,8 @@
     }
 
     function showSeriesView(show) {
-        $('#series-view').toggleClass('d-none', !show);
-        $('#calendar .calendar-view, #not-working-notes').toggleClass('d-none', show);
+        $('#series-view').prop('hidden', !show);
+        $('#calendar .calendar-view, #not-working-notes').prop('hidden', show);
         $('#toggle-series span').text(lang(show ? 'back_to_appointments' : 'repeating_appointments'));
         window.localStorage.setItem('OpenAppointments.SeriesView', show ? '1' : '0');
         if (show) {
@@ -38,7 +38,7 @@
         const row = $('#series-table tr[data-id="' + id + '"]');
         App.Components.RepeatFields.load('series-repeat', row.data('rule'), row.data('description'), row.data('endsOn') || null);
         $('#series-pattern-save').data('id', id);
-        $('#series-pattern-modal').modal('show');
+        App.Utils.Dialog.open('series-pattern-modal');
     }
 
     function savePattern() {
@@ -55,7 +55,7 @@
                     App.Layouts.Backend.displayNotification(response.message || lang('unexpected_issues_occurred'));
                     return;
                 }
-                $('#series-pattern-modal').modal('hide');
+                App.Utils.Dialog.close('series-pattern-modal');
                 App.Layouts.Backend.displayNotification(lang('series_saved'));
                 App.Components.EventModal.reportSkipped(response.skipped);
                 loadSeries();
@@ -70,7 +70,7 @@
 
         App.once('appointments-page', () => {
             $(document).on('click', '#reload-appointments', reloadDay);
-            $(document).on('click', '#toggle-series', () => showSeriesView($('#series-view').hasClass('d-none')));
+            $(document).on('click', '#toggle-series', () => showSeriesView($('#series-view').prop('hidden')));
             $(document).on('click', '#series-table .series-edit', (event) => openPattern($(event.currentTarget).data('id')));
             $(document).on('click', '#series-pattern-save', savePattern);
             document.addEventListener('turbo:frame-load', (event) => {

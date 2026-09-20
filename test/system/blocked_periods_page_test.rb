@@ -80,7 +80,7 @@ class BlockedPeriodsFormTest < ApplicationSystemTestCase
     fill_in "Start", with: Time.zone.local(2026, 12, 28)
     fill_in "End", with: Time.zone.local(2026, 12, 24)
     click_on "Save"
-    assert_selector ".form-message.alert-danger", wait: 5
+    assert_selector ".form-message[data-tone=error]", wait: 5
     assert_selector "input.is-invalid[name='blocked_period[end_datetime]']"
     assert_nil BlockedPeriod.find_by(name: "Xmas")
 

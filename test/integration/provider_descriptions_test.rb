@@ -25,8 +25,8 @@ class ProviderDescriptionsTest < ActionDispatch::IntegrationTest
   test "the providers page offers the two full-width textareas" do
     login_admin
     get "/providers/new"
-    assert_select ".col-12 textarea#provider_about"
-    assert_select ".col-12 textarea#provider_services_description"
+    assert_select "textarea#provider_about"
+    assert_select "textarea#provider_services_description"
     assert_select "label[for=provider_services_description]", text: I18n.t("ea.services_description")
   end
 

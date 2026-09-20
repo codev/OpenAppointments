@@ -89,7 +89,7 @@ App.Utils.WorkingPlan = (function () {
                                 'html': [
                                     $('<input/>', {
                                         'id': index + '-start',
-                                        'class': 'work-start form-control form-control-sm',
+                                        'class': 'work-start small-field',
                                     }),
                                 ],
                             }),
@@ -97,7 +97,7 @@ App.Utils.WorkingPlan = (function () {
                                 'html': [
                                     $('<input/>', {
                                         'id': index + '-end',
-                                        'class': 'work-end form-control form-control-sm',
+                                        'class': 'work-end small-field',
                                     }),
                                 ],
                             }),
@@ -136,7 +136,7 @@ App.Utils.WorkingPlan = (function () {
                                         'html': [
                                             $('<button/>', {
                                                 'type': 'button',
-                                                'class': 'btn btn-outline-secondary btn-sm edit-break',
+                                                'class': 'secondary small-action edit-break',
                                                 'title': lang('edit'),
                                                 'html': [
                                                     $('<span/>', {
@@ -146,7 +146,7 @@ App.Utils.WorkingPlan = (function () {
                                             }),
                                             $('<button/>', {
                                                 'type': 'button',
-                                                'class': 'btn btn-outline-secondary btn-sm delete-break',
+                                                'class': 'secondary small-action delete-break',
                                                 'title': lang('delete'),
                                                 'html': [
                                                     $('<span/>', {
@@ -156,7 +156,7 @@ App.Utils.WorkingPlan = (function () {
                                             }),
                                             $('<button/>', {
                                                 'type': 'button',
-                                                'class': 'btn btn-outline-secondary btn-sm save-break d-none',
+                                                'class': 'secondary small-action save-break', hidden: true,
                                                 'title': lang('save'),
                                                 'html': [
                                                     $('<span/>', {
@@ -166,7 +166,7 @@ App.Utils.WorkingPlan = (function () {
                                             }),
                                             $('<button/>', {
                                                 'type': 'button',
-                                                'class': 'btn btn-outline-secondary btn-sm cancel-break d-none',
+                                                'class': 'secondary small-action cancel-break', hidden: true,
                                                 'title': lang('cancel'),
                                                 'html': [
                                                     $('<span/>', {
@@ -248,8 +248,8 @@ App.Utils.WorkingPlan = (function () {
                     event: 'edit',
                     width: '100px',
                     height: '30px',
-                    submit: '<button type="button" class="d-none submit-editable">Submit</button>',
-                    cancel: '<button type="button" class="d-none cancel-editable">Cancel</button>',
+                    submit: '<button type="button" class="submit-editable" hidden>Submit</button>',
+                    cancel: '<button type="button" class="cancel-editable" hidden>Cancel</button>',
                     onblur: 'ignore',
                     onreset: function () {
                         if (!this.enableCancel) {
@@ -284,12 +284,12 @@ App.Utils.WorkingPlan = (function () {
                     height: '30px',
                     submit: $('<button/>', {
                         'type': 'button',
-                        'class': 'd-none submit-editable',
+                        'class': 'submit-editable', hidden: true,
                         'text': lang('save'),
                     }).get(0).outerHTML,
                     cancel: $('<button/>', {
                         'type': 'button',
-                        'class': 'd-none cancel-editable',
+                        'class': 'cancel-editable', hidden: true,
                         'text': lang('cancel'),
                     }).get(0).outerHTML,
                     onblur: 'ignore',
@@ -346,7 +346,7 @@ App.Utils.WorkingPlan = (function () {
                         'html': [
                             $('<button/>', {
                                 'type': 'button',
-                                'class': 'btn btn-primary btn-sm edit-working-plan-exception',
+                                'class': 'small-action edit-working-plan-exception',
                                 'title': lang('edit'),
                                 'html': [
                                     $('<span/>', {
@@ -356,7 +356,7 @@ App.Utils.WorkingPlan = (function () {
                             }),
                             $('<button/>', {
                                 'type': 'button',
-                                'class': 'btn btn-outline-secondary btn-sm delete-working-plan-exception',
+                                'class': 'secondary small-action delete-working-plan-exception',
                                 'title': lang('delete'),
                                 'html': [
                                     $('<span/>', {
@@ -432,7 +432,7 @@ App.Utils.WorkingPlan = (function () {
                             'html': [
                                 $('<button/>', {
                                     'type': 'button',
-                                    'class': 'btn btn-outline-secondary btn-sm edit-break',
+                                    'class': 'secondary small-action edit-break',
                                     'title': lang('edit'),
                                     'html': [
                                         $('<span/>', {
@@ -442,7 +442,7 @@ App.Utils.WorkingPlan = (function () {
                                 }),
                                 $('<button/>', {
                                     'type': 'button',
-                                    'class': 'btn btn-outline-secondary btn-sm delete-break',
+                                    'class': 'secondary small-action delete-break',
                                     'title': lang('delete'),
                                     'html': [
                                         $('<span/>', {
@@ -452,7 +452,7 @@ App.Utils.WorkingPlan = (function () {
                                 }),
                                 $('<button/>', {
                                     'type': 'button',
-                                    'class': 'btn btn-outline-secondary btn-sm save-break d-none',
+                                    'class': 'secondary small-action save-break', hidden: true,
                                     'title': lang('save'),
                                     'html': [
                                         $('<span/>', {
@@ -462,7 +462,7 @@ App.Utils.WorkingPlan = (function () {
                                 }),
                                 $('<button/>', {
                                     'type': 'button',
-                                    'class': 'btn btn-outline-secondary btn-sm cancel-break d-none',
+                                    'class': 'secondary small-action cancel-break', hidden: true,
                                     'title': lang('cancel'),
                                     'html': [
                                         $('<span/>', {
@@ -508,9 +508,9 @@ App.Utils.WorkingPlan = (function () {
                 $tr.find('.break-day select').focus();
 
                 // Show save - cancel buttons.
-                $tr.find('.edit-break, .delete-break').addClass('d-none');
-                $tr.find('.save-break, .cancel-break').removeClass('d-none');
-                $tr.find('select,input:text').addClass('form-control form-control-sm');
+                $tr.find('.edit-break, .delete-break').prop('hidden', true);
+                $tr.find('.save-break, .cancel-break').prop('hidden', false);
+                $tr.find('select,input:text').addClass('small-field');
             });
 
             /**
@@ -538,8 +538,8 @@ App.Utils.WorkingPlan = (function () {
                 $modifiedRow.find('.cancel-editable').trigger('click');
                 this.enableCancel = false;
 
-                $modifiedRow.find('.edit-break, .delete-break').removeClass('d-none');
-                $modifiedRow.find('.save-break, .cancel-break').addClass('d-none');
+                $modifiedRow.find('.edit-break, .delete-break').prop('hidden', false);
+                $modifiedRow.find('.save-break, .cancel-break').prop('hidden', true);
             });
 
             /**
@@ -570,8 +570,8 @@ App.Utils.WorkingPlan = (function () {
                 $modifiedRow.find('.editable .submit-editable').trigger('click');
                 this.enableSubmit = false;
 
-                $modifiedRow.find('.save-break, .cancel-break').addClass('d-none');
-                $modifiedRow.find('.edit-break, .delete-break').removeClass('d-none');
+                $modifiedRow.find('.save-break, .cancel-break').prop('hidden', true);
+                $modifiedRow.find('.edit-break, .delete-break').prop('hidden', false);
             });
 
             /**

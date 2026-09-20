@@ -1,7 +1,7 @@
 <% today = Date.current %>
-<h5 class="fw-light mb-3"><%= lang('repeating_appointments') %></h5>
-<div class="table-responsive">
-    <table class="table table-striped align-middle" id="series-table">
+<h5><%= lang('repeating_appointments') %></h5>
+<div class="table-scroll">
+    <table class="striped align-middle" id="series-table">
         <thead>
         <tr>
             <th><%= lang('provider') %></th>
@@ -26,17 +26,17 @@
                 <td><%= booked.any? ? format_setting_date(booked.first) : "-" %></td>
                 <td>
                     <% if skipped.any? %>
-                        <span class="badge bg-warning text-dark" title="<%= skipped.join("\n") %>"><%= skipped.length %></span>
+                        <span class="tag text-dark" title="<%= skipped.join("\n") %>"><%= skipped.length %></span>
                     <% else %>
                         -
                     <% end %>
                 </td>
-                <td class="text-nowrap">
-                    <button type="button" class="btn btn-primary btn-sm me-2 series-edit" data-id="<%= row.id %>">
-                        <i class="fas fa-edit me-2"></i><span><%= lang('change_pattern') %></span>
+                <td class="nowrap">
+                    <button type="button" class="small-action series-edit" data-id="<%= row.id %>">
+                        <i class="fas fa-edit"></i><span><%= lang('change_pattern') %></span>
                     </button>
-                    <%= link_to cancel_form_appointment_series_path(row), class: "btn btn-outline-danger btn-sm series-cancel" do %>
-                        <i class="fas fa-calendar-times me-2"></i><span><%= lang('cancel_series') %></span>
+                    <%= link_to cancel_form_appointment_series_path(row), class: "destructive small-action series-cancel", role: "button" do %>
+                        <i class="fas fa-calendar-times"></i><span><%= lang('cancel_series') %></span>
                     <% end %>
                 </td>
             </tr>
@@ -45,5 +45,5 @@
     </table>
 </div>
 <% if series.empty? %>
-    <p id="series-empty" class="text-muted"><%= lang('no_repeating_appointments') %></p>
+    <p id="series-empty" class="muted"><%= lang('no_repeating_appointments') %></p>
 <% end %>

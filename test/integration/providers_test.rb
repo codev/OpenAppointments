@@ -17,7 +17,7 @@ class ProvidersTest < ActionDispatch::IntegrationTest
     assert_select "input[type=hidden][name='provider[settings][working_plan_exceptions]'][value='[]']"
     assert_select "#working-plan table.working-plan tbody"
     assert_select "#reset-working-plan[data-company-working-plan]"
-    assert_select ".nav-pills a[href='#working-plan']"
+    assert_select "[role=tablist] [aria-controls=working-plan]"
     assert_select "textarea[name='provider[about]']"
     assert_select "#provider-services input[type=checkbox][name='provider[services][]'][value=?]", services(:haircut).id.to_s
     assert_match(/"first_weekday"/, response.body)

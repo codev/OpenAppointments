@@ -1,15 +1,15 @@
 <%# Port of EA pages/business_settings.php. %>
-<div id="business-logic-page" class="container backend-page py-3">
+<div id="business-logic-page" class="backend-page">
     <div id="business-logic">
-        <div class="row">
-            <div class="col-sm-3">
+        <div class="with-sidebar">
+            <aside>
                 <%= render "shared/settings_nav" %>
-            </div>
-            <div class="col-sm-9">
+            </aside>
+            <div>
                 <turbo-frame id="settings">
                     <%= settings_form "/business_settings/save" do %>
-                        <div class="d-flex justify-content-between align-items-center border-bottom mb-4 py-2">
-                            <h4 class="mb-0 fw-light">
+                        <div class="page-heading toolbar spaced">
+                            <h4>
                                 <%= lang('business_logic') %>
                             </h4>
 
@@ -19,14 +19,14 @@
                         <%# The working plan editor and status options write into these on submit. %>
                         <%= hidden_field_tag "settings[company_working_plan]", setting('company_working_plan'), id: "working-plan-json" %>
                         <%= hidden_field_tag "settings[appointment_status_options]", vars(:appointment_status_options), id: "status-options-json" %>
-                        <h5 class="mb-3 fw-light"><%= lang('working_plan') %></h5>
+                        <h5><%= lang('working_plan') %></h5>
 
-                        <p class="form-text text-muted mb-4">
+                        <p class="field-hint muted">
                             <%= lang('edit_working_plan_hint') %>
                         </p>
 
-                        <div class="table-responsive">
-                            <table class="working-plan table table-striped">
+                        <div class="table-scroll">
+                            <table class="working-plan striped">
                                 <thead>
                                 <tr>
                                     <th><%= lang('day') %></th>
@@ -38,30 +38,30 @@
                             </table>
                         </div>
 
-                        <div class="text-end mb-5">
-                            <button class="btn btn-outline-secondary" id="apply-global-working-plan" type="button">
+                        <div class="end-aligned">
+                            <button class="secondary" id="apply-global-working-plan" type="button">
                                 <i class="fas fa-check"></i>
                                 <%= lang('apply_to_all_providers') %>
                             </button>
                         </div>
 
-                        <h5 class="mb-3 fw-light"><%= lang('breaks') %></h5>
+                        <h5><%= lang('breaks') %></h5>
 
-                        <p class="form-text text-muted">
+                        <p class="field-hint muted">
                             <%= lang('edit_breaks_hint') %>
                         </p>
 
-                        <div class="mt-2">
-                            <button type="button" class="add-break btn btn-primary">
-                                <i class="fas fa-plus-square me-2"></i>
+                        <div class="toolbar">
+                            <button type="button" class="add-break">
+                                <i class="fas fa-plus-square"></i>
                                 <%= lang('add_break') %>
                             </button>
                         </div>
 
                         <br>
 
-                        <div class="table-responsive">
-                            <table class="breaks table table-striped mb-5">
+                        <div class="table-scroll">
+                            <table class="breaks striped">
                                 <thead>
                                 <tr>
                                     <th><%= lang('day') %></th>
@@ -75,84 +75,84 @@
                         </div>
 
                         <% if can?(:view, :blocked_periods) %>
-                            <h5 class="mb-3 fw-light"><%= lang('blocked_periods') %></h5>
+                            <h5><%= lang('blocked_periods') %></h5>
 
-                            <p class="form-text text-muted">
+                            <p class="field-hint muted">
                                 <%= lang('blocked_periods_hint') %>
                             </p>
 
-                            <div class="mb-5">
-                                <a href="/blocked_periods" data-turbo="false" class="btn btn-primary">
-                                    <i class="fas fa-cogs me-2"></i>
+                            <div>
+                                <a role="button" href="/blocked_periods" data-turbo="false" >
+                                    <i class="fas fa-cogs"></i>
                                     <%= lang('configure') %>
                                 </a>
                             </div>
                         <% end %>
 
-                        <h5 class="mb-3 fw-light"><%= lang('minimum_times_before_appointments') %></h5>
+                        <h5><%= lang('minimum_times_before_appointments') %></h5>
 
                         <% { "book_advance_timeout" => "booking_window", "late_cancellation_timeout" => "late_window" }.each do |field, key| %>
-                            <div class="mb-4 minutes-field" data-minutes-field="<%= field %>">
-                                <label class="form-label"><%= lang(key) %></label>
-                                <div class="d-flex gap-2">
-                                    <div class="input-group">
+                            <div class="minutes-field" data-minutes-field="<%= field %>">
+                                <label><%= lang(key) %></label>
+                                <div class="toolbar">
+                                    <div class="input-row">
                                         <%= number_field_tag "minutes[#{field}][hours]", setting(field).to_i / 60, min: 0, id: nil,
-                                                             class: "form-control hours", "aria-label": lang('hours') %>
-                                        <span class="input-group-text"><%= lang('hours') %></span>
+                                                             class: "hours", "aria-label": lang('hours') %>
+                                        <span class="input-addon"><%= lang('hours') %></span>
                                     </div>
-                                    <div class="input-group">
+                                    <div class="input-row">
                                         <%= number_field_tag "minutes[#{field}][minutes]", setting(field).to_i % 60, min: 0, max: 59, id: nil,
-                                                             class: "form-control minutes", "aria-label": lang('minutes') %>
-                                        <span class="input-group-text"><%= lang('minutes') %></span>
+                                                             class: "minutes", "aria-label": lang('minutes') %>
+                                        <span class="input-addon"><%= lang('minutes') %></span>
                                     </div>
                                 </div>
                                 <%= settings_flash %>
-                                <div class="form-text text-muted">
+                                <div class="field-hint muted">
                                     <small><%= lang("#{key}_hint") %></small>
                                 </div>
                             </div>
                         <% end %>
-                        <div class="mb-5"></div>
+                        <div></div>
 
-                        <h5 class="mb-3 fw-light"><%= lang('future_booking_limit') %></h5>
+                        <h5><%= lang('future_booking_limit') %></h5>
 
-                        <div class="mb-5">
-                            <label for="future-booking-limit" class="form-label">
+                        <div class="field">
+                            <label for="future-booking-limit" >
                                 <%= lang('limit_days') %>
                             </label>
                             <%= setting_text "future_booking_limit", min: 15, type: "number" %>
-                            <div class="form-text text-muted">
+                            <div class="field-hint muted">
                                 <small>
                                     <%= lang('future_booking_limit_hint') %>
                                 </small>
                             </div>
                         </div>
 
-                        <h5 class="mb-3 fw-light"><%= lang('waitlist') %></h5>
+                        <h5><%= lang('waitlist') %></h5>
 
-                        <div class="form-check form-switch mb-3">
+                        <div class="choice switch-field">
                             <%= setting_switch "waitlist_enabled", default: "0" %>
-                            <label class="form-check-label" for="waitlist-enabled"><%= lang('waitlist_enabled') %></label>
-                            <div class="form-text text-muted"><small><%= lang('waitlist_enabled_hint') %></small></div>
+                            <label  for="waitlist-enabled"><%= lang('waitlist_enabled') %></label>
+                            <div class="field-hint muted"><small><%= lang('waitlist_enabled_hint') %></small></div>
                         </div>
 
                         <% { "waitlist_days" => 14, "waitlist_max_notices" => 7, "waitlist_min_slots" => 3,
                              "waitlist_stagger_seconds" => 60 }.each do |name, default| %>
-                            <div class="mb-3">
-                                <label for="<%= name.dasherize %>" class="form-label"><%= lang(name) %></label>
+                            <div class="field">
+                                <label for="<%= name.dasherize %>" ><%= lang(name) %></label>
                                 <%= setting_text name, type: "number", min: 0, value: setting(name).presence || default %>
-                                <div class="form-text text-muted"><small><%= lang("#{name}_hint") %></small></div>
+                                <div class="field-hint muted"><small><%= lang("#{name}_hint") %></small></div>
                             </div>
                         <% end %>
-                        <div class="mb-5"></div>
+                        <div></div>
 
-                        <div class="d-flex justify-content-start align-items-center mb-3">
-                            <h5 class="mb-0 me-3 fw-light">
+                        <div>
+                            <h5>
                                 <%= lang('appointment_status_options') %>
                             </h5>
                         </div>
 
-                        <p class="form-text text-muted mb-4">
+                        <p class="field-hint muted">
                             <%= lang('appointment_status_options_info') %>
                         </p>
 

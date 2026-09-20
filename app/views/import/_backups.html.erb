@@ -2,20 +2,20 @@
 <% working = export_status && %w[queued running].include?(export_status[:state] || export_status["state"]) %>
 <% state = export_status && (export_status[:state] || export_status["state"]) %>
 <turbo-frame id="backups" <% if working %>data-poll-every="2000" data-poll-src="/data?export_id=<%= params[:export_id] %>"<% end %>>
-    <%= form_with url: "/data/export", method: :post, class: "d-inline", data: { turbo_frame: "backups" } do %>
+    <%= form_with url: "/data/export", method: :post, data: { turbo_frame: "backups" } do %>
         <%= hidden_field_tag :form, "1", id: nil %>
-        <button type="submit" class="btn btn-outline-primary" id="export-data" <%= 'disabled' if working %>>
-            <i class="fas <%= working ? 'fa-spinner fa-spin' : 'fa-download' %> me-2"></i>
+        <button type="submit" class="outline" id="export-data" <%= 'disabled' if working %>>
+            <i class="fas <%= working ? 'fa-spinner fa-spin' : 'fa-download' %>"></i>
             <%= lang(working ? 'backup_working' : 'export_data') %>
         </button>
     <% end %>
     <% if state == "failed" %>
-        <div class="alert alert-danger mt-3 mb-0"><%= lang('backup_failed') %></div>
+        <div class="notice" data-tone="error"><%= lang('backup_failed') %></div>
     <% end %>
     <% if backups.any? %>
-        <div id="backups-section" class="mt-3">
-            <h6 class="fw-light"><%= lang('backups') %></h6>
-            <table class="table table-sm align-middle mb-2" id="backups-table">
+        <div id="backups-section" >
+            <h6><%= lang('backups') %></h6>
+            <table class="align-middle" id="backups-table">
                 <thead>
                     <tr>
                         <th><%= lang('date') %></th>
@@ -39,7 +39,7 @@
                     <% end %>
                 </tbody>
             </table>
-            <p class="text-muted small mb-0"><%= lang('backups_hint') %></p>
+            <p class="muted"><%= lang('backups_hint') %></p>
         </div>
     <% end %>
 </turbo-frame>

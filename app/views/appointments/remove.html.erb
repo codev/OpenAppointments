@@ -2,29 +2,29 @@
 <turbo-frame id="event">
     <%= form_with url: remove_appointment_path(@appointment), method: :post, id: "appointment-remove-form", class: "event-form" do %>
         <%= hidden_field_tag "kind", @kind %>
-        <div class="modal-header">
-            <h3 class="modal-title"><%= lang(@kind == "delete" ? "delete_appointment_title" : "cancel_appointment_title") %></h3>
-            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        <div class="dialog-header">
+            <h3 class="dialog-title"><%= lang(@kind == "delete" ? "delete_appointment_title" : "cancel_appointment_title") %></h3>
+            <button type="button" class="dialog-close" data-dialog-close aria-label="Close">&times;</button>
         </div>
-        <div class="modal-body">
-            <% if @error %><div class="alert alert-danger"><%= @error %></div><% end %>
+        <div class="dialog-body">
+            <% if @error %><div class="notice" data-tone="error"><%= @error %></div><% end %>
             <p><%= lang('notify_users_on_delete_question') %></p>
-            <div class="form-check">
-                <%= radio_button_tag "notify_users", "1", true, id: "notify-users-yes", class: "form-check-input" %>
-                <label class="form-check-label" for="notify-users-yes"><%= lang('yes') %></label>
+            <div class="choice">
+                <%= radio_button_tag "notify_users", "1", true, id: "notify-users-yes" %>
+                <label  for="notify-users-yes"><%= lang('yes') %></label>
             </div>
-            <div class="form-check mb-3">
-                <%= radio_button_tag "notify_users", "0", false, id: "notify-users-no", class: "form-check-input" %>
-                <label class="form-check-label" for="notify-users-no"><%= lang('no') %></label>
+            <div class="choice">
+                <%= radio_button_tag "notify_users", "0", false, id: "notify-users-no" %>
+                <label  for="notify-users-no"><%= lang('no') %></label>
             </div>
-            <label class="form-label" for="cancellation-reason">
+            <label  for="cancellation-reason">
                 <%= lang(@kind == "delete" ? "write_appointment_removal_reason" : "write_appointment_cancel_reason") %>
             </label>
-            <%= text_area_tag "cancellation_reason", nil, id: "cancellation-reason", class: "form-control w-100", rows: 3 %>
+            <%= text_area_tag "cancellation_reason", nil, id: "cancellation-reason", rows: 3 %>
         </div>
-        <div class="modal-footer">
-            <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal"><%= lang('close') %></button>
-            <button type="submit" class="btn btn-danger"><%= lang(@kind) %></button>
+        <div class="dialog-footer">
+            <button type="button" class="secondary" data-dialog-close><%= lang('close') %></button>
+            <button type="submit" class="destructive"><%= lang(@kind) %></button>
         </div>
     <% end %>
 </turbo-frame>

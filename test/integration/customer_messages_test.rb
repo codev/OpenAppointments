@@ -32,7 +32,7 @@ class CustomerMessagesTest < ActionDispatch::IntegrationTest
     get "/inbox"
     assert_response :success
     assert_includes response.body, "Running late"
-    assert_includes response.body, 'id="inbox-unread" class="badge bg-danger ms-1 ">1<'
+    assert_select "#inbox-unread.count:not([hidden])", text: "1"
 
     post "/messages/#{message.id}/mark_read"
     assert_equal 0, response.parsed_body["inbox_unread"]

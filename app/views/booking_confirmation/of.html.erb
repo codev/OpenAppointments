@@ -1,36 +1,36 @@
 <%# Port of EA pages/booking_confirmation.php. Rendered with the message layout. %>
-<div class="d-flex align-items-center justify-content-center min-vh-100-">
-    <div class="text-center py-4 px-3">
-        <div class="d-flex align-items-center justify-content-center rounded-circle bg-success bg-opacity-10 mx-auto mb-4" style="width: 100px; height: 100px;">
+<div class="toolbar">
+    <div class="centered">
+        <div class="toolbar"  style="width: 100px; height: 100px;">
             <i class="fas fa-calendar-check fa-3x text-success"></i>
         </div>
 
-        <h3 class="text-success fw-semibold mb-4"><%= lang('appointment_registered') %></h3>
+        <h3 class="text-success"><%= lang('appointment_registered') %></h3>
 
-        <p class="fs-5 text-muted mb-1">
+        <p class="muted">
             <%= lang('appointment_details_was_sent_to_you') %>
         </p>
 
-        <p class="text-muted small mb-4">
+        <p class="muted">
             <%= lang('check_spam_folder') %>
         </p>
 
-        <div class="d-flex flex-column flex-sm-row gap-2 justify-content-center mt-4">
-            <a href="<%= vars(:company_link).presence || "/" %>" id="go-to-company" class="btn btn-primary px-4 py-2">
+        <div class="stack">
+            <a role="button" href="<%= vars(:company_link).presence || "/" %>" id="go-to-company" >
                 <%= t("ea.go_to_company", company: vars(:company_name)) %>
             </a>
         </div>
 
-        <div class="d-flex flex-column flex-sm-row gap-2 justify-content-center mt-2">
+        <div class="stack">
             <% if vars(:display_add_to_google_calendar) == "1" %>
-            <a href="<%= vars(:add_to_google_url) %>" id="add-to-google-calendar" class="btn btn-outline-primary px-4 py-2" target="_blank">
-                <i class="fab fa-google me-2"></i>
+            <a role="button" href="<%= vars(:add_to_google_url) %>" id="add-to-google-calendar" class="outline" target="_blank">
+                <i class="fab fa-google"></i>
                 <%= lang('add_to_google_calendar') %>
             </a>
             <% end %>
 
-            <a href="<%= vars(:ics_url) %>" id="download-ics" class="btn btn-outline-primary px-4 py-2">
-                <i class="fas fa-file-download me-2"></i>
+            <a role="button" href="<%= vars(:ics_url) %>" id="download-ics" class="outline">
+                <i class="fas fa-file-download"></i>
                 <%= lang('download_ics') %>
             </a>
         </div>

@@ -1,20 +1,20 @@
 <%# Umami Analytics settings (integrations hub). %>
-<div id="umami-analytics-settings-page" class="container backend-page py-3">
-    <div class="row">
-        <div class="col-sm-3">
+<div id="umami-analytics-settings-page" class="backend-page">
+    <div class="with-sidebar">
+        <aside>
             <%= render "shared/settings_nav" %>
-        </div>
-        <div id="umami-analytics-settings" class="col-sm-9">
+        </aside>
+        <div id="umami-analytics-settings" >
             <turbo-frame id="settings">
                 <%= settings_form "/umami_analytics_settings/save" do %>
-                    <div class="d-flex justify-content-between align-items-center border-bottom mb-4 py-2">
-                        <h4 class="mb-0 fw-light">
+                    <div class="toolbar spaced">
+                        <h4>
                             <%= lang('umami_analytics') %>
                         </h4>
 
-                        <div>
-                            <a href="/integrations" data-turbo="false" class="btn btn-outline-primary me-2">
-                                <i class="fas fa-chevron-left me-2"></i>
+                        <div class="split">
+                            <a role="button" href="/integrations" data-turbo="false" class="outline">
+                                <i class="fas fa-chevron-left"></i>
                                 <%= lang('back') %>
                             </a>
 
@@ -23,35 +23,35 @@
                     </div>
                     <%= settings_flash %>
 
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="mb-3">
-                                <label class="form-label" for="umami-analytics-url">
+                    <div>
+                        <div class="full">
+                            <div class="field">
+                                <label  for="umami-analytics-url">
                                     <%= lang('umami_analytics_url') %>
                                 </label>
                                 <%= setting_text "umami_analytics_url", placeholder: "https://stats.example.org" %>
-                                <div class="form-text text-muted">
+                                <div class="field-hint muted">
                                     <small>
                                         <%= lang('umami_analytics_url_hint') %>
                                     </small>
                                 </div>
                             </div>
 
-                            <div class="mb-3">
-                                <label class="form-label" for="umami-analytics-website-id">
+                            <div class="field">
+                                <label  for="umami-analytics-website-id">
                                     <%= lang('umami_analytics_website_id') %>
                                 </label>
                                 <%= setting_text "umami_analytics_website_id" %>
                             </div>
 
-                            <div class="mb-3">
-                                <div class="form-check form-switch">
+                            <div>
+                                <div class="choice switch-field">
                                     <%= setting_switch "umami_analytics_recorder" %>
-                                    <label class="form-check-label" for="umami-analytics-recorder">
+                                    <label  for="umami-analytics-recorder">
                                         <%= lang('umami_analytics_recorder') %>
                                     </label>
                                 </div>
-                                <div class="form-text text-muted small">
+                                <div class="field-hint muted">
                                     <%= lang('umami_analytics_recorder_hint') %>
                                 </div>
                             </div>

@@ -1,7 +1,7 @@
 <% unread = vars(:unread_counts)[record.id] || 0 %>
 <strong><%= record.name.presence || "[No Name]" %></strong>
 <% if unread.positive? %>
-    <span class="badge bg-danger ms-2 unread-badge"><%= unread %></span>
+    <span class="tag count unread-badge"><%= unread %></span>
 <% end %>
 <br>
-<small class="text-muted"><%= [ record.email.presence || "[No Email]", record.phone_number.presence ].compact.join(", ") %></small>
+<small class="muted"><%= [ record.email.presence || "[No Email]", record.phone_number.presence ].compact.join(", ") %></small>

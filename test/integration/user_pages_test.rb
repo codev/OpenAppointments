@@ -83,7 +83,7 @@ class UserPagesTest < ActionDispatch::IntegrationTest
     delete "/admins/#{users(:admin).id}"
     assert_redirected_to "/admins?selected=#{users(:admin).id}"
     follow_redirect!
-    assert_select ".alert-danger", text: /cannot delete your own account/
+    assert_select ".notice[data-tone=error]", text: /cannot delete your own account/
     assert User.exists?(users(:admin).id)
   end
 

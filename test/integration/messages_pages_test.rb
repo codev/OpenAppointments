@@ -52,8 +52,8 @@ class MessagesPagesTest < ActionDispatch::IntegrationTest
     get "/inbox"
     assert_select ".inbox-message.message-unread", 1 do
       assert_select ".inbox-meta a[href='/customers?customer_id=#{users(:jx).id}']", text: "JX"
-      assert_select ".inbox-meta .badge", text: "Email"
-      assert_select ".inbox-meta .badge", text: "Received"
+      assert_select ".inbox-meta .tag", text: "Email"
+      assert_select ".inbox-meta .tag", text: "Received"
       assert_select ".inbox-meta .mark-read"
       assert_select ".inbox-subject", text: "Re: Confirmed"
     end
@@ -133,7 +133,7 @@ class MessagesNotificationsFormTest < ActionDispatch::IntegrationTest
     created = Notification.find_by!(title: "New one")
     assert_redirected_to "/messages_notifications?open=#{created.id}"
     follow_redirect!
-    assert_select ".alert-success", text: I18n.t("ea.notification_saved")
+    assert_select ".notice[data-tone=success]", text: I18n.t("ea.notification_saved")
     assert_select ".notification-panel[data-id=?] .notification-body:not([style])", created.id.to_s
     assert_equal [ "provider" ], created.audiences
     assert_equal [], created.channels

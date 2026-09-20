@@ -1,181 +1,181 @@
 <%# Port of EA pages/booking_settings.php. %>
-<div id="booking-settings-page" class="container backend-page py-3">
+<div id="booking-settings-page" class="backend-page">
     <div id="booking-settings">
-        <div class="row">
-            <div class="col-sm-3">
+        <div class="with-sidebar">
+            <aside>
                 <%= render "shared/settings_nav" %>
-            </div>
-            <div class="col-sm-9">
+            </aside>
+            <div>
                 <turbo-frame id="settings">
                     <%= settings_form "/booking_settings/save" do %>
-                        <div class="d-flex justify-content-between align-items-center border-bottom mb-4 py-2">
-                            <h4 class="mb-0 fw-light">
+                        <div class="page-heading toolbar spaced">
+                            <h4>
                                 <%= lang('booking_settings') %>
                             </h4>
 
                             <%= settings_save_button %>
                         </div>
 
-                        <h5 class="mb-3 fw-light">
+                        <h5>
                             <%= lang('fields') %>
                         </h5>
 
-                        <div class="row mb-5 fields-row">
-                            <div class="col-12 col-lg-6">
-                                <div class="form-group mb-4">
-                                    <label for="name" class="form-label">
+                        <div class="fields-row split">
+                            <div class="full">
+                                <div class="form-group">
+                                    <label for="name" >
                                         <%= lang('name') %>
-                                        <span class="text-danger">*</span>
+                                        <span class="required">*</span>
                                     </label>
 
-                                    <input type="text" id="name" class="form-control mb-2" readonly/>
+                                    <input type="text" id="name"  readonly/>
                                 </div>
                             </div>
                             <%= settings_flash %>
-                            <div class="col-12 col-lg-6">
-                                <div class="form-group mb-4">
-                                    <label for="email" class="form-label">
+                            <div class="split">
+                                <div class="form-group">
+                                    <label for="email" >
                                         <%= lang('email') %>
-                                        <span class="text-danger">*</span>
+                                        <span class="required">*</span>
                                     </label>
-                                    <input type="text" id="email" class="form-control mb-2" readonly/>
-                                    <div class="d-flex">
-                                        <div class="form-check form-switch me-4">
-                                            <%= setting_switch "display_email", class: "form-check-input display-switch" %>
-                                            <label class="form-check-label" for="display-email">
+                                    <input type="text" id="email"  readonly/>
+                                    <div class="toolbar">
+                                        <div class="choice switch-field">
+                                            <%= setting_switch "display_email", class: "display-switch" %>
+                                            <label  for="display-email">
                                                 <%= lang('display') %>
                                             </label>
                                         </div>
 
-                                        <div class="form-check form-switch">
-                                            <%= setting_switch "require_email", class: "form-check-input require-switch" %>
-                                            <label class="form-check-label" for="require-email">
+                                        <div class="choice switch-field">
+                                            <%= setting_switch "require_email", class: "require-switch" %>
+                                            <label  for="require-email">
                                                 <%= lang('require') %>
                                             </label>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-12 col-lg-6">
-                                <div class="form-group mb-4">
-                                    <label for="phone-number" class="form-label">
+                            <div class="full">
+                                <div class="form-group">
+                                    <label for="phone-number" >
                                         <%= lang('phone_number') %>
-                                        <span class="text-danger">*</span>
+                                        <span class="required">*</span>
                                     </label>
-                                    <input type="text" id="phone-number" class="form-control mb-2" readonly/>
-                                    <div class="d-flex">
-                                        <div class="form-check form-switch me-4">
-                                            <%= setting_switch "display_phone_number", class: "form-check-input display-switch" %>
-                                            <label class="form-check-label" for="display-phone-number">
+                                    <input type="text" id="phone-number"  readonly/>
+                                    <div class="toolbar">
+                                        <div class="choice switch-field">
+                                            <%= setting_switch "display_phone_number", class: "display-switch" %>
+                                            <label  for="display-phone-number">
                                                 <%= lang('display') %>
                                             </label>
                                         </div>
 
-                                        <div class="form-check form-switch">
-                                            <%= setting_switch "require_phone_number", class: "form-check-input require-switch" %>
-                                            <label class="form-check-label" for="require-phone-number">
+                                        <div class="choice switch-field">
+                                            <%= setting_switch "require_phone_number", class: "require-switch" %>
+                                            <label  for="require-phone-number">
                                                 <%= lang('require') %>
                                             </label>
                                         </div>
                                     </div>
-                                    <div class="form-check form-switch mt-2">
+                                    <div class="choice switch-field">
                                         <%= setting_switch "require_phone_or_email" %>
-                                        <label class="form-check-label" for="require-phone-or-email">
+                                        <label  for="require-phone-or-email">
                                             <%= lang('require_phone_or_email_label') %>
                                         </label>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-12 col-lg-6">
-                                <div class="form-group mb-4">
-                                    <label for="address" class="form-label">
+                            <div>
+                                <div class="form-group">
+                                    <label for="address" >
                                         <%= lang('address') %>
-                                        <span class="text-danger">*</span>
+                                        <span class="required">*</span>
                                     </label>
-                                    <input type="text" id="address" class="form-control mb-2" readonly/>
-                                    <div class="d-flex">
-                                        <div class="form-check form-switch me-4">
-                                            <%= setting_switch "display_address", class: "form-check-input display-switch" %>
-                                            <label class="form-check-label" for="display-address">
+                                    <input type="text" id="address"  readonly/>
+                                    <div class="toolbar">
+                                        <div class="choice switch-field">
+                                            <%= setting_switch "display_address", class: "display-switch" %>
+                                            <label  for="display-address">
                                                 <%= lang('display') %>
                                             </label>
                                         </div>
 
-                                        <div class="form-check form-switch">
-                                            <%= setting_switch "require_address", class: "form-check-input require-switch" %>
-                                            <label class="form-check-label" for="require-address">
+                                        <div class="choice switch-field">
+                                            <%= setting_switch "require_address", class: "require-switch" %>
+                                            <label  for="require-address">
                                                 <%= lang('require') %>
                                             </label>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-12 col-lg-6">
-                                <div class="form-group mb-4">
-                                    <label for="city" class="form-label">
+                            <div>
+                                <div class="form-group">
+                                    <label for="city" >
                                         <%= lang('city') %>
-                                        <span class="text-danger">*</span>
+                                        <span class="required">*</span>
                                     </label>
-                                    <input type="text" id="city" class="form-control mb-2" readonly/>
-                                    <div class="d-flex">
-                                        <div class="form-check form-switch me-4">
-                                            <%= setting_switch "display_city", class: "form-check-input display-switch" %>
-                                            <label class="form-check-label" for="display-city">
+                                    <input type="text" id="city"  readonly/>
+                                    <div class="toolbar">
+                                        <div class="choice switch-field">
+                                            <%= setting_switch "display_city", class: "display-switch" %>
+                                            <label  for="display-city">
                                                 <%= lang('display') %>
                                             </label>
                                         </div>
 
-                                        <div class="form-check form-switch">
-                                            <%= setting_switch "require_city", class: "form-check-input require-switch" %>
-                                            <label class="form-check-label" for="require-city">
+                                        <div class="choice switch-field">
+                                            <%= setting_switch "require_city", class: "require-switch" %>
+                                            <label  for="require-city">
                                                 <%= lang('require') %>
                                             </label>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-12 col-lg-6">
-                                <div class="form-group mb-4">
-                                    <label for="zip-code" class="form-label">
+                            <div>
+                                <div class="form-group">
+                                    <label for="zip-code" >
                                         <%= lang('zip_code') %>
-                                        <span class="text-danger">*</span>
+                                        <span class="required">*</span>
                                     </label>
-                                    <input type="text" id="zip-code" class="form-control mb-2" readonly/>
-                                    <div class="d-flex">
-                                        <div class="form-check form-switch me-4">
-                                            <%= setting_switch "display_zip_code", class: "form-check-input display-switch" %>
-                                            <label class="form-check-label" for="display-zip-code">
+                                    <input type="text" id="zip-code"  readonly/>
+                                    <div class="toolbar">
+                                        <div class="choice switch-field">
+                                            <%= setting_switch "display_zip_code", class: "display-switch" %>
+                                            <label  for="display-zip-code">
                                                 <%= lang('display') %>
                                             </label>
                                         </div>
 
-                                        <div class="form-check form-switch">
-                                            <%= setting_switch "require_zip_code", class: "form-check-input require-switch" %>
-                                            <label class="form-check-label" for="require-zip-code">
+                                        <div class="choice switch-field">
+                                            <%= setting_switch "require_zip_code", class: "require-switch" %>
+                                            <label  for="require-zip-code">
                                                 <%= lang('require') %>
                                             </label>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-12">
-                                <div class="form-group mb-4">
-                                    <label for="notes" class="form-label">
+                            <div>
+                                <div class="form-group">
+                                    <label for="notes" >
                                         <%= lang('notes') %>
-                                        <span class="text-danger">*</span>
+                                        <span class="required">*</span>
                                     </label>
-                                    <textarea id="notes" class="form-control mb-2" rows="2" readonly></textarea>
-                                    <div class="d-flex">
-                                        <div class="form-check form-switch me-4">
-                                            <%= setting_switch "display_notes", class: "form-check-input display-switch" %>
-                                            <label class="form-check-label" for="display-notes">
+                                    <textarea id="notes"  rows="2" readonly></textarea>
+                                    <div class="toolbar">
+                                        <div class="choice switch-field">
+                                            <%= setting_switch "display_notes", class: "display-switch" %>
+                                            <label  for="display-notes">
                                                 <%= lang('display') %>
                                             </label>
                                         </div>
 
-                                        <div class="form-check form-switch">
-                                            <%= setting_switch "require_notes", class: "form-check-input require-switch" %>
-                                            <label class="form-check-label" for="require-notes">
+                                        <div class="choice switch-field">
+                                            <%= setting_switch "require_notes", class: "require-switch" %>
+                                            <label  for="require-notes">
                                                 <%= lang('require') %>
                                             </label>
                                         </div>
@@ -184,39 +184,39 @@
                             </div>
                         </div>
 
-                        <h5 class="mb-3 fw-light">
+                        <h5>
                             <%= lang('custom_fields') %>
                         </h5>
 
-                        <div class="row mb-5 fields-row">
+                        <div class="fields-row split">
                             <% (1..5).each do |i| %>
-                                <div class="col-12 col-lg-6">
-                                    <div class="form-group mb-4">
-                                        <label for="custom-field-<%= i %>" class="form-label">
+                                <div>
+                                    <div class="form-group">
+                                        <label for="custom-field-<%= i %>" >
                                             <%= lang('custom_field') %> #<%= i %>
-                                            <span class="text-danger">*</span>
+                                            <span class="required">*</span>
                                         </label>
 
-                                        <%= setting_text "label_custom_field_#{i}", id: "custom-field-#{i}", class: "form-control mb-2", placeholder: lang('label'), "aria-label": "label" %>
+                                        <%= setting_text "label_custom_field_#{i}", id: "custom-field-#{i}", placeholder: lang('label'), "aria-label": "label" %>
 
-                                        <div class="d-flex flex-wrap">
-                                            <div class="form-check form-switch me-4">
-                                                <%= setting_switch "display_custom_field_#{i}", class: "form-check-input display-switch" %>
-                                                <label class="form-check-label" for="display-custom-field-<%= i %>">
+                                        <div class="toolbar">
+                                            <div class="choice switch-field">
+                                                <%= setting_switch "display_custom_field_#{i}", class: "display-switch" %>
+                                                <label  for="display-custom-field-<%= i %>">
                                                     <%= lang('display') %>
                                                 </label>
                                             </div>
 
-                                            <div class="form-check form-switch me-4">
-                                                <%= setting_switch "require_custom_field_#{i}", class: "form-check-input require-switch" %>
-                                                <label class="form-check-label" for="require-custom-field-<%= i %>">
+                                            <div class="choice switch-field">
+                                                <%= setting_switch "require_custom_field_#{i}", class: "require-switch" %>
+                                                <label  for="require-custom-field-<%= i %>">
                                                     <%= lang('require') %>
                                                 </label>
                                             </div>
 
-                                            <div class="form-check form-switch">
+                                            <div class="choice switch-field">
                                                 <%= setting_switch "long_custom_field_#{i}" %>
-                                                <label class="form-check-label" for="long-custom-field-<%= i %>">
+                                                <label  for="long-custom-field-<%= i %>">
                                                     <%= lang('longer_text_field') %>
                                                 </label>
                                             </div>
@@ -227,121 +227,121 @@
                         </div>
 
 
-                        <h5 class="mb-3 fw-light">
+                        <h5>
                             <%= lang('options') %>
                         </h5>
 
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="border rounded mb-3 p-3">
-                                    <div class="mb-3">
-                                        <label class="form-label" for="booking-display-mode">
+                        <div>
+                            <div>
+                                <div>
+                                    <div class="field">
+                                        <label  for="booking-display-mode">
                                             <%= lang('booking_display_mode') %>
                                         </label>
                                         <%= setting_select "booking_display_mode",
                                                            [ [ lang('display_as_dropdown'), "dropdown" ], [ lang('display_as_cards'), "cards" ] ] %>
                                     </div>
 
-                                    <div class="mb-3">
-                                        <label class="form-label"><%= lang('picture_styles') %></label>
+                                    <div class="field">
+                                        <label><%= lang('picture_styles') %></label>
                                         <% { "picture_style_categories" => "categories",
                                              "picture_style_services" => "services",
                                              "picture_style_providers" => "providers" }.each do |field, label_key| %>
-                                            <div class="row align-items-center mb-2">
-                                                <label class="col-4 col-form-label" for="<%= field.tr('_', '-') %>">
+                                            <div class="field split">
+                                                <label class="col-form-label" for="<%= field.tr('_', '-') %>">
                                                     <%= lang(label_key) %>
                                                 </label>
-                                                <div class="col-8">
+                                                <div>
                                                     <%= setting_select field, [ [ lang('white_border'), "border" ], [ lang('zoomed'), "zoomed" ] ], id: field.tr('_', '-') %>
                                                 </div>
                                             </div>
                                         <% end %>
-                                        <div class="form-text text-muted">
+                                        <div class="field-hint muted">
                                             <small><%= lang('picture_styles_hint') %></small>
                                         </div>
                                     </div>
 
-                                    <div class="mb-3">
-                                        <div class="form-check form-switch">
+                                    <div>
+                                        <div class="choice switch-field">
                                             <%= setting_switch "booking_provider_first" %>
-                                            <label class="form-check-label" for="booking-provider-first">
+                                            <label  for="booking-provider-first">
                                                 <%= lang('booking_provider_first') %>
                                             </label>
                                         </div>
                                     </div>
 
-                                    <div class="mb-3">
-                                        <div class="form-check form-switch">
+                                    <div>
+                                        <div class="choice switch-field">
                                             <%= setting_switch "display_order_switch", default: "1" %>
-                                            <label class="form-check-label" for="display-order-switch">
+                                            <label  for="display-order-switch">
                                                 <%= lang('display_order_switch') %>
                                             </label>
                                         </div>
                                     </div>
 
-                                    <div class="mb-3">
-                                        <div class="form-check form-switch">
+                                    <div>
+                                        <div class="choice switch-field">
                                             <%= setting_switch "display_powered_by" %>
-                                            <label class="form-check-label" for="display-powered-by">
+                                            <label  for="display-powered-by">
                                                 <%= lang('display_powered_by') %>
                                             </label>
                                         </div>
                                     </div>
 
-                                    <div class="mb-3">
-                                        <div class="form-check form-switch">
+                                    <div>
+                                        <div class="choice switch-field">
                                             <%= setting_switch "limit_customer_access" %>
-                                            <label class="form-check-label" for="limit-customer-access">
+                                            <label  for="limit-customer-access">
                                                 <%= lang('limit_customer_access') %>
                                             </label>
                                         </div>
 
-                                        <div class="form-text text-muted">
+                                        <div class="field-hint muted">
                                             <small>
                                                 <%= lang('limit_customer_access_hint') %>
                                             </small>
                                         </div>
                                     </div>
 
-                                    <div class="mb-3">
-                                        <div class="form-check form-switch">
+                                    <div>
+                                        <div class="choice switch-field">
                                             <%= setting_switch "display_any_provider" %>
-                                            <label class="form-check-label" for="display-any-provider">
+                                            <label  for="display-any-provider">
                                                 <%= lang('any_provider') %>
                                             </label>
                                         </div>
 
-                                        <div class="form-text text-muted">
+                                        <div class="field-hint muted">
                                             <small>
                                                 <%= lang('display_any_provider_hint') %>
                                             </small>
                                         </div>
                                     </div>
 
-                                    <div class="mb-3">
-                                        <div class="form-check form-switch">
+                                    <div>
+                                        <div class="choice switch-field">
                                             <%= setting_switch "display_login_button" %>
-                                            <label class="form-check-label" for="display-login-button">
+                                            <label  for="display-login-button">
                                                 <%= lang('login_button') %>
                                             </label>
                                         </div>
 
-                                        <div class="form-text text-muted">
+                                        <div class="field-hint muted">
                                             <small>
                                                 <%= lang('display_login_button_hint') %>
                                             </small>
                                         </div>
                                     </div>
 
-                                    <div class="mb-3">
-                                        <div class="form-check form-switch">
+                                    <div>
+                                        <div class="choice switch-field">
                                             <%= setting_switch "display_delete_personal_information" %>
-                                            <label class="form-check-label" for="display-delete-personal-information">
+                                            <label  for="display-delete-personal-information">
                                                 <%= lang('delete_personal_information') %>
                                             </label>
                                         </div>
 
-                                        <div class="form-text text-muted">
+                                        <div class="field-hint muted">
                                             <small>
                                                 <%= lang('delete_personal_information_setting_hint') %>
                                             </small>
@@ -349,25 +349,25 @@
                                     </div>
 
                                     <div>
-                                        <div class="form-check form-switch">
+                                        <div class="choice switch-field">
                                             <%= setting_switch "disable_booking" %>
-                                            <label class="form-check-label" for="disable-booking">
+                                            <label  for="disable-booking">
                                                 <%= lang('disable_booking') %>
                                             </label>
                                         </div>
 
-                                        <div class="form-text text-muted">
+                                        <div class="field-hint muted">
                                             <small>
                                                 <%= lang('disable_booking_hint') %>
                                             </small>
                                         </div>
                                     </div>
 
-                                    <div class="form-group mb-3" data-visible-when="disable_booking=1">
-                                        <label class="form-label" for="disable-booking-message">
+                                    <div class="form-group" data-visible-when="disable_booking=1">
+                                        <label  for="disable-booking-message">
                                             <%= lang('display_message') %>
                                         </label>
-                                        <%= setting_textarea "disable_booking_message", class: "mb-3 rich-text", cols: 30, rows: 10 %>
+                                        <%= setting_textarea "disable_booking_message", class: "rich-text", cols: 30, rows: 10 %>
                                     </div>
                                 </div>
                             </div>

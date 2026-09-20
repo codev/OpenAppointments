@@ -1,7 +1,7 @@
-<div class="integration-status small mb-2">
+<div class="integration-status">
     <% if on %>
-        <span class="me-1">&#9989;</span><%= text || lang('active') %>
+        <span>&#9989;</span><%= text || lang('active') %>
     <% else %>
-        <span class="text-muted"><%= text || lang('not_active') %></span>
+        <span class="muted"><%= text || lang('not_active') %></span>
     <% end %>
 </div>

@@ -153,23 +153,23 @@ App.Utils.CalendarEventPopover = (function () {
      * @param {string} [displayCancel] - CSS class to show/hide the cancel button (appointments only).
      * @returns {jQuery} Button container element.
      */
-    function createPopoverButtons(displayEdit, displayDelete, extraButtons = [], displayCancel = 'd-none') {
+    function createPopoverButtons(displayEdit, displayDelete, extraButtons = [], displayCancel = 'is-hidden') {
         return $('<div/>', {
             class: 'd-flex justify-content-center',
             html: [
-                createPopoverButton('close-popover btn btn-outline-secondary me-2', 'fas fa-ban', 'close'),
+                createPopoverButton('close-popover secondary small-action', 'fas fa-ban', 'close'),
                 ...extraButtons,
                 createPopoverButton(
-                    'cancel-popover btn btn-outline-secondary ' + displayCancel,
+                    'cancel-popover secondary small-action ' + displayCancel,
                     'fas fa-calendar-times',
                     'cancel',
                 ),
                 createPopoverButton(
-                    'delete-popover btn btn-outline-secondary ' + displayDelete,
+                    'delete-popover destructive small-action ' + displayDelete,
                     'fas fa-trash-alt',
                     'delete',
                 ),
-                createPopoverButton('edit-popover btn btn-primary ' + displayEdit, 'fas fa-edit', 'edit'),
+                createPopoverButton('edit-popover small-action ' + displayEdit, 'fas fa-edit', 'edit'),
             ],
         });
     }
@@ -302,13 +302,13 @@ App.Utils.CalendarEventPopover = (function () {
         });
 
         const messagesButton = $('<a/>', {
-            class: 'btn btn-outline-secondary me-2',
+            class: 'secondary small-action',
             href: App.Utils.Url.siteUrl('customers?customer_id=' + customer.id + '&section=messages'),
             html: [
                 $('<i/>', {class: 'fas fa-comments me-2'}),
                 $('<span/>', {text: lang('messages')}),
                 customer.unread_messages > 0
-                    ? $('<span/>', {class: 'badge rounded-pill bg-danger ms-2', text: customer.unread_messages})
+                    ? $('<span/>', {class: 'count', text: customer.unread_messages})
                     : null,
             ].filter(Boolean),
         });
@@ -365,7 +365,7 @@ App.Utils.CalendarEventPopover = (function () {
                 $('<hr/>'),
                 $('<div/>', {
                     class: 'd-flex justify-content-center',
-                    html: [createPopoverButton('close-popover btn btn-outline-secondary', 'fas fa-ban', 'close')],
+                    html: [createPopoverButton('close-popover secondary small-action', 'fas fa-ban', 'close')],
                 }),
             ],
         });

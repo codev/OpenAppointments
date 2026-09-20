@@ -46,7 +46,7 @@ class BackendCrudTest < ActionDispatch::IntegrationTest
     login_admin
     get "/calendar"
     assert_select "#header-logo small#header-user", text: users(:admin).name
-    assert_select "#header a.dropdown-toggle[aria-label=?]", I18n.t("ea.settings") do |links|
+    assert_select "#header summary[aria-label=?]", I18n.t("ea.settings") do |links|
       assert_select links.first, "i.fa-cog"
       assert_equal "", links.first.children.select(&:text?).map(&:text).join.strip
     end

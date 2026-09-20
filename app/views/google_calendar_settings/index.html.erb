@@ -1,20 +1,20 @@
 <%# Port of EA pages/google_calendar_settings.php. %>
-<div id="google-calendar-settings-page" class="container backend-page py-3">
-    <div class="row">
-        <div class="col-sm-3">
+<div id="google-calendar-settings-page" class="backend-page">
+    <div class="with-sidebar">
+        <aside>
             <%= render "shared/settings_nav" %>
-        </div>
-        <div id="google-calendar-settings" class="col-sm-9">
+        </aside>
+        <div id="google-calendar-settings" >
             <turbo-frame id="settings">
                 <%= settings_form "/google_calendar_settings/save" do %>
-                    <div class="d-flex justify-content-between align-items-center border-bottom mb-4 py-2">
-                        <h4 class="mb-0 fw-light">
+                    <div class="toolbar spaced">
+                        <h4>
                             <%= lang('google_calendar') %>
                         </h4>
 
-                        <div>
-                            <a href="/integrations" data-turbo="false" class="btn btn-outline-primary me-2">
-                                <i class="fas fa-chevron-left me-2"></i>
+                        <div class="split">
+                            <a role="button" href="/integrations" data-turbo="false" class="outline">
+                                <i class="fas fa-chevron-left"></i>
                                 <%= lang('back') %>
                             </a>
 
@@ -23,71 +23,71 @@
                     </div>
                     <%= settings_flash %>
 
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="mb-3">
-                                <div class="form-text text-muted mb-4">
+                    <div>
+                        <div class="full">
+                            <div>
+                                <div class="field-hint muted">
                                     <%= lang('google_calendar_info') %>
                                 </div>
                             </div>
 
-                            <div class="mb-3">
-                                <div class="form-check form-switch">
+                            <div>
+                                <div class="choice switch-field">
                                     <%= setting_switch "google_sync_feature" %>
-                                    <label class="form-check-label" for="google-sync-feature">
+                                    <label  for="google-sync-feature">
                                         <%= lang('active') %>
                                     </label>
                                 </div>
                             </div>
 
-                            <div class="mb-3">
-                                <label for="google-client-id" class="form-label">
+                            <div class="field">
+                                <label for="google-client-id" >
                                     <%= lang('google_client_id') %>
                                 </label>
                                 <%= setting_text "google_client_id", placeholder: lang('google_client_id') %>
-                                <div class="form-text text-muted">
+                                <div class="field-hint muted">
                                     <%= lang('google_client_id_info') %>
                                 </div>
                             </div>
 
-                            <div class="mb-3">
-                                <label for="google-client-secret" class="form-label">
+                            <div class="field">
+                                <label for="google-client-secret" >
                                     <%= lang('google_client_secret') %>
                                 </label>
                                 <%= setting_password "google_client_secret", placeholder: lang('google_client_secret') %>
-                                <div class="form-text text-muted">
+                                <div class="field-hint muted">
                                     <%= lang('google_client_secret_info') %>
                                 </div>
                             </div>
 
-                            <div class="alert alert-info">
-                                <i class="fas fa-info-circle me-2"></i>
+                            <div class="notice" data-tone="info">
+                                <i class="fas fa-info-circle"></i>
                                 <%= lang('google_calendar_setup_info') %>
                                 <a href="https://console.developers.google.com" target="_blank">
                                     Google Cloud Console
                                 </a>
                             </div>
 
-                            <div class="mb-3">
-                                <div class="form-check form-switch">
+                            <div>
+                                <div class="choice switch-field">
                                     <%= setting_switch "google_meet_link_generation" %>
-                                    <label class="form-check-label" for="google-meet-link-generation">
+                                    <label  for="google-meet-link-generation">
                                         <%= lang('google_meet_link_generation') %>
                                     </label>
                                 </div>
-                                <div class="form-text text-muted">
+                                <div class="field-hint muted">
                                     <%= lang('google_meet_link_generation_info') %>
                                 </div>
                             </div>
 
-                            <div class="mb-3">
-                                <div class="form-check form-switch">
+                            <div>
+                                <div class="choice switch-field">
                                     <%= setting_switch "display_add_to_google_calendar" %>
-                                    <label class="form-check-label" for="display-add-to-google-calendar">
+                                    <label  for="display-add-to-google-calendar">
                                         <%= lang('display_add_to_google_calendar') %>
                                     </label>
                                 </div>
-                                <div class="form-text text-muted">
+                                <div class="field-hint muted">
                                     <%= lang('display_add_to_google_calendar_info') %>
                                 </div>
                             </div>

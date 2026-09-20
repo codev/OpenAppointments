@@ -35,8 +35,8 @@ class BrandColorsTest < ActionDispatch::IntegrationTest
     # No reset button and no hint line under the company colour; the only
     # form-text hint on the page belongs to the custom CSS box.
     assert_select "#reset-company-color", false
-    assert_select "#theme-settings form .form-text", count: 1
-    assert_select "#theme-settings form .form-text", text: /#{I18n.t('ea.custom_css_hint')}/
+    assert_select "#theme-settings form .field-hint", count: 1
+    assert_select "#theme-settings form .field-hint", text: /#{I18n.t('ea.custom_css_hint')}/
 
     post "/theme_settings/save", params: {
       theme_settings: [

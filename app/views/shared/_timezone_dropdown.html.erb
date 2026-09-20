@@ -1,5 +1,5 @@
 <%# Port of EA components/timezone_dropdown.php. Locals: attributes (raw attribute string,
-    e.g. 'id="timezone" class="form-select"'). Timezone data comes from EaHelper#grouped_timezones. %>
+    e.g. 'id="timezone" '). Timezone data comes from EaHelper#grouped_timezones. %>
 <select <%= attributes.html_safe %>>
     <% grouped_timezones.each do |continent, entries| %>
         <optgroup label="<%= continent %>">

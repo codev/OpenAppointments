@@ -78,7 +78,7 @@ App.Utils.Altcha = (function () {
         const html =
             '<div class="altcha-challenge card p-3 bg-light">' +
             '<div class="d-flex align-items-center">' +
-            '<button type="button" class="altcha-verify-btn btn btn-outline-primary me-3">' +
+            '<button type="button" class="altcha-verify-btn outline">' +
             '<i class="fas fa-robot me-2"></i>' +
             lang('verify') +
             '</button>' +
@@ -119,7 +119,7 @@ App.Utils.Altcha = (function () {
                     $('#altcha-payload').val(payload);
 
                     // Update UI
-                    $btn.removeClass('btn-outline-primary').addClass('btn-success').html('<i class="fas fa-check me-2"></i>' + lang('verified'));
+                    $btn.removeClass('outline').attr('data-tone', 'success').html('<i class="fas fa-check me-2"></i>' + lang('verified'));
 
                     $status.text(lang('verification_complete'));
                     $progress.hide();

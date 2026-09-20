@@ -1,59 +1,59 @@
 <%# Port of EA pages/recovery.php. The legacy image captcha branch is dropped; only ALTCHA remains. %>
-<div class="text-center mb-4">
+<div class="centered">
     <img src="<%= image_path("logo.png") %>"
-         alt="OpenAppointments" class="shadow mb-3" width="72" height="72">
+         alt="OpenAppointments"  width="72" height="72">
 
-    <h4 class="text-primary fw-semibold mb-1">
+    <h4 class="text-primary">
         <%= lang('forgot_your_password') %>
     </h4>
 
-    <p class="small mb-0">
+    <p>
         <%= lang('type_username_and_email_for_reset_link') %>
     </p>
 </div>
 
-<div class="alert d-none"></div>
+<div class="notice" hidden></div>
 
-<% if flash[:notice] %><div class="alert alert-success"><%= flash[:notice] %></div><% end %>
-<% if flash[:alert] %><div class="alert alert-danger"><%= flash[:alert] %></div><% end %>
+<% if flash[:notice] %><div class="notice" data-tone="success"><%= flash[:notice] %></div><% end %>
+<% if flash[:alert] %><div class="notice" data-tone="error"><%= flash[:alert] %></div><% end %>
 <%= form_with url: "/recovery/perform", method: :post, id: "recovery-form", data: { turbo: false } do %>
     <%= hidden_field_tag :form, "1" %>
-    <div class="mb-3">
-        <label for="username" class="form-label fw-medium">
+    <div class="field">
+        <label for="username" >
             <%= lang('username') %>
         </label>
-        <div class="input-group">
-            <span class="input-group-text bg-light border-end-0">
+        <div class="input-row">
+            <span class="input-addon">
                 <i class="fas fa-user"></i>
             </span>
-            <%= text_field_tag :username, nil, id: "username", placeholder: lang('enter_username_here'), class: "form-control border-start-0 ps-2", required: true %>
+            <%= text_field_tag :username, nil, id: "username", placeholder: lang('enter_username_here'), required: true %>
         </div>
     </div>
 
-    <div class="mb-4">
-        <label for="email" class="form-label fw-medium">
+    <div class="field">
+        <label for="email" >
             <%= lang('email') %>
         </label>
-        <div class="input-group">
-            <span class="input-group-text bg-light border-end-0">
+        <div class="input-row">
+            <span class="input-addon">
                 <i class="fas fa-envelope"></i>
             </span>
-            <%= email_field_tag :email, nil, id: "email", placeholder: lang('enter_email_here'), class: "form-control border-start-0 ps-2", required: true %>
+            <%= email_field_tag :email, nil, id: "email", placeholder: lang('enter_email_here'), required: true %>
         </div>
     </div>
 
     <%= render "shared/auth_captcha" %>
 
-    <div class="d-grid gap-2 mb-3">
-        <button type="submit" id="get-new-password" class="btn btn-primary">
-            <i class="fas fa-paper-plane me-2"></i>
+    <div class="centered">
+        <button type="submit" id="get-new-password" >
+            <i class="fas fa-paper-plane"></i>
             <%= lang('send_reset_link') %>
         </button>
     </div>
 
-    <div class="text-center">
-        <a href="/login" class="text-decoration-none small">
-            <i class="fas fa-arrow-left me-1"></i>
+    <div>
+        <a href="/login" >
+            <i class="fas fa-arrow-left"></i>
             <%= lang('go_to_login') %>
         </a>
     </div>

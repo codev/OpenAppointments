@@ -103,7 +103,7 @@ class AuthFormsTest < ActionDispatch::IntegrationTest
     post "/login/validate", params: { form: "1", username: "administrator", password: "wrong" }
     assert_redirected_to "/login"
     follow_redirect!
-    assert_select ".alert-danger", text: I18n.t("ea.login_failed")
+    assert_select ".notice[data-tone=error]", text: I18n.t("ea.login_failed")
 
     get "/customers"
     assert_redirected_to "/login"
@@ -115,7 +115,7 @@ class AuthFormsTest < ActionDispatch::IntegrationTest
     post "/recovery/perform", params: { form: "1", username: "nobody", email: "nobody@example.org" }
     assert_redirected_to "/recovery"
     follow_redirect!
-    assert_select ".alert-success", text: I18n.t("ea.reset_link_sent_with_email")
+    assert_select ".notice[data-tone=success]", text: I18n.t("ea.reset_link_sent_with_email")
 
     reset = Accounts.generate_reset_token("administrator", users(:admin).email)
     get "/recovery/reset", params: { token: reset[:token] }
@@ -124,12 +124,12 @@ class AuthFormsTest < ActionDispatch::IntegrationTest
     post "/recovery/complete", params: { form: "1", token: reset[:token], password: "newpassword1", password_confirm: "other" }
     assert_redirected_to "/recovery/reset?token=#{reset[:token]}"
     follow_redirect!
-    assert_select ".alert-danger", text: I18n.t("ea.passwords_mismatch")
+    assert_select ".notice[data-tone=error]", text: I18n.t("ea.passwords_mismatch")
 
     post "/recovery/complete", params: { form: "1", token: reset[:token], password: "newpassword1", password_confirm: "newpassword1" }
     assert_redirected_to "/login"
     follow_redirect!
-    assert_select ".alert-success", text: I18n.t("ea.password_reset_success")
+    assert_select ".notice[data-tone=success]", text: I18n.t("ea.password_reset_success")
     post "/login/validate", params: { username: "administrator", password: "newpassword1" }
     assert_equal({ "success" => true }, response.parsed_body)
   end

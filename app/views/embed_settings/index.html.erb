@@ -1,28 +1,28 @@
 <%# Iframe embedding settings + copy-paste embed code. %>
-<div class="container backend-page py-3" id="embed-settings-page">
-    <div class="row">
-        <div class="col-lg-3 col-xl-2">
+<div class="backend-page" id="embed-settings-page">
+    <div class="with-sidebar">
+        <aside>
             <%= render "shared/settings_nav" %>
-        </div>
+        </aside>
 
-        <div class="col-lg-9 col-xl-10">
-            <h4 class="py-3 mb-3 fw-light"><%= lang('embedding') %></h4>
+        <div>
+            <h4><%= lang('embedding') %></h4>
 
             <turbo-frame id="settings">
-            <div class="card card-body mb-4" style="max-width: 720px;">
+            <div class="panel" style="max-width: 720px;">
                 <%= settings_form "/embed_settings/save" do %>
                 <%= settings_flash %>
-                <div class="mb-3">
-                    <div class="form-check form-switch">
+                <div>
+                    <div class="choice switch-field">
                         <%= setting_switch "allow_iframe_embedding" %>
-                        <label class="form-check-label" for="allow-iframe-embedding">
+                        <label  for="allow-iframe-embedding">
                             <%= lang('allow_iframe_embedding') %>
                         </label>
                     </div>
                 </div>
 
-                <div class="mb-3">
-                    <label class="form-label" for="iframe-embed-origin">
+                <div class="field">
+                    <label  for="iframe-embed-origin">
                         <%= lang('iframe_embed_origin') %>
                     </label>
                     <%= setting_text "iframe_embed_origin", type: "url", placeholder: "https://www.example.org", maxlength: 256 %>
@@ -35,10 +35,10 @@
             </div>
             </turbo-frame>
 
-            <h5 class="fw-light mb-2"><%= lang('embed_code') %></h5>
-            <p class="text-muted small"><%= lang('embed_hint') %></p>
+            <h5><%= lang('embed_code') %></h5>
+            <p class="muted"><%= lang('embed_hint') %></p>
 
-            <div class="card card-body mb-4" style="max-width: 720px;">
+            <div class="panel" style="max-width: 720px;">
 <% embed_html = <<~HTML
      <iframe id="openappointments-booking" src="#{vars(:booking_url)}/" title="Book an appointment"
              style="width: 100%; height: 900px; border: 0;"></iframe>
@@ -54,55 +54,55 @@
    JS
    embed_code = embed_html + "<script>\n" + embed_js.gsub(/^(?!$)/, "  ") + "</script>\n"
 %>
-                <textarea id="embed-code" class="form-control font-monospace small" rows="12"
+                <textarea id="embed-code"  rows="12"
                           readonly><%= embed_code %></textarea>
-                <div class="mt-2">
-                    <button type="button" id="copy-embed-code" class="btn btn-outline-secondary btn-sm copy-embed-target"
+                <div>
+                    <button type="button" id="copy-embed-code" class="secondary small-action copy-embed-target"
                             data-target="#embed-code">
-                        <i class="fas fa-copy me-2"></i>
+                        <i class="fas fa-copy"></i>
                         <%= lang('copy') %>
                     </button>
                 </div>
             </div>
 
-            <h5 class="fw-light mb-2"><%= lang('embed_wordpress') %></h5>
-            <p class="text-muted small"><%= lang('embed_wordpress_hint') %></p>
+            <h5><%= lang('embed_wordpress') %></h5>
+            <p class="muted"><%= lang('embed_wordpress_hint') %></p>
 
-            <div class="card card-body" style="max-width: 720px;">
-                <div class="mb-3">
-                    <label class="form-label" for="embed-wordpress-html">HTML</label>
-                    <textarea id="embed-wordpress-html" class="form-control font-monospace small" rows="3"
+            <div class="panel" style="max-width: 720px;">
+                <div class="field">
+                    <label  for="embed-wordpress-html">HTML</label>
+                    <textarea id="embed-wordpress-html"  rows="3"
                               readonly><%= embed_html %></textarea>
-                    <div class="mt-2">
-                        <button type="button" class="btn btn-outline-secondary btn-sm copy-embed-target"
+                    <div>
+                        <button type="button" class="secondary small-action copy-embed-target"
                                 data-target="#embed-wordpress-html">
-                            <i class="fas fa-copy me-2"></i>
+                            <i class="fas fa-copy"></i>
                             <%= lang('copy') %>
                         </button>
                     </div>
                 </div>
 
-                <div class="mb-3">
-                    <label class="form-label" for="embed-wordpress-css">CSS</label>
-                    <textarea id="embed-wordpress-css" class="form-control font-monospace small" rows="3"
+                <div class="field">
+                    <label  for="embed-wordpress-css">CSS</label>
+                    <textarea id="embed-wordpress-css"  rows="3"
                               readonly></textarea>
-                    <div class="mt-2">
-                        <button type="button" class="btn btn-outline-secondary btn-sm copy-embed-target"
+                    <div>
+                        <button type="button" class="secondary small-action copy-embed-target"
                                 data-target="#embed-wordpress-css">
-                            <i class="fas fa-copy me-2"></i>
+                            <i class="fas fa-copy"></i>
                             <%= lang('copy') %>
                         </button>
                     </div>
                 </div>
 
-                <div>
-                    <label class="form-label" for="embed-wordpress-js">JavaScript</label>
-                    <textarea id="embed-wordpress-js" class="form-control font-monospace small" rows="8"
+                <div class="field">
+                    <label  for="embed-wordpress-js">JavaScript</label>
+                    <textarea id="embed-wordpress-js"  rows="8"
                               readonly><%= embed_js %></textarea>
-                    <div class="mt-2">
-                        <button type="button" class="btn btn-outline-secondary btn-sm copy-embed-target"
+                    <div>
+                        <button type="button" class="secondary small-action copy-embed-target"
                                 data-target="#embed-wordpress-js">
-                            <i class="fas fa-copy me-2"></i>
+                            <i class="fas fa-copy"></i>
                             <%= lang('copy') %>
                         </button>
                     </div>

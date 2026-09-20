@@ -1,54 +1,54 @@
 <%= render "shared/crud_form", record: record, delete_title: lang('delete_webhook') do |f| %>
-    <div class="mb-3">
-        <%= f.label :name, class: "form-label" do %>
-            <%= lang('name') %> <span class="text-danger">*</span>
+    <div class="field">
+        <%= f.label :name do %>
+            <%= lang('name') %> <span class="required">*</span>
         <% end %>
         <%= f.text_field :name, required: true, maxlength: 128,
-                         class: "form-control #{'is-invalid' if record.errors.include?(:name)}" %>
+                         class: "#{'is-invalid' if record.errors.include?(:name)}" %>
     </div>
 
-    <div class="mb-3">
-        <%= f.label :url, class: "form-label" do %>
-            <%= lang('url') %> <span class="text-danger">*</span>
+    <div class="field">
+        <%= f.label :url do %>
+            <%= lang('url') %> <span class="required">*</span>
         <% end %>
         <%= f.text_field :url, required: true,
-                         class: "form-control #{'is-invalid' if record.errors.include?(:url)}" %>
+                         class: "#{'is-invalid' if record.errors.include?(:url)}" %>
     </div>
 
-    <div class="mb-3">
-        <%= f.label :secret_header, lang('secret_header'), class: "form-label" %>
-        <%= f.text_field :secret_header, class: "form-control" %>
+    <div class="field">
+        <%= f.label :secret_header, lang('secret_header') %>
+        <%= f.text_field :secret_header %>
     </div>
 
-    <div class="mb-3">
-        <%= f.label :secret_token, lang('secret_token'), class: "form-label" %>
-        <%= f.text_field :secret_token, class: "form-control" %>
+    <div class="field">
+        <%= f.label :secret_token, lang('secret_token') %>
+        <%= f.text_field :secret_token %>
     </div>
 
-    <div><label class="form-label mb-3"><%= lang('actions') %></label></div>
-    <div class="border rounded mb-3 p-3" id="actions">
+    <div><label><%= lang('actions') %></label></div>
+    <div  id="actions">
         <%= hidden_field_tag "webhook[actions][]", "" %>
         <% WebhooksController::AVAILABLE_ACTIONS.each do |action| %>
-            <div class="mb-3">
-                <div class="form-check form-switch">
+            <div>
+                <div class="choice switch-field">
                     <%= check_box_tag "webhook[actions][]", action, record.handles?(action),
-                                      id: "include-#{action.dasherize}", class: "form-check-input" %>
-                    <label class="form-check-label" for="include-<%= action.dasherize %>"><%= lang(action) %></label>
+                                      id: "include-#{action.dasherize}" %>
+                    <label  for="include-<%= action.dasherize %>"><%= lang(action) %></label>
                 </div>
             </div>
         <% end %>
     </div>
 
-    <div><label class="form-label mb-3"><%= lang('options') %></label></div>
-    <div class="border rounded mb-3 p-3">
-        <div class="form-check form-switch">
-            <%= f.check_box :is_ssl_verified, class: "form-check-input" %>
-            <%= f.label :is_ssl_verified, lang('verify_ssl'), class: "form-check-label" %>
+    <div><label><%= lang('options') %></label></div>
+    <div>
+        <div class="choice switch-field">
+            <%= f.check_box :is_ssl_verified %>
+            <%= f.label :is_ssl_verified, lang('verify_ssl') %>
         </div>
     </div>
 
-    <div class="mb-3">
-        <%= f.label :notes, lang('notes'), class: "form-label" %>
-        <%= f.text_area :notes, rows: 8, class: "form-control" %>
+    <div class="field">
+        <%= f.label :notes, lang('notes') %>
+        <%= f.text_area :notes, rows: 8 %>
     </div>
 <% end %>

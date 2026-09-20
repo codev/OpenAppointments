@@ -28,8 +28,8 @@ class TurboDriveTest < ApplicationSystemTestCase
     assert_selector "#customers-page.editing .crud-form", wait: 5
     assert_driven
 
-    find("#header .dropdown-toggle", text: "Services").click
-    find("#header a.dropdown-item[href='/services']").click
+    find("#header details.menu summary", text: "Services").click
+    find("#header details.menu a[href='/services']").click
     assert_selector "#services-page", wait: 5
     assert_driven
     find(".service-row", text: "Trim Cut").click
@@ -37,7 +37,7 @@ class TurboDriveTest < ApplicationSystemTestCase
     assert_selector ".color-selection-option.selected"
     assert_driven
 
-    find("#header .dropdown-toggle", text: "Users").click
+    find("#header details.menu summary", text: "Users").click
     click_on "Providers"
     assert_selector "#providers-page", wait: 5
     find(".provider-row", text: "Zane").click
@@ -50,8 +50,8 @@ class TurboDriveTest < ApplicationSystemTestCase
     assert_selector "#calendar .fc-view-harness", wait: 10
     assert_driven
 
-    find("#header a[aria-label='Settings']").click
-    find("#header a.dropdown-item[href='/general_settings']").click
+    find("#header summary[aria-label='Settings']").click
+    find("#header details.menu a[href='/general_settings']").click
     assert_selector "#company-name", wait: 5
     assert_driven
     within("#settings-nav") { click_on "Business Logic" }
@@ -69,8 +69,8 @@ class TurboDriveTest < ApplicationSystemTestCase
     assert_selector "#ldap-host", wait: 5
     assert_driven
 
-    find("#header a[aria-label='Settings']").click
-    find("#header a.dropdown-item[href='/messages_settings']").click
+    find("#header summary[aria-label='Settings']").click
+    find("#header details.menu a[href='/messages_settings']").click
     assert_selector "#messages-nav", wait: 5
     within("#messages-nav") { click_on "Notifications" }
     assert_selector "#add-notification", wait: 5
@@ -89,7 +89,7 @@ class TurboDriveTest < ApplicationSystemTestCase
     within("#message-modal") { click_on "Leave page" }
 
     assert_selector "#day-filter", wait: 5
-    find("#calendar-actions [data-bs-toggle=dropdown]").click
+    find("#calendar-actions #add-event-menu summary").click
     find("#insert-appointment").click
     assert_selector "#save-appointment", visible: true, wait: 5
     assert_driven

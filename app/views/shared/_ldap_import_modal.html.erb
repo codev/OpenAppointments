@@ -1,27 +1,27 @@
 <%# Port of EA components/ldap_import_modal.php. Locals: roles ([{id, name, slug}]). %>
-<div id="ldap-import-modal" class="modal fade">
-    <div class="modal-dialog modal-dialog-centered modal-fullscreen-lg-down modal-lg">
-        <%= form_with url: "/ldap_settings/import", method: :post, id: "ldap-import-form", class: "modal-content", data: { turbo: false } do %>
-            <div class="modal-header">
-                <h3 class="modal-title"><%= lang('import') %></h3>
-                <button class="btn-close" data-bs-dismiss="modal"></button>
+<dialog id="ldap-import-modal">
+    <article class="wide">
+        <%= form_with url: "/ldap_settings/import", method: :post, id: "ldap-import-form", class: "dialog-content", data: { turbo: false } do %>
+            <div class="dialog-header">
+                <h3 class="dialog-title"><%= lang('import') %></h3>
+                <button class="dialog-close" data-dialog-close aria-label="Close">&times;</button>
             </div>
 
-            <div class="modal-body">
-                <div class="mb-3">
-                    <label class="form-label" for="ldap-import-ldap-dn">
+            <div class="dialog-body">
+                <div class="field">
+                    <label  for="ldap-import-ldap-dn">
                         <%= lang('ldap_dn') %>
-                        <span class="text-danger">*</span>
+                        <span class="required">*</span>
                     </label>
-                    <%= text_field_tag "user[ldap_dn]", nil, id: "ldap-import-ldap-dn", class: "form-control", maxlength: 256, required: true %>
+                    <%= text_field_tag "user[ldap_dn]", nil, id: "ldap-import-ldap-dn", maxlength: 256, required: true %>
                 </div>
 
-                <div class="mb-3">
-                    <label class="form-label" for="ldap-import-role-slug">
+                <div class="field">
+                    <label  for="ldap-import-role-slug">
                         <%= lang('role') %>
-                        <span class="text-danger">*</span>
+                        <span class="required">*</span>
                     </label>
-                    <select name="role_slug" id="ldap-import-role-slug" class="form-select" required>
+                    <select name="role_slug" id="ldap-import-role-slug"  required>
                         <% roles.each do |role| %>
                             <option value="<%= role['slug'] %>">
                                 <%= role['name'] %>
@@ -30,57 +30,57 @@
                     </select>
                 </div>
 
-                <div class="mb-3">
-                    <label class="form-label" for="ldap-import-name">
+                <div class="field">
+                    <label  for="ldap-import-name">
                         <%= lang('name') %>
-                        <span class="text-danger">*</span>
+                        <span class="required">*</span>
                     </label>
-                    <%= text_field_tag "user[name]", nil, id: "ldap-import-name", class: "form-control", maxlength: 220, required: true %>
+                    <%= text_field_tag "user[name]", nil, id: "ldap-import-name", maxlength: 220, required: true %>
                 </div>
 
-                <div class="mb-3">
-                    <label class="form-label" for="ldap-import-email">
+                <div class="field">
+                    <label  for="ldap-import-email">
                         <%= lang('email') %>
-                        <span class="text-danger">*</span>
+                        <span class="required">*</span>
                     </label>
-                    <%= text_field_tag "user[email]", nil, id: "ldap-import-email", class: "form-control", maxlength: 512, required: true %>
+                    <%= text_field_tag "user[email]", nil, id: "ldap-import-email", maxlength: 512, required: true %>
                 </div>
 
-                <div class="mb-3">
-                    <label class="form-label" for="ldap-import-phone-number">
+                <div class="field">
+                    <label  for="ldap-import-phone-number">
                         <%= lang('phone_number') %>
-                        <span class="text-danger">*</span>
+                        <span class="required">*</span>
                     </label>
-                    <%= text_field_tag "user[phone_number]", nil, id: "ldap-import-phone-number", class: "form-control", maxlength: 128, required: true %>
+                    <%= text_field_tag "user[phone_number]", nil, id: "ldap-import-phone-number", maxlength: 128, required: true %>
                 </div>
 
-                <div class="mb-3">
-                    <label class="form-label" for="ldap-import-username">
+                <div class="field">
+                    <label  for="ldap-import-username">
                         <%= lang('username') %>
                     </label>
-                    <%= text_field_tag "settings[username]", nil, id: "ldap-import-username", class: "form-control", maxlength: 256 %>
+                    <%= text_field_tag "settings[username]", nil, id: "ldap-import-username", maxlength: 256 %>
                 </div>
 
-                <div class="mb-3">
-                    <label class="form-label" for="ldap-import-password">
+                <div class="field">
+                    <label  for="ldap-import-password">
                         <%= lang('password') %>
                     </label>
-                    <%= password_field_tag "settings[password]", nil, id: "ldap-import-password", class: "form-control", maxlength: 512, autocomplete: "new-password" %>
+                    <%= password_field_tag "settings[password]", nil, id: "ldap-import-password", maxlength: 512, autocomplete: "new-password" %>
                 </div>
             </div>
 
-            <div class="modal-footer">
-                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+            <div class="dialog-footer">
+                <button type="button" class="secondary" data-dialog-close>
                     <%= lang('cancel') %>
                 </button>
-                <button type="submit" id="ldap-import-save" class="btn btn-primary">
-                    <i class="fas fa-check-square me-2"></i>
+                <button type="submit" id="ldap-import-save">
+                    <i class="fas fa-check-square"></i>
                     <%= lang('save') %>
                 </button>
             </div>
         <% end %>
-    </div>
-</div>
+    </article>
+</dialog>
 
 <% content_for :scripts do %>
     <%= ea_js "components/ldap_import_modal" %>

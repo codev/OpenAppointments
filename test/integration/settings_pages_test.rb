@@ -56,15 +56,15 @@ class SettingsPagesTest < ActionDispatch::IntegrationTest
   test "side menu shows the current page as text and marks a parent of the current page" do
     login_admin
     get "/booking_settings"
-    assert_select "#settings-nav span.nav-link", text: /Booking Settings/
+    assert_select "#settings-nav span", text: /Booking Settings/
     assert_select "#settings-nav a[href='/booking_settings']", count: 0
     assert_select "#settings-nav a[href='/general_settings']"
 
     get "/ldap_settings"
-    assert_select "#settings-nav a.fw-bold[href='/integrations']"
+    assert_select "#settings-nav a.is-parent[href='/integrations']"
 
     get "/messages_twilio_settings"
-    assert_select "#messages-nav a.fw-bold[href='/messages_providers']"
+    assert_select "#messages-nav a.is-parent[href='/messages_providers']"
   end
 
   test "turning timezone support off leaves stored zones alone and hides the controls" do
@@ -76,7 +76,7 @@ class SettingsPagesTest < ActionDispatch::IntegrationTest
     assert_equal "Europe/London", users(:zane).effective_timezone
 
     get "/providers/new"
-    assert_select "div.d-none label[for='provider_timezone']"
+    assert_select "div.is-hidden label[for='provider_timezone']"
     get "/booking", params: { step: "time", service_id: services(:haircut).id, provider_id: users(:zane).id }
     assert_select "#select-timezone", 0
     assert_select "label[for='select-timezone']", 0
@@ -90,7 +90,7 @@ class SettingsPagesTest < ActionDispatch::IntegrationTest
     post "/messages_settings/save", params: { settings: { messages_failure_alert_emails: "a@example.org; not-an-email" } }
     assert_redirected_to "/messages_settings"
     follow_redirect!
-    assert_select ".alert-danger", text: /not-an-email/
+    assert_select ".notice[data-tone=error]", text: /not-an-email/
 
     post "/messages_settings/save", params: { settings: { messages_failure_alert_emails: "a@example.org, b@example.org" } }
     assert_redirected_to "/messages_settings"
@@ -117,17 +117,17 @@ class SettingsPagesTest < ActionDispatch::IntegrationTest
     post "/messages_settings/save", params: { settings: { messages_enabled: "debug", messages_intercept_email: "not-an-email", messages_intercept_phone: "07700 900123" } }
     assert_redirected_to "/messages_settings"
     follow_redirect!
-    assert_select ".alert-danger", text: /Invalid email address/
+    assert_select ".notice[data-tone=error]", text: /Invalid email address/
     assert_equal "1", Setting.get("messages_enabled", "1")
 
     post "/messages_settings/save", params: { settings: { messages_enabled: "debug", messages_intercept_email: "dev@example.org", messages_intercept_phone: "12" } }
     follow_redirect!
-    assert_select ".alert-danger", text: /Invalid phone number/
+    assert_select ".notice[data-tone=error]", text: /Invalid phone number/
     assert_equal "1", Setting.get("messages_enabled", "1")
 
     post "/messages_settings/save", params: { settings: { messages_enabled: "debug", messages_intercept_email: "", messages_intercept_phone: "" } }
     follow_redirect!
-    assert_select ".alert-danger", text: /Debug needs a valid email address and phone number/
+    assert_select ".notice[data-tone=error]", text: /Debug needs a valid email address and phone number/
 
     post "/messages_settings/save", params: { settings: { messages_enabled: "debug", messages_intercept_email: "dev@example.org", messages_intercept_phone: "07700 900123" } }
     assert_equal "debug", Setting.get("messages_enabled")
@@ -145,7 +145,7 @@ class SettingsPagesTest < ActionDispatch::IntegrationTest
     post "/general_settings/save", params: { settings: { company_name: "Open Out", not_whitelisted: "ignored" } }
     assert_redirected_to "/general_settings"
     follow_redirect!
-    assert_select ".alert-success", text: I18n.t("ea.settings_saved")
+    assert_select ".notice[data-tone=success]", text: I18n.t("ea.settings_saved")
     assert_equal "Open Out", Setting.get("company_name")
     assert_nil Setting.get("not_whitelisted")
   end
@@ -185,18 +185,18 @@ class SettingsPagesTest < ActionDispatch::IntegrationTest
                                                             settings: { username: "administrator", password: "", password_confirmation: "" } } }
     assert_redirected_to "/account"
     follow_redirect!
-    assert_select ".alert-success", text: I18n.t("ea.settings_saved")
+    assert_select ".notice[data-tone=success]", text: I18n.t("ea.settings_saved")
     assert_equal "Edson M", users(:admin).reload.name
 
     post "/account/save", params: { form: "1", account: { name: "Edson M", email: users(:admin).email,
                                                             settings: { username: "janedoe" } } }
     follow_redirect!
-    assert_select ".alert-danger", text: I18n.t("ea.username_already_exists")
+    assert_select ".notice[data-tone=error]", text: I18n.t("ea.username_already_exists")
 
     post "/account/save", params: { form: "1", account: { name: "Edson M", email: users(:admin).email,
                                                             settings: { username: "administrator", password: "password1", password_confirmation: "x" } } }
     follow_redirect!
-    assert_select ".alert-danger", text: I18n.t("ea.passwords_mismatch")
+    assert_select ".notice[data-tone=error]", text: I18n.t("ea.passwords_mismatch")
   end
   test "the terminology labels show their stored values and save from the form" do
     Setting.set("provider_label", "Stylist")
@@ -229,7 +229,7 @@ class LdapImportFormTest < ActionDispatch::IntegrationTest
                                             settings: { username: "dirprovider", password: "password1" } }
     assert_redirected_to "/ldap_settings"
     follow_redirect!
-    assert_select ".alert-success", text: I18n.t("ea.user_imported")
+    assert_select ".notice[data-tone=success]", text: I18n.t("ea.user_imported")
     provider = User.providers.find_by!(email: "dir@example.org")
     assert_equal "dirprovider", provider.settings.username
     assert_equal Setting.get("company_working_plan"), provider.settings.working_plan
@@ -240,7 +240,7 @@ class LdapImportFormTest < ActionDispatch::IntegrationTest
 
     post "/ldap_settings/import", params: { role_slug: "admin", user: { name: "No pass", email: "np@example.org", phone_number: "3", ldap_dn: "cn=n" }, settings: { username: "np" } }
     follow_redirect!
-    assert_select ".alert-danger", text: /password/
+    assert_select ".notice[data-tone=error]", text: /password/
   end
 end
 

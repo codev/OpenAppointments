@@ -130,7 +130,7 @@ App.Utils.CalendarSync = (function () {
 
         App.Http.Google.getGoogleCalendars(providerId).done((googleCalendars) => {
             const $selectGoogleCalendar = $(`
-                <select class="form-select">
+                <select>
                     <!-- JS -->
                 </select>
             `);
@@ -158,7 +158,7 @@ App.Utils.CalendarSync = (function () {
                 ],
             );
 
-            $selectGoogleCalendar.appendTo($messageModal.find('.modal-body'));
+            $selectGoogleCalendar.appendTo($messageModal.find('article > p'));
         });
     }
 
@@ -191,26 +191,26 @@ App.Utils.CalendarSync = (function () {
     function enableCaldavSync(defaultCaldavUrl = '', defaultCaldavUsername = '', defaultCaldavPassword = '') {
         const $container = $(`
             <div>
-                <div class="mb-3">
-                    <label for="caldav-url" class="form-label">
+                <div class="field">
+                    <label for="caldav-url">
                         ${lang('calendar_url')}
                     </label>
-                    <input type="text" class="form-control" id="caldav-url" value="${defaultCaldavUrl}"/>
+                    <input type="text" id="caldav-url" value="${defaultCaldavUrl}"/>
                 </div> 
-                <div class="mb-3">
-                    <label for="caldav-username" class="form-label">
+                <div class="field">
+                    <label for="caldav-username">
                         ${lang('username')}
                     </label>
-                    <input type="text" class="form-control" id="caldav-username" value="${defaultCaldavUsername}"/>
+                    <input type="text" id="caldav-username" value="${defaultCaldavUsername}"/>
                 </div> 
-                <div class="mb-3">
-                    <label for="caldav-password" class="form-label">
+                <div class="field">
+                    <label for="caldav-password">
                         ${lang('password')}
                     </label>
-                    <input type="password" class="form-control" id="caldav-password" value="${defaultCaldavPassword}"/>
+                    <input type="password" id="caldav-password" value="${defaultCaldavPassword}"/>
                 </div>    
                 
-                <div class="alert alert-danger" hidden>
+                <div class="notice" data-tone="error" hidden>
                     <!-- JS -->
                 </div>
             </div>
@@ -228,7 +228,7 @@ App.Utils.CalendarSync = (function () {
                 click: (event, messageModal) => {
                     const providerId = $selectFilterItem().val();
 
-                    $messageModal.find('.is-invalid').removeClass('is-invalid');
+                    $messageModal.find('[aria-invalid]').removeAttr('aria-invalid');
 
                     const $alert = $messageModal.find('.alert');
                     $alert.text('').prop('hidden', true);
@@ -237,7 +237,7 @@ App.Utils.CalendarSync = (function () {
                     const caldavUrl = $caldavUrl.val();
 
                     if (!caldavUrl) {
-                        $caldavUrl.addClass('is-invalid');
+                        $caldavUrl.attr('aria-invalid', 'true');
                         return;
                     }
 
@@ -245,7 +245,7 @@ App.Utils.CalendarSync = (function () {
                     const caldavUsername = $caldavUsername.val();
 
                     if (!caldavUsername) {
-                        $caldavUsername.addClass('is-invalid');
+                        $caldavUsername.attr('aria-invalid', 'true');
                         return;
                     }
 
@@ -253,16 +253,16 @@ App.Utils.CalendarSync = (function () {
                     const caldavPassword = $caldavPassword.val();
 
                     if (!caldavPassword) {
-                        $caldavPassword.addClass('is-invalid');
+                        $caldavPassword.attr('aria-invalid', 'true');
                         return;
                     }
 
                     App.Http.Caldav.connectToServer(providerId, caldavUrl, caldavUsername, caldavPassword).done(
                         (response) => {
                             if (!response.success) {
-                                $caldavUrl.addClass('is-invalid');
-                                $caldavUsername.addClass('is-invalid');
-                                $caldavPassword.addClass('is-invalid');
+                                $caldavUrl.attr('aria-invalid', 'true');
+                                $caldavUsername.attr('aria-invalid', 'true');
+                                $caldavPassword.attr('aria-invalid', 'true');
 
                                 $alert.text(lang('login_failed') + ' ' + response.message).prop('hidden', false);
 
@@ -284,7 +284,7 @@ App.Utils.CalendarSync = (function () {
             },
         ]);
 
-        $messageModal.find('.modal-body').append($container);
+        $messageModal.find('article > p').after($container);
     }
 
     function disableCaldavSync() {
@@ -369,7 +369,7 @@ App.Utils.CalendarSync = (function () {
         App.Utils.Message.show(lang('enable_sync'), lang('sync_method_prompt'), [
             {
                 text: 'CalDAV Calendar',
-                className: 'btn btn-outline-primary me-auto',
+                className: 'outline',
                 click: (event, messageModal) => {
                     messageModal.hide();
                     enableCaldavSync();

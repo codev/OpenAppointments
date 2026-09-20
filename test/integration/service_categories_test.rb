@@ -87,7 +87,7 @@ class ServiceCategoriesTest < ActionDispatch::IntegrationTest
     assert category.picture_padded.attached?
 
     follow_redirect!
-    assert_select ".alert-success", text: I18n.t("ea.service_category_saved")
+    assert_select ".notice[data-tone=success]", text: I18n.t("ea.service_category_saved")
     assert_select ".service-category-row.selected[data-id=?]", category.id.to_s
     assert_select "#service-categories-page.editing", count: 0
     assert_select "turbo-frame#service_categories_record form", count: 0
@@ -100,7 +100,7 @@ class ServiceCategoriesTest < ActionDispatch::IntegrationTest
     end
     assert_response :unprocessable_entity
     assert_select "turbo-frame#service_categories_record form .is-invalid[name='service_category[name]']"
-    assert_select ".form-message.alert-danger"
+    assert_select ".form-message[data-tone=error]"
   end
 
   test "edit shows the record with its picture and a delete button" do
@@ -123,7 +123,7 @@ class ServiceCategoriesTest < ActionDispatch::IntegrationTest
                   "/service_categories/#{category.id}", I18n.t("ea.delete_record_prompt") do
       assert_select "input[name=_method][value=delete]"
     end
-    assert_select ".btn-toolbar button[form=?][data-turbo-confirm-title=?]",
+    assert_select ".actions button[form=?][data-turbo-confirm-title=?]",
                   "delete-service_category-#{category.id}", I18n.t("ea.delete_service_category")
   end
 
@@ -160,7 +160,7 @@ class ServiceCategoriesTest < ActionDispatch::IntegrationTest
     assert_redirected_to "/service_categories"
     assert_nil service.reload.id_service_categories
     follow_redirect!
-    assert_select ".alert-success", text: I18n.t("ea.service_category_deleted")
+    assert_select ".notice[data-tone=success]", text: I18n.t("ea.service_category_deleted")
   end
 
   test "sort alphabetically clears the manual order and returns to the list" do

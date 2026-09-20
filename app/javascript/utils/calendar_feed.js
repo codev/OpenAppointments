@@ -7,7 +7,10 @@ App.Utils.CalendarFeed = (function () {
     const $filter = () => $('#select-filter-item');
     const $button = () => $('#calendar-feed');
     const $link = () => $('#calendar-feed-link');
-    const modal = () => bootstrap.Modal.getOrCreateInstance(document.getElementById('calendar-feed-modal'));
+    const modal = () => {
+        const dialog = document.getElementById('calendar-feed-modal');
+        return {show: () => App.Utils.Dialog.open(dialog), hide: () => App.Utils.Dialog.close(dialog)};
+    };
 
     function selectedProviderId() {
         const $option = $filter().find('option:selected');

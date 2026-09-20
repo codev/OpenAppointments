@@ -3,9 +3,9 @@
     components/color_selection.js for plain form posts. %>
 <% colors = %w[#7cbae8 #acbefb #82e4ec #7cebc1 #abe9a4 #ebe07c #f3bc7d #f3aea6 #eb8687 #dfaffe #e3e3e3] %>
 <% selected = colors.include?(local_assigns[:value]) ? local_assigns[:value] : colors.first %>
-<label class="form-label"><%= lang('color') %></label>
+<label><%= lang('color') %></label>
 
-<div <%= local_assigns.fetch(:attributes, "").html_safe %> class="color-selection d-flex justify-content-between mb-4">
+<div <%= local_assigns.fetch(:attributes, "").html_safe %> class="color-selection">
     <% if local_assigns[:name] %>
         <%= hidden_field_tag local_assigns[:name], selected, id: nil %>
     <% end %>

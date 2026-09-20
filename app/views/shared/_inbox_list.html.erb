@@ -1,47 +1,47 @@
 <%# Inbox pages: one block per message, the metadata on a wrapping line and the
     full text beneath it. Locals: messages, page, last_page, base_path. %>
 <% format_settings = { date_format: setting("date_format"), time_format: setting("time_format") } %>
-<div class="inbox-list mb-4">
+<div class="inbox-list">
     <% messages.each do |message| %>
         <% unread = message.direction == "incoming" && !message.read? %>
-        <div class="inbox-message py-3 border-bottom<%= ' message-unread' if unread %>">
-            <div class="inbox-meta d-flex flex-wrap align-items-center gap-2 mb-2">
+        <div class="inbox-message <%= ' message-unread' if unread %>">
+            <div class="inbox-meta toolbar">
                 <% if message.direction == "incoming" %>
                     <i class="fas fa-arrow-down text-success" title="<%= lang('messages_incoming_label') %>"></i>
                 <% else %>
                     <i class="fas fa-arrow-up text-primary" title="<%= lang('messages_outgoing_label') %>"></i>
                 <% end %>
-                <span class="badge bg-secondary"><%= Messaging.channel(message.channel)&.label || message.channel %></span>
+                <span class="tag"><%= Messaging.channel(message.channel)&.label || message.channel %></span>
                 <% if message.customer %>
-                    <a href="/customers?customer_id=<%= message.customer.id %>" class="fw-bold"><%= message.customer.name %></a>
+                    <a href="/customers?customer_id=<%= message.customer.id %>" ><%= message.customer.name %></a>
                 <% elsif message.direction == "incoming" %>
-                    <span class="text-muted"><%= lang('messages_unknown_sender') %></span>
+                    <span class="muted"><%= lang('messages_unknown_sender') %></span>
                 <% else %>
-                    <span class="text-muted"><%= message.audience %></span>
+                    <span class="muted"><%= message.audience %></span>
                 <% end %>
-                <span class="text-muted text-break"><%= message.direction == "incoming" ? message.from_address : message.to_address %></span>
-                <span class="ms-md-auto text-muted text-nowrap"><%= display_datetime(message.created_at) %></span>
-                <% badge = { "sent" => "bg-success", "received" => "bg-success",
-                             "failed" => "bg-danger", "queued" => "bg-secondary" }[message.status] %>
-                <span class="badge <%= badge %>" <% if message.error.present? %>title="<%= message.error %>"<% end %>>
+                <span class="muted"><%= message.direction == "incoming" ? message.from_address : message.to_address %></span>
+                <span class="muted nowrap"><%= display_datetime(message.created_at) %></span>
+                <% badge = { "sent" => "success", "received" => "success",
+                             "failed" => "error", "queued" => "info" }[message.status] %>
+                <span class="tag" data-tone="<%= badge %>" <% if message.error.present? %>title="<%= message.error %>"<% end %>>
                     <%= lang("messages_status_#{message.status}") %>
                 </span>
                 <% if unread %>
-                    <button type="button" class="btn btn-sm btn-outline-primary mark-read" data-id="<%= message.id %>">
-                        <i class="fas fa-check me-1"></i><%= lang('mark_as_read') %>
+                    <button type="button" class="small-action outline mark-read" data-id="<%= message.id %>">
+                        <i class="fas fa-check"></i><%= lang('mark_as_read') %>
                     </button>
                 <% elsif message.direction == "incoming" %>
                     <i class="fas fa-check text-success" title="<%= lang('read') %>"></i>
                 <% end %>
             </div>
             <% if message.subject.present? %>
-                <div class="inbox-subject fw-bold"><%= message.subject %></div>
+                <div class="inbox-subject"><%= message.subject %></div>
             <% end %>
             <div class="inbox-body"><%= message.body %></div>
         </div>
     <% end %>
     <% if messages.empty? %>
-        <p class="text-muted text-center py-4"><%= lang('no_records_found') %></p>
+        <p class="muted centered"><%= lang('no_records_found') %></p>
     <% end %>
 </div>
 

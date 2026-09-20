@@ -63,7 +63,7 @@ class BlockedPeriodsTest < ActionDispatch::IntegrationTest
     }
     assert_response :unprocessable_entity
     assert_select "input.is-invalid[name='blocked_period[end_datetime]']"
-    assert_select ".form-message.alert-danger"
+    assert_select ".form-message[data-tone=error]"
     assert_equal "2026-04-03 00:00", @easter.reload.start_datetime.strftime("%F %H:%M")
   end
 

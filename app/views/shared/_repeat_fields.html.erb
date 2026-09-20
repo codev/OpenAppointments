@@ -1,31 +1,31 @@
 <%# Repeat pattern: the recurring_select dropdown (pattern) plus end controls the gem
     does not offer. Locals: prefix (element id prefix, e.g. "repeat"). %>
 <div class="repeat-fields" data-prefix="<%= prefix %>">
-    <div class="mb-2">
-        <label class="form-label" for="<%= prefix %>-rule"><%= lang('repeat') %></label>
-        <select id="<%= prefix %>-rule" class="form-select recurring_select repeat-rule">
+    <div class="field">
+        <label  for="<%= prefix %>-rule"><%= lang('repeat') %></label>
+        <select id="<%= prefix %>-rule" class="recurring_select repeat-rule">
             <option value="null"><%= lang('does_not_repeat') %></option>
             <option value="custom"><%= lang('rs_set_schedule') %></option>
         </select>
     </div>
 
-    <div class="row g-2 align-items-end mb-3 repeat-detail">
-        <div class="col-4">
-            <label class="form-label" for="<%= prefix %>-ends"><%= lang('repeat_ends') %></label>
-            <select id="<%= prefix %>-ends" class="form-select repeat-ends">
+    <div class="repeat-detail split">
+        <div class="field">
+            <label  for="<%= prefix %>-ends"><%= lang('repeat_ends') %></label>
+            <select id="<%= prefix %>-ends" class="repeat-ends">
                 <option value="never"><%= lang('repeat_never') %></option>
                 <option value="on"><%= lang('repeat_on_date') %></option>
                 <option value="after"><%= lang('repeat_after') %></option>
             </select>
         </div>
-        <div class="col-4 repeat-ends-on-group">
-            <input id="<%= prefix %>-ends-on" class="form-control repeat-ends-on" aria-label="<%= lang('repeat_on_date') %>">
+        <div class="repeat-ends-on-group">
+            <input id="<%= prefix %>-ends-on" class="repeat-ends-on" aria-label="<%= lang('repeat_on_date') %>">
         </div>
-        <div class="col-4 repeat-count-group">
-            <div class="input-group">
-                <input type="number" min="1" max="365" value="10" id="<%= prefix %>-count" class="form-control repeat-count"
+        <div class="repeat-count-group">
+            <div class="input-row">
+                <input type="number" min="1" max="365" value="10" id="<%= prefix %>-count" class="repeat-count"
                        aria-label="<%= lang('repeat_after') %>">
-                <span class="input-group-text"><%= lang('repeat_times') %></span>
+                <span class="input-addon"><%= lang('repeat_times') %></span>
             </div>
         </div>
     </div>

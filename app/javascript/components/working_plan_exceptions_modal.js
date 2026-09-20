@@ -85,40 +85,40 @@ App.Components.WorkingPlanExceptionsModal = (function () {
      * @returns {Boolean}
      */
     function validate() {
-        $modal().find('.is-invalid').removeClass('is-invalid');
+        $modal().find('[aria-invalid]').removeAttr('aria-invalid');
 
         const startDate = App.Utils.UI.getDateTimePickerValue($startDate());
 
         if (!startDate) {
-            $startDate().addClass('is-invalid');
+            $startDate().attr('aria-invalid', 'true');
         }
 
         const endDate = App.Utils.UI.getDateTimePickerValue($endDate());
 
         if (!endDate) {
-            $endDate().addClass('is-invalid');
+            $endDate().attr('aria-invalid', 'true');
         }
 
         // Validate that start date is before or equal to end date
         if (startDate && endDate && moment(startDate).isAfter(moment(endDate))) {
-            $endDate().addClass('is-invalid');
+            $endDate().attr('aria-invalid', 'true');
         }
 
         if (!$isNonWorkingDay().prop('checked')) {
             const startTime = App.Utils.UI.getDateTimePickerValue($startTime());
 
             if (!startTime) {
-                $startTime().addClass('is-invalid');
+                $startTime().attr('aria-invalid', 'true');
             }
 
             const endTime = App.Utils.UI.getDateTimePickerValue($endTime());
 
             if (!endTime) {
-                $endTime().addClass('is-invalid');
+                $endTime().attr('aria-invalid', 'true');
             }
         }
 
-        return !$modal().find('.is-invalid').length;
+        return !$modal().find('[aria-invalid=true]').length;
     }
 
     /**
@@ -210,7 +210,7 @@ App.Components.WorkingPlanExceptionsModal = (function () {
 
         deferred.resolve(workingPlanException);
 
-        $modal().modal('hide');
+        App.Utils.Dialog.close($modal());
 
         resetModal();
     }
@@ -231,12 +231,12 @@ App.Components.WorkingPlanExceptionsModal = (function () {
                 height: '30px',
                 submit: $('<button/>', {
                     'type': 'button',
-                    'class': 'd-none submit-editable',
+                    'class': 'submit-editable', hidden: true,
                     'text': lang('save'),
                 }).get(0).outerHTML,
                 cancel: $('<button/>', {
                     'type': 'button',
-                    'class': 'd-none cancel-editable',
+                    'class': 'cancel-editable', hidden: true,
                     'text': lang('cancel'),
                 }).get(0).outerHTML,
                 onblur: 'ignore',
@@ -285,7 +285,7 @@ App.Components.WorkingPlanExceptionsModal = (function () {
 
         $breaks().find('tbody').html(renderNoBreaksRow());
 
-        $modal().modal('show');
+        App.Utils.Dialog.open($modal());
 
         return deferred.promise();
     }
@@ -331,7 +331,7 @@ App.Components.WorkingPlanExceptionsModal = (function () {
 
         toggleFieldsByNonWorkingDay(isNonWorkingDay);
 
-        $modal().modal('show');
+        App.Utils.Dialog.open($modal());
 
         return deferred.promise();
     }
@@ -360,7 +360,7 @@ App.Components.WorkingPlanExceptionsModal = (function () {
                     'html': [
                         $('<button/>', {
                             'type': 'button',
-                            'class': 'btn btn-outline-secondary btn-sm me-2 working-plan-exceptions-edit-break',
+                            'class': 'secondary small-action working-plan-exceptions-edit-break',
                             'title': lang('edit'),
                             'html': [
                                 $('<span/>', {
@@ -370,7 +370,7 @@ App.Components.WorkingPlanExceptionsModal = (function () {
                         }),
                         $('<button/>', {
                             'type': 'button',
-                            'class': 'btn btn-outline-secondary btn-sm working-plan-exceptions-delete-break',
+                            'class': 'secondary small-action working-plan-exceptions-delete-break',
                             'title': lang('delete'),
                             'html': [
                                 $('<span/>', {
@@ -380,7 +380,7 @@ App.Components.WorkingPlanExceptionsModal = (function () {
                         }),
                         $('<button/>', {
                             'type': 'button',
-                            'class': 'btn btn-outline-secondary btn-sm me-2 working-plan-exceptions-save-break d-none',
+                            'class': 'secondary small-action working-plan-exceptions-save-break', hidden: true,
                             'title': lang('save'),
                             'html': [
                                 $('<span/>', {
@@ -390,7 +390,7 @@ App.Components.WorkingPlanExceptionsModal = (function () {
                         }),
                         $('<button/>', {
                             'type': 'button',
-                            'class': 'btn btn-outline-secondary btn-sm working-plan-exceptions-cancel-break d-none',
+                            'class': 'secondary small-action working-plan-exceptions-cancel-break', hidden: true,
                             'title': lang('cancel'),
                             'html': [
                                 $('<span/>', {
@@ -448,9 +448,9 @@ App.Components.WorkingPlanExceptionsModal = (function () {
 
         // Show save - cancel buttons.
         $tr = $(this).closest('tr');
-        $tr.find('.working-plan-exceptions-edit-break, .working-plan-exceptions-delete-break').addClass('d-none');
-        $tr.find('.working-plan-exceptions-save-break, .working-plan-exceptions-cancel-break').removeClass('d-none');
-        $tr.find('select,input:text').addClass('form-control form-control-sm');
+        $tr.find('.working-plan-exceptions-edit-break, .working-plan-exceptions-delete-break').prop('hidden', true);
+        $tr.find('.working-plan-exceptions-save-break, .working-plan-exceptions-cancel-break').prop('hidden', false);
+        $tr.find('select,input:text').addClass('small-field');
 
         $addBreak().prop('disabled', true);
     }
@@ -487,10 +487,10 @@ App.Components.WorkingPlanExceptionsModal = (function () {
         $tr.find('.editable .submit-editable').trigger('click');
         enableSubmit = false;
 
-        $tr.find('.working-plan-exceptions-save-break, .working-plan-exceptions-cancel-break').addClass('d-none');
+        $tr.find('.working-plan-exceptions-save-break, .working-plan-exceptions-cancel-break').prop('hidden', true);
         $tr.closest('table')
             .find('.working-plan-exceptions-edit-break, .working-plan-exceptions-delete-break')
-            .removeClass('d-none');
+            .prop('hidden', false);
         $addBreak().prop('disabled', false);
     }
 
@@ -505,8 +505,8 @@ App.Components.WorkingPlanExceptionsModal = (function () {
 
         $breaks()
             .find('.working-plan-exceptions-edit-break, .working-plan-exceptions-delete-break')
-            .removeClass('d-none');
-        $tr.find('.working-plan-exceptions-save-break, .working-plan-exceptions-cancel-break').addClass('d-none');
+            .prop('hidden', false);
+        $tr.find('.working-plan-exceptions-save-break, .working-plan-exceptions-cancel-break').prop('hidden', true);
         $addBreak().prop('disabled', false);
     }
 
@@ -531,7 +531,7 @@ App.Components.WorkingPlanExceptionsModal = (function () {
         App.Utils.UI.initializeTimePicker($timeOffEnd());
 
         $modal()
-            .on('hidden.bs.modal', onModalHidden)
+            .on('close', onModalHidden)
             .on('click', '.working-plan-exceptions-add-break', onAddBreakClick)
             .on('click', '.working-plan-exceptions-edit-break', onEditBreakClick)
             .on('click', '.working-plan-exceptions-delete-break', onDeleteBreakClick)

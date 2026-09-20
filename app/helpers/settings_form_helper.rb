@@ -10,8 +10,8 @@ module SettingsFormHelper
 
   def settings_flash
     safe_join([
-      (tag.div(notice, class: "alert alert-success") if notice),
-      (tag.div(alert, class: "alert alert-danger") if alert)
+      (tag.div(notice, class: "notice", "data-tone": "success") if notice),
+      (tag.div(alert, class: "notice", "data-tone": "error") if alert)
     ].compact)
   end
 
@@ -25,37 +25,37 @@ module SettingsFormHelper
   end
 
   def setting_text(name, **options)
-    text_field_tag "settings[#{name}]", setting_value(name), setting_field_options(name, { class: "form-control" }.merge(options))
+    text_field_tag "settings[#{name}]", setting_value(name), setting_field_options(name, options)
   end
 
   # Secrets are never written into the page; a blank submission keeps the stored one.
   def setting_password(name, **options)
-    password_field_tag "settings[#{name}]", nil, setting_field_options(name, { class: "form-control" }.merge(options))
+    password_field_tag "settings[#{name}]", nil, setting_field_options(name, options)
   end
 
   def setting_textarea(name, **options)
-    text_area_tag "settings[#{name}]", setting_value(name), setting_field_options(name, { class: "form-control" }.merge(options))
+    text_area_tag "settings[#{name}]", setting_value(name), setting_field_options(name, options)
   end
 
   # choices: flat [[label, value]] or grouped [[group, [[label, value]]]].
   def setting_select(name, choices, **options)
     grouped = choices.first&.last.is_a?(Array) && choices.first.last.first.is_a?(Array)
     tags = grouped ? grouped_options_for_select(choices, setting_value(name)) : options_for_select(choices, setting_value(name))
-    select_tag "settings[#{name}]", tags, setting_field_options(name, { class: "form-select" }.merge(options))
+    select_tag "settings[#{name}]", tags, setting_field_options(name, options)
   end
 
   # A form-switch storing "1"/"0"; default: value assumed while unset.
   def setting_switch(name, default: nil, **options)
     hidden_field_tag("settings[#{name}]", "0", id: nil) +
       check_box_tag("settings[#{name}]", "1", setting(name, setting_value(name) || default).to_s == "1",
-                    setting_field_options(name, { class: "form-check-input" }.merge(options)))
+                    setting_field_options(name, options))
   end
 
   def settings_save_button
     return unless can?(:edit, :system_settings)
 
-    button_tag(type: "submit", id: "save-settings", class: "btn btn-primary") do
-      tag.i(class: "fas fa-check-square me-2") + lang("save")
+    button_tag(type: "submit", id: "save-settings") do
+      tag.i(class: "fas fa-check-square") + " " + lang("save")
     end
   end
 end

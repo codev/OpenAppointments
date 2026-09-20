@@ -1,60 +1,60 @@
 <%# Port of EA pages/password_reset.php. The legacy image captcha branch is dropped; only ALTCHA remains. %>
-<div class="text-center mb-4">
+<div class="centered">
     <img src="<%= image_path("logo.png") %>" alt="OpenAppointments"
-         class="shadow mb-3" width="72" height="72">
+          width="72" height="72">
 
-    <h4 class="text-primary fw-semibold mb-1"><%= lang('reset_password') %></h4>
+    <h4 class="text-primary"><%= lang('reset_password') %></h4>
 
     <% if vars(:token_valid) %>
-        <p class="small mb-0">
+        <p>
             <%= lang('enter_new_password') %>
         </p>
     <% end %>
 </div>
 
-<div class="alert d-none"></div>
+<div class="notice" hidden></div>
 
 <% if vars(:token_valid) %>
 
     <!-- Password Reset Form -->
 
-    <% if flash[:alert] %><div class="alert alert-danger"><%= flash[:alert] %></div><% end %>
+    <% if flash[:alert] %><div class="notice" data-tone="error"><%= flash[:alert] %></div><% end %>
     <%= form_with url: "/recovery/complete", method: :post, id: "password-reset-form", data: { turbo: false } do %>
         <%= hidden_field_tag :form, "1" %>
         <%= hidden_field_tag :token, vars(:token), id: "token" %>
 
-        <div class="mb-3">
-            <label for="password" class="form-label fw-medium">
+        <div class="field">
+            <label for="password" >
                 <%= lang('new_password') %>
             </label>
-            <div class="input-group">
-                <span class="input-group-text bg-light border-end-0">
+            <div class="input-row">
+                <span class="input-addon">
                     <i class="fas fa-lock"></i>
                 </span>
-                <%= password_field_tag :password, nil, id: "password", placeholder: lang('enter_password_here'), class: "form-control border-start-0 ps-2", required: true %>
+                <%= password_field_tag :password, nil, id: "password", placeholder: lang('enter_password_here'), required: true %>
             </div>
-            <small class="text-muted">
+            <small class="muted">
                 <%= lang('password_length_notice').sub('$number', Passwords::MIN_LENGTH.to_s) %>
             </small>
         </div>
 
-        <div class="mb-4">
-            <label for="password-confirm" class="form-label fw-medium">
+        <div class="field">
+            <label for="password-confirm" >
                 <%= lang('retype_password') %>
             </label>
-            <div class="input-group">
-                <span class="input-group-text bg-light border-end-0">
+            <div class="input-row">
+                <span class="input-addon">
                     <i class="fas fa-lock"></i>
                 </span>
-                <%= password_field_tag :password_confirm, nil, id: "password-confirm", placeholder: lang('enter_password_here'), class: "form-control border-start-0 ps-2", required: true %>
+                <%= password_field_tag :password_confirm, nil, id: "password-confirm", placeholder: lang('enter_password_here'), required: true %>
             </div>
         </div>
 
         <%= render "shared/auth_captcha" %>
 
-        <div class="d-grid gap-2 mb-3">
-            <button type="submit" id="reset-password" class="btn btn-primary">
-                <i class="fas fa-key me-2"></i>
+        <div class="centered">
+            <button type="submit" id="reset-password" >
+                <i class="fas fa-key"></i>
                 <%= lang('reset_password') %>
             </button>
         </div>
@@ -63,15 +63,15 @@
 
 <% else %>
     <!-- Invalid or Expired Token Message -->
-    <div class="alert alert-danger">
-        <i class="fas fa-exclamation-triangle me-2"></i>
+    <div class="notice" data-tone="error">
+        <i class="fas fa-exclamation-triangle"></i>
         <%= vars(:error_message) || lang('invalid_or_expired_token') %>
     </div>
 <% end %>
 
-<div class="text-center">
-    <a href="/login" class="text-decoration-none small">
-        <i class="fas fa-arrow-left me-1"></i>
+<div>
+    <a href="/login" >
+        <i class="fas fa-arrow-left"></i>
         <%= lang('go_to_login') %>
     </a>
 </div>

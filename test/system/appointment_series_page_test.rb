@@ -30,7 +30,7 @@ class AppointmentSeriesPageTest < ApplicationSystemTestCase
 
       click_on "Cancel series"
       assert_selector "#series-cancel-confirm", visible: true, wait: 5
-      within(find("#series-cancel-confirm").ancestor("form, .modal")) do
+      within(find("#series-cancel-confirm").ancestor("form, dialog")) do
         assert_selector "#series-cancel-dates input[type=radio]", minimum: 2, visible: :all
         all("#series-cancel-dates input[type=radio]", visible: :all)[1].click
         fill_in "series-cancel-reason", with: "Away"

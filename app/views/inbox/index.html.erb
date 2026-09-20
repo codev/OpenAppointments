@@ -1,19 +1,19 @@
-<div id="inbox-page" class="container backend-page py-3">
-    <div class="row">
-        <div class="col-12">
-            <div class="d-flex justify-content-between align-items-center border-bottom py-3 mb-3">
-                <h4 class="mb-0 fw-light"><%= lang('inbox') %></h4>
-                <div class="btn-group" role="group">
-                    <a href="/inbox" class="btn btn-sm <%= vars(:inbox_unread_only) ? 'btn-outline-secondary' : 'btn-secondary' %>">
+<div id="inbox-page" class="backend-page">
+    <div class="split">
+        <div class="full">
+            <div class="toolbar spaced">
+                <h4><%= lang('inbox') %></h4>
+                <div class="toolbar" role="group">
+                    <a role="button" href="/inbox" class="small-action <%= 'secondary' if vars(:inbox_unread_only) %>">
                         <%= lang('all') %>
                     </a>
-                    <a href="/inbox?unread=1" class="btn btn-sm <%= vars(:inbox_unread_only) ? 'btn-secondary' : 'btn-outline-secondary' %>">
+                    <a role="button" href="/inbox?unread=1" class="small-action <%= 'secondary' unless vars(:inbox_unread_only) %>">
                         <%= lang('unread') %>
                     </a>
                 </div>
             </div>
 
-            <p class="form-text text-muted mb-4"><%= lang('inbox_info') %></p>
+            <p class="field-hint muted"><%= lang('inbox_info') %></p>
 
             <%= render "shared/inbox_list",
                        messages: vars(:inbox_messages), page: vars(:inbox_page),

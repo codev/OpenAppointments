@@ -1,19 +1,18 @@
 <%# Status tick boxes for the calendar and appointments pages. Cancelled and
     rescheduled kinds start unticked. %>
-<div class="dropdown" id="status-filter">
-    <button class="btn btn-light dropdown-toggle" type="button" data-bs-toggle="dropdown" data-bs-auto-close="outside"
-            aria-expanded="false" data-tippy-content="<%= lang('filter_statuses_hint') %>">
+<details class="menu" id="status-filter" data-align="start">
+    <summary role="button" class="secondary" data-tippy-content="<%= lang('filter_statuses_hint') %>">
         <%= lang('statuses') %>
-    </button>
-    <ul class="dropdown-menu p-2">
+    </summary>
+    <ul>
         <% vars(:appointment_statuses).each do |status| %>
             <li>
-                <label class="dropdown-item d-flex align-items-center gap-2 mb-0">
-                    <input class="form-check-input m-0" type="checkbox" value="<%= status["name"] %>"
+                <label>
+                    <input type="checkbox" value="<%= status["name"] %>"
                            <%= "checked" unless %w[cancelled rescheduled].include?(status["kind"]) %>>
                     <%= status["name"] %>
                 </label>
             </li>
         <% end %>
     </ul>
-</div>
+</details>

@@ -1,47 +1,47 @@
-<div id="messages-settings-page" class="container backend-page py-3">
-    <div class="row">
-        <div class="col-sm-3">
+<div id="messages-settings-page" class="backend-page">
+    <div class="with-sidebar">
+        <aside>
             <%= render "shared/messages_nav" %>
-        </div>
-        <div id="messages-settings" class="col-sm-9">
+        </aside>
+        <div id="messages-settings" >
             <turbo-frame id="settings">
                 <%= settings_form "/messages_settings/save" do %>
-                    <div class="d-flex justify-content-between align-items-center border-bottom mb-4 py-2">
-                        <h4 class="mb-0 fw-light">
+                    <div class="page-heading toolbar spaced">
+                        <h4>
                             <%= lang('settings') %>
                         </h4>
 
                         <%= settings_save_button %>
                     </div>
 
-                    <div class="row">
-                        <div class="col-12 col-md-8">
-                            <div class="mb-3">
-                                <label class="form-label" for="messages-enabled">
+                    <div class="split">
+                        <div>
+                            <div class="field">
+                                <label  for="messages-enabled">
                                     <%= lang('messages_enabled') %>
                                 </label>
                                 <%= setting_select "messages_enabled", [ [ lang('messages_enabled_on'), "1" ], [ lang('messages_enabled_off'), "0" ], [ lang('messages_enabled_debug'), "debug" ] ] %>
-                                <div class="form-text text-muted">
+                                <div class="field-hint muted full">
                                     <small>
                                         <%= lang('messages_enabled_hint') %>
                                     </small>
                                 </div>
                             </div>
 
-                            <div class="row">
-                                <div class="col-12 col-md-6 mb-3">
-                                    <label class="form-label" for="messages-intercept-email">
+                            <div class="split">
+                                <div class="field">
+                                    <label  for="messages-intercept-email">
                                         <%= lang('email') %>
                                     </label>
                                     <%= setting_text "messages_intercept_email", type: "email", data: { field: "messages_intercept_email", enabled_when: "messages_enabled=debug" } %>
                                 </div>
-                                <div class="col-12 col-md-6 mb-3">
-                                    <label class="form-label" for="messages-intercept-phone">
+                                <div class="field">
+                                    <label  for="messages-intercept-phone">
                                         <%= lang('phone_number') %>
                                     </label>
                                     <%= setting_text "messages_intercept_phone", data: { field: "messages_intercept_phone", enabled_when: "messages_enabled=debug" } %>
                                 </div>
-                                <div class="col-12 form-text text-muted mb-3">
+                                <div class="field-hint muted">
                                     <small>
                                         <%= lang('messages_intercept_hint') %>
                                     </small>
@@ -49,64 +49,64 @@
                             </div>
                             <%= settings_flash %>
 
-                            <div class="mb-3">
-                                <label class="form-label" for="messages-retention-days">
+                            <div class="field">
+                                <label  for="messages-retention-days">
                                     <%= lang('messages_retention_days') %>
                                 </label>
                                 <%= setting_text "messages_retention_days", min: 0, type: "number" %>
-                                <div class="form-text text-muted">
+                                <div class="field-hint muted">
                                     <small>
                                         <%= lang('messages_retention_days_hint') %>
                                     </small>
                                 </div>
                             </div>
 
-                            <div class="mb-3">
-                                <label class="form-label" for="messages-email-subject">
+                            <div class="field">
+                                <label  for="messages-email-subject">
                                     <%= lang('messages_email_subject') %>
                                 </label>
                                 <%= setting_text "messages_email_subject", placeholder: "{{Company Name}} - Appointments" %>
-                                <div class="form-text text-muted">
+                                <div class="field-hint muted">
                                     <small>
                                         <%= lang('messages_email_subject_hint') %>
                                     </small>
                                 </div>
                             </div>
 
-                            <div class="mb-3">
-                                <div class="form-check form-switch">
+                            <div>
+                                <div class="choice switch-field">
                                     <%= setting_switch "messages_sms_variation" %>
-                                    <label class="form-check-label" for="messages-sms-variation">
+                                    <label  for="messages-sms-variation">
                                         <%= lang('messages_sms_variation') %>
                                     </label>
                                 </div>
-                                <div class="form-text text-muted">
+                                <div class="field-hint muted">
                                     <small>
                                         <%= lang('messages_sms_variation_hint') %>
                                     </small>
                                 </div>
                             </div>
 
-                            <div class="mb-3">
-                                <div class="form-check form-switch">
+                            <div>
+                                <div class="choice switch-field">
                                     <%= setting_switch "messages_failure_alert" %>
-                                    <label class="form-check-label" for="messages-failure-alert">
+                                    <label  for="messages-failure-alert">
                                         <%= lang('messages_failure_alert') %>
                                     </label>
                                 </div>
-                                <div class="form-text text-muted">
+                                <div class="field-hint muted">
                                     <small>
                                         <%= lang('messages_failure_alert_hint') %>
                                     </small>
                                 </div>
                             </div>
 
-                            <div class="mb-3">
-                                <label class="form-label" for="messages-failure-alert-emails">
+                            <div class="field">
+                                <label  for="messages-failure-alert-emails">
                                     <%= lang('messages_failure_alert_emails') %>
                                 </label>
                                 <%= setting_text "messages_failure_alert_emails", value: vars(:failure_alert_emails), data: { field: "messages_failure_alert_emails", enabled_when: "messages_failure_alert=1" } %>
-                                <div class="form-text text-muted">
+                                <div class="field-hint muted">
                                     <small>
                                         <%= lang('messages_failure_alert_emails_hint') %>
                                     </small>

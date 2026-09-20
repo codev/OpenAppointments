@@ -25,7 +25,7 @@ App.Components.CustomerMessages = (function () {
                 $('<i/>', {
                     'class': incoming ? 'fas fa-arrow-down text-success me-1' : 'fas fa-arrow-up text-primary me-1',
                 }),
-                $('<span/>', {'class': 'badge bg-secondary me-1', 'text': message.channel_label}),
+                $('<span/>', {'class': 'tag', 'text': message.channel_label}),
                 $('<small/>', {
                     'class': 'text-muted',
                     'text': message.created_at + (message.status === 'failed' ? ' - ' + lang('messages_status_failed') : ''),
@@ -33,7 +33,7 @@ App.Components.CustomerMessages = (function () {
                 unread
                     ? $('<button/>', {
                           'type': 'button',
-                          'class': 'btn btn-link btn-sm p-0 ms-2 mark-read',
+                          'class': 'link-button mark-read',
                           'data-id': message.id,
                           'text': lang('mark_as_read'),
                       })
@@ -59,7 +59,7 @@ App.Components.CustomerMessages = (function () {
             }
 
             messages.forEach(appendMessage);
-            $('#mark-all-read').toggleClass('d-none', !messages.some((message) => !message.read));
+            $('#mark-all-read').prop('hidden', !messages.some((message) => !message.read));
 
             if ($panel.data('scroll') === true) {
                 $panel.data('scroll', false);
@@ -140,13 +140,13 @@ App.Components.CustomerMessages = (function () {
                     App.Utils.MarkRead.updateHeaderBadge(response.inbox_unread);
                     decreaseUnreadBadge(0);
                     panel().find('.message-unread').removeClass('message-unread fw-bold').find('.mark-read').remove();
-                    $('#mark-all-read').addClass('d-none');
+                    $('#mark-all-read').prop('hidden', true);
                 });
             });
             $document.on('click', '#customer-messages .mark-read', () => {
                 decreaseUnreadBadge(1);
                 if (panel().find('.message-unread').length <= 1) {
-                    $('#mark-all-read').addClass('d-none');
+                    $('#mark-all-read').prop('hidden', true);
                 }
             });
 

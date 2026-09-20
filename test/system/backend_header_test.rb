@@ -6,7 +6,7 @@ require "application_system_test_case"
 class BackendHeaderTest < ApplicationSystemTestCase
   # Text nodes have no box of their own: a Range gives the label's rect.
   MEASURE = <<~JS.freeze
-    return Array.from(document.querySelectorAll('#header .navbar-nav .nav-link')).map((link) => {
+    return Array.from(document.querySelectorAll('#header .main-menu > li > a, #header .main-menu > li > details > summary')).map((link) => {
       const icon = link.querySelector('i, svg');
       const text = Array.from(link.childNodes).find((n) => n.nodeType === 3 && n.textContent.trim());
       let label = null;
@@ -30,7 +30,7 @@ class BackendHeaderTest < ApplicationSystemTestCase
 
   def measure_at(width)
     resize_window(width, 900)
-    assert_selector "#header .navbar-nav .nav-link", wait: 5
+    assert_selector "#header .main-menu > li > a", wait: 5
     page.evaluate_script("(() => { #{MEASURE} })()")
   end
 

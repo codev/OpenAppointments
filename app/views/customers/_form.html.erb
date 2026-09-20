@@ -6,71 +6,71 @@
 <% formats = { date_format: setting('date_format'), time_format: setting('time_format') } %>
 <% channels = Messaging.enabled_channels %>
 <%= render "shared/crud_form", record: record, delete_title: lang('delete_customer') do |f| %>
-    <div class="row">
-        <div class="col-12 col-lg-6">
-            <div class="mb-3">
-                <%= f.label :name, class: "form-label" do %>
-                    <%= lang('name') %> <span class="text-danger">*</span>
+    <div class="split">
+        <div>
+            <div class="field">
+                <%= f.label :name do %>
+                    <%= lang('name') %> <span class="required">*</span>
                 <% end %>
                 <%= f.text_field :name, required: true, maxlength: 220,
-                                 class: "form-control #{'is-invalid' if record.errors.include?(:name)}" %>
+                                 class: "#{'is-invalid' if record.errors.include?(:name)}" %>
             </div>
 
             <% fields.each do |field, max| %>
                 <% next unless vars(:"display_#{field}") %>
                 <% required = vars(:"require_#{field}") %>
-                <div class="mb-3">
-                    <%= f.label field, class: "form-label" do %>
+                <div class="field">
+                    <%= f.label field do %>
                         <%= lang(field.to_s) %>
-                        <% if required %><span class="text-danger">*</span><% end %>
+                        <% if required %><span class="required">*</span><% end %>
                     <% end %>
                     <%= f.text_field field, required: required, maxlength: max,
-                                     class: "form-control #{'is-invalid' if record.errors.include?(field)}" %>
+                                     class: "#{'is-invalid' if record.errors.include?(field)}" %>
                 </div>
             <% end %>
 
-            <div class="mb-3">
-                <%= f.label :language, class: "form-label" do %>
-                    <%= lang('language') %> <span class="text-danger">*</span>
+            <div class="field">
+                <%= f.label :language do %>
+                    <%= lang('language') %> <span class="required">*</span>
                 <% end %>
                 <%= f.select :language, Localization.available_languages.map { |l| [ l.capitalize, l ] }, {},
-                             required: true, class: "form-select" %>
+                             required: true %>
             </div>
 
-            <div class="mb-3<%= timezone_hidden_class %>">
-                <%= f.label :timezone, class: "form-label" do %>
-                    <%= lang('timezone') %> <span class="text-danger">*</span>
+            <div class="<%= timezone_hidden_class %>">
+                <%= f.label :timezone do %>
+                    <%= lang('timezone') %> <span class="required">*</span>
                 <% end %>
                 <%= f.select :timezone, grouped_timezones.map { |continent, zones| [ continent, zones.map { |value, name| [ name, value ] } ] }, {},
-                             required: true, class: "form-select" %>
+                             required: true %>
             </div>
 
             <% { other_emails: "other_emails", other_phones: "other_phones" }.each do |field, key| %>
-                <div class="mb-3">
-                    <%= f.label field, lang(key), class: "form-label" %>
-                    <%= f.text_area field, rows: 2, class: "form-control" %>
-                    <div class="form-text text-muted"><small><%= lang("#{key}_hint") %></small></div>
+                <div class="field">
+                    <%= f.label field, lang(key) %>
+                    <%= f.text_area field, rows: 2 %>
+                    <div class="field-hint muted"><small><%= lang("#{key}_hint") %></small></div>
                 </div>
             <% end %>
 
             <% if setting('ldap_is_active').to_s == "1" %>
-                <div class="mb-3">
-                    <%= f.label :ldap_dn, lang('ldap_dn'), class: "form-label" %>
-                    <%= f.text_field :ldap_dn, maxlength: 100, class: "form-control" %>
+                <div class="field">
+                    <%= f.label :ldap_dn, lang('ldap_dn') %>
+                    <%= f.text_field :ldap_dn, maxlength: 100 %>
                 </div>
             <% end %>
 
             <%= render "shared/custom_fields", rows: 8, name: "customer", record: record %>
 
-            <div class="mb-3">
-                <%= f.label :notes, lang('notes'), class: "form-label" %>
-                <%= f.text_area :notes, rows: 8, class: "form-control" %>
+            <div class="field">
+                <%= f.label :notes, lang('notes') %>
+                <%= f.text_area :notes, rows: 8 %>
             </div>
         </div>
 
-        <div class="col-12 col-lg-6">
-            <h4 class="mb-3 fw-light"><%= lang('appointments') %></h4>
-            <div id="customer-appointments" class="card border p-3 overflow-auto mb-4"
+        <div>
+            <h4 class="toolbar spaced"><%= lang('appointments') %></h4>
+            <div id="customer-appointments" class="panel"
                  style="min-height: 400px; max-height: 800px; max-width: 330px; width: 100%;">
                 <% appointments = record.persisted? ? visible_appointments(record) : [] %>
                 <% if appointments.empty? %>
@@ -79,7 +79,7 @@
                 <% appointments.each do |appointment| %>
                     <div class="appointment-row" data-id="<%= appointment.id %>">
                         <a href="/calendar/reschedule/<%= appointment.booking_hash %>" data-turbo="false">
-                            <i class="fas fa-edit me-1"></i>
+                            <i class="fas fa-edit"></i>
                             <strong><%= appointment.service&.name %> - <%= appointment.provider&.name %></strong>
                             <br>
                         </a>
@@ -96,39 +96,39 @@
 <% end %>
 
 <% if record.persisted? && can?(:delete, :customers) %>
-    <%= form_with url: merge_customer_path(record), method: :post, id: "merge-customer", class: "card card-body border mt-4",
+    <%= form_with url: merge_customer_path(record), method: :post, id: "merge-customer", class: "panel",
                   data: { turbo_confirm: lang('merge_customer_confirm'), turbo_confirm_title: lang('merge_customer') } do %>
-        <label for="merge-target" class="form-label fw-bold"><%= lang('merge_customer') %></label>
-        <div class="form-text text-muted mb-2"><small><%= lang('merge_customer_hint') %></small></div>
-        <div class="input-group" style="max-width: 480px;">
-            <%= text_field_tag :target, nil, id: "merge-target", class: "form-control", required: true %>
-            <button type="submit" class="btn btn-outline-danger"><%= lang('merge_customer_button') %></button>
+        <label for="merge-target" ><%= lang('merge_customer') %></label>
+        <div class="field-hint muted"><small><%= lang('merge_customer_hint') %></small></div>
+        <div class="input-row" style="max-width: 480px;">
+            <%= text_field_tag :target, nil, id: "merge-target", required: true %>
+            <button type="submit" class="destructive"><%= lang('merge_customer_button') %></button>
         </div>
     <% end %>
 <% end %>
 
 <% if record.persisted? %>
-    <div id="customer-conversation" class="mt-4">
-        <h4 class="mb-3 fw-light d-flex justify-content-between align-items-center">
+    <div id="customer-conversation" >
+        <h4>
             <%= lang('customer_messages') %>
-            <button type="button" id="mark-all-read" class="btn btn-sm btn-outline-primary d-none">
-                <i class="fas fa-check-double me-1"></i><%= lang('mark_all_as_read') %>
+            <button type="button" id="mark-all-read" class="small-action outline" hidden>
+                <i class="fas fa-check-double"></i><%= lang('mark_all_as_read') %>
             </button>
         </h4>
-        <div id="customer-messages" class="card border p-3 overflow-auto mb-3" data-customer-id="<%= record.id %>"
+        <div id="customer-messages" class="panel" data-customer-id="<%= record.id %>"
              data-scroll="<%= params[:section] == 'messages' %>"></div>
         <% if channels.any? %>
-            <div id="customer-message-composer" class="input-group mb-4">
-                <select id="message-channel" class="form-select">
+            <div id="customer-message-composer" class="input-row">
+                <select id="message-channel" >
                     <option value=""><%= lang('select_one') %></option>
                     <% channels.each do |channel| %>
                         <option value="<%= channel.key %>"><%= channel.label %></option>
                     <% end %>
                     <option value="all"><%= lang('messages_all_providers') %></option>
                 </select>
-                <textarea id="message-body" class="form-control" rows="3" maxlength="1000"></textarea>
-                <button type="button" id="send-message" class="btn btn-primary">
-                    <i class="fas fa-paper-plane me-2"></i>
+                <textarea id="message-body"  rows="3" maxlength="1000"></textarea>
+                <button type="button" id="send-message" >
+                    <i class="fas fa-paper-plane"></i>
                     <%= lang('send_message') %>
                 </button>
             </div>

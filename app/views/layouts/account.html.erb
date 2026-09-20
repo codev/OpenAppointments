@@ -16,7 +16,6 @@
     <link rel="icon" type="image/x-icon" href="<%= image_path("favicon.ico") %>">
     <link rel="icon" sizes="192x192" href="<%= image_path('logo.png') %>">
 
-    <%= stylesheet_link_tag "themes/#{active_theme}", "general" %>
     <%= stylesheet_link_tag "vendor/pico/pico.conditional.min", "oa-backend", "oa-themes/#{active_theme}" %>
     <%= render "shared/brand_style" %>
     <%= render "shared/custom_css_style" %>
@@ -25,14 +24,14 @@
 </head>
 <body>
 
-<div class="d-flex align-items-center justify-content-center min-vh-100">
+<div class="toolbar">
 
-    <div class="card w-100 shadow-sm min-vh-mobile" style="max-width: 500px;">
-        <div class="card-body p-5">
+    <div class="panel" style="max-width: 500px;">
+        <div class="centered">
             <%= yield %>
         </div>
 
-        <div class="card-footer text-center py-3">
+        <div>
             <small>
                 Powered by
                 <a href="https://github.com/codev/OpenAppointments">OpenAppointments</a>

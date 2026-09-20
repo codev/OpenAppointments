@@ -1,10 +1,10 @@
 <%# Left menu of the Messages panel (same shape as settings_nav). %>
-<h4 class="py-3 mb-3 fw-light">
+<h4>
     <%= lang('messages') %>
 </h4>
 
 <% providers_child = request.path =~ %r{\A/messages_[a-z]+_settings\z} %>
-<ul id="messages-nav" class="nav flex-column">
+<ul id="messages-nav" class="side-nav">
     <%= render "shared/side_nav_item", path: "/messages_settings", text: lang('settings'), child: false %>
     <%= render "shared/side_nav_item", path: "/messages_providers", text: lang('messages_providers'), child: providers_child.present? %>
     <%= render "shared/side_nav_item", path: "/messages_notifications", text: lang('notifications'), child: false %>

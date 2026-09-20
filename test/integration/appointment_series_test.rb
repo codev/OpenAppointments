@@ -160,14 +160,14 @@ class AppointmentSeriesPanelTest < ActionDispatch::IntegrationTest
     post "/appointment_series/#{@series.id}/cancel", params: { from: "2026-07-27", notify_users: "0", cancellation_reason: "Away" }
     assert_redirected_to "/appointment_series"
     follow_redirect!
-    assert_select ".alert-success", text: I18n.t("ea.series_cancelled")
+    assert_select ".notice[data-tone=success]", text: I18n.t("ea.series_cancelled")
     assert_equal [ Date.new(2026, 7, 20) ], @series.reload.appointments.active.pluck(:occurrence_at)
     assert_select "#series-table tbody tr", count: 1
 
     post "/appointment_series/#{@series.id}/cancel", params: { from: "not a date" }
     assert_redirected_to "/appointment_series"
     follow_redirect!
-    assert_select ".alert-danger"
+    assert_select ".notice[data-tone=error]"
   end
 
   test "providers only get their own series in the panel and cannot cancel others" do

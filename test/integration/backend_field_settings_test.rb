@@ -24,9 +24,9 @@ class BackendFieldSettingsTest < ActionDispatch::IntegrationTest
     Setting.set("require_phone_number", "1")
     get "/customers/new"
     assert_select "#customer_email[required]", false
-    assert_select "label[for=customer_email] span.text-danger", false
+    assert_select "label[for=customer_email] .required", false
     assert_select "#customer_phone_number[required]"
-    assert_select "label[for=customer_phone_number] span.text-danger"
+    assert_select "label[for=customer_phone_number] .required"
   end
 
   test "appointment form hides fields with display off" do
@@ -42,12 +42,12 @@ class BackendFieldSettingsTest < ActionDispatch::IntegrationTest
     Setting.set("require_email", "0")
     get "/appointments/new"
     assert_select "#appointment-form #email[required]", false
-    assert_select "#appointment-form label[for=email] span.text-danger", false
+    assert_select "#appointment-form label[for=email] .required", false
 
     Setting.set("require_email", "1")
     get "/appointments/new"
     assert_select "#appointment-form #email[required]"
-    assert_select "#appointment-form label[for=email] span.text-danger"
+    assert_select "#appointment-form label[for=email] .required"
   end
 
   test "customer notes stays visible regardless of the booking notes flag" do

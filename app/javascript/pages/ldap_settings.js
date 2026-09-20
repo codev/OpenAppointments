@@ -145,7 +145,7 @@ App.Pages.LdapSettings = (function () {
                     <pre class="overflow-y-auto bg-light rounded p-2" style="max-height: 200px">${JSON.stringify(entry, null, 2)}</pre>
                     
                     <div class="d-lg-flex">
-                        <button class="btn btn-outline-primary btn-sm px-4 ldap-import ms-lg-auto">
+                        <button class="outline small-action ldap-import">
                             ${lang('import')}
                         </button>
                     </div>

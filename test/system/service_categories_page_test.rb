@@ -20,7 +20,7 @@ class ServiceCategoriesPageTest < ApplicationSystemTestCase
     fill_in "service_category[name]", with: "Beard"
     click_on "Save"
 
-    assert_selector ".alert-success", text: "Service category saved", wait: 5
+    assert_selector ".notice[data-tone=success]", text: "Service category saved", wait: 5
     assert_no_selector "#service-categories-page.editing"
     assert_selector ".service-category-row.selected strong", text: "Beard"
     assert_equal page_path, current_path, "frames must not navigate the page"
@@ -40,7 +40,7 @@ class ServiceCategoriesPageTest < ApplicationSystemTestCase
     assert ServiceCategory.exists?(service_categories(:hair).id)
     click_on "Delete"
     confirm_modal "Delete Service Category", "Delete"
-    assert_selector ".alert-success", text: "Service category deleted", wait: 5
+    assert_selector ".notice[data-tone=success]", text: "Service category deleted", wait: 5
     assert_no_selector ".service-category-row[data-id='#{service_categories(:hair).id}']", visible: :all
     assert_no_selector "#service-categories-page.editing"
   end

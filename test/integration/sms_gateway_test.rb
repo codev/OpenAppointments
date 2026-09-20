@@ -61,13 +61,13 @@ class SmsGatewayTest < ActionDispatch::IntegrationTest
   def assert_saved
     assert_redirected_to "/messages_smsgateway_settings"
     follow_redirect!
-    assert_select ".alert-success"
+    assert_select ".notice[data-tone=success]"
   end
 
   def assert_save_failed(pattern)
     assert_redirected_to "/messages_smsgateway_settings"
     follow_redirect!
-    assert_select ".alert-danger", text: pattern
+    assert_select ".notice[data-tone=error]", text: pattern
   end
 
   test "activating save validates credentials, registers the webhook once and dedupes" do

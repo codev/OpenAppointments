@@ -1,6 +1,6 @@
 <% waitlist_link = capture do %>
-    <%= link_to "/waitlist", id: "waitlist-link", class: "btn btn-outline-secondary me-2" do %>
-        <i class="fas fa-clock me-2"></i>
+    <%= link_to "/waitlist", id: "waitlist-link", class: "secondary", role: "button" do %>
+        <i class="fas fa-clock"></i>
         <%= lang('waitlist') %>
     <% end %>
 <% end %>

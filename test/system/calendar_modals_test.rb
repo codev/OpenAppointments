@@ -25,11 +25,11 @@ class CalendarModalsTest < ApplicationSystemTestCase
     begin
       visit appointments_url
       assert_selector "#insert-appointment", visible: :all, wait: 10
-      find("#calendar-actions [data-bs-toggle=dropdown]").click
+      find("#calendar-actions #add-event-menu summary").click
       find("#insert-appointment").click
       assert_selector "#save-appointment", visible: true, wait: 5
       wait_for_modal
-      within(find("#save-appointment").ancestor(".modal")) do
+      within(find("#save-appointment").ancestor("dialog")) do
         select "Trim Cut", from: "select-service"
         select "Zane", from: "select-provider"
         find("#start-datetime").set("#{today} 2:00 pm\t")
@@ -51,7 +51,7 @@ class CalendarModalsTest < ApplicationSystemTestCase
       within(".popover") { click_on "Edit" }
       assert_selector "#save-appointment", visible: true, wait: 5
       wait_for_modal
-      within(find("#save-appointment").ancestor(".modal")) do
+      within(find("#save-appointment").ancestor("dialog")) do
         # The frame fills the form after the modal shows: typing before that is lost.
         assert_field "appointment-notes", with: "Fringe only", wait: 5
         fill_in "appointment-notes", with: "Fringe and wash"
@@ -63,13 +63,13 @@ class CalendarModalsTest < ApplicationSystemTestCase
 
       open_event("Trim Cut")
       within(".popover") { click_on "Cancel" }
-      assert_selector ".modal.show .modal-title", text: "Cancel Appointment", wait: 5
-      within(".modal.show") { has_button?("Yes") ? click_on("Yes") : choose("Yes") }
+      assert_selector "dialog[open] .dialog-title", text: "Cancel Appointment", wait: 5
+      within("dialog[open]") { has_button?("Yes") ? click_on("Yes") : choose("Yes") }
       assert_selector "#cancellation-reason", visible: true, wait: 5
       wait_for_modal
       find("#cancellation-reason").set("Client away")
-      within(".modal.show .modal-footer") { click_on "Cancel" }
-      assert_no_selector ".modal.show", wait: 5
+      within("dialog[open] .dialog-footer") { click_on "Cancel" }
+      assert_no_selector "dialog[open]", wait: 5
       assert_no_selector ".fc-event", text: "Trim Cut", wait: 10
       cancelled = Appointment.where("notes LIKE ?", "Fringe%").sole
       assert_equal "cancelled", cancelled.appointment_status&.kind
@@ -80,11 +80,11 @@ class CalendarModalsTest < ApplicationSystemTestCase
   test "add and delete an unavailability" do
     begin
       visit appointments_url
-      find("#calendar-actions [data-bs-toggle=dropdown]").click
+      find("#calendar-actions #add-event-menu summary").click
       find("#insert-unavailability").click
       assert_selector "#save-unavailability", visible: true, wait: 5
       wait_for_modal
-      within(find("#save-unavailability").ancestor(".modal")) do
+      within(find("#save-unavailability").ancestor("dialog")) do
         select "Zane", from: "unavailability-provider"
         find("#unavailability-start").set("#{today} 3:00 pm\t")
         find("#unavailability-end").set("#{today} 4:00 pm\t")

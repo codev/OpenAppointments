@@ -1,21 +1,21 @@
-<div id="messages-notifications-page" class="container backend-page py-3">
-    <div class="row">
-        <div class="col-sm-3">
+<div id="messages-notifications-page" class="backend-page">
+    <div class="with-sidebar">
+        <aside>
             <%= render "shared/messages_nav" %>
-        </div>
-        <div id="messages-notifications" class="col-sm-9">
+        </aside>
+        <div id="messages-notifications" >
             <turbo-frame id="notifications">
-                <div class="d-flex justify-content-between align-items-center border-bottom mb-4 py-2">
-                    <h4 class="mb-0 fw-light"><%= lang('notifications') %></h4>
+                <div class="toolbar spaced">
+                    <h4><%= lang('notifications') %></h4>
                     <% if can?(:edit, :system_settings) %>
-                        <%= link_to "/messages_notifications?new=1", id: "add-notification", class: "btn btn-primary" do %>
-                            <i class="fas fa-plus-square me-2"></i>
+                        <%= link_to "/messages_notifications?new=1", id: "add-notification", role: "button" do %>
+                            <i class="fas fa-plus-square"></i>
                             <%= lang('add') %>
                         <% end %>
                     <% end %>
                 </div>
-                <% if notice %><div class="alert alert-success"><%= notice %></div><% end %>
-                <% if alert %><div class="alert alert-danger"><%= alert %></div><% end %>
+                <% if notice %><div class="notice" data-tone="success"><%= notice %></div><% end %>
+                <% if alert %><div class="notice" data-tone="error"><%= alert %></div><% end %>
 
                 <div id="notifications-list">
                     <% @notifications.each_with_index do |notification, index| %>
@@ -23,8 +23,8 @@
                                    open: notification.new_record? || notification.id == @open_id %>
                     <% end %>
                 </div>
-                <div class="text-center my-4">
-                    <button type="button" id="toggle-all-notifications" class="btn btn-outline-secondary"
+                <div class="centered">
+                    <button type="button" id="toggle-all-notifications" class="secondary"
                             data-open-text="<%= lang('open_all_notification_templates') %>"
                             data-close-text="<%= lang('close_all_notification_templates') %>">
                         <%= lang('open_all_notification_templates') %>

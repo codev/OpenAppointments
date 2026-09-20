@@ -1,8 +1,8 @@
 <% list_toolbar = capture do %>
-    <div class="d-flex justify-content-between align-items-center mb-2">
-        <small class="text-muted me-2"><%= lang('drag_to_reorder') %></small>
+    <div class="toolbar spaced">
+        <small class="muted"><%= lang('drag_to_reorder') %></small>
         <%= button_to lang('sort_alphabetically'), "/services/sort_alphabetically",
-                      class: "btn btn-outline-secondary btn-sm sort-alphabetically text-nowrap",
+                      class: "secondary small-action sort-alphabetically nowrap",
                       form: { data: { turbo_confirm: lang('sort_alphabetically_confirm') } } %>
     </div>
 <% end %>

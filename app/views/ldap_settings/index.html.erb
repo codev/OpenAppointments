@@ -1,20 +1,20 @@
 <%# Port of EA pages/ldap_settings.php. Directory search is not available in this build. %>
-<div id="ldap-settings-page" class="container backend-page py-3">
-    <div class="row">
-        <div class="col-sm-3">
+<div id="ldap-settings-page" class="backend-page">
+    <div class="with-sidebar">
+        <aside>
             <%= render "shared/settings_nav" %>
-        </div>
-        <div id="ldap-settings" class="col-sm-9">
+        </aside>
+        <div id="ldap-settings" >
             <turbo-frame id="settings">
                 <%= settings_form "/ldap_settings/save" do %>
-                    <div class="d-flex justify-content-between align-items-center border-bottom mb-4 py-2">
-                        <h4 class="mb-0 fw-light">
+                    <div class="toolbar spaced">
+                        <h4>
                             <%= lang('ldap') %>
                         </h4>
 
-                        <div>
-                            <a href="/integrations" data-turbo="false" class="btn btn-outline-primary me-2">
-                                <i class="fas fa-chevron-left me-2"></i>
+                        <div class="split">
+                            <a role="button" href="/integrations" data-turbo="false" class="outline">
+                                <i class="fas fa-chevron-left"></i>
                                 <%= lang('back') %>
                             </a>
 
@@ -23,78 +23,78 @@
                     </div>
                     <%= settings_flash %>
 
-                    <div class="alert alert-warning">
+                    <div class="notice" data-tone="warning">
                         LDAP is not available in this build.
                     </div>
 
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="mb-3">
-                                <div class="form-check form-switch mb-3">
+                    <div class="toolbar spaced">
+                        <div class="full">
+                            <div>
+                                <div class="choice switch-field">
                                     <%= setting_switch "ldap_is_active" %>
-                                    <label class="form-check-label" for="ldap-is-active">
+                                    <label  for="ldap-is-active">
                                         <%= lang('active') %>
                                     </label>
                                 </div>
                             </div>
 
-                            <div class="mb-3">
-                                <label class="form-label" for="ldap-host">
+                            <div class="field">
+                                <label  for="ldap-host">
                                     <%= lang('host') %>
                                 </label>
                                 <%= setting_text "ldap_host" %>
                             </div>
 
-                            <div class="mb-3">
-                                <label class="form-label" for="ldap-port">
+                            <div class="field">
+                                <label  for="ldap-port">
                                     <%= lang('port') %>
                                 </label>
                                 <%= setting_text "ldap_port" %>
                             </div>
 
-                            <div class="mb-3">
-                                <label class="form-label" for="ldap-user_dn">
+                            <div class="field">
+                                <label  for="ldap-user_dn">
                                     <%= lang('user_dn') %>
                                 </label>
                                 <%= setting_text "ldap_user_dn", id: "ldap-user_dn" %>
                             </div>
 
-                            <div class="mb-3">
-                                <label class="form-label" for="ldap-password">
+                            <div class="field">
+                                <label  for="ldap-password">
                                     <%= lang('password') %>
                                 </label>
                                 <%= setting_password "ldap_password" %>
                             </div>
 
-                            <div class="mb-3">
-                                <label class="form-label" for="ldap-base-dn">
+                            <div class="field">
+                                <label  for="ldap-base-dn">
                                     <%= lang('base_dn') %>
                                 </label>
                                 <%= setting_text "ldap_base_dn" %>
                             </div>
 
-                            <div class="mb-3">
-                                <div class="d-flex mb-2">
-                                    <label class="form-label mb-0" for="ldap-filter">
+                            <div>
+                                <div class="field toolbar">
+                                    <label  for="ldap-filter">
                                         <%= lang('filter') %>
                                     </label>
-                                    <button type="button" class="btn btn-sm btn-outline-secondary py-0 ms-auto"
+                                    <button type="button" class="small-action secondary"
                                             id="ldap-reset-filter">
-                                        <i class="fas fa-undo me-2"></i>
+                                        <i class="fas fa-undo"></i>
                                         <%= lang('reset') %>
                                     </button>
                                 </div>
                                 <%= setting_text "ldap_filter" %>
                             </div>
 
-                            <div class="mb-3">
-                                <div class="d-flex mb-2">
-                                    <label class="form-label mb-0" for="ldap-field-mapping">
+                            <div>
+                                <div class="field toolbar">
+                                    <label  for="ldap-field-mapping">
                                         <%= lang('field_mapping') %>
                                     </label>
-                                    <button type="button" class="btn btn-sm btn-outline-secondary py-0 ms-auto"
+                                    <button type="button" class="small-action secondary"
                                             id="ldap-reset-field-mapping">
-                                        <i class="fas fa-undo me-2"></i>
+                                        <i class="fas fa-undo"></i>
                                         <%= lang('reset') %>
                                     </button>
                                 </div>
@@ -107,31 +107,31 @@
                 <% end %>
             </turbo-frame>
 
-            <div class="d-flex justify-content-between align-items-center border-bottom mb-4 py-2">
-                <h4 class="mb-0 fw-light">
+            <div>
+                <h4>
                     <%= lang('search') %>
                 </h4>
             </div>
 
-            <p class="text-muted small">
+            <p class="muted">
                 <%= lang('ldap_search_hint') %>
             </p>
 
-            <form id="ldap-search-form" class="mb-3">
-                <label class="form-label" for="ldap-search-keyword">
+            <form id="ldap-search-form" >
+                <label  for="ldap-search-keyword">
                     <%= lang('keyword') %>
                 </label>
 
-                <div class="input-group">
-                    <input id="ldap-search-keyword" class="form-control">
+                <div class="input-row">
+                    <input id="ldap-search-keyword" >
 
-                    <button type="submit" class="btn btn-outline-primary">
+                    <button type="submit" class="outline">
                         <%= lang('search') %>
                     </button>
                 </div>
             </form>
 
-            <div id="ldap-search-results" class="mb-3">
+            <div id="ldap-search-results" >
                 <!-- JS -->
             </div>
         </div>

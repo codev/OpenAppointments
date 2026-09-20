@@ -1,14 +1,14 @@
 <%# Live waiting list signups, longest waiting first. %>
 <% format_settings = { date_format: setting("date_format"), time_format: setting("time_format") } %>
-<div id="waitlist-page" class="container backend-page py-3">
-    <h4 class="border-bottom py-3 mb-2 fw-light"><%= lang('waitlist') %></h4>
-    <p class="text-muted"><%= lang('waitlist_hint') %></p>
+<div id="waitlist-page" class="backend-page">
+    <h4><%= lang('waitlist') %></h4>
+    <p class="muted"><%= lang('waitlist_hint') %></p>
 
     <% if @entries.empty? %>
-        <p class="fst-italic"><%= lang('waitlist_empty') %></p>
+        <p><%= lang('waitlist_empty') %></p>
     <% else %>
-        <div class="table-responsive">
-            <table id="waitlist-entries" class="table table-sm align-middle">
+        <div class="table-scroll">
+            <table id="waitlist-entries" class="align-middle">
                 <thead>
                     <tr>
                         <th><%= lang('name') %></th>
@@ -17,7 +17,7 @@
                         <th><%= lang('provider') %></th>
                         <th><%= lang('waitlist_signed_up') %></th>
                         <th><%= lang('waitlist_expires') %></th>
-                        <th class="text-end"><%= lang('waitlist_messages_sent') %></th>
+                        <th><%= lang('waitlist_messages_sent') %></th>
                         <th></th>
                     </tr>
                 </thead>
@@ -28,12 +28,12 @@
                             <td><%= [ entry.email, entry.phone.presence ].compact.join(", ") %></td>
                             <td><%= entry.service.name %></td>
                             <td><%= entry.provider&.name || lang('any_provider') %></td>
-                            <td class="text-nowrap"><%= display_datetime(entry.created_at) %></td>
-                            <td class="text-nowrap"><%= display_datetime(entry.expires_at) %></td>
-                            <td class="text-end"><%= entry.notices_sent %></td>
-                            <td class="text-end">
+                            <td class="nowrap"><%= display_datetime(entry.created_at) %></td>
+                            <td class="nowrap"><%= display_datetime(entry.expires_at) %></td>
+                            <td><%= entry.notices_sent %></td>
+                            <td>
                                 <%= button_to lang('delete'), "/waitlist/#{entry.id}", method: :delete,
-                                              class: "btn btn-outline-danger btn-sm",
+                                              class: "destructive small-action",
                                               form: { data: { turbo_confirm: lang('delete_record_prompt') } } %>
                             </td>
                         </tr>

@@ -52,33 +52,7 @@ window.App.Layouts.Backend = (function () {
             return;
         }
 
-        const $toast = $(`
-            <div class="toast bg-dark d-flex align-items-center fade show position-fixed p-1 m-4 bottom-0 end-0 backend-notification" role="alert" aria-live="assertive" aria-atomic="true">
-                <div class="toast-body w-100 text-white">
-                    ${message}
-                </div>
-                <button type="button" class="btn-close btn-close-white me-2" data-bs-dismiss="toast" aria-label="Close"></button>
-            </div>
-        `).appendTo('body');
-
-        actions.forEach(function (action) {
-            $('<button/>', {
-                class: 'btn btn-light btn-sm ms-2',
-                text: action.label,
-                on: {
-                    click: action.function,
-                },
-            }).prependTo($toast);
-        });
-
-        const toast = new bootstrap.Toast($toast[0]);
-
-        toast.show();
-
-        setTimeout(() => {
-            toast.dispose();
-            $toast.remove();
-        }, 5000);
+        App.Utils.Dialog.toast(message, actions.map((action) => ({label: action.label, click: action.function})));
     }
 
     /**
@@ -108,7 +82,7 @@ window.App.Layouts.Backend = (function () {
         // A frame that swapped its form starts clean, unless it came back with an
         // error (a 422 re-render still holds the unsaved values).
         document.addEventListener('turbo:frame-load', (event) => {
-            settingsDirty = $(event.target).find('.form-message.alert-danger').length > 0;
+            settingsDirty = $(event.target).find('.form-message[data-tone=error], .form-message.alert-danger').length > 0;
         });
 
         document.addEventListener('turbo:before-visit', (event) => {
@@ -141,11 +115,26 @@ window.App.Layouts.Backend = (function () {
     /**
      * Session wide listeners once; per page: tooltips and the language menu.
      */
+    // Below the tablet width the menu hides behind its toggle.
+    function toggleMenu(event) {
+        const menu = document.getElementById('header-menu');
+        const open = menu.hasAttribute('data-open');
+        menu.toggleAttribute('data-open', !open);
+        event.currentTarget.setAttribute('aria-expanded', String(!open));
+    }
+
     function initialize() {
         App.once('backend-layout', () => {
             guardUnsavedChanges();
-            $(document).ajaxStart(() => $loading().show());
-            $(document).ajaxStop(() => $loading().hide());
+            $(document).ajaxStart(() => $loading().prop('hidden', false));
+            $(document).ajaxStop(() => $loading().prop('hidden', true));
+            $(document).on('click', '.menu-toggle', toggleMenu);
+            // An open menu closes when the page is clicked elsewhere.
+            $(document).on('click', (event) => {
+                if (!event.target.closest('details.menu')) {
+                    $('details.menu[open]').removeAttr('open');
+                }
+            });
         });
 
         tippy('[data-tippy-content]');
