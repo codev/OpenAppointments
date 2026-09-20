@@ -35,4 +35,19 @@ class TimezoneSupportSettingsTest < ActionDispatch::IntegrationTest
       assert_nil I18n.t("ea.fixed_timezone", locale: locale, fallback: false, default: nil), "stale ea.fixed_timezone in #{locale}"
     end
   end
+
+  test "with support off the session keeps the default zone after saving the account page" do
+    login_admin
+    Setting.set("default_timezone", "Europe/London")
+    Setting.set("timezone_support", "0")
+    post "/account/save", params: { account: { name: users(:admin).name, email: users(:admin).email,
+                                               timezone: "America/New_York" } }, as: :json
+    assert_response :success
+    assert_equal "Europe/London", session[:timezone]
+
+    Setting.set("timezone_support", "1")
+    post "/account/save", params: { account: { name: users(:admin).name, email: users(:admin).email,
+                                               timezone: "America/New_York" } }, as: :json
+    assert_equal "America/New_York", session[:timezone]
+  end
 end
