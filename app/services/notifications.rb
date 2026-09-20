@@ -79,9 +79,9 @@ module Notifications
   # Stored starts are the stylist's wall clock, so the query brackets the
   # window by a day each side and the zone-aware checks decide.
   def due_appointments(notification, now)
-    horizon = now + notification.lead_days.days + notification.lead_hours.hours + 1.day
+    horizon = now + notification.lead_days.days + notification.lead_hours.hours + 2.days
     Appointment.appointments
-               .where(start_datetime: (now - 1.day).strftime("%Y-%m-%d %H:%M:%S")..(horizon + 1.day).strftime("%Y-%m-%d %H:%M:%S"))
+               .where(start_datetime: (now - 1.day)..horizon)
                .not_kind(AppointmentStatus::FREE_SLOT_KINDS + %w[no_show])
                .includes(:service, :provider, :customer)
                .select { |appointment| BookingWindows.starts_at(appointment) >= now && send_at(notification, appointment) <= now }
