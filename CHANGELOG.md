@@ -3,7 +3,7 @@
 The about page lists these notes; every release needs a section here matching
 CloudronManifest.json.
 
-## 2.2.0
+## 3.0.0
 
 - Waiting List: customers can join a waiting list on the booking time step. A cancelled appointment is offered to matching signups straight away, longest waiting first with a pause between each, and a daily message tells signups when their service has free appointments. Switch and limits are on Business Settings, the two message templates on Notifications, and Customers > Waiting List shows who is waiting
 - Calendar Feed: a button on the calendar page gives each provider a private link to subscribe to their appointments in Google Calendar, Apple Calendar or Outlook, with copy and reset and instructions
