@@ -61,6 +61,14 @@ docker push $REGI/openappointments:$VER
 
 ```
 
+## Rails console
+
+To get a Rails console on a running cloudron instance run:
+
+```bash
+cloudron exec -t --app appointments.openouthair.com -- bash -c 'set -a; source /app/data/env; cd /app/code; HOME=/tmp exec bin/rails console'
+```
+
 ## Crash report emails
 
 Production emails unhandled exceptions to the addresses in the `EXCEPTION_RECIPIENTS`
