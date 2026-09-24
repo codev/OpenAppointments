@@ -87,6 +87,31 @@ class AppointmentsPageRefreshTest < ApplicationSystemTestCase
     assert_current_path(/date=#{date}/)
   end
 
+  test "the appointments page shows no calendar after the calendar page was visited" do
+    login_as_admin
+    visit calendar_url
+    assert_selector "#calendar .fc-view-harness", wait: 10
+    within("#header") { click_on "Appointments", match: :first }
+    assert_selector "#day-filter", wait: 5
+    sleep 0.5
+    assert_no_selector "#calendar .fc-view-harness"
+  end
+
+  test "the repeating appointments list stays alone after the day view reloads" do
+    login_as_admin
+    visit appointments_url
+    assert_selector "#day-filter", wait: 5
+    find("#toggle-series").click
+    assert_selector "#series-view", visible: true, wait: 5
+    page.execute_script("document.querySelector('#calendar .calendar-view').dataset.stale = '1'")
+    find("#reload-appointments").click
+    assert_no_selector ".calendar-view[data-stale]", visible: :all, wait: 5
+    assert_selector "#calendar .calendar-view.d-none", visible: :all
+    assert_selector "#series-view:not(.d-none)"
+    find("#toggle-series").click
+    assert_selector "#calendar .calendar-view:not(.d-none)", wait: 5
+  end
+
   test "the reload button still works on the calendar page after the appointments page was visited" do
     login_as_admin
     visit appointments_url

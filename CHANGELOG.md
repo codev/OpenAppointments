@@ -11,6 +11,7 @@ CloudronManifest.json.
 - 10to8 import: people sharing an email or phone number under different names are imported as separate customers
 - Appointments: the stylist filter starts on Working Stylists, which leaves out stylists who are off, including a whole day of unavailability, but keeps anyone with an appointment that day; All Stylists shows everyone
 - Appointments: stylist columns shrink to share the screen width, so six fit side by side on a laptop
+- Bug fix: the Appointments page no longer shows a calendar above the day columns after visiting the Calendar page
 
 ## 2.2.0
 
