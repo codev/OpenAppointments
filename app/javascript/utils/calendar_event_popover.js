@@ -155,9 +155,9 @@ App.Utils.CalendarEventPopover = (function () {
      */
     function createPopoverButtons(displayEdit, displayDelete, extraButtons = [], displayCancel = 'd-none') {
         return $('<div/>', {
-            class: 'd-flex justify-content-center',
+            class: 'd-flex flex-wrap justify-content-center gap-2',
             html: [
-                createPopoverButton('close-popover btn btn-outline-secondary me-2', 'fas fa-ban', 'close'),
+                createPopoverButton('close-popover btn btn-outline-secondary', 'fas fa-ban', 'close'),
                 ...extraButtons,
                 createPopoverButton(
                     'cancel-popover btn btn-outline-secondary ' + displayCancel,
@@ -302,7 +302,7 @@ App.Utils.CalendarEventPopover = (function () {
         });
 
         const messagesButton = $('<a/>', {
-            class: 'btn btn-outline-secondary me-2',
+            class: 'btn btn-outline-secondary',
             href: App.Utils.Url.siteUrl('customers?customer_id=' + customer.id + '&section=messages'),
             html: [
                 $('<i/>', {class: 'fas fa-comments me-2'}),
@@ -342,7 +342,8 @@ App.Utils.CalendarEventPopover = (function () {
                 ...createPopoverRow('notes', getEventNotes(info.event)),
                 renderCustomContent(info),
                 $('<hr/>'),
-                createPopoverButtons(displayEdit, displayDelete, [messagesButton], data.frees_slot ? 'd-none' : displayDelete),
+                // A freed slot or an appointment that has ended cannot be cancelled.
+                createPopoverButtons(displayEdit, displayDelete, [messagesButton], data.frees_slot || info.event.end < new Date() ? 'd-none' : displayDelete),
             ],
         });
     }
