@@ -424,16 +424,14 @@ module TenToEight
       counts = track("customers")
       role = Role.find_by!(slug: Role::CUSTOMER)
       @customer_ids = {}
-      by_email = {}
-      by_name_phone = {}
+      known = {}
       User.customers.find_each do |user|
-        by_email[user.email.to_s.downcase] = user.id if user.email.present?
-        by_name_phone["#{user.name.to_s.downcase}|#{user.phone_number}"] = user.id
+        customer_keys(user.name, user.email, user.phone_number).each { |key| known[key] ||= user.id }
       end
 
       @data[:customers].each do |row|
-        existing_id = row[:email].present? ? by_email[row[:email].downcase] : nil
-        existing_id ||= by_name_phone["#{row[:name].downcase}|#{row[:phone]}"]
+        keys = customer_keys(row[:name], row[:email], row[:phone])
+        existing_id = keys.lazy.filter_map { |key| known[key] }.first
         if existing_id
           counts[:matched] += 1
           @customer_ids[row[:ext_id]] = existing_id
@@ -461,9 +459,18 @@ module TenToEight
 
         counts[:created] += 1
         @customer_ids[row[:ext_id]] = customer.id
-        by_email[row[:email].downcase] = customer.id if row[:email].present?
-        by_name_phone["#{row[:name].downcase}|#{row[:phone]}"] = customer.id
+        keys.each { |key| known[key] ||= customer.id }
       end
+    end
+
+    # People sharing an email or phone keep their own records, so a customer
+    # matches on a contact detail together with the name.
+    def customer_keys(name, email, phone)
+      name = name.to_s.squish.downcase
+      return [] if name.blank?
+
+      phone = Messaging::Template.e164(phone)
+      [ ("#{name}|#{email.downcase}" if email.present?), ("#{name}|#{phone}" if phone.present?) ].compact
     end
 
     def load_appointments

@@ -79,6 +79,19 @@ class TenToEightTest < ActiveSupport::TestCase
     assert_equal 1, User.customers.where(email: "bella@example.org").count
   end
 
+  test "load keeps people who share an email or phone under different names as separate customers" do
+    rows = [
+      { ext_id: "p1", name: "Partner Of JX", email: users(:jx).email, phone: "" },
+      { ext_id: "p2", name: "Flatmate", email: "", phone: users(:jx).phone_number },
+      { ext_id: "p3", name: "jx", email: "", phone: users(:jx).phone_number }
+    ]
+    counts = TenToEight::Load.new({ customers: rows }, phases: %w[customers]).call[:counts]
+
+    assert_equal 2, counts[:customers][:created]
+    assert_equal 1, counts[:customers][:matched]
+    assert_equal "JX", users(:jx).reload.name
+  end
+
   test "load respects the phase selection" do
     data = extract
     counts = TenToEight::Load.new(data, phases: %w[categories services]).call[:counts]
