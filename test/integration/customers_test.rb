@@ -19,6 +19,17 @@ class CustomersTest < ActionDispatch::IntegrationTest
     assert_select "select#filter-provider option", text: "All Stylists"
   end
 
+  test "with email and one SMS provider the send to every channel choice reads Both" do
+    { "messages_twilio_enabled" => "1", "messages_twilio_account_sid" => "AC1", "messages_twilio_auth_token" => "token",
+      "messages_twilio_from" => "+15005550006" }.each { |name, value| Setting.set(name, value) }
+    login_admin
+    get "/customers/#{users(:jx).id}/edit"
+    assert_select "#message-channel option", count: 4
+    assert_select "#message-channel option[value='all']", text: "Both"
+  ensure
+    Setting.set("messages_twilio_enabled", "0")
+  end
+
   test "index lists customers with unread badges and the record links to edit" do
     login_admin
     Message.create!(direction: "incoming", channel: "email", from_address: users(:jx).email,

@@ -17,6 +17,7 @@ CloudronManifest.json.
 - Business Logic: the future booking limit can be set as low as 1 day (it refused anything under 15)
 - Calendar: the appointment popup buttons wrap onto two rows inside the popup, and Cancel is not offered once an appointment has ended
 - Notices: the text editors have a white background so they are easy to read on a coloured page
+- Customer messages: with email and one SMS provider, the choice to send by every channel reads Both
 
 ## 2.2.0
 
