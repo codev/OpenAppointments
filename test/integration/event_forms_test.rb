@@ -57,6 +57,16 @@ class EventFormsTest < ActionDispatch::IntegrationTest
     assert_select "#end-datetime[value='01/09/2026 11:00 am']"
   end
 
+  test "services hidden from the public, such as a meeting, are bookable by staff in their own group" do
+    meeting = Service.create!(name: "Meeting", duration: 60, is_private: true)
+    ServiceProviderLink.create!(id_users: users(:zane).id, id_services: meeting.id)
+    login_admin
+    get "/appointments/new"
+    assert_select "#select-service optgroup[label='Hidden From Public'] option[value=?]", meeting.id.to_s, text: "Meeting"
+    get "/appointments", params: { date: "2026-07-20" }
+    assert_select "#filter-service option[value=?]", meeting.id.to_s
+  end
+
   test "edit form shows the record and its customer, no repeat fields" do
     login_admin
     get "/appointments/#{appointments(:upcoming).id}/edit"

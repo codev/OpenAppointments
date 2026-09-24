@@ -20,7 +20,7 @@ class AppointmentsController < ApplicationController
     @statuses = AppointmentStatus.rows
     @selected_statuses = params.key?(:statuses) ? Array(params[:statuses]) : default_statuses
     @providers = visible_providers.to_a
-    @services = Service.available.joins(:provider_links).distinct.order(:name).to_a
+    @services = Service.joins(:provider_links).distinct.order(:name).to_a
     @columns = build_columns
     backend_page_vars(page_title: helpers.lang("appointments"), active_menu: "appointments")
     script_vars(edit_appointment: edit_appointment_var, first_weekday: Setting.get("first_weekday"))
@@ -196,7 +196,7 @@ class AppointmentsController < ApplicationController
   def load_form_data
     @providers = providers_for_form.to_a
     service_ids = @providers.flat_map { |provider| provider.services.map(&:id) }.uniq
-    @services = Service.available.where(id: service_ids).includes(:category).order(:name).to_a
+    @services = Service.where(id: service_ids).includes(:category).order(:is_private, :name).to_a
     @statuses = AppointmentStatus.rows
     @customers = User.customers.order(updated_at: :desc).limit(50).to_a
     if Setting.get("limit_customer_access") == "1" && session[:role_slug] == Role::PROVIDER

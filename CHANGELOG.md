@@ -12,6 +12,7 @@ CloudronManifest.json.
 - Appointments: the stylist filter starts on Working Stylists, which leaves out stylists who are off, including a whole day of unavailability, but keeps anyone with an appointment that day; All Stylists shows everyone
 - Appointments: stylist columns shrink to share the screen width, so six fit side by side on a laptop
 - Bug fix: the Appointments page no longer shows a calendar above the day columns after visiting the Calendar page
+- Appointment dialog and filters: services hidden from the public, such as Meeting, can be booked by staff and are listed in their own group
 
 ## 2.2.0
 
