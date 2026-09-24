@@ -969,3 +969,4 @@ en:
     provider_color_hint: "Used for this provider's appointments when the calendar shows everyone."
     working_providers: "Working Providers"
     hidden_from_public: "Hidden From Public"
+    slot_interval_hint: "How often start times are offered to customers. With 15, a 45 minute service can start at 9:00, 9:15, 9:30 and so on; with 60, at 9:00, 10:00, 11:00. It does not keep time free after the appointment: for that, make the service duration longer."

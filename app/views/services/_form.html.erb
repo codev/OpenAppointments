@@ -70,7 +70,9 @@
         <%= f.label :slot_interval, class: "form-label" do %>
             <%= lang('slot_interval') %> <span class="text-danger">*</span>
         <% end %>
-        <%= f.number_field :slot_interval, required: true, min: 1, class: "form-control" %>
+        <%= f.number_field :slot_interval, required: true, min: 1, "aria-describedby": "slot-interval-hint",
+                           class: "form-control #{'is-invalid' if record.errors.include?(:slot_interval)}" %>
+        <div class="form-text text-muted" id="slot-interval-hint"><small><%= lang('slot_interval_hint') %></small></div>
     </div>
 
     <div class="mb-3">

@@ -10,6 +10,7 @@ class Service < ApplicationRecord
 
   validates :name, presence: true
   validates :duration, numericality: { greater_than_or_equal_to: Appointment::EVENT_MINIMUM_DURATION }, allow_nil: true
+  validates :slot_interval, numericality: { only_integer: true, greater_than_or_equal_to: 1 }, allow_nil: true
 
   scope :available, -> { where(is_private: false) }
   scope :display_order, -> { order(Arel.sql("services.sort_order IS NULL, services.sort_order"), :name) }

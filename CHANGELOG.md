@@ -13,6 +13,7 @@ CloudronManifest.json.
 - Appointments: stylist columns shrink to share the screen width, so six fit side by side on a laptop
 - Bug fix: the Appointments page no longer shows a calendar above the day columns after visiting the Calendar page
 - Appointment dialog and filters: services hidden from the public, such as Meeting, can be booked by staff and are listed in their own group
+- Services: the slot interval explains that it sets how often start times are offered, not a gap after the appointment, and must be at least 1 minute
 
 ## 2.2.0
 
