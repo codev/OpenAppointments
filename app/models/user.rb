@@ -52,8 +52,9 @@ class User < ApplicationRecord
     wanted = Messaging::Template.e164(number)
     return [] if wanted.blank? || wanted.length < 7
 
-    tail = "%#{wanted[-7..]}"
-    stripped = "REPLACE(REPLACE(REPLACE(%s, ' ', ''), '-', ''), '(', '')"
+    # A loose pre-filter: the Ruby comparison below decides.
+    tail = "%#{wanted[-7..]}%"
+    stripped = "REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(%s, ' ', ''), '-', ''), '(', ''), ')', ''), '.', '')"
     scope.where("#{format(stripped, 'phone_number')} LIKE :tail OR #{format(stripped, 'mobile_number')} LIKE :tail", tail: tail)
          .select { |user| [ user.phone_number, user.mobile_number ].any? { |stored| Messaging::Template.e164(stored) == wanted } }
   end
