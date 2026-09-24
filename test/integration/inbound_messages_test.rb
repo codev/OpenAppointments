@@ -32,6 +32,16 @@ class InboundMessagesTest < ActionDispatch::IntegrationTest
     assert_equal "twilio", message.channel
   end
 
+  test "an SMS in E.164 matches a customer whose number was typed in UK local format" do
+    users(:jx).update!(phone_number: "07700 900123")
+    params = { "From" => "+447700900123", "To" => "+15005550006", "Body" => "Running late" }
+    url = "http://www.example.com/messages/inbound/twilio/secrettoken123"
+    post "/messages/inbound/twilio/secrettoken123", params: params,
+         headers: { "X-Twilio-Signature" => twilio_signature(url, params) }
+    assert_response :success
+    assert_equal users(:jx).id, Message.incoming.sole.customer_id
+  end
+
   test "an SMS from a customer fires the customer message notification" do
     Notification.create!(title: "Customer Message Received", event: "customer_message", audiences: %w[provider],
                          channels: %w[email], short_text: "New message from {{Customer Name}}")
