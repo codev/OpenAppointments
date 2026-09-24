@@ -7,7 +7,7 @@ class CustomersController < ApplicationController
            save_webhook: Webhooks::CUSTOMER_SAVE, delete_webhook: Webhooks::CUSTOMER_DELETE,
            saved: "customer_saved", deleted: "customer_deleted" }.freeze
 
-  FIELDS = %i[name email phone_number other_emails other_phones address city state zip_code notes timezone language
+  FIELDS = %i[name email phone_number address city state zip_code notes timezone language
               custom_field_1 custom_field_2 custom_field_3 custom_field_4 custom_field_5 ldap_dn].freeze
 
   # Most recently active customers first: latest of profile update, appointment
@@ -66,8 +66,8 @@ class CustomersController < ApplicationController
     if keyword.present?
       pattern = "%#{User.sanitize_sql_like(keyword)}%"
       scope = scope.where(<<~SQL.squish, pattern: pattern)
-        users.name LIKE :pattern OR email LIKE :pattern OR other_emails LIKE :pattern
-        OR phone_number LIKE :pattern OR other_phones LIKE :pattern OR address LIKE :pattern OR city LIKE :pattern
+        users.name LIKE :pattern OR email LIKE :pattern
+        OR phone_number LIKE :pattern OR address LIKE :pattern OR city LIKE :pattern
         OR zip_code LIKE :pattern OR notes LIKE :pattern
       SQL
     end

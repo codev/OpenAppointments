@@ -148,19 +148,4 @@ class TenToEightTest < ActiveSupport::TestCase
     alice = User.providers.find_by(email: "alice@example.org")
     assert_includes alice.services.map(&:name), "TS Short trim"
   end
-
-  test "load merges a customer into an existing record that shares any email or phone" do
-    data = extract
-    role = Role.find_by!(slug: Role::CUSTOMER)
-    by_phone = User.create!(name: "Bella Old", email: "old@example.org", other_phones: "+447700900222", role: role)
-    by_other_email = User.create!(name: "Dana Old", phone_number: "07700 900999", other_emails: "dana@example.org", role: role)
-
-    counts = TenToEight::Load.new(data, phases: %w[customers]).call[:counts][:customers]
-    assert_equal 2, counts[:matched]
-    assert_equal 1, counts[:created]
-    assert_equal %w[bella@example.org], by_phone.reload.other_email_list
-    assert_equal "Dana Old", by_other_email.reload.name
-    assert_nil User.customers.find_by(email: "bella@example.org")
-    assert_nil User.customers.find_by(email: "dana@example.org")
-  end
 end

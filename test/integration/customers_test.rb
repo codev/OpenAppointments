@@ -125,24 +125,9 @@ class CustomersTest < ActionDispatch::IntegrationTest
     assert_equal kept.id, message.reload.customer_id
     kept.reload
     assert_equal [ "+447700900777", "1 Lane", "Allergic to X" ], [ kept.phone_number, kept.address, kept.notes ]
-    assert_equal [], kept.other_phone_list
 
     other = User.create!(name: "Other", phone_number: "07700 900888", role: roles(:customer))
     post "/customers/#{kept.id}/merge", params: { target: "+447700900888" }
     assert_redirected_to "/customers/#{other.id}/edit"
-  end
-
-  test "merging keeps the other record's addresses as other emails and phones, and search finds them" do
-    login_admin
-    kept = User.create!(name: "Kept", email: "kept@example.org", phone_number: "+447700900700", role: roles(:customer))
-    gone = User.create!(name: "Gone", email: "gone@example.org", phone_number: "07700 900701", other_emails: "gone2@example.org", role: roles(:customer))
-    post "/customers/#{gone.id}/merge", params: { target: "gone2@example.org" }
-    assert_redirected_to "/customers/#{gone.id}/edit"
-    post "/customers/#{gone.id}/merge", params: { target: "kept@example.org" }
-    kept.reload
-    assert_equal %w[gone@example.org gone2@example.org], kept.other_email_list
-    assert_equal %w[+447700900701], kept.other_phone_list
-    get "/customers", params: { keyword: "gone2" }
-    assert_select ".record-row, .customer-row, tr, li", text: /Kept/
   end
 end

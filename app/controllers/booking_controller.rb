@@ -162,7 +162,8 @@ class BookingController < ApplicationController
       return form_post? ? register_failed(helpers.lang("turnstile_verification_failed")) : render(json: { turnstile_verification: false })
     end
 
-    existing_customer = User.customer_by_contact(email: customer_params["email"], phone: customer_params["phone_number"])
+    existing_customer = User.customers.find_by(email: customer_params["email"]) if customer_params["email"].present?
+    existing_customer ||= User.customer_by_phone(customer_params["phone_number"]) if customer_params["email"].blank?
     # A reschedule keeps the appointment's customer unless the email now belongs to another record.
     existing_customer ||= original.customer if original
     if existing_customer
@@ -177,13 +178,7 @@ class BookingController < ApplicationController
 
     customer = existing_customer || User.new(role: Role.find_by!(slug: Role::CUSTOMER))
     timezone = customer_params["timezone"].presence || (customer.new_record? ? provider.effective_timezone : customer.timezone)
-    attributes = customer_params.except("id", "timezone", "language")
-    # A known customer keeps their primary email and phone; a different one typed is added as another.
-    if customer.persisted?
-      customer.add_contact(email: attributes["email"], phone: attributes["phone_number"])
-      attributes = attributes.except("email", "phone_number")
-    end
-    customer.assign_attributes(attributes.merge("timezone" => timezone))
+    customer.assign_attributes(customer_params.except("id", "timezone", "language").merge("timezone" => timezone))
     customer.language = session[:language] || Setting.get("default_language", "english")
     customer.save!
 

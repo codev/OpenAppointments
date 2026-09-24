@@ -45,16 +45,6 @@ class InboundMessagesTest < ActionDispatch::IntegrationTest
     assert_equal [ users(:zane).email ], Message.outgoing.pluck(:to_address)
   end
 
-  test "an SMS from a customer's other phone number is theirs" do
-    users(:jx).update!(other_phones: "+447700900450")
-    params = { "From" => "+447700900450", "To" => "+15005550006", "Body" => "Other phone" }
-    url = "http://www.example.com/messages/inbound/twilio/secrettoken123"
-    post "/messages/inbound/twilio/secrettoken123", params: params,
-         headers: { "X-Twilio-Signature" => twilio_signature(url, params) }
-    assert_response :success
-    assert_equal users(:jx).id, Message.incoming.sole.customer_id
-  end
-
   test "twilio webhook rejects a bad signature" do
     post "/messages/inbound/twilio/secrettoken123",
          params: { "From" => "+447700900321", "Body" => "spoof" },

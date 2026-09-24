@@ -68,10 +68,10 @@ module TenToEight
 
         customer_id = row["Customer ID"].to_s.strip
         if customer_id.present?
-          customer = customers[customer_id] ||= { emails: [], phones: [] }
+          customer = customers[customer_id] ||= {}
           best(customer, :name, row["Customer Name"])
-          customer[:emails] |= row["Customer Emails"].to_s.split(";").map(&:strip).compact_blank
-          customer[:phones] |= row["Customer Phone Numbers"].to_s.split(";").map(&:strip).compact_blank
+          best(customer, :email, row["Customer Emails"].to_s.split(";").first)
+          best(customer, :phone_raw, row["Customer Phone Numbers"].to_s.split(";").first)
           best(customer, :pronoun, row[PRONOUN_COL])
           best(customer, :access, row[ACCESS_COL])
           best(customer, :address, row["Customer Home Addresses"].to_s.split(";").first)
@@ -153,12 +153,10 @@ module TenToEight
 
     def customers_output(customers)
       customers.map do |ext_id, customer|
-        emails = customer[:emails].map(&:downcase).uniq
-        phones = customer[:phones].filter_map { |raw| e164(raw).first.presence }.uniq
+        phone, = e164(customer[:phone_raw])
         notes = customer[:tags].present? ? "Tags: #{customer[:tags]}" : ""
-        { ext_id: ext_id, name: customer[:name].to_s, email: emails.first.to_s, other_emails: emails.drop(1),
-          phone: phones.first.to_s, other_phones: phones.drop(1),
-          pronoun: customer[:pronoun].to_s, access: customer[:access].to_s,
+        { ext_id: ext_id, name: customer[:name].to_s, email: customer[:email].to_s,
+          phone: phone, pronoun: customer[:pronoun].to_s, access: customer[:access].to_s,
           address: customer[:address].to_s, do_not_contact: customer[:consent] == "no",
           notes: notes }
       end
