@@ -973,7 +973,3 @@ ro:
     merge_customer_not_found: "Niciun alt client nu are acest e-mail sau număr de telefon."
     customer_merged: "Clienți îmbinați"
     provider_color_hint: "Folosit pentru întâlnirile acestui furnizor atunci când calendarul îi afișează pe toți."
-    other_emails: "Alte adrese de email"
-    other_emails_hint: "Una pe linie. Întâlnirile și mesajele de la oricare dintre aceste adrese aparțin acestui client."
-    other_phones: "Alte numere de telefon"
-    other_phones_hint: "Unul pe linie. Întâlnirile și mesajele de la oricare dintre aceste numere aparțin acestui client."

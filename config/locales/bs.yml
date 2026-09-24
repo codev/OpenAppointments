@@ -973,7 +973,3 @@ bs:
     merge_customer_not_found: "Nijedan drugi korisnik nema taj email ili broj telefona."
     customer_merged: "Korisnici spojeni"
     provider_color_hint: "Koristi se za termine ovog provajdera kada kalendar prikazuje sve."
-    other_emails: "Ostali emailovi"
-    other_emails_hint: "Jedan po redu. Termini i poruke sa bilo koje od ovih adresa pripadaju ovom kupcu."
-    other_phones: "Ostali brojevi telefona"
-    other_phones_hint: "Jedan po redu. Termini i poruke sa bilo kojeg od ovih brojeva pripadaju ovom kupcu."

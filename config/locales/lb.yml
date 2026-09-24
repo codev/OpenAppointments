@@ -973,7 +973,3 @@ lb:
     merge_customer_not_found: "Kee anere Client huet dës E-Mail oder Telefonsnummer."
     customer_merged: "Clienten zesummegeluecht"
     provider_color_hint: "Gëtt benotzt fir d'Termäine vun dësem Mataarbechter wann de Kalenner jiddereen weist."
-    other_emails: "Aner E-Mail-Adressen"
-    other_emails_hint: "Eng pro Zeil. Reservatiounen a Messagen vun deenen Adressen gehéieren zu dësem Client."
-    other_phones: "Aner Telefonsnummeren"
-    other_phones_hint: "Eng pro Zeil. Reservatiounen a Messagen vun deenen Nummeren gehéieren zu dësem Client."

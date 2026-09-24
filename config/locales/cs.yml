@@ -973,7 +973,3 @@ cs:
     merge_customer_not_found: "Žádný jiný zákazník nemá tento e-mail ani telefonní číslo."
     customer_merged: "Zákazníci sloučeni"
     provider_color_hint: "Používá se pro schůzky tohoto poskytovatele, když kalendář zobrazuje všechny."
-    other_emails: "Další emaily"
-    other_emails_hint: "Jeden na řádek. Schůzky a zprávy z kterékoli z těchto adres patří tomuto zákazníkovi."
-    other_phones: "Další telefonní čísla"
-    other_phones_hint: "Jedno na řádek. Schůzky a zprávy z kteréhokoli z těchto čísel patří tomuto zákazníkovi."

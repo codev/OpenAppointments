@@ -973,7 +973,3 @@ hu:
     merge_customer_not_found: "Egyetlen másik ügyfélnek sincs ilyen e-mail címe vagy telefonszáma."
     customer_merged: "Ügyfelek összevonva"
     provider_color_hint: "Ezt használjuk ennek a szolgáltatónak az időpontjaihoz, amikor a naptár mindenkit megjelenít."
-    other_emails: "Egyéb email címek"
-    other_emails_hint: "Soronként egy. Az ezekről a címekről érkező időpontok és üzenetek ehhez az ügyfélhez tartoznak."
-    other_phones: "Egyéb telefonszámok"
-    other_phones_hint: "Soronként egy. Az ezekről a számokról érkező időpontok és üzenetek ehhez az ügyfélhez tartoznak."

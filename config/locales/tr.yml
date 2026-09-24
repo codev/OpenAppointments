@@ -973,7 +973,3 @@ tr:
     merge_customer_not_found: "Bu e-posta veya telefon numarasına sahip başka bir müşteri yok."
     customer_merged: "Müşteriler birleştirildi"
     provider_color_hint: "Takvim herkesi gösterdiğinde bu hizmet sağlayıcının randevuları için kullanılır."
-    other_emails: "Diğer e-postalar"
-    other_emails_hint: "Her satıra bir tane. Bu adreslerden herhangi birinden gelen rezervasyonlar ve mesajlar bu müşteriye aittir."
-    other_phones: "Diğer telefon numaraları"
-    other_phones_hint: "Her satıra bir tane. Bu numaralardan herhangi birinden gelen rezervasyonlar ve mesajlar bu müşteriye aittir."

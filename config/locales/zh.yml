@@ -973,7 +973,3 @@ zh:
     merge_customer_not_found: "没有其他客户使用该电子邮件或电话号码。"
     customer_merged: "客户已合并"
     provider_color_hint: "当日历显示所有人时，用于此服务人员的预约。"
-    other_emails: "其他电子邮件"
-    other_emails_hint: "每行一个。来自这些地址的任何预约和消息均属于该客户。"
-    other_phones: "其他电话号码"
-    other_phones_hint: "每行一个。来自这些号码的任何预约和消息均属于该客户。"

@@ -973,7 +973,3 @@
     merge_customer_not_found: "Ingen annen kunde har den e-postadressen eller det telefonnummeret."
     customer_merged: "Kunder slått sammen"
     provider_color_hint: "Brukes for denne leverandørens avtaler når kalenderen viser alle."
-    other_emails: "Andre e-poster"
-    other_emails_hint: "Én per linje. Avtaler og meldinger fra noen av disse adressene tilhører denne kunden."
-    other_phones: "Andre telefonnumre"
-    other_phones_hint: "Én per linje. Avtaler og meldinger fra noen av disse numrene tilhører denne kunden."

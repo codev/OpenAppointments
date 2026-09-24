@@ -973,7 +973,3 @@ hr:
     merge_customer_not_found: "Nijedan drugi klijent nema tu e-poštu ili broj telefona."
     customer_merged: "Klijenti spojeni"
     provider_color_hint: "Koristi se za sastanke ovog pružatelja kada kalendar prikazuje sve."
-    other_emails: "Ostale e-mail adrese"
-    other_emails_hint: "Jedna po retku. Sastanci i poruke s bilo koje od ovih adresa pripadaju ovom klijentu."
-    other_phones: "Ostali brojevi telefona"
-    other_phones_hint: "Jedan po retku. Sastanci i poruke s bilo kojeg od ovih brojeva pripadaju ovom klijentu."

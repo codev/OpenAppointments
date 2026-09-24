@@ -973,7 +973,3 @@ sk:
     merge_customer_not_found: "Žiadny iný zákazník nemá tento e-mail ani telefónne číslo."
     customer_merged: "Zákazníci zlúčení"
     provider_color_hint: "Používa sa pre rezervácie tohto pracovníka, keď kalendár zobrazuje všetkých."
-    other_emails: "Ďalšie emaily"
-    other_emails_hint: "Jeden na riadok. Rezervácie a správy z ktorejkoľvek z týchto adries patria tomuto zákazníkovi."
-    other_phones: "Ďalšie telefónne čísla"
-    other_phones_hint: "Jedno na riadok. Rezervácie a správy z ktoréhokoľvek z týchto čísel patria tomuto zákazníkovi."

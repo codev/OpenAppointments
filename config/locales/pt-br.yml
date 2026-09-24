@@ -973,7 +973,3 @@ pt-br:
     merge_customer_not_found: "Nenhum outro cliente tem esse email ou número de telefone."
     customer_merged: "Clientes mesclados"
     provider_color_hint: "Usada para as agendas deste atendente quando o calendário mostra todos."
-    other_emails: "Outros e-mails"
-    other_emails_hint: "Um por linha. Agendamentos e mensagens de qualquer um desses endereços pertencem a este cliente."
-    other_phones: "Outros números de telefone"
-    other_phones_hint: "Um por linha. Agendamentos e mensagens de qualquer um desses números pertencem a este cliente."
