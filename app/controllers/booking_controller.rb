@@ -168,8 +168,8 @@ class BookingController < ApplicationController
     existing_customer ||= original.customer if original
     if existing_customer
       conflict = Appointment.active.where(id_users_customer: existing_customer.id)
-                            .where("start_datetime <= ? AND end_datetime >= ?",
-                                   appointment_params["start_datetime"], end_datetime_for(appointment_params, service))
+                            .where("start_datetime < ? AND end_datetime > ?",
+                                   end_datetime_for(appointment_params, service), appointment_params["start_datetime"])
       conflict = conflict.where.not(id: original.id) if original
       raise ArgumentError, helpers.lang("customer_is_already_booked") if conflict.exists?
     end

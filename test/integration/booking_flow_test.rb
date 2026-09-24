@@ -72,7 +72,7 @@ class BookingFlowTest < ActionDispatch::IntegrationTest
   test "register blocks a customer already booked in a containing slot" do
     travel_to Time.new(2026, 7, 10, 12, 0, 0) do
       post "/booking/register", params: register_params(start: "#{DATE} 10:00:00",
-                                                        email: users(:jx).email)
+                                                        email: users(:jx).email, name: "JX")
     end
     body = response.parsed_body
     assert_equal false, body["success"]

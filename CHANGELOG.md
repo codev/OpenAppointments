@@ -7,6 +7,7 @@ CloudronManifest.json.
 
 - Customers: other emails and phone numbers and the customer merge tool are removed
 - Booking: someone sharing another customer's email or phone number under a different name gets their own customer record, and a returning customer's stored details are no longer overwritten or blanked
+- Booking: a customer is refused a second booking that overlaps one they already have, not only one that covers it completely
 
 ## 2.2.0
 
