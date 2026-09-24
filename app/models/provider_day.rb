@@ -30,7 +30,7 @@ class ProviderDay
   def shown? = working? || @appointments.any?
 
   def entries
-    return appointment_entries unless working?
+    return (appointment_entries + unavailability_entries).sort_by { |entry| [ entry.start, entry.end ] } unless working?
 
     (appointment_entries + unavailability_entries + blocked_entries + break_entries + free_entries)
       .sort_by { |entry| [ entry.start, entry.end ] }

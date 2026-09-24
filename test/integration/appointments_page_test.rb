@@ -55,6 +55,15 @@ class AppointmentsPageTest < ActionDispatch::IntegrationTest
     assert_select ".day-entry-free", count: 0
   end
 
+  test "a stylist off sick all day with appointments shows both the appointment and the unavailability" do
+    login_admin
+    sick = Appointment.create!(is_unavailability: true, provider: users(:zane), notes: "Unwell",
+                               start_datetime: "2026-07-20 08:00:00", end_datetime: "2026-07-20 19:00:00")
+    get "/appointments", params: { date: "2026-07-20" }
+    assert_select ".day-entry-appointment[href=?]", "/appointments/#{appointments(:upcoming).id}/edit"
+    assert_select ".day-entry-unavailability[href=?]", "/unavailabilities/#{sick.id}/edit"
+  end
+
   test "all stylists gives every stylist a column, working or not, and the day links keep the choice" do
     login_admin
     get "/appointments", params: { date: "2026-07-19", provider: "all" }
