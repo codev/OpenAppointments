@@ -28,7 +28,8 @@ class CalendarModalsTest < ApplicationSystemTestCase
       JS
       raise Capybara::ElementNotFound, title unless found
     end
-    find(".fc-event", text: title).click
+    # An event across midnight is drawn in two pieces; either opens it.
+    find(".fc-event", text: title, match: :first).click
     assert_selector ".popover", wait: 5
   end
 
