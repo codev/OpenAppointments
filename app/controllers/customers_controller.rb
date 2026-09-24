@@ -22,7 +22,7 @@ class CustomersController < ApplicationController
     ) DESC
   SQL
 
-  before_action :require_customer_access, only: %i[edit update destroy merge]
+  before_action :require_customer_access, only: %i[edit update destroy]
   before_action :require_add_allowed, only: %i[new create]
 
   # GET /customers?customer_id=N[&section=messages] is the deep link from the
@@ -31,17 +31,6 @@ class CustomersController < ApplicationController
     return redirect_to edit_customer_path(params[:customer_id], section: params[:section]) if params[:customer_id].present?
 
     super
-  end
-
-  # POST /customers/:id/merge - this record folds into the customer with the
-  # typed email or phone number.
-  def merge
-    source = record_scope.find(params[:id])
-    target = CustomerMerge.find_target(params[:target].to_s, except: source)
-    return redirect_to(edit_customer_path(source), alert: helpers.lang("merge_customer_not_found")) unless target
-
-    CustomerMerge.run(source, target)
-    redirect_to edit_customer_path(target), notice: helpers.lang("customer_merged")
   end
 
   # POST /customers/search - JSON rows for the appointments modal.
