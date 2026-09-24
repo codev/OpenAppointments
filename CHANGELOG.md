@@ -10,6 +10,7 @@ CloudronManifest.json.
 - Booking: a customer is refused a second booking that overlaps one they already have, not only one that covers it completely
 - 10to8 import: people sharing an email or phone number under different names are imported as separate customers
 - Appointments: the stylist filter starts on Working Stylists, which leaves out stylists who are off, including a whole day of unavailability, but keeps anyone with an appointment that day; All Stylists shows everyone
+- Appointments: stylist columns shrink to share the screen width, so six fit side by side on a laptop
 
 ## 2.2.0
 

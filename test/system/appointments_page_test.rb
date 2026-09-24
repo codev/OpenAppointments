@@ -4,9 +4,7 @@ require "application_system_test_case"
 # navigation as URL state, entries opening the event dialog.
 class AppointmentsPageTest < ApplicationSystemTestCase
   setup do
-    # Zane works Monday to Friday in the fixtures; pick the next weekday.
-    @date = Date.current
-    @date += 1 until (1..5).cover?(@date.wday)
+    @date = working_day(0, from: Date.current)
     Appointment.create!(id_users_provider: users(:zane).id, id_users_customer: users(:jx).id, id_services: services(:haircut).id,
                         start_datetime: @date.to_time.change(hour: 11), end_datetime: @date.to_time.change(hour: 11, min: 30),
                         appointment_status: AppointmentStatus.of("booked"), notes: "Morning cut")
@@ -49,12 +47,26 @@ class AppointmentsPageTest < ApplicationSystemTestCase
     assert_no_selector ".day-entry-appointment", text: "JX - Trim Cut", wait: 5
     assert_current_path(/statuses/, wait: 5)
   end
+
+  test "six working stylists fit side by side in a 1400 pixel window" do
+    5.times do |index|
+      provider = User.create!(name: "Stylist #{index}", email: "stylist#{index}@example.org", role: users(:zane).role,
+                              timezone: "Europe/London")
+      provider.create_settings!(username: "stylist#{index}", password: Passwords.hash("stylistpass1"),
+                                working_plan: user_settings(:zane).working_plan)
+      ServiceProviderLink.create!(id_users: provider.id, id_services: services(:haircut).id)
+    end
+    visit appointments_url(date: @date)
+    assert_selector ".provider-column", count: 6, wait: 5
+    assert page.evaluate_script("document.querySelector('#calendar .calendar-view').scrollWidth <= " \
+                                "document.querySelector('#calendar .calendar-view').clientWidth"),
+           "the columns must fit without scrolling sideways"
+  end
 end
 
 class AppointmentsPageRefreshTest < ApplicationSystemTestCase
   test "a saved appointment appears in the day column without any filter interaction" do
-    date = Date.current
-    date += 1 until (1..5).cover?(date.wday)
+    date = working_day(0, from: Date.current)
     login_as_admin
     visit appointments_url(date: date)
     assert_selector ".provider-column[data-provider-id='#{users(:zane).id}']", wait: 5
