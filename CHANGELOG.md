@@ -16,6 +16,7 @@ CloudronManifest.json.
 - Services: the slot interval explains that it sets how often start times are offered, not a gap after the appointment, and must be at least 1 minute
 - Business Logic: the future booking limit can be set as low as 1 day (it refused anything under 15)
 - Calendar: the appointment popup buttons wrap onto two rows inside the popup, and Cancel is not offered once an appointment has ended
+- Notices: the text editors have a white background so they are easy to read on a coloured page
 
 ## 2.2.0
 

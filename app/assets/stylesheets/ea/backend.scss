@@ -826,3 +826,10 @@ body .modal.full-screen .modal-push {
     opacity: 0.5;
     text-decoration: line-through;
 }
+
+/* Rich text editors (Notices page) keep a white writing area whatever the
+   page background colour. */
+.trumbowyg-editor-box,
+.trumbowyg-editor {
+    background-color: #fff;
+}
