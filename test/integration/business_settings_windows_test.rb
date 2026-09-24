@@ -23,4 +23,10 @@ class BusinessSettingsWindowsTest < ActionDispatch::IntegrationTest
     assert_includes response.body, "keeps the slot free for others"
     assert_not_includes response.body, "longer than the booking window"
   end
+
+  test "the future booking limit can be as short as one day" do
+    post "/login/validate", params: { username: "administrator", password: "administrator1" }
+    get "/business_settings"
+    assert_select "input[name='settings[future_booking_limit]'][min='1']"
+  end
 end

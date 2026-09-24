@@ -14,6 +14,7 @@ CloudronManifest.json.
 - Bug fix: the Appointments page no longer shows a calendar above the day columns after visiting the Calendar page
 - Appointment dialog and filters: services hidden from the public, such as Meeting, can be booked by staff and are listed in their own group
 - Services: the slot interval explains that it sets how often start times are offered, not a gap after the appointment, and must be at least 1 minute
+- Business Logic: the future booking limit can be set as low as 1 day (it refused anything under 15)
 
 ## 2.2.0
 
