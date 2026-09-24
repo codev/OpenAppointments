@@ -967,3 +967,4 @@ en:
     messages_sms_variation: "Vary each SMS"
     messages_sms_variation_hint: "Adds a short reference code to the end of every SMS so no two texts are the same, which some networks require."
     provider_color_hint: "Used for this provider's appointments when the calendar shows everyone."
+    working_providers: "Working Providers"

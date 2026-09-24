@@ -7,13 +7,15 @@ class AppointmentsController < ApplicationController
 
   DAY_COUNTS = [ 1, 3 ].freeze
 
-  # GET /appointments?date=&days=&provider=&service=&statuses[]=
+  # GET /appointments?date=&days=&provider=(id|all)&service=&statuses[]=
+  # Without a provider only working stylists get a column.
   def index
     return unless require_backend_page!(:appointments)
 
     @date = Date.parse(params[:date].to_s) rescue Date.current
     @days = DAY_COUNTS.include?(params[:days].to_i) ? params[:days].to_i : 1
     @provider_id = params[:provider].to_i
+    @all_providers = params[:provider] == "all"
     @service_id = params[:service].to_i
     @statuses = AppointmentStatus.rows
     @selected_statuses = params.key?(:statuses) ? Array(params[:statuses]) : default_statuses
@@ -109,7 +111,8 @@ class AppointmentsController < ApplicationController
                         unavailabilities: unavailabilities.select { |u| u.id_users_provider == provider.id && u.start_datetime.to_date <= date && u.end_datetime.to_date >= date },
                         blocked_periods: blocked.select { |b| b.start_datetime.to_date <= date && b.end_datetime.to_date >= date })
       end
-      { date: date, days: days.select(&:working?), not_working: days.reject(&:working?).map(&:provider) }
+      shown, not_working = days.partition { |day| @all_providers || day.shown? }
+      { date: date, days: shown, not_working: not_working.map(&:provider) }
     end
   end
 

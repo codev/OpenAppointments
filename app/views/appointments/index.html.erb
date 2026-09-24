@@ -2,7 +2,7 @@
     from the URL (date, days, provider, service, statuses) into the day frame.
     Entries open the event dialog. %>
 <% formats = { date_format: setting('date_format'), time_format: setting('time_format') } %>
-<% query = ->(overrides) { { date: @date, days: @days, provider: @provider_id.positive? ? @provider_id : nil,
+<% query = ->(overrides) { { date: @date, days: @days, provider: @all_providers ? "all" : (@provider_id.positive? ? @provider_id : nil),
                              service: @service_id.positive? ? @service_id : nil, statuses: @selected_statuses }.merge(overrides).compact } %>
 <div class="container-fluid backend-page pt-0 pb-0" id="calendar-page">
     <turbo-frame id="day_view" data-turbo-action="advance">
@@ -14,7 +14,8 @@
                     <%= select_tag :days, options_for_select([ [ "1 #{lang('day')}", 1 ], [ "3 #{lang('days')}", 3 ] ], @days),
                                    id: "select-day-interval", class: "form-select", "aria-label": "Days", onchange: "this.form.requestSubmit()",
                                    data: { tippy_content: lang('select_day_interval_hint') } %>
-                    <%= select_tag :provider, options_for_select([ [ lang('all_providers'), "" ] ] + @providers.map { |p| [ p.name, p.id ] }, @provider_id),
+                    <%= select_tag :provider, options_for_select([ [ lang('working_providers'), "" ], [ lang('all_providers'), "all" ] ] + @providers.map { |p| [ p.name, p.id ] },
+                                                     @all_providers ? "all" : @provider_id),
                                    id: "filter-provider", class: "form-select filter-group", "aria-label": lang('provider'), onchange: "this.form.requestSubmit()",
                                    data: { tippy_content: lang('filter_providers_hint') } %>
                     <%= select_tag :service, options_for_select([ [ lang('all_services'), "" ] ] + @services.map { |s| [ s.name, s.id ] }, @service_id),

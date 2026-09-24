@@ -209,7 +209,7 @@ App.Components.EventModal = (function () {
                 const $filter = $('#select-filter-item, #filter-provider').first();
                 const type = $filter.find('option:selected').attr('type') || ($filter.is('#filter-provider') ? 'provider' : '');
                 const params = new URLSearchParams();
-                if (type === 'provider' && $filter.val()) params.set('provider_id', $filter.val());
+                if (type === 'provider' && /^\d+$/.test($filter.val())) params.set('provider_id', $filter.val());
                 if (type === 'service' && $filter.val()) params.set('service_id', $filter.val());
                 open('appointments/new?' + params.toString());
             });
@@ -217,7 +217,7 @@ App.Components.EventModal = (function () {
                 event.preventDefault();
                 const $filter = $('#select-filter-item, #filter-provider').first();
                 const providerId = $filter.find('option:selected').attr('type') === 'provider' || $filter.is('#filter-provider') ? $filter.val() : '';
-                open('unavailabilities/new' + (providerId ? '?provider_id=' + providerId : ''));
+                open('unavailabilities/new' + (/^\d+$/.test(providerId) ? '?provider_id=' + providerId : ''));
             });
         });
     }

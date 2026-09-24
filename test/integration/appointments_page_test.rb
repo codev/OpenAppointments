@@ -34,6 +34,36 @@ class AppointmentsPageTest < ActionDispatch::IntegrationTest
     assert_select "#select-day-interval option[selected][value='3']"
   end
 
+  test "working stylists is the default and a stylist off all day by an unavailability is not working" do
+    login_admin
+    Appointment.create!(is_unavailability: true, provider: users(:zane), notes: "Holiday",
+                        start_datetime: "2026-07-21 08:00:00", end_datetime: "2026-07-21 19:00:00")
+    get "/appointments", params: { date: "2026-07-21" }
+    assert_select "#filter-provider option:first-child[value='']", text: "Working Providers"
+    assert_select "#filter-provider option[value=all]", text: "All Providers"
+    assert_select ".provider-column", count: 0
+    assert_select "#not-working-notes", text: /Not working 21\/07\/2026: Zane/
+  end
+
+  test "a stylist with an appointment on their day off still gets a column" do
+    login_admin
+    booked = Appointment.create!(provider: users(:zane), customer: users(:jx), service: services(:haircut),
+                                 start_datetime: "2026-07-19 11:00:00", end_datetime: "2026-07-19 11:30:00")
+    get "/appointments", params: { date: "2026-07-19" }
+    assert_select ".provider-column[data-provider-id=?]", users(:zane).id.to_s
+    assert_select ".day-entry-appointment[href=?]", "/appointments/#{booked.id}/edit"
+    assert_select ".day-entry-free", count: 0
+  end
+
+  test "all stylists gives every stylist a column, working or not, and the day links keep the choice" do
+    login_admin
+    get "/appointments", params: { date: "2026-07-19", provider: "all" }
+    assert_select ".provider-column[data-provider-id=?]", users(:zane).id.to_s
+    assert_select "#not-working-notes div", count: 0
+    assert_select "#filter-provider option[selected][value=all]"
+    assert_select "a#next-day[href*='provider=all']"
+  end
+
   test "filters narrow the entries and statuses default to the non cancelled kinds" do
     login_admin
     get "/appointments", params: { date: "2026-07-20", service: services(:group_session).id }
@@ -58,7 +88,7 @@ class AppointmentsPageTest < ActionDispatch::IntegrationTest
     post "/login/validate", params: { username: "janedoe", password: "janedoe1" }
     other = User.create!(name: "Other", email: "other@example.org", role: users(:zane).role)
     get "/appointments", params: { date: "2026-07-20" }
-    assert_select "#filter-provider option", count: 2
+    assert_select "#filter-provider option", count: 3
     assert_select ".provider-column[data-provider-id=?]", other.id.to_s, count: 0
   end
   # A free slot click names the provider; the form must open on a service that
