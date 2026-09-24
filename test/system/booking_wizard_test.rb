@@ -112,12 +112,6 @@ class BookingWizardFlowTest < ApplicationSystemTestCase
     Setting.set("display_phone_number", "1")
   end
 
-  def next_weekday(from = Date.current + 1)
-    date = from
-    date += 1 until (1..5).cover?(date.wday)
-    date
-  end
-
   # A second provider so the Any Provider option appears.
   def second_provider
     provider = User.create!(name: "Riley", email: "riley@example.org", role: Role.find_by!(slug: Role::PROVIDER))
@@ -128,7 +122,7 @@ class BookingWizardFlowTest < ApplicationSystemTestCase
   end
 
   test "a customer books an appointment end to end and then reschedules it" do
-    date = next_weekday
+    date = working_day
     visit root_url
     assert_selector "#wizard-frame-1", visible: :visible, wait: 5
     select services(:haircut).name, from: "select-service"
@@ -182,7 +176,7 @@ class BookingWizardFlowTest < ApplicationSystemTestCase
   end
 
   test "cancelling from the reschedule link asks for a reason" do
-    date = next_weekday
+    date = working_day
     appointment = Appointment.create!(id_users_provider: users(:zane).id, id_users_customer: users(:jx).id,
                                       id_services: services(:haircut).id, start_datetime: date.to_time.change(hour: 14),
                                       end_datetime: date.to_time.change(hour: 14, min: 30),
@@ -203,7 +197,7 @@ class BookingWizardFlowTest < ApplicationSystemTestCase
   test "any provider offers the union of hours and books an actual provider" do
     Setting.set("display_any_provider", "1")
     second_provider
-    date = next_weekday
+    date = working_day
     visit root_url
     assert_selector "#wizard-frame-1", visible: :visible, wait: 5
     select services(:haircut).name, from: "select-service"
@@ -239,23 +233,13 @@ class BookingWizardWindowTest < ApplicationSystemTestCase
     assert_selector "#wizard-frame-3", visible: :visible, wait: 5
   end
 
-  def weekday(offset)
-    date = Date.current + 1
-    date += 1 until (1..5).cover?(date.wday)
-    offset.times do
-      date += 1
-      date += 1 until (1..5).cover?(date.wday)
-    end
-    date
-  end
-
   test "switching days needs no request and the browser back button walks the steps" do
     to_time_step
     assert_match(/step=time/, current_url)
     page.execute_script("window.__requests = 0; const open = XMLHttpRequest.prototype.open; XMLHttpRequest.prototype.open = function(...a) { window.__requests++; return open.apply(this, a); }; const f = window.fetch; window.fetch = (...a) => { window.__requests++; return f(...a); }")
 
-    first_day = weekday(0)
-    second_day = weekday(1)
+    first_day = working_day(0)
+    second_day = working_day(1)
     find(".flatpickr-day[aria-label='#{first_day.strftime('%B %-d, %Y')}']").click
     assert_selector "#available-hours .available-hour", minimum: 2
     find(".flatpickr-day[aria-label='#{second_day.strftime('%B %-d, %Y')}']").click
@@ -273,7 +257,7 @@ class BookingWizardWindowTest < ApplicationSystemTestCase
 
   test "the details step marks missing fields and shows the message below them" do
     to_time_step
-    date = weekday(0)
+    date = working_day(0)
     find(".flatpickr-day[aria-label='#{date.strftime('%B %-d, %Y')}']").click
     find("#available-hours .available-hour", text: /\A9:30 am\z/, wait: 5).click
     find("#button-next-3").click
@@ -307,7 +291,7 @@ class BookingWizardWindowTest < ApplicationSystemTestCase
     assert_no_selector "#steps #step-1.active-step"
     assert_equal "Mon", first(".flatpickr-weekday").text.strip
 
-    date = weekday(0)
+    date = working_day(0)
     find(".flatpickr-day[aria-label='#{date.strftime('%B %-d, %Y')}']").click
     find("#available-hours .available-hour", text: /\A9:30 am\z/, wait: 5).click
     find("#button-next-3").click
@@ -328,7 +312,7 @@ class BookingWizardWindowTest < ApplicationSystemTestCase
 
   test "details typed this session come back after revisiting an earlier step" do
     to_time_step
-    date = weekday(0)
+    date = working_day(0)
     find(".flatpickr-day[aria-label='#{date.strftime('%B %-d, %Y')}']").click
     find("#available-hours .available-hour", text: /\A9:30 am\z/, wait: 5).click
     find("#button-next-3").click
@@ -357,7 +341,7 @@ class BookingWizardWindowTest < ApplicationSystemTestCase
   test "the timezone select relabels the hours and travels to the customer record" do
     Setting.set("timezone_support", "1")
     to_time_step
-    date = weekday(0)
+    date = working_day(0)
     find(".flatpickr-day[aria-label='#{date.strftime('%B %-d, %Y')}']").click
     find("#available-hours .available-hour", text: /\A9:30 am\z/, wait: 5).click
     select "New_York (-5:00)", from: "select-timezone"
@@ -375,7 +359,7 @@ class BookingWizardWindowTest < ApplicationSystemTestCase
   end
 
   test "a slot taken while choosing returns to a fresh time step with the message" do
-    date = weekday(0)
+    date = working_day(0)
     to_time_step
     find(".flatpickr-day[aria-label='#{date.strftime('%B %-d, %Y')}']").click
     find("#available-hours .available-hour", text: /\A9:30 am\z/, wait: 5).click
