@@ -63,8 +63,7 @@ class TimezoneSupportSettingsTest < ActionDispatch::IntegrationTest
 
   test "the lab book batch strings exist in every locale" do
     keys = %w[date_display date_display_hint time_off time_off_hint messages_sms_variation messages_sms_variation_hint
-              merge_customer merge_customer_hint merge_customer_button merge_customer_confirm merge_customer_not_found
-              customer_merged provider_color_hint]
+              provider_color_hint]
     I18n.available_locales.each do |locale|
       keys.each do |key|
         assert I18n.t("ea.#{key}", locale: locale, fallback: false, default: nil).present?, "missing ea.#{key} in #{locale}"

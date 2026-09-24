@@ -3,6 +3,10 @@
 The about page lists these notes; every release needs a section here matching
 CloudronManifest.json.
 
+## 2.3.0
+
+- Customers: other emails and phone numbers and the customer merge tool are removed
+
 ## 2.2.0
 
 - Waiting List: customers can join a waiting list at the time step if no services are available
