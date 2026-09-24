@@ -59,11 +59,11 @@ class BookingFlowTest < ActionDispatch::IntegrationTest
     assert_match(/not available/i, body["message"]) # EA: requested_hour_is_unavailable
   end
 
-  test "register reuses existing customer by email" do
+  test "register reuses existing customer by email and name" do
     travel_to Time.new(2026, 7, 10, 12, 0, 0) do
       assert_no_difference "User.customers.count" do
         post "/booking/register", params: register_params(start: "#{DATE} 09:00:00",
-                                                          email: users(:jx).email)
+                                                          email: users(:jx).email, name: "JX")
       end
     end
     assert_equal users(:jx).id, Appointment.order(:id).last.id_users_customer
@@ -204,7 +204,7 @@ class BookingFlowTest < ActionDispatch::IntegrationTest
   # zone (CI runs in UTC, the fixture provider is in Europe/London).
   def provider_zone = Time.find_zone!(users(:zane).effective_timezone)
 
-  def register_params(start:, provider: users(:zane).id, email: "new@example.org",
+  def register_params(start:, provider: users(:zane).id, email: "new@example.org", name: "New Customer",
                       extra_appointment: {}, manage_mode: false)
     {
       post_data: {
@@ -215,7 +215,7 @@ class BookingFlowTest < ActionDispatch::IntegrationTest
           "id_users_provider" => provider
         }.merge(extra_appointment),
         customer: {
-          "name" => "New Customer", "email" => email,
+          "name" => name, "email" => email,
           "phone_number" => "+447700900123", "timezone" => "Europe/London"
         },
         manage_mode: manage_mode

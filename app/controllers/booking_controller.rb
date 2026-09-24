@@ -162,9 +162,9 @@ class BookingController < ApplicationController
       return form_post? ? register_failed(helpers.lang("turnstile_verification_failed")) : render(json: { turnstile_verification: false })
     end
 
-    existing_customer = User.customers.find_by(email: customer_params["email"]) if customer_params["email"].present?
-    existing_customer ||= User.customer_by_phone(customer_params["phone_number"]) if customer_params["email"].blank?
-    # A reschedule keeps the appointment's customer unless the email now belongs to another record.
+    existing_customer = User.customer_for_booking(email: customer_params["email"], phone: customer_params["phone_number"],
+                                                  name: customer_params["name"])
+    # A reschedule keeps the appointment's customer unless the details now belong to another record.
     existing_customer ||= original.customer if original
     if existing_customer
       conflict = Appointment.active.where(id_users_customer: existing_customer.id)
@@ -178,7 +178,14 @@ class BookingController < ApplicationController
 
     customer = existing_customer || User.new(role: Role.find_by!(slug: Role::CUSTOMER))
     timezone = customer_params["timezone"].presence || (customer.new_record? ? provider.effective_timezone : customer.timezone)
-    customer.assign_attributes(customer_params.except("id", "timezone", "language").merge("timezone" => timezone))
+    details = customer_params.except("id", "timezone", "language")
+    if customer.persisted?
+      # Blank fields never wipe stored details; a matched name differs at most
+      # in case or spacing, so the stored one stays.
+      details = details.compact_blank
+      details = details.except("name") if User.same_name?(customer.name, details["name"])
+    end
+    customer.assign_attributes(details.merge("timezone" => timezone))
     customer.language = session[:language] || Setting.get("default_language", "english")
     customer.save!
 

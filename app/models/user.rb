@@ -41,15 +41,33 @@ class User < ApplicationRecord
   scope :providers, -> { joins(:role).where(roles: { slug: Role::PROVIDER }) }
 
   # The customer whose phone or mobile number is this one, however either was
-  # typed: both sides are compared in E.164 after a digits-only narrowing.
+  # typed.
   def self.customer_by_phone(number, scope = customers)
+    customers_by_phone(number, scope).first
+  end
+
+  # Customers whose phone or mobile number is this one: both sides are compared
+  # in E.164 after a digits-only narrowing.
+  def self.customers_by_phone(number, scope = customers)
     wanted = Messaging::Template.e164(number)
-    return nil if wanted.blank? || wanted.length < 7
+    return [] if wanted.blank? || wanted.length < 7
 
     tail = "%#{wanted[-7..]}"
     stripped = "REPLACE(REPLACE(REPLACE(%s, ' ', ''), '-', ''), '(', '')"
     scope.where("#{format(stripped, 'phone_number')} LIKE :tail OR #{format(stripped, 'mobile_number')} LIKE :tail", tail: tail)
-         .find { |user| [ user.phone_number, user.mobile_number ].any? { |stored| Messaging::Template.e164(stored) == wanted } }
+         .select { |user| [ user.phone_number, user.mobile_number ].any? { |stored| Messaging::Template.e164(stored) == wanted } }
+  end
+
+  # The customer a booking belongs to: the same email or phone and the same
+  # name. People sharing contact details keep their own records.
+  def self.customer_for_booking(email:, phone:, name:)
+    candidates = email.present? ? customers.where("LOWER(email) = ?", email.downcase).to_a : []
+    candidates += customers_by_phone(phone) if phone.present?
+    candidates.find { |customer| same_name?(customer.name, name) }
+  end
+
+  def self.same_name?(one, other)
+    one.to_s.squish.casecmp?(other.to_s.squish)
   end
   scope :assistants, -> { joins(:role).where(roles: { slug: Role::ASSISTANT }) }
   scope :customers, -> { joins(:role).where(roles: { slug: Role::CUSTOMER }) }

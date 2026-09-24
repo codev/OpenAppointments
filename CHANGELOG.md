@@ -6,6 +6,7 @@ CloudronManifest.json.
 ## 2.3.0
 
 - Customers: other emails and phone numbers and the customer merge tool are removed
+- Booking: someone sharing another customer's email or phone number under a different name gets their own customer record, and a returning customer's stored details are no longer overwritten or blanked
 
 ## 2.2.0
 
