@@ -903,6 +903,9 @@ en:
     inbox_done_by: "Done by {name} {time}"
     message_delete_confirm: "Delete this message permanently? This cannot be undone."
     message_deleted: "Message deleted"
+    message_shared_contact: "Also uses this contact:"
+    message_move_to: "Move to {name}"
+    message_moved: "Message moved"
     read: 'Read'
     message: 'Message'
     mark_as_read: 'Mark as read'

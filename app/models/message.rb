@@ -38,6 +38,15 @@ class Message < ApplicationRecord
 
   def undo_done! = update!(done_at: nil, done_by: nil)
 
+  # Other customers using the contact this incoming message came from; an
+  # admin can move the message to one of them.
+  def other_customers_on_contact
+    return [] if customer_id.nil? || from_address.blank?
+
+    contact = from_address.include?("@") ? { email: from_address } : { phone: from_address }
+    User.customers_by_contact(**contact).reject { |customer| customer.id == customer_id }
+  end
+
   def self.unread_counts_for(customer_ids)
     unread.where(customer_id: customer_ids).group(:customer_id).count
   end

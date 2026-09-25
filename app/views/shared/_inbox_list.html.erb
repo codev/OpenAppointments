@@ -1,62 +1,8 @@
 <%# Inbox pages: one block per message, the metadata on a wrapping line and the
     full text beneath it. Locals: messages, page, last_page, base_path. %>
-<% format_settings = { date_format: setting("date_format"), time_format: setting("time_format") } %>
 <div class="inbox-list mb-4">
     <% messages.each do |message| %>
-        <% unread = message.direction == "incoming" && !message.read? %>
-        <div class="inbox-message py-3 border-bottom<%= ' message-unread' if unread %>" id="inbox-message-<%= message.id %>">
-            <div class="inbox-meta d-flex flex-wrap align-items-center gap-2 mb-2">
-                <% if message.direction == "incoming" %>
-                    <i class="fas fa-arrow-down text-success" title="<%= lang('messages_incoming_label') %>"></i>
-                <% else %>
-                    <i class="fas fa-arrow-up text-primary" title="<%= lang('messages_outgoing_label') %>"></i>
-                <% end %>
-                <span class="badge bg-secondary"><%= Messaging.channel(message.channel)&.label || message.channel %></span>
-                <% if message.customer %>
-                    <a href="/customers?customer_id=<%= message.customer.id %>" class="fw-bold"><%= message.customer.name %></a>
-                <% elsif message.direction == "incoming" %>
-                    <span class="text-muted"><%= lang('messages_unknown_sender') %></span>
-                <% else %>
-                    <span class="text-muted"><%= message.audience %></span>
-                <% end %>
-                <span class="text-muted text-break"><%= message.direction == "incoming" ? message.from_address : message.to_address %></span>
-                <span class="ms-md-auto text-muted text-nowrap"><%= display_datetime(message.created_at) %></span>
-                <% badge = { "sent" => "bg-success", "received" => "bg-success",
-                             "failed" => "bg-danger", "queued" => "bg-secondary" }[message.status] %>
-                <span class="badge <%= badge %>" <% if message.error.present? %>title="<%= message.error %>"<% end %>>
-                    <%= lang("messages_status_#{message.status}") %>
-                </span>
-                <% if unread %>
-                    <button type="button" class="btn btn-sm btn-outline-primary mark-read" data-id="<%= message.id %>">
-                        <i class="fas fa-check me-1"></i><%= lang('mark_as_read') %>
-                    </button>
-                <% elsif message.direction == "incoming" %>
-                    <i class="fas fa-check text-success" title="<%= lang('read') %>"></i>
-                <% end %>
-                <% if message.direction == "incoming" && message.done? %>
-                    <span class="text-muted inbox-done-by">
-                        <%= lang('inbox_done_by').sub("{name}", message.done_by&.name.to_s).sub("{time}", display_datetime(message.done_at)) %>
-                    </span>
-                    <%= button_to lang('undo'), "/messages/#{message.id}/undo_done", class: "btn btn-sm btn-outline-secondary", form_class: "d-inline" %>
-                <% elsif message.direction == "incoming" %>
-                    <%= button_to "/messages/#{message.id}/done", class: "btn btn-sm btn-outline-success", form_class: "d-inline" do %>
-                        <i class="fas fa-check-double me-1"></i><%= lang('inbox_done') %>
-                    <% end %>
-                <% end %>
-                <% if message.customer_id.nil? %>
-                    <%= button_to "/messages/#{message.id}", method: :delete, class: "btn btn-sm btn-outline-danger",
-                                  form_class: "d-inline", title: lang('delete'),
-                                  form: { data: { turbo_confirm: lang('message_delete_confirm') } },
-                                  data: { turbo_confirm_title: lang('delete'), turbo_confirm_button: lang('delete') } do %>
-                        <i class="fas fa-trash-alt"></i>
-                    <% end %>
-                <% end %>
-            </div>
-            <% if message.subject.present? %>
-                <div class="inbox-subject fw-bold"><%= message.subject %></div>
-            <% end %>
-            <div class="inbox-body"><%= message.body %></div>
-        </div>
+        <%= render "shared/inbox_message", message: message %>
     <% end %>
     <% if messages.empty? %>
         <p class="text-muted text-center py-4"><%= lang('no_records_found') %></p>

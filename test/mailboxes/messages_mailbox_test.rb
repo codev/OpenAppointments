@@ -41,4 +41,12 @@ class MessagesMailboxTest < ActionMailbox::TestCase
     receive_inbound_email_from_mail(from: "stranger@example.org", to: "shop@example.org", subject: "Hi", body: "?")
     assert_equal 1, Message.outgoing.count
   end
+
+  test "mail from an email two customers share goes to the one with the next appointment" do
+    partner = User.create!(name: "Partner", email: users(:jx).email.upcase, role: roles(:customer))
+    Appointment.create!(start_datetime: 2.days.from_now, end_datetime: 2.days.from_now + 30.minutes,
+                        provider: users(:zane), customer: partner, service: services(:haircut), status: "Booked")
+    receive_inbound_email_from_mail(from: users(:jx).email, to: "shop@example.org", subject: "Hi", body: "Late")
+    assert_equal partner.id, Message.incoming.sole.customer_id
+  end
 end

@@ -47,7 +47,7 @@ class UserTest < ActiveSupport::TestCase
     customer = users(:jx)
     [ "07700 900.123", "(07700) 900123", "07700900123\n" ].each do |stored|
       customer.update_columns(phone_number: stored)
-      assert_equal customer, User.customer_by_phone("+447700900123"), stored.inspect
+      assert_equal [ customer ], User.customers_by_phone("+447700900123"), stored.inspect
     end
   end
 end

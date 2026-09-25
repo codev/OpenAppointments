@@ -1,6 +1,6 @@
 # One message: mark read (inbox pages and the customer conversation), Done /
-# Undo on the admin inbox pages, and permanent delete for admins (customer
-# conversation, Unknown Inbox).
+# Undo and Move on the admin inbox pages, and permanent delete for admins
+# (customer conversation, Unknown Inbox).
 class MessagesController < ApplicationController
   include BackendPage
 
@@ -23,6 +23,20 @@ class MessagesController < ApplicationController
   # POST /messages/:id/undo_done, from the Show done list.
   def undo_done
     change_done(&:undo_done!)
+  end
+
+  # POST /messages/:id/move: this message only, to another customer using its
+  # contact. Sends nothing.
+  def move
+    return head :forbidden unless inbox_access?
+
+    message = Message.inbox.find(params[:id])
+    customer = message.other_customers_on_contact.find { |other| other.id == params[:customer_id].to_i }
+    return head :unprocessable_entity unless customer
+
+    message.update!(customer: customer)
+    render turbo_stream: turbo_stream.replace("inbox-message-#{message.id}", partial: "shared/inbox_message",
+                                                                             locals: { message: message, moved: true })
   end
 
   # DELETE /messages/:id. No soft delete: mistakes and erasure requests.

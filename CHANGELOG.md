@@ -11,6 +11,7 @@ CloudronManifest.json.
 - Notifications: click a token to insert it where you were typing, or to copy it
 - Inbox: admins only; mark each message Done when dealt with, Show done lists them with Undo, and the customer history keeps every message. The Unknown Inbox works the same way
 - Messages: admins can permanently delete a single message from a customer's conversation or the Unknown Inbox
+- Messages: a reply from an email or phone several customers share goes to the one with the next appointment (else the most recent); the Inbox names the others and an admin can move the message
 
 ## 2.3.1
 

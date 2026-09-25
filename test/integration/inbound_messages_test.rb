@@ -42,6 +42,17 @@ class InboundMessagesTest < ActionDispatch::IntegrationTest
     assert_equal users(:jx).id, Message.incoming.sole.customer_id
   end
 
+  test "an SMS from a phone two customers share goes to the one with the next appointment" do
+    partner = User.create!(name: "Partner", mobile_number: users(:jx).phone_number, role: roles(:customer))
+    Appointment.create!(start_datetime: 2.days.from_now, end_datetime: 2.days.from_now + 30.minutes,
+                        provider: users(:zane), customer: partner, service: services(:haircut), status: "Booked")
+    params = { "From" => users(:jx).phone_number, "To" => "+15005550006", "Body" => "Running late" }
+    url = "http://www.example.com/messages/inbound/twilio/secrettoken123"
+    post "/messages/inbound/twilio/secrettoken123", params: params,
+         headers: { "X-Twilio-Signature" => twilio_signature(url, params) }
+    assert_equal partner.id, Message.incoming.sole.customer_id
+  end
+
   test "an SMS from a customer fires the customer message notification" do
     Notification.create!(title: "Customer Message Received", event: "customer_message", audiences: %w[provider],
                          channels: %w[email], short_text: "New message from {{Customer Name}}")

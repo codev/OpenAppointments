@@ -47,12 +47,6 @@ class User < ApplicationRecord
     OR REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(mobile_number, ' ', ''), '-', ''), '(', ''), ')', ''), '.', '') LIKE :tail
   SQL
 
-  # The customer whose phone or mobile number is this one, however either was
-  # typed.
-  def self.customer_by_phone(number, scope = customers)
-    customers_by_phone(number, scope).first
-  end
-
   # Customers whose phone or mobile number is this one: both sides are compared
   # in E.164 after a digits-only narrowing.
   def self.customers_by_phone(number, scope = customers)
@@ -63,12 +57,30 @@ class User < ApplicationRecord
          .select { |user| [ user.phone_number, user.mobile_number ].any? { |stored| Messaging::Template.e164(stored) == wanted } }
   end
 
+  # Customers who use this email (any case) or phone, once each. Partners and
+  # family may share one.
+  def self.customers_by_contact(email: nil, phone: nil)
+    found = email.present? ? customers.where("LOWER(email) = ?", email.downcase).to_a : []
+    found += customers_by_phone(phone) if phone.present?
+    found.uniq
+  end
+
+  # Of customers sharing a contact, the one a message from it most likely
+  # comes from: the next upcoming appointment, else the latest past one, else
+  # the most recently updated customer.
+  def self.likely_sender(candidates, now = Time.current)
+    return candidates.first if candidates.size < 2
+
+    booked = Appointment.appointments.active.where(id_users_customer: candidates.map(&:id))
+    id = booked.where("start_datetime >= ?", now).order(:start_datetime).pick(:id_users_customer) ||
+         booked.where("start_datetime < ?", now).order(start_datetime: :desc).pick(:id_users_customer)
+    id ? candidates.find { |customer| customer.id == id } : candidates.max_by(&:updated_at)
+  end
+
   # The customer a booking belongs to: the same email or phone and the same
   # name. People sharing contact details keep their own records.
   def self.customer_for_booking(email:, phone:, name:)
-    candidates = email.present? ? customers.where("LOWER(email) = ?", email.downcase).to_a : []
-    candidates += customers_by_phone(phone) if phone.present?
-    candidates.find { |customer| same_name?(customer.name, name) }
+    customers_by_contact(email: email, phone: phone).find { |customer| same_name?(customer.name, name) }
   end
 
   def self.same_name?(one, other)

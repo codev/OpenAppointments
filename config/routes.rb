@@ -134,6 +134,7 @@ Rails.application.routes.draw do
   post "messages/:id/mark_read" => "messages#mark_read"
   post "messages/:id/done" => "messages#done"
   post "messages/:id/undo_done" => "messages#undo_done"
+  post "messages/:id/move" => "messages#move"
   delete "messages/:id" => "messages#destroy"
   post "business_settings/apply_global_working_plan" => "business_settings#apply_global_working_plan"
   post "altcha_settings/generate_key" => "altcha_settings#generate_key"
