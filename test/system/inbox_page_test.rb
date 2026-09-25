@@ -25,4 +25,16 @@ class InboxPageTest < ApplicationSystemTestCase
     assert_no_selector "#inbox-message-#{message.id}", wait: 5
     assert_not message.reload.done?
   end
+
+  test "an unknown inbox message is deleted after the confirm" do
+    message = Message.create!(direction: "incoming", channel: "email", from_address: "who@example.org",
+                              body: "Who is this?", status: "received")
+    login_as_admin
+    visit "/unknown_inbox"
+    within("#inbox-message-#{message.id}") { find("button[title='Delete']").click }
+    assert_selector "#message-modal", text: "Delete this message permanently?", wait: 5
+    within("#message-modal") { click_on "Delete" }
+    assert_no_selector "#inbox-message-#{message.id}", wait: 5
+    assert_not Message.exists?(message.id)
+  end
 end

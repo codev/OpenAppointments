@@ -1,8 +1,9 @@
 /**
  * Customer conversation panel on the customers page: loads the messages of the
  * displayed customer (#customer-messages[data-customer-id]) after each frame
- * load, sends manual messages and marks them read. The message box grows with
- * its content; Enter sends, Shift-Enter adds a line.
+ * load, sends manual messages and marks them read; admins can delete a
+ * message. The message box grows with its content; Enter sends, Shift-Enter
+ * adds a line.
  */
 App.Components.CustomerMessages = (function () {
     const $document = $(document);
@@ -36,6 +37,16 @@ App.Components.CustomerMessages = (function () {
                           'class': 'btn btn-link btn-sm p-0 ms-2 mark-read',
                           'data-id': message.id,
                           'text': lang('mark_as_read'),
+                      })
+                    : null,
+                vars('role_slug') === App.Layouts.Backend.DB_SLUG_ADMIN
+                    ? $('<button/>', {
+                          'type': 'button',
+                          'class': 'btn btn-link btn-sm p-0 ms-2 text-danger delete-message',
+                          'data-id': message.id,
+                          'data-unread': unread,
+                          'title': lang('delete'),
+                          'html': $('<i/>', {'class': 'fas fa-trash-alt'}),
                       })
                     : null,
                 $('<br/>'),
@@ -79,6 +90,28 @@ App.Components.CustomerMessages = (function () {
         } else {
             $badge.text(remaining);
         }
+    }
+
+    function confirmDelete(event) {
+        const $button = $(event.currentTarget);
+
+        App.Utils.Message.show(lang('delete'), lang('message_delete_confirm'), [
+            {text: lang('cancel'), click: (e, modal) => modal.hide()},
+            {
+                text: lang('delete'),
+                click: (e, modal) => {
+                    modal.hide();
+                    App.Http.CustomerMessages.destroy($button.data('id')).done((response) => {
+                        App.Utils.MarkRead.updateHeaderBadge(response.inbox_unread);
+                        if ($button.data('unread')) {
+                            decreaseUnreadBadge(1);
+                        }
+                        App.Layouts.Backend.displayNotification(lang('message_deleted'));
+                        load();
+                    });
+                },
+            },
+        ]);
     }
 
     function send() {
@@ -143,6 +176,7 @@ App.Components.CustomerMessages = (function () {
                     $('#mark-all-read').addClass('d-none');
                 });
             });
+            $document.on('click', '#customer-messages .delete-message', confirmDelete);
             $document.on('click', '#customer-messages .mark-read', () => {
                 decreaseUnreadBadge(1);
                 if (panel().find('.message-unread').length <= 1) {

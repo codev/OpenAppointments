@@ -1,5 +1,6 @@
-# One message: mark read (inbox pages and the customer conversation), and
-# Done / Undo on the admin inbox pages.
+# One message: mark read (inbox pages and the customer conversation), Done /
+# Undo on the admin inbox pages, and permanent delete for admins (customer
+# conversation, Unknown Inbox).
 class MessagesController < ApplicationController
   include BackendPage
 
@@ -22,6 +23,23 @@ class MessagesController < ApplicationController
   # POST /messages/:id/undo_done, from the Show done list.
   def undo_done
     change_done(&:undo_done!)
+  end
+
+  # DELETE /messages/:id. No soft delete: mistakes and erasure requests.
+  def destroy
+    return head :forbidden unless current_user&.admin?
+
+    message = Message.find(params[:id])
+    message.destroy!
+    respond_to do |format|
+      format.turbo_stream do
+        render turbo_stream: [
+          turbo_stream.remove("inbox-message-#{message.id}"),
+          turbo_stream.replace("inbox-unread", partial: "shared/inbox_unread", locals: { count: inbox_badge_count })
+        ]
+      end
+      format.json { render json: { success: true, inbox_unread: inbox_badge_count } }
+    end
   end
 
   private

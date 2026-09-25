@@ -10,6 +10,7 @@ CloudronManifest.json.
 - Notifications: a template with an unknown token still saves, with a warning naming the token, and is marked Unknown placeholder in the list
 - Notifications: click a token to insert it where you were typing, or to copy it
 - Inbox: admins only; mark each message Done when dealt with, Show done lists them with Undo, and the customer history keeps every message. The Unknown Inbox works the same way
+- Messages: admins can permanently delete a single message from a customer's conversation or the Unknown Inbox
 
 ## 2.3.1
 

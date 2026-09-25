@@ -115,6 +115,26 @@ class CustomersPageTest < ApplicationSystemTestCase
   end
 end
 
+# Admins delete a single message from the conversation after a confirm.
+class CustomerMessageDeleteTest < ApplicationSystemTestCase
+  test "an admin deletes one message from the conversation" do
+    Message.create!(direction: "incoming", channel: "email", from_address: users(:jx).email,
+                    customer_id: users(:jx).id, body: "Keep me", status: "received")
+    gone = Message.create!(direction: "incoming", channel: "email", from_address: users(:jx).email,
+                           customer_id: users(:jx).id, body: "Delete me", status: "received")
+    login_as_admin
+    visit customers_url(customer_id: users(:jx).id, section: "messages")
+    assert_selector "#customer-messages .message-row", text: "Delete me", wait: 5
+
+    find("#customer-messages .message-row", text: "Delete me").find(".delete-message").click
+    confirm_modal "Delete", "Delete"
+    assert_no_selector "#customer-messages .message-row", text: "Delete me", wait: 5
+    assert_selector "#customer-messages .message-row", text: "Keep me"
+    assert_text "Message deleted"
+    assert_not Message.exists?(gone.id)
+  end
+end
+
 # Rails views only: the deep link opens the record on the conversation panel.
 class CustomersDeepLinkTest < ApplicationSystemTestCase
   test "the messages deep link opens the customer with the conversation loaded" do

@@ -43,6 +43,14 @@
                         <i class="fas fa-check-double me-1"></i><%= lang('inbox_done') %>
                     <% end %>
                 <% end %>
+                <% if message.customer_id.nil? %>
+                    <%= button_to "/messages/#{message.id}", method: :delete, class: "btn btn-sm btn-outline-danger",
+                                  form_class: "d-inline", title: lang('delete'),
+                                  form: { data: { turbo_confirm: lang('message_delete_confirm') } },
+                                  data: { turbo_confirm_title: lang('delete'), turbo_confirm_button: lang('delete') } do %>
+                        <i class="fas fa-trash-alt"></i>
+                    <% end %>
+                <% end %>
             </div>
             <% if message.subject.present? %>
                 <div class="inbox-subject fw-bold"><%= message.subject %></div>

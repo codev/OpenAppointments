@@ -901,6 +901,8 @@ en:
     inbox_done: "Done"
     inbox_show_done: "Show done"
     inbox_done_by: "Done by {name} {time}"
+    message_delete_confirm: "Delete this message permanently? This cannot be undone."
+    message_deleted: "Message deleted"
     read: 'Read'
     message: 'Message'
     mark_as_read: 'Mark as read'
