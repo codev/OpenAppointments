@@ -13,6 +13,9 @@ class BookingTimezoneTest < ApplicationSystemTestCase
     select users(:zane).name, from: "select-provider"
     find("#button-next-2").click
     assert_selector "#available-hours .available-hour", minimum: 1, wait: 10
+    # A later working day starts at 9:00; today may already be part way through.
+    find(".flatpickr-day[aria-label='#{working_day.strftime('%B %-d, %Y')}']").click
+    assert_selector "#available-hours .available-hour[data-value='09:00']", wait: 5
     assert_no_selector "#select-timezone", visible: :all
     first_hour = first("#available-hours .available-hour")
     assert_equal "09:00", first_hour["data-value"]

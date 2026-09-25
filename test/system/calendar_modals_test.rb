@@ -6,7 +6,14 @@ require "application_system_test_case"
 class CalendarModalsTest < ApplicationSystemTestCase
   # The calendar opens on the current week, so events sit today or just around now.
   def today = Date.current.strftime("%d/%m/%Y")
-  def soon = @soon ||= Time.at((Time.now.to_i / 900 + 2) * 900)
+  def soon = @soon ||= Time.at((wall_now.to_i / 900 + 2) * 900)
+
+  # Stored times are the stylist's wall clock and the browser runs in London,
+  # whatever zone the machine running the tests is in.
+  def wall_now
+    now = Time.now.in_time_zone(BROWSER_TIMEZONE)
+    Time.new(now.year, now.month, now.day, now.hour, now.min, 0)
+  end
 
   setup do
     Setting.set("display_email", "1")
@@ -91,7 +98,7 @@ class CalendarModalsTest < ApplicationSystemTestCase
   end
 
   test "an ended appointment's popover offers no Cancel and the buttons stay inside the popover" do
-    start = Time.now.change(sec: 0) - 40.minutes
+    start = wall_now - 40.minutes
     Appointment.create!(provider: users(:zane), customer: users(:jx), service: services(:haircut),
                         start_datetime: start, end_datetime: start + 30.minutes, appointment_status: AppointmentStatus.of("booked"))
     visit calendar_url
