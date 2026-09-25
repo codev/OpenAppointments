@@ -18,6 +18,7 @@ CloudronManifest.json.
 - Calendar: the appointment popup buttons wrap onto two rows inside the popup, and Cancel is not offered once an appointment has ended
 - Notices: the text editors have a white background so they are easy to read on a coloured page
 - Customer messages: with email and one SMS provider, the choice to send by every channel reads Both
+- Bug fix: appointments, unavailabilities and working hours save with any minute, such as 11:17, where Save did nothing before
 
 ## 2.2.0
 

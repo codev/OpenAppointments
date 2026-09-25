@@ -116,6 +116,29 @@ class CalendarModalsTest < ApplicationSystemTestCase
     assert_not overflow, "popover buttons must stay inside the popover"
   end
 
+  test "an appointment saves at a time off the quarter hour, as meetings use" do
+    start = soon + 2.minutes
+    visit appointments_url
+    assert_selector "#insert-appointment", visible: :all, wait: 10
+    find("#calendar-actions [data-bs-toggle=dropdown]").click
+    find("#insert-appointment").click
+    assert_selector "#save-appointment", visible: true, wait: 5
+    wait_for_modal
+    within(find("#save-appointment").ancestor(".modal")) do
+      select "Trim Cut", from: "select-service"
+      select "Zane", from: "select-provider"
+      find("#start-datetime").set("#{start.strftime('%d/%m/%Y %-l:%M %P')}\t")
+      find("#end-datetime").set("#{(start + 30.minutes).strftime('%d/%m/%Y %-l:%M %P')}\t")
+      click_on "Select"
+      find("#existing-customers-list div", text: "JX", wait: 5).click
+      fill_in "appointment-notes", with: "Off the grid"
+      click_on "Save"
+    end
+    confirm_modal "New Appointment", "No"
+    assert_text "Appointment saved", wait: 10
+    assert_equal start.strftime("%H:%M"), Appointment.find_by!(notes: "Off the grid").start_datetime.strftime("%H:%M")
+  end
+
   test "add and delete an unavailability" do
     begin
       visit appointments_url
