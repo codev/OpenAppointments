@@ -90,6 +90,17 @@ module Notifications
     end
   end
 
+  # Launch day, just before debug mode goes off: records every reminder the
+  # next scan would send as already sent (10to8 sent it, or debug mode held it
+  # back). Returns how many were (or, on a dry run, would be) marked.
+  def mark_due_reminders_sent(now = Time.current, dry_run: false)
+    Notification.coming_up.sum do |notification|
+      due = due_appointments(notification, now).reject { |appointment| NotificationDispatch.recorded?(notification, appointment) }
+      due.each { |appointment| NotificationDispatch.record!(notification, appointment) } unless dry_run
+      due.size
+    end
+  end
+
   # Stored starts are the stylist's wall clock, so the query brackets the
   # window by a day each side and the zone-aware checks decide.
   def due_appointments(notification, now)

@@ -6,12 +6,14 @@ class NotificationDispatch < ApplicationRecord
   belongs_to :appointment
 
   def self.record!(notification, appointment)
-    create!(
-      notification: notification,
-      appointment: appointment,
-      dedupe_key: "#{notification.id}:#{appointment.id}:#{appointment.start_datetime.to_i}"
-    )
+    create!(notification: notification, appointment: appointment, dedupe_key: key_for(notification, appointment))
   rescue ActiveRecord::RecordNotUnique
     nil
+  end
+
+  def self.recorded?(notification, appointment) = exists?(dedupe_key: key_for(notification, appointment))
+
+  def self.key_for(notification, appointment)
+    "#{notification.id}:#{appointment.id}:#{appointment.start_datetime.to_i}"
   end
 end
