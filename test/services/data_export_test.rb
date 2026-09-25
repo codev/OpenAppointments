@@ -165,6 +165,43 @@ class DataExportTest < ActiveSupport::TestCase
                  "restored occurrences relinked to the series"
   end
 
+  # Launch morning: export, reset, import everything except customers and
+  # appointments, then the final 10to8 import brings those.
+  test "configuration survives export, reset and an import without customers and appointments" do
+    settings = {
+      "booking_release_time" => "12:00", "future_booking_limit" => "7",
+      "label_custom_field_1" => "Pronouns", "display_custom_field_1" => "1", "require_custom_field_2" => "1",
+      "booking_notice_content" => "<p>Bring cash</p>", "fully_booked_notice_content" => "<p>Full up</p>",
+      "privacy_policy_content" => "<p>Privacy</p>", "theme" => "flatly", "company_color" => "#123456",
+      "company_secondary_color" => "#abcdef"
+    }
+    settings.each { |name, value| Setting.set(name, value) }
+    Notification.delete_all
+    Notification.create!(title: "Stylist created", event: "created", audiences: %w[provider], channels: %w[email],
+                         short_text: "New booking", long_text: "{{Customer Extra Questions}}")
+    WorkingPlanException.create!(provider: users(:zane), start_date: Date.new(2026, 8, 5), end_date: Date.new(2026, 8, 5),
+                                 start_time: "10:00", end_time: "14:00", breaks: "[]")
+    plan = users(:zane).settings.working_plan
+    path = export_to_file
+
+    # A full reset reseeds default settings; templates survive any reset, so
+    # they are cleared here to prove the import restores them.
+    ResetDatabase.run(full: true)
+    Notification.delete_all
+    assert_nil Setting.get("booking_release_time")
+    data = OdsExtract.new(path, today: Date.new(2026, 7, 20), days_back: 30, days_forward: 30).call
+    TenToEight::Load.new(data, phases: TenToEight::Load::PHASES - %w[customers appointments appointment_series],
+                               create_providers: true).call
+
+    settings.each { |name, value| assert_equal value, Setting.get(name), name }
+    assert_equal "{{Customer Extra Questions}}", Notification.find_by!(title: "Stylist created").long_text
+    provider = User.providers.find_by!(email: "zane@example.org")
+    assert_equal JSON.parse(plan), JSON.parse(provider.settings.working_plan)
+    assert_equal "10:00", provider.working_plan_exceptions.sole.start_time
+    assert_equal 0, User.customers.count
+    assert_equal 0, Appointment.appointments.count
+  end
+
   test "reimporting twice does not duplicate" do
     path = export_to_file
     ResetDatabase.run
