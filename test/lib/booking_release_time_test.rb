@@ -46,4 +46,13 @@ class BookingReleaseTimeTest < ActiveSupport::TestCase
       assert BookingWindow.build(services(:haircut), users(:zane).id).key?("2026-07-06")
     end
   end
+
+  test "the window starts on the business day, so a business west of UTC keeps today in the evening" do
+    Setting.set("default_timezone", "America/Los_Angeles")
+    users(:zane).update!(timezone: "America/Los_Angeles")
+    Setting.set("book_advance_timeout", "0") # 17:15 and 17:30 stay bookable
+    travel_to Time.find_zone!("America/Los_Angeles").local(2026, 10, 5, 17, 0) do # Monday, 00:00 UTC Tuesday
+      assert BookingWindow.build(services(:haircut), users(:zane).id).key?("2026-10-05")
+    end
+  end
 end

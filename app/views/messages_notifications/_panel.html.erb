@@ -24,7 +24,7 @@
         <% if notice %><div class="alert alert-success"><%= notice %></div><% end %>
         <% if notice && unknown_tokens.any? %>
             <div class="alert alert-warning">
-                <%= lang('notification_unknown_tokens').sub("{tokens}", unknown_tokens.map { |token| "{{#{token}}}" }.join(", ")) %>
+                <%= lang('notification_unknown_tokens').sub("{tokens}") { unknown_tokens.map { |token| "{{#{token}}}" }.join(", ") } %>
             </div>
         <% end %>
         <%= form_with url: "/messages_notifications/save", method: :post, class: "notification-form",

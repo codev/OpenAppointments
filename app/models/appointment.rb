@@ -29,6 +29,22 @@ class Appointment < ApplicationRecord
     relation
   }
 
+  # The next appointment to start and the latest one already started, by real
+  # start time. Stored starts are the stylist's wall clock, so rows within a
+  # day of now are decided by BookingWindows.starts_at; beyond that the stored
+  # order is enough.
+  def self.next_and_last(scope, now = Time.current)
+    rows = scope.includes(:provider)
+    near = rows.where(start_datetime: (now - 1.day)..(now + 1.day)).to_a
+    started, upcoming = near.partition { |appointment| BookingWindows.starts_at(appointment) < now }
+    [
+      upcoming.min_by { |appointment| BookingWindows.starts_at(appointment) } ||
+        rows.where("start_datetime > ?", now + 1.day).order(:start_datetime).first,
+      started.max_by { |appointment| BookingWindows.starts_at(appointment) } ||
+        rows.where("start_datetime < ?", now - 1.day).order(start_datetime: :desc).first
+    ]
+  end
+
   # EA has_provider_conflict: (existing_start < new_end) AND (existing_end > new_start).
   def self.provider_conflict?(provider_id, start_datetime, end_datetime, exclude_appointment_id = nil)
     relation = active.where(id_users_provider: provider_id).overlapping(start_datetime, end_datetime)

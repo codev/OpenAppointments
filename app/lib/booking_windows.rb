@@ -18,11 +18,16 @@ module BookingWindows
   # in days, on the business clock (default_timezone). The newest day opens at
   # the release time; before it the window ends a day earlier.
   def last_bookable_date(now = Time.now)
-    local = now.in_time_zone(Setting.get("default_timezone", "UTC"))
+    local = business_now(now)
     days = future_booking_limit_days
     days -= 1 if local.strftime("%H:%M") < release_time
     local.to_date + days
   end
+
+  # Today on the business clock: the first day of public booking.
+  def business_today(now = Time.now) = business_now(now).to_date
+
+  def business_now(now) = now.in_time_zone(Setting.get("default_timezone", "UTC"))
 
   def future_booking_limit_days
     limit = Setting.get("future_booking_limit", "90").to_s

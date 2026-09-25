@@ -34,7 +34,7 @@
         <% end %>
         <% if message.direction == "incoming" && message.done? %>
             <span class="text-muted inbox-done-by">
-                <%= lang('inbox_done_by').sub("{name}", message.done_by&.name.to_s).sub("{time}", display_datetime(message.done_at)) %>
+                <%= lang('inbox_done_by').sub("{name}") { message.done_by&.name.to_s }.sub("{time}") { display_datetime(message.done_at) } %>
             </span>
             <%= button_to lang('undo'), "/messages/#{message.id}/undo_done", class: "btn btn-sm btn-outline-secondary", form_class: "d-inline" %>
         <% elsif message.direction == "incoming" %>
@@ -56,7 +56,7 @@
         <div class="inbox-shared-contact d-flex flex-wrap align-items-center gap-2 mb-2 text-muted">
             <span><%= lang('message_shared_contact') %> <%= others.map(&:name).join(", ") %></span>
             <% others.each do |other| %>
-                <%= button_to lang('message_move_to').sub("{name}", other.name), "/messages/#{message.id}/move",
+                <%= button_to lang('message_move_to').sub("{name}") { other.name }, "/messages/#{message.id}/move",
                               params: { customer_id: other.id }, class: "btn btn-sm btn-outline-secondary", form_class: "d-inline" %>
             <% end %>
         </div>

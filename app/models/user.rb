@@ -71,9 +71,8 @@ class User < ApplicationRecord
   def self.likely_sender(candidates, now = Time.current)
     return candidates.first if candidates.size < 2
 
-    booked = Appointment.appointments.active.where(id_users_customer: candidates.map(&:id))
-    id = booked.where("start_datetime >= ?", now).order(:start_datetime).pick(:id_users_customer) ||
-         booked.where("start_datetime < ?", now).order(start_datetime: :desc).pick(:id_users_customer)
+    upcoming, latest = Appointment.next_and_last(Appointment.appointments.active.where(id_users_customer: candidates.map(&:id)), now)
+    id = (upcoming || latest)&.id_users_customer
     id ? candidates.find { |customer| customer.id == id } : candidates.max_by(&:updated_at)
   end
 

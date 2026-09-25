@@ -53,6 +53,7 @@ class MessagesController < ApplicationController
         ]
       end
       format.json { render json: { success: true, inbox_unread: inbox_badge_count } }
+      format.html { redirect_back fallback_location: "/unknown_inbox" }
     end
   end
 

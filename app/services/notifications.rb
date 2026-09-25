@@ -71,9 +71,8 @@ module Notifications
   end
 
   def stylist_for(customer, now = Time.current)
-    scope = Appointment.appointments.active.where(id_users_customer: customer.id).includes(:provider)
-    upcoming = scope.where("start_datetime >= ?", now).order(:start_datetime).first
-    (upcoming || scope.where("start_datetime < ?", now).order(start_datetime: :desc).first)&.provider
+    upcoming, latest = Appointment.next_and_last(Appointment.appointments.active.where(id_users_customer: customer.id), now)
+    (upcoming || latest)&.provider
   end
 
   # Due coming-up notifications (ReminderScanJob / openappointments:reminders).

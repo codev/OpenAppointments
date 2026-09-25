@@ -11,11 +11,12 @@ class BookingWindow
         [ User.providers.find(provider_id) ]
       end
 
+    first = BookingWindows.business_today
     last = BookingWindows.last_bookable_date
     engine = Availability::Engine.new
-    engine.preload(providers, Date.current, last)
+    engine.preload(providers, first, last)
     window = {}
-    (Date.current..last).each do |date|
+    (first..last).each do |date|
       key = date.strftime("%Y-%m-%d")
       hours = providers.flat_map do |provider|
         engine.available_hours(key, service, provider, exclude_appointment_id: exclude_appointment_id)
