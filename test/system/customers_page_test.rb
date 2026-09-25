@@ -33,7 +33,7 @@ class CustomersPageTest < ApplicationSystemTestCase
     assert_text "Customer saved", wait: 5
     assert_no_selector "#customers-page.editing"
     assert_selector ".customer-row.selected", text: "Pat Customer"
-    assert_selector ".customer-row.selected", text: "patc@example.org, 07700 900333"
+    assert_selector ".customer-row.selected", text: "patc@example.org, +447700900333"
     pat = User.customers.find_by!(email: "patc@example.org")
     assert_equal "Prefers mornings", pat.notes
     assert_equal "Europe/London", pat.timezone
