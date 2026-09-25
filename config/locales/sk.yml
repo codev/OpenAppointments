@@ -679,7 +679,6 @@ sk:
     messages: Messages
     messages_hint: Manage notifications, providers and message logs
     unknown_inbox: Unknown Inbox
-    unknown_inbox_info: 'Incoming messages from senders that do not match any customer. Mark each one read once dealt with. These messages also appear in the main log.'
     messages_providers: Providers
     messages_provider: Provider
     messages_logs: Logs
@@ -778,7 +777,6 @@ sk:
     notification_no_providers: No providers are enabled. Enable one on the Providers page first.
     notification_short_text: Short Text (Email Subject or SMS)
     notification_long_text: Long Text (for providers that support it, e.g. Email Body)
-    notification_tokens_hint: "Template fields you can use:"
     notification_untitled: Untitled notification
     notification_saved: Notification saved.
     delete_notification: Delete Notification
@@ -892,7 +890,6 @@ sk:
     appointment_statuses: 'Appointment Statuses'
     inbox: 'Inbox'
     inbox_hint: 'Incoming messages from your customers.'
-    inbox_info: 'Incoming messages from customers. Messages stay unread until someone marks them read.'
     unread: 'Unread'
     read: 'Read'
     message: 'Message'
@@ -970,3 +967,18 @@ sk:
     hidden_from_public: "Skryté pred verejnosťou"
     slot_interval_hint: "Ako často sa zákazníkom ponúkajú časy začiatku. Pri 15 môže 45-minútová služba začať o 9:00, 9:15, 9:30 atď.; pri 60 o 9:00, 10:00, 11:00. Po rezervácii tým neostáva voľný čas: na to predĺžte trvanie služby."
     messages_all_channels: "Všetky"
+    notification_unsaved: "Neuložené"
+    notification_unknown_tokens: "Neznáme zástupné znaky: {tokens}. Budú vynechané zo správ."
+    notification_has_unknown_tokens: "Neznámy zástupný znak"
+    token_copied: "Skopírované {token}"
+    inbox_done: "Vybavené"
+    inbox_show_done: "Zobraziť vybavené"
+    inbox_done_by: "Vybavené používateľom {name} {time}"
+    message_delete_confirm: "Natrvalo zmazať túto správu? Túto akciu nie je možné vrátiť späť."
+    message_deleted: "Správa zmazaná"
+    message_shared_contact: "Tento kontakt používa aj:"
+    message_move_to: "Presunúť k {name}"
+    message_moved: "Správa presunutá"
+    notification_tokens_hint: "Polia šablóny, ktoré môžete použiť. Kliknutím na jedno ho vložíte na miesto, kde ste písali, alebo ho skopírujete:"
+    inbox_info: "Prichádzajúce správy od zákazníkov. Označte každú ako Vybavené po vybavení; zostane v histórii zákazníka. Zobraziť vybavené ich znova zobrazí s možnosťou Odvolať akciu."
+    unknown_inbox_info: "Prichádzajúce správy od odosielateľov, ktorí nezodpovedajú žiadnemu zákazníkovi. Označte každú ako Vybavené po vybavení. Tieto správy sa zobrazujú aj v hlavnom denníku."

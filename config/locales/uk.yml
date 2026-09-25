@@ -679,7 +679,6 @@ uk:
     messages: Messages
     messages_hint: Manage notifications, providers and message logs
     unknown_inbox: Unknown Inbox
-    unknown_inbox_info: 'Incoming messages from senders that do not match any customer. Mark each one read once dealt with. These messages also appear in the main log.'
     messages_providers: Providers
     messages_provider: Provider
     messages_logs: Logs
@@ -778,7 +777,6 @@ uk:
     notification_no_providers: No providers are enabled. Enable one on the Providers page first.
     notification_short_text: Short Text (Email Subject or SMS)
     notification_long_text: Long Text (for providers that support it, e.g. Email Body)
-    notification_tokens_hint: "Template fields you can use:"
     notification_untitled: Untitled notification
     notification_saved: Notification saved.
     delete_notification: Delete Notification
@@ -892,7 +890,6 @@ uk:
     appointment_statuses: 'Appointment Statuses'
     inbox: 'Inbox'
     inbox_hint: 'Incoming messages from your customers.'
-    inbox_info: 'Incoming messages from customers. Messages stay unread until someone marks them read.'
     unread: 'Unread'
     read: 'Read'
     message: 'Message'
@@ -970,3 +967,18 @@ uk:
     hidden_from_public: "Приховано від публіки"
     slot_interval_hint: "Як часто клієнтам пропонується час початку. При 15 послуга на 45 хвилин може початися о 9:00, 9:15, 9:30 і так далі; при 60 - о 9:00, 10:00, 11:00. Це не залишає вільного часу після запису: для цього збільште тривалість послуги."
     messages_all_channels: "Усі"
+    notification_unsaved: "Не збережено"
+    notification_unknown_tokens: "Невідомі плейсхолдери: {tokens}. Вони будуть виключені з повідомлень."
+    notification_has_unknown_tokens: "Невідомий плейсхолдер"
+    token_copied: "Скопійовано {token}"
+    inbox_done: "Оброблено"
+    inbox_show_done: "Показати оброблені"
+    inbox_done_by: "Оброблено {name} {time}"
+    message_delete_confirm: "Видалити це повідомлення назавжди? Цю дію не можна скасувати."
+    message_deleted: "Повідомлення видалено"
+    message_shared_contact: "Також використовує цей контакт:"
+    message_move_to: "Перемістити до {name}"
+    message_moved: "Повідомлення переміщено"
+    notification_tokens_hint: "Поля шаблону, які можна використовувати. Натисніть на одне, щоб вставити його там, де ви друкували, або щоб скопіювати:"
+    inbox_info: "Вхідні повідомлення від клієнтів. Позначайте кожне як Оброблено після обробки; воно залишається в історії клієнта. Показати оброблені знову виводить їх з можливістю Скасувати."
+    unknown_inbox_info: "Вхідні повідомлення від відправників, які не відповідають жодному клієнту. Позначайте кожне як Оброблено після обробки. Ці повідомлення також відображаються в основному журналі."

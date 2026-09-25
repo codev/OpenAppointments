@@ -679,7 +679,6 @@ el:
     messages: Messages
     messages_hint: Manage notifications, providers and message logs
     unknown_inbox: Unknown Inbox
-    unknown_inbox_info: 'Incoming messages from senders that do not match any customer. Mark each one read once dealt with. These messages also appear in the main log.'
     messages_providers: Providers
     messages_provider: Provider
     messages_logs: Logs
@@ -778,7 +777,6 @@ el:
     notification_no_providers: No providers are enabled. Enable one on the Providers page first.
     notification_short_text: Short Text (Email Subject or SMS)
     notification_long_text: Long Text (for providers that support it, e.g. Email Body)
-    notification_tokens_hint: "Template fields you can use:"
     notification_untitled: Untitled notification
     notification_saved: Notification saved.
     delete_notification: Delete Notification
@@ -892,7 +890,6 @@ el:
     appointment_statuses: 'Appointment Statuses'
     inbox: 'Inbox'
     inbox_hint: 'Incoming messages from your customers.'
-    inbox_info: 'Incoming messages from customers. Messages stay unread until someone marks them read.'
     unread: 'Unread'
     read: 'Read'
     message: 'Message'
@@ -970,3 +967,18 @@ el:
     hidden_from_public: "Κρυφό από το κοινό"
     slot_interval_hint: "Πόσο συχνά προσφέρονται ώρες έναρξης στους πελάτες. Με 15, μια υπηρεσία 45 λεπτών μπορεί να ξεκινήσει στις 9:00, 9:15, 9:30 κ.ο.κ., ενώ με 60, στις 9:00, 10:00, 11:00. Δεν κρατά ελεύθερο χρόνο μετά το ραντεβού: για αυτό, αυξήστε τη διάρκεια της υπηρεσίας."
     messages_all_channels: "Όλα"
+    notification_unsaved: "Μη αποθηκευμένο"
+    notification_unknown_tokens: "Άγνωστα σύμβολα υποκατάστασης: {tokens}. Θα παραλειφθούν από τα μηνύματα."
+    notification_has_unknown_tokens: "Άγνωστο σύμβολο υποκατάστασης"
+    token_copied: "Αντιγράφηκε {token}"
+    inbox_done: "Ολοκληρώθηκε"
+    inbox_show_done: "Εμφάνιση ολοκληρωμένων"
+    inbox_done_by: "Ολοκληρώθηκε από {name} {time}"
+    message_delete_confirm: "Μόνιμη διαγραφή αυτού του μηνύματος; Αυτό δεν μπορεί να αναιρεθεί."
+    message_deleted: "Το μήνυμα διαγράφηκε"
+    message_shared_contact: "Χρησιμοποιεί επίσης αυτή την επαφή:"
+    message_move_to: "Μετακίνηση στο {name}"
+    message_moved: "Το μήνυμα μετακινήθηκε"
+    notification_tokens_hint: "Πεδία προτύπου που μπορείτε να χρησιμοποιήσετε. Κάντε κλικ σε ένα για να το εισαγάγετε εκεί που πληκτρολογούσατε, ή για να το αντιγράψετε:"
+    inbox_info: "Εισερχόμενα μηνύματα από πελάτες. Σημειώστε κάθε ένα ως Ολοκληρώθηκε μόλις το διεκπεραιώσετε· παραμένει στο ιστορικό του πελάτη. Το Εμφάνιση ολοκληρωμένων τα εμφανίζει ξανά με Αναίρεση."
+    unknown_inbox_info: "Εισερχόμενα μηνύματα από αποστολείς που δεν αντιστοιχούν σε κανέναν πελάτη. Σημειώστε κάθε ένα ως Ολοκληρώθηκε μόλις το διεκπεραιώσετε. Αυτά τα μηνύματα εμφανίζονται επίσης στο κύριο αρχείο καταγραφής."

@@ -679,7 +679,6 @@ sv:
     messages: Messages
     messages_hint: Manage notifications, providers and message logs
     unknown_inbox: Unknown Inbox
-    unknown_inbox_info: 'Incoming messages from senders that do not match any customer. Mark each one read once dealt with. These messages also appear in the main log.'
     messages_providers: Providers
     messages_provider: Provider
     messages_logs: Logs
@@ -778,7 +777,6 @@ sv:
     notification_no_providers: No providers are enabled. Enable one on the Providers page first.
     notification_short_text: Short Text (Email Subject or SMS)
     notification_long_text: Long Text (for providers that support it, e.g. Email Body)
-    notification_tokens_hint: "Template fields you can use:"
     notification_untitled: Untitled notification
     notification_saved: Notification saved.
     delete_notification: Delete Notification
@@ -892,7 +890,6 @@ sv:
     appointment_statuses: 'Appointment Statuses'
     inbox: 'Inbox'
     inbox_hint: 'Incoming messages from your customers.'
-    inbox_info: 'Incoming messages from customers. Messages stay unread until someone marks them read.'
     unread: 'Unread'
     read: 'Read'
     message: 'Message'
@@ -970,3 +967,18 @@ sv:
     hidden_from_public: "Dolda från bokningssidan"
     slot_interval_hint: "Hur ofta starttider erbjuds kunderna. Med 15 kan en tjänst på 45 minuter börja 9:00, 9:15, 9:30 och så vidare; med 60 klockan 9:00, 10:00, 11:00. Det håller inte tid ledig efter bokningen: för det, gör tjänstens längd längre."
     messages_all_channels: "Alla"
+    notification_unsaved: "Osparat"
+    notification_unknown_tokens: "Okända platshållare: {tokens}. De utelämnas från meddelanden."
+    notification_has_unknown_tokens: "Okänd platshållare"
+    token_copied: "Kopierade {token}"
+    inbox_done: "Klar"
+    inbox_show_done: "Visa klara"
+    inbox_done_by: "Klar av {name} {time}"
+    message_delete_confirm: "Ta bort det här meddelandet permanent? Detta kan inte ångras."
+    message_deleted: "Meddelandet togs bort"
+    message_shared_contact: "Använder även denna kontakt:"
+    message_move_to: "Flytta till {name}"
+    message_moved: "Meddelandet flyttat"
+    notification_tokens_hint: "Mallfält du kan använda. Klicka på ett för att infoga det där du skrev, eller för att kopiera det:"
+    inbox_info: "Inkommande meddelanden från kunder. Markera varje som Klar när det är hanterat; det finns kvar i kundens historik. Visa klara listar dem igen med Ångra."
+    unknown_inbox_info: "Inkommande meddelanden från avsändare som inte matchar någon kund. Markera varje som Klar när det är hanterat. Dessa meddelanden visas även i huvudloggen."

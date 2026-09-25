@@ -679,7 +679,6 @@ ar:
     messages: Messages
     messages_hint: Manage notifications, providers and message logs
     unknown_inbox: Unknown Inbox
-    unknown_inbox_info: 'Incoming messages from senders that do not match any customer. Mark each one read once dealt with. These messages also appear in the main log.'
     messages_providers: Providers
     messages_provider: Provider
     messages_logs: Logs
@@ -778,7 +777,6 @@ ar:
     notification_no_providers: No providers are enabled. Enable one on the Providers page first.
     notification_short_text: Short Text (Email Subject or SMS)
     notification_long_text: Long Text (for providers that support it, e.g. Email Body)
-    notification_tokens_hint: "Template fields you can use:"
     notification_untitled: Untitled notification
     notification_saved: Notification saved.
     delete_notification: Delete Notification
@@ -892,7 +890,6 @@ ar:
     appointment_statuses: 'Appointment Statuses'
     inbox: 'Inbox'
     inbox_hint: 'Incoming messages from your customers.'
-    inbox_info: 'Incoming messages from customers. Messages stay unread until someone marks them read.'
     unread: 'Unread'
     read: 'Read'
     message: 'Message'
@@ -970,3 +967,18 @@ ar:
     hidden_from_public: "مخفي عن الجمهور"
     slot_interval_hint: "عدد المرات التي تُعرض فيها أوقات البدء على الزبائن. مع 15، يمكن أن تبدأ خدمة مدتها 45 دقيقة في 9:00 و9:15 و9:30 وهكذا؛ ومع 60، في 9:00 و10:00 و11:00. لا يُبقي هذا وقتًا فارغًا بعد الموعد: لذلك، اجعل مدة الخدمة أطول."
     messages_all_channels: "الكل"
+    notification_unsaved: "غير محفوظ"
+    notification_unknown_tokens: "عناصر نائبة غير معروفة: {tokens}. لن تُدرَج في الرسائل."
+    notification_has_unknown_tokens: "عنصر نائب غير معروف"
+    token_copied: "تم نسخ {token}"
+    inbox_done: "تم"
+    inbox_show_done: "عرض المكتمل"
+    inbox_done_by: "تم بواسطة {name} {time}"
+    message_delete_confirm: "هل تريد حذف هذه الرسالة نهائيًا؟ لا يمكن التراجع عن هذا الإجراء."
+    message_deleted: "تم حذف الرسالة"
+    message_shared_contact: "يستخدم أيضًا جهة الاتصال هذه:"
+    message_move_to: "نقل إلى {name}"
+    message_moved: "تم نقل الرسالة"
+    notification_tokens_hint: "حقول القالب التي يمكنك استخدامها. انقر على أحدها لإدراجه في مكان الكتابة، أو لنسخه:"
+    inbox_info: "الرسائل الواردة من العملاء. ضع علامة تم على كل رسالة بعد التعامل معها؛ ستبقى في سجل العميل. عرض المكتمل يعرضها مرة أخرى مع تراجع."
+    unknown_inbox_info: "الرسائل الواردة من مرسلين لا يطابقون أي عميل. ضع علامة تم على كل رسالة بعد التعامل معها. تظهر هذه الرسائل أيضًا في السجل الرئيسي."

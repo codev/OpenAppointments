@@ -679,7 +679,6 @@ pt:
     messages: Messages
     messages_hint: Manage notifications, providers and message logs
     unknown_inbox: Unknown Inbox
-    unknown_inbox_info: 'Incoming messages from senders that do not match any customer. Mark each one read once dealt with. These messages also appear in the main log.'
     messages_providers: Providers
     messages_provider: Provider
     messages_logs: Logs
@@ -778,7 +777,6 @@ pt:
     notification_no_providers: No providers are enabled. Enable one on the Providers page first.
     notification_short_text: Short Text (Email Subject or SMS)
     notification_long_text: Long Text (for providers that support it, e.g. Email Body)
-    notification_tokens_hint: "Template fields you can use:"
     notification_untitled: Untitled notification
     notification_saved: Notification saved.
     delete_notification: Delete Notification
@@ -892,7 +890,6 @@ pt:
     appointment_statuses: 'Appointment Statuses'
     inbox: 'Inbox'
     inbox_hint: 'Incoming messages from your customers.'
-    inbox_info: 'Incoming messages from customers. Messages stay unread until someone marks them read.'
     unread: 'Unread'
     read: 'Read'
     message: 'Message'
@@ -970,3 +967,18 @@ pt:
     hidden_from_public: "Oculto do Público"
     slot_interval_hint: "Com que frequência as horas de início são oferecidas aos clientes. Com 15, um serviço de 45 minutos pode começar às 9:00, 9:15, 9:30 e assim sucessivamente; com 60, às 9:00, 10:00, 11:00. Isto não reserva tempo livre após a marcação: para isso, aumente a duração do serviço."
     messages_all_channels: "Todos"
+    notification_unsaved: "Não guardado"
+    notification_unknown_tokens: "Campos desconhecidos: {tokens}. Serão omitidos das mensagens."
+    notification_has_unknown_tokens: "Campo desconhecido"
+    token_copied: "{token} copiado"
+    inbox_done: "Concluído"
+    inbox_show_done: "Mostrar concluídos"
+    inbox_done_by: "Concluído por {name} {time}"
+    message_delete_confirm: "Apagar esta mensagem permanentemente? Esta ação não pode ser desfeita."
+    message_deleted: "Mensagem apagada"
+    message_shared_contact: "Também usa este contacto:"
+    message_move_to: "Mover para {name}"
+    message_moved: "Mensagem movida"
+    notification_tokens_hint: "Campos de modelo que pode usar. Clique num para o inserir onde estava a escrever, ou para o copiar:"
+    inbox_info: "Mensagens recebidas de clientes. Marque cada uma como Concluído depois de tratada; fica no histórico do cliente. Mostrar concluídos volta a listá-las com Desfazer."
+    unknown_inbox_info: "Mensagens recebidas de remetentes que não correspondem a nenhum cliente. Marque cada uma como Concluído depois de tratada. Estas mensagens também aparecem no registo principal."

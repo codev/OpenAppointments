@@ -679,7 +679,6 @@ hu:
     messages: Messages
     messages_hint: Manage notifications, providers and message logs
     unknown_inbox: Unknown Inbox
-    unknown_inbox_info: 'Incoming messages from senders that do not match any customer. Mark each one read once dealt with. These messages also appear in the main log.'
     messages_providers: Providers
     messages_provider: Provider
     messages_logs: Logs
@@ -778,7 +777,6 @@ hu:
     notification_no_providers: No providers are enabled. Enable one on the Providers page first.
     notification_short_text: Short Text (Email Subject or SMS)
     notification_long_text: Long Text (for providers that support it, e.g. Email Body)
-    notification_tokens_hint: "Template fields you can use:"
     notification_untitled: Untitled notification
     notification_saved: Notification saved.
     delete_notification: Delete Notification
@@ -892,7 +890,6 @@ hu:
     appointment_statuses: 'Appointment Statuses'
     inbox: 'Inbox'
     inbox_hint: 'Incoming messages from your customers.'
-    inbox_info: 'Incoming messages from customers. Messages stay unread until someone marks them read.'
     unread: 'Unread'
     read: 'Read'
     message: 'Message'
@@ -970,3 +967,18 @@ hu:
     hidden_from_public: "Rejtve a nyilvánosság elől"
     slot_interval_hint: "Milyen gyakran kínálunk kezdési időpontokat a vendégeknek. 15 esetén egy 45 perces szolgáltatás kezdődhet 9:00-kor, 9:15-kor, 9:30-kor és így tovább; 60 esetén 9:00-kor, 10:00-kor, 11:00-kor. Nem tart szabadon időt az időpont után: ehhez növelje a szolgáltatás időtartamát."
     messages_all_channels: "Mind"
+    notification_unsaved: "Nincs mentve"
+    notification_unknown_tokens: "Ismeretlen helyőrzők: {tokens}. Ezek kimaradnak az üzenetekből."
+    notification_has_unknown_tokens: "Ismeretlen helyőrző"
+    token_copied: "{token} másolva"
+    inbox_done: "Elintézve"
+    inbox_show_done: "Elintézettek megjelenítése"
+    inbox_done_by: "Elintézte: {name}, {time}"
+    message_delete_confirm: "Végleg törli ezt az üzenetet? Ez nem vonható vissza."
+    message_deleted: "Üzenet törölve"
+    message_shared_contact: "Ezt az elérhetőséget is használja:"
+    message_move_to: "Áthelyezés ide: {name}"
+    message_moved: "Üzenet áthelyezve"
+    notification_tokens_hint: "Sablonmezők, amelyeket használhat. Kattintson egyre a beszúráshoz oda, ahol éppen írt, vagy a másoláshoz:"
+    inbox_info: "Ügyfelektől érkező üzenetek. Jelölje meg Elintézve-ként az elintézett üzeneteket; ezek megmaradnak az ügyfél előzményeiben. Az Elintézettek megjelenítése ismét listázza őket a Visszavonás lehetőséggel."
+    unknown_inbox_info: "Olyan feladóktól érkező üzenetek, amelyek egyetlen ügyfélhez sem illeszkednek. Jelölje meg Elintézve-ként az elintézett üzeneteket. Ezek az üzenetek a fő naplóban is megjelennek."

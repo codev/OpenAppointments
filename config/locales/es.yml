@@ -679,7 +679,6 @@ es:
     messages: Messages
     messages_hint: Manage notifications, providers and message logs
     unknown_inbox: Unknown Inbox
-    unknown_inbox_info: 'Incoming messages from senders that do not match any customer. Mark each one read once dealt with. These messages also appear in the main log.'
     messages_providers: Providers
     messages_provider: Provider
     messages_logs: Logs
@@ -778,7 +777,6 @@ es:
     notification_no_providers: No providers are enabled. Enable one on the Providers page first.
     notification_short_text: Short Text (Email Subject or SMS)
     notification_long_text: Long Text (for providers that support it, e.g. Email Body)
-    notification_tokens_hint: "Template fields you can use:"
     notification_untitled: Untitled notification
     notification_saved: Notification saved.
     delete_notification: Delete Notification
@@ -892,7 +890,6 @@ es:
     appointment_statuses: 'Appointment Statuses'
     inbox: 'Inbox'
     inbox_hint: 'Incoming messages from your customers.'
-    inbox_info: 'Incoming messages from customers. Messages stay unread until someone marks them read.'
     unread: 'Unread'
     read: 'Read'
     message: 'Message'
@@ -970,3 +967,18 @@ es:
     hidden_from_public: "Oculto del Público"
     slot_interval_hint: "Con qué frecuencia se ofrecen horas de inicio a los clientes. Con 15, un servicio de 45 minutos puede empezar a las 9:00, 9:15, 9:30, etc.; con 60, a las 9:00, 10:00, 11:00. No reserva tiempo libre después de la cita: para eso, alargue la duración del servicio."
     messages_all_channels: "Todos"
+    notification_unsaved: "Sin guardar"
+    notification_unknown_tokens: "Marcadores desconocidos: {tokens}. Se omitirán de los mensajes."
+    notification_has_unknown_tokens: "Marcador desconocido"
+    token_copied: "Copiado {token}"
+    inbox_done: "Hecho"
+    inbox_show_done: "Mostrar hechos"
+    inbox_done_by: "Hecho por {name} {time}"
+    message_delete_confirm: "¿Eliminar este mensaje permanentemente? Esta acción no se puede deshacer."
+    message_deleted: "Mensaje eliminado"
+    message_shared_contact: "También usa este contacto:"
+    message_move_to: "Mover a {name}"
+    message_moved: "Mensaje movido"
+    notification_tokens_hint: "Campos de plantilla que puedes usar. Haz clic en uno para insertarlo donde estabas escribiendo, o para copiarlo:"
+    inbox_info: "Mensajes entrantes de clientes. Marca cada uno como Hecho una vez atendido; permanece en el historial del cliente. Mostrar hechos los vuelve a listar con Deshacer."
+    unknown_inbox_info: "Mensajes entrantes de remitentes que no coinciden con ningún cliente. Marca cada uno como Hecho una vez atendido. Estos mensajes también aparecen en el registro principal."

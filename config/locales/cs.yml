@@ -679,7 +679,6 @@ cs:
     messages: Messages
     messages_hint: Manage notifications, providers and message logs
     unknown_inbox: Unknown Inbox
-    unknown_inbox_info: 'Incoming messages from senders that do not match any customer. Mark each one read once dealt with. These messages also appear in the main log.'
     messages_providers: Providers
     messages_provider: Provider
     messages_logs: Logs
@@ -778,7 +777,6 @@ cs:
     notification_no_providers: No providers are enabled. Enable one on the Providers page first.
     notification_short_text: Short Text (Email Subject or SMS)
     notification_long_text: Long Text (for providers that support it, e.g. Email Body)
-    notification_tokens_hint: "Template fields you can use:"
     notification_untitled: Untitled notification
     notification_saved: Notification saved.
     delete_notification: Delete Notification
@@ -892,7 +890,6 @@ cs:
     appointment_statuses: 'Appointment Statuses'
     inbox: 'Inbox'
     inbox_hint: 'Incoming messages from your customers.'
-    inbox_info: 'Incoming messages from customers. Messages stay unread until someone marks them read.'
     unread: 'Unread'
     read: 'Read'
     message: 'Message'
@@ -970,3 +967,18 @@ cs:
     hidden_from_public: "Skryto před veřejností"
     slot_interval_hint: "Jak často se zákazníkům nabízejí časy začátku. Při 15 může 45minutová služba začít v 9:00, 9:15, 9:30 a tak dále; při 60 v 9:00, 10:00, 11:00. Po schůzce neponechává volný čas: k tomu prodlužte trvání služby."
     messages_all_channels: "Vše"
+    notification_unsaved: "Neuloženo"
+    notification_unknown_tokens: "Neznámé zástupné symboly: {tokens}. Ve zprávách budou vynechány."
+    notification_has_unknown_tokens: "Neznámý zástupný symbol"
+    token_copied: "Zkopírováno {token}"
+    inbox_done: "Hotovo"
+    inbox_show_done: "Zobrazit hotové"
+    inbox_done_by: "Hotovo - {name} {time}"
+    message_delete_confirm: "Trvale odstranit tuto zprávu? Tuto akci nelze vrátit zpět."
+    message_deleted: "Zpráva odstraněna"
+    message_shared_contact: "Také používá tento kontakt:"
+    message_move_to: "Přesunout do {name}"
+    message_moved: "Zpráva přesunuta"
+    notification_tokens_hint: "Pole šablony, která můžete použít. Kliknutím na jedno ho vložíte tam, kde jste psali, nebo ho zkopírujete:"
+    inbox_info: "Příchozí zprávy od zákazníků. Po vyřízení označte každou jako Hotovo; zůstane v historii zákazníka. Zobrazit hotové je zobrazí znovu s možností Zpět."
+    unknown_inbox_info: "Příchozí zprávy od odesílatelů, kteří neodpovídají žádnému zákazníkovi. Po vyřízení označte každou jako Hotovo. Tyto zprávy se také zobrazují v hlavním protokolu."

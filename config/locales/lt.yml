@@ -679,7 +679,6 @@ lt:
     messages: Messages
     messages_hint: Manage notifications, providers and message logs
     unknown_inbox: Unknown Inbox
-    unknown_inbox_info: 'Incoming messages from senders that do not match any customer. Mark each one read once dealt with. These messages also appear in the main log.'
     messages_providers: Providers
     messages_provider: Provider
     messages_logs: Logs
@@ -778,7 +777,6 @@ lt:
     notification_no_providers: No providers are enabled. Enable one on the Providers page first.
     notification_short_text: Short Text (Email Subject or SMS)
     notification_long_text: Long Text (for providers that support it, e.g. Email Body)
-    notification_tokens_hint: "Template fields you can use:"
     notification_untitled: Untitled notification
     notification_saved: Notification saved.
     delete_notification: Delete Notification
@@ -892,7 +890,6 @@ lt:
     appointment_statuses: 'Appointment Statuses'
     inbox: 'Inbox'
     inbox_hint: 'Incoming messages from your customers.'
-    inbox_info: 'Incoming messages from customers. Messages stay unread until someone marks them read.'
     unread: 'Unread'
     read: 'Read'
     message: 'Message'
@@ -970,3 +967,18 @@ lt:
     hidden_from_public: "Nerodoma viešai"
     slot_interval_hint: "Kaip dažnai klientams siūlomi pradžios laikai. Nustačius 15, 45 minučių paslauga gali prasidėti 9:00, 9:15, 9:30 ir t. t.; nustačius 60, 9:00, 10:00, 11:00. Tai nepalieka laisvo laiko po vizito: tam pailginkite paslaugos trukmę."
     messages_all_channels: "Visi"
+    notification_unsaved: "Neišsaugota"
+    notification_unknown_tokens: "Nežinomi laukeliai: {tokens}. Jie bus praleisti pranešimuose."
+    notification_has_unknown_tokens: "Nežinomas laukelis"
+    token_copied: "Nukopijuota {token}"
+    inbox_done: "Atlikta"
+    inbox_show_done: "Rodyti atliktus"
+    inbox_done_by: "Atliko {name} {time}"
+    message_delete_confirm: "Ar tikrai norite visam laikui pašalinti šią žinutę? Šio veiksmo atšaukti negalima."
+    message_deleted: "Žinutė pašalinta"
+    message_shared_contact: "Taip pat naudoja šį kontaktą:"
+    message_move_to: "Perkelti į {name}"
+    message_moved: "Žinutė perkelta"
+    notification_tokens_hint: "Šablono laukeliai, kuriuos galite naudoti. Spustelėkite, kad įterptumėte ten, kur rašėte, arba kad nukopijuotumėte:"
+    inbox_info: "Gaunamos žinutės nuo klientų. Pažymėkite kiekvieną kaip Atlikta, kai ją sutvarkysite; ji išliks kliento istorijoje. Rodyti atliktus jas vėl parodo su galimybe Atšaukti."
+    unknown_inbox_info: "Gaunamos žinutės nuo siuntėjų, kurie neatitinka jokio kliento. Pažymėkite kiekvieną kaip Atlikta, kai ją sutvarkysite. Šios žinutės taip pat rodomos pagrindiniame žurnale."

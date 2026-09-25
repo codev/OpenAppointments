@@ -679,7 +679,6 @@ tr:
     messages: Messages
     messages_hint: Manage notifications, providers and message logs
     unknown_inbox: Unknown Inbox
-    unknown_inbox_info: 'Incoming messages from senders that do not match any customer. Mark each one read once dealt with. These messages also appear in the main log.'
     messages_providers: Providers
     messages_provider: Provider
     messages_logs: Logs
@@ -778,7 +777,6 @@ tr:
     notification_no_providers: No providers are enabled. Enable one on the Providers page first.
     notification_short_text: Short Text (Email Subject or SMS)
     notification_long_text: Long Text (for providers that support it, e.g. Email Body)
-    notification_tokens_hint: "Template fields you can use:"
     notification_untitled: Untitled notification
     notification_saved: Notification saved.
     delete_notification: Delete Notification
@@ -892,7 +890,6 @@ tr:
     appointment_statuses: 'Appointment Statuses'
     inbox: 'Inbox'
     inbox_hint: 'Incoming messages from your customers.'
-    inbox_info: 'Incoming messages from customers. Messages stay unread until someone marks them read.'
     unread: 'Unread'
     read: 'Read'
     message: 'Message'
@@ -970,3 +967,18 @@ tr:
     hidden_from_public: "Halka Açık Olmaktan Gizli"
     slot_interval_hint: "Müşterilere ne sıklıkla başlangıç saati sunulacağı. 15 ile 45 dakikalık bir hizmet 9:00, 9:15, 9:30 vb. saatlerde başlayabilir; 60 ile 9:00, 10:00, 11:00'da. Randevudan sonra boş zaman bırakmaz: bunun için hizmet süresini uzatın."
     messages_all_channels: "Tümü"
+    notification_unsaved: "Kaydedilmedi"
+    notification_unknown_tokens: "Bilinmeyen yer tutucular: {tokens}. Mesajlardan çıkarılacaklar."
+    notification_has_unknown_tokens: "Bilinmeyen yer tutucu"
+    token_copied: "{token} kopyalandı"
+    inbox_done: "Tamamlandı"
+    inbox_show_done: "Tamamlananları göster"
+    inbox_done_by: "{name} tarafından {time} tamamlandı"
+    message_delete_confirm: "Bu mesaj kalıcı olarak silinsin mi? Bu işlem geri alınamaz."
+    message_deleted: "Mesaj silindi"
+    message_shared_contact: "Bu kişiyi de kullanıyor:"
+    message_move_to: "{name} kişisine taşı"
+    message_moved: "Mesaj taşındı"
+    notification_tokens_hint: "Kullanabileceğiniz şablon alanları. Yazdığınız yere eklemek veya kopyalamak için birine tıklayın:"
+    inbox_info: "Müşterilerden gelen mesajlar. İşlem tamamlandığında her birini Tamamlandı olarak işaretleyin; müşteri geçmişinde kalır. Tamamlananları göster, bunları Geri al seçeneğiyle yeniden listeler."
+    unknown_inbox_info: "Herhangi bir müşteriyle eşleşmeyen gönderenlerden gelen mesajlar. İşlem tamamlandığında her birini Tamamlandı olarak işaretleyin. Bu mesajlar ana günlükte de görünür."

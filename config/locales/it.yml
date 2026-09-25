@@ -679,7 +679,6 @@ it:
     messages: Messages
     messages_hint: Manage notifications, providers and message logs
     unknown_inbox: Unknown Inbox
-    unknown_inbox_info: 'Incoming messages from senders that do not match any customer. Mark each one read once dealt with. These messages also appear in the main log.'
     messages_providers: Providers
     messages_provider: Provider
     messages_logs: Logs
@@ -778,7 +777,6 @@ it:
     notification_no_providers: No providers are enabled. Enable one on the Providers page first.
     notification_short_text: Short Text (Email Subject or SMS)
     notification_long_text: Long Text (for providers that support it, e.g. Email Body)
-    notification_tokens_hint: "Template fields you can use:"
     notification_untitled: Untitled notification
     notification_saved: Notification saved.
     delete_notification: Delete Notification
@@ -892,7 +890,6 @@ it:
     appointment_statuses: 'Appointment Statuses'
     inbox: 'Inbox'
     inbox_hint: 'Incoming messages from your customers.'
-    inbox_info: 'Incoming messages from customers. Messages stay unread until someone marks them read.'
     unread: 'Unread'
     read: 'Read'
     message: 'Message'
@@ -970,3 +967,18 @@ it:
     hidden_from_public: "Nascosto al Pubblico"
     slot_interval_hint: "Ogni quanto vengono proposti gli orari di inizio ai clienti. Con 15, un servizio di 45 minuti può iniziare alle 9:00, 9:15, 9:30 e così via; con 60, alle 9:00, 10:00, 11:00. Non lascia tempo libero dopo l'appuntamento: per questo, aumenta la durata del servizio."
     messages_all_channels: "Tutti"
+    notification_unsaved: "Non salvato"
+    notification_unknown_tokens: "Segnaposto sconosciuti: {tokens}. Saranno omessi dai messaggi."
+    notification_has_unknown_tokens: "Segnaposto sconosciuto"
+    token_copied: "{token} copiato"
+    inbox_done: "Fatto"
+    inbox_show_done: "Mostra fatti"
+    inbox_done_by: "Fatto da {name} {time}"
+    message_delete_confirm: "Cancellare definitivamente questo messaggio? Questa azione non può essere annullata."
+    message_deleted: "Messaggio cancellato"
+    message_shared_contact: "Usa anche questo contatto:"
+    message_move_to: "Sposta su {name}"
+    message_moved: "Messaggio spostato"
+    notification_tokens_hint: "Campi modello che puoi usare. Clicca su uno per inserirlo dove stavi scrivendo, o per copiarlo:"
+    inbox_info: "Messaggi in arrivo dai clienti. Segna ciascuno come Fatto una volta gestito; resta nella cronologia del cliente. Mostra fatti li elenca di nuovo con Annulla."
+    unknown_inbox_info: "Messaggi in arrivo da mittenti che non corrispondono a nessun cliente. Segna ciascuno come Fatto una volta gestito. Questi messaggi compaiono anche nel registro principale."

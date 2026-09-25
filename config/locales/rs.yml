@@ -679,7 +679,6 @@ rs:
     messages: Messages
     messages_hint: Manage notifications, providers and message logs
     unknown_inbox: Unknown Inbox
-    unknown_inbox_info: 'Incoming messages from senders that do not match any customer. Mark each one read once dealt with. These messages also appear in the main log.'
     messages_providers: Providers
     messages_provider: Provider
     messages_logs: Logs
@@ -778,7 +777,6 @@ rs:
     notification_no_providers: No providers are enabled. Enable one on the Providers page first.
     notification_short_text: Short Text (Email Subject or SMS)
     notification_long_text: Long Text (for providers that support it, e.g. Email Body)
-    notification_tokens_hint: "Template fields you can use:"
     notification_untitled: Untitled notification
     notification_saved: Notification saved.
     delete_notification: Delete Notification
@@ -892,7 +890,6 @@ rs:
     appointment_statuses: 'Appointment Statuses'
     inbox: 'Inbox'
     inbox_hint: 'Incoming messages from your customers.'
-    inbox_info: 'Incoming messages from customers. Messages stay unread until someone marks them read.'
     unread: 'Unread'
     read: 'Read'
     message: 'Message'
@@ -970,3 +967,18 @@ rs:
     hidden_from_public: "Skriveno od javnosti"
     slot_interval_hint: "Koliko često se posetiocima nude vremena početka. Sa 15, usluga od 45 minuta može početi u 9:00, 9:15, 9:30 i tako dalje; sa 60, u 9:00, 10:00, 11:00. Ovo ne ostavlja slobodno vreme posle termina: za to produžite trajanje usluge."
     messages_all_channels: "Sve"
+    notification_unsaved: "Nesačuvano"
+    notification_unknown_tokens: "Nepoznata polja: {tokens}. Biće izostavljena iz poruka."
+    notification_has_unknown_tokens: "Nepoznato polje"
+    token_copied: "Kopirano {token}"
+    inbox_done: "Završeno"
+    inbox_show_done: "Prikaži završene"
+    inbox_done_by: "Završeno od strane {name} {time}"
+    message_delete_confirm: "Trajno obrisati ovu poruku? Ova radnja se ne može poništiti."
+    message_deleted: "Poruka obrisana"
+    message_shared_contact: "Takođe koristi ovaj kontakt:"
+    message_move_to: "Premesti kod {name}"
+    message_moved: "Poruka premeštena"
+    notification_tokens_hint: "Polja šablona koja možete koristiti. Kliknite na jedno da ga umetnete tamo gde ste kucali, ili da ga kopirate:"
+    inbox_info: "Dolazne poruke od korisnika. Označite svaku kao Završeno kada je rešena; ostaje u istoriji korisnika. Prikaži završene ih ponovo prikazuje sa opcijom Poništi."
+    unknown_inbox_info: "Dolazne poruke od pošiljalaca koji ne odgovaraju nijednom korisniku. Označite svaku kao Završeno kada je rešena. Ove poruke se takođe pojavljuju u glavnom dnevniku."

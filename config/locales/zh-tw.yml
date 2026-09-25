@@ -679,7 +679,6 @@ zh-tw:
     messages: Messages
     messages_hint: Manage notifications, providers and message logs
     unknown_inbox: Unknown Inbox
-    unknown_inbox_info: 'Incoming messages from senders that do not match any customer. Mark each one read once dealt with. These messages also appear in the main log.'
     messages_providers: Providers
     messages_provider: Provider
     messages_logs: Logs
@@ -778,7 +777,6 @@ zh-tw:
     notification_no_providers: No providers are enabled. Enable one on the Providers page first.
     notification_short_text: Short Text (Email Subject or SMS)
     notification_long_text: Long Text (for providers that support it, e.g. Email Body)
-    notification_tokens_hint: "Template fields you can use:"
     notification_untitled: Untitled notification
     notification_saved: Notification saved.
     delete_notification: Delete Notification
@@ -892,7 +890,6 @@ zh-tw:
     appointment_statuses: 'Appointment Statuses'
     inbox: 'Inbox'
     inbox_hint: 'Incoming messages from your customers.'
-    inbox_info: 'Incoming messages from customers. Messages stay unread until someone marks them read.'
     unread: 'Unread'
     read: 'Read'
     message: 'Message'
@@ -970,3 +967,18 @@ zh-tw:
     hidden_from_public: "已從公開頁面隱藏"
     slot_interval_hint: "向顧客提供開始時間的頻率。設為 15 時，45 分鐘的服務可在 9:00、9:15、9:30 等時間開始；設為 60 時，則在 9:00、10:00、11:00 開始。這不會在預約後保留空檔：如需空檔，請延長服務時長。"
     messages_all_channels: "全部"
+    notification_unsaved: "未儲存"
+    notification_unknown_tokens: "未知的預留位置：{tokens}。它們將從訊息中省略。"
+    notification_has_unknown_tokens: "未知的預留位置"
+    token_copied: "已複製 {token}"
+    inbox_done: "已完成"
+    inbox_show_done: "顯示已完成"
+    inbox_done_by: "由 {name} 於 {time} 完成"
+    message_delete_confirm: "要永久刪除此訊息嗎？此操作無法復原。"
+    message_deleted: "訊息已刪除"
+    message_shared_contact: "也使用此聯絡方式："
+    message_move_to: "移至 {name}"
+    message_moved: "訊息已移動"
+    notification_tokens_hint: "可使用的範本欄位。點擊即可插入到您輸入的位置，或用來複製："
+    inbox_info: "來自顧客的收件訊息。處理完畢後將每則標記為已完成；它會保留在顧客歷史紀錄中。顯示已完成會再次列出這些訊息，並提供復原選項。"
+    unknown_inbox_info: "來自不符合任何顧客的寄件者的收件訊息。處理完畢後將每則標記為已完成。這些訊息也會顯示在主日誌中。"

@@ -679,7 +679,6 @@ bu:
     messages: Messages
     messages_hint: Manage notifications, providers and message logs
     unknown_inbox: Unknown Inbox
-    unknown_inbox_info: 'Incoming messages from senders that do not match any customer. Mark each one read once dealt with. These messages also appear in the main log.'
     messages_providers: Providers
     messages_provider: Provider
     messages_logs: Logs
@@ -778,7 +777,6 @@ bu:
     notification_no_providers: No providers are enabled. Enable one on the Providers page first.
     notification_short_text: Short Text (Email Subject or SMS)
     notification_long_text: Long Text (for providers that support it, e.g. Email Body)
-    notification_tokens_hint: "Template fields you can use:"
     notification_untitled: Untitled notification
     notification_saved: Notification saved.
     delete_notification: Delete Notification
@@ -892,7 +890,6 @@ bu:
     appointment_statuses: 'Appointment Statuses'
     inbox: 'Inbox'
     inbox_hint: 'Incoming messages from your customers.'
-    inbox_info: 'Incoming messages from customers. Messages stay unread until someone marks them read.'
     unread: 'Unread'
     read: 'Read'
     message: 'Message'
@@ -970,3 +967,18 @@ bu:
     hidden_from_public: "Скрито от публичността"
     slot_interval_hint: "Колко често на клиентите се предлагат начални часове. При 15 услуга от 45 минути може да започне в 9:00, 9:15, 9:30 и т.н.; при 60, в 9:00, 10:00, 11:00. Това не оставя свободно време след часа: за целта увеличете продължителността на услугата."
     messages_all_channels: "Всички"
+    notification_unsaved: "Незапазено"
+    notification_unknown_tokens: "Непознати маркери: {tokens}. Няма да бъдат включени в съобщенията."
+    notification_has_unknown_tokens: "Непознат маркер"
+    token_copied: "Копирано {token}"
+    inbox_done: "Готово"
+    inbox_show_done: "Покажи готовите"
+    inbox_done_by: "Готово от {name} {time}"
+    message_delete_confirm: "Изтриване на това съобщение завинаги? Това не може да бъде отменено."
+    message_deleted: "Съобщението е изтрито"
+    message_shared_contact: "Използва и този контакт:"
+    message_move_to: "Преместване към {name}"
+    message_moved: "Съобщението е преместено"
+    notification_tokens_hint: "Полета на шаблона, които можете да използвате. Кликнете върху едно, за да го вмъкнете там, където пишете, или за да го копирате:"
+    inbox_info: "Входящи съобщения от клиенти. Маркирайте всяко като Готово, след като е обработено; то остава в историята на клиента. Покажи готовите ги показва отново с Отмяна."
+    unknown_inbox_info: "Входящи съобщения от подателите, които не съвпадат с нито един клиент. Маркирайте всяко като Готово, след като е обработено. Тези съобщения се показват и в основния дневник."

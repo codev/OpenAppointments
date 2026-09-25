@@ -679,7 +679,6 @@ fr:
     messages: Messages
     messages_hint: Manage notifications, providers and message logs
     unknown_inbox: Unknown Inbox
-    unknown_inbox_info: 'Incoming messages from senders that do not match any customer. Mark each one read once dealt with. These messages also appear in the main log.'
     messages_providers: Providers
     messages_provider: Provider
     messages_logs: Logs
@@ -778,7 +777,6 @@ fr:
     notification_no_providers: No providers are enabled. Enable one on the Providers page first.
     notification_short_text: Short Text (Email Subject or SMS)
     notification_long_text: Long Text (for providers that support it, e.g. Email Body)
-    notification_tokens_hint: "Template fields you can use:"
     notification_untitled: Untitled notification
     notification_saved: Notification saved.
     delete_notification: Delete Notification
@@ -892,7 +890,6 @@ fr:
     appointment_statuses: 'Appointment Statuses'
     inbox: 'Inbox'
     inbox_hint: 'Incoming messages from your customers.'
-    inbox_info: 'Incoming messages from customers. Messages stay unread until someone marks them read.'
     unread: 'Unread'
     read: 'Read'
     message: 'Message'
@@ -970,3 +967,18 @@ fr:
     hidden_from_public: "Caché au Public"
     slot_interval_hint: "Fréquence à laquelle les heures de début sont proposées aux clients. Avec 15, une prestation de 45 minutes peut commencer à 9:00, 9:15, 9:30 et ainsi de suite ; avec 60, à 9:00, 10:00, 11:00. Cela ne garde pas de temps libre après le rendez-vous : pour cela, allongez la durée de la prestation."
     messages_all_channels: "Tous"
+    notification_unsaved: "Non enregistré"
+    notification_unknown_tokens: "Variables inconnues : {tokens}. Elles seront omises des messages."
+    notification_has_unknown_tokens: "Variable inconnue"
+    token_copied: "{token} copié"
+    inbox_done: "Traité"
+    inbox_show_done: "Afficher les traités"
+    inbox_done_by: "Traité par {name} {time}"
+    message_delete_confirm: "Supprimer définitivement ce message ? Cette action est irréversible."
+    message_deleted: "Message supprimé"
+    message_shared_contact: "Utilise aussi ce contact :"
+    message_move_to: "Déplacer vers {name}"
+    message_moved: "Message déplacé"
+    notification_tokens_hint: "Champs de modèle que vous pouvez utiliser. Cliquez sur l'un d'eux pour l'insérer là où vous écriviez, ou pour le copier :"
+    inbox_info: "Messages entrants des clients. Marquez chacun comme Traité une fois pris en charge ; il reste dans l'historique du client. Afficher les traités les liste à nouveau avec Annuler."
+    unknown_inbox_info: "Messages entrants d'expéditeurs qui ne correspondent à aucun client. Marquez chacun comme Traité une fois pris en charge. Ces messages apparaissent aussi dans le journal principal."

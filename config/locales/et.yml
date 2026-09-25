@@ -679,7 +679,6 @@ et:
     messages: Messages
     messages_hint: Manage notifications, providers and message logs
     unknown_inbox: Unknown Inbox
-    unknown_inbox_info: 'Incoming messages from senders that do not match any customer. Mark each one read once dealt with. These messages also appear in the main log.'
     messages_providers: Providers
     messages_provider: Provider
     messages_logs: Logs
@@ -778,7 +777,6 @@ et:
     notification_no_providers: No providers are enabled. Enable one on the Providers page first.
     notification_short_text: Short Text (Email Subject or SMS)
     notification_long_text: Long Text (for providers that support it, e.g. Email Body)
-    notification_tokens_hint: "Template fields you can use:"
     notification_untitled: Untitled notification
     notification_saved: Notification saved.
     delete_notification: Delete Notification
@@ -892,7 +890,6 @@ et:
     appointment_statuses: 'Appointment Statuses'
     inbox: 'Inbox'
     inbox_hint: 'Incoming messages from your customers.'
-    inbox_info: 'Incoming messages from customers. Messages stay unread until someone marks them read.'
     unread: 'Unread'
     read: 'Read'
     message: 'Message'
@@ -970,3 +967,18 @@ et:
     hidden_from_public: "Avalikkuse Eest Peidetud"
     slot_interval_hint: "Kui tihti pakutakse klientidele algusaegu. Väärtusega 15 võib 45-minutiline teenus alata kell 9:00, 9:15, 9:30 ja nii edasi; väärtusega 60 kell 9:00, 10:00, 11:00. See ei jäta pärast broneeringut vaba aega: selleks pikenda teenuse kestust."
     messages_all_channels: "Kõik"
+    notification_unsaved: "Salvestamata"
+    notification_unknown_tokens: "Tundmatud kohatäitjad: {tokens}. Need jäetakse sõnumitest välja."
+    notification_has_unknown_tokens: "Tundmatu kohatäitja"
+    token_copied: "Kopeeritud {token}"
+    inbox_done: "Tehtud"
+    inbox_show_done: "Näita tehtud"
+    inbox_done_by: "Tegi {name} {time}"
+    message_delete_confirm: "Kustutada see sõnum jäädavalt? Seda ei saa tagasi võtta."
+    message_deleted: "Sõnum kustutatud"
+    message_shared_contact: "Kasutab ka seda kontakti:"
+    message_move_to: "Teisalda {name} juurde"
+    message_moved: "Sõnum teisaldatud"
+    notification_tokens_hint: "Mallis kasutatavad väljad. Klõpsa ühel, et sisestada see kirjutamiskohta, või kopeerida see:"
+    inbox_info: "Sissetulevad sõnumid klientidelt. Märgi iga sõnum pärast käsitlemist Tehtud; see jääb kliendi ajalukku. Näita tehtud kuvab need uuesti koos nupuga Võta tagasi."
+    unknown_inbox_info: "Sissetulevad sõnumid saatjatelt, kes ei vasta ühelegi kliendile. Märgi iga sõnum pärast käsitlemist Tehtud. Need sõnumid kuvatakse ka põhilogis."

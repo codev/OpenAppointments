@@ -679,7 +679,6 @@ fa:
     messages: Messages
     messages_hint: Manage notifications, providers and message logs
     unknown_inbox: Unknown Inbox
-    unknown_inbox_info: 'Incoming messages from senders that do not match any customer. Mark each one read once dealt with. These messages also appear in the main log.'
     messages_providers: Providers
     messages_provider: Provider
     messages_logs: Logs
@@ -778,7 +777,6 @@ fa:
     notification_no_providers: No providers are enabled. Enable one on the Providers page first.
     notification_short_text: Short Text (Email Subject or SMS)
     notification_long_text: Long Text (for providers that support it, e.g. Email Body)
-    notification_tokens_hint: "Template fields you can use:"
     notification_untitled: Untitled notification
     notification_saved: Notification saved.
     delete_notification: Delete Notification
@@ -892,7 +890,6 @@ fa:
     appointment_statuses: 'Appointment Statuses'
     inbox: 'Inbox'
     inbox_hint: 'Incoming messages from your customers.'
-    inbox_info: 'Incoming messages from customers. Messages stay unread until someone marks them read.'
     unread: 'Unread'
     read: 'Read'
     message: 'Message'
@@ -970,3 +967,18 @@ fa:
     hidden_from_public: "پنهان از عموم"
     slot_interval_hint: "هر چند وقت یک‌بار زمان‌های شروع به مشتریان پیشنهاد می‌شود. با 15، یک خدمت 45 دقیقه‌ای می‌تواند در 9:00، 9:15، 9:30 و غیره شروع شود؛ با 60، در 9:00، 10:00، 11:00. این تنظیم پس از نوبت زمانی را آزاد نگه نمی‌دارد: برای این کار، مدت زمان خدمت را طولانی‌تر کنید."
     messages_all_channels: "همه"
+    notification_unsaved: "ذخیره نشده"
+    notification_unknown_tokens: "متغیرهای ناشناخته: {tokens}. این‌ها از پیام‌ها حذف خواهند شد."
+    notification_has_unknown_tokens: "متغیر ناشناخته"
+    token_copied: "{token} کپی شد"
+    inbox_done: "انجام شد"
+    inbox_show_done: "نمایش انجام‌شده‌ها"
+    inbox_done_by: "انجام شد توسط {name} در {time}"
+    message_delete_confirm: "این پیام برای همیشه حذف شود؟ این کار قابل بازگشت نیست."
+    message_deleted: "پیام حذف شد"
+    message_shared_contact: "همچنین از این اطلاعات تماس استفاده می‌کند:"
+    message_move_to: "انتقال به {name}"
+    message_moved: "پیام منتقل شد"
+    notification_tokens_hint: "فیلدهای قالب که می‌توانید استفاده کنید. برای درج در محل نوشتن یا کپی کردن، روی یکی کلیک کنید:"
+    inbox_info: "پیام‌های دریافتی از مشتریان. پس از رسیدگی به هر پیام، آن را انجام‌شده علامت بزنید؛ در تاریخچه مشتری باقی می‌ماند. نمایش انجام‌شده‌ها آن‌ها را دوباره با گزینه بازگشت فهرست می‌کند."
+    unknown_inbox_info: "پیام‌های دریافتی از فرستندگانی که با هیچ مشتری مطابقت ندارند. پس از رسیدگی به هر پیام، آن را انجام‌شده علامت بزنید. این پیام‌ها همچنین در گزارش اصلی نمایش داده می‌شوند."

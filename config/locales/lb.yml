@@ -679,7 +679,6 @@ lb:
     messages: Messages
     messages_hint: Manage notifications, providers and message logs
     unknown_inbox: Unknown Inbox
-    unknown_inbox_info: 'Incoming messages from senders that do not match any customer. Mark each one read once dealt with. These messages also appear in the main log.'
     messages_providers: Providers
     messages_provider: Provider
     messages_logs: Logs
@@ -778,7 +777,6 @@ lb:
     notification_no_providers: No providers are enabled. Enable one on the Providers page first.
     notification_short_text: Short Text (Email Subject or SMS)
     notification_long_text: Long Text (for providers that support it, e.g. Email Body)
-    notification_tokens_hint: "Template fields you can use:"
     notification_untitled: Untitled notification
     notification_saved: Notification saved.
     delete_notification: Delete Notification
@@ -892,7 +890,6 @@ lb:
     appointment_statuses: 'Appointment Statuses'
     inbox: 'Inbox'
     inbox_hint: 'Incoming messages from your customers.'
-    inbox_info: 'Incoming messages from customers. Messages stay unread until someone marks them read.'
     unread: 'Unread'
     read: 'Read'
     message: 'Message'
@@ -970,3 +967,18 @@ lb:
     hidden_from_public: "Vum Public verstoppt"
     slot_interval_hint: "Wéi dacks de Clienten Ufankszäite proposéiert ginn. Mat 15 kann eng Dingschtleeschtung vu 45 Minutten um 9:00, 9:15, 9:30 asw. ufänken; mat 60 um 9:00, 10:00, 11:00. Et hält keng Zäit nom Termin fräi: dofir maacht d'Dauer vun der Dingschtleeschtung méi laang."
     messages_all_channels: "All"
+    notification_unsaved: "Net gespäichert"
+    notification_unknown_tokens: "Onbekannt Placeholder: {tokens}. Si ginn an de Messagen ausgeloossen."
+    notification_has_unknown_tokens: "Onbekannten Placeholder"
+    token_copied: "{token} kopéiert"
+    inbox_done: "Erledegt"
+    inbox_show_done: "Erledegt weisen"
+    inbox_done_by: "Erledegt vun {name} {time}"
+    message_delete_confirm: "Dëse Message definitiv läschen? Dëse Virgang kann net réckgängeg gemaach ginn."
+    message_deleted: "Message geläscht"
+    message_shared_contact: "Benotzt och dëse Kontakt:"
+    message_move_to: "Op {name} réckelen"
+    message_moved: "Message geréckelt"
+    notification_tokens_hint: "Templatefelder déi Dir benotze kënnt. Klickt op ee fir en anzefügen do wou Dir geschriwwen hutt, oder fir en ze kopéieren:"
+    inbox_info: "Erakommend Messagen vu Clienten. Markéiert all een als Erledegt wann en behandelt ass; e bleift an der Client-Historik. Erledegt weisen lëscht se nees op mat Schrëtt zeréck."
+    unknown_inbox_info: "Erakommend Messagen vun Ofsender déi mat kengem Client passen. Markéiert all een als Erledegt wann en behandelt ass. Dës Messagen erschéngen och am Haaptjournal."
