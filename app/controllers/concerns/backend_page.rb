@@ -37,7 +37,7 @@ module BackendPage
       timezone: session[:timezone],
       grouped_timezones: helpers.grouped_timezones,
       privileges: session_role.permissions,
-      inbox_unread: can?(:view, :customers) ? inbox_scope.unread.count : 0
+      inbox_unread: inbox_badge_count
     )
     script_vars(
       user_id: session[:user_id],
@@ -61,16 +61,14 @@ module BackendPage
     }.to_h
   end
 
-  def inbox_provider_ids
-    session[:role_slug] == Role::PROVIDER ? [ session[:user_id] ] : assistant_provider_ids
+  # The Inbox and Unknown Inbox are admin task lists.
+  def inbox_access?
+    session[:role_slug] == Role::ADMIN
   end
 
-  def inbox_scope
-    Message.inbox_for(session[:role_slug], inbox_provider_ids)
-  end
-
-  def unknown_inbox_access?
-    [ Role::ADMIN, Role::ASSISTANT ].include?(session[:role_slug])
+  # Header badge: unread Inbox messages not yet Done, for admins.
+  def inbox_badge_count
+    inbox_access? ? Message.inbox.unread.not_done.count : 0
   end
 
   def assistant_provider_ids

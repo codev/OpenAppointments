@@ -4,12 +4,12 @@
             <div class="d-flex justify-content-between align-items-center border-bottom py-3 mb-3">
                 <h4 class="mb-0 fw-light"><%= lang('inbox') %></h4>
                 <div class="btn-group" role="group">
-                    <a href="/inbox" class="btn btn-sm <%= vars(:inbox_unread_only) ? 'btn-outline-secondary' : 'btn-secondary' %>">
-                        <%= lang('all') %>
-                    </a>
-                    <a href="/inbox?unread=1" class="btn btn-sm <%= vars(:inbox_unread_only) ? 'btn-secondary' : 'btn-outline-secondary' %>">
-                        <%= lang('unread') %>
-                    </a>
+                    <% [ [ "all", "/inbox", lang('all') ], [ "unread", "/inbox?unread=1", lang('unread') ],
+                         [ "done", "/inbox?done=1", lang('inbox_show_done') ] ].each do |filter, path, label| %>
+                        <a href="<%= path %>" class="btn btn-sm <%= vars(:inbox_filter) == filter ? 'btn-secondary' : 'btn-outline-secondary' %>">
+                            <%= label %>
+                        </a>
+                    <% end %>
                 </div>
             </div>
 
@@ -18,7 +18,7 @@
             <%= render "shared/inbox_list",
                        messages: vars(:inbox_messages), page: vars(:inbox_page),
                        last_page: vars(:inbox_last_page),
-                       base_path: vars(:inbox_unread_only) ? "/inbox?unread=1" : "/inbox" %>
+                       base_path: { "unread" => "/inbox?unread=1", "done" => "/inbox?done=1" }.fetch(vars(:inbox_filter), "/inbox") %>
         </div>
     </div>
 </div>

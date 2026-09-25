@@ -4,7 +4,7 @@
 <div class="inbox-list mb-4">
     <% messages.each do |message| %>
         <% unread = message.direction == "incoming" && !message.read? %>
-        <div class="inbox-message py-3 border-bottom<%= ' message-unread' if unread %>">
+        <div class="inbox-message py-3 border-bottom<%= ' message-unread' if unread %>" id="inbox-message-<%= message.id %>">
             <div class="inbox-meta d-flex flex-wrap align-items-center gap-2 mb-2">
                 <% if message.direction == "incoming" %>
                     <i class="fas fa-arrow-down text-success" title="<%= lang('messages_incoming_label') %>"></i>
@@ -32,6 +32,16 @@
                     </button>
                 <% elsif message.direction == "incoming" %>
                     <i class="fas fa-check text-success" title="<%= lang('read') %>"></i>
+                <% end %>
+                <% if message.direction == "incoming" && message.done? %>
+                    <span class="text-muted inbox-done-by">
+                        <%= lang('inbox_done_by').sub("{name}", message.done_by&.name.to_s).sub("{time}", display_datetime(message.done_at)) %>
+                    </span>
+                    <%= button_to lang('undo'), "/messages/#{message.id}/undo_done", class: "btn btn-sm btn-outline-secondary", form_class: "d-inline" %>
+                <% elsif message.direction == "incoming" %>
+                    <%= button_to "/messages/#{message.id}/done", class: "btn btn-sm btn-outline-success", form_class: "d-inline" do %>
+                        <i class="fas fa-check-double me-1"></i><%= lang('inbox_done') %>
+                    <% end %>
                 <% end %>
             </div>
             <% if message.subject.present? %>

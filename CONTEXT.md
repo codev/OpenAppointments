@@ -53,6 +53,10 @@ _Avoid_: Buffer
 **Inbox**:
 Admin-only list of individual inbound customer messages waiting to be dealt with.
 
+**Unknown Inbox**:
+Admin-only list of inbound messages from senders that match no customer, with the same Done
+as the Inbox.
+
 **Done**:
 An Inbox message an admin has dealt with. It leaves the Inbox, can be undone, and stays in
 the customer history.

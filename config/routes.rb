@@ -132,6 +132,8 @@ Rails.application.routes.draw do
   post "customer_messages/mark_read" => "customer_messages#mark_read"
   get "inbox" => "inbox#index"
   post "messages/:id/mark_read" => "messages#mark_read"
+  post "messages/:id/done" => "messages#done"
+  post "messages/:id/undo_done" => "messages#undo_done"
   post "business_settings/apply_global_working_plan" => "business_settings#apply_global_working_plan"
   post "altcha_settings/generate_key" => "altcha_settings#generate_key"
   post "messages_smsgateway_settings/test_sms" => "messages_smsgateway_settings#test_sms"

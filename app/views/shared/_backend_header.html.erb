@@ -34,15 +34,17 @@
           </li>
 
             <% hidden = can?(:view, :customers) ? "" : "d-none" %>
-            <% active = active_menu == "inbox" ? "active" : "" %>
-            <li class="nav-item text-center <%= active + hidden %>">
-                <a href="/inbox" class="nav-link text-white fw-light py-3 px-3"
-                   data-tippy-content="<%= lang('inbox_hint') %>">
-                    <i class="fas fa-inbox me-2"></i>
-                    <%= lang('inbox') %>
-                    <span id="inbox-unread" class="badge bg-danger ms-1 <%= 'd-none' unless vars(:inbox_unread).to_i.positive? %>"><%= vars(:inbox_unread) %></span>
-                </a>
-            </li>
+            <% if session[:role_slug] == Role::ADMIN %>
+                <% active = active_menu == "inbox" ? "active" : "" %>
+                <li class="nav-item text-center <%= active %>">
+                    <a href="/inbox" class="nav-link text-white fw-light py-3 px-3"
+                       data-tippy-content="<%= lang('inbox_hint') %>">
+                        <i class="fas fa-inbox me-2"></i>
+                        <%= lang('inbox') %>
+                        <%= render "shared/inbox_unread", count: vars(:inbox_unread) %>
+                    </a>
+                </li>
+            <% end %>
 
             <% active = active_menu == "customers" ? "active" : "" %>
             <li class="nav-item text-center <%= active + hidden %>">
@@ -115,8 +117,8 @@
                         </a>
                     <% end %>
 
-                    <% if [ Role::ADMIN, Role::ASSISTANT ].include?(session[:role_slug]) %>
-                        <% unknown_unread = Message.unread.unknown_sender.count %>
+                    <% if session[:role_slug] == Role::ADMIN %>
+                        <% unknown_unread = Message.unread.unknown_sender.not_done.count %>
                         <a class="dropdown-item" href="/unknown_inbox">
                             <i class="fas fa-inbox me-2"></i>
                             <%= lang('unknown_inbox') %>

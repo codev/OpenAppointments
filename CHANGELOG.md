@@ -9,6 +9,7 @@ CloudronManifest.json.
 - Notifications: saving one template keeps unsaved edits in the others; edited templates are marked Unsaved, and leaving the page with unsaved edits asks first
 - Notifications: a template with an unknown token still saves, with a warning naming the token, and is marked Unknown placeholder in the list
 - Notifications: click a token to insert it where you were typing, or to copy it
+- Inbox: admins only; mark each message Done when dealt with, Show done lists them with Undo, and the customer history keeps every message. The Unknown Inbox works the same way
 
 ## 2.3.1
 
