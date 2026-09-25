@@ -967,3 +967,7 @@ sq:
     messages_sms_variation: "Ndrysho çdo SMS"
     messages_sms_variation_hint: "Shton një kod të shkurtër referimi në fund të çdo SMS-je, në mënyrë që asnjë dy mesazhe të mos jenë njësoj, gjë që kërkohet nga disa operatorë."
     provider_color_hint: "Përdoret për takimet e këtij ofruesi kur kalendari shfaq të gjithë."
+    working_providers: "Ofruesit që Punojnë"
+    hidden_from_public: "Fshehur nga Publiku"
+    slot_interval_hint: "Sa shpesh u ofrohen klientëve oraret e fillimit. Me 15, një shërbim 45 minutësh mund të fillojë në 9:00, 9:15, 9:30 e kështu me radhë; me 60, në 9:00, 10:00, 11:00. Kjo nuk lë kohë të lirë pas takimit: për këtë, zgjatni kohëzgjatjen e shërbimit."
+    messages_both_channels: "Të dyja"

@@ -967,3 +967,7 @@ fr:
     messages_sms_variation: "Varier chaque SMS"
     messages_sms_variation_hint: "Ajoute un court code de référence à la fin de chaque SMS afin qu'aucun texte ne soit identique, ce que certains opérateurs exigent."
     provider_color_hint: "Utilisée pour les rendez-vous de cet exécutant lorsque le calendrier affiche tout le monde."
+    working_providers: "Exécutants en Service"
+    hidden_from_public: "Caché au Public"
+    slot_interval_hint: "Fréquence à laquelle les heures de début sont proposées aux clients. Avec 15, une prestation de 45 minutes peut commencer à 9:00, 9:15, 9:30 et ainsi de suite ; avec 60, à 9:00, 10:00, 11:00. Cela ne garde pas de temps libre après le rendez-vous : pour cela, allongez la durée de la prestation."
+    messages_both_channels: "Les deux"

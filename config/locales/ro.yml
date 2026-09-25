@@ -967,3 +967,7 @@ ro:
     messages_sms_variation: "Variază fiecare SMS"
     messages_sms_variation_hint: "Adaugă un cod de referință scurt la finalul fiecărui SMS, astfel încât niciun mesaj să nu fie identic, lucru cerut de unele rețele."
     provider_color_hint: "Folosit pentru întâlnirile acestui furnizor atunci când calendarul îi afișează pe toți."
+    working_providers: "Furnizori care Lucrează"
+    hidden_from_public: "Ascuns de la Public"
+    slot_interval_hint: "Cât de des le sunt oferite clienților orele de început. Cu 15, un serviciu de 45 de minute poate începe la 9:00, 9:15, 9:30 și așa mai departe; cu 60, la 9:00, 10:00, 11:00. Nu păstrează timp liber după programare: pentru asta, măriți durata serviciului."
+    messages_both_channels: "Ambele"

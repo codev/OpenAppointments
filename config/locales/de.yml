@@ -967,3 +967,7 @@ de:
     messages_sms_variation: "Jede SMS variieren"
     messages_sms_variation_hint: "Fügt am Ende jeder SMS einen kurzen Referenzcode hinzu, damit keine zwei Texte identisch sind, was manche Netzbetreiber verlangen."
     provider_color_hint: "Wird für die Termine dieses Anbieters verwendet, wenn der Kalender alle anzeigt."
+    working_providers: "Arbeitende Anbieter"
+    hidden_from_public: "Vor der Öffentlichkeit verborgen"
+    slot_interval_hint: "Wie oft den Kunden Startzeiten angeboten werden. Bei 15 kann eine 45-minütige Dienstleistung um 9:00, 9:15, 9:30 usw. beginnen; bei 60 um 9:00, 10:00, 11:00. Es hält nach dem Termin keine Zeit frei: Verlängern Sie dafür die Dauer der Dienstleistung."
+    messages_both_channels: "Beides"

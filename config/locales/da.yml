@@ -967,3 +967,7 @@ da:
     messages_sms_variation: "Variér hver SMS"
     messages_sms_variation_hint: "Tilføjer en kort referencekode til slutningen af hver SMS, så ingen to beskeder er ens, hvilket nogle netværk kræver."
     provider_color_hint: "Bruges til denne leverandørs aftaler, når kalenderen viser alle."
+    working_providers: "Arbejdende Leverandører"
+    hidden_from_public: "Skjult For Offentligheden"
+    slot_interval_hint: "Hvor ofte starttider tilbydes kunderne. Med 15 kan en tjeneste på 45 minutter starte kl. 9:00, 9:15, 9:30 og så videre; med 60 kl. 9:00, 10:00, 11:00. Det holder ikke tid fri efter aftalen: gør i stedet tjenestens varighed længere."
+    messages_both_channels: "Begge"

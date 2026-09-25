@@ -967,3 +967,7 @@ pl:
     messages_sms_variation: "Różnicuj każdy SMS"
     messages_sms_variation_hint: "Dodaje krótki kod referencyjny na końcu każdego SMS-a, dzięki czemu żadne dwie wiadomości nie są identyczne, czego wymagają niektórzy operatorzy."
     provider_color_hint: "Używane dla wizyt tego pracownika, gdy kalendarz pokazuje wszystkich."
+    working_providers: "Pracujący personel"
+    hidden_from_public: "Ukryte przed publicznością"
+    slot_interval_hint: "Jak często klientom oferowane są godziny rozpoczęcia. Przy 15 zabieg trwający 45 minut może zacząć się o 9:00, 9:15, 9:30 i tak dalej; przy 60 o 9:00, 10:00, 11:00. Nie rezerwuje to wolnego czasu po wizycie: w tym celu wydłuż czas trwania zabiegu."
+    messages_both_channels: "Oba"

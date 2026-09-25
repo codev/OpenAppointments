@@ -967,3 +967,7 @@ nl:
     messages_sms_variation: "Elke SMS laten variëren"
     messages_sms_variation_hint: "Voegt een korte referentiecode toe aan het einde van elke SMS zodat geen twee berichten hetzelfde zijn, wat sommige netwerken vereisen."
     provider_color_hint: "Wordt gebruikt voor de afspraken van deze medewerker wanneer de kalender iedereen toont."
+    working_providers: "Werkende medewerkers"
+    hidden_from_public: "Verborgen voor publiek"
+    slot_interval_hint: "Hoe vaak starttijden aan klanten worden aangeboden. Met 15 kan een dienst van 45 minuten beginnen om 9:00, 9:15, 9:30 enzovoort; met 60 om 9:00, 10:00, 11:00. Er wordt geen tijd vrijgehouden na de afspraak: maak daarvoor de duur van de dienst langer."
+    messages_both_channels: "Beide"

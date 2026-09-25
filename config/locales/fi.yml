@@ -967,3 +967,7 @@ fi:
     messages_sms_variation: "Vaihtele jokaista tekstiviestiä"
     messages_sms_variation_hint: "Lisää lyhyen viitekoodin jokaisen tekstiviestin loppuun, jotta mitkään kaksi viestiä eivät ole samanlaisia, mitä jotkin operaattorit vaativat."
     provider_color_hint: "Käytetään tämän palveluntuottajan varauksille, kun kalenteri näyttää kaikki."
+    working_providers: "Työssä olevat palveluntuottajat"
+    hidden_from_public: "Piilotettu yleisöltä"
+    slot_interval_hint: "Kuinka usein aloitusaikoja tarjotaan asiakkaille. Arvolla 15 45 minuutin palvelu voi alkaa klo 9:00, 9:15, 9:30 ja niin edelleen; arvolla 60 klo 9:00, 10:00, 11:00. Se ei pidä aikaa vapaana varauksen jälkeen: pidennä sitä varten palvelun kestoa."
+    messages_both_channels: "Molemmat"

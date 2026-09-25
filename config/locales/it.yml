@@ -967,3 +967,7 @@ it:
     messages_sms_variation: "Varia ogni SMS"
     messages_sms_variation_hint: "Aggiunge un breve codice di riferimento alla fine di ogni SMS in modo che due testi non siano mai uguali, come richiesto da alcuni operatori."
     provider_color_hint: "Usato per gli appuntamenti di questo fornitore quando il calendario mostra tutti."
+    working_providers: "Fornitori in Servizio"
+    hidden_from_public: "Nascosto al Pubblico"
+    slot_interval_hint: "Ogni quanto vengono proposti gli orari di inizio ai clienti. Con 15, un servizio di 45 minuti può iniziare alle 9:00, 9:15, 9:30 e così via; con 60, alle 9:00, 10:00, 11:00. Non lascia tempo libero dopo l'appuntamento: per questo, aumenta la durata del servizio."
+    messages_both_channels: "Entrambi"

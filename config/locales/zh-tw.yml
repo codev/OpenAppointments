@@ -967,3 +967,7 @@ zh-tw:
     messages_sms_variation: "每則簡訊皆不同"
     messages_sms_variation_hint: "在每則簡訊末尾加上一組簡短的參考代碼，讓任兩則簡訊都不相同，這是部分電信網路的要求。"
     provider_color_hint: "當日曆顯示所有人時，用於此提供者的預約。"
+    working_providers: "當班提供者"
+    hidden_from_public: "已從公開頁面隱藏"
+    slot_interval_hint: "向顧客提供開始時間的頻率。設為 15 時，45 分鐘的服務可在 9:00、9:15、9:30 等時間開始；設為 60 時，則在 9:00、10:00、11:00 開始。這不會在預約後保留空檔：如需空檔，請延長服務時長。"
+    messages_both_channels: "兩者皆用"

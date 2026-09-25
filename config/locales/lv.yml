@@ -967,3 +967,7 @@ lv:
     messages_sms_variation: "Mainīt katru SMS"
     messages_sms_variation_hint: "Katras SMS beigās pievieno īsu atsauces kodu, lai nekādas divas ziņas nebūtu vienādas - to pieprasa daži operatori."
     provider_color_hint: "Izmanto šī pakalpojumu sniedzēja tikšanām, kad kalendārs rāda visus."
+    working_providers: "Strādājošie pakalpojumu sniedzēji"
+    hidden_from_public: "Paslēpts no sabiedrības"
+    slot_interval_hint: "Cik bieži klientiem tiek piedāvāti sākuma laiki. Ar 15 45 minūšu pakalpojums var sākties 9:00, 9:15, 9:30 un tā tālāk; ar 60 tas var sākties 9:00, 10:00, 11:00. Tas neatstāj brīvu laiku pēc pieraksta: lai to panāktu, pagariniet pakalpojuma ilgumu."
+    messages_both_channels: "Abi"

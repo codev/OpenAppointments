@@ -967,3 +967,7 @@ sl:
     messages_sms_variation: "Spremeni vsak SMS"
     messages_sms_variation_hint: "Na konec vsakega SMS-a doda kratko referenčno kodo, da si nobeni dve sporočili nista enaki, kar zahtevajo nekateri operaterji."
     provider_color_hint: "Uporabljeno za termine tega ponudnika, ko koledar prikazuje vse."
+    working_providers: "Ponudniki na delu"
+    hidden_from_public: "Skrito pred javnostjo"
+    slot_interval_hint: "Kako pogosto so strankam ponujeni začetni časi. Pri 15 se lahko 45-minutna storitev začne ob 9:00, 9:15, 9:30 in tako naprej; pri 60 ob 9:00, 10:00, 11:00. Po terminu to ne pusti prostega časa: za to podaljšajte trajanje storitve."
+    messages_both_channels: "Oboje"

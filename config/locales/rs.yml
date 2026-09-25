@@ -967,3 +967,7 @@ rs:
     messages_sms_variation: "Izmeni svaki SMS"
     messages_sms_variation_hint: "Dodaje kratki referentni kod na kraj svake SMS poruke, tako da nijedne dve poruke nisu iste, što neki operateri zahtevaju."
     provider_color_hint: "Koristi se za termine ovog izvršioca usluge kada kalendar prikazuje sve."
+    working_providers: "Izvršioci koji rade"
+    hidden_from_public: "Skriveno od javnosti"
+    slot_interval_hint: "Koliko često se posetiocima nude vremena početka. Sa 15, usluga od 45 minuta može početi u 9:00, 9:15, 9:30 i tako dalje; sa 60, u 9:00, 10:00, 11:00. Ovo ne ostavlja slobodno vreme posle termina: za to produžite trajanje usluge."
+    messages_both_channels: "Oba"

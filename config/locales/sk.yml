@@ -967,3 +967,7 @@ sk:
     messages_sms_variation: "Obmieňať každú SMS"
     messages_sms_variation_hint: "Na koniec každej SMS pridá krátky referenčný kód, aby žiadne dve správy neboli rovnaké, čo niektoré siete vyžadujú."
     provider_color_hint: "Používa sa pre rezervácie tohto pracovníka, keď kalendár zobrazuje všetkých."
+    working_providers: "Pracujúci pracovníci"
+    hidden_from_public: "Skryté pred verejnosťou"
+    slot_interval_hint: "Ako často sa zákazníkom ponúkajú časy začiatku. Pri 15 môže 45-minútová služba začať o 9:00, 9:15, 9:30 atď.; pri 60 o 9:00, 10:00, 11:00. Po rezervácii tým neostáva voľný čas: na to predĺžte trvanie služby."
+    messages_both_channels: "Oboje"

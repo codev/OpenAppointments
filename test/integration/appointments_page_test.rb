@@ -116,4 +116,13 @@ class AppointmentsPageTest < ActionDispatch::IntegrationTest
     assert_select "#select-service option[selected][value=?]", services(:group_session).id.to_s
     assert_select "#select-service option[selected]", count: 1
   end
+
+  test "the 2.3.0 strings exist in every locale" do
+    keys = %w[working_providers hidden_from_public slot_interval_hint messages_both_channels]
+    I18n.available_locales.each do |locale|
+      keys.each do |key|
+        assert I18n.t("ea.#{key}", locale: locale, fallback: false, default: nil).present?, "missing ea.#{key} in #{locale}"
+      end
+    end
+  end
 end

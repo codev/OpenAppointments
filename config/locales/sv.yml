@@ -967,3 +967,7 @@ sv:
     messages_sms_variation: "Variera varje SMS"
     messages_sms_variation_hint: "Lägger till en kort referenskod i slutet av varje SMS så att inga två texter är likadana, vilket vissa operatörer kräver."
     provider_color_hint: "Används för denna utförares bokningar när kalendern visar alla."
+    working_providers: "Utförare i tjänst"
+    hidden_from_public: "Dolda från bokningssidan"
+    slot_interval_hint: "Hur ofta starttider erbjuds kunderna. Med 15 kan en tjänst på 45 minuter börja 9:00, 9:15, 9:30 och så vidare; med 60 klockan 9:00, 10:00, 11:00. Det håller inte tid ledig efter bokningen: för det, gör tjänstens längd längre."
+    messages_both_channels: "Båda"

@@ -967,3 +967,7 @@ ca:
     messages_sms_variation: "Variar cada SMS"
     messages_sms_variation_hint: "Afegeix un codi de referència curt al final de cada SMS perquè no hi hagi dos textos iguals, cosa que exigeixen algunes operadores."
     provider_color_hint: "S'utilitza per a les cites d'aquest proveïdor quan el calendari mostra tothom."
+    working_providers: "Proveïdors que treballen"
+    hidden_from_public: "Amagat del públic"
+    slot_interval_hint: "Amb quina freqüència s'ofereixen hores d'inici als clients. Amb 15, un servei de 45 minuts pot començar a les 9:00, 9:15, 9:30, etc.; amb 60, a les 9:00, 10:00, 11:00. No reserva temps lliure després de la cita: per a això, allargueu la durada del servei."
+    messages_both_channels: "Tots dos"

@@ -967,3 +967,7 @@ tr:
     messages_sms_variation: "Her SMS'i farklılaştır"
     messages_sms_variation_hint: "Bazı operatörlerin gerektirdiği gibi hiçbir iki metnin aynı olmaması için her SMS'in sonuna kısa bir referans kodu ekler."
     provider_color_hint: "Takvim herkesi gösterdiğinde bu hizmet sağlayıcının randevuları için kullanılır."
+    working_providers: "Çalışan Hizmet Sağlayıcılar"
+    hidden_from_public: "Halka Açık Olmaktan Gizli"
+    slot_interval_hint: "Müşterilere ne sıklıkla başlangıç saati sunulacağı. 15 ile 45 dakikalık bir hizmet 9:00, 9:15, 9:30 vb. saatlerde başlayabilir; 60 ile 9:00, 10:00, 11:00'da. Randevudan sonra boş zaman bırakmaz: bunun için hizmet süresini uzatın."
+    messages_both_channels: "Her ikisi"

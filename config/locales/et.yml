@@ -967,3 +967,7 @@ et:
     messages_sms_variation: "Muuda igat SMS-i"
     messages_sms_variation_hint: "Lisab iga SMS-i lõppu lühikese viitekoodi, et ükski kaks sõnumit ei oleks ühesugused - seda nõuavad mõned operaatorid."
     provider_color_hint: "Kasutatakse selle teenusepakkuja broneeringute jaoks, kui kalender näitab kõiki."
+    working_providers: "Töötavad Teenusepakkujad"
+    hidden_from_public: "Avalikkuse Eest Peidetud"
+    slot_interval_hint: "Kui tihti pakutakse klientidele algusaegu. Väärtusega 15 võib 45-minutiline teenus alata kell 9:00, 9:15, 9:30 ja nii edasi; väärtusega 60 kell 9:00, 10:00, 11:00. See ei jäta pärast broneeringut vaba aega: selleks pikenda teenuse kestust."
+    messages_both_channels: "Mõlemad"

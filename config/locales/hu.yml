@@ -967,3 +967,7 @@ hu:
     messages_sms_variation: "Minden SMS variálása"
     messages_sms_variation_hint: "Minden SMS végéhez hozzáad egy rövid hivatkozási kódot, hogy ne legyen két egyforma üzenet, amit egyes szolgáltatók megkövetelnek."
     provider_color_hint: "Ezt használjuk ennek a szolgáltatónak az időpontjaihoz, amikor a naptár mindenkit megjelenít."
+    working_providers: "Dolgozó szolgáltatók"
+    hidden_from_public: "Rejtve a nyilvánosság elől"
+    slot_interval_hint: "Milyen gyakran kínálunk kezdési időpontokat a vendégeknek. 15 esetén egy 45 perces szolgáltatás kezdődhet 9:00-kor, 9:15-kor, 9:30-kor és így tovább; 60 esetén 9:00-kor, 10:00-kor, 11:00-kor. Nem tart szabadon időt az időpont után: ehhez növelje a szolgáltatás időtartamát."
+    messages_both_channels: "Mindkettő"

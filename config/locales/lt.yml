@@ -967,3 +967,7 @@ lt:
     messages_sms_variation: "Keisti kiekvieną SMS"
     messages_sms_variation_hint: "Prideda trumpą nuorodos kodą kiekvienos SMS pabaigoje, kad jokios dvi žinutės nebūtų vienodos - to reikalauja kai kurie operatoriai."
     provider_color_hint: "Naudojama šio teikėjo vizitams, kai kalendorius rodo visus."
+    working_providers: "Dirbantys teikėjai"
+    hidden_from_public: "Nerodoma viešai"
+    slot_interval_hint: "Kaip dažnai klientams siūlomi pradžios laikai. Nustačius 15, 45 minučių paslauga gali prasidėti 9:00, 9:15, 9:30 ir t. t.; nustačius 60, 9:00, 10:00, 11:00. Tai nepalieka laisvo laiko po vizito: tam pailginkite paslaugos trukmę."
+    messages_both_channels: "Abu"

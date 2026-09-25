@@ -967,3 +967,7 @@ pt-br:
     messages_sms_variation: "Variar cada SMS"
     messages_sms_variation_hint: "Adiciona um pequeno código de referência ao final de cada SMS para que não haja dois textos iguais, o que algumas operadoras exigem."
     provider_color_hint: "Usada para as agendas deste atendente quando o calendário mostra todos."
+    working_providers: "Atendentes Trabalhando"
+    hidden_from_public: "Oculto do Público"
+    slot_interval_hint: "Com que frequência os horários de início são oferecidos aos clientes. Com 15, um serviço de 45 minutos pode começar às 9:00, 9:15, 9:30 e assim por diante; com 60, às 9:00, 10:00, 11:00. Isso não reserva tempo livre após o agendamento: para isso, aumente a duração do serviço."
+    messages_both_channels: "Ambos"

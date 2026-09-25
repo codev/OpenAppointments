@@ -967,3 +967,7 @@ ja:
     messages_sms_variation: "SMSごとに内容を変える"
     messages_sms_variation_hint: "すべてのSMSの末尾に短い参照コードを追加し、2通が同じ内容にならないようにします。一部の通信網ではこれが必要です。"
     provider_color_hint: "カレンダーが全員を表示するとき、この担当者の予約に使用されます。"
+    working_providers: "出勤中の担当者"
+    hidden_from_public: "公開から非表示"
+    slot_interval_hint: "お客様に開始時刻を提示する間隔です。15の場合、45分のメニューは9:00、9:15、9:30のように開始できます。60の場合は9:00、10:00、11:00です。予約後の時間を空けておくものではありません。そのためにはメニューの所要時間を長くしてください。"
+    messages_both_channels: "両方"
