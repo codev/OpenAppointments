@@ -217,7 +217,7 @@ hi:
     username: यूजर का नाम
     password: पासवर्ड
     retype_password: पासवर्ड फिर से लिखें
-    receive_notifications: नोटफकैशन प्राप्त करें
+    receive_notifications: सूचनाएँ प्राप्त करें
     passwords_mismatch: पासवर्डों बेमेल.
     admin_saved: व्यवस्थापक सफलतापूर्वक सेव.
     provider_saved: प्रदाता सफलतापूर्वक सेव.
@@ -679,7 +679,6 @@ hi:
     messages: Messages
     messages_hint: Manage notifications, providers and message logs
     unknown_inbox: Unknown Inbox
-    unknown_inbox_info: 'Incoming messages from senders that do not match any customer. Mark each one read once dealt with. These messages also appear in the main log.'
     messages_providers: Providers
     messages_provider: Provider
     messages_logs: Logs
@@ -778,7 +777,6 @@ hi:
     notification_no_providers: No providers are enabled. Enable one on the Providers page first.
     notification_short_text: Short Text (Email Subject or SMS)
     notification_long_text: Long Text (for providers that support it, e.g. Email Body)
-    notification_tokens_hint: "Template fields you can use:"
     notification_untitled: Untitled notification
     notification_saved: Notification saved.
     delete_notification: Delete Notification
@@ -892,7 +890,6 @@ hi:
     appointment_statuses: 'Appointment Statuses'
     inbox: 'Inbox'
     inbox_hint: 'Incoming messages from your customers.'
-    inbox_info: 'Incoming messages from customers. Messages stay unread until someone marks them read.'
     unread: 'Unread'
     read: 'Read'
     message: 'Message'
@@ -970,3 +967,20 @@ hi:
     hidden_from_public: "सार्वजनिक से छिपा हुआ"
     slot_interval_hint: "उपभोक्ताओं को प्रारंभ समय कितनी बार दिए जाते हैं। 15 के साथ, 45 मिनट की सेवा 9:00, 9:15, 9:30 आदि पर शुरू हो सकती है; 60 के साथ, 9:00, 10:00, 11:00 पर। यह अपॉइंटमेंट के बाद समय खाली नहीं रखता: उसके लिए, सेवा की अवधि बढ़ाएँ।"
     messages_all_channels: "सभी"
+    notification_unsaved: "सेव नहीं हुआ"
+    notification_unknown_tokens: "अज्ञात प्लेसहोल्डर: {tokens}. इन्हें संदेशों से हटा दिया जाएगा।"
+    notification_has_unknown_tokens: "अज्ञात प्लेसहोल्डर"
+    token_copied: "{token} कॉपी हो गया"
+    inbox_done: "पूर्ण"
+    inbox_show_done: "पूर्ण दिखाएं"
+    inbox_done_by: "{name} द्वारा {time} पर पूर्ण"
+    message_delete_confirm: "इस संदेश को हमेशा के लिए डिलीट करें? इसे पूर्ववत नहीं किया जा सकता।"
+    message_deleted: "संदेश डिलीट हो गया"
+    message_shared_contact: "यह संपर्क भी उपयोग करता है:"
+    message_move_to: "{name} में ले जाएं"
+    message_moved: "संदेश ले जाया गया"
+    notification_tokens_hint: "टेम्पलेट फ़ील्ड जिन्हें आप उपयोग कर सकते हैं। जहां आप टाइप कर रहे थे वहां डालने के लिए, या कॉपी करने के लिए किसी एक पर क्लिक करें:"
+    inbox_info: "ग्राहकों से आने वाले संदेश। निपटाने के बाद हर एक को पूर्ण के रूप में चिह्नित करें; यह ग्राहक के इतिहास में बना रहता है। पूर्ण दिखाएं उन्हें अन्डू के साथ फिर से सूचीबद्ध करता है।"
+    unknown_inbox_info: "उन भेजने वालों के संदेश जो किसी ग्राहक से मेल नहीं खाते। निपटाने के बाद हर एक को पूर्ण के रूप में चिह्नित करें। ये संदेश मुख्य लॉग में भी दिखाई देते हैं।"
+    booking_release_time: "खुलने का समय"
+    booking_release_time_hint: "भविष्य की बुकिंग सीमा के अंत में अगला दिन हर दिन इस समय पर खुलता है।"

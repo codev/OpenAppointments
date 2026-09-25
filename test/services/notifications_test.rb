@@ -145,6 +145,27 @@ class NotificationsTest < ActiveSupport::TestCase
     Setting.set("messages_twilio_enabled", "0")
   end
 
+  test "extra questions are a bulleted list in email and plain lines in sms" do
+    Setting.set("messages_twilio_enabled", "1")
+    Setting.set("messages_twilio_account_sid", "AC1")
+    Setting.set("messages_twilio_auth_token", "t")
+    Setting.set("messages_twilio_from", "+15005550006")
+    Setting.set("display_custom_field_1", "1")
+    Setting.set("label_custom_field_1", "Pronouns")
+    Setting.set("display_custom_field_2", "1")
+    Setting.set("label_custom_field_2", "Access needs")
+    @customer.update!(custom_field_1: "they/them", custom_field_2: "Step-free entrance")
+    create_notification(audiences: %w[customer], channels: %w[email twilio],
+                        short_text: "{{Customer Extra Questions}}", long_text: "Answers:\n{{Customer Extra Questions}}")
+
+    Notifications.appointment_saved(@appointment, @service, @provider, @customer)
+    assert_equal "Answers:\n- Pronouns: they/them\n- Access needs: Step-free entrance",
+                 Message.find_by(channel: "email").body
+    assert_equal "Pronouns: they/them\nAccess needs: Step-free entrance", Message.find_by(channel: "twilio").body
+  ensure
+    Setting.set("messages_twilio_enabled", "0")
+  end
+
   test "sms variation adds a different code to each text and leaves email alone" do
     Setting.set("messages_twilio_enabled", "1")
     Setting.set("messages_twilio_account_sid", "AC1")

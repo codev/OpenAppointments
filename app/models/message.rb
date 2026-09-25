@@ -8,6 +8,7 @@ class Message < ApplicationRecord
   belongs_to :sent_by, class_name: "User", optional: true
   belongs_to :appointment, optional: true
   belongs_to :notification, optional: true
+  belongs_to :done_by, class_name: "User", optional: true
 
   validates :direction, inclusion: { in: DIRECTIONS }
   validates :channel, presence: true
@@ -18,20 +19,33 @@ class Message < ApplicationRecord
   scope :unread, -> { incoming.where(read_at: nil) }
   scope :unknown_sender, -> { where(customer_id: nil) }
   scope :newest_first, -> { order(created_at: :desc, id: :desc) }
-
-  # Incoming customer messages a backend user may see: everything for admins or
-  # when customer access is not limited, otherwise those of customers with an
-  # appointment with the given providers.
-  def self.inbox_for(role, provider_ids)
-    scope = incoming.where.not(customer_id: nil)
-    return scope if role == Role::ADMIN || Setting.get("limit_customer_access") != "1"
-
-    scope.where(customer_id: Appointment.where(id_users_provider: provider_ids).select(:id_users_customer))
-  end
+  scope :done, -> { where.not(done_at: nil) }
+  scope :not_done, -> { where(done_at: nil) }
+  # The admin Inbox: incoming messages from known customers.
+  scope :inbox, -> { incoming.where.not(customer_id: nil) }
 
   def read? = read_at.present?
 
   def mark_read! = update!(read_at: read_at || Time.current)
+
+  def done? = done_at.present?
+
+  # Done takes the message out of the Inbox (never out of the customer
+  # history) and counts as read; Undo keeps it read.
+  def mark_done!(user)
+    update!(done_at: Time.current, done_by: user, read_at: read_at || Time.current)
+  end
+
+  def undo_done! = update!(done_at: nil, done_by: nil)
+
+  # Other customers using the contact this incoming message came from; an
+  # admin can move the message to one of them.
+  def other_customers_on_contact
+    return [] if customer_id.nil? || from_address.blank?
+
+    contact = from_address.include?("@") ? { email: from_address } : { phone: from_address }
+    User.customers_by_contact(**contact).reject { |customer| customer.id == customer_id }
+  end
 
   def self.unread_counts_for(customer_ids)
     unread.where(customer_id: customer_ids).group(:customer_id).count

@@ -679,7 +679,6 @@ pl:
     messages: Messages
     messages_hint: Manage notifications, providers and message logs
     unknown_inbox: Unknown Inbox
-    unknown_inbox_info: 'Incoming messages from senders that do not match any customer. Mark each one read once dealt with. These messages also appear in the main log.'
     messages_providers: Providers
     messages_provider: Provider
     messages_logs: Logs
@@ -778,7 +777,6 @@ pl:
     notification_no_providers: No providers are enabled. Enable one on the Providers page first.
     notification_short_text: Short Text (Email Subject or SMS)
     notification_long_text: Long Text (for providers that support it, e.g. Email Body)
-    notification_tokens_hint: "Template fields you can use:"
     notification_untitled: Untitled notification
     notification_saved: Notification saved.
     delete_notification: Delete Notification
@@ -892,7 +890,6 @@ pl:
     appointment_statuses: 'Appointment Statuses'
     inbox: 'Inbox'
     inbox_hint: 'Incoming messages from your customers.'
-    inbox_info: 'Incoming messages from customers. Messages stay unread until someone marks them read.'
     unread: 'Unread'
     read: 'Read'
     message: 'Message'
@@ -970,3 +967,20 @@ pl:
     hidden_from_public: "Ukryte przed publicznością"
     slot_interval_hint: "Jak często klientom oferowane są godziny rozpoczęcia. Przy 15 zabieg trwający 45 minut może zacząć się o 9:00, 9:15, 9:30 i tak dalej; przy 60 o 9:00, 10:00, 11:00. Nie rezerwuje to wolnego czasu po wizycie: w tym celu wydłuż czas trwania zabiegu."
     messages_all_channels: "Wszystkie"
+    notification_unsaved: "Niezapisane"
+    notification_unknown_tokens: "Nieznane pola: {tokens}. Zostaną pominięte w wiadomościach."
+    notification_has_unknown_tokens: "Nieznane pole"
+    token_copied: "Skopiowano {token}"
+    inbox_done: "Zakończone"
+    inbox_show_done: "Pokaż zakończone"
+    inbox_done_by: "Zakończone przez {name} {time}"
+    message_delete_confirm: "Usunąć tę wiadomość na stałe? Nie można cofnąć tej czynności."
+    message_deleted: "Wiadomość usunięta"
+    message_shared_contact: "Używa również tego kontaktu:"
+    message_move_to: "Przenieś do {name}"
+    message_moved: "Wiadomość przeniesiona"
+    notification_tokens_hint: "Pola szablonu, których możesz użyć. Kliknij jedno, aby wstawić je w miejscu, w którym pisałeś, lub aby je skopiować:"
+    inbox_info: "Wiadomości przychodzące od klientów. Oznacz każdą jako Zakończone po jej załatwieniu; pozostanie w historii klienta. Pokaż zakończone wyświetla je ponownie z opcją Cofnij."
+    unknown_inbox_info: "Wiadomości przychodzące od nadawców, którzy nie pasują do żadnego klienta. Oznacz każdą jako Zakończone po jej załatwieniu. Te wiadomości pojawiają się też w głównym dzienniku."
+    booking_release_time: "Godzina otwarcia"
+    booking_release_time_hint: "Następny dzień na końcu limitu przyszłych rezerwacji otwiera się o tej godzinie każdego dnia."

@@ -29,22 +29,20 @@ class Appointment < ApplicationRecord
     relation
   }
 
-  # EA slot occupancy: (start <= S AND end > S) OR (start < E AND end >= E).
-  def self.slot_occupancy(slot_start, slot_end, provider_id, exclude_appointment_id)
-    relation = active.where(id_users_provider: provider_id)
-               .where("(start_datetime <= :s AND end_datetime > :s) OR (start_datetime < :e AND end_datetime >= :e)",
-                      s: slot_start, e: slot_end)
-    relation = relation.where.not(id: exclude_appointment_id) if exclude_appointment_id
-    relation
-  end
-
-  def self.attendants_for_period(slot_start, slot_end, service_id, provider_id, exclude_appointment_id = nil)
-    slot_occupancy(slot_start, slot_end, provider_id, exclude_appointment_id).where(id_services: service_id).count
-  end
-
-  def self.other_service_attendants(slot_start, slot_end, service_id, provider_id, exclude_appointment_id = nil)
-    slot_occupancy(slot_start, slot_end, provider_id, exclude_appointment_id)
-      .where.not(id_services: service_id).where.not(id_services: nil).count
+  # The next appointment to start and the latest one already started, by real
+  # start time. Stored starts are the stylist's wall clock, so rows within a
+  # day of now are decided by BookingWindows.starts_at; beyond that the stored
+  # order is enough.
+  def self.next_and_last(scope, now = Time.current)
+    rows = scope.includes(:provider)
+    near = rows.where(start_datetime: (now - 1.day)..(now + 1.day)).to_a
+    started, upcoming = near.partition { |appointment| BookingWindows.starts_at(appointment) < now }
+    [
+      upcoming.min_by { |appointment| BookingWindows.starts_at(appointment) } ||
+        rows.where("start_datetime > ?", now + 1.day).order(:start_datetime).first,
+      started.max_by { |appointment| BookingWindows.starts_at(appointment) } ||
+        rows.where("start_datetime < ?", now - 1.day).order(start_datetime: :desc).first
+    ]
   end
 
   # EA has_provider_conflict: (existing_start < new_end) AND (existing_end > new_start).

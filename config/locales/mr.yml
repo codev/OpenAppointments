@@ -679,7 +679,6 @@ mr:
     messages: Messages
     messages_hint: Manage notifications, providers and message logs
     unknown_inbox: Unknown Inbox
-    unknown_inbox_info: 'Incoming messages from senders that do not match any customer. Mark each one read once dealt with. These messages also appear in the main log.'
     messages_providers: Providers
     messages_provider: Provider
     messages_logs: Logs
@@ -778,7 +777,6 @@ mr:
     notification_no_providers: No providers are enabled. Enable one on the Providers page first.
     notification_short_text: Short Text (Email Subject or SMS)
     notification_long_text: Long Text (for providers that support it, e.g. Email Body)
-    notification_tokens_hint: "Template fields you can use:"
     notification_untitled: Untitled notification
     notification_saved: Notification saved.
     delete_notification: Delete Notification
@@ -892,7 +890,6 @@ mr:
     appointment_statuses: 'Appointment Statuses'
     inbox: 'Inbox'
     inbox_hint: 'Incoming messages from your customers.'
-    inbox_info: 'Incoming messages from customers. Messages stay unread until someone marks them read.'
     unread: 'Unread'
     read: 'Read'
     message: 'Message'
@@ -970,3 +967,20 @@ mr:
     hidden_from_public: "सार्वजनिकपणे लपवलेले"
     slot_interval_hint: "उपभोक्त्यांना सुरुवातीच्या वेळा किती वारंवार दिल्या जातात. 15 सह, 45 मिनिटांची सेवा 9:00, 9:15, 9:30 आणि असेच सुरू होऊ शकते; 60 सह, 9:00, 10:00, 11:00 ला. यामुळे अपॉइंटमेंटनंतर वेळ मोकळा ठेवला जात नाही: त्यासाठी सेवेचा कालावधी वाढवा."
     messages_all_channels: "सर्व"
+    notification_unsaved: "जतन न केलेले"
+    notification_unknown_tokens: "अज्ञात प्लेसहोल्डर: {tokens}. ते संदेशांमधून वगळले जातील."
+    notification_has_unknown_tokens: "अज्ञात प्लेसहोल्डर"
+    token_copied: "{token} कॉपी केले"
+    inbox_done: "पूर्ण"
+    inbox_show_done: "पूर्ण दाखवा"
+    inbox_done_by: "{name} यांनी {time} रोजी पूर्ण केले"
+    message_delete_confirm: "हा संदेश कायमचा हटवायचा? हे पूर्ववत करता येणार नाही."
+    message_deleted: "संदेश हटवला"
+    message_shared_contact: "हा संपर्क देखील वापरतो:"
+    message_move_to: "{name} कडे हलवा"
+    message_moved: "संदेश हलवला"
+    notification_tokens_hint: "वापरता येणारे टेम्पलेट फील्ड. एखाद्यावर क्लिक करून ते तुम्ही टाइप करत होता तिथे टाका, किंवा कॉपी करा:"
+    inbox_info: "ग्राहकांकडून येणारे संदेश. हाताळल्यानंतर प्रत्येक संदेश पूर्ण म्हणून चिन्हांकित करा; तो ग्राहकाच्या इतिहासात राहतो. पूर्ण दाखवा मध्ये ते पुन्हा पूर्ववत करा पर्यायासह दिसतात."
+    unknown_inbox_info: "कोणत्याही ग्राहकाशी न जुळणाऱ्या पाठवणाऱ्यांकडून आलेले संदेश. हाताळल्यानंतर प्रत्येक संदेश पूर्ण म्हणून चिन्हांकित करा. हे संदेश मुख्य नोंदीतही दिसतात."
+    booking_release_time: "उघडण्याची वेळ"
+    booking_release_time_hint: "भविष्यातील बुकिंग मर्यादेच्या शेवटी असलेला पुढील दिवस दररोज या वेळी उघडतो."

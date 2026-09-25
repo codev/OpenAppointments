@@ -59,16 +59,6 @@ class BrandColorsTest < ActionDispatch::IntegrationTest
     assert_match "theme_suggestions", response.body
   end
 
-  test "the settings nav lists Theme between Booking Settings and Business Logic" do
-    post "/login/validate", params: { username: "administrator", password: "administrator1" }
-    get "/general_settings"
-    assert_select "#settings-nav a[href='/theme_settings']"
-    booking = response.body.index('href="/booking_settings"')
-    theme = response.body.index('href="/theme_settings"')
-    business = response.body.index('href="/business_settings"')
-    assert booking < theme && theme < business, "Theme nav item is not between Booking Settings and Business Logic"
-  end
-
   test "general settings no longer accepts the theme and colour settings" do
     post "/login/validate", params: { username: "administrator", password: "administrator1" }
     Setting.set("theme", "nice")

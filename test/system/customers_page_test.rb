@@ -33,7 +33,7 @@ class CustomersPageTest < ApplicationSystemTestCase
     assert_text "Customer saved", wait: 5
     assert_no_selector "#customers-page.editing"
     assert_selector ".customer-row.selected", text: "Pat Customer"
-    assert_selector ".customer-row.selected", text: "patc@example.org, 07700 900333"
+    assert_selector ".customer-row.selected", text: "patc@example.org, +447700900333"
     pat = User.customers.find_by!(email: "patc@example.org")
     assert_equal "Prefers mornings", pat.notes
     assert_equal "Europe/London", pat.timezone
@@ -112,6 +112,26 @@ class CustomersPageTest < ApplicationSystemTestCase
     click_on "Calendar"
     assert_no_selector "#message-modal", wait: 2
     assert_selector "#calendar-page", wait: 5
+  end
+end
+
+# Admins delete a single message from the conversation after a confirm.
+class CustomerMessageDeleteTest < ApplicationSystemTestCase
+  test "an admin deletes one message from the conversation" do
+    Message.create!(direction: "incoming", channel: "email", from_address: users(:jx).email,
+                    customer_id: users(:jx).id, body: "Keep me", status: "received")
+    gone = Message.create!(direction: "incoming", channel: "email", from_address: users(:jx).email,
+                           customer_id: users(:jx).id, body: "Delete me", status: "received")
+    login_as_admin
+    visit customers_url(customer_id: users(:jx).id, section: "messages")
+    assert_selector "#customer-messages .message-row", text: "Delete me", wait: 5
+
+    find("#customer-messages .message-row", text: "Delete me").find(".delete-message").click
+    confirm_modal "Delete", "Delete"
+    assert_no_selector "#customer-messages .message-row", text: "Delete me", wait: 5
+    assert_selector "#customer-messages .message-row", text: "Keep me"
+    assert_text "Message deleted"
+    assert_not Message.exists?(gone.id)
   end
 end
 

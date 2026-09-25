@@ -177,7 +177,7 @@ ja:
     reload_appointments_hint: カレンダーを再読み込みします。
     trigger_sync_hint: Googleカレンダーとの同期を開始します。
     appointment_updated: 予約情報が更新されました。
-    undo: やり直し
+    undo: 元に戻す
     appointment_details_changed: 予約情報が変更されました。
     appointment_changes_saved: 予約の変更が保存されました。
     save: 保存
@@ -679,7 +679,6 @@ ja:
     messages: Messages
     messages_hint: Manage notifications, providers and message logs
     unknown_inbox: Unknown Inbox
-    unknown_inbox_info: 'Incoming messages from senders that do not match any customer. Mark each one read once dealt with. These messages also appear in the main log.'
     messages_providers: Providers
     messages_provider: Provider
     messages_logs: Logs
@@ -778,7 +777,6 @@ ja:
     notification_no_providers: No providers are enabled. Enable one on the Providers page first.
     notification_short_text: Short Text (Email Subject or SMS)
     notification_long_text: Long Text (for providers that support it, e.g. Email Body)
-    notification_tokens_hint: "Template fields you can use:"
     notification_untitled: Untitled notification
     notification_saved: Notification saved.
     delete_notification: Delete Notification
@@ -892,7 +890,6 @@ ja:
     appointment_statuses: 'Appointment Statuses'
     inbox: 'Inbox'
     inbox_hint: 'Incoming messages from your customers.'
-    inbox_info: 'Incoming messages from customers. Messages stay unread until someone marks them read.'
     unread: 'Unread'
     read: 'Read'
     message: 'Message'
@@ -970,3 +967,20 @@ ja:
     hidden_from_public: "公開から非表示"
     slot_interval_hint: "お客様に開始時刻を提示する間隔です。15の場合、45分のメニューは9:00、9:15、9:30のように開始できます。60の場合は9:00、10:00、11:00です。予約後の時間を空けておくものではありません。そのためにはメニューの所要時間を長くしてください。"
     messages_all_channels: "すべて"
+    notification_unsaved: "未保存"
+    notification_unknown_tokens: "不明なプレースホルダー: {tokens}。メッセージから除外されます。"
+    notification_has_unknown_tokens: "不明なプレースホルダー"
+    token_copied: "{token} をコピーしました"
+    inbox_done: "対応済み"
+    inbox_show_done: "対応済みを表示"
+    inbox_done_by: "{name}が{time}に対応済みにしました"
+    message_delete_confirm: "このメッセージを完全に削除しますか？元に戻すことはできません。"
+    message_deleted: "メッセージを削除しました"
+    message_shared_contact: "この連絡先も使用しています:"
+    message_move_to: "{name}に移動"
+    message_moved: "メッセージを移動しました"
+    notification_tokens_hint: "使用できるテンプレート項目です。クリックすると入力中の場所に挿入するか、コピーできます。"
+    inbox_info: "お客様からの受信メッセージです。対応済みの場合は対応済みにしてください。お客様の履歴に残ります。対応済みを表示で、元に戻すとともに再度一覧表示されます。"
+    unknown_inbox_info: "どの顧客とも一致しない送信者からの受信メッセージです。対応済みの場合は対応済みにしてください。これらのメッセージはメインログにも表示されます。"
+    booking_release_time: "公開時刻"
+    booking_release_time_hint: "将来の予約制限の末尾にあたる翌日は、毎日この時刻に公開されます。"

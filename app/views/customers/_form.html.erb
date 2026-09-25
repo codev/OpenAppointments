@@ -69,12 +69,16 @@
                     <p><%= lang('no_records_found') %></p>
                 <% end %>
                 <% appointments.each do |appointment| %>
-                    <div class="appointment-row" data-id="<%= appointment.id %>">
+                    <%# Cancelled, Late Cancel and Rescheduled freed their slot: greyed. %>
+                    <div class="appointment-row<%= ' appointment-freed opacity-50' if appointment.frees_slot? %>" data-id="<%= appointment.id %>">
                         <a href="/calendar/reschedule/<%= appointment.booking_hash %>" data-turbo="false">
                             <i class="fas fa-edit me-1"></i>
                             <strong><%= appointment.service&.name %> - <%= appointment.provider&.name %></strong>
                             <br>
                         </a>
+                        <% if appointment.status.present? %>
+                            <span class="badge bg-secondary appointment-status"><%= appointment.status %></span><br>
+                        <% end %>
                         <small><%= display_datetime(appointment.start_datetime) %></small><br>
                         <small><%= display_datetime(appointment.end_datetime) %></small><br>
                         <% if Setting.timezone_support? %>

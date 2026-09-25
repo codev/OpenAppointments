@@ -679,7 +679,6 @@ hr:
     messages: Messages
     messages_hint: Manage notifications, providers and message logs
     unknown_inbox: Unknown Inbox
-    unknown_inbox_info: 'Incoming messages from senders that do not match any customer. Mark each one read once dealt with. These messages also appear in the main log.'
     messages_providers: Providers
     messages_provider: Provider
     messages_logs: Logs
@@ -778,7 +777,6 @@ hr:
     notification_no_providers: No providers are enabled. Enable one on the Providers page first.
     notification_short_text: Short Text (Email Subject or SMS)
     notification_long_text: Long Text (for providers that support it, e.g. Email Body)
-    notification_tokens_hint: "Template fields you can use:"
     notification_untitled: Untitled notification
     notification_saved: Notification saved.
     delete_notification: Delete Notification
@@ -892,7 +890,6 @@ hr:
     appointment_statuses: 'Appointment Statuses'
     inbox: 'Inbox'
     inbox_hint: 'Incoming messages from your customers.'
-    inbox_info: 'Incoming messages from customers. Messages stay unread until someone marks them read.'
     unread: 'Unread'
     read: 'Read'
     message: 'Message'
@@ -970,3 +967,20 @@ hr:
     hidden_from_public: "Skriveno Od Javnosti"
     slot_interval_hint: "Koliko često se klijentima nude vremena početka. Uz 15, usluga od 45 minuta može početi u 9:00, 9:15, 9:30 i tako dalje; uz 60, u 9:00, 10:00, 11:00. To ne čuva slobodno vrijeme nakon sastanka: za to produljite trajanje usluge."
     messages_all_channels: "Sve"
+    notification_unsaved: "Nespremljeno"
+    notification_unknown_tokens: "Nepoznati parametri: {tokens}. Bit će izostavljeni iz poruka."
+    notification_has_unknown_tokens: "Nepoznati parametar"
+    token_copied: "Kopirano {token}"
+    inbox_done: "Riješeno"
+    inbox_show_done: "Prikaži riješeno"
+    inbox_done_by: "Riješio/la {name} {time}"
+    message_delete_confirm: "Trajno izbrisati ovu poruku? Ova se radnja ne može poništiti."
+    message_deleted: "Poruka izbrisana"
+    message_shared_contact: "Također koristi ovaj kontakt:"
+    message_move_to: "Premjesti na {name}"
+    message_moved: "Poruka premještena"
+    notification_tokens_hint: "Polja predloška koja možete koristiti. Kliknite jedno za umetanje na mjesto gdje ste pisali, ili za kopiranje:"
+    inbox_info: "Pristigle poruke od klijenata. Označite svaku kao Riješeno nakon obrade; ostaje u povijesti klijenta. Prikaži riješeno ih ponovno prikazuje uz mogućnost Poništi."
+    unknown_inbox_info: "Pristigle poruke od pošiljatelja koji ne odgovaraju nijednom klijentu. Označite svaku kao Riješeno nakon obrade. Ove se poruke također prikazuju u glavnom zapisniku."
+    booking_release_time: "Vrijeme otvaranja"
+    booking_release_time_hint: "Sljedeći dan na kraju ograničenja budućih rezervacija otvara se u ovo vrijeme svaki dan."

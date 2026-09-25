@@ -1,6 +1,7 @@
 # {{Token}} substitution for notification texts. Tokens are matched
 # case-insensitively; unknown tokens render empty. A context value may be a
-# callable, resolved only when a template uses its token.
+# callable, resolved only when a template uses its token. An array value
+# renders one item per line, bulleted when asked (email).
 module Messaging
   module Template
     # Shown on the Notifications page guide; keep in sync with context builders.
@@ -10,17 +11,31 @@ module Messaging
       "Service Duration", "Appointment Date", "Appointment Time",
       "Appointment End Time", "Appointment Status", "Appointment Link",
       "Cancellation Reason", "Repeats", "Next Appointment", "User Name",
-      "Customer Message Link", "Booking Notice", "Booking Link", "Unsubscribe Link"
+      "Customer Message Link", "Booking Notice", "Booking Link", "Unsubscribe Link",
+      "Customer Extra Questions", "Customer Notes", "Appointment Notes"
     ].freeze
+
+    TOKEN_PATTERN = /\{\{\s*([^{}]+?)\s*\}\}/
 
     module_function
 
-    def render(text, context)
+    def render(text, context, bullets: false)
       normalized = context.transform_keys { |key| key.to_s.downcase }
-      text.to_s.gsub(/\{\{\s*([^{}]+?)\s*\}\}/) do
+      text.to_s.gsub(TOKEN_PATTERN) do
         value = normalized[Regexp.last_match(1).downcase]
-        (value.respond_to?(:call) ? value.call : value).to_s
+        value = value.call if value.respond_to?(:call)
+        next value.to_s unless value.is_a?(Array)
+
+        value.map { |line| bullets ? "- #{line}" : line }.join("\n")
       end
+    end
+
+    # Tokens in the texts that are not in TOKENS, once each, as first written.
+    def unknown_tokens(*texts)
+      known = TOKENS.map(&:downcase)
+      texts.join("\n").scan(TOKEN_PATTERN).flatten
+           .reject { |token| known.include?(token.downcase) }
+           .uniq(&:downcase)
     end
 
     def base_context
@@ -47,7 +62,9 @@ module Messaging
         "Customer First Name" => customer.name.to_s.split(" ").first.to_s,
         "Customer Email" => customer.email.to_s,
         "Customer Phone" => sms_address(customer).to_s,
-        "Customer Message Link" => "#{base_url}/customers?customer_id=#{customer.id}&section=messages"
+        "Customer Message Link" => "#{base_url}/customers?customer_id=#{customer.id}&section=messages",
+        "Customer Notes" => customer.notes.to_s,
+        "Customer Extra Questions" => -> { extra_questions(customer) }
       )
     end
 
@@ -92,8 +109,21 @@ module Messaging
         "Appointment Link" => link_path ? "#{base_url}#{link_path}" : "",
         "Cancellation Reason" => reason.to_s,
         "Repeats" => appointment&.series&.description.to_s,
-        "Next Appointment" => next_occurrence(appointment)
+        "Next Appointment" => next_occurrence(appointment),
+        "Customer Notes" => customer&.notes.to_s,
+        "Customer Extra Questions" => -> { extra_questions(customer) },
+        "Appointment Notes" => appointment&.notes.to_s
       )
+    end
+
+    # "Question: answer" for each shown extra question the customer answered.
+    def extra_questions(customer)
+      return [] unless customer
+
+      CustomerColumns.custom_fields(->(key) { I18n.t("ea.#{key}") }).filter_map do |attribute, label|
+        answer = customer.public_send(attribute).to_s.strip
+        "#{label}: #{answer}" if answer.present?
+      end
     end
 
     # The series occurrence after this one, formatted, or blank.
@@ -113,7 +143,8 @@ module Messaging
 
     # SMS providers require E.164. Numbers typed into the booking form arrive
     # in local format (leading 0); the default country code setting converts
-    # them, the 10to8 import already normalised to +44.
+    # them, the 10to8 import already normalised to +44. Digits that start with
+    # the country code and are long enough to be international only lack the +.
     def e164(number)
       return nil if number.blank?
 
@@ -121,6 +152,7 @@ module Messaging
       return digits if digits.start_with?("+")
       return "+#{digits[2..]}" if digits.start_with?("00")
       return "#{default_country_code}#{digits[1..]}" if digits.match?(/\A0\d{9,10}\z/)
+      return "+#{digits}" if digits.match?(/\A\d{11,15}\z/) && digits.start_with?(default_country_code.delete("+"))
 
       digits
     end

@@ -40,7 +40,7 @@ class UserPagesTest < ApplicationSystemTestCase
     assert_equal role, pat.role.slug
     assert_equal "patperson", pat.settings.username
     assert Passwords.verify(nil, "password1", pat.settings.password)
-    assert_equal "07700 900111", pat.mobile_number
+    assert_equal "+447700900111", pat.mobile_number
     assert_equal "london", pat.city.downcase
     assert_equal "english", pat.language
     assert_equal "Europe/London", pat.timezone

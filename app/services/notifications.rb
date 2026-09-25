@@ -71,9 +71,8 @@ module Notifications
   end
 
   def stylist_for(customer, now = Time.current)
-    scope = Appointment.appointments.active.where(id_users_customer: customer.id).includes(:provider)
-    upcoming = scope.where("start_datetime >= ?", now).order(:start_datetime).first
-    (upcoming || scope.where("start_datetime < ?", now).order(start_datetime: :desc).first)&.provider
+    upcoming, latest = Appointment.next_and_last(Appointment.appointments.active.where(id_users_customer: customer.id), now)
+    (upcoming || latest)&.provider
   end
 
   # Due coming-up notifications (ReminderScanJob / openappointments:reminders).
@@ -87,6 +86,17 @@ module Notifications
         deliver_notification(notification, appointment,
                              appointment.service, appointment.provider, appointment.customer)
       end
+    end
+  end
+
+  # Launch day, just before debug mode goes off: records every reminder the
+  # next scan would send as already sent (10to8 sent it, or debug mode held it
+  # back). Returns how many were (or, on a dry run, would be) marked.
+  def mark_due_reminders_sent(now = Time.current, dry_run: false)
+    Notification.coming_up.sum do |notification|
+      due = due_appointments(notification, now).reject { |appointment| NotificationDispatch.recorded?(notification, appointment) }
+      due.each { |appointment| NotificationDispatch.record!(notification, appointment) } unless dry_run
+      due.size
     end
   end
 
@@ -171,8 +181,9 @@ module Notifications
     address = adapter.address_for(user)
     return if address.blank?
 
-    short = Messaging::Template.render(notification.short_text, context)
-    long = Messaging::Template.render(notification.long_text, context)
+    bullets = adapter.key == "email"
+    short = Messaging::Template.render(notification.short_text, context, bullets: bullets)
+    long = Messaging::Template.render(notification.long_text, context, bullets: bullets)
 
     if adapter.supports_long_text?
       subject = short.presence ||

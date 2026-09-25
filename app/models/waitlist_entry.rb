@@ -8,6 +8,7 @@ class WaitlistEntry < ApplicationRecord
 
   validates :name, :email, presence: true
   before_validation :set_defaults, on: :create
+  before_validation { self.phone = Messaging::Template.e164(phone) if phone_changed? }
 
   scope :live, ->(now = Time.current) { where("expires_at > ?", now) }
   scope :oldest_first, -> { order(:created_at, :id) }

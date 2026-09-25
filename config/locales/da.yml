@@ -679,7 +679,6 @@ da:
     messages: Messages
     messages_hint: Manage notifications, providers and message logs
     unknown_inbox: Unknown Inbox
-    unknown_inbox_info: 'Incoming messages from senders that do not match any customer. Mark each one read once dealt with. These messages also appear in the main log.'
     messages_providers: Providers
     messages_provider: Provider
     messages_logs: Logs
@@ -778,7 +777,6 @@ da:
     notification_no_providers: No providers are enabled. Enable one on the Providers page first.
     notification_short_text: Short Text (Email Subject or SMS)
     notification_long_text: Long Text (for providers that support it, e.g. Email Body)
-    notification_tokens_hint: "Template fields you can use:"
     notification_untitled: Untitled notification
     notification_saved: Notification saved.
     delete_notification: Delete Notification
@@ -892,7 +890,6 @@ da:
     appointment_statuses: 'Appointment Statuses'
     inbox: 'Inbox'
     inbox_hint: 'Incoming messages from your customers.'
-    inbox_info: 'Incoming messages from customers. Messages stay unread until someone marks them read.'
     unread: 'Unread'
     read: 'Read'
     message: 'Message'
@@ -970,3 +967,20 @@ da:
     hidden_from_public: "Skjult For Offentligheden"
     slot_interval_hint: "Hvor ofte starttider tilbydes kunderne. Med 15 kan en tjeneste på 45 minutter starte kl. 9:00, 9:15, 9:30 og så videre; med 60 kl. 9:00, 10:00, 11:00. Det holder ikke tid fri efter aftalen: gør i stedet tjenestens varighed længere."
     messages_all_channels: "Alle"
+    notification_unsaved: "Ikke gemt"
+    notification_unknown_tokens: "Ukendte pladsholdere: {tokens}. De udelades fra beskeder."
+    notification_has_unknown_tokens: "Ukendt pladsholder"
+    token_copied: "Kopierede {token}"
+    inbox_done: "Udført"
+    inbox_show_done: "Vis udførte"
+    inbox_done_by: "Udført af {name} {time}"
+    message_delete_confirm: "Slet denne besked permanent? Dette kan ikke fortrydes."
+    message_deleted: "Besked slettet"
+    message_shared_contact: "Bruger også denne kontakt:"
+    message_move_to: "Flyt til {name}"
+    message_moved: "Besked flyttet"
+    notification_tokens_hint: "Skabelonfelter du kan bruge. Klik på et for at indsætte det, hvor du skrev, eller for at kopiere det:"
+    inbox_info: "Indkommende beskeder fra kunder. Markér hver som Udført, når den er håndteret; den forbliver i kundens historik. Vis udførte viser dem igen med Fortryd."
+    unknown_inbox_info: "Indkommende beskeder fra afsendere, der ikke matcher nogen kunde. Markér hver som Udført, når den er håndteret. Disse beskeder vises også i hovedloggen."
+    booking_release_time: "Åbningstidspunkt"
+    booking_release_time_hint: "Den næste dag i slutningen af den fremtidige bookinggrænse åbner på dette tidspunkt hver dag."

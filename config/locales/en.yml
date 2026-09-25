@@ -504,6 +504,8 @@ en:
     future_booking_limit: Future Booking Limit
     limit_days: Limit (Days)
     future_booking_limit_hint: Set the future limit in days customers can make appointments via the public booking page.
+    booking_release_time: "Release time"
+    booking_release_time_hint: "The next day at the end of the booking window opens at this time each day."
     api_token: API Token
     allow_rescheduling_cancellation_before: Allow Rescheduling/Cancellation Before
     at_least_one_field: At least one field must be displayed in the booking page.
@@ -679,7 +681,7 @@ en:
     messages: Messages
     messages_hint: Manage notifications, providers and message logs
     unknown_inbox: Unknown Inbox
-    unknown_inbox_info: 'Incoming messages from senders that do not match any customer. Mark each one read once dealt with. These messages also appear in the main log.'
+    unknown_inbox_info: 'Incoming messages from senders that do not match any customer. Mark each one Done once dealt with. These messages also appear in the main log.'
     messages_providers: Providers
     messages_provider: Provider
     messages_logs: Logs
@@ -778,7 +780,11 @@ en:
     notification_no_providers: No providers are enabled. Enable one on the Providers page first.
     notification_short_text: Short Text (Email Subject or SMS)
     notification_long_text: Long Text (for providers that support it, e.g. Email Body)
-    notification_tokens_hint: "Template fields you can use:"
+    notification_tokens_hint: "Template fields you can use. Click one to insert it where you were typing, or to copy it:"
+    notification_unknown_tokens: "Unknown placeholders: {tokens}. They will be left out of messages."
+    notification_has_unknown_tokens: "Unknown placeholder"
+    notification_unsaved: "Unsaved"
+    token_copied: "Copied {token}"
     notification_untitled: Untitled notification
     notification_saved: Notification saved.
     delete_notification: Delete Notification
@@ -892,8 +898,16 @@ en:
     appointment_statuses: 'Appointment Statuses'
     inbox: 'Inbox'
     inbox_hint: 'Incoming messages from your customers.'
-    inbox_info: 'Incoming messages from customers. Messages stay unread until someone marks them read.'
+    inbox_info: 'Incoming messages from customers. Mark each one Done once dealt with; it stays in the customer history. Show done lists them again with Undo.'
     unread: 'Unread'
+    inbox_done: "Done"
+    inbox_show_done: "Show done"
+    inbox_done_by: "Done by {name} {time}"
+    message_delete_confirm: "Delete this message permanently? This cannot be undone."
+    message_deleted: "Message deleted"
+    message_shared_contact: "Also uses this contact:"
+    message_move_to: "Move to {name}"
+    message_moved: "Message moved"
     read: 'Read'
     message: 'Message'
     mark_as_read: 'Mark as read'

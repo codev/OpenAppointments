@@ -679,7 +679,6 @@ ca:
     messages: Messages
     messages_hint: Manage notifications, providers and message logs
     unknown_inbox: Unknown Inbox
-    unknown_inbox_info: 'Incoming messages from senders that do not match any customer. Mark each one read once dealt with. These messages also appear in the main log.'
     messages_providers: Providers
     messages_provider: Provider
     messages_logs: Logs
@@ -778,7 +777,6 @@ ca:
     notification_no_providers: No providers are enabled. Enable one on the Providers page first.
     notification_short_text: Short Text (Email Subject or SMS)
     notification_long_text: Long Text (for providers that support it, e.g. Email Body)
-    notification_tokens_hint: "Template fields you can use:"
     notification_untitled: Untitled notification
     notification_saved: Notification saved.
     delete_notification: Delete Notification
@@ -892,7 +890,6 @@ ca:
     appointment_statuses: 'Appointment Statuses'
     inbox: 'Inbox'
     inbox_hint: 'Incoming messages from your customers.'
-    inbox_info: 'Incoming messages from customers. Messages stay unread until someone marks them read.'
     unread: 'Unread'
     read: 'Read'
     message: 'Message'
@@ -970,3 +967,20 @@ ca:
     hidden_from_public: "Amagat del públic"
     slot_interval_hint: "Amb quina freqüència s'ofereixen hores d'inici als clients. Amb 15, un servei de 45 minuts pot començar a les 9:00, 9:15, 9:30, etc.; amb 60, a les 9:00, 10:00, 11:00. No reserva temps lliure després de la cita: per a això, allargueu la durada del servei."
     messages_all_channels: "Tots"
+    notification_unsaved: "Sense desar"
+    notification_unknown_tokens: "Marcadors desconeguts: {tokens}. No s'inclouran als missatges."
+    notification_has_unknown_tokens: "Marcador desconegut"
+    token_copied: "S'ha copiat {token}"
+    inbox_done: "Fet"
+    inbox_show_done: "Mostra els fets"
+    inbox_done_by: "Fet per {name} {time}"
+    message_delete_confirm: "Voleu eliminar aquest missatge permanentment? Aquesta acció no es pot desfer."
+    message_deleted: "Missatge eliminat"
+    message_shared_contact: "També utilitza aquest contacte:"
+    message_move_to: "Mou a {name}"
+    message_moved: "Missatge mogut"
+    notification_tokens_hint: "Camps de plantilla que podeu utilitzar. Feu clic en un per inserir-lo on escrivíeu, o per copiar-lo:"
+    inbox_info: "Missatges entrants dels clients. Marqueu cadascun com a Fet quan l'hàgiu gestionat; es manté a l'historial del client. Mostra els fets els torna a llistar amb Desfés."
+    unknown_inbox_info: "Missatges entrants de remitents que no coincideixen amb cap client. Marqueu cadascun com a Fet quan l'hàgiu gestionat. Aquests missatges també apareixen al registre principal."
+    booking_release_time: "Hora d'obertura"
+    booking_release_time_hint: "El dia següent al final del límit de reserves futures s'obre a aquesta hora cada dia."

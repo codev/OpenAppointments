@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_09_25_130000) do
+ActiveRecord::Schema[8.1].define(version: 2026_09_26_090000) do
   create_table "action_mailbox_inbound_emails", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.string "message_checksum", null: false
@@ -143,6 +143,8 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_25_130000) do
     t.datetime "created_at", null: false
     t.integer "customer_id"
     t.string "direction", null: false
+    t.datetime "done_at"
+    t.integer "done_by_id"
     t.string "error"
     t.string "from_address"
     t.integer "notification_id"
@@ -299,6 +301,8 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_25_130000) do
     t.index ["booking_slug"], name: "index_users_on_booking_slug", unique: true
     t.index ["email"], name: "index_users_on_email"
     t.index ["id_roles"], name: "index_users_on_id_roles"
+    t.index ["mobile_number"], name: "index_users_on_mobile_number"
+    t.index ["phone_number"], name: "index_users_on_phone_number"
   end
 
   create_table "waitlist_entries", force: :cascade do |t|

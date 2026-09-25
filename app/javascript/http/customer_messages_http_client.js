@@ -55,9 +55,23 @@ App.Http.CustomerMessages = (function () {
         return $.post(url, {csrf_token: vars('csrf_token'), customer_id: customerId});
     }
 
+    /**
+     * Delete one message permanently (admins).
+     *
+     * @param {Number} messageId
+     *
+     * @return {Object}
+     */
+    function destroy(messageId) {
+        const url = App.Utils.Url.siteUrl('messages/' + messageId);
+
+        return $.ajax({url, type: 'DELETE', dataType: 'json', data: {csrf_token: vars('csrf_token')}});
+    }
+
     return {
         find,
         send,
         markRead,
+        destroy,
     };
 })();

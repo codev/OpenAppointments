@@ -679,7 +679,6 @@ lv:
     messages: Messages
     messages_hint: Manage notifications, providers and message logs
     unknown_inbox: Unknown Inbox
-    unknown_inbox_info: 'Incoming messages from senders that do not match any customer. Mark each one read once dealt with. These messages also appear in the main log.'
     messages_providers: Providers
     messages_provider: Provider
     messages_logs: Logs
@@ -778,7 +777,6 @@ lv:
     notification_no_providers: No providers are enabled. Enable one on the Providers page first.
     notification_short_text: Short Text (Email Subject or SMS)
     notification_long_text: Long Text (for providers that support it, e.g. Email Body)
-    notification_tokens_hint: "Template fields you can use:"
     notification_untitled: Untitled notification
     notification_saved: Notification saved.
     delete_notification: Delete Notification
@@ -892,7 +890,6 @@ lv:
     appointment_statuses: 'Appointment Statuses'
     inbox: 'Inbox'
     inbox_hint: 'Incoming messages from your customers.'
-    inbox_info: 'Incoming messages from customers. Messages stay unread until someone marks them read.'
     unread: 'Unread'
     read: 'Read'
     message: 'Message'
@@ -970,3 +967,20 @@ lv:
     hidden_from_public: "Paslēpts no sabiedrības"
     slot_interval_hint: "Cik bieži klientiem tiek piedāvāti sākuma laiki. Ar 15 45 minūšu pakalpojums var sākties 9:00, 9:15, 9:30 un tā tālāk; ar 60 tas var sākties 9:00, 10:00, 11:00. Tas neatstāj brīvu laiku pēc pieraksta: lai to panāktu, pagariniet pakalpojuma ilgumu."
     messages_all_channels: "Visi"
+    notification_unsaved: "Nesaglabāts"
+    notification_unknown_tokens: "Nezināmi lauki: {tokens}. Tie tiks izlaisti ziņojumos."
+    notification_has_unknown_tokens: "Nezināms lauks"
+    token_copied: "Nokopēts {token}"
+    inbox_done: "Pabeigts"
+    inbox_show_done: "Rādīt pabeigtos"
+    inbox_done_by: "Pabeidza {name} {time}"
+    message_delete_confirm: "Vai dzēst šo ziņu pavisam? Šo darbību nevar atsaukt."
+    message_deleted: "Ziņa dzēsta"
+    message_shared_contact: "Izmanto arī šo kontaktu:"
+    message_move_to: "Pārvietot uz {name}"
+    message_moved: "Ziņa pārvietota"
+    notification_tokens_hint: "Veidnes lauki, ko varat izmantot. Noklikšķiniet uz viena, lai ievietotu tur, kur rakstījāt, vai lai to nokopētu:"
+    inbox_info: "Ienākošās ziņas no klientiem. Atzīmējiet katru kā Pabeigts, kad tā ir izskatīta; tā paliks klienta vēsturē. Rādīt pabeigtos parāda tās atkal ar iespēju Atsaukt."
+    unknown_inbox_info: "Ienākošās ziņas no sūtītājiem, kas neatbilst nevienam klientam. Atzīmējiet katru kā Pabeigts, kad tā ir izskatīta. Šīs ziņas parādās arī galvenajā žurnālā."
+    booking_release_time: "Atvēršanas laiks"
+    booking_release_time_hint: "Nākamā diena nākotnes rezervācijas limita beigās katru dienu atveras šajā laikā."

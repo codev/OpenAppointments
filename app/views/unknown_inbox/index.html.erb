@@ -1,9 +1,17 @@
 <div id="unknown-inbox-page" class="container backend-page py-3">
     <div class="row">
         <div class="col-12">
-            <h4 class="border-bottom py-3 mb-3 fw-light">
-                <%= lang('unknown_inbox') %>
-            </h4>
+            <div class="d-flex justify-content-between align-items-center border-bottom py-3 mb-3">
+                <h4 class="mb-0 fw-light"><%= lang('unknown_inbox') %></h4>
+                <div class="btn-group" role="group">
+                    <a href="/unknown_inbox" class="btn btn-sm <%= vars(:inbox_show_done) ? 'btn-outline-secondary' : 'btn-secondary' %>">
+                        <%= lang('all') %>
+                    </a>
+                    <a href="/unknown_inbox?done=1" class="btn btn-sm <%= vars(:inbox_show_done) ? 'btn-secondary' : 'btn-outline-secondary' %>">
+                        <%= lang('inbox_show_done') %>
+                    </a>
+                </div>
+            </div>
 
             <p class="form-text text-muted mb-4">
                 <%= lang('unknown_inbox_info') %>
@@ -11,7 +19,8 @@
 
             <%= render "shared/inbox_list",
                        messages: vars(:inbox_messages), page: vars(:inbox_page),
-                       last_page: vars(:inbox_last_page), base_path: "/unknown_inbox" %>
+                       last_page: vars(:inbox_last_page),
+                       base_path: vars(:inbox_show_done) ? "/unknown_inbox?done=1" : "/unknown_inbox" %>
         </div>
     </div>
 </div>

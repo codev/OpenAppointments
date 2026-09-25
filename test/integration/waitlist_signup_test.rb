@@ -32,7 +32,7 @@ class WaitlistSignupTest < ActionDispatch::IntegrationTest
     end
     assert_response :success
     entry = WaitlistEntry.last
-    assert_equal [ "Waiting Person", "waiting@example.org", "07700900001", services(:haircut).id, users(:zane).id ],
+    assert_equal [ "Waiting Person", "waiting@example.org", "+447700900001", services(:haircut).id, users(:zane).id ],
                  [ entry.name, entry.email, entry.phone, entry.service_id, entry.provider_id ]
     assert_select "#wizard-frame-3"
     assert_select "#waitlist .alert-success", text: I18n.t("ea.waitlist_joined")

@@ -679,7 +679,6 @@ zh:
     messages: Messages
     messages_hint: Manage notifications, providers and message logs
     unknown_inbox: Unknown Inbox
-    unknown_inbox_info: 'Incoming messages from senders that do not match any customer. Mark each one read once dealt with. These messages also appear in the main log.'
     messages_providers: Providers
     messages_provider: Provider
     messages_logs: Logs
@@ -778,7 +777,6 @@ zh:
     notification_no_providers: No providers are enabled. Enable one on the Providers page first.
     notification_short_text: Short Text (Email Subject or SMS)
     notification_long_text: Long Text (for providers that support it, e.g. Email Body)
-    notification_tokens_hint: "Template fields you can use:"
     notification_untitled: Untitled notification
     notification_saved: Notification saved.
     delete_notification: Delete Notification
@@ -892,7 +890,6 @@ zh:
     appointment_statuses: 'Appointment Statuses'
     inbox: 'Inbox'
     inbox_hint: 'Incoming messages from your customers.'
-    inbox_info: 'Incoming messages from customers. Messages stay unread until someone marks them read.'
     unread: 'Unread'
     read: 'Read'
     message: 'Message'
@@ -970,3 +967,20 @@ zh:
     hidden_from_public: "已对公众隐藏"
     slot_interval_hint: "向客户提供开始时间的频率。设为 15 时，45 分钟的服务项目可在 9:00、9:15、9:30 等时间开始；设为 60 时，则在 9:00、10:00、11:00 开始。这不会在预约后预留空闲时间：如需预留，请延长服务项目的时长。"
     messages_all_channels: "全部"
+    notification_unsaved: "未保存"
+    notification_unknown_tokens: "未知占位符：{tokens}。它们将从消息中省略。"
+    notification_has_unknown_tokens: "未知占位符"
+    token_copied: "已复制 {token}"
+    inbox_done: "已完成"
+    inbox_show_done: "显示已完成"
+    inbox_done_by: "由 {name} 于 {time} 完成"
+    message_delete_confirm: "要永久删除此消息吗？此操作无法撤销。"
+    message_deleted: "消息已删除"
+    message_shared_contact: "也使用此联系方式："
+    message_move_to: "移动到 {name}"
+    message_moved: "消息已移动"
+    notification_tokens_hint: "可使用的模板字段。点击即可插入到您正在输入的位置，或用来复制："
+    inbox_info: "来自客户的收件消息。处理完毕后将每条标记为已完成；它会保留在客户历史记录中。显示已完成会再次列出这些消息，并提供撤销选项。"
+    unknown_inbox_info: "来自不匹配任何客户的发件人的收件消息。处理完毕后将每条标记为已完成。这些消息也会显示在主日志中。"
+    booking_release_time: "开放时间"
+    booking_release_time_hint: "未来预约限制末端的次日，每天会在此时间开放预约。"

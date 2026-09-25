@@ -40,20 +40,6 @@ class CustomerMessagesTest < ActionDispatch::IntegrationTest
     assert_not_includes response.body, "Running late"
   end
 
-  test "a provider's inbox is limited to their customers when access is limited" do
-    Setting.set("limit_customer_access", "1")
-    other = User.create!(name: "Nobody", email: "nobody@example.org", role: customer.role)
-    Message.create!(direction: "incoming", channel: "email", from_address: other.email,
-                    customer_id: other.id, body: "Stranger", status: "received")
-    Message.create!(direction: "incoming", channel: "email", from_address: customer.email,
-                    customer_id: customer.id, body: "Known", status: "received")
-    post "/login/validate", params: { username: "janedoe", password: "janedoe1" }
-    get "/inbox"
-    assert_response :success
-    assert_includes response.body, "Known"
-    assert_not_includes response.body, "Stranger"
-  end
-
   test "customer search rows include unread counts" do
     Message.create!(direction: "incoming", channel: "email", from_address: customer.email,
                     customer_id: customer.id, body: "Hello", status: "received")

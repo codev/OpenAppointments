@@ -83,32 +83,38 @@ window.App.Layouts.Backend = (function () {
 
     /**
      * Warn before leaving a form edited since its last save (settings, account,
-     * a record form). Turbo visits ask through the app dialog; a full navigation
-     * gets the browser's own (its text cannot be customised).
+     * a record form, a notification template). Each form carries its own
+     * data-unsaved mark, so saving one of several forms on a page leaves the
+     * others guarded; a server re-render may send a form already marked. Turbo
+     * visits ask through the app dialog; a full navigation gets the browser's
+     * own (its text cannot be customised).
      */
-    let settingsDirty = false;
+    const GUARDED_FORMS = '#settings-form, #account-form, .crud-form, .notification-form';
 
     function unsaved() {
-        return settingsDirty;
+        return $('form[data-unsaved]').length > 0;
+    }
+
+    function forgetUnsaved() {
+        $('form[data-unsaved]').removeAttr('data-unsaved');
     }
 
     function guardUnsavedChanges() {
-        $(document).on('input change', '#settings-form :input, #account-form :input, .crud-form :input', () => {
-            settingsDirty = true;
+        $(document).on('input change', ':input', (event) => {
+            $(event.target).closest(GUARDED_FORMS).attr('data-unsaved', '1');
         });
 
-        $(document).on('submit', '#settings-form, #account-form, .crud-form', () => {
-            settingsDirty = false;
+        $(document).on('submit', GUARDED_FORMS, (event) => {
+            $(event.currentTarget).removeAttr('data-unsaved');
         });
 
-        document.addEventListener('turbo:load', () => {
-            settingsDirty = false;
-        });
+        document.addEventListener('turbo:before-cache', forgetUnsaved);
 
         // A frame that swapped its form starts clean, unless it came back with an
         // error (a 422 re-render still holds the unsaved values).
         document.addEventListener('turbo:frame-load', (event) => {
-            settingsDirty = $(event.target).find('.form-message.alert-danger').length > 0;
+            const failed = $(event.target).find('.form-message.alert-danger').length > 0;
+            $(event.target).find(GUARDED_FORMS).attr('data-unsaved', failed ? '1' : null);
         });
 
         document.addEventListener('turbo:before-visit', (event) => {
@@ -123,7 +129,7 @@ window.App.Layouts.Backend = (function () {
                     text: lang('leave_page'),
                     click: (e, modal) => {
                         modal.hide();
-                        settingsDirty = false;
+                        forgetUnsaved();
                         Turbo.visit(event.detail.url);
                     },
                 },

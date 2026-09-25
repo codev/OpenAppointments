@@ -177,7 +177,7 @@ ro:
     reload_appointments_hint: Reîncarca întâlnirile din calendar.
     trigger_sync_hint: Porneste procesul de sincronizare cu Calendarul Google.
     appointment_updated: Întâlnire actualizata cu succes.
-    undo: Înapoi
+    undo: Anulează
     appointment_details_changed: Detaliile întâlnirii au fost modificate.
     appointment_changes_saved: Modificarile întâlnirii au fost salvate cu succes.
     save: Salvare
@@ -679,7 +679,6 @@ ro:
     messages: Messages
     messages_hint: Manage notifications, providers and message logs
     unknown_inbox: Unknown Inbox
-    unknown_inbox_info: 'Incoming messages from senders that do not match any customer. Mark each one read once dealt with. These messages also appear in the main log.'
     messages_providers: Providers
     messages_provider: Provider
     messages_logs: Logs
@@ -778,7 +777,6 @@ ro:
     notification_no_providers: No providers are enabled. Enable one on the Providers page first.
     notification_short_text: Short Text (Email Subject or SMS)
     notification_long_text: Long Text (for providers that support it, e.g. Email Body)
-    notification_tokens_hint: "Template fields you can use:"
     notification_untitled: Untitled notification
     notification_saved: Notification saved.
     delete_notification: Delete Notification
@@ -892,7 +890,6 @@ ro:
     appointment_statuses: 'Appointment Statuses'
     inbox: 'Inbox'
     inbox_hint: 'Incoming messages from your customers.'
-    inbox_info: 'Incoming messages from customers. Messages stay unread until someone marks them read.'
     unread: 'Unread'
     read: 'Read'
     message: 'Message'
@@ -970,3 +967,20 @@ ro:
     hidden_from_public: "Ascuns de la Public"
     slot_interval_hint: "Cât de des le sunt oferite clienților orele de început. Cu 15, un serviciu de 45 de minute poate începe la 9:00, 9:15, 9:30 și așa mai departe; cu 60, la 9:00, 10:00, 11:00. Nu păstrează timp liber după programare: pentru asta, măriți durata serviciului."
     messages_all_channels: "Toate"
+    notification_unsaved: "Nesalvat"
+    notification_unknown_tokens: "Câmpuri necunoscute: {tokens}. Acestea vor fi omise din mesaje."
+    notification_has_unknown_tokens: "Câmp necunoscut"
+    token_copied: "{token} copiat"
+    inbox_done: "Finalizat"
+    inbox_show_done: "Arată finalizate"
+    inbox_done_by: "Finalizat de {name} {time}"
+    message_delete_confirm: "Ștergeți definitiv acest mesaj? Această acțiune nu poate fi anulată."
+    message_deleted: "Mesaj șters"
+    message_shared_contact: "Folosește și acest contact:"
+    message_move_to: "Mută la {name}"
+    message_moved: "Mesaj mutat"
+    notification_tokens_hint: "Câmpuri de șablon pe care le puteți folosi. Faceți clic pe unul pentru a-l insera unde scriați, sau pentru a-l copia:"
+    inbox_info: "Mesaje primite de la clienți. Marcați fiecare ca Finalizat după ce a fost rezolvat; rămâne în istoricul clientului. Arată finalizate le listează din nou cu Anulează."
+    unknown_inbox_info: "Mesaje primite de la expeditori care nu corespund niciunui client. Marcați fiecare ca Finalizat după ce a fost rezolvat. Aceste mesaje apar și în jurnalul principal."
+    booking_release_time: "Ora de deschidere"
+    booking_release_time_hint: "Ziua următoare de la sfârșitul limitei rezervărilor viitoare se deschide la această oră în fiecare zi."

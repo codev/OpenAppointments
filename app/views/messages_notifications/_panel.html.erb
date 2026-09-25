@@ -1,56 +1,79 @@
-<%# One notification template as a form. Locals: notification, index, open. %>
+<%# One notification template as a form. Locals: notification, open, and
+    optionally key (a new panel's key), notice and alert (the save outcome).
+    The key names the panel so a save replaces only it. %>
 <% n = notification %>
-<div class="card mb-3 notification-panel" data-id="<%= n.id %>">
+<% key = n.persisted? ? n.id.to_s : (local_assigns[:key].presence || "new-#{SecureRandom.hex(4)}") %>
+<% notice = local_assigns[:notice] %>
+<% alert = local_assigns[:alert] %>
+<% unknown_tokens = n.unknown_tokens %>
+<div class="card mb-3 notification-panel" id="notification-panel-<%= key %>" data-id="<%= n.id %>">
     <div class="card-header d-flex justify-content-between align-items-center notification-header" role="button">
         <span class="notification-title-display fw-light"><%= n.title.presence || lang('notification_untitled') %></span>
-        <i class="fas fa-chevron-<%= open ? 'up' : 'down' %>"></i>
+        <span class="d-flex align-items-center gap-2">
+            <span class="badge text-bg-secondary notification-unsaved" <%= 'style=display:none' unless alert %>><%= lang('notification_unsaved') %></span>
+            <% if unknown_tokens.any? %>
+                <span class="badge text-bg-warning unknown-tokens-badge">
+                    <i class="fas fa-exclamation-triangle me-1"></i><%= lang('notification_has_unknown_tokens') %>
+                </span>
+            <% end %>
+            <i class="fas fa-chevron-<%= open ? 'up' : 'down' %> notification-chevron"></i>
+        </span>
     </div>
     <div class="card-body notification-body" <%= 'style=display:none' unless open %>>
-        <%= form_with url: "/messages_notifications/save", method: :post, class: "notification-form", data: { turbo_frame: "notifications" } do %>
+        <% if alert %><div class="alert alert-danger form-message"><%= alert %></div><% end %>
+        <% if notice %><div class="alert alert-success"><%= notice %></div><% end %>
+        <% if notice && unknown_tokens.any? %>
+            <div class="alert alert-warning">
+                <%= lang('notification_unknown_tokens').sub("{tokens}") { unknown_tokens.map { |token| "{{#{token}}}" }.join(", ") } %>
+            </div>
+        <% end %>
+        <%= form_with url: "/messages_notifications/save", method: :post, class: "notification-form",
+                      data: { turbo_frame: "notifications", unsaved: ("1" if alert) } do %>
             <%= hidden_field_tag :form, "1", id: nil %>
+            <%= hidden_field_tag :panel_key, key, id: nil %>
             <%= hidden_field_tag "notification[id]", n.id, id: nil %>
             <div class="mb-3">
-                <label class="form-label" for="title-<%= index %>"><%= lang('title') %></label>
-                <%= text_field_tag "notification[title]", n.title, id: "title-#{index}", class: "form-control n-title", maxlength: 220 %>
+                <label class="form-label" for="title-<%= key %>"><%= lang('title') %></label>
+                <%= text_field_tag "notification[title]", n.title, id: "title-#{key}", class: "form-control n-title", maxlength: 220 %>
                 <div class="form-text text-muted"><small><%= lang('notification_description_hint') %></small></div>
             </div>
             <div class="mb-3">
-                <label class="form-label" for="event-<%= index %>"><%= lang('notification_event') %></label>
+                <label class="form-label" for="event-<%= key %>"><%= lang('notification_event') %></label>
                 <%= select_tag "notification[event]", options_for_select(Notification::EVENTS.map { |e| [ lang("notification_event_#{e}"), e ] }, n.event),
-                               id: "event-#{index}", class: "form-select", data: { field: "event" } %>
+                               id: "event-#{key}", class: "form-select", data: { field: "event" } %>
             </div>
             <div class="cancelled-block mb-3" data-visible-when="event=cancelled">
-                <label class="form-label" for="cancellation-scope-<%= index %>"><%= lang('notification_cancellation_scope') %></label>
+                <label class="form-label" for="cancellation-scope-<%= key %>"><%= lang('notification_cancellation_scope') %></label>
                 <%= select_tag "notification[cancellation_scope]",
                                options_for_select(Notification::CANCELLATION_SCOPES.map { |s| [ lang("notification_cancellation_#{s}"), s ] }, n.cancellation_scope),
-                               id: "cancellation-scope-#{index}", class: "form-select" %>
+                               id: "cancellation-scope-#{key}", class: "form-select" %>
                 <div class="form-text text-muted"><small><%= lang('notification_cancellation_scope_hint') %></small></div>
             </div>
             <div class="coming-up-block border rounded p-3 mb-3" data-visible-when="event=coming_up">
                 <div class="mb-3">
                     <%= select_tag "notification[lead_mode]",
                                    options_for_select([ [ lang('notification_lead_before'), "before" ], [ lang('notification_lead_day_at'), "day_at" ] ], n.lead_mode),
-                                   id: "lead-mode-#{index}", class: "form-select", data: { field: "lead_mode" } %>
+                                   id: "lead-mode-#{key}", class: "form-select", data: { field: "lead_mode" } %>
                 </div>
                 <div class="lead-before-block row" data-visible-when="lead_mode=before">
                     <div class="col-6">
-                        <label class="form-label" for="lead-days-<%= index %>"><%= lang('days') %></label>
-                        <%= select_tag "notification[lead_days]", options_for_select((0..30).to_a, n.lead_days.to_i), id: "lead-days-#{index}", class: "form-select" %>
+                        <label class="form-label" for="lead-days-<%= key %>"><%= lang('days') %></label>
+                        <%= select_tag "notification[lead_days]", options_for_select((0..30).to_a, n.lead_days.to_i), id: "lead-days-#{key}", class: "form-select" %>
                     </div>
                     <div class="col-6">
-                        <label class="form-label" for="lead-hours-<%= index %>"><%= lang('hours') %></label>
-                        <%= select_tag "notification[lead_hours]", options_for_select((0..23).to_a, n.lead_hours.to_i), id: "lead-hours-#{index}", class: "form-select" %>
+                        <label class="form-label" for="lead-hours-<%= key %>"><%= lang('hours') %></label>
+                        <%= select_tag "notification[lead_hours]", options_for_select((0..23).to_a, n.lead_hours.to_i), id: "lead-hours-#{key}", class: "form-select" %>
                     </div>
                 </div>
                 <div class="lead-day-at-block row" data-visible-when="lead_mode=day_at">
                     <div class="col-6">
-                        <label class="form-label" for="day-at-days-<%= index %>"><%= lang('notification_days_before') %></label>
-                        <%= select_tag "notification[day_at_days]", options_for_select((0..30).to_a, n.lead_days.to_i), id: "day-at-days-#{index}", class: "form-select" %>
+                        <label class="form-label" for="day-at-days-<%= key %>"><%= lang('notification_days_before') %></label>
+                        <%= select_tag "notification[day_at_days]", options_for_select((0..30).to_a, n.lead_days.to_i), id: "day-at-days-#{key}", class: "form-select" %>
                     </div>
                     <div class="col-6">
-                        <label class="form-label" for="send-time-<%= index %>"><%= lang('notification_send_time') %></label>
+                        <label class="form-label" for="send-time-<%= key %>"><%= lang('notification_send_time') %></label>
                         <%= select_tag "notification[send_time]", options_for_select((0..23).map { |h| format("%02d:00", h) }, n.send_time),
-                                       id: "send-time-#{index}", class: "form-select" %>
+                                       id: "send-time-#{key}", class: "form-select" %>
                     </div>
                 </div>
             </div>
@@ -60,8 +83,8 @@
                 <% Notification::AUDIENCES.each do |audience| %>
                     <div class="form-check form-check-inline">
                         <%= check_box_tag "notification[audiences][]", audience, Array(n.audiences).include?(audience),
-                                          id: "audience-#{audience}-#{index}", class: "form-check-input" %>
-                        <label class="form-check-label" for="audience-<%= audience %>-<%= index %>"><%= lang("notification_audience_#{audience}") %></label>
+                                          id: "audience-#{audience}-#{key}", class: "form-check-input" %>
+                        <label class="form-check-label" for="audience-<%= audience %>-<%= key %>"><%= lang("notification_audience_#{audience}") %></label>
                     </div>
                 <% end %>
             </div>
@@ -71,8 +94,8 @@
                 <% @channels.each do |channel| %>
                     <div class="form-check form-check-inline">
                         <%= check_box_tag "notification[channels][]", channel.key, Array(n.channels).include?(channel.key),
-                                          id: "channel-#{channel.key}-#{index}", class: "form-check-input" %>
-                        <label class="form-check-label" for="channel-<%= channel.key %>-<%= index %>"><%= channel.label %></label>
+                                          id: "channel-#{channel.key}-#{key}", class: "form-check-input" %>
+                        <label class="form-check-label" for="channel-<%= channel.key %>-<%= key %>"><%= channel.label %></label>
                     </div>
                 <% end %>
                 <% if @channels.empty? %>
@@ -80,17 +103,19 @@
                 <% end %>
             </div>
             <div class="mb-3">
-                <label class="form-label" for="short-text-<%= index %>"><%= lang('notification_short_text') %></label>
-                <%= text_field_tag "notification[short_text]", n.short_text, id: "short-text-#{index}", class: "form-control", maxlength: 500 %>
+                <label class="form-label" for="short-text-<%= key %>"><%= lang('notification_short_text') %></label>
+                <%= text_field_tag "notification[short_text]", n.short_text, id: "short-text-#{key}", class: "form-control", maxlength: 500 %>
             </div>
             <div class="mb-3">
-                <label class="form-label" for="long-text-<%= index %>"><%= lang('notification_long_text') %></label>
-                <%= text_area_tag "notification[long_text]", n.long_text, id: "long-text-#{index}", class: "form-control", rows: 7 %>
+                <label class="form-label" for="long-text-<%= key %>"><%= lang('notification_long_text') %></label>
+                <%= text_area_tag "notification[long_text]", n.long_text, id: "long-text-#{key}", class: "form-control", rows: 7 %>
                 <div class="form-text text-muted">
-                    <small>
-                        <%= lang('notification_tokens_hint') %>
-                        <%= Messaging::Template::TOKENS.map { |token| "{{#{token}}}" }.join(", ") %>
-                    </small>
+                    <small><%= lang('notification_tokens_hint') %></small>
+                    <div class="d-flex flex-wrap gap-1 mt-1">
+                        <% Messaging::Template::TOKENS.each do |token| %>
+                            <button type="button" class="btn btn-sm btn-outline-secondary notification-token" data-token="{{<%= token %>}}">{{<%= token %>}}</button>
+                        <% end %>
+                    </div>
                 </div>
             </div>
             <% if can?(:edit, :system_settings) %>

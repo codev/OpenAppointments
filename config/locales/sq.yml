@@ -679,7 +679,6 @@ sq:
     messages: Messages
     messages_hint: Manage notifications, providers and message logs
     unknown_inbox: Unknown Inbox
-    unknown_inbox_info: 'Incoming messages from senders that do not match any customer. Mark each one read once dealt with. These messages also appear in the main log.'
     messages_providers: Providers
     messages_provider: Provider
     messages_logs: Logs
@@ -778,7 +777,6 @@ sq:
     notification_no_providers: No providers are enabled. Enable one on the Providers page first.
     notification_short_text: Short Text (Email Subject or SMS)
     notification_long_text: Long Text (for providers that support it, e.g. Email Body)
-    notification_tokens_hint: "Template fields you can use:"
     notification_untitled: Untitled notification
     notification_saved: Notification saved.
     delete_notification: Delete Notification
@@ -892,7 +890,6 @@ sq:
     appointment_statuses: 'Appointment Statuses'
     inbox: 'Inbox'
     inbox_hint: 'Incoming messages from your customers.'
-    inbox_info: 'Incoming messages from customers. Messages stay unread until someone marks them read.'
     unread: 'Unread'
     read: 'Read'
     message: 'Message'
@@ -970,3 +967,20 @@ sq:
     hidden_from_public: "Fshehur nga Publiku"
     slot_interval_hint: "Sa shpesh u ofrohen klientëve oraret e fillimit. Me 15, një shërbim 45 minutësh mund të fillojë në 9:00, 9:15, 9:30 e kështu me radhë; me 60, në 9:00, 10:00, 11:00. Kjo nuk lë kohë të lirë pas takimit: për këtë, zgjatni kohëzgjatjen e shërbimit."
     messages_all_channels: "Të gjitha"
+    notification_unsaved: "E paruajtur"
+    notification_unknown_tokens: "Vendmbajtës të panjohur: {tokens}. Do të hiqen nga mesazhet."
+    notification_has_unknown_tokens: "Vendmbajtës i panjohur"
+    token_copied: "U kopjua {token}"
+    inbox_done: "Përfunduar"
+    inbox_show_done: "Shfaq të përfunduara"
+    inbox_done_by: "Përfunduar nga {name} {time}"
+    message_delete_confirm: "Ta fshij këtë mesazh përgjithmonë? Kjo nuk mund të zhbëhet."
+    message_deleted: "Mesazhi u fshi"
+    message_shared_contact: "Përdor gjithashtu këtë kontakt:"
+    message_move_to: "Zhvendos te {name}"
+    message_moved: "Mesazhi u zhvendos"
+    notification_tokens_hint: "Fusha shablloni që mund të përdorni. Klikoni një për ta futur aty ku po shkruanit, ose për ta kopjuar:"
+    inbox_info: "Mesazhe hyrëse nga klientët. Shënoni secilin si Përfunduar pasi të trajtohet; mbetet në historikun e klientit. Shfaq të përfunduara i shfaq përsëri me mundësinë Anulo."
+    unknown_inbox_info: "Mesazhe hyrëse nga dërgues që nuk përputhen me asnjë klient. Shënoni secilin si Përfunduar pasi të trajtohet. Këto mesazhe shfaqen edhe në regjistrin kryesor."
+    booking_release_time: "Ora e hapjes"
+    booking_release_time_hint: "Dita tjetër në fund të limitit të rezervimit në të ardhmen hapet në këtë orë çdo ditë."

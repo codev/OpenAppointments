@@ -679,7 +679,6 @@ he:
     messages: Messages
     messages_hint: Manage notifications, providers and message logs
     unknown_inbox: Unknown Inbox
-    unknown_inbox_info: 'Incoming messages from senders that do not match any customer. Mark each one read once dealt with. These messages also appear in the main log.'
     messages_providers: Providers
     messages_provider: Provider
     messages_logs: Logs
@@ -778,7 +777,6 @@ he:
     notification_no_providers: No providers are enabled. Enable one on the Providers page first.
     notification_short_text: Short Text (Email Subject or SMS)
     notification_long_text: Long Text (for providers that support it, e.g. Email Body)
-    notification_tokens_hint: "Template fields you can use:"
     notification_untitled: Untitled notification
     notification_saved: Notification saved.
     delete_notification: Delete Notification
@@ -892,7 +890,6 @@ he:
     appointment_statuses: 'Appointment Statuses'
     inbox: 'Inbox'
     inbox_hint: 'Incoming messages from your customers.'
-    inbox_info: 'Incoming messages from customers. Messages stay unread until someone marks them read.'
     unread: 'Unread'
     read: 'Read'
     message: 'Message'
@@ -970,3 +967,20 @@ he:
     hidden_from_public: "מוסתר מהציבור"
     slot_interval_hint: "באיזו תדירות מוצעות שעות התחלה ללקוחות. עם 15, שירות של 45 דקות יכול להתחיל ב-9:00, 9:15, 9:30 וכן הלאה; עם 60, ב-9:00, 10:00, 11:00. הגדרה זו אינה שומרת זמן פנוי אחרי הפגישה: לשם כך, הארך את משך השירות."
     messages_all_channels: "הכל"
+    notification_unsaved: "לא נשמר"
+    notification_unknown_tokens: "משתנים לא מוכרים: {tokens}. הם יושמטו מההודעות."
+    notification_has_unknown_tokens: "משתנה לא מוכר"
+    token_copied: "הועתק {token}"
+    inbox_done: "טופל"
+    inbox_show_done: "הצג מטופלים"
+    inbox_done_by: "טופל על ידי {name} {time}"
+    message_delete_confirm: "למחוק את ההודעה הזו לצמיתות? לא ניתן לבטל פעולה זו."
+    message_deleted: "ההודעה נמחקה"
+    message_shared_contact: "משתמש/ת גם באיש הקשר הזה:"
+    message_move_to: "העברה אל {name}"
+    message_moved: "ההודעה הועברה"
+    notification_tokens_hint: "שדות תבנית שניתן להשתמש בהם. לחצו על אחד כדי להוסיף אותו במקום שבו הקלדתם, או כדי להעתיק אותו:"
+    inbox_info: "הודעות נכנסות מלקוחות. סמנו כל אחת כטופל לאחר הטיפול; היא נשארת בהיסטוריית הלקוח. הצג מטופלים מציג אותן שוב עם אפשרות לבטל."
+    unknown_inbox_info: "הודעות נכנסות משולחים שאינם תואמים לאף לקוח. סמנו כל אחת כטופל לאחר הטיפול. הודעות אלה מופיעות גם ביומן הראשי."
+    booking_release_time: "שעת פתיחה"
+    booking_release_time_hint: "היום הבא בסוף מגבלת ההזמנה העתידית נפתח בשעה זו בכל יום."

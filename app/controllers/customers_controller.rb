@@ -82,7 +82,7 @@ class CustomersController < ApplicationController
 
   # Appointments the signed in user may see for the record, as the old page filtered.
   def visible_appointments(customer)
-    appointments = Appointment.appointments.where(id_users_customer: customer.id).includes(:service, :provider)
+    appointments = Appointment.appointments.where(id_users_customer: customer.id).includes(:service, :provider, :appointment_status)
                               .order(start_datetime: :desc)
     case session[:role_slug]
     when Role::PROVIDER then appointments.where(id_users_provider: session[:user_id])

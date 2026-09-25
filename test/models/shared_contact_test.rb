@@ -1,0 +1,61 @@
+require "test_helper"
+
+# Partners and family may share an email or phone. A message from a shared
+# contact goes to the customer with the next upcoming appointment, else the
+# latest past one, else the most recently updated customer.
+class SharedContactTest < ActiveSupport::TestCase
+  setup do
+    @alex = User.create!(name: "Alex Shared", email: "Home@Example.org", phone_number: "07700 900555", role: roles(:customer))
+    @blake = User.create!(name: "Blake Shared", email: "home@example.org", mobile_number: "+447700900555", role: roles(:customer))
+  end
+
+  def book(customer, start, status: "Booked")
+    Appointment.create!(start_datetime: start, end_datetime: start + 30.minutes, provider: users(:zane),
+                        customer: customer, service: services(:haircut), status: status)
+  end
+
+  test "every customer using the email or phone is a candidate, once each" do
+    assert_equal [ @alex, @blake ].sort_by(&:id), User.customers_by_contact(email: "HOME@example.org").sort_by(&:id)
+    assert_equal [ @alex, @blake ].sort_by(&:id), User.customers_by_contact(phone: "+447700900555").sort_by(&:id)
+    assert_equal [ @alex, @blake ].sort_by(&:id),
+                 User.customers_by_contact(email: "home@example.org", phone: "+447700900555").sort_by(&:id)
+    assert_equal [], User.customers_by_contact(email: "nobody@example.org")
+  end
+
+  test "the next upcoming appointment decides" do
+    book(@alex, 5.days.from_now)
+    book(@blake, 2.days.from_now)
+    book(@alex, 1.day.ago)
+    assert_equal @blake, User.likely_sender([ @alex, @blake ])
+  end
+
+  test "with nothing upcoming the latest past appointment decides, ignoring cancelled ones" do
+    book(@alex, 10.days.ago)
+    book(@blake, 20.days.ago)
+    book(@blake, 2.days.from_now, status: "Cancelled")
+    assert_equal @alex, User.likely_sender([ @alex, @blake ])
+  end
+
+  test "with no appointments the most recently updated customer is chosen" do
+    @alex.touch
+    assert_equal @alex, User.likely_sender([ @blake, @alex ])
+    assert_nil User.likely_sender([])
+  end
+
+  # Starts are stored on the stylist's wall clock; the server runs in UTC.
+  test "an appointment that started on the stylist's clock is no longer upcoming in summer" do
+    london = Time.find_zone!("Europe/London")
+    book(@alex, Time.new(2026, 8, 3, 10, 0, 0)) # 10:00 London = 09:00 UTC
+    book(@blake, Time.new(2026, 8, 4, 10, 0, 0))
+    assert_equal @blake, User.likely_sender([ @alex, @blake ], london.parse("2026-08-03 10:30"))
+  end
+
+  test "the stylist told about a message follows the same clock" do
+    london = Time.find_zone!("Europe/London")
+    kai = User.create!(name: "Kai", email: "kai@example.org", role: roles(:provider), timezone: "Europe/London")
+    book(@alex, Time.new(2026, 8, 3, 10, 0, 0))
+    Appointment.create!(start_datetime: Time.new(2026, 8, 4, 10, 0, 0), end_datetime: Time.new(2026, 8, 4, 10, 30, 0),
+                        provider: kai, customer: @alex, service: services(:haircut), status: "Booked")
+    assert_equal kai, Notifications.stylist_for(@alex, london.parse("2026-08-03 10:30"))
+  end
+end

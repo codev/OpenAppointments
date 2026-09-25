@@ -3,6 +3,25 @@
 The about page lists these notes; every release needs a section here matching
 CloudronManifest.json.
 
+## 2.4.0
+
+- Notifications: click a token to insert it
+- Notifications: new tokens {{Customer Extra Questions}}, {{Customer Notes}} and {{Appointment Notes}}
+- Notifications: prompt for unsaved changes and allow editing multiple notifications at once
+- Inbox: inbox is for admins only, mark each message Done when dealt with
+- Messages: admins can delete messages
+- Messages: a reply from an email or phone several customers share goes to the one with the next appointment (else the most recent) - Inbox lists all customers and an admin can move the message
+- Business Logic: Release time sets the hour at which new appointments are available
+- Customers: the appointment list shows status: grey for cancelled or rescheduled
+- Customers: All phone numbers are stored in international format (+1...) for faster matching
+- Messages: quoted text is removed from old replies
+- Speed improvement: finding free times is faster
+- Settings: menus reordered
+
+## 2.3.1
+
+- Bug fix: updating to 2.3.0 deleted data including logins
+
 ## 2.3.0
 
 - Booking: customers can book more than one appointment on the same day

@@ -1,11 +1,12 @@
 # Turns fetched inbound email into incoming Message rows. Sender is matched to
-# a customer by email; unmatched mail lands in the Unknown Inbox (customer nil).
+# a customer by email (User.likely_sender when several share it); unmatched
+# mail lands in the Unknown Inbox (customer nil).
 # A matched message notifies the customer's stylist.
 # The body holds the reply text only, the source the full text as received.
 class MessagesMailbox < ApplicationMailbox
   def process
     from = mail.from&.first.to_s
-    customer = User.customers.where("LOWER(email) = ?", from.downcase).first if from.present?
+    customer = User.likely_sender(User.customers_by_contact(email: from))
 
     message = Message.create!(
       direction: "incoming", channel: "email", status: "received",

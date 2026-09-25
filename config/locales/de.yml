@@ -177,7 +177,7 @@ de:
     reload_appointments_hint: Kalendertermine neu laden.
     trigger_sync_hint: Starten Sie den Synchronisationsprozess von Externe-Kalender.
     appointment_updated: Die Termine sind erfolgreich erneuert worden.
-    undo: Schritt zurück
+    undo: Rückgängig
     appointment_details_changed: Die Termindetails haben sich geändert.
     appointment_changes_saved: Die Terminänderungen wurden erfolgreich gespeichert.
     save: Speichern
@@ -679,7 +679,6 @@ de:
     messages: Messages
     messages_hint: Manage notifications, providers and message logs
     unknown_inbox: Unknown Inbox
-    unknown_inbox_info: 'Incoming messages from senders that do not match any customer. Mark each one read once dealt with. These messages also appear in the main log.'
     messages_providers: Providers
     messages_provider: Provider
     messages_logs: Logs
@@ -778,7 +777,6 @@ de:
     notification_no_providers: No providers are enabled. Enable one on the Providers page first.
     notification_short_text: Short Text (Email Subject or SMS)
     notification_long_text: Long Text (for providers that support it, e.g. Email Body)
-    notification_tokens_hint: "Template fields you can use:"
     notification_untitled: Untitled notification
     notification_saved: Notification saved.
     delete_notification: Delete Notification
@@ -892,7 +890,6 @@ de:
     appointment_statuses: 'Appointment Statuses'
     inbox: 'Inbox'
     inbox_hint: 'Incoming messages from your customers.'
-    inbox_info: 'Incoming messages from customers. Messages stay unread until someone marks them read.'
     unread: 'Unread'
     read: 'Read'
     message: 'Message'
@@ -970,3 +967,20 @@ de:
     hidden_from_public: "Vor der Öffentlichkeit verborgen"
     slot_interval_hint: "Wie oft den Kunden Startzeiten angeboten werden. Bei 15 kann eine 45-minütige Dienstleistung um 9:00, 9:15, 9:30 usw. beginnen; bei 60 um 9:00, 10:00, 11:00. Es hält nach dem Termin keine Zeit frei: Verlängern Sie dafür die Dauer der Dienstleistung."
     messages_all_channels: "Alle"
+    notification_unsaved: "Nicht gespeichert"
+    notification_unknown_tokens: "Unbekannte Platzhalter: {tokens}. Sie werden aus Nachrichten weggelassen."
+    notification_has_unknown_tokens: "Unbekannter Platzhalter"
+    token_copied: "{token} kopiert"
+    inbox_done: "Erledigt"
+    inbox_show_done: "Erledigte anzeigen"
+    inbox_done_by: "Erledigt von {name} {time}"
+    message_delete_confirm: "Diese Nachricht dauerhaft löschen? Dies kann nicht rückgängig gemacht werden."
+    message_deleted: "Nachricht gelöscht"
+    message_shared_contact: "Nutzt auch diesen Kontakt:"
+    message_move_to: "Zu {name} verschieben"
+    message_moved: "Nachricht verschoben"
+    notification_tokens_hint: "Vorlagenfelder, die Sie verwenden können. Klicken Sie auf eines, um es an der Schreibposition einzufügen oder zu kopieren:"
+    inbox_info: "Eingehende Nachrichten von Kunden. Markieren Sie jede als Erledigt, sobald sie bearbeitet ist; sie bleibt im Kundenverlauf. Erledigte anzeigen listet sie erneut mit Rückgängig auf."
+    unknown_inbox_info: "Eingehende Nachrichten von Absendern, die zu keinem Kunden passen. Markieren Sie jede als Erledigt, sobald sie bearbeitet ist. Diese Nachrichten erscheinen auch im Hauptprotokoll."
+    booking_release_time: "Freigabezeit"
+    booking_release_time_hint: "Der nächste Tag am Ende des zukünftigen Buchungslimits wird täglich zu dieser Zeit freigegeben."

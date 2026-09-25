@@ -679,7 +679,6 @@ ru:
     messages: Messages
     messages_hint: Manage notifications, providers and message logs
     unknown_inbox: Unknown Inbox
-    unknown_inbox_info: 'Incoming messages from senders that do not match any customer. Mark each one read once dealt with. These messages also appear in the main log.'
     messages_providers: Providers
     messages_provider: Provider
     messages_logs: Logs
@@ -778,7 +777,6 @@ ru:
     notification_no_providers: No providers are enabled. Enable one on the Providers page first.
     notification_short_text: Short Text (Email Subject or SMS)
     notification_long_text: Long Text (for providers that support it, e.g. Email Body)
-    notification_tokens_hint: "Template fields you can use:"
     notification_untitled: Untitled notification
     notification_saved: Notification saved.
     delete_notification: Delete Notification
@@ -892,7 +890,6 @@ ru:
     appointment_statuses: 'Appointment Statuses'
     inbox: 'Inbox'
     inbox_hint: 'Incoming messages from your customers.'
-    inbox_info: 'Incoming messages from customers. Messages stay unread until someone marks them read.'
     unread: 'Unread'
     read: 'Read'
     message: 'Message'
@@ -970,3 +967,20 @@ ru:
     hidden_from_public: "Скрыто от Публики"
     slot_interval_hint: "Как часто клиентам предлагается время начала. При 15 услуга на 45 минут может начаться в 9:00, 9:15, 9:30 и так далее; при 60 - в 9:00, 10:00, 11:00. Время после записи при этом не резервируется: для этого увеличьте длительность услуги."
     messages_all_channels: "Все"
+    notification_unsaved: "Не сохранено"
+    notification_unknown_tokens: "Неизвестные плейсхолдеры: {tokens}. Они будут исключены из сообщений."
+    notification_has_unknown_tokens: "Неизвестный плейсхолдер"
+    token_copied: "Скопировано {token}"
+    inbox_done: "Обработано"
+    inbox_show_done: "Показать обработанные"
+    inbox_done_by: "Обработано {name} {time}"
+    message_delete_confirm: "Удалить это сообщение навсегда? Это действие нельзя отменить."
+    message_deleted: "Сообщение удалено"
+    message_shared_contact: "Также использует этот контакт:"
+    message_move_to: "Переместить к {name}"
+    message_moved: "Сообщение перемещено"
+    notification_tokens_hint: "Поля шаблона, которые можно использовать. Нажмите на поле, чтобы вставить его в то место, где вы печатали, или чтобы скопировать его:"
+    inbox_info: "Входящие сообщения от клиентов. Отмечайте каждое как Обработано после обработки; оно останется в истории клиента. Показать обработанные снова выводит их с возможностью Вернуть."
+    unknown_inbox_info: "Входящие сообщения от отправителей, не соответствующих ни одному клиенту. Отмечайте каждое как Обработано после обработки. Эти сообщения также отображаются в общем журнале."
+    booking_release_time: "Время открытия"
+    booking_release_time_hint: "Следующий день в конце лимита будущего бронирования открывается в это время каждый день."

@@ -40,35 +40,50 @@ class User < ApplicationRecord
   scope :admins, -> { joins(:role).where(roles: { slug: Role::ADMIN }) }
   scope :providers, -> { joins(:role).where(roles: { slug: Role::PROVIDER }) }
 
-  # A loose pre-filter on the last digits of either number, with the usual
-  # separators removed; the E.164 comparison in Ruby decides.
-  PHONE_TAIL_MATCH = <<~SQL.squish.freeze
-    REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(phone_number, ' ', ''), '-', ''), '(', ''), ')', ''), '.', '') LIKE :tail
-    OR REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(mobile_number, ' ', ''), '-', ''), '(', ''), ')', ''), '.', '') LIKE :tail
-  SQL
+  # Phones are stored in E.164 (normalised on save), so a lookup is an exact
+  # match on either indexed column.
+  PHONE_MATCH = "users.phone_number = :number OR users.mobile_number = :number".freeze
 
-  # The customer whose phone or mobile number is this one, however either was
-  # typed.
-  def self.customer_by_phone(number, scope = customers)
-    customers_by_phone(number, scope).first
-  end
+  before_validation :normalize_phones
 
-  # Customers whose phone or mobile number is this one: both sides are compared
-  # in E.164 after a digits-only narrowing.
+  # Customers whose phone or mobile number is this one, however it was typed.
   def self.customers_by_phone(number, scope = customers)
     wanted = Messaging::Template.e164(number)
     return [] if wanted.blank? || wanted.length < 7
 
-    scope.where(PHONE_TAIL_MATCH, tail: "%#{wanted[-7..]}%")
-         .select { |user| [ user.phone_number, user.mobile_number ].any? { |stored| Messaging::Template.e164(stored) == wanted } }
+    # By id from a phone-only subquery: SQLite then searches the phone indexes
+    # instead of every user with the customer role.
+    scope.where(id: User.unscoped.where(PHONE_MATCH, number: wanted).select(:id)).to_a
+  end
+
+  # Customers who use this email (any case) or phone, once each. Partners and
+  # family may share one.
+  def self.customers_by_contact(email: nil, phone: nil)
+    found = email.present? ? customers.where("LOWER(email) = ?", email.downcase).to_a : []
+    found += customers_by_phone(phone) if phone.present?
+    found.uniq
+  end
+
+  # Of customers sharing a contact, the one a message from it most likely
+  # comes from: the next upcoming appointment, else the latest past one, else
+  # the most recently updated customer.
+  def self.likely_sender(candidates, now = Time.current)
+    return candidates.first if candidates.size < 2
+
+    upcoming, latest = Appointment.next_and_last(Appointment.appointments.active.where(id_users_customer: candidates.map(&:id)), now)
+    id = (upcoming || latest)&.id_users_customer
+    id ? candidates.find { |customer| customer.id == id } : candidates.max_by(&:updated_at)
   end
 
   # The customer a booking belongs to: the same email or phone and the same
   # name. People sharing contact details keep their own records.
   def self.customer_for_booking(email:, phone:, name:)
-    candidates = email.present? ? customers.where("LOWER(email) = ?", email.downcase).to_a : []
-    candidates += customers_by_phone(phone) if phone.present?
-    candidates.find { |customer| same_name?(customer.name, name) }
+    customers_by_contact(email: email, phone: phone).find { |customer| same_name?(customer.name, name) }
+  end
+
+  def normalize_phones
+    self.phone_number = Messaging::Template.e164(phone_number) if phone_number_changed?
+    self.mobile_number = Messaging::Template.e164(mobile_number) if mobile_number_changed?
   end
 
   def self.same_name?(one, other)

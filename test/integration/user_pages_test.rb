@@ -17,7 +17,7 @@ class UserPagesTest < ActionDispatch::IntegrationTest
     login_admin
     users(:admin).update!(mobile_number: "07700 900222")
     get "/admins"
-    assert_select ".admin-row[data-id=?] small", users(:admin).id.to_s, text: "edson.mori@example.org, 07700 900222"
+    assert_select ".admin-row[data-id=?] small", users(:admin).id.to_s, text: "edson.mori@example.org, +447700900222"
 
     get "/admins/new"
     assert_select "turbo-frame#admins_record form[action='/admins'][enctype='multipart/form-data']" do
