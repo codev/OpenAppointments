@@ -3,6 +3,14 @@
 The about page lists these notes; every release needs a section here matching
 CloudronManifest.json.
 
+## 2.4.0
+
+- Notifications: new tokens {{Customer Extra Questions}}, {{Customer Notes}} and {{Appointment Notes}}; extra questions are a bulleted list in email and one per line in SMS
+
+## 2.3.1
+
+- Bug fix: updating to 2.3.0 deleted logins, appointments and links
+
 ## 2.3.0
 
 - Booking: customers can book more than one appointment on the same day

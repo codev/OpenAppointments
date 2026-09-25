@@ -171,8 +171,9 @@ module Notifications
     address = adapter.address_for(user)
     return if address.blank?
 
-    short = Messaging::Template.render(notification.short_text, context)
-    long = Messaging::Template.render(notification.long_text, context)
+    bullets = adapter.key == "email"
+    short = Messaging::Template.render(notification.short_text, context, bullets: bullets)
+    long = Messaging::Template.render(notification.long_text, context, bullets: bullets)
 
     if adapter.supports_long_text?
       subject = short.presence ||
