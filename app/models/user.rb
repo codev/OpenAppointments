@@ -40,6 +40,13 @@ class User < ApplicationRecord
   scope :admins, -> { joins(:role).where(roles: { slug: Role::ADMIN }) }
   scope :providers, -> { joins(:role).where(roles: { slug: Role::PROVIDER }) }
 
+  # A loose pre-filter on the last digits of either number, with the usual
+  # separators removed; the E.164 comparison in Ruby decides.
+  PHONE_TAIL_MATCH = <<~SQL.squish.freeze
+    REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(phone_number, ' ', ''), '-', ''), '(', ''), ')', ''), '.', '') LIKE :tail
+    OR REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(mobile_number, ' ', ''), '-', ''), '(', ''), ')', ''), '.', '') LIKE :tail
+  SQL
+
   # The customer whose phone or mobile number is this one, however either was
   # typed.
   def self.customer_by_phone(number, scope = customers)
@@ -52,10 +59,7 @@ class User < ApplicationRecord
     wanted = Messaging::Template.e164(number)
     return [] if wanted.blank? || wanted.length < 7
 
-    # A loose pre-filter: the Ruby comparison below decides.
-    tail = "%#{wanted[-7..]}%"
-    stripped = "REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(%s, ' ', ''), '-', ''), '(', ''), ')', ''), '.', '')"
-    scope.where("#{format(stripped, 'phone_number')} LIKE :tail OR #{format(stripped, 'mobile_number')} LIKE :tail", tail: tail)
+    scope.where(PHONE_TAIL_MATCH, tail: "%#{wanted[-7..]}%")
          .select { |user| [ user.phone_number, user.mobile_number ].any? { |stored| Messaging::Template.e164(stored) == wanted } }
   end
 
