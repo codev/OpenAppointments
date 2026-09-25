@@ -1,7 +1,7 @@
 /**
  * Notification templates: fold and unfold the panels, open or close them all,
- * and mirror the typed title into the panel header. The forms are Rails forms
- * in the notifications frame.
+ * mirror the typed title into the panel header, and insert tokens. The forms
+ * are Rails forms in the notifications frame.
  */
 (function () {
     function setFolded($panel, folded) {
@@ -19,6 +19,29 @@
         const anyFolded = $('.notification-panel').toArray().some((panel) => !$(panel).find('.notification-body').is(':visible'));
         $('.notification-panel').each((index, panel) => setFolded($(panel), !anyFolded));
         $button.text(anyFolded ? $button.data('closeText') : $button.data('openText'));
+    });
+
+    // A token button inserts at the cursor of the panel's last used text field;
+    // before any field was used it copies the token instead.
+    const TEXT_FIELDS = "input[name='notification[short_text]'], textarea[name='notification[long_text]']";
+
+    $(document).on('focusin', TEXT_FIELDS, (event) => {
+        $(event.target).closest('.notification-panel').data('lastField', event.target);
+    });
+
+    $(document).on('click', '.notification-token', (event) => {
+        const token = $(event.currentTarget).data('token');
+        const field = $(event.currentTarget).closest('.notification-panel').data('lastField');
+        if (!field) {
+            navigator.clipboard.writeText(token);
+            App.Layouts.Backend.displayNotification(lang('notification_token_copied'));
+            return;
+        }
+        const start = field.selectionStart;
+        field.value = field.value.slice(0, start) + token + field.value.slice(field.selectionEnd);
+        field.focus();
+        field.setSelectionRange(start + token.length, start + token.length);
+        $(field).trigger('input');
     });
 
     $(document).on('input', '.n-title', (event) => {

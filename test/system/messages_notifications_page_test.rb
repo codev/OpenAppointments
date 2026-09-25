@@ -93,4 +93,28 @@ class MessagesNotificationsPageTest < ApplicationSystemTestCase
     end
     assert_equal "Hi {{Custmer Name}}", notification.reload.short_text
   end
+
+  test "token buttons insert at the cursor of the last used field, or copy when none was used" do
+    notification = Notification.create!(title: "Tokens", event: "created", short_text: "Hi !", long_text: "Dear")
+    login_as_admin
+    visit "/messages_notifications"
+    find("#{panel(notification)} .notification-header").click
+    within(panel(notification)) do
+      click_on "{{Customer Name}}"
+      assert_equal "Hi !", short_text_field.value
+      short_text_field.click
+      page.execute_script("arguments[0].setSelectionRange(3, 3)", short_text_field)
+      click_on "{{Customer Name}}"
+      assert_equal "Hi {{Customer Name}}!", short_text_field.value
+
+      long_text = find("textarea[name='notification[long_text]']")
+      long_text.click
+      page.execute_script("arguments[0].setSelectionRange(4, 4)", long_text)
+      click_on "{{Customer First Name}}"
+      assert_equal "Dear{{Customer First Name}}", long_text.value
+      assert_equal "Hi {{Customer Name}}!", short_text_field.value
+      assert_selector "form.notification-form[data-unsaved]"
+    end
+    assert_selector ".backend-notification", text: "Copied", count: 1
+  end
 end

@@ -110,10 +110,12 @@
                 <label class="form-label" for="long-text-<%= key %>"><%= lang('notification_long_text') %></label>
                 <%= text_area_tag "notification[long_text]", n.long_text, id: "long-text-#{key}", class: "form-control", rows: 7 %>
                 <div class="form-text text-muted">
-                    <small>
-                        <%= lang('notification_tokens_hint') %>
-                        <%= Messaging::Template::TOKENS.map { |token| "{{#{token}}}" }.join(", ") %>
-                    </small>
+                    <small><%= lang('notification_tokens_hint') %></small>
+                    <div class="d-flex flex-wrap gap-1 mt-1">
+                        <% Messaging::Template::TOKENS.each do |token| %>
+                            <button type="button" class="btn btn-sm btn-outline-secondary notification-token" data-token="{{<%= token %>}}">{{<%= token %>}}</button>
+                        <% end %>
+                    </div>
                 </div>
             </div>
             <% if can?(:edit, :system_settings) %>
