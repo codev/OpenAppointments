@@ -29,4 +29,22 @@ class BusinessSettingsWindowsTest < ActionDispatch::IntegrationTest
     get "/business_settings"
     assert_select "input[name='settings[future_booking_limit]'][min='1']"
   end
+
+  test "the release time sits under the future booking limit, saves, and refuses a malformed time" do
+    post "/login/validate", params: { username: "administrator", password: "administrator1" }
+    get "/business_settings"
+    assert_select "select[name='settings[booking_release_time]'] option[selected][value='00:00']"
+    assert_select "select[name='settings[booking_release_time]'] option[value='12:00']"
+    assert_match I18n.t("ea.booking_release_time_hint"), response.body
+    limit_at = response.body.index("settings[future_booking_limit]")
+    release_at = response.body.index("settings[booking_release_time]")
+    assert limit_at < release_at, "release time follows the future booking limit"
+
+    post "/business_settings/save", params: { settings: { booking_release_time: "12:00" } }
+    assert_equal "12:00", Setting.get("booking_release_time")
+
+    post "/business_settings/save", params: { settings: { booking_release_time: "25:00" } }
+    assert flash[:alert].present?
+    assert_equal "12:00", Setting.get("booking_release_time")
+  end
 end

@@ -2,7 +2,6 @@ module Availability
   # Port of EA's Availability library, quirks preserved deliberately:
   # - a date counts as fully blocked only when MORE THAN ONE blocked period covers it
   # - single-attendant periods only exist when the day plan has a "breaks" key
-  # - future_booking_limit passes only strictly-greater thresholds (boundary day = no hours)
   # - available hours are string-sorted
   # - period splits appended mid-iteration are visited again (PHP by-reference foreach);
   #   the split branches are idempotent so revisits are harmless but order is preserved
@@ -273,18 +272,11 @@ module Availability
       hours.sort
     end
 
+    # Public booking ends on BookingWindows.last_bookable_date (the Future
+    # Booking Limit and release time on the business clock).
     def consider_future_booking_limit(date, hours)
-      threshold = now + future_booking_limit_days * 86_400
-      selected = Time.new(*date.split("-").map(&:to_i))
-
-      threshold.to_i > selected.to_i ? hours : []
-    end
-
-    def future_booking_limit_days
-      @future_booking_limit_days ||= begin
-        limit = Setting.get("future_booking_limit", "90")
-        limit.to_s.match?(/\A-?\d+\z/) ? [ limit.to_i, 0 ].max : 90
-      end
+      @last_bookable ||= BookingWindows.last_bookable_date(now).strftime("%Y-%m-%d")
+      date <= @last_bookable ? hours : []
     end
 
     def entire_date_blocked?(date)

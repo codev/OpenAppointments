@@ -504,6 +504,8 @@ en:
     future_booking_limit: Future Booking Limit
     limit_days: Limit (Days)
     future_booking_limit_hint: Set the future limit in days customers can make appointments via the public booking page.
+    booking_release_time: "Release time"
+    booking_release_time_hint: "The next day at the end of the booking window opens at this time each day."
     api_token: API Token
     allow_rescheduling_cancellation_before: Allow Rescheduling/Cancellation Before
     at_least_one_field: At least one field must be displayed in the booking page.

@@ -37,10 +37,12 @@ module SettingsFormHelper
     text_area_tag "settings[#{name}]", setting_value(name), setting_field_options(name, { class: "form-control" }.merge(options))
   end
 
-  # choices: flat [[label, value]] or grouped [[group, [[label, value]]]].
-  def setting_select(name, choices, **options)
+  # choices: flat [[label, value]] or grouped [[group, [[label, value]]]];
+  # default: value selected while unset.
+  def setting_select(name, choices, default: nil, **options)
     grouped = choices.first&.last.is_a?(Array) && choices.first.last.first.is_a?(Array)
-    tags = grouped ? grouped_options_for_select(choices, setting_value(name)) : options_for_select(choices, setting_value(name))
+    value = setting_value(name) || default
+    tags = grouped ? grouped_options_for_select(choices, value) : options_for_select(choices, value)
     select_tag "settings[#{name}]", tags, setting_field_options(name, { class: "form-select" }.merge(options))
   end
 

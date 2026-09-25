@@ -128,6 +128,17 @@
                             </div>
                         </div>
 
+                        <div class="mb-5">
+                            <label for="booking-release-time" class="form-label">
+                                <%= lang('booking_release_time') %>
+                            </label>
+                            <%= setting_select "booking_release_time", (0..23).map { |hour| format("%02d:00", hour) }.map { |time| [ time, time ] },
+                                               default: "00:00" %>
+                            <div class="form-text text-muted">
+                                <small><%= lang('booking_release_time_hint') %></small>
+                            </div>
+                        </div>
+
                         <h5 class="mb-3 fw-light"><%= lang('waitlist') %></h5>
 
                         <div class="form-check form-switch mb-3">

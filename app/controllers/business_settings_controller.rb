@@ -19,6 +19,11 @@ class BusinessSettingsController < ApplicationController
     require_system_settings_edit!
     merge_minutes_fields
     save_setting_rows(:business_settings) do |name, value|
+      if name == "booking_release_time"
+        raise ArgumentError, helpers.lang("invalid_datetime") unless value.to_s.match?(BookingWindows::RELEASE_TIME_FORMAT)
+
+        next value
+      end
       next value unless name == "appointment_status_options"
 
       AppointmentStatus.apply!(JSON.parse(value))

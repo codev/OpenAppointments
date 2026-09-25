@@ -87,10 +87,11 @@ class AvailabilityEngineTest < ActiveSupport::TestCase
     assert_equal expected_monday_hours - %w[09:00 09:15 09:30], hours
   end
 
-  test "future booking limit boundary day yields no hours (strictly greater passes)" do
+  test "future booking limit: today plus the limit is the last day with hours" do
+    Setting.set("default_timezone", "UTC")
     engine = Availability::Engine.new(now: Time.new(2026, 7, 1, 0, 0, 0))
-    # 2026-09-29 == now + 90 days exactly: threshold == selected midnight -> [].
-    assert_empty engine.send(:consider_future_booking_limit, "2026-09-29", [ "ok" ])
+    # 2026-09-29 == 2026-07-01 + 90 days: open from 00:00 with the default release time.
+    assert_equal [ "ok" ], engine.send(:consider_future_booking_limit, "2026-09-29", [ "ok" ])
     assert_equal [ "ok" ], engine.send(:consider_future_booking_limit, "2026-09-28", [ "ok" ])
     assert_empty engine.send(:consider_future_booking_limit, "2026-09-30", [ "ok" ])
   end
