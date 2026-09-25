@@ -13,10 +13,9 @@ class InboxController < ApplicationController
 
     backend_page_vars(page_title: helpers.lang("inbox"), active_menu: "inbox")
     page = [ params[:page].to_i, 1 ].max
-    filter = if params[:done] == "1" then "done"
-             elsif params[:unread] == "1" then "unread"
-             else "all"
-             end
+    filter = "all"
+    filter = "unread" if params[:unread] == "1"
+    filter = "done" if params[:done] == "1"
     scope = Message.inbox.includes(:customer, :done_by).newest_first
     scope = filter == "done" ? scope.done : scope.not_done
     scope = scope.unread if filter == "unread"
