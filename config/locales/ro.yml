@@ -177,7 +177,7 @@ ro:
     reload_appointments_hint: Reîncarca întâlnirile din calendar.
     trigger_sync_hint: Porneste procesul de sincronizare cu Calendarul Google.
     appointment_updated: Întâlnire actualizata cu succes.
-    undo: Înapoi
+    undo: Anulează
     appointment_details_changed: Detaliile întâlnirii au fost modificate.
     appointment_changes_saved: Modificarile întâlnirii au fost salvate cu succes.
     save: Salvare
@@ -980,5 +980,5 @@ ro:
     message_move_to: "Mută la {name}"
     message_moved: "Mesaj mutat"
     notification_tokens_hint: "Câmpuri de șablon pe care le puteți folosi. Faceți clic pe unul pentru a-l insera unde scriați, sau pentru a-l copia:"
-    inbox_info: "Mesaje primite de la clienți. Marcați fiecare ca Finalizat după ce a fost rezolvat; rămâne în istoricul clientului. Arată finalizate le listează din nou cu Înapoi."
+    inbox_info: "Mesaje primite de la clienți. Marcați fiecare ca Finalizat după ce a fost rezolvat; rămâne în istoricul clientului. Arată finalizate le listează din nou cu Anulează."
     unknown_inbox_info: "Mesaje primite de la expeditori care nu corespund niciunui client. Marcați fiecare ca Finalizat după ce a fost rezolvat. Aceste mesaje apar și în jurnalul principal."

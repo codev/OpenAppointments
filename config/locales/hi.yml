@@ -217,7 +217,7 @@ hi:
     username: यूजर का नाम
     password: पासवर्ड
     retype_password: पासवर्ड फिर से लिखें
-    receive_notifications: नोटफकैशन प्राप्त करें
+    receive_notifications: सूचनाएँ प्राप्त करें
     passwords_mismatch: पासवर्डों बेमेल.
     admin_saved: व्यवस्थापक सफलतापूर्वक सेव.
     provider_saved: प्रदाता सफलतापूर्वक सेव.

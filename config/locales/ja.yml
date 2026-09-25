@@ -177,7 +177,7 @@ ja:
     reload_appointments_hint: カレンダーを再読み込みします。
     trigger_sync_hint: Googleカレンダーとの同期を開始します。
     appointment_updated: 予約情報が更新されました。
-    undo: やり直し
+    undo: 元に戻す
     appointment_details_changed: 予約情報が変更されました。
     appointment_changes_saved: 予約の変更が保存されました。
     save: 保存
@@ -980,5 +980,5 @@ ja:
     message_move_to: "{name}に移動"
     message_moved: "メッセージを移動しました"
     notification_tokens_hint: "使用できるテンプレート項目です。クリックすると入力中の場所に挿入するか、コピーできます。"
-    inbox_info: "お客様からの受信メッセージです。対応済みの場合は対応済みにしてください。お客様の履歴に残ります。対応済みを表示で、やり直しとともに再度一覧表示されます。"
+    inbox_info: "お客様からの受信メッセージです。対応済みの場合は対応済みにしてください。お客様の履歴に残ります。対応済みを表示で、元に戻すとともに再度一覧表示されます。"
     unknown_inbox_info: "どの顧客とも一致しない送信者からの受信メッセージです。対応済みの場合は対応済みにしてください。これらのメッセージはメインログにも表示されます。"

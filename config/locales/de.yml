@@ -177,7 +177,7 @@ de:
     reload_appointments_hint: Kalendertermine neu laden.
     trigger_sync_hint: Starten Sie den Synchronisationsprozess von Externe-Kalender.
     appointment_updated: Die Termine sind erfolgreich erneuert worden.
-    undo: Schritt zurück
+    undo: Rückgängig
     appointment_details_changed: Die Termindetails haben sich geändert.
     appointment_changes_saved: Die Terminänderungen wurden erfolgreich gespeichert.
     save: Speichern
@@ -980,5 +980,5 @@ de:
     message_move_to: "Zu {name} verschieben"
     message_moved: "Nachricht verschoben"
     notification_tokens_hint: "Vorlagenfelder, die Sie verwenden können. Klicken Sie auf eines, um es an der Schreibposition einzufügen oder zu kopieren:"
-    inbox_info: "Eingehende Nachrichten von Kunden. Markieren Sie jede als Erledigt, sobald sie bearbeitet ist; sie bleibt im Kundenverlauf. Erledigte anzeigen listet sie erneut mit Schritt zurück auf."
+    inbox_info: "Eingehende Nachrichten von Kunden. Markieren Sie jede als Erledigt, sobald sie bearbeitet ist; sie bleibt im Kundenverlauf. Erledigte anzeigen listet sie erneut mit Rückgängig auf."
     unknown_inbox_info: "Eingehende Nachrichten von Absendern, die zu keinem Kunden passen. Markieren Sie jede als Erledigt, sobald sie bearbeitet ist. Diese Nachrichten erscheinen auch im Hauptprotokoll."
