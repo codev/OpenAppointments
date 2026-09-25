@@ -55,6 +55,26 @@ class CustomersTest < ActionDispatch::IntegrationTest
     assert_select "script[src*='components/customer_messages']"
   end
 
+  test "the appointment list labels each status and greys the ones that freed their slot" do
+    base = { provider: users(:zane), customer: users(:jx), service: services(:haircut) }
+    late = Appointment.create!(**base, start_datetime: Time.new(2026, 7, 21, 10, 0, 0), end_datetime: Time.new(2026, 7, 21, 10, 30, 0))
+    late.update!(appointment_status: appointment_statuses(:late_cancel))
+    missed = Appointment.create!(**base, start_datetime: Time.new(2026, 7, 22, 10, 0, 0), end_datetime: Time.new(2026, 7, 22, 10, 30, 0))
+    missed.update!(appointment_status: appointment_statuses(:no_show))
+    appointment_statuses(:late_cancel).update!(name: "Late Cancellation")
+    login_admin
+    get "/customers/#{users(:jx).id}/edit"
+
+    assert_select "#customer-appointments .appointment-row[data-id=?]", late.id.to_s do
+      assert_select ".appointment-status", text: "Late Cancellation"
+    end
+    assert_select "#customer-appointments .appointment-row.appointment-freed[data-id=?]", late.id.to_s
+    assert_select "#customer-appointments .appointment-row[data-id=?]:not(.appointment-freed) .appointment-status",
+                  missed.id.to_s, text: "No Show"
+    assert_select "#customer-appointments .appointment-row[data-id=?]:not(.appointment-freed) .appointment-status",
+                  appointments(:upcoming).id.to_s, text: "Booked"
+  end
+
   test "new has no history or messages; create and update save custom fields and notes" do
     login_admin
     Setting.set("display_custom_field_1", "1")
