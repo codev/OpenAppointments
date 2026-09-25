@@ -6,6 +6,8 @@ CloudronManifest.json.
 ## 2.4.0
 
 - Notifications: new tokens {{Customer Extra Questions}}, {{Customer Notes}} and {{Appointment Notes}}; extra questions are a bulleted list in email and one per line in SMS
+- Notifications: saving one template keeps unsaved edits in the others, and leaving the page with unsaved edits asks first
+- Notifications: a template with an unknown token still saves, with a warning naming the token, and is marked Unknown tokens in the list
 
 ## 2.3.1
 

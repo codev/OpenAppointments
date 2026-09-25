@@ -49,6 +49,11 @@ class Notification < ApplicationRecord
     where(event: TRIGGER_EVENTS.fetch(trigger))
   end
 
+  # Tokens in the texts that render blank because we do not know them.
+  def unknown_tokens
+    Messaging::Template.unknown_tokens(short_text, long_text)
+  end
+
   def audience?(audience)
     Array(audiences).include?(audience.to_s)
   end

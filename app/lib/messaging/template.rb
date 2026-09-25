@@ -15,17 +15,27 @@ module Messaging
       "Customer Extra Questions", "Customer Notes", "Appointment Notes"
     ].freeze
 
+    TOKEN_PATTERN = /\{\{\s*([^{}]+?)\s*\}\}/
+
     module_function
 
     def render(text, context, bullets: false)
       normalized = context.transform_keys { |key| key.to_s.downcase }
-      text.to_s.gsub(/\{\{\s*([^{}]+?)\s*\}\}/) do
+      text.to_s.gsub(TOKEN_PATTERN) do
         value = normalized[Regexp.last_match(1).downcase]
         value = value.call if value.respond_to?(:call)
         next value.to_s unless value.is_a?(Array)
 
         value.map { |line| bullets ? "- #{line}" : line }.join("\n")
       end
+    end
+
+    # Tokens in the texts that are not in TOKENS, once each, as first written.
+    def unknown_tokens(*texts)
+      known = TOKENS.map(&:downcase)
+      texts.join("\n").scan(TOKEN_PATTERN).flatten
+           .reject { |token| known.include?(token.downcase) }
+           .uniq(&:downcase)
     end
 
     def base_context

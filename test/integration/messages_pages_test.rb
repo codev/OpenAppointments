@@ -147,3 +147,83 @@ class MessagesNotificationsFormTest < ActionDispatch::IntegrationTest
     assert_nil Notification.find_by(id: created.id)
   end
 end
+
+# Turbo submits the notification forms asking for a stream: each response
+# touches only its own panel, so other panels keep their unsaved edits.
+class MessagesNotificationsStreamTest < ActionDispatch::IntegrationTest
+  STREAM = { "Accept" => "text/vnd.turbo-stream.html, text/html, application/xhtml+xml" }.freeze
+
+  setup do
+    post "/login/validate", params: { username: "administrator", password: "administrator1" }
+    @existing = Notification.create!(title: "Reminder", event: "created", audiences: [ "customer" ], channels: [ "email" ],
+                                     short_text: "S", long_text: "L")
+  end
+
+  def save(notification, panel_key: nil)
+    post "/messages_notifications/save", headers: STREAM,
+         params: { form: "1", panel_key: panel_key, notification: { event: "created", audiences: [ "" ], channels: [ "" ] }.merge(notification) }
+  end
+
+  test "saving an existing notification replaces only its panel, open, with the saved notice" do
+    save({ id: @existing.id, title: "Reminder 2", short_text: "S", long_text: "L" })
+    assert_response :success
+    assert_equal "text/vnd.turbo-stream.html", response.media_type
+    assert_select "turbo-stream", count: 1
+    assert_select "turbo-stream[action=replace][target=?]", "notification-panel-#{@existing.id}" do
+      assert_select "template .notification-panel[data-id=?] .notification-body:not([style])", @existing.id.to_s
+      assert_select "template .notification-panel .alert-success", text: I18n.t("ea.notification_saved")
+      assert_select "template form[data-unsaved]", count: 0
+    end
+    assert_equal "Reminder 2", @existing.reload.title
+  end
+
+  test "saving a new panel replaces that panel by its key with the saved notification" do
+    save({ title: "Brand new", short_text: "S", long_text: "L" }, panel_key: "new-abc123")
+    created = Notification.find_by!(title: "Brand new")
+    assert_select "turbo-stream[action=replace][target=notification-panel-new-abc123]" do
+      assert_select "template .notification-panel#notification-panel-#{created.id}[data-id=?]", created.id.to_s
+    end
+  end
+
+  test "a save that fails keeps the typed values and marks the form unsaved" do
+    save({ id: @existing.id, title: "", short_text: "Typed text", long_text: "L" })
+    assert_response :unprocessable_entity
+    assert_select "turbo-stream[action=replace][target=?]", "notification-panel-#{@existing.id}" do
+      assert_select "template .notification-panel .alert-danger"
+      assert_select "template form[data-unsaved]"
+      assert_select "template input[name='notification[short_text]'][value='Typed text']"
+    end
+    assert_equal "Reminder", @existing.reload.title
+  end
+
+  test "unknown tokens save with a warning naming them and mark the notification in the list" do
+    save({ id: @existing.id, title: "Reminder", short_text: "Hi {{Custmer Name}}", long_text: "{{Colour}} {{Customer Name}}" })
+    assert_equal "Hi {{Custmer Name}}", @existing.reload.short_text
+    assert_select "template .notification-panel .alert-warning", text: /#{Regexp.escape(I18n.t('ea.notification_unknown_tokens'))}.*\{\{Custmer Name\}\}, \{\{Colour\}\}/m
+    assert_select "template .notification-panel .alert-success", text: I18n.t("ea.notification_saved")
+
+    clean = Notification.create!(title: "Clean", event: "created", short_text: "{{Customer Name}}", long_text: "")
+    get "/messages_notifications"
+    assert_select ".notification-panel[data-id=?] .notification-header .unknown-tokens-badge", @existing.id.to_s,
+                  text: /#{Regexp.escape(I18n.t('ea.notification_unknown_tokens_badge'))}/
+    assert_select ".notification-panel[data-id=?] .unknown-tokens-badge", clean.id.to_s, count: 0
+  end
+
+  test "add appends one blank panel with its own key to the list" do
+    get "/messages_notifications", params: { new: 1 }, headers: STREAM
+    assert_equal "text/vnd.turbo-stream.html", response.media_type
+    assert_select "turbo-stream[action=append][target=notifications-list]" do
+      assert_select "template .notification-panel[data-id=''] .notification-body:not([style])"
+      assert_select "template input[name=panel_key][value^=new-]"
+    end
+    first_key = css_select("input[name=panel_key]").first["value"]
+    get "/messages_notifications", params: { new: 1 }, headers: STREAM
+    assert_not_equal first_key, css_select("input[name=panel_key]").first["value"]
+  end
+
+  test "delete removes only that panel" do
+    post "/messages_notifications/destroy", headers: STREAM, params: { form: "1", notification_id: @existing.id }
+    assert_select "turbo-stream[action=remove][target=?]", "notification-panel-#{@existing.id}"
+    assert_nil Notification.find_by(id: @existing.id)
+  end
+end

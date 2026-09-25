@@ -779,6 +779,8 @@ en:
     notification_short_text: Short Text (Email Subject or SMS)
     notification_long_text: Long Text (for providers that support it, e.g. Email Body)
     notification_tokens_hint: "Template fields you can use:"
+    notification_unknown_tokens: "Saved, but these tokens are not recognised and will be left blank:"
+    notification_unknown_tokens_badge: "Unknown tokens"
     notification_untitled: Untitled notification
     notification_saved: Notification saved.
     delete_notification: Delete Notification

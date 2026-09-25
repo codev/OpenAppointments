@@ -6,7 +6,7 @@
 (function () {
     function setFolded($panel, folded) {
         $panel.find('.notification-body').toggle(!folded);
-        $panel.find('.notification-header i').attr('class', folded ? 'fas fa-chevron-down' : 'fas fa-chevron-up');
+        $panel.find('.notification-chevron').attr('class', `fas fa-chevron-${folded ? 'down' : 'up'} notification-chevron`);
     }
 
     $(document).on('click', '.notification-header', (event) => {
