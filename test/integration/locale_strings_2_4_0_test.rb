@@ -9,7 +9,7 @@ class LocaleStrings240Test < ActiveSupport::TestCase
   KEYS = %w[notification_unsaved notification_unknown_tokens notification_has_unknown_tokens token_copied
             inbox_done inbox_show_done inbox_done_by message_delete_confirm message_deleted
             message_shared_contact message_move_to message_moved notification_tokens_hint
-            inbox_info unknown_inbox_info].freeze
+            inbox_info unknown_inbox_info booking_release_time booking_release_time_hint].freeze
 
   test "the 2.4.0 strings exist in every locale with their placeholders" do
     I18n.available_locales.each do |locale|

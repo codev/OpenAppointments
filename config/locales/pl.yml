@@ -982,3 +982,5 @@ pl:
     notification_tokens_hint: "Pola szablonu, których możesz użyć. Kliknij jedno, aby wstawić je w miejscu, w którym pisałeś, lub aby je skopiować:"
     inbox_info: "Wiadomości przychodzące od klientów. Oznacz każdą jako Zakończone po jej załatwieniu; pozostanie w historii klienta. Pokaż zakończone wyświetla je ponownie z opcją Cofnij."
     unknown_inbox_info: "Wiadomości przychodzące od nadawców, którzy nie pasują do żadnego klienta. Oznacz każdą jako Zakończone po jej załatwieniu. Te wiadomości pojawiają się też w głównym dzienniku."
+    booking_release_time: "Godzina otwarcia"
+    booking_release_time_hint: "Następny dzień na końcu limitu przyszłych rezerwacji otwiera się o tej godzinie każdego dnia."

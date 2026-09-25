@@ -982,3 +982,5 @@ zh-tw:
     notification_tokens_hint: "可使用的範本欄位。點擊即可插入到您輸入的位置，或用來複製："
     inbox_info: "來自顧客的收件訊息。處理完畢後將每則標記為已完成；它會保留在顧客歷史紀錄中。顯示已完成會再次列出這些訊息，並提供復原選項。"
     unknown_inbox_info: "來自不符合任何顧客的寄件者的收件訊息。處理完畢後將每則標記為已完成。這些訊息也會顯示在主日誌中。"
+    booking_release_time: "開放時間"
+    booking_release_time_hint: "未來預約限制末端的隔天，每天會在此時間開放預約。"

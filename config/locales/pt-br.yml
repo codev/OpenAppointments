@@ -982,3 +982,5 @@ pt-br:
     notification_tokens_hint: "Campos de modelo que você pode usar. Clique em um para inseri-lo onde você estava digitando, ou para copiá-lo:"
     inbox_info: "Mensagens recebidas de clientes. Marque cada uma como Concluído assim que for tratada; ela permanece no histórico do cliente. Mostrar concluídos as lista novamente com Desfazer."
     unknown_inbox_info: "Mensagens recebidas de remetentes que não correspondem a nenhum cliente. Marque cada uma como Concluído assim que for tratada. Essas mensagens também aparecem no registro principal."
+    booking_release_time: "Horário de liberação"
+    booking_release_time_hint: "O próximo dia no final do limite de reserva futuro é liberado neste horário todos os dias."

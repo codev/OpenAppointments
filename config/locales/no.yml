@@ -982,3 +982,5 @@
     notification_tokens_hint: "Malfelt du kan bruke. Klikk på ett for å sette det inn der du skrev, eller for å kopiere det:"
     inbox_info: "Innkommende meldinger fra kunder. Merk hver som Ferdig når den er behandlet; den blir værende i kundehistorikken. Vis ferdige lister dem igjen med Angre."
     unknown_inbox_info: "Innkommende meldinger fra avsendere som ikke samsvarer med noen kunde. Merk hver som Ferdig når den er behandlet. Disse meldingene vises også i hovedloggen."
+    booking_release_time: "Åpningstidspunkt"
+    booking_release_time_hint: "Den neste dagen ved slutten av den fremtidige bestillingsgrensen åpner på dette tidspunktet hver dag."

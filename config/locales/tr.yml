@@ -982,3 +982,5 @@ tr:
     notification_tokens_hint: "Kullanabileceğiniz şablon alanları. Yazdığınız yere eklemek veya kopyalamak için birine tıklayın:"
     inbox_info: "Müşterilerden gelen mesajlar. İşlem tamamlandığında her birini Tamamlandı olarak işaretleyin; müşteri geçmişinde kalır. Tamamlananları göster, bunları Geri al seçeneğiyle yeniden listeler."
     unknown_inbox_info: "Herhangi bir müşteriyle eşleşmeyen gönderenlerden gelen mesajlar. İşlem tamamlandığında her birini Tamamlandı olarak işaretleyin. Bu mesajlar ana günlükte de görünür."
+    booking_release_time: "Açılış saati"
+    booking_release_time_hint: "Gelecek rezervasyon limitinin sonundaki bir sonraki gün her gün bu saatte açılır."

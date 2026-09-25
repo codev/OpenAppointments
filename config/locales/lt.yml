@@ -982,3 +982,5 @@ lt:
     notification_tokens_hint: "Šablono laukeliai, kuriuos galite naudoti. Spustelėkite, kad įterptumėte ten, kur rašėte, arba kad nukopijuotumėte:"
     inbox_info: "Gaunamos žinutės nuo klientų. Pažymėkite kiekvieną kaip Atlikta, kai ją sutvarkysite; ji išliks kliento istorijoje. Rodyti atliktus jas vėl parodo su galimybe Atšaukti."
     unknown_inbox_info: "Gaunamos žinutės nuo siuntėjų, kurie neatitinka jokio kliento. Pažymėkite kiekvieną kaip Atlikta, kai ją sutvarkysite. Šios žinutės taip pat rodomos pagrindiniame žurnale."
+    booking_release_time: "Atidarymo laikas"
+    booking_release_time_hint: "Kita diena, esanti ateities plano trukmės pabaigoje, kiekvieną dieną atsidaro šiuo laiku."

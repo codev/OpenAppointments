@@ -982,3 +982,5 @@ ca:
     notification_tokens_hint: "Camps de plantilla que podeu utilitzar. Feu clic en un per inserir-lo on escrivíeu, o per copiar-lo:"
     inbox_info: "Missatges entrants dels clients. Marqueu cadascun com a Fet quan l'hàgiu gestionat; es manté a l'historial del client. Mostra els fets els torna a llistar amb Desfés."
     unknown_inbox_info: "Missatges entrants de remitents que no coincideixen amb cap client. Marqueu cadascun com a Fet quan l'hàgiu gestionat. Aquests missatges també apareixen al registre principal."
+    booking_release_time: "Hora d'obertura"
+    booking_release_time_hint: "El dia següent al final del límit de reserves futures s'obre a aquesta hora cada dia."

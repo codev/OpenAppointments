@@ -982,3 +982,5 @@ lb:
     notification_tokens_hint: "Templatefelder déi Dir benotze kënnt. Klickt op ee fir en anzefügen do wou Dir geschriwwen hutt, oder fir en ze kopéieren:"
     inbox_info: "Erakommend Messagen vu Clienten. Markéiert all een als Erledegt wann en behandelt ass; e bleift an der Client-Historik. Erledegt weisen lëscht se nees op mat Schrëtt zeréck."
     unknown_inbox_info: "Erakommend Messagen vun Ofsender déi mat kengem Client passen. Markéiert all een als Erledegt wann en behandelt ass. Dës Messagen erschéngen och am Haaptjournal."
+    booking_release_time: "Freigabezäit"
+    booking_release_time_hint: "De nächste Dag um Enn vum Limit fir zukünfteg Buchungen gëtt all Dag zu dëser Zäit fräigeschalt."

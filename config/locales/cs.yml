@@ -982,3 +982,5 @@ cs:
     notification_tokens_hint: "Pole šablony, která můžete použít. Kliknutím na jedno ho vložíte tam, kde jste psali, nebo ho zkopírujete:"
     inbox_info: "Příchozí zprávy od zákazníků. Po vyřízení označte každou jako Hotovo; zůstane v historii zákazníka. Zobrazit hotové je zobrazí znovu s možností Zpět."
     unknown_inbox_info: "Příchozí zprávy od odesílatelů, kteří neodpovídají žádnému zákazníkovi. Po vyřízení označte každou jako Hotovo. Tyto zprávy se také zobrazují v hlavním protokolu."
+    booking_release_time: "Čas otevření"
+    booking_release_time_hint: "Další den na konci omezení rezervací v budoucnosti se otevírá v tuto dobu každý den."

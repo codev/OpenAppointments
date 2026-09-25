@@ -982,3 +982,5 @@ de:
     notification_tokens_hint: "Vorlagenfelder, die Sie verwenden können. Klicken Sie auf eines, um es an der Schreibposition einzufügen oder zu kopieren:"
     inbox_info: "Eingehende Nachrichten von Kunden. Markieren Sie jede als Erledigt, sobald sie bearbeitet ist; sie bleibt im Kundenverlauf. Erledigte anzeigen listet sie erneut mit Rückgängig auf."
     unknown_inbox_info: "Eingehende Nachrichten von Absendern, die zu keinem Kunden passen. Markieren Sie jede als Erledigt, sobald sie bearbeitet ist. Diese Nachrichten erscheinen auch im Hauptprotokoll."
+    booking_release_time: "Freigabezeit"
+    booking_release_time_hint: "Der nächste Tag am Ende des zukünftigen Buchungslimits wird täglich zu dieser Zeit freigegeben."

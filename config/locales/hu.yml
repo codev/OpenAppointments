@@ -982,3 +982,5 @@ hu:
     notification_tokens_hint: "Sablonmezők, amelyeket használhat. Kattintson egyre a beszúráshoz oda, ahol éppen írt, vagy a másoláshoz:"
     inbox_info: "Ügyfelektől érkező üzenetek. Jelölje meg Elintézve-ként az elintézett üzeneteket; ezek megmaradnak az ügyfél előzményeiben. Az Elintézettek megjelenítése ismét listázza őket a Visszavonás lehetőséggel."
     unknown_inbox_info: "Olyan feladóktól érkező üzenetek, amelyek egyetlen ügyfélhez sem illeszkednek. Jelölje meg Elintézve-ként az elintézett üzeneteket. Ezek az üzenetek a fő naplóban is megjelennek."
+    booking_release_time: "Megnyitás időpontja"
+    booking_release_time_hint: "A jövőbeli foglalási korlát végén lévő következő nap minden nap ekkor nyílik meg."

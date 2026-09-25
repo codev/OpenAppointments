@@ -982,3 +982,5 @@ da:
     notification_tokens_hint: "Skabelonfelter du kan bruge. Klik på et for at indsætte det, hvor du skrev, eller for at kopiere det:"
     inbox_info: "Indkommende beskeder fra kunder. Markér hver som Udført, når den er håndteret; den forbliver i kundens historik. Vis udførte viser dem igen med Fortryd."
     unknown_inbox_info: "Indkommende beskeder fra afsendere, der ikke matcher nogen kunde. Markér hver som Udført, når den er håndteret. Disse beskeder vises også i hovedloggen."
+    booking_release_time: "Åbningstidspunkt"
+    booking_release_time_hint: "Den næste dag i slutningen af den fremtidige bookinggrænse åbner på dette tidspunkt hver dag."

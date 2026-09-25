@@ -982,3 +982,5 @@ hr:
     notification_tokens_hint: "Polja predloška koja možete koristiti. Kliknite jedno za umetanje na mjesto gdje ste pisali, ili za kopiranje:"
     inbox_info: "Pristigle poruke od klijenata. Označite svaku kao Riješeno nakon obrade; ostaje u povijesti klijenta. Prikaži riješeno ih ponovno prikazuje uz mogućnost Poništi."
     unknown_inbox_info: "Pristigle poruke od pošiljatelja koji ne odgovaraju nijednom klijentu. Označite svaku kao Riješeno nakon obrade. Ove se poruke također prikazuju u glavnom zapisniku."
+    booking_release_time: "Vrijeme otvaranja"
+    booking_release_time_hint: "Sljedeći dan na kraju ograničenja budućih rezervacija otvara se u ovo vrijeme svaki dan."

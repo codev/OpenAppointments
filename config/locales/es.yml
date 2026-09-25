@@ -982,3 +982,5 @@ es:
     notification_tokens_hint: "Campos de plantilla que puedes usar. Haz clic en uno para insertarlo donde estabas escribiendo, o para copiarlo:"
     inbox_info: "Mensajes entrantes de clientes. Marca cada uno como Hecho una vez atendido; permanece en el historial del cliente. Mostrar hechos los vuelve a listar con Deshacer."
     unknown_inbox_info: "Mensajes entrantes de remitentes que no coinciden con ningún cliente. Marca cada uno como Hecho una vez atendido. Estos mensajes también aparecen en el registro principal."
+    booking_release_time: "Hora de apertura"
+    booking_release_time_hint: "El día siguiente al final del límite de reservas futuras se abre a esta hora cada día."

@@ -982,3 +982,5 @@ nl:
     notification_tokens_hint: "Sjabloonvelden die u kunt gebruiken. Klik op een veld om het in te voegen waar u typte, of om het te kopiëren:"
     inbox_info: "Inkomende berichten van klanten. Markeer elk bericht als Afgehandeld zodra het is behandeld; het blijft in de klantgeschiedenis staan. Toon afgehandeld toont ze weer met Ongedaan maken."
     unknown_inbox_info: "Inkomende berichten van afzenders die niet overeenkomen met een klant. Markeer elk bericht als Afgehandeld zodra het is behandeld. Deze berichten verschijnen ook in het hoofdlogboek."
+    booking_release_time: "Openingstijd"
+    booking_release_time_hint: "De volgende dag aan het einde van de toekomstige boekingslimiet gaat elke dag op dit tijdstip open."

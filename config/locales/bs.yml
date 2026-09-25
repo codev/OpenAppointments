@@ -982,3 +982,5 @@ bs:
     notification_tokens_hint: "Polja predloška koja možete koristiti. Kliknite jedno da ga umetnete tamo gdje ste pisali, ili da ga kopirate:"
     inbox_info: "Dolazne poruke od korisnika. Označite svaku kao Gotovo nakon što je riješena; ostaje u historiji korisnika. Prikaži gotovo ih ponovo prikazuje uz Poništi."
     unknown_inbox_info: "Dolazne poruke od pošiljalaca koji ne odgovaraju nijednom korisniku. Označite svaku kao Gotovo nakon što je riješena. Ove poruke se također pojavljuju u glavnom dnevniku."
+    booking_release_time: "Vrijeme otvaranja"
+    booking_release_time_hint: "Sljedeći dan na kraju ograničenja buduće rezervacije se otvara u ovo vrijeme svaki dan."

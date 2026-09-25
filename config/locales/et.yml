@@ -982,3 +982,5 @@ et:
     notification_tokens_hint: "Mallis kasutatavad väljad. Klõpsa ühel, et sisestada see kirjutamiskohta, või kopeerida see:"
     inbox_info: "Sissetulevad sõnumid klientidelt. Märgi iga sõnum pärast käsitlemist Tehtud; see jääb kliendi ajalukku. Näita tehtud kuvab need uuesti koos nupuga Võta tagasi."
     unknown_inbox_info: "Sissetulevad sõnumid saatjatelt, kes ei vasta ühelegi kliendile. Märgi iga sõnum pärast käsitlemist Tehtud. Need sõnumid kuvatakse ka põhilogis."
+    booking_release_time: "Avanemise aeg"
+    booking_release_time_hint: "Järgmine päev tulevikus broneerimise limiidi lõpus avaneb sel kellaajal iga päev."

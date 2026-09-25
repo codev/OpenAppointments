@@ -982,3 +982,5 @@ it:
     notification_tokens_hint: "Campi modello che puoi usare. Clicca su uno per inserirlo dove stavi scrivendo, o per copiarlo:"
     inbox_info: "Messaggi in arrivo dai clienti. Segna ciascuno come Fatto una volta gestito; resta nella cronologia del cliente. Mostra fatti li elenca di nuovo con Annulla."
     unknown_inbox_info: "Messaggi in arrivo da mittenti che non corrispondono a nessun cliente. Segna ciascuno come Fatto una volta gestito. Questi messaggi compaiono anche nel registro principale."
+    booking_release_time: "Orario di apertura"
+    booking_release_time_hint: "Il giorno successivo alla fine del limite prenotazioni future si apre a quest'ora ogni giorno."

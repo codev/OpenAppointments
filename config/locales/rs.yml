@@ -982,3 +982,5 @@ rs:
     notification_tokens_hint: "Polja šablona koja možete koristiti. Kliknite na jedno da ga umetnete tamo gde ste kucali, ili da ga kopirate:"
     inbox_info: "Dolazne poruke od korisnika. Označite svaku kao Završeno kada je rešena; ostaje u istoriji korisnika. Prikaži završene ih ponovo prikazuje sa opcijom Poništi."
     unknown_inbox_info: "Dolazne poruke od pošiljalaca koji ne odgovaraju nijednom korisniku. Označite svaku kao Završeno kada je rešena. Ove poruke se takođe pojavljuju u glavnom dnevniku."
+    booking_release_time: "Vreme otvaranja"
+    booking_release_time_hint: "Sledeći dan na kraju ograničenja budućih rezervacija otvara se u ovo vreme svakog dana."

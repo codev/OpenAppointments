@@ -982,3 +982,5 @@ fr:
     notification_tokens_hint: "Champs de modèle que vous pouvez utiliser. Cliquez sur l'un d'eux pour l'insérer là où vous écriviez, ou pour le copier :"
     inbox_info: "Messages entrants des clients. Marquez chacun comme Traité une fois pris en charge ; il reste dans l'historique du client. Afficher les traités les liste à nouveau avec Annuler."
     unknown_inbox_info: "Messages entrants d'expéditeurs qui ne correspondent à aucun client. Marquez chacun comme Traité une fois pris en charge. Ces messages apparaissent aussi dans le journal principal."
+    booking_release_time: "Heure d'ouverture"
+    booking_release_time_hint: "Le jour suivant, à la fin de la limite des réservations futures, s'ouvre à cette heure chaque jour."

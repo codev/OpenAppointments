@@ -982,3 +982,5 @@ sl:
     notification_tokens_hint: "Polja predloge, ki jih lahko uporabite. Kliknite eno, da ga vstavite na mesto, kjer ste pisali, ali da ga kopirate:"
     inbox_info: "Prihajajoča sporočila strank. Vsako označite kot Opravljeno, ko je obravnavano; ostane v zgodovini stranke. Prikaži opravljeno jih znova prikaže z možnostjo Razveljavi."
     unknown_inbox_info: "Prihajajoča sporočila pošiljateljev, ki ne ustrezajo nobeni stranki. Vsako označite kot Opravljeno, ko je obravnavano. Ta sporočila se prikažejo tudi v glavnem dnevniku."
+    booking_release_time: "Čas odprtja"
+    booking_release_time_hint: "Naslednji dan na koncu prihodnje omejitve rezervacij se vsak dan odpre ob tem času."
