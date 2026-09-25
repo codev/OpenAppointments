@@ -6,9 +6,9 @@
 <% integrations_child = request.path =~ %r{\A/(altcha|google_calendar|google_analytics|matomo_analytics|umami_analytics|jitsi|ldap|api|embed)_settings\z} %>
 <ul id="settings-nav" class="nav flex-column">
     <%= render "shared/side_nav_item", path: "/general_settings", text: lang('general_settings'), child: false %>
-    <%= render "shared/side_nav_item", path: "/booking_settings", text: lang('booking_settings'), child: false %>
-    <%= render "shared/side_nav_item", path: "/theme_settings", text: lang('theme'), child: false %>
     <%= render "shared/side_nav_item", path: "/business_settings", text: lang('business_logic'), child: false %>
+    <%= render "shared/side_nav_item", path: "/booking_settings", text: lang('booking_settings'), child: false %>
     <%= render "shared/side_nav_item", path: "/legal_settings", text: lang('notices'), child: false %>
+    <%= render "shared/side_nav_item", path: "/theme_settings", text: lang('theme'), child: false %>
     <%= render "shared/side_nav_item", path: "/integrations", text: lang('integrations'), child: integrations_child.present? %>
 </ul>

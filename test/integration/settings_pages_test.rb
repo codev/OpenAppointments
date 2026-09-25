@@ -53,6 +53,13 @@ class SettingsPagesTest < ActionDispatch::IntegrationTest
     end
   end
 
+  test "side menu order: General, Business Logic, Booking, Notices, Theme, Integrations" do
+    login_admin
+    get "/general_settings"
+    labels = css_select("#settings-nav .nav-link").map { |link| link.text.strip }
+    assert_equal [ "General Settings", "Business Logic", "Booking Settings", "Notices", "Theme", "Integrations" ], labels
+  end
+
   test "side menu shows the current page as text and marks a parent of the current page" do
     login_admin
     get "/booking_settings"
