@@ -47,14 +47,19 @@ class BookingCustomerIdentityTest < ActionDispatch::IntegrationTest
     assert_equal "JX", users(:jx).reload.name
   end
 
-  test "the same email and name in another case is the same customer and a new phone number replaces the old" do
+  test "the same email and name in another case is the same customer and stored details stay as they were" do
     customer = nil
     assert_no_difference "User.customers.count" do
       customer = book({ name: " jx ", email: users(:jx).email.upcase, phone_number: "07700 900999" })
     end
     assert_equal users(:jx).id, customer.id
-    assert_equal "07700 900999", customer.phone_number
-    assert_equal "JX", customer.name
+    assert_equal [ "JX", "j@example.org", "+447700900321" ], [ customer.name, customer.email, customer.phone_number ]
+  end
+
+  test "a booking fills in details the customer record did not have yet" do
+    users(:jx).update!(city: nil, custom_field_1: nil)
+    customer = book({ name: "JX", email: users(:jx).email, city: "London", custom_field_1: "they/them" })
+    assert_equal [ "London", "they/them" ], [ customer.city, customer.custom_field_1 ]
   end
 
   test "a shared phone number under another name without an email becomes a new customer" do

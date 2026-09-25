@@ -6,7 +6,7 @@ CloudronManifest.json.
 ## 2.3.0
 
 - Customers: other emails and phone numbers and the customer merge tool are removed
-- Booking: someone sharing another customer's email or phone number under a different name gets their own customer record; a returning customer's email and phone update to what they type, and fields left empty no longer blank their stored details
+- Booking: someone sharing another customer's email or phone number under a different name gets their own customer record; a returning customer's booking only fills in details their record is missing, so stored details are never changed or blanked
 - Booking: a customer is refused a second booking that overlaps one they already have, not only one that covers it completely
 - 10to8 import: people sharing an email or phone number under different names are imported as separate customers
 - Appointments: the stylist filter starts on Working Stylists, which leaves out stylists who are off, including a whole day of unavailability, but keeps anyone with an appointment that day; All Stylists shows everyone

@@ -179,12 +179,9 @@ class BookingController < ApplicationController
     customer = existing_customer || User.new(role: Role.find_by!(slug: Role::CUSTOMER))
     timezone = customer_params["timezone"].presence || (customer.new_record? ? provider.effective_timezone : customer.timezone)
     details = customer_params.except("id", "timezone", "language")
-    if customer.persisted?
-      # Blank fields never wipe stored details; a matched name differs at most
-      # in case or spacing, so the stored one stays.
-      details = details.compact_blank
-      details = details.except("name") if User.same_name?(customer.name, details["name"])
-    end
+    # A booking only fills in what an existing record lacks, so nobody who
+    # knows a customer's name and phone can take over their email, or wipe it.
+    details = details.compact_blank.select { |field, _| customer[field].blank? } if customer.persisted?
     customer.assign_attributes(details.merge("timezone" => timezone))
     customer.language = session[:language] || Setting.get("default_language", "english")
     customer.save!
