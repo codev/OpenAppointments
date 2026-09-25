@@ -797,7 +797,6 @@ uk:
     send_message: Send
     select_one: Select One
     all_providers: All Providers
-    messages_all_providers: All Providers
     message_sent: Message sent.
     terminology: Terminology
     terminology_hint: Rename Provider and Service, for example Stylist and Treatment. Leave blank for the defaults. Languages other than English are not affected. Start the words with a capital letter.
@@ -970,4 +969,4 @@ uk:
     working_providers: "Працюючі провайдери"
     hidden_from_public: "Приховано від публіки"
     slot_interval_hint: "Як часто клієнтам пропонується час початку. При 15 послуга на 45 хвилин може початися о 9:00, 9:15, 9:30 і так далі; при 60 - о 9:00, 10:00, 11:00. Це не залишає вільного часу після запису: для цього збільште тривалість послуги."
-    messages_both_channels: "Обидва"
+    messages_all_channels: "Усі"

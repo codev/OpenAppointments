@@ -797,7 +797,6 @@ ar:
     send_message: Send
     select_one: Select One
     all_providers: All Providers
-    messages_all_providers: All Providers
     message_sent: Message sent.
     terminology: Terminology
     terminology_hint: Rename Provider and Service, for example Stylist and Treatment. Leave blank for the defaults. Languages other than English are not affected. Start the words with a capital letter.
@@ -970,4 +969,4 @@ ar:
     working_providers: "المزودون العاملون"
     hidden_from_public: "مخفي عن الجمهور"
     slot_interval_hint: "عدد المرات التي تُعرض فيها أوقات البدء على الزبائن. مع 15، يمكن أن تبدأ خدمة مدتها 45 دقيقة في 9:00 و9:15 و9:30 وهكذا؛ ومع 60، في 9:00 و10:00 و11:00. لا يُبقي هذا وقتًا فارغًا بعد الموعد: لذلك، اجعل مدة الخدمة أطول."
-    messages_both_channels: "كلاهما"
+    messages_all_channels: "الكل"

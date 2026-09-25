@@ -797,7 +797,6 @@ hi:
     send_message: Send
     select_one: Select One
     all_providers: All Providers
-    messages_all_providers: All Providers
     message_sent: Message sent.
     terminology: Terminology
     terminology_hint: Rename Provider and Service, for example Stylist and Treatment. Leave blank for the defaults. Languages other than English are not affected. Start the words with a capital letter.
@@ -970,4 +969,4 @@ hi:
     working_providers: "कार्यरत प्रबन्धक"
     hidden_from_public: "सार्वजनिक से छिपा हुआ"
     slot_interval_hint: "उपभोक्ताओं को प्रारंभ समय कितनी बार दिए जाते हैं। 15 के साथ, 45 मिनट की सेवा 9:00, 9:15, 9:30 आदि पर शुरू हो सकती है; 60 के साथ, 9:00, 10:00, 11:00 पर। यह अपॉइंटमेंट के बाद समय खाली नहीं रखता: उसके लिए, सेवा की अवधि बढ़ाएँ।"
-    messages_both_channels: "दोनों"
+    messages_all_channels: "सभी"

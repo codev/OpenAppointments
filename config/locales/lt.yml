@@ -797,7 +797,6 @@ lt:
     send_message: Send
     select_one: Select One
     all_providers: All Providers
-    messages_all_providers: All Providers
     message_sent: Message sent.
     terminology: Terminology
     terminology_hint: Rename Provider and Service, for example Stylist and Treatment. Leave blank for the defaults. Languages other than English are not affected. Start the words with a capital letter.
@@ -970,4 +969,4 @@ lt:
     working_providers: "Dirbantys teikėjai"
     hidden_from_public: "Nerodoma viešai"
     slot_interval_hint: "Kaip dažnai klientams siūlomi pradžios laikai. Nustačius 15, 45 minučių paslauga gali prasidėti 9:00, 9:15, 9:30 ir t. t.; nustačius 60, 9:00, 10:00, 11:00. Tai nepalieka laisvo laiko po vizito: tam pailginkite paslaugos trukmę."
-    messages_both_channels: "Abu"
+    messages_all_channels: "Visi"

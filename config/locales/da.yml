@@ -797,7 +797,6 @@ da:
     send_message: Send
     select_one: Select One
     all_providers: All Providers
-    messages_all_providers: All Providers
     message_sent: Message sent.
     terminology: Terminology
     terminology_hint: Rename Provider and Service, for example Stylist and Treatment. Leave blank for the defaults. Languages other than English are not affected. Start the words with a capital letter.
@@ -970,4 +969,4 @@ da:
     working_providers: "Arbejdende Leverandører"
     hidden_from_public: "Skjult For Offentligheden"
     slot_interval_hint: "Hvor ofte starttider tilbydes kunderne. Med 15 kan en tjeneste på 45 minutter starte kl. 9:00, 9:15, 9:30 og så videre; med 60 kl. 9:00, 10:00, 11:00. Det holder ikke tid fri efter aftalen: gør i stedet tjenestens varighed længere."
-    messages_both_channels: "Begge"
+    messages_all_channels: "Alle"

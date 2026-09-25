@@ -797,7 +797,6 @@ sk:
     send_message: Send
     select_one: Select One
     all_providers: All Providers
-    messages_all_providers: All Providers
     message_sent: Message sent.
     terminology: Terminology
     terminology_hint: Rename Provider and Service, for example Stylist and Treatment. Leave blank for the defaults. Languages other than English are not affected. Start the words with a capital letter.
@@ -970,4 +969,4 @@ sk:
     working_providers: "Pracujúci pracovníci"
     hidden_from_public: "Skryté pred verejnosťou"
     slot_interval_hint: "Ako často sa zákazníkom ponúkajú časy začiatku. Pri 15 môže 45-minútová služba začať o 9:00, 9:15, 9:30 atď.; pri 60 o 9:00, 10:00, 11:00. Po rezervácii tým neostáva voľný čas: na to predĺžte trvanie služby."
-    messages_both_channels: "Oboje"
+    messages_all_channels: "Všetky"

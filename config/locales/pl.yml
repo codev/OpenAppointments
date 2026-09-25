@@ -797,7 +797,6 @@ pl:
     send_message: Send
     select_one: Select One
     all_providers: All Providers
-    messages_all_providers: All Providers
     message_sent: Message sent.
     terminology: Terminology
     terminology_hint: Rename Provider and Service, for example Stylist and Treatment. Leave blank for the defaults. Languages other than English are not affected. Start the words with a capital letter.
@@ -970,4 +969,4 @@ pl:
     working_providers: "Pracujący personel"
     hidden_from_public: "Ukryte przed publicznością"
     slot_interval_hint: "Jak często klientom oferowane są godziny rozpoczęcia. Przy 15 zabieg trwający 45 minut może zacząć się o 9:00, 9:15, 9:30 i tak dalej; przy 60 o 9:00, 10:00, 11:00. Nie rezerwuje to wolnego czasu po wizycie: w tym celu wydłuż czas trwania zabiegu."
-    messages_both_channels: "Oba"
+    messages_all_channels: "Wszystkie"

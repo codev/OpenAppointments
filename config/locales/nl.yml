@@ -797,7 +797,6 @@ nl:
     send_message: Send
     select_one: Select One
     all_providers: All Providers
-    messages_all_providers: All Providers
     message_sent: Message sent.
     terminology: Terminology
     terminology_hint: Rename Provider and Service, for example Stylist and Treatment. Leave blank for the defaults. Languages other than English are not affected. Start the words with a capital letter.
@@ -970,4 +969,4 @@ nl:
     working_providers: "Werkende medewerkers"
     hidden_from_public: "Verborgen voor publiek"
     slot_interval_hint: "Hoe vaak starttijden aan klanten worden aangeboden. Met 15 kan een dienst van 45 minuten beginnen om 9:00, 9:15, 9:30 enzovoort; met 60 om 9:00, 10:00, 11:00. Er wordt geen tijd vrijgehouden na de afspraak: maak daarvoor de duur van de dienst langer."
-    messages_both_channels: "Beide"
+    messages_all_channels: "Alle"

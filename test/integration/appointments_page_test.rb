@@ -118,7 +118,7 @@ class AppointmentsPageTest < ActionDispatch::IntegrationTest
   end
 
   test "the 2.3.0 strings exist in every locale" do
-    keys = %w[working_providers hidden_from_public slot_interval_hint messages_both_channels]
+    keys = %w[working_providers hidden_from_public slot_interval_hint messages_all_channels]
     I18n.available_locales.each do |locale|
       keys.each do |key|
         assert I18n.t("ea.#{key}", locale: locale, fallback: false, default: nil).present?, "missing ea.#{key} in #{locale}"

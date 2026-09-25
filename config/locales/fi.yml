@@ -797,7 +797,6 @@ fi:
     send_message: Send
     select_one: Select One
     all_providers: All Providers
-    messages_all_providers: All Providers
     message_sent: Message sent.
     terminology: Terminology
     terminology_hint: Rename Provider and Service, for example Stylist and Treatment. Leave blank for the defaults. Languages other than English are not affected. Start the words with a capital letter.
@@ -970,4 +969,4 @@ fi:
     working_providers: "Työssä olevat palveluntuottajat"
     hidden_from_public: "Piilotettu yleisöltä"
     slot_interval_hint: "Kuinka usein aloitusaikoja tarjotaan asiakkaille. Arvolla 15 45 minuutin palvelu voi alkaa klo 9:00, 9:15, 9:30 ja niin edelleen; arvolla 60 klo 9:00, 10:00, 11:00. Se ei pidä aikaa vapaana varauksen jälkeen: pidennä sitä varten palvelun kestoa."
-    messages_both_channels: "Molemmat"
+    messages_all_channels: "Kaikki"

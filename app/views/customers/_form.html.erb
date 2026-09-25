@@ -104,7 +104,7 @@
                     <% channels.each do |channel| %>
                         <option value="<%= channel.key %>"><%= channel.label %></option>
                     <% end %>
-                    <option value="all"><%= lang(channels.size == 2 ? 'messages_both_channels' : 'messages_all_providers') %></option>
+                    <option value="all"><%= lang('messages_all_channels') %></option>
                 </select>
                 <textarea id="message-body" class="form-control" rows="3" maxlength="1000"></textarea>
                 <button type="button" id="send-message" class="btn btn-primary">

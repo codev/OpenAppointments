@@ -797,7 +797,6 @@ sq:
     send_message: Send
     select_one: Select One
     all_providers: All Providers
-    messages_all_providers: All Providers
     message_sent: Message sent.
     terminology: Terminology
     terminology_hint: Rename Provider and Service, for example Stylist and Treatment. Leave blank for the defaults. Languages other than English are not affected. Start the words with a capital letter.
@@ -970,4 +969,4 @@ sq:
     working_providers: "Ofruesit që Punojnë"
     hidden_from_public: "Fshehur nga Publiku"
     slot_interval_hint: "Sa shpesh u ofrohen klientëve oraret e fillimit. Me 15, një shërbim 45 minutësh mund të fillojë në 9:00, 9:15, 9:30 e kështu me radhë; me 60, në 9:00, 10:00, 11:00. Kjo nuk lë kohë të lirë pas takimit: për këtë, zgjatni kohëzgjatjen e shërbimit."
-    messages_both_channels: "Të dyja"
+    messages_all_channels: "Të gjitha"

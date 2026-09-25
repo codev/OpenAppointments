@@ -797,7 +797,6 @@ lb:
     send_message: Send
     select_one: Select One
     all_providers: All Providers
-    messages_all_providers: All Providers
     message_sent: Message sent.
     terminology: Terminology
     terminology_hint: Rename Provider and Service, for example Stylist and Treatment. Leave blank for the defaults. Languages other than English are not affected. Start the words with a capital letter.
@@ -970,4 +969,4 @@ lb:
     working_providers: "Mataarbechter am Déngscht"
     hidden_from_public: "Vum Public verstoppt"
     slot_interval_hint: "Wéi dacks de Clienten Ufankszäite proposéiert ginn. Mat 15 kann eng Dingschtleeschtung vu 45 Minutten um 9:00, 9:15, 9:30 asw. ufänken; mat 60 um 9:00, 10:00, 11:00. Et hält keng Zäit nom Termin fräi: dofir maacht d'Dauer vun der Dingschtleeschtung méi laang."
-    messages_both_channels: "Béid"
+    messages_all_channels: "All"

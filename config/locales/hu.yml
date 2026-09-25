@@ -797,7 +797,6 @@ hu:
     send_message: Send
     select_one: Select One
     all_providers: All Providers
-    messages_all_providers: All Providers
     message_sent: Message sent.
     terminology: Terminology
     terminology_hint: Rename Provider and Service, for example Stylist and Treatment. Leave blank for the defaults. Languages other than English are not affected. Start the words with a capital letter.
@@ -970,4 +969,4 @@ hu:
     working_providers: "Dolgozó szolgáltatók"
     hidden_from_public: "Rejtve a nyilvánosság elől"
     slot_interval_hint: "Milyen gyakran kínálunk kezdési időpontokat a vendégeknek. 15 esetén egy 45 perces szolgáltatás kezdődhet 9:00-kor, 9:15-kor, 9:30-kor és így tovább; 60 esetén 9:00-kor, 10:00-kor, 11:00-kor. Nem tart szabadon időt az időpont után: ehhez növelje a szolgáltatás időtartamát."
-    messages_both_channels: "Mindkettő"
+    messages_all_channels: "Mind"

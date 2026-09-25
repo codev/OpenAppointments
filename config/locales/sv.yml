@@ -797,7 +797,6 @@ sv:
     send_message: Send
     select_one: Select One
     all_providers: All Providers
-    messages_all_providers: All Providers
     message_sent: Message sent.
     terminology: Terminology
     terminology_hint: Rename Provider and Service, for example Stylist and Treatment. Leave blank for the defaults. Languages other than English are not affected. Start the words with a capital letter.
@@ -970,4 +969,4 @@ sv:
     working_providers: "Utförare i tjänst"
     hidden_from_public: "Dolda från bokningssidan"
     slot_interval_hint: "Hur ofta starttider erbjuds kunderna. Med 15 kan en tjänst på 45 minuter börja 9:00, 9:15, 9:30 och så vidare; med 60 klockan 9:00, 10:00, 11:00. Det håller inte tid ledig efter bokningen: för det, gör tjänstens längd längre."
-    messages_both_channels: "Båda"
+    messages_all_channels: "Alla"

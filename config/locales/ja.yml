@@ -797,7 +797,6 @@ ja:
     send_message: Send
     select_one: Select One
     all_providers: All Providers
-    messages_all_providers: All Providers
     message_sent: Message sent.
     terminology: Terminology
     terminology_hint: Rename Provider and Service, for example Stylist and Treatment. Leave blank for the defaults. Languages other than English are not affected. Start the words with a capital letter.
@@ -970,4 +969,4 @@ ja:
     working_providers: "出勤中の担当者"
     hidden_from_public: "公開から非表示"
     slot_interval_hint: "お客様に開始時刻を提示する間隔です。15の場合、45分のメニューは9:00、9:15、9:30のように開始できます。60の場合は9:00、10:00、11:00です。予約後の時間を空けておくものではありません。そのためにはメニューの所要時間を長くしてください。"
-    messages_both_channels: "両方"
+    messages_all_channels: "すべて"

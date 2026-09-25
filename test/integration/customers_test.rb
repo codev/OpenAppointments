@@ -9,23 +9,23 @@ class CustomersTest < ActionDispatch::IntegrationTest
     post "/login/validate", params: { username: "janedoe", password: "janedoe1" }
   end
 
-  test "the conversation channel choice keeps All Providers under staff terminology" do
+  test "the conversation channel choice reads All and staff terminology stays on the stylist filter" do
     Setting.set("provider_label", "Stylist")
     Setting.set("provider_label_plural", "Stylists")
     login_admin
     get "/customers/#{users(:jx).id}/edit"
-    assert_select "#message-channel option[value='all']", text: "All Providers"
+    assert_select "#message-channel option[value='all']", text: "All"
     get "/appointments"
     assert_select "select#filter-provider option", text: "All Stylists"
   end
 
-  test "with email and one SMS provider the send to every channel choice reads Both" do
+  test "with email and one SMS provider the send to every channel choice still reads All" do
     { "messages_twilio_enabled" => "1", "messages_twilio_account_sid" => "AC1", "messages_twilio_auth_token" => "token",
       "messages_twilio_from" => "+15005550006" }.each { |name, value| Setting.set(name, value) }
     login_admin
     get "/customers/#{users(:jx).id}/edit"
     assert_select "#message-channel option", count: 4
-    assert_select "#message-channel option[value='all']", text: "Both"
+    assert_select "#message-channel option[value='all']", text: "All"
   ensure
     Setting.set("messages_twilio_enabled", "0")
   end

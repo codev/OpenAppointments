@@ -797,7 +797,6 @@ fr:
     send_message: Send
     select_one: Select One
     all_providers: All Providers
-    messages_all_providers: All Providers
     message_sent: Message sent.
     terminology: Terminology
     terminology_hint: Rename Provider and Service, for example Stylist and Treatment. Leave blank for the defaults. Languages other than English are not affected. Start the words with a capital letter.
@@ -970,4 +969,4 @@ fr:
     working_providers: "Exécutants en Service"
     hidden_from_public: "Caché au Public"
     slot_interval_hint: "Fréquence à laquelle les heures de début sont proposées aux clients. Avec 15, une prestation de 45 minutes peut commencer à 9:00, 9:15, 9:30 et ainsi de suite ; avec 60, à 9:00, 10:00, 11:00. Cela ne garde pas de temps libre après le rendez-vous : pour cela, allongez la durée de la prestation."
-    messages_both_channels: "Les deux"
+    messages_all_channels: "Tous"

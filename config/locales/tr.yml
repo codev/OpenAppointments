@@ -797,7 +797,6 @@ tr:
     send_message: Send
     select_one: Select One
     all_providers: All Providers
-    messages_all_providers: All Providers
     message_sent: Message sent.
     terminology: Terminology
     terminology_hint: Rename Provider and Service, for example Stylist and Treatment. Leave blank for the defaults. Languages other than English are not affected. Start the words with a capital letter.
@@ -970,4 +969,4 @@ tr:
     working_providers: "Çalışan Hizmet Sağlayıcılar"
     hidden_from_public: "Halka Açık Olmaktan Gizli"
     slot_interval_hint: "Müşterilere ne sıklıkla başlangıç saati sunulacağı. 15 ile 45 dakikalık bir hizmet 9:00, 9:15, 9:30 vb. saatlerde başlayabilir; 60 ile 9:00, 10:00, 11:00'da. Randevudan sonra boş zaman bırakmaz: bunun için hizmet süresini uzatın."
-    messages_both_channels: "Her ikisi"
+    messages_all_channels: "Tümü"

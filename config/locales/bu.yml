@@ -797,7 +797,6 @@ bu:
     send_message: Send
     select_one: Select One
     all_providers: All Providers
-    messages_all_providers: All Providers
     message_sent: Message sent.
     terminology: Terminology
     terminology_hint: Rename Provider and Service, for example Stylist and Treatment. Leave blank for the defaults. Languages other than English are not affected. Start the words with a capital letter.
@@ -970,4 +969,4 @@ bu:
     working_providers: "Работещи изпълнители"
     hidden_from_public: "Скрито от публичността"
     slot_interval_hint: "Колко често на клиентите се предлагат начални часове. При 15 услуга от 45 минути може да започне в 9:00, 9:15, 9:30 и т.н.; при 60, в 9:00, 10:00, 11:00. Това не оставя свободно време след часа: за целта увеличете продължителността на услугата."
-    messages_both_channels: "И двете"
+    messages_all_channels: "Всички"

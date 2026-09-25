@@ -797,7 +797,6 @@ lv:
     send_message: Send
     select_one: Select One
     all_providers: All Providers
-    messages_all_providers: All Providers
     message_sent: Message sent.
     terminology: Terminology
     terminology_hint: Rename Provider and Service, for example Stylist and Treatment. Leave blank for the defaults. Languages other than English are not affected. Start the words with a capital letter.
@@ -970,4 +969,4 @@ lv:
     working_providers: "Strādājošie pakalpojumu sniedzēji"
     hidden_from_public: "Paslēpts no sabiedrības"
     slot_interval_hint: "Cik bieži klientiem tiek piedāvāti sākuma laiki. Ar 15 45 minūšu pakalpojums var sākties 9:00, 9:15, 9:30 un tā tālāk; ar 60 tas var sākties 9:00, 10:00, 11:00. Tas neatstāj brīvu laiku pēc pieraksta: lai to panāktu, pagariniet pakalpojuma ilgumu."
-    messages_both_channels: "Abi"
+    messages_all_channels: "Visi"

@@ -797,7 +797,6 @@ ro:
     send_message: Send
     select_one: Select One
     all_providers: All Providers
-    messages_all_providers: All Providers
     message_sent: Message sent.
     terminology: Terminology
     terminology_hint: Rename Provider and Service, for example Stylist and Treatment. Leave blank for the defaults. Languages other than English are not affected. Start the words with a capital letter.
@@ -970,4 +969,4 @@ ro:
     working_providers: "Furnizori care Lucrează"
     hidden_from_public: "Ascuns de la Public"
     slot_interval_hint: "Cât de des le sunt oferite clienților orele de început. Cu 15, un serviciu de 45 de minute poate începe la 9:00, 9:15, 9:30 și așa mai departe; cu 60, la 9:00, 10:00, 11:00. Nu păstrează timp liber după programare: pentru asta, măriți durata serviciului."
-    messages_both_channels: "Ambele"
+    messages_all_channels: "Toate"

@@ -797,7 +797,6 @@ zh-tw:
     send_message: Send
     select_one: Select One
     all_providers: All Providers
-    messages_all_providers: All Providers
     message_sent: Message sent.
     terminology: Terminology
     terminology_hint: Rename Provider and Service, for example Stylist and Treatment. Leave blank for the defaults. Languages other than English are not affected. Start the words with a capital letter.
@@ -970,4 +969,4 @@ zh-tw:
     working_providers: "當班提供者"
     hidden_from_public: "已從公開頁面隱藏"
     slot_interval_hint: "向顧客提供開始時間的頻率。設為 15 時，45 分鐘的服務可在 9:00、9:15、9:30 等時間開始；設為 60 時，則在 9:00、10:00、11:00 開始。這不會在預約後保留空檔：如需空檔，請延長服務時長。"
-    messages_both_channels: "兩者皆用"
+    messages_all_channels: "全部"
