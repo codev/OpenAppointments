@@ -5,24 +5,22 @@ CloudronManifest.json.
 
 ## 2.4.0
 
-- Notifications: new tokens {{Customer Extra Questions}}, {{Customer Notes}} and {{Appointment Notes}}; extra questions are a bulleted list in email and one per line in SMS
-- Notifications: saving one template keeps unsaved edits in the others; edited templates are marked Unsaved, and leaving the page with unsaved edits asks first
-- Notifications: a template with an unknown token still saves, with a warning naming the token, and is marked Unknown placeholder in the list
-- Notifications: click a token to insert it where you were typing, or to copy it
-- Inbox: admins only; mark each message Done when dealt with, Show done lists them with Undo, and the customer history keeps every message. The Unknown Inbox works the same way
-- Messages: admins can permanently delete a single message from a customer's conversation or the Unknown Inbox
-- Messages: a reply from an email or phone several customers share goes to the one with the next appointment (else the most recent); the Inbox names the others and an admin can move the message
-- Business Logic: Release time sets the hour the next day at the end of the booking window opens (00:00 by default); the far day no longer opens at 01:00 in summer
-- Customers: the appointment list shows each appointment's status; cancelled, late cancelled and rescheduled ones are greyed
-- Settings: menu order General, Business Logic, Booking, Notices, Theme, Integrations
-- Booking: finding free times is much faster, especially for group services (the provider-first Next took several seconds)
-- Customers: phone numbers are stored in international format (+44...) however they were typed, so replies by SMS and shared numbers are matched faster
-- Launch: task notifications:mark_due_reminders_sent marks reminders already due as sent, so turning debug mode off does not repeat 10to8's reminders
-- Messages: task messages:restrip_quotes removes quoted text from email replies received before 2.1.0
+- Notifications: click a token to insert it
+- Notifications: new tokens {{Customer Extra Questions}}, {{Customer Notes}} and {{Appointment Notes}}
+- Notifications: prompt for unsaved changes and allow editing multiple notifications at once
+- Inbox: inbox is for admins only, mark each message Done when dealt with
+- Messages: admins can delete messages
+- Messages: a reply from an email or phone several customers share goes to the one with the next appointment (else the most recent) - Inbox lists all customers and an admin can move the message
+- Business Logic: Release time sets the hour at which new appointments are available
+- Customers: the appointment list shows status: grey for cancelled or rescheduled
+- Customers: All phone numbers are stored in international format (+1...) for faster matching
+- Messages: quoted text is removed from old replies
+- Speed improvement: finding free times is faster
+- Settings: menus reordered
 
 ## 2.3.1
 
-- Bug fix: updating to 2.3.0 deleted logins, appointments and links
+- Bug fix: updating to 2.3.0 deleted data including logins
 
 ## 2.3.0
 
