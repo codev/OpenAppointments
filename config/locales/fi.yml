@@ -797,7 +797,6 @@ fi:
     send_message: Send
     select_one: Select One
     all_providers: All Providers
-    messages_all_providers: All Providers
     message_sent: Message sent.
     terminology: Terminology
     terminology_hint: Rename Provider and Service, for example Stylist and Treatment. Leave blank for the defaults. Languages other than English are not affected. Start the words with a capital letter.
@@ -966,14 +965,8 @@ fi:
     time_off_hint: "Jos kyseessä on osa päivästä, syötä tunnit, jolloin olet poissa. Ne tallennetaan taukona näille päiville."
     messages_sms_variation: "Vaihtele jokaista tekstiviestiä"
     messages_sms_variation_hint: "Lisää lyhyen viitekoodin jokaisen tekstiviestin loppuun, jotta mitkään kaksi viestiä eivät ole samanlaisia, mitä jotkin operaattorit vaativat."
-    merge_customer: "Yhdistä toiseen asiakkaaseen"
-    merge_customer_hint: "Syötä toisen asiakkaan sähköposti tai puhelinnumero. Tämän asiakkaan varaukset ja viestit siirtyvät kyseiseen tietueeseen, ja tämä tietue poistetaan."
-    merge_customer_button: "Yhdistä"
-    merge_customer_confirm: "Yhdistetäänkö tämä asiakas toiseen tietueeseen? Tätä ei voi perua."
-    merge_customer_not_found: "Millään toisella asiakkaalla ei ole tätä sähköpostia tai puhelinnumeroa."
-    customer_merged: "Asiakkaat yhdistetty"
     provider_color_hint: "Käytetään tämän palveluntuottajan varauksille, kun kalenteri näyttää kaikki."
-    other_emails: "Muut sähköpostiosoitteet"
-    other_emails_hint: "Yksi per rivi. Varaukset ja viestit näistä osoitteista kuuluvat tälle asiakkaalle."
-    other_phones: "Muut puhelinnumerot"
-    other_phones_hint: "Yksi per rivi. Varaukset ja viestit näistä numeroista kuuluvat tälle asiakkaalle."
+    working_providers: "Työssä olevat palveluntuottajat"
+    hidden_from_public: "Piilotettu yleisöltä"
+    slot_interval_hint: "Kuinka usein aloitusaikoja tarjotaan asiakkaille. Arvolla 15 45 minuutin palvelu voi alkaa klo 9:00, 9:15, 9:30 ja niin edelleen; arvolla 60 klo 9:00, 10:00, 11:00. Se ei pidä aikaa vapaana varauksen jälkeen: pidennä sitä varten palvelun kestoa."
+    messages_all_channels: "Kaikki"

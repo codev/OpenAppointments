@@ -797,7 +797,6 @@ uk:
     send_message: Send
     select_one: Select One
     all_providers: All Providers
-    messages_all_providers: All Providers
     message_sent: Message sent.
     terminology: Terminology
     terminology_hint: Rename Provider and Service, for example Stylist and Treatment. Leave blank for the defaults. Languages other than English are not affected. Start the words with a capital letter.
@@ -966,14 +965,8 @@ uk:
     time_off_hint: "Для частини дня вкажіть години відсутності. Вони зберігаються як перерва на ці дати."
     messages_sms_variation: "Змінювати кожне SMS"
     messages_sms_variation_hint: "Додає короткий код у кінець кожного SMS, щоб жодні два повідомлення не збігалися - це вимагають деякі оператори."
-    merge_customer: "Об'єднати з іншим клієнтом"
-    merge_customer_hint: "Введіть email або номер телефону іншого клієнта. Записи та повідомлення цього клієнта буде перенесено до того запису, а цей запис буде видалено."
-    merge_customer_button: "Об'єднати"
-    merge_customer_confirm: "Об'єднати цього клієнта з іншим записом? Цю дію не можна скасувати."
-    merge_customer_not_found: "Жоден інший клієнт не має такого email або номера телефону."
-    customer_merged: "Клієнтів об'єднано"
     provider_color_hint: "Використовується для записів цього провайдера, коли календар показує всіх."
-    other_emails: "Інші адреси електронної пошти"
-    other_emails_hint: "По одній в рядку. Бронювання та повідомлення з будь-якої з цих адрес належать цьому клієнту."
-    other_phones: "Інші номери телефонів"
-    other_phones_hint: "По одному в рядку. Бронювання та повідомлення з будь-якого з цих номерів належать цьому клієнту."
+    working_providers: "Працюючі провайдери"
+    hidden_from_public: "Приховано від публіки"
+    slot_interval_hint: "Як часто клієнтам пропонується час початку. При 15 послуга на 45 хвилин може початися о 9:00, 9:15, 9:30 і так далі; при 60 - о 9:00, 10:00, 11:00. Це не залишає вільного часу після запису: для цього збільште тривалість послуги."
+    messages_all_channels: "Усі"

@@ -4,8 +4,16 @@ require "application_system_test_case"
 # the jQuery version (labels, visible text and popover buttons), so it must pass
 # on both.
 class CalendarModalsTest < ApplicationSystemTestCase
-  # The pages open on the browser's today, so the dates are today's.
+  # The calendar opens on the current week, so events sit today or just around now.
   def today = Date.current.strftime("%d/%m/%Y")
+  def soon = @soon ||= Time.at((wall_now.to_i / 900 + 2) * 900)
+
+  # Stored times are the stylist's wall clock and the browser runs in London,
+  # whatever zone the machine running the tests is in.
+  def wall_now
+    now = Time.now.in_time_zone(BROWSER_TIMEZONE)
+    Time.new(now.year, now.month, now.day, now.hour, now.min, 0)
+  end
 
   setup do
     Setting.set("display_email", "1")
@@ -14,10 +22,21 @@ class CalendarModalsTest < ApplicationSystemTestCase
   end
 
   # The calendar page's week view shows every event whatever the working plan.
+  # Events early or late in the day sit outside the scrolled time grid.
   def open_event(title)
     visit calendar_url unless current_path == "/calendar"
-    assert_selector ".fc-event", text: title, wait: 10
-    find(".fc-event", text: title).click
+    page.document.synchronize(10) do
+      found = page.evaluate_script(<<~JS, title)
+        (() => {
+          const event = [...document.querySelectorAll('.fc-event')].find((e) => e.textContent.includes(arguments[0]));
+          event?.scrollIntoView({block: 'center'});
+          return !!event;
+        })()
+      JS
+      raise Capybara::ElementNotFound, title unless found
+    end
+    # An event across midnight is drawn in two pieces; either opens it.
+    find(".fc-event", text: title, match: :first).click
     assert_selector ".popover", wait: 5
   end
 
@@ -32,8 +51,9 @@ class CalendarModalsTest < ApplicationSystemTestCase
       within(find("#save-appointment").ancestor(".modal")) do
         select "Trim Cut", from: "select-service"
         select "Zane", from: "select-provider"
-        find("#start-datetime").set("#{today} 2:00 pm\t")
-        find("#end-datetime").set("#{today} 2:30 pm\t")
+        # Ahead of now, so the appointment has not ended and can still be cancelled.
+        find("#start-datetime").set("#{soon.strftime('%d/%m/%Y %-l:%M %P')}\t")
+        find("#end-datetime").set("#{(soon + 30.minutes).strftime('%d/%m/%Y %-l:%M %P')}\t")
         click_on "Select"
         assert_selector "#existing-customers-list div", text: "JX", wait: 5
         find("#existing-customers-list div", text: "JX").click
@@ -45,7 +65,7 @@ class CalendarModalsTest < ApplicationSystemTestCase
       assert_text "Appointment saved", wait: 10
       appointment = Appointment.appointments.find_by!(notes: "Fringe only")
       assert_equal users(:jx).id, appointment.id_users_customer
-      assert_equal "14:00", appointment.start_datetime.strftime("%H:%M")
+      assert_equal soon.strftime("%H:%M"), appointment.start_datetime.strftime("%H:%M")
 
       open_event("Trim Cut")
       within(".popover") { click_on "Edit" }
@@ -75,6 +95,55 @@ class CalendarModalsTest < ApplicationSystemTestCase
       assert_equal "cancelled", cancelled.appointment_status&.kind
       assert_includes cancelled.notes, "Client away"
     end
+  end
+
+  test "an ended appointment's popover offers no Cancel and the buttons stay inside the popover" do
+    start = wall_now - 40.minutes
+    Appointment.create!(provider: users(:zane), customer: users(:jx), service: services(:haircut),
+                        start_datetime: start, end_datetime: start + 30.minutes, appointment_status: AppointmentStatus.of("booked"))
+    visit calendar_url
+    open_event("JX")
+    within(".popover") do
+      assert_selector ".edit-popover", visible: true
+      assert_no_selector ".cancel-popover", visible: true
+    end
+
+    # Not ended, so all five buttons show.
+    Appointment.last.update!(start_datetime: soon, end_datetime: soon + 30.minutes)
+    visit calendar_url
+    open_event("JX")
+    assert_selector ".popover .cancel-popover", visible: true
+    overflow = page.evaluate_script(<<~JS)
+      (() => {
+        const box = document.querySelector('.popover').getBoundingClientRect();
+        return [...document.querySelectorAll('.popover .btn')].filter((b) => b.offsetParent)
+          .some((b) => { const r = b.getBoundingClientRect(); return r.left < box.left || r.right > box.right; });
+      })()
+    JS
+    assert_not overflow, "popover buttons must stay inside the popover"
+  end
+
+  test "an appointment saves at a time off the quarter hour, as meetings use" do
+    start = soon + 2.minutes
+    visit appointments_url
+    assert_selector "#insert-appointment", visible: :all, wait: 10
+    find("#calendar-actions [data-bs-toggle=dropdown]").click
+    find("#insert-appointment").click
+    assert_selector "#save-appointment", visible: true, wait: 5
+    wait_for_modal
+    within(find("#save-appointment").ancestor(".modal")) do
+      select "Trim Cut", from: "select-service"
+      select "Zane", from: "select-provider"
+      find("#start-datetime").set("#{start.strftime('%d/%m/%Y %-l:%M %P')}\t")
+      find("#end-datetime").set("#{(start + 30.minutes).strftime('%d/%m/%Y %-l:%M %P')}\t")
+      click_on "Select"
+      find("#existing-customers-list div", text: "JX", wait: 5).click
+      fill_in "appointment-notes", with: "Off the grid"
+      click_on "Save"
+    end
+    confirm_modal "New Appointment", "No"
+    assert_text "Appointment saved", wait: 10
+    assert_equal start.strftime("%H:%M"), Appointment.find_by!(notes: "Off the grid").start_datetime.strftime("%H:%M")
   end
 
   test "add and delete an unavailability" do

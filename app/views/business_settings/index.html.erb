@@ -120,7 +120,7 @@
                             <label for="future-booking-limit" class="form-label">
                                 <%= lang('limit_days') %>
                             </label>
-                            <%= setting_text "future_booking_limit", min: 15, type: "number" %>
+                            <%= setting_text "future_booking_limit", min: 1, type: "number" %>
                             <div class="form-text text-muted">
                                 <small>
                                     <%= lang('future_booking_limit_hint') %>

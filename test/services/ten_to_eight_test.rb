@@ -79,6 +79,19 @@ class TenToEightTest < ActiveSupport::TestCase
     assert_equal 1, User.customers.where(email: "bella@example.org").count
   end
 
+  test "load keeps people who share an email or phone under different names as separate customers" do
+    rows = [
+      { ext_id: "p1", name: "Partner Of JX", email: users(:jx).email, phone: "" },
+      { ext_id: "p2", name: "Flatmate", email: "", phone: users(:jx).phone_number },
+      { ext_id: "p3", name: "jx", email: "", phone: users(:jx).phone_number }
+    ]
+    counts = TenToEight::Load.new({ customers: rows }, phases: %w[customers]).call[:counts]
+
+    assert_equal 2, counts[:customers][:created]
+    assert_equal 1, counts[:customers][:matched]
+    assert_equal "JX", users(:jx).reload.name
+  end
+
   test "load respects the phase selection" do
     data = extract
     counts = TenToEight::Load.new(data, phases: %w[categories services]).call[:counts]
@@ -147,20 +160,5 @@ class TenToEightTest < ActiveSupport::TestCase
     assert imported.all? { |s| s.id_service_categories.present? }
     alice = User.providers.find_by(email: "alice@example.org")
     assert_includes alice.services.map(&:name), "TS Short trim"
-  end
-
-  test "load merges a customer into an existing record that shares any email or phone" do
-    data = extract
-    role = Role.find_by!(slug: Role::CUSTOMER)
-    by_phone = User.create!(name: "Bella Old", email: "old@example.org", other_phones: "+447700900222", role: role)
-    by_other_email = User.create!(name: "Dana Old", phone_number: "07700 900999", other_emails: "dana@example.org", role: role)
-
-    counts = TenToEight::Load.new(data, phases: %w[customers]).call[:counts][:customers]
-    assert_equal 2, counts[:matched]
-    assert_equal 1, counts[:created]
-    assert_equal %w[bella@example.org], by_phone.reload.other_email_list
-    assert_equal "Dana Old", by_other_email.reload.name
-    assert_nil User.customers.find_by(email: "bella@example.org")
-    assert_nil User.customers.find_by(email: "dana@example.org")
   end
 end

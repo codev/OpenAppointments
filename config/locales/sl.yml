@@ -797,7 +797,6 @@ sl:
     send_message: Send
     select_one: Select One
     all_providers: All Providers
-    messages_all_providers: All Providers
     message_sent: Message sent.
     terminology: Terminology
     terminology_hint: Rename Provider and Service, for example Stylist and Treatment. Leave blank for the defaults. Languages other than English are not affected. Start the words with a capital letter.
@@ -966,14 +965,8 @@ sl:
     time_off_hint: "Za del dneva odsotnosti vnesite ure, ko ste odsotni. Shranijo se kot odmor na te datume."
     messages_sms_variation: "Spremeni vsak SMS"
     messages_sms_variation_hint: "Na konec vsakega SMS-a doda kratko referenčno kodo, da si nobeni dve sporočili nista enaki, kar zahtevajo nekateri operaterji."
-    merge_customer: "Združi z drugo stranko"
-    merge_customer_hint: "Vnesite e-pošto ali telefonsko številko druge stranke. Termini in sporočila te stranke se prenesejo na ta zapis, ta zapis pa se izbriše."
-    merge_customer_button: "Združi"
-    merge_customer_confirm: "Ali želite to stranko združiti z drugim zapisom? Tega ni mogoče razveljaviti."
-    merge_customer_not_found: "Nobena druga stranka nima te e-pošte ali telefonske številke."
-    customer_merged: "Stranke združene"
     provider_color_hint: "Uporabljeno za termine tega ponudnika, ko koledar prikazuje vse."
-    other_emails: "Drugi e-poštni naslovi"
-    other_emails_hint: "En na vrstico. Termini in sporočila s katerega koli od teh naslovov pripadajo tej stranki."
-    other_phones: "Druge telefonske številke"
-    other_phones_hint: "Ena na vrstico. Termini in sporočila s katere koli od teh številk pripadajo tej stranki."
+    working_providers: "Ponudniki na delu"
+    hidden_from_public: "Skrito pred javnostjo"
+    slot_interval_hint: "Kako pogosto so strankam ponujeni začetni časi. Pri 15 se lahko 45-minutna storitev začne ob 9:00, 9:15, 9:30 in tako naprej; pri 60 ob 9:00, 10:00, 11:00. Po terminu to ne pusti prostega časa: za to podaljšajte trajanje storitve."
+    messages_all_channels: "Vse"

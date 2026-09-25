@@ -797,7 +797,6 @@ bu:
     send_message: Send
     select_one: Select One
     all_providers: All Providers
-    messages_all_providers: All Providers
     message_sent: Message sent.
     terminology: Terminology
     terminology_hint: Rename Provider and Service, for example Stylist and Treatment. Leave blank for the defaults. Languages other than English are not affected. Start the words with a capital letter.
@@ -966,14 +965,8 @@ bu:
     time_off_hint: "За част от деня въведете часовете на отсъствие. Те се записват като почивка за тези дати."
     messages_sms_variation: "Промяна на всяко SMS"
     messages_sms_variation_hint: "Добавя кратък код в края на всяко SMS, така че никои две съобщения да не съвпадат - изискване на някои оператори."
-    merge_customer: "Обединяване с друг клиент"
-    merge_customer_hint: "Въведете имейл или телефонен номер на другия клиент. Часовете и съобщенията на този клиент се прехвърлят към този запис, а този запис се изтрива."
-    merge_customer_button: "Обединяване"
-    merge_customer_confirm: "Обединяване на този клиент с другия запис? Това действие не може да бъде отменено."
-    merge_customer_not_found: "Няма друг клиент с този имейл или телефонен номер."
-    customer_merged: "Клиентите са обединени"
     provider_color_hint: "Използва се за часовете на този изпълнител, когато календарят показва всички."
-    other_emails: "Други имейли"
-    other_emails_hint: "По един на ред. Резервации и съобщения от всеки от тези адреси принадлежат на този клиент."
-    other_phones: "Други телефонни номера"
-    other_phones_hint: "По един на ред. Резервации и съобщения от всеки от тези номера принадлежат на този клиент."
+    working_providers: "Работещи изпълнители"
+    hidden_from_public: "Скрито от публичността"
+    slot_interval_hint: "Колко често на клиентите се предлагат начални часове. При 15 услуга от 45 минути може да започне в 9:00, 9:15, 9:30 и т.н.; при 60, в 9:00, 10:00, 11:00. Това не оставя свободно време след часа: за целта увеличете продължителността на услугата."
+    messages_all_channels: "Всички"

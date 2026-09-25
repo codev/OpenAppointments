@@ -797,7 +797,6 @@ pt:
     send_message: Send
     select_one: Select One
     all_providers: All Providers
-    messages_all_providers: All Providers
     message_sent: Message sent.
     terminology: Terminology
     terminology_hint: Rename Provider and Service, for example Stylist and Treatment. Leave blank for the defaults. Languages other than English are not affected. Start the words with a capital letter.
@@ -966,14 +965,8 @@ pt:
     time_off_hint: "Para uma ausência de parte de um dia, indique as horas em que estará fora. São guardadas como uma pausa nessas datas."
     messages_sms_variation: "Variar cada SMS"
     messages_sms_variation_hint: "Adiciona um pequeno código de referência ao fim de cada SMS para que não haja dois textos iguais, o que algumas operadoras exigem."
-    merge_customer: "Fundir com outro cliente"
-    merge_customer_hint: "Introduza o email ou número de telefone do outro cliente. Os eventos e mensagens deste cliente serão movidos para esse registo e este registo será eliminado."
-    merge_customer_button: "Fundir"
-    merge_customer_confirm: "Fundir este cliente com o outro registo? Não será possível voltar atrás."
-    merge_customer_not_found: "Nenhum outro cliente tem esse email ou número de telefone."
-    customer_merged: "Clientes fundidos"
     provider_color_hint: "Utilizada para os eventos deste fornecedor quando o calendário mostra todos."
-    other_emails: "Outros emails"
-    other_emails_hint: "Um por linha. As reservas e mensagens de qualquer um destes endereços pertencem a este cliente."
-    other_phones: "Outros números de telefone"
-    other_phones_hint: "Um por linha. As reservas e mensagens de qualquer um destes números pertencem a este cliente."
+    working_providers: "Fornecedores a Trabalhar"
+    hidden_from_public: "Oculto do Público"
+    slot_interval_hint: "Com que frequência as horas de início são oferecidas aos clientes. Com 15, um serviço de 45 minutos pode começar às 9:00, 9:15, 9:30 e assim sucessivamente; com 60, às 9:00, 10:00, 11:00. Isto não reserva tempo livre após a marcação: para isso, aumente a duração do serviço."
+    messages_all_channels: "Todos"

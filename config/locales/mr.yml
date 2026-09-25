@@ -797,7 +797,6 @@ mr:
     send_message: Send
     select_one: Select One
     all_providers: All Providers
-    messages_all_providers: All Providers
     message_sent: Message sent.
     terminology: Terminology
     terminology_hint: Rename Provider and Service, for example Stylist and Treatment. Leave blank for the defaults. Languages other than English are not affected. Start the words with a capital letter.
@@ -966,14 +965,8 @@ mr:
     time_off_hint: "दिवसाच्या काही भागाच्या सुट्टीसाठी, तुम्ही अनुपस्थित असलेले तास नोंदवा. ते त्या तारखांना ब्रेक म्हणून जतन केले जातात."
     messages_sms_variation: "प्रत्येक SMS वेगळा करा"
     messages_sms_variation_hint: "प्रत्येक SMS च्या शेवटी एक लहान संदर्भ कोड जोडतो जेणेकरून कोणतेही दोन संदेश सारखे नसतील, जे काही नेटवर्क आवश्यक मानतात."
-    merge_customer: "दुसऱ्या ग्राहकामध्ये विलीन करा"
-    merge_customer_hint: "दुसऱ्या ग्राहकाचा ईमेल किंवा फ़ोन नंबर टाका. या ग्राहकाच्या अपॉइंटमेंट आणि संदेश त्या रेकॉर्डमध्ये हलवले जातील आणि हे रेकॉर्ड हटवले जाईल."
-    merge_customer_button: "विलीन करा"
-    merge_customer_confirm: "या ग्राहकाला दुसऱ्या रेकॉर्डमध्ये विलीन करायचे का? ही क्रिया पूर्ववत करता येणार नाही."
-    merge_customer_not_found: "या ईमेल किंवा फ़ोन नंबरचा दुसरा कोणताही ग्राहक नाही."
-    customer_merged: "ग्राहक विलीन केले"
     provider_color_hint: "कॅलेंडर सर्वांना दाखवत असताना हे या व्यवस्थापकाच्या अपॉइंटमेंटसाठी वापरले जाते."
-    other_emails: "इतर ईमेल"
-    other_emails_hint: "प्रति ओळ एक. यापैकी कोणत्याही पत्त्यावरील बुकिंग आणि संदेश या ग्राहकाशी संबंधित आहेत."
-    other_phones: "इतर फोन नंबर"
-    other_phones_hint: "प्रति ओळ एक. यापैकी कोणत्याही क्रमांकावरील बुकिंग आणि संदेश या ग्राहकाशी संबंधित आहेत."
+    working_providers: "कार्यरत व्यवस्थापक"
+    hidden_from_public: "सार्वजनिकपणे लपवलेले"
+    slot_interval_hint: "उपभोक्त्यांना सुरुवातीच्या वेळा किती वारंवार दिल्या जातात. 15 सह, 45 मिनिटांची सेवा 9:00, 9:15, 9:30 आणि असेच सुरू होऊ शकते; 60 सह, 9:00, 10:00, 11:00 ला. यामुळे अपॉइंटमेंटनंतर वेळ मोकळा ठेवला जात नाही: त्यासाठी सेवेचा कालावधी वाढवा."
+    messages_all_channels: "सर्व"

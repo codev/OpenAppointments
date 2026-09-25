@@ -797,7 +797,6 @@ ar:
     send_message: Send
     select_one: Select One
     all_providers: All Providers
-    messages_all_providers: All Providers
     message_sent: Message sent.
     terminology: Terminology
     terminology_hint: Rename Provider and Service, for example Stylist and Treatment. Leave blank for the defaults. Languages other than English are not affected. Start the words with a capital letter.
@@ -966,14 +965,8 @@ ar:
     time_off_hint: "لجزء من يوم إجازة، أدخل ساعات غيابك. يتم حفظها كاستراحة في تلك التواريخ."
     messages_sms_variation: "تنويع كل رسالة SMS"
     messages_sms_variation_hint: "يضيف رمزًا مرجعيًا قصيرًا في نهاية كل رسالة SMS حتى لا تتطابق رسالتان، وهو ما تتطلبه بعض الشبكات."
-    merge_customer: "الدمج مع زبون آخر"
-    merge_customer_hint: "أدخل البريد الإلكتروني أو رقم الجوال للزبون الآخر. ستُنقل مواعيد ورسائل هذا الزبون إلى ذلك السجل وسيُحذف هذا السجل."
-    merge_customer_button: "دمج"
-    merge_customer_confirm: "هل تريد دمج هذا الزبون مع السجل الآخر؟ لا يمكن التراجع عن هذا الإجراء."
-    merge_customer_not_found: "لا يوجد زبون آخر بهذا البريد الإلكتروني أو رقم الجوال."
-    customer_merged: "تم دمج الزبائن"
     provider_color_hint: "يُستخدم لمواعيد هذا المزود عندما يعرض التقويم الجميع."
-    other_emails: "عناوين بريد إلكتروني أخرى"
-    other_emails_hint: "واحد في كل سطر. الحجوزات والرسائل من أي من هذه العناوين تخص هذا الزبون."
-    other_phones: "أرقام هاتف أخرى"
-    other_phones_hint: "واحد في كل سطر. الحجوزات والرسائل من أي من هذه الأرقام تخص هذا الزبون."
+    working_providers: "المزودون العاملون"
+    hidden_from_public: "مخفي عن الجمهور"
+    slot_interval_hint: "عدد المرات التي تُعرض فيها أوقات البدء على الزبائن. مع 15، يمكن أن تبدأ خدمة مدتها 45 دقيقة في 9:00 و9:15 و9:30 وهكذا؛ ومع 60، في 9:00 و10:00 و11:00. لا يُبقي هذا وقتًا فارغًا بعد الموعد: لذلك، اجعل مدة الخدمة أطول."
+    messages_all_channels: "الكل"

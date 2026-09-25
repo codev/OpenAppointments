@@ -797,7 +797,6 @@ lb:
     send_message: Send
     select_one: Select One
     all_providers: All Providers
-    messages_all_providers: All Providers
     message_sent: Message sent.
     terminology: Terminology
     terminology_hint: Rename Provider and Service, for example Stylist and Treatment. Leave blank for the defaults. Languages other than English are not affected. Start the words with a capital letter.
@@ -966,14 +965,8 @@ lb:
     time_off_hint: "Fir en Deel vun engem fräie Dag, gitt d'Stonne wou Dir net do sidd un. Si ginn als Paus op deene Datumen gespäichert."
     messages_sms_variation: "All SMS variéieren"
     messages_sms_variation_hint: "Setzt e kuerze Referenzcode um Enn vun all SMS derbäi, sou dass keng zwou Messagen identesch sinn, wat e puer Netzwierker verlaangen."
-    merge_customer: "An en anere Client zesummeleeën"
-    merge_customer_hint: "Gitt d'E-Mail oder d'Telefonsnummer vum aneren Client an. D'Termäiner an d'Message vun dësem Client ginn an deen Datensaz réckelt an dëse Datensaz gëtt geläscht."
-    merge_customer_button: "Zesummeleeën"
-    merge_customer_confirm: "Dëse Client an den aneren Datensaz zesummeleeën? Dëse Virgang kann nët réckgängeg gemaach ginn."
-    merge_customer_not_found: "Kee anere Client huet dës E-Mail oder Telefonsnummer."
-    customer_merged: "Clienten zesummegeluecht"
     provider_color_hint: "Gëtt benotzt fir d'Termäine vun dësem Mataarbechter wann de Kalenner jiddereen weist."
-    other_emails: "Aner E-Mail-Adressen"
-    other_emails_hint: "Eng pro Zeil. Reservatiounen a Messagen vun deenen Adressen gehéieren zu dësem Client."
-    other_phones: "Aner Telefonsnummeren"
-    other_phones_hint: "Eng pro Zeil. Reservatiounen a Messagen vun deenen Nummeren gehéieren zu dësem Client."
+    working_providers: "Mataarbechter am Déngscht"
+    hidden_from_public: "Vum Public verstoppt"
+    slot_interval_hint: "Wéi dacks de Clienten Ufankszäite proposéiert ginn. Mat 15 kann eng Dingschtleeschtung vu 45 Minutten um 9:00, 9:15, 9:30 asw. ufänken; mat 60 um 9:00, 10:00, 11:00. Et hält keng Zäit nom Termin fräi: dofir maacht d'Dauer vun der Dingschtleeschtung méi laang."
+    messages_all_channels: "All"

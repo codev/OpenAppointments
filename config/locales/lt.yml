@@ -797,7 +797,6 @@ lt:
     send_message: Send
     select_one: Select One
     all_providers: All Providers
-    messages_all_providers: All Providers
     message_sent: Message sent.
     terminology: Terminology
     terminology_hint: Rename Provider and Service, for example Stylist and Treatment. Leave blank for the defaults. Languages other than English are not affected. Start the words with a capital letter.
@@ -966,14 +965,8 @@ lt:
     time_off_hint: "Jei tai dalis dienos, įveskite valandas, kai jūsų nėra. Jos išsaugomos kaip pertrauka tomis datomis."
     messages_sms_variation: "Keisti kiekvieną SMS"
     messages_sms_variation_hint: "Prideda trumpą nuorodos kodą kiekvienos SMS pabaigoje, kad jokios dvi žinutės nebūtų vienodos - to reikalauja kai kurie operatoriai."
-    merge_customer: "Sujungti su kitu klientu"
-    merge_customer_hint: "Įveskite kito kliento el. paštą arba telefono numerį. Šio kliento vizitai ir žinutės bus perkelti į tą įrašą, o šis įrašas bus ištrintas."
-    merge_customer_button: "Sujungti"
-    merge_customer_confirm: "Sujungti šį klientą su kitu įrašu? Šio veiksmo negalima atšaukti."
-    merge_customer_not_found: "Nė vienas kitas klientas neturi tokio el. pašto ar telefono numerio."
-    customer_merged: "Klientai sujungti"
     provider_color_hint: "Naudojama šio teikėjo vizitams, kai kalendorius rodo visus."
-    other_emails: "Kiti el. pašto adresai"
-    other_emails_hint: "Po vieną eilutėje. Rezervacijos ir žinutės iš bet kurio iš šių adresų priklauso šiam klientui."
-    other_phones: "Kiti telefono numeriai"
-    other_phones_hint: "Po vieną eilutėje. Rezervacijos ir žinutės iš bet kurio iš šių numerių priklauso šiam klientui."
+    working_providers: "Dirbantys teikėjai"
+    hidden_from_public: "Nerodoma viešai"
+    slot_interval_hint: "Kaip dažnai klientams siūlomi pradžios laikai. Nustačius 15, 45 minučių paslauga gali prasidėti 9:00, 9:15, 9:30 ir t. t.; nustačius 60, 9:00, 10:00, 11:00. Tai nepalieka laisvo laiko po vizito: tam pailginkite paslaugos trukmę."
+    messages_all_channels: "Visi"

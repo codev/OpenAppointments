@@ -87,6 +87,15 @@ class ServicesTest < ActionDispatch::IntegrationTest
     assert_select "input.is-invalid[name='service[duration]']"
   end
 
+  test "a slot interval of 0 is refused and the field explains what the interval is" do
+    login_admin
+    get "/services/#{services(:haircut).id}/edit"
+    assert_select "#slot-interval-hint", text: I18n.t("ea.slot_interval_hint")
+    patch "/services/#{services(:haircut).id}", params: { service: { slot_interval: 0 } }
+    assert_response :unprocessable_entity
+    assert_select "input.is-invalid[name='service[slot_interval]']"
+  end
+
   test "the old JSON endpoints are gone and customers are forbidden" do
     login_admin
     post "/services/search", params: { keyword: "" }

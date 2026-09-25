@@ -30,6 +30,14 @@ class ApplicationSystemTestCase < ActionDispatch::SystemTestCase
     page.driver.browser.execute_cdp("Emulation.setTimezoneOverride", timezoneId: BROWSER_TIMEZONE)
   end
 
+  # The offset-th day after `from` on which the fixture stylist works, so booking
+  # tests find free hours whatever weekday the suite runs on.
+  def working_day(offset = 0, from: Date.current + 1)
+    plan = users(:zane).working_plan
+    days = (from..).lazy.select { |date| plan[date.strftime("%A").downcase] }
+    days.first(offset + 1).last
+  end
+
   # One browser serves the whole run, so a test that changes the window size
   # must hand the next test the configured size back.
   def resize_window(width, height)

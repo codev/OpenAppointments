@@ -797,7 +797,6 @@ hr:
     send_message: Send
     select_one: Select One
     all_providers: All Providers
-    messages_all_providers: All Providers
     message_sent: Message sent.
     terminology: Terminology
     terminology_hint: Rename Provider and Service, for example Stylist and Treatment. Leave blank for the defaults. Languages other than English are not affected. Start the words with a capital letter.
@@ -966,14 +965,8 @@ hr:
     time_off_hint: "Za dio dana slobodnog vremena unesite sate kada ste odsutni. Spremaju se kao pauza na te datume."
     messages_sms_variation: "Variraj svaki SMS"
     messages_sms_variation_hint: "Dodaje kratki referentni kod na kraj svakog SMS-a kako nikoja dva teksta ne bi bila ista, što neke mreže zahtijevaju."
-    merge_customer: "Spoji s drugim klijentom"
-    merge_customer_hint: "Unesite e-poštu ili broj telefona drugog klijenta. Sastanci i poruke ovog klijenta premjestit će se u taj zapis, a ovaj zapis bit će izbrisan."
-    merge_customer_button: "Spoji"
-    merge_customer_confirm: "Spojiti ovog klijenta s drugim zapisom? Ovo se ne može poništiti."
-    merge_customer_not_found: "Nijedan drugi klijent nema tu e-poštu ili broj telefona."
-    customer_merged: "Klijenti spojeni"
     provider_color_hint: "Koristi se za sastanke ovog pružatelja kada kalendar prikazuje sve."
-    other_emails: "Ostale e-mail adrese"
-    other_emails_hint: "Jedna po retku. Sastanci i poruke s bilo koje od ovih adresa pripadaju ovom klijentu."
-    other_phones: "Ostali brojevi telefona"
-    other_phones_hint: "Jedan po retku. Sastanci i poruke s bilo kojeg od ovih brojeva pripadaju ovom klijentu."
+    working_providers: "Pružatelji Koji Rade"
+    hidden_from_public: "Skriveno Od Javnosti"
+    slot_interval_hint: "Koliko često se klijentima nude vremena početka. Uz 15, usluga od 45 minuta može početi u 9:00, 9:15, 9:30 i tako dalje; uz 60, u 9:00, 10:00, 11:00. To ne čuva slobodno vrijeme nakon sastanka: za to produljite trajanje usluge."
+    messages_all_channels: "Sve"

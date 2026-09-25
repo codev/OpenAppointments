@@ -162,13 +162,14 @@ class BookingController < ApplicationController
       return form_post? ? register_failed(helpers.lang("turnstile_verification_failed")) : render(json: { turnstile_verification: false })
     end
 
-    existing_customer = User.customer_by_contact(email: customer_params["email"], phone: customer_params["phone_number"])
-    # A reschedule keeps the appointment's customer unless the email now belongs to another record.
+    existing_customer = User.customer_for_booking(email: customer_params["email"], phone: customer_params["phone_number"],
+                                                  name: customer_params["name"])
+    # A reschedule keeps the appointment's customer unless the details now belong to another record.
     existing_customer ||= original.customer if original
     if existing_customer
       conflict = Appointment.active.where(id_users_customer: existing_customer.id)
-                            .where("start_datetime <= ? AND end_datetime >= ?",
-                                   appointment_params["start_datetime"], end_datetime_for(appointment_params, service))
+                            .where("start_datetime < ? AND end_datetime > ?",
+                                   end_datetime_for(appointment_params, service), appointment_params["start_datetime"])
       conflict = conflict.where.not(id: original.id) if original
       raise ArgumentError, helpers.lang("customer_is_already_booked") if conflict.exists?
     end
@@ -177,13 +178,11 @@ class BookingController < ApplicationController
 
     customer = existing_customer || User.new(role: Role.find_by!(slug: Role::CUSTOMER))
     timezone = customer_params["timezone"].presence || (customer.new_record? ? provider.effective_timezone : customer.timezone)
-    attributes = customer_params.except("id", "timezone", "language")
-    # A known customer keeps their primary email and phone; a different one typed is added as another.
-    if customer.persisted?
-      customer.add_contact(email: attributes["email"], phone: attributes["phone_number"])
-      attributes = attributes.except("email", "phone_number")
-    end
-    customer.assign_attributes(attributes.merge("timezone" => timezone))
+    details = customer_params.except("id", "timezone", "language")
+    # A booking only fills in what an existing record lacks, so nobody who
+    # knows a customer's name and phone can take over their email, or wipe it.
+    details = details.compact_blank.select { |field, _| customer[field].blank? } if customer.persisted?
+    customer.assign_attributes(details.merge("timezone" => timezone))
     customer.language = session[:language] || Setting.get("default_language", "english")
     customer.save!
 

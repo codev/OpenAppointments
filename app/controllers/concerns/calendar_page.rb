@@ -21,7 +21,7 @@ module CalendarPage
     available_providers = visible_providers.map { |provider| EaRows.provider_row(provider) }
     provider_service_ids = available_providers.flat_map { |provider| provider["services"] }.uniq
     category_names = ServiceCategory.pluck(:id, :name).to_h
-    available_services = Service.available.joins(:provider_links).distinct.order(:name)
+    available_services = Service.joins(:provider_links).distinct.order(:name)
                                 .select { |service| provider_service_ids.include?(service.id) }
                                 .map do |service|
       EaRows.service_row(service).merge(

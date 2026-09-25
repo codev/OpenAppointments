@@ -797,7 +797,6 @@ nl:
     send_message: Send
     select_one: Select One
     all_providers: All Providers
-    messages_all_providers: All Providers
     message_sent: Message sent.
     terminology: Terminology
     terminology_hint: Rename Provider and Service, for example Stylist and Treatment. Leave blank for the defaults. Languages other than English are not affected. Start the words with a capital letter.
@@ -966,14 +965,8 @@ nl:
     time_off_hint: "Voor afwezigheid gedurende een deel van een dag voert u de uren in waarop u weg bent. Deze worden op die datums als pauze opgeslagen."
     messages_sms_variation: "Elke SMS laten variëren"
     messages_sms_variation_hint: "Voegt een korte referentiecode toe aan het einde van elke SMS zodat geen twee berichten hetzelfde zijn, wat sommige netwerken vereisen."
-    merge_customer: "Samenvoegen met een andere klant"
-    merge_customer_hint: "Voer het e-mailadres of telefoonnummer van de andere klant in. De afspraken en berichten van deze klant worden naar dat record verplaatst en dit record wordt verwijderd."
-    merge_customer_button: "Samenvoegen"
-    merge_customer_confirm: "Deze klant samenvoegen met het andere record? Dit kan niet ongedaan worden gemaakt."
-    merge_customer_not_found: "Geen andere klant heeft dat e-mailadres of telefoonnummer."
-    customer_merged: "Klanten samengevoegd"
     provider_color_hint: "Wordt gebruikt voor de afspraken van deze medewerker wanneer de kalender iedereen toont."
-    other_emails: "Overige e-mailadressen"
-    other_emails_hint: "Eén per regel. Boekingen en berichten van een van deze adressen horen bij deze klant."
-    other_phones: "Overige telefoonnummers"
-    other_phones_hint: "Eén per regel. Boekingen en berichten van een van deze nummers horen bij deze klant."
+    working_providers: "Werkende medewerkers"
+    hidden_from_public: "Verborgen voor publiek"
+    slot_interval_hint: "Hoe vaak starttijden aan klanten worden aangeboden. Met 15 kan een dienst van 45 minuten beginnen om 9:00, 9:15, 9:30 enzovoort; met 60 om 9:00, 10:00, 11:00. Er wordt geen tijd vrijgehouden na de afspraak: maak daarvoor de duur van de dienst langer."
+    messages_all_channels: "Alle"

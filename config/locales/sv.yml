@@ -797,7 +797,6 @@ sv:
     send_message: Send
     select_one: Select One
     all_providers: All Providers
-    messages_all_providers: All Providers
     message_sent: Message sent.
     terminology: Terminology
     terminology_hint: Rename Provider and Service, for example Stylist and Treatment. Leave blank for the defaults. Languages other than English are not affected. Start the words with a capital letter.
@@ -966,14 +965,8 @@ sv:
     time_off_hint: "För frånvaro under en del av en dag anger du timmarna du är borta. De sparas som en icke bokningsbar tid på dessa datum."
     messages_sms_variation: "Variera varje SMS"
     messages_sms_variation_hint: "Lägger till en kort referenskod i slutet av varje SMS så att inga två texter är likadana, vilket vissa operatörer kräver."
-    merge_customer: "Slå ihop med en annan kund"
-    merge_customer_hint: "Ange den andra kundens e-post eller telefonnummer. Den här kundens bokningar och meddelanden flyttas till den posten och den här posten tas bort."
-    merge_customer_button: "Slå ihop"
-    merge_customer_confirm: "Slå ihop den här kunden med den andra posten? Detta kan inte ångras."
-    merge_customer_not_found: "Ingen annan kund har den e-postadressen eller det telefonnumret."
-    customer_merged: "Kunder sammanslagna"
     provider_color_hint: "Används för denna utförares bokningar när kalendern visar alla."
-    other_emails: "Andra e-postadresser"
-    other_emails_hint: "En per rad. Bokningar och meddelanden från någon av dessa adresser tillhör denna kund."
-    other_phones: "Andra telefonnummer"
-    other_phones_hint: "En per rad. Bokningar och meddelanden från något av dessa nummer tillhör denna kund."
+    working_providers: "Utförare i tjänst"
+    hidden_from_public: "Dolda från bokningssidan"
+    slot_interval_hint: "Hur ofta starttider erbjuds kunderna. Med 15 kan en tjänst på 45 minuter börja 9:00, 9:15, 9:30 och så vidare; med 60 klockan 9:00, 10:00, 11:00. Det håller inte tid ledig efter bokningen: för det, gör tjänstens längd längre."
+    messages_all_channels: "Alla"

@@ -364,17 +364,17 @@ body .modal.full-screen .modal-push {
     overflow-y: hidden;
 }
 
+/* Columns share the width between 200px and 350px each; more than fit
+   scroll sideways. */
 #calendar .calendar-view > div {
     display: flex;
     flex-wrap: nowrap;
-    width: max-content;
-    min-width: 100%;
 }
 
 #calendar .calendar-view .date-column {
     display: flex;
     flex-wrap: nowrap;
-    flex-shrink: 0;
+    flex: 1 0 auto;
 }
 
 #calendar .calendar-view .date-column .date-column-title {
@@ -389,9 +389,8 @@ body .modal.full-screen .modal-push {
 }
 
 #calendar .calendar-view .date-column .provider-column {
-    flex-shrink: 0;
-    width: 350px;
-    min-width: 350px;
+    flex: 1 1 200px;
+    min-width: 200px;
     max-width: 350px;
     border-right: 1px solid var(--bs-border-color);
 }
@@ -826,4 +825,11 @@ body .modal.full-screen .modal-push {
 #calendar .calendar-view .day-entry-freed {
     opacity: 0.5;
     text-decoration: line-through;
+}
+
+/* Rich text editors (Notices page) keep a white writing area whatever the
+   page background colour. */
+.trumbowyg-editor-box,
+.trumbowyg-editor {
+    background-color: #fff;
 }

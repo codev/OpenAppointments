@@ -40,48 +40,40 @@ class User < ApplicationRecord
   scope :admins, -> { joins(:role).where(roles: { slug: Role::ADMIN }) }
   scope :providers, -> { joins(:role).where(roles: { slug: Role::PROVIDER }) }
 
-  # Other emails and phone numbers, one per line. A customer is found by any
-  # of their addresses; phones are compared in E.164 however they were typed.
-  def other_email_list = split_lines(other_emails)
-  def other_phone_list = split_lines(other_phones)
-  def all_emails = [ email, *other_email_list ].compact_blank.map(&:downcase).uniq
-  def all_phones = [ phone_number, mobile_number, *other_phone_list ].filter_map { |number| Messaging::Template.e164(number) }.uniq
+  # A loose pre-filter on the last digits of either number, with the usual
+  # separators removed; the E.164 comparison in Ruby decides.
+  PHONE_TAIL_MATCH = <<~SQL.squish.freeze
+    REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(phone_number, ' ', ''), '-', ''), '(', ''), ')', ''), '.', '') LIKE :tail
+    OR REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(mobile_number, ' ', ''), '-', ''), '(', ''), ')', ''), '.', '') LIKE :tail
+  SQL
 
-  # An email or phone not already known becomes another address; a blank
-  # primary takes it instead.
-  def add_contact(email: nil, phone: nil)
-    if email.present? && all_emails.exclude?(email.strip.downcase)
-      self.email.blank? ? self.email = email.strip : self.other_emails = (other_email_list + [ email.strip ]).join("\n")
-    end
-    normalised = Messaging::Template.e164(phone)
-    if normalised.present? && all_phones.exclude?(normalised)
-      phone_number.blank? ? self.phone_number = phone.strip : self.other_phones = (other_phone_list + [ normalised ]).join("\n")
-    end
-    changed?
-  end
-
-  def self.customer_by_contact(email: nil, phone: nil, scope: customers)
-    customer_by_email(email, scope) || customer_by_phone(phone, scope)
-  end
-
-  def self.customer_by_email(email, scope = customers)
-    email = email.to_s.strip.downcase
-    return nil if email.blank?
-
-    scope.where("LOWER(email) = ?", email).first ||
-      scope.where("LOWER(other_emails) LIKE ?", "%#{sanitize_sql_like(email)}%").find { |user| user.all_emails.include?(email) }
-  end
-
+  # The customer whose phone or mobile number is this one, however either was
+  # typed.
   def self.customer_by_phone(number, scope = customers)
-    wanted = Messaging::Template.e164(number)
-    return nil if wanted.blank? || wanted.length < 7
-
-    tail = "%#{wanted[-7..]}%"
-    stripped = "REPLACE(REPLACE(REPLACE(COALESCE(%s, ''), ' ', ''), '-', ''), '(', '')"
-    condition = %w[phone_number mobile_number other_phones].map { |column| "#{format(stripped, column)} LIKE :tail" }.join(" OR ")
-    scope.where(condition, tail: tail).find { |user| user.all_phones.include?(wanted) }
+    customers_by_phone(number, scope).first
   end
 
+  # Customers whose phone or mobile number is this one: both sides are compared
+  # in E.164 after a digits-only narrowing.
+  def self.customers_by_phone(number, scope = customers)
+    wanted = Messaging::Template.e164(number)
+    return [] if wanted.blank? || wanted.length < 7
+
+    scope.where(PHONE_TAIL_MATCH, tail: "%#{wanted[-7..]}%")
+         .select { |user| [ user.phone_number, user.mobile_number ].any? { |stored| Messaging::Template.e164(stored) == wanted } }
+  end
+
+  # The customer a booking belongs to: the same email or phone and the same
+  # name. People sharing contact details keep their own records.
+  def self.customer_for_booking(email:, phone:, name:)
+    candidates = email.present? ? customers.where("LOWER(email) = ?", email.downcase).to_a : []
+    candidates += customers_by_phone(phone) if phone.present?
+    candidates.find { |customer| same_name?(customer.name, name) }
+  end
+
+  def self.same_name?(one, other)
+    one.to_s.squish.casecmp?(other.to_s.squish)
+  end
   scope :assistants, -> { joins(:role).where(roles: { slug: Role::ASSISTANT }) }
   scope :customers, -> { joins(:role).where(roles: { slug: Role::CUSTOMER }) }
 
@@ -97,11 +89,5 @@ class User < ApplicationRecord
   def working_plan
     raw = settings&.working_plan
     raw.present? ? JSON.parse(raw) : nil
-  end
-
-  private
-
-  def split_lines(text)
-    text.to_s.split(/[\r\n]+/).map(&:strip).compact_blank.uniq
   end
 end

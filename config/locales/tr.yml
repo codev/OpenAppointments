@@ -797,7 +797,6 @@ tr:
     send_message: Send
     select_one: Select One
     all_providers: All Providers
-    messages_all_providers: All Providers
     message_sent: Message sent.
     terminology: Terminology
     terminology_hint: Rename Provider and Service, for example Stylist and Treatment. Leave blank for the defaults. Languages other than English are not affected. Start the words with a capital letter.
@@ -966,14 +965,8 @@ tr:
     time_off_hint: "Günün bir bölümü için izinliyseniz, uzakta olduğunuz saatleri girin. Bunlar o tarihlerde ara olarak kaydedilir."
     messages_sms_variation: "Her SMS'i farklılaştır"
     messages_sms_variation_hint: "Bazı operatörlerin gerektirdiği gibi hiçbir iki metnin aynı olmaması için her SMS'in sonuna kısa bir referans kodu ekler."
-    merge_customer: "Başka bir müşteriyle birleştir"
-    merge_customer_hint: "Diğer müşterinin e-postasını veya telefon numarasını girin. Bu müşterinin randevuları ve mesajları o kayda taşınır ve bu kayıt silinir."
-    merge_customer_button: "Birleştir"
-    merge_customer_confirm: "Bu müşteri diğer kayıtla birleştirilsin mi? Bu işlem geri alınamaz."
-    merge_customer_not_found: "Bu e-posta veya telefon numarasına sahip başka bir müşteri yok."
-    customer_merged: "Müşteriler birleştirildi"
     provider_color_hint: "Takvim herkesi gösterdiğinde bu hizmet sağlayıcının randevuları için kullanılır."
-    other_emails: "Diğer e-postalar"
-    other_emails_hint: "Her satıra bir tane. Bu adreslerden herhangi birinden gelen rezervasyonlar ve mesajlar bu müşteriye aittir."
-    other_phones: "Diğer telefon numaraları"
-    other_phones_hint: "Her satıra bir tane. Bu numaralardan herhangi birinden gelen rezervasyonlar ve mesajlar bu müşteriye aittir."
+    working_providers: "Çalışan Hizmet Sağlayıcılar"
+    hidden_from_public: "Halka Açık Olmaktan Gizli"
+    slot_interval_hint: "Müşterilere ne sıklıkla başlangıç saati sunulacağı. 15 ile 45 dakikalık bir hizmet 9:00, 9:15, 9:30 vb. saatlerde başlayabilir; 60 ile 9:00, 10:00, 11:00'da. Randevudan sonra boş zaman bırakmaz: bunun için hizmet süresini uzatın."
+    messages_all_channels: "Tümü"

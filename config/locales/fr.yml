@@ -797,7 +797,6 @@ fr:
     send_message: Send
     select_one: Select One
     all_providers: All Providers
-    messages_all_providers: All Providers
     message_sent: Message sent.
     terminology: Terminology
     terminology_hint: Rename Provider and Service, for example Stylist and Treatment. Leave blank for the defaults. Languages other than English are not affected. Start the words with a capital letter.
@@ -966,14 +965,8 @@ fr:
     time_off_hint: "Pour une absence sur une partie de la journée, saisissez les heures où vous êtes absent. Elles sont enregistrées comme une pause à ces dates."
     messages_sms_variation: "Varier chaque SMS"
     messages_sms_variation_hint: "Ajoute un court code de référence à la fin de chaque SMS afin qu'aucun texte ne soit identique, ce que certains opérateurs exigent."
-    merge_customer: "Fusionner avec un autre client"
-    merge_customer_hint: "Saisissez l'email ou le numéro de téléphone de l'autre client. Les rendez-vous et messages de ce client seront transférés vers cet enregistrement et celui-ci sera supprimé."
-    merge_customer_button: "Fusionner"
-    merge_customer_confirm: "Fusionner ce client avec l'autre enregistrement ? Cette action est irréversible."
-    merge_customer_not_found: "Aucun autre client n'a cet email ou ce numéro de téléphone."
-    customer_merged: "Clients fusionnés"
     provider_color_hint: "Utilisée pour les rendez-vous de cet exécutant lorsque le calendrier affiche tout le monde."
-    other_emails: "Autres adresses e-mail"
-    other_emails_hint: "Une par ligne. Les réservations et messages provenant de l'une de ces adresses appartiennent à ce client."
-    other_phones: "Autres numéros de téléphone"
-    other_phones_hint: "Un par ligne. Les réservations et messages provenant de l'un de ces numéros appartiennent à ce client."
+    working_providers: "Exécutants en Service"
+    hidden_from_public: "Caché au Public"
+    slot_interval_hint: "Fréquence à laquelle les heures de début sont proposées aux clients. Avec 15, une prestation de 45 minutes peut commencer à 9:00, 9:15, 9:30 et ainsi de suite ; avec 60, à 9:00, 10:00, 11:00. Cela ne garde pas de temps libre après le rendez-vous : pour cela, allongez la durée de la prestation."
+    messages_all_channels: "Tous"

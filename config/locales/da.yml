@@ -797,7 +797,6 @@ da:
     send_message: Send
     select_one: Select One
     all_providers: All Providers
-    messages_all_providers: All Providers
     message_sent: Message sent.
     terminology: Terminology
     terminology_hint: Rename Provider and Service, for example Stylist and Treatment. Leave blank for the defaults. Languages other than English are not affected. Start the words with a capital letter.
@@ -966,14 +965,8 @@ da:
     time_off_hint: "Ved fravær en del af en dag skal du angive de timer, hvor du er væk. De gemmes som en pause på de datoer."
     messages_sms_variation: "Variér hver SMS"
     messages_sms_variation_hint: "Tilføjer en kort referencekode til slutningen af hver SMS, så ingen to beskeder er ens, hvilket nogle netværk kræver."
-    merge_customer: "Flet sammen med en anden kunde"
-    merge_customer_hint: "Indtast den anden kundes email eller telefonnummer. Denne kundes aftaler og beskeder flyttes til den post, og denne post slettes."
-    merge_customer_button: "Flet sammen"
-    merge_customer_confirm: "Flet denne kunde sammen med den anden post? Dette kan ikke fortrydes."
-    merge_customer_not_found: "Ingen anden kunde har den email eller det telefonnummer."
-    customer_merged: "Kunder flettet sammen"
     provider_color_hint: "Bruges til denne leverandørs aftaler, når kalenderen viser alle."
-    other_emails: "Andre e-mailadresser"
-    other_emails_hint: "Én pr. linje. Bookinger og beskeder fra en af disse adresser tilhører denne kunde."
-    other_phones: "Andre telefonnumre"
-    other_phones_hint: "Én pr. linje. Bookinger og beskeder fra et af disse numre tilhører denne kunde."
+    working_providers: "Arbejdende Leverandører"
+    hidden_from_public: "Skjult For Offentligheden"
+    slot_interval_hint: "Hvor ofte starttider tilbydes kunderne. Med 15 kan en tjeneste på 45 minutter starte kl. 9:00, 9:15, 9:30 og så videre; med 60 kl. 9:00, 10:00, 11:00. Det holder ikke tid fri efter aftalen: gør i stedet tjenestens varighed længere."
+    messages_all_channels: "Alle"

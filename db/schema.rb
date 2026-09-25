@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_09_20_170000) do
+ActiveRecord::Schema[8.1].define(version: 2026_09_25_130000) do
   create_table "action_mailbox_inbound_emails", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.string "message_checksum", null: false
@@ -289,8 +289,6 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_20_170000) do
     t.string "mobile_number"
     t.string "name"
     t.text "notes"
-    t.text "other_emails"
-    t.text "other_phones"
     t.string "phone_number"
     t.text "services_description"
     t.integer "sort_order"

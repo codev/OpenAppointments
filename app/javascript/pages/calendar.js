@@ -137,7 +137,8 @@ App.Pages.Calendar = (function () {
     let refreshTimer = null;
 
     function initialize() {
-        if (!$calendar().length) {
+        // The appointments page also has a #calendar; only the calendar page has the filter.
+        if (!$calendar().length || !$selectFilterItem().length) {
             clearInterval(refreshTimer);
             return;
         }

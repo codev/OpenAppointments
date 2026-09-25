@@ -797,7 +797,6 @@ hu:
     send_message: Send
     select_one: Select One
     all_providers: All Providers
-    messages_all_providers: All Providers
     message_sent: Message sent.
     terminology: Terminology
     terminology_hint: Rename Provider and Service, for example Stylist and Treatment. Leave blank for the defaults. Languages other than English are not affected. Start the words with a capital letter.
@@ -966,14 +965,8 @@ hu:
     time_off_hint: "Ha a nap egy részéről van szó, add meg a távollét óráit. Ezek szünetként kerülnek mentésre az adott napokon."
     messages_sms_variation: "Minden SMS variálása"
     messages_sms_variation_hint: "Minden SMS végéhez hozzáad egy rövid hivatkozási kódot, hogy ne legyen két egyforma üzenet, amit egyes szolgáltatók megkövetelnek."
-    merge_customer: "Összevonás egy másik ügyféllel"
-    merge_customer_hint: "Add meg a másik ügyfél e-mail címét vagy telefonszámát. Ennek az ügyfélnek az időpontjai és üzenetei átkerülnek arra a rekordra, ez a rekord pedig törlődik."
-    merge_customer_button: "Összevonás"
-    merge_customer_confirm: "Összevonod ezt az ügyfelet a másik rekorddal? Ez nem vonható vissza."
-    merge_customer_not_found: "Egyetlen másik ügyfélnek sincs ilyen e-mail címe vagy telefonszáma."
-    customer_merged: "Ügyfelek összevonva"
     provider_color_hint: "Ezt használjuk ennek a szolgáltatónak az időpontjaihoz, amikor a naptár mindenkit megjelenít."
-    other_emails: "Egyéb email címek"
-    other_emails_hint: "Soronként egy. Az ezekről a címekről érkező időpontok és üzenetek ehhez az ügyfélhez tartoznak."
-    other_phones: "Egyéb telefonszámok"
-    other_phones_hint: "Soronként egy. Az ezekről a számokról érkező időpontok és üzenetek ehhez az ügyfélhez tartoznak."
+    working_providers: "Dolgozó szolgáltatók"
+    hidden_from_public: "Rejtve a nyilvánosság elől"
+    slot_interval_hint: "Milyen gyakran kínálunk kezdési időpontokat a vendégeknek. 15 esetén egy 45 perces szolgáltatás kezdődhet 9:00-kor, 9:15-kor, 9:30-kor és így tovább; 60 esetén 9:00-kor, 10:00-kor, 11:00-kor. Nem tart szabadon időt az időpont után: ehhez növelje a szolgáltatás időtartamát."
+    messages_all_channels: "Mind"

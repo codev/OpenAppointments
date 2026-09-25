@@ -797,7 +797,6 @@ en:
     send_message: Send
     select_one: Select One
     all_providers: All Providers
-    messages_all_providers: All Providers
     message_sent: Message sent.
     terminology: Terminology
     terminology_hint: Rename Provider and Service, for example Stylist and Treatment. Leave blank for the defaults. Languages other than English are not affected. Start the words with a capital letter.
@@ -966,14 +965,8 @@ en:
     time_off_hint: "For part of a day off, enter the hours you are away. They are saved as a break on those dates."
     messages_sms_variation: "Vary each SMS"
     messages_sms_variation_hint: "Adds a short reference code to the end of every SMS so no two texts are the same, which some networks require."
-    merge_customer: "Merge into another customer"
-    merge_customer_hint: "Enter the other customer's email or phone number. This customer's appointments and messages move to that record and this record is deleted."
-    merge_customer_button: "Merge"
-    merge_customer_confirm: "Merge this customer into the other record? This cannot be undone."
-    merge_customer_not_found: "No other customer has that email or phone number."
-    customer_merged: "Customers merged"
     provider_color_hint: "Used for this provider's appointments when the calendar shows everyone."
-    other_emails: "Other emails"
-    other_emails_hint: "One per line. Bookings and messages from any of these addresses belong to this customer."
-    other_phones: "Other phone numbers"
-    other_phones_hint: "One per line. Bookings and messages from any of these numbers belong to this customer."
+    working_providers: "Working Providers"
+    hidden_from_public: "Hidden From Public"
+    slot_interval_hint: "How often start times are offered to customers. With 15, a 45 minute service can start at 9:00, 9:15, 9:30 and so on; with 60, at 9:00, 10:00, 11:00. It does not keep time free after the appointment: for that, make the service duration longer."
+    messages_all_channels: "All"

@@ -24,16 +24,26 @@ class ProviderDay
     end
   end
 
-  def working? = day_plan.present?
+  def working? = day_plan.present? && !off_all_day?
+
+  # Working, or holding appointments even on a day off.
+  def shown? = working? || @appointments.any?
 
   def entries
-    return [] unless working?
+    return (appointment_entries + unavailability_entries).sort_by { |entry| [ entry.start, entry.end ] } unless working?
 
     (appointment_entries + unavailability_entries + blocked_entries + break_entries + free_entries)
       .sort_by { |entry| [ entry.start, entry.end ] }
   end
 
   private
+
+  # An unavailability covering the whole of the day's working hours.
+  def off_all_day?
+    start_time = wall_time(day_plan["start"])
+    end_time = wall_time(day_plan["end"])
+    @unavailabilities.any? { |u| u.start_datetime <= start_time && u.end_datetime >= end_time }
+  end
 
   def appointment_entries
     @appointments.map do |appointment|

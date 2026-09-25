@@ -140,6 +140,10 @@ window.App.Utils.UI = (function () {
         };
     }
 
+    // Static pickers put their minute box inside the form, where flatpickr's
+    // default 5 minute step makes the browser silently refuse a typed 11:17.
+    const ANY_MINUTE = 1;
+
     /**
      * Initialize the date time picker component.
      *
@@ -151,6 +155,7 @@ window.App.Utils.UI = (function () {
     function initializeDateTimePicker($target, params = {}) {
         $target.flatpickr({
             enableTime: true,
+            minuteIncrement: ANY_MINUTE,
             allowInput: true,
             static: true,
             dateFormat: `${getDateFormat()} ${getTimeFormat()}`,
@@ -190,6 +195,7 @@ window.App.Utils.UI = (function () {
         $target.flatpickr({
             noCalendar: true,
             enableTime: true,
+            minuteIncrement: ANY_MINUTE,
             allowInput: true,
             dateFormat: getTimeFormat(),
             time_24hr: vars('time_format') === 'military',

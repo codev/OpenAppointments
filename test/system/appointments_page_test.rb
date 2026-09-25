@@ -4,9 +4,7 @@ require "application_system_test_case"
 # navigation as URL state, entries opening the event dialog.
 class AppointmentsPageTest < ApplicationSystemTestCase
   setup do
-    # Zane works Monday to Friday in the fixtures; pick the next weekday.
-    @date = Date.current
-    @date += 1 until (1..5).cover?(@date.wday)
+    @date = working_day(0, from: Date.current)
     Appointment.create!(id_users_provider: users(:zane).id, id_users_customer: users(:jx).id, id_services: services(:haircut).id,
                         start_datetime: @date.to_time.change(hour: 11), end_datetime: @date.to_time.change(hour: 11, min: 30),
                         appointment_status: AppointmentStatus.of("booked"), notes: "Morning cut")
@@ -49,12 +47,26 @@ class AppointmentsPageTest < ApplicationSystemTestCase
     assert_no_selector ".day-entry-appointment", text: "JX - Trim Cut", wait: 5
     assert_current_path(/statuses/, wait: 5)
   end
+
+  test "six working stylists fit side by side in a 1400 pixel window" do
+    5.times do |index|
+      provider = User.create!(name: "Stylist #{index}", email: "stylist#{index}@example.org", role: users(:zane).role,
+                              timezone: "Europe/London")
+      provider.create_settings!(username: "stylist#{index}", password: Passwords.hash("stylistpass1"),
+                                working_plan: user_settings(:zane).working_plan)
+      ServiceProviderLink.create!(id_users: provider.id, id_services: services(:haircut).id)
+    end
+    visit appointments_url(date: @date)
+    assert_selector ".provider-column", count: 6, wait: 5
+    assert page.evaluate_script("document.querySelector('#calendar .calendar-view').scrollWidth <= " \
+                                "document.querySelector('#calendar .calendar-view').clientWidth"),
+           "the columns must fit without scrolling sideways"
+  end
 end
 
 class AppointmentsPageRefreshTest < ApplicationSystemTestCase
   test "a saved appointment appears in the day column without any filter interaction" do
-    date = Date.current
-    date += 1 until (1..5).cover?(date.wday)
+    date = working_day(0, from: Date.current)
     login_as_admin
     visit appointments_url(date: date)
     assert_selector ".provider-column[data-provider-id='#{users(:zane).id}']", wait: 5
@@ -73,6 +85,31 @@ class AppointmentsPageRefreshTest < ApplicationSystemTestCase
     assert_text "Appointment saved", wait: 10
     assert_selector ".day-entry-appointment", text: "JX - ", wait: 10
     assert_current_path(/date=#{date}/)
+  end
+
+  test "the appointments page shows no calendar after the calendar page was visited" do
+    login_as_admin
+    visit calendar_url
+    assert_selector "#calendar .fc-view-harness", wait: 10
+    within("#header") { click_on "Appointments", match: :first }
+    assert_selector "#day-filter", wait: 5
+    sleep 0.5
+    assert_no_selector "#calendar .fc-view-harness"
+  end
+
+  test "the repeating appointments list stays alone after the day view reloads" do
+    login_as_admin
+    visit appointments_url
+    assert_selector "#day-filter", wait: 5
+    find("#toggle-series").click
+    assert_selector "#series-view", visible: true, wait: 5
+    page.execute_script("document.querySelector('#calendar .calendar-view').dataset.stale = '1'")
+    find("#reload-appointments").click
+    assert_no_selector ".calendar-view[data-stale]", visible: :all, wait: 5
+    assert_selector "#calendar .calendar-view.d-none", visible: :all
+    assert_selector "#series-view:not(.d-none)"
+    find("#toggle-series").click
+    assert_selector "#calendar .calendar-view:not(.d-none)", wait: 5
   end
 
   test "the reload button still works on the calendar page after the appointments page was visited" do

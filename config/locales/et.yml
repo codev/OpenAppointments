@@ -797,7 +797,6 @@ et:
     send_message: Send
     select_one: Select One
     all_providers: All Providers
-    messages_all_providers: All Providers
     message_sent: Message sent.
     terminology: Terminology
     terminology_hint: Rename Provider and Service, for example Stylist and Treatment. Leave blank for the defaults. Languages other than English are not affected. Start the words with a capital letter.
@@ -966,14 +965,8 @@ et:
     time_off_hint: "Kui tegemist on osaga päevast, sisesta tunnid, mil sind ei ole kohal. Need salvestatakse pausina neil kuupäevadel."
     messages_sms_variation: "Muuda igat SMS-i"
     messages_sms_variation_hint: "Lisab iga SMS-i lõppu lühikese viitekoodi, et ükski kaks sõnumit ei oleks ühesugused - seda nõuavad mõned operaatorid."
-    merge_customer: "Ühenda teise kliendiga"
-    merge_customer_hint: "Sisesta teise kliendi e-post või telefoninumber. Selle kliendi broneeringud ja sõnumid viiakse üle sellele kirjele ning see kirje kustutatakse."
-    merge_customer_button: "Ühenda"
-    merge_customer_confirm: "Kas ühendada see klient teise kirjega? Seda ei saa tagasi võtta."
-    merge_customer_not_found: "Ühelgi teisel kliendil ei ole seda e-posti ega telefoninumbrit."
-    customer_merged: "Kliendid ühendatud"
     provider_color_hint: "Kasutatakse selle teenusepakkuja broneeringute jaoks, kui kalender näitab kõiki."
-    other_emails: "Muud e-posti aadressid"
-    other_emails_hint: "Üks rea kohta. Broneeringud ja sõnumid mis tahes neist aadressidest kuuluvad sellele kliendile."
-    other_phones: "Muud telefoninumbrid"
-    other_phones_hint: "Üks rea kohta. Broneeringud ja sõnumid mis tahes neist numbritest kuuluvad sellele kliendile."
+    working_providers: "Töötavad Teenusepakkujad"
+    hidden_from_public: "Avalikkuse Eest Peidetud"
+    slot_interval_hint: "Kui tihti pakutakse klientidele algusaegu. Väärtusega 15 võib 45-minutiline teenus alata kell 9:00, 9:15, 9:30 ja nii edasi; väärtusega 60 kell 9:00, 10:00, 11:00. See ei jäta pärast broneeringut vaba aega: selleks pikenda teenuse kestust."
+    messages_all_channels: "Kõik"

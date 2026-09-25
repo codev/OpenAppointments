@@ -797,7 +797,6 @@ ro:
     send_message: Send
     select_one: Select One
     all_providers: All Providers
-    messages_all_providers: All Providers
     message_sent: Message sent.
     terminology: Terminology
     terminology_hint: Rename Provider and Service, for example Stylist and Treatment. Leave blank for the defaults. Languages other than English are not affected. Start the words with a capital letter.
@@ -966,14 +965,8 @@ ro:
     time_off_hint: "Pentru o parte dintr-o zi liberă, introduceți orele în care lipsiți. Acestea sunt salvate ca pauză în acele date."
     messages_sms_variation: "Variază fiecare SMS"
     messages_sms_variation_hint: "Adaugă un cod de referință scurt la finalul fiecărui SMS, astfel încât niciun mesaj să nu fie identic, lucru cerut de unele rețele."
-    merge_customer: "Îmbină cu un alt client"
-    merge_customer_hint: "Introduceți e-mailul sau numărul de telefon al celuilalt client. Întâlnirile și mesajele acestui client vor fi mutate în acea înregistrare, iar această înregistrare va fi ștearsă."
-    merge_customer_button: "Îmbină"
-    merge_customer_confirm: "Îmbinați acest client cu cealaltă înregistrare? Această acțiune nu poate fi anulată."
-    merge_customer_not_found: "Niciun alt client nu are acest e-mail sau număr de telefon."
-    customer_merged: "Clienți îmbinați"
     provider_color_hint: "Folosit pentru întâlnirile acestui furnizor atunci când calendarul îi afișează pe toți."
-    other_emails: "Alte adrese de email"
-    other_emails_hint: "Una pe linie. Întâlnirile și mesajele de la oricare dintre aceste adrese aparțin acestui client."
-    other_phones: "Alte numere de telefon"
-    other_phones_hint: "Unul pe linie. Întâlnirile și mesajele de la oricare dintre aceste numere aparțin acestui client."
+    working_providers: "Furnizori care Lucrează"
+    hidden_from_public: "Ascuns de la Public"
+    slot_interval_hint: "Cât de des le sunt oferite clienților orele de început. Cu 15, un serviciu de 45 de minute poate începe la 9:00, 9:15, 9:30 și așa mai departe; cu 60, la 9:00, 10:00, 11:00. Nu păstrează timp liber după programare: pentru asta, măriți durata serviciului."
+    messages_all_channels: "Toate"

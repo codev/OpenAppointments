@@ -797,7 +797,6 @@ cs:
     send_message: Send
     select_one: Select One
     all_providers: All Providers
-    messages_all_providers: All Providers
     message_sent: Message sent.
     terminology: Terminology
     terminology_hint: Rename Provider and Service, for example Stylist and Treatment. Leave blank for the defaults. Languages other than English are not affected. Start the words with a capital letter.
@@ -966,14 +965,8 @@ cs:
     time_off_hint: "Pokud jde o část dne volna, zadejte hodiny, kdy jste pryč. Uloží se jako přestávka v těchto dnech."
     messages_sms_variation: "Obměňovat každou SMS"
     messages_sms_variation_hint: "Na konec každé SMS přidá krátký referenční kód, aby žádné dvě zprávy nebyly stejné, což někteří operátoři vyžadují."
-    merge_customer: "Sloučit s jiným zákazníkem"
-    merge_customer_hint: "Zadejte e-mail nebo telefonní číslo druhého zákazníka. Schůzky a zprávy tohoto zákazníka se přesunou do daného záznamu a tento záznam bude odstraněn."
-    merge_customer_button: "Sloučit"
-    merge_customer_confirm: "Sloučit tohoto zákazníka s druhým záznamem? Tuto akci nelze vrátit zpět."
-    merge_customer_not_found: "Žádný jiný zákazník nemá tento e-mail ani telefonní číslo."
-    customer_merged: "Zákazníci sloučeni"
     provider_color_hint: "Používá se pro schůzky tohoto poskytovatele, když kalendář zobrazuje všechny."
-    other_emails: "Další emaily"
-    other_emails_hint: "Jeden na řádek. Schůzky a zprávy z kterékoli z těchto adres patří tomuto zákazníkovi."
-    other_phones: "Další telefonní čísla"
-    other_phones_hint: "Jedno na řádek. Schůzky a zprávy z kteréhokoli z těchto čísel patří tomuto zákazníkovi."
+    working_providers: "Pracující poskytovatelé"
+    hidden_from_public: "Skryto před veřejností"
+    slot_interval_hint: "Jak často se zákazníkům nabízejí časy začátku. Při 15 může 45minutová služba začít v 9:00, 9:15, 9:30 a tak dále; při 60 v 9:00, 10:00, 11:00. Po schůzce neponechává volný čas: k tomu prodlužte trvání služby."
+    messages_all_channels: "Vše"

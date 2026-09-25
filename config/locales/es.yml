@@ -797,7 +797,6 @@ es:
     send_message: Send
     select_one: Select One
     all_providers: All Providers
-    messages_all_providers: All Providers
     message_sent: Message sent.
     terminology: Terminology
     terminology_hint: Rename Provider and Service, for example Stylist and Treatment. Leave blank for the defaults. Languages other than English are not affected. Start the words with a capital letter.
@@ -966,14 +965,8 @@ es:
     time_off_hint: "Para una ausencia de parte de un día, indique las horas en las que estará fuera. Se guardan como una pausa en esas fechas."
     messages_sms_variation: "Variar cada SMS"
     messages_sms_variation_hint: "Añade un breve código de referencia al final de cada SMS para que no haya dos textos iguales, algo que exigen algunas operadoras."
-    merge_customer: "Fusionar con otro cliente"
-    merge_customer_hint: "Introduzca el correo electrónico o número de teléfono del otro cliente. Las citas y mensajes de este cliente se trasladarán a ese registro y este registro se eliminará."
-    merge_customer_button: "Fusionar"
-    merge_customer_confirm: "¿Fusionar este cliente con el otro registro? Esta acción no se puede deshacer."
-    merge_customer_not_found: "Ningún otro cliente tiene ese correo electrónico o número de teléfono."
-    customer_merged: "Clientes fusionados"
     provider_color_hint: "Se usa para las citas de este proveedor cuando el calendario muestra a todos."
-    other_emails: "Otros correos electrónicos"
-    other_emails_hint: "Uno por línea. Las reservas y mensajes de cualquiera de estas direcciones pertenecen a este cliente."
-    other_phones: "Otros números de teléfono"
-    other_phones_hint: "Uno por línea. Las reservas y mensajes de cualquiera de estos números pertenecen a este cliente."
+    working_providers: "Proveedores que Trabajan"
+    hidden_from_public: "Oculto del Público"
+    slot_interval_hint: "Con qué frecuencia se ofrecen horas de inicio a los clientes. Con 15, un servicio de 45 minutos puede empezar a las 9:00, 9:15, 9:30, etc.; con 60, a las 9:00, 10:00, 11:00. No reserva tiempo libre después de la cita: para eso, alargue la duración del servicio."
+    messages_all_channels: "Todos"

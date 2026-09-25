@@ -34,6 +34,45 @@ class AppointmentsPageTest < ActionDispatch::IntegrationTest
     assert_select "#select-day-interval option[selected][value='3']"
   end
 
+  test "working stylists is the default and a stylist off all day by an unavailability is not working" do
+    login_admin
+    Appointment.create!(is_unavailability: true, provider: users(:zane), notes: "Holiday",
+                        start_datetime: "2026-07-21 08:00:00", end_datetime: "2026-07-21 19:00:00")
+    get "/appointments", params: { date: "2026-07-21" }
+    assert_select "#filter-provider option:first-child[value='']", text: "Working Providers"
+    assert_select "#filter-provider option[value=all]", text: "All Providers"
+    assert_select ".provider-column", count: 0
+    assert_select "#not-working-notes", text: /Not working 21\/07\/2026: Zane/
+  end
+
+  test "a stylist with an appointment on their day off still gets a column" do
+    login_admin
+    booked = Appointment.create!(provider: users(:zane), customer: users(:jx), service: services(:haircut),
+                                 start_datetime: "2026-07-19 11:00:00", end_datetime: "2026-07-19 11:30:00")
+    get "/appointments", params: { date: "2026-07-19" }
+    assert_select ".provider-column[data-provider-id=?]", users(:zane).id.to_s
+    assert_select ".day-entry-appointment[href=?]", "/appointments/#{booked.id}/edit"
+    assert_select ".day-entry-free", count: 0
+  end
+
+  test "a stylist off sick all day with appointments shows both the appointment and the unavailability" do
+    login_admin
+    sick = Appointment.create!(is_unavailability: true, provider: users(:zane), notes: "Unwell",
+                               start_datetime: "2026-07-20 08:00:00", end_datetime: "2026-07-20 19:00:00")
+    get "/appointments", params: { date: "2026-07-20" }
+    assert_select ".day-entry-appointment[href=?]", "/appointments/#{appointments(:upcoming).id}/edit"
+    assert_select ".day-entry-unavailability[href=?]", "/unavailabilities/#{sick.id}/edit"
+  end
+
+  test "all stylists gives every stylist a column, working or not, and the day links keep the choice" do
+    login_admin
+    get "/appointments", params: { date: "2026-07-19", provider: "all" }
+    assert_select ".provider-column[data-provider-id=?]", users(:zane).id.to_s
+    assert_select "#not-working-notes div", count: 0
+    assert_select "#filter-provider option[selected][value=all]"
+    assert_select "a#next-day[href*='provider=all']"
+  end
+
   test "filters narrow the entries and statuses default to the non cancelled kinds" do
     login_admin
     get "/appointments", params: { date: "2026-07-20", service: services(:group_session).id }
@@ -58,7 +97,7 @@ class AppointmentsPageTest < ActionDispatch::IntegrationTest
     post "/login/validate", params: { username: "janedoe", password: "janedoe1" }
     other = User.create!(name: "Other", email: "other@example.org", role: users(:zane).role)
     get "/appointments", params: { date: "2026-07-20" }
-    assert_select "#filter-provider option", count: 2
+    assert_select "#filter-provider option", count: 3
     assert_select ".provider-column[data-provider-id=?]", other.id.to_s, count: 0
   end
   # A free slot click names the provider; the form must open on a service that
@@ -76,5 +115,14 @@ class AppointmentsPageTest < ActionDispatch::IntegrationTest
     # Zane's first service in list order, not the list's first service.
     assert_select "#select-service option[selected][value=?]", services(:group_session).id.to_s
     assert_select "#select-service option[selected]", count: 1
+  end
+
+  test "the 2.3.0 strings exist in every locale" do
+    keys = %w[working_providers hidden_from_public slot_interval_hint messages_all_channels]
+    I18n.available_locales.each do |locale|
+      keys.each do |key|
+        assert I18n.t("ea.#{key}", locale: locale, fallback: false, default: nil).present?, "missing ea.#{key} in #{locale}"
+      end
+    end
   end
 end

@@ -797,7 +797,6 @@ fa:
     send_message: Send
     select_one: Select One
     all_providers: All Providers
-    messages_all_providers: All Providers
     message_sent: Message sent.
     terminology: Terminology
     terminology_hint: Rename Provider and Service, for example Stylist and Treatment. Leave blank for the defaults. Languages other than English are not affected. Start the words with a capital letter.
@@ -966,14 +965,8 @@ fa:
     time_off_hint: "برای بخشی از یک روز مرخصی، ساعاتی که غایب هستید را وارد کنید. آن‌ها به‌صورت وقفه در آن تاریخ‌ها ذخیره می‌شوند."
     messages_sms_variation: "تغییر هر پیامک"
     messages_sms_variation_hint: "یک کد مرجع کوتاه به انتهای هر پیامک اضافه می‌کند تا هیچ دو پیامکی یکسان نباشند، که برخی شبکه‌ها آن را الزامی می‌دانند."
-    merge_customer: "ادغام با مشتری دیگر"
-    merge_customer_hint: "ایمیل یا شماره تلفن مشتری دیگر را وارد کنید. قرارها و پیام‌های این مشتری به آن رکورد منتقل می‌شوند و این رکورد حذف می‌شود."
-    merge_customer_button: "ادغام"
-    merge_customer_confirm: "این مشتری با رکورد دیگر ادغام شود؟ این کار قابل بازگشت نیست."
-    merge_customer_not_found: "هیچ مشتری دیگری با این ایمیل یا شماره تلفن یافت نشد."
-    customer_merged: "مشتریان ادغام شدند"
     provider_color_hint: "برای قرارهای این ارائه دهنده هنگامی که تقویم همه را نمایش می‌دهد استفاده می‌شود."
-    other_emails: "ایمیل‌های دیگر"
-    other_emails_hint: "هر خط یک مورد. رزروها و پیام‌های هر یک از این آدرس‌ها متعلق به این مشتری است."
-    other_phones: "شماره تلفن‌های دیگر"
-    other_phones_hint: "هر خط یک مورد. رزروها و پیام‌های هر یک از این شماره‌ها متعلق به این مشتری است."
+    working_providers: "ارائه دهندگان مشغول به کار"
+    hidden_from_public: "پنهان از عموم"
+    slot_interval_hint: "هر چند وقت یک‌بار زمان‌های شروع به مشتریان پیشنهاد می‌شود. با 15، یک خدمت 45 دقیقه‌ای می‌تواند در 9:00، 9:15، 9:30 و غیره شروع شود؛ با 60، در 9:00، 10:00، 11:00. این تنظیم پس از نوبت زمانی را آزاد نگه نمی‌دارد: برای این کار، مدت زمان خدمت را طولانی‌تر کنید."
+    messages_all_channels: "همه"

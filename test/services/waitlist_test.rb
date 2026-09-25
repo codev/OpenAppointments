@@ -81,6 +81,15 @@ class WaitlistTest < ActiveSupport::TestCase
     end
   end
 
+  test "a notice links to the customer whose email matches in any case" do
+    travel_to(booking_time) do
+      WaitlistEntry.create!(name: "JX", email: users(:jx).email.upcase, service: @service)
+      Waitlist.slot_freed(freed_appointment)
+      perform_enqueued_jobs(only: WaitlistNoticeJob)
+      assert_equal users(:jx).id, waitlist_messages.sole.customer_id
+    end
+  end
+
   test "a notice is skipped when the slot was taken, the signup expired or left, or the cap is reached" do
     travel_to(booking_time) do
       taken = sign_up("taken")

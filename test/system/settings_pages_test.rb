@@ -67,6 +67,13 @@ class SettingsPagesTest < ApplicationSystemTestCase
     end
   end
 
+  test "the notices editor is white on a tinted page background" do
+    Setting.set("company_background_color", "#f8efe4")
+    visit legal_settings_url
+    assert_selector ".trumbowyg-editor", wait: 5
+    assert_equal "rgb(255, 255, 255)", page.evaluate_script("getComputedStyle(document.querySelector('.trumbowyg-editor')).backgroundColor")
+  end
+
   test "theme settings saves a colour" do
     visit "/theme_settings"
     assert_selector "#company-color", wait: 5

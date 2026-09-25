@@ -797,7 +797,6 @@ he:
     send_message: Send
     select_one: Select One
     all_providers: All Providers
-    messages_all_providers: All Providers
     message_sent: Message sent.
     terminology: Terminology
     terminology_hint: Rename Provider and Service, for example Stylist and Treatment. Leave blank for the defaults. Languages other than English are not affected. Start the words with a capital letter.
@@ -966,14 +965,8 @@ he:
     time_off_hint: "עבור חלק מיום חופשה, הזינו את שעות ההיעדרות שלכם. הן נשמרות כהפסקה בתאריכים אלו."
     messages_sms_variation: "גיוון כל SMS"
     messages_sms_variation_hint: "מוסיף קוד ייחוס קצר לסוף כל SMS כדי שלא יהיו שני מסרונים זהים, דרישה של חלק מהרשתות."
-    merge_customer: "מיזוג לתוך לקוח אחר"
-    merge_customer_hint: "הזינו את האימייל או מספר הטלפון של הלקוח האחר. הפגישות וההודעות של לקוח זה יועברו לרשומה ההיא ורשומה זו תימחק."
-    merge_customer_button: "מיזוג"
-    merge_customer_confirm: "למזג לקוח זה לתוך הרשומה האחרת? לא ניתן לבטל פעולה זו."
-    merge_customer_not_found: "אין לקוח אחר עם אימייל או מספר טלפון זה."
-    customer_merged: "הלקוחות מוזגו"
     provider_color_hint: "משמש לפגישות של ספק זה כאשר היומן מציג את כולם."
-    other_emails: "כתובות אימייל נוספות"
-    other_emails_hint: "אחת בכל שורה. הזמנות והודעות מכל אחת מהכתובות הללו שייכות ללקוח זה."
-    other_phones: "מספרי טלפון נוספים"
-    other_phones_hint: "אחת בכל שורה. הזמנות והודעות מכל אחד מהמספרים הללו שייכות ללקוח זה."
+    working_providers: "ספקים עובדים"
+    hidden_from_public: "מוסתר מהציבור"
+    slot_interval_hint: "באיזו תדירות מוצעות שעות התחלה ללקוחות. עם 15, שירות של 45 דקות יכול להתחיל ב-9:00, 9:15, 9:30 וכן הלאה; עם 60, ב-9:00, 10:00, 11:00. הגדרה זו אינה שומרת זמן פנוי אחרי הפגישה: לשם כך, הארך את משך השירות."
+    messages_all_channels: "הכל"

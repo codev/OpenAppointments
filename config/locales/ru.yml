@@ -797,7 +797,6 @@ ru:
     send_message: Send
     select_one: Select One
     all_providers: All Providers
-    messages_all_providers: All Providers
     message_sent: Message sent.
     terminology: Terminology
     terminology_hint: Rename Provider and Service, for example Stylist and Treatment. Leave blank for the defaults. Languages other than English are not affected. Start the words with a capital letter.
@@ -966,14 +965,8 @@ ru:
     time_off_hint: "Если это часть дня, укажите часы отсутствия. Они сохраняются как перерыв в эти даты."
     messages_sms_variation: "Изменять каждое SMS"
     messages_sms_variation_hint: "Добавляет короткий код в конец каждого SMS, чтобы никакие два сообщения не совпадали - это требование некоторых операторов."
-    merge_customer: "Объединить с другим заказчиком"
-    merge_customer_hint: "Введите email или номер телефона другого заказчика. Назначения и сообщения этого заказчика будут перенесены на ту запись, а эта запись будет удалена."
-    merge_customer_button: "Объединить"
-    merge_customer_confirm: "Объединить этого заказчика с другой записью? Это действие нельзя отменить."
-    merge_customer_not_found: "Ни один другой заказчик не имеет такого email или номера телефона."
-    customer_merged: "Заказчики объединены"
     provider_color_hint: "Используется для назначений этого исполнителя, когда календарь показывает всех."
-    other_emails: "Другие адреса эл. почты"
-    other_emails_hint: "По одному в строке. Бронирования и сообщения с любого из этих адресов относятся к этому заказчику."
-    other_phones: "Другие номера телефонов"
-    other_phones_hint: "По одному в строке. Бронирования и сообщения с любого из этих номеров относятся к этому заказчику."
+    working_providers: "Работающие исполнители"
+    hidden_from_public: "Скрыто от Публики"
+    slot_interval_hint: "Как часто клиентам предлагается время начала. При 15 услуга на 45 минут может начаться в 9:00, 9:15, 9:30 и так далее; при 60 - в 9:00, 10:00, 11:00. Время после записи при этом не резервируется: для этого увеличьте длительность услуги."
+    messages_all_channels: "Все"

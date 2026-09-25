@@ -45,14 +45,6 @@
                              required: true, class: "form-select" %>
             </div>
 
-            <% { other_emails: "other_emails", other_phones: "other_phones" }.each do |field, key| %>
-                <div class="mb-3">
-                    <%= f.label field, lang(key), class: "form-label" %>
-                    <%= f.text_area field, rows: 2, class: "form-control" %>
-                    <div class="form-text text-muted"><small><%= lang("#{key}_hint") %></small></div>
-                </div>
-            <% end %>
-
             <% if setting('ldap_is_active').to_s == "1" %>
                 <div class="mb-3">
                     <%= f.label :ldap_dn, lang('ldap_dn'), class: "form-label" %>
@@ -95,18 +87,6 @@
     </div>
 <% end %>
 
-<% if record.persisted? && can?(:delete, :customers) %>
-    <%= form_with url: merge_customer_path(record), method: :post, id: "merge-customer", class: "card card-body border mt-4",
-                  data: { turbo_confirm: lang('merge_customer_confirm'), turbo_confirm_title: lang('merge_customer') } do %>
-        <label for="merge-target" class="form-label fw-bold"><%= lang('merge_customer') %></label>
-        <div class="form-text text-muted mb-2"><small><%= lang('merge_customer_hint') %></small></div>
-        <div class="input-group" style="max-width: 480px;">
-            <%= text_field_tag :target, nil, id: "merge-target", class: "form-control", required: true %>
-            <button type="submit" class="btn btn-outline-danger"><%= lang('merge_customer_button') %></button>
-        </div>
-    <% end %>
-<% end %>
-
 <% if record.persisted? %>
     <div id="customer-conversation" class="mt-4">
         <h4 class="mb-3 fw-light d-flex justify-content-between align-items-center">
@@ -124,7 +104,7 @@
                     <% channels.each do |channel| %>
                         <option value="<%= channel.key %>"><%= channel.label %></option>
                     <% end %>
-                    <option value="all"><%= lang('messages_all_providers') %></option>
+                    <option value="all"><%= lang('messages_all_channels') %></option>
                 </select>
                 <textarea id="message-body" class="form-control" rows="3" maxlength="1000"></textarea>
                 <button type="button" id="send-message" class="btn btn-primary">

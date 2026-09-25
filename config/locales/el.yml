@@ -797,7 +797,6 @@ el:
     send_message: Send
     select_one: Select One
     all_providers: All Providers
-    messages_all_providers: All Providers
     message_sent: Message sent.
     terminology: Terminology
     terminology_hint: Rename Provider and Service, for example Stylist and Treatment. Leave blank for the defaults. Languages other than English are not affected. Start the words with a capital letter.
@@ -966,14 +965,8 @@ el:
     time_off_hint: "Για μέρος μιας ημέρας, καταχωρίστε τις ώρες απουσίας. Αποθηκεύονται ως διάλειμμα σε αυτές τις ημερομηνίες."
     messages_sms_variation: "Αλλαγή κάθε SMS"
     messages_sms_variation_hint: "Προσθέτει έναν σύντομο κωδικό αναφοράς στο τέλος κάθε SMS, ώστε να μην υπάρχουν δύο ίδια μηνύματα, κάτι που απαιτούν ορισμένοι πάροχοι δικτύου."
-    merge_customer: "Συγχώνευση με άλλον πελάτη"
-    merge_customer_hint: "Εισαγάγετε το email ή τον αριθμό τηλεφώνου του άλλου πελάτη. Τα ραντεβού και τα μηνύματα αυτού του πελάτη μεταφέρονται σε εκείνη την εγγραφή και αυτή η εγγραφή διαγράφεται."
-    merge_customer_button: "Συγχώνευση"
-    merge_customer_confirm: "Συγχώνευση αυτού του πελάτη με την άλλη εγγραφή; Αυτό δεν μπορεί να αναιρεθεί."
-    merge_customer_not_found: "Κανένας άλλος πελάτης δεν έχει αυτό το email ή τον αριθμό τηλεφώνου."
-    customer_merged: "Οι πελάτες συγχωνεύθηκαν"
     provider_color_hint: "Χρησιμοποιείται για τα ραντεβού αυτού του παρόχου όταν το ημερολόγιο εμφανίζει όλους."
-    other_emails: "Άλλα email"
-    other_emails_hint: "Ένα ανά γραμμή. Οι κρατήσεις και τα μηνύματα από οποιαδήποτε από αυτές τις διευθύνσεις ανήκουν σε αυτόν τον πελάτη."
-    other_phones: "Άλλοι αριθμοί τηλεφώνου"
-    other_phones_hint: "Ένας ανά γραμμή. Οι κρατήσεις και τα μηνύματα από οποιονδήποτε από αυτούς τους αριθμούς ανήκουν σε αυτόν τον πελάτη."
+    working_providers: "Πάροχοι σε εργασία"
+    hidden_from_public: "Κρυφό από το κοινό"
+    slot_interval_hint: "Πόσο συχνά προσφέρονται ώρες έναρξης στους πελάτες. Με 15, μια υπηρεσία 45 λεπτών μπορεί να ξεκινήσει στις 9:00, 9:15, 9:30 κ.ο.κ., ενώ με 60, στις 9:00, 10:00, 11:00. Δεν κρατά ελεύθερο χρόνο μετά το ραντεβού: για αυτό, αυξήστε τη διάρκεια της υπηρεσίας."
+    messages_all_channels: "Όλα"

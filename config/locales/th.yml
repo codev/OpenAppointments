@@ -797,7 +797,6 @@ th:
     send_message: Send
     select_one: Select One
     all_providers: All Providers
-    messages_all_providers: All Providers
     message_sent: Message sent.
     terminology: Terminology
     terminology_hint: Rename Provider and Service, for example Stylist and Treatment. Leave blank for the defaults. Languages other than English are not affected. Start the words with a capital letter.
@@ -966,14 +965,8 @@ th:
     time_off_hint: "สำหรับการหยุดบางส่วนของวัน ให้ป้อนจำนวนชั่วโมงที่คุณไม่อยู่ ซึ่งจะถูกบันทึกเป็นช่วงพักในวันที่นั้น"
     messages_sms_variation: "เปลี่ยนแปลงข้อความ SMS แต่ละข้อความ"
     messages_sms_variation_hint: "เพิ่มรหัสอ้างอิงสั้นๆ ต่อท้ายข้อความ SMS ทุกข้อความ เพื่อไม่ให้ข้อความสองข้อความเหมือนกัน ซึ่งบางเครือข่ายกำหนดให้ต้องทำเช่นนี้"
-    merge_customer: "รวมเข้ากับลูกค้ารายอื่น"
-    merge_customer_hint: "ป้อนอีเมลหรือหมายเลขโทรศัพท์ของลูกค้ารายอื่น การนัดหมายและข้อความของลูกค้ารายนี้จะย้ายไปยังบันทึกนั้น และบันทึกนี้จะถูกลบ"
-    merge_customer_button: "รวม"
-    merge_customer_confirm: "รวมลูกค้ารายนี้เข้ากับบันทึกอื่นหรือไม่? การดำเนินการนี้ไม่สามารถยกเลิกได้"
-    merge_customer_not_found: "ไม่มีลูกค้ารายอื่นที่ใช้อีเมลหรือหมายเลขโทรศัพท์นี้"
-    customer_merged: "รวมลูกค้าเรียบร้อยแล้ว"
     provider_color_hint: "ใช้สำหรับการนัดหมายของผู้ให้บริการรายนี้เมื่อปฏิทินแสดงทุกคน"
-    other_emails: "อีเมลอื่นๆ"
-    other_emails_hint: "หนึ่งรายการต่อบรรทัด การจองและข้อความจากที่อยู่เหล่านี้เป็นของลูกค้ารายนี้"
-    other_phones: "หมายเลขโทรศัพท์อื่นๆ"
-    other_phones_hint: "หนึ่งรายการต่อบรรทัด การจองและข้อความจากหมายเลขเหล่านี้เป็นของลูกค้ารายนี้"
+    working_providers: "ผู้ให้บริการที่ทำงาน"
+    hidden_from_public: "ซ่อนจากสาธารณะแล้ว"
+    slot_interval_hint: "ความถี่ของเวลาเริ่มต้นที่เสนอให้ลูกค้า เมื่อตั้งเป็น 15 บริการ 45 นาทีสามารถเริ่มได้เวลา 9:00, 9:15, 9:30 และต่อไปเรื่อยๆ เมื่อตั้งเป็น 60 จะเริ่มได้เวลา 9:00, 10:00, 11:00 การตั้งค่านี้ไม่ได้เว้นเวลาว่างหลังการนัดหมาย หากต้องการเช่นนั้น ให้เพิ่มระยะเวลาของบริการ"
+    messages_all_channels: "ทั้งหมด"
