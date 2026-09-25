@@ -5,20 +5,17 @@ CloudronManifest.json.
 
 ## 2.3.0
 
-- Customers: other emails and phone numbers and the customer merge tool are removed
-- Booking: someone sharing another customer's email or phone number under a different name gets their own customer record; a returning customer's booking only fills in details their record is missing, so stored details are never changed or blanked
+- Booking: customers can book more than one appointment on the same day
 - Booking: a customer is refused a second booking that overlaps one they already have, not only one that covers it completely
-- 10to8 import: people sharing an email or phone number under different names are imported as separate customers
-- Appointments: the stylist filter starts on Working Stylists, which leaves out stylists who are off, including a whole day of unavailability, but keeps anyone with an appointment that day; All Stylists shows everyone
-- Appointments: stylist columns shrink to share the screen width, so six fit side by side on a laptop
-- Bug fix: the Appointments page no longer shows a calendar above the day columns after visiting the Calendar page
-- Appointment dialog and filters: services hidden from the public, such as Meeting, can be booked by staff and are listed in their own group
-- Services: the slot interval explains that it sets how often start times are offered, not a gap after the appointment, and must be at least 1 minute
-- Business Logic: the future booking limit can be set as low as 1 day (it refused anything under 15)
-- Calendar: the appointment popup buttons wrap onto two rows inside the popup, and Cancel is not offered once an appointment has ended
-- Notices: the text editors have a white background so they are easy to read on a coloured page
-- Customer messages: with email and one SMS provider, the choice to send by every channel reads Both
-- Bug fix: appointments, unavailabilities and working hours save with any minute, such as 11:17, where Save did nothing before
+- Appointments: new view Working Providers shows providers with appointments that day
+- Appointments: shrink view so six providers are visible on a screen
+- Bug fix: Appointments doesn't show the calendar above it
+- Services hidden from the public can be booked by staff
+- Business Logic: the future booking limit can be set as low as 1 day (15 previously)
+- Calendar: buttons wrap to two rows
+- Calendar: Cancel is only shown until the end of the appointment
+- Notices: easier to read on the admin page
+- Bug fix: appointments save with any minute, not just 5 minute intervals
 
 ## 2.2.0
 
@@ -29,8 +26,6 @@ CloudronManifest.json.
 - Calendar: each provider has a colour with a legend when viewing all providers
 - Working plan exceptions: a Time off row for part of a day off, saved as a break
 - Appointments view shows working plan breaks
-- Customers can have more than one email and phone number. Bookings, replies, search, merging and import match a customer by any of them, and a new address on a booking is added to the customer record
-- Customer page: merge a customer into another by email or phone number
 - Messages > Settings: Vary each SMS adds a short code so no two texts are identical for SMS Gateway and other providers that might ban multiple messages that are the same
 - Notices page has a Fully Booked Notice, shown on the booking steps when the chosen service or provider has no free appointments
 - Bug fix: the notices are cleaned of unsafe HTML however they are saved
