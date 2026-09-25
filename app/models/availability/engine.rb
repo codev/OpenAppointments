@@ -14,11 +14,13 @@ module Availability
     end
 
     # BookingWindow asks for every day of a range: load each table once instead
-    # of once per date. Without a preload every call queries for its date.
+    # of once per date, with each provider's events indexed by the dates they
+    # cover. Without a preload every call queries for its date.
     def preload(providers, from, to)
       @events = providers.to_h do |provider|
-        [ provider.id, Appointment.active.where(id_users_provider: provider.id)
-                                  .where("DATE(start_datetime) <= ? AND DATE(end_datetime) >= ?", to, from).to_a ]
+        events = Appointment.active.where(id_users_provider: provider.id)
+                            .where("DATE(start_datetime) <= ? AND DATE(end_datetime) >= ?", to, from)
+        [ provider.id, index_by_date(events, from, to) ]
       end
       @blocked = BlockedPeriod.for_period(from, to).to_a
     end
@@ -156,7 +158,8 @@ module Availability
     private
 
     def consider_multiple_attendants(date, service, provider, exclude_appointment_id)
-      unavailabilities = events_for(date, provider, exclude_appointment_id).select(&:is_unavailability)
+      events = events_for(date, provider, exclude_appointment_id)
+      unavailabilities = events.select(&:is_unavailability)
       blocked = blocked_for(date)
 
       exceptions = exceptions_for(provider.id)
@@ -178,16 +181,10 @@ module Availability
         slot_end = slot_start + duration * 60
 
         while slot_end <= period[:end]
-          if Appointment.other_service_attendants(slot_start, slot_end, service.id, provider.id,
-                                                  exclude_appointment_id).positive?
-            slot_start += interval * 60
-            slot_end += interval * 60
-            next
-          end
-
-          reserved = Appointment.attendants_for_period(slot_start, slot_end, service.id, provider.id,
-                                                       exclude_appointment_id)
-          hours << hhmm(slot_start) if reserved < service.attendants_number.to_i
+          occupying = events.select { |event| occupies?(event, slot_start, slot_end) }
+          other_service = occupying.any? { |event| event.id_services && event.id_services != service.id }
+          reserved = occupying.count { |event| event.id_services == service.id }
+          hours << hhmm(slot_start) if !other_service && reserved < service.attendants_number.to_i
 
           slot_start += interval * 60
           slot_end += interval * 60
@@ -195,6 +192,13 @@ module Availability
       end
 
       hours
+    end
+
+    # EA slot occupancy, on the day's events: (start <= S AND end > S) OR
+    # (start < E AND end >= E).
+    def occupies?(event, slot_start, slot_end)
+      (event.start_datetime <= slot_start && event.end_datetime > slot_start) ||
+        (event.start_datetime < slot_end && event.end_datetime >= slot_end)
     end
 
     def remove_breaks(date, periods, breaks)
@@ -296,7 +300,16 @@ module Availability
     def events_for(date, provider, exclude_appointment_id)
       return Appointment.covering_date(date, provider.id, exclude_appointment_id).to_a unless @events&.key?(provider.id)
 
-      @events[provider.id].select { |event| covers?(event, date) && event.id != exclude_appointment_id.to_i }
+      @events[provider.id].fetch(date, []).reject { |event| event.id == exclude_appointment_id.to_i }
+    end
+
+    # "YYYY-MM-DD" => events covering that date, for the dates from..to.
+    def index_by_date(events, from, to)
+      events.each_with_object({}) do |event, index|
+        first = [ event.start_datetime.to_date, from.to_date ].max
+        last = [ event.end_datetime.to_date, to.to_date ].min
+        (first..last).each { |date| (index[date.strftime("%Y-%m-%d")] ||= []) << event }
+      end
     end
 
     # for_period(date, date) reduces to the covering condition.
