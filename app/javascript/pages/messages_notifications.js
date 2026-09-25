@@ -1,7 +1,7 @@
 /**
  * Notification templates: fold and unfold the panels, open or close them all,
- * mirror the typed title into the panel header, and insert tokens. The forms
- * are Rails forms in the notifications frame.
+ * mirror the typed title into the panel header, mark unsaved panels, and insert
+ * tokens. The forms are Rails forms in the notifications frame.
  */
 (function () {
     function setFolded($panel, folded) {
@@ -29,12 +29,25 @@
         $(event.target).closest('.notification-panel').data('lastField', event.target);
     });
 
+    // The Clipboard API needs a secure context; plain http (dev) copies through
+    // a hidden textarea instead.
+    function copyText(text) {
+        if (navigator.clipboard) {
+            navigator.clipboard.writeText(text);
+            return;
+        }
+        const $area = $('<textarea>').val(text).css({position: 'fixed', opacity: 0}).appendTo('body');
+        $area.trigger('select');
+        document.execCommand('copy');
+        $area.remove();
+    }
+
     $(document).on('click', '.notification-token', (event) => {
         const token = $(event.currentTarget).data('token');
         const field = $(event.currentTarget).closest('.notification-panel').data('lastField');
         if (!field) {
-            navigator.clipboard.writeText(token);
-            App.Layouts.Backend.displayNotification(lang('notification_token_copied'));
+            copyText(token);
+            App.Layouts.Backend.displayNotification(lang('token_copied').replace('{token}', token));
             return;
         }
         const start = field.selectionStart;
@@ -42,6 +55,11 @@
         field.focus();
         field.setSelectionRange(start + token.length, start + token.length);
         $(field).trigger('input');
+    });
+
+    // The Unsaved marker shows from the first edit; a save re-renders the panel without it.
+    $(document).on('input change', '.notification-form :input', (event) => {
+        $(event.target).closest('.notification-panel').find('.notification-unsaved').show();
     });
 
     $(document).on('input', '.n-title', (event) => {

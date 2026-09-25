@@ -45,7 +45,11 @@ class MessagesNotificationsPageTest < ApplicationSystemTestCase
     visit "/messages_notifications"
     click_on "Open all notification templates"
 
-    within(panel(first)) { short_text_field.fill_in with: "one edited" }
+    within(panel(first)) do
+      assert_no_selector ".notification-unsaved", visible: true
+      short_text_field.fill_in with: "one edited"
+      assert_selector ".notification-header .notification-unsaved", text: "Unsaved", visible: true
+    end
     click_on "Add"
     within(".notification-panel[data-id='']") do
       fill_in "Title", with: "Third"
@@ -55,7 +59,9 @@ class MessagesNotificationsPageTest < ApplicationSystemTestCase
       short_text_field.fill_in with: "two saved"
       click_on "Save"
       assert_text "Notification saved", wait: 5
+      assert_no_selector ".notification-unsaved", visible: true
     end
+    within(panel(first)) { assert_selector ".notification-unsaved", visible: true }
 
     assert_equal "two saved", second.reload.short_text
     assert_equal "one", first.reload.short_text
@@ -89,7 +95,7 @@ class MessagesNotificationsPageTest < ApplicationSystemTestCase
       short_text_field.fill_in with: "Hi {{Custmer Name}}"
       click_on "Save"
       assert_selector ".alert-warning", text: "{{Custmer Name}}", wait: 5
-      assert_selector ".notification-header .unknown-tokens-badge", text: "Unknown tokens"
+      assert_selector ".notification-header .unknown-tokens-badge", text: "Unknown placeholder"
     end
     assert_equal "Hi {{Custmer Name}}", notification.reload.short_text
   end
@@ -115,6 +121,6 @@ class MessagesNotificationsPageTest < ApplicationSystemTestCase
       assert_equal "Hi {{Customer Name}}!", short_text_field.value
       assert_selector "form.notification-form[data-unsaved]"
     end
-    assert_selector ".backend-notification", text: "Copied", count: 1
+    assert_selector ".backend-notification", text: "Copied {{Customer Name}}", count: 1
   end
 end

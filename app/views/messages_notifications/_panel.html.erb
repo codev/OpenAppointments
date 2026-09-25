@@ -10,9 +10,10 @@
     <div class="card-header d-flex justify-content-between align-items-center notification-header" role="button">
         <span class="notification-title-display fw-light"><%= n.title.presence || lang('notification_untitled') %></span>
         <span class="d-flex align-items-center gap-2">
+            <span class="badge text-bg-secondary notification-unsaved" <%= 'style=display:none' unless alert %>><%= lang('notification_unsaved') %></span>
             <% if unknown_tokens.any? %>
                 <span class="badge text-bg-warning unknown-tokens-badge">
-                    <i class="fas fa-exclamation-triangle me-1"></i><%= lang('notification_unknown_tokens_badge') %>
+                    <i class="fas fa-exclamation-triangle me-1"></i><%= lang('notification_has_unknown_tokens') %>
                 </span>
             <% end %>
             <i class="fas fa-chevron-<%= open ? 'up' : 'down' %> notification-chevron"></i>
@@ -23,8 +24,7 @@
         <% if notice %><div class="alert alert-success"><%= notice %></div><% end %>
         <% if notice && unknown_tokens.any? %>
             <div class="alert alert-warning">
-                <%= lang('notification_unknown_tokens') %>
-                <%= unknown_tokens.map { |token| "{{#{token}}}" }.join(", ") %>
+                <%= lang('notification_unknown_tokens').sub("{tokens}", unknown_tokens.map { |token| "{{#{token}}}" }.join(", ")) %>
             </div>
         <% end %>
         <%= form_with url: "/messages_notifications/save", method: :post, class: "notification-form",

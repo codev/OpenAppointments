@@ -173,6 +173,8 @@ class MessagesNotificationsStreamTest < ActionDispatch::IntegrationTest
       assert_select "template .notification-panel[data-id=?] .notification-body:not([style])", @existing.id.to_s
       assert_select "template .notification-panel .alert-success", text: I18n.t("ea.notification_saved")
       assert_select "template form[data-unsaved]", count: 0
+      assert_select "template .notification-unsaved[style*='display:none']"
+      assert_select "template .alert-warning", count: 0
     end
     assert_equal "Reminder 2", @existing.reload.title
   end
@@ -191,6 +193,7 @@ class MessagesNotificationsStreamTest < ActionDispatch::IntegrationTest
     assert_select "turbo-stream[action=replace][target=?]", "notification-panel-#{@existing.id}" do
       assert_select "template .notification-panel .alert-danger"
       assert_select "template form[data-unsaved]"
+      assert_select "template .notification-unsaved:not([style])"
       assert_select "template input[name='notification[short_text]'][value='Typed text']"
     end
     assert_equal "Reminder", @existing.reload.title
@@ -199,13 +202,14 @@ class MessagesNotificationsStreamTest < ActionDispatch::IntegrationTest
   test "unknown tokens save with a warning naming them and mark the notification in the list" do
     save({ id: @existing.id, title: "Reminder", short_text: "Hi {{Custmer Name}}", long_text: "{{Colour}} {{Customer Name}}" })
     assert_equal "Hi {{Custmer Name}}", @existing.reload.short_text
-    assert_select "template .notification-panel .alert-warning", text: /#{Regexp.escape(I18n.t('ea.notification_unknown_tokens'))}.*\{\{Custmer Name\}\}, \{\{Colour\}\}/m
+    assert_select "template .notification-panel .alert-warning",
+                  text: I18n.t("ea.notification_unknown_tokens").sub("{tokens}", "{{Custmer Name}}, {{Colour}}")
     assert_select "template .notification-panel .alert-success", text: I18n.t("ea.notification_saved")
 
     clean = Notification.create!(title: "Clean", event: "created", short_text: "{{Customer Name}}", long_text: "")
     get "/messages_notifications"
     assert_select ".notification-panel[data-id=?] .notification-header .unknown-tokens-badge", @existing.id.to_s,
-                  text: /#{Regexp.escape(I18n.t('ea.notification_unknown_tokens_badge'))}/
+                  text: /#{Regexp.escape(I18n.t('ea.notification_has_unknown_tokens'))}/
     assert_select ".notification-panel[data-id=?] .unknown-tokens-badge", clean.id.to_s, count: 0
   end
 
