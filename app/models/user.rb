@@ -40,21 +40,20 @@ class User < ApplicationRecord
   scope :admins, -> { joins(:role).where(roles: { slug: Role::ADMIN }) }
   scope :providers, -> { joins(:role).where(roles: { slug: Role::PROVIDER }) }
 
-  # A loose pre-filter on the last digits of either number, with the usual
-  # separators removed; the E.164 comparison in Ruby decides.
-  PHONE_TAIL_MATCH = <<~SQL.squish.freeze
-    REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(phone_number, ' ', ''), '-', ''), '(', ''), ')', ''), '.', '') LIKE :tail
-    OR REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(mobile_number, ' ', ''), '-', ''), '(', ''), ')', ''), '.', '') LIKE :tail
-  SQL
+  # Phones are stored in E.164 (normalised on save), so a lookup is an exact
+  # match on either indexed column.
+  PHONE_MATCH = "users.phone_number = :number OR users.mobile_number = :number".freeze
 
-  # Customers whose phone or mobile number is this one: both sides are compared
-  # in E.164 after a digits-only narrowing.
+  before_validation :normalize_phones
+
+  # Customers whose phone or mobile number is this one, however it was typed.
   def self.customers_by_phone(number, scope = customers)
     wanted = Messaging::Template.e164(number)
     return [] if wanted.blank? || wanted.length < 7
 
-    scope.where(PHONE_TAIL_MATCH, tail: "%#{wanted[-7..]}%")
-         .select { |user| [ user.phone_number, user.mobile_number ].any? { |stored| Messaging::Template.e164(stored) == wanted } }
+    # By id from a phone-only subquery: SQLite then searches the phone indexes
+    # instead of every user with the customer role.
+    scope.where(id: User.unscoped.where(PHONE_MATCH, number: wanted).select(:id)).to_a
   end
 
   # Customers who use this email (any case) or phone, once each. Partners and
@@ -80,6 +79,11 @@ class User < ApplicationRecord
   # name. People sharing contact details keep their own records.
   def self.customer_for_booking(email:, phone:, name:)
     customers_by_contact(email: email, phone: phone).find { |customer| same_name?(customer.name, name) }
+  end
+
+  def normalize_phones
+    self.phone_number = Messaging::Template.e164(phone_number) if phone_number_changed?
+    self.mobile_number = Messaging::Template.e164(mobile_number) if mobile_number_changed?
   end
 
   def self.same_name?(one, other)

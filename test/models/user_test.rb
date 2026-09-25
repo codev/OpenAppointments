@@ -43,11 +43,11 @@ class UserTest < ActiveSupport::TestCase
     assert user.errors[:name].any?
   end
 
-  test "a phone lookup matches numbers stored with dots, brackets or a trailing newline" do
+  test "a phone typed with dots, brackets or a trailing newline is stored in E.164 and found" do
     customer = users(:jx)
-    [ "07700 900.123", "(07700) 900123", "07700900123\n" ].each do |stored|
-      customer.update_columns(phone_number: stored)
-      assert_equal [ customer ], User.customers_by_phone("+447700900123"), stored.inspect
+    [ "07700 900.123", "(07700) 900123", "07700900123\n" ].each do |typed|
+      customer.update!(phone_number: typed)
+      assert_equal [ customer ], User.customers_by_phone("+447700900123"), typed.inspect
     end
   end
 end

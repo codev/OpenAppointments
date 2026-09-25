@@ -16,6 +16,7 @@ CloudronManifest.json.
 - Customers: the appointment list shows each appointment's status; cancelled, late cancelled and rescheduled ones are greyed
 - Settings: menu order General, Business Logic, Booking, Notices, Theme, Integrations
 - Booking: finding free times is much faster, especially for group services (the provider-first Next took several seconds)
+- Customers: phone numbers are stored in international format (+44...) however they were typed, so replies by SMS and shared numbers are matched faster
 - Launch: task notifications:mark_due_reminders_sent marks reminders already due as sent, so turning debug mode off does not repeat 10to8's reminders
 - Messages: task messages:restrip_quotes removes quoted text from email replies received before 2.1.0
 
