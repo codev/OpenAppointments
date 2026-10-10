@@ -39,12 +39,15 @@ class User < ApplicationRecord
 
   scope :admins, -> { joins(:role).where(roles: { slug: Role::ADMIN }) }
   scope :providers, -> { joins(:role).where(roles: { slug: Role::PROVIDER }) }
+  scope :assistants, -> { joins(:role).where(roles: { slug: Role::ASSISTANT }) }
+  scope :customers, -> { joins(:role).where(roles: { slug: Role::CUSTOMER }) }
 
   # Phones are stored in E.164 (normalised on save), so a lookup is an exact
   # match on either indexed column.
   PHONE_MATCH = "users.phone_number IN (:numbers) OR users.mobile_number IN (:numbers)".freeze
 
   before_validation :normalize_phones
+  before_create -> { self.booking_slug ||= BookingSlug.unique_for(User) if provider? }
 
   # Customers who use this email (any case) or phone, once each. Partners and
   # family may share one.
@@ -101,15 +104,6 @@ class User < ApplicationRecord
 
   def customer_keys = User.customer_keys(name, email, phone_number, mobile_number)
 
-  def normalize_phones
-    self.phone_number = Messaging::Template.e164(phone_number) if phone_number_changed?
-    self.mobile_number = Messaging::Template.e164(mobile_number) if mobile_number_changed?
-  end
-  scope :assistants, -> { joins(:role).where(roles: { slug: Role::ASSISTANT }) }
-  scope :customers, -> { joins(:role).where(roles: { slug: Role::CUSTOMER }) }
-
-  before_create -> { self.booking_slug ||= BookingSlug.unique_for(User) if provider? }
-
   def admin? = role.slug == Role::ADMIN
   def provider? = role.slug == Role::PROVIDER
   def assistant? = role.slug == Role::ASSISTANT
@@ -120,5 +114,12 @@ class User < ApplicationRecord
   def working_plan
     raw = settings&.working_plan
     raw.present? ? JSON.parse(raw) : nil
+  end
+
+  private
+
+  def normalize_phones
+    self.phone_number = Messaging::Template.e164(phone_number) if phone_number_changed?
+    self.mobile_number = Messaging::Template.e164(mobile_number) if mobile_number_changed?
   end
 end
