@@ -34,7 +34,7 @@
           </li>
 
             <% hidden = can?(:view, :customers) ? "" : "d-none" %>
-            <% if session[:role_slug] == Role::ADMIN %>
+            <% if inbox_access? %>
                 <% active = active_menu == "inbox" ? "active" : "" %>
                 <li class="nav-item text-center <%= active %>">
                     <a href="/inbox" class="nav-link text-white fw-light py-3 px-3"
@@ -117,7 +117,7 @@
                         </a>
                     <% end %>
 
-                    <% if session[:role_slug] == Role::ADMIN %>
+                    <% if inbox_access? %>
                         <% unknown_unread = Message.unread.unknown_sender.not_done.count %>
                         <a class="dropdown-item" href="/unknown_inbox">
                             <i class="fas fa-inbox me-2"></i>

@@ -3,7 +3,7 @@ module Authorization
   extend ActiveSupport::Concern
 
   included do
-    helper_method :can?, :cannot?
+    helper_method :can?, :cannot?, :inbox_access?
   end
 
   def can?(action, resource)
@@ -12,6 +12,11 @@ module Authorization
 
   def cannot?(action, resource)
     !can?(action, resource)
+  end
+
+  # The Inbox and Unknown Inbox are admin task lists, as are their message actions.
+  def inbox_access?
+    session[:role_slug] == Role::ADMIN
   end
 
   def require_permission!(action, resource)

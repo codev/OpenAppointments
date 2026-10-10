@@ -20,7 +20,7 @@ class MessagesController < ApplicationController
     change_done { |message| message.mark_done!(current_user) }
   end
 
-  # POST /messages/:id/undo_done, from the Show done list.
+  # POST /messages/:id/undo_done, from the Archive list.
   def undo_done
     change_done(&:undo_done!)
   end
@@ -41,7 +41,7 @@ class MessagesController < ApplicationController
 
   # DELETE /messages/:id. No soft delete: mistakes and erasure requests.
   def destroy
-    return head :forbidden unless current_user&.admin?
+    return head :forbidden unless inbox_access?
 
     message = Message.find(params[:id])
     message.destroy!

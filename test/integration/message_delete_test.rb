@@ -32,6 +32,18 @@ class MessageDeleteTest < ActionDispatch::IntegrationTest
     assert Message.exists?(message.id)
   end
 
+  test "delete follows the session role like done does" do
+    done = incoming("Done me")
+    gone = incoming("Delete me")
+    post "/login/validate", params: { username: "administrator", password: "administrator1" }
+    users(:admin).update!(role: roles(:provider))
+
+    post "/messages/#{done.id}/done", headers: STREAM
+    assert_response :success
+    delete "/messages/#{gone.id}", as: :json
+    assert_response :success
+  end
+
   test "the unknown inbox offers delete with a confirm and removes the row in place; the inbox does not" do
     unknown = incoming("Who is this?", customer: nil)
     known = incoming("Running late")
