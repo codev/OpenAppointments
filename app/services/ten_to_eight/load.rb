@@ -426,11 +426,11 @@ module TenToEight
       @customer_ids = {}
       known = {}
       User.customers.find_each do |user|
-        customer_keys(user.name, user.email, user.phone_number).each { |key| known[key] ||= user.id }
+        user.customer_keys.each { |key| known[key] ||= user.id }
       end
 
       @data[:customers].each do |row|
-        keys = customer_keys(row[:name], row[:email], row[:phone])
+        keys = User.customer_keys(row[:name], row[:email], row[:phone])
         existing_id = keys.lazy.filter_map { |key| known[key] }.first
         if existing_id
           counts[:matched] += 1
@@ -461,16 +461,6 @@ module TenToEight
         @customer_ids[row[:ext_id]] = customer.id
         keys.each { |key| known[key] ||= customer.id }
       end
-    end
-
-    # People sharing an email or phone keep their own records, so a customer
-    # matches on a contact detail together with the name.
-    def customer_keys(name, email, phone)
-      name = name.to_s.squish.downcase
-      return [] if name.blank?
-
-      phone = Messaging::Template.e164(phone)
-      [ ("#{name}|#{email.downcase}" if email.present?), ("#{name}|#{phone}" if phone.present?) ].compact
     end
 
     def load_appointments

@@ -6,6 +6,7 @@ CloudronManifest.json.
 ## 2.5.0
 
 - Inbox: filters are now To Do, Unread Only and Archive (Unknown Inbox: To Do and Archive)
+- Import: a 10to8 customer matches an existing customer by mobile number as well as phone
 
 ## 2.4.0
 

@@ -78,16 +78,26 @@ class User < ApplicationRecord
   # The customer a booking belongs to: the same email or phone and the same
   # name. People sharing contact details keep their own records.
   def self.customer_for_booking(email:, phone:, name:)
-    customers_by_contact(email: email, phone: phone).find { |customer| same_name?(customer.name, name) }
+    wanted = customer_keys(name, email, phone)
+    customers_by_contact(email: email, phone: phone).find { |customer| customer.customer_keys.intersect?(wanted) }
   end
+
+  # "name|contact" for each email and phone: two records with a key in common
+  # are the same customer. Bookings and the 10to8 import both match on these.
+  def self.customer_keys(name, email, *phones)
+    name = name.to_s.squish.downcase
+    return [] if name.blank?
+
+    contacts = phones.filter_map { |phone| Messaging::Template.e164(phone).presence }
+    contacts.unshift(email.downcase) if email.present?
+    contacts.map { |contact| "#{name}|#{contact}" }
+  end
+
+  def customer_keys = User.customer_keys(name, email, phone_number, mobile_number)
 
   def normalize_phones
     self.phone_number = Messaging::Template.e164(phone_number) if phone_number_changed?
     self.mobile_number = Messaging::Template.e164(mobile_number) if mobile_number_changed?
-  end
-
-  def self.same_name?(one, other)
-    one.to_s.squish.casecmp?(other.to_s.squish)
   end
   scope :assistants, -> { joins(:role).where(roles: { slug: Role::ASSISTANT }) }
   scope :customers, -> { joins(:role).where(roles: { slug: Role::CUSTOMER }) }
