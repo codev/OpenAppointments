@@ -5,7 +5,7 @@ CloudronManifest.json.
 
 ## 2.5.0
 
-- Inbox: filters are now Not Done, Unread Only and Archive (Unknown Inbox: Not Done and Archive)
+- Inbox: filters are now To Do, Unread Only and Archive (Unknown Inbox: To Do and Archive)
 
 ## 2.4.0
 

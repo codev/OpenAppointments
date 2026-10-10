@@ -898,11 +898,11 @@ en:
     appointment_statuses: 'Appointment Statuses'
     inbox: 'Inbox'
     inbox_hint: 'Incoming messages from your customers.'
-    inbox_info: 'Incoming messages from customers. Mark each one Done once dealt with; it stays in the customer history. Archive lists them again with Undo.'
+    inbox_info: "Incoming messages from customers. To Do lists messages to act on, mark each one Done once dealt with - you can still read them on the customer's page. Archive lists all messages - it has an Undo button to return them to To Do."
     unread: 'Unread'
     inbox_done: "Done"
     inbox_show_done: "Show done"
-    inbox_filter_not_done: "Not Done"
+    inbox_filter_to_do: "To Do"
     inbox_filter_unread: "Unread Only"
     inbox_filter_archive: "Archive"
     inbox_done_by: "Done by {name} {time}"

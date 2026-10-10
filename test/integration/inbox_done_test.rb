@@ -98,13 +98,13 @@ class InboxDoneTest < ActionDispatch::IntegrationTest
     assert_select "#inbox-message-#{message.id} form[action='/messages/#{message.id}/undo_done']"
   end
 
-  test "the inbox filters are Not Done, Unread Only and Archive; the unknown inbox has Not Done and Archive" do
+  test "the inbox filters are To Do, Unread Only and Archive; the unknown inbox has To Do and Archive" do
     login_admin
     get "/inbox"
-    assert_equal [ "Not Done", "Unread Only", "Archive" ], css_select("#inbox-page .btn-group a").map { |a| a.text.strip }
-    assert_select "#inbox-page .btn-group a.btn-secondary", text: "Not Done"
+    assert_equal [ "To Do", "Unread Only", "Archive" ], css_select("#inbox-page .btn-group a").map { |a| a.text.strip }
+    assert_select "#inbox-page .btn-group a.btn-secondary", text: "To Do"
     get "/unknown_inbox"
-    assert_equal [ "Not Done", "Archive" ], css_select("#unknown-inbox-page .btn-group a").map { |a| a.text.strip }
+    assert_equal [ "To Do", "Archive" ], css_select("#unknown-inbox-page .btn-group a").map { |a| a.text.strip }
   end
 
   test "only admins can mark done or undo" do

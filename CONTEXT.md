@@ -64,7 +64,7 @@ _Avoid_: Archived, deleted
 
 **Archive**:
 The Inbox (or Unknown Inbox) filter listing Done messages, each with Undo. The default
-filter, Not Done, lists the rest.
+filter, To Do, lists the rest.
 
 **Extra questions**:
 The configurable questions a customer answers when booking, such as Pronouns and Access
