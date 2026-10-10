@@ -38,13 +38,29 @@ class Message < ApplicationRecord
 
   def undo_done! = update!(done_at: nil, done_by: nil)
 
-  # Other customers using the contact this incoming message came from; an
-  # admin can move the message to one of them.
-  def other_customers_on_contact
-    return [] if customer_id.nil? || from_address.blank?
+  attr_writer :other_customers_on_contact
 
-    contact = from_address.include?("@") ? { email: from_address } : { phone: from_address }
-    User.customers_by_contact(**contact).reject { |customer| customer.id == customer_id }
+  # Other customers using the contact this incoming message came from; an
+  # admin can move the message to one of them. Preloaded for an Inbox page.
+  def other_customers_on_contact
+    @other_customers_on_contact || Message.find_other_customers([ self ]).first
+  end
+
+  # One customer lookup for a page of messages instead of one per row.
+  def self.preload_other_customers(messages)
+    messages.zip(find_other_customers(messages)) { |message, others| message.other_customers_on_contact = others }
+  end
+
+  # For each message, the other customers using the contact it came from.
+  def self.find_other_customers(messages)
+    linked = messages.select { |message| message.customer_id && message.from_address.present? }
+    emails, phones = linked.map(&:from_address).partition { |address| address.include?("@") }
+    candidates = linked.any? ? User.customers_by_contacts(emails: emails, phones: phones) : []
+    messages.map do |message|
+      next [] unless linked.include?(message)
+
+      candidates.select { |customer| customer.id != message.customer_id && customer.uses_contact?(message.from_address) }
+    end
   end
 
   def self.unread_counts_for(customer_ids)

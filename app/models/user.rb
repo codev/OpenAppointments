@@ -42,26 +42,35 @@ class User < ApplicationRecord
 
   # Phones are stored in E.164 (normalised on save), so a lookup is an exact
   # match on either indexed column.
-  PHONE_MATCH = "users.phone_number = :number OR users.mobile_number = :number".freeze
+  PHONE_MATCH = "users.phone_number IN (:numbers) OR users.mobile_number IN (:numbers)".freeze
 
   before_validation :normalize_phones
 
   # Customers whose phone or mobile number is this one, however it was typed.
-  def self.customers_by_phone(number, scope = customers)
-    wanted = Messaging::Template.e164(number)
-    return [] if wanted.blank? || wanted.length < 7
-
-    # By id from a phone-only subquery: SQLite then searches the phone indexes
-    # instead of every user with the customer role.
-    scope.where(id: User.unscoped.where(PHONE_MATCH, number: wanted).select(:id)).to_a
-  end
+  def self.customers_by_phone(number) = customers_by_contacts(phones: [ number ])
 
   # Customers who use this email (any case) or phone, once each. Partners and
   # family may share one.
-  def self.customers_by_contact(email: nil, phone: nil)
-    found = email.present? ? customers.where("LOWER(email) = ?", email.downcase).to_a : []
-    found += customers_by_phone(phone) if phone.present?
+  def self.customers_by_contact(email: nil, phone: nil) = customers_by_contacts(emails: [ email ], phones: [ phone ])
+
+  # Customers who use any of these emails or phones, once each: one query for
+  # the emails and one for the phones.
+  def self.customers_by_contacts(emails: [], phones: [])
+    emails = emails.compact_blank.map(&:downcase).uniq
+    phones = phones.filter_map { |phone| Messaging::Template.e164(phone) }.select { |phone| phone.length >= 7 }.uniq
+    found = emails.any? ? customers.where("LOWER(email) IN (?)", emails).to_a : []
+    # By id from a phone-only subquery: SQLite then searches the phone indexes
+    # instead of every user with the customer role.
+    found += customers.where(id: User.unscoped.where(PHONE_MATCH, numbers: phones).select(:id)).to_a if phones.any?
     found.uniq
+  end
+
+  # Whether this email or phone is one of the customer's, compared as the
+  # lookups above compare.
+  def uses_contact?(address)
+    return email.to_s.downcase == address.downcase if address.include?("@")
+
+    [ phone_number, mobile_number ].include?(Messaging::Template.e164(address))
   end
 
   # Of customers sharing a contact, the one a message from it most likely
