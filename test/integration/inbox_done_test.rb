@@ -1,7 +1,7 @@
 require "test_helper"
 
 # The Inbox is an admin task list: each inbound message is Done once dealt
-# with, Show done lists those with Undo, and the customer history keeps them.
+# with, Archive lists those with Undo, and the customer history keeps them.
 class InboxDoneTest < ActionDispatch::IntegrationTest
   STREAM = { "Accept" => "text/vnd.turbo-stream.html, text/html, application/xhtml+xml" }.freeze
 
@@ -96,6 +96,15 @@ class InboxDoneTest < ActionDispatch::IntegrationTest
     assert_not_includes response.body, "Who is this?"
     get "/unknown_inbox", params: { done: 1 }
     assert_select "#inbox-message-#{message.id} form[action='/messages/#{message.id}/undo_done']"
+  end
+
+  test "the inbox filters are Not Done, Unread Only and Archive; the unknown inbox has Not Done and Archive" do
+    login_admin
+    get "/inbox"
+    assert_equal [ "Not Done", "Unread Only", "Archive" ], css_select("#inbox-page .btn-group a").map { |a| a.text.strip }
+    assert_select "#inbox-page .btn-group a.btn-secondary", text: "Not Done"
+    get "/unknown_inbox"
+    assert_equal [ "Not Done", "Archive" ], css_select("#unknown-inbox-page .btn-group a").map { |a| a.text.strip }
   end
 
   test "only admins can mark done or undo" do

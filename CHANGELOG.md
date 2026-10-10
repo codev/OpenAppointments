@@ -3,6 +3,10 @@
 The about page lists these notes; every release needs a section here matching
 CloudronManifest.json.
 
+## 2.5.0
+
+- Inbox: filters are now Not Done, Unread Only and Archive (Unknown Inbox: Not Done and Archive)
+
 ## 2.4.0
 
 - Notifications: click a token to insert it

@@ -62,6 +62,10 @@ An Inbox message an admin has dealt with. It leaves the Inbox, can be undone, an
 the customer history.
 _Avoid_: Archived, deleted
 
+**Archive**:
+The Inbox (or Unknown Inbox) filter listing Done messages, each with Undo. The default
+filter, Not Done, lists the rest.
+
 **Extra questions**:
 The configurable questions a customer answers when booking, such as Pronouns and Access
 needs.

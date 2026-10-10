@@ -898,10 +898,13 @@ en:
     appointment_statuses: 'Appointment Statuses'
     inbox: 'Inbox'
     inbox_hint: 'Incoming messages from your customers.'
-    inbox_info: 'Incoming messages from customers. Mark each one Done once dealt with; it stays in the customer history. Show done lists them again with Undo.'
+    inbox_info: 'Incoming messages from customers. Mark each one Done once dealt with; it stays in the customer history. Archive lists them again with Undo.'
     unread: 'Unread'
     inbox_done: "Done"
     inbox_show_done: "Show done"
+    inbox_filter_not_done: "Not Done"
+    inbox_filter_unread: "Unread Only"
+    inbox_filter_archive: "Archive"
     inbox_done_by: "Done by {name} {time}"
     message_delete_confirm: "Delete this message permanently? This cannot be undone."
     message_deleted: "Message deleted"

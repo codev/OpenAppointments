@@ -17,7 +17,7 @@ class InboxPageTest < ApplicationSystemTestCase
     assert_equal 1, page.evaluate_script("window.__inboxMarker")
     assert message.reload.done?
 
-    click_on "Show done"
+    click_on "Archive"
     within("#inbox-message-#{message.id}") do
       assert_text "Done by Edson Mori"
       click_on "Undo"

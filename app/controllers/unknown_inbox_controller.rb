@@ -1,5 +1,5 @@
 # Incoming messages from senders that match no customer. Admins only, with the
-# same Done / Show done as the Inbox.
+# same Done / Archive as the Inbox.
 class UnknownInboxController < ApplicationController
   include BackendPage
 
