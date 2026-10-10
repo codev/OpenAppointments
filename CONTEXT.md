@@ -33,6 +33,8 @@ Something a customer can book, with a duration and a slot interval.
 **Non-service**:
 A service hidden from the public booking pages that staff book to reserve stylist time,
 such as Meeting or Admin tasks.
+In the app: the service's Hide from public setting; the appointment form groups these
+under Hidden From Public.
 _Avoid_: Unavailability (blocked time with no service)
 
 **Booking window**:
