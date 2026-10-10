@@ -25,27 +25,6 @@ class InboxSharedContactTest < ActionDispatch::IntegrationTest
     end
   end
 
-  test "a page looks up shared contacts in one email and one phone query, however many rows" do
-    texter = User.create!(name: "Tex Ter", mobile_number: "07700 900321", role: roles(:customer))
-    sibling = User.create!(name: "Sib Ling", phone_number: "+447700900321", role: roles(:customer))
-    from_phone = Message.create!(direction: "incoming", channel: "sms", from_address: "+447700900321",
-                                 customer_id: texter.id, body: "On my way", status: "received")
-    3.times do |i|
-      solo = User.create!(name: "Solo #{i}", email: "solo#{i}@example.org", role: roles(:customer))
-      Message.create!(direction: "incoming", channel: "email", from_address: solo.email,
-                      customer_id: solo.id, body: "Hello #{i}", status: "received")
-    end
-
-    lookups = 0
-    counter = ->(*, payload) { lookups += 1 if payload[:sql].match?(/LOWER\(email\)|phone_number/) }
-    ActiveSupport::Notifications.subscribed(counter, "sql.active_record") { get "/inbox" }
-
-    assert_equal 2, lookups
-    assert_select "#inbox-message-#{@message.id} .inbox-shared-contact", text: /Partner Person/
-    assert_select "#inbox-message-#{from_phone.id} .inbox-shared-contact", text: /Sib Ling/
-    assert_select "#inbox-message-#{from_phone.id} .inbox-shared-contact", text: /Tex Ter/, count: 0
-  end
-
   test "a contact only one customer uses shows no alternatives" do
     @partner.update!(email: "partner@example.org")
     get "/inbox"

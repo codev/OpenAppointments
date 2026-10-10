@@ -26,10 +26,8 @@ class InboxController < ApplicationController
     scope = Message.inbox.includes(:customer, :done_by).newest_first
     scope = filter == "archive" ? scope.done : scope.not_done
     scope = scope.unread if filter == "unread"
-    messages = scope.limit(PER_PAGE).offset((page - 1) * PER_PAGE).to_a
-    Message.preload_other_customers(messages)
     html_vars(
-      inbox_messages: messages,
+      inbox_messages: scope.limit(PER_PAGE).offset((page - 1) * PER_PAGE).to_a,
       inbox_page: page,
       inbox_last_page: scope.count <= page * PER_PAGE,
       inbox_filter: filter
