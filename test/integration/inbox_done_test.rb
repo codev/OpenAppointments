@@ -107,6 +107,19 @@ class InboxDoneTest < ActionDispatch::IntegrationTest
     assert_equal [ "To Do", "Archive" ], css_select("#unknown-inbox-page .btn-group a").map { |a| a.text.strip }
   end
 
+  test "the next page keeps the filter" do
+    (InboxController::PER_PAGE + 1).times { |i| incoming("Old #{i}").mark_done!(users(:admin)) }
+    login_admin
+    { "/inbox?done=1" => "/inbox?done=1&page=2", "/inbox?unread=1" => nil, "/inbox" => nil }.each do |path, next_page|
+      get path
+      if next_page
+        assert_select "a[href=?]", next_page
+      else
+        assert_select "a[href*='page=2']", count: 0
+      end
+    end
+  end
+
   test "only admins can mark done or undo" do
     message = incoming("Running late")
     post "/login/validate", params: { username: "janedoe", password: "janedoe1" }

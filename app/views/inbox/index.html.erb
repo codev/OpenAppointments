@@ -4,10 +4,9 @@
             <div class="d-flex justify-content-between align-items-center border-bottom py-3 mb-3">
                 <h4 class="mb-0 fw-light"><%= lang('inbox') %></h4>
                 <div class="btn-group" role="group">
-                    <% [ [ "all", "/inbox", lang('inbox_filter_to_do') ], [ "unread", "/inbox?unread=1", lang('inbox_filter_unread') ],
-                         [ "done", "/inbox?done=1", lang('inbox_filter_archive') ] ].each do |filter, path, label| %>
+                    <% InboxController::FILTERS.each do |filter, (path, label)| %>
                         <a href="<%= path %>" class="btn btn-sm <%= vars(:inbox_filter) == filter ? 'btn-secondary' : 'btn-outline-secondary' %>">
-                            <%= label %>
+                            <%= lang(label) %>
                         </a>
                     <% end %>
                 </div>
@@ -18,7 +17,7 @@
             <%= render "shared/inbox_list",
                        messages: vars(:inbox_messages), page: vars(:inbox_page),
                        last_page: vars(:inbox_last_page),
-                       base_path: { "unread" => "/inbox?unread=1", "done" => "/inbox?done=1" }.fetch(vars(:inbox_filter), "/inbox") %>
+                       base_path: InboxController::FILTERS.fetch(vars(:inbox_filter)).first %>
         </div>
     </div>
 </div>
