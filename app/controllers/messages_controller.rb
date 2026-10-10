@@ -46,12 +46,7 @@ class MessagesController < ApplicationController
     message = Message.find(params[:id])
     message.destroy!
     respond_to do |format|
-      format.turbo_stream do
-        render turbo_stream: [
-          turbo_stream.remove("inbox-message-#{message.id}"),
-          turbo_stream.replace("inbox-unread", partial: "shared/inbox_unread", locals: { count: inbox_badge_count })
-        ]
-      end
+      format.turbo_stream { render_row_removed(message) }
       format.json { render json: { success: true, inbox_unread: inbox_badge_count } }
       format.html { redirect_back fallback_location: "/unknown_inbox" }
     end
@@ -65,14 +60,17 @@ class MessagesController < ApplicationController
     message = Message.incoming.find(params[:id])
     yield message
     respond_to do |format|
-      format.turbo_stream do
-        render turbo_stream: [
-          turbo_stream.remove("inbox-message-#{message.id}"),
-          turbo_stream.replace("inbox-unread", partial: "shared/inbox_unread", locals: { count: inbox_badge_count })
-        ]
-      end
+      format.turbo_stream { render_row_removed(message) }
       format.html { redirect_back fallback_location: "/inbox" }
     end
+  end
+
+  # The row leaves its list and the header badge follows.
+  def render_row_removed(message)
+    render turbo_stream: [
+      turbo_stream.remove("inbox-message-#{message.id}"),
+      turbo_stream.replace("inbox-unread", partial: "shared/inbox_unread", locals: { count: inbox_badge_count })
+    ]
   end
 
   def message_access?(message)
