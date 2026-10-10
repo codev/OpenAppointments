@@ -46,9 +46,6 @@ class User < ApplicationRecord
 
   before_validation :normalize_phones
 
-  # Customers whose phone or mobile number is this one, however it was typed.
-  def self.customers_by_phone(number) = customers_by_contacts(phones: [ number ])
-
   # Customers who use this email (any case) or phone, once each. Partners and
   # family may share one.
   def self.customers_by_contact(email: nil, phone: nil) = customers_by_contacts(emails: [ email ], phones: [ phone ])
@@ -79,7 +76,7 @@ class User < ApplicationRecord
   def self.likely_sender(candidates, now = Time.current)
     return candidates.first if candidates.size < 2
 
-    upcoming, latest = Appointment.next_and_last(Appointment.appointments.active.where(id_users_customer: candidates.map(&:id)), now)
+    upcoming, latest = Appointment.next_and_latest(Appointment.appointments.active.where(id_users_customer: candidates.map(&:id)), now)
     id = (upcoming || latest)&.id_users_customer
     id ? candidates.find { |customer| customer.id == id } : candidates.max_by(&:updated_at)
   end

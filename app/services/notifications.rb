@@ -71,7 +71,7 @@ module Notifications
   end
 
   def stylist_for(customer, now = Time.current)
-    upcoming, latest = Appointment.next_and_last(Appointment.appointments.active.where(id_users_customer: customer.id), now)
+    upcoming, latest = Appointment.next_and_latest(Appointment.appointments.active.where(id_users_customer: customer.id), now)
     (upcoming || latest)&.provider
   end
 

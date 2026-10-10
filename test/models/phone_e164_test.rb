@@ -19,14 +19,14 @@ class PhoneE164Test < ActiveSupport::TestCase
   test "the phone lookup matches either number exactly, using the indexes" do
     users(:jx).update!(phone_number: "07700 900123")
     partner = User.create!(name: "Partner", mobile_number: "07700900123", role: roles(:customer))
-    assert_equal [ users(:jx), partner ].sort_by(&:id), User.customers_by_phone("+44 7700 900123").sort_by(&:id)
-    assert_empty User.customers_by_phone("+447700900999")
+    assert_equal [ users(:jx), partner ].sort_by(&:id), User.customers_by_contact(phone: "+44 7700 900123").sort_by(&:id)
+    assert_empty User.customers_by_contact(phone: "+447700900999")
 
     sql = nil
     subscriber = ActiveSupport::Notifications.subscribe("sql.active_record") do |*, payload|
       sql = payload[:sql] if payload[:sql].include?("phone_number")
     end
-    User.customers_by_phone("+447700900123")
+    User.customers_by_contact(phone: "+447700900123")
     ActiveSupport::Notifications.unsubscribe(subscriber)
     plan = User.connection.select_rows("EXPLAIN QUERY PLAN #{sql}")
     detail = plan.map(&:last).join(" | ")
