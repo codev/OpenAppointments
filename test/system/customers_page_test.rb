@@ -133,10 +133,10 @@ class CustomerMessageBubblesTest < ApplicationSystemTestCase
     login_as_admin
     visit customers_url(customer_id: users(:jx).id, section: "messages")
     assert_selector "#customer-messages .bubble-row.in.message-unread .bubble.bubble-email", text: "Running late", wait: 5
-    assert_selector "#customer-messages .bubble-row.in .bubble-email .bubble-meta", text: "7 Mar 14:02"
+    assert_selector "#customer-messages .bubble-row.in .bubble-email .bubble-meta", text: "07/03 2:02 pm"
     assert_selector "#customer-messages .bubble-row.in .bubble-email .bubble-meta .mark-read", text: "Mark as read"
     assert_selector "#customer-messages .bubble-row.out.failed .bubble.bubble-twilio[title='Twilio']", text: "See you soon"
-    assert_selector "#customer-messages .bubble-row.out .bubble-twilio .bubble-meta", text: "Failed"
+    assert_selector "#customer-messages .bubble-row.out .bubble-twilio .bubble-meta", text: "Failed - Twilio"
     assert_no_selector "#customer-messages .badge"
     assert_no_selector "#customer-messages .fa-arrow-up, #customer-messages .fa-arrow-down"
     assert_no_selector "#load-more-messages"

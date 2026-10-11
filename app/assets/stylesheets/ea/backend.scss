@@ -776,6 +776,13 @@ $bubble-radius: 1.1rem;
     display: flex;
     flex-direction: column;
     gap: 0.6rem;
+
+    // Room under the last bubble so its tail and some space show when the
+    // thread is scrolled to the bottom.
+    &::after {
+        content: "";
+        flex: 0 0 0.75rem;
+    }
     // The tail's cut-out must match whatever the thread sits on: the themes
     // paint cards with their surface colour, not the Bootstrap card variable.
     --bubble-page: var(--oa-surface, var(--bs-card-bg));
@@ -872,8 +879,15 @@ $bubble-radius: 1.1rem;
     background: var(--channel-all);
 }
 
+// A failed message loses its colour and tail: white, outlined in red.
 .bubble-row.failed .bubble {
+    --bubble-bg: var(--bubble-page);
     box-shadow: 0 0 0 2px var(--bs-danger);
+
+    &::before,
+    &::after {
+        display: none;
+    }
 }
 
 .bubble-row.message-unread .bubble-body {

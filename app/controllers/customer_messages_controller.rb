@@ -113,10 +113,10 @@ class CustomerMessagesController < ApplicationController
     }
   end
 
-  # "7 Mar 14:02", with the year only when it is not this year.
+  # In the date and time styles from Settings, the year only when it is not this year.
   def short_time(time)
     return nil unless time
 
-    time.strftime(time.year == Time.current.year ? "%-d %b %H:%M" : "%-d %b %Y %H:%M")
+    DateDisplay.format_time(time, year: time.year != Time.current.year)
   end
 end

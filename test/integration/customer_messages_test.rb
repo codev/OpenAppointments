@@ -72,10 +72,17 @@ class CustomerMessagesTest < ActionDispatch::IntegrationTest
     assert_equal false, response.parsed_body["more"]
   end
 
-  test "find gives the time in a short form, with the year only when it is not this year" do
+  test "find gives the time in the settings date style, with the year only when it is not this year" do
     incoming("This year", Time.current.change(month: 3, day: 7, hour: 14, min: 2))
     incoming("Last year", (Time.current - 1.year).change(month: 11, day: 30, hour: 9, min: 5))
     login_admin
+    post "/customer_messages/find", params: { customer_id: customer.id }
+    times = response.parsed_body["messages"].to_h { |row| [ row["body"], row["created_at"] ] }
+    assert_equal "07/03 2:02 pm", times["This year"]
+    assert_equal "30/11/#{Time.current.year - 1} 9:05 am", times["Last year"]
+
+    Setting.set("date_display", "month_short")
+    Setting.set("time_format", "military")
     post "/customer_messages/find", params: { customer_id: customer.id }
     times = response.parsed_body["messages"].to_h { |row| [ row["body"], row["created_at"] ] }
     assert_equal "7 Mar 14:02", times["This year"]

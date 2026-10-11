@@ -28,7 +28,11 @@ App.Components.CustomerMessages = (function () {
         const $meta = $('<div/>', {
             'class': 'bubble-meta',
             'html': [
-                $('<span/>', {'text': message.created_at + (failed ? ' ' + lang('messages_status_failed') : '')}),
+                $('<span/>', {
+                    'text':
+                        message.created_at +
+                        (failed ? ' ' + lang('messages_status_failed') + ' - ' + message.channel_label : ''),
+                }),
                 unread
                     ? $('<button/>', {
                           'type': 'button',
