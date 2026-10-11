@@ -37,7 +37,7 @@ module BackendPage
       timezone: session[:timezone],
       grouped_timezones: helpers.grouped_timezones,
       privileges: session_role.permissions,
-      inbox_unread: inbox_badge_count
+      inbox_count: inbox_badge_count
     )
     script_vars(
       user_id: session[:user_id],
@@ -61,9 +61,9 @@ module BackendPage
     }.to_h
   end
 
-  # Header badge: unread incoming messages not yet Done, for admins.
+  # Header badge: incoming messages not yet Done, for admins.
   def inbox_badge_count
-    inbox_access? ? Message.unread.not_done.count : 0
+    inbox_access? ? Message.incoming.not_done.count : 0
   end
 
   def assistant_provider_ids

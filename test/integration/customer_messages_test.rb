@@ -22,7 +22,7 @@ class CustomerMessagesTest < ActionDispatch::IntegrationTest
     assert_equal 1, Message.unread.where(customer_id: customer.id).count
 
     post "/customer_messages/mark_read", params: { customer_id: customer.id }
-    assert_equal 0, response.parsed_body["inbox_unread"]
+    assert_equal 1, response.parsed_body["inbox_count"], "the header count is messages not done, so reading changes nothing"
     assert_equal 0, Message.unread.where(customer_id: customer.id).count
   end
 
@@ -89,7 +89,7 @@ class CustomerMessagesTest < ActionDispatch::IntegrationTest
     assert_equal "30 Nov #{Time.current.year - 1} 09:05", times["Last year"]
   end
 
-  test "inbox lists messages the user may see with an unread badge in the header" do
+  test "the header badge counts messages not yet done; marking one read does not change it, done does" do
     message = Message.create!(direction: "incoming", channel: "email", from_address: customer.email,
                               customer_id: customer.id, body: "Running late", status: "received")
     login_admin
@@ -97,14 +97,19 @@ class CustomerMessagesTest < ActionDispatch::IntegrationTest
     assert_response :success
     assert_includes response.body, "Running late"
     assert_select "#header #inbox-icon.d-none"
-    assert_select "#header #inbox-unread.badge:not(.d-none)", text: "1"
+    assert_select "#header #inbox-count.badge:not(.d-none)", text: "1"
 
     post "/messages/#{message.id}/mark_read"
-    assert_equal 0, response.parsed_body["inbox_unread"]
-    get "/inbox?unread=1"
+    assert_equal 1, response.parsed_body["inbox_count"]
+    get "/inbox"
+    assert_includes response.body, "Running late"
+    assert_select "#header #inbox-count.badge:not(.d-none)", text: "1"
+
+    message.mark_done!(users(:admin))
+    get "/inbox"
     assert_not_includes response.body, "Running late"
     assert_select "#header #inbox-icon:not(.d-none)"
-    assert_select "#header #inbox-unread.d-none"
+    assert_select "#header #inbox-count.d-none"
   end
 
   test "customer search rows include unread counts" do

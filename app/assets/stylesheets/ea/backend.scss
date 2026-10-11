@@ -9,6 +9,8 @@
  * @since       v1.5.0
  * ---------------------------------------------------------------------------- */
 
+@use "sass:color";
+
 /* Navigation hover and active states */
 #header #header-menu .nav-item:hover {
     background: rgba(0, 0, 0, 0.1);
@@ -726,7 +728,7 @@ body .modal.full-screen .modal-push {
         text-align: center;
     }
 
-    #header .navbar-nav .nav-link #inbox-unread {
+    #header .navbar-nav .nav-link #inbox-count {
         margin: 0 0 0.25rem !important;
     }
 
@@ -740,21 +742,16 @@ body .modal.full-screen .modal-push {
     z-index: 1030;
 }
 
-/* Inbox: unread blocks carry an accent bar on the left and bold text. The
-   bubbles have no tail here: the page background is a gradient the tail's
-   cut-out cannot match. */
+/* Inbox: every message looks the same, read or not. The bubbles have no tail
+   here: the page background is a gradient the tail's cut-out cannot match. */
 // A clearer line between messages than the default border on a tinted page.
 .inbox-message {
     border-bottom-color: rgba(var(--bs-emphasis-color-rgb), 0.35) !important;
 }
 
-.inbox-message.message-unread {
-    border-left: 4px solid var(--bs-primary);
-    padding-left: 0.75rem;
-}
-
-.inbox-message.message-unread .bubble-body {
-    font-weight: 600;
+// Archive: Done by and Undo on their own line under the bubble.
+.inbox-done {
+    flex-basis: 100%;
 }
 
 .inbox-message .bubble::before,
@@ -790,10 +787,13 @@ $channel-colours: (
     "textanywhere": (#fdefd9, #f8ddb3),
 );
 
+// -in is the incoming tint, the bare name the outgoing one, -edge a darker
+// shade of the incoming tint for outlining unknown senders.
 :root {
     @each $key, $tints in $channel-colours {
         --channel-#{$key}-in: #{nth($tints, 1)};
         --channel-#{$key}: #{nth($tints, 2)};
+        --channel-#{$key}-edge: #{color.scale(nth($tints, 1), $lightness: -35%)};
     }
 }
 
@@ -899,6 +899,7 @@ $bubble-radius: 1.1rem;
 @each $key, $tints in $channel-colours {
     .bubble-#{$key} {
         --bubble-bg: var(--channel-#{$key}-in);
+        --bubble-edge: var(--channel-#{$key}-edge);
     }
 
     .bubble-row.out .bubble-#{$key} {
@@ -912,6 +913,11 @@ $bubble-radius: 1.1rem;
 
 .channel-all {
     background: var(--channel-all);
+}
+
+// An unknown sender's message is outlined in a darker shade of its colour.
+.bubble-row.unknown .bubble {
+    box-shadow: 0 0 0 2px var(--bubble-edge);
 }
 
 // A failed message loses its colour and tail: white, outlined in red.
@@ -930,7 +936,7 @@ $bubble-radius: 1.1rem;
 }
 
 .bubble-subject {
-    font-weight: 600;
+    font-style: italic;
     margin-bottom: 0.15rem;
 }
 

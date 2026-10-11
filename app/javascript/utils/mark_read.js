@@ -1,18 +1,19 @@
 /**
- * Mark as read links (.mark-read with data-id) on the inbox pages and the
- * customer conversation. Updates the header unread badge from the response.
+ * Mark as read links (.mark-read with data-id) on the customer conversation.
+ * Also keeps the header Inbox count (messages not yet done) in step with
+ * responses that carry it.
  */
 App.Utils.MarkRead = (function () {
-    // The badge stands in for the Inbox icon while anything is unread.
+    // The count stands in for the Inbox icon while there is anything to do.
     function updateHeaderBadge(count) {
-        $('#inbox-unread').text(count).toggleClass('d-none', !count);
+        $('#inbox-count').text(count).toggleClass('d-none', !count);
         $('#inbox-icon').toggleClass('d-none', !!count);
     }
 
     function markRead(messageId) {
         return $.post(App.Utils.Url.siteUrl('messages/' + messageId + '/mark_read'), {
             csrf_token: vars('csrf_token'),
-        }).done((response) => updateHeaderBadge(response.inbox_unread));
+        }).done((response) => updateHeaderBadge(response.inbox_count));
     }
 
     function onMarkReadClick(event) {

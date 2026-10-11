@@ -159,7 +159,7 @@ App.Components.CustomerMessages = (function () {
                 click: (e, modal) => {
                     modal.hide();
                     App.Http.CustomerMessages.destroy($button.data('id')).done((response) => {
-                        App.Utils.MarkRead.updateHeaderBadge(response.inbox_unread);
+                        App.Utils.MarkRead.updateHeaderBadge(response.inbox_count);
                         if ($button.data('unread')) {
                             decreaseUnreadBadge(1);
                         }
@@ -237,7 +237,7 @@ App.Components.CustomerMessages = (function () {
             $document.on('input', '#message-body', fitMessageBox);
             $document.on('click', '#mark-all-read', () => {
                 App.Http.CustomerMessages.markRead(customerId()).done((response) => {
-                    App.Utils.MarkRead.updateHeaderBadge(response.inbox_unread);
+                    App.Utils.MarkRead.updateHeaderBadge(response.inbox_count);
                     decreaseUnreadBadge(0);
                     panel().find('.message-unread').removeClass('message-unread').find('.mark-read').remove();
                     $('#mark-all-read').addClass('d-none');

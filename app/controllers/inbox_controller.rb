@@ -1,6 +1,6 @@
 # Inbox: the admin task list of incoming messages, newest first, from
-# customers and unknown senders alike.
-# Filters: To Do (default), unread and not done, or Archive (done).
+# customers and unknown senders alike. Read state plays no part here: a
+# message is in the Inbox until marked Done, then in the Archive.
 class InboxController < ApplicationController
   include BackendPage
 
@@ -10,8 +10,7 @@ class InboxController < ApplicationController
 
   # Filter name => [path, label key], in button order.
   FILTERS = {
-    "to_do" => [ "/inbox", "inbox_filter_to_do" ],
-    "unread" => [ "/inbox?unread=1", "inbox_filter_unread" ],
+    "inbox" => [ "/inbox", "inbox" ],
     "archive" => [ "/inbox?done=1", "inbox_filter_archive" ]
   }.freeze
 
@@ -21,12 +20,9 @@ class InboxController < ApplicationController
 
     backend_page_vars(page_title: helpers.lang("inbox"), active_menu: "inbox")
     page = [ params[:page].to_i, 1 ].max
-    filter = "to_do"
-    filter = "unread" if params[:unread] == "1"
-    filter = "archive" if params[:done] == "1"
+    filter = params[:done] == "1" ? "archive" : "inbox"
     scope = Message.incoming.includes(:customer, :done_by).newest_first
     scope = filter == "archive" ? scope.done : scope.not_done
-    scope = scope.unread if filter == "unread"
     html_vars(
       inbox_messages: scope.limit(PER_PAGE).offset((page - 1) * PER_PAGE).to_a,
       inbox_page: page,

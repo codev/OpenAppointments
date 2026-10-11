@@ -39,7 +39,7 @@
                 <li class="nav-item text-center <%= active %>">
                     <a href="/inbox" class="nav-link text-white fw-light py-3 px-3"
                        data-tippy-content="<%= lang('inbox_hint') %>">
-                        <%= render "shared/inbox_unread", count: vars(:inbox_unread) %>
+                        <%= render "shared/inbox_count", count: vars(:inbox_count) %>
                         <%= lang('inbox') %>
                     </a>
                 </li>

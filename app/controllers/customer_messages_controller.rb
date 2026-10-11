@@ -39,7 +39,7 @@ class CustomerMessagesController < ApplicationController
     return head :forbidden unless customer_access?(customer_id)
 
     Message.mark_read_for_customer(customer_id)
-    render json: { success: true, inbox_unread: inbox_badge_count }
+    render json: { success: true, inbox_count: inbox_badge_count }
   rescue ArgumentError => e
     json_exception(e, status: :ok)
   end

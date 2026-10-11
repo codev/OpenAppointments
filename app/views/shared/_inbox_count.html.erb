@@ -1,0 +1,5 @@
+<%# Header Inbox icon and count of messages not yet done: the count takes the
+    icon's place while there are any. Locals: count. %>
+<% any = count.to_i.positive? %>
+<i id="inbox-icon" class="fas fa-inbox me-2 <%= 'd-none' if any %>"></i>
+<span id="inbox-count" class="badge bg-danger me-2 <%= 'd-none' unless any %>"><%= count %></span>

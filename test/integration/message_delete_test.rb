@@ -19,7 +19,7 @@ class MessageDeleteTest < ActionDispatch::IntegrationTest
 
     delete "/messages/#{gone.id}", as: :json
     assert_response :success
-    assert_equal({ "success" => true, "inbox_unread" => 1 }, response.parsed_body)
+    assert_equal({ "success" => true, "inbox_count" => 1 }, response.parsed_body)
     delete "/messages/#{sent.id}", as: :json
     assert_equal [ kept.id ], Message.where(customer_id: users(:jx).id).pluck(:id)
   end
