@@ -10,6 +10,10 @@ module PictureVariants
 
   module_function
 
+  def complete?(record)
+    record.picture.attached? && record.picture_padded.attached? && record.picture_zoomed.attached?
+  end
+
   def attach(record, path, filename:, content_type:)
     padded = ImageProcessing::MiniMagick.source(path)
                                         .resize_and_pad(SIZE, SIZE, background: "#ffffff", gravity: "center")

@@ -3,6 +3,12 @@
 The about page lists these notes; every release needs a section here matching
 CloudronManifest.json.
 
+## 3.0.0
+
+- Customers, Services, Stylists and the other list pages: opening a record changes the address, so Back returns to the list
+- Import: 10to8 appointments that were moved come in as Rescheduled, greyed out and hideable with the Statuses filter
+- Import: running an import again repairs pictures an interrupted import left incomplete
+
 ## 2.5.0
 
 - Messages: fresher look with messages as chat bubbles with colour based on the provider

@@ -72,9 +72,10 @@ module TenToEight
     end
 
     # Attach a picture referenced by filename from the import bundle's images
-    # directory. Existing pictures are kept.
+    # directory. A complete existing picture is kept; one missing a resized
+    # copy (an interrupted import) is attached again.
     def attach_picture(record, filename)
-      return if @images_dir.blank? || filename.blank? || record.picture.attached?
+      return if @images_dir.blank? || filename.blank? || PictureVariants.complete?(record)
 
       path = File.join(@images_dir, File.basename(filename.to_s))
       return unless File.exist?(path)
@@ -488,13 +489,21 @@ module TenToEight
           Appointment.create!(
             id_users_provider: provider_id, id_users_customer: customer_id,
             id_services: service_id, start_datetime: row[:start], end_datetime: row[:end],
-            notes: row[:note], location: "", book_datetime: Time.now, status: row[:status]
+            notes: row[:note], location: "", book_datetime: Time.now,
+            appointment_status: ten_to_eight_status(row[:status])
           )
         end
         next unless appointment
 
         counts[:created] += 1
       end
+    end
+
+    # A 10to8 booking that was moved stays as a Rebooked row next to its new time,
+    # which is the Rescheduled kind here. ODS backups carry the same name where an
+    # earlier 10to8 import created it. Other statuses match by name.
+    def ten_to_eight_status(name)
+      name == "Rebooked" ? AppointmentStatus.of("rescheduled") : AppointmentStatus.resolve(name)
     end
 
     # Ext-id map for an appointments run without the customers phase: match the

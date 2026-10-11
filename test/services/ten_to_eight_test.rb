@@ -79,6 +79,17 @@ class TenToEightTest < ActiveSupport::TestCase
     assert_equal 1, User.customers.where(email: "bella@example.org").count
   end
 
+  test "10to8 Rebooked appointments import as Rescheduled, even when a custom Rebooked status exists" do
+    AppointmentStatus.create!(name: "Rebooked", kind: "custom", position: 99)
+    TenToEight::Load.new(extract, phases: TenToEight::Load::PHASES, create_providers: true).call
+
+    rebooked = Appointment.find_by!(id_users_customer: User.customers.find_by!(name: "Dana Doe").id)
+    assert_equal "rescheduled", rebooked.status_kind
+    booked = Appointment.find_by!(id_users_customer: User.customers.find_by!(email: "bella@example.org").id,
+                                  start_datetime: "2026-07-15 10:00:00")
+    assert_equal "booked", booked.status_kind
+  end
+
   test "load keeps people who share an email or phone under different names as separate customers" do
     rows = [
       { ext_id: "p1", name: "Partner Of JX", email: users(:jx).email, phone: "" },
