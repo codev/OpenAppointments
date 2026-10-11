@@ -1,0 +1,6 @@
+<%# Key for the Inbox pages: one small bubble per enabled provider in its colour. %>
+<div class="bubble-key d-flex flex-wrap justify-content-center gap-2 mb-3">
+    <% Messaging.enabled_channels.each do |channel| %>
+        <span class="bubble bubble-<%= channel.key %>"><%= channel.label %></span>
+    <% end %>
+</div>

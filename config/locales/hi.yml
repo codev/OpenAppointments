@@ -678,7 +678,6 @@ hi:
     notify_users_on_delete_question: क्या आप अपॉइंटमेंट रद्द होने के बारे में ग्राहक को सूचित करना चाहेंगे?
     messages: Messages
     messages_hint: Manage notifications, providers and message logs
-    unknown_inbox: Unknown Inbox
     messages_providers: Providers
     messages_provider: Provider
     messages_logs: Logs
@@ -890,7 +889,6 @@ hi:
     appointment_statuses: 'Appointment Statuses'
     inbox: 'Inbox'
     inbox_hint: 'Incoming messages from your customers.'
-    unread: 'Unread'
     read: 'Read'
     message: 'Message'
     mark_as_read: 'Mark as read'
@@ -972,7 +970,6 @@ hi:
     notification_has_unknown_tokens: "अज्ञात प्लेसहोल्डर"
     token_copied: "{token} कॉपी हो गया"
     inbox_done: "पूर्ण"
-    inbox_show_done: "पूर्ण दिखाएं"
     inbox_done_by: "{name} द्वारा {time} पर पूर्ण"
     message_delete_confirm: "इस संदेश को हमेशा के लिए डिलीट करें? इसे पूर्ववत नहीं किया जा सकता।"
     message_deleted: "संदेश डिलीट हो गया"
@@ -980,7 +977,8 @@ hi:
     message_move_to: "{name} में ले जाएं"
     message_moved: "संदेश ले जाया गया"
     notification_tokens_hint: "टेम्पलेट फ़ील्ड जिन्हें आप उपयोग कर सकते हैं। जहां आप टाइप कर रहे थे वहां डालने के लिए, या कॉपी करने के लिए किसी एक पर क्लिक करें:"
-    inbox_info: "ग्राहकों से आने वाले संदेश। निपटाने के बाद हर एक को पूर्ण के रूप में चिह्नित करें; यह ग्राहक के इतिहास में बना रहता है। पूर्ण दिखाएं उन्हें अन्डू के साथ फिर से सूचीबद्ध करता है।"
-    unknown_inbox_info: "उन भेजने वालों के संदेश जो किसी ग्राहक से मेल नहीं खाते। निपटाने के बाद हर एक को पूर्ण के रूप में चिह्नित करें। ये संदेश मुख्य लॉग में भी दिखाई देते हैं।"
+    inbox_info: "आने वाले संदेश। Inbox में वे संदेश दिखते हैं जिन पर कार्रवाई करनी है, निपटाने या पढ़ने के बाद हर एक को पूर्ण के रूप में चिह्नित करें - आप उन्हें उपभोक्ता के पेज पर या संग्रह में अब भी पढ़ सकते हैं। संग्रह में वे संदेश दिखते हैं जिन्हें पूर्ण चिह्नित किया गया है - इसमें अन्डू बटन है जो उन्हें वापस Inbox में भेजता है।"
     booking_release_time: "खुलने का समय"
     booking_release_time_hint: "भविष्य की बुकिंग सीमा के अंत में अगला दिन हर दिन इस समय पर खुलता है।"
+    inbox_filter_archive: "संग्रह"
+    load_more_messages: "और संदेश लोड करें"

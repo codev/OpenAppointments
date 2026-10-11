@@ -126,7 +126,6 @@ Rails.application.routes.draw do
   post "messages_notifications/save" => "messages_notifications#save"
   post "messages_notifications/destroy" => "messages_notifications#destroy"
   get "messages_logs" => "messages_logs#index"
-  get "unknown_inbox" => "unknown_inbox#index"
   post "customer_messages/find" => "customer_messages#find"
   post "customer_messages/send" => "customer_messages#send_message"
   post "customer_messages/mark_read" => "customer_messages#mark_read"

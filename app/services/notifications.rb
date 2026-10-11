@@ -40,7 +40,7 @@ module Notifications
   # A waiting list notice: the signup is the recipient, linked to their
   # customer record when the email matches one.
   def waitlist_notice(trigger, entry, context)
-    customer_id = User.customers.find_by("LOWER(email) = ?", entry.email.to_s.downcase)&.id
+    customer_id = User.customers_by_contact(email: entry.email).first&.id
     Notification.for_trigger(trigger).find_each do |notification|
       enabled_channels(notification).each do |channel_key|
         deliver("#{notification.title} to waitlist", nil) do
@@ -71,7 +71,7 @@ module Notifications
   end
 
   def stylist_for(customer, now = Time.current)
-    upcoming, latest = Appointment.next_and_last(Appointment.appointments.active.where(id_users_customer: customer.id), now)
+    upcoming, latest = Appointment.next_and_latest(Appointment.appointments.active.where(id_users_customer: customer.id), now)
     (upcoming || latest)&.provider
   end
 

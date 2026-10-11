@@ -678,7 +678,6 @@ hr:
     notify_users_on_delete_question: Želite li obavijestiti klijenta o otkazivanju termina?
     messages: Messages
     messages_hint: Manage notifications, providers and message logs
-    unknown_inbox: Unknown Inbox
     messages_providers: Providers
     messages_provider: Provider
     messages_logs: Logs
@@ -890,7 +889,6 @@ hr:
     appointment_statuses: 'Appointment Statuses'
     inbox: 'Inbox'
     inbox_hint: 'Incoming messages from your customers.'
-    unread: 'Unread'
     read: 'Read'
     message: 'Message'
     mark_as_read: 'Mark as read'
@@ -972,7 +970,6 @@ hr:
     notification_has_unknown_tokens: "Nepoznati parametar"
     token_copied: "Kopirano {token}"
     inbox_done: "Riješeno"
-    inbox_show_done: "Prikaži riješeno"
     inbox_done_by: "Riješio/la {name} {time}"
     message_delete_confirm: "Trajno izbrisati ovu poruku? Ova se radnja ne može poništiti."
     message_deleted: "Poruka izbrisana"
@@ -980,7 +977,8 @@ hr:
     message_move_to: "Premjesti na {name}"
     message_moved: "Poruka premještena"
     notification_tokens_hint: "Polja predloška koja možete koristiti. Kliknite jedno za umetanje na mjesto gdje ste pisali, ili za kopiranje:"
-    inbox_info: "Pristigle poruke od klijenata. Označite svaku kao Riješeno nakon obrade; ostaje u povijesti klijenta. Prikaži riješeno ih ponovno prikazuje uz mogućnost Poništi."
-    unknown_inbox_info: "Pristigle poruke od pošiljatelja koji ne odgovaraju nijednom klijentu. Označite svaku kao Riješeno nakon obrade. Ove se poruke također prikazuju u glavnom zapisniku."
+    inbox_info: "Pristigle poruke. Inbox prikazuje poruke koje treba obraditi, označite svaku kao Riješeno nakon obrade ili čitanja - i dalje ih možete čitati na stranici klijenta ili u arhivi. Arhiva prikazuje poruke označene kao Riješeno - ima gumb Poništi koji ih vraća u Inbox."
     booking_release_time: "Vrijeme otvaranja"
     booking_release_time_hint: "Sljedeći dan na kraju ograničenja budućih rezervacija otvara se u ovo vrijeme svaki dan."
+    inbox_filter_archive: "Arhiva"
+    load_more_messages: "Učitaj još poruka"

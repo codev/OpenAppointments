@@ -82,6 +82,12 @@ class ApplicationSystemTestCase < ActionDispatch::SystemTestCase
   end
 
   # Confirms the EA message modal (jQuery pages and Turbo confirms alike).
+  # Pick a provider in the customer conversation composer.
+  def choose_channel(label)
+    find("#message-channel-button").click
+    find("#customer-message-composer .channel-option", text: label).click
+  end
+
   def confirm_modal(title, button)
     assert_selector "#message-modal .modal-title", text: title, wait: 5
     within("#message-modal") { click_on button }

@@ -678,7 +678,6 @@ nl:
     notify_users_on_delete_question: Wilt u de klant op de hoogte stellen van de annulering van de afspraak?
     messages: Messages
     messages_hint: Manage notifications, providers and message logs
-    unknown_inbox: Unknown Inbox
     messages_providers: Providers
     messages_provider: Provider
     messages_logs: Logs
@@ -890,7 +889,6 @@ nl:
     appointment_statuses: 'Appointment Statuses'
     inbox: 'Inbox'
     inbox_hint: 'Incoming messages from your customers.'
-    unread: 'Unread'
     read: 'Read'
     message: 'Message'
     mark_as_read: 'Mark as read'
@@ -972,7 +970,6 @@ nl:
     notification_has_unknown_tokens: "Onbekend veld"
     token_copied: "{token} gekopieerd"
     inbox_done: "Afgehandeld"
-    inbox_show_done: "Toon afgehandeld"
     inbox_done_by: "Afgehandeld door {name} {time}"
     message_delete_confirm: "Dit bericht definitief verwijderen? Dit kan niet ongedaan worden gemaakt."
     message_deleted: "Bericht verwijderd"
@@ -980,7 +977,8 @@ nl:
     message_move_to: "Verplaats naar {name}"
     message_moved: "Bericht verplaatst"
     notification_tokens_hint: "Sjabloonvelden die u kunt gebruiken. Klik op een veld om het in te voegen waar u typte, of om het te kopiëren:"
-    inbox_info: "Inkomende berichten van klanten. Markeer elk bericht als Afgehandeld zodra het is behandeld; het blijft in de klantgeschiedenis staan. Toon afgehandeld toont ze weer met Ongedaan maken."
-    unknown_inbox_info: "Inkomende berichten van afzenders die niet overeenkomen met een klant. Markeer elk bericht als Afgehandeld zodra het is behandeld. Deze berichten verschijnen ook in het hoofdlogboek."
+    inbox_info: "Inkomende berichten. Inbox toont berichten waar nog iets mee moet gebeuren - markeer elk bericht als Afgehandeld zodra het is behandeld of gelezen; ze zijn nog steeds te lezen op de klantpagina of in het Archief. Archief toont berichten die als Afgehandeld zijn gemarkeerd - de knop Ongedaan maken zet ze terug in de Inbox."
     booking_release_time: "Openingstijd"
     booking_release_time_hint: "De volgende dag aan het einde van de toekomstige boekingslimiet gaat elke dag op dit tijdstip open."
+    inbox_filter_archive: "Archief"
+    load_more_messages: "Meer berichten laden"

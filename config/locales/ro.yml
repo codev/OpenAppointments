@@ -678,7 +678,6 @@ ro:
     notify_users_on_delete_question: Doriți să notificați clientul despre anularea programării?
     messages: Messages
     messages_hint: Manage notifications, providers and message logs
-    unknown_inbox: Unknown Inbox
     messages_providers: Providers
     messages_provider: Provider
     messages_logs: Logs
@@ -890,7 +889,6 @@ ro:
     appointment_statuses: 'Appointment Statuses'
     inbox: 'Inbox'
     inbox_hint: 'Incoming messages from your customers.'
-    unread: 'Unread'
     read: 'Read'
     message: 'Message'
     mark_as_read: 'Mark as read'
@@ -972,7 +970,6 @@ ro:
     notification_has_unknown_tokens: "Câmp necunoscut"
     token_copied: "{token} copiat"
     inbox_done: "Finalizat"
-    inbox_show_done: "Arată finalizate"
     inbox_done_by: "Finalizat de {name} {time}"
     message_delete_confirm: "Ștergeți definitiv acest mesaj? Această acțiune nu poate fi anulată."
     message_deleted: "Mesaj șters"
@@ -980,7 +977,8 @@ ro:
     message_move_to: "Mută la {name}"
     message_moved: "Mesaj mutat"
     notification_tokens_hint: "Câmpuri de șablon pe care le puteți folosi. Faceți clic pe unul pentru a-l insera unde scriați, sau pentru a-l copia:"
-    inbox_info: "Mesaje primite de la clienți. Marcați fiecare ca Finalizat după ce a fost rezolvat; rămâne în istoricul clientului. Arată finalizate le listează din nou cu Anulează."
-    unknown_inbox_info: "Mesaje primite de la expeditori care nu corespund niciunui client. Marcați fiecare ca Finalizat după ce a fost rezolvat. Aceste mesaje apar și în jurnalul principal."
+    inbox_info: "Mesaje primite. Inbox listează mesajele de rezolvat - marcați fiecare ca Finalizat după ce a fost rezolvat sau citit; le puteți citi în continuare pe pagina clientului sau în Arhivă. Arhivă listează mesajele marcate ca Finalizat - are un buton Anulează care le readuce în Inbox."
     booking_release_time: "Ora de deschidere"
     booking_release_time_hint: "Ziua următoare de la sfârșitul limitei rezervărilor viitoare se deschide la această oră în fiecare zi."
+    inbox_filter_archive: "Arhivă"
+    load_more_messages: "Încarcă mai multe mesaje"

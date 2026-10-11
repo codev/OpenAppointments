@@ -47,7 +47,7 @@ class UserTest < ActiveSupport::TestCase
     customer = users(:jx)
     [ "07700 900.123", "(07700) 900123", "07700900123\n" ].each do |typed|
       customer.update!(phone_number: typed)
-      assert_equal [ customer ], User.customers_by_phone("+447700900123"), typed.inspect
+      assert_equal [ customer ], User.customers_by_contact(phone: "+447700900123"), typed.inspect
     end
   end
 end

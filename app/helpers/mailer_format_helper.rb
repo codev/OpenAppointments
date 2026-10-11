@@ -23,6 +23,10 @@ module MailerFormatHelper
     DateDisplay.format_time(time)
   end
 
+  def brief_datetime(time)
+    DateDisplay.format_time_brief(time)
+  end
+
   # EA format_timezone: identifier -> display label (Timezones::get_timezone_name).
   def format_timezone(value)
     return if value.blank?

@@ -678,7 +678,6 @@ sk:
     notify_users_on_delete_question: Chcete zákazníka informovať o zrušení termínu?
     messages: Messages
     messages_hint: Manage notifications, providers and message logs
-    unknown_inbox: Unknown Inbox
     messages_providers: Providers
     messages_provider: Provider
     messages_logs: Logs
@@ -890,7 +889,6 @@ sk:
     appointment_statuses: 'Appointment Statuses'
     inbox: 'Inbox'
     inbox_hint: 'Incoming messages from your customers.'
-    unread: 'Unread'
     read: 'Read'
     message: 'Message'
     mark_as_read: 'Mark as read'
@@ -972,7 +970,6 @@ sk:
     notification_has_unknown_tokens: "Neznámy zástupný znak"
     token_copied: "Skopírované {token}"
     inbox_done: "Vybavené"
-    inbox_show_done: "Zobraziť vybavené"
     inbox_done_by: "Vybavené používateľom {name} {time}"
     message_delete_confirm: "Natrvalo zmazať túto správu? Túto akciu nie je možné vrátiť späť."
     message_deleted: "Správa zmazaná"
@@ -980,7 +977,8 @@ sk:
     message_move_to: "Presunúť k {name}"
     message_moved: "Správa presunutá"
     notification_tokens_hint: "Polia šablóny, ktoré môžete použiť. Kliknutím na jedno ho vložíte na miesto, kde ste písali, alebo ho skopírujete:"
-    inbox_info: "Prichádzajúce správy od zákazníkov. Označte každú ako Vybavené po vybavení; zostane v histórii zákazníka. Zobraziť vybavené ich znova zobrazí s možnosťou Odvolať akciu."
-    unknown_inbox_info: "Prichádzajúce správy od odosielateľov, ktorí nezodpovedajú žiadnemu zákazníkovi. Označte každú ako Vybavené po vybavení. Tieto správy sa zobrazujú aj v hlavnom denníku."
+    inbox_info: "Prichádzajúce správy. Inbox zobrazuje správy, ktoré treba vybaviť - označte každú ako Vybavené po vybavení alebo prečítaní; stále si ich môžete prečítať na stránke zákazníka alebo v Archíve. Archív zobrazuje správy označené ako Vybavené - má tlačidlo Odvolať akciu, ktoré ich vráti späť do Inbox."
     booking_release_time: "Čas otvorenia"
     booking_release_time_hint: "Nasledujúci deň na konci budúceho limitu rezervácie sa každý deň otvára o tomto čase."
+    inbox_filter_archive: "Archív"
+    load_more_messages: "Načítať ďalšie správy"

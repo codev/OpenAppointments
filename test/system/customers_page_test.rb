@@ -79,7 +79,7 @@ class CustomersPageTest < ApplicationSystemTestCase
     find(".customer-row[data-id='#{users(:jx).id}']").click
     assert_selector "#customers-page.editing", wait: 5
     assert_field "Name", with: "JX"
-    assert_selector "#customer-messages .message-row", text: "Running late", wait: 5
+    assert_selector "#customer-messages .bubble-row", text: "Running late", wait: 5
     click_on "Mark all as read"
     assert_no_selector "#customer-messages .message-unread", wait: 5
     assert message.reload.read?
@@ -101,9 +101,10 @@ class CustomersPageTest < ApplicationSystemTestCase
     assert_equal "Running late\nback at three\nsorry\nagain", box.value
     assert_operator box.evaluate_script("this.offsetHeight"), :>, before
 
-    select "Email", from: "message-channel"
+    choose_channel "Email"
+    assert_selector "#message-channel-button.channel-email", text: "Email"
     box.send_keys(:enter)
-    assert_selector "#customer-messages .message-row", text: "Running late", wait: 5
+    assert_selector "#customer-messages .bubble-row.out .bubble-email", text: "Running late", wait: 5
     assert Message.outgoing.last.body.start_with?("Running late\nback at three\nsorry\nagain\n"), "the line breaks should be kept"
     assert_equal "", box.value
     assert_equal before, box.evaluate_script("this.offsetHeight")
@@ -112,6 +113,69 @@ class CustomersPageTest < ApplicationSystemTestCase
     click_on "Calendar"
     assert_no_selector "#message-modal", wait: 2
     assert_selector "#calendar-page", wait: 5
+  end
+end
+
+# Each message is a bubble: incoming left, outgoing right, coloured by provider,
+# the time inside at the bottom right. The thread opens scrolled to the newest
+# message; Load more adds older ones above without moving what is on screen.
+class CustomerMessageBubblesTest < ApplicationSystemTestCase
+  def incoming(body, at, channel: "email")
+    Message.create!(direction: "incoming", channel: channel, from_address: users(:jx).email,
+                    customer_id: users(:jx).id, body: body, status: "received", created_at: at)
+  end
+
+  test "messages are bubbles by direction and provider, failed ones marked, the time inside" do
+    Appointment.where(id_users_customer: users(:jx).id).delete_all
+    incoming("Running late", Time.current.change(month: 3, day: 7, hour: 14, min: 2))
+    Message.create!(direction: "outgoing", channel: "twilio", to_address: users(:jx).phone_number,
+                    customer_id: users(:jx).id, body: "See you soon", status: "failed", subject: nil)
+    login_as_admin
+    visit customers_url(customer_id: users(:jx).id, section: "messages")
+    assert_selector "#customer-messages .bubble-row.in.message-unread .bubble.bubble-email", text: "Running late", wait: 5
+    assert_selector "#customer-messages .bubble-row.in .bubble-email .bubble-meta", text: "07/03 2:02 pm"
+    assert_selector "#customer-messages .bubble-row.in .bubble-email .bubble-meta .mark-read", text: "Mark as read"
+    assert_selector "#customer-messages .bubble-row.out.failed .bubble.bubble-twilio[title='Twilio']", text: "See you soon"
+    assert_selector "#customer-messages .bubble-row.out .bubble-twilio .bubble-meta", text: "Failed - Twilio"
+    assert_no_selector "#customer-messages .badge"
+    assert_no_selector "#customer-messages .fa-arrow-up, #customer-messages .fa-arrow-down"
+    assert_no_selector "#load-more-messages"
+  end
+
+  test "a long message is capped at three quarters of the thread width" do
+    Appointment.where(id_users_customer: users(:jx).id).delete_all
+    incoming("Running late " * 40, 1.hour.ago)
+    login_as_admin
+    visit customers_url(customer_id: users(:jx).id, section: "messages")
+    row = find("#customer-messages .bubble-row.in", wait: 5)
+    content_width = "(s => this.parentElement.clientWidth - parseFloat(s.paddingLeft) - parseFloat(s.paddingRight))" \
+                    "(getComputedStyle(this.parentElement))"
+    ratio = row.evaluate_script("this.offsetWidth / #{content_width}")
+    assert_in_delta 0.75, ratio, 0.02
+  end
+
+  test "the thread opens at the newest message and Load more adds older ones above without scrolling" do
+    Appointment.where(id_users_customer: users(:jx).id).delete_all
+    30.times { |i| incoming("Message #{i}", (40 - i).days.ago) }
+    login_as_admin
+    visit customers_url(customer_id: users(:jx).id, section: "messages")
+    assert_selector "#customer-messages .bubble-row", count: 20, wait: 5
+    assert_selector "#customer-messages .bubble-row", text: "Message 10"
+    assert_no_selector "#customer-messages .bubble-row", text: "Message 9"
+    panel = find("#customer-messages")
+    assert panel.evaluate_script("Math.abs(this.scrollTop + this.clientHeight - this.scrollHeight) < 2"),
+           "the thread should open scrolled to the bottom"
+
+    # Scroll up to the button as a reader would, then measure against the
+    # panel: the page itself may still be smooth scrolling to it.
+    panel.evaluate_script("this.scrollTop = 0")
+    oldest = find("#customer-messages .bubble-row", text: "Message 10")
+    offset = "this.getBoundingClientRect().top - this.parentElement.getBoundingClientRect().top"
+    top_before = oldest.evaluate_script(offset)
+    click_on "Load more messages"
+    assert_selector "#customer-messages .bubble-row", count: 30, wait: 5
+    assert_in_delta top_before, oldest.evaluate_script(offset), 1
+    assert_no_selector "#load-more-messages"
   end
 end
 
@@ -124,12 +188,12 @@ class CustomerMessageDeleteTest < ApplicationSystemTestCase
                            customer_id: users(:jx).id, body: "Delete me", status: "received")
     login_as_admin
     visit customers_url(customer_id: users(:jx).id, section: "messages")
-    assert_selector "#customer-messages .message-row", text: "Delete me", wait: 5
+    assert_selector "#customer-messages .bubble-row", text: "Delete me", wait: 5
 
-    find("#customer-messages .message-row", text: "Delete me").find(".delete-message").click
+    find("#customer-messages .bubble-row", text: "Delete me").find(".delete-message").click
     confirm_modal "Delete", "Delete"
-    assert_no_selector "#customer-messages .message-row", text: "Delete me", wait: 5
-    assert_selector "#customer-messages .message-row", text: "Keep me"
+    assert_no_selector "#customer-messages .bubble-row", text: "Delete me", wait: 5
+    assert_selector "#customer-messages .bubble-row", text: "Keep me"
     assert_text "Message deleted"
     assert_not Message.exists?(gone.id)
   end
@@ -144,7 +208,7 @@ class CustomersDeepLinkTest < ApplicationSystemTestCase
     visit customers_url(customer_id: users(:jx).id, section: "messages")
     assert_selector "#customers-page.editing", wait: 5
     assert_field "Name", with: "JX"
-    assert_selector "#customer-messages .message-row.message-unread", text: "Running late", wait: 5
+    assert_selector "#customer-messages .bubble-row.message-unread", text: "Running late", wait: 5
     assert_selector "#mark-all-read", visible: true
   end
 end

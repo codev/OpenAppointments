@@ -33,7 +33,7 @@ class Appointment < ApplicationRecord
   # start time. Stored starts are the stylist's wall clock, so rows within a
   # day of now are decided by BookingWindows.starts_at; beyond that the stored
   # order is enough.
-  def self.next_and_last(scope, now = Time.current)
+  def self.next_and_latest(scope, now = Time.current)
     rows = scope.includes(:provider)
     near = rows.where(start_datetime: (now - 1.day)..(now + 1.day)).to_a
     started, upcoming = near.partition { |appointment| BookingWindows.starts_at(appointment) < now }

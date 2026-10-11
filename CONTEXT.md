@@ -33,6 +33,8 @@ Something a customer can book, with a duration and a slot interval.
 **Non-service**:
 A service hidden from the public booking pages that staff book to reserve stylist time,
 such as Meeting or Admin tasks.
+In the app: the service's Hide from public setting; the appointment form groups these
+under Hidden From Public.
 _Avoid_: Unavailability (blocked time with no service)
 
 **Booking window**:
@@ -51,16 +53,28 @@ _Avoid_: Buffer
 ## Messages
 
 **Inbox**:
-Admin-only list of individual inbound customer messages waiting to be dealt with.
+Admin-only list of individual inbound messages waiting to be dealt with, from customers and
+unknown senders alike. Read state plays no part here: every message looks the same until
+it is marked Done, and the header count is the messages not yet Done.
+_Avoid_: Unknown Inbox (merged into the Inbox), To Do, Unread
 
-**Unknown Inbox**:
-Admin-only list of inbound messages from senders that match no customer, with the same Done
-as the Inbox.
+**Unknown sender**:
+An inbound message whose email or phone matches no customer. It sits in the Inbox labelled
+Unknown sender, outlined in a darker shade of its colour, and, having no customer history,
+can be deleted there.
 
 **Done**:
-An Inbox message an admin has dealt with. It leaves the Inbox, can be undone, and stays in
-the customer history.
+An Inbox message an admin has dealt with or read. It leaves the Inbox, can be undone, and
+stays in the customer history (when the sender is a customer).
 _Avoid_: Archived, deleted
+
+**Archive**:
+The Inbox filter listing Done messages, each with Undo to return them to the Inbox. The
+default filter, Inbox, lists the rest.
+
+**Read**:
+Whether a customer's message has been looked at, shown on the customer page only (bold until
+Mark as read); the Inbox does not use it.
 
 **Extra questions**:
 The configurable questions a customer answers when booking, such as Pronouns and Access

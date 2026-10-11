@@ -678,7 +678,6 @@ et:
     notify_users_on_delete_question: Kas soovite klienti kohtumise tühistamisest teavitada?
     messages: Messages
     messages_hint: Manage notifications, providers and message logs
-    unknown_inbox: Unknown Inbox
     messages_providers: Providers
     messages_provider: Provider
     messages_logs: Logs
@@ -890,7 +889,6 @@ et:
     appointment_statuses: 'Appointment Statuses'
     inbox: 'Inbox'
     inbox_hint: 'Incoming messages from your customers.'
-    unread: 'Unread'
     read: 'Read'
     message: 'Message'
     mark_as_read: 'Mark as read'
@@ -972,7 +970,6 @@ et:
     notification_has_unknown_tokens: "Tundmatu kohatäitja"
     token_copied: "Kopeeritud {token}"
     inbox_done: "Tehtud"
-    inbox_show_done: "Näita tehtud"
     inbox_done_by: "Tegi {name} {time}"
     message_delete_confirm: "Kustutada see sõnum jäädavalt? Seda ei saa tagasi võtta."
     message_deleted: "Sõnum kustutatud"
@@ -980,7 +977,8 @@ et:
     message_move_to: "Teisalda {name} juurde"
     message_moved: "Sõnum teisaldatud"
     notification_tokens_hint: "Mallis kasutatavad väljad. Klõpsa ühel, et sisestada see kirjutamiskohta, või kopeerida see:"
-    inbox_info: "Sissetulevad sõnumid klientidelt. Märgi iga sõnum pärast käsitlemist Tehtud; see jääb kliendi ajalukku. Näita tehtud kuvab need uuesti koos nupuga Võta tagasi."
-    unknown_inbox_info: "Sissetulevad sõnumid saatjatelt, kes ei vasta ühelegi kliendile. Märgi iga sõnum pärast käsitlemist Tehtud. Need sõnumid kuvatakse ka põhilogis."
+    inbox_info: "Sissetulevad sõnumid. Inbox näitab sõnumeid, mis vajavad tegelemist, märgi iga sõnum pärast käsitlemist või lugemist Tehtud - neid saab edasi lugeda kliendi lehel või arhiivis. Arhiiv näitab sõnumeid, mis on märgitud Tehtud - seal on nupp Võta tagasi, mis viib need Inboxi tagasi."
     booking_release_time: "Avanemise aeg"
     booking_release_time_hint: "Järgmine päev tulevikus broneerimise limiidi lõpus avaneb sel kellaajal iga päev."
+    inbox_filter_archive: "Arhiiv"
+    load_more_messages: "Laadi veel sõnumeid"

@@ -1,6 +1,6 @@
-# One message: mark read (inbox pages and the customer conversation), Done /
-# Undo and Move on the admin inbox pages, and permanent delete for admins
-# (customer conversation, Unknown Inbox).
+# One message: mark read (Inbox and the customer conversation), Done / Undo
+# and Move on the admin Inbox, and permanent delete for admins (customer
+# conversation, unknown senders in the Inbox).
 class MessagesController < ApplicationController
   include BackendPage
 
@@ -12,7 +12,7 @@ class MessagesController < ApplicationController
     return head :forbidden unless message_access?(message)
 
     message.mark_read!
-    render json: { success: true, inbox_unread: inbox_badge_count }
+    render json: { success: true, inbox_count: inbox_badge_count }
   end
 
   # POST /messages/:id/done. The row leaves the list it was on.
@@ -20,7 +20,7 @@ class MessagesController < ApplicationController
     change_done { |message| message.mark_done!(current_user) }
   end
 
-  # POST /messages/:id/undo_done, from the Show done list.
+  # POST /messages/:id/undo_done, from the Archive list.
   def undo_done
     change_done(&:undo_done!)
   end
@@ -41,19 +41,14 @@ class MessagesController < ApplicationController
 
   # DELETE /messages/:id. No soft delete: mistakes and erasure requests.
   def destroy
-    return head :forbidden unless current_user&.admin?
+    return head :forbidden unless inbox_access?
 
     message = Message.find(params[:id])
     message.destroy!
     respond_to do |format|
-      format.turbo_stream do
-        render turbo_stream: [
-          turbo_stream.remove("inbox-message-#{message.id}"),
-          turbo_stream.replace("inbox-unread", partial: "shared/inbox_unread", locals: { count: inbox_badge_count })
-        ]
-      end
-      format.json { render json: { success: true, inbox_unread: inbox_badge_count } }
-      format.html { redirect_back fallback_location: "/unknown_inbox" }
+      format.turbo_stream { render_row_removed(message) }
+      format.json { render json: { success: true, inbox_count: inbox_badge_count } }
+      format.html { redirect_back fallback_location: "/inbox" }
     end
   end
 
@@ -65,14 +60,17 @@ class MessagesController < ApplicationController
     message = Message.incoming.find(params[:id])
     yield message
     respond_to do |format|
-      format.turbo_stream do
-        render turbo_stream: [
-          turbo_stream.remove("inbox-message-#{message.id}"),
-          turbo_stream.replace("inbox-unread", partial: "shared/inbox_unread", locals: { count: inbox_badge_count })
-        ]
-      end
+      format.turbo_stream { render_row_removed(message) }
       format.html { redirect_back fallback_location: "/inbox" }
     end
+  end
+
+  # The row leaves its list and the header icon and count follow.
+  def render_row_removed(message)
+    render turbo_stream: [
+      turbo_stream.remove("inbox-message-#{message.id}"),
+      turbo_stream.replace("inbox-badge", partial: "shared/inbox_count", locals: { count: inbox_badge_count })
+    ]
   end
 
   def message_access?(message)

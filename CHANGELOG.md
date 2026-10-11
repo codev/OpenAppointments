@@ -3,6 +3,12 @@
 The about page lists these notes; every release needs a section here matching
 CloudronManifest.json.
 
+## 2.5.0
+
+- Messages: fresher look with messages as chat bubbles with colour based on the provider
+- Inbox: Completely reorganised - each message can be marked done and moved into the archive when it has been seen or actioned, the Inbox also includes messages that aren't matched to any customers
+- Customer: messages open with the latest message visible and only show messages since the last appointment with a button to load older ones
+
 ## 2.4.0
 
 - Notifications: click a token to insert it

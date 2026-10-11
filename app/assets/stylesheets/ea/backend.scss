@@ -9,6 +9,8 @@
  * @since       v1.5.0
  * ---------------------------------------------------------------------------- */
 
+@use "sass:color";
+
 /* Navigation hover and active states */
 #header #header-menu .nav-item:hover {
     background: rgba(0, 0, 0, 0.1);
@@ -713,12 +715,21 @@ body .modal.full-screen .modal-push {
         line-height: 1.2;
     }
 
+    // The icon slot is padded to the unread pill's height (0.75em text plus
+    // 0.35em of that on each side = 1.275em), so the labels under every
+    // menu item line up whether the Inbox shows its icon or the pill.
     #header .navbar-nav .nav-link i,
     #header .navbar-nav .nav-link svg {
+        box-sizing: content-box;
         width: 1.25em;
         height: 1em;
+        padding: 0.1375em 0;
         margin: 0 0 0.25rem !important;
         text-align: center;
+    }
+
+    #header .navbar-nav .nav-link #inbox-count {
+        margin: 0 0 0.25rem !important;
     }
 
     #header .navbar-nav .nav-link.dropdown-toggle::after {
@@ -731,15 +742,28 @@ body .modal.full-screen .modal-push {
     z-index: 1030;
 }
 
-/* Inbox: unread blocks carry an accent bar on the left; message text keeps its line breaks. */
-.inbox-message.message-unread {
-    border-left: 4px solid var(--bs-primary);
-    padding-left: 0.75rem;
+/* Inbox: every message looks the same, read or not. The bubbles have no tail
+   here: the page background is a gradient the tail's cut-out cannot match. */
+// A clearer line between messages than the default border on a tinted page.
+.inbox-message {
+    border-bottom-color: rgba(var(--bs-emphasis-color-rgb), 0.35) !important;
 }
 
-.inbox-message .inbox-body {
-    white-space: pre-line;
-    overflow-wrap: anywhere;
+// Archive: Done by and Undo on their own line under the bubble.
+.inbox-done {
+    flex-basis: 100%;
+}
+
+.inbox-message .bubble::before,
+.inbox-message .bubble::after,
+.bubble-key .bubble::before,
+.bubble-key .bubble::after {
+    display: none;
+}
+
+.bubble-key .bubble {
+    padding: 0.2rem 0.7rem;
+    font-size: 0.85rem;
 }
 
 #customer-messages {
@@ -747,17 +771,210 @@ body .modal.full-screen .modal-push {
     max-height: 400px;
 }
 
-#customer-messages .message-row small:last-child {
-    white-space: pre-line;
-}
-
-#customer-message-composer #message-channel {
-    max-width: 130px;
-}
-
 #customer-message-composer #message-body {
     resize: none;
     overflow: hidden;
+}
+
+/* Message bubbles, as in a messaging app: incoming on the left, outgoing on
+   the right, a subtle colour per provider (the outgoing tint is the deeper
+   one). The same tints colour the provider picker in the composer. */
+$channel-colours: (
+    "email": (#dbe8fb, #c3d9f8),
+    "smsgateway": (#dcf3e3, #bfe8cc),
+    "twilio": (#fbe3e1, #f7c9c5),
+    "plivo": (#ece3fa, #d9c8f3),
+    "textanywhere": (#fdefd9, #f8ddb3),
+);
+
+// -in is the incoming tint, the bare name the outgoing one, -edge a darker
+// shade of the incoming tint for outlining unknown senders.
+:root {
+    @each $key, $tints in $channel-colours {
+        --channel-#{$key}-in: #{nth($tints, 1)};
+        --channel-#{$key}: #{nth($tints, 2)};
+        --channel-#{$key}-edge: #{color.scale(nth($tints, 1), $lightness: -35%)};
+    }
+}
+
+$bubble-radius: 1.1rem;
+
+.message-thread {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+
+    // Room under the last bubble so its tail and some space show when the
+    // thread is scrolled to the bottom.
+    &::after {
+        content: "";
+        flex: 0 0 0.75rem;
+    }
+    // The tail's cut-out must match whatever the thread sits on: the themes
+    // paint cards with their surface colour, not the Bootstrap card variable.
+    --bubble-page: var(--oa-surface, var(--bs-card-bg));
+}
+
+.bubble-row {
+    display: flex;
+    flex-direction: column;
+    max-width: 75%;
+    flex-shrink: 0;
+
+    &.in {
+        align-self: flex-start;
+        align-items: flex-start;
+    }
+
+    &.out {
+        align-self: flex-end;
+        align-items: flex-end;
+    }
+}
+
+// On the Inbox pages the bubble takes the line up to Done; the bubble inside
+// still shrinks to its text. Below 16rem of room Done wraps under it.
+.inbox-row .bubble-row {
+    flex: 1 1 16rem;
+    max-width: none;
+    min-width: 0;
+}
+
+.bubble {
+    --bubble-bg: #e9e9eb;
+    position: relative;
+    padding: 0.45rem 0.85rem 0.3rem;
+    border-radius: $bubble-radius;
+    background: var(--bubble-bg);
+    color: var(--bs-body-color);
+    line-height: 1.35;
+    overflow-wrap: anywhere;
+
+    // The tail: a bubble-coloured blob, then a page-coloured cut-out over it.
+    &::before,
+    &::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        height: 1.25rem;
+    }
+
+    &::before {
+        z-index: 0;
+        width: 1.25rem;
+        background: var(--bubble-bg);
+    }
+
+    &::after {
+        z-index: 1;
+        width: 0.65rem;
+        background: var(--bubble-page);
+    }
+}
+
+.bubble-row.in .bubble {
+    &::before {
+        left: -0.45rem;
+        border-bottom-right-radius: 1rem;
+    }
+
+    &::after {
+        left: -0.65rem;
+        border-bottom-right-radius: 0.6rem;
+    }
+}
+
+.bubble-row.out .bubble {
+    &::before {
+        right: -0.45rem;
+        border-bottom-left-radius: 1rem;
+    }
+
+    &::after {
+        right: -0.65rem;
+        border-bottom-left-radius: 0.6rem;
+    }
+}
+
+@each $key, $tints in $channel-colours {
+    .bubble-#{$key} {
+        --bubble-bg: var(--channel-#{$key}-in);
+        --bubble-edge: var(--channel-#{$key}-edge);
+    }
+
+    .bubble-row.out .bubble-#{$key} {
+        --bubble-bg: var(--channel-#{$key});
+    }
+
+    .channel-#{$key} {
+        background: var(--channel-#{$key});
+    }
+}
+
+.channel-all {
+    background: var(--channel-all);
+}
+
+// An unknown sender's message is outlined in a darker shade of its colour.
+.bubble-row.unknown .bubble {
+    box-shadow: 0 0 0 2px var(--bubble-edge);
+}
+
+// A failed message loses its colour and tail: white, outlined in red.
+.bubble-row.failed .bubble {
+    --bubble-bg: var(--bubble-page);
+    box-shadow: 0 0 0 2px var(--bs-danger);
+
+    &::before,
+    &::after {
+        display: none;
+    }
+}
+
+.bubble-row.message-unread .bubble-body {
+    font-weight: 600;
+}
+
+.bubble-subject {
+    font-style: italic;
+    margin-bottom: 0.15rem;
+}
+
+.bubble-body {
+    white-space: pre-line;
+}
+
+// The bubble's bottom line: who it is from on the left (Inbox pages), the
+// time and actions on the right.
+.bubble-meta {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.25rem 1.5rem;
+    margin-top: 0.15rem;
+    font-size: 0.75rem;
+    color: var(--bs-secondary-color);
+}
+
+.bubble-when {
+    margin-left: auto;
+    text-align: right;
+    white-space: nowrap;
+
+    // The icon buttons keep the line's size: Font Awesome swaps the icon in
+    // after the thread has scrolled, so a taller button would move it.
+    .btn {
+        font-size: inherit;
+        line-height: inherit;
+        border: 0;
+        vertical-align: baseline;
+    }
+}
+
+#load-more-messages {
+    flex-shrink: 0;
 }
 
 #footer {

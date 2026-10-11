@@ -678,7 +678,6 @@ zh-tw:
     notify_users_on_delete_question: 您想通知客戶預約取消嗎？
     messages: Messages
     messages_hint: Manage notifications, providers and message logs
-    unknown_inbox: Unknown Inbox
     messages_providers: Providers
     messages_provider: Provider
     messages_logs: Logs
@@ -890,7 +889,6 @@ zh-tw:
     appointment_statuses: 'Appointment Statuses'
     inbox: 'Inbox'
     inbox_hint: 'Incoming messages from your customers.'
-    unread: 'Unread'
     read: 'Read'
     message: 'Message'
     mark_as_read: 'Mark as read'
@@ -972,7 +970,6 @@ zh-tw:
     notification_has_unknown_tokens: "未知的預留位置"
     token_copied: "已複製 {token}"
     inbox_done: "已完成"
-    inbox_show_done: "顯示已完成"
     inbox_done_by: "由 {name} 於 {time} 完成"
     message_delete_confirm: "要永久刪除此訊息嗎？此操作無法復原。"
     message_deleted: "訊息已刪除"
@@ -980,7 +977,8 @@ zh-tw:
     message_move_to: "移至 {name}"
     message_moved: "訊息已移動"
     notification_tokens_hint: "可使用的範本欄位。點擊即可插入到您輸入的位置，或用來複製："
-    inbox_info: "來自顧客的收件訊息。處理完畢後將每則標記為已完成；它會保留在顧客歷史紀錄中。顯示已完成會再次列出這些訊息，並提供復原選項。"
-    unknown_inbox_info: "來自不符合任何顧客的寄件者的收件訊息。處理完畢後將每則標記為已完成。這些訊息也會顯示在主日誌中。"
+    inbox_info: "收件訊息。Inbox 列出待處理的訊息 - 每則訊息處理或閱讀完畢後請標記為已完成；仍可在顧客頁面或封存中查看。封存列出已標記為已完成的訊息 - 其中有復原按鈕可將訊息退回 Inbox。"
     booking_release_time: "開放時間"
     booking_release_time_hint: "未來預約限制末端的隔天，每天會在此時間開放預約。"
+    inbox_filter_archive: "封存"
+    load_more_messages: "載入更多訊息"

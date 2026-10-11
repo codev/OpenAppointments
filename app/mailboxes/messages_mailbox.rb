@@ -1,6 +1,6 @@
 # Turns fetched inbound email into incoming Message rows. Sender is matched to
 # a customer by email (User.likely_sender when several share it); unmatched
-# mail lands in the Unknown Inbox (customer nil).
+# mail sits in the Inbox as an unknown sender (customer nil).
 # A matched message notifies the customer's stylist.
 # The body holds the reply text only, the source the full text as received.
 class MessagesMailbox < ApplicationMailbox

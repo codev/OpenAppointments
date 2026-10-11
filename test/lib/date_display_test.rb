@@ -26,6 +26,37 @@ class DateDisplayTest < ActiveSupport::TestCase
     assert_equal "2026/07/20", DateDisplay.format(MONDAY, style: "numeric")
   end
 
+  test "without the year, every style and order drops it with its separator" do
+    Setting.set("date_format", "DMY")
+    assert_equal "20/07", DateDisplay.format(MONDAY, style: "numeric", year: false)
+    assert_equal "20 Jul", DateDisplay.format(MONDAY, style: "month_short", year: false)
+    assert_equal "Monday 20 July", DateDisplay.format(MONDAY, style: "day_long", year: false)
+    Setting.set("date_format", "MDY")
+    assert_equal "07/20", DateDisplay.format(MONDAY, style: "numeric", year: false)
+    assert_equal "Jul 20", DateDisplay.format(MONDAY, style: "month_short", year: false)
+    assert_equal "Mon, Jul 20", DateDisplay.format(MONDAY, style: "day_short", year: false)
+    Setting.set("date_format", "YMD")
+    assert_equal "07/20", DateDisplay.format(MONDAY, style: "numeric", year: false)
+    assert_equal "Jul 20", DateDisplay.format(MONDAY, style: "month_short", year: false)
+    assert_equal "Jul 20, Mon", DateDisplay.format(MONDAY, style: "day_short", year: false)
+  end
+
+  test "format_time passes the year choice through" do
+    Setting.set("date_format", "DMY")
+    Setting.set("time_format", "military")
+    assert_equal "20/07 14:02", DateDisplay.format_time(Time.zone.local(2026, 7, 20, 14, 2), style: "numeric", year: false)
+    assert_equal "20/07/2026 14:02", DateDisplay.format_time(Time.zone.local(2026, 7, 20, 14, 2), style: "numeric")
+  end
+
+  test "format_time_brief keeps the year only when it is not this year" do
+    Setting.set("date_format", "DMY")
+    Setting.set("time_format", "military")
+    travel_to Time.zone.local(2026, 10, 11, 12, 0) do
+      assert_equal "20/07 14:02", DateDisplay.format_time_brief(Time.zone.local(2026, 7, 20, 14, 2))
+      assert_equal "20/07/2025 14:02", DateDisplay.format_time_brief(Time.zone.local(2025, 7, 20, 14, 2))
+    end
+  end
+
   test "the setting picks the style and an unknown style is numeric" do
     Setting.set("date_format", "DMY")
     Setting.set("date_display", "day_long")

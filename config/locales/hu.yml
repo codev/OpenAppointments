@@ -678,7 +678,6 @@ hu:
     notify_users_on_delete_question: Szeretné értesíteni az ügyfelet az időpont törléséről?
     messages: Messages
     messages_hint: Manage notifications, providers and message logs
-    unknown_inbox: Unknown Inbox
     messages_providers: Providers
     messages_provider: Provider
     messages_logs: Logs
@@ -890,7 +889,6 @@ hu:
     appointment_statuses: 'Appointment Statuses'
     inbox: 'Inbox'
     inbox_hint: 'Incoming messages from your customers.'
-    unread: 'Unread'
     read: 'Read'
     message: 'Message'
     mark_as_read: 'Mark as read'
@@ -972,7 +970,6 @@ hu:
     notification_has_unknown_tokens: "Ismeretlen helyőrző"
     token_copied: "{token} másolva"
     inbox_done: "Elintézve"
-    inbox_show_done: "Elintézettek megjelenítése"
     inbox_done_by: "Elintézte: {name}, {time}"
     message_delete_confirm: "Végleg törli ezt az üzenetet? Ez nem vonható vissza."
     message_deleted: "Üzenet törölve"
@@ -980,7 +977,8 @@ hu:
     message_move_to: "Áthelyezés ide: {name}"
     message_moved: "Üzenet áthelyezve"
     notification_tokens_hint: "Sablonmezők, amelyeket használhat. Kattintson egyre a beszúráshoz oda, ahol éppen írt, vagy a másoláshoz:"
-    inbox_info: "Ügyfelektől érkező üzenetek. Jelölje meg Elintézve-ként az elintézett üzeneteket; ezek megmaradnak az ügyfél előzményeiben. Az Elintézettek megjelenítése ismét listázza őket a Visszavonás lehetőséggel."
-    unknown_inbox_info: "Olyan feladóktól érkező üzenetek, amelyek egyetlen ügyfélhez sem illeszkednek. Jelölje meg Elintézve-ként az elintézett üzeneteket. Ezek az üzenetek a fő naplóban is megjelennek."
+    inbox_info: "Beérkező üzenetek. Az Inbox az elintézésre váró üzeneteket listázza, jelölje meg mindegyiket Elintézve-ként, miután elintézte vagy elolvasta - továbbra is elolvashatja őket a vásárló oldalán vagy az archívumban. Az Archívum az Elintézve-ként megjelölt üzeneteket listázza - a Visszavonás gombbal visszakerülnek az Inboxba."
     booking_release_time: "Megnyitás időpontja"
     booking_release_time_hint: "A jövőbeli foglalási korlát végén lévő következő nap minden nap ekkor nyílik meg."
+    inbox_filter_archive: "Archívum"
+    load_more_messages: "További üzenetek betöltése"

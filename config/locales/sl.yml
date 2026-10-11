@@ -678,7 +678,6 @@ sl:
     notify_users_on_delete_question: Ali želite stranko obvestiti o preklicu termina?
     messages: Messages
     messages_hint: Manage notifications, providers and message logs
-    unknown_inbox: Unknown Inbox
     messages_providers: Providers
     messages_provider: Provider
     messages_logs: Logs
@@ -890,7 +889,6 @@ sl:
     appointment_statuses: 'Appointment Statuses'
     inbox: 'Inbox'
     inbox_hint: 'Incoming messages from your customers.'
-    unread: 'Unread'
     read: 'Read'
     message: 'Message'
     mark_as_read: 'Mark as read'
@@ -972,7 +970,6 @@ sl:
     notification_has_unknown_tokens: "Neznan nadomestni znak"
     token_copied: "Kopirano {token}"
     inbox_done: "Opravljeno"
-    inbox_show_done: "Prikaži opravljeno"
     inbox_done_by: "Opravil/a {name} {time}"
     message_delete_confirm: "Trajno izbrišem to sporočilo? Tega dejanja ni mogoče razveljaviti."
     message_deleted: "Sporočilo izbrisano"
@@ -980,7 +977,8 @@ sl:
     message_move_to: "Premakni k {name}"
     message_moved: "Sporočilo premaknjeno"
     notification_tokens_hint: "Polja predloge, ki jih lahko uporabite. Kliknite eno, da ga vstavite na mesto, kjer ste pisali, ali da ga kopirate:"
-    inbox_info: "Prihajajoča sporočila strank. Vsako označite kot Opravljeno, ko je obravnavano; ostane v zgodovini stranke. Prikaži opravljeno jih znova prikaže z možnostjo Razveljavi."
-    unknown_inbox_info: "Prihajajoča sporočila pošiljateljev, ki ne ustrezajo nobeni stranki. Vsako označite kot Opravljeno, ko je obravnavano. Ta sporočila se prikažejo tudi v glavnem dnevniku."
+    inbox_info: "Prihajajoča sporočila. Inbox prikazuje sporočila, ki jih je treba obravnavati - vsako označite kot Opravljeno, ko je obravnavano ali prebrano; še vedno jih lahko preberete na strani stranke ali v Arhivu. Arhiv prikazuje sporočila, označena kot Opravljeno - ima gumb Razveljavi, ki jih vrne v Inbox."
     booking_release_time: "Čas odprtja"
     booking_release_time_hint: "Naslednji dan na koncu prihodnje omejitve rezervacij se vsak dan odpre ob tem času."
+    inbox_filter_archive: "Arhiv"
+    load_more_messages: "Naloži več sporočil"

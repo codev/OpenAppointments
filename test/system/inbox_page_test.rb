@@ -8,16 +8,16 @@ class InboxPageTest < ApplicationSystemTestCase
                               customer_id: users(:jx).id, body: "Running late", status: "received")
     login_as_admin
     visit "/inbox"
-    assert_selector "#inbox-unread", text: "1"
+    assert_selector "#inbox-count", text: "1"
     page.execute_script("window.__inboxMarker = 1")
 
     within("#inbox-message-#{message.id}") { click_on "Done" }
     assert_no_selector "#inbox-message-#{message.id}", wait: 5
-    assert_selector "#inbox-unread", visible: false
+    assert_selector "#inbox-count", visible: false
     assert_equal 1, page.evaluate_script("window.__inboxMarker")
     assert message.reload.done?
 
-    click_on "Show done"
+    click_on "Archive"
     within("#inbox-message-#{message.id}") do
       assert_text "Done by Edson Mori"
       click_on "Undo"
@@ -26,11 +26,41 @@ class InboxPageTest < ApplicationSystemTestCase
     assert_not message.reload.done?
   end
 
-  test "an unknown inbox message is deleted after the confirm" do
+  test "the inbox has no read state: a read message looks like any other, its subject italic, no Mark as read link" do
+    message = Message.create!(direction: "incoming", channel: "email", from_address: users(:jx).email, customer_id: users(:jx).id,
+                              subject: "Re: Confirmed", body: "Running late", status: "received", read_at: Time.current)
+    login_as_admin
+    visit "/inbox"
+    assert_selector "#inbox-message-#{message.id}"
+    assert_no_selector ".message-unread"
+    assert_no_link "Mark as read"
+    assert_selector "#inbox-count", text: "1"
+    subject = find("#inbox-message-#{message.id} .bubble-subject")
+    assert_equal [ "italic", "400" ], subject.evaluate_script("[getComputedStyle(this).fontStyle, getComputedStyle(this).fontWeight]")
+  end
+
+  test "a long message fills the line up to Done; a short one stays the width of its text" do
+    long = Message.create!(direction: "incoming", channel: "email", from_address: users(:jx).email,
+                           customer_id: users(:jx).id, body: "Running late " * 40, status: "received")
+    short = Message.create!(direction: "incoming", channel: "email", from_address: users(:jx).email,
+                            customer_id: users(:jx).id, body: "Hi", status: "received")
+    login_as_admin
+    visit "/inbox"
+    rect = "JSON.parse(JSON.stringify(this.getBoundingClientRect()))"
+    bubble = find("#inbox-message-#{long.id} .bubble").evaluate_script(rect)
+    done = find("#inbox-message-#{long.id} .inbox-actions .btn").evaluate_script(rect)
+    assert_operator done["top"], :<, bubble["bottom"], "Done stays on the bubble's line"
+    assert_operator done["left"] - bubble["right"], :<, 20, "the bubble reaches Done"
+
+    row = find("#inbox-message-#{short.id} .inbox-row").evaluate_script(rect)
+    assert_operator find("#inbox-message-#{short.id} .bubble").evaluate_script(rect)["width"], :<, row["width"] / 2
+  end
+
+  test "an unknown sender's message is deleted from the inbox after the confirm" do
     message = Message.create!(direction: "incoming", channel: "email", from_address: "who@example.org",
                               body: "Who is this?", status: "received")
     login_as_admin
-    visit "/unknown_inbox"
+    visit "/inbox"
     within("#inbox-message-#{message.id}") { find("button[title='Delete']").click }
     assert_selector "#message-modal", text: "Delete this message permanently?", wait: 5
     within("#message-modal") { click_on "Delete" }

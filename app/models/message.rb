@@ -21,7 +21,7 @@ class Message < ApplicationRecord
   scope :newest_first, -> { order(created_at: :desc, id: :desc) }
   scope :done, -> { where.not(done_at: nil) }
   scope :not_done, -> { where(done_at: nil) }
-  # The admin Inbox: incoming messages from known customers.
+  # Incoming messages matched to a customer: the ones Move applies to.
   scope :inbox, -> { incoming.where.not(customer_id: nil) }
 
   def read? = read_at.present?

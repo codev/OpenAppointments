@@ -3,18 +3,21 @@
  */
 App.Http.CustomerMessages = (function () {
     /**
-     * Fetch the messages of a customer.
+     * Fetch the latest window of a customer's messages, or the page older
+     * than the given message. Resolves with {messages, more}.
      *
      * @param {Number} customerId
+     * @param {Number} [beforeId]
      *
      * @return {Object}
      */
-    function find(customerId) {
+    function find(customerId, beforeId) {
         const url = App.Utils.Url.siteUrl('customer_messages/find');
 
         const data = {
             csrf_token: vars('csrf_token'),
             customer_id: customerId,
+            before_id: beforeId,
         };
 
         return $.post(url, data);

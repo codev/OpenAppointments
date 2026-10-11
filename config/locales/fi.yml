@@ -678,7 +678,6 @@ fi:
     notify_users_on_delete_question: Haluatko ilmoittaa asiakkaalle ajanvarauksen peruutuksesta?
     messages: Messages
     messages_hint: Manage notifications, providers and message logs
-    unknown_inbox: Unknown Inbox
     messages_providers: Providers
     messages_provider: Provider
     messages_logs: Logs
@@ -890,7 +889,6 @@ fi:
     appointment_statuses: 'Appointment Statuses'
     inbox: 'Inbox'
     inbox_hint: 'Incoming messages from your customers.'
-    unread: 'Unread'
     read: 'Read'
     message: 'Message'
     mark_as_read: 'Mark as read'
@@ -972,7 +970,6 @@ fi:
     notification_has_unknown_tokens: "Tuntematon paikanmerkki"
     token_copied: "Kopioitu {token}"
     inbox_done: "Valmis"
-    inbox_show_done: "Näytä valmiit"
     inbox_done_by: "Valmis, {name} {time}"
     message_delete_confirm: "Poistetaanko tämä viesti pysyvästi? Tätä ei voi kumota."
     message_deleted: "Viesti poistettu"
@@ -980,7 +977,8 @@ fi:
     message_move_to: "Siirrä kohteeseen {name}"
     message_moved: "Viesti siirretty"
     notification_tokens_hint: "Mallineen kentät, joita voit käyttää. Lisää se kirjoituskohtaan tai kopioi se napsauttamalla:"
-    inbox_info: "Asiakkailta saapuneet viestit. Merkitse kukin Valmiiksi käsittelyn jälkeen; se säilyy asiakkaan historiassa. Näytä valmiit listaa ne uudelleen Kumoa-toiminnolla."
-    unknown_inbox_info: "Saapuneet viestit lähettäjiltä, jotka eivät vastaa mitään asiakasta. Merkitse kukin Valmiiksi käsittelyn jälkeen. Nämä viestit näkyvät myös päälokissa."
+    inbox_info: "Saapuneet viestit. Inbox listaa viestit, jotka vaativat toimia, merkitse kukin Valmiiksi, kun se on käsitelty tai luettu - voit lukea ne edelleen asiakkaan sivulla tai arkistossa. Arkisto listaa Valmiiksi merkityt viestit - siinä on Kumoa-painike, joka palauttaa ne Inboxiin."
     booking_release_time: "Avautumisaika"
     booking_release_time_hint: "Seuraava päivä tulevien varausten rajan lopussa avautuu tähän aikaan joka päivä."
+    inbox_filter_archive: "Arkisto"
+    load_more_messages: "Lataa lisää viestejä"

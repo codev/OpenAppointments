@@ -678,7 +678,6 @@ fr:
     notify_users_on_delete_question: Souhaitez-vous informer le client de l'annulation du rendez-vous ?
     messages: Messages
     messages_hint: Manage notifications, providers and message logs
-    unknown_inbox: Unknown Inbox
     messages_providers: Providers
     messages_provider: Provider
     messages_logs: Logs
@@ -890,7 +889,6 @@ fr:
     appointment_statuses: 'Appointment Statuses'
     inbox: 'Inbox'
     inbox_hint: 'Incoming messages from your customers.'
-    unread: 'Unread'
     read: 'Read'
     message: 'Message'
     mark_as_read: 'Mark as read'
@@ -972,7 +970,6 @@ fr:
     notification_has_unknown_tokens: "Variable inconnue"
     token_copied: "{token} copié"
     inbox_done: "Traité"
-    inbox_show_done: "Afficher les traités"
     inbox_done_by: "Traité par {name} {time}"
     message_delete_confirm: "Supprimer définitivement ce message ? Cette action est irréversible."
     message_deleted: "Message supprimé"
@@ -980,7 +977,8 @@ fr:
     message_move_to: "Déplacer vers {name}"
     message_moved: "Message déplacé"
     notification_tokens_hint: "Champs de modèle que vous pouvez utiliser. Cliquez sur l'un d'eux pour l'insérer là où vous écriviez, ou pour le copier :"
-    inbox_info: "Messages entrants des clients. Marquez chacun comme Traité une fois pris en charge ; il reste dans l'historique du client. Afficher les traités les liste à nouveau avec Annuler."
-    unknown_inbox_info: "Messages entrants d'expéditeurs qui ne correspondent à aucun client. Marquez chacun comme Traité une fois pris en charge. Ces messages apparaissent aussi dans le journal principal."
+    inbox_info: "Messages entrants. Inbox liste les messages à traiter, marquez chacun comme Traité une fois pris en charge ou lu - vous pourrez toujours les lire sur la page du client ou dans les archives. Archives liste les messages marqués comme Traité - un bouton Annuler permet de les renvoyer dans Inbox."
     booking_release_time: "Heure d'ouverture"
     booking_release_time_hint: "Le jour suivant, à la fin de la limite des réservations futures, s'ouvre à cette heure chaque jour."
+    inbox_filter_archive: "Archives"
+    load_more_messages: "Charger plus de messages"

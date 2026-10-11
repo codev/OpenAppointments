@@ -680,8 +680,6 @@ en:
     notify_users_on_delete_question: Would you like to send out a notification about this change?
     messages: Messages
     messages_hint: Manage notifications, providers and message logs
-    unknown_inbox: Unknown Inbox
-    unknown_inbox_info: 'Incoming messages from senders that do not match any customer. Mark each one Done once dealt with. These messages also appear in the main log.'
     messages_providers: Providers
     messages_provider: Provider
     messages_logs: Logs
@@ -898,10 +896,9 @@ en:
     appointment_statuses: 'Appointment Statuses'
     inbox: 'Inbox'
     inbox_hint: 'Incoming messages from your customers.'
-    inbox_info: 'Incoming messages from customers. Mark each one Done once dealt with; it stays in the customer history. Show done lists them again with Undo.'
-    unread: 'Unread'
+    inbox_info: "Incoming messages. Inbox lists messages to act on, mark each one done once it has been dealt with or read - you can still read them on the customer's page or in the archive. Archive lists messages that have been marked as done - it has an undo button to return them to the inbox."
     inbox_done: "Done"
-    inbox_show_done: "Show done"
+    inbox_filter_archive: "Archive"
     inbox_done_by: "Done by {name} {time}"
     message_delete_confirm: "Delete this message permanently? This cannot be undone."
     message_deleted: "Message deleted"
@@ -984,3 +981,4 @@ en:
     hidden_from_public: "Hidden From Public"
     slot_interval_hint: "How often start times are offered to customers. With 15, a 45 minute service can start at 9:00, 9:15, 9:30 and so on; with 60, at 9:00, 10:00, 11:00. It does not keep time free after the appointment: for that, make the service duration longer."
     messages_all_channels: "All"
+    load_more_messages: "Load more messages"

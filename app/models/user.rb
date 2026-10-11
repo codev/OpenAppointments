@@ -39,28 +39,24 @@ class User < ApplicationRecord
 
   scope :admins, -> { joins(:role).where(roles: { slug: Role::ADMIN }) }
   scope :providers, -> { joins(:role).where(roles: { slug: Role::PROVIDER }) }
+  scope :assistants, -> { joins(:role).where(roles: { slug: Role::ASSISTANT }) }
+  scope :customers, -> { joins(:role).where(roles: { slug: Role::CUSTOMER }) }
 
   # Phones are stored in E.164 (normalised on save), so a lookup is an exact
   # match on either indexed column.
   PHONE_MATCH = "users.phone_number = :number OR users.mobile_number = :number".freeze
 
   before_validation :normalize_phones
+  before_create -> { self.booking_slug ||= BookingSlug.unique_for(User) if provider? }
 
-  # Customers whose phone or mobile number is this one, however it was typed.
-  def self.customers_by_phone(number, scope = customers)
-    wanted = Messaging::Template.e164(number)
-    return [] if wanted.blank? || wanted.length < 7
-
-    # By id from a phone-only subquery: SQLite then searches the phone indexes
-    # instead of every user with the customer role.
-    scope.where(id: User.unscoped.where(PHONE_MATCH, number: wanted).select(:id)).to_a
-  end
-
-  # Customers who use this email (any case) or phone, once each. Partners and
-  # family may share one.
+  # Customers who use this email (any case) or phone, however it was typed,
+  # once each. Partners and family may share one.
   def self.customers_by_contact(email: nil, phone: nil)
     found = email.present? ? customers.where("LOWER(email) = ?", email.downcase).to_a : []
-    found += customers_by_phone(phone) if phone.present?
+    number = Messaging::Template.e164(phone)
+    # By id from a phone-only subquery: SQLite then searches the phone indexes
+    # instead of every user with the customer role.
+    found += customers.where(id: User.unscoped.where(PHONE_MATCH, number: number).select(:id)).to_a if number.to_s.length >= 7
     found.uniq
   end
 
@@ -70,7 +66,7 @@ class User < ApplicationRecord
   def self.likely_sender(candidates, now = Time.current)
     return candidates.first if candidates.size < 2
 
-    upcoming, latest = Appointment.next_and_last(Appointment.appointments.active.where(id_users_customer: candidates.map(&:id)), now)
+    upcoming, latest = Appointment.next_and_latest(Appointment.appointments.active.where(id_users_customer: candidates.map(&:id)), now)
     id = (upcoming || latest)&.id_users_customer
     id ? candidates.find { |customer| customer.id == id } : candidates.max_by(&:updated_at)
   end
@@ -78,21 +74,22 @@ class User < ApplicationRecord
   # The customer a booking belongs to: the same email or phone and the same
   # name. People sharing contact details keep their own records.
   def self.customer_for_booking(email:, phone:, name:)
-    customers_by_contact(email: email, phone: phone).find { |customer| same_name?(customer.name, name) }
+    wanted = customer_keys(name, email, phone)
+    customers_by_contact(email: email, phone: phone).find { |customer| customer.customer_keys.intersect?(wanted) }
   end
 
-  def normalize_phones
-    self.phone_number = Messaging::Template.e164(phone_number) if phone_number_changed?
-    self.mobile_number = Messaging::Template.e164(mobile_number) if mobile_number_changed?
+  # "name|contact" for each email and phone: two records with a key in common
+  # are the same customer. Bookings and the 10to8 import both match on these.
+  def self.customer_keys(name, email, *phones)
+    name = name.to_s.squish.downcase
+    return [] if name.blank?
+
+    contacts = phones.filter_map { |phone| Messaging::Template.e164(phone).presence }
+    contacts.unshift(email.downcase) if email.present?
+    contacts.map { |contact| "#{name}|#{contact}" }
   end
 
-  def self.same_name?(one, other)
-    one.to_s.squish.casecmp?(other.to_s.squish)
-  end
-  scope :assistants, -> { joins(:role).where(roles: { slug: Role::ASSISTANT }) }
-  scope :customers, -> { joins(:role).where(roles: { slug: Role::CUSTOMER }) }
-
-  before_create -> { self.booking_slug ||= BookingSlug.unique_for(User) if provider? }
+  def customer_keys = User.customer_keys(name, email, phone_number, mobile_number)
 
   def admin? = role.slug == Role::ADMIN
   def provider? = role.slug == Role::PROVIDER
@@ -104,5 +101,12 @@ class User < ApplicationRecord
   def working_plan
     raw = settings&.working_plan
     raw.present? ? JSON.parse(raw) : nil
+  end
+
+  private
+
+  def normalize_phones
+    self.phone_number = Messaging::Template.e164(phone_number) if phone_number_changed?
+    self.mobile_number = Messaging::Template.e164(mobile_number) if mobile_number_changed?
   end
 end

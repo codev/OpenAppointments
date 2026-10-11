@@ -92,6 +92,15 @@ class TenToEightTest < ActiveSupport::TestCase
     assert_equal "JX", users(:jx).reload.name
   end
 
+  test "load matches an existing customer by mobile number, as a booking does" do
+    mobile_only = User.create!(name: "Mo Bile", mobile_number: "07700 900777", role: roles(:customer))
+    rows = [ { ext_id: "m1", name: " mo  BILE ", email: "", phone: "+447700900777" } ]
+    counts = TenToEight::Load.new({ customers: rows }, phases: %w[customers]).call[:counts]
+
+    assert_equal 1, counts[:customers][:matched]
+    assert_equal mobile_only, User.customer_for_booking(email: "", phone: "+447700900777", name: " mo  BILE ")
+  end
+
   test "load respects the phase selection" do
     data = extract
     counts = TenToEight::Load.new(data, phases: %w[categories services]).call[:counts]

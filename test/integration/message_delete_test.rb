@@ -1,7 +1,7 @@
 require "test_helper"
 
 # Admins can permanently delete one message (mistakes, erasure requests): on
-# the customer page, and in the Unknown Inbox where there is no customer page.
+# the customer page, and in the Inbox for unknown senders, who have no customer page.
 class MessageDeleteTest < ActionDispatch::IntegrationTest
   STREAM = { "Accept" => "text/vnd.turbo-stream.html, text/html, application/xhtml+xml" }.freeze
 
@@ -19,7 +19,7 @@ class MessageDeleteTest < ActionDispatch::IntegrationTest
 
     delete "/messages/#{gone.id}", as: :json
     assert_response :success
-    assert_equal({ "success" => true, "inbox_unread" => 1 }, response.parsed_body)
+    assert_equal({ "success" => true, "inbox_count" => 1 }, response.parsed_body)
     delete "/messages/#{sent.id}", as: :json
     assert_equal [ kept.id ], Message.where(customer_id: users(:jx).id).pluck(:id)
   end
@@ -32,17 +32,28 @@ class MessageDeleteTest < ActionDispatch::IntegrationTest
     assert Message.exists?(message.id)
   end
 
-  test "the unknown inbox offers delete with a confirm and removes the row in place; the inbox does not" do
+  test "delete follows the session role like done does" do
+    done = incoming("Done me")
+    gone = incoming("Delete me")
+    post "/login/validate", params: { username: "administrator", password: "administrator1" }
+    users(:admin).update!(role: roles(:provider))
+
+    post "/messages/#{done.id}/done", headers: STREAM
+    assert_response :success
+    delete "/messages/#{gone.id}", as: :json
+    assert_response :success
+  end
+
+  test "the inbox offers delete with a confirm on an unknown sender's row only, and removes the row in place" do
     unknown = incoming("Who is this?", customer: nil)
     known = incoming("Running late")
     post "/login/validate", params: { username: "administrator", password: "administrator1" }
 
-    get "/unknown_inbox"
+    get "/inbox"
     assert_select "#inbox-message-#{unknown.id} form[action='/messages/#{unknown.id}'][data-turbo-confirm=?]",
                   I18n.t("ea.message_delete_confirm") do
       assert_select "input[name=_method][value=delete]", count: 1
     end
-    get "/inbox"
     assert_select "#inbox-message-#{known.id} form[action='/messages/#{known.id}']", count: 0
 
     delete "/messages/#{unknown.id}", headers: STREAM

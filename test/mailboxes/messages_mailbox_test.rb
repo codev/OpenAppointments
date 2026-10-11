@@ -21,7 +21,7 @@ class MessagesMailboxTest < ActionMailbox::TestCase
     assert_includes message.source, "> Your appointment is confirmed."
   end
 
-  test "inbound email from an unknown sender lands in the unknown inbox" do
+  test "inbound email from an unknown sender is stored with no customer" do
     receive_inbound_email_from_mail(
       from: "stranger@example.org", to: "shop@example.org",
       subject: "Hi", body: "Do you cut hair?"

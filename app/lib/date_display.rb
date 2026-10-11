@@ -18,17 +18,31 @@ module DateDisplay
 
   def style = Setting.get("date_display", "numeric")
 
-  def format(date, style: self.style, date_format: Setting.get("date_format"))
+  # year: false leaves the year out, as a conversation does for this year's dates.
+  def format(date, style: self.style, date_format: Setting.get("date_format"), year: true)
     date_format = "DMY" unless PATTERNS.key?(date_format)
-    pattern = PATTERNS[date_format][style]
-    return date.strftime(MailerFormatHelper::DATE_FORMATS[date_format]) unless pattern
+    pattern = PATTERNS[date_format][style] || MailerFormatHelper::DATE_FORMATS[date_format]
+    pattern = without_year(pattern) unless year
+    return date.strftime(pattern) unless PATTERNS[date_format][style]
 
     I18n.l(date.to_date, format: pattern, locale: names_locale)
   end
 
-  def format_time(time, style: self.style)
+  def format_time(time, style: self.style, year: true)
     time_format = MailerFormatHelper::TIME_FORMATS[Setting.get("time_format")] || MailerFormatHelper::TIME_FORMATS["regular"]
-    "#{format(time, style: style)} #{time.strftime(time_format).strip}"
+    "#{format(time, style: style, year: year)} #{time.strftime(time_format).strip}"
+  end
+
+  # Conversations: the year only when it is not this year. Stored times are
+  # wall clock, so the comparison is against the plain clock too.
+  def format_time_brief(time)
+    format_time(time, year: time.year != Time.now.year)
+  end
+
+  # The year token sits at one end of every pattern; drop it with the
+  # separator that joined it.
+  def without_year(pattern)
+    pattern.sub(%r{/%Y|%Y/|, %Y|%Y, | %Y|%Y }, "")
   end
 
   def names_locale

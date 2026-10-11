@@ -34,14 +34,13 @@
           </li>
 
             <% hidden = can?(:view, :customers) ? "" : "d-none" %>
-            <% if session[:role_slug] == Role::ADMIN %>
+            <% if inbox_access? %>
                 <% active = active_menu == "inbox" ? "active" : "" %>
                 <li class="nav-item text-center <%= active %>">
                     <a href="/inbox" class="nav-link text-white fw-light py-3 px-3"
                        data-tippy-content="<%= lang('inbox_hint') %>">
-                        <i class="fas fa-inbox me-2"></i>
+                        <%= render "shared/inbox_count", count: vars(:inbox_count) %>
                         <%= lang('inbox') %>
-                        <%= render "shared/inbox_unread", count: vars(:inbox_unread) %>
                     </a>
                 </li>
             <% end %>
@@ -114,17 +113,6 @@
                         <a class="dropdown-item" href="/messages_settings">
                             <i class="fas fa-envelope me-2"></i>
                             <%= lang('message_settings') %>
-                        </a>
-                    <% end %>
-
-                    <% if session[:role_slug] == Role::ADMIN %>
-                        <% unknown_unread = Message.unread.unknown_sender.not_done.count %>
-                        <a class="dropdown-item" href="/unknown_inbox">
-                            <i class="fas fa-inbox me-2"></i>
-                            <%= lang('unknown_inbox') %>
-                            <% if unknown_unread.positive? %>
-                                <span class="badge bg-danger ms-1"><%= unknown_unread %></span>
-                            <% end %>
                         </a>
                     <% end %>
 

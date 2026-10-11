@@ -5,7 +5,12 @@ class CustomerMessagesController < ApplicationController
 
   before_action :require_session
 
-  # POST /customer_messages/find
+  # How many older messages one Load more fetches.
+  PAGE = 20
+
+  # POST /customer_messages/find: the latest window of the conversation, oldest
+  # first, or with before_id the PAGE messages older than that one. "more"
+  # tells the page whether a Load more button is needed.
   def find
     raise ArgumentError, "Forbidden" if cannot?(:view, :customers)
 
@@ -13,8 +18,15 @@ class CustomerMessagesController < ApplicationController
     raise ArgumentError, "Invalid customer ID provided." unless customer_id.positive?
     return head :forbidden unless customer_access?(customer_id)
 
-    messages = Message.where(customer_id: customer_id).newest_first.limit(200).to_a
-    render json: messages.map { |message| message_row(message) }
+    history = Message.where(customer_id: customer_id)
+    before_id = params[:before_id].to_i
+    messages = if before_id.positive?
+      history.where("id < ?", before_id).newest_first.limit(PAGE).to_a
+    else
+      opening_window(history, customer_id)
+    end
+    more = messages.any? && history.where("id < ?", messages.last.id).exists?
+    render json: { messages: messages.reverse.map { |message| message_row(message) }, more: more }
   rescue ArgumentError => e
     json_exception(e, status: :ok)
   end
@@ -27,7 +39,7 @@ class CustomerMessagesController < ApplicationController
     return head :forbidden unless customer_access?(customer_id)
 
     Message.mark_read_for_customer(customer_id)
-    render json: { success: true, inbox_unread: inbox_badge_count }
+    render json: { success: true, inbox_count: inbox_badge_count }
   rescue ArgumentError => e
     json_exception(e, status: :ok)
   end
@@ -73,6 +85,20 @@ class CustomerMessagesController < ApplicationController
 
   private
 
+  # The messages since the customer's most recent appointment, so the thread
+  # opens on the current conversation; the latest PAGE when there is no past
+  # appointment or nothing was sent since it. Newest first; callers reverse.
+  # start_datetime is the provider's wall clock, created_at the server's, so
+  # the appointment is picked on the business clock and its start converted
+  # to an absolute time before it meets created_at.
+  def opening_window(history, customer_id)
+    latest = Appointment.appointments.where(id_users_customer: customer_id)
+                        .where("start_datetime <= ?", BookingWindows.wall_clock_now)
+                        .order(start_datetime: :desc).first
+    since = latest ? history.where("created_at >= ?", BookingWindows.starts_at(latest)).newest_first.to_a : []
+    since.presence || history.newest_first.limit(PAGE).to_a
+  end
+
   def requested_channels(key)
     key == "all" ? Messaging.enabled_channels : Array(Messaging.channel(key)).select(&:enabled?)
   end
@@ -87,7 +113,7 @@ class CustomerMessagesController < ApplicationController
       "body" => message.body,
       "status" => message.status,
       "read" => message.direction != "incoming" || message.read?,
-      "created_at" => message.created_at&.strftime("%Y-%m-%d %H:%M:%S")
+      "created_at" => message.created_at && DateDisplay.format_time_brief(message.created_at)
     }
   end
 end
