@@ -70,6 +70,7 @@ zh:
     created: 已创建
     matched: 已匹配
     skipped: 已跳过
+    do_not_contact: "请勿联系"
     no_file_selected: 未选择文件。
     reset_database: 重置数据库
     reset_database_warning: 这将永久删除所有预约、客户、服务人员、助理、服务和类别。管理员账户和设置将保留。此操作不可撤销。
@@ -291,8 +292,8 @@ zh:
     about_app_license: "OpenAppointments 基于 AGPL-3.0 许可证授权。以任何方式使用 OpenAppointments 的代码即表示您同意以下链接中描述的条款:"
     logout_success: 您已经成功注销！点击后面的按钮去向其他页面.
     book_appointment_title: 预定预约
-    backend_section: 后台界面
-    you_need_to_login: 欢迎！请输入正确的帐户信息登录后台管理页面.
+    backend_section: "员工登录"
+    you_need_to_login: "欢迎！您需要登录才能管理预约和消息。"
     enter_username_here: 这里输入您的用户名 ...
     enter_password_here: 在此输入密码 ...
     login: 登陆

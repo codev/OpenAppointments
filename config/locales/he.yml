@@ -70,6 +70,7 @@ he:
     created: נוצרו
     matched: הותאמו
     skipped: דולגו
+    do_not_contact: "לא ליצור קשר"
     no_file_selected: לא נבחר קובץ.
     reset_database: איפוס מסד הנתונים
     reset_database_warning: פעולה זו מוחקת לצמיתות את כל התורים, הלקוחות, נותני השירות, העוזרים, השירותים והקטגוריות. חשבונות מנהלים והגדרות נשמרים. לא ניתן לבטל.
@@ -291,8 +292,8 @@ he:
     about_app_license: "OpenAppointments מופץ תחת רישיון AGPL-3.0. שימוש בקוד של OpenAppointments בכל דרך מהווה הסכמה לתנאים המתוארים בקישור הבא:"
     logout_success: נותקת בהצלחה! לחץ על אחד מהכפתורים הבאים בכדי לנווט לדף אחר.
     book_appointment_title: קיבעו פגישה
-    backend_section: ממשק הניהול
-    you_need_to_login: ברוכים הבאים! עליכם להתחבר על מנת להכנס לממש הניהול.
+    backend_section: "כניסת צוות"
+    you_need_to_login: "ברוכים הבאים! עליכם להתחבר כדי לנהל פגישות והודעות."
     enter_username_here: יש להזין את שם המשתמש כאן ...
     enter_password_here: הזן סיסמה כאן ...
     login: התחברות

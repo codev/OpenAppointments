@@ -70,6 +70,7 @@ pt-br:
     created: criados
     matched: correspondidos
     skipped: ignorados
+    do_not_contact: "Não contatar"
     no_file_selected: Nenhum arquivo selecionado.
     reset_database: Redefinir banco de dados
     reset_database_warning: Isso exclui permanentemente todos os agendamentos, clientes, prestadores, assistentes, serviços e categorias. As contas de administrador e as configurações são mantidas. Irreversível.
@@ -291,8 +292,8 @@ pt-br:
     about_app_license: "O OpenAppointments e licenciado sob a licenca AGPL-3.0. Ao usar o codigo do OpenAppointments de qualquer forma, voce concorda com os termos descritos na seguinte url:"
     logout_success: Saiu com sucesso! Clique num dos seguintes botões para navegar para uma página diferente.
     book_appointment_title: Agenda
-    backend_section: Seção de backend
-    you_need_to_login: Bem-Vindo! Precisa entrar para visualizar todo o conteúdo
+    backend_section: "Acesso da equipe"
+    you_need_to_login: "Bem-vindo! Você precisa entrar para gerenciar agendamentos e mensagens."
     enter_username_here: Insira o seu nome de usuário...
     enter_password_here: Digite a senha aqui ...
     login: Entrar

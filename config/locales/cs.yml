@@ -70,6 +70,7 @@ cs:
     created: vytvořeno
     matched: spárováno
     skipped: přeskočeno
+    do_not_contact: "Nekontaktovat"
     no_file_selected: Není vybrán žádný soubor.
     reset_database: Resetovat databázi
     reset_database_warning: Tímto trvale smažete všechny schůzky, zákazníky, poskytovatele, asistenty, služby a kategorie. Administrátorské účty a nastavení zůstanou. Nelze vrátit zpět.
@@ -291,8 +292,8 @@ cs:
     about_app_license: "OpenAppointments je licencovan pod licenci AGPL-3.0. Pouzivanim kodu OpenAppointments jakymkoli zpusobem souhlasite s podminkami popsanymi na nasledujici adrese:"
     logout_success: Byli jste úspěšně odhlášeni! Pro přesměrování na jinou stránku klikněte na některé z následujících tlačítek.
     book_appointment_title: Rezervace schůzky
-    backend_section: Administrace
-    you_need_to_login: Vítejte! Pro zobrazení sekce administrace se musíte přihlásit.
+    backend_section: "Přihlášení pro personál"
+    you_need_to_login: "Vítejte! Pro správu schůzek a zpráv se musíte přihlásit."
     enter_username_here: Zadejte vaše uživatelské jméno ...
     enter_password_here: Zadejte heslo zde ...
     login: Přihlásit

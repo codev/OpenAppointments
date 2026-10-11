@@ -11,6 +11,9 @@ CloudronManifest.json.
 - Calendar: appointments are solid boxes, so overlapping ones stay readable; the Calendar and Appointments toolbars use the theme's header colour; Enable sync is no wider than it needs to be on tablets
 - Message settings: the intercept email and phone show only when Debug is chosen
 - Manage data: after Analyze or Start import the page opens at the result
+- Login: the login page is now Staff Login, welcoming staff to manage appointments and messages
+- Header: the Appointments page is now called List
+- Manage data: Analyze and the import summary show readable counts, with do-not-contact customers next to the customers count
 
 ## 2.5.0
 

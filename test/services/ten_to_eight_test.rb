@@ -62,6 +62,7 @@ class TenToEightTest < ActiveSupport::TestCase
 
     cher = User.customers.find_by(name: "Cher")
     assert_match(/DO NOT CONTACT/, cher.notes)
+    assert_equal 1, counts[:customers][:do_not_contact]
 
     appointment = Appointment.find_by(id_users_customer: bella.id, start_datetime: "2026-07-15 10:00:00")
     assert_equal alice.id, appointment.id_users_provider

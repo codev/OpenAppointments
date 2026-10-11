@@ -70,6 +70,7 @@ zh-tw:
     created: 已建立
     matched: 已比對
     skipped: 已略過
+    do_not_contact: "請勿聯絡"
     no_file_selected: 未選擇檔案。
     reset_database: 重設資料庫
     reset_database_warning: 這將永久刪除所有預約、客戶、服務人員、助理、服務與類別。管理員帳戶與設定將保留。此操作無法復原。
@@ -291,8 +292,8 @@ zh-tw:
     about_app_license: "OpenAppointments 基於 AGPL-3.0 授權條款授權。以任何方式使用 OpenAppointments 的程式碼即表示您同意以下連結中所述的條款:"
     logout_success: 您已成功登出！點選以下按鈕之一以導航到不同的頁面。
     book_appointment_title: 預約
-    backend_section: 後臺區域
-    you_need_to_login: 歡迎！您需要登入才能檢視後臺頁面。
+    backend_section: "員工登入"
+    you_need_to_login: "歡迎！您需要登入才能管理預約和訊息。"
     enter_username_here: 在此輸入您的使用者名稱...
     enter_password_here: 在此輸入密碼 ...
     login: 登入

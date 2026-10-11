@@ -70,6 +70,7 @@ de:
     created: erstellt
     matched: zugeordnet
     skipped: übersprungen
+    do_not_contact: "Nicht kontaktieren"
     no_file_selected: Keine Datei ausgewählt.
     reset_database: Datenbank zurücksetzen
     reset_database_warning: Dies löscht dauerhaft alle Termine, Kunden, Anbieter, Assistenten, Dienstleistungen und Kategorien. Administratorkonten und Einstellungen bleiben erhalten. Kann nicht rückgängig gemacht werden.
@@ -291,8 +292,8 @@ de:
     about_app_license: "OpenAppointments ist unter der AGPL-3.0-Lizenz lizenziert. Durch jegliche Nutzung des Codes von OpenAppointments stimmen Sie den Bedingungen zu, die unter folgender URL beschrieben sind:"
     logout_success: Sie haben sich erfolgreich abgemeldet! Klicken sie auf einen der folgende Tasten, um auf eine andere Seite zu gelangen.
     book_appointment_title: Terminbuchung
-    backend_section: Backend-Sektion
-    you_need_to_login: Willkommen! Sie müssen sich anmelden, um die Backend-Seiten zu sehen.
+    backend_section: "Mitarbeiter-Anmeldung"
+    you_need_to_login: "Willkommen! Sie müssen sich anmelden, um Termine und Nachrichten zu verwalten."
     enter_username_here: Geben Sie Ihren Nutzernamen hier ein ...
     enter_password_here: Passwort hier eingeben ...
     login: Anmelden

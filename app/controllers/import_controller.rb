@@ -90,7 +90,7 @@ class ImportController < ApplicationController
       do_not_contact: data[:customers].count { |customer| customer[:do_not_contact] }
     }
     if form_post?
-      session[:import_summary] = summary.map { |key, value| "#{key}: #{value}" }.join("\n")
+      session[:import_summary] = summary_text(summary)
       redirect_to RESULTS_PATH
     else
       render json: { success: true, summary: summary }
@@ -162,6 +162,18 @@ class ImportController < ApplicationController
   private
 
   def form_post? = params[:form].present?
+
+  # Analyze counts as labelled lines; do-not-contact customers sit on the customers line.
+  def summary_text(summary)
+    lang = helpers.method(:lang)
+    [
+      "#{lang.('providers')}: #{summary[:staff]}",
+      "#{lang.('services')}: #{summary[:services]}",
+      "#{lang.('customers')}: #{summary[:customers]} (#{lang.('do_not_contact')}: #{summary[:do_not_contact]})",
+      "#{lang.('appointments')}: #{summary[:appointments]}",
+      "#{lang.('settings')}: #{summary[:settings]}"
+    ].join("\n")
+  end
 
   def import_failed(error)
     form_post? ? redirect_to(RESULTS_PATH, alert: error.message) : json_exception(error)

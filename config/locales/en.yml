@@ -70,6 +70,7 @@ en:
     created: created
     matched: matched
     skipped: skipped
+    do_not_contact: "Do not contact"
     no_file_selected: No file selected.
     reset_database: Reset database
     reset_database_warning: This permanently deletes all appointments, customers, providers, assistants, services and categories. Administrator accounts and settings are kept. This cannot be undone.
@@ -291,8 +292,8 @@ en:
     about_app_license: "OpenAppointments is licensed under the AGPL-3.0 license. By using the code of OpenAppointments in any way you are agreeing to the terms described in the following url:"
     logout_success: You have been successfully logged out! Click on one of the following buttons to navigate to a different page.
     book_appointment_title: Book Appointment
-    backend_section: Backend Section
-    you_need_to_login: Welcome! You will need to login in order to view backend pages.
+    backend_section: "Staff Login"
+    you_need_to_login: "Welcome! You will need to login in order to manage appointments and messages."
     enter_username_here: Enter your username here ...
     enter_password_here: Enter your password here ...
     login: Login

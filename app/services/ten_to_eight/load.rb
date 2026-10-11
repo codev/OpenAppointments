@@ -423,6 +423,7 @@ module TenToEight
 
     def load_customers
       counts = track("customers")
+      counts[:do_not_contact] = 0
       role = Role.find_by!(slug: Role::CUSTOMER)
       @customer_ids = {}
       known = {}
@@ -459,6 +460,7 @@ module TenToEight
         next unless customer
 
         counts[:created] += 1
+        counts[:do_not_contact] += 1 if row[:do_not_contact]
         @customer_ids[row[:ext_id]] = customer.id
         keys.each { |key| known[key] ||= customer.id }
       end

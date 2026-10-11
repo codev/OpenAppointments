@@ -70,6 +70,7 @@ da:
     created: oprettet
     matched: matchet
     skipped: sprunget over
+    do_not_contact: "Må ikke kontaktes"
     no_file_selected: Ingen fil valgt.
     reset_database: Nulstil database
     reset_database_warning: Dette sletter permanent alle aftaler, kunder, udbydere, assistenter, ydelser og kategorier. Administratorkonti og indstillinger bevares. Kan ikke fortrydes.
@@ -291,8 +292,8 @@ da:
     about_app_license: "OpenAppointments er licenseret under AGPL-3.0-licensen. Ved at bruge OpenAppointments-koden paa nogen maade accepterer du betingelserne beskrevet paa foelgende url:"
     logout_success: Du er blevet logget ud! Klik på en af de følgende knapper for at komme til en anden side.
     book_appointment_title: Book aftale
-    backend_section: Administrationsside
-    you_need_to_login: Velkommen! Du skal logge ind for at se administrationssiden.
+    backend_section: "Personalelogin"
+    you_need_to_login: "Velkommen! Du skal logge ind for at administrere aftaler og beskeder."
     enter_username_here: Indtast dit brugernavn her
     enter_password_here: Indtast adgangskode her ...
     login: Log ind

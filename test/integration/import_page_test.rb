@@ -557,9 +557,27 @@ class ImportFormsTest < ActionDispatch::IntegrationTest
     post "/data/analyze", params: { form: "1", import_type: "ods", file: ods_upload, days_back: 21, days_forward: 21 }
     assert_redirected_to "/data#import-status"
     follow_redirect!
-    assert_select "#import-results", text: /customers: \d+/
+    assert_select "#import-results", text: /Customers: \d+/
     get "/data"
     assert_select "#import-results", count: 0
+  end
+
+  test "analyze names its counts and shows do-not-contact customers with the customers" do
+    login_admin
+    post "/data/analyze", params: { form: "1", import_type: "ten_to_eight", days_back: 3650, days_forward: 3650,
+                                    file: fixture_file_upload("ten_to_eight_export.csv", "text/csv") }
+    follow_redirect!
+    assert_select "#import-results", text: /Customers: 3 \(Do not contact: 1\)/
+    assert_select "#import-results", text: /Providers: \d+/
+    assert_select "#import-results", text: /do_not_contact|staff:/, count: 0
+  end
+
+  test "the import summary shows do-not-contact customers with the customers line" do
+    login_admin
+    TenToEightImportJob.write_status("dnc1", state: "completed", errors: [],
+                                             counts: { customers: { created: 3, matched: 0, skipped: 0, failed: 0, do_not_contact: 1 } })
+    get "/data", params: { import_id: "dnc1" }
+    assert_select "#import-results", text: /Customers: 3 created, 0 matched, 0 skipped \(Do not contact: 1\)/
   end
 
   test "start from the form polls the status frame until the import completes" do

@@ -70,6 +70,7 @@ fr:
     created: créés
     matched: appariés
     skipped: ignorés
+    do_not_contact: "Ne pas contacter"
     no_file_selected: Aucun fichier sélectionné.
     reset_database: Réinitialiser la base de données
     reset_database_warning: Ceci supprime définitivement tous les rendez-vous, clients, prestataires, assistant·es, services et catégories. Les comptes administrateurs et les réglages sont conservés. Irréversible.
@@ -291,8 +292,8 @@ fr:
     about_app_license: "OpenAppointments est fourni sous licence AGPL-3.0. En utilisant le code d'OpenAppointments de quelque maniere que ce soit, vous acceptez les conditions decrites a l'adresse suivante :"
     logout_success: Vous avez bien été déconnecté ! Cliquez sur l’un des boutons suivants pour naviguer dans les différentes pages
     book_appointment_title: Carnet de rendez-vous
-    backend_section: Administration
-    you_need_to_login: Bonjour ! Vous devez vous connecter pour voir les pages d’administration.
+    backend_section: "Connexion du personnel"
+    you_need_to_login: "Bonjour ! Vous devez vous connecter pour gérer les rendez-vous et les messages."
     enter_username_here: Entrez votre nom d’utilisateur ici...
     enter_password_here: Entrez le mot de passe ici ...
     login: Connexion

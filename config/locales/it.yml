@@ -70,6 +70,7 @@ it:
     created: creati
     matched: abbinati
     skipped: saltati
+    do_not_contact: "Non contattare"
     no_file_selected: Nessun file selezionato.
     reset_database: Reimposta database
     reset_database_warning: Questo elimina definitivamente tutti gli appuntamenti, clienti, fornitori, assistenti, servizi e categorie. Gli account amministratore e le impostazioni restano. Irreversibile.
@@ -291,8 +292,8 @@ it:
     about_app_license: "OpenAppointments e concesso in licenza AGPL-3.0. Utilizzando il codice di OpenAppointments in qualsiasi modo accetti i termini descritti al seguente indirizzo:"
     logout_success: Logout effettuato correttamente! Clicca su uno dei seguenti bottoni per navigare su una pagina differente.
     book_appointment_title: Prenota appuntamento
-    backend_section: Sezione Backend
-    you_need_to_login: Benvenuto! Devi autenticarti per accedere al backend.
+    backend_section: "Accesso del personale"
+    you_need_to_login: "Benvenuto! Devi accedere per gestire gli appuntamenti e i messaggi."
     enter_username_here: Inserisci il tuo username qui...
     enter_password_here: Inserisci la password qui ...
     login: Accesso

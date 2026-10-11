@@ -70,6 +70,7 @@ sv:
     created: skapade
     matched: matchade
     skipped: överhoppade
+    do_not_contact: "Kontakta inte"
     no_file_selected: Ingen fil vald.
     reset_database: Återställ databasen
     reset_database_warning: Detta raderar permanent alla bokningar, kunder, utförare, assistenter, tjänster och kategorier. Administratörskonton och inställningar behålls. Kan inte ångras.
@@ -291,8 +292,8 @@ sv:
     about_app_license: "OpenAppointments ar licensierad under AGPL-3.0-licensen. Genom att anvanda OpenAppointments kod pa nagot satt godkanner du villkoren som beskrivs pa foljande url:"
     logout_success: Du är nu utloggad. Välj ett alternativ nedan för att gå vidare.
     book_appointment_title: Boka tid
-    backend_section: Administration
-    you_need_to_login: Välkommen! Logga in för att komma till administratörssidan.
+    backend_section: "Inloggning för personal"
+    you_need_to_login: "Välkommen! Logga in för att hantera tidsbokningar och meddelanden."
     enter_username_here: Fyll i användarnamn
     enter_password_here: Ange lösenord...
     login: Logga in

@@ -70,6 +70,7 @@ sq:
     created: krijuar
     matched: përputhur
     skipped: anashkaluar
+    do_not_contact: "Mos kontaktoni"
     no_file_selected: Asnjë skedar i zgjedhur.
     reset_database: Rivendos bazën e të dhënave
     reset_database_warning: Kjo fshin përgjithmonë të gjitha takimet, klientët, ofruesit, asistentët, shërbimet dhe kategoritë. Llogaritë e administratorëve dhe cilësimet ruhen. E pakthyeshme.
@@ -291,8 +292,8 @@ sq:
     about_app_license: "OpenAppointments eshte i licencuar nen licencen AGPL-3.0. Duke perdorur kodin e OpenAppointments ne cfaredo menyre, ju pranoni kushtet e pershkruara ne url-ne e meposhtme:"
     logout_success: Ju u keni dalë me sukses! Klikoni në një nga butonat e mëposhtëm për të lundruar në një faqe tjetër.
     book_appointment_title: Rezervo Takim
-    backend_section: Seksioni i Backend
-    you_need_to_login: Mirë se vini! Ju do të duhet të identifikoheni për të parë faqet e backend.
+    backend_section: "Hyrja e stafit"
+    you_need_to_login: "Mirë se vini! Duhet të identifikoheni për të menaxhuar takimet dhe mesazhet."
     enter_username_here: Shkruani emrin tuaj të përdoruesit këtu...
     enter_password_here: Shkruani fjalëkalimin këtu ...
     login: Identifikohu
