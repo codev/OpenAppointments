@@ -5,12 +5,9 @@ CloudronManifest.json.
 
 ## 2.5.0
 
-- Customers: the conversation shows each message as a chat bubble, incoming on the left and outgoing on the right, coloured by provider with the time inside; it opens at the newest message on the messages since the last appointment, with a Load more button for older ones
-- Customers: the provider picker for a new message is a dropdown coloured like the bubbles
-- Inbox: each message is a bubble coloured by provider, with the time, Mark as read and Delete inside it; a key above the list shows the provider colours
-- Inbox: filters are now To Do, Unread Only and Archive
-- Inbox: messages from senders that match no customer are listed in the Inbox, marked Unknown sender, and count towards the header badge; the separate Unknown Inbox is gone
-- Import: a 10to8 customer matches an existing customer by mobile number as well as phone
+- Messages: fresher look with messages as chat bubbles with colour based on the provider
+- Inbox: Completely reorganised - each message can be marked done and moved into the archive when it has been seen or actioned, the Inbox also includes messages that aren't matched to any customers
+- Customer: messages open with the latest message visible and only show messages since the last appointment with a button to load older ones
 
 ## 2.4.0
 

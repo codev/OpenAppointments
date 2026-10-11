@@ -889,7 +889,6 @@ ar:
     appointment_statuses: 'Appointment Statuses'
     inbox: 'Inbox'
     inbox_hint: 'Incoming messages from your customers.'
-    unread: 'Unread'
     read: 'Read'
     message: 'Message'
     mark_as_read: 'Mark as read'
@@ -978,6 +977,8 @@ ar:
     message_move_to: "نقل إلى {name}"
     message_moved: "تم نقل الرسالة"
     notification_tokens_hint: "حقول القالب التي يمكنك استخدامها. انقر على أحدها لإدراجه في مكان الكتابة، أو لنسخه:"
-    inbox_info: "الرسائل الواردة من العملاء. ضع علامة تم على كل رسالة بعد التعامل معها؛ ستبقى في سجل العميل. عرض المكتمل يعرضها مرة أخرى مع تراجع."
+    inbox_info: "الرسائل الواردة. يعرض Inbox الرسائل التي تحتاج إلى إجراء، ضع علامة تم على كل رسالة بعد التعامل معها أو قراءتها - يمكنك قراءتها لاحقًا في صفحة الزبون أو في الأرشيف. يعرض الأرشيف الرسائل التي تم وضع علامة تم عليها - وفيه زر تراجع لإعادتها إلى Inbox."
     booking_release_time: "وقت الإصدار"
     booking_release_time_hint: "يُفتح اليوم التالي عند نهاية حد الحجز المستقبلي في هذا الوقت كل يوم."
+    inbox_filter_archive: "الأرشيف"
+    load_more_messages: "تحميل المزيد من الرسائل"

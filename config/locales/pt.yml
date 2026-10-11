@@ -889,7 +889,6 @@ pt:
     appointment_statuses: 'Appointment Statuses'
     inbox: 'Inbox'
     inbox_hint: 'Incoming messages from your customers.'
-    unread: 'Unread'
     read: 'Read'
     message: 'Message'
     mark_as_read: 'Mark as read'
@@ -978,6 +977,8 @@ pt:
     message_move_to: "Mover para {name}"
     message_moved: "Mensagem movida"
     notification_tokens_hint: "Campos de modelo que pode usar. Clique num para o inserir onde estava a escrever, ou para o copiar:"
-    inbox_info: "Mensagens recebidas de clientes. Marque cada uma como Concluído depois de tratada; fica no histórico do cliente. Mostrar concluídos volta a listá-las com Desfazer."
+    inbox_info: "Mensagens recebidas. Inbox lista as mensagens a tratar - marque cada uma como Concluído depois de tratada ou lida; continuam a poder ser lidas na página do cliente ou no Arquivo. Arquivo lista as mensagens marcadas como Concluído - tem um botão Desfazer que as devolve ao Inbox."
     booking_release_time: "Hora de libertação"
     booking_release_time_hint: "O dia seguinte no final do limite de agendamento futuro abre a esta hora todos os dias."
+    inbox_filter_archive: "Arquivo"
+    load_more_messages: "Carregar mais mensagens"

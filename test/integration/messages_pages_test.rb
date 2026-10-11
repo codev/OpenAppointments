@@ -55,18 +55,20 @@ class MessagesPagesTest < ActionDispatch::IntegrationTest
     get "/inbox"
     assert_select "#inbox-page table", 0, "no table"
     assert_select "#inbox-page .bubble-key .bubble.bubble-email", text: "Email"
-    assert_select ".inbox-message.message-unread", 1 do
+    assert_select ".inbox-message", 1 do
       assert_select ".inbox-meta", count: 0
       assert_select ".inbox-row > .bubble-row + .inbox-actions form[action='/messages/#{Message.last.id}/done'] .fa-check"
       assert_select ".inbox-actions .fa-check-double", count: 0
-      assert_select ".bubble-row.in .bubble.bubble-email[title='Email']" do
+      assert_select ".bubble-row.in:not(.unknown) .bubble.bubble-email[title='Email']" do
         assert_select ".bubble-subject", text: "Re: Confirmed"
         assert_select ".bubble-meta .bubble-who a[href='/customers?customer_id=#{users(:jx).id}&section=messages']", text: "JX"
         assert_select ".bubble-meta .bubble-who", text: /JX\s+j@example.org/
         assert_select ".bubble-meta .bubble-when", text: /07\/03 2:02 pm/
-        assert_select ".bubble-meta .bubble-when a.mark-read[href='#'][data-id='#{Message.last.id}']", text: "Mark as read"
       end
     end
+    assert_select ".message-unread", { count: 0 }, "the Inbox has no read state"
+    assert_select ".mark-read", count: 0
+    assert_select "script[src*='mark_read']", count: 0
     assert css_select(".inbox-message .bubble-body").sole.text.start_with?("Line one\nLine two\nLong text"), "line breaks are kept"
     assert_equal 80, css_select(".inbox-message .bubble-body").sole.text.scan("Long text").size, "the whole text is shown"
   end
@@ -79,7 +81,7 @@ class MessagesPagesTest < ActionDispatch::IntegrationTest
     assert_select ".bubble-meta", text: /30\/11\/#{Time.current.year - 1} 9:05 am/
   end
 
-  test "an unknown sender's message is listed in the inbox in date order, marked Unknown sender, and stays unread until marked read" do
+  test "an unknown sender's message is listed in the inbox in date order, marked Unknown sender and outlined; mark read still works for the customer page" do
     known = Message.create!(direction: "incoming", channel: "email", from_address: users(:jx).email, customer_id: users(:jx).id,
                             body: "Running late", status: "received", created_at: 1.hour.ago)
     message = Message.create!(direction: "incoming", channel: "twilio", from_address: "+447700900999",
@@ -89,10 +91,11 @@ class MessagesPagesTest < ActionDispatch::IntegrationTest
     assert_response :success
     assert_select "#inbox-message-#{message.id} .bubble-who", text: /Unknown sender\s+\+447700900999/
     assert_select "#inbox-message-#{message.id} .bubble-who a", count: 0
+    assert_select "#inbox-message-#{message.id} .bubble-row.in.unknown .bubble-twilio"
+    assert_select "#inbox-message-#{known.id} .bubble-row.unknown", count: 0
     assert_operator response.body.index("inbox-message-#{message.id}"), :<, response.body.index("inbox-message-#{known.id}"),
                     "newest first, whoever sent it"
     assert_equal 1, Message.unread.unknown_sender.count
-    assert_includes response.body, "mark-read"
 
     post "/messages/#{message.id}/mark_read"
     assert_equal true, response.parsed_body["success"]

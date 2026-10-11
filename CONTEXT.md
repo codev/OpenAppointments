@@ -54,21 +54,27 @@ _Avoid_: Buffer
 
 **Inbox**:
 Admin-only list of individual inbound messages waiting to be dealt with, from customers and
-unknown senders alike.
-_Avoid_: Unknown Inbox (merged into the Inbox)
+unknown senders alike. Read state plays no part here: every message looks the same until
+it is marked Done, and the header count is the messages not yet Done.
+_Avoid_: Unknown Inbox (merged into the Inbox), To Do, Unread
 
 **Unknown sender**:
 An inbound message whose email or phone matches no customer. It sits in the Inbox labelled
-Unknown sender and, having no customer history, can be deleted there.
+Unknown sender, outlined in a darker shade of its colour, and, having no customer history,
+can be deleted there.
 
 **Done**:
-An Inbox message an admin has dealt with. It leaves the Inbox, can be undone, and stays in
-the customer history (when the sender is a customer).
+An Inbox message an admin has dealt with or read. It leaves the Inbox, can be undone, and
+stays in the customer history (when the sender is a customer).
 _Avoid_: Archived, deleted
 
 **Archive**:
-The Inbox filter listing Done messages, each with Undo. The default filter, To Do, lists the
-rest.
+The Inbox filter listing Done messages, each with Undo to return them to the Inbox. The
+default filter, Inbox, lists the rest.
+
+**Read**:
+Whether a customer's message has been looked at, shown on the customer page only (bold until
+Mark as read); the Inbox does not use it.
 
 **Extra questions**:
 The configurable questions a customer answers when booking, such as Pronouns and Access

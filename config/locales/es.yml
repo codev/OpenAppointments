@@ -889,7 +889,6 @@ es:
     appointment_statuses: 'Appointment Statuses'
     inbox: 'Inbox'
     inbox_hint: 'Incoming messages from your customers.'
-    unread: 'Unread'
     read: 'Read'
     message: 'Message'
     mark_as_read: 'Mark as read'
@@ -978,6 +977,8 @@ es:
     message_move_to: "Mover a {name}"
     message_moved: "Mensaje movido"
     notification_tokens_hint: "Campos de plantilla que puedes usar. Haz clic en uno para insertarlo donde estabas escribiendo, o para copiarlo:"
-    inbox_info: "Mensajes entrantes de clientes. Marca cada uno como Hecho una vez atendido; permanece en el historial del cliente. Mostrar hechos los vuelve a listar con Deshacer."
+    inbox_info: "Mensajes entrantes. Inbox muestra los mensajes pendientes de atender, marca cada uno como Hecho una vez atendido o leído - podrás seguir leyéndolos en la página del cliente o en el archivo. Archivo muestra los mensajes marcados como Hecho - tiene un botón Deshacer para devolverlos a Inbox."
     booking_release_time: "Hora de apertura"
     booking_release_time_hint: "El día siguiente al final del límite de reservas futuras se abre a esta hora cada día."
+    inbox_filter_archive: "Archivo"
+    load_more_messages: "Cargar más mensajes"

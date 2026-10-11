@@ -46,6 +46,15 @@ class InboxSharedContactTest < ActionDispatch::IntegrationTest
     assert_equal @jx.id, @earlier.reload.customer_id
   end
 
+  test "moving a done message from the archive confirms it the same way" do
+    @message.mark_done!(users(:admin))
+    post "/messages/#{@message.id}/move", params: { customer_id: @partner.id }, headers: STREAM
+    assert_select "turbo-stream[action=replace][target=?]", "inbox-message-#{@message.id}" do
+      assert_select "template .inbox-moved", text: I18n.t("ea.message_moved")
+      assert_select "template .inbox-done form[action='/messages/#{@message.id}/undo_done']"
+    end
+  end
+
   test "a message cannot be moved to a customer who does not use its contact, nor by a stylist" do
     stranger = User.create!(name: "Stranger", email: "stranger@example.org", role: roles(:customer))
     post "/messages/#{@message.id}/move", params: { customer_id: stranger.id }, headers: STREAM

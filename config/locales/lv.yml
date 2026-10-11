@@ -889,7 +889,6 @@ lv:
     appointment_statuses: 'Appointment Statuses'
     inbox: 'Inbox'
     inbox_hint: 'Incoming messages from your customers.'
-    unread: 'Unread'
     read: 'Read'
     message: 'Message'
     mark_as_read: 'Mark as read'
@@ -978,6 +977,8 @@ lv:
     message_move_to: "Pārvietot uz {name}"
     message_moved: "Ziņa pārvietota"
     notification_tokens_hint: "Veidnes lauki, ko varat izmantot. Noklikšķiniet uz viena, lai ievietotu tur, kur rakstījāt, vai lai to nokopētu:"
-    inbox_info: "Ienākošās ziņas no klientiem. Atzīmējiet katru kā Pabeigts, kad tā ir izskatīta; tā paliks klienta vēsturē. Rādīt pabeigtos parāda tās atkal ar iespēju Atsaukt."
+    inbox_info: "Ienākošās ziņas. Inbox rāda ziņas, kas jāizskata - atzīmējiet katru kā Pabeigts, kad tā ir izskatīta vai izlasīta; tās joprojām varat lasīt klienta lapā vai Arhīvā. Arhīvs rāda ziņas, kas atzīmētas kā Pabeigts - tajā ir poga Atsaukt, kas tās atgriež uz Inbox."
     booking_release_time: "Atvēršanas laiks"
     booking_release_time_hint: "Nākamā diena nākotnes rezervācijas limita beigās katru dienu atveras šajā laikā."
+    inbox_filter_archive: "Arhīvs"
+    load_more_messages: "Ielādēt vairāk ziņu"

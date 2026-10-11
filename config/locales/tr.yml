@@ -889,7 +889,6 @@ tr:
     appointment_statuses: 'Appointment Statuses'
     inbox: 'Inbox'
     inbox_hint: 'Incoming messages from your customers.'
-    unread: 'Unread'
     read: 'Read'
     message: 'Message'
     mark_as_read: 'Mark as read'
@@ -978,6 +977,8 @@ tr:
     message_move_to: "{name} kişisine taşı"
     message_moved: "Mesaj taşındı"
     notification_tokens_hint: "Kullanabileceğiniz şablon alanları. Yazdığınız yere eklemek veya kopyalamak için birine tıklayın:"
-    inbox_info: "Müşterilerden gelen mesajlar. İşlem tamamlandığında her birini Tamamlandı olarak işaretleyin; müşteri geçmişinde kalır. Tamamlananları göster, bunları Geri al seçeneğiyle yeniden listeler."
+    inbox_info: "Gelen mesajlar. Inbox, işlem yapılması gereken mesajları listeler - her birini işlem yapıldığında veya okunduğunda Tamamlandı olarak işaretleyin; bunları müşteri sayfasında veya Arşiv'de okumaya devam edebilirsiniz. Arşiv, Tamamlandı olarak işaretlenen mesajları listeler - bunları Inbox'a geri döndüren bir Geri al düğmesi vardır."
     booking_release_time: "Açılış saati"
     booking_release_time_hint: "Gelecek rezervasyon limitinin sonundaki bir sonraki gün her gün bu saatte açılır."
+    inbox_filter_archive: "Arşiv"
+    load_more_messages: "Daha fazla mesaj yükle"

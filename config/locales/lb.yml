@@ -889,7 +889,6 @@ lb:
     appointment_statuses: 'Appointment Statuses'
     inbox: 'Inbox'
     inbox_hint: 'Incoming messages from your customers.'
-    unread: 'Unread'
     read: 'Read'
     message: 'Message'
     mark_as_read: 'Mark as read'
@@ -978,6 +977,8 @@ lb:
     message_move_to: "Op {name} réckelen"
     message_moved: "Message geréckelt"
     notification_tokens_hint: "Templatefelder déi Dir benotze kënnt. Klickt op ee fir en anzefügen do wou Dir geschriwwen hutt, oder fir en ze kopéieren:"
-    inbox_info: "Erakommend Messagen vu Clienten. Markéiert all een als Erledegt wann en behandelt ass; e bleift an der Client-Historik. Erledegt weisen lëscht se nees op mat Schrëtt zeréck."
+    inbox_info: "Erakommend Messagen. Inbox lëscht d'Messagen op, déi behandelt musse ginn, markéiert all een als Erledegt wann en behandelt oder gelies ass - Dir kënnt se nach ëmmer op der Säit vum Client oder am Archiv liesen. Archiv lëscht d'Messagen op, déi als Erledegt markéiert sinn - et huet e Knäppchen Schrëtt zeréck fir se nees an d'Inbox ze setzen."
     booking_release_time: "Freigabezäit"
     booking_release_time_hint: "De nächste Dag um Enn vum Limit fir zukünfteg Buchungen gëtt all Dag zu dëser Zäit fräigeschalt."
+    inbox_filter_archive: "Archiv"
+    load_more_messages: "Méi Messagen lueden"

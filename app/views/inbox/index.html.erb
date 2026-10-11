@@ -3,13 +3,18 @@
         <div class="col-12">
             <div class="d-flex justify-content-between align-items-center border-bottom py-3 mb-3">
                 <h4 class="mb-0 fw-light"><%= lang('inbox') %></h4>
-                <div class="btn-group" role="group">
+                <%# The current list is a filled pill, not a link, in the theme colour. %>
+                <ul class="nav nav-pills switch-view mb-0">
                     <% InboxController::FILTERS.each do |filter, (path, label)| %>
-                        <a href="<%= path %>" class="btn btn-sm <%= vars(:inbox_filter) == filter ? 'btn-secondary' : 'btn-outline-secondary' %>">
-                            <%= lang(label) %>
-                        </a>
+                        <li class="nav-item">
+                            <% if vars(:inbox_filter) == filter %>
+                                <span class="nav-link active" aria-current="page"><%= lang(label) %></span>
+                            <% else %>
+                                <a href="<%= path %>" class="nav-link"><%= lang(label) %></a>
+                            <% end %>
+                        </li>
                     <% end %>
-                </div>
+                </ul>
             </div>
 
             <p class="form-text text-muted mb-4"><%= lang('inbox_info') %></p>
@@ -22,7 +27,3 @@
         </div>
     </div>
 </div>
-
-<% content_for :scripts do %>
-    <%= ea_js "utils/mark_read" %>
-<% end %>

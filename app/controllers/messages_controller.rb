@@ -12,7 +12,7 @@ class MessagesController < ApplicationController
     return head :forbidden unless message_access?(message)
 
     message.mark_read!
-    render json: { success: true, inbox_unread: inbox_badge_count }
+    render json: { success: true, inbox_count: inbox_badge_count }
   end
 
   # POST /messages/:id/done. The row leaves the list it was on.
@@ -47,7 +47,7 @@ class MessagesController < ApplicationController
     message.destroy!
     respond_to do |format|
       format.turbo_stream { render_row_removed(message) }
-      format.json { render json: { success: true, inbox_unread: inbox_badge_count } }
+      format.json { render json: { success: true, inbox_count: inbox_badge_count } }
       format.html { redirect_back fallback_location: "/inbox" }
     end
   end
@@ -65,11 +65,11 @@ class MessagesController < ApplicationController
     end
   end
 
-  # The row leaves its list and the header badge follows.
+  # The row leaves its list and the header icon and count follow.
   def render_row_removed(message)
     render turbo_stream: [
       turbo_stream.remove("inbox-message-#{message.id}"),
-      turbo_stream.replace("inbox-unread", partial: "shared/inbox_unread", locals: { count: inbox_badge_count })
+      turbo_stream.replace("inbox-badge", partial: "shared/inbox_count", locals: { count: inbox_badge_count })
     ]
   end
 

@@ -32,13 +32,19 @@ class InboxDoneTest < ActionDispatch::IntegrationTest
     assert_select "a[href='/unknown_inbox']", count: 0
   end
 
-  test "done leaves the inbox, shows under show done with who and when, and undo brings it back" do
+  test "done leaves the inbox, shows in the archive with who and when, and undo brings it back" do
     message = incoming("Running late")
     login_admin
 
     post "/messages/#{message.id}/done", headers: STREAM
     assert_response :success
     assert_select "turbo-stream[action=remove][target=?]", "inbox-message-#{message.id}"
+    assert_select "turbo-stream[action=replace][target=inbox-badge]", 1, "the icon and the count are swapped as one" do
+      assert_select "template > #inbox-badge", 1 do
+        assert_select "#inbox-icon:not(.d-none)"
+        assert_select "#inbox-count.d-none"
+      end
+    end
     message.reload
     assert message.done?
     assert_equal users(:admin).id, message.done_by_id
@@ -48,8 +54,11 @@ class InboxDoneTest < ActionDispatch::IntegrationTest
     assert_not_includes response.body, "Running late"
     get "/inbox", params: { done: 1 }
     assert_select "#inbox-message-#{message.id}" do
-      assert_select ".inbox-done-by", text: /#{Regexp.escape(users(:admin).name)}/
-      assert_select "form[action='/messages/#{message.id}/undo_done'] button", text: I18n.t("ea.undo")
+      assert_select ".inbox-row > .bubble-row + .inbox-done", 1, "Done by and Undo on their own line under the bubble" do
+        assert_select ":first-child.inbox-done-by", text: /\ADone by #{Regexp.escape(users(:admin).name)} \d\d\/\d\d \d{1,2}:\d\d [ap]m\z/
+        assert_select ":last-child form[action='/messages/#{message.id}/undo_done'] button", text: I18n.t("ea.undo")
+      end
+      assert_select ".inbox-actions", count: 0
     end
 
     post "/messages/#{message.id}/undo_done", headers: STREAM
@@ -73,15 +82,15 @@ class InboxDoneTest < ActionDispatch::IntegrationTest
     assert_includes response.parsed_body["messages"].map { |row| row["body"] }, "Running late"
   end
 
-  test "the header badge and the unread filter count unknown senders and leave done messages out" do
-    incoming("Open one")
+  test "the header badge counts the messages not yet done, read or not, and done ones leave the list" do
+    incoming("Open one").mark_read!
     incoming("Who is this?", customer: nil)
     done = incoming("Done one")
     done.update!(done_at: Time.current, done_by_id: users(:admin).id)
     login_admin
     get "/inbox", params: { unread: 1 }
-    assert_select "#inbox-unread", text: "2"
-    assert_includes response.body, "Open one"
+    assert_select "#inbox-count", text: "2"
+    assert_includes response.body, "Open one", "read messages stay listed; unread=1 is not a filter"
     assert_includes response.body, "Who is this?"
     assert_not_includes response.body, "Done one"
   end
@@ -97,17 +106,22 @@ class InboxDoneTest < ActionDispatch::IntegrationTest
     assert_select "#inbox-message-#{message.id} form[action='/messages/#{message.id}/undo_done']"
   end
 
-  test "the inbox filters are To Do, Unread Only and Archive" do
+  test "the inbox filters are Inbox and Archive; the current one is marked and is not a link" do
     login_admin
     get "/inbox"
-    assert_equal [ "To Do", "Unread Only", "Archive" ], css_select("#inbox-page .btn-group a").map { |a| a.text.strip }
-    assert_select "#inbox-page .btn-group a.btn-secondary", text: "To Do"
+    assert_equal [ "Inbox", "Archive" ], css_select("#inbox-page .switch-view .nav-link").map { |a| a.text.strip }
+    assert_select "#inbox-page .switch-view span.nav-link.active[aria-current=page]", text: "Inbox"
+    assert_select "#inbox-page .switch-view a.nav-link[href='/inbox?done=1']", text: "Archive"
+    assert_select "#inbox-page .switch-view a.active", count: 0
+    get "/inbox", params: { done: 1 }
+    assert_select "#inbox-page .switch-view span.nav-link.active[aria-current=page]", text: "Archive"
+    assert_select "#inbox-page .switch-view a.nav-link[href='/inbox']", text: "Inbox"
   end
 
   test "the next page keeps the filter" do
     (InboxController::PER_PAGE + 1).times { |i| incoming("Old #{i}").mark_done!(users(:admin)) }
     login_admin
-    { "/inbox?done=1" => "/inbox?done=1&page=2", "/inbox?unread=1" => nil, "/inbox" => nil }.each do |path, next_page|
+    { "/inbox?done=1" => "/inbox?done=1&page=2", "/inbox" => nil }.each do |path, next_page|
       get path
       if next_page
         assert_select "a[href=?]", next_page

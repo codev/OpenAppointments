@@ -1,5 +1,5 @@
-<%# Inbox pages: one block per message, the metadata on a wrapping line and the
-    full text beneath it. Locals: messages, page, last_page, base_path. %>
+<%# Inbox: one block per message, each a bubble with Done or Done by and Undo,
+    then the pagination. Locals: messages, page, last_page, base_path. %>
 <div class="inbox-list mb-4">
     <% messages.each do |message| %>
         <%= render "shared/inbox_message", message: message %>

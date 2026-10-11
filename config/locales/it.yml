@@ -889,7 +889,6 @@ it:
     appointment_statuses: 'Appointment Statuses'
     inbox: 'Inbox'
     inbox_hint: 'Incoming messages from your customers.'
-    unread: 'Unread'
     read: 'Read'
     message: 'Message'
     mark_as_read: 'Mark as read'
@@ -978,6 +977,8 @@ it:
     message_move_to: "Sposta su {name}"
     message_moved: "Messaggio spostato"
     notification_tokens_hint: "Campi modello che puoi usare. Clicca su uno per inserirlo dove stavi scrivendo, o per copiarlo:"
-    inbox_info: "Messaggi in arrivo dai clienti. Segna ciascuno come Fatto una volta gestito; resta nella cronologia del cliente. Mostra fatti li elenca di nuovo con Annulla."
+    inbox_info: "Messaggi in arrivo. Inbox elenca i messaggi da gestire, segna ciascuno come Fatto una volta gestito o letto - potrai comunque leggerli nella pagina del cliente o nell'archivio. Archivio elenca i messaggi segnati come Fatto - ha un pulsante Annulla per riportarli in Inbox."
     booking_release_time: "Orario di apertura"
     booking_release_time_hint: "Il giorno successivo alla fine del limite prenotazioni future si apre a quest'ora ogni giorno."
+    inbox_filter_archive: "Archivio"
+    load_more_messages: "Carica altri messaggi"

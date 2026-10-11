@@ -120,21 +120,25 @@ App.Components.CustomerMessages = (function () {
     }
 
     // Older messages go in above the oldest shown; the scroll offset grows by
-    // the added height so what was on screen stays where it is.
+    // the added height so what was on screen stays where it is. The button is
+    // off while a request is out, so a double click cannot fetch twice.
     function loadMore() {
         const $panel = panel();
         const $button = $('#load-more-messages');
         const oldestId = $panel.find('.bubble-row').first().data('id');
         const heightBefore = $panel[0].scrollHeight;
 
-        App.Http.CustomerMessages.find(customerId(), oldestId).done((response) => {
-            $button.after(response.messages.map(bubbleRow));
-            if (!response.more) {
-                $button.remove();
-            }
-            $panel.scrollTop($panel.scrollTop() + $panel[0].scrollHeight - heightBefore);
-            syncMarkAllRead();
-        });
+        $button.prop('disabled', true);
+        App.Http.CustomerMessages.find(customerId(), oldestId)
+            .done((response) => {
+                $button.after(response.messages.map(bubbleRow));
+                if (!response.more) {
+                    $button.remove();
+                }
+                $panel.scrollTop($panel.scrollTop() + $panel[0].scrollHeight - heightBefore);
+                syncMarkAllRead();
+            })
+            .always(() => $button.prop('disabled', false));
     }
 
     // Drop the unread badge of the customer in the list by the given amount (all when 0).
@@ -159,7 +163,7 @@ App.Components.CustomerMessages = (function () {
                 click: (e, modal) => {
                     modal.hide();
                     App.Http.CustomerMessages.destroy($button.data('id')).done((response) => {
-                        App.Utils.MarkRead.updateHeaderBadge(response.inbox_unread);
+                        App.Utils.MarkRead.updateHeaderBadge(response.inbox_count);
                         if ($button.data('unread')) {
                             decreaseUnreadBadge(1);
                         }
@@ -237,7 +241,7 @@ App.Components.CustomerMessages = (function () {
             $document.on('input', '#message-body', fitMessageBox);
             $document.on('click', '#mark-all-read', () => {
                 App.Http.CustomerMessages.markRead(customerId()).done((response) => {
-                    App.Utils.MarkRead.updateHeaderBadge(response.inbox_unread);
+                    App.Utils.MarkRead.updateHeaderBadge(response.inbox_count);
                     decreaseUnreadBadge(0);
                     panel().find('.message-unread').removeClass('message-unread').find('.mark-read').remove();
                     $('#mark-all-read').addClass('d-none');

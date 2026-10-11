@@ -1,11 +1,13 @@
 <%# One Inbox message: the other customers sharing its contact with Move
     buttons, then one wrapping row with the message bubble on the left and
-    Done (or Done by with Undo) on the right. The bubble's bottom line has the
-    customer (linked to their conversation, or Unknown sender) and address on
-    the left, the time, Mark as read and (unknown senders) Delete on the
-    right. Locals: message, moved (after a Move). %>
-<% unread = message.direction == "incoming" && !message.read? %>
-<div class="inbox-message py-3 border-bottom<%= ' message-unread' if unread %>" id="inbox-message-<%= message.id %>">
+    Done on the right, or (Archive) a line under the bubble with Done by on
+    the left and Undo on the right. The bubble's bottom line has the customer
+    (linked to their conversation, or Unknown sender) and address on the
+    left, the time and (unknown senders) Delete on the right. Read state is
+    not shown here. Only incoming messages are listed. Locals: message, moved
+    (after a Move). %>
+<% provider_label = Messaging.channel(message.channel)&.label || message.channel %>
+<div class="inbox-message py-3 border-bottom" id="inbox-message-<%= message.id %>">
     <% others = message.other_customers_on_contact %>
     <% if others.any? %>
         <div class="inbox-shared-contact d-flex flex-wrap align-items-center gap-2 mb-2 text-muted">
@@ -17,8 +19,8 @@
         </div>
     <% end %>
     <div class="inbox-row d-flex flex-wrap align-items-start gap-2">
-    <div class="bubble-row <%= message.direction == 'incoming' ? 'in' : 'out' %><%= ' failed' if message.status == 'failed' %>">
-        <div class="bubble bubble-<%= message.channel %>" title="<%= Messaging.channel(message.channel)&.label || message.channel %>">
+    <div class="bubble-row in<%= ' failed' if message.status == 'failed' %><%= ' unknown' if message.customer_id.nil? %>">
+        <div class="bubble bubble-<%= message.channel %>" title="<%= provider_label %>">
             <% if message.subject.present? %>
                 <div class="bubble-subject"><%= message.subject %></div>
             <% end %>
@@ -28,17 +30,14 @@
                     <% if message.customer %>
                         <a href="/customers?customer_id=<%= message.customer.id %>&section=messages" class="fw-bold"><%= message.customer.name %></a>
                     <% else %>
-                        <span class="fw-bold"><%= message.direction == "incoming" ? lang('messages_unknown_sender') : message.audience %></span>
+                        <span class="fw-bold"><%= lang('messages_unknown_sender') %></span>
                     <% end %>
-                    <span class="text-break"><%= message.direction == "incoming" ? message.from_address : message.to_address %></span>
+                    <span class="text-break"><%= message.from_address %></span>
                 </span>
                 <span class="bubble-when">
                     <%= brief_datetime(message.created_at) %>
                     <% if message.status == "failed" %>
-                        <%= lang('messages_status_failed') %> - <%= Messaging.channel(message.channel)&.label || message.channel %>
-                    <% end %>
-                    <% if unread %>
-                        <a href="#" class="mark-read ms-2" data-id="<%= message.id %>"><%= lang('mark_as_read') %></a>
+                        <%= lang('messages_status_failed') %> - <%= provider_label %>
                     <% end %>
                     <% if message.customer_id.nil? %>
                         <%= button_to "/messages/#{message.id}", method: :delete, class: "btn btn-link btn-sm p-0 ms-2 text-danger",
@@ -52,18 +51,24 @@
             </div>
         </div>
     </div>
-    <div class="inbox-actions d-flex flex-wrap align-items-center gap-2 ms-auto">
-        <% if local_assigns[:moved] %><span class="badge bg-info inbox-moved"><%= lang('message_moved') %></span><% end %>
-        <% if message.direction == "incoming" && message.done? %>
+    <% moved_badge = local_assigns[:moved] ? tag.span(lang('message_moved'), class: "badge bg-info inbox-moved") : "" %>
+    <% if message.done? %>
+        <div class="inbox-done d-flex justify-content-between align-items-center gap-2">
             <span class="text-muted inbox-done-by">
-                <%= lang('inbox_done_by').sub("{name}") { message.done_by&.name.to_s }.sub("{time}") { display_datetime(message.done_at) } %>
+                <%= lang('inbox_done_by').sub("{name}") { message.done_by&.name.to_s }.sub("{time}") { brief_datetime(message.done_at) } %>
             </span>
-            <%= button_to lang('undo'), "/messages/#{message.id}/undo_done", class: "btn btn-sm btn-outline-secondary", form_class: "d-inline" %>
-        <% elsif message.direction == "incoming" %>
+            <span class="d-flex align-items-center gap-2">
+                <%= moved_badge %>
+                <%= button_to lang('undo'), "/messages/#{message.id}/undo_done", class: "btn btn-sm btn-outline-secondary", form_class: "d-inline" %>
+            </span>
+        </div>
+    <% else %>
+        <div class="inbox-actions d-flex flex-wrap align-items-center gap-2 ms-auto">
+            <%= moved_badge %>
             <%= button_to "/messages/#{message.id}/done", class: "btn btn-sm btn-outline-success", form_class: "d-inline" do %>
                 <i class="fas fa-check me-1"></i><%= lang('inbox_done') %>
             <% end %>
-        <% end %>
-    </div>
+        </div>
+    <% end %>
     </div>
 </div>

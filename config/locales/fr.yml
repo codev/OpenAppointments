@@ -889,7 +889,6 @@ fr:
     appointment_statuses: 'Appointment Statuses'
     inbox: 'Inbox'
     inbox_hint: 'Incoming messages from your customers.'
-    unread: 'Unread'
     read: 'Read'
     message: 'Message'
     mark_as_read: 'Mark as read'
@@ -978,6 +977,8 @@ fr:
     message_move_to: "Déplacer vers {name}"
     message_moved: "Message déplacé"
     notification_tokens_hint: "Champs de modèle que vous pouvez utiliser. Cliquez sur l'un d'eux pour l'insérer là où vous écriviez, ou pour le copier :"
-    inbox_info: "Messages entrants des clients. Marquez chacun comme Traité une fois pris en charge ; il reste dans l'historique du client. Afficher les traités les liste à nouveau avec Annuler."
+    inbox_info: "Messages entrants. Inbox liste les messages à traiter, marquez chacun comme Traité une fois pris en charge ou lu - vous pourrez toujours les lire sur la page du client ou dans les archives. Archives liste les messages marqués comme Traité - un bouton Annuler permet de les renvoyer dans Inbox."
     booking_release_time: "Heure d'ouverture"
     booking_release_time_hint: "Le jour suivant, à la fin de la limite des réservations futures, s'ouvre à cette heure chaque jour."
+    inbox_filter_archive: "Archives"
+    load_more_messages: "Charger plus de messages"

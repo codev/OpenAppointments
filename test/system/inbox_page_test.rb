@@ -8,12 +8,12 @@ class InboxPageTest < ApplicationSystemTestCase
                               customer_id: users(:jx).id, body: "Running late", status: "received")
     login_as_admin
     visit "/inbox"
-    assert_selector "#inbox-unread", text: "1"
+    assert_selector "#inbox-count", text: "1"
     page.execute_script("window.__inboxMarker = 1")
 
     within("#inbox-message-#{message.id}") { click_on "Done" }
     assert_no_selector "#inbox-message-#{message.id}", wait: 5
-    assert_selector "#inbox-unread", visible: false
+    assert_selector "#inbox-count", visible: false
     assert_equal 1, page.evaluate_script("window.__inboxMarker")
     assert message.reload.done?
 
@@ -26,17 +26,17 @@ class InboxPageTest < ApplicationSystemTestCase
     assert_not message.reload.done?
   end
 
-  test "the Mark as read link in the bubble marks the row read in place" do
-    message = Message.create!(direction: "incoming", channel: "email", from_address: users(:jx).email,
-                              customer_id: users(:jx).id, body: "Running late", status: "received")
+  test "the inbox has no read state: a read message looks like any other, its subject italic, no Mark as read link" do
+    message = Message.create!(direction: "incoming", channel: "email", from_address: users(:jx).email, customer_id: users(:jx).id,
+                              subject: "Re: Confirmed", body: "Running late", status: "received", read_at: Time.current)
     login_as_admin
     visit "/inbox"
-    page.execute_script("window.__inboxMarker = 1")
-    within("#inbox-message-#{message.id} .bubble-when") { click_on "Mark as read" }
-    assert_no_selector "#inbox-message-#{message.id}.message-unread", wait: 5
-    assert_selector "#inbox-unread", visible: false
-    assert_equal 1, page.evaluate_script("window.__inboxMarker"), "the link must not reload the page"
-    assert message.reload.read?
+    assert_selector "#inbox-message-#{message.id}"
+    assert_no_selector ".message-unread"
+    assert_no_link "Mark as read"
+    assert_selector "#inbox-count", text: "1"
+    subject = find("#inbox-message-#{message.id} .bubble-subject")
+    assert_equal [ "italic", "400" ], subject.evaluate_script("[getComputedStyle(this).fontStyle, getComputedStyle(this).fontWeight]")
   end
 
   test "a long message fills the line up to Done; a short one stays the width of its text" do

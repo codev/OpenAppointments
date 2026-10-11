@@ -1,5 +1,0 @@
-<%# Header Inbox icon and unread badge: the badge takes the icon's place while
-    there is anything unread. Locals: count. %>
-<% unread = count.to_i.positive? %>
-<i id="inbox-icon" class="fas fa-inbox me-2 <%= 'd-none' if unread %>"></i>
-<span id="inbox-unread" class="badge bg-danger me-2 <%= 'd-none' unless unread %>"><%= count %></span>

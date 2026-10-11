@@ -889,7 +889,6 @@ ja:
     appointment_statuses: 'Appointment Statuses'
     inbox: 'Inbox'
     inbox_hint: 'Incoming messages from your customers.'
-    unread: 'Unread'
     read: 'Read'
     message: 'Message'
     mark_as_read: 'Mark as read'
@@ -978,6 +977,8 @@ ja:
     message_move_to: "{name}に移動"
     message_moved: "メッセージを移動しました"
     notification_tokens_hint: "使用できるテンプレート項目です。クリックすると入力中の場所に挿入するか、コピーできます。"
-    inbox_info: "お客様からの受信メッセージです。対応済みの場合は対応済みにしてください。お客様の履歴に残ります。対応済みを表示で、元に戻すとともに再度一覧表示されます。"
+    inbox_info: "受信メッセージです。Inbox には対応が必要なメッセージが一覧表示されます。対応または確認が済んだら対応済みにしてください - お客様のページやアーカイブで引き続き読むことができます。アーカイブには対応済みにしたメッセージが一覧表示されます - 元に戻すボタンで Inbox に戻せます。"
     booking_release_time: "公開時刻"
     booking_release_time_hint: "将来の予約制限の末尾にあたる翌日は、毎日この時刻に公開されます。"
+    inbox_filter_archive: "アーカイブ"
+    load_more_messages: "さらにメッセージを読み込む"
