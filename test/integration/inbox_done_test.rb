@@ -73,7 +73,7 @@ class InboxDoneTest < ActionDispatch::IntegrationTest
 
     post "/messages/#{message.id}/done", headers: STREAM
     post "/customer_messages/find", params: { customer_id: users(:jx).id }
-    assert_includes response.parsed_body.map { |row| row["body"] }, "Running late"
+    assert_includes response.parsed_body["messages"].map { |row| row["body"] }, "Running late"
   end
 
   test "the header badge and the unread filter leave done messages out" do

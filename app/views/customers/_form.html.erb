@@ -99,17 +99,32 @@
                 <i class="fas fa-check-double me-1"></i><%= lang('mark_all_as_read') %>
             </button>
         </h4>
-        <div id="customer-messages" class="card border p-3 overflow-auto mb-3" data-customer-id="<%= record.id %>"
+        <div id="customer-messages" class="card border p-3 overflow-auto mb-3 message-thread" data-customer-id="<%= record.id %>"
              data-scroll="<%= params[:section] == 'messages' %>"></div>
         <% if channels.any? %>
-            <div id="customer-message-composer" class="input-group mb-4">
-                <select id="message-channel" class="form-select">
-                    <option value=""><%= lang('select_one') %></option>
-                    <% channels.each do |channel| %>
-                        <option value="<%= channel.key %>"><%= channel.label %></option>
-                    <% end %>
-                    <option value="all"><%= lang('messages_all_channels') %></option>
-                </select>
+            <%# The provider picker is a dropup whose items carry the bubble colour of
+                each provider; All is a diagonal stripe of the enabled ones. The
+                chosen key lives in the hidden #message-channel input. %>
+            <% stripes = channels.each_with_index.map { |channel, i| "var(--channel-#{channel.key}) #{i * 10}px #{(i + 1) * 10}px" } %>
+            <div id="customer-message-composer" class="input-group mb-4"
+                 style="--channel-all: repeating-linear-gradient(135deg, <%= stripes.join(', ') %>)">
+                <input type="hidden" id="message-channel" value="">
+                <div class="dropup">
+                    <button type="button" id="message-channel-button" class="btn btn-light dropdown-toggle h-100"
+                            data-bs-toggle="dropdown" aria-expanded="false"><%= lang('select_one') %></button>
+                    <ul class="dropdown-menu">
+                        <% channels.each do |channel| %>
+                            <li>
+                                <button type="button" class="dropdown-item channel-option channel-<%= channel.key %>"
+                                        data-value="<%= channel.key %>"><%= channel.label %></button>
+                            </li>
+                        <% end %>
+                        <li>
+                            <button type="button" class="dropdown-item channel-option channel-all"
+                                    data-value="all"><%= lang('messages_all_channels') %></button>
+                        </li>
+                    </ul>
+                </div>
                 <textarea id="message-body" class="form-control" rows="3" maxlength="1000"></textarea>
                 <button type="button" id="send-message" class="btn btn-primary">
                     <i class="fas fa-paper-plane me-2"></i>

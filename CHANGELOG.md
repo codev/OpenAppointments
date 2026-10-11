@@ -5,6 +5,8 @@ CloudronManifest.json.
 
 ## 2.5.0
 
+- Customers: the conversation shows each message as a chat bubble, incoming on the left and outgoing on the right, coloured by provider with the time inside; it opens at the newest message on the messages since the last appointment, with a Load more button for older ones
+- Customers: the provider picker for a new message is a dropdown coloured like the bubbles
 - Inbox: filters are now To Do, Unread Only and Archive (Unknown Inbox: To Do and Archive)
 - Import: a 10to8 customer matches an existing customer by mobile number as well as phone
 

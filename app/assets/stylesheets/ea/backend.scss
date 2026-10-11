@@ -747,17 +747,159 @@ body .modal.full-screen .modal-push {
     max-height: 400px;
 }
 
-#customer-messages .message-row small:last-child {
-    white-space: pre-line;
-}
-
-#customer-message-composer #message-channel {
-    max-width: 130px;
-}
-
 #customer-message-composer #message-body {
     resize: none;
     overflow: hidden;
+}
+
+/* Message bubbles, as in a messaging app: incoming on the left, outgoing on
+   the right, a subtle colour per provider (the outgoing tint is the deeper
+   one). The same tints colour the provider picker in the composer. */
+$channel-colours: (
+    "email": (#dbe8fb, #c3d9f8),
+    "smsgateway": (#dcf3e3, #bfe8cc),
+    "twilio": (#fbe3e1, #f7c9c5),
+    "plivo": (#ece3fa, #d9c8f3),
+    "textanywhere": (#fdefd9, #f8ddb3),
+);
+
+:root {
+    @each $key, $tints in $channel-colours {
+        --channel-#{$key}-in: #{nth($tints, 1)};
+        --channel-#{$key}: #{nth($tints, 2)};
+    }
+}
+
+$bubble-radius: 1.1rem;
+
+.message-thread {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    // The tail's cut-out must match whatever the thread sits on: the themes
+    // paint cards with their surface colour, not the Bootstrap card variable.
+    --bubble-page: var(--oa-surface, var(--bs-card-bg));
+}
+
+.bubble-row {
+    display: flex;
+    flex-direction: column;
+    max-width: 75%;
+    flex-shrink: 0;
+
+    &.in {
+        align-self: flex-start;
+        align-items: flex-start;
+    }
+
+    &.out {
+        align-self: flex-end;
+        align-items: flex-end;
+    }
+}
+
+.bubble {
+    --bubble-bg: #e9e9eb;
+    position: relative;
+    padding: 0.45rem 0.85rem 0.3rem;
+    border-radius: $bubble-radius;
+    background: var(--bubble-bg);
+    color: var(--bs-body-color);
+    line-height: 1.35;
+    overflow-wrap: anywhere;
+
+    // The tail: a bubble-coloured blob, then a page-coloured cut-out over it.
+    &::before,
+    &::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        height: 1.25rem;
+    }
+
+    &::before {
+        z-index: 0;
+        width: 1.25rem;
+        background: var(--bubble-bg);
+    }
+
+    &::after {
+        z-index: 1;
+        width: 0.65rem;
+        background: var(--bubble-page);
+    }
+}
+
+.bubble-row.in .bubble {
+    &::before {
+        left: -0.45rem;
+        border-bottom-right-radius: 1rem;
+    }
+
+    &::after {
+        left: -0.65rem;
+        border-bottom-right-radius: 0.6rem;
+    }
+}
+
+.bubble-row.out .bubble {
+    &::before {
+        right: -0.45rem;
+        border-bottom-left-radius: 1rem;
+    }
+
+    &::after {
+        right: -0.65rem;
+        border-bottom-left-radius: 0.6rem;
+    }
+}
+
+@each $key, $tints in $channel-colours {
+    .bubble-#{$key} {
+        --bubble-bg: var(--channel-#{$key}-in);
+    }
+
+    .bubble-row.out .bubble-#{$key} {
+        --bubble-bg: var(--channel-#{$key});
+    }
+
+    .channel-#{$key} {
+        background: var(--channel-#{$key});
+    }
+}
+
+.channel-all {
+    background: var(--channel-all);
+}
+
+.bubble-row.failed .bubble {
+    box-shadow: 0 0 0 2px var(--bs-danger);
+}
+
+.bubble-row.message-unread .bubble-body {
+    font-weight: 600;
+}
+
+.bubble-subject {
+    font-weight: 600;
+    margin-bottom: 0.15rem;
+}
+
+.bubble-body {
+    white-space: pre-line;
+}
+
+.bubble-meta {
+    position: relative;
+    z-index: 2;
+    margin-top: 0.15rem;
+    text-align: right;
+    font-size: 0.75rem;
+    color: var(--bs-secondary-color);
+}
+
+#load-more-messages {
+    flex-shrink: 0;
 }
 
 #footer {

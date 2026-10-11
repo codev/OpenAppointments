@@ -14,7 +14,7 @@ class CustomersTest < ActionDispatch::IntegrationTest
     Setting.set("provider_label_plural", "Stylists")
     login_admin
     get "/customers/#{users(:jx).id}/edit"
-    assert_select "#message-channel option[value='all']", text: "All"
+    assert_select "#customer-message-composer .channel-option[data-value='all']", text: "All"
     get "/appointments"
     assert_select "select#filter-provider option", text: "All Stylists"
   end
@@ -24,8 +24,10 @@ class CustomersTest < ActionDispatch::IntegrationTest
       "messages_twilio_from" => "+15005550006" }.each { |name, value| Setting.set(name, value) }
     login_admin
     get "/customers/#{users(:jx).id}/edit"
-    assert_select "#message-channel option", count: 4
-    assert_select "#message-channel option[value='all']", text: "All"
+    assert_select "#customer-message-composer .channel-option", count: 3
+    assert_select "#customer-message-composer .channel-option.channel-twilio[data-value='twilio']", text: "Twilio"
+    assert_select "#customer-message-composer .channel-option[data-value='all']", text: "All"
+    assert_select "#customer-message-composer[style*='var(--channel-email)'][style*='var(--channel-twilio)']"
   ensure
     Setting.set("messages_twilio_enabled", "0")
   end
@@ -48,7 +50,8 @@ class CustomersTest < ActionDispatch::IntegrationTest
     follow_redirect!
     assert_select "#customers-page.editing"
     assert_select "#customer-messages[data-customer-id=?][data-scroll=true]", users(:jx).id.to_s
-    assert_select "#customer-message-composer select#message-channel"
+    assert_select "#customer-message-composer input#message-channel[type=hidden]"
+    assert_select "#customer-message-composer .dropup #message-channel-button", text: "Select One"
     assert_select "#customer-appointments .appointment-row a[href='/calendar/reschedule/abc123def456'] strong",
                   text: "Trim Cut - Zane"
     assert_select "#customer-appointments small", text: "20/07/2026 10:00 am"
