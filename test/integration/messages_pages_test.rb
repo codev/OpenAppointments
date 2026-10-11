@@ -41,24 +41,39 @@ class MessagesPagesTest < ActionDispatch::IntegrationTest
     assert_redirected_to "/login"
   end
 
-  test "the inbox lists each message as a block with the metadata line above the full text" do
+  test "the inbox lists each message as a bubble under its metadata line, with a provider key above the list" do
     Message.create!(direction: "incoming", channel: "email", from_address: users(:jx).email, customer_id: users(:jx).id,
-                    subject: "Re: Confirmed", body: "Line one\nLine two\n" + ("Long text " * 80), status: "received")
+                    subject: "Re: Confirmed", body: "Line one\nLine two\n" + ("Long text " * 80), status: "received",
+                    created_at: Time.current.change(month: 3, day: 7, hour: 14, min: 2))
     login_admin
     %w[inbox unknown_inbox].each do |page|
       get "/#{page}"
       assert_select "##{page.dasherize}-page table", 0, "#{page}: no table"
+      assert_select "##{page.dasherize}-page .bubble-key .bubble.bubble-email", text: "Email"
     end
     get "/inbox"
     assert_select ".inbox-message.message-unread", 1 do
       assert_select ".inbox-meta a[href='/customers?customer_id=#{users(:jx).id}']", text: "JX"
-      assert_select ".inbox-meta .badge", text: "Email"
+      assert_select ".inbox-meta .badge", text: "Email", count: 0
       assert_select ".inbox-meta .badge", text: "Received"
-      assert_select ".inbox-meta .mark-read"
-      assert_select ".inbox-subject", text: "Re: Confirmed"
+      assert_select ".inbox-meta .mark-read", count: 0
+      assert_select ".inbox-meta .fa-arrow-down", count: 0
+      assert_select ".bubble-row.in .bubble.bubble-email[title='Email']" do
+        assert_select ".bubble-subject", text: "Re: Confirmed"
+        assert_select ".bubble-meta", text: /07\/03 2:02 pm/
+        assert_select ".bubble-meta .mark-read"
+      end
     end
-    assert css_select(".inbox-message .inbox-body").sole.text.start_with?("Line one\nLine two\nLong text"), "line breaks are kept"
-    assert_equal 80, css_select(".inbox-message .inbox-body").sole.text.scan("Long text").size, "the whole text is shown"
+    assert css_select(".inbox-message .bubble-body").sole.text.start_with?("Line one\nLine two\nLong text"), "line breaks are kept"
+    assert_equal 80, css_select(".inbox-message .bubble-body").sole.text.scan("Long text").size, "the whole text is shown"
+  end
+
+  test "an inbox bubble shows the year only when the message is not from this year" do
+    Message.create!(direction: "incoming", channel: "email", from_address: users(:jx).email, customer_id: users(:jx).id,
+                    body: "Old one", status: "received", created_at: (Time.current - 1.year).change(month: 11, day: 30, hour: 9, min: 5))
+    login_admin
+    get "/inbox"
+    assert_select ".bubble-meta", text: /30\/11\/#{Time.current.year - 1} 9:05 am/
   end
 
   test "unknown inbox messages stay unread until marked read" do

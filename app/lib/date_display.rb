@@ -33,6 +33,11 @@ module DateDisplay
     "#{format(time, style: style, year: year)} #{time.strftime(time_format).strip}"
   end
 
+  # Conversations: the year only when it is not this year.
+  def format_time_brief(time)
+    format_time(time, year: time.year != Time.current.year)
+  end
+
   # The year token sits at one end of every pattern; drop it with the
   # separator that joined it.
   def without_year(pattern)

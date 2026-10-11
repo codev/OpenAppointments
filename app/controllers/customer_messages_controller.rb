@@ -109,14 +109,7 @@ class CustomerMessagesController < ApplicationController
       "body" => message.body,
       "status" => message.status,
       "read" => message.direction != "incoming" || message.read?,
-      "created_at" => short_time(message.created_at)
+      "created_at" => message.created_at && DateDisplay.format_time_brief(message.created_at)
     }
-  end
-
-  # In the date and time styles from Settings, the year only when it is not this year.
-  def short_time(time)
-    return nil unless time
-
-    DateDisplay.format_time(time, year: time.year != Time.current.year)
   end
 end

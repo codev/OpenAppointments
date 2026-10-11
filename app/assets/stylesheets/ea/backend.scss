@@ -731,15 +731,28 @@ body .modal.full-screen .modal-push {
     z-index: 1030;
 }
 
-/* Inbox: unread blocks carry an accent bar on the left; message text keeps its line breaks. */
+/* Inbox: unread blocks carry an accent bar on the left and bold text. The
+   bubbles have no tail here: the page background is a gradient the tail's
+   cut-out cannot match. */
 .inbox-message.message-unread {
     border-left: 4px solid var(--bs-primary);
     padding-left: 0.75rem;
 }
 
-.inbox-message .inbox-body {
-    white-space: pre-line;
-    overflow-wrap: anywhere;
+.inbox-message.message-unread .bubble-body {
+    font-weight: 600;
+}
+
+.inbox-message .bubble::before,
+.inbox-message .bubble::after,
+.bubble-key .bubble::before,
+.bubble-key .bubble::after {
+    display: none;
+}
+
+.bubble-key .bubble {
+    padding: 0.2rem 0.7rem;
+    font-size: 0.85rem;
 }
 
 #customer-messages {

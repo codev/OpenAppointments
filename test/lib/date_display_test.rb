@@ -48,6 +48,15 @@ class DateDisplayTest < ActiveSupport::TestCase
     assert_equal "20/07/2026 14:02", DateDisplay.format_time(Time.zone.local(2026, 7, 20, 14, 2), style: "numeric")
   end
 
+  test "format_time_brief keeps the year only when it is not this year" do
+    Setting.set("date_format", "DMY")
+    Setting.set("time_format", "military")
+    travel_to Time.zone.local(2026, 10, 11, 12, 0) do
+      assert_equal "20/07 14:02", DateDisplay.format_time_brief(Time.zone.local(2026, 7, 20, 14, 2))
+      assert_equal "20/07/2025 14:02", DateDisplay.format_time_brief(Time.zone.local(2025, 7, 20, 14, 2))
+    end
+  end
+
   test "the setting picks the style and an unknown style is numeric" do
     Setting.set("date_format", "DMY")
     Setting.set("date_display", "day_long")
