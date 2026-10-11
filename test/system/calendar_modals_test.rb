@@ -108,11 +108,59 @@ class CalendarModalsTest < ApplicationSystemTestCase
     assert_match(/\Argb\(\d+, \d+, \d+\)\z/, background, "expected an opaque colour, got #{background}")
   end
 
+  def slot_times
+    page.evaluate_script("[...document.querySelectorAll('td.fc-timegrid-slot-label[data-time]')].map((td) => td.dataset.time)")
+  end
+
+  test "the day runs from the first working stylist or appointment to the last" do
+    day = { "start" => "10:00", "end" => "17:00", "breaks" => [] }
+    plan = %w[monday tuesday wednesday thursday friday saturday sunday].index_with { day }
+    users(:zane).settings.update!(working_plan: plan.to_json)
+
+    visit calendar_url
+    assert_selector "td.fc-timegrid-slot-label[data-time]", wait: 10
+    page.document.synchronize(10) { raise Capybara::ExpectationNotMet unless slot_times.first == "10:00:00" }
+    assert_equal "16:45:00", slot_times.last
+
+    early = Time.zone.parse("#{Date.current} 08:30")
+    Appointment.create!(provider: users(:zane), customer: users(:jx), service: services(:haircut),
+                        start_datetime: early, end_datetime: early + 30.minutes, appointment_status: AppointmentStatus.of("booked"))
+    visit calendar_url
+    page.document.synchronize(10) { raise Capybara::ExpectationNotMet unless slot_times.first == "08:00:00" }
+    assert_equal "16:45:00", slot_times.last
+  end
+
+  def choose_filter(name)
+    find("#filter-item-dropdown .dropdown-toggle", wait: 10).click
+    within("#filter-item-dropdown .dropdown-menu") { click_on name }
+  end
+
+  test "the stylist and service filter is a compact dropdown button that drives the calendar" do
+    visit calendar_url
+    assert_selector "#filter-item-dropdown .dropdown-toggle", text: "All", wait: 10
+    assert_no_selector "#select-filter-item"
+    find("#filter-item-dropdown .dropdown-toggle").click
+    assert_selector "#filter-item-dropdown .dropdown-header", text: "Providers"
+    assert_selector "#filter-item-dropdown .dropdown-header", text: "Services"
+    within("#filter-item-dropdown .dropdown-menu") { click_on "Zane" }
+
+    assert_selector "#filter-item-dropdown .dropdown-toggle", text: "Zane", wait: 5
+    assert_equal users(:zane).id.to_s, page.evaluate_script("document.getElementById('select-filter-item').value")
+    assert_selector "#enable-sync", visible: true, wait: 5
+    widths = page.evaluate_script(<<~JS)
+      ({ button: document.querySelector('#filter-item-dropdown .dropdown-toggle').getBoundingClientRect().width,
+         row: document.getElementById('calendar-toolbar').getBoundingClientRect().width })
+    JS
+    assert_operator widths["button"], :<, widths["row"] / 3, "filter button spans #{widths['button']} of #{widths['row']}px"
+
+    visit calendar_url
+    assert_selector "#filter-item-dropdown .dropdown-toggle", text: "Zane", wait: 10
+  end
+
   test "on a tablet Enable sync is only as wide as its icon and text" do
     resize_window(800, 900)
     visit calendar_url
-    assert_selector "#select-filter-item", wait: 10
-    find("#select-filter-item").find("option", text: "Zane").select_option
+    choose_filter("Zane")
     assert_selector "#enable-sync", visible: true, wait: 5
     widths = page.evaluate_script(<<~JS)
       (() => {

@@ -58,17 +58,18 @@ App.Pages.Calendar = (function () {
                 fullCalendar.getEventSources().forEach((source) => source.remove());
                 renderLegend();
 
-                const events = [
+                const timedEvents = [
                     ...Events.appointmentEvents(
                         App.Utils.StatusFilter.apply(response.appointments),
                         filterType() === FILTER_TYPE_SERVICE ? 'provider' : 'service',
                         filterType() !== FILTER_TYPE_PROVIDER,
                     ),
                     ...Events.unavailabilityEvents(response.unavailabilities),
-                    ...Events.blockedPeriodEvents(response.blocked_periods),
                 ];
+                const events = [...timedEvents, ...Events.blockedPeriodEvents(response.blocked_periods)];
 
                 if (fullCalendar.view.type !== 'dayGridMonth') {
+                    fitHours(recordId, timedEvents);
                     events.push(
                         ...Events.workingPlanEvents(
                             Events.findProvider(recordId),
@@ -81,6 +82,25 @@ App.Pages.Calendar = (function () {
                 fullCalendar.addEventSource(events);
             })
             .always(() => $('#loading').css('visibility', ''));
+    }
+
+    // The time grid runs from the first working stylist or event to the last.
+    function fitHours(recordId, timedEvents) {
+        const providers = isProviderFilter()
+            ? [Events.findProvider(recordId)].filter(Boolean)
+            : vars('available_providers');
+        const hours = Events.visibleHours(
+            providers,
+            fullCalendar.view.currentStart,
+            fullCalendar.view.currentEnd,
+            timedEvents,
+        );
+
+        Object.entries(hours).forEach(([option, value]) => {
+            if (fullCalendar.getOption(option) !== value) {
+                fullCalendar.setOption(option, value);
+            }
+        });
     }
 
     function onSelect(info) {

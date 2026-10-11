@@ -637,6 +637,53 @@ App.Utils.CalendarEvents = (function () {
         return {dayPlan: workingPlan[date.format('dddd').toLowerCase()] || null, exception};
     }
 
+    /**
+     * The time grid's hours: whole hours from the earliest working start or event
+     * to the latest end over the range, as FullCalendar slotMinTime/slotMaxTime.
+     * The full day when nobody works and nothing is booked.
+     *
+     * @param {Array} providers Whose working plans count.
+     * @param {Date} rangeStart
+     * @param {Date} rangeEnd
+     * @param {Array} events Timed events ({start, end}); one across midnight shows the full day.
+     * @returns {Object} {slotMinTime, slotMaxTime}
+     */
+    function visibleHours(providers, rangeStart, rangeEnd, events) {
+        let first = null;
+        let last = null;
+        const widen = (startMinutes, endMinutes) => {
+            first = first === null ? startMinutes : Math.min(first, startMinutes);
+            last = last === null ? endMinutes : Math.max(last, endMinutes);
+        };
+        const minutesOf = (time) => moment(time, 'HH:mm').hours() * 60 + moment(time, 'HH:mm').minutes();
+
+        for (const day = moment(rangeStart).startOf('day'); day.isBefore(rangeEnd); day.add(1, 'day')) {
+            providers.forEach((provider) => {
+                const {dayPlan} = dayPlanFor(provider, day);
+                if (dayPlan) {
+                    widen(minutesOf(dayPlan.start), minutesOf(dayPlan.end));
+                }
+            });
+        }
+
+        events.forEach((event) => {
+            const start = moment(event.start);
+            const end = moment(event.end);
+            if (end.isAfter(moment(start).endOf('day'))) {
+                widen(0, 24 * 60);
+            } else {
+                widen(start.hours() * 60 + start.minutes(), end.hours() * 60 + end.minutes());
+            }
+        });
+
+        if (first === null) {
+            return {slotMinTime: '00:00:00', slotMaxTime: '24:00:00'};
+        }
+
+        const hour = (h) => String(h).padStart(2, '0') + ':00:00';
+        return {slotMinTime: hour(Math.floor(first / 60)), slotMaxTime: hour(Math.ceil(last / 60))};
+    }
+
     function at(date, time) {
         return moment(date.format('YYYY-MM-DD') + ' ' + time, 'YYYY-MM-DD HH:mm').toDate();
     }
@@ -797,5 +844,6 @@ App.Utils.CalendarEvents = (function () {
         workingPlanEvents,
         workingIntervals,
         freeSlotEvents,
+        visibleHours,
     };
 })();
