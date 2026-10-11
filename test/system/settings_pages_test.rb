@@ -67,6 +67,22 @@ class SettingsPagesTest < ApplicationSystemTestCase
     end
   end
 
+  test "message settings show the intercept fields only for Debug" do
+    Setting.set("messages_enabled", "1")
+    visit "/messages_settings"
+    assert_selector "#messages-enabled", wait: 5
+    assert_no_selector "#messages-intercept-email"
+    assert_no_text "Every outgoing email"
+
+    select "Debug", from: "messages-enabled"
+    assert_selector "#messages-intercept-email", wait: 5
+    assert_selector "#messages-intercept-phone"
+    assert_text "Every outgoing email"
+
+    select "On", from: "messages-enabled"
+    assert_no_selector "#messages-intercept-email", wait: 5
+  end
+
   test "the notices editor is white on a tinted page background" do
     Setting.set("company_background_color", "#f8efe4")
     visit legal_settings_url

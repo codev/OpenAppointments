@@ -115,8 +115,11 @@ class SettingsPagesTest < ActionDispatch::IntegrationTest
       assert_select "option[value='0']", text: /^Off/
       assert_select "option[value='debug'][selected]", text: /^Debug/
     end
-    assert_select "input[name='settings[messages_intercept_email]'][value='dev@example.org'][data-enabled-when='messages_enabled=debug']"
-    assert_select "input[name='settings[messages_intercept_phone]'][value='+447700900123'][data-enabled-when='messages_enabled=debug']"
+    assert_select "[data-visible-when='messages_enabled=debug']" do
+      assert_select "input[name='settings[messages_intercept_email]'][value='dev@example.org'][data-enabled-when='messages_enabled=debug']"
+      assert_select "input[name='settings[messages_intercept_phone]'][value='+447700900123'][data-enabled-when='messages_enabled=debug']"
+      assert_select "small", text: /Every outgoing email/
+    end
   end
 
   test "debug needs a valid intercept email and phone, and on or off clears them" do

@@ -555,7 +555,7 @@ class ImportFormsTest < ActionDispatch::IntegrationTest
   test "analyze from the form shows the summary on the page once" do
     login_admin
     post "/data/analyze", params: { form: "1", import_type: "ods", file: ods_upload, days_back: 21, days_forward: 21 }
-    assert_redirected_to "/data"
+    assert_redirected_to "/data#import-status"
     follow_redirect!
     assert_select "#import-results", text: /customers: \d+/
     get "/data"
@@ -566,6 +566,7 @@ class ImportFormsTest < ActionDispatch::IntegrationTest
     login_admin
     post "/data/start", params: { form: "1", import_type: "ods", file: ods_upload, phases: [ "customers" ], days_back: 21, days_forward: 21 }
     assert_response :redirect
+    assert_match %r{/data\?import_id=\w+#import-status\z}, response.location
     import_id = response.location[/import_id=(\w+)/, 1]
     get "/data", params: { import_id: import_id }
     assert_select "turbo-frame#import-status[data-poll-every='2000'] #import-results", text: /#{I18n.t('ea.import_running')}/
@@ -580,12 +581,12 @@ class ImportFormsTest < ActionDispatch::IntegrationTest
     login_admin
     csv = Rack::Test::UploadedFile.new(StringIO.new("a,b\n1,2\n"), "text/csv", original_filename: "x.csv")
     post "/data/analyze", params: { form: "1", import_type: "ods", file: csv }
-    assert_redirected_to "/data"
+    assert_redirected_to "/data#import-status"
     follow_redirect!
     assert_select "#import-results.alert-danger"
 
     post "/data/reset", params: { form: "1", confirmation: "nope" }
-    assert_redirected_to "/data"
+    assert_redirected_to "/data#import-status"
     follow_redirect!
     assert_select "#import-results.alert-danger", text: /I KNOW WHAT I AM DOING/
   end

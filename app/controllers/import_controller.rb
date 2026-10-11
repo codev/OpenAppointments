@@ -8,6 +8,9 @@ class ImportController < ApplicationController
   layout "backend"
 
   MAX_UPLOAD_SIZE = 100.megabytes
+  # Analyze, import and error redirects land on the result under the buttons.
+  RESULTS_ANCHOR = "import-status".freeze
+  RESULTS_PATH = "/data##{RESULTS_ANCHOR}".freeze
 
   before_action :require_session, except: [ :index ]
   before_action :forbid_unless_system_settings_edit, except: [ :index ]
@@ -88,7 +91,7 @@ class ImportController < ApplicationController
     }
     if form_post?
       session[:import_summary] = summary.map { |key, value| "#{key}: #{value}" }.join("\n")
-      redirect_to "/data"
+      redirect_to RESULTS_PATH
     else
       render json: { success: true, summary: summary }
     end
@@ -123,7 +126,7 @@ class ImportController < ApplicationController
       create_providers: ActiveModel::Type::Boolean.new.cast(params[:create_providers]) || Array(params[:phases]).include?("providers")
     )
     TenToEightImportJob.write_status(import_id, { state: "queued" })
-    form_post? ? redirect_to("/data?import_id=#{import_id}") : render(json: { success: true, import_id: import_id })
+    form_post? ? redirect_to("/data?import_id=#{import_id}##{RESULTS_ANCHOR}") : render(json: { success: true, import_id: import_id })
   rescue ArgumentError => e
     import_failed(e)
   ensure
@@ -161,7 +164,7 @@ class ImportController < ApplicationController
   def form_post? = params[:form].present?
 
   def import_failed(error)
-    form_post? ? redirect_to("/data", alert: error.message) : json_exception(error)
+    form_post? ? redirect_to(RESULTS_PATH, alert: error.message) : json_exception(error)
   end
 
   def extractor_type
