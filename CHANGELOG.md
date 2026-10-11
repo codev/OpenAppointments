@@ -8,6 +8,9 @@ CloudronManifest.json.
 - Customers, Services, Stylists and the other list pages: opening a record changes the address, so Back returns to the list
 - Import: 10to8 appointments that were moved come in as Rescheduled, greyed out and hideable with the Statuses filter
 - Import: running an import again repairs pictures an interrupted import left incomplete
+- Calendar: appointments are solid boxes, so overlapping ones stay readable; the Calendar and Appointments toolbars use the theme's header colour; Enable sync is no wider than it needs to be on tablets
+- Message settings: the intercept email and phone show only when Debug is chosen
+- Manage data: after Analyze or Start import the page opens at the result
 
 ## 2.5.0
 

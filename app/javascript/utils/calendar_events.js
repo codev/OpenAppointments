@@ -542,13 +542,14 @@ App.Utils.CalendarEvents = (function () {
         };
     }
 
+    // The colour mixed with white, opaque so overlapping events do not show through.
     function tint(color) {
         const hex = color.replace('#', '');
         if (hex.length !== 6) {
             return color;
         }
-        const [r, g, b] = [0, 2, 4].map((i) => parseInt(hex.substr(i, 2), 16));
-        return `rgba(${r}, ${g}, ${b}, 0.28)`;
+        const [r, g, b] = [0, 2, 4].map((i) => Math.round(255 - (255 - parseInt(hex.substr(i, 2), 16)) * 0.28));
+        return `rgb(${r}, ${g}, ${b})`;
     }
 
     function unavailabilityEvents(unavailabilities) {

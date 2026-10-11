@@ -7,7 +7,7 @@
 <div class="container-fluid backend-page pt-0 pb-0" id="calendar-page">
     <turbo-frame id="day_view" data-turbo-action="advance">
     <%= form_with url: appointments_path, method: :get, id: "day-filter", data: { turbo_frame: "day_view" } do %>
-        <div class="row mb-3 text-white py-3 bg-dark" id="calendar-toolbar">
+        <div class="row mb-3 py-3" id="calendar-toolbar">
             <div id="calendar-filter" class="col-lg-8">
                 <div class="calendar-filter-items d-flex flex-wrap gap-2">
                     <%= hidden_field_tag :date, @date, id: "day-date" %>

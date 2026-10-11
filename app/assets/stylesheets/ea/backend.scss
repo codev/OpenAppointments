@@ -577,13 +577,13 @@ body .modal.full-screen .modal-push {
 
 }
 
-/* On mobile viewports the sync buttons should occupy a full row, with the
-   action buttons (add, reload, view switch) appearing on the next line. */
+/* On mobile viewports the sync buttons sit on a row of their own, as wide as
+   their content, with the action buttons (add, reload, view switch) on the next line. */
 @media (max-width: 991.98px) {
     #calendar-actions #enable-sync,
     #calendar-actions #sync-button-group {
         display: flex;
-        width: 100%;
+        width: fit-content;
         margin-bottom: 0.5rem;
     }
 
@@ -690,6 +690,10 @@ body .modal.full-screen .modal-push {
     }
 }
 
+#header .navbar-nav .nav-label-spacer {
+    display: none;
+}
+
 /* Below 1200px: logo above its text, icon above the label, tighter items.
    Font Awesome swaps each <i> for an <svg>, so icon rules name both. */
 @media (min-width: 768px) and (max-width: 1199.98px) {
@@ -734,6 +738,11 @@ body .modal.full-screen .modal-push {
 
     #header .navbar-nav .nav-link.dropdown-toggle::after {
         margin: 0.25rem 0 0;
+    }
+
+    // The cog has no label: an empty row puts its caret level with the others.
+    #header .navbar-nav .nav-label-spacer {
+        display: block;
     }
 }
 

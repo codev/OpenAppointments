@@ -97,6 +97,33 @@ class CalendarModalsTest < ApplicationSystemTestCase
     end
   end
 
+  test "appointment boxes are opaque so overlapping ones stay readable" do
+    Appointment.create!(provider: users(:zane), customer: users(:jx), service: services(:haircut),
+                        start_datetime: soon, end_datetime: soon + 30.minutes, appointment_status: AppointmentStatus.of("booked"))
+    visit calendar_url
+    assert_selector ".fc-event", text: "JX", wait: 10
+    background = page.evaluate_script(<<~JS)
+      getComputedStyle([...document.querySelectorAll('.fc-event')].find((e) => e.textContent.includes('JX'))).backgroundColor
+    JS
+    assert_match(/\Argb\(\d+, \d+, \d+\)\z/, background, "expected an opaque colour, got #{background}")
+  end
+
+  test "on a tablet Enable sync is only as wide as its icon and text" do
+    resize_window(800, 900)
+    visit calendar_url
+    assert_selector "#select-filter-item", wait: 10
+    find("#select-filter-item").find("option", text: "Zane").select_option
+    assert_selector "#enable-sync", visible: true, wait: 5
+    widths = page.evaluate_script(<<~JS)
+      (() => {
+        const button = document.getElementById('enable-sync');
+        return { button: button.getBoundingClientRect().width,
+                 row: document.getElementById('calendar-actions').getBoundingClientRect().width };
+      })()
+    JS
+    assert_operator widths["button"], :<, widths["row"] / 2, "Enable sync spans #{widths['button']} of #{widths['row']}px"
+  end
+
   test "an ended appointment's popover offers no Cancel and the buttons stay inside the popover" do
     start = wall_now - 40.minutes
     Appointment.create!(provider: users(:zane), customer: users(:jx), service: services(:haircut),
