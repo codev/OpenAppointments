@@ -96,12 +96,15 @@ class CustomerMessagesTest < ActionDispatch::IntegrationTest
     get "/inbox"
     assert_response :success
     assert_includes response.body, "Running late"
-    assert_includes response.body, 'id="inbox-unread" class="badge bg-danger ms-1 ">1<'
+    assert_select "#header #inbox-icon.d-none"
+    assert_select "#header #inbox-unread.badge:not(.d-none)", text: "1"
 
     post "/messages/#{message.id}/mark_read"
     assert_equal 0, response.parsed_body["inbox_unread"]
     get "/inbox?unread=1"
     assert_not_includes response.body, "Running late"
+    assert_select "#header #inbox-icon:not(.d-none)"
+    assert_select "#header #inbox-unread.d-none"
   end
 
   test "customer search rows include unread counts" do

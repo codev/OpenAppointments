@@ -53,8 +53,9 @@ class MessagesPagesTest < ActionDispatch::IntegrationTest
     end
     get "/inbox"
     assert_select ".inbox-message.message-unread", 1 do
-      assert_select ".inbox-meta a, .inbox-meta .badge, .inbox-meta .fa-check, .inbox-meta .fa-arrow-down", count: 0
-      assert_select ".inbox-meta form[action='/messages/#{Message.last.id}/done']"
+      assert_select ".inbox-meta", count: 0
+      assert_select ".inbox-row > .bubble-row + .inbox-actions form[action='/messages/#{Message.last.id}/done'] .fa-check"
+      assert_select ".inbox-actions .fa-check-double", count: 0
       assert_select ".bubble-row.in .bubble.bubble-email[title='Email']" do
         assert_select ".bubble-subject", text: "Re: Confirmed"
         assert_select ".bubble-meta .bubble-who a[href='/customers?customer_id=#{users(:jx).id}&section=messages']", text: "JX"

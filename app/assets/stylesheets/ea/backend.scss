@@ -713,12 +713,21 @@ body .modal.full-screen .modal-push {
         line-height: 1.2;
     }
 
+    // The icon slot is padded to the unread pill's height (0.75em text plus
+    // 0.35em of that on each side = 1.275em), so the labels under every
+    // menu item line up whether the Inbox shows its icon or the pill.
     #header .navbar-nav .nav-link i,
     #header .navbar-nav .nav-link svg {
+        box-sizing: content-box;
         width: 1.25em;
         height: 1em;
+        padding: 0.1375em 0;
         margin: 0 0 0.25rem !important;
         text-align: center;
+    }
+
+    #header .navbar-nav .nav-link #inbox-unread {
+        margin: 0 0 0.25rem !important;
     }
 
     #header .navbar-nav .nav-link.dropdown-toggle::after {
@@ -734,6 +743,11 @@ body .modal.full-screen .modal-push {
 /* Inbox: unread blocks carry an accent bar on the left and bold text. The
    bubbles have no tail here: the page background is a gradient the tail's
    cut-out cannot match. */
+// A clearer line between messages than the default border on a tinted page.
+.inbox-message {
+    border-bottom-color: rgba(var(--bs-emphasis-color-rgb), 0.35) !important;
+}
+
 .inbox-message.message-unread {
     border-left: 4px solid var(--bs-primary);
     padding-left: 0.75rem;

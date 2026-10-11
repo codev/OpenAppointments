@@ -3,9 +3,10 @@
  * customer conversation. Updates the header unread badge from the response.
  */
 App.Utils.MarkRead = (function () {
+    // The badge stands in for the Inbox icon while anything is unread.
     function updateHeaderBadge(count) {
-        const $badge = $('#inbox-unread');
-        $badge.text(count).toggleClass('d-none', !count);
+        $('#inbox-unread').text(count).toggleClass('d-none', !count);
+        $('#inbox-icon').toggleClass('d-none', !!count);
     }
 
     function markRead(messageId) {
