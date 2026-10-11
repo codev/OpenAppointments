@@ -85,7 +85,7 @@
                                 <h6><%= day.provider.name %></h6>
                                 <div class="day-entries">
                                     <% day.entries.each do |entry| %>
-                                        <%= render "appointments/entry", entry: entry, day: day, formats: formats %>
+                                        <%= render "appointments/entry", entry: entry, day: day, formats: formats, unread_counts: @unread_counts %>
                                     <% end %>
                                 </div>
                             </div>
@@ -126,5 +126,6 @@
 <%= render "calendar/modals" %>
 
 <% content_for :scripts do %>
-    <%= ea_js "utils/ui", "pages/appointments" %>
+    <%= ea_js "utils/ui", "utils/calendar_events", "utils/calendar_event_popover", "http/calendar_http_client",
+              "pages/appointments" %>
 <% end %>

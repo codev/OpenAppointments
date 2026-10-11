@@ -1005,12 +1005,25 @@ $bubble-radius: 1.1rem;
     line-height: 1.25;
 }
 
+/* Appointment and unavailability entries are buttons that open the details
+   popover. The background reset stays below the entry kinds' backgrounds. */
+#calendar .calendar-view button.day-entry {
+    width: 100%;
+    text-align: left;
+    font: inherit;
+}
+
+.calendar-view button.day-entry {
+    background-color: transparent;
+}
+
 #calendar .calendar-view .day-entry-time {
     display: block;
     color: var(--bs-secondary-color);
 }
 
-#calendar .calendar-view a.day-entry:hover {
+#calendar .calendar-view a.day-entry:hover,
+#calendar .calendar-view button.day-entry:hover {
     background: rgba(var(--bs-emphasis-color-rgb), 0.075);
 }
 

@@ -265,28 +265,71 @@ App.Utils.CalendarEvents = (function () {
 
     function onEventClick(info) {
         const $target = $(info.el);
-        closePopover();
-
-        const Popover = App.Utils.CalendarEventPopover;
-        const isCustom = $target.hasClass('fc-custom');
-        let $html;
 
         if ($target.hasClass('fc-free')) {
+            closePopover();
             newAppointmentAt(info.event.extendedProps.data.providerId, info.event.start);
             return;
         }
 
+        let kind = 'appointment';
         if ($target.hasClass('fc-blocked-period')) {
+            kind = 'blocked-period';
+        } else if ($target.hasClass('fc-working-plan-exception')) {
+            kind = 'working-plan-exception';
+        } else if ($target.hasClass('fc-unavailability')) {
+            kind = 'unavailability';
+        }
+
+        showPopover(info, kind, $target.hasClass('fc-custom'));
+    }
+
+    /**
+     * A List entry (appointments page) opens the same popover as the calendar,
+     * from the event row it carries in data-event.
+     *
+     * @param {HTMLElement} el
+     */
+    function openEntryPopover(el) {
+        const data = $(el).data('event');
+        const info = {
+            el,
+            event: {
+                title: $(el).data('title'),
+                start: moment(data.start_datetime).toDate(),
+                end: moment(data.end_datetime).toDate(),
+                extendedProps: {data},
+            },
+        };
+
+        // Below the entry in the list; Bootstrap flips it above when there is no room.
+        showPopover(info, data.is_unavailability ? 'unavailability' : 'appointment', true, 'bottom');
+    }
+
+    /**
+     * @param {Object} info FullCalendar event info, or the same shape for a List entry.
+     * @param {string} kind appointment, unavailability, working-plan-exception or blocked-period.
+     * @param {boolean} isCustom A stored (not generated) unavailability or exception, so editable.
+     * @param {string} [placement] top (the calendar grid) or bottom (the List).
+     */
+    function showPopover(info, kind, isCustom, placement = 'top') {
+        const $target = $(info.el);
+        closePopover();
+
+        const Popover = App.Utils.CalendarEventPopover;
+        let $html;
+
+        if (kind === 'blocked-period') {
             $html = Popover.buildBlockedPeriodPopover(info);
         } else {
-            const generated = $target.hasClass('fc-unavailability') || $target.hasClass('fc-working-plan-exception');
+            const generated = kind === 'unavailability' || kind === 'working-plan-exception';
             const editable = generated ? isCustom : true;
             const displayEdit = editable && canEdit() ? '' : 'd-none';
             const displayDelete = editable && canDelete() ? 'me-2' : 'd-none';
 
-            if ($target.hasClass('fc-working-plan-exception')) {
+            if (kind === 'working-plan-exception') {
                 $html = Popover.buildWorkingPlanExceptionPopover(info, displayEdit, displayDelete);
-            } else if ($target.hasClass('fc-unavailability')) {
+            } else if (kind === 'unavailability') {
                 $html = Popover.buildUnavailabilityPopover(info, displayEdit, displayDelete);
             } else {
                 $html = Popover.buildAppointmentPopover(info, displayEdit, displayDelete);
@@ -294,7 +337,7 @@ App.Utils.CalendarEvents = (function () {
         }
 
         $target.popover({
-            placement: 'top',
+            placement,
             title: App.Utils.String.escapeHtml(info.event.title),
             content: $html,
             html: true,
@@ -307,7 +350,7 @@ App.Utils.CalendarEvents = (function () {
         $popoverTarget = $target;
 
         const $popover = $calendarPage().find('.popover');
-        if ($popover.length && $popover.position().top < 200) {
+        if (placement === 'top' && $popover.length && $popover.position().top < 200) {
             $popover.css('top', '200px');
         }
     }
@@ -835,6 +878,7 @@ App.Utils.CalendarEvents = (function () {
         findProvider,
         findService,
         closePopover,
+        openEntryPopover,
         openEventForm,
         newEventDialog,
         saveWorkingPlanException,

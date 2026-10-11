@@ -28,6 +28,19 @@ class AppointmentsPageTest < ApplicationSystemTestCase
     assert_no_selector ".modal.show", wait: 5
 
     find(".day-entry-appointment", text: "JX - Trim Cut").click
+    assert_selector ".popover", wait: 5
+    popover_top, header_bottom = page.evaluate_script(
+      "[document.querySelector('.popover').getBoundingClientRect().top, document.getElementById('header').getBoundingClientRect().bottom]"
+    )
+    assert_operator popover_top, :>=, header_bottom, "the popover is hidden under the header"
+    within(".popover", wait: 5) do
+      assert_text "JX"
+      assert_text "Morning cut"
+      assert_selector "a", text: "Messages"
+      assert_selector ".cancel-popover", visible: true
+      click_on "Edit"
+    end
+    assert_no_selector ".popover", wait: 5
     assert_selector "#save-appointment", visible: true, wait: 5
     assert_field "appointment-notes", with: "Morning cut"
     wait_for_modal

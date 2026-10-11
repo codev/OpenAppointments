@@ -156,18 +156,9 @@ class CalendarController < ApplicationController
 
     {
       appointments: appointments.map do |appointment|
-        EaRows.appointment_row(appointment).merge(
-          "provider" => appointment.provider && EaRows.provider_row(appointment.provider),
-          "service" => appointment.service && EaRows.service_row(appointment.service),
-          "customer" => appointment.customer && EaRows.customer_row(appointment.customer)
-                          .merge("unread_messages" => unread_counts[appointment.customer.id] || 0)
-        )
+        EaRows.calendar_appointment_row(appointment, unread_messages: unread_counts[appointment.id_users_customer] || 0)
       end,
-      unavailabilities: unavailabilities.map do |unavailability|
-        EaRows.appointment_row(unavailability).merge(
-          "provider" => unavailability.provider && EaRows.provider_row(unavailability.provider)
-        )
-      end,
+      unavailabilities: unavailabilities.map { |unavailability| EaRows.calendar_unavailability_row(unavailability) },
       blocked_periods: BlockedPeriod.for_period(start_date, end_date).map { |p| EaRows.blocked_period_row(p) }
     }
   end

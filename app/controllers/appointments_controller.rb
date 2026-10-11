@@ -23,7 +23,7 @@ class AppointmentsController < ApplicationController
     @services = Service.joins(:provider_links).distinct.order(:name).to_a
     @columns = build_columns
     backend_page_vars(page_title: helpers.lang("appointments"), active_menu: "appointments")
-    script_vars(edit_appointment: edit_appointment_var, first_weekday: Setting.get("first_weekday"))
+    script_vars(edit_appointment: edit_appointment_var, first_weekday: Setting.get("first_weekday"), **popover_script_vars)
     html_vars(appointment_statuses: @statuses)
     render :index
   end
@@ -98,10 +98,13 @@ class AppointmentsController < ApplicationController
     dates = (0...@days).map { |offset| @date + offset }
     providers = @provider_id.positive? ? @providers.select { |p| p.id == @provider_id } : @providers
     range = dates.first.beginning_of_day..dates.last.end_of_day
-    appointments = role_events(Appointment.appointments.where(start_datetime: range).includes(:service, :customer, :appointment_status))
+    appointments = role_events(Appointment.appointments.where(start_datetime: range).includes(:provider, :service, :customer, :appointment_status))
                    .select { |a| a.status.blank? || @selected_statuses.include?(a.status) }
                    .select { |a| @service_id.zero? || a.id_services == @service_id }
-    unavailabilities = role_events(Appointment.unavailabilities.where("start_datetime <= ? AND end_datetime >= ?", range.end, range.begin))
+    unavailabilities = role_events(Appointment.unavailabilities.where("start_datetime <= ? AND end_datetime >= ?", range.end, range.begin)
+                                              .includes(:provider))
+    # Entries carry the calendar popover's data, unread message counts included.
+    @unread_counts = Message.unread_counts_for(appointments.filter_map(&:id_users_customer).uniq)
     blocked = BlockedPeriod.for_period(dates.first, dates.last).to_a
 
     dates.map do |date|
