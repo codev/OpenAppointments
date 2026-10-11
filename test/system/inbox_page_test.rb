@@ -39,6 +39,23 @@ class InboxPageTest < ApplicationSystemTestCase
     assert message.reload.read?
   end
 
+  test "a long message fills the line up to Done; a short one stays the width of its text" do
+    long = Message.create!(direction: "incoming", channel: "email", from_address: users(:jx).email,
+                           customer_id: users(:jx).id, body: "Running late " * 40, status: "received")
+    short = Message.create!(direction: "incoming", channel: "email", from_address: users(:jx).email,
+                            customer_id: users(:jx).id, body: "Hi", status: "received")
+    login_as_admin
+    visit "/inbox"
+    rect = "JSON.parse(JSON.stringify(this.getBoundingClientRect()))"
+    bubble = find("#inbox-message-#{long.id} .bubble").evaluate_script(rect)
+    done = find("#inbox-message-#{long.id} .inbox-actions .btn").evaluate_script(rect)
+    assert_operator done["top"], :<, bubble["bottom"], "Done stays on the bubble's line"
+    assert_operator done["left"] - bubble["right"], :<, 20, "the bubble reaches Done"
+
+    row = find("#inbox-message-#{short.id} .inbox-row").evaluate_script(rect)
+    assert_operator find("#inbox-message-#{short.id} .bubble").evaluate_script(rect)["width"], :<, row["width"] / 2
+  end
+
   test "an unknown inbox message is deleted after the confirm" do
     message = Message.create!(direction: "incoming", channel: "email", from_address: "who@example.org",
                               body: "Who is this?", status: "received")

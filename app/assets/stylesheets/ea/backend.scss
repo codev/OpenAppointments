@@ -832,6 +832,14 @@ $bubble-radius: 1.1rem;
     }
 }
 
+// On the Inbox pages the bubble takes the line up to Done; the bubble inside
+// still shrinks to its text. Below 16rem of room Done wraps under it.
+.inbox-row .bubble-row {
+    flex: 1 1 16rem;
+    max-width: none;
+    min-width: 0;
+}
+
 .bubble {
     --bubble-bg: #e9e9eb;
     position: relative;

@@ -142,6 +142,18 @@ class CustomerMessageBubblesTest < ApplicationSystemTestCase
     assert_no_selector "#load-more-messages"
   end
 
+  test "a long message is capped at three quarters of the thread width" do
+    Appointment.where(id_users_customer: users(:jx).id).delete_all
+    incoming("Running late " * 40, 1.hour.ago)
+    login_as_admin
+    visit customers_url(customer_id: users(:jx).id, section: "messages")
+    row = find("#customer-messages .bubble-row.in", wait: 5)
+    content_width = "(s => this.parentElement.clientWidth - parseFloat(s.paddingLeft) - parseFloat(s.paddingRight))" \
+                    "(getComputedStyle(this.parentElement))"
+    ratio = row.evaluate_script("this.offsetWidth / #{content_width}")
+    assert_in_delta 0.75, ratio, 0.02
+  end
+
   test "the thread opens at the newest message and Load more adds older ones above without scrolling" do
     Appointment.where(id_users_customer: users(:jx).id).delete_all
     30.times { |i| incoming("Message #{i}", (40 - i).days.ago) }
