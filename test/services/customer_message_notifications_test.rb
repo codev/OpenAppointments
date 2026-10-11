@@ -33,7 +33,7 @@ class CustomerMessageNotificationsTest < ActiveSupport::TestCase
   test "the token is listed and renders the login link to the customer's messages" do
     assert_includes Messaging::Template::TOKENS, "Customer Message Link"
     context = Messaging::Template.customer_message_context(customer: @customer)
-    assert_match %r{\Ahttps?://.+/customers\?customer_id=#{@customer.id}&section=messages\z}, context["Customer Message Link"]
+    assert_match %r{\Ahttps?://.+/customers/#{@customer.id}/messages\z}, context["Customer Message Link"]
     assert_equal "JX", context["Customer Name"]
   end
 
@@ -46,9 +46,9 @@ class CustomerMessageNotificationsTest < ActiveSupport::TestCase
     assert_equal "provider", message.audience
     assert_equal @kai.email, message.to_address
     assert_equal "email", message.channel
-    assert_equal "New message from JX: #{Messaging::Template.base_url}/customers?customer_id=#{@customer.id}&section=messages", message.subject
+    assert_equal "New message from JX: #{Messaging::Template.base_url}/customers/#{@customer.id}/messages", message.subject
     assert_includes message.body, "JX has sent you a message."
-    assert_includes message.body, "/customers?customer_id=#{@customer.id}&section=messages"
+    assert_includes message.body, "/customers/#{@customer.id}/messages"
     assert_equal @notification.id, message.notification_id
     assert_nil message.appointment_id
   end
@@ -70,7 +70,7 @@ class CustomerMessageNotificationsTest < ActiveSupport::TestCase
     assert_equal %w[email smsgateway], Message.outgoing.order(:id).pluck(:channel)
     sms = Message.outgoing.find_by(channel: "smsgateway")
     assert_equal @kai.phone_number, sms.to_address
-    assert_includes sms.body, "/customers?customer_id=#{@customer.id}&section=messages"
+    assert_includes sms.body, "/customers/#{@customer.id}/messages"
   ensure
     Setting.set("messages_smsgateway_enabled", "0")
   end

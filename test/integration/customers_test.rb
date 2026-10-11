@@ -13,7 +13,7 @@ class CustomersTest < ActionDispatch::IntegrationTest
     Setting.set("provider_label", "Stylist")
     Setting.set("provider_label_plural", "Stylists")
     login_admin
-    get "/customers/#{users(:jx).id}/edit"
+    get "/customers/#{users(:jx).id}/messages"
     assert_select "#customer-message-composer .channel-option[data-value='all']", text: "All"
     get "/appointments"
     assert_select "select#filter-provider option", text: "All Stylists"
@@ -23,7 +23,7 @@ class CustomersTest < ActionDispatch::IntegrationTest
     { "messages_twilio_enabled" => "1", "messages_twilio_account_sid" => "AC1", "messages_twilio_auth_token" => "token",
       "messages_twilio_from" => "+15005550006" }.each { |name, value| Setting.set(name, value) }
     login_admin
-    get "/customers/#{users(:jx).id}/edit"
+    get "/customers/#{users(:jx).id}/messages"
     assert_select "#customer-message-composer .channel-option", count: 3
     assert_select "#customer-message-composer .channel-option.channel-twilio[data-value='twilio']", text: "Twilio"
     assert_select "#customer-message-composer .channel-option[data-value='all']", text: "All"
@@ -43,19 +43,46 @@ class CustomersTest < ActionDispatch::IntegrationTest
     assert_select "#add-customer"
   end
 
-  test "the deep link redirects to edit and the edit page carries the messages panel and history" do
+  test "Details and Messages are separate sections with their own URLs" do
     login_admin
-    get "/customers", params: { customer_id: users(:jx).id, section: "messages" }
-    assert_redirected_to "/customers/#{users(:jx).id}/edit?section=messages"
-    follow_redirect!
+    jx = users(:jx).id
+    get "/customers/#{jx}/edit"
     assert_select "#customers-page.editing"
-    assert_select "#customer-messages[data-customer-id=?][data-scroll=true]", users(:jx).id.to_s
-    assert_select "#customer-message-composer input#message-channel[type=hidden]"
-    assert_select "#customer-message-composer .dropup #message-channel-button", text: "Select One"
+    assert_select "#customer-sections .nav-link.active[aria-current=page]", text: "Details"
+    assert_select "#customer-sections a.nav-link[href=?][data-turbo-frame=customers_record][data-turbo-action=advance]",
+                  "/customers/#{jx}/messages", text: "Messages"
+    assert_select "form.crud-form"
     assert_select "#customer-appointments .appointment-row a[href='/calendar/reschedule/abc123def456'] strong",
                   text: "Trim Cut - Zane"
     assert_select "#customer-appointments small", text: "20/07/2026 10:00 am"
+    assert_select "#customer-messages", count: 0
+
+    get "/customers/#{jx}/messages"
+    assert_select "#customers-page.editing"
+    assert_select "#customer-sections .nav-link.active[aria-current=page]", text: "Messages"
+    assert_select "#customer-sections a.nav-link[href=?]", "/customers/#{jx}/edit", text: "Details"
+    assert_select "form.crud-form", count: 0
+    assert_select "#customer-messages[data-customer-id=?][data-scroll=true]", jx.to_s
+    assert_select "#customer-message-composer input#message-channel[type=hidden]"
+    assert_select "#customer-message-composer .dropup #message-channel-button", text: "Select One"
     assert_select "script[src*='components/customer_messages']"
+  end
+
+  test "a new customer has only the details and old deep links open the sections" do
+    login_admin
+    get "/customers/new"
+    assert_select "#customer-sections", count: 0
+    assert_select "form.crud-form"
+
+    get "/customers", params: { customer_id: users(:jx).id, section: "messages" }
+    assert_redirected_to "/customers/#{users(:jx).id}/messages"
+    get "/customers", params: { customer_id: users(:jx).id }
+    assert_redirected_to "/customers/#{users(:jx).id}/edit"
+  end
+
+  test "the messages section needs access to the customer" do
+    get "/customers/#{users(:jx).id}/messages"
+    assert_redirected_to "/login"
   end
 
   test "the appointment list labels each status and greys the ones that freed their slot" do

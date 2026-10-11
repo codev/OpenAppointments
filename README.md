@@ -131,8 +131,9 @@ Admin > Messages manages all notifications:
   reminders), audiences, providers and {{Token}} texts. Defaults replicate the old
   hardcoded emails plus an 8am same-day reminder.
 - Logs: every message sent/received. Inbox: incoming messages to deal with,
-  unknown senders included. The customer page shows each customer's thread,
-  unread badges and a manual send box.
+  unknown senders included. Each customer page has Details and Messages
+  sections; Messages (/customers/:id/messages) shows the thread, unread badges
+  and a manual send box, and every messages link opens it.
 - Waiting list: with the switch on (Settings > Business Logic) the booking time step
   offers a signup. A cancelled slot is offered to matching signups straight away,
   longest waiting first and a stagger apart; a daily scan tells signups whose

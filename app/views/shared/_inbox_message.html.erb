@@ -28,7 +28,7 @@
             <div class="bubble-meta">
                 <span class="bubble-who">
                     <% if message.customer %>
-                        <a href="/customers?customer_id=<%= message.customer.id %>&section=messages" class="fw-bold"><%= message.customer.name %></a>
+                        <a href="/customers/<%= message.customer.id %>/messages" class="fw-bold"><%= message.customer.name %></a>
                     <% else %>
                         <span class="fw-bold"><%= lang('messages_unknown_sender') %></span>
                     <% end %>

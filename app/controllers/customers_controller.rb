@@ -22,15 +22,33 @@ class CustomersController < ApplicationController
     ) DESC
   SQL
 
-  before_action :require_customer_access, only: %i[edit update destroy]
+  before_action -> { require_backend_page!(PAGE[:resource]) }, only: :messages
+  # Re-declared, not added to: a second before_action :load_record would replace CrudPage's.
+  before_action :load_record, only: %i[edit messages update destroy]
+  before_action :require_customer_access, only: %i[edit messages update destroy]
   before_action :require_add_allowed, only: %i[new create]
 
-  # GET /customers?customer_id=N[&section=messages] is the deep link from the
-  # messages log and calendar popovers: open the record on the messages panel.
+  # GET /customers?customer_id=N[&section=messages]: the older deep link, still in
+  # sent notifications, opens the record's Details or Messages section.
   def index
-    return redirect_to edit_customer_path(params[:customer_id], section: params[:section]) if params[:customer_id].present?
+    if params[:customer_id].present?
+      return redirect_to(params[:section] == "messages" ? messages_customer_path(params[:customer_id]) : edit_customer_path(params[:customer_id]))
+    end
 
     super
+  end
+
+  # GET /customers/:id/edit is the Details section; GET /customers/:id/messages
+  # the conversation (customers/_form switches on @section).
+  def edit
+    @section = "details"
+    super
+  end
+
+  def messages
+    @section = "messages"
+    @editing = true
+    render_page
   end
 
   # POST /customers/search - JSON rows for the appointments modal.

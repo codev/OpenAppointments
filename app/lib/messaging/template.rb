@@ -62,7 +62,7 @@ module Messaging
         "Customer First Name" => customer.name.to_s.split(" ").first.to_s,
         "Customer Email" => customer.email.to_s,
         "Customer Phone" => sms_address(customer).to_s,
-        "Customer Message Link" => "#{base_url}/customers?customer_id=#{customer.id}&section=messages",
+        "Customer Message Link" => "#{base_url}/customers/#{customer.id}/messages",
         "Customer Notes" => customer.notes.to_s,
         "Customer Extra Questions" => -> { extra_questions(customer) }
       )

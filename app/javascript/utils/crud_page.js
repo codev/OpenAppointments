@@ -13,11 +13,13 @@
 
         const resource = $page.find('turbo-frame').first().attr('id');
 
-        // backend.scss shows the details only while the page is "editing".
+        // backend.scss shows the details only while the page is "editing": while
+        // the record frame holds a record (a form, or a section such as a
+        // customer's messages); the list renders it empty.
         App.once('crud-page', () => {
             document.addEventListener('turbo:frame-load', () => {
                 const $current = $('[data-crud-page]');
-                $current.toggleClass('editing', $current.find('.crud-form').length > 0);
+                $current.toggleClass('editing', $current.find('turbo-frame[id$="_record"]').children().length > 0);
             });
         });
 
