@@ -25,8 +25,8 @@ App.Components.CustomerMessages = (function () {
         const unread = incoming && !message.read;
         const failed = message.status === 'failed';
 
-        const $meta = $('<div/>', {
-            'class': 'bubble-meta',
+        const $when = $('<span/>', {
+            'class': 'bubble-when',
             'html': [
                 $('<span/>', {
                     'text':
@@ -34,9 +34,9 @@ App.Components.CustomerMessages = (function () {
                         (failed ? ' ' + lang('messages_status_failed') + ' - ' + message.channel_label : ''),
                 }),
                 unread
-                    ? $('<button/>', {
-                          'type': 'button',
-                          'class': 'btn btn-link btn-sm p-0 ms-2 mark-read',
+                    ? $('<a/>', {
+                          'href': '#',
+                          'class': 'mark-read ms-2',
                           'data-id': message.id,
                           'text': lang('mark_as_read'),
                       })
@@ -60,7 +60,7 @@ App.Components.CustomerMessages = (function () {
             'html': [
                 message.subject ? $('<div/>', {'class': 'bubble-subject', 'text': message.subject}) : null,
                 $('<div/>', {'class': 'bubble-body', 'text': message.body}),
-                $meta,
+                $('<div/>', {'class': 'bubble-meta', 'html': $when}),
             ],
         });
 

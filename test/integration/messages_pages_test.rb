@@ -53,15 +53,14 @@ class MessagesPagesTest < ActionDispatch::IntegrationTest
     end
     get "/inbox"
     assert_select ".inbox-message.message-unread", 1 do
-      assert_select ".inbox-meta a[href='/customers?customer_id=#{users(:jx).id}']", text: "JX"
-      assert_select ".inbox-meta .badge", text: "Email", count: 0
-      assert_select ".inbox-meta .badge", text: "Received"
-      assert_select ".inbox-meta .mark-read", count: 0
-      assert_select ".inbox-meta .fa-arrow-down", count: 0
+      assert_select ".inbox-meta a, .inbox-meta .badge, .inbox-meta .fa-check, .inbox-meta .fa-arrow-down", count: 0
+      assert_select ".inbox-meta form[action='/messages/#{Message.last.id}/done']"
       assert_select ".bubble-row.in .bubble.bubble-email[title='Email']" do
         assert_select ".bubble-subject", text: "Re: Confirmed"
-        assert_select ".bubble-meta", text: /07\/03 2:02 pm/
-        assert_select ".bubble-meta .mark-read"
+        assert_select ".bubble-meta .bubble-who a[href='/customers?customer_id=#{users(:jx).id}&section=messages']", text: "JX"
+        assert_select ".bubble-meta .bubble-who", text: /JX\s+j@example.org/
+        assert_select ".bubble-meta .bubble-when", text: /07\/03 2:02 pm/
+        assert_select ".bubble-meta .bubble-when a.mark-read[href='#'][data-id='#{Message.last.id}']", text: "Mark as read"
       end
     end
     assert css_select(".inbox-message .bubble-body").sole.text.start_with?("Line one\nLine two\nLong text"), "line breaks are kept"

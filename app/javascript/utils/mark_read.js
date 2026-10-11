@@ -1,5 +1,5 @@
 /**
- * Mark as read buttons (.mark-read with data-id) on the inbox pages and the
+ * Mark as read links (.mark-read with data-id) on the inbox pages and the
  * customer conversation. Updates the header unread badge from the response.
  */
 App.Utils.MarkRead = (function () {
@@ -18,7 +18,8 @@ App.Utils.MarkRead = (function () {
         const $button = $(event.currentTarget);
         const $row = $button.closest('.message-unread');
 
-        $button.prop('disabled', true);
+        event.preventDefault();
+        $button.addClass('pe-none');
         markRead($button.data('id')).done(() => {
             $row.removeClass('message-unread fw-bold');
             $button.replaceWith($('<i/>', {class: 'fas fa-check text-success', title: lang('read')}));

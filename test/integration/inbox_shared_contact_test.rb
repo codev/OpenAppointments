@@ -38,7 +38,7 @@ class InboxSharedContactTest < ActionDispatch::IntegrationTest
       post "/messages/#{@message.id}/move", params: { customer_id: @partner.id }, headers: STREAM
     end
     assert_select "turbo-stream[action=replace][target=?]", "inbox-message-#{@message.id}" do
-      assert_select "template .inbox-meta a[href='/customers?customer_id=#{@partner.id}']", text: "Partner Person"
+      assert_select "template .bubble-meta a[href='/customers?customer_id=#{@partner.id}&section=messages']", text: "Partner Person"
       assert_select "template .inbox-moved", text: I18n.t("ea.message_moved")
       assert_select "template form[action='/messages/#{@message.id}/move'] input[name=customer_id][value=?]", @jx.id.to_s
     end

@@ -26,6 +26,19 @@ class InboxPageTest < ApplicationSystemTestCase
     assert_not message.reload.done?
   end
 
+  test "the Mark as read link in the bubble marks the row read in place" do
+    message = Message.create!(direction: "incoming", channel: "email", from_address: users(:jx).email,
+                              customer_id: users(:jx).id, body: "Running late", status: "received")
+    login_as_admin
+    visit "/inbox"
+    page.execute_script("window.__inboxMarker = 1")
+    within("#inbox-message-#{message.id} .bubble-when") { click_on "Mark as read" }
+    assert_no_selector "#inbox-message-#{message.id}.message-unread", wait: 5
+    assert_selector "#inbox-unread", visible: false
+    assert_equal 1, page.evaluate_script("window.__inboxMarker"), "the link must not reload the page"
+    assert message.reload.read?
+  end
+
   test "an unknown inbox message is deleted after the confirm" do
     message = Message.create!(direction: "incoming", channel: "email", from_address: "who@example.org",
                               body: "Who is this?", status: "received")

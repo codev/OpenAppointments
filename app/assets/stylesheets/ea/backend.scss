@@ -916,13 +916,33 @@ $bubble-radius: 1.1rem;
     white-space: pre-line;
 }
 
+// The bubble's bottom line: who it is from on the left (Inbox pages), the
+// time and actions on the right.
 .bubble-meta {
     position: relative;
     z-index: 2;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.25rem 1.5rem;
     margin-top: 0.15rem;
-    text-align: right;
     font-size: 0.75rem;
     color: var(--bs-secondary-color);
+}
+
+.bubble-when {
+    margin-left: auto;
+    text-align: right;
+    white-space: nowrap;
+
+    // The icon buttons keep the line's size: Font Awesome swaps the icon in
+    // after the thread has scrolled, so a taller button would move it.
+    .btn {
+        font-size: inherit;
+        line-height: inherit;
+        border: 0;
+        vertical-align: baseline;
+    }
 }
 
 #load-more-messages {
