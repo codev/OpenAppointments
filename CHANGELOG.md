@@ -14,6 +14,7 @@ CloudronManifest.json.
 - Login: the login page is now Staff Login, welcoming staff to manage appointments and messages
 - Header: the Appointments page is now called List
 - Login: staff land on List after logging in
+- List: each date is a heading with its stylists one under another at full width, filling the screen on phones and tablets
 - Calendar: the stylist and service filter is a compact dropdown button like Statuses, and the day runs from the first stylist working or appointment to the last instead of midnight to midnight
 - Manage data: Analyze and the import summary show readable counts, with do-not-contact customers next to the customers count
 

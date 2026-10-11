@@ -17,7 +17,7 @@ class TurboDriveTest < ApplicationSystemTestCase
     page.driver.browser.logs.get(:browser) # drop the earlier tests' console entries
     page.execute_script("window.__driveMarker = 1")
 
-    drive_to "Appointments"
+    drive_to "List"
     assert_selector "#day-filter", wait: 5
     assert_driven
 
@@ -80,12 +80,12 @@ class TurboDriveTest < ApplicationSystemTestCase
     within("#messages-nav") { click_on "Settings" }
     assert_selector "#messages-retention-days", wait: 5
     fill_in "messages-retention-days", with: "7"
-    drive_to "Appointments"
+    drive_to "List"
     assert_selector "#message-modal .modal-title", text: "Settings", wait: 5
     within("#message-modal") { click_on "Cancel" }
     assert_no_selector "#message-modal", wait: 5
     assert_selector "#messages-retention-days"
-    drive_to "Appointments"
+    drive_to "List"
     within("#message-modal") { click_on "Leave page" }
 
     assert_selector "#day-filter", wait: 5
