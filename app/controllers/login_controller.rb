@@ -4,7 +4,7 @@ class LoginController < ApplicationController
   rate_limit to: 5, within: 5.minutes, only: :validate, with: :too_many_attempts
 
   def index
-    redirect_to calendar_path and return if logged_in?
+    redirect_to appointments_path and return if logged_in?
 
     html_vars(page_title: helpers.lang("login"), company_name: Setting.get("company_name"))
   end
@@ -43,7 +43,7 @@ class LoginController < ApplicationController
     end
     LoginThrottle.clear_username(username)
 
-    dest_url = session[:dest_url] || calendar_url
+    dest_url = session[:dest_url] || appointments_url
     log_in(user_data)
     form_post? ? redirect_to(dest_url) : json_response({ success: true })
   end

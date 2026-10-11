@@ -55,7 +55,7 @@ class ApplicationSystemTestCase < ActionDispatch::SystemTestCase
     fill_in "username", with: "administrator"
     fill_in "password", with: "administrator1"
     find("#login").click
-    assert_current_path %r{/calendar}, wait: 10
+    assert_current_path %r{/appointments}, wait: 10
   end
 
   # Typing during Bootstrap's fade-in loses keys to its focus handling, and a

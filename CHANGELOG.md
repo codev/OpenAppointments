@@ -13,6 +13,7 @@ CloudronManifest.json.
 - Manage data: after Analyze or Start import the page opens at the result
 - Login: the login page is now Staff Login, welcoming staff to manage appointments and messages
 - Header: the Appointments page is now called List
+- Login: staff land on List after logging in
 - Manage data: Analyze and the import summary show readable counts, with do-not-contact customers next to the customers count
 
 ## 2.5.0

@@ -29,7 +29,7 @@
 
             <% if display_login_button.to_s == "1" %>
                 <a class="backend-link badge bg-primary text-decoration-none px-2 d-inline-block my-1 my-md-0 p-1"
-                   href="<%= session[:user_id] ? "/calendar" : "/login" %>">
+                   href="<%= session[:user_id] ? "/appointments" : "/login" %>">
                     <i class="fas fa-sign-in-alt me-2"></i>
                     <%= session[:user_id] ? lang('backend_section') : lang('login') %>
                 </a>
