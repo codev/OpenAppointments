@@ -889,7 +889,6 @@ bs:
     appointment_statuses: 'Appointment Statuses'
     inbox: 'Inbox'
     inbox_hint: 'Incoming messages from your customers.'
-    unread: 'Unread'
     read: 'Read'
     message: 'Message'
     mark_as_read: 'Mark as read'
@@ -978,6 +977,8 @@ bs:
     message_move_to: "Premjesti u {name}"
     message_moved: "Poruka premještena"
     notification_tokens_hint: "Polja predloška koja možete koristiti. Kliknite jedno da ga umetnete tamo gdje ste pisali, ili da ga kopirate:"
-    inbox_info: "Dolazne poruke od korisnika. Označite svaku kao Gotovo nakon što je riješena; ostaje u historiji korisnika. Prikaži gotovo ih ponovo prikazuje uz Poništi."
+    inbox_info: "Dolazne poruke. Inbox prikazuje poruke koje treba obraditi, označite svaku kao Gotovo kada je riješena ili pročitana - i dalje ih možete čitati na stranici kupca ili u arhivi. Arhiva prikazuje poruke označene kao Gotovo - ima dugme Poništi koje ih vraća u Inbox."
     booking_release_time: "Vrijeme otvaranja"
     booking_release_time_hint: "Sljedeći dan na kraju ograničenja buduće rezervacije se otvara u ovo vrijeme svaki dan."
+    inbox_filter_archive: "Arhiva"
+    load_more_messages: "Učitaj još poruka"

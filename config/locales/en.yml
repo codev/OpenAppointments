@@ -897,7 +897,6 @@ en:
     inbox: 'Inbox'
     inbox_hint: 'Incoming messages from your customers.'
     inbox_info: "Incoming messages. Inbox lists messages to act on, mark each one done once it has been dealt with or read - you can still read them on the customer's page or in the archive. Archive lists messages that have been marked as done - it has an undo button to return them to the inbox."
-    unread: 'Unread'
     inbox_done: "Done"
     inbox_filter_archive: "Archive"
     inbox_done_by: "Done by {name} {time}"

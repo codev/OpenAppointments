@@ -889,7 +889,6 @@ et:
     appointment_statuses: 'Appointment Statuses'
     inbox: 'Inbox'
     inbox_hint: 'Incoming messages from your customers.'
-    unread: 'Unread'
     read: 'Read'
     message: 'Message'
     mark_as_read: 'Mark as read'
@@ -978,6 +977,8 @@ et:
     message_move_to: "Teisalda {name} juurde"
     message_moved: "Sõnum teisaldatud"
     notification_tokens_hint: "Mallis kasutatavad väljad. Klõpsa ühel, et sisestada see kirjutamiskohta, või kopeerida see:"
-    inbox_info: "Sissetulevad sõnumid klientidelt. Märgi iga sõnum pärast käsitlemist Tehtud; see jääb kliendi ajalukku. Näita tehtud kuvab need uuesti koos nupuga Võta tagasi."
+    inbox_info: "Sissetulevad sõnumid. Inbox näitab sõnumeid, mis vajavad tegelemist, märgi iga sõnum pärast käsitlemist või lugemist Tehtud - neid saab edasi lugeda kliendi lehel või arhiivis. Arhiiv näitab sõnumeid, mis on märgitud Tehtud - seal on nupp Võta tagasi, mis viib need Inboxi tagasi."
     booking_release_time: "Avanemise aeg"
     booking_release_time_hint: "Järgmine päev tulevikus broneerimise limiidi lõpus avaneb sel kellaajal iga päev."
+    inbox_filter_archive: "Arhiiv"
+    load_more_messages: "Laadi veel sõnumeid"

@@ -65,11 +65,11 @@ class MessagesController < ApplicationController
     end
   end
 
-  # The row leaves its list and the header badge follows.
+  # The row leaves its list and the header icon and count follow.
   def render_row_removed(message)
     render turbo_stream: [
       turbo_stream.remove("inbox-message-#{message.id}"),
-      turbo_stream.replace("inbox-count", partial: "shared/inbox_count", locals: { count: inbox_badge_count })
+      turbo_stream.replace("inbox-badge", partial: "shared/inbox_count", locals: { count: inbox_badge_count })
     ]
   end
 

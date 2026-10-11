@@ -889,7 +889,6 @@ sq:
     appointment_statuses: 'Appointment Statuses'
     inbox: 'Inbox'
     inbox_hint: 'Incoming messages from your customers.'
-    unread: 'Unread'
     read: 'Read'
     message: 'Message'
     mark_as_read: 'Mark as read'
@@ -978,6 +977,8 @@ sq:
     message_move_to: "Zhvendos te {name}"
     message_moved: "Mesazhi u zhvendos"
     notification_tokens_hint: "Fusha shablloni që mund të përdorni. Klikoni një për ta futur aty ku po shkruanit, ose për ta kopjuar:"
-    inbox_info: "Mesazhe hyrëse nga klientët. Shënoni secilin si Përfunduar pasi të trajtohet; mbetet në historikun e klientit. Shfaq të përfunduara i shfaq përsëri me mundësinë Anulo."
+    inbox_info: "Mesazhe hyrëse. Inbox liston mesazhet që duhen trajtuar - shënoni secilin si Përfunduar pasi të trajtohet ose të lexohet; mund t'i lexoni ende në faqen e klientit ose në Arkiv. Arkivi liston mesazhet e shënuara si Përfunduar - ka një buton Anulo që i kthen në Inbox."
     booking_release_time: "Ora e hapjes"
     booking_release_time_hint: "Dita tjetër në fund të limitit të rezervimit në të ardhmen hapet në këtë orë çdo ditë."
+    inbox_filter_archive: "Arkivi"
+    load_more_messages: "Ngarko më shumë mesazhe"

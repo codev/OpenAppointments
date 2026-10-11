@@ -889,7 +889,6 @@ cs:
     appointment_statuses: 'Appointment Statuses'
     inbox: 'Inbox'
     inbox_hint: 'Incoming messages from your customers.'
-    unread: 'Unread'
     read: 'Read'
     message: 'Message'
     mark_as_read: 'Mark as read'
@@ -978,6 +977,8 @@ cs:
     message_move_to: "Přesunout do {name}"
     message_moved: "Zpráva přesunuta"
     notification_tokens_hint: "Pole šablony, která můžete použít. Kliknutím na jedno ho vložíte tam, kde jste psali, nebo ho zkopírujete:"
-    inbox_info: "Příchozí zprávy od zákazníků. Po vyřízení označte každou jako Hotovo; zůstane v historii zákazníka. Zobrazit hotové je zobrazí znovu s možností Zpět."
+    inbox_info: "Příchozí zprávy. Inbox zobrazuje zprávy k vyřízení, po vyřízení nebo přečtení označte každou jako Hotovo - stále si je můžete přečíst na stránce zákazníka nebo v archivu. Archiv zobrazuje zprávy označené jako Hotovo - má tlačítko Zpět, které je vrátí do Inboxu."
     booking_release_time: "Čas otevření"
     booking_release_time_hint: "Další den na konci omezení rezervací v budoucnosti se otevírá v tuto dobu každý den."
+    inbox_filter_archive: "Archiv"
+    load_more_messages: "Načíst další zprávy"

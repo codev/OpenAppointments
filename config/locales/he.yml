@@ -889,7 +889,6 @@ he:
     appointment_statuses: 'Appointment Statuses'
     inbox: 'Inbox'
     inbox_hint: 'Incoming messages from your customers.'
-    unread: 'Unread'
     read: 'Read'
     message: 'Message'
     mark_as_read: 'Mark as read'
@@ -978,6 +977,8 @@ he:
     message_move_to: "העברה אל {name}"
     message_moved: "ההודעה הועברה"
     notification_tokens_hint: "שדות תבנית שניתן להשתמש בהם. לחצו על אחד כדי להוסיף אותו במקום שבו הקלדתם, או כדי להעתיק אותו:"
-    inbox_info: "הודעות נכנסות מלקוחות. סמנו כל אחת כטופל לאחר הטיפול; היא נשארת בהיסטוריית הלקוח. הצג מטופלים מציג אותן שוב עם אפשרות לבטל."
+    inbox_info: "הודעות נכנסות. Inbox מציג הודעות שדורשות טיפול, סמנו כל אחת כטופל לאחר הטיפול או הקריאה - עדיין אפשר לקרוא אותן בדף הלקוח או בארכיון. ארכיון מציג הודעות שסומנו כטופל - יש בו כפתור לבטל שמחזיר אותן ל-Inbox."
     booking_release_time: "שעת פתיחה"
     booking_release_time_hint: "היום הבא בסוף מגבלת ההזמנה העתידית נפתח בשעה זו בכל יום."
+    inbox_filter_archive: "ארכיון"
+    load_more_messages: "טעינת הודעות נוספות"

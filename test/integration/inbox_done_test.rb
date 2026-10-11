@@ -32,13 +32,19 @@ class InboxDoneTest < ActionDispatch::IntegrationTest
     assert_select "a[href='/unknown_inbox']", count: 0
   end
 
-  test "done leaves the inbox, shows under show done with who and when, and undo brings it back" do
+  test "done leaves the inbox, shows in the archive with who and when, and undo brings it back" do
     message = incoming("Running late")
     login_admin
 
     post "/messages/#{message.id}/done", headers: STREAM
     assert_response :success
     assert_select "turbo-stream[action=remove][target=?]", "inbox-message-#{message.id}"
+    assert_select "turbo-stream[action=replace][target=inbox-badge]", 1, "the icon and the count are swapped as one" do
+      assert_select "template > #inbox-badge", 1 do
+        assert_select "#inbox-icon:not(.d-none)"
+        assert_select "#inbox-count.d-none"
+      end
+    end
     message.reload
     assert message.done?
     assert_equal users(:admin).id, message.done_by_id

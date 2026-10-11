@@ -889,7 +889,6 @@ pl:
     appointment_statuses: 'Appointment Statuses'
     inbox: 'Inbox'
     inbox_hint: 'Incoming messages from your customers.'
-    unread: 'Unread'
     read: 'Read'
     message: 'Message'
     mark_as_read: 'Mark as read'
@@ -978,6 +977,8 @@ pl:
     message_move_to: "Przenieś do {name}"
     message_moved: "Wiadomość przeniesiona"
     notification_tokens_hint: "Pola szablonu, których możesz użyć. Kliknij jedno, aby wstawić je w miejscu, w którym pisałeś, lub aby je skopiować:"
-    inbox_info: "Wiadomości przychodzące od klientów. Oznacz każdą jako Zakończone po jej załatwieniu; pozostanie w historii klienta. Pokaż zakończone wyświetla je ponownie z opcją Cofnij."
+    inbox_info: "Wiadomości przychodzące. Inbox pokazuje wiadomości do załatwienia - oznacz każdą jako Zakończone po jej załatwieniu lub przeczytaniu; nadal można je przeczytać na stronie klienta lub w Archiwum. Archiwum pokazuje wiadomości oznaczone jako Zakończone - ma przycisk Cofnij, który przywraca je do Inbox."
     booking_release_time: "Godzina otwarcia"
     booking_release_time_hint: "Następny dzień na końcu limitu przyszłych rezerwacji otwiera się o tej godzinie każdego dnia."
+    inbox_filter_archive: "Archiwum"
+    load_more_messages: "Wczytaj więcej wiadomości"

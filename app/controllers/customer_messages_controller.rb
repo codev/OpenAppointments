@@ -88,10 +88,14 @@ class CustomerMessagesController < ApplicationController
   # The messages since the customer's most recent appointment, so the thread
   # opens on the current conversation; the latest PAGE when there is no past
   # appointment or nothing was sent since it. Newest first; callers reverse.
+  # start_datetime is the provider's wall clock, created_at the server's, so
+  # the appointment is picked on the business clock and its start converted
+  # to an absolute time before it meets created_at.
   def opening_window(history, customer_id)
-    latest_start = Appointment.appointments.where(id_users_customer: customer_id)
-                              .where("start_datetime <= ?", Time.current).maximum(:start_datetime)
-    since = latest_start ? history.where("created_at >= ?", latest_start).newest_first.to_a : []
+    latest = Appointment.appointments.where(id_users_customer: customer_id)
+                        .where("start_datetime <= ?", BookingWindows.wall_clock_now)
+                        .order(start_datetime: :desc).first
+    since = latest ? history.where("created_at >= ?", BookingWindows.starts_at(latest)).newest_first.to_a : []
     since.presence || history.newest_first.limit(PAGE).to_a
   end
 

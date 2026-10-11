@@ -1,5 +1,8 @@
 <%# Header Inbox icon and count of messages not yet done: the count takes the
-    icon's place while there are any. Locals: count. %>
+    icon's place while there are any. One wrapper so a Turbo stream can swap
+    both at once. Locals: count. %>
 <% any = count.to_i.positive? %>
-<i id="inbox-icon" class="fas fa-inbox me-2 <%= 'd-none' if any %>"></i>
-<span id="inbox-count" class="badge bg-danger me-2 <%= 'd-none' unless any %>"><%= count %></span>
+<span id="inbox-badge">
+    <i id="inbox-icon" class="fas fa-inbox me-2 <%= 'd-none' if any %>"></i>
+    <span id="inbox-count" class="badge bg-danger me-2 <%= 'd-none' unless any %>"><%= count %></span>
+</span>

@@ -89,6 +89,24 @@ class CustomerMessagesTest < ActionDispatch::IntegrationTest
     assert_equal "30 Nov #{Time.current.year - 1} 09:05", times["Last year"]
   end
 
+  test "the opening window follows the business clock, not the server's" do
+    Appointment.where(id_users_customer: customer.id).delete_all
+    Setting.set("default_timezone", "Pacific/Auckland")
+    users(:zane).update!(timezone: "Pacific/Auckland")
+    start = BookingWindows.wall_clock_now - 30.minutes
+    Appointment.create!(customer: customer, provider: users(:zane), service: services(:haircut),
+                        start_datetime: start, end_datetime: start + 30.minutes, is_unavailability: false)
+    21.times { |i| incoming("Before #{i}", 2.hours.ago + i.minutes) }
+    incoming("After", 10.minutes.ago)
+    login_admin
+    post "/customer_messages/find", params: { customer_id: customer.id }
+    assert_equal [ "After" ], response.parsed_body["messages"].map { |row| row["body"] },
+                 "an appointment that started half an hour ago on the business clock anchors the window"
+    assert_equal true, response.parsed_body["more"]
+  ensure
+    Setting.set("default_timezone", "UTC")
+  end
+
   test "the header badge counts messages not yet done; marking one read does not change it, done does" do
     message = Message.create!(direction: "incoming", channel: "email", from_address: customer.email,
                               customer_id: customer.id, body: "Running late", status: "received")

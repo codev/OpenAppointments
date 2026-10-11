@@ -889,7 +889,6 @@ fa:
     appointment_statuses: 'Appointment Statuses'
     inbox: 'Inbox'
     inbox_hint: 'Incoming messages from your customers.'
-    unread: 'Unread'
     read: 'Read'
     message: 'Message'
     mark_as_read: 'Mark as read'
@@ -978,6 +977,8 @@ fa:
     message_move_to: "انتقال به {name}"
     message_moved: "پیام منتقل شد"
     notification_tokens_hint: "فیلدهای قالب که می‌توانید استفاده کنید. برای درج در محل نوشتن یا کپی کردن، روی یکی کلیک کنید:"
-    inbox_info: "پیام‌های دریافتی از مشتریان. پس از رسیدگی به هر پیام، آن را انجام‌شده علامت بزنید؛ در تاریخچه مشتری باقی می‌ماند. نمایش انجام‌شده‌ها آن‌ها را دوباره با گزینه بازگشت فهرست می‌کند."
+    inbox_info: "پیام‌های دریافتی. Inbox پیام‌هایی را نشان می‌دهد که باید به آن‌ها رسیدگی شود، پس از رسیدگی یا خواندن هر پیام آن را انجام شد علامت بزنید - همچنان می‌توانید آن‌ها را در صفحه مشتری یا در بایگانی بخوانید. بایگانی پیام‌هایی را نشان می‌دهد که انجام شد علامت خورده‌اند - دکمه بازگشت در آن، پیام‌ها را به Inbox برمی‌گرداند."
     booking_release_time: "زمان باز شدن"
     booking_release_time_hint: "روز بعد در پایان محدودیت رزرو آینده هر روز در این زمان باز می‌شود."
+    inbox_filter_archive: "بایگانی"
+    load_more_messages: "بارگذاری پیام‌های بیشتر"

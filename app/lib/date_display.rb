@@ -33,9 +33,10 @@ module DateDisplay
     "#{format(time, style: style, year: year)} #{time.strftime(time_format).strip}"
   end
 
-  # Conversations: the year only when it is not this year.
+  # Conversations: the year only when it is not this year. Stored times are
+  # wall clock, so the comparison is against the plain clock too.
   def format_time_brief(time)
-    format_time(time, year: time.year != Time.current.year)
+    format_time(time, year: time.year != Time.now.year)
   end
 
   # The year token sits at one end of every pattern; drop it with the

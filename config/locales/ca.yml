@@ -889,7 +889,6 @@ ca:
     appointment_statuses: 'Appointment Statuses'
     inbox: 'Inbox'
     inbox_hint: 'Incoming messages from your customers.'
-    unread: 'Unread'
     read: 'Read'
     message: 'Message'
     mark_as_read: 'Mark as read'
@@ -978,6 +977,8 @@ ca:
     message_move_to: "Mou a {name}"
     message_moved: "Missatge mogut"
     notification_tokens_hint: "Camps de plantilla que podeu utilitzar. Feu clic en un per inserir-lo on escrivíeu, o per copiar-lo:"
-    inbox_info: "Missatges entrants dels clients. Marqueu cadascun com a Fet quan l'hàgiu gestionat; es manté a l'historial del client. Mostra els fets els torna a llistar amb Desfés."
+    inbox_info: "Missatges entrants. Inbox llista els missatges pendents d'atendre, marqueu cadascun com a Fet quan l'hàgiu gestionat o llegit - encara els podreu llegir a la pàgina del client o a l'arxiu. Arxiu llista els missatges marcats com a Fet - té un botó Desfés per tornar-los a Inbox."
     booking_release_time: "Hora d'obertura"
     booking_release_time_hint: "El dia següent al final del límit de reserves futures s'obre a aquesta hora cada dia."
+    inbox_filter_archive: "Arxiu"
+    load_more_messages: "Carrega més missatges"

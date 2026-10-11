@@ -23,7 +23,7 @@ App.Utils.MarkRead = (function () {
         event.preventDefault();
         $button.addClass('pe-none');
         markRead($button.data('id')).done(() => {
-            $row.removeClass('message-unread fw-bold');
+            $row.removeClass('message-unread');
             $button.replaceWith($('<i/>', {class: 'fas fa-check text-success', title: lang('read')}));
         });
     }

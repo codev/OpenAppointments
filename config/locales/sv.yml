@@ -889,7 +889,6 @@ sv:
     appointment_statuses: 'Appointment Statuses'
     inbox: 'Inbox'
     inbox_hint: 'Incoming messages from your customers.'
-    unread: 'Unread'
     read: 'Read'
     message: 'Message'
     mark_as_read: 'Mark as read'
@@ -978,6 +977,8 @@ sv:
     message_move_to: "Flytta till {name}"
     message_moved: "Meddelandet flyttat"
     notification_tokens_hint: "Mallfält du kan använda. Klicka på ett för att infoga det där du skrev, eller för att kopiera det:"
-    inbox_info: "Inkommande meddelanden från kunder. Markera varje som Klar när det är hanterat; det finns kvar i kundens historik. Visa klara listar dem igen med Ångra."
+    inbox_info: "Inkommande meddelanden. Inbox visar meddelanden som ska hanteras - markera varje som Klar när det är hanterat eller läst; de kan fortfarande läsas på kundens sida eller i Arkiv. Arkiv visar meddelanden som markerats som Klar - där finns en Ångra-knapp som flyttar dem tillbaka till Inbox."
     booking_release_time: "Öppningstid"
     booking_release_time_hint: "Nästa dag i slutet av den maximala framförhållningen öppnas vid denna tid varje dag."
+    inbox_filter_archive: "Arkiv"
+    load_more_messages: "Ladda fler meddelanden"
