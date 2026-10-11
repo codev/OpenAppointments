@@ -8,7 +8,7 @@
 <% delete_form_id = "delete-#{controller_name.singularize}-#{record.id}" %>
 <%= form_with model: record, scope: controller_name.singularize, class: "crud-form",
               url: url_for(record.persisted? ? { action: :update, id: record } : { action: :create }),
-              data: { turbo_frame: controller_name } do |f| %>
+              data: { turbo_frame: controller_name, turbo_action: "advance" } do |f| %>
     <% if record.errors.any? %>
         <div class="form-message alert alert-danger">
             <%= record.errors[:base].first || lang('fields_are_required') %>
@@ -23,7 +23,7 @@
             <%= lang('save') %>
         </button>
         <%= link_to lang('cancel'), url_for(action: :index, selected: record.id), class: "btn btn-outline-secondary ms-2",
-                    data: { turbo_frame: controller_name } %>
+                    data: { turbo_frame: controller_name, turbo_action: "advance" } %>
         <% if record.persisted? %>
             <button type="submit" form="<%= delete_form_id %>" class="btn btn-outline-danger ms-auto"
                     data-turbo-confirm-title="<%= delete_title %>">
@@ -36,6 +36,7 @@
 
 <% if record.persisted? %>
     <%= form_with url: url_for(action: :destroy, id: record), method: :delete, id: delete_form_id,
-                  data: { turbo_frame: controller_name, turbo_confirm: lang('delete_record_prompt') } do %>
+                  data: { turbo_frame: controller_name, turbo_action: "advance",
+                          turbo_confirm: lang('delete_record_prompt') } do %>
     <% end %>
 <% end %>

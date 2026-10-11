@@ -17,6 +17,25 @@ class CustomersPageTest < ApplicationSystemTestCase
     assert_selector "#customer-appointments a[href*='/calendar/reschedule/abc123def456']"
   end
 
+  test "opening a customer changes the URL and Back returns to the list" do
+    visit customers_url
+    assert_selector ".customer-row", wait: 5
+    find(".customer-row[data-id='#{users(:jx).id}']").click
+    assert_selector "#customers-page.editing", wait: 5
+    assert_current_path "/customers/#{users(:jx).id}/edit", wait: 5
+
+    page.go_back
+    assert_current_path "/customers", wait: 5
+    assert_selector ".customer-row", wait: 5
+    assert_no_selector "#customers-page.editing"
+
+    find(".customer-row[data-id='#{users(:jx).id}']").click
+    assert_selector "#customers-page.editing", wait: 5
+    click_on "Cancel"
+    assert_no_selector "#customers-page.editing", wait: 5
+    assert_current_path %r{\A/customers(\?|\z)}, wait: 5
+  end
+
   test "add, edit, filter, cancel and delete" do
     visit customers_url
     assert_selector ".customer-row", wait: 5
