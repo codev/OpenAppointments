@@ -678,7 +678,6 @@ uk:
     notify_users_on_delete_question: Бажаєте повідомити клієнта про скасування запису?
     messages: Messages
     messages_hint: Manage notifications, providers and message logs
-    unknown_inbox: Unknown Inbox
     messages_providers: Providers
     messages_provider: Provider
     messages_logs: Logs
@@ -972,7 +971,6 @@ uk:
     notification_has_unknown_tokens: "Невідомий плейсхолдер"
     token_copied: "Скопійовано {token}"
     inbox_done: "Оброблено"
-    inbox_show_done: "Показати оброблені"
     inbox_done_by: "Оброблено {name} {time}"
     message_delete_confirm: "Видалити це повідомлення назавжди? Цю дію не можна скасувати."
     message_deleted: "Повідомлення видалено"
@@ -981,6 +979,5 @@ uk:
     message_moved: "Повідомлення переміщено"
     notification_tokens_hint: "Поля шаблону, які можна використовувати. Натисніть на одне, щоб вставити його там, де ви друкували, або щоб скопіювати:"
     inbox_info: "Вхідні повідомлення від клієнтів. Позначайте кожне як Оброблено після обробки; воно залишається в історії клієнта. Показати оброблені знову виводить їх з можливістю Скасувати."
-    unknown_inbox_info: "Вхідні повідомлення від відправників, які не відповідають жодному клієнту. Позначайте кожне як Оброблено після обробки. Ці повідомлення також відображаються в основному журналі."
     booking_release_time: "Час відкриття"
     booking_release_time_hint: "Наступний день у кінці обмеження на майбутнє бронювання відкривається щодня в цей час."

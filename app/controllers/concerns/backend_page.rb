@@ -61,9 +61,9 @@ module BackendPage
     }.to_h
   end
 
-  # Header badge: unread Inbox messages not yet Done, for admins.
+  # Header badge: unread incoming messages not yet Done, for admins.
   def inbox_badge_count
-    inbox_access? ? Message.inbox.unread.not_done.count : 0
+    inbox_access? ? Message.unread.not_done.count : 0
   end
 
   def assistant_provider_ids

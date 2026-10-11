@@ -116,17 +116,6 @@
                         </a>
                     <% end %>
 
-                    <% if inbox_access? %>
-                        <% unknown_unread = Message.unread.unknown_sender.not_done.count %>
-                        <a class="dropdown-item" href="/unknown_inbox">
-                            <i class="fas fa-inbox me-2"></i>
-                            <%= lang('unknown_inbox') %>
-                            <% if unknown_unread.positive? %>
-                                <span class="badge bg-danger ms-1"><%= unknown_unread %></span>
-                            <% end %>
-                        </a>
-                    <% end %>
-
                     <% if can?(:edit, :system_settings) %>
                         <a class="dropdown-item" href="/data">
                             <i class="fas fa-file-import me-2"></i>

@@ -678,7 +678,6 @@ da:
     notify_users_on_delete_question: Vil du give kunden besked om aflysningen af aftalen?
     messages: Messages
     messages_hint: Manage notifications, providers and message logs
-    unknown_inbox: Unknown Inbox
     messages_providers: Providers
     messages_provider: Provider
     messages_logs: Logs
@@ -972,7 +971,6 @@ da:
     notification_has_unknown_tokens: "Ukendt pladsholder"
     token_copied: "Kopierede {token}"
     inbox_done: "Udført"
-    inbox_show_done: "Vis udførte"
     inbox_done_by: "Udført af {name} {time}"
     message_delete_confirm: "Slet denne besked permanent? Dette kan ikke fortrydes."
     message_deleted: "Besked slettet"
@@ -981,6 +979,5 @@ da:
     message_moved: "Besked flyttet"
     notification_tokens_hint: "Skabelonfelter du kan bruge. Klik på et for at indsætte det, hvor du skrev, eller for at kopiere det:"
     inbox_info: "Indkommende beskeder fra kunder. Markér hver som Udført, når den er håndteret; den forbliver i kundens historik. Vis udførte viser dem igen med Fortryd."
-    unknown_inbox_info: "Indkommende beskeder fra afsendere, der ikke matcher nogen kunde. Markér hver som Udført, når den er håndteret. Disse beskeder vises også i hovedloggen."
     booking_release_time: "Åbningstidspunkt"
     booking_release_time_hint: "Den næste dag i slutningen af den fremtidige bookinggrænse åbner på dette tidspunkt hver dag."

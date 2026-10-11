@@ -53,20 +53,22 @@ _Avoid_: Buffer
 ## Messages
 
 **Inbox**:
-Admin-only list of individual inbound customer messages waiting to be dealt with.
+Admin-only list of individual inbound messages waiting to be dealt with, from customers and
+unknown senders alike.
+_Avoid_: Unknown Inbox (merged into the Inbox)
 
-**Unknown Inbox**:
-Admin-only list of inbound messages from senders that match no customer, with the same Done
-as the Inbox.
+**Unknown sender**:
+An inbound message whose email or phone matches no customer. It sits in the Inbox labelled
+Unknown sender and, having no customer history, can be deleted there.
 
 **Done**:
 An Inbox message an admin has dealt with. It leaves the Inbox, can be undone, and stays in
-the customer history.
+the customer history (when the sender is a customer).
 _Avoid_: Archived, deleted
 
 **Archive**:
-The Inbox (or Unknown Inbox) filter listing Done messages, each with Undo. The default
-filter, To Do, lists the rest.
+The Inbox filter listing Done messages, each with Undo. The default filter, To Do, lists the
+rest.
 
 **Extra questions**:
 The configurable questions a customer answers when booking, such as Pronouns and Access

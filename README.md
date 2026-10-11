@@ -130,9 +130,9 @@ Admin > Messages manages all notifications:
 - Notifications: template panels with event (including Appointment Coming Up
   reminders), audiences, providers and {{Token}} texts. Defaults replicate the old
   hardcoded emails plus an 8am same-day reminder.
-- Logs: every message sent/received; unknown senders land in the Unknown Inbox
-  (user menu). The customer page shows each customer's thread, unread badges and a
-  manual send box.
+- Logs: every message sent/received. Inbox: incoming messages to deal with,
+  unknown senders included. The customer page shows each customer's thread,
+  unread badges and a manual send box.
 - Waiting list: with the switch on (Settings > Business Logic) the booking time step
   offers a signup. A cancelled slot is offered to matching signups straight away,
   longest waiting first and a stagger apart; a daily scan tells signups whose

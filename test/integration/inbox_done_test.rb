@@ -14,25 +14,22 @@ class InboxDoneTest < ActionDispatch::IntegrationTest
                     customer_id: customer&.id, body: body, status: "received")
   end
 
-  test "stylists and assistants cannot open either inbox and do not see the links" do
+  test "stylists and assistants cannot open the inbox and do not see the link" do
     assistant = users(:sam)
     assistant.create_settings!(username: "samlogin", password: Passwords.hash("assistant1"))
     [ %w[janedoe janedoe1], %w[samlogin assistant1] ].each do |username, password|
       post "/login/validate", params: { username: username, password: password }
       get "/inbox"
       assert_response :forbidden, "#{username} on /inbox"
-      get "/unknown_inbox"
-      assert_response :forbidden, "#{username} on /unknown_inbox"
       get "/customers"
       assert_select "a[href='/inbox']", count: 0
-      assert_select "a[href='/unknown_inbox']", count: 0
       reset!
     end
 
     login_admin
     get "/customers"
     assert_select "a[href='/inbox']"
-    assert_select "a[href='/unknown_inbox']"
+    assert_select "a[href='/unknown_inbox']", count: 0
   end
 
   test "done leaves the inbox, shows under show done with who and when, and undo brings it back" do
@@ -76,35 +73,35 @@ class InboxDoneTest < ActionDispatch::IntegrationTest
     assert_includes response.parsed_body["messages"].map { |row| row["body"] }, "Running late"
   end
 
-  test "the header badge and the unread filter leave done messages out" do
+  test "the header badge and the unread filter count unknown senders and leave done messages out" do
     incoming("Open one")
+    incoming("Who is this?", customer: nil)
     done = incoming("Done one")
     done.update!(done_at: Time.current, done_by_id: users(:admin).id)
     login_admin
     get "/inbox", params: { unread: 1 }
-    assert_select "#inbox-unread", text: "1"
+    assert_select "#inbox-unread", text: "2"
     assert_includes response.body, "Open one"
+    assert_includes response.body, "Who is this?"
     assert_not_includes response.body, "Done one"
   end
 
-  test "the unknown inbox has done, show done and undo too" do
+  test "an unknown sender's message has done, archive and undo too" do
     message = incoming("Who is this?", customer: nil)
     login_admin
     post "/messages/#{message.id}/done", headers: STREAM
     assert message.reload.done?
-    get "/unknown_inbox"
+    get "/inbox"
     assert_not_includes response.body, "Who is this?"
-    get "/unknown_inbox", params: { done: 1 }
+    get "/inbox", params: { done: 1 }
     assert_select "#inbox-message-#{message.id} form[action='/messages/#{message.id}/undo_done']"
   end
 
-  test "the inbox filters are To Do, Unread Only and Archive; the unknown inbox has To Do and Archive" do
+  test "the inbox filters are To Do, Unread Only and Archive" do
     login_admin
     get "/inbox"
     assert_equal [ "To Do", "Unread Only", "Archive" ], css_select("#inbox-page .btn-group a").map { |a| a.text.strip }
     assert_select "#inbox-page .btn-group a.btn-secondary", text: "To Do"
-    get "/unknown_inbox"
-    assert_equal [ "To Do", "Archive" ], css_select("#unknown-inbox-page .btn-group a").map { |a| a.text.strip }
   end
 
   test "the next page keeps the filter" do

@@ -22,7 +22,7 @@ class MessagesPagesTest < ActionDispatch::IntegrationTest
     Message.create!(direction: "incoming", channel: "twilio", from_address: "+447700900999",
                     body: "Who is this?", status: "received")
     login_admin
-    (MESSAGES_PAGES + %w[unknown_inbox]).each do |page|
+    MESSAGES_PAGES.each do |page|
       get "/#{page}"
       assert_response :success, "expected 200 for admin on /#{page}"
     end
@@ -30,10 +30,16 @@ class MessagesPagesTest < ActionDispatch::IntegrationTest
 
   test "provider is forbidden from messages pages" do
     login_provider
-    (MESSAGES_PAGES + %w[unknown_inbox]).each do |page|
+    MESSAGES_PAGES.each do |page|
       get "/#{page}"
       assert_response :forbidden, "expected 403 for provider on /#{page}"
     end
+  end
+
+  test "there is no unknown inbox page" do
+    login_admin
+    get "/unknown_inbox"
+    assert_response :not_found
   end
 
   test "unauthenticated users are redirected to login" do
@@ -46,12 +52,9 @@ class MessagesPagesTest < ActionDispatch::IntegrationTest
                     subject: "Re: Confirmed", body: "Line one\nLine two\n" + ("Long text " * 80), status: "received",
                     created_at: Time.current.change(month: 3, day: 7, hour: 14, min: 2))
     login_admin
-    %w[inbox unknown_inbox].each do |page|
-      get "/#{page}"
-      assert_select "##{page.dasherize}-page table", 0, "#{page}: no table"
-      assert_select "##{page.dasherize}-page .bubble-key .bubble.bubble-email", text: "Email"
-    end
     get "/inbox"
+    assert_select "#inbox-page table", 0, "no table"
+    assert_select "#inbox-page .bubble-key .bubble.bubble-email", text: "Email"
     assert_select ".inbox-message.message-unread", 1 do
       assert_select ".inbox-meta", count: 0
       assert_select ".inbox-row > .bubble-row + .inbox-actions form[action='/messages/#{Message.last.id}/done'] .fa-check"
@@ -76,12 +79,18 @@ class MessagesPagesTest < ActionDispatch::IntegrationTest
     assert_select ".bubble-meta", text: /30\/11\/#{Time.current.year - 1} 9:05 am/
   end
 
-  test "unknown inbox messages stay unread until marked read" do
+  test "an unknown sender's message is listed in the inbox in date order, marked Unknown sender, and stays unread until marked read" do
+    known = Message.create!(direction: "incoming", channel: "email", from_address: users(:jx).email, customer_id: users(:jx).id,
+                            body: "Running late", status: "received", created_at: 1.hour.ago)
     message = Message.create!(direction: "incoming", channel: "twilio", from_address: "+447700900999",
                               body: "Hello?", status: "received")
     login_admin
-    get "/unknown_inbox"
+    get "/inbox"
     assert_response :success
+    assert_select "#inbox-message-#{message.id} .bubble-who", text: /Unknown sender\s+\+447700900999/
+    assert_select "#inbox-message-#{message.id} .bubble-who a", count: 0
+    assert_operator response.body.index("inbox-message-#{message.id}"), :<, response.body.index("inbox-message-#{known.id}"),
+                    "newest first, whoever sent it"
     assert_equal 1, Message.unread.unknown_sender.count
     assert_includes response.body, "mark-read"
 

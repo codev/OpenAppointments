@@ -678,7 +678,6 @@ fa:
     notify_users_on_delete_question: آیا می‌خواهید مشتری را از لغو نوبت مطلع کنید؟
     messages: Messages
     messages_hint: Manage notifications, providers and message logs
-    unknown_inbox: Unknown Inbox
     messages_providers: Providers
     messages_provider: Provider
     messages_logs: Logs
@@ -972,7 +971,6 @@ fa:
     notification_has_unknown_tokens: "متغیر ناشناخته"
     token_copied: "{token} کپی شد"
     inbox_done: "انجام شد"
-    inbox_show_done: "نمایش انجام‌شده‌ها"
     inbox_done_by: "انجام شد توسط {name} در {time}"
     message_delete_confirm: "این پیام برای همیشه حذف شود؟ این کار قابل بازگشت نیست."
     message_deleted: "پیام حذف شد"
@@ -981,6 +979,5 @@ fa:
     message_moved: "پیام منتقل شد"
     notification_tokens_hint: "فیلدهای قالب که می‌توانید استفاده کنید. برای درج در محل نوشتن یا کپی کردن، روی یکی کلیک کنید:"
     inbox_info: "پیام‌های دریافتی از مشتریان. پس از رسیدگی به هر پیام، آن را انجام‌شده علامت بزنید؛ در تاریخچه مشتری باقی می‌ماند. نمایش انجام‌شده‌ها آن‌ها را دوباره با گزینه بازگشت فهرست می‌کند."
-    unknown_inbox_info: "پیام‌های دریافتی از فرستندگانی که با هیچ مشتری مطابقت ندارند. پس از رسیدگی به هر پیام، آن را انجام‌شده علامت بزنید. این پیام‌ها همچنین در گزارش اصلی نمایش داده می‌شوند."
     booking_release_time: "زمان باز شدن"
     booking_release_time_hint: "روز بعد در پایان محدودیت رزرو آینده هر روز در این زمان باز می‌شود."

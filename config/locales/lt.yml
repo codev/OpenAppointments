@@ -678,7 +678,6 @@ lt:
     notify_users_on_delete_question: Ar norite pranešti klientui apie susitikimo atšaukimą?
     messages: Messages
     messages_hint: Manage notifications, providers and message logs
-    unknown_inbox: Unknown Inbox
     messages_providers: Providers
     messages_provider: Provider
     messages_logs: Logs
@@ -972,7 +971,6 @@ lt:
     notification_has_unknown_tokens: "Nežinomas laukelis"
     token_copied: "Nukopijuota {token}"
     inbox_done: "Atlikta"
-    inbox_show_done: "Rodyti atliktus"
     inbox_done_by: "Atliko {name} {time}"
     message_delete_confirm: "Ar tikrai norite visam laikui pašalinti šią žinutę? Šio veiksmo atšaukti negalima."
     message_deleted: "Žinutė pašalinta"
@@ -981,6 +979,5 @@ lt:
     message_moved: "Žinutė perkelta"
     notification_tokens_hint: "Šablono laukeliai, kuriuos galite naudoti. Spustelėkite, kad įterptumėte ten, kur rašėte, arba kad nukopijuotumėte:"
     inbox_info: "Gaunamos žinutės nuo klientų. Pažymėkite kiekvieną kaip Atlikta, kai ją sutvarkysite; ji išliks kliento istorijoje. Rodyti atliktus jas vėl parodo su galimybe Atšaukti."
-    unknown_inbox_info: "Gaunamos žinutės nuo siuntėjų, kurie neatitinka jokio kliento. Pažymėkite kiekvieną kaip Atlikta, kai ją sutvarkysite. Šios žinutės taip pat rodomos pagrindiniame žurnale."
     booking_release_time: "Atidarymo laikas"
     booking_release_time_hint: "Kita diena, esanti ateities plano trukmės pabaigoje, kiekvieną dieną atsidaro šiuo laiku."

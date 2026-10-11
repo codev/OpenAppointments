@@ -678,7 +678,6 @@ cs:
     notify_users_on_delete_question: Chcete zákazníka informovat o zrušení schůzky?
     messages: Messages
     messages_hint: Manage notifications, providers and message logs
-    unknown_inbox: Unknown Inbox
     messages_providers: Providers
     messages_provider: Provider
     messages_logs: Logs
@@ -972,7 +971,6 @@ cs:
     notification_has_unknown_tokens: "Neznámý zástupný symbol"
     token_copied: "Zkopírováno {token}"
     inbox_done: "Hotovo"
-    inbox_show_done: "Zobrazit hotové"
     inbox_done_by: "Hotovo - {name} {time}"
     message_delete_confirm: "Trvale odstranit tuto zprávu? Tuto akci nelze vrátit zpět."
     message_deleted: "Zpráva odstraněna"
@@ -981,6 +979,5 @@ cs:
     message_moved: "Zpráva přesunuta"
     notification_tokens_hint: "Pole šablony, která můžete použít. Kliknutím na jedno ho vložíte tam, kde jste psali, nebo ho zkopírujete:"
     inbox_info: "Příchozí zprávy od zákazníků. Po vyřízení označte každou jako Hotovo; zůstane v historii zákazníka. Zobrazit hotové je zobrazí znovu s možností Zpět."
-    unknown_inbox_info: "Příchozí zprávy od odesílatelů, kteří neodpovídají žádnému zákazníkovi. Po vyřízení označte každou jako Hotovo. Tyto zprávy se také zobrazují v hlavním protokolu."
     booking_release_time: "Čas otevření"
     booking_release_time_hint: "Další den na konci omezení rezervací v budoucnosti se otevírá v tuto dobu každý den."

@@ -1,7 +1,7 @@
-<%# One Inbox or Unknown Inbox message: the other customers sharing its
-    contact with Move buttons, then one wrapping row with the message bubble
-    on the left and Done (or Done by with Undo) on the right. The bubble's
-    bottom line has the customer (linked to their conversation) and address on
+<%# One Inbox message: the other customers sharing its contact with Move
+    buttons, then one wrapping row with the message bubble on the left and
+    Done (or Done by with Undo) on the right. The bubble's bottom line has the
+    customer (linked to their conversation, or Unknown sender) and address on
     the left, the time, Mark as read and (unknown senders) Delete on the
     right. Locals: message, moved (after a Move). %>
 <% unread = message.direction == "incoming" && !message.read? %>

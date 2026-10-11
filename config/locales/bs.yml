@@ -678,7 +678,6 @@ bs:
     notify_users_on_delete_question: Želite li obavijestiti klijenta o otkazivanju termina?
     messages: Messages
     messages_hint: Manage notifications, providers and message logs
-    unknown_inbox: Unknown Inbox
     messages_providers: Providers
     messages_provider: Provider
     messages_logs: Logs
@@ -972,7 +971,6 @@ bs:
     notification_has_unknown_tokens: "Nepoznat zamjenski znak"
     token_copied: "Kopirano {token}"
     inbox_done: "Gotovo"
-    inbox_show_done: "Prikaži gotovo"
     inbox_done_by: "Gotovo od {name} {time}"
     message_delete_confirm: "Trajno izbrisati ovu poruku? Ovo se ne može poništiti."
     message_deleted: "Poruka izbrisana"
@@ -981,6 +979,5 @@ bs:
     message_moved: "Poruka premještena"
     notification_tokens_hint: "Polja predloška koja možete koristiti. Kliknite jedno da ga umetnete tamo gdje ste pisali, ili da ga kopirate:"
     inbox_info: "Dolazne poruke od korisnika. Označite svaku kao Gotovo nakon što je riješena; ostaje u historiji korisnika. Prikaži gotovo ih ponovo prikazuje uz Poništi."
-    unknown_inbox_info: "Dolazne poruke od pošiljalaca koji ne odgovaraju nijednom korisniku. Označite svaku kao Gotovo nakon što je riješena. Ove poruke se također pojavljuju u glavnom dnevniku."
     booking_release_time: "Vrijeme otvaranja"
     booking_release_time_hint: "Sljedeći dan na kraju ograničenja buduće rezervacije se otvara u ovo vrijeme svaki dan."

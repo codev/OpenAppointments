@@ -678,7 +678,6 @@
     notify_users_on_delete_question: Vil du varsle kunden om avbestillingen av avtalen?
     messages: Messages
     messages_hint: Manage notifications, providers and message logs
-    unknown_inbox: Unknown Inbox
     messages_providers: Providers
     messages_provider: Provider
     messages_logs: Logs
@@ -972,7 +971,6 @@
     notification_has_unknown_tokens: "Ukjent plassholder"
     token_copied: "Kopierte {token}"
     inbox_done: "Ferdig"
-    inbox_show_done: "Vis ferdige"
     inbox_done_by: "Ferdigstilt av {name} {time}"
     message_delete_confirm: "Slette denne meldingen permanent? Dette kan ikke angres."
     message_deleted: "Melding slettet"
@@ -981,6 +979,5 @@
     message_moved: "Melding flyttet"
     notification_tokens_hint: "Malfelt du kan bruke. Klikk på ett for å sette det inn der du skrev, eller for å kopiere det:"
     inbox_info: "Innkommende meldinger fra kunder. Merk hver som Ferdig når den er behandlet; den blir værende i kundehistorikken. Vis ferdige lister dem igjen med Angre."
-    unknown_inbox_info: "Innkommende meldinger fra avsendere som ikke samsvarer med noen kunde. Merk hver som Ferdig når den er behandlet. Disse meldingene vises også i hovedloggen."
     booking_release_time: "Åpningstidspunkt"
     booking_release_time_hint: "Den neste dagen ved slutten av den fremtidige bestillingsgrensen åpner på dette tidspunktet hver dag."

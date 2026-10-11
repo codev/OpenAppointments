@@ -678,7 +678,6 @@ de:
     notify_users_on_delete_question: Möchten Sie den Kunden über die Stornierung des Termins informieren?
     messages: Messages
     messages_hint: Manage notifications, providers and message logs
-    unknown_inbox: Unknown Inbox
     messages_providers: Providers
     messages_provider: Provider
     messages_logs: Logs
@@ -972,7 +971,6 @@ de:
     notification_has_unknown_tokens: "Unbekannter Platzhalter"
     token_copied: "{token} kopiert"
     inbox_done: "Erledigt"
-    inbox_show_done: "Erledigte anzeigen"
     inbox_done_by: "Erledigt von {name} {time}"
     message_delete_confirm: "Diese Nachricht dauerhaft löschen? Dies kann nicht rückgängig gemacht werden."
     message_deleted: "Nachricht gelöscht"
@@ -981,6 +979,5 @@ de:
     message_moved: "Nachricht verschoben"
     notification_tokens_hint: "Vorlagenfelder, die Sie verwenden können. Klicken Sie auf eines, um es an der Schreibposition einzufügen oder zu kopieren:"
     inbox_info: "Eingehende Nachrichten von Kunden. Markieren Sie jede als Erledigt, sobald sie bearbeitet ist; sie bleibt im Kundenverlauf. Erledigte anzeigen listet sie erneut mit Rückgängig auf."
-    unknown_inbox_info: "Eingehende Nachrichten von Absendern, die zu keinem Kunden passen. Markieren Sie jede als Erledigt, sobald sie bearbeitet ist. Diese Nachrichten erscheinen auch im Hauptprotokoll."
     booking_release_time: "Freigabezeit"
     booking_release_time_hint: "Der nächste Tag am Ende des zukünftigen Buchungslimits wird täglich zu dieser Zeit freigegeben."

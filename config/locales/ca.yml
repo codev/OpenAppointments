@@ -678,7 +678,6 @@ ca:
     notify_users_on_delete_question: Voleu notificar el client sobre la cancel·lació de la cita?
     messages: Messages
     messages_hint: Manage notifications, providers and message logs
-    unknown_inbox: Unknown Inbox
     messages_providers: Providers
     messages_provider: Provider
     messages_logs: Logs
@@ -972,7 +971,6 @@ ca:
     notification_has_unknown_tokens: "Marcador desconegut"
     token_copied: "S'ha copiat {token}"
     inbox_done: "Fet"
-    inbox_show_done: "Mostra els fets"
     inbox_done_by: "Fet per {name} {time}"
     message_delete_confirm: "Voleu eliminar aquest missatge permanentment? Aquesta acció no es pot desfer."
     message_deleted: "Missatge eliminat"
@@ -981,6 +979,5 @@ ca:
     message_moved: "Missatge mogut"
     notification_tokens_hint: "Camps de plantilla que podeu utilitzar. Feu clic en un per inserir-lo on escrivíeu, o per copiar-lo:"
     inbox_info: "Missatges entrants dels clients. Marqueu cadascun com a Fet quan l'hàgiu gestionat; es manté a l'historial del client. Mostra els fets els torna a llistar amb Desfés."
-    unknown_inbox_info: "Missatges entrants de remitents que no coincideixen amb cap client. Marqueu cadascun com a Fet quan l'hàgiu gestionat. Aquests missatges també apareixen al registre principal."
     booking_release_time: "Hora d'obertura"
     booking_release_time_hint: "El dia següent al final del límit de reserves futures s'obre a aquesta hora cada dia."

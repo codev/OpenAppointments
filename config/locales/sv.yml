@@ -678,7 +678,6 @@ sv:
     notify_users_on_delete_question: Vill du skicka en avisering om avbokningen till kunden?
     messages: Messages
     messages_hint: Manage notifications, providers and message logs
-    unknown_inbox: Unknown Inbox
     messages_providers: Providers
     messages_provider: Provider
     messages_logs: Logs
@@ -972,7 +971,6 @@ sv:
     notification_has_unknown_tokens: "Okänd platshållare"
     token_copied: "Kopierade {token}"
     inbox_done: "Klar"
-    inbox_show_done: "Visa klara"
     inbox_done_by: "Klar av {name} {time}"
     message_delete_confirm: "Ta bort det här meddelandet permanent? Detta kan inte ångras."
     message_deleted: "Meddelandet togs bort"
@@ -981,6 +979,5 @@ sv:
     message_moved: "Meddelandet flyttat"
     notification_tokens_hint: "Mallfält du kan använda. Klicka på ett för att infoga det där du skrev, eller för att kopiera det:"
     inbox_info: "Inkommande meddelanden från kunder. Markera varje som Klar när det är hanterat; det finns kvar i kundens historik. Visa klara listar dem igen med Ångra."
-    unknown_inbox_info: "Inkommande meddelanden från avsändare som inte matchar någon kund. Markera varje som Klar när det är hanterat. Dessa meddelanden visas även i huvudloggen."
     booking_release_time: "Öppningstid"
     booking_release_time_hint: "Nästa dag i slutet av den maximala framförhållningen öppnas vid denna tid varje dag."

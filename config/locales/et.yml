@@ -678,7 +678,6 @@ et:
     notify_users_on_delete_question: Kas soovite klienti kohtumise tühistamisest teavitada?
     messages: Messages
     messages_hint: Manage notifications, providers and message logs
-    unknown_inbox: Unknown Inbox
     messages_providers: Providers
     messages_provider: Provider
     messages_logs: Logs
@@ -972,7 +971,6 @@ et:
     notification_has_unknown_tokens: "Tundmatu kohatäitja"
     token_copied: "Kopeeritud {token}"
     inbox_done: "Tehtud"
-    inbox_show_done: "Näita tehtud"
     inbox_done_by: "Tegi {name} {time}"
     message_delete_confirm: "Kustutada see sõnum jäädavalt? Seda ei saa tagasi võtta."
     message_deleted: "Sõnum kustutatud"
@@ -981,6 +979,5 @@ et:
     message_moved: "Sõnum teisaldatud"
     notification_tokens_hint: "Mallis kasutatavad väljad. Klõpsa ühel, et sisestada see kirjutamiskohta, või kopeerida see:"
     inbox_info: "Sissetulevad sõnumid klientidelt. Märgi iga sõnum pärast käsitlemist Tehtud; see jääb kliendi ajalukku. Näita tehtud kuvab need uuesti koos nupuga Võta tagasi."
-    unknown_inbox_info: "Sissetulevad sõnumid saatjatelt, kes ei vasta ühelegi kliendile. Märgi iga sõnum pärast käsitlemist Tehtud. Need sõnumid kuvatakse ka põhilogis."
     booking_release_time: "Avanemise aeg"
     booking_release_time_hint: "Järgmine päev tulevikus broneerimise limiidi lõpus avaneb sel kellaajal iga päev."

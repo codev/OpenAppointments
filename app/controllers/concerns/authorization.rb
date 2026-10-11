@@ -14,7 +14,7 @@ module Authorization
     !can?(action, resource)
   end
 
-  # The Inbox and Unknown Inbox are admin task lists, as are their message actions.
+  # The Inbox is an admin task list, as are its message actions.
   def inbox_access?
     session[:role_slug] == Role::ADMIN
   end

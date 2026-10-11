@@ -1,6 +1,6 @@
-# One message: mark read (inbox pages and the customer conversation), Done /
-# Undo and Move on the admin inbox pages, and permanent delete for admins
-# (customer conversation, Unknown Inbox).
+# One message: mark read (Inbox and the customer conversation), Done / Undo
+# and Move on the admin Inbox, and permanent delete for admins (customer
+# conversation, unknown senders in the Inbox).
 class MessagesController < ApplicationController
   include BackendPage
 
@@ -48,7 +48,7 @@ class MessagesController < ApplicationController
     respond_to do |format|
       format.turbo_stream { render_row_removed(message) }
       format.json { render json: { success: true, inbox_unread: inbox_badge_count } }
-      format.html { redirect_back fallback_location: "/unknown_inbox" }
+      format.html { redirect_back fallback_location: "/inbox" }
     end
   end
 

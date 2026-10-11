@@ -678,7 +678,6 @@ mr:
     notify_users_on_delete_question: भेट रद्द झाल्याबद्दल ग्राहकाला सूचित करू इच्छिता?
     messages: Messages
     messages_hint: Manage notifications, providers and message logs
-    unknown_inbox: Unknown Inbox
     messages_providers: Providers
     messages_provider: Provider
     messages_logs: Logs
@@ -972,7 +971,6 @@ mr:
     notification_has_unknown_tokens: "अज्ञात प्लेसहोल्डर"
     token_copied: "{token} कॉपी केले"
     inbox_done: "पूर्ण"
-    inbox_show_done: "पूर्ण दाखवा"
     inbox_done_by: "{name} यांनी {time} रोजी पूर्ण केले"
     message_delete_confirm: "हा संदेश कायमचा हटवायचा? हे पूर्ववत करता येणार नाही."
     message_deleted: "संदेश हटवला"
@@ -981,6 +979,5 @@ mr:
     message_moved: "संदेश हलवला"
     notification_tokens_hint: "वापरता येणारे टेम्पलेट फील्ड. एखाद्यावर क्लिक करून ते तुम्ही टाइप करत होता तिथे टाका, किंवा कॉपी करा:"
     inbox_info: "ग्राहकांकडून येणारे संदेश. हाताळल्यानंतर प्रत्येक संदेश पूर्ण म्हणून चिन्हांकित करा; तो ग्राहकाच्या इतिहासात राहतो. पूर्ण दाखवा मध्ये ते पुन्हा पूर्ववत करा पर्यायासह दिसतात."
-    unknown_inbox_info: "कोणत्याही ग्राहकाशी न जुळणाऱ्या पाठवणाऱ्यांकडून आलेले संदेश. हाताळल्यानंतर प्रत्येक संदेश पूर्ण म्हणून चिन्हांकित करा. हे संदेश मुख्य नोंदीतही दिसतात."
     booking_release_time: "उघडण्याची वेळ"
     booking_release_time_hint: "भविष्यातील बुकिंग मर्यादेच्या शेवटी असलेला पुढील दिवस दररोज या वेळी उघडतो."

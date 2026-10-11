@@ -1,7 +1,7 @@
 # Public webhook endpoints for incoming SMS. The URL carries the secret inbound
 # token; Twilio requests are additionally signature-checked. Senders are matched
 # to customers by E.164 phone (User.likely_sender when several share it);
-# unmatched messages land in the Unknown Inbox.
+# unmatched messages sit in the Inbox as unknown senders (customer nil).
 # A matched message notifies the customer's stylist.
 class InboundMessagesController < ActionController::Base
   skip_forgery_protection

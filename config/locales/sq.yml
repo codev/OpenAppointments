@@ -678,7 +678,6 @@ sq:
     notify_users_on_delete_question: Dëshironi të njoftoni klientin për anulimin e takimit?
     messages: Messages
     messages_hint: Manage notifications, providers and message logs
-    unknown_inbox: Unknown Inbox
     messages_providers: Providers
     messages_provider: Provider
     messages_logs: Logs
@@ -972,7 +971,6 @@ sq:
     notification_has_unknown_tokens: "Vendmbajtës i panjohur"
     token_copied: "U kopjua {token}"
     inbox_done: "Përfunduar"
-    inbox_show_done: "Shfaq të përfunduara"
     inbox_done_by: "Përfunduar nga {name} {time}"
     message_delete_confirm: "Ta fshij këtë mesazh përgjithmonë? Kjo nuk mund të zhbëhet."
     message_deleted: "Mesazhi u fshi"
@@ -981,6 +979,5 @@ sq:
     message_moved: "Mesazhi u zhvendos"
     notification_tokens_hint: "Fusha shablloni që mund të përdorni. Klikoni një për ta futur aty ku po shkruanit, ose për ta kopjuar:"
     inbox_info: "Mesazhe hyrëse nga klientët. Shënoni secilin si Përfunduar pasi të trajtohet; mbetet në historikun e klientit. Shfaq të përfunduara i shfaq përsëri me mundësinë Anulo."
-    unknown_inbox_info: "Mesazhe hyrëse nga dërgues që nuk përputhen me asnjë klient. Shënoni secilin si Përfunduar pasi të trajtohet. Këto mesazhe shfaqen edhe në regjistrin kryesor."
     booking_release_time: "Ora e hapjes"
     booking_release_time_hint: "Dita tjetër në fund të limitit të rezervimit në të ardhmen hapet në këtë orë çdo ditë."

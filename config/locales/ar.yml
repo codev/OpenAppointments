@@ -678,7 +678,6 @@ ar:
     notify_users_on_delete_question: هل ترغب في إبلاغ العميل بإلغاء الموعد؟
     messages: Messages
     messages_hint: Manage notifications, providers and message logs
-    unknown_inbox: Unknown Inbox
     messages_providers: Providers
     messages_provider: Provider
     messages_logs: Logs
@@ -972,7 +971,6 @@ ar:
     notification_has_unknown_tokens: "عنصر نائب غير معروف"
     token_copied: "تم نسخ {token}"
     inbox_done: "تم"
-    inbox_show_done: "عرض المكتمل"
     inbox_done_by: "تم بواسطة {name} {time}"
     message_delete_confirm: "هل تريد حذف هذه الرسالة نهائيًا؟ لا يمكن التراجع عن هذا الإجراء."
     message_deleted: "تم حذف الرسالة"
@@ -981,6 +979,5 @@ ar:
     message_moved: "تم نقل الرسالة"
     notification_tokens_hint: "حقول القالب التي يمكنك استخدامها. انقر على أحدها لإدراجه في مكان الكتابة، أو لنسخه:"
     inbox_info: "الرسائل الواردة من العملاء. ضع علامة تم على كل رسالة بعد التعامل معها؛ ستبقى في سجل العميل. عرض المكتمل يعرضها مرة أخرى مع تراجع."
-    unknown_inbox_info: "الرسائل الواردة من مرسلين لا يطابقون أي عميل. ضع علامة تم على كل رسالة بعد التعامل معها. تظهر هذه الرسائل أيضًا في السجل الرئيسي."
     booking_release_time: "وقت الإصدار"
     booking_release_time_hint: "يُفتح اليوم التالي عند نهاية حد الحجز المستقبلي في هذا الوقت كل يوم."

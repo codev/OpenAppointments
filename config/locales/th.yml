@@ -678,7 +678,6 @@ th:
     notify_users_on_delete_question: คุณต้องการแจ้งลูกค้าเกี่ยวกับการยกเลิกนัดหมายนี้หรือไม่?
     messages: Messages
     messages_hint: Manage notifications, providers and message logs
-    unknown_inbox: Unknown Inbox
     messages_providers: Providers
     messages_provider: Provider
     messages_logs: Logs
@@ -972,7 +971,6 @@ th:
     notification_has_unknown_tokens: "ตัวยึดตำแหน่งที่ไม่รู้จัก"
     token_copied: "คัดลอก {token} แล้ว"
     inbox_done: "เสร็จสิ้น"
-    inbox_show_done: "แสดงรายการที่เสร็จสิ้น"
     inbox_done_by: "เสร็จสิ้นโดย {name} {time}"
     message_delete_confirm: "ลบข้อความนี้อย่างถาวรใช่หรือไม่ การกระทำนี้ไม่สามารถย้อนกลับได้"
     message_deleted: "ลบข้อความแล้ว"
@@ -981,6 +979,5 @@ th:
     message_moved: "ย้ายข้อความแล้ว"
     notification_tokens_hint: "ฟิลด์เทมเพลตที่คุณสามารถใช้ได้ คลิกเพื่อแทรกในตำแหน่งที่คุณกำลังพิมพ์ หรือเพื่อคัดลอก:"
     inbox_info: "ข้อความเข้าจากลูกค้า ทำเครื่องหมายแต่ละรายการเป็นเสร็จสิ้นเมื่อจัดการแล้ว โดยจะยังคงอยู่ในประวัติของลูกค้า แสดงรายการที่เสร็จสิ้นจะแสดงรายการเหล่านั้นอีกครั้งพร้อมตัวเลือกเลิกทำ"
-    unknown_inbox_info: "ข้อความเข้าจากผู้ส่งที่ไม่ตรงกับลูกค้ารายใด ทำเครื่องหมายแต่ละรายการเป็นเสร็จสิ้นเมื่อจัดการแล้ว ข้อความเหล่านี้จะปรากฏในบันทึกหลักด้วย"
     booking_release_time: "เวลาเปิดจอง"
     booking_release_time_hint: "วันถัดไปที่อยู่ปลายวงเงินการจองในอนาคตจะเปิดในเวลานี้ทุกวัน"

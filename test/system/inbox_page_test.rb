@@ -56,11 +56,11 @@ class InboxPageTest < ApplicationSystemTestCase
     assert_operator find("#inbox-message-#{short.id} .bubble").evaluate_script(rect)["width"], :<, row["width"] / 2
   end
 
-  test "an unknown inbox message is deleted after the confirm" do
+  test "an unknown sender's message is deleted from the inbox after the confirm" do
     message = Message.create!(direction: "incoming", channel: "email", from_address: "who@example.org",
                               body: "Who is this?", status: "received")
     login_as_admin
-    visit "/unknown_inbox"
+    visit "/inbox"
     within("#inbox-message-#{message.id}") { find("button[title='Delete']").click }
     assert_selector "#message-modal", text: "Delete this message permanently?", wait: 5
     within("#message-modal") { click_on "Delete" }

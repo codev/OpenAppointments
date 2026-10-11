@@ -1,4 +1,5 @@
-# Inbox: the admin task list of incoming customer messages, newest first.
+# Inbox: the admin task list of incoming messages, newest first, from
+# customers and unknown senders alike.
 # Filters: To Do (default), unread and not done, or Archive (done).
 class InboxController < ApplicationController
   include BackendPage
@@ -23,7 +24,7 @@ class InboxController < ApplicationController
     filter = "to_do"
     filter = "unread" if params[:unread] == "1"
     filter = "archive" if params[:done] == "1"
-    scope = Message.inbox.includes(:customer, :done_by).newest_first
+    scope = Message.incoming.includes(:customer, :done_by).newest_first
     scope = filter == "archive" ? scope.done : scope.not_done
     scope = scope.unread if filter == "unread"
     html_vars(

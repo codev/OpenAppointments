@@ -678,7 +678,6 @@ es:
     notify_users_on_delete_question: "¿Desea notificar al cliente sobre la cancelación de la cita?"
     messages: Messages
     messages_hint: Manage notifications, providers and message logs
-    unknown_inbox: Unknown Inbox
     messages_providers: Providers
     messages_provider: Provider
     messages_logs: Logs
@@ -972,7 +971,6 @@ es:
     notification_has_unknown_tokens: "Marcador desconocido"
     token_copied: "Copiado {token}"
     inbox_done: "Hecho"
-    inbox_show_done: "Mostrar hechos"
     inbox_done_by: "Hecho por {name} {time}"
     message_delete_confirm: "¿Eliminar este mensaje permanentemente? Esta acción no se puede deshacer."
     message_deleted: "Mensaje eliminado"
@@ -981,6 +979,5 @@ es:
     message_moved: "Mensaje movido"
     notification_tokens_hint: "Campos de plantilla que puedes usar. Haz clic en uno para insertarlo donde estabas escribiendo, o para copiarlo:"
     inbox_info: "Mensajes entrantes de clientes. Marca cada uno como Hecho una vez atendido; permanece en el historial del cliente. Mostrar hechos los vuelve a listar con Deshacer."
-    unknown_inbox_info: "Mensajes entrantes de remitentes que no coinciden con ningún cliente. Marca cada uno como Hecho una vez atendido. Estos mensajes también aparecen en el registro principal."
     booking_release_time: "Hora de apertura"
     booking_release_time_hint: "El día siguiente al final del límite de reservas futuras se abre a esta hora cada día."

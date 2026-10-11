@@ -88,7 +88,7 @@ class InboundMessagesTest < ActionDispatch::IntegrationTest
     assert_response :not_found
   end
 
-  test "plivo webhook stores unknown senders in the unknown inbox" do
+  test "plivo webhook stores unknown senders with no customer" do
     Setting.set("messages_plivo_enabled", "1")
     Setting.set("messages_plivo_incoming", "1")
     Setting.set("messages_plivo_auth_id", "MA1")
