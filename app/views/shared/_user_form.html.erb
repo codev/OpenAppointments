@@ -105,8 +105,10 @@
                 </div>
             <% end %>
 
-            <div><label class="form-label mb-3"><%= lang('options') %></label></div>
-            <%= local_assigns[:settings] %>
+            <% if local_assigns[:settings].present? %>
+                <div><label class="form-label mb-3"><%= lang('options') %></label></div>
+                <%= local_assigns[:settings] %>
+            <% end %>
         </div>
         <%= local_assigns[:after] %>
     </div>
