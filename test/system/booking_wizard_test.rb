@@ -189,7 +189,9 @@ class BookingWizardFlowTest < ApplicationSystemTestCase
     assert_selector "#cancel-appointment-modal.show"
     fill_in "cancellation-reason", with: "Moving house"
     find("#cancel-appointment-confirm").click
-    assert_no_selector "#cancel-appointment", wait: 10
+    # Wait for the confirmation page rather than for the form to vanish: polling
+    # an element mid-navigation makes Chrome raise "Node ... does not belong to the document".
+    assert_text "Appointment Cancelled", wait: 10
     assert_equal "cancelled", appointment.reload.appointment_status.kind
     assert_includes appointment.notes, "Moving house"
   end
