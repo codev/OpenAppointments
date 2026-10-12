@@ -52,6 +52,7 @@
     <script type="module" data-turbo-track="reload">
         import { Turbo } from "<%= asset_path('turbo.min.js') %>";
         window.Turbo = Turbo;
+        Turbo.setProgressBarDelay(150); // the default 500 ms hides it on all but slow visits
 
         // data-turbo-confirm uses EA's message modal instead of window.confirm. The
         // submitter's text is the confirm button and title; data-turbo-confirm-title

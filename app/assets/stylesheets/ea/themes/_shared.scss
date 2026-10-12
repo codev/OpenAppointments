@@ -67,6 +67,18 @@ body {
     }
 }
 
+// A Turbo visit in progress: the bar runs along the top of the header in its
+// text colour (Turbo injects its own rule at runtime, hence the html prefix),
+// and the pointer says busy.
+html .turbo-progress-bar {
+    height: 4px;
+    background: var(--oa-header-fg);
+}
+
+html[aria-busy="true"] body {
+    cursor: progress;
+}
+
 // Booking wizard step indicators.
 #book-appointment-wizard .book-step {
     background: var(--oa-step-bg);
