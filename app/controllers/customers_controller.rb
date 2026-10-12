@@ -10,8 +10,15 @@ class CustomersController < ApplicationController
   FIELDS = %i[name email phone_number address city state zip_code notes timezone language
               custom_field_1 custom_field_2 custom_field_3 custom_field_4 custom_field_5 ldap_dn].freeze
 
-  # Most recently active customers first: latest of profile update, appointment
-  # change or message (SQLite scalar MAX compares the uniform datetime strings).
+  # Customers with an unread message first (the list shows their badge).
+  UNREAD_FIRST_ORDER = <<~SQL.squish.freeze
+    EXISTS(SELECT 1 FROM messages
+           WHERE messages.customer_id = users.id AND messages.direction = 'incoming'
+             AND messages.read_at IS NULL) DESC
+  SQL
+
+  # Then the most recently active: latest of profile update, appointment change
+  # or message (SQLite scalar MAX compares the uniform datetime strings).
   LAST_INTERACTION_ORDER = <<~SQL.squish.freeze
     MAX(
       users.updated_at,
@@ -68,7 +75,7 @@ class CustomersController < ApplicationController
 
   private
 
-  def record_scope = User.customers.with_attached_picture.order(Arel.sql(LAST_INTERACTION_ORDER))
+  def record_scope = User.customers.with_attached_picture.order(Arel.sql(UNREAD_FIRST_ORDER), Arel.sql(LAST_INTERACTION_ORDER))
 
   def new_record = User.new(role: Role.find_by!(slug: Role::CUSTOMER))
 
