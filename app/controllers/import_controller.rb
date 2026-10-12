@@ -165,13 +165,12 @@ class ImportController < ApplicationController
 
   # Analyze counts as labelled lines; do-not-contact customers sit on the customers line.
   def summary_text(summary)
-    lang = helpers.method(:lang)
     [
-      "#{lang.('providers')}: #{summary[:staff]}",
-      "#{lang.('services')}: #{summary[:services]}",
-      "#{lang.('customers')}: #{summary[:customers]} (#{lang.('do_not_contact')}: #{summary[:do_not_contact]})",
-      "#{lang.('appointments')}: #{summary[:appointments]}",
-      "#{lang.('settings')}: #{summary[:settings]}"
+      "#{helpers.lang('providers')}: #{summary[:staff]}",
+      "#{helpers.lang('services')}: #{summary[:services]}",
+      "#{helpers.lang('customers')}: #{summary[:customers]} (#{helpers.lang('do_not_contact')}: #{summary[:do_not_contact]})",
+      "#{helpers.lang('appointments')}: #{summary[:appointments]}",
+      "#{helpers.lang('settings')}: #{summary[:settings]}"
     ].join("\n")
   end
 

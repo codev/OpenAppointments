@@ -13,8 +13,8 @@ both match.
 _Avoid_: Client, user
 
 **Stylist**:
-Staff member whose time customers book; each has a working plan and a column on the
-Appointments page.
+Staff member whose time customers book; each has a working plan and is listed under
+each date on the List page.
 _Avoid_: Provider (code and upstream Easy!Appointments term only)
 
 **Working stylist**:

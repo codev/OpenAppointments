@@ -1,7 +1,7 @@
 require "test_helper"
 
 # Every locale carries the 3.0.0 strings: the login page reads Staff Login with
-# the new welcome line, the header names the Appointments page List, and the
+# its welcome line, the header names the Appointments page List, and the
 # import counts name do-not-contact customers.
 class LocaleStrings300Test < ActionDispatch::IntegrationTest
   KEYS = %w[backend_section you_need_to_login do_not_contact list].freeze
