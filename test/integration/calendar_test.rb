@@ -29,7 +29,7 @@ class CalendarTest < ActionDispatch::IntegrationTest
     get "/appointments"
     assert_response :success
     assert_match 'id="select-day-interval"', response.body
-    assert_match 'id="filter-provider"', response.body
+    assert_match 'id="provider-filter"', response.body
     assert_match "pages/appointments", response.body
   end
 

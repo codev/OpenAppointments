@@ -812,6 +812,8 @@ en:
     message_settings: Message Settings
     manage_data: "Manage Data"
     all_services: All Services
+    clear_providers: Clear Providers
+    clear_services: Clear Services
     select_day_interval_hint: Number of days to show.
     filter_providers_hint: Show only the selected providers.
     filter_services_hint: Show only the selected services.

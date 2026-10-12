@@ -16,7 +16,8 @@ class CustomersTest < ActionDispatch::IntegrationTest
     get "/customers/#{users(:jx).id}/messages"
     assert_select "#customer-message-composer .channel-option[data-value='all']", text: "All"
     get "/appointments"
-    assert_select "select#filter-provider option", text: "All Stylists"
+    assert_select "#provider-filter button[data-tick=all]", text: "All Stylists"
+    assert_select "#provider-filter button[data-tick=clear]", text: "Clear Stylists"
   end
 
   test "with email and one SMS provider the send to every channel choice still reads All" do

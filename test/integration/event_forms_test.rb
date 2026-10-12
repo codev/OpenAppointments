@@ -64,7 +64,7 @@ class EventFormsTest < ActionDispatch::IntegrationTest
     get "/appointments/new"
     assert_select "#select-service optgroup[label='Hidden From Public'] option[value=?]", meeting.id.to_s, text: "Meeting"
     get "/appointments", params: { date: "2026-07-20" }
-    assert_select "#filter-service option[value=?]", meeting.id.to_s
+    assert_select "#service-filter input[value=?]", meeting.id.to_s
   end
 
   test "edit form shows the record and its customer, no repeat fields" do

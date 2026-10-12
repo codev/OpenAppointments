@@ -7,20 +7,23 @@ class AppointmentsController < ApplicationController
 
   DAY_COUNTS = [ 1, 3, 7 ].freeze
 
-  # GET /appointments?date=&days=&provider=(id|all)&service=&statuses[]=
-  # Without a provider only working stylists get a column.
+  # GET /appointments?date=&days=&providers[]=(working|id)&services[]=&statuses[]=
+  # Without providers, or with "working", only working stylists get a column;
+  # ticked stylists always get one. Without services every service is shown.
+  # A lone blank value means nothing is ticked. A stylist sees only themselves.
   def index
     return unless require_backend_page!(:appointments)
 
     @date = Date.parse(params[:date].to_s) rescue Date.current
     @days = DAY_COUNTS.include?(params[:days].to_i) ? params[:days].to_i : 1
-    @provider_id = params[:provider].to_i
-    @all_providers = params[:provider] == "all"
-    @service_id = params[:service].to_i
     @statuses = AppointmentStatus.rows
     @selected_statuses = params.key?(:statuses) ? Array(params[:statuses]) : default_statuses
     @providers = visible_providers.to_a
     @services = Service.joins(:provider_links).distinct.order(:name).to_a
+    @show_provider_filter = session[:role_slug] != Role::PROVIDER
+    @provider_ids = ticked_ids(:providers) if @show_provider_filter
+    @provider_ids = nil if @provider_ids&.include?("working")
+    @service_ids = ticked_ids(:services)
     @columns = build_columns
     backend_page_vars(page_title: helpers.lang("appointments"), active_menu: "appointments")
     script_vars(edit_appointment: edit_appointment_var, first_weekday: Setting.get("first_weekday"), **popover_script_vars)
@@ -86,6 +89,14 @@ class AppointmentsController < ApplicationController
     @statuses.reject { |status| %w[cancelled rescheduled].include?(status["kind"]) }.map { |status| status["name"] }
   end
 
+  # The ticked values of a tick-box filter: nil when the URL does not name it,
+  # ids as integers ("working" kept as is), blanks dropped.
+  def ticked_ids(key)
+    return nil unless params.key?(key)
+
+    Array(params[key]).reject(&:blank?).map { |value| value == "working" ? value : value.to_i }
+  end
+
   def edit_appointment_var
     return nil if params[:appointment_hash].blank?
 
@@ -96,11 +107,11 @@ class AppointmentsController < ApplicationController
   # [{ date:, days: [ProviderDay], not_working: [providers] }] for each shown date.
   def build_columns
     dates = (0...@days).map { |offset| @date + offset }
-    providers = @provider_id.positive? ? @providers.select { |p| p.id == @provider_id } : @providers
+    providers = @provider_ids ? @providers.select { |p| @provider_ids.include?(p.id) } : @providers
     range = dates.first.beginning_of_day..dates.last.end_of_day
     appointments = role_events(Appointment.appointments.where(start_datetime: range).includes(:provider, :service, :customer, :appointment_status))
                    .select { |a| a.status.blank? || @selected_statuses.include?(a.status) }
-                   .select { |a| @service_id.zero? || a.id_services == @service_id }
+                   .select { |a| @service_ids.nil? || @service_ids.include?(a.id_services) }
     unavailabilities = role_events(Appointment.unavailabilities.where("start_datetime <= ? AND end_datetime >= ?", range.end, range.begin)
                                               .includes(:provider))
     # Entries carry the calendar popover's data, unread message counts included.
@@ -114,7 +125,7 @@ class AppointmentsController < ApplicationController
                         unavailabilities: unavailabilities.select { |u| u.id_users_provider == provider.id && u.start_datetime.to_date <= date && u.end_datetime.to_date >= date },
                         blocked_periods: blocked.select { |b| b.start_datetime.to_date <= date && b.end_datetime.to_date >= date })
       end
-      shown, not_working = days.partition { |day| @all_providers || day.shown? }
+      shown, not_working = days.partition { |day| @provider_ids || day.shown? }
       { date: date, days: shown, not_working: not_working.map(&:provider) }
     end
   end

@@ -20,6 +20,16 @@
         }
     }
 
+    let openFilterId = null; // the toolbar dropdown open when the filter form was submitted
+
+    function reopenFilter() {
+        const toggle = openFilterId && document.querySelector('#' + openFilterId + ' .dropdown-toggle');
+        openFilterId = null;
+        if (toggle) {
+            bootstrap.Dropdown.getOrCreateInstance(toggle).show();
+        }
+    }
+
     function loadSeries() {
         document.querySelector('turbo-frame#series').reload();
     }
@@ -76,10 +86,18 @@
             $(document).on('click', '#calendar-page button.day-entry[data-event]', (event) =>
                 App.Utils.CalendarEvents.openEntryPopover(event.currentTarget),
             );
+            // A filter tick submits the form and the frame render replaces the
+            // toolbar, so the dropdown that was open is opened again.
+            document.addEventListener('turbo:submit-start', (event) => {
+                if (event.target.id === 'day-filter') {
+                    openFilterId = $('#day-filter .dropdown-menu.show').closest('.dropdown').attr('id') || null;
+                }
+            });
             document.addEventListener('turbo:frame-load', (event) => {
                 if (event.target.id === 'day_view') {
                     App.Utils.CalendarEvents.closePopover();
                     tippy('[data-tippy-content]');
+                    reopenFilter();
                 }
             });
         });

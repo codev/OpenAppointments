@@ -584,25 +584,30 @@ body .modal.full-screen .modal-push {
     }
 }
 
-/* Table view toolbar: day interval, provider and service filters side by side,
-   stacking on mobile. */
+/* Table view toolbar: the day interval select, full width on mobile, then the
+   filter dropdowns. */
 #calendar-filter #select-day-interval {
     width: 7em;
     flex: 0 0 auto;
 }
 
-#calendar-filter .filter-group {
-    flex: 1 1 12rem;
-    min-width: 0;
-    width: auto;
-}
-
 @media (max-width: 767.98px) {
-    #calendar-filter #select-day-interval,
-    #calendar-filter .filter-group {
+    #calendar-filter #select-day-interval {
         flex: 1 0 100%;
         width: 100%;
     }
+}
+
+/* Stylists, Services and Statuses dropdowns on both calendar pages: plain
+   weight whatever the theme's buttons use, long lists scroll inside the menu. */
+#calendar-filter .dropdown-toggle,
+#calendar-filter .dropdown-item {
+    font-weight: normal;
+}
+
+#calendar-filter .dropdown-menu {
+    max-height: 50vh;
+    overflow-y: auto;
 }
 
 /* Flash ring drawing the eye to a switch that was toggled automatically

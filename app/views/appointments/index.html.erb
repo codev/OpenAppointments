@@ -7,8 +7,9 @@
     <meta name="turbo-cache-control" content="no-preview">
 <% end %>
 <% formats = { date_format: setting('date_format'), time_format: setting('time_format') } %>
-<% query = ->(overrides) { { date: @date, days: @days, provider: @all_providers ? "all" : (@provider_id.positive? ? @provider_id : nil),
-                             service: @service_id.positive? ? @service_id : nil, statuses: @selected_statuses }.merge(overrides).compact } %>
+<%# A ticked set travels as ids, or a lone blank when nothing is ticked; working stylists and all services are the defaults. %>
+<% query = ->(overrides) { { date: @date, days: @days, providers: @provider_ids && (@provider_ids.presence || [ "" ]),
+                             services: @service_ids && (@service_ids.presence || [ "" ]), statuses: @selected_statuses }.merge(overrides).compact } %>
 <div class="container-fluid backend-page pt-0 pb-0" id="calendar-page">
     <turbo-frame id="day_view" data-turbo-action="advance">
     <%= form_with url: appointments_path, method: :get, id: "day-filter", data: { turbo_frame: "day_view" } do %>
@@ -19,13 +20,16 @@
                     <%= select_tag :days, options_for_select(AppointmentsController::DAY_COUNTS.map { |n| [ "#{n} #{lang(n == 1 ? 'day' : 'days')}", n ] }, @days),
                                    id: "select-day-interval", class: "form-select", "aria-label": "Days", onchange: "this.form.requestSubmit()",
                                    data: { tippy_content: lang('select_day_interval_hint') } %>
-                    <%= select_tag :provider, options_for_select([ [ lang('working_providers'), "" ], [ lang('all_providers'), "all" ] ] + @providers.map { |p| [ p.name, p.id ] },
-                                                     @all_providers ? "all" : @provider_id),
-                                   id: "filter-provider", class: "form-select filter-group", "aria-label": lang('provider'), onchange: "this.form.requestSubmit()",
-                                   data: { tippy_content: lang('filter_providers_hint') } %>
-                    <%= select_tag :service, options_for_select([ [ lang('all_services'), "" ] ] + @services.map { |s| [ s.name, s.id ] }, @service_id),
-                                   id: "filter-service", class: "form-select filter-group", "aria-label": lang('service'), onchange: "this.form.requestSubmit()",
-                                   data: { tippy_content: lang('filter_services_hint') } %>
+                    <% if @show_provider_filter %>
+                        <%= render "shared/tick_filter", id: "provider-filter", name: "providers", label: lang('providers'),
+                                   hint: lang('filter_providers_hint'), items: @providers.map { |p| [ p.name, p.id ] },
+                                   checked: @provider_ids || [], working: @provider_ids.nil?,
+                                   all_label: lang('all_providers'), clear_label: lang('clear_providers') %>
+                    <% end %>
+                    <%= render "shared/tick_filter", id: "service-filter", name: "services", label: lang('services'),
+                               hint: lang('filter_services_hint'), items: @services.map { |s| [ s.name, s.id ] },
+                               checked: @service_ids || @services.map(&:id),
+                               all_label: lang('all_services'), clear_label: lang('clear_services') %>
                     <div class="dropdown" id="status-filter">
                         <button class="btn btn-light dropdown-toggle" type="button" data-bs-toggle="dropdown" data-bs-auto-close="outside"
                                 data-tippy-content="<%= lang('filter_statuses_hint') %>"><%= lang('statuses') %></button>
@@ -131,6 +135,6 @@
 <%= render "calendar/modals" %>
 
 <% content_for :scripts do %>
-    <%= ea_js "utils/ui", "components/working_plan_exceptions_modal", "utils/calendar_events", "utils/calendar_event_popover", "http/calendar_http_client",
+    <%= ea_js "utils/tick_filter", "utils/ui", "components/working_plan_exceptions_modal", "utils/calendar_events", "utils/calendar_event_popover", "http/calendar_http_client",
               "pages/appointments" %>
 <% end %>

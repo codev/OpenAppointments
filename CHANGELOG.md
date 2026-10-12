@@ -3,6 +3,10 @@
 The about page lists these notes; every release needs a section here matching
 CloudronManifest.json.
 
+## 3.0.2
+
+- List: Stylists and Services are tick-box dropdowns like Statuses, with All, Clear and Working Stylists; stylists do not see the Stylists dropdown
+
 ## 3.0.1
 
 - List: option to show 1, 3 or 7 days of appointments
