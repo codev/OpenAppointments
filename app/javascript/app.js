@@ -14,8 +14,12 @@
  * This script should be loaded before the other modules in order to define the global application namespace.
  */
 window.App = (function () {
-    function onAjaxError(event, jqXHR, textStatus, errorThrown) {
-        console.error('Unexpected HTTP Error: ', jqXHR, textStatus, errorThrown);
+    function onAjaxError(event, jqXHR, settings, thrownError) {
+        if (thrownError === 'abort') {
+            return; // dropped on purpose, nothing to report
+        }
+
+        console.error('Unexpected HTTP Error: ', jqXHR, settings, thrownError);
 
         let response;
 

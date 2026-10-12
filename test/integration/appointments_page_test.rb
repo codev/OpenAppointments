@@ -52,6 +52,14 @@ class AppointmentsPageTest < ActionDispatch::IntegrationTest
     assert_select "#select-day-interval option[selected][value='7']", text: "7 Days"
   end
 
+  test "the List and the Calendar are never shown from a stale Turbo preview" do
+    login_admin
+    %w[/appointments /calendar].each do |path|
+      get path
+      assert_select "head meta[name=turbo-cache-control][content=no-preview]", 1, "expected the meta on #{path}"
+    end
+  end
+
   test "working stylists is the default and a stylist off all day by an unavailability is not working" do
     login_admin
     Appointment.create!(is_unavailability: true, provider: users(:zane), notes: "Holiday",

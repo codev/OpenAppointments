@@ -7,6 +7,7 @@ CloudronManifest.json.
 
 - List view is the default view and is a single column with appointments
 - List: show 1, 3 or 7 days
+- Calendar: appointments are fetched once per view instead of several times, and leaving the page while they load no longer freezes the next page
 - Customers: customers have their own message view
 - Import: 10to8 appointments come in as rescheduled
 - Improvements to Calendar, List, Message settings, Do not contact, Manage data - see tickets for full changelog

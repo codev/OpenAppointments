@@ -4,7 +4,8 @@ require "application_system_test_case"
 # navigation as URL state, entries opening the event dialog.
 class AppointmentsPageTest < ApplicationSystemTestCase
   setup do
-    @date = working_day(0, from: Date.current)
+    # From tomorrow: the popover shows Cancel only while the appointment is ahead.
+    @date = working_day(0)
     Appointment.create!(id_users_provider: users(:zane).id, id_users_customer: users(:jx).id, id_services: services(:haircut).id,
                         start_datetime: @date.to_time.change(hour: 11), end_datetime: @date.to_time.change(hour: 11, min: 30),
                         appointment_status: AppointmentStatus.of("booked"), notes: "Morning cut")

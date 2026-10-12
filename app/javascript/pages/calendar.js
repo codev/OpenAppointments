@@ -15,6 +15,9 @@ App.Pages.Calendar = (function () {
     const moment = window.moment;
 
     let fullCalendar = null;
+    let refreshTimer = null;
+    let request = null; // the events fetch in flight
+    let loadedRange = null; // "start/end" dates of the last fetch, null before the first
 
     // Everyone's calendar colours appointments by provider; the legend names them.
     function renderLegend() {
@@ -37,8 +40,18 @@ App.Pages.Calendar = (function () {
         return filterType() === FILTER_TYPE_PROVIDER;
     }
 
+    function filterKey() {
+        return filterType() + ':' + $selectFilterItem().val();
+    }
+
+    // The dates a view's fetch asks for.
+    function visibleDates(view) {
+        return [view.activeStart, view.activeEnd].map((date) => moment(date).format('YYYY-MM-DD'));
+    }
+
     /**
-     * Fetch the visible range and replace every event source.
+     * Fetch the visible range and replace every event source. A fetch still in
+     * flight is dropped first, so only the latest answer is drawn.
      */
     function reload() {
         Events.closePopover();
@@ -48,12 +61,16 @@ App.Pages.Calendar = (function () {
         }
 
         const recordId = $selectFilterItem().val();
-        const startDate = moment(fullCalendar.view.activeStart).format('YYYY-MM-DD');
-        const endDate = moment(fullCalendar.view.activeEnd).format('YYYY-MM-DD');
+        const [startDate, endDate] = visibleDates(fullCalendar.view);
+
+        if (request) {
+            request.abort();
+        }
 
         $('#loading').css('visibility', 'hidden');
+        loadedRange = startDate + '/' + endDate;
 
-        App.Http.Calendar.getCalendarAppointments(recordId, startDate, endDate, filterType())
+        const current = App.Http.Calendar.getCalendarAppointments(recordId, startDate, endDate, filterType())
             .done((response) => {
                 fullCalendar.getEventSources().forEach((source) => source.remove());
                 renderLegend();
@@ -82,7 +99,13 @@ App.Pages.Calendar = (function () {
 
                 fullCalendar.addEventSource(events);
             })
-            .always(() => $('#loading').css('visibility', ''));
+            .always(() => {
+                if (request === current) {
+                    request = null;
+                    $('#loading').css('visibility', '');
+                }
+            });
+        request = current;
     }
 
     // The time grid runs from the first working stylist or appointment to the
@@ -143,8 +166,13 @@ App.Pages.Calendar = (function () {
             }
 
             $insertWorkingPlanException().toggle(isProviderFilter());
-            reload();
-            window.localStorage.setItem('EasyAppointments.SelectFilterItem', filterType() + ':' + $selectFilterItem().val());
+            window.localStorage.setItem('EasyAppointments.SelectFilterItem', filterKey());
+
+            // Before the first render's datesSet there is nothing to fetch yet:
+            // it loads the restored filter itself.
+            if (loadedRange) {
+                reload();
+            }
         });
 
         $insertWorkingPlanException().on('click', () => {
@@ -159,8 +187,6 @@ App.Pages.Calendar = (function () {
             });
         });
     }
-
-    let refreshTimer = null;
 
     // The last choice is kept as "type:id" (a provider and a service can share
     // an id); a bare id is matched by value alone.
@@ -186,6 +212,7 @@ App.Pages.Calendar = (function () {
             return;
         }
 
+        loadedRange = null;
         fullCalendar = new FullCalendar.Calendar(
             $calendar()[0],
             Events.calendarOptions({
@@ -197,8 +224,12 @@ App.Pages.Calendar = (function () {
                     right: 'timeGridDay,timeGridWeek,dayGridMonth',
                 },
                 windowResize: () => fullCalendar.setOption('height', Events.calendarHeight()),
-                datesSet: () => {
-                    reload();
+                // Also fired when fitHours changes the slot times (a new date
+                // profile), so only a changed range fetches.
+                datesSet: (info) => {
+                    if (visibleDates(info.view).join('/') !== loadedRange) {
+                        reload();
+                    }
                     $(window).trigger('resize');
                 },
                 dateClick: onDateClick,
@@ -206,14 +237,16 @@ App.Pages.Calendar = (function () {
             }),
         );
 
-        fullCalendar.render();
         $calendar().data('fullCalendar', fullCalendar);
 
         Events.configure(reload);
         addEventListeners();
 
+        // The saved filter is in place before the first render, whose datesSet
+        // fetches it once; the change event only sets the dropdown, timezone and button.
         restoreFilter();
         $selectFilterItem().trigger('change');
+        fullCalendar.render();
 
         if (vars('edit_appointment')) {
             Events.openEventForm('appointments/' + vars('edit_appointment').id + '/edit');
@@ -229,7 +262,23 @@ App.Pages.Calendar = (function () {
         }, 60000);
     }
 
+    // A Drive visit away from the page: drop the fetch in flight, stop the timer
+    // and destroy the calendar, so a late answer is never drawn into a page gone.
+    function teardown() {
+        if (request) {
+            request.abort();
+        }
+
+        clearInterval(refreshTimer);
+
+        if (fullCalendar) {
+            fullCalendar.destroy();
+            fullCalendar = null;
+        }
+    }
+
     App.page(initialize);
+    document.addEventListener('turbo:before-cache', teardown);
 
     return {
         FILTER_TYPE_ALL,
