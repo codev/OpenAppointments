@@ -26,6 +26,7 @@ class CalendarLoadingTest < ApplicationSystemTestCase
 
   test "going to the List and back renders one calendar" do
     login_as_admin
+    page.driver.browser.logs.get(:browser) # drop the earlier tests' console entries
     page.execute_script("window.localStorage.removeItem('EasyAppointments.SelectFilterItem')")
     visit "/calendar"
     wait_for_requests(1)

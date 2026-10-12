@@ -52,6 +52,19 @@ class AppointmentsPageTest < ActionDispatch::IntegrationTest
     assert_select "#select-day-interval option[selected][value='7']", text: "7 Days"
   end
 
+  # A page's scripts arrive in head order on a Turbo visit and a component
+  # initialises as soon as its script runs, so a dependency must come first.
+  test "the working plan exception dialog script follows utils/ui on the List and the Calendar" do
+    login_admin
+    %w[/appointments /calendar].each do |path|
+      get path
+      sources = css_select("head script[src]").map { |script| script["src"] }
+      ui = sources.index { |src| src.include?("utils/ui") }
+      modal = sources.index { |src| src.include?("components/working_plan_exceptions_modal") }
+      assert ui && modal && ui < modal, "#{path}: expected utils/ui before the dialog script, got #{sources.inspect}"
+    end
+  end
+
   test "the List and the Calendar are never shown from a stale Turbo preview" do
     login_admin
     %w[/appointments /calendar].each do |path|
