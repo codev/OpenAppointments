@@ -103,7 +103,8 @@ class CustomersController < ApplicationController
 
   def page_vars
     script_vars(timezones: helpers.timezones)
-    html_vars(**field_display_flags, can_add: can_add?, unread_counts: Message.unread_counts_for(@records.map(&:id)))
+    html_vars(**field_display_flags, can_add: can_add?, waitlist_enabled: Setting.get("waitlist_enabled") == "1",
+              unread_counts: Message.unread_counts_for(@records.map(&:id)))
   end
 
   def can_add? = can?(:add, :customers) && (Setting.get("limit_customer_access") != "1" || session[:role_slug] == Role::ADMIN)

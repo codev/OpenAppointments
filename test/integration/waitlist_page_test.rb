@@ -6,10 +6,22 @@ class WaitlistPageTest < ActionDispatch::IntegrationTest
     post "/login/validate", params: { username: "administrator", password: "administrator1" }
   end
 
-  test "the customers page links to the list and the list shows the live signups" do
+  test "the customers page links to the list only while the waiting list is on" do
     login_admin
+    Setting.set("waitlist_enabled", "0")
     get "/customers"
-    assert_select "a[href='/waitlist']", text: /#{I18n.t('ea.waitlist')}/
+    assert_select "a[href='/waitlist']", count: 0
+
+    Setting.set("waitlist_enabled", "1")
+    get "/customers"
+    # A whole-page visit: the button sits inside the customers frame.
+    assert_select "a[href='/waitlist'][data-turbo-frame=_top]", text: /#{I18n.t('ea.waitlist')}/
+  ensure
+    Setting.set("waitlist_enabled", "0")
+  end
+
+  test "the list shows the live signups" do
+    login_admin
 
     chosen = WaitlistEntry.create!(name: "Chosen Person", email: "chosen@example.org", phone: "07700900001",
                                    service: services(:haircut), provider: users(:zane), notices_sent: 2)

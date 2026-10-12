@@ -1,7 +1,10 @@
+<%# The button sits inside the customers frame; _top makes it a whole-page visit. %>
 <% waitlist_link = capture do %>
-    <%= link_to "/waitlist", id: "waitlist-link", class: "btn btn-outline-secondary me-2" do %>
-        <i class="fas fa-clock me-2"></i>
-        <%= lang('waitlist') %>
+    <% if vars(:waitlist_enabled) %>
+        <%= link_to "/waitlist", id: "waitlist-link", class: "btn btn-outline-secondary me-2", data: { turbo_frame: "_top" } do %>
+            <i class="fas fa-clock me-2"></i>
+            <%= lang('waitlist') %>
+        <% end %>
     <% end %>
 <% end %>
 <%= render "shared/crud_page", page: "customers", title: lang('customers'),

@@ -56,7 +56,8 @@ App.Pages.Calendar = (function () {
     function reload() {
         Events.closePopover();
 
-        if (!$selectFilterItem().val()) {
+        // No calendar: another page, or torn down with a callback still to land.
+        if (!fullCalendar || !$selectFilterItem().val()) {
             return;
         }
 
@@ -255,7 +256,8 @@ App.Pages.Calendar = (function () {
 
         clearInterval(refreshTimer);
         refreshTimer = setInterval(() => {
-            if ($('.popover').length || App.Utils.CalendarSync.isCurrentlySyncing()) {
+            // A fetch still running is left to finish rather than restarted.
+            if (request || $('.popover').length || App.Utils.CalendarSync.isCurrentlySyncing()) {
                 return;
             }
             reload();

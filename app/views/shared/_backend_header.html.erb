@@ -1,7 +1,8 @@
 <%# Port of EA components/backend_header.php. Locals: active_menu. %>
 <nav id="header" class="navbar navbar-expand-md navbar-dark bg-primary p-0 position-relative">
     <div id="header-logo" class="navbar-brand p-1 lh-1 d-flex align-items-center">
-        <a href="/appointments" class="d-flex">
+        <%# The title link beside it is the named one; this image link is skipped by assistive tech. %>
+        <a href="/appointments" class="d-flex" aria-hidden="true" tabindex="-1">
             <img src="<%= vars(:company_logo).presence || image_path("logo.png") %>" alt="" class="me-2">
         </a>
         <div>

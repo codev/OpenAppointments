@@ -3,12 +3,17 @@
 The about page lists these notes; every release needs a section here matching
 CloudronManifest.json.
 
-## 3.0.0
+## 3.0.1
 
-- List view is the default view and is a single column with appointments
 - List: show 1, 3 or 7 days
 - Calendar: appointments are fetched once per view instead of several times, and leaving the page while they load no longer freezes the next page
 - Customers: customers with unread messages are listed first
+- Customers: the Waiting List button shows only while the waiting list is on, and opens the list (it showed "Content missing")
+- Header: the logo opens the List and the user name opens Account; a progress bar shows while a page loads
+
+## 3.0.0
+
+- List view is the default view and is a single column with appointments
 - Customers: customers have their own message view
 - Import: 10to8 appointments come in as rescheduled
 - Improvements to Calendar, List, Message settings, Do not contact, Manage data - see tickets for full changelog
