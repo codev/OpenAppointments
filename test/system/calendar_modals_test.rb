@@ -116,8 +116,18 @@ class CalendarModalsTest < ApplicationSystemTestCase
     day = { "start" => "10:00", "end" => "17:00", "breaks" => [] }
     plan = %w[monday tuesday wednesday thursday friday saturday sunday].index_with { day }
     users(:zane).settings.update!(working_plan: plan.to_json)
+    # Unavailabilities and stylists who do not offer the chosen service do not widen the day.
+    off = Time.zone.parse("#{Date.current} 06:00")
+    Appointment.create!(provider: users(:zane), start_datetime: off, end_datetime: off + 1.hour, is_unavailability: true)
+    early_bird = User.create!(name: "Early Bird", email: "early@example.org", role: users(:zane).role, timezone: "Europe/London")
+    early_bird.create_settings!(username: "earlybird", password: Passwords.hash("stylistpass1"),
+                                working_plan: plan.transform_values { { "start" => "07:00", "end" => "12:00", "breaks" => [] } }.to_json)
+    other = Service.create!(name: "Other Service", duration: 30, price: 0, currency: "GBP", slot_interval: 15,
+                            attendants_number: 1, booking_slug: "other-svc")
+    ServiceProviderLink.create!(id_users: early_bird.id, id_services: other.id)
 
     visit calendar_url
+    choose_filter("Trim Cut")
     assert_selector "td.fc-timegrid-slot-label[data-time]", wait: 10
     page.document.synchronize(10) { raise Capybara::ExpectationNotMet unless slot_times.first == "10:00:00" }
     assert_equal "16:45:00", slot_times.last

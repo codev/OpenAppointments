@@ -58,18 +58,19 @@ App.Pages.Calendar = (function () {
                 fullCalendar.getEventSources().forEach((source) => source.remove());
                 renderLegend();
 
-                const timedEvents = [
-                    ...Events.appointmentEvents(
-                        App.Utils.StatusFilter.apply(response.appointments),
-                        filterType() === FILTER_TYPE_SERVICE ? 'provider' : 'service',
-                        filterType() !== FILTER_TYPE_PROVIDER,
-                    ),
+                const appointmentEvents = Events.appointmentEvents(
+                    App.Utils.StatusFilter.apply(response.appointments),
+                    filterType() === FILTER_TYPE_SERVICE ? 'provider' : 'service',
+                    filterType() !== FILTER_TYPE_PROVIDER,
+                );
+                const events = [
+                    ...appointmentEvents,
                     ...Events.unavailabilityEvents(response.unavailabilities),
+                    ...Events.blockedPeriodEvents(response.blocked_periods),
                 ];
-                const events = [...timedEvents, ...Events.blockedPeriodEvents(response.blocked_periods)];
 
                 if (fullCalendar.view.type !== 'dayGridMonth') {
-                    fitHours(recordId, timedEvents);
+                    fitHours(recordId, appointmentEvents);
                     events.push(
                         ...Events.workingPlanEvents(
                             Events.findProvider(recordId),
@@ -84,16 +85,21 @@ App.Pages.Calendar = (function () {
             .always(() => $('#loading').css('visibility', ''));
     }
 
-    // The time grid runs from the first working stylist or event to the last.
-    function fitHours(recordId, timedEvents) {
-        const providers = isProviderFilter()
-            ? [Events.findProvider(recordId)].filter(Boolean)
-            : vars('available_providers');
+    // The time grid runs from the first working stylist or appointment to the
+    // last: the chosen stylist, the stylists offering the chosen service, or all.
+    function fitHours(recordId, appointmentEvents) {
+        let providers = vars('available_providers');
+        if (isProviderFilter()) {
+            providers = [Events.findProvider(recordId)].filter(Boolean);
+        } else if (filterType() === FILTER_TYPE_SERVICE) {
+            providers = providers.filter((provider) => (provider.services || []).map(Number).includes(Number(recordId)));
+        }
+
         const hours = Events.visibleHours(
             providers,
             fullCalendar.view.currentStart,
             fullCalendar.view.currentEnd,
-            timedEvents,
+            appointmentEvents,
         );
 
         Object.entries(hours).forEach(([option, value]) => {
