@@ -91,21 +91,53 @@ window.App.Layouts.Backend = (function () {
      */
     const GUARDED_FORMS = '#settings-form, #account-form, .crud-form, .notification-form';
 
+    // Buttons inside a form that change it without an input event: a widget's
+    // add/remove/insert buttons. Menus and dialogs only open something.
+    const CHANGING_BUTTONS = 'button[type=button]:not([data-bs-toggle]):not([data-bs-dismiss])';
+
     function unsaved() {
         return $('form[data-unsaved]').length > 0;
     }
 
+    /**
+     * Mark a form as changed since its last save, or not; its Save buttons
+     * (data-save) are enabled only while it is.
+     */
+    function markUnsaved(form, isUnsaved) {
+        const $form = $(form);
+        $form.attr('data-unsaved', isUnsaved ? '1' : null);
+        $form.find('[data-save]').prop('disabled', !isUnsaved);
+    }
+
+    // Align the Save buttons with the marks the forms arrived with.
+    function syncSaveButtons(scope) {
+        $(scope)
+            .find(GUARDED_FORMS)
+            .each((index, form) => markUnsaved(form, form.hasAttribute('data-unsaved')));
+    }
+
     function forgetUnsaved() {
-        $('form[data-unsaved]').removeAttr('data-unsaved');
+        $('form[data-unsaved]').each((index, form) => markUnsaved(form, false));
     }
 
     function guardUnsavedChanges() {
-        $(document).on('input change', ':input', (event) => {
-            $(event.target).closest(GUARDED_FORMS).attr('data-unsaved', '1');
+        // tbwchange: the notices rich text editor.
+        $(document).on('input change tbwchange', ':input', (event) => {
+            const form = $(event.target).closest(GUARDED_FORMS)[0];
+            if (form) {
+                markUnsaved(form, true);
+            }
+        });
+
+        $(document).on('click', CHANGING_BUTTONS, (event) => {
+            const form = $(event.currentTarget).closest(GUARDED_FORMS)[0];
+            if (form) {
+                markUnsaved(form, true);
+            }
         });
 
         $(document).on('submit', GUARDED_FORMS, (event) => {
-            $(event.currentTarget).removeAttr('data-unsaved');
+            markUnsaved(event.currentTarget, false);
         });
 
         document.addEventListener('turbo:before-cache', forgetUnsaved);
@@ -114,7 +146,9 @@ window.App.Layouts.Backend = (function () {
         // error (a 422 re-render still holds the unsaved values).
         document.addEventListener('turbo:frame-load', (event) => {
             const failed = $(event.target).find('.form-message.alert-danger').length > 0;
-            $(event.target).find(GUARDED_FORMS).attr('data-unsaved', failed ? '1' : null);
+            $(event.target)
+                .find(GUARDED_FORMS)
+                .each((index, form) => markUnsaved(form, failed));
         });
 
         document.addEventListener('turbo:before-visit', (event) => {
@@ -156,6 +190,7 @@ window.App.Layouts.Backend = (function () {
 
         tippy('[data-tippy-content]');
         App.Utils.Lang.enableLanguageSelection($selectLanguage());
+        syncSaveButtons(document);
     }
 
     document.addEventListener('turbo:load', initialize);

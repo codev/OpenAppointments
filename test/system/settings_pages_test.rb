@@ -37,8 +37,11 @@ class SettingsPagesTest < ApplicationSystemTestCase
     login_as_admin
   end
 
+  # Save ends the form; long pages scroll smoothly, so bring it into view at once.
   def save_and_check(page)
-    find("#save-settings, #save-embed-settings").click
+    button = find("#save-settings, #save-embed-settings")
+    button.execute_script("this.scrollIntoView({block: 'center', behavior: 'instant'})")
+    button.click
     assert_text "Settings saved", wait: 5
     yield
     visit "/#{page}"
