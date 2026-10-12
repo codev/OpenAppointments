@@ -5,11 +5,9 @@ CloudronManifest.json.
 
 ## 3.0.1
 
-- List: show 1, 3 or 7 days
-- Calendar: appointments are fetched once per view instead of several times, and leaving the page while they load no longer freezes the next page
-- Customers: customers with unread messages are listed first
-- Customers: the Waiting List button shows only while the waiting list is on, and opens the list (it showed "Content missing")
-- Header: the logo opens the List and the user name opens Account; a progress bar shows while a page loads
+- List: option to show 1, 3 or 7 days of appointments
+- Customers: customers with unread messages are shown at the top of the list
+- Minor fixes include: progress bar for at the top of the page; logo links to list, user name to account
 
 ## 3.0.0
 
