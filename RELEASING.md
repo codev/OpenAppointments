@@ -6,59 +6,55 @@ and Cloudron compares manifest versions to detect updates. The git tag must matc
 
 ## Release
 
+Needs Cloudron CLI 9+, where `cloudron builder` builds the image on the server's
+Container Registry app and pushes it there. Always pass `--server`, before the
+subcommand: the CLI's default server may be another Cloudron. Logins use the Cloudron
+username and an App password (Account > App Passwords), not the account password.
+
 ### First time
 
 Before you do this:
 - set the variables below
-- Ensure Cloudron config is correct - System -> Docker with registry auth
-- Give the build service push access to the registry: on the Docker Builder app, edit
-  `/app/data/docker.json` with `{"<registry-host>": {"username": "...", "password": "..."}}`
-  (same credentials as `docker login <registry-host>`), then restart the builder app.
-  Without this the build succeeds but the push fails right after "Preparing".
+- Ensure the Cloudron can pull from the registry: System > Docker with registry auth
 - Bump version in CloudronManifest.json to match VER below via PR and merge to main
-- Start in the repo root
+- Start in the repo root, on main
 
 ```bash
 # Variables
 VER=0.1.0
+SERVER=my.<your-domain>
 REGI=registry.<your-domain>
-BUILD=build.<your-domain>
 DEST=appointments.<your-domain>
 
-# One-time per machine: prompts for a build service access token
-cloudron build --build-service-url $BUILD login
+# One-time per machine
+cloudron login $SERVER
+cloudron --server $SERVER builder login $REGI
 
 git tag v$VER && git push origin v$VER
-# Build on server and push to registry; the repository is stored for future builds
-cloudron build --tag $VER --repository $REGI/openappointments
+# Build on the server and push to the registry; --repository is needed on the first build
+cloudron --server $SERVER builder build --repository $REGI/openappointments --tag $VER
 
-cloudron install --image $REGI/openappointments:$VER \
-  --location $DEST
+cloudron --server $SERVER install --location $DEST --last-build
 ```
 
 #### Subsequent releases
 
-A git-ignored `deploy.sh` in the repo root holds our real values for these steps.
+We keep a deploy script with our real values outside this repo; it runs these steps
+and refuses a version that does not match CloudronManifest.json.
 
 ```bash
-# Variables
-VER=1.0.0
-REGI=registry.<your-domain>
-DEST=appointments.<your-domain>
-
 git tag v$VER && git push origin v$VER
-cloudron build --tag $VER # Build on server and push to registry
-
-cloudron update --app $DEST --image $REGI/openappointments:$VER
+cloudron --server $SERVER builder build --repository $REGI/openappointments --tag $VER
+cloudron --server $SERVER update --app $DEST --last-build
 ```
 
-### Alternatively you can build it on your machine instead of a build server
+### Alternatively you can build it on your machine instead of on the server
 
 ```bash
-docker build -t $REGI/openappointments:$VER .
 docker login $REGI
+docker build -t $REGI/openappointments:$VER .
 docker push $REGI/openappointments:$VER
-
+cloudron --server $SERVER update --app $DEST --image $REGI/openappointments:$VER
 ```
 
 ## Rails console

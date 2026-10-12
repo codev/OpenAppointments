@@ -5,21 +5,10 @@ CloudronManifest.json.
 
 ## 3.0.0
 
-- Customers, Services, Stylists and the other list pages: opening a record changes the address, so Back returns to the list
-- Import: 10to8 appointments that were moved come in as Rescheduled, greyed out and hideable with the Statuses filter
-- Import: running an import again repairs pictures an interrupted import left incomplete
-- Calendar: appointments are solid boxes, so overlapping ones stay readable; the Calendar and Appointments toolbars use the theme's header colour; Enable sync is no wider than it needs to be on tablets
-- Message settings: the intercept email and phone show only when Debug is chosen
-- Manage data: after Analyze or Start import the page opens at the result
-- Login: the login page is now Staff Login, welcoming staff to manage appointments and messages
-- Header: the Appointments page is now called List
-- Login: staff land on List after logging in
-- List: each date is a heading with its stylists one under another at full width, filling the screen on phones and tablets
-- List: clicking an appointment or unavailability shows the same details and buttons as the Calendar (Messages, Cancel, Delete, Edit)
-- Settings, Account, Message settings, notification templates and every record page: Cancel and Save sit at the bottom right with Delete at the far left, and Save stays greyed out until something changes
-- Customers: each customer has Details and Messages sections, switched like Inbox and Archive; Messages has its own address and every messages link (Inbox, Calendar, List, notifications, Logs) opens it
-- Calendar: the stylist and service filter is a compact dropdown button like Statuses, and the day runs from the first stylist working or appointment to the last instead of midnight to midnight
-- Manage data: Analyze and the import summary show readable counts, with do-not-contact customers next to the customers count
+- List view is the default view and is a single column with appointments
+- Customers: customers have their own message view
+- Import: 10to8 appointments come in as rescheduled
+- Improvements to Calendar, List, Message settings, Do not contact, Manage data - see tickets for full changelog
 
 ## 2.5.0
 
