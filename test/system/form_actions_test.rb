@@ -35,10 +35,17 @@ class FormActionsTest < ApplicationSystemTestCase
     assert_selector "#save-settings:not([disabled])", wait: 5
   end
 
+  test "buttons that act elsewhere leave Save disabled" do
+    visit "/business_settings"
+    assert_selector "#save-settings[disabled]", wait: 5
+    find("#apply-global-working-plan").click
+    assert_selector "#message-modal", wait: 5
+    assert_selector "#save-settings[disabled]", visible: :all
+  end
+
   test "the account page enables Save on a change" do
     visit "/account"
     assert_selector "#save-settings[disabled]", wait: 5
-    fill_in "first-name", with: "Edson" if page.has_field?("first-name", wait: 0)
     find("#account-form input[type=email]").set("edson.new@example.org")
     assert_selector "#save-settings:not([disabled])", wait: 5
   end

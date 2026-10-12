@@ -119,7 +119,7 @@
                 </div>
             </div>
             <% if can?(:edit, :system_settings) %>
-                <div class="form-actions d-flex justify-content-end flex-wrap gap-2 border-top pt-3">
+                <div class="form-actions">
                     <% if n.persisted? %>
                         <button type="submit" form="delete-notification-<%= n.id %>" class="btn btn-outline-danger delete-notification"
                                 data-turbo-confirm-title="<%= lang('delete_notification') %>">

@@ -19,7 +19,7 @@
 
     <%# Delete posts the separate delete form (its form attribute), so Enter in a
         field still submits with Save. %>
-    <div class="form-actions d-flex justify-content-end flex-wrap gap-2 border-top pt-3 mt-4">
+    <div class="form-actions">
         <% if record.persisted? %>
             <button type="submit" form="<%= delete_form_id %>" class="btn btn-outline-danger"
                     data-turbo-confirm-title="<%= delete_title %>">

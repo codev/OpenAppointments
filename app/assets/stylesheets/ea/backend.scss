@@ -1056,3 +1056,15 @@ $bubble-radius: 1.1rem;
 .trumbowyg-editor {
     background-color: #fff;
 }
+
+/* The row of action buttons ending every backend form (Delete, Cancel, Save),
+   at the bottom right. */
+.form-actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 0.5rem;
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--bs-border-color);
+}

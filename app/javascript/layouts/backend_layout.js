@@ -92,8 +92,9 @@ window.App.Layouts.Backend = (function () {
     const GUARDED_FORMS = '#settings-form, #account-form, .crud-form, .notification-form';
 
     // Buttons inside a form that change it without an input event: a widget's
-    // add/remove/insert buttons. Menus and dialogs only open something.
-    const CHANGING_BUTTONS = 'button[type=button]:not([data-bs-toggle]):not([data-bs-dismiss])';
+    // add/remove/insert buttons. Menus and dialogs only open something, and
+    // data-no-change marks buttons that act elsewhere (copy, send a test).
+    const CHANGING_BUTTONS = 'button[type=button]:not([data-bs-toggle]):not([data-bs-dismiss]):not([data-no-change])';
 
     function unsaved() {
         return $('form[data-unsaved]').length > 0;
@@ -120,21 +121,18 @@ window.App.Layouts.Backend = (function () {
         $('form[data-unsaved]').each((index, form) => markUnsaved(form, false));
     }
 
+    // A change inside a guarded form; elsewhere nothing.
+    function markChanged(element) {
+        const form = $(element).closest(GUARDED_FORMS)[0];
+        if (form) {
+            markUnsaved(form, true);
+        }
+    }
+
     function guardUnsavedChanges() {
         // tbwchange: the notices rich text editor.
-        $(document).on('input change tbwchange', ':input', (event) => {
-            const form = $(event.target).closest(GUARDED_FORMS)[0];
-            if (form) {
-                markUnsaved(form, true);
-            }
-        });
-
-        $(document).on('click', CHANGING_BUTTONS, (event) => {
-            const form = $(event.currentTarget).closest(GUARDED_FORMS)[0];
-            if (form) {
-                markUnsaved(form, true);
-            }
-        });
+        $(document).on('input change tbwchange', ':input', (event) => markChanged(event.target));
+        $(document).on('click', CHANGING_BUTTONS, (event) => markChanged(event.currentTarget));
 
         $(document).on('submit', GUARDED_FORMS, (event) => {
             markUnsaved(event.currentTarget, false);

@@ -7,7 +7,7 @@ class CrudFormToolbarTest < ActionDispatch::IntegrationTest
     post "/login/validate", params: { username: "administrator", password: "administrator1" }
     get "/customers/#{users(:jx).id}/edit"
     assert_response :success
-    assert_select ".crud-form .form-actions.justify-content-end" do
+    assert_select ".crud-form .form-actions" do
       assert_select "button[type=submit].btn-primary[data-save]"
       assert_select "button.btn-outline-danger[form=?]", "delete-customer-#{users(:jx).id}"
     end

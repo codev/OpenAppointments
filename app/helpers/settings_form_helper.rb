@@ -17,7 +17,7 @@ module SettingsFormHelper
     buttons = buttons.compact
     return "".html_safe if buttons.empty?
 
-    tag.div(safe_join(buttons), class: "form-actions d-flex justify-content-end flex-wrap gap-2 border-top pt-3 mt-4")
+    tag.div(safe_join(buttons), class: "form-actions")
   end
 
   def settings_flash
