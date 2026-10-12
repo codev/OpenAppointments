@@ -28,8 +28,8 @@ class CustomersController < ApplicationController
   before_action :require_customer_access, only: %i[edit messages update destroy]
   before_action :require_add_allowed, only: %i[new create]
 
-  # GET /customers?customer_id=N[&section=messages]: the older deep link, still in
-  # sent notifications, opens the record's Details or Messages section.
+  # GET /customers?customer_id=N[&section=messages]: the deep link in sent
+  # notifications opens the record's Details or Messages section.
   def index
     if params[:customer_id].present?
       return redirect_to(params[:section] == "messages" ? messages_customer_path(params[:customer_id]) : edit_customer_path(params[:customer_id]))
@@ -40,7 +40,10 @@ class CustomersController < ApplicationController
 
   # GET /customers/:id/edit is the Details section; GET /customers/:id/messages
   # the conversation (customers/_form switches on @section).
+  # ?section=messages (in links already sent) opens the Messages section.
   def edit
+    return redirect_to(messages_customer_path(@record)) if params[:section] == "messages"
+
     @section = "details"
     super
   end

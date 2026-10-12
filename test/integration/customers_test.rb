@@ -68,7 +68,7 @@ class CustomersTest < ActionDispatch::IntegrationTest
     assert_select "script[src*='components/customer_messages']"
   end
 
-  test "a new customer has only the details and old deep links open the sections" do
+  test "a new customer has only the details and the deep links in sent notifications open the sections" do
     login_admin
     get "/customers/new"
     assert_select "#customer-sections", count: 0
@@ -78,6 +78,8 @@ class CustomersTest < ActionDispatch::IntegrationTest
     assert_redirected_to "/customers/#{users(:jx).id}/messages"
     get "/customers", params: { customer_id: users(:jx).id }
     assert_redirected_to "/customers/#{users(:jx).id}/edit"
+    get "/customers/#{users(:jx).id}/edit", params: { section: "messages" }
+    assert_redirected_to "/customers/#{users(:jx).id}/messages"
   end
 
   test "the messages section needs access to the customer" do
