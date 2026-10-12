@@ -20,7 +20,7 @@
             <a href="/appointments" class="nav-link text-white fw-light py-3 px-3"
                data-tippy-content="<%= lang('manage_appointment_record_hint') %>">
               <i class="fas fa-list me-2"></i>
-              <%= lang('appointments') %>
+              <%= lang('list') %>
             </a>
           </li>
 
@@ -100,6 +100,7 @@
                    data-bs-toggle="dropdown" aria-label="<%= lang('settings') %>"
                    data-tippy-content="<%= lang('settings_hint') %>">
                     <i class="fas fa-cog"></i>
+                    <span class="nav-label-spacer" aria-hidden="true">&nbsp;</span>
                 </a>
                 <div class="dropdown-menu dropdown-menu-end">
                     <% if can?(:view, :system_settings) %>

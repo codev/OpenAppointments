@@ -8,6 +8,9 @@ class ImportController < ApplicationController
   layout "backend"
 
   MAX_UPLOAD_SIZE = 100.megabytes
+  # Analyze, import and error redirects land on the result under the buttons.
+  RESULTS_ANCHOR = "import-status".freeze
+  RESULTS_PATH = "/data##{RESULTS_ANCHOR}".freeze
 
   before_action :require_session, except: [ :index ]
   before_action :forbid_unless_system_settings_edit, except: [ :index ]
@@ -87,8 +90,8 @@ class ImportController < ApplicationController
       do_not_contact: data[:customers].count { |customer| customer[:do_not_contact] }
     }
     if form_post?
-      session[:import_summary] = summary.map { |key, value| "#{key}: #{value}" }.join("\n")
-      redirect_to "/data"
+      session[:import_summary] = summary_text(summary)
+      redirect_to RESULTS_PATH
     else
       render json: { success: true, summary: summary }
     end
@@ -123,7 +126,7 @@ class ImportController < ApplicationController
       create_providers: ActiveModel::Type::Boolean.new.cast(params[:create_providers]) || Array(params[:phases]).include?("providers")
     )
     TenToEightImportJob.write_status(import_id, { state: "queued" })
-    form_post? ? redirect_to("/data?import_id=#{import_id}") : render(json: { success: true, import_id: import_id })
+    form_post? ? redirect_to("/data?import_id=#{import_id}##{RESULTS_ANCHOR}") : render(json: { success: true, import_id: import_id })
   rescue ArgumentError => e
     import_failed(e)
   ensure
@@ -160,8 +163,19 @@ class ImportController < ApplicationController
 
   def form_post? = params[:form].present?
 
+  # Analyze counts as labelled lines; do-not-contact customers sit on the customers line.
+  def summary_text(summary)
+    [
+      "#{helpers.lang('providers')}: #{summary[:staff]}",
+      "#{helpers.lang('services')}: #{summary[:services]}",
+      "#{helpers.lang('customers')}: #{summary[:customers]} (#{helpers.lang('do_not_contact')}: #{summary[:do_not_contact]})",
+      "#{helpers.lang('appointments')}: #{summary[:appointments]}",
+      "#{helpers.lang('settings')}: #{summary[:settings]}"
+    ].join("\n")
+  end
+
   def import_failed(error)
-    form_post? ? redirect_to("/data", alert: error.message) : json_exception(error)
+    form_post? ? redirect_to(RESULTS_PATH, alert: error.message) : json_exception(error)
   end
 
   def extractor_type

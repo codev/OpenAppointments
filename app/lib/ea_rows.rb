@@ -50,6 +50,20 @@ module EaRows
     }
   end
 
+  # An appointment as the calendar popovers read it (the calendar feed and the
+  # List entries): the row plus its provider, service and customer.
+  def calendar_appointment_row(appointment, unread_messages: 0)
+    appointment_row(appointment).merge(
+      "provider" => appointment.provider && provider_row(appointment.provider),
+      "service" => appointment.service && service_row(appointment.service),
+      "customer" => appointment.customer && customer_row(appointment.customer).merge("unread_messages" => unread_messages)
+    )
+  end
+
+  def calendar_unavailability_row(unavailability)
+    appointment_row(unavailability).merge("provider" => unavailability.provider && provider_row(unavailability.provider))
+  end
+
   def series_row(series, now: Date.current)
     future = series.future_dates(now)
     {

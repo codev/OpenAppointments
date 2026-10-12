@@ -13,8 +13,8 @@ both match.
 _Avoid_: Client, user
 
 **Stylist**:
-Staff member whose time customers book; each has a working plan and a column on the
-Appointments page.
+Staff member whose time customers book; each has a working plan and is listed under
+each date on the List page.
 _Avoid_: Provider (code and upstream Easy!Appointments term only)
 
 **Working stylist**:
@@ -82,5 +82,6 @@ needs.
 _Avoid_: Custom fields
 
 **Customer history**:
-Every message to and from a customer, shown on the customer page; marking an Inbox message
+Every message to and from a customer, shown in the Messages section of the customer page
+(/customers/:id/messages, beside Details); marking an Inbox message
 as dealt with never removes it from here.

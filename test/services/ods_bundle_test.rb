@@ -52,6 +52,30 @@ class OdsBundleTest < ActiveSupport::TestCase
     end
   end
 
+  test "a re-import repairs a picture left without its resized copies and keeps complete ones" do
+    Dir.mktmpdir do |dir|
+      ods_path, zip_path = build_files(dir)
+      images_dir = File.join(dir, "unpacked")
+      OdsBundle.unpack(zip_path, images_dir)
+      data = OdsExtract.new(ods_path).call
+      load = -> { TenToEight::Load.new(data, phases: %w[categories services], images_dir: images_dir).call }
+      load.call
+
+      # An import stopped between attachments leaves the original without the zoomed copy.
+      service = Service.find_by!(name: "Bundle Service")
+      service.picture_zoomed.purge
+      category = ServiceCategory.find_by!(name: "Bundle Cat")
+      category_blob_id = category.picture.blob.id
+
+      assert_empty load.call[:errors]
+
+      service.reload
+      assert service.picture.attached? && service.picture_padded.attached? && service.picture_zoomed.attached?,
+             "the re-import must recreate the missing copy"
+      assert_equal category_blob_id, category.reload.picture.blob.id, "a complete picture is kept"
+    end
+  end
+
   test "the export sheets carry the picture and description columns" do
     sheets = DataExport.sheets
     assert_equal %w[name description picture is_hidden sort_order], sheets["Service Categories"].first

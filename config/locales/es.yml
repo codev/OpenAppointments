@@ -70,6 +70,7 @@ es:
     created: creados
     matched: coincidentes
     skipped: omitidos
+    do_not_contact: "No contactar"
     no_file_selected: Ningún archivo seleccionado.
     reset_database: Restablecer base de datos
     reset_database_warning: Esto elimina permanentemente todas las citas, clientes, proveedores, asistentes, servicios y categorías. Las cuentas de administrador y la configuración se conservan. No se puede deshacer.
@@ -291,8 +292,8 @@ es:
     about_app_license: "OpenAppointments esta licenciado bajo la licencia AGPL-3.0. Al usar el codigo de OpenAppointments de cualquier manera, acepta los terminos descritos en la siguiente url:"
     logout_success: Usted ha cerrado su sesión exitosamente. Haga clic en uno de los siguientes botones para navegar hacia otra página.
     book_appointment_title: Agendar cita
-    backend_section: Sección de gestión interna
-    you_need_to_login: "¡Bienvenido! Usted deberá iniciar sesión para ver las páginas de gestión interna."
+    backend_section: "Acceso del personal"
+    you_need_to_login: "¡Bienvenido! Debe iniciar sesión para gestionar las citas y los mensajes."
     enter_username_here: Ingrese su nombre de usuario aquí...
     enter_password_here: Introduzca la contraseña aquí ...
     login: Iniciar sesión

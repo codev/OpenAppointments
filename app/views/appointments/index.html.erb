@@ -1,13 +1,14 @@
-<%# Appointments page: a day column per provider for one or three days, rendered
-    from the URL (date, days, provider, service, statuses) into the day frame.
-    Entries open the event dialog. %>
+<%# Appointments page (List): one or three dates, each with its providers listed one
+    under another, rendered from the URL (date, days, provider, service, statuses)
+    into the day frame. Appointments and unavailabilities open the details popover,
+    free slots the appointment dialog. %>
 <% formats = { date_format: setting('date_format'), time_format: setting('time_format') } %>
 <% query = ->(overrides) { { date: @date, days: @days, provider: @all_providers ? "all" : (@provider_id.positive? ? @provider_id : nil),
                              service: @service_id.positive? ? @service_id : nil, statuses: @selected_statuses }.merge(overrides).compact } %>
 <div class="container-fluid backend-page pt-0 pb-0" id="calendar-page">
     <turbo-frame id="day_view" data-turbo-action="advance">
     <%= form_with url: appointments_path, method: :get, id: "day-filter", data: { turbo_frame: "day_view" } do %>
-        <div class="row mb-3 text-white py-3 bg-dark" id="calendar-toolbar">
+        <div class="row mb-3 py-3" id="calendar-toolbar">
             <div id="calendar-filter" class="col-lg-8">
                 <div class="calendar-filter-items d-flex flex-wrap gap-2">
                     <%= hidden_field_tag :date, @date, id: "day-date" %>
@@ -47,7 +48,7 @@
 
     <div id="calendar">
         <div class="calendar-header row align-items-center g-2 mb-3">
-            <div class="col-4 d-flex align-items-center gap-2">
+            <div class="col-6 col-md-4 d-flex align-items-center gap-2">
                 <div class="btn-group">
                     <%= link_to appointments_path(query.call(date: @date - 1)), id: "previous-day", class: "btn btn-primary",
                                 "aria-label": lang('previous') do %><i class="fas fa-chevron-left"></i><% end %>
@@ -57,11 +58,11 @@
                 <%= link_to lang('today'), appointments_path(query.call(date: Date.current)), id: "today",
                             class: "btn btn-primary #{'disabled' if @date == Date.current}" %>
             </div>
-            <div class="col-4 text-center">
+            <div class="col-6 col-md-4 text-end text-md-center">
                 <%= date_field_tag :date, @date, id: "select-date", class: "form-control d-inline-block select-date w-auto", form: "day-filter",
                                    onchange: "document.getElementById('day-filter').requestSubmit()" %>
             </div>
-            <div class="col-4 text-end">
+            <div class="col-12 col-md-4 text-md-end">
                 <button type="button" class="btn btn-outline-primary" id="toggle-series">
                     <i class="fas fa-redo me-2"></i><span><%= lang('repeating_appointments') %></span>
                 </button>
@@ -85,7 +86,7 @@
                                 <h6><%= day.provider.name %></h6>
                                 <div class="day-entries">
                                     <% day.entries.each do |entry| %>
-                                        <%= render "appointments/entry", entry: entry, day: day, formats: formats %>
+                                        <%= render "appointments/entry", entry: entry, day: day, formats: formats, unread_counts: @unread_counts %>
                                     <% end %>
                                 </div>
                             </div>
@@ -126,5 +127,6 @@
 <%= render "calendar/modals" %>
 
 <% content_for :scripts do %>
-    <%= ea_js "utils/ui", "pages/appointments" %>
+    <%= ea_js "utils/ui", "utils/calendar_events", "utils/calendar_event_popover", "http/calendar_http_client",
+              "pages/appointments" %>
 <% end %>

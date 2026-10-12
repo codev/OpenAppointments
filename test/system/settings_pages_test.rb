@@ -37,8 +37,11 @@ class SettingsPagesTest < ApplicationSystemTestCase
     login_as_admin
   end
 
+  # Save ends the form; long pages scroll smoothly, so bring it into view at once.
   def save_and_check(page)
-    find("#save-settings, #save-embed-settings").click
+    button = find("#save-settings, #save-embed-settings")
+    button.execute_script("this.scrollIntoView({block: 'center', behavior: 'instant'})")
+    button.click
     assert_text "Settings saved", wait: 5
     yield
     visit "/#{page}"
@@ -65,6 +68,22 @@ class SettingsPagesTest < ApplicationSystemTestCase
       save_and_check(page) { assert_equal(was ? "0" : "1", Setting.get(name)) }
       assert_equal !was, find("##{id}").checked?
     end
+  end
+
+  test "message settings show the intercept fields only for Debug" do
+    Setting.set("messages_enabled", "1")
+    visit "/messages_settings"
+    assert_selector "#messages-enabled", wait: 5
+    assert_no_selector "#messages-intercept-email"
+    assert_no_text "Every outgoing email"
+
+    select "Debug", from: "messages-enabled"
+    assert_selector "#messages-intercept-email", wait: 5
+    assert_selector "#messages-intercept-phone"
+    assert_text "Every outgoing email"
+
+    select "On", from: "messages-enabled"
+    assert_no_selector "#messages-intercept-email", wait: 5
   end
 
   test "the notices editor is white on a tinted page background" do

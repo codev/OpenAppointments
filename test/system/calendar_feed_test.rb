@@ -7,7 +7,8 @@ class CalendarFeedTest < ApplicationSystemTestCase
     login_as_admin
     visit "/calendar"
     assert_no_selector "#calendar-feed", visible: true
-    select "Zane", from: "select-filter-item"
+    find("#filter-item-dropdown .dropdown-toggle", wait: 10).click
+    within("#filter-item-dropdown .dropdown-menu") { click_on "Zane" }
     click_on I18n.t("ea.calendar_feed")
     assert_selector "#calendar-feed-modal.show", wait: 5
     first = find("#calendar-feed-link").value

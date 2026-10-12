@@ -33,6 +33,18 @@ class UserPagesTest < ActionDispatch::IntegrationTest
     end
   end
 
+  test "the Options heading shows only when options follow it" do
+    login_admin
+    get "/admins/#{users(:admin).id}/edit"
+    assert_select "label", text: "Options", count: 0
+
+    get "/account"
+    assert_select "label", text: "Options", count: 0
+
+    get "/assistants/new"
+    assert_select "label", text: "Options", count: 1
+  end
+
   test "edit does not require a password and keeps it when left blank" do
     login_admin
     get "/admins/#{users(:admin).id}/edit"

@@ -70,6 +70,7 @@ et:
     created: loodud
     matched: sobitatud
     skipped: vahele jäetud
+    do_not_contact: "Mitte võtta ühendust"
     no_file_selected: Faili pole valitud.
     reset_database: Lähtesta andmebaas
     reset_database_warning: See kustutab jäädavalt kõik broneeringud, kliendid, teenusepakkujad, assistendid, teenused ja kategooriad. Administraatori kontod ja seaded säilivad. Seda ei saa tagasi võtta.
@@ -291,8 +292,8 @@ et:
     about_app_license: "OpenAppointments on litsentseeritud AGPL-3.0 litsentsi alusel. Kasutades OpenAppointments koodi mis tahes viisil, noustute jargmisel aadressil kirjeldatud tingimustega:"
     logout_success: Välja logitud! Vajuta mõnda järgnevatest nuppudest, et siirduda järgmisele lehele.
     book_appointment_title: Tee broneering
-    backend_section: Haldusrarakendus
-    you_need_to_login: Tere tulemast! Haldamiseks pead sisse logima.
+    backend_section: "Töötajate sisselogimine"
+    you_need_to_login: "Tere tulemast! Broneeringute ja sõnumite haldamiseks pead sisse logima."
     enter_username_here: Kasutajanimi
     enter_password_here: Sisestage parool siia ...
     login: Logi sisse

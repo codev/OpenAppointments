@@ -51,6 +51,47 @@ class BackendHeaderTest < ApplicationSystemTestCase
     end
   end
 
+  # The caret sits right under the last row of a stacked dropdown link (the
+  # label, or the icon when there is none), so equal last-row bottoms mean the
+  # carets line up, the cog included.
+  test "dropdown carets line up across the compact range" do
+    login_as_admin
+    [ 800, 1150 ].each do |width|
+      resize_window(width, 900)
+      assert_selector "#header .navbar-nav .dropdown-toggle", wait: 5
+      bottoms = page.evaluate_script(<<~JS).map(&:round)
+        Array.from(document.querySelectorAll('#header .navbar-nav .nav-item:not(.d-none) > .dropdown-toggle'))
+          .map((link) => {
+            const rows = Array.from(link.childNodes).filter((n) =>
+              n.nodeType === 1 ? getComputedStyle(n).display !== 'none' : n.nodeType === 3 && n.textContent.trim());
+            const range = document.createRange();
+            range.selectNode(rows[rows.length - 1]);
+            return range.getBoundingClientRect().bottom;
+          })
+      JS
+      assert_operator bottoms.size, :>=, 3
+      assert_operator bottoms.max - bottoms.min, :<=, 1, "#{width}px: caret rows differ #{bottoms.inspect}"
+    end
+  end
+
+  test "the Calendar and List toolbars use the theme header colours" do
+    login_as_admin
+    [ "/calendar", "/appointments" ].each do |path|
+      visit path
+      assert_selector "#calendar-toolbar", wait: 10
+      colours = page.evaluate_script(<<~JS)
+        (() => {
+          const style = (id) => getComputedStyle(document.getElementById(id));
+          const link = getComputedStyle(document.querySelector('#header .nav-link'));
+          return { header: [style('header').backgroundColor, link.color],
+                   toolbar: [style('calendar-toolbar').backgroundColor, style('calendar-toolbar').color] };
+        })()
+      JS
+      assert_equal colours["header"][0], colours["toolbar"][0], "#{path}: toolbar background"
+      assert_equal colours["header"][1], colours["toolbar"][1], "#{path}: toolbar text"
+    end
+  end
+
   test "labels sit beside icons again from 1200px" do
     login_as_admin
     links = measure_at(1250)

@@ -119,17 +119,17 @@
                 </div>
             </div>
             <% if can?(:edit, :system_settings) %>
-                <div class="d-flex border-top pt-3">
-                    <button type="submit" class="btn btn-primary save-notification">
-                        <i class="fas fa-check-square me-2"></i>
-                        <%= lang('save') %>
-                    </button>
+                <div class="form-actions">
                     <% if n.persisted? %>
-                        <button type="submit" form="delete-notification-<%= n.id %>" class="btn btn-outline-danger delete-notification ms-auto"
+                        <button type="submit" form="delete-notification-<%= n.id %>" class="btn btn-outline-danger delete-notification me-auto"
                                 data-turbo-confirm-title="<%= lang('delete_notification') %>">
                             <i class="fas fa-trash-alt me-2"></i><%= lang('delete') %>
                         </button>
                     <% end %>
+                    <button type="submit" class="btn btn-primary save-notification" data-save>
+                        <i class="fas fa-check-square me-2"></i>
+                        <%= lang('save') %>
+                    </button>
                 </div>
             <% end %>
         <% end %>

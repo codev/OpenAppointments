@@ -20,7 +20,7 @@ class ImportPageSystemTest < ApplicationSystemTestCase
     select "Sign In App / 10to8 CSV", from: "import-type"
     attach_file "import-file", Rails.root.join("test/fixtures/files/ten_to_eight_export.csv")
     find("#analyze-import").click
-    assert_selector "#import-results", text: /customers: 3/, wait: 10
+    assert_selector "#import-results", text: /Customers: 3/, wait: 10
     assert_selector "#export-data", visible: :visible
   end
 end

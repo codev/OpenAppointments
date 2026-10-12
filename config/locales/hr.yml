@@ -70,6 +70,7 @@ hr:
     created: stvoreno
     matched: uparen
     skipped: preskoceno
+    do_not_contact: "Ne kontaktirati"
     no_file_selected: Nije odabrana datoteka.
     reset_database: Resetiraj bazu podataka
     reset_database_warning: Ovo trajno brise sve termine, klijente, pruzatelje, asistente, usluge i kategorije. Administratorski racuni i postavke ostaju. Nepovratno.
@@ -291,8 +292,8 @@ hr:
     about_app_license: "OpenAppointments je licenciran pod AGPL-3.0 licencom. Koristenjem koda OpenAppointments na bilo koji nacin prihvacate uvjete opisane na sljedecoj poveznici:"
     logout_success: Uspješno ste se odjavili! Kliknite na jedan od sljedećih gumba da biste otišli na drugu stranicu.
     book_appointment_title: Rezerviraj sastanak
-    backend_section: Backend odjeljak
-    you_need_to_login: Dobrodošli! Morate se prijaviti da biste vidjeli backend stranice.
+    backend_section: "Prijava za osoblje"
+    you_need_to_login: "Dobrodošli! Morate se prijaviti kako biste upravljali sastancima i porukama."
     enter_username_here: Unesite svoje korisničko ime ovdje ...
     enter_password_here: Unesite lozinku ovdje ...
     login: Prijava

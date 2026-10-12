@@ -70,6 +70,7 @@ ca:
     created: creats
     matched: coincidents
     skipped: omesos
+    do_not_contact: "No contactar"
     no_file_selected: No s'ha seleccionat cap fitxer.
     reset_database: Restableix la base de dades
     reset_database_warning: Això elimina permanentment totes les cites, clients, proveïdors, assistents, serveis i categories. Els comptes d'administrador i la configuració es conserven. No es pot desfer.
@@ -291,8 +292,8 @@ ca:
     about_app_license: "OpenAppointments esta llicenciat sota la llicencia AGPL-3.0. En utilitzar el codi d'OpenAppointments de qualsevol manera, accepteu els termes descrits al seguent enllac:"
     logout_success: Heu sortit correctament! Cliqueu en un dels següents botons per navegar a una altra pàgina.
     book_appointment_title: Reserva una cita
-    backend_section: Administració
-    you_need_to_login: Heu d'iniciar la sessió per veure les pàgines d'administració.
+    backend_section: "Accés del personal"
+    you_need_to_login: "Benvingut! Heu d'iniciar la sessió per gestionar les cites i els missatges."
     enter_username_here: Introduïu el vostre nom d'usuari...
     enter_password_here: Introduïu la contrasenya aquí ...
     login: Entra

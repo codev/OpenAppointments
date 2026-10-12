@@ -70,6 +70,7 @@ ja:
     created: 作成
     matched: 一致
     skipped: スキップ
+    do_not_contact: "連絡不可"
     no_file_selected: ファイルが選択されていません。
     reset_database: データベースのリセット
     reset_database_warning: すべての予約、顧客、担当者、アシスタント、サービス、カテゴリーを完全に削除します。管理者アカウントと設定は保持されます。元に戻せません。
@@ -291,8 +292,8 @@ ja:
     about_app_license: "OpenAppointments は AGPL-3.0 ライセンスの下で提供されています。OpenAppointments のコードを何らかの形で使用することにより、次の URL に記載された条件に同意したことになります:"
     logout_success: ログアウトが完了しました。どちらかのボタンを押して ページを移動することができます。
     book_appointment_title: 予約受付
-    backend_section: 管理画面
-    you_need_to_login: ようこそ、管理画面を見るためには、ログインをしてください。
+    backend_section: "スタッフログイン"
+    you_need_to_login: "ようこそ。予約とメッセージを管理するには、ログインしてください。"
     enter_username_here: ユーザー名を入力してください ...
     enter_password_here: ここにパスワードを入力 ...
     login: ログイン

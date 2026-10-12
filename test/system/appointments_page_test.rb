@@ -28,6 +28,19 @@ class AppointmentsPageTest < ApplicationSystemTestCase
     assert_no_selector ".modal.show", wait: 5
 
     find(".day-entry-appointment", text: "JX - Trim Cut").click
+    assert_selector ".popover", wait: 5
+    popover_top, header_bottom = page.evaluate_script(
+      "[document.querySelector('.popover').getBoundingClientRect().top, document.getElementById('header').getBoundingClientRect().bottom]"
+    )
+    assert_operator popover_top, :>=, header_bottom, "the popover is hidden under the header"
+    within(".popover", wait: 5) do
+      assert_text "JX"
+      assert_text "Morning cut"
+      assert_selector "a", text: "Messages"
+      assert_selector ".cancel-popover", visible: true
+      click_on "Edit"
+    end
+    assert_no_selector ".popover", wait: 5
     assert_selector "#save-appointment", visible: true, wait: 5
     assert_field "appointment-notes", with: "Morning cut"
     wait_for_modal
@@ -48,7 +61,21 @@ class AppointmentsPageTest < ApplicationSystemTestCase
     assert_current_path(/statuses/, wait: 5)
   end
 
-  test "six working stylists fit side by side in a 1400 pixel window" do
+  LAYOUT = <<~JS.freeze
+    (() => {
+      const box = (el) => el.getBoundingClientRect();
+      const view = document.querySelector('#calendar .calendar-view');
+      return {
+        viewWidth: view.clientWidth, scrolls: view.scrollWidth > view.clientWidth,
+        title: box(document.querySelector('.date-column-title')),
+        columns: [...document.querySelectorAll('.provider-column')].map((el) => {
+          const r = box(el); return { top: r.top, bottom: r.bottom, width: r.width };
+        })
+      };
+    })()
+  JS
+
+  test "each date lists its stylists one under another at full width" do
     5.times do |index|
       provider = User.create!(name: "Stylist #{index}", email: "stylist#{index}@example.org", role: users(:zane).role,
                               timezone: "Europe/London")
@@ -56,11 +83,28 @@ class AppointmentsPageTest < ApplicationSystemTestCase
                                 working_plan: user_settings(:zane).working_plan)
       ServiceProviderLink.create!(id_users: provider.id, id_services: services(:haircut).id)
     end
-    visit appointments_url(date: @date)
-    assert_selector ".provider-column", count: 6, wait: 5
-    assert page.evaluate_script("document.querySelector('#calendar .calendar-view').scrollWidth <= " \
-                                "document.querySelector('#calendar .calendar-view').clientWidth"),
-           "the columns must fit without scrolling sideways"
+    [ 1400, 800, 420 ].each do |width|
+      resize_window(width, 900)
+      visit appointments_url(date: @date)
+      assert_selector ".provider-column", count: 6, wait: 5
+      overlaps = page.evaluate_script(<<~JS)
+        (() => {
+          const boxes = ['#today', '#select-date', '#toggle-series'].map((s) => document.querySelector(s).getBoundingClientRect());
+          const hit = (a, b) => a.left < b.right - 1 && b.left < a.right - 1 && a.top < b.bottom - 1 && b.top < a.bottom - 1;
+          return hit(boxes[0], boxes[1]) || hit(boxes[1], boxes[2]) || hit(boxes[0], boxes[2]);
+        })()
+      JS
+      assert_not overlaps, "#{width}px: Today, the date and Repeating Appointments overlap"
+      layout = page.evaluate_script(LAYOUT)
+      assert_not layout["scrolls"], "#{width}px: the list scrolls sideways"
+      assert_operator layout["title"]["bottom"], :<=, layout["columns"].first["top"] + 1, "#{width}px: date heading above the stylists"
+      layout["columns"].each_cons(2) do |above, below|
+        assert_operator below["top"], :>=, above["bottom"] - 1, "#{width}px: stylists must stack"
+      end
+      layout["columns"].each do |column|
+        assert_operator column["width"], :>=, layout["viewWidth"] * 0.95, "#{width}px: stylist not full width"
+      end
+    end
   end
 end
 
@@ -91,7 +135,7 @@ class AppointmentsPageRefreshTest < ApplicationSystemTestCase
     login_as_admin
     visit calendar_url
     assert_selector "#calendar .fc-view-harness", wait: 10
-    within("#header") { click_on "Appointments", match: :first }
+    within("#header") { click_on "List", match: :first }
     assert_selector "#day-filter", wait: 5
     sleep 0.5
     assert_no_selector "#calendar .fc-view-harness"

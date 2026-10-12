@@ -70,6 +70,7 @@ lv:
     created: izveidoti
     matched: sakrita
     skipped: izlaisti
+    do_not_contact: "Nesazināties"
     no_file_selected: Nav izvēlēts fails.
     reset_database: Atiestatīt datubāzi
     reset_database_warning: Tas neatgriezeniski dzēš visus pierakstus, klientus, pakalpojumu sniedzējus, asistentus, pakalpojumus un kategorijas. Administratoru konti un iestatījumi saglabājas. Nevar atsaukt.
@@ -291,8 +292,8 @@ lv:
     about_app_license: "OpenAppointments ir licencets saskana ar AGPL-3.0 licenci. Jebkada veida izmantojot OpenAppointments kodu, jus piekritat noteikumiem, kas aprakstiti saja saite:"
     logout_success: Jūs esat veiksmīgi izrakstījies! Noklikšķiniet uz kādas no šīm pogām, lai pārietu uz citu lapu.
     book_appointment_title: Rezervēt tikšanos
-    backend_section: Administrācijas sadaļa
-    you_need_to_login: Laipni lūdzam! Jums būs nepieciešams pieteikties, lai apskatītu aizmugurējās lapas.
+    backend_section: "Darbinieku pieteikšanās"
+    you_need_to_login: "Laipni lūdzam! Lai pārvaldītu pierakstus un ziņas, jums jāpiesakās."
     enter_username_here: Ievadiet savu lietotājvārdu šeit ...
     enter_password_here: Ievadiet paroli šeit ...
     login: Pieteikšanās

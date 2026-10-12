@@ -265,28 +265,71 @@ App.Utils.CalendarEvents = (function () {
 
     function onEventClick(info) {
         const $target = $(info.el);
-        closePopover();
-
-        const Popover = App.Utils.CalendarEventPopover;
-        const isCustom = $target.hasClass('fc-custom');
-        let $html;
 
         if ($target.hasClass('fc-free')) {
+            closePopover();
             newAppointmentAt(info.event.extendedProps.data.providerId, info.event.start);
             return;
         }
 
+        let kind = 'appointment';
         if ($target.hasClass('fc-blocked-period')) {
+            kind = 'blocked-period';
+        } else if ($target.hasClass('fc-working-plan-exception')) {
+            kind = 'working-plan-exception';
+        } else if ($target.hasClass('fc-unavailability')) {
+            kind = 'unavailability';
+        }
+
+        showPopover(info, kind, $target.hasClass('fc-custom'));
+    }
+
+    /**
+     * A List entry (appointments page) opens the same popover as the calendar,
+     * from the event row it carries in data-event.
+     *
+     * @param {HTMLElement} el
+     */
+    function openEntryPopover(el) {
+        const data = $(el).data('event');
+        const info = {
+            el,
+            event: {
+                title: $(el).data('title'),
+                start: moment(data.start_datetime).toDate(),
+                end: moment(data.end_datetime).toDate(),
+                extendedProps: {data},
+            },
+        };
+
+        // Below the entry in the list; Bootstrap flips it above when there is no room.
+        showPopover(info, data.is_unavailability ? 'unavailability' : 'appointment', true, 'bottom');
+    }
+
+    /**
+     * @param {Object} info FullCalendar event info, or the same shape for a List entry.
+     * @param {string} kind appointment, unavailability, working-plan-exception or blocked-period.
+     * @param {boolean} isCustom A stored (not generated) unavailability or exception, so editable.
+     * @param {string} [placement] top (the calendar grid) or bottom (the List).
+     */
+    function showPopover(info, kind, isCustom, placement = 'top') {
+        const $target = $(info.el);
+        closePopover();
+
+        const Popover = App.Utils.CalendarEventPopover;
+        let $html;
+
+        if (kind === 'blocked-period') {
             $html = Popover.buildBlockedPeriodPopover(info);
         } else {
-            const generated = $target.hasClass('fc-unavailability') || $target.hasClass('fc-working-plan-exception');
+            const generated = kind === 'unavailability' || kind === 'working-plan-exception';
             const editable = generated ? isCustom : true;
             const displayEdit = editable && canEdit() ? '' : 'd-none';
             const displayDelete = editable && canDelete() ? 'me-2' : 'd-none';
 
-            if ($target.hasClass('fc-working-plan-exception')) {
+            if (kind === 'working-plan-exception') {
                 $html = Popover.buildWorkingPlanExceptionPopover(info, displayEdit, displayDelete);
-            } else if ($target.hasClass('fc-unavailability')) {
+            } else if (kind === 'unavailability') {
                 $html = Popover.buildUnavailabilityPopover(info, displayEdit, displayDelete);
             } else {
                 $html = Popover.buildAppointmentPopover(info, displayEdit, displayDelete);
@@ -294,7 +337,7 @@ App.Utils.CalendarEvents = (function () {
         }
 
         $target.popover({
-            placement: 'top',
+            placement,
             title: App.Utils.String.escapeHtml(info.event.title),
             content: $html,
             html: true,
@@ -307,7 +350,7 @@ App.Utils.CalendarEvents = (function () {
         $popoverTarget = $target;
 
         const $popover = $calendarPage().find('.popover');
-        if ($popover.length && $popover.position().top < 200) {
+        if (placement === 'top' && $popover.length && $popover.position().top < 200) {
             $popover.css('top', '200px');
         }
     }
@@ -542,13 +585,14 @@ App.Utils.CalendarEvents = (function () {
         };
     }
 
+    // The colour mixed with white, opaque so overlapping events do not show through.
     function tint(color) {
         const hex = color.replace('#', '');
         if (hex.length !== 6) {
             return color;
         }
-        const [r, g, b] = [0, 2, 4].map((i) => parseInt(hex.substr(i, 2), 16));
-        return `rgba(${r}, ${g}, ${b}, 0.28)`;
+        const [r, g, b] = [0, 2, 4].map((i) => Math.round(255 - (255 - parseInt(hex.substr(i, 2), 16)) * 0.28));
+        return `rgb(${r}, ${g}, ${b})`;
     }
 
     function unavailabilityEvents(unavailabilities) {
@@ -634,6 +678,53 @@ App.Utils.CalendarEvents = (function () {
         }
 
         return {dayPlan: workingPlan[date.format('dddd').toLowerCase()] || null, exception};
+    }
+
+    /**
+     * The time grid's hours: whole hours from the earliest working start or event
+     * to the latest end over the range, as FullCalendar slotMinTime/slotMaxTime.
+     * The full day when nobody works and nothing is booked.
+     *
+     * @param {Array} providers Whose working plans count.
+     * @param {Date} rangeStart
+     * @param {Date} rangeEnd
+     * @param {Array} events Timed events ({start, end}); one across midnight shows the full day.
+     * @returns {Object} {slotMinTime, slotMaxTime}
+     */
+    function visibleHours(providers, rangeStart, rangeEnd, events) {
+        let first = null;
+        let last = null;
+        const widen = (startMinutes, endMinutes) => {
+            first = first === null ? startMinutes : Math.min(first, startMinutes);
+            last = last === null ? endMinutes : Math.max(last, endMinutes);
+        };
+        const minutesOf = (time) => moment(time, 'HH:mm').hours() * 60 + moment(time, 'HH:mm').minutes();
+
+        for (const day = moment(rangeStart).startOf('day'); day.isBefore(rangeEnd); day.add(1, 'day')) {
+            providers.forEach((provider) => {
+                const {dayPlan} = dayPlanFor(provider, day);
+                if (dayPlan) {
+                    widen(minutesOf(dayPlan.start), minutesOf(dayPlan.end));
+                }
+            });
+        }
+
+        events.forEach((event) => {
+            const start = moment(event.start);
+            const end = moment(event.end);
+            if (end.isAfter(moment(start).endOf('day'))) {
+                widen(0, 24 * 60);
+            } else {
+                widen(start.hours() * 60 + start.minutes(), end.hours() * 60 + end.minutes());
+            }
+        });
+
+        if (first === null) {
+            return {slotMinTime: '00:00:00', slotMaxTime: '24:00:00'};
+        }
+
+        const hour = (h) => String(h).padStart(2, '0') + ':00:00';
+        return {slotMinTime: hour(Math.floor(first / 60)), slotMaxTime: hour(Math.ceil(last / 60))};
     }
 
     function at(date, time) {
@@ -787,6 +878,7 @@ App.Utils.CalendarEvents = (function () {
         findProvider,
         findService,
         closePopover,
+        openEntryPopover,
         openEventForm,
         newEventDialog,
         saveWorkingPlanException,
@@ -796,5 +888,6 @@ App.Utils.CalendarEvents = (function () {
         workingPlanEvents,
         workingIntervals,
         freeSlotEvents,
+        visibleHours,
     };
 })();

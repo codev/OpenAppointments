@@ -1,5 +1,5 @@
 /**
- * Appointments page: the day columns are a Turbo Frame driven by the filter
+ * Appointments page (List): the days are a Turbo Frame driven by the filter
  * form; this script reloads it after a dialog saves, and handles the
  * repeating appointments panel (list frame plus the pattern dialog).
  */
@@ -73,12 +73,19 @@
             $(document).on('click', '#toggle-series', () => showSeriesView($('#series-view').hasClass('d-none')));
             $(document).on('click', '#series-table .series-edit', (event) => openPattern($(event.currentTarget).data('id')));
             $(document).on('click', '#series-pattern-save', savePattern);
+            $(document).on('click', '#calendar-page button.day-entry[data-event]', (event) =>
+                App.Utils.CalendarEvents.openEntryPopover(event.currentTarget),
+            );
             document.addEventListener('turbo:frame-load', (event) => {
                 if (event.target.id === 'day_view') {
+                    App.Utils.CalendarEvents.closePopover();
                     tippy('[data-tippy-content]');
                 }
             });
         });
+
+        // The popover's buttons (Close, Cancel, Delete, Edit) act on this page's entries.
+        App.Utils.CalendarEvents.configure(reloadDay);
 
         if (vars('edit_appointment')) {
             App.Components.EventModal.open('appointments/' + vars('edit_appointment').id + '/edit');

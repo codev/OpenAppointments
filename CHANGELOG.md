@@ -3,6 +3,13 @@
 The about page lists these notes; every release needs a section here matching
 CloudronManifest.json.
 
+## 3.0.0
+
+- List view is the default view and is a single column with appointments
+- Customers: customers have their own message view
+- Import: 10to8 appointments come in as rescheduled
+- Improvements to Calendar, List, Message settings, Do not contact, Manage data - see tickets for full changelog
+
 ## 2.5.0
 
 - Messages: fresher look with messages as chat bubbles with colour based on the provider

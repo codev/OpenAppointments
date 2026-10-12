@@ -123,7 +123,7 @@ class ServiceCategoriesTest < ActionDispatch::IntegrationTest
                   "/service_categories/#{category.id}", I18n.t("ea.delete_record_prompt") do
       assert_select "input[name=_method][value=delete]"
     end
-    assert_select ".btn-toolbar button[form=?][data-turbo-confirm-title=?]",
+    assert_select ".form-actions button[form=?][data-turbo-confirm-title=?]",
                   "delete-service_category-#{category.id}", I18n.t("ea.delete_service_category")
   end
 

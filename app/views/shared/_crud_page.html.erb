@@ -1,5 +1,6 @@
 <%# Admin CRUD page: list + detail form in nested Turbo Frames. The outer frame
     reloads after save/delete/filter; the inner one swaps the form on row click.
+    Record links and the form's buttons advance the URL, so Back returns to the list.
     backend.scss shows either the list or the details, toggled by the editing
     class (rendered for direct visits, kept in sync by utils/crud_page.js).
     Locals: page, title, records, record, editing, keyword, row partial, form
@@ -21,7 +22,7 @@
                     <% if local_assigns.fetch(:can_add, true) %>
                         <%= link_to url_for(action: :new), id: "add-#{page.singularize}",
                                     class: "btn btn-primary add-record-btn",
-                                    data: { turbo_frame: "#{frame}_record" } do %>
+                                    data: { turbo_frame: "#{frame}_record", turbo_action: "advance" } do %>
                             <i class="fas fa-plus-square me-2"></i>
                             <%= lang('add') %>
                         <% end %>
@@ -49,7 +50,8 @@
                     <% records.each do |item| %>
                         <div class="<%= page.singularize %>-row entry <%= 'selected' if record&.id == item.id %>"
                              data-id="<%= item.id %>" <%= 'draggable=true' if local_assigns[:list_toolbar] %>>
-                            <%= link_to url_for(action: :edit, id: item), data: { turbo_frame: "#{frame}_record" },
+                            <%= link_to url_for(action: :edit, id: item),
+                                        data: { turbo_frame: "#{frame}_record", turbo_action: "advance" },
                                         class: "text-reset text-decoration-none d-block" do %>
                                 <%= render row, record: item %>
                             <% end %>

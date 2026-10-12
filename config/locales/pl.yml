@@ -70,6 +70,7 @@ pl:
     created: utworzono
     matched: dopasowano
     skipped: pominięto
+    do_not_contact: "Nie kontaktować"
     no_file_selected: Nie wybrano pliku.
     reset_database: Zresetuj bazę danych
     reset_database_warning: To trwale usuwa wszystkie wizyty, klientów, usługodawców, asystentów, usługi i kategorie. Konta administratorów i ustawienia pozostają. Nieodwracalne.
@@ -291,8 +292,8 @@ pl:
     about_app_license: "OpenAppointments jest licencjonowany na licencji AGPL-3.0. Korzystajac z kodu OpenAppointments w jakikolwiek sposob, zgadzasz sie na warunki opisane pod nastepujacym adresem:"
     logout_success: Wylogowałeś się Naciśnij przycisk aby nawigować do innej strony.
     book_appointment_title: Zamów wizytę
-    backend_section: Sekcja funkcjonalna
-    you_need_to_login: Witaj! Musisz się zalogować aby zobaczyć część funkcjonalną.
+    backend_section: "Logowanie personelu"
+    you_need_to_login: "Witaj! Musisz się zalogować, aby zarządzać wizytami i wiadomościami."
     enter_username_here: Wpisz nazwę użytkownika
     enter_password_here: Wprowadź hasło tutaj ...
     login: Zaloguj

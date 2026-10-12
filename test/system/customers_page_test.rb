@@ -17,6 +17,37 @@ class CustomersPageTest < ApplicationSystemTestCase
     assert_selector "#customer-appointments a[href*='/calendar/reschedule/abc123def456']"
   end
 
+  test "opening a customer changes the URL and Back returns to the list" do
+    visit customers_url
+    assert_selector ".customer-row", wait: 5
+    find(".customer-row[data-id='#{users(:jx).id}']").click
+    assert_selector "#customers-page.editing", wait: 5
+    assert_current_path "/customers/#{users(:jx).id}/edit", wait: 5
+
+    page.go_back
+    assert_current_path "/customers", wait: 5
+    assert_selector ".customer-row", wait: 5
+    assert_no_selector "#customers-page.editing"
+
+    find(".customer-row[data-id='#{users(:jx).id}']").click
+    assert_selector "#customers-page.editing", wait: 5
+    click_on "Cancel"
+    assert_no_selector "#customers-page.editing", wait: 5
+    assert_current_path %r{\A/customers(\?|\z)}, wait: 5
+  end
+
+  test "Details and Messages switch with the URL and Back" do
+    visit customers_url
+    find(".customer-row[data-id='#{users(:jx).id}']").click
+    assert_current_path "/customers/#{users(:jx).id}/edit", wait: 5
+    within("#customer-sections") { click_on "Messages" }
+    assert_current_path "/customers/#{users(:jx).id}/messages", wait: 5
+    assert_selector "#customer-message-composer", wait: 5
+    page.go_back
+    assert_current_path "/customers/#{users(:jx).id}/edit", wait: 5
+    assert_field "Name", with: "JX", wait: 5
+  end
+
   test "add, edit, filter, cancel and delete" do
     visit customers_url
     assert_selector ".customer-row", wait: 5
@@ -79,21 +110,24 @@ class CustomersPageTest < ApplicationSystemTestCase
     find(".customer-row[data-id='#{users(:jx).id}']").click
     assert_selector "#customers-page.editing", wait: 5
     assert_field "Name", with: "JX"
+    within("#customer-sections") { click_on "Messages" }
     assert_selector "#customer-messages .bubble-row", text: "Running late", wait: 5
     click_on "Mark all as read"
     assert_no_selector "#customer-messages .message-unread", wait: 5
     assert message.reload.read?
-    click_on "Cancel"
-    assert_no_selector "#customers-page.editing", wait: 5
+    visit customers_url
+    assert_selector ".customer-row[data-id='#{users(:jx).id}']", wait: 5
     assert_no_selector ".customer-row .unread-badge"
   end
 
-  test "the conversation sits below the record buttons; Enter sends, Shift-Enter adds a line, typing there is not an unsaved change" do
+  test "Messages is a section of its own: Enter sends, Shift-Enter adds a line, typing there is not an unsaved change" do
     visit customers_url
     find(".customer-row[data-id='#{users(:jx).id}']").click
     assert_selector "#customers-page.editing", wait: 5
-    assert_selector "form.crud-form ~ #customer-conversation textarea#message-body[rows='3']", wait: 5
-    assert_selector "#customer-conversation .btn-toolbar", count: 0
+    assert_no_selector "#customer-conversation"
+    within("#customer-sections") { click_on "Messages" }
+    assert_selector "#customer-conversation textarea#message-body[rows='3']", wait: 5
+    assert_no_selector "form.crud-form"
 
     box = find("#message-body")
     before = box.evaluate_script("this.offsetHeight")
@@ -207,7 +241,7 @@ class CustomersDeepLinkTest < ApplicationSystemTestCase
     login_as_admin
     visit customers_url(customer_id: users(:jx).id, section: "messages")
     assert_selector "#customers-page.editing", wait: 5
-    assert_field "Name", with: "JX"
+    assert_current_path "/customers/#{users(:jx).id}/messages"
     assert_selector "#customer-messages .bubble-row.message-unread", text: "Running late", wait: 5
     assert_selector "#mark-all-read", visible: true
   end

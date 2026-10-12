@@ -360,41 +360,25 @@ body .modal.full-screen .modal-push {
     text-align: center;
 }
 
-/* Calendar table view */
-#calendar .calendar-view {
-    overflow-x: auto;
-    overflow-y: hidden;
-}
-
-/* Columns share the width between 200px and 350px each; more than fit
-   scroll sideways. */
-#calendar .calendar-view > div {
-    display: flex;
-    flex-wrap: nowrap;
-}
-
+/* Appointments (List) view: each date as a heading with its stylists one
+   under another at full width. */
 #calendar .calendar-view .date-column {
-    display: flex;
-    flex-wrap: nowrap;
-    flex: 1 0 auto;
+    margin-bottom: 1rem;
+    border: 1px solid var(--bs-border-color);
+    border-radius: var(--bs-border-radius);
+    background: var(--bs-body-bg);
+    overflow: hidden;
 }
 
 #calendar .calendar-view .date-column .date-column-title {
-    writing-mode: vertical-rl;
-    text-orientation: mixed;
-    transform: rotate(180deg);
-    padding: 10px 5px;
+    padding: 10px;
     margin: 0;
     background: var(--bs-light);
-    border-right: 1px solid var(--bs-border-color);
-    white-space: nowrap;
+    border-bottom: 1px solid var(--bs-border-color);
 }
 
-#calendar .calendar-view .date-column .provider-column {
-    flex: 1 1 200px;
-    min-width: 200px;
-    max-width: 350px;
-    border-right: 1px solid var(--bs-border-color);
+#calendar .calendar-view .date-column .provider-column + .provider-column {
+    border-top: 1px solid var(--bs-border-color);
 }
 
 #calendar .calendar-view .date-column .provider-column h6 {
@@ -577,13 +561,13 @@ body .modal.full-screen .modal-push {
 
 }
 
-/* On mobile viewports the sync buttons should occupy a full row, with the
-   action buttons (add, reload, view switch) appearing on the next line. */
+/* On mobile viewports the sync buttons sit on a row of their own, as wide as
+   their content, with the action buttons (add, reload, view switch) on the next line. */
 @media (max-width: 991.98px) {
     #calendar-actions #enable-sync,
     #calendar-actions #sync-button-group {
         display: flex;
-        width: 100%;
+        width: fit-content;
         margin-bottom: 0.5rem;
     }
 
@@ -690,6 +674,10 @@ body .modal.full-screen .modal-push {
     }
 }
 
+#header .navbar-nav .nav-label-spacer {
+    display: none;
+}
+
 /* Below 1200px: logo above its text, icon above the label, tighter items.
    Font Awesome swaps each <i> for an <svg>, so icon rules name both. */
 @media (min-width: 768px) and (max-width: 1199.98px) {
@@ -734,6 +722,11 @@ body .modal.full-screen .modal-push {
 
     #header .navbar-nav .nav-link.dropdown-toggle::after {
         margin: 0.25rem 0 0;
+    }
+
+    // The cog has no label: an empty row puts its caret level with the others.
+    #header .navbar-nav .nav-label-spacer {
+        display: block;
     }
 }
 
@@ -1012,12 +1005,25 @@ $bubble-radius: 1.1rem;
     line-height: 1.25;
 }
 
+/* Appointment and unavailability entries are buttons that open the details
+   popover. The background reset stays below the entry kinds' backgrounds. */
+#calendar .calendar-view button.day-entry {
+    width: 100%;
+    text-align: left;
+    font: inherit;
+}
+
+.calendar-view button.day-entry {
+    background-color: transparent;
+}
+
 #calendar .calendar-view .day-entry-time {
     display: block;
     color: var(--bs-secondary-color);
 }
 
-#calendar .calendar-view a.day-entry:hover {
+#calendar .calendar-view a.day-entry:hover,
+#calendar .calendar-view button.day-entry:hover {
     background: rgba(var(--bs-emphasis-color-rgb), 0.075);
 }
 
@@ -1049,4 +1055,16 @@ $bubble-radius: 1.1rem;
 .trumbowyg-editor-box,
 .trumbowyg-editor {
     background-color: #fff;
+}
+
+/* The row of action buttons ending every backend form: Cancel and Save at the
+   right, Delete (me-auto) at the far left. */
+.form-actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 0.5rem;
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--bs-border-color);
 }

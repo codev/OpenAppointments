@@ -6,6 +6,11 @@ class AppointmentsPageTest < ActionDispatch::IntegrationTest
     post "/login/validate", params: { username: "administrator", password: "administrator1" }
   end
 
+  # Ids of the records behind the page's entries of one kind (from their popover data).
+  def entry_ids(kind)
+    css_select("button.day-entry-#{kind}[data-event]").map { |entry| JSON.parse(entry["data-event"])["id"] }
+  end
+
   test "a working day lists the appointment, free gaps, a break-free morning and an unavailability" do
     login_admin
     get "/appointments", params: { date: "2026-07-20" }
@@ -13,9 +18,18 @@ class AppointmentsPageTest < ActionDispatch::IntegrationTest
     assert_select "turbo-frame#day_view form#day-filter[action='/appointments'][method=get]"
     assert_select ".date-column h5", text: "20/07/2026"
     assert_select ".provider-column[data-provider-id=?] h6", users(:zane).id.to_s, text: "Zane"
-    assert_select ".day-entry-appointment[href=?]", "/appointments/#{appointments(:upcoming).id}/edit", text: /JX - Trim Cut/
+    # Appointments and unavailabilities open the calendar's details popover from the same data.
+    entry = css_select("button.day-entry-appointment[data-event]").first
+    assert_match(/JX - Trim Cut/, entry.text)
+    event = JSON.parse(entry["data-event"])
+    assert_equal appointments(:upcoming).id, event["id"]
+    assert_equal "JX", event.dig("customer", "name")
+    assert_equal "Zane", event.dig("provider", "name")
+    assert event["customer"].key?("unread_messages")
     assert_select ".day-entry-appointment small", text: "10:00 am - 10:30 am"
-    assert_select ".day-entry-unavailability[href=?]", "/unavailabilities/#{appointments(:lunch_block).id}/edit"
+    unavailability = JSON.parse(css_select("button.day-entry-unavailability[data-event]").first["data-event"])
+    assert_equal appointments(:lunch_block).id, unavailability["id"]
+    assert unavailability["is_unavailability"]
     assert_select ".day-entry-free[href^='/appointments/new?']", minimum: 2
     assert_select ".day-entry-free[href*='provider_id=#{users(:zane).id}'][href*='start=2026-07-20+09%3A00%3A00']"
     assert_select "a#next-day[href*='date=2026-07-21']"
@@ -51,7 +65,7 @@ class AppointmentsPageTest < ActionDispatch::IntegrationTest
                                  start_datetime: "2026-07-19 11:00:00", end_datetime: "2026-07-19 11:30:00")
     get "/appointments", params: { date: "2026-07-19" }
     assert_select ".provider-column[data-provider-id=?]", users(:zane).id.to_s
-    assert_select ".day-entry-appointment[href=?]", "/appointments/#{booked.id}/edit"
+    assert_includes entry_ids("appointment"), booked.id
     assert_select ".day-entry-free", count: 0
   end
 
@@ -60,8 +74,8 @@ class AppointmentsPageTest < ActionDispatch::IntegrationTest
     sick = Appointment.create!(is_unavailability: true, provider: users(:zane), notes: "Unwell",
                                start_datetime: "2026-07-20 08:00:00", end_datetime: "2026-07-20 19:00:00")
     get "/appointments", params: { date: "2026-07-20" }
-    assert_select ".day-entry-appointment[href=?]", "/appointments/#{appointments(:upcoming).id}/edit"
-    assert_select ".day-entry-unavailability[href=?]", "/unavailabilities/#{sick.id}/edit"
+    assert_includes entry_ids("appointment"), appointments(:upcoming).id
+    assert_includes entry_ids("unavailability"), sick.id
   end
 
   test "all stylists gives every stylist a column, working or not, and the day links keep the choice" do

@@ -70,6 +70,7 @@ tr:
     created: oluşturuldu
     matched: eşleşti
     skipped: atlandı
+    do_not_contact: "İletişime geçmeyin"
     no_file_selected: Dosya seçilmedi.
     reset_database: Veritabanını sıfırla
     reset_database_warning: Bu işlem tüm randevuları, müşterileri, hizmet verenleri, asistanları, hizmetleri ve kategorileri kalıcı olarak siler. Yönetici hesapları ve ayarlar korunur. Geri alınamaz.
@@ -291,8 +292,8 @@ tr:
     about_app_license: "OpenAppointments, AGPL-3.0 lisansi altinda lisanslanmistir. OpenAppointments kodunu herhangi bir sekilde kullanarak asagidaki adreste aciklanan kosullari kabul etmis olursunuz:"
     logout_success: Başarı ile sistemden çıkış yaptınız! Aşağıdaki butonlara tıklayarak diğer sayfalara geçebilirsiniz.
     book_appointment_title: Randevu Al
-    backend_section: Yönetim Paneli
-    you_need_to_login: Hoşgeldiniz! Yönetim sayfalarına erişebilmek için giriş yapmalısınız.
+    backend_section: "Personel Girişi"
+    you_need_to_login: "Hoş geldiniz! Randevuları ve mesajları yönetmek için giriş yapmalısınız."
     enter_username_here: Kullanıcı adını buraya girin ...
     enter_password_here: Şifreyi buraya girin ...
     login: Giriş

@@ -1,9 +1,31 @@
 <%# Calendar page: one FullCalendar filtered by a provider or a service. %>
 <div class="container-fluid backend-page pt-0 pb-0" id="calendar-page">
-    <div class="row mb-3 text-white py-3 bg-dark" id="calendar-toolbar">
+    <div class="row mb-3 py-3" id="calendar-toolbar">
         <div id="calendar-filter" class="col-lg-5 d-flex flex-nowrap align-items-center gap-2 mb-2 mb-lg-0">
-            <select id="select-filter-item" class="form-select w-auto flex-grow-1"
-                    data-tippy-content="<%= lang('select_filter_item_hint') %>" aria-label="Filter">
+            <%# The hidden select holds the choice the calendar scripts read; the
+                dropdown button in front of it sets it (utils/filter_dropdown). %>
+            <div class="dropdown" id="filter-item-dropdown" data-filter-for="select-filter-item">
+                <button class="btn btn-light dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                        aria-expanded="false" data-tippy-content="<%= lang('select_filter_item_hint') %>">
+                    <%= lang('all') %>
+                </button>
+                <ul class="dropdown-menu">
+                    <li><button type="button" class="dropdown-item" data-value="all"><%= lang('all') %></button></li>
+                    <% if vars(:available_providers).any? %>
+                        <li><h6 class="dropdown-header"><%= lang('providers') %></h6></li>
+                        <% vars(:available_providers).each do |provider| %>
+                            <li><button type="button" class="dropdown-item" data-value="<%= provider["id"] %>" data-type="provider"><%= provider["name"] %></button></li>
+                        <% end %>
+                    <% end %>
+                    <% if vars(:available_services).any? %>
+                        <li><h6 class="dropdown-header"><%= lang('services') %></h6></li>
+                        <% vars(:available_services).each do |service| %>
+                            <li><button type="button" class="dropdown-item" data-value="<%= service["id"] %>" data-type="service"><%= service["name"] %></button></li>
+                        <% end %>
+                    <% end %>
+                </ul>
+            </div>
+            <select id="select-filter-item" class="d-none" aria-label="Filter">
                 <option value="all"><%= lang('all') %></option>
                 <% if vars(:available_providers).any? %>
                     <optgroup label="<%= lang('providers') %>">
@@ -76,7 +98,7 @@
     <%= javascript_include_tag "vendor/fullcalendar/index.global.min",
                                "vendor/fullcalendar-moment/index.global.min",
                                "vendor/jquery-jeditable/jquery.jeditable.min" %>
-    <%= ea_js "utils/status_filter", "utils/ui", "utils/calendar_events", "utils/calendar_event_popover",
+    <%= ea_js "utils/status_filter", "utils/filter_dropdown", "utils/ui", "utils/calendar_events", "utils/calendar_event_popover",
               "http/calendar_http_client",
               "utils/calendar_sync", "http/google_http_client", "http/caldav_http_client", "utils/calendar_feed",
               "pages/calendar" %>

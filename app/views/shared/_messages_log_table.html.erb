@@ -47,7 +47,7 @@
                     </td>
                     <td>
                         <% if message.customer %>
-                            <a href="/customers?customer_id=<%= message.customer.id %>">
+                            <a href="/customers/<%= message.customer.id %>/messages">
                                 <%= message.customer.name %>
                             </a>
                         <% elsif message.direction == "incoming" %>

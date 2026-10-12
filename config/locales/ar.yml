@@ -70,6 +70,7 @@ ar:
     created: أنشئ
     matched: مطابق
     skipped: متخطى
+    do_not_contact: "عدم الاتصال"
     no_file_selected: لم يتم اختيار ملف.
     reset_database: إعادة تعيين قاعدة البيانات
     reset_database_warning: سيحذف هذا نهائيا جميع المواعيد والعملاء ومقدمي الخدمة والمساعدين والخدمات والفئات. تبقى حسابات المديرين والإعدادات. لا يمكن التراجع عن هذا.
@@ -291,8 +292,8 @@ ar:
     about_app_license: "OpenAppointments مرخص بموجب ترخيص AGPL-3.0. باستخدامك لكود OpenAppointments بأي شكل فأنت توافق على الشروط الموضحة في الرابط التالي:"
     logout_success: تم تسجيل الخروج بنجاح
     book_appointment_title: احجز موعد
-    backend_section: صفحة الدخول للبرنامج
-    you_need_to_login: مرحبا بك ! يجب عليك تسجيل الدخول لمعاينة صفحات البرنامج وادارته
+    backend_section: "دخول الموظفين"
+    you_need_to_login: "مرحبا بك! يجب عليك تسجيل الدخول لإدارة المواعيد والرسائل."
     enter_username_here: ادخل اسم المستخدم هنا ...
     enter_password_here: أدخل كلمة المرور هنا ...
     login: تسجيل الدخول

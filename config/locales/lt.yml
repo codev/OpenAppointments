@@ -70,6 +70,7 @@ lt:
     created: sukurta
     matched: sutapo
     skipped: praleista
+    do_not_contact: "Nesusisiekti"
     no_file_selected: Failas nepasirinktas.
     reset_database: Atstatyti duomenų bazę
     reset_database_warning: Tai visam laikui ištrina visus vizitus, klientus, specialistus, asistentus, paslaugas ir kategorijas. Administratorių paskyros ir nustatymai išlieka. Neatšaukiama.
@@ -291,8 +292,8 @@ lt:
     about_app_license: "OpenAppointments licencijuota pagal AGPL-3.0 licencija. Bet kokiu budu naudodami OpenAppointments koda sutinkate su salygomis, aprasytomis siuo adresu:"
     logout_success: Jūs sėkmingai atsijungėte! Jei norite pereiti į kitą tinklalapį, spustelėkite vieną iš toliau pateiktų mygtukų.
     book_appointment_title: Registravimasis vizitui
-    backend_section: Sistemos valdymo skydelis
-    you_need_to_login: Sveiki! Jeigu norite prieiti prie sistemos valdymo skydelio, turite prisijungti.
+    backend_section: "Darbuotojų prisijungimas"
+    you_need_to_login: "Sveiki! Norėdami tvarkyti vizitus ir žinutes, turite prisijungti."
     enter_username_here: Čia įveskite savo naudotojo vardą…
     enter_password_here: Įveskite slaptažodį čia ...
     login: Prisijungti

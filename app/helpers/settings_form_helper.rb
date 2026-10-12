@@ -3,9 +3,21 @@
 # page scripts that read it.
 module SettingsFormHelper
   # frame: false posts the whole page (for settings the layout itself renders).
+  # The fields come from the block; Save ends the form at the bottom right.
   def settings_form(url, multipart: false, frame: true, &block)
     data = frame ? { turbo_frame: "settings" } : { turbo: false }
-    form_with(url: url, method: :post, id: "settings-form", multipart: multipart, data: data, &block)
+    form_with(url: url, method: :post, id: "settings-form", multipart: multipart, data: data) do |form|
+      capture(form, &block) + form_actions(settings_save_button)
+    end
+  end
+
+  # The row of action buttons ending every backend form, right aligned with
+  # Save last (a Delete goes far left). Nothing when no button is allowed.
+  def form_actions(*buttons)
+    buttons = buttons.compact
+    return "".html_safe if buttons.empty?
+
+    tag.div(safe_join(buttons), class: "form-actions")
   end
 
   def settings_flash
@@ -56,7 +68,7 @@ module SettingsFormHelper
   def settings_save_button
     return unless can?(:edit, :system_settings)
 
-    button_tag(type: "submit", id: "save-settings", class: "btn btn-primary") do
+    button_tag(type: "submit", id: "save-settings", class: "btn btn-primary", data: { save: true }) do
       tag.i(class: "fas fa-check-square me-2") + lang("save")
     end
   end

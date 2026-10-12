@@ -6,7 +6,7 @@ class RecoveryController < ApplicationController
   def index
     html_vars(
       page_title: helpers.lang("forgot_your_password"),
-      dest_url: session[:dest_url] || calendar_url,
+      dest_url: session[:dest_url] || appointments_url,
       company_name: Setting.get("company_name")
     )
   end

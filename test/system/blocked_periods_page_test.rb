@@ -63,6 +63,7 @@ class BlockedPeriodsPageTest < ApplicationSystemTestCase
   test "a missing name is rejected" do
     click_on "Add"
     assert_selector "#blocked-periods-page.editing", wait: 5
+    fill_in "Notes", with: "No name given"
     click_on "Save"
     assert_selector "#blocked-periods-page.editing"
     assert_equal 1, BlockedPeriod.count

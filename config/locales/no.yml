@@ -70,6 +70,7 @@
     created: opprettet
     matched: matchet
     skipped: hoppet over
+    do_not_contact: "Skal ikke kontaktes"
     no_file_selected: Ingen fil valgt.
     reset_database: Tilbakestill database
     reset_database_warning: Dette sletter permanent alle avtaler, kunder, tilbydere, assistenter, tjenester og kategorier. Administratorkontoer og innstillinger beholdes. Kan ikke angres.
@@ -291,8 +292,8 @@
     about_app_license: "OpenAppointments er lisensiert under AGPL-3.0-lisensen. Ved aa bruke koden til OpenAppointments paa noen maate godtar du vilkaarene beskrevet paa foelgende url:"
     logout_success: Du har blitt logget ut! Klikk på en av de følgende knappene for å navigere til en annen side.
     book_appointment_title: Bestill tid
-    backend_section: Backend Seksjon
-    you_need_to_login: Velkommen! Du må logge inn for å se backend-sider.
+    backend_section: "Innlogging for ansatte"
+    you_need_to_login: "Velkommen! Du må logge inn for å administrere avtaler og meldinger."
     enter_username_here: Skriv inn brukernavnet ditt her ...
     enter_password_here: Skriv inn passord her ...
     login: Logg Inn

@@ -10,6 +10,19 @@ class AuthFlowTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
+  test "the login form lands on List, and /login when logged in goes there too" do
+    post "/login/validate", params: { form: "1", username: "administrator", password: "administrator1" }
+    assert_redirected_to "/appointments"
+    get "/login"
+    assert_redirected_to "/appointments"
+  end
+
+  test "the login form still returns to the page that asked for it" do
+    get "/customers"
+    post "/login/validate", params: { form: "1", username: "administrator", password: "administrator1" }
+    assert_redirected_to "/customers"
+  end
+
   test "login validate failure returns EA error shape" do
     post "/login/validate", params: { username: "administrator", password: "wrong" }
     assert_response :success

@@ -70,6 +70,7 @@ hu:
     created: létrehozva
     matched: párosítva
     skipped: kihagyva
+    do_not_contact: "Nem kereshető"
     no_file_selected: Nincs kiválasztott fájl.
     reset_database: Adatbázis visszaállítása
     reset_database_warning: Ez véglegesen töröl minden időpontot, ügyfelet, szolgáltatót, asszisztenst, szolgáltatást és kategóriát. Az adminisztrátori fiókok és a beállítások megmaradnak. Nem vonható vissza.
@@ -291,8 +292,8 @@ hu:
     about_app_license: "Az OpenAppointments az AGPL-3.0 licenc alatt all. Az OpenAppointments kodjanak barmilyen modon torteno hasznalataval elfogadja az alabbi cimen leirt felteteleket:"
     logout_success: Sikeresen kijelentkeztél! Kattints az alábbi gombok egyikére, hogy egy másik oldalra navigálj.
     book_appointment_title: Időpont foglalás
-    backend_section: Felhasználói felület
-    you_need_to_login: Üdv! Be kell jelentkezned, hogy a felhasználói felületet használhasd.
+    backend_section: "Munkatársi bejelentkezés"
+    you_need_to_login: "Üdv! Be kell jelentkezned az időpontok és üzenetek kezeléséhez."
     enter_username_here: Add meg a felhasználó neved ...
     enter_password_here: Írja be a jelszót ide ...
     login: Bejelentkezés

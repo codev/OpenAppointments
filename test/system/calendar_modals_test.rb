@@ -97,6 +97,103 @@ class CalendarModalsTest < ApplicationSystemTestCase
     end
   end
 
+  test "appointment boxes are opaque so overlapping ones stay readable" do
+    Appointment.create!(provider: users(:zane), customer: users(:jx), service: services(:haircut),
+                        start_datetime: soon, end_datetime: soon + 30.minutes, appointment_status: AppointmentStatus.of("booked"))
+    visit calendar_url
+    assert_selector ".fc-event", text: "JX", wait: 10
+    background = page.evaluate_script(<<~JS)
+      getComputedStyle([...document.querySelectorAll('.fc-event')].find((e) => e.textContent.includes('JX'))).backgroundColor
+    JS
+    assert_match(/\Argb\(\d+, \d+, \d+\)\z/, background, "expected an opaque colour, got #{background}")
+  end
+
+  def slot_times
+    page.evaluate_script("[...document.querySelectorAll('td.fc-timegrid-slot-label[data-time]')].map((td) => td.dataset.time)")
+  end
+
+  test "the day runs from the first working stylist or appointment to the last" do
+    day = { "start" => "10:00", "end" => "17:00", "breaks" => [] }
+    plan = %w[monday tuesday wednesday thursday friday saturday sunday].index_with { day }
+    users(:zane).settings.update!(working_plan: plan.to_json)
+    # Unavailabilities and stylists who do not offer the chosen service do not widen the day.
+    off = Time.zone.parse("#{Date.current} 06:00")
+    Appointment.create!(provider: users(:zane), start_datetime: off, end_datetime: off + 1.hour, is_unavailability: true)
+    early_bird = User.create!(name: "Early Bird", email: "early@example.org", role: users(:zane).role, timezone: "Europe/London")
+    early_bird.create_settings!(username: "earlybird", password: Passwords.hash("stylistpass1"),
+                                working_plan: plan.transform_values { { "start" => "07:00", "end" => "12:00", "breaks" => [] } }.to_json)
+    other = Service.create!(name: "Other Service", duration: 30, price: 0, currency: "GBP", slot_interval: 15,
+                            attendants_number: 1, booking_slug: "other-svc")
+    ServiceProviderLink.create!(id_users: early_bird.id, id_services: other.id)
+
+    visit calendar_url
+    choose_filter("Trim Cut")
+    assert_selector "td.fc-timegrid-slot-label[data-time]", wait: 10
+    page.document.synchronize(10) { raise Capybara::ExpectationNotMet unless slot_times.first == "10:00:00" }
+    assert_equal "16:45:00", slot_times.last
+
+    early = Time.zone.parse("#{Date.current} 08:30")
+    Appointment.create!(provider: users(:zane), customer: users(:jx), service: services(:haircut),
+                        start_datetime: early, end_datetime: early + 30.minutes, appointment_status: AppointmentStatus.of("booked"))
+    visit calendar_url
+    page.document.synchronize(10) { raise Capybara::ExpectationNotMet unless slot_times.first == "08:00:00" }
+    assert_equal "16:45:00", slot_times.last
+  end
+
+  def choose_filter(name)
+    find("#filter-item-dropdown .dropdown-toggle", wait: 10).click
+    within("#filter-item-dropdown .dropdown-menu") { click_on name }
+  end
+
+  test "the stylist and service filter is a compact dropdown button that drives the calendar" do
+    visit calendar_url
+    assert_selector "#filter-item-dropdown .dropdown-toggle", text: "All", wait: 10
+    assert_no_selector "#select-filter-item"
+    find("#filter-item-dropdown .dropdown-toggle").click
+    assert_selector "#filter-item-dropdown .dropdown-header", text: "Providers"
+    assert_selector "#filter-item-dropdown .dropdown-header", text: "Services"
+    within("#filter-item-dropdown .dropdown-menu") { click_on "Zane" }
+
+    assert_selector "#filter-item-dropdown .dropdown-toggle", text: "Zane", wait: 5
+    assert_equal users(:zane).id.to_s, page.evaluate_script("document.getElementById('select-filter-item').value")
+    assert_selector "#enable-sync", visible: true, wait: 5
+    widths = page.evaluate_script(<<~JS)
+      ({ button: document.querySelector('#filter-item-dropdown .dropdown-toggle').getBoundingClientRect().width,
+         row: document.getElementById('calendar-toolbar').getBoundingClientRect().width })
+    JS
+    assert_operator widths["button"], :<, widths["row"] / 3, "filter button spans #{widths['button']} of #{widths['row']}px"
+
+    visit calendar_url
+    assert_selector "#filter-item-dropdown .dropdown-toggle", text: "Zane", wait: 10
+  end
+
+  test "a chosen service is remembered even when a stylist has the same id" do
+    twin = Service.create!(id: users(:zane).id, name: "Twin Service", duration: 30, price: 0, currency: "GBP",
+                           slot_interval: 15, attendants_number: 1, booking_slug: "twin-svc")
+    ServiceProviderLink.create!(id_users: users(:zane).id, id_services: twin.id)
+    visit calendar_url
+    choose_filter("Twin Service")
+    assert_selector "#filter-item-dropdown .dropdown-toggle", text: "Twin Service", wait: 5
+    visit calendar_url
+    assert_selector "#filter-item-dropdown .dropdown-toggle", text: "Twin Service", wait: 10
+    assert_equal "service", page.evaluate_script("document.querySelector('#select-filter-item option:checked').getAttribute('type')")
+  end
+
+  test "on a tablet Enable sync is only as wide as its icon and text" do
+    resize_window(800, 900)
+    visit calendar_url
+    choose_filter("Zane")
+    assert_selector "#enable-sync", visible: true, wait: 5
+    widths = page.evaluate_script(<<~JS)
+      (() => {
+        const button = document.getElementById('enable-sync');
+        return { button: button.getBoundingClientRect().width,
+                 row: document.getElementById('calendar-actions').getBoundingClientRect().width };
+      })()
+    JS
+    assert_operator widths["button"], :<, widths["row"] / 2, "Enable sync spans #{widths['button']} of #{widths['row']}px"
+  end
+
   test "an ended appointment's popover offers no Cancel and the buttons stay inside the popover" do
     start = wall_now - 40.minutes
     Appointment.create!(provider: users(:zane), customer: users(:jx), service: services(:haircut),

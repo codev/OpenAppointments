@@ -70,6 +70,7 @@ lb:
     created: ugeluecht
     matched: zougeuerdnet
     skipped: iwwersprongen
+    do_not_contact: "Net kontaktéieren"
     no_file_selected: Kee Fichier ausgewielt.
     reset_database: Datebank zrécksetzen
     reset_database_warning: Dëst läscht permanent all Rendez-vousen, Clienten, Ubidder, Assistenten, Servicer a Kategorien. Administrateur-Konten an Astellunge bleiwen. Net réckgängeg ze maachen.
@@ -291,8 +292,8 @@ lb:
     about_app_license: "OpenAppointments ass ennert der AGPL-3.0-Lizenz lizenseiert. Duerch d'Benotze vum Code vun OpenAppointments op iergendeng Maneier stemmt Dir de Konditiounen zou, dei ennert folgender URL beschriwwe sinn:"
     logout_success: Dir hutt Iech erfollegräich ofgemellt! Klickt op folgend Tasten fir op eng aner Säit ze kommen.
     book_appointment_title: Termäinbuchung
-    backend_section: Backend Sektioun
-    you_need_to_login: Wëllkommen! Dir musst Iech umellen fir d'Backend-Säiten ze gesinn.
+    backend_section: "Personal-Umeldung"
+    you_need_to_login: "Wëllkommen! Dir musst Iech umellen fir Termäiner a Messagen ze verwalten."
     enter_username_here: Gitt hei Äre Benotzernumm an ...
     enter_password_here: Passwuert hei aginn ...
     login: Umellen

@@ -58,17 +58,19 @@ App.Pages.Calendar = (function () {
                 fullCalendar.getEventSources().forEach((source) => source.remove());
                 renderLegend();
 
+                const appointmentEvents = Events.appointmentEvents(
+                    App.Utils.StatusFilter.apply(response.appointments),
+                    filterType() === FILTER_TYPE_SERVICE ? 'provider' : 'service',
+                    filterType() !== FILTER_TYPE_PROVIDER,
+                );
                 const events = [
-                    ...Events.appointmentEvents(
-                        App.Utils.StatusFilter.apply(response.appointments),
-                        filterType() === FILTER_TYPE_SERVICE ? 'provider' : 'service',
-                        filterType() !== FILTER_TYPE_PROVIDER,
-                    ),
+                    ...appointmentEvents,
                     ...Events.unavailabilityEvents(response.unavailabilities),
                     ...Events.blockedPeriodEvents(response.blocked_periods),
                 ];
 
                 if (fullCalendar.view.type !== 'dayGridMonth') {
+                    fitHours(recordId, appointmentEvents);
                     events.push(
                         ...Events.workingPlanEvents(
                             Events.findProvider(recordId),
@@ -81,6 +83,30 @@ App.Pages.Calendar = (function () {
                 fullCalendar.addEventSource(events);
             })
             .always(() => $('#loading').css('visibility', ''));
+    }
+
+    // The time grid runs from the first working stylist or appointment to the
+    // last: the chosen stylist, the stylists offering the chosen service, or all.
+    function fitHours(recordId, appointmentEvents) {
+        let providers = vars('available_providers');
+        if (isProviderFilter()) {
+            providers = [Events.findProvider(recordId)].filter(Boolean);
+        } else if (filterType() === FILTER_TYPE_SERVICE) {
+            providers = providers.filter((provider) => (provider.services || []).map(Number).includes(Number(recordId)));
+        }
+
+        const hours = Events.visibleHours(
+            providers,
+            fullCalendar.view.currentStart,
+            fullCalendar.view.currentEnd,
+            appointmentEvents,
+        );
+
+        Object.entries(hours).forEach(([option, value]) => {
+            if (fullCalendar.getOption(option) !== value) {
+                fullCalendar.setOption(option, value);
+            }
+        });
     }
 
     function onSelect(info) {
@@ -118,7 +144,7 @@ App.Pages.Calendar = (function () {
 
             $insertWorkingPlanException().toggle(isProviderFilter());
             reload();
-            window.localStorage.setItem('EasyAppointments.SelectFilterItem', $selectFilterItem().val());
+            window.localStorage.setItem('EasyAppointments.SelectFilterItem', filterType() + ':' + $selectFilterItem().val());
         });
 
         $insertWorkingPlanException().on('click', () => {
@@ -135,6 +161,23 @@ App.Pages.Calendar = (function () {
     }
 
     let refreshTimer = null;
+
+    // The last choice is kept as "type:id" (a provider and a service can share
+    // an id); a bare id is matched by value alone.
+    function restoreFilter() {
+        const saved = window.localStorage.getItem('EasyAppointments.SelectFilterItem');
+        if (!saved) {
+            return;
+        }
+
+        const [type, value] = saved.includes(':') ? saved.split(':') : [null, saved];
+        const typeRule = type === FILTER_TYPE_ALL ? ':not([type])' : type ? '[type="' + type + '"]' : '';
+        const $option = $selectFilterItem().find('option[value="' + value + '"]' + typeRule).first();
+
+        if ($option.length) {
+            $option.prop('selected', true);
+        }
+    }
 
     function initialize() {
         // The appointments page also has a #calendar; only the calendar page has the filter.
@@ -169,10 +212,7 @@ App.Pages.Calendar = (function () {
         Events.configure(reload);
         addEventListeners();
 
-        const savedFilter = window.localStorage.getItem('EasyAppointments.SelectFilterItem');
-        if (savedFilter && $selectFilterItem().find('option[value="' + savedFilter + '"]').length) {
-            $selectFilterItem().val(savedFilter);
-        }
+        restoreFilter();
         $selectFilterItem().trigger('change');
 
         if (vars('edit_appointment')) {

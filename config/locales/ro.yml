@@ -70,6 +70,7 @@ ro:
     created: create
     matched: potrivite
     skipped: omise
+    do_not_contact: "Nu contactați"
     no_file_selected: Niciun fișier selectat.
     reset_database: Resetează baza de date
     reset_database_warning: Aceasta șterge definitiv toate programările, clienții, furnizorii, asistenții, serviciile și categoriile. Conturile de administrator și setările rămân. Ireversibil.
@@ -291,8 +292,8 @@ ro:
     about_app_license: "OpenAppointments este licentiat sub licenta AGPL-3.0. Folosind codul OpenAppointments in orice mod, sunteti de acord cu termenii descrisi la urmatoarea adresa:"
     logout_success: Ati iesit din program! Apasati pe unul din butoanele urmatoare ca sa navigati spre o alta pagina.
     book_appointment_title: Programeaza întâlnire
-    backend_section: Sectiunea Backend
-    you_need_to_login: Bine a-ti venit! Va trebui sa va logati pentru a vedea paginile backend.
+    backend_section: "Autentificare personal"
+    you_need_to_login: "Bine ați venit! Trebuie să vă autentificați pentru a gestiona întâlnirile și mesajele."
     enter_username_here: Introduceti nume utilizator aici ...
     enter_password_here: Introduceți parola aici ...
     login: Autentificare

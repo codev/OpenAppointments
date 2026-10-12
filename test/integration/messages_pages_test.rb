@@ -28,6 +28,14 @@ class MessagesPagesTest < ActionDispatch::IntegrationTest
     end
   end
 
+  test "the log links each customer to their messages" do
+    Message.create!(direction: "outgoing", channel: "email", audience: "customer",
+                    to_address: "c@example.org", customer_id: users(:jx).id, subject: "Hi", body: "Hi", status: "sent")
+    login_admin
+    get "/messages_logs"
+    assert_select "a[href=?]", "/customers/#{users(:jx).id}/messages", text: "JX"
+  end
+
   test "provider is forbidden from messages pages" do
     login_provider
     MESSAGES_PAGES.each do |page|
@@ -61,7 +69,7 @@ class MessagesPagesTest < ActionDispatch::IntegrationTest
       assert_select ".inbox-actions .fa-check-double", count: 0
       assert_select ".bubble-row.in:not(.unknown) .bubble.bubble-email[title='Email']" do
         assert_select ".bubble-subject", text: "Re: Confirmed"
-        assert_select ".bubble-meta .bubble-who a[href='/customers?customer_id=#{users(:jx).id}&section=messages']", text: "JX"
+        assert_select ".bubble-meta .bubble-who a[href='/customers/#{users(:jx).id}/messages']", text: "JX"
         assert_select ".bubble-meta .bubble-who", text: /JX\s+j@example.org/
         assert_select ".bubble-meta .bubble-when", text: /07\/03 2:02 pm/
       end

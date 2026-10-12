@@ -41,15 +41,13 @@ module CalendarPage
     script_vars(
       first_weekday: Setting.get("first_weekday"),
       company_working_plan: Setting.get("company_working_plan"),
-      privileges: session_role.permissions,
       available_providers: available_providers,
       available_services: available_services,
       assistant_providers: assistant_provider_ids,
       edit_appointment: edit_appointment,
       google_sync_feature: Setting.get("google_sync_feature") == "1",
       customers: customers,
-      timezones: helpers.timezones,
-      **(1..5).to_h { |i| [ :"label_custom_field_#{i}", Setting.get("label_custom_field_#{i}") ] }
+      **popover_script_vars
     )
 
     html_vars(
@@ -62,6 +60,16 @@ module CalendarPage
     )
 
     render :index
+  end
+
+  # What the event details popover reads (utils/calendar_event_popover), on the
+  # calendar and on the appointments page.
+  def popover_script_vars
+    {
+      privileges: session_role.permissions,
+      timezones: helpers.timezones,
+      **(1..5).to_h { |i| [ :"label_custom_field_#{i}", Setting.get("label_custom_field_#{i}") ] }
+    }
   end
 
   def visible_providers

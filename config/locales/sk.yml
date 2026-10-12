@@ -70,6 +70,7 @@ sk:
     created: vytvorené
     matched: spárované
     skipped: preskočené
+    do_not_contact: "Nekontaktovať"
     no_file_selected: Nie je vybraný žiadny súbor.
     reset_database: Resetovať databázu
     reset_database_warning: Týmto natrvalo vymažete všetky termíny, zákazníkov, poskytovateľov, asistentov, služby a kategórie. Administrátorské účty a nastavenia zostanú. Nedá sa vrátiť späť.
@@ -291,8 +292,8 @@ sk:
     about_app_license: "OpenAppointments je licencovany pod licenciou AGPL-3.0. Pouzivanim kodu OpenAppointments akymkolvek sposobom suhlasite s podmienkami popisanymi na nasledujucej adrese:"
     logout_success: Boli ste úspešne odhlásený! Kliknite na jedno tlačidlo nižšie, podľa Vášho výberu.
     book_appointment_title: Rezervácie
-    backend_section: Administrácia
-    you_need_to_login: Vitajte! Budete sa musieť prihlásiť, aby sa Vám zobrazila administrácia.
+    backend_section: "Prihlásenie pre personál"
+    you_need_to_login: "Vitajte! Na správu rezervácií a správ sa musíte prihlásiť."
     enter_username_here: Zadajte svoje používateľské meno tu ...
     enter_password_here: Zadajte heslo tu ...
     login: Prihlásiť sa
