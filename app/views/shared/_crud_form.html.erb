@@ -17,11 +17,12 @@
 
     <%= yield f %>
 
-    <%# Delete posts the separate delete form (its form attribute), so Enter in a
-        field still submits with Save. %>
+    <%# Delete at the far left, Cancel and Save at the right. Delete posts the
+        separate delete form (its form attribute), so Enter in a field still
+        submits with Save. %>
     <div class="form-actions">
         <% if record.persisted? %>
-            <button type="submit" form="<%= delete_form_id %>" class="btn btn-outline-danger"
+            <button type="submit" form="<%= delete_form_id %>" class="btn btn-outline-danger me-auto"
                     data-turbo-confirm-title="<%= delete_title %>">
                 <i class="fas fa-trash-alt me-2"></i>
                 <%= lang('delete') %>

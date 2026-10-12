@@ -11,8 +11,8 @@ module SettingsFormHelper
     end
   end
 
-  # The row of action buttons ending every backend form, right aligned; Save
-  # goes last. Nothing when the user may not use any of them.
+  # The row of action buttons ending every backend form, right aligned with
+  # Save last (a Delete goes far left). Nothing when no button is allowed.
   def form_actions(*buttons)
     buttons = buttons.compact
     return "".html_safe if buttons.empty?

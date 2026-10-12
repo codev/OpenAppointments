@@ -1057,8 +1057,8 @@ $bubble-radius: 1.1rem;
     background-color: #fff;
 }
 
-/* The row of action buttons ending every backend form (Delete, Cancel, Save),
-   at the bottom right. */
+/* The row of action buttons ending every backend form: Cancel and Save at the
+   right, Delete (me-auto) at the far left. */
 .form-actions {
     display: flex;
     flex-wrap: wrap;

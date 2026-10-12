@@ -40,6 +40,8 @@ class FormActionsTest < ActionDispatch::IntegrationTest
     login_admin
     get "/customers/#{users(:jx).id}/edit"
     assert_equal %w[Delete Cancel Save], action_labels("form.crud-form")
+    # Delete pushed to the far left, Cancel and Save together on the right.
+    assert_select "form.crud-form > .form-actions > button.btn-outline-danger.me-auto:first-child", text: /Delete/
     assert_select "form.crud-form > .form-actions button[type=submit][data-save]", text: /Save/
     get "/services/new"
     assert_equal %w[Cancel Save], action_labels("form.crud-form")
@@ -52,5 +54,6 @@ class FormActionsTest < ActionDispatch::IntegrationTest
     form = css_select(".notification-form").find { |f| f.at_css(".delete-notification") }
     assert_equal %w[Delete Save], form.css(".form-actions:last-child button").map { |el| el.text.strip }
     assert form.at_css(".form-actions button.save-notification[data-save]")
+    assert form.at_css(".form-actions > button.delete-notification.me-auto:first-child"), "Delete at the far left"
   end
 end
