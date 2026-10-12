@@ -49,7 +49,10 @@ class ApplicationSystemTestCase < ActionDispatch::SystemTestCase
     page.driver.browser.manage.window.resize_to(*SCREEN_SIZE) if @window_resized
   end
 
+  # Logs out first: a request of the previous test finishing after the session
+  # reset can restore its cookie, and /login then skips the form.
   def login_as_admin
+    visit logout_url
     visit login_url
     assert_selector "#login", wait: 15 # the first page of a run waits for Puma
     fill_in "username", with: "administrator"
