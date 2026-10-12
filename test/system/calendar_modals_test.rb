@@ -157,6 +157,18 @@ class CalendarModalsTest < ApplicationSystemTestCase
     assert_selector "#filter-item-dropdown .dropdown-toggle", text: "Zane", wait: 10
   end
 
+  test "a chosen service is remembered even when a stylist has the same id" do
+    twin = Service.create!(id: users(:zane).id, name: "Twin Service", duration: 30, price: 0, currency: "GBP",
+                           slot_interval: 15, attendants_number: 1, booking_slug: "twin-svc")
+    ServiceProviderLink.create!(id_users: users(:zane).id, id_services: twin.id)
+    visit calendar_url
+    choose_filter("Twin Service")
+    assert_selector "#filter-item-dropdown .dropdown-toggle", text: "Twin Service", wait: 5
+    visit calendar_url
+    assert_selector "#filter-item-dropdown .dropdown-toggle", text: "Twin Service", wait: 10
+    assert_equal "service", page.evaluate_script("document.querySelector('#select-filter-item option:checked').getAttribute('type')")
+  end
+
   test "on a tablet Enable sync is only as wide as its icon and text" do
     resize_window(800, 900)
     visit calendar_url

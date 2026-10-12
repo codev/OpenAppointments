@@ -138,7 +138,7 @@ App.Pages.Calendar = (function () {
 
             $insertWorkingPlanException().toggle(isProviderFilter());
             reload();
-            window.localStorage.setItem('EasyAppointments.SelectFilterItem', $selectFilterItem().val());
+            window.localStorage.setItem('EasyAppointments.SelectFilterItem', filterType() + ':' + $selectFilterItem().val());
         });
 
         $insertWorkingPlanException().on('click', () => {
@@ -155,6 +155,23 @@ App.Pages.Calendar = (function () {
     }
 
     let refreshTimer = null;
+
+    // The last choice is kept as "type:id" (a provider and a service can share
+    // an id); a bare id is matched by value alone.
+    function restoreFilter() {
+        const saved = window.localStorage.getItem('EasyAppointments.SelectFilterItem');
+        if (!saved) {
+            return;
+        }
+
+        const [type, value] = saved.includes(':') ? saved.split(':') : [null, saved];
+        const typeRule = type === FILTER_TYPE_ALL ? ':not([type])' : type ? '[type="' + type + '"]' : '';
+        const $option = $selectFilterItem().find('option[value="' + value + '"]' + typeRule).first();
+
+        if ($option.length) {
+            $option.prop('selected', true);
+        }
+    }
 
     function initialize() {
         // The appointments page also has a #calendar; only the calendar page has the filter.
@@ -189,10 +206,7 @@ App.Pages.Calendar = (function () {
         Events.configure(reload);
         addEventListeners();
 
-        const savedFilter = window.localStorage.getItem('EasyAppointments.SelectFilterItem');
-        if (savedFilter && $selectFilterItem().find('option[value="' + savedFilter + '"]').length) {
-            $selectFilterItem().val(savedFilter);
-        }
+        restoreFilter();
         $selectFilterItem().trigger('change');
 
         if (vars('edit_appointment')) {
