@@ -37,7 +37,7 @@ class AppointmentsPageTest < ActionDispatch::IntegrationTest
     assert_select "#not-working-notes div", count: 0
   end
 
-  test "a day off lists the provider as not working; three days show three columns" do
+  test "a day off lists the provider as not working; three or seven days show that many columns" do
     login_admin
     get "/appointments", params: { date: "2026-07-19" }
     assert_select ".provider-column", count: 0
@@ -46,6 +46,10 @@ class AppointmentsPageTest < ActionDispatch::IntegrationTest
     get "/appointments", params: { date: "2026-07-20", days: 3 }
     assert_select ".date-column", count: 3
     assert_select "#select-day-interval option[selected][value='3']"
+
+    get "/appointments", params: { date: "2026-07-20", days: 7 }
+    assert_select ".date-column", count: 7
+    assert_select "#select-day-interval option[selected][value='7']", text: "7 Days"
   end
 
   test "working stylists is the default and a stylist off all day by an unavailability is not working" do

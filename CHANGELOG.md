@@ -6,6 +6,7 @@ CloudronManifest.json.
 ## 3.0.0
 
 - List view is the default view and is a single column with appointments
+- List: show 1, 3 or 7 days
 - Customers: customers have their own message view
 - Import: 10to8 appointments come in as rescheduled
 - Improvements to Calendar, List, Message settings, Do not contact, Manage data - see tickets for full changelog

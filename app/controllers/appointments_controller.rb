@@ -5,7 +5,7 @@ class AppointmentsController < ApplicationController
   include CalendarPage
   include EventForm
 
-  DAY_COUNTS = [ 1, 3 ].freeze
+  DAY_COUNTS = [ 1, 3, 7 ].freeze
 
   # GET /appointments?date=&days=&provider=(id|all)&service=&statuses[]=
   # Without a provider only working stylists get a column.
