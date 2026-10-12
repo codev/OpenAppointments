@@ -53,6 +53,14 @@ class BackendCrudTest < ActionDispatch::IntegrationTest
     assert_select "#footer a", text: I18n.t("ea.go_to_booking_page"), count: 0
   end
 
+  test "the header logo and title open the List, the user name opens Account" do
+    login_admin
+    get "/calendar"
+    assert_select "#header-logo a[href=?] img", "/appointments"
+    assert_select "#header-logo h6 a[href=?]", "/appointments", text: "OpenAppointments"
+    assert_select "#header-logo small#header-user a[href=?]", "/account", text: users(:admin).name
+  end
+
   test "backend pages render for admins" do
     login_admin
     PAGES.each do |page|

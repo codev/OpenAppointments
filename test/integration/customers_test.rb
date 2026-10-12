@@ -48,6 +48,9 @@ class CustomersTest < ActionDispatch::IntegrationTest
     jx = users(:jx).id
     get "/customers/#{jx}/edit"
     assert_select "#customers-page.editing"
+    assert_select "#customers-page .record-details > h4", count: 0
+    assert_select "#customer-heading h4", text: "Customer"
+    assert_select "#customer-heading h4 + #customer-sections.ms-auto"
     assert_select "#customer-sections .nav-link.active[aria-current=page]", text: "Details"
     assert_select "#customer-sections a.nav-link[href=?][data-turbo-frame=customers_record][data-turbo-action=advance]",
                   "/customers/#{jx}/messages", text: "Messages"

@@ -644,6 +644,13 @@ body .modal.full-screen .modal-push {
     margin-right: 1rem;
 }
 
+/* The logo and title open the List, the user name opens Account; the links
+   keep the colour of the text around them so themes recolour them too. */
+#header-logo a {
+    color: inherit;
+    text-decoration: none;
+}
+
 /* Expanded bar (768px up): the menu and its items fill the full bar height so
    the whole column is clickable, and the list wraps instead of overflowing. */
 @media (min-width: 768px) {
@@ -692,7 +699,7 @@ body .modal.full-screen .modal-push {
     }
 
     #header .navbar-nav .nav-item {
-        min-width: 0;
+        min-width: 5rem;
     }
 
     #header .navbar-nav .nav-link {

@@ -3,6 +3,12 @@
 The about page lists these notes; every release needs a section here matching
 CloudronManifest.json.
 
+## 3.0.1
+
+- List: option to show 1, 3 or 7 days of appointments
+- Customers: customers with unread messages are shown at the top of the list
+- Minor fixes include: progress bar for at the top of the page; logo links to list, user name to account
+
 ## 3.0.0
 
 - List view is the default view and is a single column with appointments

@@ -54,4 +54,23 @@ class AdminListSortingTest < ActionDispatch::IntegrationTest
     names = response.parsed_body.map { |row| row["name"] }
     assert_operator names.index("Quiet Customer"), :<, names.index("Active Customer")
   end
+
+  test "customers with unread messages come first, then the rest by last interaction" do
+    login_admin
+    customer_role = Role.find_by!(slug: Role::CUSTOMER)
+    quiet = User.create!(name: "Quiet Customer", email: "quiet@example.org", role: customer_role)
+    active = User.create!(name: "Active Customer", email: "active@example.org", role: customer_role)
+    quiet.update_columns(updated_at: 20.days.ago)
+    message = Message.create!(direction: "incoming", channel: "email", audience: "customer", customer_id: quiet.id,
+                              from_address: "quiet@example.org", body: "Hello", created_at: 10.days.ago)
+
+    get "/customers"
+    ids = css_select(".customer-row").map { |row| row["data-id"].to_i }
+    assert_operator ids.index(quiet.id), :<, ids.index(active.id)
+
+    message.mark_read!
+    get "/customers"
+    ids = css_select(".customer-row").map { |row| row["data-id"].to_i }
+    assert_operator ids.index(active.id), :<, ids.index(quiet.id)
+  end
 end

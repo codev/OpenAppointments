@@ -4,7 +4,8 @@
     backend.scss shows either the list or the details, toggled by the editing
     class (rendered for direct visits, kept in sync by utils/crud_page.js).
     Locals: page, title, records, record, editing, keyword, row partial, form
-    partial, optional before_add and list_toolbar HTML, can_add (default true). %>
+    partial, optional before_add and list_toolbar HTML, can_add (default true),
+    record_heading (default true; false when the form renders its own heading row). %>
 <% frame = controller_name %>
 <div class="container backend-page py-3 <%= 'editing' if editing %>" id="<%= page %>-page" data-crud-page>
     <turbo-frame id="<%= frame %>">
@@ -65,7 +66,9 @@
             </div>
 
             <div class="record-details col-12 mb-4">
-                <h4 class="mb-3 fw-light"><%= lang('details') %></h4>
+                <% if local_assigns.fetch(:record_heading, true) %>
+                    <h4 class="mb-3 fw-light"><%= lang('details') %></h4>
+                <% end %>
                 <turbo-frame id="<%= frame %>_record">
                     <%= render form, record: record if editing %>
                 </turbo-frame>
