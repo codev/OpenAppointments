@@ -12,7 +12,7 @@ class CalendarFeedTest < ApplicationSystemTestCase
     visit "/calendar"
     assert_no_selector "#calendar-feed", visible: true
     show_only_stylist("Zane")
-    click_on I18n.t("ea.calendar_feed")
+    click_on I18n.t("ea.feed")
     assert_selector "#calendar-feed-modal.show", wait: 5
     first = find("#calendar-feed-link").value
     assert_match %r{/calendar/feed/[A-Za-z0-9]{32}\.ics\z}, first

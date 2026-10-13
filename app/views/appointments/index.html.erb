@@ -13,7 +13,7 @@
     <turbo-frame id="day_view" data-turbo-action="advance">
     <%= form_with url: appointments_path, method: :get, id: "day-filter", data: { turbo_frame: "day_view" } do %>
         <div class="row mb-3 py-3" id="calendar-toolbar">
-            <div id="calendar-filter" class="col-lg-8 mb-2 mb-lg-0">
+            <div id="calendar-filter" class="col-12 col-md-auto">
                 <div class="calendar-filter-items d-flex flex-wrap gap-2">
                     <%= hidden_field_tag :date, @date, id: "day-date" %>
                     <%= select_tag :days, options_for_select(AppointmentsController::DAY_COUNTS.map { |n| [ "#{n} #{lang(n == 1 ? 'day' : 'days')}", n ] }, @days),
@@ -47,7 +47,7 @@
                     </div>
                 </div>
             </div>
-            <div id="calendar-actions" class="col-lg-4 text-md-end">
+            <div id="calendar-actions" class="col-auto ms-auto">
                 <%= render "calendar/actions", working_plan_exception: false %>
             </div>
         </div>

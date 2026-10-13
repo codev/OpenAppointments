@@ -561,27 +561,28 @@ body .modal.full-screen .modal-push {
 
 }
 
-/* On mobile viewports the sync buttons sit on a row of their own, as wide as
-   their content, with the action buttons (add, reload, view switch) on the next line. */
-@media (max-width: 991.98px) {
-    #calendar-actions #enable-sync,
-    #calendar-actions #sync-button-group {
-        display: flex;
-        width: fit-content;
-        margin-bottom: 0.5rem;
-    }
+/* Calendar and List toolbar: filters on the left, action buttons in one row
+   at the right, wrapping below the filters when the screen is too narrow.
+   Icons sit centred beside the labels. */
+#calendar-toolbar {
+    row-gap: 0.5rem;
+}
 
-    #calendar-actions #sync-button-group #trigger-sync {
-        flex: 1 1 auto;
-        text-align: left;
-    }
+#calendar-actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 0.5rem;
+}
 
-    #calendar-actions #sync-button-group .dropdown-toggle-split {
-        flex: 0 0 auto;
-        width: 3rem;
-        padding-left: 0;
-        padding-right: 0;
-    }
+#calendar-actions .btn:not(.dropdown-toggle-split) {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+#calendar-actions .btn svg {
+    vertical-align: 0;
 }
 
 /* Table view toolbar: the day interval select, full width on mobile, then the
@@ -598,10 +599,12 @@ body .modal.full-screen .modal-push {
     }
 }
 
-/* Stylists, Services and Statuses dropdowns on both calendar pages: plain
-   weight whatever the theme's buttons use, long lists scroll inside the menu. */
+/* Toolbar buttons and menus on both calendar pages: plain weight whatever the
+   theme's buttons use, long filter lists scroll inside the menu. */
 #calendar-filter .dropdown-toggle,
-#calendar-filter .dropdown-item {
+#calendar-filter .dropdown-item,
+#calendar-actions .btn,
+#calendar-actions .dropdown-item {
     font-weight: normal;
 }
 

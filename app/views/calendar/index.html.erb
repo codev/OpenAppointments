@@ -5,7 +5,7 @@
 <% end %>
 <div class="container-fluid backend-page pt-0 pb-0" id="calendar-page">
     <div class="row mb-3 py-3" id="calendar-toolbar">
-        <div id="calendar-filter" class="col-lg-5 d-flex flex-nowrap align-items-center gap-2 mb-2 mb-lg-0">
+        <div id="calendar-filter" class="col-12 col-md-auto d-flex flex-nowrap align-items-center gap-2">
             <% stylist_login = session[:role_slug] == Role::PROVIDER %>
             <% unless stylist_login %>
                 <%= render "shared/tick_filter", id: "provider-filter", label: lang('providers'), hint: lang('filter_providers_hint'),
@@ -34,18 +34,18 @@
             <%= render "shared/status_filter" %>
         </div>
 
-        <div id="calendar-actions" class="col-lg-7 text-md-end">
+        <div id="calendar-actions" class="col-auto ms-auto">
             <button id="enable-sync" class="btn btn-light"
                     data-tippy-content="<%= lang('enable_appointment_sync_hint') %>" hidden>
-                <i class="fas fa-rotate me-2"></i>
+                <i class="fas fa-rotate"></i>
                 <%= lang('enable_sync') %>
             </button>
 
             <div class="btn-group" id="sync-button-group" hidden>
                 <button type="button" class="btn btn-light" id="trigger-sync"
                         data-tippy-content="<%= lang('trigger_sync_hint') %>">
-                    <i class="fas fa-rotate me-2"></i>
-                    <%= lang('synchronize') %>
+                    <i class="fas fa-rotate"></i>
+                    <%= lang('sync') %>
                 </button>
                 <button type="button" class="btn btn-light dropdown-toggle dropdown-toggle-split"
                         data-bs-toggle="dropdown" aria-expanded="false">
@@ -61,8 +61,8 @@
             </div>
 
             <button id="calendar-feed" class="btn btn-light" data-tippy-content="<%= lang('calendar_feed_hint') %>" hidden>
-                <i class="fas fa-calendar-plus me-2"></i>
-                <%= lang('calendar_feed') %>
+                <i class="far fa-calendar"></i>
+                <%= lang('feed') %>
             </button>
 
             <%= render "calendar/actions", working_plan_exception: true %>

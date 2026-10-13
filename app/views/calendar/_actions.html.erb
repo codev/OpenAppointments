@@ -1,8 +1,9 @@
-<%# Add and reload buttons shared by the calendar and appointments pages. Locals: working_plan_exception. %>
+<%# Add and refresh buttons shared by the calendar and appointments pages. Locals: working_plan_exception. %>
 <% if can?(:add, :appointments) %>
-    <div class="dropdown d-inline-block">
+    <div class="dropdown">
         <button class="btn btn-light" type="button" data-bs-toggle="dropdown">
             <i class="fas fa-plus-square"></i>
+            <%= lang('add') %>
         </button>
         <ul class="dropdown-menu">
             <li>
@@ -29,4 +30,5 @@
 <button id="reload-appointments" class="btn btn-light"
         data-tippy-content="<%= lang('reload_appointments_hint') %>">
     <i class="fas fa-sync-alt"></i>
+    <%= lang('refresh') %>
 </button>

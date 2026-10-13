@@ -154,6 +154,9 @@ en:
     disable_sync: Disable Sync
     disable_sync_prompt: Are you sure that you want to disable the calendar synchronization?
     reload: Reload
+    refresh: Refresh
+    sync: Sync
+    feed: Feed
     appointment: Appointment
     unavailability: Unavailability
     week: Week
