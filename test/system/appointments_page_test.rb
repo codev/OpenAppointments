@@ -136,6 +136,9 @@ class AppointmentsPageTest < ApplicationSystemTestCase
     assert_selector ".provider-column", count: 2, wait: 5
     assert_selector "#provider-filter input[value='#{riley.id}']:checked", wait: 5
     assert_selector "#provider-filter .dropdown-toggle", text: /\AProviders\z/
+    # Everything ticked travels short: one "all" for stylists, nothing for services.
+    assert_current_path(/providers%5B%5D=all/, wait: 5)
+    assert_no_match(/providers%5B%5D=#{zane.id}|services/, page.current_url)
 
     within("#provider-filter") { click_on "Clear Providers" }
     assert_no_selector ".provider-column", wait: 5

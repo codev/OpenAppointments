@@ -107,14 +107,43 @@ class AppointmentsPageTest < ActionDispatch::IntegrationTest
     assert_includes entry_ids("unavailability"), sick.id
   end
 
+  def second_stylist
+    riley = User.create!(name: "Riley", email: "riley@example.org", role: users(:zane).role)
+    ServiceProviderLink.create!(provider: riley, service: services(:haircut))
+    riley
+  end
+
   test "ticked stylists get a column, working or not, and the day links keep the choice" do
+    riley = second_stylist
     login_admin
     get "/appointments", params: { date: "2026-07-19", providers: [ "", users(:zane).id ] }
     assert_select ".provider-column[data-provider-id=?]", users(:zane).id.to_s
+    assert_select ".provider-column[data-provider-id=?]", riley.id.to_s, count: 0
     assert_select "#not-working-notes div", count: 0
     assert_select "#provider-filter input[value=?][checked]", users(:zane).id.to_s
     assert_select "#provider-filter input[data-tick=working]:not([checked])"
     assert_select "a#next-day[href*=?]", "providers%5B%5D=#{users(:zane).id}"
+  end
+
+  # The URL stays short (and so fits the 4 KB login return address): every
+  # stylist ticked is "all", every service ticked is the default and not sent.
+  test "all stylists travel as one value and all services as none" do
+    riley = second_stylist
+    login_admin
+    get "/appointments", params: { date: "2026-07-19", providers: [ "", "all" ] }
+    assert_select ".provider-column[data-provider-id=?]", users(:zane).id.to_s
+    assert_select ".provider-column[data-provider-id=?]", riley.id.to_s
+    assert_select "#provider-filter input[value=?][checked]", riley.id.to_s
+    assert_select "#provider-filter input[data-tick=working]:not([checked])"
+    assert_select "#provider-filter .dropdown-toggle", text: "Providers"
+    assert_select "#provider-filter[data-all-value=all][data-name=providers]"
+    assert_select "#service-filter[data-name=services]:not([data-all-value])"
+    assert_select "a#next-day[href*=?]", "providers%5B%5D=all"
+    assert_select "a#next-day[href*=?]", "providers%5B%5D=#{riley.id}", count: 0
+
+    all_services = css_select("#service-filter input[name='services[]'][value!='']").map { |input| input["value"] }
+    get "/appointments", params: { date: "2026-07-20", services: all_services }
+    assert_select "a#next-day[href*=?]", "services%5B%5D", count: 0
   end
 
   test "no stylists ticked shows no columns and says how many are ticked" do

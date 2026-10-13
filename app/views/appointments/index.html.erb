@@ -7,9 +7,8 @@
     <meta name="turbo-cache-control" content="no-preview">
 <% end %>
 <% formats = { date_format: setting('date_format'), time_format: setting('time_format') } %>
-<%# A ticked set travels as ids, or a lone blank when nothing is ticked; working stylists and all services are the defaults. %>
-<% query = ->(overrides) { { date: @date, days: @days, providers: @provider_ids && (@provider_ids.presence || [ "" ]),
-                             services: @service_ids && (@service_ids.presence || [ "" ]), statuses: @selected_statuses }.merge(overrides).compact } %>
+<% query = ->(overrides) { { date: @date, days: @days, providers: provider_param, services: service_param,
+                             statuses: @selected_statuses }.merge(overrides).compact } %>
 <div class="container-fluid backend-page pt-0 pb-0" id="calendar-page">
     <turbo-frame id="day_view" data-turbo-action="advance">
     <%= form_with url: appointments_path, method: :get, id: "day-filter", data: { turbo_frame: "day_view" } do %>
@@ -23,7 +22,7 @@
                     <% if @show_provider_filter %>
                         <%= render "shared/tick_filter", id: "provider-filter", name: "providers", label: lang('providers'),
                                    hint: lang('filter_providers_hint'), items: @providers.map { |p| [ p.name, p.id ] },
-                                   checked: @provider_ids || [], working: @provider_ids.nil?,
+                                   checked: @provider_ids || [], working: @provider_ids.nil?, all_value: "all",
                                    all_label: lang('all_providers'), clear_label: lang('clear_providers') %>
                     <% end %>
                     <%= render "shared/tick_filter", id: "service-filter", name: "services", label: lang('services'),

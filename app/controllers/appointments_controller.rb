@@ -7,10 +7,11 @@ class AppointmentsController < ApplicationController
 
   DAY_COUNTS = [ 1, 3, 7 ].freeze
 
-  # GET /appointments?date=&days=&providers[]=(working|id)&services[]=&statuses[]=
+  # GET /appointments?date=&days=&providers[]=(working|all|id)&services[]=&statuses[]=
   # Without providers, or with "working", only working stylists get a column;
-  # ticked stylists always get one. Without services every service is shown.
-  # A lone blank value means nothing is ticked. A stylist sees only themselves.
+  # ticked stylists ("all" for every one) always get one. Without services every
+  # service is shown. A lone blank value means nothing is ticked. A stylist sees
+  # only themselves.
   def index
     return unless require_backend_page!(:appointments)
 
@@ -23,6 +24,7 @@ class AppointmentsController < ApplicationController
     @show_provider_filter = session[:role_slug] != Role::PROVIDER
     @provider_ids = ticked_ids(:providers) if @show_provider_filter
     @provider_ids = nil if @provider_ids&.include?("working")
+    @provider_ids = @providers.map(&:id) if @provider_ids&.include?("all")
     @service_ids = ticked_ids(:services)
     @columns = build_columns
     backend_page_vars(page_title: helpers.lang("appointments"), active_menu: "appointments")
@@ -90,12 +92,29 @@ class AppointmentsController < ApplicationController
   end
 
   # The ticked values of a tick-box filter: nil when the URL does not name it,
-  # ids as integers ("working" kept as is), blanks dropped.
+  # ids as integers ("working" and "all" kept as they are), blanks dropped.
   def ticked_ids(key)
     return nil unless params.key?(key)
 
-    Array(params[key]).reject(&:blank?).map { |value| value == "working" ? value : value.to_i }
+    Array(params[key]).reject(&:blank?).map { |value| %w[working all].include?(value) ? value : value.to_i }
   end
+
+  # The day links' filters in their shortest form, as utils/tick_filter sends
+  # them: every stylist is "all", every service the default (not sent), none
+  # ticked a lone blank. Keeps the URL within the login return address limit.
+  def provider_param
+    return nil unless @provider_ids
+    return [ "all" ] if @providers.any? && (@providers.map(&:id) - @provider_ids).empty?
+
+    @provider_ids.presence || [ "" ]
+  end
+
+  def service_param
+    return nil if @service_ids.nil? || (@services.map(&:id) - @service_ids).empty?
+
+    @service_ids.presence || [ "" ]
+  end
+  helper_method :provider_param, :service_param
 
   def edit_appointment_var
     return nil if params[:appointment_hash].blank?

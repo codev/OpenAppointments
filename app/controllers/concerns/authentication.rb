@@ -36,10 +36,22 @@ module Authentication
     @session_role ||= Role.find_by(slug: session[:role_slug]) if session[:role_slug]
   end
 
+  DEST_URL_LIMIT = 1000
+
+  # The page a logged out visitor asked for, for the login form to return to.
+  # The session is a 4 KB cookie, so a longer URL is not kept and login lands
+  # on the List instead.
+  def remember_destination
+    return unless request.get? || request.head?
+
+    url = request.original_url
+    session[:dest_url] = url.length <= DEST_URL_LIMIT ? url : nil
+  end
+
   def require_session
     return if logged_in?
 
-    session[:dest_url] = request.original_url if request.get? || request.head?
+    remember_destination
     respond_to do |format|
       format.html { redirect_to login_path }
       format.json { render json: { success: false, message: "Not authorized" }, status: :unauthorized }

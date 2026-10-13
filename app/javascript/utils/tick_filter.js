@@ -46,6 +46,31 @@ App.Utils.TickFilter = (function () {
         changed($dropdown);
     });
 
+    // A form sends every item ticked in short, keeping the URL small: the
+    // dropdown's all value, or nothing (the default). The formdata event does
+    // not bubble, hence the capture listener.
+    document.addEventListener(
+        'formdata',
+        (event) => {
+            $(event.target)
+                .find('.tick-filter[data-name]')
+                .each((index, dropdown) => {
+                    const $dropdown = $(dropdown);
+                    const $items = $dropdown.find(ITEMS);
+                    if (!$items.length || $items.filter(':checked').length !== $items.length) {
+                        return;
+                    }
+
+                    const field = $dropdown.data('name') + '[]';
+                    event.formData.delete(field);
+                    if ($dropdown.data('allValue')) {
+                        event.formData.append(field, $dropdown.data('allValue'));
+                    }
+                });
+        },
+        true,
+    );
+
     // The ticked ids of the dropdown with this element id, as numbers.
     function selected(id) {
         return $('#' + id)
