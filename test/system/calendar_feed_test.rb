@@ -4,11 +4,14 @@ require "application_system_test_case"
 # reset replaces it.
 class CalendarFeedTest < ApplicationSystemTestCase
   test "an admin opens the feed dialog for a provider and resets the link" do
+    # A second stylist, so everyone ticked is not one stylist in focus.
+    riley = User.create!(name: "Riley", email: "riley@example.org", role: users(:zane).role, timezone: "Europe/London")
+    ServiceProviderLink.create!(id_users: riley.id, id_services: services(:haircut).id)
     login_as_admin
+    page.execute_script("window.localStorage.clear()") # no ticks saved by an earlier test
     visit "/calendar"
     assert_no_selector "#calendar-feed", visible: true
-    find("#filter-item-dropdown .dropdown-toggle", wait: 10).click
-    within("#filter-item-dropdown .dropdown-menu") { click_on "Zane" }
+    show_only_stylist("Zane")
     click_on I18n.t("ea.calendar_feed")
     assert_selector "#calendar-feed-modal.show", wait: 5
     first = find("#calendar-feed-link").value

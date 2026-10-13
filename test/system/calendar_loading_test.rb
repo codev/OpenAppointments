@@ -14,20 +14,22 @@ class CalendarLoadingTest < ApplicationSystemTestCase
     end
   end
 
-  test "the saved provider filter is loaded with a single request" do
+  test "the saved filter is loaded with a single request" do
     login_as_admin
-    page.execute_script("window.localStorage.setItem('EasyAppointments.SelectFilterItem', 'provider:#{users(:zane).id}')")
+    saved = { providers: [], services: [ services(:group_session).id ] }.to_json
+    page.execute_script("window.localStorage.setItem('OpenAppointments.CalendarFilter', arguments[0])", saved)
     visit "/calendar"
     wait_for_requests(1)
     sleep 1
     assert_equal 1, page.evaluate_script(COUNT_REQUESTS)
-    assert_selector "#filter-item-dropdown .dropdown-toggle", text: "Zane"
+    assert_selector "#service-filter input[value='#{services(:group_session).id}']:not(:checked)", visible: :all
+    assert_selector "#service-filter input[value='#{services(:haircut).id}']:checked", visible: :all
   end
 
   test "going to the List and back renders one calendar" do
     login_as_admin
     page.driver.browser.logs.get(:browser) # drop the earlier tests' console entries
-    page.execute_script("window.localStorage.removeItem('EasyAppointments.SelectFilterItem')")
+    page.execute_script("window.localStorage.removeItem('OpenAppointments.CalendarFilter')")
     visit "/calendar"
     wait_for_requests(1)
     within("#header") { click_on "List" }

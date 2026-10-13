@@ -6,6 +6,7 @@ CloudronManifest.json.
 ## 3.0.2
 
 - List: Stylists and Services are tick-box dropdowns like Statuses, with All, Clear and Working Stylists; stylists do not see the Stylists dropdown
+- Calendar: separate Stylists and Services tick-box dropdowns, so several stylists or services can be shown together; the choice is remembered
 
 ## 3.0.1
 

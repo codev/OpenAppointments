@@ -21,11 +21,26 @@ class CalendarTest < ActionDispatch::IntegrationTest
     assert_match "window.vars", response.body
   end
 
+  test "a stylist has no stylist dropdown on the calendar and is the stylist in focus" do
+    login_provider
+    get "/calendar"
+    assert_select "#provider-filter", count: 0
+    assert_select "#service-filter"
+    assert_select "#select-filter-item option[selected][value=?]", users(:zane).id.to_s
+  end
+
   test "calendar is the calendar view and appointments is the table view" do
     login_admin
     get "/calendar"
     assert_match 'id="select-filter-item"', response.body
     assert_match "pages/calendar", response.body
+    assert_select "#provider-filter input[data-tick=working]", count: 0
+    assert_select "#provider-filter input[value=?][checked]", users(:zane).id.to_s
+    assert_select "#provider-filter input[name]", count: 0
+    assert_select "#service-filter input[value=?][checked]", services(:haircut).id.to_s
+    # The hidden select only holds the one stylist in focus for sync, the feed and new events.
+    assert_select "#select-filter-item option[type=service]", count: 0
+    assert_select "#select-filter-item option[value=all]"
     get "/appointments"
     assert_response :success
     assert_match 'id="select-day-interval"', response.body

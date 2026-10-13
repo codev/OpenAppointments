@@ -17,12 +17,13 @@ App.Components.EventModal = (function () {
         frame().src = App.Utils.Url.siteUrl(url);
     }
 
-    // The one stylist or service the page is filtered to, else undefined: the
-    // Calendar's filter select, or the List's tick-box dropdowns.
+    // The one stylist or service the page is filtered to, else undefined. The
+    // Calendar's stylist is the one in focus (its hidden select, which also
+    // covers a stylist's own calendar); otherwise the single ticked box.
     function filteredId(type) {
         const $select = $('#select-filter-item');
-        if ($select.length) {
-            return $select.find('option:selected').attr('type') === type ? $select.val() : undefined;
+        if (type === 'provider' && $select.length) {
+            return $select.val() === 'all' ? undefined : $select.val();
         }
 
         return App.Utils.TickFilter?.single(type + '-filter');

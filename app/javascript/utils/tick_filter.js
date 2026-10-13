@@ -8,13 +8,17 @@ App.Utils.TickFilter = (function () {
     const ITEMS = 'input[type=checkbox]:not([data-tick])';
     const WORKING = 'input[data-tick=working]';
 
-    function changed($dropdown) {
+    function relabel($dropdown) {
         const $items = $dropdown.find(ITEMS);
         const ticked = $items.filter(':checked').length;
         const everything = $dropdown.find(WORKING).is(':checked') || ticked === $items.length;
         const label = $dropdown.data('label');
 
         $dropdown.find('.dropdown-toggle').text(everything ? label : label + ' (' + ticked + ')');
+    }
+
+    function changed($dropdown) {
+        relabel($dropdown);
         $dropdown.trigger('tick-filter:change');
         $dropdown.closest('form')[0]?.requestSubmit();
     }
@@ -56,8 +60,27 @@ App.Utils.TickFilter = (function () {
         return ids.length === 1 ? ids[0] : undefined;
     }
 
+    // The unticked ids, as numbers: what a page saves, so items added later start ticked.
+    function unticked(id) {
+        return $('#' + id)
+            .find(ITEMS + ':not(:checked)')
+            .toArray()
+            .map((input) => Number(input.value));
+    }
+
+    // Ticks every item except these ids, without firing a change.
+    function untick(id, ids) {
+        const $dropdown = $('#' + id);
+        $dropdown.find(ITEMS).each((index, input) => {
+            input.checked = !ids.includes(Number(input.value));
+        });
+        relabel($dropdown);
+    }
+
     return {
         selected,
         single,
+        unticked,
+        untick,
     };
 })();

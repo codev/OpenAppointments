@@ -126,8 +126,13 @@ class CalendarModalsTest < ApplicationSystemTestCase
                             attendants_number: 1, booking_slug: "other-svc")
     ServiceProviderLink.create!(id_users: early_bird.id, id_services: other.id)
 
+    page.execute_script("window.localStorage.clear()")
     visit calendar_url
-    choose_filter("Trim Cut")
+    find("#service-filter .dropdown-toggle", wait: 10).click
+    within("#service-filter .dropdown-menu") do
+      click_on "Clear Services"
+      check "Trim Cut"
+    end
     assert_selector "td.fc-timegrid-slot-label[data-time]", wait: 10
     page.document.synchronize(10) { raise Capybara::ExpectationNotMet unless slot_times.first == "10:00:00" }
     assert_equal "16:45:00", slot_times.last
@@ -140,49 +145,95 @@ class CalendarModalsTest < ApplicationSystemTestCase
     assert_equal "16:45:00", slot_times.last
   end
 
-  def choose_filter(name)
-    find("#filter-item-dropdown .dropdown-toggle", wait: 10).click
-    within("#filter-item-dropdown .dropdown-menu") { click_on name }
+  def event_titles
+    page.evaluate_script("[...document.querySelectorAll('#calendar .fc-timegrid-event .fc-event-title')].map((e) => e.textContent).sort()")
   end
 
-  test "the stylist and service filter is a compact dropdown button that drives the calendar" do
-    visit calendar_url
-    assert_selector "#filter-item-dropdown .dropdown-toggle", text: "All", wait: 10
-    assert_no_selector "#select-filter-item"
-    find("#filter-item-dropdown .dropdown-toggle").click
-    assert_selector "#filter-item-dropdown .dropdown-header", text: "Providers"
-    assert_selector "#filter-item-dropdown .dropdown-header", text: "Services"
-    within("#filter-item-dropdown .dropdown-menu") { click_on "Zane" }
+  def fetches
+    page.evaluate_script("performance.getEntriesByType('resource').filter((e) => e.name.includes('get_calendar_appointments')).length")
+  end
 
-    assert_selector "#filter-item-dropdown .dropdown-toggle", text: "Zane", wait: 5
+  def assert_event_titles(expected)
+    page.document.synchronize(5) { raise Capybara::ExpectationNotMet, event_titles.inspect unless event_titles == expected }
+  end
+
+  test "Stylists and Services tick boxes filter the calendar in the browser and are remembered" do
+    riley = User.create!(name: "Riley", email: "riley@example.org", role: users(:zane).role, timezone: "Europe/London",
+                         color: "#aa3377")
+    riley.create_settings!(username: "riley", password: Passwords.hash("rileypass1"), working_plan: user_settings(:zane).working_plan)
+    ServiceProviderLink.create!(id_users: riley.id, id_services: services(:group_session).id)
+    users(:zane).update!(color: "#228833")
+    Appointment.create!(provider: users(:zane), customer: users(:jx), service: services(:haircut),
+                        start_datetime: soon, end_datetime: soon + 30.minutes, appointment_status: AppointmentStatus.of("booked"))
+    Appointment.create!(provider: riley, customer: users(:jx), service: services(:group_session),
+                        start_datetime: soon, end_datetime: soon + 30.minutes, appointment_status: AppointmentStatus.of("booked"))
+    page.execute_script("window.localStorage.clear()")
+    visit calendar_url
+    assert_event_titles [ "JX - Group Session", "JX - Trim Cut" ]
+    assert_selector "#calendar-legend", visible: true
+    loaded = fetches
+
+    show_only_stylist("Zane")
+    assert_event_titles [ "JX - Trim Cut" ]
+    assert_selector "#provider-filter .dropdown-toggle", text: "Providers (1)"
     assert_equal users(:zane).id.to_s, page.evaluate_script("document.getElementById('select-filter-item').value")
     assert_selector "#enable-sync", visible: true, wait: 5
+    assert_selector "#calendar-legend", visible: false
     widths = page.evaluate_script(<<~JS)
-      ({ button: document.querySelector('#filter-item-dropdown .dropdown-toggle').getBoundingClientRect().width,
+      ({ button: document.querySelector('#provider-filter .dropdown-toggle').getBoundingClientRect().width,
          row: document.getElementById('calendar-toolbar').getBoundingClientRect().width })
     JS
     assert_operator widths["button"], :<, widths["row"] / 3, "filter button spans #{widths['button']} of #{widths['row']}px"
 
+    find("#provider-filter .dropdown-toggle").click
+    within("#provider-filter .dropdown-menu") { check "Riley" }
+    assert_event_titles [ "JX - Group Session", "JX - Trim Cut" ]
+    assert_equal "all", page.evaluate_script("document.getElementById('select-filter-item').value")
+    assert_selector "#enable-sync", visible: false, wait: 5
+    within("#provider-filter .dropdown-menu") { click_on "Clear Providers" }
+    assert_event_titles []
+    within("#provider-filter .dropdown-menu") { click_on "All Providers" }
+    assert_event_titles [ "JX - Group Session", "JX - Trim Cut" ]
+
+    find("#service-filter .dropdown-toggle").click
+    within("#service-filter .dropdown-menu") do
+      click_on "Clear Services"
+      check services(:haircut).name
+    end
+    # Several stylists and one service: titled by stylist.
+    assert_event_titles [ "JX - Zane" ]
+    assert_equal loaded, fetches, "ticking a box redraws without fetching"
+
     visit calendar_url
-    assert_selector "#filter-item-dropdown .dropdown-toggle", text: "Zane", wait: 10
+    assert_event_titles [ "JX - Zane" ]
+    assert_selector "#service-filter .dropdown-toggle", text: "Services (1)"
+    assert_selector "#provider-filter .dropdown-toggle", text: /\AProviders\z/
   end
 
-  test "a chosen service is remembered even when a stylist has the same id" do
-    twin = Service.create!(id: users(:zane).id, name: "Twin Service", duration: 30, price: 0, currency: "GBP",
-                           slot_interval: 15, attendants_number: 1, booking_slug: "twin-svc")
-    ServiceProviderLink.create!(id_users: users(:zane).id, id_services: twin.id)
+  test "a stylist's calendar has no Stylists dropdown and shows only their own appointments" do
+    riley = User.create!(name: "Riley", email: "riley@example.org", role: users(:zane).role, timezone: "Europe/London")
+    ServiceProviderLink.create!(id_users: riley.id, id_services: services(:haircut).id)
+    Appointment.create!(provider: users(:zane), customer: users(:jx), service: services(:haircut),
+                        start_datetime: soon, end_datetime: soon + 30.minutes, appointment_status: AppointmentStatus.of("booked"))
+    Appointment.create!(provider: riley, customer: users(:jx), service: services(:group_session),
+                        start_datetime: soon, end_datetime: soon + 30.minutes, appointment_status: AppointmentStatus.of("booked"))
+    visit logout_url
+    visit login_url
+    fill_in "username", with: "janedoe"
+    fill_in "password", with: "janedoe1"
+    find("#login").click
+    assert_no_current_path "/login", wait: 10
+    page.execute_script("window.localStorage.clear()")
     visit calendar_url
-    choose_filter("Twin Service")
-    assert_selector "#filter-item-dropdown .dropdown-toggle", text: "Twin Service", wait: 5
-    visit calendar_url
-    assert_selector "#filter-item-dropdown .dropdown-toggle", text: "Twin Service", wait: 10
-    assert_equal "service", page.evaluate_script("document.querySelector('#select-filter-item option:checked').getAttribute('type')")
+    assert_event_titles [ "JX - Trim Cut" ]
+    assert_no_selector "#provider-filter"
+    assert_selector "#calendar-feed", visible: true, wait: 5
   end
 
   test "on a tablet Enable sync is only as wide as its icon and text" do
     resize_window(800, 900)
     visit calendar_url
-    choose_filter("Zane")
+    show_only_stylist("Zane")
     assert_selector "#enable-sync", visible: true, wait: 5
     widths = page.evaluate_script(<<~JS)
       (() => {
