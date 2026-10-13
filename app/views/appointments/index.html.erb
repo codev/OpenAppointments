@@ -14,7 +14,7 @@
     <%= form_with url: appointments_path, method: :get, id: "day-filter", data: { turbo_frame: "day_view" } do %>
         <div class="row mb-3 py-3" id="calendar-toolbar">
             <div id="calendar-filter" class="col-12 col-md-auto">
-                <div class="calendar-filter-items d-flex flex-wrap gap-2">
+                <div class="calendar-filter-items d-flex flex-wrap justify-content-center justify-content-md-start gap-2">
                     <%= hidden_field_tag :date, @date, id: "day-date" %>
                     <%= select_tag :days, options_for_select(AppointmentsController::DAY_COUNTS.map { |n| [ "#{n} #{lang(n == 1 ? 'day' : 'days')}", n ] }, @days),
                                    id: "select-day-interval", class: "form-select", "aria-label": "Days", onchange: "this.form.requestSubmit()",
@@ -47,7 +47,7 @@
                     </div>
                 </div>
             </div>
-            <div id="calendar-actions" class="col-auto ms-auto">
+            <div id="calendar-actions" class="col-12 col-md-auto ms-md-auto">
                 <%= render "calendar/actions", working_plan_exception: false %>
             </div>
         </div>

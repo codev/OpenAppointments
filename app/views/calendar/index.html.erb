@@ -5,7 +5,7 @@
 <% end %>
 <div class="container-fluid backend-page pt-0 pb-0" id="calendar-page">
     <div class="row mb-3 py-3" id="calendar-toolbar">
-        <div id="calendar-filter" class="col-12 col-md-auto d-flex flex-nowrap align-items-center gap-2">
+        <div id="calendar-filter" class="col-12 col-md-auto d-flex flex-nowrap align-items-center justify-content-center justify-content-md-start gap-2">
             <% stylist_login = session[:role_slug] == Role::PROVIDER %>
             <% unless stylist_login %>
                 <%= render "shared/tick_filter", id: "provider-filter", label: lang('providers'), hint: lang('filter_providers_hint'),
@@ -34,7 +34,7 @@
             <%= render "shared/status_filter" %>
         </div>
 
-        <div id="calendar-actions" class="col-auto ms-auto">
+        <div id="calendar-actions" class="col-12 col-md-auto ms-md-auto">
             <button id="enable-sync" class="btn btn-light"
                     data-tippy-content="<%= lang('enable_appointment_sync_hint') %>" hidden>
                 <i class="fas fa-rotate"></i>

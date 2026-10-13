@@ -66,7 +66,39 @@ class CalendarToolbarTest < ApplicationSystemTestCase
     assert_one_row_at_right(boxes)
   end
 
+  test "on a phone every row of toolbar buttons is centred" do
+    resize_window(400, 900)
+    visit calendar_url
+    show_only_stylist("Zane")
+    assert_selector "#enable-sync", visible: true, wait: 5
+    assert_rows_centred
+
+    visit appointments_url
+    assert_selector "#reload-appointments", wait: 5
+    assert_rows_centred
+  end
+
   private
+
+  # Groups the visible toolbar buttons by row and compares each row's left and
+  # right margins inside the toolbar's padding.
+  def assert_rows_centred
+    rows = page.evaluate_script(<<~JS)
+      (() => {
+        const toolbar = document.getElementById('calendar-toolbar').getBoundingClientRect();
+        const rows = {};
+        document.querySelectorAll('#calendar-toolbar .btn, #calendar-toolbar select').forEach(element => {
+          if (element.offsetParent === null) return;
+          const box = element.getBoundingClientRect();
+          const row = rows[Math.round(box.top)] ||= { left: box.left, right: box.right };
+          row.left = Math.min(row.left, box.left);
+          row.right = Math.max(row.right, box.right);
+        });
+        return Object.values(rows).map(row => ({ left: row.left - toolbar.left, right: toolbar.right - row.right }));
+      })()
+    JS
+    rows.each { |row| assert_in_delta row["left"], row["right"], 2, "row centred: #{row}" }
+  end
 
   # Synced stylists show Sync and its menu toggle in place of Enable Sync.
   def show_sync_button_group

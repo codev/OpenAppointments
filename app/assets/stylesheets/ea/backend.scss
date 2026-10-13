@@ -563,7 +563,7 @@ body .modal.full-screen .modal-push {
 
 /* Calendar and List toolbar: filters on the left, action buttons in one row
    at the right, wrapping below the filters when the screen is too narrow.
-   Icons sit centred beside the labels. */
+   On mobile every row is centred. Icons sit centred beside the labels. */
 #calendar-toolbar {
     row-gap: 0.5rem;
 }
@@ -573,6 +573,12 @@ body .modal.full-screen .modal-push {
     flex-wrap: wrap;
     justify-content: flex-end;
     gap: 0.5rem;
+}
+
+@media (max-width: 767.98px) {
+    #calendar-actions {
+        justify-content: center;
+    }
 }
 
 #calendar-actions .btn:not(.dropdown-toggle-split) {
