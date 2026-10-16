@@ -52,7 +52,8 @@
                                         <div class="booking-card card h-100 text-center" role="button" tabindex="0"
                                              data-category-id="<%= category["id"] %>">
                                             <% if category["picture_url"].present? %>
-                                                <img src="<%= category["picture_url"] %>" class="card-img-top booking-card-picture" alt="">
+                                                <%= tag.img src: category["picture_url"], width: category["picture_size"], height: category["picture_size"],
+                                                        class: "card-img-top booking-card-picture", alt: "" %>
                                             <% end %>
                                             <div class="card-body p-2">
                                                 <h5 class="card-title fs-6 mb-0"><%= category["name"] %></h5>
@@ -74,7 +75,8 @@
                                         <div class="booking-card card h-100 text-center <%= 'selected' if service['id'] == @service_id %>"
                                              role="button" tabindex="0" data-service-id="<%= service["id"] %>">
                                             <% if service["picture_url"].present? %>
-                                                <img src="<%= service["picture_url"] %>" class="card-img-top booking-card-picture" alt="">
+                                                <%= tag.img src: service["picture_url"], width: service["picture_size"], height: service["picture_size"],
+                                                        class: "card-img-top booking-card-picture", alt: "" %>
                                             <% end %>
                                             <div class="card-body p-2">
                                                 <h5 class="card-title fs-6 mb-1"><%= service["name"] %></h5>
@@ -95,7 +97,8 @@
                         <% available_services.each do |service| %>
                             <div class="selection-description d-none" data-for-service="<%= service['id'] %>">
                                 <% if vars(:display_mode) != "cards" && service["picture_url"].present? %>
-                                    <img src="<%= service["picture_url"] %>" alt="<%= service["name"] %>" class="selection-picture rounded">
+                                    <%= tag.img src: service["picture_url"], width: service["picture_size"], height: service["picture_size"],
+                                            class: "selection-picture rounded", alt: service["name"] %>
                                 <% end %>
                                 <% info = [] %>
                                 <% info << "#{lang('duration')}: #{service['duration']} #{lang('minutes')}" if service["duration"] %>

@@ -48,6 +48,10 @@ module OpenAppointments
     # rather than ship the unused vips/imagemagick toolchain.
     config.active_storage.variant_processor = :disabled
 
+    # Serve pictures through the app in one request with a year-long immutable cache
+    # header, rather than redirecting to a short-lived signed storage URL.
+    config.active_storage.resolve_model_to_route = :rails_storage_proxy
+
     # EA reuses one CSRF token across many AJAX calls; per-form tokens would break that.
     config.action_controller.per_form_csrf_tokens = false
 
