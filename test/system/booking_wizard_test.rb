@@ -215,10 +215,29 @@ class BookingWizardFlowTest < ApplicationSystemTestCase
     fill_in "email", with: "anyone@example.org"
     find("#button-next-4").click
     assert_selector "#wizard-frame-5", visible: :visible, wait: 5
+    selection = find(".display-booking-selection", text: /│ (Zane|Riley)\z/, wait: 5).text
+    pick = selection.split("│ ").last
+    assert_selector "#wizard-frame-5 #appointment-details", text: pick
+
+    find("#button-back-5").click
+    assert_selector "#wizard-frame-4", visible: :visible, wait: 5
+    assert_selector ".display-booking-selection", text: "#{services(:haircut).name} │ Any Provider"
+    find("#button-back-4").click
+    assert_selector "#wizard-frame-3", visible: :visible, wait: 5
+    assert_selector ".display-booking-selection", text: "#{services(:haircut).name} │ Any Provider"
+    find("#available-hours .available-hour", text: /\A11:00 am\z/, wait: 10).click
+    find("#button-next-3").click
+    assert_selector "#wizard-frame-4", visible: :visible, wait: 5
+    fill_in "name", with: "Any One"
+    fill_in "email", with: "anyone@example.org"
+    find("#button-next-4").click
+    assert_selector "#wizard-frame-5", visible: :visible, wait: 5
+    assert_selector ".display-booking-selection", text: "#{services(:haircut).name} │ #{pick}"
+
     click_on "Confirm"
     assert_text "successfully registered", wait: 10
     appointment = Appointment.appointments.order(:id).last
-    assert_includes User.providers.pluck(:id), appointment.id_users_provider
+    assert_equal pick, appointment.provider.name
   end
 end
 

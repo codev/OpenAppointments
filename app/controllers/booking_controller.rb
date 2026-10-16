@@ -77,6 +77,7 @@ class BookingController < ApplicationController
     else
       @step = @reachable.last
     end
+    resolve_any_provider
     render :index
   end
 
@@ -461,6 +462,7 @@ class BookingController < ApplicationController
       @customer = customer_form_params
       @error = message
       @step = @reachable.include?("info") ? "final" : @reachable.last
+      resolve_any_provider
       render :index
     end
   end
@@ -514,6 +516,15 @@ class BookingController < ApplicationController
 
     hours = engine.available_hours(date, service, provider, exclude_appointment_id: exclude_appointment_id)
     hours.include?(hour) ? provider.id : nil
+  end
+
+  # Any Provider on the confirmation step: the stylist the booking would get,
+  # for display only. The form keeps the any-provider marker, so register
+  # checks the slot and picks again.
+  def resolve_any_provider
+    return unless @step == "final" && @provider_id == BookingPayloads::ANY_PROVIDER
+
+    @any_provider_pick = search_any_provider(@service_id, @date, @time)
   end
 
   def search_any_provider(service_id, date, hour = nil)

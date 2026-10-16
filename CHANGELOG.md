@@ -10,6 +10,7 @@ CloudronManifest.json.
 - Calendar and List: action buttons in one row at the right with short labels (Add, Refresh, Sync, Feed); on tablets they share the row with the filters
 - Customers: Do not contact tick box; ticked customers get no automatic notifications and their Messages tab shows a warning; the 10to8 import ticks it for customers who did not give consent
 - Booking: the pronoun and access needs answers are remembered with the other details when Remember me is ticked
+- Booking: with Any Stylist, the confirmation step and the header name the stylist the booking will get
 
 ## 3.0.1
 
