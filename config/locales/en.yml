@@ -116,7 +116,7 @@ en:
     appointment_confirmation: Appointment Confirmation
     confirm: Confirm
     update: Update
-    cancel_appointment_hint: Press the "Cancel" button to remove the appointment from the company schedule.
+    cancel_appointment_hint: Press the "Cancel" button to cancel the appointment
     cancel: Cancel
     appointment_registered: You're all set!
     cancel_appointment_title: Cancel Appointment

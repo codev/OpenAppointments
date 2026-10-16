@@ -196,6 +196,16 @@ class BookingWizardFlowTest < ApplicationSystemTestCase
     assert_includes appointment.notes, "Moving house"
   end
 
+  test "cancellation frame shows the hint text" do
+    date = working_day
+    appointment = Appointment.create!(id_users_provider: users(:zane).id, id_users_customer: users(:jx).id,
+                                      id_services: services(:haircut).id, start_datetime: date.to_time.change(hour: 14),
+                                      end_datetime: date.to_time.change(hour: 14, min: 30),
+                                      appointment_status: AppointmentStatus.of("booked"))
+    visit "/booking/reschedule/#{appointment.booking_hash}"
+    assert_text "Press the \"Cancel\" button to cancel the appointment"
+  end
+
   test "any provider offers the union of hours and books an actual provider" do
     Setting.set("display_any_provider", "1")
     second_provider
