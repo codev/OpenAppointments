@@ -442,4 +442,23 @@ class BookingWizardWindowTest < ApplicationSystemTestCase
     assert_field "name", with: "Repeat Customer", wait: 5
     assert_field "custom-field-1", with: "they/them", wait: 5
   end
+
+  test "the remember me checkbox on details step has visible styling when unchecked" do
+    to_time_step
+    find(".flatpickr-day[aria-label='#{Date.current.strftime('%B %-d, %Y')}']", wait: 5).click
+    find("#available-hours .available-hour", match: :first, wait: 5).click
+    find("#button-next-3").click
+    assert_selector "#wizard-frame-4", visible: :visible, wait: 5
+
+    # Verify checkbox is visible with white background and visible border
+    assert_selector "#remember-me", visible: :visible
+
+    bg_color = page.evaluate_script("window.getComputedStyle(document.querySelector('#remember-me')).backgroundColor")
+    border_color = page.evaluate_script("window.getComputedStyle(document.querySelector('#remember-me')).borderColor")
+
+    # The background should be white (rgb(255, 255, 255))
+    assert bg_color == "rgb(255, 255, 255)", "Unchecked checkbox should have white background, got: #{bg_color}"
+    # The border should be a visible colour (not white)
+    assert border_color != "rgb(255, 255, 255)", "Unchecked checkbox should have visible border, got: #{border_color}"
+  end
 end
