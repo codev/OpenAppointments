@@ -15,6 +15,7 @@ CloudronManifest.json.
 - Calendar invites: titled "Company: Service with Stylist", with no attendees or guests and no email or phone numbers in the description
 - Booking: terms and conditions and privacy policy text is now larger and more readable
 - Booking: the confirmed page says "You're all set!", shows the calendar buttons above the Go to button, and hides "Powered by" when that Booking Settings switch is off
+- Booking: the reason for cancelling an appointment is optional; late cancellations still require one
 
 ## 3.0.1
 

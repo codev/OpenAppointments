@@ -10,7 +10,7 @@
         <p class="fs-5 text-muted mb-3"><%= vars(:notice) %></p>
 
         <form method="post" action="<%= "/booking_cancellation/late/#{vars(:appointment_hash)}" %>" class="text-start">
-            <label for="cancellation-reason" class="form-label"><%= lang('reason') %></label>
+            <label for="cancellation-reason" class="form-label"><%= lang('late_cancel_reason') %></label>
             <textarea id="cancellation-reason" name="cancellation_reason" class="form-control mb-3" rows="3" required></textarea>
             <div class="text-center">
                 <button type="submit" class="btn btn-warning px-4 py-2">

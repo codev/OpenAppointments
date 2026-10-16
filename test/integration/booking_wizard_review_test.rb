@@ -136,7 +136,8 @@ class BookingWizardReviewTest < ActionDispatch::IntegrationTest
     with_memory_cache do
       travel_to booking_time do # the token expires ten minutes after the page
         get "/booking/reschedule/#{HASH}"
-        assert_select "#cancel-appointment-modal form[action='/booking_cancellation/of/#{HASH}'] textarea[name=cancellation_reason][required]"
+        assert_select "#cancel-appointment-modal form[action='/booking_cancellation/of/#{HASH}'] textarea[name=cancellation_reason]:not([required])"
+        assert_select "#cancel-appointment-modal p", text: I18n.t("ea.cancel_reason_optional")
         assert_select "#cancel-appointment[data-bs-target='#cancel-appointment-modal']"
         token = css_select("#delete-personal-information-form input[name=customer_token]").first["value"]
         assert_match(/\A[a-f0-9]{32}\z/, token)

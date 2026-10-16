@@ -28,16 +28,14 @@ class BookingCancellationController < ApplicationController
     appointment_hash = params[:appointment_hash].to_s
     return head :bad_request unless appointment_hash.match?(/\A[a-zA-Z0-9]+\z/)
 
-    cancellation_reason = params[:cancellation_reason].to_s
-    return head :forbidden if cancellation_reason.empty?
-
-    cancellation_reason = helpers.strip_tags(cancellation_reason.strip[0, 1000])
+    cancellation_reason = helpers.strip_tags(params[:cancellation_reason].to_s.strip[0, 1000])
 
     appointment = Appointment.find_by(booking_hash: appointment_hash)
     return render_appointment_not_found unless appointment
     return render_appointment_not_found if appointment.frees_slot?
 
     kind = "late_cancel" if BookingWindows.late?(appointment)
+    return head :forbidden if kind == "late_cancel" && cancellation_reason.empty?
 
     provider = appointment.provider
     customer = appointment.customer

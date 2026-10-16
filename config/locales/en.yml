@@ -898,6 +898,8 @@ en:
     status_late_cancel: 'Set when a customer cancels inside the late window'
     status_no_show: 'Sends the missed notification'
     write_appointment_cancel_reason: 'Please take a minute to write the reason you are cancelling the appointment:'
+    cancel_reason_optional: 'Optional reason for cancelling the appointment, if you want to let us know:'
+    late_cancel_reason: 'Reason for cancelling the appointment:'
     late_cancel_title: 'Late Cancellation'
     late_cancel: 'Late Cancel'
     late_cancel_notice: 'Thank you for letting us know you can''t make the appointment, we ask for {$hours} hours and {$minutes} minutes notice before cancellation or ask for a payment to cover the cost of the missed appointment.'
