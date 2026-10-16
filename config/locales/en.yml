@@ -118,7 +118,7 @@ en:
     update: Update
     cancel_appointment_hint: Press the "Cancel" button to remove the appointment from the company schedule.
     cancel: Cancel
-    appointment_registered: Your appointment has been successfully registered!
+    appointment_registered: You're all set!
     cancel_appointment_title: Cancel Appointment
     appointment_cancelled: Your appointment has been successfully cancelled.
     appointment_cancelled_title: Appointment Cancelled

@@ -17,6 +17,41 @@ class BookingConfirmationTest < ActionDispatch::IntegrationTest
     assert_no_match I18n.t("ea.go_to_booking_page"), css_select("#go-to-company").first.text
   end
 
+  test "the calendar buttons come before the company website button under a calendar icon" do
+    get "/booking_confirmation/of/#{appointments(:upcoming).booking_hash}"
+
+    body = response.body
+    assert_operator body.index('id="download-ics"'), :<, body.index('id="go-to-company"')
+    assert_operator body.index('id="add-to-google-calendar"'), :<, body.index('id="go-to-company"')
+    assert_select "#calendar-actions .fa-calendar-plus"
+    assert_select "#calendar-actions #download-ics"
+  end
+
+  test "the heading says the customer is all set" do
+    get "/booking_confirmation/of/#{appointments(:upcoming).booking_hash}"
+
+    assert_select "h3", text: "You're all set!"
+  end
+
+  test "the message layout honours the powered by setting" do
+    get "/booking_confirmation/of/#{appointments(:upcoming).booking_hash}"
+    assert_select "#message-frame a[href='https://github.com/codev/OpenAppointments']"
+
+    Setting.set("display_powered_by", "0")
+    get "/booking_confirmation/of/#{appointments(:upcoming).booking_hash}"
+    assert_select "#message-frame a[href='https://github.com/codev/OpenAppointments']", false
+  end
+
+  test "the legal notice link stays when the powered by credit is hidden" do
+    Setting.set("display_powered_by", "0")
+    Setting.set("disable_booking", "1")
+    Setting.set("legal_notice_url", "https://example.org/legal")
+    get "/"
+
+    assert_select "#message-frame a[href='https://github.com/codev/OpenAppointments']", false
+    assert_select "#message-frame a[href='https://example.org/legal']"
+  end
+
   test "the ics endpoint streams the appointment calendar" do
     get "/booking_confirmation/ics/#{appointments(:upcoming).booking_hash}"
     assert_response :success

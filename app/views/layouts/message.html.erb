@@ -31,17 +31,22 @@
             <%= yield %>
 
             <div class="mt-2">
+                <% separator_needed = false %>
                 <small>
-                    Powered by
-                    <a href="https://github.com/codev/OpenAppointments">OpenAppointments</a>
+                    <% if setting("display_powered_by", "1").to_s == "1" %>
+                        Powered by
+                        <a href="https://github.com/codev/OpenAppointments">OpenAppointments</a>
+                        <% separator_needed = true %>
+                    <% end %>
 
                     <% if vars(:legal_notice_url).present? %>
-                        <span class="mx-1">|</span>
+                        <span class="mx-1" <%= "hidden" unless separator_needed %>>|</span>
                         <a href="<%= vars(:legal_notice_url) %>" target="_blank"><%= lang('legal_notice') %></a>
+                        <% separator_needed = true %>
                     <% end %>
 
                     <% if vars(:imprint_url).present? %>
-                        <span class="mx-1">|</span>
+                        <span class="mx-1" <%= "hidden" unless separator_needed %>>|</span>
                         <a href="<%= vars(:imprint_url) %>" target="_blank"><%= lang('imprint') %></a>
                     <% end %>
                 </small>
