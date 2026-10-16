@@ -146,7 +146,7 @@ class BookingWizardFlowTest < ApplicationSystemTestCase
     assert_text services(:haircut).name
     click_on "Confirm"
 
-    assert_text "Your appointment has been successfully registered", wait: 10
+    assert_text "You're all set!", wait: 10
     appointment = Appointment.appointments.find_by!(start_datetime: date.to_time.change(hour: 9, min: 30))
     assert_equal "walkin@example.org", appointment.customer.email
     assert_equal users(:zane).id, appointment.id_users_provider
@@ -169,7 +169,7 @@ class BookingWizardFlowTest < ApplicationSystemTestCase
     assert_selector "#wizard-frame-5", visible: :visible, wait: 5
     click_on "Update"
 
-    assert_text "successfully", wait: 10
+    assert_text "You're all set!", wait: 10
     replacement = Appointment.appointments.order(:id).last
     assert_equal date.to_time.change(hour: 10), replacement.start_datetime
     assert_equal "rescheduled", appointment.reload.appointment_status.kind
@@ -235,7 +235,7 @@ class BookingWizardFlowTest < ApplicationSystemTestCase
     assert_selector ".display-booking-selection", text: "#{services(:haircut).name} │ #{pick}"
 
     click_on "Confirm"
-    assert_text "successfully registered", wait: 10
+    assert_text "You're all set!", wait: 10
     appointment = Appointment.appointments.order(:id).last
     assert_equal pick, appointment.provider.name
   end
@@ -375,7 +375,7 @@ class BookingWizardWindowTest < ApplicationSystemTestCase
     assert_selector "#wizard-frame-5 #appointment-details", text: /4:30 am/, wait: 5
     assert_selector "#wizard-frame-5 #appointment-details", text: /New_York/
     click_on "Confirm"
-    assert_text "successfully registered", wait: 10
+    assert_text "You're all set!", wait: 10
     assert_equal "America/New_York", User.customers.find_by!(email: "far@example.org").timezone
   end
 
@@ -432,7 +432,7 @@ class BookingWizardWindowTest < ApplicationSystemTestCase
     find("#button-next-4").click
     assert_selector "#wizard-frame-5", visible: :visible, wait: 5
     click_on "Confirm"
-    assert_text "Your appointment has been successfully registered", wait: 10
+    assert_text "You're all set!", wait: 10
 
     to_time_step
     find(".flatpickr-day[aria-label='#{date.strftime('%B %-d, %Y')}']").click
