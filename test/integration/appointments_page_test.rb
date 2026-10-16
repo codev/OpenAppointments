@@ -269,4 +269,15 @@ class AppointmentsPageTest < ActionDispatch::IntegrationTest
       end
     end
   end
+
+  test "previous and next arrows move by the number of days shown, not always by one" do
+    login_admin
+    get "/appointments", params: { date: "2026-07-20", days: 3 }
+    assert_select "a#next-day[href*='date=2026-07-23']"
+    assert_select "a#previous-day[href*='date=2026-07-17']"
+
+    get "/appointments", params: { date: "2026-07-20", days: 7 }
+    assert_select "a#next-day[href*='date=2026-07-27']"
+    assert_select "a#previous-day[href*='date=2026-07-13']"
+  end
 end

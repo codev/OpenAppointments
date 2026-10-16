@@ -57,9 +57,9 @@
         <div class="calendar-header row align-items-center g-2 mb-3">
             <div class="col-6 col-md-4 d-flex align-items-center gap-2">
                 <div class="btn-group">
-                    <%= link_to appointments_path(query.call(date: @date - 1)), id: "previous-day", class: "btn btn-primary",
+                    <%= link_to appointments_path(query.call(date: @date - @days)), id: "previous-day", class: "btn btn-primary",
                                 "aria-label": lang('previous') do %><i class="fas fa-chevron-left"></i><% end %>
-                    <%= link_to appointments_path(query.call(date: @date + 1)), id: "next-day", class: "btn btn-primary",
+                    <%= link_to appointments_path(query.call(date: @date + @days)), id: "next-day", class: "btn btn-primary",
                                 "aria-label": lang('next') do %><i class="fas fa-chevron-right"></i><% end %>
                 </div>
                 <%= link_to lang('today'), appointments_path(query.call(date: Date.current)), id: "today",
