@@ -17,7 +17,9 @@ en:
     appointments_include_meeting_links: "Appointments Include Meeting Links"
     appointments_include_meeting_links_hint: "Allows a stylist, assistant or admin to add a link to an online meeting to an appointment; the link is included in the customer's calendar invite."
     booking_provider_first: "Provider first instead of service"
+    booking_provider_first_hint: In the booking page show a customer stylists before they pick a service.
     display_order_switch: "Display the switch to choose Service or Provider first"
+    display_order_switch_hint: Allow customers to use a button on the first step of the booking page to let them select a service first or a stylist first, before they pick the other one.
     display_powered_by: "Display Powered by OpenAppointments"
     longer_text_field: "Longer text field"
     embed_wordpress: "Embed into WordPress"
@@ -460,7 +462,7 @@ en:
     company: Company
     remove: Remove
     login_button: Login Button
-    display_login_button_hint: Defines whether the login button is being displayed in the booking page.
+    display_login_button_hint: Defines whether the staff login button is being displayed in the booking page.
     private: Private
     private_hint: "Private records are not shown on the public booking page but can still be booked through their direct booking link."
     reset: Reset

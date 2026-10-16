@@ -15,6 +15,171 @@
                         </div>
 
                         <h5 class="mb-3 fw-light">
+                            <%= lang('options') %>
+                        </h5>
+
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="border rounded mb-3 p-3">
+                                    <div class="mb-3">
+                                        <div class="form-check form-switch">
+                                            <%= setting_switch "disable_booking" %>
+                                            <label class="form-check-label" for="disable-booking">
+                                                <%= lang('disable_booking') %>
+                                            </label>
+                                        </div>
+
+                                        <div class="form-text text-muted">
+                                            <small>
+                                                <%= lang('disable_booking_hint') %>
+                                            </small>
+                                        </div>
+                                    </div>
+                                    <div class="form-group mb-3" data-visible-when="disable_booking=1">
+                                        <label class="form-label" for="disable-booking-message">
+                                            <%= lang('display_message') %>
+                                        </label>
+                                        <%= setting_textarea "disable_booking_message", class: "mb-3 rich-text", cols: 30, rows: 10 %>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label" for="booking-display-mode">
+                                            <%= lang('booking_display_mode') %>
+                                        </label>
+                                        <%= setting_select "booking_display_mode",
+                                                           [ [ lang('display_as_dropdown'), "dropdown" ], [ lang('display_as_cards'), "cards" ] ] %>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label"><%= lang('picture_styles') %></label>
+                                        <% { "picture_style_categories" => "categories",
+                                             "picture_style_services" => "services",
+                                             "picture_style_providers" => "providers" }.each do |field, label_key| %>
+                                            <div class="row align-items-center mb-2">
+                                                <label class="col-4 col-form-label" for="<%= field.tr('_', '-') %>">
+                                                    <%= lang(label_key) %>
+                                                </label>
+                                                <div class="col-8">
+                                                    <%= setting_select field, [ [ lang('white_border'), "border" ], [ lang('zoomed'), "zoomed" ] ], id: field.tr('_', '-') %>
+                                                </div>
+                                            </div>
+                                        <% end %>
+                                        <div class="form-text text-muted">
+                                            <small><%= lang('picture_styles_hint') %></small>
+                                        </div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <div class="form-check form-switch">
+                                            <%= setting_switch "display_any_provider" %>
+                                            <label class="form-check-label" for="display-any-provider">
+                                                <%= lang('any_provider') %>
+                                            </label>
+                                        </div>
+
+                                        <div class="form-text text-muted">
+                                            <small>
+                                                <%= lang('display_any_provider_hint') %>
+                                            </small>
+                                        </div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <div class="form-check form-switch">
+                                            <%= setting_switch "booking_provider_first" %>
+                                            <label class="form-check-label" for="booking-provider-first">
+                                                <%= lang('booking_provider_first') %>
+                                            </label>
+                                        </div>
+                                        <div class="form-text text-muted">
+                                            <small><%= lang('booking_provider_first_hint') %></small>
+                                        </div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <div class="form-check form-switch">
+                                            <%= setting_switch "display_order_switch", default: "1" %>
+                                            <label class="form-check-label" for="display-order-switch">
+                                                <%= lang('display_order_switch') %>
+                                            </label>
+                                        </div>
+                                        <div class="form-text text-muted">
+                                            <small><%= lang('display_order_switch_hint') %></small>
+                                        </div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <div class="form-check form-switch">
+                                            <%= setting_switch "appointments_include_locations" %>
+                                            <label class="form-check-label" for="appointments-include-locations">
+                                                <%= lang('appointments_include_locations') %>
+                                            </label>
+                                        </div>
+                                        <div class="form-text text-muted">
+                                            <small><%= lang('appointments_include_locations_hint') %></small>
+                                        </div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <div class="form-check form-switch">
+                                            <%= setting_switch "appointments_include_meeting_links" %>
+                                            <label class="form-check-label" for="appointments-include-meeting-links">
+                                                <%= lang('appointments_include_meeting_links') %>
+                                            </label>
+                                        </div>
+                                        <div class="form-text text-muted">
+                                            <small><%= lang('appointments_include_meeting_links_hint') %></small>
+                                        </div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <div class="form-check form-switch">
+                                            <%= setting_switch "limit_customer_access" %>
+                                            <label class="form-check-label" for="limit-customer-access">
+                                                <%= lang('limit_customer_access') %>
+                                            </label>
+                                        </div>
+
+                                        <div class="form-text text-muted">
+                                            <small>
+                                                <%= lang('limit_customer_access_hint') %>
+                                            </small>
+                                        </div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <div class="form-check form-switch">
+                                            <%= setting_switch "display_login_button" %>
+                                            <label class="form-check-label" for="display-login-button">
+                                                <%= lang('login_button') %>
+                                            </label>
+                                        </div>
+
+                                        <div class="form-text text-muted">
+                                            <small>
+                                                <%= lang('display_login_button_hint') %>
+                                            </small>
+                                        </div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <div class="form-check form-switch">
+                                            <%= setting_switch "display_delete_personal_information" %>
+                                            <label class="form-check-label" for="display-delete-personal-information">
+                                                <%= lang('delete_personal_information') %>
+                                            </label>
+                                        </div>
+
+                                        <div class="form-text text-muted">
+                                            <small>
+                                                <%= lang('delete_personal_information_setting_hint') %>
+                                            </small>
+                                        </div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <div class="form-check form-switch">
+                                            <%= setting_switch "display_powered_by" %>
+                                            <label class="form-check-label" for="display-powered-by">
+                                                <%= lang('display_powered_by') %>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <h5 class="mb-3 fw-light">
                             <%= lang('fields') %>
                         </h5>
 
@@ -222,177 +387,6 @@
                                     </div>
                                 </div>
                             <% end %>
-                        </div>
-
-
-                        <h5 class="mb-3 fw-light">
-                            <%= lang('options') %>
-                        </h5>
-
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="border rounded mb-3 p-3">
-                                    <div class="mb-3">
-                                        <label class="form-label" for="booking-display-mode">
-                                            <%= lang('booking_display_mode') %>
-                                        </label>
-                                        <%= setting_select "booking_display_mode",
-                                                           [ [ lang('display_as_dropdown'), "dropdown" ], [ lang('display_as_cards'), "cards" ] ] %>
-                                    </div>
-
-                                    <div class="mb-3">
-                                        <label class="form-label"><%= lang('picture_styles') %></label>
-                                        <% { "picture_style_categories" => "categories",
-                                             "picture_style_services" => "services",
-                                             "picture_style_providers" => "providers" }.each do |field, label_key| %>
-                                            <div class="row align-items-center mb-2">
-                                                <label class="col-4 col-form-label" for="<%= field.tr('_', '-') %>">
-                                                    <%= lang(label_key) %>
-                                                </label>
-                                                <div class="col-8">
-                                                    <%= setting_select field, [ [ lang('white_border'), "border" ], [ lang('zoomed'), "zoomed" ] ], id: field.tr('_', '-') %>
-                                                </div>
-                                            </div>
-                                        <% end %>
-                                        <div class="form-text text-muted">
-                                            <small><%= lang('picture_styles_hint') %></small>
-                                        </div>
-                                    </div>
-
-                                    <div class="mb-3">
-                                        <div class="form-check form-switch">
-                                            <%= setting_switch "appointments_include_locations" %>
-                                            <label class="form-check-label" for="appointments-include-locations">
-                                                <%= lang('appointments_include_locations') %>
-                                            </label>
-                                        </div>
-                                        <div class="form-text text-muted">
-                                            <small><%= lang('appointments_include_locations_hint') %></small>
-                                        </div>
-                                    </div>
-
-                                    <div class="mb-3">
-                                        <div class="form-check form-switch">
-                                            <%= setting_switch "appointments_include_meeting_links" %>
-                                            <label class="form-check-label" for="appointments-include-meeting-links">
-                                                <%= lang('appointments_include_meeting_links') %>
-                                            </label>
-                                        </div>
-                                        <div class="form-text text-muted">
-                                            <small><%= lang('appointments_include_meeting_links_hint') %></small>
-                                        </div>
-                                    </div>
-
-                                    <div class="mb-3">
-                                        <div class="form-check form-switch">
-                                            <%= setting_switch "booking_provider_first" %>
-                                            <label class="form-check-label" for="booking-provider-first">
-                                                <%= lang('booking_provider_first') %>
-                                            </label>
-                                        </div>
-                                    </div>
-
-                                    <div class="mb-3">
-                                        <div class="form-check form-switch">
-                                            <%= setting_switch "display_order_switch", default: "1" %>
-                                            <label class="form-check-label" for="display-order-switch">
-                                                <%= lang('display_order_switch') %>
-                                            </label>
-                                        </div>
-                                    </div>
-
-                                    <div class="mb-3">
-                                        <div class="form-check form-switch">
-                                            <%= setting_switch "display_powered_by" %>
-                                            <label class="form-check-label" for="display-powered-by">
-                                                <%= lang('display_powered_by') %>
-                                            </label>
-                                        </div>
-                                    </div>
-
-                                    <div class="mb-3">
-                                        <div class="form-check form-switch">
-                                            <%= setting_switch "limit_customer_access" %>
-                                            <label class="form-check-label" for="limit-customer-access">
-                                                <%= lang('limit_customer_access') %>
-                                            </label>
-                                        </div>
-
-                                        <div class="form-text text-muted">
-                                            <small>
-                                                <%= lang('limit_customer_access_hint') %>
-                                            </small>
-                                        </div>
-                                    </div>
-
-                                    <div class="mb-3">
-                                        <div class="form-check form-switch">
-                                            <%= setting_switch "display_any_provider" %>
-                                            <label class="form-check-label" for="display-any-provider">
-                                                <%= lang('any_provider') %>
-                                            </label>
-                                        </div>
-
-                                        <div class="form-text text-muted">
-                                            <small>
-                                                <%= lang('display_any_provider_hint') %>
-                                            </small>
-                                        </div>
-                                    </div>
-
-                                    <div class="mb-3">
-                                        <div class="form-check form-switch">
-                                            <%= setting_switch "display_login_button" %>
-                                            <label class="form-check-label" for="display-login-button">
-                                                <%= lang('login_button') %>
-                                            </label>
-                                        </div>
-
-                                        <div class="form-text text-muted">
-                                            <small>
-                                                <%= lang('display_login_button_hint') %>
-                                            </small>
-                                        </div>
-                                    </div>
-
-                                    <div class="mb-3">
-                                        <div class="form-check form-switch">
-                                            <%= setting_switch "display_delete_personal_information" %>
-                                            <label class="form-check-label" for="display-delete-personal-information">
-                                                <%= lang('delete_personal_information') %>
-                                            </label>
-                                        </div>
-
-                                        <div class="form-text text-muted">
-                                            <small>
-                                                <%= lang('delete_personal_information_setting_hint') %>
-                                            </small>
-                                        </div>
-                                    </div>
-
-                                    <div>
-                                        <div class="form-check form-switch">
-                                            <%= setting_switch "disable_booking" %>
-                                            <label class="form-check-label" for="disable-booking">
-                                                <%= lang('disable_booking') %>
-                                            </label>
-                                        </div>
-
-                                        <div class="form-text text-muted">
-                                            <small>
-                                                <%= lang('disable_booking_hint') %>
-                                            </small>
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group mb-3" data-visible-when="disable_booking=1">
-                                        <label class="form-label" for="disable-booking-message">
-                                            <%= lang('display_message') %>
-                                        </label>
-                                        <%= setting_textarea "disable_booking_message", class: "mb-3 rich-text", cols: 30, rows: 10 %>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
 
                     <% end %>
