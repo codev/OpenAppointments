@@ -1,7 +1,8 @@
 /**
- * Calendar feed button on the calendar page: shown when a provider is selected
- * (any provider for editors, only themselves for a provider). Opens the dialog
- * with the subscription link from calendar/feed_link; reset makes a new one.
+ * Feed button on the calendar page: shown when a provider is selected (any
+ * provider for editors, only themselves for a provider). Opens the Feed dialog
+ * on its Calendar Feed tab with the subscription link from calendar/feed_link;
+ * reset makes a new one. utils/calendar_sync.js runs the Enable Sync tab.
  */
 App.Utils.CalendarFeed = (function () {
     const $filter = () => $('#select-filter-item');
@@ -35,6 +36,7 @@ App.Utils.CalendarFeed = (function () {
     }
 
     function open() {
+        bootstrap.Tab.getOrCreateInstance(document.getElementById('calendar-feed-tab')).show();
         fetchLink(false).done(() => modal().show());
     }
 

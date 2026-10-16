@@ -177,7 +177,7 @@ class CalendarModalsTest < ApplicationSystemTestCase
     assert_event_titles [ "JX - Trim Cut" ]
     assert_selector "#provider-filter .dropdown-toggle", text: "Providers (1)"
     assert_equal users(:zane).id.to_s, page.evaluate_script("document.getElementById('select-filter-item').value")
-    assert_selector "#enable-sync", visible: true, wait: 5
+    assert_selector "#calendar-feed", visible: true, wait: 5
     assert_selector "#calendar-legend", visible: false
     widths = page.evaluate_script(<<~JS)
       ({ button: document.querySelector('#provider-filter .dropdown-toggle').getBoundingClientRect().width,
@@ -189,7 +189,7 @@ class CalendarModalsTest < ApplicationSystemTestCase
     within("#provider-filter .dropdown-menu") { check "Riley" }
     assert_event_titles [ "JX - Group Session", "JX - Trim Cut" ]
     assert_equal "all", page.evaluate_script("document.getElementById('select-filter-item').value")
-    assert_selector "#enable-sync", visible: false, wait: 5
+    assert_selector "#calendar-feed", visible: false, wait: 5
     within("#provider-filter .dropdown-menu") { click_on "Clear Providers" }
     assert_event_titles []
     within("#provider-filter .dropdown-menu") { click_on "All Providers" }
@@ -230,19 +230,19 @@ class CalendarModalsTest < ApplicationSystemTestCase
     assert_selector "#calendar-feed", visible: true, wait: 5
   end
 
-  test "on a tablet Enable sync is only as wide as its icon and text" do
+  test "on a tablet Feed is only as wide as its icon and text" do
     resize_window(800, 900)
     visit calendar_url
     show_only_stylist("Zane")
-    assert_selector "#enable-sync", visible: true, wait: 5
+    assert_selector "#calendar-feed", visible: true, wait: 5
     widths = page.evaluate_script(<<~JS)
       (() => {
-        const button = document.getElementById('enable-sync');
+        const button = document.getElementById('calendar-feed');
         return { button: button.getBoundingClientRect().width,
                  row: document.getElementById('calendar-actions').getBoundingClientRect().width };
       })()
     JS
-    assert_operator widths["button"], :<, widths["row"] / 2, "Enable sync spans #{widths['button']} of #{widths['row']}px"
+    assert_operator widths["button"], :<, widths["row"] / 2, "Feed spans #{widths['button']} of #{widths['row']}px"
   end
 
   test "an ended appointment's popover offers no Cancel and the buttons stay inside the popover" do

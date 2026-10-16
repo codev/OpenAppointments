@@ -76,7 +76,11 @@ class CalendarFeedTest < ActionDispatch::IntegrationTest
   test "the calendar page has the feed button, the dialog with the instructions and the script" do
     login("administrator", "administrator1")
     get "/calendar"
-    assert_select "#calendar-feed[hidden]", text: /#{I18n.t('ea.calendar_feed')}/
+    assert_select "#calendar-feed[hidden]", text: /#{I18n.t('ea.feed')}/
+    assert_select "#enable-sync", count: 0
+    assert_select "#calendar-feed-modal .modal-title", text: I18n.t("ea.feed")
+    assert_select "#calendar-feed-modal #calendar-feed-tab.active", text: /#{I18n.t('ea.calendar_feed')}/
+    assert_select "#calendar-feed-modal #calendar-sync-tab", text: /#{I18n.t('ea.enable_sync')}/
     assert_select "#calendar-feed-modal input#calendar-feed-link[readonly]"
     assert_select "#calendar-feed-modal #calendar-feed-copy"
     assert_select "#calendar-feed-modal #calendar-feed-reset"

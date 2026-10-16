@@ -18,6 +18,7 @@ CloudronManifest.json.
 - Calendar invites: titled "Company: Service with Stylist", with no attendees or guests and no email or phone numbers in the description
 - Booking: terms and conditions and privacy policy text is now larger and more readable
 - Booking: the confirmed page says "You're all set!", shows the calendar buttons above the Go to button, and hides "Powered by" when that Booking Settings switch is off
+- Calendar: one Feed button opens a Feed dialog with Calendar Feed and Enable Sync tabs; the Enable Sync toolbar button is gone and the tab offers Disable Sync once sync is on
 - Booking: the reason for cancelling an appointment is optional; late cancellations still require one
 - Repeating appointments are for admins and assistants: stylists no longer see the Repeating Appointments button or repeat options, but can still cancel a single appointment of a series
 - Calendar: appointments are filled with the stylist's colour and edged with the service colour; the List edges them with the service colour; appointments no longer have a colour of their own

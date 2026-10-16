@@ -12,13 +12,17 @@
 /**
  * Calendar sync utility.
  *
- * This module implements the functionality of calendar sync.
+ * This module implements the functionality of calendar sync: the Sync button
+ * group on the calendar toolbar, and the Enable Sync tab of the Feed dialog,
+ * which shows one section at a time (method choice, CalDAV form, Google
+ * calendar choice, or the disable option once sync is on).
  *
  * Old Name: BackendCalendarSync
  */
 App.Utils.CalendarSync = (function () {
     const $selectFilterItem = () => $('#select-filter-item');
-    const $enableSync = () => $('#enable-sync');
+    const $syncPane = () => $('#calendar-sync-pane');
+    const feedModal = () => bootstrap.Modal.getOrCreateInstance(document.getElementById('calendar-feed-modal'));
     const $disableSync = () => $('#disable-sync');
     const $triggerSync = () => $('#trigger-sync');
     const $syncButtonGroup = () => $('#sync-button-group');
@@ -49,8 +53,24 @@ App.Utils.CalendarSync = (function () {
             (!isLoggedInProvider || // Admins and assistants can manage any provider
                 Number(vars('user_id')) === selectedProviderId); // Providers can only manage their own sync
 
-        $enableSync().prop('hidden', !canManageSync || hasSync);
         $syncButtonGroup().prop('hidden', !canManageSync || !hasSync);
+    }
+
+    function showSyncSection(id) {
+        $syncPane().find('.sync-section').each((index, section) => {
+            section.hidden = section.id !== id;
+        });
+    }
+
+    // The Enable Sync tab's starting section for the stylist in focus.
+    function resetSyncPane() {
+        if (hasSync('google') || hasSync('caldav')) {
+            showSyncSection('sync-disable');
+        } else if (vars('google_sync_feature')) {
+            showSyncSection('sync-method');
+        } else {
+            enableCaldavSync();
+        }
     }
 
     function enableGoogleSync() {
@@ -86,80 +106,56 @@ App.Utils.CalendarSync = (function () {
         window.addEventListener('message', onOauthMessage);
     }
 
+    function selectedProvider() {
+        const providerId = $selectFilterItem().val();
+
+        const provider = vars('available_providers').find(
+            (availableProvider) => Number(availableProvider.id) === Number(providerId),
+        );
+
+        if (!provider) {
+            throw new Error('Provider not found: ' + providerId);
+        }
+
+        return provider;
+    }
+
     function disableGoogleSync() {
-        App.Utils.Message.show(lang('disable_sync'), lang('disable_sync_prompt'), [
-            {
-                text: lang('cancel'),
-                click: (event, messageModal) => {
-                    messageModal.hide();
-                },
-            },
-            {
-                text: lang('confirm'),
-                click: (event, messageModal) => {
-                    // Disable synchronization for selected provider.
-                    const providerId = $selectFilterItem().val();
+        const provider = selectedProvider();
 
-                    const provider = vars('available_providers').find(
-                        (availableProvider) => Number(availableProvider.id) === Number(providerId),
-                    );
+        provider.settings.google_sync = '0';
+        provider.settings.google_token = null;
 
-                    if (!provider) {
-                        throw new Error('Provider not found: ' + providerId);
-                    }
+        App.Http.Google.disableProviderSync(provider.id);
 
-                    provider.settings.google_sync = '0';
-                    provider.settings.google_token = null;
+        $selectFilterItem().find('option:selected').attr('google-sync', '0');
 
-                    App.Http.Google.disableProviderSync(provider.id);
-
-                    const $selectedOption = $selectFilterItem().find('option:selected');
-
-                    $selectedOption.attr('google-sync', '0');
-
-                    updateSyncButtons();
-
-                    messageModal.hide();
-                },
-            },
-        ]);
+        updateSyncButtons();
     }
 
     function selectGoogleCalendar() {
         const providerId = $selectFilterItem().val();
 
         App.Http.Google.getGoogleCalendars(providerId).done((googleCalendars) => {
-            const $selectGoogleCalendar = $(`
-                <select class="form-select">
-                    <!-- JS -->
-                </select>
-            `);
+            const $selectGoogleCalendar = $('#google-calendar').empty();
 
             googleCalendars.forEach((googleCalendar) => {
                 $selectGoogleCalendar.append(new Option(googleCalendar.summary, googleCalendar.id));
             });
 
-            const $messageModal = App.Utils.Message.show(
-                lang('select_sync_calendar'),
-                lang('select_sync_calendar_prompt'),
-                [
-                    {
-                        text: lang('select'),
-                        click: (event, messageModal) => {
-                            const googleCalendarId = $selectGoogleCalendar.val();
-
-                            App.Http.Google.selectGoogleCalendar(providerId, googleCalendarId).done(() => {
-                                App.Layouts.Backend.displayNotification(lang('sync_calendar_selected'));
-                            });
-
-                            messageModal.hide();
-                        },
-                    },
-                ],
-            );
-
-            $selectGoogleCalendar.appendTo($messageModal.find('.modal-body'));
+            showSyncSection('sync-google-calendar');
         });
+    }
+
+    function onGoogleSelectClick() {
+        const providerId = $selectFilterItem().val();
+        const googleCalendarId = $('#google-calendar').val();
+
+        App.Http.Google.selectGoogleCalendar(providerId, googleCalendarId).done(() => {
+            App.Layouts.Backend.displayNotification(lang('sync_calendar_selected'));
+        });
+
+        feedModal().hide();
     }
 
     function triggerGoogleSync() {
@@ -188,144 +184,82 @@ App.Utils.CalendarSync = (function () {
             });
     }
 
-    function enableCaldavSync(defaultCaldavUrl = '', defaultCaldavUsername = '', defaultCaldavPassword = '') {
-        const $container = $(`
-            <div>
-                <div class="mb-3">
-                    <label for="caldav-url" class="form-label">
-                        ${lang('calendar_url')}
-                    </label>
-                    <input type="text" class="form-control" id="caldav-url" value="${defaultCaldavUrl}"/>
-                </div> 
-                <div class="mb-3">
-                    <label for="caldav-username" class="form-label">
-                        ${lang('username')}
-                    </label>
-                    <input type="text" class="form-control" id="caldav-username" value="${defaultCaldavUsername}"/>
-                </div> 
-                <div class="mb-3">
-                    <label for="caldav-password" class="form-label">
-                        ${lang('password')}
-                    </label>
-                    <input type="password" class="form-control" id="caldav-password" value="${defaultCaldavPassword}"/>
-                </div>    
-                
-                <div class="alert alert-danger" hidden>
-                    <!-- JS -->
-                </div>
-            </div>
-        `);
+    function enableCaldavSync() {
+        const $section = $('#sync-caldav');
 
-        const $messageModal = App.Utils.Message.show(lang('caldav_server'), lang('caldav_connection_info_prompt'), [
-            {
-                text: lang('cancel'),
-                click: (event, messageModal) => {
-                    messageModal.hide();
-                },
-            },
-            {
-                text: lang('connect'),
-                click: (event, messageModal) => {
-                    const providerId = $selectFilterItem().val();
+        $section.find('input').val('').removeClass('is-invalid');
+        $section.find('.alert').text('').prop('hidden', true);
 
-                    $messageModal.find('.is-invalid').removeClass('is-invalid');
+        showSyncSection('sync-caldav');
+    }
 
-                    const $alert = $messageModal.find('.alert');
-                    $alert.text('').prop('hidden', true);
+    function onCaldavConnectClick() {
+        const $section = $('#sync-caldav');
+        const providerId = $selectFilterItem().val();
 
-                    const $caldavUrl = $container.find('#caldav-url');
-                    const caldavUrl = $caldavUrl.val();
+        $section.find('.is-invalid').removeClass('is-invalid');
 
-                    if (!caldavUrl) {
-                        $caldavUrl.addClass('is-invalid');
-                        return;
-                    }
+        const $alert = $section.find('.alert');
+        $alert.text('').prop('hidden', true);
 
-                    const $caldavUsername = $container.find('#caldav-username');
-                    const caldavUsername = $caldavUsername.val();
+        const $caldavUrl = $('#caldav-url');
+        const caldavUrl = $caldavUrl.val();
 
-                    if (!caldavUsername) {
-                        $caldavUsername.addClass('is-invalid');
-                        return;
-                    }
+        if (!caldavUrl) {
+            $caldavUrl.addClass('is-invalid');
+            return;
+        }
 
-                    const $caldavPassword = $container.find('#caldav-password');
-                    const caldavPassword = $caldavPassword.val();
+        const $caldavUsername = $('#caldav-username');
+        const caldavUsername = $caldavUsername.val();
 
-                    if (!caldavPassword) {
-                        $caldavPassword.addClass('is-invalid');
-                        return;
-                    }
+        if (!caldavUsername) {
+            $caldavUsername.addClass('is-invalid');
+            return;
+        }
 
-                    App.Http.Caldav.connectToServer(providerId, caldavUrl, caldavUsername, caldavPassword).done(
-                        (response) => {
-                            if (!response.success) {
-                                $caldavUrl.addClass('is-invalid');
-                                $caldavUsername.addClass('is-invalid');
-                                $caldavPassword.addClass('is-invalid');
+        const $caldavPassword = $('#caldav-password');
+        const caldavPassword = $caldavPassword.val();
 
-                                $alert.text(lang('login_failed') + ' ' + response.message).prop('hidden', false);
+        if (!caldavPassword) {
+            $caldavPassword.addClass('is-invalid');
+            return;
+        }
 
-                                return;
-                            }
+        App.Http.Caldav.connectToServer(providerId, caldavUrl, caldavUsername, caldavPassword).done((response) => {
+            if (!response.success) {
+                $caldavUrl.addClass('is-invalid');
+                $caldavUsername.addClass('is-invalid');
+                $caldavPassword.addClass('is-invalid');
 
-                            const $selectedOption = $selectFilterItem().find('option:selected');
+                $alert.text(lang('login_failed') + ' ' + response.message).prop('hidden', false);
 
-                            $selectedOption.attr('caldav-sync', '1');
+                return;
+            }
 
-                            updateSyncButtons();
+            $selectFilterItem().find('option:selected').attr('caldav-sync', '1');
 
-                            App.Layouts.Backend.displayNotification(lang('sync_calendar_selected'));
+            updateSyncButtons();
 
-                            messageModal.hide();
-                        },
-                    );
-                },
-            },
-        ]);
+            App.Layouts.Backend.displayNotification(lang('sync_calendar_selected'));
 
-        $messageModal.find('.modal-body').append($container);
+            feedModal().hide();
+        });
     }
 
     function disableCaldavSync() {
-        App.Utils.Message.show(lang('disable_sync'), lang('disable_sync_prompt'), [
-            {
-                text: lang('cancel'),
-                click: (event, messageModal) => {
-                    messageModal.hide();
-                },
-            },
-            {
-                text: lang('confirm'),
-                click: (event, messageModal) => {
-                    // Disable synchronization for selected provider.
-                    const providerId = $selectFilterItem().val();
+        const provider = selectedProvider();
 
-                    const provider = vars('available_providers').find(
-                        (availableProvider) => Number(availableProvider.id) === Number(providerId),
-                    );
+        provider.settings.caldav_sync = '0';
+        provider.settings.caldav_url = null;
+        provider.settings.caldav_username = null;
+        provider.settings.caldav_password = null;
 
-                    if (!provider) {
-                        throw new Error('Provider not found: ' + providerId);
-                    }
+        App.Http.Caldav.disableProviderSync(provider.id);
 
-                    provider.settings.caldav_sync = '0';
-                    provider.settings.caldav_url = null;
-                    provider.settings.caldav_username = null;
-                    provider.settings.caldav_password = null;
+        $selectFilterItem().find('option:selected').attr('caldav-sync', '0');
 
-                    App.Http.Caldav.disableProviderSync(provider.id);
-
-                    const $selectedOption = $selectFilterItem().find('option:selected');
-
-                    $selectedOption.attr('caldav-sync', '0');
-
-                    updateSyncButtons();
-
-                    messageModal.hide();
-                },
-            },
-        ]);
+        updateSyncButtons();
     }
 
     function triggerCaldavSync() {
@@ -358,46 +292,39 @@ App.Utils.CalendarSync = (function () {
         updateSyncButtons();
     }
 
-    function onEnableSyncClick() {
-        const isGoogleSyncFeatureEnabled = vars('google_sync_feature');
-
-        if (!isGoogleSyncFeatureEnabled) {
-            enableCaldavSync();
+    function disableSync() {
+        if (hasSync('google')) {
+            disableGoogleSync();
             return;
         }
 
-        App.Utils.Message.show(lang('enable_sync'), lang('sync_method_prompt'), [
+        if (hasSync('caldav')) {
+            disableCaldavSync();
+        }
+    }
+
+    // The toolbar menu item asks first; the Enable Sync tab already shows the prompt.
+    function onDisableSyncClick() {
+        App.Utils.Message.show(lang('disable_sync'), lang('disable_sync_prompt'), [
             {
-                text: 'CalDAV Calendar',
-                className: 'btn btn-outline-primary me-auto',
+                text: lang('cancel'),
                 click: (event, messageModal) => {
                     messageModal.hide();
-                    enableCaldavSync();
                 },
             },
             {
-                text: 'Google Calendar',
+                text: lang('confirm'),
                 click: (event, messageModal) => {
+                    disableSync();
                     messageModal.hide();
-                    enableGoogleSync();
                 },
             },
         ]);
     }
 
-    function onDisableSyncClick() {
-        const hasGoogleSync = hasSync('google');
-
-        if (hasGoogleSync) {
-            disableGoogleSync();
-            return;
-        }
-
-        const hasCalSync = hasSync('caldav');
-
-        if (hasCalSync) {
-            disableCaldavSync();
-        }
+    function onDisableConfirmClick() {
+        disableSync();
+        feedModal().hide();
     }
 
     function onTriggerSyncClick() {
@@ -429,8 +356,13 @@ App.Utils.CalendarSync = (function () {
         }
 
         $selectFilterItem().on('change', onSelectFilterItemChange);
-        $enableSync().on('click', onEnableSyncClick);
         $disableSync().on('click', onDisableSyncClick);
+        $('#calendar-feed-modal').on('show.bs.modal', resetSyncPane);
+        $('#sync-method-caldav').on('click', enableCaldavSync);
+        $('#sync-method-google').on('click', enableGoogleSync);
+        $('#sync-caldav-connect').on('click', onCaldavConnectClick);
+        $('#sync-google-select').on('click', onGoogleSelectClick);
+        $('#sync-disable-confirm').on('click', onDisableConfirmClick);
         $triggerSync().on('click', onTriggerSyncClick);
         updateSyncButtons();
     }

@@ -32,11 +32,10 @@ class CalendarToolbarTest < ApplicationSystemTestCase
   test "on a laptop the Calendar actions sit in one row at the right of the filters" do
     visit calendar_url
     show_only_stylist("Zane")
-    assert_selector "#enable-sync", visible: true, wait: 5
     assert_selector "#calendar-feed svg[data-prefix=far][data-icon=calendar]", wait: 5
     boxes = page.evaluate_script(ACTION_BOXES)
 
-    assert_equal [ "Enable Sync", "Feed", "Add", "Refresh" ], boxes["buttons"].map { |b| b["text"] }
+    assert_equal [ "Feed", "Add", "Refresh" ], boxes["buttons"].map { |b| b["text"] }
     assert_one_row_at_right(boxes)
     assert_operator boxes["buttons"].first["left"], :>, boxes["filterRight"], "actions start right of the filters"
 
@@ -70,7 +69,7 @@ class CalendarToolbarTest < ApplicationSystemTestCase
     resize_window(400, 900)
     visit calendar_url
     show_only_stylist("Zane")
-    assert_selector "#enable-sync", visible: true, wait: 5
+    assert_selector "#calendar-feed", visible: true, wait: 5
     assert_rows_centred
 
     visit appointments_url
@@ -100,9 +99,9 @@ class CalendarToolbarTest < ApplicationSystemTestCase
     rows.each { |row| assert_in_delta row["left"], row["right"], 2, "row centred: #{row}" }
   end
 
-  # Synced stylists show Sync and its menu toggle in place of Enable Sync.
+  # Synced stylists show Sync and its menu toggle before Feed.
   def show_sync_button_group
-    page.execute_script("$('#enable-sync').prop('hidden', true); $('#sync-button-group').prop('hidden', false)")
+    page.execute_script("$('#sync-button-group').prop('hidden', false)")
   end
 
   def assert_one_row_at_right(boxes)
