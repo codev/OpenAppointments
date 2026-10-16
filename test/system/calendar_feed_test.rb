@@ -105,6 +105,7 @@ class CalendarFeedTest < ApplicationSystemTestCase
   def open_feed_dialog
     click_on I18n.t("ea.feed")
     assert_selector "#calendar-feed-modal.show", wait: 5
+    wait_for_modal
   end
 
   def stub_caldav
