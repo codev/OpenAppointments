@@ -803,6 +803,8 @@ en:
     messages_status_received: Received
     customer_messages: Messages
     send_message: Send
+    do_not_contact_hint: No booking confirmations, changes or reminders are sent to this customer
+    do_not_contact_warning: This customer has asked not to be contacted. Messages sent here are still delivered.
     select_one: Select One
     all_providers: All Providers
     message_sent: Message sent.

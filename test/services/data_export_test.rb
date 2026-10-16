@@ -42,8 +42,7 @@ class DataExportTest < ActiveSupport::TestCase
 
   test "extract reads the export back with the same shape the loader expects" do
     users(:jx).update!(custom_field_1: "they/them", custom_field_2: "Step-free access",
-                       city: "London", zip_code: "E1 6AN",
-                       notes: "#{TenToEight::Load::DO_NOT_CONTACT_PREFIX} vip")
+                       city: "London", zip_code: "E1 6AN", notes: "vip", do_not_contact: true)
     path = export_to_file
 
     data = OdsExtract.new(path, today: Date.new(2026, 7, 20), days_back: 30, days_forward: 30).call
@@ -79,7 +78,7 @@ class DataExportTest < ActiveSupport::TestCase
 
   test "reimporting an export after a reset restores field level detail" do
     services(:haircut).update!(price: 12.5, description: "A tidy trim", is_private: false)
-    users(:jx).update!(custom_field_1: "they/them", city: "London", zip_code: "E1 6AN")
+    users(:jx).update!(custom_field_1: "they/them", city: "London", zip_code: "E1 6AN", do_not_contact: true)
     original_plan = users(:zane).settings.working_plan
     original_start = appointments(:upcoming).start_datetime
     users(:zane).settings.update!(notifications: false, caldav_sync: true, caldav_url: "https://cal.example.org",
@@ -123,6 +122,7 @@ class DataExportTest < ActiveSupport::TestCase
     assert_equal "they/them", customer.custom_field_1
     assert_equal "London", customer.city
     assert_equal "E1 6AN", customer.zip_code
+    assert customer.do_not_contact
 
     provider = User.providers.find_by!(email: "zane@example.org")
     assert_equal JSON.parse(original_plan), JSON.parse(provider.settings.working_plan)

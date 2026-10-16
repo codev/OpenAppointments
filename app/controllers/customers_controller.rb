@@ -7,7 +7,7 @@ class CustomersController < ApplicationController
            save_webhook: Webhooks::CUSTOMER_SAVE, delete_webhook: Webhooks::CUSTOMER_DELETE,
            saved: "customer_saved", deleted: "customer_deleted" }.freeze
 
-  FIELDS = %i[name email phone_number address city state zip_code notes timezone language
+  FIELDS = %i[name email phone_number address city state zip_code notes do_not_contact timezone language
               custom_field_1 custom_field_2 custom_field_3 custom_field_4 custom_field_5 ldap_dn].freeze
 
   # Customers with an unread message first (the list shows their badge).

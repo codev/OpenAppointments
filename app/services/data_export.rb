@@ -95,11 +95,11 @@ module DataExport
   def customers_sheet
     rows = User.customers.order(:id).map do |customer|
       [ customer.id, customer.name, customer.email, customer.phone_number, customer.address,
-        customer.city, customer.zip_code, customer.notes, customer.custom_field_1,
-        customer.custom_field_2, customer.custom_field_3, customer.custom_field_4,
-        customer.custom_field_5, customer.language, customer.timezone ]
+        customer.city, customer.zip_code, customer.notes, customer.do_not_contact ? "1" : "0",
+        customer.custom_field_1, customer.custom_field_2, customer.custom_field_3,
+        customer.custom_field_4, customer.custom_field_5, customer.language, customer.timezone ]
     end
-    [ %w[id name email phone_number address city zip_code notes custom_field_1 custom_field_2
+    [ %w[id name email phone_number address city zip_code notes do_not_contact custom_field_1 custom_field_2
          custom_field_3 custom_field_4 custom_field_5 language timezone] ] + rows
   end
 

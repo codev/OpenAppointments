@@ -119,12 +119,16 @@ class NotificationsTest < ActiveSupport::TestCase
     assert_equal 2, Message.count
   end
 
-  test "do_not_contact customers are skipped" do
-    create_notification(audiences: %w[customer])
-    @customer.update!(notes: "do_not_contact=yes")
-    assert_no_enqueued_jobs only: MessageDeliveryJob do
-      Notifications.appointment_saved(@appointment, @service, @provider, @customer)
-    end
+  test "do not contact customers get no notifications while the stylist still does" do
+    create_notification(audiences: %w[customer provider])
+    create_notification(event: "coming_up", audiences: %w[customer], lead_days: 0, lead_hours: 24)
+    @customer.update!(do_not_contact: true)
+    @appointment.update!(start_datetime: Time.current + 2.hours, end_datetime: Time.current + 3.hours)
+
+    Notifications.appointment_saved(@appointment, @service, @provider, @customer)
+    Notifications.scan_coming_up
+
+    assert_equal %w[provider], Message.pluck(:audience)
   end
 
   test "sms channels use the short text and need a phone number" do

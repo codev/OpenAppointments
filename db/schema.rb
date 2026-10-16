@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_09_26_090000) do
+ActiveRecord::Schema[8.1].define(version: 2026_10_16_090000) do
   create_table "action_mailbox_inbound_emails", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.string "message_checksum", null: false
@@ -283,6 +283,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_26_090000) do
     t.text "custom_field_3"
     t.text "custom_field_4"
     t.text "custom_field_5"
+    t.boolean "do_not_contact", default: false, null: false
     t.string "email"
     t.integer "id_roles", null: false
     t.boolean "is_private", default: false

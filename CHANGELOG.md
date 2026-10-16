@@ -8,6 +8,7 @@ CloudronManifest.json.
 - List: Stylists and Services are tick-box dropdowns like Statuses, with All, Clear and Working Stylists; stylists do not see the Stylists dropdown
 - Calendar: separate Stylists and Services tick-box dropdowns, so several stylists or services can be shown together; the choice is remembered
 - Calendar and List: action buttons in one row at the right with short labels (Add, Refresh, Sync, Feed); on tablets they share the row with the filters
+- Customers: Do not contact tick box; ticked customers get no automatic notifications and their Messages tab shows a warning; the 10to8 import ticks it for customers who did not give consent
 
 ## 3.0.1
 

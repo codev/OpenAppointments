@@ -131,6 +131,27 @@ class CustomersTest < ActionDispatch::IntegrationTest
     assert_not User.exists?(pat.id)
   end
 
+  test "do not contact is saved from the details and warns on the messages section, which can still send" do
+    login_admin
+    jx = users(:jx)
+    get "/customers/#{jx.id}/messages"
+    assert_select "#do-not-contact-warning", count: 0
+
+    get "/customers/#{jx.id}/edit"
+    assert_select "input[type=checkbox][name='customer[do_not_contact]']:not([checked])"
+    patch "/customers/#{jx.id}", params: { customer: { do_not_contact: "1" } }
+    assert jx.reload.do_not_contact
+
+    get "/customers/#{jx.id}/edit"
+    assert_select "input[type=checkbox][name='customer[do_not_contact]'][checked]"
+    get "/customers/#{jx.id}/messages"
+    assert_select "#do-not-contact-warning", text: I18n.t("ea.do_not_contact_warning")
+    assert_select "#customer-message-composer #send-message"
+
+    patch "/customers/#{jx.id}", params: { customer: { do_not_contact: "0" } }
+    assert_not jx.reload.do_not_contact
+  end
+
   test "a blank name is refused" do
     login_admin
     post "/customers", params: { customer: { name: "", email: "x@example.org" } }
