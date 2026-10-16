@@ -245,3 +245,9 @@
         color: transparent;
     }
 }
+
+/* Terms and conditions and privacy policy modals - ensure readable font size */
+#terms-and-conditions-modal .modal-body,
+#privacy-policy-modal .modal-body {
+    font-size: 1.125rem;
+}
