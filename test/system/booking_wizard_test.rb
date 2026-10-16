@@ -175,7 +175,7 @@ class BookingWizardFlowTest < ApplicationSystemTestCase
     assert_equal "rescheduled", appointment.reload.appointment_status.kind
   end
 
-  test "cancelling from the reschedule link asks for a reason" do
+  test "cancelling from the reschedule link takes an optional reason" do
     date = working_day
     appointment = Appointment.create!(id_users_provider: users(:zane).id, id_users_customer: users(:jx).id,
                                       id_services: services(:haircut).id, start_datetime: date.to_time.change(hour: 14),
@@ -185,8 +185,7 @@ class BookingWizardFlowTest < ApplicationSystemTestCase
     assert_selector "#cancel-appointment", wait: 10
     find("#cancel-appointment").click
     wait_for_modal
-    find("#cancel-appointment-confirm").click # the reason is required
-    assert_selector "#cancel-appointment-modal.show"
+    assert_selector "#cancellation-reason:not([required])"
     fill_in "cancellation-reason", with: "Moving house"
     find("#cancel-appointment-confirm").click
     # Wait for the confirmation page rather than for the form to vanish: polling
