@@ -184,6 +184,14 @@ App.Pages.Booking = (function () {
         if ($('#altcha-widget').length && App.Utils.Altcha) {
             App.Utils.Altcha.initialize('altcha-widget');
         }
+
+        // Cloudflare's api.js renders only the widgets present when it loads; the
+        // final step arrives later in the frame, so render it here. A rendered
+        // widget has children (at least its hidden response input).
+        const turnstileWidget = document.querySelector('.cf-turnstile');
+        if (window.turnstile && turnstileWidget && !turnstileWidget.hasChildNodes()) {
+            window.turnstile.render(turnstileWidget);
+        }
     }
 
     // The header sits outside the frame: mirror #wizard-state into it.

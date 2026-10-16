@@ -461,4 +461,49 @@ class BookingWizardWindowTest < ApplicationSystemTestCase
     # The border should be a visible colour (not white)
     assert border_color != "rgb(255, 255, 255)", "Unchecked checkbox should have visible border, got: #{border_color}"
   end
+
+  # Cloudflare's api.js is blocked and replaced by a stub, so the test runs offline
+  # and shows whether the page itself renders the widget the frame brings in.
+  TURNSTILE_STUB = <<~JS.freeze
+    window.turnstile = {
+      render(element) {
+        const container = typeof element === 'string' ? document.querySelector(element) : element;
+        container.innerHTML = '<iframe class="turnstile-stub"></iframe>';
+        return 'stub';
+      }
+    };
+  JS
+
+  test "the Turnstile widget is rendered on the confirmation step before any submit" do
+    Setting.set("altcha_enabled", "1")
+    Setting.set("captcha_provider", "turnstile")
+    Setting.set("turnstile_site_key", "sitekey")
+    Setting.set("turnstile_secret_key", "secretkey")
+    browser = page.driver.browser
+    browser.execute_cdp("Network.enable")
+    browser.execute_cdp("Network.setBlockedURLs", urls: [ "*challenges.cloudflare.com*" ])
+    stub = browser.execute_cdp("Page.addScriptToEvaluateOnNewDocument", source: TURNSTILE_STUB)
+
+    date = working_day
+    visit root_url
+    assert_selector "#wizard-frame-1", visible: :visible, wait: 5
+    select services(:haircut).name, from: "select-service"
+    find("#button-next-1").click
+    select users(:zane).name, from: "select-provider"
+    find("#button-next-2").click
+    assert_selector "#wizard-frame-3", visible: :visible, wait: 5
+    find(".flatpickr-day[aria-label='#{date.strftime('%B %-d, %Y')}']", wait: 10).click
+    find("#available-hours .available-hour", text: /\A9:30 am\z/, wait: 10).click
+    find("#button-next-3").click
+    assert_selector "#wizard-frame-4", visible: :visible, wait: 5
+    fill_in "name", with: "Walk In"
+    fill_in "email", with: "walkin@example.org"
+    find("#button-next-4").click
+
+    assert_selector "#wizard-frame-5", visible: :visible, wait: 5
+    assert_selector "#wizard-frame-5 .cf-turnstile iframe", count: 1, wait: 5
+  ensure
+    browser.execute_cdp("Page.removeScriptToEvaluateOnNewDocument", identifier: stub["identifier"]) if stub
+    browser&.execute_cdp("Network.setBlockedURLs", urls: [])
+  end
 end
