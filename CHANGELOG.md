@@ -5,25 +5,12 @@ CloudronManifest.json.
 
 ## 3.1.0
 
-- Calendar and List: Stylists and Services are tick-box dropdowns like Statuses, with All, Clear and Working Stylists, so several stylists or services can be shown together; the Calendar remembers the choice; stylists do not see the Stylists dropdown
-- Calendar: appointments are filled with the stylist's colour and edged with the service colour, whoever is shown; the List edges them with the service colour; appointments no longer have a colour of their own
-- Colours: the stylist and service pickers offer fifteen colours sorted by hue, grey last
-- Calendar and List: the action buttons sit in one row at the right with short labels (Add, Refresh, Sync, Feed); on tablets they share the row with the filters
-- Calendar: one Feed button opens a dialog with Calendar Feed and Enable Sync tabs; the Enable Sync button is gone and the tab offers Disable Sync once sync is on
-- Customers: a Do not contact tick box; ticked customers get no automatic notifications and their Messages tab shows a warning; the 10to8 import ticks it for customers who did not give consent, and customers imported earlier with the note are ticked on upgrade
-- Booking: with Any Stylist chosen, the confirmation step names the stylist the booking will get
-- Booking: the confirmed page says "You're all set!", puts the calendar buttons first and hides "Powered by" when that switch is off
-- Booking: the pronoun and access needs answers are remembered with the other details when Remember me is ticked
-- Booking: the reason for cancelling is optional; a late cancellation still needs one
-- Booking: the terms and conditions text is larger and the tick box is visible before it is ticked
-- Booking: service, category and stylist pictures are kept by the browser for a year and no longer shift the page as they load
-- General Settings: Company Address, the location on calendar invites
-- Booking Settings: Appointments Include Locations and Appointments Include Meeting Links switches, both off by default; off, the appointment dialog has no Location or Meeting Link field and invites use the Company Address
-- Calendar invites: titled "Company: Service with Stylist", with no attendees or guests and no email addresses or phone numbers in the description
-- Repeating appointments are for admins and assistants: stylists see no Repeating Appointments button or repeat options, and can still cancel a single appointment of a series
-- Appointment form: a typed-in customer is matched by name plus email or phone, as online booking does, and only blank details are filled in
-- Messages: "incoming" and "outgoing" are now "receive" and "send" in the settings, badges and logs
-- Minor fixes include: the List arrows move by the number of days shown; the Cloudflare captcha appears on the confirmation step before Confirm is pressed; a cancel without a reason inside the late window goes to the late cancel page; appointments for a service a stylist no longer offers still show on the Calendar; the confirmed and cancelled pages link the legal notice
+- Calendar and List: Stylists and Services are tick-box dropdowns so several can be shown together; appointments get the stylist's colour edged with the service colour
+- Calendar: one Feed button covers Calendar Feed and Enable or Disable Sync
+- Customers: a Do not contact tick box that stops automatic notifications, set by the 10to8 import
+- Booking: the cancel reason is optional unless the cancellation is late; with Any Stylist the confirmation step names the stylist
+- Settings: Company Address for calendar invites, and switches to include Locations and Meeting Links on appointments, off by default
+- Repeating appointments are for admins and assistants only
 
 ## 3.0.1
 
