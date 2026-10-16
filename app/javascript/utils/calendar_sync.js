@@ -30,6 +30,7 @@ App.Utils.CalendarSync = (function () {
 
     const FILTER_TYPE_PROVIDER = 'provider';
     let isSyncing = false;
+    let choosingGoogleCalendar = false;
 
     function hasSync(type) {
         const $selectedOption = $selectFilterItem().find('option:selected');
@@ -62,9 +63,12 @@ App.Utils.CalendarSync = (function () {
         });
     }
 
-    // The Enable Sync tab's starting section for the stylist in focus.
+    // The Enable Sync tab's starting section for the stylist in focus. A Google
+    // calendar choice in progress is kept, the dialog may have closed during OAuth.
     function resetSyncPane() {
-        if (hasSync('google') || hasSync('caldav')) {
+        if (choosingGoogleCalendar) {
+            showSyncSection('sync-google-calendar');
+        } else if (hasSync('google') || hasSync('caldav')) {
             showSyncSection('sync-disable');
         } else if (vars('google_sync_feature')) {
             showSyncSection('sync-method');
@@ -100,7 +104,12 @@ App.Utils.CalendarSync = (function () {
 
             updateSyncButtons();
 
+            choosingGoogleCalendar = true;
             selectGoogleCalendar();
+            if (!$('#calendar-feed-modal').hasClass('show')) {
+                bootstrap.Tab.getOrCreateInstance(document.getElementById('calendar-sync-tab')).show();
+                feedModal().show();
+            }
         }
 
         window.addEventListener('message', onOauthMessage);
@@ -108,10 +117,7 @@ App.Utils.CalendarSync = (function () {
 
     function selectedProvider() {
         const providerId = $selectFilterItem().val();
-
-        const provider = vars('available_providers').find(
-            (availableProvider) => Number(availableProvider.id) === Number(providerId),
-        );
+        const provider = App.Utils.CalendarEvents.findProvider(providerId);
 
         if (!provider) {
             throw new Error('Provider not found: ' + providerId);
@@ -155,6 +161,7 @@ App.Utils.CalendarSync = (function () {
             App.Layouts.Backend.displayNotification(lang('sync_calendar_selected'));
         });
 
+        choosingGoogleCalendar = false;
         feedModal().hide();
     }
 
@@ -293,6 +300,7 @@ App.Utils.CalendarSync = (function () {
     }
 
     function disableSync() {
+        choosingGoogleCalendar = false;
         if (hasSync('google')) {
             disableGoogleSync();
             return;

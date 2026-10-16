@@ -116,11 +116,17 @@ App.Pages.Calendar = (function () {
             return;
         }
 
+        // The lists hold stylists with a service and services with a stylist:
+        // an event outside them (a service no longer offered) is always shown.
         const providers = tickedProviders();
         const services = TickFilter.selected('service-filter');
-        const shown = (providerId) => !providers || providers.includes(Number(providerId));
+        const listed = (rows, id) => rows.some((row) => Number(row.id) === Number(id));
+        const shown = (providerId) =>
+            !providers || !listed(vars('available_providers'), providerId) || providers.includes(Number(providerId));
+        const shownService = (serviceId) =>
+            !listed(vars('available_services'), serviceId) || services.includes(Number(serviceId));
         const appointments = App.Utils.StatusFilter.apply(lastResponse.appointments).filter(
-            (appointment) => shown(appointment.id_users_provider) && services.includes(Number(appointment.id_services)),
+            (appointment) => shown(appointment.id_users_provider) && shownService(appointment.id_services),
         );
         const focus = focusProviderId();
 
@@ -200,7 +206,7 @@ App.Pages.Calendar = (function () {
 
     function addEventListeners() {
         $reloadAppointments().on('click', reload);
-        App.Utils.StatusFilter.onChange(reload);
+        App.Utils.StatusFilter.onChange(draw);
 
         // The focus select changes only from the ticks below, which then redraw.
         $selectFilterItem().on('change', () => {

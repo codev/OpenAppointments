@@ -179,6 +179,15 @@ class BookingFlowTest < ActionDispatch::IntegrationTest
     assert BookingWindows.late?(appointment, zone.parse("2026-07-20 09:01"))
   end
 
+  test "a cancel without a reason inside the late window goes to the late cancel page" do
+    appointment = appointments(:upcoming)
+    travel_to provider_zone.parse("2026-07-20 09:45") do
+      post "/booking_cancellation/of/#{appointment.booking_hash}", params: { cancellation_reason: "" }
+    end
+    assert_redirected_to "/booking/reschedule/#{appointment.booking_hash}"
+    assert_equal "Booked", appointment.reload.status
+  end
+
   test "customer cancel keeps the row as cancelled; inside the late window as late cancel" do
     appointment = appointments(:upcoming)
     travel_to Time.new(2026, 7, 10, 12, 0, 0) do
@@ -211,9 +220,9 @@ class BookingFlowTest < ActionDispatch::IntegrationTest
     appointment.update!(appointment_status: nil)
     travel_to provider_zone.parse("2026-07-20 09:45") do
       post "/booking_cancellation/late/#{appointment.booking_hash}", params: { cancellation_reason: "" }
-      assert_response :forbidden
+      assert_redirected_to "/booking/reschedule/#{appointment.booking_hash}"
       post "/booking_cancellation/of/#{appointment.booking_hash}", params: { cancellation_reason: "" }
-      assert_response :forbidden
+      assert_redirected_to "/booking/reschedule/#{appointment.booking_hash}"
     end
     assert_nil appointment.reload.appointment_status
   end

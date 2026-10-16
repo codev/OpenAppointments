@@ -95,4 +95,18 @@ class CalendarLoadingTest < ApplicationSystemTestCase
     show_only_stylist("Zane")
     assert_event_style "Trim Cut", fill: tint("#228833"), border: rgb("#eb8687")
   end
+
+  test "appointments for a service or stylist outside the filter lists still show" do
+    retired = Service.create!(name: "Retired Service", duration: 30, price: 10, color: "#e3e3e3")
+    nolink = User.create!(name: "Nolink", email: "nolink@example.org", role: users(:zane).role, timezone: "Europe/London")
+    nolink.create_settings!(username: "nolink", password: Passwords.hash("nolinkpass1"), working_plan: user_settings(:zane).working_plan)
+    Appointment.create!(provider: users(:zane), customer: users(:jx), service: retired,
+                        start_datetime: soon, end_datetime: soon + 30.minutes, appointment_status: AppointmentStatus.of("booked"))
+    Appointment.create!(provider: nolink, customer: users(:jx), service: retired,
+                        start_datetime: soon + 1.hour, end_datetime: soon + 90.minutes, appointment_status: AppointmentStatus.of("booked"))
+    login_as_admin
+    page.execute_script("window.localStorage.removeItem('OpenAppointments.CalendarFilter')")
+    visit "/calendar"
+    assert_selector "#calendar .fc-event", text: "Retired Service", count: 2, wait: 5
+  end
 end

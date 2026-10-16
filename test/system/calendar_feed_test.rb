@@ -116,4 +116,32 @@ class CalendarFeedTest < ApplicationSystemTestCase
       App.Http.Caldav.disableProviderSync = (providerId) => { window.caldavDisabled = providerId; };
     JS
   end
+
+  test "the Google calendar choice comes back when the dialog was closed during OAuth" do
+    Setting.set("google_sync_feature", "1")
+    open_calendar
+    show_only_stylist("Zane")
+    page.execute_script(<<~JS)
+      window.open = () => null;
+      App.Http.Google.getGoogleCalendars = () => $.Deferred().resolve([{ id: 'work', summary: 'Work' }]).promise();
+      App.Http.Google.selectGoogleCalendar = (providerId, calendarId) => {
+        window.googleSelected = [providerId, calendarId];
+        return $.Deferred().resolve().promise();
+      };
+    JS
+    open_feed_dialog
+    within("#calendar-feed-modal") do
+      click_on I18n.t("ea.enable_sync")
+      click_on "Google Calendar"
+    end
+    page.execute_script("bootstrap.Modal.getInstance(document.getElementById('calendar-feed-modal')).hide()")
+    assert_no_selector "#calendar-feed-modal", visible: true, wait: 5
+    page.execute_script("window.postMessage('oauth_success', window.location.origin)")
+    within("#calendar-feed-modal") do
+      assert_text I18n.t("ea.select_sync_calendar_prompt"), wait: 5
+      select "Work", from: I18n.t("ea.select_sync_calendar")
+      click_on I18n.t("ea.select")
+    end
+    assert_equal [ users(:zane).id.to_s, "work" ], page.evaluate_script("window.googleSelected")
+  end
 end

@@ -33,8 +33,11 @@ module IcsFile
   end
 
   # The appointment's own location, else the service location, else the
-  # company address.
+  # company address; the company address alone when appointments have no
+  # locations of their own (the Appointments Include Locations switch).
   def location_for(appointment, service)
+    return Setting.get("company_address").presence unless Setting.get("appointments_include_locations", "0") == "1"
+
     [ appointment&.location, service&.location, Setting.get("company_address") ].find(&:present?)
   end
 

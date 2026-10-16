@@ -80,6 +80,7 @@ class BookingConfirmationTest < ActionDispatch::IntegrationTest
     appointment = appointments(:upcoming)
     appointment.update!(location: "Pop-up shop")
     Setting.set("company_address", "1 High Street, London")
+    Setting.set("appointments_include_locations", "1")
 
     get "/booking_confirmation/of/#{appointment.booking_hash}"
 

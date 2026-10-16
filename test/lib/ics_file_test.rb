@@ -11,6 +11,7 @@ class IcsFileTest < ActiveSupport::TestCase
   setup do
     @appointment = appointments(:upcoming)
     Setting.set("company_address", "1 High Street, London")
+    Setting.set("appointments_include_locations", "1")
   end
 
   test "the appointment location comes first" do
@@ -18,6 +19,14 @@ class IcsFileTest < ActiveSupport::TestCase
     @appointment.service.update!(location: "Salon")
 
     assert_equal "Pop-up shop", location_line(@appointment)
+  end
+
+  test "with Appointments Include Locations off the company address is used even when the appointment has one" do
+    Setting.set("appointments_include_locations", "0")
+    @appointment.update!(location: "Pop-up shop")
+    @appointment.service.update!(location: "Salon")
+
+    assert_equal "1 High Street, London", location_line(@appointment)
   end
 
   test "the service location is used when the appointment has none" do

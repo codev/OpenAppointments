@@ -23,7 +23,9 @@ CloudronManifest.json.
 - Booking: the reason for cancelling an appointment is optional; late cancellations still require one
 - Repeating appointments are for admins and assistants: stylists no longer see the Repeating Appointments button or repeat options, but can still cancel a single appointment of a series
 - Calendar: appointments are filled with the stylist's colour and edged with the service colour; the List edges them with the service colour; appointments no longer have a colour of their own
-- Colours: the stylist and service colour pickers offer fifteen distinct colours
+- Colours: the stylist and service colour pickers offer fifteen distinct colours, sorted by hue with grey last
+- Customers imported with the do-not-contact note before the tick box existed are ticked on upgrade
+- Calendar: appointments for a service a stylist no longer offers, or for a stylist with no services, are still shown
 
 ## 3.0.1
 

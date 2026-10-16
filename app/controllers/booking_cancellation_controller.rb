@@ -35,7 +35,8 @@ class BookingCancellationController < ApplicationController
     return render_appointment_not_found if appointment.frees_slot?
 
     kind = "late_cancel" if BookingWindows.late?(appointment)
-    return head :forbidden if kind == "late_cancel" && cancellation_reason.empty?
+    # The late cancel page asks for the reason the normal modal left optional.
+    return redirect_to "/booking/reschedule/#{appointment_hash}" if kind == "late_cancel" && cancellation_reason.empty?
 
     provider = appointment.provider
     customer = appointment.customer
