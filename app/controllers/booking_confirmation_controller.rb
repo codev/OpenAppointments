@@ -46,7 +46,7 @@ class BookingConfirmationController < ApplicationController
       action: "TEMPLATE",
       text: appointment.service&.name,
       dates: dates,
-      location: Setting.get("company_name"),
+      location: IcsFile.location_for(appointment, appointment.service),
       details: "View/Change Appointment: #{request.base_url}/booking/reschedule/#{appointment.booking_hash}"
     )
 

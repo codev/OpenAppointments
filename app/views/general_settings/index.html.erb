@@ -32,6 +32,18 @@
                                 <%= settings_flash %>
 
                                 <div class="mb-3">
+                                    <label class="form-label" for="company-address">
+                                        <%= lang('company_address') %>
+                                    </label>
+                                    <%= setting_text "company_address" %>
+                                    <div class="form-text text-muted">
+                                        <small>
+                                            <%= lang('company_address_hint') %>
+                                        </small>
+                                    </div>
+                                </div>
+
+                                <div class="mb-3">
                                     <label class="form-label" for="company-email">
                                         <%= lang('company_email') %>
                                         <span class="text-danger">*</span>

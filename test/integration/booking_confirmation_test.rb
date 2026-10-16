@@ -52,6 +52,27 @@ class BookingConfirmationTest < ActionDispatch::IntegrationTest
     assert_select "#message-frame a[href='https://example.org/legal']"
   end
 
+  test "the Google Calendar link uses the company address when no location is set" do
+    appointment = appointments(:upcoming)
+    appointment.update!(location: "")
+    appointment.service.update!(location: "")
+    Setting.set("company_address", "1 High Street, London")
+
+    get "/booking_confirmation/of/#{appointment.booking_hash}"
+
+    assert_select "a[href*='calendar.google.com'][href*=?]", CGI.escape("1 High Street, London").gsub("%20", "+")
+  end
+
+  test "the Google Calendar link prefers the appointment location" do
+    appointment = appointments(:upcoming)
+    appointment.update!(location: "Pop-up shop")
+    Setting.set("company_address", "1 High Street, London")
+
+    get "/booking_confirmation/of/#{appointment.booking_hash}"
+
+    assert_select "a[href*='calendar.google.com'][href*=?]", "location=Pop-up+shop"
+  end
+
   test "the ics endpoint streams the appointment calendar" do
     get "/booking_confirmation/ics/#{appointments(:upcoming).booking_hash}"
     assert_response :success

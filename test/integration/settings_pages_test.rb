@@ -150,6 +150,17 @@ class SettingsPagesTest < ActionDispatch::IntegrationTest
     assert_equal "", Setting.get("messages_intercept_phone").to_s
   end
 
+  test "general settings shows and saves the company address" do
+    login_admin
+    get "/general_settings"
+    assert_select "#company-address[name='settings[company_address]']"
+    assert_select "label[for='company-address']", text: /Company Address/
+    assert_select "#company-address ~ .form-text", text: /default location for all bookings and calendar invites/
+
+    post "/general_settings/save", params: { settings: { company_address: "1 High Street, London" } }
+    assert_equal "1 High Street, London", Setting.get("company_address")
+  end
+
   test "general settings save persists whitelisted settings" do
     login_admin
     post "/general_settings/save", params: { settings: { company_name: "Open Out", not_whitelisted: "ignored" } }

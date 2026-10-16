@@ -253,6 +253,8 @@ en:
     reset_working_plan_hint: Reset the working plan back to the default values.
     company_name: Company Name
     company_name_hint: Company name will be displayed everywhere on the system (required).
+    company_address: Company Address
+    company_address_hint: This will be the default location for all bookings and calendar invites
     company_email: Company Email
     company_email_hint: This will be the company email address. It will be used as the sender and the reply address of the system emails (required).
     company_link: Company Link

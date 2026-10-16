@@ -6,7 +6,7 @@ class GeneralSettingsController < ApplicationController
   layout "backend"
 
   ALLOWED_SETTINGS = %w[
-    company_name company_email company_link company_logo
+    company_name company_address company_email company_link company_logo
     company_working_plan book_advance_timeout default_timezone timezone_support default_language default_country_code
     date_format date_display time_format first_weekday require_phone_number
     display_booking_notice_time_step display_booking_notice_info_step booking_notice_content

@@ -33,6 +33,7 @@ disable_booking_message =
 settings = {
   # Company (installer overrides these)
   "company_name" => "Company Name",
+  "company_address" => "",
   "company_email" => "info@example.org",
   "company_link" => "https://example.org",
   "company_logo" => "",

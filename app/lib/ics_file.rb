@@ -15,7 +15,8 @@ module IcsFile
       event.summary = service&.name.to_s
       event.uid = appointment.id_caldav_calendar.presence || uid_for(appointment.id)
       event.sequence = sequence_for(appointment.updated_at)
-      event.location = service.location if service&.location.present?
+      location = location_for(appointment, service)
+      event.location = location if location.present?
       event.description = description_for(appointment, provider, customer)
 
       if customer&.email.present?
@@ -42,6 +43,12 @@ module IcsFile
     end
 
     calendar.to_ical
+  end
+
+  # The appointment's own location, else the service location, else the
+  # company address.
+  def location_for(appointment, service)
+    [ appointment&.location, service&.location, Setting.get("company_address") ].find(&:present?)
   end
 
   def uid_for(appointment_id)
