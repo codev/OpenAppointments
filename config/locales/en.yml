@@ -702,29 +702,29 @@ en:
     messages_enabled_hint: Globally turn all notifications on or off
     messages_enabled_on: "On"
     messages_enabled_off: Off - Password reset emails will still be sent
-    messages_enabled_debug: Debug - Redirect all outgoing emails and messages
-    messages_intercept_hint: Every outgoing email goes to this address and every SMS to this number while Debug is selected.
+    messages_enabled_debug: Debug - Redirect all sent emails and messages
+    messages_intercept_hint: Every email sent goes to this address and every SMS to this number while Debug is selected.
     messages_intercept_required: Debug needs a valid email address and phone number to redirect to.
     messages_retention_days: Delete messages older than (days)
     messages_retention_days_hint: Messages older than this many days are deleted automatically. Set 0 to keep all messages.
-    messages_email_subject: Outgoing Email Subject Line
+    messages_email_subject: Email Subject Line
     messages_email_subject_hint: Used for emails without their own Short Text, and for messages sent from the customer page.
     messages_providers_info: Notification providers deliver your notifications by email or SMS. Configure at least one provider and tick it inside each notification template.
     messages_provider_disabled: Disabled
-    messages_provider_outgoing: Outgoing
-    messages_provider_incoming_outgoing: Incoming and outgoing
+    messages_provider_outgoing: Send only
+    messages_provider_incoming_outgoing: Send and receive
     messages_provider_email_info: Send notifications by email through the server or SMTP, and receive replies through the server or IMAP.
     messages_provider_twilio_info: Send and receive SMS with a Twilio account and phone number.
     messages_provider_plivo_info: Send and receive SMS with a Plivo account and phone number.
     messages_provider_textanywhere_info: Send and receive SMS with a TextAnywhere account.
-    messages_incoming: Incoming
-    messages_incoming_hint: Customer can reply to support incoming messages as well as outgoing ones.
+    messages_incoming: Receive replies
+    messages_incoming_hint: Customers can reply to the messages you send.
     messages_test_sms_sent: "Test SMS sent, check the phone."
     messages_test_sms_number: "Test phone number"
     messages_test_sms: "Send Test SMS"
     messages_smsgateway_invalid: "Could not validate the gateway settings:"
-    messages_smsgateway_inbound_hint: "The phone delivers incoming messages to this address, registration is handled automatically when saving with incoming turned on."
-    messages_smsgateway_step_activate: "Tick Active and Receive incoming messages, then Save. The settings are tested, fix any errors and use the Send Test SMS button below to test sending."
+    messages_smsgateway_inbound_hint: "The phone delivers received messages to this address, registration is handled automatically when saving with receiving turned on."
+    messages_smsgateway_step_activate: "Tick Active and Receive replies, then Save. The settings are tested, fix any errors and use the Send Test SMS button below to test sending."
     messages_smsgateway_step_signing: "Go to the app's Settings -> Webhooks -> Signing Key -> Enter a signing key then copy it into Webhook Signing Key below."
     messages_smsgateway_step_credentials: "On the Home screen of the app turn off Local server and turn on Cloud server and click the Offline button to connect (also tick Start on boot so it runs every time the phone restarts) and copy the username and password shown on the app's home screen into Username and Password below."
     messages_smsgateway_step_token: "If you are using a private server you must also enter the Private Token on this Settings screen - the token is in /app/data/private_token on the gateway server."
@@ -745,14 +745,14 @@ en:
     messages_smsgateway_password: "Password"
     messages_smsgateway_signing_key: "Webhook Signing Key"
     messages_provider_smsgateway_info: "Sends and receives SMS through an Android phone running the SMS Gateway app against our own server, no per-message costs."
-    messages_email_outgoing: Outgoing email
+    messages_email_outgoing: Send email
     messages_email_mode: Sending method
     messages_email_mode_server: Send email through server
     messages_email_mode_smtp: Send email with SMTP
     messages_smtp_host: SMTP host
     messages_smtp_port: SMTP port
     messages_smtp_tls: Use TLS
-    messages_email_incoming_section: Incoming email
+    messages_email_incoming_section: Receive email
     messages_email_incoming_mode: Receiving method
     messages_email_incoming_server: Receive email through server
     messages_email_incoming_imap: Receive email with IMAP
@@ -761,8 +761,8 @@ en:
     messages_imap_port: IMAP port
     messages_email_credentials_hint: "Need an email delivery service? Get SMTP credentials from"
     messages_sms_credentials_hint: "Get your credentials from the provider console:"
-    messages_inbound_webhook: Incoming webhook URL
-    messages_inbound_webhook_hint: Paste this URL into the provider console so incoming messages reach the app. Keep it secret.
+    messages_inbound_webhook: Webhook URL for received messages
+    messages_inbound_webhook_hint: Paste this URL into the provider console so received messages reach the app. Keep it secret.
     messages_twilio_account_sid: Account SID
     messages_twilio_auth_token: Auth token
     messages_from_number: From phone number
@@ -800,8 +800,8 @@ en:
     open_all_notification_templates: Open all notification templates
     close_all_notification_templates: Close all notification templates
     messages_address: Address
-    messages_incoming_label: Incoming
-    messages_outgoing_label: Outgoing
+    messages_incoming_label: Received
+    messages_outgoing_label: Sent
     messages_manual_label: Manual
     messages_unknown_sender: Unknown sender
     messages_status_sent: Sent
@@ -912,8 +912,8 @@ en:
     filter_statuses_hint: 'Choose which appointment statuses to show.'
     appointment_statuses: 'Appointment Statuses'
     inbox: 'Inbox'
-    inbox_hint: 'Incoming messages from your customers.'
-    inbox_info: "Incoming messages. Inbox lists messages to act on, mark each one done once it has been dealt with or read - you can still read them on the customer's page or in the archive. Archive lists messages that have been marked as done - it has an undo button to return them to the inbox."
+    inbox_hint: 'Messages received from your customers.'
+    inbox_info: "Received messages. Inbox lists messages to act on, mark each one done once it has been dealt with or read - you can still read them on the customer's page or in the archive. Archive lists messages that have been marked as done - it has an undo button to return them to the inbox."
     inbox_done: "Done"
     inbox_filter_archive: "Archive"
     inbox_done_by: "Done by {name} {time}"

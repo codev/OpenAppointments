@@ -118,7 +118,7 @@ class SettingsPagesTest < ActionDispatch::IntegrationTest
     assert_select "[data-visible-when='messages_enabled=debug']" do
       assert_select "input[name='settings[messages_intercept_email]'][value='dev@example.org'][data-enabled-when='messages_enabled=debug']"
       assert_select "input[name='settings[messages_intercept_phone]'][value='+447700900123'][data-enabled-when='messages_enabled=debug']"
-      assert_select "small", text: /Every outgoing email/
+      assert_select "small", text: /Every email sent/
     end
   end
 
