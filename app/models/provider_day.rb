@@ -51,7 +51,7 @@ class ProviderDay
       name = appointment.customer&.name
       Entry.new(kind: appointment.frees_slot? ? "freed" : "appointment", start: appointment.start_datetime,
                 end: appointment.end_datetime, title: name.present? ? "#{name} - #{detail}" : detail,
-                color: appointment.color, record: appointment)
+                color: appointment.service&.color, record: appointment)
     end
   end
 

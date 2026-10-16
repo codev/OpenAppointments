@@ -41,4 +41,58 @@ class CalendarLoadingTest < ApplicationSystemTestCase
                  .reject { |m| m.include?("404") }
     assert_empty errors
   end
+
+  # Stored times are the stylist's wall clock and the browser runs in London.
+  def soon
+    now = Time.now.in_time_zone(BROWSER_TIMEZONE)
+    Time.at((Time.new(now.year, now.month, now.day, now.hour, now.min, 0).to_i / 900 + 2) * 900)
+  end
+
+  # The opaque tint calendar_events.js mixes from a hex colour.
+  def tint(hex)
+    "rgb(#{hex.delete('#').scan(/../).map { |c| (255 - (255 - c.to_i(16)) * 0.28).round }.join(', ')})"
+  end
+
+  def rgb(hex) = "rgb(#{hex.delete('#').scan(/../).map { |c| c.to_i(16) }.join(', ')})"
+
+  def event_style(title)
+    page.evaluate_script(<<~JS, title)
+      (() => {
+          const event = [...document.querySelectorAll('#calendar .fc-event')].find((e) => e.textContent.includes(arguments[0]));
+          if (!event) return null;
+          const style = getComputedStyle(event);
+          return { fill: style.backgroundColor, border: style.borderLeftColor, edge: style.borderLeftStyle };
+      })()
+    JS
+  end
+
+  def assert_event_style(title, fill:, border:)
+    page.document.synchronize(10) do
+      style = event_style(title)
+      raise Capybara::ExpectationNotMet, "#{title}: #{style.inspect}" unless style == { "fill" => fill, "border" => border, "edge" => "solid" }
+    end
+  end
+
+  test "events are filled with the stylist colour and edged with the service colour, one stylist or many" do
+    riley = User.create!(name: "Riley", email: "riley@example.org", role: users(:zane).role, timezone: "Europe/London")
+    riley.create_settings!(username: "riley", password: Passwords.hash("rileypass1"), working_plan: user_settings(:zane).working_plan)
+    ServiceProviderLink.create!(id_users: riley.id, id_services: services(:group_session).id)
+    users(:zane).update!(color: "#228833")
+    services(:haircut).update!(color: "#eb8687")
+    services(:group_session).update!(color: "#f3bc7d")
+    Appointment.create!(provider: users(:zane), customer: users(:jx), service: services(:haircut), color: "#abe9a4",
+                        start_datetime: soon, end_datetime: soon + 30.minutes, appointment_status: AppointmentStatus.of("booked"))
+    Appointment.create!(provider: riley, customer: users(:jx), service: services(:group_session), color: "#abe9a4",
+                        start_datetime: soon, end_datetime: soon + 30.minutes, appointment_status: AppointmentStatus.of("booked"))
+    login_as_admin
+    page.execute_script("window.localStorage.removeItem('OpenAppointments.CalendarFilter')")
+    visit "/calendar"
+    assert_event_style "Trim Cut", fill: tint("#228833"), border: rgb("#eb8687")
+    # A stylist with no colour of their own takes the palette's first.
+    assert_event_style "Group Session", fill: tint("#7cbae8"), border: rgb("#f3bc7d")
+    assert_selector "#calendar-legend .legend-swatch", count: 2
+
+    show_only_stylist("Zane")
+    assert_event_style "Trim Cut", fill: tint("#228833"), border: rgb("#eb8687")
+  end
 end

@@ -53,19 +53,17 @@ App.Pages.Calendar = (function () {
         return true;
     }
 
-    // Several stylists' appointments are coloured by stylist; the legend names the ticked ones.
+    // With several stylists shown the legend names the ticked ones by their fill colour.
     function renderLegend() {
         const $legend = $('#calendar-legend');
         const ticked = tickedProviders();
         const providers = isProviderFilter()
             ? []
-            : vars('available_providers').filter(
-                  (provider) => provider.color && (!ticked || ticked.includes(Number(provider.id))),
-              );
+            : vars('available_providers').filter((provider) => !ticked || ticked.includes(Number(provider.id)));
         $legend.empty().prop('hidden', providers.length === 0);
         providers.forEach((provider) => {
             $('<span/>')
-                .append($('<i/>', {class: 'legend-swatch', css: {backgroundColor: provider.color}}))
+                .append($('<i/>', {class: 'legend-swatch', css: {backgroundColor: Events.providerColor(provider)}}))
                 .append(document.createTextNode(provider.name))
                 .appendTo($legend);
         });
@@ -129,12 +127,11 @@ App.Pages.Calendar = (function () {
         fullCalendar.getEventSources().forEach((source) => source.remove());
         renderLegend();
 
-        // One stylist: titled by service in the service colour. Several: coloured
-        // by stylist, titled by stylist when only one service is ticked.
+        // Filled with the stylist colour, edged with the service colour. Several
+        // stylists are titled by stylist when only one service is ticked.
         const appointmentEvents = Events.appointmentEvents(
             appointments,
             !focus && services.length === 1 ? 'provider' : 'service',
-            !focus,
         );
         const events = [
             ...appointmentEvents,

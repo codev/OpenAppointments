@@ -37,6 +37,16 @@ class AppointmentsPageTest < ActionDispatch::IntegrationTest
     assert_select "#not-working-notes div", count: 0
   end
 
+  test "an entry's left border is the service colour, never its own or the stylist's" do
+    services(:haircut).update!(color: "#eb8687")
+    users(:zane).update!(color: "#228833")
+    appointments(:upcoming).update!(color: "#abe9a4")
+    login_admin
+    get "/appointments", params: { date: "2026-07-20" }
+    assert_select "button.day-entry-appointment[style=?]", "border-left-color: #eb8687"
+    assert_no_match(/#228833|#abe9a4/, css_select("#day_view").to_html.gsub(/data-event="[^"]*"/, ""))
+  end
+
   test "a day off lists the provider as not working; three or seven days show that many columns" do
     login_admin
     get "/appointments", params: { date: "2026-07-19" }

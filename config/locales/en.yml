@@ -988,7 +988,7 @@ en:
     time_off_hint: "For part of a day off, enter the hours you are away. They are saved as a break on those dates."
     messages_sms_variation: "Vary each SMS"
     messages_sms_variation_hint: "Adds a short reference code to the end of every SMS so no two texts are the same, which some networks require."
-    provider_color_hint: "Used for this provider's appointments when the calendar shows everyone."
+    provider_color_hint: "Fills this provider's appointments on the calendar; the service color edges them."
     working_providers: "Working Providers"
     hidden_from_public: "Hidden From Public"
     slot_interval_hint: "How often start times are offered to customers. With 15, a 45 minute service can start at 9:00, 9:15, 9:30 and so on; with 60, at 9:00, 10:00, 11:00. It does not keep time free after the appointment: for that, make the service duration longer."

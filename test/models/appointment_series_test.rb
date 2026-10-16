@@ -35,6 +35,14 @@ class AppointmentSeriesTest < ActiveSupport::TestCase
     assert_equal series.id, first.series_id
   end
 
+  test "occurrences carry the service colour, not the series colour" do
+    services(:haircut).update!(color: "#eb8687")
+    series = build_series({ "rule" => rule("weekly"), "ends" => "never" })
+    series.update!(color: "#abe9a4")
+    series.materialise(now: TODAY)
+    assert_equal [ "#eb8687" ], series.appointments.distinct.pluck(:color)
+  end
+
   test "materialising again adds nothing and respects an end date and count" do
     series = build_series({ "rule" => rule("weekly"), "ends" => "after", "count" => 3 })
     series.materialise(now: TODAY)

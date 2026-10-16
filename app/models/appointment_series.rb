@@ -27,7 +27,7 @@ class AppointmentSeries < ApplicationRecord
       starts_on: starts_on, ends_on: repeat["ends"] == "on" ? Date.parse(repeat["ends_on"].to_s) : nil,
       start_time: appointment.start_datetime.strftime("%H:%M"), duration: appointment.duration_minutes,
       notes: appointment.notes, location: appointment.location, status: appointment.status,
-      color: appointment.color, created_by: created_by
+      created_by: created_by
     )
     appointment.update!(series_id: series.id, occurrence_at: starts_on)
     series.materialise(now: starts_on).merge(series: series)
@@ -143,7 +143,7 @@ class AppointmentSeries < ApplicationRecord
         id_users_provider: id_users_provider, id_users_customer: id_users_customer, id_services: id_services,
         start_datetime: starts_at(date), end_datetime: starts_at(date) + duration * 60,
         notes: notes, location: location.to_s, appointment_status: AppointmentStatus.of("booked"),
-        color: color.presence || "#7cbae8", book_datetime: Time.now, occurrence_at: date
+        color: service.color, book_datetime: Time.now, occurrence_at: date
       )
       created << date
     end

@@ -40,7 +40,7 @@ class EventFormsTest < ActionDispatch::IntegrationTest
         assert_select "#select-provider option[value=?][data-services]", users(:zane).id.to_s
         assert_select "#appointment-repeat .repeat-fields"
         assert_select "#existing-customers-list div[data-id=?][data-customer]", users(:jx).id.to_s
-        assert_select "input[type=hidden][name='appointment[color]']"
+        assert_select "[name='appointment[color]'], .color-selection, #select-service[data-colors]", count: 0
         assert_select "#notify-users[type=hidden]"
       end
     end
@@ -82,7 +82,7 @@ class EventFormsTest < ActionDispatch::IntegrationTest
     login_admin
     post "/appointments", params: {
       notify_users: "0",
-      appointment: { id_services: services(:haircut).id, id_users_provider: users(:zane).id, color: "#eb8687",
+      appointment: { id_services: services(:haircut).id, id_users_provider: users(:zane).id,
                      status: "Booked", start_datetime: "21/07/2026 2:00 pm", end_datetime: "21/07/2026 2:30 pm", notes: "Fringe" },
       customer: { name: "JX", email: "j@example.org", language: "english", timezone: "UTC" }
     }
@@ -91,7 +91,6 @@ class EventFormsTest < ActionDispatch::IntegrationTest
     appointment = Appointment.find_by!(notes: "Fringe")
     assert_equal users(:jx).id, appointment.id_users_customer
     assert_equal "2026-07-21 14:00", appointment.start_datetime.strftime("%F %H:%M")
-    assert_equal "#eb8687", appointment.color
   end
 
   test "a clash re-renders the form with the message and a force save field; saving again forces" do
