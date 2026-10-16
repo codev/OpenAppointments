@@ -65,7 +65,9 @@ module EventSaving
     { appointment: appointment, skipped: skipped }
   end
 
-  # The appointment's customer: an existing record by id or email, else a new one.
+  # The appointment's customer: the record picked by id (all fields saved), else
+  # the one public booking would match by name plus email or phone (only blank
+  # fields filled in), else a new one.
   def store_customer(customer_data)
     return nil if customer_data.blank?
 
@@ -74,10 +76,14 @@ module EventSaving
     end
 
     customer_params = customer_data.slice(*CUSTOMER_FIELDS)
-    existing = customer_params["id"].presence && User.customers.find_by(id: customer_params["id"])
-    existing ||= customer_params["email"].presence && User.customers.find_by(email: customer_params["email"])
-    customer = existing || User.new(role: Role.find_by!(slug: Role::CUSTOMER))
-    customer.assign_attributes(customer_params.except("id"))
+    details = customer_params.except("id")
+    customer = customer_params["id"].presence && User.customers.find_by(id: customer_params["id"])
+    unless customer
+      customer = User.customer_for_booking(email: details["email"], phone: details["phone_number"], name: details["name"])
+      details = details.compact_blank.select { |field, _| customer[field].blank? } if customer
+    end
+    customer ||= User.new(role: Role.find_by!(slug: Role::CUSTOMER))
+    customer.assign_attributes(details)
     customer.save!
     customer.id
   end

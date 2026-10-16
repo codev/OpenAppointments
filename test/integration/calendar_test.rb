@@ -126,6 +126,51 @@ class CalendarTest < ActionDispatch::IntegrationTest
     assert_equal true, response.parsed_body["success"]
   end
 
+  def save_typed_customer(customer_data)
+    post "/calendar/save_appointment", params: {
+      customer_data: customer_data,
+      appointment_data: { start_datetime: "2026-07-21 09:00:00", end_datetime: "2026-07-21 09:30:00",
+                          id_users_provider: users(:zane).id, id_services: services(:haircut).id,
+                          status: "Booked" }
+    }
+    assert_equal true, response.parsed_body["success"]
+    Appointment.appointments.order(:id).last
+  end
+
+  test "save_appointment reuses a customer with the same name and phone" do
+    login_admin
+    assert_no_difference "User.customers.count" do
+      appointment = save_typed_customer(name: "jx", phone_number: "07700 900321")
+      assert_equal users(:jx).id, appointment.id_users_customer
+    end
+  end
+
+  test "save_appointment gives a different name on the same contact its own record" do
+    login_admin
+    assert_difference "User.customers.count", 1 do
+      appointment = save_typed_customer(name: "JX Partner", phone_number: "+447700900321")
+      assert_not_equal users(:jx).id, appointment.id_users_customer
+    end
+  end
+
+  test "save_appointment gives a different name on the same email its own record" do
+    login_admin
+    assert_difference "User.customers.count", 1 do
+      appointment = save_typed_customer(name: "Someone Else", email: "j@example.org")
+      assert_not_equal users(:jx).id, appointment.id_users_customer
+    end
+  end
+
+  test "save_appointment keeps the phone a matched customer already has" do
+    login_admin
+    appointment = save_typed_customer(name: "JX", email: "j@example.org", phone_number: "+447700900555",
+                                      city: "Leeds")
+    jx = users(:jx).reload
+    assert_equal jx.id, appointment.id_users_customer
+    assert_equal "+447700900321", jx.phone_number
+    assert_equal "Leeds", jx.city
+  end
+
   test "save_appointment reports conflicts unless forced" do
     login_admin
     conflicting = { start_datetime: "2026-07-20 10:15:00", end_datetime: "2026-07-20 10:45:00",

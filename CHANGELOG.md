@@ -10,6 +10,7 @@ CloudronManifest.json.
 - Calendar and List: action buttons in one row at the right with short labels (Add, Refresh, Sync, Feed); on tablets they share the row with the filters
 - Customers: Do not contact tick box; ticked customers get no automatic notifications and their Messages tab shows a warning; the 10to8 import ticks it for customers who did not give consent
 - Booking: the pronoun and access needs answers are remembered with the other details when Remember me is ticked
+- Appointment form: a typed-in customer is matched by name plus email or phone like online booking, and a match only has blank details filled in
 - Booking: with Any Stylist, the confirmation step and the header name the stylist the booking will get
 - General Settings: Company Address, the default location for bookings and calendar invites when a service or appointment has no location
 - Booking Settings: Appointments Include Locations switch, off by default; when off the appointment dialog has no Location field and invites use the Company Address
