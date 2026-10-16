@@ -73,6 +73,29 @@ class BookingCardsTest < ActionDispatch::IntegrationTest
     assert_select ".service-cards .booking-card img.card-img-top[src=?]", zoomed_path
   end
 
+  test "variant pictures carry width and height and are served with a long cache" do
+    Setting.set("booking_display_mode", "cards")
+    PictureVariants.attach(services(:haircut), file_fixture("picture.png").to_s,
+                           filename: "picture.png", content_type: "image/png")
+    get "/"
+    size = PictureVariants::SIZE.to_s
+    assert_select ".service-cards .booking-card img.card-img-top[width=?][height=?]", size, size
+    src = css_select(".service-cards .booking-card img.card-img-top").first["src"]
+
+    get src
+    assert_response :success
+    assert_match(/max-age=31556952/, response.headers["Cache-Control"])
+    assert_match(/immutable/, response.headers["Cache-Control"])
+  end
+
+  test "an original picture without variants has no fixed dimensions" do
+    Setting.set("booking_display_mode", "cards")
+    services(:haircut).picture.attach(file_fixture_upload("picture.png", "image/png"))
+    get "/"
+    assert_select ".service-cards .booking-card img.card-img-top[width]", count: 0
+    assert_select ".service-cards .booking-card img.card-img-top", minimum: 1
+  end
+
   test "the booking settings page offers the three picture style selects" do
     post "/login/validate", params: { username: "administrator", password: "administrator1" }
     get "/booking_settings"

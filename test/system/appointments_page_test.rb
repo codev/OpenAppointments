@@ -107,6 +107,70 @@ class AppointmentsPageTest < ApplicationSystemTestCase
       end
     end
   end
+
+  def column_ids
+    all(".provider-column").map { |column| column["data-provider-id"].to_i }
+  end
+
+  test "the stylist dropdown: Working by default, a ticked stylist replaces it, All and Clear, menu stays open" do
+    riley = User.create!(name: "Riley", email: "riley@example.org", role: users(:zane).role, timezone: "Europe/London")
+    riley.create_settings!(username: "riley", password: Passwords.hash("rileypass1"), working_plan: user_settings(:zane).working_plan)
+    ServiceProviderLink.create!(id_users: riley.id, id_services: services(:haircut).id)
+    zane = users(:zane)
+    visit appointments_url(date: @date)
+    assert_selector ".provider-column", count: 2, wait: 5
+
+    find("#provider-filter .dropdown-toggle").click
+    within("#provider-filter") do
+      assert_selector "input[data-tick=working]:checked"
+      find("input[value='#{zane.id}']").check
+    end
+    assert_current_path(/providers/, wait: 5)
+    assert_selector ".provider-column", count: 1, wait: 5
+    assert_equal [ zane.id ], column_ids
+    assert_selector "#provider-filter .dropdown-menu.show", wait: 5
+    assert_selector "#provider-filter .dropdown-toggle", text: "Providers (1)"
+    assert_selector "#provider-filter input[data-tick=working]:not(:checked)"
+
+    within("#provider-filter") { click_on "All Providers" }
+    assert_selector ".provider-column", count: 2, wait: 5
+    assert_selector "#provider-filter input[value='#{riley.id}']:checked", wait: 5
+    assert_selector "#provider-filter .dropdown-toggle", text: /\AProviders\z/
+    # Everything ticked travels short: one "all" for stylists, nothing for services.
+    assert_current_path(/providers%5B%5D=all/, wait: 5)
+    assert_no_match(/providers%5B%5D=#{zane.id}|services/, page.current_url)
+
+    within("#provider-filter") { click_on "Clear Providers" }
+    assert_no_selector ".provider-column", wait: 5
+    assert_selector "#provider-filter .dropdown-toggle", text: "Providers (0)", wait: 5
+
+    find("#provider-filter input[data-tick=working]").check
+    assert_selector ".provider-column", count: 2, wait: 5
+    assert_selector "#provider-filter input[data-tick=working]:checked", wait: 5
+    assert_no_selector "#provider-filter input[type=checkbox]:not([data-tick]):checked"
+  end
+
+  test "the service dropdown: Clear hides every appointment and one ticked service shows only its own" do
+    visit appointments_url(date: @date)
+    assert_selector ".day-entry-appointment", text: "JX - Trim Cut", wait: 5
+    find("#service-filter .dropdown-toggle").click
+    style = page.evaluate_script(<<~JS)
+      (() => {
+        const css = (selector) => getComputedStyle(document.querySelector(selector));
+        return { toggles: ['#provider-filter', '#service-filter', '#status-filter'].map((id) => css(id + ' .dropdown-toggle').fontWeight),
+                 menu: css('#service-filter .dropdown-menu').maxHeight };
+      })()
+    JS
+    assert_equal %w[400 400 400], style["toggles"], "the filter buttons are not bold"
+    assert_not_equal "none", style["menu"], "a long list scrolls inside the menu"
+    within("#service-filter") { click_on "Clear Services" }
+    assert_no_selector ".day-entry-appointment", wait: 5
+    assert_selector "#service-filter .dropdown-toggle", text: "Services (0)", wait: 5
+
+    find("#service-filter input[value='#{services(:haircut).id}']").check
+    assert_selector ".day-entry-appointment", text: "JX - Trim Cut", wait: 5
+    assert_selector "#service-filter .dropdown-toggle", text: "Services (1)"
+  end
 end
 
 class AppointmentsPageRefreshTest < ApplicationSystemTestCase
@@ -155,6 +219,23 @@ class AppointmentsPageRefreshTest < ApplicationSystemTestCase
     assert_selector "#series-view:not(.d-none)"
     find("#toggle-series").click
     assert_selector "#calendar .calendar-view:not(.d-none)", wait: 5
+  end
+
+  test "a stylist whose browser remembers the series view still sees the day view" do
+    visit logout_url
+    visit login_url
+    assert_selector "#login", wait: 15
+    fill_in "username", with: "janedoe"
+    fill_in "password", with: "janedoe1"
+    find("#login").click
+    assert_current_path %r{/appointments}, wait: 10
+    page.execute_script("window.localStorage.setItem('OpenAppointments.SeriesView', '1')")
+    visit appointments_url(date: @date)
+    assert_selector ".provider-column", wait: 5
+    assert_no_selector "#toggle-series"
+    assert_no_selector ".calendar-view.d-none", visible: :all
+  ensure
+    page.execute_script("window.localStorage.removeItem('OpenAppointments.SeriesView')")
   end
 
   test "the reload button still works on the calendar page after the appointments page was visited" do

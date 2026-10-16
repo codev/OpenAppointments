@@ -37,6 +37,16 @@ class AppointmentsPageTest < ActionDispatch::IntegrationTest
     assert_select "#not-working-notes div", count: 0
   end
 
+  test "an entry's left border is the service colour, never its own or the stylist's" do
+    services(:haircut).update!(color: "#eb8687")
+    users(:zane).update!(color: "#228833")
+    appointments(:upcoming).update!(color: "#abe9a4")
+    login_admin
+    get "/appointments", params: { date: "2026-07-20" }
+    assert_select "button.day-entry-appointment[style=?]", "border-left-color: #eb8687"
+    assert_no_match(/#228833|#abe9a4/, css_select("#day_view").to_html.gsub(/data-event="[^"]*"/, ""))
+  end
+
   test "a day off lists the provider as not working; three or seven days show that many columns" do
     login_admin
     get "/appointments", params: { date: "2026-07-19" }
@@ -52,6 +62,19 @@ class AppointmentsPageTest < ActionDispatch::IntegrationTest
     assert_select "#select-day-interval option[selected][value='7']", text: "7 Days"
   end
 
+  # A page's scripts arrive in head order on a Turbo visit and a component
+  # initialises as soon as its script runs, so a dependency must come first.
+  test "the working plan exception dialog script follows utils/ui on the List and the Calendar" do
+    login_admin
+    %w[/appointments /calendar].each do |path|
+      get path
+      sources = css_select("head script[src]").map { |script| script["src"] }
+      ui = sources.index { |src| src.include?("utils/ui") }
+      modal = sources.index { |src| src.include?("components/working_plan_exceptions_modal") }
+      assert ui && modal && ui < modal, "#{path}: expected utils/ui before the dialog script, got #{sources.inspect}"
+    end
+  end
+
   test "the List and the Calendar are never shown from a stale Turbo preview" do
     login_admin
     %w[/appointments /calendar].each do |path|
@@ -65,8 +88,12 @@ class AppointmentsPageTest < ActionDispatch::IntegrationTest
     Appointment.create!(is_unavailability: true, provider: users(:zane), notes: "Holiday",
                         start_datetime: "2026-07-21 08:00:00", end_datetime: "2026-07-21 19:00:00")
     get "/appointments", params: { date: "2026-07-21" }
-    assert_select "#filter-provider option:first-child[value='']", text: "Working Providers"
-    assert_select "#filter-provider option[value=all]", text: "All Providers"
+    assert_select "#provider-filter .dropdown-toggle", text: "Providers"
+    assert_select "#provider-filter button[data-tick=all]", text: "All Providers"
+    assert_select "#provider-filter button[data-tick=clear]", text: "Clear Providers"
+    assert_select "#provider-filter input[data-tick=working][name='providers[]'][value=working][checked]"
+    assert_select "#provider-filter label", text: /Working Providers/
+    assert_select "#provider-filter input[name='providers[]'][value=?]:not([checked])", users(:zane).id.to_s
     assert_select ".provider-column", count: 0
     assert_select "#not-working-notes", text: /Not working 21\/07\/2026: Zane/
   end
@@ -90,20 +117,79 @@ class AppointmentsPageTest < ActionDispatch::IntegrationTest
     assert_includes entry_ids("unavailability"), sick.id
   end
 
-  test "all stylists gives every stylist a column, working or not, and the day links keep the choice" do
+  def second_stylist
+    riley = User.create!(name: "Riley", email: "riley@example.org", role: users(:zane).role)
+    ServiceProviderLink.create!(provider: riley, service: services(:haircut))
+    riley
+  end
+
+  test "ticked stylists get a column, working or not, and the day links keep the choice" do
+    riley = second_stylist
     login_admin
-    get "/appointments", params: { date: "2026-07-19", provider: "all" }
+    get "/appointments", params: { date: "2026-07-19", providers: [ "", users(:zane).id ] }
     assert_select ".provider-column[data-provider-id=?]", users(:zane).id.to_s
+    assert_select ".provider-column[data-provider-id=?]", riley.id.to_s, count: 0
     assert_select "#not-working-notes div", count: 0
-    assert_select "#filter-provider option[selected][value=all]"
-    assert_select "a#next-day[href*='provider=all']"
+    assert_select "#provider-filter input[value=?][checked]", users(:zane).id.to_s
+    assert_select "#provider-filter input[data-tick=working]:not([checked])"
+    assert_select "a#next-day[href*=?]", "providers%5B%5D=#{users(:zane).id}"
+  end
+
+  # The URL stays short (and so fits the 4 KB login return address): every
+  # stylist ticked is "all", every service ticked is the default and not sent.
+  test "all stylists travel as one value and all services as none" do
+    riley = second_stylist
+    login_admin
+    get "/appointments", params: { date: "2026-07-19", providers: [ "", "all" ] }
+    assert_select ".provider-column[data-provider-id=?]", users(:zane).id.to_s
+    assert_select ".provider-column[data-provider-id=?]", riley.id.to_s
+    assert_select "#provider-filter input[value=?][checked]", riley.id.to_s
+    assert_select "#provider-filter input[data-tick=working]:not([checked])"
+    assert_select "#provider-filter .dropdown-toggle", text: "Providers"
+    assert_select "#provider-filter[data-all-value=all][data-name=providers]"
+    assert_select "#service-filter[data-name=services]:not([data-all-value])"
+    assert_select "a#next-day[href*=?]", "providers%5B%5D=all"
+    assert_select "a#next-day[href*=?]", "providers%5B%5D=#{riley.id}", count: 0
+
+    all_services = css_select("#service-filter input[name='services[]'][value!='']").map { |input| input["value"] }
+    get "/appointments", params: { date: "2026-07-20", services: all_services }
+    assert_select "a#next-day[href*=?]", "services%5B%5D", count: 0
+  end
+
+  test "no stylists ticked shows no columns and says how many are ticked" do
+    login_admin
+    get "/appointments", params: { date: "2026-07-20", providers: [ "" ] }
+    assert_select ".provider-column", count: 0
+    assert_select "#not-working-notes div", count: 0
+    assert_select "#provider-filter .dropdown-toggle", text: "Providers (0)"
+    assert_select "#provider-filter input[type=hidden][name='providers[]'][value='']"
+    assert_select "a#next-day[href*=?]", "providers%5B%5D="
+  end
+
+  test "services default to all ticked; ticked services narrow the entries and none ticked shows none" do
+    login_admin
+    get "/appointments", params: { date: "2026-07-20" }
+    assert_select "#service-filter .dropdown-toggle", text: "Services"
+    assert_select "#service-filter button[data-tick=all]", text: "All Services"
+    assert_select "#service-filter button[data-tick=clear]", text: "Clear Services"
+    assert_select "#service-filter input[data-tick=working]", count: 0
+    assert_select "#service-filter input[name='services[]'][value=?][checked]", services(:haircut).id.to_s
+    assert_select ".day-entry-appointment", minimum: 1
+
+    get "/appointments", params: { date: "2026-07-20", services: [ "", services(:group_session).id ] }
+    assert_select ".day-entry-appointment", count: 0
+    assert_select "#service-filter input[value=?][checked]", services(:group_session).id.to_s
+    assert_select "#service-filter input[value=?]:not([checked])", services(:haircut).id.to_s
+    assert_select "#service-filter .dropdown-toggle", text: "Services (1)"
+    assert_select "a#next-day[href*=?]", "services%5B%5D=#{services(:group_session).id}"
+
+    get "/appointments", params: { date: "2026-07-20", services: [ "" ] }
+    assert_select ".day-entry-appointment", count: 0
+    assert_select ".provider-column[data-provider-id=?]", users(:zane).id.to_s
   end
 
   test "filters narrow the entries and statuses default to the non cancelled kinds" do
     login_admin
-    get "/appointments", params: { date: "2026-07-20", service: services(:group_session).id }
-    assert_select ".day-entry-appointment", count: 0
-    assert_select "#filter-service option[selected][value=?]", services(:group_session).id.to_s
 
     get "/appointments", params: { date: "2026-07-20", statuses: [ "Confirmed" ] }
     assert_select ".day-entry-appointment", count: 0
@@ -114,18 +200,50 @@ class AppointmentsPageTest < ActionDispatch::IntegrationTest
     assert_select "#status-filter input[value=Cancelled]:not([checked])"
   end
 
-  test "an unparseable date falls back to today and a provider sees only their own column" do
+  test "an unparseable date falls back to today" do
     login_admin
     get "/appointments", params: { date: "nonsense" }
     assert_response :success
     assert_select "#select-date[value=?]", Date.current.to_s
+  end
 
-    post "/login/validate", params: { username: "janedoe", password: "janedoe1" }
+  test "a stylist has no stylist dropdown and sees only their own column, whatever the URL asks for" do
     other = User.create!(name: "Other", email: "other@example.org", role: users(:zane).role)
-    get "/appointments", params: { date: "2026-07-20" }
-    assert_select "#filter-provider option", count: 3
+    ServiceProviderLink.create!(provider: other, service: services(:haircut))
+    post "/login/validate", params: { username: "janedoe", password: "janedoe1" }
+    get "/appointments", params: { date: "2026-07-20", providers: [ "", other.id ] }
+    assert_select "#provider-filter", count: 0
+    assert_select "#service-filter"
+    assert_select ".provider-column[data-provider-id=?]", users(:zane).id.to_s
     assert_select ".provider-column[data-provider-id=?]", other.id.to_s, count: 0
   end
+  test "a stylist has no repeating appointments button, series view or pattern modal" do
+    post "/login/validate", params: { username: "janedoe", password: "janedoe1" }
+    get "/appointments", params: { date: "2026-07-20" }
+    assert_response :success
+    assert_select "#toggle-series", count: 0
+    assert_select "#series-view", count: 0
+    assert_select "#series-pattern-modal", count: 0
+  end
+
+  test "an admin has the repeating appointments button, series view and pattern modal" do
+    login_admin
+    get "/appointments", params: { date: "2026-07-20" }
+    assert_select "#toggle-series"
+    assert_select "#series-view"
+    assert_select "#series-pattern-modal"
+  end
+
+  test "a new appointment offers repeat fields to an admin but not to a stylist" do
+    login_admin
+    get "/appointments/new", params: { start: "2026-07-20 11:30:00" }
+    assert_select "#appointment-repeat"
+    post "/login/validate", params: { username: "janedoe", password: "janedoe1" }
+    get "/appointments/new", params: { start: "2026-07-20 11:30:00", provider_id: users(:zane).id }
+    assert_response :success
+    assert_select "#appointment-repeat", count: 0
+  end
+
   # A free slot click names the provider; the form must open on a service that
   # provider offers, or the provider list (which follows the service) drops them.
   test "a new appointment for a provider opens on a service they offer" do
@@ -150,5 +268,16 @@ class AppointmentsPageTest < ActionDispatch::IntegrationTest
         assert I18n.t("ea.#{key}", locale: locale, fallback: false, default: nil).present?, "missing ea.#{key} in #{locale}"
       end
     end
+  end
+
+  test "previous and next arrows move by the number of days shown, not always by one" do
+    login_admin
+    get "/appointments", params: { date: "2026-07-20", days: 3 }
+    assert_select "a#next-day[href*='date=2026-07-23']"
+    assert_select "a#previous-day[href*='date=2026-07-17']"
+
+    get "/appointments", params: { date: "2026-07-20", days: 7 }
+    assert_select "a#next-day[href*='date=2026-07-27']"
+    assert_select "a#previous-day[href*='date=2026-07-13']"
   end
 end

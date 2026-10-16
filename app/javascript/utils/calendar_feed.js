@@ -1,7 +1,8 @@
 /**
- * Calendar feed button on the calendar page: shown when a provider is selected
- * (any provider for editors, only themselves for a provider). Opens the dialog
- * with the subscription link from calendar/feed_link; reset makes a new one.
+ * Feed button on the calendar page: shown when a provider is selected (any
+ * provider for editors, only themselves for a provider). Opens the Feed dialog
+ * on its Calendar Feed tab with the subscription link from calendar/feed_link;
+ * reset makes a new one. utils/calendar_sync.js runs the Enable Sync tab.
  */
 App.Utils.CalendarFeed = (function () {
     const $filter = () => $('#select-filter-item');
@@ -35,6 +36,7 @@ App.Utils.CalendarFeed = (function () {
     }
 
     function open() {
+        bootstrap.Tab.getOrCreateInstance(document.getElementById('calendar-feed-tab')).show();
         fetchLink(false).done(() => modal().show());
     }
 
@@ -47,6 +49,17 @@ App.Utils.CalendarFeed = (function () {
         });
     }
 
+    // Bootstrap ignores show() while the dialog is still fading out, so a
+    // dialog that is hidden but still visible is shown once the fade ends.
+    function show() {
+        const element = document.getElementById('calendar-feed-modal');
+        if ($(element).is(':visible') && !element.classList.contains('show')) {
+            $(element).one('hidden.bs.modal', () => modal().show());
+        } else {
+            modal().show();
+        }
+    }
+
     // The confirm is its own modal, so the feed dialog steps aside and returns.
     function reset() {
         modal().hide();
@@ -55,14 +68,14 @@ App.Utils.CalendarFeed = (function () {
                 text: lang('cancel'),
                 click: (event, messageModal) => {
                     messageModal.hide();
-                    modal().show();
+                    show();
                 },
             },
             {
                 text: lang('confirm'),
                 click: (event, messageModal) => {
                     messageModal.hide();
-                    fetchLink(true).done(() => modal().show());
+                    fetchLink(true).done(show);
                 },
             },
         ]);
@@ -83,5 +96,6 @@ App.Utils.CalendarFeed = (function () {
 
     return {
         initialize,
+        show,
     };
 })();

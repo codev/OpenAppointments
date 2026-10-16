@@ -61,6 +61,17 @@ class ApplicationSystemTestCase < ActionDispatch::SystemTestCase
     assert_current_path %r{/appointments}, wait: 10
   end
 
+  # On the Calendar: tick only this stylist in the Stylists dropdown, then close it.
+  def show_only_stylist(name)
+    find("#provider-filter .dropdown-toggle", wait: 10).click
+    within("#provider-filter .dropdown-menu") do
+      click_on "Clear Providers"
+      check name
+    end
+    find("#provider-filter .dropdown-toggle").click
+    assert_no_selector "#provider-filter .dropdown-menu.show", wait: 5
+  end
+
   # Typing during Bootstrap's fade-in loses keys to its focus handling, and a
   # dismiss click during the transition is ignored: wait for the shown modal to
   # be opaque and for Bootstrap to have finished its transition.

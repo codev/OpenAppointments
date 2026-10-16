@@ -22,8 +22,8 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <p><%= lang('write_appointment_cancel_reason') %></p>
-                    <%= text_area_tag "cancellation_reason", nil, id: "cancellation-reason", class: "form-control", rows: 3, required: true %>
+                    <p><%= lang('cancel_reason_optional') %></p>
+                    <%= text_area_tag "cancellation_reason", nil, id: "cancellation-reason", class: "form-control", rows: 3 %>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal"><%= lang('close') %></button>

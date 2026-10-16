@@ -116,9 +116,9 @@ bu:
     appointment_confirmation: Потвърдете часът
     confirm: Потвърждение
     update: Актуализиране
-    cancel_appointment_hint: Натиснете бутон "отказ" за да отстраните часът си от графика.
+    cancel_appointment_hint: "Натиснете бутона \"Отказ\", за да откажете часа"
     cancel: Отказ
-    appointment_registered: Часът Ви бе успешно регистриран.
+    appointment_registered: "Всичко е готово!"
     cancel_appointment_title: Отказ на Час
     appointment_cancelled: Часът Ви бе успешно анулиран.
     appointment_cancelled_title: Часът анулиран.
@@ -167,7 +167,6 @@ bu:
     all_day: Цял ден
     manage_appointment_record_hint: Управление на всички записи за часове на достъпните изпълнители и услуги.
     select_filter_item_hint: Избор на изпълнител или услуга и преглед на часовете в календара.
-    enable_appointment_sync_hint: Включване на синхронизиране на часове с  Google Calendar  профила на изпълнителя.
     manage_customers_hint: Управление на регистрирани клиенти и преглед на исторически данни за часовете им.
     manage_services_hint: Управление на наличните услуги и категории на системата.
     manage_users_hint: Управление на административните потребители (администратори, изпълнители и асистенти).
@@ -452,7 +451,7 @@ bu:
     company: Компания
     remove: Премахване на
     login_button: Бутон за влизане
-    display_login_button_hint: Определя дали бутонът за влизане се показва на страницата за резервации.
+    display_login_button_hint: "Определя дали бутонът за влизане на персонала се показва на страницата за резервации."
     private: Частна
     private_hint: "Частните записи не се показват на публичната страница за резервации, но все пак могат да бъдат резервирани чрез директния им линк за резервация."
     reset: Нулиране
@@ -652,7 +651,7 @@ bu:
     start_date: Начална дата
     end_date: Крайна дата
     remember_me: Запомни моята информация
-    remember_me_hint: Запазете данните си за по-бързо резервиране следващия път.
+    remember_me_hint: "Запазете данните си в този браузър за по-бързо резервиране следващия път."
     legal_notice: Правно известие
     legal_notice_url: URL на правното известие
     legal_notice_url_hint: Въведете URL адреса на страницата с правното известие.
@@ -695,24 +694,24 @@ bu:
     messages_intercept_required: "Debug изисква валиден имейл адрес и телефонен номер за пренасочване."
     messages_retention_days: Delete messages older than (days)
     messages_retention_days_hint: Messages older than this many days are deleted automatically. Set 0 to keep all messages.
-    messages_email_subject: Outgoing Email Subject Line
+    messages_email_subject: "Тема на имейла"
     messages_email_subject_hint: Used for emails without their own Short Text, and for messages sent from the customer page.
     messages_providers_info: Notification providers deliver your notifications by email or SMS. Configure at least one provider and tick it inside each notification template.
     messages_provider_disabled: Disabled
-    messages_provider_outgoing: Outgoing
-    messages_provider_incoming_outgoing: Incoming and outgoing
+    messages_provider_outgoing: "Само изпращане"
+    messages_provider_incoming_outgoing: "Изпращане и получаване"
     messages_provider_email_info: Send notifications by email through the server or SMTP, and receive replies through the server or IMAP.
     messages_provider_twilio_info: Send and receive SMS with a Twilio account and phone number.
     messages_provider_plivo_info: Send and receive SMS with a Plivo account and phone number.
     messages_provider_textanywhere_info: Send and receive SMS with a TextAnywhere account.
-    messages_incoming: Incoming
-    messages_incoming_hint: Customer can reply to support incoming messages as well as outgoing ones.
+    messages_incoming: "Получаване на отговори"
+    messages_incoming_hint: "Клиентите могат да отговарят на съобщенията, които изпращате."
     messages_test_sms_sent: "Тестовият SMS е изпратен, проверете телефона."
     messages_test_sms_number: "Тестов телефонен номер"
     messages_test_sms: "Изпрати тестов SMS"
     messages_smsgateway_invalid: "Настройките на шлюза не можаха да бъдат проверени:"
-    messages_smsgateway_inbound_hint: "Телефонът доставя входящите съобщения на този адрес, регистрацията става автоматично при запазване с включено получаване."
-    messages_smsgateway_step_activate: "Отбележете Активно и Получаване на входящи съобщения, после Запази. Настройките се тестват, поправете грешките и използвайте бутона Изпрати тестов SMS по-долу."
+    messages_smsgateway_inbound_hint: "Телефонът доставя получените съобщения на този адрес, регистрацията става автоматично при запазване с включено получаване."
+    messages_smsgateway_step_activate: "Отбележете Активно и Получаване на отговори, после Запази. Настройките се тестват, поправете грешките и използвайте бутона Изпрати тестов SMS по-долу, за да тествате изпращането."
     messages_smsgateway_step_credentials: "На началния екран изключете Local server, включете Cloud server и натиснете бутона Offline за свързване (отбележете и Start on boot), после копирайте потребителското име и паролата от началния екран в Потребителско име и Парола по-долу."
     messages_smsgateway_step_signing: "Отидете в Settings -> Webhooks -> Signing Key в приложението -> въведете ключ и го копирайте в Ключ за подпис на webhook по-долу."
     messages_smsgateway_step_token: "Ако използвате частен сървър, въведете и Private Token на същия екран - токенът е в /app/data/private_token на сървъра на шлюза."
@@ -733,14 +732,14 @@ bu:
     messages_smsgateway_password: "Парола"
     messages_smsgateway_signing_key: "Ключ за подпис на webhook"
     messages_provider_smsgateway_info: "Изпраща и получава SMS през Android телефон с приложението SMS Gateway срещу собствен сървър, без разходи на съобщение."
-    messages_email_outgoing: Outgoing email
+    messages_email_outgoing: "Изпращане на имейл"
     messages_email_mode: Sending method
     messages_email_mode_server: Send email through server
     messages_email_mode_smtp: Send email with SMTP
     messages_smtp_host: SMTP host
     messages_smtp_port: SMTP port
     messages_smtp_tls: Use TLS
-    messages_email_incoming_section: Incoming email
+    messages_email_incoming_section: "Получаване на имейл"
     messages_email_incoming_mode: Receiving method
     messages_email_incoming_server: Receive email through server
     messages_email_incoming_imap: Receive email with IMAP
@@ -749,8 +748,8 @@ bu:
     messages_imap_port: IMAP port
     messages_email_credentials_hint: "Need an email delivery service? Get SMTP credentials from"
     messages_sms_credentials_hint: "Get your credentials from the provider console:"
-    messages_inbound_webhook: Incoming webhook URL
-    messages_inbound_webhook_hint: Paste this URL into the provider console so incoming messages reach the app. Keep it secret.
+    messages_inbound_webhook: "Webhook URL за получени съобщения"
+    messages_inbound_webhook_hint: "Поставете този URL в конзолата на доставчика, за да достигат получените съобщения до приложението. Пазете го в тайна."
     messages_twilio_account_sid: Account SID
     messages_twilio_auth_token: Auth token
     messages_from_number: From phone number
@@ -783,8 +782,8 @@ bu:
     open_all_notification_templates: Open all notification templates
     close_all_notification_templates: Close all notification templates
     messages_address: Address
-    messages_incoming_label: Incoming
-    messages_outgoing_label: Outgoing
+    messages_incoming_label: "Получени"
+    messages_outgoing_label: "Изпратени"
     messages_manual_label: Manual
     messages_unknown_sender: Unknown sender
     messages_status_sent: Sent
@@ -889,7 +888,7 @@ bu:
     filter_statuses_hint: 'Choose which appointment statuses to show.'
     appointment_statuses: 'Appointment Statuses'
     inbox: 'Inbox'
-    inbox_hint: 'Incoming messages from your customers.'
+    inbox_hint: "Съобщения, получени от вашите клиенти."
     read: 'Read'
     message: 'Message'
     mark_as_read: 'Mark as read'
@@ -961,7 +960,7 @@ bu:
     time_off_hint: "За част от деня въведете часовете на отсъствие. Те се записват като почивка за тези дати."
     messages_sms_variation: "Промяна на всяко SMS"
     messages_sms_variation_hint: "Добавя кратък код в края на всяко SMS, така че никои две съобщения да не съвпадат - изискване на някои оператори."
-    provider_color_hint: "Използва се за часовете на този изпълнител, когато календарят показва всички."
+    provider_color_hint: "Фон за часовете на този изпълнител в календара. Цветът на услугата се показва по края"
     working_providers: "Работещи изпълнители"
     hidden_from_public: "Скрито от публичността"
     slot_interval_hint: "Колко често на клиентите се предлагат начални часове. При 15 услуга от 45 минути може да започне в 9:00, 9:15, 9:30 и т.н.; при 60, в 9:00, 10:00, 11:00. Това не оставя свободно време след часа: за целта увеличете продължителността на услугата."
@@ -978,8 +977,25 @@ bu:
     message_move_to: "Преместване към {name}"
     message_moved: "Съобщението е преместено"
     notification_tokens_hint: "Полета на шаблона, които можете да използвате. Кликнете върху едно, за да го вмъкнете там, където пишете, или за да го копирате:"
-    inbox_info: "Входящи съобщения. Inbox показва съобщенията, които изискват действие, маркирайте всяко като Готово, след като е обработено или прочетено - можете да ги четете и после на страницата на клиента или в архива. Архив показва съобщенията, маркирани като Готово - има бутон Отмяна, който ги връща в Inbox."
+    inbox_info: "Получени съобщения. Inbox показва съобщенията, които изискват действие, отбелязвайте всяко като готово, след като е обработено или прочетено - пак можете да ги четете в страницата на клиента или в архива. Архив показва съобщенията, отбелязани като готови - има бутон за отмяна, който ги връща в Inbox."
     booking_release_time: "Час на отваряне"
     booking_release_time_hint: "Следващият ден в края на ограничението за бъдещи резервации се отваря в този час всеки ден."
     inbox_filter_archive: "Архив"
     load_more_messages: "Зареди още съобщения"
+    clear_providers: "Изчисти изпълнителите"
+    clear_services: "Изчисти услугите"
+    refresh: "Обнови"
+    sync: "Синхронизирай"
+    feed: "Feed"
+    do_not_contact_hint: "На този клиент не се изпращат потвърждения, промени или напомняния за резервации"
+    do_not_contact_warning: "Този клиент е поискал да не бъде контактуван. Съобщенията, изпратени тук, все пак се доставят."
+    company_address: "Адрес на компанията"
+    company_address_hint: "Това ще бъде местоположението по подразбиране за всички резервации и покани в календара"
+    cancel_reason_optional: "Причина за отказа на часа (по желание), ако искате да ни уведомите:"
+    late_cancel_reason: "Причина за отказа на часа:"
+    appointments_include_locations: "Часовете включват местоположение"
+    appointments_include_locations_hint: "Позволява на фризьор, асистент или администратор да задава местоположението на часа. Когато е изключено, местоположението винаги е адресът на компанията."
+    appointments_include_meeting_links: "Часовете включват връзки за срещи"
+    appointments_include_meeting_links_hint: "Позволява на фризьор, асистент или администратор да добави към часа връзка за онлайн среща. Връзката ще бъде включена в поканата в календара на клиента."
+    booking_provider_first_hint: "На страницата за резервации показвай на клиента фризьорите, преди да избере услуга."
+    display_order_switch_hint: "Позволи на клиентите да използват бутон в първата стъпка на страницата за резервации, с който избират първо услуга или първо фризьор, преди да изберат другото."

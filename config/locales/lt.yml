@@ -116,9 +116,9 @@ lt:
     appointment_confirmation: Vizito patvirtinimas
     confirm: Patvirtinti
     update: Atnaujinti
-    cancel_appointment_hint: Jei norite atšaukti vizitą, spustelėkite „Atšaukti“.
+    cancel_appointment_hint: "Norėdami atšaukti vizitą, spustelėkite mygtuką „Atšaukti“"
     cancel: Atšaukti
-    appointment_registered: Jūsų vizitas sėkmingai užregistruotas!
+    appointment_registered: "Viskas paruošta!"
     cancel_appointment_title: Vizito atšaukimas
     appointment_cancelled: Jūsų vizitas sėkmingai atšauktas.
     appointment_cancelled_title: Vizitas atšauktas
@@ -167,7 +167,6 @@ lt:
     all_day: Visa diena
     manage_appointment_record_hint: Tvarkyti visus turimų paslaugų teikėjų ir paslaugų vizitų įrašus.
     select_filter_item_hint: Pasirinkite paslaugų teikėją ar paslaugą ir peržiūrėkite vizitus kalendoriuje.
-    enable_appointment_sync_hint: Įjungti vizitų sinchronizavimą su išoriniu kalendoriumi.
     manage_customers_hint: Tvarkyti registruotus klientus ir peržiūrėti jų užsakymų istoriją.
     manage_services_hint: Tvarkyti galimas paslaugas ir paslaugų kategorijas.
     manage_users_hint: Tvarkyti sistemos naudotojus (administratorius, paslaugų teikėjus, asistentus).
@@ -452,7 +451,7 @@ lt:
     company: Įmonė
     remove: Šalinti
     login_button: Prisijungimo mygtukas
-    display_login_button_hint: Nurodo, ar registravimosi vizitui tinklalapyje bus rodomas prisijungimo mygtukas.
+    display_login_button_hint: "Nurodo, ar rezervacijos puslapyje rodomas darbuotojų prisijungimo mygtukas."
     private: Privatus
     private_hint: "Privatūs įrašai nerodomi viešame rezervacijų puslapyje, tačiau juos vis tiek galima rezervuoti per jų tiesioginę rezervacijos nuorodą."
     reset: Atkurti
@@ -652,7 +651,7 @@ lt:
     start_date: Pradžios data
     end_date: Pabaigos data
     remember_me: Prisiminti mano informaciją
-    remember_me_hint: Išsaugokite savo duomenis greitesniam užsakymui kitą kartą.
+    remember_me_hint: "Įsiminkite savo duomenis šioje naršyklėje, kad kitą kartą rezervuotumėte greičiau."
     legal_notice: Teisinis pranešimas
     legal_notice_url: Teisinio pranešimo URL
     legal_notice_url_hint: Įveskite savo teisinio pranešimo puslapio URL.
@@ -695,24 +694,24 @@ lt:
     messages_intercept_required: "Derinimui reikia galiojančio el. pašto adreso ir telefono numerio peradresavimui."
     messages_retention_days: Delete messages older than (days)
     messages_retention_days_hint: Messages older than this many days are deleted automatically. Set 0 to keep all messages.
-    messages_email_subject: Outgoing Email Subject Line
+    messages_email_subject: "El. laiško tema"
     messages_email_subject_hint: Used for emails without their own Short Text, and for messages sent from the customer page.
     messages_providers_info: Notification providers deliver your notifications by email or SMS. Configure at least one provider and tick it inside each notification template.
     messages_provider_disabled: Disabled
-    messages_provider_outgoing: Outgoing
-    messages_provider_incoming_outgoing: Incoming and outgoing
+    messages_provider_outgoing: "Tik siųsti"
+    messages_provider_incoming_outgoing: "Siųsti ir gauti"
     messages_provider_email_info: Send notifications by email through the server or SMTP, and receive replies through the server or IMAP.
     messages_provider_twilio_info: Send and receive SMS with a Twilio account and phone number.
     messages_provider_plivo_info: Send and receive SMS with a Plivo account and phone number.
     messages_provider_textanywhere_info: Send and receive SMS with a TextAnywhere account.
-    messages_incoming: Incoming
-    messages_incoming_hint: Customer can reply to support incoming messages as well as outgoing ones.
+    messages_incoming: "Gauti atsakymus"
+    messages_incoming_hint: "Klientai gali atsakyti į jums siunčiamas žinutes."
     messages_test_sms_sent: "Bandomoji SMS issiusta, patikrinkite telefona."
     messages_test_sms_number: "Bandomasis telefono numeris"
     messages_test_sms: "Siusti bandomaja SMS"
     messages_smsgateway_invalid: "Nepavyko patikrinti tinklu saito nustatymu:"
-    messages_smsgateway_inbound_hint: "Telefonas pristato gaunamas zinutes siuo adresu, registracija vyksta automatiskai issaugant su ijungtu gavimu."
-    messages_smsgateway_step_activate: "Pazymekite Aktyvu ir Gauti gaunamas zinutes, tada issaugokite. Nustatymai patikrinami; istaisykite klaidas ir isbandykite siuntima mygtuku Siusti bandomaja SMS zemiau."
+    messages_smsgateway_inbound_hint: "Telefonas gautas žinutes perduoda šiuo adresu, registracija atliekama automatiškai įrašant su įjungtu atsakymų gavimu."
+    messages_smsgateway_step_activate: "Pažymėkite Aktyvus ir Gauti atsakymus, tada spustelėkite Įrašyti. Nuostatos išbandomos, ištaisykite klaidas ir siuntimą patikrinkite mygtuku Siųsti bandomąją SMS žemiau."
     messages_smsgateway_step_credentials: "Pagrindiniame ekrane isjunkite Local server, ijunkite Cloud server ir paspauskite mygtuka Offline prisijungimui (pazymekite ir Start on boot), tada nukopijuokite pagrindiniame ekrane rodoma naudotojo varda ir slaptazodi i laukus Naudotojo vardas ir Slaptazodis zemiau."
     messages_smsgateway_step_signing: "Eikite i programos Settings -> Webhooks -> Signing Key -> iveskite pasirasymo rakta ir nukopijuokite ji i Webhook parasymo rakta zemiau."
     messages_smsgateway_step_token: "Jei naudojate privatu serveri, tame paciame ekrane iveskite ir Private Token - jis yra /app/data/private_token faile serveryje."
@@ -733,14 +732,14 @@ lt:
     messages_smsgateway_password: "Slaptazodis"
     messages_smsgateway_signing_key: "Webhook parasymo raktas"
     messages_provider_smsgateway_info: "Siuncia ir gauna SMS per Android telefona su SMS Gateway programa ir musu paciu serveriu, be mokesciu uz zinute."
-    messages_email_outgoing: Outgoing email
+    messages_email_outgoing: "Siųsti el. laiškus"
     messages_email_mode: Sending method
     messages_email_mode_server: Send email through server
     messages_email_mode_smtp: Send email with SMTP
     messages_smtp_host: SMTP host
     messages_smtp_port: SMTP port
     messages_smtp_tls: Use TLS
-    messages_email_incoming_section: Incoming email
+    messages_email_incoming_section: "Gauti el. laiškus"
     messages_email_incoming_mode: Receiving method
     messages_email_incoming_server: Receive email through server
     messages_email_incoming_imap: Receive email with IMAP
@@ -749,8 +748,8 @@ lt:
     messages_imap_port: IMAP port
     messages_email_credentials_hint: "Need an email delivery service? Get SMTP credentials from"
     messages_sms_credentials_hint: "Get your credentials from the provider console:"
-    messages_inbound_webhook: Incoming webhook URL
-    messages_inbound_webhook_hint: Paste this URL into the provider console so incoming messages reach the app. Keep it secret.
+    messages_inbound_webhook: "Gautų žinučių webhook URL"
+    messages_inbound_webhook_hint: "Įklijuokite šį URL į teikėjo konsolę, kad gautos žinutės pasiektų programą. Laikykite jį paslaptyje."
     messages_twilio_account_sid: Account SID
     messages_twilio_auth_token: Auth token
     messages_from_number: From phone number
@@ -783,8 +782,8 @@ lt:
     open_all_notification_templates: Open all notification templates
     close_all_notification_templates: Close all notification templates
     messages_address: Address
-    messages_incoming_label: Incoming
-    messages_outgoing_label: Outgoing
+    messages_incoming_label: "Gauta"
+    messages_outgoing_label: "Išsiųsta"
     messages_manual_label: Manual
     messages_unknown_sender: Unknown sender
     messages_status_sent: Sent
@@ -889,7 +888,7 @@ lt:
     filter_statuses_hint: 'Choose which appointment statuses to show.'
     appointment_statuses: 'Appointment Statuses'
     inbox: 'Inbox'
-    inbox_hint: 'Incoming messages from your customers.'
+    inbox_hint: "Iš klientų gautos žinutės."
     read: 'Read'
     message: 'Message'
     mark_as_read: 'Mark as read'
@@ -961,7 +960,7 @@ lt:
     time_off_hint: "Jei tai dalis dienos, įveskite valandas, kai jūsų nėra. Jos išsaugomos kaip pertrauka tomis datomis."
     messages_sms_variation: "Keisti kiekvieną SMS"
     messages_sms_variation_hint: "Prideda trumpą nuorodos kodą kiekvienos SMS pabaigoje, kad jokios dvi žinutės nebūtų vienodos - to reikalauja kai kurie operatoriai."
-    provider_color_hint: "Naudojama šio teikėjo vizitams, kai kalendorius rodo visus."
+    provider_color_hint: "Šio teikėjo vizitų fonas kalendoriuje. Paslaugos spalva rodoma krašte"
     working_providers: "Dirbantys teikėjai"
     hidden_from_public: "Nerodoma viešai"
     slot_interval_hint: "Kaip dažnai klientams siūlomi pradžios laikai. Nustačius 15, 45 minučių paslauga gali prasidėti 9:00, 9:15, 9:30 ir t. t.; nustačius 60, 9:00, 10:00, 11:00. Tai nepalieka laisvo laiko po vizito: tam pailginkite paslaugos trukmę."
@@ -978,8 +977,25 @@ lt:
     message_move_to: "Perkelti į {name}"
     message_moved: "Žinutė perkelta"
     notification_tokens_hint: "Šablono laukeliai, kuriuos galite naudoti. Spustelėkite, kad įterptumėte ten, kur rašėte, arba kad nukopijuotumėte:"
-    inbox_info: "Gaunamos žinutės. Inbox rodo žinutes, kurias reikia sutvarkyti - pažymėkite kiekvieną kaip Atlikta, kai ją sutvarkysite ar perskaitysite; jas vis dar galėsite perskaityti kliento puslapyje arba Archyve. Archyvas rodo žinutes, pažymėtas kaip Atlikta - jame yra mygtukas Atšaukti, grąžinantis jas į Inbox."
+    inbox_info: "Gautos žinutės. Gautieji rodo žinutes, kurias reikia apdoroti; kiekvieną pažymėkite kaip atliktą, kai ji išnagrinėta ar perskaityta - ją vis tiek galėsite skaityti kliento puslapyje arba skiltyje Archyvas. Skiltyje Archyvas rodomos atliktomis pažymėtos žinutės - ten yra mygtukas, kuriuo žinutę galima grąžinti į gautuosius."
     booking_release_time: "Atidarymo laikas"
     booking_release_time_hint: "Kita diena, esanti ateities plano trukmės pabaigoje, kiekvieną dieną atsidaro šiuo laiku."
     inbox_filter_archive: "Archyvas"
     load_more_messages: "Įkelti daugiau žinučių"
+    clear_providers: "Išvalyti teikėjus"
+    clear_services: "Išvalyti paslaugas"
+    refresh: "Atnaujinti"
+    sync: "Sinchronizuoti"
+    feed: "Srautas"
+    do_not_contact_hint: "Šiam klientui nesiunčiami rezervacijų patvirtinimai, pakeitimai ar priminimai"
+    do_not_contact_warning: "Šis klientas paprašė su juo nesisiekti. Čia siunčiamos žinutės vis tiek pristatomos."
+    company_address: "Įmonės adresas"
+    company_address_hint: "Tai bus numatytoji vieta visoms rezervacijoms ir kalendoriaus kvietimams"
+    cancel_reason_optional: "Atšaukimo priežastis (nebūtina), jei norite mums pranešti:"
+    late_cancel_reason: "Vizito atšaukimo priežastis:"
+    appointments_include_locations: "Vizituose nurodoma vieta"
+    appointments_include_locations_hint: "Leidžia specialistui, padėjėjui ar administratoriui nustatyti vizito vietą. Kai išjungta, vieta visada bus įmonės adresas."
+    appointments_include_meeting_links: "Vizituose nurodomos susitikimo nuorodos"
+    appointments_include_meeting_links_hint: "Leidžia specialistui, padėjėjui ar administratoriui prie vizito pridėti nuorodą į internetinį susitikimą. Nuoroda bus įtraukta į kliento kalendoriaus kvietimą."
+    booking_provider_first_hint: "Rezervacijos puslapyje klientui rodyti specialistus prieš pasirenkant paslaugą."
+    display_order_switch_hint: "Leisti klientams pirmame rezervacijos puslapio žingsnyje mygtuku pasirinkti, ar pirmiausia rinktis paslaugą, ar specialistą, o tik tada kitą."

@@ -116,9 +116,9 @@ ar:
     appointment_confirmation: تأكيد الموعد
     confirm: تأكيد
     update: تحديث
-    cancel_appointment_hint: ' .إضغط زر "إلغاء" لحذف الموعد من الجدول'
+    cancel_appointment_hint: "اضغط زر \"إلغاء\" لإلغاء الموعد"
     cancel: إلغاء
-    appointment_registered: "!تم تسجيل الموعد بنجاح"
+    appointment_registered: "كل شيء جاهز!"
     cancel_appointment_title: إلغاء الموعد
     appointment_cancelled: "!تم إلغاء الموعد بنجاح"
     appointment_cancelled_title: تم إلغاء الموعد
@@ -167,7 +167,6 @@ ar:
     all_day: طوال اليوم
     manage_appointment_record_hint: إدارة جميع سجلات المواعيد للمزودين والخدمات
     select_filter_item_hint: 'اختار مزود أو خدمة وانظر للمواعيد على التقويم '
-    enable_appointment_sync_hint: تمكين المزامنة للمواعيد على تقويم جوجل الخاص بالمزود
     manage_customers_hint: ادارة الزبائن المسجلين واستعراض حجوزاتهم السابقة
     manage_services_hint: ادارة الخدمات والأقسام أو الفئات المتاحة في البرنامج
     manage_users_hint: ادارة المستخدمين (مدراء البرنامج, المزودين, المساعدين).
@@ -452,7 +451,7 @@ ar:
     company: شركة
     remove: إزالة
     login_button: زر تسجيل الدخول
-    display_login_button_hint: يحدد ما إذا كان سيتم عرض زر تسجيل الدخول في صفحة الحجز.
+    display_login_button_hint: "يحدد ما إذا كان زر تسجيل دخول الموظفين يظهر في صفحة الحجز."
     private: خاص
     private_hint: "لا تظهر السجلات الخاصة في صفحة الحجز العامة، ولكن يمكن حجزها من خلال رابط الحجز المباشر الخاص بها."
     reset: إعادة تعيين
@@ -652,7 +651,7 @@ ar:
     start_date: تاريخ البداية
     end_date: تاريخ النهاية
     remember_me: تذكر معلوماتي
-    remember_me_hint: احفظ بياناتك لحجز أسرع في المرة القادمة.
+    remember_me_hint: "احفظ بياناتك على هذا المتصفح لحجز أسرع في المرة القادمة."
     legal_notice: إشعار قانوني
     legal_notice_url: رابط الإشعار القانوني
     legal_notice_url_hint: أدخل رابط صفحة الإشعار القانوني الخاصة بك.
@@ -695,24 +694,24 @@ ar:
     messages_intercept_required: "يحتاج التصحيح إلى عنوان بريد إلكتروني ورقم هاتف صالحين لإعادة التوجيه إليهما."
     messages_retention_days: Delete messages older than (days)
     messages_retention_days_hint: Messages older than this many days are deleted automatically. Set 0 to keep all messages.
-    messages_email_subject: Outgoing Email Subject Line
+    messages_email_subject: "عنوان البريد الإلكتروني"
     messages_email_subject_hint: Used for emails without their own Short Text, and for messages sent from the customer page.
     messages_providers_info: Notification providers deliver your notifications by email or SMS. Configure at least one provider and tick it inside each notification template.
     messages_provider_disabled: Disabled
-    messages_provider_outgoing: Outgoing
-    messages_provider_incoming_outgoing: Incoming and outgoing
+    messages_provider_outgoing: "إرسال فقط"
+    messages_provider_incoming_outgoing: "إرسال واستقبال"
     messages_provider_email_info: Send notifications by email through the server or SMTP, and receive replies through the server or IMAP.
     messages_provider_twilio_info: Send and receive SMS with a Twilio account and phone number.
     messages_provider_plivo_info: Send and receive SMS with a Plivo account and phone number.
     messages_provider_textanywhere_info: Send and receive SMS with a TextAnywhere account.
-    messages_incoming: Incoming
-    messages_incoming_hint: Customer can reply to support incoming messages as well as outgoing ones.
+    messages_incoming: "استقبال الردود"
+    messages_incoming_hint: "يمكن للزبائن الرد على الرسائل التي ترسلها."
     messages_test_sms_sent: "أرسلت الرسالة التجريبية، تحقق من الهاتف."
     messages_test_sms_number: "رقم الهاتف التجريبي"
     messages_test_sms: "إرسال رسالة تجريبية"
     messages_smsgateway_invalid: "تعذر التحقق من إعدادات البوابة:"
     messages_smsgateway_inbound_hint: "يسلم الهاتف الرسائل الواردة إلى هذا العنوان، ويتم التسجيل تلقائياً عند الحفظ مع تفعيل الاستقبال."
-    messages_smsgateway_step_activate: "فعل نشط واستقبال الرسائل الواردة ثم احفظ. يتم اختبار الإعدادات، صحح أي أخطاء واستخدم زر إرسال رسالة تجريبية أدناه لاختبار الإرسال."
+    messages_smsgateway_step_activate: "فعل نشط واستقبال الردود ثم احفظ. يتم اختبار الإعدادات، صحح أي أخطاء واستخدم زر إرسال رسالة تجريبية أدناه لاختبار الإرسال."
     messages_smsgateway_step_credentials: "في الشاشة الرئيسية للتطبيق أوقف Local server وشغل Cloud server واضغط زر Offline للاتصال (وفعل Start on boot ليعمل بعد كل إعادة تشغيل) ثم انسخ اسم المستخدم وكلمة المرور الظاهرين إلى اسم المستخدم وكلمة المرور أدناه."
     messages_smsgateway_step_signing: "اذهب إلى إعدادات التطبيق -> Webhooks -> Signing Key -> أدخل مفتاح توقيع ثم انسخه إلى مفتاح توقيع الويب هوك أدناه."
     messages_smsgateway_step_token: "إذا كنت تستخدم خادماً خاصاً فأدخل أيضاً الرمز الخاص في شاشة الإعدادات هذه - الرمز موجود في /app/data/private_token على خادم البوابة."
@@ -733,14 +732,14 @@ ar:
     messages_smsgateway_password: "كلمة المرور"
     messages_smsgateway_signing_key: "مفتاح توقيع الويب هوك"
     messages_provider_smsgateway_info: "يرسل ويستقبل الرسائل القصيرة عبر هاتف أندرويد يشغل تطبيق SMS Gateway مع خادمنا الخاص، بدون تكلفة لكل رسالة."
-    messages_email_outgoing: Outgoing email
+    messages_email_outgoing: "إرسال البريد الإلكتروني"
     messages_email_mode: Sending method
     messages_email_mode_server: Send email through server
     messages_email_mode_smtp: Send email with SMTP
     messages_smtp_host: SMTP host
     messages_smtp_port: SMTP port
     messages_smtp_tls: Use TLS
-    messages_email_incoming_section: Incoming email
+    messages_email_incoming_section: "استقبال البريد الإلكتروني"
     messages_email_incoming_mode: Receiving method
     messages_email_incoming_server: Receive email through server
     messages_email_incoming_imap: Receive email with IMAP
@@ -749,8 +748,8 @@ ar:
     messages_imap_port: IMAP port
     messages_email_credentials_hint: "Need an email delivery service? Get SMTP credentials from"
     messages_sms_credentials_hint: "Get your credentials from the provider console:"
-    messages_inbound_webhook: Incoming webhook URL
-    messages_inbound_webhook_hint: Paste this URL into the provider console so incoming messages reach the app. Keep it secret.
+    messages_inbound_webhook: "رابط خطاف الويب للرسائل المستلمة"
+    messages_inbound_webhook_hint: "الصق هذا الرابط في لوحة تحكم المزود لتصل الرسائل المستلمة إلى التطبيق. أبقه سرياً."
     messages_twilio_account_sid: Account SID
     messages_twilio_auth_token: Auth token
     messages_from_number: From phone number
@@ -783,8 +782,8 @@ ar:
     open_all_notification_templates: Open all notification templates
     close_all_notification_templates: Close all notification templates
     messages_address: Address
-    messages_incoming_label: Incoming
-    messages_outgoing_label: Outgoing
+    messages_incoming_label: "المستلمة"
+    messages_outgoing_label: "المرسلة"
     messages_manual_label: Manual
     messages_unknown_sender: Unknown sender
     messages_status_sent: Sent
@@ -889,7 +888,7 @@ ar:
     filter_statuses_hint: 'Choose which appointment statuses to show.'
     appointment_statuses: 'Appointment Statuses'
     inbox: 'Inbox'
-    inbox_hint: 'Incoming messages from your customers.'
+    inbox_hint: "الرسائل المستلمة من زبائنك."
     read: 'Read'
     message: 'Message'
     mark_as_read: 'Mark as read'
@@ -961,7 +960,7 @@ ar:
     time_off_hint: "لجزء من يوم إجازة، أدخل ساعات غيابك. يتم حفظها كاستراحة في تلك التواريخ."
     messages_sms_variation: "تنويع كل رسالة SMS"
     messages_sms_variation_hint: "يضيف رمزًا مرجعيًا قصيرًا في نهاية كل رسالة SMS حتى لا تتطابق رسالتان، وهو ما تتطلبه بعض الشبكات."
-    provider_color_hint: "يُستخدم لمواعيد هذا المزود عندما يعرض التقويم الجميع."
+    provider_color_hint: "خلفية مواعيد هذا المزود في التقويم. يظهر لون الخدمة على الحافة"
     working_providers: "المزودون العاملون"
     hidden_from_public: "مخفي عن الجمهور"
     slot_interval_hint: "عدد المرات التي تُعرض فيها أوقات البدء على الزبائن. مع 15، يمكن أن تبدأ خدمة مدتها 45 دقيقة في 9:00 و9:15 و9:30 وهكذا؛ ومع 60، في 9:00 و10:00 و11:00. لا يُبقي هذا وقتًا فارغًا بعد الموعد: لذلك، اجعل مدة الخدمة أطول."
@@ -978,8 +977,25 @@ ar:
     message_move_to: "نقل إلى {name}"
     message_moved: "تم نقل الرسالة"
     notification_tokens_hint: "حقول القالب التي يمكنك استخدامها. انقر على أحدها لإدراجه في مكان الكتابة، أو لنسخه:"
-    inbox_info: "الرسائل الواردة. يعرض Inbox الرسائل التي تحتاج إلى إجراء، ضع علامة تم على كل رسالة بعد التعامل معها أو قراءتها - يمكنك قراءتها لاحقًا في صفحة الزبون أو في الأرشيف. يعرض الأرشيف الرسائل التي تم وضع علامة تم عليها - وفيه زر تراجع لإعادتها إلى Inbox."
+    inbox_info: "الرسائل المستلمة. يعرض Inbox الرسائل التي تحتاج إلى إجراء، ضع علامة تم على كل رسالة بعد التعامل معها أو قراءتها - يمكنك قراءتها في صفحة الزبون أو في الأرشيف. يعرض الأرشيف الرسائل التي تم وضع علامة تم عليها - وفيه زر تراجع لإعادتها إلى Inbox."
     booking_release_time: "وقت الإصدار"
     booking_release_time_hint: "يُفتح اليوم التالي عند نهاية حد الحجز المستقبلي في هذا الوقت كل يوم."
     inbox_filter_archive: "الأرشيف"
     load_more_messages: "تحميل المزيد من الرسائل"
+    clear_providers: "مسح المزودين"
+    clear_services: "مسح الخدمات"
+    refresh: "تحديث"
+    sync: "مزامنة"
+    feed: "التغذية"
+    do_not_contact_hint: "لا يتم إرسال تأكيدات الحجز أو التعديلات أو التذكيرات إلى هذا الزبون"
+    do_not_contact_warning: "طلب هذا الزبون عدم التواصل معه. الرسائل المرسلة هنا ستظل تصل إليه."
+    company_address: "عنوان الشركة"
+    company_address_hint: "سيكون هذا الموقع الافتراضي لجميع الحجوزات ودعوات التقويم"
+    cancel_reason_optional: "سبب إلغاء الموعد (اختياري)، إذا أردت إبلاغنا:"
+    late_cancel_reason: "سبب إلغاء الموعد:"
+    appointments_include_locations: "المواعيد تتضمن المواقع"
+    appointments_include_locations_hint: "يسمح للمصفف أو المساعد أو المسؤول بتحديد موقع الموعد. عند إيقافه سيكون الموقع دائماً عنوان الشركة."
+    appointments_include_meeting_links: "المواعيد تتضمن روابط الاجتماعات"
+    appointments_include_meeting_links_hint: "يسمح للمصفف أو المساعد أو المسؤول بإضافة رابط اجتماع عبر الإنترنت إلى الموعد. سيتم تضمين الرابط في دعوة التقويم الخاصة بالزبون."
+    booking_provider_first_hint: "في صفحة الحجز، اعرض للزبون المصففين قبل أن يختار الخدمة."
+    display_order_switch_hint: "اسمح للزبائن باستخدام زر في الخطوة الأولى من صفحة الحجز يتيح لهم اختيار الخدمة أولاً أو المصفف أولاً، قبل اختيار الآخر."

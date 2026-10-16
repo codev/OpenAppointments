@@ -116,9 +116,9 @@
     appointment_confirmation: Avtalebekreftelse
     confirm: Bekreft
     update: Oppdater
-    cancel_appointment_hint: Trykk på "Avbryt"-knappen for å fjerne avtalen fra bedriftens timeplan.
+    cancel_appointment_hint: "Trykk på \"Avbryt\"-knappen for å avbryte avtalen"
     cancel: Avbryt
-    appointment_registered: Din avtale er registrert!
+    appointment_registered: "Alt er klart!"
     cancel_appointment_title: Avbryt Avtale
     appointment_cancelled: Din avtale er avbrutt.
     appointment_cancelled_title: Avtale Avbrutt
@@ -167,7 +167,6 @@
     all_day: Hele dagen
     manage_appointment_record_hint: Administrer alle avtaleoppføringene til de tilgjengelige leverandørene og tjenestene.
     select_filter_item_hint: Velg en leverandør eller en tjeneste og se avtalene i kalenderen.
-    enable_appointment_sync_hint: Aktiver avtalessynkronisering med en ekstern kalender.
     manage_customers_hint: Administrer registrerte kunder og se deres bestillingshistorikk.
     manage_services_hint: Administrer de tilgjengelige tjenestene og kategoriene i systemet.
     manage_users_hint: Administrer backend-brukere (administratorer, leverandører, assistenter).
@@ -452,7 +451,7 @@
     company: Firma
     remove: Fjern
     login_button: Innloggingsknapp
-    display_login_button_hint: Definerer om påloggingsknappen vises på bestillingssiden.
+    display_login_button_hint: "Bestemmer om innloggingsknappen for ansatte vises på bookingsiden."
     private: Privat
     private_hint: "Private oppføringer vises ikke på den offentlige bookingsiden, men kan fortsatt bookes via deres direkte bookinglenke."
     reset: Tilbakestill
@@ -652,7 +651,7 @@
     start_date: Startdato
     end_date: Sluttdato
     remember_me: Husk min informasjon
-    remember_me_hint: Lagre opplysningene dine for raskere booking neste gang.
+    remember_me_hint: "Lagre opplysningene dine i denne nettleseren for raskere booking neste gang."
     legal_notice: Juridisk merknad
     legal_notice_url: URL for juridisk merknad
     legal_notice_url_hint: Skriv inn URL-en til din side med juridisk merknad.
@@ -695,24 +694,24 @@
     messages_intercept_required: "Feilsøking krever en gyldig e-postadresse og et gyldig telefonnummer å omdirigere til."
     messages_retention_days: Delete messages older than (days)
     messages_retention_days_hint: Messages older than this many days are deleted automatically. Set 0 to keep all messages.
-    messages_email_subject: Outgoing Email Subject Line
+    messages_email_subject: "Emnefelt for e-post"
     messages_email_subject_hint: Used for emails without their own Short Text, and for messages sent from the customer page.
     messages_providers_info: Notification providers deliver your notifications by email or SMS. Configure at least one provider and tick it inside each notification template.
     messages_provider_disabled: Disabled
-    messages_provider_outgoing: Outgoing
-    messages_provider_incoming_outgoing: Incoming and outgoing
+    messages_provider_outgoing: "Bare send"
+    messages_provider_incoming_outgoing: "Send og motta"
     messages_provider_email_info: Send notifications by email through the server or SMTP, and receive replies through the server or IMAP.
     messages_provider_twilio_info: Send and receive SMS with a Twilio account and phone number.
     messages_provider_plivo_info: Send and receive SMS with a Plivo account and phone number.
     messages_provider_textanywhere_info: Send and receive SMS with a TextAnywhere account.
-    messages_incoming: Incoming
-    messages_incoming_hint: Customer can reply to support incoming messages as well as outgoing ones.
+    messages_incoming: "Motta svar"
+    messages_incoming_hint: "Kunder kan svare på meldingene du sender."
     messages_test_sms_sent: "Test-SMS sendt, sjekk telefonen."
     messages_test_sms_number: "Testtelefonnummer"
     messages_test_sms: "Send test-SMS"
     messages_smsgateway_invalid: "Gateway-innstillingene kunne ikke valideres:"
-    messages_smsgateway_inbound_hint: "Telefonen leverer innkommende meldinger til denne adressen, registreringen skjer automatisk ved lagring med mottak paa."
-    messages_smsgateway_step_activate: "Huk av Aktiv og Motta innkommende meldinger, og lagre. Innstillingene testes; rett feil og test sending med knappen Send test-SMS nedenfor."
+    messages_smsgateway_inbound_hint: "Telefonen leverer mottatte meldinger til denne adressen, registreringen skjer automatisk ved lagring med mottak slått på."
+    messages_smsgateway_step_activate: "Kryss av for Aktiv og Motta svar, og trykk deretter Lagre. Innstillingene testes, rett eventuelle feil og bruk knappen Send test-SMS nedenfor for å teste sending."
     messages_smsgateway_step_credentials: "Paa startskjermen: slaa av Local server, slaa paa Cloud server og trykk paa Offline-knappen for aa koble til (huk ogsaa av Start on boot), kopier saa brukernavnet og passordet fra startskjermen til Brukernavn og Passord nedenfor."
     messages_smsgateway_step_signing: "Gaa til appens Settings -> Webhooks -> Signing Key -> skriv inn en signeringsnoekkel og kopier den til Webhook-signeringsnoekkel nedenfor."
     messages_smsgateway_step_token: "Bruker du en privat server maa du ogsaa skrive inn Private Token paa samme skjerm - tokenet ligger i /app/data/private_token paa gateway-serveren."
@@ -733,14 +732,14 @@
     messages_smsgateway_password: "Passord"
     messages_smsgateway_signing_key: "Webhook-signeringsnoekkel"
     messages_provider_smsgateway_info: "Sender og mottar SMS via en Android-telefon med SMS Gateway-appen mot vaar egen server, ingen kostnad per melding."
-    messages_email_outgoing: Outgoing email
+    messages_email_outgoing: "Send e-post"
     messages_email_mode: Sending method
     messages_email_mode_server: Send email through server
     messages_email_mode_smtp: Send email with SMTP
     messages_smtp_host: SMTP host
     messages_smtp_port: SMTP port
     messages_smtp_tls: Use TLS
-    messages_email_incoming_section: Incoming email
+    messages_email_incoming_section: "Motta e-post"
     messages_email_incoming_mode: Receiving method
     messages_email_incoming_server: Receive email through server
     messages_email_incoming_imap: Receive email with IMAP
@@ -749,8 +748,8 @@
     messages_imap_port: IMAP port
     messages_email_credentials_hint: "Need an email delivery service? Get SMTP credentials from"
     messages_sms_credentials_hint: "Get your credentials from the provider console:"
-    messages_inbound_webhook: Incoming webhook URL
-    messages_inbound_webhook_hint: Paste this URL into the provider console so incoming messages reach the app. Keep it secret.
+    messages_inbound_webhook: "Webhook-URL for mottatte meldinger"
+    messages_inbound_webhook_hint: "Lim inn denne URL-en i leverandørens konsoll slik at mottatte meldinger når appen. Hold den hemmelig."
     messages_twilio_account_sid: Account SID
     messages_twilio_auth_token: Auth token
     messages_from_number: From phone number
@@ -783,8 +782,8 @@
     open_all_notification_templates: Open all notification templates
     close_all_notification_templates: Close all notification templates
     messages_address: Address
-    messages_incoming_label: Incoming
-    messages_outgoing_label: Outgoing
+    messages_incoming_label: "Mottatt"
+    messages_outgoing_label: "Sendt"
     messages_manual_label: Manual
     messages_unknown_sender: Unknown sender
     messages_status_sent: Sent
@@ -889,7 +888,7 @@
     filter_statuses_hint: 'Choose which appointment statuses to show.'
     appointment_statuses: 'Appointment Statuses'
     inbox: 'Inbox'
-    inbox_hint: 'Incoming messages from your customers.'
+    inbox_hint: "Meldinger mottatt fra kundene dine."
     read: 'Read'
     message: 'Message'
     mark_as_read: 'Mark as read'
@@ -961,7 +960,7 @@
     time_off_hint: "Hvis det gjelder en del av en fridag, angi timene du er borte. De lagres som en pause på disse datoene."
     messages_sms_variation: "Varier hver SMS"
     messages_sms_variation_hint: "Legger til en kort referansekode på slutten av hver SMS slik at ingen tekster er like, noe enkelte nettverk krever."
-    provider_color_hint: "Brukes for denne leverandørens avtaler når kalenderen viser alle."
+    provider_color_hint: "Bakgrunn for denne leverandørens avtaler i kalenderen. Tjenestens farge vises på kanten"
     working_providers: "Leverandører på jobb"
     hidden_from_public: "Skjult fra offentligheten"
     slot_interval_hint: "Hvor ofte starttider tilbys kundene. Med 15 kan en tjeneste på 45 minutter starte kl. 9:00, 9:15, 9:30 og så videre; med 60 kl. 9:00, 10:00, 11:00. Det holder ikke av ledig tid etter avtalen: for det, gjør tjenestens varighet lengre."
@@ -978,8 +977,25 @@
     message_move_to: "Flytt til {name}"
     message_moved: "Melding flyttet"
     notification_tokens_hint: "Malfelt du kan bruke. Klikk på ett for å sette det inn der du skrev, eller for å kopiere det:"
-    inbox_info: "Innkommende meldinger. Inbox viser meldinger som skal behandles - merk hver som Ferdig når den er behandlet eller lest; de kan fortsatt leses på kundens side eller i Arkiv. Arkiv viser meldinger som er merket som Ferdig - der finnes en Angre-knapp som flytter dem tilbake til Inbox."
+    inbox_info: "Mottatte meldinger. Innboks viser meldinger som må følges opp, merk hver som ferdig når den er behandlet eller lest - du kan fortsatt lese dem på kundens side eller i arkivet. Arkiv viser meldinger som er merket som ferdige - det har en angreknapp for å sende dem tilbake til innboksen."
     booking_release_time: "Åpningstidspunkt"
     booking_release_time_hint: "Den neste dagen ved slutten av den fremtidige bestillingsgrensen åpner på dette tidspunktet hver dag."
     inbox_filter_archive: "Arkiv"
     load_more_messages: "Last inn flere meldinger"
+    clear_providers: "Fjern leverandører"
+    clear_services: "Fjern tjenester"
+    refresh: "Oppdater"
+    sync: "Synkroniser"
+    feed: "Feed"
+    do_not_contact_hint: "Ingen bookingbekreftelser, endringer eller påminnelser sendes til denne kunden"
+    do_not_contact_warning: "Denne kunden har bedt om å ikke bli kontaktet. Meldinger som sendes hit blir likevel levert."
+    company_address: "Bedriftsadresse"
+    company_address_hint: "Dette blir standardstedet for alle bookinger og kalenderinvitasjoner"
+    cancel_reason_optional: "Valgfri grunn til at du avbryter avtalen, hvis du vil gi oss beskjed:"
+    late_cancel_reason: "Grunn til at du avbryter avtalen:"
+    appointments_include_locations: "Avtaler inkluderer sted"
+    appointments_include_locations_hint: "Lar en stylist, assistent eller administrator angi stedet for en avtale. Når dette er av, er stedet alltid bedriftsadressen."
+    appointments_include_meeting_links: "Avtaler inkluderer møtelenker"
+    appointments_include_meeting_links_hint: "Lar en stylist, assistent eller administrator legge til en lenke til et nettmøte i en avtale. Lenken tas med i kundens kalenderinvitasjon."
+    booking_provider_first_hint: "På bookingsiden vises stylistene for kunden før de velger en tjeneste."
+    display_order_switch_hint: "La kunder bruke en knapp i første trinn på bookingsiden for å velge tjeneste først eller stylist først, før de velger den andre."

@@ -1,0 +1,45 @@
+<%# Tick-box dropdown (Stylists or Services) for the List and Calendar pages,
+    styled like the Statuses dropdown; utils/tick_filter runs All, Clear and
+    Working. Locals: id, label, hint, items ([name, id] pairs), checked (ids),
+    all_label, clear_label; optional name (the boxes post as name[], with a
+    blank field so that none ticked differs from not named), working (nil for
+    no Working box, else whether it is ticked) and all_value (what a form
+    sends for every item ticked; without it nothing is sent). The button counts
+    the ticked items unless Working or every item is ticked. %>
+<% name = local_assigns[:name] %>
+<% field_name = name && "#{name}[]" %>
+<% working = local_assigns[:working] %>
+<% everything = working || checked.size == items.size %>
+<div class="dropdown tick-filter" id="<%= id %>" data-label="<%= label %>"
+     <%= tag.attributes(data: { name: name, all_value: local_assigns[:all_value] }) %>>
+    <button class="btn btn-light dropdown-toggle" type="button" data-bs-toggle="dropdown" data-bs-auto-close="outside"
+            aria-expanded="false" data-tippy-content="<%= hint %>">
+        <%= everything ? label : "#{label} (#{checked.size})" %>
+    </button>
+    <ul class="dropdown-menu p-2">
+        <li><button type="button" class="dropdown-item" data-tick="all"><%= all_label %></button></li>
+        <li><button type="button" class="dropdown-item" data-tick="clear"><%= clear_label %></button></li>
+        <% unless working.nil? %>
+            <li>
+                <label class="dropdown-item d-flex align-items-center gap-2 mb-0">
+                    <input class="form-check-input m-0" type="checkbox" data-tick="working" value="working"
+                           <%= tag.attributes(name: field_name, checked: working) %>>
+                    <%= lang('working_providers') %>
+                </label>
+            </li>
+        <% end %>
+        <li><hr class="dropdown-divider"></li>
+        <% items.each do |item_name, item_id| %>
+            <li>
+                <label class="dropdown-item d-flex align-items-center gap-2 mb-0">
+                    <input class="form-check-input m-0" type="checkbox" value="<%= item_id %>"
+                           <%= tag.attributes(name: field_name, checked: checked.include?(item_id)) %>>
+                    <%= item_name %>
+                </label>
+            </li>
+        <% end %>
+        <% if name %>
+            <%= hidden_field_tag field_name, "", id: nil %>
+        <% end %>
+    </ul>
+</div>

@@ -28,16 +28,15 @@ class BookingCancellationController < ApplicationController
     appointment_hash = params[:appointment_hash].to_s
     return head :bad_request unless appointment_hash.match?(/\A[a-zA-Z0-9]+\z/)
 
-    cancellation_reason = params[:cancellation_reason].to_s
-    return head :forbidden if cancellation_reason.empty?
-
-    cancellation_reason = helpers.strip_tags(cancellation_reason.strip[0, 1000])
+    cancellation_reason = helpers.strip_tags(params[:cancellation_reason].to_s.strip[0, 1000])
 
     appointment = Appointment.find_by(booking_hash: appointment_hash)
     return render_appointment_not_found unless appointment
     return render_appointment_not_found if appointment.frees_slot?
 
     kind = "late_cancel" if BookingWindows.late?(appointment)
+    # The late cancel page asks for the reason the normal modal left optional.
+    return redirect_to "/booking/reschedule/#{appointment_hash}" if kind == "late_cancel" && cancellation_reason.empty?
 
     provider = appointment.provider
     customer = appointment.customer
@@ -64,6 +63,8 @@ class BookingCancellationController < ApplicationController
       page_title: helpers.lang("appointment_cancelled_title"),
       company_color: Setting.get("company_color"),
       late_notice: kind == "late_cancel" ? BookingWindows.late_notice(helpers) : nil,
+      legal_notice_url: Setting.get("legal_notice_url"),
+      imprint_url: Setting.get("imprint_url"),
       google_analytics_code: Setting.get("google_analytics_code"),
       matomo_analytics_url: Setting.get("matomo_analytics_url"),
       matomo_analytics_site_id: Setting.get("matomo_analytics_site_id")

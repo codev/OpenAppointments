@@ -136,7 +136,8 @@ class BookingWizardReviewTest < ActionDispatch::IntegrationTest
     with_memory_cache do
       travel_to booking_time do # the token expires ten minutes after the page
         get "/booking/reschedule/#{HASH}"
-        assert_select "#cancel-appointment-modal form[action='/booking_cancellation/of/#{HASH}'] textarea[name=cancellation_reason][required]"
+        assert_select "#cancel-appointment-modal form[action='/booking_cancellation/of/#{HASH}'] textarea[name=cancellation_reason]:not([required])"
+        assert_select "#cancel-appointment-modal p", text: I18n.t("ea.cancel_reason_optional")
         assert_select "#cancel-appointment[data-bs-target='#cancel-appointment-modal']"
         token = css_select("#delete-personal-information-form input[name=customer_token]").first["value"]
         assert_match(/\A[a-f0-9]{32}\z/, token)
@@ -211,6 +212,21 @@ class BookingWizardReviewTest < ActionDispatch::IntegrationTest
     assert_select ".display-booking-selection", text: "#{services(:haircut).name} │ Zane"
     assert_select "#steps #step-2.completed-step[data-href*='step=second']"
     assert_select "#steps #step-3.active-step"
+  end
+
+  test "any provider names the stylist with the most free hours that day on the confirmation step" do
+    riley = User.create!(name: "Riley", email: "riley@example.org", role: Role.find_by!(slug: Role::PROVIDER), timezone: "Europe/London")
+    riley.create_settings!(username: "riley", password: Passwords.hash("rileypass1"), working_plan: user_settings(:zane).working_plan)
+    ServiceProviderLink.create!(provider: riley, service: services(:haircut))
+
+    travel_to(booking_time) { confirm(provider_id: "any-provider") }
+    assert_select ".display-booking-selection", text: "#{services(:haircut).name} │ Riley"
+    assert_select "#wizard-state[data-selection=?]", "#{services(:haircut).name} │ Riley"
+    assert_select "#wizard-frame-5 #appointment-details", text: /Riley/
+    assert_select "#wizard-frame-5 input[name='appointment[id_users_provider]'][value='any-provider']"
+
+    get "/", params: @state.merge(provider_id: "any-provider", step: "time")
+    assert_select ".display-booking-selection", text: "#{services(:haircut).name} │ Any Provider"
   end
 
   test "a chosen provider narrows the services to the ones they offer" do

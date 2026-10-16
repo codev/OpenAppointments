@@ -17,6 +17,18 @@ App.Components.EventModal = (function () {
         frame().src = App.Utils.Url.siteUrl(url);
     }
 
+    // The one stylist or service the page is filtered to, else undefined. The
+    // Calendar's stylist is the one in focus (its hidden select, which also
+    // covers a stylist's own calendar); otherwise the single ticked box.
+    function filteredId(type) {
+        const $select = $('#select-filter-item');
+        if (type === 'provider' && $select.length) {
+            return $select.val() === 'all' ? undefined : $select.val();
+        }
+
+        return App.Utils.TickFilter?.single(type + '-filter');
+    }
+
     function reportSkipped(skipped) {
         if (!skipped || !skipped.length) {
             return;
@@ -78,11 +90,6 @@ App.Components.EventModal = (function () {
         }
 
         if (changed) {
-            const colors = JSON.parse($service.attr('data-colors') || '{}');
-            if (colors[serviceId]) {
-                App.Components.ColorSelection.setColor($('#appointment-color'), colors[serviceId]);
-                $('#appointment-color input[type=hidden]').val(colors[serviceId]);
-            }
             const durations = JSON.parse($service.attr('data-durations') || '{}');
             const start = App.Utils.UI.getDateTimePickerValue($('#start-datetime'));
             if (start) {
@@ -206,18 +213,17 @@ App.Components.EventModal = (function () {
             // Toolbar: new appointment / unavailability for the filtered provider or service.
             $(document).on('click', '#insert-appointment', (event) => {
                 event.preventDefault();
-                const $filter = $('#select-filter-item, #filter-provider').first();
-                const type = $filter.find('option:selected').attr('type') || ($filter.is('#filter-provider') ? 'provider' : '');
                 const params = new URLSearchParams();
-                if (type === 'provider' && /^\d+$/.test($filter.val())) params.set('provider_id', $filter.val());
-                if (type === 'service' && $filter.val()) params.set('service_id', $filter.val());
+                const providerId = filteredId('provider');
+                const serviceId = filteredId('service');
+                if (providerId) params.set('provider_id', providerId);
+                if (serviceId) params.set('service_id', serviceId);
                 open('appointments/new?' + params.toString());
             });
             $(document).on('click', '#insert-unavailability', (event) => {
                 event.preventDefault();
-                const $filter = $('#select-filter-item, #filter-provider').first();
-                const providerId = $filter.find('option:selected').attr('type') === 'provider' || $filter.is('#filter-provider') ? $filter.val() : '';
-                open('unavailabilities/new' + (/^\d+$/.test(providerId) ? '?provider_id=' + providerId : ''));
+                const providerId = filteredId('provider');
+                open('unavailabilities/new' + (providerId ? '?provider_id=' + providerId : ''));
             });
         });
     }

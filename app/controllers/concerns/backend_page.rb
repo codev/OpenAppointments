@@ -1,5 +1,5 @@
 # Shared behavior for backend pages, mirroring EA's controller boilerplate:
-# unauthenticated GETs redirect to login (with dest_url), authenticated users
+# unauthenticated GETs redirect to login (remembering the page), authenticated users
 # without the view privilege get 403, and common page vars are populated.
 module BackendPage
   extend ActiveSupport::Concern
@@ -7,9 +7,8 @@ module BackendPage
   private
 
   def require_backend_page!(resource)
-    session[:dest_url] = request.original_url
-
     unless logged_in?
+      remember_destination
       redirect_to login_path
       return false
     end

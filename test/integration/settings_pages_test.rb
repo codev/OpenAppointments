@@ -118,7 +118,7 @@ class SettingsPagesTest < ActionDispatch::IntegrationTest
     assert_select "[data-visible-when='messages_enabled=debug']" do
       assert_select "input[name='settings[messages_intercept_email]'][value='dev@example.org'][data-enabled-when='messages_enabled=debug']"
       assert_select "input[name='settings[messages_intercept_phone]'][value='+447700900123'][data-enabled-when='messages_enabled=debug']"
-      assert_select "small", text: /Every outgoing email/
+      assert_select "small", text: /Every email sent/
     end
   end
 
@@ -148,6 +148,17 @@ class SettingsPagesTest < ActionDispatch::IntegrationTest
     assert_equal "0", Setting.get("messages_enabled")
     assert_equal "", Setting.get("messages_intercept_email").to_s
     assert_equal "", Setting.get("messages_intercept_phone").to_s
+  end
+
+  test "general settings shows and saves the company address" do
+    login_admin
+    get "/general_settings"
+    assert_select "#company-address[name='settings[company_address]']"
+    assert_select "label[for='company-address']", text: /Company Address/
+    assert_select "#company-address ~ .form-text", text: /default location for all bookings and calendar invites/
+
+    post "/general_settings/save", params: { settings: { company_address: "1 High Street, London" } }
+    assert_equal "1 High Street, London", Setting.get("company_address")
   end
 
   test "general settings save persists whitelisted settings" do

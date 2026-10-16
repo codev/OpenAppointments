@@ -21,15 +21,30 @@ class CalendarTest < ActionDispatch::IntegrationTest
     assert_match "window.vars", response.body
   end
 
+  test "a stylist has no stylist dropdown on the calendar and is the stylist in focus" do
+    login_provider
+    get "/calendar"
+    assert_select "#provider-filter", count: 0
+    assert_select "#service-filter"
+    assert_select "#select-filter-item option[selected][value=?]", users(:zane).id.to_s
+  end
+
   test "calendar is the calendar view and appointments is the table view" do
     login_admin
     get "/calendar"
     assert_match 'id="select-filter-item"', response.body
     assert_match "pages/calendar", response.body
+    assert_select "#provider-filter input[data-tick=working]", count: 0
+    assert_select "#provider-filter input[value=?][checked]", users(:zane).id.to_s
+    assert_select "#provider-filter input[name]", count: 0
+    assert_select "#service-filter input[value=?][checked]", services(:haircut).id.to_s
+    # The hidden select only holds the one stylist in focus for sync, the feed and new events.
+    assert_select "#select-filter-item option[type=service]", count: 0
+    assert_select "#select-filter-item option[value=all]"
     get "/appointments"
     assert_response :success
     assert_match 'id="select-day-interval"', response.body
-    assert_match 'id="filter-provider"', response.body
+    assert_match 'id="provider-filter"', response.body
     assert_match "pages/appointments", response.body
   end
 
@@ -111,6 +126,58 @@ class CalendarTest < ActionDispatch::IntegrationTest
     assert_equal true, response.parsed_body["success"]
   end
 
+  test "save_appointment stores the service colour on the appointment" do
+    login_admin
+    services(:haircut).update!(color: "#abe9a4")
+    appointment = save_typed_customer({ name: "Col Our", email: "colour@example.org" })
+    assert_equal "#abe9a4", appointment.color
+  end
+
+  def save_typed_customer(customer_data)
+    post "/calendar/save_appointment", params: {
+      customer_data: customer_data,
+      appointment_data: { start_datetime: "2026-07-21 09:00:00", end_datetime: "2026-07-21 09:30:00",
+                          id_users_provider: users(:zane).id, id_services: services(:haircut).id,
+                          status: "Booked" }
+    }
+    assert_equal true, response.parsed_body["success"]
+    Appointment.appointments.order(:id).last
+  end
+
+  test "save_appointment reuses a customer with the same name and phone" do
+    login_admin
+    assert_no_difference "User.customers.count" do
+      appointment = save_typed_customer(name: "jx", phone_number: "07700 900321")
+      assert_equal users(:jx).id, appointment.id_users_customer
+    end
+  end
+
+  test "save_appointment gives a different name on the same contact its own record" do
+    login_admin
+    assert_difference "User.customers.count", 1 do
+      appointment = save_typed_customer(name: "JX Partner", phone_number: "+447700900321")
+      assert_not_equal users(:jx).id, appointment.id_users_customer
+    end
+  end
+
+  test "save_appointment gives a different name on the same email its own record" do
+    login_admin
+    assert_difference "User.customers.count", 1 do
+      appointment = save_typed_customer(name: "Someone Else", email: "j@example.org")
+      assert_not_equal users(:jx).id, appointment.id_users_customer
+    end
+  end
+
+  test "save_appointment keeps the phone a matched customer already has" do
+    login_admin
+    appointment = save_typed_customer(name: "JX", email: "j@example.org", phone_number: "+447700900555",
+                                      city: "Leeds")
+    jx = users(:jx).reload
+    assert_equal jx.id, appointment.id_users_customer
+    assert_equal "+447700900321", jx.phone_number
+    assert_equal "Leeds", jx.city
+  end
+
   test "save_appointment reports conflicts unless forced" do
     login_admin
     conflicting = { start_datetime: "2026-07-20 10:15:00", end_datetime: "2026-07-20 10:45:00",
@@ -126,6 +193,40 @@ class CalendarTest < ActionDispatch::IntegrationTest
       post "/calendar/save_appointment", params: { appointment_data: conflicting, force_save: true }
     end
     assert_equal true, response.parsed_body["success"]
+  end
+
+  test "save_appointment ignores the location unless appointments include locations" do
+    login_admin
+    data = { start_datetime: "2026-07-21 09:00:00", end_datetime: "2026-07-21 09:30:00",
+             id_users_provider: users(:zane).id, id_services: services(:haircut).id,
+             id_users_customer: users(:jx).id, status: "Booked", location: "Back room" }
+
+    post "/calendar/save_appointment", params: { appointment_data: data }
+    assert_equal true, response.parsed_body["success"]
+    assert_predicate Appointment.find(response.parsed_body["id"]).location, :blank?
+
+    Setting.set("appointments_include_locations", "1")
+    post "/calendar/save_appointment", params: { appointment_data: data, force_save: true }
+    assert_equal "Back room", Appointment.find(response.parsed_body["id"]).location
+  ensure
+    Setting.set("appointments_include_locations", "0")
+  end
+
+  test "save_appointment ignores the meeting link unless appointments include meeting links" do
+    login_admin
+    data = { start_datetime: "2026-07-21 09:00:00", end_datetime: "2026-07-21 09:30:00",
+             id_users_provider: users(:zane).id, id_services: services(:haircut).id,
+             id_users_customer: users(:jx).id, status: "Booked", meeting_link: "https://meet.example.org/abc" }
+
+    post "/calendar/save_appointment", params: { appointment_data: data }
+    assert_equal true, response.parsed_body["success"]
+    assert_predicate Appointment.find(response.parsed_body["id"]).meeting_link, :blank?
+
+    Setting.set("appointments_include_meeting_links", "1")
+    post "/calendar/save_appointment", params: { appointment_data: data, force_save: true }
+    assert_equal "https://meet.example.org/abc", Appointment.find(response.parsed_body["id"]).meeting_link
+  ensure
+    Setting.set("appointments_include_meeting_links", "0")
   end
 
   test "delete_appointment destroys the appointment" do

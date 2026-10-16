@@ -116,9 +116,9 @@ nl:
     appointment_confirmation: Afspraak bevestigen
     confirm: Bevestigen
     update: Bijwerken
-    cancel_appointment_hint: Druk op de knop "Annuleren" om uw afspraak te verwijderen van de agenda van dit bedrijf.
+    cancel_appointment_hint: "Druk op de knop \"Annuleren\" om de afspraak te annuleren"
     cancel: Annuleren
-    appointment_registered: Uw afspraak is succesvol geboekt.
+    appointment_registered: "Alles is geregeld!"
     cancel_appointment_title: Afspraak annuleren
     appointment_cancelled: Uw afspraak is met succes geannuleerd.
     appointment_cancelled_title: Afspraak geannuleerd
@@ -167,7 +167,6 @@ nl:
     all_day: Hele dag
     manage_appointment_record_hint: Beheer alle afspraken van de beschikbare medewerkers en diensten.
     select_filter_item_hint: Selecteer een medewerkers of een dienst en bekijk de afspraken op de kalender.
-    enable_appointment_sync_hint: Schakel synchronisatie met het Google Agenda account van de aanbieder in.
     manage_customers_hint: Beheer van geregistreerde klanten en hun historie.
     manage_services_hint: Beheer beschikbare diensten en categorieën van het systeem.
     manage_users_hint: Beheer de backend gebruikers.
@@ -452,7 +451,7 @@ nl:
     company: Bedrijf
     remove: Verwijderen
     login_button: Inlogknop
-    display_login_button_hint: Bepaalt of de inlogknop wordt weergegeven op de boekingspagina.
+    display_login_button_hint: "Bepaalt of de inlogknop voor medewerkers op de boekingspagina wordt getoond."
     private: Privé
     private_hint: "Privérecords worden niet getoond op de openbare boekingspagina, maar kunnen nog steeds worden geboekt via hun directe boekingslink."
     reset: Resetten
@@ -652,7 +651,7 @@ nl:
     start_date: Startdatum
     end_date: Einddatum
     remember_me: Mijn gegevens onthouden
-    remember_me_hint: Sla uw gegevens op voor een snellere boeking de volgende keer.
+    remember_me_hint: "Bewaar uw gegevens in deze browser om de volgende keer sneller te boeken."
     legal_notice: Juridische kennisgeving
     legal_notice_url: URL juridische kennisgeving
     legal_notice_url_hint: Voer de URL in naar uw pagina met juridische kennisgeving.
@@ -695,24 +694,24 @@ nl:
     messages_intercept_required: "Debug heeft een geldig e-mailadres en telefoonnummer nodig om naar om te leiden."
     messages_retention_days: Delete messages older than (days)
     messages_retention_days_hint: Messages older than this many days are deleted automatically. Set 0 to keep all messages.
-    messages_email_subject: Outgoing Email Subject Line
+    messages_email_subject: "Onderwerp van e-mail"
     messages_email_subject_hint: Used for emails without their own Short Text, and for messages sent from the customer page.
     messages_providers_info: Notification providers deliver your notifications by email or SMS. Configure at least one provider and tick it inside each notification template.
     messages_provider_disabled: Disabled
-    messages_provider_outgoing: Outgoing
-    messages_provider_incoming_outgoing: Incoming and outgoing
+    messages_provider_outgoing: "Alleen verzenden"
+    messages_provider_incoming_outgoing: "Verzenden en ontvangen"
     messages_provider_email_info: Send notifications by email through the server or SMTP, and receive replies through the server or IMAP.
     messages_provider_twilio_info: Send and receive SMS with a Twilio account and phone number.
     messages_provider_plivo_info: Send and receive SMS with a Plivo account and phone number.
     messages_provider_textanywhere_info: Send and receive SMS with a TextAnywhere account.
-    messages_incoming: Incoming
-    messages_incoming_hint: Customer can reply to support incoming messages as well as outgoing ones.
+    messages_incoming: "Antwoorden ontvangen"
+    messages_incoming_hint: "Klanten kunnen reageren op de berichten die u verstuurt."
     messages_test_sms_sent: "Test-sms verstuurd, controleer de telefoon."
     messages_test_sms_number: "Testtelefoonnummer"
     messages_test_sms: "Test-sms versturen"
     messages_smsgateway_invalid: "De gateway-instellingen konden niet worden gevalideerd:"
-    messages_smsgateway_inbound_hint: "De telefoon bezorgt inkomende berichten op dit adres, registratie gebeurt automatisch bij het opslaan met ontvangen ingeschakeld."
-    messages_smsgateway_step_activate: "Vink Actief en Inkomende berichten ontvangen aan en sla op. De instellingen worden getest; herstel fouten en test het verzenden met de knop Test-sms versturen hieronder."
+    messages_smsgateway_inbound_hint: "De telefoon levert ontvangen berichten af op dit adres, registratie gebeurt automatisch bij het opslaan met ontvangen ingeschakeld."
+    messages_smsgateway_step_activate: "Vink Actief en Antwoorden ontvangen aan en kies Opslaan. De instellingen worden getest, los eventuele fouten op en test het verzenden met de knop Test-sms verzenden hieronder."
     messages_smsgateway_step_credentials: "Zet op het beginscherm Local server uit, Cloud server aan en druk op de knop Offline om te verbinden (vink ook Start on boot aan), kopieer daarna de gebruikersnaam en het wachtwoord van het beginscherm naar Gebruikersnaam en Wachtwoord hieronder."
     messages_smsgateway_step_signing: "Ga naar Settings -> Webhooks -> Signing Key in de app -> voer een ondertekeningssleutel in en kopieer die naar de Webhook-ondertekeningssleutel hieronder."
     messages_smsgateway_step_token: "Gebruikt u een privéserver, vul dan op dat scherm ook de Private Token in - de token staat in /app/data/private_token op de gatewayserver."
@@ -733,14 +732,14 @@ nl:
     messages_smsgateway_password: "Wachtwoord"
     messages_smsgateway_signing_key: "Webhook-ondertekeningssleutel"
     messages_provider_smsgateway_info: "Verstuurt en ontvangt sms via een Android-telefoon met de SMS Gateway-app tegen onze eigen server, zonder kosten per bericht."
-    messages_email_outgoing: Outgoing email
+    messages_email_outgoing: "E-mail verzenden"
     messages_email_mode: Sending method
     messages_email_mode_server: Send email through server
     messages_email_mode_smtp: Send email with SMTP
     messages_smtp_host: SMTP host
     messages_smtp_port: SMTP port
     messages_smtp_tls: Use TLS
-    messages_email_incoming_section: Incoming email
+    messages_email_incoming_section: "E-mail ontvangen"
     messages_email_incoming_mode: Receiving method
     messages_email_incoming_server: Receive email through server
     messages_email_incoming_imap: Receive email with IMAP
@@ -749,8 +748,8 @@ nl:
     messages_imap_port: IMAP port
     messages_email_credentials_hint: "Need an email delivery service? Get SMTP credentials from"
     messages_sms_credentials_hint: "Get your credentials from the provider console:"
-    messages_inbound_webhook: Incoming webhook URL
-    messages_inbound_webhook_hint: Paste this URL into the provider console so incoming messages reach the app. Keep it secret.
+    messages_inbound_webhook: "Webhook-URL voor ontvangen berichten"
+    messages_inbound_webhook_hint: "Plak deze URL in de console van de aanbieder zodat ontvangen berichten de app bereiken. Houd hem geheim."
     messages_twilio_account_sid: Account SID
     messages_twilio_auth_token: Auth token
     messages_from_number: From phone number
@@ -783,8 +782,8 @@ nl:
     open_all_notification_templates: Open all notification templates
     close_all_notification_templates: Close all notification templates
     messages_address: Address
-    messages_incoming_label: Incoming
-    messages_outgoing_label: Outgoing
+    messages_incoming_label: "Ontvangen"
+    messages_outgoing_label: "Verzonden"
     messages_manual_label: Manual
     messages_unknown_sender: Unknown sender
     messages_status_sent: Sent
@@ -889,7 +888,7 @@ nl:
     filter_statuses_hint: 'Choose which appointment statuses to show.'
     appointment_statuses: 'Appointment Statuses'
     inbox: 'Inbox'
-    inbox_hint: 'Incoming messages from your customers.'
+    inbox_hint: "Berichten ontvangen van uw klanten."
     read: 'Read'
     message: 'Message'
     mark_as_read: 'Mark as read'
@@ -961,7 +960,7 @@ nl:
     time_off_hint: "Voor afwezigheid gedurende een deel van een dag voert u de uren in waarop u weg bent. Deze worden op die datums als pauze opgeslagen."
     messages_sms_variation: "Elke SMS laten variëren"
     messages_sms_variation_hint: "Voegt een korte referentiecode toe aan het einde van elke SMS zodat geen twee berichten hetzelfde zijn, wat sommige netwerken vereisen."
-    provider_color_hint: "Wordt gebruikt voor de afspraken van deze medewerker wanneer de kalender iedereen toont."
+    provider_color_hint: "Achtergrond voor de afspraken van deze medewerker in de agenda. De kleur van de dienst staat aan de rand"
     working_providers: "Werkende medewerkers"
     hidden_from_public: "Verborgen voor publiek"
     slot_interval_hint: "Hoe vaak starttijden aan klanten worden aangeboden. Met 15 kan een dienst van 45 minuten beginnen om 9:00, 9:15, 9:30 enzovoort; met 60 om 9:00, 10:00, 11:00. Er wordt geen tijd vrijgehouden na de afspraak: maak daarvoor de duur van de dienst langer."
@@ -978,8 +977,25 @@ nl:
     message_move_to: "Verplaats naar {name}"
     message_moved: "Bericht verplaatst"
     notification_tokens_hint: "Sjabloonvelden die u kunt gebruiken. Klik op een veld om het in te voegen waar u typte, of om het te kopiëren:"
-    inbox_info: "Inkomende berichten. Inbox toont berichten waar nog iets mee moet gebeuren - markeer elk bericht als Afgehandeld zodra het is behandeld of gelezen; ze zijn nog steeds te lezen op de klantpagina of in het Archief. Archief toont berichten die als Afgehandeld zijn gemarkeerd - de knop Ongedaan maken zet ze terug in de Inbox."
+    inbox_info: "Ontvangen berichten. De Inbox toont berichten waar actie op nodig is; markeer elk bericht als afgehandeld zodra het is behandeld of gelezen - u kunt het nog steeds lezen op de pagina van de klant of in het archief. Het Archief toont berichten die als afgehandeld zijn gemarkeerd - het heeft een knop Ongedaan maken om een bericht terug naar de inbox te zetten."
     booking_release_time: "Openingstijd"
     booking_release_time_hint: "De volgende dag aan het einde van de toekomstige boekingslimiet gaat elke dag op dit tijdstip open."
     inbox_filter_archive: "Archief"
     load_more_messages: "Meer berichten laden"
+    clear_providers: "Medewerkers wissen"
+    clear_services: "Diensten wissen"
+    refresh: "Vernieuwen"
+    sync: "Synchroniseren"
+    feed: "Feed"
+    do_not_contact_hint: "Aan deze klant worden geen boekingsbevestigingen, wijzigingen of herinneringen gestuurd"
+    do_not_contact_warning: "Deze klant heeft gevraagd niet gecontacteerd te worden. Berichten die hier worden verzonden, worden nog steeds bezorgd."
+    company_address: "Bedrijfsadres"
+    company_address_hint: "Dit is de standaardlocatie voor alle boekingen en agenda-uitnodigingen"
+    cancel_reason_optional: "Optionele reden voor het annuleren van de afspraak, als u het ons wilt laten weten:"
+    late_cancel_reason: "Reden voor het annuleren van de afspraak:"
+    appointments_include_locations: "Afspraken bevatten locaties"
+    appointments_include_locations_hint: "Staat een stylist, assistent of beheerder toe de locatie van een afspraak in te stellen. Als dit uit staat, is de locatie altijd het bedrijfsadres."
+    appointments_include_meeting_links: "Afspraken bevatten vergaderlinks"
+    appointments_include_meeting_links_hint: "Staat een stylist, assistent of beheerder toe een link naar een online vergadering aan een afspraak toe te voegen. De link wordt opgenomen in de agenda-uitnodiging van de klant."
+    booking_provider_first_hint: "Toon op de boekingspagina eerst de stylists aan de klant, voordat die een dienst kiest."
+    display_order_switch_hint: "Sta klanten toe om in de eerste stap van de boekingspagina met een knop te kiezen of ze eerst een dienst of eerst een stylist selecteren, voordat ze de ander kiezen."

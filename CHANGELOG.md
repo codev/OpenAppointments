@@ -3,6 +3,15 @@
 The about page lists these notes; every release needs a section here matching
 CloudronManifest.json.
 
+## 3.1.0
+
+- Calendar and List: Stylists and Services are tick-box dropdowns so several can be shown together; appointments get the stylist's colour edged with the service colour
+- Calendar: one Feed button covers Calendar Feed and Enable or Disable Sync
+- Customers: a Do not contact tick box that stops automatic notifications, set by the 10to8 import
+- Booking: the cancel reason is optional unless the cancellation is late; with Any Stylist the confirmation step names the stylist
+- Settings: Company Address for calendar invites, and switches to include Locations and Meeting Links on appointments, off by default
+- Repeating appointments are for admins and assistants only
+
 ## 3.0.1
 
 - List: option to show 1, 3 or 7 days of appointments

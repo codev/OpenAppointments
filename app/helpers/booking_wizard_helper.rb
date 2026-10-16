@@ -69,10 +69,19 @@ module BookingWizardHelper
     vars(:available_services)&.find { |row| row["id"] == @service_id }
   end
 
+  # With Any Provider, the label until the confirmation step names the pick.
   def selected_provider
-    return { "name" => lang("any_provider") } if @provider_id == BookingPayloads::ANY_PROVIDER
+    if @provider_id == BookingPayloads::ANY_PROVIDER
+      return provider_row(@any_provider_pick) || { "name" => lang("any_provider") }
+    end
 
-    vars(:available_providers)&.find { |row| row["id"].to_s == @provider_id.to_s }
+    provider_row(@provider_id)
+  end
+
+  def provider_row(id)
+    return if id.blank?
+
+    vars(:available_providers)&.find { |row| row["id"].to_s == id.to_s }
   end
 
   # The header line: the choices so far in wizard order, a label until chosen.

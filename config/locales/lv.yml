@@ -116,9 +116,9 @@ lv:
     appointment_confirmation: Susitikimo apstiprināšana
     confirm: Patvirtinti
     update: Atnaujināt
-    cancel_appointment_hint: Paspauskite "Atšaukti", lai pašalintumėte tikšanos no uzņēmuma tvarkaraščio.
+    cancel_appointment_hint: "Lai atceltu pierakstu, nospiediet pogu \"Atcelt\""
     cancel: Atšaukti
-    appointment_registered: Jūsu apmeklējums bija veiksmīgi reģistrēts!
+    appointment_registered: "Viss gatavs!"
     cancel_appointment_title: Atšaukti tikšanos
     appointment_cancelled: Jūsu tikšanās bija veiksmīgi atšauktas.
     appointment_cancelled_title: Susitikimas atšauktas
@@ -167,7 +167,6 @@ lv:
     all_day: Visą dienu
     manage_appointment_record_hint: Tvarkykite visus galimų tiekēju un pakalpojumu saņemšanas ierakstus.
     select_filter_item_hint: Izvēlieties tiekėją jeb paslaugu un pārskatiniet tikimus kalendoriuje.
-    enable_appointment_sync_hint: Ieslēdziet tikšanās sinhronizēšanu ar ārējo kalendoru.
     manage_customers_hint: Tvarkykite reģistrētos klientus un pārskatiet viņu pasūtījumu vēsturi.
     manage_services_hint: Tvarkykite galimas sistēmas pakalpojumus un kategorijas.
     manage_users_hint: Tvarkykite jaupakalinės sistēmas lietotāju (administratoru, lietotāju, asistentu).
@@ -452,7 +451,7 @@ lv:
     company: Uzņēmums
     remove: Noņemt
     login_button: Pieteikšanās poga
-    display_login_button_hint: Nosaka, vai rezervēšanas lapā tiek rādīta pieteikšanās poga.
+    display_login_button_hint: "Nosaka, vai rezervācijas lapā tiek rādīta darbinieku pieteikšanās poga."
     private: Privāts
     private_hint: "Privātie ieraksti netiek rādīti publiskajā rezervāciju lapā, taču tos joprojām var rezervēt, izmantojot to tiešo rezervācijas saiti."
     reset: Atiestatīt
@@ -652,7 +651,7 @@ lv:
     start_date: Sākuma datums
     end_date: Beigu datums
     remember_me: Atcerēties manu informāciju
-    remember_me_hint: Saglabājiet savus datus ātrākai rezervēšanai nākamreiz.
+    remember_me_hint: "Saglabājiet savus datus šajā pārlūkā, lai nākamreiz rezervētu ātrāk."
     legal_notice: Juridisks paziņojums
     legal_notice_url: Juridiskā paziņojuma URL
     legal_notice_url_hint: Ievadiet sava juridiskā paziņojuma lapas URL.
@@ -695,24 +694,24 @@ lv:
     messages_intercept_required: "Atkļūdošanai nepieciešama derīga e-pasta adrese un tālruņa numurs pāradresēšanai."
     messages_retention_days: Delete messages older than (days)
     messages_retention_days_hint: Messages older than this many days are deleted automatically. Set 0 to keep all messages.
-    messages_email_subject: Outgoing Email Subject Line
+    messages_email_subject: "E-pasta tēma"
     messages_email_subject_hint: Used for emails without their own Short Text, and for messages sent from the customer page.
     messages_providers_info: Notification providers deliver your notifications by email or SMS. Configure at least one provider and tick it inside each notification template.
     messages_provider_disabled: Disabled
-    messages_provider_outgoing: Outgoing
-    messages_provider_incoming_outgoing: Incoming and outgoing
+    messages_provider_outgoing: "Tikai sūtīt"
+    messages_provider_incoming_outgoing: "Sūtīt un saņemt"
     messages_provider_email_info: Send notifications by email through the server or SMTP, and receive replies through the server or IMAP.
     messages_provider_twilio_info: Send and receive SMS with a Twilio account and phone number.
     messages_provider_plivo_info: Send and receive SMS with a Plivo account and phone number.
     messages_provider_textanywhere_info: Send and receive SMS with a TextAnywhere account.
-    messages_incoming: Incoming
-    messages_incoming_hint: Customer can reply to support incoming messages as well as outgoing ones.
+    messages_incoming: "Saņemt atbildes"
+    messages_incoming_hint: "Klienti var atbildēt uz jūsu nosūtītajām ziņām."
     messages_test_sms_sent: "Testa SMS nosutita, parbaudiet talruni."
     messages_test_sms_number: "Testa talruna numurs"
     messages_test_sms: "Sutit testa SMS"
     messages_smsgateway_invalid: "Neizdevas parbaudit vartejas iestatijumus:"
-    messages_smsgateway_inbound_hint: "Talrunis piegada ienakosas zinas uz so adresi, registracija notiek automatiski saglabajot ar ieslegtu sanemsanu."
-    messages_smsgateway_step_activate: "Atzimejiet Aktivs un Sanemt ienakosas zinas, tad saglabajiet. Iestatijumi tiek testeti; izlabojiet kludas un parbaudiet sutisanu ar pogu Sutit testa SMS zemak."
+    messages_smsgateway_inbound_hint: "Tālrunis saņemtās ziņas piegādā uz šo adresi, reģistrācija notiek automātiski, saglabājot ar ieslēgtu atbilžu saņemšanu."
+    messages_smsgateway_step_activate: "Atzīmējiet Aktīvs un Saņemt atbildes, pēc tam nospiediet Saglabāt. Iestatījumi tiek pārbaudīti, izlabojiet kļūdas un sūtīšanu pārbaudiet ar pogu Sūtīt testa SMS zemāk."
     messages_smsgateway_step_credentials: "Sakuma ekrana izsledziet Local server, iesledziet Cloud server un nospiediet pogu Offline, lai pieslegtos (atzimejiet ari Start on boot), tad nokopejiet sakuma ekrana redzamo lietotajvardu un paroli laukos Lietotajvards un Parole zemak."
     messages_smsgateway_step_signing: "Ejiet uz lietotnes Settings -> Webhooks -> Signing Key -> ievadiet parakstisanas atslegu un nokopejiet to zemak lauka Webhook parakstisanas atslega."
     messages_smsgateway_step_token: "Ja izmantojat privatu serveri, taja pasa ekrana ievadiet ari Private Token - tas atrodas /app/data/private_token uz vartejas servera."
@@ -733,14 +732,14 @@ lv:
     messages_smsgateway_password: "Parole"
     messages_smsgateway_signing_key: "Webhook parakstisanas atslega"
     messages_provider_smsgateway_info: "Suta un sanem SMS caur Android talruni ar SMS Gateway lietotni pret musu pasu serveri, bez maksas par zinu."
-    messages_email_outgoing: Outgoing email
+    messages_email_outgoing: "Sūtīt e-pastu"
     messages_email_mode: Sending method
     messages_email_mode_server: Send email through server
     messages_email_mode_smtp: Send email with SMTP
     messages_smtp_host: SMTP host
     messages_smtp_port: SMTP port
     messages_smtp_tls: Use TLS
-    messages_email_incoming_section: Incoming email
+    messages_email_incoming_section: "Saņemt e-pastu"
     messages_email_incoming_mode: Receiving method
     messages_email_incoming_server: Receive email through server
     messages_email_incoming_imap: Receive email with IMAP
@@ -749,8 +748,8 @@ lv:
     messages_imap_port: IMAP port
     messages_email_credentials_hint: "Need an email delivery service? Get SMTP credentials from"
     messages_sms_credentials_hint: "Get your credentials from the provider console:"
-    messages_inbound_webhook: Incoming webhook URL
-    messages_inbound_webhook_hint: Paste this URL into the provider console so incoming messages reach the app. Keep it secret.
+    messages_inbound_webhook: "Saņemto ziņu webhook URL"
+    messages_inbound_webhook_hint: "Ielīmējiet šo URL sniedzēja konsolē, lai saņemtās ziņas nonāktu lietotnē. Turiet to slepenībā."
     messages_twilio_account_sid: Account SID
     messages_twilio_auth_token: Auth token
     messages_from_number: From phone number
@@ -783,8 +782,8 @@ lv:
     open_all_notification_templates: Open all notification templates
     close_all_notification_templates: Close all notification templates
     messages_address: Address
-    messages_incoming_label: Incoming
-    messages_outgoing_label: Outgoing
+    messages_incoming_label: "Saņemts"
+    messages_outgoing_label: "Nosūtīts"
     messages_manual_label: Manual
     messages_unknown_sender: Unknown sender
     messages_status_sent: Sent
@@ -889,7 +888,7 @@ lv:
     filter_statuses_hint: 'Choose which appointment statuses to show.'
     appointment_statuses: 'Appointment Statuses'
     inbox: 'Inbox'
-    inbox_hint: 'Incoming messages from your customers.'
+    inbox_hint: "No klientiem saņemtās ziņas."
     read: 'Read'
     message: 'Message'
     mark_as_read: 'Mark as read'
@@ -961,7 +960,7 @@ lv:
     time_off_hint: "Ja tā ir daļa no dienas, ievadiet stundas, kad jūs neesat pieejams. Tās tiek saglabātas kā pārtraukums šajos datumos."
     messages_sms_variation: "Mainīt katru SMS"
     messages_sms_variation_hint: "Katras SMS beigās pievieno īsu atsauces kodu, lai nekādas divas ziņas nebūtu vienādas - to pieprasa daži operatori."
-    provider_color_hint: "Izmanto šī pakalpojumu sniedzēja tikšanām, kad kalendārs rāda visus."
+    provider_color_hint: "Šī sniedzēja pierakstu fons kalendārā. Pakalpojuma krāsa redzama malā"
     working_providers: "Strādājošie pakalpojumu sniedzēji"
     hidden_from_public: "Paslēpts no sabiedrības"
     slot_interval_hint: "Cik bieži klientiem tiek piedāvāti sākuma laiki. Ar 15 45 minūšu pakalpojums var sākties 9:00, 9:15, 9:30 un tā tālāk; ar 60 tas var sākties 9:00, 10:00, 11:00. Tas neatstāj brīvu laiku pēc pieraksta: lai to panāktu, pagariniet pakalpojuma ilgumu."
@@ -978,8 +977,25 @@ lv:
     message_move_to: "Pārvietot uz {name}"
     message_moved: "Ziņa pārvietota"
     notification_tokens_hint: "Veidnes lauki, ko varat izmantot. Noklikšķiniet uz viena, lai ievietotu tur, kur rakstījāt, vai lai to nokopētu:"
-    inbox_info: "Ienākošās ziņas. Inbox rāda ziņas, kas jāizskata - atzīmējiet katru kā Pabeigts, kad tā ir izskatīta vai izlasīta; tās joprojām varat lasīt klienta lapā vai Arhīvā. Arhīvs rāda ziņas, kas atzīmētas kā Pabeigts - tajā ir poga Atsaukt, kas tās atgriež uz Inbox."
+    inbox_info: "Saņemtās ziņas. Iesūtnē ir ziņas, kas jāapstrādā; atzīmējiet katru kā paveiktu, kad tā ir izskatīta vai izlasīta - tās joprojām varēs lasīt klienta lapā vai sadaļā Arhīvs. Sadaļā Arhīvs ir kā paveiktas atzīmētās ziņas - tajā ir atsaukšanas poga, lai ziņu atgrieztu iesūtnē."
     booking_release_time: "Atvēršanas laiks"
     booking_release_time_hint: "Nākamā diena nākotnes rezervācijas limita beigās katru dienu atveras šajā laikā."
     inbox_filter_archive: "Arhīvs"
     load_more_messages: "Ielādēt vairāk ziņu"
+    clear_providers: "Notīrīt sniedzējus"
+    clear_services: "Notīrīt pakalpojumus"
+    refresh: "Atsvaidzināt"
+    sync: "Sinhronizēt"
+    feed: "Plūsma"
+    do_not_contact_hint: "Šim klientam netiek sūtīti rezervāciju apstiprinājumi, izmaiņas vai atgādinājumi"
+    do_not_contact_warning: "Šis klients ir lūdzis ar viņu nesazināties. Šeit nosūtītās ziņas tomēr tiek piegādātas."
+    company_address: "Uzņēmuma adrese"
+    company_address_hint: "Šī būs noklusējuma vieta visām rezervācijām un kalendāra ielūgumiem"
+    cancel_reason_optional: "Pieraksta atcelšanas iemesls (nav obligāts), ja vēlaties mums to pateikt:"
+    late_cancel_reason: "Pieraksta atcelšanas iemesls:"
+    appointments_include_locations: "Pierakstos norāda vietu"
+    appointments_include_locations_hint: "Ļauj speciālistam, palīgam vai administratoram iestatīt pieraksta vietu. Ja izslēgts, vieta vienmēr būs uzņēmuma adrese."
+    appointments_include_meeting_links: "Pierakstos iekļauj tikšanās saites"
+    appointments_include_meeting_links_hint: "Ļauj speciālistam, palīgam vai administratoram pierakstam pievienot saiti uz tiešsaistes tikšanos. Saite tiks iekļauta klienta kalendāra ielūgumā."
+    booking_provider_first_hint: "Rezervācijas lapā parādīt klientam speciālistus pirms pakalpojuma izvēles."
+    display_order_switch_hint: "Ļaut klientiem rezervācijas lapas pirmajā solī ar pogu izvēlēties, vai vispirms izvēlēties pakalpojumu vai speciālistu, pirms izvēlas otru."

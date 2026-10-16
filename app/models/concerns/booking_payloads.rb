@@ -27,7 +27,8 @@ module BookingPayloads
       "service_category_name" => service.try(:service_category_name),
       "service_category_id" => service.try(:service_category_id),
       "booking_slug" => service.booking_slug,
-      "picture_url" => EaRows.picture_url(service)
+      "picture_url" => EaRows.picture_url(service),
+      "picture_size" => EaRows.picture_size(service)
     }
   end
 
@@ -48,7 +49,8 @@ module BookingPayloads
 
   def category_payload(category)
     { "id" => category.id, "name" => category.name, "description" => category.description,
-      "picture_url" => EaRows.picture_url(category) }
+      "picture_url" => EaRows.picture_url(category),
+      "picture_size" => EaRows.picture_size(category) }
   end
 
   # EA get_available_providers(true) reduced to allowed_provider_fields.
@@ -67,7 +69,8 @@ module BookingPayloads
       "services" => provider.services.map(&:id), "timezone" => provider.effective_timezone,
       "booking_slug" => provider.booking_slug, "is_private" => provider.is_private,
       "about" => provider.about, "services_description" => provider.services_description,
-      "picture_url" => EaRows.picture_url(provider)
+      "picture_url" => EaRows.picture_url(provider),
+      "picture_size" => EaRows.picture_size(provider)
     }
   end
 

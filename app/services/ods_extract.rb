@@ -146,12 +146,9 @@ class OdsExtract
 
   def customers_rows
     rows("Customers").map do |row|
-      notes = row["notes"].to_s
-      do_not_contact = notes.start_with?(TenToEight::Load::DO_NOT_CONTACT_PREFIX)
-      notes = notes.delete_prefix(TenToEight::Load::DO_NOT_CONTACT_PREFIX).strip if do_not_contact
       { ext_id: row["id"], name: row["name"], email: row["email"], phone: row["phone_number"],
         address: row["address"], city: row["city"].presence, zip: row["zip_code"].presence,
-        notes: notes, do_not_contact: do_not_contact,
+        notes: row["notes"].to_s, do_not_contact: row["do_not_contact"] == "1",
         pronoun: row["custom_field_1"], access: row["custom_field_2"],
         custom_field_3: row["custom_field_3"].presence, custom_field_4: row["custom_field_4"].presence,
         custom_field_5: row["custom_field_5"].presence,

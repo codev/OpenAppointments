@@ -33,6 +33,7 @@ disable_booking_message =
 settings = {
   # Company (installer overrides these)
   "company_name" => "Company Name",
+  "company_address" => "",
   "company_email" => "info@example.org",
   "company_link" => "https://example.org",
   "company_logo" => "",
@@ -50,6 +51,8 @@ settings = {
   "picture_style_categories" => "border",
   "picture_style_services" => "border",
   "picture_style_providers" => "border",
+  "appointments_include_locations" => "0",
+  "appointments_include_meeting_links" => "0",
   "booking_provider_first" => "0",
   "display_order_switch" => "1",
   "display_powered_by" => "1",

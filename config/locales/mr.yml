@@ -116,9 +116,9 @@ mr:
     appointment_confirmation: भेटीची पुष्टी करा
     confirm: खात्री करा
     update: अद्यतनित करा
-    cancel_appointment_hint: कंपनीच्या वेळापत्रकातून अपॉईंटमेंट रद्द करण्यासाठी, "रद्द करा" बटण दाबा.
+    cancel_appointment_hint: "भेट रद्द करण्यासाठी \"रद्द करा\" बटण दाबा"
     cancel: रद्द करा
-    appointment_registered: आपली भेट यशस्वीरित्या नोंदविली गेली आहे.
+    appointment_registered: "सर्व तयार आहे!"
     cancel_appointment_title: भेट रद्द करा
     appointment_cancelled: आपली भेट यशस्वीरित्या रद्द केली गेली आहे.
     appointment_cancelled_title: अपॉइंटमेंट रद्द केली
@@ -167,7 +167,6 @@ mr:
     all_day: दिवसभर
     manage_appointment_record_hint: उपलब्ध प्रदाते आणि सेवांची सर्व नियुक्ती नोंदी व्यवस्थापित करा.
     select_filter_item_hint: प्रदाता किंवा सेवा निवडा आणि कॅलेंडरवर भेटी पहा.
-    enable_appointment_sync_hint: प्रदात्याच्या Google कॅलेंडर खात्यासह अपॉइंटमेंट समक्रमण सक्षम करा
     manage_customers_hint: नोंदणीकृत ग्राहकांचे व्यवस्थापन आणि त्यांचे बुकिंग इतिहास पहा.
     manage_services_hint: उपलब्ध सेवा आणि प्रणालीच्या श्रेणींचे व्यवस्थापन.
     manage_users_hint: बॅकएंड वापरकर्ते व्यवस्थापित करा (प्रशासक, प्रदाते, सहाय्यक).
@@ -452,7 +451,7 @@ mr:
     company: कंपनी
     remove: काढा
     login_button: लॉगिन बटण
-    display_login_button_hint: बुकिंग पृष्ठावर लॉगिन बटण दर्शवले जात आहे की नाही ते परिभाषित करते.
+    display_login_button_hint: "बुकिंग पृष्ठावर कर्मचाऱ्यांचे लॉगिन बटण दाखवायचे की नाही ते ठरवते."
     private: खाजगी
     private_hint: "खाजगी नोंदी सार्वजनिक बुकिंग पृष्ठावर दाखवल्या जात नाहीत, परंतु त्यांच्या थेट बुकिंग लिंकद्वारे त्या अजूनही बुक करता येतात."
     reset: रीसेट
@@ -652,7 +651,7 @@ mr:
     start_date: प्रारंभ तारीख
     end_date: समाप्ती तारीख
     remember_me: माझी माहिती लक्षात ठेवा
-    remember_me_hint: पुढच्या वेळी जलद बुकिंगसाठी तुमचे तपशील जतन करा.
+    remember_me_hint: "पुढच्या वेळी जलद बुकिंगसाठी तुमचे तपशील या ब्राउझरमध्ये जतन करा."
     legal_notice: कायदेशीर सूचना
     legal_notice_url: कायदेशीर सूचना URL
     legal_notice_url_hint: तुमच्या कायदेशीर सूचना पृष्ठाचा URL प्रविष्ट करा.
@@ -695,24 +694,24 @@ mr:
     messages_intercept_required: "डीबगसाठी पुनर्निर्देशनासाठी वैध ईमेल पत्ता आणि फोन क्रमांक आवश्यक आहे."
     messages_retention_days: Delete messages older than (days)
     messages_retention_days_hint: Messages older than this many days are deleted automatically. Set 0 to keep all messages.
-    messages_email_subject: Outgoing Email Subject Line
+    messages_email_subject: "ईमेल विषय ओळ"
     messages_email_subject_hint: Used for emails without their own Short Text, and for messages sent from the customer page.
     messages_providers_info: Notification providers deliver your notifications by email or SMS. Configure at least one provider and tick it inside each notification template.
     messages_provider_disabled: Disabled
-    messages_provider_outgoing: Outgoing
-    messages_provider_incoming_outgoing: Incoming and outgoing
+    messages_provider_outgoing: "फक्त पाठवा"
+    messages_provider_incoming_outgoing: "पाठवा आणि प्राप्त करा"
     messages_provider_email_info: Send notifications by email through the server or SMTP, and receive replies through the server or IMAP.
     messages_provider_twilio_info: Send and receive SMS with a Twilio account and phone number.
     messages_provider_plivo_info: Send and receive SMS with a Plivo account and phone number.
     messages_provider_textanywhere_info: Send and receive SMS with a TextAnywhere account.
-    messages_incoming: Incoming
-    messages_incoming_hint: Customer can reply to support incoming messages as well as outgoing ones.
+    messages_incoming: "उत्तरे प्राप्त करा"
+    messages_incoming_hint: "ग्राहक तुम्ही पाठवलेल्या संदेशांना उत्तर देऊ शकतात."
     messages_test_sms_sent: "चाचणी SMS पाठवला, फोन तपासा."
     messages_test_sms_number: "चाचणी फोन नंबर"
     messages_test_sms: "चाचणी SMS पाठवा"
     messages_smsgateway_invalid: "गेटवे सेटिंग्ज तपासता आल्या नाहीत:"
-    messages_smsgateway_inbound_hint: "फोन येणारे संदेश या पत्त्यावर पोहोचवतो, प्राप्ती सुरू ठेवून सेव्ह केल्यावर नोंदणी आपोआप होते."
-    messages_smsgateway_step_activate: "सक्रिय आणि येणारे संदेश प्राप्त करा निवडा, मग सेव्ह करा. सेटिंग्ज तपासल्या जातात; चुका दुरुस्त करा आणि खालील चाचणी SMS पाठवा बटणाने पाठवणे तपासा."
+    messages_smsgateway_inbound_hint: "फोन प्राप्त संदेश या पत्त्यावर पोहोचवतो, उत्तरे प्राप्त करणे चालू करून जतन केल्यावर नोंदणी आपोआप होते."
+    messages_smsgateway_step_activate: "सक्रिय आणि उत्तरे प्राप्त करा यावर खूण करा, मग जतन करा. सेटिंग्जची चाचणी होते, त्रुटी दुरुस्त करा आणि पाठवण्याची चाचणी करण्यासाठी खालील चाचणी SMS पाठवा बटण वापरा."
     messages_smsgateway_step_credentials: "होम स्क्रीनवर Local server बंद करा, Cloud server सुरू करा आणि जोडण्यासाठी Offline बटण दाबा (Start on boot देखील निवडा), मग होम स्क्रीनवरील वापरकर्तानाव आणि पासवर्ड खाली वापरकर्तानाव आणि पासवर्डमध्ये कॉपी करा."
     messages_smsgateway_step_signing: "अ‍ॅपच्या Settings -> Webhooks -> Signing Key मध्ये जा -> साइनिंग की टाका आणि ती खाली वेबहुक स्वाक्षरी की मध्ये कॉपी करा."
     messages_smsgateway_step_token: "खाजगी सर्व्हर वापरत असल्यास त्याच स्क्रीनवर Private Token देखील टाका - टोकन गेटवे सर्व्हरवर /app/data/private_token मध्ये आहे."
@@ -733,14 +732,14 @@ mr:
     messages_smsgateway_password: "पासवर्ड"
     messages_smsgateway_signing_key: "वेबहुक स्वाक्षरी की"
     messages_provider_smsgateway_info: "आमच्या स्वतःच्या सर्व्हरसह SMS Gateway अ‍ॅप चालवणाऱ्या Android फोनद्वारे SMS पाठवते आणि प्राप्त करते, प्रति संदेश खर्च नाही."
-    messages_email_outgoing: Outgoing email
+    messages_email_outgoing: "ईमेल पाठवा"
     messages_email_mode: Sending method
     messages_email_mode_server: Send email through server
     messages_email_mode_smtp: Send email with SMTP
     messages_smtp_host: SMTP host
     messages_smtp_port: SMTP port
     messages_smtp_tls: Use TLS
-    messages_email_incoming_section: Incoming email
+    messages_email_incoming_section: "ईमेल प्राप्त करा"
     messages_email_incoming_mode: Receiving method
     messages_email_incoming_server: Receive email through server
     messages_email_incoming_imap: Receive email with IMAP
@@ -749,8 +748,8 @@ mr:
     messages_imap_port: IMAP port
     messages_email_credentials_hint: "Need an email delivery service? Get SMTP credentials from"
     messages_sms_credentials_hint: "Get your credentials from the provider console:"
-    messages_inbound_webhook: Incoming webhook URL
-    messages_inbound_webhook_hint: Paste this URL into the provider console so incoming messages reach the app. Keep it secret.
+    messages_inbound_webhook: "प्राप्त संदेशांसाठी Webhook URL"
+    messages_inbound_webhook_hint: "प्राप्त संदेश अॅपपर्यंत पोहोचावेत यासाठी हा URL प्रदात्याच्या कन्सोलमध्ये पेस्ट करा. तो गुप्त ठेवा."
     messages_twilio_account_sid: Account SID
     messages_twilio_auth_token: Auth token
     messages_from_number: From phone number
@@ -783,8 +782,8 @@ mr:
     open_all_notification_templates: Open all notification templates
     close_all_notification_templates: Close all notification templates
     messages_address: Address
-    messages_incoming_label: Incoming
-    messages_outgoing_label: Outgoing
+    messages_incoming_label: "प्राप्त"
+    messages_outgoing_label: "पाठवलेले"
     messages_manual_label: Manual
     messages_unknown_sender: Unknown sender
     messages_status_sent: Sent
@@ -889,7 +888,7 @@ mr:
     filter_statuses_hint: 'Choose which appointment statuses to show.'
     appointment_statuses: 'Appointment Statuses'
     inbox: 'Inbox'
-    inbox_hint: 'Incoming messages from your customers.'
+    inbox_hint: "तुमच्या ग्राहकांकडून प्राप्त झालेले संदेश."
     read: 'Read'
     message: 'Message'
     mark_as_read: 'Mark as read'
@@ -961,7 +960,7 @@ mr:
     time_off_hint: "दिवसाच्या काही भागाच्या सुट्टीसाठी, तुम्ही अनुपस्थित असलेले तास नोंदवा. ते त्या तारखांना ब्रेक म्हणून जतन केले जातात."
     messages_sms_variation: "प्रत्येक SMS वेगळा करा"
     messages_sms_variation_hint: "प्रत्येक SMS च्या शेवटी एक लहान संदर्भ कोड जोडतो जेणेकरून कोणतेही दोन संदेश सारखे नसतील, जे काही नेटवर्क आवश्यक मानतात."
-    provider_color_hint: "कॅलेंडर सर्वांना दाखवत असताना हे या व्यवस्थापकाच्या अपॉइंटमेंटसाठी वापरले जाते."
+    provider_color_hint: "कॅलेंडरवर या प्रदात्याच्या भेटींची पार्श्वभूमी. सेवेचा रंग काठावर दिसतो"
     working_providers: "कार्यरत व्यवस्थापक"
     hidden_from_public: "सार्वजनिकपणे लपवलेले"
     slot_interval_hint: "उपभोक्त्यांना सुरुवातीच्या वेळा किती वारंवार दिल्या जातात. 15 सह, 45 मिनिटांची सेवा 9:00, 9:15, 9:30 आणि असेच सुरू होऊ शकते; 60 सह, 9:00, 10:00, 11:00 ला. यामुळे अपॉइंटमेंटनंतर वेळ मोकळा ठेवला जात नाही: त्यासाठी सेवेचा कालावधी वाढवा."
@@ -978,8 +977,25 @@ mr:
     message_move_to: "{name} कडे हलवा"
     message_moved: "संदेश हलवला"
     notification_tokens_hint: "वापरता येणारे टेम्पलेट फील्ड. एखाद्यावर क्लिक करून ते तुम्ही टाइप करत होता तिथे टाका, किंवा कॉपी करा:"
-    inbox_info: "येणारे संदेश. Inbox मध्ये हाताळायचे संदेश दिसतात - प्रत्येक संदेश हाताळल्यानंतर किंवा वाचल्यानंतर पूर्ण म्हणून चिन्हांकित करा; तो ग्राहकाच्या पानावर किंवा संग्रह मध्ये अजूनही वाचता येतो. संग्रह मध्ये पूर्ण म्हणून चिन्हांकित केलेले संदेश दिसतात - त्यात ते Inbox मध्ये परत पाठवण्यासाठी पूर्ववत करा बटण आहे."
+    inbox_info: "प्राप्त संदेश. इनबॉक्समध्ये कारवाई करायचे संदेश असतात; प्रत्येक संदेशावर कारवाई झाल्यावर किंवा तो वाचल्यावर पूर्ण म्हणून चिन्हांकित करा - तो तुम्ही ग्राहकाच्या पृष्ठावर किंवा संग्रहात तरीही वाचू शकता. संग्रहात पूर्ण म्हणून चिन्हांकित केलेले संदेश असतात - संदेश इनबॉक्समध्ये परत आणण्यासाठी त्यात पूर्ववत करा बटण आहे."
     booking_release_time: "उघडण्याची वेळ"
     booking_release_time_hint: "भविष्यातील बुकिंग मर्यादेच्या शेवटी असलेला पुढील दिवस दररोज या वेळी उघडतो."
     inbox_filter_archive: "संग्रह"
     load_more_messages: "अधिक संदेश लोड करा"
+    clear_providers: "प्रदाते साफ करा"
+    clear_services: "सेवा साफ करा"
+    refresh: "रिफ्रेश करा"
+    sync: "समक्रमित करा"
+    feed: "फीड"
+    do_not_contact_hint: "या ग्राहकाला बुकिंग पुष्टी, बदल किंवा स्मरणपत्रे पाठवली जात नाहीत"
+    do_not_contact_warning: "या ग्राहकाने संपर्क न करण्यास सांगितले आहे. येथे पाठवलेले संदेश तरीही पोहोचवले जातात."
+    company_address: "कंपनीचा पत्ता"
+    company_address_hint: "हे सर्व बुकिंग आणि कॅलेंडर निमंत्रणांसाठी डीफॉल्ट ठिकाण असेल"
+    cancel_reason_optional: "आम्हाला कळवायचे असल्यास, भेट रद्द करण्याचे कारण (ऐच्छिक):"
+    late_cancel_reason: "भेट रद्द करण्याचे कारण:"
+    appointments_include_locations: "भेटींमध्ये ठिकाण समाविष्ट करा"
+    appointments_include_locations_hint: "स्टायलिस्ट, सहाय्यक किंवा प्रशासकाला भेटीचे ठिकाण ठरवण्याची परवानगी देते. हे बंद असल्यास ठिकाण नेहमी कंपनीचा पत्ता असेल."
+    appointments_include_meeting_links: "भेटींमध्ये मीटिंग लिंक समाविष्ट करा"
+    appointments_include_meeting_links_hint: "स्टायलिस्ट, सहाय्यक किंवा प्रशासकाला भेटीमध्ये ऑनलाइन मीटिंगची लिंक जोडण्याची परवानगी देते. ही लिंक ग्राहकाच्या कॅलेंडर निमंत्रणात समाविष्ट केली जाईल."
+    booking_provider_first_hint: "बुकिंग पृष्ठावर ग्राहकाने सेवा निवडण्यापूर्वी स्टायलिस्ट दाखवा."
+    display_order_switch_hint: "बुकिंग पृष्ठाच्या पहिल्या पायरीवर ग्राहकांना बटणाद्वारे आधी सेवा किंवा आधी स्टायलिस्ट निवडण्याची आणि मग दुसरे निवडण्याची मुभा द्या."

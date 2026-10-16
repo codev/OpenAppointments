@@ -553,14 +553,12 @@ App.Utils.CalendarEvents = (function () {
     /**
      * @param {Array} appointments
      * @param {string} titleBy 'service' or 'provider', shown after the customer name.
-     * @param {boolean} byProvider colour by the provider (everyone's calendar) instead of the appointment.
      * @returns {Array}
      */
-    function appointmentEvents(appointments, titleBy = 'service', byProvider = false) {
+    function appointmentEvents(appointments, titleBy = 'service') {
         return appointments.map((appointment) => {
             const detail = titleBy === 'provider' ? appointment.provider.name : appointment.service.name;
             const title = appointment.customer.name ? appointment.customer.name + ' - ' + detail : detail;
-            const color = (byProvider && appointment.provider.color) || appointment.color || COLORS.default;
 
             return {
                 id: appointment.id,
@@ -568,7 +566,7 @@ App.Utils.CalendarEvents = (function () {
                 start: moment(appointment.start_datetime).toDate(),
                 end: moment(appointment.end_datetime).toDate(),
                 allDay: false,
-                ...eventColors(color),
+                ...eventColors(providerColor(appointment.provider), appointment.service?.color || COLORS.default),
                 data: appointment,
                 display: 'block',
                 className: appointment.frees_slot ? 'fc-freed-slot' : '',
@@ -576,11 +574,16 @@ App.Utils.CalendarEvents = (function () {
         });
     }
 
-    // A solid colour on the left edge over a light tint keeps dark text readable.
-    function eventColors(color) {
+    // A stylist with no colour of their own takes the palette's first.
+    function providerColor(provider) {
+        return provider?.color || COLORS.default;
+    }
+
+    // A light tint of the fill colour keeps dark text readable; the edge colour is the solid left border.
+    function eventColors(fill, edge) {
         return {
-            backgroundColor: tint(color),
-            borderColor: color,
+            backgroundColor: tint(fill),
+            borderColor: edge,
             textColor: '#212529',
         };
     }
@@ -883,6 +886,7 @@ App.Utils.CalendarEvents = (function () {
         newEventDialog,
         saveWorkingPlanException,
         appointmentEvents,
+        providerColor,
         unavailabilityEvents,
         blockedPeriodEvents,
         workingPlanEvents,

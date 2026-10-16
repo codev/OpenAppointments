@@ -75,12 +75,12 @@ class SettingsPagesTest < ApplicationSystemTestCase
     visit "/messages_settings"
     assert_selector "#messages-enabled", wait: 5
     assert_no_selector "#messages-intercept-email"
-    assert_no_text "Every outgoing email"
+    assert_no_text "Every email sent"
 
     select "Debug", from: "messages-enabled"
     assert_selector "#messages-intercept-email", wait: 5
     assert_selector "#messages-intercept-phone"
-    assert_text "Every outgoing email"
+    assert_text "Every email sent"
 
     select "On", from: "messages-enabled"
     assert_no_selector "#messages-intercept-email", wait: 5

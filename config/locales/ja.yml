@@ -116,9 +116,9 @@ ja:
     appointment_confirmation: 予約の確認
     confirm: 確認ＯＫ
     update: 更新
-    cancel_appointment_hint: 会社のスケジュールから予約を削除するにはキャンセルボタンを押してください。
+    cancel_appointment_hint: "予約をキャンセルするには「キャンセル」ボタンを押してください"
     cancel: キャンセル
-    appointment_registered: お客様の予約が完了しました。
+    appointment_registered: "ご予約が完了しました!"
     cancel_appointment_title: 予約のキャンセル
     appointment_cancelled: お客様の予約のキャンセルが完了しました。
     appointment_cancelled_title: 予約がキャンセルされました。
@@ -167,7 +167,6 @@ ja:
     all_day: 全日
     manage_appointment_record_hint: 担当者とサービスメニューのスケジュールを管理できます。
     select_filter_item_hint: 担当者もしくはサービスメニューで絞込ができます。
-    enable_appointment_sync_hint: 担当者のGoogleカレンダーとの同期を有効にします。
     manage_customers_hint: 予約登録をしたお客様とその予約履歴を管理できます。
     manage_services_hint: サービスメニューとサービスカテゴリーの管理ができます。
     manage_users_hint: 会社ユーザーの管理ができます。(管理者,担当者,アシスタント).
@@ -452,7 +451,7 @@ ja:
     company: 会社
     remove: 削除
     login_button: ログインボタン
-    display_login_button_hint: 予約ページにログインボタンを表示するかどうかを定義します。
+    display_login_button_hint: "予約ページにスタッフ用ログインボタンを表示するかどうかを設定します。"
     private: 非公開
     private_hint: "非公開のレコードは公開予約ページには表示されませんが、直接予約リンクから予約することができます。"
     reset: リセット
@@ -652,7 +651,7 @@ ja:
     start_date: 開始日
     end_date: 終了日
     remember_me: 情報を記憶する
-    remember_me_hint: 次回の予約を素早くするために情報を保存します。
+    remember_me_hint: "このブラウザに情報を保存すると、次回の予約がより早くできます。"
     legal_notice: 法的通知
     legal_notice_url: 法的通知 URL
     legal_notice_url_hint: 法的通知ページの URL を入力してください。
@@ -690,29 +689,29 @@ ja:
     messages_enabled_hint: "すべての通知を一括でオンまたはオフにします"
     messages_enabled_on: "オン"
     messages_enabled_off: "オフ - パスワード再設定メールは引き続き送信されます"
-    messages_enabled_debug: "デバッグ - すべての送信メールとメッセージを転送します"
+    messages_enabled_debug: "デバッグ - 送信するすべてのメールとメッセージを転送します"
     messages_intercept_hint: "デバッグを選択している間、送信メールはすべてこのアドレスに、SMS はすべてこの番号に送られます。"
     messages_intercept_required: "デバッグには転送先の有効なメールアドレスと電話番号が必要です。"
     messages_retention_days: Delete messages older than (days)
     messages_retention_days_hint: Messages older than this many days are deleted automatically. Set 0 to keep all messages.
-    messages_email_subject: Outgoing Email Subject Line
+    messages_email_subject: "メールの件名"
     messages_email_subject_hint: Used for emails without their own Short Text, and for messages sent from the customer page.
     messages_providers_info: Notification providers deliver your notifications by email or SMS. Configure at least one provider and tick it inside each notification template.
     messages_provider_disabled: Disabled
-    messages_provider_outgoing: Outgoing
-    messages_provider_incoming_outgoing: Incoming and outgoing
+    messages_provider_outgoing: "送信のみ"
+    messages_provider_incoming_outgoing: "送信と受信"
     messages_provider_email_info: Send notifications by email through the server or SMTP, and receive replies through the server or IMAP.
     messages_provider_twilio_info: Send and receive SMS with a Twilio account and phone number.
     messages_provider_plivo_info: Send and receive SMS with a Plivo account and phone number.
     messages_provider_textanywhere_info: Send and receive SMS with a TextAnywhere account.
-    messages_incoming: Incoming
-    messages_incoming_hint: Customer can reply to support incoming messages as well as outgoing ones.
+    messages_incoming: "返信を受信"
+    messages_incoming_hint: "お客様は送信したメッセージに返信できます。"
     messages_test_sms_sent: "テストSMSを送信しました。電話を確認してください。"
     messages_test_sms_number: "テスト電話番号"
     messages_test_sms: "テストSMS送信"
     messages_smsgateway_invalid: "ゲートウェイ設定を検証できませんでした:"
     messages_smsgateway_inbound_hint: "電話は受信メッセージをこのアドレスに配信します。受信をオンにして保存すると登録は自動で行われます。"
-    messages_smsgateway_step_activate: "有効と受信メッセージの受け取りにチェックを入れて保存します。設定はテストされます。エラーを修正し、下のテストSMS送信ボタンで送信を確認してください。"
+    messages_smsgateway_step_activate: "アクティブと返信を受信にチェックを入れて保存します。設定はテストされます。エラーを修正し、下のテストSMS送信ボタンで送信を確認してください。"
     messages_smsgateway_step_credentials: "ホーム画面でLocal serverをオフ、Cloud serverをオンにし、Offlineボタンを押して接続します(Start on bootにもチェック)。ホーム画面のユーザー名とパスワードを下のユーザー名とパスワードにコピーします。"
     messages_smsgateway_step_signing: "アプリのSettings -> Webhooks -> Signing Keyで署名キーを入力し、下のWebhook署名キーにコピーします。"
     messages_smsgateway_step_token: "プライベートサーバーを使う場合は同じ設定画面でPrivate Tokenも入力します。トークンはゲートウェイサーバーの/app/data/private_tokenにあります。"
@@ -733,14 +732,14 @@ ja:
     messages_smsgateway_password: "パスワード"
     messages_smsgateway_signing_key: "Webhook署名キー"
     messages_provider_smsgateway_info: "SMS Gatewayアプリを実行するAndroid端末と自前のサーバーでSMSを送受信します。メッセージごとの費用はかかりません。"
-    messages_email_outgoing: Outgoing email
+    messages_email_outgoing: "メール送信"
     messages_email_mode: Sending method
     messages_email_mode_server: Send email through server
     messages_email_mode_smtp: Send email with SMTP
     messages_smtp_host: SMTP host
     messages_smtp_port: SMTP port
     messages_smtp_tls: Use TLS
-    messages_email_incoming_section: Incoming email
+    messages_email_incoming_section: "メール受信"
     messages_email_incoming_mode: Receiving method
     messages_email_incoming_server: Receive email through server
     messages_email_incoming_imap: Receive email with IMAP
@@ -749,8 +748,8 @@ ja:
     messages_imap_port: IMAP port
     messages_email_credentials_hint: "Need an email delivery service? Get SMTP credentials from"
     messages_sms_credentials_hint: "Get your credentials from the provider console:"
-    messages_inbound_webhook: Incoming webhook URL
-    messages_inbound_webhook_hint: Paste this URL into the provider console so incoming messages reach the app. Keep it secret.
+    messages_inbound_webhook: "受信メッセージ用Webhook URL"
+    messages_inbound_webhook_hint: "受信メッセージがアプリに届くよう、このURLをプロバイダーのコンソールに貼り付けてください。公開しないでください。"
     messages_twilio_account_sid: Account SID
     messages_twilio_auth_token: Auth token
     messages_from_number: From phone number
@@ -783,8 +782,8 @@ ja:
     open_all_notification_templates: Open all notification templates
     close_all_notification_templates: Close all notification templates
     messages_address: Address
-    messages_incoming_label: Incoming
-    messages_outgoing_label: Outgoing
+    messages_incoming_label: "受信"
+    messages_outgoing_label: "送信"
     messages_manual_label: Manual
     messages_unknown_sender: Unknown sender
     messages_status_sent: Sent
@@ -889,7 +888,7 @@ ja:
     filter_statuses_hint: 'Choose which appointment statuses to show.'
     appointment_statuses: 'Appointment Statuses'
     inbox: 'Inbox'
-    inbox_hint: 'Incoming messages from your customers.'
+    inbox_hint: "お客様から受信したメッセージです。"
     read: 'Read'
     message: 'Message'
     mark_as_read: 'Mark as read'
@@ -961,7 +960,7 @@ ja:
     time_off_hint: "一日の一部を休む場合は、不在にする時間を入力してください。その日付の休憩時間として保存されます。"
     messages_sms_variation: "SMSごとに内容を変える"
     messages_sms_variation_hint: "すべてのSMSの末尾に短い参照コードを追加し、2通が同じ内容にならないようにします。一部の通信網ではこれが必要です。"
-    provider_color_hint: "カレンダーが全員を表示するとき、この担当者の予約に使用されます。"
+    provider_color_hint: "カレンダー上でこの担当者の予約に使う背景色です。サービスの色は端に表示されます"
     working_providers: "出勤中の担当者"
     hidden_from_public: "公開から非表示"
     slot_interval_hint: "お客様に開始時刻を提示する間隔です。15の場合、45分のメニューは9:00、9:15、9:30のように開始できます。60の場合は9:00、10:00、11:00です。予約後の時間を空けておくものではありません。そのためにはメニューの所要時間を長くしてください。"
@@ -978,8 +977,25 @@ ja:
     message_move_to: "{name}に移動"
     message_moved: "メッセージを移動しました"
     notification_tokens_hint: "使用できるテンプレート項目です。クリックすると入力中の場所に挿入するか、コピーできます。"
-    inbox_info: "受信メッセージです。Inbox には対応が必要なメッセージが一覧表示されます。対応または確認が済んだら対応済みにしてください - お客様のページやアーカイブで引き続き読むことができます。アーカイブには対応済みにしたメッセージが一覧表示されます - 元に戻すボタンで Inbox に戻せます。"
+    inbox_info: "受信メッセージです。受信箱には対応が必要なメッセージが表示されます。対応または確認が済んだら完了にしてください。お客様のページやアーカイブでも引き続き読めます。アーカイブには完了にしたメッセージが表示され、元に戻すボタンで受信箱に戻せます。"
     booking_release_time: "公開時刻"
     booking_release_time_hint: "将来の予約制限の末尾にあたる翌日は、毎日この時刻に公開されます。"
     inbox_filter_archive: "アーカイブ"
     load_more_messages: "さらにメッセージを読み込む"
+    clear_providers: "担当者をクリア"
+    clear_services: "サービスをクリア"
+    refresh: "更新"
+    sync: "同期"
+    feed: "フィード"
+    do_not_contact_hint: "このお客様には予約確認、変更、リマインダーは送信されません"
+    do_not_contact_warning: "このお客様は連絡を希望していません。ここから送信したメッセージは引き続き配信されます。"
+    company_address: "会社住所"
+    company_address_hint: "すべての予約とカレンダー招待のデフォルトの場所になります"
+    cancel_reason_optional: "予約をキャンセルする理由(任意、お知らせいただける場合):"
+    late_cancel_reason: "予約をキャンセルする理由:"
+    appointments_include_locations: "予約に場所を含める"
+    appointments_include_locations_hint: "スタイリスト、アシスタント、管理者が予約の場所を設定できるようにします。オフの場合、場所は常に会社住所になります。"
+    appointments_include_meeting_links: "予約にミーティングリンクを含める"
+    appointments_include_meeting_links_hint: "スタイリスト、アシスタント、管理者が予約にオンラインミーティングのリンクを追加できるようにします。リンクはお客様のカレンダー招待に含まれます。"
+    booking_provider_first_hint: "予約ページで、サービスを選ぶ前にスタイリストをお客様に表示します。"
+    display_order_switch_hint: "予約ページの最初のステップに、サービスから先に選ぶかスタイリストから先に選ぶかを切り替えるボタンをお客様に表示します。"

@@ -23,6 +23,22 @@ class AuthFlowTest < ActionDispatch::IntegrationTest
     assert_redirected_to "/customers"
   end
 
+  # The session is a 4 KB cookie: a long filter URL must not be copied into it.
+  test "a logged in visit keeps no return address, so a long List URL cannot overflow the session" do
+    post "/login/validate", params: { form: "1", username: "administrator", password: "administrator1" }
+    get "/appointments", params: { services: (1..600).to_a }
+    assert_response :success
+    assert_nil session[:dest_url]
+  end
+
+  test "a logged out visit to a very long URL logs in to the List instead" do
+    get "/appointments", params: { services: (1..600).to_a }
+    assert_redirected_to "/login"
+    assert_nil session[:dest_url]
+    post "/login/validate", params: { form: "1", username: "administrator", password: "administrator1" }
+    assert_redirected_to "/appointments"
+  end
+
   test "login validate failure returns EA error shape" do
     post "/login/validate", params: { username: "administrator", password: "wrong" }
     assert_response :success

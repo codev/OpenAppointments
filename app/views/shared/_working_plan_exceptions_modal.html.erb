@@ -108,7 +108,6 @@
         </div>
     </div>
 </div>
-
-<% content_for :scripts do %>
-    <%= ea_js "components/working_plan_exceptions_modal" %>
-<% end %>
+<%# The page lists components/working_plan_exceptions_modal after utils/ui, which
+    its initialiser needs: a script added here would come first in the head and,
+    on a Turbo visit, run before utils/ui has loaded. %>

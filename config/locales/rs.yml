@@ -116,9 +116,9 @@ rs:
     appointment_confirmation: Potvrdite zakazani termin
     confirm: Potvrdite
     update: Ažuriraj
-    cancel_appointment_hint: Pritisnite "Otkaži" da biste uklonili zakazano vreme posete.
+    cancel_appointment_hint: "Pritisnite dugme \"Otkaži\" da otkažete termin"
     cancel: Otkaži
-    appointment_registered: Vreme vaše posete je zavedeno!
+    appointment_registered: "Sve je spremno!"
     cancel_appointment_title: Otkažite posetu
     appointment_cancelled: Vreme vaše posete je otkazano!
     appointment_cancelled_title: Vreme posete je otkazano
@@ -167,7 +167,6 @@ rs:
     all_day: Čitav dan
     manage_appointment_record_hint: Uređivanje svih termina.
     select_filter_item_hint: Izaberite izvršioca usluge ili uslugu i proverite vreme posete u kalendaru.
-    enable_appointment_sync_hint: Omogući sinhronizaciju termina sa Google kalendarom izvršioca usluge.
     manage_customers_hint: Uredi unete posetioce i proveri njihove termine.
     manage_services_hint: Uredi dostupne usluge i kategorije u sistemu.
     manage_users_hint: Uredi privilegovane korisnike (administratore, izvršioce, asistente).
@@ -452,7 +451,7 @@ rs:
     company: Kompanija
     remove: Ukloni
     login_button: Dugme za Prijavljivanje
-    display_login_button_hint: Definiše da li će dugme za prijavljivanje biti prikazano na stranici za rezervaciju.
+    display_login_button_hint: "Određuje da li se dugme za prijavu osoblja prikazuje na stranici za zakazivanje."
     private: Privatno
     private_hint: "Privatni zapisi se ne prikazuju na javnoj stranici za zakazivanje, ali se i dalje mogu zakazati putem svog direktnog linka za zakazivanje."
     reset: Poništi
@@ -652,7 +651,7 @@ rs:
     start_date: Datum početka
     end_date: Datum završetka
     remember_me: Zapamti moje podatke
-    remember_me_hint: Sačuvajte svoje podatke za bržu rezervaciju sledeći put.
+    remember_me_hint: "Sačuvajte svoje podatke u ovom pregledaču za brže zakazivanje sledeći put."
     legal_notice: Pravno obaveštenje
     legal_notice_url: URL pravnog obaveštenja
     legal_notice_url_hint: Unesite URL do stranice sa pravnim obaveštenjem.
@@ -690,29 +689,29 @@ rs:
     messages_enabled_hint: "Globalno uključi ili isključi sva obaveštenja"
     messages_enabled_on: "Uključeno"
     messages_enabled_off: "Isključeno - e-poruke za resetovanje lozinke i dalje se šalju"
-    messages_enabled_debug: "Debug - preusmeri sve odlazne e-poruke i poruke"
-    messages_intercept_hint: "Dok je izabran Debug, svaka odlazna e-poruka ide na ovu adresu, a svaki SMS na ovaj broj."
+    messages_enabled_debug: "Debug - preusmeri sve poslate e-poruke i poruke"
+    messages_intercept_hint: "Svaka poslata e-poruka ide na ovu adresu, a svaki SMS na ovaj broj dok je izabran Debug."
     messages_intercept_required: "Debug zahteva ispravnu e-mail adresu i broj telefona za preusmeravanje."
     messages_retention_days: Delete messages older than (days)
     messages_retention_days_hint: Messages older than this many days are deleted automatically. Set 0 to keep all messages.
-    messages_email_subject: Outgoing Email Subject Line
+    messages_email_subject: "Naslov e-poruke"
     messages_email_subject_hint: Used for emails without their own Short Text, and for messages sent from the customer page.
     messages_providers_info: Notification providers deliver your notifications by email or SMS. Configure at least one provider and tick it inside each notification template.
     messages_provider_disabled: Disabled
-    messages_provider_outgoing: Outgoing
-    messages_provider_incoming_outgoing: Incoming and outgoing
+    messages_provider_outgoing: "Samo slanje"
+    messages_provider_incoming_outgoing: "Slanje i primanje"
     messages_provider_email_info: Send notifications by email through the server or SMTP, and receive replies through the server or IMAP.
     messages_provider_twilio_info: Send and receive SMS with a Twilio account and phone number.
     messages_provider_plivo_info: Send and receive SMS with a Plivo account and phone number.
     messages_provider_textanywhere_info: Send and receive SMS with a TextAnywhere account.
-    messages_incoming: Incoming
-    messages_incoming_hint: Customer can reply to support incoming messages as well as outgoing ones.
+    messages_incoming: "Primaj odgovore"
+    messages_incoming_hint: "Posetioci mogu da odgovore na poruke koje šaljete."
     messages_test_sms_sent: "Test SMS poslat, proverite telefon."
     messages_test_sms_number: "Test broj telefona"
     messages_test_sms: "Pošalji test SMS"
     messages_smsgateway_invalid: "Podešavanja mrežnog prolaza nije moguće proveriti:"
-    messages_smsgateway_inbound_hint: "Telefon dostavlja dolazne poruke na ovu adresu, registracija se obavlja automatski pri čuvanju sa uključenim primanjem."
-    messages_smsgateway_step_activate: "Označite Aktivno i Primanje dolaznih poruka pa Sačuvaj. Podešavanja se testiraju; ispravite greške i isprobajte slanje dugmetom Pošalji test SMS ispod."
+    messages_smsgateway_inbound_hint: "Telefon isporučuje primljene poruke na ovu adresu, registracija se obavlja automatski pri čuvanju sa uključenim primanjem."
+    messages_smsgateway_step_activate: "Označite Active i Primaj odgovore, pa kliknite Save. Podešavanja se testiraju, ispravite eventualne greške i koristite dugme Pošalji probni SMS ispod da testirate slanje."
     messages_smsgateway_step_credentials: "Na početnom ekranu isključite Local server, uključite Cloud server i pritisnite dugme Offline za povezivanje (označite i Start on boot), zatim kopirajte korisničko ime i lozinku sa početnog ekrana u Korisničko ime i Lozinku ispod."
     messages_smsgateway_step_signing: "Idite na Settings -> Webhooks -> Signing Key u aplikaciji -> unesite ključ za potpis i kopirajte ga u Ključ za potpis webhooka ispod."
     messages_smsgateway_step_token: "Ako koristite privatni server unesite i Private Token na istom ekranu - token je u /app/data/private_token na serveru mrežnog prolaza."
@@ -733,14 +732,14 @@ rs:
     messages_smsgateway_password: "Lozinka"
     messages_smsgateway_signing_key: "Ključ za potpis webhooka"
     messages_provider_smsgateway_info: "Šalje i prima SMS preko Android telefona sa aplikacijom SMS Gateway i sopstvenim serverom, bez troška po poruci."
-    messages_email_outgoing: Outgoing email
+    messages_email_outgoing: "Šalji e-poštu"
     messages_email_mode: Sending method
     messages_email_mode_server: Send email through server
     messages_email_mode_smtp: Send email with SMTP
     messages_smtp_host: SMTP host
     messages_smtp_port: SMTP port
     messages_smtp_tls: Use TLS
-    messages_email_incoming_section: Incoming email
+    messages_email_incoming_section: "Primaj e-poštu"
     messages_email_incoming_mode: Receiving method
     messages_email_incoming_server: Receive email through server
     messages_email_incoming_imap: Receive email with IMAP
@@ -749,8 +748,8 @@ rs:
     messages_imap_port: IMAP port
     messages_email_credentials_hint: "Need an email delivery service? Get SMTP credentials from"
     messages_sms_credentials_hint: "Get your credentials from the provider console:"
-    messages_inbound_webhook: Incoming webhook URL
-    messages_inbound_webhook_hint: Paste this URL into the provider console so incoming messages reach the app. Keep it secret.
+    messages_inbound_webhook: "Webhook URL za primljene poruke"
+    messages_inbound_webhook_hint: "Nalepite ovaj URL u konzolu provajdera da bi primljene poruke stizale u aplikaciju. Čuvajte ga u tajnosti."
     messages_twilio_account_sid: Account SID
     messages_twilio_auth_token: Auth token
     messages_from_number: From phone number
@@ -783,8 +782,8 @@ rs:
     open_all_notification_templates: Open all notification templates
     close_all_notification_templates: Close all notification templates
     messages_address: Address
-    messages_incoming_label: Incoming
-    messages_outgoing_label: Outgoing
+    messages_incoming_label: "Primljeno"
+    messages_outgoing_label: "Poslato"
     messages_manual_label: Manual
     messages_unknown_sender: Unknown sender
     messages_status_sent: Sent
@@ -889,7 +888,7 @@ rs:
     filter_statuses_hint: 'Choose which appointment statuses to show.'
     appointment_statuses: 'Appointment Statuses'
     inbox: 'Inbox'
-    inbox_hint: 'Incoming messages from your customers.'
+    inbox_hint: "Poruke primljene od vaših posetilaca."
     read: 'Read'
     message: 'Message'
     mark_as_read: 'Mark as read'
@@ -961,7 +960,7 @@ rs:
     time_off_hint: "Za deo dana unesite sate odsustva. Oni se čuvaju kao pauza na te datume."
     messages_sms_variation: "Izmeni svaki SMS"
     messages_sms_variation_hint: "Dodaje kratki referentni kod na kraj svake SMS poruke, tako da nijedne dve poruke nisu iste, što neki operateri zahtevaju."
-    provider_color_hint: "Koristi se za termine ovog izvršioca usluge kada kalendar prikazuje sve."
+    provider_color_hint: "Pozadina termina ovog izvršioca usluge u kalendaru. Boja usluge se prikazuje na ivici"
     working_providers: "Izvršioci koji rade"
     hidden_from_public: "Skriveno od javnosti"
     slot_interval_hint: "Koliko često se posetiocima nude vremena početka. Sa 15, usluga od 45 minuta može početi u 9:00, 9:15, 9:30 i tako dalje; sa 60, u 9:00, 10:00, 11:00. Ovo ne ostavlja slobodno vreme posle termina: za to produžite trajanje usluge."
@@ -978,8 +977,25 @@ rs:
     message_move_to: "Premesti kod {name}"
     message_moved: "Poruka premeštena"
     notification_tokens_hint: "Polja šablona koja možete koristiti. Kliknite na jedno da ga umetnete tamo gde ste kucali, ili da ga kopirate:"
-    inbox_info: "Dolazne poruke. Inbox prikazuje poruke koje treba rešiti - označite svaku kao Završeno kada je rešena ili pročitana; i dalje ih možete čitati na stranici korisnika ili u Arhivi. Arhiva prikazuje poruke označene kao Završeno - ima dugme Poništi koje ih vraća u Inbox."
+    inbox_info: "Primljene poruke. Inbox prikazuje poruke koje zahtevaju radnju, označite svaku kao završenu kada se obradi ili pročita - i dalje ih možete čitati na stranici posetioca ili u arhivi. Arhiva prikazuje poruke označene kao završene - ima dugme za poništavanje kojim se vraćaju u Inbox."
     booking_release_time: "Vreme otvaranja"
     booking_release_time_hint: "Sledeći dan na kraju ograničenja budućih rezervacija otvara se u ovo vreme svakog dana."
     inbox_filter_archive: "Arhiva"
     load_more_messages: "Učitaj još poruka"
+    clear_providers: "Obriši izvršioce"
+    clear_services: "Obriši usluge"
+    refresh: "Osveži"
+    sync: "Sinhronizuj"
+    feed: "Feed"
+    do_not_contact_hint: "Ovom posetiocu se ne šalju potvrde termina, izmene ni podsetnici"
+    do_not_contact_warning: "Ovaj posetilac je zatražio da ga ne kontaktirate. Poruke poslate ovde ipak će biti isporučene."
+    company_address: "Adresa kompanije"
+    company_address_hint: "Ovo će biti podrazumevana lokacija za sva zakazivanja i pozivnice u kalendaru"
+    cancel_reason_optional: "Neobavezan razlog otkazivanja termina, ako želite da nas obavestite:"
+    late_cancel_reason: "Razlog otkazivanja termina:"
+    appointments_include_locations: "Termini uključuju lokacije"
+    appointments_include_locations_hint: "Omogućava izvršiocu usluge, asistentu ili administratoru da podesi lokaciju termina. Kada je isključeno, lokacija će uvek biti adresa kompanije."
+    appointments_include_meeting_links: "Termini uključuju linkove za sastanak"
+    appointments_include_meeting_links_hint: "Omogućava izvršiocu usluge, asistentu ili administratoru da terminu doda link ka onlajn sastanku. Link će biti uključen u pozivnicu u kalendaru posetioca."
+    booking_provider_first_hint: "Na stranici za zakazivanje prikaži posetiocu izvršioce usluge pre nego što izabere uslugu."
+    display_order_switch_hint: "Omogućava posetiocima da koriste dugme u prvom koraku stranice za zakazivanje kako bi prvo izabrali uslugu ili prvo izvršioca usluge, pre nego što izaberu drugo."

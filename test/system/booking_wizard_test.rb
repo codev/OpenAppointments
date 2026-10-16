@@ -146,7 +146,7 @@ class BookingWizardFlowTest < ApplicationSystemTestCase
     assert_text services(:haircut).name
     click_on "Confirm"
 
-    assert_text "Your appointment has been successfully registered", wait: 10
+    assert_text "You're all set!", wait: 10
     appointment = Appointment.appointments.find_by!(start_datetime: date.to_time.change(hour: 9, min: 30))
     assert_equal "walkin@example.org", appointment.customer.email
     assert_equal users(:zane).id, appointment.id_users_provider
@@ -169,13 +169,13 @@ class BookingWizardFlowTest < ApplicationSystemTestCase
     assert_selector "#wizard-frame-5", visible: :visible, wait: 5
     click_on "Update"
 
-    assert_text "successfully", wait: 10
+    assert_text "You're all set!", wait: 10
     replacement = Appointment.appointments.order(:id).last
     assert_equal date.to_time.change(hour: 10), replacement.start_datetime
     assert_equal "rescheduled", appointment.reload.appointment_status.kind
   end
 
-  test "cancelling from the reschedule link asks for a reason" do
+  test "cancelling from the reschedule link takes an optional reason" do
     date = working_day
     appointment = Appointment.create!(id_users_provider: users(:zane).id, id_users_customer: users(:jx).id,
                                       id_services: services(:haircut).id, start_datetime: date.to_time.change(hour: 14),
@@ -185,13 +185,24 @@ class BookingWizardFlowTest < ApplicationSystemTestCase
     assert_selector "#cancel-appointment", wait: 10
     find("#cancel-appointment").click
     wait_for_modal
-    find("#cancel-appointment-confirm").click # the reason is required
-    assert_selector "#cancel-appointment-modal.show"
+    assert_selector "#cancellation-reason:not([required])"
     fill_in "cancellation-reason", with: "Moving house"
     find("#cancel-appointment-confirm").click
-    assert_no_selector "#cancel-appointment", wait: 10
+    # Wait for the confirmation page rather than for the form to vanish: polling
+    # an element mid-navigation makes Chrome raise "Node ... does not belong to the document".
+    assert_text "Appointment Cancelled", wait: 10
     assert_equal "cancelled", appointment.reload.appointment_status.kind
     assert_includes appointment.notes, "Moving house"
+  end
+
+  test "cancellation frame shows the hint text" do
+    date = working_day
+    appointment = Appointment.create!(id_users_provider: users(:zane).id, id_users_customer: users(:jx).id,
+                                      id_services: services(:haircut).id, start_datetime: date.to_time.change(hour: 14),
+                                      end_datetime: date.to_time.change(hour: 14, min: 30),
+                                      appointment_status: AppointmentStatus.of("booked"))
+    visit "/booking/reschedule/#{appointment.booking_hash}"
+    assert_text "Press the \"Cancel\" button to cancel the appointment"
   end
 
   test "any provider offers the union of hours and books an actual provider" do
@@ -213,10 +224,29 @@ class BookingWizardFlowTest < ApplicationSystemTestCase
     fill_in "email", with: "anyone@example.org"
     find("#button-next-4").click
     assert_selector "#wizard-frame-5", visible: :visible, wait: 5
+    selection = find(".display-booking-selection", text: /│ (Zane|Riley)\z/, wait: 5).text
+    pick = selection.split("│ ").last
+    assert_selector "#wizard-frame-5 #appointment-details", text: pick
+
+    find("#button-back-5").click
+    assert_selector "#wizard-frame-4", visible: :visible, wait: 5
+    assert_selector ".display-booking-selection", text: "#{services(:haircut).name} │ Any Provider"
+    find("#button-back-4").click
+    assert_selector "#wizard-frame-3", visible: :visible, wait: 5
+    assert_selector ".display-booking-selection", text: "#{services(:haircut).name} │ Any Provider"
+    find("#available-hours .available-hour", text: /\A11:00 am\z/, wait: 10).click
+    find("#button-next-3").click
+    assert_selector "#wizard-frame-4", visible: :visible, wait: 5
+    fill_in "name", with: "Any One"
+    fill_in "email", with: "anyone@example.org"
+    find("#button-next-4").click
+    assert_selector "#wizard-frame-5", visible: :visible, wait: 5
+    assert_selector ".display-booking-selection", text: "#{services(:haircut).name} │ #{pick}"
+
     click_on "Confirm"
-    assert_text "successfully registered", wait: 10
+    assert_text "You're all set!", wait: 10
     appointment = Appointment.appointments.order(:id).last
-    assert_includes User.providers.pluck(:id), appointment.id_users_provider
+    assert_equal pick, appointment.provider.name
   end
 end
 
@@ -354,7 +384,7 @@ class BookingWizardWindowTest < ApplicationSystemTestCase
     assert_selector "#wizard-frame-5 #appointment-details", text: /4:30 am/, wait: 5
     assert_selector "#wizard-frame-5 #appointment-details", text: /New_York/
     click_on "Confirm"
-    assert_text "successfully registered", wait: 10
+    assert_text "You're all set!", wait: 10
     assert_equal "America/New_York", User.customers.find_by!(email: "far@example.org").timezone
   end
 
@@ -383,5 +413,106 @@ class BookingWizardWindowTest < ApplicationSystemTestCase
     assert_no_selector "#available-hours .available-hour", text: /\A9:30 am\z/
     assert_selector "#available-hours .available-hour", text: /\A10:00 am\z/
     assert_nil Appointment.find_by(notes: "Too Slow")
+  end
+
+  test "the remember me hint mentions saving on this browser" do
+    to_time_step
+    date = working_day(0)
+    find(".flatpickr-day[aria-label='#{date.strftime('%B %-d, %Y')}']").click
+    find("#available-hours .available-hour", text: /\A9:30 am\z/, wait: 5).click
+    find("#button-next-3").click
+    assert_selector "#wizard-frame-4", visible: :visible, wait: 5
+    assert_text "on this browser"
+  end
+
+  test "remembered details include the custom question answers" do
+    Setting.set("display_custom_field_1", "1")
+    Setting.set("label_custom_field_1", "Pronouns")
+    to_time_step
+    date = working_day(0)
+    find(".flatpickr-day[aria-label='#{date.strftime('%B %-d, %Y')}']").click
+    find("#available-hours .available-hour", text: /\A9:30 am\z/, wait: 5).click
+    find("#button-next-3").click
+    assert_selector "#wizard-frame-4", visible: :visible, wait: 5
+    fill_in "name", with: "Repeat Customer"
+    fill_in "email", with: "repeat@example.org"
+    fill_in "custom-field-1", with: "they/them"
+    check "remember-me"
+    find("#button-next-4").click
+    assert_selector "#wizard-frame-5", visible: :visible, wait: 5
+    click_on "Confirm"
+    assert_text "You're all set!", wait: 10
+
+    to_time_step
+    find(".flatpickr-day[aria-label='#{date.strftime('%B %-d, %Y')}']").click
+    find("#available-hours .available-hour", match: :first, wait: 5).click
+    find("#button-next-3").click
+    assert_selector "#wizard-frame-4", visible: :visible, wait: 5
+    assert_field "name", with: "Repeat Customer", wait: 5
+    assert_field "custom-field-1", with: "they/them", wait: 5
+  end
+
+  test "the remember me checkbox on details step has visible styling when unchecked" do
+    to_time_step
+    find(".flatpickr-day[aria-label='#{Date.current.strftime('%B %-d, %Y')}']", wait: 5).click
+    find("#available-hours .available-hour", match: :first, wait: 5).click
+    find("#button-next-3").click
+    assert_selector "#wizard-frame-4", visible: :visible, wait: 5
+
+    # Verify checkbox is visible with white background and visible border
+    assert_selector "#remember-me", visible: :visible
+
+    bg_color = page.evaluate_script("window.getComputedStyle(document.querySelector('#remember-me')).backgroundColor")
+    border_color = page.evaluate_script("window.getComputedStyle(document.querySelector('#remember-me')).borderColor")
+
+    # The background should be white (rgb(255, 255, 255))
+    assert bg_color == "rgb(255, 255, 255)", "Unchecked checkbox should have white background, got: #{bg_color}"
+    # The border should be a visible colour (not white)
+    assert border_color != "rgb(255, 255, 255)", "Unchecked checkbox should have visible border, got: #{border_color}"
+  end
+
+  # Cloudflare's api.js is blocked and replaced by a stub, so the test runs offline
+  # and shows whether the page itself renders the widget the frame brings in.
+  TURNSTILE_STUB = <<~JS.freeze
+    window.turnstile = {
+      render(element) {
+        const container = typeof element === 'string' ? document.querySelector(element) : element;
+        container.innerHTML = '<iframe class="turnstile-stub"></iframe>';
+        return 'stub';
+      }
+    };
+  JS
+
+  test "the Turnstile widget is rendered on the confirmation step before any submit" do
+    Setting.set("altcha_enabled", "1")
+    Setting.set("captcha_provider", "turnstile")
+    Setting.set("turnstile_site_key", "sitekey")
+    Setting.set("turnstile_secret_key", "secretkey")
+    browser = page.driver.browser
+    browser.execute_cdp("Network.enable")
+    browser.execute_cdp("Network.setBlockedURLs", urls: [ "*challenges.cloudflare.com*" ])
+    stub = browser.execute_cdp("Page.addScriptToEvaluateOnNewDocument", source: TURNSTILE_STUB)
+
+    date = working_day
+    visit root_url
+    assert_selector "#wizard-frame-1", visible: :visible, wait: 5
+    select services(:haircut).name, from: "select-service"
+    find("#button-next-1").click
+    select users(:zane).name, from: "select-provider"
+    find("#button-next-2").click
+    assert_selector "#wizard-frame-3", visible: :visible, wait: 5
+    find(".flatpickr-day[aria-label='#{date.strftime('%B %-d, %Y')}']", wait: 10).click
+    find("#available-hours .available-hour", text: /\A9:30 am\z/, wait: 10).click
+    find("#button-next-3").click
+    assert_selector "#wizard-frame-4", visible: :visible, wait: 5
+    fill_in "name", with: "Walk In"
+    fill_in "email", with: "walkin@example.org"
+    find("#button-next-4").click
+
+    assert_selector "#wizard-frame-5", visible: :visible, wait: 5
+    assert_selector "#wizard-frame-5 .cf-turnstile iframe", count: 1, wait: 5
+  ensure
+    browser.execute_cdp("Page.removeScriptToEvaluateOnNewDocument", identifier: stub["identifier"]) if stub
+    browser&.execute_cdp("Network.setBlockedURLs", urls: [])
   end
 end

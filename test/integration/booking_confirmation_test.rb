@@ -17,6 +17,88 @@ class BookingConfirmationTest < ActionDispatch::IntegrationTest
     assert_no_match I18n.t("ea.go_to_booking_page"), css_select("#go-to-company").first.text
   end
 
+  test "the calendar buttons come before the company website button under a calendar icon" do
+    get "/booking_confirmation/of/#{appointments(:upcoming).booking_hash}"
+
+    body = response.body
+    assert_operator body.index('id="download-ics"'), :<, body.index('id="go-to-company"')
+    assert_operator body.index('id="add-to-google-calendar"'), :<, body.index('id="go-to-company"')
+    assert_select "#calendar-actions .fa-calendar-plus"
+    assert_select "#calendar-actions #download-ics"
+  end
+
+  test "the heading says the customer is all set" do
+    get "/booking_confirmation/of/#{appointments(:upcoming).booking_hash}"
+
+    assert_select "h3", text: "You're all set!"
+  end
+
+  test "the message layout honours the powered by setting" do
+    get "/booking_confirmation/of/#{appointments(:upcoming).booking_hash}"
+    assert_select "#message-frame a[href='https://github.com/codev/OpenAppointments']"
+
+    Setting.set("display_powered_by", "0")
+    get "/booking_confirmation/of/#{appointments(:upcoming).booking_hash}"
+    assert_select "#message-frame a[href='https://github.com/codev/OpenAppointments']", false
+  end
+
+  test "the legal notice link stays when the powered by credit is hidden" do
+    Setting.set("display_powered_by", "0")
+    Setting.set("disable_booking", "1")
+    Setting.set("legal_notice_url", "https://example.org/legal")
+    get "/"
+
+    assert_select "#message-frame a[href='https://github.com/codev/OpenAppointments']", false
+    assert_select "#message-frame a[href='https://example.org/legal']"
+  end
+
+  test "the confirmed and cancelled pages link the legal notice and imprint" do
+    Setting.set("legal_notice_url", "https://example.org/legal")
+    Setting.set("imprint_url", "https://example.org/imprint")
+
+    get "/booking_confirmation/of/#{appointments(:upcoming).booking_hash}"
+    assert_select "#message-frame a[href='https://example.org/legal']"
+    assert_select "#message-frame a[href='https://example.org/imprint']"
+
+    post "/booking_cancellation/of/#{appointments(:upcoming).booking_hash}", params: { cancellation_reason: "Moved" }
+    assert_select "#message-frame a[href='https://example.org/legal']"
+    assert_select "#message-frame a[href='https://example.org/imprint']"
+  end
+
+  test "the Google Calendar link uses the company address when no location is set" do
+    appointment = appointments(:upcoming)
+    appointment.update!(location: "")
+    appointment.service.update!(location: "")
+    Setting.set("company_address", "1 High Street, London")
+
+    get "/booking_confirmation/of/#{appointment.booking_hash}"
+
+    assert_select "a[href*='calendar.google.com'][href*=?]", CGI.escape("1 High Street, London").gsub("%20", "+")
+  end
+
+  test "the Google Calendar link prefers the appointment location" do
+    appointment = appointments(:upcoming)
+    appointment.update!(location: "Pop-up shop")
+    Setting.set("company_address", "1 High Street, London")
+    Setting.set("appointments_include_locations", "1")
+
+    get "/booking_confirmation/of/#{appointment.booking_hash}"
+
+    assert_select "a[href*='calendar.google.com'][href*=?]", "location=Pop-up+shop"
+  end
+
+  test "the Google Calendar link is titled with company, service and stylist and has no guests" do
+    Setting.set("company_name", "Open Out")
+    appointment = appointments(:upcoming)
+
+    get "/booking_confirmation/of/#{appointment.booking_hash}"
+
+    href = css_select("#add-to-google-calendar").first["href"]
+    params = Rack::Utils.parse_query(URI(href).query)
+    assert_equal "Open Out: #{appointment.service.name} with #{appointment.provider.name}", params["text"]
+    assert_not params.key?("add")
+  end
+
   test "the ics endpoint streams the appointment calendar" do
     get "/booking_confirmation/ics/#{appointments(:upcoming).booking_hash}"
     assert_response :success

@@ -142,6 +142,8 @@ class BookingFlowTest < ActionDispatch::IntegrationTest
       assert_response :success
       assert_select "#cancel-appointment-frame", count: 0
       assert_includes response.body, "/booking_cancellation/late/#{appointments(:upcoming).booking_hash}"
+      assert_select "label[for=cancellation-reason]", text: I18n.t("ea.late_cancel_reason")
+      assert_select "textarea[name=cancellation_reason][required]"
     end
 
     appointments(:upcoming).cancel!
@@ -177,6 +179,15 @@ class BookingFlowTest < ActionDispatch::IntegrationTest
     assert BookingWindows.late?(appointment, zone.parse("2026-07-20 09:01"))
   end
 
+  test "a cancel without a reason inside the late window goes to the late cancel page" do
+    appointment = appointments(:upcoming)
+    travel_to provider_zone.parse("2026-07-20 09:45") do
+      post "/booking_cancellation/of/#{appointment.booking_hash}", params: { cancellation_reason: "" }
+    end
+    assert_redirected_to "/booking/reschedule/#{appointment.booking_hash}"
+    assert_equal "Booked", appointment.reload.status
+  end
+
   test "customer cancel keeps the row as cancelled; inside the late window as late cancel" do
     appointment = appointments(:upcoming)
     travel_to Time.new(2026, 7, 10, 12, 0, 0) do
@@ -196,6 +207,24 @@ class BookingFlowTest < ActionDispatch::IntegrationTest
     end
     assert_response :success
     assert_equal "Late Cancel", appointment.reload.status
+  end
+
+  test "customer cancel without a reason succeeds; late cancel without a reason is refused" do
+    appointment = appointments(:upcoming)
+    travel_to Time.new(2026, 7, 10, 12, 0, 0) do
+      post "/booking_cancellation/of/#{appointment.booking_hash}", params: { cancellation_reason: "" }
+    end
+    assert_response :success
+    assert_equal "Cancelled", appointment.reload.status
+
+    appointment.update!(appointment_status: nil)
+    travel_to provider_zone.parse("2026-07-20 09:45") do
+      post "/booking_cancellation/late/#{appointment.booking_hash}", params: { cancellation_reason: "" }
+      assert_redirected_to "/booking/reschedule/#{appointment.booking_hash}"
+      post "/booking_cancellation/of/#{appointment.booking_hash}", params: { cancellation_reason: "" }
+      assert_redirected_to "/booking/reschedule/#{appointment.booking_hash}"
+    end
+    assert_nil appointment.reload.appointment_status
   end
 
   private

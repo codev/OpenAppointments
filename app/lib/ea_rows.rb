@@ -17,12 +17,23 @@ module EaRows
   # Display picture: the 400x400 variant picked by the record type's
   # picture_style_* setting, falling back to the original when unprocessed.
   def picture_url(record)
-    style = Setting.get(PICTURE_STYLE_SETTINGS.fetch(record.class.name, "picture_style_services"), "border")
-    attachment = style == "zoomed" ? record.picture_zoomed : record.picture_padded
-    attachment = record.picture unless attachment.attached?
+    attachment = display_picture(record)
     return nil unless attachment.attached?
 
     Rails.application.routes.url_helpers.rails_blob_path(attachment, only_path: true)
+  end
+
+  # Pixel size of the displayed picture (square) when it is a stored variant,
+  # nil for an original of unknown dimensions or no picture.
+  def picture_size(record)
+    picture = display_picture(record)
+    PictureVariants::SIZE if picture.attached? && picture.name != "picture"
+  end
+
+  def display_picture(record)
+    style = Setting.get(PICTURE_STYLE_SETTINGS.fetch(record.class.name, "picture_style_services"), "border")
+    attachment = style == "zoomed" ? record.picture_zoomed : record.picture_padded
+    attachment.attached? ? attachment : record.picture
   end
 
   def dt(value)

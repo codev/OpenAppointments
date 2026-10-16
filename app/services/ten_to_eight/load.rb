@@ -2,11 +2,10 @@ module TenToEight
   # Port of import/load_to_ea.py, writing straight to the models. Matches existing
   # records (categories/services by name, providers by email or name, customers by
   # email or name+phone) so re-runs do not duplicate. Pronoun lands in custom_field_1, access
-  # needs in custom_field_2, and a do-not-contact prefix on the notes (GDPR consent).
+  # needs in custom_field_2, and consent not granted in do_not_contact (GDPR).
   class Load
     PHASES = %w[categories services providers assistants admins customers appointment_statuses appointments
                 appointment_series working_plan_exceptions notifications webhooks consents settings].freeze
-    DO_NOT_CONTACT_PREFIX = "[DO NOT CONTACT - consent not granted]".freeze
 
     def initialize(data, phases:, create_providers: false, progress: nil, images_dir: nil)
       @data = data
@@ -445,12 +444,11 @@ module TenToEight
           next
         end
 
-        notes = row[:notes]
-        notes = "#{DO_NOT_CONTACT_PREFIX} #{notes}".strip if row[:do_not_contact]
         customer = guard("customers", counts, row[:name]) do
           User.create!(
             name: row[:name], email: row[:email], phone_number: row[:phone],
-            address: row[:address], city: row[:city], zip_code: row[:zip], notes: notes,
+            address: row[:address], city: row[:city], zip_code: row[:zip], notes: row[:notes],
+            do_not_contact: row[:do_not_contact].present?,
             custom_field_1: row[:pronoun], custom_field_2: row[:access],
             custom_field_3: row[:custom_field_3], custom_field_4: row[:custom_field_4],
             custom_field_5: row[:custom_field_5], language: row[:language],

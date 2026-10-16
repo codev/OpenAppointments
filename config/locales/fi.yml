@@ -116,9 +116,9 @@ fi:
     appointment_confirmation: Vahvista ajanvaraus
     confirm: Vahvista
     update: Päivitä
-    cancel_appointment_hint: Paina "Peruuta" poistaaksesi varauksen.
+    cancel_appointment_hint: "Peruuta varaus painamalla Peruuta-painiketta"
     cancel: Peruuta
-    appointment_registered: Varauksen rekisteröinti onnistui.
+    appointment_registered: "Kaikki valmista!"
     cancel_appointment_title: Peruuta varaus
     appointment_cancelled: Varauksen peruutus onnistui.
     appointment_cancelled_title: Varaus peruutettu
@@ -167,7 +167,6 @@ fi:
     all_day: Koko päivän
     manage_appointment_record_hint: Hallinnoi kaikkia saatavilla olevien palveluiden ja tuottajien varauksia.
     select_filter_item_hint: Valitse palvelu tai palveluntuottaja ja näytä varauskalenteri.
-    enable_appointment_sync_hint: Aktivoi varausten synkronointi palveluntuottajan Google-kalenteriin.
     manage_customers_hint: Hallinnoi rekisteröityjä käyttäjiä ja tarkastele heidän varaushistoriaansa.
     manage_services_hint: Hallinnoi saatavilla olevia palveluja ja järjestelmän tuoteluokkia
     manage_users_hint: Hallinnoi taustajärjestelmän käyttäjiä (järjestelmänvalvojat, palveluntuottajat, assistentit).
@@ -452,7 +451,7 @@ fi:
     company: Yritys
     remove: Poista
     login_button: Kirjautumispainike
-    display_login_button_hint: Määrittää näytetäänkö kirjautumispainike varaussivulla.
+    display_login_button_hint: "Määrittää, näytetäänkö henkilökunnan kirjautumispainike varaussivulla."
     private: Yksityinen
     private_hint: "Yksityisiä tietueita ei näytetä julkisella varaussivulla, mutta ne voi silti varata niiden suoran varauslinkin kautta."
     reset: Nollaa
@@ -652,7 +651,7 @@ fi:
     start_date: Aloituspäivä
     end_date: Lopetuspäivä
     remember_me: Muista tietoni
-    remember_me_hint: Tallenna tietosi nopeampaa varausta varten seuraavalla kerralla.
+    remember_me_hint: "Tallenna tietosi tähän selaimeen, niin varaaminen on nopeampaa ensi kerralla."
     legal_notice: Oikeudellinen ilmoitus
     legal_notice_url: Oikeudellinen ilmoitus URL
     legal_notice_url_hint: Syötä oikeudellisen ilmoituksen sivun URL.
@@ -695,24 +694,24 @@ fi:
     messages_intercept_required: "Debug tarvitsee kelvollisen sähköpostiosoitteen ja puhelinnumeron uudelleenohjaukseen."
     messages_retention_days: Delete messages older than (days)
     messages_retention_days_hint: Messages older than this many days are deleted automatically. Set 0 to keep all messages.
-    messages_email_subject: Outgoing Email Subject Line
+    messages_email_subject: "Sähköpostin aihe"
     messages_email_subject_hint: Used for emails without their own Short Text, and for messages sent from the customer page.
     messages_providers_info: Notification providers deliver your notifications by email or SMS. Configure at least one provider and tick it inside each notification template.
     messages_provider_disabled: Disabled
-    messages_provider_outgoing: Outgoing
-    messages_provider_incoming_outgoing: Incoming and outgoing
+    messages_provider_outgoing: "Vain lähetys"
+    messages_provider_incoming_outgoing: "Lähetys ja vastaanotto"
     messages_provider_email_info: Send notifications by email through the server or SMTP, and receive replies through the server or IMAP.
     messages_provider_twilio_info: Send and receive SMS with a Twilio account and phone number.
     messages_provider_plivo_info: Send and receive SMS with a Plivo account and phone number.
     messages_provider_textanywhere_info: Send and receive SMS with a TextAnywhere account.
-    messages_incoming: Incoming
-    messages_incoming_hint: Customer can reply to support incoming messages as well as outgoing ones.
+    messages_incoming: "Vastaanota vastaukset"
+    messages_incoming_hint: "Asiakkaat voivat vastata lähettämiisi viesteihin."
     messages_test_sms_sent: "Testitekstiviesti laehetetty, tarkista puhelin."
     messages_test_sms_number: "Testipuhelinnumero"
     messages_test_sms: "Laeheta testitekstiviesti"
     messages_smsgateway_invalid: "Yhdyskaeytaevaen asetuksia ei voitu vahvistaa:"
-    messages_smsgateway_inbound_hint: "Puhelin toimittaa saapuvat viestit taehaen osoitteeseen, rekisteroeinti tapahtuu automaattisesti tallennettaessa vastaanotto paeaellae."
-    messages_smsgateway_step_activate: "Rastita Aktiivinen ja Vastaanota saapuvat viestit ja tallenna. Asetukset testataan; korjaa virheet ja testaa laehetys alla olevalla Laeheta testitekstiviesti -painikkeella."
+    messages_smsgateway_inbound_hint: "Puhelin toimittaa vastaanotetut viestit tähän osoitteeseen. Rekisteröinti tehdään automaattisesti tallennettaessa, kun vastaanotto on päällä."
+    messages_smsgateway_step_activate: "Valitse Aktiivinen ja Vastaanota vastaukset, ja tallenna. Asetukset testataan: korjaa mahdolliset virheet ja testaa lähetys alla olevalla Lähetä testitekstiviesti -painikkeella."
     messages_smsgateway_step_credentials: "Sovelluksen aloitusnaeytoellae: kytke Local server pois, Cloud server paeaelle ja paina Offline-painiketta yhdistaeaeksesi (rastita myoes Start on boot), kopioi sitten aloitusnaeytoen kaeyttaejaetunnus ja salasana alla oleviin kenttiin Kaeyttaejaetunnus ja Salasana."
     messages_smsgateway_step_signing: "Siirry sovelluksen kohtaan Settings -> Webhooks -> Signing Key -> syoetae allekirjoitusavain ja kopioi se alla olevaan Webhookin allekirjoitusavaimeen."
     messages_smsgateway_step_token: "Jos kaeytaet yksityistae palvelinta, syoetae samalla naeytoellae myoes Private Token - token on lyysipalvelimen tiedostossa /app/data/private_token."
@@ -733,14 +732,14 @@ fi:
     messages_smsgateway_password: "Salasana"
     messages_smsgateway_signing_key: "Webhookin allekirjoitusavain"
     messages_provider_smsgateway_info: "Laehettaeae ja vastaanottaa tekstiviestejae Android-puhelimella, jossa on SMS Gateway -sovellus omaa palvelinta vasten, ei viestikohtaisia kuluja."
-    messages_email_outgoing: Outgoing email
+    messages_email_outgoing: "Lähetä sähköposti"
     messages_email_mode: Sending method
     messages_email_mode_server: Send email through server
     messages_email_mode_smtp: Send email with SMTP
     messages_smtp_host: SMTP host
     messages_smtp_port: SMTP port
     messages_smtp_tls: Use TLS
-    messages_email_incoming_section: Incoming email
+    messages_email_incoming_section: "Vastaanota sähköposti"
     messages_email_incoming_mode: Receiving method
     messages_email_incoming_server: Receive email through server
     messages_email_incoming_imap: Receive email with IMAP
@@ -749,8 +748,8 @@ fi:
     messages_imap_port: IMAP port
     messages_email_credentials_hint: "Need an email delivery service? Get SMTP credentials from"
     messages_sms_credentials_hint: "Get your credentials from the provider console:"
-    messages_inbound_webhook: Incoming webhook URL
-    messages_inbound_webhook_hint: Paste this URL into the provider console so incoming messages reach the app. Keep it secret.
+    messages_inbound_webhook: "Vastaanotettujen viestien webhook-osoite"
+    messages_inbound_webhook_hint: "Liitä tämä osoite palveluntarjoajan hallintapaneeliin, jotta vastaanotetut viestit saapuvat sovellukseen. Pidä se salassa."
     messages_twilio_account_sid: Account SID
     messages_twilio_auth_token: Auth token
     messages_from_number: From phone number
@@ -783,8 +782,8 @@ fi:
     open_all_notification_templates: Open all notification templates
     close_all_notification_templates: Close all notification templates
     messages_address: Address
-    messages_incoming_label: Incoming
-    messages_outgoing_label: Outgoing
+    messages_incoming_label: "Vastaanotetut"
+    messages_outgoing_label: "Lähetetyt"
     messages_manual_label: Manual
     messages_unknown_sender: Unknown sender
     messages_status_sent: Sent
@@ -889,7 +888,7 @@ fi:
     filter_statuses_hint: 'Choose which appointment statuses to show.'
     appointment_statuses: 'Appointment Statuses'
     inbox: 'Inbox'
-    inbox_hint: 'Incoming messages from your customers.'
+    inbox_hint: "Asiakkailtasi vastaanotetut viestit."
     read: 'Read'
     message: 'Message'
     mark_as_read: 'Mark as read'
@@ -961,7 +960,7 @@ fi:
     time_off_hint: "Jos kyseessä on osa päivästä, syötä tunnit, jolloin olet poissa. Ne tallennetaan taukona näille päiville."
     messages_sms_variation: "Vaihtele jokaista tekstiviestiä"
     messages_sms_variation_hint: "Lisää lyhyen viitekoodin jokaisen tekstiviestin loppuun, jotta mitkään kaksi viestiä eivät ole samanlaisia, mitä jotkin operaattorit vaativat."
-    provider_color_hint: "Käytetään tämän palveluntuottajan varauksille, kun kalenteri näyttää kaikki."
+    provider_color_hint: "Tämän palveluntuottajan varausten taustaväri kalenterissa. Palvelun väri näkyy reunassa"
     working_providers: "Työssä olevat palveluntuottajat"
     hidden_from_public: "Piilotettu yleisöltä"
     slot_interval_hint: "Kuinka usein aloitusaikoja tarjotaan asiakkaille. Arvolla 15 45 minuutin palvelu voi alkaa klo 9:00, 9:15, 9:30 ja niin edelleen; arvolla 60 klo 9:00, 10:00, 11:00. Se ei pidä aikaa vapaana varauksen jälkeen: pidennä sitä varten palvelun kestoa."
@@ -978,8 +977,25 @@ fi:
     message_move_to: "Siirrä kohteeseen {name}"
     message_moved: "Viesti siirretty"
     notification_tokens_hint: "Mallineen kentät, joita voit käyttää. Lisää se kirjoituskohtaan tai kopioi se napsauttamalla:"
-    inbox_info: "Saapuneet viestit. Inbox listaa viestit, jotka vaativat toimia, merkitse kukin Valmiiksi, kun se on käsitelty tai luettu - voit lukea ne edelleen asiakkaan sivulla tai arkistossa. Arkisto listaa Valmiiksi merkityt viestit - siinä on Kumoa-painike, joka palauttaa ne Inboxiin."
+    inbox_info: "Vastaanotetut viestit. Saapuneet-listalla on viestit, joihin pitää reagoida: merkitse viesti tehdyksi, kun se on hoidettu tai luettu. Voit yhä lukea ne asiakkaan sivulla tai arkistossa. Arkisto sisältää tehdyiksi merkityt viestit, ja sen kumoa-painikkeella viestin saa takaisin saapuneisiin."
     booking_release_time: "Avautumisaika"
     booking_release_time_hint: "Seuraava päivä tulevien varausten rajan lopussa avautuu tähän aikaan joka päivä."
     inbox_filter_archive: "Arkisto"
     load_more_messages: "Lataa lisää viestejä"
+    clear_providers: "Tyhjennä palveluntuottajat"
+    clear_services: "Tyhjennä palvelut"
+    refresh: "Päivitä"
+    sync: "Synkronoi"
+    feed: "Syöte"
+    do_not_contact_hint: "Tälle asiakkaalle ei lähetetä varausvahvistuksia, muutosilmoituksia eikä muistutuksia"
+    do_not_contact_warning: "Tämä asiakas on pyytänyt, ettei häneen oteta yhteyttä. Täältä lähetetyt viestit toimitetaan silti."
+    company_address: "Yrityksen osoite"
+    company_address_hint: "Tämä on kaikkien varausten ja kalenterikutsujen oletussijainti"
+    cancel_reason_optional: "Vapaaehtoinen syy varauksen peruuttamiseen, jos haluat kertoa sen meille:"
+    late_cancel_reason: "Syy varauksen peruuttamiseen:"
+    appointments_include_locations: "Varauksissa on sijainti"
+    appointments_include_locations_hint: "Sallii kampaajan, avustajan tai ylläpitäjän asettaa varauksen sijainnin. Kun tämä on pois päältä, sijainti on aina yrityksen osoite."
+    appointments_include_meeting_links: "Varauksissa on kokouslinkki"
+    appointments_include_meeting_links_hint: "Sallii kampaajan, avustajan tai ylläpitäjän lisätä varaukseen linkin verkkokokoukseen. Linkki sisällytetään asiakkaan kalenterikutsuun."
+    booking_provider_first_hint: "Näytä varaussivulla asiakkaalle kampaajat ennen kuin hän valitsee palvelun."
+    display_order_switch_hint: "Sallii asiakkaiden valita varaussivun ensimmäisellä vaiheella painikkeella, valitaanko ensin palvelu vai kampaaja, ennen toisen valitsemista."

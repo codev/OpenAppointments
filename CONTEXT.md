@@ -12,6 +12,11 @@ on their own: a booking is the same customer only when the contact details and t
 both match.
 _Avoid_: Client, user
 
+**Do not contact**:
+A customer who withheld consent to be contacted. They get no automatic notifications
+(confirmations, changes, reminders) on any channel; waiting list notices they signed up
+for still go, and staff can still message them from the customer's Messages section.
+
 **Stylist**:
 Staff member whose time customers book; each has a working plan and is listed under
 each date on the List page.

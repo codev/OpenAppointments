@@ -1,71 +1,45 @@
-<%# Calendar page: one FullCalendar filtered by a provider or a service. %>
+<%# Calendar page: one FullCalendar filtered by ticked stylists, services and statuses. %>
 <%# No stale preview from Turbo's cache: the page is slow to fill and a copy would mislead. %>
 <% content_for :meta do %>
     <meta name="turbo-cache-control" content="no-preview">
 <% end %>
 <div class="container-fluid backend-page pt-0 pb-0" id="calendar-page">
     <div class="row mb-3 py-3" id="calendar-toolbar">
-        <div id="calendar-filter" class="col-lg-5 d-flex flex-nowrap align-items-center gap-2 mb-2 mb-lg-0">
-            <%# The hidden select holds the choice the calendar scripts read; the
-                dropdown button in front of it sets it (utils/filter_dropdown). %>
-            <div class="dropdown" id="filter-item-dropdown" data-filter-for="select-filter-item">
-                <button class="btn btn-light dropdown-toggle" type="button" data-bs-toggle="dropdown"
-                        aria-expanded="false" data-tippy-content="<%= lang('select_filter_item_hint') %>">
-                    <%= lang('all') %>
-                </button>
-                <ul class="dropdown-menu">
-                    <li><button type="button" class="dropdown-item" data-value="all"><%= lang('all') %></button></li>
-                    <% if vars(:available_providers).any? %>
-                        <li><h6 class="dropdown-header"><%= lang('providers') %></h6></li>
-                        <% vars(:available_providers).each do |provider| %>
-                            <li><button type="button" class="dropdown-item" data-value="<%= provider["id"] %>" data-type="provider"><%= provider["name"] %></button></li>
-                        <% end %>
-                    <% end %>
-                    <% if vars(:available_services).any? %>
-                        <li><h6 class="dropdown-header"><%= lang('services') %></h6></li>
-                        <% vars(:available_services).each do |service| %>
-                            <li><button type="button" class="dropdown-item" data-value="<%= service["id"] %>" data-type="service"><%= service["name"] %></button></li>
-                        <% end %>
-                    <% end %>
-                </ul>
-            </div>
+        <div id="calendar-filter" class="col-12 col-md-auto d-flex flex-nowrap align-items-center justify-content-center justify-content-md-start gap-2">
+            <% stylist_login = session[:role_slug] == Role::PROVIDER %>
+            <% unless stylist_login %>
+                <%= render "shared/tick_filter", id: "provider-filter", label: lang('providers'), hint: lang('filter_providers_hint'),
+                           items: vars(:available_providers).map { |p| [ p["name"], p["id"] ] },
+                           checked: vars(:available_providers).map { |p| p["id"] },
+                           all_label: lang('all_providers'), clear_label: lang('clear_providers') %>
+            <% end %>
+            <%= render "shared/tick_filter", id: "service-filter", label: lang('services'), hint: lang('filter_services_hint'),
+                       items: vars(:available_services).map { |s| [ s["name"], s["id"] ] },
+                       checked: vars(:available_services).map { |s| s["id"] },
+                       all_label: lang('all_services'), clear_label: lang('clear_services') %>
+            <%# The one stylist in focus, read by sync, the feed and new events:
+                set by pages/calendar.js when exactly one stylist is ticked, else all.
+                A stylist is always in focus on their own calendar. %>
             <select id="select-filter-item" class="d-none" aria-label="Filter">
                 <option value="all"><%= lang('all') %></option>
-                <% if vars(:available_providers).any? %>
-                    <optgroup label="<%= lang('providers') %>">
-                        <% vars(:available_providers).each do |provider| %>
-                            <option value="<%= provider["id"] %>" type="provider"
-                                    google-sync="<%= provider.dig("settings", "google_sync") %>"
-                                    caldav-sync="<%= provider.dig("settings", "caldav_sync") %>"
-                                    <%= "selected" if session[:role_slug] == Role::PROVIDER && provider["id"] == session[:user_id] %>>
-                                <%= provider["name"] %>
-                            </option>
-                        <% end %>
-                    </optgroup>
-                <% end %>
-                <% if vars(:available_services).any? %>
-                    <optgroup label="<%= lang('services') %>">
-                        <% vars(:available_services).each do |service| %>
-                            <option value="<%= service["id"] %>" type="service"><%= service["name"] %></option>
-                        <% end %>
-                    </optgroup>
+                <% vars(:available_providers).each do |provider| %>
+                    <option value="<%= provider["id"] %>" type="provider"
+                            google-sync="<%= provider.dig("settings", "google_sync") %>"
+                            caldav-sync="<%= provider.dig("settings", "caldav_sync") %>"
+                            <%= "selected" if stylist_login && provider["id"] == session[:user_id] %>>
+                        <%= provider["name"] %>
+                    </option>
                 <% end %>
             </select>
             <%= render "shared/status_filter" %>
         </div>
 
-        <div id="calendar-actions" class="col-lg-7 text-md-end">
-            <button id="enable-sync" class="btn btn-light"
-                    data-tippy-content="<%= lang('enable_appointment_sync_hint') %>" hidden>
-                <i class="fas fa-rotate me-2"></i>
-                <%= lang('enable_sync') %>
-            </button>
-
+        <div id="calendar-actions" class="col-12 col-md-auto ms-md-auto">
             <div class="btn-group" id="sync-button-group" hidden>
                 <button type="button" class="btn btn-light" id="trigger-sync"
                         data-tippy-content="<%= lang('trigger_sync_hint') %>">
-                    <i class="fas fa-rotate me-2"></i>
-                    <%= lang('synchronize') %>
+                    <i class="fas fa-rotate"></i>
+                    <%= lang('sync') %>
                 </button>
                 <button type="button" class="btn btn-light dropdown-toggle dropdown-toggle-split"
                         data-bs-toggle="dropdown" aria-expanded="false">
@@ -81,8 +55,8 @@
             </div>
 
             <button id="calendar-feed" class="btn btn-light" data-tippy-content="<%= lang('calendar_feed_hint') %>" hidden>
-                <i class="fas fa-calendar-plus me-2"></i>
-                <%= lang('calendar_feed') %>
+                <i class="far fa-calendar"></i>
+                <%= lang('feed') %>
             </button>
 
             <%= render "calendar/actions", working_plan_exception: true %>
@@ -102,7 +76,8 @@
     <%= javascript_include_tag "vendor/fullcalendar/index.global.min",
                                "vendor/fullcalendar-moment/index.global.min",
                                "vendor/jquery-jeditable/jquery.jeditable.min" %>
-    <%= ea_js "utils/status_filter", "utils/filter_dropdown", "utils/ui", "utils/calendar_events", "utils/calendar_event_popover",
+    <%= ea_js "utils/status_filter", "utils/tick_filter", "utils/ui", "components/working_plan_exceptions_modal",
+              "utils/calendar_events", "utils/calendar_event_popover",
               "http/calendar_http_client",
               "utils/calendar_sync", "http/google_http_client", "http/caldav_http_client", "utils/calendar_feed",
               "pages/calendar" %>

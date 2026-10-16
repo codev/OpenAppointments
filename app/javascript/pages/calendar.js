@@ -1,10 +1,11 @@
 /**
- * Calendar page: one FullCalendar showing a provider, a service or everything.
+ * Calendar page: one FullCalendar showing everyone's events for the visible
+ * range, filtered in the browser by the ticked stylists, services and statuses,
+ * so ticking a box redraws without a fetch.
  */
 App.Pages.Calendar = (function () {
     const FILTER_TYPE_ALL = 'all';
-    const FILTER_TYPE_PROVIDER = 'provider';
-    const FILTER_TYPE_SERVICE = 'service';
+    const STORAGE_KEY = 'OpenAppointments.CalendarFilter';
 
     const $calendar = () => $('#calendar');
     const $selectFilterItem = () => $('#select-filter-item');
@@ -12,36 +13,60 @@ App.Pages.Calendar = (function () {
     const $insertWorkingPlanException = () => $('#insert-working-plan-exception');
 
     const Events = App.Utils.CalendarEvents;
+    const TickFilter = App.Utils.TickFilter;
     const moment = window.moment;
 
     let fullCalendar = null;
     let refreshTimer = null;
     let request = null; // the events fetch in flight
     let loadedRange = null; // "start/end" dates of the last fetch, null before the first
+    let lastResponse = null; // the last fetch's events, redrawn when a box is ticked
 
-    // Everyone's calendar colours appointments by provider; the legend names them.
-    function renderLegend() {
-        const $legend = $('#calendar-legend');
-        const providers = filterType() === FILTER_TYPE_PROVIDER ? [] : vars('available_providers').filter((provider) => provider.color);
-        $legend.empty().prop('hidden', providers.length === 0);
-        providers.forEach((provider) => {
-            $('<span/>')
-                .append($('<i/>', {class: 'legend-swatch', css: {backgroundColor: provider.color}}))
-                .append(document.createTextNode(provider.name))
-                .appendTo($legend);
-        });
+    // Ticked stylist ids, or null on a stylist's own calendar (no Stylists dropdown).
+    function tickedProviders() {
+        return $('#provider-filter').length ? TickFilter.selected('provider-filter') : null;
     }
 
-    function filterType() {
-        return $selectFilterItem().find('option:selected').attr('type') || FILTER_TYPE_ALL;
+    // The one stylist in focus (the hidden select, read by sync, the feed and
+    // new events), or null when none or several are ticked.
+    function focusProviderId() {
+        const value = $selectFilterItem().val();
+        return value && value !== FILTER_TYPE_ALL ? value : null;
     }
 
     function isProviderFilter() {
-        return filterType() === FILTER_TYPE_PROVIDER;
+        return focusProviderId() !== null;
     }
 
-    function filterKey() {
-        return filterType() + ':' + $selectFilterItem().val();
+    // Puts the single ticked stylist, else all, in focus. True when it changed.
+    function setFocus() {
+        const providers = tickedProviders();
+        if (!providers) {
+            return false; // a stylist's own calendar stays on them
+        }
+
+        const value = providers.length === 1 ? String(providers[0]) : FILTER_TYPE_ALL;
+        if ($selectFilterItem().val() === value) {
+            return false;
+        }
+        $selectFilterItem().val(value);
+        return true;
+    }
+
+    // With several stylists shown the legend names the ticked ones by their fill colour.
+    function renderLegend() {
+        const $legend = $('#calendar-legend');
+        const ticked = tickedProviders();
+        const providers = isProviderFilter()
+            ? []
+            : vars('available_providers').filter((provider) => !ticked || ticked.includes(Number(provider.id)));
+        $legend.empty().prop('hidden', providers.length === 0);
+        providers.forEach((provider) => {
+            $('<span/>')
+                .append($('<i/>', {class: 'legend-swatch', css: {backgroundColor: Events.providerColor(provider)}}))
+                .append(document.createTextNode(provider.name))
+                .appendTo($legend);
+        });
     }
 
     // The dates a view's fetch asks for.
@@ -50,18 +75,17 @@ App.Pages.Calendar = (function () {
     }
 
     /**
-     * Fetch the visible range and replace every event source. A fetch still in
-     * flight is dropped first, so only the latest answer is drawn.
+     * Fetch everyone's events for the visible range, then draw them. A fetch
+     * still in flight is dropped first, so only the latest answer is drawn.
      */
     function reload() {
         Events.closePopover();
 
         // No calendar: another page, or torn down with a callback still to land.
-        if (!fullCalendar || !$selectFilterItem().val()) {
+        if (!fullCalendar) {
             return;
         }
 
-        const recordId = $selectFilterItem().val();
         const [startDate, endDate] = visibleDates(fullCalendar.view);
 
         if (request) {
@@ -71,34 +95,10 @@ App.Pages.Calendar = (function () {
         $('#loading').css('visibility', 'hidden');
         loadedRange = startDate + '/' + endDate;
 
-        const current = App.Http.Calendar.getCalendarAppointments(recordId, startDate, endDate, filterType())
+        const current = App.Http.Calendar.getCalendarAppointments(FILTER_TYPE_ALL, startDate, endDate, FILTER_TYPE_ALL)
             .done((response) => {
-                fullCalendar.getEventSources().forEach((source) => source.remove());
-                renderLegend();
-
-                const appointmentEvents = Events.appointmentEvents(
-                    App.Utils.StatusFilter.apply(response.appointments),
-                    filterType() === FILTER_TYPE_SERVICE ? 'provider' : 'service',
-                    filterType() !== FILTER_TYPE_PROVIDER,
-                );
-                const events = [
-                    ...appointmentEvents,
-                    ...Events.unavailabilityEvents(response.unavailabilities),
-                    ...Events.blockedPeriodEvents(response.blocked_periods),
-                ];
-
-                if (fullCalendar.view.type !== 'dayGridMonth') {
-                    fitHours(recordId, appointmentEvents);
-                    events.push(
-                        ...Events.workingPlanEvents(
-                            Events.findProvider(recordId),
-                            fullCalendar.view.currentStart,
-                            fullCalendar.view.currentEnd,
-                        ),
-                    );
-                }
-
-                fullCalendar.addEventSource(events);
+                lastResponse = response;
+                draw();
             })
             .always(() => {
                 if (request === current) {
@@ -109,15 +109,64 @@ App.Pages.Calendar = (function () {
         request = current;
     }
 
-    // The time grid runs from the first working stylist or appointment to the
-    // last: the chosen stylist, the stylists offering the chosen service, or all.
-    function fitHours(recordId, appointmentEvents) {
-        let providers = vars('available_providers');
-        if (isProviderFilter()) {
-            providers = [Events.findProvider(recordId)].filter(Boolean);
-        } else if (filterType() === FILTER_TYPE_SERVICE) {
-            providers = providers.filter((provider) => (provider.services || []).map(Number).includes(Number(recordId)));
+    // Replace every event source with the last fetch, filtered by the ticked
+    // stylists (their unavailabilities too), services and statuses.
+    function draw() {
+        if (!fullCalendar || !lastResponse) {
+            return;
         }
+
+        // The lists hold stylists with a service and services with a stylist:
+        // an event outside them (a service no longer offered) is always shown.
+        const providers = tickedProviders();
+        const services = TickFilter.selected('service-filter');
+        const listed = (rows, id) => rows.some((row) => Number(row.id) === Number(id));
+        const shown = (providerId) =>
+            !providers || !listed(vars('available_providers'), providerId) || providers.includes(Number(providerId));
+        const shownService = (serviceId) =>
+            !listed(vars('available_services'), serviceId) || services.includes(Number(serviceId));
+        const appointments = App.Utils.StatusFilter.apply(lastResponse.appointments).filter(
+            (appointment) => shown(appointment.id_users_provider) && shownService(appointment.id_services),
+        );
+        const focus = focusProviderId();
+
+        fullCalendar.getEventSources().forEach((source) => source.remove());
+        renderLegend();
+
+        // Filled with the stylist colour, edged with the service colour. Several
+        // stylists are titled by stylist when only one service is ticked.
+        const appointmentEvents = Events.appointmentEvents(
+            appointments,
+            !focus && services.length === 1 ? 'provider' : 'service',
+        );
+        const events = [
+            ...appointmentEvents,
+            ...Events.unavailabilityEvents(lastResponse.unavailabilities.filter((event) => shown(event.id_users_provider))),
+            ...Events.blockedPeriodEvents(lastResponse.blocked_periods),
+        ];
+
+        if (fullCalendar.view.type !== 'dayGridMonth') {
+            fitHours(providers, services, appointmentEvents);
+            events.push(
+                ...Events.workingPlanEvents(
+                    Events.findProvider(focus),
+                    fullCalendar.view.currentStart,
+                    fullCalendar.view.currentEnd,
+                ),
+            );
+        }
+
+        fullCalendar.addEventSource(events);
+    }
+
+    // The time grid runs from the first working stylist or appointment to the
+    // last, over the ticked stylists who offer a ticked service.
+    function fitHours(tickedIds, serviceIds, appointmentEvents) {
+        const providers = vars('available_providers').filter(
+            (provider) =>
+                (!tickedIds || tickedIds.includes(Number(provider.id))) &&
+                (provider.services || []).map(Number).some((id) => serviceIds.includes(id)),
+        );
 
         const hours = Events.visibleHours(
             providers,
@@ -139,8 +188,8 @@ App.Pages.Calendar = (function () {
         }
 
         Events.newEventDialog(info, {
-            providerId: isProviderFilter() ? $selectFilterItem().val() : undefined,
-            serviceId: filterType() === FILTER_TYPE_SERVICE ? $selectFilterItem().val() : undefined,
+            providerId: focusProviderId() || undefined,
+            serviceId: TickFilter.single('service-filter'),
         });
 
         fullCalendar.unselect();
@@ -157,8 +206,9 @@ App.Pages.Calendar = (function () {
 
     function addEventListeners() {
         $reloadAppointments().on('click', reload);
-        App.Utils.StatusFilter.onChange(reload);
+        App.Utils.StatusFilter.onChange(draw);
 
+        // The focus select changes only from the ticks below, which then redraw.
         $selectFilterItem().on('change', () => {
             const provider = Events.findProvider($selectFilterItem().val());
 
@@ -167,13 +217,14 @@ App.Pages.Calendar = (function () {
             }
 
             $insertWorkingPlanException().toggle(isProviderFilter());
-            window.localStorage.setItem('EasyAppointments.SelectFilterItem', filterKey());
+        });
 
-            // Before the first render's datesSet there is nothing to fetch yet:
-            // it loads the restored filter itself.
-            if (loadedRange) {
-                reload();
+        $('#provider-filter, #service-filter').on('tick-filter:change', () => {
+            saveFilter();
+            if (setFocus()) {
+                $selectFilterItem().trigger('change');
             }
+            draw();
         });
 
         $insertWorkingPlanException().on('click', () => {
@@ -189,21 +240,25 @@ App.Pages.Calendar = (function () {
         });
     }
 
-    // The last choice is kept as "type:id" (a provider and a service can share
-    // an id); a bare id is matched by value alone.
+    // The unticked ids are kept, so a stylist or service added later starts ticked.
+    function saveFilter() {
+        const saved = {providers: TickFilter.unticked('provider-filter'), services: TickFilter.unticked('service-filter')};
+        window.localStorage.setItem(STORAGE_KEY, JSON.stringify(saved));
+    }
+
     function restoreFilter() {
-        const saved = window.localStorage.getItem('EasyAppointments.SelectFilterItem');
+        let saved = null;
+        try {
+            saved = JSON.parse(window.localStorage.getItem(STORAGE_KEY));
+        } catch {
+            saved = null; // unreadable: start with everything ticked
+        }
         if (!saved) {
             return;
         }
 
-        const [type, value] = saved.includes(':') ? saved.split(':') : [null, saved];
-        const typeRule = type === FILTER_TYPE_ALL ? ':not([type])' : type ? '[type="' + type + '"]' : '';
-        const $option = $selectFilterItem().find('option[value="' + value + '"]' + typeRule).first();
-
-        if ($option.length) {
-            $option.prop('selected', true);
-        }
+        TickFilter.untick('provider-filter', saved.providers || []);
+        TickFilter.untick('service-filter', saved.services || []);
     }
 
     function initialize() {
@@ -214,6 +269,7 @@ App.Pages.Calendar = (function () {
         }
 
         loadedRange = null;
+        lastResponse = null;
         fullCalendar = new FullCalendar.Calendar(
             $calendar()[0],
             Events.calendarOptions({
@@ -243,9 +299,10 @@ App.Pages.Calendar = (function () {
         Events.configure(reload);
         addEventListeners();
 
-        // The saved filter is in place before the first render, whose datesSet
-        // fetches it once; the change event only sets the dropdown, timezone and button.
+        // The saved ticks are in place before the first render, whose datesSet
+        // fetches once; the change event only sets the timezone and buttons.
         restoreFilter();
+        setFocus();
         $selectFilterItem().trigger('change');
         fullCalendar.render();
 
@@ -284,7 +341,5 @@ App.Pages.Calendar = (function () {
 
     return {
         FILTER_TYPE_ALL,
-        FILTER_TYPE_PROVIDER,
-        FILTER_TYPE_SERVICE,
     };
 })();

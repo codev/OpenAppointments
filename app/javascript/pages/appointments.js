@@ -20,8 +20,25 @@
         }
     }
 
+    let openFilterId = null; // the toolbar dropdown open when the filter form was submitted
+
+    function reopenFilter() {
+        const toggle = openFilterId && document.querySelector('#' + openFilterId + ' .dropdown-toggle');
+        openFilterId = null;
+        if (toggle) {
+            bootstrap.Dropdown.getOrCreateInstance(toggle).show();
+        }
+    }
+
     function loadSeries() {
         document.querySelector('turbo-frame#series').reload();
+    }
+
+    // A reloaded day view arrives unhidden; while the series list is shown it stays alone.
+    function keepSeriesView() {
+        if ($('#series-view').length && !$('#series-view').hasClass('d-none')) {
+            $('#calendar .calendar-view, #not-working-notes').addClass('d-none');
+        }
     }
 
     function showSeriesView(show) {
@@ -76,10 +93,19 @@
             $(document).on('click', '#calendar-page button.day-entry[data-event]', (event) =>
                 App.Utils.CalendarEvents.openEntryPopover(event.currentTarget),
             );
+            // A filter tick submits the form and the frame render replaces the
+            // toolbar, so the dropdown that was open is opened again.
+            document.addEventListener('turbo:submit-start', (event) => {
+                if (event.target.id === 'day-filter') {
+                    openFilterId = $('#day-filter .dropdown-menu.show').closest('.dropdown').attr('id') || null;
+                }
+            });
             document.addEventListener('turbo:frame-load', (event) => {
                 if (event.target.id === 'day_view') {
                     App.Utils.CalendarEvents.closePopover();
                     tippy('[data-tippy-content]');
+                    reopenFilter();
+                    keepSeriesView();
                 }
             });
         });
@@ -91,7 +117,7 @@
             App.Components.EventModal.open('appointments/' + vars('edit_appointment').id + '/edit');
         }
 
-        if (window.localStorage.getItem('OpenAppointments.SeriesView') === '1') {
+        if ($('#series-view').length && window.localStorage.getItem('OpenAppointments.SeriesView') === '1') {
             showSeriesView(true);
         }
     }

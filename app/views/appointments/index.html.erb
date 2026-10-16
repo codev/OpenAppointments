@@ -7,25 +7,28 @@
     <meta name="turbo-cache-control" content="no-preview">
 <% end %>
 <% formats = { date_format: setting('date_format'), time_format: setting('time_format') } %>
-<% query = ->(overrides) { { date: @date, days: @days, provider: @all_providers ? "all" : (@provider_id.positive? ? @provider_id : nil),
-                             service: @service_id.positive? ? @service_id : nil, statuses: @selected_statuses }.merge(overrides).compact } %>
+<% query = ->(overrides) { { date: @date, days: @days, providers: provider_param, services: service_param,
+                             statuses: @selected_statuses }.merge(overrides).compact } %>
 <div class="container-fluid backend-page pt-0 pb-0" id="calendar-page">
     <turbo-frame id="day_view" data-turbo-action="advance">
     <%= form_with url: appointments_path, method: :get, id: "day-filter", data: { turbo_frame: "day_view" } do %>
         <div class="row mb-3 py-3" id="calendar-toolbar">
-            <div id="calendar-filter" class="col-lg-8 mb-2 mb-lg-0">
-                <div class="calendar-filter-items d-flex flex-wrap gap-2">
+            <div id="calendar-filter" class="col-12 col-md-auto">
+                <div class="calendar-filter-items d-flex flex-wrap justify-content-center justify-content-md-start gap-2">
                     <%= hidden_field_tag :date, @date, id: "day-date" %>
                     <%= select_tag :days, options_for_select(AppointmentsController::DAY_COUNTS.map { |n| [ "#{n} #{lang(n == 1 ? 'day' : 'days')}", n ] }, @days),
                                    id: "select-day-interval", class: "form-select", "aria-label": "Days", onchange: "this.form.requestSubmit()",
                                    data: { tippy_content: lang('select_day_interval_hint') } %>
-                    <%= select_tag :provider, options_for_select([ [ lang('working_providers'), "" ], [ lang('all_providers'), "all" ] ] + @providers.map { |p| [ p.name, p.id ] },
-                                                     @all_providers ? "all" : @provider_id),
-                                   id: "filter-provider", class: "form-select filter-group", "aria-label": lang('provider'), onchange: "this.form.requestSubmit()",
-                                   data: { tippy_content: lang('filter_providers_hint') } %>
-                    <%= select_tag :service, options_for_select([ [ lang('all_services'), "" ] ] + @services.map { |s| [ s.name, s.id ] }, @service_id),
-                                   id: "filter-service", class: "form-select filter-group", "aria-label": lang('service'), onchange: "this.form.requestSubmit()",
-                                   data: { tippy_content: lang('filter_services_hint') } %>
+                    <% if @show_provider_filter %>
+                        <%= render "shared/tick_filter", id: "provider-filter", name: "providers", label: lang('providers'),
+                                   hint: lang('filter_providers_hint'), items: @providers.map { |p| [ p.name, p.id ] },
+                                   checked: @provider_ids || [], working: @provider_ids.nil?, all_value: "all",
+                                   all_label: lang('all_providers'), clear_label: lang('clear_providers') %>
+                    <% end %>
+                    <%= render "shared/tick_filter", id: "service-filter", name: "services", label: lang('services'),
+                               hint: lang('filter_services_hint'), items: @services.map { |s| [ s.name, s.id ] },
+                               checked: @service_ids || @services.map(&:id),
+                               all_label: lang('all_services'), clear_label: lang('clear_services') %>
                     <div class="dropdown" id="status-filter">
                         <button class="btn btn-light dropdown-toggle" type="button" data-bs-toggle="dropdown" data-bs-auto-close="outside"
                                 data-tippy-content="<%= lang('filter_statuses_hint') %>"><%= lang('statuses') %></button>
@@ -44,7 +47,7 @@
                     </div>
                 </div>
             </div>
-            <div id="calendar-actions" class="col-lg-4 text-md-end">
+            <div id="calendar-actions" class="col-12 col-md-auto ms-md-auto">
                 <%= render "calendar/actions", working_plan_exception: false %>
             </div>
         </div>
@@ -54,9 +57,9 @@
         <div class="calendar-header row align-items-center g-2 mb-3">
             <div class="col-6 col-md-4 d-flex align-items-center gap-2">
                 <div class="btn-group">
-                    <%= link_to appointments_path(query.call(date: @date - 1)), id: "previous-day", class: "btn btn-primary",
+                    <%= link_to appointments_path(query.call(date: @date - @days)), id: "previous-day", class: "btn btn-primary",
                                 "aria-label": lang('previous') do %><i class="fas fa-chevron-left"></i><% end %>
-                    <%= link_to appointments_path(query.call(date: @date + 1)), id: "next-day", class: "btn btn-primary",
+                    <%= link_to appointments_path(query.call(date: @date + @days)), id: "next-day", class: "btn btn-primary",
                                 "aria-label": lang('next') do %><i class="fas fa-chevron-right"></i><% end %>
                 </div>
                 <%= link_to lang('today'), appointments_path(query.call(date: Date.current)), id: "today",
@@ -67,9 +70,11 @@
                                    onchange: "document.getElementById('day-filter').requestSubmit()" %>
             </div>
             <div class="col-12 col-md-4 text-md-end">
-                <button type="button" class="btn btn-outline-primary" id="toggle-series">
-                    <i class="fas fa-redo me-2"></i><span><%= lang('repeating_appointments') %></span>
-                </button>
+                <% if series_access? %>
+                    <button type="button" class="btn btn-outline-primary" id="toggle-series">
+                        <i class="fas fa-redo me-2"></i><span><%= lang('repeating_appointments') %></span>
+                    </button>
+                <% end %>
             </div>
         </div>
 
@@ -102,11 +107,14 @@
     </div>
     </turbo-frame>
 
-    <div id="series-view" class="d-none">
-        <turbo-frame id="series" src="/appointment_series" loading="lazy"></turbo-frame>
-    </div>
+    <% if series_access? %>
+        <div id="series-view" class="d-none">
+            <turbo-frame id="series" src="/appointment_series" loading="lazy"></turbo-frame>
+        </div>
+    <% end %>
 </div>
 
+<% if series_access? %>
 <div class="modal" id="series-pattern-modal">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
@@ -127,10 +135,11 @@
         </div>
     </div>
 </div>
+<% end %>
 
 <%= render "calendar/modals" %>
 
 <% content_for :scripts do %>
-    <%= ea_js "utils/ui", "utils/calendar_events", "utils/calendar_event_popover", "http/calendar_http_client",
+    <%= ea_js "utils/tick_filter", "utils/ui", "components/working_plan_exceptions_modal", "utils/calendar_events", "utils/calendar_event_popover", "http/calendar_http_client",
               "pages/appointments" %>
 <% end %>

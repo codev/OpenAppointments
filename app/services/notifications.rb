@@ -151,10 +151,9 @@ module Notifications
     pairs
   end
 
-  # The 10to8 import stores withdrawn consent as do_not_contact=yes in notes
-  # (GDPR); those customers get no notifications on any channel.
+  # Customers marked do not contact get no notifications on any channel.
   def contactable?(customer)
-    !customer.notes.to_s.include?("do_not_contact=yes")
+    !customer.do_not_contact?
   end
 
   def assistants_for(provider)

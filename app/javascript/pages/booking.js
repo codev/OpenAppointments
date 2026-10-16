@@ -88,7 +88,10 @@ App.Pages.Booking = (function () {
         }
     }
 
-    const STORED_FIELDS = ['name', 'email', 'phone-number', 'address', 'city', 'zip-code'];
+    const STORED_FIELDS = [
+        'name', 'email', 'phone-number', 'address', 'city', 'zip-code',
+        'custom-field-1', 'custom-field-2', 'custom-field-3', 'custom-field-4', 'custom-field-5',
+    ];
     const DRAFT_KEY = 'OpenAppointments.Draft';
 
     function readStorage(storage, key) {
@@ -180,6 +183,14 @@ App.Pages.Booking = (function () {
     function initializeFinalStep() {
         if ($('#altcha-widget').length && App.Utils.Altcha) {
             App.Utils.Altcha.initialize('altcha-widget');
+        }
+
+        // Cloudflare's api.js renders only the widgets present when it loads; the
+        // final step arrives later in the frame, so render it here. A rendered
+        // widget has children (at least its hidden response input).
+        const turnstileWidget = document.querySelector('.cf-turnstile');
+        if (window.turnstile && turnstileWidget && !turnstileWidget.hasChildNodes()) {
+            window.turnstile.render(turnstileWidget);
         }
     }
 

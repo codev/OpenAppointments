@@ -74,6 +74,14 @@
 
             <%= render "shared/custom_fields", rows: 8, name: "customer", record: record %>
 
+            <div class="border rounded mb-3 p-3">
+                <div class="form-check form-switch">
+                    <%= f.check_box :do_not_contact, class: "form-check-input" %>
+                    <%= f.label :do_not_contact, lang('do_not_contact'), class: "form-check-label" %>
+                </div>
+                <div class="form-text text-muted"><small><%= lang('do_not_contact_hint') %></small></div>
+            </div>
+
             <div class="mb-3">
                 <%= f.label :notes, lang('notes'), class: "form-label" %>
                 <%= f.text_area :notes, rows: 8, class: "form-control" %>
@@ -122,6 +130,9 @@
         </h4>
         <div id="customer-messages" class="card border p-3 overflow-auto mb-3 message-thread" data-customer-id="<%= record.id %>"
              data-scroll="true"></div>
+        <% if record.do_not_contact? %>
+            <div id="do-not-contact-warning" class="alert alert-warning" role="alert"><%= lang('do_not_contact_warning') %></div>
+        <% end %>
         <% if channels.any? %>
             <%# The provider picker is a dropup whose items carry the bubble colour of
                 each provider; All is a diagonal stripe of the enabled ones. The
