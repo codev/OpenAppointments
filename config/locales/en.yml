@@ -12,6 +12,8 @@ en:
     turnstile_keys_hint_after: "by signing up for an account then going to Application Security > Turnstile"
     failed: "failed"
     import_failures: "Failed records"
+    appointments_include_locations: "Appointments Include Locations"
+    appointments_include_locations_hint: "Allows a stylist, assistant or admin to set the location of an appointment; when this is off the location will be fixed as the company address, or blank"
     booking_provider_first: "Provider first instead of service"
     display_order_switch: "Display the switch to choose Service or Provider first"
     display_powered_by: "Display Powered by OpenAppointments"

@@ -59,10 +59,12 @@
                             </select>
                         </div>
 
-                        <div class="mb-3">
-                            <label for="appointment-location" class="form-label"><%= lang('location') %></label>
-                            <%= text_field_tag "appointment[location]", @appointment.location, id: "appointment-location", class: "form-control" %>
-                        </div>
+                        <% if Setting.get("appointments_include_locations", "0") == "1" %>
+                            <div class="mb-3">
+                                <label for="appointment-location" class="form-label"><%= lang('location') %></label>
+                                <%= text_field_tag "appointment[location]", @appointment.location, id: "appointment-location", class: "form-control" %>
+                            </div>
+                        <% end %>
 
                         <div class="mb-3">
                             <label for="appointment-meeting-link" class="form-label"><%= lang('meeting_link') %></label>

@@ -57,6 +57,26 @@ class EventFormsTest < ActionDispatch::IntegrationTest
     assert_select "#end-datetime[value='01/09/2026 11:00 am']"
   end
 
+  test "the location field shows only when appointments include locations" do
+    login_admin
+    get "/appointments/new"
+    assert_select "#appointment-location", count: 0
+
+    Setting.set("appointments_include_locations", "1")
+    get "/appointments/new"
+    assert_select "input#appointment-location[name='appointment[location]']"
+  ensure
+    Setting.set("appointments_include_locations", "0")
+  end
+
+  test "booking settings offer the locations switch, off by default, above provider first" do
+    login_admin
+    get "/booking_settings"
+    assert_select "input[type=checkbox][name='settings[appointments_include_locations]']:not([checked])"
+    names = css_select("input[type=checkbox][name^='settings[']").map { |box| box["name"] }
+    assert_operator names.index("settings[appointments_include_locations]"), :<, names.index("settings[booking_provider_first]")
+  end
+
   test "services hidden from the public, such as a meeting, are bookable by staff in their own group" do
     meeting = Service.create!(name: "Meeting", duration: 60, is_private: true)
     ServiceProviderLink.create!(id_users: users(:zane).id, id_services: meeting.id)

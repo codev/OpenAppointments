@@ -143,6 +143,23 @@ class CalendarTest < ActionDispatch::IntegrationTest
     assert_equal true, response.parsed_body["success"]
   end
 
+  test "save_appointment ignores the location unless appointments include locations" do
+    login_admin
+    data = { start_datetime: "2026-07-21 09:00:00", end_datetime: "2026-07-21 09:30:00",
+             id_users_provider: users(:zane).id, id_services: services(:haircut).id,
+             id_users_customer: users(:jx).id, status: "Booked", location: "Back room" }
+
+    post "/calendar/save_appointment", params: { appointment_data: data }
+    assert_equal true, response.parsed_body["success"]
+    assert_predicate Appointment.find(response.parsed_body["id"]).location, :blank?
+
+    Setting.set("appointments_include_locations", "1")
+    post "/calendar/save_appointment", params: { appointment_data: data, force_save: true }
+    assert_equal "Back room", Appointment.find(response.parsed_body["id"]).location
+  ensure
+    Setting.set("appointments_include_locations", "0")
+  end
+
   test "delete_appointment destroys the appointment" do
     login_admin
     assert_difference "Appointment.appointments.count", -1 do

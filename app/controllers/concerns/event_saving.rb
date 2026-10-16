@@ -41,7 +41,9 @@ module EventSaving
 
     appointment = manage_mode ? Appointment.find(appointment_data["id"]) : Appointment.new
     previous_status_id = appointment.status_id
-    appointment.assign_attributes(appointment_data.slice(*APPOINTMENT_FIELDS).except("id"))
+    fields = appointment_data.slice(*APPOINTMENT_FIELDS).except("id")
+    fields = fields.except("location") unless Setting.get("appointments_include_locations", "0") == "1"
+    appointment.assign_attributes(fields)
     appointment.book_datetime ||= Time.now
     appointment.save!
 
