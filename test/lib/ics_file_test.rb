@@ -41,4 +41,39 @@ class IcsFileTest < ActiveSupport::TestCase
 
     assert_nil location_line(@appointment)
   end
+
+  test "the summary is the company, service and stylist" do
+    Setting.set("company_name", "Open Out")
+    ics = unfolded(@appointment)
+
+    assert_equal "Open Out: #{@appointment.service.name} with #{@appointment.provider.name}",
+                 ics[/^SUMMARY:([^\r\n]*)/, 1]
+  end
+
+  test "there are no attendees and no contact details" do
+    ics = unfolded(@appointment)
+
+    assert_no_match(/^ATTENDEE/, ics)
+    assert_no_match(/#{Regexp.escape(@appointment.provider.email)}/, ics)
+    assert_no_match(/#{Regexp.escape(@appointment.customer.email)}/, ics)
+  end
+
+  test "the description keeps the names, notes and meeting link" do
+    @appointment.update!(notes: "Bring a photo", meeting_link: "https://meet.example.org/abc")
+    ics = unfolded(@appointment)
+
+    assert_match @appointment.provider.name, ics
+    assert_match @appointment.customer.name, ics
+    assert_match "Bring a photo", ics
+    assert_match "https://meet.example.org/abc", ics
+  end
+
+  test "both alarms remain" do
+    assert_equal 2, unfolded(@appointment).scan("BEGIN:VALARM").size
+  end
+
+  def unfolded(appointment)
+    IcsFile.stream(appointment, appointment.service, appointment.provider, appointment.customer)
+           .gsub(/\r\n[ \t]/, "")
+  end
 end

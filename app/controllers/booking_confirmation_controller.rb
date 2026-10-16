@@ -36,7 +36,6 @@ class BookingConfirmationController < ApplicationController
   # EA Google_sync::get_add_to_google_url: a calendar.google.com "add event" template link.
   def add_to_google_url(appointment)
     provider = appointment.provider
-    customer = appointment.customer
     zone = Time.find_zone!(provider&.effective_timezone || "UTC")
     dates = [ appointment.start_datetime, appointment.end_datetime ].map { |dt|
       zone.parse(dt.strftime("%Y-%m-%d %H:%M:%S")).utc.strftime("%Y%m%dT%H%M%SZ")
@@ -44,16 +43,11 @@ class BookingConfirmationController < ApplicationController
 
     query = URI.encode_www_form(
       action: "TEMPLATE",
-      text: appointment.service&.name,
+      text: IcsFile.title_for(appointment.service, provider),
       dates: dates,
       location: IcsFile.location_for(appointment, appointment.service),
       details: "View/Change Appointment: #{request.base_url}/booking/reschedule/#{appointment.booking_hash}"
     )
-
-    # Append each guest separately (provider first, then customer when present).
-    [ provider&.email, customer&.email ].compact_blank.each do |email|
-      query += "&add=#{ERB::Util.url_encode(email)}"
-    end
 
     "https://calendar.google.com/calendar/render?#{query}"
   end

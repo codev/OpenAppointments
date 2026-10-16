@@ -12,6 +12,7 @@ CloudronManifest.json.
 - Booking: the pronoun and access needs answers are remembered with the other details when Remember me is ticked
 - Booking: with Any Stylist, the confirmation step and the header name the stylist the booking will get
 - General Settings: Company Address, the default location for bookings and calendar invites when a service or appointment has no location
+- Calendar invites: titled "Company: Service with Stylist", with no attendees or guests and no email or phone numbers in the description
 - Booking: terms and conditions and privacy policy text is now larger and more readable
 - Booking: the confirmed page says "You're all set!", shows the calendar buttons above the Go to button, and hides "Powered by" when that Booking Settings switch is off
 

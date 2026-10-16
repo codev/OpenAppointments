@@ -73,6 +73,18 @@ class BookingConfirmationTest < ActionDispatch::IntegrationTest
     assert_select "a[href*='calendar.google.com'][href*=?]", "location=Pop-up+shop"
   end
 
+  test "the Google Calendar link is titled with company, service and stylist and has no guests" do
+    Setting.set("company_name", "Open Out")
+    appointment = appointments(:upcoming)
+
+    get "/booking_confirmation/of/#{appointment.booking_hash}"
+
+    href = css_select("#add-to-google-calendar").first["href"]
+    params = Rack::Utils.parse_query(URI(href).query)
+    assert_equal "Open Out: #{appointment.service.name} with #{appointment.provider.name}", params["text"]
+    assert_not params.key?("add")
+  end
+
   test "the ics endpoint streams the appointment calendar" do
     get "/booking_confirmation/ics/#{appointments(:upcoming).booking_hash}"
     assert_response :success

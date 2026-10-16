@@ -12,25 +12,12 @@ module IcsFile
       event.dtstart = Icalendar::Values::DateTime.new(appointment.start_datetime, "tzid" => tzid)
       event.dtend = Icalendar::Values::DateTime.new(appointment.end_datetime, "tzid" => tzid)
       event.status = "CONFIRMED"
-      event.summary = service&.name.to_s
+      event.summary = title_for(service, provider)
       event.uid = appointment.id_caldav_calendar.presence || uid_for(appointment.id)
       event.sequence = sequence_for(appointment.updated_at)
       location = location_for(appointment, service)
       event.location = location if location.present?
       event.description = description_for(appointment, provider, customer)
-
-      if customer&.email.present?
-        event.append_attendee(
-          Icalendar::Values::CalAddress.new("mailto:#{customer.email}",
-                                            "CN" => customer.full_name, "CUTYPE" => "INDIVIDUAL",
-                                            "ROLE" => "REQ-PARTICIPANT", "PARTSTAT" => "NEEDS-ACTION",
-                                            "RSVP" => "TRUE")
-        )
-      end
-      if provider&.email.present?
-        event.append_attendee(Icalendar::Values::CalAddress.new("mailto:#{provider.email}",
-                                                                "CN" => provider.full_name))
-      end
 
       [ 15, 60 ].each do |minutes_before|
         event.alarm do |alarm|
@@ -51,6 +38,11 @@ module IcsFile
     [ appointment&.location, service&.location, Setting.get("company_address") ].find(&:present?)
   end
 
+  # "{Company}: {Service} with {Stylist}".
+  def title_for(service, provider)
+    "#{Setting.get('company_name')}: #{service&.name} with #{provider&.name}"
+  end
+
   def uid_for(appointment_id)
     Digest::MD5.hexdigest("openappointments-appointment-#{appointment_id}")
   end
@@ -67,12 +59,8 @@ module IcsFile
     lines += [
       "", I18n.t("ea.provider"), "",
       "#{I18n.t('ea.name')}: #{provider&.full_name}",
-      "#{I18n.t('ea.email')}: #{provider&.email}",
-      "#{I18n.t('ea.phone_number')}: #{provider&.phone_number}",
       "", I18n.t("ea.customer"), "",
       "#{I18n.t('ea.name')}: #{customer&.full_name}",
-      "#{I18n.t('ea.email')}: #{customer&.email}",
-      "#{I18n.t('ea.phone_number')}: #{customer&.phone_number.presence || '-'}",
       "", I18n.t("ea.notes"), "",
       appointment.notes.to_s
     ]
