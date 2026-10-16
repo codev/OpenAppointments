@@ -7,6 +7,15 @@ class ServicesTest < ActionDispatch::IntegrationTest
 
   def png = fixture_file_upload("picture.png", "image/png")
 
+  test "colour picker offers fifteen distinct colours starting with the default" do
+    login_admin
+    get "/services/new"
+    values = css_select(".color-selection-option").map { |button| button["data-value"] }
+    assert_equal 15, values.size
+    assert_equal values.uniq, values
+    assert_equal "#7cbae8", values.first
+  end
+
   test "index rows show duration and price and are draggable; new has EA's defaults" do
     login_admin
     get "/services"
