@@ -3,7 +3,7 @@ module Authorization
   extend ActiveSupport::Concern
 
   included do
-    helper_method :can?, :cannot?, :inbox_access?
+    helper_method :can?, :cannot?, :inbox_access?, :series_access?
   end
 
   def can?(action, resource)
@@ -17,6 +17,12 @@ module Authorization
   # The Inbox is an admin task list, as are its message actions.
   def inbox_access?
     session[:role_slug] == Role::ADMIN
+  end
+
+  # Repeating appointments are an admin and assistant task; stylists book and
+  # cancel single appointments.
+  def series_access?
+    session[:role_slug] != Role::PROVIDER
   end
 
   def require_permission!(action, resource)

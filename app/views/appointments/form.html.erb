@@ -80,7 +80,7 @@
                                            id: "appointment-status", class: "form-select" %>
                         </div>
 
-                        <% if new_record %>
+                        <% if new_record && series_access? %>
                             <div id="appointment-repeat">
                                 <%= render "shared/repeat_fields", prefix: "repeat" %>
                             </div>

@@ -70,9 +70,11 @@
                                    onchange: "document.getElementById('day-filter').requestSubmit()" %>
             </div>
             <div class="col-12 col-md-4 text-md-end">
-                <button type="button" class="btn btn-outline-primary" id="toggle-series">
-                    <i class="fas fa-redo me-2"></i><span><%= lang('repeating_appointments') %></span>
-                </button>
+                <% if series_access? %>
+                    <button type="button" class="btn btn-outline-primary" id="toggle-series">
+                        <i class="fas fa-redo me-2"></i><span><%= lang('repeating_appointments') %></span>
+                    </button>
+                <% end %>
             </div>
         </div>
 
@@ -105,11 +107,14 @@
     </div>
     </turbo-frame>
 
-    <div id="series-view" class="d-none">
-        <turbo-frame id="series" src="/appointment_series" loading="lazy"></turbo-frame>
-    </div>
+    <% if series_access? %>
+        <div id="series-view" class="d-none">
+            <turbo-frame id="series" src="/appointment_series" loading="lazy"></turbo-frame>
+        </div>
+    <% end %>
 </div>
 
+<% if series_access? %>
 <div class="modal" id="series-pattern-modal">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
@@ -130,6 +135,7 @@
         </div>
     </div>
 </div>
+<% end %>
 
 <%= render "calendar/modals" %>
 

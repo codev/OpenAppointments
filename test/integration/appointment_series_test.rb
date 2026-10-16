@@ -81,23 +81,34 @@ class AppointmentSeriesIntegrationTest < ActionDispatch::IntegrationTest
     assert_equal Date.new(2026, 7, 20), series.ends_on
   end
 
-  test "a provider only sees and changes their own series" do
+  test "a provider gets 403 from every series action" do
     login_admin
     save_repeating({ rule: weekly.to_json, ends: "never" })
-    other = User.create!(name: "Other", email: "other@example.org", role: users(:zane).role)
-    other.create_settings!(username: "other", password: Passwords.hash("otherother1"), working_plan: users(:zane).settings.working_plan)
-    ServiceProviderLink.create!(id_users: other.id, id_services: services(:haircut).id)
-    foreign = AppointmentSeries.create!(provider: other, customer: users(:jx), service: services(:haircut),
-                                        ice_schedule: AppointmentSeries.schedule_from({ "rule" => { "rule_type" => "IceCube::DailyRule", "interval" => 1 }.to_json }, Date.new(2026, 7, 20)),
-                                        starts_on: Date.new(2026, 7, 20), start_time: "12:00", duration: 30)
+    series = AppointmentSeries.sole
+    booked = series.appointments.active.count
 
     login_provider
     get "/appointment_series", as: :json
-    assert_equal [ users(:zane).id ], response.parsed_body.map { |row| row["id_users_provider"] }.uniq
-
-    post "/appointment_series/#{foreign.id}/cancel", params: { from: "2026-07-21" }, as: :json
-    assert_equal false, response.parsed_body["success"]
+    assert_response :forbidden
+    get "/appointment_series"
+    assert_response :forbidden
+    get "/appointment_series/#{series.id}/cancel"
+    assert_response :forbidden
+    post "/appointment_series/#{series.id}/reschedule", params: { repeat: { rule: weekly.to_json, ends: "never" } }, as: :json
+    assert_response :forbidden
+    post "/appointment_series/#{series.id}/cancel", params: { from: "2026-07-21" }, as: :json
+    assert_response :forbidden
+    assert_equal booked, series.reload.appointments.active.count
   end
+
+  test "a provider's repeat pattern is ignored and one appointment is booked" do
+    login_provider
+    body = save_repeating({ rule: weekly.to_json, ends: "never" })
+    assert_equal true, body["success"]
+    assert_equal 0, AppointmentSeries.count
+    assert_equal 1, Appointment.count
+  end
+
 
   test "the recurring_select dialog can ask the server for a rule summary" do
     login_admin
@@ -168,17 +179,5 @@ class AppointmentSeriesPanelTest < ActionDispatch::IntegrationTest
     assert_redirected_to "/appointment_series"
     follow_redirect!
     assert_select ".alert-danger"
-  end
-
-  test "providers only get their own series in the panel and cannot cancel others" do
-    foreign_provider = User.create!(name: "Other", email: "other@example.org", role: users(:zane).role)
-    foreign = AppointmentSeries.create!(id_users_provider: foreign_provider.id, id_users_customer: users(:jx).id,
-                                        id_services: services(:haircut).id, ice_schedule: @series.ice_schedule,
-                                        starts_on: Date.new(2026, 7, 21), start_time: "11:00", duration: 30)
-    post "/login/validate", params: { username: "janedoe", password: "janedoe1" }
-    get "/appointment_series"
-    assert_select "#series-table tbody tr", count: 1
-    get "/appointment_series/#{foreign.id}/cancel"
-    assert_response :not_found
   end
 end

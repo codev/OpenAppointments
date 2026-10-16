@@ -49,7 +49,7 @@ module EventSaving
     appointment.save!
 
     skipped = []
-    if repeat.present? && repeat["rule"].present? && !manage_mode
+    if series_access? && repeat.present? && repeat["rule"].present? && !manage_mode
       result = AppointmentSeries.start_from(appointment, repeat, created_by: session[:user_id])
       result[:series].announce(created: result[:rows])
       skipped = result[:skipped]

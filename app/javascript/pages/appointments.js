@@ -109,7 +109,7 @@
             App.Components.EventModal.open('appointments/' + vars('edit_appointment').id + '/edit');
         }
 
-        if (window.localStorage.getItem('OpenAppointments.SeriesView') === '1') {
+        if ($('#series-view').length && window.localStorage.getItem('OpenAppointments.SeriesView') === '1') {
             showSeriesView(true);
         }
     }

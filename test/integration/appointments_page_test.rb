@@ -217,6 +217,33 @@ class AppointmentsPageTest < ActionDispatch::IntegrationTest
     assert_select ".provider-column[data-provider-id=?]", users(:zane).id.to_s
     assert_select ".provider-column[data-provider-id=?]", other.id.to_s, count: 0
   end
+  test "a stylist has no repeating appointments button, series view or pattern modal" do
+    post "/login/validate", params: { username: "janedoe", password: "janedoe1" }
+    get "/appointments", params: { date: "2026-07-20" }
+    assert_response :success
+    assert_select "#toggle-series", count: 0
+    assert_select "#series-view", count: 0
+    assert_select "#series-pattern-modal", count: 0
+  end
+
+  test "an admin has the repeating appointments button, series view and pattern modal" do
+    login_admin
+    get "/appointments", params: { date: "2026-07-20" }
+    assert_select "#toggle-series"
+    assert_select "#series-view"
+    assert_select "#series-pattern-modal"
+  end
+
+  test "a new appointment offers repeat fields to an admin but not to a stylist" do
+    login_admin
+    get "/appointments/new", params: { start: "2026-07-20 11:30:00" }
+    assert_select "#appointment-repeat"
+    post "/login/validate", params: { username: "janedoe", password: "janedoe1" }
+    get "/appointments/new", params: { start: "2026-07-20 11:30:00", provider_id: users(:zane).id }
+    assert_response :success
+    assert_select "#appointment-repeat", count: 0
+  end
+
   # A free slot click names the provider; the form must open on a service that
   # provider offers, or the provider list (which follows the service) drops them.
   test "a new appointment for a provider opens on a service they offer" do

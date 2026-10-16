@@ -221,6 +221,23 @@ class AppointmentsPageRefreshTest < ApplicationSystemTestCase
     assert_selector "#calendar .calendar-view:not(.d-none)", wait: 5
   end
 
+  test "a stylist whose browser remembers the series view still sees the day view" do
+    visit logout_url
+    visit login_url
+    assert_selector "#login", wait: 15
+    fill_in "username", with: "janedoe"
+    fill_in "password", with: "janedoe1"
+    find("#login").click
+    assert_current_path %r{/appointments}, wait: 10
+    page.execute_script("window.localStorage.setItem('OpenAppointments.SeriesView', '1')")
+    visit appointments_url(date: @date)
+    assert_selector ".provider-column", wait: 5
+    assert_no_selector "#toggle-series"
+    assert_no_selector ".calendar-view.d-none", visible: :all
+  ensure
+    page.execute_script("window.localStorage.removeItem('OpenAppointments.SeriesView')")
+  end
+
   test "the reload button still works on the calendar page after the appointments page was visited" do
     login_as_admin
     visit appointments_url

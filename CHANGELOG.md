@@ -18,6 +18,7 @@ CloudronManifest.json.
 - Booking: terms and conditions and privacy policy text is now larger and more readable
 - Booking: the confirmed page says "You're all set!", shows the calendar buttons above the Go to button, and hides "Powered by" when that Booking Settings switch is off
 - Booking: the reason for cancelling an appointment is optional; late cancellations still require one
+- Repeating appointments are for admins and assistants: stylists no longer see the Repeating Appointments button or repeat options, but can still cancel a single appointment of a series
 - Calendar: appointments are filled with the stylist's colour and edged with the service colour; the List edges them with the service colour; appointments no longer have a colour of their own
 - Colours: the stylist and service colour pickers offer fifteen distinct colours
 

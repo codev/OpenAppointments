@@ -1,5 +1,5 @@
-# Repeating appointments: list, change the pattern, cancel from a date. Backend
-# roles only; providers see and change their own series. The list and the
+# Repeating appointments: list, change the pattern, cancel from a date. Admins
+# and assistants only; every action is forbidden to providers. The list and the
 # cancel form render inside the appointments page's series frame; the pattern
 # dialog (a recurring_select widget) posts JSON.
 class AppointmentSeriesController < ApplicationController
@@ -8,6 +8,7 @@ class AppointmentSeriesController < ApplicationController
   layout "backend"
 
   before_action :require_session
+  before_action -> { head :forbidden unless series_access? }
 
   REPEAT_PERMIT = CalendarController::REPEAT_PERMIT
 
@@ -83,7 +84,6 @@ class AppointmentSeriesController < ApplicationController
   def visible_series
     scope = AppointmentSeries.includes(:provider, :customer, :service).order(:starts_on)
     case session[:role_slug]
-    when Role::PROVIDER then scope.for_provider(session[:user_id])
     when Role::ASSISTANT then scope.where(id_users_provider: assistant_provider_ids)
     else scope
     end
