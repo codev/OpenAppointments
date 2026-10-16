@@ -26,6 +26,21 @@ class WaitlistSignupTest < ActionDispatch::IntegrationTest
     assert_select "#waitlist-form", 0
   end
 
+  test "rescheduling never offers the signup and refuses a post made from it" do
+    appointment = appointments(:upcoming)
+    travel_to Time.new(2026, 7, 10, 12, 0, 0) do
+      get "/booking/reschedule/#{appointment.booking_hash}", params: { step: "time" }
+      assert_response :success
+      assert_select "#wizard-frame-3"
+      assert_select "#waitlist-form", 0
+
+      assert_no_difference "WaitlistEntry.count" do
+        join(manage_mode: "true", appointment_hash: appointment.booking_hash)
+      end
+      assert_response :forbidden
+    end
+  end
+
   test "joining creates an entry for the chosen provider and renders the time step with a confirmation" do
     assert_difference "WaitlistEntry.count", 1 do
       join

@@ -85,6 +85,7 @@ class BookingController < ApplicationController
   # into the same step with the outcome.
   def waitlist
     return head :forbidden unless Setting.get("waitlist_enabled") == "1"
+    return head :forbidden if ActiveModel::Type::Boolean.new.cast(params[:manage_mode])
 
     index_vars_for_confirm
     return head :bad_request unless @reachable.include?("time")
@@ -278,7 +279,7 @@ class BookingController < ApplicationController
       display_booking_notice_info_step: Setting.get("display_booking_notice_info_step"),
       booking_notice_content: Setting.get("booking_notice_content"),
       fully_booked_notice_content: Setting.get("fully_booked_notice_content"),
-      display_waitlist: Setting.get("waitlist_enabled"),
+      display_waitlist: manage_mode ? "0" : Setting.get("waitlist_enabled"),
       display_cookie_notice: Setting.get("display_cookie_notice"),
       cookie_notice_content: Setting.get("cookie_notice_content"),
       display_terms_and_conditions: Setting.get("display_terms_and_conditions"),
