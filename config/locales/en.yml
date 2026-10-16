@@ -657,7 +657,7 @@ en:
     start_date: Start Date
     end_date: End Date
     remember_me: Remember my information
-    remember_me_hint: Save your details for faster booking next time.
+    remember_me_hint: Save your details on this browser for faster booking next time.
     legal_notice: Legal Notice
     legal_notice_url: Legal Notice URL
     legal_notice_url_hint: Enter the URL to your legal notice page.

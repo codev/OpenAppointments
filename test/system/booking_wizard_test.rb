@@ -386,4 +386,14 @@ class BookingWizardWindowTest < ApplicationSystemTestCase
     assert_selector "#available-hours .available-hour", text: /\A10:00 am\z/
     assert_nil Appointment.find_by(notes: "Too Slow")
   end
+
+  test "the remember me hint mentions saving on this browser" do
+    to_time_step
+    date = working_day(0)
+    find(".flatpickr-day[aria-label='#{date.strftime('%B %-d, %Y')}']").click
+    find("#available-hours .available-hour", text: /\A9:30 am\z/, wait: 5).click
+    find("#button-next-3").click
+    assert_selector "#wizard-frame-4", visible: :visible, wait: 5
+    assert_text "on this browser"
+  end
 end
