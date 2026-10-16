@@ -6,14 +6,10 @@ class BookingSettingsOrderTest < ActionDispatch::IntegrationTest
     post "/login/validate", params: { username: "administrator", password: "administrator1" }
   end
 
-  def login_admin
-    post "/login/validate", params: { username: "administrator", password: "administrator1" }
-  end
-
   ORDER = %w[
     disable_booking booking_display_mode picture_style_categories display_any_provider
-    booking_provider_first display_order_switch appointments_include_locations
-    appointments_include_meeting_links limit_customer_access display_login_button
+    appointments_include_locations appointments_include_meeting_links
+    booking_provider_first display_order_switch limit_customer_access display_login_button
     display_delete_personal_information display_powered_by display_email
   ].freeze
 
@@ -32,5 +28,13 @@ class BookingSettingsOrderTest < ActionDispatch::IntegrationTest
     assert_select "small", text: I18n.t("ea.display_login_button_hint")
     assert_select "small", text: I18n.t("ea.booking_provider_first_hint")
     assert_select "small", text: I18n.t("ea.display_order_switch_hint")
+  end
+
+  test "the saved notice shows above the options" do
+    login_admin
+    post "/booking_settings/save", params: { settings: { display_email: "1", require_phone_or_email: "1" } }
+    assert_equal I18n.t("ea.settings_saved"), flash[:notice]
+    follow_redirect!
+    assert_operator response.body.index("alert-success"), :<, response.body.index(I18n.t("ea.options"))
   end
 end

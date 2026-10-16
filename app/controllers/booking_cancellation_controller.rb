@@ -62,6 +62,8 @@ class BookingCancellationController < ApplicationController
       page_title: helpers.lang("appointment_cancelled_title"),
       company_color: Setting.get("company_color"),
       late_notice: kind == "late_cancel" ? BookingWindows.late_notice(helpers) : nil,
+      legal_notice_url: Setting.get("legal_notice_url"),
+      imprint_url: Setting.get("imprint_url"),
       google_analytics_code: Setting.get("google_analytics_code"),
       matomo_analytics_url: Setting.get("matomo_analytics_url"),
       matomo_analytics_site_id: Setting.get("matomo_analytics_site_id")

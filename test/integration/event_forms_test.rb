@@ -89,12 +89,13 @@ class EventFormsTest < ActionDispatch::IntegrationTest
     assert_equal names.index("settings[appointments_include_locations]") + 1, names.index("settings[appointments_include_meeting_links]")
   end
 
-  test "booking settings offer the locations switch, off by default, below the ordering switches" do
+  test "booking settings offer the locations switch, off by default, between Any provider and Provider first" do
     login_admin
     get "/booking_settings"
     assert_select "input[type=checkbox][name='settings[appointments_include_locations]']:not([checked])"
     names = css_select("input[type=checkbox][name^='settings[']").map { |box| box["name"] }
-    assert_operator names.index("settings[display_order_switch]"), :<, names.index("settings[appointments_include_locations]")
+    assert_operator names.index("settings[display_any_provider]"), :<, names.index("settings[appointments_include_locations]")
+    assert_operator names.index("settings[appointments_include_locations]"), :<, names.index("settings[booking_provider_first]")
   end
 
   test "services hidden from the public, such as a meeting, are bookable by staff in their own group" do

@@ -13,6 +13,8 @@ class BookingConfirmationController < ApplicationController
       company_color: Setting.get("company_color"),
       company_name: Setting.get("company_name"),
       company_link: Setting.get("company_link"),
+      legal_notice_url: Setting.get("legal_notice_url"),
+      imprint_url: Setting.get("imprint_url"),
       google_analytics_code: Setting.get("google_analytics_code"),
       matomo_analytics_url: Setting.get("matomo_analytics_url"),
       matomo_analytics_site_id: Setting.get("matomo_analytics_site_id"),

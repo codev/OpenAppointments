@@ -14,6 +14,8 @@
                             </h4>
                         </div>
 
+                        <%= settings_flash %>
+
                         <h5 class="mb-3 fw-light">
                             <%= lang('options') %>
                         </h5>
@@ -82,28 +84,6 @@
                                     </div>
                                     <div class="mb-3">
                                         <div class="form-check form-switch">
-                                            <%= setting_switch "booking_provider_first" %>
-                                            <label class="form-check-label" for="booking-provider-first">
-                                                <%= lang('booking_provider_first') %>
-                                            </label>
-                                        </div>
-                                        <div class="form-text text-muted">
-                                            <small><%= lang('booking_provider_first_hint') %></small>
-                                        </div>
-                                    </div>
-                                    <div class="mb-3">
-                                        <div class="form-check form-switch">
-                                            <%= setting_switch "display_order_switch", default: "1" %>
-                                            <label class="form-check-label" for="display-order-switch">
-                                                <%= lang('display_order_switch') %>
-                                            </label>
-                                        </div>
-                                        <div class="form-text text-muted">
-                                            <small><%= lang('display_order_switch_hint') %></small>
-                                        </div>
-                                    </div>
-                                    <div class="mb-3">
-                                        <div class="form-check form-switch">
                                             <%= setting_switch "appointments_include_locations" %>
                                             <label class="form-check-label" for="appointments-include-locations">
                                                 <%= lang('appointments_include_locations') %>
@@ -122,6 +102,28 @@
                                         </div>
                                         <div class="form-text text-muted">
                                             <small><%= lang('appointments_include_meeting_links_hint') %></small>
+                                        </div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <div class="form-check form-switch">
+                                            <%= setting_switch "booking_provider_first" %>
+                                            <label class="form-check-label" for="booking-provider-first">
+                                                <%= lang('booking_provider_first') %>
+                                            </label>
+                                        </div>
+                                        <div class="form-text text-muted">
+                                            <small><%= lang('booking_provider_first_hint') %></small>
+                                        </div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <div class="form-check form-switch">
+                                            <%= setting_switch "display_order_switch", default: "1" %>
+                                            <label class="form-check-label" for="display-order-switch">
+                                                <%= lang('display_order_switch') %>
+                                            </label>
+                                        </div>
+                                        <div class="form-text text-muted">
+                                            <small><%= lang('display_order_switch_hint') %></small>
                                         </div>
                                     </div>
                                     <div class="mb-3">
@@ -194,7 +196,6 @@
                                     <input type="text" id="name" class="form-control mb-2" readonly/>
                                 </div>
                             </div>
-                            <%= settings_flash %>
                             <div class="col-12 col-lg-6">
                                 <div class="form-group mb-4">
                                     <label for="email" class="form-label">

@@ -52,6 +52,19 @@ class BookingConfirmationTest < ActionDispatch::IntegrationTest
     assert_select "#message-frame a[href='https://example.org/legal']"
   end
 
+  test "the confirmed and cancelled pages link the legal notice and imprint" do
+    Setting.set("legal_notice_url", "https://example.org/legal")
+    Setting.set("imprint_url", "https://example.org/imprint")
+
+    get "/booking_confirmation/of/#{appointments(:upcoming).booking_hash}"
+    assert_select "#message-frame a[href='https://example.org/legal']"
+    assert_select "#message-frame a[href='https://example.org/imprint']"
+
+    post "/booking_cancellation/of/#{appointments(:upcoming).booking_hash}", params: { cancellation_reason: "Moved" }
+    assert_select "#message-frame a[href='https://example.org/legal']"
+    assert_select "#message-frame a[href='https://example.org/imprint']"
+  end
+
   test "the Google Calendar link uses the company address when no location is set" do
     appointment = appointments(:upcoming)
     appointment.update!(location: "")

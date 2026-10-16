@@ -126,6 +126,13 @@ class CalendarTest < ActionDispatch::IntegrationTest
     assert_equal true, response.parsed_body["success"]
   end
 
+  test "save_appointment stores the service colour on the appointment" do
+    login_admin
+    services(:haircut).update!(color: "#abe9a4")
+    appointment = save_typed_customer({ name: "Col Our", email: "colour@example.org" })
+    assert_equal "#abe9a4", appointment.color
+  end
+
   def save_typed_customer(customer_data)
     post "/calendar/save_appointment", params: {
       customer_data: customer_data,

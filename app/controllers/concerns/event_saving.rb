@@ -45,6 +45,7 @@ module EventSaving
     fields = fields.except("location") unless Setting.get("appointments_include_locations", "0") == "1"
     fields = fields.except("meeting_link") unless Setting.get("appointments_include_meeting_links", "0") == "1"
     appointment.assign_attributes(fields)
+    appointment.color = appointment.service.color
     appointment.book_datetime ||= Time.now
     appointment.save!
 
