@@ -120,19 +120,21 @@
             </fieldset>
             <br>
             <fieldset>
-                <h5 class="mb-3 fw-light">
-                    <%= lang('customer_details_title') %>
-                    <button id="new-customer" class="btn btn-outline-secondary btn-sm" type="button"
-                            data-tippy-content="<%= lang('clear_fields_add_existing_customer_hint') %>">
-                        <i class="fas fa-plus-square me-2"></i><%= lang('new') %>
-                    </button>
-                    <button id="select-customer" class="btn btn-outline-secondary btn-sm" type="button"
-                            data-tippy-content="<%= lang('pick_existing_customer_hint') %>">
-                        <i class="fas fa-hand-pointer me-2"></i><span><%= lang('select') %></span>
-                    </button>
-                    <input id="filter-existing-customers" placeholder="<%= lang('type_to_filter_customers') %>"
-                           style="display: none;" class="input-sm form-control">
+                <h5 class="mb-3 fw-light d-flex justify-content-between align-items-center">
+                    <span><%= lang('customer_details_title') %></span>
+                    <div>
+                        <button id="new-customer" class="btn btn-outline-secondary btn-sm" type="button"
+                                data-tippy-content="<%= lang('clear_fields_add_existing_customer_hint') %>">
+                            <i class="fas fa-plus-square me-2"></i><%= lang('new') %>
+                        </button>
+                        <button id="select-customer" class="btn btn-outline-secondary btn-sm" type="button"
+                                data-tippy-content="<%= lang('pick_existing_customer_hint') %>">
+                            <i class="fas fa-address-book me-2"></i><span><%= lang('select') %></span>
+                        </button>
+                    </div>
                 </h5>
+                <input id="filter-existing-customers" placeholder="<%= lang('type_to_filter_customers') %>"
+                       style="display: none;" class="input-sm form-control">
                 <div id="existing-customers-list" style="display: none;">
                     <% @customers.each do |customer| %>
                         <div data-id="<%= customer.id %>" data-customer="<%= EaRows.customer_row(customer).to_json %>"><%= customer.name.presence || "[No Name]" %></div>
