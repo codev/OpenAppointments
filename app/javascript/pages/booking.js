@@ -88,7 +88,10 @@ App.Pages.Booking = (function () {
         }
     }
 
-    const STORED_FIELDS = ['name', 'email', 'phone-number', 'address', 'city', 'zip-code'];
+    const STORED_FIELDS = [
+        'name', 'email', 'phone-number', 'address', 'city', 'zip-code',
+        'custom-field-1', 'custom-field-2', 'custom-field-3', 'custom-field-4', 'custom-field-5',
+    ];
     const DRAFT_KEY = 'OpenAppointments.Draft';
 
     function readStorage(storage, key) {

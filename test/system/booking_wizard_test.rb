@@ -396,4 +396,31 @@ class BookingWizardWindowTest < ApplicationSystemTestCase
     assert_selector "#wizard-frame-4", visible: :visible, wait: 5
     assert_text "on this browser"
   end
+
+  test "remembered details include the custom question answers" do
+    Setting.set("display_custom_field_1", "1")
+    Setting.set("label_custom_field_1", "Pronouns")
+    to_time_step
+    date = working_day(0)
+    find(".flatpickr-day[aria-label='#{date.strftime('%B %-d, %Y')}']").click
+    find("#available-hours .available-hour", text: /\A9:30 am\z/, wait: 5).click
+    find("#button-next-3").click
+    assert_selector "#wizard-frame-4", visible: :visible, wait: 5
+    fill_in "name", with: "Repeat Customer"
+    fill_in "email", with: "repeat@example.org"
+    fill_in "custom-field-1", with: "they/them"
+    check "remember-me"
+    find("#button-next-4").click
+    assert_selector "#wizard-frame-5", visible: :visible, wait: 5
+    click_on "Confirm"
+    assert_text "Your appointment has been successfully registered", wait: 10
+
+    to_time_step
+    find(".flatpickr-day[aria-label='#{date.strftime('%B %-d, %Y')}']").click
+    find("#available-hours .available-hour", match: :first, wait: 5).click
+    find("#button-next-3").click
+    assert_selector "#wizard-frame-4", visible: :visible, wait: 5
+    assert_field "name", with: "Repeat Customer", wait: 5
+    assert_field "custom-field-1", with: "they/them", wait: 5
+  end
 end
