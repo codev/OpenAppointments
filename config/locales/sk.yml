@@ -116,9 +116,9 @@ sk:
     appointment_confirmation: Potvrďte rezerváciu
     confirm: Potvrdiť
     update: Aktualizovať
-    cancel_appointment_hint: Stlačte tlačidlo "Zrušiť" pre odstránenie Vašej rezervácie.
+    cancel_appointment_hint: "Stlačte tlačidlo \"Zrušiť\" pre zrušenie rezervácie"
     cancel: Zrušiť
-    appointment_registered: Vaša rezervácia bola zaregistrovaná.
+    appointment_registered: "Všetko je hotovo!"
     cancel_appointment_title: Zrušiť rezerváciu
     appointment_cancelled: Vaša rezervácia bola zrušená.
     appointment_cancelled_title: Rezervácia zrušená
@@ -167,7 +167,6 @@ sk:
     all_day: Celý deň
     manage_appointment_record_hint: Spravovať všetky záznamy rezervácií, pracovníkov a služieb.
     select_filter_item_hint: Vyberte pracovníka, alebo službu a zobrazte rezervácie v kalendári.
-    enable_appointment_sync_hint: Povoliť synchronizáciu rezervácií s poskytovateľom's s kontom Google Kalendár.
     manage_customers_hint: Správa registrovaných zákazníkov a histórie rezervácií.
     manage_services_hint: Správa dostupných služieb a kategórií systému.
     manage_users_hint: Správa užívateľov administrácie (Administrátori, pracovníci, asistentov...).
@@ -452,7 +451,7 @@ sk:
     company: Spoločnosť
     remove: Odstrániť
     login_button: Tlačidlo na prihlásenie
-    display_login_button_hint: Definuje, či sa prihlasovacie tlačidlo zobrazuje na stránke rezervácie.
+    display_login_button_hint: "Určuje, či sa na stránke rezervácie zobrazuje tlačidlo prihlásenia pre personál."
     private: Súkromné
     private_hint: "Súkromné záznamy sa nezobrazujú na verejnej rezervačnej stránke, ale stále ich možno rezervovať prostredníctvom ich priameho rezervačného odkazu."
     reset: Resetovať
@@ -652,7 +651,7 @@ sk:
     start_date: Dátum začiatku
     end_date: Dátum konca
     remember_me: Zapamätať si moje údaje
-    remember_me_hint: Uložiť vaše údaje pre rýchlejšiu rezerváciu nabudúce.
+    remember_me_hint: "Uložte si svoje údaje v tomto prehliadači pre rýchlejšiu rezerváciu nabudúce."
     legal_notice: Právne upozornenie
     legal_notice_url: URL právneho upozornenia
     legal_notice_url_hint: Zadajte URL stránky s právnym upozornením.
@@ -690,29 +689,29 @@ sk:
     messages_enabled_hint: "Globálne zapnúť alebo vypnúť všetky oznámenia"
     messages_enabled_on: "Zapnuté"
     messages_enabled_off: "Vypnuté - e-maily na obnovenie hesla sa stále odosielajú"
-    messages_enabled_debug: "Ladenie - presmerovať všetky odchádzajúce e-maily a správy"
-    messages_intercept_hint: "Kým je vybrané Ladenie, každý odchádzajúci e-mail ide na túto adresu a každá SMS na toto číslo."
+    messages_enabled_debug: "Debug - presmerovať všetky odoslané e-maily a správy"
+    messages_intercept_hint: "Kým je vybrané Debug, každý odoslaný e-mail ide na túto adresu a každá SMS na toto číslo."
     messages_intercept_required: "Ladenie vyžaduje platnú e-mailovú adresu a telefónne číslo na presmerovanie."
     messages_retention_days: Delete messages older than (days)
     messages_retention_days_hint: Messages older than this many days are deleted automatically. Set 0 to keep all messages.
-    messages_email_subject: Outgoing Email Subject Line
+    messages_email_subject: "Predmet e-mailu"
     messages_email_subject_hint: Used for emails without their own Short Text, and for messages sent from the customer page.
     messages_providers_info: Notification providers deliver your notifications by email or SMS. Configure at least one provider and tick it inside each notification template.
     messages_provider_disabled: Disabled
-    messages_provider_outgoing: Outgoing
-    messages_provider_incoming_outgoing: Incoming and outgoing
+    messages_provider_outgoing: "Len odosielanie"
+    messages_provider_incoming_outgoing: "Odosielanie a príjem"
     messages_provider_email_info: Send notifications by email through the server or SMTP, and receive replies through the server or IMAP.
     messages_provider_twilio_info: Send and receive SMS with a Twilio account and phone number.
     messages_provider_plivo_info: Send and receive SMS with a Plivo account and phone number.
     messages_provider_textanywhere_info: Send and receive SMS with a TextAnywhere account.
-    messages_incoming: Incoming
-    messages_incoming_hint: Customer can reply to support incoming messages as well as outgoing ones.
+    messages_incoming: "Prijímať odpovede"
+    messages_incoming_hint: "Zákazníci môžu odpovedať na správy, ktoré posielate."
     messages_test_sms_sent: "Testovacia SMS odoslana, skontrolujte telefon."
     messages_test_sms_number: "Testovacie telefonne cislo"
     messages_test_sms: "Odoslat testovaciu SMS"
     messages_smsgateway_invalid: "Nastavenia brany sa nepodarilo overit:"
-    messages_smsgateway_inbound_hint: "Telefon dorucuje prichadzajuce spravy na tuto adresu, registracia prebehne automaticky pri ulozeni so zapnutym prijmom."
-    messages_smsgateway_step_activate: "Zaskrtnite Aktivne a Prijimat prichadzajuce spravy a ulozte. Nastavenia sa otestuju; opravte chyby a otestujte odosielanie tlacidlom Odoslat testovaciu SMS nizsie."
+    messages_smsgateway_inbound_hint: "Telefón doručuje prijaté správy na túto adresu, registrácia prebehne automaticky pri uložení so zapnutým príjmom."
+    messages_smsgateway_step_activate: "Zaškrtnite Active a Prijímať odpovede, potom Save. Nastavenia sa otestujú, opravte prípadné chyby a pomocou tlačidla odoslania testovacej SMS nižšie vyskúšajte odosielanie."
     messages_smsgateway_step_credentials: "Na uvodnej obrazovke vypnite Local server, zapnite Cloud server a stlacte tlacidlo Offline na pripojenie (zaskrtnite aj Start on boot), potom skopirujte pouzivatelske meno a heslo z uvodnej obrazovky do poli Pouzivatelske meno a Heslo nizsie."
     messages_smsgateway_step_signing: "Prejdite v aplikacii na Settings -> Webhooks -> Signing Key -> zadajte podpisovy kluc a skopirujte ho do Podpisoveho kluca webhookov nizsie."
     messages_smsgateway_step_token: "Ak pouzivate privatny server, na tej istej obrazovke zadajte aj Private Token - token je v /app/data/private_token na serveri brany."
@@ -733,14 +732,14 @@ sk:
     messages_smsgateway_password: "Heslo"
     messages_smsgateway_signing_key: "Podpisovy kluc webhookov"
     messages_provider_smsgateway_info: "Odosiela a prijima SMS cez telefon s Androidom s aplikaciou SMS Gateway a vlastnym serverom, bez poplatku za spravu."
-    messages_email_outgoing: Outgoing email
+    messages_email_outgoing: "Odosielať e-maily"
     messages_email_mode: Sending method
     messages_email_mode_server: Send email through server
     messages_email_mode_smtp: Send email with SMTP
     messages_smtp_host: SMTP host
     messages_smtp_port: SMTP port
     messages_smtp_tls: Use TLS
-    messages_email_incoming_section: Incoming email
+    messages_email_incoming_section: "Prijímať e-maily"
     messages_email_incoming_mode: Receiving method
     messages_email_incoming_server: Receive email through server
     messages_email_incoming_imap: Receive email with IMAP
@@ -749,8 +748,8 @@ sk:
     messages_imap_port: IMAP port
     messages_email_credentials_hint: "Need an email delivery service? Get SMTP credentials from"
     messages_sms_credentials_hint: "Get your credentials from the provider console:"
-    messages_inbound_webhook: Incoming webhook URL
-    messages_inbound_webhook_hint: Paste this URL into the provider console so incoming messages reach the app. Keep it secret.
+    messages_inbound_webhook: "Webhook URL pre prijaté správy"
+    messages_inbound_webhook_hint: "Vložte túto URL do konzoly poskytovateľa, aby sa prijaté správy dostali do aplikácie. Udržte ju v tajnosti."
     messages_twilio_account_sid: Account SID
     messages_twilio_auth_token: Auth token
     messages_from_number: From phone number
@@ -783,8 +782,8 @@ sk:
     open_all_notification_templates: Open all notification templates
     close_all_notification_templates: Close all notification templates
     messages_address: Address
-    messages_incoming_label: Incoming
-    messages_outgoing_label: Outgoing
+    messages_incoming_label: "Prijaté"
+    messages_outgoing_label: "Odoslané"
     messages_manual_label: Manual
     messages_unknown_sender: Unknown sender
     messages_status_sent: Sent
@@ -889,7 +888,7 @@ sk:
     filter_statuses_hint: 'Choose which appointment statuses to show.'
     appointment_statuses: 'Appointment Statuses'
     inbox: 'Inbox'
-    inbox_hint: 'Incoming messages from your customers.'
+    inbox_hint: "Správy prijaté od vašich zákazníkov."
     read: 'Read'
     message: 'Message'
     mark_as_read: 'Mark as read'
@@ -961,7 +960,7 @@ sk:
     time_off_hint: "Ak ide o časť dňa voľna, zadajte hodiny, kedy ste preč. Uložia sa ako prestávka v tieto dni."
     messages_sms_variation: "Obmieňať každú SMS"
     messages_sms_variation_hint: "Na koniec každej SMS pridá krátky referenčný kód, aby žiadne dve správy neboli rovnaké, čo niektoré siete vyžadujú."
-    provider_color_hint: "Používa sa pre rezervácie tohto pracovníka, keď kalendár zobrazuje všetkých."
+    provider_color_hint: "Pozadie rezervácií tohto poskytovateľa v kalendári. Farba služby sa zobrazí na okraji"
     working_providers: "Pracujúci pracovníci"
     hidden_from_public: "Skryté pred verejnosťou"
     slot_interval_hint: "Ako často sa zákazníkom ponúkajú časy začiatku. Pri 15 môže 45-minútová služba začať o 9:00, 9:15, 9:30 atď.; pri 60 o 9:00, 10:00, 11:00. Po rezervácii tým neostáva voľný čas: na to predĺžte trvanie služby."
@@ -978,8 +977,25 @@ sk:
     message_move_to: "Presunúť k {name}"
     message_moved: "Správa presunutá"
     notification_tokens_hint: "Polia šablóny, ktoré môžete použiť. Kliknutím na jedno ho vložíte na miesto, kde ste písali, alebo ho skopírujete:"
-    inbox_info: "Prichádzajúce správy. Inbox zobrazuje správy, ktoré treba vybaviť - označte každú ako Vybavené po vybavení alebo prečítaní; stále si ich môžete prečítať na stránke zákazníka alebo v Archíve. Archív zobrazuje správy označené ako Vybavené - má tlačidlo Odvolať akciu, ktoré ich vráti späť do Inbox."
+    inbox_info: "Prijaté správy. Doručená pošta obsahuje správy na vybavenie, každú označte ako hotovú, keď bola vybavená alebo prečítaná - stále ju môžete čítať na stránke zákazníka alebo v archíve. Archív obsahuje správy označené ako hotové - má tlačidlo späť, ktorým ich vrátite do doručenej pošty."
     booking_release_time: "Čas otvorenia"
     booking_release_time_hint: "Nasledujúci deň na konci budúceho limitu rezervácie sa každý deň otvára o tomto čase."
     inbox_filter_archive: "Archív"
     load_more_messages: "Načítať ďalšie správy"
+    clear_providers: "Vymazať poskytovateľov"
+    clear_services: "Vymazať služby"
+    refresh: "Obnoviť"
+    sync: "Synchronizácia"
+    feed: "Kanál"
+    do_not_contact_hint: "Tomuto zákazníkovi sa neposielajú potvrdenia rezervácií, zmeny ani pripomienky"
+    do_not_contact_warning: "Tento zákazník požiadal, aby ho nikto nekontaktoval. Správy odoslané sem sa stále doručujú."
+    company_address: "Adresa spoločnosti"
+    company_address_hint: "Toto bude predvolené miesto pre všetky rezervácie a pozvánky do kalendára"
+    cancel_reason_optional: "Dôvod zrušenia rezervácie (nepovinné), ak nám ho chcete oznámiť:"
+    late_cancel_reason: "Dôvod zrušenia rezervácie:"
+    appointments_include_locations: "Rezervácie obsahujú miesto"
+    appointments_include_locations_hint: "Umožňuje pracovníkovi, asistentovi alebo správcovi nastaviť miesto rezervácie. Keď je vypnuté, miestom bude vždy adresa spoločnosti."
+    appointments_include_meeting_links: "Rezervácie obsahujú odkazy na schôdzku"
+    appointments_include_meeting_links_hint: "Umožňuje pracovníkovi, asistentovi alebo správcovi pridať k rezervácii odkaz na online schôdzku. Odkaz bude súčasťou pozvánky do kalendára zákazníka."
+    booking_provider_first_hint: "Na stránke rezervácie zobraziť zákazníkovi pracovníkov pred výberom služby."
+    display_order_switch_hint: "Umožniť zákazníkom použiť v prvom kroku stránky rezervácie tlačidlo, ktoré im dovolí vybrať najprv službu alebo najprv pracovníka a až potom to druhé."

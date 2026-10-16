@@ -116,9 +116,9 @@ ro:
     appointment_confirmation: Confirmati întâlnirea
     confirm: Confirmati
     update: Actualizare
-    cancel_appointment_hint: Apasati butonul Anulare ca sa stergeti întâlnirea din calendarul companiei.
+    cancel_appointment_hint: "Apăsați butonul \"Anulare\" pentru a anula întâlnirea"
     cancel: Anulare
-    appointment_registered: Cererea dumneavoastra a fost înregistrata.
+    appointment_registered: "Totul este gata!"
     cancel_appointment_title: Anulare întâlnire
     appointment_cancelled: Întâlnirea a fost anulata.
     appointment_cancelled_title: Întâlnire Anulata
@@ -167,7 +167,6 @@ ro:
     all_day: Toata ziua
     manage_appointment_record_hint: Gestioneaza toate înregistrarile furnizorilor si serviciilor disponibile.
     select_filter_item_hint: Selecteaza un furnizor sau un serviciu si vizualizeaza întâlnirile în calendar.
-    enable_appointment_sync_hint: Activeaza sincronizarea întâlnirilor cu calendarul furnizorului.
     manage_customers_hint: Gestioneaza clientii înregistrati si vizualizeaza istoricul întâlnirilor lor.
     manage_services_hint: Gestioneaza serviciile disponibile si categoriile din sistem.
     manage_users_hint: Gestioneaza utilizatorii de backend (administrator, furnizori, asistenți).
@@ -452,7 +451,7 @@ ro:
     company: Companie
     remove: Elimină
     login_button: Buton Autentificare
-    display_login_button_hint: Defineste dacă butonul de autentificare este afișat pe pagina de rezervare.
+    display_login_button_hint: "Stabilește dacă butonul de autentificare al personalului este afișat în pagina de programare."
     private: Privat
     private_hint: "Înregistrările private nu sunt afișate pe pagina publică de programări, dar pot fi totuși rezervate prin linkul lor direct de programare."
     reset: Resetare
@@ -652,7 +651,7 @@ ro:
     start_date: Data de Început
     end_date: Data de Sfârșit
     remember_me: Reține informațiile mele
-    remember_me_hint: Salvați detaliile pentru o rezervare mai rapidă data viitoare.
+    remember_me_hint: "Salvați datele în acest browser pentru o programare mai rapidă data viitoare."
     legal_notice: Notificare Legală
     legal_notice_url: URL Notificare Legală
     legal_notice_url_hint: Introduceți URL-ul paginii dvs. de notificare legală.
@@ -695,24 +694,24 @@ ro:
     messages_intercept_required: "Depanarea necesită o adresă de e-mail și un număr de telefon valide pentru redirecționare."
     messages_retention_days: Delete messages older than (days)
     messages_retention_days_hint: Messages older than this many days are deleted automatically. Set 0 to keep all messages.
-    messages_email_subject: Outgoing Email Subject Line
+    messages_email_subject: "Subiectul e-mailului"
     messages_email_subject_hint: Used for emails without their own Short Text, and for messages sent from the customer page.
     messages_providers_info: Notification providers deliver your notifications by email or SMS. Configure at least one provider and tick it inside each notification template.
     messages_provider_disabled: Disabled
-    messages_provider_outgoing: Outgoing
-    messages_provider_incoming_outgoing: Incoming and outgoing
+    messages_provider_outgoing: "Doar trimitere"
+    messages_provider_incoming_outgoing: "Trimitere și primire"
     messages_provider_email_info: Send notifications by email through the server or SMTP, and receive replies through the server or IMAP.
     messages_provider_twilio_info: Send and receive SMS with a Twilio account and phone number.
     messages_provider_plivo_info: Send and receive SMS with a Plivo account and phone number.
     messages_provider_textanywhere_info: Send and receive SMS with a TextAnywhere account.
-    messages_incoming: Incoming
-    messages_incoming_hint: Customer can reply to support incoming messages as well as outgoing ones.
+    messages_incoming: "Primește răspunsuri"
+    messages_incoming_hint: "Clienții pot răspunde la mesajele pe care le trimiteți."
     messages_test_sms_sent: "SMS de test trimis, verificati telefonul."
     messages_test_sms_number: "Numar de telefon de test"
     messages_test_sms: "Trimite SMS de test"
     messages_smsgateway_invalid: "Setarile gateway-ului nu au putut fi validate:"
-    messages_smsgateway_inbound_hint: "Telefonul livreaza mesajele primite la aceasta adresa, inregistrarea se face automat la salvare cu primirea activata."
-    messages_smsgateway_step_activate: "Bifati Activ si Primire mesaje, apoi Salvati. Setarile sunt testate; corectati erorile si testati trimiterea cu butonul Trimite SMS de test de mai jos."
+    messages_smsgateway_inbound_hint: "Telefonul livrează mesajele primite la această adresă, înregistrarea se face automat la salvarea cu primirea activată."
+    messages_smsgateway_step_activate: "Bifați Activ și Primește răspunsuri, apoi Salvați. Setările sunt testate, remediați eventualele erori și folosiți butonul Trimite SMS de test de mai jos pentru a testa trimiterea."
     messages_smsgateway_step_credentials: "Pe ecranul principal opriti Local server, porniti Cloud server si apasati butonul Offline pentru conectare (bifati si Start on boot), apoi copiati utilizatorul si parola de pe ecranul principal in campurile Nume utilizator si Parola de mai jos."
     messages_smsgateway_step_signing: "Mergeti la Settings -> Webhooks -> Signing Key in aplicatie -> introduceti o cheie de semnare si copiati-o in Cheia de semnare a webhookurilor de mai jos."
     messages_smsgateway_step_token: "Daca folositi un server privat introduceti si Private Token pe acelasi ecran - tokenul este in /app/data/private_token pe serverul gateway."
@@ -733,14 +732,14 @@ ro:
     messages_smsgateway_password: "Parola"
     messages_smsgateway_signing_key: "Cheia de semnare a webhookurilor"
     messages_provider_smsgateway_info: "Trimite si primeste SMS printr-un telefon Android cu aplicatia SMS Gateway pe serverul nostru, fara cost pe mesaj."
-    messages_email_outgoing: Outgoing email
+    messages_email_outgoing: "Trimite e-mail"
     messages_email_mode: Sending method
     messages_email_mode_server: Send email through server
     messages_email_mode_smtp: Send email with SMTP
     messages_smtp_host: SMTP host
     messages_smtp_port: SMTP port
     messages_smtp_tls: Use TLS
-    messages_email_incoming_section: Incoming email
+    messages_email_incoming_section: "Primește e-mail"
     messages_email_incoming_mode: Receiving method
     messages_email_incoming_server: Receive email through server
     messages_email_incoming_imap: Receive email with IMAP
@@ -749,8 +748,8 @@ ro:
     messages_imap_port: IMAP port
     messages_email_credentials_hint: "Need an email delivery service? Get SMTP credentials from"
     messages_sms_credentials_hint: "Get your credentials from the provider console:"
-    messages_inbound_webhook: Incoming webhook URL
-    messages_inbound_webhook_hint: Paste this URL into the provider console so incoming messages reach the app. Keep it secret.
+    messages_inbound_webhook: "URL webhook pentru mesajele primite"
+    messages_inbound_webhook_hint: "Lipiți acest URL în consola furnizorului pentru ca mesajele primite să ajungă în aplicație. Păstrați-l secret."
     messages_twilio_account_sid: Account SID
     messages_twilio_auth_token: Auth token
     messages_from_number: From phone number
@@ -783,8 +782,8 @@ ro:
     open_all_notification_templates: Open all notification templates
     close_all_notification_templates: Close all notification templates
     messages_address: Address
-    messages_incoming_label: Incoming
-    messages_outgoing_label: Outgoing
+    messages_incoming_label: "Primite"
+    messages_outgoing_label: "Trimise"
     messages_manual_label: Manual
     messages_unknown_sender: Unknown sender
     messages_status_sent: Sent
@@ -889,7 +888,7 @@ ro:
     filter_statuses_hint: 'Choose which appointment statuses to show.'
     appointment_statuses: 'Appointment Statuses'
     inbox: 'Inbox'
-    inbox_hint: 'Incoming messages from your customers.'
+    inbox_hint: "Mesaje primite de la clienții dumneavoastră."
     read: 'Read'
     message: 'Message'
     mark_as_read: 'Mark as read'
@@ -961,7 +960,7 @@ ro:
     time_off_hint: "Pentru o parte dintr-o zi liberă, introduceți orele în care lipsiți. Acestea sunt salvate ca pauză în acele date."
     messages_sms_variation: "Variază fiecare SMS"
     messages_sms_variation_hint: "Adaugă un cod de referință scurt la finalul fiecărui SMS, astfel încât niciun mesaj să nu fie identic, lucru cerut de unele rețele."
-    provider_color_hint: "Folosit pentru întâlnirile acestui furnizor atunci când calendarul îi afișează pe toți."
+    provider_color_hint: "Fundalul întâlnirilor acestui furnizor din calendar. Culoarea serviciului apare pe margine"
     working_providers: "Furnizori care Lucrează"
     hidden_from_public: "Ascuns de la Public"
     slot_interval_hint: "Cât de des le sunt oferite clienților orele de început. Cu 15, un serviciu de 45 de minute poate începe la 9:00, 9:15, 9:30 și așa mai departe; cu 60, la 9:00, 10:00, 11:00. Nu păstrează timp liber după programare: pentru asta, măriți durata serviciului."
@@ -978,8 +977,25 @@ ro:
     message_move_to: "Mută la {name}"
     message_moved: "Mesaj mutat"
     notification_tokens_hint: "Câmpuri de șablon pe care le puteți folosi. Faceți clic pe unul pentru a-l insera unde scriați, sau pentru a-l copia:"
-    inbox_info: "Mesaje primite. Inbox listează mesajele de rezolvat - marcați fiecare ca Finalizat după ce a fost rezolvat sau citit; le puteți citi în continuare pe pagina clientului sau în Arhivă. Arhivă listează mesajele marcate ca Finalizat - are un buton Anulează care le readuce în Inbox."
+    inbox_info: "Mesaje primite. Inbox listează mesajele care necesită o acțiune; marcați fiecare mesaj ca rezolvat după ce a fost tratat sau citit - le puteți citi în continuare pe pagina clientului sau în Arhivă. Arhivă listează mesajele marcate ca rezolvate și are un buton de anulare pentru a le readuce în Inbox."
     booking_release_time: "Ora de deschidere"
     booking_release_time_hint: "Ziua următoare de la sfârșitul limitei rezervărilor viitoare se deschide la această oră în fiecare zi."
     inbox_filter_archive: "Arhivă"
     load_more_messages: "Încarcă mai multe mesaje"
+    clear_providers: "Șterge furnizorii"
+    clear_services: "Șterge serviciile"
+    refresh: "Reîmprospătare"
+    sync: "Sincronizare"
+    feed: "Flux"
+    do_not_contact_hint: "Acestui client nu i se trimit confirmări de programare, modificări sau mementouri"
+    do_not_contact_warning: "Acest client a cerut să nu fie contactat. Mesajele trimise aici sunt totuși livrate."
+    company_address: "Adresa companiei"
+    company_address_hint: "Aceasta va fi locația implicită pentru toate programările și invitațiile din calendar"
+    cancel_reason_optional: "Motivul opțional al anulării întâlnirii, dacă doriți să ne spuneți:"
+    late_cancel_reason: "Motivul anulării întâlnirii:"
+    appointments_include_locations: "Întâlnirile includ locații"
+    appointments_include_locations_hint: "Permite unui furnizor, asistent sau administrator să stabilească locația unei întâlniri. Când este dezactivat, locația va fi întotdeauna adresa companiei."
+    appointments_include_meeting_links: "Întâlnirile includ linkuri de întâlnire"
+    appointments_include_meeting_links_hint: "Permite unui furnizor, asistent sau administrator să adauge la o întâlnire un link către o întâlnire online. Linkul va fi inclus în invitația din calendarul clientului."
+    booking_provider_first_hint: "În pagina de programare, arată clientului furnizorii înainte de a alege un serviciu."
+    display_order_switch_hint: "Permite clienților să folosească un buton din primul pas al paginii de programare pentru a alege mai întâi serviciul sau mai întâi furnizorul, înainte de a-l alege pe celălalt."

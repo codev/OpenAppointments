@@ -116,9 +116,9 @@ pt-br:
     appointment_confirmation: Confirmar agendamento
     confirm: Confirmar
     update: Atualizar
-    cancel_appointment_hint: Pressione o botão "cancelar" para cancelar o agendamento.
+    cancel_appointment_hint: "Pressione o botão \"Cancelar\" para cancelar o agendamento"
     cancel: Cancelar
-    appointment_registered: O agendamento foi registrado com sucesso.
+    appointment_registered: "Tudo pronto!"
     cancel_appointment_title: Cancelar agendamento
     appointment_cancelled: Agendamento cancelado com sucesso.
     appointment_cancelled_title: Agendamento cancelado
@@ -167,7 +167,6 @@ pt-br:
     all_day: Todo o dia
     manage_appointment_record_hint: Gerenciar todos os eventos dos fornecedores e dos serviços disponíveis.
     select_filter_item_hint: Selecione o fornecedor ou o serviço e veja os eventos no calendário.
-    enable_appointment_sync_hint: Ativar a sincronização de eventos atráves de uma conta do Google Calendar.
     manage_customers_hint: Gerenciar os clientes e visualizar o seu histórico.
     manage_services_hint: Gerenciar os serviços e as categorias do sistema.
     manage_users_hint: Gerenciar os usuários de backend (administradores, fornecedores, assistentes).
@@ -452,7 +451,7 @@ pt-br:
     company: Empresa
     remove: Remover
     login_button: Botão de Login
-    display_login_button_hint: Define se o botão de login está sendo exibido na página de reserva.
+    display_login_button_hint: "Define se o botão de login da equipe é exibido na página de agendamento."
     private: Privado
     private_hint: "Registros privados não são exibidos na página pública de agendamento, mas ainda podem ser agendados através do seu link direto de agendamento."
     reset: Redefinir
@@ -652,7 +651,7 @@ pt-br:
     start_date: Data de Início
     end_date: Data de Término
     remember_me: Lembrar minhas informações
-    remember_me_hint: Salvar seus dados para uma reserva mais rápida na próxima vez.
+    remember_me_hint: "Salve seus dados neste navegador para agendar mais rápido da próxima vez."
     legal_notice: Aviso Legal
     legal_notice_url: URL do Aviso Legal
     legal_notice_url_hint: Insira a URL da sua página de aviso legal.
@@ -695,24 +694,24 @@ pt-br:
     messages_intercept_required: "Depuração precisa de um endereço de e-mail e um número de telefone válidos para redirecionar."
     messages_retention_days: Delete messages older than (days)
     messages_retention_days_hint: Messages older than this many days are deleted automatically. Set 0 to keep all messages.
-    messages_email_subject: Outgoing Email Subject Line
+    messages_email_subject: "Assunto do e-mail"
     messages_email_subject_hint: Used for emails without their own Short Text, and for messages sent from the customer page.
     messages_providers_info: Notification providers deliver your notifications by email or SMS. Configure at least one provider and tick it inside each notification template.
     messages_provider_disabled: Disabled
-    messages_provider_outgoing: Outgoing
-    messages_provider_incoming_outgoing: Incoming and outgoing
+    messages_provider_outgoing: "Somente enviar"
+    messages_provider_incoming_outgoing: "Enviar e receber"
     messages_provider_email_info: Send notifications by email through the server or SMTP, and receive replies through the server or IMAP.
     messages_provider_twilio_info: Send and receive SMS with a Twilio account and phone number.
     messages_provider_plivo_info: Send and receive SMS with a Plivo account and phone number.
     messages_provider_textanywhere_info: Send and receive SMS with a TextAnywhere account.
-    messages_incoming: Incoming
-    messages_incoming_hint: Customer can reply to support incoming messages as well as outgoing ones.
+    messages_incoming: "Receber respostas"
+    messages_incoming_hint: "Os clientes podem responder às mensagens que você envia."
     messages_test_sms_sent: "SMS de teste enviado, verifique o telefone."
     messages_test_sms_number: "Número de telefone de teste"
     messages_test_sms: "Enviar SMS de teste"
     messages_smsgateway_invalid: "Não foi possível validar as configurações do gateway:"
-    messages_smsgateway_inbound_hint: "O telefone entrega as mensagens recebidas neste endereço, o registro é feito automaticamente ao salvar com o recebimento ligado."
-    messages_smsgateway_step_activate: "Marque Ativo e Receber mensagens e salve. As configurações são testadas; corrija erros e teste o envio com o botão Enviar SMS de teste abaixo."
+    messages_smsgateway_inbound_hint: "O telefone entrega as mensagens recebidas a este endereço; o registro é feito automaticamente ao salvar com o recebimento ativado."
+    messages_smsgateway_step_activate: "Marque Ativo e Receber respostas e clique em Salvar. As configurações serão testadas; corrija eventuais erros e use o botão Enviar SMS de teste abaixo para testar o envio."
     messages_smsgateway_step_credentials: "Na tela inicial desligue o Local server, ligue o Cloud server e toque no botão Offline para conectar (marque também Start on boot), depois copie o usuário e a senha mostrados na tela inicial para Nome de usuário e Senha abaixo."
     messages_smsgateway_step_signing: "Vá em Settings -> Webhooks -> Signing Key no aplicativo -> informe uma chave de assinatura e copie-a para a Chave de assinatura do webhook abaixo."
     messages_smsgateway_step_token: "Se usar um servidor privado informe também o Private Token nessa tela - o token está em /app/data/private_token no servidor do gateway."
@@ -733,14 +732,14 @@ pt-br:
     messages_smsgateway_password: "Senha"
     messages_smsgateway_signing_key: "Chave de assinatura do webhook"
     messages_provider_smsgateway_info: "Envia e recebe SMS por um telefone Android com o aplicativo SMS Gateway em nosso próprio servidor, sem custo por mensagem."
-    messages_email_outgoing: Outgoing email
+    messages_email_outgoing: "Enviar e-mail"
     messages_email_mode: Sending method
     messages_email_mode_server: Send email through server
     messages_email_mode_smtp: Send email with SMTP
     messages_smtp_host: SMTP host
     messages_smtp_port: SMTP port
     messages_smtp_tls: Use TLS
-    messages_email_incoming_section: Incoming email
+    messages_email_incoming_section: "Receber e-mail"
     messages_email_incoming_mode: Receiving method
     messages_email_incoming_server: Receive email through server
     messages_email_incoming_imap: Receive email with IMAP
@@ -749,8 +748,8 @@ pt-br:
     messages_imap_port: IMAP port
     messages_email_credentials_hint: "Need an email delivery service? Get SMTP credentials from"
     messages_sms_credentials_hint: "Get your credentials from the provider console:"
-    messages_inbound_webhook: Incoming webhook URL
-    messages_inbound_webhook_hint: Paste this URL into the provider console so incoming messages reach the app. Keep it secret.
+    messages_inbound_webhook: "URL do webhook para mensagens recebidas"
+    messages_inbound_webhook_hint: "Cole esta URL no console do provedor para que as mensagens recebidas cheguem ao aplicativo. Mantenha-a em segredo."
     messages_twilio_account_sid: Account SID
     messages_twilio_auth_token: Auth token
     messages_from_number: From phone number
@@ -783,8 +782,8 @@ pt-br:
     open_all_notification_templates: Open all notification templates
     close_all_notification_templates: Close all notification templates
     messages_address: Address
-    messages_incoming_label: Incoming
-    messages_outgoing_label: Outgoing
+    messages_incoming_label: "Recebidas"
+    messages_outgoing_label: "Enviadas"
     messages_manual_label: Manual
     messages_unknown_sender: Unknown sender
     messages_status_sent: Sent
@@ -889,7 +888,7 @@ pt-br:
     filter_statuses_hint: 'Choose which appointment statuses to show.'
     appointment_statuses: 'Appointment Statuses'
     inbox: 'Inbox'
-    inbox_hint: 'Incoming messages from your customers.'
+    inbox_hint: "Mensagens recebidas dos seus clientes."
     read: 'Read'
     message: 'Message'
     mark_as_read: 'Mark as read'
@@ -961,7 +960,7 @@ pt-br:
     time_off_hint: "Para uma ausência de parte de um dia, informe as horas em que estará fora. Elas são salvas como uma pausa nessas datas."
     messages_sms_variation: "Variar cada SMS"
     messages_sms_variation_hint: "Adiciona um pequeno código de referência ao final de cada SMS para que não haja dois textos iguais, o que algumas operadoras exigem."
-    provider_color_hint: "Usada para as agendas deste atendente quando o calendário mostra todos."
+    provider_color_hint: "Fundo dos agendamentos deste atendente no calendário. A cor do serviço aparece na borda"
     working_providers: "Atendentes Trabalhando"
     hidden_from_public: "Oculto do Público"
     slot_interval_hint: "Com que frequência os horários de início são oferecidos aos clientes. Com 15, um serviço de 45 minutos pode começar às 9:00, 9:15, 9:30 e assim por diante; com 60, às 9:00, 10:00, 11:00. Isso não reserva tempo livre após o agendamento: para isso, aumente a duração do serviço."
@@ -978,8 +977,25 @@ pt-br:
     message_move_to: "Mover para {name}"
     message_moved: "Mensagem movida"
     notification_tokens_hint: "Campos de modelo que você pode usar. Clique em um para inseri-lo onde você estava digitando, ou para copiá-lo:"
-    inbox_info: "Mensagens recebidas. Inbox lista as mensagens a tratar - marque cada uma como Concluído assim que for tratada ou lida; você ainda pode lê-las na página do cliente ou no Arquivo. Arquivo lista as mensagens marcadas como Concluído - tem um botão Desfazer que as devolve ao Inbox."
+    inbox_info: "Mensagens recebidas. A caixa de entrada lista as mensagens que precisam de ação; marque cada uma como concluída depois de tratada ou lida - você ainda poderá lê-las na página do cliente ou em Arquivo. Arquivo lista as mensagens marcadas como concluídas e tem um botão de desfazer para devolvê-las à caixa de entrada."
     booking_release_time: "Horário de liberação"
     booking_release_time_hint: "O próximo dia no final do limite de reserva futuro é liberado neste horário todos os dias."
     inbox_filter_archive: "Arquivo"
     load_more_messages: "Carregar mais mensagens"
+    clear_providers: "Limpar atendentes"
+    clear_services: "Limpar serviços"
+    refresh: "Atualizar"
+    sync: "Sincronizar"
+    feed: "Feed"
+    do_not_contact_hint: "Nenhuma confirmação, alteração ou lembrete de agendamento é enviado a este cliente"
+    do_not_contact_warning: "Este cliente pediu para não ser contatado. As mensagens enviadas aqui ainda serão entregues."
+    company_address: "Endereço da empresa"
+    company_address_hint: "Será o local padrão de todos os agendamentos e convites de calendário"
+    cancel_reason_optional: "Motivo opcional do cancelamento do agendamento, se quiser nos informar:"
+    late_cancel_reason: "Motivo do cancelamento do agendamento:"
+    appointments_include_locations: "Agendamentos incluem locais"
+    appointments_include_locations_hint: "Permite que um atendente, assistente ou administrador defina o local de um agendamento. Quando desativado, o local será sempre o endereço da empresa."
+    appointments_include_meeting_links: "Agendamentos incluem links de reunião"
+    appointments_include_meeting_links_hint: "Permite que um atendente, assistente ou administrador adicione ao agendamento um link de reunião online. O link será incluído no convite de calendário do cliente."
+    booking_provider_first_hint: "Na página de agendamento, mostra os atendentes ao cliente antes de ele escolher um serviço."
+    display_order_switch_hint: "Permite que os clientes usem um botão na primeira etapa da página de agendamento para escolher primeiro o serviço ou primeiro o atendente, antes de escolher o outro."

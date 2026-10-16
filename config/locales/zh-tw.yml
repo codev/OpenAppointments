@@ -116,9 +116,9 @@ zh-tw:
     appointment_confirmation: 預約確認
     confirm: 確認
     update: 更新
-    cancel_appointment_hint: 按下「取消」按鈕將預約從公司行程中移除。
+    cancel_appointment_hint: "按下「取消」按鈕即可取消預約"
     cancel: 取消
-    appointment_registered: 您的預約已成功登記！
+    appointment_registered: "一切就緒！"
     cancel_appointment_title: 取消預約
     appointment_cancelled: 您的預約已成功取消。
     appointment_cancelled_title: 預約已取消
@@ -167,7 +167,6 @@ zh-tw:
     all_day: 全天
     manage_appointment_record_hint: 管理所有可用提供者和服務的預約記錄。
     select_filter_item_hint: 選擇提供者或服務並在日曆上檢視預約。
-    enable_appointment_sync_hint: 啟用與外部日曆的預約同步。
     manage_customers_hint: 管理已註冊的顧客並檢視他們的預約歷史。
     manage_services_hint: 管理系統中的可用服務和類別。
     manage_users_hint: 管理後臺使用者（管理員、提供者、助理）。
@@ -452,7 +451,7 @@ zh-tw:
     company: 公司
     remove: 移除
     login_button: 登入按鈕
-    display_login_button_hint: 定義是否在預約頁面顯示登入按鈕。
+    display_login_button_hint: "設定是否在預約頁面顯示員工登入按鈕。"
     private: 私人
     private_hint: "私人記錄不會顯示在公開預約頁面上，但仍可透過其直接預約連結進行預約。"
     reset: 重設
@@ -652,7 +651,7 @@ zh-tw:
     start_date: 開始日期
     end_date: 結束日期
     remember_me: 記住我的資訊
-    remember_me_hint: 儲存您的資料以便下次更快預約。
+    remember_me_hint: "在此瀏覽器上儲存您的資料，下次預約更快速。"
     legal_notice: 法律聲明
     legal_notice_url: 法律聲明 URL
     legal_notice_url_hint: 輸入您的法律聲明頁面的 URL。
@@ -695,24 +694,24 @@ zh-tw:
     messages_intercept_required: "偵錯需要有效的電子郵件地址和電話號碼作為轉送目標。"
     messages_retention_days: Delete messages older than (days)
     messages_retention_days_hint: Messages older than this many days are deleted automatically. Set 0 to keep all messages.
-    messages_email_subject: Outgoing Email Subject Line
+    messages_email_subject: "電子郵件主旨"
     messages_email_subject_hint: Used for emails without their own Short Text, and for messages sent from the customer page.
     messages_providers_info: Notification providers deliver your notifications by email or SMS. Configure at least one provider and tick it inside each notification template.
     messages_provider_disabled: Disabled
-    messages_provider_outgoing: Outgoing
-    messages_provider_incoming_outgoing: Incoming and outgoing
+    messages_provider_outgoing: "僅傳送"
+    messages_provider_incoming_outgoing: "傳送和接收"
     messages_provider_email_info: Send notifications by email through the server or SMTP, and receive replies through the server or IMAP.
     messages_provider_twilio_info: Send and receive SMS with a Twilio account and phone number.
     messages_provider_plivo_info: Send and receive SMS with a Plivo account and phone number.
     messages_provider_textanywhere_info: Send and receive SMS with a TextAnywhere account.
-    messages_incoming: Incoming
-    messages_incoming_hint: Customer can reply to support incoming messages as well as outgoing ones.
+    messages_incoming: "接收回覆"
+    messages_incoming_hint: "顧客可以回覆您傳送的訊息。"
     messages_test_sms_sent: "測試簡訊已傳送,請檢查手機。"
     messages_test_sms_number: "測試電話號碼"
     messages_test_sms: "傳送測試簡訊"
     messages_smsgateway_invalid: "無法驗證閘道設定:"
-    messages_smsgateway_inbound_hint: "手機會將傳入訊息傳送到此位址,儲存時若開啟接收會自動完成註冊。"
-    messages_smsgateway_step_activate: "勾選啟用與接收傳入訊息,然後儲存。系統會測試設定;修正錯誤後用下方的傳送測試簡訊按鈕測試傳送。"
+    messages_smsgateway_inbound_hint: "手機會將收到的訊息傳送到此地址，開啟接收後儲存時會自動完成註冊。"
+    messages_smsgateway_step_activate: "勾選 Active 和接收回覆，然後按儲存。系統會測試設定，請修正任何錯誤，並使用下方的傳送測試簡訊按鈕測試傳送。"
     messages_smsgateway_step_credentials: "在主畫面關閉 Local server、開啟 Cloud server 並按 Offline 按鈕連線(同時勾選 Start on boot),然後將主畫面顯示的使用者名稱與密碼複製到下方的使用者名稱與密碼。"
     messages_smsgateway_step_signing: "前往應用程式的 Settings -> Webhooks -> Signing Key -> 輸入簽章金鑰,再複製到下方的 Webhook 簽章金鑰。"
     messages_smsgateway_step_token: "若使用私有伺服器,也要在同一設定畫面輸入 Private Token - 權杖位於閘道伺服器的 /app/data/private_token。"
@@ -733,14 +732,14 @@ zh-tw:
     messages_smsgateway_password: "密碼"
     messages_smsgateway_signing_key: "Webhook 簽章金鑰"
     messages_provider_smsgateway_info: "透過執行 SMS Gateway 應用程式的 Android 手機與自有伺服器收發簡訊,無每則費用。"
-    messages_email_outgoing: Outgoing email
+    messages_email_outgoing: "傳送電子郵件"
     messages_email_mode: Sending method
     messages_email_mode_server: Send email through server
     messages_email_mode_smtp: Send email with SMTP
     messages_smtp_host: SMTP host
     messages_smtp_port: SMTP port
     messages_smtp_tls: Use TLS
-    messages_email_incoming_section: Incoming email
+    messages_email_incoming_section: "接收電子郵件"
     messages_email_incoming_mode: Receiving method
     messages_email_incoming_server: Receive email through server
     messages_email_incoming_imap: Receive email with IMAP
@@ -749,8 +748,8 @@ zh-tw:
     messages_imap_port: IMAP port
     messages_email_credentials_hint: "Need an email delivery service? Get SMTP credentials from"
     messages_sms_credentials_hint: "Get your credentials from the provider console:"
-    messages_inbound_webhook: Incoming webhook URL
-    messages_inbound_webhook_hint: Paste this URL into the provider console so incoming messages reach the app. Keep it secret.
+    messages_inbound_webhook: "接收訊息的 Webhook URL"
+    messages_inbound_webhook_hint: "將此 URL 貼到供應商的控制台，讓收到的訊息能送達應用程式。請保密。"
     messages_twilio_account_sid: Account SID
     messages_twilio_auth_token: Auth token
     messages_from_number: From phone number
@@ -783,8 +782,8 @@ zh-tw:
     open_all_notification_templates: Open all notification templates
     close_all_notification_templates: Close all notification templates
     messages_address: Address
-    messages_incoming_label: Incoming
-    messages_outgoing_label: Outgoing
+    messages_incoming_label: "已接收"
+    messages_outgoing_label: "已傳送"
     messages_manual_label: Manual
     messages_unknown_sender: Unknown sender
     messages_status_sent: Sent
@@ -889,7 +888,7 @@ zh-tw:
     filter_statuses_hint: 'Choose which appointment statuses to show.'
     appointment_statuses: 'Appointment Statuses'
     inbox: 'Inbox'
-    inbox_hint: 'Incoming messages from your customers.'
+    inbox_hint: "從顧客收到的訊息。"
     read: 'Read'
     message: 'Message'
     mark_as_read: 'Mark as read'
@@ -961,7 +960,7 @@ zh-tw:
     time_off_hint: "若只請一天中的部分時間假，請輸入您不在的時間。這些時間會以休息時間的形式儲存在那些日期上。"
     messages_sms_variation: "每則簡訊皆不同"
     messages_sms_variation_hint: "在每則簡訊末尾加上一組簡短的參考代碼，讓任兩則簡訊都不相同，這是部分電信網路的要求。"
-    provider_color_hint: "當日曆顯示所有人時，用於此提供者的預約。"
+    provider_color_hint: "此提供者的預約在日曆上的背景色。服務顏色會顯示在邊緣"
     working_providers: "當班提供者"
     hidden_from_public: "已從公開頁面隱藏"
     slot_interval_hint: "向顧客提供開始時間的頻率。設為 15 時，45 分鐘的服務可在 9:00、9:15、9:30 等時間開始；設為 60 時，則在 9:00、10:00、11:00 開始。這不會在預約後保留空檔：如需空檔，請延長服務時長。"
@@ -978,8 +977,25 @@ zh-tw:
     message_move_to: "移至 {name}"
     message_moved: "訊息已移動"
     notification_tokens_hint: "可使用的範本欄位。點擊即可插入到您輸入的位置，或用來複製："
-    inbox_info: "收件訊息。Inbox 列出待處理的訊息 - 每則訊息處理或閱讀完畢後請標記為已完成；仍可在顧客頁面或封存中查看。封存列出已標記為已完成的訊息 - 其中有復原按鈕可將訊息退回 Inbox。"
+    inbox_info: "收到的訊息。收件匣列出需要處理的訊息，處理或讀過後請將每則標記為完成，您仍可在顧客頁面或封存中閱讀。封存列出已標記為完成的訊息，並有復原按鈕可將其移回收件匣。"
     booking_release_time: "開放時間"
     booking_release_time_hint: "未來預約限制末端的隔天，每天會在此時間開放預約。"
     inbox_filter_archive: "封存"
     load_more_messages: "載入更多訊息"
+    clear_providers: "清除提供者"
+    clear_services: "清除服務"
+    refresh: "重新整理"
+    sync: "同步"
+    feed: "動態來源"
+    do_not_contact_hint: "不會向此顧客傳送預約確認、變更或提醒"
+    do_not_contact_warning: "此顧客已要求不要聯絡。從這裡傳送的訊息仍會送達。"
+    company_address: "公司地址"
+    company_address_hint: "這將是所有預約和日曆邀請的預設地點"
+    cancel_reason_optional: "取消預約的原因（選填），若您想讓我們知道："
+    late_cancel_reason: "取消預約的原因："
+    appointments_include_locations: "預約包含地點"
+    appointments_include_locations_hint: "允許提供者、助理或管理員設定預約的地點。關閉時，地點一律為公司地址。"
+    appointments_include_meeting_links: "預約包含會議連結"
+    appointments_include_meeting_links_hint: "允許提供者、助理或管理員為預約新增線上會議連結。該連結會包含在顧客的日曆邀請中。"
+    booking_provider_first_hint: "在預約頁面中，先向顧客顯示提供者，再讓其選擇服務。"
+    display_order_switch_hint: "允許顧客使用預約頁面第一步的按鈕，選擇先選服務或先選提供者，再選另一項。"

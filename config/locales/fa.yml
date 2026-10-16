@@ -116,9 +116,9 @@ fa:
     appointment_confirmation: تایید ملاقات
     confirm: تایید
     update: به روز رسانی
-    cancel_appointment_hint: برای حذف قرار ملاقات از برنامه شرکت، دکمه لغو را بفشارید
+    cancel_appointment_hint: "برای لغو قرار، دکمه «لغو» را فشار دهید"
     cancel: لغو
-    appointment_registered: قرار ملاقات شما با موفقیت ثبت گردید
+    appointment_registered: "همه‌چیز آماده است!"
     cancel_appointment_title: لغو قرار ملاقات
     appointment_cancelled: قرار ملاقات شما با موفقیت لغو گردید
     appointment_cancelled_title: لغو ملاقات
@@ -167,7 +167,6 @@ fa:
     all_day: کل روز
     manage_appointment_record_hint: مدیریت کل قرارهای ارئه دهندگان و خدمات در دسترس
     select_filter_item_hint: یک ارائه دهنده یا خدمت انتخاب کنید و قرارهای مرتبط را روی تقویم ببینید
-    enable_appointment_sync_hint: فعال کردن همگام سازی قرارها بر روی تقویم ارائه دهنده
     manage_customers_hint: مدیریت کاربران ثبت شده و نوبت های آن ها
     manage_services_hint: مدیریت خدمات و دسته بندی های سیستم
     manage_users_hint: مدیریت کاربران (مدیران، دستیاران، ارائه دهندگان)
@@ -452,7 +451,7 @@ fa:
     company: شرکت
     remove: حذف
     login_button: دکمه ورود
-    display_login_button_hint: مشخص می‌کند که آیا دکمه ورود در صفحه رزرو نمایش داده می‌شود یا خیر.
+    display_login_button_hint: "مشخص می‌کند دکمه ورود کارکنان در صفحه رزرو نمایش داده شود یا نه."
     private: خصوصی
     private_hint: "رکوردهای خصوصی در صفحه رزرو عمومی نمایش داده نمی‌شوند، اما همچنان می‌توان آنها را از طریق لینک رزرو مستقیمشان رزرو کرد."
     reset: بازنشانی
@@ -652,7 +651,7 @@ fa:
     start_date: تاریخ شروع
     end_date: تاریخ پایان
     remember_me: اطلاعات من را به خاطر بسپار
-    remember_me_hint: اطلاعات خود را برای رزرو سریع‌تر در دفعه بعد ذخیره کنید.
+    remember_me_hint: "اطلاعات خود را برای رزرو سریع‌تر در دفعه بعد در این مرورگر ذخیره کنید."
     legal_notice: اطلاعیه حقوقی
     legal_notice_url: آدرس اطلاعیه حقوقی
     legal_notice_url_hint: آدرس صفحه اطلاعیه حقوقی خود را وارد کنید.
@@ -690,29 +689,29 @@ fa:
     messages_enabled_hint: "روشن یا خاموش کردن همه اعلان‌ها به صورت سراسری"
     messages_enabled_on: "روشن"
     messages_enabled_off: "خاموش - ایمیل‌های بازنشانی رمز عبور همچنان ارسال می‌شوند"
-    messages_enabled_debug: "اشکال‌زدایی - هدایت همه ایمیل‌ها و پیام‌های خروجی"
-    messages_intercept_hint: "تا زمانی که اشکال‌زدایی انتخاب شده باشد، هر ایمیل خروجی به این نشانی و هر پیامک به این شماره می‌رود."
+    messages_enabled_debug: "اشکال‌زدایی - هدایت همه ایمیل‌ها و پیام‌های ارسالی"
+    messages_intercept_hint: "تا زمانی که اشکال‌زدایی انتخاب شده باشد، هر ایمیل ارسالی به این نشانی و هر SMS به این شماره می‌رود."
     messages_intercept_required: "اشکال‌زدایی به یک نشانی ایمیل و شماره تلفن معتبر برای هدایت نیاز دارد."
     messages_retention_days: Delete messages older than (days)
     messages_retention_days_hint: Messages older than this many days are deleted automatically. Set 0 to keep all messages.
-    messages_email_subject: Outgoing Email Subject Line
+    messages_email_subject: "موضوع ایمیل"
     messages_email_subject_hint: Used for emails without their own Short Text, and for messages sent from the customer page.
     messages_providers_info: Notification providers deliver your notifications by email or SMS. Configure at least one provider and tick it inside each notification template.
     messages_provider_disabled: Disabled
-    messages_provider_outgoing: Outgoing
-    messages_provider_incoming_outgoing: Incoming and outgoing
+    messages_provider_outgoing: "فقط ارسال"
+    messages_provider_incoming_outgoing: "ارسال و دریافت"
     messages_provider_email_info: Send notifications by email through the server or SMTP, and receive replies through the server or IMAP.
     messages_provider_twilio_info: Send and receive SMS with a Twilio account and phone number.
     messages_provider_plivo_info: Send and receive SMS with a Plivo account and phone number.
     messages_provider_textanywhere_info: Send and receive SMS with a TextAnywhere account.
-    messages_incoming: Incoming
-    messages_incoming_hint: Customer can reply to support incoming messages as well as outgoing ones.
+    messages_incoming: "دریافت پاسخ‌ها"
+    messages_incoming_hint: "مشتریان می‌توانند به پیام‌هایی که می‌فرستید پاسخ دهند."
     messages_test_sms_sent: "پیامک آزمایشی ارسال شد، تلفن را بررسی کنید."
     messages_test_sms_number: "شماره تلفن آزمایشی"
     messages_test_sms: "ارسال پیامک آزمایشی"
     messages_smsgateway_invalid: "تنظیمات دروازه تأیید نشد:"
-    messages_smsgateway_inbound_hint: "تلفن پیام‌های ورودی را به این نشانی تحویل می‌دهد؛ ثبت هنگام ذخیره با دریافت روشن به طور خودکار انجام می‌شود."
-    messages_smsgateway_step_activate: "فعال و دریافت پیام‌های ورودی را علامت بزنید و ذخیره کنید. تنظیمات آزمایش می‌شوند؛ خطاها را برطرف کنید و ارسال را با دکمه ارسال پیامک آزمایشی پایین بیازمایید."
+    messages_smsgateway_inbound_hint: "گوشی پیام‌های دریافتی را به این نشانی تحویل می‌دهد؛ ثبت‌نام هنگام ذخیره با روشن بودن دریافت، به‌طور خودکار انجام می‌شود."
+    messages_smsgateway_step_activate: "گزینه‌های فعال و دریافت پاسخ‌ها را علامت بزنید، سپس ذخیره کنید. تنظیمات آزمایش می‌شوند؛ خطاها را برطرف کنید و برای آزمایش ارسال از دکمه ارسال SMS آزمایشی در پایین استفاده کنید."
     messages_smsgateway_step_credentials: "در صفحه اصلی برنامه Local server را خاموش و Cloud server را روشن کنید و دکمه Offline را برای اتصال بزنید (Start on boot را هم علامت بزنید)، سپس نام کاربری و گذرواژه صفحه اصلی را در نام کاربری و گذرواژه پایین کپی کنید."
     messages_smsgateway_step_signing: "به Settings -> Webhooks -> Signing Key برنامه بروید -> یک کلید امضا وارد کنید و آن را در کلید امضای وب‌هوک پایین کپی کنید."
     messages_smsgateway_step_token: "اگر از سرور خصوصی استفاده می‌کنید Private Token را نیز در همان صفحه وارد کنید - توکن در /app/data/private_token روی سرور دروازه است."
@@ -733,14 +732,14 @@ fa:
     messages_smsgateway_password: "گذرواژه"
     messages_smsgateway_signing_key: "کلید امضای وب‌هوک"
     messages_provider_smsgateway_info: "پیامک‌ها را از طریق یک تلفن اندرویدی با برنامه SMS Gateway و سرور خودمان ارسال و دریافت می‌کند، بدون هزینه به ازای هر پیام."
-    messages_email_outgoing: Outgoing email
+    messages_email_outgoing: "ارسال ایمیل"
     messages_email_mode: Sending method
     messages_email_mode_server: Send email through server
     messages_email_mode_smtp: Send email with SMTP
     messages_smtp_host: SMTP host
     messages_smtp_port: SMTP port
     messages_smtp_tls: Use TLS
-    messages_email_incoming_section: Incoming email
+    messages_email_incoming_section: "دریافت ایمیل"
     messages_email_incoming_mode: Receiving method
     messages_email_incoming_server: Receive email through server
     messages_email_incoming_imap: Receive email with IMAP
@@ -749,8 +748,8 @@ fa:
     messages_imap_port: IMAP port
     messages_email_credentials_hint: "Need an email delivery service? Get SMTP credentials from"
     messages_sms_credentials_hint: "Get your credentials from the provider console:"
-    messages_inbound_webhook: Incoming webhook URL
-    messages_inbound_webhook_hint: Paste this URL into the provider console so incoming messages reach the app. Keep it secret.
+    messages_inbound_webhook: "نشانی وب‌هوک برای پیام‌های دریافتی"
+    messages_inbound_webhook_hint: "این نشانی را در کنسول ارائه دهنده جای‌گذاری کنید تا پیام‌های دریافتی به برنامه برسند. آن را محرمانه نگه دارید."
     messages_twilio_account_sid: Account SID
     messages_twilio_auth_token: Auth token
     messages_from_number: From phone number
@@ -783,8 +782,8 @@ fa:
     open_all_notification_templates: Open all notification templates
     close_all_notification_templates: Close all notification templates
     messages_address: Address
-    messages_incoming_label: Incoming
-    messages_outgoing_label: Outgoing
+    messages_incoming_label: "دریافتی"
+    messages_outgoing_label: "ارسالی"
     messages_manual_label: Manual
     messages_unknown_sender: Unknown sender
     messages_status_sent: Sent
@@ -889,7 +888,7 @@ fa:
     filter_statuses_hint: 'Choose which appointment statuses to show.'
     appointment_statuses: 'Appointment Statuses'
     inbox: 'Inbox'
-    inbox_hint: 'Incoming messages from your customers.'
+    inbox_hint: "پیام‌های دریافتی از مشتریان شما."
     read: 'Read'
     message: 'Message'
     mark_as_read: 'Mark as read'
@@ -961,7 +960,7 @@ fa:
     time_off_hint: "برای بخشی از یک روز مرخصی، ساعاتی که غایب هستید را وارد کنید. آن‌ها به‌صورت وقفه در آن تاریخ‌ها ذخیره می‌شوند."
     messages_sms_variation: "تغییر هر پیامک"
     messages_sms_variation_hint: "یک کد مرجع کوتاه به انتهای هر پیامک اضافه می‌کند تا هیچ دو پیامکی یکسان نباشند، که برخی شبکه‌ها آن را الزامی می‌دانند."
-    provider_color_hint: "برای قرارهای این ارائه دهنده هنگامی که تقویم همه را نمایش می‌دهد استفاده می‌شود."
+    provider_color_hint: "رنگ پس‌زمینه قرارهای این ارائه دهنده در تقویم. رنگ خدمت در لبه نمایش داده می‌شود"
     working_providers: "ارائه دهندگان مشغول به کار"
     hidden_from_public: "پنهان از عموم"
     slot_interval_hint: "هر چند وقت یک‌بار زمان‌های شروع به مشتریان پیشنهاد می‌شود. با 15، یک خدمت 45 دقیقه‌ای می‌تواند در 9:00، 9:15، 9:30 و غیره شروع شود؛ با 60، در 9:00، 10:00، 11:00. این تنظیم پس از نوبت زمانی را آزاد نگه نمی‌دارد: برای این کار، مدت زمان خدمت را طولانی‌تر کنید."
@@ -978,8 +977,25 @@ fa:
     message_move_to: "انتقال به {name}"
     message_moved: "پیام منتقل شد"
     notification_tokens_hint: "فیلدهای قالب که می‌توانید استفاده کنید. برای درج در محل نوشتن یا کپی کردن، روی یکی کلیک کنید:"
-    inbox_info: "پیام‌های دریافتی. Inbox پیام‌هایی را نشان می‌دهد که باید به آن‌ها رسیدگی شود، پس از رسیدگی یا خواندن هر پیام آن را انجام شد علامت بزنید - همچنان می‌توانید آن‌ها را در صفحه مشتری یا در بایگانی بخوانید. بایگانی پیام‌هایی را نشان می‌دهد که انجام شد علامت خورده‌اند - دکمه بازگشت در آن، پیام‌ها را به Inbox برمی‌گرداند."
+    inbox_info: "پیام‌های دریافتی. صندوق ورودی پیام‌هایی را فهرست می‌کند که باید به آن‌ها رسیدگی شود؛ هر پیام را پس از رسیدگی یا خواندن انجام‌شده علامت بزنید - همچنان می‌توانید آن‌ها را در صفحه مشتری یا در بایگانی بخوانید. بایگانی پیام‌های انجام‌شده را فهرست می‌کند و دکمه واگرد برای بازگرداندن آن‌ها به صندوق ورودی دارد."
     booking_release_time: "زمان باز شدن"
     booking_release_time_hint: "روز بعد در پایان محدودیت رزرو آینده هر روز در این زمان باز می‌شود."
     inbox_filter_archive: "بایگانی"
     load_more_messages: "بارگذاری پیام‌های بیشتر"
+    clear_providers: "پاک کردن ارائه دهندگان"
+    clear_services: "پاک کردن خدمات"
+    refresh: "تازه‌سازی"
+    sync: "همگام‌سازی"
+    feed: "فید"
+    do_not_contact_hint: "هیچ تأیید رزرو، تغییر یا یادآوری برای این مشتری ارسال نمی‌شود"
+    do_not_contact_warning: "این مشتری درخواست کرده است با او تماس گرفته نشود. پیام‌هایی که از اینجا ارسال شوند همچنان تحویل داده می‌شوند."
+    company_address: "نشانی شرکت"
+    company_address_hint: "این نشانی، محل پیش‌فرض همه رزروها و دعوت‌نامه‌های تقویم خواهد بود"
+    cancel_reason_optional: "دلیل اختیاری لغو قرار، اگر می‌خواهید به ما اطلاع دهید:"
+    late_cancel_reason: "دلیل لغو قرار:"
+    appointments_include_locations: "قرارها شامل محل باشند"
+    appointments_include_locations_hint: "به آرایشگر، دستیار یا مدیر اجازه می‌دهد محل قرار را تعیین کند. وقتی این گزینه خاموش باشد، محل همیشه نشانی شرکت خواهد بود."
+    appointments_include_meeting_links: "قرارها شامل پیوند جلسه باشند"
+    appointments_include_meeting_links_hint: "به آرایشگر، دستیار یا مدیر اجازه می‌دهد پیوند یک جلسه آنلاین را به قرار اضافه کند. این پیوند در دعوت‌نامه تقویم مشتری قرار می‌گیرد."
+    booking_provider_first_hint: "در صفحه رزرو، آرایشگرها پیش از انتخاب خدمت به مشتری نشان داده می‌شوند."
+    display_order_switch_hint: "به مشتریان اجازه می‌دهد در مرحله اول صفحه رزرو با یک دکمه انتخاب کنند که ابتدا خدمت را برگزینند یا ابتدا آرایشگر را، و سپس مورد دیگر را انتخاب کنند."

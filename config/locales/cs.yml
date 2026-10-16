@@ -116,9 +116,9 @@ cs:
     appointment_confirmation: Rezervace schůzky
     confirm: Potvrdit
     update: Změnit
-    cancel_appointment_hint: Pro odebrání schůzky z kalendáře společnosti klikněte na tlačítko "Zrušit".
+    cancel_appointment_hint: "Pro zrušení schůzky klikněte na tlačítko \"Zrušit\""
     cancel: Zrušit
-    appointment_registered: Vaše schůzka byla úspěšně registrována.
+    appointment_registered: "Je hotovo!"
     cancel_appointment_title: Zrušit schůzku
     appointment_cancelled: Vaše schůzka byla úspěšně zrušena.
     appointment_cancelled_title: Schůzka zrušena
@@ -167,7 +167,6 @@ cs:
     all_day: Celodenní
     manage_appointment_record_hint: Správa záznamů všech schůzek dostupných poskytovatelů a služeb.
     select_filter_item_hint: Výběr poskytovatele nebo služby a zobrazení schůzek v kalendáři.
-    enable_appointment_sync_hint: Povolit synchronizaci schůzek s účtem Kalendáře Google poskytovatele.
     manage_customers_hint: Správa registrovaných zákazníků a zobrazení historie jejich rezervací.
     manage_services_hint: Správa dostupných služeb a kategorií.
     manage_users_hint: Správa interních uživatelů (administrátoři, poskytovatelé, asistenty).
@@ -452,7 +451,7 @@ cs:
     company: Společnost
     remove: Odstranit
     login_button: Přihlašovací tlačítko
-    display_login_button_hint: Definuje, zda se bude na rezervační stránce zobrazovat přihlašovací tlačítko.
+    display_login_button_hint: "Definuje, zda se bude na rezervační stránce zobrazovat přihlašovací tlačítko pro personál."
     private: Soukromé
     private_hint: "Soukromé záznamy se nezobrazují na veřejné rezervační stránce, ale lze je stále rezervovat prostřednictvím jejich přímého rezervačního odkazu."
     reset: Resetovat
@@ -652,7 +651,7 @@ cs:
     start_date: Datum začátku
     end_date: Datum konce
     remember_me: Zapamatovat si mé údaje
-    remember_me_hint: Uložit vaše údaje pro rychlejší rezervaci příště.
+    remember_me_hint: "Uložit vaše údaje v tomto prohlížeči pro rychlejší rezervaci příště."
     legal_notice: Právní upozornění
     legal_notice_url: URL právního upozornění
     legal_notice_url_hint: Zadejte URL stránky s právním upozorněním.
@@ -695,24 +694,24 @@ cs:
     messages_intercept_required: "Ladění vyžaduje platnou e-mailovou adresu a telefonní číslo pro přesměrování."
     messages_retention_days: Delete messages older than (days)
     messages_retention_days_hint: Messages older than this many days are deleted automatically. Set 0 to keep all messages.
-    messages_email_subject: Outgoing Email Subject Line
+    messages_email_subject: "Předmět e-mailu"
     messages_email_subject_hint: Used for emails without their own Short Text, and for messages sent from the customer page.
     messages_providers_info: Notification providers deliver your notifications by email or SMS. Configure at least one provider and tick it inside each notification template.
     messages_provider_disabled: Disabled
-    messages_provider_outgoing: Outgoing
-    messages_provider_incoming_outgoing: Incoming and outgoing
+    messages_provider_outgoing: "Pouze odesílání"
+    messages_provider_incoming_outgoing: "Odesílání a příjem"
     messages_provider_email_info: Send notifications by email through the server or SMTP, and receive replies through the server or IMAP.
     messages_provider_twilio_info: Send and receive SMS with a Twilio account and phone number.
     messages_provider_plivo_info: Send and receive SMS with a Plivo account and phone number.
     messages_provider_textanywhere_info: Send and receive SMS with a TextAnywhere account.
-    messages_incoming: Incoming
-    messages_incoming_hint: Customer can reply to support incoming messages as well as outgoing ones.
+    messages_incoming: "Přijímat odpovědi"
+    messages_incoming_hint: "Zákazníci mohou odpovídat na zprávy, které odesíláte."
     messages_test_sms_sent: "Testovací SMS odeslána, zkontrolujte telefon."
     messages_test_sms_number: "Testovací telefonní číslo"
     messages_test_sms: "Odeslat testovací SMS"
     messages_smsgateway_invalid: "Nastavení brány se nepodařilo ověřit:"
-    messages_smsgateway_inbound_hint: "Telefon doručuje příchozí zprávy na tuto adresu, registrace proběhne automaticky při uložení se zapnutým příjmem."
-    messages_smsgateway_step_activate: "Zaškrtněte Aktivní a Přijímat příchozí zprávy a uložte. Nastavení se otestuje, opravte chyby a použijte tlačítko Odeslat testovací SMS níže."
+    messages_smsgateway_inbound_hint: "Telefon doručuje přijaté zprávy na tuto adresu, registrace proběhne automaticky při uložení se zapnutým příjmem."
+    messages_smsgateway_step_activate: "Zaškrtněte Aktivní a Přijímat odpovědi a uložte. Nastavení se otestuje, opravte chyby a pro test odesílání použijte tlačítko Odeslat testovací SMS níže."
     messages_smsgateway_step_credentials: "Na úvodní obrazovce vypněte Local server, zapněte Cloud server a klepněte na tlačítko Offline pro připojení (zaškrtněte i Start on boot), poté zkopírujte uživatelské jméno a heslo z úvodní obrazovky do polí Uživatelské jméno a Heslo níže."
     messages_smsgateway_step_signing: "V aplikaci přejděte na Settings -> Webhooks -> Signing Key -> zadejte podpisový klíč a zkopírujte jej do Podpisového klíče webhooků níže."
     messages_smsgateway_step_token: "Používáte-li privátní server, zadejte na této obrazovce i Private Token - token je v /app/data/private_token na serveru brány."
@@ -733,14 +732,14 @@ cs:
     messages_smsgateway_password: "Heslo"
     messages_smsgateway_signing_key: "Podpisový klíč webhooků"
     messages_provider_smsgateway_info: "Odesílá a přijímá SMS přes telefon Android s aplikací SMS Gateway a vlastním serverem, bez poplatků za zprávu."
-    messages_email_outgoing: Outgoing email
+    messages_email_outgoing: "Odesílat e-maily"
     messages_email_mode: Sending method
     messages_email_mode_server: Send email through server
     messages_email_mode_smtp: Send email with SMTP
     messages_smtp_host: SMTP host
     messages_smtp_port: SMTP port
     messages_smtp_tls: Use TLS
-    messages_email_incoming_section: Incoming email
+    messages_email_incoming_section: "Přijímat e-maily"
     messages_email_incoming_mode: Receiving method
     messages_email_incoming_server: Receive email through server
     messages_email_incoming_imap: Receive email with IMAP
@@ -749,8 +748,8 @@ cs:
     messages_imap_port: IMAP port
     messages_email_credentials_hint: "Need an email delivery service? Get SMTP credentials from"
     messages_sms_credentials_hint: "Get your credentials from the provider console:"
-    messages_inbound_webhook: Incoming webhook URL
-    messages_inbound_webhook_hint: Paste this URL into the provider console so incoming messages reach the app. Keep it secret.
+    messages_inbound_webhook: "Webhook URL pro přijaté zprávy"
+    messages_inbound_webhook_hint: "Vložte tuto URL do konzole poskytovatele, aby se přijaté zprávy dostaly do aplikace. Udržujte ji v tajnosti."
     messages_twilio_account_sid: Account SID
     messages_twilio_auth_token: Auth token
     messages_from_number: From phone number
@@ -783,8 +782,8 @@ cs:
     open_all_notification_templates: Open all notification templates
     close_all_notification_templates: Close all notification templates
     messages_address: Address
-    messages_incoming_label: Incoming
-    messages_outgoing_label: Outgoing
+    messages_incoming_label: "Přijaté"
+    messages_outgoing_label: "Odeslané"
     messages_manual_label: Manual
     messages_unknown_sender: Unknown sender
     messages_status_sent: Sent
@@ -889,7 +888,7 @@ cs:
     filter_statuses_hint: 'Choose which appointment statuses to show.'
     appointment_statuses: 'Appointment Statuses'
     inbox: 'Inbox'
-    inbox_hint: 'Incoming messages from your customers.'
+    inbox_hint: "Zprávy přijaté od vašich zákazníků."
     read: 'Read'
     message: 'Message'
     mark_as_read: 'Mark as read'
@@ -961,7 +960,7 @@ cs:
     time_off_hint: "Pokud jde o část dne volna, zadejte hodiny, kdy jste pryč. Uloží se jako přestávka v těchto dnech."
     messages_sms_variation: "Obměňovat každou SMS"
     messages_sms_variation_hint: "Na konec každé SMS přidá krátký referenční kód, aby žádné dvě zprávy nebyly stejné, což někteří operátoři vyžadují."
-    provider_color_hint: "Používá se pro schůzky tohoto poskytovatele, když kalendář zobrazuje všechny."
+    provider_color_hint: "Pozadí schůzek tohoto poskytovatele v kalendáři. Barva služby se zobrazuje na okraji"
     working_providers: "Pracující poskytovatelé"
     hidden_from_public: "Skryto před veřejností"
     slot_interval_hint: "Jak často se zákazníkům nabízejí časy začátku. Při 15 může 45minutová služba začít v 9:00, 9:15, 9:30 a tak dále; při 60 v 9:00, 10:00, 11:00. Po schůzce neponechává volný čas: k tomu prodlužte trvání služby."
@@ -978,8 +977,25 @@ cs:
     message_move_to: "Přesunout do {name}"
     message_moved: "Zpráva přesunuta"
     notification_tokens_hint: "Pole šablony, která můžete použít. Kliknutím na jedno ho vložíte tam, kde jste psali, nebo ho zkopírujete:"
-    inbox_info: "Příchozí zprávy. Inbox zobrazuje zprávy k vyřízení, po vyřízení nebo přečtení označte každou jako Hotovo - stále si je můžete přečíst na stránce zákazníka nebo v archivu. Archiv zobrazuje zprávy označené jako Hotovo - má tlačítko Zpět, které je vrátí do Inboxu."
+    inbox_info: "Přijaté zprávy. Inbox zobrazuje zprávy, které je třeba vyřídit, každou označte jako hotovou, jakmile je vyřízena nebo přečtena - stále je můžete číst na stránce zákazníka nebo v archivu. Archiv zobrazuje zprávy označené jako hotové - má tlačítko zpět, které je vrátí do Inboxu."
     booking_release_time: "Čas otevření"
     booking_release_time_hint: "Další den na konci omezení rezervací v budoucnosti se otevírá v tuto dobu každý den."
     inbox_filter_archive: "Archiv"
     load_more_messages: "Načíst další zprávy"
+    clear_providers: "Vymazat poskytovatele"
+    clear_services: "Vymazat služby"
+    refresh: "Obnovit"
+    sync: "Synchronizovat"
+    feed: "Feed"
+    do_not_contact_hint: "Tomuto zákazníkovi se neodesílají potvrzení rezervací, změny ani připomínky"
+    do_not_contact_warning: "Tento zákazník požádal, aby nebyl kontaktován. Zprávy odeslané zde se přesto doručí."
+    company_address: "Adresa společnosti"
+    company_address_hint: "Toto bude výchozí místo pro všechny rezervace a pozvánky do kalendáře"
+    cancel_reason_optional: "Nepovinný důvod zrušení schůzky, pokud nám jej chcete sdělit:"
+    late_cancel_reason: "Důvod zrušení schůzky:"
+    appointments_include_locations: "Schůzky obsahují místa"
+    appointments_include_locations_hint: "Umožňuje kadeřníkovi, asistentovi nebo správci nastavit místo schůzky. Když je vypnuto, místem bude vždy adresa společnosti."
+    appointments_include_meeting_links: "Schůzky obsahují odkazy na online schůzku"
+    appointments_include_meeting_links_hint: "Umožňuje kadeřníkovi, asistentovi nebo správci přidat ke schůzce odkaz na online schůzku. Odkaz bude součástí pozvánky do kalendáře zákazníka."
+    booking_provider_first_hint: "Na rezervační stránce zobrazit zákazníkovi kadeřníky dříve, než vybere službu."
+    display_order_switch_hint: "Umožnit zákazníkům použít v prvním kroku rezervační stránky tlačítko, kterým si vyberou nejprve službu nebo nejprve kadeřníka, a teprve poté druhou možnost."

@@ -116,9 +116,9 @@ da:
     appointment_confirmation: Bekræft aftale
     confirm: Bekræft
     update: Opdater
-    cancel_appointment_hint: Tryk "annuller" for at aflyse aftalen
+    cancel_appointment_hint: "Tryk på knappen \"Annuller\" for at annullere aftalen"
     cancel: Annuller
-    appointment_registered: Din tidbestilling er registret
+    appointment_registered: "Så er du klar!"
     cancel_appointment_title: Slet tid
     appointment_cancelled: Din tid er nu slettet
     appointment_cancelled_title: Tiden er slettet
@@ -167,7 +167,6 @@ da:
     all_day: Hele dagen
     manage_appointment_record_hint: Administrer alle tidsbestillings på de tilgængelige leverandører og tjenester.
     select_filter_item_hint: Vælg en leverandør eller service og se aftalen i kalenderen.
-    enable_appointment_sync_hint: Aktivere aftalen og synkroniser den med leverandørens Google kalender konto.
     manage_customers_hint: Behandle de registrede kunder og se deres bookings historie.
     manage_services_hint: Administrer de tilgængelige tjenester og kategorier fra systemet.
     manage_users_hint: Administrere den tilbagevende bruger (admin, leverandører, assistenter)
@@ -452,7 +451,7 @@ da:
     company: Firma
     remove: Fjern
     login_button: Login-knap
-    display_login_button_hint: Definerer, om login-knappen vises på booking-siden.
+    display_login_button_hint: "Bestemmer om personalets loginknap vises på bookingsiden."
     private: Privat
     private_hint: "Private poster vises ikke på den offentlige bookingside, men kan stadig bookes via deres direkte bookinglink."
     reset: Nulstil
@@ -652,7 +651,7 @@ da:
     start_date: Startdato
     end_date: Slutdato
     remember_me: Husk mine oplysninger
-    remember_me_hint: Gem dine oplysninger for hurtigere booking næste gang.
+    remember_me_hint: "Gem dine oplysninger i denne browser, så det går hurtigere næste gang du booker."
     legal_notice: Juridisk meddelelse
     legal_notice_url: URL til juridisk meddelelse
     legal_notice_url_hint: Indtast URL'en til din side med juridisk meddelelse.
@@ -695,24 +694,24 @@ da:
     messages_intercept_required: "Fejlsøgning kræver en gyldig e-mailadresse og et gyldigt telefonnummer at omdirigere til."
     messages_retention_days: Delete messages older than (days)
     messages_retention_days_hint: Messages older than this many days are deleted automatically. Set 0 to keep all messages.
-    messages_email_subject: Outgoing Email Subject Line
+    messages_email_subject: "Emnelinje i e-mail"
     messages_email_subject_hint: Used for emails without their own Short Text, and for messages sent from the customer page.
     messages_providers_info: Notification providers deliver your notifications by email or SMS. Configure at least one provider and tick it inside each notification template.
     messages_provider_disabled: Disabled
-    messages_provider_outgoing: Outgoing
-    messages_provider_incoming_outgoing: Incoming and outgoing
+    messages_provider_outgoing: "Kun afsendelse"
+    messages_provider_incoming_outgoing: "Afsendelse og modtagelse"
     messages_provider_email_info: Send notifications by email through the server or SMTP, and receive replies through the server or IMAP.
     messages_provider_twilio_info: Send and receive SMS with a Twilio account and phone number.
     messages_provider_plivo_info: Send and receive SMS with a Plivo account and phone number.
     messages_provider_textanywhere_info: Send and receive SMS with a TextAnywhere account.
-    messages_incoming: Incoming
-    messages_incoming_hint: Customer can reply to support incoming messages as well as outgoing ones.
+    messages_incoming: "Modtag svar"
+    messages_incoming_hint: "Kunder kan svare på de beskeder, du sender."
     messages_test_sms_sent: "Test-SMS sendt, tjek telefonen."
     messages_test_sms_number: "Testtelefonnummer"
     messages_test_sms: "Send test-SMS"
     messages_smsgateway_invalid: "Gateway-indstillingerne kunne ikke valideres:"
-    messages_smsgateway_inbound_hint: "Telefonen leverer indgaaende beskeder til denne adresse, registreringen sker automatisk ved gem med modtagelse slaaet til."
-    messages_smsgateway_step_activate: "Saet flueben i Aktiv og Modtag indgaaende beskeder og gem. Indstillingerne testes, ret eventuelle fejl og brug knappen Send test-SMS nedenfor."
+    messages_smsgateway_inbound_hint: "Telefonen leverer modtagne beskeder til denne adresse, registreringen sker automatisk ved gem med modtagelse slået til."
+    messages_smsgateway_step_activate: "Sæt kryds ved Active og Modtag svar, og tryk derefter Save. Indstillingerne testes, ret eventuelle fejl og brug knappen Send test-SMS nedenfor til at teste afsendelse."
     messages_smsgateway_step_credentials: "Paa appens startskaerm: slaa Local server fra, slaa Cloud server til og tryk paa Offline-knappen for at forbinde (saet ogsaa flueben i Start on boot), kopier saa brugernavn og adgangskode fra startskaermen til Brugernavn og Adgangskode nedenfor."
     messages_smsgateway_step_signing: "Gaa til appens Settings -> Webhooks -> Signing Key -> indtast en signaturnoegle og kopier den til Webhook-signaturnoeglen nedenfor."
     messages_smsgateway_step_token: "Bruger du en privat server, skal du ogsaa indtaste Private Token paa samme skaerm - tokenet ligger i /app/data/private_token paa gateway-serveren."
@@ -733,14 +732,14 @@ da:
     messages_smsgateway_password: "Adgangskode"
     messages_smsgateway_signing_key: "Webhook-signaturnoegle"
     messages_provider_smsgateway_info: "Sender og modtager SMS via en Android-telefon med SMS Gateway-appen mod vores egen server, ingen omkostning pr. besked."
-    messages_email_outgoing: Outgoing email
+    messages_email_outgoing: "Send e-mail"
     messages_email_mode: Sending method
     messages_email_mode_server: Send email through server
     messages_email_mode_smtp: Send email with SMTP
     messages_smtp_host: SMTP host
     messages_smtp_port: SMTP port
     messages_smtp_tls: Use TLS
-    messages_email_incoming_section: Incoming email
+    messages_email_incoming_section: "Modtag e-mail"
     messages_email_incoming_mode: Receiving method
     messages_email_incoming_server: Receive email through server
     messages_email_incoming_imap: Receive email with IMAP
@@ -749,8 +748,8 @@ da:
     messages_imap_port: IMAP port
     messages_email_credentials_hint: "Need an email delivery service? Get SMTP credentials from"
     messages_sms_credentials_hint: "Get your credentials from the provider console:"
-    messages_inbound_webhook: Incoming webhook URL
-    messages_inbound_webhook_hint: Paste this URL into the provider console so incoming messages reach the app. Keep it secret.
+    messages_inbound_webhook: "Webhook-URL til modtagne beskeder"
+    messages_inbound_webhook_hint: "Indsæt denne URL i udbyderens konsol, så modtagne beskeder når frem til appen. Hold den hemmelig."
     messages_twilio_account_sid: Account SID
     messages_twilio_auth_token: Auth token
     messages_from_number: From phone number
@@ -783,8 +782,8 @@ da:
     open_all_notification_templates: Open all notification templates
     close_all_notification_templates: Close all notification templates
     messages_address: Address
-    messages_incoming_label: Incoming
-    messages_outgoing_label: Outgoing
+    messages_incoming_label: "Modtaget"
+    messages_outgoing_label: "Sendt"
     messages_manual_label: Manual
     messages_unknown_sender: Unknown sender
     messages_status_sent: Sent
@@ -889,7 +888,7 @@ da:
     filter_statuses_hint: 'Choose which appointment statuses to show.'
     appointment_statuses: 'Appointment Statuses'
     inbox: 'Inbox'
-    inbox_hint: 'Incoming messages from your customers.'
+    inbox_hint: "Beskeder modtaget fra dine kunder."
     read: 'Read'
     message: 'Message'
     mark_as_read: 'Mark as read'
@@ -961,7 +960,7 @@ da:
     time_off_hint: "Ved fravær en del af en dag skal du angive de timer, hvor du er væk. De gemmes som en pause på de datoer."
     messages_sms_variation: "Variér hver SMS"
     messages_sms_variation_hint: "Tilføjer en kort referencekode til slutningen af hver SMS, så ingen to beskeder er ens, hvilket nogle netværk kræver."
-    provider_color_hint: "Bruges til denne leverandørs aftaler, når kalenderen viser alle."
+    provider_color_hint: "Baggrund for denne leverandørs aftaler i kalenderen. Tjenestens farve vises i kanten"
     working_providers: "Arbejdende Leverandører"
     hidden_from_public: "Skjult For Offentligheden"
     slot_interval_hint: "Hvor ofte starttider tilbydes kunderne. Med 15 kan en tjeneste på 45 minutter starte kl. 9:00, 9:15, 9:30 og så videre; med 60 kl. 9:00, 10:00, 11:00. Det holder ikke tid fri efter aftalen: gør i stedet tjenestens varighed længere."
@@ -978,8 +977,25 @@ da:
     message_move_to: "Flyt til {name}"
     message_moved: "Besked flyttet"
     notification_tokens_hint: "Skabelonfelter du kan bruge. Klik på et for at indsætte det, hvor du skrev, eller for at kopiere det:"
-    inbox_info: "Indkommende beskeder. Inbox viser beskeder, der skal håndteres, markér hver som Udført, når den er håndteret eller læst - du kan stadig læse dem på kundens side eller i arkivet. Arkiv viser beskeder, der er markeret som Udført - det har en Fortryd-knap, der sender dem tilbage til Inbox."
+    inbox_info: "Modtagne beskeder. Indbakken viser beskeder, der skal handles på. Markér hver enkelt som færdig, når den er behandlet eller læst - du kan stadig læse dem på kundens side eller i arkivet. Arkivet viser beskeder, der er markeret som færdige - det har en fortryd-knap, der sender dem tilbage til indbakken."
     booking_release_time: "Åbningstidspunkt"
     booking_release_time_hint: "Den næste dag i slutningen af den fremtidige bookinggrænse åbner på dette tidspunkt hver dag."
     inbox_filter_archive: "Arkiv"
     load_more_messages: "Indlæs flere beskeder"
+    clear_providers: "Ryd leverandører"
+    clear_services: "Ryd tjenester"
+    refresh: "Opdater"
+    sync: "Synkroniser"
+    feed: "Feed"
+    do_not_contact_hint: "Der sendes ingen bookingbekræftelser, ændringer eller påmindelser til denne kunde"
+    do_not_contact_warning: "Denne kunde har bedt om ikke at blive kontaktet. Beskeder, der sendes hertil, bliver stadig leveret."
+    company_address: "Firmaadresse"
+    company_address_hint: "Dette bliver standardstedet for alle bookinger og kalenderinvitationer"
+    cancel_reason_optional: "Valgfri grund til at annullere aftalen, hvis du vil fortælle os det:"
+    late_cancel_reason: "Grund til at annullere aftalen:"
+    appointments_include_locations: "Aftaler inkluderer steder"
+    appointments_include_locations_hint: "Lader en frisør, assistent eller administrator angive stedet for en aftale. Når dette er slået fra, er stedet altid firmaadressen."
+    appointments_include_meeting_links: "Aftaler inkluderer mødelinks"
+    appointments_include_meeting_links_hint: "Lader en frisør, assistent eller administrator tilføje et link til et onlinemøde til en aftale. Linket tages med i kundens kalenderinvitation."
+    booking_provider_first_hint: "Vis kunden frisører på bookingsiden, før de vælger en tjeneste."
+    display_order_switch_hint: "Lad kunder bruge en knap i første trin på bookingsiden, hvor de kan vælge tjeneste først eller frisør først, før de vælger den anden."

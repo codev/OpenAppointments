@@ -116,9 +116,9 @@ sv:
     appointment_confirmation: Bekräfta bokningen
     confirm: Bekräfta
     update: Uppdatera
-    cancel_appointment_hint: Tryck på "Avbryt" för att ta bort bokningen
+    cancel_appointment_hint: "Tryck på \"Avbryt\" för att avboka tiden"
     cancel: Avbryt
-    appointment_registered: Din bokning är sparad
+    appointment_registered: "Då är allt klart!"
     cancel_appointment_title: Avboka tid
     appointment_cancelled: Din tid är nu avbokad
     appointment_cancelled_title: Tiden är avbokad
@@ -167,7 +167,6 @@ sv:
     all_day: Hela dagen
     manage_appointment_record_hint: Hantera alla bokningar för tillgängliga tjänster och utförare
     select_filter_item_hint: Välj en tjänst eller utförare för att se bokningarna i kalendern
-    enable_appointment_sync_hint: Aktivera bokningarna och synka mot utförarens Google-kalender
     manage_customers_hint: Hantera kunder och se deras historik
     manage_services_hint: Hantera tillgängliga tjänster och kategorier
     manage_users_hint: Hantera systemanvändare (admin, utförare, assistenter)
@@ -452,7 +451,7 @@ sv:
     company: Företag
     remove: Ta bort
     login_button: Knapp för inloggning
-    display_login_button_hint: Välj om inloggningsknappen till admin-delen ska visas på bokningssidan.
+    display_login_button_hint: "Styr om inloggningsknappen för personal visas på bokningssidan."
     private: Privat innehåll
     private_hint: "Privata poster visas inte på den offentliga bokningssidan, men kan fortfarande bokas via deras direkta bokningslänk."
     reset: Återställ
@@ -652,7 +651,7 @@ sv:
     start_date: Startdatum
     end_date: Slutdatum
     remember_me: Kom ihåg mina uppgifter
-    remember_me_hint: Spara dina uppgifter för snabbare bokning nästa gång.
+    remember_me_hint: "Spara dina uppgifter i den här webbläsaren för snabbare bokning nästa gång."
     legal_notice: Juridiskt meddelande
     legal_notice_url: URL för juridiskt meddelande
     legal_notice_url_hint: Ange URL:en till din sida med juridiskt meddelande.
@@ -690,29 +689,29 @@ sv:
     messages_enabled_hint: "Slå på eller av alla aviseringar globalt"
     messages_enabled_on: "På"
     messages_enabled_off: "Av - e-post för lösenordsåterställning skickas fortfarande"
-    messages_enabled_debug: "Felsökning - omdirigera all utgående e-post och alla meddelanden"
-    messages_intercept_hint: "Medan Felsökning är valt går varje utgående e-post till den här adressen och varje sms till det här numret."
+    messages_enabled_debug: "Debug - omdirigera alla skickade e-postmeddelanden och meddelanden"
+    messages_intercept_hint: "Varje skickat e-postmeddelande går till den här adressen och varje SMS till det här numret så länge Debug är valt."
     messages_intercept_required: "Felsökning kräver en giltig e-postadress och ett giltigt telefonnummer att omdirigera till."
     messages_retention_days: Delete messages older than (days)
     messages_retention_days_hint: Messages older than this many days are deleted automatically. Set 0 to keep all messages.
-    messages_email_subject: Outgoing Email Subject Line
+    messages_email_subject: "E-postämne"
     messages_email_subject_hint: Used for emails without their own Short Text, and for messages sent from the customer page.
     messages_providers_info: Notification providers deliver your notifications by email or SMS. Configure at least one provider and tick it inside each notification template.
     messages_provider_disabled: Disabled
-    messages_provider_outgoing: Outgoing
-    messages_provider_incoming_outgoing: Incoming and outgoing
+    messages_provider_outgoing: "Endast skicka"
+    messages_provider_incoming_outgoing: "Skicka och ta emot"
     messages_provider_email_info: Send notifications by email through the server or SMTP, and receive replies through the server or IMAP.
     messages_provider_twilio_info: Send and receive SMS with a Twilio account and phone number.
     messages_provider_plivo_info: Send and receive SMS with a Plivo account and phone number.
     messages_provider_textanywhere_info: Send and receive SMS with a TextAnywhere account.
-    messages_incoming: Incoming
-    messages_incoming_hint: Customer can reply to support incoming messages as well as outgoing ones.
+    messages_incoming: "Ta emot svar"
+    messages_incoming_hint: "Kunder kan svara på meddelandena du skickar."
     messages_test_sms_sent: "Test-SMS skickat, kontrollera telefonen."
     messages_test_sms_number: "Testtelefonnummer"
     messages_test_sms: "Skicka test-SMS"
     messages_smsgateway_invalid: "Gateway-instaellningarna kunde inte valideras:"
-    messages_smsgateway_inbound_hint: "Telefonen levererar inkommande meddelanden till denna adress, registreringen sker automatiskt vid sparande med mottagning paa."
-    messages_smsgateway_step_activate: "Bocka i Aktiv och Ta emot inkommande meddelanden och spara. Instaellningarna testas; raetta fel och testa saendning med knappen Skicka test-SMS nedan."
+    messages_smsgateway_inbound_hint: "Telefonen levererar mottagna meddelanden till den här adressen, registreringen sker automatiskt när du sparar med mottagning aktiverad."
+    messages_smsgateway_step_activate: "Bocka i Active och Ta emot svar, klicka sedan på Save. Inställningarna testas, åtgärda eventuella fel och använd knappen för att skicka test-SMS nedan för att testa utskick."
     messages_smsgateway_step_credentials: "Paa startskaermen: staeng av Local server, sla paa Cloud server och tryck paa Offline-knappen foer att ansluta (bocka ocksaa i Start on boot), kopiera sedan anvaendarnamnet och loesenordet fraan startskaermen till Anvaendarnamn och Loesenord nedan."
     messages_smsgateway_step_signing: "Gaa till appens Settings -> Webhooks -> Signing Key -> ange en signeringsnyckel och kopiera den till Webhook-signeringsnyckeln nedan."
     messages_smsgateway_step_token: "Anvaender du en privat server ska du ocksaa ange Private Token paa samma skaerm - token finns i /app/data/private_token paa gateway-servern."
@@ -733,14 +732,14 @@ sv:
     messages_smsgateway_password: "Loesenord"
     messages_smsgateway_signing_key: "Webhook-signeringsnyckel"
     messages_provider_smsgateway_info: "Skickar och tar emot SMS via en Android-telefon med SMS Gateway-appen mot vaar egen server, ingen kostnad per meddelande."
-    messages_email_outgoing: Outgoing email
+    messages_email_outgoing: "Skicka e-post"
     messages_email_mode: Sending method
     messages_email_mode_server: Send email through server
     messages_email_mode_smtp: Send email with SMTP
     messages_smtp_host: SMTP host
     messages_smtp_port: SMTP port
     messages_smtp_tls: Use TLS
-    messages_email_incoming_section: Incoming email
+    messages_email_incoming_section: "Ta emot e-post"
     messages_email_incoming_mode: Receiving method
     messages_email_incoming_server: Receive email through server
     messages_email_incoming_imap: Receive email with IMAP
@@ -749,8 +748,8 @@ sv:
     messages_imap_port: IMAP port
     messages_email_credentials_hint: "Need an email delivery service? Get SMTP credentials from"
     messages_sms_credentials_hint: "Get your credentials from the provider console:"
-    messages_inbound_webhook: Incoming webhook URL
-    messages_inbound_webhook_hint: Paste this URL into the provider console so incoming messages reach the app. Keep it secret.
+    messages_inbound_webhook: "Webhook-URL för mottagna meddelanden"
+    messages_inbound_webhook_hint: "Klistra in den här URL:en i leverantörens konsol så att mottagna meddelanden når appen. Håll den hemlig."
     messages_twilio_account_sid: Account SID
     messages_twilio_auth_token: Auth token
     messages_from_number: From phone number
@@ -783,8 +782,8 @@ sv:
     open_all_notification_templates: Open all notification templates
     close_all_notification_templates: Close all notification templates
     messages_address: Address
-    messages_incoming_label: Incoming
-    messages_outgoing_label: Outgoing
+    messages_incoming_label: "Mottaget"
+    messages_outgoing_label: "Skickat"
     messages_manual_label: Manual
     messages_unknown_sender: Unknown sender
     messages_status_sent: Sent
@@ -889,7 +888,7 @@ sv:
     filter_statuses_hint: 'Choose which appointment statuses to show.'
     appointment_statuses: 'Appointment Statuses'
     inbox: 'Inbox'
-    inbox_hint: 'Incoming messages from your customers.'
+    inbox_hint: "Meddelanden som tagits emot från dina kunder."
     read: 'Read'
     message: 'Message'
     mark_as_read: 'Mark as read'
@@ -961,7 +960,7 @@ sv:
     time_off_hint: "För frånvaro under en del av en dag anger du timmarna du är borta. De sparas som en icke bokningsbar tid på dessa datum."
     messages_sms_variation: "Variera varje SMS"
     messages_sms_variation_hint: "Lägger till en kort referenskod i slutet av varje SMS så att inga två texter är likadana, vilket vissa operatörer kräver."
-    provider_color_hint: "Används för denna utförares bokningar när kalendern visar alla."
+    provider_color_hint: "Bakgrund för den här utförarens bokningar i kalendern. Tjänstens färg visas i kanten"
     working_providers: "Utförare i tjänst"
     hidden_from_public: "Dolda från bokningssidan"
     slot_interval_hint: "Hur ofta starttider erbjuds kunderna. Med 15 kan en tjänst på 45 minuter börja 9:00, 9:15, 9:30 och så vidare; med 60 klockan 9:00, 10:00, 11:00. Det håller inte tid ledig efter bokningen: för det, gör tjänstens längd längre."
@@ -978,8 +977,25 @@ sv:
     message_move_to: "Flytta till {name}"
     message_moved: "Meddelandet flyttat"
     notification_tokens_hint: "Mallfält du kan använda. Klicka på ett för att infoga det där du skrev, eller för att kopiera det:"
-    inbox_info: "Inkommande meddelanden. Inbox visar meddelanden som ska hanteras - markera varje som Klar när det är hanterat eller läst; de kan fortfarande läsas på kundens sida eller i Arkiv. Arkiv visar meddelanden som markerats som Klar - där finns en Ångra-knapp som flyttar dem tillbaka till Inbox."
+    inbox_info: "Mottagna meddelanden. Inkorgen visar meddelanden att ta tag i, markera varje som klart när det har hanterats eller lästs - du kan fortfarande läsa dem på kundens sida eller i arkivet. Arkivet visar meddelanden som markerats som klara - det har en ångra-knapp för att flytta tillbaka dem till inkorgen."
     booking_release_time: "Öppningstid"
     booking_release_time_hint: "Nästa dag i slutet av den maximala framförhållningen öppnas vid denna tid varje dag."
     inbox_filter_archive: "Arkiv"
     load_more_messages: "Ladda fler meddelanden"
+    clear_providers: "Rensa utförare"
+    clear_services: "Rensa tjänster"
+    refresh: "Uppdatera"
+    sync: "Synka"
+    feed: "Flöde"
+    do_not_contact_hint: "Inga bokningsbekräftelser, ändringar eller påminnelser skickas till den här kunden"
+    do_not_contact_warning: "Den här kunden har bett att inte bli kontaktad. Meddelanden som skickas hit levereras ändå."
+    company_address: "Företagsadress"
+    company_address_hint: "Detta blir standardplatsen för alla bokningar och kalenderinbjudningar"
+    cancel_reason_optional: "Anledning till avbokningen (valfritt), om du vill berätta för oss:"
+    late_cancel_reason: "Anledning till avbokningen:"
+    appointments_include_locations: "Bokningar har plats"
+    appointments_include_locations_hint: "Låter en utförare, assistent eller administratör ange platsen för en bokning. När detta är av är platsen alltid företagsadressen."
+    appointments_include_meeting_links: "Bokningar har möteslänkar"
+    appointments_include_meeting_links_hint: "Låter en utförare, assistent eller administratör lägga till en länk till ett onlinemöte i en bokning. Länken tas med i kundens kalenderinbjudan."
+    booking_provider_first_hint: "Visa utförare för kunden på bokningssidan innan de väljer tjänst."
+    display_order_switch_hint: "Låt kunder använda en knapp i första steget på bokningssidan där de kan välja tjänst först eller utförare först, innan de väljer det andra."

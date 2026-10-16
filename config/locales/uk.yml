@@ -116,9 +116,9 @@ uk:
     appointment_confirmation: Підтвердження запису
     confirm: Підтвердити
     update: Оновити
-    cancel_appointment_hint: Натисніть кнопку "Скасувати", щоб видалити запис з розкладу компанії.
+    cancel_appointment_hint: "Натисніть кнопку \"Скасувати\", щоб скасувати запис"
     cancel: Скасувати
-    appointment_registered: Ваш запис успішно зареєстровано!
+    appointment_registered: "Усе готово!"
     cancel_appointment_title: Скасувати запис
     appointment_cancelled: Ваш запис успішно скасовано.
     appointment_cancelled_title: Запис скасовано
@@ -167,7 +167,6 @@ uk:
     all_day: Увесь день
     manage_appointment_record_hint: Керуйте усіма записами про прийом доступних провайдерів та послуг.
     select_filter_item_hint: Виберіть провайдера або послугу та перегляньте записи на календарі.
-    enable_appointment_sync_hint: Увімкніть синхронізацію записів з зовнішнім календарем.
     manage_customers_hint: Керуйте зареєстрованими клієнтами та переглядайте їх історію бронювання.
     manage_services_hint: Керуйте доступними послугами та категоріями системи.
     manage_users_hint: Керуйте користувачами бекенду (адміністратори, провайдери, асистенти).
@@ -452,7 +451,7 @@ uk:
     company: Компанія
     remove: Видалити
     login_button: Кнопка входу
-    display_login_button_hint: Визначає, чи буде кнопка входу відображатися на сторінці бронювання.
+    display_login_button_hint: "Визначає, чи показувати кнопку входу для персоналу на сторінці запису."
     private: Приватний
     private_hint: "Приватні записи не відображаються на публічній сторінці бронювання, але їх усе ще можна забронювати за їхнім прямим посиланням для бронювання."
     reset: Скинути
@@ -652,7 +651,7 @@ uk:
     start_date: Дата початку
     end_date: Дата закінчення
     remember_me: Запам'ятати мої дані
-    remember_me_hint: Зберегти ваші дані для швидшого бронювання наступного разу.
+    remember_me_hint: "Збережіть свої дані в цьому браузері, щоб наступного разу записатися швидше."
     legal_notice: Правова інформація
     legal_notice_url: URL правової інформації
     legal_notice_url_hint: Введіть URL сторінки правової інформації.
@@ -695,24 +694,24 @@ uk:
     messages_intercept_required: "Для налагодження потрібні дійсні адреса електронної пошти та номер телефону для перенаправлення."
     messages_retention_days: Delete messages older than (days)
     messages_retention_days_hint: Messages older than this many days are deleted automatically. Set 0 to keep all messages.
-    messages_email_subject: Outgoing Email Subject Line
+    messages_email_subject: "Тема листа"
     messages_email_subject_hint: Used for emails without their own Short Text, and for messages sent from the customer page.
     messages_providers_info: Notification providers deliver your notifications by email or SMS. Configure at least one provider and tick it inside each notification template.
     messages_provider_disabled: Disabled
-    messages_provider_outgoing: Outgoing
-    messages_provider_incoming_outgoing: Incoming and outgoing
+    messages_provider_outgoing: "Лише надсилання"
+    messages_provider_incoming_outgoing: "Надсилання і отримання"
     messages_provider_email_info: Send notifications by email through the server or SMTP, and receive replies through the server or IMAP.
     messages_provider_twilio_info: Send and receive SMS with a Twilio account and phone number.
     messages_provider_plivo_info: Send and receive SMS with a Plivo account and phone number.
     messages_provider_textanywhere_info: Send and receive SMS with a TextAnywhere account.
-    messages_incoming: Incoming
-    messages_incoming_hint: Customer can reply to support incoming messages as well as outgoing ones.
+    messages_incoming: "Отримувати відповіді"
+    messages_incoming_hint: "Клієнти можуть відповідати на повідомлення, які ви надсилаєте."
     messages_test_sms_sent: "Тестове SMS надіслано, перевірте телефон."
     messages_test_sms_number: "Тестовий номер телефону"
     messages_test_sms: "Надіслати тестове SMS"
     messages_smsgateway_invalid: "Не вдалося перевірити налаштування шлюзу:"
-    messages_smsgateway_inbound_hint: "Телефон доставляє вхідні повідомлення на цю адресу, реєстрація відбувається автоматично під час збереження з увімкненим отриманням."
-    messages_smsgateway_step_activate: "Позначте Активно та Отримання вхідних повідомлень, потім Зберегти. Налаштування перевіряються; виправте помилки та перевірте надсилання кнопкою Надіслати тестове SMS нижче."
+    messages_smsgateway_inbound_hint: "Телефон доставляє отримані повідомлення на цю адресу, реєстрація виконується автоматично під час збереження з увімкненим отриманням."
+    messages_smsgateway_step_activate: "Позначте Active і Отримувати відповіді, потім натисніть Зберегти. Налаштування буде перевірено, виправте помилки та скористайтеся кнопкою Надіслати тестове SMS нижче, щоб перевірити надсилання."
     messages_smsgateway_step_credentials: "На головному екрані вимкніть Local server, увімкніть Cloud server і натисніть кнопку Offline для під'єднання (позначте також Start on boot), потім скопіюйте ім'я користувача та пароль з головного екрана в поля Ім'я користувача та Пароль нижче."
     messages_smsgateway_step_signing: "Відкрийте в застосунку Settings -> Webhooks -> Signing Key -> введіть ключ підпису та скопіюйте його в Ключ підпису вебхуків нижче."
     messages_smsgateway_step_token: "Якщо використовуєте приватний сервер, введіть на тому ж екрані й Private Token - токен у /app/data/private_token на сервері шлюзу."
@@ -733,14 +732,14 @@ uk:
     messages_smsgateway_password: "Пароль"
     messages_smsgateway_signing_key: "Ключ підпису вебхуків"
     messages_provider_smsgateway_info: "Надсилає та отримує SMS через Android-телефон із застосунком SMS Gateway і власним сервером, без плати за повідомлення."
-    messages_email_outgoing: Outgoing email
+    messages_email_outgoing: "Надсилати листи"
     messages_email_mode: Sending method
     messages_email_mode_server: Send email through server
     messages_email_mode_smtp: Send email with SMTP
     messages_smtp_host: SMTP host
     messages_smtp_port: SMTP port
     messages_smtp_tls: Use TLS
-    messages_email_incoming_section: Incoming email
+    messages_email_incoming_section: "Отримувати листи"
     messages_email_incoming_mode: Receiving method
     messages_email_incoming_server: Receive email through server
     messages_email_incoming_imap: Receive email with IMAP
@@ -749,8 +748,8 @@ uk:
     messages_imap_port: IMAP port
     messages_email_credentials_hint: "Need an email delivery service? Get SMTP credentials from"
     messages_sms_credentials_hint: "Get your credentials from the provider console:"
-    messages_inbound_webhook: Incoming webhook URL
-    messages_inbound_webhook_hint: Paste this URL into the provider console so incoming messages reach the app. Keep it secret.
+    messages_inbound_webhook: "URL вебхука для отриманих повідомлень"
+    messages_inbound_webhook_hint: "Вставте цей URL у консоль провайдера, щоб отримані повідомлення надходили до застосунку. Тримайте його в таємниці."
     messages_twilio_account_sid: Account SID
     messages_twilio_auth_token: Auth token
     messages_from_number: From phone number
@@ -783,8 +782,8 @@ uk:
     open_all_notification_templates: Open all notification templates
     close_all_notification_templates: Close all notification templates
     messages_address: Address
-    messages_incoming_label: Incoming
-    messages_outgoing_label: Outgoing
+    messages_incoming_label: "Отримано"
+    messages_outgoing_label: "Надіслано"
     messages_manual_label: Manual
     messages_unknown_sender: Unknown sender
     messages_status_sent: Sent
@@ -889,7 +888,7 @@ uk:
     filter_statuses_hint: 'Choose which appointment statuses to show.'
     appointment_statuses: 'Appointment Statuses'
     inbox: 'Inbox'
-    inbox_hint: 'Incoming messages from your customers.'
+    inbox_hint: "Повідомлення, отримані від ваших клієнтів."
     read: 'Read'
     message: 'Message'
     mark_as_read: 'Mark as read'
@@ -961,7 +960,7 @@ uk:
     time_off_hint: "Для частини дня вкажіть години відсутності. Вони зберігаються як перерва на ці дати."
     messages_sms_variation: "Змінювати кожне SMS"
     messages_sms_variation_hint: "Додає короткий код у кінець кожного SMS, щоб жодні два повідомлення не збігалися - це вимагають деякі оператори."
-    provider_color_hint: "Використовується для записів цього провайдера, коли календар показує всіх."
+    provider_color_hint: "Фон для записів цього провайдера в календарі. Колір послуги відображається на краю"
     working_providers: "Працюючі провайдери"
     hidden_from_public: "Приховано від публіки"
     slot_interval_hint: "Як часто клієнтам пропонується час початку. При 15 послуга на 45 хвилин може початися о 9:00, 9:15, 9:30 і так далі; при 60 - о 9:00, 10:00, 11:00. Це не залишає вільного часу після запису: для цього збільште тривалість послуги."
@@ -978,8 +977,25 @@ uk:
     message_move_to: "Перемістити до {name}"
     message_moved: "Повідомлення переміщено"
     notification_tokens_hint: "Поля шаблону, які можна використовувати. Натисніть на одне, щоб вставити його там, де ви друкували, або щоб скопіювати:"
-    inbox_info: "Вхідні повідомлення. Inbox показує повідомлення, що потребують дій - позначайте кожне як Оброблено після обробки або прочитання; їх і далі можна прочитати на сторінці клієнта або в Архіві. Архів показує повідомлення, позначені як Оброблено - у ньому є кнопка Скасувати, що повертає їх в Inbox."
+    inbox_info: "Отримані повідомлення. У Вхідних перелічено повідомлення, які потребують дій: позначайте кожне як виконане, коли його опрацьовано або прочитано, - їх усе одно можна прочитати на сторінці клієнта або в архіві. В Архіві перелічено повідомлення, позначені як виконані, - там є кнопка скасування, щоб повернути їх до вхідних."
     booking_release_time: "Час відкриття"
     booking_release_time_hint: "Наступний день у кінці обмеження на майбутнє бронювання відкривається щодня в цей час."
     inbox_filter_archive: "Архів"
     load_more_messages: "Завантажити більше повідомлень"
+    clear_providers: "Очистити провайдерів"
+    clear_services: "Очистити послуги"
+    refresh: "Оновити"
+    sync: "Синхронізувати"
+    feed: "Стрічка"
+    do_not_contact_hint: "Цьому клієнту не надсилаються підтвердження, зміни чи нагадування про записи"
+    do_not_contact_warning: "Цей клієнт попросив не зв'язуватися з ним. Повідомлення, надіслані сюди, все одно доставляються."
+    company_address: "Адреса компанії"
+    company_address_hint: "Це буде типове місце для всіх записів і запрошень до календаря"
+    cancel_reason_optional: "Причина скасування запису (необов'язково), якщо хочете повідомити нас:"
+    late_cancel_reason: "Причина скасування запису:"
+    appointments_include_locations: "Записи містять місце"
+    appointments_include_locations_hint: "Дозволяє провайдеру, помічнику або адміністратору вказувати місце запису. Якщо вимкнено, місцем завжди буде адреса компанії."
+    appointments_include_meeting_links: "Записи містять посилання на зустріч"
+    appointments_include_meeting_links_hint: "Дозволяє провайдеру, помічнику або адміністратору додавати до запису посилання на онлайн-зустріч. Посилання буде включено до запрошення клієнта в календар."
+    booking_provider_first_hint: "На сторінці запису показувати клієнту провайдерів до вибору послуги."
+    display_order_switch_hint: "Дозволяє клієнтам за допомогою кнопки на першому кроці сторінки запису обрати спочатку послугу або спочатку провайдера, а потім інше."

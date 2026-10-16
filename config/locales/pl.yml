@@ -116,9 +116,9 @@ pl:
     appointment_confirmation: Potwierdź Wizytę
     confirm: Potwierdź
     update: Aktualizuj
-    cancel_appointment_hint: Przyciśnij 'Anuluj' aby usunąć wizytę z terminarza.
+    cancel_appointment_hint: "Naciśnij przycisk \"Anuluj\", aby anulować wizytę"
     cancel: Anulować
-    appointment_registered: Twoja wizyta została została pozytywnie zarejestrowana.
+    appointment_registered: "Wszystko gotowe!"
     cancel_appointment_title: Anuluj Wizytę
     appointment_cancelled: Twoja wizyta została anulowana.
     appointment_cancelled_title: Wizyta Anulowana
@@ -167,7 +167,6 @@ pl:
     all_day: Cały Dzień
     manage_appointment_record_hint: Zarządzaj wszystkimi rekordami wizyt dostępnego personelu i zabiegów
     select_filter_item_hint: Wybierz personel lub zabieg i obejrzyj wizyty w kalendarzu.
-    enable_appointment_sync_hint: Włącz synchronizację wizyt z kalendarzem Google personelu.
     manage_customers_hint: Zarządzaj zarejestrowanymi klientami i obejrzyj ich historię rejestracji.
     manage_services_hint: Zarządzaj dostępnymi zabiegami i kategoriami systemu.
     manage_users_hint: Zarządzaj użytkownikami.(admin, personel, asystent, inne)
@@ -452,7 +451,7 @@ pl:
     company: Firma
     remove: Usuń
     login_button: Przycisk logowania
-    display_login_button_hint: Określa, czy przycisk logowania jest wyświetlany na stronie rezerwacji.
+    display_login_button_hint: "Określa, czy przycisk logowania personelu jest wyświetlany na stronie rezerwacji."
     private: Prywatny
     private_hint: "Prywatne rekordy nie są wyświetlane na publicznej stronie rezerwacji, ale nadal można je rezerwować za pomocą ich bezpośredniego linku do rezerwacji."
     reset: Resetuj
@@ -652,7 +651,7 @@ pl:
     start_date: Data rozpoczęcia
     end_date: Data zakończenia
     remember_me: Zapamiętaj moje dane
-    remember_me_hint: Zapisz swoje dane, aby szybciej rezerwować następnym razem.
+    remember_me_hint: "Zapisz swoje dane w tej przeglądarce, aby następnym razem rezerwować szybciej."
     legal_notice: Nota prawna
     legal_notice_url: URL noty prawnej
     legal_notice_url_hint: Wprowadź URL strony z notą prawną.
@@ -690,29 +689,29 @@ pl:
     messages_enabled_hint: "Globalnie włącz lub wyłącz wszystkie powiadomienia"
     messages_enabled_on: "Włączone"
     messages_enabled_off: "Wyłączone - e-maile resetowania hasła nadal będą wysyłane"
-    messages_enabled_debug: "Debugowanie - przekieruj wszystkie wychodzące e-maile i wiadomości"
-    messages_intercept_hint: "Gdy wybrano Debugowanie, każdy wychodzący e-mail trafia na ten adres, a każdy SMS na ten numer."
+    messages_enabled_debug: "Debug - przekieruj wszystkie wysłane e-maile i wiadomości"
+    messages_intercept_hint: "Każdy wysłany e-mail trafia na ten adres, a każdy SMS na ten numer, gdy wybrano Debug."
     messages_intercept_required: "Debugowanie wymaga prawidłowego adresu e-mail i numeru telefonu do przekierowania."
     messages_retention_days: Delete messages older than (days)
     messages_retention_days_hint: Messages older than this many days are deleted automatically. Set 0 to keep all messages.
-    messages_email_subject: Outgoing Email Subject Line
+    messages_email_subject: "Temat e-maila"
     messages_email_subject_hint: Used for emails without their own Short Text, and for messages sent from the customer page.
     messages_providers_info: Notification providers deliver your notifications by email or SMS. Configure at least one provider and tick it inside each notification template.
     messages_provider_disabled: Disabled
-    messages_provider_outgoing: Outgoing
-    messages_provider_incoming_outgoing: Incoming and outgoing
+    messages_provider_outgoing: "Tylko wysyłanie"
+    messages_provider_incoming_outgoing: "Wysyłanie i odbieranie"
     messages_provider_email_info: Send notifications by email through the server or SMTP, and receive replies through the server or IMAP.
     messages_provider_twilio_info: Send and receive SMS with a Twilio account and phone number.
     messages_provider_plivo_info: Send and receive SMS with a Plivo account and phone number.
     messages_provider_textanywhere_info: Send and receive SMS with a TextAnywhere account.
-    messages_incoming: Incoming
-    messages_incoming_hint: Customer can reply to support incoming messages as well as outgoing ones.
+    messages_incoming: "Odbieraj odpowiedzi"
+    messages_incoming_hint: "Klienci mogą odpowiadać na wysyłane przez Ciebie wiadomości."
     messages_test_sms_sent: "Testowy SMS wyslany, sprawdz telefon."
     messages_test_sms_number: "Testowy numer telefonu"
     messages_test_sms: "Wyslij testowy SMS"
     messages_smsgateway_invalid: "Nie udalo sie zweryfikowac ustawien bramki:"
-    messages_smsgateway_inbound_hint: "Telefon dostarcza przychodzace wiadomosci na ten adres, rejestracja odbywa sie automatycznie przy zapisie z wlaczonym odbieraniem."
-    messages_smsgateway_step_activate: "Zaznacz Aktywne i Odbieraj przychodzace wiadomosci, potem Zapisz. Ustawienia sa testowane; popraw bledy i przetestuj wysylanie przyciskiem Wyslij testowy SMS ponizej."
+    messages_smsgateway_inbound_hint: "Telefon dostarcza otrzymane wiadomości na ten adres, rejestracja odbywa się automatycznie przy zapisie z włączonym odbieraniem."
+    messages_smsgateway_step_activate: "Zaznacz Aktywny i Odbieraj odpowiedzi, a następnie Zapisz. Ustawienia zostaną przetestowane, popraw ewentualne błędy i użyj poniższego przycisku Wyślij testowy SMS, aby przetestować wysyłanie."
     messages_smsgateway_step_credentials: "Na ekranie glownym wylacz Local server, wlacz Cloud server i nacisnij przycisk Offline aby sie polaczyc (zaznacz tez Start on boot), nastepnie skopiuj nazwe uzytkownika i haslo z ekranu glownego do pol Nazwa uzytkownika i Haslo ponizej."
     messages_smsgateway_step_signing: "Przejdz do Settings -> Webhooks -> Signing Key w aplikacji -> wpisz klucz podpisu i skopiuj go do pola Klucz podpisu webhookow ponizej."
     messages_smsgateway_step_token: "Jesli uzywasz prywatnego serwera, na tym samym ekranie wpisz tez Private Token - token znajduje sie w /app/data/private_token na serwerze bramki."
@@ -733,14 +732,14 @@ pl:
     messages_smsgateway_password: "Haslo"
     messages_smsgateway_signing_key: "Klucz podpisu webhookow"
     messages_provider_smsgateway_info: "Wysyla i odbiera SMS-y przez telefon z Androidem z aplikacja SMS Gateway i wlasnym serwerem, bez oplat za wiadomosc."
-    messages_email_outgoing: Outgoing email
+    messages_email_outgoing: "Wysyłaj e-maile"
     messages_email_mode: Sending method
     messages_email_mode_server: Send email through server
     messages_email_mode_smtp: Send email with SMTP
     messages_smtp_host: SMTP host
     messages_smtp_port: SMTP port
     messages_smtp_tls: Use TLS
-    messages_email_incoming_section: Incoming email
+    messages_email_incoming_section: "Odbieraj e-maile"
     messages_email_incoming_mode: Receiving method
     messages_email_incoming_server: Receive email through server
     messages_email_incoming_imap: Receive email with IMAP
@@ -749,8 +748,8 @@ pl:
     messages_imap_port: IMAP port
     messages_email_credentials_hint: "Need an email delivery service? Get SMTP credentials from"
     messages_sms_credentials_hint: "Get your credentials from the provider console:"
-    messages_inbound_webhook: Incoming webhook URL
-    messages_inbound_webhook_hint: Paste this URL into the provider console so incoming messages reach the app. Keep it secret.
+    messages_inbound_webhook: "Adres URL webhooka dla odebranych wiadomości"
+    messages_inbound_webhook_hint: "Wklej ten adres URL w konsoli dostawcy, aby odebrane wiadomości trafiały do aplikacji. Zachowaj go w tajemnicy."
     messages_twilio_account_sid: Account SID
     messages_twilio_auth_token: Auth token
     messages_from_number: From phone number
@@ -783,8 +782,8 @@ pl:
     open_all_notification_templates: Open all notification templates
     close_all_notification_templates: Close all notification templates
     messages_address: Address
-    messages_incoming_label: Incoming
-    messages_outgoing_label: Outgoing
+    messages_incoming_label: "Odebrane"
+    messages_outgoing_label: "Wysłane"
     messages_manual_label: Manual
     messages_unknown_sender: Unknown sender
     messages_status_sent: Sent
@@ -889,7 +888,7 @@ pl:
     filter_statuses_hint: 'Choose which appointment statuses to show.'
     appointment_statuses: 'Appointment Statuses'
     inbox: 'Inbox'
-    inbox_hint: 'Incoming messages from your customers.'
+    inbox_hint: "Wiadomości otrzymane od Twoich klientów."
     read: 'Read'
     message: 'Message'
     mark_as_read: 'Mark as read'
@@ -961,7 +960,7 @@ pl:
     time_off_hint: "Jeśli dotyczy części dnia wolnego, podaj godziny nieobecności. Zostaną zapisane jako przerwa w tych dniach."
     messages_sms_variation: "Różnicuj każdy SMS"
     messages_sms_variation_hint: "Dodaje krótki kod referencyjny na końcu każdego SMS-a, dzięki czemu żadne dwie wiadomości nie są identyczne, czego wymagają niektórzy operatorzy."
-    provider_color_hint: "Używane dla wizyt tego pracownika, gdy kalendarz pokazuje wszystkich."
+    provider_color_hint: "Tło wizyt tego pracownika w kalendarzu. Kolor zabiegu widoczny jest na krawędzi"
     working_providers: "Pracujący personel"
     hidden_from_public: "Ukryte przed publicznością"
     slot_interval_hint: "Jak często klientom oferowane są godziny rozpoczęcia. Przy 15 zabieg trwający 45 minut może zacząć się o 9:00, 9:15, 9:30 i tak dalej; przy 60 o 9:00, 10:00, 11:00. Nie rezerwuje to wolnego czasu po wizycie: w tym celu wydłuż czas trwania zabiegu."
@@ -978,8 +977,25 @@ pl:
     message_move_to: "Przenieś do {name}"
     message_moved: "Wiadomość przeniesiona"
     notification_tokens_hint: "Pola szablonu, których możesz użyć. Kliknij jedno, aby wstawić je w miejscu, w którym pisałeś, lub aby je skopiować:"
-    inbox_info: "Wiadomości przychodzące. Inbox pokazuje wiadomości do załatwienia - oznacz każdą jako Zakończone po jej załatwieniu lub przeczytaniu; nadal można je przeczytać na stronie klienta lub w Archiwum. Archiwum pokazuje wiadomości oznaczone jako Zakończone - ma przycisk Cofnij, który przywraca je do Inbox."
+    inbox_info: "Odebrane wiadomości. Skrzynka odbiorcza zawiera wiadomości wymagające reakcji. Oznacz każdą jako załatwioną, gdy zostanie obsłużona lub przeczytana - nadal możesz ją przeczytać na stronie klienta lub w archiwum. Archiwum zawiera wiadomości oznaczone jako załatwione - ma przycisk cofania, który przywraca je do skrzynki odbiorczej."
     booking_release_time: "Godzina otwarcia"
     booking_release_time_hint: "Następny dzień na końcu limitu przyszłych rezerwacji otwiera się o tej godzinie każdego dnia."
     inbox_filter_archive: "Archiwum"
     load_more_messages: "Wczytaj więcej wiadomości"
+    clear_providers: "Wyczyść personel"
+    clear_services: "Wyczyść zabiegi"
+    refresh: "Odśwież"
+    sync: "Synchronizuj"
+    feed: "Kanał"
+    do_not_contact_hint: "Do tego klienta nie są wysyłane potwierdzenia rezerwacji, zmiany ani przypomnienia"
+    do_not_contact_warning: "Ten klient poprosił, aby się z nim nie kontaktować. Wiadomości wysłane tutaj nadal zostaną dostarczone."
+    company_address: "Adres firmy"
+    company_address_hint: "Będzie to domyślna lokalizacja wszystkich rezerwacji i zaproszeń do kalendarza"
+    cancel_reason_optional: "Opcjonalny powód anulowania wizyty, jeśli chcesz nam go podać:"
+    late_cancel_reason: "Powód anulowania wizyty:"
+    appointments_include_locations: "Wizyty zawierają lokalizacje"
+    appointments_include_locations_hint: "Pozwala pracownikowi, asystentowi lub administratorowi ustawić lokalizację wizyty. Gdy opcja jest wyłączona, lokalizacją zawsze jest adres firmy."
+    appointments_include_meeting_links: "Wizyty zawierają linki do spotkań"
+    appointments_include_meeting_links_hint: "Pozwala pracownikowi, asystentowi lub administratorowi dodać do wizyty link do spotkania online. Link zostanie dołączony do zaproszenia do kalendarza klienta."
+    booking_provider_first_hint: "Na stronie rezerwacji pokaż klientowi pracowników przed wyborem zabiegu."
+    display_order_switch_hint: "Pozwól klientom użyć przycisku w pierwszym kroku strony rezerwacji, aby wybrać najpierw zabieg albo najpierw pracownika, a dopiero potem drugą opcję."

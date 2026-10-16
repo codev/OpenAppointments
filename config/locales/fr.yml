@@ -116,9 +116,9 @@ fr:
     appointment_confirmation: Confirmez votre rendez-vous
     confirm: Confirmation
     update: Mise à jour
-    cancel_appointment_hint: Appuyer sur le bouton "Annuler" pour supprimer un rendez-vous de l’agenda.
+    cancel_appointment_hint: "Appuyez sur le bouton « Annuler » pour annuler le rendez-vous"
     cancel: Annuler
-    appointment_registered: Votre rendez-vous a été enregistré avec succès.
+    appointment_registered: "Tout est prêt !"
     cancel_appointment_title: Annuler le rendez-vous
     appointment_cancelled: Votre rendez-vous a bien été annulé.
     appointment_cancelled_title: Rendez-vous annulé
@@ -167,7 +167,6 @@ fr:
     all_day: Toute la journée
     manage_appointment_record_hint: Gérer tous les enregistrements de rendez-vous des exécutants et des prestations actives.
     select_filter_item_hint: Choisir un exécutant ou une prestation et visualisez les rendez-vous sur l’agenda.
-    enable_appointment_sync_hint: Activer la synchronisation des rendez-vous avec le calendrier Google de l’exécutant.
     manage_customers_hint: Gérer les clients enregistrés et voir leur historique de rendez-vous.
     manage_services_hint: Gérer les prestations et les catégories actives du système.
     manage_users_hint: Gérer les utilisateurs du système (administrateurs, exécutants, assistant·es).
@@ -452,7 +451,7 @@ fr:
     company: Entreprise
     remove: Retirer
     login_button: Bouton de Connexion
-    display_login_button_hint: Définit si le bouton de connexion est affiché dans la page de réservation.
+    display_login_button_hint: "Définit si le bouton de connexion du personnel est affiché sur la page de réservation."
     private: Privé
     private_hint: "Les dossiers privés ne sont pas affichés sur la page de réservation publique, mais peuvent toujours être réservés via leur lien de réservation direct."
     reset: Réinitialiser
@@ -652,7 +651,7 @@ fr:
     start_date: Date de début
     end_date: Date de fin
     remember_me: Se souvenir de mes informations
-    remember_me_hint: Enregistrez vos coordonnées pour une réservation plus rapide la prochaine fois.
+    remember_me_hint: "Enregistrez vos coordonnées sur ce navigateur pour réserver plus vite la prochaine fois."
     legal_notice: Mentions légales
     legal_notice_url: URL des mentions légales
     legal_notice_url_hint: Entrez l'URL de votre page de mentions légales.
@@ -695,24 +694,24 @@ fr:
     messages_intercept_required: "Le débogage nécessite une adresse e-mail et un numéro de téléphone valides vers lesquels rediriger."
     messages_retention_days: Delete messages older than (days)
     messages_retention_days_hint: Messages older than this many days are deleted automatically. Set 0 to keep all messages.
-    messages_email_subject: Outgoing Email Subject Line
+    messages_email_subject: "Objet de l'e-mail"
     messages_email_subject_hint: Used for emails without their own Short Text, and for messages sent from the customer page.
     messages_providers_info: Notification providers deliver your notifications by email or SMS. Configure at least one provider and tick it inside each notification template.
     messages_provider_disabled: Disabled
-    messages_provider_outgoing: Outgoing
-    messages_provider_incoming_outgoing: Incoming and outgoing
+    messages_provider_outgoing: "Envoi uniquement"
+    messages_provider_incoming_outgoing: "Envoi et réception"
     messages_provider_email_info: Send notifications by email through the server or SMTP, and receive replies through the server or IMAP.
     messages_provider_twilio_info: Send and receive SMS with a Twilio account and phone number.
     messages_provider_plivo_info: Send and receive SMS with a Plivo account and phone number.
     messages_provider_textanywhere_info: Send and receive SMS with a TextAnywhere account.
-    messages_incoming: Incoming
-    messages_incoming_hint: Customer can reply to support incoming messages as well as outgoing ones.
+    messages_incoming: "Recevoir les réponses"
+    messages_incoming_hint: "Les clients peuvent répondre aux messages que vous envoyez."
     messages_test_sms_sent: "SMS de test envoyé, vérifiez le téléphone."
     messages_test_sms_number: "Numéro de téléphone de test"
     messages_test_sms: "Envoyer un SMS de test"
     messages_smsgateway_invalid: "Impossible de valider les réglages de la passerelle :"
-    messages_smsgateway_inbound_hint: "Le téléphone livre les messages entrants à cette adresse, l'enregistrement se fait automatiquement à la sauvegarde avec la réception activée."
-    messages_smsgateway_step_activate: "Cochez Actif et Recevoir les messages entrants, puis Enregistrer. Les réglages sont testés, corrigez les erreurs et testez l'envoi avec le bouton Envoyer un SMS de test ci-dessous."
+    messages_smsgateway_inbound_hint: "Le téléphone remet les messages reçus à cette adresse ; l'enregistrement est géré automatiquement lors de l'enregistrement avec la réception activée."
+    messages_smsgateway_step_activate: "Cochez Actif et Recevoir les réponses, puis Enregistrer. Les paramètres sont testés : corrigez les erreurs éventuelles et utilisez le bouton Envoyer un SMS de test ci-dessous pour tester l'envoi."
     messages_smsgateway_step_credentials: "Sur l'écran d'accueil, désactivez Local server, activez Cloud server et appuyez sur le bouton Offline pour vous connecter (cochez aussi Start on boot), puis copiez le nom d'utilisateur et le mot de passe affichés dans Nom d'utilisateur et Mot de passe ci-dessous."
     messages_smsgateway_step_signing: "Allez dans Settings -> Webhooks -> Signing Key de l'application -> saisissez une clé de signature puis copiez-la dans la Clé de signature des webhooks ci-dessous."
     messages_smsgateway_step_token: "Si vous utilisez un serveur privé, saisissez aussi le Private Token sur cet écran - le jeton se trouve dans /app/data/private_token sur le serveur de la passerelle."
@@ -733,14 +732,14 @@ fr:
     messages_smsgateway_password: "Mot de passe"
     messages_smsgateway_signing_key: "Clé de signature des webhooks"
     messages_provider_smsgateway_info: "Envoie et reçoit des SMS via un téléphone Android exécutant l'application SMS Gateway avec notre propre serveur, sans coût par message."
-    messages_email_outgoing: Outgoing email
+    messages_email_outgoing: "Envoyer des e-mails"
     messages_email_mode: Sending method
     messages_email_mode_server: Send email through server
     messages_email_mode_smtp: Send email with SMTP
     messages_smtp_host: SMTP host
     messages_smtp_port: SMTP port
     messages_smtp_tls: Use TLS
-    messages_email_incoming_section: Incoming email
+    messages_email_incoming_section: "Recevoir des e-mails"
     messages_email_incoming_mode: Receiving method
     messages_email_incoming_server: Receive email through server
     messages_email_incoming_imap: Receive email with IMAP
@@ -749,8 +748,8 @@ fr:
     messages_imap_port: IMAP port
     messages_email_credentials_hint: "Need an email delivery service? Get SMTP credentials from"
     messages_sms_credentials_hint: "Get your credentials from the provider console:"
-    messages_inbound_webhook: Incoming webhook URL
-    messages_inbound_webhook_hint: Paste this URL into the provider console so incoming messages reach the app. Keep it secret.
+    messages_inbound_webhook: "URL du webhook pour les messages reçus"
+    messages_inbound_webhook_hint: "Collez cette URL dans la console de l'exécutant pour que les messages reçus parviennent à l'application. Gardez-la secrète."
     messages_twilio_account_sid: Account SID
     messages_twilio_auth_token: Auth token
     messages_from_number: From phone number
@@ -783,8 +782,8 @@ fr:
     open_all_notification_templates: Open all notification templates
     close_all_notification_templates: Close all notification templates
     messages_address: Address
-    messages_incoming_label: Incoming
-    messages_outgoing_label: Outgoing
+    messages_incoming_label: "Reçus"
+    messages_outgoing_label: "Envoyés"
     messages_manual_label: Manual
     messages_unknown_sender: Unknown sender
     messages_status_sent: Sent
@@ -889,7 +888,7 @@ fr:
     filter_statuses_hint: 'Choose which appointment statuses to show.'
     appointment_statuses: 'Appointment Statuses'
     inbox: 'Inbox'
-    inbox_hint: 'Incoming messages from your customers.'
+    inbox_hint: "Messages reçus de vos clients."
     read: 'Read'
     message: 'Message'
     mark_as_read: 'Mark as read'
@@ -961,7 +960,7 @@ fr:
     time_off_hint: "Pour une absence sur une partie de la journée, saisissez les heures où vous êtes absent. Elles sont enregistrées comme une pause à ces dates."
     messages_sms_variation: "Varier chaque SMS"
     messages_sms_variation_hint: "Ajoute un court code de référence à la fin de chaque SMS afin qu'aucun texte ne soit identique, ce que certains opérateurs exigent."
-    provider_color_hint: "Utilisée pour les rendez-vous de cet exécutant lorsque le calendrier affiche tout le monde."
+    provider_color_hint: "Arrière-plan des rendez-vous de cet exécutant dans le calendrier. La couleur de la prestation apparaît sur le bord"
     working_providers: "Exécutants en Service"
     hidden_from_public: "Caché au Public"
     slot_interval_hint: "Fréquence à laquelle les heures de début sont proposées aux clients. Avec 15, une prestation de 45 minutes peut commencer à 9:00, 9:15, 9:30 et ainsi de suite ; avec 60, à 9:00, 10:00, 11:00. Cela ne garde pas de temps libre après le rendez-vous : pour cela, allongez la durée de la prestation."
@@ -978,8 +977,25 @@ fr:
     message_move_to: "Déplacer vers {name}"
     message_moved: "Message déplacé"
     notification_tokens_hint: "Champs de modèle que vous pouvez utiliser. Cliquez sur l'un d'eux pour l'insérer là où vous écriviez, ou pour le copier :"
-    inbox_info: "Messages entrants. Inbox liste les messages à traiter, marquez chacun comme Traité une fois pris en charge ou lu - vous pourrez toujours les lire sur la page du client ou dans les archives. Archives liste les messages marqués comme Traité - un bouton Annuler permet de les renvoyer dans Inbox."
+    inbox_info: "Messages reçus. La boîte de réception liste les messages à traiter : marquez chacun comme fait une fois traité ou lu - vous pourrez toujours le lire sur la page du client ou dans Archives. Archives liste les messages marqués comme faits, avec un bouton pour annuler et les remettre dans la boîte de réception."
     booking_release_time: "Heure d'ouverture"
     booking_release_time_hint: "Le jour suivant, à la fin de la limite des réservations futures, s'ouvre à cette heure chaque jour."
     inbox_filter_archive: "Archives"
     load_more_messages: "Charger plus de messages"
+    clear_providers: "Effacer les exécutants"
+    clear_services: "Effacer les prestations"
+    refresh: "Actualiser"
+    sync: "Synchroniser"
+    feed: "Flux"
+    do_not_contact_hint: "Aucune confirmation de réservation, modification ou rappel n'est envoyé à ce client"
+    do_not_contact_warning: "Ce client a demandé à ne pas être contacté. Les messages envoyés d'ici sont tout de même livrés."
+    company_address: "Adresse de l'entreprise"
+    company_address_hint: "Ce sera le lieu par défaut de toutes les réservations et invitations de calendrier"
+    cancel_reason_optional: "Motif facultatif d'annulation du rendez-vous, si vous souhaitez nous en informer :"
+    late_cancel_reason: "Motif d'annulation du rendez-vous :"
+    appointments_include_locations: "Les rendez-vous incluent un lieu"
+    appointments_include_locations_hint: "Permet à un coiffeur, un assistant ou un administrateur de définir le lieu d'un rendez-vous. Lorsque cette option est désactivée, le lieu est toujours l'adresse de l'entreprise."
+    appointments_include_meeting_links: "Les rendez-vous incluent un lien de réunion"
+    appointments_include_meeting_links_hint: "Permet à un coiffeur, un assistant ou un administrateur d'ajouter à un rendez-vous un lien vers une réunion en ligne. Le lien sera inclus dans l'invitation de calendrier du client."
+    booking_provider_first_hint: "Sur la page de réservation, afficher les coiffeurs au client avant qu'il choisisse une prestation."
+    display_order_switch_hint: "Permet aux clients d'utiliser, à la première étape de la page de réservation, un bouton pour choisir d'abord une prestation ou d'abord un coiffeur, avant de choisir l'autre."

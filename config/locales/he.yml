@@ -116,9 +116,9 @@ he:
     appointment_confirmation: אישור מועד הפגישה
     confirm: אישור
     update: עדכון
-    cancel_appointment_hint: לחץ על כפתור "ביטול" בכדי להסיר את הפגישה מתזמון החברה.
+    cancel_appointment_hint: "לחץ על הכפתור \"ביטול\" כדי לבטל את הפגישה"
     cancel: ביטול
-    appointment_registered: הפגישה שלך נרשמה בהצלחה!
+    appointment_registered: "הכול מוכן!"
     cancel_appointment_title: ביטול פגישה
     appointment_cancelled: הפגישה שלך בוטלה בהצלחה
     appointment_cancelled_title: הפגישה בוטלה
@@ -167,7 +167,6 @@ he:
     all_day: כל היום
     manage_appointment_record_hint: נהל את כל רישומי הפגישות של הספקים והשירותים הזמינים.
     select_filter_item_hint: בחר ספק או שירות והצג את הפגישות ביומן.
-    enable_appointment_sync_hint: אפשר סנכרון פגישות עם חשבון יומן הגוגל של הספק.
     manage_customers_hint: נהל את הלקוחות הרשומים וצפה בהיסטוריית ההזמנות שלהם.
     manage_services_hint: נהל את השירותים והקטגוריות הזמינות של המערכת.
     manage_users_hint: נהל את משתמשי הניהול (מנהלי מערכת, ספקים, עוזרים).
@@ -452,7 +451,7 @@ he:
     company: חברה
     remove: הסר
     login_button: כפתור כניסה
-    display_login_button_hint: מגדיר אם כפתור הכניסה מוצג בעמוד ההזמנה.
+    display_login_button_hint: "קובע אם כפתור הכניסה של הצוות יוצג בדף ההזמנה."
     private: פרטי
     private_hint: "רשומות פרטיות אינן מוצגות בעמוד ההזמנות הציבורי, אך עדיין ניתן להזמין אותן דרך קישור ההזמנה הישיר שלהן."
     reset: איפוס
@@ -652,7 +651,7 @@ he:
     start_date: תאריך התחלה
     end_date: תאריך סיום
     remember_me: זכור את המידע שלי
-    remember_me_hint: שמור את הפרטים שלך להזמנה מהירה יותר בפעם הבאה.
+    remember_me_hint: "שמור את הפרטים שלך בדפדפן זה להזמנה מהירה יותר בפעם הבאה."
     legal_notice: הודעה משפטית
     legal_notice_url: כתובת הודעה משפטית
     legal_notice_url_hint: הזן את הכתובת לדף ההודעה המשפטית שלך.
@@ -695,24 +694,24 @@ he:
     messages_intercept_required: "ניפוי שגיאות דורש כתובת דוא\"ל ומספר טלפון תקינים להפניה."
     messages_retention_days: Delete messages older than (days)
     messages_retention_days_hint: Messages older than this many days are deleted automatically. Set 0 to keep all messages.
-    messages_email_subject: Outgoing Email Subject Line
+    messages_email_subject: "נושא הדוא\"ל"
     messages_email_subject_hint: Used for emails without their own Short Text, and for messages sent from the customer page.
     messages_providers_info: Notification providers deliver your notifications by email or SMS. Configure at least one provider and tick it inside each notification template.
     messages_provider_disabled: Disabled
-    messages_provider_outgoing: Outgoing
-    messages_provider_incoming_outgoing: Incoming and outgoing
+    messages_provider_outgoing: "שליחה בלבד"
+    messages_provider_incoming_outgoing: "שליחה וקבלה"
     messages_provider_email_info: Send notifications by email through the server or SMTP, and receive replies through the server or IMAP.
     messages_provider_twilio_info: Send and receive SMS with a Twilio account and phone number.
     messages_provider_plivo_info: Send and receive SMS with a Plivo account and phone number.
     messages_provider_textanywhere_info: Send and receive SMS with a TextAnywhere account.
-    messages_incoming: Incoming
-    messages_incoming_hint: Customer can reply to support incoming messages as well as outgoing ones.
+    messages_incoming: "קבלת תגובות"
+    messages_incoming_hint: "לקוחות יכולים להשיב להודעות שאתה שולח."
     messages_test_sms_sent: "SMS הבדיקה נשלח, בדקו את הטלפון."
     messages_test_sms_number: "מספר טלפון לבדיקה"
     messages_test_sms: "שליחת SMS בדיקה"
     messages_smsgateway_invalid: "לא ניתן לאמת את הגדרות השער:"
-    messages_smsgateway_inbound_hint: "הטלפון מוסר הודעות נכנסות לכתובת זו, הרישום מתבצע אוטומטית בשמירה עם קבלה מופעלת."
-    messages_smsgateway_step_activate: "סמנו פעיל וקבלת הודעות נכנסות ושמרו. ההגדרות נבדקות, תקנו שגיאות ובדקו שליחה עם כפתור שליחת SMS בדיקה למטה."
+    messages_smsgateway_inbound_hint: "הטלפון מוסר את ההודעות שהתקבלו לכתובת זו; הרישום מתבצע אוטומטית בעת שמירה כשהקבלה מופעלת."
+    messages_smsgateway_step_activate: "סמן פעיל וקבלת תגובות ולאחר מכן שמור. ההגדרות נבדקות, תקן שגיאות והשתמש בכפתור שליחת SMS לבדיקה למטה כדי לבדוק שליחה."
     messages_smsgateway_step_credentials: "במסך הבית כבו את Local server, הפעילו את Cloud server ולחצו על כפתור Offline להתחברות (סמנו גם Start on boot), ואז העתיקו את שם המשתמש והסיסמה ממסך הבית לשדות שם משתמש וסיסמה למטה."
     messages_smsgateway_step_signing: "עברו ל-Settings -> Webhooks -> Signing Key באפליקציה -> הזינו מפתח חתימה והעתיקו אותו לשדה מפתח חתימת Webhook למטה."
     messages_smsgateway_step_token: "אם אתם משתמשים בשרת פרטי הזינו באותו מסך גם את ה-Private Token - הטוקן נמצא ב-/app/data/private_token בשרת השער."
@@ -733,14 +732,14 @@ he:
     messages_smsgateway_password: "סיסמה"
     messages_smsgateway_signing_key: "מפתח חתימת Webhook"
     messages_provider_smsgateway_info: "שולח ומקבל SMS דרך טלפון אנדרואיד עם אפליקציית SMS Gateway מול השרת שלנו, ללא עלות להודעה."
-    messages_email_outgoing: Outgoing email
+    messages_email_outgoing: "שליחת דוא\"ל"
     messages_email_mode: Sending method
     messages_email_mode_server: Send email through server
     messages_email_mode_smtp: Send email with SMTP
     messages_smtp_host: SMTP host
     messages_smtp_port: SMTP port
     messages_smtp_tls: Use TLS
-    messages_email_incoming_section: Incoming email
+    messages_email_incoming_section: "קבלת דוא\"ל"
     messages_email_incoming_mode: Receiving method
     messages_email_incoming_server: Receive email through server
     messages_email_incoming_imap: Receive email with IMAP
@@ -749,8 +748,8 @@ he:
     messages_imap_port: IMAP port
     messages_email_credentials_hint: "Need an email delivery service? Get SMTP credentials from"
     messages_sms_credentials_hint: "Get your credentials from the provider console:"
-    messages_inbound_webhook: Incoming webhook URL
-    messages_inbound_webhook_hint: Paste this URL into the provider console so incoming messages reach the app. Keep it secret.
+    messages_inbound_webhook: "כתובת Webhook להודעות שהתקבלו"
+    messages_inbound_webhook_hint: "הדבק כתובת זו בלוח הבקרה של הספק כדי שההודעות שהתקבלו יגיעו ליישום. שמור אותה בסוד."
     messages_twilio_account_sid: Account SID
     messages_twilio_auth_token: Auth token
     messages_from_number: From phone number
@@ -783,8 +782,8 @@ he:
     open_all_notification_templates: Open all notification templates
     close_all_notification_templates: Close all notification templates
     messages_address: Address
-    messages_incoming_label: Incoming
-    messages_outgoing_label: Outgoing
+    messages_incoming_label: "התקבלו"
+    messages_outgoing_label: "נשלחו"
     messages_manual_label: Manual
     messages_unknown_sender: Unknown sender
     messages_status_sent: Sent
@@ -889,7 +888,7 @@ he:
     filter_statuses_hint: 'Choose which appointment statuses to show.'
     appointment_statuses: 'Appointment Statuses'
     inbox: 'Inbox'
-    inbox_hint: 'Incoming messages from your customers.'
+    inbox_hint: "הודעות שהתקבלו מהלקוחות שלך."
     read: 'Read'
     message: 'Message'
     mark_as_read: 'Mark as read'
@@ -961,7 +960,7 @@ he:
     time_off_hint: "עבור חלק מיום חופשה, הזינו את שעות ההיעדרות שלכם. הן נשמרות כהפסקה בתאריכים אלו."
     messages_sms_variation: "גיוון כל SMS"
     messages_sms_variation_hint: "מוסיף קוד ייחוס קצר לסוף כל SMS כדי שלא יהיו שני מסרונים זהים, דרישה של חלק מהרשתות."
-    provider_color_hint: "משמש לפגישות של ספק זה כאשר היומן מציג את כולם."
+    provider_color_hint: "צבע הרקע של הפגישות של ספק זה ביומן. צבע השירות מופיע בקצה"
     working_providers: "ספקים עובדים"
     hidden_from_public: "מוסתר מהציבור"
     slot_interval_hint: "באיזו תדירות מוצעות שעות התחלה ללקוחות. עם 15, שירות של 45 דקות יכול להתחיל ב-9:00, 9:15, 9:30 וכן הלאה; עם 60, ב-9:00, 10:00, 11:00. הגדרה זו אינה שומרת זמן פנוי אחרי הפגישה: לשם כך, הארך את משך השירות."
@@ -978,8 +977,25 @@ he:
     message_move_to: "העברה אל {name}"
     message_moved: "ההודעה הועברה"
     notification_tokens_hint: "שדות תבנית שניתן להשתמש בהם. לחצו על אחד כדי להוסיף אותו במקום שבו הקלדתם, או כדי להעתיק אותו:"
-    inbox_info: "הודעות נכנסות. Inbox מציג הודעות שדורשות טיפול, סמנו כל אחת כטופל לאחר הטיפול או הקריאה - עדיין אפשר לקרוא אותן בדף הלקוח או בארכיון. ארכיון מציג הודעות שסומנו כטופל - יש בו כפתור לבטל שמחזיר אותן ל-Inbox."
+    inbox_info: "הודעות שהתקבלו. תיבת הדואר הנכנס מציגה הודעות שיש לטפל בהן; סמן כל הודעה כבוצעה לאחר שטופלה או נקראה - עדיין אפשר לקרוא אותן בדף הלקוח או בארכיון. הארכיון מציג הודעות שסומנו כבוצעו ויש בו כפתור ביטול פעולה להחזרתן לתיבת הדואר הנכנס."
     booking_release_time: "שעת פתיחה"
     booking_release_time_hint: "היום הבא בסוף מגבלת ההזמנה העתידית נפתח בשעה זו בכל יום."
     inbox_filter_archive: "ארכיון"
     load_more_messages: "טעינת הודעות נוספות"
+    clear_providers: "ניקוי ספקים"
+    clear_services: "ניקוי שירותים"
+    refresh: "רענון"
+    sync: "סנכרון"
+    feed: "פיד"
+    do_not_contact_hint: "לא נשלחים ללקוח זה אישורי הזמנה, שינויים או תזכורות"
+    do_not_contact_warning: "לקוח זה ביקש שלא ליצור עמו קשר. הודעות שנשלחות מכאן עדיין יימסרו."
+    company_address: "כתובת החברה"
+    company_address_hint: "זו תהיה כתובת ברירת המחדל של כל ההזמנות והזמנות היומן"
+    cancel_reason_optional: "סיבה אופציונלית לביטול הפגישה, אם ברצונך ליידע אותנו:"
+    late_cancel_reason: "סיבת ביטול הפגישה:"
+    appointments_include_locations: "פגישות כוללות מיקום"
+    appointments_include_locations_hint: "מאפשר למעצב/ת שיער, לעוזר/ת או למנהל/ת לקבוע את מיקום הפגישה. כשהאפשרות כבויה, המיקום תמיד יהיה כתובת החברה."
+    appointments_include_meeting_links: "פגישות כוללות קישורי מפגש"
+    appointments_include_meeting_links_hint: "מאפשר למעצב/ת שיער, לעוזר/ת או למנהל/ת להוסיף לפגישה קישור למפגש מקוון. הקישור ייכלל בהזמנת היומן של הלקוח."
+    booking_provider_first_hint: "בדף ההזמנה, להציג ללקוח את מעצבי השיער לפני שהוא בוחר שירות."
+    display_order_switch_hint: "מאפשר ללקוחות להשתמש בכפתור בשלב הראשון של דף ההזמנה כדי לבחור קודם שירות או קודם מעצב/ת שיער, ורק אחר כך את השני."

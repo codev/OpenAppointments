@@ -116,9 +116,9 @@ de:
     appointment_confirmation: Bitte bestätigen Sie die Terminauswahl
     confirm: Bestätigung
     update: Aktualisierung
-    cancel_appointment_hint: Bitte klicken Sie auf "Abbrechen" um den Termin aus dem Terminplan des Unternehmens zu löschen.
+    cancel_appointment_hint: "Klicken Sie auf die Schaltfläche \"Abbrechen\", um den Termin abzusagen"
     cancel: Abbrechen
-    appointment_registered: Ihr Termin ist erfolgreich registriert worden.
+    appointment_registered: "Alles erledigt!"
     cancel_appointment_title: Termin stornieren
     appointment_cancelled: Ihr Termin ist erfolgreich storniert worden.
     appointment_cancelled_title: Termin storniert
@@ -167,7 +167,6 @@ de:
     all_day: Ganztägig
     manage_appointment_record_hint: Verwalten Sie alle Termineintragungen der zur Verfügung stehenden Anbieter und Dienstleistungen.
     select_filter_item_hint: Wählen Sie einen Anbieter oder eine Dienstleistung und sehen Sie die Termine im Kalender an.
-    enable_appointment_sync_hint: Beginnen Sie die Terminsynchronisationen mit dem Externe-Kalender des Dienstleisters.
     manage_customers_hint: Verwalten Sie die registrierten Kunden und sehen Sie die vergangenen Buchungen ein.
     manage_services_hint: Verwalten Sie die erhältlichen Dienstleistungen und Kategorien des Systems.
     manage_users_hint: Verwalten Sie die Endnutzer (Admins, Anbieter, Assistenten).
@@ -452,7 +451,7 @@ de:
     company: Unternehmen
     remove: Entfernen
     login_button: Anmeldeschaltfläche
-    display_login_button_hint: Legt fest, ob der Login-Button auf der Buchungsseite angezeigt wird.
+    display_login_button_hint: "Legt fest, ob die Anmeldeschaltfläche für das Personal auf der Buchungsseite angezeigt wird."
     private: Privatgelände
     private_hint: "Private Datensätze werden auf der öffentlichen Buchungsseite nicht angezeigt, können aber weiterhin über ihren direkten Buchungslink gebucht werden."
     reset: Zurücksetzen
@@ -652,7 +651,7 @@ de:
     start_date: Startdatum
     end_date: Enddatum
     remember_me: Meine Daten merken
-    remember_me_hint: Speichern Sie Ihre Daten für eine schnellere Buchung beim nächsten Mal.
+    remember_me_hint: "Speichern Sie Ihre Daten in diesem Browser, um beim nächsten Mal schneller zu buchen."
     legal_notice: Rechtlicher Hinweis
     legal_notice_url: URL für rechtlichen Hinweis
     legal_notice_url_hint: Geben Sie die URL zu Ihrer Seite mit rechtlichen Hinweisen ein.
@@ -695,24 +694,24 @@ de:
     messages_intercept_required: "Debug braucht eine gültige E-Mail-Adresse und Telefonnummer zum Umleiten."
     messages_retention_days: Delete messages older than (days)
     messages_retention_days_hint: Messages older than this many days are deleted automatically. Set 0 to keep all messages.
-    messages_email_subject: Outgoing Email Subject Line
+    messages_email_subject: "Betreffzeile der E-Mail"
     messages_email_subject_hint: Used for emails without their own Short Text, and for messages sent from the customer page.
     messages_providers_info: Notification providers deliver your notifications by email or SMS. Configure at least one provider and tick it inside each notification template.
     messages_provider_disabled: Disabled
-    messages_provider_outgoing: Outgoing
-    messages_provider_incoming_outgoing: Incoming and outgoing
+    messages_provider_outgoing: "Nur senden"
+    messages_provider_incoming_outgoing: "Senden und empfangen"
     messages_provider_email_info: Send notifications by email through the server or SMTP, and receive replies through the server or IMAP.
     messages_provider_twilio_info: Send and receive SMS with a Twilio account and phone number.
     messages_provider_plivo_info: Send and receive SMS with a Plivo account and phone number.
     messages_provider_textanywhere_info: Send and receive SMS with a TextAnywhere account.
-    messages_incoming: Incoming
-    messages_incoming_hint: Customer can reply to support incoming messages as well as outgoing ones.
+    messages_incoming: "Antworten empfangen"
+    messages_incoming_hint: "Kundschaft kann auf die von Ihnen gesendeten Nachrichten antworten."
     messages_test_sms_sent: "Test-SMS gesendet, pruefen Sie das Telefon."
     messages_test_sms_number: "Test-Telefonnummer"
     messages_test_sms: "Test-SMS senden"
     messages_smsgateway_invalid: "Die Gateway-Einstellungen konnten nicht geprueft werden:"
-    messages_smsgateway_inbound_hint: "Das Telefon liefert eingehende Nachrichten an diese Adresse, die Registrierung erfolgt beim Speichern mit aktiviertem Empfang automatisch."
-    messages_smsgateway_step_activate: "Aktiv und Eingehende Nachrichten empfangen ankreuzen, dann Speichern. Die Einstellungen werden getestet, beheben Sie Fehler und testen Sie den Versand mit der Schaltflaeche Test-SMS senden unten."
+    messages_smsgateway_inbound_hint: "Das Telefon liefert empfangene Nachrichten an diese Adresse, die Registrierung erfolgt beim Speichern mit aktiviertem Empfang automatisch."
+    messages_smsgateway_step_activate: "Haken Sie Active und Antworten empfangen an und klicken Sie dann auf Save. Die Einstellungen werden getestet, beheben Sie eventuelle Fehler und testen Sie das Senden mit der Schaltfläche Test-SMS senden unten."
     messages_smsgateway_step_credentials: "Auf dem Startbildschirm der App: Local server aus, Cloud server ein und die Offline-Schaltflaeche zum Verbinden druecken (auch Start on boot ankreuzen), dann Benutzername und Passwort vom Startbildschirm unten in Benutzername und Passwort kopieren."
     messages_smsgateway_step_signing: "Gehen Sie in der App zu Settings -> Webhooks -> Signing Key -> geben Sie einen Signaturschluessel ein und kopieren Sie ihn unten in den Webhook-Signaturschluessel."
     messages_smsgateway_step_token: "Bei einem privaten Server muss auf diesem Einstellungsbildschirm auch der Private Token eingetragen werden - er liegt in /app/data/private_token auf dem Gateway-Server."
@@ -733,14 +732,14 @@ de:
     messages_smsgateway_password: "Passwort"
     messages_smsgateway_signing_key: "Webhook-Signaturschluessel"
     messages_provider_smsgateway_info: "Sendet und empfaengt SMS ueber ein Android-Telefon mit der SMS-Gateway-App gegen unseren eigenen Server, ohne Kosten pro Nachricht."
-    messages_email_outgoing: Outgoing email
+    messages_email_outgoing: "E-Mail senden"
     messages_email_mode: Sending method
     messages_email_mode_server: Send email through server
     messages_email_mode_smtp: Send email with SMTP
     messages_smtp_host: SMTP host
     messages_smtp_port: SMTP port
     messages_smtp_tls: Use TLS
-    messages_email_incoming_section: Incoming email
+    messages_email_incoming_section: "E-Mail empfangen"
     messages_email_incoming_mode: Receiving method
     messages_email_incoming_server: Receive email through server
     messages_email_incoming_imap: Receive email with IMAP
@@ -749,8 +748,8 @@ de:
     messages_imap_port: IMAP port
     messages_email_credentials_hint: "Need an email delivery service? Get SMTP credentials from"
     messages_sms_credentials_hint: "Get your credentials from the provider console:"
-    messages_inbound_webhook: Incoming webhook URL
-    messages_inbound_webhook_hint: Paste this URL into the provider console so incoming messages reach the app. Keep it secret.
+    messages_inbound_webhook: "Webhook-URL für empfangene Nachrichten"
+    messages_inbound_webhook_hint: "Fügen Sie diese URL in die Konsole des Anbieters ein, damit empfangene Nachrichten die App erreichen. Halten Sie sie geheim."
     messages_twilio_account_sid: Account SID
     messages_twilio_auth_token: Auth token
     messages_from_number: From phone number
@@ -783,8 +782,8 @@ de:
     open_all_notification_templates: Open all notification templates
     close_all_notification_templates: Close all notification templates
     messages_address: Address
-    messages_incoming_label: Incoming
-    messages_outgoing_label: Outgoing
+    messages_incoming_label: "Empfangen"
+    messages_outgoing_label: "Gesendet"
     messages_manual_label: Manual
     messages_unknown_sender: Unknown sender
     messages_status_sent: Sent
@@ -889,7 +888,7 @@ de:
     filter_statuses_hint: 'Choose which appointment statuses to show.'
     appointment_statuses: 'Appointment Statuses'
     inbox: 'Inbox'
-    inbox_hint: 'Incoming messages from your customers.'
+    inbox_hint: "Von Ihrer Kundschaft empfangene Nachrichten."
     read: 'Read'
     message: 'Message'
     mark_as_read: 'Mark as read'
@@ -961,7 +960,7 @@ de:
     time_off_hint: "Für eine Abwesenheit an einem Teil des Tages geben Sie die Stunden ein, in denen Sie nicht da sind. Sie werden an diesen Tagen als Pause gespeichert."
     messages_sms_variation: "Jede SMS variieren"
     messages_sms_variation_hint: "Fügt am Ende jeder SMS einen kurzen Referenzcode hinzu, damit keine zwei Texte identisch sind, was manche Netzbetreiber verlangen."
-    provider_color_hint: "Wird für die Termine dieses Anbieters verwendet, wenn der Kalender alle anzeigt."
+    provider_color_hint: "Hintergrund für die Termine dieses Anbieters im Kalender. Die Farbe der Dienstleistung erscheint am Rand"
     working_providers: "Arbeitende Anbieter"
     hidden_from_public: "Vor der Öffentlichkeit verborgen"
     slot_interval_hint: "Wie oft den Kunden Startzeiten angeboten werden. Bei 15 kann eine 45-minütige Dienstleistung um 9:00, 9:15, 9:30 usw. beginnen; bei 60 um 9:00, 10:00, 11:00. Es hält nach dem Termin keine Zeit frei: Verlängern Sie dafür die Dauer der Dienstleistung."
@@ -978,8 +977,25 @@ de:
     message_move_to: "Zu {name} verschieben"
     message_moved: "Nachricht verschoben"
     notification_tokens_hint: "Vorlagenfelder, die Sie verwenden können. Klicken Sie auf eines, um es an der Schreibposition einzufügen oder zu kopieren:"
-    inbox_info: "Eingehende Nachrichten. Inbox listet Nachrichten auf, die zu bearbeiten sind, markieren Sie jede als Erledigt, sobald sie bearbeitet oder gelesen ist - Sie können sie weiterhin auf der Kundenseite oder im Archiv lesen. Archiv listet Nachrichten auf, die als Erledigt markiert wurden - dort gibt es eine Schaltfläche Rückgängig, um sie in die Inbox zurückzuholen."
+    inbox_info: "Empfangene Nachrichten. Der Posteingang listet Nachrichten auf, die bearbeitet werden müssen. Markieren Sie jede als erledigt, sobald sie bearbeitet oder gelesen wurde - Sie können sie weiterhin auf der Kundenseite oder im Archiv lesen. Das Archiv listet als erledigt markierte Nachrichten auf - mit einer Rückgängig-Schaltfläche, um sie in den Posteingang zurückzulegen."
     booking_release_time: "Freigabezeit"
     booking_release_time_hint: "Der nächste Tag am Ende des zukünftigen Buchungslimits wird täglich zu dieser Zeit freigegeben."
     inbox_filter_archive: "Archiv"
     load_more_messages: "Weitere Nachrichten laden"
+    clear_providers: "Anbieter entfernen"
+    clear_services: "Dienstleistungen entfernen"
+    refresh: "Aktualisieren"
+    sync: "Synchronisieren"
+    feed: "Feed"
+    do_not_contact_hint: "An diese Kundschaft werden keine Buchungsbestätigungen, Änderungen oder Erinnerungen gesendet"
+    do_not_contact_warning: "Diese Person möchte nicht kontaktiert werden. Nachrichten, die hierher gesendet werden, werden trotzdem zugestellt."
+    company_address: "Firmenadresse"
+    company_address_hint: "Dies ist der Standardort für alle Buchungen und Kalendereinladungen"
+    cancel_reason_optional: "Optionaler Grund für die Absage des Termins, falls Sie ihn uns mitteilen möchten:"
+    late_cancel_reason: "Grund für die Absage des Termins:"
+    appointments_include_locations: "Termine enthalten Orte"
+    appointments_include_locations_hint: "Erlaubt Friseur:innen, Assistenz oder Administration, den Ort eines Termins festzulegen. Ist dies ausgeschaltet, ist der Ort immer die Firmenadresse."
+    appointments_include_meeting_links: "Termine enthalten Meeting-Links"
+    appointments_include_meeting_links_hint: "Erlaubt Friseur:innen, Assistenz oder Administration, einem Termin einen Link zu einem Online-Meeting hinzuzufügen. Der Link wird in die Kalendereinladung der Kundschaft aufgenommen."
+    booking_provider_first_hint: "Auf der Buchungsseite zuerst die Friseur:innen anzeigen, bevor eine Dienstleistung gewählt wird."
+    display_order_switch_hint: "Kundschaft kann im ersten Schritt der Buchungsseite per Schaltfläche wählen, ob zuerst die Dienstleistung oder zuerst die Friseurin bzw. der Friseur gewählt wird."

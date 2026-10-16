@@ -116,9 +116,9 @@ sq:
     appointment_confirmation: Konfirmimi i Takimit
     confirm: Konfirmo
     update: Përditëso
-    cancel_appointment_hint: Shtypni butonin "Anulo" për të hequr takimin nga orari i kompanisë.
+    cancel_appointment_hint: "Shtypni butonin \"Anulo\" për të anuluar takimin"
     cancel: Anulo
-    appointment_registered: Takimi juaj u regjistrua me sukses!
+    appointment_registered: "Gjithçka u krye!"
     cancel_appointment_title: Anulo Takimin
     appointment_cancelled: Takimi juaj u anulua me sukses.
     appointment_cancelled_title: Takimi i Anuluar
@@ -167,7 +167,6 @@ sq:
     all_day: Gjithë Ditën
     manage_appointment_record_hint: Menaxhoni të gjitha regjistrimet e takimeve të ofruesve dhe shërbimeve të disponueshme.
     select_filter_item_hint: Zgjidhni një ofrues ose një shërbim dhe shikoni takimet në kalendar.
-    enable_appointment_sync_hint: Aktivizo sinkronizimin e takimeve me një kalendar të jashtëm.
     manage_customers_hint: Menaxhoni klientët e regjistruar dhe shikoni historinë e rezervimeve të tyre.
     manage_services_hint: Menaxhoni shërbimet dhe kategoritë e disponueshme të sistemit.
     manage_users_hint: Menaxhoni përdoruesit e backend (administratorë, ofrues, asistentë).
@@ -452,7 +451,7 @@ sq:
     company: Kompania
     remove: Hiq
     login_button: Butoni i Identifikimit
-    display_login_button_hint: Përcakton nëse butoni i identifikimit shfaqet në faqen e rezervimit.
+    display_login_button_hint: "Përcakton nëse butoni i hyrjes për stafin shfaqet në faqen e rezervimit."
     private: Privat
     private_hint: "Regjistrimet private nuk shfaqen në faqen publike të rezervimeve, por ato mund të rezervohen ende përmes lidhjes së tyre direkte të rezervimit."
     reset: Rivendos
@@ -652,7 +651,7 @@ sq:
     start_date: Data e Fillimit
     end_date: Data e Mbarimit
     remember_me: Mbaj mend informacionet e mia
-    remember_me_hint: Ruani të dhënat tuaja për rezervim më të shpejtë herën tjetër.
+    remember_me_hint: "Ruani të dhënat tuaja në këtë shfletues për rezervim më të shpejtë herën tjetër."
     legal_notice: Njoftim Ligjor
     legal_notice_url: URL e Njoftimit Ligjor
     legal_notice_url_hint: Shkruani URL-në e faqes suaj të njoftimit ligjor.
@@ -690,29 +689,29 @@ sq:
     messages_enabled_hint: "Aktivizo ose çaktivizo globalisht të gjitha njoftimet"
     messages_enabled_on: "Aktiv"
     messages_enabled_off: "Joaktiv - email-et e rivendosjes së fjalëkalimit do të dërgohen gjithsesi"
-    messages_enabled_debug: "Debug - ridrejto të gjitha email-et dhe mesazhet dalëse"
-    messages_intercept_hint: "Sa kohë është zgjedhur Debug, çdo email dalës shkon në këtë adresë dhe çdo SMS në këtë numër."
+    messages_enabled_debug: "Debug - ridrejto të gjitha emailet dhe mesazhet e dërguara"
+    messages_intercept_hint: "Çdo email i dërguar shkon te kjo adresë dhe çdo SMS te ky numër për sa kohë është zgjedhur Debug."
     messages_intercept_required: "Debug kërkon një adresë email-i dhe një numër telefoni të vlefshëm për ridrejtim."
     messages_retention_days: Delete messages older than (days)
     messages_retention_days_hint: Messages older than this many days are deleted automatically. Set 0 to keep all messages.
-    messages_email_subject: Outgoing Email Subject Line
+    messages_email_subject: "Subjekti i emailit"
     messages_email_subject_hint: Used for emails without their own Short Text, and for messages sent from the customer page.
     messages_providers_info: Notification providers deliver your notifications by email or SMS. Configure at least one provider and tick it inside each notification template.
     messages_provider_disabled: Disabled
-    messages_provider_outgoing: Outgoing
-    messages_provider_incoming_outgoing: Incoming and outgoing
+    messages_provider_outgoing: "Vetëm dërgim"
+    messages_provider_incoming_outgoing: "Dërgim dhe marrje"
     messages_provider_email_info: Send notifications by email through the server or SMTP, and receive replies through the server or IMAP.
     messages_provider_twilio_info: Send and receive SMS with a Twilio account and phone number.
     messages_provider_plivo_info: Send and receive SMS with a Plivo account and phone number.
     messages_provider_textanywhere_info: Send and receive SMS with a TextAnywhere account.
-    messages_incoming: Incoming
-    messages_incoming_hint: Customer can reply to support incoming messages as well as outgoing ones.
+    messages_incoming: "Merr përgjigje"
+    messages_incoming_hint: "Klientët mund t'u përgjigjen mesazheve që dërgoni."
     messages_test_sms_sent: "SMS prove u dergua, kontrolloni telefonin."
     messages_test_sms_number: "Numri i telefonit te proves"
     messages_test_sms: "Dergo SMS prove"
     messages_smsgateway_invalid: "Cilesimet e portes nuk u verifikuan dot:"
-    messages_smsgateway_inbound_hint: "Telefoni dorezon mesazhet hyrese ne kete adrese, regjistrimi behet automatikisht kur ruani me marrjen te ndezur."
-    messages_smsgateway_step_activate: "Shenoni Aktiv dhe Merr mesazhet hyrese, pastaj Ruani. Cilesimet testohen; rregulloni gabimet dhe provoni dergimin me butonin Dergo SMS prove me poshte."
+    messages_smsgateway_inbound_hint: "Telefoni i dorëzon mesazhet e marra në këtë adresë, regjistrimi bëhet automatikisht gjatë ruajtjes me marrjen të aktivizuar."
+    messages_smsgateway_step_activate: "Shënoni Active dhe Merr përgjigje, pastaj Save. Cilësimet testohen, korrigjoni çdo gabim dhe përdorni butonin e dërgimit të SMS-it provë më poshtë për të testuar dërgimin."
     messages_smsgateway_step_credentials: "Ne ekranin kryesor fikni Local server, ndizni Cloud server dhe shtypni butonin Offline per t'u lidhur (shenoni edhe Start on boot), pastaj kopjoni emrin e perdoruesit dhe fjalekalimin nga ekrani kryesor te fushat Emri i perdoruesit dhe Fjalekalimi me poshte."
     messages_smsgateway_step_signing: "Shkoni te Settings -> Webhooks -> Signing Key ne aplikacion -> vendosni nje celes nenshkrimi dhe kopjojeni te Celesi i nenshkrimit te webhook-ut me poshte."
     messages_smsgateway_step_token: "Nese perdorni server privat vendosni edhe Private Token ne te njejtin ekran - tokeni ndodhet ne /app/data/private_token ne serverin e portes."
@@ -733,14 +732,14 @@ sq:
     messages_smsgateway_password: "Fjalekalimi"
     messages_smsgateway_signing_key: "Celesi i nenshkrimit te webhook-ut"
     messages_provider_smsgateway_info: "Dergon dhe merr SMS permes nje telefoni Android me aplikacionin SMS Gateway ne serverin tone, pa kosto per mesazh."
-    messages_email_outgoing: Outgoing email
+    messages_email_outgoing: "Dërgo email"
     messages_email_mode: Sending method
     messages_email_mode_server: Send email through server
     messages_email_mode_smtp: Send email with SMTP
     messages_smtp_host: SMTP host
     messages_smtp_port: SMTP port
     messages_smtp_tls: Use TLS
-    messages_email_incoming_section: Incoming email
+    messages_email_incoming_section: "Merr email"
     messages_email_incoming_mode: Receiving method
     messages_email_incoming_server: Receive email through server
     messages_email_incoming_imap: Receive email with IMAP
@@ -749,8 +748,8 @@ sq:
     messages_imap_port: IMAP port
     messages_email_credentials_hint: "Need an email delivery service? Get SMTP credentials from"
     messages_sms_credentials_hint: "Get your credentials from the provider console:"
-    messages_inbound_webhook: Incoming webhook URL
-    messages_inbound_webhook_hint: Paste this URL into the provider console so incoming messages reach the app. Keep it secret.
+    messages_inbound_webhook: "URL e webhook-ut për mesazhet e marra"
+    messages_inbound_webhook_hint: "Ngjitni këtë URL në konsolën e ofruesit që mesazhet e marra të arrijnë te aplikacioni. Mbajeni të fshehtë."
     messages_twilio_account_sid: Account SID
     messages_twilio_auth_token: Auth token
     messages_from_number: From phone number
@@ -783,8 +782,8 @@ sq:
     open_all_notification_templates: Open all notification templates
     close_all_notification_templates: Close all notification templates
     messages_address: Address
-    messages_incoming_label: Incoming
-    messages_outgoing_label: Outgoing
+    messages_incoming_label: "Marrë"
+    messages_outgoing_label: "Dërguar"
     messages_manual_label: Manual
     messages_unknown_sender: Unknown sender
     messages_status_sent: Sent
@@ -889,7 +888,7 @@ sq:
     filter_statuses_hint: 'Choose which appointment statuses to show.'
     appointment_statuses: 'Appointment Statuses'
     inbox: 'Inbox'
-    inbox_hint: 'Incoming messages from your customers.'
+    inbox_hint: "Mesazhet e marra nga klientët tuaj."
     read: 'Read'
     message: 'Message'
     mark_as_read: 'Mark as read'
@@ -961,7 +960,7 @@ sq:
     time_off_hint: "Për një pjesë të ditës, vendosni orët kur mungoni. Ato ruhen si pauzë në ato data."
     messages_sms_variation: "Ndrysho çdo SMS"
     messages_sms_variation_hint: "Shton një kod të shkurtër referimi në fund të çdo SMS-je, në mënyrë që asnjë dy mesazhe të mos jenë njësoj, gjë që kërkohet nga disa operatorë."
-    provider_color_hint: "Përdoret për takimet e këtij ofruesi kur kalendari shfaq të gjithë."
+    provider_color_hint: "Sfondi i takimeve të këtij ofruesi në kalendar. Ngjyra e shërbimit shfaqet në skaj"
     working_providers: "Ofruesit që Punojnë"
     hidden_from_public: "Fshehur nga Publiku"
     slot_interval_hint: "Sa shpesh u ofrohen klientëve oraret e fillimit. Me 15, një shërbim 45 minutësh mund të fillojë në 9:00, 9:15, 9:30 e kështu me radhë; me 60, në 9:00, 10:00, 11:00. Kjo nuk lë kohë të lirë pas takimit: për këtë, zgjatni kohëzgjatjen e shërbimit."
@@ -978,8 +977,25 @@ sq:
     message_move_to: "Zhvendos te {name}"
     message_moved: "Mesazhi u zhvendos"
     notification_tokens_hint: "Fusha shablloni që mund të përdorni. Klikoni një për ta futur aty ku po shkruanit, ose për ta kopjuar:"
-    inbox_info: "Mesazhe hyrëse. Inbox liston mesazhet që duhen trajtuar - shënoni secilin si Përfunduar pasi të trajtohet ose të lexohet; mund t'i lexoni ende në faqen e klientit ose në Arkiv. Arkivi liston mesazhet e shënuara si Përfunduar - ka një buton Anulo që i kthen në Inbox."
+    inbox_info: "Mesazhet e marra. Kutia hyrëse liston mesazhet që duhen trajtuar, shënoni secilin si të kryer pasi të jetë trajtuar ose lexuar - mund t'i lexoni prapë në faqen e klientit ose në arkiv. Arkivi liston mesazhet e shënuara si të kryera - ka një buton zhbërjeje për t'i kthyer në kutinë hyrëse."
     booking_release_time: "Ora e hapjes"
     booking_release_time_hint: "Dita tjetër në fund të limitit të rezervimit në të ardhmen hapet në këtë orë çdo ditë."
     inbox_filter_archive: "Arkivi"
     load_more_messages: "Ngarko më shumë mesazhe"
+    clear_providers: "Pastro ofruesit"
+    clear_services: "Pastro shërbimet"
+    refresh: "Rifresko"
+    sync: "Sinkronizo"
+    feed: "Rrjedha"
+    do_not_contact_hint: "Këtij klienti nuk i dërgohen konfirmime rezervimi, ndryshime ose kujtesa"
+    do_not_contact_warning: "Ky klient ka kërkuar të mos kontaktohet. Mesazhet e dërguara këtu dorëzohen prapë."
+    company_address: "Adresa e kompanisë"
+    company_address_hint: "Kjo do të jetë vendndodhja e paracaktuar për të gjitha rezervimet dhe ftesat e kalendarit"
+    cancel_reason_optional: "Arsyeja e anulimit të takimit (opsionale), nëse dëshironi të na e tregoni:"
+    late_cancel_reason: "Arsyeja e anulimit të takimit:"
+    appointments_include_locations: "Takimet përfshijnë vendndodhjen"
+    appointments_include_locations_hint: "I lejon një ofruesi, asistenti ose administratori të caktojë vendndodhjen e një takimi. Kur është çaktivizuar, vendndodhja do të jetë gjithmonë adresa e kompanisë."
+    appointments_include_meeting_links: "Takimet përfshijnë lidhje takimi"
+    appointments_include_meeting_links_hint: "I lejon një ofruesi, asistenti ose administratori të shtojë te takimi një lidhje për një takim në internet. Lidhja do të përfshihet në ftesën e kalendarit të klientit."
+    booking_provider_first_hint: "Në faqen e rezervimit shfaq ofruesit para se klienti të zgjedhë një shërbim."
+    display_order_switch_hint: "Lejo klientët të përdorin një buton në hapin e parë të faqes së rezervimit që u lejon të zgjedhin fillimisht shërbimin ose fillimisht ofruesin, përpara se të zgjedhin tjetrin."
