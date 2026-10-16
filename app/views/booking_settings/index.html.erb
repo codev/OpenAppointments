@@ -273,6 +273,18 @@
 
                                     <div class="mb-3">
                                         <div class="form-check form-switch">
+                                            <%= setting_switch "appointments_include_meeting_links" %>
+                                            <label class="form-check-label" for="appointments-include-meeting-links">
+                                                <%= lang('appointments_include_meeting_links') %>
+                                            </label>
+                                        </div>
+                                        <div class="form-text text-muted">
+                                            <small><%= lang('appointments_include_meeting_links_hint') %></small>
+                                        </div>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <div class="form-check form-switch">
                                             <%= setting_switch "booking_provider_first" %>
                                             <label class="form-check-label" for="booking-provider-first">
                                                 <%= lang('booking_provider_first') %>

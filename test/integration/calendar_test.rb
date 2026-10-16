@@ -160,6 +160,23 @@ class CalendarTest < ActionDispatch::IntegrationTest
     Setting.set("appointments_include_locations", "0")
   end
 
+  test "save_appointment ignores the meeting link unless appointments include meeting links" do
+    login_admin
+    data = { start_datetime: "2026-07-21 09:00:00", end_datetime: "2026-07-21 09:30:00",
+             id_users_provider: users(:zane).id, id_services: services(:haircut).id,
+             id_users_customer: users(:jx).id, status: "Booked", meeting_link: "https://meet.example.org/abc" }
+
+    post "/calendar/save_appointment", params: { appointment_data: data }
+    assert_equal true, response.parsed_body["success"]
+    assert_predicate Appointment.find(response.parsed_body["id"]).meeting_link, :blank?
+
+    Setting.set("appointments_include_meeting_links", "1")
+    post "/calendar/save_appointment", params: { appointment_data: data, force_save: true }
+    assert_equal "https://meet.example.org/abc", Appointment.find(response.parsed_body["id"]).meeting_link
+  ensure
+    Setting.set("appointments_include_meeting_links", "0")
+  end
+
   test "delete_appointment destroys the appointment" do
     login_admin
     assert_difference "Appointment.appointments.count", -1 do

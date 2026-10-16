@@ -66,11 +66,13 @@
                             </div>
                         <% end %>
 
-                        <div class="mb-3">
-                            <label for="appointment-meeting-link" class="form-label"><%= lang('meeting_link') %></label>
-                            <%= text_field_tag "appointment[meeting_link]", @appointment.meeting_link, id: "appointment-meeting-link",
-                                               class: "form-control", placeholder: "https://" %>
-                        </div>
+                        <% if Setting.get("appointments_include_meeting_links", "0") == "1" %>
+                            <div class="mb-3">
+                                <label for="appointment-meeting-link" class="form-label"><%= lang('meeting_link') %></label>
+                                <%= text_field_tag "appointment[meeting_link]", @appointment.meeting_link, id: "appointment-meeting-link",
+                                                   class: "form-control", placeholder: "https://" %>
+                            </div>
+                        <% end %>
 
                         <div class="mb-3">
                             <label for="appointment-status" class="form-label"><%= lang('status') %></label>

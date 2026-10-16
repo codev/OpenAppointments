@@ -69,6 +69,26 @@ class EventFormsTest < ActionDispatch::IntegrationTest
     Setting.set("appointments_include_locations", "0")
   end
 
+  test "the meeting link field shows only when appointments include meeting links" do
+    login_admin
+    get "/appointments/new"
+    assert_select "#appointment-meeting-link", count: 0
+
+    Setting.set("appointments_include_meeting_links", "1")
+    get "/appointments/new"
+    assert_select "input#appointment-meeting-link[name='appointment[meeting_link]']"
+  ensure
+    Setting.set("appointments_include_meeting_links", "0")
+  end
+
+  test "booking settings offer the meeting links switch, off by default, below the locations switch" do
+    login_admin
+    get "/booking_settings"
+    assert_select "input[type=checkbox][name='settings[appointments_include_meeting_links]']:not([checked])"
+    names = css_select("input[type=checkbox][name^='settings[']").map { |box| box["name"] }
+    assert_equal names.index("settings[appointments_include_locations]") + 1, names.index("settings[appointments_include_meeting_links]")
+  end
+
   test "booking settings offer the locations switch, off by default, above provider first" do
     login_admin
     get "/booking_settings"

@@ -43,6 +43,7 @@ module EventSaving
     previous_status_id = appointment.status_id
     fields = appointment_data.slice(*APPOINTMENT_FIELDS).except("id")
     fields = fields.except("location") unless Setting.get("appointments_include_locations", "0") == "1"
+    fields = fields.except("meeting_link") unless Setting.get("appointments_include_meeting_links", "0") == "1"
     appointment.assign_attributes(fields)
     appointment.book_datetime ||= Time.now
     appointment.save!

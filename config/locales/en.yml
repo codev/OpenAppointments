@@ -14,6 +14,8 @@ en:
     import_failures: "Failed records"
     appointments_include_locations: "Appointments Include Locations"
     appointments_include_locations_hint: "Allows a stylist, assistant or admin to set the location of an appointment; when this is off the location will be fixed as the company address, or blank"
+    appointments_include_meeting_links: "Appointments Include Meeting Links"
+    appointments_include_meeting_links_hint: "Allows a stylist, assistant or admin to add a link to an online meeting to an appointment; the link is included in the customer's calendar invite."
     booking_provider_first: "Provider first instead of service"
     display_order_switch: "Display the switch to choose Service or Provider first"
     display_powered_by: "Display Powered by OpenAppointments"
