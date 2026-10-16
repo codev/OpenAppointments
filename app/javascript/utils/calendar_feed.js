@@ -49,6 +49,17 @@ App.Utils.CalendarFeed = (function () {
         });
     }
 
+    // Bootstrap ignores show() while the dialog is still fading out, so a
+    // dialog that is hidden but still visible is shown once the fade ends.
+    function show() {
+        const element = document.getElementById('calendar-feed-modal');
+        if ($(element).is(':visible') && !element.classList.contains('show')) {
+            $(element).one('hidden.bs.modal', () => modal().show());
+        } else {
+            modal().show();
+        }
+    }
+
     // The confirm is its own modal, so the feed dialog steps aside and returns.
     function reset() {
         modal().hide();
@@ -57,14 +68,14 @@ App.Utils.CalendarFeed = (function () {
                 text: lang('cancel'),
                 click: (event, messageModal) => {
                     messageModal.hide();
-                    modal().show();
+                    show();
                 },
             },
             {
                 text: lang('confirm'),
                 click: (event, messageModal) => {
                     messageModal.hide();
-                    fetchLink(true).done(() => modal().show());
+                    fetchLink(true).done(show);
                 },
             },
         ]);
@@ -85,5 +96,6 @@ App.Utils.CalendarFeed = (function () {
 
     return {
         initialize,
+        show,
     };
 })();

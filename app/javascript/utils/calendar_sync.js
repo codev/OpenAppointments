@@ -108,7 +108,7 @@ App.Utils.CalendarSync = (function () {
             selectGoogleCalendar();
             if (!$('#calendar-feed-modal').hasClass('show')) {
                 bootstrap.Tab.getOrCreateInstance(document.getElementById('calendar-sync-tab')).show();
-                feedModal().show();
+                App.Utils.CalendarFeed.show();
             }
         }
 

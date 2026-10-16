@@ -34,6 +34,13 @@
         document.querySelector('turbo-frame#series').reload();
     }
 
+    // A reloaded day view arrives unhidden; while the series list is shown it stays alone.
+    function keepSeriesView() {
+        if ($('#series-view').length && !$('#series-view').hasClass('d-none')) {
+            $('#calendar .calendar-view, #not-working-notes').addClass('d-none');
+        }
+    }
+
     function showSeriesView(show) {
         $('#series-view').toggleClass('d-none', !show);
         $('#calendar .calendar-view, #not-working-notes').toggleClass('d-none', show);
@@ -98,6 +105,7 @@
                     App.Utils.CalendarEvents.closePopover();
                     tippy('[data-tippy-content]');
                     reopenFilter();
+                    keepSeriesView();
                 }
             });
         });
