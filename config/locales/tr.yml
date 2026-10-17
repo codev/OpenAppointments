@@ -325,7 +325,6 @@ tr:
     no_privileges_message: Bu sayfayı görmek için gereken yetkiye sahip değilsiniz. Lütfen başka bir bölüme geçin.
     backend_calendar: Arka uç Takvim
     start_date_time: Başlangıç Tarih / Zaman
-    end_date_time: 'Bitiş Tarih / Zaman '
     licensed_under: 'Lisanslıdır '
     unexpected_issues_occurred: Beklenmeyen sorunlar oldu.
     service_communication_error: Sunucu iletişim hatası, lütfen tekrar deneyin.
@@ -999,3 +998,5 @@ tr:
     appointments_include_meeting_links_hint: "Bir hizmet sağlayıcının, asistanın veya yöneticinin randevuya çevrimiçi toplantı bağlantısı eklemesine izin verir. Bağlantı müşterinin takvim davetine eklenir."
     booking_provider_first_hint: "Randevu sayfasında müşteriye, hizmet seçmeden önce hizmet sağlayıcıları gösterir."
     display_order_switch_hint: "Müşterilerin randevu sayfasının ilk adımındaki bir düğmeyle önce hizmeti ya da önce hizmet sağlayıcıyı seçip ardından diğerini seçmesine izin verir."
+    about_and_services: "Hakkında ve Hizmetler"
+    notes_internal_hint: "Dahili notlar - personel girişi olan kişiler tarafından görülebilir"

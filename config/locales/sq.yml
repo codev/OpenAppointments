@@ -325,7 +325,6 @@ sq:
     no_privileges_message: Ju nuk keni privilegjet e nevojshme për të parë këtë faqe. Ju lutemi lundroni në një seksion tjetër.
     backend_calendar: Kalendari i Backend
     start_date_time: Data / Ora e Fillimit
-    end_date_time: Data / Ora e Mbarimit
     licensed_under: I Licencuar Nën
     unexpected_issues_occurred: Ndodhën çështje të papritura.
     service_communication_error: Ndodhi një gabim në komunikimin me serverin, ju lutemi provoni përsëri.
@@ -999,3 +998,5 @@ sq:
     appointments_include_meeting_links_hint: "I lejon një ofruesi, asistenti ose administratori të shtojë te takimi një lidhje për një takim në internet. Lidhja do të përfshihet në ftesën e kalendarit të klientit."
     booking_provider_first_hint: "Në faqen e rezervimit shfaq ofruesit para se klienti të zgjedhë një shërbim."
     display_order_switch_hint: "Lejo klientët të përdorin një buton në hapin e parë të faqes së rezervimit që u lejon të zgjedhin fillimisht shërbimin ose fillimisht ofruesin, përpara se të zgjedhin tjetrin."
+    about_and_services: "Rreth dhe shërbimet"
+    notes_internal_hint: "Shënime të brendshme - të dukshme për personat me hyrje si staf"

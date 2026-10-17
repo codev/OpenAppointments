@@ -325,7 +325,6 @@
     no_privileges_message: Du har ikke nødvendige privilegier for å se denne siden. Vennligst naviger til en annen seksjon.
     backend_calendar: Backend Kalender
     start_date_time: Startdato / Tid
-    end_date_time: Sluttdato / Tid
     licensed_under: Lisensiert Under
     unexpected_issues_occurred: Uventede problemer oppstod.
     service_communication_error: En serverkommunikasjonsfeil oppstod, vennligst prøv igjen.
@@ -999,3 +998,5 @@
     appointments_include_meeting_links_hint: "Lar en stylist, assistent eller administrator legge til en lenke til et nettmøte i en avtale. Lenken tas med i kundens kalenderinvitasjon."
     booking_provider_first_hint: "På bookingsiden vises stylistene for kunden før de velger en tjeneste."
     display_order_switch_hint: "La kunder bruke en knapp i første trinn på bookingsiden for å velge tjeneste først eller stylist først, før de velger den andre."
+    about_and_services: "Om og tjenester"
+    notes_internal_hint: "Interne notater - synlige for personer med en ansattinnlogging"

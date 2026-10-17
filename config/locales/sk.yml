@@ -325,7 +325,6 @@ sk:
     no_privileges_message: Nemáte požadované oprávnenie na zobrazenie tejto stránky. Prejdite do inej sekcie.
     backend_calendar: Administrácia - kalendár
     start_date_time: Dátum začatia / čas
-    end_date_time: Dátum konca / čas
     licensed_under: Licencované pod
     unexpected_issues_occurred: Došlo k neočakávanej chybe
     service_communication_error: Pri komunikácií so serverom došlo k chybe, skúste to prosím znova.
@@ -999,3 +998,5 @@ sk:
     appointments_include_meeting_links_hint: "Umožňuje pracovníkovi, asistentovi alebo správcovi pridať k rezervácii odkaz na online schôdzku. Odkaz bude súčasťou pozvánky do kalendára zákazníka."
     booking_provider_first_hint: "Na stránke rezervácie zobraziť zákazníkovi pracovníkov pred výberom služby."
     display_order_switch_hint: "Umožniť zákazníkom použiť v prvom kroku stránky rezervácie tlačidlo, ktoré im dovolí vybrať najprv službu alebo najprv pracovníka a až potom to druhé."
+    about_and_services: "O stylistovi a služby"
+    notes_internal_hint: "Interné poznámky - viditeľné pre ľudí s prihlásením zamestnanca"

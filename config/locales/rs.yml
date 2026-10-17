@@ -325,7 +325,6 @@ rs:
     no_privileges_message: Nemate potrebno odobrenje da biste posetili ovu stranicu. Molimo vas da odaberete drugu oblast.
     backend_calendar: Kalendar u pozadini
     start_date_time: Početak datum / vreme
-    end_date_time: Kraj datum / vreme
     licensed_under: Licencirano sa
     unexpected_issues_occurred: Prijavljen je problem!
     service_communication_error: Prijavljena je greška na serveru, pokušajte ponovo.
@@ -999,3 +998,5 @@ rs:
     appointments_include_meeting_links_hint: "Omogućava izvršiocu usluge, asistentu ili administratoru da terminu doda link ka onlajn sastanku. Link će biti uključen u pozivnicu u kalendaru posetioca."
     booking_provider_first_hint: "Na stranici za zakazivanje prikaži posetiocu izvršioce usluge pre nego što izabere uslugu."
     display_order_switch_hint: "Omogućava posetiocima da koriste dugme u prvom koraku stranice za zakazivanje kako bi prvo izabrali uslugu ili prvo izvršioca usluge, pre nego što izaberu drugo."
+    about_and_services: "O nama i usluge"
+    notes_internal_hint: "Interne beleške - vidljive osobama sa nalogom osoblja"

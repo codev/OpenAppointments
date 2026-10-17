@@ -325,7 +325,6 @@ it:
     no_privileges_message: Non hai i privilegi richiesti per visualizzare questa pagina. Naviga una sezione differente.
     backend_calendar: Calendario backend
     start_date_time: Inizio Data / Ora
-    end_date_time: Fine Data / Ora
     licensed_under: Distribuito sotto licenza
     unexpected_issues_occurred: Si sono verificati problemi inaspettati.
     service_communication_error: Si è verificiato un errore di comunicazione con il server, prova di nuovo.
@@ -999,3 +998,5 @@ it:
     appointments_include_meeting_links_hint: "Permette a un parrucchiere, assistente o amministratore di aggiungere a un appuntamento il link di una riunione online. Il link sarà incluso nell'invito del calendario del cliente."
     booking_provider_first_hint: "Nella pagina di prenotazione mostra al cliente i parrucchieri prima che scelga un servizio."
     display_order_switch_hint: "Permette ai clienti di usare un pulsante nel primo passaggio della pagina di prenotazione per scegliere prima un servizio o prima un parrucchiere, prima di scegliere l'altro."
+    about_and_services: "Informazioni e servizi"
+    notes_internal_hint: "Note interne - visibili alle persone con un accesso dello staff"

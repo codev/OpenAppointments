@@ -325,7 +325,6 @@ ja:
     no_privileges_message: 該当のページを見るための権限がありません。別のページへ移動してください。
     backend_calendar: 管理カレンダー
     start_date_time: 開始日/時間
-    end_date_time: 終了日/時間
     licensed_under: ライセンス：
     unexpected_issues_occurred: 予期せぬ問題が発生しました。
     service_communication_error: サーバー接続エラーが発生しました。しばらくしてから再度操作してください。
@@ -999,3 +998,5 @@ ja:
     appointments_include_meeting_links_hint: "スタイリスト、アシスタント、管理者が予約にオンラインミーティングのリンクを追加できるようにします。リンクはお客様のカレンダー招待に含まれます。"
     booking_provider_first_hint: "予約ページで、サービスを選ぶ前にスタイリストをお客様に表示します。"
     display_order_switch_hint: "予約ページの最初のステップに、サービスから先に選ぶかスタイリストから先に選ぶかを切り替えるボタンをお客様に表示します。"
+    about_and_services: "概要とサービスメニュー"
+    notes_internal_hint: "社内向けの連絡事項 - スタッフのログインを持つ人に表示されます"

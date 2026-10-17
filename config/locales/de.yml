@@ -325,7 +325,6 @@ de:
     no_privileges_message: Sie haben nicht die Berechtigung, diese Seite zu sehen. Bitte wechseln Sie zu einem anderen Abschnitt.
     backend_calendar: Backend-Kalender
     start_date_time: Start Datum/Zeit
-    end_date_time: Ende Datum/Zeit
     licensed_under: Lizenziert unter
     unexpected_issues_occurred: Unerwartete Probleme aufgetreten.
     service_communication_error: Während der Kommunikation mit dem Server ist ein Fehler aufgetreten, bitte versuchen Sie es erneut.
@@ -999,3 +998,5 @@ de:
     appointments_include_meeting_links_hint: "Erlaubt Friseur:innen, Assistenz oder Administration, einem Termin einen Link zu einem Online-Meeting hinzuzufügen. Der Link wird in die Kalendereinladung der Kundschaft aufgenommen."
     booking_provider_first_hint: "Auf der Buchungsseite zuerst die Friseur:innen anzeigen, bevor eine Dienstleistung gewählt wird."
     display_order_switch_hint: "Kundschaft kann im ersten Schritt der Buchungsseite per Schaltfläche wählen, ob zuerst die Dienstleistung oder zuerst die Friseurin bzw. der Friseur gewählt wird."
+    about_and_services: "Über mich & Dienstleistungen"
+    notes_internal_hint: "Interne Bemerkungen - sichtbar für Personen mit Mitarbeiter-Login"

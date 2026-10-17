@@ -325,7 +325,6 @@ lb:
     no_privileges_message: Dir hutt net déi néideg Rechter fir dës Säit ze gesinn. Wisselt w.e.g. op eng aner Usicht.
     backend_calendar: Backend Kalenner
     start_date_time: Ufanksdatum / Zäit
-    end_date_time: Schlussdatum / Zäit
     licensed_under: Lizenzéiert ënnert
     unexpected_issues_occurred: Onertwaarte Problemer sinn opgetrueden.
     service_communication_error: Während der Kommunikatioun mam Server ass ee Fehler opgetrueden, probéiert et w.e.g. nach ee Mol.
@@ -999,3 +998,5 @@ lb:
     appointments_include_meeting_links_hint: "Erlaabt engem Coiffeur, Assistent oder Admin en Link zu engem Online-Meeting un en Termäin unzehänken. De Link ass an der Kalenner-Invitatioun vum Client abegraff."
     booking_provider_first_hint: "Op der Reservatiounssäit dem Client d'Coiffeuren weisen, ier hien eng Dingschtleeschtung wielt."
     display_order_switch_hint: "Clienten erlaben, um éischte Schrëtt vun der Reservatiounssäit mat engem Knäppchen ze wielen, ob se fir d'éischt eng Dingschtleeschtung oder fir d'éischt e Coiffeur wëllen, ier se dat anert wielen."
+    about_and_services: "Iwwer an Dingschtleeschtungen"
+    notes_internal_hint: "Intern Bemierkungen - sichtbar fir Persounen mat engem Mataarbechter-Login"

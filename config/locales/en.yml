@@ -336,7 +336,6 @@ en:
     no_privileges_message: You do not have the required privileges to view this page. Please navigate to a different section.
     backend_calendar: Backend Calendar
     start_date_time: Start Date / Time
-    end_date_time: End Date / Time
     licensed_under: Licensed Under
     unexpected_issues_occurred: Unexpected issues occurred.
     service_communication_error: A server communication error occurred, please try again.

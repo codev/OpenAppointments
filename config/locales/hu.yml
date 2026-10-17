@@ -325,7 +325,6 @@ hu:
     no_privileges_message: Az oldal megtekintéséhez nincs megfelelő jogosultságod. Navigálj egy másik oldalra.
     backend_calendar: Backend Naptár
     start_date_time: Kezdés dátuma / ideje
-    end_date_time: Befejezés dátuma / ideje
     licensed_under: Licenszelve
     unexpected_issues_occurred: Nem várt esemény történt.
     service_communication_error: Kommunikációs hiba volt a szerverrel, próbálkozz később.
@@ -999,3 +998,5 @@ hu:
     appointments_include_meeting_links_hint: "Lehetővé teszi a fodrásznak, asszisztensnek vagy adminisztrátornak, hogy online találkozó linkjét adja az időponthoz. A link bekerül a vendég naptármeghívójába."
     booking_provider_first_hint: "A foglalási oldalon a vendég a szolgáltatás kiválasztása előtt látja a fodrászokat."
     display_order_switch_hint: "A foglalási oldal első lépésében egy gombbal a vendég választhat, hogy előbb a szolgáltatást vagy előbb a fodrászt választja ki, mielőtt a másikat megadná."
+    about_and_services: "Névjegy és szolgáltatások"
+    notes_internal_hint: "Belső megjegyzés - a munkatársi belépéssel rendelkezők láthatják"

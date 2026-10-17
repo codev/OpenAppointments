@@ -325,7 +325,6 @@ sl:
     no_privileges_message: Nimate potrebnih privilegijev za ogled te strani. Pomaknite se do drugega razdelka.
     backend_calendar: Zaledni koledar
     start_date_time: Začetni datum/čas
-    end_date_time: Končni datum/čas
     licensed_under: Licencirano pod
     unexpected_issues_occurred: Prišlo je do nepričakovanih težav.
     service_communication_error: Prišlo je do napake v komunikaciji strežnika, poskusite znova.
@@ -999,3 +998,5 @@ sl:
     appointments_include_meeting_links_hint: "Izvajalcu, asistentu ali skrbniku omogoča, da terminu doda povezavo do spletnega srečanja. Povezava bo vključena v koledarsko vabilo stranke."
     booking_provider_first_hint: "Na strani za rezervacijo stranki prikaži izvajalce, preden izbere storitev."
     display_order_switch_hint: "Strankam omogoči gumb v prvem koraku strani za rezervacijo, s katerim lahko najprej izberejo storitev ali najprej izvajalca, nato pa še drugo."
+    about_and_services: "O stilistu in storitve"
+    notes_internal_hint: "Interne opombe - vidne osebam s prijavo osebja"

@@ -325,7 +325,6 @@ et:
     no_privileges_message: Lehe nägemiseks puuduvad õigused.
     backend_calendar: Taustakalender
     start_date_time: Alguskuupäev ja aeg
-    end_date_time: Lõpukuupäev ja aeg
     licensed_under: 'Litsentseeritud '
     unexpected_issues_occurred: Tekkisid ootamatud probleemid.
     service_communication_error: Ühendus serveriga katkes. Proovi uuesti.
@@ -999,3 +998,5 @@ et:
     appointments_include_meeting_links_hint: "Lubab stilistil, assistendil või administraatoril lisada broneeringule veebikohtumise lingi. Link lisatakse kliendi kalendrikutsele."
     booking_provider_first_hint: "Näita broneerimislehel kliendile stiliste enne teenuse valimist."
     display_order_switch_hint: "Lubab klientidel kasutada broneerimislehe esimesel sammul nuppu, millega valida kas enne teenus või enne stilist ja alles seejärel teine."
+    about_and_services: "Teave ja teenused"
+    notes_internal_hint: "Sisemine lisainfo - nähtav personali sisselogimisega inimestele"

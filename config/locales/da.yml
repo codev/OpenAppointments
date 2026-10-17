@@ -325,7 +325,6 @@ da:
     no_privileges_message: Du har ikke rettigheder til at bruge denne side. Vælg en anden gruppe.
     backend_calendar: Backend Kalender
     start_date_time: Start dato / Tid
-    end_date_time: Slet dato / Tid
     licensed_under: Autoriseret ifølge
     unexpected_issues_occurred: Uventede problemer opstod.
     service_communication_error: Der skete en fejl i kommunikatinen med serveren. Prøv igen.
@@ -999,3 +998,5 @@ da:
     appointments_include_meeting_links_hint: "Lader en frisør, assistent eller administrator tilføje et link til et onlinemøde til en aftale. Linket tages med i kundens kalenderinvitation."
     booking_provider_first_hint: "Vis kunden frisører på bookingsiden, før de vælger en tjeneste."
     display_order_switch_hint: "Lad kunder bruge en knap i første trin på bookingsiden, hvor de kan vælge tjeneste først eller frisør først, før de vælger den anden."
+    about_and_services: "Om og tjenester"
+    notes_internal_hint: "Interne bemærkninger - synlige for personer med personalelogin"

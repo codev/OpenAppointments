@@ -325,7 +325,6 @@ zh-tw:
     no_privileges_message: 您沒有檢視此頁面的必要權限。請導航到不同的區域。
     backend_calendar: 後臺日曆
     start_date_time: 開始日期 / 時間
-    end_date_time: 結束日期 / 時間
     licensed_under: 授權於
     unexpected_issues_occurred: 發生意外問題。
     service_communication_error: 發生伺服器通訊錯誤，請重試。
@@ -999,3 +998,5 @@ zh-tw:
     appointments_include_meeting_links_hint: "允許提供者、助理或管理員為預約新增線上會議連結。該連結會包含在顧客的日曆邀請中。"
     booking_provider_first_hint: "在預約頁面中，先向顧客顯示提供者，再讓其選擇服務。"
     display_order_switch_hint: "允許顧客使用預約頁面第一步的按鈕，選擇先選服務或先選提供者，再選另一項。"
+    about_and_services: "關於與服務"
+    notes_internal_hint: "內部備註 - 擁有員工登入帳號的人員可見"

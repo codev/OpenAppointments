@@ -325,7 +325,6 @@ cs:
     no_privileges_message: Pro zobrazení této stránky nemáte požadovaná oprávnění. Přejděte prosím do jiné sekce.
     backend_calendar: Kalendář administrace
     start_date_time: Datum / čas zahájení
-    end_date_time: Datum / čas ukončení
     licensed_under: Licencováno pod
     unexpected_issues_occurred: Vyskytla se neočekávaná chyba.
     service_communication_error: Vyskytla se chyba při komunikaci se serverem, prosím opakujte akci.
@@ -999,3 +998,5 @@ cs:
     appointments_include_meeting_links_hint: "Umožňuje kadeřníkovi, asistentovi nebo správci přidat ke schůzce odkaz na online schůzku. Odkaz bude součástí pozvánky do kalendáře zákazníka."
     booking_provider_first_hint: "Na rezervační stránce zobrazit zákazníkovi kadeřníky dříve, než vybere službu."
     display_order_switch_hint: "Umožnit zákazníkům použít v prvním kroku rezervační stránky tlačítko, kterým si vyberou nejprve službu nebo nejprve kadeřníka, a teprve poté druhou možnost."
+    about_and_services: "O mně a služby"
+    notes_internal_hint: "Interní poznámky - viditelné pro osoby s přihlášením pro zaměstnance"

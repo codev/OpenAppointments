@@ -325,7 +325,6 @@ pt-br:
     no_privileges_message: Não tem permissões para visualizar esta página. Por favor, selecione outra página.
     backend_calendar: Backend calendário
     start_date_time: Data / hora inicial
-    end_date_time: Data / hora final
     licensed_under: 'Licenciado sob:'
     unexpected_issues_occurred: Ocorreram problemas inesperados.
     service_communication_error: Erro de conexão com o servidor.
@@ -999,3 +998,5 @@ pt-br:
     appointments_include_meeting_links_hint: "Permite que um atendente, assistente ou administrador adicione ao agendamento um link de reunião online. O link será incluído no convite de calendário do cliente."
     booking_provider_first_hint: "Na página de agendamento, mostra os atendentes ao cliente antes de ele escolher um serviço."
     display_order_switch_hint: "Permite que os clientes usem um botão na primeira etapa da página de agendamento para escolher primeiro o serviço ou primeiro o atendente, antes de escolher o outro."
+    about_and_services: "Sobre e serviços"
+    notes_internal_hint: "Observações internas - visíveis para pessoas com login de equipe"
