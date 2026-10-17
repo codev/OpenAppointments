@@ -14,6 +14,13 @@ class MessagesMailerTest < ActionMailer::TestCase
     assert_match %r{&quot;<a href="https://example.org/a">https://example.org/a</a>&quot; now}, html
   end
 
+  test "an email address in the body stays text" do
+    message = outgoing_message("Reply to jane@example.org")
+    html = html_body(MessagesMailer.outgoing(message))
+    assert_includes html, "Reply to jane@example.org"
+    assert_no_match "mailto:", html
+  end
+
   test "markup in the body stays text" do
     message = outgoing_message("Notes: <b>bold</b> & a < b")
     html = html_body(MessagesMailer.outgoing(message))

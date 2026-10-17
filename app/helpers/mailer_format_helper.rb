@@ -40,7 +40,7 @@ module MailerFormatHelper
   def nl2br(text)
     lines = text.to_s.split("\n", -1).map do |line|
       parts = ERB::Util.html_escape(line).split(/(&quot;|&#39;)/)
-      parts.map { |part| auto_link(part, sanitize: false) }.join.html_safe
+      parts.map { |part| auto_link(part, link: :urls, sanitize: false) }.join.html_safe
     end
     safe_join(lines, tag(:br))
   end
