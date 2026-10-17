@@ -24,9 +24,10 @@ class UserPagesTest < ActionDispatch::IntegrationTest
       assert_select ".details input[name='admin[name]'][required]"
       assert_select ".details input[type=email][name='admin[email]'][required]"
       assert_select ".details input[type=file][name='admin[picture]']"
-      assert_select ".settings input[name='admin[settings][username]'][required]"
-      assert_select ".settings input[type=password][name='admin[settings][password]'][required]"
-      assert_select ".settings input[type=password][name='admin[settings][password_confirmation]'][required]"
+      assert_select ".details input[name='admin[settings][username]'][required]"
+      assert_select ".details input[type=password][name='admin[settings][password]'][required]"
+      assert_select ".details input[type=password][name='admin[settings][password_confirmation]'][required]"
+      assert_select ".settings input[name='admin[settings][username]']", count: 0
       assert_select ".settings select[name='admin[language]'] option[value=english]"
       assert_select ".settings select[name='admin[timezone]'] optgroup[label=Europe] option[value='Europe/London']"
       assert_select "input[name='admin[ldap_dn]']", count: 0
@@ -43,6 +44,14 @@ class UserPagesTest < ActionDispatch::IntegrationTest
 
     get "/assistants/new"
     assert_select "label", text: "Options", count: 1
+  end
+
+  test "username and password follow the email in the details column, and there is no notes hint" do
+    login_admin
+    get "/admins/new"
+    assert_select ".details .mb-3:has(input[name='admin[email]']) + .mb-3 input[name='admin[settings][username]']"
+    assert_select ".details .mb-3:has(input[name='admin[settings][password_confirmation]']) + .mb-3 input[name='admin[phone_number]']"
+    assert_select ".details textarea[name='admin[notes]'] ~ .form-text", count: 0
   end
 
   test "edit does not require a password and keeps it when left blank" do

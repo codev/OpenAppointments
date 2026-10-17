@@ -5,6 +5,7 @@
         <h4 class="fw-light mb-0"><%= lang('provider') %></h4>
         <ul class="nav nav-pills switch-view ms-auto">
             <li class="nav-item"><a class="nav-link active" href="#details" data-bs-toggle="tab"><%= lang('details') %></a></li>
+            <li class="nav-item"><a class="nav-link" href="#about-services" data-bs-toggle="tab"><%= lang('about_and_services') %></a></li>
             <li class="nav-item"><a class="nav-link" href="#working-plan" data-bs-toggle="tab"><%= lang('working_plan') %></a></li>
         </ul>
     </div>
@@ -35,30 +36,10 @@
         <%= render "shared/color_selection", name: "provider[color]", value: record.color %>
         <div class="form-text text-muted"><small><%= lang('provider_color_hint') %></small></div>
     </div>
-    <div class="d-flex justify-content-between align-items-center mb-3">
-        <label class="form-label mb-0"><%= lang('services') %></label>
-        <div class="btn-group btn-group-sm">
-            <button type="button" class="btn btn-outline-secondary" data-check-all="#provider-services">
-                <%= lang('select_all') %>
-            </button>
-            <button type="button" class="btn btn-outline-secondary" data-check-none="#provider-services">
-                <%= lang('select_none') %>
-            </button>
-        </div>
-    </div>
-    <div id="provider-services" class="card card-body border">
-        <%= hidden_field_tag "provider[services][]", "", id: nil %>
-        <% Service.order(:name).each do |service| %>
-            <div class="form-check">
-                <%= check_box_tag "provider[services][]", service.id, linked_ids.include?(service.id),
-                                  id: "service-#{service.id}", class: "form-check-input" %>
-                <label class="form-check-label" for="service-<%= service.id %>"><%= service.name %></label>
-            </div>
-        <% end %>
-    </div>
 <% end %>
-<% after = capture do %>
-    <div class="col-12">
+<% about_services = capture do %>
+    <div class="tab-pane fade" id="about-services">
+        <%= render "shared/record_picture", record: record, scope: "provider" %>
         <div class="mb-3">
             <label class="form-label" for="provider_about"><%= lang('about') %></label>
             <%= text_area_tag "provider[about]", record.about, rows: 6, class: "form-control", id: "provider_about" %>
@@ -67,6 +48,27 @@
             <label class="form-label" for="provider_services_description"><%= lang('services_description') %></label>
             <%= text_area_tag "provider[services_description]", record.services_description, rows: 6, class: "form-control",
                               id: "provider_services_description" %>
+        </div>
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <label class="form-label mb-0"><%= lang('services') %></label>
+            <div class="btn-group btn-group-sm">
+                <button type="button" class="btn btn-outline-secondary" data-check-all="#provider-services">
+                    <%= lang('select_all') %>
+                </button>
+                <button type="button" class="btn btn-outline-secondary" data-check-none="#provider-services">
+                    <%= lang('select_none') %>
+                </button>
+            </div>
+        </div>
+        <div id="provider-services" class="card card-body border">
+            <%= hidden_field_tag "provider[services][]", "", id: nil %>
+            <% Service.order(:name).each do |service| %>
+                <div class="form-check">
+                    <%= check_box_tag "provider[services][]", service.id, linked_ids.include?(service.id),
+                                      id: "service-#{service.id}", class: "form-check-input" %>
+                    <label class="form-check-label" for="service-<%= service.id %>"><%= service.name %></label>
+                </div>
+            <% end %>
         </div>
     </div>
 <% end %>
@@ -135,4 +137,5 @@
     </div>
 <% end %>
 <%= render "shared/user_form", record: record, delete_title: lang('delete_provider'), header: header,
-           settings: settings, after: after, working_plan: working_plan %>
+           settings: settings, picture: false, notes_hint: lang('notes_internal_hint'),
+           about_services: about_services, working_plan: working_plan %>

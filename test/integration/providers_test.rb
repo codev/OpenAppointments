@@ -38,10 +38,31 @@ class ProvidersTest < ActionDispatch::IntegrationTest
     assert_select ".record-details .d-flex h4", text: "Provider"
     assert_select ".record-details .d-flex ul.nav-pills.switch-view.ms-auto a[href='#details']"
     assert_select ".record-details .d-flex ul.nav-pills.switch-view.ms-auto a[href='#working-plan']"
+    assert_select ".record-details ul.nav-pills a", count: 3
+    assert_select ".record-details ul.nav-pills li:nth-child(2) a[href='#about-services']", text: "About & Services"
     assert_select "a.btn[target=_blank][href=?]", "/?first=provider&provider=#{users(:zane).booking_slug}&step=second", text: "Booking Link"
 
     get "/providers/new"
     assert_select "a", text: "Booking Link", count: 0
+  end
+
+  test "About & Services holds the picture and the services list, the notes carry a staff hint" do
+    login_admin
+    [ "/providers/new", "/providers/#{users(:zane).id}/edit" ].each do |path|
+      get path
+      assert_select "#about-services.tab-pane" do
+        assert_select "input[type=file][name='provider[picture]']"
+        assert_select "textarea[name='provider[about]']"
+        assert_select "#provider-services input[name='provider[services][]'][value=?]", services(:haircut).id.to_s
+        assert_select "[data-check-all='#provider-services']"
+      end
+      assert_select "#details input[type=file]", count: 0
+      assert_select "#details #provider-services", count: 0
+      assert_select "#details input[type=checkbox][name='provider[is_private]']"
+      assert_select "#details .details textarea[name='provider[notes]'] ~ .form-text small",
+                    text: "Internal notes - visible to people with a staff login"
+      assert_select "#details .details .mb-3:has(input[name='provider[email]']) + .mb-3 input[name='provider[settings][username]']"
+    end
   end
 
   test "create without a plan gets the company plan; with a plan and exceptions they are stored" do

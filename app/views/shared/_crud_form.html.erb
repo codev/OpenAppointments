@@ -6,7 +6,7 @@
 <%# Delete sits at the right end of the button row; its form attribute points at
     the separate delete form after the record form, since forms cannot nest. %>
 <% delete_form_id = "delete-#{controller_name.singularize}-#{record.id}" %>
-<%= form_with model: record, scope: controller_name.singularize, class: "crud-form",
+<%= form_with model: record, scope: controller_name.singularize, class: "crud-form", multipart: true,
               url: url_for(record.persisted? ? { action: :update, id: record } : { action: :create }),
               data: { turbo_frame: controller_name, turbo_action: "advance" } do |f| %>
     <% if record.errors.any? %>

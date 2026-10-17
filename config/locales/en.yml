@@ -439,6 +439,8 @@ en:
     table: Table
     date: Date
     about: About
+    about_and_services: About & Services
+    notes_internal_hint: Internal notes - visible to people with a staff login
     booking_settings: Booking Settings
     display: Display
     require: Require

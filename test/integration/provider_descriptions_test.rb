@@ -22,11 +22,12 @@ class ProviderDescriptionsTest < ActionDispatch::IntegrationTest
     assert_select "textarea[name='provider[services_description]']", text: "Short cuts and fades"
   end
 
-  test "the providers page offers the two full-width textareas" do
+  test "the About & Services pane holds the two textareas" do
     login_admin
     get "/providers/new"
-    assert_select ".col-12 textarea#provider_about"
-    assert_select ".col-12 textarea#provider_services_description"
+    assert_select "#about-services textarea#provider_about"
+    assert_select "#about-services textarea#provider_services_description"
+    assert_select "#details textarea#provider_about", count: 0
     assert_select "label[for=provider_services_description]", text: I18n.t("ea.services_description")
   end
 

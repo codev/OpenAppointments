@@ -21,6 +21,8 @@ class ProvidersPageTest < ApplicationSystemTestCase
     select "English", from: "Language"
     select "London (+0:00)", from: "Timezone"
     check "Hide From Public"
+    click_on "About & Services"
+    assert_selector "#about-services.active", wait: 5
     fill_in "About", with: "Senior stylist"
     click_on "Select None"
     check "Trim Cut"
@@ -52,7 +54,7 @@ class ProvidersPageTest < ApplicationSystemTestCase
 
     find(".provider-row", text: "Pat Stylist").click
     assert_selector "#providers-page.editing", wait: 5
-    click_on "Details"
+    click_on "About & Services"
     assert_checked_field "Trim Cut"
     assert_link "Booking Link", href: /provider=#{pat.booking_slug}/
     old_slug = pat.booking_slug
