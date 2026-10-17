@@ -140,8 +140,11 @@ class UserPagesTest < ApplicationSystemTestCase
 
     visit "/account"
     fill_in "Email", with: ""
-    click_on "About & Services"
-    assert_selector "a.nav-link.active[href='#about-services']"
+    # The tab is switched through Bootstrap rather than a click: the click itself
+    # is covered above, and here only the reveal on Save is under test.
+    page.execute_script("bootstrap.Tab.getOrCreateInstance(document.querySelector(\"a[href='#about-services']\")).show()")
+    assert_selector "a.nav-link.active[href='#about-services']", wait: 5
+    assert_selector "#about-services.active", wait: 5
     click_on "Save"
     assert_selector "a.nav-link.active[href='#details']", wait: 5
     assert_current_path "/account"
