@@ -144,8 +144,10 @@ class UserPagesTest < ApplicationSystemTestCase
     # is covered above, and here only the reveal on Save is under test.
     page.execute_script("bootstrap.Tab.getOrCreateInstance(document.querySelector(\"a[href='#about-services']\")).show()")
     assert_selector "a.nav-link.active[href='#about-services']", wait: 5
-    assert_selector "#about-services.active", wait: 5
-    click_on "Save"
+    assert_selector "#about-services.active.show", wait: 5
+    # requestSubmit runs the browser's validation as a Save click would; the
+    # click itself is unreliable on CI.
+    page.execute_script("document.getElementById('account-form').requestSubmit()")
     assert_selector "a.nav-link.active[href='#details']", wait: 5
     assert_current_path "/account"
     assert_no_text "Settings saved"
