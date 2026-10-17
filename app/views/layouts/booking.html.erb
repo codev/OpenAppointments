@@ -89,7 +89,7 @@
     <script>
         (function () {
             if (window.self === window.top) return;
-            var target = <%= Embedding.origin.presence.to_json %> || '*';
+            var target = <%= raw Embedding.origin.presence.to_json %> || '*';
             var post = function () {
                 // Measure the laid-out body height, not scrollHeight: scrollHeight is
                 // clamped to the viewport (the iframe), so it could only ever grow.
