@@ -58,8 +58,6 @@ class CustomerMessagesController < ApplicationController
     channels = requested_channels(params[:channel].to_s)
     raise ArgumentError, "No enabled provider was selected." if channels.empty?
 
-    # Spec: sign off with - {{Provider/Logged In User Name}} - {{Company Name}}
-    signed_body = "#{body}\n\n- #{current_user.name} - #{Setting.get('company_name', '')}"
     subject = Messaging::Template.render(Messaging.email_subject_template,
                                          Messaging::Template.base_context)
 
@@ -71,7 +69,7 @@ class CustomerMessagesController < ApplicationController
         direction: "outgoing", channel: adapter.key, audience: "customer",
         to_address: address, customer_id: customer.id, sent_by_id: current_user.id,
         subject: adapter.supports_long_text? ? subject : nil,
-        body: signed_body, status: "queued"
+        body: body, status: "queued"
       )
       MessageDeliveryJob.perform_later(message.id)
       message
