@@ -45,7 +45,7 @@ class CalendarFeedTest < ApplicationSystemTestCase
       fill_in I18n.t("ea.password"), with: "secret"
       click_on I18n.t("ea.connect")
     end
-    assert_no_selector "#calendar-feed-modal.show", wait: 5
+    assert_feed_dialog_closed
     assert_no_selector "#message-modal"
     assert_selector "#sync-button-group", visible: true, wait: 5
     assert_equal [ users(:zane).id.to_s, "https://dav.example.org/cal", "zane", "secret" ],
@@ -59,7 +59,7 @@ class CalendarFeedTest < ApplicationSystemTestCase
       assert_text I18n.t("ea.disable_sync_prompt")
       click_on I18n.t("ea.disable_sync")
     end
-    assert_no_selector "#calendar-feed-modal.show", wait: 5
+    assert_feed_dialog_closed
     assert_selector "#sync-button-group", visible: false, wait: 5
     assert_equal users(:zane).id.to_s, page.evaluate_script("String(window.caldavDisabled)")
   end
@@ -88,7 +88,7 @@ class CalendarFeedTest < ApplicationSystemTestCase
       select "Work", from: I18n.t("ea.select_sync_calendar")
       click_on I18n.t("ea.select")
     end
-    assert_no_selector "#calendar-feed-modal.show", wait: 5
+    assert_feed_dialog_closed
     assert_no_selector "#message-modal"
     assert_selector "#sync-button-group", visible: true
     assert_equal [ users(:zane).id.to_s, "work" ], page.evaluate_script("window.googleSelected")
@@ -100,6 +100,12 @@ class CalendarFeedTest < ApplicationSystemTestCase
     login_as_admin
     page.execute_script("window.localStorage.clear()") # no ticks saved by an earlier test
     visit "/calendar"
+  end
+
+  # Closed for good: Bootstrap drops the backdrop last, after the dialog is out of sight.
+  def assert_feed_dialog_closed
+    assert_no_selector ".modal-backdrop", wait: 5
+    assert_selector "#calendar-feed-modal", visible: :hidden
   end
 
   def open_feed_dialog

@@ -37,7 +37,7 @@ App.Utils.CalendarFeed = (function () {
 
     function open() {
         bootstrap.Tab.getOrCreateInstance(document.getElementById('calendar-feed-tab')).show();
-        fetchLink(false).done(() => modal().show());
+        fetchLink(false).done(show);
     }
 
     function copy() {
@@ -49,12 +49,15 @@ App.Utils.CalendarFeed = (function () {
         });
     }
 
-    // Bootstrap ignores show() while the dialog is still fading out, so a
-    // dialog that is hidden but still visible is shown once the fade ends.
+    // Bootstrap's hide runs on after the dialog is out of sight (the backdrop
+    // fades and the page state is restored last), and a show() meanwhile is
+    // ignored or torn down by that tail, so a dialog that is closing is shown
+    // once it has finished.
+    let hiding = false;
+
     function show() {
-        const element = document.getElementById('calendar-feed-modal');
-        if ($(element).is(':visible') && !element.classList.contains('show')) {
-            $(element).one('hidden.bs.modal', () => modal().show());
+        if (hiding) {
+            $('#calendar-feed-modal').one('hidden.bs.modal', () => modal().show());
         } else {
             modal().show();
         }
@@ -85,8 +88,12 @@ App.Utils.CalendarFeed = (function () {
         if (!$button().length) {
             return;
         }
+        hiding = false;
         $filter().on('change', updateButton);
         $button().on('click', open);
+        $('#calendar-feed-modal')
+            .on('hide.bs.modal', () => (hiding = true))
+            .on('hidden.bs.modal', () => (hiding = false));
         $('#calendar-feed-copy').on('click', copy);
         $('#calendar-feed-reset').on('click', reset);
         updateButton();
