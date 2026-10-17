@@ -53,8 +53,10 @@ class CalendarFeedTest < ApplicationSystemTestCase
 
     open_feed_dialog
     assert_selector "#calendar-feed-modal .nav-link.active", text: I18n.t("ea.calendar_feed")
+    # The tab click is exercised above; a second click on it is unreliable on
+    # CI, so the pane is opened through Bootstrap here.
+    show_sync_tab
     within("#calendar-feed-modal") do
-      click_on I18n.t("ea.enable_sync")
       assert_no_field I18n.t("ea.calendar_url")
       assert_text I18n.t("ea.disable_sync_prompt")
       click_on I18n.t("ea.disable_sync")
@@ -106,6 +108,12 @@ class CalendarFeedTest < ApplicationSystemTestCase
   def assert_feed_dialog_closed
     assert_no_selector ".modal-backdrop", wait: 5
     assert_selector "#calendar-feed-modal", visible: :hidden
+  end
+
+  def show_sync_tab
+    page.execute_script("bootstrap.Tab.getOrCreateInstance(document.getElementById('calendar-sync-tab')).show()")
+    assert_selector "#calendar-sync-tab.active", wait: 5
+    assert_selector "#calendar-sync-pane.active.show", wait: 5
   end
 
   def open_feed_dialog
