@@ -1,4 +1,3 @@
-<% picture_url = EaRows.picture_url(record) %>
 <% providers = User.providers.order(:name) %>
 <% linked_ids = record.provider_links.map(&:id_users) %>
 <% booking_link = ->(query) { link_to root_path(query), target: "_blank", class: "ms-2", title: lang('booking_link'),

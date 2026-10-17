@@ -128,4 +128,23 @@ class UserPagesTest < ApplicationSystemTestCase
     assert_equal "Cuts since 1999", users(:zane).reload.about
     assert_equal "Dry cuts", users(:zane).services_description
   end
+
+  test "saving with a required field empty on a hidden tab shows that tab" do
+    visit logout_url
+    visit login_url
+    assert_selector "#login", wait: 15
+    fill_in "username", with: "janedoe"
+    fill_in "password", with: "janedoe1"
+    find("#login").click
+    assert_current_path %r{/appointments}, wait: 10
+
+    visit "/account"
+    fill_in "Email", with: ""
+    click_on "About & Services"
+    assert_selector "a.nav-link.active[href='#about-services']"
+    click_on "Save"
+    assert_selector "a.nav-link.active[href='#details']", wait: 5
+    assert_current_path "/account"
+    assert_no_text "Settings saved"
+  end
 end

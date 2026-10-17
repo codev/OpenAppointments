@@ -8,6 +8,12 @@ class MessagesMailerTest < ActionMailer::TestCase
     assert_match "<br", html
   end
 
+  test "a quoted web address is linked without the quote" do
+    message = outgoing_message("See \"https://example.org/a\" now")
+    html = html_body(MessagesMailer.outgoing(message))
+    assert_match %r{&quot;<a href="https://example.org/a">https://example.org/a</a>&quot; now}, html
+  end
+
   test "markup in the body stays text" do
     message = outgoing_message("Notes: <b>bold</b> & a < b")
     html = html_body(MessagesMailer.outgoing(message))

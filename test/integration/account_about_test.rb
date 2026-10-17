@@ -50,10 +50,11 @@ class AccountAboutTest < ActionDispatch::IntegrationTest
   test "an unsupported picture is rejected with a flash" do
     login_provider
     file = Rack::Test::UploadedFile.new(StringIO.new("plain"), "text/plain", original_filename: "x.txt")
-    post "/account/save", params: { form: "1", account: account_params(users(:zane), picture: file) }
+    post "/account/save", params: { form: "1", account: account_params(users(:zane), picture: file, about: "Kept out") }
     assert_redirected_to "/account"
     assert_match(/Unsupported picture type/, flash[:alert])
     assert_not users(:zane).reload.picture.attached?
+    assert_not_equal "Kept out", users(:zane).about, "nothing saves when the picture is rejected"
   end
 
   test "an admin posting about text has it ignored" do

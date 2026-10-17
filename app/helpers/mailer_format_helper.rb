@@ -35,10 +35,12 @@ module MailerFormatHelper
   end
 
   # EA nl2br(e(...)), with web addresses made into links. Each line is
-  # escaped before linking, so any markup in the text stays literal.
+  # escaped before linking, so any markup in the text stays literal. An
+  # escaped quote ends an address, so a quoted address links cleanly.
   def nl2br(text)
     lines = text.to_s.split("\n", -1).map do |line|
-      auto_link(ERB::Util.html_escape(line), sanitize: false).html_safe
+      parts = ERB::Util.html_escape(line).split(/(&quot;|&#39;)/)
+      parts.map { |part| auto_link(part, sanitize: false) }.join.html_safe
     end
     safe_join(lines, tag(:br))
   end

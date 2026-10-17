@@ -1090,8 +1090,7 @@ $bubble-radius: 1.1rem;
     border-top: 1px solid var(--bs-border-color);
 }
 
-/* Release notes are hidden via CSS rather than removed from markup to preserve
-   the Changelog.entries parser for testing and future use. */
+/* The about page keeps the release notes markup but does not show it. */
 #about-page #release-notes {
     display: none;
 }

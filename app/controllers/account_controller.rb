@@ -30,6 +30,7 @@ class AccountController < ApplicationController
     settings = user.settings || user.build_settings
 
     provider = session[:role_slug] == Role::PROVIDER
+    PictureUpload.validate!(account[:picture]) if provider && account[:picture].respond_to?(:content_type)
     user.assign_attributes(account.permit(*ALLOWED_USER_FIELDS, *(PROVIDER_USER_FIELDS if provider)).to_h)
     settings_attributes = account.fetch(:settings, {}).permit(*ALLOWED_USER_SETTING_FIELDS, :password_confirmation).to_h
     password = settings_attributes.delete("password")
