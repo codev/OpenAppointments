@@ -48,8 +48,13 @@ App.Utils.CalendarEvents = (function () {
         return Boolean(vars('privileges').appointments.edit);
     }
 
-    function canDelete() {
+    // Cancelling keeps the record; deleting is kept from stylists.
+    function canCancel() {
         return Boolean(vars('privileges').appointments.delete);
+    }
+
+    function canDelete() {
+        return canCancel() && Boolean(vars('delete_access'));
     }
 
     /**
@@ -326,13 +331,14 @@ App.Utils.CalendarEvents = (function () {
             const editable = generated ? isCustom : true;
             const displayEdit = editable && canEdit() ? '' : 'd-none';
             const displayDelete = editable && canDelete() ? 'me-2' : 'd-none';
+            const displayCancel = editable && canCancel() ? 'me-2' : 'd-none';
 
             if (kind === 'working-plan-exception') {
                 $html = Popover.buildWorkingPlanExceptionPopover(info, displayEdit, displayDelete);
             } else if (kind === 'unavailability') {
                 $html = Popover.buildUnavailabilityPopover(info, displayEdit, displayDelete);
             } else {
-                $html = Popover.buildAppointmentPopover(info, displayEdit, displayDelete);
+                $html = Popover.buildAppointmentPopover(info, displayEdit, displayDelete, displayCancel);
             }
         }
 

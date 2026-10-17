@@ -221,6 +221,24 @@ class EventFormsTest < ActionDispatch::IntegrationTest
     assert_not Appointment.exists?(appointment.id)
   end
 
+  test "a stylist cancels an appointment but cannot delete it" do
+    login_provider
+    appointment = appointments(:upcoming)
+    get "/appointments/#{appointment.id}/remove", params: { kind: "delete" }
+    assert_response :forbidden
+    get "/appointments/#{appointment.id}/remove", params: { kind: "cancel" }
+    assert_response :success
+
+    post "/appointments/#{appointment.id}/remove", params: { kind: "delete", notify_users: "0" }
+    assert_response :unprocessable_entity
+    assert Appointment.exists?(appointment.id)
+    assert_select "#appointment-remove-form .alert-danger", text: /permissions/
+
+    post "/appointments/#{appointment.id}/remove", params: { kind: "cancel", notify_users: "0", cancellation_reason: "Away" }
+    assert_response :success
+    assert_equal "cancelled", appointment.reload.appointment_status.kind
+  end
+
   test "a new unavailability defaults to the next hour on the default zone's clock" do
     Setting.set("default_timezone", "Europe/London")
     saved = ENV["TZ"]

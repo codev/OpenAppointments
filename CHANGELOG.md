@@ -3,6 +3,10 @@
 The about page lists these notes; every release needs a section here matching
 CloudronManifest.json.
 
+## 3.2.1
+
+- Appointments: only admins and assistants can delete an appointment; stylists cancel
+
 ## 3.2.0
 
 - Stylists: an About & Services tab holds the picture, About, Description of services and the services list; stylists edit their own on the Account page, where they also see the services they offer

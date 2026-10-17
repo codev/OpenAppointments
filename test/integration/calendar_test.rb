@@ -239,6 +239,27 @@ class CalendarTest < ActionDispatch::IntegrationTest
     assert_equal true, response.parsed_body["success"]
   end
 
+  test "delete_appointment refuses a stylist while cancel_appointment serves them" do
+    login_provider
+    assert_no_difference "Appointment.appointments.count" do
+      post "/calendar/delete_appointment", params: { appointment_id: appointments(:upcoming).id, cancellation_reason: "test" }
+    end
+    assert_equal false, response.parsed_body["success"]
+    post "/calendar/cancel_appointment", params: { appointment_id: appointments(:upcoming).id, cancellation_reason: "test" }
+    assert_equal true, response.parsed_body["success"]
+  end
+
+  test "the calendar and list pages tell the scripts whether the user may delete" do
+    login_provider
+    get "/calendar"
+    assert_match(/"delete_access":false/, response.body)
+    get "/appointments"
+    assert_match(/"delete_access":false/, response.body)
+    login_admin
+    get "/calendar"
+    assert_match(/"delete_access":true/, response.body)
+  end
+
   test "cancel_appointment keeps the row with the cancelled status" do
     login_admin
     assert_no_difference "Appointment.appointments.count" do
