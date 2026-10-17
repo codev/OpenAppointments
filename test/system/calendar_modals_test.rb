@@ -53,7 +53,7 @@ class CalendarModalsTest < ApplicationSystemTestCase
         select "Zane", from: "select-provider"
         # Ahead of now, so the appointment has not ended and can still be cancelled.
         find("#start-datetime").set("#{soon.strftime('%d/%m/%Y %-l:%M %P')}\t")
-        find("#end-datetime").set("#{(soon + 30.minutes).strftime('%d/%m/%Y %-l:%M %P')}\t")
+        assert_field "appointment-duration", with: "30"
         click_on "Select"
         assert_selector "#existing-customers-list div", text: "JX", wait: 5
         find("#existing-customers-list div", text: "JX").click
@@ -283,7 +283,6 @@ class CalendarModalsTest < ApplicationSystemTestCase
       select "Trim Cut", from: "select-service"
       select "Zane", from: "select-provider"
       find("#start-datetime").set("#{start.strftime('%d/%m/%Y %-l:%M %P')}\t")
-      find("#end-datetime").set("#{(start + 30.minutes).strftime('%d/%m/%Y %-l:%M %P')}\t")
       click_on "Select"
       find("#existing-customers-list div", text: "JX", wait: 5).click
       fill_in "appointment-notes", with: "Off the grid"
@@ -292,6 +291,34 @@ class CalendarModalsTest < ApplicationSystemTestCase
     confirm_modal "New Appointment", "No"
     assert_text "Appointment saved", wait: 10
     assert_equal start.strftime("%H:%M"), Appointment.find_by!(notes: "Off the grid").start_datetime.strftime("%H:%M")
+  end
+
+  test "picking a service resets the duration to its length, which the saved appointment keeps" do
+    visit appointments_url
+    assert_selector "#insert-appointment", visible: :all, wait: 10
+    find("#calendar-actions [data-bs-toggle=dropdown]").click
+    find("#insert-appointment").click
+    assert_selector "#save-appointment", visible: true, wait: 5
+    wait_for_modal
+    within(find("#save-appointment").ancestor(".modal")) do
+      select "Trim Cut", from: "select-service"
+      fill_in "appointment-duration", with: "50"
+      select "Group Session", from: "select-service"
+      assert_field "appointment-duration", with: "60"
+      select "Trim Cut", from: "select-service"
+      assert_field "appointment-duration", with: "30"
+      select "Zane", from: "select-provider"
+      find("#start-datetime").set("#{soon.strftime('%d/%m/%Y %-l:%M %P')}\t")
+      click_on "Select"
+      find("#existing-customers-list div", text: "JX", wait: 5).click
+      fill_in "appointment-notes", with: "Service length"
+      click_on "Save"
+    end
+    confirm_modal "New Appointment", "No"
+    assert_text "Appointment saved", wait: 10
+    appointment = Appointment.find_by!(notes: "Service length")
+    assert_equal soon.strftime("%H:%M"), appointment.start_datetime.strftime("%H:%M")
+    assert_equal 30, appointment.duration_minutes
   end
 
   test "add and delete an unavailability" do

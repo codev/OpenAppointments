@@ -65,7 +65,7 @@ App.Components.EventModal = (function () {
         $('.event-form .modal-body').scrollTop(0);
     }
 
-    // The provider list follows the chosen service; the end time follows its duration.
+    // The provider list follows the chosen service; picking a service resets the duration to its length.
     function updateProviders(changed = false) {
         const $service = $('#select-service');
         const $provider = $('#select-provider');
@@ -91,11 +91,7 @@ App.Components.EventModal = (function () {
 
         if (changed) {
             const durations = JSON.parse($service.attr('data-durations') || '{}');
-            const start = App.Utils.UI.getDateTimePickerValue($('#start-datetime'));
-            if (start) {
-                const end = new Date(start.getTime() + (durations[serviceId] || 60) * 60000);
-                App.Utils.UI.setDateTimePickerValue($('#end-datetime'), end);
-            }
+            $('#appointment-duration').val(durations[serviceId] || 60);
         }
     }
 

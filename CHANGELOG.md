@@ -11,6 +11,7 @@ CloudronManifest.json.
 - Stylists: an About & Services tab holds the picture, About, Description of services and the services list; the Notes box says it is visible to staff logins
 - Account: stylists edit their own picture, About and Description of services on an About & Services tab, and see the services they offer
 - Stylists, Admins and Assistants: Username and Password sit directly under Email
+- Appointment dialog: a Duration (Minutes) field replaces the end date and time; picking a service sets it to the service length
 - Minor fixes include: the phone status bar takes the colour of the top bar
 
 ## 3.1.0

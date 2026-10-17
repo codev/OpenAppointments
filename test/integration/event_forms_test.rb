@@ -35,7 +35,9 @@ class EventFormsTest < ActionDispatch::IntegrationTest
       get "/appointments/new"
       assert_select "turbo-frame#event form#appointment-form[action='/appointments'][method=post][data-ask-notify]" do
         assert_select "#start-datetime[value='20/07/2026 9:15 am']"
-        assert_select "#end-datetime[value='20/07/2026 10:15 am']" # the first listed service lasts an hour
+        assert_select "#appointment-duration[type=number][name='appointment[duration]'][min='5'][required][value='60']" # the first listed service lasts an hour
+        assert_select "label[for=appointment-duration]", text: I18n.t("ea.duration_minutes")
+        assert_select "#end-datetime", count: 0
         assert_select "#select-service[data-durations] option[value=?]", services(:haircut).id.to_s
         assert_select "#select-provider option[value=?][data-services]", users(:zane).id.to_s
         assert_select "#appointment-repeat .repeat-fields"
@@ -48,13 +50,13 @@ class EventFormsTest < ActionDispatch::IntegrationTest
     get "/appointments/new", params: { start: "2026-09-01 10:00:00", end: "2026-09-01 10:45:00",
                                        provider_id: users(:zane).id, service_id: services(:group_session).id }
     assert_select "#start-datetime[value='01/09/2026 10:00 am']"
-    assert_select "#end-datetime[value='01/09/2026 10:45 am']"
+    assert_select "#appointment-duration[value='45']"
     assert_select "#select-service option[selected][value=?]", services(:group_session).id.to_s
     assert_select "#select-provider option[selected][value=?]", users(:zane).id.to_s
 
-    # A free slot passes only the start: the end follows the first listed service.
+    # A free slot passes only the start: the duration follows the first listed service.
     get "/appointments/new", params: { start: "2026-09-01 10:00:00", provider_id: users(:zane).id }
-    assert_select "#end-datetime[value='01/09/2026 11:00 am']"
+    assert_select "#appointment-duration[value='60']"
   end
 
   test "the location field shows only when appointments include locations" do
@@ -113,6 +115,7 @@ class EventFormsTest < ActionDispatch::IntegrationTest
     get "/appointments/#{appointments(:upcoming).id}/edit"
     assert_select "form#appointment-form[action=?] input[name=_method][value=patch]", "/appointments/#{appointments(:upcoming).id}"
     assert_select "#start-datetime[value='20/07/2026 10:00 am']"
+    assert_select "#appointment-duration[value=?]", appointments(:upcoming).duration_minutes.to_s
     assert_select "#customer-id[value=?]", users(:jx).id.to_s
     assert_select "#name[value=JX]"
     assert_select "#appointment-repeat", count: 0
@@ -124,7 +127,7 @@ class EventFormsTest < ActionDispatch::IntegrationTest
     post "/appointments", params: {
       notify_users: "0",
       appointment: { id_services: services(:haircut).id, id_users_provider: users(:zane).id,
-                     status: "Booked", start_datetime: "21/07/2026 2:00 pm", end_datetime: "21/07/2026 2:30 pm", notes: "Fringe" },
+                     status: "Booked", start_datetime: "21/07/2026 2:00 pm", duration: "45", notes: "Fringe" },
       customer: { name: "JX", email: "j@example.org", language: "english", timezone: "UTC" }
     }
     assert_response :success
@@ -132,12 +135,41 @@ class EventFormsTest < ActionDispatch::IntegrationTest
     appointment = Appointment.find_by!(notes: "Fringe")
     assert_equal users(:jx).id, appointment.id_users_customer
     assert_equal "2026-07-21 14:00", appointment.start_datetime.strftime("%F %H:%M")
+    assert_equal "2026-07-21 14:45", appointment.end_datetime.strftime("%F %H:%M")
+  end
+
+  test "a zero duration re-renders the form with the message and the typed duration" do
+    login_admin
+    assert_no_difference "Appointment.appointments.count" do
+      post "/appointments", params: {
+        notify_users: "0",
+        appointment: { id_services: services(:haircut).id, id_users_provider: users(:zane).id, status: "Booked",
+                       start_datetime: "21/07/2026 2:00 pm", duration: "0", notes: "Zero" },
+        customer: { id: users(:jx).id, name: "JX" }
+      }
+    end
+    assert_response :unprocessable_entity
+    assert_select "form#appointment-form .modal-message", text: /after start/
+    assert_select "#appointment-duration[value='0']"
+    assert_select "#appointment-notes", text: "Zero"
+  end
+
+  test "an unreadable start keeps the typed duration in the re-rendered form" do
+    login_admin
+    post "/appointments", params: {
+      notify_users: "0",
+      appointment: { id_services: services(:haircut).id, id_users_provider: users(:zane).id, status: "Booked",
+                     start_datetime: "soon", duration: "40" },
+      customer: { id: users(:jx).id, name: "JX" }
+    }
+    assert_response :unprocessable_entity
+    assert_select "#appointment-duration[value='40']"
   end
 
   test "a clash re-renders the form with the message and a force save field; saving again forces" do
     login_admin
     clash = { id_services: services(:haircut).id, id_users_provider: users(:zane).id, status: "Booked",
-              start_datetime: "2026-07-20 10:00:00", end_datetime: "2026-07-20 10:30:00", notes: "Clash" }
+              start_datetime: "2026-07-20 10:00:00", duration: "30", notes: "Clash" }
     post "/appointments", params: { notify_users: "0", appointment: clash, customer: { id: users(:jx).id, name: "JX" } }
     assert_response :unprocessable_entity
     assert_select "form#appointment-form .modal-message", text: I18n.t("ea.provider_has_conflicting_appointment")
@@ -158,7 +190,7 @@ class EventFormsTest < ActionDispatch::IntegrationTest
       post "/appointments", params: {
         notify_users: "0",
         appointment: { id_services: services(:haircut).id, id_users_provider: users(:zane).id, status: "Booked",
-                       start_datetime: "2026-07-21 10:00:00", end_datetime: "2026-07-21 10:30:00" },
+                       start_datetime: "2026-07-21 10:00:00", duration: "30" },
         customer: { id: users(:jx).id, name: "JX" },
         repeat: { rule: { rule_type: "IceCube::WeeklyRule", interval: 1, validations: { day: [ 2 ] } }.to_json, ends: "after", count: 3 }
       }
@@ -253,7 +285,7 @@ class EventFormsTest < ActionDispatch::IntegrationTest
       post "/appointments", params: {
         notify_users: "0",
         appointment: { id_services: other.id, id_users_provider: users(:zane).id, status: "Booked",
-                       start_datetime: "21/07/2026 2:00 pm", end_datetime: "21/07/2026 2:15 pm" },
+                       start_datetime: "21/07/2026 2:00 pm", duration: "15" },
         customer: { id: users(:jx).id, name: "JX" }
       }
     end
