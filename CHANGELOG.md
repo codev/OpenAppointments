@@ -6,6 +6,8 @@ CloudronManifest.json.
 ## 3.2.1
 
 - Appointments: only admins and assistants can delete an appointment; stylists cancel
+- Email: password resets and every other application email go through the SMTP server set on Messages > Settings when one is configured
+- Minor fixes include: the booking page embedded on the website reports its height to the page again, so the frame fits the content
 
 ## 3.2.0
 
