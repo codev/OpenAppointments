@@ -34,8 +34,12 @@ module MailerFormatHelper
     timezones[value] || value
   end
 
-  # EA nl2br(e(...)).
+  # EA nl2br(e(...)), with web addresses made into links. Each line is
+  # escaped before linking, so any markup in the text stays literal.
   def nl2br(text)
-    safe_join(text.to_s.split("\n", -1), tag(:br))
+    lines = text.to_s.split("\n", -1).map do |line|
+      auto_link(ERB::Util.html_escape(line), sanitize: false).html_safe
+    end
+    safe_join(lines, tag(:br))
   end
 end

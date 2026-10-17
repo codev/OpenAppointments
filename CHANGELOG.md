@@ -3,6 +3,10 @@
 The about page lists these notes; every release needs a section here matching
 CloudronManifest.json.
 
+## 3.2.0
+
+- Notification emails: web addresses in the text, such as the link to change an appointment, are clickable links
+
 ## 3.1.0
 
 - Calendar and List: Stylists and Services are tick-box dropdowns so several can be shown together; appointments get the stylist's colour edged with the service colour
