@@ -59,6 +59,9 @@ class BrandingTest < ActionDispatch::IntegrationTest
     # The released version must have a changelog section.
     assert_includes Changelog.entries.map { |entry| entry[:version] }, EaHelper::VERSION
     assert Changelog.entries.all? { |entry| entry[:notes].any? }
+
+    # Release notes are wrapped with an id for CSS-based hiding.
+    assert_select "#about-page #release-notes"
   end
 
   test "built-in mail templates carry no old brand" do
