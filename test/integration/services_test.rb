@@ -39,7 +39,8 @@ class ServicesTest < ActionDispatch::IntegrationTest
     haircut = services(:haircut)
     haircut.update!(color: "#eb8687")
     get "/services/#{haircut.id}/edit"
-    assert_select "a[href=?][target=_blank]", "/?service=#{haircut.booking_slug}"
+    assert_select "a.btn[target=_blank][href=?]", "/?first=service&service=#{haircut.booking_slug}&step=second",
+                  text: "Booking Link"
     assert_select "a[href=?]", "/?provider=#{users(:zane).booking_slug}&service=#{haircut.booking_slug}"
     assert_select "form[action=?] button[data-turbo-confirm-button=?]", "/services/#{haircut.id}/regenerate_link",
                   I18n.t("ea.change")
@@ -84,7 +85,18 @@ class ServicesTest < ActionDispatch::IntegrationTest
     assert_redirected_to "/services/#{haircut.id}/edit"
     assert_not_equal "abcd-efgh", haircut.reload.booking_slug
     follow_redirect!
-    assert_select "a[href=?]", "/?service=#{haircut.booking_slug}"
+    assert_select "a[href*=?]", "service=#{haircut.booking_slug}"
+  end
+
+  test "the heading says Service and the booking link button sits below it" do
+    login_admin
+    get "/services/#{services(:haircut).id}/edit"
+    assert_select ".record-details h4", text: "Details", count: 0
+    assert_select ".record-details .d-flex h4", text: "Service"
+
+    get "/services/new"
+    assert_select ".record-details .d-flex h4", text: "Service"
+    assert_select "a", text: "Booking Link", count: 0
   end
 
   test "a duration under the minimum and a blank name are refused" do

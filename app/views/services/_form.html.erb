@@ -6,9 +6,15 @@
     <i class="fas fa-link"></i>
 <% end } %>
 <% header = capture do %>
+    <div class="d-flex align-items-center mb-3">
+        <h4 class="fw-light mb-0"><%= lang('service') %></h4>
+    </div>
     <% if record.persisted? %>
         <div class="mb-3">
-            <%= booking_link.call(service: record.booking_slug) %>
+            <%= link_to root_path(service: record.booking_slug, first: "service", step: "second"),
+                        class: "btn btn-outline-secondary btn-sm", target: "_blank" do %>
+                <i class="fas fa-link me-2"></i><%= lang('booking_link') %>
+            <% end %>
             <%= button_to lang('regenerate_link'), regenerate_link_service_path(record),
                           class: "btn btn-outline-secondary btn-sm ms-2", form_class: "d-inline",
                           data: { turbo_confirm_title: lang('regenerate_link'), turbo_confirm_button: lang('change') },

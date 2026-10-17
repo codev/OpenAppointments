@@ -7,6 +7,7 @@ CloudronManifest.json.
 
 - Notification emails: web addresses in the text, such as the link to change an appointment, are clickable links
 - Stylists: the heading row says Stylist with the Details and Working Plan tabs at its right, and a Booking Link button opens the booking page on the service step
+- Services: the heading says Service, and a Booking Link button opens the booking page on the stylist step
 
 ## 3.1.0
 

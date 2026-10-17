@@ -49,7 +49,7 @@ class ServicesPageTest < ApplicationSystemTestCase
     assert_checked_field "Zane"
     assert_checked_field "Hide From Public"
     assert_selector ".color-selection-option.selected[data-value='#eb8687']"
-    assert_selector "a[href*='?service=#{colour.booking_slug}']"
+    assert_link "Booking Link", href: /service=#{colour.booking_slug}/
     assert_selector "a[href*='provider=#{users(:zane).booking_slug}']"
     click_on "Select None"
     assert_unchecked_field "Zane"
@@ -62,7 +62,7 @@ class ServicesPageTest < ApplicationSystemTestCase
     assert_equal old_slug, colour.reload.booking_slug
     click_on "Regenerate Link"
     confirm_modal "Regenerate Link", "Change"
-    assert_selector "a[href*='?service=#{colour.reload.booking_slug}']", wait: 5
+    assert_link "Booking Link", href: /service=#{colour.reload.booking_slug}/, wait: 5
     assert_not_equal old_slug, colour.booking_slug
 
     fill_in "Price", with: "45"
