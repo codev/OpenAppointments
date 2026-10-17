@@ -73,8 +73,9 @@ class ApplicationSystemTestCase < ActionDispatch::SystemTestCase
   end
 
   # Typing during Bootstrap's fade-in loses keys to its focus handling, and a
-  # dismiss click during the transition is ignored: wait for the shown modal to
-  # be opaque and for Bootstrap to have finished its transition.
+  # click during the transition is ignored or lands elsewhere: wait for the
+  # shown modal to be opaque, for Bootstrap to have finished its transition and
+  # for the dialog's slide-in to have settled.
   def wait_for_modal
     assert_selector ".modal.show", wait: 5
     assert page.has_css?(".modal.show", wait: 5) && wait_until_shown, "modal did not finish showing"
@@ -86,7 +87,9 @@ class ApplicationSystemTestCase < ActionDispatch::SystemTestCase
         (() => {
           const element = document.querySelector('.modal.show');
           const instance = element && bootstrap.Modal.getInstance(element);
-          return !!element && getComputedStyle(element).opacity === '1' && !!instance && !instance._isTransitioning;
+          const dialog = element && element.querySelector('.modal-dialog');
+          const settled = !dialog || getComputedStyle(dialog).transform === 'none';
+          return !!element && getComputedStyle(element).opacity === '1' && !!instance && !instance._isTransitioning && settled;
         })()
       JS
       return true if shown
