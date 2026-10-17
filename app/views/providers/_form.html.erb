@@ -1,11 +1,18 @@
 <% linked_ids = record.provider_service_links.map(&:id_services) %>
 <% plan_settings = record.settings %>
 <% header = capture do %>
+    <div class="d-flex flex-wrap align-items-center gap-2 mb-3">
+        <h4 class="fw-light mb-0"><%= lang('provider') %></h4>
+        <ul class="nav nav-pills switch-view ms-auto">
+            <li class="nav-item"><a class="nav-link active" href="#details" data-bs-toggle="tab"><%= lang('details') %></a></li>
+            <li class="nav-item"><a class="nav-link" href="#working-plan" data-bs-toggle="tab"><%= lang('working_plan') %></a></li>
+        </ul>
+    </div>
     <% if record.persisted? %>
         <div class="mb-3">
-            <%= link_to root_path(provider: record.booking_slug), target: "_blank", title: lang('booking_link'),
-                        "aria-label": lang('booking_link') do %>
-                <i class="fas fa-link"></i>
+            <%= link_to root_path(provider: record.booking_slug, first: "provider", step: "second"),
+                        class: "btn btn-outline-secondary btn-sm", target: "_blank" do %>
+                <i class="fas fa-link me-2"></i><%= lang('booking_link') %>
             <% end %>
             <%= button_to lang('regenerate_link'), regenerate_link_provider_path(record),
                           class: "btn btn-outline-secondary btn-sm ms-2", form_class: "d-inline",
@@ -14,10 +21,6 @@
                                           turbo_confirm: lang('regenerate_link_warning_provider') } } %>
         </div>
     <% end %>
-    <ul class="nav nav-pills switch-view mb-3">
-        <li class="nav-item"><a class="nav-link active" href="#details" data-bs-toggle="tab"><%= lang('details') %></a></li>
-        <li class="nav-item"><a class="nav-link" href="#working-plan" data-bs-toggle="tab"><%= lang('working_plan') %></a></li>
-    </ul>
 <% end %>
 <% settings = capture do %>
     <div class="border rounded mb-3 p-3">

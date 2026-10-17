@@ -8,7 +8,7 @@
 <% end %>
 <%= render "shared/crud_page", page: "providers", title: lang('providers'),
            records: @records, record: @record, editing: @editing, keyword: @keyword,
-           row: "shared/user_row", form: "providers/form", list_toolbar: list_toolbar %>
+           row: "shared/user_row", form: "providers/form", list_toolbar: list_toolbar, record_heading: false %>
 
 <%# Outside the frames: the modal script binds it once at page load. %>
 <%= render "shared/working_plan_exceptions_modal" %>

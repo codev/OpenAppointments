@@ -54,11 +54,11 @@ class ProvidersPageTest < ApplicationSystemTestCase
     assert_selector "#providers-page.editing", wait: 5
     click_on "Details"
     assert_checked_field "Trim Cut"
-    assert_selector "a[href*='?provider=#{pat.booking_slug}']"
+    assert_link "Booking Link", href: /provider=#{pat.booking_slug}/
     old_slug = pat.booking_slug
     click_on "Regenerate Link"
     confirm_modal "Regenerate Link", "Change"
-    assert_selector "a[href*='?provider=#{pat.reload.booking_slug}']", wait: 5
+    assert_link "Booking Link", href: /provider=#{pat.reload.booking_slug}/, wait: 5
     assert_not_equal old_slug, pat.booking_slug
 
     click_on "Working Plan"

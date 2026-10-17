@@ -27,8 +27,21 @@ class ProvidersTest < ActionDispatch::IntegrationTest
     get "/providers/#{users(:zane).id}/edit"
     assert_select "input[name='provider[settings][working_plan]'][value=?]", users(:zane).settings.working_plan
     assert_select "input[name='provider[settings][working_plan_exceptions]'][value*=?]", "\"id\":#{exception.id}"
-    assert_select "a[href=?][target=_blank]", "/?provider=#{users(:zane).booking_slug}"
+    assert_select "a[target=_blank][href*=?]", "provider=#{users(:zane).booking_slug}"
     assert_select "#provider-services input[value=?][checked]", services(:haircut).id.to_s
+  end
+
+  test "the heading row says Stylist with the pills, and the booking link opens the service step" do
+    login_admin
+    get "/providers/#{users(:zane).id}/edit"
+    assert_select ".record-details h4", text: "Details", count: 0
+    assert_select ".record-details .d-flex h4", text: "Provider"
+    assert_select ".record-details .d-flex ul.nav-pills.switch-view.ms-auto a[href='#details']"
+    assert_select ".record-details .d-flex ul.nav-pills.switch-view.ms-auto a[href='#working-plan']"
+    assert_select "a.btn[target=_blank][href=?]", "/?first=provider&provider=#{users(:zane).booking_slug}&step=second", text: "Booking Link"
+
+    get "/providers/new"
+    assert_select "a", text: "Booking Link", count: 0
   end
 
   test "create without a plan gets the company plan; with a plan and exceptions they are stored" do
