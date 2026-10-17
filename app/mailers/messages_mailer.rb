@@ -14,11 +14,6 @@ class MessagesMailer < ApplicationMailer
       attachments["appointment.ics"] = { mime_type: "text/calendar", content: ics }
     end
 
-    built = mail(to: message.to_address, from: company_from, reply_to: company_reply_to,
-                 subject: message.subject)
-    if (smtp = Messaging::EmailChannel.smtp_settings)
-      built.delivery_method(:smtp, smtp)
-    end
-    built
+    mail(to: message.to_address, from: company_from, reply_to: company_reply_to, subject: message.subject)
   end
 end

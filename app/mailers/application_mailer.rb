@@ -4,7 +4,16 @@ class ApplicationMailer < ActionMailer::Base
   helper :ea
   helper :mailer_format
 
+  # The admin-entered SMTP server on Messages > Settings carries every mail
+  # when it is set; otherwise the environment's delivery method stands.
+  after_action :use_admin_smtp
+
   private
+
+  def use_admin_smtp
+    smtp = Messaging::EmailChannel.smtp_settings
+    message.delivery_method(:smtp, smtp) if smtp
+  end
 
   # EA from/reply-to fall back to the company settings.
   def company_from
