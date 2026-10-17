@@ -9,6 +9,7 @@ CloudronManifest.json.
 - Stylists: the heading row says Stylist with the Details and Working Plan tabs at its right, and a Booking Link button opens the booking page on the service step
 - Services: the heading says Service, and a Booking Link button opens the booking page on the stylist step
 - Stylists: an About & Services tab holds the picture, About, Description of services and the services list; the Notes box says it is visible to staff logins
+- Account: stylists edit their own picture, About and Description of services on an About & Services tab, and see the services they offer
 - Stylists, Admins and Assistants: Username and Password sit directly under Email
 
 ## 3.1.0

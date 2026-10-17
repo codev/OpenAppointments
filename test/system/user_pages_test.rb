@@ -107,4 +107,25 @@ class UserPagesTest < ApplicationSystemTestCase
     assert_selector ".admin-row", text: "Edson Mori", wait: 5
     assert User.exists?(users(:admin).id)
   end
+
+  test "a stylist edits their About and Services on the Account page" do
+    visit logout_url
+    visit login_url
+    assert_selector "#login", wait: 15
+    fill_in "username", with: "janedoe"
+    fill_in "password", with: "janedoe1"
+    find("#login").click
+    assert_current_path %r{/appointments}, wait: 10
+
+    visit "/account"
+    assert_field "Name", with: "Zane"
+    click_on "About & Services"
+    fill_in "About", with: "Cuts since 1999"
+    fill_in "Description of services", with: "Dry cuts"
+    assert_selector ".account-services li", text: "Trim Cut"
+    click_on "Save"
+    assert_text "Settings saved", wait: 5
+    assert_equal "Cuts since 1999", users(:zane).reload.about
+    assert_equal "Dry cuts", users(:zane).services_description
+  end
 end
