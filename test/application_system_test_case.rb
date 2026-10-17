@@ -11,6 +11,7 @@ class ApplicationSystemTestCase < ActionDispatch::SystemTestCase
   SCREEN_SIZE = [ 1400, 1400 ].freeze
 
   driven_by :selenium, using: :headless_chrome, screen_size: SCREEN_SIZE do |options|
+    options.add_option("goog:loggingPrefs", { browser: "ALL" })
     if File.exist?(SNAP_CHROMIUM) && !system("which google-chrome > /dev/null 2>&1")
       # One profile per test process: Rails runs the system tests in parallel.
       profile_dir = File.expand_path("~/snap/chromium/common/selenium-profile-#{Process.pid}")

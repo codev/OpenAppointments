@@ -59,6 +59,7 @@ class CalendarFeedTest < ApplicationSystemTestCase
     within("#calendar-feed-modal") do
       assert_no_field I18n.t("ea.calendar_url")
       assert_text I18n.t("ea.disable_sync_prompt")
+      assert_match(/sync-disable-confirm/, element_at_centre_of("sync-disable-confirm"), "DIAG: element under the button")
       click_on I18n.t("ea.disable_sync")
     end
     assert_feed_dialog_closed
@@ -108,6 +109,27 @@ class CalendarFeedTest < ApplicationSystemTestCase
   def assert_feed_dialog_closed
     assert_no_selector ".modal-backdrop", wait: 5
     assert_selector "#calendar-feed-modal", visible: :hidden
+  end
+
+  # DIAG: what the browser hit-tests at the centre of an element.
+  def element_at_centre_of(id)
+    page.evaluate_script(<<~JS)
+      (() => {
+        const r = document.getElementById('#{id}').getBoundingClientRect();
+        const e = document.elementFromPoint(r.left + r.width / 2, r.top + r.height / 2);
+        return (e ? e.tagName + '#' + e.id + '.' + e.className : 'none') +
+          ' rect=' + JSON.stringify(r) + ' modals=' + Array.from(document.querySelectorAll('.modal')).map(m => m.id + ':' + getComputedStyle(m).display + ':' + m.className).join('|') +
+          ' backdrops=' + document.querySelectorAll('.modal-backdrop').length;
+      })()
+    JS
+  end
+
+  teardown do
+    next if passed?
+    logs = page.driver.browser.logs.get(:browser)
+    puts "DIAG console: #{logs.map { |entry| "#{entry.level} #{entry.message}" }.join("\n")}" if logs.any?
+  rescue StandardError => e
+    puts "DIAG console unavailable: #{e.message}"
   end
 
   def show_sync_tab
