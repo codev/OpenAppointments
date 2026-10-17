@@ -325,7 +325,6 @@ nl:
     no_privileges_message: Je hebt niet de benodigde rechten om deze pagina te bekijken. Navigeer naar een andere sectie.
     backend_calendar: Backend Kalender
     start_date_time: Start datum/tijd
-    end_date_time: Eind datum/tijd
     licensed_under: Gelicenseerd onder
     unexpected_issues_occurred: Onverwachte problemen opgetreden.
     service_communication_error: Er is een server communicatiefout opgetreden, probeer het opnieuw.
@@ -999,3 +998,5 @@ nl:
     appointments_include_meeting_links_hint: "Staat een stylist, assistent of beheerder toe een link naar een online vergadering aan een afspraak toe te voegen. De link wordt opgenomen in de agenda-uitnodiging van de klant."
     booking_provider_first_hint: "Toon op de boekingspagina eerst de stylists aan de klant, voordat die een dienst kiest."
     display_order_switch_hint: "Sta klanten toe om in de eerste stap van de boekingspagina met een knop te kiezen of ze eerst een dienst of eerst een stylist selecteren, voordat ze de ander kiezen."
+    about_and_services: "Over en diensten"
+    notes_internal_hint: "Interne opmerkingen - zichtbaar voor mensen met een personeelsaccount"

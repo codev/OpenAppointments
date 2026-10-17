@@ -161,7 +161,7 @@ class AppointmentsController < ApplicationController
     data = appointment_params
     data["id"] = params[:id] if params[:id].present?
     data["start_datetime"] = parse_event_datetime(data["start_datetime"])
-    data["end_datetime"] = parse_event_datetime(data["end_datetime"])
+    data["end_datetime"] = end_from_duration(data["start_datetime"])
     data["is_unavailability"] = 0
     customer = customer_params
     customer = nil if customer.values_at("id", "name", "email").all?(&:blank?)
@@ -181,6 +181,15 @@ class AppointmentsController < ApplicationController
     render_form :form, status: :unprocessable_entity
   end
 
+  # The form posts a length in minutes; the end is the start plus that length.
+  def end_from_duration(start)
+    return if start.blank?
+
+    (Time.zone.parse(start) + posted_duration.to_i.minutes).strftime("%Y-%m-%d %H:%M:%S")
+  end
+
+  def posted_duration = params.dig(:appointment, :duration)
+
   def appointment_params
     params.require(:appointment).permit(*EventSaving::APPOINTMENT_FIELDS.map(&:to_sym)).to_h.except("id")
   end
@@ -197,6 +206,7 @@ class AppointmentsController < ApplicationController
   def reload_form(data, customer)
     @appointment = params[:id].present? ? Appointment.find(params[:id]) : Appointment.new
     @appointment.assign_attributes(data.slice(*EventSaving::APPOINTMENT_FIELDS).except("id", "is_unavailability"))
+    @duration = posted_duration
     @customer = User.new(customer.to_h.except("id"))
     @customer.id = customer["id"].presence if customer
     load_form_data

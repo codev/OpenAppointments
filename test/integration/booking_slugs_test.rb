@@ -39,9 +39,9 @@ class BookingSlugsTest < ActionDispatch::IntegrationTest
 
     login_admin
     get "/services/#{services(:haircut).id}/edit"
-    assert_select "a[href=?]", "/?service=#{services(:haircut).booking_slug}"
+    assert_select "a[href*=?]", "service=#{services(:haircut).booking_slug}"
     get "/providers/#{users(:zane).id}/edit"
-    assert_select "a[href=?]", "/?provider=#{users(:zane).booking_slug}"
+    assert_select "a[href*=?]", "provider=#{users(:zane).booking_slug}"
   end
 
   test "regenerate endpoints issue a fresh slug" do

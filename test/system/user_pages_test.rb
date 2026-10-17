@@ -107,4 +107,49 @@ class UserPagesTest < ApplicationSystemTestCase
     assert_selector ".admin-row", text: "Edson Mori", wait: 5
     assert User.exists?(users(:admin).id)
   end
+
+  test "a stylist edits their About and Services on the Account page" do
+    visit logout_url
+    visit login_url
+    assert_selector "#login", wait: 15
+    fill_in "username", with: "janedoe"
+    fill_in "password", with: "janedoe1"
+    find("#login").click
+    assert_current_path %r{/appointments}, wait: 10
+
+    visit "/account"
+    assert_field "Name", with: "Zane"
+    click_on "About & Services"
+    fill_in "About", with: "Cuts since 1999"
+    fill_in "Description of services", with: "Dry cuts"
+    assert_selector ".account-services li", text: "Trim Cut"
+    click_on "Save"
+    assert_text "Settings saved", wait: 5
+    assert_equal "Cuts since 1999", users(:zane).reload.about
+    assert_equal "Dry cuts", users(:zane).services_description
+  end
+
+  test "saving with a required field empty on a hidden tab shows that tab" do
+    visit logout_url
+    visit login_url
+    assert_selector "#login", wait: 15
+    fill_in "username", with: "janedoe"
+    fill_in "password", with: "janedoe1"
+    find("#login").click
+    assert_current_path %r{/appointments}, wait: 10
+
+    visit "/account"
+    fill_in "Email", with: ""
+    # The tab is switched through Bootstrap rather than a click: the click itself
+    # is covered above, and here only the reveal on Save is under test.
+    page.execute_script("bootstrap.Tab.getOrCreateInstance(document.querySelector(\"a[href='#about-services']\")).show()")
+    assert_selector "a.nav-link.active[href='#about-services']", wait: 5
+    assert_selector "#about-services.active.show", wait: 5
+    # requestSubmit runs the browser's validation as a Save click would; the
+    # click itself is unreliable on CI.
+    page.execute_script("document.getElementById('account-form').requestSubmit()")
+    assert_selector "a.nav-link.active[href='#details']", wait: 5
+    assert_current_path "/account"
+    assert_no_text "Settings saved"
+  end
 end

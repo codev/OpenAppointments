@@ -54,4 +54,17 @@ class ThemesTest < ActionDispatch::IntegrationTest
     source = Rails.root.join("app/assets/stylesheets/ea/themes/outline.scss").read
     assert_match(/button-outline-variant/, source)
   end
+
+  test "the status bar colour is the background colour for coder, fruit and outline" do
+    Setting.set("company_color", "#123456")
+    Setting.set("company_background_color", "#abcdef")
+    %w[coder fruit outline].each do |theme|
+      get "/", params: { theme: theme }
+      assert_select "meta[name=theme-color][content='#abcdef']", 1, theme
+    end
+    %w[nice material solid brutalism].each do |theme|
+      get "/", params: { theme: theme }
+      assert_select "meta[name=theme-color][content='#123456']", 1, theme
+    end
+  end
 end

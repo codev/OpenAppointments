@@ -325,7 +325,6 @@ he:
     no_privileges_message: אין לך את ההרשאות הנדרשות כדי להציג דף זה. יש לנווט לאזור אחר.
     backend_calendar: יומן מנהל
     start_date_time: תאריך / שעת התחלה
-    end_date_time: תאריך / שעת סיום
     licensed_under: רשיון על ידי
     unexpected_issues_occurred: התרחשו בעיות לא צפויות!
     service_communication_error: אירעה שגיאת תקשורת שרתים, אנא נסה שוב.
@@ -999,3 +998,5 @@ he:
     appointments_include_meeting_links_hint: "מאפשר למעצב/ת שיער, לעוזר/ת או למנהל/ת להוסיף לפגישה קישור למפגש מקוון. הקישור ייכלל בהזמנת היומן של הלקוח."
     booking_provider_first_hint: "בדף ההזמנה, להציג ללקוח את מעצבי השיער לפני שהוא בוחר שירות."
     display_order_switch_hint: "מאפשר ללקוחות להשתמש בכפתור בשלב הראשון של דף ההזמנה כדי לבחור קודם שירות או קודם מעצב/ת שיער, ורק אחר כך את השני."
+    about_and_services: "אודות ושירותים"
+    notes_internal_hint: "הערות פנימיות - גלויות לאנשים עם כניסה של צוות"

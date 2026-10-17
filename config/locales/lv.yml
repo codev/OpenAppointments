@@ -325,7 +325,6 @@ lv:
     no_privileges_message: Jums nav nepieciešamo tiesību, lai skatītu šo lapu. Lūdzu, pārejiet uz citu sadaļu.
     backend_calendar: Administrācijas kalendārs
     start_date_time: Sākums datums / laiks
-    end_date_time: Beigu datums / laiks
     licensed_under: Licencēts saskaņā
     unexpected_issues_occurred: Radās neparedzēti jautājumi.
     service_communication_error: Lūdzu, mēģiniet vēlreiz.
@@ -999,3 +998,5 @@ lv:
     appointments_include_meeting_links_hint: "Ļauj speciālistam, palīgam vai administratoram pierakstam pievienot saiti uz tiešsaistes tikšanos. Saite tiks iekļauta klienta kalendāra ielūgumā."
     booking_provider_first_hint: "Rezervācijas lapā parādīt klientam speciālistus pirms pakalpojuma izvēles."
     display_order_switch_hint: "Ļaut klientiem rezervācijas lapas pirmajā solī ar pogu izvēlēties, vai vispirms izvēlēties pakalpojumu vai speciālistu, pirms izvēlas otru."
+    about_and_services: "Par un pakalpojumi"
+    notes_internal_hint: "Iekšējās piezīmes - redzamas cilvēkiem ar darbinieka pieteikšanos"

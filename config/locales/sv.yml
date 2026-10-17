@@ -325,7 +325,6 @@ sv:
     no_privileges_message: Du saknar behörighet för den här sidan. Välj ett annat alternativ i menyn för att gå vidare.
     backend_calendar: Administratörskalender
     start_date_time: Startdatum / Tid
-    end_date_time: Slutdatum / Tid
     licensed_under: Licensierad under
     unexpected_issues_occurred: Ett oväntat fel uppstod
     service_communication_error: Kunde inte kommunicera med servern. Försök igen.
@@ -999,3 +998,5 @@ sv:
     appointments_include_meeting_links_hint: "Låter en utförare, assistent eller administratör lägga till en länk till ett onlinemöte i en bokning. Länken tas med i kundens kalenderinbjudan."
     booking_provider_first_hint: "Visa utförare för kunden på bokningssidan innan de väljer tjänst."
     display_order_switch_hint: "Låt kunder använda en knapp i första steget på bokningssidan där de kan välja tjänst först eller utförare först, innan de väljer det andra."
+    about_and_services: "Om och tjänster"
+    notes_internal_hint: "Interna noteringar - synliga för personer med personalinloggning"

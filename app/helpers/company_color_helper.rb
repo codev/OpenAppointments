@@ -2,6 +2,19 @@
 # WCAG contrast helpers used by the settings accessibility checks.
 module CompanyColorHelper
   DEFAULT_COMPANY_COLOR = "#ffffff"
+  FALLBACK_PRIMARY_COLOR = "#39824f"
+  FALLBACK_BACKGROUND_COLOR = "#f2f6fa"
+
+  # The company colour setting, or an override, with the unset sentinel and a
+  # blank value falling back to the default green.
+  def brand_primary_color(override = nil)
+    color = override.presence || setting("company_color").presence || FALLBACK_PRIMARY_COLOR
+    color == DEFAULT_COMPANY_COLOR ? FALLBACK_PRIMARY_COLOR : color
+  end
+
+  def brand_background_color(override = nil)
+    override.presence || setting("company_background_color").presence || FALLBACK_BACKGROUND_COLOR
+  end
 
   private
 

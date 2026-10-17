@@ -325,7 +325,6 @@ ro:
     no_privileges_message: Nu aveti drepturile necesare pentru a vizualiza aceasta pagina. Va rugam navigati spre alta sectiune.
     backend_calendar: Calendar backend
     start_date_time: Start Data / Ora
-    end_date_time: Sfarsit Data / Ora
     licensed_under: Licenta sub
     unexpected_issues_occurred: Au intervenit probleme neasteptate.
     service_communication_error: Eroare în comunicarea cu serverul. Va rugam încercati din nou.
@@ -999,3 +998,5 @@ ro:
     appointments_include_meeting_links_hint: "Permite unui furnizor, asistent sau administrator să adauge la o întâlnire un link către o întâlnire online. Linkul va fi inclus în invitația din calendarul clientului."
     booking_provider_first_hint: "În pagina de programare, arată clientului furnizorii înainte de a alege un serviciu."
     display_order_switch_hint: "Permite clienților să folosească un buton din primul pas al paginii de programare pentru a alege mai întâi serviciul sau mai întâi furnizorul, înainte de a-l alege pe celălalt."
+    about_and_services: "Despre și servicii"
+    notes_internal_hint: "Note interne - vizibile persoanelor cu un cont de personal"

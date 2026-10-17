@@ -1089,3 +1089,8 @@ $bubble-radius: 1.1rem;
     padding-top: 1rem;
     border-top: 1px solid var(--bs-border-color);
 }
+
+/* The about page keeps the release notes markup but does not show it. */
+#about-page #release-notes {
+    display: none;
+}

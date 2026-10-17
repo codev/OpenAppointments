@@ -1,11 +1,19 @@
 <% linked_ids = record.provider_service_links.map(&:id_services) %>
 <% plan_settings = record.settings %>
 <% header = capture do %>
+    <div class="d-flex flex-wrap align-items-center gap-2 mb-3">
+        <h4 class="fw-light mb-0"><%= lang('provider') %></h4>
+        <ul class="nav nav-pills switch-view ms-auto">
+            <li class="nav-item"><a class="nav-link active" href="#details" data-bs-toggle="tab"><%= lang('details') %></a></li>
+            <li class="nav-item"><a class="nav-link" href="#about-services" data-bs-toggle="tab"><%= lang('about_and_services') %></a></li>
+            <li class="nav-item"><a class="nav-link" href="#working-plan" data-bs-toggle="tab"><%= lang('working_plan') %></a></li>
+        </ul>
+    </div>
     <% if record.persisted? %>
         <div class="mb-3">
-            <%= link_to root_path(provider: record.booking_slug), target: "_blank", title: lang('booking_link'),
-                        "aria-label": lang('booking_link') do %>
-                <i class="fas fa-link"></i>
+            <%= link_to root_path(provider: record.booking_slug, first: "provider", step: "second"),
+                        class: "btn btn-outline-secondary btn-sm", target: "_blank" do %>
+                <i class="fas fa-link me-2"></i><%= lang('booking_link') %>
             <% end %>
             <%= button_to lang('regenerate_link'), regenerate_link_provider_path(record),
                           class: "btn btn-outline-secondary btn-sm ms-2", form_class: "d-inline",
@@ -14,10 +22,6 @@
                                           turbo_confirm: lang('regenerate_link_warning_provider') } } %>
         </div>
     <% end %>
-    <ul class="nav nav-pills switch-view mb-3">
-        <li class="nav-item"><a class="nav-link active" href="#details" data-bs-toggle="tab"><%= lang('details') %></a></li>
-        <li class="nav-item"><a class="nav-link" href="#working-plan" data-bs-toggle="tab"><%= lang('working_plan') %></a></li>
-    </ul>
 <% end %>
 <% settings = capture do %>
     <div class="border rounded mb-3 p-3">
@@ -32,30 +36,10 @@
         <%= render "shared/color_selection", name: "provider[color]", value: record.color %>
         <div class="form-text text-muted"><small><%= lang('provider_color_hint') %></small></div>
     </div>
-    <div class="d-flex justify-content-between align-items-center mb-3">
-        <label class="form-label mb-0"><%= lang('services') %></label>
-        <div class="btn-group btn-group-sm">
-            <button type="button" class="btn btn-outline-secondary" data-check-all="#provider-services">
-                <%= lang('select_all') %>
-            </button>
-            <button type="button" class="btn btn-outline-secondary" data-check-none="#provider-services">
-                <%= lang('select_none') %>
-            </button>
-        </div>
-    </div>
-    <div id="provider-services" class="card card-body border">
-        <%= hidden_field_tag "provider[services][]", "", id: nil %>
-        <% Service.order(:name).each do |service| %>
-            <div class="form-check">
-                <%= check_box_tag "provider[services][]", service.id, linked_ids.include?(service.id),
-                                  id: "service-#{service.id}", class: "form-check-input" %>
-                <label class="form-check-label" for="service-<%= service.id %>"><%= service.name %></label>
-            </div>
-        <% end %>
-    </div>
 <% end %>
-<% after = capture do %>
-    <div class="col-12">
+<% about_services = capture do %>
+    <div class="tab-pane fade" id="about-services">
+        <%= render "shared/record_picture", record: record, scope: "provider" %>
         <div class="mb-3">
             <label class="form-label" for="provider_about"><%= lang('about') %></label>
             <%= text_area_tag "provider[about]", record.about, rows: 6, class: "form-control", id: "provider_about" %>
@@ -64,6 +48,27 @@
             <label class="form-label" for="provider_services_description"><%= lang('services_description') %></label>
             <%= text_area_tag "provider[services_description]", record.services_description, rows: 6, class: "form-control",
                               id: "provider_services_description" %>
+        </div>
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <label class="form-label mb-0"><%= lang('services') %></label>
+            <div class="btn-group btn-group-sm">
+                <button type="button" class="btn btn-outline-secondary" data-check-all="#provider-services">
+                    <%= lang('select_all') %>
+                </button>
+                <button type="button" class="btn btn-outline-secondary" data-check-none="#provider-services">
+                    <%= lang('select_none') %>
+                </button>
+            </div>
+        </div>
+        <div id="provider-services" class="card card-body border">
+            <%= hidden_field_tag "provider[services][]", "", id: nil %>
+            <% Service.order(:name).each do |service| %>
+                <div class="form-check">
+                    <%= check_box_tag "provider[services][]", service.id, linked_ids.include?(service.id),
+                                      id: "service-#{service.id}", class: "form-check-input" %>
+                    <label class="form-check-label" for="service-<%= service.id %>"><%= service.name %></label>
+                </div>
+            <% end %>
         </div>
     </div>
 <% end %>
@@ -132,4 +137,5 @@
     </div>
 <% end %>
 <%= render "shared/user_form", record: record, delete_title: lang('delete_provider'), header: header,
-           settings: settings, after: after, working_plan: working_plan %>
+           settings: settings, picture: false, notes_hint: lang('notes_internal_hint'),
+           about_services: about_services, working_plan: working_plan %>

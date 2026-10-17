@@ -1,9 +1,8 @@
 <%# User record fields for admins, assistants and providers: details then settings,
     each full width. Locals: record, delete_title, optional header,
-    settings (extra HTML at the end of the settings column), after (a full-width
-    row after the columns) and working_plan (a second tab pane; the columns then
-    become the details pane). %>
-<% picture_url = EaRows.picture_url(record) %>
+    settings (extra HTML at the end of the settings column), picture: false to
+    skip the picture block, notes_hint (help text under Notes), and the tab panes
+    about_services and working_plan (the columns then become the details pane). %>
 <% settings = record.settings || record.build_settings %>
 <%# Keep typed settings through a failed save (they are not assigned to the record). %>
 <% typed = params.dig(controller_name.singularize, :settings) || {} %>
@@ -19,19 +18,10 @@
                                  class: "form-control #{'is-invalid' if record.errors.include?(:name)}" %>
             </div>
 
-            <div class="mb-3 record-picture">
-                <%= f.label :picture, lang('picture'), class: "form-label d-block" %>
-                <img class="picture-preview img-thumbnail mb-2 <%= 'd-none' unless picture_url %>"
-                     style="max-height: 120px;" src="<%= picture_url %>" alt="">
-                <%= f.file_field :picture, class: "form-control mb-2", accept: PictureUpload::ALLOWED_PICTURE_TYPES.join(",") %>
-                <% if picture_url %>
-                    <div class="form-check">
-                        <%= f.check_box :remove_picture, class: "form-check-input", checked: false %>
-                        <%= f.label :remove_picture, lang('remove_picture'), class: "form-check-label" %>
-                    </div>
-                <% end %>
-            </div>
+            <% unless local_assigns[:picture] == false %>
+                <%= render "shared/record_picture", record: record, scope: controller_name.singularize %>
 
+            <% end %>
             <div class="mb-3">
                 <%= f.label :email, class: "form-label" do %>
                     <%= lang('email') %> <span class="text-danger">*</span>
@@ -40,20 +30,6 @@
                                   class: "form-control #{'is-invalid' if record.errors.include?(:email)}" %>
             </div>
 
-            <% { phone_number: 128, mobile_number: 128, address: 256, city: 256, state: 128, zip_code: 64 }.each do |field, max| %>
-                <div class="mb-3">
-                    <%= f.label field, lang(field.to_s), class: "form-label" %>
-                    <%= f.text_field field, maxlength: max, class: "form-control" %>
-                </div>
-            <% end %>
-
-            <div class="mb-3">
-                <%= f.label :notes, lang('notes'), class: "form-label" %>
-                <%= f.text_area :notes, rows: 6, class: "form-control" %>
-            </div>
-        </div>
-
-        <div class="settings col-12">
             <%= f.fields_for :settings, settings do |s| %>
                 <div class="mb-3">
                     <%= s.label :username, class: "form-label" do %>
@@ -82,6 +58,23 @@
                 </div>
             <% end %>
 
+            <% { phone_number: 128, mobile_number: 128, address: 256, city: 256, state: 128, zip_code: 64 }.each do |field, max| %>
+                <div class="mb-3">
+                    <%= f.label field, lang(field.to_s), class: "form-label" %>
+                    <%= f.text_field field, maxlength: max, class: "form-control" %>
+                </div>
+            <% end %>
+
+            <div class="mb-3">
+                <%= f.label :notes, lang('notes'), class: "form-label" %>
+                <%= f.text_area :notes, rows: 6, class: "form-control" %>
+                <% if local_assigns[:notes_hint] %>
+                    <div class="form-text text-muted"><small><%= local_assigns[:notes_hint] %></small></div>
+                <% end %>
+            </div>
+        </div>
+
+        <div class="settings col-12">
             <div class="mb-3">
                 <%= f.label :language, class: "form-label" do %>
                     <%= lang('language') %> <span class="text-danger">*</span>
@@ -110,8 +103,8 @@
                 <%= local_assigns[:settings] %>
             <% end %>
         </div>
-        <%= local_assigns[:after] %>
     </div>
+    <%= local_assigns[:about_services] %>
     <%= local_assigns[:working_plan] %>
     </div>
 <% end %>

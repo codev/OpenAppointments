@@ -93,8 +93,9 @@
                             <%= render "shared/event_datetime", name: "appointment[start_datetime]", value: @appointment.start_datetime, id: "start-datetime" %>
                         </div>
                         <div class="mb-3">
-                            <label for="end-datetime" class="form-label"><%= lang('end_date_time') %></label>
-                            <%= render "shared/event_datetime", name: "appointment[end_datetime]", value: @appointment.end_datetime, id: "end-datetime" %>
+                            <label for="appointment-duration" class="form-label"><%= lang('duration_minutes') %></label>
+                            <input type="number" id="appointment-duration" name="appointment[duration]" class="form-control" min="5" step="5" required
+                                   value="<%= @duration.presence || @appointment.duration_minutes %>">
                         </div>
                         <div class="mb-3<%= timezone_hidden_class %>">
                             <label class="form-label"><%= lang('timezone') %></label>

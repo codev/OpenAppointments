@@ -230,7 +230,7 @@ class AppointmentsPageRefreshTest < ApplicationSystemTestCase
     find("#login").click
     assert_current_path %r{/appointments}, wait: 10
     page.execute_script("window.localStorage.setItem('OpenAppointments.SeriesView', '1')")
-    visit appointments_url(date: @date)
+    visit appointments_url(date: working_day(0))
     assert_selector ".provider-column", wait: 5
     assert_no_selector "#toggle-series"
     assert_no_selector ".calendar-view.d-none", visible: :all

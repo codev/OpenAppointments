@@ -325,7 +325,6 @@ ca:
     no_privileges_message: No teniu el permisos requerits per veure aquesta pàgina. Navegueu a una altra secció.
     backend_calendar: Calendari de gestió
     start_date_time: Data/Hora d'inici
-    end_date_time: Data/Hora de fi
     licensed_under: Amb llicència
     unexpected_issues_occurred: Hi han hagut alguns problemes.
     service_communication_error: Hi hagut un problema de comunicació amb el servidor, intenteu-ho una altra vegada.
@@ -999,3 +998,5 @@ ca:
     appointments_include_meeting_links_hint: "Permet a un perruquer, ajudant o administrador afegir a una cita un enllaç a una reunió en línia. L'enllaç s'inclourà a la invitació del calendari del client."
     booking_provider_first_hint: "A la pàgina de reserves, mostra al client els perruquers abans que triï un servei."
     display_order_switch_hint: "Permet als clients utilitzar un botó al primer pas de la pàgina de reserves per triar primer el servei o primer el perruquer, abans de triar l'altre."
+    about_and_services: "Presentació i serveis"
+    notes_internal_hint: "Notes internes - visibles per a les persones amb accés de personal"

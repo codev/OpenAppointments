@@ -177,11 +177,27 @@ window.App.Layouts.Backend = (function () {
     }
 
     /**
+     * A required field inside a hidden tab pane blocks the browser's submit
+     * without anything on screen: show that pane so its message is visible.
+     */
+    function revealInvalidTabPane(event) {
+        const pane = event.target.closest('.tab-pane:not(.active)');
+        if (!pane) {
+            return;
+        }
+        const tab = document.querySelector('[data-bs-toggle="tab"][href="#' + pane.id + '"]');
+        if (tab) {
+            bootstrap.Tab.getOrCreateInstance(tab).show();
+        }
+    }
+
+    /**
      * Session wide listeners once; per page: tooltips and the language menu.
      */
     function initialize() {
         App.once('backend-layout', () => {
             guardUnsavedChanges();
+            document.addEventListener('invalid', revealInvalidTabPane, true);
             $(document).ajaxStart(() => $loading().show());
             $(document).ajaxStop(() => $loading().hide());
         });

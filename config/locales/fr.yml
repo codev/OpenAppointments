@@ -325,7 +325,6 @@ fr:
     no_privileges_message: Vous n’avez pas les privilèges nécessaires pour voir cette page. Veuillez s’il vous plaît naviguer vers une section différente.
     backend_calendar: Administration du calendrier
     start_date_time: Date/heure de début
-    end_date_time: Date/heure de fin
     licensed_under: Licencié sous
     unexpected_issues_occurred: Une erreur inattendue est survenue.
     service_communication_error: Erreur de communication avec le serveur, Veuillez s’il vous plait réessayer.
@@ -999,3 +998,5 @@ fr:
     appointments_include_meeting_links_hint: "Permet à un coiffeur, un assistant ou un administrateur d'ajouter à un rendez-vous un lien vers une réunion en ligne. Le lien sera inclus dans l'invitation de calendrier du client."
     booking_provider_first_hint: "Sur la page de réservation, afficher les coiffeurs au client avant qu'il choisisse une prestation."
     display_order_switch_hint: "Permet aux clients d'utiliser, à la première étape de la page de réservation, un bouton pour choisir d'abord une prestation ou d'abord un coiffeur, avant de choisir l'autre."
+    about_and_services: "À propos et prestations"
+    notes_internal_hint: "Commentaires internes - visibles par les personnes disposant d'un accès équipe"

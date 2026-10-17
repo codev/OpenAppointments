@@ -325,7 +325,6 @@ lt:
     no_privileges_message: Jūs neturite reikiamų teisių šiam tinklalapiui peržiūrėti.
     backend_calendar: Kalendoriaus valdymo skydelis
     start_date_time: Pradžios data / laikas
-    end_date_time: Pabaigos data / laikas
     licensed_under: Licencijuojama pagal
     unexpected_issues_occurred: Susidurta su netikėtomis problemomis.
     service_communication_error: Įvyko serverio ryšio klaida, bandykite dar kartą.
@@ -999,3 +998,5 @@ lt:
     appointments_include_meeting_links_hint: "Leidžia specialistui, padėjėjui ar administratoriui prie vizito pridėti nuorodą į internetinį susitikimą. Nuoroda bus įtraukta į kliento kalendoriaus kvietimą."
     booking_provider_first_hint: "Rezervacijos puslapyje klientui rodyti specialistus prieš pasirenkant paslaugą."
     display_order_switch_hint: "Leisti klientams pirmame rezervacijos puslapio žingsnyje mygtuku pasirinkti, ar pirmiausia rinktis paslaugą, ar specialistą, o tik tada kitą."
+    about_and_services: "Apie ir paslaugos"
+    notes_internal_hint: "Vidinės pastabos - matomos žmonėms, turintiems darbuotojo prisijungimą"

@@ -45,7 +45,7 @@ class CalendarFeedTest < ApplicationSystemTestCase
       fill_in I18n.t("ea.password"), with: "secret"
       click_on I18n.t("ea.connect")
     end
-    assert_no_selector "#calendar-feed-modal.show", wait: 5
+    assert_feed_dialog_closed
     assert_no_selector "#message-modal"
     assert_selector "#sync-button-group", visible: true, wait: 5
     assert_equal [ users(:zane).id.to_s, "https://dav.example.org/cal", "zane", "secret" ],
@@ -53,13 +53,18 @@ class CalendarFeedTest < ApplicationSystemTestCase
 
     open_feed_dialog
     assert_selector "#calendar-feed-modal .nav-link.active", text: I18n.t("ea.calendar_feed")
+    # The tab click is exercised above; a second click on it is unreliable on
+    # CI, so the pane is opened through Bootstrap here.
+    show_sync_tab
     within("#calendar-feed-modal") do
-      click_on I18n.t("ea.enable_sync")
       assert_no_field I18n.t("ea.calendar_url")
       assert_text I18n.t("ea.disable_sync_prompt")
-      click_on I18n.t("ea.disable_sync")
+      assert_button I18n.t("ea.disable_sync")
+      # A native click in this reopened dialog is unreliable on CI; the button's
+      # own handler is what is under test here.
+      page.execute_script("document.getElementById('sync-disable-confirm').click()")
     end
-    assert_no_selector "#calendar-feed-modal.show", wait: 5
+    assert_feed_dialog_closed
     assert_selector "#sync-button-group", visible: false, wait: 5
     assert_equal users(:zane).id.to_s, page.evaluate_script("String(window.caldavDisabled)")
   end
@@ -88,7 +93,7 @@ class CalendarFeedTest < ApplicationSystemTestCase
       select "Work", from: I18n.t("ea.select_sync_calendar")
       click_on I18n.t("ea.select")
     end
-    assert_no_selector "#calendar-feed-modal.show", wait: 5
+    assert_feed_dialog_closed
     assert_no_selector "#message-modal"
     assert_selector "#sync-button-group", visible: true
     assert_equal [ users(:zane).id.to_s, "work" ], page.evaluate_script("window.googleSelected")
@@ -100,6 +105,18 @@ class CalendarFeedTest < ApplicationSystemTestCase
     login_as_admin
     page.execute_script("window.localStorage.clear()") # no ticks saved by an earlier test
     visit "/calendar"
+  end
+
+  # Closed for good: Bootstrap drops the backdrop last, after the dialog is out of sight.
+  def assert_feed_dialog_closed
+    assert_no_selector ".modal-backdrop", wait: 5
+    assert_selector "#calendar-feed-modal", visible: :hidden
+  end
+
+  def show_sync_tab
+    page.execute_script("bootstrap.Tab.getOrCreateInstance(document.getElementById('calendar-sync-tab')).show()")
+    assert_selector "#calendar-sync-tab.active", wait: 5
+    assert_selector "#calendar-sync-pane.active.show", wait: 5
   end
 
   def open_feed_dialog

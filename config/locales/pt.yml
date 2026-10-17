@@ -325,7 +325,6 @@ pt:
     no_privileges_message: Não tem permissões para visualizar esta pagina. Por favor, selecione outra pagina.
     backend_calendar: Backend calendário
     start_date_time: Data / hora inicial
-    end_date_time: Data / hora final
     licensed_under: Licenciado por
     unexpected_issues_occurred: Ocorreram problemas inesperados.
     service_communication_error: Problema de ligação ao servidor.
@@ -999,3 +998,5 @@ pt:
     appointments_include_meeting_links_hint: "Permite que um fornecedor, assistente ou administrador adicione ao evento um link de reunião online. O link será incluído no convite de calendário do cliente."
     booking_provider_first_hint: "Na página de marcação, mostra os fornecedores ao cliente antes de este escolher um serviço."
     display_order_switch_hint: "Permite que os clientes usem um botão no primeiro passo da página de marcação para escolher primeiro o serviço ou primeiro o fornecedor, antes de escolherem o outro."
+    about_and_services: "Sobre e serviços"
+    notes_internal_hint: "Notas internas - visíveis para pessoas com acesso de funcionário"

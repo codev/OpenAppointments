@@ -74,3 +74,4 @@ gem "roo", "~> 3.0"
 gem "exception_notification", "~> 5.0" # crash report emails in production
 
 gem "rails-i18n", "~> 8.1"
+gem "rails_autolink", "~> 1.1" # web addresses in notification emails become links

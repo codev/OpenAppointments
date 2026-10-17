@@ -84,4 +84,24 @@ class BrandColorsTest < ActionDispatch::IntegrationTest
       end
     end
   end
+
+  test "the status bar colour follows the company colour on every layout" do
+    Setting.set("company_color", "#123456")
+    get "/"
+    assert_select "meta[name=theme-color][content='#123456']"
+
+    Setting.set("company_color", "#654321")
+    get "/"
+    assert_select "meta[name=theme-color][content='#654321']"
+
+    post "/login/validate", params: { username: "administrator", password: "administrator1" }
+    get "/calendar"
+    assert_select "meta[name=theme-color][content='#654321']"
+  end
+
+  test "the status bar colour falls back to the default company colour" do
+    Setting.set("company_color", CompanyColorHelper::DEFAULT_COMPANY_COLOR)
+    get "/"
+    assert_select "meta[name=theme-color][content='#39824f']"
+  end
 end

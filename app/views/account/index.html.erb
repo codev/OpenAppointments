@@ -1,6 +1,7 @@
 <%# The signed in user's own details and settings, as a Rails form. %>
 <% user = current_user %>
 <% settings = user.settings || user.build_settings %>
+<% provider = session[:role_slug] == Role::PROVIDER %>
 <div id="account-page" class="container backend-page py-3">
     <div id="account">
         <div class="row">
@@ -10,14 +11,21 @@
                         <%= lang('first_login_update_details') %>
                     </div>
                 <% end %>
-                <%= form_with url: "/account/save", method: :post, id: "account-form", data: { turbo: false } do |f| %>
+                <%= form_with url: "/account/save", method: :post, id: "account-form", multipart: true, data: { turbo: false } do |f| %>
                     <%= hidden_field_tag :form, "1" %>
-                    <div class="border-bottom mb-4 py-2">
+                    <div class="d-flex flex-wrap align-items-center gap-2 border-bottom mb-4 py-2">
                         <h4 class="mb-0 fw-light"><%= lang('account') %></h4>
+                        <% if provider %>
+                            <ul class="nav nav-pills switch-view ms-auto">
+                                <li class="nav-item"><a class="nav-link active" href="#details" data-bs-toggle="tab"><%= lang('details') %></a></li>
+                                <li class="nav-item"><a class="nav-link" href="#about-services" data-bs-toggle="tab"><%= lang('about_and_services') %></a></li>
+                            </ul>
+                        <% end %>
                     </div>
                     <% if notice %><div class="alert alert-success"><%= notice %></div><% end %>
                     <% if alert %><div class="alert alert-danger"><%= alert %></div><% end %>
 
+                    <% details = capture do %>
                     <div class="row">
                         <div class="col-lg-6">
                             <div class="mb-3">
@@ -69,6 +77,34 @@
                             </div>
                         </div>
                     </div>
+                    <% end %>
+                    <% if provider %>
+                        <div class="tab-content">
+                            <div class="tab-pane fade show active" id="details"><%= details %></div>
+                        <div class="tab-pane fade" id="about-services">
+                            <%= render "shared/record_picture", record: user, scope: "account" %>
+                            <div class="mb-3">
+                                <label class="form-label" for="account_about"><%= lang('about') %></label>
+                                <%= text_area_tag "account[about]", user.about, rows: 6, class: "form-control", id: "account_about" %>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label" for="account_services_description"><%= lang('services_description') %></label>
+                                <%= text_area_tag "account[services_description]", user.services_description, rows: 6, class: "form-control",
+                                                  id: "account_services_description" %>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label"><%= lang('services') %></label>
+                                <ul class="account-services list-group">
+                                    <% user.services.order(:name).each do |service| %>
+                                        <li class="list-group-item"><%= service.name %></li>
+                                    <% end %>
+                                </ul>
+                            </div>
+                        </div>
+                        </div>
+                    <% else %>
+                        <%= details %>
+                    <% end %>
                     <% if can?(:edit, :user_settings) %>
                         <%= form_actions(button_tag(safe_join([ tag.i(class: "fas fa-check-square me-2"), lang('save') ]),
                                                     type: "submit", id: "save-settings", class: "btn btn-primary", data: { save: true })) %>

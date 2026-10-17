@@ -325,7 +325,6 @@ es:
     no_privileges_message: Usted no posee los permisos necesarios para ver esta página. Por favor, navegue hacia otra sección.
     backend_calendar: Calendario de gestión interna
     start_date_time: Fecha y hora de inicio
-    end_date_time: Fecha y hora final
     licensed_under: Bajo licencia de
     unexpected_issues_occurred: Se encontraron problemas inesperados.
     service_communication_error: Ha ocurrido un error de comunicación con el servidor, por favor, inténtelo nuevamente.
@@ -999,3 +998,5 @@ es:
     appointments_include_meeting_links_hint: "Permite a un estilista, asistente o administrador añadir a una cita un enlace a una reunión en línea. El enlace se incluirá en la invitación de calendario del cliente."
     booking_provider_first_hint: "En la página de reservas, mostrar los estilistas al cliente antes de que elija un servicio."
     display_order_switch_hint: "Permite a los clientes usar un botón en el primer paso de la página de reservas para elegir primero el servicio o primero el estilista, antes de elegir el otro."
+    about_and_services: "Acerca de y servicios"
+    notes_internal_hint: "Notas internas - visibles para las personas con acceso de personal"

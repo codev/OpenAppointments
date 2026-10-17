@@ -3,6 +3,15 @@
 The about page lists these notes; every release needs a section here matching
 CloudronManifest.json.
 
+## 3.2.0
+
+- Stylists: an About & Services tab holds the picture, About, Description of services and the services list; stylists edit their own on the Account page, where they also see the services they offer
+- Stylists and Services: the heading names the record, the tabs sit at its right, and a Booking Link button opens the booking page with that stylist or service already chosen
+- Appointment dialog: a Duration (Minutes) field replaces the end date and time; picking a service sets it to the service length
+- Notification emails: web addresses in the text, such as the link to change an appointment, are clickable
+- Messages: a message typed on the customer page goes out as written, with no name or company sign-off
+- Minor fixes include: Username and Password sit directly under Email on the Stylists, Admins and Assistants pages; a hint under Notes says they are only seen by staff logins; the phone status bar takes the colour of the top bar; the release notes are no longer shown on the About page
+
 ## 3.1.0
 
 - Calendar and List: Stylists and Services are tick-box dropdowns so several can be shown together; appointments get the stylist's colour edged with the service colour

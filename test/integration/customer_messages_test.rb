@@ -140,7 +140,7 @@ class CustomerMessagesTest < ActionDispatch::IntegrationTest
     assert_equal 1, row["unread_messages"]
   end
 
-  test "manual send queues a signed email using the default subject" do
+  test "manual send queues a message as typed using the default subject" do
     login_admin
     assert_enqueued_jobs 1, only: MessageDeliveryJob do
       post "/customer_messages/send", params: { customer_id: customer.id, channel: "email", body: "See you soon" }
@@ -148,8 +148,7 @@ class CustomerMessagesTest < ActionDispatch::IntegrationTest
     assert_response :success
     message = Message.outgoing.newest_first.first
     assert_equal customer.email, message.to_address
-    assert_includes message.body, "See you soon"
-    assert_match(/\n\n- .+ - /, message.body)
+    assert_equal "See you soon", message.body
     assert_includes message.subject, "Appointments"
   end
 

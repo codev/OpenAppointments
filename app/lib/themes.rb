@@ -9,6 +9,9 @@ module Themes
   # Themes where the background colour paints only the header; the page stays white.
   HEADER_SCOPED_BACKGROUND = %w[coder fruit].freeze
 
+  # Themes whose top bar shows the background colour rather than the company colour.
+  BACKGROUND_BAR = %w[coder fruit outline].freeze
+
   SUGGESTED = {
     "nice" => [
       { "primary" => "#337346", "secondary" => "#c22450", "background" => "#f2f6fa" },

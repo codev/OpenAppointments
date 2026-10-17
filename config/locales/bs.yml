@@ -325,7 +325,6 @@ bs:
     no_privileges_message: Nemate potrebne privilegije da vidite ovu stranicu. Molimo idite na drugi odjeljak.
     backend_calendar: Pozadinski kalendar
     start_date_time: Datum početka/vrijeme
-    end_date_time: Završni datum / vrijeme
     licensed_under: Manje licencirano
     unexpected_issues_occurred: Došlo je do neočekivanih problema.
     service_communication_error: Došlo je do greške u komunikaciji sa serverom, pokušajte ponovo.
@@ -999,3 +998,5 @@ bs:
     appointments_include_meeting_links_hint: "Omogućava frizeru, asistentu ili administratoru da terminu doda link za online sastanak. Link će biti uključen u kalendarsku pozivnicu kupca."
     booking_provider_first_hint: "Na stranici za rezervaciju kupcu prikaži frizere prije nego odabere uslugu."
     display_order_switch_hint: "Omogući kupcima da koriste dugme u prvom koraku stranice za rezervaciju kojim mogu prvo odabrati uslugu ili prvo frizera, prije odabira drugog."
+    about_and_services: "O meni i usluge"
+    notes_internal_hint: "Interne napomene - vidljive osobama s prijavom za osoblje"

@@ -325,7 +325,6 @@ pl:
     no_privileges_message: Nie masz odpowiednich uprawnień aby zobaczyć tą stronę. Nawiguj do innej sekcji.
     backend_calendar: Kalendarz funkcjonalny
     start_date_time: Data startu / Czas
-    end_date_time: Data końca / Czas
     licensed_under: Na licencji
     unexpected_issues_occurred: Nieoczekiwany błąd.
     service_communication_error: Błąd komunikacji z serwerem. Spróbuj ponownie.
@@ -999,3 +998,5 @@ pl:
     appointments_include_meeting_links_hint: "Pozwala pracownikowi, asystentowi lub administratorowi dodać do wizyty link do spotkania online. Link zostanie dołączony do zaproszenia do kalendarza klienta."
     booking_provider_first_hint: "Na stronie rezerwacji pokaż klientowi pracowników przed wyborem zabiegu."
     display_order_switch_hint: "Pozwól klientom użyć przycisku w pierwszym kroku strony rezerwacji, aby wybrać najpierw zabieg albo najpierw pracownika, a dopiero potem drugą opcję."
+    about_and_services: "O nas i zabiegi"
+    notes_internal_hint: "Uwagi wewnętrzne - widoczne dla osób z loginem personelu"

@@ -1,0 +1,17 @@
+<%# Picture upload with preview and remove tick box. Locals: record, scope (the
+    form's param scope, such as "provider"). Usable outside the form builder. %>
+<% picture_url = EaRows.picture_url(record) %>
+<div class="mb-3 record-picture">
+    <%= label_tag "#{scope}_picture", lang('picture'), class: "form-label d-block" %>
+    <img class="picture-preview img-thumbnail mb-2 <%= 'd-none' unless picture_url %>"
+         style="max-height: 120px;" src="<%= picture_url %>" alt="">
+    <%= file_field_tag "#{scope}[picture]", id: "#{scope}_picture", class: "form-control mb-2",
+                       accept: PictureUpload::ALLOWED_PICTURE_TYPES.join(",") %>
+    <% if picture_url %>
+        <div class="form-check">
+            <%= hidden_field_tag "#{scope}[remove_picture]", "0", id: nil %>
+            <%= check_box_tag "#{scope}[remove_picture]", "1", false, id: "#{scope}_remove_picture", class: "form-check-input" %>
+            <%= label_tag "#{scope}_remove_picture", lang('remove_picture'), class: "form-check-label" %>
+        </div>
+    <% end %>
+</div>

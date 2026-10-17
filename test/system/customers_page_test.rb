@@ -142,7 +142,7 @@ class CustomersPageTest < ApplicationSystemTestCase
     assert_selector "#message-channel-button.channel-email", text: "Email"
     box.send_keys(:enter)
     assert_selector "#customer-messages .bubble-row.out .bubble-email", text: "Running late", wait: 5
-    assert Message.outgoing.last.body.start_with?("Running late\nback at three\nsorry\nagain\n"), "the line breaks should be kept"
+    assert_equal "Running late\nback at three\nsorry\nagain", Message.outgoing.last.body, "the line breaks should be kept"
     assert_equal "", box.value
     assert_equal before, box.evaluate_script("this.offsetHeight")
 

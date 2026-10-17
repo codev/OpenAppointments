@@ -1,11 +1,13 @@
 # Port of EA's Account controller: the current user's profile + settings.
 class AccountController < ApplicationController
   include BackendPage
+  include RecordPicture
 
   layout "backend"
 
   ALLOWED_USER_FIELDS = %w[name email mobile_number phone_number
                            address city state zip_code notes timezone language].freeze
+  PROVIDER_USER_FIELDS = %w[about services_description].freeze
   ALLOWED_USER_SETTING_FIELDS = %w[username password notifications].freeze
 
   before_action :require_session, except: [ :index ]
@@ -27,7 +29,9 @@ class AccountController < ApplicationController
     user = User.find(session[:user_id])
     settings = user.settings || user.build_settings
 
-    user.assign_attributes(account.permit(*ALLOWED_USER_FIELDS).to_h)
+    provider = session[:role_slug] == Role::PROVIDER
+    PictureUpload.validate!(account[:picture]) if provider && account[:picture].respond_to?(:content_type)
+    user.assign_attributes(account.permit(*ALLOWED_USER_FIELDS, *(PROVIDER_USER_FIELDS if provider)).to_h)
     settings_attributes = account.fetch(:settings, {}).permit(*ALLOWED_USER_SETTING_FIELDS, :password_confirmation).to_h
     password = settings_attributes.delete("password")
     confirmation = settings_attributes.delete("password_confirmation")
@@ -47,6 +51,7 @@ class AccountController < ApplicationController
 
     user.save!
     settings.save!
+    save_record_picture(user, account) if provider
 
     session[:user_email] = user.email
     session[:username] = settings.username

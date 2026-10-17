@@ -325,7 +325,6 @@ zh:
     no_privileges_message: 您没有所需的权限去查看这个页面，请尝试其他页面.
     backend_calendar: 后台日历
     start_date_time: 开始日期/时间
-    end_date_time: 结束日期/时间
     licensed_under: 许可
     unexpected_issues_occurred: 出现异常出错.
     service_communication_error: 服务器发生通讯错误，请重新再试.
@@ -999,3 +998,5 @@ zh:
     appointments_include_meeting_links_hint: "允许服务人员、助理或管理员为预约添加在线会议链接。该链接将包含在客户的日历邀请中。"
     booking_provider_first_hint: "在预约页面中，先向客户显示服务人员，再让其选择服务项目。"
     display_order_switch_hint: "允许客户使用预约页面第一步的按钮，选择先选服务项目或先选服务人员，再选另一项。"
+    about_and_services: "关于与服务"
+    notes_internal_hint: "内部注释 - 拥有员工登录账号的人员可见"

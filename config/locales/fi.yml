@@ -325,7 +325,6 @@ fi:
     no_privileges_message: Sinulla ei ole oikeuksia katsella tätä sivua. Siirry toiseen osioon.
     backend_calendar: Taustakalenteri
     start_date_time: Aloituspäivämäärä ja kellonaika
-    end_date_time: Lopetus päivä ja kellonaika
     licensed_under: Lisensoitu käyttäen
     unexpected_issues_occurred: Odottamattomia ongelmia esiintyi.
     service_communication_error: Yhteys palvelimeen töksähti, yritä uudelleen.
@@ -999,3 +998,5 @@ fi:
     appointments_include_meeting_links_hint: "Sallii kampaajan, avustajan tai ylläpitäjän lisätä varaukseen linkin verkkokokoukseen. Linkki sisällytetään asiakkaan kalenterikutsuun."
     booking_provider_first_hint: "Näytä varaussivulla asiakkaalle kampaajat ennen kuin hän valitsee palvelun."
     display_order_switch_hint: "Sallii asiakkaiden valita varaussivun ensimmäisellä vaiheella painikkeella, valitaanko ensin palvelu vai kampaaja, ennen toisen valitsemista."
+    about_and_services: "Tietoja ja palvelut"
+    notes_internal_hint: "Sisäiset lisätiedot - näkyvät henkilöille, joilla on henkilökunnan tunnus"
