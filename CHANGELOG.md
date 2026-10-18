@@ -3,6 +3,10 @@
 The about page lists these notes; every release needs a section here matching
 CloudronManifest.json.
 
+## 3.2.2
+
+- Minor fixes include: the Add to Google Calendar button on the booking confirmed page shows its icon
+
 ## 3.2.1
 
 - Appointments: only admins and assistants can delete an appointment; stylists cancel
