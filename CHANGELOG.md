@@ -3,6 +3,10 @@
 The about page lists these notes; every release needs a section here matching
 CloudronManifest.json.
 
+## 3.2.3
+
+- Appointments: Messages in the List's appointment details opens the client's messages page instead of "Content missing"
+
 ## 3.2.2
 
 - Minor fixes include: the Add to Google Calendar button on the booking confirmed page shows its icon

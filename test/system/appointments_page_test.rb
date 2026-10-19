@@ -12,6 +12,15 @@ class AppointmentsPageTest < ApplicationSystemTestCase
     login_as_admin
   end
 
+  test "Messages in the popover leaves the day frame for the customer's messages page" do
+    visit appointments_url(date: @date)
+    find(".day-entry-appointment", text: "JX - Trim Cut", wait: 5).click
+    within(".popover", wait: 5) { click_on "Messages" }
+    assert_current_path(messages_customer_path(users(:jx)), wait: 5)
+    assert_selector "#message-body", wait: 5
+    assert_no_text "Content missing"
+  end
+
   test "columns list the day's entries, a free slot opens a prefilled dialog, and the toolbar is URL state" do
     visit appointments_url(date: @date)
     assert_selector ".provider-column[data-provider-id='#{users(:zane).id}'] h6", text: "Zane", wait: 5

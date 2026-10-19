@@ -301,9 +301,12 @@ App.Utils.CalendarEventPopover = (function () {
             );
         });
 
+        // On the List the popover sits inside the day frame, so the link must
+        // leave the frame for the whole page.
         const messagesButton = $('<a/>', {
             class: 'btn btn-outline-secondary',
             href: App.Utils.Url.siteUrl('customers/' + customer.id + '/messages'),
+            'data-turbo-frame': '_top',
             html: [
                 $('<i/>', {class: 'fas fa-comments me-2'}),
                 $('<span/>', {text: lang('messages')}),
