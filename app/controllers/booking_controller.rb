@@ -11,6 +11,10 @@ class BookingController < ApplicationController
                                   id_users_customer id_services].freeze
   THEMES = %w[brutalism coder fruit material nice outline solid].freeze
 
+  # Only browsers book. A request for JSON or any other non-HTML format is a
+  # scanner, refused before the page is built. register answers JSON itself.
+  before_action :html_only, except: :register
+
   rate_limit to: 15, within: 1.minute, only: :register,
              with: -> { render json: { success: false, message: "Too many requests." }, status: :too_many_requests }
 
@@ -225,6 +229,13 @@ class BookingController < ApplicationController
   end
 
   private
+
+  # A bare */* Accept header (curl, uptime monitors) arrives as a wildcard
+  # type rather than as HTML.
+  def html_only
+    format = request.format
+    head :not_acceptable unless format.html? || format.to_s == "*/*"
+  end
 
   def form_post? = params[:form].present?
 

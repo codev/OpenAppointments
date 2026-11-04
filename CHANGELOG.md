@@ -3,6 +3,10 @@
 The about page lists these notes; every release needs a section here matching
 CloudronManifest.json.
 
+## 3.2.4
+
+- Minor fixes include: automated requests that ask the booking page for JSON, or send a forged Client-IP header, get a plain refusal instead of a crash report
+
 ## 3.2.3
 
 - Appointments: Messages in the List's appointment details opens the client's messages page instead of "Content missing"

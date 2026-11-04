@@ -52,6 +52,11 @@ module OpenAppointments
     # header, rather than redirecting to a short-lived signed storage URL.
     config.active_storage.resolve_model_to_route = :rails_storage_proxy
 
+    # The app sits behind the Cloudron proxy, which sets X-Forwarded-For. A
+    # Client-IP header arriving beside it comes from the client and is scanner
+    # noise, not a spoofing signal worth a 500.
+    config.action_dispatch.ip_spoofing_check = false
+
     # EA reuses one CSRF token across many AJAX calls; per-form tokens would break that.
     config.action_controller.per_form_csrf_tokens = false
 
