@@ -67,6 +67,7 @@ module CalendarPage
   def popover_script_vars
     {
       privileges: session_role.permissions,
+      delete_access: delete_access?,
       timezones: helpers.timezones,
       **(1..5).to_h { |i| [ :"label_custom_field_#{i}", Setting.get("label_custom_field_#{i}") ] }
     }

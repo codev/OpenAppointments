@@ -42,6 +42,8 @@ class IframeEmbedTest < ActionDispatch::IntegrationTest
     enable_embedding
     get "/"
     assert_match(/openappointments:height/, response.body)
+    assert_includes response.body, "var target = #{ORIGIN.to_json} || '*';", "the origin must reach the script unescaped"
+    assert_no_match(/var target = &quot;/, response.body)
   end
 
   test "cookie same-site policy relaxes only for the embedded booking flow over https" do

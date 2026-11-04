@@ -3,7 +3,7 @@ module Authorization
   extend ActiveSupport::Concern
 
   included do
-    helper_method :can?, :cannot?, :inbox_access?, :series_access?
+    helper_method :can?, :cannot?, :inbox_access?, :series_access?, :delete_access?
   end
 
   def can?(action, resource)
@@ -22,6 +22,12 @@ module Authorization
   # Repeating appointments are an admin and assistant task; stylists book and
   # cancel single appointments.
   def series_access?
+    session[:role_slug] != Role::PROVIDER
+  end
+
+  # Deleting an appointment outright is an admin and assistant task; stylists
+  # cancel, which keeps the record.
+  def delete_access?
     session[:role_slug] != Role::PROVIDER
   end
 

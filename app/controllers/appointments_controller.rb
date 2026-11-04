@@ -65,9 +65,11 @@ class AppointmentsController < ApplicationController
   def remove_form
     head :forbidden and return if cannot?(:delete, :appointments)
 
+    @kind = params[:kind] == "delete" ? "delete" : "cancel"
+    head :forbidden and return if @kind == "delete" && !delete_access?
+
     @appointment = Appointment.appointments.find(params[:id])
     ensure_event_permission!(@appointment.id_users_provider)
-    @kind = params[:kind] == "delete" ? "delete" : "cancel"
     render_form :remove
   end
 

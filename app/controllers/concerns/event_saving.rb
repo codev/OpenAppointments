@@ -92,6 +92,7 @@ module EventSaving
   # kind: "cancel" keeps the row with the cancelled status, "delete" destroys it.
   def remove_appointment_record(appointment, kind:, reason:, notify_users:)
     raise ArgumentError, "You do not have the required permissions for this task." if cannot?(:delete, :appointments)
+    raise ArgumentError, "You do not have the required permissions for this task." if kind == "delete" && !delete_access?
 
     ensure_event_permission!(appointment.id_users_provider)
     provider = appointment.provider

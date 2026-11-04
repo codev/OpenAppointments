@@ -27,6 +27,13 @@ class BookingConfirmationTest < ActionDispatch::IntegrationTest
     assert_select "#calendar-actions #download-ics"
   end
 
+  test "the Google Calendar button shows an icon from the solid pack the message layout loads" do
+    get "/booking_confirmation/of/#{appointments(:upcoming).booking_hash}"
+
+    assert_select "#add-to-google-calendar .fas.fa-calendar-plus"
+    assert_select "#add-to-google-calendar .fab", false
+  end
+
   test "the heading says the customer is all set" do
     get "/booking_confirmation/of/#{appointments(:upcoming).booking_hash}"
 

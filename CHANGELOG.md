@@ -3,6 +3,20 @@
 The about page lists these notes; every release needs a section here matching
 CloudronManifest.json.
 
+## 3.2.3
+
+- Appointments: Messages in the List's appointment details opens the client's messages page instead of "Content missing"
+
+## 3.2.2
+
+- Minor fixes include: the Add to Google Calendar button on the booking confirmed page shows its icon
+
+## 3.2.1
+
+- Appointments: only admins and assistants can delete an appointment; stylists cancel
+- Email: password resets and every other application email go through the SMTP server set on Messages > Settings when one is configured
+- Minor fixes include: the booking page embedded on the website reports its height to the page again, so the frame fits the content
+
 ## 3.2.0
 
 - Stylists: an About & Services tab holds the picture, About, Description of services and the services list; stylists edit their own on the Account page, where they also see the services they offer
