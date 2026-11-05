@@ -5,6 +5,7 @@ CloudronManifest.json.
 
 ## 3.2.4
 
+- Booking: Confirm waits for the captcha check and asks for it again when the page has sat idle too long, and a double tap on Confirm no longer sends the booking twice
 - Minor fixes include: automated requests that ask the booking page for JSON, or send a forged Client-IP header, get a plain refusal instead of a crash report
 
 ## 3.2.3

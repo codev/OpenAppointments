@@ -471,19 +471,25 @@ class BookingWizardWindowTest < ApplicationSystemTestCase
     assert border_color != "rgb(255, 255, 255)", "Unchecked checkbox should have visible border, got: #{border_color}"
   end
 
-  # Cloudflare's api.js is blocked and replaced by a stub, so the test runs offline
-  # and shows whether the page itself renders the widget the frame brings in.
+  # Cloudflare's api.js is blocked and replaced by a stub, so the tests run offline.
+  # The stub keeps the render options so a test can hand the page a token, expire
+  # it, and count the resets the page asks for.
   TURNSTILE_STUB = <<~JS.freeze
     window.turnstile = {
-      render(element) {
+      resets: 0,
+      render(element, options) {
         const container = typeof element === 'string' ? document.querySelector(element) : element;
         container.innerHTML = '<iframe class="turnstile-stub"></iframe>';
+        this.options = options || {};
         return 'stub';
-      }
+      },
+      reset() { this.resets += 1; },
+      solve(token) { this.options.callback(token); },
+      expire() { this.options['expired-callback'](); }
     };
   JS
 
-  test "the Turnstile widget is rendered on the confirmation step before any submit" do
+  def with_turnstile_stub
     Setting.set("altcha_enabled", "1")
     Setting.set("captcha_provider", "turnstile")
     Setting.set("turnstile_site_key", "sitekey")
@@ -492,7 +498,13 @@ class BookingWizardWindowTest < ApplicationSystemTestCase
     browser.execute_cdp("Network.enable")
     browser.execute_cdp("Network.setBlockedURLs", urls: [ "*challenges.cloudflare.com*" ])
     stub = browser.execute_cdp("Page.addScriptToEvaluateOnNewDocument", source: TURNSTILE_STUB)
+    yield
+  ensure
+    browser.execute_cdp("Page.removeScriptToEvaluateOnNewDocument", identifier: stub["identifier"]) if stub
+    browser&.execute_cdp("Network.setBlockedURLs", urls: [])
+  end
 
+  def reach_confirmation_step
     date = working_day
     visit root_url
     assert_selector "#wizard-frame-1", visible: :visible, wait: 5
@@ -508,11 +520,62 @@ class BookingWizardWindowTest < ApplicationSystemTestCase
     fill_in "name", with: "Walk In"
     fill_in "email", with: "walkin@example.org"
     find("#button-next-4").click
-
     assert_selector "#wizard-frame-5", visible: :visible, wait: 5
-    assert_selector "#wizard-frame-5 .cf-turnstile iframe", count: 1, wait: 5
-  ensure
-    browser.execute_cdp("Page.removeScriptToEvaluateOnNewDocument", identifier: stub["identifier"]) if stub
-    browser&.execute_cdp("Network.setBlockedURLs", urls: [])
+  end
+
+  test "the Turnstile widget is rendered on the confirmation step before any submit" do
+    with_turnstile_stub do
+      reach_confirmation_step
+      assert_selector "#wizard-frame-5 .cf-turnstile iframe", count: 1, wait: 5
+    end
+  end
+
+  test "Confirm waits for the Turnstile token and asks for it again when the token expires" do
+    with_turnstile_stub do
+      reach_confirmation_step
+      assert_selector "#wizard-frame-5 .cf-turnstile iframe", count: 1, wait: 5
+      assert_selector "#book-appointment-submit:disabled"
+
+      page.execute_script("window.turnstile.solve('token')")
+      assert_selector "#book-appointment-submit:not(:disabled)"
+
+      page.execute_script("window.turnstile.expire()")
+      assert_selector "#book-appointment-submit:disabled"
+      assert_selector "#turnstile-hint", text: I18n.t("ea.turnstile_verification_failed")
+      assert_equal 1, page.evaluate_script("window.turnstile.resets")
+
+      page.execute_script("window.turnstile.solve('token-2')")
+      assert_selector "#book-appointment-submit:not(:disabled)"
+    end
+  end
+
+  test "a tab that sat idle past the token lifetime fetches a fresh token when it comes back" do
+    with_turnstile_stub do
+      reach_confirmation_step
+      page.execute_script("window.turnstile.solve('token')")
+      assert_selector "#book-appointment-submit:not(:disabled)"
+
+      page.execute_script(<<~JS)
+        const now = Date.now();
+        Date.now = () => now + 5 * 60 * 1000;
+        document.dispatchEvent(new Event('visibilitychange'));
+      JS
+      assert_selector "#book-appointment-submit:disabled"
+      assert_equal 1, page.evaluate_script("window.turnstile.resets")
+    end
+  end
+
+  test "Confirm is disabled the moment it is pressed so a double tap sends one booking" do
+    with_turnstile_stub do
+      reach_confirmation_step
+      page.execute_script("window.turnstile.solve('token')")
+      assert_selector "#book-appointment-submit:not(:disabled)"
+
+      # Hold the submission on this page so the button state can be read.
+      page.execute_script("document.addEventListener('submit', (event) => event.preventDefault(), true)")
+      find("#book-appointment-submit").click
+      assert_selector "#book-appointment-submit:disabled"
+      assert_selector "#book-appointment-submit .spinner-border"
+    end
   end
 end
