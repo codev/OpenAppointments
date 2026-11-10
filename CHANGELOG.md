@@ -8,6 +8,7 @@ CloudronManifest.json.
 - Booking: Confirm waits for the captcha check and asks for it again when the page has sat idle too long, and a double tap on Confirm no longer sends the booking twice
 - Import: a 10to8 service whose name has drifted from the configured one ("S2. Colour 2 hours", a double space, a missing O-code) links to the configured service by its code instead of creating a copy
 - Booking: service, category and stylist pictures on the cards show in full as squares instead of being cropped top and bottom
+- Notices: the Booking Notice becomes one notice per booking step (service, provider, date/time, customer details, confirmation), each shown on its step whenever it has content; the display switches and the {{Booking Notice}} message token are gone, and existing text moves to the steps it was shown on
 - Minor fixes include: automated requests that ask the booking page for JSON, or send a forged Client-IP header, get a plain refusal instead of a crash report
 
 ## 3.2.3

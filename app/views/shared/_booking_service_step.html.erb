@@ -114,6 +114,7 @@
                 </div>
             </div>
         </div>
+        <%= render "shared/booking_notice", content: vars(:booking_notice_service_content) %>
         <div class="command-buttons text-center my-3 mx-auto d-md-flex justify-content-md-between">
             <% if @step == "first" %>
                 <% if !vars(:manage_mode) && setting("display_order_switch", "1").to_s == "1" %>

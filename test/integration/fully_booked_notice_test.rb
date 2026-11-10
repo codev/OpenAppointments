@@ -20,7 +20,7 @@ class FullyBookedNoticeTest < ActionDispatch::IntegrationTest
     assert_select "#legal-contents h4", text: I18n.t("ea.notices")
     assert_select "#settings-nav span", text: I18n.t("ea.notices")
     assert_select "textarea#fully-booked-notice-content[name='settings[fully_booked_notice_content]']"
-    assert_operator response.body.index("booking-notice-content"), :<, response.body.index("fully-booked-notice-content")
+    assert_operator response.body.index("booking-notice-final-content"), :<, response.body.index("fully-booked-notice-content")
 
     post "/legal_settings/save", params: { settings: { fully_booked_notice_content: "<p>Full up</p><script>x</script>" } }
     assert_equal "<p>Full up</p>x", Setting.get("fully_booked_notice_content")

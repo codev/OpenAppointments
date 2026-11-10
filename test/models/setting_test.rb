@@ -26,8 +26,8 @@ class SettingTest < ActiveSupport::TestCase
   end
 
   test "rich text settings are sanitised whichever path writes them" do
-    Setting.set("booking_notice_content", '<p style="text-align: center; background: url(javascript:x)">Hi</p><script>alert(1)</script><img src=x onerror=alert(1)>')
-    assert_equal '<p style="text-align:center;">Hi</p>alert(1)<img src="x">', Setting.get("booking_notice_content")
+    Setting.set("booking_notice_time_content", '<p style="text-align: center; background: url(javascript:x)">Hi</p><script>alert(1)</script><img src=x onerror=alert(1)>')
+    assert_equal '<p style="text-align:center;">Hi</p>alert(1)<img src="x">', Setting.get("booking_notice_time_content")
     Setting.set("company_name", "<b>Kept</b>")
     assert_equal "<b>Kept</b>", Setting.get("company_name")
   end
