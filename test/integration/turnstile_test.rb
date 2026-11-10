@@ -129,6 +129,34 @@ class TurnstileTest < ActionDispatch::IntegrationTest
     assert response.parsed_body["appointment_hash"].present?
   end
 
+  test "a rejected form post re-renders the confirmation step with the error, a fresh widget and the details" do
+    enable_turnstile
+    stub_request(:post, VERIFY_URL).to_return(body: { success: false, "error-codes" => [ "timeout-or-duplicate" ] }.to_json)
+    assert_no_difference "Appointment.count" do
+      travel_to Time.new(2026, 7, 10, 12, 0, 0) do
+        post "/booking/register", params: {
+          form: "1", service_id: services(:haircut).id, provider_id: users(:zane).id, date: "2026-07-20", time: "11:00",
+          appointment: { id_services: services(:haircut).id, id_users_provider: users(:zane).id,
+                         start_datetime: "2026-07-20 11:00:00" },
+          customer: { name: "Captcha Booker", email: "captcha@example.org" },
+          cf_turnstile_response: "stale"
+        }
+      end
+    end
+    assert_response :success
+    assert_select "#form-message", text: I18n.t("ea.turnstile_verification_failed")
+    assert_select "#wizard-frame-5 .cf-turnstile[data-sitekey=?]", "sitekey"
+    assert_select "input[name='customer[name]'][value='Captcha Booker']"
+    assert_select "input[name='customer[email]'][value='captcha@example.org']"
+  end
+
+  test "the booking page loads Turnstile for explicit rendering and announces when it is ready" do
+    enable_turnstile
+    get "/"
+    assert_select "script[src*='turnstile/v0/api.js'][src*='render=explicit'][src*='onload=onTurnstileLoad']"
+    assert_match(/window\.onTurnstileLoad/, response.body)
+  end
+
   test "settings save stores the provider and keys" do
     post "/login/validate", params: { username: "administrator", password: "administrator1" }
     post "/altcha_settings/save", params: {

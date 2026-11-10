@@ -119,9 +119,8 @@ module TenToEight
     def load_services
       counts = track("services")
       @category_ids ||= ServiceCategory.pluck(:name, :id).to_h
-      @service_ids = {}
       @data[:services].each do |row|
-        service = Service.find_by(name: row[:name])
+        service = find_service(row[:name])
         if service
           counts[:matched] += 1
           if service.description.blank? && row[:description].present?
@@ -140,17 +139,33 @@ module TenToEight
           end
           next unless service
 
+          catalogue << service
           counts[:created] += 1
         end
         attach_picture(service, row[:picture])
-        @service_ids[row[:name]] = service.id
+        service_ids[row[:name]] = service.id
       end
+    end
+
+    # Configured services, held once per run so matching does not query per name.
+    def catalogue
+      @catalogue ||= Service.all.to_a
+    end
+
+    def find_service(name)
+      ServiceMatch.find(name, catalogue)
+    end
+
+    # Service name => id, resolved through find_service on first use so the
+    # providers, series and appointments phases link drifted 10to8 names to the
+    # configured service even when the services phase did not run.
+    def service_ids
+      @service_ids ||= Hash.new { |ids, name| ids[name] = find_service(name)&.id }
     end
 
     def load_providers
       counts = track("providers")
       role = Role.find_by!(slug: Role::PROVIDER)
-      @service_ids ||= Service.pluck(:name, :id).to_h
       @provider_ids = {}
       providers = User.providers.to_a
 
@@ -194,7 +209,7 @@ module TenToEight
         end
 
         guard("providers", counts, row[:name].presence || row[:email]) do
-          row[:services].filter_map { |name| @service_ids[name] }.each do |service_id|
+          row[:services].filter_map { |name| service_ids[name] }.each do |service_id|
             ServiceProviderLink.find_or_create_by!(id_users: provider.id, id_services: service_id)
           end
         end
@@ -243,7 +258,6 @@ module TenToEight
     def load_appointment_series
       counts = track("appointment_series")
       provider_ids = @provider_ids || match_existing_providers
-      service_ids = @service_ids || Service.pluck(:name, :id).to_h
       customer_ids = @customer_ids || match_existing_customers
 
       Array(@data[:appointment_series]).each do |row|
@@ -467,7 +481,6 @@ module TenToEight
     def load_appointments
       counts = track("appointments")
       provider_ids = @provider_ids || match_existing_providers
-      service_ids = @service_ids || Service.pluck(:name, :id).to_h
       customer_ids = @customer_ids || match_existing_customers
 
       @data[:appointments].each do |row|

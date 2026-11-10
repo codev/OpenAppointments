@@ -184,13 +184,57 @@ App.Pages.Booking = (function () {
         if ($('#altcha-widget').length && App.Utils.Altcha) {
             App.Utils.Altcha.initialize('altcha-widget');
         }
+        renderTurnstile();
+    }
 
-        // Cloudflare's api.js renders only the widgets present when it loads; the
-        // final step arrives later in the frame, so render it here. A rendered
-        // widget has children (at least its hidden response input).
-        const turnstileWidget = document.querySelector('.cf-turnstile');
-        if (window.turnstile && turnstileWidget && !turnstileWidget.hasChildNodes()) {
-            window.turnstile.render(turnstileWidget);
+    // Cloudflare tokens live five minutes; a token older than this is treated as
+    // spent when a tab comes back from the background.
+    const TURNSTILE_TOKEN_LIFETIME_MS = 270000;
+    let turnstile = {widget: null, id: null, solvedAt: 0};
+
+    function waitForTurnstileToken(message) {
+        $('#book-appointment-submit').prop('disabled', true);
+        $('#turnstile-hint').text(message || '\u00a0').css('opacity', message ? 1 : 0);
+    }
+
+    function resetTurnstile(message) {
+        waitForTurnstileToken(message);
+        window.turnstile.reset(turnstile.id);
+    }
+
+    // Cloudflare's api.js is loaded for explicit rendering, so the widget is drawn
+    // here on every path the confirmation step arrives by (the frame, or a full page
+    // after the server rejected a token) and Confirm follows the token: disabled
+    // until one arrives, disabled again when it expires or errors.
+    function renderTurnstile() {
+        const widget = document.querySelector('.cf-turnstile');
+        if (!window.turnstile || !widget || widget === turnstile.widget) {
+            return;
+        }
+        turnstile = {widget: widget, id: null, solvedAt: 0};
+        waitForTurnstileToken();
+        turnstile.id = window.turnstile.render(widget, {
+            'sitekey': widget.dataset.sitekey,
+            'response-field-name': widget.dataset.responseFieldName,
+            'callback': () => {
+                turnstile.solvedAt = Date.now();
+                $('#book-appointment-submit').prop('disabled', false);
+                $('#turnstile-hint').text('\u00a0').css('opacity', 0);
+            },
+            'expired-callback': () => resetTurnstile(lang('turnstile_verification_failed')),
+            'error-callback': () => waitForTurnstileToken(lang('turnstile_verification_failed')),
+        });
+    }
+
+    // A phone tab frozen in the background misses the widget's own refresh: coming
+    // back with a stale token, fetch a fresh one before Confirm can be tapped.
+    function refreshStaleTurnstile() {
+        if (document.visibilityState !== 'visible' || !turnstile.solvedAt) {
+            return;
+        }
+        if (Date.now() - turnstile.solvedAt > TURNSTILE_TOKEN_LIFETIME_MS) {
+            turnstile.solvedAt = 0;
+            resetTurnstile();
         }
     }
 
@@ -287,17 +331,21 @@ App.Pages.Booking = (function () {
             saveDraft();
         } else if (form.id === 'book-appointment-form') {
             window.sessionStorage.removeItem(DRAFT_KEY);
+            // Confirm leaves the page: a second tap must not send the booking again.
+            if (event.submitter && event.submitter.id === 'book-appointment-submit') {
+                showSpinner($(event.submitter));
+            }
         }
         if (!event.defaultPrevented) {
-            showNextSpinner(form);
+            showSpinner($(form).find('.button-next'));
         }
     }
 
-    // Next is disabled with a spinner until the next step replaces the frame.
-    function showNextSpinner(form) {
-        const $next = $(form).find('.button-next');
-        $next.prop('disabled', true);
-        $next.find('i').replaceWith('<span class="spinner-border spinner-border-sm ms-2" role="status" aria-hidden="true"></span>');
+    // The button is disabled with a spinner until the next page or step arrives.
+    // Font Awesome has swapped the icon's <i> for an <svg> by the time this runs.
+    function showSpinner($button) {
+        $button.prop('disabled', true);
+        $button.find('i, svg').first().replaceWith('<span class="spinner-border spinner-border-sm ms-2" role="status" aria-hidden="true"></span>');
     }
 
     function initializeStep() {
@@ -348,6 +396,9 @@ App.Pages.Booking = (function () {
             // it, so the guards listen in the capture phase.
             document.addEventListener('submit', onSubmit, true);
 
+            document.addEventListener('turnstile:load', renderTurnstile);
+            document.addEventListener('visibilitychange', refreshStaleTurnstile);
+
             // Card selection writes into the step's select.
             $(document).on('click keypress', '.booking-card', (event) => {
                 if (event.type === 'keypress' && event.key !== 'Enter') {
@@ -359,8 +410,11 @@ App.Pages.Booking = (function () {
                     $card.addClass('selected');
                     $('.service-cards').addClass('d-none');
                     $('.service-cards[data-category-id="' + $card.data('categoryId') + '"], .service-cards[data-category-id=""]').removeClass('d-none');
+                    $('#category-description .selection-description').addClass('d-none');
+                    const $description = $('#category-description .selection-description[data-for-category="' + $card.data('categoryId') + '"]').removeClass('d-none');
                     const $heading = $('#select-service-heading').removeClass('d-none');
-                    scrollTo($heading.offset().top - 20);
+                    // The description, when there is one, is read before the services.
+                    scrollTo(($description.length ? $description : $heading).offset().top - 20);
                     return;
                 }
                 if ($card.is('[data-service-id]')) {

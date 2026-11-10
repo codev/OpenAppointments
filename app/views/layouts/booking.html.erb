@@ -82,7 +82,10 @@
     <%= ea_js "utils/altcha" %>
 <% end %>
 <% if TurnstileChallenge.enabled? %>
-    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+    <%# Explicit rendering: the booking script draws the widget when the confirmation
+        step arrives; this hook tells it when api.js is ready, whichever loads first. %>
+    <script>window.onTurnstileLoad = function () { document.dispatchEvent(new Event('turnstile:load')); };</script>
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit&amp;onload=onTurnstileLoad" async defer></script>
 <% end %>
 <% if Embedding.enabled? %>
     <%# Embedded in an iframe: report the document height so the parent can resize it. %>

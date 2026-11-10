@@ -35,6 +35,25 @@ class BookingCardsTest < ActionDispatch::IntegrationTest
                   text: "Walk In Trim"
   end
 
+  test "a category description sits hidden under the category cards, above the Select Service heading" do
+    Setting.set("booking_display_mode", "cards")
+    get "/"
+    assert_select "#category-description .selection-description.d-none[data-for-category='#{service_categories(:hair).id}'] p",
+                  text: "Hair services"
+    assert_operator response.body.index('id="category-cards"'), :<, response.body.index('id="category-description"')
+    assert_operator response.body.index('id="category-description"'), :<, response.body.index('id="select-service-heading"')
+  end
+
+  test "a category without a description has no description block" do
+    Setting.set("booking_display_mode", "cards")
+    bare = ServiceCategory.create!(name: "Nails")
+    service = Service.create!(name: "Manicure", duration: 30, price: 0, currency: "GBP", id_service_categories: bare.id)
+    ServiceProviderLink.create!(id_services: service.id, id_users: users(:zane).id)
+    get "/"
+    assert_select "#category-cards .booking-card[data-category-id='#{bare.id}']"
+    assert_select "#category-description .selection-description[data-for-category='#{bare.id}']", count: 0
+  end
+
   test "hidden categories and their services disappear from the booking page" do
     Setting.set("booking_display_mode", "cards")
     service_categories(:hair).update!(is_hidden: true)

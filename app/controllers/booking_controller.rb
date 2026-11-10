@@ -11,6 +11,10 @@ class BookingController < ApplicationController
                                   id_users_customer id_services].freeze
   THEMES = %w[brutalism coder fruit material nice outline solid].freeze
 
+  # Only browsers book. A request for JSON or any other non-HTML format is a
+  # scanner, refused before the page is built. register answers JSON itself.
+  before_action :html_only, except: :register
+
   rate_limit to: 15, within: 1.minute, only: :register,
              with: -> { render json: { success: false, message: "Too many requests." }, status: :too_many_requests }
 
@@ -226,6 +230,13 @@ class BookingController < ApplicationController
 
   private
 
+  # A bare */* Accept header (curl, uptime monitors) arrives as a wildcard
+  # type rather than as HTML.
+  def html_only
+    format = request.format
+    head :not_acceptable unless format.html? || format.to_s == "*/*"
+  end
+
   def form_post? = params[:form].present?
 
   def base_index_vars(available_services, available_providers, manage_mode, appointment: nil,
@@ -275,9 +286,11 @@ class BookingController < ApplicationController
       time_format: Setting.get("time_format"),
       first_weekday: Setting.get("first_weekday"),
       **field_display_vars,
-      display_booking_notice_time_step: Setting.get("display_booking_notice_time_step"),
-      display_booking_notice_info_step: Setting.get("display_booking_notice_info_step"),
-      booking_notice_content: Setting.get("booking_notice_content"),
+      booking_notice_service_content: Setting.get("booking_notice_service_content"),
+      booking_notice_provider_content: Setting.get("booking_notice_provider_content"),
+      booking_notice_time_content: Setting.get("booking_notice_time_content"),
+      booking_notice_info_content: Setting.get("booking_notice_info_content"),
+      booking_notice_final_content: Setting.get("booking_notice_final_content"),
       fully_booked_notice_content: Setting.get("fully_booked_notice_content"),
       display_waitlist: manage_mode ? "0" : Setting.get("waitlist_enabled"),
       display_cookie_notice: Setting.get("display_cookie_notice"),

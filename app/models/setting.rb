@@ -5,7 +5,9 @@ class Setting < ApplicationRecord
 
   # Rich text edited on the Legal Contents page and rendered as HTML on the
   # public pages, so it is sanitised here whichever path writes it.
-  RICH_TEXT_SETTINGS = %w[booking_notice_content fully_booked_notice_content cookie_notice_content
+  RICH_TEXT_SETTINGS = %w[booking_notice_service_content booking_notice_provider_content
+                          booking_notice_time_content booking_notice_info_content booking_notice_final_content
+                          fully_booked_notice_content cookie_notice_content
                           terms_and_conditions_content privacy_policy_content].freeze
 
   # The editor writes alignment as an inline style; the sanitiser keeps only
