@@ -62,6 +62,14 @@
                                     </div>
                                 <% end %>
                             </div>
+                            <%# The chosen category's description, revealed by the card click. %>
+                            <div id="category-description" class="small">
+                                <% categories.each do |category| %>
+                                    <% next if category["description"].blank? %>
+                                    <div class="selection-description d-none text-muted mb-4"
+                                         data-for-category="<%= category["id"] %>"><%= simple_format(category["description"]) %></div>
+                                <% end %>
+                            </div>
                             <h2 id="select-service-heading"
                                 class="frame-title fw-light text-center mb-4 text-muted <%= 'd-none' if uncategorized.empty? %>">
                                 <%= lang('select_service') %>

@@ -410,8 +410,11 @@ App.Pages.Booking = (function () {
                     $card.addClass('selected');
                     $('.service-cards').addClass('d-none');
                     $('.service-cards[data-category-id="' + $card.data('categoryId') + '"], .service-cards[data-category-id=""]').removeClass('d-none');
+                    $('#category-description .selection-description').addClass('d-none');
+                    const $description = $('#category-description .selection-description[data-for-category="' + $card.data('categoryId') + '"]').removeClass('d-none');
                     const $heading = $('#select-service-heading').removeClass('d-none');
-                    scrollTo($heading.offset().top - 20);
+                    // The description, when there is one, is read before the services.
+                    scrollTo(($description.length ? $description : $heading).offset().top - 20);
                     return;
                 }
                 if ($card.is('[data-service-id]')) {
