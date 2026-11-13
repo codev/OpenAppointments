@@ -47,6 +47,11 @@ module BookingWindows
     zone.parse(appointment.start_datetime.strftime("%Y-%m-%d %H:%M:%S"))
   end
 
+  def ends_at(appointment)
+    zone = Time.find_zone!(appointment.provider&.effective_timezone || Time.zone.name)
+    zone.parse(appointment.end_datetime.strftime("%Y-%m-%d %H:%M:%S"))
+  end
+
   def past?(appointment, now = Time.now) = starts_at(appointment) < now
 
   # Now on the default zone's clock as a plain Time, the form stored times use.

@@ -7,6 +7,7 @@ CloudronManifest.json.
 
 - Notices: a Booking Notice - After Confirmation shows on the page confirming the booking, after the details-sent text
 - Booking: step 5 is headed "Confirm Your Appointment"
+- Messages: once a customer's appointment has happened, their unread messages are marked read; the Inbox is unaffected
 - Waiting list: the signup on the date step shows only when nothing in the booking window can be booked for the chosen service and stylist
 - Booking: the confirmation step notice sits above the Back and Confirm buttons, as on the service and stylist steps
 

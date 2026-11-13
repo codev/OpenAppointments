@@ -16,6 +16,9 @@ production:
   reminder_scan:
     class: ReminderScanJob
     schedule: every 5 minutes
+  message_read_scan:
+    class: MessageReadScanJob
+    schedule: every 5 minutes
   fetch_imap_emails:
     class: FetchImapEmailsJob
     schedule: every 5 minutes
