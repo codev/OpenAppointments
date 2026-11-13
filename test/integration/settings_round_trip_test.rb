@@ -8,7 +8,7 @@ class SettingsRoundTripTest < ActionDispatch::IntegrationTest
              google_analytics_settings matomo_analytics_settings umami_analytics_settings
              jitsi_settings ldap_settings embed_settings altcha_settings messages_settings
              messages_email_settings messages_twilio_settings messages_plivo_settings
-             messages_textanywhere_settings messages_smsgateway_settings google_calendar_settings].freeze
+             messages_textanywhere_settings messages_quicksms_settings messages_smsgateway_settings].freeze
 
   def login_admin
     post "/login/validate", params: { username: "administrator", password: "administrator1" }

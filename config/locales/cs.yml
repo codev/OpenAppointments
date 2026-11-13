@@ -113,7 +113,7 @@ cs:
     language: Jazyk
     no_language: Žádný jazyk
     fields_are_required: Pole označená * jsou povinná.
-    appointment_confirmation: Rezervace schůzky
+    appointment_confirmation: "Potvrďte svůj termín"
     confirm: Potvrdit
     update: Změnit
     cancel_appointment_hint: "Pro zrušení schůzky klikněte na tlačítko \"Zrušit\""
@@ -149,10 +149,6 @@ cs:
     users: Uživatelé
     settings: Nastavení
     log_out: Odhlášení
-    synchronize: Synchronizace
-    enable_sync: Povolit synchronizaci
-    disable_sync: Zakázat synchronizaci
-    disable_sync_prompt: Opravdu chcete vypnout synchronizaci s kalendářem?
     reload: Obnovit
     appointment: Schůzka
     unavailability: Nedostupnost
@@ -175,7 +171,6 @@ cs:
     unavailability_periods_hint: V době, kdy není poskytovatel dostupný, nelze rezervovat nové schůzky.
     new_appointment_hint: Vytvoření nové schůzky a uložení do databáze.
     reload_appointments_hint: Obnovit zobrazení schůzek v kalendáři.
-    trigger_sync_hint: Zahájit proces synchronizace s Kalendářem Google.
     appointment_updated: Provedené změny schůzky byly úspěšně uloženy.
     undo: Zpět
     appointment_details_changed: Informace o schůzce byly změněny.
@@ -362,11 +357,6 @@ cs:
     time: Čas
     hour: Hodina
     minute: Minuta
-    calendar_sync_completed: Synchronizace s Google byla úspěšně dokončena.
-    calendar_sync_failed: 'Synchronizace s Google selhala: nepodařilo se navázat spojení se serverem.'
-    select_sync_calendar: Vyberte Kalendář Google
-    select_sync_calendar_prompt: Výberte kalendář, do kterého chcete synchronizovat vaše schůzky. Jestliže nechcete vybrat konkrétní kalendář, bude použit výchozí.
-    sync_calendar_selected: Kalendář Google byl úspěšně vybrán.
     oops_something_went_wrong: Oops! Něco se pokazilo.
     ea_update_success: Aplikace OpenAppointments byla úspěšně aktualizována.
     require_captcha: Vyžadovat CAPTCHA
@@ -561,10 +551,6 @@ cs:
     default_timezone_hint: Zvolte výchozí časovou zónu pro použití v nových záznamech.
     default_language: Výchozí jazyk
     default_language_hint: Zvolte výchozí jazyk pro použití v nových záznamech.
-    sync_method_prompt: Jakou synchronizační metodu chcete používat?
-    caldav_server: CalDAV server
-    caldav_connection_info_prompt: Vložte prosím připojovací údaje pro cílový CalDAV kalendář.
-    connect: Připojit
     ldap: LDAP
     ldap_info: Tato integrace umožňuje připojovat se k existujícímu LDAP serveru, automaticky importovat uživatele do OpenAppointments a poskytuje možnost přihlašovat se přes SSO pomocí jednotného hesla (uživatelské jméno musí odpovídat).
     host: Hostitel
@@ -585,8 +571,6 @@ cs:
     at_least_one_field_required: Alespoň jedno pole musí být na rezervační stránce nastaveno jako povinné.
     customer_is_already_booked: Tento zákazník již má v požadovaném termínu rezervovánu schůzku.
     fields: Pole
-    invalid_credentials_provided: Neplatné přihlašovací údaje, zkuste to prosím znovu.
-    calendar_url: URL kalendáře
     please_select: Zvolte prosím
     secret_header: Tajná hlavička
     search: Hledat
@@ -606,15 +590,6 @@ cs:
     altcha_enabled: Povolit ALTCHA
     generate: Generovat
     meeting_link: Odkaz na schůzku
-    google_calendar: Kalendář Google
-    google_calendar_info: Povolit synchronizaci s Google Calendar pro synchronizaci rezervací s účty Google Calendar poskytovatelů.
-    google_client_id: Client ID
-    google_client_id_info: Client ID z vašeho projektu Google Cloud Console.
-    google_client_secret: Client Secret
-    google_client_secret_info: Client Secret z vašeho projektu Google Cloud Console.
-    google_calendar_setup_info: 'Pro povolení synchronizace s Google Calendar musíte vytvořit projekt v Google Cloud Console, povolit Google Calendar API a vytvořit přihlašovací údaje OAuth 2.0. Navštivte:'
-    google_meet_link_generation: Generovat odkazy Google Meet
-    google_meet_link_generation_info: Automaticky vytvořit odkaz na videokonferenci Google Meet pro synchronizované rezervace. Odkaz na schůzku bude uložen v poli odkazu na schůzku rezervace.
     display_add_to_google_calendar: Zobrazit tlačítko "Přidat do Google Calendar"
     display_add_to_google_calendar_info: Zobrazit tlačítko "Přidat do Google Calendar" na stránce potvrzení rezervace, které zákazníkům umožní snadno přidat rezervaci do svého osobního Google Calendar.
     select_all: Vybrat vše
@@ -705,12 +680,10 @@ cs:
     messages_provider_textanywhere_info: Send and receive SMS with a TextAnywhere account.
     messages_incoming: "Přijímat odpovědi"
     messages_incoming_hint: "Zákazníci mohou odpovídat na zprávy, které odesíláte."
-    messages_test_sms_sent: "Testovací SMS odeslána, zkontrolujte telefon."
     messages_test_sms_number: "Testovací telefonní číslo"
-    messages_test_sms: "Odeslat testovací SMS"
     messages_smsgateway_invalid: "Nastavení brány se nepodařilo ověřit:"
     messages_smsgateway_inbound_hint: "Telefon doručuje přijaté zprávy na tuto adresu, registrace proběhne automaticky při uložení se zapnutým příjmem."
-    messages_smsgateway_step_activate: "Zaškrtněte Aktivní a Přijímat odpovědi a uložte. Nastavení se otestuje, opravte chyby a pro test odesílání použijte tlačítko Odeslat testovací SMS níže."
+    messages_smsgateway_step_activate: "Zaškrtněte Aktivní a Přijímat odpovědi a uložte. Nastavení se otestuje, opravte chyby a pomocí Test nastavení níže ověřte přihlašovací údaje a odešlete testovací zprávu."
     messages_smsgateway_step_credentials: "Na úvodní obrazovce vypněte Local server, zapněte Cloud server a klepněte na tlačítko Offline pro připojení (zaškrtněte i Start on boot), poté zkopírujte uživatelské jméno a heslo z úvodní obrazovky do polí Uživatelské jméno a Heslo níže."
     messages_smsgateway_step_signing: "V aplikaci přejděte na Settings -> Webhooks -> Signing Key -> zadejte podpisový klíč a zkopírujte jej do Podpisového klíče webhooků níže."
     messages_smsgateway_step_token: "Používáte-li privátní server, zadejte na této obrazovce i Private Token - token je v /app/data/private_token na serveru brány."
@@ -930,7 +903,7 @@ cs:
     fully_booked_notice_default: "Nejsou k dispozici žádné volné termíny. Zkuste prosím jinou službu nebo poskytovatele, nebo to zkuste znovu později."
     notices: "Oznámení"
     waitlist_enabled: "Čekací listina"
-    waitlist_enabled_hint: "Umožněte zákazníkům přihlásit se k odběru upozornění, jakmile se uvolní termín."
+    waitlist_enabled_hint: "Zobrazuje se v kroku výběru data, když nelze nic rezervovat. Umožněte zákazníkům přihlásit se k odběru upozornění, jakmile se uvolní termín."
     waitlist_days: "Počet dní na listině"
     waitlist_days_hint: "Přihlášky se po uplynutí tohoto počtu dní odstraní."
     waitlist_max_notices: "Zpráv o uvolněném termínu na přihlášku"
@@ -987,7 +960,6 @@ cs:
     clear_providers: "Vymazat poskytovatele"
     clear_services: "Vymazat služby"
     refresh: "Obnovit"
-    sync: "Synchronizovat"
     feed: "Feed"
     do_not_contact_hint: "Tomuto zákazníkovi se neodesílají potvrzení rezervací, změny ani připomínky"
     do_not_contact_warning: "Tento zákazník požádal, aby nebyl kontaktován. Zprávy odeslané zde se přesto doručí."
@@ -1003,3 +975,25 @@ cs:
     display_order_switch_hint: "Umožnit zákazníkům použít v prvním kroku rezervační stránky tlačítko, kterým si vyberou nejprve službu nebo nejprve kadeřníka, a teprve poté druhou možnost."
     about_and_services: "O mně a služby"
     notes_internal_hint: "Interní poznámky - viditelné pro osoby s přihlášením pro zaměstnance"
+    booking_notice_confirmed_step: "Upozornění k rezervaci - Po potvrzení"
+    messages_provider_default: "Výchozí"
+    messages_default_provider: "Výchozí poskytovatel"
+    messages_default_provider_hint: "Předvybráno při odesílání zprávy ze stránky zákazníka. Výchozí může být jen jeden poskytovatel."
+    messages_test_setup: "Test nastavení"
+    messages_test_credentials: "Test přihlašovacích údajů"
+    messages_test_credentials_ok: "Přihlašovací údaje fungují."
+    messages_test_sending: "Test odesílání"
+    messages_test_send: "Odeslat testovací zprávu"
+    messages_test_sent: "Testovací zpráva byla odeslána, zkontrolujte, zda dorazila."
+    messages_test_email_address: "Testovací e-mailová adresa"
+    messages_test_failed: "Test selhal."
+    messages_test_outgoing_ok: "Odesílání funguje."
+    messages_test_outgoing_server: "Odesílání probíhá přes server, není co kontrolovat."
+    messages_test_outgoing_failed: "Odesílání selhalo:"
+    messages_test_incoming_ok: "Přijímání funguje."
+    messages_test_incoming_off: "Přijímání je vypnuto."
+    messages_test_incoming_failed: "Přijímání selhalo:"
+    messages_provider_quicksms_info: "Odesílejte a přijímejte SMS pomocí účtu QuickSMS a příchozího čísla."
+    messages_quicksms_api_key: "Klíč API"
+    messages_quicksms_signing_secret: "Podpisové tajemství webhooku"
+    messages_quicksms_signing_secret_hint: "Tajemství zobrazené při vytvoření webhooku příchozího čísla v portálu QuickSMS. Pokud je prázdné, přijaté zprávy se přijímají pouze na základě tokenu v URL."

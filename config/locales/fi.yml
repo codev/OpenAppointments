@@ -113,7 +113,7 @@ fi:
     language: Kieli
     no_language: Ei kieltä
     fields_are_required: Tähdellä (*) merkityt kentät vaaditaan
-    appointment_confirmation: Vahvista ajanvaraus
+    appointment_confirmation: "Vahvista aikasi"
     confirm: Vahvista
     update: Päivitä
     cancel_appointment_hint: "Peruuta varaus painamalla Peruuta-painiketta"
@@ -149,10 +149,6 @@ fi:
     users: Käyttäjät
     settings: Asetukset
     log_out: Kirjaudu ulos
-    synchronize: Synkronoi
-    enable_sync: Aktivoi synkronointi
-    disable_sync: Poista synkronointi
-    disable_sync_prompt: Haluatko varmasti poistaa kalenterin synkronoinnin käytöstä?
     reload: Lataa uudelleen
     appointment: Varaus
     unavailability: Poissaolo
@@ -175,7 +171,6 @@ fi:
     unavailability_periods_hint: Palveluntuottajan ollessa poissaolojaksolla hänelle ei voi tehdä varauksia.
     new_appointment_hint: Tee uusi varaus ja talleta se tietokantaan.
     reload_appointments_hint: Uudelleenlataa varaukset.
-    trigger_sync_hint: Käynnistä Google-kalenterin synkronointi.
     appointment_updated: Varaus päivitetty onnistuneesti.
     undo: Kumoa
     appointment_details_changed: Varaustiedot ovat muuttuneet
@@ -362,11 +357,6 @@ fi:
     time: Aika
     hour: tunti
     minute: minuutti
-    calendar_sync_completed: Google synkronointi onnistui.
-    calendar_sync_failed: 'Google synkronointi epäonnistui: Palvelimeen ei saatu muodostettua yhteyttä.'
-    select_sync_calendar: Valitse Google-kalenteri
-    select_sync_calendar_prompt: Valitse kalenteri johon varauksesi synkronoidaan. Jos et valitse kalenteria, käytetään oletuskalenteria.
-    sync_calendar_selected: Google-kalenteri valittiin onnistuneesti.
     oops_something_went_wrong: Oho! Jotain meni pieleen.
     ea_update_success: OpenAppointments päivitettiin onnistuneesti.
     require_captcha: Vaadi CAPTCHA
@@ -561,10 +551,6 @@ fi:
     default_timezone_hint: Aseta uusissa tietueissa käytettävä aikavyöhyke
     default_language: Oletuskieli
     default_language_hint: Aseta uusissa tietueissa käytettävä oletuskieli
-    sync_method_prompt: Mitä synkronointimenetelmää haluat käyttää?
-    caldav_server: CalDAV palvelin
-    caldav_connection_info_prompt: Määritä CalDAV-palvelimen yhteysasetukset.
-    connect: Yhdistä
     ldap: LDAP
     ldap_info: Tämä integrointi mahdollistaa käyttäjien yhdistämisen olemassa olevaan LDAP-palvelimeen. Käyttäjät tuodaan automaattisesti OpenAppointments:iin, jolloin he voivat kirjautua AD-tunnuksillaan (käyttäjänimen tulee olla sama).
     host: Isäntä
@@ -585,8 +571,6 @@ fi:
     at_least_one_field_required: Varaussivulla tulee olla vähintään yksi pakollinen kenttä.
     customer_is_already_booked: Tällä asiakkaalla on jo varaus valitsemallasi hetkellä.
     fields: Kentät
-    invalid_credentials_provided: Tunnukset olivat virheelliset, ole hyvä ja yritä uudelleen.
-    calendar_url: Kalenterin URL
     please_select: Valitse
     secret_header: Salainen otsikko
     search: Hae
@@ -606,15 +590,6 @@ fi:
     altcha_enabled: Ota ALTCHA käyttöön
     generate: Luo
     meeting_link: Kokouslinkki
-    google_calendar: Google-kalenteri
-    google_calendar_info: Ota käyttöön Google Calendar -synkronointi synkronoidaksesi ajanvaraukset palveluntarjoajien Google Calendar -tilien kanssa.
-    google_client_id: Client ID
-    google_client_id_info: Client ID Google Cloud Console -projektistasi.
-    google_client_secret: Client Secret
-    google_client_secret_info: Client Secret Google Cloud Console -projektistasi.
-    google_calendar_setup_info: 'Ottaaksesi Google Calendar -synkronoinnin käyttöön, sinun on luotava projekti Google Cloud Consolessa, otettava käyttöön Google Calendar API ja luotava OAuth 2.0 -tunnistetiedot. Käy osoitteessa:'
-    google_meet_link_generation: Luo Google Meet -linkkejä
-    google_meet_link_generation_info: Luo automaattisesti Google Meet -videoneuvottelulinkki synkronoiduille ajanvarauksille. Kokouslinkki tallennetaan ajanvarauksen kokouslinkki-kenttään.
     display_add_to_google_calendar: Näytä "Add to Google Calendar" -painike
     display_add_to_google_calendar_info: Näytä "Add to Google Calendar" -painike varausvahvistussivulla, jotta asiakkaat voivat helposti lisätä ajanvarauksensa henkilökohtaiseen Google Calendar -kalenteriinsa.
     select_all: Valitse kaikki
@@ -705,12 +680,10 @@ fi:
     messages_provider_textanywhere_info: Send and receive SMS with a TextAnywhere account.
     messages_incoming: "Vastaanota vastaukset"
     messages_incoming_hint: "Asiakkaat voivat vastata lähettämiisi viesteihin."
-    messages_test_sms_sent: "Testitekstiviesti laehetetty, tarkista puhelin."
     messages_test_sms_number: "Testipuhelinnumero"
-    messages_test_sms: "Laeheta testitekstiviesti"
     messages_smsgateway_invalid: "Yhdyskaeytaevaen asetuksia ei voitu vahvistaa:"
     messages_smsgateway_inbound_hint: "Puhelin toimittaa vastaanotetut viestit tähän osoitteeseen. Rekisteröinti tehdään automaattisesti tallennettaessa, kun vastaanotto on päällä."
-    messages_smsgateway_step_activate: "Valitse Aktiivinen ja Vastaanota vastaukset, ja tallenna. Asetukset testataan: korjaa mahdolliset virheet ja testaa lähetys alla olevalla Lähetä testitekstiviesti -painikkeella."
+    messages_smsgateway_step_activate: "Valitse Aktiivinen ja Vastaanota vastaukset, ja tallenna. Asetukset testataan: korjaa mahdolliset virheet ja tarkista tunnukset sekä lähetä testiviesti alla olevassa kohdassa Asetusten testaus."
     messages_smsgateway_step_credentials: "Sovelluksen aloitusnaeytoellae: kytke Local server pois, Cloud server paeaelle ja paina Offline-painiketta yhdistaeaeksesi (rastita myoes Start on boot), kopioi sitten aloitusnaeytoen kaeyttaejaetunnus ja salasana alla oleviin kenttiin Kaeyttaejaetunnus ja Salasana."
     messages_smsgateway_step_signing: "Siirry sovelluksen kohtaan Settings -> Webhooks -> Signing Key -> syoetae allekirjoitusavain ja kopioi se alla olevaan Webhookin allekirjoitusavaimeen."
     messages_smsgateway_step_token: "Jos kaeytaet yksityistae palvelinta, syoetae samalla naeytoellae myoes Private Token - token on lyysipalvelimen tiedostossa /app/data/private_token."
@@ -930,7 +903,7 @@ fi:
     fully_booked_notice_default: "Vapaita aikoja ei ole. Kokeile toista palvelua tai henkilöä tai yritä myöhemmin uudelleen."
     notices: "Ilmoitukset"
     waitlist_enabled: "Jonotuslista"
-    waitlist_enabled_hint: "Anna asiakkaiden liittyä jonoon saadakseen ilmoituksen, kun aika vapautuu."
+    waitlist_enabled_hint: "Näytetään päivämäärävaiheessa, kun mitään ei voi varata. Anna asiakkaiden liittyä jonoon saadakseen ilmoituksen, kun aika vapautuu."
     waitlist_days: "Päiviä listalla"
     waitlist_days_hint: "Ilmoittautumiset poistetaan tämän monen päivän kuluttua."
     waitlist_max_notices: "Vapautuneen ajan viestejä per ilmoittautuminen"
@@ -987,7 +960,6 @@ fi:
     clear_providers: "Tyhjennä palveluntuottajat"
     clear_services: "Tyhjennä palvelut"
     refresh: "Päivitä"
-    sync: "Synkronoi"
     feed: "Syöte"
     do_not_contact_hint: "Tälle asiakkaalle ei lähetetä varausvahvistuksia, muutosilmoituksia eikä muistutuksia"
     do_not_contact_warning: "Tämä asiakas on pyytänyt, ettei häneen oteta yhteyttä. Täältä lähetetyt viestit toimitetaan silti."
@@ -1003,3 +975,25 @@ fi:
     display_order_switch_hint: "Sallii asiakkaiden valita varaussivun ensimmäisellä vaiheella painikkeella, valitaanko ensin palvelu vai kampaaja, ennen toisen valitsemista."
     about_and_services: "Tietoja ja palvelut"
     notes_internal_hint: "Sisäiset lisätiedot - näkyvät henkilöille, joilla on henkilökunnan tunnus"
+    booking_notice_confirmed_step: "Varausilmoitus - Vahvistuksen jälkeen"
+    messages_provider_default: "Oletus"
+    messages_default_provider: "Oletuspalveluntarjoaja"
+    messages_default_provider_hint: "Valittuna valmiiksi, kun viesti lähetetään asiakkaan sivulta. Vain yksi palveluntarjoaja voi olla oletus."
+    messages_test_setup: "Asetusten testaus"
+    messages_test_credentials: "Tunnusten testaus"
+    messages_test_credentials_ok: "Tunnukset toimivat."
+    messages_test_sending: "Lähetyksen testaus"
+    messages_test_send: "Lähetä testiviesti"
+    messages_test_sent: "Testiviesti lähetetty, tarkista että se saapui."
+    messages_test_email_address: "Testisähköpostiosoite"
+    messages_test_failed: "Testi epäonnistui."
+    messages_test_outgoing_ok: "Lähetys toimii."
+    messages_test_outgoing_server: "Lähetys kulkee palvelimen kautta, ei tarkistettavaa."
+    messages_test_outgoing_failed: "Lähetys epäonnistui:"
+    messages_test_incoming_ok: "Vastaanotto toimii."
+    messages_test_incoming_off: "Vastaanotto on pois päältä."
+    messages_test_incoming_failed: "Vastaanotto epäonnistui:"
+    messages_provider_quicksms_info: "Lähetä ja vastaanota SMS-viestejä QuickSMS-tilillä ja saapuvan viestin numerolla."
+    messages_quicksms_api_key: "API-avain"
+    messages_quicksms_signing_secret: "Webhookin allekirjoitussalaisuus"
+    messages_quicksms_signing_secret_hint: "Salaisuus, joka näytetään, kun saapuvan numeron webhook luodaan QuickSMS-portaalissa. Jos kenttä on tyhjä, vastaanotetut viestit hyväksytään pelkän URL-tunnisteen perusteella."

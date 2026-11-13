@@ -113,7 +113,7 @@ el:
     language: Γλώσσα
     no_language: Χωρίς γλώσσα
     fields_are_required: Τα πεδία με * είναι υποχρεωτικά.
-    appointment_confirmation: Επιβεβαίωση Ραντεβού
+    appointment_confirmation: "Επιβεβαιώστε το ραντεβού σας"
     confirm: Επιβεβαίωση
     update: Ενημέρωση
     cancel_appointment_hint: "Πατήστε το κουμπί \"Ακύρωση\" για να ακυρώσετε το ραντεβού"
@@ -149,10 +149,6 @@ el:
     users: Χρήστες
     settings: Ρυθμίσεις
     log_out: Αποσύνδεση
-    synchronize: Συγχρονισμός
-    enable_sync: Ενεργοποίηση Συγχρ.
-    disable_sync: Απενεργοποίηση Συγχρ.
-    disable_sync_prompt: Είστε σίγουροι ότι επιθυμείτε την απενεργοποίηση συγχρονισμού του ημερολογίου;
     reload: Επαναφόρτωση
     appointment: Ραντεβού
     unavailability: Μη Διαθέσιμος
@@ -175,7 +171,6 @@ el:
     unavailability_periods_hint: Κατά την διάρκεια των μη διαθέσιμων διαστημάτων οι πάροχοι δε θα δέχονται νέα ραντεβού.
     new_appointment_hint: Δημιουργείστε ένα νέο ραντεβού και αποθηκεύστε το στην βάση δεδομένων.
     reload_appointments_hint: Επαναφορτώστε τα ραντεβού του ημερολογίου.
-    trigger_sync_hint: Εκκινήστε την διαδικασία συγχρονισμού με το Google Calendar.
     appointment_updated: Το ραντεβού ενημερώθηκε επιτυχώς.
     undo: Αναίρεση
     appointment_details_changed: Τα στοιχεία του ραντεβού έχουν αλλάξει.
@@ -362,11 +357,6 @@ el:
     time: Χρόνος
     hour: Ώρα
     minute: Λεπτά
-    calendar_sync_completed: Ο συγχρονισμός με την Google ολοκληρώθηκε επιτυχώς.
-    calendar_sync_failed: 'Ο συγχρονισμός με την Google απέτυχε: Δεν μπόρεσε να πραγματοποιηθεί σύνδεση με τον server.'
-    select_sync_calendar: Επιλογή Ημερολογίου της Google
-    select_sync_calendar_prompt: Επιλέξτε το ημερολόγιο στο οποίο θέλετε να συγχρονίζεται τα ραντεβού σας. Εάν δεν θελήσετε να επιλέξετε ένα συγκεκριμένο ημερολόγιο θα χρησιμοποιηθεί το προεπιλεγμένο.
-    sync_calendar_selected: Το ημερολόγιο της Google επιλέχθηκε επιτυχώς.
     oops_something_went_wrong: Ώχ! Κάτι πήγε στραβά.
     ea_update_success: Το OpenAppointments ενημερώθηκε με επιτυχία.
     require_captcha: Απαίτηση CAPTCHA
@@ -561,10 +551,6 @@ el:
     default_timezone_hint: Ορίστε την προεπιλεγμένη τιμή της ζώνης ώρας που θα χρησιμοποιείται για τις νέες εγγραφές.
     default_language: Προεπιλεγμένη γλώσσα
     default_language_hint: Ορίστε την προεπιλεγμένη τιμή γλώσσας που θα χρησιμοποιείται για νέες εγγραφές.
-    sync_method_prompt: Ποια μέθοδο συγχρονισμού θα θέλατε να χρησιμοποιήσετε;
-    caldav_server: Διακομιστής CalDAV
-    caldav_connection_info_prompt: Εισάγετε τις πληροφορίες σύνδεσης του διακομιστή CalDAV του στόχου.
-    connect: Σύνδεση
     ldap: LDAP
     ldap_info: Αυτή η ενσωμάτωση σας επιτρέπει να συνδεθείτε σε έναν υπάρχοντα διακομιστή LDAP και να εισάγετε αυτόματα τους χρήστες στο OpenAppointments και να τους επιτρέπετε να κάνουν SSO με τον κωδικό πρόσβασης του καταλόγου τους (το όνομα χρήστη πρέπει να ταιριάζει).
     host: Διακομιστής
@@ -585,8 +571,6 @@ el:
     at_least_one_field_required: Τουλάχιστον ένα πεδίο πρέπει να έχει οριστεί ως υποχρεωτικό στη σελίδα κράτησης.
     customer_is_already_booked: Αυτός ο πελάτης έχει ήδη ραντεβού κατά τη ζητούμενη περίοδο κράτησης.
     fields: Πεδία
-    invalid_credentials_provided: Μη έγκυρα διαπιστευτήρια, παρακαλώ δοκιμάστε ξανά.
-    calendar_url: URL ημερολογίου
     please_select: Παρακαλώ Επιλέξτε
     secret_header: Μυστική κεφαλίδα
     search: Αναζήτηση
@@ -606,15 +590,6 @@ el:
     altcha_enabled: Ενεργοποίηση ALTCHA
     generate: Δημιουργία
     meeting_link: Σύνδεσμος συνάντησης
-    google_calendar: Ημερολόγιο Google
-    google_calendar_info: Ενεργοποιήστε τον συγχρονισμό Google Calendar για να συγχρονίσετε τα ραντεβού με τους λογαριασμούς Google Calendar των παρόχων.
-    google_client_id: Αναγνωριστικό πελάτη
-    google_client_id_info: Το Αναγνωριστικό πελάτη από το έργο σας στο Google Cloud Console.
-    google_client_secret: Μυστικό πελάτη
-    google_client_secret_info: Το Μυστικό πελάτη από το έργο σας στο Google Cloud Console.
-    google_calendar_setup_info: 'Για να ενεργοποιήσετε τον συγχρονισμό Google Calendar, πρέπει να δημιουργήσετε ένα έργο στο Google Cloud Console, να ενεργοποιήσετε το Google Calendar API και να δημιουργήσετε διαπιστευτήρια OAuth 2.0. Επισκεφθείτε:'
-    google_meet_link_generation: Δημιουργία συνδέσμων Google Meet
-    google_meet_link_generation_info: Αυτόματη δημιουργία συνδέσμου βιντεοδιάσκεψης Google Meet για συγχρονισμένα ραντεβού. Ο σύνδεσμος συνάντησης θα αποθηκευτεί στο πεδίο συνδέσμου συνάντησης του ραντεβού.
     display_add_to_google_calendar: Εμφάνιση κουμπιού "Προσθήκη στο Google Calendar"
     display_add_to_google_calendar_info: Εμφανίστε το κουμπί "Προσθήκη στο Google Calendar" στη σελίδα επιβεβαίωσης κράτησης, επιτρέποντας στους πελάτες να προσθέσουν εύκολα το ραντεβού τους στο προσωπικό τους Google Calendar.
     select_all: Επιλογή όλων
@@ -705,12 +680,10 @@ el:
     messages_provider_textanywhere_info: Send and receive SMS with a TextAnywhere account.
     messages_incoming: "Λήψη απαντήσεων"
     messages_incoming_hint: "Οι πελάτες μπορούν να απαντούν στα μηνύματα που στέλνετε."
-    messages_test_sms_sent: "Το δοκιμαστικό SMS στάλθηκε, ελέγξτε το τηλέφωνο."
     messages_test_sms_number: "Δοκιμαστικός αριθμός τηλεφώνου"
-    messages_test_sms: "Αποστολή δοκιμαστικού SMS"
     messages_smsgateway_invalid: "Δεν ήταν δυνατή η επαλήθευση των ρυθμίσεων της πύλης:"
     messages_smsgateway_inbound_hint: "Το τηλέφωνο παραδίδει τα ληφθέντα μηνύματα σε αυτή τη διεύθυνση, η εγγραφή γίνεται αυτόματα κατά την αποθήκευση με ενεργή λήψη."
-    messages_smsgateway_step_activate: "Τσεκάρετε Active και Λήψη απαντήσεων και μετά πατήστε Save. Οι ρυθμίσεις ελέγχονται, διορθώστε τυχόν σφάλματα και χρησιμοποιήστε το κουμπί Αποστολή δοκιμαστικού SMS παρακάτω για να δοκιμάσετε την αποστολή."
+    messages_smsgateway_step_activate: "Τσεκάρετε Ενεργό και Λήψη απαντήσεων και μετά πατήστε Αποθήκευση. Οι ρυθμίσεις ελέγχονται, διορθώστε τυχόν σφάλματα και χρησιμοποιήστε τη Δοκιμή ρύθμισης παρακάτω για να ελέγξετε τα διαπιστευτήρια και να στείλετε δοκιμαστικό μήνυμα."
     messages_smsgateway_step_credentials: "Στην αρχική οθόνη απενεργοποιήστε το Local server, ενεργοποιήστε το Cloud server και πατήστε το κουμπί Offline για σύνδεση (τσεκάρετε και το Start on boot), μετά αντιγράψτε το όνομα χρήστη και τον κωδικό από την αρχική οθόνη στα πεδία Όνομα χρήστη και Κωδικός παρακάτω."
     messages_smsgateway_step_signing: "Πηγαίνετε στο Settings -> Webhooks -> Signing Key της εφαρμογής -> εισαγάγετε ένα κλειδί υπογραφής και αντιγράψτε το στο Κλειδί υπογραφής webhook παρακάτω."
     messages_smsgateway_step_token: "Αν χρησιμοποιείτε ιδιωτικό διακομιστή εισαγάγετε και το Private Token στην ίδια οθόνη - το token βρίσκεται στο /app/data/private_token στον διακομιστή της πύλης."
@@ -930,7 +903,7 @@ el:
     fully_booked_notice_default: "Δεν υπάρχουν διαθέσιμα ραντεβού. Παρακαλώ δοκιμάστε διαφορετική υπηρεσία ή πάροχο ή δοκιμάστε ξανά αργότερα."
     notices: "Ειδοποιήσεις"
     waitlist_enabled: "Λίστα αναμονής"
-    waitlist_enabled_hint: "Επιτρέψτε στους πελάτες να εγγράφονται για να ενημερώνονται όταν ελευθερωθεί ένα ραντεβού."
+    waitlist_enabled_hint: "Εμφανίζεται στο βήμα της ημερομηνίας όταν δεν μπορεί να κλειστεί τίποτα. Επιτρέψτε στους πελάτες να εγγράφονται για να ενημερώνονται όταν ελευθερωθεί ένα ραντεβού."
     waitlist_days: "Ημέρες στη λίστα"
     waitlist_days_hint: "Οι εγγραφές αφαιρούνται μετά από αυτόν τον αριθμό ημερών."
     waitlist_max_notices: "Μηνύματα ελεύθερης θέσης ανά εγγραφή"
@@ -987,7 +960,6 @@ el:
     clear_providers: "Εκκαθάριση παρόχων"
     clear_services: "Εκκαθάριση υπηρεσιών"
     refresh: "Ανανέωση"
-    sync: "Συγχρονισμός"
     feed: "Feed"
     do_not_contact_hint: "Δεν αποστέλλονται επιβεβαιώσεις κράτησης, αλλαγές ή υπενθυμίσεις σε αυτόν τον πελάτη"
     do_not_contact_warning: "Αυτός ο πελάτης έχει ζητήσει να μην επικοινωνούμε μαζί του. Τα μηνύματα που αποστέλλονται εδώ παραδίδονται κανονικά."
@@ -1003,3 +975,25 @@ el:
     display_order_switch_hint: "Επιτρέπει στους πελάτες να χρησιμοποιούν ένα κουμπί στο πρώτο βήμα της σελίδας κράτησης για να επιλέξουν πρώτα υπηρεσία ή πρώτα κομμωτή, πριν επιλέξουν το άλλο."
     about_and_services: "Σχετικά & Υπηρεσίες"
     notes_internal_hint: "Εσωτερικές σημειώσεις - ορατές σε άτομα με σύνδεση προσωπικού"
+    booking_notice_confirmed_step: "Ειδοποίηση Κράτησης - Μετά την επιβεβαίωση"
+    messages_provider_default: "Προεπιλογή"
+    messages_default_provider: "Προεπιλεγμένος πάροχος"
+    messages_default_provider_hint: "Προεπιλέγεται κατά την αποστολή μηνύματος από τη σελίδα πελάτη. Μόνο ένας πάροχος μπορεί να είναι ο προεπιλεγμένος."
+    messages_test_setup: "Δοκιμή ρύθμισης"
+    messages_test_credentials: "Δοκιμή διαπιστευτηρίων"
+    messages_test_credentials_ok: "Τα διαπιστευτήρια λειτουργούν."
+    messages_test_sending: "Δοκιμή αποστολής"
+    messages_test_send: "Αποστολή δοκιμαστικού μηνύματος"
+    messages_test_sent: "Το δοκιμαστικό μήνυμα στάλθηκε, ελέγξτε ότι έφτασε."
+    messages_test_email_address: "Δοκιμαστική διεύθυνση email"
+    messages_test_failed: "Η δοκιμή απέτυχε."
+    messages_test_outgoing_ok: "Η αποστολή λειτουργεί."
+    messages_test_outgoing_server: "Η αποστολή γίνεται μέσω του διακομιστή, δεν υπάρχει κάτι να ελεγχθεί."
+    messages_test_outgoing_failed: "Η αποστολή απέτυχε:"
+    messages_test_incoming_ok: "Η λήψη λειτουργεί."
+    messages_test_incoming_off: "Η λήψη είναι απενεργοποιημένη."
+    messages_test_incoming_failed: "Η λήψη απέτυχε:"
+    messages_provider_quicksms_info: "Στείλτε και λάβετε SMS με λογαριασμό QuickSMS και εισερχόμενο αριθμό."
+    messages_quicksms_api_key: "Κλειδί API"
+    messages_quicksms_signing_secret: "Μυστικό υπογραφής webhook"
+    messages_quicksms_signing_secret_hint: "Το μυστικό που εμφανίζεται όταν δημιουργείται το webhook του εισερχόμενου αριθμού στην πύλη QuickSMS. Αν είναι κενό, τα εισερχόμενα μηνύματα γίνονται δεκτά μόνο με το διακριτικό του URL."

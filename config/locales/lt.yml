@@ -113,7 +113,7 @@ lt:
     language: Kalba
     no_language: Nėra kalbos
     fields_are_required: Žvaigždute * pažymėti laukai yra privalomi.
-    appointment_confirmation: Vizito patvirtinimas
+    appointment_confirmation: "Patvirtinkite savo vizitą"
     confirm: Patvirtinti
     update: Atnaujinti
     cancel_appointment_hint: "Norėdami atšaukti vizitą, spustelėkite mygtuką „Atšaukti“"
@@ -149,10 +149,6 @@ lt:
     users: Naudotojai
     settings: Nuostatos
     log_out: Atsijungti
-    synchronize: Sinchronizuoti
-    enable_sync: Įjungti sinchronizavimą
-    disable_sync: Išjungti sinchronizavimą
-    disable_sync_prompt: Ar tikrai norite išjungti kalendoriaus sinchronizavimą?
     reload: Įkelti iš naujo
     appointment: Vizitas
     unavailability: Užimtas laikas
@@ -175,7 +171,6 @@ lt:
     unavailability_periods_hint: Laiko intervalams, kai paslaugų teikėjas užimtas, naujų vizitų pas jį registruoti neleidžiama.
     new_appointment_hint: Sukurti naują vizitą ir įrašyti jį į duomenų bazę.
     reload_appointments_hint: Iš naujo įkelti kalendoriaus turinį.
-    trigger_sync_hint: Atlikti kalendoriaus sinchronizavimą.
     appointment_updated: Vizitas sėkmingai atnaujintas.
     undo: Atšaukti
     appointment_details_changed: Vizito duomenys pakeisti
@@ -362,11 +357,6 @@ lt:
     time: Laikas
     hour: Valanda
     minute: Minutė
-    calendar_sync_completed: Kalendorius sėkmingai sinchronizuotas.
-    calendar_sync_failed: 'Kalendoriaus sinchronizavimas nepavyko: nepavyko užmegzti ryšio su serveriu.'
-    select_sync_calendar: Pasirinkite kalendorių
-    select_sync_calendar_prompt: Pasirinkite kalendorių, su kuriuo norite sinchronizuoti vizitus.
-    sync_calendar_selected: Sėkmingai pasirinktas kalendorius sinchronizavimui.
     oops_something_went_wrong: Oi! Kažkas nepavyko.
     ea_update_success: "„OpenAppointments“ sėkmingai atnaujinta."
     require_captcha: Reikalauti „CAPTCHA“ saugos kodo
@@ -561,10 +551,6 @@ lt:
     default_timezone_hint: Pasirinkite numatytąją laiko juostą, kuri bus naudojama naujiems įrašams.
     default_language: Numatytoji kalba
     default_language_hint: Pasirinkite numatytąją kalbą, kuri bus naudojama naujiems įrašams.
-    sync_method_prompt: Kurį sinchronizavimo metodą norite naudoti?
-    caldav_server: "„CalDAV“ serveris"
-    caldav_connection_info_prompt: Įveskite paskirties „CalDAV“ kalendoriaus serverio duomenis.
-    connect: Jungtis
     ldap: LDAP
     ldap_info: Ši integracija suteikia galimybę prisijungti prie esamo LDAP serverio, automatiškai importuoti naudotojus į „OpenAppointments“ ir leisti jiems jungtis prie sistemos naudojantis savo LDAP slaptažodžiu (naudotojo vardas turi sutapti).
     host: Serveris
@@ -585,8 +571,6 @@ lt:
     at_least_one_field_required: Užsakymo tinklalapyje turi būti nustatytas bent vienas privalomas laukas.
     customer_is_already_booked: Šis klientas jau turi suplanuotą vizitą prašomu rezervuoti laikotarpiu.
     fields: Laukai
-    invalid_credentials_provided: Pateikti negaliojantys duomenys, bandykite dar kartą.
-    calendar_url: Kalendoriaus URL
     please_select: Pasirinkite
     secret_header: Slapta antraštė
     search: Ieškoti
@@ -606,15 +590,6 @@ lt:
     altcha_enabled: Įjungti ALTCHA
     generate: Generuoti
     meeting_link: Susitikimo nuoroda
-    google_calendar: Google kalendorius
-    google_calendar_info: Įjunkite Google Calendar sinchronizavimą, kad sinchronizuotumėte vizitus su paslaugų teikėjų Google Calendar paskyromis.
-    google_client_id: Client ID
-    google_client_id_info: Client ID iš jūsų Google Cloud Console projekto.
-    google_client_secret: Client Secret
-    google_client_secret_info: Client Secret iš jūsų Google Cloud Console projekto.
-    google_calendar_setup_info: 'Norėdami įjungti Google Calendar sinchronizavimą, turite sukurti projektą Google Cloud Console, įjungti Google Calendar API ir sukurti OAuth 2.0 kredencialus. Apsilankykite:'
-    google_meet_link_generation: Generuoti Google Meet nuorodas
-    google_meet_link_generation_info: Automatiškai sukurkite Google Meet vaizdo konferencijos nuorodą sinchronizuotiems vizitams. Susitikimo nuoroda bus išsaugota vizito susitikimo nuorodos lauke.
     display_add_to_google_calendar: Rodyti "Add to Google Calendar" mygtuką
     display_add_to_google_calendar_info: Rodyti "Add to Google Calendar" mygtuką užsakymo patvirtinimo puslapyje, kad klientai galėtų lengvai pridėti savo vizitą prie asmeninio Google Calendar kalendoriaus.
     select_all: Pasirinkti viską
@@ -705,12 +680,10 @@ lt:
     messages_provider_textanywhere_info: Send and receive SMS with a TextAnywhere account.
     messages_incoming: "Gauti atsakymus"
     messages_incoming_hint: "Klientai gali atsakyti į jums siunčiamas žinutes."
-    messages_test_sms_sent: "Bandomoji SMS issiusta, patikrinkite telefona."
     messages_test_sms_number: "Bandomasis telefono numeris"
-    messages_test_sms: "Siusti bandomaja SMS"
     messages_smsgateway_invalid: "Nepavyko patikrinti tinklu saito nustatymu:"
     messages_smsgateway_inbound_hint: "Telefonas gautas žinutes perduoda šiuo adresu, registracija atliekama automatiškai įrašant su įjungtu atsakymų gavimu."
-    messages_smsgateway_step_activate: "Pažymėkite Aktyvus ir Gauti atsakymus, tada spustelėkite Įrašyti. Nuostatos išbandomos, ištaisykite klaidas ir siuntimą patikrinkite mygtuku Siųsti bandomąją SMS žemiau."
+    messages_smsgateway_step_activate: "Pažymėkite Aktyvus ir Gauti atsakymus, tada spustelėkite Įrašyti. Nuostatos išbandomos, ištaisykite klaidas ir žemiau esančiu skyriumi Bandymas patikrinkite prisijungimo duomenis bei išsiųskite bandomąją žinutę."
     messages_smsgateway_step_credentials: "Pagrindiniame ekrane isjunkite Local server, ijunkite Cloud server ir paspauskite mygtuka Offline prisijungimui (pazymekite ir Start on boot), tada nukopijuokite pagrindiniame ekrane rodoma naudotojo varda ir slaptazodi i laukus Naudotojo vardas ir Slaptazodis zemiau."
     messages_smsgateway_step_signing: "Eikite i programos Settings -> Webhooks -> Signing Key -> iveskite pasirasymo rakta ir nukopijuokite ji i Webhook parasymo rakta zemiau."
     messages_smsgateway_step_token: "Jei naudojate privatu serveri, tame paciame ekrane iveskite ir Private Token - jis yra /app/data/private_token faile serveryje."
@@ -930,7 +903,7 @@ lt:
     fully_booked_notice_default: "Nėra laisvų vizitų laikų. Pasirinkite kitą paslaugą ar teikėją arba bandykite vėliau."
     notices: "Pranešimai"
     waitlist_enabled: "Laukiančiųjų sąrašas"
-    waitlist_enabled_hint: "Leiskite klientams užsiregistruoti, kad būtų informuoti, kai atsiras laisvas vizito laikas."
+    waitlist_enabled_hint: "Rodoma datos žingsnyje, kai nieko negalima rezervuoti. Leiskite klientams užsiregistruoti, kad būtų informuoti, kai atsiras laisvas vizito laikas."
     waitlist_days: "Dienos sąraše"
     waitlist_days_hint: "Registracijos pašalinamos po nurodyto dienų skaičiaus."
     waitlist_max_notices: "Pranešimų apie laisvą laiką skaičius vienai registracijai"
@@ -987,7 +960,6 @@ lt:
     clear_providers: "Išvalyti teikėjus"
     clear_services: "Išvalyti paslaugas"
     refresh: "Atnaujinti"
-    sync: "Sinchronizuoti"
     feed: "Srautas"
     do_not_contact_hint: "Šiam klientui nesiunčiami rezervacijų patvirtinimai, pakeitimai ar priminimai"
     do_not_contact_warning: "Šis klientas paprašė su juo nesisiekti. Čia siunčiamos žinutės vis tiek pristatomos."
@@ -1003,3 +975,25 @@ lt:
     display_order_switch_hint: "Leisti klientams pirmame rezervacijos puslapio žingsnyje mygtuku pasirinkti, ar pirmiausia rinktis paslaugą, ar specialistą, o tik tada kitą."
     about_and_services: "Apie ir paslaugos"
     notes_internal_hint: "Vidinės pastabos - matomos žmonėms, turintiems darbuotojo prisijungimą"
+    booking_notice_confirmed_step: "Pranešimas apie rezervaciją - Po patvirtinimo"
+    messages_provider_default: "Numatytasis"
+    messages_default_provider: "Numatytasis teikėjas"
+    messages_default_provider_hint: "Iš anksto parenkamas siunčiant žinutę iš kliento puslapio. Numatytasis gali būti tik vienas teikėjas."
+    messages_test_setup: "Bandymas"
+    messages_test_credentials: "Prisijungimo duomenų bandymas"
+    messages_test_credentials_ok: "Prisijungimo duomenys veikia."
+    messages_test_sending: "Siuntimo bandymas"
+    messages_test_send: "Siųsti bandomąją žinutę"
+    messages_test_sent: "Bandomoji žinutė išsiųsta, patikrinkite, ar ji atkeliavo."
+    messages_test_email_address: "Bandomasis el. pašto adresas"
+    messages_test_failed: "Bandymas nepavyko."
+    messages_test_outgoing_ok: "Siuntimas veikia."
+    messages_test_outgoing_server: "Siunčiama per serverį, nieko tikrinti nereikia."
+    messages_test_outgoing_failed: "Siuntimas nepavyko:"
+    messages_test_incoming_ok: "Gavimas veikia."
+    messages_test_incoming_off: "Gavimas išjungtas."
+    messages_test_incoming_failed: "Gavimas nepavyko:"
+    messages_provider_quicksms_info: "Siųskite ir gaukite SMS su QuickSMS paskyra ir gaunamuoju numeriu."
+    messages_quicksms_api_key: "API raktas"
+    messages_quicksms_signing_secret: "Webhook parašo slaptažodis"
+    messages_quicksms_signing_secret_hint: "Slaptažodis rodomas QuickSMS portale sukūrus gaunamojo numerio webhook. Jei tuščias, gautos žinutės priimamos tik pagal URL raktą."

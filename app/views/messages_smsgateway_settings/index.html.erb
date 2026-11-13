@@ -1,5 +1,5 @@
-<%# SMS Gateway (sms-gate.app private server) settings with setup instructions,
-    validated save (auto webhook registration) and a test SMS. %>
+<%# SMS Gateway (sms-gate.app private server) settings with setup instructions
+    and a validated save (auto webhook registration). %>
 <div id="messages-smsgateway-settings-page" class="container backend-page py-3">
     <div class="row">
         <div class="col-sm-3">
@@ -46,6 +46,8 @@
                                     <%= lang('active') %>
                                 </label>
                             </div>
+
+                            <%= render "shared/messages_default_switch", prefix: "smsgateway" %>
 
                             <div class="form-check form-switch mb-4">
                                 <%= setting_switch "messages_smsgateway_incoming", id: "smsgateway-incoming" %>
@@ -108,18 +110,7 @@
                                 </div>
                             </div>
 
-                            <div id="smsgateway-test" class="d-none border-top pt-3 mb-3">
-                                <label class="form-label" for="smsgateway-test-number">
-                                    <%= lang('messages_test_sms_number') %>
-                                </label>
-                                <div class="input-group">
-                                    <input type="text" id="smsgateway-test-number" class="form-control"
-                                           autocomplete="off" placeholder="07...">
-                                    <button type="button" id="smsgateway-send-test" class="btn btn-outline-secondary" data-no-change>
-                                        <%= lang('messages_test_sms') %>
-                                    </button>
-                                </div>
-                            </div>
+                            <%= render "shared/messages_provider_test", prefix: "smsgateway", kind: "sms" %>
                         </div>
                     </div>
                 <% end %>

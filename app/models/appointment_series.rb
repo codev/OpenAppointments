@@ -156,17 +156,15 @@ class AppointmentSeries < ApplicationRecord
     { created: created, rows: rows, skipped: newly_skipped }
   end
 
-  # Sync, webhook and (optionally) notify for rows a series edit created or
+  # Webhook and (optionally) notify for rows a series edit created or
   # marked rescheduled/cancelled. The customer gets one notification, on the
   # first new row (its email carries the repeat pattern and next date), or one
   # cancellation on the first removed row when nothing was created.
   def announce(created: [], removed: [], notify: false, reason: nil)
     removed.each do |appointment|
-      Synchronization.appointment_deleted(appointment, appointment.provider)
       Webhooks.trigger(Webhooks::APPOINTMENT_DELETE, appointment)
     end
     created.each do |appointment|
-      Synchronization.appointment_saved(appointment, appointment.service, appointment.provider, appointment.customer, nil)
       Webhooks.trigger(Webhooks::APPOINTMENT_SAVE, appointment)
     end
     return unless notify

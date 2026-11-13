@@ -64,8 +64,6 @@ gem "ice_cube", "~> 0.17" # recurring appointments
 gem "recurring_select", "~> 3.0" # repeat pattern dialog (Ruby side; JS and CSS vendored)
 gem "csv" # 10to8 import (no longer a default gem in Ruby 3.4)
 gem "altcha", "~> 2.0"
-gem "google-apis-calendar_v3", "~> 0.57.0"
-gem "googleauth", "~> 1.17"
 
 gem "webmock", "~> 3.26", group: :test
 

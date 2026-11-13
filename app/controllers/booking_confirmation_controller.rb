@@ -20,7 +20,8 @@ class BookingConfirmationController < ApplicationController
       matomo_analytics_site_id: Setting.get("matomo_analytics_site_id"),
       add_to_google_url: add_to_google_url(appointment),
       display_add_to_google_calendar: Setting.get("display_add_to_google_calendar", "1"),
-      ics_url: booking_confirmation_ics_path(appointment_hash: appointment.booking_hash)
+      ics_url: booking_confirmation_ics_path(appointment_hash: appointment.booking_hash),
+      booking_notice_confirmed_content: Setting.get("booking_notice_confirmed_content")
     )
   end
 

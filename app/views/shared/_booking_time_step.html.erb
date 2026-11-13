@@ -42,8 +42,10 @@
             <%= wizard_next_button %>
         </div>
     <% end %>
-    <%# Waiting list signup: its own form after the step's, posted into the frame. %>
-    <% if vars(:display_waitlist).to_s == "1" %>
+    <%# Waiting list signup: its own form after the step's, posted into the frame.
+        Offered only when nothing in the window can be booked; a signup's outcome
+        still renders if a slot opened while the form was on screen. %>
+    <% if vars(:display_waitlist).to_s == "1" && (@fully_booked || @waitlist_notice) %>
         <div id="waitlist" class="frame-container border-top pt-4 pb-2">
             <h5 class="fw-light text-center mb-2"><%= lang('waitlist_signup_title') %></h5>
             <p class="text-muted text-center small mb-3"><%= lang('waitlist_signup_hint') %></p>

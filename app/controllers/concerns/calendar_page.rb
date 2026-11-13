@@ -45,7 +45,6 @@ module CalendarPage
       available_services: available_services,
       assistant_providers: assistant_provider_ids,
       edit_appointment: edit_appointment,
-      google_sync_feature: Setting.get("google_sync_feature") == "1",
       customers: customers,
       **popover_script_vars
     )

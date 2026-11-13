@@ -17,6 +17,8 @@
                                 </label>
                             </div>
 
+                            <%= render "shared/messages_default_switch", prefix: "email" %>
+
                             <div class="form-check form-switch mb-4">
                                 <%= setting_switch "messages_email_incoming", id: "email-incoming" %>
                                 <label class="form-check-label" for="email-incoming">
@@ -115,6 +117,8 @@
                                     <a href="https://console.aws.amazon.com/" target="_blank" rel="noopener">Amazon SES</a>
                                 </small>
                             </div>
+
+                            <%= render "shared/messages_provider_test", prefix: "email", kind: "email" %>
                         </div>
                     </div>
                 <% end %>

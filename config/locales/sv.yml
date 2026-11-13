@@ -113,7 +113,7 @@ sv:
     language: Språk
     no_language: Inget språk
     fields_are_required: Fält markerade med * måste fyllas i
-    appointment_confirmation: Bekräfta bokningen
+    appointment_confirmation: "Bekräfta din bokning"
     confirm: Bekräfta
     update: Uppdatera
     cancel_appointment_hint: "Tryck på \"Avbryt\" för att avboka tiden"
@@ -149,10 +149,6 @@ sv:
     users: Användare
     settings: Inställningar
     log_out: Logga ut
-    synchronize: Synkronisera
-    enable_sync: Aktivera
-    disable_sync: Deaktivera
-    disable_sync_prompt: Är du säker på att du vill sluta synka kalendern?
     reload: Uppdatera
     appointment: Bokning
     unavailability: Inte tillgänglig
@@ -175,7 +171,6 @@ sv:
     unavailability_periods_hint: Utföraren är inte bokningsbar under låsta perioder.
     new_appointment_hint: Skapa en ny bokning och spara den i databasen
     reload_appointments_hint: Uppdatera kalendern
-    trigger_sync_hint: Starta synken med Google Kalender
     appointment_updated: Bokningen är uppdaterad
     undo: Ångra
     appointment_details_changed: Bokningen har ändrats
@@ -362,11 +357,6 @@ sv:
     time: Tid
     hour: Timme
     minute: Minuter
-    calendar_sync_completed: Synkroniseringen med Google är slutförd.
-    calendar_sync_failed: Synkroniseringen med Google misslyckades. Kunde inte ansluta till servern.
-    select_sync_calendar: Välj en Google-kalender
-    select_sync_calendar_prompt: Välj vilken kalender du vill synkronisera med. Om du inte väljer någon används din standardkalender.
-    sync_calendar_selected: Google-kalender vald.
     oops_something_went_wrong: Oops! Något gick fel.
     ea_update_success: OpenAppointments är uppdaterad.
     require_captcha: Kräv CAPTCHA
@@ -561,10 +551,6 @@ sv:
     default_timezone_hint: Ställ in den tidszon som ska användas som standard för nya bokningar
     default_language: Standardspråk
     default_language_hint: Ställ in det språk som ska användas som standard för nya bokningar
-    sync_method_prompt: Vilken synkroniseringsmetod vill du använda?
-    caldav_server: CalDAV-server
-    caldav_connection_info_prompt: Vänligen ange anslutningsinformationen för målkalendern.
-    connect: Anslut
     ldap: LDAP
     ldap_info: Denna integration gör att du kan ansluta till en befintlig LDAP-server och automatiskt importera användare till OpenAppointments och låta dem använda SSO med sitt kataloglösenord (användarnamn måste matcha).
     host: Värd
@@ -585,8 +571,6 @@ sv:
     at_least_one_field_required: Minst ett fält måste vara obligatoriskt på bokningssidan.
     customer_is_already_booked: Kunden har redan en bokning på den valda tiden.
     fields: Fält
-    invalid_credentials_provided: Felaktiga uppgifter angivna, försök igen.
-    calendar_url: Kalender-URL
     please_select: Vänligen välj
     secret_header: Säkerhetsheader
     search: Sök
@@ -606,15 +590,6 @@ sv:
     altcha_enabled: Aktivera ALTCHA
     generate: Generera
     meeting_link: Möteslänk
-    google_calendar: Google Kalender
-    google_calendar_info: Aktivera synkronisering för att koppla bokningar till personalens Google-kalendrar
-    google_client_id: Klient-ID
-    google_client_id_info: Client ID från ditt projekt i Google Cloud Console
-    google_client_secret: Klienthemlighet
-    google_client_secret_info: Client Secret från ditt projekt i Google Cloud Console
-    google_calendar_setup_info: 'För att aktivera synkronisering med Google Kalender behöver du skapa ett projekt i Google Cloud Console, aktivera Google Calendar API och skapa OAuth 2.0-uppgifter. Besök:'
-    google_meet_link_generation: Skapa Google Meet-länkar
-    google_meet_link_generation_info: Skapa en möteslänk i Google Meet automatiskt för synkade bokningar. Länken sparas i bokningens fält för möteslänkar
     display_add_to_google_calendar: Visa knappen "Lägg till i Google-kalendern"
     display_add_to_google_calendar_info: Visa knappen "Lägg till i Google-kalendern" på bokningsbekräftelsen, så att kunden enkelt kan spara bokningen i sin egen kalender
     select_all: Välj alla
@@ -705,12 +680,10 @@ sv:
     messages_provider_textanywhere_info: Send and receive SMS with a TextAnywhere account.
     messages_incoming: "Ta emot svar"
     messages_incoming_hint: "Kunder kan svara på meddelandena du skickar."
-    messages_test_sms_sent: "Test-SMS skickat, kontrollera telefonen."
     messages_test_sms_number: "Testtelefonnummer"
-    messages_test_sms: "Skicka test-SMS"
     messages_smsgateway_invalid: "Gateway-instaellningarna kunde inte valideras:"
     messages_smsgateway_inbound_hint: "Telefonen levererar mottagna meddelanden till den här adressen, registreringen sker automatiskt när du sparar med mottagning aktiverad."
-    messages_smsgateway_step_activate: "Bocka i Active och Ta emot svar, klicka sedan på Save. Inställningarna testas, åtgärda eventuella fel och använd knappen för att skicka test-SMS nedan för att testa utskick."
+    messages_smsgateway_step_activate: "Bocka i Aktiv och Ta emot svar, klicka sedan på Spara. Inställningarna testas, åtgärda eventuella fel och använd Testa inställningen nedan för att kontrollera inloggningsuppgifterna och skicka ett testmeddelande."
     messages_smsgateway_step_credentials: "Paa startskaermen: staeng av Local server, sla paa Cloud server och tryck paa Offline-knappen foer att ansluta (bocka ocksaa i Start on boot), kopiera sedan anvaendarnamnet och loesenordet fraan startskaermen till Anvaendarnamn och Loesenord nedan."
     messages_smsgateway_step_signing: "Gaa till appens Settings -> Webhooks -> Signing Key -> ange en signeringsnyckel och kopiera den till Webhook-signeringsnyckeln nedan."
     messages_smsgateway_step_token: "Anvaender du en privat server ska du ocksaa ange Private Token paa samma skaerm - token finns i /app/data/private_token paa gateway-servern."
@@ -930,7 +903,7 @@ sv:
     fully_booked_notice_default: "Det finns inga lediga bokningar. Prova en annan tjänst eller utförare, eller försök igen senare."
     notices: "Meddelanden"
     waitlist_enabled: "Väntelista"
-    waitlist_enabled_hint: "Låt kunder anmäla sig för att få veta när en bokning blir ledig."
+    waitlist_enabled_hint: "Visas i datumsteget när inget kan bokas. Låt kunder anmäla sig för att få veta när en bokning blir ledig."
     waitlist_days: "Dagar på listan"
     waitlist_days_hint: "Anmälningar tas bort efter detta antal dagar."
     waitlist_max_notices: "Meddelanden om ledig tid per anmälan"
@@ -987,7 +960,6 @@ sv:
     clear_providers: "Rensa utförare"
     clear_services: "Rensa tjänster"
     refresh: "Uppdatera"
-    sync: "Synka"
     feed: "Flöde"
     do_not_contact_hint: "Inga bokningsbekräftelser, ändringar eller påminnelser skickas till den här kunden"
     do_not_contact_warning: "Den här kunden har bett att inte bli kontaktad. Meddelanden som skickas hit levereras ändå."
@@ -1003,3 +975,25 @@ sv:
     display_order_switch_hint: "Låt kunder använda en knapp i första steget på bokningssidan där de kan välja tjänst först eller utförare först, innan de väljer det andra."
     about_and_services: "Om och tjänster"
     notes_internal_hint: "Interna noteringar - synliga för personer med personalinloggning"
+    booking_notice_confirmed_step: "Bokningsmeddelande - Efter bekräftelse"
+    messages_provider_default: "Standard"
+    messages_default_provider: "Standardleverantör"
+    messages_default_provider_hint: "Förvald när ett meddelande skickas från en kunds sida. Endast en leverantör kan vara standard."
+    messages_test_setup: "Testa inställningen"
+    messages_test_credentials: "Testa inloggningsuppgifter"
+    messages_test_credentials_ok: "Inloggningsuppgifterna fungerar."
+    messages_test_sending: "Testa utskick"
+    messages_test_send: "Skicka testmeddelande"
+    messages_test_sent: "Testmeddelandet skickades, kontrollera att det kom fram."
+    messages_test_email_address: "Test-e-postadress"
+    messages_test_failed: "Testet misslyckades."
+    messages_test_outgoing_ok: "Utskick fungerar."
+    messages_test_outgoing_server: "Utskick går via servern, inget att kontrollera."
+    messages_test_outgoing_failed: "Utskick misslyckades:"
+    messages_test_incoming_ok: "Mottagning fungerar."
+    messages_test_incoming_off: "Mottagning är avstängd."
+    messages_test_incoming_failed: "Mottagning misslyckades:"
+    messages_provider_quicksms_info: "Skicka och ta emot SMS med ett QuickSMS-konto och ett inkommande nummer."
+    messages_quicksms_api_key: "API-nyckel"
+    messages_quicksms_signing_secret: "Webhook-signeringshemlighet"
+    messages_quicksms_signing_secret_hint: "Hemligheten som visas när det inkommande numrets webhook skapas i QuickSMS-portalen. Om tomt accepteras mottagna meddelanden enbart med URL-token."

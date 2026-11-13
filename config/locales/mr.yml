@@ -113,7 +113,7 @@ mr:
     language: भाषा
     no_language: भाषा नाही
     fields_are_required: "* फील्ड आवश्यक आहेत."
-    appointment_confirmation: भेटीची पुष्टी करा
+    appointment_confirmation: "तुमच्या अपॉइंटमेंटची पुष्टी करा"
     confirm: खात्री करा
     update: अद्यतनित करा
     cancel_appointment_hint: "भेट रद्द करण्यासाठी \"रद्द करा\" बटण दाबा"
@@ -149,10 +149,6 @@ mr:
     users: वापरकर्ता
     settings: सेटिंग
     log_out: लॉग आउट
-    synchronize: समक्रमित करा
-    enable_sync: समक्रमित सक्षम करा
-    disable_sync: समक्रमित अक्षम कर
-    disable_sync_prompt: आपल्याला खात्री आहे का की आपण कॅलेंडर समक्रमण अक्षम करू इच्छिता?
     reload: रीलोड करा
     appointment: अपॉइंटमेंट
     unavailability: अनुपलब्ध
@@ -175,7 +171,6 @@ mr:
     unavailability_periods_hint: प्रदाता अनुपलब्ध कालावधीत नवीन भेटी स्वीकारणार नाही.
     new_appointment_hint: नवीन अपॉईंटमेंट तयार करा आणि त्यास डेटाबेसमध्ये संचयित करा.
     reload_appointments_hint: कॅलेंडर अपॉईंटमेंट रीलोड करा.
-    trigger_sync_hint: Google कॅलेंडर संकालन प्रक्रिया ट्रिगर करा.
     appointment_updated: नियुक्ती अद्यतनित यशस्वी.
     undo: पूर्ववत करा
     appointment_details_changed: भेटीचे तपशील बदलले आहेत.
@@ -362,11 +357,6 @@ mr:
     time: वेळ
     hour: तास
     minute: मिनिट
-    calendar_sync_completed: Google समक्रमण यशस्वीरित्या पूर्ण झाले
-    calendar_sync_failed: 'Google समक्रमण अयशस्वी: सर्व्हर कनेक्शन स्थापित केले जाऊ शकले नाही'
-    select_sync_calendar: गूगल कॅलेंडर निवडा
-    select_sync_calendar_prompt: आपण आपल्या भेटी समक्रमित करू इच्छित कॅलेंडर निवडा. आपण एखादे विशिष्ट कॅलेंडर निवडू इच्छित नसल्यास, एक डीफॉल्टनुसार वापरले जाईल
-    sync_calendar_selected: Google कॅलेंडर यशस्वीरित्या निवडले गेले आहे
     oops_something_went_wrong: अरेरे! काहीतरी चूक झाली
     ea_update_success: OpenAppointments यशस्वीरित्या अद्यतनित केली गेली आहे.
     require_captcha: कॅप्चा आवश्यक आहे
@@ -561,10 +551,6 @@ mr:
     default_timezone_hint: नवीन रेकॉर्डसाठी वापरले जाणारे डिफॉल्ट टाइमझोन मूल्य सेट करा.
     default_language: डिफॉल्ट भाषा
     default_language_hint: नवीन रेकॉर्डसाठी वापरले जाणारे डिफॉल्ट भाषा मूल्य सेट करा.
-    sync_method_prompt: तुम्ही कोणती सिंक पद्धत वापरू इच्छिता?
-    caldav_server: CalDAV सर्व्हर
-    caldav_connection_info_prompt: लक्ष्य CalDAV कॅलेंडरच्या कनेक्शन माहितीची माहिती प्रविष्ट करा.
-    connect: कनेक्ट
     ldap: एलडीएपी
     ldap_info: या एकत्रिकरणामुळे तुम्ही विद्यमान LDAP सर्व्हरशी कनेक्ट होऊ शकता आणि वापरकर्त्यांना OpenAppointments मध्ये आपोआप आयात करू शकता आणि त्यांच्या डायरेक्टरी पासवर्डसह SSO करू शकता (वापरकर्ता नाव जुळणे आवश्यक आहे).
     host: होस्ट
@@ -585,8 +571,6 @@ mr:
     at_least_one_field_required: बुकिंग पृष्ठावर किमान एक फील्ड आवश्यक म्हणून सेट केले पाहिजे.
     customer_is_already_booked: या ग्राहकाला विनंती केलेल्या आरक्षण कालावधीत आधीच अपॉइंटमेंट आहे.
     fields: फील्ड
-    invalid_credentials_provided: अवैध प्रमाणपत्रे प्रदान केली गेली, कृपया पुन्हा प्रयत्न करा.
-    calendar_url: कॅलेंडर URL
     please_select: कृपया निवडा
     secret_header: गुप्त हेडर
     search: शोधा
@@ -606,15 +590,6 @@ mr:
     altcha_enabled: ALTCHA सक्षम करा
     generate: तयार करा
     meeting_link: मीटिंग लिंक
-    google_calendar: गूगल कॅलेंडर
-    google_calendar_info: प्रदात्याच्या Google Calendar खात्यांसह अपॉइंटमेंट सिंक करण्यासाठी Google Calendar सिंक्रोनाइझेशन सक्षम करा.
-    google_client_id: क्लायंट ID
-    google_client_id_info: तुमच्या Google Cloud Console प्रोजेक्टमधील क्लायंट ID.
-    google_client_secret: क्लायंट सीक्रेट
-    google_client_secret_info: तुमच्या Google Cloud Console प्रोजेक्टमधील क्लायंट सीक्रेट.
-    google_calendar_setup_info: 'Google Calendar सिंक सक्षम करण्यासाठी, तुम्हाला Google Cloud Console मध्ये प्रोजेक्ट तयार करणे, Google Calendar API सक्षम करणे आणि OAuth 2.0 क्रेडेंशियल्स तयार करणे आवश्यक आहे. भेट द्या:'
-    google_meet_link_generation: Google Meet लिंक्स तयार करा
-    google_meet_link_generation_info: सिंक केलेल्या अपॉइंटमेंटसाठी स्वयंचलितपणे Google Meet व्हिडिओ कॉन्फरन्स लिंक तयार करा. मीटिंग लिंक अपॉइंटमेंटच्या मीटिंग लिंक फील्डमध्ये संग्रहित केली जाईल.
     display_add_to_google_calendar: '"Add to Google Calendar" बटण प्रदर्शित करा'
     display_add_to_google_calendar_info: बुकिंग पुष्टीकरण पृष्ठावर "Add to Google Calendar" बटण दाखवा, ज्यामुळे ग्राहक त्यांच्या वैयक्तिक Google Calendar मध्ये त्यांची अपॉइंटमेंट सहजपणे जोडू शकतात.
     select_all: सर्व निवडा
@@ -705,12 +680,10 @@ mr:
     messages_provider_textanywhere_info: Send and receive SMS with a TextAnywhere account.
     messages_incoming: "उत्तरे प्राप्त करा"
     messages_incoming_hint: "ग्राहक तुम्ही पाठवलेल्या संदेशांना उत्तर देऊ शकतात."
-    messages_test_sms_sent: "चाचणी SMS पाठवला, फोन तपासा."
     messages_test_sms_number: "चाचणी फोन नंबर"
-    messages_test_sms: "चाचणी SMS पाठवा"
     messages_smsgateway_invalid: "गेटवे सेटिंग्ज तपासता आल्या नाहीत:"
     messages_smsgateway_inbound_hint: "फोन प्राप्त संदेश या पत्त्यावर पोहोचवतो, उत्तरे प्राप्त करणे चालू करून जतन केल्यावर नोंदणी आपोआप होते."
-    messages_smsgateway_step_activate: "सक्रिय आणि उत्तरे प्राप्त करा यावर खूण करा, मग जतन करा. सेटिंग्जची चाचणी होते, त्रुटी दुरुस्त करा आणि पाठवण्याची चाचणी करण्यासाठी खालील चाचणी SMS पाठवा बटण वापरा."
+    messages_smsgateway_step_activate: "सक्रिय आणि उत्तरे प्राप्त करा यावर खूण करा, मग जतन करा. सेटिंग्जची चाचणी होते, त्रुटी दुरुस्त करा आणि क्रेडेन्शियल तपासण्यासाठी व चाचणी संदेश पाठवण्यासाठी खालील सेटअप चाचणी विभाग वापरा."
     messages_smsgateway_step_credentials: "होम स्क्रीनवर Local server बंद करा, Cloud server सुरू करा आणि जोडण्यासाठी Offline बटण दाबा (Start on boot देखील निवडा), मग होम स्क्रीनवरील वापरकर्तानाव आणि पासवर्ड खाली वापरकर्तानाव आणि पासवर्डमध्ये कॉपी करा."
     messages_smsgateway_step_signing: "अ‍ॅपच्या Settings -> Webhooks -> Signing Key मध्ये जा -> साइनिंग की टाका आणि ती खाली वेबहुक स्वाक्षरी की मध्ये कॉपी करा."
     messages_smsgateway_step_token: "खाजगी सर्व्हर वापरत असल्यास त्याच स्क्रीनवर Private Token देखील टाका - टोकन गेटवे सर्व्हरवर /app/data/private_token मध्ये आहे."
@@ -930,7 +903,7 @@ mr:
     fully_booked_notice_default: "कोणतीही अपॉइंटमेंट उपलब्ध नाही. कृपया वेगळी सेवा किंवा प्रदाता वापरून पहा किंवा नंतर पुन्हा प्रयत्न करा."
     notices: "सूचना"
     waitlist_enabled: "प्रतीक्षा यादी"
-    waitlist_enabled_hint: "अपॉइंटमेंट मोकळी झाल्यावर कळवण्यासाठी ग्राहकांना नोंदणी करू द्या."
+    waitlist_enabled_hint: "बुकिंग करता येत नसताना तारीख टप्प्यावर दाखवले जाते. अपॉइंटमेंट मोकळी झाल्यावर कळवण्यासाठी ग्राहकांना नोंदणी करू द्या."
     waitlist_days: "यादीत राहण्याचे दिवस"
     waitlist_days_hint: "इतक्या दिवसांनंतर नोंदणी यादीतून काढली जाते."
     waitlist_max_notices: "प्रत्येक नोंदणीसाठी मोकळ्या वेळेचे संदेश"
@@ -987,7 +960,6 @@ mr:
     clear_providers: "प्रदाते साफ करा"
     clear_services: "सेवा साफ करा"
     refresh: "रिफ्रेश करा"
-    sync: "समक्रमित करा"
     feed: "फीड"
     do_not_contact_hint: "या ग्राहकाला बुकिंग पुष्टी, बदल किंवा स्मरणपत्रे पाठवली जात नाहीत"
     do_not_contact_warning: "या ग्राहकाने संपर्क न करण्यास सांगितले आहे. येथे पाठवलेले संदेश तरीही पोहोचवले जातात."
@@ -1003,3 +975,25 @@ mr:
     display_order_switch_hint: "बुकिंग पृष्ठाच्या पहिल्या पायरीवर ग्राहकांना बटणाद्वारे आधी सेवा किंवा आधी स्टायलिस्ट निवडण्याची आणि मग दुसरे निवडण्याची मुभा द्या."
     about_and_services: "आमच्याबद्दल आणि सेवा"
     notes_internal_hint: "अंतर्गत सूचना - कर्मचारी लॉगिन असलेल्या लोकांना दिसतात"
+    booking_notice_confirmed_step: "बुकिंग सूचना - पुष्टीनंतर"
+    messages_provider_default: "डीफॉल्ट"
+    messages_default_provider: "डीफॉल्ट व्यवस्थापक"
+    messages_default_provider_hint: "ग्राहकाच्या पानावरून संदेश पाठवताना आधीच निवडलेला असतो. फक्त एकच व्यवस्थापक डीफॉल्ट असू शकतो."
+    messages_test_setup: "सेटअप चाचणी"
+    messages_test_credentials: "क्रेडेन्शियल चाचणी"
+    messages_test_credentials_ok: "क्रेडेन्शियल कार्य करतात."
+    messages_test_sending: "पाठवण्याची चाचणी"
+    messages_test_send: "चाचणी संदेश पाठवा"
+    messages_test_sent: "चाचणी संदेश पाठवला, तो पोहोचला का ते तपासा."
+    messages_test_email_address: "चाचणी ईमेल पत्ता"
+    messages_test_failed: "चाचणी अयशस्वी झाली."
+    messages_test_outgoing_ok: "पाठवणे कार्य करते."
+    messages_test_outgoing_server: "पाठवणे सर्व्हरमार्फत होते, तपासण्यासारखे काही नाही."
+    messages_test_outgoing_failed: "पाठवणे अयशस्वी झाले:"
+    messages_test_incoming_ok: "प्राप्त करणे कार्य करते."
+    messages_test_incoming_off: "प्राप्त करणे बंद आहे."
+    messages_test_incoming_failed: "प्राप्त करणे अयशस्वी झाले:"
+    messages_provider_quicksms_info: "QuickSMS खाते आणि इनबाउंड नंबरने SMS पाठवा आणि प्राप्त करा."
+    messages_quicksms_api_key: "API की"
+    messages_quicksms_signing_secret: "वेबहुक स्वाक्षरी गुपित"
+    messages_quicksms_signing_secret_hint: "QuickSMS पोर्टलमध्ये इनबाउंड नंबरचा वेबहुक तयार केल्यावर दाखवलेले गुपित. रिकामे असल्यास, प्राप्त संदेश फक्त URL टोकनवर स्वीकारले जातात."

@@ -113,7 +113,7 @@ zh:
     language: 语言
     no_language: 无语言
     fields_are_required: 标记*的位置必须填写.
-    appointment_confirmation: 确认预约
+    appointment_confirmation: "确认您的预约"
     confirm: 确认
     update: 更新
     cancel_appointment_hint: "点击“取消”按钮即可取消预约"
@@ -149,10 +149,6 @@ zh:
     users: 用户
     settings: 设置
     log_out: 注销
-    synchronize: 同步
-    enable_sync: 开启同步
-    disable_sync: 关闭同步
-    disable_sync_prompt: 您确定要禁用日历同步吗？
     reload: 刷新
     appointment: 预约
     unavailability: 不可用
@@ -175,7 +171,6 @@ zh:
     unavailability_periods_hint: 不可预约时间短内，服务人员将不能接受预约.
     new_appointment_hint: 在数据库中建立新的预约.
     reload_appointments_hint: 刷新日历.
-    trigger_sync_hint: 激活谷歌日历同步进程.
     appointment_updated: 预约成功更新.
     undo: 撤销
     appointment_details_changed: 预约信息已经修改.
@@ -362,11 +357,6 @@ zh:
     time: 时间
     hour: 小时
     minute: 分钟
-    calendar_sync_completed: 谷歌同步成功.
-    calendar_sync_failed: 谷歌同步失败：不能建立与服务器的连接。.
-    select_sync_calendar: 选择谷歌日历
-    select_sync_calendar_prompt: 选择您想要同步的日历。如果您不希望选择特定的日历，那么将使用默认的日历。
-    sync_calendar_selected: 谷歌日历被选定.
     oops_something_went_wrong: 不好！出了一些问题.
     ea_update_success: 预约系统已经成功更新.
     require_captcha: 需要验证码
@@ -561,10 +551,6 @@ zh:
     default_timezone_hint: 设置新记录将使用的默认时区值。
     default_language: 默认语言
     default_language_hint: 设置新记录将使用的默认语言值。
-    sync_method_prompt: 您想使用哪种同步方法？
-    caldav_server: CalDAV 服务器
-    caldav_connection_info_prompt: 请输入目标 CalDAV 日历的连接信息。
-    connect: 连接
     ldap: LDAP
     ldap_info: 此集成允许您连接到现有的 LDAP 服务器，并自动将用户导入 OpenAppointments，并允许他们使用目录密码进行单点登录（用户名必须匹配）。
     host: 主机
@@ -585,8 +571,6 @@ zh:
     at_least_one_field_required: 预约页面中至少要将一个字段设置为必填。
     customer_is_already_booked: 该客户在所选预约时间段内已有预约。
     fields: 字段
-    invalid_credentials_provided: 提供的凭据无效，请重试。
-    calendar_url: 日历 URL
     please_select: 请选择
     secret_header: 密钥头
     search: 搜索
@@ -606,15 +590,6 @@ zh:
     altcha_enabled: 启用 ALTCHA
     generate: 生成
     meeting_link: 会议链接
-    google_calendar: Google 日历
-    google_calendar_info: 启用 Google Calendar 同步，将预约与服务提供者的 Google Calendar 账户同步。
-    google_client_id: 客户端 ID
-    google_client_id_info: 来自您的 Google Cloud Console 项目的客户端 ID。
-    google_client_secret: 客户端密钥
-    google_client_secret_info: 来自您的 Google Cloud Console 项目的客户端密钥。
-    google_calendar_setup_info: 要启用 Google Calendar 同步，您需要在 Google Cloud Console 中创建项目、启用 Google Calendar API 并创建 OAuth 2.0 凭据。请访问：
-    google_meet_link_generation: 生成 Google Meet 链接
-    google_meet_link_generation_info: 自动为同步的预约创建 Google Meet 视频会议链接。会议链接将存储在预约的会议链接字段中。
     display_add_to_google_calendar: 显示"添加到 Google Calendar"按钮
     display_add_to_google_calendar_info: 在预约确认页面显示"添加到 Google Calendar"按钮，方便客户将预约轻松添加到个人 Google Calendar。
     select_all: 全选
@@ -705,12 +680,10 @@ zh:
     messages_provider_textanywhere_info: Send and receive SMS with a TextAnywhere account.
     messages_incoming: "接收回复"
     messages_incoming_hint: "客户可以回复您发送的消息。"
-    messages_test_sms_sent: "测试短信已发送,请检查手机。"
     messages_test_sms_number: "测试电话号码"
-    messages_test_sms: "发送测试短信"
     messages_smsgateway_invalid: "无法验证网关设置:"
     messages_smsgateway_inbound_hint: "手机会将收到的消息发送到此地址，开启接收后保存时会自动完成注册。"
-    messages_smsgateway_step_activate: "勾选 Active 和接收回复，然后点击保存。系统会测试设置，请修正任何错误，并使用下方的发送测试短信按钮测试发送。"
+    messages_smsgateway_step_activate: "勾选启用和接收回复，然后点击保存。系统会测试设置，请修正任何错误，并使用下方的测试设置来检查凭据并发送测试消息。"
     messages_smsgateway_step_credentials: "在主屏幕关闭 Local server、开启 Cloud server 并点按 Offline 按钮连接(同时勾选 Start on boot),然后将主屏幕显示的用户名和密码复制到下方的用户名和密码。"
     messages_smsgateway_step_signing: "前往应用的 Settings -> Webhooks -> Signing Key -> 输入签名密钥,再复制到下方的 Webhook 签名密钥。"
     messages_smsgateway_step_token: "如使用私有服务器,还需在同一设置页面输入 Private Token - 令牌位于网关服务器的 /app/data/private_token。"
@@ -930,7 +903,7 @@ zh:
     fully_booked_notice_default: "目前没有可用的预约。请尝试其他服务项目或服务人员，或稍后再试。"
     notices: "提示"
     waitlist_enabled: "候补名单"
-    waitlist_enabled_hint: "允许客户登记候补，以便在有预约空出时收到通知。"
+    waitlist_enabled_hint: "在无法预约任何项目时显示于日期步骤。允许客户登记候补，以便在有预约空出时收到通知。"
     waitlist_days: "候补保留天数"
     waitlist_days_hint: "超过此天数后，候补登记将被移除。"
     waitlist_max_notices: "每位候补者收到的空位通知次数上限"
@@ -987,7 +960,6 @@ zh:
     clear_providers: "清除服务人员"
     clear_services: "清除服务项目"
     refresh: "刷新"
-    sync: "同步"
     feed: "订阅源"
     do_not_contact_hint: "不会向此客户发送预约确认、变更或提醒"
     do_not_contact_warning: "此客户已要求不要联系。从这里发送的消息仍会送达。"
@@ -1003,3 +975,25 @@ zh:
     display_order_switch_hint: "允许客户使用预约页面第一步的按钮，选择先选服务项目或先选服务人员，再选另一项。"
     about_and_services: "关于与服务"
     notes_internal_hint: "内部注释 - 拥有员工登录账号的人员可见"
+    booking_notice_confirmed_step: "预约须知 - 确认后"
+    messages_provider_default: "默认"
+    messages_default_provider: "默认服务人员"
+    messages_default_provider_hint: "从客户页面发送消息时预先选中。只能有一位服务人员作为默认。"
+    messages_test_setup: "测试设置"
+    messages_test_credentials: "测试凭据"
+    messages_test_credentials_ok: "凭据可用。"
+    messages_test_sending: "测试发送"
+    messages_test_send: "发送测试消息"
+    messages_test_sent: "测试消息已发送，请确认是否收到。"
+    messages_test_email_address: "测试电子邮件地址"
+    messages_test_failed: "测试失败。"
+    messages_test_outgoing_ok: "发送正常。"
+    messages_test_outgoing_server: "发送经由服务器进行，无需检查。"
+    messages_test_outgoing_failed: "发送失败："
+    messages_test_incoming_ok: "接收正常。"
+    messages_test_incoming_off: "接收已关闭。"
+    messages_test_incoming_failed: "接收失败："
+    messages_provider_quicksms_info: "使用 QuickSMS 账户和来电号码发送及接收 SMS。"
+    messages_quicksms_api_key: "API 密钥"
+    messages_quicksms_signing_secret: "Webhook 签名密钥"
+    messages_quicksms_signing_secret_hint: "在 QuickSMS 门户创建来电号码的 Webhook 时显示的密钥。若留空，收到的消息仅凭 URL 令牌即被接受。"

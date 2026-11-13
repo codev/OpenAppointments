@@ -3,7 +3,7 @@
     <%= lang('settings') %>
 </h4>
 
-<% integrations_child = request.path =~ %r{\A/(altcha|google_calendar|google_analytics|matomo_analytics|umami_analytics|jitsi|ldap|api|embed)_settings\z} %>
+<% integrations_child = request.path =~ %r{\A/(altcha|google_analytics|matomo_analytics|umami_analytics|jitsi|ldap|api|embed)_settings\z} %>
 <ul id="settings-nav" class="nav flex-column">
     <%= render "shared/side_nav_item", path: "/general_settings", text: lang('general_settings'), child: false %>
     <%= render "shared/side_nav_item", path: "/business_settings", text: lang('business_logic'), child: false %>

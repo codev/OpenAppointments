@@ -7,6 +7,7 @@ class Setting < ApplicationRecord
   # public pages, so it is sanitised here whichever path writes it.
   RICH_TEXT_SETTINGS = %w[booking_notice_service_content booking_notice_provider_content
                           booking_notice_time_content booking_notice_info_content booking_notice_final_content
+                          booking_notice_confirmed_content
                           fully_booked_notice_content cookie_notice_content
                           terms_and_conditions_content privacy_policy_content].freeze
 

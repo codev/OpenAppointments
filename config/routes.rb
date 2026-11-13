@@ -108,13 +108,19 @@ Rails.application.routes.draw do
 
   # Settings pages
   %w[general_settings business_settings booking_settings theme_settings legal_settings api_settings
-     altcha_settings embed_settings google_calendar_settings umami_analytics_settings
+     altcha_settings embed_settings umami_analytics_settings
      google_analytics_settings matomo_analytics_settings jitsi_settings ldap_settings
      messages_settings messages_email_settings messages_twilio_settings
-     messages_plivo_settings messages_textanywhere_settings
+     messages_plivo_settings messages_textanywhere_settings messages_quicksms_settings
      messages_smsgateway_settings].each do |resource|
     get resource => "#{resource}#index"
     post "#{resource}/save" => "#{resource}#save"
+  end
+
+  # Test setup on the message provider pages
+  %w[email twilio plivo textanywhere quicksms smsgateway].each do |provider|
+    post "messages_#{provider}_settings/test_credentials" => "messages_#{provider}_settings#test_credentials"
+    post "messages_#{provider}_settings/test_send" => "messages_#{provider}_settings#test_send"
   end
 
   # Theme preview sample (rendered in the Theme settings cards)
@@ -138,7 +144,6 @@ Rails.application.routes.draw do
   delete "messages/:id" => "messages#destroy"
   post "business_settings/apply_global_working_plan" => "business_settings#apply_global_working_plan"
   post "altcha_settings/generate_key" => "altcha_settings#generate_key"
-  post "messages_smsgateway_settings/test_sms" => "messages_smsgateway_settings#test_sms"
   post "ldap_settings/search" => "ldap_settings#search"
   post "ldap_settings/import" => "ldap_settings#import"
   get "integrations" => "integrations#index"
@@ -149,12 +154,6 @@ Rails.application.routes.draw do
   # Inbound SMS webhooks (public; token in URL)
   post "messages/inbound/:channel/:token" => "inbound_messages#receive"
 
-  # Google Calendar OAuth + sync management
-  get "google/oauth/:provider_id" => "google#oauth"
-  get "google/oauth_callback" => "google#oauth_callback", as: :google_oauth_callback
-  post "google/get_google_calendars" => "google#get_google_calendars"
-  post "google/select_google_calendar" => "google#select_google_calendar"
-  post "google/disable_provider_sync" => "google#disable_provider_sync"
   # REST API v1 (EA route_api_resource pattern: GET, GET/:id, POST, PUT/:id, DELETE/:id).
   namespace :api do
     namespace :v1 do

@@ -113,7 +113,7 @@ hi:
     language: भाषा
     no_language: कोई भाषा नहीं
     fields_are_required: "* वाले क्षेत्र ज़रूरी हैं."
-    appointment_confirmation: अपॉइंटमेंट की पुष्टि करें
+    appointment_confirmation: "अपनी अपॉइंटमेंट की पुष्टि करें"
     confirm: पक्का करें
     update: अद्यतन
     cancel_appointment_hint: "अपॉइंटमेंट रद्द करने के लिए \"रद्द करें\" बटन दबाएँ"
@@ -149,10 +149,6 @@ hi:
     users: यूज़र
     settings: सेटिंग
     log_out: लॉग आउट
-    synchronize: सिंक्रनाइज़
-    enable_sync: सिंक सक्षम करें
-    disable_sync: सिंक अक्षम करें
-    disable_sync_prompt: क्या आप सुनिश्चित हैं कि आप कैलेंडर सिंक्रनाइजेशन को निष्क्रिय करना चाहते हैं?
     reload: रीलोड
     appointment: अपॉइंटमेंट
     unavailability: अनुपलब्ध
@@ -175,7 +171,6 @@ hi:
     unavailability_periods_hint: अनुपलब्ध अवधि के दौरान प्रदाता नई अपॉइंटमेंट को स्वीकार नहीं करेगा.
     new_appointment_hint: एक नई अपॉइंटमेंट बनाएँ और डेटाबेस में स्टोर.
     reload_appointments_hint: कैलेंडर अपॉइंटमेंट को पुनः लोड करें.
-    trigger_sync_hint: गूगल कैलेंडर तुल्यकालन प्रक्रिया को ट्रिगर करें.
     appointment_updated: अपॉइंटमेंट अप्डैटिड सक्सेस्फल.
     undo: अन्डू
     appointment_details_changed: अपॉइंटमेंट विवरण बदल गया है.
@@ -362,11 +357,6 @@ hi:
     time: समय
     hour: घंटा
     minute: मिनट
-    calendar_sync_completed: गूगल तुल्यकालन सफलतापूर्वक पूरा हुआ
-    calendar_sync_failed: 'गूगल तुल्यकालन विफल: सर्वर कनेक्शन स्थापित नहीं किया जा सका'
-    select_sync_calendar: गूगल कैलेंडर का चयन करें
-    select_sync_calendar_prompt: आप अपने नियुक्तियों सिंक करना चाहते हैं कि कैलेंडर का चयन करें। यदि आप एक विशिष्ट कैलेंडर का चयन नहीं करना चाहते हैं, तो डिफ़ॉल्ट रूप से एक का प्रयोग किया जाएगा
-    sync_calendar_selected: गूगल कैलेंडर सफलतापूर्वक चयनित किया गया है
     oops_something_went_wrong: उफ़! कुछ गलत हो गया
     ea_update_success: आसान! अपॉइंटमेंट सफलतापूर्वक अद्यतन किया गया है.
     require_captcha: CAPTCHA आवश्यक है
@@ -561,10 +551,6 @@ hi:
     default_timezone_hint: नई रिकॉर्ड्स के लिए उपयोग किए जाने वाले डिफ़ॉल्ट समय क्षेत्र मान को सेट करें।
     default_language: डिफ़ॉल्ट भाषा
     default_language_hint: नई रिकॉर्ड्स के लिए उपयोग की जाने वाली डिफ़ॉल्ट भाषा मान को सेट करें।
-    sync_method_prompt: आप किस सिंक विधि का उपयोग करना चाहेंगे?
-    caldav_server: CalDAV सर्वर
-    caldav_connection_info_prompt: लक्षित CalDAV कैलेंडर की कनेक्शन जानकारी दर्ज करें।
-    connect: कनेक्ट करें
     ldap: एलडीएपी
     ldap_info: यह एकीकरण आपको एक मौजूदा LDAP सर्वर से कनेक्ट करने और उपयोगकर्ताओं को स्वचालित रूप से OpenAppointments में आयात करने और उन्हें अपने डायरेक्टरी पासवर्ड (यूजरनेम मेल खाना चाहिए) के साथ SSO करने की अनुमति देता है।
     host: होस्ट
@@ -585,8 +571,6 @@ hi:
     at_least_one_field_required: बुकिंग पृष्ठ में कम से कम एक फ़ील्ड को आवश्यक के रूप में सेट किया जाना चाहिए।
     customer_is_already_booked: इस ग्राहक की पहले से ही अनुरोधित आरक्षण अवधि के दौरान एक अपॉइंटमेंट है।
     fields: फ़ील्ड्स
-    invalid_credentials_provided: अमान्य क्रेडेंशियल्स प्रदान किए गए हैं, कृपया पुनः प्रयास करें।
-    calendar_url: कैलेंडर URL
     please_select: कृपया चयन करें
     secret_header: गुप्त हेडर
     search: खोजें
@@ -606,15 +590,6 @@ hi:
     altcha_enabled: ALTCHA सक्षम करें
     generate: जनरेट करें
     meeting_link: मीटिंग लिंक
-    google_calendar: गूगल कैलेंडर
-    google_calendar_info: प्रदाता Google Calendar खातों के साथ अपॉइंटमेंट सिंक करने के लिए Google Calendar सिंक्रोनाइज़ेशन सक्षम करें।
-    google_client_id: क्लाइंट ID
-    google_client_id_info: आपके Google Cloud Console प्रोजेक्ट से क्लाइंट ID।
-    google_client_secret: क्लाइंट सीक्रेट
-    google_client_secret_info: आपके Google Cloud Console प्रोजेक्ट से क्लाइंट सीक्रेट।
-    google_calendar_setup_info: 'Google Calendar सिंक सक्षम करने के लिए, आपको Google Cloud Console में एक प्रोजेक्ट बनाना होगा, Google Calendar API सक्षम करना होगा, और OAuth 2.0 क्रेडेंशियल बनाने होंगे। यहाँ जाएँ:'
-    google_meet_link_generation: Google Meet लिंक जनरेट करें
-    google_meet_link_generation_info: सिंक किए गए अपॉइंटमेंट के लिए स्वचालित रूप से एक Google Meet वीडियो कॉन्फ़्रेंस लिंक बनाएँ। मीटिंग लिंक अपॉइंटमेंट के मीटिंग लिंक फ़ील्ड में संग्रहीत किया जाएगा।
     display_add_to_google_calendar: '"Google Calendar में जोड़ें" बटन प्रदर्शित करें'
     display_add_to_google_calendar_info: बुकिंग पुष्टि पृष्ठ पर "Google Calendar में जोड़ें" बटन दिखाएँ, जिससे ग्राहक आसानी से अपना अपॉइंटमेंट अपने व्यक्तिगत Google Calendar में जोड़ सकें।
     select_all: सभी का चयन करें
@@ -705,12 +680,10 @@ hi:
     messages_provider_textanywhere_info: Send and receive SMS with a TextAnywhere account.
     messages_incoming: "जवाब प्राप्त करें"
     messages_incoming_hint: "ग्राहक आपके भेजे संदेशों का जवाब दे सकते हैं।"
-    messages_test_sms_sent: "परीक्षण SMS भेजा गया, फ़ोन देखें।"
     messages_test_sms_number: "परीक्षण फ़ोन नंबर"
-    messages_test_sms: "परीक्षण SMS भेजें"
     messages_smsgateway_invalid: "गेटवे सेटिंग्स सत्यापित नहीं हो सकीं:"
     messages_smsgateway_inbound_hint: "फ़ोन प्राप्त संदेश इस पते पर पहुँचाता है; प्राप्त करना चालू करके सहेजने पर पंजीकरण अपने आप हो जाता है।"
-    messages_smsgateway_step_activate: "Active और जवाब प्राप्त करें पर टिक करें, फिर Save करें। सेटिंग की जाँच होती है; त्रुटियाँ ठीक करें और भेजने की जाँच के लिए नीचे दिए Send Test SMS बटन का उपयोग करें।"
+    messages_smsgateway_step_activate: "सक्रिय और जवाब प्राप्त करें पर टिक करें, फिर सेव करें। सेटिंग की जाँच होती है; त्रुटियाँ ठीक करें और क्रेडेंशियल जाँचने व परीक्षण संदेश भेजने के लिए नीचे सेटअप की जाँच का उपयोग करें।"
     messages_smsgateway_step_credentials: "होम स्क्रीन पर Local server बंद करें, Cloud server चालू करें और कनेक्ट करने के लिए Offline बटन दबाएँ (Start on boot भी टिक करें), फिर होम स्क्रीन के उपयोगकर्ता नाम और पासवर्ड को नीचे उपयोगकर्ता नाम और पासवर्ड में कॉपी करें।"
     messages_smsgateway_step_signing: "ऐप की Settings -> Webhooks -> Signing Key में जाएँ -> एक साइनिंग की डालें और उसे नीचे वेबहुक हस्ताक्षर कुंजी में कॉपी करें।"
     messages_smsgateway_step_token: "निजी सर्वर उपयोग कर रहे हों तो उसी स्क्रीन पर Private Token भी डालें - टोकन गेटवे सर्वर पर /app/data/private_token में है।"
@@ -930,7 +903,7 @@ hi:
     fully_booked_notice_default: "कोई अपॉइंटमेंट उपलब्ध नहीं है। कृपया कोई अन्य सेवा या प्रदाता आज़माएं या बाद में पुनः प्रयास करें।"
     notices: "सूचनाएं"
     waitlist_enabled: "प्रतीक्षा सूची"
-    waitlist_enabled_hint: "ग्राहकों को पंजीकरण करने दें ताकि अपॉइंटमेंट खाली होने पर उन्हें सूचित किया जा सके।"
+    waitlist_enabled_hint: "जब कुछ भी बुक नहीं हो सकता, तब तारीख वाले चरण में दिखाया जाता है। ग्राहकों को पंजीकरण करने दें ताकि अपॉइंटमेंट खाली होने पर उन्हें सूचित किया जा सके।"
     waitlist_days: "सूची में रहने के दिन"
     waitlist_days_hint: "इतने दिनों के बाद पंजीकरण सूची से हटा दिए जाते हैं।"
     waitlist_max_notices: "प्रति पंजीकरण खाली स्लॉट संदेशों की संख्या"
@@ -987,7 +960,6 @@ hi:
     clear_providers: "प्रबन्धक साफ़ करें"
     clear_services: "सेवाएँ साफ़ करें"
     refresh: "रीफ़्रेश करें"
-    sync: "सिंक करें"
     feed: "फ़ीड"
     do_not_contact_hint: "इस ग्राहक को बुकिंग की पुष्टि, बदलाव या रिमाइंडर नहीं भेजे जाते"
     do_not_contact_warning: "इस ग्राहक ने संपर्क न करने का अनुरोध किया है। यहाँ से भेजे गए संदेश फिर भी पहुँचाए जाते हैं।"
@@ -1003,3 +975,25 @@ hi:
     display_order_switch_hint: "ग्राहकों को बुकिंग पेज के पहले चरण में एक बटन देता है, जिससे वे पहले सेवा या पहले स्टाइलिस्ट चुन सकते हैं और फिर दूसरा चुन सकते हैं।"
     about_and_services: "के बारे में और सेवाएँ"
     notes_internal_hint: "आंतरिक अनुदेश - स्टाफ लॉगिन वाले लोगों को दिखाई देते हैं"
+    booking_notice_confirmed_step: "बुकिंग सूचना - पुष्टि के बाद"
+    messages_provider_default: "डिफ़ॉल्ट"
+    messages_default_provider: "डिफ़ॉल्ट प्रदाता"
+    messages_default_provider_hint: "ग्राहक के पेज से संदेश भेजते समय पहले से चुना रहता है। केवल एक प्रदाता डिफ़ॉल्ट हो सकता है।"
+    messages_test_setup: "सेटअप की जाँच"
+    messages_test_credentials: "क्रेडेंशियल की जाँच"
+    messages_test_credentials_ok: "क्रेडेंशियल सही काम कर रहे हैं।"
+    messages_test_sending: "भेजने की जाँच"
+    messages_test_send: "परीक्षण संदेश भेजें"
+    messages_test_sent: "परीक्षण संदेश भेज दिया गया, जाँचें कि यह पहुँचा।"
+    messages_test_email_address: "परीक्षण ईमेल पता"
+    messages_test_failed: "जाँच विफल रही।"
+    messages_test_outgoing_ok: "संदेश भेजना काम कर रहा है।"
+    messages_test_outgoing_server: "संदेश सर्वर के माध्यम से भेजे जाते हैं, जाँचने के लिए कुछ नहीं।"
+    messages_test_outgoing_failed: "संदेश भेजना विफल रहा:"
+    messages_test_incoming_ok: "संदेश प्राप्त करना काम कर रहा है।"
+    messages_test_incoming_off: "संदेश प्राप्त करना बंद है।"
+    messages_test_incoming_failed: "संदेश प्राप्त करना विफल रहा:"
+    messages_provider_quicksms_info: "QuickSMS खाते और इनबाउंड नंबर के साथ SMS भेजें और प्राप्त करें।"
+    messages_quicksms_api_key: "API कुंजी"
+    messages_quicksms_signing_secret: "वेबहुक हस्ताक्षर गोपनीय कुंजी"
+    messages_quicksms_signing_secret_hint: "QuickSMS पोर्टल में इनबाउंड नंबर का वेबहुक बनाते समय दिखाई गई गोपनीय कुंजी। खाली होने पर, प्राप्त संदेश केवल URL टोकन पर स्वीकार किए जाते हैं।"

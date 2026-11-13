@@ -40,11 +40,15 @@ module BookingWindows
     value.match?(RELEASE_TIME_FORMAT) ? value : "00:00"
   end
 
-  # The appointment start as an absolute time: start_datetime is stored in the
-  # provider's local time.
-  def starts_at(appointment)
+  # The appointment start and end as absolute times: the stored datetimes are
+  # the provider's local wall clock.
+  def starts_at(appointment) = provider_time(appointment, appointment.start_datetime)
+
+  def ends_at(appointment) = provider_time(appointment, appointment.end_datetime)
+
+  def provider_time(appointment, time)
     zone = Time.find_zone!(appointment.provider&.effective_timezone || Time.zone.name)
-    zone.parse(appointment.start_datetime.strftime("%Y-%m-%d %H:%M:%S"))
+    zone.parse(time.strftime("%Y-%m-%d %H:%M:%S"))
   end
 
   def past?(appointment, now = Time.now) = starts_at(appointment) < now

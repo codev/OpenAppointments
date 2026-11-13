@@ -113,7 +113,7 @@ ro:
     language: Limbă
     no_language: Fără limbă
     fields_are_required: Câmpurile cu * sunt necesare.
-    appointment_confirmation: Confirmati întâlnirea
+    appointment_confirmation: "Confirmați programarea"
     confirm: Confirmati
     update: Actualizare
     cancel_appointment_hint: "Apăsați butonul \"Anulare\" pentru a anula întâlnirea"
@@ -149,10 +149,6 @@ ro:
     users: Utilizatori
     settings: Setari
     log_out: Iesire
-    synchronize: Sincronizare
-    enable_sync: Activeaza Sincronizare
-    disable_sync: Dezactiveaza Sincronizare
-    disable_sync_prompt: Ești sigur că vrei să dezactivezi sincronizarea calendarului?
     reload: Reîncarcare
     appointment: Întâlnire
     unavailability: Indisponibil
@@ -175,7 +171,6 @@ ro:
     unavailability_periods_hint: În timpul perioadei de indisponibilitate, furnizorul nu va accepta întâlniri noi.
     new_appointment_hint: Creeaza întâlnire noua si înregistreaza în baza de date.
     reload_appointments_hint: Reîncarca întâlnirile din calendar.
-    trigger_sync_hint: Porneste procesul de sincronizare cu Calendarul Google.
     appointment_updated: Întâlnire actualizata cu succes.
     undo: Anulează
     appointment_details_changed: Detaliile întâlnirii au fost modificate.
@@ -362,11 +357,6 @@ ro:
     time: Ora
     hour: Ora
     minute: Minut
-    calendar_sync_completed: Sincronizarea cu Google a reusit.
-    calendar_sync_failed: 'Sincronizarea cu Google a esuat: nu s-a putut stabili conexiunea cu serverul.'
-    select_sync_calendar: Selecteaza Calendarul Google
-    select_sync_calendar_prompt: Selecteaza calendarul în care doriti sa sincronizati întâlnirile. Daca nu doriti sa selectati un anume calendar va fi folosit cel implicit.
-    sync_calendar_selected: Calendarul Google a fost selectat.
     oops_something_went_wrong: Oops! Ceva nu a funtionat corect.
     ea_update_success: OpenAppointments a fost actualizat.
     require_captcha: Necesar CAPTCHA
@@ -561,10 +551,6 @@ ro:
     default_timezone_hint: Stabiliți valoarea fusului orar implicit care va fi utilizată pentru noile înregistrări.
     default_language: Limba Implicită
     default_language_hint: Stabiliți valoarea limbii implicite care va fi utilizată pentru noile înregistrări.
-    sync_method_prompt: Ce metodă de sincronizare doriți să folosiți?
-    caldav_server: Server CalDAV
-    caldav_connection_info_prompt: Vă rugăm să introduceți informațiile de conectare la calendarul CalDAV țintă.
-    connect: Conectare
     ldap: LDAP
     ldap_info: Această integrare vă permite să vă conectați la un server LDAP existent și să importați automat utilizatorii în OpenAppointments, permițându-le să se autentifice cu parola din director (numele de utilizator trebuie să se potrivească).
     host: Gazdă
@@ -585,8 +571,6 @@ ro:
     at_least_one_field_required: Cel puțin un câmp trebuie să fie marcat ca obligatoriu pe pagina de rezervare.
     customer_is_already_booked: Acest client are deja o programare în perioada solicitată pentru rezervare.
     fields: Câmpuri
-    invalid_credentials_provided: Credențiale invalide furnizate, vă rugăm să încercați din nou.
-    calendar_url: URL Calendar
     please_select: Vă Rugăm să Selectați
     secret_header: Antet Secret
     search: Căutare
@@ -606,15 +590,6 @@ ro:
     altcha_enabled: Activare ALTCHA
     generate: Generare
     meeting_link: Link întâlnire
-    google_calendar: Google Calendar
-    google_calendar_info: Activați sincronizarea Google Calendar pentru a sincroniza programările cu conturile Google Calendar ale furnizorilor.
-    google_client_id: ID Client
-    google_client_id_info: ID-ul de Client din proiectul dvs. Google Cloud Console.
-    google_client_secret: Secret Client
-    google_client_secret_info: Secretul de Client din proiectul dvs. Google Cloud Console.
-    google_calendar_setup_info: 'Pentru a activa sincronizarea Google Calendar, trebuie să creați un proiect în Google Cloud Console, să activați API-ul Google Calendar și să creați credențiale OAuth 2.0. Vizitați:'
-    google_meet_link_generation: Generare Linkuri Google Meet
-    google_meet_link_generation_info: Creați automat un link de videoconferință Google Meet pentru programările sincronizate. Linkul întâlnirii va fi stocat în câmpul de link al programării.
     display_add_to_google_calendar: Afișare Buton "Adaugă în Google Calendar"
     display_add_to_google_calendar_info: Afișați butonul "Adaugă în Google Calendar" pe pagina de confirmare a rezervării, permițând clienților să adauge cu ușurință programarea în Google Calendar-ul personal.
     select_all: Selectează tot
@@ -705,12 +680,10 @@ ro:
     messages_provider_textanywhere_info: Send and receive SMS with a TextAnywhere account.
     messages_incoming: "Primește răspunsuri"
     messages_incoming_hint: "Clienții pot răspunde la mesajele pe care le trimiteți."
-    messages_test_sms_sent: "SMS de test trimis, verificati telefonul."
     messages_test_sms_number: "Numar de telefon de test"
-    messages_test_sms: "Trimite SMS de test"
     messages_smsgateway_invalid: "Setarile gateway-ului nu au putut fi validate:"
     messages_smsgateway_inbound_hint: "Telefonul livrează mesajele primite la această adresă, înregistrarea se face automat la salvarea cu primirea activată."
-    messages_smsgateway_step_activate: "Bifați Activ și Primește răspunsuri, apoi Salvați. Setările sunt testate, remediați eventualele erori și folosiți butonul Trimite SMS de test de mai jos pentru a testa trimiterea."
+    messages_smsgateway_step_activate: "Bifați Activ și Primește răspunsuri, apoi Salvați. Setările sunt testate, remediați eventualele erori și folosiți secțiunea Testare configurare de mai jos pentru a verifica credențialele și a trimite un mesaj de test."
     messages_smsgateway_step_credentials: "Pe ecranul principal opriti Local server, porniti Cloud server si apasati butonul Offline pentru conectare (bifati si Start on boot), apoi copiati utilizatorul si parola de pe ecranul principal in campurile Nume utilizator si Parola de mai jos."
     messages_smsgateway_step_signing: "Mergeti la Settings -> Webhooks -> Signing Key in aplicatie -> introduceti o cheie de semnare si copiati-o in Cheia de semnare a webhookurilor de mai jos."
     messages_smsgateway_step_token: "Daca folositi un server privat introduceti si Private Token pe acelasi ecran - tokenul este in /app/data/private_token pe serverul gateway."
@@ -930,7 +903,7 @@ ro:
     fully_booked_notice_default: "Nu există programări disponibile. Încercați un alt serviciu sau furnizor, sau reveniți mai târziu."
     notices: "Mesaje"
     waitlist_enabled: "Listă de așteptare"
-    waitlist_enabled_hint: "Permiteți clienților să se înscrie pentru a fi anunțați când se eliberează o programare."
+    waitlist_enabled_hint: "Afișat la pasul de dată când nu se poate rezerva nimic. Permiteți clienților să se înscrie pentru a fi anunțați când se eliberează o programare."
     waitlist_days: "Zile pe listă"
     waitlist_days_hint: "Înscrierile sunt eliminate după acest număr de zile."
     waitlist_max_notices: "Mesaje despre programări eliberate per înscriere"
@@ -987,7 +960,6 @@ ro:
     clear_providers: "Șterge furnizorii"
     clear_services: "Șterge serviciile"
     refresh: "Reîmprospătare"
-    sync: "Sincronizare"
     feed: "Flux"
     do_not_contact_hint: "Acestui client nu i se trimit confirmări de programare, modificări sau mementouri"
     do_not_contact_warning: "Acest client a cerut să nu fie contactat. Mesajele trimise aici sunt totuși livrate."
@@ -1003,3 +975,25 @@ ro:
     display_order_switch_hint: "Permite clienților să folosească un buton din primul pas al paginii de programare pentru a alege mai întâi serviciul sau mai întâi furnizorul, înainte de a-l alege pe celălalt."
     about_and_services: "Despre și servicii"
     notes_internal_hint: "Note interne - vizibile persoanelor cu un cont de personal"
+    booking_notice_confirmed_step: "Notificare Rezervare - După confirmare"
+    messages_provider_default: "Implicit"
+    messages_default_provider: "Furnizor implicit"
+    messages_default_provider_hint: "Preselectat la trimiterea unui mesaj din pagina unui client. Doar un furnizor poate fi cel implicit."
+    messages_test_setup: "Testare configurare"
+    messages_test_credentials: "Testare credențiale"
+    messages_test_credentials_ok: "Credențialele funcționează."
+    messages_test_sending: "Testare trimitere"
+    messages_test_send: "Trimite mesaj de test"
+    messages_test_sent: "Mesaj de test trimis, verificați dacă a ajuns."
+    messages_test_email_address: "Adresă de e-mail de test"
+    messages_test_failed: "Testul a eșuat."
+    messages_test_outgoing_ok: "Trimiterea funcționează."
+    messages_test_outgoing_server: "Trimiterea se face prin server, nu este nimic de verificat."
+    messages_test_outgoing_failed: "Trimiterea a eșuat:"
+    messages_test_incoming_ok: "Primirea funcționează."
+    messages_test_incoming_off: "Primirea este dezactivată."
+    messages_test_incoming_failed: "Primirea a eșuat:"
+    messages_provider_quicksms_info: "Trimiteți și primiți SMS cu un cont QuickSMS și un număr de intrare."
+    messages_quicksms_api_key: "Cheie API"
+    messages_quicksms_signing_secret: "Secretul de semnare al webhookului"
+    messages_quicksms_signing_secret_hint: "Secretul afișat la crearea webhookului numărului de intrare în portalul QuickSMS. Dacă este gol, mesajele primite sunt acceptate doar pe baza tokenului din URL."

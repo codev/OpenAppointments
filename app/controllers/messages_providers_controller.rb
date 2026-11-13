@@ -22,7 +22,8 @@ class MessagesProvidersController < ApplicationController
         label: channel.label,
         settings_path: "/messages_#{channel.key}_settings",
         enabled: channel.enabled?,
-        incoming: channel.enabled? && channel.incoming?
+        incoming: channel.enabled? && channel.incoming?,
+        default: channel == Messaging.default_channel
       }
     end
   end

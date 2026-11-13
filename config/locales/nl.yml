@@ -113,7 +113,7 @@ nl:
     language: Taal
     no_language: Geen taal
     fields_are_required: Velden met een * zijn verplicht.
-    appointment_confirmation: Afspraak bevestigen
+    appointment_confirmation: "Bevestig uw afspraak"
     confirm: Bevestigen
     update: Bijwerken
     cancel_appointment_hint: "Druk op de knop \"Annuleren\" om de afspraak te annuleren"
@@ -149,10 +149,6 @@ nl:
     users: Gebruikers
     settings: Instellingen
     log_out: Afmelden
-    synchronize: Synchroniseren
-    enable_sync: Synchronisatie inschakelen
-    disable_sync: Synchronisatie uitschakelen
-    disable_sync_prompt: Weet u zeker dat u de kalender synchronisatie wilt uitschakelen?
     reload: Herladen
     appointment: Afspraak
     unavailability: Niet beschikbaar
@@ -175,7 +171,6 @@ nl:
     unavailability_periods_hint: Er kunnen geen nieuwe afspraken geaccepteerd worden als de medewerker niet beschikbaar is.
     new_appointment_hint: Een nieuwe afspraak maken en opslaan in de database.
     reload_appointments_hint: Herlaad de afspraken.
-    trigger_sync_hint: Start het Google Agenda synchronisatieproces.
     appointment_updated: Afspraak succesvol bijgewerkt.
     undo: Ongedaan maken
     appointment_details_changed: Afspraakgegevens veranderd.
@@ -362,11 +357,6 @@ nl:
     time: Tijd
     hour: Uur
     minute: Minuut
-    calendar_sync_completed: Google synchronisatie is voltooid.
-    calendar_sync_failed: 'Google synchronisatie is mislukt: kan geen verbinding maken met de server.'
-    select_sync_calendar: Selecteer Google Agenda
-    select_sync_calendar_prompt: Selecteer de agenda waarme uw afspraken wilt synchroniseren. Als u geen specifieke kalender selecteert zal de standaard worden gebruikt.
-    sync_calendar_selected: Google Agenda is met succes geselecteerd.
     oops_something_went_wrong: Oeps! Er is iets misgegaan.
     ea_update_success: OpenAppointments is succesvol bijgewerkt.
     require_captcha: CAPTCHA vereist.
@@ -561,10 +551,6 @@ nl:
     default_timezone_hint: Stel de standaardtijdzone in die wordt gebruikt voor nieuwe records.
     default_language: Standaardtaal
     default_language_hint: Stel de standaardtaal in die wordt gebruikt voor nieuwe records.
-    sync_method_prompt: Welke synchronisatiemethode wilt u gebruiken?
-    caldav_server: CalDAV-server
-    caldav_connection_info_prompt: Voer de verbindingsgegevens in van de doel CalDAV-agenda.
-    connect: Verbinden
     ldap: LDAP
     ldap_info: Met deze integratie kunt u verbinding maken met een bestaande LDAP-server en automatisch gebruikers importeren in OpenAppointments en hen SSO laten gebruiken met hun directorywachtwoord (gebruikersnaam moet overeenkomen).
     host: Host
@@ -585,8 +571,6 @@ nl:
     at_least_one_field_required: Er moet minstens één veld als verplicht worden ingesteld op de boekingspagina.
     customer_is_already_booked: Deze klant heeft al een afspraak in de gevraagde periode.
     fields: Velden
-    invalid_credentials_provided: Ongeldige inloggegevens, probeer het opnieuw.
-    calendar_url: Agenda-URL
     please_select: Selecteer alstublieft
     secret_header: Geheime header
     search: Zoeken
@@ -606,15 +590,6 @@ nl:
     altcha_enabled: ALTCHA inschakelen
     generate: Genereren
     meeting_link: Vergaderlink
-    google_calendar: Google Agenda
-    google_calendar_info: Schakel Google Calendar-synchronisatie in om afspraken te synchroniseren met de Google Calendar-accounts van aanbieders.
-    google_client_id: Client-ID
-    google_client_id_info: De Client-ID van uw Google Cloud Console-project.
-    google_client_secret: Clientgeheim
-    google_client_secret_info: Het Clientgeheim van uw Google Cloud Console-project.
-    google_calendar_setup_info: 'Om Google Calendar-synchronisatie in te schakelen, moet u een project aanmaken in de Google Cloud Console, de Google Calendar API inschakelen en OAuth 2.0-referenties aanmaken. Bezoek:'
-    google_meet_link_generation: Google Meet-links genereren
-    google_meet_link_generation_info: Automatisch een Google Meet-videoconferentielink aanmaken voor gesynchroniseerde afspraken. De vergaderlink wordt opgeslagen in het vergaderlinkveld van de afspraak.
     display_add_to_google_calendar: '"Toevoegen aan Google Calendar"-knop weergeven'
     display_add_to_google_calendar_info: De "Toevoegen aan Google Calendar"-knop weergeven op de boekingsbevestigingspagina, zodat klanten hun afspraak eenvoudig aan hun persoonlijke Google Calendar kunnen toevoegen.
     select_all: Alles selecteren
@@ -705,12 +680,10 @@ nl:
     messages_provider_textanywhere_info: Send and receive SMS with a TextAnywhere account.
     messages_incoming: "Antwoorden ontvangen"
     messages_incoming_hint: "Klanten kunnen reageren op de berichten die u verstuurt."
-    messages_test_sms_sent: "Test-sms verstuurd, controleer de telefoon."
     messages_test_sms_number: "Testtelefoonnummer"
-    messages_test_sms: "Test-sms versturen"
     messages_smsgateway_invalid: "De gateway-instellingen konden niet worden gevalideerd:"
     messages_smsgateway_inbound_hint: "De telefoon levert ontvangen berichten af op dit adres, registratie gebeurt automatisch bij het opslaan met ontvangen ingeschakeld."
-    messages_smsgateway_step_activate: "Vink Actief en Antwoorden ontvangen aan en kies Opslaan. De instellingen worden getest, los eventuele fouten op en test het verzenden met de knop Test-sms verzenden hieronder."
+    messages_smsgateway_step_activate: "Vink Actief en Antwoorden ontvangen aan en kies Opslaan. De instellingen worden getest, los eventuele fouten op en gebruik Test instelling hieronder om de inloggegevens te controleren en een testbericht te verzenden."
     messages_smsgateway_step_credentials: "Zet op het beginscherm Local server uit, Cloud server aan en druk op de knop Offline om te verbinden (vink ook Start on boot aan), kopieer daarna de gebruikersnaam en het wachtwoord van het beginscherm naar Gebruikersnaam en Wachtwoord hieronder."
     messages_smsgateway_step_signing: "Ga naar Settings -> Webhooks -> Signing Key in de app -> voer een ondertekeningssleutel in en kopieer die naar de Webhook-ondertekeningssleutel hieronder."
     messages_smsgateway_step_token: "Gebruikt u een privéserver, vul dan op dat scherm ook de Private Token in - de token staat in /app/data/private_token op de gatewayserver."
@@ -930,7 +903,7 @@ nl:
     fully_booked_notice_default: "Er zijn geen afspraken beschikbaar. Probeer een andere dienst of medewerker, of probeer het later opnieuw."
     notices: "Meldingen"
     waitlist_enabled: "Wachtlijst"
-    waitlist_enabled_hint: "Laat klanten zich aanmelden om te horen wanneer er een afspraak vrijkomt."
+    waitlist_enabled_hint: "Wordt getoond bij de datumstap wanneer er niets te boeken is. Laat klanten zich aanmelden om te horen wanneer er een afspraak vrijkomt."
     waitlist_days: "Dagen op de lijst"
     waitlist_days_hint: "Aanmeldingen worden na dit aantal dagen verwijderd."
     waitlist_max_notices: "Berichten over vrijgekomen plekken per aanmelding"
@@ -987,7 +960,6 @@ nl:
     clear_providers: "Medewerkers wissen"
     clear_services: "Diensten wissen"
     refresh: "Vernieuwen"
-    sync: "Synchroniseren"
     feed: "Feed"
     do_not_contact_hint: "Aan deze klant worden geen boekingsbevestigingen, wijzigingen of herinneringen gestuurd"
     do_not_contact_warning: "Deze klant heeft gevraagd niet gecontacteerd te worden. Berichten die hier worden verzonden, worden nog steeds bezorgd."
@@ -1003,3 +975,25 @@ nl:
     display_order_switch_hint: "Sta klanten toe om in de eerste stap van de boekingspagina met een knop te kiezen of ze eerst een dienst of eerst een stylist selecteren, voordat ze de ander kiezen."
     about_and_services: "Over en diensten"
     notes_internal_hint: "Interne opmerkingen - zichtbaar voor mensen met een personeelsaccount"
+    booking_notice_confirmed_step: "Boekingsmededeling - Na bevestiging"
+    messages_provider_default: "Standaard"
+    messages_default_provider: "Standaardmedewerker"
+    messages_default_provider_hint: "Vooraf geselecteerd bij het versturen van een bericht vanaf de pagina van een klant. Slechts één medewerker kan de standaard zijn."
+    messages_test_setup: "Test instelling"
+    messages_test_credentials: "Test inloggegevens"
+    messages_test_credentials_ok: "De inloggegevens werken."
+    messages_test_sending: "Test verzenden"
+    messages_test_send: "Testbericht verzenden"
+    messages_test_sent: "Testbericht verzonden, controleer of het is aangekomen."
+    messages_test_email_address: "Test-e-mailadres"
+    messages_test_failed: "De test is mislukt."
+    messages_test_outgoing_ok: "Verzenden werkt."
+    messages_test_outgoing_server: "Verzenden gaat via de server, er valt niets te controleren."
+    messages_test_outgoing_failed: "Verzenden mislukt:"
+    messages_test_incoming_ok: "Ontvangen werkt."
+    messages_test_incoming_off: "Ontvangen staat uit."
+    messages_test_incoming_failed: "Ontvangen mislukt:"
+    messages_provider_quicksms_info: "Verzend en ontvang sms met een QuickSMS-account en een inkomend nummer."
+    messages_quicksms_api_key: "API-sleutel"
+    messages_quicksms_signing_secret: "Webhook-ondertekeningsgeheim"
+    messages_quicksms_signing_secret_hint: "Het geheim dat wordt getoond wanneer de webhook van het inkomende nummer in het QuickSMS-portaal wordt aangemaakt. Als dit leeg is, worden ontvangen berichten alleen op basis van het URL-token geaccepteerd."

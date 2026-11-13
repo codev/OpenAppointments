@@ -213,8 +213,6 @@ class BookingController < ApplicationController
 
     settings = notification_settings
 
-    Synchronization.appointment_deleted(original, provider) if original
-    Synchronization.appointment_saved(appointment, service, provider, customer, settings)
     Notifications.appointment_saved(appointment, service, provider, customer, settings, manage_mode: manage_mode)
     Webhooks.trigger(Webhooks::APPOINTMENT_SAVE, appointment)
     WaitlistEntry.where(email: customer.email, service_id: service.id).delete_all if customer.email.present?

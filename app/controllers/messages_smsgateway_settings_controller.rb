@@ -26,6 +26,8 @@ class MessagesSmsgatewaySettingsController < ApplicationController
     end
 
     merged.each { |name, value| Setting.set(name, value) }
+    switch = default_switch_value
+    apply_default_switch(switch) if switch
 
     if merged["messages_smsgateway_incoming"] == "1" && active
       begin
@@ -47,38 +49,15 @@ class MessagesSmsgatewaySettingsController < ApplicationController
     settings_failed(e)
   end
 
-  # POST /messages_smsgateway_settings/test_sms - validates the saved settings
-  # and sends a real SMS through the gateway, recorded in the message logs.
-  def test_sms
-    require_system_settings_edit!
-    raise ArgumentError, "Save the settings with Active on first." unless Messaging::SmsGateway.enabled?
-
-    number = Messaging::Template.e164(params[:number].to_s)
-    raise ArgumentError, "Enter a phone number." if number.blank?
-
-    restriction = Messaging.country_restriction_error("smsgateway", number)
-    raise ArgumentError, restriction if restriction
-
-    message = Message.create!(direction: "outgoing", channel: "smsgateway", status: "queued",
-                              to_address: number, body: "OpenAppointments test SMS")
-    begin
-      Messaging::SmsGateway.deliver(message)
-      message.update!(status: "sent", error: nil)
-      render json: { success: true }
-    rescue StandardError => e
-      message.update!(status: "failed", error: e.message.truncate(255))
-      render json: { success: false, message: e.message }
-    end
-  rescue ArgumentError => e
-    json_exception(e)
-  end
-
   private
 
-  # Posted values (blank password keeps the stored one) over the stored ones.
+  def default_switch_value
+    setting_row_params(:messages_smsgateway_settings).find { |row| row["name"] == default_switch_name }&.dig("value")
+  end
+
+  # Posted values (a blank password keeps the stored one) over the stored ones.
   def merged_settings
-    rows = setting_row_params(:messages_smsgateway_settings).to_h { |row| [ row["name"], row["value"].to_s.strip ] }
-    rows.delete("messages_smsgateway_password") if rows["messages_smsgateway_password"].blank?
-    SETTING_NAMES.index_with { |name| rows.key?(name) ? rows[name] : Setting.get(name, "") }
+    config = posted_config
+    SETTING_NAMES.index_with { |name| config[name] }
   end
 end

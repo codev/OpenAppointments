@@ -38,18 +38,12 @@ class CalendarToolbarTest < ApplicationSystemTestCase
     assert_equal [ "Feed", "Add", "Refresh" ], boxes["buttons"].map { |b| b["text"] }
     assert_one_row_at_right(boxes)
     assert_operator boxes["buttons"].first["left"], :>, boxes["filterRight"], "actions start right of the filters"
-
-    show_sync_button_group
-    boxes = page.evaluate_script(ACTION_BOXES)
-    assert_equal [ "Sync", "Toggle Dropdown", "Feed", "Add", "Refresh" ], boxes["buttons"].map { |b| b["text"] }
-    assert_one_row_at_right(boxes)
   end
 
   test "on a tablet the Calendar filters and actions share one row" do
     resize_window(1000, 900)
     visit calendar_url
     show_only_stylist("Zane")
-    show_sync_button_group
     boxes = page.evaluate_script(ACTION_BOXES)
 
     assert_one_row_at_right(boxes)
@@ -97,11 +91,6 @@ class CalendarToolbarTest < ApplicationSystemTestCase
       })()
     JS
     rows.each { |row| assert_in_delta row["left"], row["right"], 2, "row centred: #{row}" }
-  end
-
-  # Synced stylists show Sync and its menu toggle before Feed.
-  def show_sync_button_group
-    page.execute_script("$('#sync-button-group').prop('hidden', false)")
   end
 
   def assert_one_row_at_right(boxes)

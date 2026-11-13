@@ -113,7 +113,7 @@ th:
     language: ภาษา
     no_language: ไม่มีภาษา
     fields_are_required: ช่องที่มีเครื่องหมาย * จำเป็นต้องกรอก
-    appointment_confirmation: ยืนยันการนัดหมาย
+    appointment_confirmation: "ยืนยันการนัดหมายของคุณ"
     confirm: ยืนยัน
     update: อัปเดต
     cancel_appointment_hint: "กดปุ่ม \"ยกเลิก\" เพื่อยกเลิกการนัดหมาย"
@@ -149,10 +149,6 @@ th:
     users: ผู้ใช้
     settings: การตั้งค่า
     log_out: ออกจากระบบ
-    synchronize: ซิงโครไนซ์
-    enable_sync: เปิดใช้งานการซิงค์
-    disable_sync: ปิดใช้งานการซิงค์
-    disable_sync_prompt: คุณแน่ใจหรือไม่ว่าต้องการปิดใช้งานการซิงโครไนซ์ปฏิทิน
     reload: โหลดซ้ำ
     appointment: การนัดหมาย
     unavailability: ช่วงเวลาที่ไม่ว่าง
@@ -175,7 +171,6 @@ th:
     unavailability_periods_hint: During unavailability periods the provider won\\'t accept new appointments.
     new_appointment_hint: สร้างการนัดหมายใหม่และจัดเก็บไว้ในฐานข้อมูล
     reload_appointments_hint: โหลดการนัดหมายในปฏิทินซ้ำ
-    trigger_sync_hint: เรียกใช้กระบวนการซิงโครไนซ์ปฏิทิน
     appointment_updated: อัปเดตการนัดหมายสำเร็จแล้ว
     undo: เลิกทำ
     appointment_details_changed: รายละเอียดการนัดหมายมีการเปลี่ยนแปลง
@@ -362,11 +357,6 @@ th:
     time: เวลา
     hour: ชั่วโมง
     minute: นาที
-    calendar_sync_completed: ซิงโครไนซ์ปฏิทินเสร็จสมบูรณ์
-    calendar_sync_failed: 'การซิงโครไนซ์ปฏิทินล้มเหลว: ไม่สามารถเชื่อมต่อกับเซิร์ฟเวอร์ได้'
-    select_sync_calendar: เลือกปฏิทิน
-    select_sync_calendar_prompt: เลือกปฏิทินที่คุณต้องการซิงโครไนซ์นัดหมาย
-    sync_calendar_selected: เลือกปฏิทินซิงโครไนซ์เรียบร้อยแล้ว
     oops_something_went_wrong: อ๊ะ! มีบางอย่างผิดพลาด.
     ea_update_success: OpenAppointments อัปเดตเรียบร้อยแล้ว
     require_captcha: ต้องมี CAPTCHA
@@ -561,10 +551,6 @@ th:
     default_timezone_hint: กำหนดค่าพื้นฐานเขตเวลาที่จะใช้สำหรับบันทึกใหม่
     default_language: ภาษาพื้นฐาน
     default_language_hint: กำหนดค่าภาษาเริ่มต้นที่จะใช้สำหรับบันทึกใหม่
-    sync_method_prompt: คุณต้องการใช้วิธีซิงค์แบบใด
-    caldav_server: เซิร์ฟเวอร์ CalDAV
-    caldav_connection_info_prompt: โปรดป้อนข้อมูลการเชื่อมต่อของเซิร์ฟเวอร์ CalDAV เป้าหมาย
-    connect: เชื่อมต่อ
     ldap: LDAP
     ldap_info: การรวมนี้ช่วยให้คุณเชื่อมต่อกับเซิร์ฟเวอร์ LDAP ที่มีอยู่และนำเข้าผู้ใช้ไปยัง OpenAppointments อัตโนมัติ และให้พวกเขาเข้าสู่ระบบด้วยรหัสผ่านไดเร็กทอรีของพวกเขา (ชื่อผู้ใช้ต้องตรงกัน)
     host: โฮสต์
@@ -585,8 +571,6 @@ th:
     at_least_one_field_required: ต้องมีฟิลด์อย่างน้อยหนึ่งฟิลด์ที่ตั้งเป็นฟิลด์ที่จำเป็นในหน้าการจอง
     customer_is_already_booked: ลูกค้ารายนี้มีการนัดหมายแล้วในช่วงเวลาการจองที่ร้องขอ
     fields: ฟิลด์
-    invalid_credentials_provided: ข้อมูลรับรองไม่ถูกต้อง กรุณาลองอีกครั้ง
-    calendar_url: URL ปฏิทิน
     please_select: กรุณาเลือก
     secret_header: ส่วนหัวความลับ
     search: ค้นหา
@@ -606,15 +590,6 @@ th:
     altcha_enabled: เปิดใช้งาน ALTCHA
     generate: สร้าง
     meeting_link: ลิงก์การประชุม
-    google_calendar: Google ปฏิทิน
-    google_calendar_info: เปิดใช้งานการซิงโครไนซ์ Google Calendar เพื่อซิงค์นัดหมายกับบัญชี Google Calendar ของผู้ให้บริการ
-    google_client_id: Client ID
-    google_client_id_info: Client ID จากโปรเจกต์ Google Cloud Console ของคุณ
-    google_client_secret: Client Secret
-    google_client_secret_info: Client Secret จากโปรเจกต์ Google Cloud Console ของคุณ
-    google_calendar_setup_info: 'หากต้องการเปิดใช้งานการซิงค์ Google Calendar คุณต้องสร้างโปรเจกต์ใน Google Cloud Console เปิดใช้งาน Google Calendar API และสร้างข้อมูลรับรอง OAuth 2.0 ไปที่:'
-    google_meet_link_generation: สร้างลิงก์ Google Meet
-    google_meet_link_generation_info: สร้างลิงก์วิดีโอคอนเฟอเรนซ์ Google Meet โดยอัตโนมัติสำหรับนัดหมายที่ซิงค์ ลิงก์การประชุมจะถูกจัดเก็บในฟิลด์ลิงก์การประชุมของนัดหมาย
     display_add_to_google_calendar: แสดงปุ่ม"เพิ่มไปยัง Google Calendar"
     display_add_to_google_calendar_info: แสดงปุ่ม"เพิ่มไปยัง Google Calendar"ในหน้ายืนยันการจอง เพื่อให้ลูกค้าสามารถเพิ่มนัดหมายไปยัง Google Calendar ส่วนตัวได้อย่างง่ายดาย
     select_all: เลือกทั้งหมด
@@ -705,12 +680,10 @@ th:
     messages_provider_textanywhere_info: Send and receive SMS with a TextAnywhere account.
     messages_incoming: "รับข้อความตอบกลับ"
     messages_incoming_hint: "ลูกค้าสามารถตอบกลับข้อความที่คุณส่งได้"
-    messages_test_sms_sent: "ส่ง SMS ทดสอบแล้ว ตรวจสอบโทรศัพท์"
     messages_test_sms_number: "หมายเลขโทรศัพท์ทดสอบ"
-    messages_test_sms: "ส่ง SMS ทดสอบ"
     messages_smsgateway_invalid: "ไม่สามารถตรวจสอบการตั้งค่าเกตเวย์:"
     messages_smsgateway_inbound_hint: "โทรศัพท์จะส่งข้อความที่ได้รับมายังที่อยู่นี้ การลงทะเบียนจะดำเนินการโดยอัตโนมัติเมื่อบันทึกโดยเปิดการรับข้อความไว้"
-    messages_smsgateway_step_activate: "ติ๊ก Active และ รับข้อความตอบกลับ แล้วกด บันทึก ระบบจะทดสอบการตั้งค่า ให้แก้ไขข้อผิดพลาดที่พบ และใช้ปุ่มส่ง SMS ทดสอบด้านล่างเพื่อทดสอบการส่ง"
+    messages_smsgateway_step_activate: "ติ๊ก ใช้งานอยู่ และ รับข้อความตอบกลับ แล้วกด บันทึก ระบบจะทดสอบการตั้งค่า ให้แก้ไขข้อผิดพลาดที่พบ และใช้ ทดสอบการตั้งค่า ด้านล่างเพื่อตรวจสอบข้อมูลรับรองและส่งข้อความทดสอบ"
     messages_smsgateway_step_credentials: "ที่หน้าจอหลักปิด Local server เปิด Cloud server แล้วกดปุ่ม Offline เพื่อเชื่อมต่อ (ติ๊ก Start on boot ด้วย) จากนั้นคัดลอกชื่อผู้ใช้และรหัสผ่านจากหน้าจอหลักไปที่ชื่อผู้ใช้และรหัสผ่านด้านล่าง"
     messages_smsgateway_step_signing: "ไปที่ Settings -> Webhooks -> Signing Key ในแอป -> ใส่คีย์ลงนามแล้วคัดลอกไปที่คีย์ลงนามเว็บฮุกด้านล่าง"
     messages_smsgateway_step_token: "หากใช้เซิร์ฟเวอร์ส่วนตัวให้กรอก Private Token ในหน้าจอเดียวกันด้วย - โทเคนอยู่ที่ /app/data/private_token บนเซิร์ฟเวอร์เกตเวย์"
@@ -930,7 +903,7 @@ th:
     fully_booked_notice_default: "ไม่มีนัดหมายว่างในขณะนี้ กรุณาลองเลือกบริการหรือผู้ให้บริการอื่น หรือลองใหม่อีกครั้งในภายหลัง"
     notices: "ประกาศ"
     waitlist_enabled: "รายชื่อรอ"
-    waitlist_enabled_hint: "ให้ลูกค้าลงชื่อเพื่อรับแจ้งเมื่อมีนัดหมายว่าง"
+    waitlist_enabled_hint: "แสดงในขั้นตอนเลือกวันที่เมื่อไม่มีอะไรให้จอง ให้ลูกค้าลงชื่อเพื่อรับแจ้งเมื่อมีนัดหมายว่าง"
     waitlist_days: "จำนวนวันที่อยู่ในรายชื่อ"
     waitlist_days_hint: "รายชื่อจะถูกลบออกหลังจากจำนวนวันนี้"
     waitlist_max_notices: "จำนวนข้อความแจ้งช่วงเวลาว่างต่อผู้ลงชื่อหนึ่งคน"
@@ -987,7 +960,6 @@ th:
     clear_providers: "ล้างผู้ให้บริการ"
     clear_services: "ล้างบริการ"
     refresh: "รีเฟรช"
-    sync: "ซิงค์"
     feed: "ฟีด"
     do_not_contact_hint: "จะไม่มีการส่งการยืนยัน การเปลี่ยนแปลง หรือการแจ้งเตือนการนัดหมายถึงลูกค้ารายนี้"
     do_not_contact_warning: "ลูกค้ารายนี้ขอไม่ให้ติดต่อ ข้อความที่ส่งถึงลูกค้ายังคงถูกส่งตามปกติ"
@@ -1003,3 +975,25 @@ th:
     display_order_switch_hint: "อนุญาตให้ลูกค้าใช้ปุ่มในขั้นตอนแรกของหน้าจอง เพื่อเลือกบริการก่อนหรือผู้ให้บริการก่อน แล้วจึงเลือกอีกอย่าง"
     about_and_services: "เกี่ยวกับและบริการ"
     notes_internal_hint: "หมายเหตุภายใน - มองเห็นได้เฉพาะผู้ที่มีบัญชีเข้าสู่ระบบของพนักงาน"
+    booking_notice_confirmed_step: "ประกาศการจอง - หลังการยืนยัน"
+    messages_provider_default: "ค่าเริ่มต้น"
+    messages_default_provider: "ผู้ให้บริการเริ่มต้น"
+    messages_default_provider_hint: "เลือกไว้ล่วงหน้าเมื่อส่งข้อความจากหน้าลูกค้า ตั้งผู้ให้บริการเป็นค่าเริ่มต้นได้เพียงคนเดียว"
+    messages_test_setup: "ทดสอบการตั้งค่า"
+    messages_test_credentials: "ทดสอบข้อมูลรับรอง"
+    messages_test_credentials_ok: "ข้อมูลรับรองใช้งานได้"
+    messages_test_sending: "ทดสอบการส่ง"
+    messages_test_send: "ส่งข้อความทดสอบ"
+    messages_test_sent: "ส่งข้อความทดสอบแล้ว ตรวจสอบว่าข้อความมาถึงหรือไม่"
+    messages_test_email_address: "อีเมลสำหรับทดสอบ"
+    messages_test_failed: "การทดสอบล้มเหลว"
+    messages_test_outgoing_ok: "การส่งใช้งานได้"
+    messages_test_outgoing_server: "การส่งผ่านเซิร์ฟเวอร์ ไม่มีอะไรต้องตรวจสอบ"
+    messages_test_outgoing_failed: "การส่งล้มเหลว:"
+    messages_test_incoming_ok: "การรับใช้งานได้"
+    messages_test_incoming_off: "การรับปิดอยู่"
+    messages_test_incoming_failed: "การรับล้มเหลว:"
+    messages_provider_quicksms_info: "ส่งและรับ SMS ด้วยบัญชี QuickSMS และหมายเลขขาเข้า"
+    messages_quicksms_api_key: "คีย์ API"
+    messages_quicksms_signing_secret: "รหัสลับลงนามเว็บฮุก"
+    messages_quicksms_signing_secret_hint: "รหัสลับที่แสดงเมื่อสร้างเว็บฮุกของหมายเลขขาเข้าในพอร์ทัล QuickSMS หากเว้นว่าง ข้อความที่ได้รับจะถูกยอมรับด้วยโทเคนใน URL เท่านั้น"

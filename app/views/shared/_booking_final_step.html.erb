@@ -31,7 +31,6 @@
             <% if @error %>
                 <div id="form-message" class="alert alert-danger text-center" role="alert"><%= @error %></div>
             <% end %>
-            <%= render "shared/booking_notice", content: vars(:booking_notice_final_content) %>
             <div class="row frame-content">
                 <div id="appointment-details" class="col-12 col-lg-6 text-center text-md-start mb-2 mb-md-0 fs-5">
                     <div><i class="fas fa-calendar-day me-2"></i><strong><%= display_datetime(customer_start_at) %></strong></div>
@@ -84,6 +83,7 @@
                 </div>
             <% end %>
         </div>
+        <%= render "shared/booking_notice", content: vars(:booking_notice_final_content) %>
         <div class="command-buttons text-center my-3 mx-auto d-md-flex justify-content-md-between">
             <button type="submit" id="button-back-5" class="btn button-back btn-outline-secondary"
                     formaction="/booking/confirm" formnovalidate name="back" value="1" data-turbo-frame="wizard">

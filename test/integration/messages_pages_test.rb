@@ -4,7 +4,7 @@ class MessagesPagesTest < ActionDispatch::IntegrationTest
   MESSAGES_PAGES = %w[
     messages_settings messages_providers messages_notifications messages_logs
     messages_email_settings messages_twilio_settings messages_plivo_settings
-    messages_textanywhere_settings
+    messages_textanywhere_settings messages_quicksms_settings
   ].freeze
 
   def login_admin

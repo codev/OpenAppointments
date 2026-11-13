@@ -79,7 +79,12 @@ default filter, Inbox, lists the rest.
 
 **Read**:
 Whether a customer's message has been looked at, shown on the customer page only (bold until
-Mark as read); the Inbox does not use it.
+Mark as read, or until an appointment of the customer has happened); the Inbox does not use it.
+
+**Default provider**:
+The one message provider whose Default switch is on. It is pre-selected when a message is
+sent from the customer page and badged Default on the Providers list; only an enabled
+provider counts.
 
 **Extra questions**:
 The configurable questions a customer answers when booking, such as Pronouns and Access

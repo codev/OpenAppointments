@@ -80,11 +80,11 @@ class ReviewFixesTest < ActionDispatch::IntegrationTest
   test "the API token can be blanked from its page while other secrets keep their stored value" do
     login_admin
     Setting.set("api_token", "tok")
-    Setting.set("google_client_secret", "sekrit")
+    Setting.set("messages_twilio_auth_token", "sekrit")
     post "/api_settings/save", params: { settings: { api_token: "" } }
     assert_equal "", Setting.get("api_token")
-    post "/google_calendar_settings/save", params: { settings: { google_client_secret: "", google_client_id: "id" } }
-    assert_equal "sekrit", Setting.get("google_client_secret")
+    post "/messages_twilio_settings/save", params: { settings: { messages_twilio_auth_token: "", messages_twilio_account_sid: "AC1" } }
+    assert_equal "sekrit", Setting.get("messages_twilio_auth_token")
   end
 
   test "the booking settings form refuses no visible field and no required field" do

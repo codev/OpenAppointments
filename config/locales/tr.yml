@@ -113,7 +113,7 @@ tr:
     language: Dil
     no_language: Dil yok
     fields_are_required: "* Zorunlu sahalardır."
-    appointment_confirmation: Randevuyu Onaylayın
+    appointment_confirmation: "Randevunuzu onaylayın"
     confirm: Onayla
     update: Güncelle
     cancel_appointment_hint: "Randevuyu iptal etmek için \"İptal\" düğmesine basın"
@@ -149,10 +149,6 @@ tr:
     users: Kullanıcılar
     settings: Ayarlar
     log_out: Çıkış
-    synchronize: Eşitle
-    enable_sync: Eşitlemeyi Aç
-    disable_sync: Eşitlemeyi Kapat
-    disable_sync_prompt: Takvim senkronizasyonunu devre dışı bırakmak istediğinizden emin misiniz?
     reload: Tekrar Yükle
     appointment: Randevu
     unavailability: Uygun Değil
@@ -175,7 +171,6 @@ tr:
     unavailability_periods_hint: Uygun olmayan zaman aralıklarında hizmet sağlayıcı yeni randevu kabul etmeyecektir.
     new_appointment_hint: Yeni bir randevu yaratarak veri tabanına kaydet.
     reload_appointments_hint: Takvim randevularını tekrar yükle.
-    trigger_sync_hint: Google Takvim eşitlemeyi başlat.
     appointment_updated: Randevu başarıyla güncellendi.
     undo: Geri al
     appointment_details_changed: Randevu detayları değiştirildi.
@@ -362,11 +357,6 @@ tr:
     time: Zaman
     hour: Saat
     minute: Dakika
-    calendar_sync_completed: Google eşitlemesi başarıyla tamamlandı.
-    calendar_sync_failed: 'Google eşitlemesi başarısız: Sunucu ile bağlantı kurulamadı.'
-    select_sync_calendar: Google Takvimini seçin.
-    select_sync_calendar_prompt: Randevularınızı eşitlemek istediğiniz takvimi seçin. Eğer spesifik bir takvim seçmezseniz varsayılan takvim kullanılacaktır.
-    sync_calendar_selected: Google Takvimi başarıyla seçildi.
     oops_something_went_wrong: Oops! Bir Sorun Oluştu.
     ea_update_success: OpenAppointments başarı ile güncellendi.
     require_captcha: CAPTCHA gereklidir
@@ -561,10 +551,6 @@ tr:
     default_timezone_hint: Yeni kayıtlar için kullanılacak varsayılan saat dilimi değerini ayarlayın.
     default_language: Varsayılan Dil
     default_language_hint: Yeni kayıtlar için kullanılacak varsayılan dil değerini ayarlayın.
-    sync_method_prompt: Hangi senkronizasyon yöntemini kullanmak istersiniz?
-    caldav_server: CalDAV Sunucusu
-    caldav_connection_info_prompt: Hedef CalDAV Takvimi için bağlantı bilgilerini girin.
-    connect: Bağlan
     ldap: LDAP
     ldap_info: Bu entegrasyon, mevcut bir LDAP sunucusuna bağlanmanızı ve kullanıcıları OpenAppointments’a otomatik olarak aktarmanızı sağlar ve onları dizin parolalarıyla SSO yapmalarına izin verir (kullanıcı adı eşleşmelidir).
     host: Ana Bilgisayar
@@ -585,8 +571,6 @@ tr:
     at_least_one_field_required: Rezervasyon sayfasında en az bir alan zorunlu olarak ayarlanmalıdır.
     customer_is_already_booked: Bu müşteri, talep edilen rezervasyon döneminde zaten bir randevuya sahip.
     fields: Alanlar
-    invalid_credentials_provided: Geçersiz kimlik bilgileri sağlandı, lütfen tekrar deneyin.
-    calendar_url: Takvim URL
     please_select: Lütfen Seçin
     secret_header: Gizli Başlık
     search: Ara
@@ -606,15 +590,6 @@ tr:
     altcha_enabled: ALTCHA'yı Etkinleştir
     generate: Oluştur
     meeting_link: Toplantı Bağlantısı
-    google_calendar: Google Takvim
-    google_calendar_info: Randevuları sağlayıcı Google Calendar hesaplarıyla senkronize etmek için Google Calendar senkronizasyonunu etkinleştirin.
-    google_client_id: İstemci Kimliği
-    google_client_id_info: Google Cloud Console projenizden alınan İstemci Kimliği.
-    google_client_secret: İstemci Gizli Anahtarı
-    google_client_secret_info: Google Cloud Console projenizden alınan İstemci Gizli Anahtarı.
-    google_calendar_setup_info: 'Google Calendar senkronizasyonunu etkinleştirmek için Google Cloud Console''da bir proje oluşturmanız, Google Calendar API''sini etkinleştirmeniz ve OAuth 2.0 kimlik bilgileri oluşturmanız gerekir. Ziyaret edin:'
-    google_meet_link_generation: Google Meet Bağlantıları Oluştur
-    google_meet_link_generation_info: Senkronize edilmiş randevular için otomatik olarak bir Google Meet görüntülü konferans bağlantısı oluşturun. Toplantı bağlantısı, randevunun toplantı bağlantısı alanında saklanacaktır.
     display_add_to_google_calendar: '"Google Calendar''a Ekle" Düğmesini Göster'
     display_add_to_google_calendar_info: Rezervasyon onay sayfasında "Google Calendar'a Ekle" düğmesini göstererek müşterilerin randevularını kolayca kişisel Google Calendar'larına eklemelerine olanak tanıyın.
     select_all: Tümünü Seç
@@ -705,12 +680,10 @@ tr:
     messages_provider_textanywhere_info: Send and receive SMS with a TextAnywhere account.
     messages_incoming: "Yanıtları al"
     messages_incoming_hint: "Müşteriler gönderdiğiniz mesajlara yanıt verebilir."
-    messages_test_sms_sent: "Test SMS'i gonderildi, telefonu kontrol edin."
     messages_test_sms_number: "Test telefon numarasi"
-    messages_test_sms: "Test SMS'i gonder"
     messages_smsgateway_invalid: "Ag gecidi ayarlari dogrulanamadi:"
     messages_smsgateway_inbound_hint: "Telefon alınan mesajları bu adrese iletir. Alma açıkken kaydedildiğinde kayıt otomatik olarak yapılır."
-    messages_smsgateway_step_activate: "Active ve Yanıtları al seçeneklerini işaretleyip Kaydet'e basın. Ayarlar test edilir; hataları düzeltin ve gönderimi denemek için aşağıdaki Test SMS'i Gönder düğmesini kullanın."
+    messages_smsgateway_step_activate: "Aktif ve Yanıtları al seçeneklerini işaretleyip Kaydet'e basın. Ayarlar test edilir; hataları düzeltin ve kimlik bilgilerini kontrol edip bir test mesajı göndermek için aşağıdaki Kurulumu test et bölümünü kullanın."
     messages_smsgateway_step_credentials: "Ana ekranda Local server'i kapatin, Cloud server'i acin ve baglanmak icin Offline dugmesine basin (Start on boot'u da isaretleyin), sonra ana ekrandaki kullanici adi ve parolayi asagidaki Kullanici adi ve Parola alanlarina kopyalayin."
     messages_smsgateway_step_signing: "Uygulamanin Settings -> Webhooks -> Signing Key bolumune gidin -> bir imza anahtari girin ve asagidaki Webhook imza anahtarina kopyalayin."
     messages_smsgateway_step_token: "Ozel sunucu kullaniyorsaniz ayni ekranda Private Token'i da girin - token, ag gecidi sunucusunda /app/data/private_token dosyasindadir."
@@ -930,7 +903,7 @@ tr:
     fully_booked_notice_default: "Uygun randevu bulunmuyor. Lütfen farklı bir hizmet veya hizmet sağlayıcı deneyin ya da daha sonra tekrar deneyin."
     notices: "Bildirimler"
     waitlist_enabled: "Bekleme listesi"
-    waitlist_enabled_hint: "Müşterilerin bir randevu boşaldığında haber almak üzere kaydolmasına izin verin."
+    waitlist_enabled_hint: "Hiçbir şey rezerve edilemediğinde tarih adımında gösterilir. Müşterilerin bir randevu boşaldığında haber almak üzere kaydolmasına izin verin."
     waitlist_days: "Listede kalış süresi (gün)"
     waitlist_days_hint: "Kayıtlar bu kadar gün sonra listeden kaldırılır."
     waitlist_max_notices: "Kayıt başına boşalan randevu bildirimi"
@@ -987,7 +960,6 @@ tr:
     clear_providers: "Hizmet Sağlayıcıları Temizle"
     clear_services: "Hizmetleri Temizle"
     refresh: "Yenile"
-    sync: "Senkronize Et"
     feed: "Akış"
     do_not_contact_hint: "Bu müşteriye randevu onayı, değişiklik veya hatırlatma gönderilmez"
     do_not_contact_warning: "Bu müşteri iletişime geçilmemesini istedi. Buradan gönderilen mesajlar yine de iletilir."
@@ -1003,3 +975,25 @@ tr:
     display_order_switch_hint: "Müşterilerin randevu sayfasının ilk adımındaki bir düğmeyle önce hizmeti ya da önce hizmet sağlayıcıyı seçip ardından diğerini seçmesine izin verir."
     about_and_services: "Hakkında ve Hizmetler"
     notes_internal_hint: "Dahili notlar - personel girişi olan kişiler tarafından görülebilir"
+    booking_notice_confirmed_step: "Rezervasyon Bildirimi - Onaydan sonra"
+    messages_provider_default: "Varsayılan"
+    messages_default_provider: "Varsayılan sağlayıcı"
+    messages_default_provider_hint: "Bir müşterinin sayfasından mesaj gönderirken önceden seçilir. Yalnızca bir sağlayıcı varsayılan olabilir."
+    messages_test_setup: "Kurulumu test et"
+    messages_test_credentials: "Kimlik bilgilerini test et"
+    messages_test_credentials_ok: "Kimlik bilgileri çalışıyor."
+    messages_test_sending: "Gönderimi test et"
+    messages_test_send: "Test mesajı gönder"
+    messages_test_sent: "Test mesajı gönderildi, ulaşıp ulaşmadığını kontrol edin."
+    messages_test_email_address: "Test e-posta adresi"
+    messages_test_failed: "Test başarısız oldu."
+    messages_test_outgoing_ok: "Gönderim çalışıyor."
+    messages_test_outgoing_server: "Gönderim sunucu üzerinden yapılır, kontrol edilecek bir şey yok."
+    messages_test_outgoing_failed: "Gönderim başarısız oldu:"
+    messages_test_incoming_ok: "Alım çalışıyor."
+    messages_test_incoming_off: "Alım kapalı."
+    messages_test_incoming_failed: "Alım başarısız oldu:"
+    messages_provider_quicksms_info: "Bir QuickSMS hesabı ve gelen numara ile SMS gönderin ve alın."
+    messages_quicksms_api_key: "API anahtarı"
+    messages_quicksms_signing_secret: "Webhook imza sırrı"
+    messages_quicksms_signing_secret_hint: "QuickSMS portalında gelen numaranın webhook'u oluşturulurken gösterilen sır. Boşsa, alınan mesajlar yalnızca URL'deki belirteçle kabul edilir."

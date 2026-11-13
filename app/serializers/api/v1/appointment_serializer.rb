@@ -14,9 +14,7 @@ module Api
         "hash" => "booking_hash",
         "serviceId" => "id_services",
         "providerId" => "id_users_provider",
-        "customerId" => "id_users_customer",
-        "googleCalendarId" => "id_google_calendar",
-        "caldavCalendarId" => "id_caldav_calendar"
+        "customerId" => "id_users_customer"
       }.freeze
 
       SORT_OVERRIDES = {

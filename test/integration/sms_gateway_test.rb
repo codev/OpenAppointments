@@ -125,14 +125,14 @@ class SmsGatewayTest < ActionDispatch::IntegrationTest
     login_admin
     stub_request(:post, "#{BASE}/api/3rdparty/v1/message").to_return(status: 201, body: "{}")
 
-    post "/messages_smsgateway_settings/test_sms", params: { number: "07971 862965" }
+    post "/messages_smsgateway_settings/test_send", params: { address: "07971 862965" }
     assert_equal true, response.parsed_body["success"]
     message = Message.order(id: :desc).first
     assert_equal "sent", message.status
     assert_equal "+447971862965", message.to_address
 
     stub_request(:post, "#{BASE}/api/3rdparty/v1/message").to_return(status: 400, body: { message: "invalid phone number" }.to_json)
-    post "/messages_smsgateway_settings/test_sms", params: { number: "07971862965" }
+    post "/messages_smsgateway_settings/test_send", params: { address: "07971862965" }
     assert_equal false, response.parsed_body["success"]
     assert_match(/invalid phone number/, response.parsed_body["message"])
     assert_equal "failed", Message.order(id: :desc).first.status
@@ -143,7 +143,7 @@ class SmsGatewayTest < ActionDispatch::IntegrationTest
     login_admin
     Setting.set("messages_smsgateway_default_country_only", "1")
 
-    post "/messages_smsgateway_settings/test_sms", params: { number: "+15551234567" }
+    post "/messages_smsgateway_settings/test_send", params: { address: "+15551234567" }
     assert_equal false, response.parsed_body["success"]
     assert_match(/outside the default country/, response.parsed_body["message"])
 
@@ -256,8 +256,7 @@ class SmsGatewayTest < ActionDispatch::IntegrationTest
          messages_smsgateway_step_url messages_smsgateway_step_token
          messages_smsgateway_step_signing messages_smsgateway_step_credentials
          messages_smsgateway_step_activate messages_smsgateway_inbound_hint
-         messages_smsgateway_invalid messages_test_sms messages_test_sms_number
-         messages_test_sms_sent].each do |key|
+         messages_smsgateway_invalid messages_test_sms_number].each do |key|
         assert I18n.t("ea.#{key}", locale: locale, fallback: false, default: nil).present?,
                "missing ea.#{key} in #{locale}"
       end

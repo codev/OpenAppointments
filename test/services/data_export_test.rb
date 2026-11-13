@@ -81,8 +81,7 @@ class DataExportTest < ActiveSupport::TestCase
     users(:jx).update!(custom_field_1: "they/them", city: "London", zip_code: "E1 6AN", do_not_contact: true)
     original_plan = users(:zane).settings.working_plan
     original_start = appointments(:upcoming).start_datetime
-    users(:zane).settings.update!(notifications: false, caldav_sync: true, caldav_url: "https://cal.example.org",
-                                  caldav_username: "zane", caldav_password: "secret", sync_past_days: 7)
+    users(:zane).settings.update!(notifications: false, sync_past_days: 7)
     WorkingPlanException.create!(provider: users(:zane), start_date: Date.new(2026, 8, 3),
                                  end_date: Date.new(2026, 8, 7))
     WorkingPlanException.create!(provider: users(:zane), start_date: Date.new(2026, 8, 5), end_date: Date.new(2026, 8, 5),
@@ -135,9 +134,6 @@ class DataExportTest < ActiveSupport::TestCase
 
     settings = provider.settings
     assert_equal false, settings.notifications
-    assert_equal true, settings.caldav_sync
-    assert_equal "https://cal.example.org", settings.caldav_url
-    assert_equal "secret", settings.caldav_password
     assert_equal 7, settings.sync_past_days
 
     exceptions = provider.working_plan_exceptions.order(:start_date).to_a

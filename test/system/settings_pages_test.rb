@@ -8,7 +8,6 @@ class SettingsPagesTest < ApplicationSystemTestCase
     "general_settings" => [ "company-name", "company_name", "Open Out Test" ],
     "business_settings" => [ "future-booking-limit", "future_booking_limit", "45" ],
     "api_settings" => [ "api-token", "api_token", "tok-123" ],
-    "google_calendar_settings" => [ "google-client-id", "google_client_id", "client-1" ],
     "google_analytics_settings" => [ "google-analytics-code", "google_analytics_code", "G-1" ],
     "matomo_analytics_settings" => [ "matomo-analytics-url", "matomo_analytics_url", "https://m.example.org" ],
     "umami_analytics_settings" => [ "umami-analytics-url", "umami_analytics_url", "https://u.example.org" ],
@@ -18,7 +17,8 @@ class SettingsPagesTest < ApplicationSystemTestCase
     "messages_smsgateway_settings" => [ "messages-smsgateway-url", "messages_smsgateway_url", "https://g.example.org" ],
     "messages_twilio_settings" => [ "messages-twilio-account-sid", "messages_twilio_account_sid", "AC1" ],
     "messages_plivo_settings" => [ "messages-plivo-auth-id", "messages_plivo_auth_id", "MA1" ],
-    "messages_textanywhere_settings" => [ "messages-textanywhere-from", "messages_textanywhere_from", "OpenOut" ]
+    "messages_textanywhere_settings" => [ "messages-textanywhere-from", "messages_textanywhere_from", "OpenOut" ],
+    "messages_quicksms_settings" => [ "messages-quicksms-from", "messages_quicksms_from", "OpenOut" ]
   }.freeze
 
   SWITCHES = {

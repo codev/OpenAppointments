@@ -113,7 +113,7 @@ zh-tw:
     language: 語言
     no_language: 無語言
     fields_are_required: 標有 * 的欄位為必填。
-    appointment_confirmation: 預約確認
+    appointment_confirmation: "確認您的預約"
     confirm: 確認
     update: 更新
     cancel_appointment_hint: "按下「取消」按鈕即可取消預約"
@@ -149,10 +149,6 @@ zh-tw:
     users: 使用者
     settings: 設定
     log_out: 登出
-    synchronize: 同步
-    enable_sync: 啟用同步
-    disable_sync: 停用同步
-    disable_sync_prompt: 您確定要停用日曆同步嗎？
     reload: 重新載入
     appointment: 預約
     unavailability: 不可用時段
@@ -175,7 +171,6 @@ zh-tw:
     unavailability_periods_hint: 在不可用時段內，提供者將不接受新預約。
     new_appointment_hint: 建立新預約並儲存至資料庫。
     reload_appointments_hint: 重新載入日曆預約。
-    trigger_sync_hint: 觸發日曆同步程序。
     appointment_updated: 預約已成功更新。
     undo: 復原
     appointment_details_changed: 預約詳細資訊已更改。
@@ -362,11 +357,6 @@ zh-tw:
     time: 時間
     hour: 小時
     minute: 分鐘
-    calendar_sync_completed: 日曆同步已成功完成。
-    calendar_sync_failed: 日曆同步失敗：無法建立伺服器連線。
-    select_sync_calendar: 選擇同步日曆
-    select_sync_calendar_prompt: 選擇您要同步預約的日曆。
-    sync_calendar_selected: 同步日曆已成功選擇。
     oops_something_went_wrong: 哎呀！出了點問題。
     ea_update_success: OpenAppointments 已成功更新。
     require_captcha: 需要驗證碼
@@ -561,10 +551,6 @@ zh-tw:
     default_timezone_hint: 設定將用於新記錄的預設時區。
     default_language: 預設語言
     default_language_hint: 設定將用於新記錄的預設語言。
-    sync_method_prompt: 您想使用哪種同步方法？
-    caldav_server: CalDAV 伺服器
-    caldav_connection_info_prompt: 請輸入目標 CalDAV 日曆的連線資訊。
-    connect: 連線
     ldap: LDAP
     ldap_info: 此整合允許您連線到現有的 LDAP 伺服器，並自動將使用者匯入 OpenAppointments，並讓他們使用目錄密碼進行單一登入（使用者名稱必須相符）。
     host: 主機
@@ -585,8 +571,6 @@ zh-tw:
     at_least_one_field_required: 預約頁面上必須至少有一個欄位設為必填。
     customer_is_already_booked: 此顧客在請求的預約時段內已經有預約。
     fields: 欄位
-    invalid_credentials_provided: 提供的憑證無效，請重試。
-    calendar_url: 日曆網址
     please_select: 請選擇
     secret_header: 密鑰標頭
     search: 搜尋
@@ -606,15 +590,6 @@ zh-tw:
     altcha_enabled: 啟用 ALTCHA
     generate: 產生
     meeting_link: 會議連結
-    google_calendar: Google 日曆
-    google_calendar_info: 啟用 Google Calendar 同步，將預約與服務提供者的 Google Calendar 帳戶同步。
-    google_client_id: 用戶端 ID
-    google_client_id_info: 來自您的 Google Cloud Console 專案的用戶端 ID。
-    google_client_secret: 用戶端密鑰
-    google_client_secret_info: 來自您的 Google Cloud Console 專案的用戶端密鑰。
-    google_calendar_setup_info: 要啟用 Google Calendar 同步，您需要在 Google Cloud Console 中建立專案、啟用 Google Calendar API 並建立 OAuth 2.0 憑證。請造訪：
-    google_meet_link_generation: 產生 Google Meet 連結
-    google_meet_link_generation_info: 自動為同步的預約建立 Google Meet 視訊會議連結。會議連結將儲存在預約的會議連結欄位中。
     display_add_to_google_calendar: 顯示"加入 Google Calendar"按鈕
     display_add_to_google_calendar_info: 在預約確認頁面顯示"加入 Google Calendar"按鈕，方便顧客將預約輕鬆加入個人 Google Calendar。
     select_all: 全選
@@ -705,12 +680,10 @@ zh-tw:
     messages_provider_textanywhere_info: Send and receive SMS with a TextAnywhere account.
     messages_incoming: "接收回覆"
     messages_incoming_hint: "顧客可以回覆您傳送的訊息。"
-    messages_test_sms_sent: "測試簡訊已傳送,請檢查手機。"
     messages_test_sms_number: "測試電話號碼"
-    messages_test_sms: "傳送測試簡訊"
     messages_smsgateway_invalid: "無法驗證閘道設定:"
     messages_smsgateway_inbound_hint: "手機會將收到的訊息傳送到此地址，開啟接收後儲存時會自動完成註冊。"
-    messages_smsgateway_step_activate: "勾選 Active 和接收回覆，然後按儲存。系統會測試設定，請修正任何錯誤，並使用下方的傳送測試簡訊按鈕測試傳送。"
+    messages_smsgateway_step_activate: "勾選啟用和接收回覆，然後按儲存。系統會測試設定，請修正任何錯誤，並使用下方的測試設定來檢查憑證並傳送測試訊息。"
     messages_smsgateway_step_credentials: "在主畫面關閉 Local server、開啟 Cloud server 並按 Offline 按鈕連線(同時勾選 Start on boot),然後將主畫面顯示的使用者名稱與密碼複製到下方的使用者名稱與密碼。"
     messages_smsgateway_step_signing: "前往應用程式的 Settings -> Webhooks -> Signing Key -> 輸入簽章金鑰,再複製到下方的 Webhook 簽章金鑰。"
     messages_smsgateway_step_token: "若使用私有伺服器,也要在同一設定畫面輸入 Private Token - 權杖位於閘道伺服器的 /app/data/private_token。"
@@ -930,7 +903,7 @@ zh-tw:
     fully_booked_notice_default: "目前沒有可用的預約。請嘗試其他服務或提供者，或稍後再試。"
     notices: "提示"
     waitlist_enabled: "候補名單"
-    waitlist_enabled_hint: "允許顧客登記候補，以便在有預約空出時收到通知。"
+    waitlist_enabled_hint: "在無法預約任何項目時顯示於日期步驟。允許顧客登記候補，以便在有預約空出時收到通知。"
     waitlist_days: "候補保留天數"
     waitlist_days_hint: "超過此天數後，候補登記將被移除。"
     waitlist_max_notices: "每位候補者收到的空位通知次數上限"
@@ -987,7 +960,6 @@ zh-tw:
     clear_providers: "清除提供者"
     clear_services: "清除服務"
     refresh: "重新整理"
-    sync: "同步"
     feed: "動態來源"
     do_not_contact_hint: "不會向此顧客傳送預約確認、變更或提醒"
     do_not_contact_warning: "此顧客已要求不要聯絡。從這裡傳送的訊息仍會送達。"
@@ -1003,3 +975,25 @@ zh-tw:
     display_order_switch_hint: "允許顧客使用預約頁面第一步的按鈕，選擇先選服務或先選提供者，再選另一項。"
     about_and_services: "關於與服務"
     notes_internal_hint: "內部備註 - 擁有員工登入帳號的人員可見"
+    booking_notice_confirmed_step: "預約須知 - 確認後"
+    messages_provider_default: "預設"
+    messages_default_provider: "預設服務人員"
+    messages_default_provider_hint: "從顧客頁面傳送訊息時預先選取。只能有一位服務人員作為預設。"
+    messages_test_setup: "測試設定"
+    messages_test_credentials: "測試憑證"
+    messages_test_credentials_ok: "憑證可用。"
+    messages_test_sending: "測試傳送"
+    messages_test_send: "傳送測試訊息"
+    messages_test_sent: "測試訊息已傳送，請確認是否收到。"
+    messages_test_email_address: "測試電子郵件地址"
+    messages_test_failed: "測試失敗。"
+    messages_test_outgoing_ok: "傳送正常。"
+    messages_test_outgoing_server: "傳送經由伺服器進行，無需檢查。"
+    messages_test_outgoing_failed: "傳送失敗："
+    messages_test_incoming_ok: "接收正常。"
+    messages_test_incoming_off: "接收已關閉。"
+    messages_test_incoming_failed: "接收失敗："
+    messages_provider_quicksms_info: "使用 QuickSMS 帳戶和來電號碼傳送及接收 SMS。"
+    messages_quicksms_api_key: "API 金鑰"
+    messages_quicksms_signing_secret: "Webhook 簽章密鑰"
+    messages_quicksms_signing_secret_hint: "在 QuickSMS 入口網站建立來電號碼的 Webhook 時顯示的密鑰。若留空，收到的訊息僅憑 URL 權杖即被接受。"

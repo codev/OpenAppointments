@@ -113,7 +113,7 @@ uk:
     language: Мова
     no_language: Немає мови
     fields_are_required: Поля з * є обов'язковими для заповнення.
-    appointment_confirmation: Підтвердження запису
+    appointment_confirmation: "Підтвердіть ваш запис"
     confirm: Підтвердити
     update: Оновити
     cancel_appointment_hint: "Натисніть кнопку \"Скасувати\", щоб скасувати запис"
@@ -149,10 +149,6 @@ uk:
     users: Користувачі
     settings: Налаштування
     log_out: Вийти
-    synchronize: Синхронізувати
-    enable_sync: Увімкнути синхронізацію
-    disable_sync: Вимкнути синхронізацію
-    disable_sync_prompt: Ви впевнені, що хочете вимкнути синхронізацію календаря?
     reload: Перезавантажити
     appointment: Запис
     unavailability: Невідповідність
@@ -175,7 +171,6 @@ uk:
     unavailability_periods_hint: Під час періодів невідповідності провайдер не буде приймати нові записи.
     new_appointment_hint: Створіть новий запис і збережіть його в базі даних.
     reload_appointments_hint: Перезавантажте записи в календарі.
-    trigger_sync_hint: Запустіть процес синхронізації календаря.
     appointment_updated: Запис успішно оновлено.
     undo: Скасувати
     appointment_details_changed: Деталі запису змінено
@@ -362,11 +357,6 @@ uk:
     time: Час
     hour: Година
     minute: Хвилина
-    calendar_sync_completed: Синхронізація календаря успішно завершена.
-    calendar_sync_failed: 'Не вдалося здійснити синхронізацію календаря: не вдалося встановити з''єднання з сервером.'
-    select_sync_calendar: Вибрати календар
-    select_sync_calendar_prompt: Виберіть календар, з яким ви хочете синхронізувати ваші записи.
-    sync_calendar_selected: Календар для синхронізації успішно вибрано.
     oops_something_went_wrong: Ой! Щось пішло не так.
     ea_update_success: OpenAppointments успішно оновлено.
     require_captcha: Вимагати CAPTCHA
@@ -561,10 +551,6 @@ uk:
     default_timezone_hint: Встановіть значення часового поясу, яке буде використовуватися для нових записів.
     default_language: Мова за замовчуванням
     default_language_hint: Встановіть значення мови, яке буде використовуватися для нових записів.
-    sync_method_prompt: Який метод синхронізації ви хочете використовувати?
-    caldav_server: CalDAV сервер
-    caldav_connection_info_prompt: Будь ласка, введіть інформацію для підключення до цільового календаря CalDAV.
-    connect: Підключити
     ldap: LDAP
     ldap_info: Ця інтеграція дозволяє підключатися до існуючого LDAP сервера та автоматично імпортувати користувачів у OpenAppointments, дозволяючи їм здійснювати SSO з їх паролем каталогу (ім’я користувача має збігатися).
     host: Хост
@@ -585,8 +571,6 @@ uk:
     at_least_one_field_required: Принаймні одне поле повинно бути встановлено як обов’язкове на сторінці бронювання.
     customer_is_already_booked: Цей клієнт вже має запис на обраний період бронювання.
     fields: Поля
-    invalid_credentials_provided: Невірні облікові дані, будь ласка, спробуйте ще раз.
-    calendar_url: URL календаря
     please_select: Будь ласка, виберіть
     secret_header: Секретний заголовок
     search: Пошук
@@ -606,15 +590,6 @@ uk:
     altcha_enabled: Увімкнути ALTCHA
     generate: Згенерувати
     meeting_link: Посилання на зустріч
-    google_calendar: Google Календар
-    google_calendar_info: Увімкніть синхронізацію з Google Calendar для синхронізації записів з обліковими записами Google Calendar постачальників.
-    google_client_id: Client ID
-    google_client_id_info: Client ID з вашого проєкту Google Cloud Console.
-    google_client_secret: Client Secret
-    google_client_secret_info: Client Secret з вашого проєкту Google Cloud Console.
-    google_calendar_setup_info: 'Для увімкнення синхронізації з Google Calendar необхідно створити проєкт у Google Cloud Console, увімкнути Google Calendar API та створити облікові дані OAuth 2.0. Перейдіть за посиланням:'
-    google_meet_link_generation: Генерація посилань Google Meet
-    google_meet_link_generation_info: Автоматично створювати посилання на відеоконференцію Google Meet для синхронізованих записів. Посилання на зустріч буде збережено у полі посилання на зустріч запису.
     display_add_to_google_calendar: Показати кнопку "Додати до Google Calendar"
     display_add_to_google_calendar_info: Показувати кнопку "Додати до Google Calendar" на сторінці підтвердження бронювання, дозволяючи клієнтам легко додати запис до свого особистого Google Calendar.
     select_all: Вибрати все
@@ -705,12 +680,10 @@ uk:
     messages_provider_textanywhere_info: Send and receive SMS with a TextAnywhere account.
     messages_incoming: "Отримувати відповіді"
     messages_incoming_hint: "Клієнти можуть відповідати на повідомлення, які ви надсилаєте."
-    messages_test_sms_sent: "Тестове SMS надіслано, перевірте телефон."
     messages_test_sms_number: "Тестовий номер телефону"
-    messages_test_sms: "Надіслати тестове SMS"
     messages_smsgateway_invalid: "Не вдалося перевірити налаштування шлюзу:"
     messages_smsgateway_inbound_hint: "Телефон доставляє отримані повідомлення на цю адресу, реєстрація виконується автоматично під час збереження з увімкненим отриманням."
-    messages_smsgateway_step_activate: "Позначте Active і Отримувати відповіді, потім натисніть Зберегти. Налаштування буде перевірено, виправте помилки та скористайтеся кнопкою Надіслати тестове SMS нижче, щоб перевірити надсилання."
+    messages_smsgateway_step_activate: "Позначте Активний і Отримувати відповіді, потім натисніть Зберегти. Налаштування буде перевірено, виправте помилки та скористайтеся розділом Перевірка налаштування нижче, щоб перевірити облікові дані й надіслати тестове повідомлення."
     messages_smsgateway_step_credentials: "На головному екрані вимкніть Local server, увімкніть Cloud server і натисніть кнопку Offline для під'єднання (позначте також Start on boot), потім скопіюйте ім'я користувача та пароль з головного екрана в поля Ім'я користувача та Пароль нижче."
     messages_smsgateway_step_signing: "Відкрийте в застосунку Settings -> Webhooks -> Signing Key -> введіть ключ підпису та скопіюйте його в Ключ підпису вебхуків нижче."
     messages_smsgateway_step_token: "Якщо використовуєте приватний сервер, введіть на тому ж екрані й Private Token - токен у /app/data/private_token на сервері шлюзу."
@@ -930,7 +903,7 @@ uk:
     fully_booked_notice_default: "Немає вільних записів. Будь ласка, оберіть іншу послугу чи провайдера або спробуйте пізніше."
     notices: "Повідомлення"
     waitlist_enabled: "Список очікування"
-    waitlist_enabled_hint: "Дозволити клієнтам записуватися, щоб їм повідомляли про звільнення запису."
+    waitlist_enabled_hint: "Показується на кроці вибору дати, коли нічого забронювати. Дозволити клієнтам записуватися, щоб їм повідомляли про звільнення запису."
     waitlist_days: "Днів у списку"
     waitlist_days_hint: "Записи видаляються зі списку через цю кількість днів."
     waitlist_max_notices: "Повідомлень про звільнений час на один запис"
@@ -987,7 +960,6 @@ uk:
     clear_providers: "Очистити провайдерів"
     clear_services: "Очистити послуги"
     refresh: "Оновити"
-    sync: "Синхронізувати"
     feed: "Стрічка"
     do_not_contact_hint: "Цьому клієнту не надсилаються підтвердження, зміни чи нагадування про записи"
     do_not_contact_warning: "Цей клієнт попросив не зв'язуватися з ним. Повідомлення, надіслані сюди, все одно доставляються."
@@ -1003,3 +975,25 @@ uk:
     display_order_switch_hint: "Дозволяє клієнтам за допомогою кнопки на першому кроці сторінки запису обрати спочатку послугу або спочатку провайдера, а потім інше."
     about_and_services: "Про себе та послуги"
     notes_internal_hint: "Внутрішні примітки - видимі людям з обліковим записом співробітника"
+    booking_notice_confirmed_step: "Повідомлення про бронювання - Після підтвердження"
+    messages_provider_default: "За замовчуванням"
+    messages_default_provider: "Спеціаліст за замовчуванням"
+    messages_default_provider_hint: "Вибирається заздалегідь під час надсилання повідомлення зі сторінки клієнта. Лише один спеціаліст може бути за замовчуванням."
+    messages_test_setup: "Перевірка налаштування"
+    messages_test_credentials: "Перевірка облікових даних"
+    messages_test_credentials_ok: "Облікові дані працюють."
+    messages_test_sending: "Перевірка надсилання"
+    messages_test_send: "Надіслати тестове повідомлення"
+    messages_test_sent: "Тестове повідомлення надіслано, перевірте, чи воно дійшло."
+    messages_test_email_address: "Тестова адреса електронної пошти"
+    messages_test_failed: "Перевірка не вдалася."
+    messages_test_outgoing_ok: "Надсилання працює."
+    messages_test_outgoing_server: "Надсилання йде через сервер, перевіряти нічого."
+    messages_test_outgoing_failed: "Надсилання не вдалося:"
+    messages_test_incoming_ok: "Отримання працює."
+    messages_test_incoming_off: "Отримання вимкнено."
+    messages_test_incoming_failed: "Отримання не вдалося:"
+    messages_provider_quicksms_info: "Надсилайте й отримуйте SMS за допомогою облікового запису QuickSMS і вхідного номера."
+    messages_quicksms_api_key: "Ключ API"
+    messages_quicksms_signing_secret: "Секрет підпису вебхука"
+    messages_quicksms_signing_secret_hint: "Секрет, показаний під час створення вебхука вхідного номера на порталі QuickSMS. Якщо порожній, отримані повідомлення приймаються лише за токеном в URL."

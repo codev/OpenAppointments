@@ -57,7 +57,6 @@ module EventSaving
     end
 
     settings = notification_settings
-    Synchronization.appointment_saved(appointment, appointment.service, appointment.provider, appointment.customer, settings)
     if notify_users
       Notifications.appointment_saved(appointment, appointment.service, appointment.provider, appointment.customer,
                                       settings, manage_mode: manage_mode, previous_status_id: previous_status_id)
@@ -105,7 +104,6 @@ module EventSaving
     if notify_users
       Notifications.appointment_deleted(appointment, service, provider, customer, notification_settings, reason: reason)
     end
-    Synchronization.appointment_deleted(appointment, provider)
     Webhooks.trigger(Webhooks::APPOINTMENT_DELETE, appointment)
   end
 
@@ -123,7 +121,6 @@ module EventSaving
     record.book_datetime ||= Time.now
     record.save!
 
-    Synchronization.unavailability_saved(record, record.provider)
     Webhooks.trigger(Webhooks::UNAVAILABILITY_SAVE, record)
     record
   end
@@ -134,7 +131,6 @@ module EventSaving
     ensure_event_permission!(record.id_users_provider)
     provider = record.provider
     record.destroy!
-    Synchronization.unavailability_deleted(record, provider)
     Webhooks.trigger(Webhooks::UNAVAILABILITY_DELETE, record)
   end
 

@@ -1,11 +1,12 @@
 require "test_helper"
 
 # Booking Notices: one rich text block per booking step, edited on the Notices
-# page and shown on its step whenever it has content. The service and provider
-# notices sit above the step's buttons; the later steps carry theirs under the
-# heading.
+# page and shown on its step whenever it has content. The service, provider and
+# confirmation notices sit above the step's buttons; the time and details steps
+# carry theirs under the heading. A sixth notice shows on the page confirming
+# the booking, after the "details sent" text.
 class BookingNoticeTest < ActionDispatch::IntegrationTest
-  STEPS = %w[service provider time info final].freeze
+  STEPS = %w[service provider time info final confirmed].freeze
   DATE = "2026-07-20".freeze
 
   def login_admin
@@ -25,6 +26,8 @@ class BookingNoticeTest < ActionDispatch::IntegrationTest
     post "/booking/confirm", params: { form: "1", **state, date: DATE, time: "10:00",
                                        customer: { name: "Notice Reader", email: "reader@example.org" } }
   end
+
+  def confirmed_page = get("/booking_confirmation/of/#{appointments(:upcoming).booking_hash}")
 
   def set_all_notices
     STEPS.each { |step| Setting.set("booking_notice_#{step}_content", "<p>Notice for #{step}.</p>") }
@@ -72,6 +75,8 @@ class BookingNoticeTest < ActionDispatch::IntegrationTest
     assert_select ".booking-notice", 0
     final_step
     assert_select ".booking-notice", 0
+    confirmed_page
+    assert_select ".booking-notice", 0
   end
 
   test "the service step shows its notice above the buttons" do
@@ -104,16 +109,26 @@ class BookingNoticeTest < ActionDispatch::IntegrationTest
     assert_operator response.body.index("booking-notice"), :<, response.body.index('id="name"')
   end
 
-  test "the confirmation step shows its notice above the appointment summary" do
+  test "the confirmation step shows its notice above the buttons" do
     set_all_notices
     final_step
     assert_only_notice(5, "final")
-    assert_operator response.body.index("booking-notice"), :<, response.body.index('id="appointment-details"')
+    assert_operator response.body.index("booking-notice"), :>, response.body.index('id="appointment-details"')
+    assert_operator response.body.index("booking-notice"), :<, response.body.index("command-buttons")
+  end
+
+  test "the confirmed page shows its notice after the details sent text" do
+    set_all_notices
+    confirmed_page
+    assert_select "div.booking-notice p", text: "Notice for confirmed."
+    assert_select "div.booking-notice", count: 1
+    assert_operator response.body.index("booking-notice"), :>, response.body.index(I18n.t("ea.check_spam_folder"))
+    assert_operator response.body.index("booking-notice"), :<, response.body.index('id="calendar-actions"')
   end
 
   test "the booking notice keys exist in every locale and the old ones are gone" do
     keys = %w[booking_notice booking_notice_service booking_notice_provider booking_notice_time_step
-              booking_notice_info_step booking_notice_final_step booking_notice_hint]
+              booking_notice_info_step booking_notice_final_step booking_notice_confirmed_step booking_notice_hint]
     gone = %w[display_booking_notice_time_step display_booking_notice_info_step booking_notice_content]
     I18n.available_locales.each do |locale|
       keys.each do |key|

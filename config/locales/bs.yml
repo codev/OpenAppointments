@@ -113,7 +113,7 @@ bs:
     language: Jezik
     no_language: Nema jezika
     fields_are_required: Polja sa * su obavezna.
-    appointment_confirmation: Potvrda termina
+    appointment_confirmation: "Potvrdite svoj termin"
     confirm: Potvrdi
     update: Ažuriraj
     cancel_appointment_hint: "Pritisnite dugme \"Otkaži\" da otkažete termin"
@@ -149,10 +149,6 @@ bs:
     users: Korisnici
     settings: Postavke
     log_out: Odjava
-    synchronize: Sinhroniziraj
-    enable_sync: Omogući sinhronizaciju
-    disable_sync: Onemogući sinhronizaciju
-    disable_sync_prompt: Da li ste sigurni da želite da onemogućite sinhronizaciju kalendara?
     reload: Ponovo učitaj
     appointment: Sastanak
     unavailability: Nedostupnost
@@ -175,7 +171,6 @@ bs:
     unavailability_periods_hint: Tokom perioda nedostupnosti provajder neće prihvatiti nove sastanke.
     new_appointment_hint: Kreirajte novi sastanak i pohranite ga u bazu podataka.
     reload_appointments_hint: Ponovo učitaj termine u kalendaru.
-    trigger_sync_hint: Pokreni proces sinhronizacije kalendara.
     appointment_updated: Sastanak je uspješno ažuriran.
     undo: Poništi
     appointment_details_changed: Detalji termina su promijenjeni
@@ -362,11 +357,6 @@ bs:
     time: Vrijeme
     hour: Sat
     minute: Minuta
-    calendar_sync_completed: Sinhronizacija kalendara je uspješno završena.
-    calendar_sync_failed: 'Sinhronizacija kalendara nije uspjela: Nije moguće uspostaviti vezu sa serverom.'
-    select_sync_calendar: Izaberite kalendar
-    select_sync_calendar_prompt: Izaberite kalendar sa kojim želite da sinhronizujete svoje obaveze.
-    sync_calendar_selected: Sinhronizacija kalendara je uspješno odabrana.
     oops_something_went_wrong: Ups! Nešto je pošlo po zlu.
     ea_update_success: Lako! Sastanci su uspješno ažurirani.
     require_captcha: Zahtijeva CAPTCHA
@@ -561,10 +551,6 @@ bs:
     default_timezone_hint: Postavite zadanu vrijednost vremenske zone koja će se koristiti za nove zapise.
     default_language: Podrazumevani jezik
     default_language_hint: Postavite zadanu vrijednost jezika koja će se koristiti za nove zapise.
-    sync_method_prompt: Koji metod sinhronizacije želite da koristite?
-    caldav_server: CalDAV server
-    caldav_connection_info_prompt: Molimo unesite informacije o vezi ciljnog CalDAV kalendara.
-    connect: Poveži se
     ldap: LDAP
     ldap_info: Ova integracija vam omogućava da se povežete na postojeći LDAP server i automatski uvezete korisnike u OpenAppointments i dozvolite im da SSO sa svojom lozinkom direktorijuma (korisničko ime mora da se podudara).
     host: Host
@@ -585,8 +571,6 @@ bs:
     at_least_one_field_required: Najmanje jedno polje mora biti postavljeno kao što je potrebno na stranici za rezervacije.
     customer_is_already_booked: Ovaj korisnik već ima zakazan termin tokom traženog perioda rezervacije.
     fields: Polja
-    invalid_credentials_provided: Nevažeći akreditivi su navedeni, pokušajte ponovo.
-    calendar_url: URL kalendara
     please_select: Molimo izaberite
     secret_header: Tajni Zaglavlje
     search: Pretraži
@@ -606,15 +590,6 @@ bs:
     altcha_enabled: Omogući ALTCHA
     generate: Generiši
     meeting_link: Link za Sastanak
-    google_calendar: Google Kalendar
-    google_calendar_info: Omogućite sinhronizaciju Google Calendar za sinhronizaciju termina sa Google Calendar računima pružalaca usluga.
-    google_client_id: ID Klijenta
-    google_client_id_info: ID Klijenta iz vašeg Google Cloud Console projekta.
-    google_client_secret: Tajna Klijenta
-    google_client_secret_info: Tajna Klijenta iz vašeg Google Cloud Console projekta.
-    google_calendar_setup_info: 'Za omogućavanje sinhronizacije Google Calendar, trebate kreirati projekt u Google Cloud Console, omogućiti Google Calendar API i kreirati OAuth 2.0 akreditive. Posjetite:'
-    google_meet_link_generation: Generiši Google Meet Linkove
-    google_meet_link_generation_info: Automatski kreirajte Google Meet video konferencijski link za sinhronizovane termine. Link sastanka će biti sačuvan u polju za link sastanka termina.
     display_add_to_google_calendar: Prikaži Dugme "Dodaj u Google Calendar"
     display_add_to_google_calendar_info: Prikažite dugme "Dodaj u Google Calendar" na stranici potvrde rezervacije, omogućavajući klijentima da lako dodaju svoj termin u lični Google Calendar.
     select_all: Odaberi Sve
@@ -705,12 +680,10 @@ bs:
     messages_provider_textanywhere_info: Send and receive SMS with a TextAnywhere account.
     messages_incoming: "Primaj odgovore"
     messages_incoming_hint: "Kupci mogu odgovoriti na poruke koje šaljete."
-    messages_test_sms_sent: "Testni SMS poslan, provjerite telefon."
     messages_test_sms_number: "Testni broj telefona"
-    messages_test_sms: "Pošalji testni SMS"
     messages_smsgateway_invalid: "Nije moguće provjeriti postavke gatewaya:"
     messages_smsgateway_inbound_hint: "Telefon dostavlja primljene poruke na ovu adresu, registracija se obavlja automatski pri snimanju s uključenim primanjem."
-    messages_smsgateway_step_activate: "Označite Aktivno i Primaj odgovore pa Sačuvaj. Postavke se testiraju, ispravite greške i koristite dugme Pošalji testni SMS ispod za test slanja."
+    messages_smsgateway_step_activate: "Označite Aktivan i Primaj odgovore pa Sačuvaj. Postavke se testiraju, ispravite greške i koristite Testiraj postavke ispod za provjeru pristupnih podataka i slanje testne poruke."
     messages_smsgateway_step_credentials: "Na početnom ekranu aplikacije isključite Local server, uključite Cloud server i kliknite dugme Offline za povezivanje (označite i Start on boot da radi nakon svakog restarta), zatim kopirajte korisničko ime i lozinku sa početnog ekrana u Korisničko ime i Lozinku ispod."
     messages_smsgateway_step_signing: "Idite na Settings -> Webhooks -> Signing Key u aplikaciji -> unesite ključ za potpis pa ga kopirajte u Ključ za potpis webhooka ispod."
     messages_smsgateway_step_token: "Ako koristite privatni server unesite i Private Token na tom ekranu postavki - token je u /app/data/private_token na serveru gatewaya."
@@ -930,7 +903,7 @@ bs:
     fully_booked_notice_default: "Nema dostupnih termina. Pokušajte sa drugom uslugom ili provajderom, ili pokušajte ponovo kasnije."
     notices: "Obavještenja"
     waitlist_enabled: "Lista čekanja"
-    waitlist_enabled_hint: "Omogućite kupcima da se prijave kako bi bili obaviješteni kada se oslobodi termin."
+    waitlist_enabled_hint: "Prikazuje se na koraku datuma kada se ništa ne može rezervisati. Omogućite kupcima da se prijave kako bi bili obaviješteni kada se oslobodi termin."
     waitlist_days: "Dana na listi"
     waitlist_days_hint: "Prijave se uklanjaju nakon ovog broja dana."
     waitlist_max_notices: "Poruke o oslobođenim terminima po prijavi"
@@ -987,7 +960,6 @@ bs:
     clear_providers: "Obriši provajdere"
     clear_services: "Obriši usluge"
     refresh: "Osvježi"
-    sync: "Sinhronizuj"
     feed: "Feed"
     do_not_contact_hint: "Ovom kupcu se ne šalju potvrde rezervacija, izmjene ni podsjetnici"
     do_not_contact_warning: "Ovaj kupac je zatražio da ga se ne kontaktira. Poruke poslane ovdje i dalje se isporučuju."
@@ -1003,3 +975,25 @@ bs:
     display_order_switch_hint: "Omogući kupcima da koriste dugme u prvom koraku stranice za rezervaciju kojim mogu prvo odabrati uslugu ili prvo frizera, prije odabira drugog."
     about_and_services: "O meni i usluge"
     notes_internal_hint: "Interne napomene - vidljive osobama s prijavom za osoblje"
+    booking_notice_confirmed_step: "Obaveštenje o rezervaciji - Nakon potvrde"
+    messages_provider_default: "Zadano"
+    messages_default_provider: "Zadani pružalac"
+    messages_default_provider_hint: "Unaprijed odabrano pri slanju poruke sa stranice kupca. Samo jedan pružalac može biti zadani."
+    messages_test_setup: "Testiraj postavke"
+    messages_test_credentials: "Testiraj pristupne podatke"
+    messages_test_credentials_ok: "Pristupni podaci rade."
+    messages_test_sending: "Testiraj slanje"
+    messages_test_send: "Pošalji testnu poruku"
+    messages_test_sent: "Testna poruka je poslana, provjerite je li stigla."
+    messages_test_email_address: "Testna e-mail adresa"
+    messages_test_failed: "Test nije uspio."
+    messages_test_outgoing_ok: "Slanje radi."
+    messages_test_outgoing_server: "Slanje ide preko servera, nema šta provjeravati."
+    messages_test_outgoing_failed: "Slanje nije uspjelo:"
+    messages_test_incoming_ok: "Primanje radi."
+    messages_test_incoming_off: "Primanje je isključeno."
+    messages_test_incoming_failed: "Primanje nije uspjelo:"
+    messages_provider_quicksms_info: "Šaljite i primajte SMS poruke putem QuickSMS računa i dolaznog broja."
+    messages_quicksms_api_key: "API ključ"
+    messages_quicksms_signing_secret: "Tajna za potpis webhooka"
+    messages_quicksms_signing_secret_hint: "Tajna prikazana kada se webhook dolaznog broja kreira u QuickSMS portalu. Ako je prazno, primljene poruke se prihvataju samo na osnovu URL tokena."

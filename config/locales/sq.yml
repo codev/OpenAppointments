@@ -113,7 +113,7 @@ sq:
     language: Gjuha
     no_language: Pa gjuhë
     fields_are_required: Fushat me * janë të detyrueshme.
-    appointment_confirmation: Konfirmimi i Takimit
+    appointment_confirmation: "Konfirmoni takimin tuaj"
     confirm: Konfirmo
     update: Përditëso
     cancel_appointment_hint: "Shtypni butonin \"Anulo\" për të anuluar takimin"
@@ -149,10 +149,6 @@ sq:
     users: Përdoruesit
     settings: Cilësimet
     log_out: Dilni
-    synchronize: Sinkronizo
-    enable_sync: Aktivizo Sinkronizimin
-    disable_sync: Çaktivizo Sinkronizimin
-    disable_sync_prompt: A jeni të sigurt që dëshironi të çaktivizoni sinkronizimin e kalendarit?
     reload: Rifresko
     appointment: Takimi
     unavailability: Pamundësia
@@ -175,7 +171,6 @@ sq:
     unavailability_periods_hint: Gjatë periudhave të pamundësisë, ofruesi nuk do të pranojë takime të reja.
     new_appointment_hint: Krijoni një takim të ri dhe ruajeni atë në bazën e të dhënave.
     reload_appointments_hint: Rifresko takimet në kalendar.
-    trigger_sync_hint: Nxisni procesin e sinkronizimit të kalendarit.
     appointment_updated: Takimi u përditësua me sukses.
     undo: Anulo
     appointment_details_changed: Detajet e takimit kanë ndryshuar
@@ -362,11 +357,6 @@ sq:
     time: Koha
     hour: Ora
     minute: Minuta
-    calendar_sync_completed: Sinkronizimi i kalendarit u përfundua me sukses.
-    calendar_sync_failed: 'Sinkronizimi i kalendarit dështoi: Nuk u mundësua lidhja me serverin.'
-    select_sync_calendar: Zgjidh Kalendarin
-    select_sync_calendar_prompt: Zgjidh kalendarin me të cilin dëshironi të sinkronizoni takimet tuaja.
-    sync_calendar_selected: Kalendar i sinkronizimit u zgjodh me sukses.
     oops_something_went_wrong: Oops! Diçka Shkoi Keq.
     ea_update_success: OpenAppointments u përditësua me sukses.
     require_captcha: Kërko CAPTCHA
@@ -561,10 +551,6 @@ sq:
     default_timezone_hint: Vendosni vlerën e zonës kohore të parazgjedhur që do të përdoret për regjistrimet e reja.
     default_language: Gjuha e Parazgjedhur
     default_language_hint: Vendosni vlerën e gjuhës së parazgjedhur që do të përdoret për regjistrimet e reja.
-    sync_method_prompt: Cilin metodë sinkronizimi dëshironi të përdorni?
-    caldav_server: Serveri CalDAV
-    caldav_connection_info_prompt: Ju lutemi futni informacionin e lidhjes së Kalendarit CalDAV të synuar.
-    connect: Lidhu
     ldap: LDAP
     ldap_info: Ky integrim ju lejon të lidheni me një server ekzistues LDAP dhe të importoni automatikisht përdoruesit në OpenAppointments dhe t'i lejoni ata të identifikohen me fjalëkalimin e tyre të drejtorisë (emri i përdoruesit duhet të përputhet).
     host: Hosti
@@ -585,8 +571,6 @@ sq:
     at_least_one_field_required: Të paktën një fushë duhet të vendoset si e detyrueshme në faqen e rezervimit.
     customer_is_already_booked: Ky klient tashmë ka një takim gjatë periudhës së kërkuar të rezervimit.
     fields: Fushat
-    invalid_credentials_provided: Kredencialet e dhëna janë të pavlefshme, ju lutemi provoni përsëri.
-    calendar_url: URL-ja e Kalendarit
     please_select: Zgjidhni
     secret_header: Header-i Sekret
     search: Kërko
@@ -606,15 +590,6 @@ sq:
     altcha_enabled: Aktivizo ALTCHA
     generate: Gjenero
     meeting_link: Lidhja e Takimit
-    google_calendar: Google Calendar
-    google_calendar_info: Aktivizoni sinkronizimin me Google Calendar për të sinkronizuar takimet me llogaritë Google Calendar të ofruesve.
-    google_client_id: ID e Klientit
-    google_client_id_info: ID e Klientit nga projekti juaj në Google Cloud Console.
-    google_client_secret: Sekreti i Klientit
-    google_client_secret_info: Sekreti i Klientit nga projekti juaj në Google Cloud Console.
-    google_calendar_setup_info: 'Për të aktivizuar sinkronizimin me Google Calendar, duhet të krijoni një projekt në Google Cloud Console, të aktivizoni API-n e Google Calendar dhe të krijoni kredencialet OAuth 2.0. Vizitoni:'
-    google_meet_link_generation: Gjenero Lidhje Google Meet
-    google_meet_link_generation_info: Krijoni automatikisht një lidhje videokonference Google Meet për takimet e sinkronizuara. Lidhja e takimit do të ruhet në fushën e lidhjes së takimit.
     display_add_to_google_calendar: Shfaq Butonin "Shto në Google Calendar"
     display_add_to_google_calendar_info: Shfaqni butonin "Shto në Google Calendar" në faqen e konfirmimit të rezervimit, duke i lejuar klientët të shtojnë lehtësisht takimin në Google Calendar-in e tyre personal.
     select_all: Zgjidh të Gjitha
@@ -705,12 +680,10 @@ sq:
     messages_provider_textanywhere_info: Send and receive SMS with a TextAnywhere account.
     messages_incoming: "Merr përgjigje"
     messages_incoming_hint: "Klientët mund t'u përgjigjen mesazheve që dërgoni."
-    messages_test_sms_sent: "SMS prove u dergua, kontrolloni telefonin."
     messages_test_sms_number: "Numri i telefonit te proves"
-    messages_test_sms: "Dergo SMS prove"
     messages_smsgateway_invalid: "Cilesimet e portes nuk u verifikuan dot:"
     messages_smsgateway_inbound_hint: "Telefoni i dorëzon mesazhet e marra në këtë adresë, regjistrimi bëhet automatikisht gjatë ruajtjes me marrjen të aktivizuar."
-    messages_smsgateway_step_activate: "Shënoni Active dhe Merr përgjigje, pastaj Save. Cilësimet testohen, korrigjoni çdo gabim dhe përdorni butonin e dërgimit të SMS-it provë më poshtë për të testuar dërgimin."
+    messages_smsgateway_step_activate: "Shënoni Aktiv dhe Merr përgjigje, pastaj Ruaj. Cilësimet testohen, korrigjoni çdo gabim dhe përdorni Testo konfigurimin më poshtë për të kontrolluar kredencialet dhe për të dërguar një mesazh prove."
     messages_smsgateway_step_credentials: "Ne ekranin kryesor fikni Local server, ndizni Cloud server dhe shtypni butonin Offline per t'u lidhur (shenoni edhe Start on boot), pastaj kopjoni emrin e perdoruesit dhe fjalekalimin nga ekrani kryesor te fushat Emri i perdoruesit dhe Fjalekalimi me poshte."
     messages_smsgateway_step_signing: "Shkoni te Settings -> Webhooks -> Signing Key ne aplikacion -> vendosni nje celes nenshkrimi dhe kopjojeni te Celesi i nenshkrimit te webhook-ut me poshte."
     messages_smsgateway_step_token: "Nese perdorni server privat vendosni edhe Private Token ne te njejtin ekran - tokeni ndodhet ne /app/data/private_token ne serverin e portes."
@@ -930,7 +903,7 @@ sq:
     fully_booked_notice_default: "Nuk ka takime të disponueshme. Ju lutemi provoni një shërbim ose ofrues tjetër, ose provoni përsëri më vonë."
     notices: "Njoftime"
     waitlist_enabled: "Lista e pritjes"
-    waitlist_enabled_hint: "Lejoni klientët të regjistrohen për t'u njoftuar kur një takim lirohet."
+    waitlist_enabled_hint: "Shfaqet në hapin e datës kur nuk mund të rezervohet asgjë. Lejoni klientët të regjistrohen për t'u njoftuar kur një takim lirohet."
     waitlist_days: "Ditë në listë"
     waitlist_days_hint: "Regjistrimet hiqen pas këtij numri ditësh."
     waitlist_max_notices: "Mesazhe për takim të liruar për regjistrim"
@@ -987,7 +960,6 @@ sq:
     clear_providers: "Pastro ofruesit"
     clear_services: "Pastro shërbimet"
     refresh: "Rifresko"
-    sync: "Sinkronizo"
     feed: "Rrjedha"
     do_not_contact_hint: "Këtij klienti nuk i dërgohen konfirmime rezervimi, ndryshime ose kujtesa"
     do_not_contact_warning: "Ky klient ka kërkuar të mos kontaktohet. Mesazhet e dërguara këtu dorëzohen prapë."
@@ -1003,3 +975,25 @@ sq:
     display_order_switch_hint: "Lejo klientët të përdorin një buton në hapin e parë të faqes së rezervimit që u lejon të zgjedhin fillimisht shërbimin ose fillimisht ofruesin, përpara se të zgjedhin tjetrin."
     about_and_services: "Rreth dhe shërbimet"
     notes_internal_hint: "Shënime të brendshme - të dukshme për personat me hyrje si staf"
+    booking_notice_confirmed_step: "Njoftimi i Rezervimit - Pas konfirmimit"
+    messages_provider_default: "Parazgjedhur"
+    messages_default_provider: "Ofruesi i parazgjedhur"
+    messages_default_provider_hint: "Zgjidhet paraprakisht kur dërgohet një mesazh nga faqja e klientit. Vetëm një ofrues mund të jetë i parazgjedhur."
+    messages_test_setup: "Testo konfigurimin"
+    messages_test_credentials: "Testo kredencialet"
+    messages_test_credentials_ok: "Kredencialet funksionojnë."
+    messages_test_sending: "Testo dërgimin"
+    messages_test_send: "Dërgo mesazh prove"
+    messages_test_sent: "Mesazhi provë u dërgua, kontrolloni nëse arriti."
+    messages_test_email_address: "Adresa e emailit për provë"
+    messages_test_failed: "Testi dështoi."
+    messages_test_outgoing_ok: "Dërgimi funksionon."
+    messages_test_outgoing_server: "Dërgimi kalon përmes serverit, nuk ka çfarë të kontrollohet."
+    messages_test_outgoing_failed: "Dërgimi dështoi:"
+    messages_test_incoming_ok: "Marrja funksionon."
+    messages_test_incoming_off: "Marrja është e çaktivizuar."
+    messages_test_incoming_failed: "Marrja dështoi:"
+    messages_provider_quicksms_info: "Dërgoni dhe merrni SMS me një llogari QuickSMS dhe një numër hyrës."
+    messages_quicksms_api_key: "Çelësi API"
+    messages_quicksms_signing_secret: "Sekreti i nënshkrimit të webhook-ut"
+    messages_quicksms_signing_secret_hint: "Sekreti që shfaqet kur krijohet webhook-u i numrit hyrës në portalin QuickSMS. Nëse është bosh, mesazhet e marra pranohen vetëm me tokenin në URL."

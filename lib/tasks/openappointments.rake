@@ -12,13 +12,6 @@ namespace :openappointments do
     end
   end
 
-  desc "Pull remote Google Calendar changes for providers with sync enabled (cron target)"
-  task sync: :environment do
-    result = CalendarPull.run
-    puts "Calendar sync: #{result[:providers]} providers, " \
-         "#{result[:imported]} imported, #{result[:removed]} removed."
-  end
-
   desc "GDPR data retention cleanup: purge customers past data_retention_days (cron target)"
   task cleanup: :environment do
     result = Cleanup.run

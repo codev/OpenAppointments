@@ -7,10 +7,10 @@ module SettingsPage
 
   # EA filter_sensitive_settings.
   SENSITIVE_SETTING_NAMES = %w[
-    api_token google_client_secret ldap_password turnstile_secret_key
+    api_token ldap_password turnstile_secret_key
     messages_email_smtp_password messages_email_imap_password
     messages_twilio_auth_token messages_plivo_auth_token
-    messages_textanywhere_api_key messages_inbound_token
+    messages_textanywhere_api_key messages_quicksms_api_key messages_quicksms_signing_secret messages_inbound_token
     messages_smsgateway_password messages_smsgateway_signing_key
   ].freeze
 
@@ -83,8 +83,8 @@ module SettingsPage
     raise ArgumentError, "You do not have the required permissions for this task."
   end
 
-  # EA Altcha/Jitsi/Google_calendar settings controllers gate every action on the
-  # edit privilege in the constructor (403, no login redirect).
+  # EA Altcha/Jitsi settings controllers gate every action on the edit
+  # privilege in the constructor (403, no login redirect).
   def forbid_unless_system_settings_edit
     head :forbidden if cannot?(:edit, :system_settings)
   end

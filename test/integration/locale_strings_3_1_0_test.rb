@@ -9,7 +9,7 @@ class LocaleStrings310Test < ActionDispatch::IntegrationTest
     appointments_include_meeting_links appointments_include_meeting_links_hint
     booking_provider_first_hint display_order_switch_hint cancel_reason_optional late_cancel_reason
     clear_providers clear_services company_address company_address_hint
-    do_not_contact_hint do_not_contact_warning feed refresh sync
+    do_not_contact_hint do_not_contact_warning feed refresh
     messages_provider_incoming_outgoing messages_provider_outgoing messages_incoming_label messages_outgoing_label
   ].freeze
   DROPPED = %w[enable_appointment_sync_hint].freeze

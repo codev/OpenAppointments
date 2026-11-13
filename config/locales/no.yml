@@ -113,7 +113,7 @@
     language: Språk
     no_language: Ingen språk
     fields_are_required: Felt merket med * er obligatoriske.
-    appointment_confirmation: Avtalebekreftelse
+    appointment_confirmation: "Bekreft timen din"
     confirm: Bekreft
     update: Oppdater
     cancel_appointment_hint: "Trykk på \"Avbryt\"-knappen for å avbryte avtalen"
@@ -149,10 +149,6 @@
     users: Brukere
     settings: Innstillinger
     log_out: Logg ut
-    synchronize: Synkroniser
-    enable_sync: Aktiver Synkronisering
-    disable_sync: Deaktiver Synkronisering
-    disable_sync_prompt: Er du sikker på at du vil deaktivere kalendersynkronisering?
     reload: Last Inn På Nytt
     appointment: Avtale
     unavailability: Utilgjengelighet
@@ -175,7 +171,6 @@
     unavailability_periods_hint: I perioder med utilgjengelighet vil leverandøren ikke akseptere nye avtaler.
     new_appointment_hint: Opprett en ny avtale og lagre den i databasen.
     reload_appointments_hint: Last inn avtaler på nytt i kalenderen.
-    trigger_sync_hint: Start synkroniseringsprosessen for kalenderen.
     appointment_updated: Avtale oppdatert.
     undo: Angre
     appointment_details_changed: Avtaledetaljer har endret seg
@@ -362,11 +357,6 @@
     time: Tid
     hour: Time
     minute: Minutt
-    calendar_sync_completed: Kalendersynkronisering fullført.
-    calendar_sync_failed: 'Kalendersynkronisering mislyktes: Kunne ikke opprette servertilkobling.'
-    select_sync_calendar: Velg kalender
-    select_sync_calendar_prompt: Velg kalenderen du vil synkronisere avtalene dine med.
-    sync_calendar_selected: Synkroniseringskalenderen har blitt valgt.
     oops_something_went_wrong: Oops! Noe gikk galt.
     ea_update_success: OpenAppointments har blitt oppdatert.
     require_captcha: Krev CAPTCHA
@@ -561,10 +551,6 @@
     default_timezone_hint: Angi standard tidssoneverdi som skal brukes for nye poster.
     default_language: Standardspråk
     default_language_hint: Angi standard språkverdi som skal brukes for nye poster.
-    sync_method_prompt: Hvilken synkroniseringsmetode ønsker du å bruke?
-    caldav_server: CalDAV-server
-    caldav_connection_info_prompt: Vennligst oppgi tilkoblingsinformasjonen for mål-CalDAV-kalenderen.
-    connect: Koble til
     ldap: LDAP
     ldap_info: Denne integrasjonen lar deg koble til en eksisterende LDAP-server og automatisk importere brukere til OpenAppointments og la dem logge inn med sitt katalogpassord (brukernavn må stemme overens).
     host: Vert
@@ -585,8 +571,6 @@
     at_least_one_field_required: Minst ett felt må være satt som obligatorisk på bookingsiden.
     customer_is_already_booked: Denne kunden har allerede en avtale i den forespurte reservasjonsperioden.
     fields: Felter
-    invalid_credentials_provided: Ugyldige påloggingsopplysninger oppgitt, vennligst prøv igjen.
-    calendar_url: Kalender-URL
     please_select: Vennligst velg
     secret_header: Hemmelig header
     search: Søk
@@ -606,15 +590,6 @@
     altcha_enabled: Aktiver ALTCHA
     generate: Generer
     meeting_link: Møtelenke
-    google_calendar: Google Kalender
-    google_calendar_info: Aktiver Google Calendar-synkronisering for å synkronisere avtaler med tilbydernes Google Calendar-kontoer.
-    google_client_id: Klient-ID
-    google_client_id_info: Klient-ID-en fra Google Cloud Console-prosjektet ditt.
-    google_client_secret: Klienthemmelighet
-    google_client_secret_info: Klienthemmeligheten fra Google Cloud Console-prosjektet ditt.
-    google_calendar_setup_info: 'For å aktivere Google Calendar-synkronisering må du opprette et prosjekt i Google Cloud Console, aktivere Google Calendar API-et og opprette OAuth 2.0-legitimasjon. Besøk:'
-    google_meet_link_generation: Generer Google Meet-lenker
-    google_meet_link_generation_info: Opprett automatisk en Google Meet-videokonferanselenke for synkroniserte avtaler. Møtelenken lagres i avtalens møtelenkefelt.
     display_add_to_google_calendar: Vis "Legg til i Google Calendar"-knapp
     display_add_to_google_calendar_info: Vis "Legg til i Google Calendar"-knappen på bookingbekreftelsessiden, slik at kunder enkelt kan legge til avtalen i sin personlige Google Calendar.
     select_all: Velg alle
@@ -705,12 +680,10 @@
     messages_provider_textanywhere_info: Send and receive SMS with a TextAnywhere account.
     messages_incoming: "Motta svar"
     messages_incoming_hint: "Kunder kan svare på meldingene du sender."
-    messages_test_sms_sent: "Test-SMS sendt, sjekk telefonen."
     messages_test_sms_number: "Testtelefonnummer"
-    messages_test_sms: "Send test-SMS"
     messages_smsgateway_invalid: "Gateway-innstillingene kunne ikke valideres:"
     messages_smsgateway_inbound_hint: "Telefonen leverer mottatte meldinger til denne adressen, registreringen skjer automatisk ved lagring med mottak slått på."
-    messages_smsgateway_step_activate: "Kryss av for Aktiv og Motta svar, og trykk deretter Lagre. Innstillingene testes, rett eventuelle feil og bruk knappen Send test-SMS nedenfor for å teste sending."
+    messages_smsgateway_step_activate: "Kryss av for Aktiv og Motta svar, og trykk deretter Lagre. Innstillingene testes, rett eventuelle feil og bruk Test oppsettet nedenfor for å sjekke påloggingsinformasjonen og sende en testmelding."
     messages_smsgateway_step_credentials: "Paa startskjermen: slaa av Local server, slaa paa Cloud server og trykk paa Offline-knappen for aa koble til (huk ogsaa av Start on boot), kopier saa brukernavnet og passordet fra startskjermen til Brukernavn og Passord nedenfor."
     messages_smsgateway_step_signing: "Gaa til appens Settings -> Webhooks -> Signing Key -> skriv inn en signeringsnoekkel og kopier den til Webhook-signeringsnoekkel nedenfor."
     messages_smsgateway_step_token: "Bruker du en privat server maa du ogsaa skrive inn Private Token paa samme skjerm - tokenet ligger i /app/data/private_token paa gateway-serveren."
@@ -930,7 +903,7 @@
     fully_booked_notice_default: "Det er ingen ledige timer. Prøv en annen tjeneste eller tilbyder, eller prøv igjen senere."
     notices: "Meldinger"
     waitlist_enabled: "Venteliste"
-    waitlist_enabled_hint: "La kundene melde seg på for å få beskjed når en time blir ledig."
+    waitlist_enabled_hint: "Vises på datotrinnet når ingenting kan bestilles. La kundene melde seg på for å få beskjed når en time blir ledig."
     waitlist_days: "Dager på listen"
     waitlist_days_hint: "Påmeldinger fjernes etter dette antall dager."
     waitlist_max_notices: "Meldinger om ledige timer per påmelding"
@@ -987,7 +960,6 @@
     clear_providers: "Fjern leverandører"
     clear_services: "Fjern tjenester"
     refresh: "Oppdater"
-    sync: "Synkroniser"
     feed: "Feed"
     do_not_contact_hint: "Ingen bookingbekreftelser, endringer eller påminnelser sendes til denne kunden"
     do_not_contact_warning: "Denne kunden har bedt om å ikke bli kontaktet. Meldinger som sendes hit blir likevel levert."
@@ -1003,3 +975,25 @@
     display_order_switch_hint: "La kunder bruke en knapp i første trinn på bookingsiden for å velge tjeneste først eller stylist først, før de velger den andre."
     about_and_services: "Om og tjenester"
     notes_internal_hint: "Interne notater - synlige for personer med en ansattinnlogging"
+    booking_notice_confirmed_step: "Bestillingsvarsel - Etter bekreftelse"
+    messages_provider_default: "Standard"
+    messages_default_provider: "Standardleverandør"
+    messages_default_provider_hint: "Forhåndsvalgt når en melding sendes fra en kundes side. Bare én leverandør kan være standard."
+    messages_test_setup: "Test oppsettet"
+    messages_test_credentials: "Test påloggingsinformasjon"
+    messages_test_credentials_ok: "Påloggingsinformasjonen fungerer."
+    messages_test_sending: "Test sending"
+    messages_test_send: "Send testmelding"
+    messages_test_sent: "Testmelding sendt, sjekk at den kom frem."
+    messages_test_email_address: "Test-e-postadresse"
+    messages_test_failed: "Testen mislyktes."
+    messages_test_outgoing_ok: "Sending fungerer."
+    messages_test_outgoing_server: "Sending går via serveren, ingenting å sjekke."
+    messages_test_outgoing_failed: "Sending mislyktes:"
+    messages_test_incoming_ok: "Mottak fungerer."
+    messages_test_incoming_off: "Mottak er av."
+    messages_test_incoming_failed: "Mottak mislyktes:"
+    messages_provider_quicksms_info: "Send og motta SMS med en QuickSMS-konto og et innkommende nummer."
+    messages_quicksms_api_key: "API-nøkkel"
+    messages_quicksms_signing_secret: "Webhook-signeringshemmelighet"
+    messages_quicksms_signing_secret_hint: "Hemmeligheten som vises når webhooken for det innkommende nummeret opprettes i QuickSMS-portalen. Hvis den er tom, godtas mottatte meldinger kun på URL-tokenet."

@@ -54,7 +54,6 @@ class BookingCancellationController < ApplicationController
 
     appointment.cancel!(kind: kind, reason: cancellation_reason)
 
-    Synchronization.appointment_deleted(appointment, provider)
     Notifications.appointment_deleted(appointment, service, provider, customer, settings,
                                       reason: cancellation_reason)
     Webhooks.trigger(Webhooks::APPOINTMENT_DELETE, appointment)

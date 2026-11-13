@@ -113,7 +113,7 @@ ja:
     language: 言語
     no_language: 言語なし
     fields_are_required: "* のある項目は必須です。"
-    appointment_confirmation: 予約の確認
+    appointment_confirmation: "予約を確認してください"
     confirm: 確認ＯＫ
     update: 更新
     cancel_appointment_hint: "予約をキャンセルするには「キャンセル」ボタンを押してください"
@@ -149,10 +149,6 @@ ja:
     users: ユーザー
     settings: 設定
     log_out: ログアウト
-    synchronize: 同期
-    enable_sync: 同期有効化
-    disable_sync: 同期無効化
-    disable_sync_prompt: カレンダーの同期を無効にしてもよろしいですか？
     reload: 再読込
     appointment: 予約
     unavailability: 空き無し
@@ -175,7 +171,6 @@ ja:
     unavailability_periods_hint: 都合が悪い期間は、担当者は新しい予約を受けられません。During unavailability periods the provider won't accept new appointments.
     new_appointment_hint: 新しい予約を作成してデータベースへ追加します。
     reload_appointments_hint: カレンダーを再読み込みします。
-    trigger_sync_hint: Googleカレンダーとの同期を開始します。
     appointment_updated: 予約情報が更新されました。
     undo: 元に戻す
     appointment_details_changed: 予約情報が変更されました。
@@ -362,11 +357,6 @@ ja:
     time: 時刻
     hour: 時間
     minute: 分
-    calendar_sync_completed: Googleカレンダーとの同期が 正しく完了しました。
-    calendar_sync_failed: 'Googleカレンダーとの同期が失敗しました。: サーバーとの接続ができませんでした。'
-    select_sync_calendar: Googleカレンダーの選択
-    select_sync_calendar_prompt: あなたの予約と同期したい Googleカレンダーを選択してください。.特定のカレンダーを指定したくない場合には、デフォルトのカレンダーが使われます。
-    sync_calendar_selected: Googleカレンダーが 選択されました。
     oops_something_went_wrong: おっと、なにか が うまく 行ってません。
     ea_update_success: OpenAppointments の　アップデートが成功しました。
     require_captcha: CAPTCHAを要求
@@ -561,10 +551,6 @@ ja:
     default_timezone_hint: 新しいレコードに使用されるデフォルトのタイムゾーン値を設定します。
     default_language: デフォルト言語
     default_language_hint: 新しいレコードに使用されるデフォルトの言語値を設定します。
-    sync_method_prompt: どの同期方法を使用しますか？
-    caldav_server: CalDAVサーバー
-    caldav_connection_info_prompt: ターゲットのCalDAVカレンダーの接続情報を入力してください。
-    connect: 接続
     ldap: LDAP
     ldap_info: この統合により、既存のLDAPサーバーに接続してユーザーを自動的にOpenAppointmentsにインポートし、ディレクトリパスワードでSSOできます（ユーザー名は一致する必要があります）。
     host: ホスト
@@ -585,8 +571,6 @@ ja:
     at_least_one_field_required: 予約ページに少なくとも1つのフィールドが必須として設定されている必要があります。
     customer_is_already_booked: この顧客はリクエストされた予約期間中にすでに予約があります。
     fields: フィールド
-    invalid_credentials_provided: 無効な認証情報が提供されました。もう一度お試しください。
-    calendar_url: カレンダーURL
     please_select: 選択してください
     secret_header: シークレットヘッダー
     search: 検索
@@ -606,15 +590,6 @@ ja:
     altcha_enabled: ALTCHA を有効にする
     generate: 生成
     meeting_link: ミーティングリンク
-    google_calendar: Google カレンダー
-    google_calendar_info: Google Calendar 同期を有効にして、予約をプロバイダーの Google Calendar アカウントと同期します。
-    google_client_id: クライアント ID
-    google_client_id_info: Google Cloud Console プロジェクトのクライアント ID。
-    google_client_secret: クライアントシークレット
-    google_client_secret_info: Google Cloud Console プロジェクトのクライアントシークレット。
-    google_calendar_setup_info: Google Calendar 同期を有効にするには、Google Cloud Console でプロジェクトを作成し、Google Calendar API を有効にし、OAuth 2.0 認証情報を作成する必要があります。以下にアクセスしてください：
-    google_meet_link_generation: Google Meet リンクを生成
-    google_meet_link_generation_info: 同期された予約に対して Google Meet ビデオ会議リンクを自動作成します。ミーティングリンクは予約のミーティングリンクフィールドに保存されます。
     display_add_to_google_calendar: '"Google Calendar に追加"ボタンを表示'
     display_add_to_google_calendar_info: 予約確認ページに"Google Calendar に追加"ボタンを表示し、顧客が個人の Google Calendar に予約を簡単に追加できるようにします。
     select_all: すべて選択
@@ -705,12 +680,10 @@ ja:
     messages_provider_textanywhere_info: Send and receive SMS with a TextAnywhere account.
     messages_incoming: "返信を受信"
     messages_incoming_hint: "お客様は送信したメッセージに返信できます。"
-    messages_test_sms_sent: "テストSMSを送信しました。電話を確認してください。"
     messages_test_sms_number: "テスト電話番号"
-    messages_test_sms: "テストSMS送信"
     messages_smsgateway_invalid: "ゲートウェイ設定を検証できませんでした:"
     messages_smsgateway_inbound_hint: "電話は受信メッセージをこのアドレスに配信します。受信をオンにして保存すると登録は自動で行われます。"
-    messages_smsgateway_step_activate: "アクティブと返信を受信にチェックを入れて保存します。設定はテストされます。エラーを修正し、下のテストSMS送信ボタンで送信を確認してください。"
+    messages_smsgateway_step_activate: "アクティブと返信を受信にチェックを入れて保存します。設定はテストされます。エラーを修正し、下の設定のテストで認証情報を確認し、テストメッセージを送信してください。"
     messages_smsgateway_step_credentials: "ホーム画面でLocal serverをオフ、Cloud serverをオンにし、Offlineボタンを押して接続します(Start on bootにもチェック)。ホーム画面のユーザー名とパスワードを下のユーザー名とパスワードにコピーします。"
     messages_smsgateway_step_signing: "アプリのSettings -> Webhooks -> Signing Keyで署名キーを入力し、下のWebhook署名キーにコピーします。"
     messages_smsgateway_step_token: "プライベートサーバーを使う場合は同じ設定画面でPrivate Tokenも入力します。トークンはゲートウェイサーバーの/app/data/private_tokenにあります。"
@@ -930,7 +903,7 @@ ja:
     fully_booked_notice_default: "ご利用いただける予約枠がありません。別のメニューまたは担当者をお試しいただくか、しばらくしてから再度お試しください。"
     notices: "通知"
     waitlist_enabled: "キャンセル待ちリスト"
-    waitlist_enabled_hint: "予約が空いた際にお知らせするため、お客様がキャンセル待ちに登録できるようにします。"
+    waitlist_enabled_hint: "予約できる枠がないとき、日付のステップに表示されます。予約が空いた際にお知らせするため、お客様がキャンセル待ちに登録できるようにします。"
     waitlist_days: "リストに残る日数"
     waitlist_days_hint: "この日数を経過すると登録は削除されます。"
     waitlist_max_notices: "登録者ごとの空き通知メッセージ数"
@@ -987,7 +960,6 @@ ja:
     clear_providers: "担当者をクリア"
     clear_services: "サービスをクリア"
     refresh: "更新"
-    sync: "同期"
     feed: "フィード"
     do_not_contact_hint: "このお客様には予約確認、変更、リマインダーは送信されません"
     do_not_contact_warning: "このお客様は連絡を希望していません。ここから送信したメッセージは引き続き配信されます。"
@@ -1003,3 +975,25 @@ ja:
     display_order_switch_hint: "予約ページの最初のステップに、サービスから先に選ぶかスタイリストから先に選ぶかを切り替えるボタンをお客様に表示します。"
     about_and_services: "概要とサービスメニュー"
     notes_internal_hint: "社内向けの連絡事項 - スタッフのログインを持つ人に表示されます"
+    booking_notice_confirmed_step: "予約のお知らせ - 確認後"
+    messages_provider_default: "デフォルト"
+    messages_default_provider: "デフォルトの担当者"
+    messages_default_provider_hint: "お客様のページからメッセージを送信するときに、あらかじめ選択されます。デフォルトにできる担当者は1人だけです。"
+    messages_test_setup: "設定のテスト"
+    messages_test_credentials: "認証情報のテスト"
+    messages_test_credentials_ok: "認証情報は正常です。"
+    messages_test_sending: "送信のテスト"
+    messages_test_send: "テストメッセージを送信"
+    messages_test_sent: "テストメッセージを送信しました。届いたか確認してください。"
+    messages_test_email_address: "テスト用メールアドレス"
+    messages_test_failed: "テストに失敗しました。"
+    messages_test_outgoing_ok: "送信は正常に動作しています。"
+    messages_test_outgoing_server: "送信はサーバー経由で行われるため、確認は不要です。"
+    messages_test_outgoing_failed: "送信に失敗しました:"
+    messages_test_incoming_ok: "受信は正常に動作しています。"
+    messages_test_incoming_off: "受信はオフです。"
+    messages_test_incoming_failed: "受信に失敗しました:"
+    messages_provider_quicksms_info: "QuickSMSアカウントと着信用番号でSMSを送受信します。"
+    messages_quicksms_api_key: "APIキー"
+    messages_quicksms_signing_secret: "Webhook署名シークレット"
+    messages_quicksms_signing_secret_hint: "QuickSMSポータルで着信用番号のWebhookを作成したときに表示されるシークレットです。空の場合、受信メッセージはURLトークンのみで受け付けます。"

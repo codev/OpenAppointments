@@ -113,7 +113,7 @@ pt-br:
     language: Idioma
     no_language: Sem idioma
     fields_are_required: "* campos obrigatórios"
-    appointment_confirmation: Confirmar agendamento
+    appointment_confirmation: "Confirme seu agendamento"
     confirm: Confirmar
     update: Atualizar
     cancel_appointment_hint: "Pressione o botão \"Cancelar\" para cancelar o agendamento"
@@ -149,10 +149,6 @@ pt-br:
     users: Usuários
     settings: Definições
     log_out: Sair
-    synchronize: Sincronizar
-    enable_sync: Habilitar sincronização
-    disable_sync: Desabiltar sincronização
-    disable_sync_prompt: Tem certeza de que deseja desativar a sincronização do calendário?
     reload: Atualizar
     appointment: Agenda
     unavailability: Indisponível
@@ -175,7 +171,6 @@ pt-br:
     unavailability_periods_hint: Durante os periodos indisponíveis o fornecedor não aceitar novos agendamentos.
     new_appointment_hint: Criar um novo agendamento e salvar na base de dados.
     reload_appointments_hint: atualizar os agentamentos do calendario.
-    trigger_sync_hint: Disparar o processo de sincronização do Google Calendar.
     appointment_updated: Atualizado com sucesso.
     undo: Desfazer
     appointment_details_changed: Detalhes do agendamento foram alterados.
@@ -362,11 +357,6 @@ pt-br:
     time: Tempo
     hour: Hora
     minute: Minuto
-    calendar_sync_completed: Sincronização com a Google efetuada com sucesso.
-    calendar_sync_failed: 'Falha na sincronização com o Google: não foi possível conectar ao servidor.'
-    select_sync_calendar: Selecione o seu Calendário Google
-    select_sync_calendar_prompt: Selecione o calendário para sincronizar os seus compromissos. Será selecionado o calendario padrão, caso não queira especificar um.
-    sync_calendar_selected: Calendario do google foi selecionado com sucesso.
     oops_something_went_wrong: Ops! Algo deu errado.
     ea_update_success: OpenAppointments foi atualizado com sucesso.
     require_captcha: Requer CAPTCHA
@@ -561,10 +551,6 @@ pt-br:
     default_timezone_hint: Defina o valor padrão do fuso horário que será usado para novos registros.
     default_language: Idioma Padrão
     default_language_hint: Defina o valor padrão do idioma que será usado para novos registros.
-    sync_method_prompt: Qual método de sincronização você gostaria de usar?
-    caldav_server: Servidor CalDAV
-    caldav_connection_info_prompt: Por favor, insira as informações de conexão do Calendário CalDAV de destino.
-    connect: Conectar
     ldap: LDAP
     ldap_info: Esta integração permite conectar-se a um servidor LDAP existente e importar automaticamente usuários para o OpenAppointments, permitindo que eles façam SSO com sua senha do diretório (o nome de usuário deve corresponder).
     host: Host
@@ -585,8 +571,6 @@ pt-br:
     at_least_one_field_required: Pelo menos um campo deve ser definido como obrigatório na página de reserva.
     customer_is_already_booked: Este cliente já tem um compromisso durante o período de reserva solicitado.
     fields: Campos
-    invalid_credentials_provided: Credenciais inválidas fornecidas, por favor, tente novamente.
-    calendar_url: URL do Calendário
     please_select: Por Favor, Selecione
     secret_header: Cabeçalho Secreto
     search: Pesquisar
@@ -606,15 +590,6 @@ pt-br:
     altcha_enabled: Ativar ALTCHA
     generate: Gerar
     meeting_link: Link da reunião
-    google_calendar: Google Agenda
-    google_calendar_info: Ativar a sincronização com o Google Calendar para sincronizar agendamentos com as contas do Google Calendar dos prestadores.
-    google_client_id: ID do Cliente
-    google_client_id_info: O ID do Cliente do seu projeto no Google Cloud Console.
-    google_client_secret: Segredo do Cliente
-    google_client_secret_info: O Segredo do Cliente do seu projeto no Google Cloud Console.
-    google_calendar_setup_info: 'Para ativar a sincronização com o Google Calendar, você precisa criar um projeto no Google Cloud Console, ativar a API do Google Calendar e criar credenciais OAuth 2.0. Visite:'
-    google_meet_link_generation: Gerar Links do Google Meet
-    google_meet_link_generation_info: Criar automaticamente um link de videoconferência Google Meet para agendamentos sincronizados. O link da reunião será armazenado no campo de link de reunião do agendamento.
     display_add_to_google_calendar: Exibir Botão "Adicionar ao Google Calendar"
     display_add_to_google_calendar_info: Mostrar o botão "Adicionar ao Google Calendar" na página de confirmação da reserva, permitindo que os clientes adicionem facilmente o agendamento ao seu Google Calendar pessoal.
     select_all: Selecionar tudo
@@ -705,12 +680,10 @@ pt-br:
     messages_provider_textanywhere_info: Send and receive SMS with a TextAnywhere account.
     messages_incoming: "Receber respostas"
     messages_incoming_hint: "Os clientes podem responder às mensagens que você envia."
-    messages_test_sms_sent: "SMS de teste enviado, verifique o telefone."
     messages_test_sms_number: "Número de telefone de teste"
-    messages_test_sms: "Enviar SMS de teste"
     messages_smsgateway_invalid: "Não foi possível validar as configurações do gateway:"
     messages_smsgateway_inbound_hint: "O telefone entrega as mensagens recebidas a este endereço; o registro é feito automaticamente ao salvar com o recebimento ativado."
-    messages_smsgateway_step_activate: "Marque Ativo e Receber respostas e clique em Salvar. As configurações serão testadas; corrija eventuais erros e use o botão Enviar SMS de teste abaixo para testar o envio."
+    messages_smsgateway_step_activate: "Marque Ativo e Receber respostas e clique em Salvar. As configurações serão testadas; corrija eventuais erros e use Testar configuração abaixo para verificar as credenciais e enviar uma mensagem de teste."
     messages_smsgateway_step_credentials: "Na tela inicial desligue o Local server, ligue o Cloud server e toque no botão Offline para conectar (marque também Start on boot), depois copie o usuário e a senha mostrados na tela inicial para Nome de usuário e Senha abaixo."
     messages_smsgateway_step_signing: "Vá em Settings -> Webhooks -> Signing Key no aplicativo -> informe uma chave de assinatura e copie-a para a Chave de assinatura do webhook abaixo."
     messages_smsgateway_step_token: "Se usar um servidor privado informe também o Private Token nessa tela - o token está em /app/data/private_token no servidor do gateway."
@@ -930,7 +903,7 @@ pt-br:
     fully_booked_notice_default: "Não há agendamentos disponíveis. Tente um serviço ou prestador diferente ou tente novamente mais tarde."
     notices: "Avisos"
     waitlist_enabled: "Lista de espera"
-    waitlist_enabled_hint: "Permite que os clientes se inscrevam para serem avisados quando um horário ficar livre."
+    waitlist_enabled_hint: "Exibido na etapa de data quando não há nada para agendar. Permite que os clientes se inscrevam para serem avisados quando um horário ficar livre."
     waitlist_days: "Dias na lista"
     waitlist_days_hint: "As inscrições são removidas após esse número de dias."
     waitlist_max_notices: "Mensagens de horário liberado por inscrição"
@@ -987,7 +960,6 @@ pt-br:
     clear_providers: "Limpar atendentes"
     clear_services: "Limpar serviços"
     refresh: "Atualizar"
-    sync: "Sincronizar"
     feed: "Feed"
     do_not_contact_hint: "Nenhuma confirmação, alteração ou lembrete de agendamento é enviado a este cliente"
     do_not_contact_warning: "Este cliente pediu para não ser contatado. As mensagens enviadas aqui ainda serão entregues."
@@ -1003,3 +975,25 @@ pt-br:
     display_order_switch_hint: "Permite que os clientes usem um botão na primeira etapa da página de agendamento para escolher primeiro o serviço ou primeiro o atendente, antes de escolher o outro."
     about_and_services: "Sobre e serviços"
     notes_internal_hint: "Observações internas - visíveis para pessoas com login de equipe"
+    booking_notice_confirmed_step: "Aviso de agendamento - Após a confirmação"
+    messages_provider_default: "Padrão"
+    messages_default_provider: "Atendente padrão"
+    messages_default_provider_hint: "Pré-selecionado ao enviar uma mensagem a partir da página de um cliente. Apenas um atendente pode ser o padrão."
+    messages_test_setup: "Testar configuração"
+    messages_test_credentials: "Testar credenciais"
+    messages_test_credentials_ok: "As credenciais funcionam."
+    messages_test_sending: "Testar envio"
+    messages_test_send: "Enviar mensagem de teste"
+    messages_test_sent: "Mensagem de teste enviada, confira se ela chegou."
+    messages_test_email_address: "Endereço de e-mail de teste"
+    messages_test_failed: "O teste falhou."
+    messages_test_outgoing_ok: "O envio funciona."
+    messages_test_outgoing_server: "O envio é feito pelo servidor, não há nada para verificar."
+    messages_test_outgoing_failed: "O envio falhou:"
+    messages_test_incoming_ok: "O recebimento funciona."
+    messages_test_incoming_off: "O recebimento está desativado."
+    messages_test_incoming_failed: "O recebimento falhou:"
+    messages_provider_quicksms_info: "Envie e receba SMS com uma conta QuickSMS e um número de entrada."
+    messages_quicksms_api_key: "Chave de API"
+    messages_quicksms_signing_secret: "Segredo de assinatura do webhook"
+    messages_quicksms_signing_secret_hint: "O segredo exibido quando o webhook do número de entrada é criado no portal da QuickSMS. Se estiver vazio, as mensagens recebidas são aceitas apenas pelo token da URL."

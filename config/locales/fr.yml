@@ -113,7 +113,7 @@ fr:
     language: Langue
     no_language: Pas de langue
     fields_are_required: Les champs avec * sont obligatoires
-    appointment_confirmation: Confirmez votre rendez-vous
+    appointment_confirmation: "Confirmez votre rendez-vous"
     confirm: Confirmation
     update: Mise à jour
     cancel_appointment_hint: "Appuyez sur le bouton « Annuler » pour annuler le rendez-vous"
@@ -149,10 +149,6 @@ fr:
     users: Utilisateurs
     settings: Paramètres
     log_out: Déconnexion
-    synchronize: Synchronisation
-    enable_sync: Activer la synchronisation
-    disable_sync: Désactiver la synchronisation
-    disable_sync_prompt: Êtes-vous sûr de vouloir désactiver la synchronisation du calendrier ?
     reload: Actualiser
     appointment: Rendez-vous
     unavailability: Indisponible
@@ -175,7 +171,6 @@ fr:
     unavailability_periods_hint: Durant les périodes d’indisponibilité l’exécutant n’acceptera pas de nouvelle prestation.
     new_appointment_hint: Créer un nouveau rendez-vous et le stocker dans la base de données.
     reload_appointments_hint: Actualiser le calendrier des rendez-vous.
-    trigger_sync_hint: Démarrer la procédure de synchronisation du calendrier Google.
     appointment_updated: Rendez-vous mis à jour avec succès.
     undo: Annuler
     appointment_details_changed: Les détails du rendez-vous ont bien été modifiés.
@@ -362,11 +357,6 @@ fr:
     time: Heure du RDV
     hour: Heure
     minute: Minute
-    calendar_sync_completed: La synchronisation Google s'est terminée avec succès.
-    calendar_sync_failed: 'La synchronisation Google a échoué : Échec de connexion avec le serveur.'
-    select_sync_calendar: Choisir un calendrier Google
-    select_sync_calendar_prompt: Sélectionnez le calendrier souhaité pour synchroniser votre rendez-vous. Si vous ne sélectionnez pas de calendrier spécifique, le calendrier par défaut sera sélectionné pour vous.
-    sync_calendar_selected: Le calendrier Google a été sélectionné avec succès.
     oops_something_went_wrong: Oups ! Une erreur s’est produite.
     ea_update_success: OpenAppointments à été mis à jour avec succès.
     require_captcha: CAPTCHA obligatoire
@@ -561,10 +551,6 @@ fr:
     default_timezone_hint: Définissez la valeur du fuseau horaire par défaut qui sera utilisée pour les nouveaux enregistrements.
     default_language: Langue par Défaut
     default_language_hint: Définissez la valeur de la langue par défaut qui sera utilisée pour les nouveaux enregistrements.
-    sync_method_prompt: Quelle méthode de synchronisation souhaitez-vous utiliser ?
-    caldav_server: Serveur CalDAV
-    caldav_connection_info_prompt: Veuillez entrer les informations de connexion du calendrier CalDAV cible.
-    connect: Se Connecter
     ldap: LDAP
     ldap_info: Cette intégration vous permet de vous connecter à un serveur LDAP existant et d'importer automatiquement les utilisateurs dans OpenAppointments, tout en leur permettant de se connecter via leur mot de passe de répertoire (le nom d'utilisateur doit correspondre).
     host: Hôte
@@ -585,8 +571,6 @@ fr:
     at_least_one_field_required: Au moins un champ doit être défini comme requis sur la page de réservation.
     customer_is_already_booked: Ce client a déjà un rendez-vous pendant la période de réservation demandée.
     fields: Champs
-    invalid_credentials_provided: Identifiants fournis invalides, veuillez réessayer.
-    calendar_url: URL du Calendrier
     please_select: Veuillez Sélectionner
     secret_header: En-tête secret
     search: Rechercher
@@ -606,15 +590,6 @@ fr:
     altcha_enabled: Activer ALTCHA
     generate: Générer
     meeting_link: Lien de réunion
-    google_calendar: Google Agenda
-    google_calendar_info: Activez la synchronisation Google Calendar pour synchroniser les rendez-vous avec les comptes Google Calendar des prestataires.
-    google_client_id: ID client
-    google_client_id_info: L'ID client de votre projet Google Cloud Console.
-    google_client_secret: Secret client
-    google_client_secret_info: Le secret client de votre projet Google Cloud Console.
-    google_calendar_setup_info: 'Pour activer la synchronisation Google Calendar, vous devez créer un projet dans Google Cloud Console, activer l''API Google Calendar et créer des identifiants OAuth 2.0. Visitez :'
-    google_meet_link_generation: Générer des liens Google Meet
-    google_meet_link_generation_info: Créer automatiquement un lien de visioconférence Google Meet pour les rendez-vous synchronisés. Le lien de réunion sera enregistré dans le champ lien de réunion du rendez-vous.
     display_add_to_google_calendar: Afficher le bouton "Ajouter à Google Calendar"
     display_add_to_google_calendar_info: Afficher le bouton "Ajouter à Google Calendar" sur la page de confirmation de réservation, permettant aux clients d'ajouter facilement leur rendez-vous à leur Google Calendar personnel.
     select_all: Tout sélectionner
@@ -705,12 +680,10 @@ fr:
     messages_provider_textanywhere_info: Send and receive SMS with a TextAnywhere account.
     messages_incoming: "Recevoir les réponses"
     messages_incoming_hint: "Les clients peuvent répondre aux messages que vous envoyez."
-    messages_test_sms_sent: "SMS de test envoyé, vérifiez le téléphone."
     messages_test_sms_number: "Numéro de téléphone de test"
-    messages_test_sms: "Envoyer un SMS de test"
     messages_smsgateway_invalid: "Impossible de valider les réglages de la passerelle :"
     messages_smsgateway_inbound_hint: "Le téléphone remet les messages reçus à cette adresse ; l'enregistrement est géré automatiquement lors de l'enregistrement avec la réception activée."
-    messages_smsgateway_step_activate: "Cochez Actif et Recevoir les réponses, puis Enregistrer. Les paramètres sont testés : corrigez les erreurs éventuelles et utilisez le bouton Envoyer un SMS de test ci-dessous pour tester l'envoi."
+    messages_smsgateway_step_activate: "Cochez Actif et Recevoir les réponses, puis Enregistrer. Les paramètres sont testés : corrigez les erreurs éventuelles et utilisez Tester la configuration ci-dessous pour vérifier les identifiants et envoyer un message de test."
     messages_smsgateway_step_credentials: "Sur l'écran d'accueil, désactivez Local server, activez Cloud server et appuyez sur le bouton Offline pour vous connecter (cochez aussi Start on boot), puis copiez le nom d'utilisateur et le mot de passe affichés dans Nom d'utilisateur et Mot de passe ci-dessous."
     messages_smsgateway_step_signing: "Allez dans Settings -> Webhooks -> Signing Key de l'application -> saisissez une clé de signature puis copiez-la dans la Clé de signature des webhooks ci-dessous."
     messages_smsgateway_step_token: "Si vous utilisez un serveur privé, saisissez aussi le Private Token sur cet écran - le jeton se trouve dans /app/data/private_token sur le serveur de la passerelle."
@@ -930,7 +903,7 @@ fr:
     fully_booked_notice_default: "Aucun rendez-vous n'est disponible. Veuillez essayer une autre prestation ou un autre exécutant, ou réessayer plus tard."
     notices: "Messages"
     waitlist_enabled: "Liste d'attente"
-    waitlist_enabled_hint: "Permettre aux clients de s'inscrire pour être prévenus dès qu'un rendez-vous se libère."
+    waitlist_enabled_hint: "Affiché à l'étape de la date lorsqu'aucune réservation n'est possible. Permettre aux clients de s'inscrire pour être prévenus dès qu'un rendez-vous se libère."
     waitlist_days: "Jours sur la liste"
     waitlist_days_hint: "Les inscriptions sont retirées après ce nombre de jours."
     waitlist_max_notices: "Messages de créneau libéré par inscription"
@@ -987,7 +960,6 @@ fr:
     clear_providers: "Effacer les exécutants"
     clear_services: "Effacer les prestations"
     refresh: "Actualiser"
-    sync: "Synchroniser"
     feed: "Flux"
     do_not_contact_hint: "Aucune confirmation de réservation, modification ou rappel n'est envoyé à ce client"
     do_not_contact_warning: "Ce client a demandé à ne pas être contacté. Les messages envoyés d'ici sont tout de même livrés."
@@ -1003,3 +975,25 @@ fr:
     display_order_switch_hint: "Permet aux clients d'utiliser, à la première étape de la page de réservation, un bouton pour choisir d'abord une prestation ou d'abord un coiffeur, avant de choisir l'autre."
     about_and_services: "À propos et prestations"
     notes_internal_hint: "Commentaires internes - visibles par les personnes disposant d'un accès équipe"
+    booking_notice_confirmed_step: "Avis de réservation - Après la confirmation"
+    messages_provider_default: "Par défaut"
+    messages_default_provider: "Prestataire par défaut"
+    messages_default_provider_hint: "Présélectionné lors de l'envoi d'un message depuis la page d'un client. Un seul prestataire peut être celui par défaut."
+    messages_test_setup: "Tester la configuration"
+    messages_test_credentials: "Tester les identifiants"
+    messages_test_credentials_ok: "Les identifiants fonctionnent."
+    messages_test_sending: "Tester l'envoi"
+    messages_test_send: "Envoyer un message de test"
+    messages_test_sent: "Message de test envoyé, vérifiez qu'il est bien arrivé."
+    messages_test_email_address: "Adresse e-mail de test"
+    messages_test_failed: "Le test a échoué."
+    messages_test_outgoing_ok: "L'envoi fonctionne."
+    messages_test_outgoing_server: "L'envoi passe par le serveur, rien à vérifier."
+    messages_test_outgoing_failed: "L'envoi a échoué :"
+    messages_test_incoming_ok: "La réception fonctionne."
+    messages_test_incoming_off: "La réception est désactivée."
+    messages_test_incoming_failed: "La réception a échoué :"
+    messages_provider_quicksms_info: "Envoyez et recevez des SMS avec un compte QuickSMS et un numéro entrant."
+    messages_quicksms_api_key: "Clé API"
+    messages_quicksms_signing_secret: "Secret de signature du webhook"
+    messages_quicksms_signing_secret_hint: "Le secret affiché lors de la création du webhook du numéro entrant dans le portail QuickSMS. S'il est vide, les messages reçus sont acceptés sur la seule base du jeton de l'URL."

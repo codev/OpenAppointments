@@ -1,0 +1,15 @@
+<%# Locals: prefix (the channel key). The Default switch below Active on every
+    provider page; on, this provider is pre-selected in the customer composer. %>
+<div class="form-check form-switch mb-4">
+    <%= hidden_field_tag "settings[messages_#{prefix}_default]", "0", id: nil %>
+    <%= check_box_tag "settings[messages_#{prefix}_default]", "1", Messaging.default_channel_key == prefix,
+                      id: "#{prefix}-default", class: "form-check-input" %>
+    <label class="form-check-label" for="<%= prefix %>-default">
+        <%= lang('messages_default_provider') %>
+    </label>
+    <div class="form-text text-muted">
+        <small>
+            <%= lang('messages_default_provider_hint') %>
+        </small>
+    </div>
+</div>

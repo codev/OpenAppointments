@@ -1,12 +1,13 @@
 # Public webhook endpoints for incoming SMS. The URL carries the secret inbound
-# token; Twilio requests are additionally signature-checked. Senders are matched
+# token; Twilio, SMS Gateway and QuickSMS requests are additionally
+# signature-checked. Senders are matched
 # to customers by E.164 phone (User.likely_sender when several share it);
 # unmatched messages sit in the Inbox as unknown senders (customer nil).
 # A matched message notifies the customer's stylist.
 class InboundMessagesController < ActionController::Base
   skip_forgery_protection
 
-  CHANNELS = %w[twilio plivo textanywhere smsgateway].freeze
+  CHANNELS = %w[twilio plivo textanywhere smsgateway quicksms].freeze
 
   def receive
     channel = params[:channel].to_s
@@ -16,6 +17,7 @@ class InboundMessagesController < ActionController::Base
     return head :not_found unless adapter.enabled? && adapter.incoming?
     return head :forbidden if channel == "twilio" && !twilio_signature_valid?
     return head :forbidden if channel == "smsgateway" && !sms_gateway_signature_valid?
+    return head :forbidden if channel == "quicksms" && !quicksms_signature_valid?
 
     from, to, body = extract(channel)
     return head :unprocessable_entity if from.blank?
@@ -44,6 +46,15 @@ class InboundMessagesController < ActionController::Base
     )
   end
 
+  # HMAC over "timestamp.body"; required whenever a signing secret is set.
+  def quicksms_signature_valid?
+    return true if Messaging::Quicksms.signing_secret.blank?
+
+    Messaging::Quicksms.valid_signature?(
+      request.headers["X-QuickSMS-Signature"], request.headers["X-QuickSMS-Timestamp"], request.raw_post
+    )
+  end
+
   def twilio_signature_valid?
     Messaging::Twilio.valid_signature?(
       request.headers["X-Twilio-Signature"], request.original_url,
@@ -55,6 +66,7 @@ class InboundMessagesController < ActionController::Base
     case channel
     when "twilio" then [ params[:From].to_s, params[:To].to_s, params[:Body].to_s ]
     when "plivo" then [ params[:From].to_s, params[:To].to_s, params[:Text].to_s ]
+    when "quicksms" then [ e164(params[:from]), e164(params[:to]), params[:content].to_s ]
     when "smsgateway"
       payload = params[:payload] || {}
       [ e164(payload[:sender]), e164(payload[:recipient]), payload[:message].to_s ]

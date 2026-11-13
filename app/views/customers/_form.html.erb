@@ -138,12 +138,14 @@
                 each provider; All is a diagonal stripe of the enabled ones. The
                 chosen key lives in the hidden #message-channel input. %>
             <% stripes = channels.each_with_index.map { |channel, i| "var(--channel-#{channel.key}) #{i * 10}px #{(i + 1) * 10}px" } %>
+            <% default = Messaging.default_channel %>
             <div id="customer-message-composer" class="input-group mb-4"
                  style="--channel-all: repeating-linear-gradient(135deg, <%= stripes.join(', ') %>)">
-                <input type="hidden" id="message-channel" value="">
+                <input type="hidden" id="message-channel" value="<%= default&.key %>">
                 <div class="dropup">
-                    <button type="button" id="message-channel-button" class="btn btn-light dropdown-toggle h-100"
-                            data-bs-toggle="dropdown" aria-expanded="false"><%= lang('select_one') %></button>
+                    <button type="button" id="message-channel-button"
+                            class="btn dropdown-toggle h-100 <%= default ? "channel-#{default.key}" : 'btn-light' %>"
+                            data-bs-toggle="dropdown" aria-expanded="false"><%= default ? default.label : lang('select_one') %></button>
                     <ul class="dropdown-menu">
                         <% channels.each do |channel| %>
                             <li>

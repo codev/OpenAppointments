@@ -113,7 +113,7 @@ et:
     language: Keel
     no_language: Keel puudub
     fields_are_required: "(*) märgitud väljad on kohustuslikud"
-    appointment_confirmation: Kinnita aja broneering
+    appointment_confirmation: "Kinnitage oma aeg"
     confirm: Kinnita
     update: Uuenda
     cancel_appointment_hint: "Broneeringu tühistamiseks vajutage nuppu \"Tühista\""
@@ -149,10 +149,6 @@ et:
     users: Kasutajad
     settings: Seaded
     log_out: Logi välja
-    synchronize: Sünkrooni
-    enable_sync: Luba sünkroniseerimine
-    disable_sync: Eemalda sünkroniseerimine
-    disable_sync_prompt: Oled kalendri sünkroniseerimise lõpetamises kindel?
     reload: Lae uuesti
     appointment: Broneering
     unavailability: Ei ole saadaval
@@ -175,7 +171,6 @@ et:
     unavailability_periods_hint: Teenusepakkuja äraolekujale ei saa broneeringuid teha.
     new_appointment_hint: Loo uus broneering ja salvesta see kalendrisse.
     reload_appointments_hint: Värskenda broneeringute kalendri vaadet.
-    trigger_sync_hint: Sünkroniseeri Google'iga.
     appointment_updated: Broneeringu muutmine õnnestus.
     undo: Võta tagasi
     appointment_details_changed: Broneeringu detailid on muutunud.
@@ -362,11 +357,6 @@ et:
     time: Aeg
     hour: Tund
     minute: Minut
-    calendar_sync_completed: Google'iga sünkroniseerimine õnnestus.
-    calendar_sync_failed: Google'iga sünkroniseerimine ebaõnnestus. Serveriga ei saadud ühendust.
-    select_sync_calendar: Vali Google'i kalender
-    select_sync_calendar_prompt: Vali kalender kuhu broneeringud sünkroniseeristakse. Kui kalendrit ei vali, siis kasutatakse vaikimisi kalendrit.
-    sync_calendar_selected: Google'i kalender valitud.
     oops_something_went_wrong: Ohhhoo! Midagi läks untsu.
     ea_update_success: OpenAppointments uuendus õnnestus.
     require_captcha: Nõua CAPTCHA-t
@@ -561,10 +551,6 @@ et:
     default_timezone_hint: Määrake vaikimisi ajakohand, mida kasutatakse uute rekordite jaoks.
     default_language: Vaikimisi Keel
     default_language_hint: Määrake vaikimisi keel, mida kasutatakse uute rekordite jaoks.
-    sync_method_prompt: Millist sünkroonimismeetodit soovite kasutada?
-    caldav_server: CalDAV server
-    caldav_connection_info_prompt: Palun sisestage sihitud CalDAV kalendri ühenduse info.
-    connect: Ühenda
     ldap: LDAP
     ldap_info: See integratsioon võimaldab teil ühenduda olemasoleva LDAP serveriga ja importida kasutajaid automaatselt OpenAppointments rakendusse ning lasta neil SSO kaudu sisse logida oma kataloogiparooliga (kasutajanimi peab kattuma).
     host: Host
@@ -585,8 +571,6 @@ et:
     at_least_one_field_required: Broneerimislehel peab olema vähemalt üks väli, mis on määratud kohustuslikuks.
     customer_is_already_booked: Kliendil on juba kohtumine soovitud broneerimisperioodi ajal.
     fields: Väljad
-    invalid_credentials_provided: Esitatud andmed on vigased, palun proovige uuesti.
-    calendar_url: Kalendri URL
     please_select: Palun Valige
     secret_header: Salajane päis
     search: Otsi
@@ -606,15 +590,6 @@ et:
     altcha_enabled: Luba ALTCHA
     generate: Genereeri
     meeting_link: Koosoleku link
-    google_calendar: Google kalender
-    google_calendar_info: Luba Google Calendar sünkroniseerimine, et sünkroniseerida kohtumised teenusepakkujate Google Calendar kontodega.
-    google_client_id: Client ID
-    google_client_id_info: Client ID teie Google Cloud Console projektist.
-    google_client_secret: Client Secret
-    google_client_secret_info: Client Secret teie Google Cloud Console projektist.
-    google_calendar_setup_info: 'Google Calendar sünkroniseerimise lubamiseks peate looma projekti Google Cloud Console''is, lubama Google Calendar API ja looma OAuth 2.0 mandaadid. Külastage:'
-    google_meet_link_generation: Genereeri Google Meet lingid
-    google_meet_link_generation_info: Loo automaatselt Google Meet videokonverentsi link sünkroniseeritud kohtumistele. Koosoleku link salvestatakse kohtumise koosoleku lingi väljale.
     display_add_to_google_calendar: Kuva "Add to Google Calendar" nupp
     display_add_to_google_calendar_info: Kuva "Add to Google Calendar" nupp broneeringu kinnituse lehel, et kliendid saaksid hõlpsalt lisada oma kohtumise isiklikku Google Calendar kalendrisse.
     select_all: Vali kõik
@@ -705,12 +680,10 @@ et:
     messages_provider_textanywhere_info: Send and receive SMS with a TextAnywhere account.
     messages_incoming: "Võta vastuseid vastu"
     messages_incoming_hint: "Kliendid saavad vastata teie saadetud sõnumitele."
-    messages_test_sms_sent: "Test-SMS saadetud, kontrollige telefoni."
     messages_test_sms_number: "Testi telefoninumber"
-    messages_test_sms: "Saada test-SMS"
     messages_smsgateway_invalid: "Lüüsi seadeid ei õnnestunud kontrollida:"
     messages_smsgateway_inbound_hint: "Telefon toimetab saabunud sõnumid sellele aadressile, registreerimine toimub salvestamisel automaatselt, kui vastuvõtt on sees."
-    messages_smsgateway_step_activate: "Märkige Active ja Võta vastuseid vastu ning vajutage Save. Seaded testitakse, parandage vead ja kasutage allolevat nuppu Saada test-SMS saatmise testimiseks."
+    messages_smsgateway_step_activate: "Märkige Aktiivne ja Võta vastuseid vastu ning vajutage Salvesta. Seaded testitakse, parandage vead ja kasutage allolevat Testi seadistust, et kontrollida kasutajaandmeid ja saata testsõnum."
     messages_smsgateway_step_credentials: "Avakuval lülitage Local server välja, Cloud server sisse ja vajutage ühendamiseks nuppu Offline (märkige ka Start on boot), seejärel kopeerige avakuval kuvatav kasutajanimi ja parool alla väljadele Kasutajanimi ja Parool."
     messages_smsgateway_step_signing: "Minge rakenduses Settings -> Webhooks -> Signing Key -> sisestage allkirjavõti ja kopeerige see allolevasse Webhooki allkirjavõtmesse."
     messages_smsgateway_step_token: "Privaatserveri korral sisestage samal ekraanil ka Private Token - token asub lüüsi serveris failis /app/data/private_token."
@@ -930,7 +903,7 @@ et:
     fully_booked_notice_default: "Vabu aegu ei ole. Palun proovige teist teenust või teenusepakkujat või proovige hiljem uuesti."
     notices: "Teated"
     waitlist_enabled: "Ootenimekiri"
-    waitlist_enabled_hint: "Lubage klientidel liituda, et neile teatataks, kui aeg vabaneb."
+    waitlist_enabled_hint: "Kuvatakse kuupäevasammul, kui midagi ei saa broneerida. Lubage klientidel liituda, et neile teatataks, kui aeg vabaneb."
     waitlist_days: "Päevi nimekirjas"
     waitlist_days_hint: "Liitumised eemaldatakse pärast seda arvu päevi."
     waitlist_max_notices: "Vabanenud aja teateid liitumise kohta"
@@ -987,7 +960,6 @@ et:
     clear_providers: "Tühjenda teenusepakkujad"
     clear_services: "Tühjenda teenused"
     refresh: "Värskenda"
-    sync: "Sünkrooni"
     feed: "Voog"
     do_not_contact_hint: "Sellele kliendile ei saadeta broneeringu kinnitusi, muudatusi ega meeldetuletusi"
     do_not_contact_warning: "See klient on palunud temaga mitte ühendust võtta. Siia saadetud sõnumid toimetatakse siiski kohale."
@@ -1003,3 +975,25 @@ et:
     display_order_switch_hint: "Lubab klientidel kasutada broneerimislehe esimesel sammul nuppu, millega valida kas enne teenus või enne stilist ja alles seejärel teine."
     about_and_services: "Teave ja teenused"
     notes_internal_hint: "Sisemine lisainfo - nähtav personali sisselogimisega inimestele"
+    booking_notice_confirmed_step: "Broneeringu teadaanne - Pärast kinnitamist"
+    messages_provider_default: "Vaikimisi"
+    messages_default_provider: "Vaikimisi teenusepakkuja"
+    messages_default_provider_hint: "Valitud eelnevalt, kui sõnum saadetakse kliendi lehelt. Vaikimisi võib olla ainult üks teenusepakkuja."
+    messages_test_setup: "Testi seadistust"
+    messages_test_credentials: "Testi kasutajaandmeid"
+    messages_test_credentials_ok: "Kasutajaandmed töötavad."
+    messages_test_sending: "Testi saatmist"
+    messages_test_send: "Saada testsõnum"
+    messages_test_sent: "Testsõnum saadetud, kontrollige, kas see jõudis kohale."
+    messages_test_email_address: "Testi e-posti aadress"
+    messages_test_failed: "Test ebaõnnestus."
+    messages_test_outgoing_ok: "Saatmine töötab."
+    messages_test_outgoing_server: "Saatmine käib serveri kaudu, kontrollida pole midagi."
+    messages_test_outgoing_failed: "Saatmine ebaõnnestus:"
+    messages_test_incoming_ok: "Vastuvõtt töötab."
+    messages_test_incoming_off: "Vastuvõtt on välja lülitatud."
+    messages_test_incoming_failed: "Vastuvõtt ebaõnnestus:"
+    messages_provider_quicksms_info: "Saatke ja võtke vastu SMS-e QuickSMS-i konto ja sissetuleva numbriga."
+    messages_quicksms_api_key: "API võti"
+    messages_quicksms_signing_secret: "Webhooki allkirjasaladus"
+    messages_quicksms_signing_secret_hint: "Saladus, mis kuvatakse sissetuleva numbri webhooki loomisel QuickSMS-i portaalis. Tühjana võetakse vastuvõetud sõnumid vastu ainult URL-i tokeni alusel."
