@@ -119,7 +119,7 @@ en:
     language: Language
     no_language: No language
     fields_are_required: Fields with * are required.
-    appointment_confirmation: Appointment Confirmation
+    appointment_confirmation: Confirm Your Appointment
     confirm: Confirm
     update: Update
     cancel_appointment_hint: Press the "Cancel" button to cancel the appointment
@@ -951,6 +951,7 @@ en:
     booking_notice_time_step: "Booking Notice - Date/Time Step"
     booking_notice_info_step: "Booking Notice - Customer Details Step"
     booking_notice_final_step: "Booking Notice - Confirmation Step"
+    booking_notice_confirmed_step: "Booking Notice - After Confirmation"
     booking_notice_hint: "A notice is shown on its step when it has content."
     waitlist: "Waiting List"
     waitlist_signup_title: "Join the waiting list"

@@ -5,6 +5,8 @@ CloudronManifest.json.
 
 ## 3.2.5
 
+- Notices: a Booking Notice - After Confirmation shows on the page confirming the booking, after the details-sent text
+- Booking: step 5 is headed "Confirm Your Appointment"
 - Booking: the confirmation step notice sits above the Back and Confirm buttons, as on the service and stylist steps
 
 ## 3.2.4

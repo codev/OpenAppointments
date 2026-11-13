@@ -37,9 +37,9 @@ class SplitBookingNoticeTest < ActiveSupport::TestCase
     assert_empty Setting.where(name: OLD)
   end
 
-  test "seeds hold the five notices and none of the old rows" do
+  test "seeds hold the six notices and none of the old rows" do
     seeds = Rails.root.join("db/seeds.rb").read
-    %w[service provider time info final].each { |step| assert_match(/"booking_notice_#{step}_content" => ""/, seeds) }
+    %w[service provider time info final confirmed].each { |step| assert_match(/"booking_notice_#{step}_content" => ""/, seeds) }
     OLD.each { |name| assert_no_match(/"#{name}"/, seeds) }
   end
 end
