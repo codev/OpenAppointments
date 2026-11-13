@@ -521,6 +521,9 @@ class BookingWizardWindowTest < ApplicationSystemTestCase
     fill_in "email", with: "walkin@example.org"
     find("#button-next-4").click
     assert_selector "#wizard-frame-5", visible: :visible, wait: 5
+    # The widget is drawn once the frame has loaded; the stub's callbacks exist
+    # only after that, so wait for its iframe before solving or expiring.
+    assert_selector "#wizard-frame-5 .cf-turnstile iframe", count: 1, wait: 5
   end
 
   test "the Turnstile widget is rendered on the confirmation step before any submit" do
