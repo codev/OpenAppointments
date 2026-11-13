@@ -8,7 +8,8 @@ class LocaleStrings325Test < ActionDispatch::IntegrationTest
             messages_test_credentials_ok messages_test_sending messages_test_send messages_test_sent
             messages_test_email_address messages_test_failed messages_test_outgoing_ok
             messages_test_outgoing_server messages_test_outgoing_failed messages_test_incoming_ok
-            messages_test_incoming_off messages_test_incoming_failed].freeze
+            messages_test_incoming_off messages_test_incoming_failed messages_provider_quicksms_info
+            messages_quicksms_api_key messages_quicksms_signing_secret messages_quicksms_signing_secret_hint].freeze
   # The Google Calendar and CalDAV sync strings went with the integrations.
   DROPPED = %w[synchronize enable_sync disable_sync disable_sync_prompt sync trigger_sync_hint
                calendar_sync_completed calendar_sync_failed select_sync_calendar select_sync_calendar_prompt

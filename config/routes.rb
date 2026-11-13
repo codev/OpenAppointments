@@ -111,14 +111,14 @@ Rails.application.routes.draw do
      altcha_settings embed_settings umami_analytics_settings
      google_analytics_settings matomo_analytics_settings jitsi_settings ldap_settings
      messages_settings messages_email_settings messages_twilio_settings
-     messages_plivo_settings messages_textanywhere_settings
+     messages_plivo_settings messages_textanywhere_settings messages_quicksms_settings
      messages_smsgateway_settings].each do |resource|
     get resource => "#{resource}#index"
     post "#{resource}/save" => "#{resource}#save"
   end
 
   # Test setup on the message provider pages
-  %w[email twilio plivo textanywhere smsgateway].each do |provider|
+  %w[email twilio plivo textanywhere quicksms smsgateway].each do |provider|
     post "messages_#{provider}_settings/test_credentials" => "messages_#{provider}_settings#test_credentials"
     post "messages_#{provider}_settings/test_send" => "messages_#{provider}_settings#test_send"
   end

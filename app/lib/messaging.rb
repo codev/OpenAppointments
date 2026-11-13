@@ -4,7 +4,8 @@ module Messaging
   module_function
 
   def channels
-    [ Messaging::EmailChannel, Messaging::SmsGateway, Messaging::Twilio, Messaging::Plivo, Messaging::Textanywhere ]
+    [ Messaging::EmailChannel, Messaging::SmsGateway, Messaging::Twilio, Messaging::Plivo, Messaging::Textanywhere,
+      Messaging::Quicksms ]
   end
 
   def channel(key)

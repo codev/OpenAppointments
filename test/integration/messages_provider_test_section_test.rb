@@ -8,7 +8,7 @@ require "webmock/minitest"
 class MessagesProviderTestSectionTest < ActionDispatch::IntegrationTest
   include ActionMailer::TestHelper
 
-  PROVIDERS = %w[email smsgateway twilio plivo textanywhere].freeze
+  PROVIDERS = %w[email smsgateway twilio plivo textanywhere quicksms].freeze
   BASE = "https://sms.example.org".freeze
 
   def login_admin

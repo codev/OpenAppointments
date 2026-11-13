@@ -1,4 +1,4 @@
-<%# Locals: title, prefix (twilio|plivo|textanywhere), fields [{name:, label:, type:}],
+<%# Locals: title, prefix (the channel key), fields [{name:, label:, type:, hint:}],
     console_url, console_label. %>
 <div id="messages-<%= prefix %>-settings-page" class="container backend-page py-3">
     <div class="row">
@@ -42,6 +42,9 @@
                                         <%= setting_password field[:name], autocomplete: "off" %>
                                     <% else %>
                                         <%= setting_text field[:name], autocomplete: "off" %>
+                                    <% end %>
+                                    <% if field[:hint] %>
+                                        <div class="form-text text-muted"><small><%= field[:hint] %></small></div>
                                     <% end %>
                                 </div>
                             <% end %>

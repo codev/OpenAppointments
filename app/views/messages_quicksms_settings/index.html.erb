@@ -1,0 +1,11 @@
+<%= render "shared/messages_sms_settings",
+           title: "QuickSMS",
+           prefix: "quicksms",
+           fields: [
+             { name: "messages_quicksms_api_key", label: lang("messages_quicksms_api_key"), type: "password" },
+             { name: "messages_quicksms_from", label: lang("messages_from_name") },
+             { name: "messages_quicksms_signing_secret", label: lang("messages_quicksms_signing_secret"), type: "password",
+               hint: lang("messages_quicksms_signing_secret_hint") }
+           ],
+           console_url: "https://www.quicksms.com/",
+           console_label: "QuickSMS" %>

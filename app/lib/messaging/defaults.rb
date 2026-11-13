@@ -48,7 +48,13 @@ module Messaging
       "messages_textanywhere_default_country_only" => "0",
       "messages_textanywhere_incoming" => "0",
       "messages_textanywhere_api_key" => "",
-      "messages_textanywhere_from" => ""
+      "messages_textanywhere_from" => "",
+      "messages_quicksms_enabled" => "0",
+      "messages_quicksms_default_country_only" => "0",
+      "messages_quicksms_incoming" => "0",
+      "messages_quicksms_api_key" => "",
+      "messages_quicksms_from" => "",
+      "messages_quicksms_signing_secret" => ""
     }.freeze
 
     module_function

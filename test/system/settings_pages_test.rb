@@ -17,7 +17,8 @@ class SettingsPagesTest < ApplicationSystemTestCase
     "messages_smsgateway_settings" => [ "messages-smsgateway-url", "messages_smsgateway_url", "https://g.example.org" ],
     "messages_twilio_settings" => [ "messages-twilio-account-sid", "messages_twilio_account_sid", "AC1" ],
     "messages_plivo_settings" => [ "messages-plivo-auth-id", "messages_plivo_auth_id", "MA1" ],
-    "messages_textanywhere_settings" => [ "messages-textanywhere-from", "messages_textanywhere_from", "OpenOut" ]
+    "messages_textanywhere_settings" => [ "messages-textanywhere-from", "messages_textanywhere_from", "OpenOut" ],
+    "messages_quicksms_settings" => [ "messages-quicksms-from", "messages_quicksms_from", "OpenOut" ]
   }.freeze
 
   SWITCHES = {

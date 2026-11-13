@@ -10,7 +10,7 @@ module SettingsPage
     api_token ldap_password turnstile_secret_key
     messages_email_smtp_password messages_email_imap_password
     messages_twilio_auth_token messages_plivo_auth_token
-    messages_textanywhere_api_key messages_inbound_token
+    messages_textanywhere_api_key messages_quicksms_api_key messages_quicksms_signing_secret messages_inbound_token
     messages_smsgateway_password messages_smsgateway_signing_key
   ].freeze
 

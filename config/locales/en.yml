@@ -695,6 +695,7 @@ en:
     messages_provider_twilio_info: Send and receive SMS with a Twilio account and phone number.
     messages_provider_plivo_info: Send and receive SMS with a Plivo account and phone number.
     messages_provider_textanywhere_info: Send and receive SMS with a TextAnywhere account.
+    messages_provider_quicksms_info: Send and receive SMS with a QuickSMS account and an inbound number.
     messages_incoming: Receive replies
     messages_incoming_hint: Customers can reply to the messages you send.
     messages_test_sms_number: "Test phone number"
@@ -759,6 +760,9 @@ en:
     messages_plivo_auth_id: Auth ID
     messages_plivo_auth_token: Auth token
     messages_textanywhere_api_key: API key
+    messages_quicksms_api_key: API key
+    messages_quicksms_signing_secret: Webhook signing secret
+    messages_quicksms_signing_secret_hint: The secret shown when the inbound number's webhook is created in the QuickSMS portal. Empty, received messages are accepted on the URL token alone.
     messages_from_name: Sender name
     notification_description_hint: Short description so you can remember what this notification does
     notification_event: Event
