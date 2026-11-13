@@ -65,6 +65,8 @@ class ServicesPageTest < ApplicationSystemTestCase
     assert_link "Booking Link", href: /service=#{colour.reload.booking_slug}/, wait: 5
     assert_not_equal old_slug, colour.booking_slug
 
+    # The regenerated form settles in the record frame before it is edited again.
+    assert_selector "#services-page.editing [data-save]", wait: 5
     fill_in "Price", with: "45"
     click_on "Save"
     assert_text "Service saved", wait: 5

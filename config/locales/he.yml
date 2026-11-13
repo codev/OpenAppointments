@@ -997,3 +997,8 @@ he:
     messages_quicksms_api_key: "מפתח API"
     messages_quicksms_signing_secret: "סוד חתימת Webhook"
     messages_quicksms_signing_secret_hint: "הסוד שמוצג בעת יצירת ה-Webhook של המספר הנכנס בפורטל QuickSMS. אם השדה ריק, הודעות שהתקבלו מתקבלות על סמך אסימון ה-URL בלבד."
+    calendar_feed_window: "חלון הפיד"
+    calendar_feed_past_days: "ימים אחורה"
+    calendar_feed_future_days: "ימים קדימה"
+    calendar_feed_window_hint: "פגישות מהמספר הזה של ימים לפני היום ועד המספר הזה של ימים אחריו נכללות בפיד. אפליקציות יומן קולטות שינוי ברענון הבא שלהן."
+    calendar_feed_window_saved: "נשמר"

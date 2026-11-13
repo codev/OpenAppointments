@@ -73,6 +73,38 @@ class CalendarFeedTest < ActionDispatch::IntegrationTest
     assert_response :unauthorized
   end
 
+  test "the feed honours the provider's window" do
+    zane = users(:zane)
+    zane.settings.update!(calendar_feed_token: "b" * 32, sync_past_days: 3, sync_future_days: 5)
+    travel_to(Time.new(2026, 7, 10, 12, 0, 0)) { get "/calendar/feed/#{'b' * 32}.ics" }
+    assert_response :success
+    assert_not_includes response.body, IcsFile.uid_for(appointments(:upcoming).id)
+  end
+
+  test "the link reply carries the window and the window can be changed, clamped to whole days" do
+    login("administrator", "administrator1")
+    post "/calendar/feed_link", params: { provider_id: users(:zane).id }, as: :json
+    assert_equal({ "past_days" => 30, "future_days" => 90 }, response.parsed_body.slice("past_days", "future_days"))
+
+    post "/calendar/feed_window", params: { provider_id: users(:zane).id, past_days: 7, future_days: 365 }, as: :json
+    assert_response :success
+    assert_equal({ "past_days" => 7, "future_days" => 365 }, response.parsed_body)
+    settings = users(:zane).settings.reload
+    assert_equal [ 7, 365 ], [ settings.sync_past_days, settings.sync_future_days ]
+
+    post "/calendar/feed_window", params: { provider_id: users(:zane).id, past_days: -5, future_days: 99999 }, as: :json
+    assert_equal({ "past_days" => 0, "future_days" => 3650 }, response.parsed_body)
+  end
+
+  test "a provider changes their own window but not another provider's" do
+    other = User.create!(name: "Other", email: "other@example.org", role: roles(:provider))
+    login("janedoe", "janedoe1")
+    post "/calendar/feed_window", params: { provider_id: users(:zane).id, past_days: 1, future_days: 2 }, as: :json
+    assert_response :success
+    post "/calendar/feed_window", params: { provider_id: other.id, past_days: 1, future_days: 2 }, as: :json
+    assert_response :forbidden
+  end
+
   test "the calendar page has the feed button, the dialog with the instructions and the script" do
     login("administrator", "administrator1")
     get "/calendar"
@@ -81,7 +113,11 @@ class CalendarFeedTest < ActionDispatch::IntegrationTest
     assert_select "#calendar-feed-modal input#calendar-feed-link[readonly]"
     assert_select "#calendar-feed-modal #calendar-feed-copy"
     assert_select "#calendar-feed-modal #calendar-feed-reset"
-    %w[calendar_feed_hint calendar_feed_google calendar_feed_apple calendar_feed_refresh_note].each do |key|
+    assert_select "#calendar-feed-modal input#calendar-feed-past-days[type=number][min='0'][max='3650']"
+    assert_select "#calendar-feed-modal input#calendar-feed-future-days[type=number][min='0'][max='3650']"
+    assert_select "#calendar-feed-modal #calendar-feed-window-save", text: I18n.t("ea.save")
+    %w[calendar_feed_hint calendar_feed_google calendar_feed_apple calendar_feed_refresh_note calendar_feed_window
+       calendar_feed_past_days calendar_feed_future_days calendar_feed_window_hint].each do |key|
       assert_includes response.body, I18n.t("ea.#{key}")
     end
     assert_match "utils/calendar_feed", response.body
@@ -90,7 +126,8 @@ class CalendarFeedTest < ActionDispatch::IntegrationTest
   test "the calendar feed strings exist in every locale" do
     keys = %w[calendar_feed calendar_feed_hint calendar_feed_link calendar_feed_copy calendar_feed_copied
               calendar_feed_reset calendar_feed_reset_confirm calendar_feed_google calendar_feed_apple
-              calendar_feed_refresh_note]
+              calendar_feed_refresh_note calendar_feed_window calendar_feed_past_days calendar_feed_future_days
+              calendar_feed_window_hint calendar_feed_window_saved]
     I18n.available_locales.each do |locale|
       keys.each do |key|
         assert I18n.t("ea.#{key}", locale: locale, fallback: false, default: nil).present?, "missing ea.#{key} in #{locale}"

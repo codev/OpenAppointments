@@ -997,3 +997,8 @@ zh:
     messages_quicksms_api_key: "API 密钥"
     messages_quicksms_signing_secret: "Webhook 签名密钥"
     messages_quicksms_signing_secret_hint: "在 QuickSMS 门户创建来电号码的 Webhook 时显示的密钥。若留空，收到的消息仅凭 URL 令牌即被接受。"
+    calendar_feed_window: "订阅源范围"
+    calendar_feed_past_days: "向前天数"
+    calendar_feed_future_days: "向后天数"
+    calendar_feed_window_hint: "今天之前和之后各指定天数内的预约都会包含在订阅源中。日历应用会在下次刷新时获取更改。"
+    calendar_feed_window_saved: "已保存"

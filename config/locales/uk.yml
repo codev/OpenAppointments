@@ -997,3 +997,8 @@ uk:
     messages_quicksms_api_key: "Ключ API"
     messages_quicksms_signing_secret: "Секрет підпису вебхука"
     messages_quicksms_signing_secret_hint: "Секрет, показаний під час створення вебхука вхідного номера на порталі QuickSMS. Якщо порожній, отримані повідомлення приймаються лише за токеном в URL."
+    calendar_feed_window: "Період стрічки"
+    calendar_feed_past_days: "Днів назад"
+    calendar_feed_future_days: "Днів уперед"
+    calendar_feed_window_hint: "До стрічки потрапляють записи від указаної кількості днів до сьогодні й до указаної кількості днів після нього. Застосунки календаря підхоплюють зміну під час наступного оновлення."
+    calendar_feed_window_saved: "Збережено"

@@ -997,3 +997,8 @@ de:
     messages_quicksms_api_key: "API-Schlüssel"
     messages_quicksms_signing_secret: "Webhook-Signaturgeheimnis"
     messages_quicksms_signing_secret_hint: "Das Geheimnis, das angezeigt wird, wenn der Webhook der Eingangsnummer im QuickSMS-Portal erstellt wird. Ist es leer, werden empfangene Nachrichten allein anhand des URL-Tokens akzeptiert."
+    calendar_feed_window: "Feed-Zeitraum"
+    calendar_feed_past_days: "Tage zurück"
+    calendar_feed_future_days: "Tage voraus"
+    calendar_feed_window_hint: "Termine von so vielen Tagen vor heute bis so viele Tage danach sind im Feed enthalten. Kalender-Apps übernehmen eine Änderung bei der nächsten Aktualisierung."
+    calendar_feed_window_saved: "Gespeichert"

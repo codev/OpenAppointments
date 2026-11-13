@@ -997,3 +997,8 @@ nl:
     messages_quicksms_api_key: "API-sleutel"
     messages_quicksms_signing_secret: "Webhook-ondertekeningsgeheim"
     messages_quicksms_signing_secret_hint: "Het geheim dat wordt getoond wanneer de webhook van het inkomende nummer in het QuickSMS-portaal wordt aangemaakt. Als dit leeg is, worden ontvangen berichten alleen op basis van het URL-token geaccepteerd."
+    calendar_feed_window: "Feedperiode"
+    calendar_feed_past_days: "Dagen terug"
+    calendar_feed_future_days: "Dagen vooruit"
+    calendar_feed_window_hint: "Afspraken van zoveel dagen vóór vandaag tot zoveel dagen erna staan in de feed. Kalender-apps nemen een wijziging over bij hun volgende vernieuwing."
+    calendar_feed_window_saved: "Opgeslagen"

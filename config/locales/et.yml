@@ -997,3 +997,8 @@ et:
     messages_quicksms_api_key: "API võti"
     messages_quicksms_signing_secret: "Webhooki allkirjasaladus"
     messages_quicksms_signing_secret_hint: "Saladus, mis kuvatakse sissetuleva numbri webhooki loomisel QuickSMS-i portaalis. Tühjana võetakse vastuvõetud sõnumid vastu ainult URL-i tokeni alusel."
+    calendar_feed_window: "Voo ajavahemik"
+    calendar_feed_past_days: "Päeva tagasi"
+    calendar_feed_future_days: "Päeva ette"
+    calendar_feed_window_hint: "Voos on ajad alates nii mitu päeva enne tänast kuni nii mitu päeva pärast seda. Kalendrirakendused võtavad muudatuse üles järgmisel värskendamisel."
+    calendar_feed_window_saved: "Salvestatud"

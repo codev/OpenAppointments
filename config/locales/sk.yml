@@ -997,3 +997,8 @@ sk:
     messages_quicksms_api_key: "Kľúč API"
     messages_quicksms_signing_secret: "Podpisové tajomstvo webhooku"
     messages_quicksms_signing_secret_hint: "Tajomstvo zobrazené pri vytvorení webhooku prichádzajúceho čísla v portáli QuickSMS. Ak je prázdne, prijaté správy sa akceptujú iba na základe tokenu v URL."
+    calendar_feed_window: "Rozsah kanála"
+    calendar_feed_past_days: "Dní späť"
+    calendar_feed_future_days: "Dní dopredu"
+    calendar_feed_window_hint: "V kanáli sú rezervácie od tolkých dní pred dneškom do tolkých dní po ňom. Kalendárové aplikácie zmenu zachytia pri ďalšej aktualizácii."
+    calendar_feed_window_saved: "Uložené"

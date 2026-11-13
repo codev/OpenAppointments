@@ -997,3 +997,8 @@ tr:
     messages_quicksms_api_key: "API anahtarı"
     messages_quicksms_signing_secret: "Webhook imza sırrı"
     messages_quicksms_signing_secret_hint: "QuickSMS portalında gelen numaranın webhook'u oluşturulurken gösterilen sır. Boşsa, alınan mesajlar yalnızca URL'deki belirteçle kabul edilir."
+    calendar_feed_window: "Besleme Aralığı"
+    calendar_feed_past_days: "Geriye gün"
+    calendar_feed_future_days: "İleriye gün"
+    calendar_feed_window_hint: "Bugünden bu kadar gün öncesinden bu kadar gün sonrasına kadar olan randevular beslemede yer alır. Takvim uygulamaları değişikliği bir sonraki yenilemede alır."
+    calendar_feed_window_saved: "Kaydedildi"

@@ -997,3 +997,8 @@ pl:
     messages_quicksms_api_key: "Klucz API"
     messages_quicksms_signing_secret: "Sekret podpisu webhooka"
     messages_quicksms_signing_secret_hint: "Sekret wyświetlany po utworzeniu webhooka numeru przychodzącego w portalu QuickSMS. Jeśli pole jest puste, odebrane wiadomości są akceptowane wyłącznie na podstawie tokenu w adresie URL."
+    calendar_feed_window: "Zakres kanału"
+    calendar_feed_past_days: "Dni wstecz"
+    calendar_feed_future_days: "Dni w przód"
+    calendar_feed_window_hint: "W kanale są wizyty od tylu dni przed dzisiejszym dniem do tylu dni po nim. Aplikacje kalendarza pobierają zmianę przy następnym odświeżeniu."
+    calendar_feed_window_saved: "Zapisano"

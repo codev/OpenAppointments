@@ -997,3 +997,8 @@ sq:
     messages_quicksms_api_key: "Çelësi API"
     messages_quicksms_signing_secret: "Sekreti i nënshkrimit të webhook-ut"
     messages_quicksms_signing_secret_hint: "Sekreti që shfaqet kur krijohet webhook-u i numrit hyrës në portalin QuickSMS. Nëse është bosh, mesazhet e marra pranohen vetëm me tokenin në URL."
+    calendar_feed_window: "Periudha e feed-it"
+    calendar_feed_past_days: "Ditë mbrapa"
+    calendar_feed_future_days: "Ditë përpara"
+    calendar_feed_window_hint: "Në feed përfshihen takimet nga kaq ditë para sot deri në kaq ditë pas. Aplikacionet e kalendarit e marrin ndryshimin në rifreskimin e ardhshëm."
+    calendar_feed_window_saved: "U ruajt"

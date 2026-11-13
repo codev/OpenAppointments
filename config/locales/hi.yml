@@ -997,3 +997,8 @@ hi:
     messages_quicksms_api_key: "API कुंजी"
     messages_quicksms_signing_secret: "वेबहुक हस्ताक्षर गोपनीय कुंजी"
     messages_quicksms_signing_secret_hint: "QuickSMS पोर्टल में इनबाउंड नंबर का वेबहुक बनाते समय दिखाई गई गोपनीय कुंजी। खाली होने पर, प्राप्त संदेश केवल URL टोकन पर स्वीकार किए जाते हैं।"
+    calendar_feed_window: "फ़ीड विंडो"
+    calendar_feed_past_days: "पिछले दिन"
+    calendar_feed_future_days: "आगे के दिन"
+    calendar_feed_window_hint: "आज से इतने दिन पहले से लेकर इतने दिन बाद तक की अपॉइंटमेंट फ़ीड में शामिल हैं। कैलेंडर ऐप अपने अगले रीफ़्रेश पर बदलाव उठा लेते हैं।"
+    calendar_feed_window_saved: "सहेजा गया"

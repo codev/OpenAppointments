@@ -997,3 +997,8 @@ ro:
     messages_quicksms_api_key: "Cheie API"
     messages_quicksms_signing_secret: "Secretul de semnare al webhookului"
     messages_quicksms_signing_secret_hint: "Secretul afișat la crearea webhookului numărului de intrare în portalul QuickSMS. Dacă este gol, mesajele primite sunt acceptate doar pe baza tokenului din URL."
+    calendar_feed_window: "Interval flux"
+    calendar_feed_past_days: "Zile în urmă"
+    calendar_feed_future_days: "Zile înainte"
+    calendar_feed_window_hint: "Întâlnirile de la atâtea zile înainte de azi până la atâtea zile după sunt incluse în flux. Aplicațiile de calendar preiau o modificare la următoarea actualizare."
+    calendar_feed_window_saved: "Salvat"

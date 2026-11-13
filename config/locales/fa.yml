@@ -997,3 +997,8 @@ fa:
     messages_quicksms_api_key: "کلید API"
     messages_quicksms_signing_secret: "رمز امضای وب‌هوک"
     messages_quicksms_signing_secret_hint: "رمزی که هنگام ایجاد وب‌هوک شماره ورودی در پورتال QuickSMS نمایش داده می‌شود. در صورت خالی بودن، پیام‌های دریافتی فقط با توکن موجود در URL پذیرفته می‌شوند."
+    calendar_feed_window: "بازه فید"
+    calendar_feed_past_days: "روزهای گذشته"
+    calendar_feed_future_days: "روزهای آینده"
+    calendar_feed_window_hint: "نوبت‌ها از این تعداد روز قبل از امروز تا این تعداد روز بعد از آن در فید قرار می‌گیرند. برنامه‌های تقویم تغییر را در به‌روزرسانی بعدی خود دریافت می‌کنند."
+    calendar_feed_window_saved: "ذخیره شد"

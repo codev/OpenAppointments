@@ -997,3 +997,8 @@ lv:
     messages_quicksms_api_key: "API atslēga"
     messages_quicksms_signing_secret: "Webhook paraksta noslēpums"
     messages_quicksms_signing_secret_hint: "Noslēpums, kas tiek parādīts, kad QuickSMS portālā tiek izveidots ienākošā numura webhook. Ja tukšs, saņemtās ziņas tiek pieņemtas tikai pēc URL pilnvaras."
+    calendar_feed_window: "Plūsmas logs"
+    calendar_feed_past_days: "Dienas atpakaļ"
+    calendar_feed_future_days: "Dienas uz priekšu"
+    calendar_feed_window_hint: "Plūsmā ir pieraksti no norādītā dienu skaita pirms šodienas līdz norādītajam dienu skaitam pēc šodienas. Kalendāra lietotnes izmaiņas ieraudzīs nākamajā atjaunošanā."
+    calendar_feed_window_saved: "Saglabāts"

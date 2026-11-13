@@ -997,3 +997,8 @@ bs:
     messages_quicksms_api_key: "API ključ"
     messages_quicksms_signing_secret: "Tajna za potpis webhooka"
     messages_quicksms_signing_secret_hint: "Tajna prikazana kada se webhook dolaznog broja kreira u QuickSMS portalu. Ako je prazno, primljene poruke se prihvataju samo na osnovu URL tokena."
+    calendar_feed_window: "Prozor feeda"
+    calendar_feed_past_days: "Dana unazad"
+    calendar_feed_future_days: "Dana unaprijed"
+    calendar_feed_window_hint: "Sastanci od ovoliko dana prije danas do ovoliko dana poslije nalaze se u feedu. Aplikacije za kalendar preuzimaju promjenu pri sljedećem osvježavanju."
+    calendar_feed_window_saved: "Sačuvano"

@@ -997,3 +997,8 @@ cs:
     messages_quicksms_api_key: "Klíč API"
     messages_quicksms_signing_secret: "Podpisové tajemství webhooku"
     messages_quicksms_signing_secret_hint: "Tajemství zobrazené při vytvoření webhooku příchozího čísla v portálu QuickSMS. Pokud je prázdné, přijaté zprávy se přijímají pouze na základě tokenu v URL."
+    calendar_feed_window: "Okno kanálu"
+    calendar_feed_past_days: "Dní zpět"
+    calendar_feed_future_days: "Dní dopředu"
+    calendar_feed_window_hint: "V kanálu jsou schůzky od tolika dní před dneškem do tolika dní po něm. Kalendářové aplikace změnu převezmou při dalším obnovení."
+    calendar_feed_window_saved: "Uloženo"

@@ -997,3 +997,8 @@ el:
     messages_quicksms_api_key: "Κλειδί API"
     messages_quicksms_signing_secret: "Μυστικό υπογραφής webhook"
     messages_quicksms_signing_secret_hint: "Το μυστικό που εμφανίζεται όταν δημιουργείται το webhook του εισερχόμενου αριθμού στην πύλη QuickSMS. Αν είναι κενό, τα εισερχόμενα μηνύματα γίνονται δεκτά μόνο με το διακριτικό του URL."
+    calendar_feed_window: "Παράθυρο ροής"
+    calendar_feed_past_days: "Ημέρες πίσω"
+    calendar_feed_future_days: "Ημέρες μπροστά"
+    calendar_feed_window_hint: "Η ροή περιλαμβάνει ραντεβού από τόσες ημέρες πριν από σήμερα έως τόσες ημέρες μετά. Οι εφαρμογές ημερολογίου εντοπίζουν μια αλλαγή στην επόμενη ανανέωσή τους."
+    calendar_feed_window_saved: "Αποθηκεύτηκε"

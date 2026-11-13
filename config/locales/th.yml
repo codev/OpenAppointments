@@ -997,3 +997,8 @@ th:
     messages_quicksms_api_key: "คีย์ API"
     messages_quicksms_signing_secret: "รหัสลับลงนามเว็บฮุก"
     messages_quicksms_signing_secret_hint: "รหัสลับที่แสดงเมื่อสร้างเว็บฮุกของหมายเลขขาเข้าในพอร์ทัล QuickSMS หากเว้นว่าง ข้อความที่ได้รับจะถูกยอมรับด้วยโทเคนใน URL เท่านั้น"
+    calendar_feed_window: "ช่วงเวลาของฟีด"
+    calendar_feed_past_days: "ย้อนหลัง (วัน)"
+    calendar_feed_future_days: "ล่วงหน้า (วัน)"
+    calendar_feed_window_hint: "การนัดหมายตั้งแต่จำนวนวันก่อนวันนี้ไปจนถึงจำนวนวันหลังวันนี้ที่กำหนดจะอยู่ในฟีด แอปปฏิทินจะรับการเปลี่ยนแปลงในการรีเฟรชครั้งถัดไป"
+    calendar_feed_window_saved: "บันทึกแล้ว"
