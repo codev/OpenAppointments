@@ -2,7 +2,8 @@
  * Feed button on the calendar page: shown when a provider is selected (any
  * provider for editors, only themselves for a provider). Opens the Feed dialog
  * on its Calendar Feed tab with the subscription link from calendar/feed_link;
- * reset makes a new one.
+ * reset makes a new one. The window (days back and ahead) arrives with the link
+ * and saves through calendar/feed_window.
  */
 App.Utils.CalendarFeed = (function () {
     const $filter = () => $('#select-filter-item');
@@ -32,7 +33,31 @@ App.Utils.CalendarFeed = (function () {
         if (reset) {
             data.reset = 1;
         }
-        return $.post(App.Utils.Url.siteUrl('calendar/feed_link'), data).done((response) => $link().val(response.url));
+        return $.post(App.Utils.Url.siteUrl('calendar/feed_link'), data).done((response) => {
+            $link().val(response.url);
+            showWindow(response);
+        });
+    }
+
+    function showWindow(response) {
+        $('#calendar-feed-past-days').val(response.past_days);
+        $('#calendar-feed-future-days').val(response.future_days);
+    }
+
+    // Saves the window and shows the clamped values the server kept.
+    function saveWindow() {
+        const $save = $('#calendar-feed-window-save');
+        const data = {
+            csrf_token: vars('csrf_token'),
+            provider_id: selectedProviderId(),
+            past_days: $('#calendar-feed-past-days').val(),
+            future_days: $('#calendar-feed-future-days').val(),
+        };
+        $.post(App.Utils.Url.siteUrl('calendar/feed_window'), data).done((response) => {
+            showWindow(response);
+            $save.text($save.data('saved'));
+            setTimeout(() => $save.text($save.data('label')), 2000);
+        });
     }
 
     function open() {
@@ -95,6 +120,7 @@ App.Utils.CalendarFeed = (function () {
             .on('hidden.bs.modal', () => (hiding = false));
         $('#calendar-feed-copy').on('click', copy);
         $('#calendar-feed-reset').on('click', reset);
+        $('#calendar-feed-window-save').on('click', saveWindow);
         updateButton();
     }
 

@@ -29,6 +29,23 @@ class CalendarFeedTest < ApplicationSystemTestCase
     assert_match %r{/calendar/feed/[A-Za-z0-9]{32}\.ics\z}, find("#calendar-feed-link").value
   end
 
+  test "the window is shown with the link and saved from the dialog" do
+    users(:zane).settings.update!(sync_past_days: 10, sync_future_days: 20)
+    open_calendar
+    show_only_stylist("Zane")
+    open_feed_dialog
+    assert_field "calendar-feed-past-days", with: "10"
+    assert_field "calendar-feed-future-days", with: "20"
+
+    fill_in "calendar-feed-past-days", with: "7"
+    fill_in "calendar-feed-future-days", with: "9999"
+    click_on I18n.t("ea.save")
+    assert_selector "#calendar-feed-window-save", text: I18n.t("ea.calendar_feed_window_saved"), wait: 5
+    assert_field "calendar-feed-future-days", with: "3650"
+    settings = users(:zane).settings.reload
+    assert_equal [ 7, 3650 ], [ settings.sync_past_days, settings.sync_future_days ]
+  end
+
   private
 
   def open_calendar
