@@ -26,6 +26,7 @@ class MessagesSmsgatewaySettingsController < ApplicationController
     end
 
     merged.each { |name, value| Setting.set(name, value) }
+    apply_default_switch(posted_rows[default_switch_name]) if posted_rows.key?(default_switch_name)
 
     if merged["messages_smsgateway_incoming"] == "1" && active
       begin
@@ -75,9 +76,13 @@ class MessagesSmsgatewaySettingsController < ApplicationController
 
   private
 
+  def posted_rows
+    @posted_rows ||= setting_row_params(:messages_smsgateway_settings).to_h { |row| [ row["name"], row["value"].to_s.strip ] }
+  end
+
   # Posted values (blank password keeps the stored one) over the stored ones.
   def merged_settings
-    rows = setting_row_params(:messages_smsgateway_settings).to_h { |row| [ row["name"], row["value"].to_s.strip ] }
+    rows = posted_rows.dup
     rows.delete("messages_smsgateway_password") if rows["messages_smsgateway_password"].blank?
     SETTING_NAMES.index_with { |name| rows.key?(name) ? rows[name] : Setting.get(name, "") }
   end

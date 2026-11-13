@@ -47,6 +47,8 @@
                                 </label>
                             </div>
 
+                            <%= render "shared/messages_default_switch", prefix: "smsgateway" %>
+
                             <div class="form-check form-switch mb-4">
                                 <%= setting_switch "messages_smsgateway_incoming", id: "smsgateway-incoming" %>
                                 <label class="form-check-label" for="smsgateway-incoming">

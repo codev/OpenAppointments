@@ -3,7 +3,8 @@ require "test_helper"
 # Every locale carries the 3.2.5 strings: the notice shown on the page that
 # confirms a booking, and the step 5 heading reworded as an instruction.
 class LocaleStrings325Test < ActionDispatch::IntegrationTest
-  KEYS = %w[booking_notice_confirmed_step].freeze
+  KEYS = %w[booking_notice_confirmed_step messages_provider_default messages_default_provider
+            messages_default_provider_hint].freeze
   # The Google Calendar and CalDAV sync strings went with the integrations.
   DROPPED = %w[synchronize enable_sync disable_sync disable_sync_prompt sync trigger_sync_hint
                calendar_sync_completed calendar_sync_failed select_sync_calendar select_sync_calendar_prompt

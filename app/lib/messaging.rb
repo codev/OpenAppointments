@@ -23,6 +23,14 @@ module Messaging
     channels.select { |c| c.enabled? && c.incoming? }
   end
 
+  # The provider pre-selected when a message is sent from a customer's page:
+  # the one whose Default switch is on, counted only while it is enabled.
+  def default_channel_key = Setting.get("messages_default_channel").to_s
+
+  def default_channel
+    enabled_channels.find { |c| c.key == default_channel_key }
+  end
+
   # Global choice on Messages > Settings: "1" on, "0" off, "debug" on with every
   # outgoing email and message redirected to the intercept addresses. Off gates
   # automatic notifications only; password resets and manual sends still go.

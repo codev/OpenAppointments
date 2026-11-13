@@ -5,6 +5,7 @@ CloudronManifest.json.
 
 ## 3.2.5
 
+- Messages: a provider can be made the Default on its settings page; it is pre-selected when sending from a customer's page and badged in green on the Providers list
 - Calendar: the Google Calendar and CalDAV sync integrations are removed. The calendar feed stays, and the Add to Google Calendar button on the confirmation page stays with its switch now on Booking settings
 - Notices: a Booking Notice - After Confirmation shows on the page confirming the booking, after the details-sent text
 - Booking: step 5 is headed "Confirm Your Appointment"

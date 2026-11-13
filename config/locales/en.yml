@@ -688,6 +688,9 @@ en:
     messages_provider_disabled: Disabled
     messages_provider_outgoing: Send only
     messages_provider_incoming_outgoing: Send and receive
+    messages_provider_default: Default
+    messages_default_provider: Default provider
+    messages_default_provider_hint: Pre-selected when sending a message from a customer's page. Only one provider can be the default.
     messages_provider_email_info: Send notifications by email through the server or SMTP, and receive replies through the server or IMAP.
     messages_provider_twilio_info: Send and receive SMS with a Twilio account and phone number.
     messages_provider_plivo_info: Send and receive SMS with a Plivo account and phone number.

@@ -19,6 +19,8 @@
                                 </label>
                             </div>
 
+                            <%= render "shared/messages_default_switch", prefix: prefix %>
+
                             <div class="form-check form-switch mb-4">
                                 <%= setting_switch "messages_#{prefix}_incoming", id: "#{prefix}-incoming" %>
                                 <label class="form-check-label" for="<%= prefix %>-incoming">
