@@ -997,3 +997,8 @@ fr:
     messages_quicksms_api_key: "Clé API"
     messages_quicksms_signing_secret: "Secret de signature du webhook"
     messages_quicksms_signing_secret_hint: "Le secret affiché lors de la création du webhook du numéro entrant dans le portail QuickSMS. S'il est vide, les messages reçus sont acceptés sur la seule base du jeton de l'URL."
+    calendar_feed_window: "Fenêtre du flux"
+    calendar_feed_past_days: "Jours en arrière"
+    calendar_feed_future_days: "Jours à venir"
+    calendar_feed_window_hint: "Les rendez-vous allant de ce nombre de jours avant aujourd'hui à ce nombre de jours après figurent dans le flux. Les applications calendrier prennent en compte un changement à leur prochaine actualisation."
+    calendar_feed_window_saved: "Enregistré"

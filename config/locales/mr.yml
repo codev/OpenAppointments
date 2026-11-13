@@ -997,3 +997,8 @@ mr:
     messages_quicksms_api_key: "API की"
     messages_quicksms_signing_secret: "वेबहुक स्वाक्षरी गुपित"
     messages_quicksms_signing_secret_hint: "QuickSMS पोर्टलमध्ये इनबाउंड नंबरचा वेबहुक तयार केल्यावर दाखवलेले गुपित. रिकामे असल्यास, प्राप्त संदेश फक्त URL टोकनवर स्वीकारले जातात."
+    calendar_feed_window: "फीड कालावधी"
+    calendar_feed_past_days: "मागील दिवस"
+    calendar_feed_future_days: "पुढील दिवस"
+    calendar_feed_window_hint: "आजच्या आधीच्या इतक्या दिवसांपासून आजनंतरच्या इतक्या दिवसांपर्यंतच्या अपॉइंटमेंट फीडमध्ये असतात. कॅलेंडर अ‍ॅप्स पुढच्या रिफ्रेशमध्ये बदल घेतात."
+    calendar_feed_window_saved: "सेव्ह झाले"

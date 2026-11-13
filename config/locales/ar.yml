@@ -997,3 +997,8 @@ ar:
     messages_quicksms_api_key: "مفتاح API"
     messages_quicksms_signing_secret: "سر توقيع الويب هوك"
     messages_quicksms_signing_secret_hint: "السر الذي يظهر عند إنشاء الويب هوك للرقم الوارد في بوابة QuickSMS. إذا ترك فارغاً، تقبل الرسائل المستلمة بناء على رمز URL فقط."
+    calendar_feed_window: "نافذة الموجز"
+    calendar_feed_past_days: "الأيام السابقة"
+    calendar_feed_future_days: "الأيام القادمة"
+    calendar_feed_window_hint: "تتضمن الموجز المواعيد من هذا العدد من الأيام قبل اليوم إلى هذا العدد من الأيام بعده. تلتقط تطبيقات التقويم أي تغيير عند التحديث التالي."
+    calendar_feed_window_saved: "تم الحفظ"

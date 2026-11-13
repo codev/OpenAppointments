@@ -997,3 +997,8 @@ sv:
     messages_quicksms_api_key: "API-nyckel"
     messages_quicksms_signing_secret: "Webhook-signeringshemlighet"
     messages_quicksms_signing_secret_hint: "Hemligheten som visas när det inkommande numrets webhook skapas i QuickSMS-portalen. Om tomt accepteras mottagna meddelanden enbart med URL-token."
+    calendar_feed_window: "Flödesperiod"
+    calendar_feed_past_days: "Dagar bakåt"
+    calendar_feed_future_days: "Dagar framåt"
+    calendar_feed_window_hint: "Bokningar från så många dagar före idag till så många dagar efter finns med i flödet. Kalenderappar hämtar en ändring vid nästa uppdatering."
+    calendar_feed_window_saved: "Sparat"

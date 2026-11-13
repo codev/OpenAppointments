@@ -997,3 +997,8 @@ ca:
     messages_quicksms_api_key: "Clau d'API"
     messages_quicksms_signing_secret: "Secret de signatura del webhook"
     messages_quicksms_signing_secret_hint: "El secret que es mostra en crear el webhook del número d'entrada al portal de QuickSMS. Si és buit, els missatges rebuts s'accepten només amb el testimoni de l'URL."
+    calendar_feed_window: "Finestra del feed"
+    calendar_feed_past_days: "Dies enrere"
+    calendar_feed_future_days: "Dies endavant"
+    calendar_feed_window_hint: "Al feed hi ha les cites des d'aquest nombre de dies abans d'avui fins a aquest nombre de dies després. Les aplicacions de calendari recullen un canvi en la propera actualització."
+    calendar_feed_window_saved: "Desat"

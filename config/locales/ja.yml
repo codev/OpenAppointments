@@ -997,3 +997,8 @@ ja:
     messages_quicksms_api_key: "APIキー"
     messages_quicksms_signing_secret: "Webhook署名シークレット"
     messages_quicksms_signing_secret_hint: "QuickSMSポータルで着信用番号のWebhookを作成したときに表示されるシークレットです。空の場合、受信メッセージはURLトークンのみで受け付けます。"
+    calendar_feed_window: "フィードの期間"
+    calendar_feed_past_days: "過去の日数"
+    calendar_feed_future_days: "未来の日数"
+    calendar_feed_window_hint: "今日からこの日数前～この日数後までの予約がフィードに含まれます。変更はカレンダーアプリの次回更新時に反映されます。"
+    calendar_feed_window_saved: "保存しました"

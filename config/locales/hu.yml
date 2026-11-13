@@ -997,3 +997,8 @@ hu:
     messages_quicksms_api_key: "API-kulcs"
     messages_quicksms_signing_secret: "Webhook aláírási titok"
     messages_quicksms_signing_secret_hint: "A QuickSMS portálon a bejövő szám webhookjának létrehozásakor megjelenő titok. Ha üres, a fogadott üzeneteket csak az URL tokenje alapján fogadjuk el."
+    calendar_feed_window: "Folyam időablaka"
+    calendar_feed_past_days: "Napok visszamenőleg"
+    calendar_feed_future_days: "Napok előre"
+    calendar_feed_window_hint: "A folyamban a mai naptól számított ennyi nappal korábbi és ennyi nappal későbbi időpontok szerepelnek. A naptáralkalmazások a változást a következő frissítésükkor veszik át."
+    calendar_feed_window_saved: "Mentve"

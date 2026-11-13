@@ -997,3 +997,8 @@ sl:
     messages_quicksms_api_key: "Ključ API"
     messages_quicksms_signing_secret: "Podpisna skrivnost webhooka"
     messages_quicksms_signing_secret_hint: "Skrivnost, prikazana ob ustvarjanju webhooka dohodne številke v portalu QuickSMS. Če je prazna, se prejeta sporočila sprejmejo samo na podlagi žetona v URL."
+    calendar_feed_window: "Obdobje vira"
+    calendar_feed_past_days: "Dni nazaj"
+    calendar_feed_future_days: "Dni naprej"
+    calendar_feed_window_hint: "V viru so sestanki od toliko dni pred današnjim dnem do toliko dni po njem. Aplikacije za koledar spremembo zaznajo ob naslednji osvežitvi."
+    calendar_feed_window_saved: "Shranjeno"

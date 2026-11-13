@@ -997,3 +997,8 @@ fi:
     messages_quicksms_api_key: "API-avain"
     messages_quicksms_signing_secret: "Webhookin allekirjoitussalaisuus"
     messages_quicksms_signing_secret_hint: "Salaisuus, joka näytetään, kun saapuvan numeron webhook luodaan QuickSMS-portaalissa. Jos kenttä on tyhjä, vastaanotetut viestit hyväksytään pelkän URL-tunnisteen perusteella."
+    calendar_feed_window: "Syötteen aikaväli"
+    calendar_feed_past_days: "Päiviä taaksepäin"
+    calendar_feed_future_days: "Päiviä eteenpäin"
+    calendar_feed_window_hint: "Syötteessä ovat varaukset näin monta päivää ennen tätä päivää ja näin monta päivää sen jälkeen. Kalenterisovellukset poimivat muutoksen seuraavalla päivityksellään."
+    calendar_feed_window_saved: "Tallennettu"

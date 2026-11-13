@@ -997,3 +997,8 @@ bu:
     messages_quicksms_api_key: "API ключ"
     messages_quicksms_signing_secret: "Таен ключ за подпис на webhook"
     messages_quicksms_signing_secret_hint: "Тайният ключ, показан при създаването на webhook за входящия номер в портала на QuickSMS. Ако е празно, получените съобщения се приемат само по URL токена."
+    calendar_feed_window: "Прозорец на фийда"
+    calendar_feed_past_days: "Дни назад"
+    calendar_feed_future_days: "Дни напред"
+    calendar_feed_window_hint: "Във фийда са включени часове от толкова дни преди днес до толкова дни след днес. Приложенията за календар отчитат промяната при следващото си опресняване."
+    calendar_feed_window_saved: "Запазено"

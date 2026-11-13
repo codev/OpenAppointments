@@ -997,3 +997,8 @@ da:
     messages_quicksms_api_key: "API-nøgle"
     messages_quicksms_signing_secret: "Webhook-signaturhemmelighed"
     messages_quicksms_signing_secret_hint: "Hemmeligheden, der vises, når det indgående nummers webhook oprettes i QuickSMS-portalen. Hvis feltet er tomt, accepteres modtagne beskeder kun på URL-tokenet."
+    calendar_feed_window: "Feedvindue"
+    calendar_feed_past_days: "Dage tilbage"
+    calendar_feed_future_days: "Dage frem"
+    calendar_feed_window_hint: "Aftaler fra så mange dage før i dag til så mange dage efter er med i feedet. Kalenderapps henter en ændring ved næste opdatering."
+    calendar_feed_window_saved: "Gemt"

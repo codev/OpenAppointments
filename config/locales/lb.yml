@@ -997,3 +997,8 @@ lb:
     messages_quicksms_api_key: "API-Schlëssel"
     messages_quicksms_signing_secret: "Webhook-Signaturgeheimnis"
     messages_quicksms_signing_secret_hint: "D'Geheimnis, dat ugewise gëtt, wann de Webhook vun der Agangsnummer um QuickSMS-Portal erstallt gëtt. Wann et eidel ass, ginn empfaange Messagen eleng op Basis vum URL-Token akzeptéiert."
+    calendar_feed_window: "Feed-Zäitraum"
+    calendar_feed_past_days: "Deeg zréck"
+    calendar_feed_future_days: "Deeg viraus"
+    calendar_feed_window_hint: "Termäiner vun esou vill Deeg virun haut bis esou vill Deeg duerno sinn am Feed dran. Kalenner-Apps huelen eng Ännerung bei hirem nächsten Aktualiséieren op."
+    calendar_feed_window_saved: "Gespäichert"

@@ -997,3 +997,8 @@ lt:
     messages_quicksms_api_key: "API raktas"
     messages_quicksms_signing_secret: "Webhook parašo slaptažodis"
     messages_quicksms_signing_secret_hint: "Slaptažodis rodomas QuickSMS portale sukūrus gaunamojo numerio webhook. Jei tuščias, gautos žinutės priimamos tik pagal URL raktą."
+    calendar_feed_window: "Srauto langas"
+    calendar_feed_past_days: "Dienų atgal"
+    calendar_feed_future_days: "Dienų į priekį"
+    calendar_feed_window_hint: "Sraute rodomi vizitai nuo nurodyto dienų skaičiaus prieš šiandien iki nurodyto dienų skaičiaus po šiandien. Kalendoriaus programėlės pakeitimą pamato per kitą atnaujinimą."
+    calendar_feed_window_saved: "Išsaugota"
