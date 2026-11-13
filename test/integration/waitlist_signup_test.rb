@@ -1,12 +1,17 @@
 require "test_helper"
 
-# Waiting list signup on the time step, shown while the waitlist is enabled.
+# Waiting list signup on the time step, shown while the waitlist is enabled and
+# nothing in the booking window can be booked for the chosen service and stylist.
 class WaitlistSignupTest < ActionDispatch::IntegrationTest
   include ActiveSupport::Testing::TimeHelpers
+
+  NO_HOURS = { monday: nil, tuesday: nil, wednesday: nil, thursday: nil, friday: nil, saturday: nil, sunday: nil }.to_json
 
   setup do
     Setting.set("waitlist_enabled", "1")
     Setting.set("display_phone_number", "1")
+    @open_hours = users(:zane).settings.working_plan
+    users(:zane).settings.update!(working_plan: NO_HOURS)
     @state = { step: "time", service_id: services(:haircut).id, provider_id: users(:zane).id }
   end
 
@@ -14,7 +19,7 @@ class WaitlistSignupTest < ActionDispatch::IntegrationTest
     post "/booking/waitlist", params: @state.merge(waitlist: { name: "Waiting Person", email: "waiting@example.org", phone: "07700900001" }).deep_merge(extra)
   end
 
-  test "the time step offers the signup only while enabled" do
+  test "the time step offers the signup only while enabled and fully booked" do
     get "/booking", params: @state
     assert_select "#waitlist-form input[name='waitlist[name]']"
     assert_select "#waitlist-form input[name='waitlist[email]']"
@@ -24,6 +29,17 @@ class WaitlistSignupTest < ActionDispatch::IntegrationTest
     Setting.set("waitlist_enabled", "0")
     get "/booking", params: @state
     assert_select "#waitlist-form", 0
+  end
+
+  test "the signup stays hidden while the stylist has free hours" do
+    users(:zane).settings.update!(working_plan: @open_hours)
+    get "/booking", params: @state
+    assert_select "#wizard-frame-3"
+    assert_select "#waitlist", 0
+
+    Setting.set("waitlist_enabled", "0")
+    get "/booking", params: @state
+    assert_select "#waitlist", 0
   end
 
   test "rescheduling never offers the signup and refuses a post made from it" do
@@ -97,6 +113,7 @@ class WaitlistSignupTest < ActionDispatch::IntegrationTest
   test "booking the service takes the customer off the list" do
     entry = WaitlistEntry.create!(name: "W", email: "review@example.org", service: services(:haircut))
     other = WaitlistEntry.create!(name: "W", email: "review@example.org", service: services(:group_session))
+    users(:zane).settings.update!(working_plan: @open_hours)
     travel_to(Time.new(2026, 7, 10, 12, 0, 0)) do
       post "/booking/register", params: {
         form: "1", service_id: services(:haircut).id, provider_id: users(:zane).id, date: "2026-07-20", time: "11:00",
