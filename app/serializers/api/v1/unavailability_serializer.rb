@@ -11,8 +11,7 @@ module Api
         "status" => "status",
         "notes" => "notes",
         "hash" => "booking_hash",
-        "providerId" => "id_users_provider",
-        "googleCalendarId" => "id_google_calendar"
+        "providerId" => "id_users_provider"
       }.freeze
 
       SORT_OVERRIDES = {

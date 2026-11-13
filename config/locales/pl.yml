@@ -149,10 +149,6 @@ pl:
     users: Użytkownicy
     settings: Ustawienia
     log_out: Wyloguj
-    synchronize: Synchronizuj
-    enable_sync: Włącz Synch.
-    disable_sync: Wyłącz Synch.
-    disable_sync_prompt: Czy na pewno chcesz wyłączyć synchronizację kalendarza?
     reload: Odśwież
     appointment: Wizyta
     unavailability: Niedostępne
@@ -175,7 +171,6 @@ pl:
     unavailability_periods_hint: Podczas niedostępnych okresów personel nie akceptuje nowych wizyt.
     new_appointment_hint: Utwórz nową wizytę i przechowaj ją w bazie danych.
     reload_appointments_hint: Przeładuj wizyty kalendarza.
-    trigger_sync_hint: Przełącz proces synchronizacji Kalendarza Google
     appointment_updated: Wizyta zaktualizowana poprawnie.
     undo: Cofnij
     appointment_details_changed: Szczegóły wizyty zostały zmienione.
@@ -362,11 +357,6 @@ pl:
     time: Godzina
     hour: Godzina
     minute: Minuta
-    calendar_sync_completed: Synchronizacja Google pomyślna.
-    calendar_sync_failed: Synchronizacja Google nieudana.
-    select_sync_calendar: Wybierz Kalendarz Google
-    select_sync_calendar_prompt: Wybierz kalendarz do synchronizacji wizyt. Brak wyboru spowoduje użycie kalendarza domyślnego.
-    sync_calendar_selected: Kalendarz Google wybrany pomyślnie.
     oops_something_went_wrong: Ojj! Coś poszło nie tak.
     ea_update_success: OpenAppointments zaktualizowany pomyślnie
     require_captcha: Wymagaj CAPTCHA
@@ -561,10 +551,6 @@ pl:
     default_timezone_hint: Ustaw domyślną wartość strefy czasowej, która będzie używana dla nowych rekordów.
     default_language: Domyślny język
     default_language_hint: Ustaw domyślną wartość języka, która będzie używana dla nowych rekordów.
-    sync_method_prompt: Jaką metodę synchronizacji chciałbyś użyć?
-    caldav_server: Serwer CalDAV
-    caldav_connection_info_prompt: Proszę wprowadzić informacje o połączeniu z docelowym kalendarzem CalDAV.
-    connect: Połącz
     ldap: LDAP
     ldap_info: Ta integracja umożliwia połączenie z istniejącym serwerem LDAP i automatyczne importowanie użytkowników do OpenAppointments oraz umożliwienie im logowania się za pomocą hasła z katalogu (nazwa użytkownika musi się zgadzać).
     host: Host
@@ -585,8 +571,6 @@ pl:
     at_least_one_field_required: Co najmniej jedno pole musi być oznaczone jako wymagane na stronie rezerwacji.
     customer_is_already_booked: Ten klient ma już umówione spotkanie w wybranym okresie rezerwacji.
     fields: Pola
-    invalid_credentials_provided: Podano nieprawidłowe dane logowania, spróbuj ponownie.
-    calendar_url: URL kalendarza
     please_select: Proszę wybrać
     secret_header: Tajny nagłówek
     search: Szukaj
@@ -606,15 +590,6 @@ pl:
     altcha_enabled: Włącz ALTCHA
     generate: Generuj
     meeting_link: Link do spotkania
-    google_calendar: Kalendarz Google
-    google_calendar_info: Włącz synchronizację z Google Calendar, aby synchronizować wizyty z kontami Google Calendar usługodawców.
-    google_client_id: Client ID
-    google_client_id_info: Client ID z Twojego projektu Google Cloud Console.
-    google_client_secret: Client Secret
-    google_client_secret_info: Client Secret z Twojego projektu Google Cloud Console.
-    google_calendar_setup_info: 'Aby włączyć synchronizację z Google Calendar, musisz utworzyć projekt w Google Cloud Console, włączyć Google Calendar API i utworzyć dane uwierzytelniające OAuth 2.0. Odwiedź:'
-    google_meet_link_generation: Generuj linki Google Meet
-    google_meet_link_generation_info: Automatycznie twórz link do wideokonferencji Google Meet dla zsynchronizowanych wizyt. Link do spotkania zostanie zapisany w polu linku spotkania wizyty.
     display_add_to_google_calendar: Wyświetl przycisk "Dodaj do Google Calendar"
     display_add_to_google_calendar_info: Wyświetlaj przycisk "Dodaj do Google Calendar" na stronie potwierdzenia rezerwacji, umożliwiając klientom łatwe dodanie wizyty do ich osobistego Google Calendar.
     select_all: Zaznacz wszystko
@@ -987,7 +962,6 @@ pl:
     clear_providers: "Wyczyść personel"
     clear_services: "Wyczyść zabiegi"
     refresh: "Odśwież"
-    sync: "Synchronizuj"
     feed: "Kanał"
     do_not_contact_hint: "Do tego klienta nie są wysyłane potwierdzenia rezerwacji, zmiany ani przypomnienia"
     do_not_contact_warning: "Ten klient poprosił, aby się z nim nie kontaktować. Wiadomości wysłane tutaj nadal zostaną dostarczone."

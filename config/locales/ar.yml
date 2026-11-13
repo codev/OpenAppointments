@@ -149,10 +149,6 @@ ar:
     users: المستخدمون
     settings: الاعدادات
     log_out: تسجيل الخروج
-    synchronize: المزامنة
-    enable_sync: تمكين المزامنة
-    disable_sync: تعطيل المزامنة
-    disable_sync_prompt: هل أنت متأكد من رغبتك في تعطيل مزامنة التقويم?
     reload: اعادة التحميل
     appointment: الموعد
     unavailability: غير متوفر
@@ -175,7 +171,6 @@ ar:
     unavailability_periods_hint: خلال الفترات الغير متوفرة لن يقبل المزود اي موعد
     new_appointment_hint: انشاء موعد جديد وتخزينه في قاعدة البيانات
     reload_appointments_hint: اعادة تحميل تقويم المواعيد
-    trigger_sync_hint: شغل عملية مزامنة التقويم.
     appointment_updated: تم تحديث الموعد بنجاح.
     undo: تراجع
     appointment_details_changed: تم تعديل تفاصيل الموعد بنجاح
@@ -362,11 +357,6 @@ ar:
     time: الوقت
     hour: الساعة
     minute: الدقيقة
-    calendar_sync_completed: اكتملت مزامنة جوجل بنجاح .
-    calendar_sync_failed: 'فشلت المزامنة مع جوجل: تعذر انشاءالاتصال مع الخادم'
-    select_sync_calendar: اختيار تقويم جوجل
-    select_sync_calendar_prompt: يرجى اختيار التقويم الذي تريد مزامنته مع مواعيدك. اذا لم تريد اختيار اي تقويم سيتم استخدام التقويم الافتراضي.
-    sync_calendar_selected: تم اختيار تقويم جوجل بنجاح
     oops_something_went_wrong: للأسف ! حصل خطأ ما .
     ea_update_success: تم تحديث برنامج الحجوزات بنجاح
     require_captcha: مطلوب CAPTCHA
@@ -561,10 +551,6 @@ ar:
     default_timezone_hint: قم بتعيين قيمة المنطقة الزمنية الافتراضية التي سيتم استخدامها للسجلات الجديدة
     default_language: اللغة الافتراضية
     default_language_hint: تعيين قيمة اللغة الافتراضية التي سيتم استخدامها للسجلات الجديدة
-    sync_method_prompt: ما هي طريقة المزامنة التي ترغب في استخدامها؟
-    caldav_server: خادم CalDAV
-    caldav_connection_info_prompt: الرجاء إدخال معلومات الاتصال الخاصة بتقويم CalDAV الهدف
-    connect: الاتصال
     ldap: LDAP
     ldap_info: يمكّنك هذا التكامل من الاتصال بخادم LDAP موجود واستيراد المستخدمين تلقائيًا إلى OpenAppointments والسماح لهم بإدخال كلمة مرور الدليل الخاصة بهم (يجب أن يتطابق اسم المستخدم)
     host: المضيف
@@ -585,8 +571,6 @@ ar:
     at_least_one_field_required: يجب تعيين حقل واحد على الأقل على أنه مطلوب في صفحة الحجز
     customer_is_already_booked: هذا العميل لديه بالفعل موعد خلال فترة الحجز المطلوبة
     fields: الحقول
-    invalid_credentials_provided: تم تقديم بيانات اعتماد غير صالحة، يرجى المحاولة مرة أخرى
-    calendar_url: عنوان URL للتقويم
     please_select: يرجى الاختيار
     secret_header: الرأس السري
     search: بحث
@@ -606,15 +590,6 @@ ar:
     altcha_enabled: تمكين ALTCHA
     generate: إنشاء
     meeting_link: رابط الاجتماع
-    google_calendar: تقويم جوجل
-    google_calendar_info: تمكين مزامنة Google Calendar لمزامنة المواعيد مع حسابات Google Calendar الخاصة بمقدمي الخدمة.
-    google_client_id: معرّف العميل
-    google_client_id_info: معرّف العميل من مشروع Google Cloud Console الخاص بك.
-    google_client_secret: سر العميل
-    google_client_secret_info: سر العميل من مشروع Google Cloud Console الخاص بك.
-    google_calendar_setup_info: 'لتمكين مزامنة Google Calendar، تحتاج إلى إنشاء مشروع في Google Cloud Console وتمكين Google Calendar API وإنشاء بيانات اعتماد OAuth 2.0. قم بزيارة:'
-    google_meet_link_generation: إنشاء روابط Google Meet
-    google_meet_link_generation_info: إنشاء رابط مؤتمر فيديو Google Meet تلقائياً للمواعيد المتزامنة. سيتم تخزين رابط الاجتماع في حقل رابط اجتماع الموعد.
     display_add_to_google_calendar: عرض زر "إضافة إلى Google Calendar"
     display_add_to_google_calendar_info: عرض زر "إضافة إلى Google Calendar" في صفحة تأكيد الحجز، مما يتيح للعملاء إضافة موعدهم بسهولة إلى تقويم Google Calendar الشخصي.
     select_all: تحديد الكل
@@ -987,7 +962,6 @@ ar:
     clear_providers: "مسح المزودين"
     clear_services: "مسح الخدمات"
     refresh: "تحديث"
-    sync: "مزامنة"
     feed: "التغذية"
     do_not_contact_hint: "لا يتم إرسال تأكيدات الحجز أو التعديلات أو التذكيرات إلى هذا الزبون"
     do_not_contact_warning: "طلب هذا الزبون عدم التواصل معه. الرسائل المرسلة هنا ستظل تصل إليه."

@@ -112,11 +112,9 @@ Under Settings - Embedding - enter the website you want to embed the booking wid
 
 Each provider has a calendar feed: the Calendar Feed button on the calendar page gives a secret subscription link (ICS) to paste into Google Calendar, Apple Calendar or Outlook, with copy and reset. It is one way and carries the service and customer name and a link back here, no contact details. Calendar apps refresh it on their own schedule (Google 8 to 24 hours, Apple hourly), so it is a reference, not a live view.
 
-Each provider can also sync their calendar - outbound sync works for CalDAV and Google Calendar. Google Calendar also supports inbound sync so events created in Google prevent booking those times as unavailable and events that are removed are canceled. Still todo: All-day event support.
-
 ### Minor fixes
 
-Better layout of customer fields; Captcha and Google Calendar first on the Integrations page; per-provider captcha settings sections; Any Provider is the default in the provider dropdown instead of Please Select; Pagination in the admin views; customers page and appointments modal respect the booking field display/require settings; booking form validation messages now display; the install task's admin is redirected to the account page with a banner until the default password is changed
+Better layout of customer fields; Captcha first on the Integrations page; per-provider captcha settings sections; Any Provider is the default in the provider dropdown instead of Please Select; Pagination in the admin views; customers page and appointments modal respect the booking field display/require settings; booking form validation messages now display; the install task's admin is redirected to the account page with a banner until the default password is changed
 
 
 ## Messages
@@ -146,7 +144,6 @@ Admin > Messages manages all notifications:
 Scheduled tasks (driven by the Cloudron scheduler addon in production, see CloudronManifest.json):
 
 ```bash
-bin/rails openappointments:sync       # pull provider Google Calendar changes
 bin/rails openappointments:cleanup    # GDPR retention: purge stale customers + old messages
 bin/rails openappointments:backup     # VACUUM INTO a timestamped SQLite copy
 bin/rails openappointments:reminders  # send due coming-up notifications

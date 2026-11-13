@@ -149,10 +149,6 @@ th:
     users: ผู้ใช้
     settings: การตั้งค่า
     log_out: ออกจากระบบ
-    synchronize: ซิงโครไนซ์
-    enable_sync: เปิดใช้งานการซิงค์
-    disable_sync: ปิดใช้งานการซิงค์
-    disable_sync_prompt: คุณแน่ใจหรือไม่ว่าต้องการปิดใช้งานการซิงโครไนซ์ปฏิทิน
     reload: โหลดซ้ำ
     appointment: การนัดหมาย
     unavailability: ช่วงเวลาที่ไม่ว่าง
@@ -175,7 +171,6 @@ th:
     unavailability_periods_hint: During unavailability periods the provider won\\'t accept new appointments.
     new_appointment_hint: สร้างการนัดหมายใหม่และจัดเก็บไว้ในฐานข้อมูล
     reload_appointments_hint: โหลดการนัดหมายในปฏิทินซ้ำ
-    trigger_sync_hint: เรียกใช้กระบวนการซิงโครไนซ์ปฏิทิน
     appointment_updated: อัปเดตการนัดหมายสำเร็จแล้ว
     undo: เลิกทำ
     appointment_details_changed: รายละเอียดการนัดหมายมีการเปลี่ยนแปลง
@@ -362,11 +357,6 @@ th:
     time: เวลา
     hour: ชั่วโมง
     minute: นาที
-    calendar_sync_completed: ซิงโครไนซ์ปฏิทินเสร็จสมบูรณ์
-    calendar_sync_failed: 'การซิงโครไนซ์ปฏิทินล้มเหลว: ไม่สามารถเชื่อมต่อกับเซิร์ฟเวอร์ได้'
-    select_sync_calendar: เลือกปฏิทิน
-    select_sync_calendar_prompt: เลือกปฏิทินที่คุณต้องการซิงโครไนซ์นัดหมาย
-    sync_calendar_selected: เลือกปฏิทินซิงโครไนซ์เรียบร้อยแล้ว
     oops_something_went_wrong: อ๊ะ! มีบางอย่างผิดพลาด.
     ea_update_success: OpenAppointments อัปเดตเรียบร้อยแล้ว
     require_captcha: ต้องมี CAPTCHA
@@ -561,10 +551,6 @@ th:
     default_timezone_hint: กำหนดค่าพื้นฐานเขตเวลาที่จะใช้สำหรับบันทึกใหม่
     default_language: ภาษาพื้นฐาน
     default_language_hint: กำหนดค่าภาษาเริ่มต้นที่จะใช้สำหรับบันทึกใหม่
-    sync_method_prompt: คุณต้องการใช้วิธีซิงค์แบบใด
-    caldav_server: เซิร์ฟเวอร์ CalDAV
-    caldav_connection_info_prompt: โปรดป้อนข้อมูลการเชื่อมต่อของเซิร์ฟเวอร์ CalDAV เป้าหมาย
-    connect: เชื่อมต่อ
     ldap: LDAP
     ldap_info: การรวมนี้ช่วยให้คุณเชื่อมต่อกับเซิร์ฟเวอร์ LDAP ที่มีอยู่และนำเข้าผู้ใช้ไปยัง OpenAppointments อัตโนมัติ และให้พวกเขาเข้าสู่ระบบด้วยรหัสผ่านไดเร็กทอรีของพวกเขา (ชื่อผู้ใช้ต้องตรงกัน)
     host: โฮสต์
@@ -585,8 +571,6 @@ th:
     at_least_one_field_required: ต้องมีฟิลด์อย่างน้อยหนึ่งฟิลด์ที่ตั้งเป็นฟิลด์ที่จำเป็นในหน้าการจอง
     customer_is_already_booked: ลูกค้ารายนี้มีการนัดหมายแล้วในช่วงเวลาการจองที่ร้องขอ
     fields: ฟิลด์
-    invalid_credentials_provided: ข้อมูลรับรองไม่ถูกต้อง กรุณาลองอีกครั้ง
-    calendar_url: URL ปฏิทิน
     please_select: กรุณาเลือก
     secret_header: ส่วนหัวความลับ
     search: ค้นหา
@@ -606,15 +590,6 @@ th:
     altcha_enabled: เปิดใช้งาน ALTCHA
     generate: สร้าง
     meeting_link: ลิงก์การประชุม
-    google_calendar: Google ปฏิทิน
-    google_calendar_info: เปิดใช้งานการซิงโครไนซ์ Google Calendar เพื่อซิงค์นัดหมายกับบัญชี Google Calendar ของผู้ให้บริการ
-    google_client_id: Client ID
-    google_client_id_info: Client ID จากโปรเจกต์ Google Cloud Console ของคุณ
-    google_client_secret: Client Secret
-    google_client_secret_info: Client Secret จากโปรเจกต์ Google Cloud Console ของคุณ
-    google_calendar_setup_info: 'หากต้องการเปิดใช้งานการซิงค์ Google Calendar คุณต้องสร้างโปรเจกต์ใน Google Cloud Console เปิดใช้งาน Google Calendar API และสร้างข้อมูลรับรอง OAuth 2.0 ไปที่:'
-    google_meet_link_generation: สร้างลิงก์ Google Meet
-    google_meet_link_generation_info: สร้างลิงก์วิดีโอคอนเฟอเรนซ์ Google Meet โดยอัตโนมัติสำหรับนัดหมายที่ซิงค์ ลิงก์การประชุมจะถูกจัดเก็บในฟิลด์ลิงก์การประชุมของนัดหมาย
     display_add_to_google_calendar: แสดงปุ่ม"เพิ่มไปยัง Google Calendar"
     display_add_to_google_calendar_info: แสดงปุ่ม"เพิ่มไปยัง Google Calendar"ในหน้ายืนยันการจอง เพื่อให้ลูกค้าสามารถเพิ่มนัดหมายไปยัง Google Calendar ส่วนตัวได้อย่างง่ายดาย
     select_all: เลือกทั้งหมด
@@ -987,7 +962,6 @@ th:
     clear_providers: "ล้างผู้ให้บริการ"
     clear_services: "ล้างบริการ"
     refresh: "รีเฟรช"
-    sync: "ซิงค์"
     feed: "ฟีด"
     do_not_contact_hint: "จะไม่มีการส่งการยืนยัน การเปลี่ยนแปลง หรือการแจ้งเตือนการนัดหมายถึงลูกค้ารายนี้"
     do_not_contact_warning: "ลูกค้ารายนี้ขอไม่ให้ติดต่อ ข้อความที่ส่งถึงลูกค้ายังคงถูกส่งตามปกติ"

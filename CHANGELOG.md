@@ -5,6 +5,7 @@ CloudronManifest.json.
 
 ## 3.2.5
 
+- Calendar: the Google Calendar and CalDAV sync integrations are removed. The calendar feed stays, and the Add to Google Calendar button on the confirmation page stays with its switch now on Booking settings
 - Notices: a Booking Notice - After Confirmation shows on the page confirming the booking, after the details-sent text
 - Booking: step 5 is headed "Confirm Your Appointment"
 - Messages: once a customer's appointment has happened, their unread messages are marked read; the Inbox is unaffected

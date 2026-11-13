@@ -149,10 +149,6 @@ sq:
     users: Përdoruesit
     settings: Cilësimet
     log_out: Dilni
-    synchronize: Sinkronizo
-    enable_sync: Aktivizo Sinkronizimin
-    disable_sync: Çaktivizo Sinkronizimin
-    disable_sync_prompt: A jeni të sigurt që dëshironi të çaktivizoni sinkronizimin e kalendarit?
     reload: Rifresko
     appointment: Takimi
     unavailability: Pamundësia
@@ -175,7 +171,6 @@ sq:
     unavailability_periods_hint: Gjatë periudhave të pamundësisë, ofruesi nuk do të pranojë takime të reja.
     new_appointment_hint: Krijoni një takim të ri dhe ruajeni atë në bazën e të dhënave.
     reload_appointments_hint: Rifresko takimet në kalendar.
-    trigger_sync_hint: Nxisni procesin e sinkronizimit të kalendarit.
     appointment_updated: Takimi u përditësua me sukses.
     undo: Anulo
     appointment_details_changed: Detajet e takimit kanë ndryshuar
@@ -362,11 +357,6 @@ sq:
     time: Koha
     hour: Ora
     minute: Minuta
-    calendar_sync_completed: Sinkronizimi i kalendarit u përfundua me sukses.
-    calendar_sync_failed: 'Sinkronizimi i kalendarit dështoi: Nuk u mundësua lidhja me serverin.'
-    select_sync_calendar: Zgjidh Kalendarin
-    select_sync_calendar_prompt: Zgjidh kalendarin me të cilin dëshironi të sinkronizoni takimet tuaja.
-    sync_calendar_selected: Kalendar i sinkronizimit u zgjodh me sukses.
     oops_something_went_wrong: Oops! Diçka Shkoi Keq.
     ea_update_success: OpenAppointments u përditësua me sukses.
     require_captcha: Kërko CAPTCHA
@@ -561,10 +551,6 @@ sq:
     default_timezone_hint: Vendosni vlerën e zonës kohore të parazgjedhur që do të përdoret për regjistrimet e reja.
     default_language: Gjuha e Parazgjedhur
     default_language_hint: Vendosni vlerën e gjuhës së parazgjedhur që do të përdoret për regjistrimet e reja.
-    sync_method_prompt: Cilin metodë sinkronizimi dëshironi të përdorni?
-    caldav_server: Serveri CalDAV
-    caldav_connection_info_prompt: Ju lutemi futni informacionin e lidhjes së Kalendarit CalDAV të synuar.
-    connect: Lidhu
     ldap: LDAP
     ldap_info: Ky integrim ju lejon të lidheni me një server ekzistues LDAP dhe të importoni automatikisht përdoruesit në OpenAppointments dhe t'i lejoni ata të identifikohen me fjalëkalimin e tyre të drejtorisë (emri i përdoruesit duhet të përputhet).
     host: Hosti
@@ -585,8 +571,6 @@ sq:
     at_least_one_field_required: Të paktën një fushë duhet të vendoset si e detyrueshme në faqen e rezervimit.
     customer_is_already_booked: Ky klient tashmë ka një takim gjatë periudhës së kërkuar të rezervimit.
     fields: Fushat
-    invalid_credentials_provided: Kredencialet e dhëna janë të pavlefshme, ju lutemi provoni përsëri.
-    calendar_url: URL-ja e Kalendarit
     please_select: Zgjidhni
     secret_header: Header-i Sekret
     search: Kërko
@@ -606,15 +590,6 @@ sq:
     altcha_enabled: Aktivizo ALTCHA
     generate: Gjenero
     meeting_link: Lidhja e Takimit
-    google_calendar: Google Calendar
-    google_calendar_info: Aktivizoni sinkronizimin me Google Calendar për të sinkronizuar takimet me llogaritë Google Calendar të ofruesve.
-    google_client_id: ID e Klientit
-    google_client_id_info: ID e Klientit nga projekti juaj në Google Cloud Console.
-    google_client_secret: Sekreti i Klientit
-    google_client_secret_info: Sekreti i Klientit nga projekti juaj në Google Cloud Console.
-    google_calendar_setup_info: 'Për të aktivizuar sinkronizimin me Google Calendar, duhet të krijoni një projekt në Google Cloud Console, të aktivizoni API-n e Google Calendar dhe të krijoni kredencialet OAuth 2.0. Vizitoni:'
-    google_meet_link_generation: Gjenero Lidhje Google Meet
-    google_meet_link_generation_info: Krijoni automatikisht një lidhje videokonference Google Meet për takimet e sinkronizuara. Lidhja e takimit do të ruhet në fushën e lidhjes së takimit.
     display_add_to_google_calendar: Shfaq Butonin "Shto në Google Calendar"
     display_add_to_google_calendar_info: Shfaqni butonin "Shto në Google Calendar" në faqen e konfirmimit të rezervimit, duke i lejuar klientët të shtojnë lehtësisht takimin në Google Calendar-in e tyre personal.
     select_all: Zgjidh të Gjitha
@@ -987,7 +962,6 @@ sq:
     clear_providers: "Pastro ofruesit"
     clear_services: "Pastro shërbimet"
     refresh: "Rifresko"
-    sync: "Sinkronizo"
     feed: "Rrjedha"
     do_not_contact_hint: "Këtij klienti nuk i dërgohen konfirmime rezervimi, ndryshime ose kujtesa"
     do_not_contact_warning: "Ky klient ka kërkuar të mos kontaktohet. Mesazhet e dërguara këtu dorëzohen prapë."

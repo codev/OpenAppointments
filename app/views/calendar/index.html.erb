@@ -17,15 +17,13 @@
                        items: vars(:available_services).map { |s| [ s["name"], s["id"] ] },
                        checked: vars(:available_services).map { |s| s["id"] },
                        all_label: lang('all_services'), clear_label: lang('clear_services') %>
-            <%# The one stylist in focus, read by sync, the feed and new events:
+            <%# The one stylist in focus, read by the feed and new events:
                 set by pages/calendar.js when exactly one stylist is ticked, else all.
                 A stylist is always in focus on their own calendar. %>
             <select id="select-filter-item" class="d-none" aria-label="Filter">
                 <option value="all"><%= lang('all') %></option>
                 <% vars(:available_providers).each do |provider| %>
                     <option value="<%= provider["id"] %>" type="provider"
-                            google-sync="<%= provider.dig("settings", "google_sync") %>"
-                            caldav-sync="<%= provider.dig("settings", "caldav_sync") %>"
                             <%= "selected" if stylist_login && provider["id"] == session[:user_id] %>>
                         <%= provider["name"] %>
                     </option>
@@ -35,25 +33,6 @@
         </div>
 
         <div id="calendar-actions" class="col-12 col-md-auto ms-md-auto">
-            <div class="btn-group" id="sync-button-group" hidden>
-                <button type="button" class="btn btn-light" id="trigger-sync"
-                        data-tippy-content="<%= lang('trigger_sync_hint') %>">
-                    <i class="fas fa-rotate"></i>
-                    <%= lang('sync') %>
-                </button>
-                <button type="button" class="btn btn-light dropdown-toggle dropdown-toggle-split"
-                        data-bs-toggle="dropdown" aria-expanded="false">
-                    <span class="visually-hidden">Toggle Dropdown</span>
-                </button>
-                <ul class="dropdown-menu dropdown-menu-end">
-                    <li>
-                        <a class="dropdown-item" href="#" id="disable-sync">
-                            <%= lang('disable_sync') %>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-
             <button id="calendar-feed" class="btn btn-light" data-tippy-content="<%= lang('calendar_feed_hint') %>" hidden>
                 <i class="far fa-calendar"></i>
                 <%= lang('feed') %>
@@ -78,7 +57,6 @@
                                "vendor/jquery-jeditable/jquery.jeditable.min" %>
     <%= ea_js "utils/status_filter", "utils/tick_filter", "utils/ui", "components/working_plan_exceptions_modal",
               "utils/calendar_events", "utils/calendar_event_popover",
-              "http/calendar_http_client",
-              "utils/calendar_sync", "http/google_http_client", "http/caldav_http_client", "utils/calendar_feed",
+              "http/calendar_http_client", "utils/calendar_feed",
               "pages/calendar" %>
 <% end %>

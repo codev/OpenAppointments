@@ -149,10 +149,6 @@ zh-tw:
     users: 使用者
     settings: 設定
     log_out: 登出
-    synchronize: 同步
-    enable_sync: 啟用同步
-    disable_sync: 停用同步
-    disable_sync_prompt: 您確定要停用日曆同步嗎？
     reload: 重新載入
     appointment: 預約
     unavailability: 不可用時段
@@ -175,7 +171,6 @@ zh-tw:
     unavailability_periods_hint: 在不可用時段內，提供者將不接受新預約。
     new_appointment_hint: 建立新預約並儲存至資料庫。
     reload_appointments_hint: 重新載入日曆預約。
-    trigger_sync_hint: 觸發日曆同步程序。
     appointment_updated: 預約已成功更新。
     undo: 復原
     appointment_details_changed: 預約詳細資訊已更改。
@@ -362,11 +357,6 @@ zh-tw:
     time: 時間
     hour: 小時
     minute: 分鐘
-    calendar_sync_completed: 日曆同步已成功完成。
-    calendar_sync_failed: 日曆同步失敗：無法建立伺服器連線。
-    select_sync_calendar: 選擇同步日曆
-    select_sync_calendar_prompt: 選擇您要同步預約的日曆。
-    sync_calendar_selected: 同步日曆已成功選擇。
     oops_something_went_wrong: 哎呀！出了點問題。
     ea_update_success: OpenAppointments 已成功更新。
     require_captcha: 需要驗證碼
@@ -561,10 +551,6 @@ zh-tw:
     default_timezone_hint: 設定將用於新記錄的預設時區。
     default_language: 預設語言
     default_language_hint: 設定將用於新記錄的預設語言。
-    sync_method_prompt: 您想使用哪種同步方法？
-    caldav_server: CalDAV 伺服器
-    caldav_connection_info_prompt: 請輸入目標 CalDAV 日曆的連線資訊。
-    connect: 連線
     ldap: LDAP
     ldap_info: 此整合允許您連線到現有的 LDAP 伺服器，並自動將使用者匯入 OpenAppointments，並讓他們使用目錄密碼進行單一登入（使用者名稱必須相符）。
     host: 主機
@@ -585,8 +571,6 @@ zh-tw:
     at_least_one_field_required: 預約頁面上必須至少有一個欄位設為必填。
     customer_is_already_booked: 此顧客在請求的預約時段內已經有預約。
     fields: 欄位
-    invalid_credentials_provided: 提供的憑證無效，請重試。
-    calendar_url: 日曆網址
     please_select: 請選擇
     secret_header: 密鑰標頭
     search: 搜尋
@@ -606,15 +590,6 @@ zh-tw:
     altcha_enabled: 啟用 ALTCHA
     generate: 產生
     meeting_link: 會議連結
-    google_calendar: Google 日曆
-    google_calendar_info: 啟用 Google Calendar 同步，將預約與服務提供者的 Google Calendar 帳戶同步。
-    google_client_id: 用戶端 ID
-    google_client_id_info: 來自您的 Google Cloud Console 專案的用戶端 ID。
-    google_client_secret: 用戶端密鑰
-    google_client_secret_info: 來自您的 Google Cloud Console 專案的用戶端密鑰。
-    google_calendar_setup_info: 要啟用 Google Calendar 同步，您需要在 Google Cloud Console 中建立專案、啟用 Google Calendar API 並建立 OAuth 2.0 憑證。請造訪：
-    google_meet_link_generation: 產生 Google Meet 連結
-    google_meet_link_generation_info: 自動為同步的預約建立 Google Meet 視訊會議連結。會議連結將儲存在預約的會議連結欄位中。
     display_add_to_google_calendar: 顯示"加入 Google Calendar"按鈕
     display_add_to_google_calendar_info: 在預約確認頁面顯示"加入 Google Calendar"按鈕，方便顧客將預約輕鬆加入個人 Google Calendar。
     select_all: 全選
@@ -987,7 +962,6 @@ zh-tw:
     clear_providers: "清除提供者"
     clear_services: "清除服務"
     refresh: "重新整理"
-    sync: "同步"
     feed: "動態來源"
     do_not_contact_hint: "不會向此顧客傳送預約確認、變更或提醒"
     do_not_contact_warning: "此顧客已要求不要聯絡。從這裡傳送的訊息仍會送達。"

@@ -149,10 +149,6 @@ hu:
     users: Felhasználók
     settings: Beállítások
     log_out: Kijelentkezés
-    synchronize: Szinkronizálás
-    enable_sync: Szinkronizálás engedélyezése
-    disable_sync: Szinkronizálás tiltása
-    disable_sync_prompt: Biztosan le szeretné tiltani a naptár-szinkronizálást?
     reload: Frissít
     appointment: Időpont
     unavailability: Nem áll rendelkezésre
@@ -175,7 +171,6 @@ hu:
     unavailability_periods_hint: Az foglalt időpontokban a szolgáltató nem fogad új bejelentkezéseket.
     new_appointment_hint: Új időpont készítése és adatbázisba történő mentése.
     reload_appointments_hint: Az időpontok újra töltése.
-    trigger_sync_hint: Google naptárral való szinkronizálás indítása.
     appointment_updated: Az időpont sikeresen frissítve.
     undo: Visszavonás
     appointment_details_changed: A foglalás részletei megváltoztak.
@@ -362,11 +357,6 @@ hu:
     time: Idő
     hour: Idő
     minute: Perc
-    calendar_sync_completed: A Google szinkronizálás sikerült.
-    calendar_sync_failed: 'A Google szinkronizálás nem sikerült: nem jött létre a kapcsolat a szerverrel.'
-    select_sync_calendar: Válassz Google naptárat.
-    select_sync_calendar_prompt: Válaszd ki az időpontokkal szinkronizálni kívánt naptárat. Amennyiben nem kívánsz naptárat választani úgy az alapértelmezett lesz használva.
-    sync_calendar_selected: A Google naptár sikeresen kiválasztva.
     oops_something_went_wrong: Hoppá! Valami balul sült el.
     ea_update_success: Foglalj időpontot a ...
     require_captcha: CAPTCHA Kötelező
@@ -561,10 +551,6 @@ hu:
     default_timezone_hint: Állítsa be az alapértelmezett időzóna értékét, amelyet az új rekordokhoz használnak.
     default_language: Alapértelmezett Nyelv
     default_language_hint: Állítsa be az alapértelmezett nyelvet, amelyet az új rekordokhoz használnak.
-    sync_method_prompt: Melyik szinkronizálási módszert szeretné használni?
-    caldav_server: CalDAV Szerver
-    caldav_connection_info_prompt: Kérjük, adja meg a cél CalDAV Naptár kapcsolati információit.
-    connect: Csatlakozás
     ldap: LDAP
     ldap_info: Ez az integráció lehetővé teszi egy meglévő LDAP szerverhez való csatlakozást és automatikus felhasználó importálást az OpenAppointments rendszerbe, valamint a felhasználók SSO-t a könyvtári jelszavukkal (a felhasználónévnek egyeznie kell).
     host: Hoszt
@@ -585,8 +571,6 @@ hu:
     at_least_one_field_required: Legalább egy mezőt meg kell adni kötelezőként a foglalási oldalon.
     customer_is_already_booked: Ez az ügyfél már rendelkezik időponttal a kért foglalási időszakban.
     fields: Mezők
-    invalid_credentials_provided: Érvénytelen hitelesítő adatok lettek megadva, kérem próbálja újra.
-    calendar_url: Naptár URL
     please_select: Kérem válasszon
     secret_header: Titkos fejléc
     search: Keresés
@@ -606,15 +590,6 @@ hu:
     altcha_enabled: ALTCHA engedélyezése
     generate: Generálás
     meeting_link: Találkozó linkje
-    google_calendar: Google Naptár
-    google_calendar_info: A Google Calendar szinkronizáció engedélyezése az időpontok szinkronizálásához a szolgáltatók Google Calendar fiókjaival.
-    google_client_id: Ügyfél-azonosító
-    google_client_id_info: Az Ügyfél-azonosító a Google Cloud Console projektjéből.
-    google_client_secret: Ügyféltitek
-    google_client_secret_info: Az Ügyféltitek a Google Cloud Console projektjéből.
-    google_calendar_setup_info: 'A Google Calendar szinkronizáció engedélyezéséhez létre kell hoznia egy projektet a Google Cloud Console-ban, engedélyeznie kell a Google Calendar API-t, és OAuth 2.0 hitelesítő adatokat kell létrehoznia. Látogasson el:'
-    google_meet_link_generation: Google Meet linkek generálása
-    google_meet_link_generation_info: Automatikusan hozzon létre Google Meet videokonferencia linket a szinkronizált időpontokhoz. A találkozó link az időpont találkozó link mezőjében lesz tárolva.
     display_add_to_google_calendar: '"Hozzáadás a Google Calendar-hoz" gomb megjelenítése'
     display_add_to_google_calendar_info: Jelenítse meg a "Hozzáadás a Google Calendar-hoz" gombot a foglalás megerősítő oldalon, lehetővé téve az ügyfeleknek, hogy egyszerűen hozzáadják időpontjukat személyes Google Calendar-jukhoz.
     select_all: Összes kijelölése
@@ -987,7 +962,6 @@ hu:
     clear_providers: "Szolgáltatók törlése"
     clear_services: "Szolgáltatások törlése"
     refresh: "Frissítés"
-    sync: "Szinkronizálás"
     feed: "Hírcsatorna"
     do_not_contact_hint: "Ennek a vendégnek nem küldünk foglalási visszaigazolást, módosítást és emlékeztetőt"
     do_not_contact_warning: "Ez a vendég kérte, hogy ne keressék. Az ide küldött üzenetek továbbra is kézbesítésre kerülnek."

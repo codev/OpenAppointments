@@ -6,7 +6,7 @@ require "test_helper"
 class FormActionsTest < ActionDispatch::IntegrationTest
   SETTINGS_PAGES = %w[
     general_settings business_settings booking_settings legal_settings theme_settings altcha_settings
-    api_settings embed_settings google_analytics_settings google_calendar_settings jitsi_settings
+    api_settings embed_settings google_analytics_settings jitsi_settings
     ldap_settings matomo_analytics_settings umami_analytics_settings messages_settings
     messages_email_settings messages_twilio_settings messages_plivo_settings messages_textanywhere_settings
     messages_smsgateway_settings

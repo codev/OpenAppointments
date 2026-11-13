@@ -149,10 +149,6 @@ he:
     users: משתמשים
     settings: הגדרות
     log_out: יציאה
-    synchronize: סינכרון
-    enable_sync: אפשר סינכרון
-    disable_sync: בטל סינכרון
-    disable_sync_prompt: האם אתה בטוח שברצונך להשבית את סנכרון היומן?
     reload: רענון
     appointment: פגישה
     unavailability: אינו זמין
@@ -175,7 +171,6 @@ he:
     unavailability_periods_hint: במהלך המועדים אשר אינם זמינים הספק לא יקבל פגישות חדשות.
     new_appointment_hint: צור פגישה חדשה ושמור אותה במסד הנתונים.
     reload_appointments_hint: ריענון יומן הפגישות.
-    trigger_sync_hint: הפעלת תהליך הסנכרון של יומן גוגל.
     appointment_updated: הפגישה עודכנה בהצלחה!
     undo: לבטל
     appointment_details_changed: פרטי הפגישה השתנו.
@@ -362,11 +357,6 @@ he:
     time: זמן
     hour: שעה
     minute: דקות
-    calendar_sync_completed: הסנכרון ל גוגל הושלם בהצלחה!
-    calendar_sync_failed: 'הסנכרון ל גוגל נכשל: לא ניתן היה ליצור חיבור שרת.'
-    select_sync_calendar: בחירת יומן גוגל
-    select_sync_calendar_prompt: יש לבחור את יומן שברצונך לסנכרן אליו את הפגישות שלך. אם אינך רוצה לבחור יומן ספציפי, היומן הראשי ישמש את ברירת המחדל.
-    sync_calendar_selected: יומן גוגל נבחר בהצלחה!
     oops_something_went_wrong: אופס! משהו השתבש!
     ea_update_success: OpenAppointments עודכן בהצלחה!
     require_captcha: דרוש CAPTCHA
@@ -561,10 +551,6 @@ he:
     default_timezone_hint: הגדר את ערך אזור הזמן שישמש כברירת מחדל עבור רשומות חדשות.
     default_language: שפת ברירת מחדל
     default_language_hint: הגדר את ערך השפה שישמש כברירת מחדל עבור רשומות חדשות.
-    sync_method_prompt: באיזו שיטת סנכרון תרצה להשתמש?
-    caldav_server: שרת CalDAV
-    caldav_connection_info_prompt: אנא הזן את פרטי החיבור ליומן CalDAV היעד.
-    connect: התחבר
     ldap: LDAP
     ldap_info: אינטגרציה זו מאפשרת לך להתחבר לשרת LDAP קיים ולייבא משתמשים באופן אוטומטי ל-OpenAppointments ולאפשר להם התחברות חד-פעמית עם סיסמת הספרייה שלהם (שם המשתמש חייב להתאים).
     host: שרת
@@ -585,8 +571,6 @@ he:
     at_least_one_field_required: לפחות שדה אחד חייב להיות מוגדר כחובה בדף ההזמנה.
     customer_is_already_booked: ללקוח זה כבר יש תור בתקופת ההזמנה המבוקשת.
     fields: שדות
-    invalid_credentials_provided: פרטי ההתחברות שסופקו שגויים, אנא נסה שנית.
-    calendar_url: כתובת יומן
     please_select: אנא בחר
     secret_header: כותרת סודית
     search: חיפוש
@@ -606,15 +590,6 @@ he:
     altcha_enabled: הפעל ALTCHA
     generate: צור
     meeting_link: קישור לפגישה
-    google_calendar: יומן Google
-    google_calendar_info: הפעל סנכרון Google Calendar לסנכרון תורים עם חשבונות Google Calendar של ספקי שירות.
-    google_client_id: מזהה לקוח
-    google_client_id_info: מזהה הלקוח מפרויקט Google Cloud Console שלך.
-    google_client_secret: סוד לקוח
-    google_client_secret_info: סוד הלקוח מפרויקט Google Cloud Console שלך.
-    google_calendar_setup_info: 'כדי להפעיל סנכרון Google Calendar, עליך ליצור פרויקט ב-Google Cloud Console, להפעיל את Google Calendar API וליצור אישורי OAuth 2.0. בקר ב:'
-    google_meet_link_generation: יצירת קישורי Google Meet
-    google_meet_link_generation_info: צור אוטומטית קישור לשיחת ועידה בווידאו ב-Google Meet עבור תורים מסונכרנים. קישור הפגישה יישמר בשדה קישור הפגישה של התור.
     display_add_to_google_calendar: הצג כפתור "הוסף ל-Google Calendar"
     display_add_to_google_calendar_info: הצג את כפתור "הוסף ל-Google Calendar" בדף אישור ההזמנה, ואפשר ללקוחות להוסיף בקלות את התור ליומן Google Calendar האישי שלהם.
     select_all: בחר הכל
@@ -987,7 +962,6 @@ he:
     clear_providers: "ניקוי ספקים"
     clear_services: "ניקוי שירותים"
     refresh: "רענון"
-    sync: "סנכרון"
     feed: "פיד"
     do_not_contact_hint: "לא נשלחים ללקוח זה אישורי הזמנה, שינויים או תזכורות"
     do_not_contact_warning: "לקוח זה ביקש שלא ליצור עמו קשר. הודעות שנשלחות מכאן עדיין יימסרו."

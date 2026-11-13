@@ -10,7 +10,6 @@ class IntegrationsController < ApplicationController
     backend_page_vars(page_title: helpers.lang("integrations"), active_menu: "system_settings")
     @statuses = {
       captcha: Captcha.for_customers.present? || Captcha.for_login.present?,
-      google_calendar: Setting.get("google_sync_feature") == "1",
       embedding: Setting.get("allow_iframe_embedding") == "1",
       webhooks: Webhook.count,
       umami_analytics: Setting.get("umami_analytics_url").to_s.present? &&

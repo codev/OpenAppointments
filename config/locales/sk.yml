@@ -149,10 +149,6 @@ sk:
     users: Užívatelia
     settings: Nastavenia
     log_out: Odhlasiť sa
-    synchronize: Synchronizovať
-    enable_sync: Povoliť synchronizáciu
-    disable_sync: Zakázať synchronizáciu
-    disable_sync_prompt: Ste si istí, že chcete vypnúť synchronizáciu kalendára?
     reload: Obnoviť
     appointment: Rezervácie
     unavailability: Nedostupné
@@ -175,7 +171,6 @@ sk:
     unavailability_periods_hint: Počas nedostupnosti (otváracia doba) nebudú akceptované nové rezervácie.
     new_appointment_hint: Vytvorte novú rezerváciu a uložte ju do databázy.
     reload_appointments_hint: Obnoviť rezervácie v kalendári.
-    trigger_sync_hint: Trigger proces synchronizácie kalendára Google.
     appointment_updated: Rezervácia úspešne aktualizovaná.
     undo: Odvolať akciu
     appointment_details_changed: Podrobnosti rezervácie boli zmenené
@@ -362,11 +357,6 @@ sk:
     time: Čas
     hour: Hodina
     minute: Minúta
-    calendar_sync_completed: Synchronizácia s Google úspešne dokončená.
-    calendar_sync_failed: 'Synchronizácia Google zlyhala: Nemožno vytvoriť pripojenie k serveru.'
-    select_sync_calendar: Vybrať Google Calendar
-    select_sync_calendar_prompt: Vyberte kalendár, s ktorým chcete synchronizovať svoje stretnutia. Ak si nechcete vybrať konkrétny kalendár bude použitý predvolený.
-    sync_calendar_selected: Kalendár Google bol úspešne zvolený.
     oops_something_went_wrong: Úups! Niečo sa pokazilo.
     ea_update_success: OpenAppointments bolo úspešne aktualizované.
     require_captcha: Vyžadovať CAPTCHA
@@ -561,10 +551,6 @@ sk:
     default_timezone_hint: Nastavte predvolené časové pásmo, ktoré bude použité pre nové záznamy.
     default_language: Predvolený jazyk
     default_language_hint: Nastavte predvolený jazyk, ktorý bude použitý pre nové záznamy.
-    sync_method_prompt: Ktorú metódu synchronizácie by ste chceli použiť?
-    caldav_server: CalDAV Server
-    caldav_connection_info_prompt: Zadajte informačné údaje o pripojení k cieľovému CalDAV kalendáru.
-    connect: Pripojiť
     ldap: LDAP
     ldap_info: Táto integrácia vám umožňuje pripojiť sa k existujúcemu LDAP serveru a automaticky importovať používateľov do OpenAppointments a umožniť im SSO s ich adresárskym heslom (užívateľské meno musí súhlasiť).
     host: Hostiteľ
@@ -585,8 +571,6 @@ sk:
     at_least_one_field_required: Aspoň jedno pole musí byť nastavené ako povinné na stránke rezervácie.
     customer_is_already_booked: Tento zákazník už má naplánovaný termín počas požadovaného obdobia rezervácie.
     fields: Polia
-    invalid_credentials_provided: Poskytnuté údaje sú neplatné, skúste to prosím znova.
-    calendar_url: URL kalendára
     please_select: Vyberte prosím
     secret_header: Tajná hlavička
     search: Hľadať
@@ -606,15 +590,6 @@ sk:
     altcha_enabled: Povoliť ALTCHA
     generate: Generovať
     meeting_link: Odkaz na stretnutie
-    google_calendar: Kalendár Google
-    google_calendar_info: Povoliť synchronizáciu s Google Calendar pre synchronizáciu rezervácií s účtami Google Calendar poskytovateľov.
-    google_client_id: Client ID
-    google_client_id_info: Client ID z vášho projektu Google Cloud Console.
-    google_client_secret: Client Secret
-    google_client_secret_info: Client Secret z vášho projektu Google Cloud Console.
-    google_calendar_setup_info: 'Pre povolenie synchronizácie s Google Calendar musíte vytvoriť projekt v Google Cloud Console, povoliť Google Calendar API a vytvoriť prihlasovacie údaje OAuth 2.0. Navštívte:'
-    google_meet_link_generation: Generovať odkazy Google Meet
-    google_meet_link_generation_info: Automaticky vytvoriť odkaz na videokonferenciu Google Meet pre synchronizované rezervácie. Odkaz na stretnutie bude uložený v poli odkazu na stretnutie rezervácie.
     display_add_to_google_calendar: Zobraziť tlačidlo "Pridať do Google Calendar"
     display_add_to_google_calendar_info: Zobraziť tlačidlo "Pridať do Google Calendar" na stránke potvrdenia rezervácie, ktoré zákazníkom umožní jednoducho pridať rezerváciu do ich osobného Google Calendar.
     select_all: Vybrať všetko
@@ -987,7 +962,6 @@ sk:
     clear_providers: "Vymazať poskytovateľov"
     clear_services: "Vymazať služby"
     refresh: "Obnoviť"
-    sync: "Synchronizácia"
     feed: "Kanál"
     do_not_contact_hint: "Tomuto zákazníkovi sa neposielajú potvrdenia rezervácií, zmeny ani pripomienky"
     do_not_contact_warning: "Tento zákazník požiadal, aby ho nikto nekontaktoval. Správy odoslané sem sa stále doručujú."

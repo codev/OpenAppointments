@@ -149,10 +149,6 @@ ru:
     users: Пользователи
     settings: Настройки
     log_out: Выйти
-    synchronize: Синхронизация
-    enable_sync: Включить синхронизацию
-    disable_sync: Отключить синхронизацию
-    disable_sync_prompt: Вы уверены, что хотите отключить синхронизацию календаря?
     reload: Перегрузить
     appointment: Назначение
     unavailability: Недоступно
@@ -175,7 +171,6 @@ ru:
     unavailability_periods_hint: На протяжении недоступного периода исполнитель не будет принимать новые назначения.
     new_appointment_hint: Создать новое назначение и сохранить его в базе данных.
     reload_appointments_hint: Перезагрузить календарь назначений.
-    trigger_sync_hint: Инициировать процесс синхронизации Google-календаря.
     appointment_updated: Назначение успешно обновлено.
     undo: Вернуть
     appointment_details_changed: Детали назначения изменены.
@@ -362,11 +357,6 @@ ru:
     time: Время
     hour: Часов
     minute: Минут
-    calendar_sync_completed: Google синхронизация выполнена успешно.
-    calendar_sync_failed: 'Google синхронизация не удалась: сервер не доступен.'
-    select_sync_calendar: Выберите Google-календарь
-    select_sync_calendar_prompt: Выберите календарь который вы хотите синхронизировать с вашими назначениями. Если вы не выберите будет использован ваш Google-календарь по умолчанию.
-    sync_calendar_selected: Google-календарь был успешно выбран.
     oops_something_went_wrong: Сорри! Возникла неопределённая ошибка.
     ea_update_success: Готово! Успешно обновлено.
     require_captcha: Требуется CAPTCHA
@@ -561,10 +551,6 @@ ru:
     default_timezone_hint: Установите значение часового пояса по умолчанию, которое будет использоваться для новых записей.
     default_language: Язык по Умолчанию
     default_language_hint: Установите значение языка по умолчанию, которое будет использоваться для новых записей.
-    sync_method_prompt: Какой метод синхронизации вы хотели бы использовать?
-    caldav_server: Сервер CalDAV
-    caldav_connection_info_prompt: Пожалуйста, введите информацию о подключении к целевому календарю CalDAV.
-    connect: Подключить
     ldap: LDAP
     ldap_info: Эта интеграция позволяет вам подключиться к существующему серверу LDAP и автоматически импортировать пользователей в OpenAppointments и предоставить им возможность входа через SSO с их паролем из каталога (имя пользователя должно совпадать).
     host: Хост
@@ -585,8 +571,6 @@ ru:
     at_least_one_field_required: Хотя бы одно поле должно быть установлено как обязательное на странице бронирования.
     customer_is_already_booked: Этот клиент уже имеет запись на время, запрашиваемое для бронирования.
     fields: Поля
-    invalid_credentials_provided: Предоставлены неверные учетные данные, пожалуйста, попробуйте снова.
-    calendar_url: URL Календаря
     please_select: Пожалуйста, выберите
     secret_header: Секретный заголовок
     search: Поиск
@@ -606,15 +590,6 @@ ru:
     altcha_enabled: Включить ALTCHA
     generate: Сгенерировать
     meeting_link: Ссылка на встречу
-    google_calendar: Google Календарь
-    google_calendar_info: Включите синхронизацию с Google Calendar для синхронизации записей с аккаунтами Google Calendar специалистов.
-    google_client_id: Client ID
-    google_client_id_info: Client ID из вашего проекта Google Cloud Console.
-    google_client_secret: Client Secret
-    google_client_secret_info: Client Secret из вашего проекта Google Cloud Console.
-    google_calendar_setup_info: 'Для включения синхронизации с Google Calendar необходимо создать проект в Google Cloud Console, включить Google Calendar API и создать учётные данные OAuth 2.0. Перейдите по ссылке:'
-    google_meet_link_generation: Генерация ссылок Google Meet
-    google_meet_link_generation_info: Автоматически создавать ссылку на видеоконференцию Google Meet для синхронизированных записей. Ссылка на встречу будет сохранена в поле ссылки на встречу записи.
     display_add_to_google_calendar: Показать кнопку "Добавить в Google Calendar"
     display_add_to_google_calendar_info: Показывать кнопку "Добавить в Google Calendar" на странице подтверждения бронирования, позволяя клиентам легко добавить запись в свой личный Google Calendar.
     select_all: Выбрать все
@@ -987,7 +962,6 @@ ru:
     clear_providers: "Очистить специалистов"
     clear_services: "Очистить услуги"
     refresh: "Обновить"
-    sync: "Синхронизация"
     feed: "Лента"
     do_not_contact_hint: "Этому клиенту не отправляются подтверждения записи, изменения и напоминания"
     do_not_contact_warning: "Этот клиент просил не связываться с ним. Отправленные сюда сообщения всё равно доставляются."

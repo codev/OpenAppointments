@@ -13,7 +13,6 @@ module Api
         customer = record.customer
         record.destroy!
 
-        Synchronization.appointment_deleted(record, provider)
         Notifications.appointment_deleted(record, service, provider, customer, notification_settings)
         Webhooks.trigger(Webhooks::APPOINTMENT_DELETE, record)
         head :no_content
@@ -62,7 +61,6 @@ module Api
         customer = appointment.customer
         settings = notification_settings
 
-        Synchronization.appointment_saved(appointment, service, provider, customer, settings)
         Notifications.appointment_saved(appointment, service, provider, customer, settings,
                                         manage_mode: manage_mode, previous_status_id: previous_status_id)
         Webhooks.trigger(Webhooks::APPOINTMENT_SAVE, appointment)

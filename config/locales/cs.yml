@@ -149,10 +149,6 @@ cs:
     users: Uživatelé
     settings: Nastavení
     log_out: Odhlášení
-    synchronize: Synchronizace
-    enable_sync: Povolit synchronizaci
-    disable_sync: Zakázat synchronizaci
-    disable_sync_prompt: Opravdu chcete vypnout synchronizaci s kalendářem?
     reload: Obnovit
     appointment: Schůzka
     unavailability: Nedostupnost
@@ -175,7 +171,6 @@ cs:
     unavailability_periods_hint: V době, kdy není poskytovatel dostupný, nelze rezervovat nové schůzky.
     new_appointment_hint: Vytvoření nové schůzky a uložení do databáze.
     reload_appointments_hint: Obnovit zobrazení schůzek v kalendáři.
-    trigger_sync_hint: Zahájit proces synchronizace s Kalendářem Google.
     appointment_updated: Provedené změny schůzky byly úspěšně uloženy.
     undo: Zpět
     appointment_details_changed: Informace o schůzce byly změněny.
@@ -362,11 +357,6 @@ cs:
     time: Čas
     hour: Hodina
     minute: Minuta
-    calendar_sync_completed: Synchronizace s Google byla úspěšně dokončena.
-    calendar_sync_failed: 'Synchronizace s Google selhala: nepodařilo se navázat spojení se serverem.'
-    select_sync_calendar: Vyberte Kalendář Google
-    select_sync_calendar_prompt: Výberte kalendář, do kterého chcete synchronizovat vaše schůzky. Jestliže nechcete vybrat konkrétní kalendář, bude použit výchozí.
-    sync_calendar_selected: Kalendář Google byl úspěšně vybrán.
     oops_something_went_wrong: Oops! Něco se pokazilo.
     ea_update_success: Aplikace OpenAppointments byla úspěšně aktualizována.
     require_captcha: Vyžadovat CAPTCHA
@@ -561,10 +551,6 @@ cs:
     default_timezone_hint: Zvolte výchozí časovou zónu pro použití v nových záznamech.
     default_language: Výchozí jazyk
     default_language_hint: Zvolte výchozí jazyk pro použití v nových záznamech.
-    sync_method_prompt: Jakou synchronizační metodu chcete používat?
-    caldav_server: CalDAV server
-    caldav_connection_info_prompt: Vložte prosím připojovací údaje pro cílový CalDAV kalendář.
-    connect: Připojit
     ldap: LDAP
     ldap_info: Tato integrace umožňuje připojovat se k existujícímu LDAP serveru, automaticky importovat uživatele do OpenAppointments a poskytuje možnost přihlašovat se přes SSO pomocí jednotného hesla (uživatelské jméno musí odpovídat).
     host: Hostitel
@@ -585,8 +571,6 @@ cs:
     at_least_one_field_required: Alespoň jedno pole musí být na rezervační stránce nastaveno jako povinné.
     customer_is_already_booked: Tento zákazník již má v požadovaném termínu rezervovánu schůzku.
     fields: Pole
-    invalid_credentials_provided: Neplatné přihlašovací údaje, zkuste to prosím znovu.
-    calendar_url: URL kalendáře
     please_select: Zvolte prosím
     secret_header: Tajná hlavička
     search: Hledat
@@ -606,15 +590,6 @@ cs:
     altcha_enabled: Povolit ALTCHA
     generate: Generovat
     meeting_link: Odkaz na schůzku
-    google_calendar: Kalendář Google
-    google_calendar_info: Povolit synchronizaci s Google Calendar pro synchronizaci rezervací s účty Google Calendar poskytovatelů.
-    google_client_id: Client ID
-    google_client_id_info: Client ID z vašeho projektu Google Cloud Console.
-    google_client_secret: Client Secret
-    google_client_secret_info: Client Secret z vašeho projektu Google Cloud Console.
-    google_calendar_setup_info: 'Pro povolení synchronizace s Google Calendar musíte vytvořit projekt v Google Cloud Console, povolit Google Calendar API a vytvořit přihlašovací údaje OAuth 2.0. Navštivte:'
-    google_meet_link_generation: Generovat odkazy Google Meet
-    google_meet_link_generation_info: Automaticky vytvořit odkaz na videokonferenci Google Meet pro synchronizované rezervace. Odkaz na schůzku bude uložen v poli odkazu na schůzku rezervace.
     display_add_to_google_calendar: Zobrazit tlačítko "Přidat do Google Calendar"
     display_add_to_google_calendar_info: Zobrazit tlačítko "Přidat do Google Calendar" na stránce potvrzení rezervace, které zákazníkům umožní snadno přidat rezervaci do svého osobního Google Calendar.
     select_all: Vybrat vše
@@ -987,7 +962,6 @@ cs:
     clear_providers: "Vymazat poskytovatele"
     clear_services: "Vymazat služby"
     refresh: "Obnovit"
-    sync: "Synchronizovat"
     feed: "Feed"
     do_not_contact_hint: "Tomuto zákazníkovi se neodesílají potvrzení rezervací, změny ani připomínky"
     do_not_contact_warning: "Tento zákazník požádal, aby nebyl kontaktován. Zprávy odeslané zde se přesto doručí."

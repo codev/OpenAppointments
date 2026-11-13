@@ -149,10 +149,6 @@ mr:
     users: वापरकर्ता
     settings: सेटिंग
     log_out: लॉग आउट
-    synchronize: समक्रमित करा
-    enable_sync: समक्रमित सक्षम करा
-    disable_sync: समक्रमित अक्षम कर
-    disable_sync_prompt: आपल्याला खात्री आहे का की आपण कॅलेंडर समक्रमण अक्षम करू इच्छिता?
     reload: रीलोड करा
     appointment: अपॉइंटमेंट
     unavailability: अनुपलब्ध
@@ -175,7 +171,6 @@ mr:
     unavailability_periods_hint: प्रदाता अनुपलब्ध कालावधीत नवीन भेटी स्वीकारणार नाही.
     new_appointment_hint: नवीन अपॉईंटमेंट तयार करा आणि त्यास डेटाबेसमध्ये संचयित करा.
     reload_appointments_hint: कॅलेंडर अपॉईंटमेंट रीलोड करा.
-    trigger_sync_hint: Google कॅलेंडर संकालन प्रक्रिया ट्रिगर करा.
     appointment_updated: नियुक्ती अद्यतनित यशस्वी.
     undo: पूर्ववत करा
     appointment_details_changed: भेटीचे तपशील बदलले आहेत.
@@ -362,11 +357,6 @@ mr:
     time: वेळ
     hour: तास
     minute: मिनिट
-    calendar_sync_completed: Google समक्रमण यशस्वीरित्या पूर्ण झाले
-    calendar_sync_failed: 'Google समक्रमण अयशस्वी: सर्व्हर कनेक्शन स्थापित केले जाऊ शकले नाही'
-    select_sync_calendar: गूगल कॅलेंडर निवडा
-    select_sync_calendar_prompt: आपण आपल्या भेटी समक्रमित करू इच्छित कॅलेंडर निवडा. आपण एखादे विशिष्ट कॅलेंडर निवडू इच्छित नसल्यास, एक डीफॉल्टनुसार वापरले जाईल
-    sync_calendar_selected: Google कॅलेंडर यशस्वीरित्या निवडले गेले आहे
     oops_something_went_wrong: अरेरे! काहीतरी चूक झाली
     ea_update_success: OpenAppointments यशस्वीरित्या अद्यतनित केली गेली आहे.
     require_captcha: कॅप्चा आवश्यक आहे
@@ -561,10 +551,6 @@ mr:
     default_timezone_hint: नवीन रेकॉर्डसाठी वापरले जाणारे डिफॉल्ट टाइमझोन मूल्य सेट करा.
     default_language: डिफॉल्ट भाषा
     default_language_hint: नवीन रेकॉर्डसाठी वापरले जाणारे डिफॉल्ट भाषा मूल्य सेट करा.
-    sync_method_prompt: तुम्ही कोणती सिंक पद्धत वापरू इच्छिता?
-    caldav_server: CalDAV सर्व्हर
-    caldav_connection_info_prompt: लक्ष्य CalDAV कॅलेंडरच्या कनेक्शन माहितीची माहिती प्रविष्ट करा.
-    connect: कनेक्ट
     ldap: एलडीएपी
     ldap_info: या एकत्रिकरणामुळे तुम्ही विद्यमान LDAP सर्व्हरशी कनेक्ट होऊ शकता आणि वापरकर्त्यांना OpenAppointments मध्ये आपोआप आयात करू शकता आणि त्यांच्या डायरेक्टरी पासवर्डसह SSO करू शकता (वापरकर्ता नाव जुळणे आवश्यक आहे).
     host: होस्ट
@@ -585,8 +571,6 @@ mr:
     at_least_one_field_required: बुकिंग पृष्ठावर किमान एक फील्ड आवश्यक म्हणून सेट केले पाहिजे.
     customer_is_already_booked: या ग्राहकाला विनंती केलेल्या आरक्षण कालावधीत आधीच अपॉइंटमेंट आहे.
     fields: फील्ड
-    invalid_credentials_provided: अवैध प्रमाणपत्रे प्रदान केली गेली, कृपया पुन्हा प्रयत्न करा.
-    calendar_url: कॅलेंडर URL
     please_select: कृपया निवडा
     secret_header: गुप्त हेडर
     search: शोधा
@@ -606,15 +590,6 @@ mr:
     altcha_enabled: ALTCHA सक्षम करा
     generate: तयार करा
     meeting_link: मीटिंग लिंक
-    google_calendar: गूगल कॅलेंडर
-    google_calendar_info: प्रदात्याच्या Google Calendar खात्यांसह अपॉइंटमेंट सिंक करण्यासाठी Google Calendar सिंक्रोनाइझेशन सक्षम करा.
-    google_client_id: क्लायंट ID
-    google_client_id_info: तुमच्या Google Cloud Console प्रोजेक्टमधील क्लायंट ID.
-    google_client_secret: क्लायंट सीक्रेट
-    google_client_secret_info: तुमच्या Google Cloud Console प्रोजेक्टमधील क्लायंट सीक्रेट.
-    google_calendar_setup_info: 'Google Calendar सिंक सक्षम करण्यासाठी, तुम्हाला Google Cloud Console मध्ये प्रोजेक्ट तयार करणे, Google Calendar API सक्षम करणे आणि OAuth 2.0 क्रेडेंशियल्स तयार करणे आवश्यक आहे. भेट द्या:'
-    google_meet_link_generation: Google Meet लिंक्स तयार करा
-    google_meet_link_generation_info: सिंक केलेल्या अपॉइंटमेंटसाठी स्वयंचलितपणे Google Meet व्हिडिओ कॉन्फरन्स लिंक तयार करा. मीटिंग लिंक अपॉइंटमेंटच्या मीटिंग लिंक फील्डमध्ये संग्रहित केली जाईल.
     display_add_to_google_calendar: '"Add to Google Calendar" बटण प्रदर्शित करा'
     display_add_to_google_calendar_info: बुकिंग पुष्टीकरण पृष्ठावर "Add to Google Calendar" बटण दाखवा, ज्यामुळे ग्राहक त्यांच्या वैयक्तिक Google Calendar मध्ये त्यांची अपॉइंटमेंट सहजपणे जोडू शकतात.
     select_all: सर्व निवडा
@@ -987,7 +962,6 @@ mr:
     clear_providers: "प्रदाते साफ करा"
     clear_services: "सेवा साफ करा"
     refresh: "रिफ्रेश करा"
-    sync: "समक्रमित करा"
     feed: "फीड"
     do_not_contact_hint: "या ग्राहकाला बुकिंग पुष्टी, बदल किंवा स्मरणपत्रे पाठवली जात नाहीत"
     do_not_contact_warning: "या ग्राहकाने संपर्क न करण्यास सांगितले आहे. येथे पाठवलेले संदेश तरीही पोहोचवले जातात."

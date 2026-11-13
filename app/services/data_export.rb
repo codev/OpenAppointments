@@ -47,9 +47,8 @@ module DataExport
          sort_order] ] + rows
   end
 
-  # Per-user settings columns restored verbatim (sync credentials included).
-  SYNC_COLUMNS = %w[notifications google_sync google_calendar google_token caldav_sync caldav_url
-                    caldav_username caldav_password caldav_calendar sync_past_days sync_future_days].freeze
+  # Per-user settings columns restored verbatim.
+  SYNC_COLUMNS = %w[notifications sync_past_days sync_future_days].freeze
 
   def providers_sheet
     rows = User.providers.includes(:services, :settings).with_attached_picture.display_order.map do |provider|

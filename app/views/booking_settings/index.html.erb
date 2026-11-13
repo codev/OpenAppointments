@@ -104,6 +104,18 @@
                                             <small><%= lang('appointments_include_meeting_links_hint') %></small>
                                         </div>
                                     </div>
+
+                                    <div class="mb-3">
+                                        <div class="form-check form-switch">
+                                            <%= setting_switch "display_add_to_google_calendar", default: "1" %>
+                                            <label class="form-check-label" for="display-add-to-google-calendar">
+                                                <%= lang('display_add_to_google_calendar') %>
+                                            </label>
+                                        </div>
+                                        <div class="form-text text-muted">
+                                            <small><%= lang('display_add_to_google_calendar_info') %></small>
+                                        </div>
+                                    </div>
                                     <div class="mb-3">
                                         <div class="form-check form-switch">
                                             <%= setting_switch "booking_provider_first" %>

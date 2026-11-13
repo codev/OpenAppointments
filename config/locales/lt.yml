@@ -149,10 +149,6 @@ lt:
     users: Naudotojai
     settings: Nuostatos
     log_out: Atsijungti
-    synchronize: Sinchronizuoti
-    enable_sync: Įjungti sinchronizavimą
-    disable_sync: Išjungti sinchronizavimą
-    disable_sync_prompt: Ar tikrai norite išjungti kalendoriaus sinchronizavimą?
     reload: Įkelti iš naujo
     appointment: Vizitas
     unavailability: Užimtas laikas
@@ -175,7 +171,6 @@ lt:
     unavailability_periods_hint: Laiko intervalams, kai paslaugų teikėjas užimtas, naujų vizitų pas jį registruoti neleidžiama.
     new_appointment_hint: Sukurti naują vizitą ir įrašyti jį į duomenų bazę.
     reload_appointments_hint: Iš naujo įkelti kalendoriaus turinį.
-    trigger_sync_hint: Atlikti kalendoriaus sinchronizavimą.
     appointment_updated: Vizitas sėkmingai atnaujintas.
     undo: Atšaukti
     appointment_details_changed: Vizito duomenys pakeisti
@@ -362,11 +357,6 @@ lt:
     time: Laikas
     hour: Valanda
     minute: Minutė
-    calendar_sync_completed: Kalendorius sėkmingai sinchronizuotas.
-    calendar_sync_failed: 'Kalendoriaus sinchronizavimas nepavyko: nepavyko užmegzti ryšio su serveriu.'
-    select_sync_calendar: Pasirinkite kalendorių
-    select_sync_calendar_prompt: Pasirinkite kalendorių, su kuriuo norite sinchronizuoti vizitus.
-    sync_calendar_selected: Sėkmingai pasirinktas kalendorius sinchronizavimui.
     oops_something_went_wrong: Oi! Kažkas nepavyko.
     ea_update_success: "„OpenAppointments“ sėkmingai atnaujinta."
     require_captcha: Reikalauti „CAPTCHA“ saugos kodo
@@ -561,10 +551,6 @@ lt:
     default_timezone_hint: Pasirinkite numatytąją laiko juostą, kuri bus naudojama naujiems įrašams.
     default_language: Numatytoji kalba
     default_language_hint: Pasirinkite numatytąją kalbą, kuri bus naudojama naujiems įrašams.
-    sync_method_prompt: Kurį sinchronizavimo metodą norite naudoti?
-    caldav_server: "„CalDAV“ serveris"
-    caldav_connection_info_prompt: Įveskite paskirties „CalDAV“ kalendoriaus serverio duomenis.
-    connect: Jungtis
     ldap: LDAP
     ldap_info: Ši integracija suteikia galimybę prisijungti prie esamo LDAP serverio, automatiškai importuoti naudotojus į „OpenAppointments“ ir leisti jiems jungtis prie sistemos naudojantis savo LDAP slaptažodžiu (naudotojo vardas turi sutapti).
     host: Serveris
@@ -585,8 +571,6 @@ lt:
     at_least_one_field_required: Užsakymo tinklalapyje turi būti nustatytas bent vienas privalomas laukas.
     customer_is_already_booked: Šis klientas jau turi suplanuotą vizitą prašomu rezervuoti laikotarpiu.
     fields: Laukai
-    invalid_credentials_provided: Pateikti negaliojantys duomenys, bandykite dar kartą.
-    calendar_url: Kalendoriaus URL
     please_select: Pasirinkite
     secret_header: Slapta antraštė
     search: Ieškoti
@@ -606,15 +590,6 @@ lt:
     altcha_enabled: Įjungti ALTCHA
     generate: Generuoti
     meeting_link: Susitikimo nuoroda
-    google_calendar: Google kalendorius
-    google_calendar_info: Įjunkite Google Calendar sinchronizavimą, kad sinchronizuotumėte vizitus su paslaugų teikėjų Google Calendar paskyromis.
-    google_client_id: Client ID
-    google_client_id_info: Client ID iš jūsų Google Cloud Console projekto.
-    google_client_secret: Client Secret
-    google_client_secret_info: Client Secret iš jūsų Google Cloud Console projekto.
-    google_calendar_setup_info: 'Norėdami įjungti Google Calendar sinchronizavimą, turite sukurti projektą Google Cloud Console, įjungti Google Calendar API ir sukurti OAuth 2.0 kredencialus. Apsilankykite:'
-    google_meet_link_generation: Generuoti Google Meet nuorodas
-    google_meet_link_generation_info: Automatiškai sukurkite Google Meet vaizdo konferencijos nuorodą sinchronizuotiems vizitams. Susitikimo nuoroda bus išsaugota vizito susitikimo nuorodos lauke.
     display_add_to_google_calendar: Rodyti "Add to Google Calendar" mygtuką
     display_add_to_google_calendar_info: Rodyti "Add to Google Calendar" mygtuką užsakymo patvirtinimo puslapyje, kad klientai galėtų lengvai pridėti savo vizitą prie asmeninio Google Calendar kalendoriaus.
     select_all: Pasirinkti viską
@@ -987,7 +962,6 @@ lt:
     clear_providers: "Išvalyti teikėjus"
     clear_services: "Išvalyti paslaugas"
     refresh: "Atnaujinti"
-    sync: "Sinchronizuoti"
     feed: "Srautas"
     do_not_contact_hint: "Šiam klientui nesiunčiami rezervacijų patvirtinimai, pakeitimai ar priminimai"
     do_not_contact_warning: "Šis klientas paprašė su juo nesisiekti. Čia siunčiamos žinutės vis tiek pristatomos."

@@ -33,7 +33,7 @@ module CalendarFeed
       event.summary = record.notes.presence || I18n.t("ea.unavailable")
     else
       event.summary = [ record.service&.name, record.customer&.full_name ].compact_blank.join(" - ")
-      event.description = "#{SyncUrls.base_url}/calendar/reschedule/#{record.booking_hash}"
+      event.description = "#{Messaging::Template.base_url}/calendar/reschedule/#{record.booking_hash}"
       event.status = "CONFIRMED"
     end
     event

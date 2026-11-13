@@ -149,10 +149,6 @@ fa:
     users: کاربران
     settings: تنظیمات
     log_out: خروج
-    synchronize: همگام سازی
-    enable_sync: فعال کردن همگام سازی
-    disable_sync: غیرفعال کردن همگام سازی
-    disable_sync_prompt: از غیرفعال کردن همگام سازی تقویم اطمینان دارید؟
     reload: بارگذاری مجدد
     appointment: قرار
     unavailability: تعطیل
@@ -175,7 +171,6 @@ fa:
     unavailability_periods_hint: در طول زمان در دسترس نبودن، ارائه دهنده قرار جدیدی را نمی پذیرد
     new_appointment_hint: ایجاد قرار جدید و ذخیره آن در بانک اطلاعاتی
     reload_appointments_hint: بارگذاری مجدد ملاقات ها
-    trigger_sync_hint: همین حالا با تقویم گوگل همگام سازی انجام بده
     appointment_updated: قرار با موفقیت به روزرسانی شد
     undo: بازگشت
     appointment_details_changed: جزئیات قرار با موفقیت تغییر کرد
@@ -362,11 +357,6 @@ fa:
     time: زمان
     hour: ساعت
     minute: دقیقه
-    calendar_sync_completed: همگام سازی با تقویم گوگل با موفقیت انجام شد
-    calendar_sync_failed: همگام سازی با تقویم گوگل با شکست مواجه شد. سرور در دسترس نیست
-    select_sync_calendar: انتخاب تقویم گوگل
-    select_sync_calendar_prompt: تقویمی که می خواهید قرارها روی آن ذخیره شوند را انتخاب کنید. در صورتیکه که تقویم خاصی را انتخاب نکید، بصورت اتوماتیک روی تقویم پیش فرض ذخیره می شود
-    sync_calendar_selected: تقویم گوگل با موفقیت انتخاب شد
     oops_something_went_wrong: اوه. مشکلی پیش آمد!
     ea_update_success: OpenAppointments با موفقیت به روز رسانی شد
     require_captcha: کد امنیتی لازم است
@@ -561,10 +551,6 @@ fa:
     default_timezone_hint: مقدار منطقه زمانی پیش‌فرض را که برای رکوردهای جدید استفاده خواهد شد تنظیم کنید.
     default_language: زبان پیش‌فرض
     default_language_hint: مقدار زبان پیش‌فرض را که برای رکوردهای جدید استفاده خواهد شد تنظیم کنید.
-    sync_method_prompt: کدام روش همگام‌سازی را می‌خواهید استفاده کنید؟
-    caldav_server: سرور CalDAV
-    caldav_connection_info_prompt: لطفاً اطلاعات اتصال تقویم هدف CalDAV را وارد کنید.
-    connect: اتصال
     ldap: LDAP
     ldap_info: این ادغام به شما امکان می‌دهد به یک سرور LDAP موجود متصل شوید و به‌طور خودکار کاربران را به OpenAppointments وارد کنید و به آن‌ها اجازه دهید با رمز عبور دایرکتوری خود SSO کنند (نام کاربری باید مطابقت داشته باشد).
     host: میزبان
@@ -585,8 +571,6 @@ fa:
     at_least_one_field_required: حداقل یک فیلد باید به‌عنوان فیلد مورد نیاز در صفحه رزرو تنظیم شود.
     customer_is_already_booked: این مشتری در دوره رزرو درخواستی قبلاً یک قرار ملاقات دارد.
     fields: فیلدها
-    invalid_credentials_provided: اعتبارنامه‌های نامعتبر ارائه شده است، لطفاً دوباره تلاش کنید.
-    calendar_url: URL تقویم
     please_select: لطفاً انتخاب کنید
     secret_header: سرآیند محرمانه
     search: جستجو
@@ -606,15 +590,6 @@ fa:
     altcha_enabled: فعال‌سازی ALTCHA
     generate: ایجاد
     meeting_link: لینک جلسه
-    google_calendar: تقویم گوگل
-    google_calendar_info: همگام‌سازی Google Calendar را برای همگام‌سازی نوبت‌ها با حساب‌های Google Calendar ارائه‌دهندگان فعال کنید.
-    google_client_id: شناسه کلاینت
-    google_client_id_info: شناسه کلاینت از پروژه Google Cloud Console شما.
-    google_client_secret: رمز کلاینت
-    google_client_secret_info: رمز کلاینت از پروژه Google Cloud Console شما.
-    google_calendar_setup_info: 'برای فعال‌سازی همگام‌سازی Google Calendar، باید یک پروژه در Google Cloud Console ایجاد کنید، Google Calendar API را فعال کنید و اعتبارنامه‌های OAuth 2.0 بسازید. مراجعه کنید:'
-    google_meet_link_generation: ایجاد لینک‌های Google Meet
-    google_meet_link_generation_info: به‌طور خودکار یک لینک ویدئو کنفرانس Google Meet برای نوبت‌های همگام‌شده ایجاد کنید. لینک جلسه در فیلد لینک جلسه نوبت ذخیره خواهد شد.
     display_add_to_google_calendar: نمایش دکمه "افزودن به Google Calendar"
     display_add_to_google_calendar_info: دکمه "افزودن به Google Calendar" را در صفحه تأیید رزرو نمایش دهید تا مشتریان بتوانند به‌راحتی نوبت خود را به تقویم شخصی Google Calendar خود اضافه کنند.
     select_all: انتخاب همه
@@ -987,7 +962,6 @@ fa:
     clear_providers: "پاک کردن ارائه دهندگان"
     clear_services: "پاک کردن خدمات"
     refresh: "تازه‌سازی"
-    sync: "همگام‌سازی"
     feed: "فید"
     do_not_contact_hint: "هیچ تأیید رزرو، تغییر یا یادآوری برای این مشتری ارسال نمی‌شود"
     do_not_contact_warning: "این مشتری درخواست کرده است با او تماس گرفته نشود. پیام‌هایی که از اینجا ارسال شوند همچنان تحویل داده می‌شوند."

@@ -149,10 +149,6 @@ da:
     users: Bruger
     settings: Indstillinger
     log_out: Log ud
-    synchronize: Synkroniser
-    enable_sync: Aktivere
-    disable_sync: Deaktivere
-    disable_sync_prompt: Er du sikker på du ønsker at afbryde kalender synkronisering?
     reload: Opdater
     appointment: Aftale
     unavailability: Ikke tilgængelig
@@ -175,7 +171,6 @@ da:
     unavailability_periods_hint: I ikke tilgængelig periode kan leverandøren ikke accepertere nye aftaler.
     new_appointment_hint: Tilføj en ny aftale ller konto i databasen.
     reload_appointments_hint: Opdater kalender.
-    trigger_sync_hint: Start kalendersynkroniseringsprocessen.
     appointment_updated: Tiden er opdateret.
     undo: Fortryd
     appointment_details_changed: Tidens oplysninger er ændret.
@@ -362,11 +357,6 @@ da:
     time: Tid
     hour: Time
     minute: Minutter
-    calendar_sync_completed: Google synkroniseringen gennemført.
-    calendar_sync_failed: Google synkroniseringen fejlede, kunne ikke oprette forbindelse til serveren.
-    select_sync_calendar: Vælg Google kalender
-    select_sync_calendar_prompt: vælg kalenderen du vile synkronisere med din bestilling. Hvis du ikke vil vælge en specifik kalender den normale vil blive brugt.
-    sync_calendar_selected: Google kalender er blevet valgt.
     oops_something_went_wrong: Oops! Noget gik galt.
     ea_update_success: OpenAppointments er blevet opdateret.
     require_captcha: Kræv CAPTCHA
@@ -561,10 +551,6 @@ da:
     default_timezone_hint: Indstil standard tidszoneværdi, der vil blive brugt for nye poster.
     default_language: Standard Sprog
     default_language_hint: Indstil standard sprogværdi, der vil blive brugt for nye poster.
-    sync_method_prompt: Hvilken synkroniseringsmetode vil du bruge?
-    caldav_server: CalDAV-server
-    caldav_connection_info_prompt: Indtast venligst forbindelsesoplysningerne til det ønskede CalDAV-kalender.
-    connect: Forbind
     ldap: LDAP
     ldap_info: Denne integration giver dig mulighed for at oprette forbindelse til en eksisterende LDAP-server og automatisk importere brugere til OpenAppointments og lade dem SSO med deres katalogadgangskode (brugernavnet skal matche).
     host: Vært
@@ -585,8 +571,6 @@ da:
     at_least_one_field_required: Mindst ét felt skal være sat som obligatorisk på booking-siden.
     customer_is_already_booked: Denne kunde har allerede en aftale i den ønskede reservationsperiode.
     fields: Felter
-    invalid_credentials_provided: Ugyldige legitimationsoplysninger angivet, prøv igen.
-    calendar_url: Kalender URL
     please_select: Vælg venligst
     secret_header: Hemmelig header
     search: Søg
@@ -606,15 +590,6 @@ da:
     altcha_enabled: Aktivér ALTCHA
     generate: Generér
     meeting_link: Mødelink
-    google_calendar: Google Kalender
-    google_calendar_info: Aktivér Google Calendar-synkronisering for at synkronisere aftaler med udbydernes Google Calendar-konti.
-    google_client_id: Klient-ID
-    google_client_id_info: Klient-ID'en fra dit Google Cloud Console-projekt.
-    google_client_secret: Klienthemmelighed
-    google_client_secret_info: Klienthemmeligheden fra dit Google Cloud Console-projekt.
-    google_calendar_setup_info: 'For at aktivere Google Calendar-synkronisering skal du oprette et projekt i Google Cloud Console, aktivere Google Calendar API''en og oprette OAuth 2.0-legitimationsoplysninger. Besøg:'
-    google_meet_link_generation: Generér Google Meet-links
-    google_meet_link_generation_info: Opret automatisk et Google Meet-videokonferencelink til synkroniserede aftaler. Mødelinket gemmes i aftalens mødelinkfelt.
     display_add_to_google_calendar: Vis "Tilføj til Google Calendar"-knap
     display_add_to_google_calendar_info: Vis "Tilføj til Google Calendar"-knappen på bookingbekræftelsessiden, så kunder nemt kan tilføje deres aftale til deres personlige Google Calendar.
     select_all: Vælg alle
@@ -987,7 +962,6 @@ da:
     clear_providers: "Ryd leverandører"
     clear_services: "Ryd tjenester"
     refresh: "Opdater"
-    sync: "Synkroniser"
     feed: "Feed"
     do_not_contact_hint: "Der sendes ingen bookingbekræftelser, ændringer eller påmindelser til denne kunde"
     do_not_contact_warning: "Denne kunde har bedt om ikke at blive kontaktet. Beskeder, der sendes hertil, bliver stadig leveret."

@@ -314,7 +314,7 @@ App.Pages.Calendar = (function () {
         clearInterval(refreshTimer);
         refreshTimer = setInterval(() => {
             // A fetch still running is left to finish rather than restarted.
-            if (request || $('.popover').length || App.Utils.CalendarSync.isCurrentlySyncing()) {
+            if (request || $('.popover').length) {
                 return;
             }
             reload();

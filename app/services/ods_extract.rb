@@ -87,7 +87,7 @@ class OdsExtract
       next unless row.key?(column)
 
       value = row[column]
-      value = (value == "1") if %w[notifications google_sync caldav_sync].include?(column)
+      value = (value == "1") if column == "notifications"
       value = value.presence&.to_i if %w[sync_past_days sync_future_days].include?(column)
       [ column.to_sym, value.is_a?(String) ? value.presence : value ]
     end.to_h

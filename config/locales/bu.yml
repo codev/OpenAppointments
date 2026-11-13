@@ -149,10 +149,6 @@ bu:
     users: Потребители
     settings: Настройки
     log_out: Изход
-    synchronize: синхронизиране
-    enable_sync: Активиране на синхронизиране
-    disable_sync: Изключване на синхронизиране
-    disable_sync_prompt: Сигурни ли сте, че искате да деактивирате синхронизацията на календара?
     reload: Презареждане
     appointment: Час
     unavailability: не е на лице
@@ -175,7 +171,6 @@ bu:
     unavailability_periods_hint: По време на периоди, в които изпълнителя не е на разположение, същият няма да приема нови часове.
     new_appointment_hint: Създаване на нов час и запазването му в базата данни.
     reload_appointments_hint: Презареждане на календарни часове.
-    trigger_sync_hint: Изпълнение на процес по синхронизация с Google Calendar.
     appointment_updated: Часът е актуализиран успешно.
     undo: Отмяна
     appointment_details_changed: Информацията относно часът е променена.
@@ -362,11 +357,6 @@ bu:
     time: Време
     hour: Час
     minute: Минута
-    calendar_sync_completed: Google синхронизацията приключи успешно.
-    calendar_sync_failed: 'Google синхронизацията неуспешна: не бе възможно да се осъществи връзка.'
-    select_sync_calendar: Избор на Google Calendar
-    select_sync_calendar_prompt: Изберете календарът, който искате да синхронизирате за часовете си. Ако не желаете да изберете специфичен календар, календар по подразбиране ще бъде използван.
-    sync_calendar_selected: Google Calendar бе успешно избран.
     oops_something_went_wrong: Опааа! Нещо се обърка!Опааа! Нещо се обърка.
     ea_update_success: Системата Обновена успешно
     require_captcha: Изискване на CAPTCHA
@@ -561,10 +551,6 @@ bu:
     default_timezone_hint: Задайте часовата зона по подразбиране, която ще се използва за нови записи.
     default_language: Език по подразбиране
     default_language_hint: Задайте езика по подразбиране, който ще се използва за нови записи.
-    sync_method_prompt: Кой метод за синхронизиране бихте искали да използвате?
-    caldav_server: CalDAV сървър
-    caldav_connection_info_prompt: Моля, въведете информация за връзка с целевия CalDAV календар.
-    connect: Свързване
     ldap: LDAP
     ldap_info: Тази интеграция ви позволява да се свържете с LDAP сървър и автоматично да импортирате потребители в OpenAppointments и да им позволите SSO с тяхната парола от директорията (потребителското име трябва да съвпада).
     host: Хост
@@ -585,8 +571,6 @@ bu:
     at_least_one_field_required: Поне едно поле трябва да бъде зададено като задължително на страницата за резервации.
     customer_is_already_booked: Този клиент вече има час по време на заявения период за резервация.
     fields: Полета
-    invalid_credentials_provided: Предоставени са невалидни идентификационни данни, моля, опитайте отново.
-    calendar_url: URL на календара
     please_select: Моля Изберете
     secret_header: Секретно заглавие
     search: Търсене
@@ -606,15 +590,6 @@ bu:
     altcha_enabled: Активиране на ALTCHA
     generate: Генериране
     meeting_link: Връзка за среща
-    google_calendar: Google Календар
-    google_calendar_info: Активирайте синхронизацията с Google Calendar за синхронизиране на часовете с Google Calendar акаунтите на доставчиците.
-    google_client_id: Клиентски ID
-    google_client_id_info: Клиентският ID от вашия проект в Google Cloud Console.
-    google_client_secret: Клиентска тайна
-    google_client_secret_info: Клиентската тайна от вашия проект в Google Cloud Console.
-    google_calendar_setup_info: 'За да активирате синхронизацията с Google Calendar, трябва да създадете проект в Google Cloud Console, да активирате Google Calendar API и да създадете OAuth 2.0 удостоверения. Посетете:'
-    google_meet_link_generation: Генериране на линкове за Google Meet
-    google_meet_link_generation_info: Автоматично създаване на линк за видеоконференция Google Meet за синхронизираните часове. Линкът за срещата ще бъде съхранен в полето за линк на срещата.
     display_add_to_google_calendar: Показване на бутон "Добавяне в Google Calendar"
     display_add_to_google_calendar_info: Показване на бутона "Добавяне в Google Calendar" на страницата за потвърждение на резервацията, позволявайки на клиентите лесно да добавят часа си в личния си Google Calendar.
     select_all: Избери всички
@@ -987,7 +962,6 @@ bu:
     clear_providers: "Изчисти изпълнителите"
     clear_services: "Изчисти услугите"
     refresh: "Обнови"
-    sync: "Синхронизирай"
     feed: "Feed"
     do_not_contact_hint: "На този клиент не се изпращат потвърждения, промени или напомняния за резервации"
     do_not_contact_warning: "Този клиент е поискал да не бъде контактуван. Съобщенията, изпратени тук, все пак се доставят."

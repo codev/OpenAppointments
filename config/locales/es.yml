@@ -149,10 +149,6 @@ es:
     users: Usuarios
     settings: Configuración
     log_out: Cerrar sesión
-    synchronize: Sincronizar
-    enable_sync: Habilitar sincronización
-    disable_sync: Deshabilitar sincronización
-    disable_sync_prompt: "¿Estás seguro de que quieres deshabilitar la sincronización de calendario?"
     reload: Recargar
     appointment: Cita
     unavailability: No disponible
@@ -175,7 +171,6 @@ es:
     unavailability_periods_hint: El proveedor no podrá aceptar nuevas citas cuando se encuentre como No disponible.
     new_appointment_hint: Crear una nueva cita y guardarla en la base de datos.
     reload_appointments_hint: Cargar nuevamente citas del calendario.
-    trigger_sync_hint: Iniciar el proceso de sincronización del calendario.
     appointment_updated: Cita actualizada exitosamente
     undo: Deshacer
     appointment_details_changed: Se han modificado los detalles de la cita.
@@ -362,11 +357,6 @@ es:
     time: Hora
     hour: Hora
     minute: Minuto
-    calendar_sync_completed: Se completó la sincronización con Google exitosamente
-    calendar_sync_failed: 'La sincronización con Google falló: No se pudo establecer una conexión con el servidor.'
-    select_sync_calendar: Seleccionar un calendario de Google Calendar
-    select_sync_calendar_prompt: Seleccione el calendario con el que desea sincronizar sus citas. Si no desea seleccionar un calendario en particular, se utilizará el calendario por defecto.
-    sync_calendar_selected: Se ha seleccionado el calendario de Google Calendar exitosamente
     oops_something_went_wrong: "¡Ups! ¡Algo ha salido mal."
     ea_update_success: OpenAppointments ha sido actualizado exitosamente
     require_captcha: Requiere CAPTCHA
@@ -561,10 +551,6 @@ es:
     default_timezone_hint: Establezca el valor de zona horaria predeterminada que se utilizará para nuevos registros.
     default_language: Idioma Predeterminado
     default_language_hint: Establezca el valor de idioma predeterminado que se utilizará para nuevos registros.
-    sync_method_prompt: "¿Qué método de sincronización le gustaría utilizar?"
-    caldav_server: Servidor CalDAV
-    caldav_connection_info_prompt: Por favor, introduzca la información de conexión del Calendario CalDAV de destino.
-    connect: Conectar
     ldap: LDAP
     ldap_info: Esta integración le permite conectar con un servidor LDAP existente e importar automáticamente usuarios a OpenAppointments y permitirles el SSO con su contraseña de directorio (el nombre de usuario debe coincidir).
     host: Host
@@ -585,8 +571,6 @@ es:
     at_least_one_field_required: Al menos un campo debe estar establecido como obligatorio en la página de reservas.
     customer_is_already_booked: Este cliente ya tiene una cita durante el período de reserva solicitado.
     fields: Campos
-    invalid_credentials_provided: Credenciales inválidas proporcionadas, por favor intente nuevamente.
-    calendar_url: URL del Calendario
     please_select: Por Favor Seleccione
     secret_header: Encabezado secreto
     search: Buscar
@@ -606,15 +590,6 @@ es:
     altcha_enabled: Habilitar ALTCHA
     generate: Generar
     meeting_link: Enlace de reunión
-    google_calendar: Google Calendar
-    google_calendar_info: Habilitar la sincronización con Google Calendar para sincronizar las citas con las cuentas de Google Calendar de los proveedores.
-    google_client_id: ID de cliente
-    google_client_id_info: El ID de cliente de su proyecto en Google Cloud Console.
-    google_client_secret: Secreto de cliente
-    google_client_secret_info: El secreto de cliente de su proyecto en Google Cloud Console.
-    google_calendar_setup_info: 'Para habilitar la sincronización con Google Calendar, necesita crear un proyecto en Google Cloud Console, habilitar la API de Google Calendar y crear credenciales OAuth 2.0. Visite:'
-    google_meet_link_generation: Generar enlaces de Google Meet
-    google_meet_link_generation_info: Crear automáticamente un enlace de videoconferencia Google Meet para las citas sincronizadas. El enlace de reunión se almacenará en el campo de enlace de reunión de la cita.
     display_add_to_google_calendar: Mostrar el botón "Agregar a Google Calendar"
     display_add_to_google_calendar_info: Mostrar el botón "Agregar a Google Calendar" en la página de confirmación de reserva, permitiendo a los clientes agregar fácilmente su cita a su Google Calendar personal.
     select_all: Seleccionar todo
@@ -987,7 +962,6 @@ es:
     clear_providers: "Borrar proveedores"
     clear_services: "Borrar servicios"
     refresh: "Actualizar"
-    sync: "Sincronizar"
     feed: "Feed"
     do_not_contact_hint: "No se envían confirmaciones de reserva, cambios ni recordatorios a este cliente"
     do_not_contact_warning: "Este cliente ha pedido que no se le contacte. Los mensajes enviados aquí se siguen entregando."

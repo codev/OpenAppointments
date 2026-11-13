@@ -149,10 +149,6 @@ ca:
     users: Usuaris
     settings: Configuracions
     log_out: Sortida
-    synchronize: Sincronitza
-    enable_sync: Permet Sync
-    disable_sync: No permetis Sync
-    disable_sync_prompt: Esteu segur que voleu desactivar la sincronització del calendari?
     reload: Recarrega
     appointment: Cita
     unavailability: No disponible
@@ -175,7 +171,6 @@ ca:
     unavailability_periods_hint: Durant els períodes de no disponibilitat el proveïdor no acceptarà noves cites.
     new_appointment_hint: Crea una nova cita i emmagatzema-la a la base de dades.
     reload_appointments_hint: Recarrega el calendari de cites
-    trigger_sync_hint: Dispara el procés de sincronització amb el Google Calendar.
     appointment_updated: La cita s'ha actualitzat correctament.
     undo: Desfés
     appointment_details_changed: Els detalls de la cita han canviat.
@@ -362,11 +357,6 @@ ca:
     time: Hora
     hour: Hora
     minute: Minut
-    calendar_sync_completed: La sincronització amb Google s'ha completat correctament.
-    calendar_sync_failed: 'La sincronització amb Google ha fallat: no s''ha pogut establir la connexió amb el servidor.'
-    select_sync_calendar: Selecciona un Google Calendar
-    select_sync_calendar_prompt: Seleccioneu el calendari que voleu sincronitzar amb les vostres cites. Si no seleccioneu un calendari específic, s'usarà el calendari per defecte.
-    sync_calendar_selected: El Google calendar s'ha seleccionat correctament.
     oops_something_went_wrong: Ups! Alguna cosa no ha funcionat bé.
     ea_update_success: OpenAppointments s'ha actualitzat correctament.
     require_captcha: Requereix un CAPTCHA
@@ -561,10 +551,6 @@ ca:
     default_timezone_hint: Estableix el valor de la zona horària que per defecte es farà servir a partir d'ara.
     default_language: Idioma per defecte
     default_language_hint: Estableix l'idioma per defecte que es farà servir a partir d'ara.
-    sync_method_prompt: Quin mètode de sincronització voldries utilitzar?
-    caldav_server: Servidor CalDAV
-    caldav_connection_info_prompt: Si us plau, introdueix la informació de connexió del Calendari CalDAV de destinació.
-    connect: Connecta
     ldap: LDAP
     ldap_info: Aquesta integració us permet connectar amb un servidor LDAP i automàticament importar els usuaris a OpenAppointments. A més, permet que els usuaris facin SSO amb la contrasenya LDAP (el nom d'usuari ha de coincidir).
     host: Servidor
@@ -585,8 +571,6 @@ ca:
     at_least_one_field_required: Com a mínim un camp s'ha de marcar com a obligatori a la pàgina de reserva.
     customer_is_already_booked: Aquest client ja té una cita en el període de reserva sol·licitat.
     fields: Camps
-    invalid_credentials_provided: Les credencials no són vàlides, torneu-ho a provar un altre cop.
-    calendar_url: URL del calendari
     please_select: Si us plau, seleccioneu
     secret_header: Capçalera secreta
     search: Cerca
@@ -606,15 +590,6 @@ ca:
     altcha_enabled: Habilita ALTCHA
     generate: Genera
     meeting_link: Enllaç de la reunió
-    google_calendar: Google Calendar
-    google_calendar_info: Habilita la sincronització amb Google Calendar per sincronitzar amb el proveïdor dels comptes de Google Calendar.
-    google_client_id: ID del client
-    google_client_id_info: L'ID del client del teu projecte de Google Cloud Console.
-    google_client_secret: Secret de client
-    google_client_secret_info: El secret de client del vostre projecte a la Google Cloud Console.
-    google_calendar_setup_info: 'Per habilitar la sincronització de Google Calendar, heu de crear un projecte a Google Cloud Console, habiliteu l''API de Google Calendar i creeu unes credencials de OAuth 2.0. Vegeu:'
-    google_meet_link_generation: Genera enllaços de Google Meet
-    google_meet_link_generation_info: Crea automàticament un enllaç a una vídeo-conferència de Google Meet per a les cites sincronitzades. L'enllaça ala reunió es desarà en el camp enllaç a la reunió de la cita.
     display_add_to_google_calendar: Mostra el botó "Afegeix al Google Calendar"
     display_add_to_google_calendar_info: Mostra el botó "Afegeix al Google Calendar" a la pàgina de confirmació de la cita, permetent fàcilment als clients que afegeixin les seves cites al seu Google Calendar personal.
     select_all: Selecciona tot
@@ -987,7 +962,6 @@ ca:
     clear_providers: "Esborra els proveïdors"
     clear_services: "Esborra els serveis"
     refresh: "Actualitza"
-    sync: "Sincronitza"
     feed: "Feed"
     do_not_contact_hint: "No s'envia a aquest client cap confirmació de reserva, canvi ni recordatori"
     do_not_contact_warning: "Aquest client ha demanat que no el contactin. Els missatges enviats aquí continuen arribant-li."

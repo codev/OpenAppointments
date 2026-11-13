@@ -8,7 +8,6 @@ class SettingsPagesTest < ApplicationSystemTestCase
     "general_settings" => [ "company-name", "company_name", "Open Out Test" ],
     "business_settings" => [ "future-booking-limit", "future_booking_limit", "45" ],
     "api_settings" => [ "api-token", "api_token", "tok-123" ],
-    "google_calendar_settings" => [ "google-client-id", "google_client_id", "client-1" ],
     "google_analytics_settings" => [ "google-analytics-code", "google_analytics_code", "G-1" ],
     "matomo_analytics_settings" => [ "matomo-analytics-url", "matomo_analytics_url", "https://m.example.org" ],
     "umami_analytics_settings" => [ "umami-analytics-url", "umami_analytics_url", "https://u.example.org" ],

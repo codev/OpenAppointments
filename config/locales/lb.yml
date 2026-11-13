@@ -149,10 +149,6 @@ lb:
     users: Benotzer
     settings: Astellungen
     log_out: Ofmellen
-    synchronize: Synchroniséieren
-    enable_sync: Sync aschalten
-    disable_sync: Sync ausschalten
-    disable_sync_prompt: Sidd Dir sécher, datt Dir d'Kalenner-Synchronisatioun desaktivéiere wëllt?
     reload: Nei lueden
     appointment: Termäin
     unavailability: Net méiglech
@@ -175,7 +171,6 @@ lb:
     unavailability_periods_hint: Während der Indisponibilitéitsperiod gi keng Termäiner ugeholl.
     new_appointment_hint: Wielt een neie Termäin a späichert en an der Datebank.
     reload_appointments_hint: Terminkalenner nei lueden.
-    trigger_sync_hint: Start de Synchronisatiounsprozess vum Google Kalenner.
     appointment_updated: D'Termäiner sinn erfollegräich erneiert ginn.
     undo: Schrëtt zeréck
     appointment_details_changed: D'Detailer vum Termäin si geännert ginn.
@@ -362,11 +357,6 @@ lb:
     time: Zäit
     hour: Auer
     minute: Minutt
-    calendar_sync_completed: Google Synchronisation erfollegräich ofgeschloss.
-    calendar_sync_failed: 'Google Synchronisatioun schifgaang: D''Verbindung mam Server konnt net hiergestallt ginn.'
-    select_sync_calendar: Wielt ee Google Kalenner
-    select_sync_calendar_prompt: Wielt dee Kalenner, mat deem der Är Termäiner synchroniséiere wëllt. Wann der kee bestëmmte Kalenner auswiele wëllt, gëtt de Standard benotzt.
-    sync_calendar_selected: Auswiele vum Google Kalenner erfollegräich.
     oops_something_went_wrong: Oops! Et ass eppes schif gaang.
     ea_update_success: OpenAppointments gouf erfollegräich aktualiséiert.
     require_captcha: CAPTCHA erfuerderen
@@ -561,10 +551,6 @@ lb:
     default_timezone_hint: Setzt de Standard Zäitzonwäert, deen fir nei Opzeechnungen benotzt gëtt.
     default_language: Standardsprooch
     default_language_hint: Setzt de Standardsproochwäert, deen fir nei Opzeechnungen benotzt gëtt.
-    sync_method_prompt: Wéi eng Synchronisatiounsmethod wëllt Dir benotzen?
-    caldav_server: CalDAV Server
-    caldav_connection_info_prompt: Gitt w.e.g. d'Verbindungsinformatioune vum zilorientéierte CalDAV Kalenner an.
-    connect: Verbannen
     ldap: LDAP
     ldap_info: Dës Integratioun erméiglecht Iech eng Verbindung zu engem existente LDAP Server opzebauen an automatesch Benotzer an OpenAppointments z'importéieren an hinnen Single Sign-On (SSO) mat hirem Verzechnispasswuert (Benotzernumm muss passen) z'erméiglechen.
     host: Host
@@ -585,8 +571,6 @@ lb:
     at_least_one_field_required: Op d'mannst ee Feld muss als erfuerderlech op der Buchungssäit gesat ginn.
     customer_is_already_booked: Dëse Client huet schonn e Rendez-vous während der ugefrote Reservéierungsperiod.
     fields: Felder
-    invalid_credentials_provided: Onvalabel Benotzerdaten, probéiert w.e.g. nach eng Kéier.
-    calendar_url: Kalenner URL
     please_select: Wielt w.e.g.
     secret_header: Geheimen Header
     search: Sichen
@@ -606,15 +590,6 @@ lb:
     altcha_enabled: ALTCHA aktivéieren
     generate: Generéieren
     meeting_link: Meeting-Link
-    google_calendar: Google Kalenner
-    google_calendar_info: Aktivéiert Google Calendar Synchronisatioun fir Terminnen mat den Google Calendar Konte vun de Provider ze synchroniséieren.
-    google_client_id: Client ID
-    google_client_id_info: D'Client ID vun Ärem Google Cloud Console Projet.
-    google_client_secret: Client Secret
-    google_client_secret_info: D'Client Secret vun Ärem Google Cloud Console Projet.
-    google_calendar_setup_info: 'Fir Google Calendar Synchronisatioun z''aktivéieren, musst Dir e Projet an der Google Cloud Console erstellen, d''Google Calendar API aktivéieren an OAuth 2.0 Umeldungsdaten erstellen. Besicht:'
-    google_meet_link_generation: Google Meet Linken generéieren
-    google_meet_link_generation_info: Erstellt automatesch e Google Meet Videokonferenz-Link fir synchroniséiert Terminnen. De Meeting-Link gëtt am Meeting-Link Feld vum Termin gespäichert.
     display_add_to_google_calendar: '"Add to Google Calendar" Knäppchen uweisen'
     display_add_to_google_calendar_info: Weist den "Add to Google Calendar" Knäppchen op der Buchungsbestätegungssäit, sou datt Clienten hiren Termin einfach an hire perséinleche Google Calendar derbäisetze kënnen.
     select_all: Alles auswielen
@@ -987,7 +962,6 @@ lb:
     clear_providers: "Mataarbechter läschen"
     clear_services: "Dingschtleeschtungen läschen"
     refresh: "Aktualiséieren"
-    sync: "Synchroniséieren"
     feed: "Feed"
     do_not_contact_hint: "Dësem Client gi keng Reservatiounsbestätegungen, Ännerungen oder Erënnerungen geschéckt"
     do_not_contact_warning: "Dëse Client huet gefrot net kontaktéiert ze ginn. Messagen, déi hei geschéckt ginn, gi weiderhi geliwwert."

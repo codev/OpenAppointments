@@ -149,10 +149,6 @@ sv:
     users: Användare
     settings: Inställningar
     log_out: Logga ut
-    synchronize: Synkronisera
-    enable_sync: Aktivera
-    disable_sync: Deaktivera
-    disable_sync_prompt: Är du säker på att du vill sluta synka kalendern?
     reload: Uppdatera
     appointment: Bokning
     unavailability: Inte tillgänglig
@@ -175,7 +171,6 @@ sv:
     unavailability_periods_hint: Utföraren är inte bokningsbar under låsta perioder.
     new_appointment_hint: Skapa en ny bokning och spara den i databasen
     reload_appointments_hint: Uppdatera kalendern
-    trigger_sync_hint: Starta synken med Google Kalender
     appointment_updated: Bokningen är uppdaterad
     undo: Ångra
     appointment_details_changed: Bokningen har ändrats
@@ -362,11 +357,6 @@ sv:
     time: Tid
     hour: Timme
     minute: Minuter
-    calendar_sync_completed: Synkroniseringen med Google är slutförd.
-    calendar_sync_failed: Synkroniseringen med Google misslyckades. Kunde inte ansluta till servern.
-    select_sync_calendar: Välj en Google-kalender
-    select_sync_calendar_prompt: Välj vilken kalender du vill synkronisera med. Om du inte väljer någon används din standardkalender.
-    sync_calendar_selected: Google-kalender vald.
     oops_something_went_wrong: Oops! Något gick fel.
     ea_update_success: OpenAppointments är uppdaterad.
     require_captcha: Kräv CAPTCHA
@@ -561,10 +551,6 @@ sv:
     default_timezone_hint: Ställ in den tidszon som ska användas som standard för nya bokningar
     default_language: Standardspråk
     default_language_hint: Ställ in det språk som ska användas som standard för nya bokningar
-    sync_method_prompt: Vilken synkroniseringsmetod vill du använda?
-    caldav_server: CalDAV-server
-    caldav_connection_info_prompt: Vänligen ange anslutningsinformationen för målkalendern.
-    connect: Anslut
     ldap: LDAP
     ldap_info: Denna integration gör att du kan ansluta till en befintlig LDAP-server och automatiskt importera användare till OpenAppointments och låta dem använda SSO med sitt kataloglösenord (användarnamn måste matcha).
     host: Värd
@@ -585,8 +571,6 @@ sv:
     at_least_one_field_required: Minst ett fält måste vara obligatoriskt på bokningssidan.
     customer_is_already_booked: Kunden har redan en bokning på den valda tiden.
     fields: Fält
-    invalid_credentials_provided: Felaktiga uppgifter angivna, försök igen.
-    calendar_url: Kalender-URL
     please_select: Vänligen välj
     secret_header: Säkerhetsheader
     search: Sök
@@ -606,15 +590,6 @@ sv:
     altcha_enabled: Aktivera ALTCHA
     generate: Generera
     meeting_link: Möteslänk
-    google_calendar: Google Kalender
-    google_calendar_info: Aktivera synkronisering för att koppla bokningar till personalens Google-kalendrar
-    google_client_id: Klient-ID
-    google_client_id_info: Client ID från ditt projekt i Google Cloud Console
-    google_client_secret: Klienthemlighet
-    google_client_secret_info: Client Secret från ditt projekt i Google Cloud Console
-    google_calendar_setup_info: 'För att aktivera synkronisering med Google Kalender behöver du skapa ett projekt i Google Cloud Console, aktivera Google Calendar API och skapa OAuth 2.0-uppgifter. Besök:'
-    google_meet_link_generation: Skapa Google Meet-länkar
-    google_meet_link_generation_info: Skapa en möteslänk i Google Meet automatiskt för synkade bokningar. Länken sparas i bokningens fält för möteslänkar
     display_add_to_google_calendar: Visa knappen "Lägg till i Google-kalendern"
     display_add_to_google_calendar_info: Visa knappen "Lägg till i Google-kalendern" på bokningsbekräftelsen, så att kunden enkelt kan spara bokningen i sin egen kalender
     select_all: Välj alla
@@ -987,7 +962,6 @@ sv:
     clear_providers: "Rensa utförare"
     clear_services: "Rensa tjänster"
     refresh: "Uppdatera"
-    sync: "Synka"
     feed: "Flöde"
     do_not_contact_hint: "Inga bokningsbekräftelser, ändringar eller påminnelser skickas till den här kunden"
     do_not_contact_warning: "Den här kunden har bett att inte bli kontaktad. Meddelanden som skickas hit levereras ändå."

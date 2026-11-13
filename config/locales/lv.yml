@@ -149,10 +149,6 @@ lv:
     users: Vartotāji
     settings: Nustatījumi
     log_out: Atsijungti
-    synchronize: Sinhronizēt
-    enable_sync: Ieslēgt sinhronizēšanu
-    disable_sync: Izjungti sinhronizēšanu
-    disable_sync_prompt: Vai tiešām vēlaties izslēgt kalendoriaus sinhronizēšanu?
     reload: Perkrauti
     appointment: Pieraksts
     unavailability: Nepieejamība
@@ -175,7 +171,6 @@ lv:
     unavailability_periods_hint: Nepasiekiamumo periodiem piegādātājiem nepieims jaunu tikšanās veidu.
     new_appointment_hint: Sukurkite jaunu tikšanos un ierakstykite viņu uz datu bāzes.
     reload_appointments_hint: Atnaujiniet kalendoriaus susitikimus.
-    trigger_sync_hint: Paleiskite kalendoriaus sinhronizēšanas procesu.
     appointment_updated: Susitikimas veiksmīgi atjaunināts.
     undo: Atsaukt
     appointment_details_changed: Susitikimo detaļas tika mainītas
@@ -362,11 +357,6 @@ lv:
     time: Laiks
     hour: Stunda
     minute: Minūte
-    calendar_sync_completed: Kalendāra sinhronizācija veiksmīgi pabeigta.
-    calendar_sync_failed: 'Kalendāra sinhronizācija neizdevās: Nevarēja izveidot servera savienojumu.'
-    select_sync_calendar: Izvēlieties kalendāru
-    select_sync_calendar_prompt: Izvēlieties kalendāru, ar kuru vēlaties sinhronizēt savas tikšanās.
-    sync_calendar_selected: Sinhronizācijas kalendārs ir veiksmīgi izvēlēts.
     oops_something_went_wrong: Oops! Kaut kas notika nepareizi.
     ea_update_success: OpenAppointments ir veiksmīgi atjaunināts.
     require_captcha: Pieprasīt CAPTCHA
@@ -561,10 +551,6 @@ lv:
     default_timezone_hint: Iestatiet noklusējuma laika zonas vērtību, kas tiks izmantota jauniem ierakstiem.
     default_language: Noklusējuma valoda
     default_language_hint: Iestatiet noklusējuma valodas vērtību, kas tiks izmantota jauniem ierakstiem.
-    sync_method_prompt: Kuru sinhronizācijas metodi vēlaties izmantot?
-    caldav_server: CalDAV serveris
-    caldav_connection_info_prompt: Lūdzu, ievadiet mērķa CalDAV kalendāra savienojuma informāciju.
-    connect: Savienot
     ldap: LDAP
     ldap_info: Šī integrācija ļauj izveidot savienojumu ar esošo LDAP serveri un automātiski importēt lietotājus programmā OpenAppointments, kā arī ļaut viņiem veikt SSO ar direktorija paroli (lietotājvārdam jābūt vienādam).
     host: Resursdators
@@ -585,8 +571,6 @@ lv:
     at_least_one_field_required: Rezervācijas lapā vismaz vienam laukam jābūt iestatītam kā obligātam.
     customer_is_already_booked: Šim klientam jau ir norunāta tikšanās pieprasītā rezervācijas perioda laikā.
     fields: Lauki
-    invalid_credentials_provided: Sniegti nepareizi akreditācijas dati, lūdzu, mēģiniet vēlreiz.
-    calendar_url: Kalendāra URL
     please_select: Lūdzu, izvēlieties
     secret_header: Slepenā galvene
     search: Meklēt
@@ -606,15 +590,6 @@ lv:
     altcha_enabled: Iespējot ALTCHA
     generate: Ģenerēt
     meeting_link: Sapulces saite
-    google_calendar: Google kalendārs
-    google_calendar_info: Iespējojiet Google Calendar sinhronizāciju, lai sinhronizētu pierakstus ar pakalpojumu sniedzēju Google Calendar kontiem.
-    google_client_id: Client ID
-    google_client_id_info: Client ID no jūsu Google Cloud Console projekta.
-    google_client_secret: Client Secret
-    google_client_secret_info: Client Secret no jūsu Google Cloud Console projekta.
-    google_calendar_setup_info: 'Lai iespējotu Google Calendar sinhronizāciju, jums jāizveido projekts Google Cloud Console, jāiespējo Google Calendar API un jāizveido OAuth 2.0 akreditācijas dati. Apmeklējiet:'
-    google_meet_link_generation: Ģenerēt Google Meet saites
-    google_meet_link_generation_info: Automātiski izveidojiet Google Meet videokonferences saiti sinhronizētiem pierakstiem. Sapulces saite tiks saglabāta pieraksta sapulces saites laukā.
     display_add_to_google_calendar: Attēlot "Add to Google Calendar" pogu
     display_add_to_google_calendar_info: Rādīt "Add to Google Calendar" pogu rezervācijas apstiprinājuma lapā, lai klienti varētu viegli pievienot savu pierakstu personīgajam Google Calendar kalendāram.
     select_all: Atlasīt visu
@@ -987,7 +962,6 @@ lv:
     clear_providers: "Notīrīt sniedzējus"
     clear_services: "Notīrīt pakalpojumus"
     refresh: "Atsvaidzināt"
-    sync: "Sinhronizēt"
     feed: "Plūsma"
     do_not_contact_hint: "Šim klientam netiek sūtīti rezervāciju apstiprinājumi, izmaiņas vai atgādinājumi"
     do_not_contact_warning: "Šis klients ir lūdzis ar viņu nesazināties. Šeit nosūtītās ziņas tomēr tiek piegādātas."

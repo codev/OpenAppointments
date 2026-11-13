@@ -155,13 +155,8 @@ en:
     users: Users
     settings: Settings
     log_out: Log Out
-    synchronize: Synchronize
-    enable_sync: Enable Sync
-    disable_sync: Disable Sync
-    disable_sync_prompt: Are you sure that you want to disable the calendar synchronization?
     reload: Reload
     refresh: Refresh
-    sync: Sync
     feed: Feed
     appointment: Appointment
     unavailability: Unavailability
@@ -184,7 +179,6 @@ en:
     unavailability_periods_hint: During unavailability periods the provider won't accept new appointments.
     new_appointment_hint: Create a new appointment and store it into the database.
     reload_appointments_hint: Reload calendar appointments.
-    trigger_sync_hint: Trigger the calendar synchronization process.
     appointment_updated: Appointment updated successfully.
     undo: Undo
     appointment_details_changed: Appointment details have changed
@@ -373,11 +367,6 @@ en:
     time: Time
     hour: Hour
     minute: Minute
-    calendar_sync_completed: Calendar synchronization completed successfully.
-    calendar_sync_failed: 'Calendar synchronization failed: Could not establish server connection.'
-    select_sync_calendar: Select Calendar
-    select_sync_calendar_prompt: Select the calendar that you want to sync your appointments with.
-    sync_calendar_selected: Sync calendar has been successfully selected.
     oops_something_went_wrong: Oops! Something Went Wrong.
     ea_update_success: OpenAppointments has been successfully updated.
     require_captcha: Require CAPTCHA
@@ -576,10 +565,6 @@ en:
     default_timezone_hint: Set the default timezone value that will be used for new records.
     default_language: Default Language
     default_language_hint: Set the default language value that will be used for new records.
-    sync_method_prompt: Which sync method would you like to use?
-    caldav_server: CalDAV Server
-    caldav_connection_info_prompt: Please enter the connection information of the target CalDAV Calendar.
-    connect: Connect
     ldap: LDAP
     ldap_info: This integration enables you to connect to an existing LDAP server and automatically import users into OpenAppointments and let them SSO with their directory password (username must match).
     host: Host
@@ -600,8 +585,6 @@ en:
     at_least_one_field_required: At least one field must be set as required in the booking page.
     customer_is_already_booked: This customer already has an appointment during the requested reservation period.
     fields: Fields
-    invalid_credentials_provided: Invalid credentials provided, please try again.
-    calendar_url: Calendar URL
     please_select: Please Select
     secret_header: Secret Header
     search: Search
@@ -621,15 +604,6 @@ en:
     altcha_enabled: Enable ALTCHA
     generate: Generate
     meeting_link: Meeting Link
-    google_calendar: Google Calendar
-    google_calendar_info: Enable Google Calendar synchronization to sync appointments with provider Google Calendar accounts.
-    google_client_id: Client ID
-    google_client_id_info: The Client ID from your Google Cloud Console project.
-    google_client_secret: Client Secret
-    google_client_secret_info: The Client Secret from your Google Cloud Console project.
-    google_calendar_setup_info: 'To enable Google Calendar sync, you need to create a project in the Google Cloud Console, enable the Google Calendar API, and create OAuth 2.0 credentials. Visit:'
-    google_meet_link_generation: Generate Google Meet Links
-    google_meet_link_generation_info: Automatically create a Google Meet video conference link for synced appointments. The meeting link will be stored in the appointment's meeting link field.
     display_add_to_google_calendar: Display "Add to Google Calendar" Button
     display_add_to_google_calendar_info: Show the "Add to Google Calendar" button on the booking confirmation page, allowing customers to easily add their appointment to their personal Google Calendar.
     select_all: Select All

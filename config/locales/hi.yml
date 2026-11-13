@@ -149,10 +149,6 @@ hi:
     users: यूज़र
     settings: सेटिंग
     log_out: लॉग आउट
-    synchronize: सिंक्रनाइज़
-    enable_sync: सिंक सक्षम करें
-    disable_sync: सिंक अक्षम करें
-    disable_sync_prompt: क्या आप सुनिश्चित हैं कि आप कैलेंडर सिंक्रनाइजेशन को निष्क्रिय करना चाहते हैं?
     reload: रीलोड
     appointment: अपॉइंटमेंट
     unavailability: अनुपलब्ध
@@ -175,7 +171,6 @@ hi:
     unavailability_periods_hint: अनुपलब्ध अवधि के दौरान प्रदाता नई अपॉइंटमेंट को स्वीकार नहीं करेगा.
     new_appointment_hint: एक नई अपॉइंटमेंट बनाएँ और डेटाबेस में स्टोर.
     reload_appointments_hint: कैलेंडर अपॉइंटमेंट को पुनः लोड करें.
-    trigger_sync_hint: गूगल कैलेंडर तुल्यकालन प्रक्रिया को ट्रिगर करें.
     appointment_updated: अपॉइंटमेंट अप्डैटिड सक्सेस्फल.
     undo: अन्डू
     appointment_details_changed: अपॉइंटमेंट विवरण बदल गया है.
@@ -362,11 +357,6 @@ hi:
     time: समय
     hour: घंटा
     minute: मिनट
-    calendar_sync_completed: गूगल तुल्यकालन सफलतापूर्वक पूरा हुआ
-    calendar_sync_failed: 'गूगल तुल्यकालन विफल: सर्वर कनेक्शन स्थापित नहीं किया जा सका'
-    select_sync_calendar: गूगल कैलेंडर का चयन करें
-    select_sync_calendar_prompt: आप अपने नियुक्तियों सिंक करना चाहते हैं कि कैलेंडर का चयन करें। यदि आप एक विशिष्ट कैलेंडर का चयन नहीं करना चाहते हैं, तो डिफ़ॉल्ट रूप से एक का प्रयोग किया जाएगा
-    sync_calendar_selected: गूगल कैलेंडर सफलतापूर्वक चयनित किया गया है
     oops_something_went_wrong: उफ़! कुछ गलत हो गया
     ea_update_success: आसान! अपॉइंटमेंट सफलतापूर्वक अद्यतन किया गया है.
     require_captcha: CAPTCHA आवश्यक है
@@ -561,10 +551,6 @@ hi:
     default_timezone_hint: नई रिकॉर्ड्स के लिए उपयोग किए जाने वाले डिफ़ॉल्ट समय क्षेत्र मान को सेट करें।
     default_language: डिफ़ॉल्ट भाषा
     default_language_hint: नई रिकॉर्ड्स के लिए उपयोग की जाने वाली डिफ़ॉल्ट भाषा मान को सेट करें।
-    sync_method_prompt: आप किस सिंक विधि का उपयोग करना चाहेंगे?
-    caldav_server: CalDAV सर्वर
-    caldav_connection_info_prompt: लक्षित CalDAV कैलेंडर की कनेक्शन जानकारी दर्ज करें।
-    connect: कनेक्ट करें
     ldap: एलडीएपी
     ldap_info: यह एकीकरण आपको एक मौजूदा LDAP सर्वर से कनेक्ट करने और उपयोगकर्ताओं को स्वचालित रूप से OpenAppointments में आयात करने और उन्हें अपने डायरेक्टरी पासवर्ड (यूजरनेम मेल खाना चाहिए) के साथ SSO करने की अनुमति देता है।
     host: होस्ट
@@ -585,8 +571,6 @@ hi:
     at_least_one_field_required: बुकिंग पृष्ठ में कम से कम एक फ़ील्ड को आवश्यक के रूप में सेट किया जाना चाहिए।
     customer_is_already_booked: इस ग्राहक की पहले से ही अनुरोधित आरक्षण अवधि के दौरान एक अपॉइंटमेंट है।
     fields: फ़ील्ड्स
-    invalid_credentials_provided: अमान्य क्रेडेंशियल्स प्रदान किए गए हैं, कृपया पुनः प्रयास करें।
-    calendar_url: कैलेंडर URL
     please_select: कृपया चयन करें
     secret_header: गुप्त हेडर
     search: खोजें
@@ -606,15 +590,6 @@ hi:
     altcha_enabled: ALTCHA सक्षम करें
     generate: जनरेट करें
     meeting_link: मीटिंग लिंक
-    google_calendar: गूगल कैलेंडर
-    google_calendar_info: प्रदाता Google Calendar खातों के साथ अपॉइंटमेंट सिंक करने के लिए Google Calendar सिंक्रोनाइज़ेशन सक्षम करें।
-    google_client_id: क्लाइंट ID
-    google_client_id_info: आपके Google Cloud Console प्रोजेक्ट से क्लाइंट ID।
-    google_client_secret: क्लाइंट सीक्रेट
-    google_client_secret_info: आपके Google Cloud Console प्रोजेक्ट से क्लाइंट सीक्रेट।
-    google_calendar_setup_info: 'Google Calendar सिंक सक्षम करने के लिए, आपको Google Cloud Console में एक प्रोजेक्ट बनाना होगा, Google Calendar API सक्षम करना होगा, और OAuth 2.0 क्रेडेंशियल बनाने होंगे। यहाँ जाएँ:'
-    google_meet_link_generation: Google Meet लिंक जनरेट करें
-    google_meet_link_generation_info: सिंक किए गए अपॉइंटमेंट के लिए स्वचालित रूप से एक Google Meet वीडियो कॉन्फ़्रेंस लिंक बनाएँ। मीटिंग लिंक अपॉइंटमेंट के मीटिंग लिंक फ़ील्ड में संग्रहीत किया जाएगा।
     display_add_to_google_calendar: '"Google Calendar में जोड़ें" बटन प्रदर्शित करें'
     display_add_to_google_calendar_info: बुकिंग पुष्टि पृष्ठ पर "Google Calendar में जोड़ें" बटन दिखाएँ, जिससे ग्राहक आसानी से अपना अपॉइंटमेंट अपने व्यक्तिगत Google Calendar में जोड़ सकें।
     select_all: सभी का चयन करें
@@ -987,7 +962,6 @@ hi:
     clear_providers: "प्रबन्धक साफ़ करें"
     clear_services: "सेवाएँ साफ़ करें"
     refresh: "रीफ़्रेश करें"
-    sync: "सिंक करें"
     feed: "फ़ीड"
     do_not_contact_hint: "इस ग्राहक को बुकिंग की पुष्टि, बदलाव या रिमाइंडर नहीं भेजे जाते"
     do_not_contact_warning: "इस ग्राहक ने संपर्क न करने का अनुरोध किया है। यहाँ से भेजे गए संदेश फिर भी पहुँचाए जाते हैं।"
