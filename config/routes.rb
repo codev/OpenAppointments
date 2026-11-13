@@ -117,6 +117,12 @@ Rails.application.routes.draw do
     post "#{resource}/save" => "#{resource}#save"
   end
 
+  # Test setup on the message provider pages
+  %w[email twilio plivo textanywhere smsgateway].each do |provider|
+    post "messages_#{provider}_settings/test_credentials" => "messages_#{provider}_settings#test_credentials"
+    post "messages_#{provider}_settings/test_send" => "messages_#{provider}_settings#test_send"
+  end
+
   # Theme preview sample (rendered in the Theme settings cards)
   get "theme_settings/preview" => "theme_settings#preview"
 
@@ -138,7 +144,6 @@ Rails.application.routes.draw do
   delete "messages/:id" => "messages#destroy"
   post "business_settings/apply_global_working_plan" => "business_settings#apply_global_working_plan"
   post "altcha_settings/generate_key" => "altcha_settings#generate_key"
-  post "messages_smsgateway_settings/test_sms" => "messages_smsgateway_settings#test_sms"
   post "ldap_settings/search" => "ldap_settings#search"
   post "ldap_settings/import" => "ldap_settings#import"
   get "integrations" => "integrations#index"

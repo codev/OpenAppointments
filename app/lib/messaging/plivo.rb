@@ -19,22 +19,33 @@ module Messaging
       Setting.get("messages_plivo_incoming") == "1"
     end
 
-    def auth_id = Setting.get("messages_plivo_auth_id").to_s
+    def auth_id(config = Messaging.config) = config["messages_plivo_auth_id"]
 
-    def auth_token = Setting.get("messages_plivo_auth_token").to_s
+    def auth_token(config = Messaging.config) = config["messages_plivo_auth_token"]
 
-    def from_number = Setting.get("messages_plivo_from").to_s
+    def from_number(config = Messaging.config) = config["messages_plivo_from"]
 
     def address_for(user)
       Messaging::Template.sms_address(user)
     end
 
-    def deliver(message)
-      uri = URI("https://api.plivo.com/v1/Account/#{auth_id}/Message/")
+    def deliver(message, config = Messaging.config)
+      uri = URI("https://api.plivo.com/v1/Account/#{auth_id(config)}/Message/")
       request = Net::HTTP::Post.new(uri.request_uri, "Content-Type" => "application/json")
-      request.basic_auth(auth_id, auth_token)
-      request.body = JSON.generate(src: from_number, dst: message.to_address, text: message.body)
+      request.basic_auth(auth_id(config), auth_token(config))
+      request.body = JSON.generate(src: from_number(config), dst: message.to_address, text: message.body)
       post!(uri, request)
+    end
+
+    # [ok, error]: the account resource answers 200 to valid credentials.
+    def check_credentials(config = Messaging.config)
+      uri = URI("https://api.plivo.com/v1/Account/#{auth_id(config)}/")
+      request = Net::HTTP::Get.new(uri.request_uri)
+      request.basic_auth(auth_id(config), auth_token(config))
+      post!(uri, request)
+      [ true, nil ]
+    rescue StandardError => e
+      [ false, e.message ]
     end
 
     def post!(uri, request)

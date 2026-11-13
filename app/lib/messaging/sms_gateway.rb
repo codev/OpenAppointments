@@ -23,11 +23,11 @@ module Messaging
       Setting.get("messages_smsgateway_incoming") == "1"
     end
 
-    def base_url = Setting.get("messages_smsgateway_url").to_s.strip.chomp("/")
+    def base_url(config = Messaging.config) = config["messages_smsgateway_url"].to_s.strip.chomp("/")
 
-    def login = Setting.get("messages_smsgateway_login").to_s
+    def login(config = Messaging.config) = config["messages_smsgateway_login"]
 
-    def password = Setting.get("messages_smsgateway_password").to_s
+    def password(config = Messaging.config) = config["messages_smsgateway_password"]
 
     def signing_key = Setting.get("messages_smsgateway_signing_key").to_s
 
@@ -35,11 +35,18 @@ module Messaging
       Messaging::Template.sms_address(user)
     end
 
-    def deliver(message)
-      request = Net::HTTP::Post.new(api_uri("message").request_uri, "Content-Type" => "application/json")
-      request.basic_auth(login, password)
+    def deliver(message, config = Messaging.config)
+      uri = api_uri("message", config)
+      request = Net::HTTP::Post.new(uri.request_uri, "Content-Type" => "application/json")
+      request.basic_auth(login(config), password(config))
       request.body = { message: message.body, phoneNumbers: [ message.to_address ] }.to_json
-      post!(api_uri("message"), request)
+      post!(uri, request)
+    end
+
+    # [ok, error] for the provider page's Test credentials.
+    def check_credentials(config = Messaging.config)
+      error = validate(url: base_url(config), user: login(config), pass: password(config))
+      [ error.nil?, error ]
     end
 
     # Credential check against the server: nil when good, an error string otherwise.
@@ -107,8 +114,8 @@ module Messaging
       ActiveSupport::SecurityUtils.secure_compare(digest, signature.to_s.downcase)
     end
 
-    def api_uri(path)
-      URI("#{base_url}/api/3rdparty/v1/#{path}")
+    def api_uri(path, config = Messaging.config)
+      URI("#{base_url(config)}/api/3rdparty/v1/#{path}")
     end
 
     def http_for(uri)

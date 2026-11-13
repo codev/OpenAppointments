@@ -1,0 +1,28 @@
+<%# Locals: prefix (the channel key), kind ("sms" | "email"). The Test setup
+    section of a provider page: the buttons post the form as it stands, so the
+    credentials being typed are what gets tested; nothing has to be saved. %>
+<div id="<%= prefix %>-test" class="border-top pt-3 mb-3" data-prefix="<%= prefix %>">
+    <h5 class="fw-light mb-3"><%= lang('messages_test_setup') %></h5>
+    <div class="mb-3">
+        <button type="button" id="<%= prefix %>-test-credentials" class="btn btn-outline-secondary test-credentials" data-no-change>
+            <%= lang('messages_test_credentials') %>
+        </button>
+    </div>
+    <label class="form-label" for="<%= prefix %>-test-address"><%= lang('messages_test_sending') %></label>
+    <div class="input-group">
+        <% if kind == "email" %>
+            <input type="email" id="<%= prefix %>-test-address" class="form-control test-address" autocomplete="off"
+                   placeholder="name@example.org" aria-label="<%= lang('messages_test_email_address') %>">
+        <% else %>
+            <input type="text" id="<%= prefix %>-test-address" class="form-control test-address" autocomplete="off"
+                   placeholder="07..." aria-label="<%= lang('messages_test_sms_number') %>">
+        <% end %>
+        <button type="button" id="<%= prefix %>-send-test" class="btn btn-outline-secondary send-test" data-no-change>
+            <%= lang('messages_test_send') %>
+        </button>
+    </div>
+    <div class="form-text test-result"></div>
+</div>
+<% content_for :scripts do %>
+    <%= ea_js "pages/messages_provider_settings" %>
+<% end %>

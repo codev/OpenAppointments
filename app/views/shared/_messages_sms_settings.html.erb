@@ -74,6 +74,8 @@
                                     <a href="<%= console_url %>" target="_blank" rel="noopener"><%= console_label %></a>
                                 </small>
                             </div>
+
+                            <%= render "shared/messages_provider_test", prefix: prefix, kind: "sms" %>
                         </div>
                     </div>
                 <% end %>
