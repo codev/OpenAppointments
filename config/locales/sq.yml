@@ -113,7 +113,7 @@ sq:
     language: Gjuha
     no_language: Pa gjuhë
     fields_are_required: Fushat me * janë të detyrueshme.
-    appointment_confirmation: Konfirmimi i Takimit
+    appointment_confirmation: "Konfirmoni takimin tuaj"
     confirm: Konfirmo
     update: Përditëso
     cancel_appointment_hint: "Shtypni butonin \"Anulo\" për të anuluar takimin"
@@ -680,12 +680,10 @@ sq:
     messages_provider_textanywhere_info: Send and receive SMS with a TextAnywhere account.
     messages_incoming: "Merr përgjigje"
     messages_incoming_hint: "Klientët mund t'u përgjigjen mesazheve që dërgoni."
-    messages_test_sms_sent: "SMS prove u dergua, kontrolloni telefonin."
     messages_test_sms_number: "Numri i telefonit te proves"
-    messages_test_sms: "Dergo SMS prove"
     messages_smsgateway_invalid: "Cilesimet e portes nuk u verifikuan dot:"
     messages_smsgateway_inbound_hint: "Telefoni i dorëzon mesazhet e marra në këtë adresë, regjistrimi bëhet automatikisht gjatë ruajtjes me marrjen të aktivizuar."
-    messages_smsgateway_step_activate: "Shënoni Active dhe Merr përgjigje, pastaj Save. Cilësimet testohen, korrigjoni çdo gabim dhe përdorni butonin e dërgimit të SMS-it provë më poshtë për të testuar dërgimin."
+    messages_smsgateway_step_activate: "Shënoni Aktiv dhe Merr përgjigje, pastaj Ruaj. Cilësimet testohen, korrigjoni çdo gabim dhe përdorni Testo konfigurimin më poshtë për të kontrolluar kredencialet dhe për të dërguar një mesazh prove."
     messages_smsgateway_step_credentials: "Ne ekranin kryesor fikni Local server, ndizni Cloud server dhe shtypni butonin Offline per t'u lidhur (shenoni edhe Start on boot), pastaj kopjoni emrin e perdoruesit dhe fjalekalimin nga ekrani kryesor te fushat Emri i perdoruesit dhe Fjalekalimi me poshte."
     messages_smsgateway_step_signing: "Shkoni te Settings -> Webhooks -> Signing Key ne aplikacion -> vendosni nje celes nenshkrimi dhe kopjojeni te Celesi i nenshkrimit te webhook-ut me poshte."
     messages_smsgateway_step_token: "Nese perdorni server privat vendosni edhe Private Token ne te njejtin ekran - tokeni ndodhet ne /app/data/private_token ne serverin e portes."
@@ -905,7 +903,7 @@ sq:
     fully_booked_notice_default: "Nuk ka takime të disponueshme. Ju lutemi provoni një shërbim ose ofrues tjetër, ose provoni përsëri më vonë."
     notices: "Njoftime"
     waitlist_enabled: "Lista e pritjes"
-    waitlist_enabled_hint: "Lejoni klientët të regjistrohen për t'u njoftuar kur një takim lirohet."
+    waitlist_enabled_hint: "Shfaqet në hapin e datës kur nuk mund të rezervohet asgjë. Lejoni klientët të regjistrohen për t'u njoftuar kur një takim lirohet."
     waitlist_days: "Ditë në listë"
     waitlist_days_hint: "Regjistrimet hiqen pas këtij numri ditësh."
     waitlist_max_notices: "Mesazhe për takim të liruar për regjistrim"
@@ -977,3 +975,25 @@ sq:
     display_order_switch_hint: "Lejo klientët të përdorin një buton në hapin e parë të faqes së rezervimit që u lejon të zgjedhin fillimisht shërbimin ose fillimisht ofruesin, përpara se të zgjedhin tjetrin."
     about_and_services: "Rreth dhe shërbimet"
     notes_internal_hint: "Shënime të brendshme - të dukshme për personat me hyrje si staf"
+    booking_notice_confirmed_step: "Njoftimi i Rezervimit - Pas konfirmimit"
+    messages_provider_default: "Parazgjedhur"
+    messages_default_provider: "Ofruesi i parazgjedhur"
+    messages_default_provider_hint: "Zgjidhet paraprakisht kur dërgohet një mesazh nga faqja e klientit. Vetëm një ofrues mund të jetë i parazgjedhur."
+    messages_test_setup: "Testo konfigurimin"
+    messages_test_credentials: "Testo kredencialet"
+    messages_test_credentials_ok: "Kredencialet funksionojnë."
+    messages_test_sending: "Testo dërgimin"
+    messages_test_send: "Dërgo mesazh prove"
+    messages_test_sent: "Mesazhi provë u dërgua, kontrolloni nëse arriti."
+    messages_test_email_address: "Adresa e emailit për provë"
+    messages_test_failed: "Testi dështoi."
+    messages_test_outgoing_ok: "Dërgimi funksionon."
+    messages_test_outgoing_server: "Dërgimi kalon përmes serverit, nuk ka çfarë të kontrollohet."
+    messages_test_outgoing_failed: "Dërgimi dështoi:"
+    messages_test_incoming_ok: "Marrja funksionon."
+    messages_test_incoming_off: "Marrja është e çaktivizuar."
+    messages_test_incoming_failed: "Marrja dështoi:"
+    messages_provider_quicksms_info: "Dërgoni dhe merrni SMS me një llogari QuickSMS dhe një numër hyrës."
+    messages_quicksms_api_key: "Çelësi API"
+    messages_quicksms_signing_secret: "Sekreti i nënshkrimit të webhook-ut"
+    messages_quicksms_signing_secret_hint: "Sekreti që shfaqet kur krijohet webhook-u i numrit hyrës në portalin QuickSMS. Nëse është bosh, mesazhet e marra pranohen vetëm me tokenin në URL."

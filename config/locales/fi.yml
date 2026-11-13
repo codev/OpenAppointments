@@ -113,7 +113,7 @@ fi:
     language: Kieli
     no_language: Ei kieltä
     fields_are_required: Tähdellä (*) merkityt kentät vaaditaan
-    appointment_confirmation: Vahvista ajanvaraus
+    appointment_confirmation: "Vahvista aikasi"
     confirm: Vahvista
     update: Päivitä
     cancel_appointment_hint: "Peruuta varaus painamalla Peruuta-painiketta"
@@ -680,12 +680,10 @@ fi:
     messages_provider_textanywhere_info: Send and receive SMS with a TextAnywhere account.
     messages_incoming: "Vastaanota vastaukset"
     messages_incoming_hint: "Asiakkaat voivat vastata lähettämiisi viesteihin."
-    messages_test_sms_sent: "Testitekstiviesti laehetetty, tarkista puhelin."
     messages_test_sms_number: "Testipuhelinnumero"
-    messages_test_sms: "Laeheta testitekstiviesti"
     messages_smsgateway_invalid: "Yhdyskaeytaevaen asetuksia ei voitu vahvistaa:"
     messages_smsgateway_inbound_hint: "Puhelin toimittaa vastaanotetut viestit tähän osoitteeseen. Rekisteröinti tehdään automaattisesti tallennettaessa, kun vastaanotto on päällä."
-    messages_smsgateway_step_activate: "Valitse Aktiivinen ja Vastaanota vastaukset, ja tallenna. Asetukset testataan: korjaa mahdolliset virheet ja testaa lähetys alla olevalla Lähetä testitekstiviesti -painikkeella."
+    messages_smsgateway_step_activate: "Valitse Aktiivinen ja Vastaanota vastaukset, ja tallenna. Asetukset testataan: korjaa mahdolliset virheet ja tarkista tunnukset sekä lähetä testiviesti alla olevassa kohdassa Asetusten testaus."
     messages_smsgateway_step_credentials: "Sovelluksen aloitusnaeytoellae: kytke Local server pois, Cloud server paeaelle ja paina Offline-painiketta yhdistaeaeksesi (rastita myoes Start on boot), kopioi sitten aloitusnaeytoen kaeyttaejaetunnus ja salasana alla oleviin kenttiin Kaeyttaejaetunnus ja Salasana."
     messages_smsgateway_step_signing: "Siirry sovelluksen kohtaan Settings -> Webhooks -> Signing Key -> syoetae allekirjoitusavain ja kopioi se alla olevaan Webhookin allekirjoitusavaimeen."
     messages_smsgateway_step_token: "Jos kaeytaet yksityistae palvelinta, syoetae samalla naeytoellae myoes Private Token - token on lyysipalvelimen tiedostossa /app/data/private_token."
@@ -905,7 +903,7 @@ fi:
     fully_booked_notice_default: "Vapaita aikoja ei ole. Kokeile toista palvelua tai henkilöä tai yritä myöhemmin uudelleen."
     notices: "Ilmoitukset"
     waitlist_enabled: "Jonotuslista"
-    waitlist_enabled_hint: "Anna asiakkaiden liittyä jonoon saadakseen ilmoituksen, kun aika vapautuu."
+    waitlist_enabled_hint: "Näytetään päivämäärävaiheessa, kun mitään ei voi varata. Anna asiakkaiden liittyä jonoon saadakseen ilmoituksen, kun aika vapautuu."
     waitlist_days: "Päiviä listalla"
     waitlist_days_hint: "Ilmoittautumiset poistetaan tämän monen päivän kuluttua."
     waitlist_max_notices: "Vapautuneen ajan viestejä per ilmoittautuminen"
@@ -977,3 +975,25 @@ fi:
     display_order_switch_hint: "Sallii asiakkaiden valita varaussivun ensimmäisellä vaiheella painikkeella, valitaanko ensin palvelu vai kampaaja, ennen toisen valitsemista."
     about_and_services: "Tietoja ja palvelut"
     notes_internal_hint: "Sisäiset lisätiedot - näkyvät henkilöille, joilla on henkilökunnan tunnus"
+    booking_notice_confirmed_step: "Varausilmoitus - Vahvistuksen jälkeen"
+    messages_provider_default: "Oletus"
+    messages_default_provider: "Oletuspalveluntarjoaja"
+    messages_default_provider_hint: "Valittuna valmiiksi, kun viesti lähetetään asiakkaan sivulta. Vain yksi palveluntarjoaja voi olla oletus."
+    messages_test_setup: "Asetusten testaus"
+    messages_test_credentials: "Tunnusten testaus"
+    messages_test_credentials_ok: "Tunnukset toimivat."
+    messages_test_sending: "Lähetyksen testaus"
+    messages_test_send: "Lähetä testiviesti"
+    messages_test_sent: "Testiviesti lähetetty, tarkista että se saapui."
+    messages_test_email_address: "Testisähköpostiosoite"
+    messages_test_failed: "Testi epäonnistui."
+    messages_test_outgoing_ok: "Lähetys toimii."
+    messages_test_outgoing_server: "Lähetys kulkee palvelimen kautta, ei tarkistettavaa."
+    messages_test_outgoing_failed: "Lähetys epäonnistui:"
+    messages_test_incoming_ok: "Vastaanotto toimii."
+    messages_test_incoming_off: "Vastaanotto on pois päältä."
+    messages_test_incoming_failed: "Vastaanotto epäonnistui:"
+    messages_provider_quicksms_info: "Lähetä ja vastaanota SMS-viestejä QuickSMS-tilillä ja saapuvan viestin numerolla."
+    messages_quicksms_api_key: "API-avain"
+    messages_quicksms_signing_secret: "Webhookin allekirjoitussalaisuus"
+    messages_quicksms_signing_secret_hint: "Salaisuus, joka näytetään, kun saapuvan numeron webhook luodaan QuickSMS-portaalissa. Jos kenttä on tyhjä, vastaanotetut viestit hyväksytään pelkän URL-tunnisteen perusteella."

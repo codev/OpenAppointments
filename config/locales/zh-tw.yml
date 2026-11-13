@@ -113,7 +113,7 @@ zh-tw:
     language: 語言
     no_language: 無語言
     fields_are_required: 標有 * 的欄位為必填。
-    appointment_confirmation: 預約確認
+    appointment_confirmation: "確認您的預約"
     confirm: 確認
     update: 更新
     cancel_appointment_hint: "按下「取消」按鈕即可取消預約"
@@ -680,12 +680,10 @@ zh-tw:
     messages_provider_textanywhere_info: Send and receive SMS with a TextAnywhere account.
     messages_incoming: "接收回覆"
     messages_incoming_hint: "顧客可以回覆您傳送的訊息。"
-    messages_test_sms_sent: "測試簡訊已傳送,請檢查手機。"
     messages_test_sms_number: "測試電話號碼"
-    messages_test_sms: "傳送測試簡訊"
     messages_smsgateway_invalid: "無法驗證閘道設定:"
     messages_smsgateway_inbound_hint: "手機會將收到的訊息傳送到此地址，開啟接收後儲存時會自動完成註冊。"
-    messages_smsgateway_step_activate: "勾選 Active 和接收回覆，然後按儲存。系統會測試設定，請修正任何錯誤，並使用下方的傳送測試簡訊按鈕測試傳送。"
+    messages_smsgateway_step_activate: "勾選啟用和接收回覆，然後按儲存。系統會測試設定，請修正任何錯誤，並使用下方的測試設定來檢查憑證並傳送測試訊息。"
     messages_smsgateway_step_credentials: "在主畫面關閉 Local server、開啟 Cloud server 並按 Offline 按鈕連線(同時勾選 Start on boot),然後將主畫面顯示的使用者名稱與密碼複製到下方的使用者名稱與密碼。"
     messages_smsgateway_step_signing: "前往應用程式的 Settings -> Webhooks -> Signing Key -> 輸入簽章金鑰,再複製到下方的 Webhook 簽章金鑰。"
     messages_smsgateway_step_token: "若使用私有伺服器,也要在同一設定畫面輸入 Private Token - 權杖位於閘道伺服器的 /app/data/private_token。"
@@ -905,7 +903,7 @@ zh-tw:
     fully_booked_notice_default: "目前沒有可用的預約。請嘗試其他服務或提供者，或稍後再試。"
     notices: "提示"
     waitlist_enabled: "候補名單"
-    waitlist_enabled_hint: "允許顧客登記候補，以便在有預約空出時收到通知。"
+    waitlist_enabled_hint: "在無法預約任何項目時顯示於日期步驟。允許顧客登記候補，以便在有預約空出時收到通知。"
     waitlist_days: "候補保留天數"
     waitlist_days_hint: "超過此天數後，候補登記將被移除。"
     waitlist_max_notices: "每位候補者收到的空位通知次數上限"
@@ -977,3 +975,25 @@ zh-tw:
     display_order_switch_hint: "允許顧客使用預約頁面第一步的按鈕，選擇先選服務或先選提供者，再選另一項。"
     about_and_services: "關於與服務"
     notes_internal_hint: "內部備註 - 擁有員工登入帳號的人員可見"
+    booking_notice_confirmed_step: "預約須知 - 確認後"
+    messages_provider_default: "預設"
+    messages_default_provider: "預設服務人員"
+    messages_default_provider_hint: "從顧客頁面傳送訊息時預先選取。只能有一位服務人員作為預設。"
+    messages_test_setup: "測試設定"
+    messages_test_credentials: "測試憑證"
+    messages_test_credentials_ok: "憑證可用。"
+    messages_test_sending: "測試傳送"
+    messages_test_send: "傳送測試訊息"
+    messages_test_sent: "測試訊息已傳送，請確認是否收到。"
+    messages_test_email_address: "測試電子郵件地址"
+    messages_test_failed: "測試失敗。"
+    messages_test_outgoing_ok: "傳送正常。"
+    messages_test_outgoing_server: "傳送經由伺服器進行，無需檢查。"
+    messages_test_outgoing_failed: "傳送失敗："
+    messages_test_incoming_ok: "接收正常。"
+    messages_test_incoming_off: "接收已關閉。"
+    messages_test_incoming_failed: "接收失敗："
+    messages_provider_quicksms_info: "使用 QuickSMS 帳戶和來電號碼傳送及接收 SMS。"
+    messages_quicksms_api_key: "API 金鑰"
+    messages_quicksms_signing_secret: "Webhook 簽章密鑰"
+    messages_quicksms_signing_secret_hint: "在 QuickSMS 入口網站建立來電號碼的 Webhook 時顯示的密鑰。若留空，收到的訊息僅憑 URL 權杖即被接受。"

@@ -113,7 +113,7 @@ bu:
     language: Език
     no_language: Без език
     fields_are_required: Полетата обозначени с * са задължителни.
-    appointment_confirmation: Потвърдете часът
+    appointment_confirmation: "Потвърдете часа си"
     confirm: Потвърждение
     update: Актуализиране
     cancel_appointment_hint: "Натиснете бутона \"Отказ\", за да откажете часа"
@@ -680,12 +680,10 @@ bu:
     messages_provider_textanywhere_info: Send and receive SMS with a TextAnywhere account.
     messages_incoming: "Получаване на отговори"
     messages_incoming_hint: "Клиентите могат да отговарят на съобщенията, които изпращате."
-    messages_test_sms_sent: "Тестовият SMS е изпратен, проверете телефона."
     messages_test_sms_number: "Тестов телефонен номер"
-    messages_test_sms: "Изпрати тестов SMS"
     messages_smsgateway_invalid: "Настройките на шлюза не можаха да бъдат проверени:"
     messages_smsgateway_inbound_hint: "Телефонът доставя получените съобщения на този адрес, регистрацията става автоматично при запазване с включено получаване."
-    messages_smsgateway_step_activate: "Отбележете Активно и Получаване на отговори, после Запази. Настройките се тестват, поправете грешките и използвайте бутона Изпрати тестов SMS по-долу, за да тествате изпращането."
+    messages_smsgateway_step_activate: "Отбележете Активен и Получаване на отговори, после Запис. Настройките се тестват, поправете грешките и използвайте Тест на настройката по-долу, за да проверите данните за достъп и да изпратите тестово съобщение."
     messages_smsgateway_step_credentials: "На началния екран изключете Local server, включете Cloud server и натиснете бутона Offline за свързване (отбележете и Start on boot), после копирайте потребителското име и паролата от началния екран в Потребителско име и Парола по-долу."
     messages_smsgateway_step_signing: "Отидете в Settings -> Webhooks -> Signing Key в приложението -> въведете ключ и го копирайте в Ключ за подпис на webhook по-долу."
     messages_smsgateway_step_token: "Ако използвате частен сървър, въведете и Private Token на същия екран - токенът е в /app/data/private_token на сървъра на шлюза."
@@ -905,7 +903,7 @@ bu:
     fully_booked_notice_default: "Няма свободни часове. Моля, изберете друга услуга или изпълнител, или опитайте отново по-късно."
     notices: "Съобщения"
     waitlist_enabled: "Списък на чакащите"
-    waitlist_enabled_hint: "Позволете на клиентите да се записват, за да ги уведомявате при освободен час."
+    waitlist_enabled_hint: "Показва се на стъпката с датата, когато нищо не може да се резервира. Позволете на клиентите да се записват, за да ги уведомявате при освободен час."
     waitlist_days: "Дни в списъка"
     waitlist_days_hint: "Записванията се премахват след този брой дни."
     waitlist_max_notices: "Съобщения за освободен час на записване"
@@ -977,3 +975,25 @@ bu:
     display_order_switch_hint: "Позволи на клиентите да използват бутон в първата стъпка на страницата за резервации, с който избират първо услуга или първо фризьор, преди да изберат другото."
     about_and_services: "За мен и услуги"
     notes_internal_hint: "Вътрешни записки - видими за хората с вход за персонала"
+    booking_notice_confirmed_step: "Известие за резервация - След потвърждение"
+    messages_provider_default: "По подразбиране"
+    messages_default_provider: "Доставчик по подразбиране"
+    messages_default_provider_hint: "Избран предварително при изпращане на съобщение от страницата на клиента. Само един доставчик може да е по подразбиране."
+    messages_test_setup: "Тест на настройката"
+    messages_test_credentials: "Тест на данните за достъп"
+    messages_test_credentials_ok: "Данните за достъп работят."
+    messages_test_sending: "Тест на изпращането"
+    messages_test_send: "Изпрати тестово съобщение"
+    messages_test_sent: "Тестовото съобщение е изпратено, проверете дали е пристигнало."
+    messages_test_email_address: "Тестов имейл адрес"
+    messages_test_failed: "Тестът не успя."
+    messages_test_outgoing_ok: "Изпращането работи."
+    messages_test_outgoing_server: "Изпращането минава през сървъра, няма какво да се проверява."
+    messages_test_outgoing_failed: "Изпращането не успя:"
+    messages_test_incoming_ok: "Получаването работи."
+    messages_test_incoming_off: "Получаването е изключено."
+    messages_test_incoming_failed: "Получаването не успя:"
+    messages_provider_quicksms_info: "Изпращайте и получавайте SMS с QuickSMS акаунт и входящ номер."
+    messages_quicksms_api_key: "API ключ"
+    messages_quicksms_signing_secret: "Таен ключ за подпис на webhook"
+    messages_quicksms_signing_secret_hint: "Тайният ключ, показан при създаването на webhook за входящия номер в портала на QuickSMS. Ако е празно, получените съобщения се приемат само по URL токена."

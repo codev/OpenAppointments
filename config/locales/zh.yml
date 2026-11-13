@@ -113,7 +113,7 @@ zh:
     language: 语言
     no_language: 无语言
     fields_are_required: 标记*的位置必须填写.
-    appointment_confirmation: 确认预约
+    appointment_confirmation: "确认您的预约"
     confirm: 确认
     update: 更新
     cancel_appointment_hint: "点击“取消”按钮即可取消预约"
@@ -680,12 +680,10 @@ zh:
     messages_provider_textanywhere_info: Send and receive SMS with a TextAnywhere account.
     messages_incoming: "接收回复"
     messages_incoming_hint: "客户可以回复您发送的消息。"
-    messages_test_sms_sent: "测试短信已发送,请检查手机。"
     messages_test_sms_number: "测试电话号码"
-    messages_test_sms: "发送测试短信"
     messages_smsgateway_invalid: "无法验证网关设置:"
     messages_smsgateway_inbound_hint: "手机会将收到的消息发送到此地址，开启接收后保存时会自动完成注册。"
-    messages_smsgateway_step_activate: "勾选 Active 和接收回复，然后点击保存。系统会测试设置，请修正任何错误，并使用下方的发送测试短信按钮测试发送。"
+    messages_smsgateway_step_activate: "勾选启用和接收回复，然后点击保存。系统会测试设置，请修正任何错误，并使用下方的测试设置来检查凭据并发送测试消息。"
     messages_smsgateway_step_credentials: "在主屏幕关闭 Local server、开启 Cloud server 并点按 Offline 按钮连接(同时勾选 Start on boot),然后将主屏幕显示的用户名和密码复制到下方的用户名和密码。"
     messages_smsgateway_step_signing: "前往应用的 Settings -> Webhooks -> Signing Key -> 输入签名密钥,再复制到下方的 Webhook 签名密钥。"
     messages_smsgateway_step_token: "如使用私有服务器,还需在同一设置页面输入 Private Token - 令牌位于网关服务器的 /app/data/private_token。"
@@ -905,7 +903,7 @@ zh:
     fully_booked_notice_default: "目前没有可用的预约。请尝试其他服务项目或服务人员，或稍后再试。"
     notices: "提示"
     waitlist_enabled: "候补名单"
-    waitlist_enabled_hint: "允许客户登记候补，以便在有预约空出时收到通知。"
+    waitlist_enabled_hint: "在无法预约任何项目时显示于日期步骤。允许客户登记候补，以便在有预约空出时收到通知。"
     waitlist_days: "候补保留天数"
     waitlist_days_hint: "超过此天数后，候补登记将被移除。"
     waitlist_max_notices: "每位候补者收到的空位通知次数上限"
@@ -977,3 +975,25 @@ zh:
     display_order_switch_hint: "允许客户使用预约页面第一步的按钮，选择先选服务项目或先选服务人员，再选另一项。"
     about_and_services: "关于与服务"
     notes_internal_hint: "内部注释 - 拥有员工登录账号的人员可见"
+    booking_notice_confirmed_step: "预约须知 - 确认后"
+    messages_provider_default: "默认"
+    messages_default_provider: "默认服务人员"
+    messages_default_provider_hint: "从客户页面发送消息时预先选中。只能有一位服务人员作为默认。"
+    messages_test_setup: "测试设置"
+    messages_test_credentials: "测试凭据"
+    messages_test_credentials_ok: "凭据可用。"
+    messages_test_sending: "测试发送"
+    messages_test_send: "发送测试消息"
+    messages_test_sent: "测试消息已发送，请确认是否收到。"
+    messages_test_email_address: "测试电子邮件地址"
+    messages_test_failed: "测试失败。"
+    messages_test_outgoing_ok: "发送正常。"
+    messages_test_outgoing_server: "发送经由服务器进行，无需检查。"
+    messages_test_outgoing_failed: "发送失败："
+    messages_test_incoming_ok: "接收正常。"
+    messages_test_incoming_off: "接收已关闭。"
+    messages_test_incoming_failed: "接收失败："
+    messages_provider_quicksms_info: "使用 QuickSMS 账户和来电号码发送及接收 SMS。"
+    messages_quicksms_api_key: "API 密钥"
+    messages_quicksms_signing_secret: "Webhook 签名密钥"
+    messages_quicksms_signing_secret_hint: "在 QuickSMS 门户创建来电号码的 Webhook 时显示的密钥。若留空，收到的消息仅凭 URL 令牌即被接受。"

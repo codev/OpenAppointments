@@ -113,7 +113,7 @@ de:
     language: Sprache
     no_language: Keine Sprache
     fields_are_required: Die Felder mit einem * sind Pflichtfelder.
-    appointment_confirmation: Bitte bestätigen Sie die Terminauswahl
+    appointment_confirmation: "Bestätigen Sie Ihren Termin"
     confirm: Bestätigung
     update: Aktualisierung
     cancel_appointment_hint: "Klicken Sie auf die Schaltfläche \"Abbrechen\", um den Termin abzusagen"
@@ -680,12 +680,10 @@ de:
     messages_provider_textanywhere_info: Send and receive SMS with a TextAnywhere account.
     messages_incoming: "Antworten empfangen"
     messages_incoming_hint: "Kundschaft kann auf die von Ihnen gesendeten Nachrichten antworten."
-    messages_test_sms_sent: "Test-SMS gesendet, pruefen Sie das Telefon."
     messages_test_sms_number: "Test-Telefonnummer"
-    messages_test_sms: "Test-SMS senden"
     messages_smsgateway_invalid: "Die Gateway-Einstellungen konnten nicht geprueft werden:"
     messages_smsgateway_inbound_hint: "Das Telefon liefert empfangene Nachrichten an diese Adresse, die Registrierung erfolgt beim Speichern mit aktiviertem Empfang automatisch."
-    messages_smsgateway_step_activate: "Haken Sie Active und Antworten empfangen an und klicken Sie dann auf Save. Die Einstellungen werden getestet, beheben Sie eventuelle Fehler und testen Sie das Senden mit der Schaltfläche Test-SMS senden unten."
+    messages_smsgateway_step_activate: "Haken Sie Aktiv und Antworten empfangen an und klicken Sie dann auf Speichern. Die Einstellungen werden getestet, beheben Sie eventuelle Fehler und prüfen Sie mit Einrichtung testen unten die Zugangsdaten und senden Sie eine Testnachricht."
     messages_smsgateway_step_credentials: "Auf dem Startbildschirm der App: Local server aus, Cloud server ein und die Offline-Schaltflaeche zum Verbinden druecken (auch Start on boot ankreuzen), dann Benutzername und Passwort vom Startbildschirm unten in Benutzername und Passwort kopieren."
     messages_smsgateway_step_signing: "Gehen Sie in der App zu Settings -> Webhooks -> Signing Key -> geben Sie einen Signaturschluessel ein und kopieren Sie ihn unten in den Webhook-Signaturschluessel."
     messages_smsgateway_step_token: "Bei einem privaten Server muss auf diesem Einstellungsbildschirm auch der Private Token eingetragen werden - er liegt in /app/data/private_token auf dem Gateway-Server."
@@ -905,7 +903,7 @@ de:
     fully_booked_notice_default: "Es sind keine Termine verfügbar. Bitte versuchen Sie eine andere Dienstleistung oder einen anderen Anbieter oder versuchen Sie es später erneut."
     notices: "Hinweise"
     waitlist_enabled: "Warteliste"
-    waitlist_enabled_hint: "Kunden können sich eintragen, um benachrichtigt zu werden, sobald ein Termin frei wird."
+    waitlist_enabled_hint: "Wird im Datumsschritt angezeigt, wenn nichts gebucht werden kann. Kunden können sich eintragen, um benachrichtigt zu werden, sobald ein Termin frei wird."
     waitlist_days: "Tage auf der Liste"
     waitlist_days_hint: "Einträge werden nach dieser Anzahl von Tagen entfernt."
     waitlist_max_notices: "Nachrichten zu freien Terminen pro Eintrag"
@@ -977,3 +975,25 @@ de:
     display_order_switch_hint: "Kundschaft kann im ersten Schritt der Buchungsseite per Schaltfläche wählen, ob zuerst die Dienstleistung oder zuerst die Friseurin bzw. der Friseur gewählt wird."
     about_and_services: "Über mich & Dienstleistungen"
     notes_internal_hint: "Interne Bemerkungen - sichtbar für Personen mit Mitarbeiter-Login"
+    booking_notice_confirmed_step: "Buchungshinweis - Nach der Bestätigung"
+    messages_provider_default: "Standard"
+    messages_default_provider: "Standardanbieter"
+    messages_default_provider_hint: "Vorausgewählt beim Senden einer Nachricht von der Seite eines Kunden. Nur ein Anbieter kann der Standard sein."
+    messages_test_setup: "Einrichtung testen"
+    messages_test_credentials: "Zugangsdaten testen"
+    messages_test_credentials_ok: "Die Zugangsdaten funktionieren."
+    messages_test_sending: "Senden testen"
+    messages_test_send: "Testnachricht senden"
+    messages_test_sent: "Testnachricht gesendet, prüfen Sie, ob sie angekommen ist."
+    messages_test_email_address: "Test-E-Mail-Adresse"
+    messages_test_failed: "Der Test ist fehlgeschlagen."
+    messages_test_outgoing_ok: "Das Senden funktioniert."
+    messages_test_outgoing_server: "Das Senden läuft über den Server, es gibt nichts zu prüfen."
+    messages_test_outgoing_failed: "Das Senden ist fehlgeschlagen:"
+    messages_test_incoming_ok: "Der Empfang funktioniert."
+    messages_test_incoming_off: "Der Empfang ist ausgeschaltet."
+    messages_test_incoming_failed: "Der Empfang ist fehlgeschlagen:"
+    messages_provider_quicksms_info: "Senden und empfangen Sie SMS mit einem QuickSMS-Konto und einer Eingangsnummer."
+    messages_quicksms_api_key: "API-Schlüssel"
+    messages_quicksms_signing_secret: "Webhook-Signaturgeheimnis"
+    messages_quicksms_signing_secret_hint: "Das Geheimnis, das angezeigt wird, wenn der Webhook der Eingangsnummer im QuickSMS-Portal erstellt wird. Ist es leer, werden empfangene Nachrichten allein anhand des URL-Tokens akzeptiert."

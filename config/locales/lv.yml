@@ -113,7 +113,7 @@ lv:
     language: Kalba
     no_language: Nav valodas
     fields_are_required: Laukeliai ar * ir obligāti.
-    appointment_confirmation: Susitikimo apstiprināšana
+    appointment_confirmation: "Apstipriniet savu pierakstu"
     confirm: Patvirtinti
     update: Atnaujināt
     cancel_appointment_hint: "Lai atceltu pierakstu, nospiediet pogu \"Atcelt\""
@@ -680,12 +680,10 @@ lv:
     messages_provider_textanywhere_info: Send and receive SMS with a TextAnywhere account.
     messages_incoming: "Saņemt atbildes"
     messages_incoming_hint: "Klienti var atbildēt uz jūsu nosūtītajām ziņām."
-    messages_test_sms_sent: "Testa SMS nosutita, parbaudiet talruni."
     messages_test_sms_number: "Testa talruna numurs"
-    messages_test_sms: "Sutit testa SMS"
     messages_smsgateway_invalid: "Neizdevas parbaudit vartejas iestatijumus:"
     messages_smsgateway_inbound_hint: "Tālrunis saņemtās ziņas piegādā uz šo adresi, reģistrācija notiek automātiski, saglabājot ar ieslēgtu atbilžu saņemšanu."
-    messages_smsgateway_step_activate: "Atzīmējiet Aktīvs un Saņemt atbildes, pēc tam nospiediet Saglabāt. Iestatījumi tiek pārbaudīti, izlabojiet kļūdas un sūtīšanu pārbaudiet ar pogu Sūtīt testa SMS zemāk."
+    messages_smsgateway_step_activate: "Atzīmējiet Aktīvs un Saņemt atbildes, pēc tam nospiediet Saglabāt. Iestatījumi tiek pārbaudīti, izlabojiet kļūdas un sadaļā Iestatījumu pārbaude zemāk pārbaudiet piekļuves datus un nosūtiet testa ziņu."
     messages_smsgateway_step_credentials: "Sakuma ekrana izsledziet Local server, iesledziet Cloud server un nospiediet pogu Offline, lai pieslegtos (atzimejiet ari Start on boot), tad nokopejiet sakuma ekrana redzamo lietotajvardu un paroli laukos Lietotajvards un Parole zemak."
     messages_smsgateway_step_signing: "Ejiet uz lietotnes Settings -> Webhooks -> Signing Key -> ievadiet parakstisanas atslegu un nokopejiet to zemak lauka Webhook parakstisanas atslega."
     messages_smsgateway_step_token: "Ja izmantojat privatu serveri, taja pasa ekrana ievadiet ari Private Token - tas atrodas /app/data/private_token uz vartejas servera."
@@ -905,7 +903,7 @@ lv:
     fully_booked_notice_default: "Nav pieejamu pierakstu. Lūdzu, izvēlieties citu pakalpojumu vai tiekēju, vai mēģiniet vēlāk."
     notices: "Paziņojumi"
     waitlist_enabled: "Gaidīšanas saraksts"
-    waitlist_enabled_hint: "Ļaujiet klientiem pieteikties, lai viņiem paziņotu, kad pieraksts atbrīvojas."
+    waitlist_enabled_hint: "Tiek rādīts datuma solī, kad nevar rezervēt neko. Ļaujiet klientiem pieteikties, lai viņiem paziņotu, kad pieraksts atbrīvojas."
     waitlist_days: "Dienas sarakstā"
     waitlist_days_hint: "Pieteikumi tiek izņemti pēc šī dienu skaita."
     waitlist_max_notices: "Paziņojumi par atbrīvotu laiku vienam pieteikumam"
@@ -977,3 +975,25 @@ lv:
     display_order_switch_hint: "Ļaut klientiem rezervācijas lapas pirmajā solī ar pogu izvēlēties, vai vispirms izvēlēties pakalpojumu vai speciālistu, pirms izvēlas otru."
     about_and_services: "Par un pakalpojumi"
     notes_internal_hint: "Iekšējās piezīmes - redzamas cilvēkiem ar darbinieka pieteikšanos"
+    booking_notice_confirmed_step: "Paziņojums par rezervāciju - Pēc apstiprināšanas"
+    messages_provider_default: "Noklusējuma"
+    messages_default_provider: "Noklusējuma tiekējs"
+    messages_default_provider_hint: "Tiek iepriekš atlasīts, sūtot ziņu no klienta lapas. Noklusējuma var būt tikai viens tiekējs."
+    messages_test_setup: "Iestatījumu pārbaude"
+    messages_test_credentials: "Piekļuves datu pārbaude"
+    messages_test_credentials_ok: "Piekļuves dati darbojas."
+    messages_test_sending: "Sūtīšanas pārbaude"
+    messages_test_send: "Sūtīt testa ziņu"
+    messages_test_sent: "Testa ziņa nosūtīta, pārbaudiet, vai tā ir saņemta."
+    messages_test_email_address: "Testa e-pasta adrese"
+    messages_test_failed: "Pārbaude neizdevās."
+    messages_test_outgoing_ok: "Sūtīšana darbojas."
+    messages_test_outgoing_server: "Sūtīšana notiek caur serveri, nav ko pārbaudīt."
+    messages_test_outgoing_failed: "Sūtīšana neizdevās:"
+    messages_test_incoming_ok: "Saņemšana darbojas."
+    messages_test_incoming_off: "Saņemšana ir izslēgta."
+    messages_test_incoming_failed: "Saņemšana neizdevās:"
+    messages_provider_quicksms_info: "Sūtiet un saņemiet SMS ar QuickSMS kontu un ienākošo numuru."
+    messages_quicksms_api_key: "API atslēga"
+    messages_quicksms_signing_secret: "Webhook paraksta noslēpums"
+    messages_quicksms_signing_secret_hint: "Noslēpums, kas tiek parādīts, kad QuickSMS portālā tiek izveidots ienākošā numura webhook. Ja tukšs, saņemtās ziņas tiek pieņemtas tikai pēc URL pilnvaras."

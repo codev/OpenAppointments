@@ -959,7 +959,7 @@ en:
     fully_booked_notice_default: "There are no appointments available. Please try a different service or provider or try again later."
     notices: "Notices"
     waitlist_enabled: "Waiting list"
-    waitlist_enabled_hint: "Let customers sign up to be told when an appointment becomes free."
+    waitlist_enabled_hint: "Shown on the date step when nothing can be booked. Customers sign up to be told when an appointment becomes free."
     waitlist_days: "Days on the list"
     waitlist_days_hint: "Signups are removed after this many days."
     waitlist_max_notices: "Freed slot messages per signup"

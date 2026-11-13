@@ -113,7 +113,7 @@ lt:
     language: Kalba
     no_language: Nėra kalbos
     fields_are_required: Žvaigždute * pažymėti laukai yra privalomi.
-    appointment_confirmation: Vizito patvirtinimas
+    appointment_confirmation: "Patvirtinkite savo vizitą"
     confirm: Patvirtinti
     update: Atnaujinti
     cancel_appointment_hint: "Norėdami atšaukti vizitą, spustelėkite mygtuką „Atšaukti“"
@@ -680,12 +680,10 @@ lt:
     messages_provider_textanywhere_info: Send and receive SMS with a TextAnywhere account.
     messages_incoming: "Gauti atsakymus"
     messages_incoming_hint: "Klientai gali atsakyti į jums siunčiamas žinutes."
-    messages_test_sms_sent: "Bandomoji SMS issiusta, patikrinkite telefona."
     messages_test_sms_number: "Bandomasis telefono numeris"
-    messages_test_sms: "Siusti bandomaja SMS"
     messages_smsgateway_invalid: "Nepavyko patikrinti tinklu saito nustatymu:"
     messages_smsgateway_inbound_hint: "Telefonas gautas žinutes perduoda šiuo adresu, registracija atliekama automatiškai įrašant su įjungtu atsakymų gavimu."
-    messages_smsgateway_step_activate: "Pažymėkite Aktyvus ir Gauti atsakymus, tada spustelėkite Įrašyti. Nuostatos išbandomos, ištaisykite klaidas ir siuntimą patikrinkite mygtuku Siųsti bandomąją SMS žemiau."
+    messages_smsgateway_step_activate: "Pažymėkite Aktyvus ir Gauti atsakymus, tada spustelėkite Įrašyti. Nuostatos išbandomos, ištaisykite klaidas ir žemiau esančiu skyriumi Bandymas patikrinkite prisijungimo duomenis bei išsiųskite bandomąją žinutę."
     messages_smsgateway_step_credentials: "Pagrindiniame ekrane isjunkite Local server, ijunkite Cloud server ir paspauskite mygtuka Offline prisijungimui (pazymekite ir Start on boot), tada nukopijuokite pagrindiniame ekrane rodoma naudotojo varda ir slaptazodi i laukus Naudotojo vardas ir Slaptazodis zemiau."
     messages_smsgateway_step_signing: "Eikite i programos Settings -> Webhooks -> Signing Key -> iveskite pasirasymo rakta ir nukopijuokite ji i Webhook parasymo rakta zemiau."
     messages_smsgateway_step_token: "Jei naudojate privatu serveri, tame paciame ekrane iveskite ir Private Token - jis yra /app/data/private_token faile serveryje."
@@ -905,7 +903,7 @@ lt:
     fully_booked_notice_default: "Nėra laisvų vizitų laikų. Pasirinkite kitą paslaugą ar teikėją arba bandykite vėliau."
     notices: "Pranešimai"
     waitlist_enabled: "Laukiančiųjų sąrašas"
-    waitlist_enabled_hint: "Leiskite klientams užsiregistruoti, kad būtų informuoti, kai atsiras laisvas vizito laikas."
+    waitlist_enabled_hint: "Rodoma datos žingsnyje, kai nieko negalima rezervuoti. Leiskite klientams užsiregistruoti, kad būtų informuoti, kai atsiras laisvas vizito laikas."
     waitlist_days: "Dienos sąraše"
     waitlist_days_hint: "Registracijos pašalinamos po nurodyto dienų skaičiaus."
     waitlist_max_notices: "Pranešimų apie laisvą laiką skaičius vienai registracijai"
@@ -977,3 +975,25 @@ lt:
     display_order_switch_hint: "Leisti klientams pirmame rezervacijos puslapio žingsnyje mygtuku pasirinkti, ar pirmiausia rinktis paslaugą, ar specialistą, o tik tada kitą."
     about_and_services: "Apie ir paslaugos"
     notes_internal_hint: "Vidinės pastabos - matomos žmonėms, turintiems darbuotojo prisijungimą"
+    booking_notice_confirmed_step: "Pranešimas apie rezervaciją - Po patvirtinimo"
+    messages_provider_default: "Numatytasis"
+    messages_default_provider: "Numatytasis teikėjas"
+    messages_default_provider_hint: "Iš anksto parenkamas siunčiant žinutę iš kliento puslapio. Numatytasis gali būti tik vienas teikėjas."
+    messages_test_setup: "Bandymas"
+    messages_test_credentials: "Prisijungimo duomenų bandymas"
+    messages_test_credentials_ok: "Prisijungimo duomenys veikia."
+    messages_test_sending: "Siuntimo bandymas"
+    messages_test_send: "Siųsti bandomąją žinutę"
+    messages_test_sent: "Bandomoji žinutė išsiųsta, patikrinkite, ar ji atkeliavo."
+    messages_test_email_address: "Bandomasis el. pašto adresas"
+    messages_test_failed: "Bandymas nepavyko."
+    messages_test_outgoing_ok: "Siuntimas veikia."
+    messages_test_outgoing_server: "Siunčiama per serverį, nieko tikrinti nereikia."
+    messages_test_outgoing_failed: "Siuntimas nepavyko:"
+    messages_test_incoming_ok: "Gavimas veikia."
+    messages_test_incoming_off: "Gavimas išjungtas."
+    messages_test_incoming_failed: "Gavimas nepavyko:"
+    messages_provider_quicksms_info: "Siųskite ir gaukite SMS su QuickSMS paskyra ir gaunamuoju numeriu."
+    messages_quicksms_api_key: "API raktas"
+    messages_quicksms_signing_secret: "Webhook parašo slaptažodis"
+    messages_quicksms_signing_secret_hint: "Slaptažodis rodomas QuickSMS portale sukūrus gaunamojo numerio webhook. Jei tuščias, gautos žinutės priimamos tik pagal URL raktą."

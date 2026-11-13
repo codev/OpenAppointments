@@ -113,7 +113,7 @@ cs:
     language: Jazyk
     no_language: Žádný jazyk
     fields_are_required: Pole označená * jsou povinná.
-    appointment_confirmation: Rezervace schůzky
+    appointment_confirmation: "Potvrďte svůj termín"
     confirm: Potvrdit
     update: Změnit
     cancel_appointment_hint: "Pro zrušení schůzky klikněte na tlačítko \"Zrušit\""
@@ -680,12 +680,10 @@ cs:
     messages_provider_textanywhere_info: Send and receive SMS with a TextAnywhere account.
     messages_incoming: "Přijímat odpovědi"
     messages_incoming_hint: "Zákazníci mohou odpovídat na zprávy, které odesíláte."
-    messages_test_sms_sent: "Testovací SMS odeslána, zkontrolujte telefon."
     messages_test_sms_number: "Testovací telefonní číslo"
-    messages_test_sms: "Odeslat testovací SMS"
     messages_smsgateway_invalid: "Nastavení brány se nepodařilo ověřit:"
     messages_smsgateway_inbound_hint: "Telefon doručuje přijaté zprávy na tuto adresu, registrace proběhne automaticky při uložení se zapnutým příjmem."
-    messages_smsgateway_step_activate: "Zaškrtněte Aktivní a Přijímat odpovědi a uložte. Nastavení se otestuje, opravte chyby a pro test odesílání použijte tlačítko Odeslat testovací SMS níže."
+    messages_smsgateway_step_activate: "Zaškrtněte Aktivní a Přijímat odpovědi a uložte. Nastavení se otestuje, opravte chyby a pomocí Test nastavení níže ověřte přihlašovací údaje a odešlete testovací zprávu."
     messages_smsgateway_step_credentials: "Na úvodní obrazovce vypněte Local server, zapněte Cloud server a klepněte na tlačítko Offline pro připojení (zaškrtněte i Start on boot), poté zkopírujte uživatelské jméno a heslo z úvodní obrazovky do polí Uživatelské jméno a Heslo níže."
     messages_smsgateway_step_signing: "V aplikaci přejděte na Settings -> Webhooks -> Signing Key -> zadejte podpisový klíč a zkopírujte jej do Podpisového klíče webhooků níže."
     messages_smsgateway_step_token: "Používáte-li privátní server, zadejte na této obrazovce i Private Token - token je v /app/data/private_token na serveru brány."
@@ -905,7 +903,7 @@ cs:
     fully_booked_notice_default: "Nejsou k dispozici žádné volné termíny. Zkuste prosím jinou službu nebo poskytovatele, nebo to zkuste znovu později."
     notices: "Oznámení"
     waitlist_enabled: "Čekací listina"
-    waitlist_enabled_hint: "Umožněte zákazníkům přihlásit se k odběru upozornění, jakmile se uvolní termín."
+    waitlist_enabled_hint: "Zobrazuje se v kroku výběru data, když nelze nic rezervovat. Umožněte zákazníkům přihlásit se k odběru upozornění, jakmile se uvolní termín."
     waitlist_days: "Počet dní na listině"
     waitlist_days_hint: "Přihlášky se po uplynutí tohoto počtu dní odstraní."
     waitlist_max_notices: "Zpráv o uvolněném termínu na přihlášku"
@@ -977,3 +975,25 @@ cs:
     display_order_switch_hint: "Umožnit zákazníkům použít v prvním kroku rezervační stránky tlačítko, kterým si vyberou nejprve službu nebo nejprve kadeřníka, a teprve poté druhou možnost."
     about_and_services: "O mně a služby"
     notes_internal_hint: "Interní poznámky - viditelné pro osoby s přihlášením pro zaměstnance"
+    booking_notice_confirmed_step: "Upozornění k rezervaci - Po potvrzení"
+    messages_provider_default: "Výchozí"
+    messages_default_provider: "Výchozí poskytovatel"
+    messages_default_provider_hint: "Předvybráno při odesílání zprávy ze stránky zákazníka. Výchozí může být jen jeden poskytovatel."
+    messages_test_setup: "Test nastavení"
+    messages_test_credentials: "Test přihlašovacích údajů"
+    messages_test_credentials_ok: "Přihlašovací údaje fungují."
+    messages_test_sending: "Test odesílání"
+    messages_test_send: "Odeslat testovací zprávu"
+    messages_test_sent: "Testovací zpráva byla odeslána, zkontrolujte, zda dorazila."
+    messages_test_email_address: "Testovací e-mailová adresa"
+    messages_test_failed: "Test selhal."
+    messages_test_outgoing_ok: "Odesílání funguje."
+    messages_test_outgoing_server: "Odesílání probíhá přes server, není co kontrolovat."
+    messages_test_outgoing_failed: "Odesílání selhalo:"
+    messages_test_incoming_ok: "Přijímání funguje."
+    messages_test_incoming_off: "Přijímání je vypnuto."
+    messages_test_incoming_failed: "Přijímání selhalo:"
+    messages_provider_quicksms_info: "Odesílejte a přijímejte SMS pomocí účtu QuickSMS a příchozího čísla."
+    messages_quicksms_api_key: "Klíč API"
+    messages_quicksms_signing_secret: "Podpisové tajemství webhooku"
+    messages_quicksms_signing_secret_hint: "Tajemství zobrazené při vytvoření webhooku příchozího čísla v portálu QuickSMS. Pokud je prázdné, přijaté zprávy se přijímají pouze na základě tokenu v URL."

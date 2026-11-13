@@ -113,7 +113,7 @@ hu:
     language: Nyelv
     no_language: Nincs nyelv
     fields_are_required: A *-gal jelöltek kitöltése kötelező.
-    appointment_confirmation: Az időpont jóváhagyása
+    appointment_confirmation: "Erősítse meg az időpontját"
     confirm: Jóváhagyás
     update: Frissít
     cancel_appointment_hint: "Az időpont lemondásához nyomja meg a \"Mégse\" gombot"
@@ -680,12 +680,10 @@ hu:
     messages_provider_textanywhere_info: Send and receive SMS with a TextAnywhere account.
     messages_incoming: "Válaszok fogadása"
     messages_incoming_hint: "A vendégek válaszolhatnak az Ön által küldött üzenetekre."
-    messages_test_sms_sent: "Teszt SMS elkuldve, ellenorizze a telefont."
     messages_test_sms_number: "Teszt telefonszam"
-    messages_test_sms: "Teszt SMS kuldese"
     messages_smsgateway_invalid: "A gateway beallitasait nem sikerult ellenorizni:"
     messages_smsgateway_inbound_hint: "A telefon a fogadott üzeneteket erre a címre kézbesíti, a regisztráció automatikus, ha a fogadás be van kapcsolva mentéskor."
-    messages_smsgateway_step_activate: "Jelölje be az Aktív és a Válaszok fogadása opciót, majd Mentés. A beállításokat teszteljük; javítsa a hibákat, és próbálja ki a küldést az alábbi Teszt SMS küldése gombbal."
+    messages_smsgateway_step_activate: "Jelölje be az Aktív és a Válaszok fogadása opciót, majd Mentés. A beállításokat teszteljük; javítsa a hibákat, és az alábbi Beállítás tesztelése résszel ellenőrizze a hitelesítő adatokat és küldjön teszt üzenetet."
     messages_smsgateway_step_credentials: "A kezdokepernyon kapcsolja ki a Local servert, kapcsolja be a Cloud servert es nyomja meg az Offline gombot a csatlakozashoz (pipalja be a Start on boot-ot is), majd masolja a kezdokepernyon lathato felhasznalonevet es jelszot a lenti Felhasznalonev es Jelszo mezokbe."
     messages_smsgateway_step_signing: "Menjen az alkalmazas Settings -> Webhooks -> Signing Key menupontjaba -> adjon meg egy alairo kulcsot, majd masolja a lenti Webhook alairo kulcs mezobe."
     messages_smsgateway_step_token: "Privat szerver eseten ugyanezen a kepernyon adja meg a Private Token-t is - a token a /app/data/private_token fajlban van a szerveren."
@@ -905,7 +903,7 @@ hu:
     fully_booked_notice_default: "Nincs elérhető időpont. Próbálj másik szolgáltatást vagy szolgáltatót, vagy próbáld újra később."
     notices: "Üzenetek"
     waitlist_enabled: "Várólista"
-    waitlist_enabled_hint: "Engedd meg a vásárlóknak, hogy feliratkozzanak, és értesítést kapjanak, amikor felszabadul egy időpont."
+    waitlist_enabled_hint: "Akkor jelenik meg a dátum lépésben, ha semmi sem foglalható. Engedd meg a vásárlóknak, hogy feliratkozzanak, és értesítést kapjanak, amikor felszabadul egy időpont."
     waitlist_days: "Napok a listán"
     waitlist_days_hint: "A feliratkozásokat ennyi nap után töröljük."
     waitlist_max_notices: "Felszabadult időpontról szóló üzenetek feliratkozásonként"
@@ -977,3 +975,25 @@ hu:
     display_order_switch_hint: "A foglalási oldal első lépésében egy gombbal a vendég választhat, hogy előbb a szolgáltatást vagy előbb a fodrászt választja ki, mielőtt a másikat megadná."
     about_and_services: "Névjegy és szolgáltatások"
     notes_internal_hint: "Belső megjegyzés - a munkatársi belépéssel rendelkezők láthatják"
+    booking_notice_confirmed_step: "Foglalási Értesítés - Megerősítés után"
+    messages_provider_default: "Alapértelmezett"
+    messages_default_provider: "Alapértelmezett szolgáltató"
+    messages_default_provider_hint: "Előre ki van választva, amikor üzenetet küldenek az ügyfél oldaláról. Csak egy szolgáltató lehet az alapértelmezett."
+    messages_test_setup: "Beállítás tesztelése"
+    messages_test_credentials: "Hitelesítő adatok tesztelése"
+    messages_test_credentials_ok: "A hitelesítő adatok működnek."
+    messages_test_sending: "Küldés tesztelése"
+    messages_test_send: "Teszt üzenet küldése"
+    messages_test_sent: "A teszt üzenet elküldve, ellenőrizze, megérkezett-e."
+    messages_test_email_address: "Teszt e-mail-cím"
+    messages_test_failed: "A teszt sikertelen volt."
+    messages_test_outgoing_ok: "A küldés működik."
+    messages_test_outgoing_server: "A küldés a szerveren keresztül történik, nincs mit ellenőrizni."
+    messages_test_outgoing_failed: "A küldés sikertelen:"
+    messages_test_incoming_ok: "A fogadás működik."
+    messages_test_incoming_off: "A fogadás ki van kapcsolva."
+    messages_test_incoming_failed: "A fogadás sikertelen:"
+    messages_provider_quicksms_info: "SMS-ek küldése és fogadása QuickSMS-fiókkal és bejövő számmal."
+    messages_quicksms_api_key: "API-kulcs"
+    messages_quicksms_signing_secret: "Webhook aláírási titok"
+    messages_quicksms_signing_secret_hint: "A QuickSMS portálon a bejövő szám webhookjának létrehozásakor megjelenő titok. Ha üres, a fogadott üzeneteket csak az URL tokenje alapján fogadjuk el."

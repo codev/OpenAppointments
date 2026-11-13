@@ -113,7 +113,7 @@ rs:
     language: Jezik
     no_language: Nema jezika
     fields_are_required: Polja označena zvezdicom (*) obavezno popuniti!
-    appointment_confirmation: Potvrdite zakazani termin
+    appointment_confirmation: "Potvrdite svoj termin"
     confirm: Potvrdite
     update: Ažuriraj
     cancel_appointment_hint: "Pritisnite dugme \"Otkaži\" da otkažete termin"
@@ -680,12 +680,10 @@ rs:
     messages_provider_textanywhere_info: Send and receive SMS with a TextAnywhere account.
     messages_incoming: "Primaj odgovore"
     messages_incoming_hint: "Posetioci mogu da odgovore na poruke koje šaljete."
-    messages_test_sms_sent: "Test SMS poslat, proverite telefon."
     messages_test_sms_number: "Test broj telefona"
-    messages_test_sms: "Pošalji test SMS"
     messages_smsgateway_invalid: "Podešavanja mrežnog prolaza nije moguće proveriti:"
     messages_smsgateway_inbound_hint: "Telefon isporučuje primljene poruke na ovu adresu, registracija se obavlja automatski pri čuvanju sa uključenim primanjem."
-    messages_smsgateway_step_activate: "Označite Active i Primaj odgovore, pa kliknite Save. Podešavanja se testiraju, ispravite eventualne greške i koristite dugme Pošalji probni SMS ispod da testirate slanje."
+    messages_smsgateway_step_activate: "Označite Aktivan i Primaj odgovore, pa kliknite Sačuvajte. Podešavanja se testiraju, ispravite eventualne greške i koristite odeljak Test podešavanja ispod da proverite pristupne podatke i pošaljete probnu poruku."
     messages_smsgateway_step_credentials: "Na početnom ekranu isključite Local server, uključite Cloud server i pritisnite dugme Offline za povezivanje (označite i Start on boot), zatim kopirajte korisničko ime i lozinku sa početnog ekrana u Korisničko ime i Lozinku ispod."
     messages_smsgateway_step_signing: "Idite na Settings -> Webhooks -> Signing Key u aplikaciji -> unesite ključ za potpis i kopirajte ga u Ključ za potpis webhooka ispod."
     messages_smsgateway_step_token: "Ako koristite privatni server unesite i Private Token na istom ekranu - token je u /app/data/private_token na serveru mrežnog prolaza."
@@ -905,7 +903,7 @@ rs:
     fully_booked_notice_default: "Nema slobodnih termina. Izaberite drugu uslugu ili izvršioca ili pokušajte ponovo kasnije."
     notices: "Obaveštenja"
     waitlist_enabled: "Lista čekanja"
-    waitlist_enabled_hint: "Omogućite posetiocima da se prijave kako bi bili obavešteni kada se termin oslobodi."
+    waitlist_enabled_hint: "Prikazuje se na koraku izbora datuma kada ništa ne može da se rezerviše. Omogućite posetiocima da se prijave kako bi bili obavešteni kada se termin oslobodi."
     waitlist_days: "Dana na listi"
     waitlist_days_hint: "Prijave se uklanjaju sa liste nakon ovog broja dana."
     waitlist_max_notices: "Poruka o oslobođenom terminu po prijavi"
@@ -977,3 +975,25 @@ rs:
     display_order_switch_hint: "Omogućava posetiocima da koriste dugme u prvom koraku stranice za zakazivanje kako bi prvo izabrali uslugu ili prvo izvršioca usluge, pre nego što izaberu drugo."
     about_and_services: "O nama i usluge"
     notes_internal_hint: "Interne beleške - vidljive osobama sa nalogom osoblja"
+    booking_notice_confirmed_step: "Informacija o rezervaciji - Nakon potvrde"
+    messages_provider_default: "Podrazumevani"
+    messages_default_provider: "Podrazumevani izvršilac"
+    messages_default_provider_hint: "Unapred izabran pri slanju poruke sa stranice posetioca. Samo jedan izvršilac može biti podrazumevani."
+    messages_test_setup: "Test podešavanja"
+    messages_test_credentials: "Test pristupnih podataka"
+    messages_test_credentials_ok: "Pristupni podaci rade."
+    messages_test_sending: "Test slanja"
+    messages_test_send: "Pošalji probnu poruku"
+    messages_test_sent: "Probna poruka je poslata, proverite da li je stigla."
+    messages_test_email_address: "Probna adresa e-pošte"
+    messages_test_failed: "Test nije uspeo."
+    messages_test_outgoing_ok: "Slanje radi."
+    messages_test_outgoing_server: "Slanje ide preko servera, nema šta da se proverava."
+    messages_test_outgoing_failed: "Slanje nije uspelo:"
+    messages_test_incoming_ok: "Primanje radi."
+    messages_test_incoming_off: "Primanje je isključeno."
+    messages_test_incoming_failed: "Primanje nije uspelo:"
+    messages_provider_quicksms_info: "Šaljite i primajte SMS pomoću QuickSMS naloga i dolaznog broja."
+    messages_quicksms_api_key: "API ključ"
+    messages_quicksms_signing_secret: "Tajna za potpis webhooka"
+    messages_quicksms_signing_secret_hint: "Tajna koja se prikazuje kada se webhook dolaznog broja kreira u QuickSMS portalu. Ako je prazno, primljene poruke se prihvataju samo na osnovu URL tokena."

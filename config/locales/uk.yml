@@ -113,7 +113,7 @@ uk:
     language: Мова
     no_language: Немає мови
     fields_are_required: Поля з * є обов'язковими для заповнення.
-    appointment_confirmation: Підтвердження запису
+    appointment_confirmation: "Підтвердіть ваш запис"
     confirm: Підтвердити
     update: Оновити
     cancel_appointment_hint: "Натисніть кнопку \"Скасувати\", щоб скасувати запис"
@@ -680,12 +680,10 @@ uk:
     messages_provider_textanywhere_info: Send and receive SMS with a TextAnywhere account.
     messages_incoming: "Отримувати відповіді"
     messages_incoming_hint: "Клієнти можуть відповідати на повідомлення, які ви надсилаєте."
-    messages_test_sms_sent: "Тестове SMS надіслано, перевірте телефон."
     messages_test_sms_number: "Тестовий номер телефону"
-    messages_test_sms: "Надіслати тестове SMS"
     messages_smsgateway_invalid: "Не вдалося перевірити налаштування шлюзу:"
     messages_smsgateway_inbound_hint: "Телефон доставляє отримані повідомлення на цю адресу, реєстрація виконується автоматично під час збереження з увімкненим отриманням."
-    messages_smsgateway_step_activate: "Позначте Active і Отримувати відповіді, потім натисніть Зберегти. Налаштування буде перевірено, виправте помилки та скористайтеся кнопкою Надіслати тестове SMS нижче, щоб перевірити надсилання."
+    messages_smsgateway_step_activate: "Позначте Активний і Отримувати відповіді, потім натисніть Зберегти. Налаштування буде перевірено, виправте помилки та скористайтеся розділом Перевірка налаштування нижче, щоб перевірити облікові дані й надіслати тестове повідомлення."
     messages_smsgateway_step_credentials: "На головному екрані вимкніть Local server, увімкніть Cloud server і натисніть кнопку Offline для під'єднання (позначте також Start on boot), потім скопіюйте ім'я користувача та пароль з головного екрана в поля Ім'я користувача та Пароль нижче."
     messages_smsgateway_step_signing: "Відкрийте в застосунку Settings -> Webhooks -> Signing Key -> введіть ключ підпису та скопіюйте його в Ключ підпису вебхуків нижче."
     messages_smsgateway_step_token: "Якщо використовуєте приватний сервер, введіть на тому ж екрані й Private Token - токен у /app/data/private_token на сервері шлюзу."
@@ -905,7 +903,7 @@ uk:
     fully_booked_notice_default: "Немає вільних записів. Будь ласка, оберіть іншу послугу чи провайдера або спробуйте пізніше."
     notices: "Повідомлення"
     waitlist_enabled: "Список очікування"
-    waitlist_enabled_hint: "Дозволити клієнтам записуватися, щоб їм повідомляли про звільнення запису."
+    waitlist_enabled_hint: "Показується на кроці вибору дати, коли нічого забронювати. Дозволити клієнтам записуватися, щоб їм повідомляли про звільнення запису."
     waitlist_days: "Днів у списку"
     waitlist_days_hint: "Записи видаляються зі списку через цю кількість днів."
     waitlist_max_notices: "Повідомлень про звільнений час на один запис"
@@ -977,3 +975,25 @@ uk:
     display_order_switch_hint: "Дозволяє клієнтам за допомогою кнопки на першому кроці сторінки запису обрати спочатку послугу або спочатку провайдера, а потім інше."
     about_and_services: "Про себе та послуги"
     notes_internal_hint: "Внутрішні примітки - видимі людям з обліковим записом співробітника"
+    booking_notice_confirmed_step: "Повідомлення про бронювання - Після підтвердження"
+    messages_provider_default: "За замовчуванням"
+    messages_default_provider: "Спеціаліст за замовчуванням"
+    messages_default_provider_hint: "Вибирається заздалегідь під час надсилання повідомлення зі сторінки клієнта. Лише один спеціаліст може бути за замовчуванням."
+    messages_test_setup: "Перевірка налаштування"
+    messages_test_credentials: "Перевірка облікових даних"
+    messages_test_credentials_ok: "Облікові дані працюють."
+    messages_test_sending: "Перевірка надсилання"
+    messages_test_send: "Надіслати тестове повідомлення"
+    messages_test_sent: "Тестове повідомлення надіслано, перевірте, чи воно дійшло."
+    messages_test_email_address: "Тестова адреса електронної пошти"
+    messages_test_failed: "Перевірка не вдалася."
+    messages_test_outgoing_ok: "Надсилання працює."
+    messages_test_outgoing_server: "Надсилання йде через сервер, перевіряти нічого."
+    messages_test_outgoing_failed: "Надсилання не вдалося:"
+    messages_test_incoming_ok: "Отримання працює."
+    messages_test_incoming_off: "Отримання вимкнено."
+    messages_test_incoming_failed: "Отримання не вдалося:"
+    messages_provider_quicksms_info: "Надсилайте й отримуйте SMS за допомогою облікового запису QuickSMS і вхідного номера."
+    messages_quicksms_api_key: "Ключ API"
+    messages_quicksms_signing_secret: "Секрет підпису вебхука"
+    messages_quicksms_signing_secret_hint: "Секрет, показаний під час створення вебхука вхідного номера на порталі QuickSMS. Якщо порожній, отримані повідомлення приймаються лише за токеном в URL."

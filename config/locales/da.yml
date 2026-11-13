@@ -113,7 +113,7 @@ da:
     language: Sprog
     no_language: Ingen sprog
     fields_are_required: Felter mærkeret med * skal udfyldes
-    appointment_confirmation: Bekræft aftale
+    appointment_confirmation: "Bekræft din aftale"
     confirm: Bekræft
     update: Opdater
     cancel_appointment_hint: "Tryk på knappen \"Annuller\" for at annullere aftalen"
@@ -680,12 +680,10 @@ da:
     messages_provider_textanywhere_info: Send and receive SMS with a TextAnywhere account.
     messages_incoming: "Modtag svar"
     messages_incoming_hint: "Kunder kan svare på de beskeder, du sender."
-    messages_test_sms_sent: "Test-SMS sendt, tjek telefonen."
     messages_test_sms_number: "Testtelefonnummer"
-    messages_test_sms: "Send test-SMS"
     messages_smsgateway_invalid: "Gateway-indstillingerne kunne ikke valideres:"
     messages_smsgateway_inbound_hint: "Telefonen leverer modtagne beskeder til denne adresse, registreringen sker automatisk ved gem med modtagelse slået til."
-    messages_smsgateway_step_activate: "Sæt kryds ved Active og Modtag svar, og tryk derefter Save. Indstillingerne testes, ret eventuelle fejl og brug knappen Send test-SMS nedenfor til at teste afsendelse."
+    messages_smsgateway_step_activate: "Sæt kryds ved Aktiv og Modtag svar, og tryk derefter Gem. Indstillingerne testes, ret eventuelle fejl og brug Test opsætning nedenfor til at tjekke legitimationsoplysningerne og sende en testbesked."
     messages_smsgateway_step_credentials: "Paa appens startskaerm: slaa Local server fra, slaa Cloud server til og tryk paa Offline-knappen for at forbinde (saet ogsaa flueben i Start on boot), kopier saa brugernavn og adgangskode fra startskaermen til Brugernavn og Adgangskode nedenfor."
     messages_smsgateway_step_signing: "Gaa til appens Settings -> Webhooks -> Signing Key -> indtast en signaturnoegle og kopier den til Webhook-signaturnoeglen nedenfor."
     messages_smsgateway_step_token: "Bruger du en privat server, skal du ogsaa indtaste Private Token paa samme skaerm - tokenet ligger i /app/data/private_token paa gateway-serveren."
@@ -905,7 +903,7 @@ da:
     fully_booked_notice_default: "Der er ingen ledige aftaler. Prøv en anden betjening eller leverandør, eller prøv igen senere."
     notices: "Beskeder"
     waitlist_enabled: "Venteliste"
-    waitlist_enabled_hint: "Lad kunder tilmelde sig for at få besked, når en aftale bliver ledig."
+    waitlist_enabled_hint: "Vises på datotrinnet, når intet kan bookes. Lad kunder tilmelde sig for at få besked, når en aftale bliver ledig."
     waitlist_days: "Dage på listen"
     waitlist_days_hint: "Tilmeldinger fjernes efter dette antal dage."
     waitlist_max_notices: "Beskeder om ledig tid pr. tilmelding"
@@ -977,3 +975,25 @@ da:
     display_order_switch_hint: "Lad kunder bruge en knap i første trin på bookingsiden, hvor de kan vælge tjeneste først eller frisør først, før de vælger den anden."
     about_and_services: "Om og tjenester"
     notes_internal_hint: "Interne bemærkninger - synlige for personer med personalelogin"
+    booking_notice_confirmed_step: "Bookingmeddelelse - Efter bekræftelse"
+    messages_provider_default: "Standard"
+    messages_default_provider: "Standardudbyder"
+    messages_default_provider_hint: "Forvalgt, når der sendes en besked fra en kundes side. Kun én udbyder kan være standard."
+    messages_test_setup: "Test opsætning"
+    messages_test_credentials: "Test legitimationsoplysninger"
+    messages_test_credentials_ok: "Legitimationsoplysningerne virker."
+    messages_test_sending: "Test afsendelse"
+    messages_test_send: "Send testbesked"
+    messages_test_sent: "Testbesked sendt, tjek at den er kommet frem."
+    messages_test_email_address: "Test-e-mailadresse"
+    messages_test_failed: "Testen mislykkedes."
+    messages_test_outgoing_ok: "Afsendelse virker."
+    messages_test_outgoing_server: "Afsendelse går via serveren, der er intet at tjekke."
+    messages_test_outgoing_failed: "Afsendelse mislykkedes:"
+    messages_test_incoming_ok: "Modtagelse virker."
+    messages_test_incoming_off: "Modtagelse er slået fra."
+    messages_test_incoming_failed: "Modtagelse mislykkedes:"
+    messages_provider_quicksms_info: "Send og modtag SMS med en QuickSMS-konto og et indgående nummer."
+    messages_quicksms_api_key: "API-nøgle"
+    messages_quicksms_signing_secret: "Webhook-signaturhemmelighed"
+    messages_quicksms_signing_secret_hint: "Hemmeligheden, der vises, når det indgående nummers webhook oprettes i QuickSMS-portalen. Hvis feltet er tomt, accepteres modtagne beskeder kun på URL-tokenet."

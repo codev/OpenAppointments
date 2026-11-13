@@ -113,7 +113,7 @@ lb:
     language: Sprooch
     no_language: Keng Sprooch
     fields_are_required: D'Felder mat * sinn obligatoresch.
-    appointment_confirmation: Bestätegt w.e.g. Är Auswiel vum Termäin
+    appointment_confirmation: "Bestätegt Äre Termäin"
     confirm: Bestätegung
     update: Aktualiséierung
     cancel_appointment_hint: "Dréckt op de Knäppchen \"Ofbriechen\" fir den Termäin ofzesoen"
@@ -680,12 +680,10 @@ lb:
     messages_provider_textanywhere_info: Send and receive SMS with a TextAnywhere account.
     messages_incoming: "Äntwerte kréien"
     messages_incoming_hint: "Clienten kënnen op d'Messagen äntwerten, déi Dir schéckt."
-    messages_test_sms_sent: "Test-SMS geschéckt, kuckt den Telefon."
     messages_test_sms_number: "Test-Telefonsnummer"
-    messages_test_sms: "Test-SMS schécken"
     messages_smsgateway_invalid: "D'Gateway-Astellunge konnten net iwwerpréift ginn:"
     messages_smsgateway_inbound_hint: "Den Telefon liwwert empfaange Messagen op dës Adress, d'Registréierung geschitt automatesch beim Späichere mat ageschaltem Empfang."
-    messages_smsgateway_step_activate: "Kräizt Aktiv an Äntwerte kréien un, duerno Späicheren. D'Astellunge gi getest; behieft Feeler a probéiert de Versand mam Knäppchen Test-SMS schécken ënnen."
+    messages_smsgateway_step_activate: "Kräizt Aktiv an Äntwerte kréien un, duerno Späicheren. D'Astellunge gi getest; korrigéiert Feeler a benotzt Astellung testen ënnen, fir d'Zougangsdaten ze kontrolléieren an eng Testmessage ze schécken."
     messages_smsgateway_step_credentials: "Um Startecran: Local server aus, Cloud server un an op de Knäppchen Offline drécke fir ze verbannen (och Start on boot ukräizen), duerno de Benotzernumm an d'Passwuert vum Startecran ënnen a Benotzernumm a Passwuert kopéieren."
     messages_smsgateway_step_signing: "Gitt an der App op Settings -> Webhooks -> Signing Key -> gitt e Signaturschlëssel an a kopéiert en ënnen an de Webhook-Signaturschlëssel."
     messages_smsgateway_step_token: "Bei engem private Server muss op deem Ecran och de Private Token aginn ginn - en läit an /app/data/private_token um Gateway-Server."
@@ -905,7 +903,7 @@ lb:
     fully_booked_notice_default: "Et sinn keng Termäiner disponibel. Probéiert w.e.g. eng aner Dingschtleeschtung oder e anere Mataarbechter, oder probéiert méi spéit nach eng Kéier."
     notices: "Messagen"
     waitlist_enabled: "Waardelëscht"
-    waitlist_enabled_hint: "Erlaabt de Clienten sech anzeschreiwen, fir informéiert ze ginn, wann e Termäin fräi gëtt."
+    waitlist_enabled_hint: "Gëtt am Datumsschrëtt ugewisen, wann näischt ka gebucht ginn. Erlaabt de Clienten sech anzeschreiwen, fir informéiert ze ginn, wann e Termäin fräi gëtt."
     waitlist_days: "Deeg op der Lëscht"
     waitlist_days_hint: "Aschreiwungen ginn no dëser Zuel vun Deeg ewechgeholl."
     waitlist_max_notices: "Messagen iwwert fräi Zäite pro Aschreiwung"
@@ -977,3 +975,25 @@ lb:
     display_order_switch_hint: "Clienten erlaben, um éischte Schrëtt vun der Reservatiounssäit mat engem Knäppchen ze wielen, ob se fir d'éischt eng Dingschtleeschtung oder fir d'éischt e Coiffeur wëllen, ier se dat anert wielen."
     about_and_services: "Iwwer an Dingschtleeschtungen"
     notes_internal_hint: "Intern Bemierkungen - sichtbar fir Persounen mat engem Mataarbechter-Login"
+    booking_notice_confirmed_step: "Buchungshiweis - Nom Bestätegen"
+    messages_provider_default: "Standard"
+    messages_default_provider: "Standard-Prestatär"
+    messages_default_provider_hint: "Gëtt virausgewielt, wann een eng Message vun der Säit vun engem Client schéckt. Nëmmen ee Prestatär kann de Standard sinn."
+    messages_test_setup: "Astellung testen"
+    messages_test_credentials: "Zougangsdaten testen"
+    messages_test_credentials_ok: "D'Zougangsdaten funktionéieren."
+    messages_test_sending: "Verschécken testen"
+    messages_test_send: "Testmessage schécken"
+    messages_test_sent: "D'Testmessage gouf geschéckt, kuckt no, ob se ukomm ass."
+    messages_test_email_address: "Test-E-Mail-Adress"
+    messages_test_failed: "Den Test ass feelgeschloen."
+    messages_test_outgoing_ok: "D'Verschécke funktionéiert."
+    messages_test_outgoing_server: "D'Verschécke leeft iwwer de Server, et gëtt näischt ze kontrolléieren."
+    messages_test_outgoing_failed: "D'Verschécke ass feelgeschloen:"
+    messages_test_incoming_ok: "D'Empfänke funktionéiert."
+    messages_test_incoming_off: "D'Empfänke ass ausgeschalt."
+    messages_test_incoming_failed: "D'Empfänke ass feelgeschloen:"
+    messages_provider_quicksms_info: "SMS mat engem QuickSMS-Kont an enger Agangsnummer schécken a kréien."
+    messages_quicksms_api_key: "API-Schlëssel"
+    messages_quicksms_signing_secret: "Webhook-Signaturgeheimnis"
+    messages_quicksms_signing_secret_hint: "D'Geheimnis, dat ugewise gëtt, wann de Webhook vun der Agangsnummer um QuickSMS-Portal erstallt gëtt. Wann et eidel ass, ginn empfaange Messagen eleng op Basis vum URL-Token akzeptéiert."

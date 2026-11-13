@@ -113,7 +113,7 @@ ar:
     language: اللغة
     no_language: لا لغة
     fields_are_required: الحقول ب* مطلوب تعبئتها
-    appointment_confirmation: تأكيد الموعد
+    appointment_confirmation: "أكد موعدك"
     confirm: تأكيد
     update: تحديث
     cancel_appointment_hint: "اضغط زر \"إلغاء\" لإلغاء الموعد"
@@ -680,12 +680,10 @@ ar:
     messages_provider_textanywhere_info: Send and receive SMS with a TextAnywhere account.
     messages_incoming: "استقبال الردود"
     messages_incoming_hint: "يمكن للزبائن الرد على الرسائل التي ترسلها."
-    messages_test_sms_sent: "أرسلت الرسالة التجريبية، تحقق من الهاتف."
     messages_test_sms_number: "رقم الهاتف التجريبي"
-    messages_test_sms: "إرسال رسالة تجريبية"
     messages_smsgateway_invalid: "تعذر التحقق من إعدادات البوابة:"
     messages_smsgateway_inbound_hint: "يسلم الهاتف الرسائل الواردة إلى هذا العنوان، ويتم التسجيل تلقائياً عند الحفظ مع تفعيل الاستقبال."
-    messages_smsgateway_step_activate: "فعل نشط واستقبال الردود ثم احفظ. يتم اختبار الإعدادات، صحح أي أخطاء واستخدم زر إرسال رسالة تجريبية أدناه لاختبار الإرسال."
+    messages_smsgateway_step_activate: "فعل نشط واستقبال الردود ثم احفظ. يتم اختبار الإعدادات، صحح أي أخطاء واستخدم اختبار الإعداد أدناه للتحقق من بيانات الاعتماد وإرسال رسالة تجريبية."
     messages_smsgateway_step_credentials: "في الشاشة الرئيسية للتطبيق أوقف Local server وشغل Cloud server واضغط زر Offline للاتصال (وفعل Start on boot ليعمل بعد كل إعادة تشغيل) ثم انسخ اسم المستخدم وكلمة المرور الظاهرين إلى اسم المستخدم وكلمة المرور أدناه."
     messages_smsgateway_step_signing: "اذهب إلى إعدادات التطبيق -> Webhooks -> Signing Key -> أدخل مفتاح توقيع ثم انسخه إلى مفتاح توقيع الويب هوك أدناه."
     messages_smsgateway_step_token: "إذا كنت تستخدم خادماً خاصاً فأدخل أيضاً الرمز الخاص في شاشة الإعدادات هذه - الرمز موجود في /app/data/private_token على خادم البوابة."
@@ -905,7 +903,7 @@ ar:
     fully_booked_notice_default: "لا توجد مواعيد متاحة. يرجى تجربة خدمة أو مزود مختلف أو المحاولة مرة أخرى لاحقًا."
     notices: "الإشعارات"
     waitlist_enabled: "قائمة الانتظار"
-    waitlist_enabled_hint: "السماح للعملاء بالتسجيل لإخبارهم عند توفر موعد."
+    waitlist_enabled_hint: "يظهر في خطوة التاريخ عندما يتعذر الحجز. السماح للعملاء بالتسجيل لإخبارهم عند توفر موعد."
     waitlist_days: "عدد الأيام في القائمة"
     waitlist_days_hint: "تتم إزالة التسجيلات بعد مرور هذا العدد من الأيام."
     waitlist_max_notices: "عدد رسائل المواعيد المتاحة لكل تسجيل"
@@ -977,3 +975,25 @@ ar:
     display_order_switch_hint: "اسمح للزبائن باستخدام زر في الخطوة الأولى من صفحة الحجز يتيح لهم اختيار الخدمة أولاً أو المصفف أولاً، قبل اختيار الآخر."
     about_and_services: "نبذة والخدمات"
     notes_internal_hint: "ملاحظات داخلية - تظهر للأشخاص الذين لديهم حساب دخول للموظفين"
+    booking_notice_confirmed_step: "إشعار الحجز - بعد التأكيد"
+    messages_provider_default: "افتراضي"
+    messages_default_provider: "المزود الافتراضي"
+    messages_default_provider_hint: "يتم اختياره مسبقاً عند إرسال رسالة من صفحة العميل. يمكن أن يكون هناك مزود افتراضي واحد فقط."
+    messages_test_setup: "اختبار الإعداد"
+    messages_test_credentials: "اختبار بيانات الاعتماد"
+    messages_test_credentials_ok: "بيانات الاعتماد تعمل."
+    messages_test_sending: "اختبار الإرسال"
+    messages_test_send: "إرسال رسالة تجريبية"
+    messages_test_sent: "تم إرسال الرسالة التجريبية، تحقق من وصولها."
+    messages_test_email_address: "عنوان البريد الإلكتروني التجريبي"
+    messages_test_failed: "فشل الاختبار."
+    messages_test_outgoing_ok: "الإرسال يعمل."
+    messages_test_outgoing_server: "يتم الإرسال عبر الخادم، لا شيء للتحقق منه."
+    messages_test_outgoing_failed: "فشل الإرسال:"
+    messages_test_incoming_ok: "الاستقبال يعمل."
+    messages_test_incoming_off: "الاستقبال متوقف."
+    messages_test_incoming_failed: "فشل الاستقبال:"
+    messages_provider_quicksms_info: "أرسل واستقبل رسائل SMS عبر حساب QuickSMS ورقم وارد."
+    messages_quicksms_api_key: "مفتاح API"
+    messages_quicksms_signing_secret: "سر توقيع الويب هوك"
+    messages_quicksms_signing_secret_hint: "السر الذي يظهر عند إنشاء الويب هوك للرقم الوارد في بوابة QuickSMS. إذا ترك فارغاً، تقبل الرسائل المستلمة بناء على رمز URL فقط."

@@ -113,7 +113,7 @@ ro:
     language: Limbă
     no_language: Fără limbă
     fields_are_required: Câmpurile cu * sunt necesare.
-    appointment_confirmation: Confirmati întâlnirea
+    appointment_confirmation: "Confirmați programarea"
     confirm: Confirmati
     update: Actualizare
     cancel_appointment_hint: "Apăsați butonul \"Anulare\" pentru a anula întâlnirea"
@@ -680,12 +680,10 @@ ro:
     messages_provider_textanywhere_info: Send and receive SMS with a TextAnywhere account.
     messages_incoming: "Primește răspunsuri"
     messages_incoming_hint: "Clienții pot răspunde la mesajele pe care le trimiteți."
-    messages_test_sms_sent: "SMS de test trimis, verificati telefonul."
     messages_test_sms_number: "Numar de telefon de test"
-    messages_test_sms: "Trimite SMS de test"
     messages_smsgateway_invalid: "Setarile gateway-ului nu au putut fi validate:"
     messages_smsgateway_inbound_hint: "Telefonul livrează mesajele primite la această adresă, înregistrarea se face automat la salvarea cu primirea activată."
-    messages_smsgateway_step_activate: "Bifați Activ și Primește răspunsuri, apoi Salvați. Setările sunt testate, remediați eventualele erori și folosiți butonul Trimite SMS de test de mai jos pentru a testa trimiterea."
+    messages_smsgateway_step_activate: "Bifați Activ și Primește răspunsuri, apoi Salvați. Setările sunt testate, remediați eventualele erori și folosiți secțiunea Testare configurare de mai jos pentru a verifica credențialele și a trimite un mesaj de test."
     messages_smsgateway_step_credentials: "Pe ecranul principal opriti Local server, porniti Cloud server si apasati butonul Offline pentru conectare (bifati si Start on boot), apoi copiati utilizatorul si parola de pe ecranul principal in campurile Nume utilizator si Parola de mai jos."
     messages_smsgateway_step_signing: "Mergeti la Settings -> Webhooks -> Signing Key in aplicatie -> introduceti o cheie de semnare si copiati-o in Cheia de semnare a webhookurilor de mai jos."
     messages_smsgateway_step_token: "Daca folositi un server privat introduceti si Private Token pe acelasi ecran - tokenul este in /app/data/private_token pe serverul gateway."
@@ -905,7 +903,7 @@ ro:
     fully_booked_notice_default: "Nu există programări disponibile. Încercați un alt serviciu sau furnizor, sau reveniți mai târziu."
     notices: "Mesaje"
     waitlist_enabled: "Listă de așteptare"
-    waitlist_enabled_hint: "Permiteți clienților să se înscrie pentru a fi anunțați când se eliberează o programare."
+    waitlist_enabled_hint: "Afișat la pasul de dată când nu se poate rezerva nimic. Permiteți clienților să se înscrie pentru a fi anunțați când se eliberează o programare."
     waitlist_days: "Zile pe listă"
     waitlist_days_hint: "Înscrierile sunt eliminate după acest număr de zile."
     waitlist_max_notices: "Mesaje despre programări eliberate per înscriere"
@@ -977,3 +975,25 @@ ro:
     display_order_switch_hint: "Permite clienților să folosească un buton din primul pas al paginii de programare pentru a alege mai întâi serviciul sau mai întâi furnizorul, înainte de a-l alege pe celălalt."
     about_and_services: "Despre și servicii"
     notes_internal_hint: "Note interne - vizibile persoanelor cu un cont de personal"
+    booking_notice_confirmed_step: "Notificare Rezervare - După confirmare"
+    messages_provider_default: "Implicit"
+    messages_default_provider: "Furnizor implicit"
+    messages_default_provider_hint: "Preselectat la trimiterea unui mesaj din pagina unui client. Doar un furnizor poate fi cel implicit."
+    messages_test_setup: "Testare configurare"
+    messages_test_credentials: "Testare credențiale"
+    messages_test_credentials_ok: "Credențialele funcționează."
+    messages_test_sending: "Testare trimitere"
+    messages_test_send: "Trimite mesaj de test"
+    messages_test_sent: "Mesaj de test trimis, verificați dacă a ajuns."
+    messages_test_email_address: "Adresă de e-mail de test"
+    messages_test_failed: "Testul a eșuat."
+    messages_test_outgoing_ok: "Trimiterea funcționează."
+    messages_test_outgoing_server: "Trimiterea se face prin server, nu este nimic de verificat."
+    messages_test_outgoing_failed: "Trimiterea a eșuat:"
+    messages_test_incoming_ok: "Primirea funcționează."
+    messages_test_incoming_off: "Primirea este dezactivată."
+    messages_test_incoming_failed: "Primirea a eșuat:"
+    messages_provider_quicksms_info: "Trimiteți și primiți SMS cu un cont QuickSMS și un număr de intrare."
+    messages_quicksms_api_key: "Cheie API"
+    messages_quicksms_signing_secret: "Secretul de semnare al webhookului"
+    messages_quicksms_signing_secret_hint: "Secretul afișat la crearea webhookului numărului de intrare în portalul QuickSMS. Dacă este gol, mesajele primite sunt acceptate doar pe baza tokenului din URL."

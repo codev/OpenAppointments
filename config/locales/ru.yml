@@ -113,7 +113,7 @@ ru:
     language: Язык
     no_language: Язык не выбран
     fields_are_required: Поля помеченные (*) заполнить.
-    appointment_confirmation: Подтверждение записи
+    appointment_confirmation: "Подтвердите вашу запись"
     confirm: Подтверждено
     update: Обновить
     cancel_appointment_hint: "Нажмите кнопку \"Отмена\", чтобы отменить запись"
@@ -680,12 +680,10 @@ ru:
     messages_provider_textanywhere_info: Send and receive SMS with a TextAnywhere account.
     messages_incoming: "Принимать ответы"
     messages_incoming_hint: "Клиенты могут отвечать на отправленные вами сообщения."
-    messages_test_sms_sent: "Тестовое SMS отправлено, проверьте телефон."
     messages_test_sms_number: "Тестовый номер телефона"
-    messages_test_sms: "Отправить тестовое SMS"
     messages_smsgateway_invalid: "Не удалось проверить настройки шлюза:"
     messages_smsgateway_inbound_hint: "Телефон передаёт полученные сообщения на этот адрес, регистрация выполняется автоматически при сохранении с включённым приёмом."
-    messages_smsgateway_step_activate: "Отметьте Active и Принимать ответы, затем нажмите Save. Настройки проверяются, исправьте ошибки и используйте кнопку отправки тестового SMS ниже, чтобы проверить отправку."
+    messages_smsgateway_step_activate: "Отметьте Активный и Принимать ответы, затем нажмите Сохранить. Настройки проверяются, исправьте ошибки и используйте раздел Проверка настройки ниже, чтобы проверить учетные данные и отправить тестовое сообщение."
     messages_smsgateway_step_credentials: "На главном экране выключите Local server, включите Cloud server и нажмите кнопку Offline для подключения (отметьте также Start on boot), затем скопируйте имя пользователя и пароль с главного экрана в поля Имя пользователя и Пароль ниже."
     messages_smsgateway_step_signing: "Откройте в приложении Settings -> Webhooks -> Signing Key -> введите ключ подписи и скопируйте его в Ключ подписи вебхуков ниже."
     messages_smsgateway_step_token: "Если используете частный сервер, введите на том же экране и Private Token - токен находится в /app/data/private_token на сервере шлюза."
@@ -905,7 +903,7 @@ ru:
     fully_booked_notice_default: "Нет свободных записей. Пожалуйста, выберите другую услугу или исполнителя либо попробуйте позже."
     notices: "Уведомления"
     waitlist_enabled: "Список ожидания"
-    waitlist_enabled_hint: "Разрешить клиентам записываться, чтобы им сообщали об освободившейся записи."
+    waitlist_enabled_hint: "Показывается на шаге выбора даты, когда нечего забронировать. Разрешить клиентам записываться, чтобы им сообщали об освободившейся записи."
     waitlist_days: "Дней в списке"
     waitlist_days_hint: "Записи удаляются из списка по истечении этого числа дней."
     waitlist_max_notices: "Сообщений об освободившемся времени на одну запись"
@@ -977,3 +975,25 @@ ru:
     display_order_switch_hint: "Разрешить клиентам на первом шаге страницы записи использовать кнопку, которая позволяет сначала выбрать услугу или сначала специалиста, а затем второе."
     about_and_services: "О себе и услуги"
     notes_internal_hint: "Внутренние заметки - видны тем, у кого есть учетная запись сотрудника"
+    booking_notice_confirmed_step: "Уведомление о бронировании - После подтверждения"
+    messages_provider_default: "По умолчанию"
+    messages_default_provider: "Специалист по умолчанию"
+    messages_default_provider_hint: "Выбирается заранее при отправке сообщения со страницы клиента. По умолчанию может быть только один специалист."
+    messages_test_setup: "Проверка настройки"
+    messages_test_credentials: "Проверка учетных данных"
+    messages_test_credentials_ok: "Учетные данные работают."
+    messages_test_sending: "Проверка отправки"
+    messages_test_send: "Отправить тестовое сообщение"
+    messages_test_sent: "Тестовое сообщение отправлено, проверьте, что оно дошло."
+    messages_test_email_address: "Тестовый адрес электронной почты"
+    messages_test_failed: "Проверка не удалась."
+    messages_test_outgoing_ok: "Отправка работает."
+    messages_test_outgoing_server: "Отправка идет через сервер, проверять нечего."
+    messages_test_outgoing_failed: "Отправка не удалась:"
+    messages_test_incoming_ok: "Прием работает."
+    messages_test_incoming_off: "Прием выключен."
+    messages_test_incoming_failed: "Прием не удался:"
+    messages_provider_quicksms_info: "Отправляйте и принимайте SMS с помощью аккаунта QuickSMS и входящего номера."
+    messages_quicksms_api_key: "Ключ API"
+    messages_quicksms_signing_secret: "Секрет подписи вебхука"
+    messages_quicksms_signing_secret_hint: "Секрет, показанный при создании вебхука входящего номера на портале QuickSMS. Если поле пустое, полученные сообщения принимаются только по токену в URL."

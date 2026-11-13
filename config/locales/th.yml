@@ -113,7 +113,7 @@ th:
     language: ภาษา
     no_language: ไม่มีภาษา
     fields_are_required: ช่องที่มีเครื่องหมาย * จำเป็นต้องกรอก
-    appointment_confirmation: ยืนยันการนัดหมาย
+    appointment_confirmation: "ยืนยันการนัดหมายของคุณ"
     confirm: ยืนยัน
     update: อัปเดต
     cancel_appointment_hint: "กดปุ่ม \"ยกเลิก\" เพื่อยกเลิกการนัดหมาย"
@@ -680,12 +680,10 @@ th:
     messages_provider_textanywhere_info: Send and receive SMS with a TextAnywhere account.
     messages_incoming: "รับข้อความตอบกลับ"
     messages_incoming_hint: "ลูกค้าสามารถตอบกลับข้อความที่คุณส่งได้"
-    messages_test_sms_sent: "ส่ง SMS ทดสอบแล้ว ตรวจสอบโทรศัพท์"
     messages_test_sms_number: "หมายเลขโทรศัพท์ทดสอบ"
-    messages_test_sms: "ส่ง SMS ทดสอบ"
     messages_smsgateway_invalid: "ไม่สามารถตรวจสอบการตั้งค่าเกตเวย์:"
     messages_smsgateway_inbound_hint: "โทรศัพท์จะส่งข้อความที่ได้รับมายังที่อยู่นี้ การลงทะเบียนจะดำเนินการโดยอัตโนมัติเมื่อบันทึกโดยเปิดการรับข้อความไว้"
-    messages_smsgateway_step_activate: "ติ๊ก Active และ รับข้อความตอบกลับ แล้วกด บันทึก ระบบจะทดสอบการตั้งค่า ให้แก้ไขข้อผิดพลาดที่พบ และใช้ปุ่มส่ง SMS ทดสอบด้านล่างเพื่อทดสอบการส่ง"
+    messages_smsgateway_step_activate: "ติ๊ก ใช้งานอยู่ และ รับข้อความตอบกลับ แล้วกด บันทึก ระบบจะทดสอบการตั้งค่า ให้แก้ไขข้อผิดพลาดที่พบ และใช้ ทดสอบการตั้งค่า ด้านล่างเพื่อตรวจสอบข้อมูลรับรองและส่งข้อความทดสอบ"
     messages_smsgateway_step_credentials: "ที่หน้าจอหลักปิด Local server เปิด Cloud server แล้วกดปุ่ม Offline เพื่อเชื่อมต่อ (ติ๊ก Start on boot ด้วย) จากนั้นคัดลอกชื่อผู้ใช้และรหัสผ่านจากหน้าจอหลักไปที่ชื่อผู้ใช้และรหัสผ่านด้านล่าง"
     messages_smsgateway_step_signing: "ไปที่ Settings -> Webhooks -> Signing Key ในแอป -> ใส่คีย์ลงนามแล้วคัดลอกไปที่คีย์ลงนามเว็บฮุกด้านล่าง"
     messages_smsgateway_step_token: "หากใช้เซิร์ฟเวอร์ส่วนตัวให้กรอก Private Token ในหน้าจอเดียวกันด้วย - โทเคนอยู่ที่ /app/data/private_token บนเซิร์ฟเวอร์เกตเวย์"
@@ -905,7 +903,7 @@ th:
     fully_booked_notice_default: "ไม่มีนัดหมายว่างในขณะนี้ กรุณาลองเลือกบริการหรือผู้ให้บริการอื่น หรือลองใหม่อีกครั้งในภายหลัง"
     notices: "ประกาศ"
     waitlist_enabled: "รายชื่อรอ"
-    waitlist_enabled_hint: "ให้ลูกค้าลงชื่อเพื่อรับแจ้งเมื่อมีนัดหมายว่าง"
+    waitlist_enabled_hint: "แสดงในขั้นตอนเลือกวันที่เมื่อไม่มีอะไรให้จอง ให้ลูกค้าลงชื่อเพื่อรับแจ้งเมื่อมีนัดหมายว่าง"
     waitlist_days: "จำนวนวันที่อยู่ในรายชื่อ"
     waitlist_days_hint: "รายชื่อจะถูกลบออกหลังจากจำนวนวันนี้"
     waitlist_max_notices: "จำนวนข้อความแจ้งช่วงเวลาว่างต่อผู้ลงชื่อหนึ่งคน"
@@ -977,3 +975,25 @@ th:
     display_order_switch_hint: "อนุญาตให้ลูกค้าใช้ปุ่มในขั้นตอนแรกของหน้าจอง เพื่อเลือกบริการก่อนหรือผู้ให้บริการก่อน แล้วจึงเลือกอีกอย่าง"
     about_and_services: "เกี่ยวกับและบริการ"
     notes_internal_hint: "หมายเหตุภายใน - มองเห็นได้เฉพาะผู้ที่มีบัญชีเข้าสู่ระบบของพนักงาน"
+    booking_notice_confirmed_step: "ประกาศการจอง - หลังการยืนยัน"
+    messages_provider_default: "ค่าเริ่มต้น"
+    messages_default_provider: "ผู้ให้บริการเริ่มต้น"
+    messages_default_provider_hint: "เลือกไว้ล่วงหน้าเมื่อส่งข้อความจากหน้าลูกค้า ตั้งผู้ให้บริการเป็นค่าเริ่มต้นได้เพียงคนเดียว"
+    messages_test_setup: "ทดสอบการตั้งค่า"
+    messages_test_credentials: "ทดสอบข้อมูลรับรอง"
+    messages_test_credentials_ok: "ข้อมูลรับรองใช้งานได้"
+    messages_test_sending: "ทดสอบการส่ง"
+    messages_test_send: "ส่งข้อความทดสอบ"
+    messages_test_sent: "ส่งข้อความทดสอบแล้ว ตรวจสอบว่าข้อความมาถึงหรือไม่"
+    messages_test_email_address: "อีเมลสำหรับทดสอบ"
+    messages_test_failed: "การทดสอบล้มเหลว"
+    messages_test_outgoing_ok: "การส่งใช้งานได้"
+    messages_test_outgoing_server: "การส่งผ่านเซิร์ฟเวอร์ ไม่มีอะไรต้องตรวจสอบ"
+    messages_test_outgoing_failed: "การส่งล้มเหลว:"
+    messages_test_incoming_ok: "การรับใช้งานได้"
+    messages_test_incoming_off: "การรับปิดอยู่"
+    messages_test_incoming_failed: "การรับล้มเหลว:"
+    messages_provider_quicksms_info: "ส่งและรับ SMS ด้วยบัญชี QuickSMS และหมายเลขขาเข้า"
+    messages_quicksms_api_key: "คีย์ API"
+    messages_quicksms_signing_secret: "รหัสลับลงนามเว็บฮุก"
+    messages_quicksms_signing_secret_hint: "รหัสลับที่แสดงเมื่อสร้างเว็บฮุกของหมายเลขขาเข้าในพอร์ทัล QuickSMS หากเว้นว่าง ข้อความที่ได้รับจะถูกยอมรับด้วยโทเคนใน URL เท่านั้น"

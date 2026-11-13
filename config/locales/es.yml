@@ -113,7 +113,7 @@ es:
     language: Idioma
     no_language: Sin idioma
     fields_are_required: Los campos con * son obligatorios
-    appointment_confirmation: Confirme la cita
+    appointment_confirmation: "Confirme su cita"
     confirm: Confirmar
     update: Actualizar
     cancel_appointment_hint: "Pulse el botón \"Cancelar\" para cancelar la cita"
@@ -680,12 +680,10 @@ es:
     messages_provider_textanywhere_info: Send and receive SMS with a TextAnywhere account.
     messages_incoming: "Recibir respuestas"
     messages_incoming_hint: "Los clientes pueden responder a los mensajes que usted envía."
-    messages_test_sms_sent: "SMS de prueba enviado, compruebe el teléfono."
     messages_test_sms_number: "Número de teléfono de prueba"
-    messages_test_sms: "Enviar SMS de prueba"
     messages_smsgateway_invalid: "No se pudieron validar los ajustes de la pasarela:"
     messages_smsgateway_inbound_hint: "El teléfono entrega los mensajes recibidos a esta dirección, el registro se hace automáticamente al guardar con la recepción activada."
-    messages_smsgateway_step_activate: "Marque Active y Recibir respuestas, y pulse Save. Se probarán los ajustes, corrija los errores y use el botón Enviar SMS de prueba de abajo para probar el envío."
+    messages_smsgateway_step_activate: "Marque Activo y Recibir respuestas, y pulse Guardar. Se probarán los ajustes, corrija los errores y use Probar configuración de abajo para comprobar las credenciales y enviar un mensaje de prueba."
     messages_smsgateway_step_credentials: "En la pantalla de inicio apague Local server, encienda Cloud server y pulse el botón Offline para conectar (marque también Start on boot), después copie el usuario y la contraseña de la pantalla de inicio en Nombre de usuario y Contraseña abajo."
     messages_smsgateway_step_signing: "Vaya a Settings -> Webhooks -> Signing Key en la aplicación -> introduzca una clave de firma y cópiela en la Clave de firma de webhooks de abajo."
     messages_smsgateway_step_token: "Si usa un servidor privado introduzca también el Private Token en esa pantalla - el token está en /app/data/private_token en el servidor de la pasarela."
@@ -905,7 +903,7 @@ es:
     fully_booked_notice_default: "No hay citas disponibles. Pruebe con otro servicio o proveedor, o inténtelo de nuevo más tarde."
     notices: "Avisos"
     waitlist_enabled: "Lista de espera"
-    waitlist_enabled_hint: "Permite que los clientes se apunten para que se les avise cuando una cita quede libre."
+    waitlist_enabled_hint: "Se muestra en el paso de la fecha cuando no se puede reservar nada. Permite que los clientes se apunten para que se les avise cuando una cita quede libre."
     waitlist_days: "Días en la lista"
     waitlist_days_hint: "Las inscripciones se eliminan pasados estos días."
     waitlist_max_notices: "Avisos de hueco liberado por inscripción"
@@ -977,3 +975,25 @@ es:
     display_order_switch_hint: "Permite a los clientes usar un botón en el primer paso de la página de reservas para elegir primero el servicio o primero el estilista, antes de elegir el otro."
     about_and_services: "Acerca de y servicios"
     notes_internal_hint: "Notas internas - visibles para las personas con acceso de personal"
+    booking_notice_confirmed_step: "Aviso de Reserva - Tras la confirmación"
+    messages_provider_default: "Predeterminado"
+    messages_default_provider: "Proveedor predeterminado"
+    messages_default_provider_hint: "Preseleccionado al enviar un mensaje desde la página de un cliente. Solo un proveedor puede ser el predeterminado."
+    messages_test_setup: "Probar configuración"
+    messages_test_credentials: "Probar credenciales"
+    messages_test_credentials_ok: "Las credenciales funcionan."
+    messages_test_sending: "Probar envío"
+    messages_test_send: "Enviar mensaje de prueba"
+    messages_test_sent: "Mensaje de prueba enviado, compruebe que ha llegado."
+    messages_test_email_address: "Dirección de correo de prueba"
+    messages_test_failed: "La prueba ha fallado."
+    messages_test_outgoing_ok: "El envío funciona."
+    messages_test_outgoing_server: "El envío pasa por el servidor, no hay nada que comprobar."
+    messages_test_outgoing_failed: "El envío ha fallado:"
+    messages_test_incoming_ok: "La recepción funciona."
+    messages_test_incoming_off: "La recepción está desactivada."
+    messages_test_incoming_failed: "La recepción ha fallado:"
+    messages_provider_quicksms_info: "Envíe y reciba SMS con una cuenta de QuickSMS y un número de entrada."
+    messages_quicksms_api_key: "Clave de API"
+    messages_quicksms_signing_secret: "Secreto de firma del webhook"
+    messages_quicksms_signing_secret_hint: "El secreto que se muestra al crear el webhook del número de entrada en el portal de QuickSMS. Si está vacío, los mensajes recibidos se aceptan solo con el token de la URL."

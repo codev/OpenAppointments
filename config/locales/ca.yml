@@ -113,7 +113,7 @@ ca:
     language: Idioma
     no_language: Sense idioma
     fields_are_required: Els camps amb un * són obligatoris.
-    appointment_confirmation: Confirmació de la cita
+    appointment_confirmation: "Confirma la teva cita"
     confirm: Confirma
     update: Actualitza
     cancel_appointment_hint: "Premeu el botó \"Cancel·la\" per cancel·lar la cita"
@@ -680,12 +680,10 @@ ca:
     messages_provider_textanywhere_info: Send and receive SMS with a TextAnywhere account.
     messages_incoming: "Rep respostes"
     messages_incoming_hint: "Els clients poden respondre als missatges que envieu."
-    messages_test_sms_sent: "SMS de prova enviat, comproveu el telèfon."
     messages_test_sms_number: "Número de telèfon de prova"
-    messages_test_sms: "Envia SMS de prova"
     messages_smsgateway_invalid: "No s'han pogut validar els ajustos de la passarel·la:"
     messages_smsgateway_inbound_hint: "El telèfon lliura els missatges rebuts a aquesta adreça, el registre es fa automàticament en desar amb la recepció activada."
-    messages_smsgateway_step_activate: "Marqueu Actiu i Rep respostes i deseu. Els ajustos es comproven, corregiu els errors i useu el botó Envia SMS de prova de sota per provar l'enviament."
+    messages_smsgateway_step_activate: "Marqueu Actiu i Rep respostes i deseu. Els ajustos es comproven, corregiu els errors i useu Prova de la configuració de sota per comprovar les credencials i enviar un missatge de prova."
     messages_smsgateway_step_credentials: "A la pantalla d'inici desactiveu Local server, activeu Cloud server i premeu el botó Offline per connectar (marqueu també Start on boot), després copieu el nom d'usuari i la contrasenya de la pantalla d'inici a Nom d'usuari i Contrasenya de sota."
     messages_smsgateway_step_signing: "Aneu a Settings -> Webhooks -> Signing Key a l'aplicació -> introduïu una clau de signatura i copieu-la a la Clau de signatura del webhook de sota."
     messages_smsgateway_step_token: "Si useu un servidor privat introduïu també el Private Token en aquesta pantalla - el token és a /app/data/private_token al servidor de la passarel·la."
@@ -905,7 +903,7 @@ ca:
     fully_booked_notice_default: "No hi ha cites disponibles. Proveu un servei o proveïdor diferent o torneu-ho a provar més tard."
     notices: "Avisos"
     waitlist_enabled: "Llista d'espera"
-    waitlist_enabled_hint: "Permet que els clients s'apuntin per ser avisats quan una cita quedi lliure."
+    waitlist_enabled_hint: "Es mostra al pas de la data quan no es pot reservar res. Permet que els clients s'apuntin per ser avisats quan una cita quedi lliure."
     waitlist_days: "Dies a la llista"
     waitlist_days_hint: "Les inscripcions s'eliminen passats aquests dies."
     waitlist_max_notices: "Missatges de forat alliberat per inscripció"
@@ -977,3 +975,25 @@ ca:
     display_order_switch_hint: "Permet als clients utilitzar un botó al primer pas de la pàgina de reserves per triar primer el servei o primer el perruquer, abans de triar l'altre."
     about_and_services: "Presentació i serveis"
     notes_internal_hint: "Notes internes - visibles per a les persones amb accés de personal"
+    booking_notice_confirmed_step: "Avís de reserva - Després de la confirmació"
+    messages_provider_default: "Per defecte"
+    messages_default_provider: "Proveïdor per defecte"
+    messages_default_provider_hint: "Preseleccionat en enviar un missatge des de la pàgina d'un client. Només un proveïdor pot ser el per defecte."
+    messages_test_setup: "Prova de la configuració"
+    messages_test_credentials: "Prova de les credencials"
+    messages_test_credentials_ok: "Les credencials funcionen."
+    messages_test_sending: "Prova d'enviament"
+    messages_test_send: "Envia missatge de prova"
+    messages_test_sent: "Missatge de prova enviat, comproveu que ha arribat."
+    messages_test_email_address: "Adreça electrònica de prova"
+    messages_test_failed: "La prova ha fallat."
+    messages_test_outgoing_ok: "L'enviament funciona."
+    messages_test_outgoing_server: "L'enviament passa pel servidor, no cal comprovar res."
+    messages_test_outgoing_failed: "L'enviament ha fallat:"
+    messages_test_incoming_ok: "La recepció funciona."
+    messages_test_incoming_off: "La recepció està desactivada."
+    messages_test_incoming_failed: "La recepció ha fallat:"
+    messages_provider_quicksms_info: "Envieu i rebeu SMS amb un compte de QuickSMS i un número d'entrada."
+    messages_quicksms_api_key: "Clau d'API"
+    messages_quicksms_signing_secret: "Secret de signatura del webhook"
+    messages_quicksms_signing_secret_hint: "El secret que es mostra en crear el webhook del número d'entrada al portal de QuickSMS. Si és buit, els missatges rebuts s'accepten només amb el testimoni de l'URL."

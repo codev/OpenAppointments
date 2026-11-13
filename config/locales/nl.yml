@@ -113,7 +113,7 @@ nl:
     language: Taal
     no_language: Geen taal
     fields_are_required: Velden met een * zijn verplicht.
-    appointment_confirmation: Afspraak bevestigen
+    appointment_confirmation: "Bevestig uw afspraak"
     confirm: Bevestigen
     update: Bijwerken
     cancel_appointment_hint: "Druk op de knop \"Annuleren\" om de afspraak te annuleren"
@@ -680,12 +680,10 @@ nl:
     messages_provider_textanywhere_info: Send and receive SMS with a TextAnywhere account.
     messages_incoming: "Antwoorden ontvangen"
     messages_incoming_hint: "Klanten kunnen reageren op de berichten die u verstuurt."
-    messages_test_sms_sent: "Test-sms verstuurd, controleer de telefoon."
     messages_test_sms_number: "Testtelefoonnummer"
-    messages_test_sms: "Test-sms versturen"
     messages_smsgateway_invalid: "De gateway-instellingen konden niet worden gevalideerd:"
     messages_smsgateway_inbound_hint: "De telefoon levert ontvangen berichten af op dit adres, registratie gebeurt automatisch bij het opslaan met ontvangen ingeschakeld."
-    messages_smsgateway_step_activate: "Vink Actief en Antwoorden ontvangen aan en kies Opslaan. De instellingen worden getest, los eventuele fouten op en test het verzenden met de knop Test-sms verzenden hieronder."
+    messages_smsgateway_step_activate: "Vink Actief en Antwoorden ontvangen aan en kies Opslaan. De instellingen worden getest, los eventuele fouten op en gebruik Test instelling hieronder om de inloggegevens te controleren en een testbericht te verzenden."
     messages_smsgateway_step_credentials: "Zet op het beginscherm Local server uit, Cloud server aan en druk op de knop Offline om te verbinden (vink ook Start on boot aan), kopieer daarna de gebruikersnaam en het wachtwoord van het beginscherm naar Gebruikersnaam en Wachtwoord hieronder."
     messages_smsgateway_step_signing: "Ga naar Settings -> Webhooks -> Signing Key in de app -> voer een ondertekeningssleutel in en kopieer die naar de Webhook-ondertekeningssleutel hieronder."
     messages_smsgateway_step_token: "Gebruikt u een privéserver, vul dan op dat scherm ook de Private Token in - de token staat in /app/data/private_token op de gatewayserver."
@@ -905,7 +903,7 @@ nl:
     fully_booked_notice_default: "Er zijn geen afspraken beschikbaar. Probeer een andere dienst of medewerker, of probeer het later opnieuw."
     notices: "Meldingen"
     waitlist_enabled: "Wachtlijst"
-    waitlist_enabled_hint: "Laat klanten zich aanmelden om te horen wanneer er een afspraak vrijkomt."
+    waitlist_enabled_hint: "Wordt getoond bij de datumstap wanneer er niets te boeken is. Laat klanten zich aanmelden om te horen wanneer er een afspraak vrijkomt."
     waitlist_days: "Dagen op de lijst"
     waitlist_days_hint: "Aanmeldingen worden na dit aantal dagen verwijderd."
     waitlist_max_notices: "Berichten over vrijgekomen plekken per aanmelding"
@@ -977,3 +975,25 @@ nl:
     display_order_switch_hint: "Sta klanten toe om in de eerste stap van de boekingspagina met een knop te kiezen of ze eerst een dienst of eerst een stylist selecteren, voordat ze de ander kiezen."
     about_and_services: "Over en diensten"
     notes_internal_hint: "Interne opmerkingen - zichtbaar voor mensen met een personeelsaccount"
+    booking_notice_confirmed_step: "Boekingsmededeling - Na bevestiging"
+    messages_provider_default: "Standaard"
+    messages_default_provider: "Standaardmedewerker"
+    messages_default_provider_hint: "Vooraf geselecteerd bij het versturen van een bericht vanaf de pagina van een klant. Slechts één medewerker kan de standaard zijn."
+    messages_test_setup: "Test instelling"
+    messages_test_credentials: "Test inloggegevens"
+    messages_test_credentials_ok: "De inloggegevens werken."
+    messages_test_sending: "Test verzenden"
+    messages_test_send: "Testbericht verzenden"
+    messages_test_sent: "Testbericht verzonden, controleer of het is aangekomen."
+    messages_test_email_address: "Test-e-mailadres"
+    messages_test_failed: "De test is mislukt."
+    messages_test_outgoing_ok: "Verzenden werkt."
+    messages_test_outgoing_server: "Verzenden gaat via de server, er valt niets te controleren."
+    messages_test_outgoing_failed: "Verzenden mislukt:"
+    messages_test_incoming_ok: "Ontvangen werkt."
+    messages_test_incoming_off: "Ontvangen staat uit."
+    messages_test_incoming_failed: "Ontvangen mislukt:"
+    messages_provider_quicksms_info: "Verzend en ontvang sms met een QuickSMS-account en een inkomend nummer."
+    messages_quicksms_api_key: "API-sleutel"
+    messages_quicksms_signing_secret: "Webhook-ondertekeningsgeheim"
+    messages_quicksms_signing_secret_hint: "Het geheim dat wordt getoond wanneer de webhook van het inkomende nummer in het QuickSMS-portaal wordt aangemaakt. Als dit leeg is, worden ontvangen berichten alleen op basis van het URL-token geaccepteerd."

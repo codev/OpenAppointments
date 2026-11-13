@@ -113,7 +113,7 @@ fa:
     language: زبان
     no_language: بدون زبان
     fields_are_required: فیلدهای ستاره دار اجباری هستند
-    appointment_confirmation: تایید ملاقات
+    appointment_confirmation: "تأیید نوبت شما"
     confirm: تایید
     update: به روز رسانی
     cancel_appointment_hint: "برای لغو قرار، دکمه «لغو» را فشار دهید"
@@ -680,12 +680,10 @@ fa:
     messages_provider_textanywhere_info: Send and receive SMS with a TextAnywhere account.
     messages_incoming: "دریافت پاسخ‌ها"
     messages_incoming_hint: "مشتریان می‌توانند به پیام‌هایی که می‌فرستید پاسخ دهند."
-    messages_test_sms_sent: "پیامک آزمایشی ارسال شد، تلفن را بررسی کنید."
     messages_test_sms_number: "شماره تلفن آزمایشی"
-    messages_test_sms: "ارسال پیامک آزمایشی"
     messages_smsgateway_invalid: "تنظیمات دروازه تأیید نشد:"
     messages_smsgateway_inbound_hint: "گوشی پیام‌های دریافتی را به این نشانی تحویل می‌دهد؛ ثبت‌نام هنگام ذخیره با روشن بودن دریافت، به‌طور خودکار انجام می‌شود."
-    messages_smsgateway_step_activate: "گزینه‌های فعال و دریافت پاسخ‌ها را علامت بزنید، سپس ذخیره کنید. تنظیمات آزمایش می‌شوند؛ خطاها را برطرف کنید و برای آزمایش ارسال از دکمه ارسال SMS آزمایشی در پایین استفاده کنید."
+    messages_smsgateway_step_activate: "گزینه‌های فعال و دریافت پاسخ‌ها را علامت بزنید، سپس ذخیره کنید. تنظیمات آزمایش می‌شوند؛ خطاها را برطرف کنید و برای بررسی اعتبارنامه‌ها و ارسال پیام آزمایشی از بخش آزمایش تنظیمات در پایین استفاده کنید."
     messages_smsgateway_step_credentials: "در صفحه اصلی برنامه Local server را خاموش و Cloud server را روشن کنید و دکمه Offline را برای اتصال بزنید (Start on boot را هم علامت بزنید)، سپس نام کاربری و گذرواژه صفحه اصلی را در نام کاربری و گذرواژه پایین کپی کنید."
     messages_smsgateway_step_signing: "به Settings -> Webhooks -> Signing Key برنامه بروید -> یک کلید امضا وارد کنید و آن را در کلید امضای وب‌هوک پایین کپی کنید."
     messages_smsgateway_step_token: "اگر از سرور خصوصی استفاده می‌کنید Private Token را نیز در همان صفحه وارد کنید - توکن در /app/data/private_token روی سرور دروازه است."
@@ -905,7 +903,7 @@ fa:
     fully_booked_notice_default: "نوبتی موجود نیست. لطفاً خدمت یا ارائه‌دهنده دیگری را امتحان کنید یا بعداً دوباره تلاش کنید."
     notices: "اعلان‌ها"
     waitlist_enabled: "فهرست انتظار"
-    waitlist_enabled_hint: "به مشتریان اجازه دهید ثبت‌نام کنند تا هنگام آزاد شدن نوبت به آنها اطلاع داده شود."
+    waitlist_enabled_hint: "در مرحله تاریخ نمایش داده می‌شود، زمانی که هیچ نوبتی قابل رزرو نیست. به مشتریان اجازه دهید ثبت‌نام کنند تا هنگام آزاد شدن نوبت به آنها اطلاع داده شود."
     waitlist_days: "تعداد روزهای ماندن در فهرست"
     waitlist_days_hint: "ثبت‌نام‌ها پس از این تعداد روز حذف می‌شوند."
     waitlist_max_notices: "تعداد پیام‌های نوبت آزادشده برای هر ثبت‌نام"
@@ -977,3 +975,25 @@ fa:
     display_order_switch_hint: "به مشتریان اجازه می‌دهد در مرحله اول صفحه رزرو با یک دکمه انتخاب کنند که ابتدا خدمت را برگزینند یا ابتدا آرایشگر را، و سپس مورد دیگر را انتخاب کنند."
     about_and_services: "درباره و خدمات"
     notes_internal_hint: "توضیحات داخلی - قابل مشاهده برای افرادی که ورود کارکنان دارند"
+    booking_notice_confirmed_step: "اعلامیه رزرو - پس از تأیید"
+    messages_provider_default: "پیش‌فرض"
+    messages_default_provider: "ارائه‌دهنده پیش‌فرض"
+    messages_default_provider_hint: "هنگام ارسال پیام از صفحه مشتری از پیش انتخاب می‌شود. فقط یک ارائه‌دهنده می‌تواند پیش‌فرض باشد."
+    messages_test_setup: "آزمایش تنظیمات"
+    messages_test_credentials: "آزمایش اعتبارنامه‌ها"
+    messages_test_credentials_ok: "اعتبارنامه‌ها درست کار می‌کنند."
+    messages_test_sending: "آزمایش ارسال"
+    messages_test_send: "ارسال پیام آزمایشی"
+    messages_test_sent: "پیام آزمایشی ارسال شد، بررسی کنید که رسیده باشد."
+    messages_test_email_address: "نشانی ایمیل آزمایشی"
+    messages_test_failed: "آزمایش ناموفق بود."
+    messages_test_outgoing_ok: "ارسال کار می‌کند."
+    messages_test_outgoing_server: "ارسال از طریق سرور انجام می‌شود، نیازی به بررسی نیست."
+    messages_test_outgoing_failed: "ارسال ناموفق بود:"
+    messages_test_incoming_ok: "دریافت کار می‌کند."
+    messages_test_incoming_off: "دریافت خاموش است."
+    messages_test_incoming_failed: "دریافت ناموفق بود:"
+    messages_provider_quicksms_info: "ارسال و دریافت SMS با حساب QuickSMS و یک شماره ورودی."
+    messages_quicksms_api_key: "کلید API"
+    messages_quicksms_signing_secret: "رمز امضای وب‌هوک"
+    messages_quicksms_signing_secret_hint: "رمزی که هنگام ایجاد وب‌هوک شماره ورودی در پورتال QuickSMS نمایش داده می‌شود. در صورت خالی بودن، پیام‌های دریافتی فقط با توکن موجود در URL پذیرفته می‌شوند."
