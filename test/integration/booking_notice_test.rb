@@ -1,9 +1,9 @@
 require "test_helper"
 
 # Booking Notices: one rich text block per booking step, edited on the Notices
-# page and shown on its step whenever it has content. The service and provider
-# notices sit above the step's buttons; the later steps carry theirs under the
-# heading.
+# page and shown on its step whenever it has content. The service, provider and
+# confirmation notices sit above the step's buttons; the time and details steps
+# carry theirs under the heading.
 class BookingNoticeTest < ActionDispatch::IntegrationTest
   STEPS = %w[service provider time info final].freeze
   DATE = "2026-07-20".freeze
@@ -104,11 +104,12 @@ class BookingNoticeTest < ActionDispatch::IntegrationTest
     assert_operator response.body.index("booking-notice"), :<, response.body.index('id="name"')
   end
 
-  test "the confirmation step shows its notice above the appointment summary" do
+  test "the confirmation step shows its notice above the buttons" do
     set_all_notices
     final_step
     assert_only_notice(5, "final")
-    assert_operator response.body.index("booking-notice"), :<, response.body.index('id="appointment-details"')
+    assert_operator response.body.index("booking-notice"), :>, response.body.index('id="appointment-details"')
+    assert_operator response.body.index("booking-notice"), :<, response.body.index("command-buttons")
   end
 
   test "the booking notice keys exist in every locale and the old ones are gone" do

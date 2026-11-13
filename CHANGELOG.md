@@ -5,6 +5,8 @@ CloudronManifest.json.
 
 ## 3.2.5
 
+- Booking: the confirmation step notice sits above the Back and Confirm buttons, as on the service and stylist steps
+
 ## 3.2.4
 
 - Booking: Confirm waits for the captcha check and asks for it again when the page has sat idle too long, and a double tap on Confirm no longer sends the booking twice
