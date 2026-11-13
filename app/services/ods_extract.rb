@@ -83,7 +83,7 @@ class OdsExtract
 
   # Per-user settings columns present in the sheet (older exports have none).
   def sync_settings(row)
-    DataExport::SYNC_COLUMNS.filter_map do |column|
+    DataExport::USER_SETTING_COLUMNS.filter_map do |column|
       next unless row.key?(column)
 
       value = row[column]

@@ -83,8 +83,8 @@ module SettingsPage
     raise ArgumentError, "You do not have the required permissions for this task."
   end
 
-  # EA Altcha/Jitsi/Google_calendar settings controllers gate every action on the
-  # edit privilege in the constructor (403, no login redirect).
+  # EA Altcha/Jitsi settings controllers gate every action on the edit
+  # privilege in the constructor (403, no login redirect).
   def forbid_unless_system_settings_edit
     head :forbidden if cannot?(:edit, :system_settings)
   end

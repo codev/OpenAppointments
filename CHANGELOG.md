@@ -8,7 +8,7 @@ CloudronManifest.json.
 - Messages: QuickSMS joins the providers: sending through its Messaging API, received messages through a signed inbound webhook, with the usual Active, Receive replies, Default and Test setup controls
 - Messages: every provider page has a Test setup section with Test credentials and Test sending; both use the values in the form as they stand, so edits are checked before saving. Email reports sending and receiving separately with the server's error. The Send Test SMS button, which used the saved credentials, is replaced
 - Messages: a provider can be made the Default on its settings page; it is pre-selected when sending from a customer's page and badged in green on the Providers list
-- Calendar: the Google Calendar and CalDAV sync integrations are removed. The calendar feed stays, and the Add to Google Calendar button on the confirmation page stays with its switch now on Booking settings
+- Calendar: the Google Calendar and CalDAV sync integrations are removed. The calendar feed stays, and the Add to Google Calendar button on the confirmation page stays with its switch now on Booking settings. Stored Google tokens and CalDAV passwords are cleared on upgrade
 - Notices: a Booking Notice - After Confirmation shows on the page confirming the booking, after the details-sent text
 - Booking: step 5 is headed "Confirm Your Appointment"
 - Messages: once a customer's appointment has happened, their unread messages are marked read; the Inbox is unaffected

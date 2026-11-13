@@ -58,6 +58,23 @@ class CalendarSyncRemovedTest < ActionDispatch::IntegrationTest
     assert_select "#add-to-google-calendar"
   end
 
+  test "the migration clears stored sync credentials and the Google settings rows, which the rows never expose" do
+    settings = users(:zane).settings
+    settings.update!(google_sync: true, google_token: "tok", caldav_username: "u", caldav_password: "pw", caldav_url: "https://c")
+    Setting.set("google_client_secret", "secret")
+    require Rails.root.glob("db/migrate/*_clear_calendar_sync_credentials.rb").first
+    ActiveRecord::Migration.suppress_messages { ClearCalendarSyncCredentials.new.up }
+    settings.reload
+    assert_equal [ false, nil, nil, nil, nil ],
+                 [ settings.google_sync, settings.google_token, settings.caldav_username, settings.caldav_password, settings.caldav_url ]
+    assert_nil Setting.find_by(name: "google_client_secret")
+
+    settings.update!(google_token: "tok", caldav_password: "pw")
+    row = EaRows.provider_row(users(:zane))
+    assert_not_includes row["settings"].keys, "google_token"
+    assert_not_includes row["settings"].keys, "caldav_password"
+  end
+
   test "no sync code, gems or scheduler entry remain" do
     %w[app/controllers/google_controller.rb app/controllers/google_calendar_settings_controller.rb
        app/services/google_calendar_gateway.rb app/services/caldav_gateway.rb app/services/synchronization.rb

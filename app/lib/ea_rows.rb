@@ -2,7 +2,9 @@
 # find/load output). Datetimes are naive Y-m-d H:i:s strings; hash column is exposed
 # as "hash". Provider/admin settings are filtered like EA's filter_sensitive_user_data.
 module EaRows
-  SENSITIVE_SETTINGS = %w[password salt password_reset_token password_reset_expires].freeze
+  # The sync credential columns are unused but still present, so they stay filtered.
+  SENSITIVE_SETTINGS = %w[password salt password_reset_token password_reset_expires
+                          google_token caldav_password caldav_username].freeze
 
   module_function
 

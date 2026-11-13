@@ -26,7 +26,8 @@ class MessagesSmsgatewaySettingsController < ApplicationController
     end
 
     merged.each { |name, value| Setting.set(name, value) }
-    apply_default_switch(default_switch_value) if default_switch_value
+    switch = default_switch_value
+    apply_default_switch(switch) if switch
 
     if merged["messages_smsgateway_incoming"] == "1" && active
       begin
@@ -56,6 +57,7 @@ class MessagesSmsgatewaySettingsController < ApplicationController
 
   # Posted values (a blank password keeps the stored one) over the stored ones.
   def merged_settings
-    SETTING_NAMES.index_with { |name| posted_settings.key?(name) ? posted_settings[name] : Setting.get(name, "") }
+    config = posted_config
+    SETTING_NAMES.index_with { |name| config[name] }
   end
 end

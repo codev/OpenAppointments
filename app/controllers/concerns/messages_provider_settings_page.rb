@@ -41,7 +41,8 @@ module MessagesProviderSettingsPage
   end
 
   # POST .../test_send: one message to params[:address] through the posted
-  # configuration, recorded in the Messages log like any other send.
+  # configuration, recorded in the Messages log like any other send. It goes
+  # to the typed address even in debug mode: the point is to see it arrive.
   def test_send
     require_system_settings_edit!
     config = posted_config
