@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_11_13_100000) do
+ActiveRecord::Schema[8.1].define(version: 2026_11_16_090000) do
   create_table "action_mailbox_inbound_emails", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.string "message_checksum", null: false
@@ -95,6 +95,9 @@ ActiveRecord::Schema[8.1].define(version: 2026_11_13_100000) do
     t.text "meeting_link"
     t.text "notes"
     t.date "occurrence_at"
+    t.datetime "paid_at"
+    t.string "payment_method"
+    t.string "payment_reference"
     t.integer "rescheduled_to_id"
     t.integer "series_id"
     t.datetime "start_datetime"
@@ -105,6 +108,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_11_13_100000) do
     t.index ["id_services"], name: "index_appointments_on_id_services"
     t.index ["id_users_customer"], name: "index_appointments_on_id_users_customer"
     t.index ["id_users_provider", "start_datetime"], name: "index_appointments_on_id_users_provider_and_start_datetime"
+    t.index ["payment_reference"], name: "index_appointments_on_payment_reference"
     t.index ["series_id"], name: "index_appointments_on_series_id"
     t.index ["start_datetime"], name: "index_appointments_on_start_datetime"
     t.index ["status_id"], name: "index_appointments_on_status_id"
@@ -223,6 +227,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_11_13_100000) do
     t.boolean "is_private", default: false
     t.text "location"
     t.string "name"
+    t.string "payment_methods"
     t.decimal "price", precision: 10, scale: 2
     t.integer "slot_interval", default: 15
     t.integer "sort_order"

@@ -70,6 +70,20 @@ class Appointment < ApplicationRecord
 
   def frees_slot? = appointment_status&.frees_slot? || false
 
+  # "none" without a payment method, else "unpaid" until paid_at is set.
+  def payment_status
+    return "none" if payment_method.blank?
+
+    paid_at ? "paid" : "unpaid"
+  end
+
+  def unpaid? = payment_status == "unpaid"
+
+  def mark_paid!(reference: nil)
+    self.payment_reference = reference if reference.present?
+    update!(paid_at: Time.current)
+  end
+
   # Mark cancelled (or late cancelled) keeping the row; the slot becomes bookable.
   def cancel!(kind: "cancelled", reason: nil)
     self.appointment_status = AppointmentStatus.of(kind)
