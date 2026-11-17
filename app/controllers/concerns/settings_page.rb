@@ -12,6 +12,7 @@ module SettingsPage
     messages_twilio_auth_token messages_plivo_auth_token
     messages_textanywhere_api_key messages_quicksms_api_key messages_quicksms_signing_secret messages_inbound_token
     messages_smsgateway_password messages_smsgateway_signing_key
+    payments_stripe_secret_key payments_stripe_webhook_secret
   ].freeze
 
   private

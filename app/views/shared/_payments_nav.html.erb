@@ -1,0 +1,10 @@
+<%# Left menu of the Payments panel (same shape as messages_nav). %>
+<h4 class="py-3 mb-3 fw-light">
+    <%= lang('payments') %>
+</h4>
+
+<% methods_child = request.path != "/payments_settings" && request.path =~ %r{\A/payments_[a-z_]+_settings\z} %>
+<ul id="payments-nav" class="nav flex-column">
+    <%= render "shared/side_nav_item", path: "/payments_settings", text: lang('settings'), child: false %>
+    <%= render "shared/side_nav_item", path: "/payments_methods", text: lang('payments_methods'), child: methods_child.present? %>
+</ul>

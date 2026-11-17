@@ -127,6 +127,13 @@ Rails.application.routes.draw do
   # Theme preview sample (rendered in the Theme settings cards)
   get "theme_settings/preview" => "theme_settings#preview"
 
+  # Payments panel
+  %w[payments_settings payments_in_person_settings payments_bank_transfer_settings payments_stripe_settings].each do |resource|
+    get resource => "#{resource}#index"
+    post "#{resource}/save" => "#{resource}#save"
+  end
+  get "payments_methods" => "payments_methods#index"
+
   # Messages panel
   get "messages" => redirect("/messages_settings")
   get "messages_providers" => "messages_providers#index"

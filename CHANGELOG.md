@@ -6,6 +6,7 @@ CloudronManifest.json.
 ## 3.4.0
 
 - Payments: appointments record how they are paid and whether they are paid; services list the payment methods they accept
+- Payments: a Payments panel in the settings menu with Settings (offer payment on the booking page, default method) and Methods cards for Pay in person, Bank transfer and Stripe
 
 ## 3.3.0
 
