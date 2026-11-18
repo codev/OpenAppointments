@@ -23,7 +23,7 @@ module Payments
 
     def currency(config = Payments.config) = config["payments_stripe_currency"].to_s.downcase
 
-    def instructions(_config = Payments.config) = ""
+    def instructions(_config = Payments.config) = I18n.t("ea.payments_stripe_instructions")
 
     # [ok, error]: the balance resource answers 200 to a valid secret key.
     def check_credentials(config = Payments.config)

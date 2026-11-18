@@ -95,6 +95,23 @@
     </div>
 
     <div class="mb-3">
+        <label class="form-label"><%= lang('payments_service_methods') %></label>
+        <div id="service-payment-methods" class="card card-body border">
+            <%= hidden_field_tag "service[payment_method_keys][]", "", id: nil %>
+            <% Payments.all.each do |method| %>
+                <div class="form-check">
+                    <%= check_box_tag "service[payment_method_keys][]", method.key, record.payment_method_keys.include?(method.key),
+                                      id: "payment-method-#{method.key}", class: "form-check-input" %>
+                    <label class="form-check-label" for="payment-method-<%= method.key %>">
+                        <%= method.label %><% unless method.enabled? %> <span class="text-muted">(<%= lang('payments_method_inactive') %>)</span><% end %>
+                    </label>
+                </div>
+            <% end %>
+        </div>
+        <div class="form-text text-muted"><small><%= lang('payments_service_methods_hint') %></small></div>
+    </div>
+
+    <div class="mb-3">
         <%= f.label :description, lang('description'), class: "form-label" %>
         <%= f.text_area :description, rows: 4, class: "form-control" %>
     </div>

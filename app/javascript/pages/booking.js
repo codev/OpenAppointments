@@ -399,6 +399,12 @@ App.Pages.Booking = (function () {
             document.addEventListener('turnstile:load', renderTurnstile);
             document.addEventListener('visibilitychange', refreshStaleTurnstile);
 
+            // Confirm reads "Confirm and pay" while a checkout method is chosen.
+            $(document).on('change', 'input[name="payment_method"]', (event) => {
+                const $label = $('#confirm-label');
+                $label.text(String($(event.currentTarget).data('checkout')) === '1' ? $label.data('pay') : $label.data('confirm'));
+            });
+
             // Card selection writes into the step's select.
             $(document).on('click keypress', '.booking-card', (event) => {
                 if (event.type === 'keypress' && event.key !== 'Enter') {

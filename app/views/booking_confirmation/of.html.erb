@@ -15,6 +15,13 @@
             <%= lang('check_spam_folder') %>
         </p>
 
+        <% if vars(:payment_method) %>
+            <div id="payment-details" class="mb-4">
+                <div class="small text-muted"><%= lang('payment') %></div>
+                <%= render "shared/payment_method_text", method: vars(:payment_method) %>
+            </div>
+        <% end %>
+
         <%= render "shared/booking_notice", content: vars(:booking_notice_confirmed_content) %>
 
         <div id="calendar-actions" class="mt-4">

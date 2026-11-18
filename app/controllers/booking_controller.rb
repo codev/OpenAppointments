@@ -82,6 +82,7 @@ class BookingController < ApplicationController
       @step = @reachable.last
     end
     resolve_any_provider
+    resolve_payment_methods
     render :index
   end
 
@@ -117,12 +118,13 @@ class BookingController < ApplicationController
       post_data = {
         "manage_mode" => params[:manage_mode],
         "appointment_hash" => params[:appointment_hash],
+        "payment_method" => params[:payment_method],
         "appointment" => params.require(:appointment).permit(*ALLOWED_APPOINTMENT_FIELDS.map(&:to_sym)).to_h,
         "customer" => params.require(:customer).permit(*ALLOWED_CUSTOMER_FIELDS.map(&:to_sym)).to_h
       }
     end
     if post_data.is_a?(ActionController::Parameters)
-      post_data = post_data.permit(:manage_mode, :appointment_hash,
+      post_data = post_data.permit(:manage_mode, :appointment_hash, :payment_method,
                                    appointment: ALLOWED_APPOINTMENT_FIELDS.map(&:to_sym),
                                    customer: ALLOWED_CUSTOMER_FIELDS.map(&:to_sym)).to_h
     end
@@ -159,6 +161,7 @@ class BookingController < ApplicationController
     appointment_params["id_users_provider"] = provider_id
     provider = User.providers.find(provider_id)
     service = Service.find(appointment_params["id_services"])
+    payment = payment_attributes(service, original, post_data["payment_method"])
 
     if AltchaChallenge.enabled? && !AltchaChallenge.verify(params[:altcha_payload])
       return form_post? ? register_failed(helpers.lang("altcha_verification_failed")) : render(json: { altcha_verification: false })
@@ -204,7 +207,8 @@ class BookingController < ApplicationController
       is_unavailability: false,
       color: service.color,
       appointment_status: AppointmentStatus.of("booked"),
-      book_datetime: Time.now
+      book_datetime: Time.now,
+      **payment
     )
     Appointment.transaction do
       appointment.save!
@@ -475,8 +479,34 @@ class BookingController < ApplicationController
       @error = message
       @step = @reachable.include?("info") ? "final" : @reachable.last
       resolve_any_provider
+      resolve_payment_methods
       render :index
     end
+  end
+
+  # The methods offered on the confirmation step and the one picked so far (the
+  # first until the customer chooses). A reschedule keeps the original's payment,
+  # so it offers none.
+  def resolve_payment_methods
+    @payment_methods = []
+    return unless @step == "final" && Payments.enabled? && !html_vars[:manage_mode]
+
+    @payment_methods = Payments.methods_for(Service.find(@service_id))
+    @payment_method = @payment_methods.find { |method| method.key == params[:payment_method] } || @payment_methods.first
+  end
+
+  # A reschedule carries the original's payment over; a new booking records the
+  # method the customer chose among those the service offers (the only method
+  # needs no choice). Payments off records nothing.
+  def payment_attributes(service, original, chosen_key)
+    return original.slice("payment_method", "payment_reference", "paid_at") if original
+    return {} unless Payments.enabled?
+
+    offered = Payments.methods_for(service)
+    method = offered.find { |candidate| candidate.key == chosen_key } || (offered.one? ? offered.first : nil)
+    raise ArgumentError, helpers.lang("payments_method_not_offered") if offered.any? && method.nil?
+
+    { payment_method: method&.key }
   end
 
   def render_booking_message(title, text, raw_text: false, icon: "error.png")
