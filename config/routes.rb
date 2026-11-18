@@ -133,6 +133,7 @@ Rails.application.routes.draw do
     post "#{resource}/save" => "#{resource}#save"
   end
   get "payments_methods" => "payments_methods#index"
+  post "payments_stripe_settings/test_credentials" => "payments_stripe_settings#test_credentials"
 
   # Messages panel
   get "messages" => redirect("/messages_settings")

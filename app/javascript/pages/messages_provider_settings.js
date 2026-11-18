@@ -9,12 +9,13 @@
         App.Layouts.Backend.displayNotification(message);
     }
 
+    // The block names its page in data-url; without it the page is a messages provider.
     function run(action, $block, extra) {
-        const prefix = $block.data('prefix');
+        const base = $block.data('url') || App.Utils.Url.siteUrl('messages_' + $block.data('prefix') + '_settings');
         const data = $('#settings-form').serialize() + '&' + $.param(Object.assign({csrf_token: vars('csrf_token')}, extra));
 
         $block.find('.test-result').text('...').removeClass('text-danger text-success');
-        $.post(App.Utils.Url.siteUrl('messages_' + prefix + '_settings/' + action), data)
+        $.post(base + '/' + action, data)
             .done((response) => show($block, response.success !== false, response.message))
             .fail((xhr) => show($block, false, (xhr.responseJSON && xhr.responseJSON.message) || lang('messages_test_failed')));
     }
