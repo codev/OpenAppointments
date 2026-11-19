@@ -167,7 +167,9 @@ class OdsExtract
 
       { staff: row["provider"], service: row["service"], customer_ext_id: row["customer_id"],
         start: start_at, end: parse_time(row["end_datetime"]) || start_at + 30 * 60,
-        note: row["notes"], status: row["status"] }
+        note: row["notes"], status: row["status"],
+        payment_method: row["payment_method"].presence, payment_reference: row["payment_reference"].presence,
+        paid_at: parse_time(row["paid_at"]) }
     end
   end
 

@@ -25,6 +25,9 @@ production:
   extend_appointment_series:
     class: AppointmentSeriesExtendJob
     schedule: at 3am every day
+  payment_sweep:
+    class: PaymentSweepJob
+    schedule: every 5 minutes
   waitlist_daily:
     class: WaitlistDailyJob
     schedule: at 9am every day

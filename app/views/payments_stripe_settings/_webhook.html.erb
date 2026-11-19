@@ -1,0 +1,5 @@
+<div class="mb-3">
+    <label class="form-label" for="stripe-webhook-url"><%= lang('payments_stripe_webhook_url') %></label>
+    <input type="text" id="stripe-webhook-url" class="form-control" readonly value="<%= vars(:webhook_url) %>">
+    <div class="form-text text-muted"><small><%= lang('payments_stripe_webhook_url_hint') %></small></div>
+</div>

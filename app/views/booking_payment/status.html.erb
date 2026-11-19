@@ -1,0 +1,45 @@
+<%# Where a checkout payment stands: pending (Try again, Cancel booking),
+    expired or abandoned (Book again). Rendered with the message layout. %>
+<div class="d-flex align-items-center justify-content-center">
+    <div class="text-center py-4 px-3" style="max-width: 600px;">
+        <div class="d-flex align-items-center justify-content-center rounded-circle bg-warning bg-opacity-10 mx-auto mb-4" style="width: 100px; height: 100px;">
+            <i class="fas <%= vars(:status) == :pending ? 'fa-credit-card' : 'fa-calendar-times' %> fa-3x text-warning"></i>
+        </div>
+
+        <h3 class="text-muted fw-semibold mb-4"><%= vars(:message_title) %></h3>
+
+        <% if vars(:alert) %>
+            <div class="alert alert-danger"><%= vars(:alert) %></div>
+        <% end %>
+
+        <p class="fs-5 text-muted mb-4"><%= vars(:message_text) %></p>
+
+        <div class="d-flex flex-column flex-sm-row gap-2 justify-content-center">
+            <% if vars(:status) == :pending %>
+                <% if vars(:try_again_url).present? %>
+                    <a id="try-again" href="<%= vars(:try_again_url) %>" class="btn btn-primary px-4 py-2">
+                        <i class="fas fa-credit-card me-2"></i>
+                        <%= lang('payments_try_again') %>
+                    </a>
+                <% end %>
+                <%= button_to "/booking_payment/abandon/#{vars(:appointment_hash)}", class: "btn btn-outline-secondary px-4 py-2" do %>
+                    <i class="fas fa-calendar-times me-2"></i>
+                    <%= lang('payments_cancel_booking') %>
+                <% end %>
+            <% else %>
+                <a id="book-again" href="/" class="btn btn-primary px-4 py-2">
+                    <i class="fas fa-calendar-plus me-2"></i>
+                    <%= lang('payments_book_again') %>
+                </a>
+            <% end %>
+        </div>
+    </div>
+</div>
+
+<% content_for :scripts do %>
+    <%= render "shared/google_analytics_script", google_analytics_code: vars(:google_analytics_code) %>
+    <%= render "shared/matomo_analytics_script",
+               matomo_analytics_url: vars(:matomo_analytics_url),
+               matomo_analytics_site_id: vars(:matomo_analytics_site_id) %>
+    <%= render "shared/umami_analytics_script" %>
+<% end %>

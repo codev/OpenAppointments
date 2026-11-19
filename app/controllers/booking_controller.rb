@@ -51,6 +51,7 @@ class BookingController < ApplicationController
         return render_booking_message(helpers.lang("appointment_not_found"),
                                       helpers.lang("appointment_does_not_exist_in_db"))
       end
+      return redirect_to booking_payment_path(appointment_hash: record.booking_hash) if BookingPayment.checkout?(record)
       return render_late_cancel(record) if BookingWindows.late?(record)
 
       manage_mode = true
@@ -82,6 +83,7 @@ class BookingController < ApplicationController
       @step = @reachable.last
     end
     resolve_any_provider
+    resolve_payment_methods
     render :index
   end
 
@@ -117,12 +119,13 @@ class BookingController < ApplicationController
       post_data = {
         "manage_mode" => params[:manage_mode],
         "appointment_hash" => params[:appointment_hash],
+        "payment_method" => params[:payment_method],
         "appointment" => params.require(:appointment).permit(*ALLOWED_APPOINTMENT_FIELDS.map(&:to_sym)).to_h,
         "customer" => params.require(:customer).permit(*ALLOWED_CUSTOMER_FIELDS.map(&:to_sym)).to_h
       }
     end
     if post_data.is_a?(ActionController::Parameters)
-      post_data = post_data.permit(:manage_mode, :appointment_hash,
+      post_data = post_data.permit(:manage_mode, :appointment_hash, :payment_method,
                                    appointment: ALLOWED_APPOINTMENT_FIELDS.map(&:to_sym),
                                    customer: ALLOWED_CUSTOMER_FIELDS.map(&:to_sym)).to_h
     end
@@ -159,6 +162,7 @@ class BookingController < ApplicationController
     appointment_params["id_users_provider"] = provider_id
     provider = User.providers.find(provider_id)
     service = Service.find(appointment_params["id_services"])
+    payment = payment_attributes(service, original, post_data["payment_method"])
 
     if AltchaChallenge.enabled? && !AltchaChallenge.verify(params[:altcha_payload])
       return form_post? ? register_failed(helpers.lang("altcha_verification_failed")) : render(json: { altcha_verification: false })
@@ -204,18 +208,17 @@ class BookingController < ApplicationController
       is_unavailability: false,
       color: service.color,
       appointment_status: AppointmentStatus.of("booked"),
-      book_datetime: Time.now
+      book_datetime: Time.now,
+      **payment
     )
     Appointment.transaction do
       appointment.save!
       original&.update!(appointment_status: AppointmentStatus.of("rescheduled"), rescheduled_to: appointment)
     end
 
-    settings = notification_settings
+    return start_checkout(appointment) if original.nil? && BookingPayment.checkout?(appointment)
 
-    Notifications.appointment_saved(appointment, service, provider, customer, settings, manage_mode: manage_mode)
-    Webhooks.trigger(Webhooks::APPOINTMENT_SAVE, appointment)
-    WaitlistEntry.where(email: customer.email, service_id: service.id).delete_all if customer.email.present?
+    Bookings.announce(appointment, manage_mode: manage_mode)
 
     if form_post?
       redirect_to booking_confirmation_path(appointment_hash: appointment.booking_hash)
@@ -438,7 +441,8 @@ class BookingController < ApplicationController
     if !original || original.frees_slot? || BookingWindows.past?(original)
       raise ArgumentError, helpers.lang("appointment_does_not_exist_in_db")
     end
-    raise ArgumentError, helpers.lang("appointment_locked") if BookingWindows.late?(original)
+    # A booking still waiting on its payment is managed on the payment page.
+    raise ArgumentError, helpers.lang("appointment_locked") if BookingWindows.late?(original) || BookingPayment.checkout?(original)
     original
   end
 
@@ -475,7 +479,55 @@ class BookingController < ApplicationController
       @error = message
       @step = @reachable.include?("info") ? "final" : @reachable.last
       resolve_any_provider
+      resolve_payment_methods
       render :index
+    end
+  end
+
+  # The methods offered on the confirmation step and the one picked so far (the
+  # first until the customer chooses). A reschedule keeps the original's payment,
+  # so it offers none.
+  def resolve_payment_methods
+    @payment_methods = []
+    return unless @step == "final" && Payments.enabled? && !html_vars[:manage_mode]
+
+    @payment_methods = Payments.methods_for(Service.find(@service_id))
+    @payment_method = @payment_methods.find { |method| method.key == params[:payment_method] } || @payment_methods.first
+  end
+
+  # A reschedule carries the original's payment over; a new booking records the
+  # method the customer chose among those the service offers (the only method
+  # needs no choice). Payments off records nothing.
+  def payment_attributes(service, original, chosen_key)
+    return original.slice("payment_method", "payment_reference", "paid_at") if original
+    return {} unless Payments.enabled?
+
+    offered = Payments.methods_for(service)
+    method = offered.find { |candidate| candidate.key == chosen_key } || (offered.one? ? offered.first : nil)
+    raise ArgumentError, helpers.lang("payments_method_not_offered") if offered.any? && method.nil?
+
+    { payment_method: method&.key }
+  end
+
+  # A checkout booking holds its slot while the customer pays on the hosted
+  # page; it is announced once paid. Embedded, the frame cannot redirect the
+  # page, so a page sends the top window there instead.
+  def start_checkout(appointment)
+    url = begin
+      BookingPayment.start(appointment, return_url: booking_payment_url(appointment_hash: appointment.booking_hash))
+    rescue StandardError => e
+      Rails.logger.error("Booking - starting the payment for appointment #{appointment.id} failed: #{e.message}")
+      appointment.destroy!
+      raise ArgumentError, helpers.lang("payments_checkout_failed")
+    end
+
+    if !form_post?
+      render json: { appointment_id: appointment.id, appointment_hash: appointment.booking_hash, checkout_url: url }
+    elsif Embedding.enabled?
+      html_vars(page_title: helpers.lang("payment"), company_color: Setting.get("company_color"), checkout_url: url)
+      render "booking/checkout_redirect", layout: "message"
+    else
+      redirect_to url, allow_other_host: true
     end
   end
 
@@ -569,18 +621,6 @@ class BookingController < ApplicationController
     }
     Consent.create!(consent.merge(type: "terms-and-conditions")) if Setting.get("display_terms_and_conditions") == "1"
     Consent.create!(consent.merge(type: "privacy-policy")) if Setting.get("display_privacy_policy") == "1"
-  end
-
-  def notification_settings
-    company_color = Setting.get("company_color")
-    {
-      company_name: Setting.get("company_name"),
-      company_link: Setting.get("company_link"),
-      company_email: Setting.get("company_email"),
-      company_color: company_color.present? && company_color != "#ffffff" ? company_color : nil,
-      date_format: Setting.get("date_format"),
-      time_format: Setting.get("time_format")
-    }
   end
 
   # EA row shape for the appointment_data page var (naive Y-m-d H:i:s strings).

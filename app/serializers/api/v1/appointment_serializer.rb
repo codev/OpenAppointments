@@ -14,7 +14,9 @@ module Api
         "hash" => "booking_hash",
         "serviceId" => "id_services",
         "providerId" => "id_users_provider",
-        "customerId" => "id_users_customer"
+        "customerId" => "id_users_customer",
+        "paymentMethod" => "payment_method",
+        "paidAt" => "paid_at"
       }.freeze
 
       SORT_OVERRIDES = {

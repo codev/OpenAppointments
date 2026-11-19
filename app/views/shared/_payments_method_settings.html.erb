@@ -1,0 +1,98 @@
+<%# Locals: title, prefix (the method key), fields [{name:, label:, type:, hint:}],
+    instructions (true: the customer text), test (true: the Test credentials section),
+    after_fields (optional: a partial rendered below the fields). %>
+<div id="payments-<%= prefix %>-settings-page" class="container backend-page py-3">
+    <div class="row">
+        <div class="col-sm-3">
+            <%= render "shared/payments_nav" %>
+        </div>
+        <div id="payments-<%= prefix %>-settings" class="col-sm-9">
+            <turbo-frame id="settings">
+                <%= settings_form "/payments_#{prefix}_settings/save" do %>
+                    <div class="d-flex justify-content-between align-items-center border-bottom mb-4 py-2">
+                        <h4 class="mb-0 fw-light">
+                            <%= title %>
+                        </h4>
+
+                        <div>
+                            <a href="/payments_methods" class="btn btn-outline-primary me-2" data-turbo="false">
+                                <i class="fas fa-chevron-left me-2"></i>
+                                <%= lang('back') %>
+                            </a>
+                        </div>
+                    </div>
+                    <%= settings_flash %>
+
+                    <div class="row">
+                        <div class="col-12 col-md-8">
+                            <div class="form-check form-switch mb-3">
+                                <%= setting_switch "payments_#{prefix}_enabled", id: "#{prefix}-enabled" %>
+                                <label class="form-check-label" for="<%= prefix %>-enabled">
+                                    <%= lang('active') %>
+                                </label>
+                            </div>
+
+                            <div class="form-check form-switch mb-4">
+                                <%= hidden_field_tag "settings[payments_#{prefix}_default]", "0", id: nil %>
+                                <%= check_box_tag "settings[payments_#{prefix}_default]", "1", Payments.default_method_key == prefix,
+                                                  id: "#{prefix}-default", class: "form-check-input" %>
+                                <label class="form-check-label" for="<%= prefix %>-default">
+                                    <%= lang('payments_default_method') %>
+                                </label>
+                                <div class="form-text text-muted">
+                                    <small>
+                                        <%= lang('payments_default_method_hint') %>
+                                    </small>
+                                </div>
+                            </div>
+
+                            <% fields.each do |field| %>
+                                <div class="mb-3">
+                                    <label class="form-label" for="<%= field[:name].dasherize %>">
+                                        <%= field[:label] %>
+                                    </label>
+                                    <% if field[:type] == "password" %>
+                                        <%= setting_password field[:name], autocomplete: "off" %>
+                                    <% else %>
+                                        <%= setting_text field[:name], autocomplete: "off" %>
+                                    <% end %>
+                                    <% if field[:hint] %>
+                                        <div class="form-text text-muted"><small><%= field[:hint] %></small></div>
+                                    <% end %>
+                                </div>
+                            <% end %>
+
+                            <%= render local_assigns[:after_fields] if local_assigns[:after_fields] %>
+
+                            <% if instructions %>
+                                <div class="mb-3">
+                                    <label class="form-label" for="payments-<%= prefix.dasherize %>-instructions">
+                                        <%= lang('payments_instructions') %>
+                                    </label>
+                                    <%= setting_textarea "payments_#{prefix}_instructions", rows: 4 %>
+                                    <div class="form-text text-muted"><small><%= lang('payments_instructions_hint') %></small></div>
+                                </div>
+                            <% end %>
+
+                            <% if test %>
+                                <div id="<%= prefix %>-test" class="border-top pt-3 mb-3" data-prefix="<%= prefix %>"
+                                     data-url="/payments_<%= prefix %>_settings">
+                                    <h5 class="fw-light mb-3"><%= lang('messages_test_setup') %></h5>
+                                    <div class="mb-3">
+                                        <button type="button" id="<%= prefix %>-test-credentials" class="btn btn-outline-secondary test-credentials" data-no-change>
+                                            <%= lang('messages_test_credentials') %>
+                                        </button>
+                                    </div>
+                                    <div class="form-text test-result"></div>
+                                </div>
+                                <% content_for :scripts do %>
+                                    <%= ea_js "pages/messages_provider_settings" %>
+                                <% end %>
+                            <% end %>
+                        </div>
+                    </div>
+                <% end %>
+            </turbo-frame>
+        </div>
+    </div>
+</div>

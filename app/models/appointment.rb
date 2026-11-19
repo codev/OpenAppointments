@@ -70,6 +70,29 @@ class Appointment < ApplicationRecord
 
   def frees_slot? = appointment_status&.frees_slot? || false
 
+  # "none" without a payment method, else "unpaid" until paid_at is set.
+  def payment_status
+    return "none" if payment_method.blank?
+
+    paid_at ? "paid" : "unpaid"
+  end
+
+  def unpaid? = payment_status == "unpaid"
+
+  # Unpaid through a method that tracks payment (pay in person does not), so
+  # the backend marks the appointment.
+  def payment_due? = unpaid? && (Payments.find(payment_method)&.tracks_payment? || false)
+
+  # Stamps the payment once: false when it was already paid, so concurrent
+  # reports of the same payment act on it a single time.
+  def mark_paid!(reference: nil)
+    changes = { paid_at: Time.current, updated_at: Time.current }
+    changes[:payment_reference] = reference if reference.present?
+    claimed = self.class.where(id: id, paid_at: nil).update_all(changes) == 1
+    reload if claimed
+    claimed
+  end
+
   # Mark cancelled (or late cancelled) keeping the row; the slot becomes bookable.
   def cancel!(kind: "cancelled", reason: nil)
     self.appointment_status = AppointmentStatus.of(kind)

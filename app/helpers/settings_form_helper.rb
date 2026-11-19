@@ -31,9 +31,9 @@ module SettingsFormHelper
     { id: name.dasherize, data: { field: name } }.merge(options)
   end
 
-  # Stored value, else the messaging default (the only settings with code defaults).
+  # Stored value, else the messaging or payments default (the only settings with code defaults).
   def setting_value(name)
-    setting(name, Messaging::Defaults::SETTINGS[name])
+    setting(name, Messaging::Defaults::SETTINGS[name] || Payments::Defaults::SETTINGS[name])
   end
 
   def setting_text(name, **options)

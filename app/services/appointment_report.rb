@@ -4,7 +4,7 @@ module AppointmentReport
   module_function
 
   COLUMNS = %w[date start end duration customer email phone_number provider service status
-               location notes repeats booked_on].freeze
+               payment_method payment_status location notes repeats booked_on].freeze
 
   # labels: key -> header text. status_ids: nil for every status; a list that
   # covers every status also includes appointments with no status. The
@@ -30,6 +30,8 @@ module AppointmentReport
         appointment.end_datetime.strftime("%H:%M"), appointment.duration_minutes,
         customer&.name, customer&.email, customer&.phone_number,
         appointment.provider&.name, appointment.service&.name, appointment.status,
+        Payments.find(appointment.payment_method)&.label,
+        appointment.payment_method.present? ? I18n.t("ea.#{appointment.payment_status}") : nil,
         appointment.location, appointment.notes, appointment.series&.description,
         appointment.book_datetime&.strftime("%Y-%m-%d %H:%M") ] +
         custom_fields.map { |attribute| customer&.public_send(attribute) } + [ customer&.notes ]

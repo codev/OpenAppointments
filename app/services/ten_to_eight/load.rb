@@ -503,7 +503,8 @@ module TenToEight
             id_users_provider: provider_id, id_users_customer: customer_id,
             id_services: service_id, start_datetime: row[:start], end_datetime: row[:end],
             notes: row[:note], location: "", book_datetime: Time.now,
-            appointment_status: ten_to_eight_status(row[:status])
+            appointment_status: ten_to_eight_status(row[:status]),
+            payment_method: row[:payment_method], payment_reference: row[:payment_reference], paid_at: row[:paid_at]
           )
         end
         next unless appointment

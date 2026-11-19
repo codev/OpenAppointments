@@ -112,6 +112,21 @@ Under Settings - Embedding - enter the website you want to embed the booking wid
 
 Each provider has a calendar feed: the Calendar Feed button on the calendar page gives a secret subscription link (ICS) to paste into Google Calendar, Apple Calendar or Outlook, with copy and reset. It is one way and carries the service and customer name and a link back here, no contact details. Calendar apps refresh it on their own schedule (Google 8 to 24 hours, Apple hourly), so it is a reference, not a live view.
 
+### Payments
+
+Admin > Payments. Settings holds the switch that offers payment on the booking page
+and the default method; Methods has a card per method: Pay in person and Bank
+transfer show the instructions you write (nothing is checked, mark the appointment
+Paid yourself), Stripe sends the customer to Stripe Checkout after Confirm and pay.
+Each service ticks the methods it accepts; with several, the confirmation step asks
+the customer to choose. A Stripe booking holds its slot while the customer pays and is
+announced once paid; one left unpaid for 30 minutes is released. The appointment
+dialog has the method and a Paid switch, the calendar and List mark due payments
+"(Unpaid)", and the templates have {{Payment Method}}, {{Payment Status}} and
+{{Payment Instructions}}. Stripe setup: paste the secret key and currency, add
+`/payments/stripe/webhook` as a webhook endpoint for `checkout.session.completed` and
+`checkout.session.expired`, and paste its signing secret.
+
 ### Minor fixes
 
 Better layout of customer fields; Captcha first on the Integrations page; per-provider captcha settings sections; Any Provider is the default in the provider dropdown instead of Please Select; Pagination in the admin views; customers page and appointments modal respect the booking field display/require settings; booking form validation messages now display; the install task's admin is redirected to the account page with a banner until the default password is changed
@@ -149,11 +164,12 @@ bin/rails openappointments:backup     # VACUUM INTO a timestamped SQLite copy
 bin/rails openappointments:reminders  # send due coming-up notifications
 bin/rails openappointments:fetch_mail # pull unread IMAP mail into Action Mailbox
 bin/rails openappointments:waitlist   # daily waiting list availability notices
+bin/rails openappointments:payment_sweep # settle Stripe bookings nobody returned from
 ```
 
 In production Solid Queue runs inside Puma (start.sh sets SOLID_QUEUE_IN_PUMA) and
-config/recurring.yml already runs the reminder scan and mail fetch every 5 minutes
-and the waiting list scan daily at 9am; the rake targets are for manual runs or an
+config/recurring.yml already runs the reminder scan, mail fetch and payment sweep every
+5 minutes and the waiting list scan daily at 9am; the rake targets are for manual runs or an
 external cron.
 
 - Data retention: set the `data_retention_days` setting (0 disables). Cleanup deletes

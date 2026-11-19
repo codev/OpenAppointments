@@ -7,6 +7,7 @@ class BookingConfirmationController < ApplicationController
   def of
     appointment = Appointment.find_by(booking_hash: params[:appointment_hash])
     return redirect_to "/" unless appointment # The appointment does not exist.
+    return redirect_to booking_payment_path(appointment_hash: appointment.booking_hash) if BookingPayment.checkout?(appointment)
 
     html_vars(
       page_title: helpers.lang("success"),
@@ -21,7 +22,8 @@ class BookingConfirmationController < ApplicationController
       add_to_google_url: add_to_google_url(appointment),
       display_add_to_google_calendar: Setting.get("display_add_to_google_calendar", "1"),
       ics_url: booking_confirmation_ics_path(appointment_hash: appointment.booking_hash),
-      booking_notice_confirmed_content: Setting.get("booking_notice_confirmed_content")
+      booking_notice_confirmed_content: Setting.get("booking_notice_confirmed_content"),
+      payment_method: Payments.find(appointment.payment_method)
     )
   end
 

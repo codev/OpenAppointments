@@ -16,4 +16,11 @@ class Service < ApplicationRecord
   scope :display_order, -> { order(Arel.sql("services.sort_order IS NULL, services.sort_order"), :name) }
 
   before_create -> { self.booking_slug ||= BookingSlug.unique_for(Service) }
+
+  # The accepted payment method keys; empty means the default method only.
+  def payment_method_keys = payment_methods.to_s.split(",").map(&:strip).compact_blank.uniq
+
+  def payment_method_keys=(keys)
+    self.payment_methods = Array(keys).map(&:to_s).map(&:strip).compact_blank.uniq.join(",")
+  end
 end

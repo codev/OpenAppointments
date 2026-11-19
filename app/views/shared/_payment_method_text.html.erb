@@ -1,0 +1,6 @@
+<%# Locals: method. A payment method as text for the customer: its label and
+    the instructions from its settings page, line breaks kept. %>
+<div><strong><%= method.label %></strong></div>
+<% if method.instructions.present? %>
+    <%= simple_format(method.instructions, class: "mb-0 small text-muted") %>
+<% end %>

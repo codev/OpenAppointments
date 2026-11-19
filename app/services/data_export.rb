@@ -112,10 +112,11 @@ module DataExport
       [ appointment.start_datetime&.strftime(DATETIME), appointment.end_datetime&.strftime(DATETIME),
         appointment.provider&.name, appointment.id_users_customer, appointment.service&.name,
         appointment.notes, appointment.status, appointment.is_unavailability ? "1" : "0",
-        appointment.booking_hash ]
+        appointment.booking_hash, appointment.payment_method, appointment.payment_reference,
+        appointment.paid_at&.strftime(DATETIME) ]
     end
     [ %w[start_datetime end_datetime provider customer_id service notes status is_unavailability
-         booking_hash] ] + rows
+         booking_hash payment_method payment_reference paid_at] ] + rows
   end
 
   def appointment_series_sheet

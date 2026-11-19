@@ -193,7 +193,8 @@ class AppointmentsController < ApplicationController
   def posted_duration = params.dig(:appointment, :duration)
 
   def appointment_params
-    params.require(:appointment).permit(*EventSaving::APPOINTMENT_FIELDS.map(&:to_sym)).to_h.except("id")
+    params.require(:appointment).permit(*(EventSaving::APPOINTMENT_FIELDS + EventSaving::PAYMENT_FIELDS).map(&:to_sym))
+          .to_h.except("id")
   end
 
   def customer_params

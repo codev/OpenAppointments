@@ -99,6 +99,9 @@ Rails.application.routes.draw do
   get "booking/waitlist/leave/:token" => "booking#leave_waitlist"
   get "booking_confirmation/of/:appointment_hash" => "booking_confirmation#of", as: :booking_confirmation
   get "booking_confirmation/ics/:appointment_hash" => "booking_confirmation#ics", as: :booking_confirmation_ics
+  # The return from a hosted payment page (success and cancel alike) and Cancel booking on it.
+  get "booking_payment/of/:appointment_hash" => "booking_payment#of", as: :booking_payment
+  post "booking_payment/abandon/:appointment_hash" => "booking_payment#abandon"
   # EA has no GET cancellation page: the frame form POSTs and non-POST/empty-reason requests get 403.
   post "booking_cancellation/of/:appointment_hash" => "booking_cancellation#of"
   post "booking_cancellation/late/:appointment_hash" => "booking_cancellation#late"
@@ -127,6 +130,14 @@ Rails.application.routes.draw do
   # Theme preview sample (rendered in the Theme settings cards)
   get "theme_settings/preview" => "theme_settings#preview"
 
+  # Payments panel
+  %w[payments_settings payments_in_person_settings payments_bank_transfer_settings payments_stripe_settings].each do |resource|
+    get resource => "#{resource}#index"
+    post "#{resource}/save" => "#{resource}#save"
+  end
+  get "payments_methods" => "payments_methods#index"
+  post "payments_stripe_settings/test_credentials" => "payments_stripe_settings#test_credentials"
+
   # Messages panel
   get "messages" => redirect("/messages_settings")
   get "messages_providers" => "messages_providers#index"
@@ -151,6 +162,9 @@ Rails.application.routes.draw do
   get "about" => "about#index"
   get "account" => "account#index"
   post "account/save" => "account#save"
+
+  # Stripe's Checkout Session events (public; signature-checked)
+  post "payments/stripe/webhook" => "payments_stripe_webhook#receive", as: :payments_stripe_webhook
 
   # Inbound SMS webhooks (public; token in URL)
   post "messages/inbound/:channel/:token" => "inbound_messages#receive"

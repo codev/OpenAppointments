@@ -1,0 +1,13 @@
+<%= render "shared/payments_method_settings",
+           title: "Stripe",
+           prefix: "stripe",
+           fields: [
+             { name: "payments_stripe_secret_key", label: lang("payments_stripe_secret_key"), type: "password",
+               hint: lang("payments_stripe_keys_hint") },
+             { name: "payments_stripe_webhook_secret", label: lang("payments_stripe_webhook_secret"), type: "password",
+               hint: lang("payments_stripe_webhook_secret_hint") },
+             { name: "payments_stripe_currency", label: lang("currency"), hint: lang("payments_stripe_currency_hint") }
+           ],
+           instructions: false,
+           after_fields: "payments_stripe_settings/webhook",
+           test: true %>

@@ -156,3 +156,8 @@ Setting.find_or_create_by!(name: "messages_inbound_token") do |setting|
   setting.value = Messaging::Defaults.inbound_token
 end
 Messaging::Defaults.create_notifications!
+
+# Payments defaults
+Payments::Defaults::SETTINGS.each do |name, value|
+  Setting.find_or_create_by!(name: name) { |setting| setting.value = value }
+end

@@ -3,6 +3,10 @@
 The about page lists these notes; every release needs a section here matching
 CloudronManifest.json.
 
+## 3.4.0
+
+- Payments
+
 ## 3.3.0
 
 - Calendar: the Feed dialog shows how far the feed reaches, days back and days ahead, and saves a change

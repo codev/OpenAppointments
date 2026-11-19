@@ -97,7 +97,7 @@
             </li>
 
             <% hidden = can?(:view, :system_settings) || can?(:view, :user_settings) ? "" : "d-none" %>
-            <% active = %w[system_settings messages].include?(active_menu) ? "active" : "" %>
+            <% active = %w[system_settings messages payments].include?(active_menu) ? "active" : "" %>
             <li class="nav-item dropdown text-center <%= active + hidden %>">
                 <a class="nav-link dropdown-toggle text-white fw-light py-3 px-3" href="#"
                    data-bs-toggle="dropdown" aria-label="<%= lang('settings') %>"
@@ -117,6 +117,13 @@
                         <a class="dropdown-item" href="/messages_settings">
                             <i class="fas fa-envelope me-2"></i>
                             <%= lang('message_settings') %>
+                        </a>
+                    <% end %>
+
+                    <% if can?(:view, :system_settings) %>
+                        <a class="dropdown-item" href="/payments_settings">
+                            <i class="fas fa-credit-card me-2"></i>
+                            <%= lang('payments') %>
                         </a>
                     <% end %>
 

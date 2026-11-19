@@ -564,7 +564,10 @@ App.Utils.CalendarEvents = (function () {
     function appointmentEvents(appointments, titleBy = 'service') {
         return appointments.map((appointment) => {
             const detail = titleBy === 'provider' ? appointment.provider.name : appointment.service.name;
-            const title = appointment.customer.name ? appointment.customer.name + ' - ' + detail : detail;
+            let title = appointment.customer.name ? appointment.customer.name + ' - ' + detail : detail;
+            if (appointment.payment_due) {
+                title += ' (' + lang('unpaid') + ')';
+            }
 
             return {
                 id: appointment.id,
