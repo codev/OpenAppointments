@@ -41,7 +41,7 @@ module Payments
   end
 
   # A method's configuration: stored settings with the code defaults, overlaid
-  # with posted values for the settings page tests.
+  # with the form's values for Test credentials on the settings page.
   def config(overrides = {})
     Hash.new { |_, name| Setting.get(name, Payments::Defaults::SETTINGS[name]).to_s }.merge(overrides)
   end

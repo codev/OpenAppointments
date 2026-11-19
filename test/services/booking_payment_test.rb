@@ -43,6 +43,24 @@ class BookingPaymentTest < ActiveSupport::TestCase
     assert_not_requested :get, "#{SESSIONS}/cs_new"
   end
 
+  test "the sweep looks no further back than a day, so old rows are not retried forever" do
+    stale = held("pi_refunded", booked_at: @now - 2.days)
+    assert_equal 0, BookingPayment.sweep(@now)
+    assert_equal "Booked", stale.reload.status
+    assert_not_requested :get, "#{SESSIONS}/pi_refunded"
+  end
+
+  test "a payment is confirmed and announced once however many reports arrive" do
+    appointment = held("cs_twice", booked_at: @now)
+    Notification.create!(title: "Booked", event: "created", audiences: %w[customer], channels: %w[email], short_text: "Booked")
+    stale_copy = Appointment.find(appointment.id)
+    assert_difference "Message.count", 1 do
+      BookingPayment.confirm_paid(appointment, "pi_1")
+      BookingPayment.confirm_paid(stale_copy, "pi_1")
+    end
+    assert_equal "pi_1", appointment.reload.payment_reference
+  end
+
   test "a provider error on one booking does not stop the sweep" do
     broken = held("cs_broken", booked_at: @now - 40.minutes)
     expired = held("cs_old", booked_at: @now - 40.minutes, start: "2026-07-20 15:00:00")

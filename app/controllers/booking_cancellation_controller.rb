@@ -33,6 +33,8 @@ class BookingCancellationController < ApplicationController
     appointment = Appointment.find_by(booking_hash: appointment_hash)
     return render_appointment_not_found unless appointment
     return render_appointment_not_found if appointment.frees_slot?
+    # A held booking is cancelled from the payment page, which tells nobody.
+    return redirect_to booking_payment_path(appointment_hash: appointment_hash) if BookingPayment.checkout?(appointment)
 
     kind = "late_cancel" if BookingWindows.late?(appointment)
     # The late cancel page asks for the reason the normal modal left optional.

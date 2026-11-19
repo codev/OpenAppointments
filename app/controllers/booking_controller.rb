@@ -51,6 +51,7 @@ class BookingController < ApplicationController
         return render_booking_message(helpers.lang("appointment_not_found"),
                                       helpers.lang("appointment_does_not_exist_in_db"))
       end
+      return redirect_to booking_payment_path(appointment_hash: record.booking_hash) if BookingPayment.checkout?(record)
       return render_late_cancel(record) if BookingWindows.late?(record)
 
       manage_mode = true
@@ -440,7 +441,8 @@ class BookingController < ApplicationController
     if !original || original.frees_slot? || BookingWindows.past?(original)
       raise ArgumentError, helpers.lang("appointment_does_not_exist_in_db")
     end
-    raise ArgumentError, helpers.lang("appointment_locked") if BookingWindows.late?(original)
+    # A booking still waiting on its payment is managed on the payment page.
+    raise ArgumentError, helpers.lang("appointment_locked") if BookingWindows.late?(original) || BookingPayment.checkout?(original)
     original
   end
 

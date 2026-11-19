@@ -7,6 +7,7 @@ class BookingConfirmationController < ApplicationController
   def of
     appointment = Appointment.find_by(booking_hash: params[:appointment_hash])
     return redirect_to "/" unless appointment # The appointment does not exist.
+    return redirect_to booking_payment_path(appointment_hash: appointment.booking_hash) if BookingPayment.checkout?(appointment)
 
     html_vars(
       page_title: helpers.lang("success"),

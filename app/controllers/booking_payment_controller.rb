@@ -26,8 +26,15 @@ class BookingPaymentController < ApplicationController
     return redirect_to confirmation_path unless BookingPayment.checkout?(@appointment)
     return render_status(:expired) if @appointment.frees_slot?
 
-    BookingPayment.abandon(@appointment)
-    render_status(:abandoned)
+    case BookingPayment.abandon(@appointment)
+    when :paid then redirect_to confirmation_path
+    when :open then render_status(:pending, alert: helpers.lang("payments_checkout_failed"))
+    when :expired then render_status(:expired)
+    else render_status(:abandoned)
+    end
+  rescue StandardError => e
+    Rails.logger.error("Booking Payment Exception: #{e.message}")
+    render_status(:pending, alert: helpers.lang("payments_checkout_failed"))
   end
 
   private

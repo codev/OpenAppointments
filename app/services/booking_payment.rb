@@ -9,6 +9,7 @@ module BookingPayment
   CHECKOUT_EXPIRY = 31.minutes
   # The sweep waits this much longer, so the return page gets to settle first.
   SWEEP_GRACE = 5.minutes
+  SWEEP_WINDOW = 1.day
 
   # An unpaid booking through a checkout method.
   def checkout?(appointment)
@@ -37,16 +38,18 @@ module BookingPayment
     [ outcome[:state], outcome[:url] ]
   end
 
-  # Settles every held booking whose session has had time to expire, so a
-  # payment the webhook missed is still marked and an abandoned booking still
-  # released. Answers how many were settled; a provider error skips that one.
+  # Settles every booking of the last day whose session has had time to
+  # expire, so a payment the webhook missed is still marked and an abandoned
+  # booking still released. Older rows are left alone: a booking unmarked
+  # Paid after a refund is not a held booking. Answers how many were settled;
+  # a provider error skips that one.
   def sweep(now = Time.current)
     checkout_keys = Payments.all.select(&:checkout?).map(&:key)
     held = Appointment.appointments.active
                       .where(paid_at: nil, payment_method: checkout_keys)
                       .where.not(payment_reference: [ nil, "" ])
-                      .where(book_datetime: ...(now - CHECKOUT_EXPIRY - SWEEP_GRACE))
-    held.count do |appointment|
+                      .where(book_datetime: (now - SWEEP_WINDOW)...(now - CHECKOUT_EXPIRY - SWEEP_GRACE))
+    held.to_a.count do |appointment|
       settle(appointment)
       true
     rescue StandardError => e
@@ -55,21 +58,24 @@ module BookingPayment
     end
   end
 
-  # Idempotent: the return page and a webhook may both report the payment.
+  # The return page, a webhook and the sweep may all report the payment; the
+  # first to claim it announces the booking.
   def confirm_paid(appointment, reference)
-    return if appointment.paid_at
-
-    appointment.mark_paid!(reference: reference)
-    Bookings.announce(appointment)
+    Bookings.announce(appointment) if appointment.mark_paid!(reference: reference)
   end
 
-  # Cancel booking on the pending page: the slot is released and the session
-  # closed, so a payment page left open in another tab cannot pay for it.
+  # Cancel booking on the pending page: the session is closed first, so a
+  # payment page left open in another tab cannot pay for a released booking.
+  # When the provider will not close it, the payment may already have gone
+  # through, so the booking is settled instead. Answers :released, or the
+  # settled state.
   def abandon(appointment)
-    release(appointment)
     method_of(appointment).expire_checkout_session(appointment.payment_reference)
+    release(appointment)
+    :released
   rescue StandardError => e
     Rails.logger.error("BookingPayment - expiring session #{appointment.payment_reference} failed: #{e.message}")
+    settle(appointment).first
   end
 
   # Nothing was announced for a held booking, so nobody is told it is cancelled.

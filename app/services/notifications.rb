@@ -108,6 +108,7 @@ module Notifications
                .where(start_datetime: (now - 1.day)..horizon)
                .not_kind(AppointmentStatus::FREE_SLOT_KINDS + %w[no_show])
                .includes(:service, :provider, :customer)
+               .reject { |appointment| BookingPayment.checkout?(appointment) }
                .select { |appointment| BookingWindows.starts_at(appointment) >= now && send_at(notification, appointment) <= now }
   end
 

@@ -92,6 +92,12 @@ class PaymentsWebhookTest < ActionDispatch::IntegrationTest
     assert_response :bad_request
   end
 
+  test "a Stripe error answers 500 so Stripe retries" do
+    stub_request(:get, "#{SESSIONS}/cs_test_9").to_return(status: 500, body: "boom")
+    assert_raises(RuntimeError) { post_event(event("checkout.session.completed")) }
+    assert_equal "Booked", @appointment.reload.status
+  end
+
   test "the Stripe settings page shows the webhook URL" do
     post "/login/validate", params: { username: "administrator", password: "administrator1" }
     get "/payments_stripe_settings"

@@ -101,6 +101,18 @@ class NotificationsTest < ActiveSupport::TestCase
     assert_equal 1, Message.count
   end
 
+  test "coming up skips a booking still waiting on its checkout payment" do
+    create_notification(event: "coming_up", audiences: %w[customer], lead_days: 0, lead_hours: 24)
+    @appointment.update!(start_datetime: Time.current + 2.hours, end_datetime: Time.current + 3.hours,
+                         payment_method: "stripe", payment_reference: "cs_held")
+    Notifications.scan_coming_up
+    assert_equal 0, Message.count
+
+    @appointment.update!(paid_at: Time.current)
+    Notifications.scan_coming_up
+    assert_equal 1, Message.count
+  end
+
   test "deleted fires cancelled with the reason token" do
     create_notification(event: "cancelled", audiences: %w[customer],
                         long_text: "Cancelled because {{Cancellation Reason}}")

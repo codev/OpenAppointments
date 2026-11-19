@@ -27,6 +27,8 @@ class PaymentFieldsTest < ActiveSupport::TestCase
     assert_equal Time.new(2026, 7, 1, 12, 0, 0), appointment.paid_at
     assert_equal "cs_test_1", appointment.payment_reference
     assert_equal "paid", appointment.payment_status
+    assert_not appointment.mark_paid!(reference: "pi_late"), "a second claim is refused"
+    assert_equal "cs_test_1", appointment.reload.payment_reference
   end
 
   test "a service stores its accepted payment methods as a key list" do

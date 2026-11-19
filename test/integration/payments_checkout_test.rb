@@ -174,6 +174,45 @@ class PaymentsCheckoutTest < ActionDispatch::IntegrationTest
     assert_redirected_to "/booking_confirmation/of/#{appointment.booking_hash}"
   end
 
+  test "a held booking cannot be rescheduled, cancelled or confirmed until it is paid" do
+    appointment = held_booking
+    payment_page = "/booking_payment/of/#{appointment.booking_hash}"
+
+    travel_to Time.new(2026, 7, 10, 12, 0, 0) do
+      get "/booking/reschedule/#{appointment.booking_hash}"
+      assert_redirected_to payment_page
+      post "/booking_cancellation/of/#{appointment.booking_hash}", params: { cancellation_reason: "changed my mind" }
+      assert_redirected_to payment_page
+    end
+    get "/booking_confirmation/of/#{appointment.booking_hash}"
+    assert_redirected_to payment_page
+    assert_equal "Booked", appointment.reload.status
+
+    assert_no_enqueued_jobs only: [ MessageDeliveryJob, WebhookDeliveryJob ] do
+      register(manage_mode: "1", appointment_hash: appointment.booking_hash, appointment: { id: appointment.id },
+               customer: { name: users(:jx).name, email: users(:jx).email })
+    end
+    assert_select "#form-message", text: I18n.t("ea.appointment_locked")
+    assert_nil appointment.reload.rescheduled_to
+
+    appointment.update!(paid_at: Time.current)
+    get "/booking_confirmation/of/#{appointment.booking_hash}"
+    assert_response :success
+  end
+
+  test "cancel booking keeps a booking Stripe will not let go of, and finds it paid" do
+    appointment = held_booking
+    stub_request(:post, "#{SESSIONS}/cs_test_9/expire")
+      .to_return(status: 400, body: { error: { message: "You cannot expire a session that is not open" } }.to_json)
+    stub_retrieve("cs_test_9", status: "complete", payment_status: "paid")
+    assert_enqueued_jobs 1, only: MessageDeliveryJob do
+      post "/booking_payment/abandon/#{appointment.booking_hash}"
+    end
+    assert_redirected_to "/booking_confirmation/of/#{appointment.booking_hash}"
+    assert_equal "Booked", appointment.reload.status
+    assert appointment.paid_at
+  end
+
   test "a booking without a checkout method is announced straight away" do
     services(:haircut).update!(payment_method_keys: %w[in_person])
     assert_enqueued_jobs 1, only: MessageDeliveryJob do

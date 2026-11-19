@@ -83,9 +83,14 @@ class Appointment < ApplicationRecord
   # the backend marks the appointment.
   def payment_due? = unpaid? && (Payments.find(payment_method)&.tracks_payment? || false)
 
+  # Stamps the payment once: false when it was already paid, so concurrent
+  # reports of the same payment act on it a single time.
   def mark_paid!(reference: nil)
-    self.payment_reference = reference if reference.present?
-    update!(paid_at: Time.current)
+    changes = { paid_at: Time.current, updated_at: Time.current }
+    changes[:payment_reference] = reference if reference.present?
+    claimed = self.class.where(id: id, paid_at: nil).update_all(changes) == 1
+    reload if claimed
+    claimed
   end
 
   # Mark cancelled (or late cancelled) keeping the row; the slot becomes bookable.
