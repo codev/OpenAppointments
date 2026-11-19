@@ -1,3 +1,5 @@
+require "net/http"
+
 # TextAnywhere SMS (https://www.textanywhere.com/). REST SMS API with a bearer
 # API key.
 module Messaging

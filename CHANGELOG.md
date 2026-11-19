@@ -5,6 +5,8 @@ CloudronManifest.json.
 
 ## 3.5.0
 
+- Fix: the Turnstile captcha check on the login, recovery and booking pages failed every time since 3.3.0, and Stripe calls, webhook deliveries and SMS sending failed the same way, because the server never loaded its HTTP client once the calendar sync gems that used to load it were removed. Every module that makes HTTP calls now loads it itself
+
 ## 3.4.0
 
 - Payments

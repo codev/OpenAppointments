@@ -1,3 +1,5 @@
+require "net/http"
+
 # Delivers one webhook call (EA Webhooks_client::call). Body shape {action:, payload:}
 # with the optional secret header. EA swallows errors; here transient failures retry
 # with backoff and are discarded after the attempts run out.

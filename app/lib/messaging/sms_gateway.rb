@@ -1,3 +1,5 @@
+require "net/http"
+
 # SMS Gateway for Android private server (sms-gate.app). The Android app in
 # Private Server mode registers against the self-hosted server; sending goes
 # through the server's third party API (basic auth credentials generated at
