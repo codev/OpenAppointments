@@ -11,9 +11,20 @@ module EventSaving
 
   CUSTOMER_FIELDS = (BookingController::ALLOWED_CUSTOMER_FIELDS + %w[notes]).freeze
   APPOINTMENT_FIELDS = BookingController::ALLOWED_APPOINTMENT_FIELDS.freeze
+  # The dialog's Payment fields, backend only.
+  PAYMENT_FIELDS = %w[payment_method paid].freeze
   UNAVAILABILITY_FIELDS = %w[id start_datetime end_datetime location notes id_users_provider].freeze
 
   private
+
+  # The dialog's Payment fields when posted: the method (blank or unknown clears
+  # it) and the Paid switch, which stamps paid_at once or clears it.
+  def apply_payment(appointment, data)
+    appointment.payment_method = Payments.find(data["payment_method"])&.key if data.key?("payment_method")
+    return unless data.key?("paid")
+
+    appointment.paid_at = data["paid"].to_s == "1" ? (appointment.paid_at || Time.current) : nil
+  end
 
   # Returns { appointment:, skipped: }.
   def store_appointment(appointment_data, customer_data, repeat, notify_users:, force_save:)
@@ -45,6 +56,7 @@ module EventSaving
     fields = fields.except("location") unless Setting.get("appointments_include_locations", "0") == "1"
     fields = fields.except("meeting_link") unless Setting.get("appointments_include_meeting_links", "0") == "1"
     appointment.assign_attributes(fields)
+    apply_payment(appointment, appointment_data)
     appointment.color = appointment.service.color
     appointment.book_datetime ||= Time.now
     appointment.save!

@@ -80,6 +80,21 @@
                                            id: "appointment-status", class: "form-select" %>
                         </div>
 
+                        <% if Payments.enabled? || @appointment.payment_method.present? %>
+                            <div class="mb-3">
+                                <label for="appointment-payment-method" class="form-label"><%= lang('payment_method') %></label>
+                                <%= select_tag "appointment[payment_method]",
+                                               options_for_select([ [ lang('payments_none'), "" ] ] + Payments.all.map { |method| [ method.label, method.key ] },
+                                                                  @appointment.payment_method.to_s),
+                                               id: "appointment-payment-method", class: "form-select" %>
+                            </div>
+                            <div class="form-check form-switch mb-3">
+                                <%= hidden_field_tag "appointment[paid]", "0", id: nil %>
+                                <%= check_box_tag "appointment[paid]", "1", @appointment.paid_at.present?, id: "appointment-paid", class: "form-check-input" %>
+                                <label class="form-check-label" for="appointment-paid"><%= lang('paid') %></label>
+                            </div>
+                        <% end %>
+
                         <% if new_record && series_access? %>
                             <div id="appointment-repeat">
                                 <%= render "shared/repeat_fields", prefix: "repeat" %>

@@ -79,6 +79,10 @@ class Appointment < ApplicationRecord
 
   def unpaid? = payment_status == "unpaid"
 
+  # Unpaid through a method that tracks payment (pay in person does not), so
+  # the backend marks the appointment.
+  def payment_due? = unpaid? && (Payments.find(payment_method)&.tracks_payment? || false)
+
   def mark_paid!(reference: nil)
     self.payment_reference = reference if reference.present?
     update!(paid_at: Time.current)

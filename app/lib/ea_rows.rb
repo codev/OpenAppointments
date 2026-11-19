@@ -55,6 +55,11 @@ module EaRows
       "id_users_provider" => appointment.id_users_provider,
       "id_users_customer" => appointment.id_users_customer,
       "id_services" => appointment.id_services,
+      "payment_method" => appointment.payment_method,
+      "payment_method_label" => Payments.find(appointment.payment_method)&.label,
+      "payment_status" => appointment.payment_status,
+      "payment_due" => appointment.payment_due?,
+      "paid_at" => dt(appointment.paid_at),
       "series_id" => appointment.series_id,
       "series_description" => appointment.series_id ? appointment.series&.description : nil
     }

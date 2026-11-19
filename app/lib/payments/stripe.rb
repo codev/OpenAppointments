@@ -13,6 +13,8 @@ module Payments
 
     def checkout? = true
 
+    def tracks_payment? = true
+
     def enabled?(config = Payments.config)
       config["payments_stripe_enabled"] == "1" && secret_key(config).present?
     end

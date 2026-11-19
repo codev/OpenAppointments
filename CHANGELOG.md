@@ -9,6 +9,7 @@ CloudronManifest.json.
 - Payments: a Payments panel in the settings menu with Settings (offer payment on the booking page, default method) and Methods cards for Pay in person, Bank transfer and Stripe
 - Payments: each method has its own page with Active and Default switches; Pay in person and Bank transfer take the instructions shown to the customer, Stripe takes the secret key, webhook signing secret and currency with a Test credentials button
 - Payments: the service page ticks the payment methods a service accepts. With payments on, the booking confirmation step shows the method and its instructions, or a chooser when the service accepts several, and the page confirming the booking repeats them. A reschedule keeps the original booking's payment
+- Payments: the appointment dialog has a Payment method select and a Paid switch; an appointment awaiting a bank transfer or Stripe payment reads "(Unpaid)" on the calendar and the List, and the popover shows the method and whether it is paid. The API, the data export and the appointments report carry the payment fields
 
 ## 3.3.0
 

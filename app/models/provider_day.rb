@@ -49,8 +49,10 @@ class ProviderDay
     @appointments.map do |appointment|
       detail = appointment.service&.name.to_s
       name = appointment.customer&.name
+      title = name.present? ? "#{name} - #{detail}" : detail
+      title += " (#{I18n.t('ea.unpaid')})" if appointment.payment_due?
       Entry.new(kind: appointment.frees_slot? ? "freed" : "appointment", start: appointment.start_datetime,
-                end: appointment.end_datetime, title: name.present? ? "#{name} - #{detail}" : detail,
+                end: appointment.end_datetime, title: title,
                 color: appointment.service&.color, record: appointment)
     end
   end
