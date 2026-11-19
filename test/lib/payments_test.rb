@@ -64,4 +64,20 @@ class PaymentsTest < ActiveSupport::TestCase
     assert_equal "Sort code 12-34-56", Payments::BankTransfer.instructions
     assert_equal "", Payments::InPerson.instructions
   end
+  test "a checkout method is only offered for a service with a price" do
+    Setting.set("payments_stripe_enabled", "1")
+    Setting.set("payments_stripe_secret_key", "sk_test_123")
+    service = services(:haircut)
+    service.payment_method_keys = %w[stripe]
+    assert_equal %w[in_person], Payments.methods_for(service).map(&:key), "a free service falls back to the default"
+
+    service.price = 25
+    assert_equal %w[stripe], Payments.methods_for(service).map(&:key)
+  end
+
+  test "Stripe charges in minor units, whole units for zero decimal currencies" do
+    assert_equal 2550, Payments::Stripe.minor_units(25.50, "gbp")
+    assert_equal 1000, Payments::Stripe.minor_units(10, "eur")
+    assert_equal 1500, Payments::Stripe.minor_units(1500, "jpy")
+  end
 end

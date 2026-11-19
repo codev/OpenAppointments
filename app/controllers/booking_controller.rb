@@ -215,11 +215,9 @@ class BookingController < ApplicationController
       original&.update!(appointment_status: AppointmentStatus.of("rescheduled"), rescheduled_to: appointment)
     end
 
-    settings = notification_settings
+    return start_checkout(appointment) if original.nil? && BookingPayment.checkout?(appointment)
 
-    Notifications.appointment_saved(appointment, service, provider, customer, settings, manage_mode: manage_mode)
-    Webhooks.trigger(Webhooks::APPOINTMENT_SAVE, appointment)
-    WaitlistEntry.where(email: customer.email, service_id: service.id).delete_all if customer.email.present?
+    Bookings.announce(appointment, manage_mode: manage_mode)
 
     if form_post?
       redirect_to booking_confirmation_path(appointment_hash: appointment.booking_hash)
@@ -509,6 +507,28 @@ class BookingController < ApplicationController
     { payment_method: method&.key }
   end
 
+  # A checkout booking holds its slot while the customer pays on the hosted
+  # page; it is announced once paid. Embedded, the frame cannot redirect the
+  # page, so a page sends the top window there instead.
+  def start_checkout(appointment)
+    url = begin
+      BookingPayment.start(appointment, return_url: booking_payment_url(appointment_hash: appointment.booking_hash))
+    rescue StandardError => e
+      Rails.logger.error("Booking - starting the payment for appointment #{appointment.id} failed: #{e.message}")
+      appointment.destroy!
+      raise ArgumentError, helpers.lang("payments_checkout_failed")
+    end
+
+    if !form_post?
+      render json: { appointment_id: appointment.id, appointment_hash: appointment.booking_hash, checkout_url: url }
+    elsif Embedding.enabled?
+      html_vars(page_title: helpers.lang("payment"), company_color: Setting.get("company_color"), checkout_url: url)
+      render "booking/checkout_redirect", layout: "message"
+    else
+      redirect_to url, allow_other_host: true
+    end
+  end
+
   def render_booking_message(title, text, raw_text: false, icon: "error.png")
     html_vars(
       show_message: true,
@@ -599,18 +619,6 @@ class BookingController < ApplicationController
     }
     Consent.create!(consent.merge(type: "terms-and-conditions")) if Setting.get("display_terms_and_conditions") == "1"
     Consent.create!(consent.merge(type: "privacy-policy")) if Setting.get("display_privacy_policy") == "1"
-  end
-
-  def notification_settings
-    company_color = Setting.get("company_color")
-    {
-      company_name: Setting.get("company_name"),
-      company_link: Setting.get("company_link"),
-      company_email: Setting.get("company_email"),
-      company_color: company_color.present? && company_color != "#ffffff" ? company_color : nil,
-      date_format: Setting.get("date_format"),
-      time_format: Setting.get("time_format")
-    }
   end
 
   # EA row shape for the appointment_data page var (naive Y-m-d H:i:s strings).

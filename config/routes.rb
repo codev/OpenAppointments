@@ -99,6 +99,9 @@ Rails.application.routes.draw do
   get "booking/waitlist/leave/:token" => "booking#leave_waitlist"
   get "booking_confirmation/of/:appointment_hash" => "booking_confirmation#of", as: :booking_confirmation
   get "booking_confirmation/ics/:appointment_hash" => "booking_confirmation#ics", as: :booking_confirmation_ics
+  # The return from a hosted payment page (success and cancel alike) and Cancel booking on it.
+  get "booking_payment/of/:appointment_hash" => "booking_payment#of", as: :booking_payment
+  post "booking_payment/abandon/:appointment_hash" => "booking_payment#abandon"
   # EA has no GET cancellation page: the frame form POSTs and non-POST/empty-reason requests get 403.
   post "booking_cancellation/of/:appointment_hash" => "booking_cancellation#of"
   post "booking_cancellation/late/:appointment_hash" => "booking_cancellation#late"

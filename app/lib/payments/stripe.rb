@@ -6,6 +6,8 @@ module Payments
     module_function
 
     API_BASE = "https://api.stripe.com/v1".freeze
+    # Charged in whole units; every other currency in hundredths.
+    ZERO_DECIMAL_CURRENCIES = %w[bif clp djf gnf jpy kmf krw mga pyg rwf ugx vnd vuv xaf xof xpf].freeze
 
     def key = "stripe"
 
@@ -33,6 +35,51 @@ module Payments
       [ true, nil ]
     rescue StandardError => e
       [ false, e.message ]
+    end
+
+    # Starts a hosted payment for the appointment: the session row, with "id"
+    # and the "url" to send the customer to. Cards only, so the payment is
+    # confirmed by the time the customer is sent back.
+    def create_checkout_session(appointment, success_url:, cancel_url:, expires_at:, config: Payments.config)
+      service = appointment.service
+      params = {
+        "mode" => "payment",
+        "payment_method_types[]" => "card",
+        "line_items[0][quantity]" => 1,
+        "line_items[0][price_data][currency]" => currency(config),
+        "line_items[0][price_data][unit_amount]" => minor_units(service.price, currency(config)),
+        "line_items[0][price_data][product_data][name]" => service.name,
+        "line_items[0][price_data][product_data][description]" =>
+          "#{appointment.provider.name}, #{appointment.start_datetime.strftime('%Y-%m-%d %H:%M')}",
+        "client_reference_id" => appointment.booking_hash,
+        "metadata[appointment_id]" => appointment.id,
+        "success_url" => success_url,
+        "cancel_url" => cancel_url,
+        "expires_at" => expires_at.to_i
+      }
+      params["customer_email"] = appointment.customer.email if appointment.customer.email.present?
+      request!(:post, "/checkout/sessions", params, config: config)
+    end
+
+    # Where a started payment stands: {state: :paid | :open | :expired, url:,
+    # payment_id:}; url is the payment page while the session is open and
+    # payment_id the charge to find in the Stripe dashboard.
+    def checkout_state(reference, config: Payments.config)
+      session = request!(:get, "/checkout/sessions/#{reference}", config: config)
+      state = :expired
+      state = :open if session["status"] == "open"
+      state = :paid if session["payment_status"] == "paid"
+      { state: state, url: session["url"], payment_id: session["payment_intent"] }
+    end
+
+    def expire_checkout_session(reference, config: Payments.config)
+      request!(:post, "/checkout/sessions/#{reference}/expire", config: config)
+    end
+
+    def minor_units(price, currency)
+      amount = BigDecimal(price.to_s)
+      amount *= 100 unless ZERO_DECIMAL_CURRENCIES.include?(currency.to_s.downcase)
+      amount.round.to_i
     end
 
     # One API call; the parsed JSON on success, an error naming Stripe's

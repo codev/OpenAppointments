@@ -1,0 +1,13 @@
+<%# The booking page is embedded, so the payment page opens in the top window:
+    by script, or by the link when scripts are off. Message layout. %>
+<div class="mb-4">
+    <i class="fas fa-credit-card fa-3x text-primary mb-4"></i>
+    <h4 class="mb-4"><%= lang('payments_redirecting') %></h4>
+    <a id="continue-to-payment" href="<%= vars(:checkout_url) %>" target="_top" class="btn btn-primary px-4 py-2">
+        <%= lang('payments_continue') %>
+    </a>
+</div>
+
+<% content_for :scripts do %>
+    <script>window.top.location.replace("<%= j vars(:checkout_url) %>");</script>
+<% end %>

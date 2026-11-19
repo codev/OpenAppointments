@@ -32,9 +32,11 @@ module Payments
   end
 
   # The enabled methods a service accepts, or the default when it lists none
-  # that are enabled.
+  # that are enabled. A checkout method has nothing to charge for a free
+  # service, so it is left out.
   def methods_for(service)
-    chosen = enabled_methods.select { |method| service.payment_method_keys.include?(method.key) }
+    offered = enabled_methods.reject { |method| method.checkout? && service.price.to_f <= 0 }
+    chosen = offered.select { |method| service.payment_method_keys.include?(method.key) }
     chosen.presence || [ default_method ].compact
   end
 
