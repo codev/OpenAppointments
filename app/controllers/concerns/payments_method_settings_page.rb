@@ -15,6 +15,7 @@ module PaymentsMethodSettingsPage
 
   def index
     backend_page_vars(page_title: helpers.lang("payments"), active_menu: "payments")
+    html_vars(**page_vars)
     render :index
   end
 
@@ -42,6 +43,9 @@ module PaymentsMethodSettingsPage
   private
 
   def payment_method = Payments.find(self.class::METHOD_KEY)
+
+  # Hook for pages with more to show than the settings.
+  def page_vars = {}
 
   # Hook for pages that normalise or validate a value; raises ArgumentError to refuse.
   def clean_value(_name, value) = value

@@ -7,6 +7,8 @@ class PaymentsStripeSettingsController < ApplicationController
 
   private
 
+  def page_vars = { webhook_url: payments_stripe_webhook_url }
+
   # The currency is a three letter ISO code, stored upper case.
   def clean_value(name, value)
     return value unless name == "payments_stripe_currency"

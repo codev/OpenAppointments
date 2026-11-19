@@ -7,6 +7,8 @@ module BookingPayment
   # Stripe's minimum is 30 minutes on its own clock, so the session gets a
   # minute's grace.
   CHECKOUT_EXPIRY = 31.minutes
+  # The sweep waits this much longer, so the return page gets to settle first.
+  SWEEP_GRACE = 5.minutes
 
   # An unpaid booking through a checkout method.
   def checkout?(appointment)
@@ -33,6 +35,24 @@ module BookingPayment
     when :expired then release(appointment)
     end
     [ outcome[:state], outcome[:url] ]
+  end
+
+  # Settles every held booking whose session has had time to expire, so a
+  # payment the webhook missed is still marked and an abandoned booking still
+  # released. Answers how many were settled; a provider error skips that one.
+  def sweep(now = Time.current)
+    checkout_keys = Payments.all.select(&:checkout?).map(&:key)
+    held = Appointment.appointments.active
+                      .where(paid_at: nil, payment_method: checkout_keys)
+                      .where.not(payment_reference: [ nil, "" ])
+                      .where(book_datetime: ...(now - CHECKOUT_EXPIRY - SWEEP_GRACE))
+    held.count do |appointment|
+      settle(appointment)
+      true
+    rescue StandardError => e
+      Rails.logger.error("BookingPayment - sweeping appointment #{appointment.id} failed: #{e.message}")
+      false
+    end
   end
 
   # Idempotent: the return page and a webhook may both report the payment.

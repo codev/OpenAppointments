@@ -1046,3 +1046,5 @@ en:
     payments_expired_text: "The appointment was not paid for in time and has been released. Please book again."
     payments_abandoned_text: "Your appointment has been cancelled and nothing has been charged."
     payments_book_again: "Book again"
+    payments_stripe_webhook_url: "Webhook URL"
+    payments_stripe_webhook_url_hint: "Add this URL as a webhook endpoint in the Stripe Dashboard under Developers > Webhooks, listening for checkout.session.completed and checkout.session.expired, then paste its signing secret above. The webhook is a safety net: the booking page checks with Stripe when the customer returns, and a sweep checks bookings nobody returned from every five minutes."

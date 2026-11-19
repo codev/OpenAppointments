@@ -72,6 +72,21 @@ module Payments
       { state: state, url: session["url"], payment_id: session["payment_intent"] }
     end
 
+    # Stripe-Signature is "t=<unix time>,v1=<hmac>", with a v1 per active
+    # signing secret; the hmac is SHA256 over "<t>.<payload>". Without a
+    # secret configured there is nothing to check against.
+    def webhook_signature_valid?(payload, header, config: Payments.config, now: Time.now, tolerance: 5.minutes)
+      secret = webhook_secret(config)
+      return true if secret.blank?
+
+      pairs = header.to_s.split(",").map { |pair| pair.strip.split("=", 2) }
+      timestamp = pairs.find { |key, _| key == "t" }&.last.to_i
+      return false if (now.to_i - timestamp).abs > tolerance
+
+      expected = OpenSSL::HMAC.hexdigest("SHA256", secret, "#{timestamp}.#{payload}")
+      pairs.any? { |key, value| key == "v1" && ActiveSupport::SecurityUtils.secure_compare(expected, value.to_s) }
+    end
+
     def expire_checkout_session(reference, config: Payments.config)
       request!(:post, "/checkout/sessions/#{reference}/expire", config: config)
     end

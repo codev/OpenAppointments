@@ -163,6 +163,9 @@ Rails.application.routes.draw do
   get "account" => "account#index"
   post "account/save" => "account#save"
 
+  # Stripe's Checkout Session events (public; signature-checked)
+  post "payments/stripe/webhook" => "payments_stripe_webhook#receive", as: :payments_stripe_webhook
+
   # Inbound SMS webhooks (public; token in URL)
   post "messages/inbound/:channel/:token" => "inbound_messages#receive"
 

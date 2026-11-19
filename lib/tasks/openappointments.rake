@@ -29,6 +29,11 @@ namespace :openappointments do
     puts "Reminder scan complete."
   end
 
+  desc "Settle checkout payments nobody returned from (cron target)"
+  task payment_sweep: :environment do
+    puts "Payment sweep: settled #{BookingPayment.sweep} booking(s)."
+  end
+
   desc "Waiting list daily availability notices (cron target)"
   task waitlist: :environment do
     Waitlist.scan_daily
