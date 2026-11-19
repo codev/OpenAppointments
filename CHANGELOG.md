@@ -12,6 +12,7 @@ CloudronManifest.json.
 - Payments: the appointment dialog has a Payment method select and a Paid switch; an appointment awaiting a bank transfer or Stripe payment reads "(Unpaid)" on the calendar and the List, and the popover shows the method and whether it is paid. The API, the data export and the appointments report carry the payment fields
 - Payments: Stripe Checkout. Confirm and pay holds the slot and sends the customer to Stripe's card page; the booking is confirmed and announced once paid. A customer who comes back without paying can try again or cancel the booking, and a payment left for 30 minutes releases the slot. Stripe is only offered for services with a price
 - Payments: a Stripe webhook endpoint, shown on the Stripe page, confirms payments as they happen; a sweep every five minutes settles bookings nobody returned from, so a missed webhook still marks a paid booking and an abandoned one is released
+- Payments: notification templates gain {{Payment Method}}, {{Payment Status}} and {{Payment Instructions}}
 
 ## 3.3.0
 

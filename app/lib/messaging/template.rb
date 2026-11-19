@@ -12,7 +12,8 @@ module Messaging
       "Appointment End Time", "Appointment Status", "Appointment Link",
       "Cancellation Reason", "Repeats", "Next Appointment", "User Name",
       "Customer Message Link", "Booking Link", "Unsubscribe Link",
-      "Customer Extra Questions", "Customer Notes", "Appointment Notes"
+      "Customer Extra Questions", "Customer Notes", "Appointment Notes",
+      "Payment Method", "Payment Status", "Payment Instructions"
     ].freeze
 
     TOKEN_PATTERN = /\{\{\s*([^{}]+?)\s*\}\}/
@@ -103,8 +104,22 @@ module Messaging
         "Next Appointment" => next_occurrence(appointment),
         "Customer Notes" => customer&.notes.to_s,
         "Customer Extra Questions" => -> { extra_questions(customer) },
-        "Appointment Notes" => appointment&.notes.to_s
+        "Appointment Notes" => appointment&.notes.to_s,
+        **payment_tokens(appointment)
       )
+    end
+
+    # The method's label, Paid or Unpaid, and the method's instructions for the
+    # customer; all blank for a booking without a payment method.
+    def payment_tokens(appointment)
+      method = Payments.find(appointment&.payment_method)
+      return { "Payment Method" => "", "Payment Status" => "", "Payment Instructions" => "" } unless method
+
+      {
+        "Payment Method" => method.label,
+        "Payment Status" => I18n.t("ea.#{appointment.payment_status}"),
+        "Payment Instructions" => method.instructions.to_s
+      }
     end
 
     # "Question: answer" for each shown extra question the customer answered.
