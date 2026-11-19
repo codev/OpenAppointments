@@ -3,6 +3,8 @@
 The about page lists these notes; every release needs a section here matching
 CloudronManifest.json.
 
+## 3.5.0
+
 ## 3.4.0
 
 - Payments
