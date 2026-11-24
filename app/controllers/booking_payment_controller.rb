@@ -1,5 +1,6 @@
 # The customer's return from a hosted payment page, and the way out of one.
 class BookingPaymentController < ApplicationController
+  before_action { Current.actor = Activity::BOOKING_PAGE }
   layout "message"
 
   before_action :find_appointment

@@ -1,5 +1,6 @@
 # Public appointment cancellation, port of EA's Booking_cancellation controller.
 class BookingCancellationController < ApplicationController
+  before_action { Current.actor = Activity::BOOKING_PAGE }
   include EmbeddableFrame
   layout "message"
 

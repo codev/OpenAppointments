@@ -3,6 +3,17 @@
 The about page lists these notes; every release needs a section here matching
 CloudronManifest.json.
 
+## 3.6.0
+
+- List: under each appointment a small line shows the customer's answers to the booking questions (pronoun, access needs) and the notes on the appointment
+- Free: a new page for admins between List and Calendar, the List page filtered to the Free for appointments rows for every date in the booking window, stylist by stylist; days and stylists with nothing free are left out, and a free slot opens the appointment dialog as on List
+- Activity: each kind has its own badge colour (Booked green, Changed blue, Cancelled yellow, Deleted red), a person icon beside the chat icon opens the customer's record, and the joining words of each line (for, with, to, by, Status, Reason) sit back so the names and times stand out
+
+## 3.5.1
+
+- Activity: a new admin page listing what the system did, newest first: appointments booked, changed, cancelled or deleted, with who did it (a staff member by name, a client on the booking page, or the API), every message sent, failed or received including reminders, waiting list signups and the launch-day reminder marking. Filter by kind, reload every minute. Live already reported 3.5.0 from an interim build, hence 3.5.1
+- Fix: the Turnstile captcha check on the login, recovery and booking pages failed every time since 3.3.0, and Stripe calls, webhook deliveries and SMS sending failed the same way, because the server never loaded its HTTP client once the calendar sync gems that used to load it were removed. Every module that makes HTTP calls now loads it itself
+
 ## 3.4.0
 
 - Payments

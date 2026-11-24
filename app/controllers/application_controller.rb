@@ -6,6 +6,7 @@ class ApplicationController < ActionController::Base
 
   before_action { script_vars(default_script_vars) }
   before_action :exception_notifier_data
+  before_action :set_activity_actor
 
   # EA JS posts the CSRF token as a `csrf_token` body param (double-submit port).
   self.request_forgery_protection_token = :csrf_token
@@ -14,6 +15,13 @@ class ApplicationController < ActionController::Base
   # public booking page must work on any phone browser.
 
   private
+
+  # Who the activity log names for this request: the logged-in user, or
+  # nothing (public pages set their own actor, jobs count as the system).
+  def set_activity_actor
+    user = logged_in? ? current_user : nil
+    Current.actor = user ? Activity.user_actor(user) : nil
+  end
 
   def json_response(payload, status: :ok)
     render json: payload, status: status

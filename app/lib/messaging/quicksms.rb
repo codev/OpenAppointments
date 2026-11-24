@@ -1,3 +1,5 @@
+require "net/http"
+
 # QuickSMS (https://www.quicksms.com/). Messaging API with a Bearer API key
 # (sk_live_ or sk_test_, a test key never delivers); inbound V2 webhooks are
 # signed with the inbound number's secret over "timestamp.body".

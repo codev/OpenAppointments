@@ -8,6 +8,7 @@ module Api
       DEFAULT_LENGTH = 20
 
       before_action :authenticate_api!
+      before_action { Current.actor = Activity::API }
 
       # EA's json_exception returns every failure as {success: false, message}; only a
       # missing record is a 404. Declared broad-first so the specific handler wins.

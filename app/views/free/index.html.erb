@@ -1,0 +1,65 @@
+<%# Free page: the List page's free rows alone for every date of the booking
+    window, rendered from the URL (providers) into the day frame. A free slot
+    opens the appointment dialog. %>
+<% content_for :meta do %>
+    <meta name="turbo-cache-control" content="no-preview">
+<% end %>
+<% formats = { date_format: setting('date_format'), time_format: setting('time_format') } %>
+<div class="container-fluid backend-page pt-0 pb-0" id="calendar-page">
+    <turbo-frame id="day_view" data-turbo-action="advance">
+    <%= form_with url: free_path, method: :get, id: "day-filter", data: { turbo_frame: "day_view" } do %>
+        <div class="row mb-3 py-3" id="calendar-toolbar">
+            <div id="calendar-filter" class="col-12 col-md-auto">
+                <div class="calendar-filter-items d-flex flex-wrap justify-content-center justify-content-md-start gap-2">
+                    <%= render "shared/tick_filter", id: "provider-filter", name: "providers", label: lang('providers'),
+                               hint: lang('filter_providers_hint'), items: @providers.map { |p| [ p.name, p.id ] },
+                               checked: @provider_ids || @providers.map(&:id),
+                               all_label: lang('all_providers'), clear_label: lang('clear_providers') %>
+                </div>
+            </div>
+            <div id="calendar-actions" class="col-12 col-md-auto ms-md-auto">
+                <%= render "calendar/actions", working_plan_exception: false %>
+            </div>
+        </div>
+    <% end %>
+
+    <div id="calendar">
+        <div class="calendar-header row align-items-center g-2 mb-3">
+            <div class="col-12">
+                <%= lang('free_window').sub('{{from}}', format_setting_date(@first)).sub('{{to}}', format_setting_date(@last)) %>
+            </div>
+        </div>
+
+        <% if @columns.empty? %>
+            <p id="free-empty" class="text-muted"><%= lang('free_empty') %></p>
+        <% end %>
+
+        <div class="calendar-view">
+            <div>
+                <% @columns.each do |column| %>
+                    <div class="date-column">
+                        <h5 class="date-column-title"><%= format_setting_date(column[:date]) %></h5>
+                        <% column[:days].each do |shown| %>
+                            <div class="provider-column" data-provider-id="<%= shown[:day].provider.id %>">
+                                <h6><%= shown[:day].provider.name %></h6>
+                                <div class="day-entries">
+                                    <% shown[:entries].each do |entry| %>
+                                        <%= render "appointments/entry", entry: entry, day: shown[:day], formats: formats, unread_counts: {} %>
+                                    <% end %>
+                                </div>
+                            </div>
+                        <% end %>
+                    </div>
+                <% end %>
+            </div>
+        </div>
+    </div>
+    </turbo-frame>
+</div>
+
+<%= render "calendar/modals" %>
+
+<% content_for :scripts do %>
+    <%= ea_js "utils/tick_filter", "utils/ui", "components/working_plan_exceptions_modal", "utils/calendar_events", "utils/calendar_event_popover", "http/calendar_http_client",
+              "pages/appointments" %>
+<% end %>

@@ -1,3 +1,5 @@
+require "net/http"
+
 # Cloudflare Turnstile captcha (alternative provider to ALTCHA).
 module TurnstileChallenge
   VERIFY_URL = URI("https://challenges.cloudflare.com/turnstile/v0/siteverify")

@@ -37,6 +37,34 @@ class AppointmentsPageTest < ActionDispatch::IntegrationTest
     assert_select "#not-working-notes div", count: 0
   end
 
+  test "an appointment entry lists the customer's answers to the displayed questions in a small line" do
+    Setting.set("display_custom_field_1", "1")
+    Setting.set("display_custom_field_2", "1")
+    Setting.set("display_custom_field_3", "0")
+    users(:jx).update!(custom_field_1: "they/them", custom_field_2: "larger chair", custom_field_3: "hidden answer")
+    appointments(:upcoming).update!(notes: "Please keep the fringe long")
+    login_admin
+    get "/appointments", params: { date: "2026-07-20" }
+    assert_select "button.day-entry-appointment small.day-entry-answers",
+                  text: "they/them \u00b7 larger chair \u00b7 Please keep the fringe long"
+    # The popover data carries every field; the visible page shows displayed answers only.
+    assert_no_match(/hidden answer/, css_select("#day_view").to_html.gsub(/data-event="[^"]*"/, ""))
+  end
+
+  test "an appointment with notes but no answers shows the notes alone" do
+    appointments(:upcoming).update!(notes: "Please keep the fringe long")
+    login_admin
+    get "/appointments", params: { date: "2026-07-20" }
+    assert_select "button.day-entry-appointment small.day-entry-answers", text: "Please keep the fringe long"
+  end
+
+  test "an appointment whose customer answered nothing has no answers line" do
+    Setting.set("display_custom_field_1", "1")
+    login_admin
+    get "/appointments", params: { date: "2026-07-20" }
+    assert_select ".day-entry-answers", count: 0
+  end
+
   test "an entry's left border is the service colour, never its own or the stylist's" do
     services(:haircut).update!(color: "#eb8687")
     users(:zane).update!(color: "#228833")

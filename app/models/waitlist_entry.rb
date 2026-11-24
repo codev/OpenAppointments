@@ -13,6 +13,8 @@ class WaitlistEntry < ApplicationRecord
   scope :live, ->(now = Time.current) { where("expires_at > ?", now) }
   scope :oldest_first, -> { order(:created_at, :id) }
 
+  after_create_commit -> { Activity.waitlist_event(self) }
+
   def self.days = Setting.get("waitlist_days", "14").to_i
   def self.max_notices = Setting.get("waitlist_max_notices", "7").to_i
 

@@ -1,3 +1,5 @@
+require "net/http"
+
 # Stripe Checkout (https://dashboard.stripe.com/). The customer is sent to a
 # hosted payment page after confirming the booking. REST calls use the secret
 # key as a bearer token with form-encoded bodies.

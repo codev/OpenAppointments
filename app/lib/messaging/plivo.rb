@@ -1,3 +1,5 @@
+require "net/http"
+
 # Plivo SMS (https://console.plivo.com/). Message API with auth ID + auth token
 # basic auth.
 module Messaging

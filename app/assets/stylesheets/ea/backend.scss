@@ -1044,6 +1044,18 @@ $bubble-radius: 1.1rem;
     color: var(--bs-secondary-color);
 }
 
+/* Activity page: the summary's joining words sit back from the names and times. */
+#activity-page .activity-joiner {
+    color: var(--bs-secondary-color);
+}
+
+/* The customer's answers to the booking questions, under the title. */
+#calendar .calendar-view .day-entry-answers {
+    display: block;
+    color: var(--bs-secondary-color);
+    font-size: 0.85em;
+}
+
 #calendar .calendar-view a.day-entry:hover,
 #calendar .calendar-view button.day-entry:hover {
     background: rgba(var(--bs-emphasis-color-rgb), 0.075);

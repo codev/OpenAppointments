@@ -1,3 +1,5 @@
+require "net/http"
+
 # Twilio SMS (https://www.twilio.com/console). Messages API with account SID +
 # auth token basic auth.
 module Messaging

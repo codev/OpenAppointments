@@ -24,6 +24,10 @@ class Message < ApplicationRecord
   # Incoming messages matched to a customer: the ones Move applies to.
   scope :inbox, -> { incoming.where.not(customer_id: nil) }
 
+  # The activity log sees a message when it arrives or once sending is settled.
+  after_create_commit -> { Activity.message_event(self) }, if: -> { direction == "incoming" }
+  after_update_commit -> { Activity.message_event(self) }, if: -> { saved_change_to_status? && %w[sent failed].include?(status) }
+
   def read? = read_at.present?
 
   def mark_read! = update!(read_at: read_at || Time.current)
