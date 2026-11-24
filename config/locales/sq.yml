@@ -1078,3 +1078,7 @@ sq:
     activity_message_summary: "{{notification}} për {{audience}} me {{channel}}, {{address}}"
     activity_received_summary: "Nga {{address}} me {{channel}}"
     activity_waitlist_summary: "{{customer}} për {{service}} me {{provider}}"
+    free: "Të lira"
+    free_hint: "Vendet e lira për takime në dritaren e rezervimeve, datë pas date dhe ofrues pas ofruesi."
+    free_window: "Të lira për takime nga {{from}} deri më {{to}}"
+    free_empty: "Nuk ka asgjë të lirë për takime në dritaren e rezervimeve."

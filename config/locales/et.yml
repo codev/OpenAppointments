@@ -1078,3 +1078,7 @@ et:
     activity_message_summary: "{{notification}} saajale {{audience}} kanali {{channel}} kaudu, {{address}}"
     activity_received_summary: "Saatjalt {{address}} kanali {{channel}} kaudu"
     activity_waitlist_summary: "{{customer}} teenusele {{service}}, teenusepakkuja {{provider}}"
+    free: "Vaba"
+    free_hint: "Vabad ajad kohtumisteks broneerimisperioodil, päev päeva haaval ja teenusepakkuja kaupa."
+    free_window: "Vaba kohtumisteks {{from}} kuni {{to}}"
+    free_empty: "Broneerimisperioodil pole kohtumisteks midagi vaba."

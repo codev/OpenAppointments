@@ -1078,3 +1078,7 @@ bs:
     activity_message_summary: "{{notification}} za {{audience}} putem {{channel}}, {{address}}"
     activity_received_summary: "Od {{address}} putem {{channel}}"
     activity_waitlist_summary: "{{customer}} za {{service}} kod {{provider}}"
+    free: "Slobodno"
+    free_hint: "Slobodni termini za zakazivanje u periodu rezervacije, po datumu i po provajderu."
+    free_window: "Slobodno za termine od {{from}} do {{to}}"
+    free_empty: "Nema slobodnih termina u periodu rezervacije."

@@ -1078,3 +1078,7 @@ fa:
     activity_message_summary: "{{notification}} به {{audience}} از طریق {{channel}}، {{address}}"
     activity_received_summary: "از {{address}} از طریق {{channel}}"
     activity_waitlist_summary: "{{customer}} برای {{service}} با {{provider}}"
+    free: "آزاد"
+    free_hint: "زمان‌های آزاد برای قرار ملاقات در بازه رزرو، روز به روز و ارائه‌دهنده به ارائه‌دهنده."
+    free_window: "آزاد برای قرار ملاقات از {{from}} تا {{to}}"
+    free_empty: "هیچ زمان آزادی برای قرار ملاقات در بازه رزرو وجود ندارد."

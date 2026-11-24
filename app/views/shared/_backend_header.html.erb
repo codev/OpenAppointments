@@ -27,6 +27,17 @@
             </a>
           </li>
 
+          <% if can?(:view, :system_settings) %>
+            <% active = active_menu == "free" ? "active" : "" %>
+            <li class="nav-item text-center <%= active %>">
+              <a href="/free" class="nav-link text-white fw-light py-3 px-3"
+                 data-tippy-content="<%= lang('free_hint') %>">
+                <i class="fas fa-door-open me-2"></i>
+                <%= lang('free') %>
+              </a>
+            </li>
+          <% end %>
+
           <% active = active_menu == "calendar" ? "active" : "" %>
           <li class="nav-item text-center <%= active + hidden %>">
             <a href="/calendar" class="nav-link text-white fw-light py-3 px-3"

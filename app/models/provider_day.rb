@@ -8,12 +8,15 @@ class ProviderDay
 
   attr_reader :provider, :date
 
-  def initialize(provider, date, appointments:, unavailabilities:, blocked_periods:)
+  # A page covering many days hands every day one engine with its events
+  # preloaded; on its own a day queries for its date.
+  def initialize(provider, date, appointments:, unavailabilities:, blocked_periods:, engine: Availability::Engine.new)
     @provider = provider
     @date = date
     @appointments = appointments
     @unavailabilities = unavailabilities
     @blocked_periods = blocked_periods
+    @engine = engine
   end
 
   def day_plan
@@ -79,7 +82,7 @@ class ProviderDay
 
   # Working time left after breaks and busy events, as the booking engine sees it.
   def free_entries
-    Availability::Engine.new.available_periods(date.strftime("%Y-%m-%d"), provider).filter_map do |period|
+    @engine.available_periods(date.strftime("%Y-%m-%d"), provider).filter_map do |period|
       start_time = wall_time(period["start"])
       end_time = wall_time(period["end"])
       next if ((end_time - start_time) / 60) < MIN_FREE_MINUTES

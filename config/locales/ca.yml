@@ -1078,3 +1078,7 @@ ca:
     activity_message_summary: "{{notification}} a {{audience}} per {{channel}}, {{address}}"
     activity_received_summary: "De {{address}} per {{channel}}"
     activity_waitlist_summary: "{{customer}} per a {{service}} amb {{provider}}"
+    free: "Lliure"
+    free_hint: "Franges lliures per a cites dins del període de reserva, dia a dia i proveïdor a proveïdor."
+    free_window: "Lliure per a cites del {{from}} al {{to}}"
+    free_empty: "No hi ha res lliure per a cites dins del període de reserva."

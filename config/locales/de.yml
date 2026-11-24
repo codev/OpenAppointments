@@ -1078,3 +1078,7 @@ de:
     activity_message_summary: "{{notification}} an {{audience}} per {{channel}}, {{address}}"
     activity_received_summary: "Von {{address}} per {{channel}}"
     activity_waitlist_summary: "{{customer}} für {{service}} bei {{provider}}"
+    free: "Frei"
+    free_hint: "Freie Termine im Buchungszeitraum, Tag für Tag und Anbieter für Anbieter."
+    free_window: "Frei für Termine vom {{from}} bis {{to}}"
+    free_empty: "Im Buchungszeitraum ist nichts für Termine frei."

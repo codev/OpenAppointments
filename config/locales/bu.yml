@@ -1078,3 +1078,7 @@ bu:
     activity_message_summary: "{{notification}} до {{audience}} чрез {{channel}}, {{address}}"
     activity_received_summary: "От {{address}} чрез {{channel}}"
     activity_waitlist_summary: "{{customer}} за {{service}} при {{provider}}"
+    free: "Свободни"
+    free_hint: "Свободни часове за срещи в периода за резервации, по дати и по изпълнител."
+    free_window: "Свободно за срещи от {{from}} до {{to}}"
+    free_empty: "Няма свободно време за срещи в периода за резервации."

@@ -1078,3 +1078,7 @@ en:
     activity_message_summary: "{{notification}} to {{audience}} by {{channel}}, {{address}}"
     activity_received_summary: "From {{address}} by {{channel}}"
     activity_waitlist_summary: "{{customer}} for {{service}} with {{provider}}"
+    free: "Free"
+    free_hint: "Free slots for appointments in the booking window, date by date and stylist by stylist."
+    free_window: "Free for appointments from {{from}} to {{to}}"
+    free_empty: "Nothing is free for appointments in the booking window."

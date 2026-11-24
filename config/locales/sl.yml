@@ -1078,3 +1078,7 @@ sl:
     activity_message_summary: "{{notification}} za {{audience}} prek {{channel}}, {{address}}"
     activity_received_summary: "Od {{address}} prek {{channel}}"
     activity_waitlist_summary: "{{customer}} za {{service}} pri {{provider}}"
+    free: "Prosto"
+    free_hint: "Prosti termini za naročanje v oknu rezervacij, po dnevih in po ponudnikih."
+    free_window: "Prosti termini od {{from}} do {{to}}"
+    free_empty: "V oknu rezervacij ni prostih terminov."

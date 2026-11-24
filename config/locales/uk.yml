@@ -1078,3 +1078,7 @@ uk:
     activity_message_summary: "{{notification}} для {{audience}} через {{channel}}, {{address}}"
     activity_received_summary: "Від {{address}} через {{channel}}"
     activity_waitlist_summary: "{{customer}} на {{service}} у {{provider}}"
+    free: "Вільно"
+    free_hint: "Вільний час для запису у вікні бронювання за датами та за провайдерами."
+    free_window: "Вільно для запису з {{from}} по {{to}}"
+    free_empty: "У вікні бронювання немає вільного часу для запису."

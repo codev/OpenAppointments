@@ -1078,3 +1078,7 @@ el:
     activity_message_summary: "{{notification}} προς {{audience}} μέσω {{channel}}, {{address}}"
     activity_received_summary: "Από {{address}} μέσω {{channel}}"
     activity_waitlist_summary: "{{customer}} για {{service}} με {{provider}}"
+    free: "Ελεύθερα"
+    free_hint: "Ελεύθερες θέσεις για ραντεβού στο διάστημα κρατήσεων, ανά ημερομηνία και ανά πάροχο."
+    free_window: "Ελεύθερα για ραντεβού από {{from}} έως {{to}}"
+    free_empty: "Δεν υπάρχει ελεύθερος χρόνος για ραντεβού στο διάστημα κρατήσεων."

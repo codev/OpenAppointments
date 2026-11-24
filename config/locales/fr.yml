@@ -1078,3 +1078,7 @@ fr:
     activity_message_summary: "{{notification}} à {{audience}} par {{channel}}, {{address}}"
     activity_received_summary: "De {{address}} par {{channel}}"
     activity_waitlist_summary: "{{customer}} pour {{service}} avec {{provider}}"
+    free: "Libres"
+    free_hint: "Créneaux libres pour des rendez-vous dans la fenêtre de réservation, jour par jour et exécutant par exécutant."
+    free_window: "Libre pour des rendez-vous du {{from}} au {{to}}"
+    free_empty: "Aucun créneau n'est libre pour des rendez-vous dans la fenêtre de réservation."

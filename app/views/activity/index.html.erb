@@ -39,22 +39,24 @@
                 </thead>
                 <tbody>
                     <% vars(:activity_events).each do |event| %>
-                        <% badge = event.kind.include?("failed") ? "bg-danger" : (event.kind.include?("cancelled") || event.kind.include?("deleted") ? "bg-warning text-dark" : "bg-secondary") %>
                         <tr class="activity-event">
                             <td class="text-nowrap"><%= display_datetime(event.created_at) %></td>
-                            <td><span class="badge <%= badge %>"><%= lang("activity_#{event.kind}") %></span></td>
+                            <td><span class="badge <%= activity_badge_class(event.kind) %>"><%= lang("activity_#{event.kind}") %></span></td>
                             <td class="text-nowrap">
                                 <%= Activity::ACTOR_TOKENS.include?(event.actor) ? lang("activity_actor_#{event.actor}") : event.actor %>
                             </td>
                             <td>
-                                <%= event.summary %>
+                                <%= activity_summary_html(event) %>
                                 <% if event.customer %>
+                                    <a href="<%= edit_customer_path(event.customer) %>" class="ms-1" title="<%= lang('customer') %>">
+                                        <i class="fas fa-user"></i>
+                                    </a>
                                     <a href="/customers/<%= event.customer.id %>/messages" class="ms-1" title="<%= lang('messages') %>">
                                         <i class="fas fa-comments"></i>
                                     </a>
                                 <% end %>
                                 <% if event.details.present? %>
-                                    <div class="small text-muted"><%= event.details %></div>
+                                    <div class="small text-muted"><%= activity_details_html(event) %></div>
                                 <% end %>
                             </td>
                         </tr>

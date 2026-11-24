@@ -1078,3 +1078,7 @@
     activity_message_summary: "{{notification}} til {{audience}} via {{channel}}, {{address}}"
     activity_received_summary: "Fra {{address}} via {{channel}}"
     activity_waitlist_summary: "{{customer}} for {{service}} hos {{provider}}"
+    free: "Ledig"
+    free_hint: "Ledige tider for avtaler i bestillingsperioden, dato for dato og leverandør for leverandør."
+    free_window: "Ledig for avtaler fra {{from}} til {{to}}"
+    free_empty: "Ingenting er ledig for avtaler i bestillingsperioden."

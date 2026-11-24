@@ -1078,3 +1078,7 @@ pl:
     activity_message_summary: "{{notification}} do {{audience}} przez {{channel}}, {{address}}"
     activity_received_summary: "Od {{address}} przez {{channel}}"
     activity_waitlist_summary: "{{customer}} na {{service}} u {{provider}}"
+    free: "Wolne"
+    free_hint: "Wolne terminy wizyt w okresie rezerwacji, według daty i pracownika."
+    free_window: "Wolne terminy od {{from}} do {{to}}"
+    free_empty: "Brak wolnych terminów w okresie rezerwacji."

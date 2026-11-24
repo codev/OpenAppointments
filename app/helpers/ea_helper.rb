@@ -21,6 +21,17 @@ module EaHelper
     Setting.get(name, default)
   end
 
+  # The customer's answers to the custom questions shown on the forms, in field order.
+  def displayed_answers(customer)
+    return [] unless customer
+
+    (1..5).filter_map do |i|
+      next unless setting("display_custom_field_#{i}").to_s == "1"
+
+      customer.public_send("custom_field_#{i}").presence
+    end
+  end
+
   # Bootstrap class hiding timezone controls without timezone support.
   def timezone_hidden_class
     Setting.timezone_support? ? "" : " d-none"

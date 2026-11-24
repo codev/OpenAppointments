@@ -1078,3 +1078,7 @@ hu:
     activity_message_summary: "{{notification}} {{audience}} részére, {{channel}}, {{address}}"
     activity_received_summary: "Feladó: {{address}}, {{channel}}"
     activity_waitlist_summary: "{{customer}}, {{service}}, {{provider}}"
+    free: "Szabad"
+    free_hint: "Szabad időpontok foglalásokhoz a foglalási ablakban, napról napra és szolgáltatónként."
+    free_window: "Szabad időpontok {{from}} és {{to}} között"
+    free_empty: "Nincs szabad időpont a foglalási ablakban."

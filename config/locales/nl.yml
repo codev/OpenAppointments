@@ -1078,3 +1078,7 @@ nl:
     activity_message_summary: "{{notification}} aan {{audience}} via {{channel}}, {{address}}"
     activity_received_summary: "Van {{address}} via {{channel}}"
     activity_waitlist_summary: "{{customer}} voor {{service}} bij {{provider}}"
+    free: "Vrij"
+    free_hint: "Vrije tijden voor afspraken in de boekingsperiode, per datum en per medewerker."
+    free_window: "Vrij voor afspraken van {{from}} tot {{to}}"
+    free_empty: "Er is niets vrij voor afspraken in de boekingsperiode."

@@ -1078,3 +1078,7 @@ sv:
     activity_message_summary: "{{notification}} till {{audience}} via {{channel}}, {{address}}"
     activity_received_summary: "Från {{address}} via {{channel}}"
     activity_waitlist_summary: "{{customer}} för {{service}} hos {{provider}}"
+    free: "Lediga"
+    free_hint: "Lediga tider för bokning i bokningsfönstret, datum för datum och utförare för utförare."
+    free_window: "Lediga tider från {{from}} till {{to}}"
+    free_empty: "Inga lediga tider i bokningsfönstret."

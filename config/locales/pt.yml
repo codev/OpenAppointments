@@ -1078,3 +1078,7 @@ pt:
     activity_message_summary: "{{notification}} para {{audience}} por {{channel}}, {{address}}"
     activity_received_summary: "De {{address}} por {{channel}}"
     activity_waitlist_summary: "{{customer}} para {{service}} com {{provider}}"
+    free: "Livre"
+    free_hint: "Horários livres para marcações no período de reserva, dia a dia e fornecedor a fornecedor."
+    free_window: "Livre para marcações de {{from}} a {{to}}"
+    free_empty: "Nada está livre para marcações no período de reserva."

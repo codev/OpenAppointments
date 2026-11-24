@@ -16,6 +16,8 @@ Rails.application.routes.draw do
   # Backend calendar
   get "calendar" => "calendar#index", as: :calendar
   get "appointments" => "appointments#index", as: :appointments
+  # Free slots across the booking window, admins only
+  get "free" => "free#index", as: :free
   # Event dialog forms (rendered into the calendar pages' event frame)
   resources :appointments, only: %i[new create edit update] do
     member do

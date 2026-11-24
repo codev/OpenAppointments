@@ -1078,3 +1078,7 @@ pt-br:
     activity_message_summary: "{{notification}} para {{audience}} por {{channel}}, {{address}}"
     activity_received_summary: "De {{address}} por {{channel}}"
     activity_waitlist_summary: "{{customer}} para {{service}} com {{provider}}"
+    free: "Livre"
+    free_hint: "Horários livres para agendamentos na janela de reservas, dia a dia e atendente por atendente."
+    free_window: "Livre para agendamentos de {{from}} a {{to}}"
+    free_empty: "Nada está livre para agendamentos na janela de reservas."

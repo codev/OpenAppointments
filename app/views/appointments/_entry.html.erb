@@ -5,9 +5,14 @@
 <% time = ->(t) { t.strftime(MailerFormatHelper::TIME_FORMATS[formats[:time_format]] || MailerFormatHelper::TIME_FORMATS["regular"]).strip } %>
 <% classes = "day-entry day-entry-#{entry.kind} d-block text-reset text-decoration-none" %>
 <% style = entry.color ? "border-left-color: #{entry.color}" : nil %>
+<%# The customer's answers to the booking questions, then the appointment's notes. %>
+<% answers = %w[appointment freed].include?(entry.kind) ? displayed_answers(entry.record.customer) + [ entry.record.notes.to_s.squish.presence ].compact : [] %>
 <% content = capture do %>
     <small class="day-entry-time"><%= time.call(entry.start) %> - <%= time.call(entry.end) %></small>
     <span class="day-entry-title"><%= entry.title %></span>
+    <% if answers.any? %>
+        <small class="day-entry-answers"><%= answers.join(" \u00b7 ") %></small>
+    <% end %>
 <% end %>
 <% case entry.kind %>
 <% when "appointment", "freed" %>

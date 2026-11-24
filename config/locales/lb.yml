@@ -1078,3 +1078,7 @@ lb:
     activity_message_summary: "{{notification}} un {{audience}} per {{channel}}, {{address}}"
     activity_received_summary: "Vun {{address}} per {{channel}}"
     activity_waitlist_summary: "{{customer}} fir {{service}} bei {{provider}}"
+    free: "Fräi"
+    free_hint: "Fräi Plaze fir Rendez-vousen am Reservatiounsfenster, Dag fir Dag a Mataarbechter fir Mataarbechter."
+    free_window: "Fräi fir Rendez-vousen vum {{from}} bis {{to}}"
+    free_empty: "Am Reservatiounsfenster ass näischt fräi fir Rendez-vousen."

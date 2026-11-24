@@ -1078,3 +1078,7 @@ lv:
     activity_message_summary: "{{notification}} adresātam {{audience}} ar {{channel}}, {{address}}"
     activity_received_summary: "No {{address}} ar {{channel}}"
     activity_waitlist_summary: "{{customer}}: {{service}} pie {{provider}}"
+    free: "Brīvs"
+    free_hint: "Brīvie pieraksta laiki pierakstu periodā, pa dienām un pakalpojumu sniedzējiem."
+    free_window: "Brīvs pierakstiem no {{from}} līdz {{to}}"
+    free_empty: "Pierakstu periodā nav brīvu laiku pierakstiem."

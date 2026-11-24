@@ -1078,3 +1078,7 @@ ja:
     activity_message_summary: "{{audience}}宛の{{notification}}、{{channel}}、{{address}}"
     activity_received_summary: "送信元 {{address}}、{{channel}}"
     activity_waitlist_summary: "{{customer}}様の{{service}}、担当{{provider}}"
+    free: "空き"
+    free_hint: "予約受付期間内の空き枠を、日付ごと・担当者ごとに表示します。"
+    free_window: "{{from}}から{{to}}までの予約可能な空き"
+    free_empty: "予約受付期間内に空きはありません。"

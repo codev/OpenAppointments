@@ -1078,3 +1078,7 @@ fi:
     activity_message_summary: "{{notification}} vastaanottajalle {{audience}} kanavalla {{channel}}, {{address}}"
     activity_received_summary: "Lähettäjä {{address}} kanavalla {{channel}}"
     activity_waitlist_summary: "{{customer}}, {{service}}, {{provider}}"
+    free: "Vapaat"
+    free_hint: "Vapaat ajat varauksille varausikkunassa päivittäin ja palveluntuottajittain."
+    free_window: "Vapaat ajat varauksille {{from}}–{{to}}"
+    free_empty: "Varausikkunassa ei ole vapaita aikoja varauksille."

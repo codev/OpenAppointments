@@ -1078,3 +1078,7 @@ ro:
     activity_message_summary: "{{notification}} către {{audience}} prin {{channel}}, {{address}}"
     activity_received_summary: "De la {{address}} prin {{channel}}"
     activity_waitlist_summary: "{{customer}} pentru {{service}} la {{provider}}"
+    free: "Liber"
+    free_hint: "Intervale libere pentru programări în perioada de rezervare, zi cu zi și furnizor cu furnizor."
+    free_window: "Liber pentru programări de la {{from}} până la {{to}}"
+    free_empty: "Nu este nimic liber pentru programări în perioada de rezervare."

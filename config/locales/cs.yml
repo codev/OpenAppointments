@@ -1078,3 +1078,7 @@ cs:
     activity_message_summary: "{{notification}} pro {{audience}} přes {{channel}}, {{address}}"
     activity_received_summary: "Od {{address}} přes {{channel}}"
     activity_waitlist_summary: "{{customer}} pro {{service}} u {{provider}}"
+    free: "Volno"
+    free_hint: "Volné termíny pro schůzky v období rezervací, po dnech a po poskytovatelích."
+    free_window: "Volno pro schůzky od {{from}} do {{to}}"
+    free_empty: "V období rezervací není nic volného."

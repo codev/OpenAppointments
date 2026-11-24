@@ -1078,3 +1078,7 @@ th:
     activity_message_summary: "{{notification}} ถึง {{audience}} ทาง {{channel}}, {{address}}"
     activity_received_summary: "จาก {{address}} ทาง {{channel}}"
     activity_waitlist_summary: "{{customer}} สำหรับ {{service}} กับ {{provider}}"
+    free: "ว่าง"
+    free_hint: "ช่วงเวลาว่างสำหรับนัดหมายในช่วงเวลาที่เปิดจอง แยกตามวันที่และผู้ให้บริการ"
+    free_window: "ว่างสำหรับนัดหมายตั้งแต่ {{from}} ถึง {{to}}"
+    free_empty: "ไม่มีช่วงเวลาว่างสำหรับนัดหมายในช่วงเวลาที่เปิดจอง"

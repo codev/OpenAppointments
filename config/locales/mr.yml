@@ -1078,3 +1078,7 @@ mr:
     activity_message_summary: "{{audience}} ला {{notification}}, {{channel}} द्वारे, {{address}}"
     activity_received_summary: "{{address}} कडून, {{channel}} द्वारे"
     activity_waitlist_summary: "{{customer}} साठी {{service}}, {{provider}} सोबत"
+    free: "मोकळे"
+    free_hint: "बुकिंग कालावधीतील भेटींसाठी मोकळ्या वेळा, तारखेनुसार आणि व्यवस्थापकानुसार."
+    free_window: "{{from}} ते {{to}} या कालावधीत भेटींसाठी मोकळे"
+    free_empty: "बुकिंग कालावधीत भेटींसाठी काहीही मोकळे नाही."

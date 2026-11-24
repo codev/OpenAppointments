@@ -1078,3 +1078,7 @@ ru:
     activity_message_summary: "{{notification}} для {{audience}} через {{channel}}, {{address}}"
     activity_received_summary: "От {{address}} через {{channel}}"
     activity_waitlist_summary: "{{customer}} на {{service}} у {{provider}}"
+    free: "Свободно"
+    free_hint: "Свободное время для записи в окне бронирования по датам и по поставщикам."
+    free_window: "Свободно для записи с {{from}} по {{to}}"
+    free_empty: "В окне бронирования нет свободного времени для записи."

@@ -1078,3 +1078,7 @@ zh:
     activity_message_summary: "通过 {{channel}} 向 {{audience}} 发送 {{notification}}，{{address}}"
     activity_received_summary: "来自 {{address}}，通过 {{channel}}"
     activity_waitlist_summary: "{{customer}} 候补 {{service}}，{{provider}}"
+    free: "空闲"
+    free_hint: "预约时段内可预约的空闲时间，按日期和服务人员列出。"
+    free_window: "{{from}} 至 {{to}} 可预约的空闲时间"
+    free_empty: "预约时段内没有可预约的空闲时间。"

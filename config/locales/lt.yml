@@ -1078,3 +1078,7 @@ lt:
     activity_message_summary: "{{notification}} gavėjui {{audience}} per {{channel}}, {{address}}"
     activity_received_summary: "Nuo {{address}} per {{channel}}"
     activity_waitlist_summary: "{{customer}}: {{service}} pas {{provider}}"
+    free: "Laisva"
+    free_hint: "Laisvi vizitų laikai rezervacijos lange, pagal dieną ir paslaugų teikėją."
+    free_window: "Laisva vizitams nuo {{from}} iki {{to}}"
+    free_empty: "Rezervacijos lange nėra laisvų vizitų laikų."

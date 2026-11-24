@@ -1078,3 +1078,7 @@ es:
     activity_message_summary: "{{notification}} a {{audience}} por {{channel}}, {{address}}"
     activity_received_summary: "De {{address}} por {{channel}}"
     activity_waitlist_summary: "{{customer}} para {{service}} con {{provider}}"
+    free: "Libre"
+    free_hint: "Huecos libres para citas en el periodo de reservas, día a día y proveedor a proveedor."
+    free_window: "Libre para citas del {{from}} al {{to}}"
+    free_empty: "No hay nada libre para citas en el periodo de reservas."

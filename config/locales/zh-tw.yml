@@ -1078,3 +1078,7 @@ zh-tw:
     activity_message_summary: "透過 {{channel}} 向 {{audience}} 傳送 {{notification}}，{{address}}"
     activity_received_summary: "來自 {{address}}，透過 {{channel}}"
     activity_waitlist_summary: "{{customer}} 候補 {{service}}，{{provider}}"
+    free: "空檔"
+    free_hint: "預約時段內可預約的空檔，依日期與提供者列出。"
+    free_window: "{{from}} 至 {{to}} 可預約的空檔"
+    free_empty: "預約時段內沒有可預約的空檔。"

@@ -1078,3 +1078,7 @@ tr:
     activity_message_summary: "{{notification}}, {{audience}} için, {{channel}} ile, {{address}}"
     activity_received_summary: "{{address}} adresinden, {{channel}} ile"
     activity_waitlist_summary: "{{customer}}, {{service}} için, {{provider}} ile"
+    free: "Boş"
+    free_hint: "Rezervasyon aralığındaki boş randevu saatleri, tarihe ve hizmet sağlayıcıya göre."
+    free_window: "{{from}} ile {{to}} arasında randevuya uygun boş saatler"
+    free_empty: "Rezervasyon aralığında randevu için boş saat yok."

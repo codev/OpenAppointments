@@ -1078,3 +1078,7 @@ hi:
     activity_message_summary: "{{audience}} को {{notification}}, {{channel}} द्वारा, {{address}}"
     activity_received_summary: "{{address}} से, {{channel}} द्वारा"
     activity_waitlist_summary: "{{customer}} के लिए {{service}}, {{provider}} के साथ"
+    free: "खाली"
+    free_hint: "बुकिंग विंडो में अपॉइंटमेंट के लिए खाली स्लॉट, तारीख और स्टाइलिस्ट के अनुसार।"
+    free_window: "{{from}} से {{to}} तक अपॉइंटमेंट के लिए खाली"
+    free_empty: "बुकिंग विंडो में अपॉइंटमेंट के लिए कुछ भी खाली नहीं है।"

@@ -25,6 +25,10 @@ class ActivityPageTest < ActionDispatch::IntegrationTest
     assert_select "tr.activity-event", 2
     assert_select "tr.activity-event:first-child td", text: /Reminder to customer/
     assert_select "a[href=?]", "/customers/#{users(:jx).id}/messages"
+    assert_select "a[href=?] i.fa-user", "/customers/#{users(:jx).id}/edit"
+    assert_select "tr.activity-event span.badge.text-bg-success", text: "Booked"
+    assert_select "tr.activity-event span.badge.text-bg-info", text: "Message sent"
+    assert_select "tr.activity-event td i.activity-joiner", text: "with"
     assert_select "#activity-refresh[checked]"
   end
 

@@ -1078,3 +1078,7 @@ it:
     activity_message_summary: "{{notification}} a {{audience}} tramite {{channel}}, {{address}}"
     activity_received_summary: "Da {{address}} tramite {{channel}}"
     activity_waitlist_summary: "{{customer}} per {{service}} con {{provider}}"
+    free: "Libero"
+    free_hint: "Slot liberi per gli appuntamenti nella finestra di prenotazione, giorno per giorno e fornitore per fornitore."
+    free_window: "Libero per appuntamenti dal {{from}} al {{to}}"
+    free_empty: "Non c'è nulla di libero per appuntamenti nella finestra di prenotazione."

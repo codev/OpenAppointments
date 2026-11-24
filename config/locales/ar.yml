@@ -1078,3 +1078,7 @@ ar:
     activity_message_summary: "{{notification}} إلى {{audience}} عبر {{channel}}، {{address}}"
     activity_received_summary: "من {{address}} عبر {{channel}}"
     activity_waitlist_summary: "{{customer}} لـ {{service}} مع {{provider}}"
+    free: "متاح"
+    free_hint: "الأوقات المتاحة للمواعيد ضمن فترة الحجز، يومًا بيوم ومزودًا بمزود."
+    free_window: "متاح للمواعيد من {{from}} إلى {{to}}"
+    free_empty: "لا يوجد وقت متاح للمواعيد ضمن فترة الحجز."

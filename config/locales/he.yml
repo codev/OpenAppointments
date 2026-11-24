@@ -1078,3 +1078,7 @@ he:
     activity_message_summary: "{{notification}} אל {{audience}} דרך {{channel}}, {{address}}"
     activity_received_summary: "מאת {{address}} דרך {{channel}}"
     activity_waitlist_summary: "{{customer}} עבור {{service}} עם {{provider}}"
+    free: "פנוי"
+    free_hint: "משבצות פנויות לפגישות בחלון ההזמנות, לפי תאריך ולפי ספק."
+    free_window: "פנוי לפגישות מ-{{from}} עד {{to}}"
+    free_empty: "אין זמן פנוי לפגישות בחלון ההזמנות."
