@@ -18,6 +18,12 @@ module TenToEight
     end
 
     def call
+      Activity.silenced { load_all }
+    end
+
+    private
+
+    def load_all
       load_categories if phase?("categories")
       load_services if phase?("services")
       load_providers if phase?("providers")
@@ -34,8 +40,6 @@ module TenToEight
       load_settings if phase?("settings")
       { counts: @counts, errors: @errors }
     end
-
-    private
 
     def phase?(name) = @phases.include?(name)
 

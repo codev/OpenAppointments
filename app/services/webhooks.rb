@@ -24,6 +24,7 @@ module Webhooks
 
   # payload: an EaRows hash or an AR record (serialized to its EA row).
   def trigger(action, payload)
+    Activity.appointment_event(action, payload) if payload.is_a?(Appointment)
     payload = to_row(payload)
 
     Webhook.find_each do |webhook|

@@ -1,5 +1,6 @@
 # Booking success page, port of EA's Booking_confirmation controller.
 class BookingConfirmationController < ApplicationController
+  before_action { Current.actor = Activity::BOOKING_PAGE }
   include EmbeddableFrame
   layout "message"
 

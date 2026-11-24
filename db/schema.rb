@@ -10,7 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_11_16_100000) do
+ActiveRecord::Schema[8.1].define(version: 2026_11_24_110000) do
+  create_table "activity_events", force: :cascade do |t|
+    t.string "actor", null: false
+    t.integer "appointment_id"
+    t.datetime "created_at", null: false
+    t.integer "customer_id"
+    t.text "details"
+    t.string "kind", null: false
+    t.integer "message_id"
+    t.text "summary", null: false
+    t.datetime "updated_at", null: false
+    t.integer "user_id"
+    t.index ["created_at"], name: "index_activity_events_on_created_at"
+    t.index ["kind"], name: "index_activity_events_on_kind"
+  end
+
   create_table "action_mailbox_inbound_emails", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.string "message_checksum", null: false

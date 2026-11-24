@@ -1,5 +1,6 @@
 # Public booking wizard, port of EA's Booking controller.
 class BookingController < ApplicationController
+  before_action { Current.actor = Activity::BOOKING_PAGE }
   include EmbeddableFrame
   layout "booking"
 

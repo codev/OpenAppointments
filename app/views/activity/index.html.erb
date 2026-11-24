@@ -1,0 +1,72 @@
+<%# Admin Activity page. Vars: activity_events, activity_kind, activity_page,
+    activity_last_page, activity_refresh. %>
+<% kind = vars(:activity_kind) %>
+<% refresh = vars(:activity_refresh) %>
+<% query = { kind: kind.presence, refresh: refresh ? nil : "0" }.compact.to_query %>
+<% base_path = "/activity#{query.present? ? "?#{query}" : ''}" %>
+<div id="activity-page" class="container backend-page py-3">
+    <h4 class="border-bottom py-3 mb-3 fw-light"><%= lang('activity') %></h4>
+
+    <form method="get" action="/activity" class="d-flex flex-wrap align-items-center gap-3 mb-3" id="activity-filter">
+        <select name="kind" class="form-select w-auto" aria-label="<%= lang('activity_kind') %>" onchange="this.form.submit()">
+            <option value=""><%= lang('activity_all_kinds') %></option>
+            <% Activity::KINDS.each do |name| %>
+                <option value="<%= name %>" <%= 'selected' if name == kind %>><%= lang("activity_#{name}") %></option>
+            <% end %>
+        </select>
+        <%# The hidden 0 goes first: a ticked box sends 1 after it and wins. %>
+        <input type="hidden" name="refresh" value="0">
+        <label class="form-check form-switch mb-0 d-flex align-items-center gap-2">
+            <input class="form-check-input" type="checkbox" id="activity-refresh" name="refresh" value="1"
+                   <%= 'checked' if refresh %> onchange="this.form.submit()">
+            <%= lang('activity_refresh') %>
+        </label>
+        <noscript><button class="btn btn-outline-secondary" type="submit"><%= lang('activity_kind') %></button></noscript>
+    </form>
+
+    <% if vars(:activity_events).empty? %>
+        <p class="text-muted"><%= lang('activity_empty') %></p>
+    <% else %>
+        <div class="table-responsive">
+            <table class="table table-sm align-middle">
+                <thead>
+                    <tr>
+                        <th scope="col"><%= lang('activity_when') %></th>
+                        <th scope="col"><%= lang('activity_kind') %></th>
+                        <th scope="col"><%= lang('activity_actor') %></th>
+                        <th scope="col"><%= lang('activity_details') %></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% vars(:activity_events).each do |event| %>
+                        <% badge = event.kind.include?("failed") ? "bg-danger" : (event.kind.include?("cancelled") || event.kind.include?("deleted") ? "bg-warning text-dark" : "bg-secondary") %>
+                        <tr class="activity-event">
+                            <td class="text-nowrap"><%= display_datetime(event.created_at) %></td>
+                            <td><span class="badge <%= badge %>"><%= lang("activity_#{event.kind}") %></span></td>
+                            <td class="text-nowrap">
+                                <%= Activity::ACTOR_TOKENS.include?(event.actor) ? lang("activity_actor_#{event.actor}") : event.actor %>
+                            </td>
+                            <td>
+                                <%= event.summary %>
+                                <% if event.customer %>
+                                    <a href="/customers/<%= event.customer.id %>/messages" class="ms-1" title="<%= lang('messages') %>">
+                                        <i class="fas fa-comments"></i>
+                                    </a>
+                                <% end %>
+                                <% if event.details.present? %>
+                                    <div class="small text-muted"><%= event.details %></div>
+                                <% end %>
+                            </td>
+                        </tr>
+                    <% end %>
+                </tbody>
+            </table>
+        </div>
+        <%= render "shared/messages_pagination", page: vars(:activity_page), last_page: vars(:activity_last_page), base_path: base_path %>
+    <% end %>
+</div>
+<% if refresh %>
+    <script>
+        setTimeout(function () { window.location.reload(); }, 60000);
+    </script>
+<% end %>

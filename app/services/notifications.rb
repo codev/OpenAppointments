@@ -97,7 +97,7 @@ module Notifications
       due = due_appointments(notification, now).reject { |appointment| NotificationDispatch.recorded?(notification, appointment) }
       due.each { |appointment| NotificationDispatch.record!(notification, appointment) } unless dry_run
       due.size
-    end
+    end.tap { |count| Activity.reminders_marked(count) unless dry_run }
   end
 
   # Stored starts are the stylist's wall clock, so the query brackets the
