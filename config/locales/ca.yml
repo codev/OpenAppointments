@@ -703,6 +703,12 @@ ca:
     messages_smsgateway_login: "Nom d'usuari"
     messages_smsgateway_password: "Contrasenya"
     messages_smsgateway_signing_key: "Clau de signatura del webhook"
+    messages_smsgateway_phone: "Telèfon"
+    messages_smsgateway_phone_last_seen: "Telèfon vist per última vegada {{when}}"
+    messages_smsgateway_phone_waiting: "Missatges esperant el telèfon: {{count}}"
+    messages_smsgateway_phone_stale: "El telèfon no s'ha connectat en més de cinc minuts. Obriu l'aplicació SMS Gateway al telèfon o reinicieu-lo, i comproveu que Ajustos > Ping estigui activat."
+    messages_smsgateway_phone_unreachable: "No s'ha pogut contactar amb el servidor de la passarel·la: {{error}}"
+    messages_smsgateway_phone_failed: "El telèfon no l'ha pogut enviar: {{reason}}"
     messages_provider_smsgateway_info: "Envia i rep SMS mitjançant un telèfon Android amb l'aplicació SMS Gateway contra el nostre propi servidor, sense costos per missatge."
     messages_email_outgoing: "Envia correu"
     messages_email_mode: Sending method
@@ -762,6 +768,7 @@ ca:
     messages_status_failed: Failed
     messages_status_queued: Queued
     messages_status_received: Received
+    messages_status_delivered: "Lliurat"
     customer_messages: Messages
     send_message: Send
     select_one: Select One

@@ -3,6 +3,15 @@
 The about page lists these notes; every release needs a section here matching
 CloudronManifest.json.
 
+## 3.7.0
+
+- Calendar: the Day view gives every stylist working or booked that day a column of their own, in name order, with their colour beside their name. Columns keep a readable width and the day scrolls sideways when they do not fit, the hours staying in view, so an admin can look along one hour and see who is free. Each column is greyed by its own stylist's hours and breaks. A slot picked in a column starts an appointment for that stylist; an appointment moves to another stylist by editing it, not by dragging. The view last used (Day, Week or Month) is remembered in the browser
+- Messages: texts sent through the SMS Gateway now show what the phone did with them. Sent means the gateway server accepted the text; Delivered means the phone reported the receipt; a text the phone could not send turns Failed with the phone's reason, and appears on the Activity page as a failed message. The gateway's message id is kept on each text. The SMS Gateway settings page shows when the phone last checked in and how many texts are waiting for it, with a warning when the phone has not checked in for five minutes. The delivery and failure webhooks are registered whenever the gateway is active; Receive replies governs only the replies webhook
+- Messages: a mobile typed without its leading 0 (ten digits) is read as a number in the default country, so its texts go out instead of failing as outside the country
+- Fix: the calendar's unavailability, break and custom textures were missing on live (the stylesheet pointed at a path that did not exist)
+- Fix: the header's eight menu items wrapped onto a second row between 768 and 991px
+- Calendar: the calendar library is FullCalendar Premium under its GPLv3 option, which the stylist columns need; Week and Month views are unchanged
+
 ## 3.6.0
 
 - List: under each appointment a small line shows the customer's answers to the booking questions (pronoun, access needs) and the notes on the appointment

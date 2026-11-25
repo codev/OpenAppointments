@@ -1,0 +1,23 @@
+<%# The salon phone's check-in and the texts the server still holds for it,
+    read from the gateway server when the page loads. The phone collects its
+    queue when the server's wake-up reaches it; a stale check-in means texts
+    shown as sent are sitting on the server. %>
+<div id="smsgateway-phone-status" class="card card-body mb-4" data-stale="<%= status[:stale] == true %>">
+    <h6 class="fw-light"><%= lang('messages_smsgateway_phone') %></h6>
+    <% if status[:error] %>
+        <div class="alert alert-danger small mb-0">
+            <%= lang('messages_smsgateway_phone_unreachable').sub('{{error}}', status[:error]) %>
+        </div>
+    <% else %>
+        <div class="small" data-field="last_seen">
+            <%= lang('messages_smsgateway_phone_last_seen').sub('{{when}}',
+                     status[:last_seen] ? "#{time_ago_in_words(status[:last_seen])} #{lang('ago')}" : "-") %>
+        </div>
+        <div class="small" data-field="waiting">
+            <%= lang('messages_smsgateway_phone_waiting').sub('{{count}}', status[:waiting].to_s) %>
+        </div>
+        <% if status[:stale] %>
+            <div class="alert alert-warning small mt-2 mb-0"><%= lang('messages_smsgateway_phone_stale') %></div>
+        <% end %>
+    <% end %>
+</div>

@@ -703,6 +703,12 @@ fi:
     messages_smsgateway_login: "Kaeyttaejaetunnus"
     messages_smsgateway_password: "Salasana"
     messages_smsgateway_signing_key: "Webhookin allekirjoitusavain"
+    messages_smsgateway_phone: "Puhelin"
+    messages_smsgateway_phone_last_seen: "Puhelin nähty viimeksi {{when}}"
+    messages_smsgateway_phone_waiting: "Puhelinta odottavat viestit: {{count}}"
+    messages_smsgateway_phone_stale: "Puhelin ei ole ottanut yhteyttä yli viiteen minuuttiin. Avaa puhelimessa SMS Gateway -sovellus tai käynnistä puhelin uudelleen ja tarkista, että Settings > Ping on päällä."
+    messages_smsgateway_phone_unreachable: "Yhdyskäytäväpalvelimeen ei saatu yhteyttä: {{error}}"
+    messages_smsgateway_phone_failed: "Puhelin ei voinut lähettää viestiä: {{reason}}"
     messages_provider_smsgateway_info: "Laehettaeae ja vastaanottaa tekstiviestejae Android-puhelimella, jossa on SMS Gateway -sovellus omaa palvelinta vasten, ei viestikohtaisia kuluja."
     messages_email_outgoing: "Lähetä sähköposti"
     messages_email_mode: Sending method
@@ -762,6 +768,7 @@ fi:
     messages_status_failed: Failed
     messages_status_queued: Queued
     messages_status_received: Received
+    messages_status_delivered: "Toimitettu"
     customer_messages: Messages
     send_message: Send
     select_one: Select One

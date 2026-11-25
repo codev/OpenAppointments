@@ -703,6 +703,12 @@ uk:
     messages_smsgateway_login: "Ім'я користувача"
     messages_smsgateway_password: "Пароль"
     messages_smsgateway_signing_key: "Ключ підпису вебхуків"
+    messages_smsgateway_phone: "Телефон"
+    messages_smsgateway_phone_last_seen: "Телефон був на зв'язку {{when}}"
+    messages_smsgateway_phone_waiting: "Повідомлень чекає телефон: {{count}}"
+    messages_smsgateway_phone_stale: "Телефон не виходив на зв'язок понад п'ять хвилин. Відкрийте на ньому застосунок SMS Gateway або перезавантажте телефон і перевірте, що Settings > Ping увімкнено."
+    messages_smsgateway_phone_unreachable: "Не вдалося зв'язатися із сервером шлюзу: {{error}}"
+    messages_smsgateway_phone_failed: "Телефон не зміг надіслати: {{reason}}"
     messages_provider_smsgateway_info: "Надсилає та отримує SMS через Android-телефон із застосунком SMS Gateway і власним сервером, без плати за повідомлення."
     messages_email_outgoing: "Надсилати листи"
     messages_email_mode: Sending method
@@ -762,6 +768,7 @@ uk:
     messages_status_failed: Failed
     messages_status_queued: Queued
     messages_status_received: Received
+    messages_status_delivered: "Доставлено"
     customer_messages: Messages
     send_message: Send
     select_one: Select One

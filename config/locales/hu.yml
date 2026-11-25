@@ -703,6 +703,12 @@ hu:
     messages_smsgateway_login: "Felhasznalonev"
     messages_smsgateway_password: "Jelszo"
     messages_smsgateway_signing_key: "Webhook alairo kulcs"
+    messages_smsgateway_phone: "Telefon"
+    messages_smsgateway_phone_last_seen: "A telefon utoljára látva: {{when}}"
+    messages_smsgateway_phone_waiting: "A telefonra váró SMS-ek: {{count}}"
+    messages_smsgateway_phone_stale: "A telefon több mint öt perce nem jelentkezett. Nyissa meg rajta az SMS Gateway alkalmazást vagy indítsa újra a telefont, és ellenőrizze, hogy a Settings > Ping be van kapcsolva."
+    messages_smsgateway_phone_unreachable: "Nem sikerült elérni az átjáró szervert: {{error}}"
+    messages_smsgateway_phone_failed: "A telefon nem tudta elküldeni: {{reason}}"
     messages_provider_smsgateway_info: "SMS kuldese es fogadasa egy SMS Gateway alkalmazast futtato Android telefonon at, sajat szerverrel, uzenetenkenti koltseg nelkul."
     messages_email_outgoing: "E-mail küldése"
     messages_email_mode: Sending method
@@ -762,6 +768,7 @@ hu:
     messages_status_failed: Failed
     messages_status_queued: Queued
     messages_status_received: Received
+    messages_status_delivered: "Kézbesítve"
     customer_messages: Messages
     send_message: Send
     select_one: Select One

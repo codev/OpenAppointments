@@ -703,6 +703,12 @@ el:
     messages_smsgateway_login: "Όνομα χρήστη"
     messages_smsgateway_password: "Κωδικός πρόσβασης"
     messages_smsgateway_signing_key: "Κλειδί υπογραφής webhook"
+    messages_smsgateway_phone: "Τηλέφωνο"
+    messages_smsgateway_phone_last_seen: "Το τηλέφωνο φάνηκε τελευταία φορά {{when}}"
+    messages_smsgateway_phone_waiting: "Μηνύματα που περιμένουν το τηλέφωνο: {{count}}"
+    messages_smsgateway_phone_stale: "Το τηλέφωνο δεν έχει επικοινωνήσει για πάνω από πέντε λεπτά. Ανοίξτε την εφαρμογή SMS Gateway σε αυτό ή κάντε επανεκκίνηση και ελέγξτε ότι είναι ενεργό το Ρυθμίσεις > Ping."
+    messages_smsgateway_phone_unreachable: "Δεν ήταν δυνατή η επικοινωνία με τον διακομιστή της πύλης: {{error}}"
+    messages_smsgateway_phone_failed: "Το τηλέφωνο δεν μπόρεσε να το στείλει: {{reason}}"
     messages_provider_smsgateway_info: "Στέλνει και λαμβάνει SMS μέσω τηλεφώνου Android με την εφαρμογή SMS Gateway στον δικό μας διακομιστή, χωρίς κόστος ανά μήνυμα."
     messages_email_outgoing: "Αποστολή email"
     messages_email_mode: Sending method
@@ -762,6 +768,7 @@ el:
     messages_status_failed: Failed
     messages_status_queued: Queued
     messages_status_received: Received
+    messages_status_delivered: "Παραδόθηκε"
     customer_messages: Messages
     send_message: Send
     select_one: Select One

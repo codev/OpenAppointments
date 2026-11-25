@@ -703,6 +703,12 @@ zh:
     messages_smsgateway_login: "用户名"
     messages_smsgateway_password: "密码"
     messages_smsgateway_signing_key: "Webhook 签名密钥"
+    messages_smsgateway_phone: "手机"
+    messages_smsgateway_phone_last_seen: "手机上次在线时间:{{when}}"
+    messages_smsgateway_phone_waiting: "等待手机发送的短信:{{count}}"
+    messages_smsgateway_phone_stale: "手机已超过五分钟未连接。请在手机上打开 SMS Gateway 应用或重启手机,并确认 Settings > Ping 已开启。"
+    messages_smsgateway_phone_unreachable: "无法连接到网关服务器:{{error}}"
+    messages_smsgateway_phone_failed: "手机无法发送:{{reason}}"
     messages_provider_smsgateway_info: "通过运行 SMS Gateway 应用的 Android 手机与自有服务器收发短信,无每条费用。"
     messages_email_outgoing: "发送电子邮件"
     messages_email_mode: Sending method
@@ -762,6 +768,7 @@ zh:
     messages_status_failed: Failed
     messages_status_queued: Queued
     messages_status_received: Received
+    messages_status_delivered: "已送达"
     customer_messages: Messages
     send_message: Send
     select_one: Select One

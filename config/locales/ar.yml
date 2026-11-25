@@ -703,6 +703,12 @@ ar:
     messages_smsgateway_login: "اسم المستخدم"
     messages_smsgateway_password: "كلمة المرور"
     messages_smsgateway_signing_key: "مفتاح توقيع الويب هوك"
+    messages_smsgateway_phone: "الهاتف"
+    messages_smsgateway_phone_last_seen: "آخر اتصال للهاتف {{when}}"
+    messages_smsgateway_phone_waiting: "الرسائل النصية بانتظار الهاتف: {{count}}"
+    messages_smsgateway_phone_stale: "لم يتصل الهاتف منذ أكثر من خمس دقائق. افتح تطبيق SMS Gateway على الهاتف أو أعد تشغيله، وتأكد من تفعيل الإعدادات > Ping."
+    messages_smsgateway_phone_unreachable: "تعذر الوصول إلى خادم البوابة: {{error}}"
+    messages_smsgateway_phone_failed: "تعذر على الهاتف إرسالها: {{reason}}"
     messages_provider_smsgateway_info: "يرسل ويستقبل الرسائل القصيرة عبر هاتف أندرويد يشغل تطبيق SMS Gateway مع خادمنا الخاص، بدون تكلفة لكل رسالة."
     messages_email_outgoing: "إرسال البريد الإلكتروني"
     messages_email_mode: Sending method
@@ -762,6 +768,7 @@ ar:
     messages_status_failed: Failed
     messages_status_queued: Queued
     messages_status_received: Received
+    messages_status_delivered: "تم التسليم"
     customer_messages: Messages
     send_message: Send
     select_one: Select One

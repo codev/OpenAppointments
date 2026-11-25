@@ -37,12 +37,35 @@ module Messaging
       Messaging::Template.sms_address(user)
     end
 
+    # The server queues the text for the phone and answers with its id, kept on
+    # the row so the phone's delivery and failure reports find it.
     def deliver(message, config = Messaging.config)
       uri = api_uri("message", config)
       request = Net::HTTP::Post.new(uri.request_uri, "Content-Type" => "application/json")
       request.basic_auth(login(config), password(config))
       request.body = { message: message.body, phoneNumbers: [ message.to_address ] }.to_json
-      post!(uri, request)
+      response = post!(uri, request)
+      id = (JSON.parse(response.body)["id"] rescue nil)
+      message.update!(provider_message_id: id) if id.present?
+    end
+
+    # The phone's reports on texts the server accepted, and replies when wanted.
+    REPORT_EVENTS = %w[sms:delivered sms:failed].freeze
+    REPLY_EVENT = "sms:received".freeze
+
+    def webhook_events(incoming:) = incoming ? REPORT_EVENTS + [ REPLY_EVENT ] : REPORT_EVENTS
+
+    # The phone's last check-in and the texts it has not collected, read from the
+    # server; {error:} when the server does not answer.
+    STALE_AFTER = 5.minutes
+
+    def phone_status(config = Messaging.config)
+      device = get!(api_uri("device", config), config)
+      pending = get!(api_uri("messages?state=Pending", config), config)
+      last_seen = device["lastSeen"].present? ? Time.zone.parse(device["lastSeen"]) : nil
+      { last_seen: last_seen, waiting: pending.size, stale: last_seen.nil? || last_seen < STALE_AFTER.ago }
+    rescue StandardError => e
+      { error: e.message }
     end
 
     # [ok, error] for the provider page's Test credentials.
@@ -66,13 +89,13 @@ module Messaging
       e.message
     end
 
-    # Ensures exactly one sms:received webhook for our inbound path: stale and
-    # duplicate registrations are removed, the URL is registered if missing.
-    def ensure_webhook(url)
+    # Ensures exactly one webhook per wanted event for our inbound path: stale
+    # and duplicate registrations are removed, missing events registered.
+    def ensure_webhooks(url, events)
       ours = webhooks.select { |hook| hook["url"].to_s.include?("/messages/inbound/smsgateway/") }
-      keep = ours.find { |hook| hook["url"] == url }
-      ours.each { |hook| delete_webhook(hook["id"]) unless hook.equal?(keep) }
-      register_webhook(url) unless keep
+      keep = events.filter_map { |event| ours.find { |hook| hook["url"] == url && hook["event"] == event } }
+      ours.each { |hook| delete_webhook(hook["id"]) unless keep.any? { |kept| kept.equal?(hook) } }
+      (events - keep.map { |hook| hook["event"] }).each { |event| register_webhook(url, event) }
     end
 
     # Removes every registration pointing at our inbound path.
@@ -82,14 +105,7 @@ module Messaging
       end
     end
 
-    def webhooks
-      request = Net::HTTP::Get.new(api_uri("webhooks").request_uri)
-      request.basic_auth(login, password)
-      response = http_for(api_uri("webhooks")).request(request)
-      raise "SMS Gateway #{response.code}: #{response.body.to_s.truncate(200)}" unless response.is_a?(Net::HTTPSuccess)
-
-      JSON.parse(response.body)
-    end
+    def webhooks = get!(api_uri("webhooks"))
 
     def delete_webhook(id)
       uri = api_uri("webhooks/#{id}")
@@ -98,12 +114,12 @@ module Messaging
       http_for(uri).request(request)
     end
 
-    # Registers the incoming-SMS webhook on the server; the device fetches the
+    # Registers one event's webhook on the server; the device fetches the
     # registration and posts matching events straight to the URL.
-    def register_webhook(url)
+    def register_webhook(url, event)
       request = Net::HTTP::Post.new(api_uri("webhooks").request_uri, "Content-Type" => "application/json")
       request.basic_auth(login, password)
-      request.body = { url: url, event: "sms:received" }.to_json
+      request.body = { url: url, event: event }.to_json
       post!(api_uri("webhooks"), request)
     end
 
@@ -128,11 +144,22 @@ module Messaging
       http
     end
 
+    # The response, or an error naming the server's answer.
     def post!(uri, request)
       response = http_for(uri).request(request)
-      return if response.is_a?(Net::HTTPSuccess)
+      return response if response.is_a?(Net::HTTPSuccess)
 
       raise "SMS Gateway #{response.code}: #{response.body.to_s.truncate(200)}"
+    end
+
+    # Parsed JSON of a GET with the API credentials, or an error naming the answer.
+    def get!(uri, config = Messaging.config)
+      request = Net::HTTP::Get.new(uri.request_uri)
+      request.basic_auth(login(config), password(config))
+      response = http_for(uri).request(request)
+      raise "SMS Gateway #{response.code}: #{response.body.to_s.truncate(200)}" unless response.is_a?(Net::HTTPSuccess)
+
+      JSON.parse(response.body)
     end
   end
 end

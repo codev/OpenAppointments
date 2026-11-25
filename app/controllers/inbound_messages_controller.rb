@@ -1,5 +1,6 @@
-# Public webhook endpoints for incoming SMS. The URL carries the secret inbound
-# token; Twilio, SMS Gateway and QuickSMS requests are additionally
+# Public webhook endpoints for incoming SMS and, from the SMS Gateway phone,
+# delivery and failure reports on texts we sent. The URL carries the secret
+# inbound token; Twilio, SMS Gateway and QuickSMS requests are additionally
 # signature-checked. Senders are matched
 # to customers by E.164 phone (User.likely_sender when several share it);
 # unmatched messages sit in the Inbox as unknown senders (customer nil).
@@ -8,15 +9,19 @@ class InboundMessagesController < ActionController::Base
   skip_forgery_protection
 
   CHANNELS = %w[twilio plivo textanywhere smsgateway quicksms].freeze
+  # The phone's report events and the status each sets on our message.
+  SMS_GATEWAY_REPORTS = { "sms:sent" => "sent", "sms:delivered" => "delivered", "sms:failed" => "failed" }.freeze
 
   def receive
     channel = params[:channel].to_s
     return head :not_found unless CHANNELS.include?(channel) && token_valid?
 
     adapter = Messaging.channel(channel)
-    return head :not_found unless adapter.enabled? && adapter.incoming?
-    return head :forbidden if channel == "twilio" && !twilio_signature_valid?
+    return head :not_found unless adapter.enabled?
     return head :forbidden if channel == "smsgateway" && !sms_gateway_signature_valid?
+    return sms_gateway_report if channel == "smsgateway" && SMS_GATEWAY_REPORTS.key?(params[:event].to_s)
+    return head :not_found unless adapter.incoming?
+    return head :forbidden if channel == "twilio" && !twilio_signature_valid?
     return head :forbidden if channel == "quicksms" && !quicksms_signature_valid?
 
     from, to, body = extract(channel)
@@ -31,6 +36,16 @@ class InboundMessagesController < ActionController::Base
   end
 
   private
+
+  # The phone reports on a text by the id the server gave it when we sent it.
+  def sms_gateway_report
+    payload = params[:payload] || {}
+    status = SMS_GATEWAY_REPORTS[params[:event].to_s]
+    error = status == "failed" ? I18n.t("ea.messages_smsgateway_phone_failed", default: "Phone could not send it: {{reason}}")
+                                     .sub("{{reason}}", payload[:reason].to_s) : nil
+    Message.apply_provider_report("smsgateway", payload[:messageId].to_s, status, error: error)
+    head :ok
+  end
 
   def token_valid?
     token = Setting.get("messages_inbound_token").to_s

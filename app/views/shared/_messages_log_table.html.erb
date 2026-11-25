@@ -68,7 +68,7 @@
                         </td>
                     <% end %>
                     <td>
-                        <% badge = { "sent" => "bg-success", "received" => "bg-success",
+                        <% badge = { "sent" => "bg-success", "delivered" => "bg-success", "received" => "bg-success",
                                      "failed" => "bg-danger", "queued" => "bg-secondary" }[message.status] %>
                         <span class="badge <%= badge %>"
                               <% if message.error.present? %>title="<%= message.error %>"<% end %>>

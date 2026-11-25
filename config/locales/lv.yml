@@ -703,6 +703,12 @@ lv:
     messages_smsgateway_login: "Lietotajvards"
     messages_smsgateway_password: "Parole"
     messages_smsgateway_signing_key: "Webhook parakstisanas atslega"
+    messages_smsgateway_phone: "Tālrunis"
+    messages_smsgateway_phone_last_seen: "Tālrunis pēdējo reizi redzēts {{when}}"
+    messages_smsgateway_phone_waiting: "Īsziņas, kas gaida tālruni: {{count}}"
+    messages_smsgateway_phone_stale: "Tālrunis nav pieteicies vairāk nekā piecas minūtes. Atveriet tajā lietotni SMS Gateway vai restartējiet tālruni un pārbaudiet, vai ir ieslēgts Settings > Ping."
+    messages_smsgateway_phone_unreachable: "Nevarēja sasniegt gateway serveri: {{error}}"
+    messages_smsgateway_phone_failed: "Tālrunis nevarēja nosūtīt: {{reason}}"
     messages_provider_smsgateway_info: "Suta un sanem SMS caur Android talruni ar SMS Gateway lietotni pret musu pasu serveri, bez maksas par zinu."
     messages_email_outgoing: "Sūtīt e-pastu"
     messages_email_mode: Sending method
@@ -762,6 +768,7 @@ lv:
     messages_status_failed: Failed
     messages_status_queued: Queued
     messages_status_received: Received
+    messages_status_delivered: "Piegādāts"
     customer_messages: Messages
     send_message: Send
     select_one: Select One

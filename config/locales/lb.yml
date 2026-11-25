@@ -703,6 +703,12 @@ lb:
     messages_smsgateway_login: "Benotzernumm"
     messages_smsgateway_password: "Passwuert"
     messages_smsgateway_signing_key: "Webhook-Signaturschlëssel"
+    messages_smsgateway_phone: "Telefon"
+    messages_smsgateway_phone_last_seen: "Telefon fir d'läscht gesinn {{when}}"
+    messages_smsgateway_phone_waiting: "SMS, déi um Telefon waarden: {{count}}"
+    messages_smsgateway_phone_stale: "Den Telefon huet sech zënter méi wéi fënnef Minutten net gemellt. Maacht d'SMS Gateway App drop op oder start den Telefon nei, a kuckt, ob Settings > Ping un ass."
+    messages_smsgateway_phone_unreachable: "De Gateway-Server konnt net erreecht ginn: {{error}}"
+    messages_smsgateway_phone_failed: "Den Telefon konnt et net schécken: {{reason}}"
     messages_provider_smsgateway_info: "Schéckt an empfaenkt SMS iwwer en Android-Telefon mat der SMS-Gateway-App géint eisen eegene Server, ouni Käschte pro Message."
     messages_email_outgoing: "E-Mail schécken"
     messages_email_mode: Sending method
@@ -762,6 +768,7 @@ lb:
     messages_status_failed: Failed
     messages_status_queued: Queued
     messages_status_received: Received
+    messages_status_delivered: "Geliwwert"
     customer_messages: Messages
     send_message: Send
     select_one: Select One

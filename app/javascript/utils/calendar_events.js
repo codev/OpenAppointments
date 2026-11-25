@@ -93,6 +93,8 @@ App.Utils.CalendarEvents = (function () {
         }
 
         return {
+            // FullCalendar Premium (stylist columns) under its GPLv3 option: the app is AGPLv3.
+            schedulerLicenseKey: 'GPL-My-Project-Is-Open-Source',
             locale: vars('language_code'),
             nowIndicator: true,
             editable: true,
@@ -575,6 +577,7 @@ App.Utils.CalendarEvents = (function () {
                 start: moment(appointment.start_datetime).toDate(),
                 end: moment(appointment.end_datetime).toDate(),
                 allDay: false,
+                resourceId: String(appointment.id_users_provider),
                 ...eventColors(providerColor(appointment.provider), appointment.service?.color || COLORS.default),
                 data: appointment,
                 display: 'block',
@@ -619,6 +622,7 @@ App.Utils.CalendarEvents = (function () {
                 start: moment(unavailability.start_datetime).toDate(),
                 end: moment(unavailability.end_datetime).toDate(),
                 allDay: false,
+                resourceId: String(unavailability.id_users_provider),
                 color: COLORS.unavailability,
                 editable: true,
                 className: 'fc-unavailability fc-custom',
@@ -628,9 +632,15 @@ App.Utils.CalendarEvents = (function () {
         });
     }
 
-    function blockedPeriodEvents(blockedPeriods) {
+    /**
+     * @param {Array} blockedPeriods
+     * @param {Array} resourceIds The stylist columns a period spans in the Day view.
+     * @returns {Array}
+     */
+    function blockedPeriodEvents(blockedPeriods, resourceIds = []) {
         return (blockedPeriods || []).map((blockedPeriod) => ({
             title: blockedPeriod.name,
+            resourceIds,
             start: moment(blockedPeriod.start_datetime).toDate(),
             end: moment(blockedPeriod.end_datetime).toDate(),
             allDay: true,
@@ -644,7 +654,7 @@ App.Utils.CalendarEvents = (function () {
         }));
     }
 
-    function backgroundEvent(title, start, end, className = 'fc-unavailability') {
+    function backgroundEvent(title, start, end, className = 'fc-unavailability', resourceId = undefined) {
         return {
             title,
             start,
@@ -654,17 +664,10 @@ App.Utils.CalendarEvents = (function () {
             editable: false,
             display: 'background',
             className,
+            resourceId,
         };
     }
 
-    /**
-     * Non-working time, breaks and working plan exceptions for a provider between two dates.
-     *
-     * @param {Object|undefined} provider Falls back to the company working plan.
-     * @param {Date} rangeStart
-     * @param {Date} rangeEnd Exclusive.
-     * @returns {Array}
-     */
     /**
      * The working plan for one day: the exception covering it if any, else the weekly plan.
      * Exceptions arrive ordered by start date then id and the last covering one wins, matching
@@ -825,7 +828,16 @@ App.Utils.CalendarEvents = (function () {
             }));
     }
 
-    function workingPlanEvents(provider, rangeStart, rangeEnd) {
+    /**
+     * Non-working time, breaks and working plan exceptions for a provider between two dates.
+     *
+     * @param {Object|undefined} provider Falls back to the company working plan.
+     * @param {Date} rangeStart
+     * @param {Date} rangeEnd Exclusive.
+     * @param {string} [resourceId] The stylist's column in the Day view; every column when omitted.
+     * @returns {Array}
+     */
+    function workingPlanEvents(provider, rangeStart, rangeEnd, resourceId = undefined) {
         const events = [];
         const date = moment(rangeStart).startOf('day');
 
@@ -847,12 +859,13 @@ App.Utils.CalendarEvents = (function () {
                     editable: false,
                     className: 'fc-working-plan-exception fc-custom',
                     display: 'block',
+                    resourceId,
                     extendedProps: {data: {workingPlanException: exception, provider}},
                 });
             }
 
             if (!dayPlan) {
-                events.push(backgroundEvent(lang('not_working'), dayStart, dayEnd));
+                events.push(backgroundEvent(lang('not_working'), dayStart, dayEnd, undefined, resourceId));
                 date.add(1, 'day');
                 continue;
             }
@@ -861,10 +874,10 @@ App.Utils.CalendarEvents = (function () {
             const workEnd = at(date, dayPlan.end);
 
             if (dayStart < workStart) {
-                events.push(backgroundEvent(lang('not_working'), dayStart, workStart));
+                events.push(backgroundEvent(lang('not_working'), dayStart, workStart, undefined, resourceId));
             }
             if (workEnd < dayEnd) {
-                events.push(backgroundEvent(lang('not_working'), workEnd, dayEnd));
+                events.push(backgroundEvent(lang('not_working'), workEnd, dayEnd, undefined, resourceId));
             }
             (dayPlan.breaks || []).forEach((breakPeriod) => {
                 events.push(
@@ -873,6 +886,7 @@ App.Utils.CalendarEvents = (function () {
                         at(date, breakPeriod.start),
                         at(date, breakPeriod.end),
                         'fc-unavailability fc-break',
+                        resourceId,
                     ),
                 );
             });

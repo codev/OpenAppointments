@@ -703,6 +703,12 @@ th:
     messages_smsgateway_login: "ชื่อผู้ใช้"
     messages_smsgateway_password: "รหัสผ่าน"
     messages_smsgateway_signing_key: "คีย์ลงนามเว็บฮุก"
+    messages_smsgateway_phone: "โทรศัพท์"
+    messages_smsgateway_phone_last_seen: "โทรศัพท์ออนไลน์ล่าสุด {{when}}"
+    messages_smsgateway_phone_waiting: "ข้อความที่รอโทรศัพท์: {{count}}"
+    messages_smsgateway_phone_stale: "โทรศัพท์ไม่ได้เชื่อมต่อมานานกว่าห้านาที ให้เปิดแอป SMS Gateway บนโทรศัพท์หรือรีสตาร์ทเครื่อง และตรวจสอบว่าเปิด Settings > Ping อยู่"
+    messages_smsgateway_phone_unreachable: "ไม่สามารถเชื่อมต่อเซิร์ฟเวอร์เกตเวย์ได้: {{error}}"
+    messages_smsgateway_phone_failed: "โทรศัพท์ส่งไม่สำเร็จ: {{reason}}"
     messages_provider_smsgateway_info: "ส่งและรับ SMS ผ่านโทรศัพท์ Android ที่ใช้แอป SMS Gateway กับเซิร์ฟเวอร์ของเราเอง ไม่มีค่าใช้จ่ายต่อข้อความ"
     messages_email_outgoing: "ส่งอีเมล"
     messages_email_mode: Sending method
@@ -762,6 +768,7 @@ th:
     messages_status_failed: Failed
     messages_status_queued: Queued
     messages_status_received: Received
+    messages_status_delivered: "ส่งถึงแล้ว"
     customer_messages: Messages
     send_message: Send
     select_one: Select One

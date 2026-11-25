@@ -2,7 +2,9 @@
 # and the per-customer conversation; customer_id nil marks an unknown sender.
 class Message < ApplicationRecord
   DIRECTIONS = %w[outgoing incoming].freeze
-  STATUSES = %w[queued sent failed received].freeze
+  # Outgoing: queued, sent (the provider accepted it), delivered (the provider
+  # reported receipt) or failed, at any point. Incoming: received.
+  STATUSES = %w[queued sent delivered failed received].freeze
 
   belongs_to :customer, class_name: "User", optional: true
   belongs_to :sent_by, class_name: "User", optional: true
@@ -53,6 +55,18 @@ class Message < ApplicationRecord
 
   def self.unread_counts_for(customer_ids)
     unread.where(customer_id: customer_ids).group(:customer_id).count
+  end
+
+  # A provider's report on an outgoing message, found by the id it gave us.
+  # A report is applied only when it moves the message forward: delivered
+  # after sent, failed at any point; a replayed or older report is ignored.
+  def self.apply_provider_report(channel, provider_message_id, status, error: nil)
+    message = outgoing.find_by(channel: channel, provider_message_id: provider_message_id.presence)
+    return nil unless message
+    return message if status == "sent" || message.status == status || (status == "delivered" && message.status != "sent")
+
+    message.update!(status: status, error: error.presence&.truncate(255))
+    message
   end
 
   def self.mark_read_for_customer(customer_id)

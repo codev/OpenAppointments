@@ -703,6 +703,12 @@ da:
     messages_smsgateway_login: "Brugernavn"
     messages_smsgateway_password: "Adgangskode"
     messages_smsgateway_signing_key: "Webhook-signaturnoegle"
+    messages_smsgateway_phone: "Telefon"
+    messages_smsgateway_phone_last_seen: "Telefonen sidst set {{when}}"
+    messages_smsgateway_phone_waiting: "Beskeder der venter på telefonen: {{count}}"
+    messages_smsgateway_phone_stale: "Telefonen har ikke meldt sig i over fem minutter. Åbn appen SMS Gateway på den eller genstart telefonen, og tjek at Indstillinger > Ping er slået til."
+    messages_smsgateway_phone_unreachable: "Kunne ikke nå gateway-serveren: {{error}}"
+    messages_smsgateway_phone_failed: "Telefonen kunne ikke sende den: {{reason}}"
     messages_provider_smsgateway_info: "Sender og modtager SMS via en Android-telefon med SMS Gateway-appen mod vores egen server, ingen omkostning pr. besked."
     messages_email_outgoing: "Send e-mail"
     messages_email_mode: Sending method
@@ -762,6 +768,7 @@ da:
     messages_status_failed: Failed
     messages_status_queued: Queued
     messages_status_received: Received
+    messages_status_delivered: "Leveret"
     customer_messages: Messages
     send_message: Send
     select_one: Select One

@@ -703,6 +703,12 @@ fa:
     messages_smsgateway_login: "نام کاربری"
     messages_smsgateway_password: "گذرواژه"
     messages_smsgateway_signing_key: "کلید امضای وب‌هوک"
+    messages_smsgateway_phone: "تلفن"
+    messages_smsgateway_phone_last_seen: "آخرین اتصال تلفن {{when}}"
+    messages_smsgateway_phone_waiting: "پیامک‌های در انتظار تلفن: {{count}}"
+    messages_smsgateway_phone_stale: "تلفن بیش از پنج دقیقه است که اتصال برقرار نکرده است. برنامه SMS Gateway را روی آن باز کنید یا تلفن را راه‌اندازی مجدد کنید و بررسی کنید که Settings > Ping روشن باشد."
+    messages_smsgateway_phone_unreachable: "اتصال به سرور دروازه ممکن نبود: {{error}}"
+    messages_smsgateway_phone_failed: "تلفن نتوانست آن را ارسال کند: {{reason}}"
     messages_provider_smsgateway_info: "پیامک‌ها را از طریق یک تلفن اندرویدی با برنامه SMS Gateway و سرور خودمان ارسال و دریافت می‌کند، بدون هزینه به ازای هر پیام."
     messages_email_outgoing: "ارسال ایمیل"
     messages_email_mode: Sending method
@@ -762,6 +768,7 @@ fa:
     messages_status_failed: Failed
     messages_status_queued: Queued
     messages_status_received: Received
+    messages_status_delivered: "تحویل داده شد"
     customer_messages: Messages
     send_message: Send
     select_one: Select One

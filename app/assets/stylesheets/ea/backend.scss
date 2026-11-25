@@ -202,7 +202,10 @@ body .modal.full-screen .modal-push {
     font-size: 11px;
 }
 
-#calendar-legend .legend-swatch {
+/* Stylist colour beside their name: the legend under the toolbar, and the
+   column headers of the Day view. */
+#calendar-legend .legend-swatch,
+#calendar .fc-resource .legend-swatch {
     display: inline-block;
     width: 12px;
     height: 12px;
@@ -217,7 +220,7 @@ body .modal.full-screen .modal-push {
 }
 
 #calendar-page #calendar .fc-unavailability {
-    background-image: url('../img/unavailability.jpg');
+    background-image: url('unavailability.jpg');
     background-blend-mode: hard-light;
     font-size: 14px;
     border-radius: 0;
@@ -232,15 +235,15 @@ body .modal.full-screen .modal-push {
 }
 
 #calendar-page #calendar .fc-break {
-    background-image: url('../img/break.jpg');
+    background-image: url('break.jpg');
 }
 
 #calendar-page #calendar .fc-custom {
-    background-image: url('../img/custom.jpg');
+    background-image: url('custom.jpg');
 }
 
 #calendar .fc-unavailability {
-    background: var(--bs-secondary-bg) url('../img/unavailability.jpg');
+    background: var(--bs-secondary-bg) url('unavailability.jpg');
 }
 
 #calendar-page .fc-daygrid-day-top {
@@ -739,6 +742,17 @@ body .modal.full-screen .modal-push {
 
     #header .navbar-nav .nav-link #inbox-count {
         margin: 0 0 0.25rem !important;
+    }
+
+    // Eight items only fit the lower half of the range with tighter boxes.
+    @media (max-width: 991.98px) {
+        #header .navbar-nav .nav-item {
+            min-width: 4rem;
+        }
+
+        #header .navbar-nav .nav-link {
+            padding: 0.5rem 0.35rem !important;
+        }
     }
 
     #header .navbar-nav .nav-link.dropdown-toggle::after {

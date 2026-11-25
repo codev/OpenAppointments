@@ -1,11 +1,17 @@
 /**
  * Calendar page: one FullCalendar showing everyone's events for the visible
  * range, filtered in the browser by the ticked stylists, services and statuses,
- * so ticking a box redraws without a fetch.
+ * so ticking a box redraws without a fetch. The Day view gives each stylist
+ * working or booked that day a column of their own.
  */
 App.Pages.Calendar = (function () {
     const FILTER_TYPE_ALL = 'all';
     const STORAGE_KEY = 'OpenAppointments.CalendarFilter';
+    const VIEW_KEY = 'OpenAppointments.CalendarView';
+    const DAY_VIEW = 'resourceTimeGridDay';
+    const WEEK_VIEW = 'timeGridWeek';
+    const MONTH_VIEW = 'dayGridMonth';
+    const COLUMN_MIN_WIDTH = 160; // px; narrower and the day scrolls sideways
 
     const $calendar = () => $('#calendar');
     const $selectFilterItem = () => $('#select-filter-item');
@@ -20,7 +26,9 @@ App.Pages.Calendar = (function () {
     let refreshTimer = null;
     let request = null; // the events fetch in flight
     let loadedRange = null; // "start/end" dates of the last fetch, null before the first
+    let loadedView = null; // view type of the last datesSet, so a view change over the same dates redraws
     let lastResponse = null; // the last fetch's events, redrawn when a box is ticked
+    let lastResources = null; // JSON of the Day view's columns, reset only when they change
 
     // Ticked stylist ids, or null on a stylist's own calendar (no Stylists dropdown).
     function tickedProviders() {
@@ -53,13 +61,19 @@ App.Pages.Calendar = (function () {
         return true;
     }
 
-    // With several stylists shown the legend names the ticked ones by their fill colour.
+    function isDayView() {
+        return fullCalendar.view.type === DAY_VIEW;
+    }
+
+    // With several stylists shown the legend names the ticked ones by their fill
+    // colour. The Day view's column headers do that themselves.
     function renderLegend() {
         const $legend = $('#calendar-legend');
         const ticked = tickedProviders();
-        const providers = isProviderFilter()
-            ? []
-            : vars('available_providers').filter((provider) => !ticked || ticked.includes(Number(provider.id)));
+        const providers =
+            isProviderFilter() || isDayView()
+                ? []
+                : vars('available_providers').filter((provider) => !ticked || ticked.includes(Number(provider.id)));
         $legend.empty().prop('hidden', providers.length === 0);
         providers.forEach((provider) => {
             $('<span/>')
@@ -129,9 +143,11 @@ App.Pages.Calendar = (function () {
             (appointment) => shown(appointment.id_users_provider) && shownService(appointment.id_services),
         );
         const focus = focusProviderId();
+        const columns = isDayView() ? columnProviders(shownProviders(providers, services)) : [];
 
         fullCalendar.getEventSources().forEach((source) => source.remove());
         renderLegend();
+        setResources(columns);
 
         // Filled with the stylist colour, edged with the service colour. Several
         // stylists are titled by stylist when only one service is ticked.
@@ -142,32 +158,78 @@ App.Pages.Calendar = (function () {
         const events = [
             ...appointmentEvents,
             ...Events.unavailabilityEvents(lastResponse.unavailabilities.filter((event) => shown(event.id_users_provider))),
-            ...Events.blockedPeriodEvents(lastResponse.blocked_periods),
+            ...Events.blockedPeriodEvents(
+                lastResponse.blocked_periods,
+                columns.map((provider) => String(provider.id)),
+            ),
         ];
 
-        if (fullCalendar.view.type !== 'dayGridMonth') {
-            fitHours(providers, services, appointmentEvents);
-            events.push(
-                ...Events.workingPlanEvents(
-                    Events.findProvider(focus),
-                    fullCalendar.view.currentStart,
-                    fullCalendar.view.currentEnd,
-                ),
-            );
+        if (fullCalendar.view.type !== MONTH_VIEW) {
+            fitHours(shownProviders(providers, services), appointmentEvents);
+            const {currentStart, currentEnd} = fullCalendar.view;
+            if (isDayView()) {
+                // Each column is greyed by its own stylist's plan: the free time stands out.
+                columns.forEach((provider) => {
+                    events.push(...Events.workingPlanEvents(provider, currentStart, currentEnd, String(provider.id)));
+                });
+            } else {
+                events.push(...Events.workingPlanEvents(Events.findProvider(focus), currentStart, currentEnd));
+            }
         }
 
         fullCalendar.addEventSource(events);
     }
 
-    // The time grid runs from the first working stylist or appointment to the
-    // last, over the ticked stylists who offer a ticked service.
-    function fitHours(tickedIds, serviceIds, appointmentEvents) {
-        const providers = vars('available_providers').filter(
+    // The ticked stylists who offer a ticked service.
+    function shownProviders(tickedIds, serviceIds) {
+        return vars('available_providers').filter(
             (provider) =>
                 (!tickedIds || tickedIds.includes(Number(provider.id))) &&
                 (provider.services || []).map(Number).some((id) => serviceIds.includes(id)),
         );
+    }
 
+    // The Day view's columns: the shown stylists working that day or with an
+    // appointment that day (the List page's working stylist rule).
+    function columnProviders(providers) {
+        const day = fullCalendar.view.currentStart;
+        const booked = new Set(
+            lastResponse.appointments
+                .filter((appointment) => moment(appointment.start_datetime).isSame(day, 'day'))
+                .map((appointment) => Number(appointment.id_users_provider)),
+        );
+
+        return providers.filter(
+            (provider) => booked.has(Number(provider.id)) || Events.workingIntervals(provider, day).length > 0,
+        );
+    }
+
+    // One resource per column, set only when the columns change: setting the
+    // option re-renders the view.
+    function setResources(columns) {
+        const resources = columns.map((provider) => ({
+            id: String(provider.id),
+            title: provider.name,
+            eventColor: Events.providerColor(provider),
+        }));
+        const serialized = JSON.stringify(resources);
+
+        if (serialized === lastResources) {
+            return;
+        }
+        lastResources = serialized;
+        fullCalendar.setOption('resources', resources);
+    }
+
+    // A swatch of the stylist's colour before their name in the column header.
+    function paintColumnHeader(info) {
+        $('<i/>', {class: 'legend-swatch', css: {backgroundColor: info.resource.eventBackgroundColor}}).prependTo(
+            $(info.el).find('.fc-col-header-cell-cushion'),
+        );
+    }
+
+    // The time grid runs from the first working stylist or appointment to the last.
+    function fitHours(providers, appointmentEvents) {
         const hours = Events.visibleHours(
             providers,
             fullCalendar.view.currentStart,
@@ -187,8 +249,9 @@ App.Pages.Calendar = (function () {
             return;
         }
 
+        // In a stylist's column the new event is theirs.
         Events.newEventDialog(info, {
-            providerId: focusProviderId() || undefined,
+            providerId: info.resource?.id || focusProviderId() || undefined,
             serviceId: TickFilter.single('service-filter'),
         });
 
@@ -199,9 +262,19 @@ App.Pages.Calendar = (function () {
 
     function onDateClick(info) {
         if (info.allDay) {
-            fullCalendar.changeView('timeGridDay');
+            fullCalendar.changeView(DAY_VIEW);
             fullCalendar.gotoDate(info.date);
         }
+    }
+
+    // The view last used in this browser, when it is one of the three offered.
+    function savedView() {
+        const view = window.localStorage.getItem(VIEW_KEY);
+        return [DAY_VIEW, WEEK_VIEW, MONTH_VIEW].includes(view) ? view : null;
+    }
+
+    function saveView(view) {
+        window.localStorage.setItem(VIEW_KEY, view.type);
     }
 
     function addEventListeners() {
@@ -269,23 +342,38 @@ App.Pages.Calendar = (function () {
         }
 
         loadedRange = null;
+        loadedView = null;
         lastResponse = null;
+        lastResources = null;
         fullCalendar = new FullCalendar.Calendar(
             $calendar()[0],
             Events.calendarOptions({
-                initialView: window.innerWidth < 468 ? 'timeGridDay' : 'timeGridWeek',
+                initialView: savedView() || (window.innerWidth < 468 ? DAY_VIEW : WEEK_VIEW),
                 height: Events.calendarHeight(),
                 headerToolbar: {
                     left: 'prev,next today',
                     center: 'title',
-                    right: 'timeGridDay,timeGridWeek,dayGridMonth',
+                    right: [DAY_VIEW, WEEK_VIEW, MONTH_VIEW].join(','),
                 },
+                // Day view: a column per stylist, scrolling sideways rather than
+                // squashing; an appointment changes stylist by editing, not dragging.
+                views: {[DAY_VIEW]: {buttonText: lang('day'), dayMinWidth: COLUMN_MIN_WIDTH}},
+                resourceOrder: 'title',
+                eventResourceEditable: false,
+                resourceLabelDidMount: paintColumnHeader,
                 windowResize: () => fullCalendar.setOption('height', Events.calendarHeight()),
-                // Also fired when fitHours changes the slot times (a new date
-                // profile), so only a changed range fetches.
+                // Also fired, synchronously, when fitHours changes the slot
+                // times (a new date profile), so only a changed range fetches and
+                // only a changed view redraws: the view is noted before the draw,
+                // or the nested call would add the events a second time.
                 datesSet: (info) => {
+                    saveView(info.view);
+                    const viewChanged = info.view.type !== loadedView;
+                    loadedView = info.view.type;
                     if (visibleDates(info.view).join('/') !== loadedRange) {
                         reload();
+                    } else if (viewChanged) {
+                        draw();
                     }
                     $(window).trigger('resize');
                 },

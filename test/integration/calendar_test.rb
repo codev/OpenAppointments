@@ -48,6 +48,17 @@ class CalendarTest < ActionDispatch::IntegrationTest
     assert_match "pages/appointments", response.body
   end
 
+  # The Day view's stylist columns come from FullCalendar Premium, used under
+  # its GPLv3 option (the app is AGPLv3). Same version as the Standard bundle
+  # it replaced, so the Week and Month views are unchanged.
+  test "the calendar ships the FullCalendar Premium bundle under its GPL key" do
+    bundle = Rails.root.join("vendor/assets/vendor/fullcalendar/index.global.min.js").read
+    assert bundle.include?("FullCalendar Premium Bundle v6.1.19"), "not the Premium 6.1.19 bundle"
+    assert bundle.include?("resourceTimeGridDay"), "bundle has no resource day view"
+    options = Rails.root.join("app/javascript/utils/calendar_events.js").read
+    assert_match "schedulerLicenseKey: 'GPL-My-Project-Is-Open-Source'", options
+  end
+
   test "calendar vars carry the custom field labels for the event popover" do
     Setting.set("label_custom_field_1", "Pronouns")
     login_admin

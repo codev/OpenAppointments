@@ -703,6 +703,12 @@ sv:
     messages_smsgateway_login: "Anvaendarnamn"
     messages_smsgateway_password: "Loesenord"
     messages_smsgateway_signing_key: "Webhook-signeringsnyckel"
+    messages_smsgateway_phone: "Telefon"
+    messages_smsgateway_phone_last_seen: "Telefonen sågs senast {{when}}"
+    messages_smsgateway_phone_waiting: "Meddelanden som väntar på telefonen: {{count}}"
+    messages_smsgateway_phone_stale: "Telefonen har inte hört av sig på över fem minuter. Öppna appen SMS Gateway på den eller starta om telefonen och kontrollera att Settings > Ping är på."
+    messages_smsgateway_phone_unreachable: "Det gick inte att nå gateway-servern: {{error}}"
+    messages_smsgateway_phone_failed: "Telefonen kunde inte skicka det: {{reason}}"
     messages_provider_smsgateway_info: "Skickar och tar emot SMS via en Android-telefon med SMS Gateway-appen mot vaar egen server, ingen kostnad per meddelande."
     messages_email_outgoing: "Skicka e-post"
     messages_email_mode: Sending method
@@ -762,6 +768,7 @@ sv:
     messages_status_failed: Failed
     messages_status_queued: Queued
     messages_status_received: Received
+    messages_status_delivered: "Levererat"
     customer_messages: Messages
     send_message: Send
     select_one: Select One

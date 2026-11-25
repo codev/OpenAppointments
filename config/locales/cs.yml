@@ -703,6 +703,12 @@ cs:
     messages_smsgateway_login: "Uživatelské jméno"
     messages_smsgateway_password: "Heslo"
     messages_smsgateway_signing_key: "Podpisový klíč webhooků"
+    messages_smsgateway_phone: "Telefon"
+    messages_smsgateway_phone_last_seen: "Telefon naposledy viděn {{when}}"
+    messages_smsgateway_phone_waiting: "Zprávy čekající na telefon: {{count}}"
+    messages_smsgateway_phone_stale: "Telefon se nepřihlásil déle než pět minut. Otevřete na něm aplikaci SMS Gateway nebo telefon restartujte a zkontrolujte, že je zapnuto Nastavení > Ping."
+    messages_smsgateway_phone_unreachable: "Server brány není dostupný: {{error}}"
+    messages_smsgateway_phone_failed: "Telefon zprávu nemohl odeslat: {{reason}}"
     messages_provider_smsgateway_info: "Odesílá a přijímá SMS přes telefon Android s aplikací SMS Gateway a vlastním serverem, bez poplatků za zprávu."
     messages_email_outgoing: "Odesílat e-maily"
     messages_email_mode: Sending method
@@ -762,6 +768,7 @@ cs:
     messages_status_failed: Failed
     messages_status_queued: Queued
     messages_status_received: Received
+    messages_status_delivered: "Doručeno"
     customer_messages: Messages
     send_message: Send
     select_one: Select One

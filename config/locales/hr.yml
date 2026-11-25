@@ -703,6 +703,12 @@ hr:
     messages_smsgateway_login: "Korisničko ime"
     messages_smsgateway_password: "Lozinka"
     messages_smsgateway_signing_key: "Ključ za potpis webhooka"
+    messages_smsgateway_phone: "Telefon"
+    messages_smsgateway_phone_last_seen: "Telefon zadnji put viđen {{when}}"
+    messages_smsgateway_phone_waiting: "Poruke koje čekaju telefon: {{count}}"
+    messages_smsgateway_phone_stale: "Telefon se nije javio više od pet minuta. Otvorite aplikaciju SMS Gateway na njemu ili ponovno pokrenite telefon i provjerite je li Settings > Ping uključen."
+    messages_smsgateway_phone_unreachable: "Nije moguće doseći poslužitelj pristupnika: {{error}}"
+    messages_smsgateway_phone_failed: "Telefon ga nije mogao poslati: {{reason}}"
     messages_provider_smsgateway_info: "Šalje i prima SMS putem Android telefona s aplikacijom SMS Gateway i vlastitim poslužiteljem, bez troška po poruci."
     messages_email_outgoing: "Slanje e-pošte"
     messages_email_mode: Sending method
@@ -762,6 +768,7 @@ hr:
     messages_status_failed: Failed
     messages_status_queued: Queued
     messages_status_received: Received
+    messages_status_delivered: "Isporučeno"
     customer_messages: Messages
     send_message: Send
     select_one: Select One

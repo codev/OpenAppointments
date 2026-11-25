@@ -703,6 +703,12 @@ lt:
     messages_smsgateway_login: "Naudotojo vardas"
     messages_smsgateway_password: "Slaptazodis"
     messages_smsgateway_signing_key: "Webhook parasymo raktas"
+    messages_smsgateway_phone: "Telefonas"
+    messages_smsgateway_phone_last_seen: "Telefonas paskutinį kartą matytas {{when}}"
+    messages_smsgateway_phone_waiting: "Telefono laukiančių žinučių: {{count}}"
+    messages_smsgateway_phone_stale: "Telefonas nebuvo prisijungęs daugiau nei penkias minutes. Atidarykite jame programą SMS Gateway arba perkraukite telefoną ir patikrinkite, ar įjungta Settings > Ping."
+    messages_smsgateway_phone_unreachable: "Nepavyko pasiekti gateway serverio: {{error}}"
+    messages_smsgateway_phone_failed: "Telefonas negalėjo išsiųsti: {{reason}}"
     messages_provider_smsgateway_info: "Siuncia ir gauna SMS per Android telefona su SMS Gateway programa ir musu paciu serveriu, be mokesciu uz zinute."
     messages_email_outgoing: "Siųsti el. laiškus"
     messages_email_mode: Sending method
@@ -762,6 +768,7 @@ lt:
     messages_status_failed: Failed
     messages_status_queued: Queued
     messages_status_received: Received
+    messages_status_delivered: "Pristatyta"
     customer_messages: Messages
     send_message: Send
     select_one: Select One
