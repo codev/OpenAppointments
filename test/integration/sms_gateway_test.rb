@@ -366,7 +366,7 @@ class SmsGatewayTest < ActionDispatch::IntegrationTest
     enable_gateway
     login_admin
     stub_request(:get, "#{BASE}/api/3rdparty/v1/device")
-      .to_return(status: 200, body: { id: "d1", name: "samsung", lastSeen: 70.seconds.ago.utc.iso8601 }.to_json)
+      .to_return(status: 200, body: [ { id: "d1", name: "samsung", lastSeen: 70.seconds.ago.utc.iso8601 } ].to_json)
     stub_request(:get, "#{BASE}/api/3rdparty/v1/messages?state=Pending")
       .to_return(status: 200, body: [ { id: "a" }, { id: "b" } ].to_json)
 
@@ -382,7 +382,7 @@ class SmsGatewayTest < ActionDispatch::IntegrationTest
     enable_gateway
     login_admin
     stub_request(:get, "#{BASE}/api/3rdparty/v1/device")
-      .to_return(status: 200, body: { id: "d1", lastSeen: 20.minutes.ago.utc.iso8601 }.to_json)
+      .to_return(status: 200, body: [ { id: "d1", lastSeen: 20.minutes.ago.utc.iso8601 } ].to_json)
     stub_request(:get, "#{BASE}/api/3rdparty/v1/messages?state=Pending")
       .to_return(status: 200, body: [ { id: "a" } ].to_json)
 
