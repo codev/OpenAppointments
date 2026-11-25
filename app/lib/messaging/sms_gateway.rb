@@ -56,11 +56,12 @@ module Messaging
     def webhook_events(incoming:) = incoming ? REPORT_EVENTS + [ REPLY_EVENT ] : REPORT_EVENTS
 
     # The phone's last check-in and the texts it has not collected, read from the
-    # server; {error:} when the server does not answer.
+    # server; {error:} when the server does not answer. The server lists every
+    # device registered with the credentials; the most recently seen one is ours.
     STALE_AFTER = 5.minutes
 
     def phone_status(config = Messaging.config)
-      device = get!(api_uri("device", config), config)
+      device = get!(api_uri("device", config), config).max_by { |d| d["lastSeen"].to_s } || {}
       pending = get!(api_uri("messages?state=Pending", config), config)
       last_seen = device["lastSeen"].present? ? Time.zone.parse(device["lastSeen"]) : nil
       { last_seen: last_seen, waiting: pending.size, stale: last_seen.nil? || last_seen < STALE_AFTER.ago }

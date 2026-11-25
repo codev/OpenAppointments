@@ -3,6 +3,10 @@
 The about page lists these notes; every release needs a section here matching
 CloudronManifest.json.
 
+## 3.7.1
+
+- The Phone box on the SMS Gateway settings page shows when the phone last checked in; in 3.7.0 it showed a "Could not reach the gateway server" error instead.
+
 ## 3.7.0
 
 - Calendar: the Day view gives every stylist working or booked that day a column of their own, in name order, with their colour beside their name. Columns keep a readable width and the day scrolls sideways when they do not fit, the hours staying in view, so an admin can look along one hour and see who is free. Each column is greyed by its own stylist's hours and breaks. A slot picked in a column starts an appointment for that stylist; an appointment moves to another stylist by editing it, not by dragging. The view last used (Day, Week or Month) is remembered in the browser
