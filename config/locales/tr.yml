@@ -703,6 +703,12 @@ tr:
     messages_smsgateway_login: "Kullanici adi"
     messages_smsgateway_password: "Parola"
     messages_smsgateway_signing_key: "Webhook imza anahtari"
+    messages_smsgateway_phone: "Telefon"
+    messages_smsgateway_phone_last_seen: "Telefon son görülme: {{when}}"
+    messages_smsgateway_phone_waiting: "Telefonu bekleyen mesajlar: {{count}}"
+    messages_smsgateway_phone_stale: "Telefon beş dakikadan uzun süredir bağlanmadı. Telefonda SMS Gateway uygulamasını açın veya telefonu yeniden başlatın ve Settings > Ping seçeneğinin açık olduğunu kontrol edin."
+    messages_smsgateway_phone_unreachable: "Ağ geçidi sunucusuna ulaşılamadı: {{error}}"
+    messages_smsgateway_phone_failed: "Telefon gönderemedi: {{reason}}"
     messages_provider_smsgateway_info: "SMS Gateway uygulamasini calistiran bir Android telefon ve kendi sunucumuz uzerinden SMS gonderir ve alir, mesaj basina maliyet yoktur."
     messages_email_outgoing: "E-posta gönder"
     messages_email_mode: Sending method
@@ -762,6 +768,7 @@ tr:
     messages_status_failed: Failed
     messages_status_queued: Queued
     messages_status_received: Received
+    messages_status_delivered: "Teslim edildi"
     customer_messages: Messages
     send_message: Send
     select_one: Select One

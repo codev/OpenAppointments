@@ -148,7 +148,8 @@ module Messaging
     end
 
     # SMS providers require E.164. Numbers typed into the booking form arrive
-    # in local format (leading 0); the default country code setting converts
+    # in local format (leading 0, or without it when a phone's keypad or a
+    # spreadsheet dropped the 0); the default country code setting converts
     # them, the 10to8 import already normalised to +44. Digits that start with
     # the country code and are long enough to be international only lack the +.
     def e164(number)
@@ -158,6 +159,7 @@ module Messaging
       return digits if digits.start_with?("+")
       return "+#{digits[2..]}" if digits.start_with?("00")
       return "#{default_country_code}#{digits[1..]}" if digits.match?(/\A0\d{9,10}\z/)
+      return "#{default_country_code}#{digits}" if digits.match?(/\A[1-9]\d{9}\z/)
       return "+#{digits}" if digits.match?(/\A\d{11,15}\z/) && digits.start_with?(default_country_code.delete("+"))
 
       digits

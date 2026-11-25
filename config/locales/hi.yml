@@ -703,6 +703,12 @@ hi:
     messages_smsgateway_login: "उपयोगकर्ता नाम"
     messages_smsgateway_password: "पासवर्ड"
     messages_smsgateway_signing_key: "वेबहुक हस्ताक्षर कुंजी"
+    messages_smsgateway_phone: "फ़ोन"
+    messages_smsgateway_phone_last_seen: "फ़ोन आखिरी बार दिखा {{when}}"
+    messages_smsgateway_phone_waiting: "फ़ोन के इंतज़ार में SMS: {{count}}"
+    messages_smsgateway_phone_stale: "फ़ोन ने पाँच मिनट से ज़्यादा समय से संपर्क नहीं किया है। उस पर SMS Gateway ऐप खोलें या फ़ोन रीस्टार्ट करें, और जाँचें कि Settings > Ping चालू है।"
+    messages_smsgateway_phone_unreachable: "गेटवे सर्वर तक नहीं पहुँचा जा सका: {{error}}"
+    messages_smsgateway_phone_failed: "फ़ोन इसे भेज नहीं सका: {{reason}}"
     messages_provider_smsgateway_info: "हमारे अपने सर्वर के साथ SMS Gateway ऐप चलाते Android फ़ोन के माध्यम से SMS भेजता और प्राप्त करता है, प्रति संदेश कोई लागत नहीं।"
     messages_email_outgoing: "ईमेल भेजें"
     messages_email_mode: Sending method
@@ -762,6 +768,7 @@ hi:
     messages_status_failed: Failed
     messages_status_queued: Queued
     messages_status_received: Received
+    messages_status_delivered: "पहुँच गया"
     customer_messages: Messages
     send_message: Send
     select_one: Select One

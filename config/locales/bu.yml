@@ -703,6 +703,12 @@ bu:
     messages_smsgateway_login: "Потребителско име"
     messages_smsgateway_password: "Парола"
     messages_smsgateway_signing_key: "Ключ за подпис на webhook"
+    messages_smsgateway_phone: "Телефон"
+    messages_smsgateway_phone_last_seen: "Телефонът последно е бил на линия {{when}}"
+    messages_smsgateway_phone_waiting: "Съобщения, чакащи телефона: {{count}}"
+    messages_smsgateway_phone_stale: "Телефонът не се е свързвал повече от пет минути. Отворете приложението SMS Gateway на него или рестартирайте телефона и проверете дали Настройки > Ping е включено."
+    messages_smsgateway_phone_unreachable: "Сървърът на шлюза не може да бъде достигнат: {{error}}"
+    messages_smsgateway_phone_failed: "Телефонът не успя да го изпрати: {{reason}}"
     messages_provider_smsgateway_info: "Изпраща и получава SMS през Android телефон с приложението SMS Gateway срещу собствен сървър, без разходи на съобщение."
     messages_email_outgoing: "Изпращане на имейл"
     messages_email_mode: Sending method
@@ -762,6 +768,7 @@ bu:
     messages_status_failed: Failed
     messages_status_queued: Queued
     messages_status_received: Received
+    messages_status_delivered: "Доставено"
     customer_messages: Messages
     send_message: Send
     select_one: Select One

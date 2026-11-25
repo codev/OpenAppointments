@@ -703,6 +703,12 @@ nl:
     messages_smsgateway_login: "Gebruikersnaam"
     messages_smsgateway_password: "Wachtwoord"
     messages_smsgateway_signing_key: "Webhook-ondertekeningssleutel"
+    messages_smsgateway_phone: "Telefoon"
+    messages_smsgateway_phone_last_seen: "Telefoon voor het laatst gezien {{when}}"
+    messages_smsgateway_phone_waiting: "Sms'jes die op de telefoon wachten: {{count}}"
+    messages_smsgateway_phone_stale: "De telefoon heeft al meer dan vijf minuten niet ingecheckt. Open de SMS Gateway-app erop of start de telefoon opnieuw op en controleer of Settings > Ping aanstaat."
+    messages_smsgateway_phone_unreachable: "Kon de gatewayserver niet bereiken: {{error}}"
+    messages_smsgateway_phone_failed: "De telefoon kon het niet verzenden: {{reason}}"
     messages_provider_smsgateway_info: "Verstuurt en ontvangt sms via een Android-telefoon met de SMS Gateway-app tegen onze eigen server, zonder kosten per bericht."
     messages_email_outgoing: "E-mail verzenden"
     messages_email_mode: Sending method
@@ -762,6 +768,7 @@ nl:
     messages_status_failed: Failed
     messages_status_queued: Queued
     messages_status_received: Received
+    messages_status_delivered: "Afgeleverd"
     customer_messages: Messages
     send_message: Send
     select_one: Select One

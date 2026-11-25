@@ -703,6 +703,12 @@ he:
     messages_smsgateway_login: "שם משתמש"
     messages_smsgateway_password: "סיסמה"
     messages_smsgateway_signing_key: "מפתח חתימת Webhook"
+    messages_smsgateway_phone: "טלפון"
+    messages_smsgateway_phone_last_seen: "הטלפון נראה לאחרונה {{when}}"
+    messages_smsgateway_phone_waiting: "הודעות SMS שממתינות לטלפון: {{count}}"
+    messages_smsgateway_phone_stale: "הטלפון לא התחבר מזה יותר מחמש דקות. פתחו בו את אפליקציית SMS Gateway או הפעילו מחדש את הטלפון, ובדקו ש-Settings > Ping מופעל."
+    messages_smsgateway_phone_unreachable: "לא ניתן היה להתחבר לשרת השער: {{error}}"
+    messages_smsgateway_phone_failed: "הטלפון לא הצליח לשלוח את ההודעה: {{reason}}"
     messages_provider_smsgateway_info: "שולח ומקבל SMS דרך טלפון אנדרואיד עם אפליקציית SMS Gateway מול השרת שלנו, ללא עלות להודעה."
     messages_email_outgoing: "שליחת דוא\"ל"
     messages_email_mode: Sending method
@@ -762,6 +768,7 @@ he:
     messages_status_failed: Failed
     messages_status_queued: Queued
     messages_status_received: Received
+    messages_status_delivered: "נמסרה"
     customer_messages: Messages
     send_message: Send
     select_one: Select One

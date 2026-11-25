@@ -703,6 +703,12 @@ ru:
     messages_smsgateway_login: "Имя пользователя"
     messages_smsgateway_password: "Пароль"
     messages_smsgateway_signing_key: "Ключ подписи вебхуков"
+    messages_smsgateway_phone: "Телефон"
+    messages_smsgateway_phone_last_seen: "Телефон был на связи {{when}}"
+    messages_smsgateway_phone_waiting: "Сообщений ждёт телефон: {{count}}"
+    messages_smsgateway_phone_stale: "Телефон не выходил на связь более пяти минут. Откройте на нём приложение SMS Gateway или перезагрузите телефон и проверьте, что Settings > Ping включён."
+    messages_smsgateway_phone_unreachable: "Не удалось связаться с сервером шлюза: {{error}}"
+    messages_smsgateway_phone_failed: "Телефон не смог отправить: {{reason}}"
     messages_provider_smsgateway_info: "Отправляет и принимает SMS через Android-телефон с приложением SMS Gateway и собственным сервером, без платы за сообщение."
     messages_email_outgoing: "Отправка писем"
     messages_email_mode: Sending method
@@ -762,6 +768,7 @@ ru:
     messages_status_failed: Failed
     messages_status_queued: Queued
     messages_status_received: Received
+    messages_status_delivered: "Доставлено"
     customer_messages: Messages
     send_message: Send
     select_one: Select One

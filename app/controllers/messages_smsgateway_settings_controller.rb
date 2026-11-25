@@ -8,10 +8,18 @@ class MessagesSmsgatewaySettingsController < ApplicationController
     messages_smsgateway_signing_key messages_smsgateway_default_country_only
   ].freeze
 
+  # GET /messages_smsgateway_settings: the form, with the phone's check-in and
+  # waiting texts while the gateway is active.
+  def index
+    backend_page_vars(page_title: helpers.lang("messages"), active_menu: "messages")
+    html_vars(inbound_url: inbound_url, phone_status: channel.enabled? ? Messaging::SmsGateway.phone_status : nil)
+    render :index
+  end
+
   # POST /messages_smsgateway_settings/save. Activating (either switch) first
-  # validates the credentials against the server; turning incoming on registers
-  # the webhook exactly once (stale duplicates removed), turning it off
-  # deregisters.
+  # validates the credentials against the server. Active registers the phone's
+  # delivery and failure reports, plus replies when incoming is on, exactly once
+  # each (stale duplicates removed); inactive deregisters everything of ours.
   def save
     require_system_settings_edit!
     merged = merged_settings
@@ -29,9 +37,10 @@ class MessagesSmsgatewaySettingsController < ApplicationController
     switch = default_switch_value
     apply_default_switch(switch) if switch
 
-    if merged["messages_smsgateway_incoming"] == "1" && active
+    if active
       begin
-        Messaging::SmsGateway.ensure_webhook(inbound_url)
+        Messaging::SmsGateway.ensure_webhooks(inbound_url,
+                                              Messaging::SmsGateway.webhook_events(incoming: merged["messages_smsgateway_incoming"] == "1"))
       rescue StandardError => e
         raise ArgumentError, "#{helpers.lang('messages_smsgateway_invalid')} #{e.message}"
       end

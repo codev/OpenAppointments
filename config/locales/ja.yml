@@ -703,6 +703,12 @@ ja:
     messages_smsgateway_login: "ユーザー名"
     messages_smsgateway_password: "パスワード"
     messages_smsgateway_signing_key: "Webhook署名キー"
+    messages_smsgateway_phone: "電話"
+    messages_smsgateway_phone_last_seen: "電話の最終確認 {{when}}"
+    messages_smsgateway_phone_waiting: "電話の受信待ちのSMS: {{count}}"
+    messages_smsgateway_phone_stale: "電話が5分以上接続していません。電話でSMS Gatewayアプリを開くか電話を再起動し、Settings > Pingがオンになっているか確認してください。"
+    messages_smsgateway_phone_unreachable: "ゲートウェイサーバーに接続できませんでした: {{error}}"
+    messages_smsgateway_phone_failed: "電話から送信できませんでした: {{reason}}"
     messages_provider_smsgateway_info: "SMS Gatewayアプリを実行するAndroid端末と自前のサーバーでSMSを送受信します。メッセージごとの費用はかかりません。"
     messages_email_outgoing: "メール送信"
     messages_email_mode: Sending method
@@ -762,6 +768,7 @@ ja:
     messages_status_failed: Failed
     messages_status_queued: Queued
     messages_status_received: Received
+    messages_status_delivered: "配信済み"
     customer_messages: Messages
     send_message: Send
     select_one: Select One

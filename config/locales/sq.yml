@@ -703,6 +703,12 @@ sq:
     messages_smsgateway_login: "Emri i perdoruesit"
     messages_smsgateway_password: "Fjalekalimi"
     messages_smsgateway_signing_key: "Celesi i nenshkrimit te webhook-ut"
+    messages_smsgateway_phone: "Telefoni"
+    messages_smsgateway_phone_last_seen: "Telefoni u pa për herë të fundit {{when}}"
+    messages_smsgateway_phone_waiting: "Mesazhe që presin telefonin: {{count}}"
+    messages_smsgateway_phone_stale: "Telefoni nuk është lidhur për më shumë se pesë minuta. Hapni aplikacionin SMS Gateway në të ose rinisni telefonin dhe kontrolloni që Settings > Ping është i aktivizuar."
+    messages_smsgateway_phone_unreachable: "Serveri i portës nuk u arrit: {{error}}"
+    messages_smsgateway_phone_failed: "Telefoni nuk mundi ta dërgonte: {{reason}}"
     messages_provider_smsgateway_info: "Dergon dhe merr SMS permes nje telefoni Android me aplikacionin SMS Gateway ne serverin tone, pa kosto per mesazh."
     messages_email_outgoing: "Dërgo email"
     messages_email_mode: Sending method
@@ -762,6 +768,7 @@ sq:
     messages_status_failed: Failed
     messages_status_queued: Queued
     messages_status_received: Received
+    messages_status_delivered: "Dorëzuar"
     customer_messages: Messages
     send_message: Send
     select_one: Select One

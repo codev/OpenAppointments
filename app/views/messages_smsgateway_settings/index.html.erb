@@ -40,6 +40,8 @@
                                 </ol>
                             </div>
 
+                            <%= render "messages_smsgateway_settings/phone_status", status: vars(:phone_status) if vars(:phone_status) %>
+
                             <div class="form-check form-switch mb-3">
                                 <%= setting_switch "messages_smsgateway_enabled", id: "smsgateway-enabled" %>
                                 <label class="form-check-label" for="smsgateway-enabled">

@@ -10,22 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_11_24_110000) do
-  create_table "activity_events", force: :cascade do |t|
-    t.string "actor", null: false
-    t.integer "appointment_id"
-    t.datetime "created_at", null: false
-    t.integer "customer_id"
-    t.text "details"
-    t.string "kind", null: false
-    t.integer "message_id"
-    t.text "summary", null: false
-    t.datetime "updated_at", null: false
-    t.integer "user_id"
-    t.index ["created_at"], name: "index_activity_events_on_created_at"
-    t.index ["kind"], name: "index_activity_events_on_kind"
-  end
-
+ActiveRecord::Schema[8.1].define(version: 2026_11_25_170000) do
   create_table "action_mailbox_inbound_emails", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.string "message_checksum", null: false
@@ -61,6 +46,21 @@ ActiveRecord::Schema[8.1].define(version: 2026_11_24_110000) do
     t.bigint "blob_id", null: false
     t.string "variation_digest", null: false
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
+  end
+
+  create_table "activity_events", force: :cascade do |t|
+    t.string "actor", null: false
+    t.integer "appointment_id"
+    t.datetime "created_at", null: false
+    t.integer "customer_id"
+    t.text "details"
+    t.string "kind", null: false
+    t.integer "message_id"
+    t.text "summary", null: false
+    t.datetime "updated_at", null: false
+    t.integer "user_id"
+    t.index ["created_at"], name: "index_activity_events_on_created_at"
+    t.index ["kind"], name: "index_activity_events_on_kind"
   end
 
   create_table "appointment_series", force: :cascade do |t|
@@ -174,6 +174,8 @@ ActiveRecord::Schema[8.1].define(version: 2026_11_24_110000) do
     t.string "subject"
     t.string "to_address"
     t.datetime "updated_at", null: false
+    t.string "provider_message_id"
+    t.index ["channel", "provider_message_id"], name: "index_messages_on_channel_and_provider_message_id"
     t.index ["created_at"], name: "index_messages_on_created_at"
     t.index ["customer_id"], name: "index_messages_on_customer_id"
     t.index ["direction", "read_at"], name: "index_messages_on_direction_and_read_at"

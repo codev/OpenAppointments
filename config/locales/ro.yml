@@ -703,6 +703,12 @@ ro:
     messages_smsgateway_login: "Nume utilizator"
     messages_smsgateway_password: "Parola"
     messages_smsgateway_signing_key: "Cheia de semnare a webhookurilor"
+    messages_smsgateway_phone: "Telefon"
+    messages_smsgateway_phone_last_seen: "Telefon văzut ultima dată {{when}}"
+    messages_smsgateway_phone_waiting: "Mesaje în așteptarea telefonului: {{count}}"
+    messages_smsgateway_phone_stale: "Telefonul nu s-a conectat de peste cinci minute. Deschideți aplicația SMS Gateway pe el sau reporniți telefonul și verificați că Settings > Ping este activat."
+    messages_smsgateway_phone_unreachable: "Nu s-a putut contacta serverul gateway: {{error}}"
+    messages_smsgateway_phone_failed: "Telefonul nu a putut-o trimite: {{reason}}"
     messages_provider_smsgateway_info: "Trimite si primeste SMS printr-un telefon Android cu aplicatia SMS Gateway pe serverul nostru, fara cost pe mesaj."
     messages_email_outgoing: "Trimite e-mail"
     messages_email_mode: Sending method
@@ -762,6 +768,7 @@ ro:
     messages_status_failed: Failed
     messages_status_queued: Queued
     messages_status_received: Received
+    messages_status_delivered: "Livrat"
     customer_messages: Messages
     send_message: Send
     select_one: Select One

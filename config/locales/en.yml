@@ -735,6 +735,12 @@ en:
     messages_smsgateway_login: "Username"
     messages_smsgateway_password: "Password"
     messages_smsgateway_signing_key: "Webhook Signing Key"
+    messages_smsgateway_phone: Phone
+    messages_smsgateway_phone_last_seen: "Phone last seen {{when}}"
+    messages_smsgateway_phone_waiting: "Texts waiting for the phone: {{count}}"
+    messages_smsgateway_phone_stale: "The phone has not checked in for over five minutes. Open the SMS Gateway app on it or restart the phone, and check Settings > Ping is on."
+    messages_smsgateway_phone_unreachable: "Could not reach the gateway server: {{error}}"
+    messages_smsgateway_phone_failed: "Phone could not send it: {{reason}}"
     messages_provider_smsgateway_info: "Sends and receives SMS through an Android phone running the SMS Gateway app against our own server, no per-message costs."
     messages_email_outgoing: Send email
     messages_email_mode: Sending method
@@ -802,6 +808,7 @@ en:
     messages_status_failed: Failed
     messages_status_queued: Queued
     messages_status_received: Received
+    messages_status_delivered: Delivered
     customer_messages: Messages
     send_message: Send
     do_not_contact_hint: No booking confirmations, changes or reminders are sent to this customer

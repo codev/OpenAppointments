@@ -703,6 +703,12 @@ et:
     messages_smsgateway_login: "Kasutajanimi"
     messages_smsgateway_password: "Parool"
     messages_smsgateway_signing_key: "Webhooki allkirjavõti"
+    messages_smsgateway_phone: "Telefon"
+    messages_smsgateway_phone_last_seen: "Telefon viimati nähtud {{when}}"
+    messages_smsgateway_phone_waiting: "Telefonile ootavad sõnumid: {{count}}"
+    messages_smsgateway_phone_stale: "Telefon pole üle viie minuti ühendust võtnud. Avage selles rakendus SMS Gateway või taaskäivitage telefon ning kontrollige, et Seaded > Ping on sisse lülitatud."
+    messages_smsgateway_phone_unreachable: "Lüüsi serverit ei õnnestunud kätte saada: {{error}}"
+    messages_smsgateway_phone_failed: "Telefon ei saanud seda saata: {{reason}}"
     messages_provider_smsgateway_info: "Saadab ja võtab vastu SMS-e Android-telefoni kaudu, millel töötab SMS Gateway rakendus meie oma serveriga, sõnumipõhise tasuta."
     messages_email_outgoing: "Saada e-kiri"
     messages_email_mode: Sending method
@@ -762,6 +768,7 @@ et:
     messages_status_failed: Failed
     messages_status_queued: Queued
     messages_status_received: Received
+    messages_status_delivered: "Kohale toimetatud"
     customer_messages: Messages
     send_message: Send
     select_one: Select One

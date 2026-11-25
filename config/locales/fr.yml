@@ -703,6 +703,12 @@ fr:
     messages_smsgateway_login: "Nom d'utilisateur"
     messages_smsgateway_password: "Mot de passe"
     messages_smsgateway_signing_key: "Clé de signature des webhooks"
+    messages_smsgateway_phone: "Téléphone"
+    messages_smsgateway_phone_last_seen: "Téléphone vu pour la dernière fois {{when}}"
+    messages_smsgateway_phone_waiting: "SMS en attente du téléphone : {{count}}"
+    messages_smsgateway_phone_stale: "Le téléphone ne s'est pas manifesté depuis plus de cinq minutes. Ouvrez l'application SMS Gateway dessus ou redémarrez le téléphone, et vérifiez que Settings > Ping est activé."
+    messages_smsgateway_phone_unreachable: "Impossible de joindre le serveur de la passerelle : {{error}}"
+    messages_smsgateway_phone_failed: "Le téléphone n'a pas pu l'envoyer : {{reason}}"
     messages_provider_smsgateway_info: "Envoie et reçoit des SMS via un téléphone Android exécutant l'application SMS Gateway avec notre propre serveur, sans coût par message."
     messages_email_outgoing: "Envoyer des e-mails"
     messages_email_mode: Sending method
@@ -762,6 +768,7 @@ fr:
     messages_status_failed: Failed
     messages_status_queued: Queued
     messages_status_received: Received
+    messages_status_delivered: "Remis"
     customer_messages: Messages
     send_message: Send
     select_one: Select One
