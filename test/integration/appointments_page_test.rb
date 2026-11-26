@@ -308,4 +308,21 @@ class AppointmentsPageTest < ActionDispatch::IntegrationTest
     assert_select "a#next-day[href*='date=2026-07-27']"
     assert_select "a#previous-day[href*='date=2026-07-13']"
   end
+
+  test "a typed team busy time shows its type and carries the type and the other stylists for the popover" do
+    login_admin
+    other = User.create!(name: "Other", email: "other@example.org", role: users(:zane).role)
+    lunch = appointments(:lunch_block)
+    lunch.update!(unavailability_type: unavailability_types(:meeting), notes: "All staff", unavailability_group: "g1")
+    Appointment.create!(provider: other, is_unavailability: true, unavailability_group: "g1", notes: "All staff",
+                        unavailability_type: unavailability_types(:meeting), start_datetime: lunch.start_datetime, end_datetime: lunch.end_datetime)
+    get "/appointments", params: { date: "2026-07-20", providers: [ users(:zane).id ] }
+    entry = css_select("button.day-entry-unavailability[data-event]").first
+    assert_match(/Meeting - All staff/, entry.text)
+    assert_match(/border-left-color: #7cbae8/, entry["style"])
+    event = JSON.parse(entry["data-event"])
+    assert_equal({ "id" => unavailability_types(:meeting).id, "name" => "Meeting", "color" => "#7cbae8" }, event["unavailability_type"])
+    assert_equal "g1", event["unavailability_group"]
+    assert_equal [ "Other" ], event["group_providers"]
+  end
 end

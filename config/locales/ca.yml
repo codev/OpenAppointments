@@ -151,7 +151,7 @@ ca:
     log_out: Sortida
     reload: Recarrega
     appointment: Cita
-    unavailability: No disponible
+    unavailability: "Temps ocupat"
     week: Setmana
     month: Mes
     today: Avui
@@ -168,7 +168,7 @@ ca:
     manage_users_hint: Gestiona els usuaris gestors (administradors, proveïdors, assistents).
     settings_hint: Configura les opcions del sistema i dels usuaris.
     log_out_hint: Surt del sistema.
-    unavailability_periods_hint: Durant els períodes de no disponibilitat el proveïdor no acceptarà noves cites.
+    unavailability_periods_hint: "Durant el temps ocupat no es pot reservar el proveïdor."
     new_appointment_hint: Crea una nova cita i emmagatzema-la a la base de dades.
     reload_appointments_hint: Recarrega el calendari de cites
     appointment_updated: La cita s'ha actualitzat correctament.
@@ -187,9 +187,9 @@ ca:
     delete_appointment_title: Elimina la cita
     write_appointment_removal_reason: 'Escriviu el motiu pel qual elimineu la cita:'
     appointment_saved: La cita s'ha desat correctament.
-    new_unavailability_title: Nou període de no disponibilitat
-    edit_unavailability_title: Edita el període de no disponibilitat
-    unavailability_saved: El període de no disponibilitat s'ha desat correctament.
+    new_unavailability_title: "Nou temps ocupat"
+    edit_unavailability_title: "Edita el temps ocupat"
+    unavailability_saved: "Temps ocupat desat."
     start_date_before_end_error: La data d'inici és posterior de la de fi.
     invalid_duration: Durada no vàlida.
     invalid_email: L'adreça de correu electrònic no és vàlida.
@@ -308,7 +308,7 @@ ca:
     delete_provider: Elimina un proveïdor
     delete_assistant: "Suprimeix l'assistent"
     delete_appointment: Elimina una cita
-    delete_unavailability: Elimina un període de no disponibilitat
+    delete_unavailability: "Suprimeix el temps ocupat"
     delete: Elimina
     unexpected_issues: Problemes inesperats
     unexpected_issues_message: L'operació no s'ha pogut completar.
@@ -324,7 +324,7 @@ ca:
     unexpected_issues_occurred: Hi han hagut alguns problemes.
     service_communication_error: Hi hagut un problema de comunicació amb el servidor, intenteu-ho una altra vegada.
     no_privileges_edit_appointments: No teniu els permissos necessaris per editar les cites.
-    unavailability_updated: El període de temps de no disponibilitat s'ha actualitzat correctament.
+    unavailability_updated: "Temps ocupat actualitzat."
     appointments: Cites
     unexpected_warnings: Errors inesperats
     unexpected_warnings_message: L'operació s'ha completat, però hi ha diversos avisos.
@@ -456,8 +456,18 @@ ca:
     verify_ssl: Verifica l'SSL
     appointment_save: Desa la cita
     appointment_delete: Elimina la cita
-    unavailability_save: Desa la no disponibilitat
-    unavailability_delete: Elimina la no disponibilitat
+    unavailability_save: "Desar temps ocupat"
+    unavailability_delete: "Suprimir temps ocupat"
+    unavailability_type: "Tipus"
+    unavailability_type_none: "Sense tipus"
+    unavailability_types: "Tipus de temps ocupat"
+    unavailability_types_hint: "Les classes de temps ocupat que el personal pot posar al calendari, com reunions, permisos o administració, cadascuna amb el seu color."
+    unavailability_type_saved: "Tipus desat."
+    unavailability_type_deleted: "Tipus eliminat. Els temps ocupats d'aquest tipus es conserven sense tipus."
+    delete_unavailability_type: "Suprimeix el tipus"
+    unavailability_stylists_hint: "Marqueu totes les persones afectades. Es crea una entrada per proveïdor i s'editen juntes."
+    unavailability_also_for: "També per a {{names}}"
+    delete_unavailability_group: "Voleu treure aquest temps ocupat als {{count}} proveïdors?"
     customer_save: Desa el client
     customer_delete: Elimina el client
     service_save: Desa el servei
@@ -529,6 +539,8 @@ ca:
     no_breaks: Sense pauses
     service_categories: Categories de serveis
     service_category: Categoria de servei
+    category_services: "Serveis d'aquesta categoria"
+    category_no_services: "Encara no hi ha serveis en aquesta categoria."
     blocked_period_saved: El Període bloquejat s'ha desat correctament.
     blocked_period_deleted: El Període bloquejat s'ha eliminat correctament.
     delete_blocked_period: Elimina el Període bloquejat
@@ -545,6 +557,8 @@ ca:
     delete_webhook: Elimina el Webhook
     contact_info: Informació de contacte
     hide_from_public: Amaga del públic
+    bookable_by_public: "Reservable pel públic"
+    bookable_hint: "Desmarqueu-ho per mostrar el servei a la pàgina de reserves només amb la descripció. Els clients no el poden reservar en línia; indiqueu a la descripció com concertar-lo."
     matomo_analytics_site_id: ID de lloc de Matomo Analytics
     matomo_analytics_site_id_hint: Estableix l'ID de lloc que seguirà Matomo (el lloc per defecte té l'ID "1").
     default_timezone: Zona horària per defecte
@@ -1068,8 +1082,8 @@ ca:
     activity_appointment_changed: "Modificada"
     activity_appointment_cancelled: "Cancel·lada"
     activity_appointment_deleted: "Eliminada"
-    activity_unavailability_saved: "No disponibilitat afegida"
-    activity_unavailability_deleted: "No disponibilitat eliminada"
+    activity_unavailability_saved: "Temps ocupat afegit"
+    activity_unavailability_deleted: "Temps ocupat eliminat"
     activity_message_sent: "Missatge enviat"
     activity_message_failed: "Missatge fallit"
     activity_message_received: "Missatge rebut"
@@ -1080,6 +1094,7 @@ ca:
     activity_actor_system: "Sistema"
     activity_actor_import: "Importació"
     activity_appointment_summary: "{{service}} per a {{customer}} amb {{provider}}, {{when}}"
+    activity_unavailability_summary: "{{type}}, {{provider}}, {{when}}"
     activity_status_summary: "Estat {{status}}"
     activity_reason_summary: "Motiu: {{reason}}"
     activity_message_summary: "{{notification}} a {{audience}} per {{channel}}, {{address}}"
@@ -1087,5 +1102,8 @@ ca:
     activity_waitlist_summary: "{{customer}} per a {{service}} amb {{provider}}"
     free: "Lliure"
     free_hint: "Franges lliures per a cites dins del període de reserva, dia a dia i proveïdor a proveïdor."
-    free_window: "Lliure per a cites del {{from}} al {{to}}"
     free_empty: "No hi ha res lliure per a cites dins del període de reserva."
+    free_from: "Des de"
+    free_to: "Fins a"
+    free_reset_hint: "Torna al període de reserva"
+    print_free_title: "Lliure per a cites"

@@ -151,7 +151,7 @@ zh:
     log_out: 注销
     reload: 刷新
     appointment: 预约
-    unavailability: 不可用
+    unavailability: "忙碌时间"
     week: 周
     month: 月
     today: 今天
@@ -168,7 +168,7 @@ zh:
     manage_users_hint: 管理后台用户 (管理员, 服务人员, 助理).
     settings_hint: 配置系统和用户.
     log_out_hint: 注销.
-    unavailability_periods_hint: 不可预约时间短内，服务人员将不能接受预约.
+    unavailability_periods_hint: "忙碌时间内无法预约该服务人员。"
     new_appointment_hint: 在数据库中建立新的预约.
     reload_appointments_hint: 刷新日历.
     appointment_updated: 预约成功更新.
@@ -187,9 +187,9 @@ zh:
     delete_appointment_title: 删除预约
     write_appointment_removal_reason: '请花一分钟告诉我们删除预约的原因:'
     appointment_saved: 预约成功保存.
-    new_unavailability_title: 新的不可预约时间段
-    edit_unavailability_title: 编辑不可预定时间段
-    unavailability_saved: 不可预定时间段保存成功.
+    new_unavailability_title: "新建忙碌时间"
+    edit_unavailability_title: "编辑忙碌时间"
+    unavailability_saved: "忙碌时间已保存。"
     start_date_before_end_error: 开始日期数值晚于结束日期.
     invalid_duration: 无效的持续时间。
     invalid_email: 无效电子邮箱地址.
@@ -308,7 +308,7 @@ zh:
     delete_provider: 删除服务人员
     delete_assistant: "删除助理"
     delete_appointment: 删除预约
-    delete_unavailability: 删除不可用时间段
+    delete_unavailability: "删除忙碌时间"
     delete: 删除
     unexpected_issues: 意外错误
     unexpected_issues_message: 操作无法完成。
@@ -324,7 +324,7 @@ zh:
     unexpected_issues_occurred: 出现异常出错.
     service_communication_error: 服务器发生通讯错误，请重新再试.
     no_privileges_edit_appointments: 您没有权限去更改预约.
-    unavailability_updated: 不可用的时间段更新完毕.
+    unavailability_updated: "忙碌时间已更新。"
     appointments: 预约
     unexpected_warnings: 异常的警告
     unexpected_warnings_message: 操作完成，但是有警告提示.
@@ -456,8 +456,18 @@ zh:
     verify_ssl: 验证 SSL
     appointment_save: 保存预约
     appointment_delete: 删除预约
-    unavailability_save: 保存不可用时间段
-    unavailability_delete: 删除不可用时间段
+    unavailability_save: "忙碌时间保存"
+    unavailability_delete: "忙碌时间删除"
+    unavailability_type: "类型"
+    unavailability_type_none: "无类型"
+    unavailability_types: "忙碌时间类型"
+    unavailability_types_hint: "员工可放入日历的忙碌时间种类，如会议、休假或行政事务，每种有自己的颜色。"
+    unavailability_type_saved: "类型已保存。"
+    unavailability_type_deleted: "类型已移除。该类型的忙碌时间将保留且不带类型。"
+    delete_unavailability_type: "删除类型"
+    unavailability_stylists_hint: "勾选此忙碌时间涉及的所有人。每位服务人员生成一条记录，并一起编辑。"
+    unavailability_also_for: "同时适用于 {{names}}"
+    delete_unavailability_group: "是否为全部 {{count}} 位服务人员移除此忙碌时间？"
     customer_save: 保存客户
     customer_delete: 删除客户
     service_save: 保存服务
@@ -529,6 +539,8 @@ zh:
     no_breaks: 无休息
     service_categories: 服务类别
     service_category: 服务类别
+    category_services: "此类别中的服务项目"
+    category_no_services: "此类别暂无服务项目。"
     blocked_period_saved: 已成功保存封锁时段。
     blocked_period_deleted: 已成功删除封锁时段。
     delete_blocked_period: 删除封锁时段
@@ -545,6 +557,8 @@ zh:
     delete_webhook: 删除 Webhook
     contact_info: 联系信息
     hide_from_public: 对公众隐藏
+    bookable_by_public: "开放公众预约"
+    bookable_hint: "取消勾选后，服务项目会显示在预约页面上，但仅显示说明。客户无法在线预约；请在说明中写明如何安排。"
     matomo_analytics_site_id: Matomo 分析站点 ID
     matomo_analytics_site_id_hint: 设置将由 Matomo 跟踪的站点 ID（默认站点 ID 为 "1"）。
     default_timezone: 默认时区
@@ -1068,8 +1082,8 @@ zh:
     activity_appointment_changed: "已更改"
     activity_appointment_cancelled: "已取消"
     activity_appointment_deleted: "已删除"
-    activity_unavailability_saved: "已添加不可用时段"
-    activity_unavailability_deleted: "已移除不可用时段"
+    activity_unavailability_saved: "已添加忙碌时间"
+    activity_unavailability_deleted: "已移除忙碌时间"
     activity_message_sent: "消息已发送"
     activity_message_failed: "消息发送失败"
     activity_message_received: "已收到消息"
@@ -1080,6 +1094,7 @@ zh:
     activity_actor_system: "系统"
     activity_actor_import: "导入"
     activity_appointment_summary: "{{provider}} 为 {{customer}} 提供 {{service}}，{{when}}"
+    activity_unavailability_summary: "{{type}}，{{provider}}，{{when}}"
     activity_status_summary: "状态 {{status}}"
     activity_reason_summary: "原因：{{reason}}"
     activity_message_summary: "通过 {{channel}} 向 {{audience}} 发送 {{notification}}，{{address}}"
@@ -1087,5 +1102,8 @@ zh:
     activity_waitlist_summary: "{{customer}} 候补 {{service}}，{{provider}}"
     free: "空闲"
     free_hint: "预约时段内可预约的空闲时间，按日期和服务人员列出。"
-    free_window: "{{from}} 至 {{to}} 可预约的空闲时间"
     free_empty: "预约时段内没有可预约的空闲时间。"
+    free_from: "从"
+    free_to: "至"
+    free_reset_hint: "返回预约时段"
+    print_free_title: "可预约的空闲时间"

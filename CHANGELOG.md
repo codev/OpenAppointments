@@ -3,6 +3,22 @@
 The about page lists these notes; every release needs a section here matching
 CloudronManifest.json.
 
+## 3.8.0
+
+- Busy time: Unavailability is now called Busy time and has types with their own colours (Meeting, Time off, Admin, Travel to start; add your own under Business settings > Busy Time Types). One busy time can cover several stylists at once, with a row each that are edited and deleted together; the calendar, List, Free and the calendar feed show the type. Backups keep busy times, and a rake task turns a service that was used for meetings into typed busy time.
+
+- Free page: Reset sits at the left and is faded while the booking window is shown, the dates sit in the centre, and the line repeating the dates has gone.
+
+- Services: a "Bookable By Public" option under Hide From Public, on for every service. Turned off, the service still appears on the booking page with its description, but Next stays on it and clients cannot book it online; staff book it in the backend as before.
+
+- Service categories: a category's panel lists its services, each a link to the service's own page to view or edit it.
+
+- Free page: From and To dates choose the range shown, reloading the free slots in place; a Reset button lights up when the dates differ from the booking window and puts it back.
+
+- List and Free print as a plain black and white day list: the header, filters and buttons are left out, each date and stylist block stays together on the page.
+
+- Services: the description is a rich text field (headings, bold, lists, links), shown with its formatting on the booking page. Descriptions written before keep their line breaks.
+
 ## 3.7.1
 
 - The Phone box on the SMS Gateway settings page shows when the phone last checked in; in 3.7.0 it showed a "Could not reach the gateway server" error instead.

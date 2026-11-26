@@ -151,7 +151,7 @@ es:
     log_out: Cerrar sesión
     reload: Recargar
     appointment: Cita
-    unavailability: No disponible
+    unavailability: "Tiempo ocupado"
     week: Semana
     month: Mes
     today: Hoy
@@ -168,7 +168,7 @@ es:
     manage_users_hint: Gestionar usuarios internos (administradores, proveedores, asistentes).
     settings_hint: Establecer configuración de sistema y usuario.
     log_out_hint: Cerrar sesión del sistema.
-    unavailability_periods_hint: El proveedor no podrá aceptar nuevas citas cuando se encuentre como No disponible.
+    unavailability_periods_hint: "Durante el tiempo ocupado no se puede reservar al proveedor."
     new_appointment_hint: Crear una nueva cita y guardarla en la base de datos.
     reload_appointments_hint: Cargar nuevamente citas del calendario.
     appointment_updated: Cita actualizada exitosamente
@@ -187,9 +187,9 @@ es:
     delete_appointment_title: Eliminar cita
     write_appointment_removal_reason: 'Por favor, ingrese una razón para borrar la cita:'
     appointment_saved: Cita guardado exitosamente
-    new_unavailability_title: Nuevo periodo No disponible
-    edit_unavailability_title: Editar periodo No disponible
-    unavailability_saved: Periodo No disponible guardado exitosamente
+    new_unavailability_title: "Nuevo tiempo ocupado"
+    edit_unavailability_title: "Editar tiempo ocupado"
+    unavailability_saved: "Tiempo ocupado guardado."
     start_date_before_end_error: La fecha del inicio es posterior a la fecha del final
     invalid_duration: Duración inválida.
     invalid_email: Dirección de E-mail inválida
@@ -308,7 +308,7 @@ es:
     delete_provider: Eliminar Proveedor
     delete_assistant: "Eliminar asistente"
     delete_appointment: Eliminar cita
-    delete_unavailability: Eliminar periodo No disponible
+    delete_unavailability: "Eliminar tiempo ocupado"
     delete: Eliminar
     unexpected_issues: Problema inesperado
     unexpected_issues_message: La operación no pudo completarse.
@@ -324,7 +324,7 @@ es:
     unexpected_issues_occurred: Se encontraron problemas inesperados.
     service_communication_error: Ha ocurrido un error de comunicación con el servidor, por favor, inténtelo nuevamente.
     no_privileges_edit_appointments: Usted no posee los permisos necesarios para editar citas.
-    unavailability_updated: Periodo No disponible actualizado exitosamente
+    unavailability_updated: "Tiempo ocupado actualizado."
     appointments: Citas
     unexpected_warnings: Advertencia inesperada
     unexpected_warnings_message: Se ha completado la operación, pero surgieron algunas advertencias.
@@ -456,8 +456,18 @@ es:
     verify_ssl: Verificar SSL
     appointment_save: Guardar cita
     appointment_delete: Eliminar cita
-    unavailability_save: Guardar indisponibilidad
-    unavailability_delete: Eliminar indisponibilidad
+    unavailability_save: "Guardar tiempo ocupado"
+    unavailability_delete: "Eliminar tiempo ocupado"
+    unavailability_type: "Tipo"
+    unavailability_type_none: "Sin tipo"
+    unavailability_types: "Tipos de tiempo ocupado"
+    unavailability_types_hint: "Los tipos de tiempo ocupado que el personal puede poner en el calendario, como reuniones, permisos o administración, cada uno con su color."
+    unavailability_type_saved: "Tipo guardado."
+    unavailability_type_deleted: "Tipo eliminado. Los tiempos ocupados de ese tipo se conservan sin tipo."
+    delete_unavailability_type: "Eliminar tipo"
+    unavailability_stylists_hint: "Marque a todas las personas afectadas. Se crea una entrada por proveedor y se editan juntas."
+    unavailability_also_for: "También para {{names}}"
+    delete_unavailability_group: "¿Quitar este tiempo ocupado para los {{count}} proveedores?"
     customer_save: Guardar cliente
     customer_delete: Eliminar cliente
     service_save: Guardar servicio
@@ -529,6 +539,8 @@ es:
     no_breaks: Sin descansos
     service_categories: Categorías de servicios
     service_category: Categoría de servicio
+    category_services: "Servicios de esta categoría"
+    category_no_services: "Aún no hay servicios en esta categoría."
     blocked_period_saved: El período bloqueado se guardó satisfactoriamente.
     blocked_period_deleted: El período bloqueado se eliminó correctamente.
     delete_blocked_period: Elimina el período bloqueado
@@ -545,6 +557,8 @@ es:
     delete_webhook: Eliminar Webhook
     contact_info: Información de contacto
     hide_from_public: Ocultar del Público
+    bookable_by_public: "Reservable por el público"
+    bookable_hint: "Desmarque para mostrar el servicio en la página de reservas solo con su descripción. Los clientes no pueden reservarlo en línea; indique en la descripción cómo concertarlo."
     matomo_analytics_site_id: ID de Sitio de Matomo Analytics
     matomo_analytics_site_id_hint: Establezca el ID de sitio que será rastreado por Matomo (el sitio predeterminado tiene el ID "1").
     default_timezone: Zona Horaria Predeterminada
@@ -1068,8 +1082,8 @@ es:
     activity_appointment_changed: "Modificada"
     activity_appointment_cancelled: "Cancelada"
     activity_appointment_deleted: "Eliminada"
-    activity_unavailability_saved: "Indisponibilidad añadida"
-    activity_unavailability_deleted: "Indisponibilidad eliminada"
+    activity_unavailability_saved: "Tiempo ocupado añadido"
+    activity_unavailability_deleted: "Tiempo ocupado eliminado"
     activity_message_sent: "Mensaje enviado"
     activity_message_failed: "Mensaje fallido"
     activity_message_received: "Mensaje recibido"
@@ -1080,6 +1094,7 @@ es:
     activity_actor_system: "Sistema"
     activity_actor_import: "Importación"
     activity_appointment_summary: "{{service}} para {{customer}} con {{provider}}, {{when}}"
+    activity_unavailability_summary: "{{type}}, {{provider}}, {{when}}"
     activity_status_summary: "Estado {{status}}"
     activity_reason_summary: "Motivo: {{reason}}"
     activity_message_summary: "{{notification}} a {{audience}} por {{channel}}, {{address}}"
@@ -1087,5 +1102,8 @@ es:
     activity_waitlist_summary: "{{customer}} para {{service}} con {{provider}}"
     free: "Libre"
     free_hint: "Huecos libres para citas en el periodo de reservas, día a día y proveedor a proveedor."
-    free_window: "Libre para citas del {{from}} al {{to}}"
     free_empty: "No hay nada libre para citas en el periodo de reservas."
+    free_from: "Desde"
+    free_to: "Hasta"
+    free_reset_hint: "Volver al periodo de reservas"
+    print_free_title: "Libre para citas"

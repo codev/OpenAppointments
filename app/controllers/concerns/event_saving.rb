@@ -13,7 +13,7 @@ module EventSaving
   APPOINTMENT_FIELDS = BookingController::ALLOWED_APPOINTMENT_FIELDS.freeze
   # The dialog's Payment fields, backend only.
   PAYMENT_FIELDS = %w[payment_method paid].freeze
-  UNAVAILABILITY_FIELDS = %w[id start_datetime end_datetime location notes id_users_provider].freeze
+  UNAVAILABILITY_FIELDS = %w[id start_datetime end_datetime location notes id_users_provider unavailability_type_id].freeze
 
   private
 
@@ -128,13 +128,66 @@ module EventSaving
     ensure_event_permission!(unavailability_data["id_users_provider"])
 
     record = unavailability_data["id"].present? ? Appointment.find(unavailability_data["id"]) : Appointment.new
-    record.assign_attributes(unavailability_data.slice("start_datetime", "end_datetime", "location", "notes", "id_users_provider"))
+    record.assign_attributes(unavailability_data.slice(*UNAVAILABILITY_FIELDS - [ "id" ]))
     record.is_unavailability = true
     record.book_datetime ||= Time.now
     record.save!
 
     Webhooks.trigger(Webhooks::UNAVAILABILITY_SAVE, record)
     record
+  end
+
+  # One busy time for several providers: a row per ticked provider sharing a
+  # group, all carrying the same times, type, location and notes. On an edit the
+  # group's rows for unticked providers go, but only among offered_ids (the
+  # providers the form listed), so rows the user could not see are left alone.
+  def store_unavailability_group(data, provider_ids, offered_ids)
+    raise ArgumentError, "Invalid unavailability data." if data.blank? || provider_ids.blank?
+
+    unless can?(data["id"].present? ? :edit : :add, :appointments)
+      raise ArgumentError, "You do not have the required permissions for this task."
+    end
+    provider_ids.each { |provider_id| ensure_event_permission!(provider_id) }
+
+    rows = data["id"].present? ? unavailability_group_rows(Appointment.unavailabilities.find(data["id"])) : []
+    group = rows.first&.unavailability_group || SecureRandom.uuid
+    fields = data.slice(*UNAVAILABILITY_FIELDS - %w[id id_users_provider])
+    saved = []
+    removed = rows.reject { |row| provider_ids.include?(row.id_users_provider) || !offered_ids.include?(row.id_users_provider) }
+    Appointment.transaction do
+      provider_ids.each do |provider_id|
+        record = rows.find { |row| row.id_users_provider == provider_id } ||
+                 Appointment.new(id_users_provider: provider_id, is_unavailability: true)
+        record.assign_attributes(fields)
+        record.unavailability_group = group
+        record.book_datetime ||= Time.now
+        record.save!
+        saved << record
+      end
+      removed.each(&:destroy!)
+    end
+    saved.each { |record| Webhooks.trigger(Webhooks::UNAVAILABILITY_SAVE, record) }
+    removed.each { |row| Webhooks.trigger(Webhooks::UNAVAILABILITY_DELETE, row) }
+    saved
+  end
+
+  # Every row of a busy time's group, the row itself when it has none.
+  def unavailability_group_rows(record)
+    return [ record ] if record.unavailability_group.blank?
+
+    Appointment.unavailabilities.where(unavailability_group: record.unavailability_group).order(:id).to_a
+  end
+
+  # Removes the group's rows for the offered providers; a provider on their own
+  # takes only their row out of a team busy time.
+  def remove_unavailability_group(record, offered_ids)
+    raise ArgumentError, "You do not have the required permissions for this task." if cannot?(:delete, :appointments)
+
+    rows = unavailability_group_rows(record).select { |row| offered_ids.include?(row.id_users_provider) }
+    rows = [ record ] if rows.empty?
+    rows.each { |row| ensure_event_permission!(row.id_users_provider) }
+    Appointment.transaction { rows.each(&:destroy!) }
+    rows.each { |row| Webhooks.trigger(Webhooks::UNAVAILABILITY_DELETE, row) }
   end
 
   def remove_unavailability(record)

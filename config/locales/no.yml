@@ -151,7 +151,7 @@
     log_out: Logg ut
     reload: Last Inn På Nytt
     appointment: Avtale
-    unavailability: Utilgjengelighet
+    unavailability: "Opptatt tid"
     week: Uke
     month: Måned
     today: I Dag
@@ -168,7 +168,7 @@
     manage_users_hint: Administrer backend-brukere (administratorer, leverandører, assistenter).
     settings_hint: Angi system- og brukerinnstillinger.
     log_out_hint: Logg ut av systemet.
-    unavailability_periods_hint: I perioder med utilgjengelighet vil leverandøren ikke akseptere nye avtaler.
+    unavailability_periods_hint: "I opptatt tid kan ikke leverandøren bookes."
     new_appointment_hint: Opprett en ny avtale og lagre den i databasen.
     reload_appointments_hint: Last inn avtaler på nytt i kalenderen.
     appointment_updated: Avtale oppdatert.
@@ -187,9 +187,9 @@
     delete_appointment_title: Slett Avtale
     write_appointment_removal_reason: 'Vennligst skriv årsaken til at du sletter avtalen:'
     appointment_saved: Avtale lagret.
-    new_unavailability_title: Ny Utilgjengelighet
-    edit_unavailability_title: Rediger Utilgjengelighet
-    unavailability_saved: Utilgjengelighet lagret.
+    new_unavailability_title: "Ny opptatt tid"
+    edit_unavailability_title: "Rediger opptatt tid"
+    unavailability_saved: "Opptatt tid lagret."
     start_date_before_end_error: Startdatoen er etter sluttdatoen.
     invalid_duration: Ugyldig varighet.
     invalid_email: Ugyldig e-postadresse.
@@ -308,7 +308,7 @@
     delete_provider: Slett Leverandør
     delete_assistant: "Slett assistent"
     delete_appointment: Slett tid
-    delete_unavailability: Slett Utilgjengelighet
+    delete_unavailability: "Slett opptatt tid"
     delete: Slett
     unexpected_issues: Uventede problemer
     unexpected_issues_message: Operasjonen kunne ikke fullføres.
@@ -324,7 +324,7 @@
     unexpected_issues_occurred: Uventede problemer oppstod.
     service_communication_error: En serverkommunikasjonsfeil oppstod, vennligst prøv igjen.
     no_privileges_edit_appointments: Du har ikke nødvendige privilegier for å redigere avtaler.
-    unavailability_updated: Utilgjengelighet oppdatert.
+    unavailability_updated: "Opptatt tid oppdatert."
     appointments: Avtaler
     unexpected_warnings: Uventede advarsler
     unexpected_warnings_message: Operasjonen ble fullført, men noen advarsler dukket opp.
@@ -456,8 +456,18 @@
     verify_ssl: Verifiser SSL
     appointment_save: Lagre avtale
     appointment_delete: Sletting av avtale
-    unavailability_save: Utilgjengelighet Lagre
-    unavailability_delete: Slett utilgjengelighet
+    unavailability_save: "Lagre opptatt tid"
+    unavailability_delete: "Slett opptatt tid"
+    unavailability_type: "Type"
+    unavailability_type_none: "Ingen type"
+    unavailability_types: "Typer opptatt tid"
+    unavailability_types_hint: "Slagene opptatt tid personalet kan legge i kalenderen, som møter, fri eller administrasjon, hver med sin egen farge."
+    unavailability_type_saved: "Type lagret."
+    unavailability_type_deleted: "Type fjernet. Opptatt tid av den typen beholdes uten type."
+    delete_unavailability_type: "Slett type"
+    unavailability_stylists_hint: "Kryss av alle den opptatte tiden gjelder for. Det lages én post per leverandør, og de redigeres sammen."
+    unavailability_also_for: "Også for {{names}}"
+    delete_unavailability_group: "Fjerne denne opptatte tiden for alle {{count}} leverandører?"
     customer_save: Kundelagring
     customer_delete: Kundesletting
     service_save: Tjenestelagring
@@ -529,6 +539,8 @@
     no_breaks: Ingen pauser
     service_categories: Tjenestekategorier
     service_category: Tjenestekategori
+    category_services: "Tjenester i denne kategorien"
+    category_no_services: "Ingen tjenester i denne kategorien ennå."
     blocked_period_saved: Sperret periode lagret vellykket.
     blocked_period_deleted: Sperret periode slettet vellykket.
     delete_blocked_period: Slett sperret periode
@@ -545,6 +557,8 @@
     delete_webhook: Slett webhook
     contact_info: Kontaktinfo
     hide_from_public: Skjul fra offentligheten
+    bookable_by_public: "Kan bookes av offentligheten"
+    bookable_hint: "Fjern haken for å vise tjenesten på bookingsiden kun med beskrivelsen. Kunder kan ikke booke den på nett; skriv i beskrivelsen hvordan de kan avtale det."
     matomo_analytics_site_id: Matomo Analytics Nettsted-ID
     matomo_analytics_site_id_hint: Angi nettsteds-ID-en som skal spores av Matomo (standardnettstedet har ID-en "1").
     default_timezone: Standard tidssone
@@ -1068,8 +1082,8 @@
     activity_appointment_changed: "Endret"
     activity_appointment_cancelled: "Avbestilt"
     activity_appointment_deleted: "Slettet"
-    activity_unavailability_saved: "Utilgjengelighet lagt til"
-    activity_unavailability_deleted: "Utilgjengelighet fjernet"
+    activity_unavailability_saved: "Opptatt tid lagt til"
+    activity_unavailability_deleted: "Opptatt tid fjernet"
     activity_message_sent: "Melding sendt"
     activity_message_failed: "Melding mislyktes"
     activity_message_received: "Melding mottatt"
@@ -1080,6 +1094,7 @@
     activity_actor_system: "System"
     activity_actor_import: "Import"
     activity_appointment_summary: "{{service}} for {{customer}} hos {{provider}}, {{when}}"
+    activity_unavailability_summary: "{{type}}, {{provider}}, {{when}}"
     activity_status_summary: "Status {{status}}"
     activity_reason_summary: "Årsak: {{reason}}"
     activity_message_summary: "{{notification}} til {{audience}} via {{channel}}, {{address}}"
@@ -1087,5 +1102,8 @@
     activity_waitlist_summary: "{{customer}} for {{service}} hos {{provider}}"
     free: "Ledig"
     free_hint: "Ledige tider for avtaler i bestillingsperioden, dato for dato og leverandør for leverandør."
-    free_window: "Ledig for avtaler fra {{from}} til {{to}}"
     free_empty: "Ingenting er ledig for avtaler i bestillingsperioden."
+    free_from: "Fra"
+    free_to: "Til"
+    free_reset_hint: "Tilbake til bestillingsperioden"
+    print_free_title: "Ledig for avtaler"

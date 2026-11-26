@@ -160,8 +160,6 @@ class OdsExtract
     lo = @today - @days_back
     hi = @today + @days_forward
     rows("Appointments").filter_map do |row|
-      next if row["is_unavailability"] == "1"
-
       start_at = parse_time(row["start_datetime"])
       next unless start_at && start_at.to_date.between?(lo, hi)
 
@@ -169,7 +167,9 @@ class OdsExtract
         start: start_at, end: parse_time(row["end_datetime"]) || start_at + 30 * 60,
         note: row["notes"], status: row["status"],
         payment_method: row["payment_method"].presence, payment_reference: row["payment_reference"].presence,
-        paid_at: parse_time(row["paid_at"]) }
+        paid_at: parse_time(row["paid_at"]),
+        unavailability: row["is_unavailability"] == "1",
+        unavailability_type: row["unavailability_type"].presence, unavailability_group: row["unavailability_group"].presence }
     end
   end
 

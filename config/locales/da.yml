@@ -151,7 +151,7 @@ da:
     log_out: Log ud
     reload: Opdater
     appointment: Aftale
-    unavailability: Ikke tilgængelig
+    unavailability: "Optaget tid"
     week: Uge
     month: Måned
     today: I dag
@@ -168,7 +168,7 @@ da:
     manage_users_hint: Administrere den tilbagevende bruger (admin, leverandører, assistenter)
     settings_hint: System- og brugerindstillinger.
     log_out_hint: Log ud af systemet
-    unavailability_periods_hint: I ikke tilgængelig periode kan leverandøren ikke accepertere nye aftaler.
+    unavailability_periods_hint: "I optaget tid kan udbyderen ikke bookes."
     new_appointment_hint: Tilføj en ny aftale ller konto i databasen.
     reload_appointments_hint: Opdater kalender.
     appointment_updated: Tiden er opdateret.
@@ -187,9 +187,9 @@ da:
     delete_appointment_title: Slet aftale
     write_appointment_removal_reason: Være venlig at skrive hvorfor du sletter din aftale
     appointment_saved: Aftalen er gemt
-    new_unavailability_title: Ny ikke tilgængelig periode
-    edit_unavailability_title: Redigere ikke tilgængelig periode
-    unavailability_saved: Ikke tilgængelig periode er gemt.
+    new_unavailability_title: "Ny optaget tid"
+    edit_unavailability_title: "Rediger optaget tid"
+    unavailability_saved: "Optaget tid gemt."
     start_date_before_end_error: Start dato er større end slut dato
     invalid_duration: Ugyldig periode.
     invalid_email: Ugyldig email adresse
@@ -308,7 +308,7 @@ da:
     delete_provider: Slet leverandør
     delete_assistant: "Slet assistent"
     delete_appointment: Slet aftale
-    delete_unavailability: Slet ikke tilgængelig periode
+    delete_unavailability: "Slet optaget tid"
     delete: Slet
     unexpected_issues: Uforklarligt problem
     unexpected_issues_message: Handlingen kunne ikke fuldføres.
@@ -324,7 +324,7 @@ da:
     unexpected_issues_occurred: Uventede problemer opstod.
     service_communication_error: Der skete en fejl i kommunikatinen med serveren. Prøv igen.
     no_privileges_edit_appointments: 'Du har ikke tilladelse til at ændre bestillingen. '
-    unavailability_updated: ikke tilgængelig tids periode er opdateret.
+    unavailability_updated: "Optaget tid opdateret."
     appointments: Aftale
     unexpected_warnings: Uventede advarsler
     unexpected_warnings_message: Betjeningen fuldført, men nogle advarsler dukkede op.
@@ -456,8 +456,18 @@ da:
     verify_ssl: Bekræft SSL
     appointment_save: Gem Aftale
     appointment_delete: Slet Aftale
-    unavailability_save: Gem Utilgængelighed
-    unavailability_delete: Slet Utilgængelighed
+    unavailability_save: "Gem optaget tid"
+    unavailability_delete: "Slet optaget tid"
+    unavailability_type: "Type"
+    unavailability_type_none: "Ingen type"
+    unavailability_types: "Typer af optaget tid"
+    unavailability_types_hint: "De slags optaget tid personalet kan sætte i kalenderen, såsom møder, fri eller administration, hver med sin egen farve."
+    unavailability_type_saved: "Type gemt."
+    unavailability_type_deleted: "Type fjernet. Optaget tid af den type bevares uden type."
+    delete_unavailability_type: "Slet type"
+    unavailability_stylists_hint: "Sæt kryds ved alle, den optagne tid gælder for. Der oprettes én post pr. udbyder, og de redigeres sammen."
+    unavailability_also_for: "Også for {{names}}"
+    delete_unavailability_group: "Fjern denne optagne tid for alle {{count}} udbydere?"
     customer_save: Gem Kunde
     customer_delete: Slet Kunde
     service_save: Gem Service
@@ -529,6 +539,8 @@ da:
     no_breaks: Ingen Pauser
     service_categories: Servicekategorier
     service_category: Servicekategori
+    category_services: "Ydelser i denne kategori"
+    category_no_services: "Der er endnu ingen ydelser i denne kategori."
     blocked_period_saved: Blokeret periode gemt med succes.
     blocked_period_deleted: Blokeret periode slettet med succes.
     delete_blocked_period: Slet Blokeret Periode
@@ -545,6 +557,8 @@ da:
     delete_webhook: Slet Webhook
     contact_info: Kontaktinformation
     hide_from_public: Skjul For Offentligheden
+    bookable_by_public: "Kan bookes af offentligheden"
+    bookable_hint: "Fjern markeringen for kun at vise ydelsen på bookingsiden med dens beskrivelse. Kunder kan ikke booke den online; skriv i beskrivelsen, hvordan den aftales."
     matomo_analytics_site_id: Matomo Analytics Site-ID
     matomo_analytics_site_id_hint: Indstil site ID, som vil blive sporet af Matomo (standard site har ID "1").
     default_timezone: Standard Tidszone
@@ -1068,8 +1082,8 @@ da:
     activity_appointment_changed: "Ændret"
     activity_appointment_cancelled: "Aflyst"
     activity_appointment_deleted: "Slettet"
-    activity_unavailability_saved: "Utilgængelighed tilføjet"
-    activity_unavailability_deleted: "Utilgængelighed fjernet"
+    activity_unavailability_saved: "Optaget tid tilføjet"
+    activity_unavailability_deleted: "Optaget tid fjernet"
     activity_message_sent: "Besked sendt"
     activity_message_failed: "Besked mislykkedes"
     activity_message_received: "Besked modtaget"
@@ -1080,6 +1094,7 @@ da:
     activity_actor_system: "System"
     activity_actor_import: "Import"
     activity_appointment_summary: "{{service}} til {{customer}} hos {{provider}}, {{when}}"
+    activity_unavailability_summary: "{{type}}, {{provider}}, {{when}}"
     activity_status_summary: "Status {{status}}"
     activity_reason_summary: "Årsag: {{reason}}"
     activity_message_summary: "{{notification}} til {{audience}} via {{channel}}, {{address}}"
@@ -1087,5 +1102,8 @@ da:
     activity_waitlist_summary: "{{customer}} til {{service}} hos {{provider}}"
     free: "Ledigt"
     free_hint: "Ledige tider til aftaler i bookingperioden, dag for dag og leverandør for leverandør."
-    free_window: "Ledigt til aftaler fra {{from}} til {{to}}"
     free_empty: "Intet er ledigt til aftaler i bookingperioden."
+    free_from: "Fra"
+    free_to: "Til"
+    free_reset_hint: "Tilbage til bookingperioden"
+    print_free_title: "Ledigt til aftaler"

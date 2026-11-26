@@ -151,7 +151,7 @@ lt:
     log_out: Atsijungti
     reload: Įkelti iš naujo
     appointment: Vizitas
-    unavailability: Užimtas laikas
+    unavailability: "Užimtas laikas"
     week: Savaitė
     month: Mėnuo
     today: Šiandien
@@ -168,7 +168,7 @@ lt:
     manage_users_hint: Tvarkyti sistemos naudotojus (administratorius, paslaugų teikėjus, asistentus).
     settings_hint: Keisti sistemos ir naudotojo nuostatas.
     log_out_hint: Atsijungti nuo sistemos.
-    unavailability_periods_hint: Laiko intervalams, kai paslaugų teikėjas užimtas, naujų vizitų pas jį registruoti neleidžiama.
+    unavailability_periods_hint: "Užimtu laiku pas paslaugų teikėją registruotis negalima."
     new_appointment_hint: Sukurti naują vizitą ir įrašyti jį į duomenų bazę.
     reload_appointments_hint: Iš naujo įkelti kalendoriaus turinį.
     appointment_updated: Vizitas sėkmingai atnaujintas.
@@ -187,9 +187,9 @@ lt:
     delete_appointment_title: Vizito šalinimas
     write_appointment_removal_reason: 'Būsime dėkingi, jei nurodysite, kodėl atšaukiate vizitą:'
     appointment_saved: Vizitas įrašytas.
-    new_unavailability_title: Naujas užimtas laikas
-    edit_unavailability_title: Užimto laiko redagavimas
-    unavailability_saved: Užimtas laikas įrašytas.
+    new_unavailability_title: "Naujas užimtas laikas"
+    edit_unavailability_title: "Redaguoti užimtą laiką"
+    unavailability_saved: "Užimtas laikas išsaugotas."
     start_date_before_end_error: Būsime dėkingi, jei parašysite, kodėl atšaukiate vizitą.
     invalid_duration: Negalima trukmė.
     invalid_email: Netinkamas el. pašto adresas.
@@ -308,7 +308,7 @@ lt:
     delete_provider: Tiekėjo šalinimas
     delete_assistant: "Ištrinti asistentą"
     delete_appointment: Vizito šalinimas
-    delete_unavailability: Užimto laiko šalinimas
+    delete_unavailability: "Ištrinti užimtą laiką"
     delete: Šalinti
     unexpected_issues: Netikėtos problemos
     unexpected_issues_message: Veiksmo nepavyko užbaigti.
@@ -324,7 +324,7 @@ lt:
     unexpected_issues_occurred: Susidurta su netikėtomis problemomis.
     service_communication_error: Įvyko serverio ryšio klaida, bandykite dar kartą.
     no_privileges_edit_appointments: Jūs neturite reikiamų teisių vizitams redaguoti.
-    unavailability_updated: Užimtas laikas atnaujintas.
+    unavailability_updated: "Užimtas laikas atnaujintas."
     appointments: Vizitai
     unexpected_warnings: Netikėti įspėjimai
     unexpected_warnings_message: Operacija baigta, tačiau gauta keletas pranešimų.
@@ -456,8 +456,18 @@ lt:
     verify_ssl: Patikrinti SSL
     appointment_save: Vizitas įrašytas
     appointment_delete: Vizitas pašalintas
-    unavailability_save: Užimtas laikas įrašytas
-    unavailability_delete: Užimtas laikas pašalintas
+    unavailability_save: "Užimto laiko išsaugojimas"
+    unavailability_delete: "Užimto laiko ištrynimas"
+    unavailability_type: "Tipas"
+    unavailability_type_none: "Be tipo"
+    unavailability_types: "Užimto laiko tipai"
+    unavailability_types_hint: "Užimto laiko rūšys, kurias darbuotojai gali įrašyti į kalendorių, pavyzdžiui, susitikimai, atostogos ar administravimas, kiekviena su savo spalva."
+    unavailability_type_saved: "Tipas išsaugotas."
+    unavailability_type_deleted: "Tipas pašalintas. Šio tipo užimti laikai lieka be tipo."
+    delete_unavailability_type: "Ištrinti tipą"
+    unavailability_stylists_hint: "Pažymėkite visus, kuriems skirtas užimtas laikas. Kiekvienam paslaugų teikėjui sukuriamas atskiras įrašas, jie redaguojami kartu."
+    unavailability_also_for: "Taip pat {{names}}"
+    delete_unavailability_group: "Pašalinti šį užimtą laiką visiems {{count}} paslaugų teikėjams?"
     customer_save: Klientas įrašytas
     customer_delete: Klientas pašalintas
     service_save: Paslauga įrašyta
@@ -529,6 +539,8 @@ lt:
     no_breaks: Be pertraukų
     service_categories: Paslaugų kategorijos
     service_category: Paslaugų kategorija
+    category_services: "Šios kategorijos paslaugos"
+    category_no_services: "Šioje kategorijoje paslaugų dar nėra."
     blocked_period_saved: Blokuojamas laikotarpis įrašytas.
     blocked_period_deleted: Blokuojamas laikotarpis pašalintas.
     delete_blocked_period: Blokuojamo laikotarpio šalinimas
@@ -545,6 +557,8 @@ lt:
     delete_webhook: "„Webhook“ šalinimas"
     contact_info: Kontaktiniai duomenys
     hide_from_public: Nerodyti viešai
+    bookable_by_public: "Galima rezervuoti viešai"
+    bookable_hint: "Nuimkite žymėjimą, kad paslauga rezervacijos puslapyje būtų rodoma tik su aprašymu. Klientai negali jos rezervuoti internetu; aprašyme nurodykite, kaip susitarti."
     matomo_analytics_site_id: "„Matomo Analytics“ svetainės ID"
     matomo_analytics_site_id_hint: Nurodykite „Matomo“ stebimos svetainės ID (numatytosios svetainės ID yra 1).
     default_timezone: Numatytoji laiko juosta
@@ -1068,8 +1082,8 @@ lt:
     activity_appointment_changed: "Pakeista"
     activity_appointment_cancelled: "Atšaukta"
     activity_appointment_deleted: "Ištrinta"
-    activity_unavailability_saved: "Nedarbo laikas pridėtas"
-    activity_unavailability_deleted: "Nedarbo laikas pašalintas"
+    activity_unavailability_saved: "Užimtas laikas pridėtas"
+    activity_unavailability_deleted: "Užimtas laikas pašalintas"
     activity_message_sent: "Žinutė išsiųsta"
     activity_message_failed: "Žinutė nepavyko"
     activity_message_received: "Žinutė gauta"
@@ -1080,6 +1094,7 @@ lt:
     activity_actor_system: "Sistema"
     activity_actor_import: "Importas"
     activity_appointment_summary: "{{service}} klientui {{customer}} pas {{provider}}, {{when}}"
+    activity_unavailability_summary: "{{type}}, {{provider}}, {{when}}"
     activity_status_summary: "Būsena {{status}}"
     activity_reason_summary: "Priežastis: {{reason}}"
     activity_message_summary: "{{notification}} gavėjui {{audience}} per {{channel}}, {{address}}"
@@ -1087,5 +1102,8 @@ lt:
     activity_waitlist_summary: "{{customer}}: {{service}} pas {{provider}}"
     free: "Laisva"
     free_hint: "Laisvi vizitų laikai rezervacijos lange, pagal dieną ir paslaugų teikėją."
-    free_window: "Laisva vizitams nuo {{from}} iki {{to}}"
     free_empty: "Rezervacijos lange nėra laisvų vizitų laikų."
+    free_from: "Nuo"
+    free_to: "Iki"
+    free_reset_hint: "Grįžti į rezervacijos langą"
+    print_free_title: "Laisva vizitams"

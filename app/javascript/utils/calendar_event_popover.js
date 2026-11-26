@@ -213,9 +213,14 @@ App.Utils.CalendarEventPopover = (function () {
             startDateTime = new Date(data.start_datetime);
             endDateTime = new Date(data.end_datetime);
         }
+        const others = data.group_providers || [];
         return $('<div/>', {
             html: [
                 ...createPopoverRow('provider', provider.name),
+                ...(others.length
+                    ? [$('<span/>', {text: lang('unavailability_also_for').replace('{{names}}', others.join(', '))}), $('<br/>')]
+                    : []),
+                ...(data.unavailability_type ? createPopoverRow('unavailability_type', data.unavailability_type.name) : []),
                 ...createPopoverRow('start', formatDateTime(startDateTime)),
                 ...createPopoverRow('end', formatDateTime(endDateTime)),
                 ...createPopoverRow('notes', getEventNotes(info.event)),

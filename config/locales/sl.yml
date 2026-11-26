@@ -151,7 +151,7 @@ sl:
     log_out: Odjava
     reload: Ponovno naloži
     appointment: Sestanek
-    unavailability: Nerazpoložljivost
+    unavailability: "Zaseden čas"
     week: Teden
     month: Mesec
     today: Danes
@@ -168,7 +168,7 @@ sl:
     manage_users_hint: Upravljanje zalednih uporabnikov (skrbniki, ponudniki, asistenti).
     settings_hint: Nastavi sistemske in uporabniške nastavitve.
     log_out_hint: Odjava iz sistema.
-    unavailability_periods_hint: Med obdobji nedosegljivosti ponudnik ne sprejema novih terminov.
+    unavailability_periods_hint: "V zasedenem času ponudnika ni mogoče rezervirati."
     new_appointment_hint: Ustvarite nov termin in ga shranite v bazo podatkov.
     reload_appointments_hint: Ponovno naloži sestanke v koledarju.
     appointment_updated: Sestanek je bil uspešno posodobljen.
@@ -187,9 +187,9 @@ sl:
     delete_appointment_title: Izbriši sestanek
     write_appointment_removal_reason: 'Prosimo, vzemite si minuto in napišite razlog, zakaj brišete sestanek:'
     appointment_saved: Sestanek je uspešno shranjen.
-    new_unavailability_title: Nova nedostopnost
-    edit_unavailability_title: Uredi nerazpoložljivost
-    unavailability_saved: Nerazpoložljivost je bila uspešno shranjena.
+    new_unavailability_title: "Nov zaseden čas"
+    edit_unavailability_title: "Uredi zaseden čas"
+    unavailability_saved: "Zaseden čas shranjen."
     start_date_before_end_error: Vrednost začetnega datuma je poznejša od končnega datuma.
     invalid_duration: Neveljavno trajanje.
     invalid_email: Neveljaven e-poštni naslov.
@@ -308,7 +308,7 @@ sl:
     delete_provider: Izbriši ponudnika
     delete_assistant: "Izbriši asistenta"
     delete_appointment: Izbriši sestanek
-    delete_unavailability: Izbriši nedostopnost
+    delete_unavailability: "Izbriši zaseden čas"
     delete: Izbriši
     unexpected_issues: Nepričakovane težave
     unexpected_issues_message: Operacije ni bilo mogoče dokončati.
@@ -324,7 +324,7 @@ sl:
     unexpected_issues_occurred: Prišlo je do nepričakovanih težav.
     service_communication_error: Prišlo je do napake v komunikaciji strežnika, poskusite znova.
     no_privileges_edit_appointments: Nimate potrebnih pravic za urejanje sestankov.
-    unavailability_updated: Nerazpoložljivost je bila uspešno posodobljena.
+    unavailability_updated: "Zaseden čas posodobljen."
     appointments: Sestanki
     unexpected_warnings: Nepričakovana opozorila
     unexpected_warnings_message: Operacija je bila končana, vendar se je pojavilo nekaj opozoril.
@@ -456,8 +456,18 @@ sl:
     verify_ssl: Preveri SSL
     appointment_save: Shranjevanje termina
     appointment_delete: Brisanje termina
-    unavailability_save: Shrani zaradi nerazpoložljivosti
-    unavailability_delete: Brisanje nerazpoložljivosti
+    unavailability_save: "Shranjevanje zasedenega časa"
+    unavailability_delete: "Brisanje zasedenega časa"
+    unavailability_type: "Vrsta"
+    unavailability_type_none: "Brez vrste"
+    unavailability_types: "Vrste zasedenega časa"
+    unavailability_types_hint: "Vrste zasedenega časa, ki jih osebje lahko vnese v koledar, npr. sestanki, dopust ali administracija, vsaka s svojo barvo."
+    unavailability_type_saved: "Vrsta shranjena."
+    unavailability_type_deleted: "Vrsta odstranjena. Zasedeni časi te vrste ostanejo brez vrste."
+    delete_unavailability_type: "Izbriši vrsto"
+    unavailability_stylists_hint: "Označite vse, za katere velja zaseden čas. Za vsakega ponudnika nastane en vnos in urejajo se skupaj."
+    unavailability_also_for: "Tudi za {{names}}"
+    delete_unavailability_group: "Odstraniti ta zaseden čas za vseh {{count}} ponudnikov?"
     customer_save: Shrani stranko
     customer_delete: Izbris stranke
     service_save: Shranjevanje storitve
@@ -529,6 +539,8 @@ sl:
     no_breaks: Brez prekinitev
     service_categories: Kategorije storitev
     service_category: Kategorija storitve
+    category_services: "Storitve v tej kategoriji"
+    category_no_services: "V tej kategoriji še ni storitev."
     blocked_period_saved: Blokirano obdobje je uspešno shranjeno.
     blocked_period_deleted: Blokirano obdobje je bilo uspešno izbrisano.
     delete_blocked_period: Izbriši blokirano obdobje
@@ -545,6 +557,8 @@ sl:
     delete_webhook: Izbriši Webhook
     contact_info: Podatki za stik
     hide_from_public: Skrij pred javnostjo
+    bookable_by_public: "Javnost lahko rezervira"
+    bookable_hint: "Odznačite, če želite storitev na strani za rezervacije prikazati samo z opisom. Stranke je prek spleta ne bodo mogle rezervirati; v opisu navedite, kako se dogovoriti."
     matomo_analytics_site_id: ID spletnega mesta Matomo Analytics
     matomo_analytics_site_id_hint: Nastavite ID mesta, ki mu bo sledil Matomo (privzeto mesto ima ID »1«).
     default_timezone: Privzeti časovni pas
@@ -1068,8 +1082,8 @@ sl:
     activity_appointment_changed: "Spremenjeno"
     activity_appointment_cancelled: "Odpovedano"
     activity_appointment_deleted: "Izbrisano"
-    activity_unavailability_saved: "Nerazpoložljivost dodana"
-    activity_unavailability_deleted: "Nerazpoložljivost odstranjena"
+    activity_unavailability_saved: "Zaseden čas dodan"
+    activity_unavailability_deleted: "Zaseden čas odstranjen"
     activity_message_sent: "Sporočilo poslano"
     activity_message_failed: "Pošiljanje sporočila ni uspelo"
     activity_message_received: "Sporočilo prejeto"
@@ -1080,6 +1094,7 @@ sl:
     activity_actor_system: "Sistem"
     activity_actor_import: "Uvoz"
     activity_appointment_summary: "{{service}} za {{customer}} pri {{provider}}, {{when}}"
+    activity_unavailability_summary: "{{type}}, {{provider}}, {{when}}"
     activity_status_summary: "Stanje {{status}}"
     activity_reason_summary: "Razlog: {{reason}}"
     activity_message_summary: "{{notification}} za {{audience}} prek {{channel}}, {{address}}"
@@ -1087,5 +1102,8 @@ sl:
     activity_waitlist_summary: "{{customer}} za {{service}} pri {{provider}}"
     free: "Prosto"
     free_hint: "Prosti termini za naročanje v oknu rezervacij, po dnevih in po ponudnikih."
-    free_window: "Prosti termini od {{from}} do {{to}}"
     free_empty: "V oknu rezervacij ni prostih terminov."
+    free_from: "Od"
+    free_to: "Do"
+    free_reset_hint: "Nazaj na okno rezervacij"
+    print_free_title: "Prosto za termine"

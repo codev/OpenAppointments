@@ -46,12 +46,12 @@
         <%= f.label :price, class: "form-label" do %>
             <%= lang('price') %> <span class="text-danger">*</span>
         <% end %>
-        <%= f.text_field :price, required: true, class: "form-control" %>
+        <%= f.text_field :price, required: true, class: "form-control rich-text" %>
     </div>
 
     <div class="mb-3">
         <%= f.label :currency, lang('currency'), class: "form-label" %>
-        <%= f.text_field :currency, maxlength: 32, class: "form-control" %>
+        <%= f.text_field :currency, maxlength: 32, class: "form-control rich-text" %>
     </div>
 
     <div class="mb-3">
@@ -73,12 +73,12 @@
         <%= f.label :attendants_number, class: "form-label" do %>
             <%= lang('attendants_number') %> <span class="text-danger">*</span>
         <% end %>
-        <%= f.number_field :attendants_number, required: true, min: 1, class: "form-control" %>
+        <%= f.number_field :attendants_number, required: true, min: 1, class: "form-control rich-text" %>
     </div>
 
     <div class="mb-3">
         <%= f.label :location, lang('location'), class: "form-label" %>
-        <%= f.text_field :location, class: "form-control" %>
+        <%= f.text_field :location, class: "form-control rich-text" %>
     </div>
 
     <div class="mb-3">
@@ -91,7 +91,12 @@
             <%= f.check_box :is_private, class: "form-check-input" %>
             <%= f.label :is_private, lang('hide_from_public'), class: "form-check-label" %>
         </div>
-        <div class="form-text text-muted"><small><%= lang('private_hint') %></small></div>
+        <div class="form-text text-muted mb-3"><small><%= lang('private_hint') %></small></div>
+        <div class="form-check form-switch">
+            <%= f.check_box :is_bookable, class: "form-check-input" %>
+            <%= f.label :is_bookable, lang('bookable_by_public'), class: "form-check-label" %>
+        </div>
+        <div class="form-text text-muted"><small><%= lang('bookable_hint') %></small></div>
     </div>
 
     <div class="mb-3">
@@ -113,7 +118,7 @@
 
     <div class="mb-3">
         <%= f.label :description, lang('description'), class: "form-label" %>
-        <%= f.text_area :description, rows: 4, class: "form-control" %>
+        <%= f.text_area :description, rows: 4, class: "form-control rich-text" %>
     </div>
 
     <div class="d-flex justify-content-between align-items-center mb-3">

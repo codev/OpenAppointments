@@ -1121,3 +1121,72 @@ $bubble-radius: 1.1rem;
 #about-page #release-notes {
     display: none;
 }
+
+/* Printing List and Free: a black and white day list. The chrome (header,
+   filters, buttons, modals) is dropped, the colours go, each date and stylist
+   block stays together on a page. */
+.print-title {
+    display: none;
+}
+
+@media print {
+    #header,
+    #footer,
+    #day-filter,
+    #free-range,
+    #toggle-series,
+    #series-view,
+    #not-working-notes,
+    #calendar .calendar-header .btn,
+    #calendar .calendar-header .btn-group,
+    #calendar .calendar-header .select-date,
+    .modal,
+    .modal-backdrop,
+    .tippy-box {
+        display: none !important;
+    }
+
+    .print-title {
+        display: block;
+        margin: 0 0 0.5rem;
+    }
+
+    body,
+    #calendar-page {
+        background: #fff !important;
+        color: #000 !important;
+    }
+
+    #calendar .calendar-view .date-column {
+        margin-bottom: 1rem;
+        border: none;
+        border-radius: 0;
+        background: none;
+        break-inside: avoid;
+    }
+
+    #calendar .calendar-view .date-column .date-column-title,
+    #calendar .calendar-view .date-column .provider-column h6 {
+        padding: 4px 0;
+        background: none;
+        color: #000;
+        border-bottom: 1px solid #000;
+    }
+
+    #calendar .calendar-view .provider-column {
+        break-inside: avoid;
+    }
+
+    #calendar .calendar-view .day-entry {
+        background: none !important;
+        color: #000 !important;
+        border-left-color: #000 !important;
+        border-bottom: 1px solid #ccc;
+        box-shadow: none;
+    }
+
+    #calendar .calendar-view .day-entry-time,
+    #calendar .calendar-view .day-entry-answers {
+        color: #000;
+    }
+}

@@ -87,6 +87,19 @@
                             </div>
                         <% end %>
 
+                        <h5 class="mb-3 fw-light"><%= lang('unavailability_types') %></h5>
+
+                        <p class="form-text text-muted">
+                            <%= lang('unavailability_types_hint') %>
+                        </p>
+
+                        <div class="mb-5">
+                            <a href="/unavailability_types" data-turbo="false" class="btn btn-primary">
+                                <i class="fas fa-cogs me-2"></i>
+                                <%= lang('configure') %>
+                            </a>
+                        </div>
+
                         <h5 class="mb-3 fw-light"><%= lang('minimum_times_before_appointments') %></h5>
 
                         <% { "book_advance_timeout" => "booking_window", "late_cancellation_timeout" => "late_window" }.each do |field, key| %>

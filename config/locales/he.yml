@@ -151,7 +151,7 @@ he:
     log_out: יציאה
     reload: רענון
     appointment: פגישה
-    unavailability: אינו זמין
+    unavailability: "זמן עסוק"
     week: שבוע
     month: חודש
     today: היום
@@ -168,7 +168,7 @@ he:
     manage_users_hint: נהל את משתמשי הניהול (מנהלי מערכת, ספקים, עוזרים).
     settings_hint: הגדר הגדרות מערכת ומשתמשים.
     log_out_hint: יציאה מהמערכת.
-    unavailability_periods_hint: במהלך המועדים אשר אינם זמינים הספק לא יקבל פגישות חדשות.
+    unavailability_periods_hint: "בזמן עסוק לא ניתן לקבוע תור אצל נותן השירות."
     new_appointment_hint: צור פגישה חדשה ושמור אותה במסד הנתונים.
     reload_appointments_hint: ריענון יומן הפגישות.
     appointment_updated: הפגישה עודכנה בהצלחה!
@@ -187,9 +187,9 @@ he:
     delete_appointment_title: מחיקת פגישה
     write_appointment_removal_reason: 'אנא הקדישו דקה בכדי לכתוב את הסיבה למחיקת הפגישה:'
     appointment_saved: הפגישה נשמרה בהצלחה!
-    new_unavailability_title: " מועד לא זמין חדש"
-    edit_unavailability_title: עריכת מועד לא זמין
-    unavailability_saved: מועד לא זמין נשמר בהצלחה!
+    new_unavailability_title: "זמן עסוק חדש"
+    edit_unavailability_title: "עריכת זמן עסוק"
+    unavailability_saved: "הזמן העסוק נשמר."
     start_date_before_end_error: ערך תאריך ההתחלה גדול מתאריך הסיום!
     invalid_duration: משך זמן לא חוקי.
     invalid_email: כתובת דוא"ל לא חוקית!
@@ -308,7 +308,7 @@ he:
     delete_provider: מחיקת ספק
     delete_assistant: "מחיקת עוזר"
     delete_appointment: מחיקת פגישה
-    delete_unavailability: מחיקת לו"ז לא זמין
+    delete_unavailability: "מחיקת זמן עסוק"
     delete: מחיקה
     unexpected_issues: שגיאות לא צפויות
     unexpected_issues_message: הפעולה לא הסתיימה.
@@ -324,7 +324,7 @@ he:
     unexpected_issues_occurred: התרחשו בעיות לא צפויות!
     service_communication_error: אירעה שגיאת תקשורת שרתים, אנא נסה שוב.
     no_privileges_edit_appointments: אין לך את ההרשאות הנדרשות לעריכת פגישות.
-    unavailability_updated: מועד לא זמין עודכן בהצלחה!
+    unavailability_updated: "הזמן העסוק עודכן."
     appointments: פגישות
     unexpected_warnings: אזהרות בלתי צפויות
     unexpected_warnings_message: הפעולה הסתיימה אך הופיעו כמה אזהרות.
@@ -456,8 +456,18 @@ he:
     verify_ssl: אמת SSL
     appointment_save: שמור פגישה
     appointment_delete: מחק פגישה
-    unavailability_save: שמור חוסר זמינות
-    unavailability_delete: מחק חוסר זמינות
+    unavailability_save: "שמירת זמן עסוק"
+    unavailability_delete: "מחיקת זמן עסוק"
+    unavailability_type: "סוג"
+    unavailability_type_none: "ללא סוג"
+    unavailability_types: "סוגי זמן עסוק"
+    unavailability_types_hint: "סוגי הזמן העסוק שהצוות יכול להכניס ליומן, כמו פגישות, חופשה או ניהול, לכל אחד צבע משלו."
+    unavailability_type_saved: "הסוג נשמר."
+    unavailability_type_deleted: "הסוג הוסר. זמנים עסוקים מסוג זה נשמרים ללא סוג."
+    delete_unavailability_type: "מחיקת סוג"
+    unavailability_stylists_hint: "סמנו את כל מי שהזמן העסוק נוגע לו. נוצרת רשומה אחת לכל נותן שירות והן נערכות יחד."
+    unavailability_also_for: "גם עבור {{names}}"
+    delete_unavailability_group: "להסיר זמן עסוק זה עבור כל {{count}} נותני השירות?"
     customer_save: שמור לקוח
     customer_delete: מחק לקוח
     service_save: שמור שירות
@@ -529,6 +539,8 @@ he:
     no_breaks: ללא הפסקות
     service_categories: קטגוריות שירות
     service_category: קטגוריית שירות
+    category_services: "שירותים בקטגוריה זו"
+    category_no_services: "אין עדיין שירותים בקטגוריה זו."
     blocked_period_saved: התקופה החסומה נשמרה בהצלחה.
     blocked_period_deleted: התקופה החסומה נמחקה בהצלחה.
     delete_blocked_period: מחק תקופה חסומה
@@ -545,6 +557,8 @@ he:
     delete_webhook: מחק WebHook
     contact_info: מידע ליצירת קשר
     hide_from_public: הסתר מהציבור
+    bookable_by_public: "ניתן להזמנה על ידי הציבור"
+    bookable_hint: "בטלו את הסימון כדי להציג את השירות בעמוד ההזמנות עם התיאור בלבד. לקוחות לא יכולים להזמין אותו באינטרנט; כתבו בתיאור איך לתאם אותו."
     matomo_analytics_site_id: מזהה אתר Matomo Analytics
     matomo_analytics_site_id_hint: הגדר את מזהה האתר שיעקב על ידי Matomo (לאתר ברירת המחדל יש את המזהה "1").
     default_timezone: אזור זמן ברירת מחדל
@@ -1068,8 +1082,8 @@ he:
     activity_appointment_changed: "שונה"
     activity_appointment_cancelled: "בוטל"
     activity_appointment_deleted: "נמחק"
-    activity_unavailability_saved: "נוספה אי-זמינות"
-    activity_unavailability_deleted: "הוסרה אי-זמינות"
+    activity_unavailability_saved: "נוסף זמן עסוק"
+    activity_unavailability_deleted: "הוסר זמן עסוק"
     activity_message_sent: "הודעה נשלחה"
     activity_message_failed: "שליחת הודעה נכשלה"
     activity_message_received: "הודעה התקבלה"
@@ -1080,6 +1094,7 @@ he:
     activity_actor_system: "מערכת"
     activity_actor_import: "ייבוא"
     activity_appointment_summary: "{{service}} עבור {{customer}} עם {{provider}}, {{when}}"
+    activity_unavailability_summary: "{{type}}, {{provider}}, {{when}}"
     activity_status_summary: "סטטוס {{status}}"
     activity_reason_summary: "סיבה: {{reason}}"
     activity_message_summary: "{{notification}} אל {{audience}} דרך {{channel}}, {{address}}"
@@ -1087,5 +1102,8 @@ he:
     activity_waitlist_summary: "{{customer}} עבור {{service}} עם {{provider}}"
     free: "פנוי"
     free_hint: "משבצות פנויות לפגישות בחלון ההזמנות, לפי תאריך ולפי ספק."
-    free_window: "פנוי לפגישות מ-{{from}} עד {{to}}"
     free_empty: "אין זמן פנוי לפגישות בחלון ההזמנות."
+    free_from: "מתאריך"
+    free_to: "עד תאריך"
+    free_reset_hint: "חזרה לחלון ההזמנות"
+    print_free_title: "פנוי לפגישות"

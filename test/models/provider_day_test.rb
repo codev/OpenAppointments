@@ -32,4 +32,15 @@ class ProviderDayTest < ActiveSupport::TestCase
     assert_equal [ "14:30", "15:00", I18n.t("ea.break") ], [ break_entry.start.strftime("%H:%M"), break_entry.end.strftime("%H:%M"), break_entry.title ]
     assert entries.none? { |entry| entry.kind == "free" && entry.start.strftime("%H:%M") < "15:00" && entry.end.strftime("%H:%M") > "14:30" }
   end
+
+  test "a busy time entry is titled by its type and notes and coloured by the type" do
+    lunch = appointments(:lunch_block)
+    lunch.update!(unavailability_type: unavailability_types(:meeting), notes: "All staff")
+    entry = day_for(users(:zane), unavailabilities: [ lunch ]).entries.find { |e| e.kind == "unavailability" }
+    assert_equal [ "Meeting - All staff", "#7cbae8" ], [ entry.title, entry.color ]
+
+    lunch.update!(unavailability_type: nil, notes: nil)
+    entry = day_for(users(:zane), unavailabilities: [ lunch ]).entries.find { |e| e.kind == "unavailability" }
+    assert_equal [ I18n.t("ea.unavailability"), nil ], [ entry.title, entry.color ]
+  end
 end

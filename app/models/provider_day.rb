@@ -60,10 +60,13 @@ class ProviderDay
     end
   end
 
+  # Titled by the type and notes ("Meeting - All staff"), coloured by the type.
   def unavailability_entries
     @unavailabilities.map do |unavailability|
+      type = unavailability.unavailability_type
       Entry.new(kind: "unavailability", start: unavailability.start_datetime, end: unavailability.end_datetime,
-                title: unavailability.notes.presence || I18n.t("ea.unavailability"), record: unavailability)
+                title: [ type&.name, unavailability.notes.presence ].compact.join(" - ").presence || I18n.t("ea.unavailability"),
+                color: type&.color_or_default, record: unavailability)
     end
   end
 

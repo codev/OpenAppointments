@@ -19,6 +19,8 @@ class CalendarFeedTest < ActionDispatch::IntegrationTest
     zane.settings.update!(calendar_feed_token: "a" * 32)
     lunch = Appointment.create!(provider: zane, is_unavailability: true, notes: "Lunch",
                                 start_datetime: Time.new(2026, 7, 21, 13, 0, 0), end_datetime: Time.new(2026, 7, 21, 14, 0, 0))
+    meeting = Appointment.create!(provider: zane, is_unavailability: true, notes: "All staff", unavailability_type: unavailability_types(:meeting),
+                                  start_datetime: Time.new(2026, 7, 23, 13, 0, 0), end_datetime: Time.new(2026, 7, 23, 14, 0, 0))
     cancelled = Appointment.create!(provider: zane, customer: users(:jx), service: services(:haircut), status: "Cancelled",
                                     start_datetime: Time.new(2026, 7, 22, 11, 0, 0), end_datetime: Time.new(2026, 7, 22, 11, 30, 0))
     old = Appointment.create!(provider: zane, customer: users(:jx), service: services(:haircut), status: "Booked",
@@ -35,6 +37,8 @@ class CalendarFeedTest < ActionDispatch::IntegrationTest
     assert_includes body, "UID:#{IcsFile.uid_for(appointments(:upcoming).id)}"
     assert_includes body, "/calendar/reschedule/#{appointments(:upcoming).booking_hash}"
     assert_includes body, "SUMMARY:Lunch"
+    assert_includes body, "SUMMARY:Meeting - All staff"
+    assert_includes body, "UID:#{IcsFile.uid_for(meeting.id)}"
     assert_includes body, "UID:#{IcsFile.uid_for(lunch.id)}"
     assert_not_includes body, IcsFile.uid_for(cancelled.id)
     assert_not_includes body, IcsFile.uid_for(old.id)

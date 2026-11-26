@@ -151,7 +151,7 @@ tr:
     log_out: Çıkış
     reload: Tekrar Yükle
     appointment: Randevu
-    unavailability: Uygun Değil
+    unavailability: "Meşgul zaman"
     week: Hafta
     month: Ay
     today: Bugün
@@ -168,7 +168,7 @@ tr:
     manage_users_hint: Arkayüz kullanıcılarını (yöneticiler, hizmet sağlayıcılar, asistanlar) yönetin.
     settings_hint: Sistem ve kullanıcı ayarlarını yapın.
     log_out_hint: Sistemden çıkış.
-    unavailability_periods_hint: Uygun olmayan zaman aralıklarında hizmet sağlayıcı yeni randevu kabul etmeyecektir.
+    unavailability_periods_hint: "Meşgul zamanda sağlayıcıya randevu alınamaz."
     new_appointment_hint: Yeni bir randevu yaratarak veri tabanına kaydet.
     reload_appointments_hint: Takvim randevularını tekrar yükle.
     appointment_updated: Randevu başarıyla güncellendi.
@@ -187,9 +187,9 @@ tr:
     delete_appointment_title: Randevu Sil
     write_appointment_removal_reason: 'Lütfen randevuyu iptal etme nedeninizi yazar mısınız? :'
     appointment_saved: Randevu başarıyla kaydedildi.
-    new_unavailability_title: Yeni Uygun Olmayan Zaman Aralığı
-    edit_unavailability_title: Uygun Olmayan Zaman Aralığı Düzenle
-    unavailability_saved: Uygun Olmayan Zaman Aralığı Başarıyla Kaydedildi.
+    new_unavailability_title: "Yeni meşgul zaman"
+    edit_unavailability_title: "Meşgul zamanı düzenle"
+    unavailability_saved: "Meşgul zaman kaydedildi."
     start_date_before_end_error: Başlangıç tarihi bitiş tarihinden büyük olamaz.
     invalid_duration: Geçersiz süre.
     invalid_email: Hatalı eposta adresi.
@@ -308,7 +308,7 @@ tr:
     delete_provider: Hizmet Sağlayıcı Sil
     delete_assistant: "Asistan Sil"
     delete_appointment: 'Randevu Sil '
-    delete_unavailability: Uygun Olmayan Zaman Aralığı Sil
+    delete_unavailability: "Meşgul zamanı sil"
     delete: Sil
     unexpected_issues: Beklenmeyen Sorunlar
     unexpected_issues_message: İşlem tamamlanamadı.
@@ -324,7 +324,7 @@ tr:
     unexpected_issues_occurred: Beklenmeyen sorunlar oldu.
     service_communication_error: Sunucu iletişim hatası, lütfen tekrar deneyin.
     no_privileges_edit_appointments: Randevuları güncellemek için gereken yetkiye sahip değilsiniz.
-    unavailability_updated: Uygun olmayan zaman aralığı başarıyla güncellendi.
+    unavailability_updated: "Meşgul zaman güncellendi."
     appointments: Randevular
     unexpected_warnings: Beklenmeyen Uyarılar
     unexpected_warnings_message: İşlem tamamlandı ancak bazı uyarılar var.
@@ -456,8 +456,18 @@ tr:
     verify_ssl: SSL’yi Doğrula
     appointment_save: Randevu Kaydet
     appointment_delete: Randevu Sil
-    unavailability_save: Uygun Olmama Kaydet
-    unavailability_delete: Uygun Olmama Sil
+    unavailability_save: "Meşgul zaman kaydetme"
+    unavailability_delete: "Meşgul zaman silme"
+    unavailability_type: "Tür"
+    unavailability_type_none: "Tür yok"
+    unavailability_types: "Meşgul zaman türleri"
+    unavailability_types_hint: "Personelin takvime koyabileceği meşgul zaman türleri, örneğin toplantı, izin veya idari işler, her biri kendi rengiyle."
+    unavailability_type_saved: "Tür kaydedildi."
+    unavailability_type_deleted: "Tür kaldırıldı. Bu türdeki meşgul zamanlar türsüz olarak korunur."
+    delete_unavailability_type: "Türü sil"
+    unavailability_stylists_hint: "Meşgul zamanın geçerli olduğu herkesi işaretleyin. Her sağlayıcı için bir kayıt oluşturulur ve birlikte düzenlenir."
+    unavailability_also_for: "Ayrıca {{names}} için"
+    delete_unavailability_group: "Bu meşgul zaman {{count}} sağlayıcının tümünden kaldırılsın mı?"
     customer_save: Müşteri Kaydet
     customer_delete: Müşteri Sil
     service_save: Hizmet Kaydet
@@ -529,6 +539,8 @@ tr:
     no_breaks: Ara Yok
     service_categories: Hizmet Kategorileri
     service_category: Hizmet Kategorisi
+    category_services: "Bu kategorideki hizmetler"
+    category_no_services: "Bu kategoride henüz hizmet yok."
     blocked_period_saved: Engellenmiş dönem başarıyla kaydedildi.
     blocked_period_deleted: Engellenmiş dönem başarıyla silindi.
     delete_blocked_period: Engellenmiş Dönemi Sil
@@ -545,6 +557,8 @@ tr:
     delete_webhook: Webhook Sil
     contact_info: İletişim Bilgileri
     hide_from_public: Halka Açık Olmaktan Gizle
+    bookable_by_public: "Halk Tarafından Rezerve Edilebilir"
+    bookable_hint: "Hizmeti rezervasyon sayfasında yalnızca açıklamasıyla göstermek için işareti kaldırın. Müşteriler hizmeti çevrimiçi rezerve edemez; nasıl ayarlanacağını açıklamaya yazın."
     matomo_analytics_site_id: Matomo Analytics Site Kimliği
     matomo_analytics_site_id_hint: Matomo tarafından izlenecek site ID’sini ayarlayın (varsayılan site ID "1"’dir).
     default_timezone: Varsayılan Saat Dilimi
@@ -1068,8 +1082,8 @@ tr:
     activity_appointment_changed: "Değiştirildi"
     activity_appointment_cancelled: "İptal edildi"
     activity_appointment_deleted: "Silindi"
-    activity_unavailability_saved: "Müsait olmama eklendi"
-    activity_unavailability_deleted: "Müsait olmama kaldırıldı"
+    activity_unavailability_saved: "Meşgul zaman eklendi"
+    activity_unavailability_deleted: "Meşgul zaman kaldırıldı"
     activity_message_sent: "Mesaj gönderildi"
     activity_message_failed: "Mesaj gönderilemedi"
     activity_message_received: "Mesaj alındı"
@@ -1080,6 +1094,7 @@ tr:
     activity_actor_system: "Sistem"
     activity_actor_import: "İçe aktarma"
     activity_appointment_summary: "{{service}}, {{customer}} için, {{provider}} ile, {{when}}"
+    activity_unavailability_summary: "{{type}}, {{provider}}, {{when}}"
     activity_status_summary: "Durum {{status}}"
     activity_reason_summary: "Neden: {{reason}}"
     activity_message_summary: "{{notification}}, {{audience}} için, {{channel}} ile, {{address}}"
@@ -1087,5 +1102,8 @@ tr:
     activity_waitlist_summary: "{{customer}}, {{service}} için, {{provider}} ile"
     free: "Boş"
     free_hint: "Rezervasyon aralığındaki boş randevu saatleri, tarihe ve hizmet sağlayıcıya göre."
-    free_window: "{{from}} ile {{to}} arasında randevuya uygun boş saatler"
     free_empty: "Rezervasyon aralığında randevu için boş saat yok."
+    free_from: "Başlangıç"
+    free_to: "Bitiş"
+    free_reset_hint: "Rezervasyon aralığına dön"
+    print_free_title: "Randevuya uygun boş saatler"

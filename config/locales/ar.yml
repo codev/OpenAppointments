@@ -151,7 +151,7 @@ ar:
     log_out: تسجيل الخروج
     reload: اعادة التحميل
     appointment: الموعد
-    unavailability: غير متوفر
+    unavailability: "وقت مشغول"
     week: الأسبوع
     month: الشهر
     today: اليوم
@@ -168,7 +168,7 @@ ar:
     manage_users_hint: ادارة المستخدمين (مدراء البرنامج, المزودين, المساعدين).
     settings_hint: ضبط البرنامج أو اعدادات المستخدمين
     log_out_hint: تسجيل الخروج من البرنامج
-    unavailability_periods_hint: خلال الفترات الغير متوفرة لن يقبل المزود اي موعد
+    unavailability_periods_hint: "أثناء الوقت المشغول لا يمكن حجز مقدم الخدمة."
     new_appointment_hint: انشاء موعد جديد وتخزينه في قاعدة البيانات
     reload_appointments_hint: اعادة تحميل تقويم المواعيد
     appointment_updated: تم تحديث الموعد بنجاح.
@@ -187,9 +187,9 @@ ar:
     delete_appointment_title: حذف موعد
     write_appointment_removal_reason: ":الرجاء كتابة سبب حذف الموعد "
     appointment_saved: تم حفظ الموعد بنجاح
-    new_unavailability_title: فترة غير متاحة جديدة
-    edit_unavailability_title: تعديل فترة غير متاحة
-    unavailability_saved: تم حفظ الفترة الغير متاحة بنجاح
+    new_unavailability_title: "وقت مشغول جديد"
+    edit_unavailability_title: "تعديل الوقت المشغول"
+    unavailability_saved: "تم حفظ الوقت المشغول."
     start_date_before_end_error: تاريخ البداية أكبر من تاريخ الانتهاء.
     invalid_duration: مدة غير صحيحة.
     invalid_email: بريد الكتروني غير صحيح
@@ -308,7 +308,7 @@ ar:
     delete_provider: حذف المزود
     delete_assistant: "حذف المساعد"
     delete_appointment: حذف الموعد
-    delete_unavailability: حذف الفترة الغير متاحة
+    delete_unavailability: "حذف الوقت المشغول"
     delete: حذف
     unexpected_issues: مشكلة غير متوقعة
     unexpected_issues_message: لا يمكن إتمام العملية.
@@ -324,7 +324,7 @@ ar:
     unexpected_issues_occurred: حدثت مشكلة غير متوقعة.
     service_communication_error: فشل الاتصال بالخادم . يرجى اعادة التحميل مرة أخرى
     no_privileges_edit_appointments: لا تملك الصلاحايات للتعديل على الموعد
-    unavailability_updated: تم تحديث الفترة الغير متاحة بنجاح.
+    unavailability_updated: "تم تحديث الوقت المشغول."
     appointments: المواعيد
     unexpected_warnings: تحذيرات غير متوقعة
     unexpected_warnings_message: العملية تمت بنجاح لكن ظهرت بعض التحذيرات
@@ -456,8 +456,18 @@ ar:
     verify_ssl: التحقق من SSL
     appointment_save: حفظ الموعد
     appointment_delete: حذف الموعد
-    unavailability_save: عدم التوفر حفظ
-    unavailability_delete: حذف عدم التوفر
+    unavailability_save: "حفظ وقت مشغول"
+    unavailability_delete: "حذف وقت مشغول"
+    unavailability_type: "النوع"
+    unavailability_type_none: "بدون نوع"
+    unavailability_types: "أنواع الوقت المشغول"
+    unavailability_types_hint: "أنواع الوقت المشغول التي يمكن للموظفين وضعها في التقويم، مثل الاجتماعات أو الإجازات أو الأعمال الإدارية، لكل منها لونه الخاص."
+    unavailability_type_saved: "تم حفظ النوع."
+    unavailability_type_deleted: "تمت إزالة النوع. تبقى الأوقات المشغولة من هذا النوع بدون نوع."
+    delete_unavailability_type: "حذف النوع"
+    unavailability_stylists_hint: "حدد كل من يخصه الوقت المشغول. يُنشأ إدخال واحد لكل مقدم خدمة وتُعدَّل معًا."
+    unavailability_also_for: "أيضًا لـ {{names}}"
+    delete_unavailability_group: "إزالة هذا الوقت المشغول لجميع مقدمي الخدمة ({{count}})؟"
     customer_save: حفظ العميل
     customer_delete: حذف العميل
     service_save: حفظ الخدمة
@@ -529,6 +539,8 @@ ar:
     no_breaks: لا توجد استراحات
     service_categories: فئات الخدمة
     service_category: فئة الخدمة
+    category_services: "الخدمات في هذه الفئة"
+    category_no_services: "لا توجد خدمات في هذه الفئة بعد."
     blocked_period_saved: تم حفظ الفترة المحظورة بنجاح.
     blocked_period_deleted: تم حذف الفترة المحظورة بنجاح.
     delete_blocked_period: حذف الفترة المحظورة
@@ -545,6 +557,8 @@ ar:
     delete_webhook: حذف خطاف الويب
     contact_info: معلومات الاتصال
     hide_from_public: إخفاء من الجمهور
+    bookable_by_public: "قابل للحجز من الجمهور"
+    bookable_hint: "ألغِ التحديد لعرض الخدمة في صفحة الحجز مع وصفها فقط. لا يمكن للعملاء حجزها عبر الإنترنت؛ اكتب في الوصف كيفية ترتيب الحجز."
     matomo_analytics_site_id: معرّف موقع Matomo Analytics
     matomo_analytics_site_id_hint: قم بتعيين معرّف الموقع الذي سيتم تتبعه بواسطة Matomo (الموقع الافتراضي له المعرّف ”1“)
     default_timezone: الوقت الزمني الافتراضي
@@ -1068,8 +1082,8 @@ ar:
     activity_appointment_changed: "تم التعديل"
     activity_appointment_cancelled: "ملغى"
     activity_appointment_deleted: "محذوف"
-    activity_unavailability_saved: "تمت إضافة عدم التوفر"
-    activity_unavailability_deleted: "تمت إزالة عدم التوفر"
+    activity_unavailability_saved: "تمت إضافة وقت مشغول"
+    activity_unavailability_deleted: "تمت إزالة وقت مشغول"
     activity_message_sent: "تم إرسال الرسالة"
     activity_message_failed: "فشل إرسال الرسالة"
     activity_message_received: "تم استلام رسالة"
@@ -1080,6 +1094,7 @@ ar:
     activity_actor_system: "النظام"
     activity_actor_import: "استيراد"
     activity_appointment_summary: "{{service}} لـ {{customer}} مع {{provider}}، {{when}}"
+    activity_unavailability_summary: "{{type}}, {{provider}}, {{when}}"
     activity_status_summary: "الحالة {{status}}"
     activity_reason_summary: "السبب: {{reason}}"
     activity_message_summary: "{{notification}} إلى {{audience}} عبر {{channel}}، {{address}}"
@@ -1087,5 +1102,8 @@ ar:
     activity_waitlist_summary: "{{customer}} لـ {{service}} مع {{provider}}"
     free: "متاح"
     free_hint: "الأوقات المتاحة للمواعيد ضمن فترة الحجز، يومًا بيوم ومزودًا بمزود."
-    free_window: "متاح للمواعيد من {{from}} إلى {{to}}"
     free_empty: "لا يوجد وقت متاح للمواعيد ضمن فترة الحجز."
+    free_from: "من"
+    free_to: "إلى"
+    free_reset_hint: "العودة إلى فترة الحجز"
+    print_free_title: "متاح للمواعيد"

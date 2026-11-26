@@ -151,7 +151,7 @@ cs:
     log_out: Odhlášení
     reload: Obnovit
     appointment: Schůzka
-    unavailability: Nedostupnost
+    unavailability: "Obsazený čas"
     week: Týden
     month: Měsíc
     today: Dnes
@@ -168,7 +168,7 @@ cs:
     manage_users_hint: Správa interních uživatelů (administrátoři, poskytovatelé, asistenty).
     settings_hint: Systémová a uživatelská nastavení.
     log_out_hint: Odhlášení ze systému.
-    unavailability_periods_hint: V době, kdy není poskytovatel dostupný, nelze rezervovat nové schůzky.
+    unavailability_periods_hint: "Během obsazeného času nelze poskytovatele rezervovat."
     new_appointment_hint: Vytvoření nové schůzky a uložení do databáze.
     reload_appointments_hint: Obnovit zobrazení schůzek v kalendáři.
     appointment_updated: Provedené změny schůzky byly úspěšně uloženy.
@@ -187,9 +187,9 @@ cs:
     delete_appointment_title: Odstranit schůzku
     write_appointment_removal_reason: 'Věnujte nám prosím chvilku a sdělte nám důvod, proč jste schůzku zrušili:'
     appointment_saved: Schůzka úspěšně uložena.
-    new_unavailability_title: Nové období nedostupnosti
-    edit_unavailability_title: Editovat období nedostupnosti
-    unavailability_saved: Období nedostupnosti úspěšně uloženo.
+    new_unavailability_title: "Nový obsazený čas"
+    edit_unavailability_title: "Upravit obsazený čas"
+    unavailability_saved: "Obsazený čas uložen."
     start_date_before_end_error: Datum zahájení je pozdější než datum ukončení.
     invalid_duration: Neplatné trvání.
     invalid_email: Neplatná emailová adresa.
@@ -308,7 +308,7 @@ cs:
     delete_provider: Odstranit poskytovatele
     delete_assistant: "Smazat asistenta"
     delete_appointment: Odstranit schůzku
-    delete_unavailability: Odstranit období nedostupnosti
+    delete_unavailability: "Smazat obsazený čas"
     delete: Odstranit
     unexpected_issues: Neočekávaná chyba
     unexpected_issues_message: Operaci se nepodařilo dokončit.
@@ -324,7 +324,7 @@ cs:
     unexpected_issues_occurred: Vyskytla se neočekávaná chyba.
     service_communication_error: Vyskytla se chyba při komunikaci se serverem, prosím opakujte akci.
     no_privileges_edit_appointments: Pro editaci schůzek nemáte požadovaná oprávnění.
-    unavailability_updated: Období nedostupnosti úspěšně změněno.
+    unavailability_updated: "Obsazený čas aktualizován."
     appointments: Schůzky
     unexpected_warnings: Neočekávaná varování
     unexpected_warnings_message: Operace byla provedena, ale vyskytla se nějaká varování.
@@ -456,8 +456,18 @@ cs:
     verify_ssl: Ověřovat SSL
     appointment_save: Uložení schůzky
     appointment_delete: Smazání schůzky
-    unavailability_save: Uložení nedostupnosti
-    unavailability_delete: Smazání nedostupnosti
+    unavailability_save: "Uložení obsazeného času"
+    unavailability_delete: "Smazání obsazeného času"
+    unavailability_type: "Typ"
+    unavailability_type_none: "Bez typu"
+    unavailability_types: "Typy obsazeného času"
+    unavailability_types_hint: "Druhy obsazeného času, které může personál zapsat do kalendáře, například schůzky, dovolená nebo administrativa, každý s vlastní barvou."
+    unavailability_type_saved: "Typ uložen."
+    unavailability_type_deleted: "Typ odebrán. Obsazené časy tohoto typu zůstávají bez typu."
+    delete_unavailability_type: "Smazat typ"
+    unavailability_stylists_hint: "Zaškrtněte všechny, kterých se obsazený čas týká. Pro každého poskytovatele vznikne jeden záznam a upravují se společně."
+    unavailability_also_for: "Také pro {{names}}"
+    delete_unavailability_group: "Odebrat tento obsazený čas všem {{count}} poskytovatelům?"
     customer_save: Uložení zákazníka
     customer_delete: Smazání zákazníka
     service_save: Uložení služby
@@ -529,6 +539,8 @@ cs:
     no_breaks: Bez přestávek
     service_categories: Kategorie služeb
     service_category: Kategorie služeb
+    category_services: "Služby v této kategorii"
+    category_no_services: "V této kategorii zatím nejsou žádné služby."
     blocked_period_saved: Blokovaný časový úsek byl úspěšně uložen.
     blocked_period_deleted: Blokovaný časový úsek byl úspěšně smazán.
     delete_blocked_period: Smazat blokovaný časový úsek
@@ -545,6 +557,8 @@ cs:
     delete_webhook: Smazat webhook
     contact_info: Kontaktní informace
     hide_from_public: Skrýt před veřejností
+    bookable_by_public: "Rezervovatelné veřejností"
+    bookable_hint: "Odškrtnutím se služba zobrazí na rezervační stránce pouze s popisem. Klienti ji nemohou rezervovat online; v popisu uveďte, jak ji domluvit."
     matomo_analytics_site_id: Matomo Analytics site ID
     matomo_analytics_site_id_hint: Nastavte site ID, které bude sledováno pomocí Matomo (výchozí site má ID "1").
     default_timezone: Výchozí časová zóna
@@ -1068,8 +1082,8 @@ cs:
     activity_appointment_changed: "Změněno"
     activity_appointment_cancelled: "Zrušeno"
     activity_appointment_deleted: "Smazáno"
-    activity_unavailability_saved: "Nedostupnost přidána"
-    activity_unavailability_deleted: "Nedostupnost odebrána"
+    activity_unavailability_saved: "Obsazený čas přidán"
+    activity_unavailability_deleted: "Obsazený čas odebrán"
     activity_message_sent: "Zpráva odeslána"
     activity_message_failed: "Zprávu se nepodařilo odeslat"
     activity_message_received: "Zpráva přijata"
@@ -1080,6 +1094,7 @@ cs:
     activity_actor_system: "Systém"
     activity_actor_import: "Import"
     activity_appointment_summary: "{{service}} pro {{customer}} u {{provider}}, {{when}}"
+    activity_unavailability_summary: "{{type}}, {{provider}}, {{when}}"
     activity_status_summary: "Stav {{status}}"
     activity_reason_summary: "Důvod: {{reason}}"
     activity_message_summary: "{{notification}} pro {{audience}} přes {{channel}}, {{address}}"
@@ -1087,5 +1102,8 @@ cs:
     activity_waitlist_summary: "{{customer}} pro {{service}} u {{provider}}"
     free: "Volno"
     free_hint: "Volné termíny pro schůzky v období rezervací, po dnech a po poskytovatelích."
-    free_window: "Volno pro schůzky od {{from}} do {{to}}"
     free_empty: "V období rezervací není nic volného."
+    free_from: "Od"
+    free_to: "Do"
+    free_reset_hint: "Zpět na období rezervací"
+    print_free_title: "Volno pro schůzky"

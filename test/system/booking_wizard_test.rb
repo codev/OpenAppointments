@@ -95,6 +95,23 @@ class BookingWizardTest < ApplicationSystemTestCase
     assert_selector "#cookie-notice-modal.show", text: "We use one cookie.", wait: 5
   end
 
+  test "a service that is not bookable by the public shows its description and Next stays put" do
+    services(:haircut).update!(is_bookable: false, description: "Ring the salon to arrange this one.")
+    visit root_url
+    assert_selector "#wizard-frame-1", visible: :visible, wait: 5
+    select services(:haircut).name, from: "select-service"
+    assert_text "Ring the salon to arrange this one."
+    find("#button-next-1").click
+    assert_selector "#wizard-frame-1", visible: :visible
+    assert_no_selector "#wizard-frame-2", visible: :visible
+    assert_text "Ring the salon to arrange this one."
+    assert_no_selector "#button-next-1[disabled]"
+
+    select services(:group_session).name, from: "select-service"
+    find("#button-next-1").click
+    assert_selector "#wizard-frame-2", visible: :visible, wait: 5
+  end
+
   test "first page blocks next until a choice is made" do
     visit root_url
     assert_selector "#wizard-frame-1", visible: :visible, wait: 5

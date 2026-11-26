@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_11_25_170000) do
+ActiveRecord::Schema[8.1].define(version: 2026_11_26_100000) do
   create_table "action_mailbox_inbound_emails", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.string "message_checksum", null: false
@@ -118,6 +118,8 @@ ActiveRecord::Schema[8.1].define(version: 2026_11_25_170000) do
     t.datetime "start_datetime"
     t.integer "status_id"
     t.datetime "updated_at", null: false
+    t.integer "unavailability_type_id"
+    t.string "unavailability_group"
     t.index ["booking_hash"], name: "index_appointments_on_booking_hash", unique: true
     t.index ["end_datetime"], name: "index_appointments_on_end_datetime"
     t.index ["id_services"], name: "index_appointments_on_id_services"
@@ -127,6 +129,8 @@ ActiveRecord::Schema[8.1].define(version: 2026_11_25_170000) do
     t.index ["series_id"], name: "index_appointments_on_series_id"
     t.index ["start_datetime"], name: "index_appointments_on_start_datetime"
     t.index ["status_id"], name: "index_appointments_on_status_id"
+    t.index ["unavailability_group"], name: "index_appointments_on_unavailability_group"
+    t.index ["unavailability_type_id"], name: "index_appointments_on_unavailability_type_id"
   end
 
   create_table "assistants_providers", id: false, force: :cascade do |t|
@@ -249,6 +253,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_11_25_170000) do
     t.integer "slot_interval", default: 15
     t.integer "sort_order"
     t.datetime "updated_at", null: false
+    t.boolean "is_bookable", default: true, null: false
     t.index ["booking_slug"], name: "index_services_on_booking_slug", unique: true
     t.index ["id_service_categories"], name: "index_services_on_id_service_categories"
   end
@@ -265,6 +270,15 @@ ActiveRecord::Schema[8.1].define(version: 2026_11_25_170000) do
     t.datetime "updated_at", null: false
     t.text "value"
     t.index ["name"], name: "index_settings_on_name", unique: true
+  end
+
+  create_table "unavailability_types", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "color", default: "#7cbae8"
+    t.integer "position", default: 0, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_unavailability_types_on_name", unique: true
   end
 
   create_table "user_settings", primary_key: "id_users", force: :cascade do |t|
@@ -375,6 +389,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_11_25_170000) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "appointments", "services", column: "id_services", on_delete: :cascade
+  add_foreign_key "appointments", "unavailability_types", on_delete: :nullify
   add_foreign_key "appointments", "users", column: "id_users_customer", on_delete: :cascade
   add_foreign_key "appointments", "users", column: "id_users_provider", on_delete: :cascade
   add_foreign_key "assistants_providers", "users", column: "id_users_assistant", on_delete: :cascade

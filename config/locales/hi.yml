@@ -151,7 +151,7 @@ hi:
     log_out: लॉग आउट
     reload: रीलोड
     appointment: अपॉइंटमेंट
-    unavailability: अनुपलब्ध
+    unavailability: "व्यस्त समय"
     week: सप्ताह
     month: माह
     today: आज
@@ -168,7 +168,7 @@ hi:
     manage_users_hint: बैकएंड उपयोगकर्ताओं को प्रबंधित (व्यवस्थापक, प्रदाताओं, सहायकों).
     settings_hint: प्रणाली और उपयोगकर्ता सेटिंग करें.
     log_out_hint: सिस्टम से लॉग आउट करें.
-    unavailability_periods_hint: अनुपलब्ध अवधि के दौरान प्रदाता नई अपॉइंटमेंट को स्वीकार नहीं करेगा.
+    unavailability_periods_hint: "व्यस्त समय के दौरान प्रदाता को बुक नहीं किया जा सकता।"
     new_appointment_hint: एक नई अपॉइंटमेंट बनाएँ और डेटाबेस में स्टोर.
     reload_appointments_hint: कैलेंडर अपॉइंटमेंट को पुनः लोड करें.
     appointment_updated: अपॉइंटमेंट अप्डैटिड सक्सेस्फल.
@@ -187,9 +187,9 @@ hi:
     delete_appointment_title: अपॉइंटमेंट मिटायें
     write_appointment_removal_reason: 'आप अपॉइंटमेंट को नष्ट कर रहे कारण लिखने के लिए एक मिनट का समय लो:'
     appointment_saved: अपॉइंटमेंट सफलतापूर्वक बचाया.
-    new_unavailability_title: नए अनुपलब्ध अवधि
-    edit_unavailability_title: अनुपलब्ध अवधि संपादित करें
-    unavailability_saved: अनुपलब्ध अवधि सफलतापूर्वक बचाया.
+    new_unavailability_title: "नया व्यस्त समय"
+    edit_unavailability_title: "व्यस्त समय संपादित करें"
+    unavailability_saved: "व्यस्त समय सहेजा गया।"
     start_date_before_end_error: प्रारंभ दिनांक मान के अंत की तारीख से भी बड़ा है
     invalid_duration: अमान्य अवधि।
     invalid_email: अमान्य ईमेल पता.
@@ -308,7 +308,7 @@ hi:
     delete_provider: प्रदाता मिटायें
     delete_assistant: "सहायक हटाएं"
     delete_appointment: अपॉइंटमेंट मिटायें
-    delete_unavailability: अनुपलब्ध अवधि मिटायें
+    delete_unavailability: "व्यस्त समय हटाएँ"
     delete: डिलीट
     unexpected_issues: अप्रत्याशित मुद्दों
     unexpected_issues_message: ऑपरेशन पूरा नहीं हो सका।
@@ -324,7 +324,7 @@ hi:
     unexpected_issues_occurred: अप्रत्याशित मुद्दों हुआ.
     service_communication_error: एक सर्वर संचार त्रुटि, कृपया पुनः प्रयास करें
     no_privileges_edit_appointments: आप अपॉइंटमेंट को संपादित करने के लिए आवश्यक विशेषाधिकार नहीं है.
-    unavailability_updated: अनुपलब्ध समय अवधि सफलतापूर्वक अद्यतन
+    unavailability_updated: "व्यस्त समय अद्यतन किया गया।"
     appointments: अपॉइंटमेंट
     unexpected_warnings: अप्रत्याशित चेतावनी
     unexpected_warnings_message: ऑपरेशन पूरा हो लेकिन कुछ चेतावनियां दिखाई दिया.
@@ -456,8 +456,18 @@ hi:
     verify_ssl: SSL सत्यापित करें
     appointment_save: नियुक्ति सहेजें
     appointment_delete: नियुक्ति हटाएँ
-    unavailability_save: अअवहेलना सहेजें
-    unavailability_delete: अअवहेलना हटाएँ
+    unavailability_save: "व्यस्त समय सहेजना"
+    unavailability_delete: "व्यस्त समय हटाना"
+    unavailability_type: "प्रकार"
+    unavailability_type_none: "कोई प्रकार नहीं"
+    unavailability_types: "व्यस्त समय के प्रकार"
+    unavailability_types_hint: "व्यस्त समय के प्रकार जो कर्मचारी कैलेंडर में रख सकते हैं, जैसे बैठकें, छुट्टी या प्रशासन, प्रत्येक का अपना रंग।"
+    unavailability_type_saved: "प्रकार सहेजा गया।"
+    unavailability_type_deleted: "प्रकार हटाया गया। उस प्रकार के व्यस्त समय बिना प्रकार के रखे जाते हैं।"
+    delete_unavailability_type: "प्रकार हटाएँ"
+    unavailability_stylists_hint: "उन सभी को चुनें जिनके लिए व्यस्त समय है। प्रति प्रदाता एक प्रविष्टि बनती है और उन्हें एक साथ संपादित किया जाता है।"
+    unavailability_also_for: "{{names}} के लिए भी"
+    delete_unavailability_group: "सभी {{count}} प्रदाताओं के लिए यह व्यस्त समय हटाएँ?"
     customer_save: ग्राहक सहेजें
     customer_delete: ग्राहक हटाएँ
     service_save: सेवा सहेजें
@@ -529,6 +539,8 @@ hi:
     no_breaks: कोई ब्रेक नहीं
     service_categories: सेवा श्रेणियाँ
     service_category: सेवा श्रेणी
+    category_services: "इस श्रेणी की सेवाएँ"
+    category_no_services: "इस श्रेणी में अभी कोई सेवा नहीं है।"
     blocked_period_saved: ब्लॉक किए गए अवधि को सफलतापूर्वक सहेजा गया।
     blocked_period_deleted: ब्लॉक किए गए अवधि को सफलतापूर्वक हटाया गया।
     delete_blocked_period: ब्लॉक किए गए अवधि को हटाएँ
@@ -545,6 +557,8 @@ hi:
     delete_webhook: Webhook हटाएँ
     contact_info: संपर्क जानकारी
     hide_from_public: सार्वजनिक से छुपाएँ
+    bookable_by_public: "सार्वजनिक द्वारा बुक करने योग्य"
+    bookable_hint: "सेवा को बुकिंग पेज पर केवल उसके विवरण के साथ दिखाने के लिए टिक हटाएँ। ग्राहक इसे ऑनलाइन बुक नहीं कर सकते; विवरण में लिखें कि इसे कैसे तय करें।"
     matomo_analytics_site_id: Matomo एनालिटिक्स साइट आईडी
     matomo_analytics_site_id_hint: Matomo द्वारा ट्रैक किए जाने वाले साइट आईडी को सेट करें (डिफ़ॉल्ट साइट की आईडी "1" है)।
     default_timezone: डिफ़ॉल्ट समय क्षेत्र
@@ -1068,8 +1082,8 @@ hi:
     activity_appointment_changed: "बदला गया"
     activity_appointment_cancelled: "रद्द किया गया"
     activity_appointment_deleted: "हटाया गया"
-    activity_unavailability_saved: "अनुपलब्धता जोड़ी गई"
-    activity_unavailability_deleted: "अनुपलब्धता हटाई गई"
+    activity_unavailability_saved: "व्यस्त समय जोड़ा गया"
+    activity_unavailability_deleted: "व्यस्त समय हटाया गया"
     activity_message_sent: "संदेश भेजा गया"
     activity_message_failed: "संदेश भेजना विफल"
     activity_message_received: "संदेश प्राप्त हुआ"
@@ -1080,6 +1094,7 @@ hi:
     activity_actor_system: "सिस्टम"
     activity_actor_import: "इम्पोर्ट"
     activity_appointment_summary: "{{customer}} के लिए {{service}}, {{provider}} के साथ, {{when}}"
+    activity_unavailability_summary: "{{type}}, {{provider}}, {{when}}"
     activity_status_summary: "स्थिति {{status}}"
     activity_reason_summary: "कारण: {{reason}}"
     activity_message_summary: "{{audience}} को {{notification}}, {{channel}} द्वारा, {{address}}"
@@ -1087,5 +1102,8 @@ hi:
     activity_waitlist_summary: "{{customer}} के लिए {{service}}, {{provider}} के साथ"
     free: "खाली"
     free_hint: "बुकिंग विंडो में अपॉइंटमेंट के लिए खाली स्लॉट, तारीख और स्टाइलिस्ट के अनुसार।"
-    free_window: "{{from}} से {{to}} तक अपॉइंटमेंट के लिए खाली"
     free_empty: "बुकिंग विंडो में अपॉइंटमेंट के लिए कुछ भी खाली नहीं है।"
+    free_from: "से"
+    free_to: "तक"
+    free_reset_hint: "बुकिंग विंडो पर वापस जाएँ"
+    print_free_title: "अपॉइंटमेंट के लिए खाली"

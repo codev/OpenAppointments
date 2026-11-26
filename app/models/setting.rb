@@ -11,10 +11,6 @@ class Setting < ApplicationRecord
                           fully_booked_notice_content cookie_notice_content
                           terms_and_conditions_content privacy_policy_content].freeze
 
-  # The editor writes alignment as an inline style; the sanitiser keeps only
-  # safe CSS properties within it.
-  RICH_TEXT_ATTRIBUTES = (Rails::HTML5::SafeListSanitizer.allowed_attributes + [ "style" ]).freeze
-
   def self.get(name, default = nil)
     Rails.cache.fetch("setting/#{name}") { where(name: name).pick(:value) } || default
   end
@@ -33,9 +29,7 @@ class Setting < ApplicationRecord
     get("timezone_support", "1") == "1"
   end
 
-  def self.sanitize_rich_text(html)
-    Rails::HTML5::SafeListSanitizer.new.sanitize(html.to_s, attributes: RICH_TEXT_ATTRIBUTES)
-  end
+  def self.sanitize_rich_text(html) = RichText.sanitize(html)
 
   def self.get_many(*names)
     names.flatten.index_with { |name| get(name) }

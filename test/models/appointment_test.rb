@@ -71,4 +71,22 @@ class AppointmentTest < ActiveSupport::TestCase
       users(:jx).destroy
     end
   end
+
+  test "a busy time type belongs to unavailabilities only, and the group lists the other rows" do
+    block = appointments(:lunch_block)
+    block.unavailability_type = unavailability_types(:meeting)
+    assert block.valid?
+
+    booked = appointments(:upcoming)
+    booked.unavailability_type = unavailability_types(:meeting)
+    assert_not booked.valid?
+    assert_includes booked.errors[:unavailability_type], "is only for busy time"
+
+    block.update!(unavailability_group: "g1")
+    other = Appointment.create!(provider: users(:zane), is_unavailability: true, unavailability_group: "g1",
+                                start_datetime: block.start_datetime, end_datetime: block.end_datetime)
+    assert_equal [ other ], block.group_members
+    assert_equal [ block ], other.group_members
+    assert_empty appointments(:upcoming).group_members
+  end
 end

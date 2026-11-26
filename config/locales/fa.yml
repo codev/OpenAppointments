@@ -151,7 +151,7 @@ fa:
     log_out: خروج
     reload: بارگذاری مجدد
     appointment: قرار
-    unavailability: تعطیل
+    unavailability: "زمان مشغول"
     week: هفته
     month: ماه
     today: امروز
@@ -168,7 +168,7 @@ fa:
     manage_users_hint: مدیریت کاربران (مدیران، دستیاران، ارائه دهندگان)
     settings_hint: تنظیمات سیستم و کاربران
     log_out_hint: خروج از سیستم
-    unavailability_periods_hint: در طول زمان در دسترس نبودن، ارائه دهنده قرار جدیدی را نمی پذیرد
+    unavailability_periods_hint: "در زمان مشغول نمی‌توان برای ارائه‌دهنده نوبت گرفت."
     new_appointment_hint: ایجاد قرار جدید و ذخیره آن در بانک اطلاعاتی
     reload_appointments_hint: بارگذاری مجدد ملاقات ها
     appointment_updated: قرار با موفقیت به روزرسانی شد
@@ -187,9 +187,9 @@ fa:
     delete_appointment_title: حذف قرار
     write_appointment_removal_reason: لطفا یک دقیقه زمان اختصاص دهید و دلیل حذف قرار ملاقاتتان را بیان کنید
     appointment_saved: قرار با موفقیت ذخیره شد
-    new_unavailability_title: دوران تعطیلی جدید
-    edit_unavailability_title: ویرایش دوره تعطیلی
-    unavailability_saved: دوره تعطیلی با موفقیت ذخیره شد
+    new_unavailability_title: "زمان مشغول جدید"
+    edit_unavailability_title: "ویرایش زمان مشغول"
+    unavailability_saved: "زمان مشغول ذخیره شد."
     start_date_before_end_error: تاریخ شروع بعد از تاریخ پایان است
     invalid_duration: مدت زمان نامعتبر است.
     invalid_email: آدرس پست الکترونیکی صحیح نیست
@@ -308,7 +308,7 @@ fa:
     delete_provider: حذف ارائه دهنده
     delete_assistant: "حذف دستیار"
     delete_appointment: حذف قرار
-    delete_unavailability: حذف دوره در دسترس نبودن
+    delete_unavailability: "حذف زمان مشغول"
     delete: حذف
     unexpected_issues: مشکلات غیرمنتظره
     unexpected_issues_message: عملیات کامل نشد.
@@ -324,7 +324,7 @@ fa:
     unexpected_issues_occurred: خطای پیش بینی نشده رخ داد
     service_communication_error: خطایی در ارتباط با سرور به وجود آمد. لطفا مجددا سعی کنید
     no_privileges_edit_appointments: شما اجازه ویرایش این قرار ملاقات را ندارید
-    unavailability_updated: زمان تعطیلی با موفقیت ذخیره شد
+    unavailability_updated: "زمان مشغول به‌روزرسانی شد."
     appointments: قرارهای ملاقات
     unexpected_warnings: هشدارهای غیرمنتظره
     unexpected_warnings_message: عملیات انجام شد ولی هشدارهایی دریافت شد
@@ -456,8 +456,18 @@ fa:
     verify_ssl: تأیید SSL
     appointment_save: ذخیره قرار ملاقات
     appointment_delete: حذف قرار ملاقات
-    unavailability_save: ذخیره عدم دسترسی
-    unavailability_delete: حذف عدم دسترسی
+    unavailability_save: "ذخیره زمان مشغول"
+    unavailability_delete: "حذف زمان مشغول"
+    unavailability_type: "نوع"
+    unavailability_type_none: "بدون نوع"
+    unavailability_types: "انواع زمان مشغول"
+    unavailability_types_hint: "انواع زمان مشغولی که کارکنان می‌توانند در تقویم بگذارند، مانند جلسه، مرخصی یا کارهای اداری، هر یک با رنگ خود."
+    unavailability_type_saved: "نوع ذخیره شد."
+    unavailability_type_deleted: "نوع برداشته شد. زمان‌های مشغول این نوع بدون نوع نگه داشته می‌شوند."
+    delete_unavailability_type: "حذف نوع"
+    unavailability_stylists_hint: "همه کسانی را که زمان مشغول به آن‌ها مربوط است علامت بزنید. برای هر ارائه‌دهنده یک مورد ساخته می‌شود و با هم ویرایش می‌شوند."
+    unavailability_also_for: "همچنین برای {{names}}"
+    delete_unavailability_group: "این زمان مشغول برای همه {{count}} ارائه‌دهنده برداشته شود؟"
     customer_save: ذخیره مشتری
     customer_delete: حذف مشتری
     service_save: ذخیره خدمات
@@ -529,6 +539,8 @@ fa:
     no_breaks: بدون استراحت
     service_categories: دسته‌بندی‌های خدمات
     service_category: دسته‌بندی خدمات
+    category_services: "خدمات این دسته بندی"
+    category_no_services: "هنوز خدمتی در این دسته بندی نیست."
     blocked_period_saved: دوره مسدود شده با موفقیت ذخیره شد.
     blocked_period_deleted: دوره مسدود شده با موفقیت حذف شد.
     delete_blocked_period: حذف دوره مسدود شده
@@ -545,6 +557,8 @@ fa:
     delete_webhook: حذف وب‌هوک
     contact_info: اطلاعات تماس
     hide_from_public: پنهان از عموم
+    bookable_by_public: "قابل رزرو توسط عموم"
+    bookable_hint: "علامت را بردارید تا خدمت فقط با توضیحاتش در صفحه رزرو نمایش داده شود. مشتریان نمی‌توانند آن را آنلاین رزرو کنند؛ روش هماهنگی را در توضیحات بنویسید."
     matomo_analytics_site_id: شناسه سایت Matomo Analytics
     matomo_analytics_site_id_hint: شناسه سایت را که توسط Matomo پیگیری خواهد شد تنظیم کنید (سایت پیش‌فرض دارای شناسه "1" است).
     default_timezone: منطقه زمانی پیش‌فرض
@@ -1068,8 +1082,8 @@ fa:
     activity_appointment_changed: "تغییر کرد"
     activity_appointment_cancelled: "لغو شد"
     activity_appointment_deleted: "حذف شد"
-    activity_unavailability_saved: "عدم حضور ثبت شد"
-    activity_unavailability_deleted: "عدم حضور حذف شد"
+    activity_unavailability_saved: "زمان مشغول افزوده شد"
+    activity_unavailability_deleted: "زمان مشغول برداشته شد"
     activity_message_sent: "پیام ارسال شد"
     activity_message_failed: "ارسال پیام ناموفق بود"
     activity_message_received: "پیام دریافت شد"
@@ -1080,6 +1094,7 @@ fa:
     activity_actor_system: "سیستم"
     activity_actor_import: "درون‌ریزی"
     activity_appointment_summary: "{{service}} برای {{customer}} با {{provider}}، {{when}}"
+    activity_unavailability_summary: "{{type}}, {{provider}}, {{when}}"
     activity_status_summary: "وضعیت {{status}}"
     activity_reason_summary: "دلیل: {{reason}}"
     activity_message_summary: "{{notification}} به {{audience}} از طریق {{channel}}، {{address}}"
@@ -1087,5 +1102,8 @@ fa:
     activity_waitlist_summary: "{{customer}} برای {{service}} با {{provider}}"
     free: "آزاد"
     free_hint: "زمان‌های آزاد برای قرار ملاقات در بازه رزرو، روز به روز و ارائه‌دهنده به ارائه‌دهنده."
-    free_window: "آزاد برای قرار ملاقات از {{from}} تا {{to}}"
     free_empty: "هیچ زمان آزادی برای قرار ملاقات در بازه رزرو وجود ندارد."
+    free_from: "از"
+    free_to: "تا"
+    free_reset_hint: "بازگشت به بازه رزرو"
+    print_free_title: "آزاد برای قرار ملاقات"

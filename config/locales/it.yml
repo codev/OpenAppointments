@@ -151,7 +151,7 @@ it:
     log_out: Esci
     reload: Ricarica
     appointment: Appuntamento
-    unavailability: Non disponibile
+    unavailability: "Tempo occupato"
     week: Settimana
     month: Mese
     today: Giorno
@@ -168,7 +168,7 @@ it:
     manage_users_hint: Gestisci gli utenti del backend (amministratori, fornitori, assistenti).
     settings_hint: Imposta le preferenze di sistema e utente.
     log_out_hint: Esci dal sistema.
-    unavailability_periods_hint: Durante i periodi di indisponibilità il fornitore non vuole accettare nuovi appuntamenti.
+    unavailability_periods_hint: "Durante il tempo occupato il fornitore non può essere prenotato."
     new_appointment_hint: Crea un nuovo appuntamento e memorizzalo nel database.
     reload_appointments_hint: Ricarica gli appuntamenti a calendario.
     appointment_updated: Appuntamento aggiornato con successo.
@@ -187,9 +187,9 @@ it:
     delete_appointment_title: Cancella appuntamento
     write_appointment_removal_reason: 'Spendi un minuto per scrivere il motivo di annullamento dell''appuntamento:'
     appointment_saved: Appuntamento salvato con successo.
-    new_unavailability_title: Nuovo perido di indisponibilità
-    edit_unavailability_title: Modifica periodo di indisponibilità
-    unavailability_saved: Periodo di indisponibilità salvato con successo.
+    new_unavailability_title: "Nuovo tempo occupato"
+    edit_unavailability_title: "Modifica tempo occupato"
+    unavailability_saved: "Tempo occupato salvato."
     start_date_before_end_error: La data di inizio è successiva alla data di fine.
     invalid_duration: Durata non valida.
     invalid_email: Indirizzo e-mail non valido.
@@ -308,7 +308,7 @@ it:
     delete_provider: Cancella fornitore
     delete_assistant: "Elimina assistente"
     delete_appointment: Cancella appuntamento
-    delete_unavailability: Cancella periodo indisponibilità
+    delete_unavailability: "Elimina tempo occupato"
     delete: Cancella
     unexpected_issues: Problemi inaspettati
     unexpected_issues_message: L'operazione non può essere completata.
@@ -324,7 +324,7 @@ it:
     unexpected_issues_occurred: Si sono verificati problemi inaspettati.
     service_communication_error: Si è verificiato un errore di comunicazione con il server, prova di nuovo.
     no_privileges_edit_appointments: Non hai i privilegi richiesti per modificare gli appuntamenti.
-    unavailability_updated: Periodo di indisponibilità aggiornato con successo.
+    unavailability_updated: "Tempo occupato aggiornato."
     appointments: Appuntamenti
     unexpected_warnings: Problema inaspettato
     unexpected_warnings_message: Operazione completata ma con qualche avvertimento.
@@ -456,8 +456,18 @@ it:
     verify_ssl: Verifica SSL
     appointment_save: Salva Appuntamento
     appointment_delete: Elimina Appuntamento
-    unavailability_save: Salva Indisponibilità
-    unavailability_delete: Elimina Indisponibilità
+    unavailability_save: "Salvataggio tempo occupato"
+    unavailability_delete: "Eliminazione tempo occupato"
+    unavailability_type: "Tipo"
+    unavailability_type_none: "Nessun tipo"
+    unavailability_types: "Tipi di tempo occupato"
+    unavailability_types_hint: "I tipi di tempo occupato che lo staff può inserire nel calendario, come riunioni, ferie o amministrazione, ognuno con il proprio colore."
+    unavailability_type_saved: "Tipo salvato."
+    unavailability_type_deleted: "Tipo rimosso. I tempi occupati di quel tipo restano senza tipo."
+    delete_unavailability_type: "Elimina tipo"
+    unavailability_stylists_hint: "Spunta tutte le persone interessate. Viene creata una voce per fornitore e si modificano insieme."
+    unavailability_also_for: "Anche per {{names}}"
+    delete_unavailability_group: "Rimuovere questo tempo occupato per tutti i {{count}} fornitori?"
     customer_save: Salva Cliente
     customer_delete: Elimina Cliente
     service_save: Salva Servizio
@@ -529,6 +539,8 @@ it:
     no_breaks: Nessuna Pausa
     service_categories: Categorie di Servizi
     service_category: Categoria di Servizio
+    category_services: "Servizi in questa categoria"
+    category_no_services: "Nessun servizio in questa categoria per ora."
     blocked_period_saved: Periodo bloccato salvato con successo.
     blocked_period_deleted: Periodo bloccato eliminato con successo.
     delete_blocked_period: Elimina Periodo Bloccato
@@ -545,6 +557,8 @@ it:
     delete_webhook: Elimina Webhook
     contact_info: Informazioni di Contatto
     hide_from_public: Nascondi al Pubblico
+    bookable_by_public: "Prenotabile dal Pubblico"
+    bookable_hint: "Deseleziona per mostrare il servizio nella pagina di prenotazione solo con la descrizione. I clienti non possono prenotarlo online; indica nella descrizione come organizzarlo."
     matomo_analytics_site_id: ID Sito Matomo Analytics
     matomo_analytics_site_id_hint: Imposta l'ID del sito che sarà tracciato da Matomo (il sito predefinito ha l'ID "1").
     default_timezone: Fuso Orario Predefinito
@@ -1068,8 +1082,8 @@ it:
     activity_appointment_changed: "Modificato"
     activity_appointment_cancelled: "Annullato"
     activity_appointment_deleted: "Eliminato"
-    activity_unavailability_saved: "Indisponibilità aggiunta"
-    activity_unavailability_deleted: "Indisponibilità rimossa"
+    activity_unavailability_saved: "Tempo occupato aggiunto"
+    activity_unavailability_deleted: "Tempo occupato rimosso"
     activity_message_sent: "Messaggio inviato"
     activity_message_failed: "Invio messaggio non riuscito"
     activity_message_received: "Messaggio ricevuto"
@@ -1080,6 +1094,7 @@ it:
     activity_actor_system: "Sistema"
     activity_actor_import: "Importazione"
     activity_appointment_summary: "{{service}} per {{customer}} con {{provider}}, {{when}}"
+    activity_unavailability_summary: "{{type}}, {{provider}}, {{when}}"
     activity_status_summary: "Stato {{status}}"
     activity_reason_summary: "Motivo: {{reason}}"
     activity_message_summary: "{{notification}} a {{audience}} tramite {{channel}}, {{address}}"
@@ -1087,5 +1102,8 @@ it:
     activity_waitlist_summary: "{{customer}} per {{service}} con {{provider}}"
     free: "Libero"
     free_hint: "Slot liberi per gli appuntamenti nella finestra di prenotazione, giorno per giorno e fornitore per fornitore."
-    free_window: "Libero per appuntamenti dal {{from}} al {{to}}"
     free_empty: "Non c'è nulla di libero per appuntamenti nella finestra di prenotazione."
+    free_from: "Dal"
+    free_to: "Al"
+    free_reset_hint: "Torna alla finestra di prenotazione"
+    print_free_title: "Libero per appuntamenti"

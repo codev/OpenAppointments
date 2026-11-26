@@ -151,7 +151,7 @@ pl:
     log_out: Wyloguj
     reload: Odśwież
     appointment: Wizyta
-    unavailability: Niedostępne
+    unavailability: "Czas zajęty"
     week: Tydzień
     month: Miesiąc
     today: Dziś
@@ -168,7 +168,7 @@ pl:
     manage_users_hint: Zarządzaj użytkownikami.(admin, personel, asystent, inne)
     settings_hint: Zmień ustawienia systemu i użytkownika
     log_out_hint: Wyloguj z systemu
-    unavailability_periods_hint: Podczas niedostępnych okresów personel nie akceptuje nowych wizyt.
+    unavailability_periods_hint: "W czasie zajętym nie można zarezerwować usługodawcy."
     new_appointment_hint: Utwórz nową wizytę i przechowaj ją w bazie danych.
     reload_appointments_hint: Przeładuj wizyty kalendarza.
     appointment_updated: Wizyta zaktualizowana poprawnie.
@@ -187,9 +187,9 @@ pl:
     delete_appointment_title: Usuń Wizytę
     write_appointment_removal_reason: 'Proszę o podanie powodu usunięcia wizyty:'
     appointment_saved: Wizyta zapamiętana pomyślnie.
-    new_unavailability_title: Nowy Niedostępny Okres
-    edit_unavailability_title: Edytuj Niedostępny Okres
-    unavailability_saved: Niedostępny okres zapisano pomyślnie.
+    new_unavailability_title: "Nowy czas zajęty"
+    edit_unavailability_title: "Edytuj czas zajęty"
+    unavailability_saved: "Czas zajęty zapisany."
     start_date_before_end_error: Wartość początkowa jest większa niż data końcowa.
     invalid_duration: Nieprawidłowy czas trwania.
     invalid_email: Niepoprawny adres email.
@@ -308,7 +308,7 @@ pl:
     delete_provider: Usuń personel
     delete_assistant: "Usuń asystenta"
     delete_appointment: Usuń Wizytę
-    delete_unavailability: Usuń Niedostępny Okres
+    delete_unavailability: "Usuń czas zajęty"
     delete: Usuń
     unexpected_issues: Niespodziewany błąd
     unexpected_issues_message: Operacja nie mogła zostać ukończona.
@@ -324,7 +324,7 @@ pl:
     unexpected_issues_occurred: Nieoczekiwany błąd.
     service_communication_error: Błąd komunikacji z serwerem. Spróbuj ponownie.
     no_privileges_edit_appointments: Nie masz wystarczających uprawnień aby edytować wizyty.
-    unavailability_updated: Czas niedostępności aktualizowany.
+    unavailability_updated: "Czas zajęty zaktualizowany."
     appointments: Wizyta
     unexpected_warnings: Nieoczekiwane Ostrzeżenia
     unexpected_warnings_message: Operacja ukończona, ale wystąpiło parę błędów.
@@ -456,8 +456,18 @@ pl:
     verify_ssl: Weryfikuj SSL
     appointment_save: Zapisz spotkanie
     appointment_delete: Usuń spotkanie
-    unavailability_save: Zapisz niedostępność
-    unavailability_delete: Usuń niedostępność
+    unavailability_save: "Zapis czasu zajętego"
+    unavailability_delete: "Usunięcie czasu zajętego"
+    unavailability_type: "Typ"
+    unavailability_type_none: "Brak typu"
+    unavailability_types: "Typy czasu zajętego"
+    unavailability_types_hint: "Rodzaje czasu zajętego, które personel może wpisać do kalendarza, np. spotkania, urlop lub administracja, każdy z własnym kolorem."
+    unavailability_type_saved: "Typ zapisany."
+    unavailability_type_deleted: "Typ usunięty. Czasy zajęte tego typu pozostają bez typu."
+    delete_unavailability_type: "Usuń typ"
+    unavailability_stylists_hint: "Zaznacz wszystkich, których dotyczy czas zajęty. Dla każdego usługodawcy powstaje jeden wpis i są edytowane razem."
+    unavailability_also_for: "Także dla {{names}}"
+    delete_unavailability_group: "Usunąć ten czas zajęty dla wszystkich {{count}} usługodawców?"
     customer_save: Zapisz klienta
     customer_delete: Usuń klienta
     service_save: Zapisz usługę
@@ -529,6 +539,8 @@ pl:
     no_breaks: Brak przerw
     service_categories: Kategorie usług
     service_category: Kategoria usługi
+    category_services: "Zabiegi w tej kategorii"
+    category_no_services: "Ta kategoria nie ma jeszcze zabiegów."
     blocked_period_saved: Okres blokady został pomyślnie zapisany.
     blocked_period_deleted: Okres blokady został pomyślnie usunięty.
     delete_blocked_period: Usuń okres blokady
@@ -545,6 +557,8 @@ pl:
     delete_webhook: Usuń webhook
     contact_info: Informacje kontaktowe
     hide_from_public: Ukryj przed publicznością
+    bookable_by_public: "Dostępne do rezerwacji publicznej"
+    bookable_hint: "Odznacz, aby pokazać zabieg na stronie rezerwacji tylko z opisem. Klienci nie mogą go zarezerwować online; w opisie podaj, jak się umówić."
     matomo_analytics_site_id: ID witryny Matomo Analytics
     matomo_analytics_site_id_hint: Ustaw ID witryny, która będzie śledzona przez Matomo (domyślna witryna ma ID "1").
     default_timezone: Domyślna strefa czasowa
@@ -1068,8 +1082,8 @@ pl:
     activity_appointment_changed: "Zmieniono"
     activity_appointment_cancelled: "Anulowano"
     activity_appointment_deleted: "Usunięto"
-    activity_unavailability_saved: "Dodano niedostępność"
-    activity_unavailability_deleted: "Usunięto niedostępność"
+    activity_unavailability_saved: "Dodano czas zajęty"
+    activity_unavailability_deleted: "Usunięto czas zajęty"
     activity_message_sent: "Wiadomość wysłana"
     activity_message_failed: "Wiadomość nieudana"
     activity_message_received: "Wiadomość odebrana"
@@ -1080,6 +1094,7 @@ pl:
     activity_actor_system: "System"
     activity_actor_import: "Import"
     activity_appointment_summary: "{{service}} dla {{customer}} u {{provider}}, {{when}}"
+    activity_unavailability_summary: "{{type}}, {{provider}}, {{when}}"
     activity_status_summary: "Status {{status}}"
     activity_reason_summary: "Powód: {{reason}}"
     activity_message_summary: "{{notification}} do {{audience}} przez {{channel}}, {{address}}"
@@ -1087,5 +1102,8 @@ pl:
     activity_waitlist_summary: "{{customer}} na {{service}} u {{provider}}"
     free: "Wolne"
     free_hint: "Wolne terminy wizyt w okresie rezerwacji, według daty i pracownika."
-    free_window: "Wolne terminy od {{from}} do {{to}}"
     free_empty: "Brak wolnych terminów w okresie rezerwacji."
+    free_from: "Od"
+    free_to: "Do"
+    free_reset_hint: "Wróć do okresu rezerwacji"
+    print_free_title: "Wolne terminy wizyt"

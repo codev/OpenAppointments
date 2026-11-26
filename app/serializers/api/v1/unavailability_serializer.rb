@@ -11,7 +11,9 @@ module Api
         "status" => "status",
         "notes" => "notes",
         "hash" => "booking_hash",
-        "providerId" => "id_users_provider"
+        "providerId" => "id_users_provider",
+        "typeId" => "unavailability_type_id",
+        "group" => "unavailability_group"
       }.freeze
 
       SORT_OVERRIDES = {

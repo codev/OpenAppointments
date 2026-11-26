@@ -23,4 +23,27 @@ class BackendAssetsTest < ActionDispatch::IntegrationTest
     end
     assert_no_match "/img/", response.body
   end
+
+  # List and Free print as a plain day list: the print rules hide the chrome and
+  # drop the colours.
+  test "the backend stylesheet has print rules hiding the header and the filters" do
+    post "/login/validate", params: { username: "administrator", password: "administrator1" }
+    get "/calendar"
+    get response.body[%r{href="(/assets/backend-[^"]+\.css)"}, 1]
+    css = response.body
+    start = css.index("@media print")
+    refute_nil start, "no @media print block"
+    depth = 0
+    finish = (css.index("{", start)..css.length).find do |i|
+      depth += 1 if css[i] == "{"
+      depth -= 1 if css[i] == "}"
+      depth.zero?
+    end
+    block = css[start..finish].gsub(/\s+/, "")
+    %w[#header #footer #day-filter #free-range #toggle-series].each do |selector|
+      assert_includes block, selector, "#{selector} is not in the print rules"
+    end
+    assert_match(/display:none/, block)
+    assert_match(/\.day-entry[^{]*\{[^}]*background:(none|transparent|#fff)/, block)
+  end
 end

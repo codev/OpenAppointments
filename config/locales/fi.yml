@@ -151,7 +151,7 @@ fi:
     log_out: Kirjaudu ulos
     reload: Lataa uudelleen
     appointment: Varaus
-    unavailability: Poissaolo
+    unavailability: "Varattu aika"
     week: Viikko
     month: Kuukausi
     today: Tänään
@@ -168,7 +168,7 @@ fi:
     manage_users_hint: Hallinnoi taustajärjestelmän käyttäjiä (järjestelmänvalvojat, palveluntuottajat, assistentit).
     settings_hint: Aseta järjestelmä- ja käyttäjäasetukset.
     log_out_hint: Kirjaudu ulos järjestelmästä.
-    unavailability_periods_hint: Palveluntuottajan ollessa poissaolojaksolla hänelle ei voi tehdä varauksia.
+    unavailability_periods_hint: "Varatun ajan aikana palveluntarjoajaa ei voi varata."
     new_appointment_hint: Tee uusi varaus ja talleta se tietokantaan.
     reload_appointments_hint: Uudelleenlataa varaukset.
     appointment_updated: Varaus päivitetty onnistuneesti.
@@ -187,9 +187,9 @@ fi:
     delete_appointment_title: Poista varaus
     write_appointment_removal_reason: 'Kirjoita lyhyt syy varauksen peruuttamiselle:'
     appointment_saved: Varaus tallennettiin onnistuneesti.
-    new_unavailability_title: Uusi poissaolojakso
-    edit_unavailability_title: Muokkaa poissaolojaksoa
-    unavailability_saved: Poissaolojakso tallennettiin.
+    new_unavailability_title: "Uusi varattu aika"
+    edit_unavailability_title: "Muokkaa varattua aikaa"
+    unavailability_saved: "Varattu aika tallennettu."
     start_date_before_end_error: Aloituspäivämäärä on loppupäivää myöhäisempi.
     invalid_duration: Virheellinen kesto.
     invalid_email: Virheellinen sähköpostiosoite.
@@ -308,7 +308,7 @@ fi:
     delete_provider: Poista palveluntuottaja
     delete_assistant: "Poista assistentti"
     delete_appointment: Poista varaus
-    delete_unavailability: Poista poissaolojakso
+    delete_unavailability: "Poista varattu aika"
     delete: Poista
     unexpected_issues: Odottamaton ongelma
     unexpected_issues_message: Toimintoa ei voitu suorittaa.
@@ -324,7 +324,7 @@ fi:
     unexpected_issues_occurred: Odottamattomia ongelmia esiintyi.
     service_communication_error: Yhteys palvelimeen töksähti, yritä uudelleen.
     no_privileges_edit_appointments: Sinulla ei ole tapahtuman muokkaamiseen vaadittavia oikeuksia.
-    unavailability_updated: Poissaolojakso päivitettiin onnistuneesti.
+    unavailability_updated: "Varattu aika päivitetty."
     appointments: Varaukset
     unexpected_warnings: Odottamattomia varoituksia
     unexpected_warnings_message: Toimenpide tehtiin, mutta joitain varoituksia esiintyi.
@@ -456,8 +456,18 @@ fi:
     verify_ssl: Varmista SSL
     appointment_save: Tapaamisen tallennus
     appointment_delete: Tapaamisen poisto
-    unavailability_save: Poissaolon tallennus
-    unavailability_delete: Poissaolon poisto
+    unavailability_save: "Varatun ajan tallennus"
+    unavailability_delete: "Varatun ajan poisto"
+    unavailability_type: "Tyyppi"
+    unavailability_type_none: "Ei tyyppiä"
+    unavailability_types: "Varatun ajan tyypit"
+    unavailability_types_hint: "Varatun ajan lajit, joita henkilökunta voi merkitä kalenteriin, kuten kokoukset, lomat tai hallinto, kullakin oma värinsä."
+    unavailability_type_saved: "Tyyppi tallennettu."
+    unavailability_type_deleted: "Tyyppi poistettu. Sen tyypin varatut ajat säilyvät ilman tyyppiä."
+    delete_unavailability_type: "Poista tyyppi"
+    unavailability_stylists_hint: "Valitse kaikki, joita varattu aika koskee. Jokaiselle palveluntarjoajalle tehdään oma merkintä, ja niitä muokataan yhdessä."
+    unavailability_also_for: "Myös: {{names}}"
+    delete_unavailability_group: "Poistetaanko tämä varattu aika kaikilta {{count}} palveluntarjoajalta?"
     customer_save: Asiakkaan tallennus
     customer_delete: Asiakkaan poisto
     service_save: Palvelun tallennus
@@ -529,6 +539,8 @@ fi:
     no_breaks: Ei taukoja.
     service_categories: Palveluluokat
     service_category: Palveluluokka
+    category_services: "Tämän kategorian palvelupaketit"
+    category_no_services: "Tässä kategoriassa ei ole vielä palvelupaketteja."
     blocked_period_saved: Estetty ajanjakso tallennettu onnistuneesti.
     blocked_period_deleted: Estetty ajanjakso poistettu onnistuneesti.
     delete_blocked_period: Poistettu estetty ajanjakso
@@ -545,6 +557,8 @@ fi:
     delete_webhook: Poista webhook
     contact_info: Yhteystiedot
     hide_from_public: Piilota yleisöltä
+    bookable_by_public: "Yleisö voi varata"
+    bookable_hint: "Poista valinta, jos haluat näyttää palvelun varaussivulla vain kuvauksen kanssa. Asiakkaat eivät voi varata sitä verkossa; kerro kuvauksessa, miten sovitaan."
     matomo_analytics_site_id: Matomo Analytics -sivuston tunnus
     matomo_analytics_site_id_hint: Aseta Site ID, jota Matomo tarkkailee (oletus on "1").
     default_timezone: Oletusaikavyöhyke
@@ -1068,8 +1082,8 @@ fi:
     activity_appointment_changed: "Muutettu"
     activity_appointment_cancelled: "Peruttu"
     activity_appointment_deleted: "Poistettu"
-    activity_unavailability_saved: "Poissaolo lisätty"
-    activity_unavailability_deleted: "Poissaolo poistettu"
+    activity_unavailability_saved: "Varattu aika lisätty"
+    activity_unavailability_deleted: "Varattu aika poistettu"
     activity_message_sent: "Viesti lähetetty"
     activity_message_failed: "Viestin lähetys epäonnistui"
     activity_message_received: "Viesti vastaanotettu"
@@ -1080,6 +1094,7 @@ fi:
     activity_actor_system: "Järjestelmä"
     activity_actor_import: "Tuonti"
     activity_appointment_summary: "{{service}} asiakkaalle {{customer}}, {{provider}}, {{when}}"
+    activity_unavailability_summary: "{{type}}, {{provider}}, {{when}}"
     activity_status_summary: "Tila {{status}}"
     activity_reason_summary: "Syy: {{reason}}"
     activity_message_summary: "{{notification}} vastaanottajalle {{audience}} kanavalla {{channel}}, {{address}}"
@@ -1087,5 +1102,8 @@ fi:
     activity_waitlist_summary: "{{customer}}, {{service}}, {{provider}}"
     free: "Vapaat"
     free_hint: "Vapaat ajat varauksille varausikkunassa päivittäin ja palveluntuottajittain."
-    free_window: "Vapaat ajat varauksille {{from}}–{{to}}"
     free_empty: "Varausikkunassa ei ole vapaita aikoja varauksille."
+    free_from: "Alkaen"
+    free_to: "Asti"
+    free_reset_hint: "Takaisin varausikkunaan"
+    print_free_title: "Vapaat ajat varauksille"

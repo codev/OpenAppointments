@@ -65,15 +65,19 @@ class DataExportTest < ActiveSupport::TestCase
     assert_equal appointments(:upcoming).start_datetime, appointment[:start]
   end
 
-  test "extract applies the appointment window and skips unavailabilities" do
+  test "extract applies the appointment window and keeps busy time with its type and group" do
+    appointments(:lunch_block).update!(unavailability_type: unavailability_types(:meeting), unavailability_group: "g1")
     path = export_to_file
 
     outside = OdsExtract.new(path, today: Date.new(2027, 1, 1), days_back: 7, days_forward: 7).call
     assert_empty outside[:appointments]
 
     inside = OdsExtract.new(path, today: Date.new(2026, 7, 20), days_back: 7, days_forward: 7).call
-    assert_equal Appointment.appointments.count, inside[:appointments].length
+    assert_equal Appointment.count, inside[:appointments].length
     assert(inside[:appointments].none? { |row| row[:staff].blank? })
+    busy = inside[:appointments].find { |row| row[:unavailability] }
+    assert_equal [ "Meeting", "g1" ], [ busy[:unavailability_type], busy[:unavailability_group] ]
+    assert busy[:customer_ext_id].blank?
   end
 
   test "reimporting an export after a reset restores field level detail" do
@@ -102,6 +106,7 @@ class DataExportTest < ActiveSupport::TestCase
     series_dates = series.materialise(now: Date.new(2026, 7, 20))[:created]
     AppointmentStatus.of("cancelled").update!(name: "Called off")
     AppointmentStatus.create!(name: "Waiting", kind: "custom", position: 9)
+    appointments(:lunch_block).update!(unavailability_type: unavailability_types(:meeting), unavailability_group: "g1", notes: "All staff")
     path = export_to_file
 
     ResetDatabase.run
@@ -131,6 +136,10 @@ class DataExportTest < ActiveSupport::TestCase
     assert_equal provider.id, appointment.id_users_provider
     assert_equal customer.id, appointment.id_users_customer
     assert_equal original_start, appointment.start_datetime
+
+    busy = Appointment.unavailabilities.find_by!(notes: "All staff")
+    assert_equal [ provider.id, "Meeting", "g1" ], [ busy.id_users_provider, busy.unavailability_type&.name, busy.unavailability_group ]
+    assert_equal appointments(:lunch_block).start_datetime, busy.start_datetime
 
     settings = provider.settings
     assert_equal false, settings.notifications

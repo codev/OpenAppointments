@@ -321,28 +321,55 @@ class CalendarModalsTest < ApplicationSystemTestCase
     assert_equal 30, appointment.duration_minutes
   end
 
-  test "add and delete an unavailability" do
-    begin
-      visit appointments_url
-      find("#calendar-actions [data-bs-toggle=dropdown]").click
-      find("#insert-unavailability").click
-      assert_selector "#save-unavailability", visible: true, wait: 5
-      wait_for_modal
-      within(find("#save-unavailability").ancestor(".modal")) do
-        select "Zane", from: "unavailability-provider"
-        find("#unavailability-start").set("#{today} 3:00 pm\t")
-        find("#unavailability-end").set("#{today} 4:00 pm\t")
-        fill_in "unavailability-notes", with: "Dentist"
-        click_on "Save"
-      end
-      assert_text "Unavailability saved", wait: 10
-      block = Appointment.unavailabilities.find_by!(notes: "Dentist")
-      assert_equal "15:00", block.start_datetime.strftime("%H:%M")
+  # Busy time for two stylists at once: a row each, the type on the title and in
+  # the popover with the other stylist, the form's Delete removing both.
+  test "add a typed busy time for two stylists, then delete the group from the form" do
+    other = User.create!(name: "Other", email: "other@example.org", role: users(:zane).role, timezone: "Europe/London")
+    other.create_settings!(username: "other", password: Passwords.hash("stylistpass1"), working_plan: users(:zane).settings.working_plan)
+    ServiceProviderLink.create!(id_users: other.id, id_services: services(:haircut).id)
 
-      open_event("Dentist")
-      within(".popover") { click_on "Delete" }
-      assert_no_selector ".fc-event", text: "Dentist", wait: 10
-      assert_not Appointment.exists?(block.id)
+    visit appointments_url
+    find("#calendar-actions [data-bs-toggle=dropdown]").click
+    find("#insert-unavailability").click
+    assert_selector "#save-unavailability", visible: true, wait: 5
+    wait_for_modal
+    within(find("#save-unavailability").ancestor(".modal")) do
+      assert_text "New Busy Time"
+      check "Zane"
+      check "Other"
+      select "Meeting", from: "unavailability-type"
+      find("#unavailability-start").set("#{today} 3:00 pm\t")
+      find("#unavailability-end").set("#{today} 4:00 pm\t")
+      fill_in "unavailability-notes", with: "All staff"
+      click_on "Save"
     end
+    assert_text "Busy time saved", wait: 10
+    rows = Appointment.unavailabilities.where(notes: "All staff")
+    assert_equal 2, rows.count
+    assert_equal 1, rows.map(&:unavailability_group).uniq.size
+    assert rows.all? { |row| row.unavailability_type == unavailability_types(:meeting) }
+    assert_selector ".day-entry-unavailability", text: "Meeting - All staff", count: 2
+
+    first(".day-entry-unavailability", text: "Meeting - All staff").click
+    within(".popover") do
+      assert_text "Type"
+      assert_text "Meeting"
+      assert_text "Also for"
+      click_on "Edit"
+    end
+    assert_selector "#unavailability-form", visible: true, wait: 5
+    wait_for_modal
+    within(find("#save-unavailability").ancestor(".modal")) do
+      assert_checked_field "Zane"
+      assert_checked_field "Other"
+      click_on "Delete"
+    end
+    # The confirm is the message modal: its button carries the submitter's text.
+    within("#message-modal", wait: 5) do
+      assert_text "Remove this busy time for all 2"
+      click_on "Delete"
+    end
+    assert_no_selector ".day-entry-unavailability", text: "Meeting - All staff", wait: 10
+    assert_empty Appointment.unavailabilities.where(notes: "All staff")
   end
 end

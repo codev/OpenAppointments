@@ -151,7 +151,7 @@ mr:
     log_out: लॉग आउट
     reload: रीलोड करा
     appointment: अपॉइंटमेंट
-    unavailability: अनुपलब्ध
+    unavailability: "व्यस्त वेळ"
     week: आठवडा
     month: महिना
     today: आज
@@ -168,7 +168,7 @@ mr:
     manage_users_hint: बॅकएंड वापरकर्ते व्यवस्थापित करा (प्रशासक, प्रदाते, सहाय्यक).
     settings_hint: सिस्टम आणि वापरकर्ता सेटिंग्ज बनवा.
     log_out_hint: सिस्टममधून लॉग आउट करा.
-    unavailability_periods_hint: प्रदाता अनुपलब्ध कालावधीत नवीन भेटी स्वीकारणार नाही.
+    unavailability_periods_hint: "व्यस्त वेळेत प्रदात्याची नोंदणी करता येत नाही."
     new_appointment_hint: नवीन अपॉईंटमेंट तयार करा आणि त्यास डेटाबेसमध्ये संचयित करा.
     reload_appointments_hint: कॅलेंडर अपॉईंटमेंट रीलोड करा.
     appointment_updated: नियुक्ती अद्यतनित यशस्वी.
@@ -187,9 +187,9 @@ mr:
     delete_appointment_title: अपॉईंटमेंट हटवा
     write_appointment_removal_reason: 'आपण अपॉइंटमेंट हटवत असल्याचे कारण लिहिण्यासाठी एक मिनिट घ्या:'
     appointment_saved: अपॉईंटमेंट यशस्वीरित्या जतन केले.
-    new_unavailability_title: नवीन गहाळ कालावधी
-    edit_unavailability_title: गहाळ कालावधी संपादित करा
-    unavailability_saved: गहाळ कालावधी यशस्वीरित्या जतन झाला.
+    new_unavailability_title: "नवीन व्यस्त वेळ"
+    edit_unavailability_title: "व्यस्त वेळ संपादित करा"
+    unavailability_saved: "व्यस्त वेळ जतन केली."
     start_date_before_end_error: प्रारंभ तारीख मूल्याच्या अंतिम तारखेपेक्षा मोठी आहे
     invalid_duration: अवैध कालावधी.
     invalid_email: अवैध ईमेल पत्ता.
@@ -308,7 +308,7 @@ mr:
     delete_provider: प्रदाता हटवा
     delete_assistant: "सहाय्यक हटवा"
     delete_appointment: अपॉईंटमेंट हटवा
-    delete_unavailability: गहाळ कालावधी हटवा
+    delete_unavailability: "व्यस्त वेळ हटवा"
     delete: हटवा
     unexpected_issues: अनपेक्षित समस्या
     unexpected_issues_message: ऑपरेशन पूर्ण होऊ शकले नाही.
@@ -324,7 +324,7 @@ mr:
     unexpected_issues_occurred: अनपेक्षित समस्या घडल्या.
     service_communication_error: सर्व्हर संप्रेषण त्रुटी, कृपया पुन्हा प्रयत्न करा
     no_privileges_edit_appointments: आपल्याकडे भेटीचे संपादन करण्यासाठी आवश्यक विशेषाधिकार नाहीत.
-    unavailability_updated: गहाळ वेळ कालावधी यशस्वीरित्या अद्यतनित केला
+    unavailability_updated: "व्यस्त वेळ अद्यतनित केली."
     appointments: अपॉइंटमेंट
     unexpected_warnings: अनपेक्षित चेतावणी
     unexpected_warnings_message: ऑपरेशन पूर्ण झाले परंतु काही इशारे दिसू लागले.
@@ -456,8 +456,18 @@ mr:
     verify_ssl: SSL पडताळणी करा
     appointment_save: अपॉईंटमेंट सहेज
     appointment_delete: अपॉईंटमेंट हटवा
-    unavailability_save: असामर्थ्यता सहेज
-    unavailability_delete: असामर्थ्यता हटवा
+    unavailability_save: "व्यस्त वेळ जतन करणे"
+    unavailability_delete: "व्यस्त वेळ हटवणे"
+    unavailability_type: "प्रकार"
+    unavailability_type_none: "प्रकार नाही"
+    unavailability_types: "व्यस्त वेळेचे प्रकार"
+    unavailability_types_hint: "कर्मचारी कॅलेंडरमध्ये टाकू शकतील असे व्यस्त वेळेचे प्रकार, जसे बैठका, रजा किंवा प्रशासन, प्रत्येकाचा स्वतःचा रंग."
+    unavailability_type_saved: "प्रकार जतन केला."
+    unavailability_type_deleted: "प्रकार काढला. त्या प्रकारच्या व्यस्त वेळा प्रकाराशिवाय ठेवल्या जातात."
+    delete_unavailability_type: "प्रकार हटवा"
+    unavailability_stylists_hint: "ज्यांच्यासाठी व्यस्त वेळ आहे त्या सर्वांना निवडा. प्रत्येक प्रदात्यासाठी एक नोंद होते आणि त्या एकत्र संपादित केल्या जातात."
+    unavailability_also_for: "{{names}} साठी देखील"
+    delete_unavailability_group: "सर्व {{count}} प्रदात्यांसाठी ही व्यस्त वेळ काढायची?"
     customer_save: ग्राहक सहेज
     customer_delete: ग्राहक हटवा
     service_save: सेवा सहेज
@@ -529,6 +539,8 @@ mr:
     no_breaks: ब्रेक नाहीत
     service_categories: सेवा श्रेण्या
     service_category: सेवा श्रेणी
+    category_services: "या श्रेणीतील सेवा"
+    category_no_services: "या श्रेणीत अद्याप सेवा नाहीत."
     blocked_period_saved: ब्लॉक केलेला कालावधी यशस्वीरित्या साठवला.
     blocked_period_deleted: ब्लॉक केलेला कालावधी यशस्वीरित्या हटवला.
     delete_blocked_period: ब्लॉक केलेला कालावधी हटवा
@@ -545,6 +557,8 @@ mr:
     delete_webhook: Webhook हटवा
     contact_info: संपर्क माहिती
     hide_from_public: सार्वजनिकपणे लपवा
+    bookable_by_public: "सार्वजनिकपणे बुक करता येईल"
+    bookable_hint: "सेवा बुकिंग पृष्ठावर फक्त वर्णनासह दाखवण्यासाठी निवड काढा. उपभोक्ते ती ऑनलाइन बुक करू शकत नाहीत; ती कशी ठरवायची ते वर्णनात लिहा."
     matomo_analytics_site_id: Matomo Analytics साइट ID
     matomo_analytics_site_id_hint: Matomo द्वारे ट्रॅक केले जाईल असा साइट ID सेट करा (डिफॉल्ट साइट ID "1" आहे).
     default_timezone: डिफॉल्ट टाइमझोन
@@ -1068,8 +1082,8 @@ mr:
     activity_appointment_changed: "बदलले"
     activity_appointment_cancelled: "रद्द केले"
     activity_appointment_deleted: "हटवले"
-    activity_unavailability_saved: "अनुपलब्धता जोडली"
-    activity_unavailability_deleted: "अनुपलब्धता काढली"
+    activity_unavailability_saved: "व्यस्त वेळ जोडली"
+    activity_unavailability_deleted: "व्यस्त वेळ काढली"
     activity_message_sent: "संदेश पाठवला"
     activity_message_failed: "संदेश अयशस्वी"
     activity_message_received: "संदेश मिळाला"
@@ -1080,6 +1094,7 @@ mr:
     activity_actor_system: "प्रणाली"
     activity_actor_import: "आयात"
     activity_appointment_summary: "{{customer}} साठी {{service}}, {{provider}} सोबत, {{when}}"
+    activity_unavailability_summary: "{{type}}, {{provider}}, {{when}}"
     activity_status_summary: "स्थिती {{status}}"
     activity_reason_summary: "कारण: {{reason}}"
     activity_message_summary: "{{audience}} ला {{notification}}, {{channel}} द्वारे, {{address}}"
@@ -1087,5 +1102,8 @@ mr:
     activity_waitlist_summary: "{{customer}} साठी {{service}}, {{provider}} सोबत"
     free: "मोकळे"
     free_hint: "बुकिंग कालावधीतील भेटींसाठी मोकळ्या वेळा, तारखेनुसार आणि व्यवस्थापकानुसार."
-    free_window: "{{from}} ते {{to}} या कालावधीत भेटींसाठी मोकळे"
     free_empty: "बुकिंग कालावधीत भेटींसाठी काहीही मोकळे नाही."
+    free_from: "पासून"
+    free_to: "पर्यंत"
+    free_reset_hint: "बुकिंग कालावधीकडे परत जा"
+    print_free_title: "भेटींसाठी मोकळे"

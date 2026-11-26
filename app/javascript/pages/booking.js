@@ -322,6 +322,11 @@ App.Pages.Booking = (function () {
             if ($select.hasClass('d-none') && !$select.val()) {
                 event.preventDefault();
             }
+            // A service not bookable by the public stays on its description.
+            if ($select.find('option:selected').data('bookable') === false) {
+                event.preventDefault();
+                showDescription();
+            }
         } else if (form.id === 'info-step-form') {
             if (!validateDetails(form)) {
                 event.preventDefault();

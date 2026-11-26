@@ -7,15 +7,19 @@ class FreeController < ApplicationController
 
   layout "backend"
 
-  # GET /free?providers[]=(id)
+  # The longest range the page builds, however the dates are typed.
+  MAX_DAYS = 180
+
+  # GET /free?providers[]=(id)&from=YYYY-MM-DD&to=YYYY-MM-DD
   # Without providers every stylist is shown; a lone blank value means none.
+  # Without dates the booking window is shown.
   def index
     return unless require_backend_page!(:system_settings)
 
     @providers = visible_providers.to_a
     @provider_ids = params.key?(:providers) ? Array(params[:providers]).reject(&:blank?).map(&:to_i) : nil
-    @first = BookingWindows.business_today
-    @last = BookingWindows.last_bookable_date
+    @window = [ BookingWindows.business_today, BookingWindows.last_bookable_date ]
+    @first, @last = date_range
     @columns = build_columns(@provider_ids ? @providers.select { |p| @provider_ids.include?(p.id) } : @providers)
     backend_page_vars(page_title: helpers.lang("free"), active_menu: "free")
     script_vars(first_weekday: Setting.get("first_weekday"), **popover_script_vars)
@@ -33,6 +37,23 @@ class FreeController < ApplicationController
     @provider_ids.presence || [ "" ]
   end
   helper_method :provider_param
+
+  # The window's dates unless from or to is given; to never falls before from
+  # or more than MAX_DAYS after it.
+  def date_range
+    first = parse_date(params[:from]) || @window.first
+    last = parse_date(params[:to]) || @window.last
+    [ first, last.clamp(first, first + MAX_DAYS) ]
+  end
+
+  def parse_date(value)
+    Date.iso8601(value.to_s)
+  rescue Date::Error
+    nil
+  end
+
+  def custom_range? = [ @first, @last ] != @window
+  helper_method :custom_range?
 
   # [{ date:, days: [{ day: ProviderDay, entries: [free Entry] }] }] for the
   # dates with a free slot; stylists with none that day are left out. One

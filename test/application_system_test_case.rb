@@ -76,6 +76,16 @@ class ApplicationSystemTestCase < ActionDispatch::SystemTestCase
   # click during the transition is ignored or lands elsewhere: wait for the
   # shown modal to be opaque, for Bootstrap to have finished its transition and
   # for the dialog's slide-in to have settled.
+  # Opens a Bootstrap tab by its label and waits for its pane. The click is
+  # repeated while the page's scripts are still loading.
+  def open_tab(label, pane)
+    3.times do
+      click_on label
+      return if page.has_css?("#{pane}.active.show", wait: 3)
+    end
+    assert_selector "#{pane}.active.show", wait: 5
+  end
+
   def wait_for_modal
     assert_selector ".modal.show", wait: 5
     assert page.has_css?(".modal.show", wait: 5) && wait_until_shown, "modal did not finish showing"

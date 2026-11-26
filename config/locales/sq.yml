@@ -151,7 +151,7 @@ sq:
     log_out: Dilni
     reload: Rifresko
     appointment: Takimi
-    unavailability: Pamundësia
+    unavailability: "Kohë e zënë"
     week: Java
     month: Muaji
     today: Sot
@@ -168,7 +168,7 @@ sq:
     manage_users_hint: Menaxhoni përdoruesit e backend (administratorë, ofrues, asistentë).
     settings_hint: Vendosni cilësimet e sistemit dhe përdoruesit.
     log_out_hint: Dilni nga sistemi.
-    unavailability_periods_hint: Gjatë periudhave të pamundësisë, ofruesi nuk do të pranojë takime të reja.
+    unavailability_periods_hint: "Gjatë kohës së zënë ofruesi nuk mund të rezervohet."
     new_appointment_hint: Krijoni një takim të ri dhe ruajeni atë në bazën e të dhënave.
     reload_appointments_hint: Rifresko takimet në kalendar.
     appointment_updated: Takimi u përditësua me sukses.
@@ -187,9 +187,9 @@ sq:
     delete_appointment_title: Fshi Takimin
     write_appointment_removal_reason: 'Ju lutemi shkruani arsyen pse po fshini takimin:'
     appointment_saved: Takimi u ruajt me sukses.
-    new_unavailability_title: Pamundësi e Re
-    edit_unavailability_title: Ndrysho Pamundësinë
-    unavailability_saved: Pamundësia u ruajt me sukses.
+    new_unavailability_title: "Kohë e zënë e re"
+    edit_unavailability_title: "Ndrysho kohën e zënë"
+    unavailability_saved: "Koha e zënë u ruajt."
     start_date_before_end_error: Data e fillimit është pas datës së mbarimit.
     invalid_duration: Kohëzgjatje e pavlefshme.
     invalid_email: Adresa e email-it është e pavlefshme.
@@ -308,7 +308,7 @@ sq:
     delete_provider: Fshi Ofruesin
     delete_assistant: "Fshi asistentin"
     delete_appointment: Fshi Takimin
-    delete_unavailability: Fshi Pamundësinë
+    delete_unavailability: "Fshi kohën e zënë"
     delete: Fshi
     unexpected_issues: Çështje të Papritura
     unexpected_issues_message: Veprimi nuk mund të përfundonte.
@@ -324,7 +324,7 @@ sq:
     unexpected_issues_occurred: Ndodhën çështje të papritura.
     service_communication_error: Ndodhi një gabim në komunikimin me serverin, ju lutemi provoni përsëri.
     no_privileges_edit_appointments: Ju nuk keni privilegjet e nevojshme për të ndryshuar takimet.
-    unavailability_updated: Pamundësia u përditësua me sukses.
+    unavailability_updated: "Koha e zënë u përditësua."
     appointments: Takimet
     unexpected_warnings: Paralajmërime të Papritura
     unexpected_warnings_message: Veprimi u përfundua, por disa paralajmërime u shfaqën.
@@ -456,8 +456,18 @@ sq:
     verify_ssl: Verifiko SSL
     appointment_save: Ruajtja e Takimit
     appointment_delete: Fshirja e Takimit
-    unavailability_save: Ruajtja e Pamundësisë
-    unavailability_delete: Fshirja e Pamundësisë
+    unavailability_save: "Ruajtje e kohës së zënë"
+    unavailability_delete: "Fshirje e kohës së zënë"
+    unavailability_type: "Lloji"
+    unavailability_type_none: "Pa lloj"
+    unavailability_types: "Llojet e kohës së zënë"
+    unavailability_types_hint: "Llojet e kohës së zënë që stafi mund të vendosë në kalendar, si mbledhje, leje ose administratë, secila me ngjyrën e vet."
+    unavailability_type_saved: "Lloji u ruajt."
+    unavailability_type_deleted: "Lloji u hoq. Kohët e zëna të atij lloji ruhen pa lloj."
+    delete_unavailability_type: "Fshi llojin"
+    unavailability_stylists_hint: "Shënoni të gjithë ata për të cilët vlen koha e zënë. Krijohet një shënim për çdo ofrues dhe ndryshohen së bashku."
+    unavailability_also_for: "Edhe për {{names}}"
+    delete_unavailability_group: "Të hiqet kjo kohë e zënë për të gjithë {{count}} ofruesit?"
     customer_save: Ruajtja e Klientit
     customer_delete: Fshirja e Klientit
     service_save: Ruajtja e Shërbimit
@@ -529,6 +539,8 @@ sq:
     no_breaks: Pa Pauza
     service_categories: Kategoritë e Shërbimeve
     service_category: Kategoria e Shërbimit
+    category_services: "Shërbimet në këtë kategori"
+    category_no_services: "Ende nuk ka shërbime në këtë kategori."
     blocked_period_saved: Periudha e bllokuar u ruajt me sukses.
     blocked_period_deleted: Periudha e bllokuar u fshi me sukses.
     delete_blocked_period: Fshi Periudhën e Bllokuar
@@ -545,6 +557,8 @@ sq:
     delete_webhook: Fshi Webhook-un
     contact_info: Informacioni i Kontaktit
     hide_from_public: Fshih nga Publiku
+    bookable_by_public: "Rezervohet nga Publiku"
+    bookable_hint: "Hiqe shenjën për ta shfaqur shërbimin në faqen e rezervimeve vetëm me përshkrimin. Klientët nuk mund ta rezervojnë online; shkruaj te përshkrimi si të merren vesh."
     matomo_analytics_site_id: ID-ja e Faqes së Matomo Analytics
     matomo_analytics_site_id_hint: Vendosni ID-në e faqes që do të gjurmohet nga Matomo (faqja e parazgjedhur ka ID-në "1").
     default_timezone: Zona Kohore e Parazgjedhur
@@ -1068,8 +1082,8 @@ sq:
     activity_appointment_changed: "Ndryshuar"
     activity_appointment_cancelled: "Anuluar"
     activity_appointment_deleted: "Fshirë"
-    activity_unavailability_saved: "Padisponueshmëria u shtua"
-    activity_unavailability_deleted: "Padisponueshmëria u hoq"
+    activity_unavailability_saved: "Kohë e zënë u shtua"
+    activity_unavailability_deleted: "Kohë e zënë u hoq"
     activity_message_sent: "Mesazhi u dërgua"
     activity_message_failed: "Mesazhi dështoi"
     activity_message_received: "Mesazhi u mor"
@@ -1080,6 +1094,7 @@ sq:
     activity_actor_system: "Sistemi"
     activity_actor_import: "Importim"
     activity_appointment_summary: "{{service}} për {{customer}} me {{provider}}, {{when}}"
+    activity_unavailability_summary: "{{type}}, {{provider}}, {{when}}"
     activity_status_summary: "Statusi {{status}}"
     activity_reason_summary: "Arsyeja: {{reason}}"
     activity_message_summary: "{{notification}} për {{audience}} me {{channel}}, {{address}}"
@@ -1087,5 +1102,8 @@ sq:
     activity_waitlist_summary: "{{customer}} për {{service}} me {{provider}}"
     free: "Të lira"
     free_hint: "Vendet e lira për takime në dritaren e rezervimeve, datë pas date dhe ofrues pas ofruesi."
-    free_window: "Të lira për takime nga {{from}} deri më {{to}}"
     free_empty: "Nuk ka asgjë të lirë për takime në dritaren e rezervimeve."
+    free_from: "Nga"
+    free_to: "Deri"
+    free_reset_hint: "Kthehu te dritarja e rezervimeve"
+    print_free_title: "Të lira për takime"

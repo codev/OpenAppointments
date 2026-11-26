@@ -151,7 +151,7 @@ hu:
     log_out: Kijelentkezés
     reload: Frissít
     appointment: Időpont
-    unavailability: Nem áll rendelkezésre
+    unavailability: "Elfoglalt idő"
     week: Hét
     month: Hónap
     today: Ma
@@ -168,7 +168,7 @@ hu:
     manage_users_hint: Felhasználók kezelése (adminisztrátorok, szolgáltatók, asszisztensek).
     settings_hint: Rendszer és felhasználói beállítások.
     log_out_hint: Kijelentkezés
-    unavailability_periods_hint: Az foglalt időpontokban a szolgáltató nem fogad új bejelentkezéseket.
+    unavailability_periods_hint: "Elfoglalt idő alatt a szolgáltató nem foglalható."
     new_appointment_hint: Új időpont készítése és adatbázisba történő mentése.
     reload_appointments_hint: Az időpontok újra töltése.
     appointment_updated: Az időpont sikeresen frissítve.
@@ -187,9 +187,9 @@ hu:
     delete_appointment_title: Időpont törlése
     write_appointment_removal_reason: Az időpont törlésének az oka?
     appointment_saved: Az időpont sikeresen mentve.
-    new_unavailability_title: 'Új nem foglalható időpont '
-    edit_unavailability_title: Nem foglalható időpont szerkesztése
-    unavailability_saved: A nem foglalható időpont sikeresen mentve.
+    new_unavailability_title: "Új elfoglalt idő"
+    edit_unavailability_title: "Elfoglalt idő szerkesztése"
+    unavailability_saved: "Elfoglalt idő mentve."
     start_date_before_end_error: A kezdeti időpont későbbre esik, mint vég időpont.
     invalid_duration: Érvénytelen időtartam.
     invalid_email: Érvénytelen email cím.
@@ -308,7 +308,7 @@ hu:
     delete_provider: Szolgáltató törlése
     delete_assistant: "Asszisztens törlése"
     delete_appointment: Időpont törlése
-    delete_unavailability: Nem foglalható időpont törlése
+    delete_unavailability: "Elfoglalt idő törlése"
     delete: Törlés
     unexpected_issues: Váratlan események
     unexpected_issues_message: A művelet nem fejeződött be.
@@ -324,7 +324,7 @@ hu:
     unexpected_issues_occurred: Nem várt esemény történt.
     service_communication_error: Kommunikációs hiba volt a szerverrel, próbálkozz később.
     no_privileges_edit_appointments: Nincs megfelelő jogosultságod az időpont szerkesztéséhez.
-    unavailability_updated: Nem foglalható időpont sikeresen frissítve.
+    unavailability_updated: "Elfoglalt idő frissítve."
     appointments: 'Időpontok '
     unexpected_warnings: Nem várt hiba
     unexpected_warnings_message: A művelet be fejeződött, de felmerült néhány hiba.
@@ -456,8 +456,18 @@ hu:
     verify_ssl: SSL ellenőrzése
     appointment_save: Időpont mentése
     appointment_delete: Időpont törlése
-    unavailability_save: Elérhetetlenség mentése
-    unavailability_delete: Elérhetetlenség törlése
+    unavailability_save: "Elfoglalt idő mentése"
+    unavailability_delete: "Elfoglalt idő törlése"
+    unavailability_type: "Típus"
+    unavailability_type_none: "Nincs típus"
+    unavailability_types: "Elfoglalt idő típusai"
+    unavailability_types_hint: "Az elfoglalt idő fajtái, amelyeket a személyzet a naptárba tehet, például megbeszélés, szabadság vagy adminisztráció, mindegyik saját színnel."
+    unavailability_type_saved: "Típus mentve."
+    unavailability_type_deleted: "Típus eltávolítva. Az ilyen típusú elfoglalt idők típus nélkül megmaradnak."
+    delete_unavailability_type: "Típus törlése"
+    unavailability_stylists_hint: "Jelölje be mindenkit, akire az elfoglalt idő vonatkozik. Szolgáltatónként egy bejegyzés készül, és együtt szerkeszthetők."
+    unavailability_also_for: "Továbbá: {{names}}"
+    delete_unavailability_group: "Eltávolítja ezt az elfoglalt időt mind a {{count}} szolgáltatótól?"
     customer_save: Ügyfél mentése
     customer_delete: Ügyfél törlése
     service_save: Szolgáltatás mentése
@@ -529,6 +539,8 @@ hu:
     no_breaks: Nincsenek szünetek
     service_categories: Szolgáltatási Kategóriák
     service_category: Szolgáltatási Kategória
+    category_services: "A kategória szolgáltatásai"
+    category_no_services: "Ebben a kategóriában még nincs szolgáltatás."
     blocked_period_saved: A blokkolt időszak sikeresen mentve.
     blocked_period_deleted: A blokkolt időszak sikeresen törölve.
     delete_blocked_period: Blokkolt időszak törlése
@@ -545,6 +557,8 @@ hu:
     delete_webhook: Webhook törlése
     contact_info: Kapcsolati Információ
     hide_from_public: Elrejtés a nyilvánosság elől
+    bookable_by_public: "A nyilvánosság foglalhatja"
+    bookable_hint: "Szedje ki a pipát, ha a szolgáltatást csak a leírásával együtt szeretné megjeleníteni a foglalási oldalon. Az ügyfelek nem foglalhatják online; a leírásban adja meg, hogyan egyeztethető."
     matomo_analytics_site_id: Matomo Analytics Webhelyazonosító
     matomo_analytics_site_id_hint: Állítsa be a webhelyazonosítót, amelyet a Matomo követni fog (az alapértelmezett webhely az "1" azonosítóval rendelkezik).
     default_timezone: Alapértelmezett időzóna
@@ -1068,8 +1082,8 @@ hu:
     activity_appointment_changed: "Módosítva"
     activity_appointment_cancelled: "Lemondva"
     activity_appointment_deleted: "Törölve"
-    activity_unavailability_saved: "Nem elérhető időszak hozzáadva"
-    activity_unavailability_deleted: "Nem elérhető időszak eltávolítva"
+    activity_unavailability_saved: "Elfoglalt idő hozzáadva"
+    activity_unavailability_deleted: "Elfoglalt idő eltávolítva"
     activity_message_sent: "Üzenet elküldve"
     activity_message_failed: "Üzenet küldése sikertelen"
     activity_message_received: "Üzenet érkezett"
@@ -1080,6 +1094,7 @@ hu:
     activity_actor_system: "Rendszer"
     activity_actor_import: "Importálás"
     activity_appointment_summary: "{{service}} {{customer}} részére, {{provider}}, {{when}}"
+    activity_unavailability_summary: "{{type}}, {{provider}}, {{when}}"
     activity_status_summary: "Állapot: {{status}}"
     activity_reason_summary: "Ok: {{reason}}"
     activity_message_summary: "{{notification}} {{audience}} részére, {{channel}}, {{address}}"
@@ -1087,5 +1102,8 @@ hu:
     activity_waitlist_summary: "{{customer}}, {{service}}, {{provider}}"
     free: "Szabad"
     free_hint: "Szabad időpontok foglalásokhoz a foglalási ablakban, napról napra és szolgáltatónként."
-    free_window: "Szabad időpontok {{from}} és {{to}} között"
     free_empty: "Nincs szabad időpont a foglalási ablakban."
+    free_from: "Ettől"
+    free_to: "Eddig"
+    free_reset_hint: "Vissza a foglalási ablakhoz"
+    print_free_title: "Szabad időpontok"

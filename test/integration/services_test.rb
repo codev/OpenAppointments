@@ -78,6 +78,21 @@ class ServicesTest < ActionDispatch::IntegrationTest
     assert_redirected_to "/services"
   end
 
+  test "the description is a rich text field and its markup reaches the booking page" do
+    login_admin
+    get "/services/#{services(:haircut).id}/edit"
+    assert_select "textarea.rich-text[name='service[description]']"
+
+    patch "/services/#{services(:haircut).id}",
+          params: { service: { description: '<p>Dry <strong>cuts</strong><img src="x" onerror="alert(1)"></p>' } }
+    assert_equal '<p>Dry <strong>cuts</strong><img src="x"></p>', services(:haircut).reload.description
+
+    delete "/logout"
+    get "/"
+    assert_select ".selection-description[data-for-service=?] .service-description p strong", services(:haircut).id.to_s, text: "cuts"
+    assert_select ".selection-description [onerror]", count: 0
+  end
+
   test "regenerate link changes the slug and returns the edit form" do
     login_admin
     haircut = services(:haircut)

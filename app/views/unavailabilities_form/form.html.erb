@@ -8,14 +8,33 @@
         </div>
         <div class="modal-body">
             <% if @error %><div class="modal-message alert alert-danger"><%= @error %></div><% end %>
+            <%# One provider offered: a fixed name; several: a tick list, one row per ticked provider. %>
             <div class="mb-3">
-                <label for="unavailability-provider" class="form-label"><%= lang('provider') %></label>
-                <select name="unavailability[id_users_provider]" id="unavailability-provider" class="form-select" required>
-                    <% @providers.each do |provider| %>
-                        <option value="<%= provider.id %>" data-timezone="<%= format_timezone(provider.effective_timezone) %>"
-                                <%= 'selected' if provider.id == @unavailability.id_users_provider %>><%= provider.name %></option>
+                <label class="form-label"><%= lang(@providers.size == 1 ? 'provider' : 'providers') %> <span class="text-danger">*</span></label>
+                <div id="unavailability-providers" class="d-flex flex-wrap column-gap-4 row-gap-1">
+                    <% if @providers.size == 1 %>
+                        <%= hidden_field_tag "unavailability[provider_ids][]", @providers.first.id, id: nil, data: { timezone: format_timezone(@providers.first.effective_timezone) } %>
+                        <span><%= @providers.first.name %></span>
+                    <% else %>
+                        <% @providers.each do |provider| %>
+                            <div class="form-check">
+                                <%= check_box_tag "unavailability[provider_ids][]", provider.id, @selected_provider_ids.include?(provider.id),
+                                                  id: "unavailability-provider-#{provider.id}", class: "form-check-input",
+                                                  data: { timezone: format_timezone(provider.effective_timezone) } %>
+                                <label class="form-check-label" for="unavailability-provider-<%= provider.id %>"><%= provider.name %></label>
+                            </div>
+                        <% end %>
                     <% end %>
-                </select>
+                </div>
+                <% if @providers.size > 1 %>
+                    <div class="form-text"><%= lang('unavailability_stylists_hint') %></div>
+                <% end %>
+            </div>
+            <div class="mb-3">
+                <label for="unavailability-type" class="form-label"><%= lang('unavailability_type') %></label>
+                <%= select_tag "unavailability[unavailability_type_id]",
+                               options_from_collection_for_select(@types, :id, :name, @unavailability.unavailability_type_id),
+                               include_blank: lang('unavailability_type_none'), id: "unavailability-type", class: "form-select" %>
             </div>
             <div class="mb-3">
                 <label for="unavailability-start" class="form-label"><%= lang('start') %> <span class="text-danger">*</span></label>
@@ -42,10 +61,23 @@
             </div>
         </div>
         <div class="modal-footer">
+            <%# Delete posts the separate form after this one (forms cannot nest); it removes the group as far as the user sees it. %>
+            <% unless new_record %>
+                <button type="submit" form="delete-unavailability" class="btn btn-outline-danger me-auto"
+                        data-turbo-confirm-title="<%= lang('delete_unavailability') %>">
+                    <i class="fas fa-trash-alt me-2"></i><%= lang('delete') %>
+                </button>
+            <% end %>
             <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal"><%= lang('cancel') %></button>
             <button type="submit" id="save-unavailability" class="btn btn-primary">
                 <i class="fas fa-check-square me-2"></i><%= lang('save') %>
             </button>
         </div>
+    <% end %>
+    <% unless new_record %>
+        <% group_size = @selected_provider_ids.size %>
+        <%= form_with url: unavailability_path(@unavailability), method: :delete, id: "delete-unavailability",
+                      data: { turbo_confirm: group_size > 1 ? lang('delete_unavailability_group').sub('{{count}}', group_size.to_s) : lang('delete_record_prompt') } do %>
+        <% end %>
     <% end %>
 </turbo-frame>

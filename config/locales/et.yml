@@ -151,7 +151,7 @@ et:
     log_out: Logi välja
     reload: Lae uuesti
     appointment: Broneering
-    unavailability: Ei ole saadaval
+    unavailability: "Hõivatud aeg"
     week: Nädal
     month: Kuu
     today: Täna
@@ -168,7 +168,7 @@ et:
     manage_users_hint: Halda süsteemi kasutajaid (adminid, teenusepakkujad, assistendid).
     settings_hint: Halda süsteemi- ja kasutajakohaseid seadeid.
     log_out_hint: Logi süsteemist välja.
-    unavailability_periods_hint: Teenusepakkuja äraolekujale ei saa broneeringuid teha.
+    unavailability_periods_hint: "Hõivatud ajal ei saa teenusepakkujat broneerida."
     new_appointment_hint: Loo uus broneering ja salvesta see kalendrisse.
     reload_appointments_hint: Värskenda broneeringute kalendri vaadet.
     appointment_updated: Broneeringu muutmine õnnestus.
@@ -187,9 +187,9 @@ et:
     delete_appointment_title: Kustuta broneering
     write_appointment_removal_reason: 'Kirjuta broneeringu eemaldamise põhjus:'
     appointment_saved: Broneeringu salvestamine õnnestus.
-    new_unavailability_title: Uus äraoleku aeg
-    edit_unavailability_title: Muuda äraoleku aegasid
-    unavailability_saved: Äraoleku aeg salvestatud.
+    new_unavailability_title: "Uus hõivatud aeg"
+    edit_unavailability_title: "Muuda hõivatud aega"
+    unavailability_saved: "Hõivatud aeg salvestatud."
     start_date_before_end_error: Alguspäev on lõppkuupäevast hilisem.
     invalid_duration: Kehtetu kestvus.
     invalid_email: Vigane e-posti aadress.
@@ -308,7 +308,7 @@ et:
     delete_provider: Kustuta teenuseosutaja
     delete_assistant: "Kustuta assistent"
     delete_appointment: Kustuta broneering
-    delete_unavailability: Kustuta eemalolek
+    delete_unavailability: "Kustuta hõivatud aeg"
     delete: Kustuta
     unexpected_issues: Oootamatu probleem
     unexpected_issues_message: Toimingut ei saanud lõpule viia.
@@ -324,7 +324,7 @@ et:
     unexpected_issues_occurred: Tekkisid ootamatud probleemid.
     service_communication_error: Ühendus serveriga katkes. Proovi uuesti.
     no_privileges_edit_appointments: Broneeringu muutmiseks puuduvad õigused.
-    unavailability_updated: Eemalolekuaeg uuendatud.
+    unavailability_updated: "Hõivatud aeg uuendatud."
     appointments: Broneeringud
     unexpected_warnings: Ootamatud hoiatused
     unexpected_warnings_message: Toiming sooritati, kuid esines mõningaid hoiatusi.
@@ -456,8 +456,18 @@ et:
     verify_ssl: Kontrolli SSL-i
     appointment_save: Kohtumise Salvestamine
     appointment_delete: Kohtumise Kustutamine
-    unavailability_save: Kohalolekuta Salvestamine
-    unavailability_delete: Kohalolekuta Kustutamine
+    unavailability_save: "Hõivatud aja salvestamine"
+    unavailability_delete: "Hõivatud aja kustutamine"
+    unavailability_type: "Tüüp"
+    unavailability_type_none: "Tüübita"
+    unavailability_types: "Hõivatud aja tüübid"
+    unavailability_types_hint: "Hõivatud aja liigid, mida töötajad saavad kalendrisse panna, näiteks koosolekud, puhkus või haldus, igaüks oma värviga."
+    unavailability_type_saved: "Tüüp salvestatud."
+    unavailability_type_deleted: "Tüüp eemaldatud. Selle tüübi hõivatud ajad jäävad tüübita alles."
+    delete_unavailability_type: "Kustuta tüüp"
+    unavailability_stylists_hint: "Märgi kõik, keda hõivatud aeg puudutab. Iga teenusepakkuja kohta tehakse üks kirje ja neid muudetakse koos."
+    unavailability_also_for: "Ka: {{names}}"
+    delete_unavailability_group: "Eemaldada see hõivatud aeg kõigilt {{count}} teenusepakkujalt?"
     customer_save: Kliendi Salvestamine
     customer_delete: Kliendi Kustutamine
     service_save: Teenuse Salvestamine
@@ -529,6 +539,8 @@ et:
     no_breaks: Pole Pausi
     service_categories: Teenuse Kategooriad
     service_category: Teenuse Kategooria
+    category_services: "Teenused selles kategoorias"
+    category_no_services: "Selles kategoorias pole veel teenuseid."
     blocked_period_saved: Blokeeritud periood salvestati edukalt.
     blocked_period_deleted: Blokeeritud periood kustutati edukalt.
     delete_blocked_period: Kustuta Blokeeritud Periood
@@ -545,6 +557,8 @@ et:
     delete_webhook: Kustuta Webhook
     contact_info: Kontaktinfo
     hide_from_public: Peida Avalikkuse Eest
+    bookable_by_public: "Avalikkusele broneeritav"
+    bookable_hint: "Eemalda linnuke, et teenus kuvataks broneerimislehel ainult kirjeldusega. Kliendid ei saa seda veebis broneerida; kirjuta kirjeldusse, kuidas selle kokku leppida."
     matomo_analytics_site_id: Matomo Analytics saidi ID
     matomo_analytics_site_id_hint: Määrake saidi ID, mida Matomo jälgib (vaikimisi sait on ID-ga "1").
     default_timezone: Vaikimisi Ajakohand
@@ -1068,8 +1082,8 @@ et:
     activity_appointment_changed: "Muudetud"
     activity_appointment_cancelled: "Tühistatud"
     activity_appointment_deleted: "Kustutatud"
-    activity_unavailability_saved: "Mittesaadavus lisatud"
-    activity_unavailability_deleted: "Mittesaadavus eemaldatud"
+    activity_unavailability_saved: "Hõivatud aeg lisatud"
+    activity_unavailability_deleted: "Hõivatud aeg eemaldatud"
     activity_message_sent: "Sõnum saadetud"
     activity_message_failed: "Sõnumi saatmine ebaõnnestus"
     activity_message_received: "Sõnum vastu võetud"
@@ -1080,6 +1094,7 @@ et:
     activity_actor_system: "Süsteem"
     activity_actor_import: "Import"
     activity_appointment_summary: "{{service}} kliendile {{customer}}, teenusepakkuja {{provider}}, {{when}}"
+    activity_unavailability_summary: "{{type}}, {{provider}}, {{when}}"
     activity_status_summary: "Olek {{status}}"
     activity_reason_summary: "Põhjus: {{reason}}"
     activity_message_summary: "{{notification}} saajale {{audience}} kanali {{channel}} kaudu, {{address}}"
@@ -1087,5 +1102,8 @@ et:
     activity_waitlist_summary: "{{customer}} teenusele {{service}}, teenusepakkuja {{provider}}"
     free: "Vaba"
     free_hint: "Vabad ajad kohtumisteks broneerimisperioodil, päev päeva haaval ja teenusepakkuja kaupa."
-    free_window: "Vaba kohtumisteks {{from}} kuni {{to}}"
     free_empty: "Broneerimisperioodil pole kohtumisteks midagi vaba."
+    free_from: "Alates"
+    free_to: "Kuni"
+    free_reset_hint: "Tagasi broneerimisperioodi juurde"
+    print_free_title: "Vaba kohtumisteks"

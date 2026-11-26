@@ -1,0 +1,11 @@
+<%= render "shared/crud_form", record: record, delete_title: lang('delete_unavailability_type') do |f| %>
+    <div class="mb-3">
+        <%= f.label :name, class: "form-label" do %>
+            <%= lang('name') %> <span class="text-danger">*</span>
+        <% end %>
+        <%= f.text_field :name, required: true,
+                         class: "form-control #{'is-invalid' if record.errors.include?(:name)}" %>
+    </div>
+
+    <%= render "shared/color_selection", name: "unavailability_type[color]", value: record.color %>
+<% end %>

@@ -96,9 +96,10 @@ class PaymentsBackendTest < ActionDispatch::IntegrationTest
     appointment.update!(payment_method: "stripe", payment_reference: "cs_1", paid_at: Time.new(2026, 7, 2, 9, 0, 0))
     sheets = DataExport.sheets
     header = sheets["Appointments"].first
-    assert_equal %w[payment_method payment_reference paid_at], header.last(3)
+    columns = %w[payment_method payment_reference paid_at].map { |name| header.index(name) }
+    assert_not_includes columns, nil
     row = sheets["Appointments"].find { |r| r[header.index("booking_hash")] == appointment.booking_hash }
-    assert_equal [ "stripe", "cs_1", "2026-07-02 09:00:00" ], row.last(3)
+    assert_equal [ "stripe", "cs_1", "2026-07-02 09:00:00" ], row.values_at(*columns)
 
     path = Rails.root.join("tmp", "payments-export-#{SecureRandom.hex(4)}.ods")
     File.binwrite(path, Ods.generate(sheets))

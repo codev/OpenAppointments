@@ -96,8 +96,8 @@ App.Components.EventModal = (function () {
     }
 
     function updateTimezone() {
-        const option = $('#select-provider option:selected, #unavailability-provider option:selected').first();
-        $('.event-form .provider-timezone').text(option.data('timezone') || '-');
+        const picked = $('#select-provider option:selected, #unavailability-providers input:checked, #unavailability-providers input[type=hidden]').first();
+        $('.event-form .provider-timezone').text(picked.data('timezone') || '-');
     }
 
     function fillCustomer(customer) {
@@ -197,7 +197,7 @@ App.Components.EventModal = (function () {
             document.addEventListener('submit', onSubmit, true);
 
             $(document).on('change', '#select-service', () => updateProviders(true));
-            $(document).on('change', '#select-provider, #unavailability-provider', updateTimezone);
+            $(document).on('change', '#select-provider, #unavailability-providers input', updateTimezone);
             $(document).on('click', '#select-customer', () => toggleCustomerList(!$('#existing-customers-list').is(':visible')));
             $(document).on('click', '#existing-customers-list div', (event) => {
                 fillCustomer(JSON.parse(event.currentTarget.dataset.customer));

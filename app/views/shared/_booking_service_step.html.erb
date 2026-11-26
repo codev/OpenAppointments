@@ -26,7 +26,7 @@
                             <option value=""><%= lang('please_select') %></option>
                             <% has_category = available_services.any? { |service| service["service_category_id"].present? } %>
                             <% option = ->(service) { %>
-                                <option value="<%= service['id'] %>" <%= 'selected' if service['id'] == @service_id %>><%= service['name'] %></option>
+                                <option value="<%= service['id'] %>" <%= 'selected' if service['id'] == @service_id %><%== ' data-bookable="false"' if service['is_bookable'] == false %>><%= service['name'] %></option>
                             <% } %>
                             <% if has_category %>
                                 <% grouped_services = available_services.select { |service| service["service_category_id"].present? }
@@ -114,7 +114,7 @@
                                 <% info << "#{lang('location')}: #{service['location']}" if service["location"].present? %>
                                 <div class="mb-2 fst-italic"><%= info.join(", ") %></div>
                                 <% if service["description"].present? %>
-                                    <div class="text-muted mb-2"><%= simple_format(service["description"]) %></div>
+                                    <div class="text-muted mb-2 service-description"><%= sanitize service["description"], attributes: RichText::ATTRIBUTES %></div>
                                 <% end %>
                             </div>
                         <% end %>
