@@ -261,6 +261,9 @@ class BookingWizardFlowTest < ApplicationSystemTestCase
     assert_selector ".display-booking-selection", text: "#{services(:haircut).name} │ #{pick}"
 
     click_on "Confirm"
+    # Confirm leaves the page: wait on the URL, which the driver reads without
+    # touching a document that is being replaced.
+    assert_current_path %r{/booking_confirmation/of/}, wait: 10
     assert_text "You're all set!", wait: 10
     appointment = Appointment.appointments.order(:id).last
     assert_equal pick, appointment.provider.name
@@ -289,6 +292,8 @@ class BookingWizardWindowTest < ApplicationSystemTestCase
     second_day = working_day(1)
     find(".flatpickr-day[aria-label='#{first_day.strftime('%B %-d, %Y')}']").click
     assert_selector "#available-hours .available-hour", minimum: 2
+    # Days outside the shown month are hidden, so turn the page when the two days straddle one.
+    find(".flatpickr-next-month").click if second_day.month != first_day.month
     find(".flatpickr-day[aria-label='#{second_day.strftime('%B %-d, %Y')}']").click
     assert_selector "#available-hours .available-hour", minimum: 2
     assert_equal 0, page.evaluate_script("window.__requests"), "day browsing must not hit the server"

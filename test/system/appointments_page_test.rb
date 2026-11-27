@@ -247,6 +247,25 @@ class AppointmentsPageRefreshTest < ApplicationSystemTestCase
     page.execute_script("window.localStorage.removeItem('OpenAppointments.SeriesView')")
   end
 
+  # The button sits inside the filter form: a submit button there would load
+  # the frame a second time through the form and replace entries a click may
+  # already hold.
+  test "the Refresh button loads the day view once" do
+    login_as_admin
+    visit appointments_url
+    assert_selector "#day-filter", wait: 5
+    page.execute_script(<<~JS)
+      window.dayViewLoads = 0;
+      document.addEventListener('turbo:frame-load', (event) => {
+        if (event.target.id === 'day_view') window.dayViewLoads += 1;
+      });
+    JS
+    find("#reload-appointments").click
+    assert_selector "#day-filter", wait: 5
+    sleep 1
+    assert_equal 1, page.evaluate_script("window.dayViewLoads")
+  end
+
   test "the reload button still works on the calendar page after the appointments page was visited" do
     login_as_admin
     visit appointments_url
