@@ -92,7 +92,8 @@ class ApplicationSystemTestCase < ActionDispatch::SystemTestCase
       click_on label
       return if page.has_css?("#{pane}.active.show", wait: 3)
     end
-    assert_selector "#{pane}.active.show", wait: 5
+    console = page.driver.browser.logs.get(:browser).map(&:message).join("\n")
+    assert page.has_css?("#{pane}.active.show", wait: 5), "#{pane} did not open; browser console:\n#{console}"
   end
 
   def wait_for_modal
