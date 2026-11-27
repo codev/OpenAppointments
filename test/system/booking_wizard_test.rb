@@ -330,6 +330,8 @@ class BookingWizardWindowTest < ApplicationSystemTestCase
 
   test "the time step refuses Next until an hour is chosen" do
     to_time_step
+    # Drawing the hours empties their box, prompt included, so press Next only once they are there.
+    assert_selector "#available-hours .available-hour", minimum: 1, wait: 5
     find("#button-next-3").click
     assert_selector "#select-hour-prompt", text: I18n.t("ea.appointment_hour_missing")
     assert_selector "#wizard-frame-3", visible: :visible
