@@ -2,6 +2,30 @@
 # Set before test_helper configures parallelisation.
 ENV["PARALLEL_WORKERS"] ||= "1"
 require "test_helper"
+require "capybara/selenium/driver"
+require "capybara/selenium/driver_specializations/chrome_driver"
+
+# Capybara 3.40 resets Chrome between tests with Storage.clearDataForOrigin on the
+# origin "*", which Chrome 158 rejects as an invalid URL; the fallback clears the
+# cookies and the app origin's storage by name.
+module ChromeDriverReset
+  def reset!
+    super
+  rescue Selenium::WebDriver::Error::InvalidArgumentError
+    clear_browser_state
+  end
+
+  private
+
+  def clear_browser_state
+    execute_cdp("Network.clearBrowserCookies")
+    server = Capybara.current_session.server
+    return unless server
+
+    execute_cdp("Storage.clearDataForOrigin", origin: "http://#{server.host}:#{server.port}", storageTypes: "cookies,local_storage")
+  end
+end
+Capybara::Selenium::Driver::ChromeDriver.prepend(ChromeDriverReset)
 
 class ApplicationSystemTestCase < ActionDispatch::SystemTestCase
   # Plain Chrome (CI) works as-is. A snap-packaged Chromium (local dev) can only
