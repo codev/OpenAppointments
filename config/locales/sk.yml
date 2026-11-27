@@ -151,7 +151,7 @@ sk:
     log_out: Odhlasiť sa
     reload: Obnoviť
     appointment: Rezervácie
-    unavailability: Nedostupné
+    unavailability: "Obsadený čas"
     week: Týždeň
     month: Mesiac
     today: Dnes
@@ -168,7 +168,7 @@ sk:
     manage_users_hint: Správa užívateľov administrácie (Administrátori, pracovníci, asistentov...).
     settings_hint: Nastavenia systému a nastavenia užívateľov.
     log_out_hint: Odhlásiť sa zo systému.
-    unavailability_periods_hint: Počas nedostupnosti (otváracia doba) nebudú akceptované nové rezervácie.
+    unavailability_periods_hint: "Počas obsadeného času nie je možné poskytovateľa rezervovať."
     new_appointment_hint: Vytvorte novú rezerváciu a uložte ju do databázy.
     reload_appointments_hint: Obnoviť rezervácie v kalendári.
     appointment_updated: Rezervácia úspešne aktualizovaná.
@@ -187,9 +187,9 @@ sk:
     delete_appointment_title: Odstrániť rezerváciu
     write_appointment_removal_reason: 'Venujte prosím chvíľu a napíšte nám dôvod, prečo ste zrušili Vašu rezerváciu:'
     appointment_saved: Rezervácia bola úspešne uložená.
-    new_unavailability_title: Nové nedostupné obdobie
-    edit_unavailability_title: Upraviť nedostupné obdobie
-    unavailability_saved: Nedostupné obdobie úspešne uložené.
+    new_unavailability_title: "Nový obsadený čas"
+    edit_unavailability_title: "Upraviť obsadený čas"
+    unavailability_saved: "Obsadený čas uložený."
     start_date_before_end_error: Dátum začatia je väčší ako dátum konca.
     invalid_duration: Neplatné trvanie.
     invalid_email: Neplatné emailová adresa.
@@ -308,7 +308,7 @@ sk:
     delete_provider: Zmazať pracovníka
     delete_assistant: "Vymazať asistenta"
     delete_appointment: Zmazať rezerváciu
-    delete_unavailability: Zmazať nedostupnú dobu
+    delete_unavailability: "Zmazať obsadený čas"
     delete: Zmazať
     unexpected_issues: Neočakávaný problém
     unexpected_issues_message: Operáciu sa nepodarilo dokončiť.
@@ -324,7 +324,7 @@ sk:
     unexpected_issues_occurred: Došlo k neočakávanej chybe
     service_communication_error: Pri komunikácií so serverom došlo k chybe, skúste to prosím znova.
     no_privileges_edit_appointments: Nemáte požadované povolenia k úpravám rezervácie.
-    unavailability_updated: Nedostupná doba úspešne aktualizované.
+    unavailability_updated: "Obsadený čas aktualizovaný."
     appointments: Rezervácie
     unexpected_warnings: Neočakávané Varovanie
     unexpected_warnings_message: Dokončenie operácie, ale niektoré varovania sa objavili.
@@ -456,8 +456,18 @@ sk:
     verify_ssl: Overiť SSL
     appointment_save: Uloženie stretnutia
     appointment_delete: Vymazanie schôdzky
-    unavailability_save: Uložiť pre nedostupnosť
-    unavailability_delete: Vymazanie nedostupnosti
+    unavailability_save: "Uloženie obsadeného času"
+    unavailability_delete: "Zmazanie obsadeného času"
+    unavailability_type: "Typ"
+    unavailability_type_none: "Bez typu"
+    unavailability_types: "Typy obsadeného času"
+    unavailability_types_hint: "Druhy obsadeného času, ktoré môže personál zapísať do kalendára, napríklad stretnutia, dovolenka alebo administratíva, každý s vlastnou farbou."
+    unavailability_type_saved: "Typ uložený."
+    unavailability_type_deleted: "Typ odstránený. Obsadené časy tohto typu zostávajú bez typu."
+    delete_unavailability_type: "Zmazať typ"
+    unavailability_stylists_hint: "Označte všetkých, ktorých sa obsadený čas týka. Pre každého poskytovateľa vznikne jeden záznam a upravujú sa spolu."
+    unavailability_also_for: "Aj pre {{names}}"
+    delete_unavailability_group: "Odstrániť tento obsadený čas všetkým {{count}} poskytovateľom?"
     customer_save: Uložiť zákazníka
     customer_delete: Vymazanie zákazníka
     service_save: Uloženie služby
@@ -529,6 +539,8 @@ sk:
     no_breaks: Žiadne prestávky
     service_categories: Kategórie služieb
     service_category: Kategória služieb
+    category_services: "Služby v tejto kategórii"
+    category_no_services: "V tejto kategórii zatiaľ nie sú žiadne služby."
     blocked_period_saved: Blokované obdobie bolo úspešne uložené.
     blocked_period_deleted: Blokované obdobie bolo úspešne odstránené.
     delete_blocked_period: Odstrániť blokované obdobie
@@ -545,6 +557,8 @@ sk:
     delete_webhook: Odstrániť webhook
     contact_info: Kontaktné informácie
     hide_from_public: Skryť pred verejnosťou
+    bookable_by_public: "Verejnosť môže rezervovať"
+    bookable_hint: "Zrušte začiarknutie, aby sa služba zobrazila na rezervačnej stránke iba s popisom. Klienti ju nebudú môcť rezervovať online; v popise uveďte, ako ju dohodnúť."
     matomo_analytics_site_id: Matomo Analytics Site ID
     matomo_analytics_site_id_hint: Nastavte ID stránky, ktorá bude sledovaná Matomo (predvolená stránka má ID "1").
     default_timezone: Predvolené časové pásmo
@@ -1068,8 +1082,8 @@ sk:
     activity_appointment_changed: "Zmenené"
     activity_appointment_cancelled: "Zrušené"
     activity_appointment_deleted: "Odstránené"
-    activity_unavailability_saved: "Nedostupnosť pridaná"
-    activity_unavailability_deleted: "Nedostupnosť odstránená"
+    activity_unavailability_saved: "Obsadený čas pridaný"
+    activity_unavailability_deleted: "Obsadený čas odstránený"
     activity_message_sent: "Správa odoslaná"
     activity_message_failed: "Správu sa nepodarilo odoslať"
     activity_message_received: "Správa prijatá"
@@ -1080,6 +1094,7 @@ sk:
     activity_actor_system: "Systém"
     activity_actor_import: "Import"
     activity_appointment_summary: "{{service}} pre {{customer}} u {{provider}}, {{when}}"
+    activity_unavailability_summary: "{{type}}, {{provider}}, {{when}}"
     activity_status_summary: "Stav {{status}}"
     activity_reason_summary: "Dôvod: {{reason}}"
     activity_message_summary: "{{notification}} pre {{audience}} cez {{channel}}, {{address}}"
@@ -1087,5 +1102,8 @@ sk:
     activity_waitlist_summary: "{{customer}} na {{service}} u {{provider}}"
     free: "Voľné"
     free_hint: "Voľné termíny na rezerváciu v okne rezervácií, po dňoch a po pracovníkoch."
-    free_window: "Voľné termíny od {{from}} do {{to}}"
     free_empty: "V okne rezervácií nie sú žiadne voľné termíny."
+    free_from: "Od"
+    free_to: "Do"
+    free_reset_hint: "Späť na okno rezervácií"
+    print_free_title: "Voľné termíny"

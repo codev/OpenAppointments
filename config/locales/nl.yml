@@ -151,7 +151,7 @@ nl:
     log_out: Afmelden
     reload: Herladen
     appointment: Afspraak
-    unavailability: Niet beschikbaar
+    unavailability: "Bezette tijd"
     week: Week
     month: Maand
     today: Vandaag
@@ -168,7 +168,7 @@ nl:
     manage_users_hint: Beheer de backend gebruikers.
     settings_hint: Beheer het systeem en gebruikersinstellingen.
     log_out_hint: Log uit.
-    unavailability_periods_hint: Er kunnen geen nieuwe afspraken geaccepteerd worden als de medewerker niet beschikbaar is.
+    unavailability_periods_hint: "Tijdens bezette tijd kan de aanbieder niet geboekt worden."
     new_appointment_hint: Een nieuwe afspraak maken en opslaan in de database.
     reload_appointments_hint: Herlaad de afspraken.
     appointment_updated: Afspraak succesvol bijgewerkt.
@@ -187,9 +187,9 @@ nl:
     delete_appointment_title: Afspraak verwijderen
     write_appointment_removal_reason: 'Neemt u alstublieft even de tijd om de reden van annulering door te geven:'
     appointment_saved: Afspraak succesvol opgeslagen.
-    new_unavailability_title: Nieuwe periode waarop men niet beschikbaar is
-    edit_unavailability_title: Bewerk beschikbare periode
-    unavailability_saved: Onbeschikbaar periode succesvol opgeslagen.
+    new_unavailability_title: "Nieuwe bezette tijd"
+    edit_unavailability_title: "Bezette tijd bewerken"
+    unavailability_saved: "Bezette tijd opgeslagen."
     start_date_before_end_error: De startdatum is later dan de einddatum.
     invalid_duration: Ongeldige duur.
     invalid_email: Ongeldig e-mailadres.
@@ -308,7 +308,7 @@ nl:
     delete_provider: Verwijder medewerker
     delete_assistant: "Assistent verwijderen"
     delete_appointment: Afspraak verwijderen
-    delete_unavailability: Verwijder een niet beschikbare periode
+    delete_unavailability: "Bezette tijd verwijderen"
     delete: Verwijder
     unexpected_issues: Onverwachte problemen
     unexpected_issues_message: De bewerking kon niet worden voltooid.
@@ -324,7 +324,7 @@ nl:
     unexpected_issues_occurred: Onverwachte problemen opgetreden.
     service_communication_error: Er is een server communicatiefout opgetreden, probeer het opnieuw.
     no_privileges_edit_appointments: U heeft niet de benodigde rechten om afspraken te bewerken.
-    unavailability_updated: Niet beschikbare periode succesvol bijgewerkt.
+    unavailability_updated: "Bezette tijd bijgewerkt."
     appointments: Afspraken
     unexpected_warnings: Onverwachte waarschuwingen
     unexpected_warnings_message: De operatie is voltooid, maar enkele waarschuwingen zijn opgetreden.
@@ -456,8 +456,18 @@ nl:
     verify_ssl: SSL Controleren
     appointment_save: Afspraak Opslaan
     appointment_delete: Afspraak Verwijderen
-    unavailability_save: Onbeschikbaarheid Opslaan
-    unavailability_delete: Onbeschikbaarheid Verwijderen
+    unavailability_save: "Bezette tijd opslaan"
+    unavailability_delete: "Bezette tijd verwijderen"
+    unavailability_type: "Type"
+    unavailability_type_none: "Geen type"
+    unavailability_types: "Typen bezette tijd"
+    unavailability_types_hint: "De soorten bezette tijd die het team in de agenda kan zetten, zoals vergaderingen, verlof of administratie, elk met een eigen kleur."
+    unavailability_type_saved: "Type opgeslagen."
+    unavailability_type_deleted: "Type verwijderd. Bezette tijden van dat type blijven bestaan zonder type."
+    delete_unavailability_type: "Type verwijderen"
+    unavailability_stylists_hint: "Vink iedereen aan voor wie de bezette tijd geldt. Per aanbieder wordt één item gemaakt en ze worden samen bewerkt."
+    unavailability_also_for: "Ook voor {{names}}"
+    delete_unavailability_group: "Deze bezette tijd voor alle {{count}} aanbieders verwijderen?"
     customer_save: Klant Opslaan
     customer_delete: Klant Verwijderen
     service_save: Dienst Opslaan
@@ -529,6 +539,8 @@ nl:
     no_breaks: Geen pauzes
     service_categories: Dienstcategorieën
     service_category: Dienstcategorie
+    category_services: "Diensten in deze categorie"
+    category_no_services: "Nog geen diensten in deze categorie."
     blocked_period_saved: Geblokkeerde periode succesvol opgeslagen.
     blocked_period_deleted: Geblokkeerde periode succesvol verwijderd.
     delete_blocked_period: Verwijder geblokkeerde periode
@@ -545,6 +557,8 @@ nl:
     delete_webhook: Verwijder webhook
     contact_info: Contactgegevens
     hide_from_public: Verbergen voor publiek
+    bookable_by_public: "Boekbaar door publiek"
+    bookable_hint: "Vink uit om de dienst alleen met omschrijving op de boekingspagina te tonen. Klanten kunnen hem niet online boeken; vermeld in de omschrijving hoe ze dit kunnen regelen."
     matomo_analytics_site_id: Matomo Analytics Site-ID
     matomo_analytics_site_id_hint: Stel de site-ID in die door Matomo wordt gevolgd (de standaardsite heeft ID "1").
     default_timezone: Standaardtijdzone
@@ -1068,8 +1082,8 @@ nl:
     activity_appointment_changed: "Gewijzigd"
     activity_appointment_cancelled: "Geannuleerd"
     activity_appointment_deleted: "Verwijderd"
-    activity_unavailability_saved: "Niet beschikbaar toegevoegd"
-    activity_unavailability_deleted: "Niet beschikbaar verwijderd"
+    activity_unavailability_saved: "Bezette tijd toegevoegd"
+    activity_unavailability_deleted: "Bezette tijd verwijderd"
     activity_message_sent: "Bericht verzonden"
     activity_message_failed: "Bericht mislukt"
     activity_message_received: "Bericht ontvangen"
@@ -1080,6 +1094,7 @@ nl:
     activity_actor_system: "Systeem"
     activity_actor_import: "Import"
     activity_appointment_summary: "{{service}} voor {{customer}} bij {{provider}}, {{when}}"
+    activity_unavailability_summary: "{{type}}, {{provider}}, {{when}}"
     activity_status_summary: "Status {{status}}"
     activity_reason_summary: "Reden: {{reason}}"
     activity_message_summary: "{{notification}} aan {{audience}} via {{channel}}, {{address}}"
@@ -1087,5 +1102,8 @@ nl:
     activity_waitlist_summary: "{{customer}} voor {{service}} bij {{provider}}"
     free: "Vrij"
     free_hint: "Vrije tijden voor afspraken in de boekingsperiode, per datum en per medewerker."
-    free_window: "Vrij voor afspraken van {{from}} tot {{to}}"
     free_empty: "Er is niets vrij voor afspraken in de boekingsperiode."
+    free_from: "Van"
+    free_to: "Tot"
+    free_reset_hint: "Terug naar de boekingsperiode"
+    print_free_title: "Vrij voor afspraken"

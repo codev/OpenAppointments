@@ -151,7 +151,7 @@ uk:
     log_out: Вийти
     reload: Перезавантажити
     appointment: Запис
-    unavailability: Невідповідність
+    unavailability: "Зайнятий час"
     week: Тиждень
     month: Місяць
     today: Сьогодні
@@ -168,7 +168,7 @@ uk:
     manage_users_hint: Керуйте користувачами бекенду (адміністратори, провайдери, асистенти).
     settings_hint: Налаштуйте параметри системи та користувачів.
     log_out_hint: Вийти з системи.
-    unavailability_periods_hint: Під час періодів невідповідності провайдер не буде приймати нові записи.
+    unavailability_periods_hint: "У зайнятий час до фахівця не можна записатися."
     new_appointment_hint: Створіть новий запис і збережіть його в базі даних.
     reload_appointments_hint: Перезавантажте записи в календарі.
     appointment_updated: Запис успішно оновлено.
@@ -187,9 +187,9 @@ uk:
     delete_appointment_title: Видалити запис
     write_appointment_removal_reason: 'Будь ласка, витратьте хвилину, щоб написати причину видалення запису:'
     appointment_saved: Запис успішно збережено.
-    new_unavailability_title: Нова невідповідність
-    edit_unavailability_title: Редагувати невідповідність
-    unavailability_saved: Невідповідність успішно збережено.
+    new_unavailability_title: "Новий зайнятий час"
+    edit_unavailability_title: "Редагувати зайнятий час"
+    unavailability_saved: "Зайнятий час збережено."
     start_date_before_end_error: Дата початку пізніша за дату закінчення.
     invalid_duration: Невірна тривалість.
     invalid_email: Невірна адреса електронної пошти.
@@ -308,7 +308,7 @@ uk:
     delete_provider: Видалити провайдера
     delete_assistant: "Видалити асистента"
     delete_appointment: Видалити запис
-    delete_unavailability: Видалити період недоступності
+    delete_unavailability: "Видалити зайнятий час"
     delete: Видалити
     unexpected_issues: Несподівані проблеми
     unexpected_issues_message: Операцію не вдалося завершити.
@@ -324,7 +324,7 @@ uk:
     unexpected_issues_occurred: Сталася несподівана проблема.
     service_communication_error: Сталася помилка при комунікації з сервером, будь ласка, спробуйте ще раз.
     no_privileges_edit_appointments: У вас немає необхідних прав для редагування записів.
-    unavailability_updated: Період недоступності успішно оновлено.
+    unavailability_updated: "Зайнятий час оновлено."
     appointments: Записи
     unexpected_warnings: Несподівані попередження
     unexpected_warnings_message: Операція завершена, але з'явилися деякі попередження.
@@ -456,8 +456,18 @@ uk:
     verify_ssl: Перевірити SSL
     appointment_save: Зберегти запис
     appointment_delete: Видалити запис
-    unavailability_save: Зберегти недоступність
-    unavailability_delete: Видалити недоступність
+    unavailability_save: "Збереження зайнятого часу"
+    unavailability_delete: "Видалення зайнятого часу"
+    unavailability_type: "Тип"
+    unavailability_type_none: "Без типу"
+    unavailability_types: "Типи зайнятого часу"
+    unavailability_types_hint: "Види зайнятого часу, які персонал може ставити в календар, наприклад зустрічі, відпустка чи адміністративна робота, кожен зі своїм кольором."
+    unavailability_type_saved: "Тип збережено."
+    unavailability_type_deleted: "Тип вилучено. Зайнятий час цього типу зберігається без типу."
+    delete_unavailability_type: "Видалити тип"
+    unavailability_stylists_hint: "Позначте всіх, кого стосується зайнятий час. Для кожного фахівця створюється окремий запис, і їх редагують разом."
+    unavailability_also_for: "Також для {{names}}"
+    delete_unavailability_group: "Вилучити цей зайнятий час у всіх {{count}} фахівців?"
     customer_save: Зберегти клієнта
     customer_delete: Видалити клієнта
     service_save: Зберегти послугу
@@ -529,6 +539,8 @@ uk:
     no_breaks: Без перерв
     service_categories: Категорії послуг
     service_category: Категорія послуг
+    category_services: "Послуги в цій категорії"
+    category_no_services: "У цій категорії ще немає послуг."
     blocked_period_saved: Переблокований період успішно збережений.
     blocked_period_deleted: Переблокований період успішно видалений.
     delete_blocked_period: Видалити переблокований період
@@ -545,6 +557,8 @@ uk:
     delete_webhook: Видалити Webhook
     contact_info: Контактна інформація
     hide_from_public: Сховати від публіки
+    bookable_by_public: "Публіка може бронювати"
+    bookable_hint: "Зніміть позначку, щоб послуга показувалася на сторінці бронювання лише з описом. Клієнти не зможуть забронювати її онлайн; укажіть в описі, як домовитися."
     matomo_analytics_site_id: Matomo Analytics Site ID
     matomo_analytics_site_id_hint: Встановіть ID сайту, який буде відстежуватися в Matomo (за замовчуванням сайт має ID "1").
     default_timezone: Часовий пояс за замовчуванням
@@ -1068,8 +1082,8 @@ uk:
     activity_appointment_changed: "Змінено"
     activity_appointment_cancelled: "Скасовано"
     activity_appointment_deleted: "Видалено"
-    activity_unavailability_saved: "Недоступність додано"
-    activity_unavailability_deleted: "Недоступність видалено"
+    activity_unavailability_saved: "Зайнятий час додано"
+    activity_unavailability_deleted: "Зайнятий час вилучено"
     activity_message_sent: "Повідомлення надіслано"
     activity_message_failed: "Повідомлення не надіслано"
     activity_message_received: "Повідомлення отримано"
@@ -1080,6 +1094,7 @@ uk:
     activity_actor_system: "Система"
     activity_actor_import: "Імпорт"
     activity_appointment_summary: "{{service}} для {{customer}} у {{provider}}, {{when}}"
+    activity_unavailability_summary: "{{type}}, {{provider}}, {{when}}"
     activity_status_summary: "Статус {{status}}"
     activity_reason_summary: "Причина: {{reason}}"
     activity_message_summary: "{{notification}} для {{audience}} через {{channel}}, {{address}}"
@@ -1087,5 +1102,8 @@ uk:
     activity_waitlist_summary: "{{customer}} на {{service}} у {{provider}}"
     free: "Вільно"
     free_hint: "Вільний час для запису у вікні бронювання за датами та за провайдерами."
-    free_window: "Вільно для запису з {{from}} по {{to}}"
     free_empty: "У вікні бронювання немає вільного часу для запису."
+    free_from: "З"
+    free_to: "По"
+    free_reset_hint: "Повернутися до вікна бронювання"
+    print_free_title: "Вільно для запису"

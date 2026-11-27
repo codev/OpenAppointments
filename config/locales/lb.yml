@@ -151,7 +151,7 @@ lb:
     log_out: Ofmellen
     reload: Nei lueden
     appointment: Termäin
-    unavailability: Net méiglech
+    unavailability: "Besate Zäit"
     week: Woch
     month: Mount
     today: Haut
@@ -168,7 +168,7 @@ lb:
     manage_users_hint: Verwalt d'Endbenotzer (Admins, Mataarbechter, Assistenten).
     settings_hint: System- a Benotzerastellungen setzen.
     log_out_hint: Meld Iech vum System of.
-    unavailability_periods_hint: Während der Indisponibilitéitsperiod gi keng Termäiner ugeholl.
+    unavailability_periods_hint: "Wärend besater Zäit kann den Ubidder net gebucht ginn."
     new_appointment_hint: Wielt een neie Termäin a späichert en an der Datebank.
     reload_appointments_hint: Terminkalenner nei lueden.
     appointment_updated: D'Termäiner sinn erfollegräich erneiert ginn.
@@ -187,9 +187,9 @@ lb:
     delete_appointment_title: Termäin läschen
     write_appointment_removal_reason: 'Huelt Iech w.e.g. kuerz Zäit fir eis matzedeele wisou Dir dee Termäin ofsot.:'
     appointment_saved: Termäin erfollegräich gespäichert.
-    new_unavailability_title: Neien Zäitraum deen net zur Verfügung steet
-    edit_unavailability_title: Zäitraum, deen net zur Verfügung steet, änneren
-    unavailability_saved: Zäitraum, deen net zur Verfügung steet erfollegräich gespäichert.
+    new_unavailability_title: "Nei besate Zäit"
+    edit_unavailability_title: "Besate Zäit änneren"
+    unavailability_saved: "Besate Zäit gespäichert."
     start_date_before_end_error: Den Ufanksdatum ass méi héich wéi de Schlussdatum.
     invalid_duration: Ongëlteg Dauer.
     invalid_email: Déi E-Mail-Adresse ass ongülteg.
@@ -308,7 +308,7 @@ lb:
     delete_provider: Zäitraum läschen
     delete_assistant: "Assistent läschen"
     delete_appointment: Termäin läschen
-    delete_unavailability: Blockéierten Zäitraum läschen
+    delete_unavailability: "Besate Zäit läschen"
     delete: Läschen
     unexpected_issues: Onvirhärgesinne Virfäll
     unexpected_issues_message: D'Operatioun konnt net ofgeschloss ginn.
@@ -324,7 +324,7 @@ lb:
     unexpected_issues_occurred: Onertwaarte Problemer sinn opgetrueden.
     service_communication_error: Während der Kommunikatioun mam Server ass ee Fehler opgetrueden, probéiert et w.e.g. nach ee Mol.
     no_privileges_edit_appointments: Dir hutt net déi néideg Rechter fir Termäiner ze änneren.
-    unavailability_updated: Blockéiert Zäitreim sinn erfollegräich erneiert ginn.
+    unavailability_updated: "Besate Zäit aktualiséiert."
     appointments: Termäiner
     unexpected_warnings: Onerwaarte Warnung
     unexpected_warnings_message: De Virgang mat Warnungen ofgeschloss.
@@ -456,8 +456,18 @@ lb:
     verify_ssl: SSL verifizéieren
     appointment_save: Rendez-vous späicheren
     appointment_delete: Rendez-vous läschen
-    unavailability_save: Onverfügbarkeet späicheren
-    unavailability_delete: Onverfügbarkeet läschen
+    unavailability_save: "Besate Zäit späicheren"
+    unavailability_delete: "Besate Zäit läschen"
+    unavailability_type: "Typ"
+    unavailability_type_none: "Keen Typ"
+    unavailability_types: "Typen vu besater Zäit"
+    unavailability_types_hint: "D'Zorte besate Zäit, déi d'Equipe an de Kalenner setze kann, wéi Reuniounen, Congé oder Verwaltung, all mat senger eegener Faarf."
+    unavailability_type_saved: "Typ gespäichert."
+    unavailability_type_deleted: "Typ ewechgeholl. Besate Zäiten vun deem Typ bleiwen ouni Typ."
+    delete_unavailability_type: "Typ läschen"
+    unavailability_stylists_hint: "All déi ukräizen, fir déi d'besate Zäit gëllt. Pro Ubidder gëtt een Androck gemaach, a si gi zesumme geännert."
+    unavailability_also_for: "Och fir {{names}}"
+    delete_unavailability_group: "Dës besate Zäit fir all {{count}} Ubidder ewechhuelen?"
     customer_save: Client späicheren
     customer_delete: Client läschen
     service_save: Service späicheren
@@ -529,6 +539,8 @@ lb:
     no_breaks: Keng Pausen
     service_categories: Servicekategorien
     service_category: Servicekategorie
+    category_services: "Dingschtleeschtungen an dëser Kategorie"
+    category_no_services: "Nach keng Dingschtleeschtungen an dëser Kategorie."
     blocked_period_saved: Blockéierten Zäitraum erfollegräich gespäichert.
     blocked_period_deleted: Blockéierten Zäitraum erfollegräich geläscht.
     delete_blocked_period: Blockéierten Zäitraum läschen
@@ -545,6 +557,8 @@ lb:
     delete_webhook: Webhook läschen
     contact_info: Kontaktinformatiounen
     hide_from_public: Vum Public verstoppen
+    bookable_by_public: "Vum Public buchbar"
+    bookable_hint: "Huelt den Hake ewech, fir d'Dingschtleeschtung nëmmen mat hirer Beschreiwung op der Buchungssäit unzeweisen. Clienten kënnen se net online buchen; schreift an d'Beschreiwung, wéi een se ofmécht."
     matomo_analytics_site_id: Matomo Analytics Site ID
     matomo_analytics_site_id_hint: Setzt d'Site ID, déi vu Matomo iwwerwaacht gëtt (d'Standardsite huet d'ID "1").
     default_timezone: Standard Zäitzon
@@ -1068,8 +1082,8 @@ lb:
     activity_appointment_changed: "Geännert"
     activity_appointment_cancelled: "Annuléiert"
     activity_appointment_deleted: "Geläscht"
-    activity_unavailability_saved: "Net-Disponibilitéit derbäigesat"
-    activity_unavailability_deleted: "Net-Disponibilitéit ewechgeholl"
+    activity_unavailability_saved: "Besate Zäit dobäigesat"
+    activity_unavailability_deleted: "Besate Zäit ewechgeholl"
     activity_message_sent: "Message geschéckt"
     activity_message_failed: "Message net geschéckt"
     activity_message_received: "Message kritt"
@@ -1080,6 +1094,7 @@ lb:
     activity_actor_system: "System"
     activity_actor_import: "Import"
     activity_appointment_summary: "{{service}} fir {{customer}} bei {{provider}}, {{when}}"
+    activity_unavailability_summary: "{{type}}, {{provider}}, {{when}}"
     activity_status_summary: "Status {{status}}"
     activity_reason_summary: "Grond: {{reason}}"
     activity_message_summary: "{{notification}} un {{audience}} per {{channel}}, {{address}}"
@@ -1087,5 +1102,8 @@ lb:
     activity_waitlist_summary: "{{customer}} fir {{service}} bei {{provider}}"
     free: "Fräi"
     free_hint: "Fräi Plaze fir Rendez-vousen am Reservatiounsfenster, Dag fir Dag a Mataarbechter fir Mataarbechter."
-    free_window: "Fräi fir Rendez-vousen vum {{from}} bis {{to}}"
     free_empty: "Am Reservatiounsfenster ass näischt fräi fir Rendez-vousen."
+    free_from: "Vun"
+    free_to: "Bis"
+    free_reset_hint: "Zréck zum Reservatiounsfenster"
+    print_free_title: "Fräi fir Rendez-vousen"

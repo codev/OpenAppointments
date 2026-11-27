@@ -9,6 +9,13 @@ class ServicesPageTest < ApplicationSystemTestCase
     assert_selector ".service-row", text: "Trim Cut", wait: 5
   end
 
+  test "the description opens in the rich text editor" do
+    find(".service-row", text: "Trim Cut").click
+    assert_selector "#services-page.editing", wait: 5
+    assert_selector ".trumbowyg-editor", wait: 5
+    assert_selector ".trumbowyg-button-pane button.trumbowyg-strong-button"
+  end
+
   test "add with defaults, category, colour and providers, then edit, links, filter and delete" do
     assert_selector ".service-row", text: "30 min"
     click_on "Add"
@@ -25,7 +32,7 @@ class ServicesPageTest < ApplicationSystemTestCase
     fill_in "Location", with: "Back room"
     find(".color-selection-option[data-value='#eb8687']").click
     check "Hide From Public"
-    fill_in "Description", with: "Full head"
+    find(".trumbowyg-editor", wait: 5).send_keys("Full head")
     check "Zane"
     click_on "Save"
 
@@ -40,12 +47,13 @@ class ServicesPageTest < ApplicationSystemTestCase
     assert_equal "#eb8687", colour.color
     assert colour.is_private
     assert_equal "Back room", colour.location
+    assert_includes colour.description, "Full head"
     assert_equal [ users(:zane).id ], colour.providers.map(&:id)
     assert colour.booking_slug.present?
 
     find(".service-row", text: "Colour").click
     assert_selector "#services-page.editing", wait: 5
-    assert_field "Description", with: "Full head"
+    assert_selector ".trumbowyg-editor", text: "Full head", wait: 5
     assert_checked_field "Zane"
     assert_checked_field "Hide From Public"
     assert_selector ".color-selection-option.selected[data-value='#eb8687']"
@@ -86,7 +94,8 @@ class ServicesPageTest < ApplicationSystemTestCase
 
     find(".service-row", text: "Colour").click
     assert_selector "#services-page.editing", wait: 5
-    click_on "Delete"
+    # The editor's strikethrough button is titled "Deleted", so the delete button is found by its form.
+    find("button[form^=delete-]").click
     confirm_modal "Delete Service", "Delete"
     assert_text "Service deleted", wait: 5
     assert_no_selector ".service-row", text: "Colour"

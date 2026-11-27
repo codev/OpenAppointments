@@ -151,7 +151,7 @@ pt:
     log_out: Sair
     reload: Carregar
     appointment: Evento
-    unavailability: Indisponível
+    unavailability: "Tempo ocupado"
     week: Semana
     month: Mês
     today: Hoje
@@ -168,7 +168,7 @@ pt:
     manage_users_hint: Gerir os utilizadores de backend (administradores, fornecedores, assistentes).
     settings_hint: Definir as configurações do sistema e do utilizador.
     log_out_hint: Sair do Sistema.
-    unavailability_periods_hint: Durante os periodos indisponíveis o fornecedor não aceitar novos evento.
+    unavailability_periods_hint: "Durante o tempo ocupado o prestador não pode ser reservado."
     new_appointment_hint: Criar um novo evento e guarda-lo na base de dados.
     reload_appointments_hint: Carregar eventos do calendario.
     appointment_updated: Evento actualizado com sucesso.
@@ -187,9 +187,9 @@ pt:
     delete_appointment_title: Apagar Evento
     write_appointment_removal_reason: 'Por favor, dedique alguns minutos para escrever a razão que você está apagando o evento:'
     appointment_saved: Evento guardado com sucesso.
-    new_unavailability_title: Novo Período Indisponível
-    edit_unavailability_title: Edite Período Indisponível
-    unavailability_saved: Período Indisponível guardado com sucesso.
+    new_unavailability_title: "Novo tempo ocupado"
+    edit_unavailability_title: "Editar tempo ocupado"
+    unavailability_saved: "Tempo ocupado guardado."
     start_date_before_end_error: A data início é superior ao valor da data fim.
     invalid_duration: Duração inválida.
     invalid_email: Email invalido.
@@ -308,7 +308,7 @@ pt:
     delete_provider: Apagar fornecedor
     delete_assistant: "Eliminar assistente"
     delete_appointment: Apagar apontamento
-    delete_unavailability: Apagar periodo indisponivel
+    delete_unavailability: "Eliminar tempo ocupado"
     delete: Apagar
     unexpected_issues: Problemas inesperados
     unexpected_issues_message: Não foi possível concluir a operação.
@@ -324,7 +324,7 @@ pt:
     unexpected_issues_occurred: Ocorreram problemas inesperados.
     service_communication_error: Problema de ligação ao servidor.
     no_privileges_edit_appointments: Não tem permissões para poder editar compromissos.
-    unavailability_updated: Periodo indisponivel, actualizado com sucesso.
+    unavailability_updated: "Tempo ocupado atualizado."
     appointments: Apontamentos
     unexpected_warnings: Aviso Inesperado
     unexpected_warnings_message: A operação foi concluida, contudo existem avisos.
@@ -456,8 +456,18 @@ pt:
     verify_ssl: Verificar SSL
     appointment_save: Salvar Compromisso
     appointment_delete: Excluir Compromisso
-    unavailability_save: Salvar Indisponibilidade
-    unavailability_delete: Excluir Indisponibilidade
+    unavailability_save: "Guardar tempo ocupado"
+    unavailability_delete: "Eliminar tempo ocupado"
+    unavailability_type: "Tipo"
+    unavailability_type_none: "Sem tipo"
+    unavailability_types: "Tipos de tempo ocupado"
+    unavailability_types_hint: "Os tipos de tempo ocupado que a equipa pode colocar no calendário, como reuniões, folgas ou administração, cada um com a sua cor."
+    unavailability_type_saved: "Tipo guardado."
+    unavailability_type_deleted: "Tipo removido. Os tempos ocupados desse tipo mantêm-se sem tipo."
+    delete_unavailability_type: "Eliminar tipo"
+    unavailability_stylists_hint: "Assinale todas as pessoas abrangidas. É criada uma entrada por prestador e são editadas em conjunto."
+    unavailability_also_for: "Também para {{names}}"
+    delete_unavailability_group: "Remover este tempo ocupado para todos os {{count}} prestadores?"
     customer_save: Salvar Cliente
     customer_delete: Excluir Cliente
     service_save: Salvar Serviço
@@ -529,6 +539,8 @@ pt:
     no_breaks: Sem Pausas
     service_categories: Categorias de Serviço
     service_category: Categoria de Serviço
+    category_services: "Serviços desta categoria"
+    category_no_services: "Ainda não há serviços nesta categoria."
     blocked_period_saved: Período bloqueado salvo com sucesso.
     blocked_period_deleted: Período bloqueado excluído com sucesso.
     delete_blocked_period: Excluir Período Bloqueado
@@ -545,6 +557,8 @@ pt:
     delete_webhook: Excluir Webhook
     contact_info: Informações de Contato
     hide_from_public: Ocultar do Público
+    bookable_by_public: "Marcável pelo Público"
+    bookable_hint: "Desmarque para mostrar o serviço na página de marcação apenas com a descrição. Os clientes não o podem marcar online; indique na descrição como combinar."
     matomo_analytics_site_id: ID do Site do Matomo Analytics
     matomo_analytics_site_id_hint: Defina o ID do site que será rastreado pelo Matomo (o site padrão tem o ID "1").
     default_timezone: Fuso Horário Padrão
@@ -1068,8 +1082,8 @@ pt:
     activity_appointment_changed: "Alterado"
     activity_appointment_cancelled: "Cancelado"
     activity_appointment_deleted: "Eliminado"
-    activity_unavailability_saved: "Indisponibilidade adicionada"
-    activity_unavailability_deleted: "Indisponibilidade removida"
+    activity_unavailability_saved: "Tempo ocupado adicionado"
+    activity_unavailability_deleted: "Tempo ocupado removido"
     activity_message_sent: "Mensagem enviada"
     activity_message_failed: "Mensagem falhada"
     activity_message_received: "Mensagem recebida"
@@ -1080,6 +1094,7 @@ pt:
     activity_actor_system: "Sistema"
     activity_actor_import: "Importação"
     activity_appointment_summary: "{{service}} para {{customer}} com {{provider}}, {{when}}"
+    activity_unavailability_summary: "{{type}}, {{provider}}, {{when}}"
     activity_status_summary: "Estado {{status}}"
     activity_reason_summary: "Motivo: {{reason}}"
     activity_message_summary: "{{notification}} para {{audience}} por {{channel}}, {{address}}"
@@ -1087,5 +1102,8 @@ pt:
     activity_waitlist_summary: "{{customer}} para {{service}} com {{provider}}"
     free: "Livre"
     free_hint: "Horários livres para marcações no período de reserva, dia a dia e fornecedor a fornecedor."
-    free_window: "Livre para marcações de {{from}} a {{to}}"
     free_empty: "Nada está livre para marcações no período de reserva."
+    free_from: "De"
+    free_to: "Até"
+    free_reset_hint: "Voltar ao período de reserva"
+    print_free_title: "Livre para marcações"

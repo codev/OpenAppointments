@@ -119,7 +119,7 @@ class UserPagesTest < ApplicationSystemTestCase
 
     visit "/account"
     assert_field "Name", with: "Zane"
-    click_on "About & Services"
+    open_tab "About & Services", "#about-services"
     fill_in "About", with: "Cuts since 1999"
     fill_in "Description of services", with: "Dry cuts"
     assert_selector ".account-services li", text: "Trim Cut"

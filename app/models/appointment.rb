@@ -10,6 +10,7 @@ class Appointment < ApplicationRecord
                       inverse_of: :appointments, optional: true
   belongs_to :appointment_status, foreign_key: :status_id, inverse_of: :appointments, optional: true
   belongs_to :rescheduled_to, class_name: "Appointment", optional: true
+  belongs_to :unavailability_type, inverse_of: :unavailabilities, optional: true
 
   scope :appointments, -> { where(is_unavailability: false) }
   scope :unavailabilities, -> { where(is_unavailability: true) }
@@ -57,6 +58,7 @@ class Appointment < ApplicationRecord
   validates :start_datetime, :end_datetime, presence: true
   validates :id_users_provider, presence: true
   validates :id_users_customer, :id_services, presence: true, unless: :is_unavailability
+  validates :unavailability_type, absence: { message: "is only for busy time" }, unless: :is_unavailability
   validate :minimum_duration
 
   # Status by name, for the API, imports, templates and the calendar payloads.
@@ -98,6 +100,13 @@ class Appointment < ApplicationRecord
     self.appointment_status = AppointmentStatus.of(kind)
     self.notes = [ notes.presence, reason.presence ].compact.join("\n")
     save!
+  end
+
+  # The other rows of a busy time saved for several providers at once.
+  def group_members
+    return Appointment.none if unavailability_group.blank?
+
+    Appointment.unavailabilities.where(unavailability_group: unavailability_group).where.not(id: id).includes(:provider)
   end
 
   def duration_minutes

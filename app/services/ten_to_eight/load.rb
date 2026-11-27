@@ -489,6 +489,11 @@ module TenToEight
 
       @data[:appointments].each do |row|
         provider_id = provider_ids[row[:staff]]
+        if row[:unavailability]
+          load_unavailability(row, provider_id, counts)
+          next
+        end
+
         service_id = service_ids[row[:service]]
         customer_id = customer_ids[row[:customer_ext_id]]
         if provider_id.nil? || service_id.nil? || customer_id.nil?
@@ -515,6 +520,27 @@ module TenToEight
 
         counts[:created] += 1
       end
+    end
+
+    # Busy time from an ODS backup: provider, times, type by name and group.
+    def load_unavailability(row, provider_id, counts)
+      if provider_id.nil?
+        counts[:skipped] += 1
+        return
+      end
+      if Appointment.unavailabilities.exists?(id_users_provider: provider_id, start_datetime: row[:start])
+        counts[:matched] += 1
+        return
+      end
+
+      created = guard("appointments", counts, "#{row[:staff]} busy @ #{row[:start]}") do
+        Appointment.create!(
+          id_users_provider: provider_id, is_unavailability: true, start_datetime: row[:start], end_datetime: row[:end],
+          notes: row[:note], location: "", book_datetime: Time.now,
+          unavailability_type: UnavailabilityType.resolve(row[:unavailability_type]), unavailability_group: row[:unavailability_group]
+        )
+      end
+      counts[:created] += 1 if created
     end
 
     # A 10to8 booking that was moved stays as a Rebooked row next to its new time,

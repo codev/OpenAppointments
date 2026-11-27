@@ -7,6 +7,14 @@ class ServiceCategoriesPageTest < ApplicationSystemTestCase
     assert_selector ".service-category-row", wait: 5
   end
 
+  test "a service listed on its category opens on the services page" do
+    find(".service-category-row[data-id='#{service_categories(:hair).id}']").click
+    assert_selector "#category-services a", text: "Trim Cut", wait: 5
+    click_on "Trim Cut"
+    assert_current_path %r{/services/#{services(:haircut).id}/edit}, wait: 5
+    assert_field "service[name]", with: "Trim Cut", wait: 5
+  end
+
   test "the list shows full width and add, save, cancel, edit and delete work in place" do
     page_path = current_path
     list = find("#filter-service-categories")

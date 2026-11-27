@@ -75,8 +75,16 @@ module EaRows
     )
   end
 
+  # A busy time as the popovers read it: the row, its provider, its type and the
+  # other providers of its group.
   def calendar_unavailability_row(unavailability)
-    appointment_row(unavailability).merge("provider" => unavailability.provider && provider_row(unavailability.provider))
+    type = unavailability.unavailability_type
+    appointment_row(unavailability).merge(
+      "provider" => unavailability.provider && provider_row(unavailability.provider),
+      "unavailability_type" => type && { "id" => type.id, "name" => type.name, "color" => type.color_or_default },
+      "unavailability_group" => unavailability.unavailability_group,
+      "group_providers" => unavailability.group_members.map { |row| row.provider&.name }.compact
+    )
   end
 
   def series_row(series, now: Date.current)

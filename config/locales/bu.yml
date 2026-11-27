@@ -151,7 +151,7 @@ bu:
     log_out: Изход
     reload: Презареждане
     appointment: Час
-    unavailability: не е на лице
+    unavailability: "Заето време"
     week: Седмица
     month: Месец
     today: Днес
@@ -168,7 +168,7 @@ bu:
     manage_users_hint: Управление на административните потребители (администратори, изпълнители и асистенти).
     settings_hint: Задаване на системни и потребителски настройки.
     log_out_hint: Изход от системата.
-    unavailability_periods_hint: По време на периоди, в които изпълнителя не е на разположение, същият няма да приема нови часове.
+    unavailability_periods_hint: "През заетото време доставчикът не може да бъде резервиран."
     new_appointment_hint: Създаване на нов час и запазването му в базата данни.
     reload_appointments_hint: Презареждане на календарни часове.
     appointment_updated: Часът е актуализиран успешно.
@@ -187,9 +187,9 @@ bu:
     delete_appointment_title: Отказ на час.
     write_appointment_removal_reason: 'Моля отделете минута за да споделите причината за отказ на часа:'
     appointment_saved: Часът запазен успешно.
-    new_unavailability_title: Нов неработен период
-    edit_unavailability_title: Промяна на неработен период
-    unavailability_saved: Неработен период запазен успешно.
+    new_unavailability_title: "Ново заето време"
+    edit_unavailability_title: "Редактиране на заето време"
+    unavailability_saved: "Заетото време е запазено."
     start_date_before_end_error: Стартовият период е по-дълъг от крайната дата.
     invalid_duration: Невалидна продължителност.
     invalid_email: Невалиден адрес на електронна поща.
@@ -308,7 +308,7 @@ bu:
     delete_provider: Заличаване на изпълнител
     delete_assistant: "Изтриване на асистент"
     delete_appointment: Заличаване на час
-    delete_unavailability: Заличаване на неработен период
+    delete_unavailability: "Изтриване на заето време"
     delete: Заличаване
     unexpected_issues: Неочаквани проблеми
     unexpected_issues_message: Операцията не можа да бъде завършена.
@@ -324,7 +324,7 @@ bu:
     unexpected_issues_occurred: Възникнаха неочаквани проблеми.
     service_communication_error: 'Възникна грешка със сървърната комуникация, моля опитайте отново. '
     no_privileges_edit_appointments: Вие не притежавате нужните привилегии за да редактирате часове.
-    unavailability_updated: Неработен период обновен успешно.
+    unavailability_updated: "Заетото време е обновено."
     appointments: Часове
     unexpected_warnings: Непредвидени предупреждения
     unexpected_warnings_message: Действието бе изпълнено, но са налични известни предупреждения.
@@ -456,8 +456,18 @@ bu:
     verify_ssl: Проверка на SSL
     appointment_save: Запазване на среща
     appointment_delete: Изтриване на среща
-    unavailability_save: Запазване на недостъпност
-    unavailability_delete: Изтриване на недостъпност
+    unavailability_save: "Запазване на заето време"
+    unavailability_delete: "Изтриване на заето време"
+    unavailability_type: "Тип"
+    unavailability_type_none: "Без тип"
+    unavailability_types: "Типове заето време"
+    unavailability_types_hint: "Видовете заето време, които персоналът може да слага в календара, например срещи, отпуск или администрация, всеки със свой цвят."
+    unavailability_type_saved: "Типът е запазен."
+    unavailability_type_deleted: "Типът е премахнат. Заетите времена от този тип се запазват без тип."
+    delete_unavailability_type: "Изтриване на тип"
+    unavailability_stylists_hint: "Отбележете всички, за които е заетото време. Създава се по един запис за всеки доставчик и се редактират заедно."
+    unavailability_also_for: "Също за {{names}}"
+    delete_unavailability_group: "Да се премахне ли това заето време за всички {{count}} доставчици?"
     customer_save: Запазване на клиент
     customer_delete: Изтриване на клиент
     service_save: Запазване на услуга
@@ -529,6 +539,8 @@ bu:
     no_breaks: Няма почивки
     service_categories: Категории услуги
     service_category: Категория услуга
+    category_services: "Услуги в тази категория"
+    category_no_services: "В тази категория още няма услуги."
     blocked_period_saved: Периодът на блокиране е запазен успешно.
     blocked_period_deleted: Периодът на блокиране е изтрит успешно.
     delete_blocked_period: Изтриване на блокиран период
@@ -545,6 +557,8 @@ bu:
     delete_webhook: Изтриване на Webhook
     contact_info: Контактна информация
     hide_from_public: Скрий от публичността
+    bookable_by_public: "Може да се резервира от публиката"
+    bookable_hint: "Махнете отметката, за да се показва услугата на страницата за резервации само с описание. Клиентите не могат да я резервират онлайн; в описанието напишете как да се уговори."
     matomo_analytics_site_id: Matomo Analytics ID на сайта
     matomo_analytics_site_id_hint: Задайте ID на сайта, който ще бъде проследяван от Matomo (по подразбиране сайтът има ID "1").
     default_timezone: Часова зона по подразбиране
@@ -1068,8 +1082,8 @@ bu:
     activity_appointment_changed: "Променен"
     activity_appointment_cancelled: "Отказан"
     activity_appointment_deleted: "Изтрит"
-    activity_unavailability_saved: "Добавена недостъпност"
-    activity_unavailability_deleted: "Премахната недостъпност"
+    activity_unavailability_saved: "Добавено заето време"
+    activity_unavailability_deleted: "Премахнато заето време"
     activity_message_sent: "Съобщението е изпратено"
     activity_message_failed: "Съобщението не е изпратено"
     activity_message_received: "Получено съобщение"
@@ -1080,6 +1094,7 @@ bu:
     activity_actor_system: "Система"
     activity_actor_import: "Импортиране"
     activity_appointment_summary: "{{service}} за {{customer}} при {{provider}}, {{when}}"
+    activity_unavailability_summary: "{{type}}, {{provider}}, {{when}}"
     activity_status_summary: "Статус {{status}}"
     activity_reason_summary: "Причина: {{reason}}"
     activity_message_summary: "{{notification}} до {{audience}} чрез {{channel}}, {{address}}"
@@ -1087,5 +1102,8 @@ bu:
     activity_waitlist_summary: "{{customer}} за {{service}} при {{provider}}"
     free: "Свободни"
     free_hint: "Свободни часове за срещи в периода за резервации, по дати и по изпълнител."
-    free_window: "Свободно за срещи от {{from}} до {{to}}"
     free_empty: "Няма свободно време за срещи в периода за резервации."
+    free_from: "От"
+    free_to: "До"
+    free_reset_hint: "Обратно към периода за резервации"
+    print_free_title: "Свободно за срещи"

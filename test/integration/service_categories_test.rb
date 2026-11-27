@@ -103,6 +103,26 @@ class ServiceCategoriesTest < ActionDispatch::IntegrationTest
     assert_select ".form-message.alert-danger"
   end
 
+  test "edit lists the category's services as links to their forms, new does not" do
+    login_admin
+    category = service_categories(:hair)
+    get "/service_categories/#{category.id}/edit"
+    assert_response :success
+    assert_select "#category-services h6", text: "Services in this category"
+    assert_select "#category-services a[href=?][data-turbo-frame=_top]", "/services/#{services(:haircut).id}/edit", text: /Trim Cut/
+    assert_select "#category-services a[href=?]", "/services/#{services(:group_session).id}/edit", text: /Group Session/
+    assert_select "#category-services a", count: 2
+    assert_select "#category-services li", text: /30 min/
+
+    empty = ServiceCategory.create!(name: "Nails")
+    get "/service_categories/#{empty.id}/edit"
+    assert_select "#category-services", text: /No services in this category yet/
+    assert_select "#category-services a", count: 0
+
+    get "/service_categories/new"
+    assert_select "#category-services", count: 0
+  end
+
   test "edit shows the record with its picture and a delete button" do
     login_admin
     category = service_categories(:hair)

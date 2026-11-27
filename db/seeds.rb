@@ -147,6 +147,7 @@ settings.each do |name, value|
 end
 
 AppointmentStatus.seed!
+UnavailabilityType.seed!
 
 # Messages system defaults
 Messaging::Defaults::SETTINGS.each do |name, value|

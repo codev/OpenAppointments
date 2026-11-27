@@ -35,12 +35,16 @@ a person who is both keeps a separate stylist account.
 **Service**:
 Something a customer can book, with a duration and a slot interval.
 
-**Non-service**:
-A service hidden from the public booking pages that staff book to reserve stylist time,
-such as Meeting or Admin tasks.
-In the app: the service's Hide from public setting; the appointment form groups these
-under Hidden From Public.
-_Avoid_: Unavailability (blocked time with no service)
+**Busy time**:
+Time a stylist is not available to clients, with no client attached: a meeting, leave,
+admin, travel. Has a type and notes; one busy time can cover several stylists at once,
+a row each in one group, edited and deleted together.
+In the app: the Add menu's Busy time; code and the API keep the word unavailability.
+_Avoid_: Unavailability, non-service, block
+
+**Busy time type**:
+The kind of a busy time, with its own colour: Meeting, Time off, Admin, Travel by
+default, more under Business settings > Busy Time Types.
 
 **Booking window**:
 How far ahead customers can book, in days. Each day at the release time (business

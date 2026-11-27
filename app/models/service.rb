@@ -8,6 +8,9 @@ class Service < ApplicationRecord
   has_many :providers, through: :provider_links
   has_many :appointments, foreign_key: :id_services, dependent: :destroy
 
+  # The description is rich text shown on the booking page.
+  before_save { self.description = RichText.sanitize(description) if description.present? && will_save_change_to_description? }
+
   validates :name, presence: true
   validates :duration, numericality: { greater_than_or_equal_to: Appointment::EVENT_MINIMUM_DURATION }, allow_nil: true
   validates :slot_interval, numericality: { only_integer: true, greater_than_or_equal_to: 1 }, allow_nil: true

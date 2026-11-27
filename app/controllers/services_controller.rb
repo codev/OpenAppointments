@@ -56,7 +56,7 @@ class ServicesController < ApplicationController
 
   def record_params
     params.require(:service).permit(:name, :duration, :price, :currency, :description, :color, :location,
-                                    :slot_interval, :attendants_number, :is_private, :id_service_categories,
+                                    :slot_interval, :attendants_number, :is_private, :is_bookable, :id_service_categories,
                                     payment_method_keys: [])
   end
 

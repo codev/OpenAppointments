@@ -2,6 +2,30 @@
 # Set before test_helper configures parallelisation.
 ENV["PARALLEL_WORKERS"] ||= "1"
 require "test_helper"
+require "capybara/selenium/driver"
+require "capybara/selenium/driver_specializations/chrome_driver"
+
+# Capybara 3.40 resets Chrome between tests with Storage.clearDataForOrigin on the
+# origin "*", which Chrome 158 rejects as an invalid URL; the fallback clears the
+# cookies and the app origin's storage by name.
+module ChromeDriverReset
+  def reset!
+    super
+  rescue Selenium::WebDriver::Error::InvalidArgumentError
+    clear_browser_state
+  end
+
+  private
+
+  def clear_browser_state
+    execute_cdp("Network.clearBrowserCookies")
+    server = Capybara.current_session.server
+    return unless server
+
+    execute_cdp("Storage.clearDataForOrigin", origin: "http://#{server.host}:#{server.port}", storageTypes: "cookies,local_storage")
+  end
+end
+Capybara::Selenium::Driver::ChromeDriver.prepend(ChromeDriverReset)
 
 class ApplicationSystemTestCase < ActionDispatch::SystemTestCase
   # Plain Chrome (CI) works as-is. A snap-packaged Chromium (local dev) can only
@@ -28,6 +52,15 @@ class ApplicationSystemTestCase < ActionDispatch::SystemTestCase
 
   setup do
     page.driver.browser.execute_cdp("Emulation.setTimezoneOverride", timezoneId: BROWSER_TIMEZONE)
+    retry_inspector_errors
+  end
+
+  # Chrome answers a query that lands while a page is being replaced with an
+  # unknown error ("Node with given id does not belong to the document") rather
+  # than a stale element error, so Capybara is told to retry it the same way.
+  def retry_inspector_errors
+    errors = page.driver.invalid_element_errors
+    errors << Selenium::WebDriver::Error::UnknownError unless errors.include?(Selenium::WebDriver::Error::UnknownError)
   end
 
   # The offset-th day after `from` on which the fixture stylist works, so booking
@@ -76,6 +109,17 @@ class ApplicationSystemTestCase < ActionDispatch::SystemTestCase
   # click during the transition is ignored or lands elsewhere: wait for the
   # shown modal to be opaque, for Bootstrap to have finished its transition and
   # for the dialog's slide-in to have settled.
+  # Opens a Bootstrap tab by its label and waits for its pane. The click is
+  # repeated while the page's scripts are still loading.
+  def open_tab(label, pane)
+    3.times do
+      click_on label
+      return if page.has_css?("#{pane}.active.show", wait: 3)
+    end
+    console = page.driver.browser.logs.get(:browser).map(&:message).join("\n")
+    assert page.has_css?("#{pane}.active.show", wait: 5), "#{pane} did not open; browser console:\n#{console}"
+  end
+
   def wait_for_modal
     assert_selector ".modal.show", wait: 5
     assert page.has_css?(".modal.show", wait: 5) && wait_until_shown, "modal did not finish showing"

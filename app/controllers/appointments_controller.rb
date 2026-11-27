@@ -134,7 +134,7 @@ class AppointmentsController < ApplicationController
                    .select { |a| a.status.blank? || @selected_statuses.include?(a.status) }
                    .select { |a| @service_ids.nil? || @service_ids.include?(a.id_services) }
     unavailabilities = role_events(Appointment.unavailabilities.where("start_datetime <= ? AND end_datetime >= ?", range.end, range.begin)
-                                              .includes(:provider))
+                                              .includes(:provider, :unavailability_type))
     # Entries carry the calendar popover's data, unread message counts included.
     @unread_counts = Message.unread_counts_for(appointments.filter_map(&:id_users_customer).uniq)
     blocked = BlockedPeriod.for_period(dates.first, dates.last).to_a

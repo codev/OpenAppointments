@@ -4,6 +4,11 @@
  * everything binds by delegation and survives frame reloads.
  */
 (function () {
+    // Rich text fields (a service's description) get the editor.
+    function initializeEditors() {
+        $('textarea.rich-text:not(.trumbowyg-textarea)').trumbowyg();
+    }
+
     function initialize() {
         const $page = $('[data-crud-page]');
 
@@ -20,8 +25,10 @@
             document.addEventListener('turbo:frame-load', () => {
                 const $current = $('[data-crud-page]');
                 $current.toggleClass('editing', $current.find('turbo-frame[id$="_record"]').children().length > 0);
+                initializeEditors();
             });
         });
+        initializeEditors();
 
         $page.on('change', 'input[type=file][accept^="image/"]', (event) => {
             const file = event.target.files[0];

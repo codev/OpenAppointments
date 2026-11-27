@@ -14,6 +14,26 @@
         <%= f.text_area :description, rows: 4, class: "form-control" %>
     </div>
 
+    <% if record.persisted? %>
+        <%# The category's services, each opening on the services page. %>
+        <div id="category-services" class="card card-body mb-3">
+            <h6 class="fw-light"><%= lang('category_services') %></h6>
+            <% services = record.services.display_order %>
+            <% if services.any? %>
+                <ul class="list-unstyled mb-0">
+                    <% services.each do |service| %>
+                        <li class="mb-1">
+                            <%= link_to service.name, edit_service_path(service), data: { turbo_frame: "_top" } %>
+                            <small class="text-muted"><%= service.duration %> min - <%= service.price %> <%= service.currency %></small>
+                        </li>
+                    <% end %>
+                </ul>
+            <% else %>
+                <div class="text-muted small"><%= lang('category_no_services') %></div>
+            <% end %>
+        </div>
+    <% end %>
+
     <div class="mb-3">
         <div class="form-check form-switch">
             <%= f.check_box :is_hidden, class: "form-check-input" %>

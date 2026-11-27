@@ -54,7 +54,10 @@ module Activity
   end
 
   def unavailability_summary(appointment)
-    "#{appointment.provider&.name}, #{when_text(appointment)}"
+    return "#{appointment.provider&.name}, #{when_text(appointment)}" unless appointment.unavailability_type
+
+    text("activity_unavailability_summary", "{{type}}, {{provider}}, {{when}}",
+         type: appointment.unavailability_type.name, provider: appointment.provider&.name, when: when_text(appointment))
   end
 
   def status_details(appointment)

@@ -159,7 +159,7 @@ en:
     refresh: Refresh
     feed: Feed
     appointment: Appointment
-    unavailability: Unavailability
+    unavailability: "Busy time"
     week: Week
     month: Month
     today: Today
@@ -176,7 +176,7 @@ en:
     manage_users_hint: Manage the backend users (admins, providers, assistants).
     settings_hint: Set system and user settings.
     log_out_hint: Log out of the system.
-    unavailability_periods_hint: During unavailability periods the provider won't accept new appointments.
+    unavailability_periods_hint: "During busy time the provider cannot be booked."
     new_appointment_hint: Create a new appointment and store it into the database.
     reload_appointments_hint: Reload calendar appointments.
     appointment_updated: Appointment updated successfully.
@@ -195,9 +195,9 @@ en:
     delete_appointment_title: Delete Appointment
     write_appointment_removal_reason: 'Please take a minute to write the reason you are deleting the appointment:'
     appointment_saved: Appointment saved successfully.
-    new_unavailability_title: New Unavailability
-    edit_unavailability_title: Edit Unavailability
-    unavailability_saved: Unavailability saved successfully.
+    new_unavailability_title: "New Busy Time"
+    edit_unavailability_title: "Edit Busy Time"
+    unavailability_saved: "Busy time saved."
     start_date_before_end_error: Start date value is latter than end date.
     invalid_duration: Invalid duration.
     invalid_email: Invalid email address.
@@ -318,7 +318,7 @@ en:
     delete_provider: Delete Provider
     delete_assistant: "Delete Assistant"
     delete_appointment: Delete Appointment
-    delete_unavailability: Delete Unavailability
+    delete_unavailability: "Delete Busy Time"
     delete: Delete
     unexpected_issues: Unexpected Issues
     unexpected_issues_message: The operation could not completed.
@@ -334,7 +334,7 @@ en:
     unexpected_issues_occurred: Unexpected issues occurred.
     service_communication_error: A server communication error occurred, please try again.
     no_privileges_edit_appointments: You do not have the required privileges to edit appointments.
-    unavailability_updated: Unavailability updated successfully.
+    unavailability_updated: "Busy time updated."
     appointments: Appointments
     unexpected_warnings: Unexpected Warnings
     unexpected_warnings_message: The operation completed but some warnings appeared.
@@ -468,8 +468,18 @@ en:
     verify_ssl: Verify SSL
     appointment_save: Appointment Save
     appointment_delete: Appointment Delete
-    unavailability_save: Unavailability Save
-    unavailability_delete: Unavailability Delete
+    unavailability_save: "Busy Time Save"
+    unavailability_delete: "Busy Time Delete"
+    unavailability_type: "Type"
+    unavailability_type_none: "No type"
+    unavailability_types: "Busy Time Types"
+    unavailability_types_hint: "The kinds of busy time staff can put on the calendar, such as meetings, leave or admin, each with its own colour."
+    unavailability_type_saved: "Type saved."
+    unavailability_type_deleted: "Type removed. Busy times of that type are kept without a type."
+    delete_unavailability_type: "Delete Type"
+    unavailability_stylists_hint: "Tick everyone the busy time is for. One entry is made per provider and they are edited together."
+    unavailability_also_for: "Also for {{names}}"
+    delete_unavailability_group: "Remove this busy time for all {{count}} providers?"
     customer_save: Customer Save
     customer_delete: Customer Delete
     service_save: Service Save
@@ -543,6 +553,8 @@ en:
     no_breaks: No Breaks
     service_categories: Service Categories
     service_category: Service Category
+    category_services: Services in this category
+    category_no_services: No services in this category yet.
     blocked_period_saved: Blocked period saved successfully.
     blocked_period_deleted: Blocked period deleted successfully.
     delete_blocked_period: Delete Blocked Period
@@ -559,6 +571,8 @@ en:
     delete_webhook: Delete Webhook
     contact_info: Contact Info
     hide_from_public: Hide From Public
+    bookable_by_public: Bookable By Public
+    bookable_hint: "Untick to show the service on the booking page with its description only. Clients cannot book it online; put how to arrange it in the description."
     matomo_analytics_site_id: Matomo Analytics Site ID
     matomo_analytics_site_id_hint: Set the site ID that will be tracked by Matomo (the default site has the ID "1").
     default_timezone: Default Timezone
@@ -1068,8 +1082,8 @@ en:
     activity_appointment_changed: "Changed"
     activity_appointment_cancelled: "Cancelled"
     activity_appointment_deleted: "Deleted"
-    activity_unavailability_saved: "Unavailability added"
-    activity_unavailability_deleted: "Unavailability removed"
+    activity_unavailability_saved: "Busy time added"
+    activity_unavailability_deleted: "Busy time removed"
     activity_message_sent: "Message sent"
     activity_message_failed: "Message failed"
     activity_message_received: "Message received"
@@ -1080,6 +1094,7 @@ en:
     activity_actor_system: "System"
     activity_actor_import: "Import"
     activity_appointment_summary: "{{service}} for {{customer}} with {{provider}}, {{when}}"
+    activity_unavailability_summary: "{{type}}, {{provider}}, {{when}}"
     activity_status_summary: "Status {{status}}"
     activity_reason_summary: "Reason: {{reason}}"
     activity_message_summary: "{{notification}} to {{audience}} by {{channel}}, {{address}}"
@@ -1087,5 +1102,8 @@ en:
     activity_waitlist_summary: "{{customer}} for {{service}} with {{provider}}"
     free: "Free"
     free_hint: "Free slots for appointments in the booking window, date by date and stylist by stylist."
-    free_window: "Free for appointments from {{from}} to {{to}}"
     free_empty: "Nothing is free for appointments in the booking window."
+    free_from: From
+    free_to: To
+    free_reset_hint: Back to the booking window
+    print_free_title: "Free for appointments"

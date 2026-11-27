@@ -348,7 +348,11 @@ class BookingController < ApplicationController
     @timezone = params[:timezone].presence if params[:timezone].present? && Time.find_zone(params[:timezone])
 
     first_kind = html_vars[:first_step] # "service" or "provider"
-    chosen = { "service" => @service_id.positive?, "provider" => @provider_id.present? }
+    # A service that is not bookable by the public holds the wizard on its
+    # description; an existing appointment for it can still be managed.
+    service_row = available_services.find { |row| row["id"] == @service_id }
+    bookable = manage_mode || service_row.nil? || service_row["is_bookable"] != false
+    chosen = { "service" => @service_id.positive? && bookable, "provider" => @provider_id.present? }
     @reachable = [ "first" ]
     @reachable << "second" if chosen[first_kind]
     @reachable << "time" if chosen.values.all?

@@ -164,6 +164,22 @@ module Api
         assert Appointment.find(json["id"]).is_unavailability
       end
 
+      test "unavailabilities carry a type and group" do
+        api_post "/api/v1/unavailabilities", {
+          start: "2026-07-22 12:00:00", end: "2026-07-22 13:00:00", providerId: users(:zane).id,
+          typeId: unavailability_types(:meeting).id, group: "team-1", notes: "All staff"
+        }
+        assert_response :created
+        assert_equal [ unavailability_types(:meeting).id, "team-1" ], [ json["typeId"], json["group"] ]
+        record = Appointment.find(json["id"])
+        assert_equal unavailability_types(:meeting), record.unavailability_type
+        assert_equal "team-1", record.unavailability_group
+
+        api_get "/api/v1/unavailabilities/#{record.id}"
+        assert_equal "All staff", json["notes"]
+        assert_equal unavailability_types(:meeting).id, json["typeId"]
+      end
+
       test "settings collection, by name, and update" do
         api_get "/api/v1/settings"
         assert(json.any? { |s| s["name"] == "company_name" })

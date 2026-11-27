@@ -1,0 +1,9 @@
+meeting:
+  name: Meeting
+  color: "#7cbae8"
+  position: 0
+
+leave:
+  name: Time off
+  color: "#e3e3e3"
+  position: 1

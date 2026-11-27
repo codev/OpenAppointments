@@ -151,7 +151,7 @@ de:
     log_out: Abmelden
     reload: Neu laden
     appointment: Termin
-    unavailability: Nichtverfügbarkeit
+    unavailability: "Belegte Zeit"
     week: Woche
     month: Monat
     today: Heute
@@ -168,7 +168,7 @@ de:
     manage_users_hint: Verwalten Sie die Endnutzer (Admins, Anbieter, Assistenten).
     settings_hint: Setzen Sie das System auf Nutzereinstellungen.
     log_out_hint: Melden Sie sich vom System ab.
-    unavailability_periods_hint: In diesem Zeitraum werden neue Termine vom Anbieter nicht akzeptiert.
+    unavailability_periods_hint: "Während belegter Zeit kann der Anbieter nicht gebucht werden."
     new_appointment_hint: Bestimmen Sie einen neuen Termin und sichern Sie ihn in der Datenbank.
     reload_appointments_hint: Kalendertermine neu laden.
     appointment_updated: Die Termine sind erfolgreich erneuert worden.
@@ -187,9 +187,9 @@ de:
     delete_appointment_title: Termin löschen
     write_appointment_removal_reason: 'Bitte nehmen Sie sich eine Minute Zeit, um den Grund für das Löschen des Termins zu erläutern:'
     appointment_saved: Termin erfolgreich gespeichert.
-    new_unavailability_title: Neuer Nichtverfügbarkeit
-    edit_unavailability_title: Nichtverfügbarkeit bearbeiten
-    unavailability_saved: Nichtverfügbarkeit erfolgreich gespeichert.
+    new_unavailability_title: "Neue belegte Zeit"
+    edit_unavailability_title: "Belegte Zeit bearbeiten"
+    unavailability_saved: "Belegte Zeit gespeichert."
     start_date_before_end_error: Das Startdatum liegt vor dem Enddatum.
     invalid_duration: Ungültige Dauer.
     invalid_email: Ungültige E-Mail-Adresse.
@@ -308,7 +308,7 @@ de:
     delete_provider: Zeitraum löschen
     delete_assistant: "Assistent löschen"
     delete_appointment: Termin löschen
-    delete_unavailability: Nichtverfügbarkeit löschen
+    delete_unavailability: "Belegte Zeit löschen"
     delete: Löschen
     unexpected_issues: Unvorhergesene Vorfälle
     unexpected_issues_message: Der Vorgang konnte nicht abgeschlossen werden.
@@ -324,7 +324,7 @@ de:
     unexpected_issues_occurred: Unerwartete Probleme aufgetreten.
     service_communication_error: Während der Kommunikation mit dem Server ist ein Fehler aufgetreten, bitte versuchen Sie es erneut.
     no_privileges_edit_appointments: Sie haben nicht die Berechtigung, um Termine zu bearbeiten.
-    unavailability_updated: Nichtverfügbarkeit erfolgreich erneuert worden.
+    unavailability_updated: "Belegte Zeit aktualisiert."
     appointments: Termine
     unexpected_warnings: Unerwartete Warnungen
     unexpected_warnings_message: Der Vorgang wurde abgeschlossen aber einige Warnungen erscheinen.
@@ -456,8 +456,18 @@ de:
     verify_ssl: SSL überprüfen
     appointment_save: Termin speichern
     appointment_delete: Termin löschen
-    unavailability_save: Nichtverfügbarkeit speichern
-    unavailability_delete: Nichtverfügbarkeit löschen
+    unavailability_save: "Belegte Zeit speichern"
+    unavailability_delete: "Belegte Zeit löschen"
+    unavailability_type: "Typ"
+    unavailability_type_none: "Kein Typ"
+    unavailability_types: "Typen belegter Zeit"
+    unavailability_types_hint: "Die Arten belegter Zeit, die das Team in den Kalender eintragen kann, etwa Besprechungen, Urlaub oder Verwaltung, jede mit eigener Farbe."
+    unavailability_type_saved: "Typ gespeichert."
+    unavailability_type_deleted: "Typ entfernt. Belegte Zeiten dieses Typs bleiben ohne Typ erhalten."
+    delete_unavailability_type: "Typ löschen"
+    unavailability_stylists_hint: "Alle ankreuzen, für die die belegte Zeit gilt. Pro Anbieter wird ein Eintrag erstellt; sie werden gemeinsam bearbeitet."
+    unavailability_also_for: "Auch für {{names}}"
+    delete_unavailability_group: "Diese belegte Zeit für alle {{count}} Anbieter entfernen?"
     customer_save: Kundenspeicherung
     customer_delete: Kunde löschen
     service_save: Service speichern
@@ -529,6 +539,8 @@ de:
     no_breaks: Keine Pausen
     service_categories: Dienst-Kategorien
     service_category: Dienstleistungskategorie
+    category_services: "Leistungen in dieser Kategorie"
+    category_no_services: "In dieser Kategorie gibt es noch keine Leistungen."
     blocked_period_saved: Gesperrter Zeitraum erfolgreich gespeichert.
     blocked_period_deleted: Gesperrter Zeitraum erfolgreich gelöscht.
     delete_blocked_period: Gesperrten Zeitraum löschen
@@ -545,6 +557,8 @@ de:
     delete_webhook: Webhook löschen
     contact_info: Kontakt-Infos
     hide_from_public: Vor der Öffentlichkeit verbergen
+    bookable_by_public: "Öffentlich buchbar"
+    bookable_hint: "Abwählen, um die Leistung auf der Buchungsseite nur mit ihrer Beschreibung anzuzeigen. Kunden können sie nicht online buchen; beschreiben Sie in der Beschreibung, wie man sie vereinbart."
     matomo_analytics_site_id: Matomo Analytics Standort-ID
     matomo_analytics_site_id_hint: Legen Sie die Site-ID fest, die von Matomo getrackt werden soll (die Standard-Site hat die ID „1“).
     default_timezone: Standard-Zeitzone
@@ -1068,8 +1082,8 @@ de:
     activity_appointment_changed: "Geändert"
     activity_appointment_cancelled: "Storniert"
     activity_appointment_deleted: "Gelöscht"
-    activity_unavailability_saved: "Nichtverfügbarkeit hinzugefügt"
-    activity_unavailability_deleted: "Nichtverfügbarkeit entfernt"
+    activity_unavailability_saved: "Belegte Zeit hinzugefügt"
+    activity_unavailability_deleted: "Belegte Zeit entfernt"
     activity_message_sent: "Nachricht gesendet"
     activity_message_failed: "Nachricht fehlgeschlagen"
     activity_message_received: "Nachricht empfangen"
@@ -1080,6 +1094,7 @@ de:
     activity_actor_system: "System"
     activity_actor_import: "Import"
     activity_appointment_summary: "{{service}} für {{customer}} bei {{provider}}, {{when}}"
+    activity_unavailability_summary: "{{type}}, {{provider}}, {{when}}"
     activity_status_summary: "Status {{status}}"
     activity_reason_summary: "Grund: {{reason}}"
     activity_message_summary: "{{notification}} an {{audience}} per {{channel}}, {{address}}"
@@ -1087,5 +1102,8 @@ de:
     activity_waitlist_summary: "{{customer}} für {{service}} bei {{provider}}"
     free: "Frei"
     free_hint: "Freie Termine im Buchungszeitraum, Tag für Tag und Anbieter für Anbieter."
-    free_window: "Frei für Termine vom {{from}} bis {{to}}"
     free_empty: "Im Buchungszeitraum ist nichts für Termine frei."
+    free_from: "Von"
+    free_to: "Bis"
+    free_reset_hint: "Zurück zum Buchungszeitraum"
+    print_free_title: "Frei für Termine"

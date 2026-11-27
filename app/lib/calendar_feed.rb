@@ -18,7 +18,7 @@ module CalendarFeed
     calendar.append_custom_property("X-PUBLISHED-TTL", "PT1H")
 
     records = provider.provider_appointments.where(start_datetime: from..to)
-                      .includes(:service, :customer, :appointment_status).order(:start_datetime)
+                      .includes(:service, :customer, :appointment_status, :unavailability_type).order(:start_datetime)
     records.reject(&:frees_slot?).each { |record| calendar.add_event(event_for(record, tzid)) }
     calendar.to_ical
   end
@@ -30,7 +30,7 @@ module CalendarFeed
     event.dtend = Icalendar::Values::DateTime.new(record.end_datetime, "tzid" => tzid)
     event.sequence = IcsFile.sequence_for(record.updated_at)
     if record.is_unavailability
-      event.summary = record.notes.presence || I18n.t("ea.unavailable")
+      event.summary = [ record.unavailability_type&.name, record.notes.presence ].compact.join(" - ").presence || I18n.t("ea.unavailable")
     else
       event.summary = [ record.service&.name, record.customer&.full_name ].compact_blank.join(" - ")
       event.description = "#{Messaging::Template.base_url}/calendar/reschedule/#{record.booking_hash}"

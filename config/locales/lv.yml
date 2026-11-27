@@ -151,7 +151,7 @@ lv:
     log_out: Atsijungti
     reload: Perkrauti
     appointment: Pieraksts
-    unavailability: Nepieejamība
+    unavailability: "Aizņemts laiks"
     week: Savaitė
     month: Mēnesis
     today: Šodien
@@ -168,7 +168,7 @@ lv:
     manage_users_hint: Tvarkykite jaupakalinės sistēmas lietotāju (administratoru, lietotāju, asistentu).
     settings_hint: Nustatykite sistēmas un lietotojo nustatymus.
     log_out_hint: Atsijunk no sistēmas.
-    unavailability_periods_hint: Nepasiekiamumo periodiem piegādātājiem nepieims jaunu tikšanās veidu.
+    unavailability_periods_hint: "Aizņemtā laikā pie pakalpojuma sniedzēja nevar pierakstīties."
     new_appointment_hint: Sukurkite jaunu tikšanos un ierakstykite viņu uz datu bāzes.
     reload_appointments_hint: Atnaujiniet kalendoriaus susitikimus.
     appointment_updated: Susitikimas veiksmīgi atjaunināts.
@@ -187,9 +187,9 @@ lv:
     delete_appointment_title: Ištrinti tikšanos
     write_appointment_removal_reason: 'Skirkite minūti un parašykite iemeslu, kāpēc ištrinate susitikimą:'
     appointment_saved: Susitikimas sėkmingai saglabāts.
-    new_unavailability_title: Naujas nepasiņemiamumas
-    edit_unavailability_title: Redaguoti nepasiėmiamumu
-    unavailability_saved: Nepasiėmiamumas sėkmingai saglabāts.
+    new_unavailability_title: "Jauns aizņemts laiks"
+    edit_unavailability_title: "Rediģēt aizņemto laiku"
+    unavailability_saved: "Aizņemtais laiks saglabāts."
     start_date_before_end_error: Pradžios dati ir vēlāk nekā beigās dati.
     invalid_duration: Neteisinga ilgums.
     invalid_email: Neteisingas el. pasta adrese.
@@ -308,7 +308,7 @@ lv:
     delete_provider: Dzēst pakalpojumu sniedzēju
     delete_assistant: "Dzēst asistentu"
     delete_appointment: Dzēst pierakstu
-    delete_unavailability: Dzēst nepieejamību
+    delete_unavailability: "Dzēst aizņemto laiku"
     delete: Dzēst
     unexpected_issues: Negaidīti jautājumi
     unexpected_issues_message: Operāciju nevar pabeigt.
@@ -324,7 +324,7 @@ lv:
     unexpected_issues_occurred: Radās neparedzēti jautājumi.
     service_communication_error: Lūdzu, mēģiniet vēlreiz.
     no_privileges_edit_appointments: Jums nav vajadzīgo tiesību rediģēt tikšanās.
-    unavailability_updated: Pieejamība veiksmīgi atjaunināta.
+    unavailability_updated: "Aizņemtais laiks atjaunināts."
     appointments: Pieraksti
     unexpected_warnings: Negaidīti brīdinājumi
     unexpected_warnings_message: Operācija pabeigta, bet parādījās daži brīdinājumi.
@@ -456,8 +456,18 @@ lv:
     verify_ssl: Verificēt SSL
     appointment_save: Pieraksta saglabāšana
     appointment_delete: Pieraksta dzēšana
-    unavailability_save: Nepieejamības saglabāšana
-    unavailability_delete: Nepieejamība dzēst
+    unavailability_save: "Aizņemtā laika saglabāšana"
+    unavailability_delete: "Aizņemtā laika dzēšana"
+    unavailability_type: "Tips"
+    unavailability_type_none: "Bez tipa"
+    unavailability_types: "Aizņemtā laika tipi"
+    unavailability_types_hint: "Aizņemtā laika veidi, ko personāls var ievietot kalendārā, piemēram, sapulces, atvaļinājums vai administrācija, katrs ar savu krāsu."
+    unavailability_type_saved: "Tips saglabāts."
+    unavailability_type_deleted: "Tips noņemts. Šī tipa aizņemtie laiki paliek bez tipa."
+    delete_unavailability_type: "Dzēst tipu"
+    unavailability_stylists_hint: "Atzīmējiet visus, uz kuriem attiecas aizņemtais laiks. Katram pakalpojuma sniedzējam tiek izveidots viens ieraksts, un tos rediģē kopā."
+    unavailability_also_for: "Arī {{names}}"
+    delete_unavailability_group: "Noņemt šo aizņemto laiku visiem {{count}} pakalpojuma sniedzējiem?"
     customer_save: Klienta saglabāšana
     customer_delete: Klienta dzēšana
     service_save: Pakalpojuma saglabāšana
@@ -529,6 +539,8 @@ lv:
     no_breaks: Nav pārtraukumu
     service_categories: Pakalpojumu kategorijas
     service_category: Pakalpojumu kategorija
+    category_services: "Šīs kategorijas pakalpojumi"
+    category_no_services: "Šajā kategorijā vēl nav pakalpojumu."
     blocked_period_saved: Bloķētais periods veiksmīgi saglabāts.
     blocked_period_deleted: Bloķētais periods veiksmīgi dzēsts.
     delete_blocked_period: Dzēst bloķēto periodu
@@ -545,6 +557,8 @@ lv:
     delete_webhook: Dzēst webhook
     contact_info: Kontaktinformācija
     hide_from_public: Paslēpt no sabiedrības
+    bookable_by_public: "Rezervējams publiski"
+    bookable_hint: "Noņemiet atzīmi, lai pakalpojums rezervāciju lapā tiktu rādīts tikai ar aprakstu. Klienti to nevar rezervēt tiešsaistē; aprakstā norādiet, kā vienoties par pierakstu."
     matomo_analytics_site_id: Matomo Analytics vietnes ID
     matomo_analytics_site_id_hint: Iestatiet vietnes ID, ko Matomo uzraudzīs (pēc noklusējuma vietnei ir ID "1").
     default_timezone: Noklusējuma laika zona
@@ -1068,8 +1082,8 @@ lv:
     activity_appointment_changed: "Mainīts"
     activity_appointment_cancelled: "Atcelts"
     activity_appointment_deleted: "Dzēsts"
-    activity_unavailability_saved: "Nepieejamība pievienota"
-    activity_unavailability_deleted: "Nepieejamība noņemta"
+    activity_unavailability_saved: "Aizņemtais laiks pievienots"
+    activity_unavailability_deleted: "Aizņemtais laiks noņemts"
     activity_message_sent: "Ziņojums nosūtīts"
     activity_message_failed: "Ziņojums neizdevās"
     activity_message_received: "Ziņojums saņemts"
@@ -1080,6 +1094,7 @@ lv:
     activity_actor_system: "Sistēma"
     activity_actor_import: "Imports"
     activity_appointment_summary: "{{service}} klientam {{customer}} pie {{provider}}, {{when}}"
+    activity_unavailability_summary: "{{type}}, {{provider}}, {{when}}"
     activity_status_summary: "Statuss {{status}}"
     activity_reason_summary: "Iemesls: {{reason}}"
     activity_message_summary: "{{notification}} adresātam {{audience}} ar {{channel}}, {{address}}"
@@ -1087,5 +1102,8 @@ lv:
     activity_waitlist_summary: "{{customer}}: {{service}} pie {{provider}}"
     free: "Brīvs"
     free_hint: "Brīvie pieraksta laiki pierakstu periodā, pa dienām un pakalpojumu sniedzējiem."
-    free_window: "Brīvs pierakstiem no {{from}} līdz {{to}}"
     free_empty: "Pierakstu periodā nav brīvu laiku pierakstiem."
+    free_from: "No"
+    free_to: "Līdz"
+    free_reset_hint: "Atpakaļ uz pierakstu periodu"
+    print_free_title: "Brīvs pierakstiem"

@@ -1,0 +1,9 @@
+<% before_add = capture do %>
+    <a href="/business_settings" class="btn btn-outline-primary me-2" data-turbo="false">
+        <i class="fas fa-chevron-left me-2"></i>
+        <%= lang('back') %>
+    </a>
+<% end %>
+<%= render "shared/crud_page", page: "unavailability-types", title: lang('unavailability_types'),
+           records: @records, record: @record, editing: @editing, keyword: @keyword,
+           row: "unavailability_types/row", form: "unavailability_types/form", before_add: before_add %>

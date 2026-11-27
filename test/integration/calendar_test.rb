@@ -354,4 +354,16 @@ class CalendarTest < ActionDispatch::IntegrationTest
     get "/calendar"
     assert_select "#calendar-legend"
   end
+
+  test "calendar unavailabilities carry their type and the other stylists of their group" do
+    login_admin
+    lunch = appointments(:lunch_block)
+    lunch.update!(unavailability_type: unavailability_types(:meeting), unavailability_group: "g1")
+    post "/calendar/get_calendar_appointments", params: { record_id: users(:zane).id, start_date: "2026-07-20", end_date: "2026-07-21", filter_type: "provider" }
+    assert_response :success
+    row = response.parsed_body["unavailabilities"].first
+    assert_equal "Meeting", row.dig("unavailability_type", "name")
+    assert_equal "#7cbae8", row.dig("unavailability_type", "color")
+    assert_equal [], row["group_providers"]
+  end
 end

@@ -151,7 +151,7 @@ pt-br:
     log_out: Sair
     reload: Atualizar
     appointment: Agenda
-    unavailability: Indisponível
+    unavailability: "Tempo ocupado"
     week: Semana
     month: Mês
     today: Hoje
@@ -168,7 +168,7 @@ pt-br:
     manage_users_hint: Gerenciar os usuários de backend (administradores, fornecedores, assistentes).
     settings_hint: Definir as configurações do sistema e do usuario.
     log_out_hint: Sair do sistema.
-    unavailability_periods_hint: Durante os periodos indisponíveis o fornecedor não aceitar novos agendamentos.
+    unavailability_periods_hint: "Durante o tempo ocupado o prestador não pode ser agendado."
     new_appointment_hint: Criar um novo agendamento e salvar na base de dados.
     reload_appointments_hint: atualizar os agentamentos do calendario.
     appointment_updated: Atualizado com sucesso.
@@ -187,9 +187,9 @@ pt-br:
     delete_appointment_title: Apagar agendamento
     write_appointment_removal_reason: 'Por favor, dedique alguns minutos para escrever a razão que você está apagando o agendamento:'
     appointment_saved: Agendamento salvo com sucesso.
-    new_unavailability_title: Novo período indisponível
-    edit_unavailability_title: Edite período indisponível
-    unavailability_saved: Período Indisponível salvo com sucesso.
+    new_unavailability_title: "Novo tempo ocupado"
+    edit_unavailability_title: "Editar tempo ocupado"
+    unavailability_saved: "Tempo ocupado salvo."
     start_date_before_end_error: A data início é superior ao valor da data fim.
     invalid_duration: Duração inválida.
     invalid_email: Email inválido.
@@ -308,7 +308,7 @@ pt-br:
     delete_provider: Excluir atendente
     delete_assistant: "Excluir assistente"
     delete_appointment: Excluir agendamento
-    delete_unavailability: Excluir período indisponível
+    delete_unavailability: "Excluir tempo ocupado"
     delete: Excluir
     unexpected_issues: Problemas inesperados
     unexpected_issues_message: Não foi possível concluir a operação.
@@ -324,7 +324,7 @@ pt-br:
     unexpected_issues_occurred: Ocorreram problemas inesperados.
     service_communication_error: Erro de conexão com o servidor.
     no_privileges_edit_appointments: Não tem permissões para editar agendamentos.
-    unavailability_updated: Período indisponível, atualizado com sucesso.
+    unavailability_updated: "Tempo ocupado atualizado."
     appointments: Agendamentos
     unexpected_warnings: Avisos inesperados
     unexpected_warnings_message: A operação foi concluida, contudo existem avisos.
@@ -456,8 +456,18 @@ pt-br:
     verify_ssl: Verificar SSL
     appointment_save: Salvar Compromisso
     appointment_delete: Excluir Compromisso
-    unavailability_save: Salvar Indisponibilidade
-    unavailability_delete: Excluir Indisponibilidade
+    unavailability_save: "Salvar tempo ocupado"
+    unavailability_delete: "Excluir tempo ocupado"
+    unavailability_type: "Tipo"
+    unavailability_type_none: "Sem tipo"
+    unavailability_types: "Tipos de tempo ocupado"
+    unavailability_types_hint: "Os tipos de tempo ocupado que a equipe pode colocar no calendário, como reuniões, folgas ou administração, cada um com sua cor."
+    unavailability_type_saved: "Tipo salvo."
+    unavailability_type_deleted: "Tipo removido. Os tempos ocupados desse tipo são mantidos sem tipo."
+    delete_unavailability_type: "Excluir tipo"
+    unavailability_stylists_hint: "Marque todas as pessoas envolvidas. Uma entrada é criada por prestador e elas são editadas juntas."
+    unavailability_also_for: "Também para {{names}}"
+    delete_unavailability_group: "Remover este tempo ocupado para todos os {{count}} prestadores?"
     customer_save: Salvar Cliente
     customer_delete: Excluir Cliente
     service_save: Salvar Serviço
@@ -529,6 +539,8 @@ pt-br:
     no_breaks: Sem Intervalos
     service_categories: Categorias de Serviço
     service_category: Categoria de Serviço
+    category_services: "Serviços desta categoria"
+    category_no_services: "Ainda não há serviços nesta categoria."
     blocked_period_saved: Período bloqueado salvo com sucesso.
     blocked_period_deleted: Período bloqueado excluído com sucesso.
     delete_blocked_period: Excluir Período Bloqueado
@@ -545,6 +557,8 @@ pt-br:
     delete_webhook: Excluir Webhook
     contact_info: Informações de Contato
     hide_from_public: Ocultar do Público
+    bookable_by_public: "Agendável pelo Público"
+    bookable_hint: "Desmarque para mostrar o serviço na página de agendamento apenas com a descrição. Os clientes não podem agendá-lo online; informe na descrição como combinar."
     matomo_analytics_site_id: ID do Site do Matomo Analytics
     matomo_analytics_site_id_hint: Defina o ID do site que será rastreado pelo Matomo (o site padrão tem o ID "1").
     default_timezone: Fuso Horário Padrão
@@ -1068,8 +1082,8 @@ pt-br:
     activity_appointment_changed: "Alterado"
     activity_appointment_cancelled: "Cancelado"
     activity_appointment_deleted: "Excluído"
-    activity_unavailability_saved: "Indisponibilidade adicionada"
-    activity_unavailability_deleted: "Indisponibilidade removida"
+    activity_unavailability_saved: "Tempo ocupado adicionado"
+    activity_unavailability_deleted: "Tempo ocupado removido"
     activity_message_sent: "Mensagem enviada"
     activity_message_failed: "Mensagem com falha"
     activity_message_received: "Mensagem recebida"
@@ -1080,6 +1094,7 @@ pt-br:
     activity_actor_system: "Sistema"
     activity_actor_import: "Importação"
     activity_appointment_summary: "{{service}} para {{customer}} com {{provider}}, {{when}}"
+    activity_unavailability_summary: "{{type}}, {{provider}}, {{when}}"
     activity_status_summary: "Status {{status}}"
     activity_reason_summary: "Motivo: {{reason}}"
     activity_message_summary: "{{notification}} para {{audience}} por {{channel}}, {{address}}"
@@ -1087,5 +1102,8 @@ pt-br:
     activity_waitlist_summary: "{{customer}} para {{service}} com {{provider}}"
     free: "Livre"
     free_hint: "Horários livres para agendamentos na janela de reservas, dia a dia e atendente por atendente."
-    free_window: "Livre para agendamentos de {{from}} a {{to}}"
     free_empty: "Nada está livre para agendamentos na janela de reservas."
+    free_from: "De"
+    free_to: "Até"
+    free_reset_hint: "Voltar para a janela de reservas"
+    print_free_title: "Livre para agendamentos"

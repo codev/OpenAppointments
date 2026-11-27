@@ -610,20 +610,22 @@ App.Utils.CalendarEvents = (function () {
         return `rgb(${r}, ${g}, ${b})`;
     }
 
+    // Titled by the type (or the plain word) and the notes, coloured by the type.
     function unavailabilityEvents(unavailabilities) {
         return unavailabilities.map((unavailability) => {
             let notes = unavailability.notes ? ' - ' + unavailability.notes : '';
             if (notes.length > 33) {
                 notes = ' - ' + unavailability.notes.substring(0, 30) + '...';
             }
+            const type = unavailability.unavailability_type;
 
             return {
-                title: lang('unavailability') + notes,
+                title: (type ? type.name : lang('unavailability')) + notes,
                 start: moment(unavailability.start_datetime).toDate(),
                 end: moment(unavailability.end_datetime).toDate(),
                 allDay: false,
                 resourceId: String(unavailability.id_users_provider),
-                color: COLORS.unavailability,
+                color: type?.color || COLORS.unavailability,
                 editable: true,
                 className: 'fc-unavailability fc-custom',
                 data: unavailability,

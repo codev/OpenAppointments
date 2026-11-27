@@ -66,6 +66,7 @@ Rails.application.routes.draw do
     get :messages, on: :member
   end
   resources :blocked_periods, only: %i[index new create edit update destroy]
+  resources :unavailability_types, only: %i[index new create edit update destroy]
   resources :webhooks, only: %i[index new create edit update destroy]
   resources :admins, only: %i[index new create edit update destroy]
   resources :assistants, only: %i[index new create edit update destroy]

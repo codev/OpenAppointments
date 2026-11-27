@@ -95,6 +95,23 @@ class BookingWizardTest < ApplicationSystemTestCase
     assert_selector "#cookie-notice-modal.show", text: "We use one cookie.", wait: 5
   end
 
+  test "a service that is not bookable by the public shows its description and Next stays put" do
+    services(:haircut).update!(is_bookable: false, description: "Ring the salon to arrange this one.")
+    visit root_url
+    assert_selector "#wizard-frame-1", visible: :visible, wait: 5
+    select services(:haircut).name, from: "select-service"
+    assert_text "Ring the salon to arrange this one."
+    find("#button-next-1").click
+    assert_selector "#wizard-frame-1", visible: :visible
+    assert_no_selector "#wizard-frame-2", visible: :visible
+    assert_text "Ring the salon to arrange this one."
+    assert_no_selector "#button-next-1[disabled]"
+
+    select services(:group_session).name, from: "select-service"
+    find("#button-next-1").click
+    assert_selector "#wizard-frame-2", visible: :visible, wait: 5
+  end
+
   test "first page blocks next until a choice is made" do
     visit root_url
     assert_selector "#wizard-frame-1", visible: :visible, wait: 5
@@ -244,6 +261,9 @@ class BookingWizardFlowTest < ApplicationSystemTestCase
     assert_selector ".display-booking-selection", text: "#{services(:haircut).name} │ #{pick}"
 
     click_on "Confirm"
+    # Confirm leaves the page: wait on the URL, which the driver reads without
+    # touching a document that is being replaced.
+    assert_current_path %r{/booking_confirmation/of/}, wait: 10
     assert_text "You're all set!", wait: 10
     appointment = Appointment.appointments.order(:id).last
     assert_equal pick, appointment.provider.name
@@ -272,6 +292,8 @@ class BookingWizardWindowTest < ApplicationSystemTestCase
     second_day = working_day(1)
     find(".flatpickr-day[aria-label='#{first_day.strftime('%B %-d, %Y')}']").click
     assert_selector "#available-hours .available-hour", minimum: 2
+    # Days outside the shown month are hidden, so turn the page when the two days straddle one.
+    find(".flatpickr-next-month").click if second_day.month != first_day.month
     find(".flatpickr-day[aria-label='#{second_day.strftime('%B %-d, %Y')}']").click
     assert_selector "#available-hours .available-hour", minimum: 2
     assert_equal 0, page.evaluate_script("window.__requests"), "day browsing must not hit the server"
@@ -308,6 +330,8 @@ class BookingWizardWindowTest < ApplicationSystemTestCase
 
   test "the time step refuses Next until an hour is chosen" do
     to_time_step
+    # Drawing the hours empties their box, prompt included, so press Next only once they are there.
+    assert_selector "#available-hours .available-hour", minimum: 1, wait: 5
     find("#button-next-3").click
     assert_selector "#select-hour-prompt", text: I18n.t("ea.appointment_hour_missing")
     assert_selector "#wizard-frame-3", visible: :visible

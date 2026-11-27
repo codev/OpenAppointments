@@ -23,6 +23,7 @@ module BookingPayloads
       "description" => service.description, "location" => service.location,
       "color" => service.color, "slot_interval" => service.slot_interval,
       "attendants_number" => service.attendants_number, "is_private" => service.is_private,
+      "is_bookable" => service.is_bookable,
       "id_service_categories" => service.id_service_categories,
       "service_category_name" => service.try(:service_category_name),
       "service_category_id" => service.try(:service_category_id),

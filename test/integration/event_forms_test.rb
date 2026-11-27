@@ -258,7 +258,8 @@ class EventFormsTest < ActionDispatch::IntegrationTest
     login_admin
     get "/unavailabilities/new", params: { provider_id: users(:zane).id, start: "2026-07-22 12:00:00", end: "2026-07-22 13:00:00" }
     assert_select "form#unavailability-form[action='/unavailabilities']"
-    assert_select "#unavailability-provider option[selected][value=?]", users(:zane).id.to_s
+    # Zane is the only stylist offering a service, so the form names them without a tick list.
+    assert_select "#unavailability-providers input[type=hidden][value=?]", users(:zane).id.to_s
     assert_select "#unavailability-start[value='22/07/2026 12:00 pm']"
 
     post "/unavailabilities", params: { unavailability: { id_users_provider: users(:zane).id, start_datetime: "22/07/2026 12:00 pm",
@@ -277,6 +278,101 @@ class EventFormsTest < ActionDispatch::IntegrationTest
     delete "/unavailabilities/#{block.id}"
     assert_response :success
     assert_not Appointment.exists?(block.id)
+  end
+
+  def linked_provider(name)
+    provider = User.create!(name: name, email: "#{name.downcase}@example.org", role: users(:zane).role)
+    ServiceProviderLink.create!(id_users: provider.id, id_services: services(:haircut).id)
+    provider
+  end
+
+  test "the busy time form offers a type and, to an admin, a stylist tick list" do
+    linked_provider("Other")
+    login_admin
+    get "/unavailabilities/new", params: { provider_id: users(:zane).id }
+    assert_select "label[for=unavailability-type]", text: "Type"
+    assert_select "#unavailability-type option[value='']", text: "No type"
+    assert_select "#unavailability-type option", text: "Meeting"
+    assert_select "#unavailability-providers .form-check", count: 2
+    assert_select "#unavailability-providers input[type=checkbox][name='unavailability[provider_ids][]'][value=?][checked]", users(:zane).id.to_s
+    assert_select "#unavailability-providers input[type=checkbox]:not([checked])", count: 1
+    assert_select "#unavailability-providers + .form-text", text: /Tick everyone/
+    assert_select "#delete-unavailability", count: 0
+  end
+
+  test "a stylist's busy time form names only themselves" do
+    linked_provider("Other")
+    login_provider
+    get "/unavailabilities/new"
+    assert_select "#unavailability-providers input[type=hidden][name='unavailability[provider_ids][]'][value=?]", users(:zane).id.to_s
+    assert_select "#unavailability-providers input[type=checkbox]", count: 0
+    assert_select "#unavailability-providers", text: /Zane/
+  end
+
+  test "one busy time for several stylists is a row each in one group, edited and deleted together" do
+    other = linked_provider("Other")
+    third = linked_provider("Third")
+    login_admin
+    post "/unavailabilities", params: { unavailability: { provider_ids: [ users(:zane).id, other.id ], unavailability_type_id: unavailability_types(:meeting).id,
+                                                          start_datetime: "22/07/2026 12:00 pm", end_datetime: "22/07/2026 1:00 pm", notes: "Team" } }
+    assert_response :success
+    assert_equal I18n.t("ea.unavailability_saved"), saved_marker["data-message"]
+    rows = Appointment.unavailabilities.where(notes: "Team")
+    assert_equal [ other.id, users(:zane).id ].sort, rows.map(&:id_users_provider).sort
+    assert_equal 1, rows.map(&:unavailability_group).uniq.compact.size
+    assert rows.all? { |row| row.unavailability_type == unavailability_types(:meeting) }
+    zane_row = rows.find_by!(id_users_provider: users(:zane).id)
+
+    get "/unavailabilities/#{zane_row.id}/edit"
+    assert_select "#unavailability-type option[selected]", text: "Meeting"
+    assert_select "#unavailability-providers input[checked]", count: 2
+    assert_select "button[form=delete-unavailability]", text: /Delete/
+    assert_select "form#delete-unavailability[action=?][data-turbo-confirm=?]", "/unavailabilities/#{zane_row.id}",
+                  I18n.t("ea.delete_unavailability_group").sub("{{count}}", "2")
+
+    patch "/unavailabilities/#{zane_row.id}", params: { unavailability: { provider_ids: [ other.id, third.id ], unavailability_type_id: unavailability_types(:leave).id,
+                                                                           start_datetime: "2026-07-22 12:00:00", end_datetime: "2026-07-22 14:00:00", notes: "Team" } }
+    assert_response :success
+    assert_not Appointment.exists?(zane_row.id)
+    rows = Appointment.unavailabilities.where(notes: "Team")
+    assert_equal [ other.id, third.id ].sort, rows.map(&:id_users_provider).sort
+    assert_equal [ zane_row.unavailability_group ], rows.map(&:unavailability_group).uniq
+    assert rows.all? { |row| row.end_datetime.strftime("%H:%M") == "14:00" && row.unavailability_type == unavailability_types(:leave) }
+
+    delete "/unavailabilities/#{rows.first.id}"
+    assert_response :success
+    assert_empty Appointment.unavailabilities.where(notes: "Team")
+  end
+
+  test "a stylist editing or deleting a team busy time touches their own row only" do
+    other = linked_provider("Other")
+    group = SecureRandom.uuid
+    mine = Appointment.create!(provider: users(:zane), is_unavailability: true, unavailability_group: group, notes: "Team",
+                               start_datetime: "2026-07-22 12:00:00", end_datetime: "2026-07-22 13:00:00")
+    theirs = Appointment.create!(provider: other, is_unavailability: true, unavailability_group: group, notes: "Team",
+                                 start_datetime: "2026-07-22 12:00:00", end_datetime: "2026-07-22 13:00:00")
+    login_provider
+    get "/unavailabilities/#{mine.id}/edit"
+    assert_select "#unavailability-providers input[type=hidden][value=?]", users(:zane).id.to_s
+    assert_select "form#delete-unavailability[data-turbo-confirm=?]", I18n.t("ea.delete_record_prompt")
+
+    patch "/unavailabilities/#{mine.id}", params: { unavailability: { provider_ids: [ users(:zane).id ], start_datetime: "2026-07-22 12:00:00",
+                                                                       end_datetime: "2026-07-22 14:00:00", notes: "Team" } }
+    assert_response :success
+    assert_equal "14:00", mine.reload.end_datetime.strftime("%H:%M")
+    assert_equal "13:00", theirs.reload.end_datetime.strftime("%H:%M")
+
+    delete "/unavailabilities/#{mine.id}"
+    assert_response :success
+    assert_not Appointment.exists?(mine.id)
+    assert Appointment.exists?(theirs.id)
+  end
+
+  test "a busy time with no stylist ticked re-renders the form" do
+    login_admin
+    post "/unavailabilities", params: { unavailability: { provider_ids: [ "" ], start_datetime: "2026-07-22 12:00:00", end_datetime: "2026-07-22 13:00:00" } }
+    assert_response :unprocessable_entity
+    assert_select "form#unavailability-form .modal-message"
   end
 
   test "an unparseable time re-renders the form; another provider's event is forbidden" do

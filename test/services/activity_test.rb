@@ -46,4 +46,15 @@ class ActivityTest < ActiveSupport::TestCase
   test "unknown kinds are rejected" do
     assert_raises(ArgumentError) { Activity.record(:made_up, summary: "x") }
   end
+
+  test "a busy time is summarised by its type, stylist and time" do
+    lunch = appointments(:lunch_block)
+    Activity.appointment_event(Webhooks::UNAVAILABILITY_SAVE, lunch)
+    assert_equal "Zane, Mon 20 Jul 2026 12:00-13:00", ActivityEvent.last.summary
+
+    lunch.update!(unavailability_type: unavailability_types(:meeting), notes: "All staff")
+    Activity.appointment_event(Webhooks::UNAVAILABILITY_SAVE, lunch)
+    event = ActivityEvent.last
+    assert_equal [ "unavailability_saved", "Meeting, Zane, Mon 20 Jul 2026 12:00-13:00", "All staff" ], [ event.kind, event.summary, event.details ]
+  end
 end

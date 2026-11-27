@@ -24,10 +24,24 @@
     <% end %>
 
     <div id="calendar">
+        <h4 class="print-title"><%= lang('print_free_title') %></h4>
+        <%# Reset at the left like Today on List, faded while the booking window is shown; the dates in the centre. %>
         <div class="calendar-header row align-items-center g-2 mb-3">
-            <div class="col-12">
-                <%= lang('free_window').sub('{{from}}', format_setting_date(@first)).sub('{{to}}', format_setting_date(@last)) %>
+            <div class="col-6 col-md-4 d-flex align-items-center gap-2">
+                <%= link_to lang('reset'), free_path(providers: provider_param), id: "free-reset", title: lang('free_reset_hint'),
+                            class: "btn btn-primary #{'disabled' unless custom_range?}" %>
             </div>
+            <div class="col-6 col-md-4 text-end text-md-center">
+                <div class="d-inline-flex align-items-center flex-wrap justify-content-end justify-content-md-center gap-2" id="free-range">
+                    <label for="free-from" class="mb-0"><%= lang('free_from') %></label>
+                    <%= date_field_tag :from, @first, id: "free-from", class: "form-control select-date w-auto", form: "day-filter",
+                                       onchange: "document.getElementById('day-filter').requestSubmit()" %>
+                    <label for="free-to" class="mb-0"><%= lang('free_to') %></label>
+                    <%= date_field_tag :to, @last, id: "free-to", class: "form-control select-date w-auto", form: "day-filter",
+                                       onchange: "document.getElementById('day-filter').requestSubmit()" %>
+                </div>
+            </div>
+            <div class="col-12 col-md-4"></div>
         </div>
 
         <% if @columns.empty? %>

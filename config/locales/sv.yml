@@ -151,7 +151,7 @@ sv:
     log_out: Logga ut
     reload: Uppdatera
     appointment: Bokning
-    unavailability: Inte tillgänglig
+    unavailability: "Upptagen tid"
     week: Vecka
     month: Månad
     today: I dag
@@ -168,7 +168,7 @@ sv:
     manage_users_hint: Hantera systemanvändare (admin, utförare, assistenter)
     settings_hint: System- och användarinställningar
     log_out_hint: Logga ut ur systemet
-    unavailability_periods_hint: Utföraren är inte bokningsbar under låsta perioder.
+    unavailability_periods_hint: "Under upptagen tid kan leverantören inte bokas."
     new_appointment_hint: Skapa en ny bokning och spara den i databasen
     reload_appointments_hint: Uppdatera kalendern
     appointment_updated: Bokningen är uppdaterad
@@ -187,9 +187,9 @@ sv:
     delete_appointment_title: Ta bort bokning
     write_appointment_removal_reason: Ange anledning till avbokningen
     appointment_saved: Bokningen är sparad
-    new_unavailability_title: Ny låst period
-    edit_unavailability_title: Ändra låst period
-    unavailability_saved: Låst period sparad.
+    new_unavailability_title: "Ny upptagen tid"
+    edit_unavailability_title: "Redigera upptagen tid"
+    unavailability_saved: "Upptagen tid sparad."
     start_date_before_end_error: Startdatum är efter slutdatum
     invalid_duration: Felaktig längd på bokningen
     invalid_email: Ogiltig epostadress
@@ -308,7 +308,7 @@ sv:
     delete_provider: Ta bort utförare
     delete_assistant: "Ta bort assistent"
     delete_appointment: Ta bort bokning
-    delete_unavailability: Ta bort låst period
+    delete_unavailability: "Ta bort upptagen tid"
     delete: Ta bort
     unexpected_issues: Oväntat fel
     unexpected_issues_message: Något gick fel och åtgärden kunde inte utföras.
@@ -324,7 +324,7 @@ sv:
     unexpected_issues_occurred: Ett oväntat fel uppstod
     service_communication_error: Kunde inte kommunicera med servern. Försök igen.
     no_privileges_edit_appointments: 'Du är inte behörig att ändra bokningen. '
-    unavailability_updated: Den låsta perioden har uppdaterats.
+    unavailability_updated: "Upptagen tid uppdaterad."
     appointments: Tidsbokningar
     unexpected_warnings: Oväntade varningar
     unexpected_warnings_message: Åtgärden slutfördes, men med varningar.
@@ -456,8 +456,18 @@ sv:
     verify_ssl: Verifiera SSL
     appointment_save: Spara bokning
     appointment_delete: Ta bort bokning
-    unavailability_save: Spara otillgänglighet
-    unavailability_delete: Ta bort otillgänglighet
+    unavailability_save: "Spara upptagen tid"
+    unavailability_delete: "Ta bort upptagen tid"
+    unavailability_type: "Typ"
+    unavailability_type_none: "Ingen typ"
+    unavailability_types: "Typer av upptagen tid"
+    unavailability_types_hint: "De slag av upptagen tid som personalen kan lägga i kalendern, till exempel möten, ledighet eller administration, var och en med sin egen färg."
+    unavailability_type_saved: "Typ sparad."
+    unavailability_type_deleted: "Typ borttagen. Upptagna tider av den typen behålls utan typ."
+    delete_unavailability_type: "Ta bort typ"
+    unavailability_stylists_hint: "Bocka för alla som den upptagna tiden gäller. En post skapas per leverantör och de redigeras tillsammans."
+    unavailability_also_for: "Även för {{names}}"
+    delete_unavailability_group: "Ta bort denna upptagna tid för alla {{count}} leverantörer?"
     customer_save: Spara kund
     customer_delete: Ta bort kund
     service_save: Spara tjänst
@@ -529,6 +539,8 @@ sv:
     no_breaks: Inga raster
     service_categories: Tjänstekategorier
     service_category: Tjänstekategori
+    category_services: "Tjänster i den här kategorin"
+    category_no_services: "Det finns inga tjänster i den här kategorin ännu."
     blocked_period_saved: Den blockerade perioden har sparats
     blocked_period_deleted: Den blockerade perioden har tagits bort
     delete_blocked_period: Ta bort blockerad period
@@ -545,6 +557,8 @@ sv:
     delete_webhook: Ta bort webhook
     contact_info: Kontaktinformation
     hide_from_public: Dölj från bokningssidan
+    bookable_by_public: "Kan bokas av allmänheten"
+    bookable_hint: "Avmarkera för att visa tjänsten på bokningssidan med enbart beskrivning. Kunder kan inte boka den online; ange i beskrivningen hur man ordnar det."
     matomo_analytics_site_id: Matomo Analytics Webbplats-ID
     matomo_analytics_site_id_hint: Ställ in det webbplats-ID som ska spåras av Matomo (standardwebbplatsen har ID "1").
     default_timezone: Standardtidszon
@@ -1068,8 +1082,8 @@ sv:
     activity_appointment_changed: "Ändrad"
     activity_appointment_cancelled: "Avbokad"
     activity_appointment_deleted: "Borttagen"
-    activity_unavailability_saved: "Ej tillgänglig tillagd"
-    activity_unavailability_deleted: "Ej tillgänglig borttagen"
+    activity_unavailability_saved: "Upptagen tid tillagd"
+    activity_unavailability_deleted: "Upptagen tid borttagen"
     activity_message_sent: "Meddelande skickat"
     activity_message_failed: "Meddelandet misslyckades"
     activity_message_received: "Meddelande mottaget"
@@ -1080,6 +1094,7 @@ sv:
     activity_actor_system: "System"
     activity_actor_import: "Import"
     activity_appointment_summary: "{{service}} för {{customer}} hos {{provider}}, {{when}}"
+    activity_unavailability_summary: "{{type}}, {{provider}}, {{when}}"
     activity_status_summary: "Status {{status}}"
     activity_reason_summary: "Orsak: {{reason}}"
     activity_message_summary: "{{notification}} till {{audience}} via {{channel}}, {{address}}"
@@ -1087,5 +1102,8 @@ sv:
     activity_waitlist_summary: "{{customer}} för {{service}} hos {{provider}}"
     free: "Lediga"
     free_hint: "Lediga tider för bokning i bokningsfönstret, datum för datum och utförare för utförare."
-    free_window: "Lediga tider från {{from}} till {{to}}"
     free_empty: "Inga lediga tider i bokningsfönstret."
+    free_from: "Från"
+    free_to: "Till"
+    free_reset_hint: "Tillbaka till bokningsfönstret"
+    print_free_title: "Lediga tider"

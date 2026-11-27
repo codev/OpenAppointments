@@ -151,7 +151,7 @@ th:
     log_out: ออกจากระบบ
     reload: โหลดซ้ำ
     appointment: การนัดหมาย
-    unavailability: ช่วงเวลาที่ไม่ว่าง
+    unavailability: "เวลาไม่ว่าง"
     week: สัปดาห์
     month: เดือน
     today: วันนี้
@@ -168,7 +168,7 @@ th:
     manage_users_hint: จัดการผู้ใช้แบ็กเอนด์ (ผู้ดูแลระบบ ผู้ให้บริการ ผู้ช่วย)
     settings_hint: ตั้งค่าระบบและการตั้งค่าผู้ใช้
     log_out_hint: ออกจากระบบ
-    unavailability_periods_hint: During unavailability periods the provider won\\'t accept new appointments.
+    unavailability_periods_hint: "ในช่วงเวลาไม่ว่างจะไม่สามารถจองผู้ให้บริการได้"
     new_appointment_hint: สร้างการนัดหมายใหม่และจัดเก็บไว้ในฐานข้อมูล
     reload_appointments_hint: โหลดการนัดหมายในปฏิทินซ้ำ
     appointment_updated: อัปเดตการนัดหมายสำเร็จแล้ว
@@ -187,9 +187,9 @@ th:
     delete_appointment_title: ลบการนัดหมาย
     write_appointment_removal_reason: 'โปรดสละเวลาสักครู่เพื่อเขียนเหตุผลที่คุณลบการนัดหมาย:'
     appointment_saved: บันทึกการนัดหมายเรียบร้อยแล้ว
-    new_unavailability_title: เพิ่มช่วงเวลาที่ไม่ว่าง
-    edit_unavailability_title: แก้ไขช่วงเวลาที่ไม่ว่าง
-    unavailability_saved: บันทึกช่วงเวลาที่ไม่ว่างเรียบร้อยแล้ว
+    new_unavailability_title: "เวลาไม่ว่างใหม่"
+    edit_unavailability_title: "แก้ไขเวลาไม่ว่าง"
+    unavailability_saved: "บันทึกเวลาไม่ว่างแล้ว"
     start_date_before_end_error: ค่าวันที่เริ่มต้นอยู่หลังวันที่สิ้นสุด
     invalid_duration: ระยะเวลาไม่ถูกต้อง
     invalid_email: ที่อยู่อีเมลที่ไม่ถูกต้อง.
@@ -308,7 +308,7 @@ th:
     delete_provider: ลบผู้ให้บริการ
     delete_assistant: "ลบผู้ช่วย"
     delete_appointment: ลบการนัดหมาย
-    delete_unavailability: ลบช่วงเวลาที่ไม่ว่าง
+    delete_unavailability: "ลบเวลาไม่ว่าง"
     delete: ลบ
     unexpected_issues: ปัญหาที่ไม่คาดคิด
     unexpected_issues_message: ไม่สามารถดำเนินการให้เสร็จสิ้นได้
@@ -324,7 +324,7 @@ th:
     unexpected_issues_occurred: เกิดปัญหาที่ไม่คาดคิด
     service_communication_error: เกิดข้อผิดพลาดในการสื่อสารของเซิร์ฟเวอร์ โปรดลองอีกครั้ง
     no_privileges_edit_appointments: คุณไม่มีสิทธิพิเศษในการแก้ไขการนัดหมาย
-    unavailability_updated: อัปเดตช่วงเวลาที่ไม่ว่างเรียบร้อยแล้ว
+    unavailability_updated: "อัปเดตเวลาไม่ว่างแล้ว"
     appointments: การนัดหมาย
     unexpected_warnings: คำเตือนที่ไม่คาดคิด
     unexpected_warnings_message: การดำเนินการเสร็จสิ้น แต่มีคำเตือนบางอย่างปรากฏขึ้น
@@ -456,8 +456,18 @@ th:
     verify_ssl: ตรวจสอบ SSL
     appointment_save: บันทึกการนัดหมาย
     appointment_delete: การนัดหมาย ลบ
-    unavailability_save: บันทึกความไม่พร้อมใช้งาน
-    unavailability_delete: ไม่พร้อมใช้งาน ลบ
+    unavailability_save: "บันทึกเวลาไม่ว่าง"
+    unavailability_delete: "ลบเวลาไม่ว่าง"
+    unavailability_type: "ประเภท"
+    unavailability_type_none: "ไม่มีประเภท"
+    unavailability_types: "ประเภทเวลาไม่ว่าง"
+    unavailability_types_hint: "ประเภทของเวลาไม่ว่างที่พนักงานสามารถใส่ในปฏิทินได้ เช่น การประชุม การลา หรืองานธุรการ แต่ละประเภทมีสีของตัวเอง"
+    unavailability_type_saved: "บันทึกประเภทแล้ว"
+    unavailability_type_deleted: "นำประเภทออกแล้ว เวลาไม่ว่างของประเภทนั้นจะถูกเก็บไว้โดยไม่มีประเภท"
+    delete_unavailability_type: "ลบประเภท"
+    unavailability_stylists_hint: "เลือกทุกคนที่เวลาไม่ว่างนี้เกี่ยวข้อง จะสร้างรายการหนึ่งรายการต่อผู้ให้บริการและแก้ไขร่วมกัน"
+    unavailability_also_for: "รวมถึง {{names}}"
+    delete_unavailability_group: "นำเวลาไม่ว่างนี้ออกจากผู้ให้บริการทั้ง {{count}} คนหรือไม่"
     customer_save: บันทึกลูกค้า
     customer_delete: ลบลูกค้า
     service_save: บันทึกการบริการ
@@ -529,6 +539,8 @@ th:
     no_breaks: ไม่มีการหยุดพัก
     service_categories: หมวดหมู่บริการ
     service_category: หมวดบริการ
+    category_services: "บริการในหมวดหมู่นี้"
+    category_no_services: "ยังไม่มีบริการในหมวดหมู่นี้"
     blocked_period_saved: บันทึกช่วงเวลาที่บล็อกสำเร็จแล้ว
     blocked_period_deleted: ลบช่วงเวลาที่บล็อกสำเร็จแล้ว
     delete_blocked_period: ลบระยะเวลาที่ถูกบล็อก
@@ -545,6 +557,8 @@ th:
     delete_webhook: ลบเว็บฮุค
     contact_info: ข้อมูลติดต่อ
     hide_from_public: ซ่อนจากสาธารณะ
+    bookable_by_public: "สาธารณะจองได้"
+    bookable_hint: "ยกเลิกการเลือกเพื่อแสดงบริการในหน้าจองโดยมีเพียงคำอธิบาย ลูกค้าจะจองออนไลน์ไม่ได้ โปรดระบุวิธีนัดหมายไว้ในคำอธิบาย"
     matomo_analytics_site_id: รหัสเว็บไซต์ Matomo Analytics
     matomo_analytics_site_id_hint: กำหนดรหัสเว็บไซต์ที่จะถูกติดตามโดย Matomo (เว็บไซต์เริ่มต้นมีรหัส "1")
     default_timezone: เขตเวลาเริ่มต้น
@@ -1068,8 +1082,8 @@ th:
     activity_appointment_changed: "เปลี่ยนแปลงแล้ว"
     activity_appointment_cancelled: "ยกเลิกแล้ว"
     activity_appointment_deleted: "ลบแล้ว"
-    activity_unavailability_saved: "เพิ่มช่วงเวลาที่ไม่ว่างแล้ว"
-    activity_unavailability_deleted: "ลบช่วงเวลาที่ไม่ว่างแล้ว"
+    activity_unavailability_saved: "เพิ่มเวลาไม่ว่างแล้ว"
+    activity_unavailability_deleted: "นำเวลาไม่ว่างออกแล้ว"
     activity_message_sent: "ส่งข้อความแล้ว"
     activity_message_failed: "ส่งข้อความไม่สำเร็จ"
     activity_message_received: "ได้รับข้อความแล้ว"
@@ -1080,6 +1094,7 @@ th:
     activity_actor_system: "ระบบ"
     activity_actor_import: "นำเข้า"
     activity_appointment_summary: "{{service}} สำหรับ {{customer}} กับ {{provider}}, {{when}}"
+    activity_unavailability_summary: "{{type}}, {{provider}}, {{when}}"
     activity_status_summary: "สถานะ {{status}}"
     activity_reason_summary: "เหตุผล: {{reason}}"
     activity_message_summary: "{{notification}} ถึง {{audience}} ทาง {{channel}}, {{address}}"
@@ -1087,5 +1102,8 @@ th:
     activity_waitlist_summary: "{{customer}} สำหรับ {{service}} กับ {{provider}}"
     free: "ว่าง"
     free_hint: "ช่วงเวลาว่างสำหรับนัดหมายในช่วงเวลาที่เปิดจอง แยกตามวันที่และผู้ให้บริการ"
-    free_window: "ว่างสำหรับนัดหมายตั้งแต่ {{from}} ถึง {{to}}"
     free_empty: "ไม่มีช่วงเวลาว่างสำหรับนัดหมายในช่วงเวลาที่เปิดจอง"
+    free_from: "จาก"
+    free_to: "ถึง"
+    free_reset_hint: "กลับไปที่ช่วงเวลาที่เปิดจอง"
+    print_free_title: "เวลาว่างสำหรับนัดหมาย"

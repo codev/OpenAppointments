@@ -151,7 +151,7 @@ el:
     log_out: Αποσύνδεση
     reload: Επαναφόρτωση
     appointment: Ραντεβού
-    unavailability: Μη Διαθέσιμος
+    unavailability: "Απασχολημένος χρόνος"
     week: Εβδομάδα
     month: Μήνας
     today: Σήμερα
@@ -168,7 +168,7 @@ el:
     manage_users_hint: Διαχειριστείτε τους χρήστες του backend (διαχειριστές, πάροχοι, βοηθοί).
     settings_hint: Επεξεργαστείτε τις ρυθμίσεις του συστήματος ή του τρέχοντος χρήστη.
     log_out_hint: Αποσυνδεθείτε από το σύστημα.
-    unavailability_periods_hint: Κατά την διάρκεια των μη διαθέσιμων διαστημάτων οι πάροχοι δε θα δέχονται νέα ραντεβού.
+    unavailability_periods_hint: "Κατά τον απασχολημένο χρόνο ο πάροχος δεν μπορεί να κλειστεί."
     new_appointment_hint: Δημιουργείστε ένα νέο ραντεβού και αποθηκεύστε το στην βάση δεδομένων.
     reload_appointments_hint: Επαναφορτώστε τα ραντεβού του ημερολογίου.
     appointment_updated: Το ραντεβού ενημερώθηκε επιτυχώς.
@@ -187,9 +187,9 @@ el:
     delete_appointment_title: Διαγραφή Ραντεβού
     write_appointment_removal_reason: Παρακαλώ πάρτε λίγο χρόνο για να γράψετε τον λόγο για τον οποίο διαγράφετε το ραντεβού.
     appointment_saved: Το ραντεβού αποθηκεύτηκε επιτυχώς.
-    new_unavailability_title: Νέα Μη Διαθέσιμη Περίοδος
-    edit_unavailability_title: Επεξεργασία Μη Διαθέσιμης Περιόδου
-    unavailability_saved: Η μη διαθέσιμη περίοδος αποθηκεύτηκε επιτυχώς.
+    new_unavailability_title: "Νέος απασχολημένος χρόνος"
+    edit_unavailability_title: "Επεξεργασία απασχολημένου χρόνου"
+    unavailability_saved: "Ο απασχολημένος χρόνος αποθηκεύτηκε."
     start_date_before_end_error: Η ημερομηνία εκκίνησης είναι μεγαλύτερα από την ημερομηνία λήξης.
     invalid_duration: Μη έγκυρη διάρκεια.
     invalid_email: Λανθασμένη διεύθυνση email.
@@ -308,7 +308,7 @@ el:
     delete_provider: Διαγραφή Παρόχου
     delete_assistant: "Διαγραφή βοηθού"
     delete_appointment: Διαγραφή Ραντεβού
-    delete_unavailability: Διαγραφή Μη Διαθέσιμης Περιόδου
+    delete_unavailability: "Διαγραφή απασχολημένου χρόνου"
     delete: Διαγραφή
     unexpected_issues: Απροσδόκητα Ζητήματα
     unexpected_issues_message: Η λειτουργία δεν ολοκληρώθηκε.
@@ -324,7 +324,7 @@ el:
     unexpected_issues_occurred: Παρουσιάστηκαν απροσδόκητα προβλήματα.
     service_communication_error: Παρουσιάστηκε σφάλμα κατά την επικοινωνία με τον διακομιστή, παρακαλώ προσπαθήστε ξανά.
     no_privileges_edit_appointments: Δεν έχετε τα απαραίτητα δικαιώματα για να επεξεργαστείτε ραντεβού.
-    unavailability_updated: Η μη διαθέσιμη περίοδος ενημερώθηκε επιτυχώς.
+    unavailability_updated: "Ο απασχολημένος χρόνος ενημερώθηκε."
     appointments: Ραντεβού
     unexpected_warnings: Απροσδόκητες Προειδοποιήσεις
     unexpected_warnings_message: Η διαδικασία ολοκληρώθηκε αλλά εμφανίστηκαν κάποιες προειδοποιήσειες.
@@ -456,8 +456,18 @@ el:
     verify_ssl: Επαλήθευση SSL
     appointment_save: Αποθήκευση ραντεβού
     appointment_delete: Διαγραφή ραντεβού
-    unavailability_save: Μη διαθεσιμότητα Αποθήκευση
-    unavailability_delete: Μη διαθεσιμότητα Διαγραφή
+    unavailability_save: "Αποθήκευση απασχολημένου χρόνου"
+    unavailability_delete: "Διαγραφή απασχολημένου χρόνου"
+    unavailability_type: "Τύπος"
+    unavailability_type_none: "Χωρίς τύπο"
+    unavailability_types: "Τύποι απασχολημένου χρόνου"
+    unavailability_types_hint: "Τα είδη απασχολημένου χρόνου που μπορεί να βάλει το προσωπικό στο ημερολόγιο, όπως συναντήσεις, άδεια ή διοικητικά, καθένα με το δικό του χρώμα."
+    unavailability_type_saved: "Ο τύπος αποθηκεύτηκε."
+    unavailability_type_deleted: "Ο τύπος αφαιρέθηκε. Οι απασχολημένοι χρόνοι αυτού του τύπου διατηρούνται χωρίς τύπο."
+    delete_unavailability_type: "Διαγραφή τύπου"
+    unavailability_stylists_hint: "Επιλέξτε όλους όσους αφορά ο απασχολημένος χρόνος. Δημιουργείται μία καταχώριση ανά πάροχο και επεξεργάζονται μαζί."
+    unavailability_also_for: "Επίσης για {{names}}"
+    delete_unavailability_group: "Να αφαιρεθεί αυτός ο απασχολημένος χρόνος για όλους τους {{count}} παρόχους;"
     customer_save: Αποθήκευση πελάτη
     customer_delete: Διαγραφή πελάτη
     service_save: Υπηρεσία Αποθήκευση
@@ -529,6 +539,8 @@ el:
     no_breaks: Δεν υπάρχουν διαλείμματα
     service_categories: Κατηγορίες υπηρεσιών
     service_category: Κατηγορία υπηρεσίας
+    category_services: "Υπηρεσίες σε αυτή την κατηγορία"
+    category_no_services: "Δεν υπάρχουν ακόμα υπηρεσίες σε αυτή την κατηγορία."
     blocked_period_saved: Η περίοδος αποκλεισμού αποθηκεύτηκε με επιτυχία.
     blocked_period_deleted: Η περίοδος αποκλεισμού διαγράφηκε επιτυχώς.
     delete_blocked_period: Διαγραφή μπλοκαρισμένης περιόδου
@@ -545,6 +557,8 @@ el:
     delete_webhook: Διαγραφή Webhook
     contact_info: Στοιχεία επικοινωνίας
     hide_from_public: Απόκρυψη από το κοινό
+    bookable_by_public: "Διαθέσιμο για κράτηση από το κοινό"
+    bookable_hint: "Αποεπιλέξτε για να εμφανίζεται η υπηρεσία στη σελίδα κρατήσεων μόνο με την περιγραφή της. Οι πελάτες δεν μπορούν να την κλείσουν online· γράψτε στην περιγραφή πώς κανονίζεται."
     matomo_analytics_site_id: Αναγνωριστικό ιστότοπου Matomo Analytics
     matomo_analytics_site_id_hint: Ορίστε το αναγνωριστικό ιστότοπου που θα παρακολουθείται από το Matomo (ο προεπιλεγμένος ιστότοπος έχει το αναγνωριστικό «1»).
     default_timezone: Προεπιλεγμένη ζώνη ώρας
@@ -1068,8 +1082,8 @@ el:
     activity_appointment_changed: "Άλλαξε"
     activity_appointment_cancelled: "Ακυρώθηκε"
     activity_appointment_deleted: "Διαγράφηκε"
-    activity_unavailability_saved: "Προστέθηκε μη διαθεσιμότητα"
-    activity_unavailability_deleted: "Αφαιρέθηκε μη διαθεσιμότητα"
+    activity_unavailability_saved: "Προστέθηκε απασχολημένος χρόνος"
+    activity_unavailability_deleted: "Αφαιρέθηκε απασχολημένος χρόνος"
     activity_message_sent: "Το μήνυμα εστάλη"
     activity_message_failed: "Το μήνυμα απέτυχε"
     activity_message_received: "Το μήνυμα ελήφθη"
@@ -1080,6 +1094,7 @@ el:
     activity_actor_system: "Σύστημα"
     activity_actor_import: "Εισαγωγή"
     activity_appointment_summary: "{{service}} για {{customer}} με {{provider}}, {{when}}"
+    activity_unavailability_summary: "{{type}}, {{provider}}, {{when}}"
     activity_status_summary: "Κατάσταση {{status}}"
     activity_reason_summary: "Λόγος: {{reason}}"
     activity_message_summary: "{{notification}} προς {{audience}} μέσω {{channel}}, {{address}}"
@@ -1087,5 +1102,8 @@ el:
     activity_waitlist_summary: "{{customer}} για {{service}} με {{provider}}"
     free: "Ελεύθερα"
     free_hint: "Ελεύθερες θέσεις για ραντεβού στο διάστημα κρατήσεων, ανά ημερομηνία και ανά πάροχο."
-    free_window: "Ελεύθερα για ραντεβού από {{from}} έως {{to}}"
     free_empty: "Δεν υπάρχει ελεύθερος χρόνος για ραντεβού στο διάστημα κρατήσεων."
+    free_from: "Από"
+    free_to: "Έως"
+    free_reset_hint: "Επιστροφή στο διάστημα κρατήσεων"
+    print_free_title: "Ελεύθερα για ραντεβού"

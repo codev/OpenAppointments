@@ -151,7 +151,7 @@ ja:
     log_out: ログアウト
     reload: 再読込
     appointment: 予約
-    unavailability: 空き無し
+    unavailability: "予定あり"
     week: 週
     month: 月
     today: 今日
@@ -168,7 +168,7 @@ ja:
     manage_users_hint: 会社ユーザーの管理ができます。(管理者,担当者,アシスタント).
     settings_hint: システムとユーザーの設定
     log_out_hint: ログアウト
-    unavailability_periods_hint: 都合が悪い期間は、担当者は新しい予約を受けられません。During unavailability periods the provider won't accept new appointments.
+    unavailability_periods_hint: "予定ありの時間帯には担当者を予約できません。"
     new_appointment_hint: 新しい予約を作成してデータベースへ追加します。
     reload_appointments_hint: カレンダーを再読み込みします。
     appointment_updated: 予約情報が更新されました。
@@ -187,9 +187,9 @@ ja:
     delete_appointment_title: 予約の削除
     write_appointment_removal_reason: 恐縮ですが、予約キャンセルの理由を頂けませんでしょうか。
     appointment_saved: 予約の保存が成功しました。
-    new_unavailability_title: 新規の都合悪い時間
-    edit_unavailability_title: 都合悪い時間の編集
-    unavailability_saved: 都合の悪い時間の保存が完了しました。
+    new_unavailability_title: "予定ありを追加"
+    edit_unavailability_title: "予定ありを編集"
+    unavailability_saved: "予定ありを保存しました。"
     start_date_before_end_error: 開始時間が終了時間よりも後になっています。
     invalid_duration: 無効な期間です。
     invalid_email: Emailアドレスのフォーマットエラー
@@ -308,7 +308,7 @@ ja:
     delete_provider: 担当者の削除
     delete_assistant: "アシスタントを削除"
     delete_appointment: 予約の削除
-    delete_unavailability: 都合の悪い時間の削除
+    delete_unavailability: "予定ありを削除"
     delete: 削除
     unexpected_issues: 予期せぬ問題
     unexpected_issues_message: 操作を完了できませんでした。
@@ -324,7 +324,7 @@ ja:
     unexpected_issues_occurred: 予期せぬ問題が発生しました。
     service_communication_error: サーバー接続エラーが発生しました。しばらくしてから再度操作してください。
     no_privileges_edit_appointments: 予約を編集する権限がありません。
-    unavailability_updated: 都合の悪い時間データが更新されました。
+    unavailability_updated: "予定ありを更新しました。"
     appointments: 予約
     unexpected_warnings: 予期せぬ警告
     unexpected_warnings_message: 処理は完了しましたが、警告が発生しました。
@@ -456,8 +456,18 @@ ja:
     verify_ssl: SSLの確認
     appointment_save: 予約の保存
     appointment_delete: 予約の削除
-    unavailability_save: 利用不可の保存
-    unavailability_delete: 利用不可の削除
+    unavailability_save: "予定ありの保存"
+    unavailability_delete: "予定ありの削除"
+    unavailability_type: "種類"
+    unavailability_type_none: "種類なし"
+    unavailability_types: "予定ありの種類"
+    unavailability_types_hint: "スタッフがカレンダーに入れられる予定ありの種類です。会議、休暇、事務などで、それぞれ色を持ちます。"
+    unavailability_type_saved: "種類を保存しました。"
+    unavailability_type_deleted: "種類を削除しました。その種類の予定ありは種類なしで残ります。"
+    delete_unavailability_type: "種類を削除"
+    unavailability_stylists_hint: "この予定ありに該当する人全員にチェックを入れてください。担当者ごとに一件作成され、まとめて編集されます。"
+    unavailability_also_for: "{{names}} も対象"
+    delete_unavailability_group: "この予定ありを {{count}} 人の担当者全員から削除しますか？"
     customer_save: 顧客の保存
     customer_delete: 顧客の削除
     service_save: サービスの保存
@@ -529,6 +539,8 @@ ja:
     no_breaks: 休憩なし
     service_categories: サービスカテゴリー
     service_category: サービスカテゴリー
+    category_services: "このカテゴリーのメニュー"
+    category_no_services: "このカテゴリーにはまだメニューがありません。"
     blocked_period_saved: ブロックされた期間が正常に保存されました。
     blocked_period_deleted: ブロックされた期間が正常に削除されました。
     delete_blocked_period: ブロックされた期間を削除
@@ -545,6 +557,8 @@ ja:
     delete_webhook: Webhookを削除
     contact_info: 連絡先情報
     hide_from_public: 公開から隠す
+    bookable_by_public: "一般の予約を受け付ける"
+    bookable_hint: "チェックを外すと、予約ページに説明のみでメニューを表示します。お客様はオンラインで予約できないため、予約方法は説明に記載してください。"
     matomo_analytics_site_id: Matomo AnalyticsサイトID
     matomo_analytics_site_id_hint: Matomoによって追跡されるサイトIDを設定します（デフォルトのサイトIDは「1」です）。
     default_timezone: デフォルトタイムゾーン
@@ -1068,8 +1082,8 @@ ja:
     activity_appointment_changed: "変更済み"
     activity_appointment_cancelled: "キャンセル済み"
     activity_appointment_deleted: "削除済み"
-    activity_unavailability_saved: "不在を追加"
-    activity_unavailability_deleted: "不在を削除"
+    activity_unavailability_saved: "予定ありを追加しました"
+    activity_unavailability_deleted: "予定ありを削除しました"
     activity_message_sent: "メッセージ送信"
     activity_message_failed: "メッセージ送信失敗"
     activity_message_received: "メッセージ受信"
@@ -1080,6 +1094,7 @@ ja:
     activity_actor_system: "システム"
     activity_actor_import: "インポート"
     activity_appointment_summary: "{{customer}}様の{{service}}、担当{{provider}}、{{when}}"
+    activity_unavailability_summary: "{{type}}、{{provider}}、{{when}}"
     activity_status_summary: "ステータス {{status}}"
     activity_reason_summary: "理由：{{reason}}"
     activity_message_summary: "{{audience}}宛の{{notification}}、{{channel}}、{{address}}"
@@ -1087,5 +1102,8 @@ ja:
     activity_waitlist_summary: "{{customer}}様の{{service}}、担当{{provider}}"
     free: "空き"
     free_hint: "予約受付期間内の空き枠を、日付ごと・担当者ごとに表示します。"
-    free_window: "{{from}}から{{to}}までの予約可能な空き"
     free_empty: "予約受付期間内に空きはありません。"
+    free_from: "開始日"
+    free_to: "終了日"
+    free_reset_hint: "予約受付期間に戻す"
+    print_free_title: "予約可能な空き"

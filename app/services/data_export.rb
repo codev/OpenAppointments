@@ -108,15 +108,15 @@ module DataExport
   end
 
   def appointments_sheet
-    rows = Appointment.includes(:provider, :customer, :service).order(:start_datetime).map do |appointment|
+    rows = Appointment.includes(:provider, :customer, :service, :unavailability_type).order(:start_datetime).map do |appointment|
       [ appointment.start_datetime&.strftime(DATETIME), appointment.end_datetime&.strftime(DATETIME),
         appointment.provider&.name, appointment.id_users_customer, appointment.service&.name,
         appointment.notes, appointment.status, appointment.is_unavailability ? "1" : "0",
         appointment.booking_hash, appointment.payment_method, appointment.payment_reference,
-        appointment.paid_at&.strftime(DATETIME) ]
+        appointment.paid_at&.strftime(DATETIME), appointment.unavailability_type&.name, appointment.unavailability_group ]
     end
     [ %w[start_datetime end_datetime provider customer_id service notes status is_unavailability
-         booking_hash payment_method payment_reference paid_at] ] + rows
+         booking_hash payment_method payment_reference paid_at unavailability_type unavailability_group] ] + rows
   end
 
   def appointment_series_sheet

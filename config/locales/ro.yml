@@ -151,7 +151,7 @@ ro:
     log_out: Iesire
     reload: Reîncarcare
     appointment: Întâlnire
-    unavailability: Indisponibil
+    unavailability: "Timp ocupat"
     week: Saptamâna
     month: Luna
     today: Azi
@@ -168,7 +168,7 @@ ro:
     manage_users_hint: Gestioneaza utilizatorii de backend (administrator, furnizori, asistenți).
     settings_hint: Setarile sistemului si utilizatorilor.
     log_out_hint: Iesire din sistem.
-    unavailability_periods_hint: În timpul perioadei de indisponibilitate, furnizorul nu va accepta întâlniri noi.
+    unavailability_periods_hint: "În timpul ocupat furnizorul nu poate fi rezervat."
     new_appointment_hint: Creeaza întâlnire noua si înregistreaza în baza de date.
     reload_appointments_hint: Reîncarca întâlnirile din calendar.
     appointment_updated: Întâlnire actualizata cu succes.
@@ -187,9 +187,9 @@ ro:
     delete_appointment_title: Sterge Întâlnire
     write_appointment_removal_reason: 'Va rugam sa ne scrieti un motiv pentru care anulati întâlnirea:'
     appointment_saved: Întâlnire salvata.
-    new_unavailability_title: Perioada de indisponibilitate noua
-    edit_unavailability_title: Editeaza perioada de indisponibilitate
-    unavailability_saved: Perioada de indisponibilitate a fost salvata.
+    new_unavailability_title: "Timp ocupat nou"
+    edit_unavailability_title: "Modifică timpul ocupat"
+    unavailability_saved: "Timp ocupat salvat."
     start_date_before_end_error: Data de început se afla dupa data de sfârsit.
     invalid_duration: Durată invalidă.
     invalid_email: Adresa de email este invalida.
@@ -308,7 +308,7 @@ ro:
     delete_provider: Sterge Furnizor
     delete_assistant: "Șterge asistentul"
     delete_appointment: Sterge întâlnire
-    delete_unavailability: Sterge perioada nelucratoare
+    delete_unavailability: "Șterge timpul ocupat"
     delete: Sterge
     unexpected_issues: Probleme neasteptate
     unexpected_issues_message: Operațiunea nu a putut fi finalizată.
@@ -324,7 +324,7 @@ ro:
     unexpected_issues_occurred: Au intervenit probleme neasteptate.
     service_communication_error: Eroare în comunicarea cu serverul. Va rugam încercati din nou.
     no_privileges_edit_appointments: Nu aveti drepturile necesare sa editati întâlniri
-    unavailability_updated: Perioada de timp nedisponibila a fost actualizata.
+    unavailability_updated: "Timp ocupat actualizat."
     appointments: Întâlniri
     unexpected_warnings: Avertizari neasteptate
     unexpected_warnings_message: Operatiune finalizata dar au aparut niste avertizari.
@@ -456,8 +456,18 @@ ro:
     verify_ssl: Verifică SSL
     appointment_save: Salvează Programarea
     appointment_delete: Șterge Programarea
-    unavailability_save: Salvează Nepotențialitatea
-    unavailability_delete: Șterge Nepotențialitatea
+    unavailability_save: "Salvare timp ocupat"
+    unavailability_delete: "Ștergere timp ocupat"
+    unavailability_type: "Tip"
+    unavailability_type_none: "Fără tip"
+    unavailability_types: "Tipuri de timp ocupat"
+    unavailability_types_hint: "Felurile de timp ocupat pe care personalul le poate pune în calendar, cum ar fi ședințe, concedii sau administrație, fiecare cu propria culoare."
+    unavailability_type_saved: "Tip salvat."
+    unavailability_type_deleted: "Tip eliminat. Timpii ocupați de acel tip se păstrează fără tip."
+    delete_unavailability_type: "Șterge tipul"
+    unavailability_stylists_hint: "Bifați toate persoanele vizate. Se creează o intrare pentru fiecare furnizor și se modifică împreună."
+    unavailability_also_for: "Și pentru {{names}}"
+    delete_unavailability_group: "Eliminați acest timp ocupat pentru toți cei {{count}} furnizori?"
     customer_save: Salvează Clientul
     customer_delete: Șterge Clientul
     service_save: Salvează Serviciul
@@ -529,6 +539,8 @@ ro:
     no_breaks: Fără Pauze
     service_categories: Categorii de Servicii
     service_category: Categorie Serviciu
+    category_services: "Servicii din această categorie"
+    category_no_services: "Nu există încă servicii în această categorie."
     blocked_period_saved: Perioada blocată a fost salvată cu succes.
     blocked_period_deleted: Perioada blocată a fost ștearsă cu succes.
     delete_blocked_period: Șterge Perioada Blocată
@@ -545,6 +557,8 @@ ro:
     delete_webhook: Șterge Webhook
     contact_info: Informații de Contact
     hide_from_public: Ascunde de la Public
+    bookable_by_public: "Rezervabil de Public"
+    bookable_hint: "Debifați pentru a afișa serviciul pe pagina de programări doar cu descrierea. Clienții nu îl pot rezerva online; precizați în descriere cum se stabilește."
     matomo_analytics_site_id: ID Site Matomo Analytics
     matomo_analytics_site_id_hint: Stabiliți ID-ul site-ului care va fi urmărit de Matomo (site-ul implicit are ID-ul "1").
     default_timezone: Fus Orar Implicit
@@ -1068,8 +1082,8 @@ ro:
     activity_appointment_changed: "Modificat"
     activity_appointment_cancelled: "Anulat"
     activity_appointment_deleted: "Șters"
-    activity_unavailability_saved: "Indisponibilitate adăugată"
-    activity_unavailability_deleted: "Indisponibilitate eliminată"
+    activity_unavailability_saved: "Timp ocupat adăugat"
+    activity_unavailability_deleted: "Timp ocupat eliminat"
     activity_message_sent: "Mesaj trimis"
     activity_message_failed: "Mesaj eșuat"
     activity_message_received: "Mesaj primit"
@@ -1080,6 +1094,7 @@ ro:
     activity_actor_system: "Sistem"
     activity_actor_import: "Import"
     activity_appointment_summary: "{{service}} pentru {{customer}} la {{provider}}, {{when}}"
+    activity_unavailability_summary: "{{type}}, {{provider}}, {{when}}"
     activity_status_summary: "Stare {{status}}"
     activity_reason_summary: "Motiv: {{reason}}"
     activity_message_summary: "{{notification}} către {{audience}} prin {{channel}}, {{address}}"
@@ -1087,5 +1102,8 @@ ro:
     activity_waitlist_summary: "{{customer}} pentru {{service}} la {{provider}}"
     free: "Liber"
     free_hint: "Intervale libere pentru programări în perioada de rezervare, zi cu zi și furnizor cu furnizor."
-    free_window: "Liber pentru programări de la {{from}} până la {{to}}"
     free_empty: "Nu este nimic liber pentru programări în perioada de rezervare."
+    free_from: "De la"
+    free_to: "Până la"
+    free_reset_hint: "Înapoi la perioada de rezervare"
+    print_free_title: "Liber pentru programări"

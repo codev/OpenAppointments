@@ -151,7 +151,7 @@ zh-tw:
     log_out: 登出
     reload: 重新載入
     appointment: 預約
-    unavailability: 不可用時段
+    unavailability: "忙碌時間"
     week: 週
     month: 月
     today: 今天
@@ -168,7 +168,7 @@ zh-tw:
     manage_users_hint: 管理後臺使用者（管理員、提供者、助理）。
     settings_hint: 設定系統和使用者設定。
     log_out_hint: 登出系統。
-    unavailability_periods_hint: 在不可用時段內，提供者將不接受新預約。
+    unavailability_periods_hint: "忙碌時間內無法預約該服務人員。"
     new_appointment_hint: 建立新預約並儲存至資料庫。
     reload_appointments_hint: 重新載入日曆預約。
     appointment_updated: 預約已成功更新。
@@ -187,9 +187,9 @@ zh-tw:
     delete_appointment_title: 刪除預約
     write_appointment_removal_reason: 請花一分鐘寫下您刪除預約的原因：
     appointment_saved: 預約已成功儲存。
-    new_unavailability_title: 新增不可用時段
-    edit_unavailability_title: 編輯不可用時段
-    unavailability_saved: 不可用時段已成功儲存。
+    new_unavailability_title: "新增忙碌時間"
+    edit_unavailability_title: "編輯忙碌時間"
+    unavailability_saved: "忙碌時間已儲存。"
     start_date_before_end_error: 開始日期晚於結束日期。
     invalid_duration: 無效的時長。
     invalid_email: 無效的電子郵件地址。
@@ -308,7 +308,7 @@ zh-tw:
     delete_provider: 刪除提供者
     delete_assistant: "刪除助理"
     delete_appointment: 刪除預約
-    delete_unavailability: 刪除不可用時段
+    delete_unavailability: "刪除忙碌時間"
     delete: 刪除
     unexpected_issues: 意外問題
     unexpected_issues_message: 操作無法完成。
@@ -324,7 +324,7 @@ zh-tw:
     unexpected_issues_occurred: 發生意外問題。
     service_communication_error: 發生伺服器通訊錯誤，請重試。
     no_privileges_edit_appointments: 您沒有編輯預約的必要權限。
-    unavailability_updated: 不可用時段已成功更新。
+    unavailability_updated: "忙碌時間已更新。"
     appointments: 預約
     unexpected_warnings: 意外警告
     unexpected_warnings_message: 操作已完成，但出現了一些警告。
@@ -456,8 +456,18 @@ zh-tw:
     verify_ssl: 驗證 SSL
     appointment_save: 預約儲存
     appointment_delete: 預約刪除
-    unavailability_save: 不可用時段儲存
-    unavailability_delete: 不可用時段刪除
+    unavailability_save: "忙碌時間儲存"
+    unavailability_delete: "忙碌時間刪除"
+    unavailability_type: "類型"
+    unavailability_type_none: "無類型"
+    unavailability_types: "忙碌時間類型"
+    unavailability_types_hint: "員工可放入行事曆的忙碌時間種類，如會議、休假或行政事務，每種有自己的顏色。"
+    unavailability_type_saved: "類型已儲存。"
+    unavailability_type_deleted: "類型已移除。該類型的忙碌時間將保留且不帶類型。"
+    delete_unavailability_type: "刪除類型"
+    unavailability_stylists_hint: "勾選此忙碌時間涉及的所有人。每位服務人員產生一筆記錄，並一起編輯。"
+    unavailability_also_for: "同時適用於 {{names}}"
+    delete_unavailability_group: "是否為全部 {{count}} 位服務人員移除此忙碌時間？"
     customer_save: 顧客儲存
     customer_delete: 顧客刪除
     service_save: 服務儲存
@@ -529,6 +539,8 @@ zh-tw:
     no_breaks: 無休息
     service_categories: 服務類別
     service_category: 服務類別
+    category_services: "此類別中的服務"
+    category_no_services: "此類別尚無服務。"
     blocked_period_saved: 保留時段已成功儲存。
     blocked_period_deleted: 保留時段已成功刪除。
     delete_blocked_period: 刪除保留時段
@@ -545,6 +557,8 @@ zh-tw:
     delete_webhook: 刪除 Webhook
     contact_info: 聯絡資訊
     hide_from_public: 從公開頁面隱藏
+    bookable_by_public: "開放公眾預約"
+    bookable_hint: "取消勾選後，服務會顯示在預約頁面上，但僅顯示說明。客戶無法線上預約；請在說明中寫明如何安排。"
     matomo_analytics_site_id: Matomo Analytics 網站 ID
     matomo_analytics_site_id_hint: 設定將由 Matomo 追蹤的網站 ID（預設網站的 ID 為 "1"）。
     default_timezone: 預設時區
@@ -1068,8 +1082,8 @@ zh-tw:
     activity_appointment_changed: "已變更"
     activity_appointment_cancelled: "已取消"
     activity_appointment_deleted: "已刪除"
-    activity_unavailability_saved: "已新增不可預約時段"
-    activity_unavailability_deleted: "已移除不可預約時段"
+    activity_unavailability_saved: "已新增忙碌時間"
+    activity_unavailability_deleted: "已移除忙碌時間"
     activity_message_sent: "訊息已傳送"
     activity_message_failed: "訊息傳送失敗"
     activity_message_received: "已收到訊息"
@@ -1080,6 +1094,7 @@ zh-tw:
     activity_actor_system: "系統"
     activity_actor_import: "匯入"
     activity_appointment_summary: "{{provider}} 為 {{customer}} 提供 {{service}}，{{when}}"
+    activity_unavailability_summary: "{{type}}，{{provider}}，{{when}}"
     activity_status_summary: "狀態 {{status}}"
     activity_reason_summary: "原因：{{reason}}"
     activity_message_summary: "透過 {{channel}} 向 {{audience}} 傳送 {{notification}}，{{address}}"
@@ -1087,5 +1102,8 @@ zh-tw:
     activity_waitlist_summary: "{{customer}} 候補 {{service}}，{{provider}}"
     free: "空檔"
     free_hint: "預約時段內可預約的空檔，依日期與提供者列出。"
-    free_window: "{{from}} 至 {{to}} 可預約的空檔"
     free_empty: "預約時段內沒有可預約的空檔。"
+    free_from: "從"
+    free_to: "至"
+    free_reset_hint: "返回預約時段"
+    print_free_title: "可預約的空檔"
