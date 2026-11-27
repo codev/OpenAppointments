@@ -28,6 +28,15 @@ class ApplicationSystemTestCase < ActionDispatch::SystemTestCase
 
   setup do
     page.driver.browser.execute_cdp("Emulation.setTimezoneOverride", timezoneId: BROWSER_TIMEZONE)
+    retry_inspector_errors
+  end
+
+  # Chrome answers a query that lands while a page is being replaced with an
+  # unknown error ("Node with given id does not belong to the document") rather
+  # than a stale element error, so Capybara is told to retry it the same way.
+  def retry_inspector_errors
+    errors = page.driver.invalid_element_errors
+    errors << Selenium::WebDriver::Error::UnknownError unless errors.include?(Selenium::WebDriver::Error::UnknownError)
   end
 
   # The offset-th day after `from` on which the fixture stylist works, so booking
